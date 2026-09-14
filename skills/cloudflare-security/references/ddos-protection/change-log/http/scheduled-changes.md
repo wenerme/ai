@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Scheduled changes
 
-Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/change-log/http/scheduled-changes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/change-log/http/scheduled-changes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 | Announcement Date | Change Date | Rule ID | Description | Previous Action | New Action | Notes |
-| ----------------- | ----------- | ------- | ----------- | --------------- | ---------- | ----- |
-| N/A               | N/A         | N/A     | N/A         | N/A             | N/A        | N/A   |
+| --- | --- | --- | --- | --- | --- | --- |
+| N/A | N/A | N/A | N/A | N/A | N/A | N/A |
 
 Was this helpful?
 

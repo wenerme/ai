@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Video • MiniMax
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `minimax/hailuo-2.3-fast`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 A lower-latency version of Hailuo 2.3 that preserves core motion quality, visual consistency, and stylization while enabling faster iteration.
 
-| Model Info          |                                                                                                                           |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://hailuoai.com/terms)                                                                                      |
-| More information    | [link ↗](https://hailuoai.com/)                                                                                           |
-| Zero data retention | Yes                                                                                                                       |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/hailuo-2.3-fast) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://hailuoai.com/terms) |
+| More information | [link ↗](https://hailuoai.com/) |
+| Zero data retention | Yes |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/hailuo-2.3-fast) |
 
 ## Usage
 
@@ -83,7 +83,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**High Resolution I2V** — Animate a photo in 1080P
+<details>
+
+<summary>**High Resolution I2V** — Animate a photo in 1080P</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -132,7 +136,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Fast Processing** — Quick I2V with fast pretreatment enabled
+</details>
+
+<details>
+
+<summary>**Fast Processing** — Quick I2V with fast pretreatment enabled</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -181,6 +191,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 first\_frame\_image
@@ -221,9 +233,9 @@ status
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/schema-output.json)
 
 Was this helpful?
 

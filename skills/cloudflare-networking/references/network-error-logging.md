@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Network Error Logging
 
-Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network-error-logging/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-error-logging/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Network Error Logging (NEL) is a browser-based reporting system that allows users to report their own failures to an external endpoint. You can use Network Error Logging to gain insight into connectivity issues on the Internet to learn when and where an incident is happening, who is impacted, and how they are being impacted.
 
@@ -24,7 +24,7 @@ The last mile is the path from a user to the first point of ingress to the resou
 
 ## How NEL affects requests
 
-The Report-To header is present in all requests to Cloudflare zones that have NEL enabled:
+The Report-To header is present in all requests to Cloudflare zones that have NEL enabled:  
 
 ```txt
 report-to: {"group":"cf-nel","max_age":31536000,"endpoints":[{"url":"`[`https://a.nel.cloudflare.com/report?lkg-colo=lhr&lkg-time=1600338181`](https://gcp.nel.cloudflare.com/report?lkg-colo=lhr&lkg-time=1600338181&lkg-ip=1.1.1.1)`"}]}
@@ -56,9 +56,9 @@ A sample Network Error Report payload appears as follows:
 
 Cloudflare uses geolocation lookups to extract the following information from every client IP in a NEL report:
 
-* Client ASN
-* Client country
-* Client metro area
+- Client ASN
+- Client country
+- Client metro area
 
 Cloudflare uses internal lookups to associate the above data with a customer domain and customer account.
 
@@ -68,10 +68,10 @@ The client IP address is only stored in volatile memory for the lifetime of the 
 
 NEL reports contain information about the end user's network conditions, which could be considered sensitive. Cloudflare takes privacy seriously and has implemented the following safeguards:
 
-* Reports are sent to Cloudflare's infrastructure and are not shared with third parties.
-* Reports do not contain personally identifiable information (PII).
-* Customers can opt out of having their end users consume the NEL headers using one of the following methods:
-  1. **Self-service (Zone setting)** — Use the dashboard toggle or API (`PATCH /zones/{zone_id}/settings/nel`) to disable NEL for your zone. This can be re-enabled by any zone administrator at any time.
+- Reports are sent to Cloudflare's infrastructure and are not shared with third parties.
+- Reports do not contain personally identifiable information (PII).
+- Customers can opt out of having their end users consume the NEL headers using one of the following methods:
+  1. **Self-service (Zone setting)** — Use the dashboard toggle or API ( `PATCH /zones/{zone_id}/settings/nel`) to disable NEL for your zone. This can be re-enabled by any zone administrator at any time.
   2. **Permanent opt-out via Support** — Contact Cloudflare support to have the `nel___enable` feature flag disabled at the product level. This prevents NEL from being enabled on your zone entirely and cannot be reversed by zone administrators. For Free and Pro plans, the dashboard toggle is typically sufficient. Enterprise customers with strict privacy requirements may prefer the permanent support-level opt-out.
 
 Was this helpful?

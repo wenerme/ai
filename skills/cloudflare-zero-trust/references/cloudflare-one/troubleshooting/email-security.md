@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Email Security
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/troubleshooting/email-security/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/troubleshooting/email-security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Review common troubleshooting scenarios for Cloudflare Email Security.
 
@@ -20,13 +20,13 @@ Review common troubleshooting scenarios for Cloudflare Email Security.
 
 Email Security identifies threats using detections that result in a final disposition. You can inspect email headers to understand why a specific disposition was applied.
 
-| Attribute           | Description                                                                                                                                                                  |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| CUSTOM\_BLOCK\_LIST | Matches a value defined in your custom block list.                                                                                                                           |
-| NEW\_DOMAIN\_SENDER | The email was sent from a newly registered domain.                                                                                                                           |
-| NEW\_DOMAIN\_LINK   | The email contains links to a newly registered domain.                                                                                                                       |
-| ENCRYPTED           | The email message is encrypted.                                                                                                                                              |
-| BEC                 | The sender address is in your [impersonation registry](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/). |
+| Attribute | Description |
+| --- | --- |
+| `CUSTOM_BLOCK_LIST` | Matches a value defined in your custom block list. |
+| `NEW_DOMAIN_SENDER` | The email was sent from a newly registered domain. |
+| `NEW_DOMAIN_LINK` | The email contains links to a newly registered domain. |
+| `ENCRYPTED` | The email message is encrypted. |
+| `BEC` | The sender address is in your [impersonation registry](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/). |
 
 ## Detections and reclassification
 
@@ -58,8 +58,8 @@ Email Security may mark an email as **SPAM** if it fails DMARC authentication an
 
 **Solution**:
 
-* Ask the sender to fix their DMARC/SPF/DKIM records.
-* Configure an [Acceptable Sender](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/) entry to suppress the failure for that specific sender.
+- Ask the sender to fix their DMARC/SPF/DKIM records.
+- Configure an [Acceptable Sender](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/) entry to suppress the failure for that specific sender.
 
 ## Delivery issues
 

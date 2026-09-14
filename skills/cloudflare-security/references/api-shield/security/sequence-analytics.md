@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Sequence Analytics
 
-Last updated Jun 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/sequence-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/sequence-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Sequence Analytics tracks the order of API endpoint requests over time, allowing you to discover how users interact with your API. Sequence Analytics groups and highlights important user journeys (sequences) across your API. You can enforce preferred sequences using [Sequence mitigation](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/).
 
@@ -24,14 +24,16 @@ A sequence is a time-ordered list of HTTP API requests made by a specific visito
 
 For example, a portion of a sequence made during a bank funds transfer could look like:
 
-| Order | Method | Path                                   | Description                                                                                                                                    |
-| ----- | ------ | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1     | GET    | /api/v1/users/{user\_id}/accounts      | user\_id is the active user.                                                                                                                   |
-| 2     | GET    | /api/v1/accounts/{account\_id}/balance | account\_id is one of the user’s accounts.                                                                                                     |
-| 3     | GET    | /api/v1/accounts/{account\_id}/balance | account\_id is a different account belonging to the user.                                                                                      |
-| 4     | POST   | /api/v1/transferFunds                  | This contains a request body detailing an account to transfer funds from, an account to transfer funds to, and an amount of money to transfer. |
+| Order | Method | Path | Description |
+| --- | --- | --- | --- |
+| 1 | `GET` | `/api/v1/users/{user_id}/accounts` | `user_id` is the active user. |
+| 2 | `GET` | `/api/v1/accounts/{account_id}/balance` | `account_id` is one of the user’s accounts. |
+| 3 | `GET` | `/api/v1/accounts/{account_id}/balance` | `account_id` is a different account belonging to the user. |
+| 4 | `POST` | `/api/v1/transferFunds` | This contains a request body detailing an account to transfer funds from, an account to transfer funds to, and an amount of money to transfer. |
 
-API Shield uses your configured session identifier and operations in the `full` or `candidate` state to build a set of ordered API operations (HTTP host, method, and path) requested per session. API Shield may surface sequences in various lengths depending on how it scores the sequences.
+API Shield uses your configured session identifier
+
+ and operations in the `full` or `candidate` state to build a set of ordered API operations (HTTP host, method, and path) requested per session. API Shield may surface sequences in various lengths depending on how it scores the sequences.
 
 ### Sequence scoring
 

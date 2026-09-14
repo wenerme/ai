@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.timings.edge\_msec
 
-`cf.timings.edge_msec` `Integer`
+`cf.timings.edge_msec``Integer`
 
 The time spent processing a request within the Cloudflare global network in milliseconds.
 
@@ -16,8 +16,8 @@ The value corresponds to the time interval between when the Cloudflare edge serv
 
 The value does not include:
 
-* The time spent forwarding the request to the origin server (refer to [cf.timings.origin\_ttfb\_msec](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.timings.origin%5Fttfb%5Fmsec/)).
-* The network transfer time to the client.
+- The time spent forwarding the request to the origin server (refer to [`cf.timings.origin_ttfb_msec`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.timings.origin_ttfb_msec/)).
+- The network transfer time to the client.
 
 Example value:
 
@@ -33,7 +33,7 @@ cf.timings.edge_msec > 500
 ```
 
 Categories:
-* Request
+- Request
 
 Was this helpful?
 

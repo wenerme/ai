@@ -12,17 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Antivirus
 
-Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/antivirus/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/antivirus/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The Antivirus device posture attribute checks if any antivirus software is installed and active on a device. The Cloudflare One Client queries the [Windows Security Center API ↗](https://learn.microsoft.com/en-us/windows/win32/api/iwscapi/ne-iwscapi-wsc%5Fsecurity%5Fproduct%5Fstate) to determine the state of registered security products. For the posture check to pass, Windows Security Center must report that a security product is turned on and up to date.
+The Antivirus device posture attribute checks if any antivirus software is installed and active on a device. The Cloudflare One Client queries the [Windows Security Center API ↗](https://learn.microsoft.com/en-us/windows/win32/api/iwscapi/ne-iwscapi-wsc_security_product_state) to determine the state of registered security products. For the posture check to pass, Windows Security Center must report that a security product is turned on and up to date.
 
 ## Prerequisites
 
-* Cloudflare One Client is [deployed](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/) on the device. For a list of supported modes and operating systems, refer to [Cloudflare One Client Checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/).
+- Cloudflare One Client is [deployed](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/) on the device. For a list of supported modes and operating systems, refer to [Cloudflare One Client Checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/).
 
 ## Enable the antivirus check
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Posture checks**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Posture checks**.
 2. Go to **Cloudflare One Client checks** and select **Add a check**.
 3. Select **Antivirus**.
 4. Enter a descriptive name for the check.
@@ -30,7 +30,7 @@ The Antivirus device posture attribute checks if any antivirus software is insta
 6. (Optional) Set the maximum number of days allowed since the last antivirus signature update. If the device exceeds this limit (for example, you set 30 days but it has been 31 days since the last update), the device will fail the posture check.
 7. Select **Save**.
 
-Next, go to **Insights** \> **Logs** \> **Posture logs** and verify that the antivirus check is returning the expected results.
+Next, go to **Insights** > **Logs** > **Posture logs** and verify that the antivirus check is returning the expected results.
 
 ## Validate antivirus status
 
@@ -40,21 +40,26 @@ You can use the following commands to validate if the posture check is working a
 
 1. Open a PowerShell window.
 2. List all installed antivirus products registered with Windows Security Center:
-```powershell
-Get-WmiObject -Namespace "root\SecurityCenter2" -ClassName "AntiVirusProduct"
-```
-```powershell
-<redacted>
-displayName              : Windows Defender
-instanceGuid             : {00000000-0000-0000-0000-000000000000}
-pathToSignedProductExe   : windowsdefender://
-pathToSignedReportingExe : %ProgramFiles%\Windows Defender\MsMpeng.exe
-productState             : 397568
-timestamp                : Fri, 09 Jan 2026 12:00:00 GMT
-PSComputerName           : ENDPOINT-01
-```
+
+   ```powershell
+   Get-WmiObject -Namespace "root\SecurityCenter2" -ClassName "AntiVirusProduct"
+   ```
+
+   ```powershell
+   <redacted>
+   displayName              : Windows Defender
+   instanceGuid             : {00000000-0000-0000-0000-000000000000}
+   pathToSignedProductExe   : windowsdefender://
+   pathToSignedReportingExe : %ProgramFiles%\Windows Defender\MsMpeng.exe
+   productState             : 397568
+   timestamp                : Fri, 09 Jan 2026 12:00:00 GMT
+   PSComputerName           : ENDPOINT-01
+   ```
+
+
 3. Microsoft does not support decoding the `productState` from the `SecurityCenter2` namespace. To verify that an antivirus product is active, open the [Windows Security app ↗](https://support.microsoft.com/en-us/windows/stay-protected-with-the-windows-security-app-2ae0363d-0ada-c064-8b56-6a39afb6a963). The **Virus & threat protection** panel should say `No action needed` with a green checkmark.
-To determine which antivirus product is running, select **Virus & threat protection** \> **Manage providers**. You will see the name of the antivirus product (for example, `Windows Defender Antivirus`) and its current state.
+
+   To determine which antivirus product is running, select **Virus & threat protection** > **Manage providers**. You will see the name of the antivirus product (for example, `Windows Defender Antivirus`) and its current state.
 4. If you configured a maximum antivirus signature age in your posture check, compare the `timestamp` in the PowerShell output against the current system time. If the difference exceeds the configured number of days, the posture check will fail.
 
 Was this helpful?

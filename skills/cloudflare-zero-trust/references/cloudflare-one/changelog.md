@@ -12,9 +12,39 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Changelog
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/changelog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml)
+
+## 2026-09-14
+
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+
+**Require fresh authentication for SAML identity providers**
+
+Cloudflare Access can now request fresh authentication from a SAML identity provider for every login. Turn on **Require reauthentication** in the Cloudflare dashboard, or set `force_authn` to `true` through the API. Access will then set `ForceAuthn` to `true` in signed and unsigned SAML authentication requests.
+
+This option is useful when an application requires users to reauthenticate at the identity provider instead of relying on an existing identity provider session. The default value is `false`.
+
+For configuration details, refer to [Require fresh authentication at the identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/#require-fresh-authentication-at-the-identity-provider).
+
+## 2026-09-14
+
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+
+
+**Discover where sensitive data goes before you create a Data Loss Prevention policy**
+
+**Passive Detection** for [Cloudflare Data Loss Prevention (DLP)](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) lets you learn from your Gateway traffic before deciding what to log or block. Discover the sensitive data types in sampled traffic, explore their destinations, and use the findings to build policies around your organization's needs.
+
+The dashboard brings together detections from sampled HTTP request and response bodies. Select an entry to follow its detections over time, review destinations, and check policy coverage. You do not need a Gateway DLP policy to get these insights, and existing Gateway policies continue to apply.
+
+![Passive Detection dashboard showing detection totals, data type distribution, policy coverage, and detection entries](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=593,format=webp/_astro/passive-detection.B_-_POtg.gif)
+
+Passive Detection is generally available. The detection entries available to your account depend on your [Zero Trust plan](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/).
+
+To get started, refer to the [Passive Detection documentation](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/passive-detection/).
 
 ## 2026-09-09
 
@@ -27,26 +57,26 @@ A new Beta release for the macOS Cloudflare One Client is now available on the [
 
 This beta release includes the following changes and improvements:
 
-* Added support for routing non-RFC 1918 local IPv4 networks through the WARP tunnel when unrestricted LAN inclusion is enabled by policy or MDM.
-* Improved DNS reliability on networks with lower MTUs by clamping the TCP maximum segment size (MSS) for DNS-over-HTTPS connections sent through the tunnel.
-* Improved API reliability by retrying requests dropped when reusing pooled connections.
-* Fixed Extra Logging failing to capture packets across all interfaces.
-* Fixed an issue that could prevent remote diagnostics from completing.
-* Fixed DNS connectivity checks failing on IPv6-only networks.
-* Fixed the client service exiting when its route-monitoring socket was closed after sleep or wake.
-* Fixed DNS enforcement checks making the client service unresponsive on systems with large routing tables.
-* Fixed slow captive portal checks causing the client service to become unresponsive or restart while connecting.
-* Fixed a race when switching tunnel protocols during key rotation that could prevent WireGuard from connecting.
-* Fixed the client continuing to report 'No network' after a successful manual disconnect.
-* Fixed a client UI crash that could occur when the daemon connection was reset during an IPC request.
-* Fixed a startup crash when date formatting data for the system locale had not yet loaded.
+- Added support for routing non-RFC 1918 local IPv4 networks through the WARP tunnel when unrestricted LAN inclusion is enabled by policy or MDM.
+- Improved DNS reliability on networks with lower MTUs by clamping the TCP maximum segment size (MSS) for DNS-over-HTTPS connections sent through the tunnel.
+- Improved API reliability by retrying requests dropped when reusing pooled connections.
+- Fixed Extra Logging failing to capture packets across all interfaces.
+- Fixed an issue that could prevent remote diagnostics from completing.
+- Fixed DNS connectivity checks failing on IPv6-only networks.
+- Fixed the client service exiting when its route-monitoring socket was closed after sleep or wake.
+- Fixed DNS enforcement checks making the client service unresponsive on systems with large routing tables.
+- Fixed slow captive portal checks causing the client service to become unresponsive or restart while connecting.
+- Fixed a race when switching tunnel protocols during key rotation that could prevent WireGuard from connecting.
+- Fixed the client continuing to report 'No network' after a successful manual disconnect.
+- Fixed a client UI crash that could occur when the daemon connection was reset during an IPC request.
+- Fixed a startup crash when date formatting data for the system locale had not yet loaded.
 
 **Known issues**
 
-* None
+- None
 
-For Zero Trust documentation, see: <https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/>
-For Consumer documentation, see: <https://developers.cloudflare.com/warp-client/>
+For Zero Trust documentation, see: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/
+ For Consumer documentation, see: https://developers.cloudflare.com/warp-client/
 
 ## 2026-09-09
 
@@ -59,31 +89,31 @@ A new Beta release for the Windows Cloudflare One Client is now available on the
 
 This beta release includes the following changes and improvements:
 
-* Added support for routing non-RFC 1918 local IPv4 networks through the WARP tunnel when unrestricted LAN inclusion is enabled by policy or MDM.
-* Improved DNS reliability on networks with lower MTUs by clamping the TCP maximum segment size (MSS) for DNS-over-HTTPS connections sent through the tunnel.
-* Improved API reliability by retrying requests dropped when reusing pooled connections.
-* The client no longer requires the Windows WLAN AutoConfig service to be running.
-* Implemented a service recovery mechanism backed by Windows scheduler task to start WARP service on system unlock if not already started.
-* Fixed slow captive portal checks causing the client service to become unresponsive or restart while connecting.
-* Fixed a race when switching tunnel protocols during key rotation that could prevent WireGuard from connecting.
-* Fixed the client continuing to report 'No network' after a successful manual disconnect.
-* Fixed Digital Experience Monitoring (DEX) HTTP tests failing TLS validation on Windows.
-* Fixed the client UI crashing at startup when it could not write to the Windows registry.
-* Fixed latency spikes and traffic interruptions during TPM-backed API authentication when hardware-backed registration is enabled.
-* Fixed trailing whitespace in BIOS serial numbers causing serial-number and client-certificate device posture checks to fail.
-* Fixed a client UI crash that could occur when the daemon connection was reset during an IPC request.
-* Fixed a startup crash when date formatting data for the system locale had not yet loaded.
+- Added support for routing non-RFC 1918 local IPv4 networks through the WARP tunnel when unrestricted LAN inclusion is enabled by policy or MDM.
+- Improved DNS reliability on networks with lower MTUs by clamping the TCP maximum segment size (MSS) for DNS-over-HTTPS connections sent through the tunnel.
+- Improved API reliability by retrying requests dropped when reusing pooled connections.
+- The client no longer requires the Windows WLAN AutoConfig service to be running.
+- Implemented a service recovery mechanism backed by Windows scheduler task to start WARP service on system unlock if not already started.
+- Fixed slow captive portal checks causing the client service to become unresponsive or restart while connecting.
+- Fixed a race when switching tunnel protocols during key rotation that could prevent WireGuard from connecting.
+- Fixed the client continuing to report 'No network' after a successful manual disconnect.
+- Fixed Digital Experience Monitoring (DEX) HTTP tests failing TLS validation on Windows.
+- Fixed the client UI crashing at startup when it could not write to the Windows registry.
+- Fixed latency spikes and traffic interruptions during TPM-backed API authentication when hardware-backed registration is enabled.
+- Fixed trailing whitespace in BIOS serial numbers causing serial-number and client-certificate device posture checks to fail.
+- Fixed a client UI crash that could occur when the daemon connection was reset during an IPC request.
+- Fixed a startup crash when date formatting data for the system locale had not yet loaded.
 
 **Known issues**
 
-* None
+- None
 
-For Zero Trust documentation, see: <https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/>
-For Consumer documentation, see: <https://developers.cloudflare.com/warp-client/>
+For Zero Trust documentation, see: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/
+ For Consumer documentation, see: https://developers.cloudflare.com/warp-client/
 
 ## 2026-09-09
 
-[Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Improved iOS tap-to-type experience for Browser Isolation**
@@ -115,19 +145,19 @@ Zoom is widely used for meetings, webinars, and collaboration. Misconfigurations
 
 Starting today, security teams can scan for security findings across the following assets:
 
-* **Account settings** — Detect weak password policies, unlocked security controls, and two-factor authentication gaps across your Zoom account
-* **User accounts** — Identify users not enforcing SSO, accounts with insecure host keys, unverified or inactive users, and unsafe overrides of account-level security settings
-* **Meetings** — Surface meetings without passwords or waiting rooms, meetings using Personal Meeting IDs (PMIs), and meetings with external domain hosts
-* **Recordings** — Detect publicly accessible cloud recordings, recordings without passcodes, and weak recording password configurations
-* **Content** — Identify sensitive information in meeting and recording content via DLP Profile matching
+- **Account settings** — Detect weak password policies, unlocked security controls, and two-factor authentication gaps across your Zoom account
+- **User accounts** — Identify users not enforcing SSO, accounts with insecure host keys, unverified or inactive users, and unsafe overrides of account-level security settings
+- **Meetings** — Surface meetings without passwords or waiting rooms, meetings using Personal Meeting IDs (PMIs), and meetings with external domain hosts
+- **Recordings** — Detect publicly accessible cloud recordings, recordings without passcodes, and weak recording password configurations
+- **Content** — Identify sensitive information in meeting and recording content via DLP Profile matching
 
 #### Learn more
 
-This [integration](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/zoom/) is available to all Cloudflare Zero Trust customers today. New customers can sign up and start with their first two integrations for free. Existing customers can enable the integration directly in the Cloudflare One dashboard under **Cloud & SaaS findings** \> **Integrations**. The integration begins scanning immediately and surfaces findings in the dashboard within minutes.
+This [integration](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/zoom/) is available to all Cloudflare Zero Trust customers today. New customers can sign up and start with their first two integrations for free. Existing customers can enable the integration directly in the Cloudflare One dashboard under **Cloud & SaaS findings** > **Integrations**. The integration begins scanning immediately and surfaces findings in the dashboard within minutes.
 
 ## 2026-09-02
 
-[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Define custom applications for breakout and prioritized traffic from the Cloudflare One Appliance dashboard**
@@ -135,9 +165,10 @@ This [integration](https://developers.cloudflare.com/cloudflare-one/integrations
 You can now define [custom applications](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/breakout-traffic/#create-edit-or-delete-a-custom-application) for [breakout](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/breakout-traffic/) and [prioritized](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/prioritized-traffic/) traffic on the [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) directly from the dashboard, without calling the API.
 
 ![Adding a custom application by hostname, IP subnet, and source subnet from the Traffic Steering tab of an appliance profile](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=1034,format=webp/_astro/2026-09-01-appliance-custom-application-traffic-steering.D25Ga9-d.gif)
-* In **Traffic Steering** \> **Breakout traffic** or **Prioritized traffic**, select **Assign application traffic** \> **Add** to create a custom application matched by **Hostnames**, **IP subnets**, and/or the new **Source subnets** field, alongside Cloudflare-managed applications.
-* Edit or delete an existing custom application from the same panel, no API round-trip required.
-* **Source subnets** lets you match traffic by its source IP range, complementing the existing [source LAN interface breakout criteria](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/breakout-traffic/#breakout-by-source).
+
+- In **Traffic Steering** > **Breakout traffic** or **Prioritized traffic**, select **Assign application traffic** > **Add** to create a custom application matched by **Hostnames**, **IP subnets**, and/or the new **Source subnets** field, alongside Cloudflare-managed applications.
+- Edit or delete an existing custom application from the same panel, no API round-trip required.
+- **Source subnets** lets you match traffic by its source IP range, complementing the existing [source LAN interface breakout criteria](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/breakout-traffic/#breakout-by-source).
 
 This complements the existing API and Terraform workflow for managing applications.
 
@@ -145,7 +176,7 @@ For details, refer to [Breakout traffic](https://developers.cloudflare.com/cloud
 
 ## 2026-09-02
 
-[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Configure DHCP options from the dashboard on Cloudflare One Appliance**
@@ -153,14 +184,15 @@ For details, refer to [Breakout traffic](https://developers.cloudflare.com/cloud
 You can now configure [custom DHCP options](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-options/) directly from the dashboard when the [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) is acting as the DHCP server for a LAN.
 
 ![Adding a custom DHCP option to a LAN's DHCP server from the Network Configuration tab of an appliance profile](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=1034,format=webp/_astro/2026-09-01-appliance-dhcp-options-ui.B5OEZmib.gif)
-* In **LAN configuration**, under **DHCP server options**, select **Add DHCP option** to choose from common options for PXE / iPXE boot, VoIP phone provisioning, and vendor-specific configuration, or select **Add custom option** to enter your own option code, type, and value.
-* This complements the existing [API and Terraform workflow](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-options/#configure-dhcp-options) for configuring DHCP options.
+
+- In **LAN configuration**, under **DHCP server options**, select **Add DHCP option** to choose from common options for PXE / iPXE boot, VoIP phone provisioning, and vendor-specific configuration, or select **Add custom option** to enter your own option code, type, and value.
+- This complements the existing [API and Terraform workflow](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-options/#configure-dhcp-options) for configuring DHCP options.
 
 For details, refer to [DHCP server options](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-options/).
 
 ## 2026-09-02
 
-[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
 
 
 **Create multiple Cloudflare Tunnel and Cloudflare Mesh routes at once**
@@ -171,13 +203,13 @@ You can now create multiple [Cloudflare Tunnel](https://developers.cloudflare.co
 
 When creating a route, you can now:
 
-* **Add multiple destinations at once** — Enter a comma-separated list of CIDR ranges or hostnames to create several routes of the same type and connector together.
-* **Queue up multiple routes** — Select **Add another** to stage additional routes, including different types or connectors, before creating them all in one action.
-* **Retry only what failed** — If some routes in a batch fail (for example, an invalid CIDR), the routes that were created successfully are removed from the form automatically, so you only need to fix and resubmit the ones that failed.
+- **Add multiple destinations at once** — Enter a comma-separated list of CIDR ranges or hostnames to create several routes of the same type and connector together.
+- **Queue up multiple routes** — Select **Add another** to stage additional routes, including different types or connectors, before creating them all in one action.
+- **Retry only what failed** — If some routes in a batch fail (for example, an invalid CIDR), the routes that were created successfully are removed from the form automatically, so you only need to fix and resubmit the ones that failed.
 
 The same Routes UI already supports bulk creation for [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) static routes, so you can add multiple WAN destinations or queue up several WAN routes before creating them together as well.
 
-[Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 
 For setup steps, refer to [Add routes](https://developers.cloudflare.com/cloudflare-one/networks/routes/add-routes/).
 
@@ -255,7 +287,7 @@ For configuration instructions, refer to [Turn a service token on or off](https:
 
 ## 2026-08-25
 
-[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **MCP server portals support MCP 2026-07-28 specification**
@@ -268,7 +300,7 @@ SSE connections continue to use the legacy protocol. For details, refer to [MCP 
 
 ## 2026-08-24
 
-[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Download the Cloudflare One Virtual Appliance for your hypervisor from the dashboard**
@@ -276,9 +308,10 @@ SSE connections continue to use the legacy protocol. For details, refer to [MCP 
 When you register a [Cloudflare One Virtual Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/), you can now select your hypervisor and download the appliance directly from the dashboard — no need to look up asset URLs.
 
 ![Selecting a hypervisor and downloading the Cloudflare One Virtual Appliance from the Connectors page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2813,height=1241,format=webp/_astro/2026-08-24-virtual-appliance-self-serve-download.Ca2YGpCA.png)
-* On the **Connectors** page, select **Add an appliance**, choose **Virtual appliance**, then select your hypervisor: **VMware ESXi**, **Proxmox**, or **libvirt/KVM**.
-* Download the OVA image (VMware ESXi) or the install script (Proxmox and libvirt/KVM) for the selected hypervisor.
-* Use **View setup guide** to open deployment instructions for your platform.
+
+- On the **Connectors** page, select **Add an appliance**, choose **Virtual appliance**, then select your hypervisor: **VMware ESXi**, **Proxmox**, or **libvirt/KVM**.
+- Download the OVA image (VMware ESXi) or the install script (Proxmox and libvirt/KVM) for the selected hypervisor.
+- Use **View setup guide** to open deployment instructions for your platform.
 
 This complements the existing self-serve [registration and license key generation](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/#register-a-virtual-appliance-and-generate-a-license-key) in the dashboard.
 
@@ -307,7 +340,7 @@ A single policy can perform both actions: remediate a finding and send a webhook
 
 #### Get started
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** \> **Policies**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Policies**.
 2. Select **Create a policy**.
 3. Under **Basic information**, enter a **Policy name** and, optionally, a **Description**.
 4. Under **Choose how you want to trigger the policy**, select a **Vendor**, **Integration**, and **Finding type**.
@@ -317,9 +350,9 @@ A single policy can perform both actions: remediate a finding and send a webhook
 
 #### Learn more
 
-* Learn how to [create and manage CASB remediation policies](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/policies/) in Cloudflare One.
-* Configure [CASB webhooks](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/) as a policy destination.
-* Learn how to [manage findings](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/) in Cloudflare One.
+- Learn how to [create and manage CASB remediation policies](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/policies/) in Cloudflare One.
+- Configure [CASB webhooks](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/) as a policy destination.
+- Learn how to [manage findings](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/) in Cloudflare One.
 
 CASB remediation policies are now available in Cloudflare One.
 
@@ -351,26 +384,26 @@ A new GA release for the Windows Cloudflare One Client is now available on the [
 
 This release introduces multiple features from our previous beta release into stable release, including:
 
-* When reauthentication is needed for any reason, the notifications are clearer and reduce the actions needed to get you back to work by redirecting to the browser for authentication instead of the app window when necessary.
-* When a network is blocking or otherwise not supportive of HTTP/3, the client will learn and adapt by switching the order of fallback for that network by starting with HTTP/2 first and then trying HTTP/3 if needed. This reduces delays in time to connectivity when joining older or heavily filtered networks.
+- When reauthentication is needed for any reason, the notifications are clearer and reduce the actions needed to get you back to work by redirecting to the browser for authentication instead of the app window when necessary.
+- When a network is blocking or otherwise not supportive of HTTP/3, the client will learn and adapt by switching the order of fallback for that network by starting with HTTP/2 first and then trying HTTP/3 if needed. This reduces delays in time to connectivity when joining older or heavily filtered networks.
 
 **Additional changes and improvements**
 
-* Fixed a process leak in the Windows GUI that could exhaust system resources during IPC client-creation failures.
-* Fixed being unable to switch organizations when the client was stuck in the "Device not in organization" state.
-* Fixed an issue where Microsoft Defender would falsely flag the Cloudflare One Client installation as malicious when installing with Intune.
-* Made the Windows domain-joined posture check more reliable.
-* A DNS search domain parsing failure no longer prevents connection.
-* Cloud icon now correctly reflects actual connection status instead of showing disconnected while fully connected.
-* Fixed missing certificate error display due to a race condition.
-* Fixed empty black window after transitioning from docked dual displays to undocked/internal display.
+- Fixed a process leak in the Windows GUI that could exhaust system resources during IPC client-creation failures.
+- Fixed being unable to switch organizations when the client was stuck in the "Device not in organization" state.
+- Fixed an issue where Microsoft Defender would falsely flag the Cloudflare One Client installation as malicious when installing with Intune.
+- Made the Windows domain-joined posture check more reliable.
+- A DNS search domain parsing failure no longer prevents connection.
+- Cloud icon now correctly reflects actual connection status instead of showing disconnected while fully connected.
+- Fixed missing certificate error display due to a race condition.
+- Fixed empty black window after transitioning from docked dual displays to undocked/internal display.
 
 **Known issues**
 
-* If a user upgrades to version 2026.7.1343.0, downgrades to an earlier version, re-registers, and then upgrades back to 2026.7.1343.0, the client might fail to connect or switch organizations. To resolve this issue, run `warp-cli registration delete` or `warp-cli registration delete-all`.
+- If a user upgrades to version 2026.7.1343.0, downgrades to an earlier version, re-registers, and then upgrades back to 2026.7.1343.0, the client might fail to connect or switch organizations. To resolve this issue, run `warp-cli registration delete` or `warp-cli registration delete-all`.
 
-For Zero Trust documentation please see: <https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/>
-For Consumer documentation please see: <https://developers.cloudflare.com/warp-client/>
+For Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/
+ For Consumer documentation please see: https://developers.cloudflare.com/warp-client/
 
 ## 2026-08-19
 
@@ -383,24 +416,24 @@ A new GA release for the macOS Cloudflare One Client is now available on the [st
 
 This release introduces multiple features from our previous beta release into stable release, including:
 
-* When reauthentication is needed for any reason, the notifications are clearer and reduce the actions needed to get you back to work by redirecting to the browser for authentication instead of the app window when necessary.
-* When a network is blocking or otherwise not supportive of HTTP/3, the client will learn and adapt by switching the order of fallback for that network by starting with HTTP/2 first and then trying HTTP/3 if needed. This reduces delays in time to connectivity when joining older or heavily filtered networks.
+- When reauthentication is needed for any reason, the notifications are clearer and reduce the actions needed to get you back to work by redirecting to the browser for authentication instead of the app window when necessary.
+- When a network is blocking or otherwise not supportive of HTTP/3, the client will learn and adapt by switching the order of fallback for that network by starting with HTTP/2 first and then trying HTTP/3 if needed. This reduces delays in time to connectivity when joining older or heavily filtered networks.
 
 **Additional changes and improvements**
 
-* Fixed the client not allowing login to another organization when currently showing "Device not in organization."
-* A DNS search domain parsing failure no longer prevents connection.
-* Cloud icon now correctly reflects actual connection status instead of showing disconnected while fully connected.
-* Fixed missing certificate error display due to a race condition.
-* Fixed crash when trying to connect to captive portal on Wi-Fi.
-* Fixed empty black window after transitioning from docked dual displays to undocked/internal display.
+- Fixed the client not allowing login to another organization when currently showing "Device not in organization."
+- A DNS search domain parsing failure no longer prevents connection.
+- Cloud icon now correctly reflects actual connection status instead of showing disconnected while fully connected.
+- Fixed missing certificate error display due to a race condition.
+- Fixed crash when trying to connect to captive portal on Wi-Fi.
+- Fixed empty black window after transitioning from docked dual displays to undocked/internal display.
 
 **Known issues**
 
-* None
+- None
 
-For Zero Trust documentation please see: <https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/>
-For Consumer documentation please see: <https://developers.cloudflare.com/warp-client/>
+For Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/
+ For Consumer documentation please see: https://developers.cloudflare.com/warp-client/
 
 ## 2026-08-19
 
@@ -413,28 +446,28 @@ A new GA release for the Linux Cloudflare One Client is now available on the [st
 
 This release introduces multiple features from our previous beta release into stable release, including:
 
-* When reauthentication is needed for any reason, the notifications are clearer and reduce the actions needed to get you back to work by redirecting to the browser for authentication instead of the app window when necessary.
-* When a network is blocking or otherwise not supportive of HTTP/3, the client will learn and adapt by switching the order of fallback for that network by starting with HTTP/2 first and then trying HTTP/3 if needed. This reduces delays in time to connectivity when joining older or heavily filtered networks.
+- When reauthentication is needed for any reason, the notifications are clearer and reduce the actions needed to get you back to work by redirecting to the browser for authentication instead of the app window when necessary.
+- When a network is blocking or otherwise not supportive of HTTP/3, the client will learn and adapt by switching the order of fallback for that network by starting with HTTP/2 first and then trying HTTP/3 if needed. This reduces delays in time to connectivity when joining older or heavily filtered networks.
 
 **Additional changes and improvements**
 
-* Fixed the client not allowing login to another organization when currently showing "Device not in organization."
-* A DNS search domain parsing failure no longer prevents connection.
-* Cloud icon now correctly reflects actual connection status instead of showing disconnected while fully connected.
-* Fixed missing certificate error display due to a race condition.
-* Fixed empty black window after transitioning from docked dual displays to undocked/internal display.
-* Fixed hostname routes not working for Cloudflare Mesh when the IP addresses of the hostnames are local addresses.
+- Fixed the client not allowing login to another organization when currently showing "Device not in organization."
+- A DNS search domain parsing failure no longer prevents connection.
+- Cloud icon now correctly reflects actual connection status instead of showing disconnected while fully connected.
+- Fixed missing certificate error display due to a race condition.
+- Fixed empty black window after transitioning from docked dual displays to undocked/internal display.
+- Fixed hostname routes not working for Cloudflare Mesh when the IP addresses of the hostnames are local addresses.
 
 **Known issues**
 
-* When in DNS Only mode, the client may send DNS queries for names that are configured for Local Domain Fallback to the encrypted DNS server instead of falling back to the system configuration. Local Domain Fallback works as expected in other client modes.
+- When in DNS Only mode, the client may send DNS queries for names that are configured for Local Domain Fallback to the encrypted DNS server instead of falling back to the system configuration. Local Domain Fallback works as expected in other client modes.
 
-For Zero Trust documentation please see: <https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/>
-For Consumer documentation please see: <https://developers.cloudflare.com/warp-client/>
+For Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/
+ For Consumer documentation please see: https://developers.cloudflare.com/warp-client/
 
 ## 2026-08-19
 
-[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) [Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
 
 
 **Access resource lists now support resource-scoped roles**
@@ -449,7 +482,7 @@ For role definitions and assignment details, refer to [Resource-scoped roles](ht
 
 ## 2026-08-18
 
-[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 
 **Configure origin application settings for Cloudflare Tunnel in the dashboard**
@@ -460,10 +493,11 @@ You can now configure origin application settings directly in the Cloudflare das
 
 When editing a published application, expand **Additional application settings** to configure parameters organized into three categories:
 
-* **HTTP** — Set a custom HTTP Host header or disable chunked encoding.
-* **TLS** — Configure origin server name, CA pool, TLS timeout, disable TLS verification, match SNI to host, or enable HTTP/2 to origin.
-* **Connection** — Tune connect timeout, keep-alive timeout, keep-alive connections, TCP keep-alive interval, proxy type, or disable Happy Eyeballs.
-[Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
+- **HTTP** — Set a custom HTTP Host header or disable chunked encoding.
+- **TLS** — Configure origin server name, CA pool, TLS timeout, disable TLS verification, match SNI to host, or enable HTTP/2 to origin.
+- **Connection** — Tune connect timeout, keep-alive timeout, keep-alive connections, TCP keep-alive interval, proxy type, or disable Happy Eyeballs.
+
+[Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 
 For the full list of origin parameters, refer to [Origin parameters](https://developers.cloudflare.com/tunnel/reference/origin-parameters/).
 
@@ -482,13 +516,13 @@ Support is backwards compatible and enabled automatically for all customers. Sen
 
 This applies to all Email Security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2026-08-14
 
-[Workers](https://developers.cloudflare.com/workers/)[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Workers](https://developers.cloudflare.com/workers/) [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **You can now enable Access on a Worker or all Workers at once**
@@ -527,7 +561,7 @@ You can view and manage all of your Access policies in the **Access** tab of the
 
 **See who is accessing your Worker**
 
-When Access is enabled on your Worker, every authenticated request includes `ctx.access`. Call [ctx.access.getIdentity()](https://developers.cloudflare.com/workers/runtime-apis/context/#access) to get the user's email, name, and groups — no manual JWT validation required.
+When Access is enabled on your Worker, every authenticated request includes `ctx.access`. Call [`ctx.access.getIdentity()`](https://developers.cloudflare.com/workers/runtime-apis/context/#access) to get the user's email, name, and groups — no manual JWT validation required.
 
 ```js
 export default {
@@ -576,27 +610,27 @@ Cloudflare Gateway can now detect software package downloads and give you policy
 
 Gateway detects package downloads for the following ecosystems:
 
-| Ecosystem | Namespace                   |
-| --------- | --------------------------- |
-| npm       | Scope (for example, @babel) |
-| PyPI      | \--                         |
-| RubyGems  | \--                         |
-| Cargo     | \--                         |
-| Go        | Module path                 |
-| Maven     | Group ID                    |
-| NuGet     | \--                         |
+| Ecosystem | Namespace |
+| --- | --- |
+| npm | Scope (for example, `@babel`) |
+| PyPI | -- |
+| RubyGems | -- |
+| Cargo | -- |
+| Go | Module path |
+| Maven | Group ID |
+| NuGet | -- |
 
 #### Selectors
 
 In the dashboard, select **Package Ecosystem** to access the package registry selectors. After selecting a single ecosystem, nested fields for package name, version, and namespace become available. Five `pkg.*` selectors are available for HTTP policies with the Allow and Block actions:
 
-| Selector      | Description                                                                                                                            |
-| ------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| pkg.ecosystem | The package ecosystem detected from the request URL.                                                                                   |
-| pkg.name      | The package name extracted from the download URL.                                                                                      |
-| pkg.version   | The package version, with support for ecosystem-aware comparison operators.                                                            |
-| pkg.namespace | The package namespace, when the ecosystem supports one.                                                                                |
-| pkg.purl      | The [Package URL (PURL) ↗](https://github.com/package-url/purl-spec) derived from the detected coordinates. Available in the API only. |
+| Selector | Description |
+| --- | --- |
+| `pkg.ecosystem` | The package ecosystem detected from the request URL. |
+| `pkg.name` | The package name extracted from the download URL. |
+| `pkg.version` | The package version, with support for ecosystem-aware comparison operators. |
+| `pkg.namespace` | The package namespace, when the ecosystem supports one. |
+| `pkg.purl` | The [Package URL (PURL) ↗](https://github.com/package-url/purl-spec) derived from the detected coordinates. Available in the API only. |
 
 Detection is based on the registry protocol rather than the hostname, so it works the same way whether traffic goes to a public registry, a corporate proxy such as Artifactory or Nexus, or a self-hosted mirror.
 
@@ -613,23 +647,23 @@ For more information, refer to [Package registry security](https://developers.cl
 
 Cloudflare Email security now lets administrators write their own content-based blocking rules. A new **Blocked content** area under **Policies & rules** lets you define a plaintext string or a regular expression, choose whether to scan the message subject, body, or both, and automatically block any message that matches.
 
-* Create rules using either **plaintext** matches or **regular expressions** — useful for blocking targeted phishing campaigns, known-bad phrases, or content patterns unique to your organization.
-* Choose the **search location** for each rule: **subject**, **body**, or **subject and body**.
-* Use the built-in **regular expression checker** to validate your pattern against sample text before saving, so you can confirm the rule matches what you expect and avoid false positives.
-* Matching messages are marked with a malicious [disposition](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/) and prevented from reaching users' inboxes.
+- Create rules using either **plaintext** matches or **regular expressions** — useful for blocking targeted phishing campaigns, known-bad phrases, or content patterns unique to your organization.
+- Choose the **search location** for each rule: **subject**, **body**, or **subject and body**.
+- Use the built-in **regular expression checker** to validate your pattern against sample text before saving, so you can confirm the rule matches what you expect and avoid false positives.
+- Matching messages are marked with a malicious [disposition](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/) and prevented from reaching users' inboxes.
 
 Blocked content rules currently only support the block action.
 
 This feature is available for the following Email security packages:
 
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 To get started, refer to [Blocked content](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/blocked-content/).
 
 ## 2026-08-12
 
-[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Independent MFA supports FIDO2 for infrastructure applications**
@@ -642,7 +676,7 @@ For setup instructions, refer to [Enroll a FIDO2 key for infrastructure apps](ht
 
 ## 2026-08-12
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **MCP protocol detection and AI Security dashboard**
@@ -657,10 +691,10 @@ This selector is currently in beta and may change before general availability.
 
 For example, the following policy blocks MCP traffic that does not arrive through an approved [MCP portal](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/):
 
-| Selector       | Operator | Value        | Logic | Action |
-| -------------- | -------- | ------------ | ----- | ------ |
-| Is MCP         | is       | _True_       | And   | Block  |
-| Traffic Source | is not   | _MCP portal_ |       |        |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Is MCP | is | *True* | And | Block |
+| Traffic Source | is not | *MCP portal* |  | |
 
 ![Example Gateway policy that blocks MCP traffic not arriving through an MCP portal](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1104,height=664,format=webp/_astro/gateway-block-unknown-mcp.B2Ainj8x.png)
 
@@ -668,16 +702,17 @@ For example, the following policy blocks MCP traffic that does not arrive throug
 
 A new **AI security report** dashboard under **Insights & Logs > Dashboards** provides visibility into MCP usage across your organization. The dashboard includes:
 
-* Total MCP request volume, unique users, and unique MCP servers
-* A timeseries chart of unique MCP servers observed over time
-* A summary of Gateway policies that target MCP traffic
+- Total MCP request volume, unique users, and unique MCP servers
+- A timeseries chart of unique MCP servers observed over time
+- A summary of Gateway policies that target MCP traffic
+
 ![AI security report dashboard showing MCP detection data including total MCP requests, users, servers, and Gateway policies for MCP](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2406,height=928,format=webp/_astro/gateway-mcp-dashboard.C9jPahkp.png)
 
 For more information, refer to [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/).
 
 ## 2026-08-12
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Traffic Source selector in Gateway policies**
@@ -686,48 +721,50 @@ Gateway [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies
 
 #### Available traffic source values
 
-| UI name                      | API value       | Description                                                                                                                                         |
-| ---------------------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Device client                | device\_client  | Traffic from the [Cloudflare One Client (WARP)](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) |
-| Mesh                         | mesh            | Traffic from a [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) connector                   |
-| Cloudflare WAN               | cloudflare\_wan | Traffic from [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/) (Magic WAN)                          |
-| Clientless RDP               | clientless\_rdp | Traffic from a clientless RDP session                                                                                                               |
-| Proxy endpoint               | proxy\_endpoint | Traffic from a [proxy endpoint](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) (PAC file)        |
-| Clientless Browser Isolation | agentless\_biso | Traffic from [clientless Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)                             |
-| MCP portal                   | mcp\_portal     | Traffic from an [MCP portal](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/)                             |
+| UI name | API value | Description |
+| --- | --- | --- |
+| Device client | `device_client` | Traffic from the [Cloudflare One Client (WARP)](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) |
+| Mesh | `mesh` | Traffic from a [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) connector |
+| Cloudflare WAN | `cloudflare_wan` | Traffic from [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/) (Magic WAN) |
+| Clientless RDP | `clientless_rdp` | Traffic from a clientless RDP session |
+| Proxy endpoint | `proxy_endpoint` | Traffic from a [proxy endpoint](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) (PAC file) |
+| Clientless Browser Isolation | `agentless_biso` | Traffic from [clientless Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) |
+| MCP portal | `mcp_portal` | Traffic from an [MCP portal](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) |
 
 The selector uses the `net.onramp.type` API field in both HTTP and Network policies.
 
-| UI name        | API example                         |
-| -------------- | ----------------------------------- |
-| Traffic Source | net.onramp.type == "device\_client" |
+| UI name | API example |
+| --- | --- |
+| Traffic Source | `net.onramp.type == "device_client"` |
 
 #### Browser Isolation selector
 
 A **Browser Isolation** selector is also available in Network and HTTP policies. This selector identifies whether the current session is running inside [Remote Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/), allowing administrators to apply different policy behavior to isolated traffic.
 
-| UI name           | API example              |
-| ----------------- | ------------------------ |
-| Browser Isolation | net.is\_isolated == true |
+| UI name | API example |
+| --- | --- |
+| Browser Isolation | `net.is_isolated == true` |
 
 For more information, refer to [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) and [Network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/).
 
 ## 2026-08-11
 
-[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Hostname routing is now generally available, with a new public IP range for initial resolved IPs**
 
 [Hostname routing ↗](https://blog.cloudflare.com/tunnel-hostname-routing/) is now generally available. Instead of managing static IP lists and routes, you can route traffic by hostname across multiple Cloudflare One connectors:
 
-* **Cloudflare Tunnel**: route a [private hostname](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/) (for example, `wiki.internal.local`) to a private application behind your tunnel, or a [public hostname](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/egress-cloudflared/) (for example, `bank.example.com`) to egress through a specific tunnel and anchor traffic to a dedicated exit node.
-* **Cloudflare Mesh**: attract a [private or public hostname's traffic](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes) to a Mesh node.
+- **Cloudflare Tunnel**: route a [private hostname](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/) (for example, `wiki.internal.local`) to a private application behind your tunnel, or a [public hostname](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/egress-cloudflared/) (for example, `bank.example.com`) to egress through a specific tunnel and anchor traffic to a dedicated exit node.
+- **Cloudflare Mesh**: attract a [private or public hostname's traffic](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes) to a Mesh node.
 
-Alongside GA, the default IPv4 range used for initial resolved IPs (also called token IPs) is changing from a Carrier-Grade NAT (CGNAT) range to a public Cloudflare-owned range:
+Alongside GA, the default IPv4 range used for initial resolved IPs
 
-* **IPv4**: `172.64.128.0/20`
-* **IPv6**: `2606:4700:0cf1:4000::/64`
+ (also called token IPs) is changing from a Carrier-Grade NAT (CGNAT) range to a public Cloudflare-owned range:
+
+- **IPv4**: `172.64.128.0/20`
+- **IPv6**: `2606:4700:0cf1:4000::/64`
 
 This is the default range. You can [configure a custom initial resolved IP range](https://developers.cloudflare.com/cloudflare-one/networks/routes/configure-initial-resolved-ips/) for IPv4 if it conflicts with your existing network.
 
@@ -735,14 +772,14 @@ This is the default range. You can [configure a custom initial resolved IP range
 
 **What is affected:** Initial resolved IPs are used by several features that associate a DNS query with the network connection that follows it:
 
-* [Private](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/) and [public](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/egress-cloudflared/) hostname routing for Cloudflare Tunnel
-* [Hostname routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes) for Cloudflare Mesh
-* [Access private applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/) on non-HTTPS ports
-* [Egress policy host selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/) (Domain, Host, Application, and Content Categories)
+- [Private](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/) and [public](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/egress-cloudflared/) hostname routing for Cloudflare Tunnel
+- [Hostname routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes) for Cloudflare Mesh
+- [Access private applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/) on non-HTTPS ports
+- [Egress policy host selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/) (Domain, Host, Application, and Content Categories)
 
-You can check your account's current range, or configure a custom range, at any time from **Networking** \> **IP addresses** \> **Address space** \> **Custom IPs**, or using the [Initial Resolved IP Subnet API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/subnets/#%28resource%29%20zero%5Ftrust.networks.subnets.initial%5Fresolved%5Fip).
+You can check your account's current range, or configure a custom range, at any time from **Networking** > **IP addresses** > **Address space** > **Custom IPs**, or using the [Initial Resolved IP Subnet API](<https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/subnets/#(resource)%20zero_trust.networks.subnets.initial_resolved_ip>).
 
-[Go to **Custom IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space/custom-ips)
+[Go to **Custom IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space/custom-ips)
 
 For full instructions, refer to [Configure initial resolved IPs](https://developers.cloudflare.com/cloudflare-one/networks/routes/configure-initial-resolved-ips/). The IPv6 range (`2606:4700:0cf1:4000::/64`) is unchanged and is not affected by this restriction.
 
@@ -763,58 +800,59 @@ This hotfix addresses an uncommon and intermittent case on Windows devices where
 
 ## 2026-08-10
 
-[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 
 **Stream live logs from Cloudflare Tunnel in the dashboard**
 
-Real-time Tunnel log streaming is now available in the Cloudflare dashboard under **Networking** \> **Tunnels**. This brings the same live debugging capability previously only available in the Cloudflare One dashboard, including multi-connector aggregated streaming for high-availability deployments.
+Real-time Tunnel log streaming is now available in the Cloudflare dashboard under **Networking** > **Tunnels**. This brings the same live debugging capability previously only available in the Cloudflare One dashboard, including multi-connector aggregated streaming for high-availability deployments.
 
 ![Stream live logs from a tunnel in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=948,format=webp/_astro/tunnel-live-logs-core-dashboard.Dtm7Jg51.gif)
 
 In the tunnel detail view, a new **Live logs** tab lets you:
 
-* **Stream logs from single or multiple connectors** — In [highly available](https://developers.cloudflare.com/tunnel/configuration/#replicas-and-high-availability) deployments with multiple `cloudflared` replicas, logs from all connectors are merged into a single stream grouped by hostname, making it easy to identify which host machine produced each log entry.
-* **Filter by log level, event type, and HTTP method** — Narrow the stream to only the events you care about (HTTP, TCP, UDP, or `cloudflared` internal), at any log level.
-[Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
+- **Stream logs from single or multiple connectors** — In [highly available](https://developers.cloudflare.com/tunnel/configuration/#replicas-and-high-availability) deployments with multiple `cloudflared` replicas, logs from all connectors are merged into a single stream grouped by hostname, making it easy to identify which host machine produced each log entry.
+- **Filter by log level, event type, and HTTP method** — Narrow the stream to only the events you care about (HTTP, TCP, UDP, or `cloudflared` internal), at any log level.
+
+[Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 
 For more information, refer to [Tunnel observability](https://developers.cloudflare.com/tunnel/observability/#remote-log-streaming) and [Tunnel log streams](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/logs/).
 
 ## 2026-08-07
 
-[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Container image for Cloudflare Mesh**
 
-[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) nodes can now run as Docker containers. The [cloudflare/mesh ↗](https://hub.docker.com/r/cloudflare/mesh) image is available on Docker Hub for Docker Compose, Kubernetes, and any OCI-compatible runtime — no host-level package installation required.
+[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) nodes can now run as Docker containers. The [`cloudflare/mesh` ↗](https://hub.docker.com/r/cloudflare/mesh) image is available on Docker Hub for Docker Compose, Kubernetes, and any OCI-compatible runtime — no host-level package installation required.
 
 The image supports `amd64` and `arm64` architectures and includes built-in [source NAT](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/containers/#source-nat) so return traffic routes correctly without VPC route table changes.
 
 #### Deployment patterns
 
-* **Docker Compose** — add a `cloudflare-mesh` service to your `compose.yaml` and connect your entire stack to a private network.
-* **Kubernetes StatefulSet** — deploy a standalone Mesh node with persistent registration state.
-* **Kubernetes sidecar** — add the Mesh image as a sidecar container in a Pod to connect an application to Cloudflare without application changes.
-* **CI/CD** — pull the image in a pipeline step, join the Mesh, run integration tests against private infrastructure, and tear down. The node disappears when the container exits.
+- **Docker Compose** — add a `cloudflare-mesh` service to your `compose.yaml` and connect your entire stack to a private network.
+- **Kubernetes StatefulSet** — deploy a standalone Mesh node with persistent registration state.
+- **Kubernetes sidecar** — add the Mesh image as a sidecar container in a Pod to connect an application to Cloudflare without application changes.
+- **CI/CD** — pull the image in a pipeline step, join the Mesh, run integration tests against private infrastructure, and tear down. The node disappears when the container exits.
 
 For [high availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/), run multiple replicas with the same Mesh node token. Cloudflare operates replicas in active-passive mode with automatic failover.
 
-[Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
+[Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
 
 For setup steps, runtime configuration, and deployment examples, refer to [Run Mesh in Docker / Kubernetes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/containers/).
 
 ## 2026-08-05
 
-[AI Gateway](https://developers.cloudflare.com/ai-gateway/)[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[AI Gateway](https://developers.cloudflare.com/ai-gateway/) [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Identity-aware controls are now available in AI Gateway**
 
 AI Gateway now integrates with Cloudflare Access, giving you two new capabilities:
 
-* **Protect your gateway endpoint.** Put your AI Gateway behind Access so you can set policies that control who is allowed to call a specific gateway's endpoint.
-* **Identity-aware controls.** When traffic reaches AI Gateway through an Access-protected custom domain, AI Gateway can use the authenticated user's Access identity in logs, analytics, routing, and spend controls.
+- **Protect your gateway endpoint.** Put your AI Gateway behind Access so you can set policies that control who is allowed to call a specific gateway's endpoint.
+- **Identity-aware controls.** When traffic reaches AI Gateway through an Access-protected custom domain, AI Gateway can use the authenticated user's Access identity in logs, analytics, routing, and spend controls.
 
 With identity-aware controls, you can set spend limits by authenticated user, control which gateways different users can access, filter logs by user, and build policies without passing user IDs from the client application. AI Gateway adds the verified Access user ID to request metadata as `cf.user_id`.
 
@@ -848,21 +886,21 @@ A new Beta release for the Windows Cloudflare One Client is now available on the
 
 This beta release includes the following changes and improvements:
 
-* Improved connection reliability: the client now swaps protocol order after repeated connectivity-check failures, which helps when HTTP/3 is blocked after the QUIC handshake.
-* Fixed issue where a certificate error could be incorrectly displayed right after the connection is established.
-* A [DNS search domain](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) parsing failure no longer prevents connection.
-* Fixed a [MASQUE](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol) issue where the tunnel could stall while uploading at a high rate.
-* Fixed being unable to [switch organizations](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/) when the client was stuck in the "Device not in organization" state.
-* Fixed the Home Screen dropdown popup not anchoring correctly.
-* Fixed a crash during dialog dismissal.
-* Increased tolerance for configurations with a large number of [local domain fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) resolver IPs, so DNS resolution behaves correctly even when more fallback resolvers are configured than recommended.
-* Fixed a networking issue where IPv6 multicast routes were being assigned to the WARP tunnel interface.
-* Fixed fatal errors on UI load on Windows 10.
-* Fixed a crash during Windows notification initialization.
-* Made the Windows [domain-joined posture check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/domain-joined/) more reliable.
-* Fixed orphaned credentials left behind on multi-user uninstall.
-* A successful re-authentication will cause the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) to be re-evaluated.
-* Improved [dashboard-managed client updates](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/client-version-assignments/) by running the updater only when needed.
+- Improved connection reliability: the client now swaps protocol order after repeated connectivity-check failures, which helps when HTTP/3 is blocked after the QUIC handshake.
+- Fixed issue where a certificate error could be incorrectly displayed right after the connection is established.
+- A [DNS search domain](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) parsing failure no longer prevents connection.
+- Fixed a [MASQUE](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol) issue where the tunnel could stall while uploading at a high rate.
+- Fixed being unable to [switch organizations](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/) when the client was stuck in the "Device not in organization" state.
+- Fixed the Home Screen dropdown popup not anchoring correctly.
+- Fixed a crash during dialog dismissal.
+- Increased tolerance for configurations with a large number of [local domain fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) resolver IPs, so DNS resolution behaves correctly even when more fallback resolvers are configured than recommended.
+- Fixed a networking issue where IPv6 multicast routes were being assigned to the WARP tunnel interface.
+- Fixed fatal errors on UI load on Windows 10.
+- Fixed a crash during Windows notification initialization.
+- Made the Windows [domain-joined posture check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/domain-joined/) more reliable.
+- Fixed orphaned credentials left behind on multi-user uninstall.
+- A successful re-authentication will cause the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) to be re-evaluated.
+- Improved [dashboard-managed client updates](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/client-version-assignments/) by running the updater only when needed.
 
 ## 2026-07-31
 
@@ -875,19 +913,19 @@ A new Beta release for the macOS Cloudflare One Client is now available on the [
 
 This beta release includes the following changes and improvements:
 
-* Improved connection reliability: the client now swaps protocol order after repeated connectivity-check failures, which helps when HTTP/3 is blocked after the QUIC handshake.
-* Fixed issue where a certificate error could be incorrectly displayed right after the connection is established.
-* A [DNS search domain](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) parsing failure no longer prevents connection.
-* Fixed a [MASQUE](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol) issue where the tunnel could stall while uploading at a high rate.
-* Fixed being unable to [switch organizations](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/) when the client was stuck in the "Device not in organization" state.
-* Fixed the Home Screen dropdown popup not anchoring correctly.
-* Fixed a crash during dialog dismissal.
-* Increased tolerance for configurations with a large number of [local domain fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) resolver IPs, so DNS resolution behaves correctly even when more fallback resolvers are configured than recommended.
-* Fixed the WARP client stealing window focus (for example, during reauth).
-* Fixed a client crash when connecting to a captive portal over Wi-Fi.
-* Fixed the system tray icon showing "disconnected" while the UI showed "connected".
-* A successful re-authentication will cause the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) to be re-evaluated.
-* Improved [dashboard-managed client updates](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/client-version-assignments/) by running the updater only when needed.
+- Improved connection reliability: the client now swaps protocol order after repeated connectivity-check failures, which helps when HTTP/3 is blocked after the QUIC handshake.
+- Fixed issue where a certificate error could be incorrectly displayed right after the connection is established.
+- A [DNS search domain](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) parsing failure no longer prevents connection.
+- Fixed a [MASQUE](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol) issue where the tunnel could stall while uploading at a high rate.
+- Fixed being unable to [switch organizations](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/) when the client was stuck in the "Device not in organization" state.
+- Fixed the Home Screen dropdown popup not anchoring correctly.
+- Fixed a crash during dialog dismissal.
+- Increased tolerance for configurations with a large number of [local domain fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) resolver IPs, so DNS resolution behaves correctly even when more fallback resolvers are configured than recommended.
+- Fixed the WARP client stealing window focus (for example, during reauth).
+- Fixed a client crash when connecting to a captive portal over Wi-Fi.
+- Fixed the system tray icon showing "disconnected" while the UI showed "connected".
+- A successful re-authentication will cause the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) to be re-evaluated.
+- Improved [dashboard-managed client updates](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/client-version-assignments/) by running the updater only when needed.
 
 ## 2026-07-31
 
@@ -911,11 +949,11 @@ For setup instructions, refer to [Configure manual OAuth credentials](https://de
 
 **Admins can turn on Code Mode by default for MCP portal users**
 
-[MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) now support four Code Mode policies: _Off_, _Opt-in_, _On by default_, and _Enforced_. Admins can choose whether Code Mode is unavailable, optional, enabled by default, or required for every session.
+[MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) now support four Code Mode policies: *Off*, *Opt-in*, *On by default*, and *Enforced*. Admins can choose whether Code Mode is unavailable, optional, enabled by default, or required for every session.
 
-Existing portals retain their current behavior. Portals that previously allowed Code Mode use _Opt-in_, while portals that did not allow Code Mode use _Off_. New portals also use _Opt-in_ by default.
+Existing portals retain their current behavior. Portals that previously allowed Code Mode use *Opt-in*, while portals that did not allow Code Mode use *Off*. New portals also use *Opt-in* by default.
 
-Clients turn on Code Mode for an _Opt-in_ portal with `?codemode=search_and_execute`. The _On by default_ policy lets clients opt out with `?codemode=off`, which avoids nested code execution when a client runs its own Code Mode implementation. The _Off_ and _Enforced_ policies ignore client overrides.
+Clients turn on Code Mode for an *Opt-in* portal with `?codemode=search_and_execute`. The *On by default* policy lets clients opt out with `?codemode=off`, which avoids nested code execution when a client runs its own Code Mode implementation. The *Off* and *Enforced* policies ignore client overrides.
 
 The Cloudflare API exposes these policies through the `code_mode` field:
 
@@ -931,7 +969,7 @@ For configuration details and client behavior, refer to [Code Mode policies](htt
 
 ## 2026-07-28
 
-[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **Control Cloudflare Gateway DNS caching with a maximum TTL setting**
@@ -942,8 +980,8 @@ You can now set a maximum time-to-live (TTL) for DNS responses returned by Gatew
 
 The setting is available at two levels:
 
-* **Account level** \- In **Traffic Policies** \> **Traffic Settings**, under **Proxy and inspection**. This sets the default cap for all DNS locations.
-* **Per-location** \- Each [DNS location](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-proxies/) can inherit the account setting, disable the cap, or override it with a custom value.
+- **Account level** - In **Traffic Policies** > **Traffic Settings**, under **Proxy and inspection**. This sets the default cap for all DNS locations.
+- **Per-location** - Each [DNS location](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-proxies/) can inherit the account setting, disable the cap, or override it with a custom value.
 
 Two new fields are also available in DNS logs: `upstream_record_ttls` (the original TTL from the upstream response) and `applied_max_ttl` (the cap Gateway applied). These appear in the DNS logs column picker and in Logpush datasets.
 
@@ -999,7 +1037,7 @@ Other non-HTTP protocols (SSH, RDP, arbitrary TCP/UDP) continue to use the Cloud
 
 ## 2026-07-17
 
-[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Restart, reboot, or shut down a Cloudflare One Appliance from the dashboard**
@@ -1007,11 +1045,12 @@ Other non-HTTP protocols (SSH, RDP, arbitrary TCP/UDP) continue to use the Cloud
 You can now restart, reboot, or shut down a [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) directly from the dashboard or via API.
 
 ![Restarting a Cloudflare One Appliance from the Operations section of the Edit Appliance page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=948,format=webp/_astro/2026-07-17-appliance-restart-reboot-shutdown.DKqTLOh6.gif)
-* **Restart** — Restart managed services. Purges temporary and (optionally) persistent state.
-* **Reboot** — Power cycle the appliance. Optionally, purge persistent state. Re-applies configuration starting from scratch.
-* **Shutdown** — Power off the appliance. Optionally, purge persistent state. The machine will be offline until manually powered on again.
 
-In the dashboard, go to **Networking** \> **Connectors** \> **Appliances**, select an appliance, then **Edit** \> **Operations** to send an operation. Via API, `POST` to the `/accounts/{account_id}/magic/connectors/{connector_id}/interrupts` endpoint.
+- **Restart** — Restart managed services. Purges temporary and (optionally) persistent state.
+- **Reboot** — Power cycle the appliance. Optionally, purge persistent state. Re-applies configuration starting from scratch.
+- **Shutdown** — Power off the appliance. Optionally, purge persistent state. The machine will be offline until manually powered on again.
+
+In the dashboard, go to **Networking** > **Connectors** > **Appliances**, select an appliance, then **Edit** > **Operations** to send an operation. Via API, `POST` to the `/accounts/{account_id}/magic/connectors/{connector_id}/interrupts` endpoint.
 
 For details, refer to [Appliance operations](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/appliance-operations/).
 
@@ -1028,11 +1067,11 @@ Cloudflare Gateway now supports advanced header control on [Allow policies](http
 
 Gateway HTTP policies using the Allow action support three operations in `rule_settings`:
 
-| Operation | API field       | Behavior                                                            |
-| --------- | --------------- | ------------------------------------------------------------------- |
-| Add       | add\_headers    | Appends a value to the header. Existing values are preserved.       |
-| Overwrite | set\_headers    | Replaces the header value. Creates the header if it does not exist. |
-| Delete    | delete\_headers | Removes the header from the request.                                |
+| Operation | API field | Behavior |
+| --- | --- | --- |
+| Add | `add_headers` | Appends a value to the header. Existing values are preserved. |
+| Overwrite | `set_headers` | Replaces the header value. Creates the header if it does not exist. |
+| Delete | `delete_headers` | Removes the header from the request. |
 
 Gateway applies operations in order: delete, then overwrite, then add.
 
@@ -1040,18 +1079,18 @@ Gateway applies operations in order: delete, then overwrite, then add.
 
 Header values can include dynamic variables using the `@{...}` syntax. Gateway resolves variables at request time from identity, device, and network context.
 
-| Variable           | Description                                  |
-| ------------------ | -------------------------------------------- |
-| @{identity.email}  | User email from the identity provider        |
-| @{identity.name}   | User display name from the identity provider |
-| @{identity.id}     | Cloudflare identity UUID                     |
-| @{identity.groups} | Identity provider group memberships          |
-| @{identity.SAML}   | SAML attributes (if configured)              |
-| @{identity.OIDC}   | OIDC claims (if configured)                  |
-| @{source.ip}       | Source IP of the connection                  |
-| @{destination.ip}  | Destination IP of the request                |
-| @{device.id}       | Cloudflare One Client device UUID            |
-| @{device.posture}  | Device posture check results (JSON string)   |
+| Variable | Description |
+| --- | --- |
+| `@{identity.email}` | User email from the identity provider |
+| `@{identity.name}` | User display name from the identity provider |
+| `@{identity.id}` | Cloudflare identity UUID |
+| `@{identity.groups}` | Identity provider group memberships |
+| `@{identity.SAML}` | SAML attributes (if configured) |
+| `@{identity.OIDC}` | OIDC claims (if configured) |
+| `@{source.ip}` | Source IP of the connection |
+| `@{destination.ip}` | Destination IP of the request |
+| `@{device.id}` | Cloudflare One Client device UUID |
+| `@{device.posture}` | Device posture check results (JSON string) |
 
 You can mix static text and dynamic variables in a single header value. For example, `user-@{identity.email}` resolves to `user-jdoe@example.com`.
 
@@ -1059,7 +1098,7 @@ For more information, refer to [Custom headers](https://developers.cloudflare.co
 
 ## 2026-07-16
 
-[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Bulk print PDFs for browser-based RDP**
@@ -1072,7 +1111,7 @@ Bulk print is available in Chromium-based browsers and Firefox. For more informa
 
 ## 2026-07-15
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[DNS](https://developers.cloudflare.com/dns/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [DNS](https://developers.cloudflare.com/dns/)
 
 
 **Internal DNS is now generally available**
@@ -1081,9 +1120,9 @@ Bulk print is available in Chromium-based browsers and Firefox. For more informa
 
 #### Why it matters
 
-* **Consolidate DNS operations.** Public and private DNS run on one platform, with one API, one audit trail, and one place to set policy.
-* **Simplify split-horizon DNS.** Internal and external resolution are defined as separate [views](https://developers.cloudflare.com/dns/internal-dns/dns-views/) over shared zones, managed from a single control plane — so there is no drift to chase down.
-* **Extend Zero Trust to DNS.** Resolver policies decide which users and devices resolve against which view, enforced by the same [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) that already governs the rest of your traffic.
+- **Consolidate DNS operations.** Public and private DNS run on one platform, with one API, one audit trail, and one place to set policy.
+- **Simplify split-horizon DNS.** Internal and external resolution are defined as separate [views](https://developers.cloudflare.com/dns/internal-dns/dns-views/) over shared zones, managed from a single control plane — so there is no drift to chase down.
+- **Extend Zero Trust to DNS.** Resolver policies decide which users and devices resolve against which view, enforced by the same [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) that already governs the rest of your traffic.
 
 Setting up Internal DNS takes three steps: create a zone, create a view, and define a resolver policy.
 
@@ -1132,10 +1171,11 @@ The **Device Monitoring** page now analyzes hardware and network data between a 
 
 A summary at the top of the page shows the health of each category at a glance, using **Good**, **Fair**, and **Poor** labels:
 
-* **Connection** — connection status, Cloudflare One Client mode, and tunnel type over time
-* **Wi-Fi signal strength** — signal measured in dBm over time, with thresholds that flag a weak signal
-* **Traffic performance** — upstream and downstream performance, including network throughput on the active interface
-* **Device health** — hardware metrics such as CPU, memory, and disk
+- **Connection** — connection status, Cloudflare One Client mode, and tunnel type over time
+- **Wi-Fi signal strength** — signal measured in dBm over time, with thresholds that flag a weak signal
+- **Traffic performance** — upstream and downstream performance, including network throughput on the active interface
+- **Device health** — hardware metrics such as CPU, memory, and disk
+
 ![Wi-Fi signal strength and network throughput charts on the Device Monitoring page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1666,height=732,format=webp/_astro/dex-device-monitoring-wifi-network.CoEBznAm.png)
 
 You can filter by category and adjust the time range to correlate a device's metrics with a user's reported issue.
@@ -1146,44 +1186,44 @@ To learn more, refer to the [DEX monitoring documentation](https://developers.cl
 
 ## 2026-07-09
 
-[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
 
 
 **Zero Trust Networks route endpoints and Cloudflare Tunnel connections field retiring on October 5, 2026**
 
-On **October 5, 2026**, two changes take effect across the [Zero Trust Networks API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/) and [Cloudflare Tunnel API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/): the CIDR-encoded route endpoints are removed, and tunnel list and get responses no longer include the `connections` field. If you manage private network routes or read tunnel connection details through the API, `cloudflared`, Terraform, or another integration, review the changes in the following sections and migrate before the removal date.
+On **October 5, 2026**, two changes take effect across the [Zero Trust Networks API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/) and [Cloudflare Tunnel API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/): the CIDR-encoded route endpoints are removed, and tunnel list and get responses no longer include the `connections` field. If you manage private network routes or read tunnel connection details through the API, `cloudflared`, Terraform, or another integration, review the changes in the following sections and migrate before the removal date.
 
 #### Route endpoints
 
-The CIDR-encoded route endpoints are deprecated in favor of the standard, `route_id`\-based endpoints that already exist today. Both sets of endpoints route a private network through [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) or [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) (the API still refers to Mesh nodes as `warp_connector`) — only the request shape changes.
+The CIDR-encoded route endpoints are deprecated in favor of the standard, `route_id`-based endpoints that already exist today. Both sets of endpoints route a private network through [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) or [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) (the API still refers to Mesh nodes as `warp_connector`) — only the request shape changes.
 
 **Deprecated endpoints (removed October 5, 2026):**
 
-* Create a tunnel route (CIDR Endpoint): [POST /accounts/{account\_id}/teamnet/routes/network/{ip\_network\_encoded}](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/routes/subresources/networks/methods/create/)
-* Update a tunnel route (CIDR Endpoint): [PATCH /accounts/{account\_id}/teamnet/routes/network/{ip\_network\_encoded}](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/routes/subresources/networks/methods/edit/)
-* Delete a tunnel route (CIDR Endpoint): [DELETE /accounts/{account\_id}/teamnet/routes/network/{ip\_network\_encoded}](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/routes/subresources/networks/methods/delete/)
+- Create a tunnel route (CIDR Endpoint): [`POST /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/routes/subresources/networks/methods/create/)
+- Update a tunnel route (CIDR Endpoint): [`PATCH /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/routes/subresources/networks/methods/edit/)
+- Delete a tunnel route (CIDR Endpoint): [`DELETE /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/routes/subresources/networks/methods/delete/)
 
 **Replacement endpoints:**
 
-* Create a tunnel route: [POST /accounts/{account\_id}/teamnet/routes](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/routes/methods/create/)
-* Update a tunnel route: [PATCH /accounts/{account\_id}/teamnet/routes/{route\_id}](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/routes/methods/edit/)
-* Delete a tunnel route: [DELETE /accounts/{account\_id}/teamnet/routes/{route\_id}](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/routes/methods/delete/)
+- Create a tunnel route: [`POST /accounts/{account_id}/teamnet/routes`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/routes/methods/create/)
+- Update a tunnel route: [`PATCH /accounts/{account_id}/teamnet/routes/{route_id}`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/routes/methods/edit/)
+- Delete a tunnel route: [`DELETE /accounts/{account_id}/teamnet/routes/{route_id}`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/routes/methods/delete/)
 
 #### What is changing
 
-|                  | Deprecated (CIDR-encoded path)                                 | Replacement                                                         |
-| ---------------- | -------------------------------------------------------------- | ------------------------------------------------------------------- |
-| Route identifier | URL-encoded CIDR in the path (/network/{ip\_network\_encoded}) | route\_id in the path (network moves to the request body on create) |
-| Create           | POST .../teamnet/routes/network/{ip\_network\_encoded}         | POST .../teamnet/routes with network and tunnel\_id in the body     |
-| Update           | PATCH .../teamnet/routes/network/{ip\_network\_encoded}        | PATCH .../teamnet/routes/{route\_id}                                |
-| Delete           | DELETE .../teamnet/routes/network/{ip\_network\_encoded}       | DELETE .../teamnet/routes/{route\_id}                               |
+|  | Deprecated (CIDR-encoded path) | Replacement |
+| --- | --- | --- |
+| Route identifier | URL-encoded CIDR in the path (`/network/{ip_network_encoded}`) | `route_id` in the path (`network` moves to the request body on create) |
+| Create | `POST .../teamnet/routes/network/{ip_network_encoded}` | `POST .../teamnet/routes` with `network` and `tunnel_id` in the body |
+| Update | `PATCH .../teamnet/routes/network/{ip_network_encoded}` | `PATCH .../teamnet/routes/{route_id}` |
+| Delete | `DELETE .../teamnet/routes/network/{ip_network_encoded}` | `DELETE .../teamnet/routes/{route_id}` |
 
 #### Action required
 
-1. Capture each route's `route_id` by calling [List tunnel routes](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/routes/methods/list/), or read it from the response the first time you create a route with the replacement endpoint.
+1. Capture each route's `route_id` by calling [List tunnel routes](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/routes/methods/list/), or read it from the response the first time you create a route with the replacement endpoint.
 2. Update any scripts, backend services, or CI/CD pipelines that call the CIDR-encoded endpoints directly.
 3. If you manage routes with the `cloudflared tunnel route ip add | delete` commands, upgrade `cloudflared` to the [latest version ↗](https://github.com/cloudflare/cloudflared/releases).
-4. If you manage routes with Terraform, make sure you are on a current version of the [cloudflare\_zero\_trust\_tunnel\_cloudflared\_route ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Ftunnel%5Fcloudflared%5Froute) resource and the [Cloudflare Terraform provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
+4. If you manage routes with Terraform, make sure you are on a current version of the [`cloudflare_zero_trust_tunnel_cloudflared_route` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_tunnel_cloudflared_route) resource and the [Cloudflare Terraform provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
 
 ```bash
 # Before: create a route by URL-encoding the CIDR into the path
@@ -1214,14 +1254,14 @@ Starting the same day, the `connections` array is removed from list and get resp
 
 This affects:
 
-* [GET /accounts/{account\_id}/cfd\_tunnel](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/subresources/cloudflared/methods/list/) — `connections` removed from each item in `result`
-* [GET /accounts/{account\_id}/cfd\_tunnel/{tunnel\_id}](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/subresources/cloudflared/methods/get/) — `connections` removed from `result`
-* [GET /accounts/{account\_id}/warp\_connector](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/subresources/warp%5Fconnector/methods/list/) — `connections` removed from each item in `result`
-* [GET /accounts/{account\_id}/warp\_connector/{tunnel\_id}](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/subresources/warp%5Fconnector/methods/get/) — `connections` removed from `result`
+- [`GET /accounts/{account_id}/cfd_tunnel`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/subresources/cloudflared/methods/list/) — `connections` removed from each item in `result`
+- [`GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/subresources/cloudflared/methods/get/) — `connections` removed from `result`
+- [`GET /accounts/{account_id}/warp_connector`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/subresources/warp_connector/methods/list/) — `connections` removed from each item in `result`
+- [`GET /accounts/{account_id}/warp_connector/{tunnel_id}`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/subresources/warp_connector/methods/get/) — `connections` removed from `result`
 
 #### Action required
 
-Fetch connection details from the tunnel-specific connections endpoint instead of parsing it off the list or get response. For Cloudflare Tunnel, call [GET /accounts/{account\_id}/cfd\_tunnel/{tunnel\_id}/connections](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/subresources/cloudflared/subresources/connections/methods/get/). For Cloudflare Mesh, call [GET /accounts/{account\_id}/warp\_connector/{tunnel\_id}/connections](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/subresources/warp%5Fconnector/subresources/connections/methods/get/).
+Fetch connection details from the tunnel-specific connections endpoint instead of parsing it off the list or get response. For Cloudflare Tunnel, call [`GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}/connections`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/subresources/cloudflared/subresources/connections/methods/get/). For Cloudflare Mesh, call [`GET /accounts/{account_id}/warp_connector/{tunnel_id}/connections`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/subresources/warp_connector/subresources/connections/methods/get/).
 
 ```bash
 # Before: read connections off the tunnel object
@@ -1237,35 +1277,35 @@ Update any dashboards, monitoring scripts, or automation that parses `connection
 
 #### Why we are making these changes
 
-* **Smaller, faster responses.** Cloudflare Tunnel and Cloudflare Mesh nodes with many connections no longer inflate every list and get call — connection detail is only fetched when you need it.
-* **A single way to identify a route.** Consolidating on `route_id` removes the need to URL-encode CIDR ranges into the path and matches how every other resource in the Zero Trust Networks API is addressed.
-* **Consistency across the API.** Both changes align these endpoints with Cloudflare's standard REST conventions for resource identifiers and nested detail endpoints.
+- **Smaller, faster responses.** Cloudflare Tunnel and Cloudflare Mesh nodes with many connections no longer inflate every list and get call — connection detail is only fetched when you need it.
+- **A single way to identify a route.** Consolidating on `route_id` removes the need to URL-encode CIDR ranges into the path and matches how every other resource in the Zero Trust Networks API is addressed.
+- **Consistency across the API.** Both changes align these endpoints with Cloudflare's standard REST conventions for resource identifiers and nested detail endpoints.
 
-To learn more, refer to the [Zero Trust Networks API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/), the [Cloudflare Tunnel API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/), and [Routes](https://developers.cloudflare.com/cloudflare-one/networks/routes/) documentation.
+To learn more, refer to the [Zero Trust Networks API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/), the [Cloudflare Tunnel API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/), and [Routes](https://developers.cloudflare.com/cloudflare-one/networks/routes/) documentation.
 
 ## 2026-07-08
 
-[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **IPsec downgrade protection (beta)**
 
-Cloudflare IPsec now supports the [IKE\_SA\_INIT\_FULL\_TRANSCRIPT\_AUTH ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-downgrade-prevention/) IKEv2 extension to protect against downgrade attacks on IPsec tunnels.
+Cloudflare IPsec now supports the [`IKE_SA_INIT_FULL_TRANSCRIPT_AUTH` ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-downgrade-prevention/) IKEv2 extension to protect against downgrade attacks on IPsec tunnels.
 
 IKEv2's original authentication design has each endpoint sign only its own outbound messages, not the full handshake transcript. A quantum-capable [on-path attacker ↗](https://www.cloudflare.com/learning/security/threats/on-path-attack/) can exploit this to bypass post-quantum key exchange by downgrading the connection to classical cryptography. The `IKE_SA_INIT_FULL_TRANSCRIPT_AUTH` extension addresses this by having both peers sign the entire handshake transcript during the authentication exchange, preventing an attacker from manipulating the negotiation without detection.
 
 Key details:
 
-* Available in beta for Cloudflare WAN and Magic Transit IPsec tunnels.
-* Cloudflare sends the `IKE_SA_INIT_FULL_TRANSCRIPT_AUTH` notification unconditionally as a responder when the feature flag is enabled.
-* Both the initiator (your device) and responder (Cloudflare) must support the extension for downgrade protection to be effective.
-* This feature is currently gated by a per-account feature flag. Contact your account team to turn it on.
+- Available in beta for Cloudflare WAN and Magic Transit IPsec tunnels.
+- Cloudflare sends the `IKE_SA_INIT_FULL_TRANSCRIPT_AUTH` notification unconditionally as a responder when the feature flag is enabled.
+- Both the initiator (your device) and responder (Cloudflare) must support the extension for downgrade protection to be effective.
+- This feature is currently gated by a per-account feature flag. Contact your account team to turn it on.
 
 Refer to [Downgrade protection](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/#improved-downgrade-protection-beta) for more details.
 
 ## 2026-07-08
 
-[Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/)[Magic Transit](https://developers.cloudflare.com/magic-transit/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) [Magic Transit](https://developers.cloudflare.com/magic-transit/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **IP lists, IDS, and SIP rules supported in Unified Routing**
@@ -1289,7 +1329,7 @@ This hotfix addresses a Windows authentication issue in the embedded WebView2 br
 
 ## 2026-07-07
 
-[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **File transfer controls for browser-based RDP (beta)**
@@ -1304,10 +1344,10 @@ This feature is useful for organizations that support bring-your-own-device (BYO
 
 File transfer controls are configured per policy within your Access application, alongside existing [text clipboard controls](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/#connection-settings). For each policy, you can select one of the following options:
 
-* **Client to remote RDP session allowed** — Users can upload files from their local machine into the browser-based RDP session.
-* **Remote RDP session to client allowed** — Users can download files from the browser-based RDP session to their local machine.
-* **Both directions allowed** — Users can upload and download files between their local machine and the browser-based RDP session.
-* **Disable copying/pasting** — Users are not allowed to transfer files between their local machine and the browser-based RDP session.
+- **Client to remote RDP session allowed** — Users can upload files from their local machine into the browser-based RDP session.
+- **Remote RDP session to client allowed** — Users can download files from the browser-based RDP session to their local machine.
+- **Both directions allowed** — Users can upload and download files between their local machine and the browser-based RDP session.
+- **Disable copying/pasting** — Users are not allowed to transfer files between their local machine and the browser-based RDP session.
 
 By default, file transfer is denied for new policies. For existing Access applications created before this feature was available, file transfer remains denied.
 
@@ -1321,7 +1361,7 @@ This feature is in beta and available on all Zero Trust plans. For more informat
 
 ## 2026-07-07
 
-[Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Browser Isolation support for authorization proxy endpoints**
@@ -1334,7 +1374,7 @@ To get started, [create an authorization proxy endpoint](https://developers.clou
 
 ## 2026-07-06
 
-[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Self-serve registration of Cloudflare One Virtual Appliance in the dashboard**
@@ -1342,9 +1382,10 @@ To get started, [create an authorization proxy endpoint](https://developers.clou
 You can now register a [Cloudflare One Virtual Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) and generate its license key directly from the dashboard, without contacting your account team.
 
 ![Registering a Cloudflare One Virtual Appliance and generating its authentication key from the Connectors page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=988,format=webp/_astro/2026-07-06-virtual-appliance-self-serve-ui.Dn2NC_ql.gif)
-* On the **Connectors** page, select **Add an appliance** and choose **Virtual appliance** to register a virtual appliance and generate its authentication key.
-* Use **Regenerate authentication key** from a virtual appliance connector's menu to rotate its key. The previous key is immediately and irrevocably revoked.
-* The authentication key is shown only once — copy and store it securely.
+
+- On the **Connectors** page, select **Add an appliance** and choose **Virtual appliance** to register a virtual appliance and generate its authentication key.
+- Use **Regenerate authentication key** from a virtual appliance connector's menu to rotate its key. The previous key is immediately and irrevocably revoked.
+- The authentication key is shown only once — copy and store it securely.
 
 This complements the existing [API and Terraform self-serve workflow](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/#register-a-virtual-appliance-and-generate-a-license-key) for provisioning virtual appliances. Hardware appliances continue to use the existing account-team fulfillment workflow.
 
@@ -1352,7 +1393,7 @@ For details, refer to [Configure a Cloudflare One Virtual Appliance](https://dev
 
 ## 2026-07-02
 
-[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Hostname routing for Cloudflare Mesh**
@@ -1360,23 +1401,27 @@ For details, refer to [Configure a Cloudflare One Virtual Appliance](https://dev
 You can now add [hostname routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes) to a Cloudflare Mesh node, in addition to CIDR routes.
 
 1. [Client device](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
-Requests `wiki.internal.local`
+
+   Requests `wiki.internal.local`
 2. DNS query↓
 3. [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
-Returns a token IP, then rewrites the destination to the real private IP.
-`172.64.128.0/20`
+
+   Returns a token IP, then rewrites the destination to the real private IP. `172.64.128.0/20`
 4. [Hostname route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes)↓
 5. [Mesh node](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
-Forwards traffic to the host on the local network
+
+   Forwards traffic to the host on the local network
 6. ↓
 7. Private host
-`wiki.internal.local` · `10.0.0.50`
+
+   `wiki.internal.local` · `10.0.0.50`
 
 Instead of managing IP ranges, you can attract traffic for a hostname to a Mesh node:
 
-* **Private hostname** (for example, `wiki.internal.local`) — reach an internal application by name, which is useful when it has an unknown or ephemeral IP. On Mesh you do not need to run a DNS server; a local hosts-file entry on the node is enough, or you can use a Gateway resolver policy for split DNS.
-* **Public hostname** (for example, `www.example.com`) — route that hostname's traffic through the node and egress via the node's public IP.
-[Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
+- **Private hostname** (for example, `wiki.internal.local`) — reach an internal application by name, which is useful when it has an unknown or ephemeral IP. On Mesh you do not need to run a DNS server; a local hosts-file entry on the node is enough, or you can use a Gateway resolver policy for split DNS.
+- **Public hostname** (for example, `www.example.com`) — route that hostname's traffic through the node and egress via the node's public IP.
+
+[Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
 
 For setup steps, prerequisites, and DNS options, refer to [Hostname routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes).
 
@@ -1397,7 +1442,6 @@ If you installed version 2026.6.822.0 on an RPM-based distribution, we recommend
 sudo curl -fsSL https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo
 sudo dnf clean all
 sudo dnf install cloudflare-warp
-
 ```
 
 ## 2026-07-01
@@ -1434,7 +1478,7 @@ For setup instructions, refer to [Enforce MFA for infrastructure applications](h
 
 ## 2026-06-30
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
 
 
 **New permissions and roles for Gateway policies and lists**
@@ -1445,34 +1489,34 @@ You can now assign granular, resource-scoped roles for [Cloudflare Gateway](http
 
 When you [add a member](https://developers.cloudflare.com/fundamentals/manage-members/manage/) or create a [permission policy](https://developers.cloudflare.com/fundamentals/manage-members/policies/), the following resource-scoped roles are now available:
 
-| Role                                       | Description                                                                                 |
-| ------------------------------------------ | ------------------------------------------------------------------------------------------- |
+| Role | Description |
+| --- | --- |
 | Zero Trust Gateway Firewall Policies Admin | Can view and edit all Gateway firewall policies, including DNS, HTTP, and Network policies. |
-| Zero Trust Gateway DNS Policies Admin      | Can view and edit Gateway DNS policies.                                                     |
-| Zero Trust Gateway HTTP Policies Admin     | Can view and edit Gateway HTTP policies.                                                    |
-| Zero Trust Gateway Network Policies Admin  | Can view and edit Gateway Network policies.                                                 |
-| Zero Trust Gateway Egress Policies Admin   | Can view and edit Gateway Egress policies.                                                  |
-| Zero Trust Gateway Resolver Policies Admin | Can view and edit Gateway Resolver policies.                                                |
-| Zero Trust Gateway Policies Admin          | Can view and edit all Gateway policies.                                                     |
-| Zero Trust Gateway Policies Read           | Can view all Gateway policies.                                                              |
-| Zero Trust Gateway Read Only               | Can view all Gateway resources.                                                             |
-| Zero Trust DNS Locations Admin             | Can view and edit DNS locations.                                                            |
-| Zero Trust Proxy Endpoints Admin           | Can view and edit Gateway Proxy Endpoints.                                                  |
-| Zero Trust Account Lists Admin             | Can view and edit all Gateway and Access lists.                                             |
-| Zero Trust Account Lists Read              | Can view all Gateway and Access lists.                                                      |
+| Zero Trust Gateway DNS Policies Admin | Can view and edit Gateway DNS policies. |
+| Zero Trust Gateway HTTP Policies Admin | Can view and edit Gateway HTTP policies. |
+| Zero Trust Gateway Network Policies Admin | Can view and edit Gateway Network policies. |
+| Zero Trust Gateway Egress Policies Admin | Can view and edit Gateway Egress policies. |
+| Zero Trust Gateway Resolver Policies Admin | Can view and edit Gateway Resolver policies. |
+| Zero Trust Gateway Policies Admin | Can view and edit all Gateway policies. |
+| Zero Trust Gateway Policies Read | Can view all Gateway policies. |
+| Zero Trust Gateway Read Only | Can view all Gateway resources. |
+| Zero Trust DNS Locations Admin | Can view and edit DNS locations. |
+| Zero Trust Proxy Endpoints Admin | Can view and edit Gateway Proxy Endpoints. |
+| Zero Trust Account Lists Admin | Can view and edit all Gateway and Access lists. |
+| Zero Trust Account Lists Read | Can view all Gateway and Access lists. |
 
 These roles allow you to:
 
-* Grant a network engineer write access to Network policies only, without exposing DNS or HTTP policy configuration.
-* Allow a security analyst to view all Gateway policies in read-only mode for auditing purposes.
-* Delegate list management to a team that maintains block and allow lists without giving them access to policy configuration.
+- Grant a network engineer write access to Network policies only, without exposing DNS or HTTP policy configuration.
+- Allow a security analyst to view all Gateway policies in read-only mode for auditing purposes.
+- Delegate list management to a team that maintains block and allow lists without giving them access to policy configuration.
 
-You can also now assign _Resource-scoped roles_. These roles are complementary to existing account-level roles, and allow you to grant access to a specific resource, like an individual Gateway policy or Cloudflare One list. **Existing account-level roles continue to work.** A member with the `Cloudflare Gateway` or `Cloudflare Zero Trust` role retains full access to all Gateway resources. This ensures backward compatibility for existing automation and API tokens.
+You can also now assign *Resource-scoped roles*. These roles are complementary to existing account-level roles, and allow you to grant access to a specific resource, like an individual Gateway policy or Cloudflare One list. **Existing account-level roles continue to work.** A member with the `Cloudflare Gateway` or `Cloudflare Zero Trust` role retains full access to all Gateway resources. This ensures backward compatibility for existing automation and API tokens.
 
 #### Get started
 
-* Review the [resource-scoped roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/#resource-scoped-roles) on the Cloudflare role reference.
-* Learn how to [create permission policies](https://developers.cloudflare.com/fundamentals/manage-members/policies/) that use these roles.
+- Review the [resource-scoped roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/#resource-scoped-roles) on the Cloudflare role reference.
+- Learn how to [create permission policies](https://developers.cloudflare.com/fundamentals/manage-members/policies/) that use these roles.
 
 ## 2026-06-29
 
@@ -1485,42 +1529,42 @@ A new GA release for the Windows Cloudflare One Client is now available on the [
 
 This release introduces multiple features from our previous beta release into stable release, including:
 
-* The client now applies DNS search suffixes configured in your [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles) / [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies). Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See [DNS search suffixes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) for details.
-* Added mandatory authentication. When enabled via MDM, the Cloudflare One Client blocks all Internet traffic from the moment the machine boots until the user authenticates, closing the visibility gap on newly deployed devices and during re-authentication. See the [announcement blog](https://blog.cloudflare.com/mandatory-authentication-mfa/) and [documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-no-auth-no-internet/) for details.
-* Upgraded security of device registration to be hardware-backed. Registration tokens can now be generated in the TPM (with TPM 2.0+) whenever it is available to provide stronger protection against device impersonation. See [Hardware-backed registration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/) for details.
-* Added a local-file signal source for Emergency Disconnect. In addition to the existing HTTPS polling mechanism, administrators can now configure WARP to monitor for a file on disk; the presence of the file triggers an emergency disconnect even if both Cloudflare and your own infrastructure are unreachable. Either signal being asserted triggers disconnect; both must be cleared for normal operation to resume.
-* Added new warp-cli debug commands for interactive connection diagnosis. See [Extra debug logging](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#extra-debug-logging) for details.
-* The local DNS proxy now supports DNSSEC passthrough. DNSSEC-signed responses are forwarded to the application intact (including DO/AD bits and RRSIG records), so applications that validate DNSSEC locally — including resolvers and the dig/drill tooling — work correctly through the client.
-* Added a new MDM format for organization-wide settings, including a cleaner way to configure the compliance environment (e.g. FedRAMP). The previous per-configuration approach still works, but the new format is now recommended. See the updated [Cloudflare One MDM documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#organization%5Fconfigs) for details.
-* Added support for dashboard-managed client version deployments. Administrators can now upgrade or downgrade the client version on enrolled devices directly from the Zero Trust dashboard. See [Client version assignments](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/client-version-assignments/) for details.
+- The client now applies DNS search suffixes configured in your [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles) / [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies). Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See [DNS search suffixes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) for details.
+- Added mandatory authentication. When enabled via MDM, the Cloudflare One Client blocks all Internet traffic from the moment the machine boots until the user authenticates, closing the visibility gap on newly deployed devices and during re-authentication. See the [announcement blog](https://blog.cloudflare.com/mandatory-authentication-mfa/) and [documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-no-auth-no-internet/) for details.
+- Upgraded security of device registration to be hardware-backed. Registration tokens can now be generated in the TPM (with TPM 2.0+) whenever it is available to provide stronger protection against device impersonation. See [Hardware-backed registration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/) for details.
+- Added a local-file signal source for Emergency Disconnect. In addition to the existing HTTPS polling mechanism, administrators can now configure WARP to monitor for a file on disk; the presence of the file triggers an emergency disconnect even if both Cloudflare and your own infrastructure are unreachable. Either signal being asserted triggers disconnect; both must be cleared for normal operation to resume.
+- Added new warp-cli debug commands for interactive connection diagnosis. See [Extra debug logging](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#extra-debug-logging) for details.
+- The local DNS proxy now supports DNSSEC passthrough. DNSSEC-signed responses are forwarded to the application intact (including DO/AD bits and RRSIG records), so applications that validate DNSSEC locally — including resolvers and the dig/drill tooling — work correctly through the client.
+- Added a new MDM format for organization-wide settings, including a cleaner way to configure the compliance environment (e.g. FedRAMP). The previous per-configuration approach still works, but the new format is now recommended. See the updated [Cloudflare One MDM documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#organization_configs) for details.
+- Added support for dashboard-managed client version deployments. Administrators can now upgrade or downgrade the client version on enrolled devices directly from the Zero Trust dashboard. See [Client version assignments](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/client-version-assignments/) for details.
 
 **Additional Changes and improvements**
 
-* Starting with 2026.6.822.0, the client unifies all API requests under the `api.devices.cloudflare.com` SNI, where previously both `zero-trust-client.cloudflareclient.com` and `notifications.cloudflareclient.com` were used. Review [Cloudflare One Client with firewall](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/) to ensure systems that rely on SNI inspection do not block the API traffic. The behavior of previous client versions is unaffected.
-* Client Certificate device-posture checks now support template variables (e.g. `${serial_number}`, `${device_uuid}`) in the Subject Alternative Name field. Previously only the Common Name field accepted variables, which broke posture rules that pinned identity to a SAN entry.
-* Improved accessibility by using high contrast colors and more defined color boundaries when high contrast is enabled in Windows Accessibility settings.
-* Path MTU Discovery (PMTUD) is now enabled by default.
-* The UseWebView2 registry value (HKLM\\SOFTWARE\\Cloudflare\\CloudflareWARP\\UseWebView2 = y) is once again honored by the new GUI for authentication, so administrators who prefer the embedded WebView2 browser for sign-in can opt back in. This setting was effectively ignored in the previous release; the default browser was always used. This key is now also honored for re-authentications.
-* Fixed a crash in the authentication browser when navigating to a site that prompts for browser permissions (microphone, camera, notifications, etc.). The same fix had previously landed for the captive-portal browser; this extends it to the auth browser.
-* Fixed an issue in proxy mode where hostnames containing underscores (e.g. ai\_app.com) were rejected, breaking apps that depend on such hostnames (notably ChatGPT sandbox apps). The local proxy now accepts underscore-containing hostnames in CONNECT requests.
-* Fixed an issue where DNS queries would fail after the connection was idle, requiring users to retry.
-* Fixed a high CPU issue when the device wakes from sleep.
-* Users can now register with team names in any case format without errors.
-* New UI fixes
-  * Fixed an issue where users with invalid MDM configurations were returned to the onboarding screen after successful authentication.
-  * Added a re-auth button and banner to the home screen so users don't miss it when their session expires.
-  * Added clear error messaging when the Cloudflare certificate needs to be installed.
-  * Brought back support for pausing the tunnel when connected to user-specified Wi-Fi networks for consumer users.
-  * New client UI now surfaces Split tunnel configuration and Local Domain Fallback configuration.
-  * Added ability to configure proxy mode for consumer users.
-  * Added back the option to quit for consumer users.
+- Starting with 2026.6.822.0, the client unifies all API requests under the `api.devices.cloudflare.com` SNI, where previously both `zero-trust-client.cloudflareclient.com` and `notifications.cloudflareclient.com` were used. Review [Cloudflare One Client with firewall](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/) to ensure systems that rely on SNI inspection do not block the API traffic. The behavior of previous client versions is unaffected.
+- Client Certificate device-posture checks now support template variables (e.g. `${serial_number}`, `${device_uuid}`) in the Subject Alternative Name field. Previously only the Common Name field accepted variables, which broke posture rules that pinned identity to a SAN entry.
+- Improved accessibility by using high contrast colors and more defined color boundaries when high contrast is enabled in Windows Accessibility settings.
+- Path MTU Discovery (PMTUD) is now enabled by default.
+- The UseWebView2 registry value (HKLM\\SOFTWARE\\Cloudflare\\CloudflareWARP\\UseWebView2 = y) is once again honored by the new GUI for authentication, so administrators who prefer the embedded WebView2 browser for sign-in can opt back in. This setting was effectively ignored in the previous release; the default browser was always used. This key is now also honored for re-authentications.
+- Fixed a crash in the authentication browser when navigating to a site that prompts for browser permissions (microphone, camera, notifications, etc.). The same fix had previously landed for the captive-portal browser; this extends it to the auth browser.
+- Fixed an issue in proxy mode where hostnames containing underscores (e.g. ai\_app.com) were rejected, breaking apps that depend on such hostnames (notably ChatGPT sandbox apps). The local proxy now accepts underscore-containing hostnames in CONNECT requests.
+- Fixed an issue where DNS queries would fail after the connection was idle, requiring users to retry.
+- Fixed a high CPU issue when the device wakes from sleep.
+- Users can now register with team names in any case format without errors.
+- New UI fixes
+  - Fixed an issue where users with invalid MDM configurations were returned to the onboarding screen after successful authentication.
+  - Added a re-auth button and banner to the home screen so users don't miss it when their session expires.
+  - Added clear error messaging when the Cloudflare certificate needs to be installed.
+  - Brought back support for pausing the tunnel when connected to user-specified Wi-Fi networks for consumer users.
+  - New client UI now surfaces Split tunnel configuration and Local Domain Fallback configuration.
+  - Added ability to configure proxy mode for consumer users.
+  - Added back the option to quit for consumer users.
 
 **Known issues**
 
-* Single sign-on in the embedded WebView2 authentication browser may fail to use the Windows primary account, prompting for an interactive sign-in.
-* An error indicating that Microsoft Edge can't read and write to its data directory may be displayed during captive portal login; this error is benign and can be dismissed.
-* In rare cases, a registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
-* Windows ARM may prompt the user to close running applications while trying to install this version. Simply click "Ok" with the default highlighted option.
+- Single sign-on in the embedded WebView2 authentication browser may fail to use the Windows primary account, prompting for an interactive sign-in.
+- An error indicating that Microsoft Edge can't read and write to its data directory may be displayed during captive portal login; this error is benign and can be dismissed.
+- In rare cases, a registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+- Windows ARM may prompt the user to close running applications while trying to install this version. Simply click "Ok" with the default highlighted option.
 
 ## 2026-06-29
 
@@ -1533,37 +1577,37 @@ A new GA release for the macOS Cloudflare One Client is now available on the [st
 
 This release introduces multiple features from our previous beta release into stable release, including:
 
-* The client now applies DNS search suffixes configured in your [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles) / [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies). Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See [DNS search suffixes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) for details.
-* Upgraded security of device registration to be hardware-backed. Registration tokens can now be generated in the Secure Enclave whenever available to provide stronger protection against device impersonation. See [Hardware-backed registration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/) for details.
-* Added a local-file signal source for Emergency Disconnect. In addition to the existing HTTPS polling mechanism, administrators can now configure WARP to monitor for a file on disk; the presence of the file triggers an emergency disconnect even if both Cloudflare and your own infrastructure are unreachable. Either signal being asserted triggers disconnect; both must be cleared for normal operation to resume.
-* Added new warp-cli debug commands for interactive connection diagnosis. See [Extra debug logging](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#extra-debug-logging) for details.
-* The local DNS proxy now supports DNSSEC passthrough. DNSSEC-signed responses are forwarded to the application intact (including DO/AD bits and RRSIG records), so applications that validate DNSSEC locally — including resolvers and the dig/drill tooling — work correctly through the client.
-* Added a new MDM format for organization-wide settings, including a cleaner way to configure the compliance environment (e.g. FedRAMP). The previous per-configuration approach still works, but the new format is now recommended. See the updated [Cloudflare One MDM documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#organization%5Fconfigs) for details.
-* Added support for dashboard-managed client version deployments. Administrators can now upgrade or downgrade the client version on enrolled devices directly from the Zero Trust dashboard. See [Client version assignments](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/client-version-assignments/) for details.
+- The client now applies DNS search suffixes configured in your [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles) / [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies). Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See [DNS search suffixes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) for details.
+- Upgraded security of device registration to be hardware-backed. Registration tokens can now be generated in the Secure Enclave whenever available to provide stronger protection against device impersonation. See [Hardware-backed registration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/) for details.
+- Added a local-file signal source for Emergency Disconnect. In addition to the existing HTTPS polling mechanism, administrators can now configure WARP to monitor for a file on disk; the presence of the file triggers an emergency disconnect even if both Cloudflare and your own infrastructure are unreachable. Either signal being asserted triggers disconnect; both must be cleared for normal operation to resume.
+- Added new warp-cli debug commands for interactive connection diagnosis. See [Extra debug logging](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#extra-debug-logging) for details.
+- The local DNS proxy now supports DNSSEC passthrough. DNSSEC-signed responses are forwarded to the application intact (including DO/AD bits and RRSIG records), so applications that validate DNSSEC locally — including resolvers and the dig/drill tooling — work correctly through the client.
+- Added a new MDM format for organization-wide settings, including a cleaner way to configure the compliance environment (e.g. FedRAMP). The previous per-configuration approach still works, but the new format is now recommended. See the updated [Cloudflare One MDM documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#organization_configs) for details.
+- Added support for dashboard-managed client version deployments. Administrators can now upgrade or downgrade the client version on enrolled devices directly from the Zero Trust dashboard. See [Client version assignments](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/client-version-assignments/) for details.
 
 **Additional Changes and improvements**
 
-* Starting with 2026.6.822.0, the client unifies all API requests under the `api.devices.cloudflare.com` SNI, where previously both `zero-trust-client.cloudflareclient.com` and `notifications.cloudflareclient.com` were used. Review [Cloudflare One Client with firewall](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/) to ensure systems that rely on SNI inspection do not block the API traffic. The behavior of previous client versions is unaffected.
-* Client Certificate device-posture checks now support template variables (e.g. `${serial_number}`, `${device_uuid}`) in the Subject Alternative Name field. Previously only the Common Name field accepted variables, which broke posture rules that pinned identity to a SAN entry.
-* Improved accessibility by using high contrast colors and more defined color boundaries when high contrast is enabled in the macOS Display settings.
-* Path MTU Discovery (PMTUD) is now enabled by default.
-* Fixed the in-client captive-portal browser rendering a blank "Success" page on some airline Wi-Fi networks. The browser now more consistently loads the airline's real portal page so users can complete sign-in from inside the client instead of having to open a separate browser.
-* Fixed an issue in proxy mode where hostnames containing underscores (e.g. ai\_app.com) were rejected, breaking apps that depend on such hostnames (notably ChatGPT sandbox apps). The local proxy now accepts underscore-containing hostnames in CONNECT requests.
-* Fixed an issue where DNS queries would fail after the connection was idle, requiring users to retry.
-* Users can now register with team names in any case format without errors.
-* New UI fixes
-  * Fixed an issue where users with invalid MDM configurations were returned to the onboarding screen after successful authentication.
-  * Added a re-auth button and banner to the home screen so users don't miss it when their session expires.
-  * Added clear error messaging when the Cloudflare certificate needs to be installed.
-  * Brought back support for pausing the tunnel when connected to user-specified Wi-Fi networks for consumer users.
-  * New client UI now surfaces Split tunnel configuration and Local Domain Fallback configuration.
-  * Added ability to configure proxy mode for consumer users.
-  * Added back the option to quit for consumer users.
+- Starting with 2026.6.822.0, the client unifies all API requests under the `api.devices.cloudflare.com` SNI, where previously both `zero-trust-client.cloudflareclient.com` and `notifications.cloudflareclient.com` were used. Review [Cloudflare One Client with firewall](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/) to ensure systems that rely on SNI inspection do not block the API traffic. The behavior of previous client versions is unaffected.
+- Client Certificate device-posture checks now support template variables (e.g. `${serial_number}`, `${device_uuid}`) in the Subject Alternative Name field. Previously only the Common Name field accepted variables, which broke posture rules that pinned identity to a SAN entry.
+- Improved accessibility by using high contrast colors and more defined color boundaries when high contrast is enabled in the macOS Display settings.
+- Path MTU Discovery (PMTUD) is now enabled by default.
+- Fixed the in-client captive-portal browser rendering a blank "Success" page on some airline Wi-Fi networks. The browser now more consistently loads the airline's real portal page so users can complete sign-in from inside the client instead of having to open a separate browser.
+- Fixed an issue in proxy mode where hostnames containing underscores (e.g. ai\_app.com) were rejected, breaking apps that depend on such hostnames (notably ChatGPT sandbox apps). The local proxy now accepts underscore-containing hostnames in CONNECT requests.
+- Fixed an issue where DNS queries would fail after the connection was idle, requiring users to retry.
+- Users can now register with team names in any case format without errors.
+- New UI fixes
+  - Fixed an issue where users with invalid MDM configurations were returned to the onboarding screen after successful authentication.
+  - Added a re-auth button and banner to the home screen so users don't miss it when their session expires.
+  - Added clear error messaging when the Cloudflare certificate needs to be installed.
+  - Brought back support for pausing the tunnel when connected to user-specified Wi-Fi networks for consumer users.
+  - New client UI now surfaces Split tunnel configuration and Local Domain Fallback configuration.
+  - Added ability to configure proxy mode for consumer users.
+  - Added back the option to quit for consumer users.
 
 **Known issues**
 
-* Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
-* When deploying with Microsoft Intune, the client may be repeatedly reinstalled because Intune adds the client's embedded framework bundles to its install-detection list, and those frameworks cannot be detected as installed on their own. See [Repeated reinstalls on macOS with Microsoft Intune](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/#repeated-reinstalls-on-macos-with-microsoft-intune) for the workaround.
+- Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+- When deploying with Microsoft Intune, the client may be repeatedly reinstalled because Intune adds the client's embedded framework bundles to its install-detection list, and those frameworks cannot be detected as installed on their own. See [Repeated reinstalls on macOS with Microsoft Intune](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/#repeated-reinstalls-on-macos-with-microsoft-intune) for the workaround.
 
 ## 2026-06-29
 
@@ -1576,44 +1620,44 @@ A new GA release for the Linux Cloudflare One Client is now available on the [st
 
 This release introduces multiple features from our previous beta release into stable release, including:
 
-* The client now applies DNS search suffixes configured in your [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles) / [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies). Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See [DNS search suffixes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) for details.
-* Upgraded security of device registration to be hardware-backed. Registration tokens can now be generated in the TPM (with TPM 2.0+) whenever it is available to provide stronger protection against device impersonation. See [Hardware-backed registration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/) for details.
-* Added a local-file signal source for Emergency Disconnect. In addition to the existing HTTPS polling mechanism, administrators can now configure WARP to monitor for a file on disk; the presence of the file triggers an emergency disconnect even if both Cloudflare and your own infrastructure are unreachable. Either signal being asserted triggers disconnect; both must be cleared for normal operation to resume.
-* Added new warp-cli debug commands for interactive connection diagnosis. See [Extra debug logging](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#extra-debug-logging) for details.
-* The local DNS proxy now supports DNSSEC passthrough. DNSSEC-signed responses are forwarded to the application intact (including DO/AD bits and RRSIG records), so applications that validate DNSSEC locally — including resolvers and the dig/drill tooling — work correctly through the client.
-* Added a new MDM format for organization-wide settings, including a cleaner way to configure the compliance environment (e.g. FedRAMP). The previous per-configuration approach still works, but the new format is now recommended. See the updated [Cloudflare One MDM documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#organization%5Fconfigs) for details.
+- The client now applies DNS search suffixes configured in your [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles) / [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies). Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See [DNS search suffixes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) for details.
+- Upgraded security of device registration to be hardware-backed. Registration tokens can now be generated in the TPM (with TPM 2.0+) whenever it is available to provide stronger protection against device impersonation. See [Hardware-backed registration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/) for details.
+- Added a local-file signal source for Emergency Disconnect. In addition to the existing HTTPS polling mechanism, administrators can now configure WARP to monitor for a file on disk; the presence of the file triggers an emergency disconnect even if both Cloudflare and your own infrastructure are unreachable. Either signal being asserted triggers disconnect; both must be cleared for normal operation to resume.
+- Added new warp-cli debug commands for interactive connection diagnosis. See [Extra debug logging](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#extra-debug-logging) for details.
+- The local DNS proxy now supports DNSSEC passthrough. DNSSEC-signed responses are forwarded to the application intact (including DO/AD bits and RRSIG records), so applications that validate DNSSEC locally — including resolvers and the dig/drill tooling — work correctly through the client.
+- Added a new MDM format for organization-wide settings, including a cleaner way to configure the compliance environment (e.g. FedRAMP). The previous per-configuration approach still works, but the new format is now recommended. See the updated [Cloudflare One MDM documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#organization_configs) for details.
 
 **Additional changes and improvements**
 
-* Starting with 2026.6.822.0, the client unifies all API requests under the `api.devices.cloudflare.com` SNI, where previously both `zero-trust-client.cloudflareclient.com` and `notifications.cloudflareclient.com` were used. Review [Cloudflare One Client with firewall](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/) to ensure systems that rely on SNI inspection do not block the API traffic. The behavior of previous client versions is unaffected.
-* [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) functionality using the Cloudflare One Client is now supported on RHEL 9 and 10.
-* Cloudflare Mesh now supports [hostname-based routing](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes).
-* Client Certificate device-posture checks now support template variables (e.g. `${serial_number}`, `${device_uuid}`) in the Subject Alternative Name field. Previously only the Common Name field accepted variables, which broke posture rules that pinned identity to a SAN entry.
-* Improved accessibility by using high contrast colors and more defined color boundaries when high contrast is enabled in the system display settings.
-* Path MTU Discovery (PMTUD) is now enabled by default.
-* Fixed the in-client captive-portal browser rendering a blank "Success" page on some airline Wi-Fi networks. The browser now more consistently loads the airline's real portal page so users can complete sign-in from inside the client instead of having to open a separate browser.
-* Fixed an issue in proxy mode where hostnames containing underscores (e.g. ai\_app.com) were rejected, breaking apps that depend on such hostnames (notably ChatGPT sandbox apps). The local proxy now accepts underscore-containing hostnames in CONNECT requests.
-* Fixed an issue where DNS queries would fail after the connection was idle, requiring users to retry.
-* Fixed an issue where some Debian releases experienced inaccurate version reporting for posture checks.
-* Users can now register with team names in any case format without errors.
-* New UI fixes
-  * Fixed an issue where users with invalid MDM configurations were returned to the onboarding screen after successful authentication.
-  * Added a re-auth button and banner to the home screen so users don't miss it when their session expires.
-  * Added clear error messaging when the Cloudflare certificate needs to be installed.
-  * Brought back support for pausing the tunnel when connected to user-specified Wi-Fi networks for consumer users.
-  * New client UI now surfaces Split tunnel configuration and Local Domain Fallback configuration.
-  * Added ability to configure proxy mode for consumer users.
-  * Added back the option to quit for consumer users.
+- Starting with 2026.6.822.0, the client unifies all API requests under the `api.devices.cloudflare.com` SNI, where previously both `zero-trust-client.cloudflareclient.com` and `notifications.cloudflareclient.com` were used. Review [Cloudflare One Client with firewall](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/) to ensure systems that rely on SNI inspection do not block the API traffic. The behavior of previous client versions is unaffected.
+- [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) functionality using the Cloudflare One Client is now supported on RHEL 9 and 10.
+- Cloudflare Mesh now supports [hostname-based routing](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes).
+- Client Certificate device-posture checks now support template variables (e.g. `${serial_number}`, `${device_uuid}`) in the Subject Alternative Name field. Previously only the Common Name field accepted variables, which broke posture rules that pinned identity to a SAN entry.
+- Improved accessibility by using high contrast colors and more defined color boundaries when high contrast is enabled in the system display settings.
+- Path MTU Discovery (PMTUD) is now enabled by default.
+- Fixed the in-client captive-portal browser rendering a blank "Success" page on some airline Wi-Fi networks. The browser now more consistently loads the airline's real portal page so users can complete sign-in from inside the client instead of having to open a separate browser.
+- Fixed an issue in proxy mode where hostnames containing underscores (e.g. ai\_app.com) were rejected, breaking apps that depend on such hostnames (notably ChatGPT sandbox apps). The local proxy now accepts underscore-containing hostnames in CONNECT requests.
+- Fixed an issue where DNS queries would fail after the connection was idle, requiring users to retry.
+- Fixed an issue where some Debian releases experienced inaccurate version reporting for posture checks.
+- Users can now register with team names in any case format without errors.
+- New UI fixes
+  - Fixed an issue where users with invalid MDM configurations were returned to the onboarding screen after successful authentication.
+  - Added a re-auth button and banner to the home screen so users don't miss it when their session expires.
+  - Added clear error messaging when the Cloudflare certificate needs to be installed.
+  - Brought back support for pausing the tunnel when connected to user-specified Wi-Fi networks for consumer users.
+  - New client UI now surfaces Split tunnel configuration and Local Domain Fallback configuration.
+  - Added ability to configure proxy mode for consumer users.
+  - Added back the option to quit for consumer users.
 
 For RHEL deployments, this release introduces a dependency on the [Extra Packages for Enterprise Linux](https://docs.fedoraproject.org/en-US/epel/) repository (EPEL). The EPEL repository provides packages that support the captive portal detection’s in-app browser authentication and system tray icon. See [Getting started with EPEL](https://docs.fedoraproject.org/en-US/epel/getting-started/) for instructions on enabling EPEL.
 
 **Known issues**
 
-* Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+- Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
 
 ## 2026-06-26
 
-[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Service token support for MCP server portals**
@@ -1622,9 +1666,9 @@ You can now connect autonomous agents and bots to an [MCP server portal](https:/
 
 To set this up:
 
-* Add a [Service Auth policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth) that matches your service token to the portal's Access application.
-* Add a Service Auth policy that matches the same token to each linked MCP server's Access application.
-* Turn **Require user auth** off (`on_behalf: false`) for each linked server so the portal uses the admin credential instead of a per-user OAuth grant.
+- Add a [Service Auth policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth) that matches your service token to the portal's Access application.
+- Add a Service Auth policy that matches the same token to each linked MCP server's Access application.
+- Turn **Require user auth** off ( `on_behalf: false`) for each linked server so the portal uses the admin credential instead of a per-user OAuth grant.
 
 The bot connects with `CF-Access-Client-Id` and `CF-Access-Client-Secret` headers and sees the tools from every linked server it is authorized for. Servers that still require per-user OAuth are excluded from service token sessions because a service token cannot complete a per-user OAuth grant.
 
@@ -1645,22 +1689,22 @@ This beta release introduces upgraded security of device registration to be hard
 
 This release also introduces multiple fixes and improvements including:
 
-* Improved accessibility by using high contrast colors and more defined color boundaries when high contrast is enabled in the macOS Display settings.
-* Path MTU Discovery (PMTUD) is now enabled by default.
-* Fixed an issue where DNS queries would fail after the connection was idle, requiring users to retry.
-* Users can now register with team names in any case format without errors.
-* New UI fixes
-  * Fixed an issue where users with invalid MDM configurations were returned to the onboarding screen after successful authentication.
-  * Added a re-auth button and banner to the home screen so users don't miss it when their session expires.
-  * Added clear error messaging when the Cloudflare certificate needs to be installed.
-  * Brought back support for pausing the tunnel when connected to user-specified Wi-Fi networks for consumer users.
-  * New client UI now surfaces Split tunnel configuration and Local Domain Fallback configuration.
-  * Added ability to configure proxy mode for consumer users.
-  * Added back the option to quit for consumer users.
+- Improved accessibility by using high contrast colors and more defined color boundaries when high contrast is enabled in the macOS Display settings.
+- Path MTU Discovery (PMTUD) is now enabled by default.
+- Fixed an issue where DNS queries would fail after the connection was idle, requiring users to retry.
+- Users can now register with team names in any case format without errors.
+- New UI fixes
+  - Fixed an issue where users with invalid MDM configurations were returned to the onboarding screen after successful authentication.
+  - Added a re-auth button and banner to the home screen so users don't miss it when their session expires.
+  - Added clear error messaging when the Cloudflare certificate needs to be installed.
+  - Brought back support for pausing the tunnel when connected to user-specified Wi-Fi networks for consumer users.
+  - New client UI now surfaces Split tunnel configuration and Local Domain Fallback configuration.
+  - Added ability to configure proxy mode for consumer users.
+  - Added back the option to quit for consumer users.
 
 **Known issues**
 
-* Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+- Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
 
 ## 2026-06-23
 
@@ -1679,7 +1723,7 @@ To get started, refer to [Regionalized IP Bindings](https://developers.cloudflar
 
 ## 2026-06-19
 
-[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Manage all your routes from one page in the dashboard**
@@ -1690,21 +1734,21 @@ The **Routes** page in the Cloudflare dashboard now shows the routes across all 
 
 From the unified Routes page you can:
 
-* **Visualize your network with an interactive map** that shows how your destinations flow through to your connectors — including equal-cost multi-path (ECMP) routes where the same prefix is served by several connectors. Select a node to filter the table down to the routes behind it.
-* **See every route in one table**, with its destination, type, connector, priority, and source, and filter or sort to find what you need.
-* **Create, edit, and delete routes** of any supported type without leaving the page. When adding a Cloudflare WAN or Magic Transit static route, you now pick the next hop by **connector name** instead of typing its IP.
-* **Manage [virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/virtual-networks/)** from a dedicated tab.
-* **Test a route** to see which connector and next hop a destination resolves to before you commit a change.
+- **Visualize your network with an interactive map** that shows how your destinations flow through to your connectors — including equal-cost multi-path (ECMP) routes where the same prefix is served by several connectors. Select a node to filter the table down to the routes behind it.
+- **See every route in one table**, with its destination, type, connector, priority, and source, and filter or sort to find what you need.
+- **Create, edit, and delete routes** of any supported type without leaving the page. When adding a Cloudflare WAN or Magic Transit static route, you now pick the next hop by **connector name** instead of typing its IP.
+- **Manage [virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/virtual-networks/)** from a dedicated tab.
+- **Test a route** to see which connector and next hop a destination resolves to before you commit a change.
 
-To find it, go to **Networking** \> **Routes** in the dashboard sidebar.
+To find it, go to **Networking** > **Routes** in the dashboard sidebar.
 
-[Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 
 Your existing routes, APIs, and configurations are unchanged — this is a dashboard experience that brings them together in one place. Learn how to [add routes](https://developers.cloudflare.com/cloudflare-one/networks/routes/add-routes/) and [manage virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/virtual-networks/).
 
 ## 2026-06-18
 
-[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Cloudflare identity provider is now the default for new accounts**
@@ -1730,7 +1774,7 @@ Custom topics run through the same [application granular controls](https://devel
 
 #### Create a custom AI prompt topic
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Data loss prevention** \> **Detection entries**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Detection entries**.
 2. Select **AI prompt topics**, then select **Custom Prompt Topic**.
 3. Describe the topic in natural language. Be specific about the concept you want to detect. For example, describe unreleased product roadmap details or confidential customer contract terms.
 4. Add this detection entry to an existing DLP profile, or [create a new DLP profile](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/#build-a-custom-profile).
@@ -1744,7 +1788,7 @@ For more information, refer to [AI prompt topics](https://developers.cloudflare.
 
 ## 2026-06-05
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)[Workers VPC](https://developers.cloudflare.com/workers-vpc/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) [Workers VPC](https://developers.cloudflare.com/workers-vpc/)
 
 
 **Filter Workers' public Internet traffic using Gateway policies**
@@ -1752,23 +1796,27 @@ For more information, refer to [AI prompt topics](https://developers.cloudflare.
 Workers using a [VPC Network](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/) binding with `network_id: "cf1:network"` now egress to public Internet destinations through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/). This means your existing Zero Trust traffic policies — DNS, HTTP, Network, and egress — extend to traffic that originates from your Workers, the same way they do for WARP users today.
 
 1. [Worker](https://developers.cloudflare.com/workers/)
-Calls `env.EGRESS.fetch()`
+
+   Calls `env.EGRESS.fetch()`
 2. [VPC binding](https://developers.cloudflare.com/workers-vpc/)↓
 3. [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
-Bind via [cf1:network](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/)
+
+   Bind via [`cf1:network`](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/)
 4. ↓
 5. [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
-Policies applied:
-[DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/)[HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/)[Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/)
+
+   Policies applied: [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/) [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) [Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/)
 6. ↓
 7. ↗Public Internet
-Any public hostname or IP
+
+   Any public hostname or IP
+
 [Gateway logsDNSHTTPNetwork](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/)
 
 What you get by default:
 
-* **Visibility.** Worker egress shows up in Gateway [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) logs alongside your other traffic, so you can audit what your Workers are calling and when.
-* **Enforcement.** Any existing Gateway policy whose selectors match a Worker request will apply — including allow / block lists, DNS category filtering, and HTTP destination rules. If you have already blocked a category for your workforce, your Workers inherit that block.
+- **Visibility.** Worker egress shows up in Gateway [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) logs alongside your other traffic, so you can audit what your Workers are calling and when.
+- **Enforcement.** Any existing Gateway policy whose selectors match a Worker request will apply — including allow / block lists, DNS category filtering, and HTTP destination rules. If you have already blocked a category for your workforce, your Workers inherit that block.
 
 ```jsonc
 {
@@ -1814,9 +1862,9 @@ Instead of configuring the same IdP (for example, Okta or Entra ID) separately i
 
 Key capabilities:
 
-* **One IdP, many accounts** — Configure your IdP once and share it with all accounts in your organization.
-* **Lifecycle management** — As accounts join or leave your Cloudflare organization, their IdP connections are provisioned and removed automatically — no manual cleanup required.
-* **Immutable recipient connections** — IdP connections in recipient accounts cannot be accidentally modified or deleted.
+- **One IdP, many accounts** — Configure your IdP once and share it with all accounts in your organization.
+- **Lifecycle management** — As accounts join or leave your Cloudflare organization, their IdP connections are provisioned and removed automatically — no manual cleanup required.
+- **Immutable recipient connections** — IdP connections in recipient accounts cannot be accidentally modified or deleted.
 
 To get started, refer to [IdP federation](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/idp-federation/).
 
@@ -1835,24 +1883,24 @@ Without encryption, SAML assertions are transmitted in plaintext and could be vi
 
 SAML encryption includes built-in certificate lifecycle management:
 
-* **Automatic certificate generation**: Access generates an encryption certificate when you turn on SAML encryption for an identity provider.
-* **Certificate rotation**: Rotate certificates without downtime. The previous certificate remains valid until expiration, giving you time to update your IdP.
-* **PEM export**: Copy the certificate in PEM format for manual upload to your IdP, or point your IdP to the SAML metadata endpoint for automatic retrieval.
+- **Automatic certificate generation**: Access generates an encryption certificate when you turn on SAML encryption for an identity provider.
+- **Certificate rotation**: Rotate certificates without downtime. The previous certificate remains valid until expiration, giving you time to update your IdP.
+- **PEM export**: Copy the certificate in PEM format for manual upload to your IdP, or point your IdP to the SAML metadata endpoint for automatic retrieval.
 
 To get started, refer to [Encrypt SAML assertions](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/#encrypt-saml-assertions).
 
 ## 2026-06-02
 
-[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Cisco IOS XE**
 
 The Cisco IOS XE third-party integration guide for Cloudflare WAN has been updated to include:
 
-* Post Quantum Cryptography (PQC)
-* Policy-Based Routing (PBR)
-* IP Service Level Agreement (IP SLA)
+- Post Quantum Cryptography (PQC)
+- Policy-Based Routing (PBR)
+- IP Service Level Agreement (IP SLA)
 
 This link will take you directly to the updated [Cisco IOS XE](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/cisco-ios-xe/) guide.
 
@@ -1867,25 +1915,25 @@ A new Beta release for the macOS Cloudflare One Client is now available on the [
 
 This release introduces the new Cloudflare One Client UI for macOS! You can expect a cleaner and more intuitive design as well as easier access to common actions and information. Here are some of the many things we have found our users appreciate:
 
-* Right click context menu to access the most common client actions quickly
-* Built-in captive portal login experience
+- Right click context menu to access the most common client actions quickly
+- Built-in captive portal login experience
 
 **Additional Changes and improvements**
 
-* The client now applies DNS search suffixes configured in your [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles) / [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies). Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See [DNS search suffixes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) for details.
-* Administrators can now control which virtual networks (VNETs) are available to which users via WARP device profile settings in the Zero Trust dashboard. Previously, every VNET in the organization was visible to every device; you can now scope the VNET picker per profile so users only see the networks relevant to them. See [VNET availability](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#vnet-availability) for details.
-* Added a local-file signal source for Emergency Disconnect. In addition to the existing HTTPS polling mechanism, administrators can now configure WARP to monitor for a file on disk; the presence of the file triggers an emergency disconnect even if both Cloudflare and your own infrastructure are unreachable. Either signal being asserted triggers disconnect; both must be cleared for normal operation to resume.
-* Added new warp-cli debug commands for interactive connection diagnosis. See [Extra debug logging](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#extra-debug-logging) for details.
-* The local DNS proxy now supports DNSSEC passthrough. DNSSEC-signed responses are forwarded to the application intact (including DO/AD bits and RRSIG records), so applications that validate DNSSEC locally — including resolvers and the dig/drill tooling — work correctly through the client.
-* Added a new MDM format for organization-wide settings, including a cleaner way to configure the compliance environment (e.g. FedRAMP). The previous per-configuration approach still works, but the new format is now recommended. See the updated [Cloudflare One MDM documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#organization%5Fconfigs) for details.
-* Client Certificate device-posture checks now support template variables (e.g. `${serial_number}`, `${device_uuid}`) in the Subject Alternative Name field, matching what the documentation has always claimed. Previously only the Common Name field accepted variables, which broke posture rules that pinned identity to a SAN entry.
-* Fixed the in-client captive-portal browser rendering a blank "Success" page on some airline Wi-Fi networks (United inflight Wi-Fi was the reported case). The browser now reliably loads the airline's real portal page so users can complete sign-in from inside the client instead of having to open a separate browser.
-* Fixed an issue in proxy mode where hostnames containing underscores (e.g. ai\_app.com) were rejected, breaking apps that depend on such hostnames (notably ChatGPT sandbox apps). The local proxy now accepts underscore-containing hostnames in CONNECT requests.
+- The client now applies DNS search suffixes configured in your [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles) / [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies). Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See [DNS search suffixes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) for details.
+- Administrators can now control which virtual networks (VNETs) are available to which users via WARP device profile settings in the Zero Trust dashboard. Previously, every VNET in the organization was visible to every device; you can now scope the VNET picker per profile so users only see the networks relevant to them. See [VNET availability](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#vnet-availability) for details.
+- Added a local-file signal source for Emergency Disconnect. In addition to the existing HTTPS polling mechanism, administrators can now configure WARP to monitor for a file on disk; the presence of the file triggers an emergency disconnect even if both Cloudflare and your own infrastructure are unreachable. Either signal being asserted triggers disconnect; both must be cleared for normal operation to resume.
+- Added new warp-cli debug commands for interactive connection diagnosis. See [Extra debug logging](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#extra-debug-logging) for details.
+- The local DNS proxy now supports DNSSEC passthrough. DNSSEC-signed responses are forwarded to the application intact (including DO/AD bits and RRSIG records), so applications that validate DNSSEC locally — including resolvers and the dig/drill tooling — work correctly through the client.
+- Added a new MDM format for organization-wide settings, including a cleaner way to configure the compliance environment (e.g. FedRAMP). The previous per-configuration approach still works, but the new format is now recommended. See the updated [Cloudflare One MDM documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#organization_configs) for details.
+- Client Certificate device-posture checks now support template variables (e.g. `${serial_number}`, `${device_uuid}`) in the Subject Alternative Name field, matching what the documentation has always claimed. Previously only the Common Name field accepted variables, which broke posture rules that pinned identity to a SAN entry.
+- Fixed the in-client captive-portal browser rendering a blank "Success" page on some airline Wi-Fi networks (United inflight Wi-Fi was the reported case). The browser now reliably loads the airline's real portal page so users can complete sign-in from inside the client instead of having to open a separate browser.
+- Fixed an issue in proxy mode where hostnames containing underscores (e.g. ai\_app.com) were rejected, breaking apps that depend on such hostnames (notably ChatGPT sandbox apps). The local proxy now accepts underscore-containing hostnames in CONNECT requests.
 
 **Known issues**
 
-* Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
-* Split tunnel list configuration is not available in the new UI. Management of split tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
+- Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+- Split tunnel list configuration is not available in the new UI. Management of split tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
 
 ## 2026-05-29
 
@@ -1898,34 +1946,34 @@ A new Beta release for the Windows Cloudflare One Client is now available on the
 
 This release introduces the new Cloudflare One Client UI for Windows! You can expect a cleaner and more intuitive design as well as easier access to common actions and information. Here are some of the many things we have found our users appreciate:
 
-* Right click context menu to access the most common client actions quickly
-* Built-in captive portal login experience
+- Right click context menu to access the most common client actions quickly
+- Built-in captive portal login experience
 
 **Additional Changes and improvements**
 
-* The client now applies DNS search suffixes configured in your [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles) / [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies). Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See [DNS search suffixes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) for details.
-* Administrators can now control which virtual networks (VNETs) are available to which users via WARP device profile settings in the Zero Trust dashboard. Previously, every VNET in the organization was visible to every device; you can now scope the VNET picker per profile so users only see the networks relevant to them. See [VNET availability](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#vnet-availability) for details.
-* Added mandatory authentication. When enabled via MDM, the Cloudflare One Client blocks all Internet traffic from the moment the machine boots until the user authenticates, closing the visibility gap on newly deployed devices and during re-authentication. See the [announcement blog](https://blog.cloudflare.com/mandatory-authentication-mfa/) and [documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-no-auth-no-internet/) for details.
-* Added a local-file signal source for Emergency Disconnect. In addition to the existing HTTPS polling mechanism, administrators can now configure WARP to monitor for a file on disk; the presence of the file triggers an emergency disconnect even if both Cloudflare and your own infrastructure are unreachable. Either signal being asserted triggers disconnect; both must be cleared for normal operation to resume.
-* Added new warp-cli debug commands for interactive connection diagnosis. See [Extra debug logging](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#extra-debug-logging) for details.
-* The local DNS proxy now supports DNSSEC passthrough. DNSSEC-signed responses are forwarded to the application intact (including DO/AD bits and RRSIG records), so applications that validate DNSSEC locally — including resolvers and the dig/drill tooling — work correctly through the client.
-* Added a new MDM format for organization-wide settings, including a cleaner way to configure the compliance environment (e.g. FedRAMP). The previous per-configuration approach still works, but the new format is now recommended. See the updated [Cloudflare One MDM documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#organization%5Fconfigs) for details.
-* Client Certificate device-posture checks now support template variables (e.g. `${serial_number}`, `${device_uuid}`) in the Subject Alternative Name field, matching what the documentation has always claimed. Previously only the Common Name field accepted variables, which broke posture rules that pinned identity to a SAN entry.
-* The UseWebView2 registry value (HKLM\\SOFTWARE\\Cloudflare\\CloudflareWARP\\UseWebView2 = y) is once again honored by the new GUI for authentication, so administrators who prefer the embedded WebView2 browser for sign-in can opt back in. This setting was effectively ignored in the previous release; the default browser was always used. This key is now also honored for re-authentications.
-* Fixed a crash in the authentication browser when navigating to a site that prompts for browser permissions (microphone, camera, notifications, etc.). The same fix had previously landed for the captive-portal browser; this extends it to the auth browser.
-* Fixed an issue in proxy mode where hostnames containing underscores (e.g. ai\_app.com) were rejected, breaking apps that depend on such hostnames (notably ChatGPT sandbox apps). The local proxy now accepts underscore-containing hostnames in CONNECT requests.
+- The client now applies DNS search suffixes configured in your [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles) / [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies). Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See [DNS search suffixes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) for details.
+- Administrators can now control which virtual networks (VNETs) are available to which users via WARP device profile settings in the Zero Trust dashboard. Previously, every VNET in the organization was visible to every device; you can now scope the VNET picker per profile so users only see the networks relevant to them. See [VNET availability](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#vnet-availability) for details.
+- Added mandatory authentication. When enabled via MDM, the Cloudflare One Client blocks all Internet traffic from the moment the machine boots until the user authenticates, closing the visibility gap on newly deployed devices and during re-authentication. See the [announcement blog](https://blog.cloudflare.com/mandatory-authentication-mfa/) and [documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-no-auth-no-internet/) for details.
+- Added a local-file signal source for Emergency Disconnect. In addition to the existing HTTPS polling mechanism, administrators can now configure WARP to monitor for a file on disk; the presence of the file triggers an emergency disconnect even if both Cloudflare and your own infrastructure are unreachable. Either signal being asserted triggers disconnect; both must be cleared for normal operation to resume.
+- Added new warp-cli debug commands for interactive connection diagnosis. See [Extra debug logging](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#extra-debug-logging) for details.
+- The local DNS proxy now supports DNSSEC passthrough. DNSSEC-signed responses are forwarded to the application intact (including DO/AD bits and RRSIG records), so applications that validate DNSSEC locally — including resolvers and the dig/drill tooling — work correctly through the client.
+- Added a new MDM format for organization-wide settings, including a cleaner way to configure the compliance environment (e.g. FedRAMP). The previous per-configuration approach still works, but the new format is now recommended. See the updated [Cloudflare One MDM documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#organization_configs) for details.
+- Client Certificate device-posture checks now support template variables (e.g. `${serial_number}`, `${device_uuid}`) in the Subject Alternative Name field, matching what the documentation has always claimed. Previously only the Common Name field accepted variables, which broke posture rules that pinned identity to a SAN entry.
+- The UseWebView2 registry value (HKLM\\SOFTWARE\\Cloudflare\\CloudflareWARP\\UseWebView2 = y) is once again honored by the new GUI for authentication, so administrators who prefer the embedded WebView2 browser for sign-in can opt back in. This setting was effectively ignored in the previous release; the default browser was always used. This key is now also honored for re-authentications.
+- Fixed a crash in the authentication browser when navigating to a site that prompts for browser permissions (microphone, camera, notifications, etc.). The same fix had previously landed for the captive-portal browser; this extends it to the auth browser.
+- Fixed an issue in proxy mode where hostnames containing underscores (e.g. ai\_app.com) were rejected, breaking apps that depend on such hostnames (notably ChatGPT sandbox apps). The local proxy now accepts underscore-containing hostnames in CONNECT requests.
 
 **Known issues**
 
-* An error indicating that Microsoft Edge can't read and write to its data directory may be displayed during captive portal login; this error is benign and can be dismissed.
-* Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
-* Split tunnel list configuration is not available in the new UI. Management of Split Tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
-* Windows ARM may prompt the user to close running applications while trying to install this version. Simply click “Ok” with the default highlighted option.
-* DNS resolution may be broken when the following conditions are all true:
-  * The client is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
-  * A custom DNS server address is configured on the primary network adapter.
-  * The custom DNS server address on the primary network adapter is changed while the client is connected.
-  To work around this issue, please reconnect the client by selecting "disconnect" and then "connect" in the client user interface.
+- An error indicating that Microsoft Edge can't read and write to its data directory may be displayed during captive portal login; this error is benign and can be dismissed.
+- Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+- Split tunnel list configuration is not available in the new UI. Management of Split Tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
+- Windows ARM may prompt the user to close running applications while trying to install this version. Simply click “Ok” with the default highlighted option.
+- DNS resolution may be broken when the following conditions are all true:
+  - The client is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  - A custom DNS server address is configured on the primary network adapter.
+  - The custom DNS server address on the primary network adapter is changed while the client is connected.
+     To work around this issue, please reconnect the client by selecting "disconnect" and then "connect" in the client user interface.
 
 ## 2026-05-28
 
@@ -1946,8 +1994,8 @@ Modified tools display a **Modified** label in the tools list so administrators 
 
 Aliases override the metadata that MCP clients receive. You can set them at two levels:
 
-* **Per portal**: Applies only within a specific portal. Takes precedence over server-level aliases.
-* **Per server**: Applies across all portals that use the server.
+- **Per portal**: Applies only within a specific portal. Takes precedence over server-level aliases.
+- **Per server**: Applies across all portals that use the server.
 
 You can reset an alias at any time to restore the original upstream name.
 
@@ -1955,7 +2003,7 @@ For more information, refer to [Tool and prompt aliases](https://developers.clou
 
 ## 2026-05-28
 
-[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **High availability replica management for Cloudflare Mesh**
@@ -1966,17 +2014,17 @@ The [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/
 
 #### What's new
 
-* **Replica tabs** on the node detail page — switch between replicas to see each one's Mesh IP, edge data center, origin IP, platform, version, and uptime.
-* **Active/passive badges** identify which replica is currently routing traffic.
-* **Manual failover** — promote a passive replica to active with a single click. The previous active replica switches to standby.
-* **HA badge** in the overview table identifies nodes running multiple replicas.
-* **Active replica IP** shown in the overview table — the dashboard now resolves which replica is active and displays the correct Mesh IP.
+- **Replica tabs** on the node detail page — switch between replicas to see each one's Mesh IP, edge data center, origin IP, platform, version, and uptime.
+- **Active/passive badges** identify which replica is currently routing traffic.
+- **Manual failover** — promote a passive replica to active with a single click. The previous active replica switches to standby.
+- **HA badge** in the overview table identifies nodes running multiple replicas.
+- **Active replica IP** shown in the overview table — the dashboard now resolves which replica is active and displays the correct Mesh IP.
 
 #### Manual failover
 
 To manually promote a passive replica:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/mesh), go to **Networking** \> **Mesh**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/mesh), go to **Networking** > **Mesh**.
 2. Select an HA-enabled node.
 3. Select the passive replica tab.
 4. Select **Promote to active** and confirm.
@@ -1985,7 +2033,7 @@ Traffic reroutes to the promoted replica immediately. Refer to [High availabilit
 
 ## 2026-05-27
 
-[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **Write regex using natural language in Cloudflare One**
@@ -2004,26 +2052,26 @@ For more information, refer to [Cloudflare One firewall policies](https://develo
 
 ## 2026-05-27
 
-[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 
 **Cloudflare Tunnel now runs connectivity pre-checks at startup**
 
-Starting with [cloudflared version 2026.5.2 ↗](https://github.com/cloudflare/cloudflared/releases), [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) automates the entire [connectivity pre-checks workflow](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/connectivity-prechecks/) directly inside the binary. Previously, customers had to install `dig` and `netcat` and run those commands by hand to verify their environment. Now `cloudflared` does it natively at startup — and surfaces actionable remediation when something is blocked.
+Starting with [`cloudflared` version 2026.5.2 ↗](https://github.com/cloudflare/cloudflared/releases), [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) automates the entire [connectivity pre-checks workflow](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/connectivity-prechecks/) directly inside the binary. Previously, customers had to install `dig` and `netcat` and run those commands by hand to verify their environment. Now `cloudflared` does it natively at startup — and surfaces actionable remediation when something is blocked.
 
 ![cloudflared connectivity pre-checks output](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=1012,format=webp/_astro/cloudflared-connectivity-prechecks.DRwN6tGe.gif)
 
 On every `cloudflared tunnel run` (and `cloudflared tunnel diag`), the binary now natively checks:
 
-* **DNS resolution** — `region1.v2.argotunnel.com` and `region2.v2.argotunnel.com` resolve to valid Cloudflare IPs.
-* **Transport connectivity** — outbound `UDP (QUIC)` and `TCP (HTTP/2)` on port `7844`.
-* **Management API** — outbound `TCP/443` to `api.cloudflare.com` for software updates.
+- **DNS resolution** — `region1.v2.argotunnel.com` and `region2.v2.argotunnel.com` resolve to valid Cloudflare IPs.
+- **Transport connectivity** — outbound `UDP (QUIC)` and `TCP (HTTP/2)` on port `7844`.
+- **Management API** — outbound `TCP/443` to `api.cloudflare.com` for software updates.
 
 Results are printed in a scannable CLI table with three states:
 
-* ✅ **Pass** — the check succeeded.
-* ⚠️ **Warn** — a non-blocking issue, for example the Management API is unreachable so automatic updates will not work, but the tunnel will still come up.
-* ❌ **Fail** — a blocking issue, with a specific remediation hint (for example, `Allow outbound UDP on port 7844`).
+- ✅ **Pass** — the check succeeded.
+- ⚠️ **Warn** — a non-blocking issue, for example the Management API is unreachable so automatic updates will not work, but the tunnel will still come up.
+- ❌ **Fail** — a blocking issue, with a specific remediation hint (for example, `Allow outbound UDP on port 7844`).
 
 If DNS is unresolvable, or **both** UDP and TCP fail on port 7844, `cloudflared` exits early with the failure rather than looping on opaque `failed to dial` errors.
 
@@ -2042,18 +2090,18 @@ A new GA release for the macOS Cloudflare One Client is now available on the [st
 
 This release introduces the new Cloudflare One Client UI for macOS! You can expect a cleaner and more intuitive design as well as easier access to common actions and information. Here are some of the many things we have found our users appreciate:
 
-* Right click context menu to access the most common client actions quickly
-* Built-in captive portal login experience
+- Right click context menu to access the most common client actions quickly
+- Built-in captive portal login experience
 
 **Additional Changes and improvements**
 
-* Added a new CLI command: warp-cli mdm refresh. This command executes an immediate refresh of the Mobile Device Management (MDM) configuration file.
-* Fixed a proxy mode connection stall issue.
+- Added a new CLI command: warp-cli mdm refresh. This command executes an immediate refresh of the Mobile Device Management (MDM) configuration file.
+- Fixed a proxy mode connection stall issue.
 
 **Known issues**
 
-* Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
-* Split tunnel list configuration is not available in the new UI. Management of split tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
+- Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+- Split tunnel list configuration is not available in the new UI. Management of split tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
 
 ## 2026-05-26
 
@@ -2066,26 +2114,26 @@ A new GA release for the Windows Cloudflare One Client is now available on the [
 
 This release introduces the new Cloudflare One Client UI for Windows! You can expect a cleaner and more intuitive design as well as easier access to common actions and information. Here are some of the many things we have found our users appreciate:
 
-* Right click context menu to access the most common client actions quickly
-* Built-in captive portal login experience
+- Right click context menu to access the most common client actions quickly
+- Built-in captive portal login experience
 
 **Additional Changes and improvements**
 
-* Added a new CLI command: warp-cli mdm refresh. This command executes an immediate refresh of the Mobile Device Management (MDM) configuration file.
-* Fixed a proxy mode connection stall issue.
+- Added a new CLI command: warp-cli mdm refresh. This command executes an immediate refresh of the Mobile Device Management (MDM) configuration file.
+- Fixed a proxy mode connection stall issue.
 
 **Known issues**
 
-* Registration authentication for devices via the integrated WebView2 browser is unavailable in this version as a temporary measure. As a result, the client will utilize the default browser on the device to complete the authentication process.
-* An error indicating that Microsoft Edge can't read and write to its data directory may be displayed during captive portal login; this error is benign and can be dismissed.
-* Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
-* Split tunnel list configuration is not available in the new UI. Management of Split Tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
-* Windows ARM may prompt the user to close running applications while trying to install this version. Simply click “Ok” with the default highlighted option.
-* DNS resolution may be broken when the following conditions are all true:
-  * The client is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
-  * A custom DNS server address is configured on the primary network adapter.
-  * The custom DNS server address on the primary network adapter is changed while the client is connected.
-  To work around this issue, please reconnect the client by selecting "disconnect" and then "connect" in the client user interface.
+- Registration authentication for devices via the integrated WebView2 browser is unavailable in this version as a temporary measure. As a result, the client will utilize the default browser on the device to complete the authentication process.
+- An error indicating that Microsoft Edge can't read and write to its data directory may be displayed during captive portal login; this error is benign and can be dismissed.
+- Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+- Split tunnel list configuration is not available in the new UI. Management of Split Tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
+- Windows ARM may prompt the user to close running applications while trying to install this version. Simply click “Ok” with the default highlighted option.
+- DNS resolution may be broken when the following conditions are all true:
+  - The client is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  - A custom DNS server address is configured on the primary network adapter.
+  - The custom DNS server address on the primary network adapter is changed while the client is connected.
+     To work around this issue, please reconnect the client by selecting "disconnect" and then "connect" in the client user interface.
 
 ## 2026-05-26
 
@@ -2098,23 +2146,23 @@ A new GA release for the Linux Cloudflare One Client is now available on the [st
 
 This release introduces the new Cloudflare One Client UI for Linux! You can expect a cleaner and more intuitive design as well as easier access to common actions and information. Here are some of the many things we have found our users appreciate:
 
-* Right click context menu to access the most common client actions quickly
-* Built-in captive portal login experience
+- Right click context menu to access the most common client actions quickly
+- Built-in captive portal login experience
 
 **Changes and improvements**
 
-* Added a new CLI command: warp-cli mdm refresh. This command executes an immediate refresh of the Mobile Device Management (MDM) configuration file.
-* Official support for RHEL 9 has been added for Cloudflare Mesh nodes. To install the RHEL 9 package, the Extra Packages for Enterprise Linux (EPEL) repository must be active, as it contains dependencies required for the tray icon and captive portal webview.
-* Fixed a proxy mode connection stall issue.
+- Added a new CLI command: warp-cli mdm refresh. This command executes an immediate refresh of the Mobile Device Management (MDM) configuration file.
+- Official support for RHEL 9 has been added for Cloudflare Mesh nodes. To install the RHEL 9 package, the Extra Packages for Enterprise Linux (EPEL) repository must be active, as it contains dependencies required for the tray icon and captive portal webview.
+- Fixed a proxy mode connection stall issue.
 
 **Known issues**
 
-* Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
-* Split tunnel list configuration is not available in the new UI. Management of split tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
+- Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+- Split tunnel list configuration is not available in the new UI. Management of split tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
 
 ## 2026-05-21
 
-[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
 
 
 **Granular permissions for Cloudflare Tunnel and Cloudflare Mesh**
@@ -2125,23 +2173,23 @@ You can now scope Cloudflare permissions to individual [Cloudflare Tunnel](https
 
 When you [add a member](https://developers.cloudflare.com/fundamentals/manage-members/manage/) or create a [permission policy](https://developers.cloudflare.com/fundamentals/manage-members/policies/), the resource picker now lists [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) instances and [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) nodes as scopable resource types. You can:
 
-* Grant a read-only role on a single Cloudflare Tunnel instance to a support operator for log streaming and diagnostics — without exposing other Tunnels or destructive actions.
-* Grant a write role on a specific Cloudflare Mesh node to an application team — without giving them access to the rest of your private network.
-* Scope a single policy to one or many Tunnels and Mesh nodes at once.
+- Grant a read-only role on a single Cloudflare Tunnel instance to a support operator for log streaming and diagnostics — without exposing other Tunnels or destructive actions.
+- Grant a write role on a specific Cloudflare Mesh node to an application team — without giving them access to the rest of your private network.
+- Scope a single policy to one or many Tunnels and Mesh nodes at once.
 
 #### How it works
 
 Granular permissions are a parallel layer to existing account-level roles — they do not replace them.
 
-* **Existing account-level roles continue to work.** A member with `Cloudflare Access` or `Cloudflare Zero Trust` retains write access to every Tunnel and Mesh node in the account. This ensures backward compatibility for existing automation and tokens.
-* **Granular permissions are additive.** For any API request on a specific Tunnel or Mesh node, access is granted if the principal has **either** the account-level role **or** a granular permission for that resource.
-* **Resource enumeration is authorization-aware.** Listing endpoints (`GET /accounts/{id}/cfd_tunnel`, `GET /accounts/{id}/warp_connector`) return only the resources the principal has at least read access to.
+- **Existing account-level roles continue to work.** A member with `Cloudflare Access` or `Cloudflare Zero Trust` retains write access to every Tunnel and Mesh node in the account. This ensures backward compatibility for existing automation and tokens.
+- **Granular permissions are additive.** For any API request on a specific Tunnel or Mesh node, access is granted if the principal has **either** the account-level role **or** a granular permission for that resource.
+- **Resource enumeration is authorization-aware.** Listing endpoints ( `GET /accounts/{id}/cfd_tunnel`, `GET /accounts/{id}/warp_connector`) return only the resources the principal has at least read access to.
 
 #### Get started
 
-* Configure [granular permissions for Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/guides/granular-permissions/).
-* Configure [granular permissions for Cloudflare Tunnel and Cloudflare Mesh in Cloudflare One](https://developers.cloudflare.com/cloudflare-one/networks/connectors/granular-permissions/).
-* Review the [resource-scoped roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/#resource-scoped-roles) on the Cloudflare role reference.
+- Configure [granular permissions for Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/guides/granular-permissions/).
+- Configure [granular permissions for Cloudflare Tunnel and Cloudflare Mesh in Cloudflare One](https://developers.cloudflare.com/cloudflare-one/networks/connectors/granular-permissions/).
+- Review the [resource-scoped roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/#resource-scoped-roles) on the Cloudflare role reference.
 
 ## 2026-05-19
 
@@ -2156,8 +2204,8 @@ Cloudflare is now the **default identity provider for all newly created Zero Tru
 
 This also enables two new capabilities:
 
-* **Cloudflare Account Member selector** — A new [policy selector](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#cloudflare-access-selectors) that matches users based on their membership in a Cloudflare account. You can target the current account or specify a different account ID for cross-account access scenarios.
-* **Restrict to account members** — An identity provider configuration option that limits authentication to users who are members of your Cloudflare account.
+- **Cloudflare Account Member selector** — A new [policy selector](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#cloudflare-access-selectors) that matches users based on their membership in a Cloudflare account. You can target the current account or specify a different account ID for cross-account access scenarios.
+- **Restrict to account members** — An identity provider configuration option that limits authentication to users who are members of your Cloudflare account.
 
 To get started, add Cloudflare as an [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/cloudflare/) in your Zero Trust settings.
 
@@ -2176,11 +2224,11 @@ The Claude Compliance API provides structured access to audit logs and administr
 
 Starting today, security teams can scan for security findings across the following assets:
 
-* **Public projects** — Projects set to public visibility
-* **Project attachment** — Files and documents added to projects that violate DLP policies
-* **Chat files** — User-uploaded and provider-generated files that violate DLP policies
-* **Chat messages** — User prompts and provider responses that violate DLP policies
-* **Artifacts** — Provider-generated documents and files that violate DLP policies
+- **Public projects** — Projects set to public visibility
+- **Project attachment** — Files and documents added to projects that violate DLP policies
+- **Chat files** — User-uploaded and provider-generated files that violate DLP policies
+- **Chat messages** — User prompts and provider responses that violate DLP policies
+- **Artifacts** — Provider-generated documents and files that violate DLP policies
 
 #### Learn more
 
@@ -2188,7 +2236,7 @@ This [integration](https://developers.cloudflare.com/cloudflare-one/integrations
 
 ## 2026-05-18
 
-[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)[Magic Transit](https://developers.cloudflare.com/magic-transit/)
+[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) [Magic Transit](https://developers.cloudflare.com/magic-transit/)
 
 
 **Network Analytics support for Unified Routing**
@@ -2201,7 +2249,7 @@ For the remaining beta limitations, refer to [Traffic steering beta limitations]
 
 ## 2026-05-12
 
-[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Refreshed Access login page**
@@ -2218,14 +2266,14 @@ The [Access login page](https://developers.cloudflare.com/cloudflare-one/reusabl
 
 The updated login experience includes:
 
-* **Unified authentication card** \- All sign-in options (identity provider buttons, email input, OTP) now appear in a single card with consistent styling, replacing the previous multi-section layout.
-* **Consistent button styling** \- Identity provider buttons use a uniform size and layout for easier scanning and selection.
-* **Better mobile experience** \- Responsive layout improvements ensure the login page renders correctly on phones and tablets.
-* **Dark mode support** \- The login page now supports dark mode.
+- **Unified authentication card** - All sign-in options (identity provider buttons, email input, OTP) now appear in a single card with consistent styling, replacing the previous multi-section layout.
+- **Consistent button styling** - Identity provider buttons use a uniform size and layout for easier scanning and selection.
+- **Better mobile experience** - Responsive layout improvements ensure the login page renders correctly on phones and tablets.
+- **Dark mode support** - The login page now supports dark mode.
 
 ## 2026-05-12
 
-[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)[Magic Transit](https://developers.cloudflare.com/magic-transit/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) [Magic Transit](https://developers.cloudflare.com/magic-transit/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **New accounts assigned a single IPv4 anycast address**
@@ -2268,25 +2316,25 @@ A new GA release for the Windows Cloudflare One Client is now available on the [
 
 This release introduces the new Cloudflare One Client UI for Windows! You can expect a cleaner and more intuitive design as well as easier access to common actions and information. Here are some of the many things we have found our users appreciate:
 
-* Right click context menu to access the most common client actions quickly
-* Built-in captive portal login experience
+- Right click context menu to access the most common client actions quickly
+- Built-in captive portal login experience
 
 **Additional Changes and improvements**
 
-* Added a new CLI command: warp-cli mdm refresh. This command executes an immediate refresh of the Mobile Device Management (MDM) configuration file.
+- Added a new CLI command: warp-cli mdm refresh. This command executes an immediate refresh of the Mobile Device Management (MDM) configuration file.
 
 **Known issues**
 
-* Registration authentication for devices via the integrated WebView2 browser is unavailable in this version as a temporary measure. As a result, the client will utilize the default browser on the device to complete the authentication process.
-* An error indicating that Microsoft Edge can't read and write to its data directory may be displayed during captive portal login; this error is benign and can be dismissed.
-* Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
-* Split tunnel list configuration is not available in the new UI. Management of Split Tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
-* Windows ARM may prompt the user to close running applications while trying to install this version. Simply click “Ok” with the default highlighted option.
-* DNS resolution may be broken when the following conditions are all true:
-  * The client is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
-  * A custom DNS server address is configured on the primary network adapter.
-  * The custom DNS server address on the primary network adapter is changed while the client is connected.
-  To work around this issue, please reconnect the client by selecting "disconnect" and then "connect" in the client user interface.
+- Registration authentication for devices via the integrated WebView2 browser is unavailable in this version as a temporary measure. As a result, the client will utilize the default browser on the device to complete the authentication process.
+- An error indicating that Microsoft Edge can't read and write to its data directory may be displayed during captive portal login; this error is benign and can be dismissed.
+- Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+- Split tunnel list configuration is not available in the new UI. Management of Split Tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
+- Windows ARM may prompt the user to close running applications while trying to install this version. Simply click “Ok” with the default highlighted option.
+- DNS resolution may be broken when the following conditions are all true:
+  - The client is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  - A custom DNS server address is configured on the primary network adapter.
+  - The custom DNS server address on the primary network adapter is changed while the client is connected.
+     To work around this issue, please reconnect the client by selecting "disconnect" and then "connect" in the client user interface.
 
 ## 2026-05-11
 
@@ -2299,17 +2347,17 @@ A new GA release for the macOS Cloudflare One Client is now available on the [st
 
 This release introduces the new Cloudflare One Client UI for macOS! You can expect a cleaner and more intuitive design as well as easier access to common actions and information. Here are some of the many things we have found our users appreciate:
 
-* Right click context menu to access the most common client actions quickly
-* Built-in captive portal login experience
+- Right click context menu to access the most common client actions quickly
+- Built-in captive portal login experience
 
 **Additional Changes and improvements**
 
-* Added a new CLI command: warp-cli mdm refresh. This command executes an immediate refresh of the Mobile Device Management (MDM) configuration file.
+- Added a new CLI command: warp-cli mdm refresh. This command executes an immediate refresh of the Mobile Device Management (MDM) configuration file.
 
 **Known issues**
 
-* Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
-* Split tunnel list configuration is not available in the new UI. Management of split tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
+- Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+- Split tunnel list configuration is not available in the new UI. Management of split tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
 
 ## 2026-05-11
 
@@ -2322,22 +2370,22 @@ A new GA release for the Linux Cloudflare One Client is now available on the [st
 
 This release introduces the new Cloudflare One Client UI for Linux! You can expect a cleaner and more intuitive design as well as easier access to common actions and information. Here are some of the many things we have found our users appreciate:
 
-* Right click context menu to access the most common client actions quickly
-* Built-in captive portal login experience
+- Right click context menu to access the most common client actions quickly
+- Built-in captive portal login experience
 
 **Changes and improvements**
 
-* Added a new CLI command: warp-cli mdm refresh. This command executes an immediate refresh of the Mobile Device Management (MDM) configuration file.
-* Official support for RHEL 9 has been added for Cloudflare Mesh nodes. To install the RHEL 9 package, the Extra Packages for Enterprise Linux (EPEL) repository must be active, as it contains dependencies required for the tray icon and captive portal webview.
+- Added a new CLI command: warp-cli mdm refresh. This command executes an immediate refresh of the Mobile Device Management (MDM) configuration file.
+- Official support for RHEL 9 has been added for Cloudflare Mesh nodes. To install the RHEL 9 package, the Extra Packages for Enterprise Linux (EPEL) repository must be active, as it contains dependencies required for the tray icon and captive portal webview.
 
 **Known issues**
 
-* Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
-* Split tunnel list configuration is not available in the new UI. Management of split tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
+- Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+- Split tunnel list configuration is not available in the new UI. Management of split tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
 
 ## 2026-05-11
 
-[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)[Magic Transit](https://developers.cloudflare.com/magic-transit/)
+[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) [Magic Transit](https://developers.cloudflare.com/magic-transit/)
 
 
 **NAT-T support for IKE on UDP port 500**
@@ -2348,21 +2396,21 @@ Previously, devices behind NAT had to be configured to initiate IKE on UDP port 
 
 What changed:
 
-* Devices behind NAT can now initiate IKE on either UDP port `500` or UDP port `4500`.
-* Devices that start IKE on UDP port `500` and switch to UDP port `4500` after NAT detection now complete the handshake successfully.
-* No configuration change is required on Cloudflare. The change is available for all IPsec tunnels on Cloudflare WAN and Magic Transit.
+- Devices behind NAT can now initiate IKE on either UDP port `500` or UDP port `4500`.
+- Devices that start IKE on UDP port `500` and switch to UDP port `4500` after NAT detection now complete the handshake successfully.
+- No configuration change is required on Cloudflare. The change is available for all IPsec tunnels on Cloudflare WAN and Magic Transit.
 
 This change does not affect existing tunnels:
 
-* Tunnels using UDP port `500` with no NAT detected continue to operate as before.
-* Tunnels configured to start IKE on UDP port `4500` continue to operate as before.
-* NAT detection logic is unchanged.
+- Tunnels using UDP port `500` with no NAT detected continue to operate as before.
+- Tunnels configured to start IKE on UDP port `4500` continue to operate as before.
+- NAT detection logic is unchanged.
 
 For configuration details, refer to [GRE and IPsec tunnels](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/).
 
 ## 2026-05-07
 
-[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Custom DHCP options on Cloudflare One Appliance**
@@ -2375,15 +2423,15 @@ For details, refer to [DHCP server options](https://developers.cloudflare.com/cl
 
 ## 2026-05-07
 
-[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Source-based breakout and prioritization on Cloudflare One Appliance**
 
 Breakout and traffic prioritization rules on the Cloudflare One Appliance can now match by **source** in addition to destination application. You can pin breakout or priority behavior to:
 
-* A source LAN interface — VLANs attached to that LAN are included automatically.
-* A source IP address, range, or CIDR block.
+- A source LAN interface — VLANs attached to that LAN are included automatically.
+- A source IP address, range, or CIDR block.
 
 This is the natural way to break out a guest VLAN to the local Internet, or to prioritize traffic from a specific subnet, without enumerating destination applications.
 
@@ -2391,16 +2439,16 @@ For details, refer to [Breakout traffic](https://developers.cloudflare.com/cloud
 
 ## 2026-05-07
 
-[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Self-serve provisioning of Cloudflare One Virtual Appliance via API**
 
 You can now create, rotate, and delete Cloudflare One Virtual Appliance instances and their license keys directly via the API and Terraform.
 
-* Create a virtual appliance and receive a license key: `POST /accounts/{account_id}/magic/connectors` with `device.provision_license: true`.
-* Rotate the license key for an existing virtual appliance: `PATCH /accounts/{account_id}/magic/connectors/{connector_id}` with `provision_license: true`. The previous key is immediately and irrevocably revoked.
-* Delete a virtual appliance to release the associated licensed device.
+- Create a virtual appliance and receive a license key: `POST /accounts/{account_id}/magic/connectors` with `device.provision_license: true`.
+- Rotate the license key for an existing virtual appliance: `PATCH /accounts/{account_id}/magic/connectors/{connector_id}` with `provision_license: true`. The previous key is immediately and irrevocably revoked.
+- Delete a virtual appliance to release the associated licensed device.
 
 The license key is returned in the response only once, at create or rotate time. Copy and store it securely.
 
@@ -2419,7 +2467,7 @@ These summaries help users quickly understand the nature of a message without ne
 
 **These summaries are not trained on customer data.** They are generated using the outputs of our existing detection models and analysis systems.
 
-This feature is available for PhishNet with Office 365\. Support for Gmail will be available by the end of the quarter.
+This feature is available for PhishNet with Office 365. Support for Gmail will be available by the end of the quarter.
 
 ## 2026-05-06
 
@@ -2436,21 +2484,21 @@ To add an IPv6 route, follow the same steps as [adding an IPv4 route](https://de
 
 ## 2026-04-30
 
-[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Post-quantum IPsec interoperability with third-party devices**
 
 Cloudflare IPsec now supports post-quantum key agreement with compatible third-party devices. [Cisco ↗](https://www.cisco.com/) and [Fortinet ↗](https://www.fortinet.com/) are the first third-party vendors validated to interoperate with Cloudflare IPsec using ML-KEM (Module-Lattice-Based Key-Encapsulation Mechanism).
 
-Post-quantum IPsec uses [RFC 9370 ↗](https://datatracker.ietf.org/doc/rfc9370/) and [draft-ietf-ipsecme-ikev2-mlkem ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-mlkem/) to negotiate hybrid key agreement during the IKEv2 `IKE_INTERMEDIATE` phase. This combines classical Diffie-Hellman (Group 20) with ML-KEM-768 or ML-KEM-1024 to protect against [harvest-now, decrypt-later ↗](https://en.wikipedia.org/wiki/Harvest%5Fnow,%5Fdecrypt%5Flater) attacks.
+Post-quantum IPsec uses [RFC 9370 ↗](https://datatracker.ietf.org/doc/rfc9370/) and [draft-ietf-ipsecme-ikev2-mlkem ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-mlkem/) to negotiate hybrid key agreement during the IKEv2 `IKE_INTERMEDIATE` phase. This combines classical Diffie-Hellman (Group 20) with ML-KEM-768 or ML-KEM-1024 to protect against [harvest-now, decrypt-later ↗](https://en.wikipedia.org/wiki/Harvest_now,_decrypt_later) attacks.
 
 Key details:
 
-* Compatible with Cisco 8000 Series Secure Routers with IOS XR Release 26.1.1 and Fortinet FortiOS 7.6.6 and later.
-* Uses ML-KEM-768 or ML-KEM-1024 as an additional Key Exchange to DH Group 20.
-* Follows RFC 9370 and draft-ietf-ipsecme-ikev2-mlkem standards.
-* No additional licensing required.
+- Compatible with Cisco 8000 Series Secure Routers with IOS XR Release 26.1.1 and Fortinet FortiOS 7.6.6 and later.
+- Uses ML-KEM-768 or ML-KEM-1024 as an additional Key Exchange to DH Group 20.
+- Follows RFC 9370 and draft-ietf-ipsecme-ikev2-mlkem standards.
+- No additional licensing required.
 
 Post-quantum IPsec with third-party devices is now generally available with confirmed interoperability for the platforms listed above. Cloudflare intends to support interoperability with more vendors as they build out support for draft-ietf-ipsecme-ikev2-mlkem. Contact your account team to discuss support for additional vendors.
 
@@ -2497,9 +2545,10 @@ For the full list, refer to [Predefined detection entries](https://developers.cl
 
 Digital experience tests also have enhanced configuration options including:
 
-* New HTTP methods (DELETE, PATCH, POST, PUT)
-* Secret Store headers, custom plain text headers, and custom request bodies
-* Advanced settings: follow redirects, response bodies, response headers, and allow untrusted certificates
+- New HTTP methods (DELETE, PATCH, POST, PUT)
+- Secret Store headers, custom plain text headers, and custom request bodies
+- Advanced settings: follow redirects, response bodies, response headers, and allow untrusted certificates
+
 ![Digital experience test configuration for Cloudflare Access applications](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2840,height=1374,format=webp/_astro/dex_test_auth_config.CD3G3zb_.png)![Digital experience enhanced test configuration](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2840,height=1496,format=webp/_astro/dex_test_enhanced_config.Nsv7Vcob.png)
 
 ## 2026-04-29
@@ -2541,11 +2590,11 @@ IT teams can now remotely run speed tests from the [Cloudflare One Client](https
 
 Each speed test includes the following metrics:
 
-* Internet speed: download and upload throughput
-* Latency: download, upload, unloaded latency, and jitter
-* Network quality score: video streaming, webchat/real-time communication (RTC)
+- Internet speed: download and upload throughput
+- Latency: download, upload, unloaded latency, and jitter
+- Network quality score: video streaming, webchat/real-time communication (RTC)
 
-In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights** \> **Digital experience** \> **Diagnostics** and select **Run diagnostics** to use the feature today.
+In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights** > **Digital experience** > **Diagnostics** and select **Run diagnostics** to use the feature today.
 
 ![Cloudflare One client speed test result](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2906,height=1730,format=webp/_astro/dex_speed_test.DukupcRs.png)
 
@@ -2575,35 +2624,35 @@ Most predefined and custom DLP profiles match when any enabled detection entry m
 
 Detection entries included in the profile:
 
-* AU Passport Number
-* American Express Card Number
-* Diners Club Card Number
-* US Driver's License Number
-* Email Address
-* Full Name
-* US Mailing Address
-* Mastercard Card Number
-* US Individual Tax Identification Number (ITIN)
-* US Passport Number
-* US Phone Number
-* Union Pay Card Number
-* United States SSN Numeric Detection
-* Visa Card Number
+- AU Passport Number
+- American Express Card Number
+- Diners Club Card Number
+- US Driver's License Number
+- Email Address
+- Full Name
+- US Mailing Address
+- Mastercard Card Number
+- US Individual Tax Identification Number (ITIN)
+- US Passport Number
+- US Phone Number
+- Union Pay Card Number
+- United States SSN Numeric Detection
+- Visa Card Number
 
 For more information, refer to [predefined DLP profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/).
 
 ## 2026-04-24
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Network Session Logs now available for all on-ramps**
 
-[Zero Trust Network Session Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero%5Ftrust%5Fnetwork%5Fsessions/) are now generated for all traffic proxied through Cloudflare Gateway, regardless of on-ramp type. This includes traffic from [proxy endpoints (PAC files)](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) and [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) egress — on-ramps that previously did not generate session logs.
+[Zero Trust Network Session Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/) are now generated for all traffic proxied through Cloudflare Gateway, regardless of on-ramp type. This includes traffic from [proxy endpoints (PAC files)](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) and [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) egress — on-ramps that previously did not generate session logs.
 
 Customers who already consume the `zero_trust_network_sessions` dataset via [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/) or [Log Explorer](https://developers.cloudflare.com/log-explorer/) may see increased log volume if they use these on-ramps.
 
-For field definitions, refer to [Zero Trust Network Session Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero%5Ftrust%5Fnetwork%5Fsessions/). For traffic analysis, refer to [Network session analytics](https://developers.cloudflare.com/cloudflare-one/insights/analytics/network-sessions/).
+For field definitions, refer to [Zero Trust Network Session Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/). For traffic analysis, refer to [Network session analytics](https://developers.cloudflare.com/cloudflare-one/insights/analytics/network-sessions/).
 
 ## 2026-04-23
 
@@ -2614,14 +2663,14 @@ For field definitions, refer to [Zero Trust Network Session Logs](https://develo
 
 [Independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/) in Cloudflare Access now supports two additional organization-level controls:
 
-* **[Restrict authenticators by AAGUID](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#restrict-authenticators-by-aaguid)** — Limit enrollment to a specific set of WebAuthn authenticators using their [AAGUID ↗](https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-registry-v2.0-id-20180227.html#authenticator-attestation-guid). This is useful for organizations that require FIPS-validated security keys or company-issued hardware. AAGUIDs are managed through a new [List](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/) type.
-* **[AMR matching](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#use-identity-provider-mfa)** — Skip the independent MFA prompt when the identity provider has already performed an equivalent MFA. Access reads the `amr` claim defined in [RFC 8176 ↗](https://datatracker.ietf.org/doc/html/rfc8176) and matches supported values such as `hwk`, `otp`, and `fpt` to the authenticator types allowed on the application or policy. This prevents users from having to complete MFA twice when their identity provider already enforces it.
+- **[Restrict authenticators by AAGUID](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#restrict-authenticators-by-aaguid)** — Limit enrollment to a specific set of WebAuthn authenticators using their [AAGUID ↗](https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-registry-v2.0-id-20180227.html#authenticator-attestation-guid). This is useful for organizations that require FIPS-validated security keys or company-issued hardware. AAGUIDs are managed through a new [List](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/) type.
+- **[AMR matching](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#use-identity-provider-mfa)** — Skip the independent MFA prompt when the identity provider has already performed an equivalent MFA. Access reads the `amr` claim defined in [RFC 8176 ↗](https://datatracker.ietf.org/doc/html/rfc8176) and matches supported values such as `hwk`, `otp`, and `fpt` to the authenticator types allowed on the application or policy. This prevents users from having to complete MFA twice when their identity provider already enforces it.
 
 To get started, refer to [Independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/).
 
 ## 2026-04-21
 
-[Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/)[Magic Transit](https://developers.cloudflare.com/magic-transit/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) [Magic Transit](https://developers.cloudflare.com/magic-transit/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Country rules supported in Unified Routing**
@@ -2636,7 +2685,7 @@ For the full list of current beta limitations, refer to [Traffic steering beta l
 
 ## 2026-04-20
 
-[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **Network session analytics dashboard**
@@ -2647,22 +2696,22 @@ The new [Network session analytics](https://developers.cloudflare.com/cloudflare
 
 #### What you can do with Network session analytics
 
-* **Analyze geographic distribution**: View a world map showing where your network traffic originates, with a list of top locations by session count.
-* **Monitor key metrics**: Track session count, total bytes transferred, and unique users.
-* **Identify connection issues**: Analyze connection close reasons to troubleshoot network problems.
-* **Review protocol usage**: See which network protocols (TCP, UDP, ICMP) are most used.
+- **Analyze geographic distribution**: View a world map showing where your network traffic originates, with a list of top locations by session count.
+- **Monitor key metrics**: Track session count, total bytes transferred, and unique users.
+- **Identify connection issues**: Analyze connection close reasons to troubleshoot network problems.
+- **Review protocol usage**: See which network protocols (TCP, UDP, ICMP) are most used.
 
 #### Dashboard features
 
-* **Summary metrics**: Session count, bytes total, and unique users
-* **Traffic by location**: World map visualization and location list with top traffic sources
-* **Top protocols**: Breakdown of TCP, UDP, ICMP, and ICMPv6 traffic
-* **Connection close reasons**: Insights into why sessions terminated (client closed, origin closed, timeouts, errors)
+- **Summary metrics**: Session count, bytes total, and unique users
+- **Traffic by location**: World map visualization and location list with top traffic sources
+- **Top protocols**: Breakdown of TCP, UDP, ICMP, and ICMPv6 traffic
+- **Connection close reasons**: Insights into why sessions terminated (client closed, origin closed, timeouts, errors)
 
 #### How to access
 
 1. Log in to [Cloudflare One ↗](https://dash.cloudflare.com).
-2. Go to **Zero Trust** \> **Insights** \> **Dashboards**.
+2. Go to **Zero Trust** > **Insights** > **Dashboards**.
 3. Select **Network session analytics**.
 
 For more information, refer to the [Network session analytics documentation](https://developers.cloudflare.com/cloudflare-one/insights/analytics/network-sessions/).
@@ -2680,9 +2729,9 @@ For more information, refer to the [Network session analytics documentation](htt
 
 The homepage shows:
 
-* The portal name and organization branding
-* The MCP endpoint URL with a copy button
-* Per-client connection instructions for Claude Desktop, Workers AI Playground, OpenCode, Windsurf, and other MCP clients
+- The portal name and organization branding
+- The MCP endpoint URL with a copy button
+- Per-client connection instructions for Claude Desktop, Workers AI Playground, OpenCode, Windsurf, and other MCP clients
 
 Authenticated users see their email address and a **Sign out** button. Selecting **Sign out** revokes all portal-level OAuth grants, deletes upstream server OAuth states, and redirects through Cloudflare Access logout. A confirmation page shows a summary of the revoked sessions.
 
@@ -2701,9 +2750,9 @@ This feature also addresses common gaps in IdP-based MFA, such as inconsistent M
 
 Independent MFA supports the following authenticator types:
 
-* **Authenticator application** — Time-based one-time passwords (TOTP) using apps like Google Authenticator, Microsoft Authenticator, or Authy.
-* **Security key** — Hardware security keys such as YubiKeys.
-* **Biometrics** — Built-in device authenticators including Apple Touch ID, Apple Face ID, and Windows Hello.
+- **Authenticator application** — Time-based one-time passwords (TOTP) using apps like Google Authenticator, Microsoft Authenticator, or Authy.
+- **Security key** — Hardware security keys such as YubiKeys.
+- **Biometrics** — Built-in device authenticators including Apple Touch ID, Apple Face ID, and Windows Hello.
 
 Note
 
@@ -2713,11 +2762,11 @@ Infrastructure applications do not yet support independent MFA.
 
 You can configure MFA requirements at three levels:
 
-| Level            | Description                                                    |
-| ---------------- | -------------------------------------------------------------- |
-| **Organization** | Enforce MFA by default for all applications in your account.   |
-| **Application**  | Require or turn off MFA for a specific application.            |
-| **Policy**       | Require or turn off MFA for users who match a specific policy. |
+| Level | Description |
+| --- | --- |
+| **Organization** | Enforce MFA by default for all applications in your account. |
+| **Application** | Require or turn off MFA for a specific application. |
+| **Policy** | Require or turn off MFA for users who match a specific policy. |
 
 Settings at lower levels (policy) override settings at higher levels (organization), giving you granular control over MFA enforcement.
 
@@ -2740,9 +2789,10 @@ The Cloudflare One dashboard now features redesigned builders for two core workf
 
 The Gateway rule builder now features a redesigned user experience, bringing it in line with the Access policy builder experience. Improvements include:
 
-* **Streamlined UX** with clearer states and improved user interactions
-* **Wirefilter editing** for viewing and editing Gateway rules directly from wirefilter expressions
-* **Preview state** to review the impact of your policy in a simple graphic
+- **Streamlined UX** with clearer states and improved user interactions
+- **Wirefilter editing** for viewing and editing Gateway rules directly from wirefilter expressions
+- **Preview state** to review the impact of your policy in a simple graphic
+
 ![New Gateway rule builder](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1280,height=1494,format=webp/_astro/gateway-rule-builder.BxvzsN8s.png)
 
 For more information, refer to [Traffic policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/).
@@ -2751,10 +2801,11 @@ For more information, refer to [Traffic policies](https://developers.cloudflare.
 
 The self-hosted Access application builder now offers a simplified creation workflow with fewer steps from setup to save. Improvements include:
 
-* **New application selection experience** that makes choosing the right application type before you begin easier.
-* **Streamlined creation flow** with fewer clicks to build and save an application
-* **Inline policy creation** for building Access policies directly within the application creation flow
-* **Preview state** to understand how your policies enforce user access before saving
+- **New application selection experience** that makes choosing the right application type before you begin easier.
+- **Streamlined creation flow** with fewer clicks to build and save an application
+- **Inline policy creation** for building Access policies directly within the application creation flow
+- **Preview state** to understand how your policies enforce user access before saving
+
 ![New Access application builder](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1970,height=1104,format=webp/_astro/access-application-builder.B__yqGin.png)
 
 For more information, refer to [self-hosted applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/).
@@ -2779,9 +2830,9 @@ The last seen timestamp for [Cloudflare One Client](https://developers.cloudflar
 
 Key changes:
 
-* **Consistent enforcement**: Settings configured at the account level apply to all DLP profiles
-* **Simplified migration**: Settings enabled on any profile are automatically migrated to account level
-* **Deprecation notice**: Profile-level advanced settings will be deprecated in a future release
+- **Consistent enforcement**: Settings configured at the account level apply to all DLP profiles
+- **Simplified migration**: Settings enabled on any profile are automatically migrated to account level
+- **Deprecation notice**: Profile-level advanced settings will be deprecated in a future release
 
 **Migration details:**
 
@@ -2804,18 +2855,18 @@ For more details, refer to the [DLP settings documentation](https://developers.c
 
 #### What Cloudflare Mesh does
 
-* Assigns a private [Mesh IP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/#mesh-ips) to every enrolled device and node.
-* Enables any participant to reach any other participant by IP — including client-to-client, without deploying any infrastructure.
-* Supports [CIDR routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/) for subnet routing through Mesh nodes.
-* Supports [high availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) with active-passive replicas for nodes with routes.
-* All traffic flows through Cloudflare, so [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/), [device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/), and access rules apply to every connection.
+- Assigns a private [Mesh IP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/#mesh-ips) to every enrolled device and node.
+- Enables any participant to reach any other participant by IP — including client-to-client, without deploying any infrastructure.
+- Supports [CIDR routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/) for subnet routing through Mesh nodes.
+- Supports [high availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) with active-passive replicas for nodes with routes.
+- All traffic flows through Cloudflare, so [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/), [device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/), and access rules apply to every connection.
 
 #### What changed
 
-* **WARP Connector** is now **Cloudflare Mesh**. Existing WARP Connectors are now called mesh nodes. All existing deployments continue to work — no migration required.
-* **Peer-to-peer connectivity** is now called **Mesh connectivity** and is part of the Cloudflare Mesh documentation.
-* **Mesh node limit** increased from 10 to **50 per account**.
-* New [dashboard experience ↗](https://dash.cloudflare.com/?to=/:account/mesh) at **Networking** \> **Mesh** with an interactive network map, node management, route configuration, diagnostics, and a setup wizard.
+- **WARP Connector** is now **Cloudflare Mesh**. Existing WARP Connectors are now called mesh nodes. All existing deployments continue to work — no migration required.
+- **Peer-to-peer connectivity** is now called **Mesh connectivity** and is part of the Cloudflare Mesh documentation.
+- **Mesh node limit** increased from 10 to **50 per account**.
+- New [dashboard experience ↗](https://dash.cloudflare.com/?to=/:account/mesh) at **Networking** > **Mesh** with an interactive network map, node management, route configuration, diagnostics, and a setup wizard.
 
 #### Get started
 
@@ -2830,11 +2881,11 @@ Refer to the [Cloudflare Mesh documentation](https://developers.cloudflare.com/c
 
 The **Credentials and Secrets** DLP profile now includes three new predefined entries for detecting Cloudflare API credentials:
 
-| Entry name                         | Token prefix | Detects                   |
-| ---------------------------------- | ------------ | ------------------------- |
-| Cloudflare User API Key            | cfk\_        | User-scoped API keys      |
-| Cloudflare User API Token          | cfut\_       | User-scoped API tokens    |
-| Cloudflare Account Owned API Token | cfat\_       | Account-scoped API tokens |
+| Entry name | Token prefix | Detects |
+| --- | --- | --- |
+| Cloudflare User API Key | `cfk_` | User-scoped API keys |
+| Cloudflare User API Token | `cfut_` | User-scoped API tokens |
+| Cloudflare Account Owned API Token | `cfat_` | Account-scoped API tokens |
 
 These detections target the new [Cloudflare API credential format](https://developers.cloudflare.com/fundamentals/api/get-started/token-formats/), which uses a structured prefix and a CRC32 checksum suffix. The identifiable prefix makes it possible to detect leaked credentials with high confidence and low false positive rates — no surrounding context such as `Authorization: Bearer` headers is required.
 
@@ -2842,16 +2893,16 @@ Credentials generated before this format change will not be matched by these ent
 
 #### How to enable Cloudflare API token detections
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **DLP** \> **DLP Profiles**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **DLP** > **DLP Profiles**.
 2. Select the **Credentials and Secrets** profile.
 3. Turn on one or more of the new Cloudflare API token entries.
 4. Use the profile in a Gateway HTTP policy to log or block traffic containing these credentials.
 
 Example policy:
 
-| Selector    | Operator | Value                     | Action |
-| ----------- | -------- | ------------------------- | ------ |
-| DLP Profile | in       | _Credentials and Secrets_ | Block  |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| DLP Profile | in | *Credentials and Secrets* | Block |
 
 You can also enable individual entries to scope detection to specific credential types — for example, enabling **Account Owned API Token** detection without enabling **User API Key** detection.
 
@@ -2859,20 +2910,20 @@ For more information, refer to [predefined DLP profiles](https://developers.clou
 
 ## 2026-04-14
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
 
 
 **Configure how sensitive data appears in DLP payload logs**
 
 You can now configure how sensitive data matches are displayed in your DLP payload match logs — giving your incident response team the context they need to validate alerts without compromising your security posture.
 
-To get started, go to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), select **Zero Trust** \> **Data loss prevention** \> **DLP settings** and find the **Payload log masking** card.
+To get started, go to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), select **Zero Trust** > **Data loss prevention** > **DLP settings** and find the **Payload log masking** card.
 
 Previously, all DLP payload logs used a single masking mode that obscured matched data entirely and hid the original character count, making it difficult to distinguish true positives from false positives. This update introduces three options:
 
-* **Full Mask (default):** Masks the match while preserving character count and visual formatting (for example, `***-**-****` for a Social Security Number). This is an improvement over the previous default, which did not preserve character count.
-* **Partial Mask:** Reveals 25% of the matched content while masking the remainder (for example, `***-**-6789`).
-* **Clear Text:** Stores the full, unmasked violation for deep investigation (for example, `123-45-6789`).
+- **Full Mask (default):** Masks the match while preserving character count and visual formatting (for example, `***-**-****` for a Social Security Number). This is an improvement over the previous default, which did not preserve character count.
+- **Partial Mask:** Reveals 25% of the matched content while masking the remainder (for example, `***-**-6789`).
+- **Clear Text:** Stores the full, unmasked violation for deep investigation (for example, `123-45-6789`).
 
 **Important:** The masking level you select is applied at detection time, before the payload is encrypted. This means the chosen format is what your team will see after decrypting the log with your private key — the existing encryption workflow is unchanged.
 
@@ -2891,10 +2942,10 @@ Remote Browser Isolation now supports **Canvas Remoting**, improving performance
 
 #### Key improvements
 
-* **10x bandwidth reduction:** Microsoft Word and other Office apps use 90% less bandwidth
-* **Smooth performance:** Google Sheets maintains consistent 30fps rendering
-* **Responsive terminals:** Web-based development environments and AI notebooks work in real-time
-* **Zero configuration:** Enabled by default for all Browser Isolation customers
+- **10x bandwidth reduction:** Microsoft Word and other Office apps use 90% less bandwidth
+- **Smooth performance:** Google Sheets maintains consistent 30fps rendering
+- **Responsive terminals:** Web-based development environments and AI notebooks work in real-time
+- **Zero configuration:** Enabled by default for all Browser Isolation customers
 
 #### How it works
 
@@ -2910,9 +2961,9 @@ This reduces bandwidth from hundreds of kilobytes per second to tens of kilobyte
 
 To temporarily disable for troubleshooting:
 
-* Right-click the isolated webpage background
-* Select **Disable Canvas Remoting**
-* Re-enable the same way by selecting **Enable Canvas Remoting**
+- Right-click the isolated webpage background
+- Select **Disable Canvas Remoting**
+- Re-enable the same way by selecting **Enable Canvas Remoting**
 
 #### Limitations
 
@@ -2929,19 +2980,19 @@ You can now use **CASB webhooks** in Cloudflare One to send posture finding inst
 
 This gives security teams a simple way to route CASB posture findings into the tools and workflows they already use for triage and response.
 
-To get started, go to **Integrations** \> **Webhooks** in the Cloudflare One dashboard to create a webhook destination. After you configure a webhook, open a posture finding instance and select **Send webhook** to send it.
+To get started, go to **Integrations** > **Webhooks** in the Cloudflare One dashboard to create a webhook destination. After you configure a webhook, open a posture finding instance and select **Send webhook** to send it.
 
 #### Key capabilities
 
-* **Flexible authentication** — Configure destinations using **None**, **Basic Auth**, **Bearer Auth**, **Static Headers**, or **HMAC-Signing**.
-* **Built-in testing** — Use **Test delivery** to send a test request before sending a live finding instance.
-* **Posture finding workflows** — Send posture finding instances directly from the finding details workflow in **Cloud & SaaS findings**.
-* **HTTPS destinations** — Configure webhook destinations with public `https://` URLs.
+- **Flexible authentication** — Configure destinations using **None**, **Basic Auth**, **Bearer Auth**, **Static Headers**, or **HMAC-Signing**.
+- **Built-in testing** — Use **Test delivery** to send a test request before sending a live finding instance.
+- **Posture finding workflows** — Send posture finding instances directly from the finding details workflow in **Cloud & SaaS findings**.
+- **HTTPS destinations** — Configure webhook destinations with public `https://` URLs.
 
 #### Learn more
 
-* Configure [CASB webhooks](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/) in Cloudflare.
-* Learn how to [manage findings](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/) in Cloudflare.
+- Configure [CASB webhooks](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/) in Cloudflare.
+- Learn how to [manage findings](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/) in Cloudflare.
 
 CASB webhooks are now available in Cloudflare One.
 
@@ -2958,8 +3009,8 @@ Cloudflare One's **User Risk Scoring** now incorporates direct signals from **Ga
 
 Browsing activity is a primary indicator of potential compromise. By tying Gateway DNS logs to specific users, administrators can now flag individuals interacting with:
 
-* **Security threats**: Domains associated with malware, phishing, or command-and-control (C2) centers.
-* **High-risk content**: Categories such as questionable content or violence that may violate corporate compliance.
+- **Security threats**: Domains associated with malware, phishing, or command-and-control (C2) centers.
+- **High-risk content**: Categories such as questionable content or violence that may violate corporate compliance.
 
 Even if a Gateway policy is set to **Block** the traffic, the interaction is still captured as a "hit" to ensure the user's risk profile reflects the attempted activity.
 
@@ -2967,8 +3018,8 @@ Even if a Gateway policy is set to **Block** the traffic, the interaction is sti
 
 Two new behaviors are now available in the dashboard:
 
-* **Suspicious Security Domain Visited**: Triggers when a user visits a domain in the security threats or security risk categories.
-* **High risk domain visited**: Triggers when a user visits domains categorized as questionable content, violence, or CIPA.
+- **Suspicious Security Domain Visited**: Triggers when a user visits a domain in the security threats or security risk categories.
+- **High risk domain visited**: Triggers when a user visits domains categorized as questionable content, violence, or CIPA.
 
 To learn more and get started, refer to the [User Risk Scoring documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/).
 
@@ -2987,31 +3038,31 @@ The next stable release for Windows will introduce the new Cloudflare One Client
 
 **Changes and improvements**
 
-* Fixed an issue causing Windows client tunnel interface initialization failure which prevented clients from establishing a tunnel for connection.
-* Consumer-only CLI commands are now clearly distinguished from Zero Trust commands.
-* Added detailed QUIC connection metrics to diagnostic logs for better troubleshooting.
-* Added monitoring for tunnel statistics collection timeouts.
-* Switched tunnel congestion control algorithm for local proxy mode to Cubic for improved reliability across platforms.
-* Fixed packet capture failing on tunnel interface when the tunnel interface is renamed by SCCM VPN boundary support.
-* Fixed unnecessary registration deletion caused by RDP connections in multi-user mode.
-* Fixed increased tunnel interface start-up time due to a race between duplicate address detection (DAD) and disabling NetBT.
-* Fixed tunnel failing to connect when the system DNS search list contains unexpected characters.
-* Empty MDM files are now rejected instead of being incorrectly accepted as a single MDM config.
-* Fixed an issue in local proxy mode where the client could become unresponsive due to upstream connection timeouts.
-* Fixed an issue where the emergency disconnect status of a prior organization persisted after a switch to a different organization.
-* Fixed initiating managed network detections checks when no network is available, which caused device profile flapping.
-* Fixed an issue where degraded Windows Management Instrumentation (WMI) state could put the client in a failed connection state loop during initialization.
+- Fixed an issue causing Windows client tunnel interface initialization failure which prevented clients from establishing a tunnel for connection.
+- Consumer-only CLI commands are now clearly distinguished from Zero Trust commands.
+- Added detailed QUIC connection metrics to diagnostic logs for better troubleshooting.
+- Added monitoring for tunnel statistics collection timeouts.
+- Switched tunnel congestion control algorithm for local proxy mode to Cubic for improved reliability across platforms.
+- Fixed packet capture failing on tunnel interface when the tunnel interface is renamed by SCCM VPN boundary support.
+- Fixed unnecessary registration deletion caused by RDP connections in multi-user mode.
+- Fixed increased tunnel interface start-up time due to a race between duplicate address detection (DAD) and disabling NetBT.
+- Fixed tunnel failing to connect when the system DNS search list contains unexpected characters.
+- Empty MDM files are now rejected instead of being incorrectly accepted as a single MDM config.
+- Fixed an issue in local proxy mode where the client could become unresponsive due to upstream connection timeouts.
+- Fixed an issue where the emergency disconnect status of a prior organization persisted after a switch to a different organization.
+- Fixed initiating managed network detections checks when no network is available, which caused device profile flapping.
+- Fixed an issue where degraded Windows Management Instrumentation (WMI) state could put the client in a failed connection state loop during initialization.
 
 **Known issues**
 
-* For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 version KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution. This warning will be omitted from future release notes. This Windows update was released in July 2025.
-* Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later. This warning will be omitted from future release notes. This Microsoft Security Intelligence update was released in May 2025.
-* DNS resolution may be broken when the following conditions are all true:
+- For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 version KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution. This warning will be omitted from future release notes. This Windows update was released in July 2025.
+- Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later. This warning will be omitted from future release notes. This Microsoft Security Intelligence update was released in May 2025.
+- DNS resolution may be broken when the following conditions are all true:
+  - The client is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  - A custom DNS server address is configured on the primary network adapter.
+  - The custom DNS server address on the primary network adapter is changed while the client is connected.
 
-  * The client is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
-  * A custom DNS server address is configured on the primary network adapter.
-  * The custom DNS server address on the primary network adapter is changed while the client is connected.
-To work around this issue, reconnect the client by selecting **Disconnect** and then **Connect** in the client user interface.
+  To work around this issue, reconnect the client by selecting **Disconnect** and then **Connect** in the client user interface.
 
 ## 2026-04-07
 
@@ -3022,20 +3073,20 @@ To work around this issue, reconnect the client by selecting **Disconnect** and 
 
 Cloudflare Email security now supports **Triage Status Tracking for User Submissions**. This enhancement gives SOC teams a streamlined way to track, manage, and prioritize user-submitted emails directly within the Cloudflare One dashboard.
 
-* The User Submissions table now includes a **Status** column with three states: **Unreviewed** (new submissions awaiting triage), **Reviewed** (submissions assessed by the SOC team), and **Escalated** (submissions escalated to team submissions for further investigation). Analysts can quickly update statuses and filter the table to focus on what needs attention.
-* SOC teams can now organize their triage workflows, avoid duplicate reviews, and make sure critical threats get escalated for deeper investigation—bringing order to the chaos of high-volume submission management.
+- The User Submissions table now includes a **Status** column with three states: **Unreviewed** (new submissions awaiting triage), **Reviewed** (submissions assessed by the SOC team), and **Escalated** (submissions escalated to team submissions for further investigation). Analysts can quickly update statuses and filter the table to focus on what needs attention.
+- SOC teams can now organize their triage workflows, avoid duplicate reviews, and make sure critical threats get escalated for deeper investigation—bringing order to the chaos of high-volume submission management.
 
 Triage Status Tracking is **automatically available** for all Email security customers using the user submissions feature. No additional configuration is required; customers just need to make sure user submissions are being sent to their user submission aliases.
 
 This applies to all Email security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2026-04-07
 
-[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Link aggregation (LACP) support for Cloudflare One Appliance**
@@ -3055,18 +3106,18 @@ To configure a Link Aggregation Group, refer to [Configure link aggregation grou
 
 Cloudflare Email Security now supports DANE (DNS-based Authentication of Named Entities) for MX deployments. This enhancement strengthens email transport security by enabling DNSSEC-backed certificate verification for our regional MX records.
 
-* Regional MX hostnames now publish DANE TLSA records backed by DNSSEC, enabling DANE-capable SMTP senders to cryptographically validate certificate identities before establishing TLS connections—moving beyond opportunistic encryption to verified encrypted delivery.
-* DANE support is automatically available for all customers using regional MX deployments. No additional configuration is required; DANE-capable mail infrastructure will automatically validate MX certificates using the published records.
+- Regional MX hostnames now publish DANE TLSA records backed by DNSSEC, enabling DANE-capable SMTP senders to cryptographically validate certificate identities before establishing TLS connections—moving beyond opportunistic encryption to verified encrypted delivery.
+- DANE support is automatically available for all customers using regional MX deployments. No additional configuration is required; DANE-capable mail infrastructure will automatically validate MX certificates using the published records.
 
 This applies to all Email Security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2026-04-06
 
-[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[Organizations](https://developers.cloudflare.com/fundamentals/organizations/)
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Organizations](https://developers.cloudflare.com/fundamentals/organizations/)
 
 
 **Organizations is now in public beta for enterprises**
@@ -3075,7 +3126,7 @@ We're announcing the public beta of **Organizations** for enterprise customers, 
 
 **What's New**
 
-**Organizations \[BETA\]**: [Organizations](https://developers.cloudflare.com/fundamentals/organizations/) are a new top-level container for centrally managing multiple accounts. Each Organization supports up to 500 accounts and 5000 zones, giving larger teams a single place to administer resources at scale.
+**Organizations \[BETA]**: [Organizations](https://developers.cloudflare.com/fundamentals/organizations/) are a new top-level container for centrally managing multiple accounts. Each Organization supports up to 500 accounts and 5000 zones, giving larger teams a single place to administer resources at scale.
 
 **Self-serve onboarding**: Enterprise customers can [create an Organization](https://developers.cloudflare.com/fundamentals/organizations/setup/) in the dashboard and assign accounts where they are already Super Administrators.
 
@@ -3093,9 +3144,9 @@ Organizations is in Public Beta. You must have an Enterprise account to create a
 
 For more info:
 
-* [Get started with Organizations](https://developers.cloudflare.com/fundamentals/organizations/)
-* [Set up your Organization](https://developers.cloudflare.com/fundamentals/organizations/setup/)
-* [Review limitations](https://developers.cloudflare.com/fundamentals/organizations/limitations/)
+- [Get started with Organizations](https://developers.cloudflare.com/fundamentals/organizations/)
+- [Set up your Organization](https://developers.cloudflare.com/fundamentals/organizations/setup/)
+- [Review limitations](https://developers.cloudflare.com/fundamentals/organizations/limitations/)
 
 ## 2026-04-02
 
@@ -3112,14 +3163,14 @@ The next stable release for macOS will introduce the new Cloudflare One Client U
 
 **Changes and improvements**
 
-* Empty MDM files are now rejected instead of being incorrectly accepted as a single MDM config.
-* Fixed an issue in local proxy mode where the client could become unresponsive due to upstream connection timeouts.
-* Fixed an issue where the emergency disconnect status of a prior organization persisted after a switch to a different organization.
-* Consumer-only CLI commands are now clearly distinguished from Zero Trust commands.
-* Added detailed QUIC connection metrics to diagnostic logs for better troubleshooting.
-* Added monitoring for tunnel statistics collection timeouts.
-* Switched tunnel congestion control algorithm for local proxy mode to Cubic for improved reliability across platforms.
-* Fixed initiating managed network detections checks when no network is available, which caused device profile flapping.
+- Empty MDM files are now rejected instead of being incorrectly accepted as a single MDM config.
+- Fixed an issue in local proxy mode where the client could become unresponsive due to upstream connection timeouts.
+- Fixed an issue where the emergency disconnect status of a prior organization persisted after a switch to a different organization.
+- Consumer-only CLI commands are now clearly distinguished from Zero Trust commands.
+- Added detailed QUIC connection metrics to diagnostic logs for better troubleshooting.
+- Added monitoring for tunnel statistics collection timeouts.
+- Switched tunnel congestion control algorithm for local proxy mode to Cubic for improved reliability across platforms.
+- Fixed initiating managed network detections checks when no network is available, which caused device profile flapping.
 
 ## 2026-04-02
 
@@ -3136,14 +3187,14 @@ The next stable release for Linux will introduce the new Cloudflare One Client U
 
 **Changes and improvements**
 
-* Empty MDM files are now rejected instead of being incorrectly accepted as a single MDM config.
-* Fixed an issue in local proxy mode where the client could become unresponsive due to upstream connection timeouts.
-* Fixed an issue where the emergency disconnect status of a prior organization persisted after a switch to a different organization.
-* Consumer-only CLI commands are now clearly distinguished from Zero Trust commands.
-* Added detailed QUIC connection metrics to diagnostic logs for better troubleshooting.
-* Added monitoring for tunnel statistics collection timeouts.
-* Switched tunnel congestion control algorithm for local proxy mode to Cubic for improved reliability across platforms.
-* Fixed initiating managed network detections checks when no network is available, which caused device profile flapping.
+- Empty MDM files are now rejected instead of being incorrectly accepted as a single MDM config.
+- Fixed an issue in local proxy mode where the client could become unresponsive due to upstream connection timeouts.
+- Fixed an issue where the emergency disconnect status of a prior organization persisted after a switch to a different organization.
+- Consumer-only CLI commands are now clearly distinguished from Zero Trust commands.
+- Added detailed QUIC connection metrics to diagnostic logs for better troubleshooting.
+- Added monitoring for tunnel statistics collection timeouts.
+- Switched tunnel congestion control algorithm for local proxy mode to Cubic for improved reliability across platforms.
+- Fixed initiating managed network detections checks when no network is available, which caused device profile flapping.
 
 ## 2026-04-02
 
@@ -3162,8 +3213,8 @@ https://<subdomain>.<domain>/authorize?elicitationId=<ELICITATION_ID>
 
 From the server selection page you can:
 
-* **Enable or disable servers** — Toggle individual upstream MCP servers on or off. Disabling a server removes its tools from the active session, which reduces context window usage.
-* **Log out and reauthenticate** — Log out of a server and log back in to change which data the server has access to, or to reauthenticate with different permissions.
+- **Enable or disable servers** — Toggle individual upstream MCP servers on or off. Disabling a server removes its tools from the active session, which reduces context window usage.
+- **Log out and reauthenticate** — Log out of a server and log back in to change which data the server has access to, or to reauthenticate with different permissions.
 
 Users can also enable or disable a server inline by asking their AI agent directly, for example "enable the wiki server" or "disable my Jira server."
 
@@ -3173,7 +3224,7 @@ For more information, refer to [Manage portal sessions](https://developers.cloud
 
 ## 2026-04-01
 
-[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **Logs UI refresh**
@@ -3184,10 +3235,10 @@ Access authentication logs and Gateway activity logs (DNS, Network, and HTTP) no
 
 The updated UI includes:
 
-* **Filter by field** \- Select any field value to add it as a filter and narrow down your results.
-* **Customizable fields** \- Choose which fields to display in the log table. Querying for fewer fields improves log loading performance.
-* **View details** \- Select a timestamp to view the full details of a log entry.
-* **Switch to classic view** \- Return to the previous log viewer interface if needed.
+- **Filter by field** - Select any field value to add it as a filter and narrow down your results.
+- **Customizable fields** - Choose which fields to display in the log table. Querying for fewer fields improves log loading performance.
+- **View details** - Select a timestamp to view the full details of a log entry.
+- **Switch to classic view** - Return to the previous log viewer interface if needed.
 
 For more information, refer to [Access authentication logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/access-authentication-logs/) and [Gateway activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/).
 
@@ -3200,7 +3251,7 @@ For more information, refer to [Access authentication logs](https://developers.c
 
 [MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) support [Code Mode MCP server patterns](https://developers.cloudflare.com/agents/model-context-protocol/codemode/), a technique that reduces context window usage by replacing individual tool definitions with a single code execution tool. Code Mode is turned on by default on all portals.
 
-To turn it off, edit the portal in **Access controls** \> **AI controls** and turn off **Code Mode** under **Basic information**.
+To turn it off, edit the portal in **Access controls** > **AI controls** and turn off **Code Mode** under **Basic information**.
 
 When Code Mode is active, the portal exposes a single `code` tool instead of listing every tool from every upstream MCP server. The connected AI agent writes JavaScript that calls typed `codemode.*` methods for each upstream tool. The generated code runs in an isolated [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) environment, keeping authentication credentials and environment variables out of the model context.
 
@@ -3265,16 +3316,16 @@ Gateway now includes a predefined DLP profile called **Unsanitized HAR** that de
 
 #### How to configure a HAR file policy
 
-In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall Policies** \> **HTTP** and create a new HTTP policy using the **DLP Profile** selector:
+In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall Policies** > **HTTP** and create a new HTTP policy using the **DLP Profile** selector:
 
-| Selector    | Operator | Value             | Action |
-| ----------- | -------- | ----------------- | ------ |
-| DLP Profile | in       | _Unsanitized HAR_ |        |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| DLP Profile | in | *Unsanitized HAR* | |
 
 Then choose one of the following actions:
 
-* **Block**: Prevents the upload of any HAR file that has not been sanitized by Cloudflare's sanitizer. Use this for strict environments where HAR file sharing must be disallowed entirely.
-* **Block** with **Gateway Redirect**: Intercepts the upload and redirects the user to `https://har-sanitizer.pages.dev/`, where they can sanitize the file. Once sanitized, the user can re-upload the clean file and proceed with their workflow.
+- **Block**: Prevents the upload of any HAR file that has not been sanitized by Cloudflare's sanitizer. Use this for strict environments where HAR file sharing must be disallowed entirely.
+- **Block** with **Gateway Redirect**: Intercepts the upload and redirects the user to `https://har-sanitizer.pages.dev/`, where they can sanitize the file. Once sanitized, the user can re-upload the clean file and proceed with their workflow.
 
 #### Sanitized HAR recognition
 
@@ -3297,9 +3348,9 @@ Cloudflare Gateway now supports [OIDC Claims](https://developers.cloudflare.com/
 
 With this update, you can:
 
-* Filter traffic in [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) firewall policies based on OIDC claim values.
-* Apply custom [resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) to route DNS queries to specific resolvers depending on a user's OIDC claims.
-* Control [egress policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/) to assign dedicated egress IPs based on OIDC claim attributes.
+- Filter traffic in [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) firewall policies based on OIDC claim values.
+- Apply custom [resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) to route DNS queries to specific resolvers depending on a user's OIDC claims.
+- Control [egress policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/) to assign dedicated egress IPs based on OIDC claim attributes.
 
 For example, you can create a policy that routes traffic differently for users with `department=engineering` in their OIDC claims, or restrict access to certain destinations based on a user's role claim.
 
@@ -3328,9 +3379,9 @@ Note
 
 For MCP server portals, managed OAuth is enabled by default on new portals. It remains opt-in for self-hosted applications.
 
-To enable managed OAuth, go to **Zero Trust** \> **Access controls** \> **Applications**, edit the application, and turn on **Managed OAuth** under **Advanced settings**.
+To enable managed OAuth, go to **Zero Trust** > **Access controls** > **Applications**, edit the application, and turn on **Managed OAuth** under **Advanced settings**.
 
-You can also enable it via the API by setting `oauth_configuration.enabled` to `true` on the [Access applications endpoint](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/applications/methods/update/).
+You can also enable it via the API by setting `oauth_configuration.enabled` to `true` on the [Access applications endpoint](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/update/).
 
 ![Managed OAuth settings in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2914,height=1042,format=webp/_astro/managed-oauth.BirLnBpy.png)
 
@@ -3351,7 +3402,7 @@ Note
 
 DLP [AI prompt profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/#ai-prompt) do not apply to MCP server portal traffic.
 
-To enable Gateway routing, go to **Access controls** \> **AI controls**, edit the portal, and turn on **Route traffic through Cloudflare Gateway** under **Basic information**.
+To enable Gateway routing, go to **Access controls** > **AI controls**, edit the portal, and turn on **Route traffic through Cloudflare Gateway** under **Basic information**.
 
 ![Route MCP server portal traffic through Cloudflare Gateway](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1568,height=158,format=webp/_astro/portal-route-through-gateway.0KMUAXBm.png)
 
@@ -3359,7 +3410,7 @@ For more details, refer to [Route traffic through Gateway](https://developers.cl
 
 ## 2026-03-20
 
-[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 
 **Stream logs from multiple replicas of Cloudflare Tunnel simultaneously**
@@ -3370,8 +3421,8 @@ In the Cloudflare One dashboard, the overview page for a specific Cloudflare Tun
 
 Previously, you could only stream logs from one replica at a time. With this update:
 
-* **Replicas on the tunnel overview** — All active replicas for the selected tunnel now appear on that tunnel's overview page under **Connectors**. Select any replica to stream its logs.
-* **Multi-connector log streaming** — Stream logs from multiple replicas simultaneously, making it easier to correlate events across your infrastructure during debugging or incident response. To try it out, log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/) and go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**. Select **View logs** next to the tunnel you want to monitor.
+- **Replicas on the tunnel overview** — All active replicas for the selected tunnel now appear on that tunnel's overview page under **Connectors**. Select any replica to stream its logs.
+- **Multi-connector log streaming** — Stream logs from multiple replicas simultaneously, making it easier to correlate events across your infrastructure during debugging or incident response. To try it out, log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/) and go to **Networks** > **Connectors** > **Cloudflare Tunnels**. Select **View logs** next to the tunnel you want to monitor.
 
 For more information, refer to [Tunnel log streams](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/logs/) and [Deploy replicas](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/deploy-replicas/).
 
@@ -3384,19 +3435,19 @@ For more information, refer to [Tunnel log streams](https://developers.cloudflar
 
 Investigations now support unlimited result paging in both the dashboard and the API, removing the previous 1,000-record cap. Security teams can page through complete result sets when searching across large mail volumes, giving SOC analysts and automated workflows deeper visibility for forensics and threat hunting.
 
-In the dashboard, infinite paging is now supported in the Investigations view. The 1,000-record ceiling has been removed, so you can navigate through the full result set directly in the UI. The [Investigations API](https://developers.cloudflare.com/api/resources/email%5Fsecurity/subresources/investigate/methods/list) now returns up to 10,000 records per page (up from 1,000), with no cap on total result volume across pages.
+In the dashboard, infinite paging is now supported in the Investigations view. The 1,000-record ceiling has been removed, so you can navigate through the full result set directly in the UI. The [Investigations API](https://developers.cloudflare.com/api/resources/email_security/subresources/investigate/methods/list) now returns up to 10,000 records per page (up from 1,000), with no cap on total result volume across pages.
 
 For high-volume use cases, we recommend:
 
-* **[Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/email-security-logs/) to a SIEM** for full-fidelity datasets and long-term retention.
-* **SOAR playbooks** against the async bulk action API for large-scale remediation. Bulk actions initiated from the dashboard remain capped at 1,000 messages per action.
-* **The Investigations API** for report exports larger than 1,000 results, which is the dashboard download cap.
+- **[Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/email-security-logs/) to a SIEM** for full-fidelity datasets and long-term retention.
+- **SOAR playbooks** against the async bulk action API for large-scale remediation. Bulk actions initiated from the dashboard remain capped at 1,000 messages per action.
+- **The Investigations API** for report exports larger than 1,000 results, which is the dashboard download cap.
 
 This applies to all Email Security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2026-03-10
 
@@ -3411,20 +3462,20 @@ This release contains minor fixes and introduces a brand new visual style for th
 
 **Changes and improvements**
 
-* Empty MDM files are now rejected instead of being incorrectly accepted as a single MDM config.
-* Fixed an issue in proxy mode where the client could become unresponsive due to upstream connection timeouts.
-* Fixed emergency disconnect state from a previous organization incorrectly persisting after switching organizations.
-* Consumer-only CLI commands are now clearly distinguished from Zero Trust commands.
-* Added detailed QUIC connection metrics to diagnostic logs for better troubleshooting.
-* Added monitoring for tunnel statistics collection timeouts.
-* Switched tunnel congestion control algorithm to Cubic for improved reliability across platforms.
-* Fixed initiating managed network detection checks when no network is available, which caused device profile flapping.
+- Empty MDM files are now rejected instead of being incorrectly accepted as a single MDM config.
+- Fixed an issue in proxy mode where the client could become unresponsive due to upstream connection timeouts.
+- Fixed emergency disconnect state from a previous organization incorrectly persisting after switching organizations.
+- Consumer-only CLI commands are now clearly distinguished from Zero Trust commands.
+- Added detailed QUIC connection metrics to diagnostic logs for better troubleshooting.
+- Added monitoring for tunnel statistics collection timeouts.
+- Switched tunnel congestion control algorithm to Cubic for improved reliability across platforms.
+- Fixed initiating managed network detection checks when no network is available, which caused device profile flapping.
 
 **Known issues**
 
-* The client may become stuck in a `Connecting` state. To resolve this issue, reconnect the client by selecting **Disconnect** and then **Connect** in the client user interface. Alternatively, change the client's operation mode.
-* The client may display an empty white screen upon the device waking from sleep. To resolve this issue, exit and then open the client to re-launch it.
-* Canceling login during a single MDM configuration setup results in an empty page with no way to resume authentication. To work around this issue, exit and relaunch the client.
+- The client may become stuck in a `Connecting` state. To resolve this issue, reconnect the client by selecting **Disconnect** and then **Connect** in the client user interface. Alternatively, change the client's operation mode.
+- The client may display an empty white screen upon the device waking from sleep. To resolve this issue, exit and then open the client to re-launch it.
+- Canceling login during a single MDM configuration setup results in an empty page with no way to resume authentication. To work around this issue, exit and relaunch the client.
 
 ## 2026-03-10
 
@@ -3439,36 +3490,36 @@ This release contains minor fixes and introduces a brand new visual style for th
 
 **Changes and improvements**
 
-* Consumer-only CLI commands are now clearly distinguished from Zero Trust commands.
-* Added detailed QUIC connection metrics to diagnostic logs for better troubleshooting.
-* Added monitoring for tunnel statistics collection timeouts.
-* Switched tunnel congestion control algorithm to Cubic for improved reliability across platforms.
-* Fixed packet capture failing on tunnel interface when the tunnel interface is renamed by SCCM VPN boundary support.
-* Fixed unnecessary registration deletion caused by RDP connections in multi-user mode.
-* Fixed increased tunnel interface start-up time due to a race between duplicate address detection (DAD) and disabling NetBT.
-* Fixed tunnel failing to connect when the system DNS search list contains unexpected characters.
-* Empty MDM files are now rejected instead of being incorrectly accepted as a single MDM config.
-* Fixed an issue in proxy mode where the client could become unresponsive due to upstream connection timeouts.
-* Fixed emergency disconnect state from a previous organization incorrectly persisting after switching organizations.
-* Fixed initiating managed network detection checks when no network is available, which caused device profile flapping.
+- Consumer-only CLI commands are now clearly distinguished from Zero Trust commands.
+- Added detailed QUIC connection metrics to diagnostic logs for better troubleshooting.
+- Added monitoring for tunnel statistics collection timeouts.
+- Switched tunnel congestion control algorithm to Cubic for improved reliability across platforms.
+- Fixed packet capture failing on tunnel interface when the tunnel interface is renamed by SCCM VPN boundary support.
+- Fixed unnecessary registration deletion caused by RDP connections in multi-user mode.
+- Fixed increased tunnel interface start-up time due to a race between duplicate address detection (DAD) and disabling NetBT.
+- Fixed tunnel failing to connect when the system DNS search list contains unexpected characters.
+- Empty MDM files are now rejected instead of being incorrectly accepted as a single MDM config.
+- Fixed an issue in proxy mode where the client could become unresponsive due to upstream connection timeouts.
+- Fixed emergency disconnect state from a previous organization incorrectly persisting after switching organizations.
+- Fixed initiating managed network detection checks when no network is available, which caused device profile flapping.
 
 **Known issues**
 
-* The client may unexpectedly terminate during captive portal login. To work around this issue, use a web browser to authenticate with the captive portal and then re-launch the client.
-* An error indicating that Microsoft Edge can't read and write to its data directory may be displayed during captive portal login; this error is benign and can be dismissed.
-* The client may become stuck in a `Connecting` state. To resolve this issue, reconnect the client by selecting **Disconnect** and then **Connect** in the client user interface. Alternatively, change the client's operation mode.
-* The client may display an empty white screen upon the device waking from sleep. To resolve this issue, exit and then open the client to re-launch it.
-* Canceling login during a single MDM configuration setup results in an empty page with no way to resume authentication. To work around this issue, exit and relaunch the client.
-* For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 version KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
-* Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later. This warning will be omitted from future release notes. This Microsoft Security Intelligence update was released in May 2025.
-* DNS resolution may be broken when the following conditions are all true:
-  * The client is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
-  * A custom DNS server address is configured on the primary network adapter.
-  * The custom DNS server address on the primary network adapter is changed while the client is connected. To work around this issue, reconnect the client by selecting **Disconnect** and then **Connect** in the client user interface.
+- The client may unexpectedly terminate during captive portal login. To work around this issue, use a web browser to authenticate with the captive portal and then re-launch the client.
+- An error indicating that Microsoft Edge can't read and write to its data directory may be displayed during captive portal login; this error is benign and can be dismissed.
+- The client may become stuck in a `Connecting` state. To resolve this issue, reconnect the client by selecting **Disconnect** and then **Connect** in the client user interface. Alternatively, change the client's operation mode.
+- The client may display an empty white screen upon the device waking from sleep. To resolve this issue, exit and then open the client to re-launch it.
+- Canceling login during a single MDM configuration setup results in an empty page with no way to resume authentication. To work around this issue, exit and relaunch the client.
+- For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 version KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
+- Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later. This warning will be omitted from future release notes. This Microsoft Security Intelligence update was released in May 2025.
+- DNS resolution may be broken when the following conditions are all true:
+  - The client is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  - A custom DNS server address is configured on the primary network adapter.
+  - The custom DNS server address on the primary network adapter is changed while the client is connected. To work around this issue, reconnect the client by selecting **Disconnect** and then **Connect** in the client user interface.
 
 ## 2026-03-04
 
-[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **User risk score selector in Access policies**
@@ -3492,14 +3543,14 @@ This is ideal for environments where you cannot deploy a device client, such as 
 
 #### Key capabilities
 
-* **Identity-aware proxy traffic** — Users authenticate through your identity provider (Okta, Microsoft Entra ID, Google Workspace, and others) via Cloudflare Access. Logs now show exactly which user accessed which site, and you can write [identity-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/) like "only the Finance team can access this accounting tool."
-* **Multiple identity providers** — Display one or multiple login methods simultaneously, giving flexibility for organizations managing users across different identity systems.
-* **Cloudflare-hosted PAC files** — Create and host [PAC files](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#create-a-hosted-pac-file) directly in Cloudflare One with pre-configured templates for Okta and Azure, hosted at `https://pac.cloudflare-gateway.com/<account-id>/<slug>` on Cloudflare's global network.
-* **Simplified billing** — Each user occupies a seat, exactly like they do with the Cloudflare One Client. No new metrics to track.
+- **Identity-aware proxy traffic** — Users authenticate through your identity provider (Okta, Microsoft Entra ID, Google Workspace, and others) via Cloudflare Access. Logs now show exactly which user accessed which site, and you can write [identity-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/) like "only the Finance team can access this accounting tool."
+- **Multiple identity providers** — Display one or multiple login methods simultaneously, giving flexibility for organizations managing users across different identity systems.
+- **Cloudflare-hosted PAC files** — Create and host [PAC files](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#create-a-hosted-pac-file) directly in Cloudflare One with pre-configured templates for Okta and Azure, hosted at `https://pac.cloudflare-gateway.com/<account-id>/<slug>` on Cloudflare's global network.
+- **Simplified billing** — Each user occupies a seat, exactly like they do with the Cloudflare One Client. No new metrics to track.
 
 #### Get started
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Resolvers & Proxies** \> **Proxy endpoints**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** > **Resolvers & Proxies** > **Proxy endpoints**.
 2. [Create an authorization proxy endpoint](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#authorization-endpoint) and configure Access policies.
 3. [Create a hosted PAC file](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#create-a-hosted-pac-file) or write your own.
 4. [Configure browsers](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#3b-configure-browser-to-use-pac-file) to use the PAC file URL.
@@ -3520,12 +3571,12 @@ To use this feature, click the overflow menu (⋮) on any supported resource and
 
 Initially supported resources:
 
-* Access applications
-* Access policies
-* Gateway policies
-* Resolver policies
-* Service tokens
-* Identity providers
+- Access applications
+- Access policies
+- Gateway policies
+- Resolver policies
+- Service tokens
+- Identity providers
 
 We will continue to add support for more resources throughout 2026.
 
@@ -3546,8 +3597,8 @@ This feature is useful for organizations that support bring-your-own-device (BYO
 
 Clipboard controls are configured per policy within your Access application. For each policy, you can independently allow or deny:
 
-* **Copy from local client to remote RDP session** — Users can copy/paste text from their local machine into the browser-based RDP session.
-* **Copy from remote RDP session to local client** — Users can copy/paste text from the browser-based RDP session to their local machine.
+- **Copy from local client to remote RDP session** — Users can copy/paste text from their local machine into the browser-based RDP session.
+- **Copy from remote RDP session to local client** — Users can copy/paste text from the browser-based RDP session to their local machine.
 
 By default, both directions are denied for new policies. For existing Access applications created before this feature was available, clipboard access remains enabled to preserve backwards compatibility.
 
@@ -3572,16 +3623,16 @@ Only available on Enterprise plans.
 
 The MCP server portal logs dataset includes fields such as:
 
-* `Datetime` — Timestamp of the request
-* `PortalID` / `PortalAUD` — Portal identifiers
-* `ServerID` / `ServerURL` — Upstream MCP server details
-* `Method` — JSON-RPC method (for example, `tools/call`, `prompts/get`, `resources/read`)
-* `ToolCallName` / `PromptGetName` / `ResourceReadURI` — Method-specific identifiers
-* `UserID` / `UserEmail` — Authenticated user information
-* `Success` / `Error` — Request outcome
-* `ServerResponseDurationMs` — Response time from upstream server
+- `Datetime` — Timestamp of the request
+- `PortalID` / `PortalAUD` — Portal identifiers
+- `ServerID` / `ServerURL` — Upstream MCP server details
+- `Method` — JSON-RPC method (for example, `tools/call`, `prompts/get`, `resources/read`)
+- `ToolCallName` / `PromptGetName` / `ResourceReadURI` — Method-specific identifiers
+- `UserID` / `UserEmail` — Authenticated user information
+- `Success` / `Error` — Request outcome
+- `ServerResponseDurationMs` — Response time from upstream server
 
-For the complete field reference, refer to [MCP portal logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/mcp%5Fportal%5Flogs/).
+For the complete field reference, refer to [MCP portal logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/mcp_portal_logs/).
 
 #### Set up Logpush
 
@@ -3600,17 +3651,17 @@ MCP server portals is currently in beta.
 
 Gateway [Protocol Detection](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/protocol-detection/) now supports seven additional protocols in beta:
 
-| Protocol     | Notes                                              |
-| ------------ | -------------------------------------------------- |
-| IMAP         | Internet Message Access Protocol — email retrieval |
-| POP3         | Post Office Protocol v3 — email retrieval          |
-| SMTP         | Simple Mail Transfer Protocol — email sending      |
-| MYSQL        | MySQL database wire protocol                       |
-| RSYNC-DAEMON | rsync daemon protocol                              |
-| LDAP         | Lightweight Directory Access Protocol              |
-| NTP          | Network Time Protocol                              |
+| Protocol | Notes |
+| --- | --- |
+| IMAP | Internet Message Access Protocol — email retrieval |
+| POP3 | Post Office Protocol v3 — email retrieval |
+| SMTP | Simple Mail Transfer Protocol — email sending |
+| MYSQL | MySQL database wire protocol |
+| RSYNC-DAEMON | rsync daemon protocol |
+| LDAP | Lightweight Directory Access Protocol |
+| NTP | Network Time Protocol |
 
-These protocols join the existing set of detected protocols (HTTP, HTTP2, SSH, TLS, DCERPC, MQTT, and TPKT) and can be used with the _Detected Protocol_ selector in [Network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) to identify and filter traffic based on the application-layer protocol, without relying on port-based identification.
+These protocols join the existing set of detected protocols (HTTP, HTTP2, SSH, TLS, DCERPC, MQTT, and TPKT) and can be used with the *Detected Protocol* selector in [Network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) to identify and filter traffic based on the application-layer protocol, without relying on port-based identification.
 
 If protocol detection is enabled on your account, these protocols will automatically be logged when detected in your Gateway network traffic.
 
@@ -3629,25 +3680,25 @@ This release contains minor fixes, improvements, and new features.
 
 **Changes and improvements**
 
-* Improvements to [multi-user mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-multiuser/). Fixed an issue where when switching from a pre-login registration to a user registration, Mobile Device Management (MDM) configuration association could be lost.
-* Added a new feature to [manage NetBIOS over TCP/IP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#netbios-over-tcpip) functionality on the Windows client. NetBIOS over TCP/IP on the Windows client is now disabled by default and can be enabled in [device profile settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/).
-* Fixed an issue causing failure of the [local network exclusion](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-users-to-enable-local-network-exclusion) feature when configured with a timeout of `0`.
-* Improvement for the Windows [client certificate posture check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/warp-client-checks/client-certificate/) to ensure logged results are from checks that run once users log in.
-* Improvement for more accurate reporting of device colocation information in the Cloudflare One dashboard.
-* Fixed an issue where misconfigured DEX HTTP tests prevented new registrations.
-* Fixed an issue causing DNS requests to fail with clients in Traffic and DNS mode.
-* Improved service shutdown behavior in cases where the daemon is unresponsive.
+- Improvements to [multi-user mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-multiuser/). Fixed an issue where when switching from a pre-login registration to a user registration, Mobile Device Management (MDM) configuration association could be lost.
+- Added a new feature to [manage NetBIOS over TCP/IP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#netbios-over-tcpip) functionality on the Windows client. NetBIOS over TCP/IP on the Windows client is now disabled by default and can be enabled in [device profile settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/).
+- Fixed an issue causing failure of the [local network exclusion](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-users-to-enable-local-network-exclusion) feature when configured with a timeout of `0`.
+- Improvement for the Windows [client certificate posture check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/warp-client-checks/client-certificate/) to ensure logged results are from checks that run once users log in.
+- Improvement for more accurate reporting of device colocation information in the Cloudflare One dashboard.
+- Fixed an issue where misconfigured DEX HTTP tests prevented new registrations.
+- Fixed an issue causing DNS requests to fail with clients in Traffic and DNS mode.
+- Improved service shutdown behavior in cases where the daemon is unresponsive.
 
 **Known issues**
 
-* For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
-* Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:
+- For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
+- Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
+- DNS resolution may be broken when the following conditions are all true:
+  - WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  - A custom DNS server address is configured on the primary network adapter.
+  - The custom DNS server address on the primary network adapter is changed while WARP is connected.
 
-  * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
-  * A custom DNS server address is configured on the primary network adapter.
-  * The custom DNS server address on the primary network adapter is changed while WARP is connected.
-To work around this issue, reconnect the WARP client by toggling off and back on.
+  To work around this issue, reconnect the WARP client by toggling off and back on.
 
 ## 2026-02-24
 
@@ -3662,11 +3713,11 @@ This release contains minor fixes and improvements.
 
 **Changes and improvements**
 
-* Fixed an issue causing failure of the [local network exclusion](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-users-to-enable-local-network-exclusion) feature when configured with a timeout of `0`.
-* Improvement for more accurate reporting of device colocation information in the Cloudflare One dashboard.
-* Fixed an issue with DNS server configuration failures that caused tunnel connection delays.
-* Fixed an issue where misconfigured DEX HTTP tests prevented new registrations.
-* Fixed an issue causing DNS requests to fail with clients in Traffic and DNS mode.
+- Fixed an issue causing failure of the [local network exclusion](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-users-to-enable-local-network-exclusion) feature when configured with a timeout of `0`.
+- Improvement for more accurate reporting of device colocation information in the Cloudflare One dashboard.
+- Fixed an issue with DNS server configuration failures that caused tunnel connection delays.
+- Fixed an issue where misconfigured DEX HTTP tests prevented new registrations.
+- Fixed an issue causing DNS requests to fail with clients in Traffic and DNS mode.
 
 ## 2026-02-24
 
@@ -3679,14 +3730,14 @@ A new GA release for the Linux WARP client is now available on the [stable relea
 
 This release contains minor fixes and improvements.
 
-WARP client version 2025.8.779.0 introduced an updated public key for Linux packages. The public key must be updated if it was installed before September 12, 2025 to ensure the repository remains functional after December 4, 2025\. Instructions to make this update are available at [pkg.cloudflareclient.com](https://pkg.cloudflareclient.com).
+WARP client version 2025.8.779.0 introduced an updated public key for Linux packages. The public key must be updated if it was installed before September 12, 2025 to ensure the repository remains functional after December 4, 2025. Instructions to make this update are available at [pkg.cloudflareclient.com](https://pkg.cloudflareclient.com).
 
 **Changes and improvements**
 
-* Fixed an issue causing failure of the [local network exclusion](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-users-to-enable-local-network-exclusion) feature when configured with a timeout of `0`.
-* Improvement for more accurate reporting of device colocation information in the Cloudflare One dashboard.
-* Fixed an issue where misconfigured DEX HTTP tests prevented new registrations.
-* Fixed issues causing DNS requests to fail with clients in Traffic and DNS mode or DNS only mode.
+- Fixed an issue causing failure of the [local network exclusion](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-users-to-enable-local-network-exclusion) feature when configured with a timeout of `0`.
+- Improvement for more accurate reporting of device colocation information in the Cloudflare One dashboard.
+- Fixed an issue where misconfigured DEX HTTP tests prevented new registrations.
+- Fixed issues causing DNS requests to fail with clients in Traffic and DNS mode or DNS only mode.
 
 ## 2026-02-20
 
@@ -3705,20 +3756,20 @@ Cloudy Summaries are supported on all available integrations, including Microsof
 
 #### Key capabilities
 
-* **Contextual explanations** — Quickly understand the specifics of a finding with plain-language summaries detailing exactly what was detected, from publicly shared sensitive files to risky third-party app scopes.
-* **Clear risk assessment** — Instantly grasp the potential security impact of the finding, such as data breach risks, unauthorized account access, or email spoofing vulnerabilities.
-* **Actionable guidance** — Get clear recommendations and next steps on how to effectively remediate the issue and secure your environment.
-* **Built-in feedback** — Help improve future AI summarization accuracy by submitting feedback directly using the thumbs-up and thumbs-down buttons.
+- **Contextual explanations** — Quickly understand the specifics of a finding with plain-language summaries detailing exactly what was detected, from publicly shared sensitive files to risky third-party app scopes.
+- **Clear risk assessment** — Instantly grasp the potential security impact of the finding, such as data breach risks, unauthorized account access, or email spoofing vulnerabilities.
+- **Actionable guidance** — Get clear recommendations and next steps on how to effectively remediate the issue and secure your environment.
+- **Built-in feedback** — Help improve future AI summarization accuracy by submitting feedback directly using the thumbs-up and thumbs-down buttons.
 
 #### Learn more
 
-* Learn more about managing [CASB Posture Findings](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/) in Cloudflare.
+- Learn more about managing [CASB Posture Findings](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/) in Cloudflare.
 
 Cloudy Summaries in CASB are available to all Cloudflare CASB users today.
 
 ## 2026-02-20
 
-[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 
 **Manage Cloudflare Tunnel directly from the main Cloudflare Dashboard**
@@ -3729,23 +3780,23 @@ Cloudy Summaries in CASB are available to all Cloudflare CASB users today.
 
 This new experience provides everything you need to manage Tunnels for [public applications](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/), including:
 
-* **Full Tunnel lifecycle management**: Create, configure, delete, and monitor all your Tunnels in one place.
-* **Native integrations**: View Tunnels by name when configuring [DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) and [Workers VPC](https://developers.cloudflare.com/workers-vpc/) — no more copy-pasting UUIDs.
-* **Real-time visibility**: Monitor [replicas](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/) and Tunnel [health status](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/common-errors/#tunnel-status) directly in the dashboard.
-* **Routing map**: Manage all ingress routes for your Tunnel, including [public applications](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/), [private hostnames](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/), [private CIDRs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/), and [Workers VPC services](https://developers.cloudflare.com/workers-vpc/), from a single interactive interface.
+- **Full Tunnel lifecycle management**: Create, configure, delete, and monitor all your Tunnels in one place.
+- **Native integrations**: View Tunnels by name when configuring [DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) and [Workers VPC](https://developers.cloudflare.com/workers-vpc/) — no more copy-pasting UUIDs.
+- **Real-time visibility**: Monitor [replicas](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/) and Tunnel [health status](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/common-errors/#tunnel-status) directly in the dashboard.
+- **Routing map**: Manage all ingress routes for your Tunnel, including [public applications](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/), [private hostnames](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/), [private CIDRs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/), and [Workers VPC services](https://developers.cloudflare.com/workers-vpc/), from a single interactive interface.
 
 #### Choose the right dashboard for your use case
 
 **Core Dashboard**: Navigate to [Networking > Tunnels ↗](https://dash.cloudflare.com/?to=/:account/tunnels) to manage Tunnels for:
 
-* Securing origin servers and [public applications](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/) with CDN, WAF, Load Balancing, and DDoS protection
-* Connecting [Workers to private services](https://developers.cloudflare.com/workers-vpc/) via Workers VPC
+- Securing origin servers and [public applications](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/) with CDN, WAF, Load Balancing, and DDoS protection
+- Connecting [Workers to private services](https://developers.cloudflare.com/workers-vpc/) via Workers VPC
 
 **Cloudflare One Dashboard**: Navigate to [Zero Trust > Networks > Connectors ↗](https://one.dash.cloudflare.com/?to=/:account/networks/connectors) to manage Tunnels for:
 
-* Securing your public applications with [Zero Trust access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/)
-* Connecting users to [private applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/)
-* Building a [private mesh network](https://developers.cloudflare.com/reference-architecture/architectures/sase/#connecting-networks)
+- Securing your public applications with [Zero Trust access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/)
+- Connecting users to [private applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/)
+- Building a [private mesh network](https://developers.cloudflare.com/reference-architecture/architectures/sase/#connecting-networks)
 
 Both dashboards provide complete Tunnel management capabilities — choose based on your primary workflow.
 
@@ -3796,8 +3847,8 @@ You can now assign [Access policies](https://developers.cloudflare.com/cloudflar
 
 Previously, bookmark applications were visible to all users in your organization. With policy support, you can now:
 
-* **Tailor the App Launcher to each user** — Users only see the applications they have access to, reducing clutter and preventing accidental clicks on irrelevant resources.
-* **Restrict visibility of sensitive bookmarks** — Limit who can view bookmarks to internal tools or partner resources based on group membership, identity provider, or device posture.
+- **Tailor the App Launcher to each user** — Users only see the applications they have access to, reducing clutter and preventing accidental clicks on irrelevant resources.
+- **Restrict visibility of sensitive bookmarks** — Limit who can view bookmarks to internal tools or partner resources based on group membership, identity provider, or device posture.
 
 Bookmarks support all [Access policy configurations](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) except purpose justification, temporary authentication, and application isolation. If no policy is assigned, the bookmark remains visible to all users (maintaining backwards compatibility).
 
@@ -3805,7 +3856,7 @@ For more information, refer to [Add bookmarks](https://developers.cloudflare.com
 
 ## 2026-02-17
 
-[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)[Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/)[Network Flow](https://developers.cloudflare.com/network-flow/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) [Network Flow](https://developers.cloudflare.com/network-flow/)
 
 
 **Cloudflare One Product Name Updates**
@@ -3816,13 +3867,13 @@ We are retiring some older brand names in favor of names that describe exactly w
 
 #### What's changing
 
-* **Magic WAN** → **Cloudflare WAN**
-* **Magic WAN IPsec** → **Cloudflare IPsec**
-* **Magic WAN GRE** → **Cloudflare GRE**
-* **Magic WAN Connector** → **Cloudflare One Appliance**
-* **Magic Firewall** → **Cloudflare Network Firewall**
-* **Magic Network Monitoring** → **Network Flow**
-* **Magic Cloud Networking** → **Cloudflare One Multi-cloud Networking**
+- **Magic WAN** → **Cloudflare WAN**
+- **Magic WAN IPsec** → **Cloudflare IPsec**
+- **Magic WAN GRE** → **Cloudflare GRE**
+- **Magic WAN Connector** → **Cloudflare One Appliance**
+- **Magic Firewall** → **Cloudflare Network Firewall**
+- **Magic Network Monitoring** → **Network Flow**
+- **Magic Cloud Networking** → **Cloudflare One Multi-cloud Networking**
 
 **No action is required by you** — all functionality, existing configurations, and billing will remain exactly the same.
 
@@ -3830,7 +3881,7 @@ For more information, visit the [Cloudflare One documentation](https://developer
 
 ## 2026-02-13
 
-[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/) [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Fine-grained permissions for Access policies and service tokens**
@@ -3839,15 +3890,15 @@ Fine-grained permissions for **Access policies** and **Access service tokens** a
 
 #### New roles
 
-* **Cloudflare Access policy admin**: Can edit a specific [Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) in an account.
-* **Cloudflare Access service token admin**: Can edit a specific [Access service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) in an account.
+- **Cloudflare Access policy admin**: Can edit a specific [Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) in an account.
+- **Cloudflare Access service token admin**: Can edit a specific [Access service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) in an account.
 
 These roles complement the existing resource-scoped roles for Access applications, identity providers, and infrastructure targets.
 
 For more information:
 
-* [Resource-scoped roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/#resource-scoped-roles)
-* [Role scopes](https://developers.cloudflare.com/fundamentals/manage-members/scope/)
+- [Resource-scoped roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/#resource-scoped-roles)
+- [Role scopes](https://developers.cloudflare.com/fundamentals/manage-members/scope/)
 
 Note
 
@@ -3870,7 +3921,7 @@ For more information, refer to [Configure tunnel endpoints](https://developers.c
 
 ## 2026-02-11
 
-[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Post-quantum encryption support for Cloudflare One Appliance**
@@ -3892,22 +3943,22 @@ For more information, refer to [Cloudflare One Appliance](https://developers.clo
 
 We have updated the Monitoring page to provide a more streamlined and insightful experience for administrators, improving both data visualization and dashboard accessibility.
 
-* **Enhanced Visual Layout**: Optimized contrast and the introduction of stacked bar charts for clearer data visualization and trend analysis. ![visual-example](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3212,height=2344,format=webp/_astro/monitoring-bar-charts.Bi-4BuXC.png)
-* **Improved Accessibility & Usability**:
-  * **Widget Search**: Added search functionality to multiple widgets, including Policies, Submitters, and Impersonation.
-  * **Actionable UI**: All available actions are now accessible via dedicated buttons.
-  * **State Indicators**: Improved UI states to clearly communicate loading, empty datasets, and error conditions. ![buttons-example](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3178,height=664,format=webp/_astro/monitoring-buttons.DORPJvP_.png)
-* **Granular Data Breakdowns**: New views for dispositions by month, malicious email details, link actions, and impersonations. ![monthly-example](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3202,height=1486,format=webp/_astro/monitoring-monthly-dispositions.CYuI5d9y.png)
+- **Enhanced Visual Layout**: Optimized contrast and the introduction of stacked bar charts for clearer data visualization and trend analysis. ![visual-example](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3212,height=2344,format=webp/_astro/monitoring-bar-charts.Bi-4BuXC.png)
+- **Improved Accessibility & Usability**:
+  - **Widget Search**: Added search functionality to multiple widgets, including Policies, Submitters, and Impersonation.
+  - **Actionable UI**: All available actions are now accessible via dedicated buttons.
+  - **State Indicators**: Improved UI states to clearly communicate loading, empty datasets, and error conditions. ![buttons-example](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3178,height=664,format=webp/_astro/monitoring-buttons.DORPJvP_.png)
+- **Granular Data Breakdowns**: New views for dispositions by month, malicious email details, link actions, and impersonations. ![monthly-example](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3202,height=1486,format=webp/_astro/monitoring-monthly-dispositions.CYuI5d9y.png)
 
 This applies to all Email Security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2026-01-30
 
-[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)[Magic Transit](https://developers.cloudflare.com/magic-transit/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) [Magic Transit](https://developers.cloudflare.com/magic-transit/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **BGP over GRE and IPsec tunnels**
@@ -3916,19 +3967,19 @@ Magic WAN and Magic Transit customers can use the Cloudflare dashboard to config
 
 Using BGP peering allows customers to:
 
-* Automate the process of adding or removing networks and subnets.
-* Take advantage of failure detection and session recovery features.
+- Automate the process of adding or removing networks and subnets.
+- Take advantage of failure detection and session recovery features.
 
 With this functionality, customers can:
 
-* Establish an eBGP session between their devices and the Magic WAN / Magic Transit service when connected via IPsec and GRE tunnel on-ramps.
-* Secure the session by MD5 authentication to prevent misconfigurations.
-* Exchange routes dynamically between their devices and their Magic routing table.
+- Establish an eBGP session between their devices and the Magic WAN / Magic Transit service when connected via IPsec and GRE tunnel on-ramps.
+- Secure the session by MD5 authentication to prevent misconfigurations.
+- Exchange routes dynamically between their devices and their Magic routing table.
 
 For configuration details, refer to:
 
-* [Configure BGP routes for Magic WAN](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#configure-bgp-routes)
-* [Configure BGP routes for Magic Transit](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#configure-bgp-routes)
+- [Configure BGP routes for Magic WAN](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#configure-bgp-routes)
+- [Configure BGP routes for Magic Transit](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#configure-bgp-routes)
 
 ## 2026-01-27
 
@@ -3943,22 +3994,22 @@ This release contains minor fixes, improvements, and new features.
 
 **Changes and improvements**
 
-* Improvements to [multi-user mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-multiuser/). Fixed an issue where when switching from a pre-login registration to a user registration, Mobile Device Management (MDM) configuration association could be lost.
-* Added a new feature to [manage NetBIOS over TCP/IP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#netbios-over-tcpip) functionality on the Windows client. NetBIOS over TCP/IP on the Windows client is now disabled by default and can be enabled in [device profile settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/).
-* Fixed an issue causing failure of the [local network exclusion](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-users-to-enable-local-network-exclusion) feature when configured with a timeout of `0`.
-* Improvement for the Windows [client certificate posture check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/warp-client-checks/client-certificate/) to ensure logged results are from checks that run once users log in.
-* Improvement for more accurate reporting of device colocation information in the Cloudflare One dashboard.
+- Improvements to [multi-user mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-multiuser/). Fixed an issue where when switching from a pre-login registration to a user registration, Mobile Device Management (MDM) configuration association could be lost.
+- Added a new feature to [manage NetBIOS over TCP/IP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#netbios-over-tcpip) functionality on the Windows client. NetBIOS over TCP/IP on the Windows client is now disabled by default and can be enabled in [device profile settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/).
+- Fixed an issue causing failure of the [local network exclusion](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-users-to-enable-local-network-exclusion) feature when configured with a timeout of `0`.
+- Improvement for the Windows [client certificate posture check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/warp-client-checks/client-certificate/) to ensure logged results are from checks that run once users log in.
+- Improvement for more accurate reporting of device colocation information in the Cloudflare One dashboard.
 
 **Known issues**
 
-* For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
-* Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:
+- For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
+- Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
+- DNS resolution may be broken when the following conditions are all true:
+  - WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  - A custom DNS server address is configured on the primary network adapter.
+  - The custom DNS server address on the primary network adapter is changed while WARP is connected.
 
-  * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
-  * A custom DNS server address is configured on the primary network adapter.
-  * The custom DNS server address on the primary network adapter is changed while WARP is connected.
-To work around this issue, reconnect the WARP client by toggling off and back on.
+  To work around this issue, reconnect the WARP client by toggling off and back on.
 
 ## 2026-01-27
 
@@ -3973,12 +4024,12 @@ This release contains minor fixes and improvements.
 
 **Changes and improvements**
 
-* Fixed an issue causing failure of the [local network exclusion](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-users-to-enable-local-network-exclusion) feature when configured with a timeout of `0`.
-* Improvement for more accurate reporting of device colocation information in the Cloudflare One dashboard.
+- Fixed an issue causing failure of the [local network exclusion](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-users-to-enable-local-network-exclusion) feature when configured with a timeout of `0`.
+- Improvement for more accurate reporting of device colocation information in the Cloudflare One dashboard.
 
 ## 2026-01-27
 
-[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Configure Cloudflare source IPs (beta)**
@@ -3987,15 +4038,15 @@ Cloudflare source IPs are the IP addresses used by Cloudflare services (such as 
 
 For customers using legacy mode routing, traffic to private networks is sourced from public Cloudflare IPs, which may cause IP conflicts. For customers using Unified Routing mode (beta), traffic to private networks is sourced from dedicated, non-Internet-routable private IPv4 range to ensure:
 
-* Symmetric routing over private network connections
-* Proper firewall state preservation
-* Private traffic stays on secure paths
+- Symmetric routing over private network connections
+- Proper firewall state preservation
+- Private traffic stays on secure paths
 
 Key details:
 
-* **IPv4**: Sourced from `100.64.0.0/12` by default, configurable to any `/12` CIDR
-* **IPv6**: Sourced from `2606:4700:cf1:5000::/64` (not configurable)
-* **Affected connectors**: GRE, IPsec, CNI, WARP Connector, and WARP Client (Cloudflare Tunnel is not affected)
+- **IPv4**: Sourced from `100.64.0.0/12` by default, configurable to any `/12` CIDR
+- **IPv6**: Sourced from `2606:4700:cf1:5000::/64` (not configurable)
+- **Affected connectors**: GRE, IPsec, CNI, WARP Connector, and WARP Client (Cloudflare Tunnel is not affected)
 
 Configuring Cloudflare source IPs requires Unified Routing (beta) and the `Cloudflare One Networks Write` permission.
 
@@ -4003,7 +4054,7 @@ For configuration details, refer to [Configure Cloudflare source IPs](https://de
 
 ## 2026-01-22
 
-[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Require Access protection for zones**
@@ -4016,9 +4067,9 @@ This deny-by-default approach prevents accidental exposure of internal resources
 
 #### How it works
 
-* **Blocked by default**: Traffic to all hostnames in the account is blocked unless an Access application exists for that hostname.
-* **Explicit access required**: To allow traffic, create an Access application with an Allow or Bypass policy.
-* **Hostname exemptions**: You can exempt specific hostnames from this requirement.
+- **Blocked by default**: Traffic to all hostnames in the account is blocked unless an Access application exists for that hostname.
+- **Explicit access required**: To allow traffic, create an Access application with an Allow or Bypass policy.
+- **Hostname exemptions**: You can exempt specific hostnames from this requirement.
 
 To turn on this feature, refer to [Require Access protection](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/require-access-protection/).
 
@@ -4031,9 +4082,9 @@ To turn on this feature, refer to [Require Access protection](https://developers
 
 Three new API token permissions are available for Cloudflare Access, giving you finer-grained control when building automations and integrations:
 
-* **Access: Organizations Revoke** — Grants the ability to [revoke user sessions](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#revoke-user-sessions) in a Zero Trust organization. Use this permission when you need a token that can terminate active sessions without broader write access to organization settings.
-* **Access: Population Read** — Grants read access to the [SCIM users and groups](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/) synced from an identity provider to Cloudflare Access. Use this permission for tokens that only need to read synced user and group data.
-* **Access: Population Write** — Grants write access to the [SCIM users and groups](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/) synced from an identity provider to Cloudflare Access. Use this permission for tokens that need to create or modify synced user and group data.
+- **Access: Organizations Revoke** — Grants the ability to [revoke user sessions](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#revoke-user-sessions) in a Zero Trust organization. Use this permission when you need a token that can terminate active sessions without broader write access to organization settings.
+- **Access: Population Read** — Grants read access to the [SCIM users and groups](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/) synced from an identity provider to Cloudflare Access. Use this permission for tokens that only need to read synced user and group data.
+- **Access: Population Write** — Grants write access to the [SCIM users and groups](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/) synced from an identity provider to Cloudflare Access. Use this permission for tokens that need to create or modify synced user and group data.
 
 These permissions are scoped at the account level and can be combined with existing Access permissions.
 
@@ -4041,7 +4092,7 @@ For a full list of available permissions, refer to [API token permissions](https
 
 ## 2026-01-15
 
-[Magic Transit](https://developers.cloudflare.com/magic-transit/)[Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)[Network Flow](https://developers.cloudflare.com/network-flow/)
+[Magic Transit](https://developers.cloudflare.com/magic-transit/) [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) [Network Flow](https://developers.cloudflare.com/network-flow/)
 
 
 **Network Services navigation update**
@@ -4054,17 +4105,17 @@ The changes visible in your dashboard may vary based on the products you use. Ov
 
 **Summary of changes:**
 
-* A new **Overview** page provides access to the most common tasks across Magic Transit and Magic WAN.
-* Product names have been removed from top-level navigation.
-* Magic Transit and Magic WAN configuration is now organized under **Routes** and **Connectors**. For example, you will find IP Prefixes under **Routes**, and your GRE/IPsec Tunnels under **Connectors.**
-* Magic Firewall policies are now called **Firewall Policies.**
-* Magic WAN Connectors and Connector On-Ramps are now referenced in the dashboard as **Appliances** and **Appliance profiles.** They can be found under **Connectors > Appliances.**
-* Network analytics, network health, and real-time analytics are now available under **Insights.**
-* Packet Captures are found under **Insights > Diagnostics.**
-* You can manage your Sites from **Insights > Network health.**
-* You can find Magic Network Monitoring under **Insights > Network flow**.
+- A new **Overview** page provides access to the most common tasks across Magic Transit and Magic WAN.
+- Product names have been removed from top-level navigation.
+- Magic Transit and Magic WAN configuration is now organized under **Routes** and **Connectors**. For example, you will find IP Prefixes under **Routes**, and your GRE/IPsec Tunnels under **Connectors.**
+- Magic Firewall policies are now called **Firewall Policies.**
+- Magic WAN Connectors and Connector On-Ramps are now referenced in the dashboard as **Appliances** and **Appliance profiles.** They can be found under **Connectors > Appliances.**
+- Network analytics, network health, and real-time analytics are now available under **Insights.**
+- Packet Captures are found under **Insights > Diagnostics.**
+- You can manage your Sites from **Insights > Network health.**
+- You can find Magic Network Monitoring under **Insights > Network flow**.
 
-If you would like to provide feedback, complete [this form ↗](https://forms.gle/htWyjRsTjw1usdis5). You can also find these details in the January 7, 2026 email titled **\[FYI\] Upcoming Network Services Dashboard Navigation Update**.
+If you would like to provide feedback, complete [this form ↗](https://forms.gle/htWyjRsTjw1usdis5). You can also find these details in the January 7, 2026 email titled **\[FYI] Upcoming Network Services Dashboard Navigation Update**.
 
 Preview: ![Networking Navigation](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3000,height=1052,format=webp/_astro/networking-overview-and-navigation.CeMgEFaZ.png)
 
@@ -4075,20 +4126,20 @@ Preview: ![Networking Navigation](https://developers.cloudflare.com/cdn-cgi/imag
 
 **Support for CrowdStrike device scores in User Risk Scoring**
 
-Cloudflare One has expanded its \[User Risk Scoring\] (/cloudflare-one/insights/risk-score/) capabilities by introducing two new behaviors for organizations using the \[CrowdStrike integration\] (/cloudflare-one/integrations/service-providers/crowdstrike/).
+Cloudflare One has expanded its \[User Risk Scoring] (/cloudflare-one/insights/risk-score/) capabilities by introducing two new behaviors for organizations using the \[CrowdStrike integration] (/cloudflare-one/integrations/service-providers/crowdstrike/).
 
 Administrators can now automatically escalate the risk score of a user if their device matches specific CrowdStrike Zero Trust Assessment (ZTA) score ranges. This allows for more granular security policies that respond dynamically to the health of the endpoint.
 
 New risk behaviors The following risk scoring behaviors are now available:
 
-* CrowdStrike low device score: Automatically increases a user's risk score when the connected device reports a "Low" score from CrowdStrike.
-* CrowdStrike medium device score: Automatically increases a user's risk score when the connected device reports a "Medium" score from CrowdStrike.
+- CrowdStrike low device score: Automatically increases a user's risk score when the connected device reports a "Low" score from CrowdStrike.
+- CrowdStrike medium device score: Automatically increases a user's risk score when the connected device reports a "Medium" score from CrowdStrike.
 
-These scores are derived from \[CrowdStrike device posture attributes\] (/cloudflare-one/integrations/service-providers/crowdstrike/#device-posture-attributes), including OS signals and sensor configurations.
+These scores are derived from \[CrowdStrike device posture attributes] (/cloudflare-one/integrations/service-providers/crowdstrike/#device-posture-attributes), including OS signals and sensor configurations.
 
 ## 2026-01-15
 
-[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 
 **Verify WARP Connector connectivity with a simple ping**
@@ -4114,23 +4165,23 @@ This release contains minor fixes, improvements, and new features. New features 
 
 **Changes and improvements**
 
-* Added a new feature to manage WARP client connectivity for all devices using an [external signal](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/emergency-disconnect/#set-up-external-emergency-disconnect). This feature allows administrators to send a global signal from an on-premises HTTPS endpoint that force disconnects or reconnects all WARP clients in an account based on configuration set on the endpoint.
-* Fixed an issue that caused occasional audio degradation and increased CPU usage on Windows by optimizing route configurations for large [domain-based split tunnel rules](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#domain-based-split-tunnels).
-* The [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) feature has been fixed for devices running WARP client version 2025.4.929.0 and newer. Previously, these devices could experience failures with Local Domain Fallback unless a fallback server was explicitly configured. This configuration is no longer a requirement for the feature to function correctly.
-* [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) now supports transparent HTTP proxying in addition to CONNECT-based proxying.
-* Fixed an issue where sending large messages to the daemon by Inter-Process Communication (IPC) could cause the daemon to fail and result in service interruptions.
-* Added support for a new WARP client device posture check for [Antivirus](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/warp-client-checks/antivirus/). The check confirms the presence of an antivirus program on a Windows device with the option to check if the antivirus is up to date.
+- Added a new feature to manage WARP client connectivity for all devices using an [external signal](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/emergency-disconnect/#set-up-external-emergency-disconnect). This feature allows administrators to send a global signal from an on-premises HTTPS endpoint that force disconnects or reconnects all WARP clients in an account based on configuration set on the endpoint.
+- Fixed an issue that caused occasional audio degradation and increased CPU usage on Windows by optimizing route configurations for large [domain-based split tunnel rules](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#domain-based-split-tunnels).
+- The [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) feature has been fixed for devices running WARP client version 2025.4.929.0 and newer. Previously, these devices could experience failures with Local Domain Fallback unless a fallback server was explicitly configured. This configuration is no longer a requirement for the feature to function correctly.
+- [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) now supports transparent HTTP proxying in addition to CONNECT-based proxying.
+- Fixed an issue where sending large messages to the daemon by Inter-Process Communication (IPC) could cause the daemon to fail and result in service interruptions.
+- Added support for a new WARP client device posture check for [Antivirus](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/warp-client-checks/antivirus/). The check confirms the presence of an antivirus program on a Windows device with the option to check if the antivirus is up to date.
 
 **Known issues**
 
-* For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
-* Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:
+- For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
+- Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
+- DNS resolution may be broken when the following conditions are all true:
+  - WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  - A custom DNS server address is configured on the primary network adapter.
+  - The custom DNS server address on the primary network adapter is changed while WARP is connected.
 
-  * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
-  * A custom DNS server address is configured on the primary network adapter.
-  * The custom DNS server address on the primary network adapter is changed while WARP is connected.
-To work around this issue, reconnect the WARP client by toggling off and back on.
+  To work around this issue, reconnect the WARP client by toggling off and back on.
 
 ## 2026-01-13
 
@@ -4145,9 +4196,9 @@ This release contains minor fixes, improvements, and new features, including the
 
 **Changes and improvements**
 
-* The [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) feature has been fixed for devices running WARP client version 2025.4.929.0 and newer. Previously, these devices could experience failures with Local Domain Fallback unless a fallback server was explicitly configured. This configuration is no longer a requirement for the feature to function correctly.
-* [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) now supports transparent HTTP proxying in addition to CONNECT-based proxying.
-* Added a new feature to manage WARP client connectivity for all devices using an [external signal](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/emergency-disconnect/#set-up-external-emergency-disconnect). This feature allows administrators to send a global signal from an on-premises HTTPS endpoint that force disconnects or reconnects all WARP clients in an account based on configuration set on the endpoint.
+- The [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) feature has been fixed for devices running WARP client version 2025.4.929.0 and newer. Previously, these devices could experience failures with Local Domain Fallback unless a fallback server was explicitly configured. This configuration is no longer a requirement for the feature to function correctly.
+- [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) now supports transparent HTTP proxying in addition to CONNECT-based proxying.
+- Added a new feature to manage WARP client connectivity for all devices using an [external signal](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/emergency-disconnect/#set-up-external-emergency-disconnect). This feature allows administrators to send a global signal from an on-premises HTTPS endpoint that force disconnects or reconnects all WARP clients in an account based on configuration set on the endpoint.
 
 ## 2026-01-13
 
@@ -4160,15 +4211,15 @@ A new GA release for the Linux WARP client is now available on the [stable relea
 
 This release contains minor fixes, improvements, and new features, including the ability to manage WARP client connectivity for all devices in your fleet using an [external signal](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/emergency-disconnect/#set-up-external-emergency-disconnect).
 
-WARP client version 2025.8.779.0 introduced an updated public key for Linux packages. The public key must be updated if it was installed before September 12, 2025 to ensure the repository remains functional after December 4, 2025\. Instructions to make this update are available at [pkg.cloudflareclient.com](https://pkg.cloudflareclient.com).
+WARP client version 2025.8.779.0 introduced an updated public key for Linux packages. The public key must be updated if it was installed before September 12, 2025 to ensure the repository remains functional after December 4, 2025. Instructions to make this update are available at [pkg.cloudflareclient.com](https://pkg.cloudflareclient.com).
 
 **Changes and improvements**
 
-* The [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) feature has been fixed for devices running WARP client version 2025.4.929.0 and newer. Previously, these devices could experience failures with Local Domain Fallback unless a fallback server was explicitly configured. This configuration is no longer a requirement for the feature to function correctly.
-* Linux [disk encryption posture check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/warp-client-checks/disk-encryption/) now supports non-filesystem encryption types like `dm-crypt`.
-* [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) now supports transparent HTTP proxying in addition to CONNECT-based proxying.
-* Fixed an issue where the GUI becomes unresponsive when the **Re-Authenticate in browser** button is clicked.
-* Added a new feature to manage WARP client connectivity for all devices using an [external signal](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/emergency-disconnect/#set-up-external-emergency-disconnect). This feature allows administrators to send a global signal from an on-premises HTTPS endpoint that force disconnects or reconnects all WARP clients in an account based on configuration set on the endpoint.
+- The [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) feature has been fixed for devices running WARP client version 2025.4.929.0 and newer. Previously, these devices could experience failures with Local Domain Fallback unless a fallback server was explicitly configured. This configuration is no longer a requirement for the feature to function correctly.
+- Linux [disk encryption posture check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/warp-client-checks/disk-encryption/) now supports non-filesystem encryption types like `dm-crypt`.
+- [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) now supports transparent HTTP proxying in addition to CONNECT-based proxying.
+- Fixed an issue where the GUI becomes unresponsive when the **Re-Authenticate in browser** button is clicked.
+- Added a new feature to manage WARP client connectivity for all devices using an [external signal](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/emergency-disconnect/#set-up-external-emergency-disconnect). This feature allows administrators to send a global signal from an on-premises HTTPS endpoint that force disconnects or reconnects all WARP clients in an account based on configuration set on the endpoint.
 
 ## 2026-01-12
 
@@ -4189,8 +4240,8 @@ This update allows you to see the full lifecycle of a failed action. For instanc
 
 This applies to all Email Security packages:
 
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2026-01-08
 
@@ -4205,7 +4256,7 @@ These logs can be viewed from the [Cloudflare One dashboard ↗](https://one.das
 
 ## 2025-12-31
 
-[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Breakout traffic visibility via NetFlow**
@@ -4214,15 +4265,15 @@ Magic WAN Connector now exports NetFlow data for breakout traffic to Magic Netwo
 
 This feature allows you to:
 
-* Monitor breakout traffic statistics in the Cloudflare dashboard.
-* View traffic patterns for applications configured to bypass Cloudflare.
-* Maintain visibility across all traffic passing through your Magic WAN Connector.
+- Monitor breakout traffic statistics in the Cloudflare dashboard.
+- View traffic patterns for applications configured to bypass Cloudflare.
+- Maintain visibility across all traffic passing through your Magic WAN Connector.
 
 For more information, refer to [NetFlow statistics](https://developers.cloudflare.com/cloudflare-wan/analytics/netflow-analytics/).
 
 ## 2025-12-17
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Shadow IT - domain level SaaS analytics**
@@ -4248,11 +4299,11 @@ You can now duplicate specific Cloudflare One resources with a single click from
 
 Initially supported resources:
 
-* Access Applications
-* Access Policies
-* Gateway Policies
+- Access Applications
+- Access Policies
+- Gateway Policies
 
-To try this out, simply click on the overflow menu (⋮) from the resource table and click _Duplicate_. We will continue to add the Duplicate action for resources throughout 2026.
+To try this out, simply click on the overflow menu (⋮) from the resource table and click *Duplicate*. We will continue to add the Duplicate action for resources throughout 2026.
 
 ## 2025-12-09
 
@@ -4267,20 +4318,20 @@ This release contains minor fixes and improvements.
 
 **Changes and improvements**
 
-* The [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) feature has been fixed for devices running WARP client version 2025.4.929.0 and newer. Previously, these devices could experience failures with Local Domain Fallback unless a fallback server was explicitly configured. This configuration is no longer a requirement for the feature to function correctly.
-* [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) now supports transparent HTTP proxying in addition to CONNECT-based proxying.
-* Fixed an issue where sending large messages to the WARP daemon by Inter-Process Communication (IPC) could cause WARP to crash and result in service interruptions.
+- The [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) feature has been fixed for devices running WARP client version 2025.4.929.0 and newer. Previously, these devices could experience failures with Local Domain Fallback unless a fallback server was explicitly configured. This configuration is no longer a requirement for the feature to function correctly.
+- [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) now supports transparent HTTP proxying in addition to CONNECT-based proxying.
+- Fixed an issue where sending large messages to the WARP daemon by Inter-Process Communication (IPC) could cause WARP to crash and result in service interruptions.
 
 **Known issues**
 
-* For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
-* Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:
+- For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
+- Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
+- DNS resolution may be broken when the following conditions are all true:
+  - WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  - A custom DNS server address is configured on the primary network adapter.
+  - The custom DNS server address on the primary network adapter is changed while WARP is connected.
 
-  * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
-  * A custom DNS server address is configured on the primary network adapter.
-  * The custom DNS server address on the primary network adapter is changed while WARP is connected.
-To work around this issue, reconnect the WARP client by toggling off and back on.
+  To work around this issue, reconnect the WARP client by toggling off and back on.
 
 ## 2025-12-09
 
@@ -4295,8 +4346,8 @@ This release contains minor fixes and improvements.
 
 **Changes and improvements**
 
-* The [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) feature has been fixed for devices running WARP client version 2025.4.929.0 and newer. Previously, these devices could experience failures with Local Domain Fallback unless a fallback server was explicitly configured. This configuration is no longer a requirement for the feature to function correctly.
-* [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) now supports transparent HTTP proxying in addition to CONNECT-based proxying.
+- The [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) feature has been fixed for devices running WARP client version 2025.4.929.0 and newer. Previously, these devices could experience failures with Local Domain Fallback unless a fallback server was explicitly configured. This configuration is no longer a requirement for the feature to function correctly.
+- [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) now supports transparent HTTP proxying in addition to CONNECT-based proxying.
 
 ## 2025-12-03
 
@@ -4309,13 +4360,13 @@ We have updated the terminology “Reclassify” and “Reclassifications” to 
 
 Submissions are leveraged to tune future variants of campaigns. To respect data sanctity, providing a submission does not change the original disposition of the emails submitted.
 
-![nav_example](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=756,height=628,format=webp/_astro/reclassification-submission.B6nL5Hw7.png)
+![nav\_example](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=756,height=628,format=webp/_astro/reclassification-submission.B6nL5Hw7.png)
 
 This applies to all Email Security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2025-11-18
 
@@ -4326,12 +4377,12 @@ This applies to all Email Security packages:
 
 #### Adjustment to Final Disposition column
 
-#### The **Final Disposition** column in **Submissions** \> **Team Submissions** tab is changing for non-Phishguard customers.
+#### The **Final Disposition** column in **Submissions** > **Team Submissions** tab is changing for non-Phishguard customers.
 
 #### What's Changing
 
-* Column will be called **Status** instead of **Final Disposition**
-* Column status values will now be: **Submitted**, **Accepted** or **Rejected**.
+- Column will be called **Status** instead of **Final Disposition**
+- Column status values will now be: **Submitted**, **Accepted** or **Rejected**.
 
 #### Next Steps
 
@@ -4352,10 +4403,11 @@ There is a new guided experience on login detailing the changes, and you can use
 
 Notable changes
 
-* Product names have been removed from many top-level navigation items to help bring clarity to what they help you accomplish. For example, you can find Gateway policies under ‘Traffic policies' and CASB findings under ‘Cloud & SaaS findings.'
-* You can view all analytics, logs, and real-time monitoring tools from ‘Insights.'
-* ‘Networks' better maps the ways that your corporate network interacts with Cloudflare. Some pages like Tunnels, are now a tab rather than a full page as part of these changes. You can find them at Networks > Connectors.
-* Settings are now located closer to the tools and resources they impact. For example, this means you'll find your WARP configurations at Team & Resources > Devices.
+- Product names have been removed from many top-level navigation items to help bring clarity to what they help you accomplish. For example, you can find Gateway policies under ‘Traffic policies' and CASB findings under ‘Cloud & SaaS findings.'
+- You can view all analytics, logs, and real-time monitoring tools from ‘Insights.'
+- ‘Networks' better maps the ways that your corporate network interacts with Cloudflare. Some pages like Tunnels, are now a tab rather than a full page as part of these changes. You can find them at Networks > Connectors.
+- Settings are now located closer to the tools and resources they impact. For example, this means you'll find your WARP configurations at Team & Resources > Devices.
+
 ![New Cloudflare One Navigation](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=514,height=1112,format=webp/_astro/new-cf1-navigation.B7-E-9CV.png)
 
 No changes to our API endpoint structure or to any backend services have been made as part of this effort.
@@ -4369,7 +4421,7 @@ No changes to our API endpoint structure or to any backend services have been ma
 
 SSH with [Cloudflare Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/) allows you to use short-lived SSH certificates to eliminate SSH key management and reduce security risks associated with lost or stolen keys.
 
-Previously, users had to generate this certificate by using the [Cloudflare API ↗](https://developers.cloudflare.com/api/) directly. With this update, you can now create and manage this certificate in the [Cloudflare One dashboard ↗](https://one.dash.cloudflare.com) from the **Access controls** \> **Service credentials** page.
+Previously, users had to generate this certificate by using the [Cloudflare API ↗](https://developers.cloudflare.com/api/) directly. With this update, you can now create and manage this certificate in the [Cloudflare One dashboard ↗](https://one.dash.cloudflare.com) from the **Access controls** > **Service credentials** page.
 
 ![Navigate to Access controls and then Service credentials to see where you can generate an SSH CA](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2710,height=1180,format=webp/_astro/SSH-CA-generation.DYa9RnX1.png)
 
@@ -4386,18 +4438,18 @@ You can now stay on top of your SaaS security posture with the new **CASB Weekly
 
 This allows security teams and IT administrators to get proactive, at-a-glance visibility into new risks and integration health without having to log in to the dashboard.
 
-To opt in, navigate to **Manage Account** \> **Notifications** in the Cloudflare dashboard to configure the **CASB Weekly Digest** alert type.
+To opt in, navigate to **Manage Account** > **Notifications** in the Cloudflare dashboard to configure the **CASB Weekly Digest** alert type.
 
 #### Key capabilities
 
-* **At-a-glance summary** — Review new high/critical findings, most frequent finding types, and new content exposures from the past 7 days.
-* **Integration health** — Instantly see the status of all your connected SaaS integrations (Healthy, Unhealthy, or Paused) to spot API connection issues.
-* **Proactive alerting** — The digest is sent automatically to all subscribed users every Monday morning.
-* **Easy to configure** — Users can opt in by enabling the notification in the Cloudflare dashboard under **Manage Account** \> **Notifications**.
+- **At-a-glance summary** — Review new high/critical findings, most frequent finding types, and new content exposures from the past 7 days.
+- **Integration health** — Instantly see the status of all your connected SaaS integrations (Healthy, Unhealthy, or Paused) to spot API connection issues.
+- **Proactive alerting** — The digest is sent automatically to all subscribed users every Monday morning.
+- **Easy to configure** — Users can opt in by enabling the notification in the Cloudflare dashboard under **Manage Account** > **Notifications**.
 
 #### Learn more
 
-* Configure [notification preferences](https://developers.cloudflare.com/notifications/) in Cloudflare.
+- Configure [notification preferences](https://developers.cloudflare.com/notifications/) in Cloudflare.
 
 The CASB Weekly Digest notification is available to all Cloudflare users today.
 
@@ -4412,10 +4464,10 @@ The CASB Weekly Digest notification is available to all Cloudflare users today.
 
 We've released four new WARP and DEX device data sets that can be exported via [Cloudflare Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/). These Logpush data sets can be exported to R2, a cloud bucket, or a SIEM to build a customized logging and analytics experience.
 
-1. [DEX Application Tests](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/dex%5Fapplication%5Ftests/)
-2. [DEX Device State Events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/dex%5Fdevice%5Fstate%5Fevents/)
-3. [WARP Config Changes](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/warp%5Fconfig%5Fchanges/)
-4. [WARP Toggle Changes](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/warp%5Ftoggle%5Fchanges/)
+1. [DEX Application Tests](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/dex_application_tests/)
+2. [DEX Device State Events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/dex_device_state_events/)
+3. [WARP Config Changes](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/warp_config_changes/)
+4. [WARP Toggle Changes](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/warp_toggle_changes/)
 
 To create a new DEX or WARP Logpush job, customers can go to the account level of the Cloudflare dashboard > Analytics & Logs > Logpush to get started.
 
@@ -4434,24 +4486,24 @@ This release contains minor fixes, improvements, and new features including [Pat
 
 **Changes and improvements**
 
-* Fixed an inconsistency with [Global WARP override](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#disconnect-warp-on-all-devices) settings in multi-user environments when switching between users.
-* The GUI now displays the health of the tunnel and DNS connections by showing a connection status message when the network may be unstable. This will make it easier to diagnose connectivity issues.
-* Fixed an issue where deleting a registration was erroneously reported as having failed.
-* Path Maximum Transmission Unit Discovery (PMTUD) may now be used to discover the effective MTU of the connection. This allows the WARP client to improve connectivity optimized for each network. PMTUD is disabled by default. To enable it, refer to the [PMTUD documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/#enable-path-mtu-discovery).
-* Improvements for the [OS version](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/warp-client-checks/os-version/) WARP client check. Windows Updated Build Revision (UBR) numbers can now be checked by the client to ensure devices have required security patches and features installed.
-* The WARP client now supports Windows 11 ARM-based machines. For information on known limitations, refer to the [Known limitations page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/#cloudflare-one-client-disconnected-on-windows-arm).
+- Fixed an inconsistency with [Global WARP override](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#disconnect-warp-on-all-devices) settings in multi-user environments when switching between users.
+- The GUI now displays the health of the tunnel and DNS connections by showing a connection status message when the network may be unstable. This will make it easier to diagnose connectivity issues.
+- Fixed an issue where deleting a registration was erroneously reported as having failed.
+- Path Maximum Transmission Unit Discovery (PMTUD) may now be used to discover the effective MTU of the connection. This allows the WARP client to improve connectivity optimized for each network. PMTUD is disabled by default. To enable it, refer to the [PMTUD documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/#enable-path-mtu-discovery).
+- Improvements for the [OS version](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/warp-client-checks/os-version/) WARP client check. Windows Updated Build Revision (UBR) numbers can now be checked by the client to ensure devices have required security patches and features installed.
+- The WARP client now supports Windows 11 ARM-based machines. For information on known limitations, refer to the [Known limitations page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/#cloudflare-one-client-disconnected-on-windows-arm).
 
 **Known issues**
 
-* For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
-* Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
-* Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:
+- For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
+- Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
+- Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
+- DNS resolution may be broken when the following conditions are all true:
+  - WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  - A custom DNS server address is configured on the primary network adapter.
+  - The custom DNS server address on the primary network adapter is changed while WARP is connected.
 
-  * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
-  * A custom DNS server address is configured on the primary network adapter.
-  * The custom DNS server address on the primary network adapter is changed while WARP is connected.
-To work around this issue, reconnect the WARP client by toggling off and back on.
+  To work around this issue, reconnect the WARP client by toggling off and back on.
 
 ## 2025-11-11
 
@@ -4466,13 +4518,13 @@ This release contains minor fixes, improvements, and new features including [Pat
 
 **Changes and improvements**
 
-* The GUI now displays the health of the tunnel and DNS connections by showing a connection status message when the network may be unstable. This will make it easier to diagnose connectivity issues.
-* Fixed an issue where deleting a registration was erroneously reported as having failed.
-* Path Maximum Transmission Unit Discovery (PMTUD) may now be used to discover the effective MTU of the connection. This allows the WARP client to improve connectivity optimized for each network. PMTUD is disabled by default. To enable it, refer to the [PMTUD documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/#enable-path-mtu-discovery).
+- The GUI now displays the health of the tunnel and DNS connections by showing a connection status message when the network may be unstable. This will make it easier to diagnose connectivity issues.
+- Fixed an issue where deleting a registration was erroneously reported as having failed.
+- Path Maximum Transmission Unit Discovery (PMTUD) may now be used to discover the effective MTU of the connection. This allows the WARP client to improve connectivity optimized for each network. PMTUD is disabled by default. To enable it, refer to the [PMTUD documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/#enable-path-mtu-discovery).
 
 **Known issues**
 
-* Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
+- Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
 
 ## 2025-11-11
 
@@ -4485,17 +4537,17 @@ A new GA release for the Linux WARP client is now available on the [stable relea
 
 This release contains minor fixes, improvements, and new features including [Path Maximum Transmission Unit Discovery (PMTUD)](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/#enable-path-mtu-discovery). When PMTUD is enabled, the client will dynamically adjust packet sizing to optimize connection performance. There is also a new connection status message in the GUI to inform users that the local network connection may be unstable. This will make it easier to diagnose connectivity issues.
 
-WARP client version 2025.8.779.0 introduced an updated public key for Linux packages. The public key must be updated if it was installed before September 12, 2025 to ensure the repository remains functional after December 4, 2025\. Instructions to make this update are available at [pkg.cloudflareclient.com](https://pkg.cloudflareclient.com/).
+WARP client version 2025.8.779.0 introduced an updated public key for Linux packages. The public key must be updated if it was installed before September 12, 2025 to ensure the repository remains functional after December 4, 2025. Instructions to make this update are available at [pkg.cloudflareclient.com](https://pkg.cloudflareclient.com/).
 
 **Changes and improvements**
 
-* The GUI now displays the health of the tunnel and DNS connections by showing a connection status message when the network may be unstable. This will make it easier to diagnose connectivity issues.
-* Fixed an issue where deleting a registration was erroneously reported as having failed.
-* Path Maximum Transmission Unit Discovery (PMTUD) may now be used to discover the effective MTU of the connection. This allows the WARP client to improve connectivity optimized for each network. PMTUD is disabled by default. To enable it, refer to the [PMTUD documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/#enable-path-mtu-discovery).
+- The GUI now displays the health of the tunnel and DNS connections by showing a connection status message when the network may be unstable. This will make it easier to diagnose connectivity issues.
+- Fixed an issue where deleting a registration was erroneously reported as having failed.
+- Path Maximum Transmission Unit Discovery (PMTUD) may now be used to discover the effective MTU of the connection. This allows the WARP client to improve connectivity optimized for each network. PMTUD is disabled by default. To enable it, refer to the [PMTUD documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/#enable-path-mtu-discovery).
 
 ## 2025-11-11
 
-[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 
 **cloudflared proxy-dns command will be removed starting February 2, 2026**
@@ -4524,7 +4576,7 @@ Instead of running `cloudflared proxy-dns` on a machine, you can install the WAR
 
 ## 2025-11-06
 
-[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Automatic Return Routing (Beta)**
@@ -4533,9 +4585,9 @@ Magic WAN now supports Automatic Return Routing (ARR), allowing customers to con
 
 Key benefits:
 
-* **Route-less mode**: Static or dynamic routes are optional when using ARR.
-* **Overlapping IP space support**: Traffic originating from customer sites can use overlapping private IP ranges.
-* **Symmetric routing**: Return traffic is guaranteed to use the same connection as the original on-ramp.
+- **Route-less mode**: Static or dynamic routes are optional when using ARR.
+- **Overlapping IP space support**: Traffic originating from customer sites can use overlapping private IP ranges.
+- **Symmetric routing**: Return traffic is guaranteed to use the same connection as the original on-ramp.
 
 This feature is currently in beta and requires the new Unified Routing mode (beta).
 
@@ -4543,7 +4595,7 @@ For configuration details, refer to [Configure Automatic Return Routing](https:/
 
 ## 2025-11-06
 
-[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Designate WAN link for breakout traffic**
@@ -4552,9 +4604,9 @@ Magic WAN Connector now allows you to designate a specific WAN port for breakout
 
 With this feature, you can:
 
-* Pin breakout traffic for specific applications to a preferred WAN port.
-* Ensure critical traffic (such as Zoom or Teams) always uses your fastest or most reliable connection.
-* Benefit from automatic failover to standard WAN port priority if the preferred port goes down.
+- Pin breakout traffic for specific applications to a preferred WAN port.
+- Ensure critical traffic (such as Zoom or Teams) always uses your fastest or most reliable connection.
+- Benefit from automatic failover to standard WAN port priority if the preferred port goes down.
 
 This is useful for organizations with multiple ISP uplinks who need predictable egress behavior for performance-sensitive traffic.
 
@@ -4567,75 +4619,75 @@ For configuration details, refer to [Designate WAN ports for breakout apps](http
 
 **Applications to be remapped to the new categories**
 
-We have previously added new application categories to better reflect their content and improve HTTP traffic management: refer to [Changelog](https://developers.cloudflare.com/cloudflare-one/changelog/gateway/#2025-10-28). While the new categories are live now, we want to ensure you have ample time to review and adjust any existing rules you have configured against old categories. The remapping of existing applications into these new categories will be completed by January 30, 2026\. This timeline allows you a dedicated period to:
+We have previously added new application categories to better reflect their content and improve HTTP traffic management: refer to [Changelog](https://developers.cloudflare.com/cloudflare-one/changelog/gateway/#2025-10-28). While the new categories are live now, we want to ensure you have ample time to review and adjust any existing rules you have configured against old categories. The remapping of existing applications into these new categories will be completed by January 30, 2026. This timeline allows you a dedicated period to:
 
-* Review the new category structure.
-* Identify any policies you have that target the older categories.
-* Adjust your rules to reference the new, more precise categories before the old mappings change. Once the applications have been fully remapped by January 30, 2026, you might observe some changes in the traffic being mitigated or allowed by your existing policies. We encourage you to use the intervening time to prepare for a smooth transition.
+- Review the new category structure.
+- Identify any policies you have that target the older categories.
+- Adjust your rules to reference the new, more precise categories before the old mappings change. Once the applications have been fully remapped by January 30, 2026, you might observe some changes in the traffic being mitigated or allowed by your existing policies. We encourage you to use the intervening time to prepare for a smooth transition.
 
 **Applications being remappedd**
 
-| Application Name                | Existing Category | New Category                 |
-| ------------------------------- | ----------------- | ---------------------------- |
-| Google Photos                   | File Sharing      | Photography & Graphic Design |
-| Flickr                          | File Sharing      | Photography & Graphic Design |
-| ADP                             | Human Resources   | Business                     |
-| Greenhouse                      | Human Resources   | Business                     |
-| myCigna                         | Human Resources   | Health & Fitness             |
-| UnitedHealthcare                | Human Resources   | Health & Fitness             |
-| ZipRecruiter                    | Human Resources   | Business                     |
-| Amazon Business                 | Human Resources   | Business                     |
-| Jobcenter                       | Human Resources   | Business                     |
-| Jobsuche                        | Human Resources   | Business                     |
-| Zenjob                          | Human Resources   | Business                     |
-| DocuSign                        | Legal             | Business                     |
-| Postident                       | Legal             | Business                     |
-| Adobe Creative Cloud            | Productivity      | Photography & Graphic Design |
-| Airtable                        | Productivity      | Development                  |
-| Autodesk Fusion360              | Productivity      | IT Management                |
-| Coursera                        | Productivity      | Education                    |
-| Microsoft Power BI              | Productivity      | Business                     |
-| Tableau                         | Productivity      | Business                     |
-| Duolingo                        | Productivity      | Education                    |
-| Adobe Reader                    | Productivity      | Business                     |
-| AnpiReport                      | Productivity      | Travel                       |
-| ビズリーチ                           | Productivity      | Business                     |
-| doda (デューダ)                     | Productivity      | Business                     |
-| 求人ボックス                          | Productivity      | Business                     |
-| マイナビ2026                        | Productivity      | Business                     |
-| Power Apps                      | Productivity      | Business                     |
-| RECRUIT AGENT                   | Productivity      | Business                     |
-| シフトボード                          | Productivity      | Business                     |
-| スタンバイ                           | Productivity      | Business                     |
-| Doctolib                        | Productivity      | Health & Fitness             |
-| Miro                            | Productivity      | Photography & Graphic Design |
-| MyFitnessPal                    | Productivity      | Health & Fitness             |
-| Sentry Mobile                   | Productivity      | Travel                       |
-| Slido                           | Productivity      | Photography & Graphic Design |
-| Arista Networks                 | Productivity      | IT Management                |
-| Atlassian                       | Productivity      | Business                     |
-| CoderPad                        | Productivity      | Business                     |
-| eAgreements                     | Productivity      | Business                     |
-| Vmware                          | Productivity      | IT Management                |
-| Vmware Vcenter                  | Productivity      | IT Management                |
-| AWS Skill Builder               | Productivity      | Education                    |
-| Microsoft Office 365 (GCC)      | Productivity      | Business                     |
-| Microsoft Exchange Online (GCC) | Productivity      | Business                     |
-| Canva                           | Sales & Marketing | Photography & Graphic Design |
-| Instacart                       | Shopping          | Food & Drink                 |
-| Wawa                            | Shopping          | Food & Drink                 |
-| McDonald's                      | Shopping          | Food & Drink                 |
-| Vrbo                            | Shopping          | Travel                       |
-| American Airlines               | Shopping          | Travel                       |
-| Booking.com                     | Shopping          | Travel                       |
-| Ticketmaster                    | Shopping          | Entertainment & Events       |
-| Airbnb                          | Shopping          | Travel                       |
-| DoorDash                        | Shopping          | Food & Drink                 |
-| Expedia                         | Shopping          | Travel                       |
-| EasyPark                        | Shopping          | Travel                       |
-| UEFA Tickets                    | Shopping          | Entertainment & Events       |
-| DHL Express                     | Shopping          | Business                     |
-| UPS                             | Shopping          | Business                     |
+| Application Name | Existing Category | New Category |
+| --- | --- | --- |
+| Google Photos | File Sharing | Photography & Graphic Design |
+| Flickr | File Sharing | Photography & Graphic Design |
+| ADP | Human Resources | Business |
+| Greenhouse | Human Resources | Business |
+| myCigna | Human Resources | Health & Fitness |
+| UnitedHealthcare | Human Resources | Health & Fitness |
+| ZipRecruiter | Human Resources | Business |
+| Amazon Business | Human Resources | Business |
+| Jobcenter | Human Resources | Business |
+| Jobsuche | Human Resources | Business |
+| Zenjob | Human Resources | Business |
+| DocuSign | Legal | Business |
+| Postident | Legal | Business |
+| Adobe Creative Cloud | Productivity | Photography & Graphic Design |
+| Airtable | Productivity | Development |
+| Autodesk Fusion360 | Productivity | IT Management |
+| Coursera | Productivity | Education |
+| Microsoft Power BI | Productivity | Business |
+| Tableau | Productivity | Business |
+| Duolingo | Productivity | Education |
+| Adobe Reader | Productivity | Business |
+| AnpiReport | Productivity | Travel |
+| ビズリーチ | Productivity | Business |
+| doda (デューダ) | Productivity | Business |
+| 求人ボックス | Productivity | Business |
+| マイナビ2026 | Productivity | Business |
+| Power Apps | Productivity | Business |
+| RECRUIT AGENT | Productivity | Business |
+| シフトボード | Productivity | Business |
+| スタンバイ | Productivity | Business |
+| Doctolib | Productivity | Health & Fitness |
+| Miro | Productivity | Photography & Graphic Design |
+| MyFitnessPal | Productivity | Health & Fitness |
+| Sentry Mobile | Productivity | Travel |
+| Slido | Productivity | Photography & Graphic Design |
+| Arista Networks | Productivity | IT Management |
+| Atlassian | Productivity | Business |
+| CoderPad | Productivity | Business |
+| eAgreements | Productivity | Business |
+| Vmware | Productivity | IT Management |
+| Vmware Vcenter | Productivity | IT Management |
+| AWS Skill Builder | Productivity | Education |
+| Microsoft Office 365 (GCC) | Productivity | Business |
+| Microsoft Exchange Online (GCC) | Productivity | Business |
+| Canva | Sales & Marketing | Photography & Graphic Design |
+| Instacart | Shopping | Food & Drink |
+| Wawa | Shopping | Food & Drink |
+| McDonald's | Shopping | Food & Drink |
+| Vrbo | Shopping | Travel |
+| American Airlines | Shopping | Travel |
+| Booking.com | Shopping | Travel |
+| Ticketmaster | Shopping | Entertainment & Events |
+| Airbnb | Shopping | Travel |
+| DoorDash | Shopping | Food & Drink |
+| Expedia | Shopping | Travel |
+| EasyPark | Shopping | Travel |
+| UEFA Tickets | Shopping | Entertainment & Events |
+| DHL Express | Shopping | Business |
+| UPS | Shopping | Business |
 
 For more information on creating HTTP policies, refer to [Applications and app types](https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/).
 
@@ -4667,14 +4719,14 @@ This feature is generally available across all plans.
 
 Cloudflare CASB (Cloud Access Security Broker) now supports two new granular roles to provide more precise access control for your security teams:
 
-* **Cloudflare CASB Read:** Provides read-only access to view CASB findings and dashboards. This role is ideal for security analysts, compliance auditors, or team members who need visibility without modification rights.
-* **Cloudflare CASB:** Provides full administrative access to configure and manage all aspects of the CASB product.
+- **Cloudflare CASB Read:** Provides read-only access to view CASB findings and dashboards. This role is ideal for security analysts, compliance auditors, or team members who need visibility without modification rights.
+- **Cloudflare CASB:** Provides full administrative access to configure and manage all aspects of the CASB product.
 
 These new roles help you better enforce the principle of least privilege. You can now grant specific members access to CASB security findings without assigning them broader permissions, such as the **Super Administrator** or **Administrator** roles.
 
 To enable [Data Loss Prevention (DLP)](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/), scans in CASB, account members will need the **Cloudflare Zero Trust** role.
 
-You can find these new roles when inviting members or creating API tokens in the Cloudflare dashboard under **Manage Account** \> **Members**.
+You can find these new roles when inviting members or creating API tokens in the Cloudflare dashboard under **Manage Account** > **Members**.
 
 To learn more about managing roles and permissions, refer to the [Manage account members and roles documentation](https://developers.cloudflare.com/fundamentals/manage-members/roles/).
 
@@ -4689,15 +4741,15 @@ To give you precision and flexibility while creating policies to block unwanted 
 
 We have added the following categories to provide more precise organization and allow for finer-grained policy creation, designed around how users interact with different types of applications:
 
-* Business
-* Education
-* Entertainment & Events
-* Food & Drink
-* Health & Fitness
-* Lifestyle
-* Navigation
-* Photography & Graphic Design
-* Travel
+- Business
+- Education
+- Entertainment & Events
+- Food & Drink
+- Health & Fitness
+- Lifestyle
+- Navigation
+- Photography & Graphic Design
+- Travel
 
 The new categories are live now, but we are providing a transition period for existing applications to be fully remapped to these new categories.
 
@@ -4705,8 +4757,8 @@ The full remapping will be completed by January 30, 2026.
 
 We encourage you to use this time to:
 
-* Review the new category structure.
-* Identify and adjust any existing HTTP policies that reference older categories to ensure a smooth transition.
+- Review the new category structure.
+- Identify and adjust any existing HTTP policies that reference older categories to ensure a smooth transition.
 
 For more information on creating HTTP policies, refer to [Applications and app types](https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/).
 
@@ -4719,10 +4771,10 @@ For more information on creating HTTP policies, refer to [Applications and app t
 
 Admins can now create [scheduled DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/timed-policies/) directly from the Zero Trust dashboard, without using the API. You can configure policies to be active during specific, recurring times, such as blocking social media during business hours or gaming sites on school nights.
 
-* **Preset Schedules**: Use built-in templates for common scenarios like Business Hours, School Days, Weekends, and more.
-* **Custom Schedules**: Define your own schedule with specific days and up to three non-overlapping time ranges per day.
-* **Timezone Control**: Choose to enforce a schedule in a specific timezone (for example, US Eastern) or based on the local time of each user.
-* **Combined with Duration**: Policies can have both a schedule and a duration. If both are set, the duration's expiration takes precedence.
+- **Preset Schedules**: Use built-in templates for common scenarios like Business Hours, School Days, Weekends, and more.
+- **Custom Schedules**: Define your own schedule with specific days and up to three non-overlapping time ranges per day.
+- **Timezone Control**: Choose to enforce a schedule in a specific timezone (for example, US Eastern) or based on the local time of each user.
+- **Combined with Duration**: Policies can have both a schedule and a duration. If both are set, the duration's expiration takes precedence.
 
 You can see the flow in the demo GIF:
 
@@ -4741,18 +4793,18 @@ You can now generate on-demand security reports directly from the Cloudflare das
 
 These reports offer several key benefits:
 
-* **Executive Summary:** Quickly view the performance of Email security with a high-level executive summary.
-* **Actionable Insights:** Dive deep into trend data, breakdowns of threat types, and analysis of top targets to identify and address vulnerabilities.
-* **Configuration Transparency:** Gain a clear view of your policy, submission, and domain configurations to ensure optimal setup.
-* **Account Takeover Risks:** Get a snapshot of your M365 risky users (requires a Microsoft Entra ID P2 license and [M365 SaaS integration ↗](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/)).
+- **Executive Summary:** Quickly view the performance of Email security with a high-level executive summary.
+- **Actionable Insights:** Dive deep into trend data, breakdowns of threat types, and analysis of top targets to identify and address vulnerabilities.
+- **Configuration Transparency:** Gain a clear view of your policy, submission, and domain configurations to ensure optimal setup.
+- **Account Takeover Risks:** Get a snapshot of your M365 risky users (requires a Microsoft Entra ID P2 license and [M365 SaaS integration ↗](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/)).
 
 To get started, refer to [Download a security report](https://developers.cloudflare.com/cloudflare-one/email-security/monitoring/download-report/#download-a-security-report). ![Report](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1009,height=571,format=webp/_astro/report.CbkPa8Jt.png)
 
 This feature is available across the following Email security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2025-10-16
 
@@ -4767,22 +4819,22 @@ This release contains minor fixes, improvements, and new features including Path
 
 **Changes and improvements**
 
-* Improvements for [Windows multi-user](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-multiuser/) to maintain the [Global WARP override](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#disconnect-warp-on-all-devices) state when switching between users.
-* The GUI now displays the health of the tunnel and DNS connections by showing a connection status message when the network may be unstable. This will make it easier to debug connectivity issues.
-* Deleting registrations no longer returns an error when succeeding.
-* Path Maximum Transmission Unit Discovery (PMTUD) is now used to discover the effective MTU of the connection. This allows the client to improve connection performance optimized for the current network.
+- Improvements for [Windows multi-user](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-multiuser/) to maintain the [Global WARP override](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#disconnect-warp-on-all-devices) state when switching between users.
+- The GUI now displays the health of the tunnel and DNS connections by showing a connection status message when the network may be unstable. This will make it easier to debug connectivity issues.
+- Deleting registrations no longer returns an error when succeeding.
+- Path Maximum Transmission Unit Discovery (PMTUD) is now used to discover the effective MTU of the connection. This allows the client to improve connection performance optimized for the current network.
 
 **Known issues**
 
-* For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
-* Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
-* Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:
+- For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
+- Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
+- Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
+- DNS resolution may be broken when the following conditions are all true:
+  - WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  - A custom DNS server address is configured on the primary network adapter.
+  - The custom DNS server address on the primary network adapter is changed while WARP is connected.
 
-  * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
-  * A custom DNS server address is configured on the primary network adapter.
-  * The custom DNS server address on the primary network adapter is changed while WARP is connected.
-To work around this issue, reconnect the WARP client by toggling off and back on.
+  To work around this issue, reconnect the WARP client by toggling off and back on.
 
 ## 2025-10-16
 
@@ -4797,14 +4849,14 @@ This release contains minor fixes, improvements, and new features including Path
 
 **Changes and improvements**
 
-* The GUI now displays the health of the tunnel and DNS connections by showing a connection status message when the network may be unstable. This will make it easier to debug connectivity issues.
-* Deleting registrations no longer returns an error when succeeding.
-* Path Maximum Transmission Unit Discovery (PMTUD) is now used to discover the effective MTU of the connection. This allows the client to improve connection performance optimized for the current network.
+- The GUI now displays the health of the tunnel and DNS connections by showing a connection status message when the network may be unstable. This will make it easier to debug connectivity issues.
+- Deleting registrations no longer returns an error when succeeding.
+- Path Maximum Transmission Unit Discovery (PMTUD) is now used to discover the effective MTU of the connection. This allows the client to improve connection performance optimized for the current network.
 
 **Known issues**
 
-* macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
-* Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
+- macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
+- Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
 
 ## 2025-10-10
 
@@ -4817,11 +4869,11 @@ We have added three new domain categories under the Technology parent category, 
 
 **New categories added**
 
-| Parent ID | Parent Name | Category ID | Category Name       |
-| --------- | ----------- | ----------- | ------------------- |
-| 26        | Technology  | 194         | Keep Awake Software |
-| 26        | Technology  | 192         | Remote Access       |
-| 26        | Technology  | 193         | Shareware/Freeware  |
+| Parent ID | Parent Name | Category ID | Category Name |
+| --- | --- | --- | --- |
+| 26 | Technology | 194 | Keep Awake Software |
+| 26 | Technology | 192 | Remote Access |
+| 26 | Technology | 193 | Shareware/Freeware |
 
 Refer to [Gateway domain categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/) to learn more.
 
@@ -4834,16 +4886,16 @@ Refer to [Gateway domain categories](https://developers.cloudflare.com/cloudflar
 
 A new GA release for the Linux WARP client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
 
-This release contains significant fixes and improvements including an updated public key for Linux packages. The public key must be updated if it was installed before September 12, 2025 to ensure the repository remains functional after December 4, 2025\. Instructions to make this update are available at [pkg.cloudflareclient.com](https://pkg.cloudflareclient.com/).
+This release contains significant fixes and improvements including an updated public key for Linux packages. The public key must be updated if it was installed before September 12, 2025 to ensure the repository remains functional after December 4, 2025. Instructions to make this update are available at [pkg.cloudflareclient.com](https://pkg.cloudflareclient.com/).
 
 **Changes and improvements**
 
-* [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) has been enhanced for even faster resolution. Proxy mode now supports SOCKS4, SOCK5, and HTTP CONNECT over an L4 tunnel with custom congestion control optimizations instead of the previous L3 tunnel to Cloudflare's network. This has more than doubled Proxy mode throughput in lab speed testing, by an order of magnitude in some cases.
-* The MASQUE protocol is now the only protocol that can use [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode). If you previously configured a device profile to use Proxy mode with Wireguard, you will need to select a new WARP mode or switch to the MASQUE protocol. Otherwise, all devices matching the profile will lose connectivity.
+- [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) has been enhanced for even faster resolution. Proxy mode now supports SOCKS4, SOCK5, and HTTP CONNECT over an L4 tunnel with custom congestion control optimizations instead of the previous L3 tunnel to Cloudflare's network. This has more than doubled Proxy mode throughput in lab speed testing, by an order of magnitude in some cases.
+- The MASQUE protocol is now the only protocol that can use [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode). If you previously configured a device profile to use Proxy mode with Wireguard, you will need to select a new WARP mode or switch to the MASQUE protocol. Otherwise, all devices matching the profile will lose connectivity.
 
 **Known issues**
 
-* Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
+- Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
 
 ## 2025-10-07
 
@@ -4858,20 +4910,20 @@ This release contains significant fixes and improvements.
 
 **Changes and improvements**
 
-* [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) has been enhanced for even faster resolution. Proxy mode now supports SOCKS4, SOCK5, and HTTP CONNECT over an L4 tunnel with custom congestion control optimizations instead of the previous L3 tunnel to Cloudflare's network. This has more than doubled Proxy mode throughput in lab speed testing, by an order of magnitude in some cases.
-* The MASQUE protocol is now the only protocol that can use [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode). If you previously configured a device profile to use Proxy mode with Wireguard, you will need to select a new WARP mode or switch to the MASQUE protocol. Otherwise, all devices matching the profile will lose connectivity.
+- [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) has been enhanced for even faster resolution. Proxy mode now supports SOCKS4, SOCK5, and HTTP CONNECT over an L4 tunnel with custom congestion control optimizations instead of the previous L3 tunnel to Cloudflare's network. This has more than doubled Proxy mode throughput in lab speed testing, by an order of magnitude in some cases.
+- The MASQUE protocol is now the only protocol that can use [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode). If you previously configured a device profile to use Proxy mode with Wireguard, you will need to select a new WARP mode or switch to the MASQUE protocol. Otherwise, all devices matching the profile will lose connectivity.
 
 **Known issues**
 
-* For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
-* Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
-* Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:
+- For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
+- Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
+- Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
+- DNS resolution may be broken when the following conditions are all true:
+  - WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  - A custom DNS server address is configured on the primary network adapter.
+  - The custom DNS server address on the primary network adapter is changed while WARP is connected.
 
-  * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
-  * A custom DNS server address is configured on the primary network adapter.
-  * The custom DNS server address on the primary network adapter is changed while WARP is connected.
-To work around this issue, reconnect the WARP client by toggling off and back on.
+  To work around this issue, reconnect the WARP client by toggling off and back on.
 
 ## 2025-10-07
 
@@ -4886,17 +4938,17 @@ This release contains significant fixes and improvements.
 
 **Changes and improvements**
 
-* [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) has been enhanced for even faster resolution. Proxy mode now supports SOCKS4, SOCK5, and HTTP CONNECT over an L4 tunnel with custom congestion control optimizations instead of the previous L3 tunnel to Cloudflare's network. This has more than doubled Proxy mode throughput in lab speed testing, by an order of magnitude in some cases.
-* The MASQUE protocol is now the only protocol that can use [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode). If you previously configured a device profile to use Proxy mode with Wireguard, you will need to select a new WARP mode or switch to the MASQUE protocol. Otherwise, all devices matching the profile will lose connectivity.
+- [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) has been enhanced for even faster resolution. Proxy mode now supports SOCKS4, SOCK5, and HTTP CONNECT over an L4 tunnel with custom congestion control optimizations instead of the previous L3 tunnel to Cloudflare's network. This has more than doubled Proxy mode throughput in lab speed testing, by an order of magnitude in some cases.
+- The MASQUE protocol is now the only protocol that can use [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode). If you previously configured a device profile to use Proxy mode with Wireguard, you will need to select a new WARP mode or switch to the MASQUE protocol. Otherwise, all devices matching the profile will lose connectivity.
 
 **Known issues**
 
-* macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
-* Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
+- macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
+- Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
 
 ## 2025-10-02
 
-[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/) [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 
 **Fine-grained Permissioning for Access for Apps, IdPs, & Targets now in Public Beta**
@@ -4905,22 +4957,23 @@ Fine-grained permissions for **Access Applications, Identity Providers (IdPs), a
 
 #### What's New
 
-* **[Access Applications ↗](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/)**: Grant admin permissions to specific Access Applications.
-* **[Identity Providers ↗](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/)**: Grant admin permissions to individual Identity Providers.
-* **[Targets ↗](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/#1-add-a-target)**: Grant admin rights to specific Targets
+- **[Access Applications ↗](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/)**: Grant admin permissions to specific Access Applications.
+- **[Identity Providers ↗](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/)**: Grant admin permissions to individual Identity Providers.
+- **[Targets ↗](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/#1-add-a-target)**: Grant admin rights to specific Targets
+
 ![Updated Permissions Policy UX](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3004,height=1410,format=webp/_astro/2025-10-01-fine-grained-permissioning-ux.BWVmQsVF.png)
 
 Note
 
 During the public beta, members must also be assigned an account-scoped, read only role to view resources in the dashboard. This restriction will be lifted in a future release.
 
-* **Account Read Only** plus a fine-grained permission for a specific App, IdP, or Target
-* **Cloudflare Zero Trust Read Only** plus fine-grained permission for a specific App, IdP, or Target
+- **Account Read Only** plus a fine-grained permission for a specific App, IdP, or Target
+- **Cloudflare Zero Trust Read Only** plus fine-grained permission for a specific App, IdP, or Target
 
 For more info:
 
-* [Get started with Cloudflare Permissioning](https://developers.cloudflare.com/fundamentals/manage-members/roles/)
-* [Manage Member Permissioning via the UI & API](https://developers.cloudflare.com/fundamentals/manage-members/manage)
+- [Get started with Cloudflare Permissioning](https://developers.cloudflare.com/fundamentals/manage-members/roles/)
+- [Manage Member Permissioning via the UI & API](https://developers.cloudflare.com/fundamentals/manage-members/manage)
 
 ## 2025-10-01
 
@@ -4933,19 +4986,19 @@ You can now enhance your security posture by blocking additional application ins
 
 We have expanded Gateway's file type controls to include:
 
-* Apple Disk Image (dmg)
-* Microsoft Software Installer (msix, appx)
-* Apple Software Package (pkg)
+- Apple Disk Image (dmg)
+- Microsoft Software Installer (msix, appx)
+- Apple Software Package (pkg)
 
-You can find these new options within the [_Upload File Types_ and _Download File Types_ selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#download-and-upload-file-types) when creating or editing an HTTP policy. The file types are categorized as follows:
+You can find these new options within the [*Upload File Types* and *Download File Types* selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#download-and-upload-file-types) when creating or editing an HTTP policy. The file types are categorized as follows:
 
-* **System**: _Apple Disk Image (dmg)_
-* **Executable**: _Microsoft Software Installer (msix)_, _Microsoft Software Installer (appx)_, _Apple Software Package (pkg)_
+- **System**: *Apple Disk Image (dmg)*
+- **Executable**: *Microsoft Software Installer (msix)*, *Microsoft Software Installer (appx)*, *Apple Software Package (pkg)*
 
 To ensure these file types are blocked effectively, please note the following behaviors:
 
-* DMG: Due to their file structure, DMG files are blocked at the very end of the transfer. A user's download may appear to progress but will fail at the last moment, preventing the browser from saving the file.
-* MSIX: To comprehensively block Microsoft Software Installers, you should also include the file type _Unscannable_. MSIX files larger than 100 MB are identified as Unscannable ZIP files during inspection.
+- DMG: Due to their file structure, DMG files are blocked at the very end of the transfer. A user's download may appear to progress but will fail at the last moment, preventing the browser from saving the file.
+- MSIX: To comprehensively block Microsoft Software Installers, you should also include the file type *Unscannable*. MSIX files larger than 100 MB are identified as Unscannable ZIP files during inspection.
 
 To get started, go to your HTTP policies in Zero Trust. For a full list of file types, refer to [supported file types](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#supported-file-types).
 
@@ -4962,23 +5015,23 @@ This release contains minor fixes and improvements.
 
 **Changes and improvements**
 
-* MASQUE is now the default [tunnel protocol](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol) for all new WARP device profiles.
-* Improvement to limit idle connections in [Gateway with DoH mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#dns-only-mode) to avoid unnecessary resource usage that can lead to DoH requests not resolving.
-* Improvement to maintain TCP connections to reduce interruptions in long-lived connections such as RDP or SSH.
-* Improvements to maintain [Global WARP override](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#disconnect-warp-on-all-devices) settings when [switching between organizations](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/#switch-organizations-in-the-cloudflare-one-client).
-* Improvements to maintain client connectivity during network changes.
+- MASQUE is now the default [tunnel protocol](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol) for all new WARP device profiles.
+- Improvement to limit idle connections in [Gateway with DoH mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#dns-only-mode) to avoid unnecessary resource usage that can lead to DoH requests not resolving.
+- Improvement to maintain TCP connections to reduce interruptions in long-lived connections such as RDP or SSH.
+- Improvements to maintain [Global WARP override](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#disconnect-warp-on-all-devices) settings when [switching between organizations](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/#switch-organizations-in-the-cloudflare-one-client).
+- Improvements to maintain client connectivity during network changes.
 
 **Known issues**
 
-* For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
-* Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
-* Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:
+- For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
+- Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
+- Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
+- DNS resolution may be broken when the following conditions are all true:
+  - WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  - A custom DNS server address is configured on the primary network adapter.
+  - The custom DNS server address on the primary network adapter is changed while WARP is connected.
 
-  * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
-  * A custom DNS server address is configured on the primary network adapter.
-  * The custom DNS server address on the primary network adapter is changed while WARP is connected.
-To work around this issue, reconnect the WARP client by toggling off and back on.
+  To work around this issue, reconnect the WARP client by toggling off and back on.
 
 ## 2025-09-30
 
@@ -4993,17 +5046,17 @@ This release contains minor fixes and improvements.
 
 **Changes and improvements**
 
-* Fixed a bug preventing the `warp-diag captive-portal` command from running successfully due to the client not parsing SSID on macOS.
-* Improvements to maintain [Global WARP override](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#disconnect-warp-on-all-devices) settings when [switching between organizations](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/#switch-organizations-in-the-cloudflare-one-client).
-* MASQUE is now the default [tunnel protocol](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol) for all new WARP device profiles.
-* Improvement to limit idle connections in [Gateway with DoH mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#dns-only-mode) to avoid unnecessary resource usage that can lead to DoH requests not resolving.
-* Improvements to maintain client connectivity during network changes.
-* The WARP client now supports macOS Tahoe (version 26.0).
+- Fixed a bug preventing the `warp-diag captive-portal` command from running successfully due to the client not parsing SSID on macOS.
+- Improvements to maintain [Global WARP override](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#disconnect-warp-on-all-devices) settings when [switching between organizations](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/#switch-organizations-in-the-cloudflare-one-client).
+- MASQUE is now the default [tunnel protocol](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol) for all new WARP device profiles.
+- Improvement to limit idle connections in [Gateway with DoH mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#dns-only-mode) to avoid unnecessary resource usage that can lead to DoH requests not resolving.
+- Improvements to maintain client connectivity during network changes.
+- The WARP client now supports macOS Tahoe (version 26.0).
 
 **Known issues**
 
-* macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
-* Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
+- macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
+- Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
 
 ## 2025-09-30
 
@@ -5014,18 +5067,18 @@ This release contains minor fixes and improvements.
 
 A new GA release for the Linux WARP client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
 
-This release contains minor fixes and improvements including an updated public key for Linux packages. The public key must be updated if it was installed before September 12, 2025 to ensure the repository remains functional after December 4, 2025\. Instructions to make this update are available at [pkg.cloudflareclient.com](https://pkg.cloudflareclient.com/).
+This release contains minor fixes and improvements including an updated public key for Linux packages. The public key must be updated if it was installed before September 12, 2025 to ensure the repository remains functional after December 4, 2025. Instructions to make this update are available at [pkg.cloudflareclient.com](https://pkg.cloudflareclient.com/).
 
 **Changes and improvements**
 
-* MASQUE is now the default [tunnel protocol](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol) for all new WARP device profiles.
-* Improvement to limit idle connections in [Gateway with DoH mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#dns-only-mode) to avoid unnecessary resource usage that can lead to DoH requests not resolving.
-* Improvements to maintain [Global WARP override](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#disconnect-warp-on-all-devices) settings when [switching between organizations](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/#switch-organizations-in-the-cloudflare-one-client).
-* Improvements to maintain client connectivity during network changes.
+- MASQUE is now the default [tunnel protocol](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol) for all new WARP device profiles.
+- Improvement to limit idle connections in [Gateway with DoH mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#dns-only-mode) to avoid unnecessary resource usage that can lead to DoH requests not resolving.
+- Improvements to maintain [Global WARP override](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#disconnect-warp-on-all-devices) settings when [switching between organizations](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/#switch-organizations-in-the-cloudflare-one-client).
+- Improvements to maintain client connectivity during network changes.
 
 **Known issues**
 
-* Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
+- Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
 
 ## 2025-09-30
 
@@ -5038,26 +5091,26 @@ Gateway users can now apply granular controls to their file sharing and AI chat 
 
 The new feature offers two methods of controlling SaaS applications:
 
-* **Application Controls** are curated groupings of Operations which provide an easy way for users to achieve a specific outcome. Application Controls may include _Upload_, _Download_, _Prompt_, _Voice_, and _Share_ depending on the application.
-* **Operations** are controls aligned to the most granular action a user can take. This provides a fine-grained approach to enforcing policy and generally aligns to the SaaS providers API specifications in naming and function.
+- **Application Controls** are curated groupings of Operations which provide an easy way for users to achieve a specific outcome. Application Controls may include *Upload*, *Download*, *Prompt*, *Voice*, and *Share* depending on the application.
+- **Operations** are controls aligned to the most granular action a user can take. This provides a fine-grained approach to enforcing policy and generally aligns to the SaaS providers API specifications in naming and function.
 
 Get started using [Application Granular Controls](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/granular-controls) and refer to the list of [supported applications](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/granular-controls/#compatible-applications).
 
 ## 2025-09-25
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
 
 
 **Refine DLP Scans with New Body Phase Selector**
 
 You can now more precisely control your HTTP DLP policies by specifying whether to scan the request or response body, helping to reduce false positives and target specific data flows.
 
-In the Gateway HTTP policy builder, you will find a new selector called _Body Phase_. This allows you to define the direction of traffic the DLP engine will inspect:
+In the Gateway HTTP policy builder, you will find a new selector called *Body Phase*. This allows you to define the direction of traffic the DLP engine will inspect:
 
-* _Request Body_: Scans data sent from a user's machine to an upstream service. This is ideal for monitoring data uploads, form submissions, or other user-initiated data exfiltration attempts.
-* _Response Body_: Scans data sent to a user's machine from an upstream service. Use this to inspect file downloads and website content for sensitive data.
+- *Request Body*: Scans data sent from a user's machine to an upstream service. This is ideal for monitoring data uploads, form submissions, or other user-initiated data exfiltration attempts.
+- *Response Body*: Scans data sent to a user's machine from an upstream service. Use this to inspect file downloads and website content for sensitive data.
 
-For example, consider a policy that blocks Social Security Numbers (SSNs). Previously, this policy might trigger when a user visits a website that contains example SSNs in its content (the response body). Now, by setting the **Body Phase** to _Request Body_, the policy will only trigger if the user attempts to upload or submit an SSN, ignoring the content of the web page itself.
+For example, consider a policy that blocks Social Security Numbers (SSNs). Previously, this policy might trigger when a user visits a website that contains example SSNs in its content (the response body). Now, by setting the **Body Phase** to *Request Body*, the policy will only trigger if the user attempts to upload or submit an SSN, ignoring the content of the web page itself.
 
 All policies without this selector will continue to scan both request and response bodies to ensure continued protection.
 
@@ -5074,18 +5127,21 @@ Email security relies on your submissions to continuously improve our detection 
 
 To ensure all customer feedback is actionable, we have launched two new features to manage invalid submissions sent to our team and user [submission aliases](https://developers.cloudflare.com/cloudflare-one/email-security/settings/phish-submissions/submission-addresses/):
 
-* **Email Notifications:** We now automatically notify users by email when they provide an invalid submission, educating them on the correct format. To disable notifications, go to **[Settings ↗](https://one.dash.cloudflare.com/?to=/:account/email-security/settings)** \> **Invalid submission emails** and turn the feature off.
+- **Email Notifications:** We now automatically notify users by email when they provide an invalid submission, educating them on the correct format. To disable notifications, go to **[Settings ↗](https://one.dash.cloudflare.com/?to=/:account/email-security/settings)** > **Invalid submission emails** and turn the feature off.
+
 ![EmailSec-Invalid-Submissions-Toggle](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1096,height=175,format=webp/_astro/EmailSec-Invalid-Submissions-Toggle.DXjbR6aX.png)
-* **Invalid Submission dashboard:** You can quickly identify which users need education to provide valid submissions so Cloudflare can provide continuous protection.
+
+- **Invalid Submission dashboard:** You can quickly identify which users need education to provide valid submissions so Cloudflare can provide continuous protection.
+
 ![EmailSec-Invalid-Submissions-Dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1132,height=511,format=webp/_astro/EmailSec-Invalid-Submissions-Dashboard.zuf1on2n.png)
 
 Learn more about this feature on [invalid submissions](https://developers.cloudflare.com/cloudflare-one/email-security/submissions/invalid-submissions/).
 
 This feature is available across these Email security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2025-09-22
 
@@ -5098,25 +5154,26 @@ This feature is available across these Email security packages:
 
 Since we announced our [open beta](https://developers.cloudflare.com/changelog/access/#2025-06-30), we've made a few improvements:
 
-* Support for targets with IPv6.
-* Support for [Magic WAN](https://developers.cloudflare.com/cloudflare-wan/) and [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) as on-ramps.
-* More robust error messaging on the login page to help you if you encounter an issue.
-* Worldwide keyboard support. Whether your day-to-day is in Portuguese, Chinese, or something in between, your browser-based RDP experience will look and feel exactly like you are using a desktop RDP client.
-* Cleaned up some other miscellaneous issues, including but not limited to enhanced support for Entra ID accounts and support for usernames with spaces, quotes, and special characters.
+- Support for targets with IPv6.
+- Support for [Magic WAN](https://developers.cloudflare.com/cloudflare-wan/) and [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) as on-ramps.
+- More robust error messaging on the login page to help you if you encounter an issue.
+- Worldwide keyboard support. Whether your day-to-day is in Portuguese, Chinese, or something in between, your browser-based RDP experience will look and feel exactly like you are using a desktop RDP client.
+- Cleaned up some other miscellaneous issues, including but not limited to enhanced support for Entra ID accounts and support for usernames with spaces, quotes, and special characters.
 
 As a refresher, here are some benefits browser-based RDP provides:
 
-* **Control how users authenticate to internal RDP resources** with single sign-on (SSO), multi-factor authentication (MFA), and granular access policies.
-* **Record who is accessing which servers and when** to support regulatory compliance requirements and to gain greater visibility in the event of a security event.
-* **Eliminate the need to install and manage software on user devices**. You will only need a web browser.
-* **Reduce your attack surface** by keeping your RDP servers off the public Internet and protecting them from common threats like credential stuffing or brute-force attacks.
+- **Control how users authenticate to internal RDP resources** with single sign-on (SSO), multi-factor authentication (MFA), and granular access policies.
+- **Record who is accessing which servers and when** to support regulatory compliance requirements and to gain greater visibility in the event of a security event.
+- **Eliminate the need to install and manage software on user devices**. You will only need a web browser.
+- **Reduce your attack surface** by keeping your RDP servers off the public Internet and protecting them from common threats like credential stuffing or brute-force attacks.
+
 ![Example of a browser-based RDP Access application](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2132,height=1814,format=webp/_astro/browser-based-rdp-access-app.BNXce1JL.png)
 
 To get started, refer to [Connect to RDP in a browser](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/).
 
 ## 2025-09-18
 
-[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 
 **Connect and secure any private or public app by hostname, not IP — with hostname routing for Cloudflare Tunnel**
@@ -5129,10 +5186,10 @@ Previously, Tunnel routes could only be defined by IP address or [CIDR range](ht
 
 **What’s new:**
 
-* **Hostname & Domain Routing**: Create routes for individual hostnames (e.g., `payroll.acme.local`) or entire domains (e.g., `*.acme.local`) and direct their traffic to a specific Tunnel.
-* **Simplified Zero Trust Policies**: Build resilient policies in Cloudflare Access and Gateway using stable hostnames, making it dramatically easier to apply per-resource authorization for your private applications.
-* **Precise Egress Control**: Route traffic for public hostnames (e.g., `bank.example.com`) through a specific Tunnel to enforce a dedicated source IP, solving the IP allowlist problem for third-party services.
-* **No More IP Lists**: This feature makes the workaround of maintaining dynamic IP Lists for Tunnel connections obsolete.
+- **Hostname & Domain Routing**: Create routes for individual hostnames (e.g., `payroll.acme.local`) or entire domains (e.g., `*.acme.local`) and direct their traffic to a specific Tunnel.
+- **Simplified Zero Trust Policies**: Build resilient policies in Cloudflare Access and Gateway using stable hostnames, making it dramatically easier to apply per-resource authorization for your private applications.
+- **Precise Egress Control**: Route traffic for public hostnames (e.g., `bank.example.com`) through a specific Tunnel to enforce a dedicated source IP, solving the IP allowlist problem for third-party services.
+- **No More IP Lists**: This feature makes the workaround of maintaining dynamic IP Lists for Tunnel connections obsolete.
 
 Get started in the Tunnels section of the Zero Trust dashboard with your first [private hostname](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/) or [public hostname](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/egress-cloudflared/) route.
 
@@ -5168,9 +5225,9 @@ We’re excited to announce that Email security customers can now choose their p
 
 Customers can now select where their email is processed. The following regions are supported:
 
-* **Germany**
-* **India**
-* **Australia**
+- **Germany**
+- **India**
+- **Australia**
 
 Global processing remains the default option, providing flexibility to meet both compliance requirements or operational preferences.
 
@@ -5186,9 +5243,9 @@ When onboarding a domain with MX, BCC, or Journaling:
 
 This feature is available across these Email security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 #### What’s next
 
@@ -5196,7 +5253,7 @@ We’re expanding the list of processing locations to match our [Data Localizati
 
 ## 2025-09-11
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 
 **DNS filtering for private network onramps**
@@ -5205,7 +5262,7 @@ We’re expanding the list of processing locations to match our [Data Localizati
 
 Routing DNS traffic to the Gateway resolver allows DNS resolution and filtering for traffic coming from private networks while preserving source internal IP visibility. This ensures Magic WAN users have full integration with our Cloudflare One features, including [Internal DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#internal-dns) and [hostname-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#selector-prerequisites).
 
-To configure DNS filtering, change your Magic WAN or WARP Connector DNS settings to use Cloudflare's shared resolver IPs, `172.64.36.1` and `172.64.36.2`. Once you configure DNS resolution and filtering, you can use _Source Internal IP_ as a traffic selector in your [resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) for routing private DNS traffic to your [Internal DNS](https://developers.cloudflare.com/dns/internal-dns/).
+To configure DNS filtering, change your Magic WAN or WARP Connector DNS settings to use Cloudflare's shared resolver IPs, `172.64.36.1` and `172.64.36.2`. Once you configure DNS resolution and filtering, you can use *Source Internal IP* as a traffic selector in your [resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) for routing private DNS traffic to your [Internal DNS](https://developers.cloudflare.com/dns/internal-dns/).
 
 ## 2025-09-08
 
@@ -5235,31 +5292,31 @@ Now, when a Magic tunnel has a bidirectional health check configured, the bidire
 
 ## 2025-09-02
 
-[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 
 **Cloudflare Tunnel and Networks API will no longer return deleted resources by default starting December 1, 2025**
 
-Starting **December 1, 2025**, list endpoints for the [Cloudflare Tunnel API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/) and [Zero Trust Networks API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/) will no longer return deleted tunnels, routes, subnets and virtual networks by default. This change makes the API behavior more intuitive by only returning active resources unless otherwise specified.
+Starting **December 1, 2025**, list endpoints for the [Cloudflare Tunnel API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/) and [Zero Trust Networks API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/) will no longer return deleted tunnels, routes, subnets and virtual networks by default. This change makes the API behavior more intuitive by only returning active resources unless otherwise specified.
 
 No action is required if you already explicitly set `is_deleted=false` or if you only need to list active resources.
 
 This change affects the following API endpoints:
 
-* List all tunnels: [GET /accounts/{account\_id}/tunnels](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/methods/list/)
-* List [Cloudflare Tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/): [GET /accounts/{account\_id}/cfd\_tunnel](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/subresources/cloudflared/methods/list/)
-* List [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) tunnels: [GET /accounts/{account\_id}/warp\_connector](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/subresources/warp%5Fconnector/methods/list/)
-* List tunnel routes: [GET /accounts/{account\_id}/teamnet/routes](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/routes/methods/list/)
-* List subnets: [GET /accounts/{account\_id}/zerotrust/subnets](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/subnets/methods/list/)
-* List virtual networks: [GET /accounts/{account\_id}/teamnet/virtual\_networks](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/virtual%5Fnetworks/methods/list/)
+- List all tunnels: [`GET /accounts/{account_id}/tunnels`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/methods/list/)
+- List [Cloudflare Tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/): [`GET /accounts/{account_id}/cfd_tunnel`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/subresources/cloudflared/methods/list/)
+- List [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) tunnels: [`GET /accounts/{account_id}/warp_connector`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/subresources/warp_connector/methods/list/)
+- List tunnel routes: [`GET /accounts/{account_id}/teamnet/routes`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/routes/methods/list/)
+- List subnets: [`GET /accounts/{account_id}/zerotrust/subnets`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/subnets/methods/list/)
+- List virtual networks: [`GET /accounts/{account_id}/teamnet/virtual_networks`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/virtual_networks/methods/list/)
 
 #### What is changing?
 
 The default behavior of the `is_deleted` query parameter will be updated.
 
-| Scenario                         | Previous behavior (before December 1, 2025)                                | New behavior (from December 1, 2025)                                  |
-| -------------------------------- | -------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| is\_deleted parameter is omitted | Returns **active & deleted** tunnels, routes, subnets and virtual networks | Returns **only active** tunnels, routes, subnets and virtual networks |
+| Scenario | Previous behavior (before December 1, 2025) | New behavior (from December 1, 2025) |
+| --- | --- | --- |
+| `is_deleted` parameter is omitted | Returns **active & deleted** tunnels, routes, subnets and virtual networks | Returns **only active** tunnels, routes, subnets and virtual networks |
 
 #### Action required
 
@@ -5283,11 +5340,11 @@ Following this change, retrieving a complete list of both active and deleted res
 
 This update is based on user feedback and aims to:
 
-* **Create a more intuitive default:** Aligning with common API design principles where list operations return only active resources by default.
-* **Reduce unexpected results:** Prevents users from accidentally operating on deleted resources that were returned unexpectedly.
-* **Improve performance:** For most users, the default query result will now be smaller and more relevant.
+- **Create a more intuitive default:** Aligning with common API design principles where list operations return only active resources by default.
+- **Reduce unexpected results:** Prevents users from accidentally operating on deleted resources that were returned unexpectedly.
+- **Improve performance:** For most users, the default query result will now be smaller and more relevant.
 
-To learn more, please visit the [Cloudflare Tunnel API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/) and [Zero Trust Networks API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/) documentation.
+To learn more, please visit the [Cloudflare Tunnel API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/) and [Zero Trust Networks API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/) documentation.
 
 ## 2025-09-01
 
@@ -5300,12 +5357,12 @@ To provide more granular controls, we refined the [existing roles](https://devel
 
 All Email security roles no longer have read or write access to any of the other Zero Trust products:
 
-* **Email Configuration Admin**
-* **Email Integration Admin**
-* **Email security Read Only**
-* **Email security Analyst**
-* **Email security Policy Admin**
-* **Email security Reporting**
+- **Email Configuration Admin**
+- **Email Integration Admin**
+- **Email security Read Only**
+- **Email security Analyst**
+- **Email security Policy Admin**
+- **Email security Reporting**
 
 To configure [Data Loss Prevention (DLP)](https://developers.cloudflare.com/cloudflare-one/email-security/outbound-dlp/) or [Remote Browser Isolation (RBI)](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation/#set-up-clientless-web-isolation), you now need to be an admin for the Zero Trust dashboard with the **Cloudflare Zero Trust** role.
 
@@ -5313,9 +5370,9 @@ Also through customer feedback, we have created a new additive role to allow **E
 
 This feature is available across these Email security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2025-08-29
 
@@ -5345,7 +5402,7 @@ Customers can test the new DEX MCP server in less than one minute. To learn more
 
 ## 2025-08-27
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Shadow IT - SaaS analytics dashboard**
@@ -5373,16 +5430,16 @@ Both the analytics and policies are accessible in the Cloudflare [Zero Trust das
 
 #### Key capabilities
 
-* **Agentless connections** — connect ChatGPT, Claude, and Gemini tenants via API; no endpoint software required
-* **Posture management** — detect insecure settings and misconfigurations that could lead to data exposure
-* **DLP detection** — identify sensitive data in uploaded chat attachments or files
-* **GenAI-specific insights** — surface risks unique to each provider’s capabilities
+- **Agentless connections** — connect ChatGPT, Claude, and Gemini tenants via API; no endpoint software required
+- **Posture management** — detect insecure settings and misconfigurations that could lead to data exposure
+- **DLP detection** — identify sensitive data in uploaded chat attachments or files
+- **GenAI-specific insights** — surface risks unique to each provider’s capabilities
 
 #### Learn more
 
-* [ChatGPT integration docs ↗](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/openai/)
-* [Claude integration docs ↗](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/anthropic/)
-* [Gemini integration docs ↗](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/gemini/)
+- [ChatGPT integration docs ↗](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/openai/)
+- [Claude integration docs ↗](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/anthropic/)
+- [Gemini integration docs ↗](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/gemini/)
 
 These integrations are available to all Cloudflare One customers today.
 
@@ -5409,9 +5466,9 @@ For example, if you have an MCP server designed for internal use within your org
 
 An [MCP server portal](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) centralizes multiple Model Context Protocol (MCP) servers onto a single HTTP endpoint. Key benefits include:
 
-* **Streamlined access to multiple MCP servers**: MCP server portals support both unauthenticated MCP servers as well as MCP servers secured using any third-party or custom OAuth provider. Users log in to the portal URL through Cloudflare Access and are prompted to authenticate separately to each server that requires OAuth.
-* **Customized tools per portal**: Admins can tailor an MCP portal to a particular use case by choosing the specific tools and prompt templates that they want to make available to users through the portal. This allows users to access a curated set of tools and prompts — the less external context exposed to the AI model, the better the AI responses tend to be.
-* **Observability**: Once the user's AI agent is connected to the portal, Cloudflare Access logs the individual requests made using the tools in the portal.
+- **Streamlined access to multiple MCP servers**: MCP server portals support both unauthenticated MCP servers as well as MCP servers secured using any third-party or custom OAuth provider. Users log in to the portal URL through Cloudflare Access and are prompted to authenticate separately to each server that requires OAuth.
+- **Customized tools per portal**: Admins can tailor an MCP portal to a particular use case by choosing the specific tools and prompt templates that they want to make available to users through the portal. This allows users to access a curated set of tools and prompts — the less external context exposed to the AI model, the better the AI responses tend to be.
+- **Observability**: Once the user's AI agent is connected to the portal, Cloudflare Access logs the individual requests made using the tools in the portal.
 
 This is available in an open beta for all customers across all plans! For more information check out our [blog ↗](https://blog.cloudflare.com/zero-trust-mcp-server-portals/) for this release.
 
@@ -5428,22 +5485,23 @@ You now have access to a comprehensive suite of capabilities to secure your orga
 
 DLP can now natively detect and inspect user prompts submitted to popular AI applications, including **Google Gemini**, **ChatGPT**, **Claude**, and **Perplexity**.
 
-1. **Prompt Analysis and Topic Classification**
+2. **Prompt Analysis and Topic Classification**
 
 Our DLP engine performs deep analysis on each prompt, applying [topic classification](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#ai-prompt-topics). These topics are grouped into two evaluation categories:
 
-* **Content:** PII, Source Code, Credentials and Secrets, Financial Information, and Customer Data.
-* **Intent:** Jailbreak attempts, requests for malicious code, or attempts to extract PII.
+- **Content:** PII, Source Code, Credentials and Secrets, Financial Information, and Customer Data.
+- **Intent:** Jailbreak attempts, requests for malicious code, or attempts to extract PII.
 
 To help you apply these topics quickly, we have also released five new predefined profiles (for example, AI Prompt: AI Security, AI Prompt: PII) that bundle these new topics.
 
 ![DLP](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=728,height=439,format=webp/_astro/ai-prompt-detection-entry.4QmdkAuv.png)
-1. **Granular Guardrails**
-You can now build guardrails using Gateway HTTP policies with [application granular controls](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#granular-controls). Apply a DLP profile containing an [AI prompt topic detection](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#ai-prompt-topics) to individual AI applications (for example, `ChatGPT`) and specific user actions (for example, `SendPrompt`) to block sensitive prompts.
-![DLP](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=731,height=511,format=webp/_astro/ai-prompt-policy.CF3H2rbK.png)
-2. **Full Prompt Logging**
-To aid in incident investigation, an optional setting in your Gateway policy allows you to [capture prompt logs](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#log-generative-ai-prompt-content) to store the full interaction of prompts that trigger a policy match. To make investigations easier, logs can be filtered by `conversation_id`, allowing you to reconstruct the full context of an interaction that led to a policy violation.
-![DLP](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=728,height=444,format=webp/_astro/ai-prompt-log.ywQDc5qN.png)
+
+3. **Granular Guardrails**
+
+   You can now build guardrails using Gateway HTTP policies with [application granular controls](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#granular-controls). Apply a DLP profile containing an [AI prompt topic detection](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#ai-prompt-topics) to individual AI applications (for example, `ChatGPT`) and specific user actions (for example, `SendPrompt`) to block sensitive prompts.![DLP](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=731,height=511,format=webp/_astro/ai-prompt-policy.CF3H2rbK.png)
+4. **Full Prompt Logging**
+
+   To aid in incident investigation, an optional setting in your Gateway policy allows you to [capture prompt logs](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#log-generative-ai-prompt-content) to store the full interaction of prompts that trigger a policy match. To make investigations easier, logs can be filtered by `conversation_id`, allowing you to reconstruct the full context of an interaction that led to a policy violation.![DLP](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=728,height=444,format=webp/_astro/ai-prompt-log.ywQDc5qN.png)
 
 AI prompt protection is now available in open beta. To learn more about it, read the [blog ↗](https://blog.cloudflare.com/ai-prompt-protection/#closing-the-loop-logging) or refer to [AI prompt topics](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#ai-prompt-topics).
 
@@ -5458,7 +5516,7 @@ Enterprise Gateway users can now use Bring Your Own IP (BYOIP) for dedicated egr
 
 Admins can now onboard and use their own IPv4 or IPv6 prefixes to egress traffic from Cloudflare, delivering greater control, flexibility, and compliance for network traffic.
 
-Get started by following the [BYOIP onboarding process](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/#bring-your-own-ip-address-byoip). Once your IPs are onboarded, go to **Gateway** \> **Egress policies** and select or create an egress policy. In **Select an egress IP**, choose _Use dedicated egress IPs (Cloudflare or BYOIP)_, then select your BYOIP address from the dropdown menu.
+Get started by following the [BYOIP onboarding process](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/#bring-your-own-ip-address-byoip). Once your IPs are onboarded, go to **Gateway** > **Egress policies** and select or create an egress policy. In **Select an egress IP**, choose *Use dedicated egress IPs (Cloudflare or BYOIP)*, then select your BYOIP address from the dropdown menu.
 
 ![Screenshot of a dropdown menu adding a BYOIP IPv4 address as a dedicated egress IP in a Gateway egress policy](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=933,height=459,format=webp/_astro/Gateway-byoip-dedicated-egress-ips.D0pzLAbV.png)
 
@@ -5499,12 +5557,12 @@ For example, you may want to deliver suspicious messages but isolate the links f
 
 ![Expanded Email Link Isolation Configuration](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1600,height=497,format=webp/_astro/expanded-link-actions.DziIg6E8.jpg)
 
-To isolate all links within a message based on the disposition, select **Settings** \> **Link Actions** \> **View** and select **Configure**. As with other other links you isolate, an interstitial will be provided to warn users that this site has been isolated and the link will be recrawled live to evaluate if there are any changes in our threat intel. Learn more about this feature on [Configure link actions ↗](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/configure-link-actions/).
+To isolate all links within a message based on the disposition, select **Settings** > **Link Actions** > **View** and select **Configure**. As with other other links you isolate, an interstitial will be provided to warn users that this site has been isolated and the link will be recrawled live to evaluate if there are any changes in our threat intel. Learn more about this feature on [Configure link actions ↗](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/configure-link-actions/).
 
 This feature is available across these Email security packages:
 
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2025-07-31
 
@@ -5513,13 +5571,13 @@ This feature is available across these Email security packages:
 
 **Terraform V5 support for tunnels and routes**
 
-The Cloudflare Terraform provider resources for Cloudflare WAN tunnels and routes now support Terraform provider version 5\. Customers using infrastructure-as-code workflows can manage their tunnel and route configuration with the latest provider version.
+The Cloudflare Terraform provider resources for Cloudflare WAN tunnels and routes now support Terraform provider version 5. Customers using infrastructure-as-code workflows can manage their tunnel and route configuration with the latest provider version.
 
 For more information, refer to the [Cloudflare Terraform provider documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
 
 ## 2025-07-30
 
-[Magic Transit](https://developers.cloudflare.com/magic-transit/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+[Magic Transit](https://developers.cloudflare.com/magic-transit/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Magic Transit and Magic WAN health check data is fully compatible with the CMB EU setting.**
@@ -5530,8 +5588,8 @@ This ensures that all Magic Transit and Magic WAN customers with CMB EU enabled 
 
 Specifically, these two GraphQL endpoints are now compatible with CMB EU:
 
-* `magicTransitTunnelHealthChecksAdaptiveGroups`
-* `magicTransitTunnelTrafficAdaptiveGroups`
+- `magicTransitTunnelHealthChecksAdaptiveGroups`
+- `magicTransitTunnelTrafficAdaptiveGroups`
 
 ## 2025-07-28
 
@@ -5544,9 +5602,9 @@ We have introduced a new Security Threat category called **Scam**. Relevant doma
 
 **New category added**
 
-| Parent ID | Parent Name      | Category ID | Category Name |
-| --------- | ---------------- | ----------- | ------------- |
-| 21        | Security Threats | 191         | Scam          |
+| Parent ID | Parent Name | Category ID | Category Name |
+| --- | --- | --- | --- |
+| 21 | Security Threats | 191 | Scam |
 
 Refer to [Gateway domain categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/) to learn more.
 
@@ -5559,7 +5617,7 @@ Refer to [Gateway domain categories](https://developers.cloudflare.com/cloudflar
 
 [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) can now apply [HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) to all proxied HTTP requests, not just traffic on standard HTTP (`80`) and HTTPS (`443`) ports. This means all requests can now be filtered by [A/V scanning](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/antivirus-scanning/), [file sandboxing](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/file-sandboxing/), [Data Loss Prevention (DLP)](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/#data-in-transit), and more.
 
-You can turn this [setting](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/protocol-detection/#inspect-on-all-ports) on by going to **Settings** \> **Network** \> **Firewall** and choosing _Inspect on all ports_.
+You can turn this [setting](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/protocol-detection/#inspect-on-all-ports) on by going to **Settings** > **Network** > **Firewall** and choosing *Inspect on all ports*.
 
 ![HTTP Inspection on all ports setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1096,height=535,format=webp/_astro/Gateway-Inspection-all-ports.CCmwX6D0.png)
 
@@ -5576,7 +5634,7 @@ The **Google Bard** application (ID: 1198) has been deprecated and fully removed
 
 ## 2025-07-21
 
-[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Virtual Cloudflare One Appliance with KVM support (open beta)**
@@ -5600,19 +5658,18 @@ You can now create [document-based](https://developers.cloudflare.com/cloudflare
 
 **Key features and benefits:**
 
-* **Upload documents, forms, or templates:** Easily upload .docx and .txt files (up to 10 MB) that contain sensitive information you want to protect.
-* **Granular control with similarity percentage:** Define a minimum similarity percentage (0-100%) that a document must meet to trigger a detection, reducing false positives.
-* **Comprehensive coverage:** Apply these document-based detection entries in:
-
-  * **Gateway policies:** To inspect network traffic for sensitive documents as they are uploaded or shared.
-  * **CASB (Cloud Access Security Broker):** To scan files stored in cloud applications for sensitive documents at rest.
-* **Identify sensitive data:** This new detection entry type is ideal for identifying sensitive data within completed forms, templates, or even small snippets of a larger document, helping you prevent data exfiltration and ensure compliance.
+- **Upload documents, forms, or templates:** Easily upload .docx and .txt files (up to 10 MB) that contain sensitive information you want to protect.
+- **Granular control with similarity percentage:** Define a minimum similarity percentage (0-100%) that a document must meet to trigger a detection, reducing false positives.
+- **Comprehensive coverage:** Apply these document-based detection entries in:
+  - **Gateway policies:** To inspect network traffic for sensitive documents as they are uploaded or shared.
+  - **CASB (Cloud Access Security Broker):** To scan files stored in cloud applications for sensitive documents at rest.
+- **Identify sensitive data:** This new detection entry type is ideal for identifying sensitive data within completed forms, templates, or even small snippets of a larger document, helping you prevent data exfiltration and ensure compliance.
 
 Once uploaded and processed, you can add this new document entry into a DLP profile and policies to enhance your data protection strategy.
 
 ## 2025-07-15
 
-[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 
 **Faster, more reliable UDP traffic for Cloudflare Tunnel**
@@ -5623,8 +5680,8 @@ This is a foundational improvement to Cloudflare Tunnel, delivered automatically
 
 **What’s new:**
 
-* **Faster UDP performance**: We've significantly reduced the latency for establishing new UDP sessions, making applications like private DNS much more responsive.
-* **Greater reliability for mixed traffic**: UDP packets are no longer affected by heavy TCP traffic, preventing timeouts and connection drops for your real-time services.
+- **Faster UDP performance**: We've significantly reduced the latency for establishing new UDP sessions, making applications like private DNS much more responsive.
+- **Greater reliability for mixed traffic**: UDP packets are no longer affected by heavy TCP traffic, preventing timeouts and connection drops for your real-time services.
 
 Learn more about running [TCP or UDP applications](https://developers.cloudflare.com/reference-architecture/architectures/sase/#connecting-applications) and [private networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/) through [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/).
 
@@ -5641,14 +5698,14 @@ Use our brand new onboarding experience for Cloudflare Zero Trust. New and retur
 
 There are eight brand new onboarding guides in total:
 
-* Securely access a private network (sets up device client and Tunnel)
-* Device-to-device / mesh networking (sets up and connects multiple device clients)
-* Network to network connectivity (sets up and connects multiple WARP Connectors, makes reference to Magic WAN availability for Enterprise)
-* Secure web traffic (sets up device client, Gateway, pre-reqs, and initial policies)
-* Secure DNS for networks (sets up a new DNS location and Gateway policies)
-* Clientless web access (sets up Access to a web app, Tunnel, and public hostname)
-* Clientless SSH access (all the same + the web SSH experience)
-* Clientless RDP access (all the same + RDP-in-browser)
+- Securely access a private network (sets up device client and Tunnel)
+- Device-to-device / mesh networking (sets up and connects multiple device clients)
+- Network to network connectivity (sets up and connects multiple WARP Connectors, makes reference to Magic WAN availability for Enterprise)
+- Secure web traffic (sets up device client, Gateway, pre-reqs, and initial policies)
+- Secure DNS for networks (sets up a new DNS location and Gateway policies)
+- Clientless web access (sets up Access to a web app, Tunnel, and public hostname)
+- Clientless SSH access (all the same + the web SSH experience)
+- Clientless RDP access (all the same + RDP-in-browser)
 
 Each flow walks the user through the steps to configure the essential elements, and provides a “more details” panel with additional contextual information about what the user will accomplish at the end, along with why the steps they take are important.
 
@@ -5684,10 +5741,10 @@ Cloudflare Zero Trust customers can use the App Library to get full visibility o
 
 You can use the App Library to see:
 
-* How Applications are defined
-* Where they are referenced in policies
-* Whether they have Access for SaaS configured
-* Review their CASB findings and integration status.
+- How Applications are defined
+- Where they are referenced in policies
+- Whether they have Access for SaaS configured
+- Review their CASB findings and integration status.
 
 Within individual Applications, you can also track their usage across your organization, and better understand user behavior.
 
@@ -5702,10 +5759,11 @@ Within individual Applications, you can also track their usage across your organ
 
 With browser-based RDP, you can:
 
-* **Control how users authenticate to internal RDP resources** with single sign-on (SSO), multi-factor authentication (MFA), and granular access policies.
-* **Record who is accessing which servers and when** to support regulatory compliance requirements and to gain greater visibility in the event of a security event.
-* **Eliminate the need to install and manage software on user devices**. You will only need a web browser.
-* **Reduce your attack surface** by keeping your RDP servers off the public Internet and protecting them from common threats like credential stuffing or brute-force attacks.
+- **Control how users authenticate to internal RDP resources** with single sign-on (SSO), multi-factor authentication (MFA), and granular access policies.
+- **Record who is accessing which servers and when** to support regulatory compliance requirements and to gain greater visibility in the event of a security event.
+- **Eliminate the need to install and manage software on user devices**. You will only need a web browser.
+- **Reduce your attack surface** by keeping your RDP servers off the public Internet and protecting them from common threats like credential stuffing or brute-force attacks.
+
 ![Example of a browsed-based RDP Access application](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2132,height=1814,format=webp/_astro/browser-based-rdp-access-app.BNXce1JL.png)
 
 To get started, see [Connect to RDP in a browser](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/).
@@ -5717,14 +5775,14 @@ To get started, see [Connect to RDP in a browser](https://developers.cloudflare.
 
 **Cloudflare One Agent for Android (version 2.4.2)**
 
-A new GA release for the Android Cloudflare One Agent is now available in the [Google Play Store ↗](https://play.google.com/store/apps/details?id=com.cloudflare.cloudflareoneagent). This release contains improvements and new exciting features, including [post-quantum cryptography](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#enable%5Fpost%5Fquantum). By tunneling your corporate network traffic over Cloudflare, you can now gain the immediate [protection of post-quantum cryptography ↗](https://blog.cloudflare.com/pq-2024/) without needing to upgrade any of your individual corporate applications or systems.
+A new GA release for the Android Cloudflare One Agent is now available in the [Google Play Store ↗](https://play.google.com/store/apps/details?id=com.cloudflare.cloudflareoneagent). This release contains improvements and new exciting features, including [post-quantum cryptography](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#enable_post_quantum). By tunneling your corporate network traffic over Cloudflare, you can now gain the immediate [protection of post-quantum cryptography ↗](https://blog.cloudflare.com/pq-2024/) without needing to upgrade any of your individual corporate applications or systems.
 
 **Changes and improvements**
 
-* QLogs are now disabled by default and can be enabled in the app by turning on **Enable qlogs** under **Settings** \> **Advanced** \> **Diagnostics** \> **Debug Logs**. The QLog setting from previous releases will no longer be respected.
-* DNS over HTTPS traffic is now included in the WARP tunnel by default.
-* The WARP client now applies [post-quantum cryptography ↗](https://blog.cloudflare.com/pq-2024/) end-to-end on enabled devices accessing resources behind a Cloudflare Tunnel. This feature can be enabled by [MDM](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#enable%5Fpost%5Fquantum).
-* Fixed an issue that caused WARP connection failures on ChromeOS devices.
+- QLogs are now disabled by default and can be enabled in the app by turning on **Enable qlogs** under **Settings** > **Advanced** > **Diagnostics** > **Debug Logs**. The QLog setting from previous releases will no longer be respected.
+- DNS over HTTPS traffic is now included in the WARP tunnel by default.
+- The WARP client now applies [post-quantum cryptography ↗](https://blog.cloudflare.com/pq-2024/) end-to-end on enabled devices accessing resources behind a Cloudflare Tunnel. This feature can be enabled by [MDM](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#enable_post_quantum).
+- Fixed an issue that caused WARP connection failures on ChromeOS devices.
 
 ## 2025-06-30
 
@@ -5733,17 +5791,17 @@ A new GA release for the Android Cloudflare One Agent is now available in the [G
 
 **Cloudflare One Agent for iOS (version 1.11)**
 
-A new GA release for the iOS Cloudflare One Agent is now available in the [iOS App Store ↗](https://apps.apple.com/us/app/cloudflare-one-agent/id6443476492). This release contains improvements and new exciting features, including [post-quantum cryptography](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#enable%5Fpost%5Fquantum). By tunneling your corporate network traffic over Cloudflare, you can now gain the immediate [protection of post-quantum cryptography ↗](https://blog.cloudflare.com/pq-2024/) without needing to upgrade any of your individual corporate applications or systems.
+A new GA release for the iOS Cloudflare One Agent is now available in the [iOS App Store ↗](https://apps.apple.com/us/app/cloudflare-one-agent/id6443476492). This release contains improvements and new exciting features, including [post-quantum cryptography](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#enable_post_quantum). By tunneling your corporate network traffic over Cloudflare, you can now gain the immediate [protection of post-quantum cryptography ↗](https://blog.cloudflare.com/pq-2024/) without needing to upgrade any of your individual corporate applications or systems.
 
 **Changes and improvements**
 
-* QLogs are now disabled by default and can be enabled in the app by turning on **Enable qlogs** under **Settings** \> **Advanced** \> **Diagnostics** \> **Debug Logs**. The QLog setting from previous releases will no longer be respected.
-* DNS over HTTPS traffic is now included in the WARP tunnel by default.
-* The WARP client now applies [post-quantum cryptography ↗](https://blog.cloudflare.com/pq-2024/) end-to-end on enabled devices accessing resources behind a Cloudflare Tunnel. This feature can be enabled by [MDM](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#enable%5Fpost%5Fquantum).
+- QLogs are now disabled by default and can be enabled in the app by turning on **Enable qlogs** under **Settings** > **Advanced** > **Diagnostics** > **Debug Logs**. The QLog setting from previous releases will no longer be respected.
+- DNS over HTTPS traffic is now included in the WARP tunnel by default.
+- The WARP client now applies [post-quantum cryptography ↗](https://blog.cloudflare.com/pq-2024/) end-to-end on enabled devices accessing resources behind a Cloudflare Tunnel. This feature can be enabled by [MDM](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#enable_post_quantum).
 
 ## 2025-06-23
 
-[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)[CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) [CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Data Security Analytics in the Zero Trust dashboard**
@@ -5752,16 +5810,14 @@ Zero Trust now includes **Data security analytics**, providing you with unpreced
 
 The new dashboard includes:
 
-* **Sensitive Data Movement Over Time:**
+- **Sensitive Data Movement Over Time:**
+  - See patterns and trends in how sensitive data moves across your environment. This helps understand where data is flowing and identify common paths.
+- **Sensitive Data at Rest in SaaS & Cloud:**
+  - View an inventory of sensitive data stored within your corporate SaaS applications (for example, Google Drive, Microsoft 365) and cloud accounts (such as AWS S3).
+- **DLP Policy Activity:**
+  - Identify which of your Data Loss Prevention (DLP) policies are being triggered most often.
+  - See which specific users are responsible for triggering DLP policies.
 
-  * See patterns and trends in how sensitive data moves across your environment. This helps understand where data is flowing and identify common paths.
-* **Sensitive Data at Rest in SaaS & Cloud:**
-
-  * View an inventory of sensitive data stored within your corporate SaaS applications (for example, Google Drive, Microsoft 365) and cloud accounts (such as AWS S3).
-* **DLP Policy Activity:**
-
-  * Identify which of your Data Loss Prevention (DLP) policies are being triggered most often.
-  * See which specific users are responsible for triggering DLP policies.
 ![Data Security Analytics](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3254,height=1580,format=webp/_astro/cf1-data-security-analytics-v1.BGl6fYXl.png)
 
 To access the new dashboard, log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/) and go to **Insights** on the sidebar.
@@ -5795,15 +5851,15 @@ This change will roll out progressively between **July 14–18, 2025**. If you u
 
 This change may affect block notifications. For example:
 
-* You have an **HTTP policy** to block `example.com` and display a block page.
-* You also have a **Network policy** to block `example.com` silently (no client notification).
+- You have an **HTTP policy** to block `example.com` and display a block page.
+- You also have a **Network policy** to block `example.com` silently (no client notification).
 
 With the new order, the Network policy will trigger first — and the user will no longer see the HTTP block page.
 
 To ensure users still receive a block notification, you can:
 
-* Add a client notification to your Network policy, or
-* Use only the HTTP policy for that domain.
+- Add a client notification to your Network policy, or
+- Use only the HTTP policy for that domain.
 
 ---
 
@@ -5811,8 +5867,8 @@ To ensure users still receive a block notification, you can:
 
 This update is based on user feedback and aims to:
 
-* Create a more intuitive model by evaluating network-level policies before application-level policies.
-* Minimize [526 connection errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-526/#error-526-in-the-zero-trust-context) by verifying the network path to an origin before attempting to establish a decrypted TLS connection.
+- Create a more intuitive model by evaluating network-level policies before application-level policies.
+- Minimize [526 connection errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-526/#error-526-in-the-zero-trust-context) by verifying the network path to an origin before attempting to establish a decrypted TLS connection.
 
 ---
 
@@ -5820,14 +5876,14 @@ To learn more, visit the [Gateway order of enforcement documentation](https://de
 
 ## 2025-06-05
 
-[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Cloudflare One Analytics Dashboards and Exportable Access Report**
 
 Cloudflare One now offers powerful new analytics dashboards to help customers easily discover available insights into their application access and network activity. These dashboards provide a centralized, intuitive view for understanding user behavior, application usage, and security posture.
 
-!\[Cloudflare One Analytics Dashboards\](\~/assets/images/changelog/cloudflare-one/Analytics Dashboards.png)
+!\[Cloudflare One Analytics Dashboards](\~/assets/images/changelog/cloudflare-one/Analytics Dashboards.png)
 
 Additionally, a new exportable access report is available, allowing customers to quickly view high-level metrics and trends in their application access. A **preview** of the report is shown below, with more to be found in the report:
 
@@ -5837,7 +5893,7 @@ Both features are accessible in the Cloudflare [Zero Trust dashboard ↗](https:
 
 ## 2025-05-29
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **New Gateway Analytics in the Cloudflare One Dashboard**
@@ -5846,10 +5902,11 @@ Users can now access significant enhancements to Cloudflare Gateway analytics, p
 
 You can now visualize and explore:
 
-* Patterns Over Time: Understand trends in traffic volume and blocked requests, helping you identify anomalies and plan for future capacity.
-* Top Users & Destinations: Quickly pinpoint the most active users, enabling better policy enforcement and resource allocation.
-* Actions Taken: See a clear breakdown of security actions applied by Gateway policies, such as blocks and allows, offering a comprehensive view of your security posture.
-* Geographic Regions: Gain insight into the global distribution of your traffic.
+- Patterns Over Time: Understand trends in traffic volume and blocked requests, helping you identify anomalies and plan for future capacity.
+- Top Users & Destinations: Quickly pinpoint the most active users, enabling better policy enforcement and resource allocation.
+- Actions Taken: See a clear breakdown of security actions applied by Gateway policies, such as blocks and allows, offering a comprehensive view of your security posture.
+- Geographic Regions: Gain insight into the global distribution of your traffic.
+
 ![Gateway Analytics](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2740,height=1166,format=webp/_astro/gateway-analytics.BdSwbIBb.png)
 
 To access the new overview, log in to your Cloudflare [Zero Trust dashboard ↗](https://one.dash.cloudflare.com/) and go to Analytics in the side navigation bar.
@@ -5884,21 +5941,22 @@ For more information on creating Gateway policies, see our [Gateway policy docum
 
 ## 2025-05-16
 
-[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **New Access Analytics in the Cloudflare One Dashboard**
 
 A new Access Analytics dashboard is now available to all Cloudflare One customers. Customers can apply and combine multiple filters to dive into specific slices of their Access metrics. These filters include:
 
-* Logins granted and denied
-* Access events by type (SSO, Login, Logout)
-* Application name (Salesforce, Jira, Slack, etc.)
-* Identity provider (Okta, Google, Microsoft, onetimepin, etc.)
-* Users (`chris@cloudflare.com`, `sally@cloudflare.com`, `rachel@cloudflare.com`, etc.)
-* Countries (US, CA, UK, FR, BR, CN, etc.)
-* Source IP address
-* App type (self-hosted, Infrastructure, RDP, etc.)
+- Logins granted and denied
+- Access events by type (SSO, Login, Logout)
+- Application name (Salesforce, Jira, Slack, etc.)
+- Identity provider (Okta, Google, Microsoft, onetimepin, etc.)
+- Users ( `chris@cloudflare.com`, `sally@cloudflare.com`, `rachel@cloudflare.com`, etc.)
+- Countries (US, CA, UK, FR, BR, CN, etc.)
+- Source IP address
+- App type (self-hosted, Infrastructure, RDP, etc.)
+
 ![Access Analytics](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2030,height=1720,format=webp/_astro/accessanalytics.DYXgwZCl.png)
 
 To access the new overview, log in to your Cloudflare [Zero Trust dashboard ↗](https://one.dash.cloudflare.com/) and find Analytics in the side navigation bar.
@@ -5912,14 +5970,14 @@ To access the new overview, log in to your Cloudflare [Zero Trust dashboard ↗]
 
 You can now safely open email attachments to view and investigate them.
 
-What this means is that messages now have a **Attachments** section. Here, you can view processed attachments and their classifications (for example, _Malicious_, _Suspicious_, _Encrypted_). Next to each attachment, a **Browser Isolation** icon allows your team to safely open the file in a **clientless, isolated browser** with no risk to the analyst or your environment.
+What this means is that messages now have a **Attachments** section. Here, you can view processed attachments and their classifications (for example, *Malicious*, *Suspicious*, *Encrypted*). Next to each attachment, a **Browser Isolation** icon allows your team to safely open the file in a **clientless, isolated browser** with no risk to the analyst or your environment.
 
 ![Attachment-RBI](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=517,height=155,format=webp/_astro/Attachment-RBI.U9Dp8dJO.png)
 
 To use this feature, you must:
 
-* Turn on **Allow users to open a remote browser without the device client** in your Zero Trust settings.
-* Have **Browser Isolation (BISO)** seats assigned.
+- Turn on **Allow users to open a remote browser without the device client** in your Zero Trust settings.
+- Have **Browser Isolation (BISO)** seats assigned.
 
 For more details, refer to our [setup guide](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation/).
 
@@ -5927,9 +5985,9 @@ Some attachment types may not render in Browser Isolation. If there is a file ty
 
 This feature is available across these Email security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2025-05-14
 
@@ -5940,23 +5998,23 @@ This feature is available across these Email security packages:
 
 **New categories added**
 
-| Parent ID | Parent Name           | Category ID | Category Name                 |
-| --------- | --------------------- | ----------- | ----------------------------- |
-| 1         | Ads                   | 66          | Advertisements                |
-| 3         | Business & Economy    | 185         | Personal Finance              |
-| 3         | Business & Economy    | 186         | Brokerage & Investing         |
-| 21        | Security Threats      | 187         | Compromised Domain            |
-| 21        | Security Threats      | 188         | Potentially Unwanted Software |
-| 6         | Education             | 189         | Reference                     |
-| 9         | Government & Politics | 190         | Charity and Non-profit        |
+| Parent ID | Parent Name | Category ID | Category Name |
+| --- | --- | --- | --- |
+| 1 | Ads | 66 | Advertisements |
+| 3 | Business & Economy | 185 | Personal Finance |
+| 3 | Business & Economy | 186 | Brokerage & Investing |
+| 21 | Security Threats | 187 | Compromised Domain |
+| 21 | Security Threats | 188 | Potentially Unwanted Software |
+| 6 | Education | 189 | Reference |
+| 9 | Government & Politics | 190 | Charity and Non-profit |
 
 **Changes to existing categories**
 
-| Original Name | New Name                |
-| ------------- | ----------------------- |
-| Religion      | Religion & Spirituality |
-| Government    | Government/Legal        |
-| Redirect      | URL Alias/Redirect      |
+| Original Name | New Name |
+| --- | --- |
+| Religion | Religion & Spirituality |
+| Government | Government/Legal |
+| Redirect | URL Alias/Redirect |
 
 Refer to [Gateway domain categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/) to learn more.
 
@@ -5982,9 +6040,9 @@ You can now create DNS policies to manage outbound traffic for an expanded list 
 
 With this update, you can:
 
-* Create DNS policies for a wider range of applications
-* Manage outbound traffic more effectively
-* Improve your organization's security and compliance posture
+- Create DNS policies for a wider range of applications
+- Manage outbound traffic more effectively
+- Improve your organization's security and compliance posture
 
 For more information on creating DNS policies, see our [DNS policy documentation](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/).
 
@@ -6014,16 +6072,16 @@ From **Investigation**, go to **View details**, and look for the **Links identif
 
 To use this feature, you must:
 
-* Turn on **Allow users to open a remote browser without the device client** in your Zero Trust settings.
-* Have **Browser Isolation (RBI)** seats assigned.
+- Turn on **Allow users to open a remote browser without the device client** in your Zero Trust settings.
+- Have **Browser Isolation (RBI)** seats assigned.
 
 For more details, refer to our [setup guide](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation/).
 
 This feature is available across these Email security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2025-05-07
 
@@ -6047,10 +6105,10 @@ By default, Gateway will send all matched HTTP requests to your configured DLP F
 
 A new **Browser Isolation Overview** page is now available in the Cloudflare Zero Trust dashboard. This centralized view simplifies the management of [Remote Browser Isolation (RBI)](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) deployments, providing:
 
-* **Streamlined Onboarding:** Easily set up and manage isolation policies from one location.
-* **Quick Testing:** Validate [clientless web application isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation/) with ease.
-* **Simplified Configuration:** Configure [isolated access applications](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/isolate-application/) and policies efficiently.
-* **Centralized Monitoring:** Track aggregate usage and blocked actions.
+- **Streamlined Onboarding:** Easily set up and manage isolation policies from one location.
+- **Quick Testing:** Validate [clientless web application isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation/) with ease.
+- **Simplified Configuration:** Configure [isolated access applications](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/isolate-application/) and policies efficiently.
+- **Centralized Monitoring:** Track aggregate usage and blocked actions.
 
 This update consolidates previously disparate settings, accelerating deployment, improving visibility into isolation activity, and making it easier to ensure your protections are working effectively.
 
@@ -6085,7 +6143,7 @@ To update your view preference in the Core dashboard:
 
 ## 2025-04-30
 
-[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Cloudflare One Appliance supports multiple DNS server IPs**
@@ -6105,9 +6163,10 @@ For configuration details, refer to [DHCP server](https://developers.cloudflare.
 
 Cloudflare One administrators can now control which egress IP is used based on a destination's fully qualified domain name (FDQN) within Gateway Egress policies.
 
-* Host, Domain, Content Categories, and Application selectors are now available in the Gateway Egress policy builder in beta.
-* During the beta period, you can use these selectors with traffic on-ramped to Gateway with the WARP client, proxy endpoints (commonly deployed with PAC files), or Cloudflare Browser Isolation.
-  * For WARP client support, additional configuration is required. For more information, refer to the [WARP client configuration documentation](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#limitations).
+- Host, Domain, Content Categories, and Application selectors are now available in the Gateway Egress policy builder in beta.
+- During the beta period, you can use these selectors with traffic on-ramped to Gateway with the WARP client, proxy endpoints (commonly deployed with PAC files), or Cloudflare Browser Isolation.
+  - For WARP client support, additional configuration is required. For more information, refer to the [WARP client configuration documentation](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#limitations).
+
 ![Egress by FQDN and Hostname](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=841,height=1045,format=webp/_astro/Gateway-Egress-FQDN-Policy-preview.Civon5p8.png)
 
 This will help apply egress IPs to your users' traffic when an upstream application or network requires it, while the rest of their traffic can take the most performant egress path.
@@ -6143,8 +6202,8 @@ ICD-10 dataset remains available for use.
 
 You can now use more flexible redirect capabilities in Cloudflare One with Gateway.
 
-* A new **Redirect** action is available in the HTTP policy builder, allowing admins to redirect users to any URL when their request matches a policy. You can choose to preserve the original URL and query string, and optionally include policy context via query parameters.
-* For **Block** actions, admins can now configure a custom URL to display when access is denied. This block page redirect is set at the account level and can be overridden in DNS or HTTP policies. Policy context can also be passed along in the URL.
+- A new **Redirect** action is available in the HTTP policy builder, allowing admins to redirect users to any URL when their request matches a policy. You can choose to preserve the original URL and query string, and optionally include policy context via query parameters.
+- For **Block** actions, admins can now configure a custom URL to display when access is denied. This block page redirect is set at the account level and can be overridden in DNS or HTTP policies. Policy context can also be passed along in the URL.
 
 Learn more in our documentation for [HTTP Redirect](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#redirect) and [Block page redirect](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/#redirect-to-a-block-page).
 
@@ -6157,7 +6216,7 @@ Learn more in our documentation for [HTTP Redirect](https://developers.cloudflar
 
 [Cloudflare Zero Trust SCIM provisioning](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim) now has a full audit log of all create, update and delete event from any SCIM Enabled IdP. The [SCIM logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/scim-logs/) support filtering by IdP, Event type, Result and many more fields. This will help with debugging user and group update issues and questions.
 
-SCIM logs can be found on the Zero Trust Dashboard under **Logs** \-> **SCIM provisioning**.
+SCIM logs can be found on the Zero Trust Dashboard under **Logs** -> **SCIM provisioning**.
 
 ![Example SCIM Logs](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2318,height=1060,format=webp/_astro/example-scim-log.Bv5Zqckh.png)
 
@@ -6180,8 +6239,8 @@ Refer to [Add an integration](https://developers.cloudflare.com/cloudflare-one/i
 
 This feature is available across these Email security packages:
 
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2025-03-21
 
@@ -6196,8 +6255,8 @@ Many DNS filtering customers rely on external service partners to manage their D
 
 **Secure DNS Location Requirements:**
 
-* Mandate usage of [Bring your own DNS resolver IP addresses ↗](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/dns-resolver-ips/#bring-your-own-dns-resolver-ip) if available on the account.
-* Require source network filtering for IPv4/IPv6/DoT endpoints; token authentication or source network filtering for the DoH endpoint.
+- Mandate usage of [Bring your own DNS resolver IP addresses ↗](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/dns-resolver-ips/#bring-your-own-dns-resolver-ip) if available on the account.
+- Require source network filtering for IPv4/IPv6/DoT endpoints; token authentication or source network filtering for the DoH endpoint.
 
 You can assign the new role via Cloudflare Dashboard (`Manage Accounts > Members`) or via API. For more information, refer to the [Secure DNS Locations documentation ↗](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/#secure-dns-locations).
 
@@ -6212,9 +6271,9 @@ A new GA release for the Android Cloudflare One Agent is now available in the [G
 
 **Changes and improvements**
 
-* Improved in-app error messages.
-* Improved mobile client login with support for [team name insertion by URL](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/#enroll-using-a-url).
-* Fixed an issue preventing admin split tunnel settings taking priority for traffic from certain applications.
+- Improved in-app error messages.
+- Improved mobile client login with support for [team name insertion by URL](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/#enroll-using-a-url).
+- Fixed an issue preventing admin split tunnel settings taking priority for traffic from certain applications.
 
 ## 2025-03-17
 
@@ -6227,9 +6286,9 @@ A new GA release for the iOS Cloudflare One Agent is now available in the [iOS A
 
 **Changes and improvements**
 
-* Improved in-app error messages.
-* Improved mobile client login with support for [team name insertion by URL](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/#enroll-using-a-url).
-* Bug fixes and performance improvements.
+- Improved in-app error messages.
+- Improved mobile client login with support for [team name insertion by URL](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/#enroll-using-a-url).
+- Bug fixes and performance improvements.
 
 ## 2025-03-13
 
@@ -6257,9 +6316,10 @@ Note: IP Lists require a Cloudflare Advanced Network Firewall subscription. For 
 
 Device health metrics are now automatically collected, allowing administrators to:
 
-* View the last network a user was connected to
-* Monitor CPU and RAM utilization on devices
-* Identify resource-intensive processes running on endpoints
+- View the last network a user was connected to
+- Monitor CPU and RAM utilization on devices
+- Identify resource-intensive processes running on endpoints
+
 ![Device endpoint monitoring dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1226,height=675,format=webp/_astro/cloudflare-one-agent-health-monitoring.XXtiRuOp.gif)
 
 This feature complements existing DEX features like [synthetic application monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/) and [network path visualization](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/traceroute/), creating a comprehensive troubleshooting workflow that connects application performance with device state.
@@ -6290,9 +6350,9 @@ With these enhanced logs, administrators can gain visibility into end user behav
 
 User Actions available:
 
-* **Copy & Paste**
-* **Downloads & Uploads**
-* **Printing**
+- **Copy & Paste**
+- **Downloads & Uploads**
+- **Printing**
 
 Learn more about how to get started with Logpush in our [documentation](https://developers.cloudflare.com/logs/logpush/).
 
@@ -6309,10 +6369,11 @@ Learn more about how to get started with Logpush in our [documentation](https://
 
 OIDC apps now include:
 
-* Group Filtering via RegEx
-* OIDC Claim mapping from an IdP
-* OIDC token lifetime control
-* Advanced OIDC auth flows including hybrid and implicit flows
+- Group Filtering via RegEx
+- OIDC Claim mapping from an IdP
+- OIDC token lifetime control
+- Advanced OIDC auth flows including hybrid and implicit flows
+
 ![OIDC field additions](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1021,height=192,format=webp/_astro/oidc-claims.2di8l9Lv.png)
 
 SAML apps now include improved SAML attribute mapping from an IdP.
@@ -6342,8 +6403,8 @@ For more information, refer to [Enable detection logs](https://developers.cloudf
 
 This feature is available across these Email security packages:
 
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2025-02-27
 
@@ -6356,22 +6417,23 @@ Concerns about performance for Email security or Area 1? You can now check the o
 
 For Email security, look under **Cloudflare Sites and Services**.
 
-* **Dashboard** is the dashboard for Cloudflare, including Email security
-* **Email security (Zero Trust)** is the processing of email
-* **API** are the Cloudflare endpoints, including the ones for Email security
+- **Dashboard** is the dashboard for Cloudflare, including Email security
+- **Email security (Zero Trust)** is the processing of email
+- **API** are the Cloudflare endpoints, including the ones for Email security
 
 For Area 1, under **Cloudflare Sites and Services**:
 
-* **Area 1 - Dash** is the dashboard for Cloudflare, including Email security
-* **Email security (Area1)** is the processing of email
-* **Area 1 - API** are the Area 1 endpoints
+- **Area 1 - Dash** is the dashboard for Cloudflare, including Email security
+- **Email security (Area1)** is the processing of email
+- **Area 1 - API** are the Area 1 endpoints
+
 ![Status-page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=792,height=348,format=webp/_astro/Status-Page.DcFJ1286.png)
 
 This feature is available across these Email security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2025-02-25
 
@@ -6400,12 +6462,12 @@ Prevent delivery:
 
 This feature is available across these Email security packages:
 
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2025-02-14
 
-[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 
 
 **Configure your Magic WAN Connector to connect via static IP assignment**
@@ -6433,13 +6495,13 @@ For more details, refer to [Open links](https://developers.cloudflare.com/cloudf
 
 This feature is available across these Email security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2025-02-03
 
-[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 
 **Block files that are password-protected, compressed, or otherwise unscannable.**
@@ -6448,10 +6510,10 @@ Gateway HTTP policies can now block files that are password-protected, compresse
 
 These unscannable files are now matched with the [Download and Upload File Types traffic selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#download-and-upload-file-types) for HTTP policies:
 
-* Password-protected Microsoft Office document
-* Password-protected PDF
-* Password-protected ZIP archive
-* Unscannable ZIP archive
+- Password-protected Microsoft Office document
+- Password-protected PDF
+- Password-protected ZIP archive
+- Unscannable ZIP archive
 
 To get started inspecting and modifying behavior based on these and other rules, refer to [HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/).
 
@@ -6466,18 +6528,18 @@ You can now detect source code leaks with Data Loss Prevention (DLP) with predef
 
 The following programming languages are validated with natural language processing (NLP).
 
-* C
-* C++
-* C#
-* Go
-* Haskell
-* Java
-* JavaScript
-* Lua
-* Python
-* R
-* Rust
-* Swift
+- C
+- C++
+- C#
+- Go
+- Haskell
+- Java
+- JavaScript
+- Lua
+- Python
+- R
+- Rust
+- Swift
 
 DLP also supports confidence level for [source code profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/#source-code).
 
@@ -6494,7 +6556,7 @@ Availability
 
 Only available on Enterprise plans.
 
-Cloudflare now allows you to send SSH command logs to storage destinations configured in [Logpush](https://developers.cloudflare.com/logs/logpush/), including third-party destinations. Once exported, analyze and audit the data as best fits your organization! For a list of available data fields, refer to the [SSH logs dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/ssh%5Flogs/).
+Cloudflare now allows you to send SSH command logs to storage destinations configured in [Logpush](https://developers.cloudflare.com/logs/logpush/), including third-party destinations. Once exported, analyze and audit the data as best fits your organization! For a list of available data fields, refer to the [SSH logs dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/ssh_logs/).
 
 To set up a Logpush job, refer to [Logpush integration](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/).
 
@@ -6515,9 +6577,9 @@ Refer to [User submissions](https://developers.cloudflare.com/cloudflare-one/ema
 
 This feature is available across these Email security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2024-12-19
 
@@ -6536,7 +6598,7 @@ This new tab increases your visibility into this process, allowing you to view w
 
 ## 2024-12-19
 
-[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 
 **Troubleshoot tunnels with diagnostic logs**
@@ -6549,7 +6611,7 @@ For more information, refer to [Diagnostic logs](https://developers.cloudflare.c
 
 ## 2024-12-17
 
-[Magic Transit](https://developers.cloudflare.com/magic-transit/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)[Network Interconnect](https://developers.cloudflare.com/network-interconnect/)
+[Magic Transit](https://developers.cloudflare.com/magic-transit/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) [Network Interconnect](https://developers.cloudflare.com/network-interconnect/)
 
 
 **Establish BGP peering over Direct CNI circuits**
@@ -6558,14 +6620,14 @@ Magic WAN and Magic Transit customers can use the Cloudflare dashboard to config
 
 Using BGP peering allows customers to:
 
-* Automate the process of adding or removing networks and subnets.
-* Take advantage of failure detection and session recovery features.
+- Automate the process of adding or removing networks and subnets.
+- Take advantage of failure detection and session recovery features.
 
 With this functionality, customers can:
 
-* Establish an eBGP session between their devices and the Magic WAN / Magic Transit service when connected via CNI.
-* Secure the session by MD5 authentication to prevent misconfigurations.
-* Exchange routes dynamically between their devices and their Magic routing table.
+- Establish an eBGP session between their devices and the Magic WAN / Magic Transit service when connected via CNI.
+- Secure the session by MD5 authentication to prevent misconfigurations.
+- Exchange routes dynamically between their devices and their Magic routing table.
 
 Refer to [Magic WAN BGP peering](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#configure-bgp-routes) or [Magic Transit BGP peering](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#configure-bgp-routes) to learn more about this feature and how to set it up.
 
@@ -6582,8 +6644,8 @@ You can now generate customized terraform files for building cloud network on-ra
 
 You might want to do this to:
 
-* Review the proposed configuration for an on-ramp before deploying it with Cloudflare.
-* Deploy the on-ramp using your own infrastructure-as-code pipeline instead of deploying it with Cloudflare.
+- Review the proposed configuration for an on-ramp before deploying it with Cloudflare.
+- Deploy the on-ramp using your own infrastructure-as-code pipeline instead of deploying it with Cloudflare.
 
 For more details, refer to [Set up with Terraform](https://developers.cloudflare.com/multi-cloud-networking/cloud-on-ramps/#set-up-with-terraform).
 
@@ -6600,7 +6662,7 @@ You can also [connect your AWS compute account](https://developers.cloudflare.co
 
 To connect a compute account to your AWS integration:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** \> **Integrations**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Integrations**.
 2. Find and select your AWS integration.
 3. Select **Open connection instructions**.
 4. Follow the instructions provided to connect a new compute account.
@@ -6628,17 +6690,18 @@ Filter logs matching specific criteria you have set or select from multiple fiel
 
 When creating a new Logpush job, remember to select **Audit logs** as the dataset and filter by:
 
-* **Field**: `"ResourceType"`
-* **Operator**: `"starts with"`
-* **Value**: `"email_security"`.
+- **Field**: `"ResourceType"`
+- **Operator**: `"starts with"`
+- **Value**: `"email_security"`.
+
 ![Logpush-user-actions](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=829,height=454,format=webp/_astro/Logpush-User-Actions.D14fWgmq.png)
 
 For more information, refer to [Enable user action logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/email-security-logs/#enable-user-action-logs).
 
 This feature is available across all Email security packages:
 
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2024-10-02
 
@@ -6650,9 +6713,10 @@ This feature is available across all Email security packages:
 The Magic Firewall dashboard now allows you to search custom rules using the rule name and/or ID.
 
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
-2. Go to **Analytics & Logs** \> **Network Analytics**.
+2. Go to **Analytics & Logs** > **Network Analytics**.
 3. Select **Magic Firewall**.
 4. Add a filter for **Rule ID**.
+
 ![Search for firewall rules with rule IDs](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1032,height=801,format=webp/_astro/search-with-rule-id.DJgzqgKk.png)
 
 Additionally, the rule ID URL link has been added to Network Analytics.
@@ -6670,9 +6734,10 @@ SSH with [Access for Infrastructure](https://developers.cloudflare.com/cloudflar
 
 SSH with Access for Infrastructure enables you to:
 
-* **Author fine-grained policy** to control who may access your SSH servers, including specific ports, protocols, and SSH users.
-* **Monitor infrastructure access** with Access and SSH command logs, supporting regulatory compliance and providing visibility in case of security breach.
-* **Preserve your end users' workflows.** SSH with Access for Infrastructure supports native SSH clients and does not require any modifications to users’ SSH configs.
+- **Author fine-grained policy** to control who may access your SSH servers, including specific ports, protocols, and SSH users.
+- **Monitor infrastructure access** with Access and SSH command logs, supporting regulatory compliance and providing visibility in case of security breach.
+- **Preserve your end users' workflows.** SSH with Access for Infrastructure supports native SSH clients and does not require any modifications to users’ SSH configs.
+
 ![Example of an infrastructure Access application](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1916,height=1714,format=webp/_astro/infrastructure-app.BhpJOgxs.png)
 
 To get started, refer to [SSH with Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/).
@@ -6689,7 +6754,7 @@ Beyond the controls in [Zero Trust](https://developers.cloudflare.com/cloudflare
 First, configure Cloudflare One to send user risk scores to Okta.
 
 1. Set up the [Okta SSO integration](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/okta/).
-2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
+2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 3. In **Your identity providers**, locate your Okta integration and select **Edit**.
 4. Turn on **Send risk score to Okta**.
 5. Select **Save**.
@@ -6697,15 +6762,15 @@ First, configure Cloudflare One to send user risk scores to Okta.
 
 Next, configure Okta to receive your risk scores.
 
-1. On your Okta admin dashboard, go to **Security** \> **Device Integrations**.
+1. On your Okta admin dashboard, go to **Security** > **Device Integrations**.
 2. Go to **Receive shared signals**, then select **Create stream**.
-3. Name your integration. In **Set up integration with**, choose _Well-known URL_.
+3. Name your integration. In **Set up integration with**, choose *Well-known URL*.
 4. In **Well-known URL**, enter the well-known URL value provided by Cloudflare One.
 5. Select **Create**.
 
 ## 2024-06-16
 
-[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)[Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)[CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)[Digital Experience Monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/)[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[Multi-Cloud Networking](https://developers.cloudflare.com/multi-cloud-networking/)[Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/)[Network Flow](https://developers.cloudflare.com/network-flow/)[Magic Transit](https://developers.cloudflare.com/magic-transit/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)[Network Interconnect](https://developers.cloudflare.com/network-interconnect/)[Risk Score](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/)[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) [CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) [Digital Experience Monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/) [Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) [Email security](https://developers.cloudflare.com/cloudflare-one/email-security/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Multi-Cloud Networking](https://developers.cloudflare.com/multi-cloud-networking/) [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) [Network Flow](https://developers.cloudflare.com/network-flow/) [Magic Transit](https://developers.cloudflare.com/magic-transit/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) [Network Interconnect](https://developers.cloudflare.com/network-interconnect/) [Risk Score](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/) [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Explore product updates for Cloudflare One**
@@ -6716,24 +6781,32 @@ Our [new changelog](https://developers.cloudflare.com/changelog/) lets you read 
 
 If you are looking for older product updates, refer to the following locations.
 
+<details>
+
+<summary>
+
 Older product updates
 
-* [Access](https://developers.cloudflare.com/cloudflare-one/changelog/access/)
-* [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/changelog/browser-isolation/)
-* [CASB](https://developers.cloudflare.com/cloudflare-one/changelog/casb/)
-* [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/changelog/tunnel/)
-* [Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/changelog/dlp/)
-* [Digital Experience Monitoring](https://developers.cloudflare.com/cloudflare-one/changelog/dex/)
-* [Email security](https://developers.cloudflare.com/cloudflare-one/changelog/email-security/)
-* [Gateway](https://developers.cloudflare.com/cloudflare-one/changelog/gateway/)
-* [Multi-Cloud Networking](https://developers.cloudflare.com/multi-cloud-networking/changelog/)
-* [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/changelog/)
-* [Magic Network Monitoring](https://developers.cloudflare.com/network-flow/changelog/)
-* [Magic Transit](https://developers.cloudflare.com/magic-transit/changelog/)
-* [Magic WAN](https://developers.cloudflare.com/cloudflare-wan/changelog/)
-* [Network Interconnect](https://developers.cloudflare.com/network-interconnect/changelog/)
-* [Risk score](https://developers.cloudflare.com/cloudflare-one/changelog/risk-score/)
-* [Cloudflare One Client](https://developers.cloudflare.com/changelog/cloudflare-one-client/)
+</summary>
+
+- <a href="https://developers.cloudflare.com/cloudflare-one/changelog/access/">Access</a>
+- <a href="https://developers.cloudflare.com/cloudflare-one/changelog/browser-isolation/">Browser Isolation</a>
+- <a href="https://developers.cloudflare.com/cloudflare-one/changelog/casb/">CASB</a>
+- <a href="https://developers.cloudflare.com/cloudflare-one/changelog/tunnel/">Cloudflare Tunnel</a>
+- <a href="https://developers.cloudflare.com/cloudflare-one/changelog/dlp/">Data Loss Prevention</a>
+- <a href="https://developers.cloudflare.com/cloudflare-one/changelog/dex/">Digital Experience Monitoring</a>
+- <a href="https://developers.cloudflare.com/cloudflare-one/changelog/email-security/">Email security</a>
+- <a href="https://developers.cloudflare.com/cloudflare-one/changelog/gateway/">Gateway</a>
+- <a href="https://developers.cloudflare.com/multi-cloud-networking/changelog/">Multi-Cloud Networking</a>
+- <a href="https://developers.cloudflare.com/cloudflare-network-firewall/changelog/">Cloudflare Network Firewall</a>
+- <a href="https://developers.cloudflare.com/network-flow/changelog/">Magic Network Monitoring</a>
+- <a href="https://developers.cloudflare.com/magic-transit/changelog/">Magic Transit</a>
+- <a href="https://developers.cloudflare.com/cloudflare-wan/changelog/">Magic WAN</a>
+- <a href="https://developers.cloudflare.com/network-interconnect/changelog/">Network Interconnect</a>
+- <a href="https://developers.cloudflare.com/cloudflare-one/changelog/risk-score/">Risk score</a>
+- <a href="https://developers.cloudflare.com/changelog/cloudflare-one-client/">Cloudflare One Client</a>
+
+</details>
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Release notes
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/platform/release-notes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/platform/release-notes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/d1/platform/release-notes/index.xml)
 
@@ -28,7 +28,7 @@ You can now set a [jurisdiction](https://developers.cloudflare.com/d1/configurat
 
 D1 now detects read-only queries and automatically attempts up to two retries to execute those queries in the event of failures with retryable errors. You can access the number of execution attempts in the returned [response metadata](https://developers.cloudflare.com/d1/worker-api/return-object/#d1result) property `total_attempts`.
 
-At the moment, only read-only queries are retried, that is, queries containing only the following SQLite keywords: `SELECT`, `EXPLAIN`, `WITH`. Queries containing any [SQLite keyword](https://sqlite.org/lang%5Fkeywords.html) that leads to database writes are not retried.
+At the moment, only read-only queries are retried, that is, queries containing only the following SQLite keywords: `SELECT`, `EXPLAIN`, `WITH`. Queries containing any [SQLite keyword](https://sqlite.org/lang_keywords.html) that leads to database writes are not retried.
 
 The retry success ratio among read-only retryable errors varies from 5% all the way up to 95%, depending on the underlying error and its duration (like network errors or other internal errors).
 
@@ -50,9 +50,9 @@ The maximum D1 storage per account for users on the Workers paid plan has been i
 
 **D1 alpha database backup access removed**
 
-Following the removal of query access to D1 alpha databases on [2024-08-23](https://developers.cloudflare.com/d1/platform/release-notes/#2024-08-23), D1 alpha database backups can no longer be accessed or created with [wrangler d1 backup](https://developers.cloudflare.com/d1/reference/backups/), available with wrangler v3.
+Following the removal of query access to D1 alpha databases on [2024-08-23](https://developers.cloudflare.com/d1/platform/release-notes/#2024-08-23), D1 alpha database backups can no longer be accessed or created with [`wrangler d1 backup`](https://developers.cloudflare.com/d1/reference/backups/), available with wrangler v3.
 
-If you want to retain a backup of your D1 alpha database, please use `wrangler d1 backup` before 2025-07-01\. A D1 alpha backup can be used to [migrate](https://developers.cloudflare.com/d1/platform/alpha-migration/#5-create-a-new-d1-database) to a newly created D1 database in its generally available state.
+If you want to retain a backup of your D1 alpha database, please use `wrangler d1 backup` before 2025-07-01. A D1 alpha backup can be used to [migrate](https://developers.cloudflare.com/d1/platform/alpha-migration/#5-create-a-new-d1-database) to a newly created D1 database in its generally available state.
 
 ## 2025-05-30
 
@@ -90,7 +90,6 @@ const result = await session
   .run();
 // store bookmark for a future session
 response.headers.set("x-d1-bookmark", session.getBookmark() ?? "");
-
 ```
 
 Read replicas are automatically created by Cloudflare (currently one in each supported [D1 region](https://developers.cloudflare.com/d1/best-practices/read-replication/#read-replica-locations)), are active/inactive based on query traffic, and are transparently routed to by Cloudflare at no additional cost.
@@ -105,7 +104,7 @@ To learn more about how read replication was implemented, go to our [blog post](
 
 **D1 supports \`PRAGMA optimize\`**
 
-D1 now supports `PRAGMA optimize` command, which can improve database query performance. It is recommended to run this command after a schema change (for example, after creating an index). Refer to [PRAGMA optimize](https://developers.cloudflare.com/d1/sql-api/sql-statements/#pragma-optimize) for more information.
+D1 now supports `PRAGMA optimize` command, which can improve database query performance. It is recommended to run this command after a schema change (for example, after creating an index). Refer to [`PRAGMA optimize`](https://developers.cloudflare.com/d1/sql-api/sql-statements/#pragma-optimize) for more information.
 
 ## 2025-02-04
 
@@ -119,11 +118,11 @@ Write queries with read-only access will now fail. If you relied on the previous
 
 **D1 will begin enforcing its free tier limits from the 10th of February 2025.**
 
-D1 will begin enforcing the daily [free tier limits](https://developers.cloudflare.com/d1/platform/limits) from 2025-02-10\. These limits only apply to accounts on the Workers Free plan.
+D1 will begin enforcing the daily [free tier limits](https://developers.cloudflare.com/d1/platform/limits) from 2025-02-10. These limits only apply to accounts on the Workers Free plan.
 
 From 2025-02-10, if you do not take any action and exceed the daily free tier limits, queries to D1 databases via the Workers API and/or REST API will return errors until limits reset daily at 00:00 UTC.
 
-To ensure uninterrupted service, upgrade your account to the [Workers Paid plan](https://developers.cloudflare.com/workers/platform/pricing/) from the [plans page](https://dash.cloudflare.com/?account=/workers/plans). The minimum monthly billing amount is $5\. Refer to [Workers Paid plan](https://developers.cloudflare.com/workers/platform/pricing/) and [D1 limits](https://developers.cloudflare.com/d1/platform/limits/).
+To ensure uninterrupted service, upgrade your account to the [Workers Paid plan](https://developers.cloudflare.com/workers/platform/pricing/) from the [plans page](https://dash.cloudflare.com/?account=/workers/plans). The minimum monthly billing amount is $5. Refer to [Workers Paid plan](https://developers.cloudflare.com/workers/platform/pricing/) and [D1 limits](https://developers.cloudflare.com/d1/platform/limits/).
 
 For better insight into your current usage, refer to your [billing metrics](https://developers.cloudflare.com/d1/observability/billing/) for rows read and rows written, which can be found on the [D1 dashboard](https://dash.cloudflare.com/?account=/workers/d1) or GraphQL API.
 
@@ -135,7 +134,7 @@ D1 lowered end-to-end Worker API request latency by 40-60% by eliminating redund
 
 ![D1 Worker API latency](https://developers.cloudflare.com/images/d1/faster-d1-worker-api.png)
 
-_p50, p90, and p95 request latency aggregated across entire D1 service. These latencies are a reference point and should not be viewed as your exact workload improvement._
+*p50, p90, and p95 request latency aggregated across entire D1 service. These latencies are a reference point and should not be viewed as your exact workload improvement.*
 
 For each request to a D1 database, at least two network round trips were eliminated. One round trip was due to a bug that is now fixed. The remaining removed round trips are due to avoiding creating a new TCP connection for each request when reaching out to the datacenter hosting the database.
 
@@ -157,9 +156,9 @@ You can upgrade to the new, generally available version of D1 by following the [
 
 **Fixed bug in TypeScript typings for run() API**
 
-The `run()` method as part of the [D1 Client API](https://developers.cloudflare.com/d1/worker-api/) had an incorrect (outdated) type definition, which has now been addressed as of [@cloudflare/workers-types](https://www.npmjs.com/package/@cloudflare/workers-types) version `4.20240725.0`.
+The `run()` method as part of the [D1 Client API](https://developers.cloudflare.com/d1/worker-api/) had an incorrect (outdated) type definition, which has now been addressed as of [`@cloudflare/workers-types`](https://www.npmjs.com/package/@cloudflare/workers-types) version `4.20240725.0`.
 
-The correct type definition is `stmt.run<T>(): D1Result`, as `run()` returns the result rows of the query. The previously _incorrect_ type definition was `stmt.run(): D1Response`, which only returns query metadata and no results.
+The correct type definition is `stmt.run<T>(): D1Result`, as `run()` returns the result rows of the query. The previously *incorrect* type definition was `stmt.run(): D1Response`, which only returns query metadata and no results.
 
 ## 2024-06-17
 
@@ -199,9 +198,9 @@ Refer to [alpha database migration guide](https://developers.cloudflare.com/d1/p
 
 D1 is now generally available and production ready. Read the [blog post](https://blog.cloudflare.com/building-d1-a-global-database/) for more details on new features in GA and to learn more about the upcoming D1 read replication API.
 
-* Developers with a Workers Paid plan now have a 10GB GB per-database limit (up from 2GB), which can be combined with existing limit of 50,000 databases per account.
-* Developers with a Workers Free plan retain the 500 MB per-database limit and can create up to 10 databases per account.
-* D1 databases can be [exported](https://developers.cloudflare.com/d1/best-practices/import-export-data/#export-an-existing-d1-database) as a SQL file.
+- Developers with a Workers Paid plan now have a 10GB GB per-database limit (up from 2GB), which can be combined with existing limit of 50,000 databases per account.
+- Developers with a Workers Free plan retain the 500 MB per-database limit and can create up to 10 databases per account.
+- D1 databases can be [exported](https://developers.cloudflare.com/d1/best-practices/import-export-data/#export-an-existing-d1-database) as a SQL file.
 
 ## 2024-03-12
 
@@ -231,7 +230,7 @@ A previous change (made on 2024-02-13) to the `run()` [query statement method](h
 
 `run()` now returns a `D1Result`, including the result rows, matching its original behavior prior to the change on 2024-02-13.
 
-Future change to `run()` to return a [D1ExecResult](https://developers.cloudflare.com/d1/worker-api/return-object/#d1execresult), as originally intended and documented, will be gated behind a [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) as to avoid breaking existing Workers relying on the way `run()` currently works.
+Future change to `run()` to return a [`D1ExecResult`](https://developers.cloudflare.com/d1/worker-api/return-object/#d1execresult), as originally intended and documented, will be gated behind a [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) as to avoid breaking existing Workers relying on the way `run()` currently works.
 
 ## 2024-02-13
 
@@ -241,7 +240,7 @@ D1's `raw()`, `all()` and `run()` [query statement methods](https://developers.c
 
 `raw()` now correctly returns results as an array of arrays, allowing the correct handling of duplicate column names (such as when joining tables), as compared to `all()`, which is unchanged and returns an array of objects. To include an array of column names in the results when using `raw()`, use `raw({columnNames: true})`.
 
-`run()` no longer incorrectly returns a `D1Result` and instead returns a [D1ExecResult](https://developers.cloudflare.com/d1/worker-api/return-object/#d1execresult) as originally intended and documented.
+`run()` no longer incorrectly returns a `D1Result` and instead returns a [`D1ExecResult`](https://developers.cloudflare.com/d1/worker-api/return-object/#d1execresult) as originally intended and documented.
 
 This may be a breaking change for some applications that expected `raw()` to return an array of objects.
 
@@ -267,9 +266,9 @@ The D1 team recommends moving to D1's new [production backend](https://developer
 
 Developers using D1 on a Workers Paid plan can now create up to 50,000 databases as part of ongoing increases to D1's limits.
 
-* This further enables database-per-user use-cases and allows you to isolate data between customers.
-* Total storage per account is now 50 GB.
-* D1's [analytics and metrics](https://developers.cloudflare.com/d1/observability/metrics-analytics/) provide per-database usage data.
+- This further enables database-per-user use-cases and allows you to isolate data between customers.
+- Total storage per account is now 50 GB.
+- D1's [analytics and metrics](https://developers.cloudflare.com/d1/observability/metrics-analytics/) provide per-database usage data.
 
 If you need to create more than 50,000 databases or need more per-account storage, [reach out](https://developers.cloudflare.com/d1/platform/limits/) to the D1 team to discuss.
 
@@ -279,8 +278,8 @@ If you need to create more than 50,000 databases or need more per-account storag
 
 D1 is now in public beta, and storage limits have been increased:
 
-* Developers with a Workers Paid plan now have a 2 GB per-database limit (up from 500 MB) and can create 25 databases per account (up from 10). These limits will continue to increase automatically during the public beta.
-* Developers with a Workers Free plan retain the 500 MB per-database limit and can create up to 10 databases per account.
+- Developers with a Workers Paid plan now have a 2 GB per-database limit (up from 500 MB) and can create 25 databases per account (up from 10). These limits will continue to increase automatically during the public beta.
+- Developers with a Workers Free plan retain the 500 MB per-database limit and can create up to 10 databases per account.
 
 Databases must be using D1's [new storage subsystem](https://developers.cloudflare.com/d1/platform/release-notes/#2023-07-27) to benefit from the increased database limits.
 
@@ -301,7 +300,6 @@ The `meta` object returned in [D1's Client API](https://developers.cloudflare.co
   "rows_read": 5000,
   "rows_written": 0
 }
-
 ```
 
 Refer to [D1 pricing documentation](https://developers.cloudflare.com/d1/platform/pricing/) to understand how reads and writes are measured. D1 remains free to use during the alpha period.
@@ -310,9 +308,9 @@ Refer to [D1 pricing documentation](https://developers.cloudflare.com/d1/platfor
 
 **Bind D1 from the Cloudflare dashboard**
 
-You can now [bind a D1 database](https://developers.cloudflare.com/d1/get-started/#3-bind-your-worker-to-your-d1-database) to your Workers directly in the [Cloudflare dashboard](https://dash.cloudflare.com). To bind D1 from the Cloudflare dashboard, select your Worker project -> **Settings** \-> **Variables** \-> and select **D1 Database Bindings**.
+You can now [bind a D1 database](https://developers.cloudflare.com/d1/get-started/#3-bind-your-worker-to-your-d1-database) to your Workers directly in the [Cloudflare dashboard](https://dash.cloudflare.com). To bind D1 from the Cloudflare dashboard, select your Worker project -> **Settings** -> **Variables** -> and select **D1 Database Bindings**.
 
-Note: If you have previously deployed a Worker with a D1 database binding with a version of `wrangler` prior to `3.5.0`, you must upgrade to [wrangler v3.5.0](https://github.com/cloudflare/workers-sdk/releases/tag/wrangler%403.5.0) first before you can edit your D1 database bindings in the Cloudflare dashboard. New Workers projects do not have this limitation.
+Note: If you have previously deployed a Worker with a D1 database binding with a version of `wrangler` prior to `3.5.0`, you must upgrade to [`wrangler v3.5.0`](https://github.com/cloudflare/workers-sdk/releases/tag/wrangler%403.5.0) first before you can edit your D1 database bindings in the Cloudflare dashboard. New Workers projects do not have this limitation.
 
 Legacy D1 alpha users who had previously prefixed their database binding manually with `__D1_BETA__` should remove this as part of this upgrade. Your Worker scripts should call your D1 database via `env.BINDING_NAME` only. Refer to the latest [D1 getting started guide](https://developers.cloudflare.com/d1/get-started/#3-bind-your-worker-to-your-d1-database) for best practices.
 
@@ -364,9 +362,9 @@ New documentation has been published on how to use D1's support for [generated c
 
 **Deprecating Error.cause**
 
-As of [wrangler v3.1.1](https://github.com/cloudflare/workers-sdk/releases/tag/wrangler%403.1.1) the [D1 client API](https://developers.cloudflare.com/d1/worker-api/) now returns [detailed error messages](https://developers.cloudflare.com/d1/observability/debug-d1/) within the top-level `Error.message` property, and no longer requires developers to inspect the `Error.cause.message` property.
+As of [`wrangler v3.1.1`](https://github.com/cloudflare/workers-sdk/releases/tag/wrangler%403.1.1) the [D1 client API](https://developers.cloudflare.com/d1/worker-api/) now returns [detailed error messages](https://developers.cloudflare.com/d1/observability/debug-d1/) within the top-level `Error.message` property, and no longer requires developers to inspect the `Error.cause.message` property.
 
-To facilitate a transition from the previous `Error.cause` behaviour, detailed error messages will continue to be populated within `Error.cause` as well as the top-level `Error` object until approximately July 14th, 2023\. Future versions of both `wrangler` and the D1 client API will no longer populate `Error.cause` after this date.
+To facilitate a transition from the previous `Error.cause` behaviour, detailed error messages will continue to be populated within `Error.cause` as well as the top-level `Error` object until approximately July 14th, 2023. Future versions of both `wrangler` and the D1 client API will no longer populate `Error.cause` after this date.
 
 ## 2023-05-19
 
@@ -376,7 +374,6 @@ D1 has a new experimental storage back end that dramatically improves query thro
 
 ```sh
 $ wrangler d1 create your-database --experimental-backend
-
 ```
 
 Read more about the experimental back end in the [announcement blog](https://blog.cloudflare.com/d1-turning-it-up-to-11/).

@@ -12,22 +12,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Limits
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/kv/platform/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-| Feature                                                                                                                       | Free                  | Paid         |
-| ----------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------ |
-| Reads                                                                                                                         | 100,000 reads per day | Unlimited    |
-| Writes to different keys                                                                                                      | 1,000 writes per day  | Unlimited    |
-| Writes to same key                                                                                                            | 1 per second          | 1 per second |
-| Operations/Worker invocation [1](#user-content-fn-1)                                                                          | 1000                  | 1000         |
-| Namespaces per account                                                                                                        | 1,000                 | 1,000        |
-| Storage/account                                                                                                               | 1 GB                  | Unlimited    |
-| Storage/namespace                                                                                                             | 1 GB                  | Unlimited    |
-| Keys/namespace                                                                                                                | Unlimited             | Unlimited    |
-| Key size                                                                                                                      | 512 bytes             | 512 bytes    |
-| Key metadata                                                                                                                  | 1024 bytes            | 1024 bytes   |
-| Value size                                                                                                                    | 25 MiB                | 25 MiB       |
-| Minimum [cacheTtl](https://developers.cloudflare.com/kv/api/read-key-value-pairs/#cachettl-parameter) [2](#user-content-fn-2) | 30 seconds            | 30 seconds   |
+| Feature | Free | Paid |
+| --- | --- | --- |
+| Reads | 100,000 reads per day | Unlimited |
+| Writes to different keys | 1,000 writes per day | Unlimited |
+| Writes to same key | 1 per second | 1 per second |
+| Operations/Worker invocation <sup>[1](#user-content-fn-1)</sup> | 1000 | 1000 |
+| Namespaces per account | 1,000 | 1,000 |
+| Storage/account | 1 GB | Unlimited |
+| Storage/namespace | 1 GB | Unlimited |
+| Keys/namespace | Unlimited | Unlimited |
+| Key size | 512 bytes | 512 bytes |
+| Key metadata | 1024 bytes | 1024 bytes |
+| Value size | 25 MiB | 25 MiB |
+| Minimum [`cacheTtl`](https://developers.cloudflare.com/kv/api/read-key-value-pairs/#cachettl-parameter) <sup>[2](#user-content-fn-2)</sup> | 30 seconds | 30 seconds |
 
 Need a higher limit?
 
@@ -44,7 +44,7 @@ Using the REST API to access Cloudflare Workers KV is subject to the [rate limit
 ## Footnotes
 
 1. Within a single invocation, a Worker can make up to 1,000 operations to external services (for example, 500 Workers KV reads and 500 R2 reads). A bulk request to Workers KV counts for 1 request to an external service. [↩](#user-content-fnref-1)
-2. The maximum value is [Number.MAX\_SAFE\_INTEGER ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Number/MAX%5FSAFE%5FINTEGER). [↩](#user-content-fnref-2)
+2. The maximum value is [`Number.MAX_SAFE_INTEGER` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER). [↩](#user-content-fnref-2)
 
 Was this helpful?
 

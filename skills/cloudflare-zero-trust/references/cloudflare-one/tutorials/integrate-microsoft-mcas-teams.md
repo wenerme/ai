@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Integrate Microsoft MCAS with Cloudflare Zero Trust
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/integrate-microsoft-mcas-teams/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/integrate-microsoft-mcas-teams/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Many security teams rely on Microsoft MCAS (Microsoft Cloud App Security), Microsoft's CASB solution, to identify and block threats on the Internet, as well as allow or block access to cloud applications. This tutorial covers how to integrate MCAS with Cloudflare Zero Trust, and create Gateway HTTP policies to ensure visibility and control over data.
 
@@ -43,13 +43,19 @@ This will return a list of banned hostnames. In this case, Angie's List is the b
 As you can see, the banned hostnames are preceded by a `.`. To use this output for a Zero Trust List, we need to do some text processing.
 
 1. Run the curl API call and direct the output to a file, in this case `mcas.txt`:
-```sh
-curl -v "https://<MCAS API URL>/api/discovery_block_scripts/?format=120&type=banned" -H "Authorization: Token <API token>" > mcas.txt
-```
+
+   ```sh
+   curl -v "https://<MCAS API URL>/api/discovery_block_scripts/?format=120&type=banned" -H "Authorization: Token <API token>" > mcas.txt
+   ```
+
+
 2. Remove the leading `.`, for example by running `sed` from the CLI:
-```sh
-sed -i 's/^.//' mcas.txt
-```
+
+   ```sh
+   sed -i 's/^.//' mcas.txt
+   ```
+
+
 3. This will give you the list of hostnames without leading `.`.
 4. Replace the file's `.txt` extension with `.csv`. The file can now be imported into Cloudflare Zero Trust as a Hostname list.
 
@@ -63,9 +69,9 @@ curl -v "https://<MCAS API URL>/api/discovery_block_scripts/?format=120&type=all
 
 ## Adding a hostname list in Cloudflare One
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Reusable components** \> **Lists**
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Reusable components** > **Lists**
 2. Select **Upload CSV**. Even though the hostname list is not in CSV format, it will work with no issues.
-3. Add a name for the list, specify _Hostnames_ as the list type, and give it a description.
+3. Add a name for the list, specify *Hostnames* as the list type, and give it a description.
 4. Drag and drop your MCAS output file created via the API call, or you can select **Select a file**.
 5. Select **Create**. You will see the list of hostnames that have been added to the list.
 6. Save the list.
@@ -74,13 +80,13 @@ Your list is now ready to be referenced by Gateway HTTP policies.
 
 ## Creating an HTTP policy
 
-1. Go to **Traffic policies** \> **Traffic policies** \> **HTTP**.
+1. Go to **Traffic policies** > **Traffic policies** > **HTTP**.
 2. Select **Add a policy**.
 3. Create the following policy.
 
-| Selector | Operator | Value                 | Action |
-| -------- | -------- | --------------------- | ------ |
-| Host     | in list  | <NEW\_HOSTNAME\_LIST> | Block  |
+   | Selector | Operator | Value | Action |
+   | --- | --- | --- | --- |
+   | Host | in list | \<NEW\_HOSTNAME\_LIST> | Block |
 
 Now when trying to visit one of the MCAS defined sites, the user will be blocked.
 

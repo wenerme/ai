@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Serverless computing
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/workers/concepts/serverless-computing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/workers/concepts/serverless-computing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Workers allows you to build serverless applications or augment existing ones by writing code that is deployed instantly across the globe. To understand the significance of Workers technology, we begin by understanding the environment in which it was developed.
 
@@ -46,9 +46,9 @@ Developers and organizations using serverless computing are billed on a usage mo
 
 By reading this page, you have:
 
-* Been introduced to the serverless computing concept that is behind Cloudflare Workers.
-* Reviewed the differences between legacy on-premise and cloud computing infrastructure.
-* Analyzed the key differences between the cloud computing and serverless computing paradigms.
+- Been introduced to the serverless computing concept that is behind Cloudflare Workers.
+- Reviewed the differences between legacy on-premise and cloud computing infrastructure.
+- Analyzed the key differences between the cloud computing and serverless computing paradigms.
 
 In the next section, you will learn about what makes Workers, a serverless computing platform that is part of the larger Cloudflare Developer Platform, unique in its architecture from other serverless computing providers.
 

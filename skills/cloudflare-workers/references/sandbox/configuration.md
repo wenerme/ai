@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configuration
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Configure your Sandbox SDK deployment with Wrangler, customize container images, and manage environment variables.
 
@@ -38,10 +38,10 @@ Configure sandbox behavior with options like `keepAlive` for long-running proces
 
 ## Related resources
 
-* [Get Started guide](https://developers.cloudflare.com/sandbox/get-started/) \- Initial setup walkthrough
-* [Wrangler documentation](https://developers.cloudflare.com/workers/wrangler/) \- Complete Wrangler reference
-* [Docker documentation ↗](https://docs.docker.com/engine/reference/builder/) \- Dockerfile syntax
-* [Security model](https://developers.cloudflare.com/sandbox/concepts/security/) \- Understanding environment isolation
+- [Get Started guide](https://developers.cloudflare.com/sandbox/get-started/) - Initial setup walkthrough
+- [Wrangler documentation](https://developers.cloudflare.com/workers/wrangler/) - Complete Wrangler reference
+- [Docker documentation ↗](https://docs.docker.com/engine/reference/builder/) - Dockerfile syntax
+- [Security model](https://developers.cloudflare.com/sandbox/concepts/security/) - Understanding environment isolation
 
 Was this helpful?
 

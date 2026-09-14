@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Policies
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/manage-members/policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/manage-members/policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Policies define what access a given user has to your account or domains, and are constructed out of three parts:
 
@@ -30,8 +30,8 @@ For example, you may want to assign multiple policies and use scopes to control 
 
 A set of standard API endpoints is present on every account that allow access to your members, which has recently been enhanced by a list of `resourceGroups` and `PermissionGroups`.
 
-* A `resourceGroup` is a unique identifier for the scope for which a policy applies.
-* A `permissionGroup` is a unique identifier for the set of roles that are assigned to a given policy.
+- A `resourceGroup` is a unique identifier for the scope for which a policy applies.
+- A `permissionGroup` is a unique identifier for the set of roles that are assigned to a given policy.
 
 Refer to the [API documentation](https://developers.cloudflare.com/api/) for more information.
 
@@ -43,8 +43,8 @@ Note
 
 To understand a member’s full access, check both the **Members** and **User Groups** views:
 
-* The **Members** view shows only the permissions explicitly assigned to the user.
-* Permissions inherited through [User Groups](https://developers.cloudflare.com/fundamentals/manage-members/user-groups/) are not shown on the Members page. To see these, go to the Groups tab, find the groups the user belongs to, and review the policies assigned to each group.
+- The **Members** view shows only the permissions explicitly assigned to the user.
+- Permissions inherited through [User Groups](https://developers.cloudflare.com/fundamentals/manage-members/user-groups/) are not shown on the Members page. To see these, go to the Groups tab, find the groups the user belongs to, and review the policies assigned to each group.
 
 Cloudflare is actively working on improvements to consolidate this view in a future update.
 

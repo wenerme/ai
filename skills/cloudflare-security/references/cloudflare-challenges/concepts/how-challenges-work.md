@@ -12,18 +12,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # How Challenges work
 
-Last updated Jul 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-challenges/concepts/how-challenges-work/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-challenges/concepts/how-challenges-work/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Challenges can be issued in three primary ways depending on which Cloudflare products or features are in use. Each method is designed to balance security with seamless visitor experience.
 
-| Product                                                                                                                                                                                                                                                                                 | Challenge type(s)                                                                                                               |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| [WAF](https://developers.cloudflare.com/waf/) ([custom rules](https://developers.cloudflare.com/waf/custom-rules/), [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/), [IP access rules](https://developers.cloudflare.com/waf/tools/ip-access-rules/)) | [Interstitial Challenge Page](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/)         |
-| [Bot Management](https://developers.cloudflare.com/bots/get-started/bot-management/)                                                                                                                                                                                                    | [JavaScript Detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/)                |
-| [Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/), [Super Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/)                                                                                                  | [Interstitial Challenge Page](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/)         |
-| [Turnstile](https://developers.cloudflare.com/turnstile/)                                                                                                                                                                                                                               | Embedded widget                                                                                                                 |
-| [HTTP DDoS attack protection](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/)                                                                                                                                                                                 | Any Challenge                                                                                                                   |
-| [Under Attack Mode](https://developers.cloudflare.com/fundamentals/reference/under-attack-mode/)                                                                                                                                                                                        | [Managed Challenge](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/#managed-challenge) |
+| Product | Challenge type(s) |
+| --- | --- |
+| [WAF](https://developers.cloudflare.com/waf/) ([custom rules](https://developers.cloudflare.com/waf/custom-rules/), [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/), [IP access rules](https://developers.cloudflare.com/waf/tools/ip-access-rules/)) | [Interstitial Challenge Page](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/) |
+| [Bot Management](https://developers.cloudflare.com/bots/get-started/bot-management/) | [JavaScript Detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/) |
+| [Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/), [Super Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/) | [Interstitial Challenge Page](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/) |
+| [Turnstile](https://developers.cloudflare.com/turnstile/) | Embedded widget |
+| [HTTP DDoS attack protection](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/) | Any Challenge |
+| [Under Attack Mode](https://developers.cloudflare.com/fundamentals/reference/under-attack-mode/) | [Managed Challenge](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/#managed-challenge) |
 
 Challenge Pages and Turnstile rely on the same underlying mechanism to issue challenges to your website or application's visitors.
 
@@ -37,10 +37,10 @@ For session-level detection that informs when challenges should be applied, refe
 
 Refer to the following pages for more information on the different challenge types:
 
-* [Interstitial Challenge Pages](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/)
-* [Turnstile](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/turnstile/)
-* [JavaScript Detections](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/)
-* [Precursor](https://developers.cloudflare.com/cloudflare-challenges/precursor/)
+- [Interstitial Challenge Pages](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/)
+- [Turnstile](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/turnstile/)
+- [JavaScript Detections](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/)
+- [Precursor](https://developers.cloudflare.com/cloudflare-challenges/precursor/)
 
 ---
 
@@ -48,10 +48,10 @@ Refer to the following pages for more information on the different challenge typ
 
 Cloudflare Challenges cannot support the following:
 
-* [Browser extensions](https://developers.cloudflare.com/cloudflare-challenges/reference/supported-browsers/#browser-extensions) that modify the browser's `User-Agent` value or Web APIs such as `Canvas` and `WebGL`.
-* Implementations where a domain serves a challenge page originally requested for another domain.
-* Challenge Pages cannot be embedded in cross-origin iframes.
-* Client software where the solve request of a Managed Challenge comes from a different IP than the original IP a Challenge request was issued to. For example, if you receive the Challenge from one IP and solve it using another IP, the solve is not valid and you may encounter a Challenge loop.
+- [Browser extensions](https://developers.cloudflare.com/cloudflare-challenges/reference/supported-browsers/#browser-extensions) that modify the browser's `User-Agent` value or Web APIs such as `Canvas` and `WebGL`.
+- Implementations where a domain serves a challenge page originally requested for another domain.
+- Challenge Pages cannot be embedded in cross-origin iframes.
+- Client software where the solve request of a Managed Challenge comes from a different IP than the original IP a Challenge request was issued to. For example, if you receive the Challenge from one IP and solve it using another IP, the solve is not valid and you may encounter a Challenge loop.
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Alerts
 
-Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/client-side-security/alerts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/client-side-security/alerts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -22,8 +22,8 @@ Once you have activated client-side security's resource monitoring, you can set 
 
 You can configure unscoped or scoped alerts:
 
-* **Unscoped alert**: Covers all zones in your Cloudflare account. Unscoped alerts are triggered either daily, hourly, or immediately, depending on the [alert type](https://developers.cloudflare.com/client-side-security/alerts/alert-types/).
-* **Scoped alert**: Covers one or more specific zones. Requires [content security rules](https://developers.cloudflare.com/client-side-security/rules/) configured in those zones. Scoped alerts are triggered immediately and only notify you about resources that are covered by your rules. [Rule violations](https://developers.cloudflare.com/client-side-security/rules/violations/) do not trigger these alerts. For more information, refer to [Scoped alerts](#scoped-alerts).
+- **Unscoped alert**: Covers all zones in your Cloudflare account. Unscoped alerts are triggered either daily, hourly, or immediately, depending on the [alert type](https://developers.cloudflare.com/client-side-security/alerts/alert-types/).
+- **Scoped alert**: Covers one or more specific zones. Requires [content security rules](https://developers.cloudflare.com/client-side-security/rules/) configured in those zones. Scoped alerts are triggered immediately and only notify you about resources that are covered by your rules. [Rule violations](https://developers.cloudflare.com/client-side-security/rules/violations/) do not trigger these alerts. For more information, refer to [Scoped alerts](#scoped-alerts).
 
 For alerts sent at regular intervals, you might experience a delay between adding a new script and receiving an alert.
 

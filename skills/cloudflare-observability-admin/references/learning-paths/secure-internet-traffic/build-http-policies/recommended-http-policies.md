@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Recommended HTTP policies
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/recommended-http-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/recommended-http-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 We recommend you add the following HTTP policies to build an Internet and SaaS app security strategy for your organization.
 
@@ -22,9 +22,11 @@ For additional commonly used HTTP policy examples, refer to [Common HTTP policie
 
 Bypass HTTP inspection for applications that use embedded certificates. This will help avoid any certificate pinning errors that may arise from an initial rollout.
 
-| Selector    | Operator | Value            | Action         |
-| ----------- | -------- | ---------------- | -------------- |
-| Application | in       | _Do Not Inspect_ | Do Not Inspect |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Application | in | *Do Not Inspect* | Do Not Inspect |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -60,10 +62,12 @@ resource "cloudflare_zero_trust_gateway_policy" "all_http_application_inspect_by
 
 Bypass HTTPS inspection for Android applications (such as Google Drive) that use certificate pinning, which is incompatible with Gateway inspection.
 
-| Selector                     | Operator | Value                             | Logic | Action         |
-| ---------------------------- | -------- | --------------------------------- | ----- | -------------- |
-| Application                  | in       | _Google Drive_                    | And   | Do Not Inspect |
-| Passed Device Posture Checks | in       | _OS Version Android (OS version)_ |       |                |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Application | in | *Google Drive* | And | Do Not Inspect |
+| Passed Device Posture Checks | in | *OS Version Android (OS version)* |  | |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -101,10 +105,12 @@ resource "cloudflare_zero_trust_gateway_policy" "android_http_application_inspec
 
 Bypass HTTP inspection for a custom list of domains identified as incompatible with TLS inspection.
 
-| Selector | Operator | Value                    | Logic | Action         |
-| -------- | -------- | ------------------------ | ----- | -------------- |
-| Domain   | in list  | _DomainInspectionBypass_ | Or    | Do Not Inspect |
-| Domain   | in list  | _Known Domains_          |       |                |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Domain | in list | *DomainInspectionBypass* | Or | Do Not Inspect |
+| Domain | in list | *Known Domains* |  | |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -140,9 +146,11 @@ resource "cloudflare_zero_trust_gateway_policy" "android_http_application_inspec
 
 Block [security categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-categories), such as **Command and Control & Botnet** and **Malware**, based on Cloudflare's threat intelligence.
 
-| Selector            | Operator | Value                | Action |
-| ------------------- | -------- | -------------------- | ------ |
-| Security Categories | in       | _All security risks_ | Block  |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Security Categories | in | *All security risks* | Block |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -180,9 +188,11 @@ Entries in the [security risk content subcategory](https://developers.cloudflare
 
 After your test is complete, we recommend you change the action to Block to minimize risk to your organization.
 
-| Selector           | Operator | Value                                                                                 | Action |
-| ------------------ | -------- | ------------------------------------------------------------------------------------- | ------ |
-| Content Categories | in       | _Questionable Content_, _Security Risks_, _Miscellaneous_, _Adult Themes_, _Gambling_ | Block  |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Content Categories | in | *Questionable Content*, *Security Risks*, *Miscellaneous*, *Adult Themes*, *Gambling* | Block |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -222,11 +232,13 @@ resource "cloudflare_zero_trust_gateway_policy" "block_unauthorized_apps" {
 
 Block specific domains or hosts that are malicious or pose a threat to your organization. Like **All-HTTP-ResolvedIP-Blocklist**, this blocklist can be updated manually or via API automation.
 
-| Selector | Operator      | Value              | Logic | Action |
-| -------- | ------------- | ------------------ | ----- | ------ |
-| Domain   | in list       | _Domain Blocklist_ | Or    | Block  |
-| Host     | in list       | _Host Blocklist_   | Or    |        |
-| Host     | matches regex | .\*example\\.com   |       |        |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Domain | in list | *Domain Blocklist* | Or | Block |
+| Host | in list | *Host Blocklist* | Or | |
+| Host | matches regex | `.*example\.com` |  | |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -260,11 +272,15 @@ resource "cloudflare_zero_trust_gateway_policy" "all_http_domainhost_blocklist" 
 
 ## All-HTTP-Application-Blocklist
 
-Block unauthorized applications to limit your users' access to certain web-based tools and minimize the risk of [shadow IT](https://www.cloudflare.com/learning/access-management/what-is-shadow-it/). For example, the following policy blocks known AI tools:
+Block unauthorized applications to limit your users' access to certain web-based tools and minimize the risk of [shadow IT](https://www.cloudflare.com/learning/access-management/what-is-shadow-it/)
 
-| Selector    | Operator | Value                     | Action |
-| ----------- | -------- | ------------------------- | ------ |
-| Application | in       | _Artificial Intelligence_ | Block  |
+. For example, the following policy blocks known AI tools:
+
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Application | in | *Artificial Intelligence* | Block |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -306,9 +322,11 @@ Isolate traffic for privileged users who regularly access critical systems or ex
 
 Security teams often need to perform threat analysis or malware testing that could trigger malware detection. Likewise, privileged users could be the target of attackers trying to gain access to critical systems.
 
-| Selector         | Operator | Value              | Action  |
-| ---------------- | -------- | ------------------ | ------- |
-| User Group Names | in       | _Privileged Users_ | Isolate |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| User Group Names | in | *Privileged Users* | Isolate |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -344,10 +362,12 @@ resource "cloudflare_zero_trust_gateway_policy" "privileged_users_http_any_isola
 
 Restrict access for users included in an identity provider (IdP) user group for risky users. This policy ensures your security team can restrict traffic for users of whom malicious or suspicious activity was detected.
 
-| Selector         | Operator    | Value                           | Logic | Action |
-| ---------------- | ----------- | ------------------------------- | ----- | ------ |
-| Destination IP   | not in list | _Quarantined-Users-IPAllowlist_ | And   | Block  |
-| User Group Names | in          | _Quarantined Users_             |       |        |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Destination IP | not in list | *Quarantined-Users-IPAllowlist* | And | Block |
+| User Group Names | in | *Quarantined Users* |  | |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -385,10 +405,12 @@ resource "cloudflare_zero_trust_gateway_policy" "quarantined_users_http_restrict
 
 Isolate high risk domains or create a custom list of known risky domains to avoid data exfiltration or malware infection. Ideally, your incident response teams can update the blocklist with an [API automation](https://developers.cloudflare.com/security-center/intel-apis/) to provide real-time threat protection.
 
-| Selector           | Operator | Value                               | Logic | Action  |
-| ------------------ | -------- | ----------------------------------- | ----- | ------- |
-| Content Categories | in       | _New Domains_, _Newly Seen Domains_ | Or    | Isolate |
-| Domain             | in list  | _Domain Isolation_                  |       |         |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Content Categories | in | *New Domains*, *Newly Seen Domains* | Or | Isolate |
+| Domain | in list | *Domain Isolation* |  | |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \

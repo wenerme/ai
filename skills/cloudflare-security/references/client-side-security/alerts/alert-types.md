@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Alert types
 
-Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/client-side-security/alerts/alert-types/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/client-side-security/alerts/alert-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can configure alerts for resources detected in your domain. Refer to [Alerts](https://developers.cloudflare.com/client-side-security/alerts/) for more information.
 
@@ -24,11 +24,17 @@ Requires a Business plan or higher.
 
 New resource alerts notify you about new resources detected on your domain, resources detected from new host domains, or issues with the URL length of newly detected resources.
 
+<details>
+
+<summary>
+
 Client-side security New Resources Alert
+
+</summary>
 
 **Who is it for?**
 
-[Client-side security](https://developers.cloudflare.com/client-side-security/) customers who want to receive a notification when new resources appear in their domain.
+<a href="https://developers.cloudflare.com/client-side-security/">Client-side security</a> customers who want to receive a notification when new resources appear in their domain.
 
 **Other options / filters**
 
@@ -46,11 +52,19 @@ Investigate to confirm that it is an expected change.
 
 Triggered daily. If configured with a zone filter, the alert is triggered immediately.
 
+</details>
+
+<details>
+
+<summary>
+
 Client-side security New Domain Alert
+
+</summary>
 
 **Who is it for?**
 
-[Client-side security](https://developers.cloudflare.com/client-side-security/) customers who want to receive a notification when resources from new host domains appear in their domain.
+<a href="https://developers.cloudflare.com/client-side-security/">Client-side security</a> customers who want to receive a notification when resources from new host domains appear in their domain.
 
 **Other options / filters**
 
@@ -68,11 +82,19 @@ Investigate to confirm that it is an expected change.
 
 Triggered hourly. If configured with a zone filter, the alert is triggered immediately.
 
+</details>
+
+<details>
+
+<summary>
+
 Client-side security New Resource Exceeds Max URL Length Alert
+
+</summary>
 
 **Who is it for?**
 
-[Client-side security](https://developers.cloudflare.com/client-side-security/) customers who want to receive a notification when a resource's URL exceeds the maximum allowed length.
+<a href="https://developers.cloudflare.com/client-side-security/">Client-side security</a> customers who want to receive a notification when a resource's URL exceeds the maximum allowed length.
 
 **Other options / filters**
 
@@ -86,6 +108,8 @@ Business plans or higher.
 
 Manually check the resource.
 
+</details>
+
 ## Code change alert
 
 Note
@@ -94,11 +118,17 @@ Only available to customers with Client-Side Security Advanced.
 
 This alert notifies you about [code changes](https://developers.cloudflare.com/client-side-security/detection/review-changed-scripts/) in previously detected scripts.
 
+<details>
+
+<summary>
+
 Client-side security New Code Change Detection Alert
+
+</summary>
 
 **Who is it for?**
 
-[Client-side security](https://developers.cloudflare.com/client-side-security/) customers who want to receive a notification when JavaScript dependencies change in the pages of their domain.
+<a href="https://developers.cloudflare.com/client-side-security/">Client-side security</a> customers who want to receive a notification when JavaScript dependencies change in the pages of their domain.
 
 **Other options / filters**
 
@@ -116,6 +146,8 @@ Investigate to confirm that it is an expected change.
 
 Triggered daily. If configured with a zone filter, the alert is triggered immediately.
 
+</details>
+
 ## Malicious resource alerts
 
 Note
@@ -124,11 +156,17 @@ Only available to customers with Client-Side Security Advanced.
 
 Malicious resource alerts notify you about [resources considered malicious](https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/), based on their [domain](https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/#malicious-domain-checks), [URL](https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/#malicious-url-checks), or [script content](https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/#malicious-script-detection).
 
+<details>
+
+<summary>
+
 Client-side security New Malicious Domain Alert
+
+</summary>
 
 **Who is it for?**
 
-[Client-side security](https://developers.cloudflare.com/client-side-security/) customers who want to receive a notification when resources from a known malicious domain appear in their domain. For more information, refer to [Malicious script and connection detection](https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/).
+<a href="https://developers.cloudflare.com/client-side-security/">Client-side security</a> customers who want to receive a notification when resources from a known malicious domain appear in their domain. For more information, refer to <a href="https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/">Malicious script and connection detection</a>.
 
 **Other options / filters**
 
@@ -142,13 +180,21 @@ Customers with Client-Side Security Advanced.
 
 Review the information in the client-side security dashboard about the detected malicious resources, then update the pages where those resources were detected.
 
-For more information, refer to [Review scripts and connections considered malicious](https://developers.cloudflare.com/client-side-security/detection/review-malicious-scripts/).
+For more information, refer to <a href="https://developers.cloudflare.com/client-side-security/detection/review-malicious-scripts/">Review scripts and connections considered malicious</a>.
+
+</details>
+
+<details>
+
+<summary>
 
 Client-side security New Malicious URL Alert
 
+</summary>
+
 **Who is it for?**
 
-[Client-side security](https://developers.cloudflare.com/client-side-security/) customers who want to receive a notification when resources from a known malicious URL appear in their domain. For more information, refer to [Malicious script and connection detection](https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/).
+<a href="https://developers.cloudflare.com/client-side-security/">Client-side security</a> customers who want to receive a notification when resources from a known malicious URL appear in their domain. For more information, refer to <a href="https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/">Malicious script and connection detection</a>.
 
 **Other options / filters**
 
@@ -162,13 +208,21 @@ Customers with Client-Side Security Advanced.
 
 Review the information in the client-side security dashboard about the detected malicious resources, then update the pages where those resources were detected.
 
-For more information, refer to [Review scripts and connections considered malicious](https://developers.cloudflare.com/client-side-security/detection/review-malicious-scripts/).
+For more information, refer to <a href="https://developers.cloudflare.com/client-side-security/detection/review-malicious-scripts/">Review scripts and connections considered malicious</a>.
+
+</details>
+
+<details>
+
+<summary>
 
 Client-side security New Malicious Script Alert
 
+</summary>
+
 **Who is it for?**
 
-[Client-side security](https://developers.cloudflare.com/client-side-security/) customers who want to receive a notification when Cloudflare classifies JavaScript dependencies in their domain as malicious. For more information, refer to [Malicious script and connection detection](https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/).
+<a href="https://developers.cloudflare.com/client-side-security/">Client-side security</a> customers who want to receive a notification when Cloudflare classifies JavaScript dependencies in their domain as malicious. For more information, refer to <a href="https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/">Malicious script and connection detection</a>.
 
 **Other options / filters**
 
@@ -182,9 +236,11 @@ Customers with Client-Side Security Advanced.
 
 Review the information in the client-side security dashboard about the detected malicious resources, then update the pages where those resources were detected.
 
-For more information, refer to [Review scripts and connections considered malicious](https://developers.cloudflare.com/client-side-security/detection/review-malicious-scripts/).
+For more information, refer to <a href="https://developers.cloudflare.com/client-side-security/detection/review-malicious-scripts/">Review scripts and connections considered malicious</a>.
 
-Malicious resource alerts will only include resources with an _Active_ status. Refer to [Script and connection statuses](https://developers.cloudflare.com/client-side-security/reference/script-statuses/) for more information.
+</details>
+
+Malicious resource alerts will only include resources with an *Active* status. Refer to [Script and connection statuses](https://developers.cloudflare.com/client-side-security/reference/script-statuses/) for more information.
 
 Was this helpful?
 

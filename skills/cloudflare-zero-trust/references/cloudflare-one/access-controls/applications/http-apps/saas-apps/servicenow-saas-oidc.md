@@ -12,19 +12,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # ServiceNow (OIDC)
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/servicenow-saas-oidc/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/servicenow-saas-oidc/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide covers how to configure [ServiceNow ↗](https://docs.servicenow.com/bundle/washingtondc-platform-security/page/integrate/single-sign-on/task/create-OIDC-configuration-SSO.html) as an OIDC application in Cloudflare One.
 
 ## Prerequisites
 
-* An [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) configured in Cloudflare One
-* Admin access to a ServiceNow account
+- An [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) configured in Cloudflare One
+- Admin access to a ServiceNow account
 
-## 1\. Add a SaaS application to Cloudflare One
+## 1. Add a SaaS application to Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
-2. Select **Create new application** \> **SaaS application**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+2. Select **Create new application** > **SaaS application**.
 3. For **Application**, enter `ServiceNow` and select the corresponding textbox that appears.
 4. For the authentication protocol, select **OIDC**.
 5. Select **Add application**.
@@ -36,7 +36,7 @@ This guide covers how to configure [ServiceNow ↗](https://docs.servicenow.com/
 11. (Optional) In **Experience settings**, configure [App Launcher settings](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/) by turning on **Enable App in App Launcher** and, in **App Launcher URL**, entering `https://<INSTANCE-NAME>.service-now.com`.
 12. Save the application.
 
-## 2\. Add the Multiple Provider Single Sign-On Installer Plugin to ServiceNow
+## 2. Add the Multiple Provider Single Sign-On Installer Plugin to ServiceNow
 
 1. In ServiceNow, select **All**.
 2. In the search bar, enter `System Applications`, and under **All Available Applications**, select **All**.
@@ -44,22 +44,22 @@ This guide covers how to configure [ServiceNow ↗](https://docs.servicenow.com/
 4. Select **Install**.
 5. Ensure that **Install now** is selected, and select **Install**.
 
-## 3\. Add and Test an OIDC SSO provider in ServiceNow
+## 3. Add and Test an OIDC SSO provider in ServiceNow
 
 1. Select **All**.
 2. In the search bar enter `Multi-Provider SSO`, and select **Identity Providers**.
-3. Select **New** \> **OpenID Connect**.
+3. Select **New** > **OpenID Connect**.
 4. In the pop-up, fill in the following fields:
-  * **Name**: Name of the SSO (for example, `Cloudflare Access`). Unless otherwise configured, users will select this name when signing in to ServiceNow.
-  * **Client ID**: **Client ID** from application configuration in Cloudflare One.
-  * **Client Secret**: **Client Secret** from application configuration in Cloudflare One.
-  * **Well Known Configuration URL**: `https://<TEAM-DOMAIN>.cloudflareaccess.com/cdn-cgi/access/sso/oidc/<CLIENT-ID>/.well-known/openid-configuration`.
+   - **Name**: Name of the SSO (for example, `Cloudflare Access`). Unless otherwise configured, users will select this name when signing in to ServiceNow.
+   - **Client ID**: **Client ID** from application configuration in Cloudflare One.
+   - **Client Secret**: **Client Secret** from application configuration in Cloudflare One.
+   - **Well Known Configuration URL**: `https://<TEAM-DOMAIN>.cloudflareaccess.com/cdn-cgi/access/sso/oidc/<CLIENT-ID>/.well-known/openid-configuration`.
 5. Select **Import**.
 6. Ensure **Active** is turned on
 7. Turn on **Show as Login option**, and for **SSO label** enter a label for the user login screen, if desired.
 8. Select **Update**.
 
-## 4\. Test the integration
+## 4. Test the integration
 
 For SSO to appear on the login screen, you must have [account recovery ↗](https://docs.servicenow.com/bundle/washingtondc-platform-security/page/integrate/single-sign-on/concept/sso-acct-recovery.html) enabled and configured for at least one admin account. After account recovery is configured, log out of ServiceNow and open an incognito browser window. Go to your ServiceNow URL. Select the SSO name you just configured, which will prompt you to sign in with your identity provider. When the integration is successful, you can go back to the OIDC configuration screen to turn on **Default** and/or **Auto Redirect IDP**.
 

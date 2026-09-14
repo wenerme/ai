@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Rulesets
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ruleset-engine/about/rulesets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/about/rulesets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A ruleset is an ordered set of [rules](https://developers.cloudflare.com/ruleset-engine/about/rules/) that you can apply to traffic on the Cloudflare global network. Rulesets belong to a phase and can only execute in the same phase. To deploy a ruleset to a phase, add a rule that executes the ruleset to the [phase entry point ruleset](https://developers.cloudflare.com/ruleset-engine/about/rulesets/#entry-point-ruleset).
 
@@ -20,9 +20,9 @@ Rulesets are versioned. Each ruleset modification creates a new version of the r
 
 There are several types of rulesets:
 
-* Phases have their entry point rulesets.
-* Cloudflare provides managed rulesets you can deploy.
-* You can create and manage your own custom rulesets.
+- Phases have their entry point rulesets.
+- Cloudflare provides managed rulesets you can deploy.
+- You can create and manage your own custom rulesets.
 
 Specific Cloudflare products may provide other types of rulesets.
 
@@ -36,8 +36,8 @@ Note
 
 The `kind` field of a phase entry point ruleset has one of the following values:
 
-* `root` for a phase entry point ruleset at the account level
-* `zone` for a phase entry point ruleset at the zone level
+- `root` for a phase entry point ruleset at the account level
+- `zone` for a phase entry point ruleset at the zone level
 
 ## Managed rulesets
 

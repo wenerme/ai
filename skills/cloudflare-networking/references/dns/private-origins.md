@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Private origins (beta)
 
-Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/private-origins/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/private-origins/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Proxy HTTP/HTTPS traffic from public hostnames to origins in your private network.
 
@@ -30,9 +30,9 @@ This feature is in closed beta. Contact your account team to request access.
 
 ## Resources
 
-* [Set up a private origin via Cloudflare WAN](https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/)
-* [Private network routing](https://developers.cloudflare.com/dns/private-origins/private-network-routing/)
-* [Troubleshooting](https://developers.cloudflare.com/dns/private-origins/troubleshooting/)
+- [Set up a private origin via Cloudflare WAN](https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/)
+- [Private network routing](https://developers.cloudflare.com/dns/private-origins/private-network-routing/)
+- [Troubleshooting](https://developers.cloudflare.com/dns/private-origins/troubleshooting/)
 
 ---
 

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Send Additional Cache Tags using Workers
 
-Last updated Jul 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/examples/cache-tags/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/examples/cache-tags/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you want to get started quickly, click on the button below.
 

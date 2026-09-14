@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Validation and keys
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/dnssec/validation-and-key-management/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/dnssec/validation-and-key-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Refer to the sections below for an overview of some technical concepts and how they apply to Cloudflare DNSSEC. For broader content on DNSSEC, refer to [How DNSSEC works ↗](https://www.cloudflare.com/dns/dnssec/how-dnssec-works/).
 
@@ -27,8 +27,8 @@ DNSSEC validation follows a chain of trust from the root DNS servers to your zon
 
 This is why you cannot simply keep your existing DS record when migrating to Cloudflare. The cryptographic chain of trust requires either:
 
-* [Disabling DNSSEC](https://developers.cloudflare.com/dns/dnssec/) before migration and re-enabling it on Cloudflare
-* Using the [multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/about/) approach to coordinate keys between providers.
+- [Disabling DNSSEC](https://developers.cloudflare.com/dns/dnssec/) before migration and re-enabling it on Cloudflare
+- Using the [multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/about/) approach to coordinate keys between providers.
 
 ---
 
@@ -36,9 +36,9 @@ This is why you cannot simply keep your existing DS record when migrating to Clo
 
 When you enable DNSSEC, Cloudflare automatically publishes **CDS** (Child Delegation Signer) and **CDNSKEY** (Child DNSKEY) records in your zone. These records automate the chain of trust management between your domain and the Top-Level Domain registry.
 
-| Record      | Purpose                | Contents                                                                           |
-| ----------- | ---------------------- | ---------------------------------------------------------------------------------- |
-| **CDS**     | High-level instruction | A hashed version of the public key (same data as a DS record)                      |
+| Record | Purpose | Contents |
+| --- | --- | --- |
+| **CDS** | High-level instruction | A hashed version of the public key (same data as a DS record) |
 | **CDNSKEY** | Public key instruction | The full public Key Signing Key (KSK) for the parent to generate its own DS record |
 
 Registrars that support [RFC 8078 ↗](https://www.rfc-editor.org/rfc/rfc8078.html) periodically scan your domain for these records and automatically update the DS record at the registry level. This eliminates manual DS record management and ensures seamless key rollovers.
@@ -51,8 +51,8 @@ Not all registrars support automatic CDS/CDNSKEY scanning. If your registrar doe
 
 ## DNSKEY flags
 
-* **ZSKs (Zone Signing Keys)**: flag `256`
-* **KSKs (Key Signing Keys)**: flag `257`
+- **ZSKs (Zone Signing Keys)**: flag `256`
+- **KSKs (Key Signing Keys)**: flag `257`
 
 Was this helpful?
 

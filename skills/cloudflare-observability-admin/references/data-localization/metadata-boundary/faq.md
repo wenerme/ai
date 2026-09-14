@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # FAQs
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/data-localization/metadata-boundary/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/metadata-boundary/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## What data is covered by the Customer Metadata Boundary?
 
@@ -26,11 +26,11 @@ Some of the data for which Cloudflare is a controller, as defined in the [Cloudf
 
 Some examples:
 
-* Customer account data (for example, name and billing information).
-* Customer configuration data (for example, the content of WAF custom rules).
-* Metadata that is "operational" in nature — data needed for Cloudflare to properly operate our network. This includes metadata such as:
-  * System data generated for debugging (for example, internal application logs, core dumps).
-  * Networking flow data (for example, sFlow samples from routers), including data on DDoS attacks.
+- Customer account data (for example, name and billing information).
+- Customer configuration data (for example, the content of WAF custom rules).
+- Metadata that is "operational" in nature — data needed for Cloudflare to properly operate our network. This includes metadata such as:
+  - System data generated for debugging (for example, internal application logs, core dumps).
+  - Networking flow data (for example, sFlow samples from routers), including data on DDoS attacks.
 
 ## Who can use the Customer Metadata Boundary?
 

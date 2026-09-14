@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create scheduled events
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waiting-room/additional-options/create-events/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waiting-room/additional-options/create-events/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you want to customize the behavior of a waiting room for a specific period of time — such as changing the queueing method or increasing the total active users — set up a **scheduled event**. You can do this from the dashboard or via the API.
 
@@ -24,16 +24,20 @@ Only some customers can support scheduled events with their waiting rooms. For m
 
 ## Create an event from the dashboard
 
-1. Within your application, go to **Traffic** \> **Waiting Room**.
+1. Within your application, go to **Traffic** > **Waiting Room**.
 2. Expand a waiting room and select **Schedule event**.
 3. Customize the details for your event: name the event, add a description (optional), and select a Start Date Time and an End Date Time.
 4. You can also enable the pre-queueing — in this case you need to define a pre-queueing time. And you can also select **Shuffle at event start** and all users in the pre-queue will be randomly admitted at event start.
-Note
-Enabling pre-queuing will send all new users to your pre-queue during the pre-queueing time period. If you would like to also pre-queue users already active, make the pre-queueing time period longer than the session duration and disable session renewal in the **Settings** section. Once active users sessions expire, they will be placed into the pre-queue before your event starts.
+
+   Note
+
+   Enabling pre-queuing will send all new users to your pre-queue during the pre-queueing time period. If you would like to also pre-queue users already active, make the pre-queueing time period longer than the session duration and disable session renewal in the **Settings** section. Once active users sessions expire, they will be placed into the pre-queue before your event starts.
 5. Select **Next**.
 6. In the **Settings** section, you can define new values for your Total active users, New users per minute, Session duration, Session Renewal, and Queueing Method. For each of these settings you also have the option to always inherit the values defined in your waiting room. With this option, if you change the settings of your base waiting room, the corresponding Event setting will update as well.
-Note
-If you choose to override the values of Total active users, you must also override the number of New users per minute, and vice versa.
+
+   Note
+
+   If you choose to override the values of Total active users, you must also override the number of New users per minute, and vice versa.
 7. Select **Next**.
 8. In the customization section, you can select Always inherit your waiting room’s template (default) or you can override it with a Custom Event Template. In this case, you need to import your own template. Make sure to preview the result before continuing.
 9. Select **Next** and review your Event details and settings.
@@ -51,9 +55,9 @@ You have a limit of five events per waiting room. To create a new event after yo
 
 ## Create an event via API
 
-To create an event, make a [POST request](https://developers.cloudflare.com/api/resources/waiting%5Frooms/subresources/events/methods/create/) including [required and optional parameters](#parameters). Any properties set on the event will override the default property on the waiting room for the duration of the event.
+To create an event, make a [POST request](https://developers.cloudflare.com/api/resources/waiting_rooms/subresources/events/methods/create/) including [required and optional parameters](#parameters). Any properties set on the event will override the default property on the waiting room for the duration of the event.
 
-If you are using a [custom template](https://developers.cloudflare.com/waiting-room/how-to/customize-waiting-room/#custom-waiting-room), you may want to add [relevant variables](https://developers.cloudflare.com/api/resources/waiting%5Frooms/methods/update/) to your template (listed under the `json_response_enabled` parameter).
+If you are using a [custom template](https://developers.cloudflare.com/waiting-room/how-to/customize-waiting-room/#custom-waiting-room), you may want to add [relevant variables](https://developers.cloudflare.com/api/resources/waiting_rooms/methods/update/) to your template (listed under the `json_response_enabled` parameter).
 
 Note
 
@@ -61,15 +65,15 @@ If you need to create overlapping events, use different waiting rooms.
 
 ### Parameters
 
-Though most parameters are identical to those in a regular waiting room, there are a few unique to creating an event. For a complete list of event settings, please refer to [Create an Event](https://developers.cloudflare.com/api/resources/waiting%5Frooms/subresources/events/methods/create/).
+Though most parameters are identical to those in a regular waiting room, there are a few unique to creating an event. For a complete list of event settings, please refer to [Create an Event](https://developers.cloudflare.com/api/resources/waiting_rooms/subresources/events/methods/create/).
 
-* `name` (required): Unique name with alphanumeric characters, hyphens, and underscores.
-* `event_start_time` (required): ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. Must occur at least 1 minute before `event_end_time`.
-* `event_end_time` (required): ISO 8601 timestamp that marks the end of the event.
-* `shuffle_at_event_start`: If **true** and `prequeue_start_time` is not null, users in the prequeue will be shuffled randomly at the `event_start_time`. Commonly used to ensure fairness if your event is using a [**FIFO** queueing method](#set-up-a-lottery).
-* `prequeue_start_time`: ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least **5 minutes before** `event_start_time`.
-* `description`: A text description providing more detail about the event.
-* `suspended`: If **true**, the event is ignored and traffic is handled based on the waiting room's typical configuration.
+- `name` (required): Unique name with alphanumeric characters, hyphens, and underscores.
+- `event_start_time` (required): ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. Must occur at least 1 minute before `event_end_time`.
+- `event_end_time` (required): ISO 8601 timestamp that marks the end of the event.
+- `shuffle_at_event_start`: If **true** and `prequeue_start_time` is not null, users in the prequeue will be shuffled randomly at the `event_start_time`. Commonly used to ensure fairness if your event is using a [**FIFO** queueing method](#set-up-a-lottery).
+- `prequeue_start_time`: ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least **5 minutes before** `event_start_time`.
+- `description`: A text description providing more detail about the event.
+- `suspended`: If **true**, the event is ignored and traffic is handled based on the waiting room's typical configuration.
 
 ### Queueing methods
 
@@ -87,18 +91,18 @@ Users who reach your application **during the prequeue period** are [randomly as
 
 To set up a "lottery", include the [following parameters](#parameters) in your API request:
 
-* `prequeue_start_time`
-* `shuffle_at_event_start`
+- `prequeue_start_time`
+- `shuffle_at_event_start`
 
 ## Preview an event configuration
 
-Since some properties set on an event will override the default property of a waiting room for the duration of an event, you should use the API to [preview an event configuration](https://developers.cloudflare.com/api/resources/waiting%5Frooms/subresources/events/subresources/details/methods/get/) before it begins.
+Since some properties set on an event will override the default property of a waiting room for the duration of an event, you should use the API to [preview an event configuration](https://developers.cloudflare.com/api/resources/waiting_rooms/subresources/events/subresources/details/methods/get/) before it begins.
 
 This command shows you the event's configuration as if it were active, meaning that inherited fields from the waiting room will display their current values.
 
 ## Edit an event
 
-To edit an event, use a [PATCH request](https://developers.cloudflare.com/api/resources/waiting%5Frooms/subresources/events/methods/edit/).
+To edit an event, use a [PATCH request](https://developers.cloudflare.com/api/resources/waiting_rooms/subresources/events/methods/edit/).
 
 ## Disable events
 
@@ -117,11 +121,11 @@ After the scheduled event has ended, users will have access to your site. You ca
 
 ## Other API commands
 
-| Function                                                                                                                   | Command |
-| -------------------------------------------------------------------------------------------------------------------------- | ------- |
-| [Get event details](https://developers.cloudflare.com/api/resources/waiting%5Frooms/subresources/events/methods/get/)      | GET     |
-| [List scheduled events](https://developers.cloudflare.com/api/resources/waiting%5Frooms/subresources/events/methods/list/) | GET     |
-| [Delete event](https://developers.cloudflare.com/api/resources/waiting%5Frooms/subresources/events/methods/delete/)        | DELETE  |
+| Function | Command |
+| --- | --- |
+| [Get event details](https://developers.cloudflare.com/api/resources/waiting_rooms/subresources/events/methods/get/) | `GET` |
+| [List scheduled events](https://developers.cloudflare.com/api/resources/waiting_rooms/subresources/events/methods/list/) | `GET` |
+| [Delete event](https://developers.cloudflare.com/api/resources/waiting_rooms/subresources/events/methods/delete/) | `DELETE` |
 
 Was this helpful?
 

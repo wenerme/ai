@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # REST API
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/configuration/api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/configuration/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The [Pages API](https://developers.cloudflare.com/api/resources/pages/subresources/projects/methods/list/) empowers you to build automations and integrate Pages with your development workflow. At a high level, the API endpoints let you manage deployments and builds and configure projects. Cloudflare supports [Deploy Hooks](https://developers.cloudflare.com/pages/configuration/deploy-hooks/) for headless CMS deployments. Refer to the [API documentation ↗](https://api.cloudflare.com/) for a full breakdown of object types and endpoints.
 
@@ -22,20 +22,30 @@ The [Pages API](https://developers.cloudflare.com/api/resources/pages/subresourc
 
 To create an API token:
 
-1. In the Cloudflare dashboard, go to the **Account API tokens** page.
-[Go to **Account API tokens** ↗](https://dash.cloudflare.com/?to=/:account/api-tokens)
+1. In the Cloudflare dashboard, go to the **Account API tokens** page. [Go to **Account API tokens** ↗](https://dash.cloudflare.com/?to=/:account/api-tokens)
 2. Select **Create Token**.
-3. You can go to **Edit Cloudflare Workers** template > **Use template** or go to **Create Custom Token** \> **Get started**. If you create a custom token, you will need to make sure to add the **Cloudflare Pages** permission with **Edit** access.
+3. You can go to **Edit Cloudflare Workers** template > **Use template** or go to **Create Custom Token** > **Get started**. If you create a custom token, you will need to make sure to add the **Cloudflare Pages** permission with **Edit** access.
 
 ### Make requests
 
 After creating your token, you can authenticate and make requests to the API using your API token in the request headers. For example, here is an API request to get all deployments in a project.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Pages Read`
-* `Pages Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Pages Read</code>
+- <code>Pages Write</code>
+
+</details>
+
+*Get deploymentsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/pages/projects/$PROJECT_NAME/deployments" \
@@ -81,7 +91,7 @@ Cloudflare Pages hosts and serves all project deployments on preview links. Supp
 
 Note
 
-To delete individual deployments from the command line, you can use [wrangler pages deployment delete](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-deployment-delete).
+To delete individual deployments from the command line, you can use [`wrangler pages deployment delete`](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-deployment-delete).
 
 ```js
 const endpoint =
@@ -152,14 +162,14 @@ export default {
 		content += `<p>Project ID: ${projectResponse.result.id}</p>`;
 		content += `<p>Pages Subdomain: ${projectResponse.result.subdomain}</p>`;
 		content += `<p>Domains: ${projectResponse.result.domains}</p>`;
-		content += `<a href="https://developers.cloudflare.com/pages/configuration/api/$%7B%3C/span%3E%3Cspan%20class="nb-shiki-140thh">projectResponse.result.canonical_deployment.url}"><p>Latest preview: ${projectResponse.result.canonical_deployment.url}</p></a>`;
+		content += `<a href="${projectResponse.result.canonical_deployment.url}"><p>Latest preview: ${projectResponse.result.canonical_deployment.url}</p></a>`;
 
 		content += `<h2>Deployments</h2>`;
 		response = await fetch(deploymentsEndpoint, init);
 		const deploymentsResponse = await response.json();
 
 		for (const deployment of deploymentsResponse.result) {
-			content += `<a href="https://developers.cloudflare.com/pages/configuration/api/$%7B%3C/span%3E%3Cspan%20class="nb-shiki-140thh">deployment.url}"><p>Deployment: ${deployment.id}</p></a>`;
+			content += `<a href="${deployment.url}"><p>Deployment: ${deployment.id}</p></a>`;
 		}
 
 		let html = `
@@ -185,9 +195,9 @@ export default {
 
 ## Related resources
 
-* [Pages API Docs](https://developers.cloudflare.com/api/resources/pages/subresources/projects/methods/list/)
-* [Workers Getting Started Guide](https://developers.cloudflare.com/workers/get-started/guide/)
-* [Workers Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/)
+- [Pages API Docs](https://developers.cloudflare.com/api/resources/pages/subresources/projects/methods/list/)
+- [Workers Getting Started Guide](https://developers.cloudflare.com/workers/get-started/guide/)
+- [Workers Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/)
 
 Was this helpful?
 

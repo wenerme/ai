@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # BYOK (Store Keys)
 
-Last updated Jul 31, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 31, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -20,16 +20,16 @@ Bring your own keys (BYOK) is a feature in Cloudflare AI Gateway that allows you
 
 The keys are stored securely with [Secrets Store](https://developers.cloudflare.com/secrets-store/) and allows for:
 
-* Secure storage and limit exposure
-* Easier key rotation
-* Rate limit, budget limit and other restrictions with [Dynamic Routes](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/)
+- Secure storage and limit exposure
+- Easier key rotation
+- Rate limit, budget limit and other restrictions with [Dynamic Routes](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/)
 
 ## Setting up BYOK
 
 ### Prerequisites
 
-* Ensure your gateway is [authenticated](https://developers.cloudflare.com/ai-gateway/configuration/authentication/).
-* Ensure you have appropriate [permissions](https://developers.cloudflare.com/secrets-store/access-control/) to create and deploy secrets on Secrets Store.
+- Ensure your gateway is [authenticated](https://developers.cloudflare.com/ai-gateway/configuration/authentication/).
+- Ensure you have appropriate [permissions](https://developers.cloudflare.com/secrets-store/access-control/) to create and deploy secrets on Secrets Store.
 
 ### Configure API keys
 
@@ -40,7 +40,7 @@ You can configure BYOK from the dashboard or by using the API.
 When you add a provider key from the dashboard, AI Gateway creates and names the Secrets Store secret automatically.
 
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
-2. Go to **AI** \> **AI Gateway**.
+2. Go to **AI** > **AI Gateway**.
 3. Select your gateway or create a new one.
 4. Go to the **Provider Keys** section.
 5. Click **Add API Key**.
@@ -79,20 +79,26 @@ Once you've configured your API keys in the dashboard:
 With BYOK enabled, your workflow changes from:
 
 1. **Traditional approach**: Include API key in every request header
-```bash
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
-  -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
-  -H "Authorization: Bearer YOUR_OPENAI_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"model": "gpt-4", "messages": [...]}'
-```
+
+   ```bash
+   curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
+     -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
+     -H "Authorization: Bearer YOUR_OPENAI_API_KEY" \
+     -H "Content-Type: application/json" \
+     -d '{"model": "gpt-4", "messages": [...]}'
+   ```
+
+
 2. **BYOK approach**: Configure key once in dashboard, make requests without exposing keys
-```bash
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
-  -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
-  -H "Content-Type: application/json" \
-  -d '{"model": "gpt-4", "messages": [...]}'
-```
+
+   ```bash
+   curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
+     -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
+     -H "Content-Type: application/json" \
+     -d '{"model": "gpt-4", "messages": [...]}'
+   ```
+
+
 
 ## Managing API keys
 
@@ -100,9 +106,9 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/
 
 In the AI Gateway dashboard, you can:
 
-* View all configured API keys by provider
-* See when each key was last used
-* Check the status of each key (active, expired, invalid)
+- View all configured API keys by provider
+- See when each key was last used
+- Check the status of each key (active, expired, invalid)
 
 ### Rotating keys
 
@@ -131,8 +137,8 @@ Deleting an API key will immediately stop all requests that depend on it. Make s
 
 AI Gateway supports storing multiple API keys for the same provider. This allows you to:
 
-* Use different keys for different use cases (for example, development vs production)
-* Gradually migrate between keys during rotation
+- Use different keys for different use cases (for example, development vs production)
+- Gradually migrate between keys during rotation
 
 ### Key aliases
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Entrust distrust by major browsers
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/reference/migration-guides/entrust-distrust/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/reference/migration-guides/entrust-distrust/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Google Chrome and Mozilla have announced they will no longer trust certificates issued from Entrust's root CAs.
 
@@ -34,16 +34,16 @@ This means that Entrust certificates will be issued using SSL.com roots.
 
 Since Cloudflare also [partners with SSL.com](https://developers.cloudflare.com/ssl/reference/certificate-authorities/), you can switch from uploading custom certificates to using Cloudflare-managed certificates. This change brings the following advantages:
 
-* Use [Advanced certificates](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) to have more control and flexibility while also benefitting from automatic renewals.
-* Enable [Total TLS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/) to automatically issue certificates for your [proxied hostnames](https://developers.cloudflare.com/dns/proxy-status/).
-* Use [Delegated DCV](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/) to reduce manual intervention when renewing certificates for [partial (CNAME) setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/) zones.
-* If you are a SaaS provider, extend the benefits of automatic renewals to your customers by specifying SSL.com as the certificate authority when [creating](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/create/) or [editing](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/) your custom hostnames (API only).
+- Use [Advanced certificates](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) to have more control and flexibility while also benefitting from automatic renewals.
+- Enable [Total TLS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/) to automatically issue certificates for your [proxied hostnames](https://developers.cloudflare.com/dns/proxy-status/).
+- Use [Delegated DCV](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/) to reduce manual intervention when renewing certificates for [partial (CNAME) setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/) zones.
+- If you are a SaaS provider, extend the benefits of automatic renewals to your customers by specifying SSL.com as the certificate authority when [creating](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/create/) or [editing](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/) your custom hostnames (API only).
 
 ## More resources
 
-* [Use Cloudflare with SSL.com certificates](https://developers.cloudflare.com/ssl/reference/certificate-authorities/)
-* [Google Security Blog ↗](https://security.googleblog.com/2024/06/sustaining-digital-certificate-security.html)
-* [Entrust TLS Certificate Information Center ↗](https://www.entrust.com/tls-certificate-information-center)
+- [Use Cloudflare with SSL.com certificates](https://developers.cloudflare.com/ssl/reference/certificate-authorities/)
+- [Google Security Blog ↗](https://security.googleblog.com/2024/06/sustaining-digital-certificate-security.html)
+- [Entrust TLS Certificate Information Center ↗](https://www.entrust.com/tls-certificate-information-center)
 
 Was this helpful?
 

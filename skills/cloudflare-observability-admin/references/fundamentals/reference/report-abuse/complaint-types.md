@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Complaint types
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/reference/report-abuse/complaint-types/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/report-abuse/complaint-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use Cloudflare's [online abuse form ↗](https://abuse.cloudflare.com/) to report different types of abuse.
 
@@ -22,12 +22,12 @@ Use Cloudflare's [online abuse form ↗](https://abuse.cloudflare.com/) to repor
 
 Valid [Digital Millennium Copyright Act (DMCA) ↗](https://www.copyright.gov/dmca/) complaints must provide all of the following details:
 
-* A physical or electronic signature (typing your full name is valid) of the copyright owner or a person authorized to act on their behalf.
-* Identification of the infringed copyright (for example, a link to your original work or clear description of the materials allegedly infringed upon).
-* Identification of the infringing material and information reasonably sufficient to allow Cloudflare to locate the material on the infringing website (for example, a [link to the site](https://developers.cloudflare.com/fundamentals/reference/report-abuse/provide-specific-urls/) where the infringed copyrighted material appears).
-* Your contact information, including your address, telephone number, and email address.
-* A statement that you believe, in good faith, that the use of the material in the manner asserted is not authorized by the copyright owner, its agent, or the law.
-* A statement that the information in the notification is accurate, and, under penalty of perjury, that you are authorized to act on behalf of the copyright owner.
+- A physical or electronic signature (typing your full name is valid) of the copyright owner or a person authorized to act on their behalf.
+- Identification of the infringed copyright (for example, a link to your original work or clear description of the materials allegedly infringed upon).
+- Identification of the infringing material and information reasonably sufficient to allow Cloudflare to locate the material on the infringing website (for example, a [link to the site](https://developers.cloudflare.com/fundamentals/reference/report-abuse/provide-specific-urls/) where the infringed copyrighted material appears).
+- Your contact information, including your address, telephone number, and email address.
+- A statement that you believe, in good faith, that the use of the material in the manner asserted is not authorized by the copyright owner, its agent, or the law.
+- A statement that the information in the notification is accurate, and, under penalty of perjury, that you are authorized to act on behalf of the copyright owner.
 
 ---
 
@@ -35,8 +35,8 @@ Valid [Digital Millennium Copyright Act (DMCA) ↗](https://www.copyright.gov/dm
 
 Valid phishing reports must provide all of the following details:
 
-* The domain in question.
-* The specific link to the phishing page.
+- The domain in question.
+- The specific link to the phishing page.
 
 After Cloudflare confirms existence of the phishing page, Cloudflare provides a warning page to visitors accessing the phishing link. Cloudflare also notifies the site owner to clean the malicious files from their origin web server.
 

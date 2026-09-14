@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.waf.signature.request.refs
 
-`cf.waf.signature.request.refs` `Array<String>`
+`cf.waf.signature.request.refs``Array<String>`
 
 An array containing up to 10 Refs for attack signatures that matched the request.
 
@@ -29,7 +29,7 @@ any(cf.waf.signature.request.refs[*] eq "d68f8101f6e14e25aefcaea69c530a29")
 ```
 
 Categories:
-* Request
+- Request
 
 Was this helpful?
 

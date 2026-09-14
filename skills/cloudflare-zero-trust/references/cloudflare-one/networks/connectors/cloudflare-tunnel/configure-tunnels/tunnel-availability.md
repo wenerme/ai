@@ -1,6 +1,5 @@
 ---
-description: Deploy multiple `cloudflared` replicas for high availability and automatic failover across your infrastructure.
-
+description: "Deploy multiple `cloudflared` replicas for high availability and automatic failover across your infrastructure.\n"
 title: Tunnel availability and failover
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -13,14 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Tunnel availability and failover
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Our lightweight and open-source connector, [cloudflared ↗](https://github.com/cloudflare/cloudflared), was built to be highly available without any additional configuration requirements. When you run a tunnel, `cloudflared` establishes four outbound-only connections between the origin server and the Cloudflare network. These four connections are made to four different servers spread across at least two distinct data centers. This model ensures high availability and mitigates the risk of individual connection failures. This means in event a single connection, server, or data center goes offline, your resources will remain available.
+Our lightweight and open-source connector, [`cloudflared` ↗](https://github.com/cloudflare/cloudflared), was built to be highly available without any additional configuration requirements. When you run a tunnel, `cloudflared` establishes four outbound-only connections between the origin server and the Cloudflare network. These four connections are made to four different servers spread across at least two distinct data centers. This model ensures high availability and mitigates the risk of individual connection failures. This means in event a single connection, server, or data center goes offline, your resources will remain available.
 
 ## `cloudflared` replicas
 
 You can deploy additional instances of `cloudflared` for availability and failover. These instances are called replicas. Each replica establishes four new connections to Cloudflare, providing additional points of ingress to your origin. All replicas point to the same tunnel, so if a single host running `cloudflared` goes down, the remaining replicas continue to serve traffic.
 
+```
 graph LR
     C((Cloudflare))
     subgraph E[Your network]
@@ -39,20 +39,23 @@ graph LR
     C --> cf2
     C --> cf2
 
+```
+
 Replicas do not support traffic steering (such as round-robin or hash-based routing). When a request arrives at Cloudflare, it is forwarded to the geographically closest replica. If that connection fails, Cloudflare retries with other replicas, but there is no guarantee about which one is chosen. If you need intelligent traffic distribution, use [Cloudflare Load Balancers](#cloudflare-load-balancers) instead.
 
 ### When to use `cloudflared` replicas
 
-* To provide additional points of availability for a single tunnel.
-* To allocate failover nodes within your network.
-* To update the configuration of a tunnel [without downtime](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/update-cloudflared/#update-with-multiple-cloudflared-instances).
+- To provide additional points of availability for a single tunnel.
+- To allocate failover nodes within your network.
+- To update the configuration of a tunnel [without downtime](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/update-cloudflared/#update-with-multiple-cloudflared-instances).
 
 For setup instructions, refer to [Deploy cloudflared replicas](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/deploy-replicas/).
 
 ## Cloudflare Load Balancers
 
-[Cloudflare Load Balancing](https://developers.cloudflare.com/load-balancing/) proactively steers traffic away from unhealthy origins and intelligently distributes the traffic load based on your choice of [steering algorithms](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/). Unlike [cloudflared replicas](#cloudflared-replicas) which all use the same tunnel, a typical load balancer setup requires creating multiple tunnels. Most customers will create one tunnel per data center and one load balancer pool per tunnel.
+[Cloudflare Load Balancing](https://developers.cloudflare.com/load-balancing/) proactively steers traffic away from unhealthy origins and intelligently distributes the traffic load based on your choice of [steering algorithms](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/). Unlike [`cloudflared` replicas](#cloudflared-replicas) which all use the same tunnel, a typical load balancer setup requires creating multiple tunnels. Most customers will create one tunnel per data center and one load balancer pool per tunnel.
 
+```
 graph LR
     accTitle: Load balancing traffic to applications behind Cloudflare Tunnel
 
@@ -76,12 +79,14 @@ graph LR
         cf1-->S2
     end
 
+```
+
 ### When to use load balancers
 
-* To intelligently steer traffic based on latency, geolocation, or other signals.
-* To implement failover logic if a tunnel reaches an inactive state.
-* To get a [health alert](https://developers.cloudflare.com/notifications/notification-available/#load-balancing) when a tunnel reaches an inactive state.
-* To distribute traffic more evenly across your Cloudflare Tunnel-accessible origins or endpoints.
+- To intelligently steer traffic based on latency, geolocation, or other signals.
+- To implement failover logic if a tunnel reaches an inactive state.
+- To get a [health alert](https://developers.cloudflare.com/notifications/notification-available/#load-balancing) when a tunnel reaches an inactive state.
+- To distribute traffic more evenly across your Cloudflare Tunnel-accessible origins or endpoints.
 
 For setup instructions, refer to [Public load balancers](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/public-load-balancers/) or [Private Network Load Balancing](https://developers.cloudflare.com/load-balancing/private-network/) depending on your [use case](#types-of-load-balancers).
 
@@ -89,8 +94,8 @@ For setup instructions, refer to [Public load balancers](https://developers.clou
 
 There are two types of load balancers that you can use with Cloudflare Tunnel endpoints:
 
-* [Public load balancers](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/public-load-balancers/) steer traffic from the Internet to applications published on a Cloudflare domain. Use this method if your service is served by Cloudflare Tunnel via a [published application route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/#2a-publish-an-application).
-* [Private load balancers](https://developers.cloudflare.com/load-balancing/private-network/) steer traffic from Cloudflare One Clients, Cloudflare WAN, and other on-ramps to an internal IP on your private network. Use this method if your service is connected to Cloudflare Tunnel via a [CIDR route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/).
+- [Public load balancers](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/public-load-balancers/) steer traffic from the Internet to applications published on a Cloudflare domain. Use this method if your service is served by Cloudflare Tunnel via a [published application route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/#2a-publish-an-application).
+- [Private load balancers](https://developers.cloudflare.com/load-balancing/private-network/) steer traffic from Cloudflare One Clients, Cloudflare WAN, and other on-ramps to an internal IP on your private network. Use this method if your service is connected to Cloudflare Tunnel via a [CIDR route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/).
 
 Note
 

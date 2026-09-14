@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Upload with a link
 
-Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/uploading-videos/upload-via-link/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/uploading-videos/upload-via-link/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you have videos stored in a cloud storage bucket (R2, S3, GCS) or hosted by a service that exposes a download link, you can pass its URL. Stream will fetch the file on your behalf.
 
 Note
 
-Google Drive share links are _not_ recommended for this purpose. They are prone to rate limiting and access restrictions imposed by Google that may prevent Stream from downloading the file.
+Google Drive share links are *not* recommended for this purpose. They are prone to rate limiting and access restrictions imposed by Google that may prevent Stream from downloading the file.
 
 Make a `POST` request to the Stream API using the link to your video.
 

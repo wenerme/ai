@@ -12,17 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DNSSEC states
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/dnssec/dnssec-states/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/dnssec/dnssec-states/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page describes different DNSSEC states and how they relate to the responses you get from the [DNSSEC details API endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/dnssec/methods/get/).
 
-| State            | API response                                             | Description                                                                                                                                                                                                                  |
-| ---------------- | -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Pending          | "status":"pending" "modified\_on":<TIME\_STAMP>          | DNSSEC has been enabled but the Cloudflare DS record has not been added at the registrar.                                                                                                                                    |
-| Active           | "status":"active" "modified\_on":<TIME\_STAMP>           | DNSSEC has been enabled and the Cloudflare DS record is present at the registrar.                                                                                                                                            |
-| Pending-disabled | "status":"pending-disabled" "modified\_on":<TIME\_STAMP> | DNSSEC has been disabled but the Cloudflare DS record is still added at the registrar.                                                                                                                                       |
-| Disabled         | "status":"disabled" "modified\_on":<TIME\_STAMP>         | DNSSEC has been disabled and the Cloudflare DS record has been removed from the registrar.                                                                                                                                   |
-| Deleted          | "status":"disabled" "modified\_on": null                 | DNSSEC has never been enabled for the zone or DNSSEC has been disabled and then deleted using the [Delete DNSSEC records endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/dnssec/methods/delete/). |
+| State | API response | Description |
+| --- | --- | --- |
+| Pending | `"status":"pending"`<br> `"modified_on":<TIME_STAMP>` | DNSSEC has been enabled but the Cloudflare DS record has not been added at the registrar. |
+| Active | `"status":"active"`<br> `"modified_on":<TIME_STAMP>` | DNSSEC has been enabled and the Cloudflare DS record is present at the registrar. |
+| Pending-disabled | `"status":"pending-disabled"`<br> `"modified_on":<TIME_STAMP>` | DNSSEC has been disabled but the Cloudflare DS record is still added at the registrar. |
+| Disabled | `"status":"disabled"`<br> `"modified_on":<TIME_STAMP>` | DNSSEC has been disabled and the Cloudflare DS record has been removed from the registrar. |
+| Deleted | `"status":"disabled"`<br> `"modified_on": null` | DNSSEC has never been enabled for the zone or DNSSEC has been disabled and then deleted using the [Delete DNSSEC records endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/dnssec/methods/delete/). |
 
 Caution
 

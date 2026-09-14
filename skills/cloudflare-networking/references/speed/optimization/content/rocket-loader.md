@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Rocket Loader
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Rocket Loader prioritizes your website's content (text, images, fonts, and more) by deferring the loading of all of your JavaScript until after rendering.
 
@@ -20,21 +20,21 @@ This type of loading (known as asynchronous loading) leads to earlier rendering 
 
 On pages with JavaScript, this results in a [much faster loading experience ↗](https://www.cloudflare.com/learning/performance/test-the-speed-of-a-website/) for your users and improves the following performance metrics:
 
-* Time to First Paint (TTFP)
-* Time to First Contentful Paint (TTFCP)
-* Time to First Meaningful Paint (TTFMP)
-* Document Load
+- Time to First Paint (TTFP)
+- Time to First Contentful Paint (TTFCP)
+- Time to First Meaningful Paint (TTFMP)
+- Document Load
 
 ## How to
 
-* [Enable](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/enable/)
-* [Ignore JavaScripts](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/ignore-javascripts/)
+- [Enable](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/enable/)
+- [Ignore JavaScripts](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/ignore-javascripts/)
 
 ## Availability
 
-|              | Free | Pro | Business | Enterprise |
-| ------------ | ---- | --- | -------- | ---------- |
-| Availability | Yes  | Yes | Yes      | Yes        |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | Yes | Yes | Yes | Yes |
 
 ## Limitations
 
@@ -42,7 +42,10 @@ Some of Cloudflare's optional features, including Rocket Loader and Email Obfusc
 
 If you observe JavaScript or jQuery issues for your website, [disable Rocket Loader](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/enable/) and retest your website.
 
-If you have a Content Security Policy (CSP) in place for your domain, you will need to [update your headers](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/content-security-policies/#product-requirements) to support Rocket Loader.
+If you have a Content Security Policy (CSP)
+
+ in place for your domain, you will need to [update your headers](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/content-security-policies/#product-requirements) to support Rocket Loader.
+
 
 
 Was this helpful?

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Remediation Policies
 
-Last updated Aug 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Availability
 
@@ -24,9 +24,9 @@ Policies build on [manual remediation](https://developers.cloudflare.com/cloudfl
 
 ## Prerequisites
 
-* A configured [Cloud or SaaS integration](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/).
-* [Read-Write permissions](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/#configure-remediation-permissions) on the integration, required for remediation actions.
-* A [configured webhook destination](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/#create-a-webhook), required for webhook actions.
+- A configured [Cloud or SaaS integration](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/).
+- [Read-Write permissions](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/#configure-remediation-permissions) on the integration, required for remediation actions.
+- A [configured webhook destination](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/#create-a-webhook), required for webhook actions.
 
 ## How policies work
 
@@ -36,15 +36,15 @@ A policy can run a remediation action, send a webhook, or both.
 
 ## Create a policy
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** \> **Policies**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Policies**.
 2. Select **Create a policy**.
 3. Under **Basic information**, enter a **Policy name**. Optionally, enter a **Description**.
 4. Under **Choose how you want to trigger the policy**, select a **Vendor**.
 5. Select one or more **Integrations**, or select **Apply to all integrations** to apply the policy to every integration for the vendor.
 6. Select a **Finding type**. Only finding types available for the selected vendor and integrations appear here.
 7. Under **Define what to do with findings that match your trigger**, choose one or both actions:
-  * **Run Remediation** to have Cloudflare perform a first-party remediation action against the SaaS integration API. This option is only available for select finding types.
-  * **Send webhooks** to send a notification to one or more webhook destinations.
+   - **Run Remediation** to have Cloudflare perform a first-party remediation action against the SaaS integration API. This option is only available for select finding types.
+   - **Send webhooks** to send a notification to one or more webhook destinations.
 8. Under **Status**, turn on **Enable policy**.
 9. Select **Create policy**.
 
@@ -58,33 +58,41 @@ Remediation actions perform a first-party fix directly against the integration's
 
 CASB currently supports remediation actions for Microsoft 365 and Google Workspace file and folder finding types. If a finding type does not support remediation, **Run Remediation** displays **No automated remediation available for this finding type** and cannot be enabled.
 
+<details>
+
+<summary>
+
 Supported findings for remediation
+
+</summary>
 
 **Google Workspace:**
 
-* File publicly accessible with edit access
-* File publicly accessible with view access
-* File shared outside company with edit access
-* File shared outside company with view access
-* File shared company-wide with edit access
-* File shared company-wide with view access
-* File publicly accessible with edit access with DLP Profile match
-* File publicly accessible with view access with DLP Profile match
-* File shared outside company with edit access with DLP Profile match
-* File shared outside company with view access with DLP Profile match
-* File shared company-wide with edit access with DLP Profile match
-* File shared company-wide with view access with DLP Profile match
+- File publicly accessible with edit access
+- File publicly accessible with view access
+- File shared outside company with edit access
+- File shared outside company with view access
+- File shared company-wide with edit access
+- File shared company-wide with view access
+- File publicly accessible with edit access with DLP Profile match
+- File publicly accessible with view access with DLP Profile match
+- File shared outside company with edit access with DLP Profile match
+- File shared outside company with view access with DLP Profile match
+- File shared company-wide with edit access with DLP Profile match
+- File shared company-wide with view access with DLP Profile match
 
 **Microsoft 365:**
 
-* File publicly accessible with edit access
-* File publicly accessible with view access
-* File shared company-wide with edit access
-* File shared company-wide with view access
-* File publicly accessible with edit access with DLP Profile match
-* File publicly accessible with view access with DLP Profile match
-* File shared company-wide with edit access with DLP Profile match
-* File shared company-wide with view access with DLP Profile match
+- File publicly accessible with edit access
+- File publicly accessible with view access
+- File shared company-wide with edit access
+- File shared company-wide with view access
+- File publicly accessible with edit access with DLP Profile match
+- File publicly accessible with view access with DLP Profile match
+- File shared company-wide with edit access with DLP Profile match
+- File shared company-wide with view access with DLP Profile match
+
+</details>
 
 Remediation requires [Read-Write permissions](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/#configure-remediation-permissions) on the integration. If the integration only has Read permissions, upgrade the integration before the policy can remediate matching findings.
 
@@ -98,7 +106,7 @@ When a policy sends a webhook, the payload uses the same format as a webhook sen
 
 ## Edit, turn off, or delete a policy
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** \> **Policies**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Policies**.
 2. Select the policy to update.
 3. Modify the policy's basic information, trigger, or actions.
 4. Select **Save changes**.
@@ -111,8 +119,8 @@ To delete a policy, open the policy and select **Delete**.
 
 Every policy produces two categories of logs, available under **Insights** in Cloudflare One:
 
-* **Admin Activity logs** record changes to a policy definition, including who created, edited, or disabled the policy, and when.
-* **Cloud & SaaS Security policies logs** record the runtime outcome of each policy invocation, including the finding that triggered the policy, the asset acted on, whether the action succeeded or failed, and the error returned by the vendor if it failed (for example, a `401 Unauthorized` response or a rate limit error).
+- **Admin Activity logs** record changes to a policy definition, including who created, edited, or disabled the policy, and when.
+- **Cloud & SaaS Security policies logs** record the runtime outcome of each policy invocation, including the finding that triggered the policy, the asset acted on, whether the action succeeded or failed, and the error returned by the vendor if it failed (for example, a `401 Unauthorized` response or a rate limit error).
 
 For compliance reporting, the Cloud & SaaS Security policies log ties a specific finding to a specific automated action and timestamp.
 
@@ -120,8 +128,8 @@ For more information, refer to [Cloudflare One Logs](https://developers.cloudfla
 
 ## Limitations
 
-* Remediation actions in a policy are only available for Microsoft 365 and Google Workspace file and folder finding types.
-* A policy only applies to new instances of a finding type detected after the policy is created.
+- Remediation actions in a policy are only available for Microsoft 365 and Google Workspace file and folder finding types.
+- A policy only applies to new instances of a finding type detected after the policy is created.
 
 ## Troubleshooting
 

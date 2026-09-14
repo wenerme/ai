@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Protect your forms from spam and abuse (Free, Pro, and Business)
 
-Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/solutions/protect-sensitive-forms-fraud-abuse/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/solutions/protect-sensitive-forms-fraud-abuse/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Contact, registration, and checkout forms are common targets for automated abuse. This guide covers form protection: verifying that visitors are human, limiting repeated submissions, and blocking known attack patterns. The core workflow uses features available on all plans. Pro and Business plan features are included as callouts.
 
@@ -28,14 +28,12 @@ Adding Turnstile involves three steps: create a widget in the dashboard, add the
 
 ### Create a Turnstile widget
 
-1. In the Cloudflare dashboard, go to the **Turnstile** page.
-[Go to **Turnstile** ↗](https://dash.cloudflare.com/?to=/:account/turnstile)
+1. In the Cloudflare dashboard, go to the **Turnstile** page. [Go to **Turnstile** ↗](https://dash.cloudflare.com/?to=/:account/turnstile)
 2. Select **Add widget**.
 3. Fill out the required information:
-
-  * **Widget name**: A descriptive name for your widget.
-  * **Hostname management**: Domains where the widget will be used.
-  * **Widget mode**: Choose from Managed, Non-Interactive, or Invisible.
+   - **Widget name**: A descriptive name for your widget.
+   - **Hostname management**: Domains where the widget will be used.
+   - **Widget mode**: Choose from Managed, Non-Interactive, or Invisible.
 4. (Optional) Configure **Pre-clearance support** for single-page applications.
 5. Select **Create** to save your widget.
 6. Copy your sitekey and secret key, and store the secret key securely.
@@ -65,6 +63,8 @@ The widget renders in the form and generates a token when the visitor passes ver
 Server-side validation is required. The client-side widget alone does not protect your forms because attackers can submit directly to your form endpoint. Tokens can only be validated once.
 
 Call the Siteverify API before processing any form submission:
+
+*server.jsjs*
 
 ```js
 const SECRET_KEY = "<YOUR-SECRET-KEY>";
@@ -105,8 +105,7 @@ Some abuse scripts skip the browser entirely and POST directly to your form endp
 
 Before creating a rate limiting rule, check the normal submission rate for your form endpoints. Your rate limit threshold should be above this baseline to avoid blocking legitimate traffic.
 
-1. In the Cloudflare dashboard, go to the **Analytics** page.
-[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+1. In the Cloudflare dashboard, go to the **Analytics** page. [Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. In the **Traffic** tab, select a time period with non-peak traffic, or with the lowest visitor activity.
 3. Use the **Add filter** button to narrow results to your form endpoint traffic.
 4. Note the typical request rate per IP address. Your rate limit should be above this baseline.
@@ -121,16 +120,14 @@ The **Request rate analysis** tab in Security Analytics displays request rate di
 
 Create a rule that limits how many times a single IP address can submit to your form endpoint within a given period. Adjust the path, threshold, and period for your site.
 
-1. In the Cloudflare dashboard, go to the **Security rules** page.
-[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+1. In the Cloudflare dashboard, go to the **Security rules** page. [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Create rule** and choose **Rate limiting rules**.
 3. Enter a name for the rule (for example, "Rate limit contact form submissions").
-4. Under **When incoming requests match**, select **Edit expression** and enter: `(http.request.uri.path eq "/contact" and http.request.method eq "POST")`
-Replace "/contact" with your form endpoint path.
-5. Under **With the same characteristics**, verify that _IP_ is selected. On Free plans, this is preset to _IP_.
-6. Under **When rate exceeds**, enter _5_ for **Requests** and select a value for **Period**. On Free plans, select _10 seconds_. Pro and above plans offer additional periods. For available values by plan, refer to [Rate limiting parameters](https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/).
-7. Under **Then take action**, select an action from the **Choose action** dropdown. On Free plans, select _Block_. On Pro and above, _Managed Challenge_ is recommended because it allows legitimate users who trigger the limit to pass by completing a challenge.
-8. Under **For duration**, select a duration for the action. On Free plans, select _10 seconds_. Pro and above plans offer longer durations. This is how long the action applies after the rate limit is triggered.
+4. Under **When incoming requests match**, select **Edit expression** and enter: `(http.request.uri.path eq "/contact" and http.request.method eq "POST")` Replace "/contact" with your form endpoint path.
+5. Under **With the same characteristics**, verify that *IP* is selected. On Free plans, this is preset to *IP*.
+6. Under **When rate exceeds**, enter *5* for **Requests** and select a value for **Period**. On Free plans, select *10 seconds*. Pro and above plans offer additional periods. For available values by plan, refer to [Rate limiting parameters](https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/).
+7. Under **Then take action**, select an action from the **Choose action** dropdown. On Free plans, select *Block*. On Pro and above, *Managed Challenge* is recommended because it allows legitimate users who trigger the limit to pass by completing a challenge.
+8. Under **For duration**, select a duration for the action. On Free plans, select *10 seconds*. Pro and above plans offer longer durations. This is how long the action applies after the rate limit is triggered.
 9. Select **Deploy**.
 
 Note
@@ -149,17 +146,19 @@ Rate limiting alone does not catch targeted attack patterns like SQL injection o
 
 Create a custom rule that challenges POST requests to your form endpoints from sources that are not verified bots.
 
-1. In the Cloudflare dashboard, go to the **Security rules** page.
-[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
-2. Select **Create rule** \> **Custom rules**.
+1. In the Cloudflare dashboard, go to the **Security rules** page. [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+2. Select **Create rule** > **Custom rules**.
 3. Enter a name for the rule (for example, "Challenge spam form submissions").
 4. Under **When incoming requests match**, select **Edit expression** and enter:
-```txt
-(http.request.uri.path eq "/contact" and http.request.method eq "POST" and not cf.client.bot)
-```
-Replace `/contact` with your form endpoint path. The `not cf.client.bot` clause exempts verified bots (such as search engine crawlers) from the rule.
-5. Under **Then take action**, select _Managed Challenge_.
-Start with _Managed Challenge_ to observe which requests are flagged before switching to _Block_.
+
+   ```txt
+   (http.request.uri.path eq "/contact" and http.request.method eq "POST" and not cf.client.bot)
+   ```
+
+   Replace `/contact` with your form endpoint path. The `not cf.client.bot` clause exempts verified bots (such as search engine crawlers) from the rule.
+5. Under **Then take action**, select *Managed Challenge*.
+
+   Start with *Managed Challenge* to observe which requests are flagged before switching to *Block*.
 6. Select **Deploy**.
 
 After deploying, review [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/) to check whether the rule is matching legitimate traffic. If legitimate users are being challenged, narrow the expression or switch to a less aggressive action.
@@ -172,8 +171,7 @@ The [Cloudflare Managed Ruleset](https://developers.cloudflare.com/waf/managed-r
 
 Bot Fight Mode challenges requests that match known bot patterns across your entire domain. It is available on all plans and requires no configuration beyond turning it on.
 
-1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+1. In the Cloudflare dashboard, go to the **Security Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Bot fight mode**.
 4. Turn **Bot fight mode** on.
@@ -192,16 +190,14 @@ After deploying Turnstile, rate limiting rules, and Application Security rules, 
 
 [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/) shows requests that Cloudflare security products acted on or flagged, including blocks, challenges, and skips. Filter by your form endpoint paths to see what is being blocked and what is getting through. A high volume of blocked or challenged requests to your form paths confirms the rules are active.
 
-1. In the Cloudflare dashboard, go to the **Analytics** page.
-[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+1. In the Cloudflare dashboard, go to the **Analytics** page. [Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. Select the **Events** tab.
 3. Use the **Add filter** button to narrow results to your form endpoint traffic.
 4. Review the sampled logs. For each event, check:
-
-  * **Action taken**: Whether the request was blocked, challenged, or allowed
-  * **Source**: The rule or feature that triggered the action
-  * **IP address**: Whether a single IP is generating many events
-  * **URI path**: Whether requests target your form endpoints specifically
+   - **Action taken**: Whether the request was blocked, challenged, or allowed
+   - **Source**: The rule or feature that triggered the action
+   - **IP address**: Whether a single IP is generating many events
+   - **URI path**: Whether requests target your form endpoints specifically
 
 If legitimate users are being challenged, narrow the rule expression or switch to a less aggressive action.
 
@@ -217,8 +213,7 @@ If a third-party script is injected into your form page, it can exfiltrate submi
 
 To enable monitoring:
 
-1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+1. In the Cloudflare dashboard, go to the **Security Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. (Optional) Filter by **Client-side abuse**.
 3. Turn on **Continuous script monitoring**.
 
@@ -228,24 +223,24 @@ After enabling, review detected scripts on the **Web assets** page under the **C
 
 **Turnstile**
 
-* [Get started with Turnstile](https://developers.cloudflare.com/turnstile/get-started/) — create widgets, add the client snippet, and validate tokens
-* [Validate the token](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/) — server-side validation examples in multiple languages
-* [Integrate Turnstile, WAF, and Bot Management](https://developers.cloudflare.com/turnstile/tutorials/integrating-turnstile-waf-and-bot-management/) — tutorial combining all three products for login protection
+- [Get started with Turnstile](https://developers.cloudflare.com/turnstile/get-started/) — create widgets, add the client snippet, and validate tokens
+- [Validate the token](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/) — server-side validation examples in multiple languages
+- [Integrate Turnstile, WAF, and Bot Management](https://developers.cloudflare.com/turnstile/tutorials/integrating-turnstile-waf-and-bot-management/) — tutorial combining all three products for login protection
 
 **Application Security**
 
-* [Custom rules](https://developers.cloudflare.com/waf/custom-rules/) — create rules targeting specific request patterns
-* [Rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) — protect endpoints from high-volume abuse
-* [Security features interoperability](https://developers.cloudflare.com/waf/feature-interoperability/) — execution order and interaction between security features
+- [Custom rules](https://developers.cloudflare.com/waf/custom-rules/) — create rules targeting specific request patterns
+- [Rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) — protect endpoints from high-volume abuse
+- [Security features interoperability](https://developers.cloudflare.com/waf/feature-interoperability/) — execution order and interaction between security features
 
 **Bots**
 
-* [Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/) — challenge requests matching bot patterns on Free plans
-* [Super Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/) — granular bot controls for Pro and above
+- [Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/) — challenge requests matching bot patterns on Free plans
+- [Super Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/) — granular bot controls for Pro and above
 
 **Client-Side Security**
 
-* [Get started with client-side security](https://developers.cloudflare.com/client-side-security/get-started/) — enable monitoring and review detected scripts
+- [Get started with client-side security](https://developers.cloudflare.com/client-side-security/get-started/) — enable monitoring and review detected scripts
 
 Was this helpful?
 
@@ -256,5 +251,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/solutions/protect-sensitive-forms-fraud-abuse/#page","headline":"Protect your forms from spam and abuse (Free, Pro, and Business) · Cloudflare use cases","description":"Block spam submissions, fake account creation, and card testing on your web forms using a layered defense.","url":"https://developers.cloudflare.com/use-cases/solutions/protect-sensitive-forms-fraud-abuse/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/solutions/protect-sensitive-forms-fraud-abuse/#page","headline":"Protect your forms from spam and abuse (Free, Pro, and Business) · Cloudflare use cases","description":"Block spam submissions, fake account creation, and card testing on your web forms using a layered defense.","url":"https://developers.cloudflare.com/use-cases/solutions/protect-sensitive-forms-fraud-abuse/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

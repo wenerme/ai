@@ -12,19 +12,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Custom spans
 
-Last updated Jul 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/traces/custom-spans/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/traces/custom-spans/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Workers [automatically instruments](https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/) platform operations like fetch calls, KV reads, and D1 queries. Custom spans let you extend this visibility into your own application logic, so you can trace custom code paths alongside the built-in instrumentation.
 
 The custom spans API is available in two ways — both provide the same methods and behave identically:
 
-* **`import { tracing } from "cloudflare:workers"`** — works anywhere in your codebase, including utility functions, libraries, and modules that do not have access to the handler context.
-* **`ctx.tracing`** — available on the [ExecutionContext](https://developers.cloudflare.com/workers/runtime-apis/context/) passed to your handler, convenient when you are already working within a handler.
+- **`import { tracing } from "cloudflare:workers"`** — works anywhere in your codebase, including utility functions, libraries, and modules that do not have access to the handler context.
+- **`ctx.tracing`** — available on the [`ExecutionContext`](https://developers.cloudflare.com/workers/runtime-apis/context/) passed to your handler, convenient when you are already working within a handler.
 
 There are two span creation methods:
 
-* **`enterSpan()`** — creates a span that automatically ends when the callback returns or its returned promise settles. Use this for most instrumentation.
-* **`startActiveSpan()`** — creates a span that you end manually by calling `span.end()`. Use this when the span must outlive the callback, such as when instrumenting streams or other long-lived operations.
+- **`enterSpan()`** — creates a span that automatically ends when the callback returns or its returned promise settles. Use this for most instrumentation.
+- **`startActiveSpan()`** — creates a span that you end manually by calling `span.end()`. Use this when the span must outlive the callback, such as when instrumenting streams or other long-lived operations.
 
 ## Enable tracing
 
@@ -52,6 +52,8 @@ Use `tracing.enterSpan()` to wrap a section of code in a named span. The span au
 
 The following example uses both access methods — the `cloudflare:workers` import and `ctx.tracing` — to show that they are interchangeable:
 
+*src/index.jsjs*
+
 ```js
 import { tracing } from "cloudflare:workers";
 
@@ -71,6 +73,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 import { tracing } from "cloudflare:workers";
@@ -100,19 +104,19 @@ Creates a new span and runs `callback` inside it. The span is automatically ende
 
 **Parameters:**
 
-| Parameter | Type                          | Description                                                                                                                                        |
-| --------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| name      | string                        | The name of the span. This appears in trace visualizations.                                                                                        |
-| callback  | (span: Span, ...args: A) => T | The function to execute within the span. Receives the Span object as its first argument, followed by any additional arguments passed to enterSpan. |
-| ...args   | A                             | Optional additional arguments forwarded to the callback after the span parameter.                                                                  |
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | `string` | The name of the span. This appears in trace visualizations. |
+| `callback` | `(span: Span, ...args: A) => T` | The function to execute within the span. Receives the `Span` object as its first argument, followed by any additional arguments passed to `enterSpan`. |
+| `...args` | `A` | Optional additional arguments forwarded to the callback after the `span` parameter. |
 
 **Returns:** The return value of `callback`.
 
 **Behavior:**
 
-* The new span is a child of whichever span is currently active on the async context. If no span is active, it becomes a child of the request's root span.
-* Nested `enterSpan` calls and runtime-created spans (such as `fetch` or KV operations) that run inside the callback automatically become children of this span.
-* The span ends when the callback returns synchronously, throws synchronously, or when its returned promise fulfills or rejects.
+- The new span is a child of whichever span is currently active on the async context. If no span is active, it becomes a child of the request's root span.
+- Nested `enterSpan` calls and runtime-created spans (such as `fetch` or KV operations) that run inside the callback automatically become children of this span.
+- The span ends when the callback returns synchronously, throws synchronously, or when its returned promise fulfills or rejects.
 
 ```ts
 // Synchronous callback — span ends when the function returns
@@ -138,24 +142,26 @@ Creates a new span, makes it the active span while `callback` runs, and returns 
 
 **Parameters:**
 
-| Parameter | Type                          | Description                                                                                                                             |
-| --------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| name      | string                        | The name of the span. This appears in trace visualizations.                                                                             |
-| callback  | (span: Span, ...args: A) => T | The function to execute while the span is active. Receives the Span object as its first argument, followed by any additional arguments. |
-| ...args   | A                             | Optional additional arguments forwarded to the callback after the span parameter.                                                       |
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | `string` | The name of the span. This appears in trace visualizations. |
+| `callback` | `(span: Span, ...args: A) => T` | The function to execute while the span is active. Receives the `Span` object as its first argument, followed by any additional arguments. |
+| `...args` | `A` | Optional additional arguments forwarded to the callback after the `span` parameter. |
 
 **Returns:** The return value of `callback`.
 
 **Behavior:**
 
-* Unlike `enterSpan`, the span is **not** automatically ended when the callback returns or throws. You are responsible for calling `span.end()`.
-* If you forget to call `span.end()`, the span is still submitted when the request-owned span object is destroyed, as a backstop. Do not rely on this behavior — always call `span.end()` explicitly.
+- Unlike `enterSpan`, the span is **not** automatically ended when the callback returns or throws. You are responsible for calling `span.end()`.
+- If you forget to call `span.end()`, the span is still submitted when the request-owned span object is destroyed, as a backstop. Do not rely on this behavior — always call `span.end()` explicitly.
 
 Caution
 
 `startActiveSpan` gives you manual lifetime management, but **only in an "active during callback" shape**. The span is the active context parent during the callback, so any child spans or platform operations created inside the callback are correctly nested. After the callback returns, the span is no longer the active parent, even though it remains open. This means you cannot create child spans of a `startActiveSpan` span from outside the callback.
 
 Use `startActiveSpan` when you need a span to cover an operation that extends beyond a single callback — for example, instrumenting a stream pipeline where the span should remain open until the stream is fully consumed:
+
+*src/index.jsjs*
 
 ```js
 import { tracing } from "cloudflare:workers";
@@ -196,6 +202,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 import { tracing } from "cloudflare:workers";
@@ -260,10 +268,10 @@ The `Span` object is passed into the `enterSpan` and `startActiveSpan` callbacks
 
 Sets an attribute on the span.
 
-| Parameter | Type             | Description         |           |                                                    |
-| --------- | ---------------- | ------------------- | --------- | -------------------------------------------------- |
-| key       | string           | The attribute name. |           |                                                    |
-| value     | string \| number | boolean             | undefined | The attribute value. Passing undefined is a no-op. |
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `key` | `string` | The attribute name. |
+| `value` | `string \| number \| boolean \| undefined` | The attribute value. Passing `undefined` is a no-op. |
 
 Attributes appear alongside the span in your traces and OpenTelemetry exports.
 
@@ -275,7 +283,7 @@ span.setAttribute("cache.hit", true);
 
 #### `span.isTraced`
 
-A `readonly boolean` indicating whether this invocation is being traced. When the request is not sampled (based on your [head\_sampling\_rate](https://developers.cloudflare.com/workers/observability/traces/#sampling)), `isTraced` is `false` and `enterSpan` still runs the callback but does not record any telemetry.
+A `readonly boolean` indicating whether this invocation is being traced. When the request is not sampled (based on your [`head_sampling_rate`](https://developers.cloudflare.com/workers/observability/traces/#sampling)), `isTraced` is `false` and `enterSpan` still runs the callback but does not record any telemetry.
 
 You can use this to skip expensive attribute computation when the request is not being traced:
 
@@ -295,8 +303,8 @@ tracing.enterSpan("process", (span) => {
 
 Ends the span and submits its attributes to the tracing system. This method is idempotent — calling it multiple times has no effect after the first call. After `end()` is called, `span.isTraced` returns `false` and any further `setAttribute` calls are silently ignored, including calls from in-flight async work that has not yet completed.
 
-* For spans created with `enterSpan`, you do not need to call `end()` — the runtime calls it automatically. Calling `end()` yourself is safe but has no effect since the runtime has already ended the span.
-* For spans created with `startActiveSpan`, you **must** call `end()` to submit the span.
+- For spans created with `enterSpan`, you do not need to call `end()` — the runtime calls it automatically. Calling `end()` yourself is safe but has no effect since the runtime has already ended the span.
+- For spans created with `startActiveSpan`, you **must** call `end()` to submit the span.
 
 ```ts
 let mySpan;
@@ -314,6 +322,8 @@ mySpan.end(); // No-op, safe to call again
 ## Nested spans
 
 Spans nest automatically based on the JavaScript async context. Any `enterSpan` call or platform operation (such as `fetch` and `env.MY_KV.get()`) that runs inside a callback becomes a child of the enclosing span.
+
+*src/index.jsjs*
 
 ```js
 import { tracing } from "cloudflare:workers";
@@ -341,6 +351,8 @@ async function handleOrder(env, orderId) {
 	});
 }
 ```
+
+*src/index.tsts*
 
 ```ts
 import { tracing } from "cloudflare:workers";
@@ -421,21 +433,21 @@ The same API is available on the handler context as `ctx.tracing`, with the same
 
 ## Choosing between `enterSpan` and `startActiveSpan`
 
-|                      | enterSpan                                                                         | startActiveSpan                                                            |
-| -------------------- | --------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| Span ends            | Automatically, when the callback returns, throws, or its returned promise settles | Manually, when you call span.end()                                         |
-| Active context scope | During the callback                                                               | During the callback                                                        |
-| Use case             | Most instrumentation — sync and async work that fits within a single callback     | Operations that outlive the callback, such as stream pipelines             |
-| Error handling       | Span auto-ends on throw                                                           | Span stays open on throw — call span.end() or rely on the runtime backstop |
+|  | `enterSpan` | `startActiveSpan` |
+| --- | --- | --- |
+| Span ends | Automatically, when the callback returns, throws, or its returned promise settles | Manually, when you call `span.end()` |
+| Active context scope | During the callback | During the callback |
+| Use case | Most instrumentation — sync and async work that fits within a single callback | Operations that outlive the callback, such as stream pipelines |
+| Error handling | Span auto-ends on throw | Span stays open on throw — call `span.end()` or rely on the runtime backstop |
 
 Both methods set the span as the active context parent **only during the callback**. After the callback returns, the span is no longer the active parent. With `enterSpan`, this distinction does not matter because the span is also ended. With `startActiveSpan`, the span remains open but is no longer the context parent — new spans created after the callback returns are not children of this span.
 
 ## Limitations
 
-* **No manual parent-child wiring.** Parent-child relationships are determined by the JavaScript async context automatically.
-* **No `setAttributes` (bulk set) yet.** Use individual `setAttribute` calls. Bulk setting is planned for a future release.
-* **No `spanContext()` (trace/span IDs) yet.** Access to trace and span identifiers for manual propagation across boundaries is planned for a future release.
-* **No `setOutcome` yet.** Setting span outcome status is planned for a future release.
+- **No manual parent-child wiring.** Parent-child relationships are determined by the JavaScript async context automatically.
+- **No `setAttributes` (bulk set) yet.** Use individual `setAttribute` calls. Bulk setting is planned for a future release.
+- **No `spanContext()` (trace/span IDs) yet.** Access to trace and span identifiers for manual propagation across boundaries is planned for a future release.
+- **No `setOutcome` yet.** Setting span outcome status is planned for a future release.
 
 For other tracing limitations, refer to the [known limitations](https://developers.cloudflare.com/workers/observability/traces/known-limitations/) page.
 

@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Examples
 
-Last updated Jun 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/examples/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pipelines/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Explore the following examples for Cloudflare Pipelines.
 
-[**Fan out a stream to multiple Iceberg tables**Route Bluesky Jetstream events into multiple R2 Data Catalog tables using a single Pipelines stream and multiple SQL statements.](https://developers.cloudflare.com/pipelines/examples/bluesky-firehose-fanout/)
+[**Fan out a stream to multiple Iceberg tables** Route Bluesky Jetstream events into multiple R2 Data Catalog tables using a single Pipelines stream and multiple SQL statements.](https://developers.cloudflare.com/pipelines/examples/bluesky-firehose-fanout/)
 
 Was this helpful?
 

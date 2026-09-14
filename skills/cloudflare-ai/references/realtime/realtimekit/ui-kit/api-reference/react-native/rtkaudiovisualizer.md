@@ -12,19 +12,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RtkAudioVisualizer
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react-native/rtkaudiovisualizer/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react-native/rtkaudiovisualizer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Displays an audio visualizer with animated bars representing a participant's audio levels.
 
 ## Properties
 
-| Property      | Type                   | Required | Default         | Description                                    |      |                        |
-| ------------- | ---------------------- | -------- | --------------- | ---------------------------------------------- | ---- | ---------------------- |
-| participant   | Peer \| RTKParticipant | ✅        | \-              | The participant whose audio to visualize       |      |                        |
-| iconPack      | IconPack               | ❌        | defaultIconPack | Custom icon pack for icons                     |      |                        |
-| isScreenshare | boolean                | ❌        | false           | Whether this is a screenshare audio visualizer |      |                        |
-| size          | 'lg' \| 'md'           | 'sm'     | 'xl'            | ❌                                              | 'sm' | Size of the visualizer |
-| variant       | 'bar'                  | ❌        | 'bar'           | Visual variant of the visualizer               |      |                        |
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `participant` | `Peer \| RTKParticipant` | ✅ | - | The participant whose audio to visualize |
+| `iconPack` | `IconPack` | ❌ | `defaultIconPack` | Custom icon pack for icons |
+| `isScreenshare` | `boolean` | ❌ | `false` | Whether this is a screenshare audio visualizer |
+| `size` | `'lg' \| 'md' \| 'sm' \| 'xl'` | ❌ | `'sm'` | Size of the visualizer |
+| `variant` | `'bar'` | ❌ | `'bar'` | Visual variant of the visualizer |
 
 ## Usage Examples
 

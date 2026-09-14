@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Serving Pages
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/configuration/serving-pages/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/configuration/serving-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Pages includes a number of defaults for serving your Pages sites. This page details some of those decisions, so you can understand how Pages works, and how you might want to override some of the default behaviors.
 
@@ -44,7 +44,7 @@ Note that when you use Cloudflare Pages, the static assets that you upload as pa
 
 Purging the cache
 
-If you notice stale assets being served after a new deployment, go to your zone and then **Caching** \> **Configuration** \> [**Purge Everything**](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/) to ensure the latest deployment gets served.
+If you notice stale assets being served after a new deployment, go to your zone and then **Caching** > **Configuration** > [**Purge Everything**](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/) to ensure the latest deployment gets served.
 
 ### Behavior
 
@@ -60,7 +60,9 @@ We will insert assets into the cache on a per-data center basis. Assets have a t
 
 ## Headers
 
-By default, Pages automatically adds several [HTTP response headers ↗](https://developer.mozilla.org/en-US/docs/Glossary/Response%5Fheader) when serving assets, including:
+By default, Pages automatically adds several [HTTP response headers ↗](https://developer.mozilla.org/en-US/docs/Glossary/Response_header) when serving assets, including:
+
+*Headers always addedtxt*
 
 ```txt
 Access-Control-Allow-Origin: *
@@ -74,7 +76,9 @@ Server: cloudflare
 
 Note
 
-The [Cf-Ray](https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/) header is unique to Cloudflare.
+The [`Cf-Ray`](https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/) header is unique to Cloudflare.
+
+*Headers sometimes addedtxt*
 
 ```txt
 // if the asset has been encoded
@@ -88,7 +92,7 @@ Cache-Control: public, max-age=0, must-revalidate
 X-Robots-Tag: noindex
 ```
 
-To modify the headers added by Cloudflare Pages - perhaps to add [Early Hints](https://developers.cloudflare.com/pages/configuration/early-hints/) \- update the [\_headers file](https://developers.cloudflare.com/pages/configuration/headers/) in your project.
+To modify the headers added by Cloudflare Pages - perhaps to add [Early Hints](https://developers.cloudflare.com/pages/configuration/early-hints/) - update the [\_headers file](https://developers.cloudflare.com/pages/configuration/headers/) in your project.
 
 Was this helpful?
 

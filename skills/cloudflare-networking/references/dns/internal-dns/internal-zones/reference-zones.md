@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Reference zones
 
-Last updated Jul 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/internal-dns/internal-zones/reference-zones/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/internal-dns/internal-zones/reference-zones/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 During an [internal DNS query resolution](https://developers.cloudflare.com/dns/internal-dns/#architecture-overview), if no internal record is found within a matching internal zone, Cloudflare will check if the matching internal zone is referencing another internal zone. Successive references can be followed with a maximum of five references in a chain.
 
@@ -22,15 +22,14 @@ A wildcard record (`*.example.local`) in the matching internal zone will take pr
 
 ## Configuration conditions
 
-* Each internal zone can only reference one other zone.
-* The same zone can be referenced by multiple internal zones.
-* Public zones cannot be used as reference zones.
-* Reference zones do not have to be linked to the same [DNS view](https://developers.cloudflare.com/dns/internal-dns/dns-views/) as the zone referencing them. They may also not be linked to any view at all.
+- Each internal zone can only reference one other zone.
+- The same zone can be referenced by multiple internal zones.
+- Public zones cannot be used as reference zones.
+- Reference zones do not have to be linked to the same [DNS view](https://developers.cloudflare.com/dns/internal-dns/dns-views/) as the zone referencing them. They may also not be linked to any view at all.
 
 ## Set up
 
-1. In the Cloudflare dashboard, go to the **Internal DNS** page.
-[Go to **Internal DNS** ↗](https://dash.cloudflare.com/?to=/:account/internal-dns)
+1. In the Cloudflare dashboard, go to the **Internal DNS** page. [Go to **Internal DNS** ↗](https://dash.cloudflare.com/?to=/:account/internal-dns)
 2. Select a zone.
 3. Within the selected zone, go to **Reference zone**.
 4. Select **Add reference zone**. If your zone already has a reference zone set up, you must first remove it. As explained in the [configuration conditions](#configuration-conditions), each internal zone can only reference one other zone at a time.
@@ -44,11 +43,22 @@ If your API token is scoped to specific zones, make sure it includes both the zo
 
 In the following example, internal zone A (ID `8a904aeb565c42cfa207d98f6edea2f3`) is referencing internal zone B (ID `8e64c6fb4b514f3faf64de81efc11e51`).
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone DNS Settings Write`
-* `DNS Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone DNS Settings Write</code>
+- <code>DNS Write</code>
+
+</details>
+
+*Update DNS Settingsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/8a904aeb565c42cfa207d98f6edea2f3/dns_settings" \

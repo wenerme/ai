@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Facebook
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/facebook-login/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/facebook-login/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use these steps to set up Facebook as your identity provider.
 
@@ -21,9 +21,9 @@ Use these steps to set up Facebook as your identity provider.
 3. Enter the **App name** and **App contact email**. Then, select **Next**.
 4. In the **Add use cases** page, select **Authenticate and request data from users with Facebook Login**. Select **Next**.
 5. Fill in the necessary information and select **Next** until you reach **Overview**. Then, select **Create app**.
-6. In the **My Apps** page, go to **App settings** \> **Basic**.
+6. In the **My Apps** page, go to **App settings** > **Basic**.
 7. Copy the **App ID** and **App Secret**.
-8. In the [Cloudflare dashboard](https://developers.cloudflare.com/dash.cloudflare.com), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
+8. In the [Cloudflare dashboard](https://developers.cloudflare.com/dash.cloudflare.com), go to **Zero Trust** > **Integrations** > **Identity providers**.
 9. Under **Your identity providers**, select **Add an identity provider**.
 10. Fill in the **App ID** and **App Secret** obtained from Facebook.
 11. (Optional) Enable [Proof of Key Exchange (PKCE) ↗](https://www.oauth.com/oauth2-servers/pkce/). PKCE will be performed on all login attempts.
@@ -32,10 +32,12 @@ Use these steps to set up Facebook as your identity provider.
 14. Under **App customization and requirements**, select **Customize the Authenticate and request data from users with Facebook Login use case**.
 15. Select **Settings**, and ensure that **Use Strict Mode for redirect URIs** slider is set to **Yes**.
 16. In the **Valid OAuth Redirect URIs** field, enter the following URL:
-```txt
-https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
-```
-You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
+
+    ```txt
+    https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
+    ```
+
+    You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
 17. Select **Save Changes**.
 
 To test that your connection is working, follow the steps on [SSO Integration](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/#test-idps-in-cloudflare-one).

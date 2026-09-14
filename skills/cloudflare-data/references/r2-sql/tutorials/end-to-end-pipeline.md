@@ -14,16 +14,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Learn how to create an end-to-end data pipeline using Cloudflare Pipelines, R2 Data Catalog, and R2 SQL for real-time transaction analysis.
 
-Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2-sql/tutorials/end-to-end-pipeline/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2-sql/tutorials/end-to-end-pipeline/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn how to build a complete data pipeline using Cloudflare Pipelines, R2 Data Catalog, and R2 SQL. This also includes a sample Python script that creates and sends financial transaction data to your Pipeline that can be queried by R2 SQL or any Apache Iceberg-compatible query engine.
 
 This tutorial demonstrates how to:
 
-* Set up R2 Data Catalog to store our transaction events in an Apache Iceberg table
-* Set up a Cloudflare Pipeline
-* Create transaction data with fraud patterns to send to your Pipeline
-* Query your data using R2 SQL for fraud analysis
+- Set up R2 Data Catalog to store our transaction events in an Apache Iceberg table
+- Set up a Cloudflare Pipeline
+- Create transaction data with fraud patterns to send to your Pipeline
+- Query your data using R2 SQL for fraud analysis
 
 ## Prerequisites
 
@@ -35,21 +35,19 @@ Node.js version manager
 
 Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions.
 
-## 1\. Set up authentication
+## 1. Set up authentication
 
 You will need API tokens to interact with Cloudflare services.
 
-1. In the Cloudflare dashboard, go to the **API tokens** page.
-[Go to **Account API tokens** ↗](https://dash.cloudflare.com/?to=/:account/api-tokens)
+1. In the Cloudflare dashboard, go to the **API tokens** page. [Go to **Account API tokens** ↗](https://dash.cloudflare.com/?to=/:account/api-tokens)
 2. Select **Create Token**.
 3. Select **Get started** next to Create Custom Token.
 4. Enter a name for your API token.
 5. Under **Permissions**, choose:
-
-  * **Workers Pipelines** with Read, Send, and Edit permissions
-  * **Workers R2 Data Catalog** with Read and Edit permissions
-  * **Workers R2 SQL** with Read permissions
-  * **Workers R2 Storage** with Read and Edit permissions
+   - **Workers Pipelines** with Read, Send, and Edit permissions
+   - **Workers R2 Data Catalog** with Read and Edit permissions
+   - **Workers R2 SQL** with Read permissions
+   - **Workers R2 Storage** with Read and Edit permissions
 6. Optionally, add a TTL to this token.
 7. Select **Continue to summary**.
 8. Click **Create Token**
@@ -67,7 +65,7 @@ If this is your first time using Wrangler, make sure to log in.
 npx wrangler login
 ```
 
-## 2\. Create an R2 bucket and enable R2 Data Catalog
+## 2. Create an R2 bucket and enable R2 Data Catalog
 
 Create an R2 bucket:
 
@@ -75,8 +73,7 @@ Create an R2 bucket:
 npx wrangler r2 bucket create fraud-pipeline
 ```
 
-1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
+1. In the Cloudflare dashboard, go to the **R2 object storage** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select **Create bucket**.
 3. Enter the bucket name: `fraud-pipeline`
 4. Select **Create bucket**.
@@ -89,8 +86,7 @@ npx wrangler r2 bucket catalog enable fraud-pipeline
 
 When you run this command, take note of the "Warehouse" and "Catalog URI". You will need these later.
 
-1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
+1. In the Cloudflare dashboard, go to the **R2 object storage** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select the bucket: `fraud-pipeline`.
 3. Switch to the **Settings** tab, scroll down to **R2 Data Catalog**, and select **Enable**.
 4. Once enabled, note the **Catalog URI** and **Warehouse name**.
@@ -111,15 +107,14 @@ R2 Data Catalog can automatically compact tables for you. In production event st
 npx wrangler r2 bucket catalog compaction enable fraud-pipeline --token $WRANGLER_R2_SQL_AUTH_TOKEN
 ```
 
-1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
+1. In the Cloudflare dashboard, go to the **R2 object storage** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select the bucket: `fraud-pipeline`.
 3. Switch to the **Settings** tab, scroll down to **R2 Data Catalog**, click on edit icon, and select **Enable**.
 4. You can choose a target file size or leave the default. Click save.
 
-## 3\. Set up the pipeline infrastructure
+## 3. Set up the pipeline infrastructure
 
-### 3.1\. Create the Pipeline stream
+### 3.1. Create the Pipeline stream
 
 First, create a schema file called `raw_transactions_schema.json` with the following `json` schema:
 
@@ -191,7 +186,7 @@ Input Schema:
 └───────────────────────┴────────┴────────────┴──────────┘
 ```
 
-### 3.2\. Create the data sink
+### 3.2. Create the data sink
 
 Create a sink that writes data to your R2 bucket as Apache Iceberg tables:
 
@@ -209,7 +204,7 @@ Note
 
 This creates a `sink` configuration that will write to the Iceberg table `fraud_detection.transactions` in your R2 Data Catalog every 30 seconds. Pipelines automatically appends an `__ingest_ts` column that is used to partition the table by `DAY`.
 
-### 3.3\. Create the pipeline
+### 3.3. Create the pipeline
 
 Connect your stream to your sink with SQL:
 
@@ -218,62 +213,62 @@ npx wrangler pipelines create raw_events_pipeline \
   --sql "INSERT INTO raw_events_sink SELECT * FROM raw_events_stream"
 ```
 
-1. In the Cloudflare dashboard, go to **Pipelines** \> **Pipelines**.
-[Go to **Pipelines** ↗](https://dash.cloudflare.com/?to=/:account/pipelines/overview)
+1. In the Cloudflare dashboard, go to **Pipelines** > **Pipelines**. [Go to **Pipelines** ↗](https://dash.cloudflare.com/?to=/:account/pipelines/overview)
 2. Select **Create Pipeline**.
 3. **Connect to a Stream**:
-
-  * Pipeline name: `raw_events`
-  * Enable HTTP endpoint for sending data: Enabled
-  * HTTP authentication: Disabled (default)
-  * Select **Next**
+   - Pipeline name: `raw_events`
+   - Enable HTTP endpoint for sending data: Enabled
+   - HTTP authentication: Disabled (default)
+   - Select **Next**
 4. **Define Input Schema**:
+   - Select **JSON editor**
+   - Copy in the schema:
 
-  * Select **JSON editor**
-  * Copy in the schema:
-  ```json
-  {
-  	"fields": [
-  		{ "name": "transaction_id", "type": "string", "required": true },
-  		{ "name": "user_id", "type": "int64", "required": true },
-  		{ "name": "amount", "type": "float64", "required": false },
-  		{
-  			"name": "transaction_timestamp",
-  			"type": "string",
-  			"required": false
-  		},
-  		{ "name": "location", "type": "string", "required": false },
-  		{ "name": "merchant_category", "type": "string", "required": false },
-  		{ "name": "is_fraud", "type": "bool", "required": false }
-  	]
-  }
-  ```
-  * Select **Next**
+     ```json
+     {
+     	"fields": [
+     		{ "name": "transaction_id", "type": "string", "required": true },
+     		{ "name": "user_id", "type": "int64", "required": true },
+     		{ "name": "amount", "type": "float64", "required": false },
+     		{
+     			"name": "transaction_timestamp",
+     			"type": "string",
+     			"required": false
+     		},
+     		{ "name": "location", "type": "string", "required": false },
+     		{ "name": "merchant_category", "type": "string", "required": false },
+     		{ "name": "is_fraud", "type": "bool", "required": false }
+     	]
+     }
+     ```
+
+
+   - Select **Next**
 5. **Define Sink**:
-
-  * Select your R2 bucket: `fraud-pipeline`
-  * Storage type: **R2 Data Catalog**
-  * Namespace: `fraud_detection`
-  * Table name: `transactions`
-  * **Advanced Settings**: Change **Maximum Time Interval** to `30 seconds`
-  * Select **Next**
+   - Select your R2 bucket: `fraud-pipeline`
+   - Storage type: **R2 Data Catalog**
+   - Namespace: `fraud_detection`
+   - Table name: `transactions`
+   - **Advanced Settings**: Change **Maximum Time Interval** to `30 seconds`
+   - Select **Next**
 6. **Credentials**:
-
-  * Disable **Automatically create an Account API token for your sink**
-  * Enter **Catalog Token** from step 1
-  * Select **Next**
+   - Disable **Automatically create an Account API token for your sink**
+   - Enter **Catalog Token** from step 1
+   - Select **Next**
 7. **Pipeline Definition**:
+   - Leave the default SQL query:
 
-  * Leave the default SQL query:
-  ```sql
-  INSERT INTO raw_events_sink SELECT * FROM raw_events_stream;
-  ```
-  * Select **Create Pipeline**
+     ```sql
+     INSERT INTO raw_events_sink SELECT * FROM raw_events_stream;
+     ```
+   - Select **Create Pipeline**
 8. After pipeline creation, note the **Stream ID** for the next step.
 
-## 4\. Generate sample fraud detection data
+## 4. Generate sample fraud detection data
 
 Create a Python script to generate realistic transaction data with fraud patterns:
+
+*fraud\_data\_generator.pypython*
 
 ```python
 import requests
@@ -421,11 +416,11 @@ pip install requests
 python fraud_data_generator.py
 ```
 
-## 5\. Query the data with R2 SQL
+## 5. Query the data with R2 SQL
 
 Now you can analyze your fraud detection data using R2 SQL. Here are some example queries:
 
-### 5.1\. View recent transactions
+### 5.1. View recent transactions
 
 ```bash
 npx wrangler r2 sql query "$WAREHOUSE" "
@@ -443,7 +438,7 @@ AND is_fraud = true
 LIMIT 10"
 ```
 
-### 5.2\. Filter the raw transactions into a new table to highlight high-value transactions
+### 5.2. Filter the raw transactions into a new table to highlight high-value transactions
 
 Create a new sink that will write the filtered data to a new Apache Iceberg table in R2 Data Catalog:
 

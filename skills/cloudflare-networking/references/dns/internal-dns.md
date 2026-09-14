@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Internal DNS
 
-Last updated Jul 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/internal-dns/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/internal-dns/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Simplify private network management with Cloudflare DNS for your internal resources.
 
@@ -28,6 +28,7 @@ You can use different [connectivity options](https://developers.cloudflare.com/d
 
 Internal DNS zones do not get assigned Cloudflare nameservers and can only be queried via Cloudflare Gateway resolver.
 
+```
 flowchart LR
         accTitle: Internal DNS query overview
         accDescr: Diagram comparing internal DNS query with public DNS
@@ -51,8 +52,11 @@ flowchart LR
 				A --Query--> X
 				C --Query--> Y
 
+```
+
 Internal DNS zones are grouped into DNS views, which are selected by the resolver policy you define. Views are usually logical groupings relevant to your organization, such as different geographical locations.
 
+```
 flowchart LR
         accTitle: Internal DNS views and zones
         accDescr: Diagram exemplifying Internal DNS views and zones relationship
@@ -69,8 +73,13 @@ flowchart LR
 				W[Zone 701 <br /> net]
 				end
 
-Internal DNS zones contain the [DNS records](https://developers.cloudflare.com/dns/internal-dns/internal-zones/internal-dns-records/) that should be used to resolve an internal DNS query. Also, if no internal record is found within a matching internal zone, Cloudflare will check if the matching internal zone is [referencing another internal zone](https://developers.cloudflare.com/dns/internal-dns/internal-zones/reference-zones/).
+```
 
+Internal DNS zones contain the [DNS records](https://developers.cloudflare.com/dns/internal-dns/internal-zones/internal-dns-records/)
+
+ that should be used to resolve an internal DNS query. Also, if no internal record is found within a matching internal zone, Cloudflare will check if the matching internal zone is [referencing another internal zone](https://developers.cloudflare.com/dns/internal-dns/internal-zones/reference-zones/).
+
+```
 flowchart LR
         accTitle: Internal DNS zones and internal records
         accDescr: Diagram exemplifying Internal DNS zones and records relationship
@@ -86,15 +95,17 @@ flowchart LR
 				end
 				end
 
+```
+
 In this example, a query for `ghi.example.local` routed to view ID 111 would go to zone 600, which presents the longest matching zone name (`example.local`). Zone 600 does not contain a record for `ghi` but, if it is referencing zone 601, Cloudflare will then look for the queried record within the reference zone.
 
 ## Resources
 
-* [Get started](https://developers.cloudflare.com/dns/internal-dns/get-started/)
-* [Internal zones](https://developers.cloudflare.com/dns/internal-dns/internal-zones/)
-* [Manage DNS views](https://developers.cloudflare.com/dns/internal-dns/dns-views/)
-* [Connect to Gateway resolver](https://developers.cloudflare.com/dns/internal-dns/connectivity/)
-* [Analytics and logs](https://developers.cloudflare.com/dns/internal-dns/analytics/)
+- [Get started](https://developers.cloudflare.com/dns/internal-dns/get-started/)
+- [Internal zones](https://developers.cloudflare.com/dns/internal-dns/internal-zones/)
+- [Manage DNS views](https://developers.cloudflare.com/dns/internal-dns/dns-views/)
+- [Connect to Gateway resolver](https://developers.cloudflare.com/dns/internal-dns/connectivity/)
+- [Analytics and logs](https://developers.cloudflare.com/dns/internal-dns/analytics/)
 
 ## Related products
 

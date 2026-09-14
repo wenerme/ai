@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Example of how to use Queues and Browser Run to power a web crawler.
 
-Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/queues/tutorials/web-crawler-with-browser-run/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/tutorials/web-crawler-with-browser-run/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial explains how to build and deploy a web crawler with Queues, [Browser Run](https://developers.cloudflare.com/browser-run/), and [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/).
 
@@ -25,15 +25,23 @@ You can use Puppeteer to request all images on a page, save the colors used on a
 ## Prerequisites
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
 
-## 1\. Create new Workers application
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
 
-To get started, create a Worker application using the [create-cloudflare CLI ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare). Open a terminal window and run the following command:
+</details>
+
+## 1. Create new Workers application
+
+To get started, create a Worker application using the [`create-cloudflare` CLI ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare). Open a terminal window and run the following command:
 
 npmyarnpnpm
 
@@ -51,11 +59,11 @@ pnpm create cloudflare@latest queues-web-crawler
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `TypeScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `TypeScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 Then, move into your newly created directory:
 
@@ -63,7 +71,7 @@ Then, move into your newly created directory:
 cd queues-web-crawler
 ```
 
-## 2\. Create KV namespace
+## 2. Create KV namespace
 
 We need to create a KV store. This can be done through the Cloudflare dashboard or the Wrangler CLI. For this tutorial, we will use the Wrangler CLI.
 
@@ -140,7 +148,7 @@ binding = "CRAWLER_LINKS_KV"
 id = "<GENERATED_NAMESPACE_ID>"
 ```
 
-## 3\. Set up Browser Run
+## 3. Set up Browser Run
 
 Now, you need to set up your Worker for Browser Run.
 
@@ -197,7 +205,7 @@ Then, add a Browser Run binding. Adding a Browser Run binding gives the Worker a
 binding = "CRAWLER_BROWSER"
 ```
 
-## 4\. Set up a Queue
+## 4. Set up a Queue
 
 Now, we need to set up the Queue.
 
@@ -214,6 +222,8 @@ yarn wrangler queues create queues-web-crawler
 ```
 pnpm wrangler queues create queues-web-crawler
 ```
+
+*Outputtxt*
 
 ```txt
 Creating queue queues-web-crawler.
@@ -263,7 +273,7 @@ Your final Wrangler file should look similar to the one below.
 	"name": "web-crawler",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"compatibility_flags": ["nodejs_compat"],
 	"kv_namespaces": [
 		{
@@ -300,7 +310,7 @@ Your final Wrangler file should look similar to the one below.
 name = "web-crawler"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[kv_namespaces]]
@@ -323,7 +333,7 @@ queue = "queues-web-crawler"
 binding = "CRAWLER_QUEUE"
 ```
 
-## 5\. Add bindings to environment
+## 5. Add bindings to environment
 
 Add the bindings to the environment interface in `src/index.ts`, so TypeScript correctly types the bindings. The queue is typed as `Queue<Message>`, where `Message` is defined in the following step.
 
@@ -338,7 +348,7 @@ export interface Env {
 }
 ```
 
-## 6\. Submit links to crawl
+## 6. Submit links to crawl
 
 Add a `fetch()` handler to the Worker to submit links to crawl.
 
@@ -362,7 +372,7 @@ export default {
 
 This will accept requests to any subpath and forwards the request's body to be crawled. It expects that the request body only contains a URL. In production, you should check that the request was a `POST` request and contains a well-formed URL in its body. This has been omitted for simplicity.
 
-## 7\. Crawl with Puppeteer
+## 7. Crawl with Puppeteer
 
 Add a `queue()` handler to the Worker to process the links you send.
 
@@ -676,7 +686,7 @@ export default {
 } satisfies ExportedHandler<Env, Message>;
 ```
 
-## 8\. Deploy your Worker
+## 8. Deploy your Worker
 
 To deploy your Worker, run the following command:
 
@@ -698,6 +708,8 @@ You have successfully created a Worker which can submit URLs to a queue for craw
 
 To test your Worker, you could use the following cURL request to take a screenshot of this documentation page.
 
+*Test with a cURL requestbash*
+
 ```bash
 curl <YOUR_WORKER_URL> \
   -H "Content-Type: application/json" \
@@ -708,10 +720,10 @@ Refer to the [GitHub repository for the complete tutorial ↗](https://github.co
 
 ## Related resources
 
-* [How Queues works](https://developers.cloudflare.com/queues/reference/how-queues-works/)
-* [Queues Batching and Retries](https://developers.cloudflare.com/queues/configuration/batching-retries/)
-* [Browser Run](https://developers.cloudflare.com/browser-run/)
-* [Puppeteer Examples ↗](https://github.com/puppeteer/puppeteer/tree/main/examples)
+- [How Queues works](https://developers.cloudflare.com/queues/reference/how-queues-works/)
+- [Queues Batching and Retries](https://developers.cloudflare.com/queues/configuration/batching-retries/)
+- [Browser Run](https://developers.cloudflare.com/browser-run/)
+- [Puppeteer Examples ↗](https://github.com/puppeteer/puppeteer/tree/main/examples)
 
 Was this helpful?
 
@@ -722,5 +734,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/tutorials/web-crawler-with-browser-run/#page","headline":"Cloudflare Queues - Queues & Browser Run · Cloudflare Queues docs","description":"Example of how to use Queues and Browser Run to power a web crawler.","url":"https://developers.cloudflare.com/queues/tutorials/web-crawler-with-browser-run/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/tutorials/web-crawler-with-browser-run/#page","headline":"Cloudflare Queues - Queues & Browser Run · Cloudflare Queues docs","description":"Example of how to use Queues and Browser Run to power a web crawler.","url":"https://developers.cloudflare.com/queues/tutorials/web-crawler-with-browser-run/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
 ```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Default traffic security
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/application-security/default-traffic-security/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/application-security/default-traffic-security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 As soon as you onboard your domain to Cloudflare, you are automatically protected. This module reviews what those protections are and why they are critical.
 
@@ -20,7 +20,7 @@ As soon as you onboard your domain to Cloudflare, you are automatically protecte
 
 By the end of this module, you will be able to:
 
-* Understand the most common security controls your applications will have access to
+- Understand the most common security controls your applications will have access to
 
 Was this helpful?
 

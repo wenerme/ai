@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Onboarding Email security
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/email-security-onboarding/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/email-security-onboarding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Continue securing your environment by protecting against email phishing attacks.
 
@@ -20,8 +20,8 @@ Continue securing your environment by protecting against email phishing attacks.
 
 By the end of this module, you will be able to:
 
-* Identify the minimum CIPA filters to facilitate compliance.
-* Learn other ways to protect your network from unwanted traffic.
+- Identify the minimum CIPA filters to facilitate compliance.
+- Learn other ways to protect your network from unwanted traffic.
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cartesia
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/cartesia/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/cartesia/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Cartesia ↗](https://docs.cartesia.ai/) provides advanced text-to-speech services with customizable voice models.
 
@@ -30,14 +30,16 @@ When making requests to Cartesia, replace `https://api.cartesia.ai/v1` in the UR
 
 When making requests to Cartesia, ensure you have the following:
 
-* Your AI Gateway Account ID.
-* Your AI Gateway gateway name.
-* An active Cartesia API token.
-* The model ID and voice ID for the Cartesia voice model you want to use.
+- Your AI Gateway Account ID.
+- Your AI Gateway gateway name.
+- An active Cartesia API token.
+- The model ID and voice ID for the Cartesia voice model you want to use.
 
 ## Example
 
 ### cURL
+
+*Requestbash*
 
 ```bash
 curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cartesia/tts/bytes \

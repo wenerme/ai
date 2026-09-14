@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Android UI Kit SDK
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-ui-kit/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-ui-kit/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-ui-kit/index.xml)
 
@@ -22,11 +22,11 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Enhancements**
 
-* Aligned the version with [RealtimeKit Android Core v3.1.0](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2026-07-17). This release has no breaking changes.
+- Aligned the version with [RealtimeKit Android Core v3.1.0](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2026-07-17). This release has no breaking changes.
 
 **Fixes**
 
-* Audio and video toggle buttons no longer check permissions or disable themselves. The core SDK handles permission requests.
+- Audio and video toggle buttons no longer check permissions or disable themselves. The core SDK handles permission requests.
 
 ## 2026-06-24
 
@@ -34,13 +34,13 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Breaking changes**
 
-* Upgraded to [RealtimeKit Core v3.0.0](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2026-06-24). Plugins must now be declared on the client side when constructing `RtkMeetingInfo`.
+- Upgraded to [RealtimeKit Core v3.0.0](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2026-06-24). Plugins must now be declared on the client side when constructing `RtkMeetingInfo`.
 
 **Features**
 
-* Added Breakout Rooms support. Participants can be assigned to rooms manually or distributed automatically; hosts can create, rename, and close rooms, move participants between them, and return everyone to the main room. See the Connected Meetings documentation for a full guide.
-* Added an AI Transcription panel accessible from the More Options menu. Consecutive utterances from the same speaker are merged into a single visual block. The list auto-scrolls to the latest transcript and pauses when the user scrolls up. Transcripts can be filtered by participant name or text.
-* Added edit and delete actions for chat messages. Long-pressing a message opens an actions sheet with Edit and Delete options. Edited messages display an "edited" indicator.
+- Added Breakout Rooms support. Participants can be assigned to rooms manually or distributed automatically; hosts can create, rename, and close rooms, move participants between them, and return everyone to the main room. See the Connected Meetings documentation for a full guide.
+- Added an AI Transcription panel accessible from the More Options menu. Consecutive utterances from the same speaker are merged into a single visual block. The list auto-scrolls to the latest transcript and pauses when the user scrolls up. Transcripts can be filtered by participant name or text.
+- Added edit and delete actions for chat messages. Long-pressing a message opens an actions sheet with Edit and Delete options. Edited messages display an "edited" indicator.
 
 ## 2026-05-11
 
@@ -48,9 +48,9 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Features**
 
-* Added chat message pin/unpin support: long-press any message to open an actions sheet with Pin and Unpin options, with an expandable banner showing pinned messages
-* Added a "Deny All" button to the waiting room participant list and webinar stage access requests so hosts can reject all pending requests at once
-* Upgraded to [RealtimeKit Core v2.1.0](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2026-05-08)
+- Added chat message pin/unpin support: long-press any message to open an actions sheet with Pin and Unpin options, with an expandable banner showing pinned messages
+- Added a "Deny All" button to the waiting room participant list and webinar stage access requests so hosts can reject all pending requests at once
+- Upgraded to [RealtimeKit Core v2.1.0](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2026-05-08)
 
 ## 2026-04-20
 
@@ -58,7 +58,7 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Breaking changes**
 
-* Upgraded to [RealtimeKit Core v2.0.0](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2026-04-20) which removes support for Dyte APIs and SFU.
+- Upgraded to [RealtimeKit Core v2.0.0](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2026-04-20) which removes support for Dyte APIs and SFU.
 
 ## 2026-02-06
 
@@ -66,7 +66,7 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Enhancements**
 
-* Upgraded to [RealtimeKit Core v1.6.1](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2026-02-06)
+- Upgraded to [RealtimeKit Core v1.6.1](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2026-02-06)
 
 ## 2026-01-14
 
@@ -74,7 +74,7 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Enhancements**
 
-* Upgraded to [RealtimeKit Core v1.6.0](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2026-01-14)
+- Upgraded to [RealtimeKit Core v1.6.0](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2026-01-14)
 
 ## 2025-12-16
 
@@ -82,7 +82,7 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Enhancements**
 
-* Upgraded to [RealtimeKit Core v1.5.7](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2025-12-16)
+- Upgraded to [RealtimeKit Core v1.5.7](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2025-12-16)
 
 ## 2025-12-12
 
@@ -90,12 +90,12 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Enhancements**
 
-* Upgraded to [RealtimeKit Core v1.5.6](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2025-12-12)
+- Upgraded to [RealtimeKit Core v1.5.6](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2025-12-12)
 
 **Fixes**
 
-* Fixed crash when screenshare is disabled for a participant
-* Fixed screenshare disappearing when video is disabled for a screensharing participant
+- Fixed crash when screenshare is disabled for a participant
+- Fixed screenshare disappearing when video is disabled for a screensharing participant
 
 ## 2025-12-04
 
@@ -103,7 +103,7 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Enhancements**
 
-* Upgraded to [RealtimeKit Core v1.5.5](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2025-12-04)
+- Upgraded to [RealtimeKit Core v1.5.5](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2025-12-04)
 
 ## 2025-11-06
 
@@ -111,11 +111,11 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Enhancements**
 
-* Upgraded to [RealtimeKit Core v1.5.4](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2025-11-06)
+- Upgraded to [RealtimeKit Core v1.5.4](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2025-11-06)
 
 **Fixes**
 
-* Fixed an issue with camera video not rendering in the settings UI
+- Fixed an issue with camera video not rendering in the settings UI
 
 ## 2025-10-23
 
@@ -123,11 +123,11 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Enhancements**
 
-* Upgraded to [RealtimeKit Core v1.5.3](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2025-10-23)
+- Upgraded to [RealtimeKit Core v1.5.3](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2025-10-23)
 
 **Fixes**
 
-* Fixed a regression that caused self video to not render if meeting was joined with camera disabled
+- Fixed a regression that caused self video to not render if meeting was joined with camera disabled
 
 ## 2025-10-23
 
@@ -135,11 +135,11 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Enhancements**
 
-* Upgraded to [RealtimeKit Core v1.5.2](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2025-10-23)
+- Upgraded to [RealtimeKit Core v1.5.2](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2025-10-23)
 
 **Fixes**
 
-* Fixed an issue where pinning yourself in the participant view didn't update correctly
+- Fixed an issue where pinning yourself in the participant view didn't update correctly
 
 ## 2025-10-08
 
@@ -147,7 +147,7 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Fixes**
 
-* Fixed an issue where the last video frame remained stuck on participant tile
+- Fixed an issue where the last video frame remained stuck on participant tile
 
 ## 2025-10-06
 
@@ -155,7 +155,7 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Enhancements**
 
-* Upgraded to [RealtimeKit Core v1.5.1](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2025-10-06)
+- Upgraded to [RealtimeKit Core v1.5.1](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2025-10-06)
 
 ## 2025-09-23
 
@@ -163,7 +163,7 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Enhancements**
 
-* Upgraded to [RealtimeKit Core v1.5.0](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2025-09-23)
+- Upgraded to [RealtimeKit Core v1.5.0](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2025-09-23)
 
 ## 2025-09-18
 
@@ -171,12 +171,12 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Enhancements**
 
-* Upgraded to [RealtimeKit Core v1.4.1](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2025-09-18)
+- Upgraded to [RealtimeKit Core v1.4.1](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2025-09-18)
 
 **Fixes**
 
-* Audio device selector now dynamically updates the options list when devices are removed or added
-* Fixed crash when a host turns off video for an active screenshare user
+- Audio device selector now dynamically updates the options list when devices are removed or added
+- Fixed crash when a host turns off video for an active screenshare user
 
 ## 2025-09-12
 
@@ -184,11 +184,11 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Fixes**
 
-* Fixed pinned peers not being removed from the stage when kicked
-* Media consumers are now created in parallel, which significantly improved the speed of when users start seeing other people's audio/video after joining a meeting
-* Fixed "Ghost"/Invalid peers that would sometimes show up in long-running meetings
-* Fixed an issue in webinar meetings where the SDK would fail to produce media after being removed from the stage once
-* Fixed a rare crash during meeting joins in poor network scenarios
+- Fixed pinned peers not being removed from the stage when kicked
+- Media consumers are now created in parallel, which significantly improved the speed of when users start seeing other people's audio/video after joining a meeting
+- Fixed "Ghost"/Invalid peers that would sometimes show up in long-running meetings
+- Fixed an issue in webinar meetings where the SDK would fail to produce media after being removed from the stage once
+- Fixed a rare crash during meeting joins in poor network scenarios
 
 ## 2025-08-13
 
@@ -196,7 +196,7 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Enhancements**
 
-* Upgraded to [RealtimeKit Core v1.3.2](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2025-08-13)
+- Upgraded to [RealtimeKit Core v1.3.2](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2025-08-13)
 
 ## 2025-08-13
 
@@ -204,7 +204,7 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Enhancements**
 
-* Upgraded to [RealtimeKit Core v1.3.1](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2025-08-13)
+- Upgraded to [RealtimeKit Core v1.3.1](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2025-08-13)
 
 ## 2025-08-12
 
@@ -212,11 +212,11 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Breaking changes**
 
-* `RtkParticipantTileView#activateForSelfPreview` was removed, you can now call `RtkParticipantTileView#activate` for all participants and we take care of the self preview case internally
+- `RtkParticipantTileView#activateForSelfPreview` was removed, you can now call `RtkParticipantTileView#activate` for all participants and we take care of the self preview case internally
 
 **Features**
 
-* Upgraded to [RealtimeKit Core v1.3.0](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2025-08-12)
+- Upgraded to [RealtimeKit Core v1.3.0](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2025-08-12)
 
 ## 2025-08-05
 
@@ -224,7 +224,7 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Features**
 
-* Upgraded to [RealtimeKit Core v1.2.0](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2025-08-05)
+- Upgraded to [RealtimeKit Core v1.2.0](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2025-08-05)
 
 ## 2025-07-02
 
@@ -232,7 +232,7 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Features**
 
-* Upgraded to [RealtimeKit Core v1.1.0](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2025-07-02)
+- Upgraded to [RealtimeKit Core v1.1.0](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2025-07-02)
 
 Was this helpful?
 

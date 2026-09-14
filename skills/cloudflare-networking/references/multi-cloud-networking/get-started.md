@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/multi-cloud-networking/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/multi-cloud-networking/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To get started with Cloudflare One Multi-Cloud Networking (formerly Magic Cloud Networking) (beta) you need to give Cloudflare permission to interact with cloud providers on your behalf. You might have multiple provider accounts for the same cloud provider — for example, you might want Cloudflare to manage virtual private clouds (VPCs) belonging to two different AWS accounts.
 
@@ -20,18 +20,17 @@ Once Cloudflare has the credentials required to access your cloud environments, 
 
 ## Set up Amazon AWS
 
-### 1\. Create integration
+### 1. Create integration
 
-1. Go to the **Cloud integrations (beta)** page.
-[Go to **Cloud integrations** ↗](https://dash.cloudflare.com/?to=/:account/mcn/integrations)
-2. Select **Add** \> **AWS integration**.
+1. Go to the **Cloud integrations (beta)** page. [Go to **Cloud integrations** ↗](https://dash.cloudflare.com/?to=/:account/mcn/integrations)
+2. Select **Add** > **AWS integration**.
 3. Give a descriptive name to your integration. Optionally, you can also add a description for it.
 4. Select **Create integration**.
 5. Select **Authorize access** to start the process of connecting your Cloudflare account to Amazon AWS.
 
-### 2\. Create IAM policy
+### 2. Create IAM policy
 
-1. Create a [custom IAM policy ↗](https://docs.aws.amazon.com/IAM/latest/UserGuide/access%5Fpolicies%5Fcreate-console.html) in your AWS account, and take note of the name you entered. Then, paste the following [JSON code ↗](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference%5Fpolicies%5Felements%5Fversion.html) in the JSON tab:
+1. Create a [custom IAM policy ↗](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create-console.html) in your AWS account, and take note of the name you entered. Then, paste the following [JSON code ↗](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_version.html) in the JSON tab:
 
 ```json
 {
@@ -61,19 +60,20 @@ Once Cloudflare has the credentials required to access your cloud environments, 
 }
 ```
 
-### 3\. Authorize access to your AWS account
+### 3. Authorize access to your AWS account
 
-1. Create an [AWS role ↗](https://docs.aws.amazon.com/IAM/latest/UserGuide/id%5Froles%5Fcreate%5Ffor-custom.html) with the following settings:
+1. Create an [AWS role ↗](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-custom.html) with the following settings:
+   - **Trusted entity type**: Select **Custom trust policy**, and paste the custom trust policy returned by the Cloudflare dashboard.
+   - **Permissions**: Add the IAM policy you created in the previous step, along with these AWS-managed policies:
+     - `NetworkAdministrator`
+     - `AmazonEC2ReadOnlyAccess`
+     - `AmazonVPCReadOnlyAccess`
+     - `IAMReadOnlyAccess`
+   - **ARN**: Copy the ARN for your newly created user.
 
-  * **Trusted entity type**: Select **Custom trust policy**, and paste the custom trust policy returned by the Cloudflare dashboard.
-  * **Permissions**: Add the IAM policy you created in the previous step, along with these AWS-managed policies:
-    * `NetworkAdministrator`
-    * `AmazonEC2ReadOnlyAccess`
-    * `AmazonVPCReadOnlyAccess`
-    * `IAMReadOnlyAccess`
-  * **ARN**: Copy the ARN for your newly created user.
-Note
-The trust policy may take several minutes to propagate to all regions. It usually takes less than four minutes, but can sometimes take longer. You may have to retry the **Authorize** button while the propagation takes effect.
+   Note
+
+   The trust policy may take several minutes to propagate to all regions. It usually takes less than four minutes, but can sometimes take longer. You may have to retry the **Authorize** button while the propagation takes effect.
 2. Select **I authorize Cloudflare to access my AWS account.**
 3. Select **Authorize**.
 
@@ -83,16 +83,15 @@ The first discovery of resources may not succeed in all regions while the IAM po
 
 ## Set up Microsoft Azure
 
-### 1\. Create integration
+### 1. Create integration
 
-1. In the Cloudflare dashboard, go to **Cloud integrations (beta)**.
-[Go to **Cloud integrations** ↗](https://dash.cloudflare.com/?to=/:account/mcn/integrations)
-2. Select **Add** \> **Azure integration**.
+1. In the Cloudflare dashboard, go to **Cloud integrations (beta)**. [Go to **Cloud integrations** ↗](https://dash.cloudflare.com/?to=/:account/mcn/integrations)
+2. Select **Add** > **Azure integration**.
 3. Give a descriptive name to your integration. Optionally, you can also add a description for it.
 4. Select **Create integration**.
 5. Select **Authorize access** to start the process of connecting your Cloudflare account to Microsoft Azure.
 
-### 2\. Authorize access to your Azure account
+### 2. Authorize access to your Azure account
 
 Caution
 
@@ -102,13 +101,14 @@ Multi-Cloud Networking does not support personal Microsoft accounts. Sign in usi
 2. Enter your Azure credentials. If your account does not have administrator privileges, you may need to pass this link to an account that has administrator privileges.
 3. The next screen lists Cloudflare required permissions to access your account. Select **Accept**.
 4. [Add a role assignment ↗](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal). The purpose of this step is to give the app that you registered in step 1 permission to access your Azure Subscription.
-
-  * In step 3 of the linked document, select the **Contributor** role from the **Privileged administrator roles** tab.
-  * In step 4 of the linked document, search for `mcn-provider-integrations-bot-prod` when selecting members.
+   - In step 3 of the linked document, select the **Contributor** role from the **Privileged administrator roles** tab.
+   - In step 4 of the linked document, search for `mcn-provider-integrations-bot-prod` when selecting members.
 5. In **Provide account information**, enter your **Tenant ID** and **Subscription ID**.
 6. In **Verify account ownership**, [add the tags displayed in the Cloudflare dashboard ↗](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources-portal).
-Note
-The tags may take several minutes to propagate and become readable to Cloudflare. It usually takes less than four minutes, but can sometimes take longer. You may have to retry the **Authorize** button while the propagation takes effect.
+
+   Note
+
+   The tags may take several minutes to propagate and become readable to Cloudflare. It usually takes less than four minutes, but can sometimes take longer. You may have to retry the **Authorize** button while the propagation takes effect.
 7. Select **I authorize Cloudflare to access my Azure account.** If your account does not have administrator privileges, you may need to pass this link to an account that has administrator privileges.
 8. Select **Authorize**.
 
@@ -118,24 +118,23 @@ The first discovery of resources may not succeed in all regions while the IAM po
 
 ## Set up Google Cloud
 
-### 1\. Create integration
+### 1. Create integration
 
-1. In the Cloudflare dashboard, go to **Cloud integrations (beta)**.
-[Go to **Cloud integrations** ↗](https://dash.cloudflare.com/?to=/:account/mcn/integrations)
-2. Select **Add** \> **Google integration**.
+1. In the Cloudflare dashboard, go to **Cloud integrations (beta)**. [Go to **Cloud integrations** ↗](https://dash.cloudflare.com/?to=/:account/mcn/integrations)
+2. Select **Add** > **Google integration**.
 3. Give a descriptive name to your integration. Optionally, you can also add a description for it.
 4. Select **Create integration**.
 5. Select **Authorize access** to start the process of connecting your Cloudflare account to Google Cloud.
 
-### 2\. Authorize access to your Google account
+### 2. Authorize access to your Google account
 
-1. Create a new [GCP service account ↗](https://cloud.google.com/iam/docs/service-accounts-create) in your **Google account** \> **GCP Console** \> **IAM & Admin** \> **Service Accounts**.
+1. Create a new [GCP service account ↗](https://cloud.google.com/iam/docs/service-accounts-create) in your **Google account** > **GCP Console** > **IAM & Admin** > **Service Accounts**.
 2. Grant the new service account these roles:
-  * `Compute Network Admin`
-  * `Compute Viewer`
-3. Under **IAM & Admin** \> **Service Accounts**, select the service account you just created, and navigate to the **Permissions** tab.
+   - `Compute Network Admin`
+   - `Compute Viewer`
+3. Under **IAM & Admin** > **Service Accounts**, select the service account you just created, and navigate to the **Permissions** tab.
 4. Grant the **Service Account Token Creator** role to our bot account to allow it to impersonate this service account. Learn how to grant a specific role [in Google's documentation ↗](https://cloud.google.com/iam/docs/manage-access-service-accounts#grant-single-role):
-  * `mcn-integrations-bot-prod@mcn-gcp-01.iam.gserviceaccount.com`
+   - `mcn-integrations-bot-prod@mcn-gcp-01.iam.gserviceaccount.com`
 5. In the **service account email field**, enter the email account that you used to create the GCP service account.
 6. In the **Project ID field**, enter the [project ID ↗](https://support.google.com/googleapi/answer/7014113?hl=en) associated with your project.
 7. [Add the label ↗](https://cloud.google.com/resource-manager/docs/creating-managing-labels#create-labels) displayed in the dashboard of your project.
@@ -150,9 +149,9 @@ The first discovery of resources may not succeed in all regions while the IAM po
 
 ## Next steps
 
-* [Set up Cloudflare WAN](https://developers.cloudflare.com/multi-cloud-networking/cloud-on-ramps/) as an on-ramp to your cloud.
-* [Manage resources](https://developers.cloudflare.com/multi-cloud-networking/manage-resources/) found by Multi-Cloud Networking.
-* [Edit](https://developers.cloudflare.com/multi-cloud-networking/manage-resources/#edit-cloud-integrations) cloud integrations.
+- [Set up Cloudflare WAN](https://developers.cloudflare.com/multi-cloud-networking/cloud-on-ramps/) as an on-ramp to your cloud.
+- [Manage resources](https://developers.cloudflare.com/multi-cloud-networking/manage-resources/) found by Multi-Cloud Networking.
+- [Edit](https://developers.cloudflare.com/multi-cloud-networking/manage-resources/#edit-cloud-integrations) cloud integrations.
 
 Was this helpful?
 

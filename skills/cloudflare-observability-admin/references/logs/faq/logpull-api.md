@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Logpull API FAQ
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/faq/logpull-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/faq/logpull-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [❮ Back to FAQ](https://developers.cloudflare.com/logs/faq/)
 
@@ -20,7 +20,7 @@ Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 Cloudflare makes logs available for at least three days and up to seven days. If you need your logs for a longer time period, download and store them locally.
 
-### I am asking for logs for the time window of 16:10-16:13\. However, the timestamps in the logs show requests that are before this time period. Why does that happen?
+### I am asking for logs for the time window of 16:10-16:13. However, the timestamps in the logs show requests that are before this time period. Why does that happen?
 
 When you make a call for the time period of 16:10-16:13, you are actually asking for the logs that were received and processed by our system during that time (hence the endpoint name, `logs/received`). The received time is the time the logs are written to disk. There is some delay between the time the request hits the Cloudflare edge and the time it is received and processed. The **request time** is what you see in the log itself: **EdgeStartTimestamp** and **EdgeEndTimestamp** tell you when the edge started and stopped processing the request.
 

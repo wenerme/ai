@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • OpenAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-nano/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-nano/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `openai/gpt-5.4-nano`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 GPT-5.4 nano is OpenAI's smallest and fastest model, optimized for edge and low-latency use cases.
 
-| Model Info                                                                          |                                                                                                                       |
-| ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 128,000 tokens                                                                                                        |
-| Terms and License                                                                   | [link ↗](https://openai.com/policies/)                                                                                |
-| More information                                                                    | [link ↗](https://openai.com/)                                                                                         |
-| Zero data retention                                                                 | Yes                                                                                                                   |
-| Request formats                                                                     | Responses, Chat Completions                                                                                           |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.4-nano) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 128,000 tokens |
+| Terms and License | [link ↗](https://openai.com/policies/) |
+| More information | [link ↗](https://openai.com/) |
+| Zero data retention | Yes |
+| Request formats | Responses, Chat Completions |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.4-nano) |
 
 ## Usage
 
@@ -59,6 +59,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The three laws of thermodynamics are:
 
 1. **Zeroth Law (thermal equilibrium):**
@@ -78,6 +79,7 @@ The three laws of thermodynamics are:
 4. **Third Law (absolute zero):**
    As temperature approaches absolute zero (0 K), the entropy of a perfect crystal approaches a constant minimum value (typically zero).
    It is impossible to reach absolute zero in a finite number of steps.
+```
 
 ```json
 {
@@ -122,7 +124,11 @@ The three laws of thermodynamics are:
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -156,6 +162,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 You can read a JSON file in Python using the built-in `json` module.
 
 ```python
@@ -172,6 +179,7 @@ print(data)  # data is now a Python dict/list depending on the JSON
 - If your JSON file is an array at the top level, `data` will be a `list`; if it’s an object, it’ll be a `dict`.
 
 If you want to read a JSON string instead (not a file), use `json.loads(s)`.
+````
 
 ```json
 {
@@ -214,7 +222,13 @@ If you want to read a JSON string instead (not a file), use `json.loads(s)`.
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -262,6 +276,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Absolutely—here are some great stop ideas on a typical San Francisco → Los Angeles road trip (assuming you’ll mostly take **I‑5 or US‑101**). I’ll list them by region so you can mix and match based on time and interests.
 
 ## Best quick stops (easy to add)
@@ -306,6 +321,7 @@ If you go more inland (often faster, less coastline):
 4. Any interests: beaches, hiking, wine, kitschy towns, food stops, museums?
 
 Answer those and I’ll propose a specific route with 6–12 stops, estimated timing, and backup options.
+```
 
 ```json
 {
@@ -348,7 +364,13 @@ Answer those and I’ll propose a specific route with 6–12 stops, estimated ti
 }
 ```
 
-**Creative Writing** — Longer completion for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Longer completion for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -382,6 +404,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The rain had been falling long enough to turn the city’s neon into smeared watercolor, but it hadn’t softened the edges of the crime scene.
 
 Detective Mara Kincaid stood just inside the taped perimeter, her coat dark with moisture and her mind sharper than the puddles gathering at her feet. The victim’s apartment sat above a shuttered bakery, its windows fogged from the inside, its hallway smelling faintly of citrus cleaner and burnt copper.
@@ -425,6 +448,7 @@ Whatever left this behind didn’t want to be caught.
 But it had made sure she’d look—down at the seam between boards—at the moment her flashlight found it.
 
 As if it knew exactly where her curiosity would go next.
+```
 
 ```json
 {
@@ -467,7 +491,13 @@ As if it knew exactly where her curiosity would go next.
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -500,6 +530,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 Recursion is a programming technique where a function solves a problem by calling itself on smaller versions of the same problem.
 
 A key idea is that recursion usually needs:
@@ -529,6 +560,7 @@ def factorial(n):
 So: `4 * 3 * 2 * 1 = 24`
 
 If you want, I can also show a recursion example like summing a list or traversing a tree.
+````
 
 ```json
 [
@@ -5899,7 +5931,13 @@ If you want, I can also show a recursion example like summing a list or traversi
 ]
 ```
 
-**Web Search** — Letting the model use OpenAI's built-in web search tool to answer with current information
+</details>
+
+<details>
+
+<summary>**Web Search** — Letting the model use OpenAI's built-in web search tool to answer with current information</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -5929,9 +5967,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 - **New Cloudflare One partner initiative for AI + SASE migrations:** Cloudflare announced a new “Cloudflare One Design Partner” designation (via its PowerUP program) and an AI-powered toolkit aimed at helping organizations modernize security/networking to SASE-style architectures. ([itpro.com](https://www.itpro.com/technology/artificial-intelligence/cloudflare-launches-new-partner-initiative-to-support-ai-and-sase-adoption?utm_source=openai))
 - **Acquisition to expand Cloudflare’s AI-native dev tooling:** Cloudflare said it’s buying **VoidZero** (behind the Vite ecosystem and related tools like Vitest), with plans to integrate those assets into **Cloudflare Workers** and keep key parts open source. ([itpro.com](https://www.itpro.com/business/acquisition/cloudflare-snaps-up-voidzero-to-expand-ai-native-developer-tools?utm_source=openai))
 - **Operational / reliability chatter around recent Cloudflare issues:** Multiple outlets and community reports during the last week pointed to **service problems affecting customer traffic** (including discussions referencing Cloudflare’s status/incident activity). ([cloudflarestatus.com](https://www.cloudflarestatus.com/uptime?utm_source=openai))
+```
 
 ```json
 {
@@ -6080,6 +6120,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }
 ```
 
+</details>
+
 ## Parameters
 
 Schema variant
@@ -6110,13 +6152,11 @@ stream
 
 `boolean`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
-
-``
 
 ▶text{}
 
@@ -6126,7 +6166,7 @@ tool\_choice
 
 `object`
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -6148,11 +6188,11 @@ top\_p
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 stream
 
@@ -6162,19 +6202,15 @@ stream
 
 `object`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
 
-``
-
 response\_format
 
-``
-
-▶modalities\[\]
+▶modalities\[]
 
 `array`
 
@@ -6198,7 +6234,7 @@ model
 
 `string`
 
-▶output\[\]
+▶output\[]
 
 `array`
 
@@ -6230,7 +6266,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -6240,9 +6276,9 @@ model
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-nano/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-nano/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-nano/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-nano/schema-output.json)
 
 Was this helpful?
 

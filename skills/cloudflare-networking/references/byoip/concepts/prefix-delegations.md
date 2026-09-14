@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Prefix delegations
 
-Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/byoip/concepts/prefix-delegations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/byoip/concepts/prefix-delegations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Prefix delegations allow a prefix owner (Account A) to grant another Cloudflare account (Account B) permission to use all or part of their BYOIP prefix. The original prefix remains managed by Account A, but Account B can use the delegated IPs with CDN services (including Cloudflare for SaaS) or Spectrum. Refer to [service bindings](https://developers.cloudflare.com/byoip/service-bindings/) for more information on the services an IP can be bound to.
 
@@ -28,7 +28,7 @@ In the Cloudflare for SaaS example, Account A is using BYOIP + CDN and Cloudflar
 
 If Account A delegates use of part or all of a prefix to Account B via a prefix delegation, Account B can also use the [Spectrum API](https://developers.cloudflare.com/spectrum/about/byoip/) with the IPs it was delegated access to.
 
-**Example:** Account A is the primary owner of prefix 1.2.3.0/24\. Account A delegates the use of 1.2.3.0/32 to Account B. Account B can now use the Spectrum API to create a Spectrum app with 1.2.3.0/32.
+**Example:** Account A is the primary owner of prefix 1.2.3.0/24. Account A delegates the use of 1.2.3.0/32 to Account B. Account B can now use the Spectrum API to create a Spectrum app with 1.2.3.0/32.
 
 ## API calls for prefix delegations
 
@@ -43,11 +43,11 @@ To bind an IP from one service to another, use the API.
 ## Configure prefix delegations
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
-2. Go to **IP Addresses** \> **BYOIP Prefixes**.
+2. Go to **IP Addresses** > **BYOIP Prefixes**.
 3. Select **Edit** to modify a prefix. **Edit IP Prefixes** displays.
 4. At the bottom of the page, select **Add Delegation**. Other accounts that your user is a part of will auto-load when you create the delegation.
 5. Select **Save**.
-6. Bind IPs to a service via the [Service Bindings API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/service%5Fbindings/) as needed.
+6. Bind IPs to a service via the [Service Bindings API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/service_bindings/) as needed.
 
 Was this helpful?
 

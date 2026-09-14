@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # WHOIS redaction
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/registrar/account-options/whois-redaction/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/registrar/account-options/whois-redaction/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Registrar provides personal data redaction on WHOIS information, if permitted by the registry.
 
@@ -26,8 +26,8 @@ Cloudflare’s WHOIS service can be found at [https://rdap.cloudflare.com/ ↗](
 
 WHOIS redaction removes most contact information categorized as personal data (such as registrant name, email address, postal address) from the published WHOIS record for a domain. These fields will read `Data Redacted`. The nameserver, domain lock information, and date records for a domain are still available publicly. The following fields will continue to show in WHOIS, due to ICANN policy:
 
-* Registrant state/province
-* Registrant country
+- Registrant state/province
+- Registrant country
 
 Cloudflare still maintains the authoritative, unredacted, record of your WHOIS data. You can modify this information at any time. Refer to [Registrant contact updates](https://developers.cloudflare.com/registrar/account-options/domain-contact-updates) for more information.
 

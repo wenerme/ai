@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # About
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waiting-room/about/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waiting-room/about/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Waiting Room queues visitors when your traffic approaches a previously defined threshold that might otherwise bring an application down.
 
@@ -22,13 +22,12 @@ Waiting Room queues visitors when your traffic approaches a previously defined t
 
 Once you have [created and activated a waiting room](https://developers.cloudflare.com/waiting-room/get-started/) for a specific application page:
 
-* If a page is not experiencing heavy traffic, a visitor accesses the page directly.
-* If page traffic approaches a [user-defined threshold](https://developers.cloudflare.com/waiting-room/reference/configuration-settings/#session-duration), a visitor enters a virtual waiting room until it is their turn to access the page:
-
-  * Each user receives a [cookie](https://developers.cloudflare.com/waiting-room/reference/waiting-room-cookie/) to manage the dynamic outflow of requests from the waiting room to the origin website in [First In First Out (FIFO)](https://developers.cloudflare.com/waiting-room/reference/queueing-methods/#first-in-first-out-fifo) order.
-  * While in the waiting room, the user's browser automatically refreshes every 20 seconds to give them updated information about their estimated wait time.
-  * When a user exits the waiting room and reaches your application, they can leave and re-enter without waiting for the length of time specified by the [session duration](https://developers.cloudflare.com/waiting-room/reference/configuration-settings/#session-duration).
-  * Because waiting rooms support dynamic inflow and [outflow](https://developers.cloudflare.com/waiting-room/reference/configuration-settings/#session-duration), new spots appear more quickly and estimated wait times are lower and more accurate.
+- If a page is not experiencing heavy traffic, a visitor accesses the page directly.
+- If page traffic approaches a [user-defined threshold](https://developers.cloudflare.com/waiting-room/reference/configuration-settings/#session-duration), a visitor enters a virtual waiting room until it is their turn to access the page:
+  - Each user receives a [cookie](https://developers.cloudflare.com/waiting-room/reference/waiting-room-cookie/) to manage the dynamic outflow of requests from the waiting room to the origin website in [First In First Out (FIFO)](https://developers.cloudflare.com/waiting-room/reference/queueing-methods/#first-in-first-out-fifo) order.
+  - While in the waiting room, the user's browser automatically refreshes every 20 seconds to give them updated information about their estimated wait time.
+  - When a user exits the waiting room and reaches your application, they can leave and re-enter without waiting for the length of time specified by the [session duration](https://developers.cloudflare.com/waiting-room/reference/configuration-settings/#session-duration).
+  - Because waiting rooms support dynamic inflow and [outflow](https://developers.cloudflare.com/waiting-room/reference/configuration-settings/#session-duration), new spots appear more quickly and estimated wait times are lower and more accurate.
 
 ## Architecture
 
@@ -40,8 +39,8 @@ That decision itself depends on two factors: [admin-defined thresholds](https://
 
 For admin-defined thresholds, the two measures that matter are `total active users` and `new users per minute`:
 
-* `total active users` is a target threshold for how many simultaneous users you want to allow on the pages covered by your waiting room.
-* `new users per minute` defines the target threshold for the maximum rate of user influx to your website per minute.
+- `total active users` is a target threshold for how many simultaneous users you want to allow on the pages covered by your waiting room.
+- `new users per minute` defines the target threshold for the maximum rate of user influx to your website per minute.
 
 A sharp spike in either of these values might result in queuing. Another configuration that affects how we calculate `the total active users` is `session duration`. A user is considered active for `session duration` minutes since the request is made to any page covered by a waiting room.
 

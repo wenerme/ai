@@ -12,21 +12,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Limits
 
-Last updated May 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/artifacts/platform/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Limits that apply to creating, importing, cloning, and pushing Artifacts are detailed below.
 
 These limits cover naming rules, storage, and request rates for control-plane and Git operations.
 
-| Feature                        | Limit                                                                                          |
-| ------------------------------ | ---------------------------------------------------------------------------------------------- |
-| Control-plane request rate     | 2,000 requests per 10 seconds per Artifacts namespace                                          |
-| Git request rate, per artifact | 2,000 requests per 10 seconds per artifact                                                     |
-| Maximum storage per repository | 10 GB                                                                                          |
-| Maximum storage per account    | 1 TB (can be raised on request)                                                                |
-| Maximum number of repositories | Unlimited                                                                                      |
-| Maximum number of namespaces   | Unlimited                                                                                      |
-| Namespace and repo names       | Start with a letter or digit. Remaining characters may include letters, digits, ., \_, and \-. |
+| Feature | Limit |
+| --- | --- |
+| Control-plane request rate | 2,000 requests per 10 seconds per Artifacts namespace |
+| Git request rate, per artifact | 2,000 requests per 10 seconds per artifact |
+| Maximum storage per repository | 10 GB |
+| Maximum storage per account | 1 TB (can be raised on request) |
+| Maximum number of repositories | Unlimited |
+| Maximum number of namespaces | Unlimited |
+| Namespace and repo names | Start with a letter or digit. Remaining characters may include letters, digits, `.`, `_`, and `-`. |
 
 Was this helpful?
 

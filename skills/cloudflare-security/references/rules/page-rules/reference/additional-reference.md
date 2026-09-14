@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Additional reference for Page Rules
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/page-rules/reference/additional-reference/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/page-rules/reference/additional-reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -24,38 +24,38 @@ For more flexibility and customization, consider using [Snippets](https://develo
 
 This setting is available to Business and Enterprise customers.
 
-The **Bypass Cache on Cookie** setting supports basic regular expressions (regex) as follows:
+The **Bypass Cache on Cookie** setting supports basic regular expressions (regex) as follows:
 
-* A pipe operator (represented by `|`) to match multiple cookies using _OR_ boolean logic. For example, `bypass=.*|PHPSESSID=.*` would bypass the cache if either a cookie called `bypass` or `PHPSESSID` were set, regardless of the cookie's value.
-* The wildcard operator (represented by `.*`), such that a rule value of `t.*st=` would match both a cookie called `test` and one called `teeest`.
+- A pipe operator (represented by `|`) to match multiple cookies using *OR* boolean logic. For example, `bypass=.*|PHPSESSID=.*` would bypass the cache if either a cookie called `bypass` or `PHPSESSID` were set, regardless of the cookie's value.
+- The wildcard operator (represented by `.*`), such that a rule value of `t.*st=` would match both a cookie called `test` and one called `teeest`.
 
 Limitations include:
 
-* 150 characters per cookie regex
-* 12 wildcards per cookie regex
-* 1 wildcard in between each `|` in the cookie regex
+- 150 characters per cookie regex
+- 12 wildcards per cookie regex
+- 1 wildcard in between each `|` in the cookie regex
 
 To learn how to configure **Bypass Cache on Cookie** with a cache rule, refer to [Bypass Cache on Cookie](https://developers.cloudflare.com/cache/how-to/cache-rules/examples/bypass-cache-on-cookie/).
 
 Note
 
-If you add both this setting and the enterprise-only _Cache On Cookie_ setting to the same page rule, _Cache On Cookie_ takes precedence over _Bypass Cache on Cookie_.
+If you add both this setting and the enterprise-only *Cache On Cookie* setting to the same page rule, *Cache On Cookie* takes precedence over *Bypass Cache on Cookie*.
 
 ## Zone name occurrences must end with a slash
 
 When saving a page rule, Cloudflare will ensure that there is a slash after each occurrence of the current zone name in the **If the URL matches** field. For example, if the current zone name is `example.com`, then:
 
-* `example.com` will be saved as `example.com/`
-* `example.com/path/example.com` will be saved as `example.com/path/example.com/`
+- `example.com` will be saved as `example.com/`
+- `example.com/path/example.com` will be saved as `example.com/path/example.com/`
 
-Note that `example.com/some-path/cloudflare.com` will be saved _without_ a final slash, since the zone name is not `cloudflare.com`.
+Note that `example.com/some-path/cloudflare.com` will be saved *without* a final slash, since the zone name is not `cloudflare.com`.
 
 ## Network ports supported by Page Rules
 
 If you specify a port in the **If the URL matches** field of a page rule, it must be one of the following:
 
-* One of the HTTP/HTTPS ports [compatible with Cloudflare’s proxy](https://developers.cloudflare.com/fundamentals/reference/network-ports/#network-ports-compatible-with-cloudflares-proxy).
-* A custom port of a [Cloudflare Spectrum](https://developers.cloudflare.com/spectrum/) HTTPS application.
+- One of the HTTP/HTTPS ports [compatible with Cloudflare’s proxy](https://developers.cloudflare.com/fundamentals/reference/network-ports/#network-ports-compatible-with-cloudflares-proxy).
+- A custom port of a [Cloudflare Spectrum](https://developers.cloudflare.com/spectrum/) HTTPS application.
 
 ## Using Page Rules with Workers
 
@@ -63,7 +63,7 @@ If the URL of the current request matches both a page rule and a [Workers custom
 
 ## Page Rules are case-insensitive
 
-The pattern entered under **If the URL matches** will not consider upper and lower case differences — `example.com/path`, `example.com/Path`, and `example.com/PATH` will be triggered the same way.
+The pattern entered under **If the URL matches** will not consider upper and lower case differences — `example.com/path`, `example.com/Path`, and `example.com/PATH` will be triggered the same way.
 
 If you need your rules to consider case sensitivity, you might want to use alternative [Rules](https://developers.cloudflare.com/rules/) options instead.
 

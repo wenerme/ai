@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Volumetric Abuse Detection
 
-Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Volumetric Abuse Detection generates per-endpoint, per-session rate limit recommendations that adjust automatically as your traffic patterns change.
 
@@ -30,7 +30,7 @@ Volumetric Abuse Detection rate limits are a way to prevent blatant volumetric a
 
 Volumetric Abuse Detection analyzes your API's individual session traffic statistics to recommend per-endpoint, per-session rate limits.
 
-To access your endpoints, go to **Security** \> **Web Assets** \> **Endpoints**.
+To access your endpoints, go to **Security** > **Web Assets** > **Endpoints**.
 
 Recommendations will continue to update if your traffic pattern changes.
 
@@ -40,9 +40,9 @@ Volumetric Abuse Detection generates rate limit thresholds only after collecting
 
 Thresholds are suggested only for endpoints that satisfy all of the following requirements within the last seven days (or since initial discovery):
 
-* The endpoint must receive sufficient valid traffic (traffic that meets the [API Discovery](https://developers.cloudflare.com/api-shield/security/api-discovery/#requirements) criteria). Intermittent or erratic traffic may prevent suggestions.
-* The endpoint must be accessed by at least 50 distinct sessions in any 24-hour period during the last seven days.
-* [Session identifiers](https://developers.cloudflare.com/api-shield/get-started/#to-set-up-session-identifiers), such as an authorization token available as a request header or cookie, must be configured to allow Cloudflare to accurately detect individual sessions and perform the required per-session rate analysis.
+- The endpoint must receive sufficient valid traffic (traffic that meets the [API Discovery](https://developers.cloudflare.com/api-shield/security/api-discovery/#requirements) criteria). Intermittent or erratic traffic may prevent suggestions.
+- The endpoint must be accessed by at least 50 distinct sessions in any 24-hour period during the last seven days.
+- [Session identifiers](https://developers.cloudflare.com/api-shield/get-started/#to-set-up-session-identifiers), such as an authorization token available as a request header or cookie, must be configured to allow Cloudflare to accurately detect individual sessions and perform the required per-session rate analysis.
 
 After adding a session identifier, allow 24 hours for rate limit recommendations to appear on endpoints in the Cloudflare dashboard.
 
@@ -68,15 +68,26 @@ Refer to the [Rules documentation](https://developers.cloudflare.com/waf/rate-li
 
 ## API
 
-[Rate limit recommendations are available via the API](https://developers.cloudflare.com/api/resources/api%5Fgateway/subresources/operations/methods/get/) if you would like to dynamically update rate limits over time.
+[Rate limit recommendations are available via the API](https://developers.cloudflare.com/api/resources/api_gateway/subresources/operations/methods/get/) if you would like to dynamically update rate limits over time.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Account API Gateway`
-* `Account API Gateway Read`
-* `Domain API Gateway`
-* `Domain API Gateway Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Account API Gateway</code>
+- <code>Account API Gateway Read</code>
+- <code>Domain API Gateway</code>
+- <code>Domain API Gateway Read</code>
+
+</details>
+
+*Get a web or API operationbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/api_gateway/operations/$OPERATION_ID" \
@@ -90,8 +101,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/api_gateway/operations
 
 You can rate limit requests based on any claim inside of a JSON Web Token (JWT), such as:
 
-* Registered claims like `aud` or `sub`
-* Custom claims like `userEmail`, including nested custom claims like `user.email`
+- Registered claims like `aud` or `sub`
+- Custom claims like `userEmail`, including nested custom claims like `user.email`
 
 Rate limiting based on JWT claim values will only work on valid JSON Web Tokens. If you do not block invalid JSON Web Tokens on your path, the [JWT claims will all be counted and possibly blocked](https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/#missing-field-versus-empty-value) if high traffic is detected in the Point of Presence (PoP).
 
@@ -101,10 +112,12 @@ You must also count the JWT claim that uniquely identifies the user. If you sele
 
 If you offer multiple tiers on your website or application and you want to enforce rate limiting based on the tiers, such as:
 
-* If `"aud": "free-tier"`, rate limit to five requests per minute.
-* If `"aud": "premium-tier"`, rate limit to 50 requests per minute.
+- If `"aud": "free-tier"`, rate limit to five requests per minute.
+- If `"aud": "premium-tier"`, rate limit to 50 requests per minute.
 
 You can follow the rate limiting rule example below:
+
+*Example rule expressiontxt*
 
 ```txt
 (http.request.method eq "GET" and

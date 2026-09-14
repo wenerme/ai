@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # In-browser remote desktop
 
-Last updated Mar 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/setup/secure-private-apps/in-browser-rdp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Mar 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/setup/secure-private-apps/in-browser-rdp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Provide secure, in-browser remote desktop access to Windows hosts without Remote Desktop Protocol (RDP) client software on the user's device. This is useful when you need to give IT staff or support teams remote access to Windows machines for administration or troubleshooting from any browser.
 
@@ -30,10 +30,10 @@ For details on supported operating systems, connection methods, and known limita
 
 ## Prerequisites
 
-* A Cloudflare account with a Zero Trust organization. If you have not set this up, refer to [Get started](https://developers.cloudflare.com/cloudflare-one/setup/).
-* An [active domain on your Cloudflare account](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/). A public subdomain is created on this domain for your application.
-* A Linux, Windows, or macOS device on your private network that can reach the Windows host. This is where you install the tunnel.
-* A Windows host on your private network that accepts Remote Desktop connections.
+- A Cloudflare account with a Zero Trust organization. If you have not set this up, refer to [Get started](https://developers.cloudflare.com/cloudflare-one/setup/).
+- An [active domain on your Cloudflare account](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/). A public subdomain is created on this domain for your application.
+- A Linux, Windows, or macOS device on your private network that can reach the Windows host. This is where you install the tunnel.
+- A Windows host on your private network that accepts Remote Desktop connections.
 
 ## Step 1: Define your application
 
@@ -88,14 +88,13 @@ The dashboard confirms that your application is available and protected behind C
 
 ## Recommended next steps
 
-* **Test your application**:
-
+- **Test your application**:
   1. Select **Test login** on the success screen.
   2. On the Access login screen, enter one of the email addresses you added to your Access policy.
   3. Select **Send me a code**.
   4. Enter the code from your email and select **Sign in**.
-* **Explore more**: Review your applications and policies under **Zero Trust** \> **Access controls**, and your tunnels in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Networking** \> **Tunnels**.
-* **Configure an identity provider**: Replace email one-time PINs with your organization's identity provider for a seamless login experience. For more information, refer to [Identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/).
+- **Explore more**: Review your applications and policies under **Zero Trust** > **Access controls**, and your tunnels in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Networking** > **Tunnels**.
+- **Configure an identity provider**: Replace email one-time PINs with your organization's identity provider for a seamless login experience. For more information, refer to [Identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/).
 
 For in-depth guidance on clientless access, refer to the [Clientless access learning path](https://developers.cloudflare.com/learning-paths/clientless-access/concepts/what-is-clientless-access/).
 
@@ -103,8 +102,8 @@ For in-depth guidance on clientless access, refer to the [Clientless access lear
 
 If you have issues connecting, refer to these resources:
 
-* [Troubleshoot tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/): diagnose tunnel connectivity and routing problems.
-* [Troubleshooting](https://developers.cloudflare.com/cloudflare-one/troubleshooting/): resolve common Zero Trust errors and issues.
+- [Troubleshoot tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/): diagnose tunnel connectivity and routing problems.
+- [Troubleshooting](https://developers.cloudflare.com/cloudflare-one/troubleshooting/): resolve common Zero Trust errors and issues.
 
 Was this helpful?
 

@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Why Spectrum-enabled hostnames might appear in Layer 7 Analytics
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/spectrum/reference/layer-7-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/reference/layer-7-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Even when you have Spectrum enabled to handle Layer 4 traffic (for example, TCP/UDP connections), you may still notice traffic in your Layer 7 (L7) analytics dashboard. This is due to the way Cloudflare's Layer 7 CDNand Spectrum handle customer identity differently.
+Even when you have Spectrum enabled to handle Layer 4 traffic (for example, TCP/UDP connections), you may still notice traffic in your Layer 7 (L7) analytics dashboard. This is due to the way Cloudflare's Layer 7 CDN
+
+ and Spectrum handle customer identity differently.
 
 ## How Spectrum identifies a user (Layer 4)
 

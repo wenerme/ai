@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Logpull
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpull/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpull/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Logpull is a REST API for consuming request logs over HTTP. These logs contain data related to the connecting client, the request path through the Cloudflare network, and the response from the origin web server. This data is useful for enriching existing logs on an origin server. Logpull is available to customers on the Enterprise plan.
 
@@ -22,16 +22,16 @@ Logpull is considered a legacy feature and we recommend using [Logpush](https://
 
 Review the following content to learn more about Logpull.
 
-* [Understanding the basics](https://developers.cloudflare.com/logs/logpull/understanding-the-basics/)
-* [Enabling log retention](https://developers.cloudflare.com/logs/logpull/enabling-log-retention/)
-* [Requesting logs](https://developers.cloudflare.com/logs/logpull/requesting-logs/)
-* [Additional details](https://developers.cloudflare.com/logs/logpull/additional-details/)
+- [Understanding the basics](https://developers.cloudflare.com/logs/logpull/understanding-the-basics/)
+- [Enabling log retention](https://developers.cloudflare.com/logs/logpull/enabling-log-retention/)
+- [Requesting logs](https://developers.cloudflare.com/logs/logpull/requesting-logs/)
+- [Additional details](https://developers.cloudflare.com/logs/logpull/additional-details/)
 
 ## Availability
 
-|              | Free | Pro | Business | Enterprise |
-| ------------ | ---- | --- | -------- | ---------- |
-| Availability | No   | No  | No       | Yes        |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | No | No | No | Yes |
 
 ### Limitation
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Caching
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/surge-readiness/performance/caching/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/surge-readiness/performance/caching/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Optimize caching
 
@@ -20,8 +20,7 @@ By default, Cloudflare [caches static content](https://developers.cloudflare.com
 
 ### Cache more requests
 
-1. In the Cloudflare dashboard, go to the **Caching** \> **Cache Rules** page.
-[Go to **Cache Rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules)
+1. In the Cloudflare dashboard, go to the **Caching** > **Cache Rules** page. [Go to **Cache Rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules)
 2. Select **Create rule**.
 3. For When incoming requests match, enter either your entire website or a specific path on your application, based on the Hostname or URI Path. Refer to the [available fields](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#fields).
 4. For Cache eligibility, define how these requests should be cached and for how long. Refer to the available [cache eligibility settings](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#eligible-for-cache-settings).
@@ -29,8 +28,8 @@ By default, Cloudflare [caches static content](https://developers.cloudflare.com
 
 ### Advanced cache optimizations
 
-* [Custom Cache Keys](https://developers.cloudflare.com/cache/how-to/cache-keys/) allows you to precisely set the cacheability setting for any resource.
-* [Origin Cache Control](https://developers.cloudflare.com/cache/concepts/cache-control/) can be used to let the Cache-Control headers tell Cloudflare how to handle content from the origin server.
+- [Custom Cache Keys](https://developers.cloudflare.com/cache/how-to/cache-keys/) allows you to precisely set the cacheability setting for any resource.
+- [Origin Cache Control](https://developers.cloudflare.com/cache/concepts/cache-control/) can be used to let the Cache-Control headers tell Cloudflare how to handle content from the origin server.
 
 ## Tiered Cache
 

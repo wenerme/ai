@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Type conversion functions
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/type-conversion-functions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/type-conversion-functions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## toUInt8 New
 

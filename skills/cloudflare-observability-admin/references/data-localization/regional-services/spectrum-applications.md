@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Regionalized Spectrum Applications
 
-Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/data-localization/regional-services/spectrum-applications/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/regional-services/spectrum-applications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -28,24 +28,28 @@ You create a Spectrum HTTP/S application for each hostname you want to regionali
 
 ## Prerequisites
 
-* [Spectrum](https://developers.cloudflare.com/spectrum/) is included in your Enterprise contract. Spectrum is an add-on, so it must be part of your contract before it can be enabled.
-* Your account has the **Regional Services** and **Spectrum** entitlements enabled. Contact your account team to enable them.
-* You have a hostname proxied through Cloudflare that you want to regionalize.
-* If you want to use your own addresses, you have onboarded [Spectrum Static IPs](https://developers.cloudflare.com/spectrum/about/static-ip/) or a [BYOIP](https://developers.cloudflare.com/byoip/) prefix.
+- [Spectrum](https://developers.cloudflare.com/spectrum/) is included in your Enterprise contract. Spectrum is an add-on, so it must be part of your contract before it can be enabled.
+- Your account has the **Regional Services** and **Spectrum** entitlements enabled. Contact your account team to enable them.
+- You have a hostname proxied through Cloudflare that you want to regionalize.
+- If you want to use your own addresses, you have onboarded [Spectrum Static IPs](https://developers.cloudflare.com/spectrum/about/static-ip/) or a [BYOIP](https://developers.cloudflare.com/byoip/) prefix.
 
 ## Set up a Regionalized Spectrum Application
 
 1. **Enable the required products.** Work with your account team to enable Regional Services and Spectrum on your account.
-2. **Create a Spectrum application for each hostname.** Create an [HTTP/HTTPS Spectrum application](https://developers.cloudflare.com/spectrum/get-started/) for each hostname you want to regionalize. Set the [application type](https://developers.cloudflare.com/spectrum/reference/configuration-options/#application-type) to _HTTP/HTTPS_ so that traffic is routed through Cloudflare's application-layer pipeline. You can create multiple Spectrum applications in a zone; they all share the single region assigned to that zone.
-To use your own addresses, create the application via the API and set `edge_ips` (with `type: "static"`) to your [Static IP](https://developers.cloudflare.com/spectrum/about/static-ip/) or [BYOIP](https://developers.cloudflare.com/spectrum/about/byoip/) addresses. The `origin_direct` field still points to your origin server.
-Spectrum hostname limits and workarounds
-By default, a zone is limited to **10 unique Spectrum hostnames** (each backed by a dedicated IPv4 address). If you need to regionalize more hostnames than this, you can:
+2. **Create a Spectrum application for each hostname.** Create an [HTTP/HTTPS Spectrum application](https://developers.cloudflare.com/spectrum/get-started/) for each hostname you want to regionalize. Set the [application type](https://developers.cloudflare.com/spectrum/reference/configuration-options/#application-type) to *HTTP/HTTPS* so that traffic is routed through Cloudflare's application-layer pipeline. You can create multiple Spectrum applications in a zone; they all share the single region assigned to that zone.
 
-  * **Use [BYOIP](https://developers.cloudflare.com/spectrum/about/byoip/)** — bring your own IP space so Spectrum applications are not constrained by the default shared-IPv4 allocation.
-  * **Use IPv6-only Spectrum applications** — IPv6 addresses are not subject to the same scarcity as IPv4, so IPv6-only applications do not count against the IPv4 hostname limit.
-  * **CNAME multiple subdomains to a single Spectrum application** — point several DNS-only (gray-clouded) `CNAME` records at one Spectrum app hostname. This works only when those hostnames share the same origin (one origin per application).
-  * **Use [Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/)** — configure the Spectrum application as the target (fallback origin) for Custom Hostnames.
-These are Spectrum-wide limits, not specific to Regional Services. Contact your account team if you expect to exceed them.
+   To use your own addresses, create the application via the API and set `edge_ips` (with `type: "static"`) to your [Static IP](https://developers.cloudflare.com/spectrum/about/static-ip/) or [BYOIP](https://developers.cloudflare.com/spectrum/about/byoip/) addresses. The `origin_direct` field still points to your origin server.<details><summary>
+
+   Spectrum hostname limits and workarounds</summary>
+
+By default, a zone is limited to **10 unique Spectrum hostnames** (each backed by a dedicated IPv4 address). If you need to regionalize more hostnames than this, you can:
+   - **Use <a href="https://developers.cloudflare.com/spectrum/about/byoip/">BYOIP</a>** — bring your own IP space so Spectrum applications are not constrained by the default shared-IPv4 allocation.
+   - **Use IPv6-only Spectrum applications** — IPv6 addresses are not subject to the same scarcity as IPv4, so IPv6-only applications do not count against the IPv4 hostname limit.
+   - **CNAME multiple subdomains to a single Spectrum application** — point several DNS-only (gray-clouded) <code>CNAME</code> records at one Spectrum app hostname. This works only when those hostnames share the same origin (one origin per application).
+   - **Use <a href="https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/">Cloudflare for SaaS</a>** — configure the Spectrum application as the target (fallback origin) for Custom Hostnames.
+
+   These are Spectrum-wide limits, not specific to Regional Services. Contact your account team if you expect to exceed them.</details>
+
 3. **Configure the processing region.** The region is assigned by Cloudflare, so communicate and work with your account team to confirm which [region](https://developers.cloudflare.com/data-localization/region-support/) should apply to your zone and to verify it has been configured. You can use any [managed region](https://developers.cloudflare.com/data-localization/region-support/#region-types), or request a [custom region](#custom-regions) if your compliance requirements are not met by the managed regions.
 4. **Verify regionalization.** Confirm that traffic is processed in the expected region. Refer to [Verify the configuration](#verify-the-configuration).
 
@@ -53,11 +57,13 @@ These are Spectrum-wide limits, not specific to Regional Services. Contact your 
 
 You can confirm regionalization using the same method as any other Regional Services configuration — refer to [Verify Regional Services behavior](https://developers.cloudflare.com/data-localization/how-to/#verify-regional-services-behavior) for the general guidance.
 
-Every Cloudflare HTTP response includes a `CF-RAY` header that ends with a three-letter [IATA airport code ↗](https://en.wikipedia.org/wiki/IATA%5Fairport%5Fcode) identifying the data center where TLS termination occurred. Send a request to your regionalized hostname and check that the code corresponds to a data center inside your configured region:
+Every Cloudflare HTTP response includes a `CF-RAY` header that ends with a three-letter [IATA airport code ↗](https://en.wikipedia.org/wiki/IATA_airport_code) identifying the data center where TLS termination occurred. Send a request to your regionalized hostname and check that the code corresponds to a data center inside your configured region:
 
 ```bash
 curl --head https://www.example.com 2>&1 | grep -i cf-ray
 ```
+
+*Example outputtxt*
 
 ```txt
 cf-ray: 80cc9e64fd8a1519-MUC
@@ -71,9 +77,9 @@ If the [managed regions](https://developers.cloudflare.com/data-localization/reg
 
 ## Related resources
 
-* [Regional Services](https://developers.cloudflare.com/data-localization/regional-services/) — overview and in-region processing model.
-* [Available regions and product support](https://developers.cloudflare.com/data-localization/region-support/) — the full list of regions and their definitions.
-* [Spectrum](https://developers.cloudflare.com/spectrum/) — Cloudflare's Layer 4 proxy.
+- [Regional Services](https://developers.cloudflare.com/data-localization/regional-services/) — overview and in-region processing model.
+- [Available regions and product support](https://developers.cloudflare.com/data-localization/region-support/) — the full list of regions and their definitions.
+- [Spectrum](https://developers.cloudflare.com/spectrum/) — Cloudflare's Layer 4 proxy.
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure Snippets via API
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/snippets/create-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/snippets/create-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can create Snippets using the [Cloudflare API](https://developers.cloudflare.com/fundamentals/api/).
 
@@ -20,7 +20,7 @@ You can create Snippets using the [Cloudflare API](https://developers.cloudflare
 
 The [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) used in API requests to manage Snippets must have at least the following permission:
 
-* _Zone_ \> _Snippets_ \> _Edit_
+- *Zone* > *Snippets* > *Edit*
 
 Note
 
@@ -38,16 +38,16 @@ The `{zone_id}` argument is the [zone ID](https://developers.cloudflare.com/fund
 
 The following table summarizes the available operations.
 
-| Operation                          | Verb + Endpoint                                        |
-| ---------------------------------- | ------------------------------------------------------ |
-| List all code snippets             | GET /zones/{zone\_id}/snippets                         |
-| Create/update code snippet         | PUT /zones/{zone\_id}/snippets/{snippet\_name}         |
-| Get code snippet details           | GET /zones/{zone\_id}/snippets/{snippet\_name}         |
-| Get code snippet content           | GET /zones/{zone\_id}/snippets/{snippet\_name}/content |
-| Delete code snippet                | DELETE /zones/{zone\_id}/snippets/{snippet\_name}      |
-| List snippet rules                 | GET /zones/{zone\_id}/snippets/snippet\_rules          |
-| Create/update/delete snippet rules | PUT /zones/{zone\_id}/snippets/snippet\_rules          |
-| Delete all snippet rules           | DELETE /zones/{zone\_id}/snippets/snippet\_rules       |
+| Operation | Verb + Endpoint |
+| --- | --- |
+| List all code snippets | `GET /zones/{zone_id}/snippets` |
+| Create/update code snippet | `PUT /zones/{zone_id}/snippets/{snippet_name}` |
+| Get code snippet details | `GET /zones/{zone_id}/snippets/{snippet_name}` |
+| Get code snippet content | `GET /zones/{zone_id}/snippets/{snippet_name}/content` |
+| Delete code snippet | `DELETE /zones/{zone_id}/snippets/{snippet_name}` |
+| List snippet rules | `GET /zones/{zone_id}/snippets/snippet_rules` |
+| Create/update/delete snippet rules | `PUT /zones/{zone_id}/snippets/snippet_rules` |
+| Delete all snippet rules | `DELETE /zones/{zone_id}/snippets/snippet_rules` |
 
 ## Example API calls
 
@@ -55,10 +55,21 @@ The following table summarizes the available operations.
 
 To create or update a Snippet, use the following `PUT` request. The snippet is named `$SNIPPET_NAME` and the body contains the JavaScript code.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Snippets Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Snippets Write</code>
+
+</details>
+
+*Update a zone snippetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/snippets/$SNIPPET_NAME" \
@@ -72,10 +83,12 @@ The name of a snippet can only contain the characters `a-z`, `0-9`, and `_` (und
 
 The required body parameters are:
 
-* `files`: The file with your JavaScript code.
-* `metadata`: Object containing `main_module`, which must match the filename of the uploaded file.
+- `files`: The file with your JavaScript code.
+- `metadata`: Object containing `main_module`, which must match the filename of the uploaded file.
 
 To make this example work, save your JavaScript code in a file named `example.js`, and then execute `curl` command with a `PUT` request from the folder where `example.js` is located.
+
+*Example responsejson*
 
 ```json
 {
@@ -100,10 +113,21 @@ When using this endpoint to create a new rule and keep existing rules, you must 
 
 Once you have created a code snippet, you can link it to rules. This is done via the following `PUT` request to the `snippet_rules` endpoint.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Snippets Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Snippets Write</code>
+
+</details>
+
+*Update zone snippet rulesbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/snippets/snippet_rules" \

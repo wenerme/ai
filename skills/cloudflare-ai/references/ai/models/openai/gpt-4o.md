@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • OpenAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-4o/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-4o/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `openai/gpt-4o`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 GPT-4o is OpenAI’s multimodal flagship, accepting text and images and responding quickly across a wide range of tasks.
 
-| Model Info                                                                          |                                                                                                                 |
-| ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 128,000 tokens                                                                                                  |
-| Terms and License                                                                   | [link ↗](https://openai.com/policies/)                                                                          |
-| More information                                                                    | [link ↗](https://openai.com/)                                                                                   |
-| Zero data retention                                                                 | Yes                                                                                                             |
-| Request formats                                                                     | Responses, Chat Completions                                                                                     |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-4o) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 128,000 tokens |
+| Terms and License | [link ↗](https://openai.com/policies/) |
+| More information | [link ↗](https://openai.com/) |
+| Zero data retention | Yes |
+| Request formats | Responses, Chat Completions |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-4o) |
 
 ## Usage
 
@@ -59,6 +59,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The three laws of thermodynamics are fundamental principles that describe the behavior of energy and matter in a system. They are:
 
 1. **The First Law of Thermodynamics (Law of Energy Conservation):**
@@ -75,6 +76,7 @@ The three laws of thermodynamics are fundamental principles that describe the be
    According to this law, as the temperature of a system approaches absolute zero, the entropy of the system approaches a minimum value, often considered to be zero for a perfect crystalline structure. This means that it becomes increasingly difficult to remove more energy from a system as it nears absolute zero, and practically, reaching absolute zero is impossible.
 
 These three laws describe the fundamental behavior of energy transformations and form the groundwork for understanding thermodynamic processes.
+```
 
 ```json
 {
@@ -120,7 +122,11 @@ These three laws describe the fundamental behavior of energy transformations and
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -154,6 +160,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 To read a JSON file in Python, you typically use the built-in `json` module, which provides utilities for parsing JSON formatted data. Here’s a step-by-step guide on how to do it:
 
 1. **Import the `json` module**: To work with JSON data, you need to import this module.
@@ -201,6 +208,7 @@ print(data)
 - **File Modes**: Ensure the file is opened in read mode (`'r'`). If the JSON data is coming from a different source (like an API), you would use `json.loads()` to parse a JSON string instead.
 
 Using this method, you can easily read and work with JSON data in your Python projects.
+````
 
 ```json
 {
@@ -244,7 +252,13 @@ Using this method, you can easily read and work with JSON data in your Python pr
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -292,6 +306,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 A road trip from San Francisco to Los Angeles offers many scenic and interesting stops. Here are some popular ones:
 
 1. **Half Moon Bay**: Just south of San Francisco, this coastal town is great for a quick visit to the beach and offers stunning ocean views.
@@ -313,6 +328,7 @@ A road trip from San Francisco to Los Angeles offers many scenic and interesting
 9. **Malibu**: Stop by for some of the most famous beaches like Zuma Beach or enjoy oceanfront dining.
 
 These stops offer a mix of natural beauty, quaint towns, and interesting attractions. Be sure to check road conditions and make accommodations as needed, especially if traveling along the Pacific Coast Highway (Highway 1). Safe travels!
+```
 
 ```json
 {
@@ -356,7 +372,13 @@ These stops offer a mix of natural beauty, quaint towns, and interesting attract
 }
 ```
 
-**Creative Writing** — Longer completion for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Longer completion for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -390,6 +412,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Detective Elara Finch pushed open the creaky iron gate of the weathered mansion, her eyes narrowing against the gray drizzle that blanketed the estate. The air was thick with the earthy scent of rain and old secrets. She stepped cautiously, her boots sinking slightly into the sodden earth, as she approached the scene where the latest in a string of bizarre disappearances had occurred.
 
 The house loomed ahead, its once-grand façade now a tapestry of ivy and neglect. As Elara entered through the front door, the dim light from the overcast sky barely penetrated the dust-choked windows. Her gloved hand traced the outlines of dilapidated furniture covered in yellowed sheets, ghostly sentinels bearing witness to the passage of time.
@@ -399,6 +422,7 @@ Her gaze swept the parlor before settling on an oddly pristine object that gleam
 Inside the box lay a perfectly folded piece of parchment, its edges fraying but the ink remarkably intact. As she unfolded it, Elara's eyes widened at the drawing: a curious map, sketched with meticulous detail, leading to a location unfamiliar to her but marked with an ominous "X." What caught her attention most, however, was the signature beneath—a simple yet unmistakable mark that had haunted her career for years: a raven outlined in black.
 
 This symbol had been left at every one of the enigmatic disappearances plaguing the city, and now, finally, a tangible connection lay before her. As the music continued to play, its eerie notes echoing in the hushed room, Elara realized that this peculiar clue—this thread from a carefully woven tapestry of puzzles—might just unravel the mystery that had eluded her for so long.
+```
 
 ```json
 {
@@ -442,7 +466,13 @@ This symbol had been left at every one of the enigmatic disappearances plaguing 
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -475,6 +505,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 Recursion is a programming concept where a function calls itself in order to solve a problem. It breaks down a problem into smaller, more manageable sub-problems, each of which resembles the original problem. This approach is especially useful in tasks that can naturally be divided into similar subtasks, like calculating factorials or traversing data structures like trees.
 
 A simple example of recursion is the calculation of the factorial of a number. The factorial of a non-negative integer \( n \), denoted as \( n! \), is the product of all positive integers less than or equal to \( n \). The factorial of 0 is defined as 1.
@@ -501,6 +532,7 @@ In this example:
 - The base case stops the recursion when \( n \) is 0.
 - The recursive case reduces the problem by calling the `factorial` function with \( n-1 \), gradually approaching the base case.
 - Each call of the function adds a new layer to the call stack, and returning the result of each call unwinds the stack, culminating in the final result.
+````
 
 ```json
 [
@@ -7352,6 +7384,8 @@ In this example:
 ]
 ```
 
+</details>
+
 ## Parameters
 
 Schema variant
@@ -7382,13 +7416,11 @@ stream
 
 `boolean`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
-
-``
 
 ▶text{}
 
@@ -7398,7 +7430,7 @@ tool\_choice
 
 `object`
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -7420,11 +7452,11 @@ top\_p
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 stream
 
@@ -7434,19 +7466,15 @@ stream
 
 `object`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
 
-``
-
 response\_format
 
-``
-
-▶modalities\[\]
+▶modalities\[]
 
 `array`
 
@@ -7470,7 +7498,7 @@ model
 
 `string`
 
-▶output\[\]
+▶output\[]
 
 `array`
 
@@ -7502,7 +7530,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -7512,9 +7540,9 @@ model
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/openai/gpt-4o/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-4o/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/openai/gpt-4o/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-4o/schema-output.json)
 
 Was this helpful?
 

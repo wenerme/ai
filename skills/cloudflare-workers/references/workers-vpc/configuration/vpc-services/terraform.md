@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure with Terraform
 
-Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-VPC Services can be managed as infrastructure using the [cloudflare\_connectivity\_directory\_service ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/connectivity%5Fdirectory%5Fservice) resource in the [Cloudflare Terraform provider](https://developers.cloudflare.com/terraform/).
+VPC Services can be managed as infrastructure using the [`cloudflare_connectivity_directory_service` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/connectivity_directory_service) resource in the [Cloudflare Terraform provider](https://developers.cloudflare.com/terraform/).
 
 This maps directly to the [connectivity directory](https://developers.cloudflare.com/api/resources/connectivity/subresources/directory/subresources/services/) — the underlying API that the dashboard and Wrangler CLI also use to create and manage VPC Services. The same [VPC Service configuration fields](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/#vpc-service-configuration) (type, host, ports, tunnel ID) apply regardless of how the service is created.
 
@@ -135,9 +135,9 @@ resource "cloudflare_connectivity_directory_service" "my_database" {
 
 Valid values for `cert_verification_mode` are:
 
-* `verify_full` (default)
-* `verify_ca`
-* `disabled`
+- `verify_full` (default)
+- `verify_ca`
+- `disabled`
 
 Refer to [TLS certificate verification mode](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/#tls-certificate-verification-mode) for details.
 
@@ -149,7 +149,7 @@ For TCP services, `tcp_port` is required.
 
 ## Workers binding configuration
 
-Once a VPC Service exists, bind it to a Worker using the `vpc_service` binding type in the `bindings` array of a `cloudflare_worker_version` resource. This is equivalent to the [vpc\_services array in Wrangler configuration](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/#workers-binding-configuration).
+Once a VPC Service exists, bind it to a Worker using the `vpc_service` binding type in the `bindings` array of a `cloudflare_worker_version` resource. This is equivalent to the [`vpc_services` array in Wrangler configuration](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/#workers-binding-configuration).
 
 ```tf
 resource "cloudflare_worker_version" "my_worker_version" {
@@ -270,7 +270,7 @@ resource "cloudflare_connectivity_directory_service" "example" {
 }
 ```
 
-For the full schema, refer to the [Terraform registry documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/connectivity%5Fdirectory%5Fservice).
+For the full schema, refer to the [Terraform registry documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/connectivity_directory_service).
 
 Was this helpful?
 

@@ -16,18 +16,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Image • ByteDance
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.5/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.5/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `bytedance/seedream-4.5`
 
-* Third-party
+- Third-party
 
 Seedream 4.5 builds on 4.0 with multi-reference image support, batch generation, and sequential image generation.
 
-| Model Info       |                                                                                                                          |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| More information | [link ↗](https://seed.bytedance.com/en/seedream4%5F5)                                                                    |
-| Pricing          | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/bytedance/seedream-4.5) |
+| Model Info | |
+| --- | --- |
+| More information | [link ↗](https://seed.bytedance.com/en/seedream4_5) |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/bytedance/seedream-4.5) |
 
 ## Usage
 
@@ -69,7 +69,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**High Resolution** — 4K quality image generation
+<details>
+
+<summary>**High Resolution** — 4K quality image generation</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -114,7 +118,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Image-to-Image** — Edit using reference images
+</details>
+
+<details>
+
+<summary>**Image-to-Image** — Edit using reference images</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -162,7 +172,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Sequential Generation** — Generate multiple related images
+</details>
+
+<details>
+
+<summary>**Sequential Generation** — Generate multiple related images</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -208,7 +224,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Multi-Image Edit** — Combine multiple reference images
+</details>
+
+<details>
+
+<summary>**Multi-Image Edit** — Combine multiple reference images</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -258,13 +280,15 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 prompt
 
 `string`required
 
-▶image\_input\[\]
+▶image\_input\[]
 
 `array`format: uri
 
@@ -288,15 +312,15 @@ disable\_safety\_checker
 
 `boolean`
 
-▶images\[\]
+▶images\[]
 
 `array`minItems: 1format: uri
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.5/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.5/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.5/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.5/schema-output.json)
 
 Was this helpful?
 

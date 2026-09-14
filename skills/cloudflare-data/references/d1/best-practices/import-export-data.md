@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Import and export data
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/best-practices/import-export-data/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/best-practices/import-export-data/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 D1 allows you to import existing SQLite tables and their data directly, enabling you to migrate existing data into D1 quickly and easily. This can be useful when migrating applications to use Workers and D1, or when you want to prototype a schema locally before importing it to your D1 database(s).
 
@@ -98,12 +98,13 @@ Once you have run the above command, you will need to edit the output SQL file t
 
 1. Remove `BEGIN TRANSACTION` and `COMMIT;` from the file
 2. Remove the following table creation statement (if present):
-```sql
-CREATE TABLE _cf_KV (
- 	key TEXT PRIMARY KEY,
- 	value BLOB
-) WITHOUT ROWID;
-```
+
+   ```sql
+   CREATE TABLE _cf_KV (
+    	key TEXT PRIMARY KEY,
+    	value BLOB
+   ) WITHOUT ROWID;
+   ```
 
 You can then follow the steps to [import an existing database](#import-an-existing-database) into D1 by using the `.sql` file you generated from the database dump as the input to `wrangler d1 execute`.
 
@@ -149,18 +150,18 @@ npx wrangler d1 export <database_name> --remote --table=<table_name> --output=./
 
 ### Known limitations
 
-* Export is not supported for virtual tables, including databases with virtual tables. D1 supports virtual tables for full-text search using SQLite's [FTS5 module ↗](https://www.sqlite.org/fts5.html). As a workaround, delete any virtual tables, export, and then recreate virtual tables.
-* A running export will block other database requests.
-* Any numeric value in a column is affected by JavaScript's 52-bit precision for numbers. If you store a very large number (in `int64`), then retrieve the same value, the returned value may be less precise than your original number.
+- Export is not supported for virtual tables, including databases with virtual tables. D1 supports virtual tables for full-text search using SQLite's [FTS5 module ↗](https://www.sqlite.org/fts5.html). As a workaround, delete any virtual tables, export, and then recreate virtual tables.
+- A running export will block other database requests.
+- Any numeric value in a column is affected by JavaScript's 52-bit precision for numbers. If you store a very large number (in `int64`), then retrieve the same value, the returned value may be less precise than your original number.
 
 ## Troubleshooting
 
 If you receive an error when trying to import an existing schema and/or dataset into D1:
 
-* Ensure you are importing data in SQL format (typically with a `.sql` file extension). Refer to [how to convert SQLite files](#convert-sqlite-database-files) if you have a `.sqlite3` database dump.
-* Make sure the schema is [SQLite3 ↗](https://www.sqlite.org/docs.html) compatible. You cannot import data from a MySQL or PostgreSQL database into D1, as the types and SQL syntax are not directly compatible.
-* If you have foreign key relationships between tables, ensure you are importing the tables in the right order. You cannot refer to a table that does not yet exist.
-* If you receive a `"cannot start a transaction within a transaction"` error, make sure you have removed `BEGIN TRANSACTION` and `COMMIT` from your dumped SQL statements.
+- Ensure you are importing data in SQL format (typically with a `.sql` file extension). Refer to [how to convert SQLite files](#convert-sqlite-database-files) if you have a `.sqlite3` database dump.
+- Make sure the schema is [SQLite3 ↗](https://www.sqlite.org/docs.html) compatible. You cannot import data from a MySQL or PostgreSQL database into D1, as the types and SQL syntax are not directly compatible.
+- If you have foreign key relationships between tables, ensure you are importing the tables in the right order. You cannot refer to a table that does not yet exist.
+- If you receive a `"cannot start a transaction within a transaction"` error, make sure you have removed `BEGIN TRANSACTION` and `COMMIT` from your dumped SQL statements.
 
 ### Resolve `Statement too long` error
 
@@ -203,9 +204,9 @@ Refer to the [foreign key documentation](https://developers.cloudflare.com/d1/sq
 
 ## Next Steps
 
-* Read the SQLite [CREATE TABLE ↗](https://www.sqlite.org/lang%5Fcreatetable.html) documentation.
-* Learn how to [use the D1 Workers Binding API](https://developers.cloudflare.com/d1/worker-api/) from within a Worker.
-* Understand how [database migrations work](https://developers.cloudflare.com/d1/reference/migrations/) with D1.
+- Read the SQLite [`CREATE TABLE` ↗](https://www.sqlite.org/lang_createtable.html) documentation.
+- Learn how to [use the D1 Workers Binding API](https://developers.cloudflare.com/d1/worker-api/) from within a Worker.
+- Understand how [database migrations work](https://developers.cloudflare.com/d1/reference/migrations/) with D1.
 
 Was this helpful?
 

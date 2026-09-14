@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Furukawa Electric FITELnet
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/fitelnet/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/fitelnet/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial describes how to configure the Furukawa Electric's FITELnet F220 and F70 devices to connect to Cloudflare WAN (formerly Magic WAN) via IPsec (Internet Protocol Security) tunnels. The use cases described in this tutorial are for both east-west (branch to branch) and north-south (Internet-bound).
 
@@ -20,8 +20,8 @@ This tutorial describes how to configure the Furukawa Electric's FITELnet F220 a
 
 These configurations were tested on FITELnet F220 and F70 series with the following firmware versions:
 
-* **F220 series**: Version 01.11(00)
-* **F70 series**: Version 01.09(00)
+- **F220 series**: Version 01.11(00)
+- **F70 series**: Version 01.09(00)
 
 ## IPsec configuration
 
@@ -29,17 +29,17 @@ These configurations were tested on FITELnet F220 and F70 series with the follow
 
 1. Follow the [Add tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels) instructions to create the required IPsec tunnels.
 2. For the first IPsec tunnel, ensure the following settings are defined:
-  * **Tunnel name**: `FITEL-tunnel-1`
-  * **Interface address**: Enter `10.0.0.1/31` for your first tunnel.
-  * **Customer endpoint**: This setting is not required unless your router is using an IKE ID of [type ID\_IPV4\_ADDR](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/).
-  * **Cloudflare endpoint**: One of the Cloudflare anycast IP addresses assigned to your account, available in [Leased IPs ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
-  * **Pre-shared key**: Create a pre-shared key for your first tunnel.
+   - **Tunnel name**: `FITEL-tunnel-1`
+   - **Interface address**: Enter `10.0.0.1/31` for your first tunnel.
+   - **Customer endpoint**: This setting is not required unless your router is using an IKE ID of [type `ID_IPV4_ADDR`](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/).
+   - **Cloudflare endpoint**: One of the Cloudflare anycast IP addresses assigned to your account, available in [Leased IPs ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
+   - **Pre-shared key**: Create a pre-shared key for your first tunnel.
 3. For the second IPsec tunnel, make the same changes as you did for the first tunnel, and ensure these additional settings are defined:
-  * **Tunnel name**: `FITEL-tunnel-2`
-  * **Interface address**: Enter `10.0.0.3/31` for your second tunnel.
-  * **Customer endpoint**: This setting is not required unless your router is using an IKE ID of [type ID\_IPV4\_ADDR](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/).
-  * **Cloudflare endpoint**: One of the Cloudflare anycast IP addresses assigned to your account.
-  * **Pre-shared key**: Create a pre-shared key for your second tunnel.
+   - **Tunnel name**: `FITEL-tunnel-2`
+   - **Interface address**: Enter `10.0.0.3/31` for your second tunnel.
+   - **Customer endpoint**: This setting is not required unless your router is using an IKE ID of [type `ID_IPV4_ADDR`](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/).
+   - **Cloudflare endpoint**: One of the Cloudflare anycast IP addresses assigned to your account.
+   - **Pre-shared key**: Create a pre-shared key for your second tunnel.
 
 ### FITELnet router configuration
 
@@ -183,11 +183,14 @@ To configure routes for east-west (branch to branch) connections, refer to the f
 
 1. Follow the [Configure static routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-routes/#create-a-static-route) instructions to create a static route.
 2. For the first route, ensure the following settings are defined:
-* **Prefix**: `192.168.0.0/24`
-* **Tunnel/Next hop**: _FITEL-tunnel-1 / 10.0.0.0_
-1. For the second route, ensure the following settings are defined:
-* **Prefix**: `192.168.1.0/24`
-* **Tunnel/Next hop**: _FITEL-tunnel-2 / 10.0.0.2_
+
+- **Prefix**: `192.168.0.0/24`
+- **Tunnel/Next hop**: *FITEL-tunnel-1 / 10.0.0.0*
+
+3. For the second route, ensure the following settings are defined:
+
+- **Prefix**: `192.168.1.0/24`
+- **Tunnel/Next hop**: *FITEL-tunnel-2 / 10.0.0.2*
 
 ### FITELnet router configuration
 

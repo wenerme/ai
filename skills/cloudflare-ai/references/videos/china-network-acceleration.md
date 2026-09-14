@@ -8,25 +8,29 @@ image: https://developers.cloudflare.com/og-docs.png
 
 In this video, Jess Liu discusses Cloudflares CDN Global Acceleration (formerly China Express), including solutions for high latency on dynamic content, accelerating API calls, accessing Cloudflare One services like WARP and Magic WAN from within mainland China, and securely connecting private enterprise networks.
 
+<details>
+
+<summary>
+
 Chapters
 
-* ![Introduction and overview of Cloudflare solutions for China](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/18457868eb13222051618b0d138e0225/thumbnails/thumbnail.jpg?fit=crop&time=0s)
+</summary>
 
-**Introduction and overview of Cloudflare solutions for China**0s
-* ![Dynamic content outside of Mainland China](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/18457868eb13222051618b0d138e0225/thumbnails/thumbnail.jpg?fit=crop&time=38s)
+- ![Introduction and overview of Cloudflare solutions for China](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/18457868eb13222051618b0d138e0225/thumbnails/thumbnail.jpg?fit=crop&time=0s)**Introduction and overview of Cloudflare solutions for China**0s
+- ![Dynamic content outside of Mainland China](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/18457868eb13222051618b0d138e0225/thumbnails/thumbnail.jpg?fit=crop&time=38s)**Dynamic content outside of Mainland China**38s
+- ![Access to global services](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/18457868eb13222051618b0d138e0225/thumbnails/thumbnail.jpg?fit=crop&time=103s)**Access to global services**01m43s
+- ![Private network connectivity](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/18457868eb13222051618b0d138e0225/thumbnails/thumbnail.jpg?fit=crop&time=174s)**Private network connectivity**02m54s
+- ![China Network use case and solution overview](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/18457868eb13222051618b0d138e0225/thumbnails/thumbnail.jpg?fit=crop&time=223s)**China Network use case and solution overview**03m43s
 
-**Dynamic content outside of Mainland China**38s
-* ![Access to global services](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/18457868eb13222051618b0d138e0225/thumbnails/thumbnail.jpg?fit=crop&time=103s)
+</details>
 
-**Access to global services**01m43s
-* ![Private network connectivity](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/18457868eb13222051618b0d138e0225/thumbnails/thumbnail.jpg?fit=crop&time=174s)
+<details>
 
-**Private network connectivity**02m54s
-* ![China Network use case and solution overview](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/18457868eb13222051618b0d138e0225/thumbnails/thumbnail.jpg?fit=crop&time=223s)
-
-**China Network use case and solution overview**03m43s
+<summary>
 
 Transcript
+
+</summary>
 
 In the last video, we discussed that if your origin is outside of mainland China and has
 
@@ -147,6 +151,8 @@ services from your China based offices.
 Magic WAN global acceleration is your go to solution.
 
 Thanks for watching. You can reach out to our sales team to learn more.
+
+</details>
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/china-network-acceleration/#page","headline":"China network - CDN global acceleration for Mainland China | Cloudflare Docs","description":"In this video, Jess Liu discusses Cloudflares CDN Global Acceleration (formerly China Express), including solutions for high latency on dynamic content, accelerating API calls, accessing Cloudflare One services like WARP and Magic WAN from within mainland China, and securely connecting private enterprise networks.","url":"https://developers.cloudflare.com/videos/china-network-acceleration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

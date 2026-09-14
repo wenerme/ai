@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Local development
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/configuration/local-development/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/configuration/local-development/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Hyperdrive can be used when developing and testing your Workers locally. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), the command-line interface for Workers, provides two options for local development:
 
-* **`wrangler dev`** (default): Runs your Worker code locally on your machine. You configure a `localConnectionString` to connect directly to a database (either local or remote). Hyperdrive query caching does not take effect in this mode.
-* **`wrangler dev --remote`**: Runs your Worker on Cloudflare's using your deployed Hyperdrive configuration. This is useful for testing with Hyperdrive's connection pooling and query caching enabled.
+- **`wrangler dev`** (default): Runs your Worker code locally on your machine. You configure a `localConnectionString` to connect directly to a database (either local or remote). Hyperdrive query caching does not take effect in this mode.
+- **`wrangler dev --remote`**: Runs your Worker on Cloudflare's using your deployed Hyperdrive configuration. This is useful for testing with Hyperdrive's connection pooling and query caching enabled.
 
 ## Use `wrangler dev`
 
@@ -25,8 +25,8 @@ By default, `wrangler dev` runs your Worker code locally on your machine. To con
 
 The `localConnectionString` works with both local and remote databases:
 
-* **Local databases**: Connect to a database instance running on your machine (for example, `postgres://user:password@localhost:5432/database`)
-* **Remote databases**: Connect directly to remote databases over TLS (for example, `postgres://user:password@remote-host.example.com:5432/database?sslmode=require` or `mysql://user:password@remote-host.example.com:3306/database?sslMode=required`). You must specify the SSL/TLS mode if required.
+- **Local databases**: Connect to a database instance running on your machine (for example, `postgres://user:password@localhost:5432/database`)
+- **Remote databases**: Connect directly to remote databases over TLS (for example, `postgres://user:password@remote-host.example.com:5432/database?sslmode=require` or `mysql://user:password@remote-host.example.com:3306/database?sslMode=required`). You must specify the SSL/TLS mode if required.
 
 Note
 
@@ -82,10 +82,10 @@ If both an environment variable and `localConnectionString` in the Wrangler conf
 
 When you run `wrangler dev --remote`, your Worker runs in Cloudflare's network and uses your deployed Hyperdrive configuration. This means:
 
-* Your Worker code executes in Cloudflare's production environment, not locally
-* Hyperdrive's connection pooling and query caching are active
-* You connect to the database configured in your Hyperdrive configuration (created with `wrangler hyperdrive create`)
-* Changes made during the session interact with remote resources
+- Your Worker code executes in Cloudflare's production environment, not locally
+- Hyperdrive's connection pooling and query caching are active
+- You connect to the database configured in your Hyperdrive configuration (created with `wrangler hyperdrive create`)
+- Changes made during the session interact with remote resources
 
 This mode is useful for testing how your Worker behaves with Hyperdrive's features enabled before deploying.
 
@@ -122,13 +122,13 @@ Caution
 
 Use `wrangler dev --remote` with caution. Since your Worker runs in Cloudflare's production environment, any database writes or side effects will affect your production data.
 
-Refer to the [wrangler dev documentation](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) to learn more about how to configure a local development session.
+Refer to the [`wrangler dev` documentation](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) to learn more about how to configure a local development session.
 
 ## Related resources
 
-* Use [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) to run your Worker and Hyperdrive locally and debug issues before deploying.
-* Learn [how Hyperdrive works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
-* Understand how to [configure query caching in Hyperdrive](https://developers.cloudflare.com/hyperdrive/concepts/query-caching/).
+- Use [`wrangler dev`](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) to run your Worker and Hyperdrive locally and debug issues before deploying.
+- Learn [how Hyperdrive works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
+- Understand how to [configure query caching in Hyperdrive](https://developers.cloudflare.com/hyperdrive/concepts/query-caching/).
 
 Was this helpful?
 

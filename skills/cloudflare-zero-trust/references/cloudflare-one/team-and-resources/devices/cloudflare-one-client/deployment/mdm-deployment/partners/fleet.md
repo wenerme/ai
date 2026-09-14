@@ -12,35 +12,35 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Fleet
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/fleet/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/fleet/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide covers how to deploy the Cloudflare One Client (formerly WARP) using [Fleet ↗](https://fleetdm.com/) device management software.
 
 ## macOS
 
-### 1\. Create a custom MDM file
+### 1. Create a custom MDM file
 
 1. [Download](https://developers.cloudflare.com/cloudflare-one/static/mdm/CloudflareWARP.mobileconfig) an example `.mobileconfig` file.
 2. Modify the file with your desired [deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/).
 
-### 2\. Upload MDM file to Fleet
+### 2. Upload MDM file to Fleet
 
 1. In the Fleet admin console, go to **Controls**.
 2. From the **Teams** dropdown, select the team (group of hosts) that requires the Cloudflare One Client.
-3. Select **OS settings** \> **Custom settings**.
+3. Select **OS settings** > **Custom settings**.
 4. Select **Add profile** and upload the custom `.mobileconfig`.
 5. Select the hosts which require the Cloudflare One Client:
-  * **All hosts**: Deploys the Cloudflare One Client to all hosts in the team.
-  * **Custom**: Deploys the Cloudflare One Client to a subset of the hosts in the team. Use [labels ↗](https://fleetdm.com/guides/managing-labels-in-fleet#basic-article) to define the hosts that should be included or excluded.
+   - **All hosts**: Deploys the Cloudflare One Client to all hosts in the team.
+   - **Custom**: Deploys the Cloudflare One Client to a subset of the hosts in the team. Use [labels ↗](https://fleetdm.com/guides/managing-labels-in-fleet#basic-article) to define the hosts that should be included or excluded.
 6. Select **Add profile**.
 
 The defined hosts will immediately receive the deployment profile, but the Cloudflare One Client is not yet installed.
 
-### 3\. Download Cloudflare One Client package for macOS
+### 3. Download Cloudflare One Client package for macOS
 
 Visit the [Download page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#macos) to review system requirements and download the installer for your operating system.
 
-### 4\. Upload Cloudflare One Client package to Fleet
+### 4. Upload Cloudflare One Client package to Fleet
 
 To add the Cloudflare One Client installer package for distribution to your hosts enrolled in Fleet:
 
@@ -48,35 +48,35 @@ To add the Cloudflare One Client installer package for distribution to your host
 2. From the **Teams** dropdown, select the team (group of hosts) that requires the Cloudflare One Client.
 3. Select **Add Software** and upload the `.pkg` file that was previously downloaded.
 
-### 5\. Install the Cloudflare One Client with Fleet
+### 5. Install the Cloudflare One Client with Fleet
 
 To deploy the uploaded `.pkg` file to your hosts:
 
 1. In the Fleet admin console, go to **Hosts**.
 2. Select the host that requires the Cloudflare One Client.
 3. Go to **Software** and search for `Cloudflare`.
-4. Select **Actions** \> **Install**.
+4. Select **Actions** > **Install**.
 
 Installation will happen automatically when the host comes online. To deploy with REST API or GitOps, refer to the [Fleet documentation ↗](https://fleetdm.com/guides/deploy-software-packages).
 
 After deploying the Cloudflare One Client, you can check its connection progress using the [Connectivity status](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/connectivity-status/) messages displayed in the Cloudflare One Client GUI.
 
-### 6\. Uninstall the Cloudflare One Client with Fleet
+### 6. Uninstall the Cloudflare One Client with Fleet
 
 To uninstall the Fleet-deployed Cloudflare One Client:
 
 1. In the Fleet admin console, go to **Hosts**.
 2. Select the host that requires the Cloudflare One Client to be uninstalled.
 3. Go to **Software** and search for `Cloudflare`.
-4. Select **Actions** \> **Uninstall**.
+4. Select **Actions** > **Uninstall**.
 
 ## Windows
 
-### 1\. Download Cloudflare One Client package for Windows
+### 1. Download Cloudflare One Client package for Windows
 
 Visit the [Download page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#windows) to review system requirements and download the installer for your operating system.
 
-### 2\. Upload Cloudflare One Client package to Fleet
+### 2. Upload Cloudflare One Client package to Fleet
 
 To add the Cloudflare One Client installer package for distribution to your hosts enrolled in Fleet:
 
@@ -108,27 +108,27 @@ Exit $installProcess.ExitCode
 
 Refer to [deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/) for a description of each argument.
 
-### 3\. Install the Cloudflare One Client with Fleet
+### 3. Install the Cloudflare One Client with Fleet
 
 To deploy the uploaded `.pkg` file to your hosts:
 
 1. In the Fleet admin console, go to **Hosts**.
 2. Select the host that requires the Cloudflare One Client.
 3. Go to **Software** and search for `Cloudflare`.
-4. Select **Actions** \> **Install**.
+4. Select **Actions** > **Install**.
 
 Installation will happen automatically when the host comes online. To deploy with REST API or GitOps, refer to the [Fleet documentation ↗](https://fleetdm.com/guides/deploy-software-packages).
 
 After deploying the Cloudflare One Client, you can check its connection progress using the [Connectivity status](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/connectivity-status/) messages displayed in the Cloudflare One Client GUI.
 
-### 4\. Uninstall the Cloudflare One Client with Fleet
+### 4. Uninstall the Cloudflare One Client with Fleet
 
 To uninstall the Fleet-deployed Cloudflare One Client:
 
 1. In the Fleet admin console, go to **Hosts**.
 2. Select the host that requires the Cloudflare One Client to be uninstalled.
 3. Go to **Software** and search for `Cloudflare`.
-4. Select **Actions** \> **Uninstall**.
+4. Select **Actions** > **Uninstall**.
 
 ## Linux
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Add player enhancements
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/edit-videos/player-enhancements/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/edit-videos/player-enhancements/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With player enhancements, you can modify your video player to incorporate elements of your branding such as your logo, and customize additional options to present to your viewers.
 
@@ -20,10 +20,10 @@ The player enhancements are automatically applied to videos using the Stream Pla
 
 ## Properties
 
-* `title`: The title that appears when viewers hover over the video. The title may differ from the file name of the video.
-* `share_link`: Provides the user with a click-to-copy option to easily share the video URL. This is commonly set to the URL of the page that the video is embedded on.
-* `channel_link`: The URL users will be directed to when selecting the logo from the video player.
-* `logo`: A valid HTTPS URL for the image of your logo.
+- `title`: The title that appears when viewers hover over the video. The title may differ from the file name of the video.
+- `share_link`: Provides the user with a click-to-copy option to easily share the video URL. This is commonly set to the URL of the page that the video is embedded on.
+- `channel_link`: The URL users will be directed to when selecting the logo from the video player.
+- `logo`: A valid HTTPS URL for the image of your logo.
 
 ## Customize your own player
 
@@ -62,8 +62,7 @@ You can also pull the JSON by using the endpoint below.
 
 ## Update player properties via the Cloudflare dashboard
 
-1. In the Cloudflare dashboard, go to the **Videos** page.
-[Go to **Videos** ↗](https://dash.cloudflare.com/?to=/:account/stream/videos)
+1. In the Cloudflare dashboard, go to the **Videos** page. [Go to **Videos** ↗](https://dash.cloudflare.com/?to=/:account/stream/videos)
 2. Select a video from the list to edit it.
 3. Select the **Public Details** tab.
 4. From **Public Details**, enter information in the text fields for the properties you want to set.

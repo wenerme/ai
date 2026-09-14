@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Exporting OpenTelemetry Data
 
-Last updated Sep 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Workers supports exporting OpenTelemetry (OTel)-compliant telemetry data to any destination with an available OTel endpoint, allowing you to integrate with your existing monitoring and observability stack.
 
@@ -20,8 +20,8 @@ Cloudflare Workers supports exporting OpenTelemetry (OTel)-compliant telemetry d
 
 You can export the following types of telemetry data:
 
-* **Traces** \- Traces showing request flows through your Worker and connected services
-* **Logs** \- Application logs including `console.log()` output and system-generated logs
+- **Traces** - Traces showing request flows through your Worker and connected services
+- **Logs** - Application logs including `console.log()` output and system-generated logs
 
 **Note**: exporting Worker metrics and custom metrics is not yet supported.
 
@@ -29,20 +29,20 @@ You can export the following types of telemetry data:
 
 Below are common OTLP endpoint formats for popular observability providers. Refer to your provider's documentation for specific details and authentication requirements.
 
-| Provider                                                                                                                 | Traces Endpoint                                                                     | Logs Endpoint                                                                       |
-| ------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| [**Honeycomb**](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/honeycomb/)         | https://api.honeycomb.io/v1/traces                                                  | https://api.honeycomb.io/v1/logs                                                    |
-| [**Grafana Cloud**](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/grafana-cloud/) | https://otlp-gateway-{region}.grafana.net/otlp/v1/traces                            | https://otlp-gateway-{region}.grafana.net/otlp/v1/logs\[^1\]                        |
-| [**Firetiger** ↗](https://docs.firetiger.com/ingest/cloudflare-workers.html)                                             | https://ingest.cloud.firetiger.com/v1/traces                                        | https://ingest.cloud.firetiger.com/v1/logs                                          |
-| [**Axiom**](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/axiom/)                 | https://api.axiom.co/v1/traces                                                      | https://api.axiom.co/v1/logs                                                        |
-| [**Sentry**](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/sentry/)               | https://{HOST}/api/{PROJECT\_ID}/integration/otlp/v1/traces                         | https://{HOST}/api/{PROJECT\_ID}/integration/otlp/v1/logs                           |
-| [**Sematext** ↗](https://sematext.com/docs/guide/managed-otlp-endpoint/)                                                 | https://otlp-receiver.sematext.com (US), https://otlp-receiver.eu.sematext.com (EU) | https://otlp-receiver.sematext.com (US), https://otlp-receiver.eu.sematext.com (EU) |
-| [**PostHog**](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/posthog/)             | Not supported                                                                       | https://{REGION}.i.posthog.com/i/v1/logs                                            |
-| [**Datadog** ↗](https://docs.datadoghq.com/opentelemetry/setup/otlp%5Fingest/managed%5Fplatforms/)                       | https://cloudflare.integrations.otlp.{DD\_SITE}/v1/traces                           | https://cloudflare.integrations.otlp.{DD\_SITE}/v1/logs                             |
-| [**New Relic** ↗](https://docs.newrelic.com/docs/opentelemetry/best-practices/opentelemetry-otlp/)                       | https://otlp.nr-data.net/v1/traces                                                  | https://otlp.nr-data.net/v1/logs                                                    |
-| [**Splunk Observability** ↗](https://dev.splunk.com/observability/reference/api/ingest%5Fdata/latest)                    | https://ingest.{REALM}.signalfx.com/v2/trace/otlp                                   | N/A                                                                                 |
-| [**Splunk Platform** ↗](https://github.com/splunk/splunk-connect-for-otlp)                                               | http://splunk.internal:4318/v1/traces                                               | http://splunk.internal:4318/v1/logs                                                 |
-| [**SigNoz** ↗](https://signoz.io/docs/integrations/outposts/cloudflare-workers/)                                         | https://ingest.<region>.signoz.cloud:443/v1/traces                                  | https://ingest.<region>.signoz.cloud:443/v1/logs                                    |
+| Provider | Traces Endpoint | Logs Endpoint |
+| --- | --- | --- |
+| [**Honeycomb**](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/honeycomb/) | `https://api.honeycomb.io/v1/traces` | `https://api.honeycomb.io/v1/logs` |
+| [**Grafana Cloud**](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/grafana-cloud/) | `https://otlp-gateway-{region}.grafana.net/otlp/v1/traces` | `https://otlp-gateway-{region}.grafana.net/otlp/v1/logs`\[^1] |
+| [**Firetiger** ↗](https://docs.firetiger.com/ingest/cloudflare-workers.html) | `https://ingest.cloud.firetiger.com/v1/traces` | `https://ingest.cloud.firetiger.com/v1/logs` |
+| [**Axiom**](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/axiom/) | `https://api.axiom.co/v1/traces` | `https://api.axiom.co/v1/logs` |
+| [**Sentry**](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/sentry/) | `https://{HOST}/api/{PROJECT_ID}/integration/otlp/v1/traces` | `https://{HOST}/api/{PROJECT_ID}/integration/otlp/v1/logs` |
+| [**Sematext** ↗](https://sematext.com/docs/guide/managed-otlp-endpoint/) | `https://otlp-receiver.sematext.com` (US), `https://otlp-receiver.eu.sematext.com` (EU) | `https://otlp-receiver.sematext.com` (US), `https://otlp-receiver.eu.sematext.com` (EU) |
+| [**PostHog**](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/posthog/) | Not supported | `https://{REGION}.i.posthog.com/i/v1/logs` |
+| [**Datadog** ↗](https://docs.datadoghq.com/opentelemetry/setup/otlp_ingest/managed_platforms/) | `https://cloudflare.integrations.otlp.{DD_SITE}/v1/traces` | `https://cloudflare.integrations.otlp.{DD_SITE}/v1/logs` |
+| [**New Relic** ↗](https://docs.newrelic.com/docs/opentelemetry/best-practices/opentelemetry-otlp/) | `https://otlp.nr-data.net/v1/traces` | `https://otlp.nr-data.net/v1/logs` |
+| [**Splunk Observability** ↗](https://dev.splunk.com/observability/reference/api/ingest_data/latest) | `https://ingest.{REALM}.signalfx.com/v2/trace/otlp` | N/A |
+| [**Splunk Platform** ↗](https://github.com/splunk/splunk-connect-for-otlp) | `http://splunk.internal:4318/v1/traces` | `http://splunk.internal:4318/v1/logs` |
+| [**SigNoz** ↗](https://signoz.io/docs/integrations/outposts/cloudflare-workers/) | `https://ingest.<region>.signoz.cloud:443/v1/traces` | `https://ingest.<region>.signoz.cloud:443/v1/logs` |
 
 Authentication
 
@@ -59,14 +59,16 @@ Protocol
 Cloudflare does not support the [Binary format ↗](https://opentelemetry.io/docs/specs/otlp/#binary-protobuf-encoding) for OTLP ingest.
 
 ![Observability Destinations dashboard showing configured destinations for Grafana and Honeycomb with their respective endpoints and status](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1794,height=750,format=webp/_astro/destinations.B-CW_OSI.png)
+
 1. Head to your account's [Workers Observability ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability/pipelines) section of the dashboard
 2. Click add destination.
 3. Configure your destination:
-  * **Destination Name** \- A descriptive name (e.g., "Grafana-tracing", "Honeycomb-Logs")
-  * **Destination Type** \- Choose between "Traces" or "Logs"
-  * **OTLP Endpoint** \- The URL where your observability platform accepts OTLP data.
-  * **Custom Headers** (Optional) - Any authentication headers or other provider-required headers
+   - **Destination Name** - A descriptive name (e.g., "Grafana-tracing", "Honeycomb-Logs")
+   - **Destination Type** - Choose between "Traces" or "Logs"
+   - **OTLP Endpoint** - The URL where your observability platform accepts OTLP data.
+   - **Custom Headers** (Optional) - Any authentication headers or other provider-required headers
 4. Save your destination
+
 ![Edit Destination dialog showing configuration for Honeycomb tracing with destination name, type selection, OTLP endpoint, and custom headers](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1942,height=974,format=webp/_astro/destination-setup.B8cxx8yd.png)
 
 ## Enabling OpenTelemetry export for your Worker
@@ -127,11 +129,11 @@ After creating a destination, you can monitor its health and delivery status in 
 
 ### Status indicators
 
-| Status                  | Description                                                             | Troubleshooting                                                                                    |
-| ----------------------- | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| **Last: n minutes ago** | Data was recently delivered successfully.                               |                                                                                                    |
-| **Never run**           | No data has been delivered to this destination.                         | •Check if your Worker is receiving traffic  • Review sampling rates (low rates generate less data) |
-| **Error**               | An error occurred while attempting to deliver data to this destination. | • Verify OTLP endpoint URL is correct• Check authentication headers are valid                      |
+| Status | Description | Troubleshooting |
+| --- | --- | --- |
+| **Last: n minutes ago** | Data was recently delivered successfully. | |
+| **Never run** | No data has been delivered to this destination. | •Check if your Worker is receiving traffic <br> • Review sampling rates (low rates generate less data)<br> |
+| **Error** | An error occurred while attempting to deliver data to this destination. | • Verify OTLP endpoint URL is correct<br>• Check authentication headers are valid<br> |
 
 ## Limits and pricing
 
@@ -139,17 +141,17 @@ Exporting OTel data is currently **free** to those currently on a Workers Paid s
 
 This includes the following limits and pricing:
 
-| Plan             | Traces                               | Logs                                 | Pricing                             |
-| ---------------- | ------------------------------------ | ------------------------------------ | ----------------------------------- |
-| **Workers Free** | Not available                        | Not available                        | \-                                  |
+| Plan | Traces | Logs | Pricing |
+| --- | --- | --- | --- |
+| **Workers Free** | Not available | Not available | - |
 | **Workers Paid** | 10 million events per month included | 10 million events per month included | $0.05 per million additional events |
 
 ## Known limitations
 
 OpenTelemetry data export is currently in beta. Please be aware of the following limitations:
 
-* **Metrics export not yet supported**: Exporting Worker infrastructure metrics and custom metrics via OpenTelemetry is not currently available. We are actively working to add metrics support in the future.
-* **Limited OTLP support from some providers**: Some observability providers are still rolling out OTLP endpoint support. Check the [Available OpenTelemetry destinations](#available-opentelemetry-destinations) table above for current availability.
+- **Metrics export not yet supported**: Exporting Worker infrastructure metrics and custom metrics via OpenTelemetry is not currently available. We are actively working to add metrics support in the future.
+- **Limited OTLP support from some providers**: Some observability providers are still rolling out OTLP endpoint support. Check the [Available OpenTelemetry destinations](#available-opentelemetry-destinations) table above for current availability.
 
 Was this helpful?
 

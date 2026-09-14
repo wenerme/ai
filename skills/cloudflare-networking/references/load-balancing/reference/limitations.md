@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Limitations
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/reference/limitations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/reference/limitations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-| Name              | Non-Enterprise           | Enterprise               |
-| ----------------- | ------------------------ | ------------------------ |
-| Load balancers    | 20                       | custom                   |
-| Monitor intervals | 15s (min), 3600s (max)   | 10s (min), 3600s (max)   |
-| Monitors          | 1.5x the number of pools | 1.5x the number of pools |
-| Endpoints         | 20                       | custom                   |
-| Pools             | 20                       | custom                   |
+| Name | Non-Enterprise | Enterprise |
+| --- | --- | --- |
+| Load balancers | 20 | custom |
+| Monitor intervals | 15s (min), 3600s (max) | 10s (min), 3600s (max) |
+| Monitors | 1.5x the number of pools | 1.5x the number of pools |
+| Endpoints | 20 | custom |
+| Pools | 20 | custom |
 
 Was this helpful?
 

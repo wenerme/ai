@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated Sep 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Create a Cloudflare Tunnel and publish your first application in under 5 minutes.
 
 ## Prerequisites
 
-* A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up)
-* A [domain on Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) (required to publish applications)
-* A server or VM with internet access where you will install `cloudflared`
+- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up)
+- A [domain on Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) (required to publish applications)
+- A server or VM with internet access where you will install `cloudflared`
 
 Tip
 
@@ -30,38 +30,46 @@ If your server is behind a restrictive firewall, verify it can reach Cloudflare 
 
 To create a new Cloudflare Tunnel:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** \> **Tunnels**.
-[Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
-2. Select **Create Tunnel**.
-3. Enter a name for your tunnel (for example, `production-web` or `staging-api`).
+2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** > **Tunnels**. [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 4. Select **Create Tunnel**.
-5. Under **Setup Environment**, select the operating system and architecture of your server.
-6. Copy the install commands shown under **Install and Run** and run them in a terminal on your server.
-7. Once the tunnel connects, select **Continue**.
+6. Enter a name for your tunnel (for example, `production-web` or `staging-api`).
+8. Select **Create Tunnel**.
+10. Under **Setup Environment**, select the operating system and architecture of your server.
+12. Copy the install commands shown under **Install and Run** and run them in a terminal on your server.
+14. Once the tunnel connects, select **Continue**.
 
 Your tunnel should appear on the **Tunnels** page with a `Healthy` [status](https://developers.cloudflare.com/tunnel/observability/#tunnel-health).
 
 1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
 
-| Type    | Item              | Permission |
-| ------- | ----------------- | ---------- |
-| Account | Cloudflare Tunnel | Edit       |
-| Zone    | DNS               | Edit       |
-2. Create a tunnel:
-Required API token permissions
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-  * `Cloudflare One Connectors Write`
-  * `Cloudflare One Connector: cloudflared Write`
-  * `Cloudflare Tunnel Write`
-```bash
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel" \
-	--request POST \
-	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-	--json '{
-		"name": "api-tunnel",
-		"config_src": "cloudflare"
-	}'
-```
+   | Type | Item | Permission |
+   | --- | --- | --- |
+   | Account | Cloudflare Tunnel | Edit |
+   | Zone | DNS | Edit |
+2. Create a tunnel:<details><summary>
+
+   Required API token permissions</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+   - <code>Cloudflare One Connectors Write</code>
+   - <code>Cloudflare One Connector: cloudflared Write</code>
+   - <code>Cloudflare Tunnel Write</code></details>
+
+   *Create a Cloudflare Tunnelbash*
+
+
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel" \
+   	--request POST \
+   	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+   	--json '{
+   		"name": "api-tunnel",
+   		"config_src": "cloudflare"
+   	}'
+   ```
+
+
 3. Copy the `id` and `token` values from the response. You will need them to configure and run the tunnel.
 
 ## Publish an application
@@ -70,86 +78,113 @@ To make an application accessible from the Internet, add a published application
 
 If your origin already serves HTTPS or redirects HTTP to HTTPS, refer to [Troubleshoot HTTPS origins](https://developers.cloudflare.com/tunnel/troubleshooting/https-origins/) to choose the **Service URL** and origin settings.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** \> **Tunnels** and select your tunnel. [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** > **Tunnels** and select your tunnel. [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Under **Routes**, select **Add route**.
 3. Select **Published application**.
 4. Under **Hostname**, enter a subdomain and select a domain from the drop-down menu.
 5. For **Service URL**, enter the local address and port of your application.
-For example, if your web server runs on the same machine as `cloudflared`:
 
-  * HTTP on port `80`: `http://localhost:80`
-  * HTTPS on port `443`: `https://localhost:443`
-If your web server runs on a different machine: `http://192.0.2.1:80`
-If the origin certificate covers the public hostname rather than the service address, set **Origin Server Name** to the certificate hostname and keep **Disable TLS certificate verification** turned off. Refer to [Troubleshoot HTTPS origins](https://developers.cloudflare.com/tunnel/troubleshooting/https-origins/) for the complete configuration.
+   For example, if your web server runs on the same machine as `cloudflared`:
+   - HTTP on port `80`: `http://localhost:80`
+   - HTTPS on port `443`: `https://localhost:443`
+
+   If your web server runs on a different machine: `http://192.0.2.1:80`
+
+   If the origin certificate covers the public hostname rather than the service address, set **Origin Server Name** to the certificate hostname and keep **Disable TLS certificate verification** turned off. Refer to [Troubleshoot HTTPS origins](https://developers.cloudflare.com/tunnel/troubleshooting/https-origins/) for the complete configuration.
 6. Select **Add route**.
 
-1. Configure your tunnel's ingress rules:
-Required API token permissions
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-  * `Cloudflare One Connectors Write`
-  * `Cloudflare One Connector: cloudflared Write`
-  * `Cloudflare Tunnel Write`
-```bash
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID/configurations" \
-	--request PUT \
-	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-	--json '{
-		"config": {
-				"ingress": [
-						{
-								"hostname": "app.example.com",
-								"service": "http://localhost:80",
-								"originRequest": {}
-						},
-						{
-								"service": "http_status:404"
-						}
-				]
-		}
-	}'
-```
-Your ingress rules must include a catch-all rule at the end. In this example, `cloudflared` will respond with a 404 status code when the request does not match any hostname.
-2. Create a DNS record for your application:
-Required API token permissions
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-  * `DNS Write`
-```bash
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
-	--request POST \
-	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-	--json '{
-		"type": "CNAME",
-		"proxied": true,
-		"name": "app.example.com",
-		"content": "<TUNNEL_ID>.cfargotunnel.com"
-	}'
-```
+1. Configure your tunnel's ingress rules:<details><summary>
+
+   Required API token permissions</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+   - <code>Cloudflare One Connectors Write</code>
+   - <code>Cloudflare One Connector: cloudflared Write</code>
+   - <code>Cloudflare Tunnel Write</code></details>
+
+   *Update Tunnel configurationbash*
+
+
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID/configurations" \
+   	--request PUT \
+   	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+   	--json '{
+   		"config": {
+   				"ingress": [
+   						{
+   								"hostname": "app.example.com",
+   								"service": "http://localhost:80",
+   								"originRequest": {}
+   						},
+   						{
+   								"service": "http_status:404"
+   						}
+   				]
+   		}
+   	}'
+   ```
+
+   Your ingress rules must include a catch-all rule at the end. In this example, `cloudflared` will respond with a 404 status code when the request does not match any hostname.
+2. Create a DNS record for your application:<details><summary>
+
+   Required API token permissions</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+   - <code>DNS Write</code></details>
+
+   *Create DNS Recordbash*
+
+
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+   	--request POST \
+   	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+   	--json '{
+   		"type": "CNAME",
+   		"proxied": true,
+   		"name": "app.example.com",
+   		"content": "<TUNNEL_ID>.cfargotunnel.com"
+   	}'
+   ```
+
+
 3. Install `cloudflared` on your server and run the tunnel using the `token` obtained in [Create a tunnel](https://developers.cloudflare.com/tunnel/get-started/#create-a-tunnel):
+   1. [Download and install ↗](https://pkg.cloudflare.com/index.html) `cloudflared`.
+   2. Run the following command:
 
-  1. [Download and install ↗](https://pkg.cloudflare.com/index.html) `cloudflared`.
-  2. Run the following command:
-  ```sh
-  sudo cloudflared service install <TUNNEL_TOKEN>
-  ```
+      ```sh
+      sudo cloudflared service install <TUNNEL_TOKEN>
+      ```
 
-  1. [Download and install](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/#windows) `cloudflared`.
-  2. Open Command Prompt as administrator.
-  3. Run the following command:
-  ```txt
-  cloudflared.exe service install <TUNNEL_TOKEN>
-  ```
 
-  1. [Download and install](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/#macos) `cloudflared`.
-  2. Open a terminal window and run the following command:
-  ```sh
-  sudo cloudflared service install <TUNNEL_TOKEN>
-  ```
+   1. [Download and install](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/#windows) `cloudflared`.
+   2. Open Command Prompt as administrator.
+   3. Run the following command:
 
-  1. Open a terminal window.
-  2. Run the following command:
-  ```sh
-  docker run cloudflare/cloudflared:latest tunnel --no-autoupdate run --token <TUNNEL_TOKEN>
-  ```
+      ```txt
+      cloudflared.exe service install <TUNNEL_TOKEN>
+      ```
+
+
+   1. [Download and install](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/#macos) `cloudflared`.
+   2. Open a terminal window and run the following command:
+
+      ```sh
+      sudo cloudflared service install <TUNNEL_TOKEN>
+      ```
+
+
+   1. Open a terminal window.
+   2. Run the following command:
+
+      ```sh
+      docker run cloudflare/cloudflared:latest tunnel --no-autoupdate run --token <TUNNEL_TOKEN>
+      ```
+
+
 
 Your application is now live at the hostname you configured. Cloudflare automatically proxies traffic through its network, applying CDN caching, WAF, and DDoS protection.
 
@@ -171,10 +206,10 @@ For production use, [create a tunnel](#create-a-tunnel) instead.
 
 ## Next steps
 
-* [Routing](https://developers.cloudflare.com/tunnel/concepts/routing/) — Configure DNS records, load balancers, and protocol support.
-* [Configuration](https://developers.cloudflare.com/tunnel/configuration/) — Deploy replicas, manage tokens, and tune performance.
-* [Guides](https://developers.cloudflare.com/tunnel/guides/) — Deploy on Kubernetes, AWS, GCP, Terraform, and more.
-* [Troubleshooting](https://developers.cloudflare.com/tunnel/troubleshooting/) — Resolve common errors and connectivity issues.
+- [Routing](https://developers.cloudflare.com/tunnel/concepts/routing/) — Configure DNS records, load balancers, and protocol support.
+- [Configuration](https://developers.cloudflare.com/tunnel/configuration/) — Deploy replicas, manage tokens, and tune performance.
+- [Guides](https://developers.cloudflare.com/tunnel/guides/) — Deploy on Kubernetes, AWS, GCP, Terraform, and more.
+- [Troubleshooting](https://developers.cloudflare.com/tunnel/troubleshooting/) — Resolve common errors and connectivity issues.
 
 Was this helpful?
 

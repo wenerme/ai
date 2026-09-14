@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Access and secure a MySQL database using Cloudflare Tunnel and network policies
 
-Last updated Jun 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/mysql-network-policy/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/mysql-network-policy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Using Cloudflare Tunnel's private networks, users can connect to arbitrary non-browser based TCP/UDP applications, like databases. You can set up network policies that implement zero trust controls to define who and what can access those applications using the Cloudflare One Client.
 
@@ -22,15 +22,14 @@ By the end of this tutorial, users that pass network policies will be able to ac
 
 Make sure you have:
 
-* A MySQL database listening for remote connections and configured with users that can connect remotely
-* (Optional)[Resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) enabled on your account
+- A MySQL database listening for remote connections and configured with users that can connect remotely
+- (Optional) [Resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) enabled on your account
 
 ## Create a Cloudflare Tunnel
 
 Install `cloudflared` on a server in your private network. This server should have connectivity to the MySQL database.
 
-1. Log in to the Cloudflare dashboard and go to **Networking** \> **Tunnels**.
-[Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
+1. Log in to the Cloudflare dashboard and go to **Networking** > **Tunnels**. [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Select **Create a tunnel**.
 3. Enter a name for your tunnel. We suggest choosing a name that reflects the type of resources you want to connect through this tunnel (for example, `enterprise-VPC-01`).
 4. Select **Create Tunnel**.
@@ -39,23 +38,22 @@ Install `cloudflared` on a server in your private network. This server should ha
 
 ## Add private network routes
 
-1. In the Cloudflare dashboard, go to **Networking** \> **Routes**.
-[Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
-2. Select **Create route** \> **Tunnel CIDR**. Select the tunnel you just created, enter the private IP/CIDR of your MySQL server (for example, `10.128.0.175/32`), and select **Create route**.
+1. In the Cloudflare dashboard, go to **Networking** > **Routes**. [Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+2. Select **Create route** > **Tunnel CIDR**. Select the tunnel you just created, enter the private IP/CIDR of your MySQL server (for example, `10.128.0.175/32`), and select **Create route**.
 3. (Optional) Repeat to create a second route for the private IP/CIDR of your internal DNS server.
 
 The application and (optional) DNS server are now connected to Cloudflare.
 
 ## Create a Gateway network policy
 
-1. Go to **Traffic policies** \> **Network policies**.
+1. Go to **Traffic policies** > **Network policies**.
 2. Add a [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) that targets the private IP address and the port of the MySQL database (port 3306 by default). The following example allows access to the database to the users that enrolled into the Cloudflare One Client using an `@example.com` email address. The network policies can also take into consideration [device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/).
 
-| Selector         | Operator      | Value          | Logic | Action |
-| ---------------- | ------------- | -------------- | ----- | ------ |
-| Destination IP   | in            | 10.128.0.175   | And   | Allow  |
-| Destination Port | in            | 3306           | And   |        |
-| User Email       | matches regex | .\*example.com |       |        |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Destination IP | in | `10.128.0.175` | And | Allow |
+| Destination Port | in | `3306` | And | |
+| User Email | matches regex | `.*example.com` |  | |
 
 In addition to the Allow rule above, Cloudflare recommends adding a [catch-all block policy](https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/) to the bottom of your network policy list to enforce a default-deny model.
 
@@ -65,16 +63,16 @@ Allowed Cloudflare One Client users can now connect to the MySQL server at `10.1
 
 To allow users to access the MySQL database using an internal hostname instead of the private IP address, configure a Gateway resolver policy.
 
-1. Go to **Traffic policies** \> **Resolver policies**.
+1. Go to **Traffic policies** > **Resolver policies**.
 2. Select **Add a policy**.
 3. Create an expression to match against the private [domain](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#domain) or [hostname](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#host) of the application, like in the following example:
 
-| Selector | Operator | Value              |
-| -------- | -------- | ------------------ |
-| Domain   | in       | internalrecord.com |
-4. In **Select DNS resolver**, select _Configure custom DNS resolvers_.
+   | Selector | Operator | Value |
+   | --- | --- | --- |
+   | Domain | in | `internalrecord.com` |
+4. In **Select DNS resolver**, select *Configure custom DNS resolvers*.
 5. Enter the private IP address of your DNS server.
-6. In the dropdown menu, select _`<IP-address> - Private`_.
+6. In the dropdown menu, select *`<IP-address> - Private`*.
 7. (Optional) Enter a custom port.
 8. Select **Create policy**.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Builds
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare [Git integration](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/) lets you connect a new or existing Worker to a GitHub or GitLab repository, enabling automated builds and deployments for your Worker on push.
 
@@ -22,21 +22,19 @@ The Cloudflare [Git integration](https://developers.cloudflare.com/workers/ci-cd
 
 To create a new Worker and connect it to a GitHub or GitLab repository:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**.
 3. Select **Get started** next to **Import a repository**.
 4. Under **Import a repository**, select a **Git account**.
 5. Select the repository you want to import from the list. You can also use the search bar to narrow the results.
 6. Configure your project and select **Save and Deploy**.
-7. Preview your Worker at its provided [workers.dev](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/) subdomain.
+7. Preview your Worker at its provided [`workers.dev`](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/) subdomain.
 
 ### Connect an existing Worker
 
 To connect an existing Worker to a GitHub or GitLab repository:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select the Worker you want to connect to a repository.
 3. Select **Settings** and then **Builds**.
 4. Select **Connect** and follow the prompts to connect the repository to your Worker and configure your [build settings](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/).
@@ -75,8 +73,7 @@ For Workers that use [Containers](https://developers.cloudflare.com/containers/)
 
 To disconnect a Worker from a GitHub or GitLab repository:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select the Worker you want to disconnect from a repository.
 3. Select **Settings** and then **Builds**.
 4. Select **Disconnect**.

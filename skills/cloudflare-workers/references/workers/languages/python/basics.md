@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # The Basics
 
-Last updated Jun 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/languages/python/basics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/python/basics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Fetch Handler
 
@@ -26,7 +26,7 @@ class Default(WorkerEntrypoint):
         return Response("Hello World!")
 ```
 
-Similar to other Workers, the main entry point for a Python worker is the [fetch handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch) which handles incoming requests sent to the Worker.
+Similar to other Workers, the main entry point for a Python worker is the [`fetch` handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch) which handles incoming requests sent to the Worker.
 
 In a Python Worker, this handler is placed in a `Default` class that extends the `WorkerEntrypoint` class (which you can import from the `workers` SDK module).
 
@@ -34,7 +34,7 @@ In a Python Worker, this handler is placed in a `Default` class that extends the
 
 The `request` parameter passed to your `fetch` handler is a JavaScript Request object, exposed via the [foreign function interface (FFI)](https://developers.cloudflare.com/workers/languages/python/ffi), allowing you to access it directly from your Python code.
 
-Let's try editing the worker to accept a POST request. We know from the [documentation for Request](https://developers.cloudflare.com/workers/runtime-apis/request) that we can call `await request.json()` within an `async` function to parse the request body as JSON.
+Let's try editing the worker to accept a POST request. We know from the [documentation for `Request`](https://developers.cloudflare.com/workers/runtime-apis/request) that we can call `await request.json()` within an `async` function to parse the request body as JSON.
 
 In a Python Worker, you would write:
 
@@ -93,7 +93,7 @@ For example, let us try setting and using an environment variable in a Python Wo
 		"python_workers"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"vars": {
 		"API_HOST": "example.com"
 	}
@@ -106,7 +106,7 @@ name = "hello-python-worker"
 main = "src/entry.py"
 compatibility_flags = [ "python_workers" ]
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [vars]
 API_HOST = "example.com"
@@ -144,7 +144,7 @@ class Default(WorkerEntrypoint):
         return Response(hello("World"))
 ```
 
-Once you edit `src/entry.py`, [pywrangler](https://developers.cloudflare.com/workers/languages/python/#the-pywrangler-cli-tool) will automatically detect the change and reload your Worker.
+Once you edit `src/entry.py`, [`pywrangler`](https://developers.cloudflare.com/workers/languages/python/#the-pywrangler-cli-tool) will automatically detect the change and reload your Worker.
 
 ## Types and Autocompletion
 
@@ -160,11 +160,11 @@ dependencies = [
 
 Additionally, you can generate types based on your Worker configuration using `uv run pywrangler types`
 
-This includes `Env` types based on your bindings, module rules, and runtime types based on the `compatibility_date`and `compatibility_flags` in your config file. See
+This includes `Env` types based on your bindings, module rules, and runtime types based on the `compatibility_date` and `compatibility_flags` in your config file. See
 
 ## Upgrading `pywrangler`
 
-To upgrade to the latest version of [pywrangler](https://developers.cloudflare.com/workers/languages/python/#the-pywrangler-cli-tool) globally, run the following command:
+To upgrade to the latest version of [`pywrangler`](https://developers.cloudflare.com/workers/languages/python/#the-pywrangler-cli-tool) globally, run the following command:
 
 ```bash
 uv tool upgrade workers-py
@@ -178,10 +178,10 @@ uv lock --upgrade-package workers-py
 
 ## Next Up
 
-* Learn details about local development, deployment, and [how Python Workers work](https://developers.cloudflare.com/workers/languages/python/how-python-workers-work).
-* Explore the [package](https://developers.cloudflare.com/workers/languages/python/packages) docs for instructions on how to use packages with Python Workers.
-* Understand which parts of the [Python Standard Library](https://developers.cloudflare.com/workers/languages/python/stdlib) are supported in Python Workers.
-* Learn about Python Workers' [foreign function interface (FFI)](https://developers.cloudflare.com/workers/languages/python/ffi), and how to use it to work with [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings) and [Runtime APIs](https://developers.cloudflare.com/workers/runtime-apis/).
+- Learn details about local development, deployment, and [how Python Workers work](https://developers.cloudflare.com/workers/languages/python/how-python-workers-work).
+- Explore the [package](https://developers.cloudflare.com/workers/languages/python/packages) docs for instructions on how to use packages with Python Workers.
+- Understand which parts of the [Python Standard Library](https://developers.cloudflare.com/workers/languages/python/stdlib) are supported in Python Workers.
+- Learn about Python Workers' [foreign function interface (FFI)](https://developers.cloudflare.com/workers/languages/python/ffi), and how to use it to work with [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings) and [Runtime APIs](https://developers.cloudflare.com/workers/runtime-apis/).
 
 Was this helpful?
 

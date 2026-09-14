@@ -8,28 +8,30 @@ image: https://developers.cloudflare.com/og-docs.png
 
 In this video, learn how Cloudflare's SASE platform can provide highly secure access to your critical infrastructure by leveraging a modern ZTNA service to implement Zero Trust principles Applications, databases and their servers are running in a variety of locations from on-premises data centers to cloud hyperscalers, making the need to secure administrative access more important than ever.
 
+<details>
+
+<summary>
+
 Chapters
 
-* ![Introduction to SASE and Securing Access to Critical Infrastructure](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=0s)
+</summary>
 
-**Introduction to SASE and Securing Access to Critical Infrastructure**0s
-* ![Connecting and Securing Private Servers with Cloudflare Tunnels](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=50s)
+- ![Introduction to SASE and Securing Access to Critical Infrastructure](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=0s)**Introduction to SASE and Securing Access to Critical Infrastructure**0s
+- ![Connecting and Securing Private Servers with Cloudflare Tunnels](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=50s)**Connecting and Securing Private Servers with Cloudflare Tunnels**50s
+- ![Using Internal DNS to Securely Resolve Private Network Resources](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=132s)**Using Internal DNS to Securely Resolve Private Network Resources**02m12s
+- ![Connecting User Devices Securely with Cloudflare's Device Agent](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=181s)**Connecting User Devices Securely with Cloudflare's Device Agent**03m01s
+- ![Enforcing Access Control with Identity, Network and Device Based Security Policies](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=228s)**Enforcing Access Control with Identity, Network and Device Based Security Policies**03m48s
+- ![Auditing and Logging Access to Critical Infrastructure](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=303s)**Auditing and Logging Access to Critical Infrastructure**05m03s
 
-**Connecting and Securing Private Servers with Cloudflare Tunnels**50s
-* ![Using Internal DNS to Securely Resolve Private Network Resources](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=132s)
+</details>
 
-**Using Internal DNS to Securely Resolve Private Network Resources**02m12s
-* ![Connecting User Devices Securely with Cloudflare's Device Agent](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=181s)
+<details>
 
-**Connecting User Devices Securely with Cloudflare's Device Agent**03m01s
-* ![Enforcing Access Control with Identity, Network and Device Based Security Policies](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=228s)
-
-**Enforcing Access Control with Identity, Network and Device Based Security Policies**03m48s
-* ![Auditing and Logging Access to Critical Infrastructure](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=303s)
-
-**Auditing and Logging Access to Critical Infrastructure**05m03s
+<summary>
 
 Transcript
+
+</summary>
 
 Secure Access Service Edge or SASE solutionsincorporate Zero Trust Network Access or ZTNA
 
@@ -210,6 +212,8 @@ We also cover a wide variety of topicsincluding application security,
 corporate networking,and all the developer content the Internet
 
 can hold. Follow us online and thanks forwatching!
+
+</details>
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/sase-3-secure-remote-access/#page","headline":"SASE - Secure remote access to your critical infrastructure | Cloudflare Docs","description":"In this video, learn how Cloudflare's SASE platform can provide highly secure access to your critical infrastructure by leveraging a modern ZTNA service to implement Zero Trust principles Applications, databases and their servers are running in a variety of locations from on-premises data centers to cloud hyperscalers, making the need to secure administrative access more important than ever.","url":"https://developers.cloudflare.com/videos/sase-3-secure-remote-access/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

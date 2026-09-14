@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • OpenAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-4.1-nano/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-4.1-nano/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `openai/gpt-4.1-nano`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 GPT-4.1 Nano is OpenAI’s smallest and cheapest GPT-4.1 variant, optimized for high-throughput, low-latency tasks.
 
-| Model Info                                                                          |                                                                                                                       |
-| ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens                                                                                                      |
-| Terms and License                                                                   | [link ↗](https://openai.com/policies/)                                                                                |
-| More information                                                                    | [link ↗](https://openai.com/)                                                                                         |
-| Zero data retention                                                                 | Yes                                                                                                                   |
-| Request formats                                                                     | Responses, Chat Completions                                                                                           |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-4.1-nano) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens |
+| Terms and License | [link ↗](https://openai.com/policies/) |
+| More information | [link ↗](https://openai.com/) |
+| Zero data retention | Yes |
+| Request formats | Responses, Chat Completions |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-4.1-nano) |
 
 ## Usage
 
@@ -59,6 +59,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The three laws of thermodynamics are fundamental principles that describe the behavior of energy and temperature in physical systems:
 
 1. **First Law of Thermodynamics (Law of Energy Conservation):**
@@ -75,6 +76,7 @@ The three laws of thermodynamics are fundamental principles that describe the be
    As the temperature of a perfect crystal approaches absolute zero (0 Kelvin), the entropy of the system approaches a constant minimum, often taken as zero. This implies that absolute zero temperature is unattainable in a finite number of steps.
 
 These laws form the foundation of thermodynamics and are essential in understanding energy systems, engines, refrigerators, and many other physical phenomena.
+```
 
 ```json
 {
@@ -120,7 +122,11 @@ These laws form the foundation of thermodynamics and are essential in understand
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -154,6 +160,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 To read a JSON file in Python, you can use the built-in `json` module which provides functions for parsing JSON data. Here's a simple step-by-step example:
 
 1. Import the `json` module.
@@ -182,6 +189,7 @@ print(data)
 - Always handle potential exceptions (like `FileNotFoundError` or `json.JSONDecodeError`) when working with files and JSON data.
 
 Would you like an example with error handling or working with JSON data in a string?
+````
 
 ```json
 {
@@ -225,7 +233,13 @@ Would you like an example with error handling or working with JSON data in a str
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -273,6 +287,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Great! Here are some interesting stops along the San Francisco to Los Angeles route, mainly along the iconic Highway 1 and scenic coastal areas:
 
 1. **Santa Cruz**
@@ -304,6 +319,7 @@ Great! Here are some interesting stops along the San Francisco to Los Angeles ro
 If you're looking for a more inland route, you can also take Interstate 5 and explore some of California’s inland attractions, but the coastal drive offers some of the most iconic scenic views.
 
 Would you like a suggested itinerary or specific activity recommendations at any of these stops?
+```
 
 ```json
 {
@@ -347,7 +363,13 @@ Would you like a suggested itinerary or specific activity recommendations at any
 }
 ```
 
-**Creative Writing** — Longer completion for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Longer completion for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -381,7 +403,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Detective Mara Collins cautiously stepped into the dimly lit workshop, the scent of oil and old wood lingering in the air. Pieces of broken clock gears and scattered tools dotted the cluttered space, but it was the tiny, shimmering feather tucked behind a loose brick that caught her eye. It was unlike any bird feather she’d seen—irregularly shaped, iridescent, and strangely warm to the touch. As she examined it, a shiver ran down her spine, promising that this was no ordinary clue, but a signature left behind by someone desperately trying to be remembered.
+```
 
 ```json
 {
@@ -425,7 +449,13 @@ Detective Mara Collins cautiously stepped into the dimly lit workshop, the scent
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -458,6 +488,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 Recursion is a programming technique where a function calls itself to solve a problem. It’s especially useful when a problem can be broken down into smaller, similar subproblems. Each recursive call works on a smaller piece, and the process continues until a basic case is reached, which stops the recursion.
 
 **Simple Example:** Calculating the factorial of a number
@@ -489,6 +520,7 @@ In this example:
 - `factorial(4)` computes \( 4 \times factorial(3) \), and so on.
 - When it reaches `factorial(1)`, it hits the base case and returns 1.
 - The recursive calls then resolve, multiplying the numbers back up to give the final result.
+````
 
 ```json
 [
@@ -7300,6 +7332,8 @@ In this example:
 ]
 ```
 
+</details>
+
 ## Parameters
 
 Schema variant
@@ -7330,13 +7364,11 @@ stream
 
 `boolean`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
-
-``
 
 ▶text{}
 
@@ -7346,7 +7378,7 @@ tool\_choice
 
 `object`
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -7368,11 +7400,11 @@ top\_p
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 stream
 
@@ -7382,19 +7414,15 @@ stream
 
 `object`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
 
-``
-
 response\_format
 
-``
-
-▶modalities\[\]
+▶modalities\[]
 
 `array`
 
@@ -7418,7 +7446,7 @@ model
 
 `string`
 
-▶output\[\]
+▶output\[]
 
 `array`
 
@@ -7450,7 +7478,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -7460,9 +7488,9 @@ model
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/openai/gpt-4.1-nano/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-4.1-nano/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/openai/gpt-4.1-nano/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-4.1-nano/schema-output.json)
 
 Was this helpful?
 

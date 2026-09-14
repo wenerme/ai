@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Python SDK
 
-Last updated Aug 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/flagship/sdk/python/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/sdk/python/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Python SDK provides an OpenFeature-compatible `FlagshipServerProvider` for server-side Python applications. It evaluates flags over HTTP and does not support the Cloudflare Workers binding.
 
@@ -69,18 +69,18 @@ Use the `*_details` methods when you need the resolved value, reason, variant, o
 
 ## Configuration options
 
-| Option           | Type                               | Default | Description                                                 |
-| ---------------- | ---------------------------------- | ------- | ----------------------------------------------------------- |
-| app\_id          | str                                | None    | Flagship app ID.                                            |
-| account\_id      | str                                | None    | Required with app\_id.                                      |
-| auth\_token      | str                                | None    | Bearer token added to every request.                        |
-| headers\_factory | Callable\[\[\], dict\[str, str\]\] | None    | Dynamic per-request headers.                                |
-| timeout          | float                              | 5.0     | Request timeout in seconds.                                 |
-| retries          | int                                | 1       | Retry attempts on transient errors, capped at 10.           |
-| retry\_delay     | float                              | 1.0     | Delay between retries in seconds, capped at 30.0.           |
-| logging          | bool                               | False   | Enable SDK-level debug output through the SDK logger.       |
-| cache\_ttl       | float                              | None    | Cache TTL in seconds. Enables caching when set.             |
-| cache\_max\_size | int                                | 1000    | Maximum cached entries before least-recently-used eviction. |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `app_id` | `str` | None | Flagship app ID. |
+| `account_id` | `str` | None | Required with `app_id`. |
+| `auth_token` | `str` | None | Bearer token added to every request. |
+| `headers_factory` | `Callable[[], dict[str, str]]` | None | Dynamic per-request headers. |
+| `timeout` | `float` | `5.0` | Request timeout in seconds. |
+| `retries` | `int` | `1` | Retry attempts on transient errors, capped at `10`. |
+| `retry_delay` | `float` | `1.0` | Delay between retries in seconds, capped at `30.0`. |
+| `logging` | `bool` | `False` | Enable SDK-level debug output through the SDK logger. |
+| `cache_ttl` | `float` | None | Cache TTL in seconds. Enables caching when set. |
+| `cache_max_size` | `int` | `1000` | Maximum cached entries before least-recently-used eviction. |
 
 ## Response caching
 

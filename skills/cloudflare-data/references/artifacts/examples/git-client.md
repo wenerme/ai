@@ -12,18 +12,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Git client
 
-Last updated May 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/artifacts/examples/git-client/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/examples/git-client/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can use a standard Git client to interact with Artifacts repos. This example walks through clone, but the same approach works for fetch, pull, push, and any other Git operation.
 
 To do this, you need to:
 
-* Fetch the repo's remote URL from the REST API
-* Mint a short-lived token scoped to that repo
+- Fetch the repo's remote URL from the REST API
+- Mint a short-lived token scoped to that repo
 
 Once you have the remote URL and token, you can use them to run Git commands against the repo.
 
-This example assumes the repo already exists and that you have a [Cloudflare API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with **Artifacts** \> **Edit**.
+This example assumes the repo already exists and that you have a [Cloudflare API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with **Artifacts** > **Edit**.
 
 ## Fetch the remote and clone the repo
 

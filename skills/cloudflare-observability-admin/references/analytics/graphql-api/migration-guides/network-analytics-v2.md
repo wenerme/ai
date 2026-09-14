@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Network Analytics v1 to Network Analytics v2
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/migration-guides/network-analytics-v2/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/migration-guides/network-analytics-v2/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In early 2020, Cloudflare released the first version of the Network Analytics dashboard and its corresponding API. The second version (Network Analytics v2) was made available on 2021-09-13.
 
@@ -28,16 +28,16 @@ Learn more about the [concepts introduced in Network Analytics v2](https://devel
 
 The following table compares the features of NAv1 and NAv2:
 
-| Feature                          | NAv1                                                                                          | NAv2                                                                               |
-| -------------------------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| Sampling rate                    | 1/8,192 packets                                                                               | Varies between 1/100 and 1/1,000,000 packets, depending on the mitigation service. |
-| Sampling method                  | Core Sample Enrichment                                                                        | Edge Sample Enrichment                                                             |
-| Historical data retention method | Aggregated roll-ups                                                                           | Adaptive Bit Rate                                                                  |
-| Retention period                 | 1-min roll-ups: 30 days1-hour roll-ups: 6 months1-day roll-ups: 1 yearAttack roll-ups: 1 year | All nodes: 16 weeks                                                                |
-| Attack mitigation systems        | dosd                                                                                          | dosd, flowtrackd\*, and Cloudflare Network Firewall\*                              |
-| Examples of new fields           | n/a                                                                                           | Rule IDGRE tunnel IDPacket size                                                    |
+| Feature | NAv1 | NAv2 |
+| --- | --- | --- |
+| Sampling rate | 1/8,192 packets | Varies between 1/100 and 1/1,000,000 packets,<br> depending on the mitigation service. |
+| Sampling method | Core Sample Enrichment | Edge Sample Enrichment |
+| Historical data retention method | Aggregated roll-ups | Adaptive Bit Rate |
+| Retention period | 1-min roll-ups: 30 days<br>1-hour roll-ups: 6 months<br>1-day roll-ups: 1 year<br>Attack roll-ups: 1 year | All nodes: 16 weeks |
+| Attack mitigation systems | `dosd` | `dosd`, `flowtrackd`\*, and Cloudflare Network Firewall\* |
+| Examples of new fields | n/a | Rule ID<br>GRE tunnel ID<br>Packet size |
 
-\* _Applicable only for Magic Transit customers._
+\* *Applicable only for Magic Transit customers.*
 
 For more information on the differences in terms of sampling method and historical data retention, refer to [Main differences between Network Analytics v1 and v2](https://developers.cloudflare.com/analytics/graphql-api/migration-guides/network-analytics-v2/differences/).
 
@@ -49,10 +49,10 @@ The `attackId` field value may be different between NAv1 and NAv2 for the same a
 
 NAv2 uses the same API endpoint but makes use of new nodes. While NAv1 has three nodes for aggregated roll-ups for all traffic and attacks, and one node for attacks, NAv2 has one node for all traffic and attacks, and four separate nodes for attacks that vary based on the mitigation system.
 
-| Node type      | NAv1                                          | NAv2 for Magic Transit                                                                                                                            | NAv2 for Spectrum                                            |
-| -------------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| Main node(s)   | ipFlows1mGroupsipFlows1hGroupsipFlows1dGroups | magicTransitNetworkAnalyticsAdaptiveGroups                                                                                                        | spectrumNetworkAnalyticsAdaptiveGroups                       |
-| Attack node(s) | ipFlows1mAttacksGroups                        | dosdNetworkAnalyticsAdaptiveGroups dosdAttackAnalyticsGroups flowtrackdNetworkAnalyticsAdaptiveGroups magicFirewallNetworkAnalyticsAdaptiveGroups | dosdNetworkAnalyticsAdaptiveGroups dosdAttackAnalyticsGroups |
+| Node type | NAv1 | NAv2 for Magic Transit | NAv2 for Spectrum |
+| --- | --- | --- | --- |
+| Main node(s) | `ipFlows1mGroups`<br>`ipFlows1hGroups`<br>`ipFlows1dGroups` | `magicTransitNetworkAnalyticsAdaptiveGroups` | `spectrumNetworkAnalyticsAdaptiveGroups` |
+| Attack node(s) | `ipFlows1mAttacksGroups` | `dosdNetworkAnalyticsAdaptiveGroups`<br> `dosdAttackAnalyticsGroups`<br> `flowtrackdNetworkAnalyticsAdaptiveGroups`<br> `magicFirewallNetworkAnalyticsAdaptiveGroups` | `dosdNetworkAnalyticsAdaptiveGroups`<br> `dosdAttackAnalyticsGroups` |
 
 Each row represents one packet sample. The data is sampled at Cloudflare’s edge at [various rates](https://developers.cloudflare.com/analytics/graphql-api/migration-guides/network-analytics-v2/node-reference/). You can also query the sample rate from the nodes using the `sample_interval` field.
 
@@ -102,10 +102,10 @@ The following example queries the top 20 logs of traffic dropped by mitigation s
 
 The `mitigationSystem` field can take one the following values:
 
-* `dosd` for [DDoS managed rulesets](https://developers.cloudflare.com/ddos-protection/managed-rulesets/) (Network-layer DDoS Attack Protection or HTTP DDoS Attack Protection).
-* `flowtrackd` for [Advanced TCP Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection/).
-* `magic-firewall` for [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/).
-* Empty string for unmitigated traffic.
+- `dosd` for [DDoS managed rulesets](https://developers.cloudflare.com/ddos-protection/managed-rulesets/) (Network-layer DDoS Attack Protection or HTTP DDoS Attack Protection).
+- `flowtrackd` for [Advanced TCP Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection/).
+- `magic-firewall` for [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/).
+- Empty string for unmitigated traffic.
 
 Was this helpful?
 

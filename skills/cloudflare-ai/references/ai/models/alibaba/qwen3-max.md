@@ -16,22 +16,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Alibaba
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/alibaba/qwen3-max/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/alibaba/qwen3-max/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `alibaba/qwen3-max`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 Alibaba's Qwen 3 Max is a large language model with strong coding, reasoning, and multilingual capabilities, served via DashScope's OpenAI-compatible endpoint.
 
-| Model Info          |                                                                                                                     |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                                |
-| More information    | [link ↗](https://www.alibabacloud.com/en/solutions/generative-ai/qwen)                                              |
-| Zero data retention | Yes                                                                                                                 |
-| Request formats     | Chat Completions, Responses                                                                                         |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/qwen3-max) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal) |
+| More information | [link ↗](https://www.alibabacloud.com/en/solutions/generative-ai/qwen) |
+| Zero data retention | Yes |
+| Request formats | Chat Completions, Responses |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/qwen3-max) |
 
 ## Usage
 
@@ -58,6 +58,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The three laws of thermodynamics are fundamental principles that describe the behavior of energy and entropy in physical systems:
 
 1. **Zeroth Law of Thermodynamics**:
@@ -83,6 +84,7 @@ There is also a **Third Law of Thermodynamics**, which is sometimes included as 
    In practical terms, it implies that absolute zero (0 K) cannot be reached in a finite number of steps.
 
 So, while commonly referred to as “three laws,” modern physics includes **four**—with the Zeroth Law added later for logical completeness, even though it was formulated after the first three.
+```
 
 ```json
 {
@@ -118,7 +120,11 @@ So, while commonly referred to as “three laws,” modern physics includes **fo
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -152,6 +158,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 To read a JSON file in Python, you can use the built-in `json` module. Here's the basic approach:
 
 ## Basic Example
@@ -222,6 +229,7 @@ with open('data.json', 'r', encoding='utf-8') as file:
 ```
 
 The `json.load()` function handles UTF-8 by default, so you usually don't need to specify encoding unless you're dealing with a different character encoding.
+````
 
 ```json
 {
@@ -255,7 +263,13 @@ The `json.load()` function handles UTF-8 by default, so you usually don't need t
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -303,6 +317,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Great! The classic route from San Francisco to Los Angeles along the California coast—especially **Highway 1 (Pacific Coast Highway)**—is one of the most scenic drives in the world. While it takes longer than the inland I-5 freeway (about 8–10 hours without stops), it’s absolutely worth it for the views and experiences. Here are some top places to stop, roughly ordered from north to south:
 
 ### 🌉 **Half Moon Bay**
@@ -361,6 +376,7 @@ Great! The classic route from San Francisco to Los Angeles along the California 
 - **Pack layers**—coastal weather changes fast, even in summer!
 
 Would you like help planning an itinerary based on how many days you have?
+```
 
 ```json
 {
@@ -394,7 +410,13 @@ Would you like help planning an itinerary based on how many days you have?
 }
 ```
 
-**Creative Writing** — Longer completion for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Longer completion for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -428,6 +450,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Rain slicked the cobblestones of Blackwater Lane, turning the gaslight into smears of gold on wet stone. Detective Aris Thorne hunched deeper into his trench coat, the damp wool smell a familiar companion to the city’s usual perfume of coal smoke and despair. Another dead end—literally and figuratively—in the case of the vanished heiress, Elara Vance. The alley reeked of stale beer and something sharper, metallic.
 
 Then he saw it.
@@ -437,6 +460,7 @@ Nestled in a puddle near a overflowing gutter, half-submerged but gleaming with 
 The queen’s face wasn’t printed ink. It was *stitched*. Delicate, almost surgical sutures traced her features—a crimson thread for lips, fine black silk for eyes, silver wire forming the curve of a regal brow. And where the heart symbol should be, centered on her chest, was a tiny, perfect keyhole, wrought from what looked like tarnished silver. Rainwater pooled around it, but the stitches remained unnervingly dry, as if repelling the downpour.
 
 Thorne crouched, ignoring the ache in his knees and the cold seeping through his trousers. He didn’t touch it. Not yet. This wasn’t evidence left by accident; it was a message. A challenge. And the meticulous, chilling craftsmanship whispered of a mind far more dangerous than the common cutpurse or jealous rival he’d been chasing. The rain drummed a frantic rhythm on his hat, but the only sound he truly heard was the sudden, icy thrum of his own pulse. The game, it seemed, had just changed its rules.
+```
 
 ```json
 {
@@ -470,7 +494,13 @@ Thorne crouched, ignoring the ache in his knees and the cold seeping through his
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -503,6 +533,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 **Recursion** is a programming technique where a function calls itself to solve a problem by breaking it down into smaller, similar subproblems.
 
 ## Key Components of Recursion
@@ -551,6 +582,7 @@ factorial(5)
 Each recursive call works on a **smaller version** of the original problem until it reaches the simplest case (base case). Then, the results bubble back up to build the final answer.
 
 **Important**: Always ensure your recursive function has a proper base case, otherwise it will run infinitely and cause a stack overflow error!
+````
 
 ```json
 [
@@ -1942,7 +1974,13 @@ Each recursive call works on a **smaller version** of the original problem until
 ]
 ```
 
-**Web Search** — Letting Qwen use DashScope's built-in web search via enable\_search
+</details>
+
+<details>
+
+<summary>**Web Search** — Letting Qwen use DashScope's built-in web search via enable_search</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -1979,6 +2017,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 As of the week ending June 23, 2026, the top Cloudflare news stories include:
 
 - **Acquisition of VoidZero**: On June 4, 2026, Cloudflare announced it acquired VoidZero to accelerate development of the AI-native web, enhancing its platform for next-generation agentic applications.
@@ -1986,6 +2025,7 @@ As of the week ending June 23, 2026, the top Cloudflare news stories include:
 - **Secure Sandboxes for Claude Managed Agents**: On May 19, 2026, Cloudflare introduced secure, scalable sandboxes integrated with Anthropic’s Claude Managed Agents, strengthening runtime security for AI agents—a key update still resonating in early June coverage.
 
 - **Industry Recognition and Strategic Momentum**: Throughout June, Cloudflare continued to be highlighted as a Leader in Edge Development Platforms (per an independent research firm report on May 5, widely cited in June) and maintained media visibility through its ongoing “Agents Week 2026” initiatives, reinforcing its position at the forefront of agentic AI infrastructure.
+```
 
 ```json
 {
@@ -2019,13 +2059,15 @@ As of the week ending June 23, 2026, the top Cloudflare news stories include:
 }
 ```
 
+</details>
+
 ## Parameters
 
 Schema variant
 
 Chat CompletionsResponses
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -2047,11 +2089,11 @@ top\_p
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 stream
 
@@ -2061,19 +2103,15 @@ stream
 
 `object`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
 
-``
-
 response\_format
 
-``
-
-▶modalities\[\]
+▶modalities\[]
 
 `array`
 
@@ -2105,13 +2143,11 @@ stream
 
 `boolean`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
-
-``
 
 ▶text{}
 
@@ -2137,7 +2173,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -2161,7 +2197,7 @@ model
 
 `string`
 
-▶output\[\]
+▶output\[]
 
 `array`
 
@@ -2179,9 +2215,9 @@ status
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/alibaba/qwen3-max/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/alibaba/qwen3-max/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/alibaba/qwen3-max/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/alibaba/qwen3-max/schema-output.json)
 
 Was this helpful?
 

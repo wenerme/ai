@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Time to Live (TTL)
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/reference/ttl/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/reference/ttl/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 **Time to Live (TTL)** is a field on [DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) that controls how long each record is cached and — as a result — how long it takes for record updates to reach your end users.
 
@@ -20,7 +20,9 @@ Longer TTLs speed up [DNS lookups ↗](https://www.cloudflare.com/learning/dns/w
 
 ## Proxied records
 
-By default, all [proxied records](https://developers.cloudflare.com/dns/proxy-status/) have a TTL of **Auto**, which is set to 300 seconds. This value cannot be edited.
+By default, all [proxied records](https://developers.cloudflare.com/dns/proxy-status/)
+
+ have a TTL of **Auto**, which is set to 300 seconds. This value cannot be edited.
 
 Since only [records used for IP address resolution](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#ip-address-resolution) can be proxied, this setting ensures that potential changes to the assigned [anycast IP address](https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/) will take effect quickly, as recursive resolvers will not cache them for longer than 300 seconds (five minutes).
 

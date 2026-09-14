@@ -12,28 +12,28 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Quick Actions
 
-Last updated Jul 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/quick-actions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/quick-actions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Quick Actions provide simple interfaces for common browser tasks like capturing screenshots, extracting HTML content, generating PDFs, and more. You can use Quick Actions in two ways:
 
-* **REST API**: HTTP endpoints for one-off requests or external integration.
-* **Workers Bindings**: Call Quick Actions directly from a [Cloudflare Worker](https://developers.cloudflare.com/workers/) using `env.BROWSER.quickAction()`.
+- **REST API**: HTTP endpoints for one-off requests or external integration.
+- **Workers Bindings**: Call Quick Actions directly from a [Cloudflare Worker](https://developers.cloudflare.com/workers/) using `env.BROWSER.quickAction()`.
 
 The following are the available options:
 
-* [/content - Fetch HTML](https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/)
-* [/screenshot - Capture screenshot](https://developers.cloudflare.com/browser-run/quick-actions/screenshot-endpoint/)
-* [/pdf - Render PDF](https://developers.cloudflare.com/browser-run/quick-actions/pdf-endpoint/)
-* [/markdown - Extract Markdown from a webpage](https://developers.cloudflare.com/browser-run/quick-actions/markdown-endpoint/)
-* [/snapshot - Capture multiple page formats](https://developers.cloudflare.com/browser-run/quick-actions/snapshot/)
-* [/accessibilityTree - Capture accessibility tree](https://developers.cloudflare.com/browser-run/quick-actions/accessibility-tree-endpoint/)
-* [/scrape - Scrape HTML elements](https://developers.cloudflare.com/browser-run/quick-actions/scrape-endpoint/)
-* [/json - Capture structured data using AI](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/)
-* [/links - Retrieve links from a webpage](https://developers.cloudflare.com/browser-run/quick-actions/links-endpoint/)
-* [/crawl - Crawl web content](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/)
-* [Reference](https://developers.cloudflare.com/api/resources/browser%5Frendering/)
+- [/content - Fetch HTML](https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/)
+- [/screenshot - Capture screenshot](https://developers.cloudflare.com/browser-run/quick-actions/screenshot-endpoint/)
+- [/pdf - Render PDF](https://developers.cloudflare.com/browser-run/quick-actions/pdf-endpoint/)
+- [/markdown - Extract Markdown from a webpage](https://developers.cloudflare.com/browser-run/quick-actions/markdown-endpoint/)
+- [/snapshot - Capture multiple page formats](https://developers.cloudflare.com/browser-run/quick-actions/snapshot/)
+- [/accessibilityTree - Capture accessibility tree](https://developers.cloudflare.com/browser-run/quick-actions/accessibility-tree-endpoint/)
+- [/scrape - Scrape HTML elements](https://developers.cloudflare.com/browser-run/quick-actions/scrape-endpoint/)
+- [/json - Capture structured data using AI](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/)
+- [/links - Retrieve links from a webpage](https://developers.cloudflare.com/browser-run/quick-actions/links-endpoint/)
+- [/crawl - Crawl web content](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/)
+- [Reference](https://developers.cloudflare.com/api/resources/browser_rendering/)
 
-[/crawl](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/) is available via the REST API only.
+[`/crawl`](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/) is available via the REST API only.
 
 Use Quick Actions when you need a fast, simple way to perform common browser tasks such as capturing screenshots, extracting HTML, or generating PDFs without writing complex scripts. For more advanced automation, custom workflows, or persistent browser sessions, use [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), or [CDP](https://developers.cloudflare.com/browser-run/cdp/).
 
@@ -43,7 +43,7 @@ Use Quick Actions when you need a fast, simple way to perform common browser tas
 
 To use Quick Actions via the REST API, [create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
 
-* `Browser Rendering - Edit`
+- `Browser Rendering - Edit`
 
 ### Workers binding
 
@@ -61,8 +61,8 @@ Caution
 
 The `.quickAction()` method has two requirements:
 
-* **Compatibility date:** Your Worker must use a compatibility date of `2026-03-24` or later.
-* **Remote mode for local development:** The `.quickAction()` method is not yet supported in local development mode. When developing locally with `wrangler dev`, you must use `npx wrangler dev --remote` or set `"remote": true` in your browser binding configuration. Without remote mode, you will receive the error: `The RPC receiver does not implement the method "quickAction"`.
+- **Compatibility date:** Your Worker must use a compatibility date of `2026-03-24` or later.
+- **Remote mode for local development:** The `.quickAction()` method is not yet supported in local development mode. When developing locally with `wrangler dev`, you must use `npx wrangler dev --remote` or set `"remote": true` in your browser binding configuration. Without remote mode, you will receive the error: `The RPC receiver does not implement the method "quickAction"`.
 
 ```jsonc
 {
@@ -78,8 +78,8 @@ Note
 
 You can monitor Browser Run (formerly Browser Rendering) usage in two ways:
 
-* In the Cloudflare dashboard, go to the **Browser Run** page to view aggregate metrics, including total Quick Actions requests and total browser hours used. [Go to **Browser Run** ↗](https://dash.cloudflare.com/?to=/:account/workers/browser-run)
-* `X-Browser-Ms-Used` header: Returned in every Quick Actions response, reporting browser time used for that request (in milliseconds).
+- In the Cloudflare dashboard, go to the **Browser Run** page to view aggregate metrics, including total Quick Actions requests and total browser hours used. [Go to **Browser Run** ↗](https://dash.cloudflare.com/?to=/:account/workers/browser-run)
+- `X-Browser-Ms-Used` header: Returned in every Quick Actions response, reporting browser time used for that request (in milliseconds).
 
 Was this helpful?
 

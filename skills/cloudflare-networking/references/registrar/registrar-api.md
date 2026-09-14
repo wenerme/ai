@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Registrar API
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/registrar/registrar-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/registrar/registrar-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the Cloudflare Registrar API to search for domain names, check real-time availability and pricing, and register supported domains programmatically.
 
@@ -29,10 +29,10 @@ Before you make your first API request, make sure you have:
 
 For related setup help, refer to:
 
-* [Find your account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/)
-* [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/)
-* [Make API calls](https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/)
-* \[Registrar API docs\] (/api/resources/registrar)
+- [Find your account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/)
+- [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/)
+- [Make API calls](https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/)
+- \[Registrar API docs] (/api/resources/registrar)
 
 ## Set up authentication
 
@@ -69,25 +69,25 @@ Search is useful for discovery, but it is not the source of truth. Always call t
 
 If you are using Cloudflare MCP or another agent-driven workflow, prompts can be as simple as:
 
-* `Search for domains for a coffee shop based in Evergreen, Colorado.`
-* `Find 5 available .com or .dev domains for an AI expense tracker.`
-* `Check whether example.com is available and show me the current price.`
-* `Check these domains and tell me which ones are registrable right now: example.com, example.dev, example.cafe`
-* `Register example.com on my Cloudflare account.`
+- `Search for domains for a coffee shop based in Evergreen, Colorado.`
+- `Find 5 available .com or .dev domains for an AI expense tracker.`
+- `Check whether example.com is available and show me the current price.`
+- `Check these domains and tell me which ones are registrable right now: example.com, example.dev, example.cafe`
+- `Register example.com on my Cloudflare account.`
 
 Note
 
 Agent best practice: Use Search to generate options, use Check to confirm the final choice and price, and only then call Registration.
 
-## 1\. Search for domains
+## 1. Search for domains
 
 Use the Search endpoint to generate candidate domain names from a keyword, phrase, or partial domain name.
 
 Search results:
 
-* Are fast and intended for discovery.
-* Are based on cached data.
-* Only include extensions supported by the API beta.
+- Are fast and intended for discovery.
+- Are based on cached data.
+- Only include extensions supported by the API beta.
 
 Note
 
@@ -143,16 +143,16 @@ Example response:
 }
 ```
 
-## 2\. Check real-time availability and pricing
+## 2. Check real-time availability and pricing
 
 Use the Check endpoint to confirm whether a domain is currently registrable and to retrieve the current price.
 
 Check results:
 
-* Query the registry directly.
-* Reflect current registry state.
-* Should be used immediately before calling the registration endpoint.
-* Responses can include a `reason` field when `registrable` is `false`.
+- Query the registry directly.
+- Reflect current registry state.
+- Should be used immediately before calling the registration endpoint.
+- Responses can include a `reason` field when `registrable` is `false`.
 
 This endpoint accepts up to 20 domains per request.
 
@@ -215,20 +215,20 @@ If a domain cannot be registered through the API, the response includes a reason
 
 Common `reason` values include:
 
-* `domain_unavailable`
-* `extension_not_supported_via_api`
-* `extension_not_supported`
-* `extension_disallows_registration`
+- `domain_unavailable`
+- `extension_not_supported_via_api`
+- `extension_not_supported`
+- `extension_disallows_registration`
 
-## 3\. Register a domain
+## 3. Register a domain
 
 Use the Registration endpoint to start a domain registration workflow.
 
 Important:
 
-* Successful registrations are billable to the default payment profile.
-* Registrations are non-refundable once they complete successfully.
-* Always confirm the domain name and price before calling this endpoint.
+- Successful registrations are billable to the default payment profile.
+- Registrations are non-refundable once they complete successfully.
+- Always confirm the domain name and price before calling this endpoint.
 
 The simplest request only requires `domain_name`:
 
@@ -246,9 +246,9 @@ The account must have a default registrant contact configured. If you do not pas
 
 Current default behavior:
 
-* `auto_renew` defaults to `false`.
-* `privacy_mode` defaults to `redaction` when supported for the TLD, otherwise `off`.
-* The account's default payment method is charged automatically.
+- `auto_renew` defaults to `false`.
+- `privacy_mode` defaults to `redaction` when supported for the TLD, otherwise `off`.
+- The account's default payment method is charged automatically.
 
 Note
 
@@ -321,8 +321,8 @@ By default, the registration endpoint waits for up to 10 seconds before respondi
 
 You can receive either:
 
-* `201 Created` if the registration completed within the wait window.
-* `202 Accepted` if the registration is still in progress.
+- `201 Created` if the registration completed within the wait window.
+- `202 Accepted` if the registration is still in progress.
 
 To force immediate asynchronous behavior, send `Prefer: respond-async`.
 
@@ -408,11 +408,11 @@ Example response:
 
 Possible workflow states include:
 
-* `in_progress`
-* `succeeded`
-* `failed`
-* `action_required`
-* `blocked`
+- `in_progress`
+- `succeeded`
+- `failed`
+- `action_required`
+- `blocked`
 
 If the workflow returns `action_required`, stop polling and surface the required user action.
 
@@ -457,13 +457,13 @@ This is the first beta release of the Registrar API.
 
 Current limitations include:
 
-* Only a subset of supported Cloudflare Registrar extensions are available through the API beta.
-* Search results are scoped to API-supported extensions only.
-* Some extensions supported in the dashboard are not yet available for programmatic registration.
-* When supported, premium domains will require explicit fee acknowledgement before registration.
-* Renewals are not yet available through the API.
-* Transfers are not yet available through the API.
-* Contact updates are not yet available through the API.
+- Only a subset of supported Cloudflare Registrar extensions are available through the API beta.
+- Search results are scoped to API-supported extensions only.
+- Some extensions supported in the dashboard are not yet available for programmatic registration.
+- When supported, premium domains will require explicit fee acknowledgement before registration.
+- Renewals are not yet available through the API.
+- Transfers are not yet available through the API.
+- Contact updates are not yet available through the API.
 
 If you check a domain that Cloudflare supports in the dashboard but not yet in the API, the Check response returns `extension_not_supported_via_api`.
 
@@ -473,7 +473,7 @@ Add a link here to the supported extensions list once it exists.
 
 ## Next steps
 
-* Review [Cloudflare API auth and request conventions](https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/).
+- Review [Cloudflare API auth and request conventions](https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/).
 
 If you are building with the Registrar API beta, especially for automation, agents, or multi-tenant platform workflows, we want your feedback.
 

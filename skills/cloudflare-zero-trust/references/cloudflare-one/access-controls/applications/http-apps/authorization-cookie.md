@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Authorization cookie
 
-Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you protect a site with Cloudflare Access, Cloudflare checks every HTTP request bound for that site to ensure that the request has a valid `CF_Authorization` cookie. If a request does not include the cookie, Access will block the request.
 
@@ -22,8 +22,8 @@ The `CF_Authorization` cookie contains the user's identity in the form of a [JSO
 
 Access generates two separate `CF_Authorization` tokens depending on the domain:
 
-* **Global session token**: Generated when a user logs in to Access. This token is stored as a cookie at your team domain (for example, `https://<your-team-name>.cloudflareaccess.com`) and prevents a user from needing to log in to each application.
-* [**Application token**](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/): Generated for each application that a user reaches. This token is stored as a cookie on the protected domain (for example, `https://jira.site.com`) and may be used to [validate requests](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json) on your origin.
+- **Global session token**: Generated when a user logs in to Access. This token is stored as a cookie at your team domain (for example, `https://<your-team-name>.cloudflareaccess.com`) and prevents a user from needing to log in to each application.
+- [**Application token**](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/): Generated for each application that a user reaches. This token is stored as a cookie on the protected domain (for example, `https://jira.site.com`) and may be used to [validate requests](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json) on your origin.
 
 ### Multi-domain applications
 
@@ -43,53 +43,53 @@ The following Access cookies are essential to Access functionality. Cookies that
 
 ### CF\_Authorization (team domain)
 
-| Details                                                                                                                                                                                                                                                                                                                                                                                        | Expiration                                                                                                                                                                                                                                                                                                                                                                                                    | HttpOnly | SameSite | Required? |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- | --------- |
-| [JSON web token (JWT)](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/#access-jwts) set on the cloudflareaccess.com [team domain](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/#what-is-a-team-domainteam-name) that contains the user's identity and enables Access to perform single sign-on (SSO) | ViewIf set, adheres to [global session duration](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#global-session-duration).If not, adheres to [application session duration](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#application-session-duration).If neither are set, defaults to 24 hours. | Yes      | None     | Required  |
+| Details | Expiration | HttpOnly | SameSite | Required? |
+| --- | --- | --- | --- | --- |
+| [JSON web token (JWT)](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/#access-jwts) set on the `cloudflareaccess.com` [team domain](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/#what-is-a-team-domainteam-name) that contains the user's identity and enables Access to perform single sign-on (SSO) | <details><summary>View</summary>If set, adheres to <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#global-session-duration">global session duration</a>.<br><br>If not, adheres to <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#application-session-duration">application session duration</a>.<br><br>If neither are set, defaults to 24 hours.</details> | Yes | None | Required |
 
 ### CF\_Authorization (Access application domain)
 
-| Details                                                                                                                                                                                                                                                                                          | Expiration                                                                                                                                                                                                                                                                                                                                                                                                    | HttpOnly                     | SameSite                     | Required? |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ---------------------------- | --------- |
-| [JSON web token (JWT)](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/#access-jwts) set on the domain protected by Access that allows Access to confirm that the user has been authenticated and is authorized to reach the origin | ViewIf set, adheres to [policy session duration](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#policy-session-duration).If not, adheres to [application session duration](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#application-session-duration).If neither are set, defaults to 24 hours. | Admin choice (Default: None) | Admin choice (Default: None) | Required  |
+| Details | Expiration | HttpOnly | SameSite | Required? |
+| --- | --- | --- | --- | --- |
+| [JSON web token (JWT)](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/#access-jwts) set on the domain protected by Access that allows Access to confirm that the user has been authenticated and is authorized to reach the origin | <details><summary>View</summary>If set, adheres to <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#policy-session-duration">policy session duration</a>.<br><br>If not, adheres to <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#application-session-duration">application session duration</a>.<br><br>If neither are set, defaults to 24 hours.</details> | Admin choice (Default: None) | Admin choice (Default: None) | Required |
 
 ### CF\_Binding
 
-| Details                                                                                                                                                 | Expiration                                                                                                                                                                                                                                                                                                                                                                                                    | HttpOnly | SameSite | Required? |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- | --------- |
-| Refer to [Binding cookie](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/#binding-cookie) | ViewIf set, adheres to [policy session duration](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#policy-session-duration).If not, adheres to [application session duration](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#application-session-duration).If neither are set, defaults to 24 hours. | Yes      | None     | Optional  |
+| Details | Expiration | HttpOnly | SameSite | Required? |
+| --- | --- | --- | --- | --- |
+| Refer to [Binding cookie](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/#binding-cookie) | <details><summary>View</summary>If set, adheres to <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#policy-session-duration">policy session duration</a>.<br><br>If not, adheres to <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#application-session-duration">application session duration</a>.<br><br>If neither are set, defaults to 24 hours.</details> | Yes | None | Optional |
 
 ### CF\_Session
 
-| Details                                                                                                                                                                                                                                                   | Expiration | HttpOnly | SameSite | Required? |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | -------- | -------- | --------- |
-| [CSRF ↗](https://www.cloudflare.com/learning/security/threats/cross-site-request-forgery/) token used on the cloudflareaccess.com [team domain](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/#what-is-a-team-domainteam-name) | 4 hours    | Yes      | None     | Required  |
+| Details | Expiration | HttpOnly | SameSite | Required? |
+| --- | --- | --- | --- | --- |
+| [CSRF ↗](https://www.cloudflare.com/learning/security/threats/cross-site-request-forgery/) token used on the `cloudflareaccess.com` [team domain](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/#what-is-a-team-domainteam-name) | 4 hours | Yes | None | Required |
 
 ### CF\_AppSession
 
-| Details                                                                                                                                                                       | Expiration | HttpOnly | SameSite | Required? |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | -------- | -------- | --------- |
-| [CSRF ↗](https://www.cloudflare.com/learning/security/threats/cross-site-request-forgery/) token used per application domain, scoped to individual applications behind Access | 24 hours   | Yes      | None     | Required  |
+| Details | Expiration | HttpOnly | SameSite | Required? |
+| --- | --- | --- | --- | --- |
+| [CSRF ↗](https://www.cloudflare.com/learning/security/threats/cross-site-request-forgery/) token used per application domain, scoped to individual applications behind Access | 24 hours | Yes | None | Required |
 
 ### CF\_Device
 
-| Details                                                                                                                                                                                                                                                                                                                                                                                                                                            | Expiration | HttpOnly | SameSite | Required? |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | -------- | -------- | --------- |
-| Cookie set on the cloudflareaccess.com [team domain](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/#what-is-a-team-domainteam-name), used to prevent abuse of [one-time PIN](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/) and [multi-factor authentication](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/) flows | 30 days    | Yes      | Strict   | Required  |
+| Details | Expiration | HttpOnly | SameSite | Required? |
+| --- | --- | --- | --- | --- |
+| Cookie set on the `cloudflareaccess.com` [team domain](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/#what-is-a-team-domainteam-name), used to prevent abuse of [one-time PIN](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/) and [multi-factor authentication](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/) flows | 30 days | Yes | Strict | Required |
 
 ## Cookie settings
 
 Cloudflare Access provides optional security settings that can be added to the browser cookies generated by Access for an authenticated user.
 
-* [SameSite](#samesite-attribute)
-* [HttpOnly flag](#httponly)
-* [Binding cookie](#binding-cookie)
-* [Cookie path](#cookie-path-attribute)
-* [Eager redirect cookie](#eager-redirect-cookie)
+- [SameSite](#samesite-attribute)
+- [HttpOnly flag](#httponly)
+- [Binding cookie](#binding-cookie)
+- [Cookie path](#cookie-path-attribute)
+- [Eager redirect cookie](#eager-redirect-cookie)
 
 To enable these settings:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Locate the application you would like to configure and select **Configure**.
 3. Select **Advanced settings** and scroll down to **Cookie settings**.
 4. Configure the desired cookie settings.
@@ -97,13 +97,13 @@ To enable these settings:
 
 ### SameSite Attribute
 
-The [SameSite ↗](https://web.dev/samesite-cookies-explained/) Attribute selector restricts the cookie to only being sent if the cookie's defined site matches the site being requested in the browser. This adds protection against [cross-site request forgery (CSRF) ↗](https://en.wikipedia.org/wiki/Cross-site%5Frequest%5Fforgery).
+The [`SameSite` ↗](https://web.dev/samesite-cookies-explained/) Attribute selector restricts the cookie to only being sent if the cookie's defined site matches the site being requested in the browser. This adds protection against [cross-site request forgery (CSRF) ↗](https://en.wikipedia.org/wiki/Cross-site_request_forgery).
 
 The selector options are:
 
-* **None** \- Cookies will be sent in all contexts, including cross-origin requests.
-* **Lax** \- Cookies are allowed to be sent with top-level navigations and will be sent along with GET requests initiated by third party websites.
-* **Strict** \- Cookies will only be sent in a first-party context and not be sent along with requests initiated by third party websites.
+- **None** - Cookies will be sent in all contexts, including cross-origin requests.
+- **Lax** - Cookies are allowed to be sent with top-level navigations and will be sent along with GET requests initiated by third party websites.
+- **Strict** - Cookies will only be sent in a first-party context and not be sent along with requests initiated by third party websites.
 
 Refer to the [Mozilla documentation ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Set-Cookie#samesitesamesite-value) for more information.
 
@@ -123,8 +123,8 @@ The `HttpOnly` flag is a cookie attribute that prevents the cookie from being ac
 
 Do not enable `HttpOnly` if:
 
-* You are using the Access application for non-browser based tools (such as SSH or RDP).
-* You have software that relies on being able to access a user's cookie generated by Access.
+- You are using the Access application for non-browser based tools (such as SSH or RDP).
+- You have software that relies on being able to access a user's cookie generated by Access.
 
 ### Binding cookie
 
@@ -136,9 +136,9 @@ The `CF_Authorization` cookie cannot be used without the associated binding cook
 
 Do not enable Binding Cookie if:
 
-* You are using the Access application for non-browser based tools (such as SSH or RDP).
-* You have enabled [incompatible Cloudflare products](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/#product-compatibility) on the application domain, such as [Zaraz](https://developers.cloudflare.com/zaraz) or [Google tag gateway](https://developers.cloudflare.com/google-tag-gateway/). Enabling Binding Cookie alongside these products can cause an authentication redirect loop (`ERR_TOO_MANY_REDIRECTS`).
-* You have turned on [Authenticate with Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/) for the application.
+- You are using the Access application for non-browser based tools (such as SSH or RDP).
+- You have enabled [incompatible Cloudflare products](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/#product-compatibility) on the application domain, such as [Zaraz](https://developers.cloudflare.com/zaraz) or [Google tag gateway](https://developers.cloudflare.com/google-tag-gateway/). Enabling Binding Cookie alongside these products can cause an authentication redirect loop ( `ERR_TOO_MANY_REDIRECTS`).
+- You have turned on [Authenticate with Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/) for the application.
 
 ### Cookie Path Attribute
 
@@ -158,33 +158,65 @@ By default, some browsers block all third-party cookies in private browsing mode
 
 To enable third-party cookies for an Access application:
 
+<details>
+
+<summary>
+
 Chrome
 
-1. Go to **Settings** \> **Privacy and security** \> **Cookies and other site data**.
+</summary>
+
+1. Go to **Settings** &gt; **Privacy and security** &gt; **Cookies and other site data**.
 2. Under **Sites that can always use cookies**, add the following URLs:
-  * Hostname of your Access application (for example, `https://jira.site.com`)
-  * `https://<your-team-name>.cloudflareaccess.com`
+   - Hostname of your Access application (for example, <code>https://jira.site.com</code>)
+   - <code>https://&lt;your-team-name&gt;.cloudflareaccess.com</code>
+
+</details>
+
+<details>
+
+<summary>
 
 Safari
 
-1. Go to **Safari** \> **Settings** \> **Privacy**.
+</summary>
+
+1. Go to **Safari** &gt; **Settings** &gt; **Privacy**.
 2. Deselect **Block all cookies**.
+
+</details>
+
+<details>
+
+<summary>
 
 Firefox
 
-1. Go to **Settings** \> **Privacy & Security**.
+</summary>
+
+1. Go to **Settings** &gt; **Privacy &amp; Security**.
 2. Scroll down to **Cookies and Site Data**.
 3. Select **Manage Exceptions**.
-4. Enter the URL of your Access application (for example, `https://jira.site.com`) and select **Allow**.
-5. Enter `https://<your-team-name>.cloudflareaccess.com` and select **Allow**.
+4. Enter the URL of your Access application (for example, <code>https://jira.site.com</code>) and select **Allow**.
+5. Enter <code>https://&lt;your-team-name&gt;.cloudflareaccess.com</code> and select **Allow**.
 6. Select **Save Changes**.
+
+</details>
+
+<details>
+
+<summary>
 
 Brave
 
-1. Go to `brave://settings/cookies`.
+</summary>
+
+1. Go to <code>brave://settings/cookies</code>.
 2. Under **Sites that can always use cookies**, add the following URLs:
-  * Hostname of your Access application (for example, `https://jira.site.com`)
-  * `https://<your-team-name>.cloudflareaccess.com`
+   - Hostname of your Access application (for example, <code>https://jira.site.com</code>)
+   - <code>https://&lt;your-team-name&gt;.cloudflareaccess.com</code>
+
+</details>
 
 Was this helpful?
 

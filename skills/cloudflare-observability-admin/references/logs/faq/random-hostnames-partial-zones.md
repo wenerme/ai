@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Random hostnames
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/faq/random-hostnames-partial-zones/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/faq/random-hostnames-partial-zones/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [❮ Back to FAQ](https://developers.cloudflare.com/logs/faq/)
 
@@ -29,25 +29,25 @@ Attackers use a technique called Host header injection:
 3. Cloudflare logs the `Host` header value as-is in the `ClientRequestHost` field.
 4. The requests reach Cloudflare because they target valid Cloudflare IPs — but the attacker controls the `Host` header content.
 
-The [http.host field](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.host/) contains the `Host` header from the original request, which means attacker-controlled values appear in your logs.
+The [`http.host` field](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.host/) contains the `Host` header from the original request, which means attacker-controlled values appear in your logs.
 
 ### Why are partial zones susceptible?
 
 With partial (CNAME) zones:
 
-* Only specific hostnames point to Cloudflare via CNAME at your authoritative DNS provider.
-* Cloudflare does not control the full zone, so it cannot validate that incoming `Host` headers match configured records.
-* Attackers can enumerate subdomains by sending requests to known-good IPs with guessed `Host` headers.
+- Only specific hostnames point to Cloudflare via CNAME at your authoritative DNS provider.
+- Cloudflare does not control the full zone, so it cannot validate that incoming `Host` headers match configured records.
+- Attackers can enumerate subdomains by sending requests to known-good IPs with guessed `Host` headers.
 
 ### How do I identify this pattern?
 
-| Indicator                      | What to look for                                                                                                                        |
-| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
-| **Request count distribution** | Legitimate hostnames have thousands of requests. Suspicious hostnames have exactly two to five requests each.                           |
-| **Hostname patterns**          | Sequential numbers (0-0, 0-56, 007), common words (admin, api, test, staging), or internal service names (airflow, consul, prometheus). |
-| **Source IPs**                 | Suspicious requests often come from a small set of IPs (scanner infrastructure).                                                        |
-| **Response codes**             | Many 4xx responses (hostname not found, SSL mismatch).                                                                                  |
-| **DNS correlation**            | Suspicious hostnames do not appear in DNS query logs.                                                                                   |
+| Indicator | What to look for |
+| --- | --- |
+| **Request count distribution** | Legitimate hostnames have thousands of requests. Suspicious hostnames have exactly two to five requests each. |
+| **Hostname patterns** | Sequential numbers (`0-0`, `0-56`, `007`), common words (`admin`, `api`, `test`, `staging`), or internal service names (`airflow`, `consul`, `prometheus`). |
+| **Source IPs** | Suspicious requests often come from a small set of IPs (scanner infrastructure). |
+| **Response codes** | Many 4xx responses (hostname not found, SSL mismatch). |
+| **DNS correlation** | Suspicious hostnames do not appear in DNS query logs. |
 
 ### Example data pattern
 
@@ -82,8 +82,8 @@ Use a hostname list if you have many proxied hostnames, or use a wildcard match 
 
 Yes. If you prefer cleaner logs without blocking traffic:
 
-* **At Logpush level** — Filter the job to include only known-good hostnames using [Logpush filters](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/).
-* **At SIEM level** — Filter or exclude hostnames with request counts below a threshold during log analysis.
+- **At Logpush level** — Filter the job to include only known-good hostnames using [Logpush filters](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/).
+- **At SIEM level** — Filter or exclude hostnames with request counts below a threshold during log analysis.
 
 ### Are these requests reaching my origin?
 
@@ -93,9 +93,9 @@ Possibly, if the `Host` header happens to match a configured hostname or if you 
 
 The risk is low to moderate. The main concerns are:
 
-* Information disclosure if error pages reveal internal details.
-* Resource consumption if requests reach your origin.
-* Log noise that makes real attacks harder to identify.
+- Information disclosure if error pages reveal internal details.
+- Resource consumption if requests reach your origin.
+- Log noise that makes real attacks harder to identify.
 
 ### Why do suspicious hostnames have exactly two requests?
 

@@ -14,7 +14,7 @@ Cloudflare is updating the source IP addresses used for DNS zone transfers (AXFR
 
 # Cloudflare IP addresses
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/access-control-lists/cloudflare-ip-addresses/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/access-control-lists/cloudflare-ip-addresses/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Depending on your setup ([Cloudflare as Primary](#cloudflare-as-primary) or [Cloudflare as Secondary](#cloudflare-as-secondary)), you need to configure slightly different Cloudflare IP addresses at your other DNS provider.
 
@@ -36,7 +36,13 @@ Since April 15, 2026, Cloudflare sends from the new IP addresses listed above an
 
 If you have an existing configuration, add the new IP addresses to your allow list first, verify that transfers and NOTIFY messages are working from the new addresses, and only then remove the old IP addresses.
 
+<details>
+
+<summary>
+
 Old source IP addresses (deprecated — removed December 1, 2026)
+
+</summary>
 
 ```txt
 198.41.144.240/28
@@ -44,6 +50,8 @@ Old source IP addresses (deprecated — removed December 1, 2026)
 2a06:98c0:3601::/48
 2a06:98c0:1401::/48
 ```
+
+</details>
 
 ## Cloudflare as Primary
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create custom rules
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/create-rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/create-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Create and manage [Load Balancing rules](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/) in the **Custom Rules** page, which is part of the Create/Edit Load Balancer workflow found in **Traffic** in the dashboard.
 
@@ -20,14 +20,13 @@ Create and manage [Load Balancing rules](https://developers.cloudflare.com/load-
 
 ## Prerequisites
 
-* **Understand whether Cloudflare proxies your traffic**: Depending on the [proxy status](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/) of your traffic, you may have access to different fields for your load balancing rules. For more details, refer to [Supported fields and expressions](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/reference/).
+- **Understand whether Cloudflare proxies your traffic**: Depending on the [proxy status](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/) of your traffic, you may have access to different fields for your load balancing rules. For more details, refer to [Supported fields and expressions](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/reference/).
 
 ---
 
 ## Example Workflow
 
-1. In the Cloudflare dashboard, go to the **Load Balancing** page.
-[Go to **Load Balancing** ↗](https://dash.cloudflare.com/?to=/:account/load-balancing)
+1. In the Cloudflare dashboard, go to the **Load Balancing** page. [Go to **Load Balancing** ↗](https://dash.cloudflare.com/?to=/:account/load-balancing)
 2. Edit an existing load balancer or [create a new load balancer](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/).
 3. From the Load Balancer workflow, select **Custom Rules**.
 4. Select **Create Custom Rule**.
@@ -59,15 +58,15 @@ If you want to host `example.com/blog` separately from your main website, for ex
 
 **When incoming requests match**:
 
-| Field    | Operator | Value |
-| -------- | -------- | ----- |
-| URI Path | contains | /blog |
+| Field | Operator | Value |
+| --- | --- | --- |
+| URI Path | contains | `/blog` |
 
 **Then**:
 
-| Action    | Options | Value          |
-| --------- | ------- | -------------- |
-| Overrides | Pools   | <BLOG\_SERVER> |
+| Action | Options | Value |
+| --- | --- | --- |
+| Overrides | Pools | `<BLOG_SERVER>` |
 
 Was this helpful?
 

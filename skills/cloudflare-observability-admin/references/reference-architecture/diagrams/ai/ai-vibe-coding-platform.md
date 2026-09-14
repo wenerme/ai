@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # AI Vibe Coding Platform
 
-Last updated Jul 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -34,10 +34,10 @@ To get started with a reference implementation of an AI vibe coding platform imm
 
 To build an AI-powered coding platform, you will need these key components:
 
-* **AI for Code Generation:** Integrate with AI models to interpret user prompts and automatically generate code.
-* **Secure Execution Sandbox:** Provide a secure, isolated environment where users can instantly run and test untrusted, AI-generated code.
-* **Scalable Application Deployment :** Deploy and host AI-generated applications at scale.
-* **Analytics & Observability:** Collect logs and metrics to monitor AI usage, application performance, and platform costs.
+- **AI for Code Generation:** Integrate with AI models to interpret user prompts and automatically generate code.
+- **Secure Execution Sandbox:** Provide a secure, isolated environment where users can instantly run and test untrusted, AI-generated code.
+- **Scalable Application Deployment :** Deploy and host AI-generated applications at scale.
+- **Analytics & Observability:** Collect logs and metrics to monitor AI usage, application performance, and platform costs.
 
 ## AI Integration and Code generation
 
@@ -47,27 +47,27 @@ The first step is processing a user's natural language prompt and securely routi
 
 When using various AI providers, you need visibility into costs, the ability to cache responses to reduce expenses, and failover capabilities to ensure reliability. [AI Gateway](https://developers.cloudflare.com/ai-gateway/) acts as a unified control point between your platform and AI providers to deliver these capabilities, enabling:
 
-* A [unified access point](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/) to route requests across LLM providers, allowing you to use [models](https://developers.cloudflare.com/workers-ai/models/) from a range of providers (OpenAI, Anthropic, Google, and others)
-* [Caching](https://developers.cloudflare.com/ai-gateway/features/caching/) for popular responses, so when someone asks to "build a todo list app", the gateway can serve a cached response instead of going to the provider (saving inference costs)
-* [Observability](https://developers.cloudflare.com/ai-gateway/observability/analytics/) into the requests, tokens used, and response times across all providers in one place
-* [Cost tracking](https://developers.cloudflare.com/ai-gateway/observability/costs/) across AI providers
+- A [unified access point](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/) to route requests across LLM providers, allowing you to use [models](https://developers.cloudflare.com/workers-ai/models/) from a range of providers (OpenAI, Anthropic, Google, and others)
+- [Caching](https://developers.cloudflare.com/ai-gateway/features/caching/) for popular responses, so when someone asks to "build a todo list app", the gateway can serve a cached response instead of going to the provider (saving inference costs)
+- [Observability](https://developers.cloudflare.com/ai-gateway/observability/analytics/) into the requests, tokens used, and response times across all providers in one place
+- [Cost tracking](https://developers.cloudflare.com/ai-gateway/observability/costs/) across AI providers
 
 #### Making your AI better at building on Cloudflare
 
 If you’re building an AI code generator and want it to be more knowledgeable about how to best build applications on Cloudflare, there are two tools we recommend using:
 
-* **[Cloudflare Workers Prompt](https://developers.cloudflare.com/workers/get-started/prompting/#build-workers-using-a-prompt):** Structured prompt with examples that teach AI models about Cloudflare's APIs, configuration patterns, and best practices. Include these in your AI system for higher quality code output.
-* **[Cloudflare’s Documentation MCP server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/docs-ai-search):** If your AI tool supports [Model Context Protocol (MCP)](https://developers.cloudflare.com/agents/model-context-protocol/), connect it to Cloudflare's documentation MCP server to get up-to-date knowledge about Cloudflare’s platform.
+- **[Cloudflare Workers Prompt](https://developers.cloudflare.com/workers/get-started/prompting/#build-workers-using-a-prompt):** Structured prompt with examples that teach AI models about Cloudflare's APIs, configuration patterns, and best practices. Include these in your AI system for higher quality code output.
+- **[Cloudflare’s Documentation MCP server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/docs-ai-search):** If your AI tool supports [Model Context Protocol (MCP)](https://developers.cloudflare.com/agents/model-context-protocol/), connect it to Cloudflare's documentation MCP server to get up-to-date knowledge about Cloudflare’s platform.
 
 ## Development environment for executing AI-generated code
 
 Both [Sandboxes](https://developers.cloudflare.com/sandbox/) and [Containers](https://developers.cloudflare.com/containers/) provide secure, isolated environments for executing untrusted AI-generated code. They offer:
 
-* **Strong isolation and sandboxing controls** to prevent malicious or buggy code from affecting other instances
-* **Fast startup times** to enable rapid iteration cycles with real-time feedback
-* **Real-time output streaming** of logs and results for live progress updates and debugging
-* **Preview URLs** to allow users to test applications during development
-* **Global edge deployment** on Cloudflare's network for low-latency execution worldwide
+- **Strong isolation and sandboxing controls** to prevent malicious or buggy code from affecting other instances
+- **Fast startup times** to enable rapid iteration cycles with real-time feedback
+- **Real-time output streaming** of logs and results for live progress updates and debugging
+- **Preview URLs** to allow users to test applications during development
+- **Global edge deployment** on Cloudflare's network for low-latency execution worldwide
 
 **Sandboxes provide a fully-managed solution** that works out-of-the-box, with [pre-built APIs](https://developers.cloudflare.com/sandbox/api/) for code execution, output formatting, and developer tools, making them ideal for most AI code execution use cases.
 
@@ -85,10 +85,11 @@ When building an AI-powered coding platform, you need to be able to deploy and h
 
 **With Workers for Platforms, you get:**
 
-* **Isolation and multitenancy** — every application runs in its own dedicated Worker, a secure and isolated sandbox environment
-* **Egress control and usage limits** — Configure firewall policies for all outgoing requests through an [outbound worker](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/) and [custom usage limits](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/custom-limits/) to prevent abuse
-* **Dedicated resources per project:** Attach a KV store or database to each application, enabling more powerful functionality while ensuring [resources](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/bindings/) are only accessible by the application they’re attached to.
-* **Logging & Observability** across the platform to gather insights, monitor performance, and troubleshoot issues across applications
+- **Isolation and multitenancy** — every application runs in its own dedicated Worker, a secure and isolated sandbox environment
+- **Egress control and usage limits** — Configure firewall policies for all outgoing requests through an [outbound worker](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/) and [custom usage limits](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/custom-limits/) to prevent abuse
+- **Dedicated resources per project:** Attach a KV store or database to each application, enabling more powerful functionality while ensuring [resources](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/bindings/) are only accessible by the application they’re attached to.
+- **Logging & Observability** across the platform to gather insights, monitor performance, and troubleshoot issues across applications
+
 ![Figure 5: Complete Vibe Coding Platform](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2024,height=899,format=svg/_astro/vibe-hosting-analytics.udVLDrQc.svg)
 
 ## Conclusion

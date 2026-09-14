@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Isolation and concurrency
 
-Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/isolation-and-concurrency/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/isolation-and-concurrency/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Review how the Workers Vitest integration runs your tests, how it isolates tests from each other, and how it imports modules.
 
@@ -21,10 +21,10 @@ Review how the Workers Vitest integration runs your tests, how it isolates tests
 When you run your tests with the Workers Vitest integration, Vitest will:
 
 1. Read and evaluate your configuration file using Node.js.
-2. Run any [globalSetup ↗](https://vitest.dev/config/#globalsetup) files using Node.js.
+2. Run any [`globalSetup` ↗](https://vitest.dev/config/#globalsetup) files using Node.js.
 3. Collect and sequence test files.
-4. For each Vitest project, depending on its configured isolation and concurrency, start one or more [workerd ↗](https://github.com/cloudflare/workerd) processes, each running one or more Workers.
-5. Run [setupFiles ↗](https://vitest.dev/config/#setupfiles) and test files in `workerd` using the appropriate Workers.
+4. For each Vitest project, depending on its configured isolation and concurrency, start one or more [`workerd` ↗](https://github.com/cloudflare/workerd) processes, each running one or more Workers.
+5. Run [`setupFiles` ↗](https://vitest.dev/config/#setupfiles) and test files in `workerd` using the appropriate Workers.
 6. Watch for changes and re-run test files using the same Workers if the configuration has not changed.
 
 ## Isolation model
@@ -37,7 +37,7 @@ By default, test files run concurrently. To make test files share the same stora
 
 Each Worker has its own module cache. As Workers are reused between test runs, their module caches are also reused. Vitest invalidates parts of the module cache at the start of each test run based on changed files.
 
-The Workers Vitest plugin runs code inside a Cloudflare Worker that Vitest would usually run inside a [Node.js Worker thread ↗](https://nodejs.org/api/worker%5Fthreads.html). To make this possible, the plugin **automatically injects** the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag), \[`no_nodejs_compat_v2`\] and [export\_commonjs\_default](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#commonjs-modules-do-not-export-a-module-namespace) compatibility flags. This is the minimal compatibility setup that still allows Vitest to run correctly, but without pulling in polyfills and globals that are not required. If you already have a Node.js compatibility flag defined in your configuration, the Vitest plugin does not add those flags.
+The Workers Vitest plugin runs code inside a Cloudflare Worker that Vitest would usually run inside a [Node.js Worker thread ↗](https://nodejs.org/api/worker_threads.html). To make this possible, the plugin **automatically injects** the [`nodejs_compat`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag), \[`no_nodejs_compat_v2`] and [`export_commonjs_default`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#commonjs-modules-do-not-export-a-module-namespace) compatibility flags. This is the minimal compatibility setup that still allows Vitest to run correctly, but without pulling in polyfills and globals that are not required. If you already have a Node.js compatibility flag defined in your configuration, the Vitest plugin does not add those flags.
 
 Caution
 
@@ -53,7 +53,7 @@ The Wrangler configuration file does not specify either `nodejs_compat` or `node
 { "name": "test",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25"
+	"compatibility_date": "2026-09-14"
 	# no nodejs_compat flags here
 }
 ```
@@ -62,7 +62,7 @@ The Wrangler configuration file does not specify either `nodejs_compat` or `node
 name = "test"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 ```
 
 In our `src/index.ts` file, we use the `process` object, which is a Node.js global, unavailable in the Workerd runtime:
@@ -85,7 +85,7 @@ it('responds with "test"', async () => {
 });
 ```
 
-Now, if we run `npm run test`, we see that the tests will _pass_:
+Now, if we run `npm run test`, we see that the tests will *pass*:
 
 ```plaintext
  ✓ test/index.spec.ts (1)
@@ -95,7 +95,7 @@ Now, if we run `npm run test`, we see that the tests will _pass_:
       Tests  1 passed (1)
 ```
 
-And we can run `wrangler dev` and `wrangler deploy` without issues. It _looks like_ our code is fine. However, this code will fail in production as `process` is not available in the Workerd runtime.
+And we can run `wrangler dev` and `wrangler deploy` without issues. It *looks like* our code is fine. However, this code will fail in production as `process` is not available in the Workerd runtime.
 
 To fix the issue, we either need to avoid using Node.js APIs, or add the `nodejs_compat` flag to our Wrangler configuration.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Getting started with Cloudflare Zero Trust FAQ
 
-Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [❮ Back to FAQ](https://developers.cloudflare.com/cloudflare-one/faq/)
 
@@ -22,11 +22,11 @@ You can sign up today on the [Cloudflare dashboard ↗](https://dash.cloudflare.
 
 ## What is a team domain/team name?
 
-Your team domain is a unique subdomain assigned to your Cloudflare account, for example, `<your-team-name>.cloudflareaccess.com`. [Setting up a team domain](https://developers.cloudflare.com/cloudflare-one/setup/#2-create-a-zero-trust-organization) is an essential step in your Zero Trust configuration. This is where your users will find the apps you have secured behind Cloudflare Zero Trust — displayed in the [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/) — and will be able to make login requests to them. The customizable portion of your team domain is called **team name**. You can view your team name and team domain in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** \> **Settings**.
+Your team domain is a unique subdomain assigned to your Cloudflare account, for example, `<your-team-name>.cloudflareaccess.com`. [Setting up a team domain](https://developers.cloudflare.com/cloudflare-one/setup/#2-create-a-zero-trust-organization) is an essential step in your Zero Trust configuration. This is where your users will find the apps you have secured behind Cloudflare Zero Trust — displayed in the [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/) — and will be able to make login requests to them. The customizable portion of your team domain is called **team name**. You can view your team name and team domain in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** > **Settings**.
 
-| team name      | team domain                           |
-| -------------- | ------------------------------------- |
-| your-team-name | <your-team-name>.cloudflareaccess.com |
+| team name | team domain |
+| --- | --- |
+| `your-team-name` | `<your-team-name>.cloudflareaccess.com` |
 
 You can change your team name at any time, unless you have the Cloudflare dashboard SSO feature enabled on your account. If Cloudflare dashboard SSO is enabled, you must [turn off SSO](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/#change-your-zero-trust-team-name) before changing your team name.
 
@@ -53,7 +53,7 @@ After changing your team name, you will need to check your Block page, Login pag
 
 To verify that your team name change is successfully rendering on the Block page, Login page and App Launcher:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Custom pages** \> **Team name and domain**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Custom pages** > **Team name and domain**.
 2. Find the **Account Gateway block page** and **Access login page** sections, then select **Manage** next to the page you would like to review first.
 3. Review that the value in **Your Organization's name** matches your new team name.
 4. If the desired name is not already displayed, change the value to your desired team name and select **Save**.
@@ -63,18 +63,18 @@ The App Launcher will display the same team name set on the Access login page, s
 
 ## How do I change my subscription plan?
 
-To make changes to your subscription, visit the Billing section under **Zero Trust** \> **Settings** in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/). You can change or cancel your subscription at any time. Just remember - if you downgrade your plan during a billing cycle, your downgraded pricing will apply in the next billing cycle. If you upgrade during a billing cycle, you will be billed for the upgraded plan at the moment you select it.
+To make changes to your subscription, visit the Billing section under **Zero Trust** > **Settings** in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/). You can change or cancel your subscription at any time. Just remember - if you downgrade your plan during a billing cycle, your downgraded pricing will apply in the next billing cycle. If you upgrade during a billing cycle, you will be billed for the upgraded plan at the moment you select it.
 
 ## How are active seats measured?
 
-Cloudflare Zero Trust subscriptions consist of seats that users in your account consume. When users authenticate to an application or enroll their agent into the Cloudflare One Client, they count against one of your active seats. Seats can be added, removed, or revoked at **Settings** \> **Cloudflare One plan**. If all seats are currently consumed, you must first remove users before decreasing your purchased seat count.
+Cloudflare Zero Trust subscriptions consist of seats that users in your account consume. When users authenticate to an application or enroll their agent into the Cloudflare One Client, they count against one of your active seats. Seats can be added, removed, or revoked at **Settings** > **Cloudflare One plan**. If all seats are currently consumed, you must first remove users before decreasing your purchased seat count.
 
 ### Removing users
 
-User seats can be removed for Access and Gateway at **Team & Resources** \> **Users** \> **Your users**. Removing a user will have consequences both on Access and on Gateway:
+User seats can be removed for Access and Gateway at **Team & Resources** > **Users** > **Your users**. Removing a user will have consequences both on Access and on Gateway:
 
-* **Access**: All active sessions for that user will be invalidated. A user will be able to log back into an application unless you create an [Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) to block future logins from that user.
-* **Gateway**: All active devices for that user will be logged out of your Zero Trust organization, which stops all filtering and routing via the Cloudflare One Client. A user will be able to re-enroll their device unless you create a [device enrollment policy](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/) to block them.
+- **Access**: All active sessions for that user will be invalidated. A user will be able to log back into an application unless you create an [Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) to block future logins from that user.
+- **Gateway**: All active devices for that user will be logged out of your Zero Trust organization, which stops all filtering and routing via the Cloudflare One Client. A user will be able to re-enroll their device unless you create a [device enrollment policy](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/) to block them.
 
 Caution
 

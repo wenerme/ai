@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Changelog
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/changelog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/ssl.xml)
 
@@ -36,7 +36,7 @@ Cloudflare now takes the guesswork out of TLS 1.3 key agreement with your origin
 
 Automatic key exchange is on for all existing zones and on by default for new zones. When an origin supports both classical and post-quantum key agreements, Cloudflare prefers the post-quantum `X25519MLKEM768` hybrid key agreement.
 
-To change this behavior, go to **SSL/TLS** \> **Overview** \> **Origin connection & post-quantum encryption**. Turn off **Automatic key exchange** to stop automatic scans and preference updates. Turning it off does not change your compliance requirements.
+To change this behavior, go to **SSL/TLS** > **Overview** > **Origin connection & post-quantum encryption**. Turn off **Automatic key exchange** to stop automatic scans and preference updates. Turning it off does not change your compliance requirements.
 
 **Compliance requirements** apply only to TLS 1.3 connections. The **Post-quantum hybrid** option requires hybrid post-quantum key agreements support on your origin server. The **Federal Information Processing Standards (FIPS)** option requires FIPS-compliant key agreements. Select both to require key agreements that satisfy both, or leave both unselected to allow all supported key agreements.
 
@@ -51,8 +51,8 @@ Cloudflare now accepts [ML-DSA ↗](https://csrc.nist.gov/pubs/fips/204/final) (
 
 ML-DSA is supported in two origin-facing features:
 
-* [Authenticated Origin Pulls](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/) (AOP) — upload an ML-DSA client certificate that Cloudflare will present during the mTLS handshake to your origin. Available at both zone-level and per-hostname scopes.
-* [Custom Origin Trust Store](https://developers.cloudflare.com/ssl/origin-configuration/custom-origin-trust-store/) (COTS) — upload an ML-DSA certificate authority that Cloudflare will trust when validating your origin server certificate under [Full (strict) encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/).
+- [Authenticated Origin Pulls](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/) (AOP) — upload an ML-DSA client certificate that Cloudflare will present during the mTLS handshake to your origin. Available at both zone-level and per-hostname scopes.
+- [Custom Origin Trust Store](https://developers.cloudflare.com/ssl/origin-configuration/custom-origin-trust-store/) (COTS) — upload an ML-DSA certificate authority that Cloudflare will trust when validating your origin server certificate under [Full (strict) encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/).
 
 Refer to [Post-quantum signatures](https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-to-origin/#post-quantum-signatures) for certificate generation and setup guidance, and to [PQC in Cloudflare products](https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-cloudflare-products/) for the current post-quantum deployment status across Cloudflare.
 
@@ -65,9 +65,9 @@ You can now manage mutual TLS (mTLS) and Bring Your Own Certificate Authority (B
 
 Previously, these advanced workflows required the Cloudflare API. The following are now available in the dashboard:
 
-* **AOP certificate management** — Upload and manage your own certificate authorities for [Authenticated Origin Pulls (AOP)](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/)directly from the dashboard.
-* **BYO Client mTLS certificate management** — Upload and manage your own CA certificates for [client mTLS enforcement](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/)without needing API access.
-* **CDN hostname to client mTLS certificate mapping** — Associate client mTLS certificates with specific hostnames directly from the dashboard.
+- **AOP certificate management** — Upload and manage your own certificate authorities for [Authenticated Origin Pulls (AOP)](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/) directly from the dashboard.
+- **BYO Client mTLS certificate management** — Upload and manage your own CA certificates for [client mTLS enforcement](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/) without needing API access.
+- **CDN hostname to client mTLS certificate mapping** — Associate client mTLS certificates with specific hostnames directly from the dashboard.
 
 ## 2025-08-25
 
@@ -76,11 +76,11 @@ Previously, these advanced workflows required the Cloudflare API. The following 
 
 Cloudflare Secrets Store is now integrated with AI Gateway, allowing you to store, manage, and deploy your AI provider keys in a secure and seamless configuration through [Bring Your Own Key ↗](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/). Instead of passing your AI provider keys directly in every request header, you can centrally manage each key with Secrets Store and deploy in your gateway configuration using only a reference, rather than passing the value in plain text.
 
-You can now create a secret directly from your AI Gateway [in the dashboard ↗](http://dash.cloudflare.com/?to=/:account/ai-gateway) by navigating into your gateway -> **Provider Keys** \-> **Add**.
+You can now create a secret directly from your AI Gateway [in the dashboard ↗](http://dash.cloudflare.com/?to=/:account/ai-gateway) by navigating into your gateway -> **Provider Keys** -> **Add**.
 
 ![Import repo or choose template](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2410,height=1842,format=webp/_astro/add-secret-ai-gateway.B-SIPr6s.png)
 
-You can also create your secret with the newly available **ai\_gateway** scope via [wrangler ↗](https://developers.cloudflare.com/workers/wrangler/commands/), the [Secrets Store dashboard ↗](http://dash.cloudflare.com/?to=/:account/secrets-store), or the [API ↗](https://developers.cloudflare.com/api/resources/secrets%5Fstore/).
+You can also create your secret with the newly available **ai\_gateway** scope via [wrangler ↗](https://developers.cloudflare.com/workers/wrangler/commands/), the [Secrets Store dashboard ↗](http://dash.cloudflare.com/?to=/:account/secrets-store), or the [API ↗](https://developers.cloudflare.com/api/resources/secrets_store/).
 
 Then, pass the key in the request header using its Secrets Store reference:
 
@@ -124,11 +124,11 @@ With upgraded limits to [all free and paid plans ↗](https://www.cloudflare.com
 
 With custom origin server -- previously an enterprise-only feature -- you can route traffic from one or more custom hostnames somewhere other than your default proxy fallback. [Custom origin server ↗](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/custom-origin/) is now available to Cloudflare for SaaS customers on Free, Pro, and Business plans.
 
-You can enable custom origin server on a per-custom hostname basis [via the API ↗](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/) or the UI:
+You can enable custom origin server on a per-custom hostname basis [via the API ↗](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/) or the UI:
 
 ![Import repo or choose template](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1896,height=1636,format=webp/_astro/custom-origin-server.B-BXcG-1.png)
 
-Currently [in beta with a Workers integration ↗](https://blog.cloudflare.com/secrets-store-beta/), [Cloudflare Secrets Store ↗](https://developers.cloudflare.com/secrets-store/) allows you to store, manage, and deploy account level secrets from a secure, centralized platform your [Cloudflare Workers ↗](https://developers.cloudflare.com/workers/). Now, you can create and deploy **100 secrets per account**. Try it out [in the dashboard ↗](http://dash.cloudflare.com/?to=/:account/secrets-store), with [Wrangler ↗](https://developers.cloudflare.com/secrets-store/integrations/workers/), or [via the API ↗](https://developers.cloudflare.com/api/resources/secrets%5Fstore/) today.
+Currently [in beta with a Workers integration ↗](https://blog.cloudflare.com/secrets-store-beta/), [Cloudflare Secrets Store ↗](https://developers.cloudflare.com/secrets-store/) allows you to store, manage, and deploy account level secrets from a secure, centralized platform your [Cloudflare Workers ↗](https://developers.cloudflare.com/workers/). Now, you can create and deploy **100 secrets per account**. Try it out [in the dashboard ↗](http://dash.cloudflare.com/?to=/:account/secrets-store), with [Wrangler ↗](https://developers.cloudflare.com/secrets-store/integrations/workers/), or [via the API ↗](https://developers.cloudflare.com/api/resources/secrets_store/) today.
 
 ## 2025-04-09
 
@@ -147,10 +147,10 @@ wrangler secrets-store store create <name> --remote
 
 The following are supported in the Secrets Store beta:
 
-* Secrets Store UI & API: create your store & create, duplicate, update, scope, and delete a secret
-* Workers UI: bind a new or existing account level secret to a Worker and deploy in code
-* Wrangler: create your store & create, duplicate, update, scope, and delete a secret
-* Account Management UI & API: assign Secrets Store permissions roles & view audit logs for actions taken in Secrets Store core platform
+- Secrets Store UI & API: create your store & create, duplicate, update, scope, and delete a secret
+- Workers UI: bind a new or existing account level secret to a Worker and deploy in code
+- Wrangler: create your store & create, duplicate, update, scope, and delete a secret
+- Account Management UI & API: assign Secrets Store permissions roles & view audit logs for actions taken in Secrets Store core platform
 
 For instructions on how to get started, visit our [developer documentation](https://developers.cloudflare.com/secrets-store/).
 
@@ -192,9 +192,9 @@ curl -X POST https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostname
 
 You can also:
 
-* [Upload](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/create/) an RSA or ECDSA certificate to a custom hostname with an existing ECDSA or RSA certificate, respectively.
-* [Replace](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/subresources/certificate%5Fpack/subresources/certificates/methods/update/) the RSA or ECDSA certificate with a certificate of its same type.
-* [Delete](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/subresources/certificate%5Fpack/subresources/certificates/methods/delete/) the RSA or ECDSA certificate (if the custom hostname has both an RSA and ECDSA uploaded).
+- [Upload](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/create/) an RSA or ECDSA certificate to a custom hostname with an existing ECDSA or RSA certificate, respectively.
+- [Replace](https://developers.cloudflare.com/api/resources/custom_hostnames/subresources/certificate_pack/subresources/certificates/methods/update/) the RSA or ECDSA certificate with a certificate of its same type.
+- [Delete](https://developers.cloudflare.com/api/resources/custom_hostnames/subresources/certificate_pack/subresources/certificates/methods/delete/) the RSA or ECDSA certificate (if the custom hostname has both an RSA and ECDSA uploaded).
 
 This feature is available for Business and Enterprise customers who have purchased custom certificates.
 
@@ -202,7 +202,7 @@ This feature is available for Business and Enterprise customers who have purchas
 
 **New cloudflare\_branding flag allows hostnames with over 64 characters for all CAs**
 
-To order certificates for hostnames longer than 64 characters, customers can now use the `cloudflare_branding` flag when ordering a certificate via [API ↗](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate%5Fpacks/methods/create/). Setting `cloudflare_branding` to `true` will cause `sni.cloudflaressl.com` to be used as the common name, while the long hostname is added as part of the subject alternative name (SAN).
+To order certificates for hostnames longer than 64 characters, customers can now use the `cloudflare_branding` flag when ordering a certificate via [API ↗](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate_packs/methods/create/). Setting `cloudflare_branding` to `true` will cause `sni.cloudflaressl.com` to be used as the common name, while the long hostname is added as part of the subject alternative name (SAN).
 
 ## 2024-09-19
 

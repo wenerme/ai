@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # 1.0 preview
 
-Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/1-0-preview/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/1-0-preview/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 **Sandbox SDK 1.0** is the next major release of the SDK. It is available now as a preview on the npm `@next` tag. The current stable package remains published for existing apps.
 
@@ -54,14 +54,14 @@ The stable package grew several ways to run commands (`exec`, `startProcess`, `e
 
 The preview collapses that toward a smaller contract:
 
-| You want…                                      | In the preview                                                                                                            |
-| ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Run a program                                  | exec(argv) → process handle when **launch** succeeds                                                                      |
-| See output or wait for readiness               | output(), logs(), waitForExit(), waitForLog(), waitForPort() on the handle                                                |
-| Stop a process                                 | kill(signal?) (numeric signal; default 15)                                                                                |
-| Keep shell state across many interactive steps | A [terminal](https://developers.cloudflare.com/sandbox/1-0-preview/terminals/) (PTY), not a hidden default session        |
-| Run Python / JS cells                          | [Code interpreter](https://developers.cloudflare.com/sandbox/1-0-preview/interpreter/) extension on your Sandbox subclass |
-| Talk to the container control plane            | Always RPC — no transport setting                                                                                         |
+| You want… | In the preview |
+| --- | --- |
+| Run a program | `exec(argv)` → process handle when **launch** succeeds |
+| See output or wait for readiness | `output()`, `logs()`, `waitForExit()`, `waitForLog()`, `waitForPort()` on the handle |
+| Stop a process | `kill(signal?)` (numeric signal; default `15`) |
+| Keep shell state across many interactive steps | A [terminal](https://developers.cloudflare.com/sandbox/1-0-preview/terminals/) (PTY), not a hidden default session |
+| Run Python / JS cells | [Code interpreter](https://developers.cloudflare.com/sandbox/1-0-preview/interpreter/) extension on your `Sandbox` subclass |
+| Talk to the container control plane | Always RPC — no transport setting |
 
 Procedures: [Migrate](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/). Mental model: [Process execution](https://developers.cloudflare.com/sandbox/1-0-preview/processes/) and [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/1-0-preview/lifecycle/).
 
@@ -141,11 +141,11 @@ Container stop and replace already happened on the stable line. The preview make
 
 These remain available. Use the main Sandbox documentation for signatures, and ignore session or transport options where those pages still mention them:
 
-* [Files](https://developers.cloudflare.com/sandbox/api/files/) and [file watching](https://developers.cloudflare.com/sandbox/api/file-watching/)
-* [Storage](https://developers.cloudflare.com/sandbox/api/storage/) and [backups](https://developers.cloudflare.com/sandbox/api/backups/)
-* [Ports](https://developers.cloudflare.com/sandbox/api/ports/) and [tunnels](https://developers.cloudflare.com/sandbox/api/tunnels/)
-* [Lifecycle options](https://developers.cloudflare.com/sandbox/api/lifecycle/) and [sandbox options](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/) (except removed session/transport fields)
-* [Outbound traffic](https://developers.cloudflare.com/sandbox/guides/outbound-traffic/) (credential injection and egress policy)
+- [Files](https://developers.cloudflare.com/sandbox/api/files/) and [file watching](https://developers.cloudflare.com/sandbox/api/file-watching/)
+- [Storage](https://developers.cloudflare.com/sandbox/api/storage/) and [backups](https://developers.cloudflare.com/sandbox/api/backups/)
+- [Ports](https://developers.cloudflare.com/sandbox/api/ports/) and [tunnels](https://developers.cloudflare.com/sandbox/api/tunnels/)
+- [Lifecycle options](https://developers.cloudflare.com/sandbox/api/lifecycle/) and [sandbox options](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/) (except removed session/transport fields)
+- [Outbound traffic](https://developers.cloudflare.com/sandbox/guides/outbound-traffic/) (credential injection and egress policy)
 
 For process environment on `@next`, use [Environment variables](https://developers.cloudflare.com/sandbox/1-0-preview/environment/) in this section.
 
@@ -203,10 +203,10 @@ Install [Cloudflare Skills ↗](https://github.com/cloudflare/skills) for your a
 
 While you remain on the current stable package, use the main docs:
 
-* [Get started](https://developers.cloudflare.com/sandbox/get-started/)
-* [Commands](https://developers.cloudflare.com/sandbox/api/commands/)
-* [Sessions](https://developers.cloudflare.com/sandbox/concepts/sessions/)
-* [2026 deprecation migration](https://developers.cloudflare.com/sandbox/guides/2026-deprecation/)
+- [Get started](https://developers.cloudflare.com/sandbox/get-started/)
+- [Commands](https://developers.cloudflare.com/sandbox/api/commands/)
+- [Sessions](https://developers.cloudflare.com/sandbox/concepts/sessions/)
+- [2026 deprecation migration](https://developers.cloudflare.com/sandbox/guides/2026-deprecation/)
 
 Was this helpful?
 

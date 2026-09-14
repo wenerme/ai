@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Vercel AI SDK
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/configuration/ai-sdk/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/configuration/ai-sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers AI can be used with the [Vercel AI SDK ↗](https://sdk.vercel.ai/) for JavaScript and TypeScript codebases.
 
 ## Setup
 
-Install the [workers-ai-provider provider ↗](https://sdk.vercel.ai/providers/community-providers/cloudflare-workers-ai):
+Install the [`workers-ai-provider` provider ↗](https://sdk.vercel.ai/providers/community-providers/cloudflare-workers-ai):
 
 npmyarnpnpmbun
 

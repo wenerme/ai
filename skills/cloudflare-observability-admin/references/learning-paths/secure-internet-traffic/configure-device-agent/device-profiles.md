@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Customize device profiles
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/device-profiles/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/device-profiles/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A device profile defines [Cloudflare One Client settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/) for a specific set of devices in your organization. You can create multiple profiles and apply different settings based on the user's identity, the device's location, and other criteria.
 
@@ -24,28 +24,27 @@ Set your default device profile to be applicable to a majority of your userbase,
 
 To customize the default settings:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
-2. Select the **Default** profile and select \*_Edit_.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
+2. Select the **Default** profile and select \**Edit*.
 3. Many users running Cloudflare Zero Trust to secure their organization have a default profile that resembles the following. Refer to [Cloudflare One Client settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/) for a description of each setting.
 
-| Setting                              | State                   | Notes                                                                                                                                                                                                                                                                                                       |
-| ------------------------------------ | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Captive portal detection             | Enabled                 |                                                                                                                                                                                                                                                                                                             |
-| Mode switch                          | Disabled                | If enabled, users have the option to switch to a DNS-only security mode and lose access to your private network.                                                                                                                                                                                            |
-| Lock device client switch            | Enabled                 | Should be enabled unless users have an explicit reason to disable the device client, such as a conflicting VPN client on the device or other extenuating circumstances. If disabled for concerns about user experience, **Auto Connect** should be enabled and set on a short interval, like 10-15 minutes. |
-| Allow device to leave organization   | Disabled                |                                                                                                                                                                                                                                                                                                             |
-| Allow updates                        | Disabled                | Usually disabled on managed devices. If enabled, users who are local administrators on their device can update the Cloudflare One Client on their own — this can introduce version consistency control issues if client versions are centrally managed by IT.                                               |
-| Auto connect                         | Enabled                 | Timeout is usually set between 10min - 30min.                                                                                                                                                                                                                                                               |
-| Support URL                          | Enabled                 |                                                                                                                                                                                                                                                                                                             |
-| Service mode                         | Traffic and DNS mode    | Proxies device traffic to Cloudflare according to your Split Tunnel rules.                                                                                                                                                                                                                                  |
-| Local Domain Fallback                |                         | Refer to [Resolve Private DNS](https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/private-dns/).                                                                                                                                                                           |
-| Split Tunnels                        | Exclude IPs and domains | Refer to [Define Split Tunnels settings](https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/split-tunnel-settings/).                                                                                                                                                       |
-| Directly route Microsoft 365 traffic | Disabled                | Usually disabled to allow inspection of Microsoft 365 traffic.                                                                                                                                                                                                                                              |
+   | Setting | State | Notes |
+   | --- | --- | --- |
+   | Captive portal detection | Enabled |  |
+   | Mode switch | Disabled | If enabled, users have the option to switch to a DNS-only security mode and lose access to your private network. |
+   | Lock device client switch | Enabled | Should be enabled unless users have an explicit reason to disable the device client, such as a conflicting VPN client on the device or other extenuating circumstances. If disabled for concerns about user experience, **Auto Connect** should be enabled and set on a short interval, like 10-15 minutes. |
+   | Allow device to leave organization | Disabled |  |
+   | Allow updates | Disabled | Usually disabled on managed devices. If enabled, users who are local administrators on their device can update the Cloudflare One Client on their own — this can introduce version consistency control issues if client versions are centrally managed by IT. |
+   | Auto connect | Enabled | Timeout is usually set between 10min - 30min. |
+   | Support URL | Enabled |  |
+   | Service mode | Traffic and DNS mode | Proxies device traffic to Cloudflare according to your Split Tunnel rules. |
+   | Local Domain Fallback |  | Refer to [Resolve Private DNS](https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/private-dns/). |
+   | Split Tunnels | Exclude IPs and domains | Refer to [Define Split Tunnels settings](https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/split-tunnel-settings/). |
+   | Directly route Microsoft 365 traffic | Disabled | Usually disabled to allow inspection of Microsoft 365 traffic. |
 4. Save the profile.
 5. Configure [global settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#global-settings) for all device profiles:
-
-  1. (Recommended) Enable **Admin override code** if you turned on **Lock device client switch**.
-  2. Enable **Install CA to system certificate store** if you want users to see a [custom block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/).
+   1. (Recommended) Enable **Admin override code** if you turned on **Lock device client switch**.
+   2. Enable **Install CA to system certificate store** if you want users to see a [custom block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/).
 
 1. Update the default device settings profile:
 
@@ -70,7 +69,7 @@ https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy \
 }'
 ```
 
-1. Update global settings:
+2. Update global settings:
 
 ```bash
 curl --request PUT \
@@ -83,35 +82,40 @@ https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/settings \
 }'
 ```
 
-1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
+1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+   - `Zero Trust Write`
+2. Configure default profile settings using the [`cloudflare_zero_trust_device_default_profile` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_default_profile) resource:
 
-  * `Zero Trust Write`
-2. Configure default profile settings using the [cloudflare\_zero\_trust\_device\_default\_profile ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fdefault%5Fprofile) resource:
-```tf
-resource "cloudflare_zero_trust_device_default_profile" "default_profile" {
-	account_id            = var.cloudflare_account_id
-	allow_mode_switch     = false
-	allow_updates         = false
-	allowed_to_leave      = false
-	auto_connect          = 600
-	captive_portal        = 180
-	disable_auto_fallback = true
-	exclude_office_ips    = false
-	service_mode_v2       = {mode = "warp"}
-	support_url           = "https://support.example.com"
-	switch_locked         = true
-	tunnel_protocol       = "wireguard"
-}
-```
-3. Configure [global settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#global-settings) using the [cloudflare\_zero\_trust\_device\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fsettings) resource:
-```tf
-resource "cloudflare_zero_trust_device_settings" "global_warp_settings" {
-	account_id            = var.cloudflare_account_id
-	disable_for_time      = 3600
-	root_certificate_installation_enabled = true
-	use_zt_virtual_ip     = false
-}
-```
+   ```tf
+   resource "cloudflare_zero_trust_device_default_profile" "default_profile" {
+   	account_id            = var.cloudflare_account_id
+   	allow_mode_switch     = false
+   	allow_updates         = false
+   	allowed_to_leave      = false
+   	auto_connect          = 600
+   	captive_portal        = 180
+   	disable_auto_fallback = true
+   	exclude_office_ips    = false
+   	service_mode_v2       = {mode = "warp"}
+   	support_url           = "https://support.example.com"
+   	switch_locked         = true
+   	tunnel_protocol       = "wireguard"
+   }
+   ```
+
+
+3. Configure [global settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#global-settings) using the [`cloudflare_zero_trust_device_settings` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_settings) resource:
+
+   ```tf
+   resource "cloudflare_zero_trust_device_settings" "global_warp_settings" {
+   	account_id            = var.cloudflare_account_id
+   	disable_for_time      = 3600
+   	root_certificate_installation_enabled = true
+   	use_zt_virtual_ip     = false
+   }
+   ```
+
+
 
 ## (Optional) Create an office profile
 

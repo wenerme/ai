@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Balance traffic across origins
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/performance/load-balancing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/performance/load-balancing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If a single origin server handles all your traffic, any failure or overload takes your application offline. Cloudflare's load balancing distributes traffic across multiple origins with health checks and automatic failover.
 
@@ -22,15 +22,15 @@ If a single origin server handles all your traffic, any failure or overload take
 
 Distribute traffic across origins with health checks and failover. [Learn more about load balancing](https://developers.cloudflare.com/load-balancing/).
 
-* **Traffic distribution** \- Spread incoming load across multiple origin servers using weighted or latency-based policies
-* **Failover** \- Reroute traffic to healthy origins instantly when a server fails its health check
-* **Geographic steering** \- Route users to the nearest or best-performing origin based on latency or geography
+- **Traffic distribution** - Spread incoming load across multiple origin servers using weighted or latency-based policies
+- **Failover** - Reroute traffic to healthy origins instantly when a server fails its health check
+- **Geographic steering** - Route users to the nearest or best-performing origin based on latency or geography
 
 ### Health checks
 
 Monitor origin server health and availability. [Learn more about health checks](https://developers.cloudflare.com/health-checks/).
 
-* **Health monitoring** \- Continuously probe origins and automatically remove unhealthy servers from rotation
+- **Health monitoring** - Continuously probe origins and automatically remove unhealthy servers from rotation
 
 ## Get started
 

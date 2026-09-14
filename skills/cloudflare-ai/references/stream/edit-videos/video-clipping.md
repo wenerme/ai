@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Clip videos
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/edit-videos/video-clipping/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/edit-videos/video-clipping/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With video clipping, also referred to as "trimming" or changing the length of the video, you can change the start and end points of a video so viewers only see a specific "clip" of the video. For example, if you have a 20 minute video but only want to share a five minute clip from the middle of the video, you can clip the video to remove the content before and after the five minute clip.
 
@@ -34,6 +34,8 @@ Note
 
 Clipped videos will not inherit the `scheduledDeletion` date. To set the deletion date, you must clip the video first and then set the deletion date.
 
+*Required parametersjson*
+
 ```json
 {
 	"clippedFromVideoUID": "0ea62994907491cf9ebefb0a34c1e2c6",
@@ -42,9 +44,13 @@ Clipped videos will not inherit the `scheduledDeletion` date. To set the deletio
 }
 ```
 
-* **`clippedFromVideoUID`**: The unique identifier for the video used to create the new, clipped video.
-* **`startTimeSeconds`**: The timestamp from the existing video that indicates when the new video begins.
-* **`endTimeSeconds`**: The timestamp from the existing video that indicates when the new video ends.
+- **`clippedFromVideoUID`**: The unique identifier for the video used to create the new, clipped video.
+- **`startTimeSeconds`**: The timestamp from the existing video that indicates when the new video begins.
+- **`endTimeSeconds`**: The timestamp from the existing video that indicates when the new video ends.
+
+
+
+*Example: Clip a videobash*
 
 ```bash
 curl --location --request POST 'https://api.cloudflare.com/client/v4/accounts/<YOUR_ACCOUNT_ID_HERE>/stream/clip' \
@@ -59,7 +65,7 @@ curl --location --request POST 'https://api.cloudflare.com/client/v4/accounts/<Y
 
 You can check whether your video is ready to play on the **Stream** page of the Cloudflare dashboard.
 
-[Go to **Videos** ↗](https://dash.cloudflare.com/?to=/:account/stream/videos)
+[Go to **Videos** ↗](https://dash.cloudflare.com/?to=/:account/stream/videos)
 
 While the clipped video processes, the video status response displays **Queued**. When the clipping process is complete, the video status changes to **Ready** and displays the new name of the clipped video and the new duration.
 
@@ -68,6 +74,8 @@ To receive a notification when your video is done processing and ready to play, 
 ## Set video name
 
 When you clip a video, you can also specify a new name for the clipped video. In the example below, the `name` field indicates the new name to use for the clipped video.
+
+*Example: Specify a custom namejson*
 
 ```json
 {
@@ -85,6 +93,8 @@ When the video has been clipped and processed, your newly named video displays i
 ## Add a watermark
 
 You can also add a custom watermark to your video. For more information on watermarks and uploading a watermark profile, refer to [Apply watermarks](https://developers.cloudflare.com/stream/edit-videos/applying-watermarks).
+
+*Example: Clip a video, set a new video name, and apply a watermarkjson*
 
 ```json
 {
@@ -104,6 +114,8 @@ You can also add a custom watermark to your video. For more information on water
 
 When clipping a video, you can make a video private and accessible only to certain users by [requiring a signed URL](https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream/).
 
+*Example: Clip a video and require signed URLsjson*
+
 ```json
 {
 	"clippedFromVideoUID": "0ea62994907491cf9ebefb0a34c1e2c6",
@@ -121,6 +133,8 @@ After the video clipping is complete, you can open the Cloudflare dashboard and 
 ## Specify a thumbnail image
 
 You can also specify a thumbnail image for your video using a percentage value. To convert the thumbnail's timestamp from seconds to a percentage, divide the timestamp you want to use by the total duration of the video. For more information about thumbnails, refer to [Display thumbnails](https://developers.cloudflare.com/stream/viewing-videos/displaying-thumbnails).
+
+*Example: Clip a video with a thumbnail generated at the 50% markjson*
 
 ```json
 {

@@ -12,17 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cisco Meraki MX (static routing)
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/cisco-meraki-static/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/cisco-meraki-static/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide provides step-by-step instructions for configuring Cisco Meraki MX appliances to establish IPsec VPN tunnels to Cloudflare WAN. It is intended for network engineers who are familiar with Cisco Meraki administration and have an active Cloudflare WAN subscription.
 
 ## Test environment
 
-| **Field** | **Value**    |
-| --------- | ------------ |
-| Vendor    | Cisco Meraki |
-| Model     | MX68         |
-| Release   | MX 19.2.7    |
+| **Field** | **Value** |
+| --- | --- |
+| Vendor | Cisco Meraki |
+| Model | MX68 |
+| Release | MX 19.2.7 |
 
 Note
 
@@ -30,23 +30,23 @@ Meraki 19.2.7 is the minimum required version to support Route-Based IPsec VPN w
 
 ## IKE and IPsec crypto settings
 
-| **Field**                          | **Value**       |
-| ---------------------------------- | --------------- |
-| Traffic Selection Criteria         | Route-Based VPN |
-| Routing                            | Static          |
-| Redundant Tunnels                  | Yes             |
-| Tunnel Load Balancing              | Active/Standby  |
-| IKE Version                        | IKEv2           |
-| Authentication                     | Pre-Shared Key  |
-| Anti-Replay Protection             | Enabled         |
-| NAT Traversal (NAT-T)              | Not Tested      |
-| NAT-T Port                         | Not Applicable  |
-| Phase 1 — DH-Group                 | Group 14        |
-| Phase 1 — Encryption               | AES-256-CBC     |
-| Phase 1 — Authentication/Integrity | SHA-256         |
-| Phase 2 — DH-Group                 | Group 14        |
-| Phase 2 — Transport                | ESP             |
-| Phase 2 — Encryption               | AES-256-CBC     |
+| **Field** | **Value** |
+| --- | --- |
+| Traffic Selection Criteria | Route-Based VPN |
+| Routing | Static |
+| Redundant Tunnels | Yes |
+| Tunnel Load Balancing | Active/Standby |
+| IKE Version | IKEv2 |
+| Authentication | Pre-Shared Key |
+| Anti-Replay Protection | Enabled |
+| NAT Traversal (NAT-T) | Not Tested |
+| NAT-T Port | Not Applicable |
+| Phase 1 — DH-Group | Group 14 |
+| Phase 1 — Encryption | AES-256-CBC |
+| Phase 1 — Authentication/Integrity | SHA-256 |
+| Phase 2 — DH-Group | Group 14 |
+| Phase 2 — Transport | ESP |
+| Phase 2 — Encryption | AES-256-CBC |
 
 Note
 
@@ -62,22 +62,22 @@ The Cloudflare IPsec tunnel health checks require non-standard configuration set
 
 ### Cloudflare WAN tunnel 1 of 2
 
-| **Attribute**                     | **Value/Address**                   |
-| --------------------------------- | ----------------------------------- |
-| Name (required)                   | CF\_WAN\_TUN\_01                    |
-| Description                       | —                                   |
-| IPv4 Interface Address (required) | 169.254.250.0/31                    |
-| IPv6 Interface Address            | —                                   |
-| Customer Endpoint                 | 203.0.113.100                       |
-| Cloudflare Endpoint               | 162.159.135.1                       |
-| Tunnel health checks              | True                                |
-| Rate                              | Low                                 |
-| Type                              | Request                             |
-| Direction                         | Bidirectional                       |
-| Target                            | Custom                              |
-| Target address                    | 192.168.125.1 (MX LAN Interface IP) |
-| Turn on replay protection         | True                                |
-| Automatic return routing          | True                                |
+| **Attribute** | **Value/Address** |
+| --- | --- |
+| Name (required) | CF\_WAN\_TUN\_01 |
+| Description | — |
+| IPv4 Interface Address (required) | 169.254.250.0/31 |
+| IPv6 Interface Address | — |
+| Customer Endpoint | 203.0.113.100 |
+| Cloudflare Endpoint | 162.159.135.1 |
+| Tunnel health checks | True |
+| Rate | Low |
+| Type | Request |
+| Direction | Bidirectional |
+| Target | Custom |
+| Target address | 192.168.125.1 (MX LAN Interface IP) |
+| Turn on replay protection | True |
+| Automatic return routing | True |
 
 Note
 
@@ -85,29 +85,29 @@ The values for `Rate`, `Type`, `Direction`, `Target`, `Target address`, `Turn on
 
 Obtain the IKE identity and pre-shared key after tunnel creation:
 
-| **Attribute**  | **Value/Address**                         |
-| -------------- | ----------------------------------------- |
-| FQDN ID        | bf6c493d03<REDACTED>.ipsec.cloudflare.com |
-| Pre-shared key | Cloudflare-WAN-T1-PSK-1234!               |
+| **Attribute** | **Value/Address** |
+| --- | --- |
+| FQDN ID | `bf6c493d03<REDACTED>.ipsec.cloudflare.com` |
+| Pre-shared key | `Cloudflare-WAN-T1-PSK-1234!` |
 
 ### Cloudflare WAN tunnel 2 of 2
 
-| **Attribute**                     | **Value/Address**                   |
-| --------------------------------- | ----------------------------------- |
-| Name (required)                   | CF\_WAN\_TUN\_02                    |
-| Description                       | —                                   |
-| IPv4 Interface Address (required) | 169.254.250.2/31                    |
-| IPv6 Interface Address            | —                                   |
-| Customer Endpoint                 | 203.0.113.100                       |
-| Cloudflare Endpoint               | 172.64.135.1                        |
-| Tunnel health checks              | True                                |
-| Rate                              | Low                                 |
-| Type                              | Request                             |
-| Direction                         | Bidirectional                       |
-| Target                            | Custom                              |
-| Target address                    | 192.168.125.1 (MX LAN Interface IP) |
-| Turn on replay protection         | True                                |
-| Automatic return routing          | True                                |
+| **Attribute** | **Value/Address** |
+| --- | --- |
+| Name (required) | CF\_WAN\_TUN\_02 |
+| Description | — |
+| IPv4 Interface Address (required) | 169.254.250.2/31 |
+| IPv6 Interface Address | — |
+| Customer Endpoint | 203.0.113.100 |
+| Cloudflare Endpoint | 172.64.135.1 |
+| Tunnel health checks | True |
+| Rate | Low |
+| Type | Request |
+| Direction | Bidirectional |
+| Target | Custom |
+| Target address | 192.168.125.1 (MX LAN Interface IP) |
+| Turn on replay protection | True |
+| Automatic return routing | True |
 
 Note
 
@@ -115,24 +115,24 @@ The same non-standard settings called out for tunnel 1 of 2 also apply to tunnel
 
 Obtain the IKE identity and pre-shared key after tunnel creation:
 
-| **Attribute**  | **Value/Address**                         |
-| -------------- | ----------------------------------------- |
-| FQDN ID        | 0287844e9d<REDACTED>.ipsec.cloudflare.com |
-| Pre-shared key | Cloudflare-WAN-T2-PSK-1234!               |
+| **Attribute** | **Value/Address** |
+| --- | --- |
+| FQDN ID | `0287844e9d<REDACTED>.ipsec.cloudflare.com` |
+| Pre-shared key | `Cloudflare-WAN-T2-PSK-1234!` |
 
 ## Customer premise equipment: Cisco Meraki
 
 Mode: Routed
 
 | **WAN Interface (Port 1)** | **Tunnel 1 of 2** | **Tunnel 2 of 2** |
-| -------------------------- | ----------------- | ----------------- |
-| WAN Interface              | WAN 1             | WAN 1             |
-| IP Address                 | 203.0.113.100/24  | 203.0.113.100/24  |
+| --- | --- | --- |
+| WAN Interface | WAN 1 | WAN 1 |
+| IP Address | 203.0.113.100/24 | 203.0.113.100/24 |
 
 | **LAN Interface (Port 3)** | **Tunnel 1 of 2** | **Tunnel 2 of 2** |
-| -------------------------- | ----------------- | ----------------- |
-| LAN Interface              | LAN               | LAN               |
-| IP Address                 | 192.168.125.1/24  | 192.168.125.1/24  |
+| --- | --- | --- |
+| LAN Interface | LAN | LAN |
+| IP Address | 192.168.125.1/24 | 192.168.125.1/24 |
 
 Note
 
@@ -142,59 +142,59 @@ Virtual Tunnel Interfaces (VTIs) cannot be configured on MX appliances.
 
 ### Meraki implementation and compatibility notes
 
-* **Firmware prerequisite**: The minimum required firmware for this configuration is MX 19.2.7.
-* **Hardware compatibility**: Older Meraki hardware may be physically incapable of running 19.2.7\. Route-Based VPN support is required for this architecture. Refer to [Product firmware restrictions ↗](https://documentation.meraki.com/Platform%5FManagement/Product%5FInformation/Compatibility%5Fand%5FFirmware/Firmware%5FUpgrades/Product%5FFirmware%5FVersion%5FRestrictions) to determine whether your MX platform supports firmware release 19.2.7 or later.
-* **Active/Standby configuration**: Redundant tunnels associated with Non-Meraki VPN connections are Active/Standby. Both tunnels are established, but Meraki only routes traffic via the primary IPsec VPN peer and dynamically fails over to the secondary IPsec VPN peer based on tunnel monitoring probes.
-  * **Anycast and tunnel redundancy**: Despite the Active/Standby nature of IPsec VPN tunnels on the MX platform, high availability is maintained at the network layer because the Cloudflare remote endpoint IPs are advertised via BGP anycast across the Cloudflare global network and provide inherent geographic and logical redundancy.
-* **Route-Based VPN support**: While often associated with specific cloud integrations, version 19.2.7 supports Route-Based IPsec VPN for third-party devices generally, including Cloudflare WAN.
-* **Redundancy and Multi-Uplink**: This documentation specifically covers Active/Standby tunnel configurations.
-  * **Multi-Uplink IPsec VPN**: The Meraki [Multi-Uplink IPsec VPN ↗](https://documentation.meraki.com/SASE%5Fand%5FSD-WAN/MX/Design%5Fand%5FConfigure/Configuration%5FGuides/Site-to-site%5FVPN/Multi-Uplink%5FIPsec%5FVPN) feature is outside the scope of this guide.
-* **Anti-Replay Protection**: Cloudflare recommends [disabling Anti-Replay Protection](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/anti-replay-protection/) for optimal performance with Cloudflare WAN. The Cisco Meraki MX platform does not permit administrators to disable this feature.
-  * This is a known Meraki platform limitation.
-  * In environments with high jitter or out-of-order packet delivery on the underlay (ISP network), this may cause intermittent packet drops on the MX side of the IPsec VPN tunnels.
-* **MSS Clamping**: Cloudflare recommends specific Maximum Segment Size (MSS) [clamping](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/mtu-mss/#mss-clamping) values to account for IPsec overhead and prevent fragmentation.
-  * The Meraki Dashboard does not provide a user-accessible field to modify the MSS clamping value for third-party VPN tunnels.
-  * Customers must contact Meraki Technical Support to request a manual backend modification of the MSS value (approximately 1360; the value may vary) for the specific network or tunnel.
-* **ISP scope**: The provided configuration is validated for a single Internet Service Provider (ISP). The logic can be extended to accommodate redundant ISPs, but multi-homed configuration is outside the scope of this guide.
+- **Firmware prerequisite**: The minimum required firmware for this configuration is MX 19.2.7.
+- **Hardware compatibility**: Older Meraki hardware may be physically incapable of running 19.2.7. Route-Based VPN support is required for this architecture. Refer to [Product firmware restrictions ↗](https://documentation.meraki.com/Platform_Management/Product_Information/Compatibility_and_Firmware/Firmware_Upgrades/Product_Firmware_Version_Restrictions) to determine whether your MX platform supports firmware release 19.2.7 or later.
+- **Active/Standby configuration**: Redundant tunnels associated with Non-Meraki VPN connections are Active/Standby. Both tunnels are established, but Meraki only routes traffic via the primary IPsec VPN peer and dynamically fails over to the secondary IPsec VPN peer based on tunnel monitoring probes.
+  - **Anycast and tunnel redundancy**: Despite the Active/Standby nature of IPsec VPN tunnels on the MX platform, high availability is maintained at the network layer because the Cloudflare remote endpoint IPs are advertised via BGP anycast across the Cloudflare global network and provide inherent geographic and logical redundancy.
+- **Route-Based VPN support**: While often associated with specific cloud integrations, version 19.2.7 supports Route-Based IPsec VPN for third-party devices generally, including Cloudflare WAN.
+- **Redundancy and Multi-Uplink**: This documentation specifically covers Active/Standby tunnel configurations.
+  - **Multi-Uplink IPsec VPN**: The Meraki [Multi-Uplink IPsec VPN ↗](https://documentation.meraki.com/SASE_and_SD-WAN/MX/Design_and_Configure/Configuration_Guides/Site-to-site_VPN/Multi-Uplink_IPsec_VPN) feature is outside the scope of this guide.
+- **Anti-Replay Protection**: Cloudflare recommends [disabling Anti-Replay Protection](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/anti-replay-protection/) for optimal performance with Cloudflare WAN. The Cisco Meraki MX platform does not permit administrators to disable this feature.
+  - This is a known Meraki platform limitation.
+  - In environments with high jitter or out-of-order packet delivery on the underlay (ISP network), this may cause intermittent packet drops on the MX side of the IPsec VPN tunnels.
+- **MSS Clamping**: Cloudflare recommends specific Maximum Segment Size (MSS) [clamping](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/mtu-mss/#mss-clamping) values to account for IPsec overhead and prevent fragmentation.
+  - The Meraki Dashboard does not provide a user-accessible field to modify the MSS clamping value for third-party VPN tunnels.
+  - Customers must contact Meraki Technical Support to request a manual backend modification of the MSS value (approximately 1360; the value may vary) for the specific network or tunnel.
+- **ISP scope**: The provided configuration is validated for a single Internet Service Provider (ISP). The logic can be extended to accommodate redundant ISPs, but multi-homed configuration is outside the scope of this guide.
 
 ### Cloudflare
 
-* This configuration requires the [Unified Routing](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta) dataplane to support [Automatic Return Routing](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#automatic-return-routing-beta).
-* You have already configured IPsec tunnels and static routes in the Cloudflare dashboard.
-* You have used the Cloudflare dashboard to obtain the local identifier (FQDN/hostname) and generate a pre-shared key for each IPsec tunnel.
-* You understand the importance of [MSS clamping](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/mtu-mss/#mss-clamping) and adjusting it based on the traffic flows traversing the Cloudflare WAN IPsec tunnels.
+- This configuration requires the [Unified Routing](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta) dataplane to support [Automatic Return Routing](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#automatic-return-routing-beta).
+- You have already configured IPsec tunnels and static routes in the Cloudflare dashboard.
+- You have used the Cloudflare dashboard to obtain the local identifier (FQDN/hostname) and generate a pre-shared key for each IPsec tunnel.
+- You understand the importance of [MSS clamping](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/mtu-mss/#mss-clamping) and adjusting it based on the traffic flows traversing the Cloudflare WAN IPsec tunnels.
 
 ## Prerequisites: MX platform site-to-site VPN configuration
 
 The following details from the Cloudflare configuration are required before proceeding with the Meraki configuration:
 
-* IPv4 interface address values (in Classless Inter-Domain Routing (CIDR) notation)
-* Cloudflare anycast IPs
-* Local ID (FQDN/hostname)
-* Pre-shared keys
-* Remote subnets
+- IPv4 interface address values (in Classless Inter-Domain Routing (CIDR) notation)
+- Cloudflare anycast IPs
+- Local ID (FQDN/hostname)
+- Pre-shared keys
+- Remote subnets
 
 ### CF\_WAN\_TUN\_01
 
-| **Attribute**          | **Value/Address**                         | **Meraki — Applies To** | **Required to**                         |
-| ---------------------- | ----------------------------------------- | ----------------------- | --------------------------------------- |
-| IPv4 Interface Address | 169.254.250.0/31                          | Private subnets         | Support Cloudflare tunnel health checks |
-| Cloudflare Endpoint    | 162.159.135.1                             | Public IP or hostname   | Tunnel peer IP — primary IPsec peer     |
-|                        | 162.159.135.1                             | Remote ID               | IKE remote ID — primary IPsec peer      |
-| FQDN ID                | bf6c493d03<REDACTED>.ipsec.cloudflare.com | Local ID                | IKE local ID — primary IPsec peer       |
-| Pre-Shared Key         | Cloudflare-WAN-T1-PSK-1234!               | Shared secret           | Shared secret — primary IPsec peer      |
-| Remote subnets         | 172.16.10.0/24, 172.16.11.0/24            | Private subnets         | Add routes for east/west traffic flows  |
+| **Attribute** | **Value/Address** | **Meraki — Applies To** | **Required to** |
+| --- | --- | --- | --- |
+| IPv4 Interface Address | 169.254.250.0/31 | Private subnets | Support Cloudflare tunnel health checks |
+| Cloudflare Endpoint | 162.159.135.1 | Public IP or hostname | Tunnel peer IP — primary IPsec peer |
+|  | 162.159.135.1 | Remote ID | IKE remote ID — primary IPsec peer |
+| FQDN ID | `bf6c493d03<REDACTED>.ipsec.cloudflare.com` | Local ID | IKE local ID — primary IPsec peer |
+| Pre-Shared Key | `Cloudflare-WAN-T1-PSK-1234!` | Shared secret | Shared secret — primary IPsec peer |
+| Remote subnets | 172.16.10.0/24, 172.16.11.0/24 | Private subnets | Add routes for east/west traffic flows |
 
 ### CF\_WAN\_TUN\_02
 
-| **Attribute**          | **Value/Address**                         | **Meraki Setting**    | **Required to**                         |
-| ---------------------- | ----------------------------------------- | --------------------- | --------------------------------------- |
-| IPv4 Interface Address | 169.254.250.2/31                          | Private subnets       | Support Cloudflare tunnel health checks |
-| Cloudflare Endpoint    | 172.64.135.1                              | Public IP or hostname | Tunnel peer IP — secondary IPsec peer   |
-|                        | 172.64.135.1                              | Remote ID             | IKE remote ID — secondary IPsec peer    |
-| FQDN ID                | 0287844e9d<REDACTED>.ipsec.cloudflare.com | Local ID              | IKE local ID — secondary IPsec peer     |
-| Pre-Shared Key         | Cloudflare-WAN-T2-PSK-1234!               | Shared secret         | Shared secret — secondary IPsec peer    |
-| Remote subnets         | 172.16.10.0/24, 172.16.11.0/24            | Private subnets       | Add routes for east/west traffic flows  |
+| **Attribute** | **Value/Address** | **Meraki Setting** | **Required to** |
+| --- | --- | --- | --- |
+| IPv4 Interface Address | 169.254.250.2/31 | Private subnets | Support Cloudflare tunnel health checks |
+| Cloudflare Endpoint | 172.64.135.1 | Public IP or hostname | Tunnel peer IP — secondary IPsec peer |
+|  | 172.64.135.1 | Remote ID | IKE remote ID — secondary IPsec peer |
+| FQDN ID | `0287844e9d<REDACTED>.ipsec.cloudflare.com` | Local ID | IKE local ID — secondary IPsec peer |
+| Pre-Shared Key | `Cloudflare-WAN-T2-PSK-1234!` | Shared secret | Shared secret — secondary IPsec peer |
+| Remote subnets | 172.16.10.0/24, 172.16.11.0/24 | Private subnets | Add routes for east/west traffic flows |
 
 ### Remote subnets
 
@@ -202,8 +202,8 @@ In the MX platform, "Private subnets" refers to the remote networks the MX appli
 
 This document assumes the following subnets are remote subnets:
 
-* 172.16.10.0/24
-* 172.16.11.0/24
+- 172.16.10.0/24
+- 172.16.11.0/24
 
 ## Cloudflare
 
@@ -213,7 +213,7 @@ The MX platform uses tunnel monitoring to enable failover between primary and se
 
 The tunnel health probes are used in addition to Dead Peer Detection to determine overall reachability of resources on the remote side of the IPsec tunnels.
 
-Meraki reserves the IP address `192.0.2.3/32` (part of TEST-NET-1, defined in [RFC 5737 ↗](https://datatracker.ietf.org/doc/html/rfc5737)) as the source IP for tunnel monitor probes. Refer to [Primary and secondary IPsec tunnels ↗](https://documentation.meraki.com/SASE%5Fand%5FSD-WAN/MX/Design%5Fand%5FConfigure/Configuration%5FGuides/Site-to-site%5FVPN/Primary%5Fand%5FSecondary%5FIPsec%5FVPN%5FTunnels) for details.
+Meraki reserves the IP address `192.0.2.3/32` (part of TEST-NET-1, defined in [RFC 5737 ↗](https://datatracker.ietf.org/doc/html/rfc5737)) as the source IP for tunnel monitor probes. Refer to [Primary and secondary IPsec tunnels ↗](https://documentation.meraki.com/SASE_and_SD-WAN/MX/Design_and_Configure/Configuration_Guides/Site-to-site_VPN/Primary_and_Secondary_IPsec_VPN_Tunnels) for details.
 
 As `192.0.2.3/32` falls outside the traditional [RFC 1918 ↗](https://datatracker.ietf.org/doc/html/rfc1918) address space, you must add it to the [Unified Routing](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta) dataplane associated with your Cloudflare account.
 
@@ -225,9 +225,9 @@ Define an [HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic
 
 Note
 
-The IP/URL is available from the **Configure health checks** section of the Meraki Dashboard (**Security & SD-WAN** \> **Site-to-site VPN** \> **Configure health checks**).
+The IP/URL is available from the **Configure health checks** section of the Meraki Dashboard (**Security & SD-WAN** > **Site-to-site VPN** > **Configure health checks**).
 
-In the Cloudflare dashboard, go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **HTTP**.
+In the Cloudflare dashboard, go to **Zero Trust** > **Traffic policies** > **Firewall policies** > **HTTP**.
 
 1. Add a new rule.
 2. For **Policy Name**, enter `Meraki Tunnel Health Checks - HTTP Policy`.
@@ -241,6 +241,7 @@ Position this policy at or near the top of the HTTP policy rulebase.
 
 The following diagram shows the traffic flow from the tunnel monitoring reserved IP (`192.0.2.3/32`) as it traverses the IPsec tunnels to Cloudflare WAN, then through Cloudflare Gateway as the requests egress to the Internet. The response path is fully symmetric.
 
+```
 flowchart LR
 accTitle: Meraki tunnel monitoring with Cloudflare WAN
 accDescr: Traffic flow from the tunnel monitoring source IP through the Meraki MX, IPsec tunnels, Cloudflare WAN, and Cloudflare Gateway to an HTTP target on the public internet.
@@ -310,14 +311,16 @@ accDescr: Traffic flow from the tunnel monitoring source IP through the Meraki M
     EP2@{ shape: stadium}
     GW@{ shape: stadium}
 
+```
+
 ## Meraki configuration
 
 ### Meraki management model and Cloudflare WAN integration
 
 The Meraki configuration management is built on a two-tier hierarchy. Objects and their associated settings are defined as either:
 
-* **Organization-wide**: Global objects defined once for the entire tenant.
-* **Network-specific**: Settings applied to an individual site or device.
+- **Organization-wide**: Global objects defined once for the entire tenant.
+- **Network-specific**: Settings applied to an individual site or device.
 
 The Non-Meraki VPN configuration is an Organization-tier object. It is pushed to specific MX appliances when they are associated with a corresponding Network Tag. This inheritance model is a critical factor: the tag controls which physical hardware attempts to establish tunnels to Cloudflare.
 
@@ -329,17 +332,17 @@ The company manages a single Meraki MX appliance at their Austin, TX branch offi
 
 A Network Tag labeled `Orbital_Path_AUS_Office` is associated with the `Orbital Path Ventures - Austin TX` Network.
 
-| Organization        | Network                         | Tag                        |
-| ------------------- | ------------------------------- | -------------------------- |
-| Orbit Path Ventures | Orbit Path Ventures - Austin TX | Orbital\_Path\_AUS\_Office |
+| Organization | Network | Tag |
+| --- | --- | --- |
+| Orbit Path Ventures | Orbit Path Ventures - Austin TX | `Orbital_Path_AUS_Office` |
 
 ### Network Tag
 
-Go to **Network** \> **Networks**, then select the Organization.
+Go to **Network** > **Networks**, then select the Organization.
 
-* **Orbit Path Ventures** (substitute your Organization name).
-* **Network**: `Orbit Path Ventures - Austin TX` (substitute your Network name).
-* **Tag**: `Orbital_Path_AUS_Office` (substitute the Tag associated with the Network name).
+- **Orbit Path Ventures** (substitute your Organization name).
+- **Network**: `Orbit Path Ventures - Austin TX` (substitute your Network name).
+- **Tag**: `Orbital_Path_AUS_Office` (substitute the Tag associated with the Network name).
 
 ### Traffic steering
 
@@ -349,9 +352,9 @@ The Non-Meraki VPN configuration is a global object: any MX appliance with the a
 
 To ensure predictable traffic flows and prevent routing conflicts, Cloudflare recommends the following best practices:
 
-* **Strict tunnel correlation**: Maintain a 1-to-1 mapping between the redundant IPsec tunnel pairs defined in Cloudflare and the specific MX appliance initiating those tunnels.
-* **Site-specific Network Tags**: Use granular, site-specific tags (for example, `Orbital_Path_AUS_Office`) rather than broad, generic tags to ensure only the intended MX inherits the tunnel configuration.
-* **Unique IPsec VPN peer objects**: Create distinct Non-Meraki VPN peer objects at the Organization level for different physical geographic locations. Use the **Availability** option to establish the 1-to-1 mapping.
+- **Strict tunnel correlation**: Maintain a 1-to-1 mapping between the redundant IPsec tunnel pairs defined in Cloudflare and the specific MX appliance initiating those tunnels.
+- **Site-specific Network Tags**: Use granular, site-specific tags (for example, `Orbital_Path_AUS_Office`) rather than broad, generic tags to ensure only the intended MX inherits the tunnel configuration.
+- **Unique IPsec VPN peer objects**: Create distinct Non-Meraki VPN peer objects at the Organization level for different physical geographic locations. Use the **Availability** option to establish the 1-to-1 mapping.
 
 Return traffic from Cloudflare WAN is steered based on the Cloudflare virtual network routing table (refer to [Traffic steering](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/) for details). Routes are specified based on the MX LAN prefix and corresponding IPsec tunnels.
 
@@ -365,7 +368,7 @@ If multiple MX appliances with different private subnets inherit the same Non-Me
 
 #### Source-based default routing
 
-[Source-Based Default Routing ↗](https://documentation.meraki.com/SASE%5Fand%5FSD-WAN/MX/Design%5Fand%5FConfigure/Configuration%5FGuides/Networks%5Fand%5FRouting/Source%5FBased%5FDefault%5FRouting) enables an administrator to create a source-based default route and specify a next hop as a security appliance over Auto VPN or on a device on the LAN.
+[Source-Based Default Routing ↗](https://documentation.meraki.com/SASE_and_SD-WAN/MX/Design_and_Configure/Configuration_Guides/Networks_and_Routing/Source_Based_Default_Routing) enables an administrator to create a source-based default route and specify a next hop as a security appliance over Auto VPN or on a device on the LAN.
 
 Source-Based Default Routing cannot be used in conjunction with Non-Meraki VPN endpoints, including Cloudflare WAN.
 
@@ -378,18 +381,18 @@ Any IP prefixes defined as private subnets in the IPsec VPN peer configuration c
 This document considers three route topologies:
 
 1. East/west only:
-  * Private traffic via Cloudflare WAN.
-  * Internet via local Internet.
+   - Private traffic via Cloudflare WAN.
+   - Internet via local Internet.
 2. Internet only via Cloudflare Gateway:
-  * Only route Internet traffic through Cloudflare WAN.
+   - Only route Internet traffic through Cloudflare WAN.
 3. All traffic via Cloudflare WAN and Gateway:
-  * East/west and Internet traffic routed via Cloudflare WAN.
+   - East/west and Internet traffic routed via Cloudflare WAN.
 
 All three topologies are covered in the [IPsec VPN peers](#ipsec-vpn-peers) section.
 
 ## MX site-to-site VPN configuration
 
-Go to **Security & SD-WAN** \> **Site-to-site VPN**.
+Go to **Security & SD-WAN** > **Site-to-site VPN**.
 
 ### Type
 
@@ -403,19 +406,19 @@ Turn on VPN mode for the local network behind the MX devices.
 
 From:
 
-| **Name** | **VPN Mode** | **Subnet**       | **Uplink** |
-| -------- | ------------ | ---------------- | ---------- |
-| Default  | **Disabled** | 192.168.125.0/24 | —          |
+| **Name** | **VPN Mode** | **Subnet** | **Uplink** |
+| --- | --- | --- | --- |
+| Default | **Disabled** | 192.168.125.0/24 | — |
 
 To:
 
-| **Name** | **VPN Mode** | **Subnet**       | **Uplink** |
-| -------- | ------------ | ---------------- | ---------- |
-| Default  | **Enabled**  | 192.168.125.0/24 | —          |
+| **Name** | **VPN Mode** | **Subnet** | **Uplink** |
+| --- | --- | --- | --- |
+| Default | **Enabled** | 192.168.125.0/24 | — |
 
 #### IPsec VPN peers
 
-Go to **Security & SD-WAN** \> **Site-to-site VPN** \> **Organization Wide Settings**.
+Go to **Security & SD-WAN** > **Site-to-site VPN** > **Organization Wide Settings**.
 
 ##### Configure health checks
 
@@ -424,9 +427,9 @@ Configure a Layer 7 health check HTTP probe that the MX platform uses to determi
 1. Select **Configure Health Checks**.
 2. Provide the following values:
 
-| **Name** | **Endpoint**          |
-| -------- | --------------------- |
-| Google   | http://www.google.com |
+   | **Name** | **Endpoint** |
+   | --- | --- |
+   | Google | `http://www.google.com` |
 3. Select **OK**.
 
 Note
@@ -437,17 +440,17 @@ The Layer 7 health check probes only support connections via HTTP (port 80/tcp).
 
 IPsec VPN peer configurations are provided for the following topologies:
 
-* East/west traffic only
-* Internet only via Cloudflare Gateway
-* All traffic via Cloudflare WAN and Gateway
+- East/west traffic only
+- Internet only via Cloudflare Gateway
+- All traffic via Cloudflare WAN and Gateway
 
 ###### Topology: east/west traffic only
 
 Routing east/west traffic via Cloudflare WAN requires:
 
-* Cloudflare routes specified for the LAN subnet behind the MX appliance (`192.168.125.0/24`) via `CF_WAN_TUN_01` and `CF_WAN_TUN_02`.
-* Remote subnets (`172.16.10.0/24` and `172.16.11.0/24`) specified as private subnets on the Meraki primary and secondary IPsec VPN peers.
-* The IPv4 interface address prefixes specified on both `CF_WAN_TUN_01` and `CF_WAN_TUN_02` (`169.254.250.0/31` and `169.254.250.2/31`) specified as private subnets on the Meraki primary and secondary IPsec VPN peers.
+- Cloudflare routes specified for the LAN subnet behind the MX appliance ( `192.168.125.0/24`) via `CF_WAN_TUN_01` and `CF_WAN_TUN_02`.
+- Remote subnets ( `172.16.10.0/24` and `172.16.11.0/24`) specified as private subnets on the Meraki primary and secondary IPsec VPN peers.
+- The IPv4 interface address prefixes specified on both `CF_WAN_TUN_01` and `CF_WAN_TUN_02` ( `169.254.250.0/31` and `169.254.250.2/31`) specified as private subnets on the Meraki primary and secondary IPsec VPN peers.
 
 Note
 
@@ -455,66 +458,66 @@ Automatic Return Routing is not required for east/west traffic only.
 
 This ensures that:
 
-* Cloudflare routes traffic destined for the LAN subnet behind the MX appliance via `CF_WAN_TUN_01` and `CF_WAN_TUN_02`.
-* The MX appliance explicitly routes traffic destined for the remote subnets (`172.16.10.0/24` and `172.16.11.0/24`) via the primary and secondary IPsec VPN peers respectively.
-* The MX appliance explicitly routes ICMP Reply packets associated with Cloudflare tunnel health checks to the IPv4 interface addresses (`169.254.250.0/31` and `169.254.250.2/31`) specified on `CF_WAN_TUN_01` and `CF_WAN_TUN_02` via the primary and secondary IPsec VPN peers respectively.
-* Internet traffic from the LAN subnet behind the MX appliance is routed via the WAN uplink.
-* The MX appliance establishes IPsec tunnels to Cloudflare endpoints (`162.159.135.1` and `172.64.135.1`) via the WAN uplink.
+- Cloudflare routes traffic destined for the LAN subnet behind the MX appliance via `CF_WAN_TUN_01` and `CF_WAN_TUN_02`.
+- The MX appliance explicitly routes traffic destined for the remote subnets ( `172.16.10.0/24` and `172.16.11.0/24`) via the primary and secondary IPsec VPN peers respectively.
+- The MX appliance explicitly routes ICMP Reply packets associated with Cloudflare tunnel health checks to the IPv4 interface addresses ( `169.254.250.0/31` and `169.254.250.2/31`) specified on `CF_WAN_TUN_01` and `CF_WAN_TUN_02` via the primary and secondary IPsec VPN peers respectively.
+- Internet traffic from the LAN subnet behind the MX appliance is routed via the WAN uplink.
+- The MX appliance establishes IPsec tunnels to Cloudflare endpoints ( `162.159.135.1` and `172.64.135.1`) via the WAN uplink.
 
 Configure the following:
 
 Cloudflare IPsec tunnels — automatic return routing:
 
-| **Tunnel**       | **Automatic Return Routing** |
-| ---------------- | ---------------------------- |
-| CF\_WAN\_TUN\_01 | Disabled                     |
-| CF\_WAN\_TUN\_02 | Disabled                     |
+| **Tunnel** | **Automatic Return Routing** |
+| --- | --- |
+| CF\_WAN\_TUN\_01 | Disabled |
+| CF\_WAN\_TUN\_02 | Disabled |
 
 Cloudflare routes:
 
-| **Prefix**       | **Description**  | **Next hop**     | **Priority** | **Region code** | **Type** |
-| ---------------- | ---------------- | ---------------- | ------------ | --------------- | -------- |
-| 192.168.125.0/24 | CF\_WAN\_TUN\_01 | CF\_WAN\_TUN\_01 | 100          | All regions     | Static   |
-| 192.168.125.0/24 | CF\_WAN\_TUN\_02 | CF\_WAN\_TUN\_02 | 100          | All regions     | Static   |
+| **Prefix** | **Description** | **Next hop** | **Priority** | **Region code** | **Type** |
+| --- | --- | --- | --- | --- | --- |
+| 192.168.125.0/24 | CF\_WAN\_TUN\_01 | CF\_WAN\_TUN\_01 | 100 | All regions | Static |
+| 192.168.125.0/24 | CF\_WAN\_TUN\_02 | CF\_WAN\_TUN\_02 | 100 | All regions | Static |
 
 Meraki private subnets:
 
-| **Private Subnet** | **Scope**                                                 |
-| ------------------ | --------------------------------------------------------- |
-| 172.16.10.0/24     | Remote site                                               |
-| 172.16.11.0/24     | Remote site                                               |
-| 169.254.250.0/31   | CF\_WAN\_TUN\_01 — tunnel health check ICMP Reply packets |
-| 169.254.250.2/31   | CF\_WAN\_TUN\_02 — tunnel health check ICMP Reply packets |
+| **Private Subnet** | **Scope** |
+| --- | --- |
+| 172.16.10.0/24 | Remote site |
+| 172.16.11.0/24 | Remote site |
+| 169.254.250.0/31 | CF\_WAN\_TUN\_01 — tunnel health check ICMP Reply packets |
+| 169.254.250.2/31 | CF\_WAN\_TUN\_02 — tunnel health check ICMP Reply packets |
 
 ###### Primary IPsec VPN peer: east/west traffic only
 
-1. Select **\+ Add a peer**.
+1. Select **+ Add a peer**.
 2. Provide the following values:
 
-| **Attribute**                    | **Value**                                                          |
-| -------------------------------- | ------------------------------------------------------------------ |
-| Name                             | cf-wan-tun-01                                                      |
-| IKE Version                      | IKEv2                                                              |
-| Public IP or Hostname            | 162.159.135.1                                                      |
-| Local ID                         | bf6c493d03<REDACTED>.ipsec.cloudflare.com                          |
-| Remote ID                        | —                                                                  |
-| Shared Secret                    | Cloudflare-WAN-T1-PSK-1234!                                        |
-| Routing                          | Static                                                             |
-| Private Subnets                  | 169.254.250.0/31, 169.254.250.2/31, 172.16.10.0/24, 172.16.11.0/24 |
-| Availability                     | Orbital\_Path\_AUS\_Office                                         |
-| Tunnel Monitoring                | Google Health Check                                                |
-| Failover directly to internet    | —                                                                  |
-| IPsec Policy                     | —                                                                  |
-| Preset                           | Custom                                                             |
-| Phase 1 — Encryption             | AES 256                                                            |
-| Phase 1 — Authentication         | SHA256                                                             |
-| Phase 1 — Pseudo-Random Function | SHA256                                                             |
-| Phase 1 — Diffie-Hellman group   | 14                                                                 |
-| Phase 1 — Lifetime (sec)         | 28800                                                              |
-| Phase 2 — Encryption             | AES256                                                             |
-| Phase 2 — Authentication         | SHA256                                                             |
-| Phase 2 — PFS Group              | 14                                                                 |
-| Phase 2 — Lifetime (sec)         | 28800                                                              |
+   | **Attribute** | **Value** |
+   | --- | --- |
+   | Name | `cf-wan-tun-01` |
+   | IKE Version | IKEv2 |
+   | Public IP or Hostname | 162.159.135.1 |
+   | Local ID | `bf6c493d03<REDACTED>.ipsec.cloudflare.com` |
+   | Remote ID | — |
+   | Shared Secret | `Cloudflare-WAN-T1-PSK-1234!` |
+   | Routing | Static |
+   | Private Subnets | 169.254.250.0/31, 169.254.250.2/31, 172.16.10.0/24, 172.16.11.0/24 |
+   | Availability | `Orbital_Path_AUS_Office` |
+   | Tunnel Monitoring | Google Health Check |
+   | Failover directly to internet | — |
+   | IPsec Policy | — |
+   | Preset | Custom |
+   | Phase 1 — Encryption | AES 256 |
+   | Phase 1 — Authentication | SHA256 |
+   | Phase 1 — Pseudo-Random Function | SHA256 |
+   | Phase 1 — Diffie-Hellman group | 14 |
+   | Phase 1 — Lifetime (sec) | 28800 |
+   | Phase 2 — Encryption | AES256 |
+   | Phase 2 — Authentication | SHA256 |
+   | Phase 2 — PFS Group | 14 |
+   | Phase 2 — Lifetime (sec) | 28800 |
 3. Select **Save**.
 
 Note
@@ -528,34 +531,34 @@ Note
 ###### Secondary IPsec VPN peer: east/west traffic only
 
 1. Select the `---` icon in the settings column.
-2. Select **\+ Add secondary peer**.
+2. Select **+ Add secondary peer**.
 3. Do not select **Inherit primary peer configurations**. This ensures the **Public IP or Hostname**, **Local ID**, **Remote ID**, and **Shared secret** are configured with the settings required to successfully negotiate an IPsec tunnel `CF_WAN_TUN_02`.
 4. Provide the following values:
 
-| **Attribute**                    | **Value**                                                                      |
-| -------------------------------- | ------------------------------------------------------------------------------ |
-| Name                             | cf-wan-tun-02                                                                  |
-| IKE Version                      | IKEv2 (Inherited)                                                              |
-| Public IP or Hostname            | 172.64.135.1                                                                   |
-| Local ID                         | 0287844e9d<REDACTED>.ipsec.cloudflare.com                                      |
-| Remote ID                        | 172.64.135.1                                                                   |
-| Shared Secret                    | Cloudflare-WAN-T2-PSK-1234!                                                    |
-| Routing                          | Static (Inherited)                                                             |
-| Private Subnets                  | 169.254.250.0/31, 169.254.250.2/31, 172.16.10.0/24, 172.16.11.0/24 (Inherited) |
-| Availability                     | Orbital\_Path\_AUS\_Office (Inherited)                                         |
-| Tunnel Monitoring                | Google Health Check                                                            |
-| Failover directly to internet    | —                                                                              |
-| IPsec Policy                     | —                                                                              |
-| Preset                           | Custom                                                                         |
-| Phase 1 — Encryption             | AES 256                                                                        |
-| Phase 1 — Authentication         | SHA256                                                                         |
-| Phase 1 — Pseudo-Random Function | SHA256                                                                         |
-| Phase 1 — Diffie-Hellman group   | 14                                                                             |
-| Phase 1 — Lifetime (sec)         | 28800                                                                          |
-| Phase 2 — Encryption             | AES256                                                                         |
-| Phase 2 — Authentication         | SHA256                                                                         |
-| Phase 2 — PFS Group              | 14                                                                             |
-| Phase 2 — Lifetime (sec)         | 28800                                                                          |
+   | **Attribute** | **Value** |
+   | --- | --- |
+   | Name | `cf-wan-tun-02` |
+   | IKE Version | IKEv2 (Inherited) |
+   | Public IP or Hostname | 172.64.135.1 |
+   | Local ID | `0287844e9d<REDACTED>.ipsec.cloudflare.com` |
+   | Remote ID | 172.64.135.1 |
+   | Shared Secret | `Cloudflare-WAN-T2-PSK-1234!` |
+   | Routing | Static (Inherited) |
+   | Private Subnets | 169.254.250.0/31, 169.254.250.2/31, 172.16.10.0/24, 172.16.11.0/24 (Inherited) |
+   | Availability | `Orbital_Path_AUS_Office` (Inherited) |
+   | Tunnel Monitoring | Google Health Check |
+   | Failover directly to internet | — |
+   | IPsec Policy | — |
+   | Preset | Custom |
+   | Phase 1 — Encryption | AES 256 |
+   | Phase 1 — Authentication | SHA256 |
+   | Phase 1 — Pseudo-Random Function | SHA256 |
+   | Phase 1 — Diffie-Hellman group | 14 |
+   | Phase 1 — Lifetime (sec) | 28800 |
+   | Phase 2 — Encryption | AES256 |
+   | Phase 2 — Authentication | SHA256 |
+   | Phase 2 — PFS Group | 14 |
+   | Phase 2 — Lifetime (sec) | 28800 |
 5. Select **Save**.
 
 Note
@@ -566,22 +569,22 @@ Note
 
 Confirm the MX appliance route table includes routes for the private subnets defined in the primary and secondary IPsec VPN peer configuration.
 
-Go to **Security & SD-WAN** \> **Monitor** \> **Route table**.
+Go to **Security & SD-WAN** > **Monitor** > **Route table**.
 
 The Meraki route table reflects routes via `cf-wan-tun-01` and `cf-wan-tun-02` as follows:
 
-| Status | Version | Subnet           | Name          | VLAN | Next-Hop      | Destination   | Type              |
-| ------ | ------- | ---------------- | ------------- | ---- | ------------- | ------------- | ----------------- |
-| —      | 4       | 0.0.0.0/0        | Default       | —    | —             | WAN uplink    | Default WAN Route |
-| —      | 4       | 169.254.250.0/31 | cf-wan-tun-01 | —    | cf-wan-tun-01 | —             | IPsec Peer        |
-| —      | 4       | 169.254.250.0/31 | cf-wan-tun-02 | —    | cf-wan-tun-02 | —             | IPsec Peer        |
-| —      | 4       | 169.254.250.2/31 | cf-wan-tun-01 | —    | cf-wan-tun-01 | —             | IPsec Peer        |
-| —      | 4       | 169.254.250.2/31 | cf-wan-tun-02 | —    | cf-wan-tun-02 | —             | IPsec Peer        |
-| —      | 4       | 172.16.10.0/24   | cf-wan-tun-01 | —    | cf-wan-tun-01 | —             | IPsec Peer        |
-| —      | 4       | 172.16.10.0/24   | cf-wan-tun-02 | —    | cf-wan-tun-02 | —             | IPsec Peer        |
-| —      | 4       | 172.16.11.0/24   | cf-wan-tun-01 | —    | cf-wan-tun-01 | —             | IPsec Peer        |
-| —      | 4       | 172.16.11.0/24   | cf-wan-tun-02 | —    | cf-wan-tun-02 | —             | IPsec Peer        |
-| 🟢     | 4       | 192.168.125.0/24 | LAN           | 1    | 192.168.125.1 | 192.168.125.1 | Local VLAN        |
+| Status | Version | Subnet | Name | VLAN | Next-Hop | Destination | Type |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| — | 4 | 0.0.0.0/0 | Default | — | — | WAN uplink | Default WAN Route |
+| — | 4 | 169.254.250.0/31 | cf-wan-tun-01 | — | cf-wan-tun-01 | — | IPsec Peer |
+| — | 4 | 169.254.250.0/31 | cf-wan-tun-02 | — | cf-wan-tun-02 | — | IPsec Peer |
+| — | 4 | 169.254.250.2/31 | cf-wan-tun-01 | — | cf-wan-tun-01 | — | IPsec Peer |
+| — | 4 | 169.254.250.2/31 | cf-wan-tun-02 | — | cf-wan-tun-02 | — | IPsec Peer |
+| — | 4 | 172.16.10.0/24 | cf-wan-tun-01 | — | cf-wan-tun-01 | — | IPsec Peer |
+| — | 4 | 172.16.10.0/24 | cf-wan-tun-02 | — | cf-wan-tun-02 | — | IPsec Peer |
+| — | 4 | 172.16.11.0/24 | cf-wan-tun-01 | — | cf-wan-tun-01 | — | IPsec Peer |
+| — | 4 | 172.16.11.0/24 | cf-wan-tun-02 | — | cf-wan-tun-02 | — | IPsec Peer |
+| 🟢 | 4 | 192.168.125.0/24 | LAN | 1 | 192.168.125.1 | 192.168.125.1 | Local VLAN |
 
 #### Tunnel health and failover
 
@@ -595,16 +598,16 @@ Failover testing indicates traffic may be disrupted for a few seconds. Cloudflar
 
 Cloudflare tunnel health checks indicate 100% failure on the tunnel marked as standby. This ensures traffic is only steered through the active tunnel.
 
-| **Active Peer**          | **Tunnel health**             |                               |
-| ------------------------ | ----------------------------- | ----------------------------- |
-| Primary IPsec VPN peer   | **CF\_WAN\_TUN\_01**: 🟢 0%   | **CF\_WAN\_TUN\_02**: 🔴 100% |
-| Secondary IPsec VPN peer | **CF\_WAN\_TUN\_01**: 🔴 100% | **CF\_WAN\_TUN\_02**: 🟢 0%   |
+| **Active Peer** | **Tunnel health** | |
+| --- | --- | --- |
+| Primary IPsec VPN peer | **CF\_WAN\_TUN\_01**: 🟢 0% | **CF\_WAN\_TUN\_02**: 🔴 100% |
+| Secondary IPsec VPN peer | **CF\_WAN\_TUN\_01**: 🔴 100% | **CF\_WAN\_TUN\_02**: 🟢 0% |
 
 ##### Meraki tunnel health
 
 Use the Meraki Dashboard to determine the status of the IPsec tunnels:
 
-1. Go to **Security & SD-WAN** \> **Monitor** \> **VPN Status**.
+1. Go to **Security & SD-WAN** > **Monitor** > **VPN Status**.
 2. Scroll to the **Overview** section.
 3. Select the filter labeled **2 IPsec peers**.
 
@@ -612,69 +615,69 @@ Use the Meraki Dashboard to determine the status of the IPsec tunnels:
 
 Active tunnel: `cf-wan-tun-01`:
 
-| Status          | Name          | Public IP     | Subnets          | Tunnel monitor |
-| --------------- | ------------- | ------------- | ---------------- | -------------- |
-| 🟢 IPsec        | cf-wan-tun-01 | 162.159.135.1 | 169.254.250.0/31 | Details (link) |
-| 🟢 Health check |               |               | 169.254.250.2/31 |                |
-|                 |               |               | 172.16.10.0/24   |                |
-|                 |               |               | 172.16.11.0/24   |                |
-| 🟢 IPsec        | cf-wan-tun-02 | 172.64.135.1  | 169.254.250.0/31 | Details (link) |
-| 🟢 Health check |               |               | 169.254.250.2/31 |                |
-|                 |               |               | 172.16.10.0/24   |                |
-|                 |               |               | 172.16.11.0/24   |                |
+| Status | Name | Public IP | Subnets | Tunnel monitor |
+| --- | --- | --- | --- | --- |
+| 🟢 IPsec | cf-wan-tun-01 | 162.159.135.1 | 169.254.250.0/31 | Details (link) |
+| 🟢 Health check |  |  | 169.254.250.2/31 | |
+|  |  |  | 172.16.10.0/24 | |
+|  |  |  | 172.16.11.0/24 | |
+| 🟢 IPsec | cf-wan-tun-02 | 172.64.135.1 | 169.254.250.0/31 | Details (link) |
+| 🟢 Health check |  |  | 169.254.250.2/31 | |
+|  |  |  | 172.16.10.0/24 | |
+|  |  |  | 172.16.11.0/24 | |
 
 Active tunnel: `cf-wan-tun-02`:
 
-| Status          | Name          | Public IP     | Subnets          | Tunnel monitor |
-| --------------- | ------------- | ------------- | ---------------- | -------------- |
-| 🟢 IPsec        | cf-wan-tun-01 | 162.159.135.1 | 169.254.250.0/31 | Details (link) |
-| 🔴 Health check |               |               | 169.254.250.2/31 |                |
-|                 |               |               | 172.16.10.0/24   |                |
-|                 |               |               | 172.16.11.0/24   |                |
-| 🟢 IPsec        | cf-wan-tun-02 | 172.64.135.1  | 169.254.250.0/31 | Details (link) |
-| 🟢 Health check |               |               | 169.254.250.2/31 |                |
-|                 |               |               | 172.16.10.0/24   |                |
-|                 |               |               | 172.16.11.0/24   |                |
+| Status | Name | Public IP | Subnets | Tunnel monitor |
+| --- | --- | --- | --- | --- |
+| 🟢 IPsec | cf-wan-tun-01 | 162.159.135.1 | 169.254.250.0/31 | Details (link) |
+| 🔴 Health check |  |  | 169.254.250.2/31 | |
+|  |  |  | 172.16.10.0/24 | |
+|  |  |  | 172.16.11.0/24 | |
+| 🟢 IPsec | cf-wan-tun-02 | 172.64.135.1 | 169.254.250.0/31 | Details (link) |
+| 🟢 Health check |  |  | 169.254.250.2/31 | |
+|  |  |  | 172.16.10.0/24 | |
+|  |  |  | 172.16.11.0/24 | |
 
 ###### Internet only via Cloudflare Gateway
 
 Active tunnel: `cf-wan-tun-01`:
 
-| Status          | Name          | Public IP     | Subnets   | Tunnel monitor |
-| --------------- | ------------- | ------------- | --------- | -------------- |
-| 🟢 IPsec        | cf-wan-tun-01 | 162.159.135.1 | 0.0.0.0/0 | Details (link) |
-| 🟢 Health check |               |               |           |                |
-| 🟢 IPsec        | cf-wan-tun-02 | 172.64.135.1  | 0.0.0.0/0 | Details (link) |
-| 🟢 Health check |               |               |           |                |
+| Status | Name | Public IP | Subnets | Tunnel monitor |
+| --- | --- | --- | --- | --- |
+| 🟢 IPsec | cf-wan-tun-01 | 162.159.135.1 | 0.0.0.0/0 | Details (link) |
+| 🟢 Health check |  |  |  | |
+| 🟢 IPsec | cf-wan-tun-02 | 172.64.135.1 | 0.0.0.0/0 | Details (link) |
+| 🟢 Health check |  |  |  | |
 
 Active tunnel: `cf-wan-tun-02`:
 
-| Status          | Name          | Public IP     | Subnets   | Tunnel monitor |
-| --------------- | ------------- | ------------- | --------- | -------------- |
-| 🟢 IPsec        | cf-wan-tun-01 | 162.159.135.1 | 0.0.0.0/0 | Details (link) |
-| 🔴 Health check |               |               |           |                |
-| 🟢 IPsec        | cf-wan-tun-02 | 172.64.135.1  | 0.0.0.0/0 | Details (link) |
-| 🟢 Health check |               |               |           |                |
+| Status | Name | Public IP | Subnets | Tunnel monitor |
+| --- | --- | --- | --- | --- |
+| 🟢 IPsec | cf-wan-tun-01 | 162.159.135.1 | 0.0.0.0/0 | Details (link) |
+| 🔴 Health check |  |  |  | |
+| 🟢 IPsec | cf-wan-tun-02 | 172.64.135.1 | 0.0.0.0/0 | Details (link) |
+| 🟢 Health check |  |  |  | |
 
 ###### All traffic via Cloudflare WAN and Gateway
 
 Active tunnel: `cf-wan-tun-01`:
 
-| Status          | Name          | Public IP     | Subnets   | Tunnel monitor |
-| --------------- | ------------- | ------------- | --------- | -------------- |
-| 🟢 IPsec        | cf-wan-tun-01 | 162.159.135.1 | 0.0.0.0/0 | Details (link) |
-| 🟢 Health check |               |               |           |                |
-| 🟢 IPsec        | cf-wan-tun-02 | 172.64.135.1  | 0.0.0.0/0 | Details (link) |
-| 🟢 Health check |               |               |           |                |
+| Status | Name | Public IP | Subnets | Tunnel monitor |
+| --- | --- | --- | --- | --- |
+| 🟢 IPsec | cf-wan-tun-01 | 162.159.135.1 | 0.0.0.0/0 | Details (link) |
+| 🟢 Health check |  |  |  | |
+| 🟢 IPsec | cf-wan-tun-02 | 172.64.135.1 | 0.0.0.0/0 | Details (link) |
+| 🟢 Health check |  |  |  | |
 
 Active tunnel: `cf-wan-tun-02`:
 
-| Status          | Name          | Public IP     | Subnets   | Tunnel monitor |
-| --------------- | ------------- | ------------- | --------- | -------------- |
-| 🟢 IPsec        | cf-wan-tun-01 | 162.159.135.1 | 0.0.0.0/0 | Details (link) |
-| 🔴 Health check |               |               |           |                |
-| 🟢 IPsec        | cf-wan-tun-02 | 172.64.135.1  | 0.0.0.0/0 | Details (link) |
-| 🟢 Health check |               |               |           |                |
+| Status | Name | Public IP | Subnets | Tunnel monitor |
+| --- | --- | --- | --- | --- |
+| 🟢 IPsec | cf-wan-tun-01 | 162.159.135.1 | 0.0.0.0/0 | Details (link) |
+| 🔴 Health check |  |  |  | |
+| 🟢 IPsec | cf-wan-tun-02 | 172.64.135.1 | 0.0.0.0/0 | Details (link) |
+| 🟢 Health check |  |  |  | |
 
 ## Troubleshooting
 
@@ -682,22 +685,22 @@ Active tunnel: `cf-wan-tun-02`:
 
 Review the MX route table to determine what traffic is routed over the IPsec tunnels compared to direct internet routing.
 
-Go to **Security & SD-WAN** \> **Monitor** \> **Route Table**.
+Go to **Security & SD-WAN** > **Monitor** > **Route Table**.
 
 ### MX tunnel monitoring
 
 VPN Status reports that the health checks are failing on both tunnels:
 
-| Status          | Name          | Public IP     | Subnets          | Tunnel monitor |
-| --------------- | ------------- | ------------- | ---------------- | -------------- |
-| 🟢 IPsec        | cf-wan-tun-01 | 162.159.135.1 | 169.254.250.0/31 | Details (link) |
-| 🔴 Health check |               |               | 169.254.250.2/31 |                |
-|                 |               |               | 172.16.10.0/24   |                |
-|                 |               |               | 172.16.11.0/24   |                |
-| 🟢 IPsec        | cf-wan-tun-02 | 172.64.135.1  | 169.254.250.0/31 | Details (link) |
-| 🔴 Health check |               |               | 169.254.250.2/31 |                |
-|                 |               |               | 172.16.10.0/24   |                |
-|                 |               |               | 172.16.11.0/24   |                |
+| Status | Name | Public IP | Subnets | Tunnel monitor |
+| --- | --- | --- | --- | --- |
+| 🟢 IPsec | cf-wan-tun-01 | 162.159.135.1 | 169.254.250.0/31 | Details (link) |
+| 🔴 Health check |  |  | 169.254.250.2/31 | |
+|  |  |  | 172.16.10.0/24 | |
+|  |  |  | 172.16.11.0/24 | |
+| 🟢 IPsec | cf-wan-tun-02 | 172.64.135.1 | 169.254.250.0/31 | Details (link) |
+| 🔴 Health check |  |  | 169.254.250.2/31 | |
+|  |  |  | 172.16.10.0/24 | |
+|  |  |  | 172.16.11.0/24 | |
 
 Check the Cloudflare Gateway logs and policy to determine if HTTP requests originating from `192.0.2.3/32` are being blocked.
 
@@ -707,17 +710,17 @@ If blocked, create a rule to restore tunnel monitoring HTTP requests. Refer to [
 
 Available in:
 
-* [Log Explorer](https://developers.cloudflare.com/log-explorer/)
-* [Logpush](https://developers.cloudflare.com/logs/logpush/) \> [IPsec logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/ipsec%5Flogs/)
+- [Log Explorer](https://developers.cloudflare.com/log-explorer/)
+- [Logpush](https://developers.cloudflare.com/logs/logpush/) > [IPsec logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/ipsec_logs/)
 
 IPsec logs can help diagnose a variety of issues related to IPsec tunnels, including:
 
-* Using unsupported Phase 1 or Phase 2 encryption or integrity settings — look for messages indicating `No proposal chosen`.
-  * Confirm that the Phase 1 and Phase 2 encryption or integrity values defined are supported by Cloudflare WAN.
-  * Refer to [Supported configuration parameters](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/gre-ipsec-tunnels/#supported-configuration-parameters).
-* IKE/IPsec identity: local or remote identity not defined or with incorrect values.
-  * Refer to the [Palo Alto third-party integration guide](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/palo-alto/) for an example of FQDN-based local identification.
-* Authentication failures: wrong pre-shared key.
+- Using unsupported Phase 1 or Phase 2 encryption or integrity settings — look for messages indicating `No proposal chosen`.
+  - Confirm that the Phase 1 and Phase 2 encryption or integrity values defined are supported by Cloudflare WAN.
+  - Refer to [Supported configuration parameters](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/gre-ipsec-tunnels/#supported-configuration-parameters).
+- IKE/IPsec identity: local or remote identity not defined or with incorrect values.
+  - Refer to the [Palo Alto third-party integration guide](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/palo-alto/) for an example of FQDN-based local identification.
+- Authentication failures: wrong pre-shared key.
 
 Refer to [Configure tunnel endpoints](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels) for more details.
 
@@ -725,21 +728,21 @@ Refer to [Configure tunnel endpoints](https://developers.cloudflare.com/cloudfla
 
 Ensure tunnel health checks for both `CF_WAN_TUN_01` and `CF_WAN_TUN_02` are configured with the following settings:
 
-| **Attribute**  | **Value**     | **Notes**                                                                     |
-| -------------- | ------------- | ----------------------------------------------------------------------------- |
-| Enabled        | True          | Ensure the indicator displays 🟢 Enabled.                                     |
-| Type           | Request       | A stateful firewall drops ICMP Reply probes.                                  |
-| Direction      | Bidirectional | Ensures probes are sent and received via the tunnel.                          |
-| Target         | Custom        | The MX platform does not support VTIs, so probes must target an alternate IP. |
-| Target address | 192.168.125.1 | Send probes to the LAN interface on the MX appliance.                         |
+| **Attribute** | **Value** | **Notes** |
+| --- | --- | --- |
+| Enabled | True | Ensure the indicator displays 🟢 Enabled. |
+| Type | Request | A stateful firewall drops ICMP Reply probes. |
+| Direction | Bidirectional | Ensures probes are sent and received via the tunnel. |
+| Target | Custom | The MX platform does not support VTIs, so probes must target an alternate IP. |
+| Target address | 192.168.125.1 | Send probes to the LAN interface on the MX appliance. |
 
 ## Meraki references
 
-* [Connection Monitoring for WAN Failover ↗](https://documentation.meraki.com/SASE%5Fand%5FSD-WAN/MX/Design%5Fand%5FConfigure/Configuration%5FGuides/Firewall%5Fand%5FTraffic%5FShaping/Connection%5FMonitoring%5Ffor%5FWAN%5FFailover#Enhanced%5FWAN%5FFailover%5Fand%5FFailback)
-* [MX Routing Behavior ↗](https://documentation.meraki.com/SASE%5Fand%5FSD-WAN/MX/Design%5Fand%5FConfigure/Configuration%5FGuides/Networks%5Fand%5FRouting/MX%5FRouting%5FBehavior)
-* [Organization Overview ↗](https://documentation.meraki.com/Platform%5FManagement/Dashboard%5FAdministration/Operate%5Fand%5FMaintain/Inventory%5Fand%5FDevices/Organization%5FOverview)
-* [Primary and Secondary IPsec VPN Tunnels ↗](https://documentation.meraki.com/SASE%5Fand%5FSD-WAN/MX/Design%5Fand%5FConfigure/Configuration%5FGuides/Site-to-site%5FVPN/Primary%5Fand%5FSecondary%5FIPsec%5FVPN%5FTunnels)
-* [Site-to-Site VPN ↗](https://documentation.meraki.com/SASE%5Fand%5FSD-WAN/MX/Design%5Fand%5FConfigure/Configuration%5FGuides/Site-to-site%5FVPN/Site-to-Site%5FVPN%5FSettings#Peer%5Favailability)
+- [Connection Monitoring for WAN Failover ↗](https://documentation.meraki.com/SASE_and_SD-WAN/MX/Design_and_Configure/Configuration_Guides/Firewall_and_Traffic_Shaping/Connection_Monitoring_for_WAN_Failover#Enhanced_WAN_Failover_and_Failback)
+- [MX Routing Behavior ↗](https://documentation.meraki.com/SASE_and_SD-WAN/MX/Design_and_Configure/Configuration_Guides/Networks_and_Routing/MX_Routing_Behavior)
+- [Organization Overview ↗](https://documentation.meraki.com/Platform_Management/Dashboard_Administration/Operate_and_Maintain/Inventory_and_Devices/Organization_Overview)
+- [Primary and Secondary IPsec VPN Tunnels ↗](https://documentation.meraki.com/SASE_and_SD-WAN/MX/Design_and_Configure/Configuration_Guides/Site-to-site_VPN/Primary_and_Secondary_IPsec_VPN_Tunnels)
+- [Site-to-Site VPN ↗](https://documentation.meraki.com/SASE_and_SD-WAN/MX/Design_and_Configure/Configuration_Guides/Site-to-site_VPN/Site-to-Site_VPN_Settings#Peer_availability)
 
 Was this helpful?
 

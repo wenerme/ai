@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Logpush
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Logpush delivers logs in batches as quickly as possible, with no minimum batch size, potentially delivering files more than once per minute. This capability enables Cloudflare to provide information almost in real time, in smaller file sizes.
 
@@ -34,18 +34,18 @@ Before setting up a Logpush job, you can estimate the total volume of data that 
 
 ### Quick sizing for HTTP Requests
 
-A quick sizing estimate for an [HTTP Requests](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http%5Frequests/) dataset:
+A quick sizing estimate for an [HTTP Requests](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/) dataset:
 
-* \~100–250 bytes per request (compressed, depending on fields selected)
-* 1M requests/day → \~100–250 MB/day
-* 30M requests/month → \~3–7.5 GB/month
+- \~100–250 bytes per request (compressed, depending on fields selected)
+- 1M requests/day → \~100–250 MB/day
+- 30M requests/month → \~3–7.5 GB/month
 
 ### Daily storage by traffic volume
 
-* 100k req/day → \~25–50 MB/day
-* 1M req/day → \~250–500 MB/day
-* 10M req/day → \~2.5–5 GB/day
-* 100M req/day → \~25–50 GB/day
+- 100k req/day → \~25–50 MB/day
+- 1M req/day → \~250–500 MB/day
+- 10M req/day → \~2.5–5 GB/day
+- 100M req/day → \~25–50 GB/day
 
 These ranges reflect field selection, compression, and whether you include extra fields or [custom fields](https://developers.cloudflare.com/logs/logpush/logpush-job/custom-fields/). Other datasets (Firewall, Workers, Load Balancing) add volume separately.
 
@@ -57,9 +57,9 @@ There is currently a max limit of **4 Logpush jobs per zone**. Trying to create 
 
 ## Availability
 
-|              | Free | Pro | Business | Enterprise |
-| ------------ | ---- | --- | -------- | ---------- |
-| Availability | No   | No  | No       | Yes        |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | No | No | No | Yes |
 
 Note
 

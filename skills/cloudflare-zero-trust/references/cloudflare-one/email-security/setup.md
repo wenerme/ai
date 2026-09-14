@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Before you begin
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Before you start the onboarding process, you will have to:
 
@@ -22,21 +22,21 @@ Before you start the onboarding process, you will have to:
 
 The following table compares features available across API, BCC/Journaling and MX/Inline:
 
-| Feature             | Microsoft 365                                       | Google Workspace                  | Others (On-prem/Cloud)                                   |
-| ------------------- | --------------------------------------------------- | --------------------------------- | -------------------------------------------------------- |
-| Deployment type     | API and MX                                          | BCC and MX                        | MX only                                                  |
-| API integration     | Microsoft Graph API                                 | BCC only                          | None                                                     |
-| BCC/Journaling      | Uses a Journal Rule in the Microsoft Purview portal | Uses BCC rules                    | Uses journaling                                          |
-| Inline/MX Mode      | MX records point to Cloudflare                      | MX records point to Cloudflare    | MX records point to Cloudflare                           |
-| Message remediation | Auto-moves through Read/Write API                   | Auto-moves through Read/Write API | Messages can be blocked, quarantined, or modified inline |
+| Feature | Microsoft 365 | Google Workspace | Others (On-prem/Cloud) |
+| --- | --- | --- | --- |
+| Deployment type | API and MX | BCC and MX | MX only |
+| API integration | Microsoft Graph API | BCC only | None |
+| BCC/Journaling | Uses a Journal Rule in the Microsoft Purview portal | Uses BCC rules | Uses journaling |
+| Inline/MX Mode | MX records point to Cloudflare | MX records point to Cloudflare | MX records point to Cloudflare |
+| Message remediation | Auto-moves through Read/Write API | Auto-moves through Read/Write API | Messages can be blocked, quarantined, or modified inline |
 
 Note that:
 
-* All email providers support MX/Inline deployment.
-* Microsoft 365 or Google Workspace users who integrate Email security via API, BCC/Journaling can modify emails primarily through deletion or post-delivery [move](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/).
-* Microsoft 365 or Google Workspace users who integrate Email security via MX/Inline can modify emails via post-delivery [move](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/), [link actions](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/configure-link-actions/) and [text add-ons](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/configure-text-add-ons/).
+- All email providers support MX/Inline deployment.
+- Microsoft 365 or Google Workspace users who integrate Email security via API, BCC/Journaling can modify emails primarily through deletion or post-delivery [move](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/).
+- Microsoft 365 or Google Workspace users who integrate Email security via MX/Inline can modify emails via post-delivery [move](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/), [link actions](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/configure-link-actions/) and [text add-ons](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/configure-text-add-ons/).
 
-## 1\. Choose a deployment
+## 1. Choose a deployment
 
 ### Post-delivery deployment
 
@@ -54,9 +54,9 @@ Note
 
 When you choose post-delivery deployment:
 
-* The threat is removed **after** the message has been delivered to the inbox.
-* It requires API scopes, or BCC/Journaling rule configuration.
-* Auto-move is only available in BCC/Journaling if you associate an integration.
+- The threat is removed **after** the message has been delivered to the inbox.
+- It requires API scopes, or BCC/Journaling rule configuration.
+- Auto-move is only available in BCC/Journaling if you associate an integration.
 
 ### Pre-delivery deployment
 
@@ -72,31 +72,31 @@ Note
 
 When you choose pre-delivery deployment:
 
-* You must edit MX records or create a connector.
-* You can enable auto-move events only after you associate an integration.
-* Cloudflare [egress IPs](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/) are allowed on downstream mail servers.
+- You must edit MX records or create a connector.
+- You can enable auto-move events only after you associate an integration.
+- Cloudflare [egress IPs](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/) are allowed on downstream mail servers.
 
-## 2\. Understand dispositions
+## 2. Understand dispositions
 
 Dispositions allow you to configure policies and tune reporting. For example, you can configure a policy to move suspicious emails to your junk folder.
 
 Refer to [Dispositions](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/#dispositions) to learn more about dispositions.
 
-## 3\. Set up the impersonation registry
+## 3. Set up the impersonation registry
 
 Most [business email compromise (BEC) ↗](https://www.cloudflare.com/en-gb/learning/email-security/business-email-compromise-bec/) targets executives or finance roles. You must add addresses of roles who are likely to be impersonated. Refer to [Impersonation registry](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/) to learn how to add a user to the impersonation registry.
 
 Roles you may want to include in the impersonation registry are:
 
-* C-suites
-* Finance roles
-* HR
-* IT help-desk
-* Legal
+- C-suites
+- Finance roles
+- HR
+- IT help-desk
+- Legal
 
 You should review your impersonation registry on a quarterly basis as roles change.
 
-## 4\. Submit messages
+## 4. Submit messages
 
 A submission is a change to an email's disposition **after** initial scanning. It is Cloudflare's built-in feedback loop for correcting false positives/negatives **and** training the detection models to get smarter over time. Refer to [Submit messages for review](https://developers.cloudflare.com/cloudflare-one/email-security/submissions/#submit-messages-for-review) to learn how to reclassify a message.
 
@@ -108,10 +108,10 @@ A submission is a change to an email's disposition **after** initial scanning. I
 
 Submissions are critical because:
 
-* **They help improve model accuracy**: Every validated submissions teaches Cloudflare's machine learning to recognise new lures, language, infrastructure, and benign patterns.
-* **They reduce alert fatigue**: Correcting Suspicious or Spam emails that users actually want tailors detections to your organization, cutting noise in the dashboard.
-* **They close the remediation loop**: When a disposition is upgraded to Malicious, Cloudflare auto-moves those emails out of every inbox (Graph API or Google Workspace API integrations).
-* **They can help you log activity taken on any submission**: Each submission displays a submission ID, details about original, requested and final dispositions, and more. Refer to [Submit messages for review](https://developers.cloudflare.com/cloudflare-one/email-security/submissions/#submit-messages-for-review) to learn more about submissions.
+- **They help improve model accuracy**: Every validated submissions teaches Cloudflare's machine learning to recognise new lures, language, infrastructure, and benign patterns.
+- **They reduce alert fatigue**: Correcting Suspicious or Spam emails that users actually want tailors detections to your organization, cutting noise in the dashboard.
+- **They close the remediation loop**: When a disposition is upgraded to Malicious, Cloudflare auto-moves those emails out of every inbox (Graph API or Google Workspace API integrations).
+- **They can help you log activity taken on any submission**: Each submission displays a submission ID, details about original, requested and final dispositions, and more. Refer to [Submit messages for review](https://developers.cloudflare.com/cloudflare-one/email-security/submissions/#submit-messages-for-review) to learn more about submissions.
 
 To make the most of submissions:
 
@@ -121,20 +121,20 @@ To make the most of submissions:
 
 A correct use of submissions ensures that Email security delivers a stronger protection with less manual tuning.
 
-## 5\. Configuration checklist
+## 5. Configuration checklist
 
 Follow the below checklist to ensure your email environment is set up correctly:
 
-| Step                                                                                                                                                                                                                                                                                                                                                                                                        | Post-delivery                   | Pre-delivery                     |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- | -------------------------------- |
-| Authorize integration ([Graph API](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/api/m365-api/#enable-microsoft-integration) or [Google Workspace](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/enable-gmail-integration/))                                     | Required[1](#user-content-fn-1) | Required [2](#user-content-fn-2) |
-| Associate an integration with an MX/Inline domain                                                                                                                                                                                                                                                                                                                                                           |                                 | Required                         |
-| Add/verify domains                                                                                                                                                                                                                                                                                                                                                                                          | Required                        | Required                         |
-| [Update MX records/connector](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/mx-inline-deployment-setup/), then allow Cloudflare [egress IPs](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/) on downstream mail server                                                                           |                                 | Required                         |
-| Populate [impersonation registry](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/) and [allow](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/)/[block](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/blocked-senders/) lists | Required                        | Required                         |
-| Configure [partner domain TLS](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/partner-domain-tls/) and admin quarantine                                                                                                                                                                                                                                      |                                 | Required                         |
-| Configure [text add-ons](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/configure-text-add-ons/) and [link actions](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/configure-link-actions/)                                                                                                                       |                                 | Required                         |
-| Send a test email and verify it appears in **Monitoring** \> [**Email activity**](https://developers.cloudflare.com/cloudflare-one/email-security/monitoring/#email-activity) with expected disposition                                                                                                                                                                                                     | Required                        | Required                         |
+| Step | Post-delivery | Pre-delivery |
+| --- | --- | --- |
+| Authorize integration ([Graph API](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/api/m365-api/#enable-microsoft-integration) or [Google Workspace](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/enable-gmail-integration/)) | Required<sup>[1](#user-content-fn-1)</sup> | Required <sup>[2](#user-content-fn-2)</sup> |
+| Associate an integration with an MX/Inline domain |  | Required |
+| Add/verify domains | Required | Required |
+| [Update MX records/connector](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/mx-inline-deployment-setup/), then allow Cloudflare [egress IPs](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/) on downstream mail server |  | Required |
+| Populate [impersonation registry](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/) and [allow](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/)/ [block](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/blocked-senders/) lists | Required | Required |
+| Configure [partner domain TLS](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/partner-domain-tls/) and admin quarantine |  | Required |
+| Configure [text add-ons](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/configure-text-add-ons/) and [link actions](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/configure-link-actions/) |  | Required |
+| Send a test email and verify it appears in **Monitoring** > [**Email activity**](https://developers.cloudflare.com/cloudflare-one/email-security/monitoring/#email-activity) with expected disposition | Required | Required |
 
 Now that you know which deployment path to choose, you can begin your onboarding process.
 

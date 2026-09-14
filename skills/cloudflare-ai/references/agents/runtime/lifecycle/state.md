@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Store and sync state
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/lifecycle/state/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/lifecycle/state/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agents provide built-in state management with automatic persistence and real-time synchronization across all connected clients.
 
@@ -20,13 +20,13 @@ Agents provide built-in state management with automatic persistence and real-tim
 
 State within an Agent is:
 
-* **Persistent** \- Automatically saves to SQLite, survives restarts and hibernation
-* **Synchronized** \- Changes are broadcast to all connected WebSocket clients instantly
-* **Bidirectional** \- Both server and clients can update state
-* **Type-safe** \- Full TypeScript support with generics
-* **Immediately consistent** \- Read your own writes
-* **Thread-safe** \- Safe for concurrent updates
-* **Fast** \- State is colocated wherever the Agent is running
+- **Persistent** - Automatically saves to SQLite, survives restarts and hibernation
+- **Synchronized** - Changes are broadcast to all connected WebSocket clients instantly
+- **Bidirectional** - Both server and clients can update state
+- **Type-safe** - Full TypeScript support with generics
+- **Immediately consistent** - Read your own writes
+- **Thread-safe** - Safe for concurrent updates
+- **Fast** - State is colocated wherever the Agent is running
 
 Agent state is stored in a SQL database embedded within each individual Agent instance. You can interact with it using the higher-level `this.setState` API (recommended), which allows you to sync state and trigger events on state changes, or by directly querying the database with `this.sql`.
 
@@ -158,9 +158,9 @@ export class MyAgent extends Agent<Env, MyState> {
 
 Initial state is applied lazily on first access, not on every wake:
 
-1. **New agent** \- `initialState` is used and persisted
-2. **Existing agent** \- Persisted state is loaded from SQLite
-3. **No `initialState` defined** \- `this.state` is `undefined`
+1. **New agent** - `initialState` is used and persisted
+2. **Existing agent** - Persisted state is loaded from SQLite
+3. **No `initialState` defined** - `this.state` is `undefined`
 
 ```js
 class MyAgent extends Agent {
@@ -254,7 +254,7 @@ export class MinimalAgent extends Agent {
 Use `setState()` to update state. This:
 
 1. Saves to SQLite (persistent)
-2. Broadcasts to all connected clients (excluding connections where [shouldSendProtocolMessages](https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/) returned `false`)
+2. Broadcasts to all connected clients (excluding connections where [`shouldSendProtocolMessages`](https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/) returned `false`)
 3. Triggers `onStateChanged()` (after broadcast; best-effort)
 
 ```js
@@ -357,16 +357,16 @@ class MyAgent extends Agent<Env, GameState> {
 
 The `source` shows who triggered the update:
 
-| Value      | Meaning                             |
-| ---------- | ----------------------------------- |
-| "server"   | Agent called setState()             |
-| Connection | A client pushed state via WebSocket |
+| Value | Meaning |
+| --- | --- |
+| `"server"` | Agent called `setState()` |
+| `Connection` | A client pushed state via WebSocket |
 
 This is useful for:
 
-* Avoiding infinite loops (do not react to your own updates)
-* Validating client input
-* Triggering side effects only on client actions
+- Avoiding infinite loops (do not react to your own updates)
+- Validating client input
+- Triggering side effects only on client actions
 
 ```js
 class MyAgent extends Agent {
@@ -453,9 +453,9 @@ class MyAgent extends Agent<Env, { messages: Message[] }> {
 
 If you want to validate or reject state updates, override `validateStateChange()`:
 
-* Runs before persistence and broadcast
-* Must be synchronous
-* Throwing aborts the update
+- Runs before persistence and broadcast
+- Must be synchronous
+- Throwing aborts the update
 
 ```js
 class MyAgent extends Agent {
@@ -581,6 +581,7 @@ client.setState({ ...client.state, score: 100 });
 
 ### State flow
 
+```
 flowchart TD
     subgraph Agent
         S["this.state<br/>(persisted in SQLite)"]
@@ -592,6 +593,8 @@ flowchart TD
     end
     C1 & C2 & C3 -->|setState| S
     S -->|broadcast via WebSocket| C1 & C2 & C3
+
+```
 
 ## State from Workflows
 
@@ -811,12 +814,12 @@ class MyAgent extends Agent<Env, { messages: Message[] }> {
 
 ### State vs SQL
 
-| Use State For                      | Use SQL For       |
-| ---------------------------------- | ----------------- |
-| UI state (loading, selected items) | Historical data   |
-| Real-time counters                 | Large collections |
-| Active session data                | Relationships     |
-| Configuration                      | Queryable data    |
+| Use State For | Use SQL For |
+| --- | --- |
+| UI state (loading, selected items) | Historical data |
+| Real-time counters | Large collections |
+| Active session data | Relationships |
+| Configuration | Queryable data |
 
 ```js
 export class ChatAgent extends Agent {
@@ -983,26 +986,26 @@ This works because each instance of an Agent has its own database, and the state
 
 ### Properties
 
-| Property     | Type  | Description                  |
-| ------------ | ----- | ---------------------------- |
-| state        | State | Current state (getter)       |
-| initialState | State | Default state for new agents |
+| Property | Type | Description |
+| --- | --- | --- |
+| `state` | `State` | Current state (getter) |
+| `initialState` | `State` | Default state for new agents |
 
 ### Methods
 
-| Method              | Signature                                                  | Description                                   |
-| ------------------- | ---------------------------------------------------------- | --------------------------------------------- |
-| setState            | (state: State) => void                                     | Update state, persist, and broadcast          |
-| onStateChanged      | (state: State, source: Connection \| "server") => void     | Called when state changes                     |
-| validateStateChange | (nextState: State, source: Connection \| "server") => void | Validate before persistence (throw to reject) |
+| Method | Signature | Description |
+| --- | --- | --- |
+| `setState` | `(state: State) => void` | Update state, persist, and broadcast |
+| `onStateChanged` | `(state: State, source: Connection \| "server") => void` | Called when state changes |
+| `validateStateChange` | `(nextState: State, source: Connection \| "server") => void` | Validate before persistence (throw to reject) |
 
 ### Workflow step methods
 
-| Method                        | Description                         |
-| ----------------------------- | ----------------------------------- |
-| step.updateAgentState(state)  | Replace agent state from workflow   |
-| step.mergeAgentState(partial) | Merge partial state from workflow   |
-| step.resetAgentState()        | Reset to initialState from workflow |
+| Method | Description |
+| --- | --- |
+| `step.updateAgentState(state)` | Replace agent state from workflow |
+| `step.mergeAgentState(partial)` | Merge partial state from workflow |
+| `step.resetAgentState()` | Reset to `initialState` from workflow |
 
 ## Next steps
 

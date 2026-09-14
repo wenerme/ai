@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Bot tags
 
-Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/concepts/bot-tags/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/concepts/bot-tags/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Bot tags provide more detail about _why_ Cloudflare assigned a [bot score](https://developers.cloudflare.com/bots/concepts/bot-score/) to a request.
+Bot tags
+
+ provide more detail about *why* Cloudflare assigned a [bot score](https://developers.cloudflare.com/bots/concepts/bot-score/) to a request.
 
 Use these tags to learn more about your bot traffic and better inform security settings.
 
@@ -28,17 +30,17 @@ Once you [enable bot tags](#enable-bot-tags), you can see more information about
 
 The following values are **examples** of what may be present in the `BotTags` log field, but not an exhaustive list:
 
-* api
-* google
-* bing
-* googleAds
-* googleMedia
-* googleImageProxy
-* pinterest
-* newRelic
-* baidu
-* apple
-* yandex
+- api
+- google
+- bing
+- googleAds
+- googleMedia
+- googleImageProxy
+- pinterest
+- newRelic
+- baidu
+- apple
+- yandex
 
 ## Enable bot tags
 

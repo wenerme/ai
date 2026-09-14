@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # fs
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/nodejs/fs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/nodejs/fs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
 For compatibility dates of `2026-08-04` or later, Workers enables both `nodejs_compat` and `nodejs_compat_v2` by default. These flags are not used for these compatibility dates. Existing projects do not need to remove them when updating their compatibility date. For earlier dates, add `nodejs_compat` to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to opt in. For instructions to turn off Node.js compatibility, refer to the [Node.js compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
 
-You can use [node:fs ↗](https://nodejs.org/api/fs.html) to access a virtual file system in Workers.
+You can use [`node:fs` ↗](https://nodejs.org/api/fs.html) to access a virtual file system in Workers.
 
-The `node:fs` module is available in Workers runtimes that support Node.js compatibility using the `nodejs_compat` compatibility flag. Any Worker running with `nodejs_compat` enabled and with a compatibility date of `2025-09-01` or later will have access to `node:fs` by default. It is also possible to enable `node:fs` on Workers with an earlier compatibility date using a combination of the `nodejs_compat` and `enable_nodejs_fs_module`flags. To disable `node:fs` you can set the `disable_nodejs_fs_module` flag.
+The `node:fs` module is available in Workers runtimes that support Node.js compatibility using the `nodejs_compat` compatibility flag. Any Worker running with `nodejs_compat` enabled and with a compatibility date of `2025-09-01` or later will have access to `node:fs` by default. It is also possible to enable `node:fs` on Workers with an earlier compatibility date using a combination of the `nodejs_compat` and `enable_nodejs_fs_module` flags. To disable `node:fs` you can set the `disable_nodejs_fs_module` flag.
 
 ```js
 import { readFileSync, writeFileSync } from "node:fs";
@@ -30,12 +30,11 @@ const config = readFileSync("/bundle/config.txt", "utf8");
 writeFileSync("/tmp/abc.txt", "Hello, world!");
 ```
 
-The Workers Virtual File System (VFS) is a memory-based file system that allows you to read modules included in your Worker bundle as read-only files, access a directory for writing temporary files, or access common [character devices ↗](https://linux-kernel-labs.github.io/refs/heads/master/labs/device%5Fdrivers.html) like `/dev/null`, `/dev/random`, `/dev/full`, and `/dev/zero`.
+The Workers Virtual File System (VFS) is a memory-based file system that allows you to read modules included in your Worker bundle as read-only files, access a directory for writing temporary files, or access common [character devices ↗](https://linux-kernel-labs.github.io/refs/heads/master/labs/device_drivers.html) like `/dev/null`, `/dev/random`, `/dev/full`, and `/dev/zero`.
 
 The directory structure initially looks like:
 
 ```plaintext
-
 /bundle
 └── (one file for each module in your Worker bundle)
 /tmp
@@ -82,10 +81,10 @@ export default {
 
 The `/dev` directory contains common character devices:
 
-* `/dev/null`: A null device that discards all data written to it and returns EOF on read.
-* `/dev/random`: A device that provides random bytes on reads and discards all data written to it. Reading from `/dev/random` is only permitted when within the context of a request.
-* `/dev/full`: A device that always returns EOF on reads and discards all data written to it.
-* `/dev/zero`: A device that provides an infinite stream of zero bytes on reads and discards all data written to it.
+- `/dev/null`: A null device that discards all data written to it and returns EOF on read.
+- `/dev/random`: A device that provides random bytes on reads and discards all data written to it. Reading from `/dev/random` is only permitted when within the context of a request.
+- `/dev/full`: A device that always returns EOF on reads and discards all data written to it.
+- `/dev/zero`: A device that provides an infinite stream of zero bytes on reads and discards all data written to it.
 
 All operations on the VFS are synchronous. You can use the synchronous, asynchronous callback, or promise-based APIs provided by the `node:fs` module but all operations will be performed synchronously.
 
@@ -95,19 +94,19 @@ Since all temporary files are held in memory, the total size of all temporary fi
 
 The file system implementation has the following limits:
 
-* The maximum total length of a file path is 4096 characters, including path separators. Because paths are handled as file URLs internally, the limit accounts for percent-encoding of special characters, decoding characters that do not need encoding before the limit is checked. For example, the path `/tmp/abcde%66/ghi%zz' is 18 characters long because the `%66`does not need to be percent-encoded and is therefore counted as one character, while the`%zz\` is an invalid percent-encoding that is counted as 3 characters.
-* The maximum number of path segments is 48\. For example, the path `/a/b/c` is 3 segments.
-* The maximum size of an individual file is 128 MB total.
+- The maximum total length of a file path is 4096 characters, including path separators. Because paths are handled as file URLs internally, the limit accounts for percent-encoding of special characters, decoding characters that do not need encoding before the limit is checked. For example, the path `/tmp/abcde%66/ghi%zz' is 18 characters long because the` %66 `does not need to be percent-encoded and is therefore counted as one character, while the`%zz\` is an invalid percent-encoding that is counted as 3 characters.
+- The maximum number of path segments is 48. For example, the path `/a/b/c` is 3 segments.
+- The maximum size of an individual file is 128 MB total.
 
 The following `node:fs` APIs are not supported in Workers, or are only partially supported:
 
-* `fs.watch` and `fs.watchFile` operations for watching for file changes.
-* The `fs.globSync()` and other glob APIs have not yet been implemented.
-* The `force` option in the `fs.rm` API has not yet been implemented.
-* Timestamps for files are always set to the Unix epoch (`1970-01-01T00:00:00Z`).
-* File permissions and ownership are not supported.
+- `fs.watch` and `fs.watchFile` operations for watching for file changes.
+- The `fs.globSync()` and other glob APIs have not yet been implemented.
+- The `force` option in the `fs.rm` API has not yet been implemented.
+- Timestamps for files are always set to the Unix epoch ( `1970-01-01T00:00:00Z`).
+- File permissions and ownership are not supported.
 
-The full `node:fs` API is documented in the [Node.js documentation for node:fs ↗](https://nodejs.org/api/fs.html).
+The full `node:fs` API is documented in the [Node.js documentation for `node:fs` ↗](https://nodejs.org/api/fs.html).
 
 Was this helpful?
 

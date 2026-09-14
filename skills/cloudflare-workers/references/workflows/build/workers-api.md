@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers API
 
-Last updated Aug 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workflows/build/workers-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/workers-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide details the Workflows API within Cloudflare Workers, including methods, types, and usage examples.
 
@@ -30,9 +30,9 @@ export class MyWorkflow extends WorkflowEntrypoint<Env, Params> {
 
 ### run
 
-* `run(event: WorkflowEvent<T>, step: WorkflowStep): Promise<T>`
-  * `event` \- the event passed to the Workflow, including an optional `payload` containing data (parameters)
-  * `step` \- the `WorkflowStep` type that provides the step methods for your Workflow
+- `run(event: WorkflowEvent<T>, step: WorkflowStep): Promise<T>`
+  - `event` - the event passed to the Workflow, including an optional `payload` containing data (parameters)
+  - `step` - the `WorkflowStep` type that provides the step methods for your Workflow
 
 The `run` method can optionally return data, which is available when querying the instance status via the [Workers API](https://developers.cloudflare.com/workflows/build/workers-api/#instancestatus), [REST API](https://developers.cloudflare.com/api/resources/workflows/subresources/instances/subresources/status/) and the Workflows dashboard. This can be useful if your Workflow is computing a result, returning the key to data stored in object storage, or generating some kind of identifier you need to act on.
 
@@ -73,12 +73,12 @@ export type WorkflowEvent<T> = {
 };
 ```
 
-* The `WorkflowEvent` is the first argument to a Workflow's `run` method.
-  * `payload` \- a default type of `any` or type `T` if a type parameter is provided.
-  * `timestamp` \- a `Date` object set to the time the Workflow instance was created (triggered).
-  * `instanceId` \- the ID of the associated instance.
-  * `workflowName` \- the name of the associated Workflow.
-  * `schedule` \- metadata for Workflow instances created by a cron schedule, including the `cron` expression and `scheduledTime` in milliseconds since the Unix epoch.
+- The `WorkflowEvent` is the first argument to a Workflow's `run` method.
+  - `payload` - a default type of `any` or type `T` if a type parameter is provided.
+  - `timestamp` - a `Date` object set to the time the Workflow instance was created (triggered).
+  - `instanceId` - the ID of the associated instance.
+  - `workflowName` - the name of the associated Workflow.
+  - `schedule` - metadata for Workflow instances created by a cron schedule, including the `cron` expression and `scheduledTime` in milliseconds since the Unix epoch.
 
 Refer to the [events and parameters](https://developers.cloudflare.com/workflows/build/events-and-parameters/) documentation for how to handle events within your Workflow code.
 
@@ -86,21 +86,21 @@ Refer to the [events and parameters](https://developers.cloudflare.com/workflows
 
 ### step
 
-* `step.do(name: string, callback: (ctx: WorkflowStepContext): RpcSerializable): Promise<T>`
-* `step.do(name: string, callback: (ctx: WorkflowStepContext): RpcSerializable, rollbackOptions?: WorkflowStepRollbackOptions<T>): Promise<T>`
-* `step.do(name: string, config?: WorkflowStepConfig, callback: (ctx: WorkflowStepContext): RpcSerializable): Promise<T>`
-  * `name` \- the name of the step, up to 256 characters.
-  * `config` (optional) - an optional `WorkflowStepConfig` for configuring [step specific retry behaviour](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/).
-  * `callback` \- an asynchronous function that receives a [WorkflowStepContext](https://developers.cloudflare.com/workflows/build/step-context/) and optionally returns serializable state for the Workflow to persist. In JavaScript Workflows, this includes a fresh, unlocked `ReadableStream<Uint8Array>` for large binary output.
-* `step.do(name: string, config?: WorkflowStepConfig, callback: (ctx: WorkflowStepContext): RpcSerializable, rollbackOptions?: WorkflowStepRollbackOptions<T>): Promise<T>`
-  * `name` \- the name of the step, up to 256 characters.
-  * `config` (optional) - an optional `WorkflowStepConfig` for configuring [step specific retry behaviour](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/).
-  * `callback` \- an asynchronous function that receives a [WorkflowStepContext](https://developers.cloudflare.com/workflows/build/step-context/) and optionally returns serializable state for the Workflow to persist. In JavaScript Workflows, this includes a fresh, unlocked `ReadableStream<Uint8Array>` for large binary output.
-  * `rollbackOptions` (optional) - register rollback logic for the step. If the Workflow later fails, registered rollbacks run in reverse step-start order.
+- `step.do(name: string, callback: (ctx: WorkflowStepContext): RpcSerializable): Promise<T>`
+- `step.do(name: string, callback: (ctx: WorkflowStepContext): RpcSerializable, rollbackOptions?: WorkflowStepRollbackOptions<T>): Promise<T>`
+- `step.do(name: string, config?: WorkflowStepConfig, callback: (ctx: WorkflowStepContext): RpcSerializable): Promise<T>`
+  - `name` - the name of the step, up to 256 characters.
+  - `config` (optional) - an optional `WorkflowStepConfig` for configuring [step specific retry behaviour](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/).
+  - `callback` - an asynchronous function that receives a [`WorkflowStepContext`](https://developers.cloudflare.com/workflows/build/step-context/) and optionally returns serializable state for the Workflow to persist. In JavaScript Workflows, this includes a fresh, unlocked `ReadableStream<Uint8Array>` for large binary output.
+- `step.do(name: string, config?: WorkflowStepConfig, callback: (ctx: WorkflowStepContext): RpcSerializable, rollbackOptions?: WorkflowStepRollbackOptions<T>): Promise<T>`
+  - `name` - the name of the step, up to 256 characters.
+  - `config` (optional) - an optional `WorkflowStepConfig` for configuring [step specific retry behaviour](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/).
+  - `callback` - an asynchronous function that receives a [`WorkflowStepContext`](https://developers.cloudflare.com/workflows/build/step-context/) and optionally returns serializable state for the Workflow to persist. In JavaScript Workflows, this includes a fresh, unlocked `ReadableStream<Uint8Array>` for large binary output.
+  - `rollbackOptions` (optional) - register rollback logic for the step. If the Workflow later fails, registered rollbacks run in reverse step-start order.
 
 Returning state
 
-When returning state from a `step`, ensure that the object you return is _serializable_.
+When returning state from a `step`, ensure that the object you return is *serializable*.
 
 Primitive types like `string`, `number`, and `boolean`, along with composite structures such as `Array` and `Object` (provided they only contain serializable values), can be serialized. Any [structured-cloneable ↗](https://developer.mozilla.org/en-US/docs/Web/API/Window/structuredClone) type can be serialized, as long it is no longer than 1 MB.
 
@@ -158,13 +158,13 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
 }
 ```
 
-* `step.sleep(name: string, duration: WorkflowDuration): Promise<void>`
-  * `name` \- the name of the step.
-  * `duration` \- the duration to sleep for, as a `number` in milliseconds or as a `WorkflowDuration`\-compatible string.
-  * Refer to the [documentation on sleeping and retrying](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/) to learn more about how Workflows are retried.
-* `step.sleepUntil(name: string, timestamp: Date | number): Promise<void>`
-  * `name` \- the name of the step.
-  * `timestamp` \- a JavaScript `Date` object or milliseconds from the Unix epoch to sleep the Workflow instance until.
+- `step.sleep(name: string, duration: WorkflowDuration): Promise<void>`
+  - `name` - the name of the step.
+  - `duration` - the duration to sleep for, as a `number` in milliseconds or as a `WorkflowDuration`-compatible string.
+  - Refer to the [documentation on sleeping and retrying](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/) to learn more about how Workflows are retried.
+- `step.sleepUntil(name: string, timestamp: Date | number): Promise<void>`
+  - `name` - the name of the step.
+  - `timestamp` - a JavaScript `Date` object or milliseconds from the Unix epoch to sleep the Workflow instance until.
 
 Note
 
@@ -172,7 +172,7 @@ Note
 
 More information about the limits imposed on Workflow can be found in the [Workflows limits documentation](https://developers.cloudflare.com/workflows/reference/limits/).
 
-* `step.waitForEvent(name: string, options: ): Promise<void>`\- `name` \- the name of the step. - `options` \- an object with properties for `type` (up to 100 characters [1](#user-content-fn-1)), which determines which event type this `waitForEvent` call will match on when calling `instance.sendEvent`, and an optional `timeout` property, which defines how long the `waitForEvent` call will block for before throwing a timeout exception. The default timeout is 24 hours.
+- `step.waitForEvent(name: string, options: ): Promise<void>`- `name` - the name of the step. - `options` - an object with properties for `type` (up to 100 characters <sup>[1](#user-content-fn-1)</sup>), which determines which event type this `waitForEvent` call will match on when calling `instance.sendEvent`, and an optional `timeout` property, which defines how long the `waitForEvent` call will block for before throwing a timeout exception. The default timeout is 24 hours.
 
 ```js
 export class MyWorkflow extends WorkflowEntrypoint {
@@ -224,8 +224,8 @@ export type WorkflowStepConfig = {
 };
 ```
 
-* A `WorkflowStepConfig` is an optional argument to the `do` method of a `WorkflowStep` and defines properties that allow you to configure the retry behaviour of that step.
-* Set `retries.delay` to a fixed duration, or pass a `WorkflowDelayFunction` to calculate the next retry delay from the current step context and thrown error.
+- A `WorkflowStepConfig` is an optional argument to the `do` method of a `WorkflowStep` and defines properties that allow you to configure the retry behaviour of that step.
+- Set `retries.delay` to a fixed duration, or pass a `WorkflowDelayFunction` to calculate the next retry delay from the current step context and thrown error.
 
 Refer to the [documentation on sleeping and retrying](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/) to learn more about how Workflows are retried.
 
@@ -253,9 +253,9 @@ type WorkflowStepRollbackOptions<T = unknown> = {
 };
 ```
 
-* Pass this `WorkflowStepRollbackOptions` object as the final argument to `step.do()` to register a compensating action for a successful step.
-* `rollback` receives the original step context, the error that caused the Workflow to fail, and the step output returned by the forward step.
-* `rollbackConfig` applies retry and timeout settings to the rollback handler itself.
+- Pass this `WorkflowStepRollbackOptions` object as the final argument to `step.do()` to register a compensating action for a successful step.
+- `rollback` receives the original step context, the error that caused the Workflow to fail, and the step output returned by the forward step.
+- `rollbackConfig` applies retry and timeout settings to the rollback handler itself.
 
 ```js
 export class BillingWorkflow extends WorkflowEntrypoint {
@@ -330,11 +330,11 @@ export type WorkflowStepContext = {
 };
 ```
 
-* The `WorkflowStepContext` is passed as the first argument to the `step.do` callback function. It provides runtime information about the current step.
-  * `step.name` \- the name of the step as passed to `step.do`.
-  * `step.count` \- how many times `step.do` has been called with this name in the current Workflow run (1-indexed).
-  * `attempt` \- the current attempt number (1-indexed). `1` on the first try, `2` on the first retry, and so on.
-  * `config` \- the resolved `WorkflowStepConfig` for this step, including any defaults applied by the runtime.
+- The `WorkflowStepContext` is passed as the first argument to the `step.do` callback function. It provides runtime information about the current step.
+  - `step.name` - the name of the step as passed to `step.do`.
+  - `step.count` - how many times `step.do` has been called with this name in the current Workflow run (1-indexed).
+  - `attempt` - the current attempt number (1-indexed). `1` on the first try, `2` on the first retry, and so on.
+  - `config` - the resolved `WorkflowStepConfig` for this step, including any defaults applied by the runtime.
 
 Refer to the [step context documentation](https://developers.cloudflare.com/workflows/build/step-context/) for usage examples.
 
@@ -374,9 +374,9 @@ Note that Workflows on Workers Free have a limit of 1,024 steps. Refer to [Workf
 
 ## NonRetryableError
 
-* `` throw new NonRetryableError(message: `string`, name `string` optional) ``: `NonRetryableError`
-  * When thrown inside [step.do()](https://developers.cloudflare.com/workflows/build/workers-api/#step), this error stops step retries, propagating the error to the top level (the [run](https://developers.cloudflare.com/workflows/build/workers-api/#run) function). Any error not handled at this top level will cause the Workflow instance to fail.
-  * Refer to the [documentation on sleeping and retrying](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/) to learn more about how Workflows steps are retried.
+- ``throw new NonRetryableError(message: `string`, name `string` optional)``: `NonRetryableError`
+  - When thrown inside [`step.do()`](https://developers.cloudflare.com/workflows/build/workers-api/#step), this error stops step retries, propagating the error to the top level (the [run](https://developers.cloudflare.com/workflows/build/workers-api/#run) function). Any error not handled at this top level will cause the Workflow instance to fail.
+  - Refer to the [documentation on sleeping and retrying](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/) to learn more about how Workflows steps are retried.
 
 ## Call Workflows from Workers
 
@@ -392,7 +392,7 @@ For example, to bind to a Workflow called `workflows-starter` and to make it ava
 	"name": "workflows-starter",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"workflows": [
 		{
 			// name of your workflow
@@ -411,7 +411,7 @@ For example, to bind to a Workflow called `workflows-starter` and to make it ava
 name = "workflows-starter"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[workflows]]
 name = "workflows-starter"
@@ -437,7 +437,7 @@ For example, if your Workflow is defined in a Worker script named `billing-worke
 	"name": "web-api-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"workflows": [
 		{
 			// name of your workflow
@@ -459,7 +459,7 @@ For example, if your Workflow is defined in a Worker script named `billing-worke
 name = "web-api-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[workflows]]
 name = "billing-workflow"
@@ -468,7 +468,7 @@ class_name = "MyWorkflow"
 script_name = "billing-worker"
 ```
 
-If you're using TypeScript, run [wrangler types](https://developers.cloudflare.com/workers/wrangler/commands/general/#types) whenever you modify your Wrangler configuration file. This generates types for the `env` object based on your bindings, as well as [runtime types](https://developers.cloudflare.com/workers/languages/typescript/).
+If you're using TypeScript, run [`wrangler types`](https://developers.cloudflare.com/workers/wrangler/commands/general/#types) whenever you modify your Wrangler configuration file. This generates types for the `env` object based on your bindings, as well as [runtime types](https://developers.cloudflare.com/workers/languages/typescript/).
 
 ## Workflow
 
@@ -476,7 +476,9 @@ Note
 
 Ensure you have a compatibility date `2024-10-22` or later installed when binding to Workflows from within a Workers project.
 
-The `Workflow` type provides methods that allow you to create, inspect the status, and manage running Workflow instances from within a Worker script. It is part of the generated types produced by [wrangler types](https://developers.cloudflare.com/workers/wrangler/commands/general/#types).
+The `Workflow` type provides methods that allow you to create, inspect the status, and manage running Workflow instances from within a Worker script. It is part of the generated types produced by [`wrangler types`](https://developers.cloudflare.com/workers/wrangler/commands/general/#types).
+
+*./worker-configuration.d.tsts*
 
 ```ts
 interface Env {
@@ -491,10 +493,10 @@ The `Workflow` type exports the following methods:
 
 Create (trigger) a new instance of the given Workflow.
 
-* `create(options?: WorkflowInstanceCreateOptions): Promise<WorkflowInstance>`
-  * `options` \- optional properties to pass when creating an instance, including a user-provided ID and payload parameters.
+- `create(options?: WorkflowInstanceCreateOptions): Promise<WorkflowInstance>`
+  - `options` - optional properties to pass when creating an instance, including a user-provided ID and payload parameters.
 
-An ID is automatically generated, but a user-provided ID can be specified (up to 100 characters [1](#user-content-fn-1)). This can be useful when mapping Workflows to users, merchants or other identifiers in your system. You can also provide a JSON object as the `params` property, allowing you to pass data for the Workflow instance to act on as its [WorkflowEvent](https://developers.cloudflare.com/workflows/build/events-and-parameters/).
+An ID is automatically generated, but a user-provided ID can be specified (up to 100 characters <sup>[1](#user-content-fn-1)</sup>). This can be useful when mapping Workflows to users, merchants or other identifiers in your system. You can also provide a JSON object as the `params` property, allowing you to pass data for the Workflow instance to act on as its [`WorkflowEvent`](https://developers.cloudflare.com/workflows/build/events-and-parameters/).
 
 ```ts
 // Create a new Workflow instance with your own ID and pass params to the Workflow instance
@@ -510,13 +512,13 @@ return Response.json({
 
 Returns a `WorkflowInstance`.
 
-Throws an error if the provided ID is already used by an existing instance that has not yet passed its [retention limit](https://developers.cloudflare.com/workflows/reference/limits/). To re-run a workflow with the same ID, you can [restart](https://developers.cloudflare.com/workflows/build/trigger-workflows/#restart-a-workflow) the existing instance.
+Throws an error if the provided ID is already used by an existing instance that has not yet passed its [retention limit](https://developers.cloudflare.com/workflows/reference/limits/). To re-run a workflow with the same ID, you can [`restart`](https://developers.cloudflare.com/workflows/build/trigger-workflows/#restart-a-workflow) the existing instance.
 
 Caution
 
-Providing a type parameter does _not_ validate that the incoming event matches your type definition. In TypeScript, properties (fields) that do not exist or conform to the type you provided will be dropped. If you need to validate incoming events, we recommend a library such as [zod ↗](https://zod.dev/) or your own validator logic.
+Providing a type parameter does *not* validate that the incoming event matches your type definition. In TypeScript, properties (fields) that do not exist or conform to the type you provided will be dropped. If you need to validate incoming events, we recommend a library such as [zod ↗](https://zod.dev/) or your own validator logic.
 
-You can also provide a type parameter to the `Workflows` type when creating (triggering) a Workflow instance using the `create` method of the [Workers API](https://developers.cloudflare.com/workflows/build/workers-api/#workflow). Note that this does _not_ propagate type information into the Workflow itself, as TypeScript types are a build-time construct.
+You can also provide a type parameter to the `Workflows` type when creating (triggering) a Workflow instance using the `create` method of the [Workers API](https://developers.cloudflare.com/workflows/build/workers-api/#workflow). Note that this does *not* propagate type information into the Workflow itself, as TypeScript types are a build-time construct.
 
 To provide an optional type parameter to the `Workflow`, pass a type argument with your type when defining your Workflow bindings:
 
@@ -558,8 +560,8 @@ Create (trigger) a batch of new instance of the given Workflow, up to 100 instan
 
 This is useful when you are scheduling multiple instances at once. A call to `createBatch` is treated the same as a call to `create` (for a single instance) and allows you to work within the [instance creation limit](https://developers.cloudflare.com/workflows/reference/limits/).
 
-* `createBatch(batch: WorkflowInstanceCreateOptions[]): Promise<WorkflowInstance[]>`
-  * `batch` \- list of Options to pass when creating an instance, including a user-provided ID and payload parameters.
+- `createBatch(batch: WorkflowInstanceCreateOptions[]): Promise<WorkflowInstance[]>`
+  - `batch` - list of Options to pass when creating an instance, including a user-provided ID and payload parameters.
 
 Each element of the `batch` list is expected to include both `id` and `params` properties:
 
@@ -575,13 +577,13 @@ let instances = await env.MY_WORKFLOW.createBatch(listOfInstances);
 
 Returns an array of `WorkflowInstance`.
 
-Unlike [create](https://developers.cloudflare.com/workflows/build/workers-api/#create), this operation is idempotent and will not fail if an ID is already in use. If an existing instance with the same ID is still within its [retention limit](https://developers.cloudflare.com/workflows/reference/limits/), it will be skipped and excluded from the returned array.
+Unlike [`create`](https://developers.cloudflare.com/workflows/build/workers-api/#create), this operation is idempotent and will not fail if an ID is already in use. If an existing instance with the same ID is still within its [retention limit](https://developers.cloudflare.com/workflows/reference/limits/), it will be skipped and excluded from the returned array.
 
 ### get
 
 Get a specific Workflow instance by ID.
 
-* `get(id: string): Promise<WorkflowInstance>`\- `id` \- the ID of the Workflow instance.
+- `get(id: string): Promise<WorkflowInstance>`- `id` - the ID of the Workflow instance.
 
 Returns a `WorkflowInstance`. Throws an exception if the instance ID does not exist.
 
@@ -684,32 +686,32 @@ declare abstract class WorkflowInstance {
 
 Return the id of a Workflow.
 
-* `id: string`
+- `id: string`
 
 ### status
 
 Return the status of a running Workflow instance.
 
-* `status(): Promise<InstanceStatus>`
+- `status(): Promise<InstanceStatus>`
 
 ### pause
 
 Pause a running Workflow instance.
 
-* `pause(): Promise<void>`
+- `pause(): Promise<void>`
 
 ### resume
 
 Resume a paused Workflow instance.
 
-* `resume(): Promise<void>`
+- `resume(): Promise<void>`
 
 ### restart
 
 Restart a Workflow instance from the beginning, or from a specific step.
 
-* `restart(options?: WorkflowInstanceRestartOptions): Promise<void>`
-  * `options` \- optional properties that control from where the instance restarts.
+- `restart(options?: WorkflowInstanceRestartOptions): Promise<void>`
+  - `options` - optional properties that control from where the instance restarts.
 
 ```ts
 let instance = await env.MY_WORKFLOW.get("abc-123");
@@ -753,16 +755,16 @@ interface WorkflowInstanceRestartOptions {
 
 The `from` object identifies the step to restart from. Only `name` is required; `count` and `type` are only needed when the same step name appears more than once in the run.
 
-* `name` \- the name of the step.
-* `count` \- the 1-based index of the step, used when multiple steps share the same name and type (for example, inside a loop). Defaults to `1` (the first occurrence). Corresponds to `step.count` in the [step context](https://developers.cloudflare.com/workflows/build/step-context/).
-* `type` \- the step type (`"do"`, `"sleep"`, or `"waitForEvent"`). Defaults to `"do"`. Use this when the same name is shared across different step types.
+- `name` - the name of the step.
+- `count` - the 1-based index of the step, used when multiple steps share the same name and type (for example, inside a loop). Defaults to `1` (the first occurrence). Corresponds to `step.count` in the [step context](https://developers.cloudflare.com/workflows/build/step-context/).
+- `type` - the step type ( `"do"`, `"sleep"`, or `"waitForEvent"`). Defaults to `"do"`. Use this when the same name is shared across different step types.
 
 ### terminate
 
 Terminate a Workflow instance.
 
-* `terminate(options?: WorkflowInstanceTerminateOptions): Promise<void>`
-  * `options` \- optional properties that control how the instance is terminated.
+- `terminate(options?: WorkflowInstanceTerminateOptions): Promise<void>`
+  - `options` - optional properties that control how the instance is terminated.
 
 ```ts
 let instance = await env.MY_WORKFLOW.get("abc-123");
@@ -791,7 +793,7 @@ interface WorkflowInstanceTerminateOptions {
 
 [Send an event](https://developers.cloudflare.com/workflows/build/events-and-parameters/) to a running Workflow instance.
 
-* `sendEvent(): Promise<void>`\- `options` \- the event `type`(up to 100 characters [1](#user-content-fn-1)) and `payload` to send to the Workflow instance. The `type` must match the `type` in the corresponding `waitForEvent` call in your Workflow.
+- `sendEvent(): Promise<void>`- `options` - the event `type` (up to 100 characters <sup>[1](#user-content-fn-1)</sup>) and `payload` to send to the Workflow instance. The `type` must match the `type` in the corresponding `waitForEvent` call in your Workflow.
 
 Return `void` on success; throws an exception if the Workflow is not running or is an errored state.
 
@@ -876,7 +878,7 @@ If a Workflow enters rollback, the Workers API continues to report `status: "run
 
 ## Footnotes
 
-1. Match pattern: `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2) [↩3](#user-content-fnref-1-3)
+1. Match pattern: `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` [↩](#user-content-fnref-1) [↩<sup>2</sup>](#user-content-fnref-1-2) [↩<sup>3</sup>](#user-content-fnref-1-3)
 
 Was this helpful?
 

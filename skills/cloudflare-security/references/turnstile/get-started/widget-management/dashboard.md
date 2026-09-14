@@ -12,20 +12,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create and manage widgets using the Cloudflare dashboard
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/turnstile/get-started/widget-management/dashboard/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/get-started/widget-management/dashboard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare dashboard provides a user-friendly interface for creating and managing widgets.
 
 ## Create a widget
 
-1. In the Cloudflare dashboard, go to the **Turnstile** page.
-[Go to **Turnstile** ↗](https://dash.cloudflare.com/?to=/:account/turnstile)
+1. In the Cloudflare dashboard, go to the **Turnstile** page. [Go to **Turnstile** ↗](https://dash.cloudflare.com/?to=/:account/turnstile)
 2. Select **Add widget**.
 3. Fill out the required information:
-
-  * **Widget name**: A descriptive name for your widget.
-  * **Hostname management**: Domains where the widget will be used.
-  * **Widget mode**: Choose from Managed, Non-Interactive, or Invisible.
+   - **Widget name**: A descriptive name for your widget.
+   - **Hostname management**: Domains where the widget will be used.
+   - **Widget mode**: Choose from Managed, Non-Interactive, or Invisible.
 4. (Optional) Configure **Pre-clearance support** for single-page applications.
 5. Select **Create** to save your widget.
 6. Copy your sitekey and secret key, and store the secret key securely.

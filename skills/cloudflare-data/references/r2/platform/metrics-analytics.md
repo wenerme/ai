@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Metrics and analytics
 
-Last updated Jun 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/platform/metrics-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/platform/metrics-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 R2 exposes analytics that allow you to inspect the requests and storage of the buckets in your account.
 
@@ -22,32 +22,32 @@ The metrics displayed for a bucket in the [Cloudflare dashboard ↗](https://das
 
 R2 currently has two datasets:
 
-| Dataset    | GraphQL Dataset Name       | Description                                                                  |
-| ---------- | -------------------------- | ---------------------------------------------------------------------------- |
-| Operations | r2OperationsAdaptiveGroups | This dataset consists of the operations taken on a bucket within an account. |
-| Storage    | r2StorageAdaptiveGroups    | This dataset consists of the storage of a bucket within an account.          |
+| Dataset | GraphQL Dataset Name | Description |
+| --- | --- | --- |
+| Operations | `r2OperationsAdaptiveGroups` | This dataset consists of the operations taken on a bucket within an account. |
+| Storage | `r2StorageAdaptiveGroups` | This dataset consists of the storage of a bucket within an account. |
 
 ### Operations Dataset
 
-| Field              | Description                                                                                                                                                                                                                |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| actionType         | The name of the operation performed.                                                                                                                                                                                       |
-| actionStatus       | The status of the operation. Can be success, userError, or internalError.                                                                                                                                                  |
-| bucketName         | The bucket this operation was performed on if applicable. For buckets with a jurisdiction specified, you must include the jurisdiction followed by an underscore before the bucket name. For example: eu\_your-bucket-name |
-| objectName         | The object this operation was performed on if applicable.                                                                                                                                                                  |
-| responseStatusCode | The http status code returned by this operation.                                                                                                                                                                           |
-| datetime           | The time of the request.                                                                                                                                                                                                   |
+| Field | Description |
+| --- | --- |
+| actionType | The name of the operation performed. |
+| actionStatus | The status of the operation. Can be `success`, `userError`, or `internalError`. |
+| bucketName | The bucket this operation was performed on if applicable. For buckets with a jurisdiction specified, you must include the jurisdiction followed by an underscore before the bucket name. For example: `eu_your-bucket-name` |
+| objectName | The object this operation was performed on if applicable. |
+| responseStatusCode | The http status code returned by this operation. |
+| datetime | The time of the request. |
 
 ### Storage Dataset
 
-| Field        | Description                                                                                                                                                                                                                                                                                           |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| bucketName   | The bucket this storage value is for. For buckets with a jurisdiction specified, you must include the [jurisdiction ↗](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) followed by an underscore before the bucket name. For example: eu\_your-bucket-name |
-| payloadSize  | The size of the objects in the bucket.                                                                                                                                                                                                                                                                |
-| metadataSize | The size of the metadata of the objects in the bucket.                                                                                                                                                                                                                                                |
-| objectCount  | The number of objects in the bucket.                                                                                                                                                                                                                                                                  |
-| uploadCount  | The number of pending multipart uploads in the bucket.                                                                                                                                                                                                                                                |
-| datetime     | The time that this storage value represents.                                                                                                                                                                                                                                                          |
+| Field | Description |
+| --- | --- |
+| bucketName | The bucket this storage value is for. For buckets with a jurisdiction specified, you must include the [jurisdiction ↗](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) followed by an underscore before the bucket name. For example: `eu_your-bucket-name` |
+| payloadSize | The size of the objects in the bucket. |
+| metadataSize | The size of the metadata of the objects in the bucket. |
+| objectCount | The number of objects in the bucket. |
+| uploadCount | The number of pending multipart uploads in the bucket. |
+| datetime | The time that this storage value represents. |
 
 Metrics can be queried (and are retained) for the past 31 days. These datasets require an `accountTag` filter with your Cloudflare account ID.
 
@@ -61,8 +61,7 @@ Therefore, if you want to query metrics about a bucket which has a specified jur
 
 Per-bucket analytics for R2 are available in the Cloudflare dashboard. To view current and historical metrics for a bucket:
 
-1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
+1. In the Cloudflare dashboard, go to the **R2 object storage** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select your bucket.
 3. Select the **Metrics** tab.
 

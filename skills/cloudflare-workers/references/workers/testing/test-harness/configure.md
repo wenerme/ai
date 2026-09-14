@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure the test harness
 
-Last updated Jul 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/test-harness/configure/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/test-harness/configure/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `createTestHarness()` runs one or more Workers in a single local server. Each Worker can come from a Wrangler project or a Vite project that uses the Cloudflare Vite plugin.
 
@@ -267,7 +267,7 @@ const apiWorker = server.getWorker<
 >("api-worker");
 ```
 
-In this example, `ApiEnv` comes from `worker-configuration.d.ts`. The module type includes the default export and its RPC methods. Re-run [wrangler types](https://developers.cloudflare.com/workers/languages/typescript/#generate-types) when the Worker configuration changes.
+In this example, `ApiEnv` comes from `worker-configuration.d.ts`. The module type includes the default export and its RPC methods. Re-run [`wrangler types`](https://developers.cloudflare.com/workers/languages/typescript/#generate-types) when the Worker configuration changes.
 
 Was this helpful?
 

@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Environment variables
 
-Last updated Aug 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/configuration/environment-variables/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/environment-variables/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
-You can add environment variables, which are a type of binding, to attach text strings or JSON values to your Worker. Environment variables are available on the [env parameter](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/#parameters) passed to your Worker's [fetch event handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/).
+You can add environment variables, which are a type of binding, to attach text strings or JSON values to your Worker. Environment variables are available on the [`env` parameter](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/#parameters) passed to your Worker's [`fetch` event handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/).
 
 Text strings and JSON values are not encrypted and are useful for storing application configuration.
 
@@ -85,7 +85,7 @@ class Default(WorkerEntrypoint):
 
 ### Import `env` for global access
 
-You can also import `env` from [cloudflare:workers](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global) to access environment variables from anywhere in your code, including outside of request handlers:
+You can also import `env` from [`cloudflare:workers`](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global) to access environment variables from anywhere in your code, including outside of request handlers:
 
 ```js
 import { env } from "cloudflare:workers";
@@ -115,10 +115,10 @@ export default {
 
 This approach is useful when you need to:
 
-* Initialize configuration or API clients at the top level of your Worker.
-* Access environment variables from deeply nested functions without passing `env` through every function call.
+- Initialize configuration or API clients at the top level of your Worker.
+- Access environment variables from deeply nested functions without passing `env` through every function call.
 
-For more details, refer to [Importing env as a global](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global).
+For more details, refer to [Importing `env` as a global](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global).
 
 ### Configuring different environments in Wrangler
 
@@ -171,8 +171,7 @@ Learn about [environments in Wrangler](https://developers.cloudflare.com/workers
 
 To add environment variables via the dashboard:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your Worker.
 3. Select **Settings**.
 4. Under **Variables and Secrets**, select **Add**.
@@ -202,13 +201,15 @@ Put secrets for use in local development in either a `.dev.vars` file or a `.env
 
 Note
 
-You can use the [secrets configuration property](https://developers.cloudflare.com/workers/wrangler/configuration/#secrets-configuration-property) to declare which secret names your Worker requires. When defined, only the keys listed in `secrets.required` are loaded from `.dev.vars` or `.env`. Additional keys are excluded and missing keys produce a warning.
+You can use the [`secrets` configuration property](https://developers.cloudflare.com/workers/wrangler/configuration/#secrets-configuration-property) to declare which secret names your Worker requires. When defined, only the keys listed in `secrets.required` are loaded from `.dev.vars` or `.env`. Additional keys are excluded and missing keys produce a warning.
 
 Note
 
 Choose to use either `.dev.vars` or `.env` but not both. If you define a `.dev.vars` file, then values in `.env` files will not be included in the `env` object during local development.
 
 These files should be formatted using the [dotenv ↗](https://hexdocs.pm/dotenvy/dotenv-file-format.html) syntax. For example:
+
+*.dev.vars / .envbash*
 
 ```bash
 SECRET_KEY="value"
@@ -223,23 +224,23 @@ To set different secrets for each Cloudflare environment, create files named `.d
 
 When you select a Cloudflare environment in your local development, the corresponding environment-specific file will be loaded ahead of the generic `.dev.vars` (or `.env`) file.
 
-* When using `.dev.vars.<environment-name>` files, all secrets must be defined per environment. If `.dev.vars.<environment-name>` exists then only this will be loaded; the `.dev.vars` file will not be loaded.
-* In contrast, all matching `.env` files are loaded and the values are merged. For each variable, the value from the most specific file is used, with the following precedence:
-  * `.env.<environment-name>.local` (most specific)
-  * `.env.local`
-  * `.env.<environment-name>`
-  * `.env` (least specific)
+- When using `.dev.vars.<environment-name>` files, all secrets must be defined per environment. If `.dev.vars.<environment-name>` exists then only this will be loaded; the `.dev.vars` file will not be loaded.
+- In contrast, all matching `.env` files are loaded and the values are merged. For each variable, the value from the most specific file is used, with the following precedence:
+  - `.env.<environment-name>.local` (most specific)
+  - `.env.local`
+  - `.env.<environment-name>`
+  - `.env` (least specific)
 
 Controlling \`.env\` handling
 
 It is possible to control how `.env` files are loaded in local development by setting environment variables on the process running the tools.
 
-* To disable loading local dev vars from `.env` files without providing a `.dev.vars` file, set the `CLOUDFLARE_LOAD_DEV_VARS_FROM_DOT_ENV` environment variable to `"false"`.
-* To include every environment variable defined in your system's process environment as a local development variable, ensure there is no `.dev.vars` and then set the `CLOUDFLARE_INCLUDE_PROCESS_ENV` environment variable to `"true"`. This is not needed when using the [secrets configuration property](https://developers.cloudflare.com/workers/wrangler/configuration/#secrets-configuration-property), which loads from `process.env` automatically.
+- To disable loading local dev vars from `.env` files without providing a `.dev.vars` file, set the `CLOUDFLARE_LOAD_DEV_VARS_FROM_DOT_ENV` environment variable to `"false"`.
+- To include every environment variable defined in your system's process environment as a local development variable, ensure there is no `.dev.vars` and then set the `CLOUDFLARE_INCLUDE_PROCESS_ENV` environment variable to `"true"`. This is not needed when using the [`secrets` configuration property](https://developers.cloudflare.com/workers/wrangler/configuration/#secrets-configuration-property), which loads from `process.env` automatically.
 
 ## Environment variables and Node.js compatibility
 
-When you enable [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) and the [nodejs\_compat\_populate\_process\_env](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs%5Fcompat%5Fpopulate%5Fprocess%5Fenv) compatibility flag (enabled by default for compatibility dates on or after 2025-04-01), environment variables are available via the global `process.env`.
+When you enable [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) and the [`nodejs_compat_populate_process_env`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs_compat_populate_process_env) compatibility flag (enabled by default for compatibility dates on or after 2025-04-01), environment variables are available via the global `process.env`.
 
 The `process.env` will be populated lazily the first time that `process` is accessed in the worker.
 
@@ -270,7 +271,7 @@ Note also that because secrets are a form of environment variable within the run
 
 ## Related resources
 
-* Migrating environment variables from [Service Worker format to ES modules syntax](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/#environment-variables).
+- Migrating environment variables from [Service Worker format to ES modules syntax](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/#environment-variables).
 
 Was this helpful?
 

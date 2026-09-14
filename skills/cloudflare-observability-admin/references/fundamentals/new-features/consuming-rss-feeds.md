@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Consuming RSS Feeds
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/new-features/consuming-rss-feeds/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/new-features/consuming-rss-feeds/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Our [changelogs](https://developers.cloudflare.com/changelog/) are published to [various RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) with HTML in the `<description>` tag.
 
@@ -51,9 +51,9 @@ A single product will also appear in the custom `<product>` tag for legacy reaso
 
 You can surface RSS feeds in several different providers, including:
 
-* [Slack ↗](https://slack.com/help/articles/218688467-Add-RSS-feeds-to-Slack)
-* [Microsoft Teams ↗](https://learn.microsoft.com/en-us/microsoftteams/m365-custom-connectors)
-* [Google Chat ↗](https://developers.google.com/workspace/chat/quickstart/webhooks)
+- [Slack ↗](https://slack.com/help/articles/218688467-Add-RSS-feeds-to-Slack)
+- [Microsoft Teams ↗](https://learn.microsoft.com/en-us/microsoftteams/m365-custom-connectors)
+- [Google Chat ↗](https://developers.google.com/workspace/chat/quickstart/webhooks)
 
 Was this helpful?
 

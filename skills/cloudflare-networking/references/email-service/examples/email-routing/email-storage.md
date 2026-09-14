@@ -14,13 +14,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Store and process incoming emails using KV storage and queue systems for support tickets and workflow automation
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/examples/email-routing/email-storage/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/examples/email-routing/email-storage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Store and process incoming emails with comprehensive storage, queue processing, and support ticket automation for streamlined email workflow management.
 
 ## Store emails in KV
 
-Store emails in a KV namespace for later processing. This example uses [mimetext ↗](https://www.npmjs.com/package/mimetext) to build replies, which requires the [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) compatibility flag.
+Store emails in a KV namespace for later processing. This example uses [`mimetext` ↗](https://www.npmjs.com/package/mimetext) to build replies, which requires the [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) compatibility flag.
 
 ```typescript
 import { EmailMessage } from "cloudflare:email";
@@ -459,9 +459,9 @@ async function processGeneral(
 
 ## Next steps
 
-* [Email handler](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/) — reference for the `email()` handler and its actions.
-* [Spam filtering](https://developers.cloudflare.com/email-service/examples/email-routing/spam-filtering/) — block spam before storing or processing.
-* [Hard bounce handling](https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/) — detect and process bounce notifications.
+- [Email handler](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/) — reference for the `email()` handler and its actions.
+- [Spam filtering](https://developers.cloudflare.com/email-service/examples/email-routing/spam-filtering/) — block spam before storing or processing.
+- [Hard bounce handling](https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/) — detect and process bounce notifications.
 
 Was this helpful?
 

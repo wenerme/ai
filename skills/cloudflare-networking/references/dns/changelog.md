@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Changelog
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/changelog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/dns.xml)
 
@@ -25,9 +25,9 @@ Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 #### Why it matters
 
-* **Consolidate DNS operations.** Public and private DNS run on one platform, with one API, one audit trail, and one place to set policy.
-* **Simplify split-horizon DNS.** Internal and external resolution are defined as separate [views](https://developers.cloudflare.com/dns/internal-dns/dns-views/) over shared zones, managed from a single control plane — so there is no drift to chase down.
-* **Extend Zero Trust to DNS.** Resolver policies decide which users and devices resolve against which view, enforced by the same [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) that already governs the rest of your traffic.
+- **Consolidate DNS operations.** Public and private DNS run on one platform, with one API, one audit trail, and one place to set policy.
+- **Simplify split-horizon DNS.** Internal and external resolution are defined as separate [views](https://developers.cloudflare.com/dns/internal-dns/dns-views/) over shared zones, managed from a single control plane — so there is no drift to chase down.
+- **Extend Zero Trust to DNS.** Resolver policies decide which users and devices resolve against which view, enforced by the same [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) that already governs the rest of your traffic.
 
 Setting up Internal DNS takes three steps: create a zone, create a view, and define a resolver policy.
 
@@ -55,9 +55,9 @@ The DNS Firewall page in the Cloudflare dashboard has been refreshed, bringing s
 
 #### What is new
 
-* **More settings in the dashboard**: cluster options that were previously only configurable through the API — such as attack mitigation, rate limiting, negative TTL, and resolver subnet — are now available directly in the dashboard.
-* **Better table experience**: the DNS Firewall cluster table has been revised to surface cluster details at a glance, with resizable columns and the option to show or hide columns to tailor the view to your workflow.
-* **New create and edit UX**: adding and editing clusters now uses a modernized form that groups related settings together, making configuration faster and clearer.
+- **More settings in the dashboard**: cluster options that were previously only configurable through the API — such as attack mitigation, rate limiting, negative TTL, and resolver subnet — are now available directly in the dashboard.
+- **Better table experience**: the DNS Firewall cluster table has been revised to surface cluster details at a glance, with resizable columns and the option to show or hide columns to tailor the view to your workflow.
+- **New create and edit UX**: adding and editing clusters now uses a modernized form that groups related settings together, making configuration faster and clearer.
 
 #### Availability
 
@@ -67,7 +67,7 @@ Available to all DNS Firewall customers as part of their existing subscription.
 
 In the Cloudflare dashboard, go to the **DNS Firewall** page.
 
-[Go to **Clusters** ↗](https://dash.cloudflare.com/?to=/:account/dns-firewall/clusters)
+[Go to **Clusters** ↗](https://dash.cloudflare.com/?to=/:account/dns-firewall/clusters)
 
 For more information, refer to [DNS Firewall](https://developers.cloudflare.com/dns/dns-firewall/).
 
@@ -93,18 +93,19 @@ Starting today, everyone can opt in to a refreshed DNS records page in the Cloud
 
 #### What is new
 
-* **Better table experience**: resizable and hideable columns, row pinning, advanced filters with logical operators (AND/OR), configurable pagination, and expanded input fields so long values are no longer cut off.
-* **First-class mobile experience**: responsive layout with a touch-friendly, card-based UI and compact controls for small screens.
-* **DNS quick reference**: bite-sized explainers for DNS, proxy status, and TTL, available directly in the product to help users configure records without leaving the page.
-* **Modern frontend**: a refactor onto Cloudflare's new UI framework that improves performance and lays the foundation for future improvements.
+- **Better table experience**: resizable and hideable columns, row pinning, advanced filters with logical operators (AND/OR), configurable pagination, and expanded input fields so long values are no longer cut off.
+- **First-class mobile experience**: responsive layout with a touch-friendly, card-based UI and compact controls for small screens.
+- **DNS quick reference**: bite-sized explainers for DNS, proxy status, and TTL, available directly in the product to help users configure records without leaving the page.
+- **Modern frontend**: a refactor onto Cloudflare's new UI framework that improves performance and lays the foundation for future improvements.
+
 ![New DNS records UX](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=754,height=572,format=webp/_astro/new-dns-ux.DV6gCbme.gif)
 
 #### Rollout plan
 
 Dates are subject to change based on feedback received during the rollout.
 
-* **20 May - 05 June**: ramped rollout to Free, then Pro and Business plans.
-* **08 June - 03 July**: ramped rollout to Enterprise plans.
+- **20 May - 05 June**: ramped rollout to Free, then Pro and Business plans.
+- **08 June - 03 July**: ramped rollout to Enterprise plans.
 
 #### Share your feedback
 
@@ -123,9 +124,9 @@ Enabling this setting exposes your origin IP addresses and removes all Cloudflar
 
 #### Key characteristics
 
-* **Account-level** — Affects all zones in the account simultaneously with a single API call.
-* **Non-destructive** — Does not modify your DNS records. Disabling the setting restores normal proxy behavior.
-* **API-only** — Available through the API only, not in the Cloudflare dashboard.
+- **Account-level** — Affects all zones in the account simultaneously with a single API call.
+- **Non-destructive** — Does not modify your DNS records. Disabling the setting restores normal proxy behavior.
+- **API-only** — Available through the API only, not in the Cloudflare dashboard.
 
 #### What's affected
 
@@ -135,9 +136,9 @@ Enabling this setting exposes your origin IP addresses and removes all Cloudflar
 
 #### Before you enable
 
-* Verify your origin servers can handle direct traffic without Cloudflare's caching and filtering.
-* Review which origin IPs will become publicly visible through DNS queries.
-* Test the API in a staging account before relying on it for incident response.
+- Verify your origin servers can handle direct traffic without Cloudflare's caching and filtering.
+- Review which origin IPs will become publicly visible through DNS queries.
+- Test the API in a staging account before relying on it for incident response.
 
 #### Availability
 
@@ -156,8 +157,8 @@ Internal DNS is now in open beta.
 
 Internal DNS is bundled as a part of Cloudflare Gateway and is now available to every Enterprise customer with one of the following subscriptions:
 
-* Cloudflare Zero Trust Enterprise
-* Cloudflare Gateway Enterprise
+- Cloudflare Zero Trust Enterprise
+- Cloudflare Gateway Enterprise
 
 To learn more and get started, refer to the [Internal DNS documentation](https://developers.cloudflare.com/dns/internal-dns/).
 
@@ -170,9 +171,9 @@ DNS Analytics is now available for customers with [Customer Metadata Boundary](h
 
 This update includes:
 
-* **DNS Analytics** — Access the same DNS analytics experience for zones in CMB=EU accounts.
-* **EU data residency** — Analytics data is stored and queried from the EU region, meeting data localization requirements.
-* **DNS Firewall Analytics** — DNS Firewall analytics is now supported for CMB=EU customers.
+- **DNS Analytics** — Access the same DNS analytics experience for zones in CMB=EU accounts.
+- **EU data residency** — Analytics data is stored and queried from the EU region, meeting data localization requirements.
+- **DNS Firewall Analytics** — DNS Firewall analytics is now supported for CMB=EU customers.
 
 #### Availability
 
@@ -180,10 +181,8 @@ Available to customers with the [Data Localization Suite](https://developers.clo
 
 #### Where to find it
 
-* **Authoritative DNS:** In the Cloudflare dashboard, select your zone and go to the **Analytics** page.
-[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/analytics)
-* **DNS Firewall:** In the Cloudflare dashboard, go to the **DNS Firewall Analytics** page.
-[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/dns-firewall/analytics)
+- **Authoritative DNS:** In the Cloudflare dashboard, select your zone and go to the **Analytics** page. [Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/analytics)
+- **DNS Firewall:** In the Cloudflare dashboard, go to the **DNS Firewall Analytics** page. [Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/dns-firewall/analytics)
 
 For more information, refer to [DNS Analytics](https://developers.cloudflare.com/dns/additional-options/analytics/) and [DNS Firewall Analytics](https://developers.cloudflare.com/dns/dns-firewall/analytics/).
 
@@ -200,16 +199,16 @@ Access [GraphQL-powered DNS Firewall analytics](https://developers.cloudflare.co
 
 #### Explore Four Interactive Panels
 
-* **Query summary**: Describes trends over time, segmented by dimensions.
-* **Query statistics**: Describes totals, cached/uncached queries, and processing/response times.
-* **DNS queries by data center**: Describes global view and the top 10 data centers.
-* **Top query statistics**: Shows a breakdown by key dimensions, with search and expand options (up to top 100 items).
+- **Query summary**: Describes trends over time, segmented by dimensions.
+- **Query statistics**: Describes totals, cached/uncached queries, and processing/response times.
+- **DNS queries by data center**: Describes global view and the top 10 data centers.
+- **Top query statistics**: Shows a breakdown by key dimensions, with search and expand options (up to top 100 items).
 
 Additional features:
 
-* Apply filters and time ranges once. Changes reflect across all panels.
-* Filter by dimensions like query name, query type, cluster, data center, protocol (UDP/TCP), IP version, response code/reason, and more.
-* Access up to 62 days of historical data with flexible intervals.
+- Apply filters and time ranges once. Changes reflect across all panels.
+- Filter by dimensions like query name, query type, cluster, data center, protocol (UDP/TCP), IP version, response code/reason, and more.
+- Access up to 62 days of historical data with flexible intervals.
 
 #### Availability
 
@@ -217,9 +216,8 @@ Available to all DNS Firewall customers as part of their existing subscription.
 
 #### Where to Find It
 
-* In the Cloudflare dashboard, go to the **DNS Firewall** page.
-[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/dns-firewall/analytics)
-* Refer to the [DNS Firewall Analytics](https://developers.cloudflare.com/dns/dns-firewall/analytics/) to learn more.
+- In the Cloudflare dashboard, go to the **DNS Firewall** page. [Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/dns-firewall/analytics)
+- Refer to the [DNS Firewall Analytics](https://developers.cloudflare.com/dns/dns-firewall/analytics/) to learn more.
 
 ## 2025-06-19
 
@@ -231,6 +229,8 @@ Authoritative DNS analytics are now available on the **account level** via the [
 This allows users to query DNS analytics across multiple zones in their account, by using the `accounts` filter.
 
 Here is an example to retrieve the most recent DNS queries across all zones in your account that resulted in an `NXDOMAIN` response over a given time frame. Please replace `a30f822fcd7c401984bf85d8f2a5111c` with your actual account ID.
+
+*GraphQL example for account-level DNS analyticsgraphql*
 
 ```graphql
 query GetLatestNXDOMAINResponses {
@@ -267,14 +267,15 @@ Participating beta testers can now fully configure [Internal DNS](https://develo
 
 #### Internal DNS enables customers to:
 
-* Map internal hostnames to private IPs for services, devices, and applications not exposed to the public Internet
-* Resolve internal DNS queries securely through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
-* Use split-horizon DNS to return different responses based on network context
-* Consolidate internal and public DNS zones within a single management platform
+- Map internal hostnames to private IPs for services, devices, and applications not exposed to the public Internet
+- Resolve internal DNS queries securely through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+- Use split-horizon DNS to return different responses based on network context
+- Consolidate internal and public DNS zones within a single management platform
 
 #### What’s new in this release:
 
-* Beta participants can now create and manage internal zones and views in the Cloudflare dashboard
+- Beta participants can now create and manage internal zones and views in the Cloudflare dashboard
+
 ![Internal DNS UI](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2364,height=1320,format=webp/_astro/internal-dns-beta-ui.B5uCVZ9o.png)
 
 Note
@@ -292,8 +293,8 @@ Enterprise customers can now select NSEC3 as method for proof of non-existence o
 
 What's new:
 
-* **NSEC3 support for live-signed zones** – For both primary and secondary zones that are configured to be live-signed (also known as "on-the-fly signing"), NSEC3 can now be selected as proof of non-existence.
-* **NSEC3 support for pre-signed zones** – Secondary zones that are transferred to Cloudflare in a [pre-signed setup](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/dnssec-for-secondary/#set-up-pre-signed-dnssec) now also support NSEC3 as proof of non-existence.
+- **NSEC3 support for live-signed zones** – For both primary and secondary zones that are configured to be live-signed (also known as "on-the-fly signing"), NSEC3 can now be selected as proof of non-existence.
+- **NSEC3 support for pre-signed zones** – Secondary zones that are transferred to Cloudflare in a [pre-signed setup](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/dnssec-for-secondary/#set-up-pre-signed-dnssec) now also support NSEC3 as proof of non-existence.
 
 For more information and how to enable NSEC3, refer to the [NSEC3 documentation](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/).
 
@@ -306,10 +307,9 @@ Shopify merchants can now onboard to **O2O** automatically, without needing to c
 
 What's new:
 
-* **Automatic enablement** – O2O is available for all mutual Cloudflare and Shopify customers.
-* **Branded record display** – Merchants see a Shopify logo in DNS records, complete with helpful tooltips.
-![Shopify O2O logo](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=848,height=112,format=webp/_astro/shop-dns-icon-o2o.Ca5DAZHL.png)
-* **Checkout protection** – Workers and Snippets are blocked from running on the checkout path to reduce risk and improve security.
+- **Automatic enablement** – O2O is available for all mutual Cloudflare and Shopify customers.
+- **Branded record display** – Merchants see a Shopify logo in DNS records, complete with helpful tooltips.![Shopify O2O logo](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=848,height=112,format=webp/_astro/shop-dns-icon-o2o.Ca5DAZHL.png)
+- **Checkout protection** – Workers and Snippets are blocked from running on the checkout path to reduce risk and improve security.
 
 For more information, refer to the [provider guide](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/shopify/).
 
@@ -322,11 +322,13 @@ Cloudflare is removing five fields from the `meta` object of DNS records. These 
 
 The affected fields are:
 
-* the `auto_added` boolean
-* the `managed_by_apps` boolean and corresponding `apps_install_id`
-* the `managed_by_argo_tunnel` boolean and corresponding `argo_tunnel_id`
+- the `auto_added` boolean
+- the `managed_by_apps` boolean and corresponding `apps_install_id`
+- the `managed_by_argo_tunnel` boolean and corresponding `argo_tunnel_id`
 
 An example record returned from the API would now look like the following:
+
+*Updated API Responsejson*
 
 ```json
 {
@@ -372,8 +374,8 @@ Records returned by the API will no longer contain the `zone_id` and `zone_name`
 
 When creating [TXT records](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#txt) via the dashboard you will now find:
 
-* Field validation errors if double quotes `"` are added inconsistently.
-* Automatically quoted TXT content upon save if no quotes exist in the record content field.
+- Field validation errors if double quotes `"` are added inconsistently.
+- Automatically quoted TXT content upon save if no quotes exist in the record content field.
 
 ## 2024-10-07
 

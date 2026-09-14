@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Overrides
 
-Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When Cloudflare's DDoS Protection systems detect an attack, an ephemeral mitigation rule is created and installed in-line to mitigate the attack. A mitigation rule is generated based on the logic of the DDoS Protection managed ruleset. Each mitigation rule is generated from a single managed rule.
 
@@ -32,43 +32,41 @@ However, within a rule override, specificity matters and the DDoS system will ch
 
 A DDoS managed ruleset contains the following managed rules:
 
-* **Managed rule 1**
-* **Managed rule 2**
-* **Managed rule 3**
+- **Managed rule 1**
+- **Managed rule 2**
+- **Managed rule 3**
 
 The following ruleset overrides have been configured:
 
-* **Ruleset override A**
-  * **Managed rule 1** is set to `block`
-* **Ruleset override B**
-  * The action of the entire ruleset (or _all managed rules_) is set to `Managed Challenge`
-  * **Managed rule 1** is set to `log`
-  * **Managed rule 2** is set to `log`
-* **Ruleset override C**
-  * **Managed rule 3** is set to `log`
+- **Ruleset override A**
+  - **Managed rule 1** is set to `block`
+- **Ruleset override B**
+  - The action of the entire ruleset (or *all managed rules*) is set to `Managed Challenge`
+  - **Managed rule 1** is set to `log`
+  - **Managed rule 2** is set to `log`
+- **Ruleset override C**
+  - **Managed rule 3** is set to `log`
 
 ### Use case
 
 A DDoS attack was detected on **managed rules 1**, **2**, and **3**, and has generated a mitigation rule.
 
-* Since **managed rule 1** matches **ruleset override A**, Cloudflare will `block` the attacks and not proceed with the rest of the rules.
-* **Managed rule 2** does not match **ruleset override A**, so Cloudflare proceeds to **ruleset override B**.
-**Ruleset override B** matches both all managed rules and **managed rule 2**, but specificity takes precedence. It does not `challenge` and instead proceeds with `log` since it matches the most specific managed rule.
-* **Managed rule 3** does not match **ruleset override A**, so Cloudflare proceeds to **rule override B**. Since **ruleset override B** sets _all managed rules_ to `challenge`, then Cloudflare does not proceed to **ruleset override C**.
+- Since **managed rule 1** matches **ruleset override A**, Cloudflare will `block` the attacks and not proceed with the rest of the rules.
+- **Managed rule 2** does not match **ruleset override A**, so Cloudflare proceeds to **ruleset override B**.
+  **Ruleset override B** matches both all managed rules and **managed rule 2**, but specificity takes precedence. It does not `challenge` and instead proceeds with `log` since it matches the most specific managed rule.
+- **Managed rule 3** does not match **ruleset override A**, so Cloudflare proceeds to **rule override B**. Since **ruleset override B** sets *all managed rules* to `challenge`, then Cloudflare does not proceed to **ruleset override C**.
 
 An additional dimension to take into account is Cloudflare’s DDoS systems will apply a given rule override only if its conditions are met — which includes the Sensitivity level. So, while it needs to match and modify the correct managed rule (or everything in the case of all managed rules above), it also has to meet the specified Sensitivity level of the rule.
 
-* **Rule override A**
-
-  * _All managed rules_ are set to `challenge` at low sensitivity
-* **Rule override B**
-
-  * **Managed rule 1** is set to `log` at default sensitivity
+- **Rule override A**
+  - *All managed rules* are set to `challenge` at low sensitivity
+- **Rule override B**
+  - **Managed rule 1** is set to `log` at default sensitivity
 
 You receive a small attack below the threshold for low sensitivity, but above the threshold for high sensitivity on **managed rule 1**.
 
-* **Rule override A** does not meet the low sensitivity threshold. Therefore, we do not match the override and do not mitigate the attack, but proceed to evaluate the next managed rule in case the rule override instructs DoS to mitigate.
-* **Rule override B** sets `log` at default visibility, which matches the condition. So, the defined action is applied and attack traffic is logged.
+- **Rule override A** does not meet the low sensitivity threshold. Therefore, we do not match the override and do not mitigate the attack, but proceed to evaluate the next managed rule in case the rule override instructs DoS to mitigate.
+- **Rule override B** sets `log` at default visibility, which matches the condition. So, the defined action is applied and attack traffic is logged.
 
 Was this helpful?
 

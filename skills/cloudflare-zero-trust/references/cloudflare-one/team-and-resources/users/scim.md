@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # SCIM provisioning
 
-Last updated Aug 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 System for Cross-domain Identity Management (SCIM) is an open standard protocol that allows identity providers to synchronize user identity information with cloud applications and services. After configuring SCIM, user identities that you create, edit, or delete in the identity provider are automatically updated across all supported applications. This makes it easier for IT admins to onboard new users, update their groups and permissions, and revoke access in the event of an employee termination or security breach.
 
@@ -44,8 +44,8 @@ SCIM behavior depends on the identity provider configuration as well as Cloudfla
 
 Common issues include:
 
-* **Okta**: User sync and group sync are separate. Make sure **Push Groups** is configured if you expect groups to appear in Zero Trust policies.
-* **Microsoft Entra ID**: Group sync only occurs for groups included in the provisioning scope. The `userName` attribute should match the user's email address in Cloudflare One.
+- **Okta**: User sync and group sync are separate. Make sure **Push Groups** is configured if you expect groups to appear in Zero Trust policies.
+- **Microsoft Entra ID**: Group sync only occurs for groups included in the provisioning scope. The `userName` attribute should match the user's email address in Cloudflare One.
 
 If users appear but groups do not, verify the IdP-side SCIM app first before troubleshooting Cloudflare policy behavior.
 

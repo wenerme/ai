@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-## 1\. Name your dataset and add it to your Worker
+## 1. Name your dataset and add it to your Worker
 
 Add the following to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to create a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) to a Workers Analytics Engine dataset. A dataset is like a table in SQL: the rows and columns should have consistent meaning.
 
@@ -39,7 +39,7 @@ binding = "<BINDING_NAME>"
 dataset = "<DATASET_NAME>"
 ```
 
-## 2\. Write data points from your Worker
+## 2. Write data points from your Worker
 
 You can write data points to your Worker by calling the `writeDataPoint()` method that is exposed on the binding that you just created.
 
@@ -60,20 +60,20 @@ You do not need to await `writeDataPoint()` — it will return immediately, and 
 
 A data point is a structured event that consists of:
 
-* **Blobs** (strings) — The dimensions used for grouping and filtering. Sometimes called labels in other metrics systems.
-* **Doubles** (numbers) — The numeric values that you want to record in your data point.
-* **Indexes** — (strings) — Used as a [sampling](https://developers.cloudflare.com/analytics/analytics-engine/sql-api/#sampling) key.
+- **Blobs** (strings) — The dimensions used for grouping and filtering. Sometimes called labels in other metrics systems.
+- **Doubles** (numbers) — The numeric values that you want to record in your data point.
+- **Indexes** — (strings) — Used as a [sampling](https://developers.cloudflare.com/analytics/analytics-engine/sql-api/#sampling) key.
 
-In the example above, suppose you are collecting air quality samples. Each data point written represents a reading from your weather sensor. The blobs define city, state, and sensor model — the dimensions you want to be able to filter queries on later. The doubles define the numeric temperature and air pressure readings. And the index is the ID of your customer. You may want to include [context about the incoming request](https://developers.cloudflare.com/workers/runtime-apis/request/), such as geolocation, to add additional data to your datapoint.
+In the example above, suppose you are collecting air quality samples. Each data point written represents a reading from your weather sensor. The blobs define city, state, and sensor model — the dimensions you want to be able to filter queries on later. The doubles define the numeric temperature and air pressure readings. And the index is the ID of your customer. You may want to include [context about the incoming request](https://developers.cloudflare.com/workers/runtime-apis/request/), such as geolocation, to add additional data to your datapoint.
 
 Currently, the `writeDataPoint()` API accepts ordered arrays of values. This means that you must provide fields in a consistent order. While the `indexes` field accepts an array, you currently must only provide a single index. If you attempt to provide multiple indexes, your data point will not be recorded.
 
-## 3\. Query data using the SQL API
+## 3. Query data using the SQL API
 
 You can query the data you have written in two ways:
 
-* [**SQL API**](https://developers.cloudflare.com/analytics/analytics-engine/sql-api) — Best for writing your own queries and integrating with external tools like Grafana.
-* [**GraphQL API**](https://developers.cloudflare.com/analytics/graphql-api/) — This is the same API that powers the Cloudflare dashboard.
+- [**SQL API**](https://developers.cloudflare.com/analytics/analytics-engine/sql-api) — Best for writing your own queries and integrating with external tools like Grafana.
+- [**GraphQL API**](https://developers.cloudflare.com/analytics/graphql-api/) — This is the same API that powers the Cloudflare dashboard.
 
 For the purpose of this example, we will use the SQL API.
 
@@ -133,15 +133,15 @@ Refer to [Querying Workers Analytics Engine from Grafana](https://developers.clo
 
 ## Further reading
 
-* [Get started](https://developers.cloudflare.com/analytics/analytics-engine/get-started/)
-* [Examples](https://developers.cloudflare.com/analytics/analytics-engine/recipes/)
-* [SQL API](https://developers.cloudflare.com/analytics/analytics-engine/sql-api/)
-* [SQL Reference](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/)
-* [Querying from Grafana](https://developers.cloudflare.com/analytics/analytics-engine/grafana/)
-* [Querying from a Worker](https://developers.cloudflare.com/analytics/analytics-engine/worker-querying/)
-* [Sampling with WAE](https://developers.cloudflare.com/analytics/analytics-engine/sampling/)
-* [Pricing](https://developers.cloudflare.com/analytics/analytics-engine/pricing/)
-* [Limits](https://developers.cloudflare.com/analytics/analytics-engine/limits/)
+- [Get started](https://developers.cloudflare.com/analytics/analytics-engine/get-started/)
+- [Examples](https://developers.cloudflare.com/analytics/analytics-engine/recipes/)
+- [SQL API](https://developers.cloudflare.com/analytics/analytics-engine/sql-api/)
+- [SQL Reference](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/)
+- [Querying from Grafana](https://developers.cloudflare.com/analytics/analytics-engine/grafana/)
+- [Querying from a Worker](https://developers.cloudflare.com/analytics/analytics-engine/worker-querying/)
+- [Sampling with WAE](https://developers.cloudflare.com/analytics/analytics-engine/sampling/)
+- [Pricing](https://developers.cloudflare.com/analytics/analytics-engine/pricing/)
+- [Limits](https://developers.cloudflare.com/analytics/analytics-engine/limits/)
 
 Was this helpful?
 

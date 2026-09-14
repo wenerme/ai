@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create a redirect rule via API
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to create a redirect rule via API.
 
@@ -26,37 +26,48 @@ Single Redirects require that the incoming traffic for the hostname referenced i
 
 A redirect rule must have:
 
-* `action` set to `redirect`
-* An `action_parameters` object with additional configuration settings — refer to [Single Redirects settings](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/settings/) for details.
+- `action` set to `redirect`
+- An `action_parameters` object with additional configuration settings — refer to [Single Redirects settings](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/settings/) for details.
 
 ## Example requests
 
 The following request of the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation creates a phase entry point ruleset for the `http_request_dynamic_redirect` phase at the zone level, and defines a single redirect rule with a dynamic URL redirect. Use this operation if you have not created a phase entry point ruleset for the `http_request_dynamic_redirect` phase yet.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Response Compression Write`
-* `Config Settings Write`
-* `Dynamic URL Redirects Write`
-* `Cache Settings Write`
-* `Custom Errors Write`
-* `Origin Write`
-* `Managed headers Write`
-* `Zone Transform Rules Write`
-* `Mass URL Redirects Write`
-* `Magic Firewall Write`
-* `L4 DDoS Managed Ruleset Write`
-* `HTTP DDoS Managed Ruleset Write`
-* `Sanitize Write`
-* `Transform Rules Write`
-* `Select Configuration Write`
-* `Bot Management Write`
-* `Zone WAF Write`
-* `Account WAF Write`
-* `Account Rulesets Write`
-* `Logs Write`
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Response Compression Write</code>
+- <code>Config Settings Write</code>
+- <code>Dynamic URL Redirects Write</code>
+- <code>Cache Settings Write</code>
+- <code>Custom Errors Write</code>
+- <code>Origin Write</code>
+- <code>Managed headers Write</code>
+- <code>Zone Transform Rules Write</code>
+- <code>Mass URL Redirects Write</code>
+- <code>Magic Firewall Write</code>
+- <code>L4 DDoS Managed Ruleset Write</code>
+- <code>HTTP DDoS Managed Ruleset Write</code>
+- <code>Sanitize Write</code>
+- <code>Transform Rules Write</code>
+- <code>Select Configuration Write</code>
+- <code>Bot Management Write</code>
+- <code>Zone WAF Write</code>
+- <code>Account WAF Write</code>
+- <code>Account Rulesets Write</code>
+- <code>Logs Write</code>
+- <code>Logs Write</code>
+
+</details>
+
+*Create a zone rulesetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
@@ -86,7 +97,13 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
 	}'
 ```
 
+<details>
+
+<summary>
+
 Response
+
+</summary>
 
 ```json
 {
@@ -124,34 +141,47 @@ Response
 }
 ```
 
+</details>
+
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.
 
 If there is already a phase entry point ruleset for the `http_request_dynamic_redirect` phase, use the [Update a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/update/) operation instead, like in the following example:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Response Compression Write`
-* `Config Settings Write`
-* `Dynamic URL Redirects Write`
-* `Cache Settings Write`
-* `Custom Errors Write`
-* `Origin Write`
-* `Managed headers Write`
-* `Zone Transform Rules Write`
-* `Mass URL Redirects Write`
-* `Magic Firewall Write`
-* `L4 DDoS Managed Ruleset Write`
-* `HTTP DDoS Managed Ruleset Write`
-* `Sanitize Write`
-* `Transform Rules Write`
-* `Select Configuration Write`
-* `Bot Management Write`
-* `Zone WAF Write`
-* `Account WAF Write`
-* `Account Rulesets Write`
-* `Logs Write`
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Response Compression Write</code>
+- <code>Config Settings Write</code>
+- <code>Dynamic URL Redirects Write</code>
+- <code>Cache Settings Write</code>
+- <code>Custom Errors Write</code>
+- <code>Origin Write</code>
+- <code>Managed headers Write</code>
+- <code>Zone Transform Rules Write</code>
+- <code>Mass URL Redirects Write</code>
+- <code>Magic Firewall Write</code>
+- <code>L4 DDoS Managed Ruleset Write</code>
+- <code>HTTP DDoS Managed Ruleset Write</code>
+- <code>Sanitize Write</code>
+- <code>Transform Rules Write</code>
+- <code>Select Configuration Write</code>
+- <code>Bot Management Write</code>
+- <code>Zone WAF Write</code>
+- <code>Account WAF Write</code>
+- <code>Account Rulesets Write</code>
+- <code>Logs Write</code>
+- <code>Logs Write</code>
+
+</details>
+
+*Update a zone rulesetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
@@ -195,7 +225,13 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" 
 	}'
 ```
 
+<details>
+
+<summary>
+
 Response
+
+</summary>
 
 ```json
 {
@@ -255,13 +291,15 @@ Response
 }
 ```
 
+</details>
+
 ---
 
 ## Required API token permissions
 
 The API token used in API requests to manage redirect rules must have at least the following permission:
 
-* _Zone_ \> _Single Redirect_ \> _Edit_
+- *Zone* > *Single Redirect* > *Edit*
 
 Was this helpful?
 

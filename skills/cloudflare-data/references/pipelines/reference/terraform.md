@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Terraform
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/reference/terraform/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pipelines/reference/terraform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This example shows how to configure [Pipelines](https://developers.cloudflare.com/pipelines/) and [R2 Data Catalog](https://developers.cloudflare.com/r2-data-catalog/) with Terraform using the [Cloudflare provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) (v5.19.0+).
 
@@ -20,13 +20,13 @@ The configuration creates a complete data pipeline: an R2 bucket with the data c
 
 ## Prerequisites
 
-* [Terraform CLI ↗](https://developer.hashicorp.com/terraform/downloads) `>= 1.0`
-* A Cloudflare account with R2 and Pipelines enabled
-* An API token scoped to your account with the following permissions:
-  * **Pipelines** \- Edit
-  * **Workers R2 Storage** \- Edit
-  * **Workers R2 Data Catalog** \- Edit
-  * **Account API Tokens** \- Edit
+- [Terraform CLI ↗](https://developer.hashicorp.com/terraform/downloads) `>= 1.0`
+- A Cloudflare account with R2 and Pipelines enabled
+- An API token scoped to your account with the following permissions:
+  - **Pipelines** - Edit
+  - **Workers R2 Storage** - Edit
+  - **Workers R2 Data Catalog** - Edit
+  - **Account API Tokens** - Edit
 
 For general information on using Terraform with Cloudflare, refer to [the Terraform documentation](https://developers.cloudflare.com/terraform/).
 
@@ -34,20 +34,20 @@ For general information on using Terraform with Cloudflare, refer to [the Terraf
 
 This example uses the following Cloudflare Terraform resources:
 
-| Resource                                                                                                                                   | Description                                                       |
-| ------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
-| [cloudflare\_r2\_bucket ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/r2%5Fbucket)                | Creates an R2 bucket to store pipeline data                       |
-| [cloudflare\_r2\_data\_catalog ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/r2%5Fdata%5Fcatalog) | Enables the R2 Data Catalog on a bucket                           |
-| [cloudflare\_pipeline\_stream ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/pipeline%5Fstream)    | Creates a stream that receives events via HTTP or Worker bindings |
-| [cloudflare\_pipeline\_sink ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/pipeline%5Fsink)        | Creates a sink that writes data to R2 Data Catalog or R2          |
-| [cloudflare\_pipeline ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/pipeline)                     | Creates a pipeline with SQL that connects a stream to a sink      |
-| [cloudflare\_account\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/account%5Ftoken)        | Creates a scoped API token for sink authentication                |
+| Resource | Description |
+| --- | --- |
+| [`cloudflare_r2_bucket` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/r2_bucket) | Creates an R2 bucket to store pipeline data |
+| [`cloudflare_r2_data_catalog` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/r2_data_catalog) | Enables the R2 Data Catalog on a bucket |
+| [`cloudflare_pipeline_stream` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/pipeline_stream) | Creates a stream that receives events via HTTP or Worker bindings |
+| [`cloudflare_pipeline_sink` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/pipeline_sink) | Creates a sink that writes data to R2 Data Catalog or R2 |
+| [`cloudflare_pipeline` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/pipeline) | Creates a pipeline with SQL that connects a stream to a sink |
+| [`cloudflare_account_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/account_token) | Creates a scoped API token for sink authentication |
 
 ## End-to-end example
 
-With [terraform ↗](https://developer.hashicorp.com/terraform/downloads) installed, create a directory and the following files.
+With [`terraform` ↗](https://developer.hashicorp.com/terraform/downloads) installed, create a directory and the following files.
 
-### 1\. Define variables and provider
+### 1. Define variables and provider
 
 Create `variables.tf`:
 
@@ -75,7 +75,7 @@ variable "cloudflare_account_id" {
 }
 ```
 
-### 2\. Create the pipeline resources
+### 2. Create the pipeline resources
 
 Create `main.tf`:
 
@@ -174,11 +174,17 @@ resource "cloudflare_pipeline" "my_pipeline" {
 }
 ```
 
+<details>
+
+<summary>
+
 Use an R2 sink instead of R2 Data Catalog
+
+</summary>
 
 To write raw Parquet or JSON files to R2 instead of Iceberg tables, replace the sink resource with an R2 sink. This requires R2 S3-compatible credentials instead of a catalog token.
 
-Add variables for S3 credentials to `variables.tf`:
+Add variables for S3 credentials to <code>variables.tf</code>:
 
 ```hcl
 variable "r2_access_key_id" {
@@ -192,7 +198,7 @@ variable "r2_access_key_secret" {
 }
 ```
 
-Replace the sink resource in `main.tf`:
+Replace the sink resource in <code>main.tf</code>:
 
 ```hcl
 resource "cloudflare_pipeline_sink" "my_sink" {
@@ -216,9 +222,11 @@ resource "cloudflare_pipeline_sink" "my_sink" {
 }
 ```
 
-When using an R2 sink, you can remove the `cloudflare_r2_data_catalog`, `cloudflare_account_token`, and the two `cloudflare_account_api_token_permission_groups_list` data sources from your configuration.
+When using an R2 sink, you can remove the <code>cloudflare_r2_data_catalog</code>, <code>cloudflare_account_token</code>, and the two <code>cloudflare_account_api_token_permission_groups_list</code> data sources from your configuration.
 
-### 3\. Define outputs
+</details>
+
+### 3. Define outputs
 
 Create `outputs.tf`:
 
@@ -240,7 +248,7 @@ output "sink_id" {
 }
 ```
 
-### 4\. Deploy
+### 4. Deploy
 
 Set your environment variables:
 

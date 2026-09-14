@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Changelog
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/changelog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/cache.xml)
 
@@ -21,7 +21,7 @@ Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Cache multiple versions of a URL with Vary**
 
-Your origin can serve different responses for the same URL — different languages based on `Accept-Language`, or different formats based on `Accept` — by returning a [Vary ↗](https://www.rfc-editor.org/rfc/rfc9110.html#name-vary) response header. Cloudflare's cache now honors that header directly in [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/), so the same URL can hold multiple cached versions and each request is matched to the right one. Content that previously had to bypass cache to stay correct can now be cached, following standard [HTTP caching behavior ↗](https://www.rfc-editor.org/rfc/rfc9111.html#name-calculating-cache-keys-with).
+Your origin can serve different responses for the same URL — different languages based on `Accept-Language`, or different formats based on `Accept` — by returning a [`Vary` ↗](https://www.rfc-editor.org/rfc/rfc9110.html#name-vary) response header. Cloudflare's cache now honors that header directly in [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/), so the same URL can hold multiple cached versions and each request is matched to the right one. Content that previously had to bypass cache to stay correct can now be cached, following standard [HTTP caching behavior ↗](https://www.rfc-editor.org/rfc/rfc9111.html#name-calculating-cache-keys-with).
 
 #### What changed
 
@@ -29,26 +29,26 @@ Your origin now decides which request headers matter by listing them in its `Var
 
 For each header your origin varies on, choose one of three actions:
 
-| Action      | Behavior                                                                                                      | Best for                                                                   |
-| ----------- | ------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| normalize   | Converts equivalent header values to the same cache key value before matching, collapsing redundant versions. | Most Accept, Accept-Language, and Accept-Encoding use cases.               |
-| passthrough | Uses the raw header value to select the cached version and forwards it to the origin unchanged.               | When byte-for-byte differences in the header value should create versions. |
-| bypass      | Bypasses cache whenever this header name appears in the origin's Vary response.                               | Per-user values, or headers with too many possible values to cache safely. |
+| Action | Behavior | Best for |
+| --- | --- | --- |
+| `normalize` | Converts equivalent header values to the same cache key value before matching, collapsing redundant versions. | Most `Accept`, `Accept-Language`, and `Accept-Encoding` use cases. |
+| `passthrough` | Uses the raw header value to select the cached version and forwards it to the origin unchanged. | When byte-for-byte differences in the header value should create versions. |
+| `bypass` | Bypasses cache whenever this header name appears in the origin's `Vary` response. | Per-user values, or headers with too many possible values to cache safely. |
 
 #### Benefits
 
-* **Higher cache hit ratios**: `normalize` treats semantically equivalent headers as one version. For example, `Accept-Language: en-US, fr;q=0.8` and `Accept-Language: fr;q=0.8, en-GB` both resolve to the same cache key, so you serve more requests from cache instead of the origin.
-* **Correct content negotiation**: Requests always receive the cached version that matches their headers, so language and format variants stay accurate.
-* **No origin or Worker changes required**: If your origin already sends `Vary`, you configure the behavior entirely in Cache Rules.
-* **Standards-aligned**: Cache key calculation follows RFC 9111, and `Vary: *` continues to bypass cache as required by RFC 9110.
+- **Higher cache hit ratios**: `normalize` treats semantically equivalent headers as one version. For example, `Accept-Language: en-US, fr;q=0.8` and `Accept-Language: fr;q=0.8, en-GB` both resolve to the same cache key, so you serve more requests from cache instead of the origin.
+- **Correct content negotiation**: Requests always receive the cached version that matches their headers, so language and format variants stay accurate.
+- **No origin or Worker changes required**: If your origin already sends `Vary`, you configure the behavior entirely in Cache Rules.
+- **Standards-aligned**: Cache key calculation follows RFC 9111, and `Vary: *` continues to bypass cache as required by RFC 9110.
 
 #### Availability
 
-Vary in Cache Rules is available on all plans (Free, Pro, Business, and Enterprise). For per-request control in Workers subrequests, use the [cf.vary](https://developers.cloudflare.com/workers/runtime-apis/request/#the-cfvary-property) property.
+Vary in Cache Rules is available on all plans (Free, Pro, Business, and Enterprise). For per-request control in Workers subrequests, use the [`cf.vary`](https://developers.cloudflare.com/workers/runtime-apis/request/#the-cfvary-property) property.
 
 #### Get started
 
-Configure Vary in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules) under **Caching** \> **Cache Rules**, or through the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/). To learn how Vary affects cache keys and how each action works, refer to [Vary](https://developers.cloudflare.com/cache/concepts/vary/) and the [Cache Rules Vary setting](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#vary).
+Configure Vary in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules) under **Caching** > **Cache Rules**, or through the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/). To learn how Vary affects cache keys and how each action works, refer to [Vary](https://developers.cloudflare.com/cache/concepts/vary/) and the [Cache Rules Vary setting](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#vary).
 
 ## 2026-05-26
 
@@ -67,9 +67,9 @@ Previously, only some of these conditions returned `BYPASS`. Others — such as 
 
 After this change rolls out, you should see:
 
-* **MISS rate decreases**: Uncacheable responses no longer count as cache misses.
-* **BYPASS rate increases**: These same responses are now reported as bypasses.
-* **Cache hit ratio increases**: Hit ratio calculations no longer include uncacheable traffic that could never have been cached, giving you a more accurate view of cache effectiveness.
+- **MISS rate decreases**: Uncacheable responses no longer count as cache misses.
+- **BYPASS rate increases**: These same responses are now reported as bypasses.
+- **Cache hit ratio increases**: Hit ratio calculations no longer include uncacheable traffic that could never have been cached, giving you a more accurate view of cache effectiveness.
 
 Your total request volume and origin traffic are unchanged — only the cache status label is different.
 
@@ -77,8 +77,8 @@ Your total request volume and origin traffic are unchanged — only the cache st
 
 The cache status label is the only thing changing — browser cache TTL handling for any given response is identical to what it was before:
 
-* Responses that historically returned `MISS` because Cloudflare refused to cache them (for example, responses over the maximum cacheable file size) now return `BYPASS`, but continue to have browser cache TTL applied — exactly as they did when they were labeled `MISS`.
-* Responses that historically returned `BYPASS` and skipped browser cache TTL continue to skip browser cache TTL.
+- Responses that historically returned `MISS` because Cloudflare refused to cache them (for example, responses over the maximum cacheable file size) now return `BYPASS`, but continue to have browser cache TTL applied — exactly as they did when they were labeled `MISS`.
+- Responses that historically returned `BYPASS` and skipped browser cache TTL continue to skip browser cache TTL.
 
 In both cases, the decision to apply browser cache TTL depends on the underlying reason Cloudflare did not cache the response, not on the new `BYPASS` label.
 
@@ -91,30 +91,30 @@ Cloudflare's cache now runs on a new proxy built on [Pingora ↗](https://github
 
 #### What this brings
 
-* **Lower latency**: The new proxy reduces per-request overhead through improved connection reuse.
-* **Reduced cache MISSes**: Enhanced cache retention improves origin offload.
-* **Better RFC compliance**: Caching behavior more closely follows HTTP caching standards.
-* **Foundation for future features**: The new architecture enables upcoming improvements to cache functionality and efficiency.
+- **Lower latency**: The new proxy reduces per-request overhead through improved connection reuse.
+- **Reduced cache MISSes**: Enhanced cache retention improves origin offload.
+- **Better RFC compliance**: Caching behavior more closely follows HTTP caching standards.
+- **Foundation for future features**: The new architecture enables upcoming improvements to cache functionality and efficiency.
 
 #### New features
 
-* **Asynchronous `stale-while-revalidate`**: Every request returns stale content immediately while revalidation happens in the background, instead of the first request after expiry blocking on the origin. Refer to the [asynchronous stale-while-revalidate changelog](https://developers.cloudflare.com/changelog/post/2026-02-26-async-stale-while-revalidate/) for details.
-* **Unbuffered bypass by default**: Responses that bypass cache are streamed directly to the client without buffering, reducing time-to-first-byte for uncacheable content.
+- **Asynchronous `stale-while-revalidate`**: Every request returns stale content immediately while revalidation happens in the background, instead of the first request after expiry blocking on the origin. Refer to the [asynchronous `stale-while-revalidate` changelog](https://developers.cloudflare.com/changelog/post/2026-02-26-async-stale-while-revalidate/) for details.
+- **Unbuffered bypass by default**: Responses that bypass cache are streamed directly to the client without buffering, reducing time-to-first-byte for uncacheable content.
 
 #### Behavioral changes
 
 The new architecture introduces the following behavioral changes to improve RFC compliance and correctness:
 
-* **`Vary: *` results in cache bypass**: According to [RFC 9110 Section 12.5.5 ↗](https://httpwg.org/specs/rfc9110.html#field.vary), a `Vary` header value of `*` indicates the response varies on factors beyond request headers and must not be served from cache. Cloudflare now bypasses cache for these responses instead of storing them.
-* **`Set-Cookie` stripped on MISS and EXPIRED**: For cacheable assets, `Set-Cookie` is now stripped on MISS and EXPIRED responses, not only on HITs.
-* **Floating-point TTL values**: Floating-point time-to-live values (for example, `max-age=1.5`) are rounded down to the nearest integer instead of being rejected as invalid.
+- **`Vary: *` results in cache bypass**: According to [RFC 9110 Section 12.5.5 ↗](https://httpwg.org/specs/rfc9110.html#field.vary), a `Vary` header value of `*` indicates the response varies on factors beyond request headers and must not be served from cache. Cloudflare now bypasses cache for these responses instead of storing them.
+- **`Set-Cookie` stripped on MISS and EXPIRED**: For cacheable assets, `Set-Cookie` is now stripped on MISS and EXPIRED responses, not only on HITs.
+- **Floating-point TTL values**: Floating-point time-to-live values (for example, `max-age=1.5`) are rounded down to the nearest integer instead of being rejected as invalid.
 
 #### What's next
 
 A deeper look at the new cache proxy is coming soon to the [Cloudflare blog ↗](https://blog.cloudflare.com/). For background on the underlying framework, read:
 
-* [Open sourcing Pingora: our Rust framework for building programmable network services ↗](https://blog.cloudflare.com/pingora-open-source/)
-* [How we built Pingora, the proxy that connects Cloudflare to the Internet ↗](https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet/)
+- [Open sourcing Pingora: our Rust framework for building programmable network services ↗](https://blog.cloudflare.com/pingora-open-source/)
+- [How we built Pingora, the proxy that connects Cloudflare to the Internet ↗](https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet/)
 
 ## 2026-04-27
 
@@ -131,13 +131,13 @@ Cache Response Rules are now fully integrated with Version Management. You can c
 
 #### Benefits
 
-* **Safe rollout of cache behavior changes**: Test response-phase rules in a staging environment before promoting to production. Catch unintended caching side effects early.
-* **Parity with Cache Rules**: Cache Response Rules now follow the same versioning workflow as Cache Rules, so you can manage all cache configuration through a single promotion pipeline.
-* **Independent environment control**: Run different response-phase cache settings per environment. For example, strip `Set-Cookie` headers in staging to validate cacheability without affecting production traffic.
+- **Safe rollout of cache behavior changes**: Test response-phase rules in a staging environment before promoting to production. Catch unintended caching side effects early.
+- **Parity with Cache Rules**: Cache Response Rules now follow the same versioning workflow as Cache Rules, so you can manage all cache configuration through a single promotion pipeline.
+- **Independent environment control**: Run different response-phase cache settings per environment. For example, strip `Set-Cookie` headers in staging to validate cacheability without affecting production traffic.
 
 #### Get started
 
-Configure Cache Response Rules in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules) under **Caching** \> **Cache Rules**, or via the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/). For more details, refer to the [Cache Response Rules documentation](https://developers.cloudflare.com/cache/how-to/cache-response-rules/) and the [Version Management documentation](https://developers.cloudflare.com/version-management/).
+Configure Cache Response Rules in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules) under **Caching** > **Cache Rules**, or via the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/). For more details, refer to the [Cache Response Rules documentation](https://developers.cloudflare.com/cache/how-to/cache-response-rules/) and the [Version Management documentation](https://developers.cloudflare.com/version-management/).
 
 ## 2026-04-17
 
@@ -152,9 +152,9 @@ Previously, Smart Tiered Cache could not reliably select an optimal upper tier f
 
 Set a cloud region hint (for example, `aws/us-east-1` or `gcp/europe-west1`) for your origin IP or hostname. Smart Tiered Cache uses this hint along with real-time latency data to select a primary upper tier close to your cloud region, plus a fallback in a different location for resilience.
 
-* **Supported providers**: AWS, GCP, Azure, and Oracle Cloud.
-* **All plans**: Available on Free, Pro, Business, and Enterprise plans at no additional cost.
-* **Dashboard and API**: Configure from **Caching** \> **Tiered Cache** \> **Origin Configuration**, or use the API and Terraform.
+- **Supported providers**: AWS, GCP, Azure, and Oracle Cloud.
+- **All plans**: Available on Free, Pro, Business, and Enterprise plans at no additional cost.
+- **Dashboard and API**: Configure from **Caching** > **Tiered Cache** > **Origin Configuration**, or use the API and Terraform.
 
 #### Get started
 
@@ -165,42 +165,42 @@ To get started, enable [Smart Tiered Cache](https://developers.cloudflare.com/ca
 
 **Cache Response Rules**
 
-You can now control how Cloudflare handles origin responses without changing your origin. Cache Response Rules let you modify `Cache-Control` directives, manage cache tags, and strip headers like `Set-Cookie` from origin responses _before_ they reach Cloudflare's cache. Whether traffic is cached or passed through dynamically, these rules give you control over origin response behavior that was previously out of reach.
+You can now control how Cloudflare handles origin responses without changing your origin. Cache Response Rules let you modify `Cache-Control` directives, manage cache tags, and strip headers like `Set-Cookie` from origin responses *before* they reach Cloudflare's cache. Whether traffic is cached or passed through dynamically, these rules give you control over origin response behavior that was previously out of reach.
 
 #### What changed
 
 Cache Rules previously only operated on request attributes. Cache Response Rules introduce a new response phase that evaluates origin responses and lets you act on them before caching. You can now:
 
-* **Modify `Cache-Control` directives**: Set or remove individual directives like `no-store`, `no-cache`, `max-age`, `s-maxage`, `stale-while-revalidate`, `immutable`, and more. For example, remove a `no-cache` directive your origin sends so Cloudflare can cache the asset, or set an `s-maxage` to control how long Cloudflare stores it.
-* **Set a different browser `Cache-Control`**: Send a different `Cache-Control` header downstream to browsers and other clients than what Cloudflare uses internally, giving you independent control over edge and browser caching strategies.
-* **Manage cache tags**: Add, set, or remove cache tags on responses, including converting tags from another CDN's header format into Cloudflare's `Cache-Tag` header. This is especially useful if you are migrating from a CDN that uses a different tag header or delimiter.
-* **Strip headers that block caching**: Remove `Set-Cookie`, `ETag`, or `Last-Modified` headers from origin responses before caching, so responses that would otherwise be treated as uncacheable can be stored and served from cache.
+- **Modify `Cache-Control` directives**: Set or remove individual directives like `no-store`, `no-cache`, `max-age`, `s-maxage`, `stale-while-revalidate`, `immutable`, and more. For example, remove a `no-cache` directive your origin sends so Cloudflare can cache the asset, or set an `s-maxage` to control how long Cloudflare stores it.
+- **Set a different browser `Cache-Control`**: Send a different `Cache-Control` header downstream to browsers and other clients than what Cloudflare uses internally, giving you independent control over edge and browser caching strategies.
+- **Manage cache tags**: Add, set, or remove cache tags on responses, including converting tags from another CDN's header format into Cloudflare's `Cache-Tag` header. This is especially useful if you are migrating from a CDN that uses a different tag header or delimiter.
+- **Strip headers that block caching**: Remove `Set-Cookie`, `ETag`, or `Last-Modified` headers from origin responses before caching, so responses that would otherwise be treated as uncacheable can be stored and served from cache.
 
 #### Benefits
 
-* **No origin changes required**: Fix caching behavior entirely from Cloudflare, even when your origin configuration is locked down or managed by a different team.
-* **Simpler CDN migration**: Match caching behavior from other CDN providers without rewriting your origin. Translate cache tag formats and override directives that do not align with Cloudflare's defaults.
-* **Native support, fewer workarounds**: Functionality that previously required workarounds is now built into Cache Rules with full Tiered Cache compatibility.
-* **Fine-grained control**: Use expressions to match on request and response attributes, then apply precise cache settings per rule. Rules are stackable and composable with existing Cache Rules.
+- **No origin changes required**: Fix caching behavior entirely from Cloudflare, even when your origin configuration is locked down or managed by a different team.
+- **Simpler CDN migration**: Match caching behavior from other CDN providers without rewriting your origin. Translate cache tag formats and override directives that do not align with Cloudflare's defaults.
+- **Native support, fewer workarounds**: Functionality that previously required workarounds is now built into Cache Rules with full Tiered Cache compatibility.
+- **Fine-grained control**: Use expressions to match on request and response attributes, then apply precise cache settings per rule. Rules are stackable and composable with existing Cache Rules.
 
 #### Get started
 
-Configure Cache Response Rules in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules) under **Caching** \> **Cache Rules**, or via the [Rulesets API ↗](https://developers.cloudflare.com/ruleset-engine/rulesets-api/). For more details, refer to the [Cache Rules documentation ↗](https://developers.cloudflare.com/cache/how-to/cache-response-rules/).
+Configure Cache Response Rules in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules) under **Caching** > **Cache Rules**, or via the [Rulesets API ↗](https://developers.cloudflare.com/ruleset-engine/rulesets-api/). For more details, refer to the [Cache Rules documentation ↗](https://developers.cloudflare.com/cache/how-to/cache-response-rules/).
 
 ## 2026-02-26
 
 
 **Asynchronous stale-while-revalidate**
 
-Cloudflare's [stale-while-revalidate](https://developers.cloudflare.com/cache/concepts/cache-control/#revalidation) support is now fully asynchronous. Previously, the first request for a stale (expired) asset in cache had to wait for an origin response, after which that visitor received a REVALIDATED or EXPIRED status. Now, the first request after the asset expires triggers revalidation in the background and immediately receives stale content with an UPDATING status. All following requests also receive stale content with an `UPDATING` status until the origin responds, after which subsequent requests receive fresh content with a `HIT` status.
+Cloudflare's [`stale-while-revalidate`](https://developers.cloudflare.com/cache/concepts/cache-control/#revalidation) support is now fully asynchronous. Previously, the first request for a stale (expired) asset in cache had to wait for an origin response, after which that visitor received a REVALIDATED or EXPIRED status. Now, the first request after the asset expires triggers revalidation in the background and immediately receives stale content with an UPDATING status. All following requests also receive stale content with an `UPDATING` status until the origin responds, after which subsequent requests receive fresh content with a `HIT` status.
 
 `stale-while-revalidate` is a `Cache-Control` directive set by your origin server that allows Cloudflare to serve an expired cached asset while a fresh copy is fetched from the origin.
 
 Asynchronous revalidation brings:
 
-* **Lower latency**: No visitor is waiting for the origin when the asset is already in cache. Every request is served from cache during revalidation.
-* **Consistent experience**: All visitors receive the same cached response during revalidation.
-* **Reduced error exposure**: The first request is no longer vulnerable to origin timeouts or errors. All visitors receive a cached response while revalidation happens in the background.
+- **Lower latency**: No visitor is waiting for the origin when the asset is already in cache. Every request is served from cache during revalidation.
+- **Consistent experience**: All visitors receive the same cached response during revalidation.
+- **Reduced error exposure**: The first request is no longer vulnerable to origin timeouts or errors. All visitors receive a cached response while revalidation happens in the background.
 
 #### Availability
 
@@ -217,15 +217,15 @@ To use this feature, make sure your origin includes the `stale-while-revalidate`
 
 You can now review detailed audit logs for cache purge events, giving you visibility into what purge requests were sent, what they contained, and by whom. Audit your purge requests via the Dashboard or API for all purge methods:
 
-* Purge everything
-* List of prefixes
-* List of tags
-* List of hosts
-* List of files
+- Purge everything
+- List of prefixes
+- List of tags
+- List of hosts
+- List of files
 
 #### Example
 
-The detailed audit payload is visible within the Cloudflare Dashboard (under **Manage Account** \> **Audit Logs**) and via the API. Below is an example of the Audit Logs v2 payload structure:
+The detailed audit payload is visible within the Cloudflare Dashboard (under **Manage Account** > **Audit Logs**) and via the API. Below is an example of the Audit Logs v2 payload structure:
 
 ```json
 {
@@ -267,7 +267,7 @@ You can now see the exact cache key generated for any request directly in Cloudf
 
 Previously, diagnosing caching behavior required inferring the key from configuration settings. Now, you can confirm that your custom logic for headers, query strings, and device types is correctly applied.
 
-Access Trace via the [dashboard](https://developers.cloudflare.com/rules/trace-request/how-to/#use-trace-in-the-dashboard) or [API](https://developers.cloudflare.com/api/resources/request%5Ftracer/methods/trace/), either manually for ad-hoc debugging or automated as part of your quality-of-service monitoring.
+Access Trace via the [dashboard](https://developers.cloudflare.com/rules/trace-request/how-to/#use-trace-in-the-dashboard) or [API](https://developers.cloudflare.com/api/resources/request_tracer/methods/trace/), either manually for ad-hoc debugging or automated as part of your quality-of-service monitoring.
 
 #### Example scenario
 
@@ -317,10 +317,10 @@ When Smart Tiered Cache falls back to Generic Tiered Cache:
 
 #### Benefits
 
-* **Preserves high performance during fallback**: Smart Tiered Cache now maintains strong cache efficiency even when optimal upper tier selection is not possible.
-* **Minimizes latency impact**: Automatically uses Generic Tiered Cache topology to keep performance high when origin location cannot be determined.
-* **Seamless experience**: No configuration changes or intervention required when fallback occurs.
-* **Improved resilience**: Smart Tiered Cache remains effective across diverse origin infrastructure, including Anycast-masked origins.
+- **Preserves high performance during fallback**: Smart Tiered Cache now maintains strong cache efficiency even when optimal upper tier selection is not possible.
+- **Minimizes latency impact**: Automatically uses Generic Tiered Cache topology to keep performance high when origin location cannot be determined.
+- **Seamless experience**: No configuration changes or intervention required when fallback occurs.
+- **Improved resilience**: Smart Tiered Cache remains effective across diverse origin infrastructure, including Anycast-masked origins.
 
 #### Get started
 
@@ -346,18 +346,18 @@ Using the `cf` object in `fetch()`, you can override specific Cache Rules settin
 
 Workers can override the following Cache Rules settings through the `cf` object:
 
-* **`cacheEverything`**: Treat all content as static and cache all file types beyond the default cached content.
-* **`cacheTtl`**: Set custom time-to-live values in seconds for cached content at the edge, regardless of origin headers.
-* **`cacheTtlByStatus`**: Set different TTLs based on the response status code (for example, `{ "200-299": 86400, 404: 1, "500-599": 0 }`).
-* **`cacheKey`**: Customize cache keys to control which requests are treated as the same for caching purposes (Enterprise only).
-* **`cacheTags`**: Append additional cache tags for targeted cache purging operations.
+- **`cacheEverything`**: Treat all content as static and cache all file types beyond the default cached content.
+- **`cacheTtl`**: Set custom time-to-live values in seconds for cached content at the edge, regardless of origin headers.
+- **`cacheTtlByStatus`**: Set different TTLs based on the response status code (for example, `{ "200-299": 86400, 404: 1, "500-599": 0 }`).
+- **`cacheKey`**: Customize cache keys to control which requests are treated as the same for caching purposes (Enterprise only).
+- **`cacheTags`**: Append additional cache tags for targeted cache purging operations.
 
 #### Benefits
 
-* **Enhanced flexibility**: Customize cache behavior without modifying zone-level Cache Rules.
-* **Dynamic optimization**: Adjust caching strategies in real-time based on request context.
-* **Simplified configuration**: Reduce the number of Cache Rules needed by handling edge cases programmatically.
-* **Improved performance**: Fine-tune cache behavior for specific use cases to maximize hit rates.
+- **Enhanced flexibility**: Customize cache behavior without modifying zone-level Cache Rules.
+- **Dynamic optimization**: Adjust caching strategies in real-time based on request context.
+- **Simplified configuration**: Reduce the number of Cache Rules needed by handling edge cases programmatically.
+- **Improved performance**: Fine-tune cache behavior for specific use cases to maximize hit rates.
 
 #### Get started
 
@@ -373,7 +373,7 @@ You can now access all Cloudflare cache purge methods — no matter which plan y
 **Anyone on Cloudflare can now:**
 
 1. [Purge Everything](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/): Clears all cached content associated with a website.
-2. [Purge by Prefix](https://developers.cloudflare.com/cache/how-to/purge-cache/purge%5Fby%5Fprefix/): Targets URLs sharing a common prefix.
+2. [Purge by Prefix](https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefix/): Targets URLs sharing a common prefix.
 3. [Purge by Hostname](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-hostname/): Invalidates content by specific hostnames.
 4. [Purge by URL (single-file purge)](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/): Precisely targets individual URLs.
 5. [Purge by Tag](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/): Uses Cache-Tag response headers to invalidate grouped assets, offering flexibility for complex cache management scenarios.
@@ -398,10 +398,10 @@ HTTP/2 multiplexing allows multiple requests to be sent over a single TCP connec
 
 #### Benefits
 
-* **Customizable performance**: Tailor multiplexing settings to your origin's capabilities.
-* **Reduced latency**: Fewer connection handshakes improve response times.
-* **Lower origin load**: More efficient connection usage reduces server resource consumption.
-* **Enhanced scalability**: Better connection management supports higher traffic volumes.
+- **Customizable performance**: Tailor multiplexing settings to your origin's capabilities.
+- **Reduced latency**: Fewer connection handshakes improve response times.
+- **Lower origin load**: More efficient connection usage reduces server resource consumption.
+- **Enhanced scalability**: Better connection management supports higher traffic volumes.
 
 #### Get started
 
@@ -422,9 +422,9 @@ You can now implement our **child safety tooling**, the **[CSAM Scanning Tool](h
 
 When enabled, the tool automatically [hashes images for enabled websites as they enter the Cloudflare cache ↗](https://blog.cloudflare.com/the-csam-scanning-tool/). These hashes are then checked against a database of **known abusive images**.
 
-* **Potential match detected?**
-  * The **content URL is blocked**, and
-  * **Cloudflare will notify you** about the found matches via the provided email address.
+- **Potential match detected?**
+  - The **content URL is blocked**, and
+  - **Cloudflare will notify you** about the found matches via the provided email address.
 
 **Updated Service-Specific Terms**
 
@@ -441,10 +441,10 @@ You can now achieve higher cache hit rates and reduce origin load when using [Lo
 
 When you use [Load Balancing](https://developers.cloudflare.com/load-balancing/) with [Smart Tiered Cache](https://developers.cloudflare.com/cache/how-to/tiered-cache/), Cloudflare analyzes performance metrics across your pool's origins and automatically selects the optimal Upper Tier data center for the entire pool. This means:
 
-* **Consistent cache location**: All origins in the pool share the same Upper Tier cache.
-* **Higher HIT rates**: Requests for the same content hit the cache more frequently.
-* **Reduced origin requests**: Fewer requests reach your origin servers.
-* **Improved performance**: Faster response times for cache HITs.
+- **Consistent cache location**: All origins in the pool share the same Upper Tier cache.
+- **Higher HIT rates**: Requests for the same content hit the cache more frequently.
+- **Reduced origin requests**: Fewer requests reach your origin servers.
+- **Improved performance**: Faster response times for cache HITs.
 
 #### Example workflow
 
@@ -478,10 +478,10 @@ When you enable [Smart Tiered Cache](https://developers.cloudflare.com/cache/how
 
 #### Benefits
 
-* **Automatic optimization**: No manual configuration required.
-* **Lower egress costs**: Fewer requests to R2 reduce egress charges.
-* **Improved hit ratio**: Common Upper Tier increases cache efficiency.
-* **Reduced latency**: Upper Tier proximity to R2 minimizes fetch times.
+- **Automatic optimization**: No manual configuration required.
+- **Lower egress costs**: Fewer requests to R2 reduce egress charges.
+- **Improved hit ratio**: Common Upper Tier increases cache efficiency.
+- **Reduced latency**: Upper Tier proximity to R2 minimizes fetch times.
 
 #### Get started
 
@@ -507,10 +507,10 @@ This capability integrates with Cloudflare's broader [versioning system](https:/
 
 #### Benefits
 
-* **Risk-free testing**: Validate configuration changes without impacting production.
-* **Independent purging**: Clear staging cache without affecting live content.
-* **Deployment confidence**: Catch issues before they reach end users.
-* **Team collaboration**: Multiple team members can work on different versions.
+- **Risk-free testing**: Validate configuration changes without impacting production.
+- **Independent purging**: Clear staging cache without affecting live content.
+- **Deployment confidence**: Catch issues before they reach end users.
+- **Team collaboration**: Multiple team members can work on different versions.
 
 #### Get started
 
@@ -531,15 +531,15 @@ Enterprise customers can now optimize cache hit ratios for content that varies b
 
 When configuring [custom cache keys](https://developers.cloudflare.com/cache/how-to/cache-keys/), you can now include values from these headers to create distinct cache entries:
 
-* **`accept*` headers** (for example, `accept`, `accept-encoding`, `accept-language`): Serve different cached versions based on content negotiation.
-* **`referer` header**: Cache content differently based on the referring page or site.
-* **`user-agent` header**: Maintain separate caches for different browsers, devices, or bots.
+- **`accept*` headers** (for example, `accept`, `accept-encoding`, `accept-language`): Serve different cached versions based on content negotiation.
+- **`referer` header**: Cache content differently based on the referring page or site.
+- **`user-agent` header**: Maintain separate caches for different browsers, devices, or bots.
 
 #### When to use cache sharding
 
-* Content varies significantly by device type (mobile vs desktop).
-* Different language or encoding preferences require distinct responses.
-* Referrer-specific content optimization is needed.
+- Content varies significantly by device type (mobile vs desktop).
+- Different language or encoding preferences require distinct responses.
+- Referrer-specific content optimization is needed.
 
 #### Example configuration
 
@@ -575,19 +575,19 @@ You can now create optimized cache rules instantly with **one-click templates**,
 
 #### How it works
 
-1. Navigate to **Rules** \> **Templates** in your Cloudflare dashboard.
+1. Navigate to **Rules** > **Templates** in your Cloudflare dashboard.
 2. Select a template for your use case.
 3. Click to apply the template with sensible defaults.
 4. Customize as needed for your specific requirements.
 
 #### Available cache templates
 
-* **Cache everything**: Adjust the cache level for all requests.
-* **Bypass cache for everything**: Bypass cache for all requests.
-* **Cache default file extensions**: Replicate Page Rules caching behavior by making only default extensions eligible for cache.
-* **Bypass cache on cookie**: Bypass cache for requests containing specific cookies.
-* **Set edge cache time**: Cache responses with status code between 200 and 599 on the Cloudflare edge.
-* **Set browser cache time**: Adjust how long a browser should cache a resource.
+- **Cache everything**: Adjust the cache level for all requests.
+- **Bypass cache for everything**: Bypass cache for all requests.
+- **Cache default file extensions**: Replicate Page Rules caching behavior by making only default extensions eligible for cache.
+- **Bypass cache on cookie**: Bypass cache for requests containing specific cookies.
+- **Set edge cache time**: Cache responses with status code between 200 and 599 on the Cloudflare edge.
+- **Set browser cache time**: Adjust how long a browser should cache a resource.
 
 #### Get started
 
@@ -604,17 +604,17 @@ You can now achieve higher cache hit ratios with [Generic Global Tiered Cache](h
 
 Regional content hashing groups data centers by region and uses consistent hashing to route content to designated upper-tier caches:
 
-* Same content always routes to the same upper-tier data center within a region.
-* Eliminates redundant copies across multiple upper-tier caches.
-* Increases the likelihood of cache HITs for the same content.
+- Same content always routes to the same upper-tier data center within a region.
+- Eliminates redundant copies across multiple upper-tier caches.
+- Increases the likelihood of cache HITs for the same content.
 
 #### Example
 
 A popular image requested from multiple edge locations in a region:
 
-* **Before**: Cached at 3-4 different upper-tier data centers
-* **After**: Cached at 1 designated upper-tier data center
-* **Result**: 3-4x fewer cache MISSes, reducing origin load and improving performance
+- **Before**: Cached at 3-4 different upper-tier data centers
+- **After**: Cached at 1 designated upper-tier data center
+- **Result**: 3-4x fewer cache MISSes, reducing origin load and improving performance
 
 #### Get started
 

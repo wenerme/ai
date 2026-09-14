@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated Jun 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/version-management/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/version-management/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use this page to resolve common issues with Version Management. If the steps below do not solve your problem, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) and include the details listed in [Information for Support](#information-for-support).
 
@@ -22,12 +22,12 @@ If the Version Management option appears greyed out or is not visible in the Clo
 
 Common causes:
 
-* **Your zone is not on an Enterprise plan.** Version Management is only available for Enterprise zones.
-* **Your zone is not in an active state.** Verify that your zone's [domain status](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/) is **Active**.
-* **WAF migration is incomplete.** Your zone must use [WAF managed rules](https://developers.cloudflare.com/waf/managed-rules/) and [custom rules](https://developers.cloudflare.com/waf/custom-rules/) instead of the deprecated Firewall Rules. If your zone still uses the legacy WAF, contact your account team to complete the migration.
-* **Your user account does not have the required role.** You need a [Super Administrator or Administrator role](https://developers.cloudflare.com/fundamentals/manage-members/roles/) to enable Version Management. Zone Versioning roles cannot create new versions.
-* **Your user account does not have an API key.** You must have an API key provisioned. Refer to [view your Global API key](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#view-your-global-api-key) for more information.
-* **API Access is disabled for your user account.** Refer to [control API Access](https://developers.cloudflare.com/fundamentals/api/how-to/control-api-access/) for more information.
+- **Your zone is not on an Enterprise plan.** Version Management is only available for Enterprise zones.
+- **Your zone is not in an active state.** Verify that your zone's [domain status](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/) is **Active**.
+- **WAF migration is incomplete.** Your zone must use [WAF managed rules](https://developers.cloudflare.com/waf/managed-rules/) and [custom rules](https://developers.cloudflare.com/waf/custom-rules/) instead of the deprecated Firewall Rules. If your zone still uses the legacy WAF, contact your account team to complete the migration.
+- **Your user account does not have the required role.** You need a [Super Administrator or Administrator role](https://developers.cloudflare.com/fundamentals/manage-members/roles/) to enable Version Management. Zone Versioning roles cannot create new versions.
+- **Your user account does not have an API key.** You must have an API key provisioned. Refer to [view your Global API key](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#view-your-global-api-key) for more information.
+- **API Access is disabled for your user account.** Refer to [control API Access](https://developers.cloudflare.com/fundamentals/api/how-to/control-api-access/) for more information.
 
 If all requirements are met and Version Management is still unavailable, contact your account team.
 
@@ -37,24 +37,48 @@ Version creation (cloning) can fail for several reasons. When you clone a versio
 
 ### Common causes
 
+<details>
+
+<summary>
+
 Unsupported or partially supported product configurations
 
-Certain products and features are not fully compatible with Version Management. If the source version contains configurations for unsupported products, the clone may fail or produce incomplete results. Refer to [Limitations](https://developers.cloudflare.com/version-management/#limitations) for the full list.
+</summary>
+
+Certain products and features are not fully compatible with Version Management. If the source version contains configurations for unsupported products, the clone may fail or produce incomplete results. Refer to <a href="https://developers.cloudflare.com/version-management/#limitations">Limitations</a> for the full list.
 
 Notable examples:
 
-* **API Shield** — Some API Shield configurations are not cloned. You may need to reconfigure API Shield settings manually after creating a new version.
-* **Image Transformations** — Changes to Image Transformations are not carried over to new versions.
-* **WAF Attack Score** — WAF Attack Score configurations are not cloned.
-* **Network Error Logging** — NEL configurations are not copied to new versions.
+- **API Shield** — Some API Shield configurations are not cloned. You may need to reconfigure API Shield settings manually after creating a new version.
+- **Image Transformations** — Changes to Image Transformations are not carried over to new versions.
+- **WAF Attack Score** — WAF Attack Score configurations are not cloned.
+- **Network Error Logging** — NEL configurations are not copied to new versions.
+
+</details>
+
+<details>
+
+<summary>
 
 Invalid or conflicting configuration in the source version
 
+</summary>
+
 If the source version contains rules or settings that are invalid or conflict with each other, the clone operation may fail. Review the configuration in the source version and correct any errors before retrying.
+
+</details>
+
+<details>
+
+<summary>
 
 Version creation is stuck
 
-If version creation appears stuck (the status does not change for an extended period), wait a few minutes and refresh the dashboard. If the issue persists, contact Cloudflare Support with the details listed in [Information for Support](#information-for-support).
+</summary>
+
+If version creation appears stuck (the status does not change for an extended period), wait a few minutes and refresh the dashboard. If the issue persists, contact Cloudflare Support with the details listed in <a href="#information-for-support">Information for Support</a>.
+
+</details>
 
 ### What to do
 
@@ -86,8 +110,8 @@ If a version has a Worker route, the route might disappear when a Worker is depl
 
 To avoid this:
 
-* Deploy Workers using Wrangler before creating new versions that reference the same routes.
-* Avoid configuring the same custom domains across multiple versions.
+- Deploy Workers using Wrangler before creating new versions that reference the same routes.
+- Avoid configuring the same custom domains across multiple versions.
 
 ## Terraform is not supported
 
@@ -101,32 +125,48 @@ If you notice data discrepancies in your analytics dashboard after enabling Vers
 
 ## Permissions and read-only versions
 
+<details>
+
+<summary>
+
 Domain-scoped roles do not copy to new versions
 
-[Domain-scoped roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/#domain-scoped-roles) apply only to your root zone. When a new version is created, these roles are not copied, and users with domain-scoped roles lose access to the new version.
+</summary>
+
+<a href="https://developers.cloudflare.com/fundamentals/manage-members/roles/#domain-scoped-roles">Domain-scoped roles</a> apply only to your root zone. When a new version is created, these roles are not copied, and users with domain-scoped roles lose access to the new version.
 
 To resolve this, reassign the necessary roles after creating a new version, or use account-level roles instead.
 
+</details>
+
+<details>
+
+<summary>
+
 Version appears as read-only
+
+</summary>
 
 A version may appear as read-only if:
 
-* It is currently promoted to a [read-only environment](https://developers.cloudflare.com/version-management/reference/read-only-environments/).
-* Your user account does not have the required permissions to edit versions.
+- It is currently promoted to a <a href="https://developers.cloudflare.com/version-management/reference/read-only-environments/">read-only environment</a>.
+- Your user account does not have the required permissions to edit versions.
 
 Verify your user role and check whether the version is deployed to a read-only environment.
+
+</details>
 
 ## Information for Support
 
 When contacting Cloudflare Support about a Version Management issue, include the following details:
 
-* **Account ID** and **Zone ID** (found in the Cloudflare dashboard under **Overview**).
-* **Zone name** (your domain).
-* The **version number** you were working with when the issue occurred.
-* The **action you were attempting** (for example, creating a version, cloning, promoting, or comparing).
-* The **exact error message** displayed, if any.
-* The **approximate timestamp** (including timezone) of when the issue occurred.
-* **Screenshots** of the error, if available.
+- **Account ID** and **Zone ID** (found in the Cloudflare dashboard under **Overview**).
+- **Zone name** (your domain).
+- The **version number** you were working with when the issue occurred.
+- The **action you were attempting** (for example, creating a version, cloning, promoting, or comparing).
+- The **exact error message** displayed, if any.
+- The **approximate timestamp** (including timezone) of when the issue occurred.
+- **Screenshots** of the error, if available.
 
 Was this helpful?
 

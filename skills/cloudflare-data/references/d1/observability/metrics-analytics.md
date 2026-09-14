@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Metrics and analytics
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/observability/metrics-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/observability/metrics-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 D1 exposes database analytics that allow you to inspect query volume, query latency, and storage size across all and/or each database in your account.
 
@@ -22,15 +22,15 @@ The metrics displayed in the [Cloudflare dashboard ↗](https://dash.cloudflare.
 
 D1 currently exports the below metrics:
 
-| Metric                 | GraphQL Field Name      | Description                                                                                                                                                            |
-| ---------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Read Queries (qps)     | readQueries             | The number of read queries issued against a database. This is the raw number of read queries, and is not used for billing.                                             |
-| Write Queries (qps)    | writeQueries            | The number of write queries issued against a database. This is the raw number of write queries, and is not used for billing.                                           |
-| Rows read (count)      | rowsRead                | The number of rows read (scanned) across your queries. See [Pricing](https://developers.cloudflare.com/d1/platform/pricing/) for more details on how rows are counted. |
-| Rows written (count)   | rowsWritten             | The number of rows written across your queries.                                                                                                                        |
-| Query Response (bytes) | queryBatchResponseBytes | The total response size of the serialized query response, including any/all column names, rows and metadata. Reported in bytes.                                        |
-| Query Latency (ms)     | queryBatchTimeMs        | The total query response time, including response serialization, on the server-side. Reported in milliseconds.                                                         |
-| Storage (Bytes)        | databaseSizeBytes       | Maximum size of a database. Reported in bytes.                                                                                                                         |
+| Metric | GraphQL Field Name | Description |
+| --- | --- | --- |
+| Read Queries (qps) | `readQueries` | The number of read queries issued against a database. This is the raw number of read queries, and is not used for billing. |
+| Write Queries (qps) | `writeQueries` | The number of write queries issued against a database. This is the raw number of write queries, and is not used for billing. |
+| Rows read (count) | `rowsRead` | The number of rows read (scanned) across your queries. See [Pricing](https://developers.cloudflare.com/d1/platform/pricing/) for more details on how rows are counted. |
+| Rows written (count) | `rowsWritten` | The number of rows written across your queries. |
+| Query Response (bytes) | `queryBatchResponseBytes` | The total response size of the serialized query response, including any/all column names, rows and metadata. Reported in bytes. |
+| Query Latency (ms) | `queryBatchTimeMs` | The total query response time, including response serialization, on the server-side. Reported in milliseconds. |
+| Storage (Bytes) | `databaseSizeBytes` | Maximum size of a database. Reported in bytes. |
 
 Metrics can be queried (and are retained) for the past 31 days.
 
@@ -46,8 +46,7 @@ Refer to the [Pricing documentation](https://developers.cloudflare.com/d1/platfo
 
 Per-database analytics for D1 are available in the Cloudflare dashboard. To view current and historical metrics for a database:
 
-1. In the Cloudflare dashboard, go to the **D1** page.
-[Go to **D1 SQL database** ↗](https://dash.cloudflare.com/?to=/:account/workers/d1)
+1. In the Cloudflare dashboard, go to the **D1** page. [Go to **D1 SQL database** ↗](https://dash.cloudflare.com/?to=/:account/workers/d1)
 2. Select an existing D1 database.
 3. Select the **Metrics** tab.
 
@@ -59,9 +58,9 @@ You can programmatically query analytics for your D1 databases via the [GraphQL 
 
 D1's GraphQL datasets require an `accountTag` filter with your Cloudflare account ID and include:
 
-* `d1AnalyticsAdaptiveGroups`
-* `d1StorageAdaptiveGroups`
-* `d1QueriesAdaptiveGroups`
+- `d1AnalyticsAdaptiveGroups`
+- `d1StorageAdaptiveGroups`
+- `d1QueriesAdaptiveGroups`
 
 ### Examples
 
@@ -161,16 +160,22 @@ Note
 
 Run `wrangler d1 insights --help` to view current options.
 
-| Option            | Description                                                                                            |
-| ----------------- | ------------------------------------------------------------------------------------------------------ |
-| \--timePeriod     | Fetch data from now to the provided time period (default: 1d).                                         |
-| \--sort-type      | The operation you want to sort insights by. Select between sum and avg (default: sum).                 |
-| \--sort-by        | The field you want to sort insights by. Select between time, reads, writes, and count (default: time). |
-| \--sort-direction | The sort direction. Select between ASC and DESC (default: DESC).                                       |
-| \--json           | A boolean value to specify whether to return the result as clean JSON (default: false).                |
-| \--limit          | The maximum number of queries to be fetched.                                                           |
+| Option | Description |
+| --- | --- |
+| `--timePeriod` | Fetch data from now to the provided time period (default: `1d`). |
+| `--sort-type` | The operation you want to sort insights by. Select between `sum` and `avg` (default: `sum`). |
+| `--sort-by` | The field you want to sort insights by. Select between `time`, `reads`, `writes`, and `count` (default: `time`). |
+| `--sort-direction` | The sort direction. Select between `ASC` and `DESC` (default: `DESC`). |
+| `--json` | A boolean value to specify whether to return the result as clean JSON (default: `false`). |
+| `--limit` | The maximum number of queries to be fetched. |
+
+<details>
+
+<summary>
 
 To find top 3 queries by execution count:
+
+</summary>
 
 ```sh
 npx wrangler d1 insights <database_name> --sort-type=sum --sort-by=count --limit=3
@@ -222,7 +227,15 @@ npx wrangler d1 insights <database_name> --sort-type=sum --sort-by=count --limit
 ]
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 To find top 3 queries by average execution time:
+
+</summary>
 
 ```sh
 npx wrangler d1 insights <database_name> --sort-type=avg --sort-by=time --limit=3
@@ -274,7 +287,15 @@ npx wrangler d1 insights <database_name> --sort-type=avg --sort-by=time --limit=
 ]
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 To find top 10 queries by rows written in last 7 days:
+
+</summary>
 
 ```sh
 npx wrangler d1 insights <database_name> --sort-type=sum --sort-by=writes --limit=10 --timePeriod=7d
@@ -325,6 +346,8 @@ npx wrangler d1 insights <database_name> --sort-type=sum --sort-by=writes --limi
   }
 ]
 ```
+
+</details>
 
 Note
 

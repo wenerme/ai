@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Syncing
 
-Last updated Jul 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Search automatically indexes your content for search. How indexing works depends on your data source.
 
@@ -46,13 +46,13 @@ Files uploaded to [built-in storage](https://developers.cloudflare.com/ai-search
 
 ## Controls
 
-| Action               | Description                                                                                                 |
-| -------------------- | ----------------------------------------------------------------------------------------------------------- |
-| Trigger sync         | Manually start a sync job to scan your external data source for changes. Can be triggered every 30 seconds. |
-| Cancel job           | Cancel a running sync job.                                                                                  |
-| Pause indexing       | Temporarily stop all scheduled sync jobs.                                                                   |
-| Resume indexing      | Resume scheduled sync jobs, including jobs paused automatically after inactivity.                           |
-| Sync individual file | Re-index a specific file.                                                                                   |
+| Action | Description |
+| --- | --- |
+| Trigger sync | Manually start a sync job to scan your external data source for changes. Can be triggered every 30 seconds. |
+| Cancel job | Cancel a running sync job. |
+| Pause indexing | Temporarily stop all scheduled sync jobs. |
+| Resume indexing | Resume scheduled sync jobs, including jobs paused automatically after inactivity. |
+| Sync individual file | Re-index a specific file. |
 
 You can perform these actions from the dashboard, the [REST API](https://developers.cloudflare.com/ai-search/api/instances/rest-api/), or the [Workers binding](https://developers.cloudflare.com/ai-search/api/instances/workers-binding/).
 
@@ -60,9 +60,9 @@ You can perform these actions from the dashboard, the [REST API](https://develop
 
 The total time to index depends on the number and type of files. Factors that affect performance include:
 
-* Total number of files and their sizes
-* File formats (for example, images take longer than plain text)
-* Latency of Workers AI models used for embedding and image processing
+- Total number of files and their sizes
+- File formats (for example, images take longer than plain text)
+- Latency of Workers AI models used for embedding and image processing
 
 ## Automatic pausing for inactive instances
 
@@ -74,9 +74,9 @@ A paused instance stays fully searchable, but source changes are not picked up w
 
 To ensure smooth and reliable indexing:
 
-* Make sure your files are within the [size limit](https://developers.cloudflare.com/ai-search/configuration/data-source/#file-limits) and in a [supported format](https://developers.cloudflare.com/ai-search/configuration/data-source/#supported-file-types) to avoid being skipped.
-* For R2-backed instances, keep your [service API token](https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/) valid to prevent indexing failures.
-* Regularly clean up outdated or unnecessary content to stay within [instance limits](https://developers.cloudflare.com/ai-search/platform/limits-pricing/).
+- Make sure your files are within the [size limit](https://developers.cloudflare.com/ai-search/configuration/data-source/#file-limits) and in a [supported format](https://developers.cloudflare.com/ai-search/configuration/data-source/#supported-file-types) to avoid being skipped.
+- For R2-backed instances, keep your [service API token](https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/) valid to prevent indexing failures.
+- Regularly clean up outdated or unnecessary content to stay within [instance limits](https://developers.cloudflare.com/ai-search/platform/limits-pricing/).
 
 Was this helpful?
 

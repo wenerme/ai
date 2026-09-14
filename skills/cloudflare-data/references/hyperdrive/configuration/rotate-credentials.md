@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Rotating database credentials
 
-Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/configuration/rotate-credentials/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/configuration/rotate-credentials/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can change the connection information and credentials of your Hyperdrive configuration in one of two ways:
 
@@ -39,7 +39,7 @@ The command above will output the ID of your Hyperdrive. Set this ID in the [Wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -52,7 +52,7 @@ The command above will output the ID of your Hyperdrive. Set this ID in the [Wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Access
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/troubleshooting/access/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/troubleshooting/access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Review common troubleshooting scenarios for Cloudflare Access.
 
@@ -52,8 +52,8 @@ If you have a Cloudflare Worker route assigned to your application's login path,
 
 If a user does not receive a one-time PIN (OTP) email:
 
-* **Policy denial**: If the user's email address does not match any **Allow** policies for the application, Cloudflare will not send an OTP email. The login page will still display a message saying the email was sent to prevent account enumeration.
-* **Email suppression**: The user's email may be on a suppression list due to previous delivery failures. Check your email logs or contact Support to clear suppressions.
+- **Policy denial**: If the user's email address does not match any **Allow** policies for the application, Cloudflare will not send an OTP email. The login page will still display a message saying the email was sent to prevent account enumeration.
+- **Email suppression**: The user's email may be on a suppression list due to previous delivery failures. Check your email logs or contact Support to clear suppressions.
 
 ### OTP code already used
 
@@ -79,8 +79,8 @@ The error `Error 0: Bad Request. Please create a ca for application` appears if 
 
 This error often indicates a configuration issue on the target server's SSH daemon (`sshd`):
 
-* **SSHD config**: Verify that `PubkeyAuthentication` is set to `yes` and `TrustedUserCAKeys` points to the correct Cloudflare CA file.
-* **Multiple auth methods**: Cloudflare Access for Infrastructure currently does not support `AuthenticationMethods` with multiple comma-separated requirements (for example, `publickey,keyboard-interactive`).
+- **SSHD config**: Verify that `PubkeyAuthentication` is set to `yes` and `TrustedUserCAKeys` points to the correct Cloudflare CA file.
+- **Multiple auth methods**: Cloudflare Access for Infrastructure currently does not support `AuthenticationMethods` with multiple comma-separated requirements (for example, `publickey,keyboard-interactive`).
 
 ### Team domain change error
 

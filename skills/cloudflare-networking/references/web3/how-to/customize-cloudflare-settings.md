@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Customize Cloudflare settings
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web3/how-to/customize-cloudflare-settings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/how-to/customize-cloudflare-settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Once your gateway becomes [active](https://developers.cloudflare.com/web3/reference/gateway-status/), you can customize the Cloudflare settings associated with your hostname.
 

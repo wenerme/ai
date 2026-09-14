@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Impersonation registry
 
-Last updated Aug 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The impersonation registry contains combinations of emails of users who are likely to be impersonated. If there is an email that is on the impersonation registry not listed as an alternative email address, that email will be reported as potential [business email compromise (BEC) ↗](https://www.cloudflare.com/en-gb/learning/email-security/business-email-compromise-bec/).
 
@@ -26,18 +26,18 @@ To add a user to the impersonation registry:
 
 1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/).
 2. Select **Email security**.
-3. Select **Settings** \> **Impersonation registry**.
+3. Select **Settings** > **Impersonation registry**.
 4. Select **Add a user**.
 5. Select **Input method**: Choose between **Manual input**, **Upload manual list**, and **Select from existing directories**:
-  * **Manual input**: Enter the following information:
-    * **User info**: enter a valid **Display name**.
-    * **User email**: Enter one of the following:
-      * **Email address**: Enter all known email addresses, separated by a comma.
-      * **Regular expressions**: Must be valid Java expressions.
-  * **Upload manual list**: You can upload a file no larger than 150 KB containing all variables of potential emails. The file must contain `Display_Name` and `Email`, and the first row must be the header row. Refer to [CSV uploads](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/#csv-uploads) for an example file.
-  * **Select from existing directories**:
-    * **Select directory**: Select your directory.
-    * **Add users or groups**: Choose the users or groups you want to register.
+   - **Manual input**: Enter the following information:
+     - **User info**: enter a valid **Display name**.
+     - **User email**: Enter one of the following:
+       - **Email address**: Enter all known email addresses, separated by a comma.
+       - **Regular expressions**: Must be valid Java expressions.
+   - **Upload manual list**: You can upload a file no larger than 150 KB containing all variables of potential emails. The file must contain `Display_Name` and `Email`, and the first row must be the header row. Refer to [CSV uploads](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/#csv-uploads) for an example file.
+   - **Select from existing directories**:
+     - **Select directory**: Select your directory.
+     - **Add users or groups**: Choose the users or groups you want to register.
 6. Select **Save**.
 
 ### CSV uploads
@@ -95,7 +95,7 @@ To remove a user from the impersonation registry:
 To remove multiple users at once from the impersonation registry:
 
 1. Select all the users you want to remove.
-2. Select **Action** \> **Remove from registry**.
+2. Select **Action** > **Remove from registry**.
 3. Read the pop-up message, then select **Remove users**.
 
 Was this helpful?

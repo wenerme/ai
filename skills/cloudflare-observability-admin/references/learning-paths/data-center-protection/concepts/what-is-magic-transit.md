@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # What is Magic Transit?
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/data-center-protection/concepts/what-is-magic-transit/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/data-center-protection/concepts/what-is-magic-transit/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Magic Transit is a network security and performance solution that offers Distributed Denial-of-Service (DDoS) protection, traffic acceleration, and more for on-premise, cloud-hosted, and hybrid networks.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Additional payment method auto-retry
 
-Last updated May 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/billing/payment-methods/additional-payment-method-auto-retry/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/payment-methods/additional-payment-method-auto-retry/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If a subscription renewal payment fails on your primary payment method, Cloudflare automatically retries the payment using your additional payment methods on file. This keeps your services active without requiring you to take action.
 
@@ -39,15 +39,14 @@ Auto-retry works with all payment methods supported by Cloudflare, including cre
 
 When an additional payment method is charged, you receive an email with:
 
-* The invoice amount and number
-* Which primary payment method failed
-* Which additional payment method was charged
-* A link to manage your payment methods
+- The invoice amount and number
+- Which primary payment method failed
+- Which additional payment method was charged
+- A link to manage your payment methods
 
 ## Manage your payment methods
 
-1. In the Cloudflare dashboard, go to the **Billing** page.
-[Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
+1. In the Cloudflare dashboard, go to the **Billing** page. [Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
 2. Go to the **Subscriptions** page and open the **Payment methods** panel.
 3. Review your primary and additional payment methods.
 

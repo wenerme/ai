@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Concepts
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/workers/concepts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/workers/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Workers concepts
 
@@ -22,9 +22,9 @@ Learn the concepts behind what makes Cloudflare Workers reliable, scalable and f
 
 By the end of this module, you will learn:
 
-* What Cloudflare is.
-* The difference between serverless computing and cloud computing paradigms.
-* How Workers works.
+- What Cloudflare is.
+- The difference between serverless computing and cloud computing paradigms.
+- How Workers works.
 
 Was this helpful?
 

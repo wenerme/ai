@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # hCaptcha
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/functions/plugins/hcaptcha/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/plugins/hcaptcha/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The hCaptcha Pages Plugin validates hCaptcha tokens.
 
@@ -60,7 +60,7 @@ export const onRequestPost: PagesFunction[] = [
 
 This Plugin only exposes a single route. It will be available wherever it is mounted. In the above example, because it is mounted in `functions/register.ts`, it will validate requests to `/register`. The Plugin is mounted with a single object parameter with the following properties.
 
-[secret ↗](https://dashboard.hcaptcha.com/settings) (mandatory) and [sitekey ↗](https://dashboard.hcaptcha.com/sites) (optional) can both be found in your hCaptcha dashboard.
+[`secret` ↗](https://dashboard.hcaptcha.com/settings) (mandatory) and [`sitekey` ↗](https://dashboard.hcaptcha.com/sites) (optional) can both be found in your hCaptcha dashboard.
 
 `response` and `remoteip` are optional strings. `response` the hCaptcha token to verify (defaults to extracting `h-captcha-response` from a `multipart/form-data` request). `remoteip` should be requester's IP address (defaults to the `CF-Connecting-IP` header of the request).
 

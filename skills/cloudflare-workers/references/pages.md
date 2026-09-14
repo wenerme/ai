@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Pages
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Are you sure you want to use Pages?
 

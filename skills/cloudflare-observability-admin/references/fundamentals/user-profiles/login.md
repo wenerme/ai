@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Log in to Cloudflare
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/user-profiles/login/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/user-profiles/login/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Go to the Cloudflare dashboard and choose your [sign-in option](#sign-in-options).
 
-[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
+[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
 
 ## Sign-in options
 
@@ -46,8 +46,8 @@ To set a password, go to [Forgot Password ↗](https://dash.cloudflare.com/forgo
 
 #### Sign in with Apple
 
-* **Same Cloudflare account email as Apple ID**: You can sign in with either your email and password or sign in with Apple.
-* **Different Cloudflare account email as Apple ID**: This option creates a new Cloudflare account. If you want to log in to an existing account, [change your email address](https://developers.cloudflare.com/fundamentals/user-profiles/change-password-or-email/) to match the one used for your Apple ID.
+- **Same Cloudflare account email as Apple ID**: You can sign in with either your email and password or sign in with Apple.
+- **Different Cloudflare account email as Apple ID**: This option creates a new Cloudflare account. If you want to log in to an existing account, [change your email address](https://developers.cloudflare.com/fundamentals/user-profiles/change-password-or-email/) to match the one used for your Apple ID.
 
 If you chose to share your email when creating a Cloudflare account with Apple ID and want to set a password and obtain an API key, go to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login) login page and select **Forgot your password?** to trigger a password reset email.
 
@@ -63,13 +63,13 @@ If you created your Cloudflare account using Apple Relay and decide to change yo
 
 #### Sign in with Google
 
-* **A Cloudflare account has already been created with your Google account's email**: This option is unavailable at this time, but we are working on the capability to link and unlink social login providers to your Cloudflare account.
-* If you select **Sign in with Google** with an email that does not already have a Cloudflare account associated with it, Cloudflare will create a new account and allow you to sign in using **Sign in with Google** option moving forward.
+- **A Cloudflare account has already been created with your Google account's email**: This option is unavailable at this time, but we are working on the capability to link and unlink social login providers to your Cloudflare account.
+- If you select **Sign in with Google** with an email that does not already have a Cloudflare account associated with it, Cloudflare will create a new account and allow you to sign in using **Sign in with Google** option moving forward.
 
 #### Sign in with GitHub
 
-* Sign in with GitHub uses the [Primary email address ↗](https://docs.github.com/en/account-and-profile/how-tos/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/changing-your-primary-email-address) which is set on your GitHub account. If you change your primary email address in GitHub, you will not be able to log into your Cloudflare account using GitHub social login.
-* If you select **Sign in with GitHub** with an email that does not already have a Cloudflare account associated with it, Cloudflare will create a new account and allow you to sign in using **Sign in with GitHub** option moving forward.
+- Sign in with GitHub uses the [Primary email address ↗](https://docs.github.com/en/account-and-profile/how-tos/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/changing-your-primary-email-address) which is set on your GitHub account. If you change your primary email address in GitHub, you will not be able to log into your Cloudflare account using GitHub social login.
+- If you select **Sign in with GitHub** with an email that does not already have a Cloudflare account associated with it, Cloudflare will create a new account and allow you to sign in using **Sign in with GitHub** option moving forward.
 
 Was this helpful?
 

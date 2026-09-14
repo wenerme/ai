@@ -12,17 +12,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Examples
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/kv/examples/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Explore the following examples for KV.
+Explore the following examples
 
-[**Cache data with Workers KV**Example of how to use Workers KV to build a distributed application configuration store.](https://developers.cloudflare.com/kv/examples/cache-data-with-workers-kv/)
+ for KV.
 
-[**Build a distributed configuration store**Example of how to use Workers KV to build a distributed application configuration store.](https://developers.cloudflare.com/kv/examples/distributed-configuration-with-workers-kv/)
+[**Cache data with Workers KV** Example of how to use Workers KV to build a distributed application configuration store.](https://developers.cloudflare.com/kv/examples/cache-data-with-workers-kv/)
 
-[**Route requests across various web servers**Example of how to use Workers KV to build a distributed application configuration store.](https://developers.cloudflare.com/kv/examples/routing-with-workers-kv/)
+[**Build a distributed configuration store** Example of how to use Workers KV to build a distributed application configuration store.](https://developers.cloudflare.com/kv/examples/distributed-configuration-with-workers-kv/)
 
-[**Store and retrieve static assets**Example of how to use Workers KV to store static assets](https://developers.cloudflare.com/kv/examples/workers-kv-to-serve-assets/)
+[**Route requests across various web servers** Example of how to use Workers KV to build a distributed application configuration store.](https://developers.cloudflare.com/kv/examples/routing-with-workers-kv/)
+
+[**Store and retrieve static assets** Example of how to use Workers KV to store static assets](https://developers.cloudflare.com/kv/examples/workers-kv-to-serve-assets/)
 
 Was this helpful?
 

@@ -8,22 +8,28 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Learn how Cloudflare secures and accelerates your website using its global network and reverse proxy technology. In this video, we explain how connecting your domain to Cloudflare protects your origin server, enhances performance, and keeps your site online—even during attacks. You'll see how DNS, nameservers, and proxy status work together to route and safeguard traffic. Whether you're self-hosting or using serverless platforms like Cloudflare Workers, this guide helps you understand the onboarding process and why Cloudflare is essential for modern web infrastructure.
 
+<details>
+
+<summary>
+
 Chapters
 
-* ![How Cloudflare Works](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/980c8494f2403b95473d2ed687b4f402/thumbnails/thumbnail.jpg?fit=crop&time=0s)
+</summary>
 
-**How Cloudflare Works**0s
-* ![Getting Started: Domain Onboarding](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/980c8494f2403b95473d2ed687b4f402/thumbnails/thumbnail.jpg?fit=crop&time=55s)
+- ![How Cloudflare Works](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/980c8494f2403b95473d2ed687b4f402/thumbnails/thumbnail.jpg?fit=crop&time=0s)**How Cloudflare Works**0s
+- ![Getting Started: Domain Onboarding](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/980c8494f2403b95473d2ed687b4f402/thumbnails/thumbnail.jpg?fit=crop&time=55s)**Getting Started: Domain Onboarding**55s
+- ![DNS and Reverse Proxy Explained](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/980c8494f2403b95473d2ed687b4f402/thumbnails/thumbnail.jpg?fit=crop&time=84s)**DNS and Reverse Proxy Explained**01m24s
+- ![Request Lifecycle and Performance Optimization](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/980c8494f2403b95473d2ed687b4f402/thumbnails/thumbnail.jpg?fit=crop&time=200s)**Request Lifecycle and Performance Optimization**03m20s
 
-**Getting Started: Domain Onboarding**55s
-* ![DNS and Reverse Proxy Explained](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/980c8494f2403b95473d2ed687b4f402/thumbnails/thumbnail.jpg?fit=crop&time=84s)
+</details>
 
-**DNS and Reverse Proxy Explained**01m24s
-* ![Request Lifecycle and Performance Optimization](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/980c8494f2403b95473d2ed687b4f402/thumbnails/thumbnail.jpg?fit=crop&time=200s)
+<details>
 
-**Request Lifecycle and Performance Optimization**03m20s
+<summary>
 
 Transcript
+
+</summary>
 
 Cloudflare operates a global network thatmakes your online presence faster and protect
 
@@ -158,6 +164,8 @@ Cloudflare is an extension of yourinfrastructure,
 keeping your site safe and highly available.
 
 Get started with onboarding your domaintoday.
+
+</details>
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/onboard-domain-cf/#page","headline":"Onboard your domain to Cloudflare | Cloudflare Docs","description":"Learn how Cloudflare secures and accelerates your website using its global network and reverse proxy technology. In this video, we explain how connecting your domain to Cloudflare protects your origin server, enhances performance, and keeps your site online—even during attacks. You'll see how DNS, nameservers, and proxy status work together to route and safeguard traffic. Whether you're self-hosting or using serverless platforms like Cloudflare Workers, this guide helps you understand the onboarding process and why Cloudflare is essential for modern web infrastructure.","url":"https://developers.cloudflare.com/videos/onboard-domain-cf/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

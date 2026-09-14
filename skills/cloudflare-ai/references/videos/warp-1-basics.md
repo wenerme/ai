@@ -8,28 +8,30 @@ image: https://developers.cloudflare.com/og-docs.png
 
 In this episode, we explain the core features of the Cloudflare WARP client and how to troubleshoot common issues. After watching, you will have an understanding of the GUI, the differences between the consumer and corporate WARP, device profiles, the various operating modes of WARP, split tunneling, and more.
 
+<details>
+
+<summary>
+
 Chapters
 
-* ![Introduction and WARP GUI Basics](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=0s)
+</summary>
 
-**Introduction and WARP GUI Basics**0s
-* ![Consumer vs Corporate WARP](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=57s)
+- ![Introduction and WARP GUI Basics](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=0s)**Introduction and WARP GUI Basics**0s
+- ![Consumer vs Corporate WARP](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=57s)**Consumer vs Corporate WARP**57s
+- ![Device Profiles Explained](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=95s)**Device Profiles Explained**01m35s
+- ![WARP Operating Modes](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=132s)**WARP Operating Modes**02m12s
+- ![Split Tunneling](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=184s)**Split Tunneling**03m4s
+- ![Conclusion](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=296s)**Conclusion**04m56s
 
-**Consumer vs Corporate WARP**57s
-* ![Device Profiles Explained](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=95s)
+</details>
 
-**Device Profiles Explained**01m35s
-* ![WARP Operating Modes](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=132s)
+<details>
 
-**WARP Operating Modes**02m12s
-* ![Split Tunneling](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=184s)
-
-**Split Tunneling**03m4s
-* ![Conclusion](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=296s)
-
-**Conclusion**04m56s
+<summary>
 
 Transcript
+
+</summary>
 
 Hi, I'm Jess from Cloudflare.
 
@@ -180,6 +182,8 @@ connection state. You now understand thefoundation of WARP client components.
 If you want to learn more,we also have additional resources on
 
 Cloudflare docs. Thanks for watching and seeyou soon!
+
+</details>
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/warp-1-basics/#page","headline":"WARP - Understand Cloudflare WARP basics | Cloudflare Docs","description":"In this episode, we explain the core features of the Cloudflare WARP client and how to troubleshoot common issues. After watching, you will have an understanding of the GUI, the differences between the consumer and corporate WARP, device profiles, the various operating modes of WARP, split tunneling, and more.","url":"https://developers.cloudflare.com/videos/warp-1-basics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

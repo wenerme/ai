@@ -18,23 +18,22 @@ Beta
 
 Object Detection • Meta
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/facebook/detr-resnet-50/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/facebook/detr-resnet-50/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/facebook/detr-resnet-50`
 
-* Cloudflare-hosted
+- Cloudflare-hosted
 
 DEtection TRansformer (DETR) model trained end-to-end on COCO 2017 object detection (118k annotated images).
 
-| Model Info   |                                  |
-| ------------ | -------------------------------- |
-| Beta         | Yes                              |
+| Model Info | |
+| --- | --- |
+| Beta | Yes |
 | Unit Pricing | $0.0000075 per inference request |
 
 ## Usage
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -59,7 +58,6 @@ export default {
 ```
 
 ```sh
-
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/facebook/detr-resnet-50  \
     -X POST  \
     -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
@@ -96,9 +94,9 @@ items
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/@cf/facebook/detr-resnet-50/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/facebook/detr-resnet-50/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/@cf/facebook/detr-resnet-50/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/facebook/detr-resnet-50/schema-output.json)
 
 Was this helpful?
 

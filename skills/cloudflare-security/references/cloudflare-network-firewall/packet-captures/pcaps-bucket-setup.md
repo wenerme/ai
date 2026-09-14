@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # PCAPs bucket setup
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/pcaps-bucket-setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/pcaps-bucket-setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Before you can begin a full packet capture, you must first configure a bucket that Cloudflare can use to upload your files. Setting up a bucket is not required for sample packet captures.
+Before you can begin a full packet
+
+ capture, you must first configure a bucket that Cloudflare can use to upload your files. Setting up a bucket is not required for sample packet captures.
 
 You can configure an Amazon S3 or Google Cloud Platform bucket to use as a target. You can also [use R2](#r2) as a target using the API.
 
@@ -49,6 +51,8 @@ The **Buckets** tab displays a list of the buckets associated with your account.
 
 The `bucket` field should be the URI of the bucket. For Amazon S3, the `bucket` field is in the form `s3://<bucket-name>/<directory>?region=<bucket-region>`, and for Google Cloud Storage the form is `gs://<bucket-name>/<directory>`.
 
+*Ownership challenge request examplebash*
+
 ```bash
 curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/ownership \
 --header "X-Auth-Email: <EMAIL>" \
@@ -60,6 +64,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/ownership 
 ```
 
 The response has a `"filename"` parameter which contains the content of the `ownership-challenge` text. Find the file in your bucket and copy the contents of the file.
+
+*Ownership challenge response examplejson*
 
 ```json
 {
@@ -79,6 +85,8 @@ The response has a `"filename"` parameter which contains the content of the `own
 
 Validate the bucket by inserting the copied text in the `ownership_text` below:
 
+*Bucket validation examplebash*
+
 ```bash
 curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/ownership/validate \
 --header "X-Auth-Email: <EMAIL>" \
@@ -89,6 +97,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/ownership/
   "ownership_challenge": "'${ownership_text}'"
 }'
 ```
+
+*Bucket validation responsejson*
 
 ```json
 {
@@ -110,9 +120,9 @@ If the `status` shows `success`, the bucket is configured and ready to use.
 
 The bucket status displays one of the following options:
 
-* **Success:** The bucket is fully verified and ready to use.
-* **Pending:** The challenge response was initiated but is pending verification. Bucket verification can take five to ten minutes to finish processing.
-* **Failed:** The bucket could not be validated. If this occurs, verify your ownership information.
+- **Success:** The bucket is fully verified and ready to use.
+- **Pending:** The challenge response was initiated but is pending verification. Bucket verification can take five to ten minutes to finish processing.
+- **Failed:** The bucket could not be validated. If this occurs, verify your ownership information.
 
 ## List configured buckets
 
@@ -123,11 +133,15 @@ View a list of all buckets configured on your account.
 
 The list of buckets associated with your account displays.
 
+*Bucket list request examplebash*
+
 ```bash
 curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/ownership \
 --header "X-Auth-Email: <EMAIL>" \
 --header "X-Auth-Key: <API_KEY>"
 ```
+
+*Bucket list response examplejson*
 
 ```json
 {
@@ -155,8 +169,7 @@ To start collecting packet captures with R2, you first need to configure it prop
 
 ### Create bucket and API token
 
-1. In the Cloudflare dashboard, go to the **R2** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
+1. In the Cloudflare dashboard, go to the **R2** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select **Create bucket**.
 3. Give your bucket a name > **Create bucket**.
 4. Go to the R2 Overview page, and select **Manage R2 API Tokens**.
@@ -179,7 +192,7 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/ownership 
 }'
 ```
 
-The [response](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/pcaps/subresources/ownership/methods/create/) has a `"filename"` parameter with the name of a file that Cloudflare wrote to your R2 bucket. You need to download it for the next step. Example:
+The [response](https://developers.cloudflare.com/api/resources/magic_transit/subresources/pcaps/subresources/ownership/methods/create/) has a `"filename"` parameter with the name of a file that Cloudflare wrote to your R2 bucket. You need to download it for the next step. Example:
 
 ```json
 {
@@ -199,7 +212,7 @@ The [response](https://developers.cloudflare.com/api/resources/magic%5Ftransit/s
 
 ### Validate bucket ownership
 
-Refer to the [Validate a bucket](#validate-a-bucket) API instructions for more details on the entire process to [validate your R2 bucket](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/pcaps/subresources/ownership/methods/validate/). When specifying the R2 destination for this validation, exclude the secret and access keys from the URL.
+Refer to the [Validate a bucket](#validate-a-bucket) API instructions for more details on the entire process to [validate your R2 bucket](https://developers.cloudflare.com/api/resources/magic_transit/subresources/pcaps/subresources/ownership/methods/validate/). When specifying the R2 destination for this validation, exclude the secret and access keys from the URL.
 
 Was this helpful?
 

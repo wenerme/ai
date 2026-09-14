@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Geo Key Manager
 
-Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/data-localization/geo-key-manager/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/geo-key-manager/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Geo Key Manager offers enhanced control over the storage location of your private SSL/TLS keys — the cryptographic keys that Cloudflare uses to decrypt your HTTPS traffic. By restricting where these keys are stored, you can ensure compliance with regional data regulations and security requirements.
 
@@ -29,6 +29,8 @@ Geo Key Manager uses its own country-based storage model, separate from [Regiona
 The following diagram shows what happens when an end user connects to a Cloudflare data center that does not hold your private key. Because TLS termination requires the private key, the local data center must request a temporary session key (a short-lived symmetric encryption key) from a data center in an authorized region. Once the session key is established, the local data center can decrypt traffic for the remainder of the connection without contacting the key-holding data center again. This extra step adds latency on the first request, which can be as much as a second if the key-holding data center is geographically distant.
 
 
+
+```
 sequenceDiagram
     participant User as End user
     participant CloudflarePoP as Closest data center without TLS Key
@@ -41,6 +43,9 @@ sequenceDiagram
     Note right of CloudflarePoP: Decrypts and performs business logic (for example, WAF, Configuration Rules, Load Balancing)
     CloudflarePoP-->>User: Subsequent requests use the Session Key
     User-->>CloudflarePoP: Subsequent requests use the Session Key
+
+```
+
 
 
 For detailed information on setup and supported options, refer to [Geo Key Manager documentation](https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/).

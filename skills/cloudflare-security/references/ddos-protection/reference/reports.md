@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Reports
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/reference/reports/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/reference/reports/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To download an ad-hoc DDoS report, generate a PDF report file by selecting **Print report** in your [analytics dashboard](https://developers.cloudflare.com/ddos-protection/reference/analytics/).
 
@@ -30,14 +30,14 @@ Cloudflare sends DDoS reports via email from `no-reply@notify.cloudflare.com` to
 
 Reports contain the following information:
 
-* Total number of DDoS attacks
-* Largest DDoS attack in packets per second (pps) and bits per second (bps)
-* Changes in DDoS attacks compared to the previous report
-* Top attack protocols
-* Top targeted IP addresses
-* Top targeted destination ports
-* Total potential downtime prevented (a sum of the duration of all attacks in that week)
-* Total bytes mitigated (a sum of all the mitigated attack traffic)
+- Total number of DDoS attacks
+- Largest DDoS attack in packets per second (pps) and bits per second (bps)
+- Changes in DDoS attacks compared to the previous report
+- Top attack protocols
+- Top targeted IP addresses
+- Top targeted destination ports
+- Total potential downtime prevented (a sum of the duration of all attacks in that week)
+- Total bytes mitigated (a sum of all the mitigated attack traffic)
 
 Cloudflare issues DDoS reports via email each Tuesday. Reports summarize the attacks that occurred from Monday of the previous week to Sunday of the current week. For example, a report issued on 2020-11-10 (Tuesday) summarizes activity from 2020-11-02 (Monday) to 2020-11-08 (Sunday).
 
@@ -45,8 +45,8 @@ To receive real-time attack alerts, configure [DDoS alerts](https://developers.c
 
 Notes
 
-* Information about top attack protocols, IP addresses, and destination ports is temporarily unavailable in weekly DDoS reports. Use the [Network Analytics dashboard](https://developers.cloudflare.com/analytics/network-analytics/) to get this information.
-* DDoS reports and DDoS alerts are independent: DDoS reports will include information about any attacks for which you received DDoS alerts.
+- Information about top attack protocols, IP addresses, and destination ports is temporarily unavailable in weekly DDoS reports. Use the [Network Analytics dashboard](https://developers.cloudflare.com/analytics/network-analytics/) to get this information.
+- DDoS reports and DDoS alerts are independent: DDoS reports will include information about any attacks for which you received DDoS alerts.
 
 ### Example report
 

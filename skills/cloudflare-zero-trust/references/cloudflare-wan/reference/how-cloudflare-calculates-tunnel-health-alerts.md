@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # How Cloudflare calculates tunnel health alerts
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/reference/how-cloudflare-calculates-tunnel-health-alerts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/reference/how-cloudflare-calculates-tunnel-health-alerts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Tunnel health alerts notify you when the reliability of your tunnel connections drops below an acceptable threshold. Understanding how Cloudflare calculates these alerts helps you interpret notifications and distinguish between brief, recoverable issues and sustained problems that require attention.
 
@@ -28,7 +28,7 @@ Cloudflare counts degraded health checks as failed health checks when calculatin
 
 ### Service-level objectives (SLOs)
 
-SLOs are the threshold for the SLI and set a target level of reliability for IPsec/GRE tunnels. For example, an SLO could be 99.9% of tunnel states being healthy over the past 30 days. Cloudflare calculates the SLI values for the SLO based on the [down tunnel state value](https://developers.cloudflare.com/cloudflare-wan/reference/tunnel-health-checks/#down), not on the timeout results from tunnel health checks.
+SLOs are the threshold for the SLI and set a target level of reliability for IPsec/GRE tunnels. For example, an SLO could be 99.9% of tunnel states being healthy over the past 30 days. Cloudflare calculates the SLI values for the SLO based on the [`down` tunnel state value](https://developers.cloudflare.com/cloudflare-wan/reference/tunnel-health-checks/#down), not on the timeout results from tunnel health checks.
 
 ### Error budget
 
@@ -52,8 +52,8 @@ To determine when to send Tunnel health alerts, Cloudflare relies on a multi-win
 
 Cloudflare only alerts you when both the short and long windows fall short of the configured threshold. This means both windows must fail the threshold for an alert to trigger. For example, if you defined a threshold of 99%:
 
-* Short window: 99.2%, Long window: 99%. Cloudflare would not trigger an alert because the short window exceeds the 99% threshold.
-* Short window: 98%, Long window: 98%. Cloudflare would trigger an alert because both windows fall short of the 99% threshold.
+- Short window: 99.2%, Long window: 99%. Cloudflare would not trigger an alert because the short window exceeds the 99% threshold.
+- Short window: 98%, Long window: 98%. Cloudflare would trigger an alert because both windows fall short of the 99% threshold.
 
 Was this helpful?
 

@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Migrate from Service Workers to ES Modules
 
-Last updated Jul 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This guide will show you how to migrate your Workers from the [Service Worker ↗](https://developer.mozilla.org/en-US/docs/Web/API/Service%5FWorker%5FAPI) format to the [ES modules ↗](https://blog.cloudflare.com/workers-javascript-modules/) format.
+This guide will show you how to migrate your Workers from the [Service Worker ↗](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API) format to the [ES modules ↗](https://blog.cloudflare.com/workers-javascript-modules/) format.
 
 ## Advantages of migrating
 
@@ -231,11 +231,11 @@ export default {
 };
 ```
 
-This approach is useful for initializing configuration or accessing environment variables from deeply nested functions without passing `env` through every function call. For more details, refer to [Importing env as a global](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global).
+This approach is useful for initializing configuration or accessing environment variables from deeply nested functions without passing `env` through every function call. For more details, refer to [Importing `env` as a global](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global).
 
 ## Cron Triggers
 
-To handle a [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) event in a Worker written with ES modules syntax, implement a [scheduled() event handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/#syntax), which is the equivalent of listening for a `scheduled` event in Service Worker syntax.
+To handle a [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) event in a Worker written with ES modules syntax, implement a [`scheduled()` event handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/#syntax), which is the equivalent of listening for a `scheduled` event in Service Worker syntax.
 
 This example code:
 
@@ -257,7 +257,7 @@ export default {
 
 ## Access `event` or `context` data
 
-Workers often need access to data not in the `request` object. For example, sometimes Workers use [waitUntil](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil) to delay execution. Workers using ES modules format can access `waitUntil` via the `context` parameter. Refer to [ES modules parameters](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/#parameters) for more information.
+Workers often need access to data not in the `request` object. For example, sometimes Workers use [`waitUntil`](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil) to delay execution. Workers using ES modules format can access `waitUntil` via the `context` parameter. Refer to [ES modules parameters](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/#parameters) for more information.
 
 This example code:
 
@@ -311,31 +311,25 @@ async function handleRequest(request) {
 
 Below is an example of the request response workflow:
 
-1. An event listener for the `FetchEvent` tells the script to listen for any request coming to your Worker. The event handler is passed the `event` object, which includes `event.request`, a [Request](https://developers.cloudflare.com/workers/runtime-apis/request/) object which is a representation of the HTTP request that triggered the `FetchEvent`.
+1. An event listener for the `FetchEvent` tells the script to listen for any request coming to your Worker. The event handler is passed the `event` object, which includes `event.request`, a [`Request`](https://developers.cloudflare.com/workers/runtime-apis/request/) object which is a representation of the HTTP request that triggered the `FetchEvent`.
 2. The call to `.respondWith()` lets the Workers runtime intercept the request in order to send back a custom response (in this example, the plain text `'Hello worker!'`).
+   - The `FetchEvent` handler typically culminates in a call to the method `.respondWith()` with either a [`Response`](https://developers.cloudflare.com/workers/runtime-apis/response/) or `Promise<Response>` that determines the response.
+   - The `FetchEvent` object also provides [two other methods](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) to handle unexpected exceptions and operations that may complete after a response is returned.
 
-  * The `FetchEvent` handler typically culminates in a call to the method `.respondWith()` with either a [Response](https://developers.cloudflare.com/workers/runtime-apis/response/) or `Promise<Response>` that determines the response.
-  * The `FetchEvent` object also provides [two other methods](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) to handle unexpected exceptions and operations that may complete after a response is returned.
-
-Learn more about [the lifecycle methods of the fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle/).
+Learn more about [the lifecycle methods of the `fetch()` handler](https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle/).
 
 ### Supported `FetchEvent` properties
 
-* `event.type` string
-
-  * The type of event. This will always return `"fetch"`.
-* `event.request` Request
-
-  * The incoming HTTP request.
-* `event.respondWith(responseResponse|Promise)` : void
-
-  * Refer to [respondWith](#respondwith).
-* `event.waitUntil(promisePromise)` : void
-
-  * Refer to [waitUntil](#waituntil).
-* `event.passThroughOnException()` : void
-
-  * Refer to [passThroughOnException](#passthroughonexception).
+- `event.type` string
+  - The type of event. This will always return `"fetch"`.
+- `event.request` Request
+  - The incoming HTTP request.
+- `event.respondWith(responseResponse|Promise)` : void
+  - Refer to [`respondWith`](#respondwith).
+- `event.waitUntil(promisePromise)` : void
+  - Refer to [`waitUntil`](#waituntil).
+- `event.passThroughOnException()` : void
+  - Refer to [`passThroughOnException`](#passthroughonexception).
 
 ### `respondWith`
 
@@ -360,7 +354,7 @@ addEventListener('fetch', event => {
 
 ### `waitUntil`
 
-The `waitUntil` command extends the lifetime of the `"fetch"` event. It accepts a `Promise`\-based task which the Workers runtime will execute before the handler terminates but without blocking the response. For example, this is ideal for [caching responses](https://developers.cloudflare.com/workers/runtime-apis/cache/#put) or handling logging.
+The `waitUntil` command extends the lifetime of the `"fetch"` event. It accepts a `Promise`-based task which the Workers runtime will execute before the handler terminates but without blocking the response. For example, this is ideal for [caching responses](https://developers.cloudflare.com/workers/runtime-apis/cache/#put) or handling logging.
 
 With the Service Worker format, `waitUntil` is available within the `event` because it is a native `FetchEvent` property.
 

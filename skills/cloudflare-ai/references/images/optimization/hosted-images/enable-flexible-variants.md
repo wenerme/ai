@@ -12,14 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Enable flexible variants
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/optimization/hosted-images/enable-flexible-variants/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/hosted-images/enable-flexible-variants/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Flexible variants allow you to create variants with dynamic resizing which can provide more options than regular variants allow. This option is not enabled by default.
 
 ## Enable flexible variants via the Cloudflare dashboard
 
-1. In the Cloudflare dashboard, go to the **Hosted Images** page.
-[Go to **Hosted images** ↗](https://dash.cloudflare.com/?to=/:account/images/hosted)
+1. In the Cloudflare dashboard, go to the **Hosted Images** page. [Go to **Hosted images** ↗](https://dash.cloudflare.com/?to=/:account/images/hosted)
 2. Select the **Delivery** tab.
 3. Enable **Flexible variants**.
 

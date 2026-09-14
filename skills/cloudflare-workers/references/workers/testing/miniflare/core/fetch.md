@@ -12,19 +12,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Fetch Events
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/core/fetch/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/core/fetch/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [FetchEvent Reference](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/)
+- [`FetchEvent` Reference](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/)
 
 ## HTTP Requests
 
-Whenever an HTTP request is made, a `Request` object is dispatched to your worker, then the generated `Response` is returned. The `Request` object will include a [cf object](https://developers.cloudflare.com/workers/runtime-apis/request#incomingrequestcfproperties). Miniflare will log the method, path, status, and the time it took to respond.
+Whenever an HTTP request is made, a `Request` object is dispatched to your worker, then the generated `Response` is returned. The `Request` object will include a [`cf` object](https://developers.cloudflare.com/workers/runtime-apis/request#incomingrequestcfproperties). Miniflare will log the method, path, status, and the time it took to respond.
 
 If the Worker throws an error whilst generating a response, an error page containing the stack trace is returned instead.
 
 ## Dispatching Events
 
-When using the API, the `dispatchFetch` function can be used to dispatch `fetch`events to your Worker. This can be used for testing responses. `dispatchFetch`has the same API as the regular `fetch` method: it either takes a `Request`object, or a URL and optional `RequestInit` object:
+When using the API, the `dispatchFetch` function can be used to dispatch `fetch` events to your Worker. This can be used for testing responses. `dispatchFetch` has the same API as the regular `fetch` method: it either takes a `Request` object, or a URL and optional `RequestInit` object:
 
 ```js
 import { Miniflare, Request } from "miniflare";
@@ -62,7 +62,7 @@ res = await mf.dispatchFetch(
 console.log(await res.json()); // { url: "http://localhost:8787/2", header: "2" }
 ```
 
-When dispatching events, you are responsible for adding [CF-\* headers](https://developers.cloudflare.com/fundamentals/reference/http-headers/) and the [cf object](https://developers.cloudflare.com/workers/runtime-apis/request#incomingrequestcfproperties). This lets you control their values for testing:
+When dispatching events, you are responsible for adding [`CF-*` headers](https://developers.cloudflare.com/fundamentals/reference/http-headers/) and the [`cf` object](https://developers.cloudflare.com/workers/runtime-apis/request#incomingrequestcfproperties). This lets you control their values for testing:
 
 ```js
 const res = await mf.dispatchFetch("http://localhost:8787", {
@@ -77,7 +77,7 @@ const res = await mf.dispatchFetch("http://localhost:8787", {
 
 ## Upstream
 
-Miniflare will call each `fetch` listener until a response is returned. If no response is returned, or an exception is thrown and `passThroughOnException()`has been called, the response will be fetched from the specified upstream instead:
+Miniflare will call each `fetch` listener until a response is returned. If no response is returned, or an exception is thrown and `passThroughOnException()` has been called, the response will be fetched from the specified upstream instead:
 
 ```js
 import { Miniflare } from "miniflare";

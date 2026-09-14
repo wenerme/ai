@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Anthropic
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `anthropic/claude-fable-5`
 
-* Third-party
+- Third-party
 
 Claude Fable 5 is Anthropic's most capable widely released model, built for the most demanding reasoning and long-horizon agentic work. Adaptive thinking is always on, and the model supports a 1M token context window with up to 128k output tokens per request.
 
-| Model Info                                                                          |                                                                                                                            |
-| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens                                                                                                           |
-| Terms and License                                                                   | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                 |
-| More information                                                                    | [link ↗](https://platform.claude.com/docs/en/about-claude/models/introducing-claude-fable-5-and-claude-mythos-5)           |
-| Request formats                                                                     | Anthropic Messages                                                                                                         |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-fable-5) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens |
+| Terms and License | [link ↗](https://www.anthropic.com/legal/commercial-terms) |
+| More information | [link ↗](https://platform.claude.com/docs/en/about-claude/models/introducing-claude-fable-5-and-claude-mythos-5) |
+| Request formats | Anthropic Messages |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-fable-5) |
 
 ## Usage
 
@@ -61,6 +61,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 # The Three Laws of Thermodynamics
 
 ## First Law: Conservation of Energy
@@ -90,6 +91,7 @@ As a system approaches absolute zero (0 Kelvin, or −273.15°C), its entropy ap
 **Bonus — The Zeroth Law:** Added later but considered more fundamental: if two systems are each in thermal equilibrium with a third system, they're in equilibrium with each other. This is what makes thermometers work!
 
 A popular summary: *"You can't win (1st), you can't break even (2nd), and you can't quit the game (3rd)."*
+```
 
 ```json
 {
@@ -123,7 +125,11 @@ A popular summary: *"You can't win (1st), you can't break even (2nd), and you ca
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -154,6 +160,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 # Reading a JSON File in Python
 
 Use the built-in `json` module with the `json.load()` function:
@@ -216,6 +223,7 @@ except json.JSONDecodeError as e:
 | `null` | `None` |
 
 That's all you need for most use cases. For very large files, consider streaming libraries like `ijson`.
+````
 
 ```json
 {
@@ -247,7 +255,13 @@ That's all you need for most use cases. For very large files, consider streaming
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -295,6 +309,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Great question! Your stops depend a lot on which route you take, so let me break it down:
 
 ## Highway 1 / Pacific Coast Highway (Scenic Route)
@@ -324,6 +339,7 @@ Honestly, not much to see—mostly farmland. Best stop is **Harris Ranch** in Co
 **My suggestion:** If you have 2+ days, take Highway 1 and stay overnight in Monterey, Big Sur, or San Luis Obispo. If you only have one day, 101 gives you a nice mix of speed and scenery.
 
 How much time do you have for the trip? That'll help narrow down the best plan!
+```
 
 ```json
 {
@@ -355,7 +371,13 @@ How much time do you have for the trip? That'll help narrow down the best plan!
 }
 ```
 
-**Creative Writing with Adaptive Thinking** — Use adaptive thinking with high effort to steer creative output. Adaptive thinking is always on for Claude Fable 5; use the \`effort\` parameter to control depth.
+</details>
+
+<details>
+
+<summary>**Creative Writing with Adaptive Thinking** — Use adaptive thinking with high effort to steer creative output. Adaptive thinking is always on for Claude Fable 5; use the `effort` parameter to control depth.</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -397,6 +419,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 # The Paper Bird
 
 Detective Mara Voss had worked homicide for eleven years, and in that time she'd catalogued every variety of crime scene debris: shell casings, cigarette butts, the sad confetti of torn receipts. But she had never found an origami crane perched in a dead man's open palm.
@@ -412,6 +435,7 @@ She photographed it from six angles before lifting it with gloved fingers, and u
 Mara read it three times. Then she looked back at Gerald Fitch's face—peaceful, almost smug, even in death—and felt the familiar cold prickle at the base of her skull. The one that told her this wasn't an ending.
 
 It was an invitation.
+```
 
 ```json
 {
@@ -443,7 +467,13 @@ It was an invitation.
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -474,6 +504,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 # Recursion
 
 **Recursion** is a programming concept where a function calls itself to solve a problem by breaking it down into smaller, similar subproblems.
@@ -529,6 +560,7 @@ Recursion shines for naturally recursive structures like:
 - Divide-and-conquer algorithms (e.g., merge sort)
 
 ⚠️ **Caution:** Without a proper base case, recursion runs forever and causes a *stack overflow*.
+````
 
 ```json
 [
@@ -723,9 +755,11 @@ Recursion shines for naturally recursive structures like:
 ]
 ```
 
+</details>
+
 ## Parameters
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -757,7 +791,7 @@ role
 
 `string`const: assistant
 
-▶content\[\]
+▶content\[]
 
 `array`
 
@@ -775,9 +809,9 @@ stop\_reason
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/schema-output.json)
 
 Was this helpful?
 

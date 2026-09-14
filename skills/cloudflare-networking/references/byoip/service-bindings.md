@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # IP address service bindings
 
-Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/byoip/service-bindings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/byoip/service-bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In the context of BYOIP, service bindings map traffic destined for IP addresses to the Cloudflare service it should be routed through - such as Magic Transit, CDN, or Spectrum. A default binding covering the entire prefix is required when you first [onboard](https://developers.cloudflare.com/byoip/get-started/#2-create-service-bindings), and additional bindings can be created at any time to route specific IP addresses or CIDR ranges to a different service.
 
@@ -20,17 +20,17 @@ For example, you could set Magic Transit as the default service for Layer 3 DDoS
 
 Note
 
-**API-only**: Service binding operations are currently only available via API. You can find all endpoints and their specifications in the [Cloudflare API documentation](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/service%5Fbindings/). For detailed guidance, refer to the sections and tutorials linked below.
+**API-only**: Service binding operations are currently only available via API. You can find all endpoints and their specifications in the [Cloudflare API documentation](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/service_bindings/). For detailed guidance, refer to the sections and tutorials linked below.
 
 **Time to propagate**: Service bindings take four to six hours to propagate across Cloudflare's global network after being created or deleted. Services for the IP addresses in scope are likely disrupted during this window.
 
 ## Scope
 
-Customers using BYOIP with Magic Transit, [CDN services](https://developers.cloudflare.com/cache/), or [Spectrum](https://developers.cloudflare.com/spectrum/) can leverage the [service binding API endpoints](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/service%5Fbindings/) to selectively route traffic through the CDN [1](#user-content-fn-1) or Spectrum [2](#user-content-fn-2) pipelines on a per-IP address basis. This means:
+Customers using BYOIP with Magic Transit, [CDN services](https://developers.cloudflare.com/cache/), or [Spectrum](https://developers.cloudflare.com/spectrum/) can leverage the [service binding API endpoints](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/service_bindings/) to selectively route traffic through the CDN <sup>[1](#user-content-fn-1)</sup> or Spectrum <sup>[2](#user-content-fn-2)</sup> pipelines on a per-IP address basis. This means:
 
-* You can upgrade individual IPs within a Magic Transit prefix to either a CDN IP or a Spectrum IP. For example, if you have a Magic Transit prefix `203.0.113.0/24`, you can upgrade `203.0.113.1` to CDN and `203.0.113.2` to Spectrum.
-* You can upgrade individual IPs within a CDN prefix to a Spectrum IP. For example, if you have a CDN prefix `203.0.113.0/24`, you can upgrade `203.0.113.1` to Spectrum.
-* You can upgrade individual IPs within a Spectrum prefix to a CDN IP. For example, if you have a Spectrum prefix `203.0.113.0/24`, you can upgrade `203.0.113.1` to CDN.
+- You can upgrade individual IPs within a Magic Transit prefix to either a CDN IP or a Spectrum IP. For example, if you have a Magic Transit prefix `203.0.113.0/24`, you can upgrade `203.0.113.1` to CDN and `203.0.113.2` to Spectrum.
+- You can upgrade individual IPs within a CDN prefix to a Spectrum IP. For example, if you have a CDN prefix `203.0.113.0/24`, you can upgrade `203.0.113.1` to Spectrum.
+- You can upgrade individual IPs within a Spectrum prefix to a CDN IP. For example, if you have a Spectrum prefix `203.0.113.0/24`, you can upgrade `203.0.113.1` to CDN.
 
 Refer to [Magic Transit with CDN](https://developers.cloudflare.com/byoip/service-bindings/magic-transit-with-cdn/) or [CDN and Spectrum](https://developers.cloudflare.com/byoip/service-bindings/cdn-and-spectrum/) for detailed guidance.
 
@@ -60,10 +60,13 @@ The entire BYOIP prefix is primarily announced for Magic Transit, providing laye
 
 Also, traffic egressing to an IP in the prefix will always go to Magic Transit, even if there is an overlapping binding for CDN or Spectrum. This allows customers who want to use the same IP as ingress IP and as origin IP to do so.
 
+```
 flowchart LR
         accTitle: Cloudflare as a reverse proxy
         accDescr: Diagram showing Cloudflare's network between clients and the origin server.
         A[Client] --ingress--> B((Cloudflare))--egress--> C[(Origin server)]
+
+```
 
 When adding a service binding for a given IP address, it must be either a CDN service binding or a Spectrum service binding. It is not possible (or necessary) to bind both services.
 
@@ -73,8 +76,8 @@ When adding a service binding for a given IP address, it must be either a CDN se
 
 ## Tutorials
 
-* [Use BYOIP with Magic Transit and CDN](https://developers.cloudflare.com/byoip/service-bindings/magic-transit-with-cdn/)
-* [Use BYOIP with CDN and Spectrum](https://developers.cloudflare.com/byoip/service-bindings/cdn-and-spectrum/)
+- [Use BYOIP with Magic Transit and CDN](https://developers.cloudflare.com/byoip/service-bindings/magic-transit-with-cdn/)
+- [Use BYOIP with CDN and Spectrum](https://developers.cloudflare.com/byoip/service-bindings/cdn-and-spectrum/)
 
 ## Footnotes
 

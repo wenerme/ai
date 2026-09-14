@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Delete a rule in a ruleset
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ruleset-engine/rulesets-api/delete-rule/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/rulesets-api/delete-rule/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Deletes a single rule in a ruleset at the account or zone level.
 
 Use one of the following API endpoints:
 
-* [Delete an account ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/delete/)
-`DELETE /accounts/{account_id}/rulesets/{ruleset_id}/rules/{rule_id}`
-* [Delete a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/delete/)
-`DELETE /zones/{zone_id}/rulesets/{ruleset_id}/rules/{rule_id}`
+- [Delete an account ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/delete/)
+  `DELETE /accounts/{account_id}/rulesets/{ruleset_id}/rules/{rule_id}`
+- [Delete a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/delete/)
+  `DELETE /zones/{zone_id}/rulesets/{ruleset_id}/rules/{rule_id}`
 
 If the delete operation succeeds, the API method call returns a `200 OK` HTTP status code with the complete ruleset in the response body.
 
@@ -31,17 +31,28 @@ The following example deletes rule `$RULE_ID_1` belonging to ruleset `$RULESET_I
 
 The response will include the complete ruleset after deleting the rule.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Mass URL Redirects Write`
-* `Magic Firewall Write`
-* `L4 DDoS Managed Ruleset Write`
-* `Transform Rules Write`
-* `Select Configuration Write`
-* `Account WAF Write`
-* `Account Rulesets Write`
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Mass URL Redirects Write</code>
+- <code>Magic Firewall Write</code>
+- <code>L4 DDoS Managed Ruleset Write</code>
+- <code>Transform Rules Write</code>
+- <code>Select Configuration Write</code>
+- <code>Account WAF Write</code>
+- <code>Account Rulesets Write</code>
+- <code>Logs Write</code>
+
+</details>
+
+*Delete an account ruleset rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESET_ID/rules/$RULE_ID_1" \

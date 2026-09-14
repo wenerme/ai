@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Relevance boosting
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/boosting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/boosting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Boosting lets you bias search results toward documents with specific metadata characteristics. For example, you can promote recent documents, surface higher-priority pages, or deprioritize drafts. Boosting re-ranks results without replacing semantic relevance.
 
@@ -31,30 +31,30 @@ Boosting can change the order of results within the candidate set, but cannot pr
 
 You can boost by the built-in `timestamp` field or by any field defined in your [custom metadata schema](https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/#define-a-schema).
 
-| Field type | Supported directions           |
-| ---------- | ------------------------------ |
-| datetime   | asc, desc, exists, not\_exists |
-| number     | asc, desc, exists, not\_exists |
-| text       | exists, not\_exists only       |
-| boolean    | exists, not\_exists only       |
+| Field type | Supported directions |
+| --- | --- |
+| `datetime` | `asc`, `desc`, `exists`, `not_exists` |
+| `number` | `asc`, `desc`, `exists`, `not_exists` |
+| `text` | `exists`, `not_exists` only |
+| `boolean` | `exists`, `not_exists` only |
 
 ### Directions
 
 The direction controls how the field value affects the ranking of each result:
 
-| Direction   | Effect                                                       |
-| ----------- | ------------------------------------------------------------ |
-| desc        | Higher field values score higher (for example, most recent). |
-| asc         | Lower field values score higher (for example, lowest cost).  |
-| exists      | Documents that have the field score higher.                  |
-| not\_exists | Documents that do not have the field score higher.           |
+| Direction | Effect |
+| --- | --- |
+| `desc` | Higher field values score higher (for example, most recent). |
+| `asc` | Lower field values score higher (for example, lowest cost). |
+| `exists` | Documents that have the field score higher. |
+| `not_exists` | Documents that do not have the field score higher. |
 
 If you omit `direction`, AI Search applies a default based on the field type:
 
-| Field type                  | Default direction |
-| --------------------------- | ----------------- |
-| number, datetime, timestamp | asc               |
-| text, boolean               | exists            |
+| Field type | Default direction |
+| --- | --- |
+| `number`, `datetime`, `timestamp` | `asc` |
+| `text`, `boolean` | `exists` |
 
 Using `asc` or `desc` on a `text` or `boolean` field returns an error.
 
@@ -62,10 +62,10 @@ Using `asc` or `desc` on a `text` or `boolean` field returns an error.
 
 Specify `boost_by` as an array of up to 3 objects when creating or updating an instance. Each object must reference a unique field.
 
-| Field     | Type   | Required | Description                                                                 |
-| --------- | ------ | -------- | --------------------------------------------------------------------------- |
-| field     | string | Yes      | Metadata field name or timestamp. Must match your schema. Case-insensitive. |
-| direction | string | No       | One of asc, desc, exists, not\_exists. Defaults by type.                    |
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `field` | string | Yes | Metadata field name or `timestamp`. Must match your schema. Case-insensitive. |
+| `direction` | string | No | One of `asc`, `desc`, `exists`, `not_exists`. Defaults by type. |
 
 ```ts
 const instance = await env.AI_SEARCH.create({
@@ -115,22 +115,22 @@ const results = await instance.search({
 
 Here are some common ways to use relevance boosting:
 
-| Pattern                          | Configuration                                                                                   |
-| -------------------------------- | ----------------------------------------------------------------------------------------------- |
-| Prioritize recent documents      | \[{ "field": "timestamp", "direction": "desc" }\]                                               |
-| Promote by custom priority       | \[{ "field": "priority", "direction": "desc" }\]                                                |
-| Boost lower-cost options         | \[{ "field": "cost", "direction": "asc" }\]                                                     |
-| Promote documents with an author | \[{ "field": "author", "direction": "exists" }\]                                                |
-| Suppress drafts                  | \[{ "field": "draft", "direction": "not\_exists" }\]                                            |
-| Combine recency and priority     | \[{ "field": "timestamp", "direction": "desc" }, { "field": "priority", "direction": "desc" }\] |
+| Pattern | Configuration |
+| --- | --- |
+| Prioritize recent documents | `[{ "field": "timestamp", "direction": "desc" }]` |
+| Promote by custom priority | `[{ "field": "priority", "direction": "desc" }]` |
+| Boost lower-cost options | `[{ "field": "cost", "direction": "asc" }]` |
+| Promote documents with an author | `[{ "field": "author", "direction": "exists" }]` |
+| Suppress drafts | `[{ "field": "draft", "direction": "not_exists" }]` |
+| Combine recency and priority | `[{ "field": "timestamp", "direction": "desc" }, { "field": "priority", "direction": "desc" }]` |
 
 ## Limitations
 
-* Maximum of 3 boost fields per request.
-* Field names must match a field in your custom metadata schema or the built-in `timestamp` field.
-* `text` and `boolean` fields only support `exists` and `not_exists` directions.
-* Boost fields within a single request must be unique.
-* Boosting re-ranks the candidate set from the initial search. It cannot surface documents that were not retrieved.
+- Maximum of 3 boost fields per request.
+- Field names must match a field in your custom metadata schema or the built-in `timestamp` field.
+- `text` and `boolean` fields only support `exists` and `not_exists` directions.
+- Boost fields within a single request must be unique.
+- Boosting re-ranks the candidate set from the initial search. It cannot surface documents that were not retrieved.
 
 Was this helpful?
 

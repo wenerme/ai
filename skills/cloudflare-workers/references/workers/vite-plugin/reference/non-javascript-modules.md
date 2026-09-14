@@ -12,17 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Non-JavaScript modules
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/reference/non-javascript-modules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/reference/non-javascript-modules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In addition to TypeScript and JavaScript, the following module types are automatically configured to be importable in your Worker code.
 
-| Module extension    | Imported type      |
-| ------------------- | ------------------ |
-| .txt                | string             |
-| .html               | string             |
-| .sql                | string             |
-| .bin                | ArrayBuffer        |
-| .wasm, .wasm?module | WebAssembly.Module |
+| Module extension | Imported type |
+| --- | --- |
+| `.txt` | `string` |
+| `.html` | `string` |
+| `.sql` | `string` |
+| `.bin` | `ArrayBuffer` |
+| `.wasm`, `.wasm?module` | `WebAssembly.Module` |
 
 For example, with the following import, `text` will be a string containing the contents of `example.txt`:
 

@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Traffic types
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/about/traffic-types/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/about/traffic-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare Network Firewall (formerly Magic Firewall) enables you to allow or block traffic on a variety of packet characteristics, such as source and destination IP, source and destination port, protocol, packet length, and bit field match.
+Cloudflare Network Firewall (formerly Magic Firewall) enables you to allow or block traffic on a variety of packet characteristics, such as source and destination IP, source and destination port, protocol, packet length, and bit field match
+
+.
 
 Cloudflare Network Firewall supports layers three and four — network and transport — protocols such as TCP, UDP, and ICMP. Any type of layer three or four protocols can go through Cloudflare Network Firewall and then be matched on those protocols.
 

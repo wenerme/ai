@@ -12,43 +12,35 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # WARP diagnostic logs
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/warp-overview-course/series/warp-basics-2/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/warp-overview-course/series/warp-basics-2/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this more advanced episode, we explain how to use warp-diag files to identify and resolve connection issues with the WARP client. You will learn how to locate and interpret three key files: `warp-status`, `warp-settings`, and `daemon.log`. The video also provides troubleshooting tips including specific keyword searches and guidance on how to cross-reference logs to identify a bigger picture of the problem.
 
+<details>
+
+<summary>
+
 Chapters
 
-* ![Introduction](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=0s)
+</summary>
 
-**Introduction**0s
-* ![What are warp-diag files?](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=44s)
+- ![Introduction](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=0s)**Introduction**0s
+- ![What are warp-diag files?](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=44s)**What are warp-diag files?**44s
+- ![How to download and navigate warp-diag files](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=76s)**How to download and navigate warp-diag files**1m16s
+- ![warp-status.txt](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=126s)**warp-status.txt**2m06s
+- ![warp-settings.txt](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=149s)**warp-settings.txt**2m29s
+- ![daemon.log](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=217s)**daemon.log**3m37s
+- ![Addition tips](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=487s)**Addition tips**8m07s
+- ![Conclusion](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=523s)**Conclusion**8m43s
 
-**What are warp-diag files?**44s
-* ![How to download and navigate warp-diag files](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=76s)
-
-**How to download and navigate warp-diag files**1m16s
-* ![warp-status.txt](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=126s)
-
-**warp-status.txt**2m06s
-* ![warp-settings.txt](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=149s)
-
-**warp-settings.txt**2m29s
-* ![daemon.log](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=217s)
-
-**daemon.log**3m37s
-* ![Addition tips](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=487s)
-
-**Addition tips**8m07s
-* ![Conclusion](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=523s)
-
-**Conclusion**8m43s
+</details>
 
 **Related content**
 
 Explore the following resources on WARP, device profiles, operating modes, and split tunneling:
 
-* [Introduction to Cloudflare WARP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
-* [WARP troubleshooting guide](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/troubleshooting-guide/)
+- [Introduction to Cloudflare WARP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+- [WARP troubleshooting guide](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/troubleshooting-guide/)
 
 ### [Watch Episode 1: Understand and troubleshoot Cloudflare WARP](https://developers.cloudflare.com/learning-paths/warp-overview-course/series/warp-basics-1/)
 

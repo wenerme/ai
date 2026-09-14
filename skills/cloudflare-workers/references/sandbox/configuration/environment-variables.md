@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Environment variables
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/configuration/environment-variables/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/configuration/environment-variables/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Coming soon: Sandbox SDK 1.0
 
@@ -28,9 +28,9 @@ These environment variables configure how the Sandbox SDK behaves. Set these as 
 
 ### SANDBOX\_TRANSPORT
 
-| **Type**    | "http" \| "websocket" | "rpc" |
-| ----------- | --------------------- | ----- |
-| **Default** | "http"                |       |
+| **Type** | `"http"` \| `"websocket"` \| `"rpc"` |
+| --- | --- |
+| **Default** | `"http"` |
 
 Controls the transport protocol for SDK-to-container communication. RPC transport multiplexes all operations over a single persistent connection, avoiding [subrequest limits](https://developers.cloudflare.com/workers/platform/limits/#subrequests) when performing many SDK operations per request.
 
@@ -51,13 +51,13 @@ For a complete guide including valid transport modes, performance considerations
 
 ### COMMAND\_TIMEOUT\_MS
 
-| **Type**    | number (milliseconds) |
-| ----------- | --------------------- |
-| **Default** | None (no timeout)     |
+| **Type** | `number` (milliseconds) |
+| --- | --- |
+| **Default** | None (no timeout) |
 
 Sets a global default timeout for every `exec()` call. When set, any command that exceeds this duration raises an error on the caller side and closes the connection.
 
-Per-command `timeout` on `exec()` and session-level `commandTimeoutMs` on [createSession()](https://developers.cloudflare.com/sandbox/api/sessions/#createsession) both override this value. For more details on timeout precedence, refer to [Execute commands - Timeouts](https://developers.cloudflare.com/sandbox/guides/execute-commands/#timeouts).
+Per-command `timeout` on `exec()` and session-level `commandTimeoutMs` on [`createSession()`](https://developers.cloudflare.com/sandbox/api/sessions/#createsession) both override this value. For more details on timeout precedence, refer to [Execute commands - Timeouts](https://developers.cloudflare.com/sandbox/guides/execute-commands/#timeouts).
 
 ```jsonc
 {
@@ -80,7 +80,7 @@ A timeout does not kill the underlying process. It only terminates the connectio
 
 The Sandbox SDK provides three methods for setting environment variables, each suited for different use cases:
 
-### 1\. Sandbox-level with setEnvVars()
+### 1. Sandbox-level with setEnvVars()
 
 Set environment variables globally for all commands in the sandbox:
 
@@ -115,7 +115,7 @@ await sandbox.setEnvVars({
 });
 ```
 
-### 2\. Per-command with exec() options
+### 2. Per-command with exec() options
 
 Pass environment variables for a specific command:
 
@@ -141,7 +141,7 @@ Note
 
 Per-command environment variables with `undefined` values are skipped (treated as "not configured"), unlike `setEnvVars()` where `undefined` explicitly unsets a variable.
 
-### 3\. Session-level with createSession()
+### 3. Session-level with createSession()
 
 Create an isolated session with its own environment variables:
 
@@ -298,7 +298,7 @@ When mounting S3-compatible object storage, the SDK uses **s3fs-fuse** under the
 
 **Get R2 API tokens:**
 
-1. Go to [**R2** \> **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2) in the Cloudflare dashboard
+1. Go to [**R2** > **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2) in the Cloudflare dashboard
 2. Select **Manage R2 API Tokens**
 3. Create a token with **Object Read & Write** permissions
 4. Copy the **Access Key ID** and **Secret Access Key**
@@ -367,8 +367,8 @@ See [Mount buckets guide](https://developers.cloudflare.com/sandbox/guides/mount
 When the same variable is set at multiple levels, the most specific level takes precedence:
 
 1. **Command-level** (highest) - Passed to `exec()` or `startProcess()` options
-2. **Sandbox or session-level** \- Set with `setEnvVars()`
-3. **Container default** \- Built into the Docker image with `ENV`
+2. **Sandbox or session-level** - Set with `setEnvVars()`
+3. **Container default** - Built into the Docker image with `ENV`
 4. **System default** (lowest) - Operating system defaults
 
 Example:
@@ -387,12 +387,12 @@ await sandbox.exec("node app.js", {
 
 ## Related resources
 
-* [Transport modes](https://developers.cloudflare.com/sandbox/configuration/transport/) \- Configure HTTP, WebSocket, and RPC transport
-* [Wrangler configuration](https://developers.cloudflare.com/sandbox/configuration/wrangler/) \- Setting Worker-level environment
-* [Secrets](https://developers.cloudflare.com/workers/configuration/secrets/) \- Managing sensitive data
-* [Sessions API](https://developers.cloudflare.com/sandbox/api/sessions/) \- Session-level environment variables
-* [Security model](https://developers.cloudflare.com/sandbox/concepts/security/) \- Understanding data isolation
-* [Handle outbound traffic](https://developers.cloudflare.com/sandbox/guides/outbound-traffic/) \- Keep credentials out of the sandbox entirely using outbound handlers
+- [Transport modes](https://developers.cloudflare.com/sandbox/configuration/transport/) - Configure HTTP, WebSocket, and RPC transport
+- [Wrangler configuration](https://developers.cloudflare.com/sandbox/configuration/wrangler/) - Setting Worker-level environment
+- [Secrets](https://developers.cloudflare.com/workers/configuration/secrets/) - Managing sensitive data
+- [Sessions API](https://developers.cloudflare.com/sandbox/api/sessions/) - Session-level environment variables
+- [Security model](https://developers.cloudflare.com/sandbox/concepts/security/) - Understanding data isolation
+- [Handle outbound traffic](https://developers.cloudflare.com/sandbox/guides/outbound-traffic/) - Keep credentials out of the sandbox entirely using outbound handlers
 
 Was this helpful?
 

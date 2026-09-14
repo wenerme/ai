@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Choose an on-ramp
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/connect-devices-networks/choose-on-ramp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/connect-devices-networks/choose-on-ramp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Similar to the network onboarding practices in the [Replace your VPN](https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/) implementation guide, there are a number of ways to on-ramp your network traffic to the Cloudflare global network. This guide will quickly explore all of the options to on-ramp traffic to Cloudflare Gateway to inspect, apply policies, and filter.
 
@@ -36,13 +36,13 @@ Cloudflare supports filtering HTTP/S traffic sent via a PAC file on a user devic
 
 Cloudflare Browser Isolation runs a headless, Chromium-based browser for your users to accomplish their secure browsing needs. It can be activated via an Access application, a Gateway policy, or by using link-based isolation (reverse proxy). In this model, your users can connect from any device to a proxy website to browse the Internet while applying all your Gateway HTTP policies and inspection requirements.
 
-|                                                                                                                                        | Cloudflare One Client                | PAC Files      | Clientless Browser Isolation          |
-| -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ | -------------- | ------------------------------------- |
-| Supported OS                                                                                                                           | macOS, Windows, Linux, iOS, Android  | All desktop OS | All OS (with HTML5 compliant browser) |
-| Configurable via MDM                                                                                                                   | Yes                                  | Yes            | N/A                                   |
-| Gateway policy types supported                                                                                                         | DNS, Network, HTTP, Resolver, Egress | HTTP           | DNS, Network, HTTP, Resolver, Egress  |
-| Identity-based policies supported                                                                                                      | Yes                                  | No             | Yes                                   |
-| [Network Session Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero%5Ftrust%5Fnetwork%5Fsessions/) | Yes                                  | Yes            | Yes                                   |
+|  | Cloudflare One Client | PAC Files | Clientless Browser Isolation |
+| --- | --- | --- | --- |
+| Supported OS | macOS, Windows, Linux, iOS, Android | All desktop OS | All OS (with HTML5 compliant browser) |
+| Configurable via MDM | Yes | Yes | N/A |
+| Gateway policy types supported | DNS, Network, HTTP, Resolver, Egress | HTTP | DNS, Network, HTTP, Resolver, Egress |
+| Identity-based policies supported | Yes | No | Yes |
+| [Network Session Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/) | Yes | Yes | Yes |
 
 ## Network on-ramps
 
@@ -76,8 +76,8 @@ The fastest way to start filtering DNS queries from a location is by changing th
 
 For more information on setting up DNS locations, refer to [Add locations](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/).
 
-|                                | Cloudflare WAN        | Cloudflare Mesh       | DNS Locations |
-| ------------------------------ | --------------------- | --------------------- | ------------- |
+|  | Cloudflare WAN | Cloudflare Mesh | DNS Locations |
+| --- | --- | --- | --- |
 | Gateway policy types supported | Network, HTTP, Egress | Network, HTTP, Egress | DNS, Resolver |
 
 Was this helpful?

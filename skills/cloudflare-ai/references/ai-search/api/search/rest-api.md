@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # REST API
 
-Last updated Jun 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/api/search/rest-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/search/rest-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the AI Search REST API to query your AI Search instances over HTTP.
 
@@ -24,15 +24,13 @@ The previous [AutoRAG API endpoints](https://developers.cloudflare.com/api/resou
 
 All requests require an API token with **AI Search:Edit** and **AI Search:Run** permissions.
 
-1. In the Cloudflare dashboard, go to **My Profile** \> **API Tokens**.
-[Go to **API Tokens** ↗](https://dash.cloudflare.com/profile/api-tokens)
+1. In the Cloudflare dashboard, go to **My Profile** > **API Tokens**. [Go to **API Tokens** ↗](https://dash.cloudflare.com/profile/api-tokens)
 2. Select **Create Token**.
 3. Select **Create Custom Token**.
 4. Enter a **Token name**, for example `AI Search Manager`.
 5. Under **Permissions**, add two permissions:
-
-  * **Account** \> **AI Search:Edit**
-  * **Account** \> **AI Search:Run**
+   - **Account** > **AI Search:Edit**
+   - **Account** > **AI Search:Run**
 6. Select **Continue to summary**, then select **Create Token**.
 7. Copy and save the token value. This is your `API_TOKEN`.
 
@@ -46,23 +44,23 @@ Authorization: Bearer <API_TOKEN>
 
 AI Search provides two APIs for querying an instance. Both use an OpenAI-compatible `messages` format.
 
-* **Search** returns relevant content chunks. Use this when you want to handle generation yourself or display results directly.
-* **Chat completions** retrieves content and generates a response in one call.
+- **Search** returns relevant content chunks. Use this when you want to handle generation yourself or display results directly.
+- **Chat completions** retrieves content and generates a response in one call.
 
 ### API paths
 
 AI Search APIs are available at two base paths:
 
-| Path                                                                     | Description                                                                                                  |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| /accounts/{account\_id}/ai-search/instances/{id}/                        | Operates on a specific instance                                                                              |
-| /accounts/{account\_id}/ai-search/namespaces/{namespace}/instances/{id}/ | Operates on instances within a [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/) |
+| Path | Description |
+| --- | --- |
+| `/accounts/{account_id}/ai-search/instances/{id}/` | Operates on a specific instance |
+| `/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/` | Operates on instances within a [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/) |
 
-The following operations are the same for both paths. For the namespace-scoped API, refer to the [Namespace API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/namespaces/).
+The following operations are the same for both paths. For the namespace-scoped API, refer to the [Namespace API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/).
 
 ### Search
 
-Search a specific instance. The search endpoint also accepts a `query` string parameter. For the full specification, refer to the [Search API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/methods/search/).
+Search a specific instance. The search endpoint also accepts a `query` string parameter. For the full specification, refer to the [Search API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/instances/methods/search/).
 
 ```bash
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/search" \
@@ -80,7 +78,7 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-sear
 
 ### Chat completions
 
-Generate a response from a specific instance. For the full specification, refer to the [Chat completions API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/methods/chat%5Fcompletions/).
+Generate a response from a specific instance. For the full specification, refer to the [Chat completions API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/instances/methods/chat_completions/).
 
 ```bash
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/chat/completions" \
@@ -117,7 +115,7 @@ data: [DONE]
 
 ## Cross-instance search and chat
 
-The search and chat completions APIs are also available at the namespace level. These work the same as the instance endpoints, but you pass an `instance_ids` array to specify which instances to query. Each chunk in the response includes an `instance_id` field identifying which instance it came from. For the full specification, refer to the [Namespace API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/namespaces/).
+The search and chat completions APIs are also available at the namespace level. These work the same as the instance endpoints, but you pass an `instance_ids` array to specify which instances to query. Each chunk in the response includes an `instance_id` field identifying which instance it came from. For the full specification, refer to the [Namespace API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/).
 
 ```bash
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/namespaces/<NAMESPACE>/search" \

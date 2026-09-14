@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RDP
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Remote Desktop Protocol (RDP) provides a graphical interface for users to connect to a computer remotely. RDP is most commonly used to facilitate simple remote access to machines or workstations which users cannot physically access. However, this also makes RDP connections the frequent subject of attacks, since a misconfiguration can inadvertently allow unauthorized access to the machine.
 
@@ -20,9 +20,9 @@ With Cloudflare Zero Trust, you can make your RDP server available over the Inte
 
 Cloudflare offers three ways to secure RDP:
 
-* [Browser-based RDP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/)
-* [RDP with Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-device-client/)
-* [RDP with client-side cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-cloudflared-authentication/)
+- [Browser-based RDP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/)
+- [RDP with Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-device-client/)
+- [RDP with client-side cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-cloudflared-authentication/)
 
 Was this helpful?
 

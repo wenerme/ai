@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Publish to a Queue directly via HTTP.
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/queues/examples/publish-to-a-queue-via-http/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/examples/publish-to-a-queue-via-http/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following example shows you how to publish messages to a Queue from any HTTP client, using a Cloudflare API token to authenticate.
 
@@ -22,10 +22,10 @@ This allows you to write to a Queue from any service or programming language tha
 
 ## Prerequisites
 
-* A [queue created](https://developers.cloudflare.com/queues/get-started/#3-create-a-queue) via the [Cloudflare dashboard ↗](https://dash.cloudflare.com) or the [wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
-* A Cloudflare API token with the `Queues Edit` permission.
+- A [queue created](https://developers.cloudflare.com/queues/get-started/#3-create-a-queue) via the [Cloudflare dashboard ↗](https://dash.cloudflare.com) or the [wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
+- A Cloudflare API token with the `Queues Edit` permission.
 
-### 1\. Send a test message
+### 1. Send a test message
 
 To make sure you successfully authenticate and write a message to your queue, use `curl` on the command line:
 
@@ -40,7 +40,7 @@ curl -XPOST -H "Authorization: Bearer <paste-your-api-token-here>" "https://api.
 
 This will issue a HTTP POST request, and if successful, return a HTTP 200 with a `success: true` response body.
 
-* If you receive a HTTP 403, this is because your API token is invalid or does not have the `Queues Edit` permission.
+- If you receive a HTTP 403, this is because your API token is invalid or does not have the `Queues Edit` permission.
 
 For full documentation about the HTTP Push API, refer to the [Cloudflare API documentation ↗](https://developers.cloudflare.com/api/resources/queues/subresources/messages/).
 

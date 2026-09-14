@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Remove Cloudflare branding with Offlabel
 
-Last updated May 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/turnstile/additional-configuration/offlabel/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/additional-configuration/offlabel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Offlabel is an Enterprise-only feature that removes Cloudflare branding and logo from Turnstile widgets. When enabled, widgets display without any visual references to Cloudflare.
 
 When Offlabel is enabled:
 
-* The Cloudflare logo and color schemes are removed from all widget states.
-* The widget maintains the same functionality, behavior, and WCAG 2.2 AA accessibility compliance.
-* All security features remain unchanged.
+- The Cloudflare logo and color schemes are removed from all widget states.
+- The widget maintains the same functionality, behavior, and WCAG 2.2 AA accessibility compliance.
+- All security features remain unchanged.
 
 The widget will display with a clean, unbranded appearance that integrates seamlessly with your website's design.
 
@@ -31,6 +31,8 @@ The widget will display with a clean, unbranded appearance that integrates seaml
 ### Enable Offlabel
 
 After your account team enables the Offlabel entitlement, you can activate it for specific widgets using the Cloudflare API.
+
+*cURL commandbash*
 
 ```bash
 curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$WIDGET_ID" \
@@ -44,6 +46,8 @@ curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenge
 ### Create new widgets with Offlabel
 
 You can enable Offlabel when creating new widgets.
+
+*cURL commandbash*
 
 ```bash
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets" \
@@ -60,6 +64,8 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challeng
 ### Verification
 
 Confirm Offlabel is enabled by checking your widget configuration.
+
+*cURL commandbash*
 
 ```bash
 curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$WIDGET_ID" \

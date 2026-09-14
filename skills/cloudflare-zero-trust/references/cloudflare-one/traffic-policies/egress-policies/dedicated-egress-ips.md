@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Dedicated egress IPs
 
-Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -29,7 +29,7 @@ You can request additional dedicated egress IPs at any time. Contact your accoun
 To start routing traffic through dedicated egress IPs:
 
 1. Contact your account team to obtain a dedicated egress IP.
-2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
+2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
 3. Turn on **Allow Secure Web Gateway to proxy traffic**.
 4. Select **TCP**.
 5. (Optional) Select **UDP**. This will allow HTTP/3 traffic to egress with your dedicated IPs.
@@ -51,7 +51,7 @@ When testing against another origin, you may see either an IPv4 or IPv6 address.
 
 ### Bring your own IP address (BYOIP)
 
-If your organization already owns IPv4 or IPv6 addresses from a regional Internet registry, you can use them as dedicated egress IPs instead of Cloudflare-provided addresses. To obtain an IPv6 range, refer to [American Registry for Internet Numbers (ARIN) ↗](https://www.arin.net/resources/guide/ipv6/first%5Frequest/) or [Regional Internet Registry for Europe, Middle East and Central Asia (RIPE NCC) ↗](https://www.ripe.net/manage-ips-and-asns/ipv6/request-ipv6/).
+If your organization already owns IPv4 or IPv6 addresses from a regional Internet registry, you can use them as dedicated egress IPs instead of Cloudflare-provided addresses. To obtain an IPv6 range, refer to [American Registry for Internet Numbers (ARIN) ↗](https://www.arin.net/resources/guide/ipv6/first_request/) or [Regional Internet Registry for Europe, Middle East and Central Asia (RIPE NCC) ↗](https://www.ripe.net/manage-ips-and-asns/ipv6/request-ipv6/).
 
 After you onboard your IP addresses, they appear as options when you create an [egress policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/) and choose **Use dedicated egress IPs (Cloudflare or BYOIP)** as the [egress method](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#egress-methods). BYOIP dedicated egress IPs do not support [IP geolocation](#ip-geolocation).
 
@@ -61,7 +61,7 @@ For more information, refer to [Cloudflare BYOIP](https://developers.cloudflare.
 
 If you do not have your own authority-provided IPv4 and IPv6 addresses, you can use dedicated egress IPs with a Cloudflare IP address.
 
-You can find your leased Gateway dedicated egress IPs on the dashboard under [**Address space** \> **Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
+You can find your leased Gateway dedicated egress IPs on the dashboard under [**Address space** > **Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
 
 ## Limitations
 
@@ -73,9 +73,9 @@ Each dedicated egress IP supports up to 40,000 concurrent connections per unique
 
 Dedicated egress IPs do not apply to the following traffic types. These connections use the default shared IPs because Cloudflare identifies them by other means (for example, tunnel ID or account context) rather than source IP.
 
-* Private networks connected to Zero Trust via Cloudflare Tunnel
-* Traffic destined for private networks connected to Zero Trust via [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
-* ICMP traffic (for example, `ping`)
+- Private networks connected to Zero Trust via Cloudflare Tunnel
+- Traffic destined for private networks connected to Zero Trust via [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+- ICMP traffic (for example, `ping`)
 
 By default, DNS queries that Gateway sends to custom resolvers use shared Cloudflare source IP addresses. You can [configure a resolver policy to send these queries from dedicated egress IPs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#send-dns-queries-sourced-from-dedicated-egress-ips).
 
@@ -101,34 +101,42 @@ Your egress traffic geolocates to the city selected in your [egress policies](ht
 
 To verify that the IP geolocation has updated, check your dedicated egress IP in one of the supported databases:
 
+<details>
+
+<summary>
+
 Supported IP geolocation databases
 
-* [Google ↗](https://developers.google.com/maps/documentation/geolocation/overview)
-* [MaxMind GeoIP ↗](https://www.maxmind.com/en/geoip-databases)
-* [TransUnion Neustar TruValidate IP Intelligence ↗](https://www.transunion.com/solution/truvalidate/digital-insights/ip-intelligence)
-* [Abstract IP Geolocation API ↗](https://www.abstractapi.com/ip-geolocation-api)
-* [DB-IP ↗](https://db-ip.com/)
-* [Digital Element ↗](https://www.digitalelement.com/)
-* [Geo Targetly ↗](https://geotargetly.com/)
-* [IP-API.com ↗](https://ip-api.com/)
-* [IP2Location ↗](https://lite.ip2location.com/)
-* [IPinfo.io ↗](https://ipinfo.io/)
-* [ip2c.org ↗](https://ip2c.org/)
-* [ipapi ↗](https://ipapi.com/)
-* [ipgeolocation.io ↗](https://ipgeolocation.io/)
-* [ipify ↗](https://www.ipify.org/)
-* [Ipstack ↗](https://ipstack.com/)
+</summary>
+
+- <a href="https://developers.google.com/maps/documentation/geolocation/overview">Google ↗</a>
+- <a href="https://www.maxmind.com/en/geoip-databases">MaxMind GeoIP ↗</a>
+- <a href="https://www.transunion.com/solution/truvalidate/digital-insights/ip-intelligence">TransUnion Neustar TruValidate IP Intelligence ↗</a>
+- <a href="https://www.abstractapi.com/ip-geolocation-api">Abstract IP Geolocation API ↗</a>
+- <a href="https://db-ip.com/">DB-IP ↗</a>
+- <a href="https://www.digitalelement.com/">Digital Element ↗</a>
+- <a href="https://geotargetly.com/">Geo Targetly ↗</a>
+- <a href="https://ip-api.com/">IP-API.com ↗</a>
+- <a href="https://lite.ip2location.com/">IP2Location ↗</a>
+- <a href="https://ipinfo.io/">IPinfo.io ↗</a>
+- <a href="https://ip2c.org/">ip2c.org ↗</a>
+- <a href="https://ipapi.com/">ipapi ↗</a>
+- <a href="https://ipgeolocation.io/">ipgeolocation.io ↗</a>
+- <a href="https://www.ipify.org/">ipify ↗</a>
+- <a href="https://ipstack.com/">Ipstack ↗</a>
+
+</details>
 
 ### Egress location
 
 Where your users' traffic physically exits the Cloudflare network depends on whether the connection uses IPv4 or IPv6.
 
-| Protocol | Destination proxied by Cloudflare | Physical egress location             | IP geolocation                       |
-| -------- | --------------------------------- | ------------------------------------ | ------------------------------------ |
-| IPv4     | No                                | Data center with dedicated egress IP | Matches dedicated egress IP location |
-| IPv4     | Yes                               | Locally connected data center        | Matches dedicated egress IP location |
-| IPv6     | No                                | Locally connected data center        | Matches dedicated egress IP location |
-| IPv6     | Yes                               | Locally connected data center        | Matches dedicated egress IP location |
+| Protocol | Destination proxied by Cloudflare | Physical egress location | IP geolocation |
+| --- | --- | --- | --- |
+| IPv4 | No | Data center with dedicated egress IP | Matches dedicated egress IP location |
+| IPv4 | Yes | Locally connected data center | Matches dedicated egress IP location |
+| IPv6 | No | Locally connected data center | Matches dedicated egress IP location |
+| IPv6 | Yes | Locally connected data center | Matches dedicated egress IP location |
 
 #### IPv4
 
@@ -148,11 +156,11 @@ Unlike IPv4, IPv6 traffic physically exits from the user's connected data center
 
 In the example above, the Las Vegas user would physically egress from Las Vegas but their traffic would IP geolocate to Los Angeles. This means:
 
-| Attribute       | Value                                                                                                         |
-| --------------- | ------------------------------------------------------------------------------------------------------------- |
-| Physical egress | User's closest Cloudflare data center (Las Vegas)                                                             |
-| IP geolocation  | Dedicated egress IP location configured in your egress policy (Los Angeles)                                   |
-| Logs            | Correct IP geolocation (Los Angeles) even though the physical egress is from a different location (Las Vegas) |
+| Attribute | Value |
+| --- | --- |
+| Physical egress | User's closest Cloudflare data center (Las Vegas) |
+| IP geolocation | Dedicated egress IP location configured in your egress policy (Los Angeles) |
+| Logs | Correct IP geolocation (Los Angeles) even though the physical egress is from a different location (Las Vegas) |
 
 ## Frequently asked questions (FAQ)
 

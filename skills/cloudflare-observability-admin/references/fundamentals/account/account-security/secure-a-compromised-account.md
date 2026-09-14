@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Secure compromised account
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/secure-a-compromised-account/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/secure-a-compromised-account/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you observe suspicious activity within your Cloudflare account, secure your account with these steps.
 
@@ -26,9 +26,8 @@ When there is more than one active session associated with your email account, y
 
 To revoke a session:
 
-1. Log in to the Cloudflare dashboard.
-[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
-2. Go to **My Profile** \> **Sessions**.
+1. Log in to the Cloudflare dashboard. [Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
+2. Go to **My Profile** > **Sessions**.
 3. On a specific section, click **Revoke**.
 4. You will be prompted to enter your password before revoking the session.
 
@@ -42,9 +41,8 @@ To prevent future compromises, make sure that you have [Two-Factor Authenticatio
 
 If your API key might be compromised, change your API key:
 
-1. Log in to the Cloudflare dashboard.
-[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
-2. Go to **My Profile** \> **API Tokens**.
+1. Log in to the Cloudflare dashboard. [Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
+2. Go to **My Profile** > **API Tokens**.
 3. In the **API Keys** section, find your key.
 4. Select **Change**.
 
@@ -54,9 +52,8 @@ If your token is lost or compromised, you can either create a new token or roll 
 
 To roll your API token:
 
-1. Go to **My Profile** \> **API Tokens**.
-[Go to **API Tokens** ↗](https://dash.cloudflare.com/profile/api-tokens)
-2. Next to the API token you want to roll, select the **three dot icon** \> **Roll**.
+1. Go to **My Profile** > **API Tokens**. [Go to **API Tokens** ↗](https://dash.cloudflare.com/profile/api-tokens)
+2. Next to the API token you want to roll, select the **three dot icon** > **Roll**.
 3. Select **Confirm** to generate a new API token.
 
 ## Step 5 - Review the audit log
@@ -65,7 +62,7 @@ To access audit logs in the Cloudflare dashboard:
 
 In the Cloudflare dashboard, go to the **Audit Logs** page.
 
-[Go to **Audit logs** ↗](https://dash.cloudflare.com/?to=/:account/audit-log)
+[Go to **Audit logs** ↗](https://dash.cloudflare.com/?to=/:account/audit-log)
 
 You can search these audit logs by user email or domain and filter by date range. To download audit logs, click **Download CSV**.
 

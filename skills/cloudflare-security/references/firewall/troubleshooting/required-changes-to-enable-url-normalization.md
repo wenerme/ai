@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Required firewall rule changes to enable URL normalization
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/firewall/troubleshooting/required-changes-to-enable-url-normalization/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/firewall/troubleshooting/required-changes-to-enable-url-normalization/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Deprecation notice
 
@@ -26,15 +26,15 @@ Cloudflare gradually enabled URL normalization for all Cloudflare zones except f
 
 These fields are the following:
 
-* `http.request.uri.path`
-* `http.request.full_uri`
-* `http.request.uri`
+- `http.request.uri.path`
+- `http.request.full_uri`
+- `http.request.uri`
 
 Cloudflare did not enable URL normalization automatically for zones that would be impacted by these changes to prevent any change in behavior of your existing firewall rules.
 
 ## Why URL normalization is important
 
-Cloudflare strongly recommends that you enable **Normalize incoming URLs** in **Rules** \> **Overview** \> **URL Normalization** to strengthen your zone's security posture. Not doing so leaves your zone at greater risk of a successful attack. Malicious parties could craft the URL in a way that the rules are not accounting for.
+Cloudflare strongly recommends that you enable **Normalize incoming URLs** in **Rules** > **Overview** > **URL Normalization** to strengthen your zone's security posture. Not doing so leaves your zone at greater risk of a successful attack. Malicious parties could craft the URL in a way that the rules are not accounting for.
 
 For example, a firewall rule with an expression such as `http.request.uri.path contains "/login"` could be bypassed if the malicious actor has encoded the `l` character as `%6C`. In this scenario, and with URL normalization disabled, traffic would not be matched by the firewall rule.
 
@@ -51,20 +51,19 @@ It is recommended that you:
 
 These steps will ensure a stronger security posture on your zone(s).
 
-### 1\. Review and update firewall rules
+### 1. Review and update firewall rules
 
 Before enabling URL normalization, you should review the affected firewall rules on your zone(s) and take one of the following approaches:
 
-* Edit these firewall rules to remove the parts which will no longer trigger once normalized — for example, any rules that look for `//` or `../` in URL paths. Administrators previously created these rules to perform a limited URL normalization, and these rules can now be safely disabled and then deleted.
-* If you wish to identify visitors with non-normalized URI paths with these firewall rules, you should update them to use the original (or raw) non-normalized fields. These fields are the following:
+- Edit these firewall rules to remove the parts which will no longer trigger once normalized — for example, any rules that look for `//` or `../` in URL paths. Administrators previously created these rules to perform a limited URL normalization, and these rules can now be safely disabled and then deleted.
+- If you wish to identify visitors with non-normalized URI paths with these firewall rules, you should update them to use the original (or raw) non-normalized fields. These fields are the following:
+  - `raw.http.request.uri.path`
+  - `raw.http.request.full_uri`
+  - `raw.http.request.uri`
 
-  * `raw.http.request.uri.path`
-  * `raw.http.request.full_uri`
-  * `raw.http.request.uri`
+### 2. Enable URL normalization
 
-### 2\. Enable URL normalization
-
-Once you have updated the affected firewall rules, enable URL normalization in **Rules** \> **Overview** \> **URL Normalization**.
+Once you have updated the affected firewall rules, enable URL normalization in **Rules** > **Overview** > **URL Normalization**.
 
 A Cloudflare user must have the [Firewall role](https://developers.cloudflare.com/fundamentals/manage-members/roles/) or one of the Administrator roles to access URL normalization settings in the dashboard.
 
@@ -72,8 +71,8 @@ A Cloudflare user must have the [Firewall role](https://developers.cloudflare.co
 
 ## Related resources
 
-* [URL normalization](https://developers.cloudflare.com/rules/normalization/)
-* [Transform Rules](https://developers.cloudflare.com/rules/transform/)
+- [URL normalization](https://developers.cloudflare.com/rules/normalization/)
+- [Transform Rules](https://developers.cloudflare.com/rules/transform/)
 
 Was this helpful?
 

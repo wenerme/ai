@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Setup
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-primary/setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-primary/setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With [outgoing zone transfers](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-primary/), you can keep Cloudflare as your primary DNS provider and use one or more secondary providers for increased availability and fault tolerance.
 
@@ -26,7 +26,7 @@ If using the API, you may also want to [locate your Zone and Account IDs](https:
 
 ---
 
-## 1\. Create TSIG (optional)
+## 1. Create TSIG (optional)
 
 A Transaction Signature (TSIG) authenticates communication between a primary and secondary DNS server.
 
@@ -38,43 +38,39 @@ While optional, this step is highly recommended.
 
 To create a TSIG using the dashboard:
 
-1. In the Cloudflare dashboard, go to the account **Settings** page.
-[Go to **Configurations** ↗](https://dash.cloudflare.com/?to=/:account/configurations)
+1. In the Cloudflare dashboard, go to the account **Settings** page. [Go to **Configurations** ↗](https://dash.cloudflare.com/?to=/:account/configurations)
 2. Go to **DNS Settings**.
 3. Under **DNS Zone Transfers**, for **TSIG**, select **Create**.
 4. Enter the following information:
-
-  * **TSIG name**: The name of the TSIG object using domain name syntax (more details in [RFC 8945 section 4.2 ↗](https://datatracker.ietf.org/doc/html/rfc8945#section-4.2)).
-  * **Secret (optional)**: Get a shared secret to add to your third-party nameservers. If left blank, this field generates a random secret.
-  * **Algorithm**: Choose a TSIG signing algorithm.
+   - **TSIG name**: The name of the TSIG object using domain name syntax (more details in [RFC 8945 section 4.2 ↗](https://datatracker.ietf.org/doc/html/rfc8945#section-4.2)).
+   - **Secret (optional)**: Get a shared secret to add to your third-party nameservers. If left blank, this field generates a random secret.
+   - **Algorithm**: Choose a TSIG signing algorithm.
 5. Select **Create**.
 
-To create a TSIG using the API, send a [POST](https://developers.cloudflare.com/api/resources/dns/subresources/zone%5Ftransfers/subresources/tsigs/methods/create/) request.
+To create a TSIG using the API, send a [POST](https://developers.cloudflare.com/api/resources/dns/subresources/zone_transfers/subresources/tsigs/methods/create/) request.
 
-## 2\. Create Peer DNS Server (optional)
+## 2. Create Peer DNS Server (optional)
 
 You only need to create a peer DNS server if you want:
 
-* Your secondary nameservers to receive **NOTIFYs** for changes to your Cloudflare DNS records.
-* A **TSIG** to sign zone transfer requests and **NOTIFYs**.
+- Your secondary nameservers to receive **NOTIFYs** for changes to your Cloudflare DNS records.
+- A **TSIG** to sign zone transfer requests and **NOTIFYs**.
 
 To create a peer using the dashboard:
 
-1. In the Cloudflare dashboard, go to the account **Settings** page.
-[Go to **Configurations** ↗](https://dash.cloudflare.com/?to=/:account/configurations)
+1. In the Cloudflare dashboard, go to the account **Settings** page. [Go to **Configurations** ↗](https://dash.cloudflare.com/?to=/:account/configurations)
 2. Go to **DNS Settings**.
 3. Under **DNS Zone Transfers**, for **Peer DNS servers**, select **Create**.
 4. Enter the following information, paying particular attention to:
-
-  * **IP**: If configured, specifies where Cloudflare sends NOTIFY requests to.
-  * **Port**: Specifies the IP Port for the NOTIFY IP.
-  * **Enable incremental (IXFR) zone transfers**: Does not apply when you are using Cloudflare as your primary DNS provider (Cloudflare zones always accept IXFR requests).
-  * **Link an existing TSIG**: If desired, link the TSIG you [previously created](#1-create-tsig-optional).
+   - **IP**: If configured, specifies where Cloudflare sends NOTIFY requests to.
+   - **Port**: Specifies the IP Port for the NOTIFY IP.
+   - **Enable incremental (IXFR) zone transfers**: Does not apply when you are using Cloudflare as your primary DNS provider (Cloudflare zones always accept IXFR requests).
+   - **Link an existing TSIG**: If desired, link the TSIG you [previously created](#1-create-tsig-optional).
 5. Select **Create**.
 
-To create a peer DNS server using the API, send a [POST](https://developers.cloudflare.com/api/resources/dns/subresources/zone%5Ftransfers/subresources/peers/methods/create/) request.
+To create a peer DNS server using the API, send a [POST](https://developers.cloudflare.com/api/resources/dns/subresources/zone_transfers/subresources/peers/methods/create/) request.
 
-## 3\. Link peer to primary zone (optional)
+## 3. Link peer to primary zone (optional)
 
 If you previously [created a peer DNS server](#2-create-peer-dns-server-optional), you should link it to your primary zone.
 
@@ -84,25 +80,24 @@ The maximum number of linked peers per zone is 30.
 
 To link a primary zone to a peer using the dashboard:
 
-1. In the Cloudflare dashboard, go to the **DNS Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
+1. In the Cloudflare dashboard, go to the **DNS Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
 2. For **DNS Zone Transfers**, select **Manage linked peers**.
 3. Select a peer.
 4. Select **Save**.
 
-To link a primary zone to a peer using the API, send a [POST](https://developers.cloudflare.com/api/resources/dns/subresources/zone%5Ftransfers/subresources/incoming/methods/create/) request with the ID of the peer you [previously created](#2-create-peer-dns-server-optional).
+To link a primary zone to a peer using the API, send a [POST](https://developers.cloudflare.com/api/resources/dns/subresources/zone_transfers/subresources/incoming/methods/create/) request with the ID of the peer you [previously created](#2-create-peer-dns-server-optional).
 
 Multiple peers and TSIG
 
 If you link more than one peer to a zone and at least one of them has TSIG configured, all peers are expected to also use the same TSIG.
 
-## 4\. Update your secondary DNS provider
+## 4. Update your secondary DNS provider
 
 Your secondary DNS provider should send zone transfer requests (via AXFR or IXFR) to [this IP](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/access-control-lists/cloudflare-ip-addresses/#transfer-ip) on port 53 and from the IP address specified in your [peer configuration](#2-create-peer-dns-server-optional).
 
 It should also have updated [Access Control Lists (ACLs)](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/access-control-lists/cloudflare-ip-addresses/#allow-range) to prevent NOTIFY messages sent from Cloudflare IP ranges from being blocked.
 
-## 5\. Add secondary nameservers within Cloudflare
+## 5. Add secondary nameservers within Cloudflare
 
 Using the information from your secondary DNS provider, [create NS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#create-dns-records) on your zone apex listing your secondary nameservers.
 
@@ -112,17 +107,27 @@ Note
 
 If your account [zone defaults](https://developers.cloudflare.com/dns/additional-options/dns-zone-defaults/) are already defined to have **Multi-provider DNS** enabled, this step may not be necessary.
 
-1. In the Cloudflare dashboard, go to the **DNS Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
+1. In the Cloudflare dashboard, go to the **DNS Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
 2. Enable **Multi-provider DNS**.
 
 Send the following `PATCH` request replacing the placeholders with your zone ID and authentication information:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone DNS Settings Write`
-* `DNS Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone DNS Settings Write</code>
+- <code>DNS Write</code>
+
+</details>
+
+*Update DNS Settingsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_settings" \
@@ -137,17 +142,16 @@ Note
 
 In case you want to keep Cloudflare as the only authoritative DNS provider, do not enable multi-provider DNS. In this way, your secondary DNS is kept hidden and up-to-date with the Cloudflare primary, as a backup option for disaster recovery scenarios.
 
-## 6\. Enable outgoing zone transfers
+## 6. Enable outgoing zone transfers
 
 When you enable outgoing zone transfers, this will send a DNS NOTIFY message to your secondary DNS provider.
 
-1. In the Cloudflare dashboard, go to the **DNS Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
+1. In the Cloudflare dashboard, go to the **DNS Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
 2. For **Outgoing Zone Transfers**, switch the toggle to **On**.
 
-To enable outgoing zone transfers using the API, send a [POST](https://developers.cloudflare.com/api/resources/dns/subresources/zone%5Ftransfers/subresources/outgoing/methods/enable/) request.
+To enable outgoing zone transfers using the API, send a [POST](https://developers.cloudflare.com/api/resources/dns/subresources/zone_transfers/subresources/outgoing/methods/enable/) request.
 
-## 7\. Add secondary nameservers to registrar
+## 7. Add secondary nameservers to registrar
 
 At your registrar, add the nameservers of your secondary DNS provider.
 

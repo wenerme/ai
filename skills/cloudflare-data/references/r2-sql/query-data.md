@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Query data
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2-sql/query-data/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2-sql/query-data/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Query [Apache Iceberg ↗](https://iceberg.apache.org/) tables managed by [R2 Data Catalog](https://developers.cloudflare.com/r2-data-catalog/). R2 SQL queries can be made via [Wrangler](https://developers.cloudflare.com/workers/wrangler/) or HTTP API.
 
 ## Get your warehouse name
 
-To query data with R2 SQL, you need your warehouse name associated with your [catalog](https://developers.cloudflare.com/r2-data-catalog/manage-catalogs/). To retrieve it, you can run the [r2 bucket catalog get command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-catalog-get):
+To query data with R2 SQL, you need your warehouse name associated with your [catalog](https://developers.cloudflare.com/r2-data-catalog/manage-catalogs/). To retrieve it, you can run the [`r2 bucket catalog get` command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-catalog-get):
 
 ```bash
 npx wrangler r2 bucket catalog get <BUCKET_NAME>
@@ -28,7 +28,7 @@ Alternatively, you can find it in the dashboard by going to the **R2 object stor
 
 ## Query via Wrangler
 
-To begin, install [npm ↗](https://docs.npmjs.com/getting-started). Then [install Wrangler, the Developer Platform CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
+To begin, install [`npm` ↗](https://docs.npmjs.com/getting-started). Then [install Wrangler, the Developer Platform CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
 
 Wrangler needs an API token with permissions to access R2 Data Catalog, R2 storage, and R2 SQL to execute queries. The `r2 sql query` command looks for the token in the `WRANGLER_R2_SQL_AUTH_TOKEN` environment variable.
 
@@ -46,7 +46,7 @@ WRANGLER_R2_SQL_AUTH_TOKEN=YOUR_API_TOKEN
 
 Where `YOUR_API_TOKEN` is the token you created with the [required permissions](#authentication). For more information on setting environment variables, refer to [Wrangler system environment variables](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/).
 
-To run a SQL query, run the [r2 sql query command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-sql-query):
+To run a SQL query, run the [`r2 sql query` command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-sql-query):
 
 ```bash
 npx wrangler r2 sql query <WAREHOUSE> "SELECT * FROM namespace.table_name limit 10;"
@@ -80,9 +80,9 @@ To query data with R2 SQL, you must provide a Cloudflare API token with R2 SQL, 
 
 Create an [R2 API token](https://developers.cloudflare.com/r2/api/tokens/#permissions) with the following permissions:
 
-* Access to R2 Data Catalog (read-only)
-* Access to R2 storage (Admin read/write)
-* Access to R2 SQL (read-only)
+- Access to R2 Data Catalog (read-only)
+- Access to R2 storage (Admin read/write)
+- Access to R2 SQL (read-only)
 
 Use this token value for the `WRANGLER_R2_SQL_AUTH_TOKEN` environment variable when querying with Wrangler, or in the Authorization header when using the REST API.
 

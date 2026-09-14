@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Sandbox SDK + Artifacts
 
-Last updated Apr 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/artifacts/examples/sandbox-sdk-artifacts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/examples/sandbox-sdk-artifacts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This example uses the `git-repo-per-sandbox` Sandbox SDK template and highlights the Artifacts-specific pieces.
 
 Start from the template with `create cloudflare`, as shown in [Run Claude Code on a Sandbox](https://developers.cloudflare.com/sandbox/tutorials/claude-code/#1-create-your-project). Then adapt the Artifacts flow with the focused snippets below.
 
-* Creates or reuses a sandbox by ID.
-* Creates or reuses an Artifacts repo with the same ID.
-* Passes an authenticated Git remote into the sandbox as `ARTIFACTS_GIT_REMOTE`.
+- Creates or reuses a sandbox by ID.
+- Creates or reuses an Artifacts repo with the same ID.
+- Passes an authenticated Git remote into the sandbox as `ARTIFACTS_GIT_REMOTE`.
 
 ## Create your project
 
@@ -42,9 +42,11 @@ pnpm create cloudflare@latest repo-per-sandbox --template=cloudflare/sandbox-sdk
 cd repo-per-sandbox
 ```
 
-## 1\. Create or reuse the repo
+## 1. Create or reuse the repo
 
 The template keeps one Artifacts repo per sandbox ID. Use your own source of truth to decide whether this request should create a new repo or load an existing one.
+
+*src/index.jsjs*
 
 ```js
 let defaultBranch;
@@ -66,6 +68,8 @@ if (sandboxWasJustCreated) {
 	token = (await repo.createToken("write", 3600)).plaintext;
 }
 ```
+
+*src/index.tsts*
 
 ```ts
 let defaultBranch: string;
@@ -92,9 +96,11 @@ The template already knows the repo name, so start with direct lookup instead of
 
 If your flow can race with repo creation, handle that retry at the application level after you inspect the thrown error.
 
-## 2\. Create or reuse the sandbox
+## 2. Create or reuse the sandbox
 
 Use the same ID for the sandbox:
+
+*src/index.jsjs*
 
 ```js
 import { getSandbox } from "@cloudflare/sandbox";
@@ -102,17 +108,21 @@ import { getSandbox } from "@cloudflare/sandbox";
 const sandbox = getSandbox(env.Sandbox, sandboxId);
 ```
 
+*src/index.tsts*
+
 ```ts
 import { getSandbox } from "@cloudflare/sandbox";
 
 const sandbox = getSandbox(env.Sandbox, sandboxId);
 ```
 
-## 3\. Pass the repo into the sandbox
+## 3. Pass the repo into the sandbox
 
 Convert the write token into an authenticated Git remote, then store it as an environment variable inside the sandbox.
 
 Use a short-lived token and pass it into the sandbox only after the sandbox session is authorized to push changes.
+
+*src/index.jsjs*
 
 ```js
 function toAuthenticatedRemote(remote, token) {
@@ -124,6 +134,8 @@ await sandbox.setEnvVars({
 	ARTIFACTS_GIT_REMOTE: toAuthenticatedRemote(remote, token),
 });
 ```
+
+*src/index.tsts*
 
 ```ts
 function toAuthenticatedRemote(remote: string, token: string) {

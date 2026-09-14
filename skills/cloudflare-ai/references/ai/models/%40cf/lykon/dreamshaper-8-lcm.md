@@ -16,16 +16,16 @@ l
 
 Text-to-Image • lykon
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/lykon/dreamshaper-8-lcm/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/lykon/dreamshaper-8-lcm/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/lykon/dreamshaper-8-lcm`
 
-* Cloudflare-hosted
+- Cloudflare-hosted
 
 Stable Diffusion model that has been fine-tuned to be better at photorealism without sacrificing range.
 
-| Model Info       |                                                    |
-| ---------------- | -------------------------------------------------- |
+| Model Info | |
+| --- | --- |
 | More information | [link ↗](https://huggingface.co/Lykon/DreamShaper) |
 
 ## Parameters
@@ -46,7 +46,7 @@ width
 
 `integer`minimum: 256maximum: 2048The width of the generated image in pixels
 
-▶image\[\]
+▶image\[]
 
 `array`For use with img2img tasks. An array of integers that represent the image data constrained to 8-bit unsigned integer values
 
@@ -54,7 +54,7 @@ image\_b64
 
 `string`For use with img2img tasks. A base64-encoded string of the input image
 
-▶mask\[\]
+▶mask\[]
 
 `array`An array representing An array of integers that represent mask image data for inpainting constrained to 8-bit unsigned integer values
 
@@ -78,9 +78,9 @@ The binding returns a `ReadableStream` with the output (check the model's output
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/@cf/lykon/dreamshaper-8-lcm/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/lykon/dreamshaper-8-lcm/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/@cf/lykon/dreamshaper-8-lcm/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/lykon/dreamshaper-8-lcm/schema-output.json)
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Add Custom Header
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/custom-header/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/custom-header/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Prerequisite
 
@@ -26,7 +26,7 @@ WebMobile
 
 ReactWeb ComponentsAngular
 
-RealtimeKit UI provides the [RtkHeader](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/component-library/#rtk-header) component for a default header.
+RealtimeKit UI provides the [`RtkHeader`](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/component-library/#rtk-header) component for a default header.
 
 If you need additional controls, replace `RtkHeader` with individual UI Kit components and custom elements.
 
@@ -99,7 +99,7 @@ const handleReportBugClick = () => {
 
 For a complete example, refer to the [custom UI example ↗](https://github.com/cloudflare/realtimekit-web-examples/tree/main/react-examples/examples/create-your-own-ui) and the [custom header component ↗](https://github.com/cloudflare/realtimekit-web-examples/blob/main/react-examples/examples/create-your-own-ui/src/components/meeting-header.tsx).
 
-RealtimeKit UI provides the [rtk-header](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/component-library/#rtk-header) component for a default header.
+RealtimeKit UI provides the [`rtk-header`](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/component-library/#rtk-header) component for a default header.
 
 If you need additional controls, replace `rtk-header` with individual UI Kit components and custom elements. In the `renderJoinedScreen` function from [Build Your Own UI](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/build-your-own-ui/), replace:
 
@@ -143,11 +143,13 @@ document.querySelector("#report-bug-button").addEventListener("click", () => {
 
 For a complete example, refer to the [custom UI example ↗](https://github.com/cloudflare/realtimekit-web-examples/tree/main/html-examples/examples/create-your-own-ui) and the [custom header component ↗](https://github.com/cloudflare/realtimekit-web-examples/blob/main/html-examples/examples/create-your-own-ui/components/meeting-header.js).
 
-RealtimeKit UI provides the [rtk-header](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/component-library/#rtk-header) component for a default header.
+RealtimeKit UI provides the [`rtk-header`](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/component-library/#rtk-header) component for a default header.
 
 If you need additional controls, replace `rtk-header` with individual UI Kit components and custom elements. Create a custom header component that uses the RealtimeKit angular components directly.
 
 #### Create Custom Header Component
+
+*custom-header.component.tstypescript*
 
 ```typescript
 import { Component, AfterViewInit } from "@angular/core";
@@ -250,6 +252,8 @@ with:
 
 #### Complete Meeting Component Example
 
+*meeting.component.tstypescript*
+
 ```typescript
 import {
 	Component,
@@ -301,6 +305,8 @@ export class MeetingComponent implements OnInit, OnDestroy {
 
 Don't forget to declare your custom header component in your Angular module:
 
+*app.module.tstypescript*
+
 ```typescript
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
@@ -334,6 +340,8 @@ import RealtimeKitUI
 #### Create custom header view
 
 Create a custom header view that uses the RealtimeKit iOS components directly:
+
+*CustomHeaderView.swiftswift*
 
 ```swift
 import UIKit
@@ -430,6 +438,8 @@ class CustomHeaderView: UIView {
 
 In your `MeetingViewController`, replace the default header with your custom header:
 
+*MeetingViewController.swiftswift*
+
 ```swift
 import UIKit
 import RealtimeKit
@@ -493,6 +503,8 @@ import com.cloudflare.realtimekit.ui.view.RtkGridPaginatorView
 #### Create custom header layout
 
 Create an XML layout file for your custom header:
+
+*layout/custom\_header.xmlxml*
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -572,6 +584,8 @@ Create an XML layout file for your custom header:
 
 #### Create custom header view class
 
+*CustomHeaderView.ktkotlin*
+
 ```kotlin
 package com.example.meeting
 
@@ -609,6 +623,8 @@ class CustomHeaderView @JvmOverloads constructor(
 #### Use in your meeting activity
 
 In your `MeetingActivity`, replace the default header with your custom header:
+
+*MeetingActivity.ktkotlin*
 
 ```kotlin
 package com.example.meeting
@@ -669,6 +685,8 @@ import {
 #### Create custom header component
 
 Create a custom header component that uses the RealtimeKit React Native components directly. Each component requires the `meeting` instance as a prop, which you obtain via the `useRealtimeKitMeeting` hook. The component waits for `roomJoined` before rendering to ensure the meeting state is ready:
+
+*CustomHeader.tsxtsx*
 
 ```tsx
 import React from "react";
@@ -778,6 +796,8 @@ Note
 #### Use in your meeting screen
 
 In your meeting screen, replace the default `RtkHeader` with your custom header:
+
+*MeetingScreen.tsxtsx*
 
 ```tsx
 import React, { useEffect } from "react";

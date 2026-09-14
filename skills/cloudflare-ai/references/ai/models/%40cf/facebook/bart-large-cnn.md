@@ -18,25 +18,24 @@ Beta
 
 Summarization • Meta
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/facebook/bart-large-cnn/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/facebook/bart-large-cnn/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/facebook/bart-large-cnn`
 
-* Cloudflare-hosted
-* Deprecated
+- Cloudflare-hosted
+- Deprecated
 
 BART is a transformer encoder-encoder (seq2seq) model with a bidirectional (BERT-like) encoder and an autoregressive (GPT-like) decoder. You can use this model for text summarization.
 
-| Model Info   |                          |
-| ------------ | ------------------------ |
-| Deprecated   | 5/30/2026                |
-| Beta         | Yes                      |
+| Model Info | |
+| --- | --- |
+| Deprecated | 5/30/2026 |
+| Beta | Yes |
 | Unit Pricing | $0.00 per M input tokens |
 
 ## Usage
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -53,7 +52,6 @@ export default {
 ```
 
 ```sh
-
 curl https://api.cloudflare.com/client/v4/accounts/{cf_account_id}/ai/run/@cf/facebook/bart-large-cnn \
   -H "Authorization: Bearer {cf_api_token}" \
   -d '{
@@ -78,9 +76,9 @@ summary
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/@cf/facebook/bart-large-cnn/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/facebook/bart-large-cnn/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/@cf/facebook/bart-large-cnn/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/facebook/bart-large-cnn/schema-output.json)
 
 Was this helpful?
 

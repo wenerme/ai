@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Network Analytics
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/magic-transit/analytics/network-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/analytics/network-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Network Analytics](https://developers.cloudflare.com/analytics/network-analytics/) provides real-time insights into Magic Transit traffic that enters and leaves Cloudflare's network through GRE or IPsec tunnels.
 
@@ -26,31 +26,35 @@ With Magic Transit, you can account for traffic flows that enter Cloudflare's ne
 
 The complete list of filters includes:
 
-* A list of your top tunnels by traffic volume.
-* Traffic source and destination by traffic type, on-ramps and off-ramps, IP addresses, and ports.
-* Destination IP ranges and ASNs.
-* Protocols and packet sizes.
-* Samples of all GRE or IPsec tunnel traffic entering or leaving Cloudflare's network.
-* Mitigations applied (such as DDoS and Cloudflare Network Firewall) to traffic entering Cloudflare's network.
+- A list of your top tunnels by traffic volume.
+- Traffic source and destination by traffic type, on-ramps and off-ramps, IP addresses, and ports.
+- Destination IP ranges and ASNs.
+- Protocols and packet sizes.
+- Samples of all GRE or IPsec tunnel traffic entering or leaving Cloudflare's network.
+- Mitigations applied (such as DDoS and Cloudflare Network Firewall) to traffic entering Cloudflare's network.
 
 For instructions, refer to [Access tunnel traffic analytics](#access-tunnel-traffic-analytics).
 
 ## Access tunnel traffic analytics
 
 1. Go to the **Network Analytics** page.
-[Go to **Network analytics** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
-1. In the **All Traffic** tab, scroll to **Top Insights** to access network traffic filters. By default, the dashboard displays five items, but you can display up to 25 items at once. To change the number of items, select the drop-down menu.
-2. (Optional) Hover over a traffic type. You can then filter for that traffic or exclude it from the results.
-3. To adjust the scope of information, scroll to **All traffic** \> **Add filter**.
-4. In the **New filter** popover, select the data type from the left drop-down menu, an operator from the middle drop-down menu, and an action from the right drop-down menu. For example:
-```txt
-<DESTINATION_TUNNELS> | _equals_ | <NAME_OF_YOUR_TUNNEL>
-```
-This lets you examine traffic from specific Source tunnels and/or Destination tunnels.
+
+[Go to **Network analytics** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
+
+2. In the **All Traffic** tab, scroll to **Top Insights** to access network traffic filters. By default, the dashboard displays five items, but you can display up to 25 items at once. To change the number of items, select the drop-down menu.
+3. (Optional) Hover over a traffic type. You can then filter for that traffic or exclude it from the results.
+4. To adjust the scope of information, scroll to **All traffic** > **Add filter**.
+5. In the **New filter** popover, select the data type from the left drop-down menu, an operator from the middle drop-down menu, and an action from the right drop-down menu. For example:
+
+   ```txt
+   <DESTINATION_TUNNELS> | _equals_ | <NAME_OF_YOUR_TUNNEL>
+   ```
+
+   This lets you examine traffic from specific Source tunnels and/or Destination tunnels.
 
 ## Feature notes
 
-* For Magic Transit, `Non-Tunnel traffic` often represents traffic from the public Internet or traffic via [CNIs](https://developers.cloudflare.com/network-interconnect/).
+- For Magic Transit, `Non-Tunnel traffic` often represents traffic from the public Internet or traffic via [CNIs](https://developers.cloudflare.com/network-interconnect/).
 
 The label `Non-Tunnel traffic` is a placeholder, and Cloudflare will apply more specific labels to this category of traffic in the future.
 

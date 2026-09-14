@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Local Participant
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/local-participant/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/local-participant/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Manage local user media devices, control audio, video, and screenshare, and handle events in RealtimeKit meetings.
 
@@ -183,14 +183,14 @@ meeting.self.config; // Configuration for meeting appearance
 
 **Room state values:**
 
-* `'init'` \- Initialized but not joined
-* `'joined'` \- Successfully joined the meeting
-* `'waitlisted'` \- Waiting in the waiting room
-* `'rejected'` \- Entry rejected
-* `'kicked'` \- Removed from meeting
-* `'left'` \- Left the meeting
-* `'ended'` \- Meeting has ended
-* `'disconnected'` \- Disconnected from meeting
+- `'init'` - Initialized but not joined
+- `'joined'` - Successfully joined the meeting
+- `'waitlisted'` - Waiting in the waiting room
+- `'rejected'` - Entry rejected
+- `'kicked'` - Removed from meeting
+- `'left'` - Left the meeting
+- `'ended'` - Meeting has ended
+- `'disconnected'` - Disconnected from meeting
 
 ```jsx
 // Room state
@@ -219,14 +219,14 @@ return (
 
 **Room state values:**
 
-* `'init'` \- Initialized but not joined
-* `'joined'` \- Successfully joined the meeting
-* `'waitlisted'` \- Waiting in the waiting room
-* `'rejected'` \- Entry rejected
-* `'kicked'` \- Removed from meeting
-* `'left'` \- Left the meeting
-* `'ended'` \- Meeting has ended
-* `'disconnected'` \- Disconnected from meeting
+- `'init'` - Initialized but not joined
+- `'joined'` - Successfully joined the meeting
+- `'waitlisted'` - Waiting in the waiting room
+- `'rejected'` - Entry rejected
+- `'kicked'` - Removed from meeting
+- `'left'` - Left the meeting
+- `'ended'` - Meeting has ended
+- `'disconnected'` - Disconnected from meeting
 
 ```kotlin
 // Room state
@@ -279,14 +279,14 @@ return (
 
 **Room state values:**
 
-* `'init'` \- Initialized but not joined
-* `'joined'` \- Successfully joined the meeting
-* `'waitlisted'` \- Waiting in the waiting room
-* `'rejected'` \- Entry rejected
-* `'kicked'` \- Removed from meeting
-* `'left'` \- Left the meeting
-* `'ended'` \- Meeting has ended
-* `'disconnected'` \- Disconnected from meeting
+- `'init'` - Initialized but not joined
+- `'joined'` - Successfully joined the meeting
+- `'waitlisted'` - Waiting in the waiting room
+- `'rejected'` - Entry rejected
+- `'kicked'` - Removed from meeting
+- `'left'` - Left the meeting
+- `'ended'` - Meeting has ended
+- `'disconnected'` - Disconnected from meeting
 
 ## Media Controls
 
@@ -1917,8 +1917,8 @@ meeting.self.on("mediaPermissionError", ({ message, kind }) => {
 
 **Possible values:**
 
-* `message`: `'DENIED'`, `'SYSTEM_DENIED'`, `'COULD_NOT_START'`
-* `kind`: `'audio'`, `'video'`, `'screenshare'`
+- `message`: `'DENIED'`, `'SYSTEM_DENIED'`, `'COULD_NOT_START'`
+- `kind`: `'audio'`, `'video'`, `'screenshare'`
 
 ```jsx
 useEffect(() => {

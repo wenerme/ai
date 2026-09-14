@@ -18,20 +18,20 @@ Beta
 
 Text-to-Image • Stability.ai
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-base-1.0/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-base-1.0/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/stabilityai/stable-diffusion-xl-base-1.0`
 
-* Cloudflare-hosted
+- Cloudflare-hosted
 
 Diffusion-based text-to-image generative model by Stability AI. Generates and modify images based on text prompts.
 
-| Model Info        |                                                                                                |
-| ----------------- | ---------------------------------------------------------------------------------------------- |
+| Model Info | |
+| --- | --- |
 | Terms and License | [link ↗](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/blob/main/LICENSE.md) |
-| More information  | [link ↗](https://stability.ai/stable-diffusion)                                                |
-| Beta              | Yes                                                                                            |
-| Unit Pricing      | $0.00 per step                                                                                 |
+| More information | [link ↗](https://stability.ai/stable-diffusion) |
+| Beta | Yes |
+| Unit Pricing | $0.00 per step |
 
 ## Parameters
 
@@ -51,7 +51,7 @@ width
 
 `integer`minimum: 256maximum: 2048The width of the generated image in pixels
 
-▶image\[\]
+▶image\[]
 
 `array`For use with img2img tasks. An array of integers that represent the image data constrained to 8-bit unsigned integer values
 
@@ -59,7 +59,7 @@ image\_b64
 
 `string`For use with img2img tasks. A base64-encoded string of the input image
 
-▶mask\[\]
+▶mask\[]
 
 `array`An array representing An array of integers that represent mask image data for inpainting constrained to 8-bit unsigned integer values
 
@@ -83,9 +83,9 @@ The binding returns a `ReadableStream` with the output (check the model's output
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-base-1.0/schema-input.json) [Download](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-base-1.0/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-base-1.0/schema-output.json) [Download](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-base-1.0/schema-output.json)
 
 Was this helpful?
 

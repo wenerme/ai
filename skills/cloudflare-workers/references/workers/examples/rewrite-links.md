@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Rewrite URL links in HTML using the HTMLRewriter. This is useful for JAMstack websites.
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/examples/rewrite-links/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/examples/rewrite-links/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you want to get started quickly, click on the button below.
 

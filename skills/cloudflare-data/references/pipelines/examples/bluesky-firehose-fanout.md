@@ -14,12 +14,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Consume the Bluesky Jetstream firehose in a Durable Object, ingest it into a single Pipelines stream, and use one pipeline with multiple SQL statements to route events into separate R2 Data Catalog tables by type.
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/examples/bluesky-firehose-fanout/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pipelines/examples/bluesky-firehose-fanout/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this example, you will consume the public [Bluesky Jetstream ↗](https://github.com/bluesky-social/jetstream) firehose, a live WebSocket stream of every post, like, repost, follow, and block on the network, and land it in [R2 Data Catalog](https://developers.cloudflare.com/r2-data-catalog/) as queryable Apache Iceberg tables.
 
 You will learn a core Pipelines pattern: send every event to one stream, then use a single pipeline with multiple SQL statements to route ("fan out") that stream into several destination tables, one per event type, without running a separate pipeline for each.
 
+```
 flowchart TD
     A[Bluesky Jetstream WebSocket] --> B[Durable Object]
     B -->|send| C[bsky_events_stream]
@@ -30,18 +31,28 @@ flowchart TD
     D --> H[bsky_follow]
     D --> I[bsky_block]
 
+```
+
 ## Prerequisites
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
+
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
 
 You will also need an [R2 API token](https://developers.cloudflare.com/r2/api/tokens/) with **Admin Read & Write** permissions, which includes R2 Data Catalog and R2 SQL access. You will pass this token to each sink. No Bluesky account or API key is required, as Jetstream is public and unauthenticated.
 
-## 1\. Create a new Worker project
+## 1. Create a new Worker project
 
 Create a new Worker project by running the following command:
 
@@ -61,11 +72,11 @@ pnpm create cloudflare@latest bluesky-pipeline
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `TypeScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `TypeScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 Change into your new project directory:
 
@@ -93,7 +104,7 @@ pnpm add -D wrangler@latest
 bun add -d wrangler@latest
 ```
 
-## 2\. Define the stream schema
+## 2. Define the stream schema
 
 A stream has a single schema. Because every event type flows through the same stream, the schema is the union of the fields you want across all types. Each routing statement later selects only the columns relevant to its destination.
 
@@ -116,7 +127,7 @@ Create a `schema.json` file in the root of your project:
 }
 ```
 
-## 3\. Create an R2 bucket and enable R2 Data Catalog
+## 3. Create an R2 bucket and enable R2 Data Catalog
 
 Your sinks write to Iceberg tables in [R2 Data Catalog](https://developers.cloudflare.com/r2-data-catalog/), so you need a bucket with the catalog enabled.
 
@@ -154,7 +165,7 @@ pnpm wrangler r2 bucket catalog enable bluesky-pipeline
 
 When you run this command, note the **Warehouse name**. You will need it to query your data with R2 SQL.
 
-## 4\. Create the stream, sinks, and pipeline
+## 4. Create the stream, sinks, and pipeline
 
 First, create the stream from your schema file:
 
@@ -232,7 +243,7 @@ pnpm wrangler pipelines create bsky_pipeline --sql-file fanout.sql
 
 One pipeline writes to five tables. To add a new event type later, add one sink and one `INSERT` statement. Pipeline SQL cannot be modified after creation, so you delete and recreate the pipeline to change it. To learn more, refer to [Route one stream to multiple tables](https://developers.cloudflare.com/pipelines/pipelines/manage-pipelines/#route-one-stream-to-multiple-tables).
 
-## 5\. Bind the stream to your Worker
+## 5. Bind the stream to your Worker
 
 Add the stream binding, a Durable Object to hold the WebSocket connection, and a [cron trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) to keep the consumer alive. Replace `<STREAM_ID>` with the stream ID from step 4.
 
@@ -242,7 +253,7 @@ Add the stream binding, a Durable Object to hold the WebSocket connection, and a
   "name": "bluesky-pipeline",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-08-25",
+  "compatibility_date": "2026-09-14",
   "pipelines": [
     {
       "binding": "BSKY_STREAM",
@@ -277,7 +288,7 @@ Add the stream binding, a Durable Object to hold the WebSocket connection, and a
 name = "bluesky-pipeline"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[pipelines]]
 binding = "BSKY_STREAM"
@@ -295,11 +306,13 @@ new_sqlite_classes = ["JetstreamConsumer"]
 crons = ["*/2 * * * *"]
 ```
 
-## 6\. Consume the firehose in a Durable Object
+## 6. Consume the firehose in a Durable Object
 
 A [Durable Object](https://developers.cloudflare.com/durable-objects/) is the right home for a long-lived WebSocket. It stays resident while the socket is open, and an [alarm](https://developers.cloudflare.com/durable-objects/api/alarms/) reconnects it if the connection drops. Buffer incoming events and `send()` them to the stream in batches to stay under the 5 MB per request limit. Persist the Jetstream `time_us` cursor so a reconnect resumes without gaps.
 
 Replace the contents of `src/index.ts` with the following:
+
+*src/index.jsjs*
 
 ```js
 import { DurableObject } from "cloudflare:workers";
@@ -446,6 +459,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -615,7 +630,7 @@ yarn wrangler types
 pnpm wrangler types
 ```
 
-## 7\. Deploy and start the consumer
+## 7. Deploy and start the consumer
 
 Deploy the Worker:
 
@@ -661,7 +676,7 @@ yarn wrangler tail
 pnpm wrangler tail
 ```
 
-## 8\. Query the tables with R2 SQL
+## 8. Query the tables with R2 SQL
 
 The first data lands a few minutes after the first events arrive, while the pipeline warms up.
 

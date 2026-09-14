@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Deleting data
 
-Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2-data-catalog/deleting-data/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2-data-catalog/deleting-data/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Deleting data from R2 Data Catalog or any Apache Iceberg catalog requires that operations are done in a transaction through the catalog itself. Manually deleting metadata or data files directly can lead to data catalog corruption.
 
@@ -20,8 +20,8 @@ Deleting data from R2 Data Catalog or any Apache Iceberg catalog requires that o
 
 R2 Data Catalog can automatically manage table maintenance operations such as snapshot expiration and compaction. These continuous operations help keep latency and storage costs down.
 
-* **Snapshot expiration**: Automatically removes old snapshots and the respective unreferenced data files. This reduces both metadata overhead and storage costs.
-* **Compaction**: Merges small data files into larger ones. This optimizes read performance and reduces the number of files read during queries.
+- **Snapshot expiration**: Automatically removes old snapshots and the respective unreferenced data files. This reduces both metadata overhead and storage costs.
+- **Compaction**: Merges small data files into larger ones. This optimizes read performance and reduces the number of files read during queries.
 
 Without enabling automatic maintenance, you need to manually handle these operations.
 
@@ -46,11 +46,11 @@ Refer to additional examples in the [manage catalogs](https://developers.cloudfl
 
 You need to manually delete data for:
 
-* Complying with data retention policies such as GDPR or CCPA.
-* Selective based deletes using conditional logic.
-* Removing stale or unreferenced files that R2 Data Catalog does not manage.
+- Complying with data retention policies such as GDPR or CCPA.
+- Selective based deletes using conditional logic.
+- Removing stale or unreferenced files that R2 Data Catalog does not manage.
 
-The following are basic examples using PySpark but similar operations can be performed using other Iceberg-compatible engines. To configure PySpark, refer to our [example](https://developers.cloudflare.com/r2-data-catalog/config-examples/spark-python/) or the official [PySpark documentation ↗](https://spark.apache.org/docs/latest/api/python/getting%5Fstarted/index.html).
+The following are basic examples using PySpark but similar operations can be performed using other Iceberg-compatible engines. To configure PySpark, refer to our [example](https://developers.cloudflare.com/r2-data-catalog/config-examples/spark-python/) or the official [PySpark documentation ↗](https://spark.apache.org/docs/latest/api/python/getting_started/index.html).
 
 ### Deleting rows from a table
 
@@ -130,79 +130,79 @@ spark.sql("""
 
 Apache Iceberg uses a layered metadata structure to manage table data efficiently. Here are the key components and file structure:
 
-* **metadata.json**: Top-level JSON file pointing to the current snapshot
-* **snapshot-\***: Immutable table state for a given point in time
-* **manifest-list-\*.avro**: An Avro file listing all manifest files for a given snapshot
-* **manifest-file-\*.avro**: An Avro file tracking data files and their statistics
-* **data-\*.parquet**: Parquet files containing actual table data
-* **Note**: Unchanged manifest files are reused across snapshots
+- **metadata.json**: Top-level JSON file pointing to the current snapshot
+- **snapshot-\***: Immutable table state for a given point in time
+- **manifest-list-\*.avro**: An Avro file listing all manifest files for a given snapshot
+- **manifest-file-\*.avro**: An Avro file tracking data files and their statistics
+- **data-\*.parquet**: Parquet files containing actual table data
+- **Note**: Unchanged manifest files are reused across snapshots
 
 Caution
 
 Manually modifying or deleting any of these files directly can lead to data catalog corruption.
 
-* metadata.json **Metadata File** \- Points to current snapshot
-  * Table Schema
-  * Partition Spec
-  * Sort Order
-  * Snapshots
-    * snapshot-3051729675574597004.avro **Snapshot 1** (Historical)
-      * manifest-list-abc123.avro **Manifest List**
-        * manifest-file-001.avro **Manifest File**
-          * data-00001.parquet (10 MB, 50K rows)
-          * data-00002.parquet (12 MB, 60K rows)
-          * data-00003.parquet (11 MB, 55K rows)
-        * manifest-file-002.avro
-          * data-00004.parquet (9 MB, 45K rows)
-          * data-00005.parquet (10 MB, 50K rows)
-    * snapshot-3051729675574597005.avro **Snapshot 2** (Current)
-      * manifest-list-def456.avro **Manifest List**
-        * manifest-file-001.avro _(reused from Snapshot 1)_
-          * data-00001.parquet
-          * data-00002.parquet
-          * data-00003.parquet
-        * manifest-file-003.avro _(new)_
-          * data-00006.parquet (11 MB, 53K rows)
-          * data-00007.parquet (10 MB, 51K rows)
-          * data-00008.parquet (12 MB, 58K rows)
+- metadata.json **Metadata File** - Points to current snapshot
+  - Table Schema
+  - Partition Spec
+  - Sort Order
+  - Snapshots
+    - snapshot-3051729675574597004.avro **Snapshot 1** (Historical)
+      - manifest-list-abc123.avro **Manifest List**
+        - manifest-file-001.avro **Manifest File**
+          - data-00001.parquet (10 MB, 50K rows)
+          - data-00002.parquet (12 MB, 60K rows)
+          - data-00003.parquet (11 MB, 55K rows)
+        - manifest-file-002.avro
+          - data-00004.parquet (9 MB, 45K rows)
+          - data-00005.parquet (10 MB, 50K rows)
+    - snapshot-3051729675574597005.avro **Snapshot 2** (Current)
+      - manifest-list-def456.avro **Manifest List**
+        - manifest-file-001.avro *(reused from Snapshot 1)*
+          - data-00001.parquet
+          - data-00002.parquet
+          - data-00003.parquet
+        - manifest-file-003.avro *(new)*
+          - data-00006.parquet (11 MB, 53K rows)
+          - data-00007.parquet (10 MB, 51K rows)
+          - data-00008.parquet (12 MB, 58K rows)
 
 ### What happens during deletion
 
 Apache Iceberg supports two deletion modes: **Copy-on-Write (COW)** and **Merge-on-Read (MOR)**. Both create a new snapshot and mark old files for cleanup, but handle the deletion differently:
 
-| Aspect                | Copy-on-Write (COW)                      | Merge-on-Read (MOR)                                     |
-| --------------------- | ---------------------------------------- | ------------------------------------------------------- |
-| **How deletes work**  | Rewrites data files without deleted rows | Creates delete files marking rows to skip               |
-| **Query performance** | Fast (no merge needed)                   | Slower (requires read-time merge)                       |
-| **Write performance** | Slower (rewrites data files)             | Fast (only writes delete markers)                       |
-| **Storage impact**    | Creates new data files immediately       | Accumulates delete files over time                      |
-| **Maintenance needs** | Snapshot expiration                      | Snapshot expiration + compaction (rewrite\_data\_files) |
-| **Best for**          | Read-heavy workloads                     | Write-heavy workloads with frequent small mutations     |
+| Aspect | Copy-on-Write (COW) | Merge-on-Read (MOR) |
+| --- | --- | --- |
+| **How deletes work** | Rewrites data files without deleted rows | Creates delete files marking rows to skip |
+| **Query performance** | Fast (no merge needed) | Slower (requires read-time merge) |
+| **Write performance** | Slower (rewrites data files) | Fast (only writes delete markers) |
+| **Storage impact** | Creates new data files immediately | Accumulates delete files over time |
+| **Maintenance needs** | Snapshot expiration | Snapshot expiration + compaction (`rewrite_data_files`) |
+| **Best for** | Read-heavy workloads | Write-heavy workloads with frequent small mutations |
 
 Important for all deletion modes
 
-* Deleted data is **not immediately removed** from R2 - files are marked for cleanup
-* Enable [snapshot expiration](https://developers.cloudflare.com/r2-data-catalog/table-maintenance/) in R2 Data Catalog to automatically clean up old snapshots and files
+- Deleted data is **not immediately removed** from R2 - files are marked for cleanup
+- Enable [snapshot expiration](https://developers.cloudflare.com/r2-data-catalog/table-maintenance/) in R2 Data Catalog to automatically clean up old snapshots and files
 
 ### Common deletion operations
 
 These operations work the same way for both COW and MOR tables:
 
-| Operation             | What it does                    | Data deleted?           | Reversible?                            |
-| --------------------- | ------------------------------- | ----------------------- | -------------------------------------- |
-| DELETE FROM           | Removes rows matching condition | No (marked for cleanup) | Via time travel[1](#user-content-fn-1) |
-| DROP TABLE            | Removes table from catalog      | No                      | Yes (if data files exist)              |
-| DROP TABLE ... PURGE  | Removes table and deletes data  | **Yes**                 | **No**                                 |
-| expire\_snapshots     | Cleans up old snapshots/files   | **Yes**                 | **No**                                 |
-| remove\_orphan\_files | Removes unreferenced files      | **Yes**                 | **No**                                 |
+| Operation | What it does | Data deleted? | Reversible? |
+| --- | --- | --- | --- |
+| `DELETE FROM` | Removes rows matching condition | No (marked for cleanup) | Via time travel<sup>[1](#user-content-fn-1)</sup> |
+| `DROP TABLE` | Removes table from catalog | No | Yes (if data files exist) |
+| `DROP TABLE ... PURGE` | Removes table and deletes data | **Yes** | **No** |
+| `expire_snapshots` | Cleans up old snapshots/files | **Yes** | **No** |
+| `remove_orphan_files` | Removes unreferenced files | **Yes** | **No** |
 
 ### MOR-specific operations
 
 For Merge-on-Read tables, you may need to manually apply deletes for performance:
 
-| Operation                         | What it does                           | When to use                                              |
-| --------------------------------- | -------------------------------------- | -------------------------------------------------------- |
-| rewrite\_data\_files (compaction) | Applies deletes and consolidates files | When query performance degrades due to many delete files |
+| Operation | What it does | When to use |
+| --- | --- | --- |
+| `rewrite_data_files` (compaction) | Applies deletes and consolidates files | When query performance degrades due to many delete files |
 
 Note
 
@@ -210,10 +210,10 @@ R2 Data Catalog can automate [rewriting data files](https://developers.cloudflar
 
 ## Related resources
 
-* [Table maintenance](https://developers.cloudflare.com/r2-data-catalog/table-maintenance/) \- Learn about automatic maintenance operations
-* [R2 Data Catalog](https://developers.cloudflare.com/r2-data-catalog/) \- Overview and getting started guide
-* [Query data](https://developers.cloudflare.com/r2-sql/query-data) \- Query tables with R2 SQL
-* [Apache Iceberg Maintenance ↗](https://iceberg.apache.org/docs/latest/maintenance/) \- Official Iceberg documentation on table maintenance
+- [Table maintenance](https://developers.cloudflare.com/r2-data-catalog/table-maintenance/) - Learn about automatic maintenance operations
+- [R2 Data Catalog](https://developers.cloudflare.com/r2-data-catalog/) - Overview and getting started guide
+- [Query data](https://developers.cloudflare.com/r2-sql/query-data) - Query tables with R2 SQL
+- [Apache Iceberg Maintenance ↗](https://iceberg.apache.org/docs/latest/maintenance/) - Official Iceberg documentation on table maintenance
 
 ## Footnotes
 

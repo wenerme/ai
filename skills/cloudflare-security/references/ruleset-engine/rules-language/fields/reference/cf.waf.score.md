@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.waf.score
 
-`cf.waf.score` `Number`
+`cf.waf.score``Number`
 
 A global score from 1–99 that combines the score of each WAF attack vector into a single score.
 
@@ -19,7 +19,7 @@ This is the standard [WAF attack score](https://developers.cloudflare.com/waf/de
 Requires a Cloudflare Enterprise plan. You must also enable [attack score detection](https://developers.cloudflare.com/waf/detections/attack-score/).
 
 Categories:
-* Request
+- Request
 
 Was this helpful?
 

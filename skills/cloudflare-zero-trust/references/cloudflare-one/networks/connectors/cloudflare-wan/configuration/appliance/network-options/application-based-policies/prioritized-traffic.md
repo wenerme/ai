@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Prioritized traffic
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/application-based-policies/prioritized-traffic/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/application-based-policies/prioritized-traffic/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Prioritized traffic allows you to define which applications Cloudflare One Appliance (formerly Magic WAN Connector) should process first. Applications not in the list will be queued behind prioritized traffic.
 
@@ -24,17 +24,28 @@ Prioritized traffic will not work for applications that use DNS-over-HTTPS.
 
 ## Add an application to your account
 
-Before you can add or remove Prioritized traffic applications to your Cloudflare One Appliance, you need to create an account-level list with the applications that you want to configure. Currently, adding to or modifying this list is only possible via API, through the [managed\_app\_id](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/apps/methods/create/) endpoint.
+Before you can add or remove Prioritized traffic applications to your Cloudflare One Appliance, you need to create an account-level list with the applications that you want to configure. Currently, adding to or modifying this list is only possible via API, through the [`managed_app_id`](https://developers.cloudflare.com/api/resources/magic_transit/subresources/apps/methods/create/) endpoint.
 
 To add applications to your account:
 
 Send a `POST` request to add new apps to your account.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Magic WAN Write`
-* `Magic Transit Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Magic WAN Write</code>
+- <code>Magic Transit Write</code>
+
+</details>
+
+*Create a new Appbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/apps" \
@@ -67,7 +78,7 @@ You can now add this new app to the Prioritized traffic list in your Cloudflare 
 You need to configure Prioritized traffic applications for each of your existing sites, as this is a per-site configuration.
 
 1. Log in to the [Cloudflare One dashboard ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
-2. Go to **Connectors** \> **Appliances** \> **Profiles**.
+2. Go to **Connectors** > **Appliances** > **Profiles**.
 3. Select the Cloudflare One Appliance you want to configure > **Edit**.
 4. Select **Traffic Steering**.
 5. In **Prioritized traffic**, select **Create**.
@@ -80,65 +91,84 @@ Note
 
 You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
 
-1. Send a `GET` [request](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/apps/methods/list/) to list the applications associated with an account.
-Required API token permissions
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-  * `Magic WAN Write`
-  * `Magic WAN Read`
-  * `Magic Transit Read`
-  * `Magic Transit Write`
-```bash
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/apps" \
-	--request GET \
-	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-```
-```json
-	{
-		"result": [
-			{
-				"managed_app_id": "<APP_ID>",
-				"name": "<APP_NAME>",
-				"type": "File Sharing",
-				"hostnames": [
-					"<app_name.com>",
-					"<app-name.info>"
-				]
-			}
-		]
-	}
-```
-Take note of the `"managed_app_id"` value for any application you want to add.
-2. Send a `POST` request to add new apps to the Prioritized traffic policy.
-Required API token permissions
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-  * `Magic WAN Write`
-  * `Magic Transit Write`
-```bash
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/app_configs" \
-	--request POST \
-	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-	--json '{
-		"managed_app_id": "<MANAGED_APP_ID>",
-		"breakout": true
-	}'
-```
-```json
-{
-	"result": {
-		"account_app_id": "<APP_ID>",
-		"name": "<APP_NAME>",
-		"type": "<BREAKOUT_OR_PRIORITY>"
-	},
-	"success": true,
-	"errors": [],
-	"messages": []
-}
-```
+1. Send a `GET` [request](https://developers.cloudflare.com/api/resources/magic_transit/subresources/apps/methods/list/) to list the applications associated with an account.<details><summary>
+
+   Required API token permissions</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+   - <code>Magic WAN Write</code>
+   - <code>Magic WAN Read</code>
+   - <code>Magic Transit Read</code>
+   - <code>Magic Transit Write</code></details>
+
+   *List Appsbash*
+
+
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/apps" \
+   	--request GET \
+   	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+   ```
+
+   ```json
+   	{
+   		"result": [
+   			{
+   				"managed_app_id": "<APP_ID>",
+   				"name": "<APP_NAME>",
+   				"type": "File Sharing",
+   				"hostnames": [
+   					"<app_name.com>",
+   					"<app-name.info>"
+   				]
+   			}
+   		]
+   	}
+   ```
+
+   Take note of the `"managed_app_id"` value for any application you want to add.
+2. Send a `POST` request to add new apps to the Prioritized traffic policy.<details><summary>
+
+   Required API token permissions</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+   - <code>Magic WAN Write</code>
+   - <code>Magic Transit Write</code></details>
+
+   *Create a new App Configbash*
+
+
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/app_configs" \
+   	--request POST \
+   	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+   	--json '{
+   		"managed_app_id": "<MANAGED_APP_ID>",
+   		"breakout": true
+   	}'
+   ```
+
+   ```json
+   {
+   	"result": {
+   		"account_app_id": "<APP_ID>",
+   		"name": "<APP_NAME>",
+   		"type": "<BREAKOUT_OR_PRIORITY>"
+   	},
+   	"success": true,
+   	"errors": [],
+   	"messages": []
+   }
+   ```
+
+
 
 ### Delete an application from Cloudflare One Appliance
 
 1. Log in to the [Cloudflare One dashboard ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
-2. Go to **Connectors** \> **Appliances** \> **Profiles**.
+2. Go to **Connectors** > **Appliances** > **Profiles**.
 3. Select the Appliance you want to configure > **Edit**.
 4. Select **Traffic Steering**.
 5. In **Prioritized traffic**, find the application you want to delete > select the **three dots** next to it > **Remove application traffic**.
@@ -150,49 +180,62 @@ You will need your [account ID](https://developers.cloudflare.com/fundamentals/a
 
 You need to delete Prioritized traffic applications for each of your existing sites, as this is a per-site configuration.
 
-1. Send a [GET request](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/apps/methods/list/) to list the applications associated with a site.
-Required API token permissions
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-  * `Magic WAN Write`
-  * `Magic WAN Read`
-  * `Magic Transit Read`
-  * `Magic Transit Write`
-```bash
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/app_configs" \
-	--request GET \
-	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-```
-```json
-	{
-		"result": [
-			{
-				"id": "<APP_ID>",
-				"site_id": "<SITE_ID>",
-				"managed_app_id": "<APP_NAME>",
-				"breakout": true
-			}
-		]
-	}
-```
-Take note of the `"id"` value for the application that you want to delete.
+1. Send a [`GET` request](https://developers.cloudflare.com/api/resources/magic_transit/subresources/apps/methods/list/) to list the applications associated with a site.<details><summary>
+
+   Required API token permissions</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+   - <code>Magic WAN Write</code>
+   - <code>Magic WAN Read</code>
+   - <code>Magic Transit Read</code>
+   - <code>Magic Transit Write</code></details>
+
+   *List App Configsbash*
+
+
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/app_configs" \
+   	--request GET \
+   	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+   ```
+
+   ```json
+   	{
+   		"result": [
+   			{
+   				"id": "<APP_ID>",
+   				"site_id": "<SITE_ID>",
+   				"managed_app_id": "<APP_NAME>",
+   				"breakout": true
+   			}
+   		]
+   	}
+   ```
+
+   Take note of the `"id"` value for the application that you want to delete.
 2. Send a `DELETE` request to delete an application from the Prioritized traffic policy.
-```bash
-curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/sites/%7Bsite_id%7D/app_configs/%7Bid%7D" \
-	--request DELETE
-```
-```json
-{
-		"result": {
-				"id": "<APP_ID>",
-				"site_id": "<SITE_ID>",
-				"managed_app_id": "<APP_NAME>",
-				"breakout": true
-		},
-		"success": true,
-		"errors": [],
-		"messages": []
-}
-```
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/sites/%7Bsite_id%7D/app_configs/%7Bid%7D" \
+   	--request DELETE
+   ```
+
+   ```json
+   {
+   		"result": {
+   				"id": "<APP_ID>",
+   				"site_id": "<SITE_ID>",
+   				"managed_app_id": "<APP_NAME>",
+   				"breakout": true
+   		},
+   		"success": true,
+   		"errors": [],
+   		"messages": []
+   }
+   ```
+
+
 
 Was this helpful?
 

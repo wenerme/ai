@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Changelog
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web-analytics/changelog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web-analytics/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare occasionally updates the `beacon.min.js` file to improve Web Analytics functionality. The table below includes a log of what changed in the `beacon.min.js` file and when.
 
@@ -28,7 +28,7 @@ Cloudflare occasionally updates the `beacon.min.js` file to improve Web Analytic
 
 ## 2026-08-20
 
-Updated Google's web-vitals library to version 6.1.0\. In order to improve the accuracy of tracking soft navigations (i.e. those used by Single Page Applications), we've introduced support for [Google's new Soft Navigations API](https://developer.chrome.com/docs/web-platform/soft-navigations) available in Chromium-based browsers (e.g. Chrome, Edge, Opera) and added an improved fallback for non-Chromium browsers (e.g. Safari and Firefox) using [the Navigation API](https://developer.mozilla.org/en-US/docs/Web/API/Navigation%5FAPI). For more information, see [Web Analytics for SPAs](https://developers.cloudflare.com/web-analytics/get-started/web-analytics-spa/).
+Updated Google's web-vitals library to version 6.1.0. In order to improve the accuracy of tracking soft navigations (i.e. those used by Single Page Applications), we've introduced support for [Google's new Soft Navigations API](https://developer.chrome.com/docs/web-platform/soft-navigations) available in Chromium-based browsers (e.g. Chrome, Edge, Opera) and added an improved fallback for non-Chromium browsers (e.g. Safari and Firefox) using [the Navigation API](https://developer.mozilla.org/en-US/docs/Web/API/Navigation_API). For more information, see [Web Analytics for SPAs](https://developers.cloudflare.com/web-analytics/get-started/web-analytics-spa/).
 
 ## 2026-07-13
 
@@ -88,7 +88,7 @@ Improved site filtering.
 
 ## 2021-11-16
 
-When using the automatic installation feature of the JavaScript Beacon (available only to customers proxied through Cloudflare - also known as orange-clouded customers), [Subresource Integrity (SRI)](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource%5FIntegrity) is now enabled by default. SRI is a security feature that enables browsers to verify that resources they fetch are delivered without unexpected manipulation.
+When using the automatic installation feature of the JavaScript Beacon (available only to customers proxied through Cloudflare - also known as orange-clouded customers), [Subresource Integrity (SRI)](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity) is now enabled by default. SRI is a security feature that enables browsers to verify that resources they fetch are delivered without unexpected manipulation.
 
 ## 2021-09-01
 

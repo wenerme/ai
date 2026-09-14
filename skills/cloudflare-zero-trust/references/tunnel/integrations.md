@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Integrations
 
-Last updated Sep 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/integrations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/integrations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Tunnel integrates with other Cloudflare products to extend connectivity, security, and availability for your applications.
 
@@ -20,9 +20,9 @@ Cloudflare Tunnel integrates with other Cloudflare products to extend connectivi
 
 Beyond publishing public applications, Cloudflare Tunnel is the connectivity layer for [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) — Cloudflare's SASE platform. The same post-quantum encrypted tunnels that serve your public applications can also serve private traffic when combined with the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/):
 
-* **Private applications** — Expose internal web apps, SSH servers, RDP hosts, and other services to authenticated users without making them publicly reachable.
-* **Private networks** — Route entire IP ranges (RFC 1918, custom CIDRs) through a tunnel, replacing site-to-site VPNs. Users on Cloudflare One Client-enrolled devices reach private IPs as if they were on your private network.
-* **Network traffic filtering** — Apply DNS, HTTP, and network-level policies through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) to all traffic flowing through the tunnel.
+- **Private applications** — Expose internal web apps, SSH servers, RDP hosts, and other services to authenticated users without making them publicly reachable.
+- **Private networks** — Route entire IP ranges (RFC 1918, custom CIDRs) through a tunnel, replacing site-to-site VPNs. Users on Cloudflare One Client-enrolled devices reach private IPs as if they were on your private network.
+- **Network traffic filtering** — Apply DNS, HTTP, and network-level policies through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) to all traffic flowing through the tunnel.
 
 If you are using Cloudflare Tunnel for Zero Trust network access, VPN replacement, or private network connectivity, refer to the [Cloudflare One Tunnel documentation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) for setup and configuration.
 

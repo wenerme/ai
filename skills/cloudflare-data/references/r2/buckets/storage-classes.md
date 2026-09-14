@@ -12,22 +12,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Storage classes
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/buckets/storage-classes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/buckets/storage-classes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Storage classes allow you to trade off between the cost of storage and the cost of accessing data. Every object stored in R2 has an associated storage class.
 
 All storage classes share the following characteristics:
 
-* Compatible with Workers API, S3 API, and public buckets.
-* 99.999999999% (eleven 9s) of annual durability.
-* No minimum object size.
+- Compatible with Workers API, S3 API, and public buckets.
+- 99.999999999% (eleven 9s) of annual durability.
+- No minimum object size.
 
 ## Available storage classes
 
-| Storage class     | Minimum storage duration | Data retrieval fees (processing) | Egress fees (data transfer to Internet) |
-| ----------------- | ------------------------ | -------------------------------- | --------------------------------------- |
-| Standard          | None                     | None                             | None                                    |
-| Infrequent Access | 30 days                  | Yes                              | None                                    |
+| Storage class | Minimum storage duration | Data retrieval fees (processing) | Egress fees (data transfer to Internet) |
+| --- | --- | --- | --- |
+| Standard | None | None | None |
+| Infrequent Access | 30 days | Yes | None |
 
 For more information on how storage classes impact pricing, refer to [Pricing](https://developers.cloudflare.com/r2/pricing/).
 
@@ -37,11 +37,11 @@ Standard storage is designed for data that is accessed frequently. This is the d
 
 #### Example use cases
 
-* Website and application data
-* Media content (e.g., images, video)
-* Storing large datasets for analysis and processing
-* AI training data
-* Other workloads involving frequently accessed data
+- Website and application data
+- Media content (e.g., images, video)
+- Storing large datasets for analysis and processing
+- AI training data
+- Other workloads involving frequently accessed data
 
 ### Infrequent Access storage
 
@@ -53,9 +53,9 @@ For objects stored in Infrequent Access storage, you will be charged for the obj
 
 #### Example use cases
 
-* Long-term data archiving (for example, logs and historical records needed for compliance)
-* Data backup and disaster recovery
-* Long tail user-generated content
+- Long-term data archiving (for example, logs and historical records needed for compliance)
+- Data backup and disaster recovery
+- Long tail user-generated content
 
 ## Set default storage class for buckets
 
@@ -79,7 +79,7 @@ To learn more about how to transition objects from Standard storage to Infrequen
 
 ## Change storage class for objects
 
-You can change the storage class of an object which is already stored in R2 using the [CopyObject API ↗](https://docs.aws.amazon.com/AmazonS3/latest/API/API%5FCopyObject.html).
+You can change the storage class of an object which is already stored in R2 using the [`CopyObject` API ↗](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CopyObject.html).
 
 Use the `x-amz-storage-class` header to change between `STANDARD` and `STANDARD_IA`.
 
@@ -94,8 +94,8 @@ aws s3api copy-object \
   --storage-class STANDARD_IA
 ```
 
-* Refer to [aws CLI](https://developers.cloudflare.com/r2/examples/aws/aws-cli/) for more information on using `aws CLI`.
-* Refer to [object-level operations](https://developers.cloudflare.com/r2/api/s3/api/#object-level-operations) for the full list of object-level API operations with R2-compatible S3 API.
+- Refer to [aws CLI](https://developers.cloudflare.com/r2/examples/aws/aws-cli/) for more information on using `aws CLI`.
+- Refer to [object-level operations](https://developers.cloudflare.com/r2/api/s3/api/#object-level-operations) for the full list of object-level API operations with R2-compatible S3 API.
 
 Was this helpful?
 

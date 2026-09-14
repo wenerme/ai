@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Ray ID
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A **Cloudflare Ray ID** is an identifier given to every request that goes through Cloudflare.
 

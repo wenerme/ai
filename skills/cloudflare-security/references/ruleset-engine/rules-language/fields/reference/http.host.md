@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # http.host
 
-`http.host` `String`
+`http.host``String`
 
 The hostname used in the full request URI.
 
@@ -23,8 +23,8 @@ Example value:
 ```
 
 Categories:
-* Request
-* URI
+- Request
+- URI
 
 Was this helpful?
 

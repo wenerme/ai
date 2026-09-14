@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Audit Logs - version 2
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Audit Logs are account-based. All user-initiated actions are recorded automatically across both the Cloudflare API and dashboard. System-initiated logs are also captured to reflect actions taken automatically by Cloudflare systems, such as configuration updates, background processes, or internal policy enforcement.
 
@@ -30,25 +30,25 @@ A transition plan from Audit Logs v1 to Audit Logs v2 will be communicated in du
 
 Audit Logs (version 2) provide a unified and standardized system for tracking and recording actions across Cloudflare products. This system enhances transparency and accountability by offering comprehensive insights into user-initiated and system-initiated activities within your Cloudflare environment.
 
-* **Standardized logging**: Audit logs are automatically generated in a consistent format across all Cloudflare services, ensuring uniformity and eliminating inconsistencies.
-* **Expanded product coverage**: Audit Logs covers \~95% of Cloudflare products, capturing actions from key endpoints, such as `/accounts`, `/zones`, `/user`, and `/memberships` APIs.
-* **Granular filtering**: Uniformly formatted logs allow for precise filtering by actions, actors, methods, and resources, facilitating efficient investigations.
-* **Enhanced context and transparency**: Each log entry includes detailed context, such as the authentication method used, the interface (API or dashboard) through which the action was performed, and mappings to Cloudflare Ray IDs for improved traceability.
-* **Comprehensive activity capture**: Audit Logs records create, update, and delete actions across all supported products. Selective logging of `GET` requests for sensitive read operations is planned for a future release.
+- **Standardized logging**: Audit logs are automatically generated in a consistent format across all Cloudflare services, ensuring uniformity and eliminating inconsistencies.
+- **Expanded product coverage**: Audit Logs covers \~95% of Cloudflare products, capturing actions from key endpoints, such as `/accounts`, `/zones`, `/user`, and `/memberships` APIs.
+- **Granular filtering**: Uniformly formatted logs allow for precise filtering by actions, actors, methods, and resources, facilitating efficient investigations.
+- **Enhanced context and transparency**: Each log entry includes detailed context, such as the authentication method used, the interface (API or dashboard) through which the action was performed, and mappings to Cloudflare Ray IDs for improved traceability.
+- **Comprehensive activity capture**: Audit Logs records create, update, and delete actions across all supported products. Selective logging of `GET` requests for sensitive read operations is planned for a future release.
 
 ## Retention
 
-* Audit logs are retained for 18 months before being deleted. No additional setup is required.
-* In the Audit Logs v2 UI, queries are limited to the most recent 90 days for performance reasons. To access the full 18 months of data, use the API or [Logpush](https://developers.cloudflare.com/logs/logpush/).
-* Enterprise customers can use [Logpush](https://developers.cloudflare.com/logs/logpush/) to store audit logs beyond 18 months.
+- Audit logs are retained for 18 months before being deleted. No additional setup is required.
+- In the Audit Logs v2 UI, queries are limited to the most recent 90 days for performance reasons. To access the full 18 months of data, use the API or [Logpush](https://developers.cloudflare.com/logs/logpush/).
+- Enterprise customers can use [Logpush](https://developers.cloudflare.com/logs/logpush/) to store audit logs beyond 18 months.
 
 Note
 
-Approximately 30 days of logs from the Beta period (back to \~February 8, 2026) are available at GA. These Beta logs will expire on \~April 9, 2026\. Logs generated after GA will be retained for the full 18 months. Older logs remain available in Audit Logs v1.
+Approximately 30 days of logs from the Beta period (back to \~February 8, 2026) are available at GA. These Beta logs will expire on \~April 9, 2026. Logs generated after GA will be retained for the full 18 months. Older logs remain available in Audit Logs v1.
 
 ## Customer Metadata Boundary
 
-Audit Logs v2 supports [Customer Metadata Boundary (CMB)](https://developers.cloudflare.com/data-localization/metadata-boundary/). The account-level CMB preference automatically applies to Audit Logs v2\. For example, if you select `eu`, Audit Logs v2 uses the EU metadata boundary. You do not need to configure Audit Logs separately.
+Audit Logs v2 supports [Customer Metadata Boundary (CMB)](https://developers.cloudflare.com/data-localization/metadata-boundary/). The account-level CMB preference automatically applies to Audit Logs v2. For example, if you select `eu`, Audit Logs v2 uses the EU metadata boundary. You do not need to configure Audit Logs separately.
 
 To configure CMB in the Cloudflare dashboard or via the `/accounts/{account_id}/logs/control/cmb/config` API, refer to [Get started with Customer Metadata Boundary](https://developers.cloudflare.com/data-localization/metadata-boundary/get-started/). CMB is part of the Data Localization Suite. Contact your account team if CMB is not enabled for your account.
 
@@ -66,13 +66,15 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/logs/audit
 
 Below is an example request to retrieve audit logs for a certain period of time along with its corresponding response. Replace the example values in the URL with your actual values:
 
-* `account_id`: Your Cloudflare account identifier.
-* `since` (required): Start date for the audit log retrieval. Accepts `yyyy-mm-dd` (interpreted as UTC) or RFC3339 timestamp (`yyyy-mm-ddTHH:MM:SSZ`).
-* `before` (required): End date for the audit log retrieval. Same format as `since`.
+- `account_id`: Your Cloudflare account identifier.
+- `since` (required): Start date for the audit log retrieval. Accepts `yyyy-mm-dd` (interpreted as UTC) or RFC3339 timestamp ( `yyyy-mm-ddTHH:MM:SSZ`).
+- `before` (required): End date for the audit log retrieval. Same format as `since`.
 
 ```bash
 GET https://api.cloudflare.com/client/v4/accounts/1234567890abcdef/logs/audit?since=2025-03-01T00:00:00Z&before=2025-03-26T23:59:59Z
 ```
+
+*Example responsejson*
 
 ```json
 {
@@ -102,13 +104,13 @@ GET https://api.cloudflare.com/client/v4/accounts/1234567890abcdef/logs/audit?si
 }
 ```
 
-For more information refer to the [API documentation ↗](https://developers.cloudflare.com/api/resources/accounts/subresources/logs/subresources/audit/methods/list/#%28params%29%20default%20%3E%20%28param%29%20since%20%3E%20%28schema%29).
+For more information refer to the [API documentation ↗](<https://developers.cloudflare.com/api/resources/accounts/subresources/logs/subresources/audit/methods/list/#(params)%20default%20%3E%20(param)%20since%20%3E%20(schema)>).
 
 ### Dashboard
 
-To access audit logs in the Cloudflare dashboard, go to **Manage Account** \> **Audit Logs**.
+To access audit logs in the Cloudflare dashboard, go to **Manage Account** > **Audit Logs**.
 
-[Go to **Audit logs** ↗](https://dash.cloudflare.com/?to=/:account/audit-log)
+[Go to **Audit logs** ↗](https://dash.cloudflare.com/?to=/:account/audit-log)
 
 Note
 
@@ -120,10 +122,10 @@ The account-level Audit Logs v2 dashboard includes analytics for the selected ti
 
 Select a summary card to view more details:
 
-* **Total actions**: Action types and authentication methods
-* **Unique actors**: Actors with the most actions
-* **Products impacted**: Products with the most actions
-* **Failure rate**: Failed actions and their HTTP status codes
+- **Total actions**: Action types and authentication methods
+- **Unique actors**: Actors with the most actions
+- **Products impacted**: Products with the most actions
+- **Failure rate**: Failed actions and their HTTP status codes
 
 To focus the analytics and audit log table on a value, select **Filter** or **Exclude** from a detail panel. The analytics, table, filters, and time range remain synchronized.
 
@@ -135,15 +137,14 @@ Account analytics are available for account-level audit logs. They are not avail
 
 Note
 
-For customers who already have a Logpush job set up for Audit Logs v1, note that a separate Logpush job must be configured for [Audit Logs v2](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/audit%5Flogs%5Fv2/) (dataset). We will communicate the timeline for when Logpush Audit Logs v1 will be deprecated and turned off.
+For customers who already have a Logpush job set up for Audit Logs v1, note that a separate Logpush job must be configured for [Audit Logs v2](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/audit_logs_v2/) (dataset). We will communicate the timeline for when Logpush Audit Logs v1 will be deprecated and turned off.
 
 To create a Logpush job:
 
-1. In the Cloudflare dashboard, go to the **Logpush** page.
-[Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/logs)
+1. In the Cloudflare dashboard, go to the **Logpush** page. [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/logs)
 2. Select **Create a Logpush job**.
 3. In **Select a destination**, select the destination of your choice and add the destination details.
-4. In the datasets section, select the [Audit Logs v2 dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/audit%5Flogs%5Fv2/). Audit Logs v2 is an account-based dataset.
+4. In the datasets section, select the [Audit Logs v2 dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/audit_logs_v2/). Audit Logs v2 is an account-based dataset.
 5. Once you are done configuring your logpush job, select **Submit**.
 
 ## Resource History
@@ -158,7 +159,7 @@ For any audit log entry, Resource History retrieves every other audit log entry 
 
 ### Use Resource History in the dashboard
 
-1. Go to **Manage Account** \> **Audit Logs**.
+1. Go to **Manage Account** > **Audit Logs**.
 2. Open any audit log entry.
 3. Select the **History** tab to see the full history for the resource that entry describes.
 4. In the history view, select any earlier entry to see a side-by-side diff of the fields that changed between it and the current entry.
@@ -187,26 +188,37 @@ Required API token permissions
 
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 
-* `Account Settings Read`
-* `Account Settings Write`
+- `Account Settings Read`
+- `Account Settings Write`
 
 The endpoint requires three query parameters:
 
-* `action_time` (required): RFC3339 timestamp of the source audit log entry's action time. Provide the `action.time` value from the audit log identified by `{id}`. This narrows the source-entry lookup window.
-* `since` (required): Limits returned results to entries newer than this date. Accepts a date string (`2024-10-30`, interpreted as UTC) or an RFC3339 timestamp.
-* `before` (required): Limits returned results to entries older than this date. Same format as `since`.
+- `action_time` (required): RFC3339 timestamp of the source audit log entry's action time. Provide the `action.time` value from the audit log identified by `{id}`. This narrows the source-entry lookup window.
+- `since` (required): Limits returned results to entries newer than this date. Accepts a date string ( `2024-10-30`, interpreted as UTC) or an RFC3339 timestamp.
+- `before` (required): Limits returned results to entries older than this date. Same format as `since`.
 
 Optional query parameters:
 
-* `direction`: `desc` (default) or `asc`.
-* `limit`: Number of entries to return per page. Default `100`.
-* `cursor`: Pagination cursor from a previous response's `result_info.cursor`.
+- `direction`: `desc` (default) or `asc`.
+- `limit`: Number of entries to return per page. Default `100`.
+- `cursor`: Pagination cursor from a previous response's `result_info.cursor`.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Account Settings Write`
-* `Account Settings Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Account Settings Write</code>
+- <code>Account Settings Read</code>
+
+</details>
+
+*Get resource change history from an account audit log entry (Version 2)bash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logs/audit/$ID/history" \
@@ -218,9 +230,9 @@ Each entry in `result` has the same shape as an entry returned by the Audit Logs
 
 The `result_info.history_status` field indicates the quality of resource identification used to build the history:
 
-* `exact`: The source entry contained a resource URI, so the history was built from an exact resource match.
-* `approximate`: The source entry did not contain a resource URI, so the history was built from an approximate match (other resources of the same product and type). The dashboard surfaces this state with a warning banner.
-* `unavailable`: The source entry did not contain enough information to identify the resource. `result` is empty. This can happen for certain system-initiated events.
+- `exact`: The source entry contained a resource URI, so the history was built from an exact resource match.
+- `approximate`: The source entry did not contain a resource URI, so the history was built from an approximate match (other resources of the same product and type). The dashboard surfaces this state with a warning banner.
+- `unavailable`: The source entry did not contain enough information to identify the resource. `result` is empty. This can happen for certain system-initiated events.
 
 Resource History reflects the audit log entries currently retained by Audit Logs v2 (refer to [Retention](#retention)). Entries older than the retention window are not returned. Resource History is a query-time capability and is not exposed as additional fields in the `audit_logs_v2` Logpush dataset.
 
@@ -236,9 +248,9 @@ Audit logs can be initiated either by users or the system. Understanding the typ
 
 Track actions performed directly by users through Cloudflare interfaces (dashboard or API). These logs capture who performed the action, when it occurred, and what resource was affected. User initiated actions can be performed by three actors:
 
-* `actor_type="user"`: Action was performed by an individual user.
-* `actor_type="Cloudflare_admin"`: Action was performed by Cloudflare.
-* `actor_type="account"`: Action was performed using an account API token. Refer to the [Account API tokens](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) documentation for more information.
+- `actor_type="user"`: Action was performed by an individual user.
+- `actor_type="Cloudflare_admin"`: Action was performed by Cloudflare.
+- `actor_type="account"`: Action was performed using an account API token. Refer to the [Account API tokens](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) documentation for more information.
 
 #### System initiated Audit Logs
 
@@ -276,7 +288,7 @@ GET https://api.cloudflare.com/client/v4/organizations/{organization_id}/logs/au
 
 ##### Dashboard access
 
-To access organization audit logs in the Cloudflare dashboard, go to **Organizations** \> _(select your organization)_ \> **Manage Organization** \> **Audit Logs**.
+To access organization audit logs in the Cloudflare dashboard, go to **Organizations** > *(select your organization)* > **Manage Organization** > **Audit Logs**.
 
 If you are viewing account-level audit logs and the account belongs to an organization where you are an Organization Super Administrator, you can navigate to the parent organization's audit logs using the **View Organization Audit Logs** button.
 
@@ -290,17 +302,30 @@ This release covers user-initiated actions only. Support for system-initiated ac
 
 Use the following example to get a list of audit logs for a Cloudflare account.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Account Settings Write`
-* `Account Settings Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Account Settings Write</code>
+- <code>Account Settings Read</code>
+
+</details>
+
+*Get account audit logs (Version 2)bash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logs/audit" \
 	--request GET \
 	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
+
+*Example responsejson*
 
 ```json
 {
@@ -365,12 +390,12 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logs/audit" \
 
 The actor represents who performed the action. It includes identity attributes like user ID, email address, IP address, and the type of actor (`user`, `account`, `Cloudflare_admin`, or `system`). It also includes the context used to initiate the action:
 
-* `api`: The action was performed through the API. The specific credential type was not recorded.
-* `api_key`: The action was authenticated with a Cloudflare Global API Key.
-* `api_token`: The action was authenticated with an API token.
-* `dash`: The action was performed through the Cloudflare dashboard.
-* `oauth`: The action was authenticated with an OAuth token.
-* `origin_ca_key`: The action was authenticated with an Origin CA key.
+- `api`: The action was performed through the API. The specific credential type was not recorded.
+- `api_key`: The action was authenticated with a Cloudflare Global API Key.
+- `api_token`: The action was authenticated with an API token.
+- `dash`: The action was performed through the Cloudflare dashboard.
+- `oauth`: The action was authenticated with an OAuth token.
+- `origin_ca_key`: The action was authenticated with an Origin CA key.
 
 ### Action
 

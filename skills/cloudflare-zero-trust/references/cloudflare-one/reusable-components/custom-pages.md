@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Custom pages
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [Block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/)
-* [App Launcher customization](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/app-launcher-customization/)
-* [Access login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/)
-* [Access custom block pages](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-block-page/)
+- [Block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/)
+- [App Launcher customization](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/app-launcher-customization/)
+- [Access login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/)
+- [Access custom block pages](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-block-page/)
 
 Was this helpful?
 

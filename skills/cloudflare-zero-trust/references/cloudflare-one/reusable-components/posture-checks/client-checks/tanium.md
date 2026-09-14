@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Tanium (legacy)
 
-Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/tanium/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/tanium/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -26,8 +26,8 @@ The legacy Tanium integration cannot be used in [Gateway network policies](https
 
 ## Prerequisites
 
-* Tanium Core Platform version 7.2 or later
-* Cloudflare One Client is [deployed](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/) on the device. For a list of supported modes and operating systems, refer to [Access integrations](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/access-integrations/).
+- Tanium Core Platform version 7.2 or later
+- Cloudflare One Client is [deployed](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/) on the device. For a list of supported modes and operating systems, refer to [Access integrations](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/access-integrations/).
 
 ## Integrate Tanium with Cloudflare Access
 
@@ -35,15 +35,17 @@ Note
 
 The integration does not currently support Safari.
 
-1. Configure your Tanium deployment using the [step-by-step documentation ↗](https://docs.tanium.com/endpoint%5Fidentity/endpoint%5Fidentity/userguide.html) provided. You will need the public key to integrate your Tanium deployment with Cloudflare Access.
-2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Posture checks**.
+1. Configure your Tanium deployment using the [step-by-step documentation ↗](https://docs.tanium.com/endpoint_identity/endpoint_identity/userguide.html) provided. You will need the public key to integrate your Tanium deployment with Cloudflare Access.
+2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Posture checks**.
 3. Go to **Cloudflare One Client checks** and select **Add a check**.
 4. Select **Tanium** from the list of providers.
 5. Enter any **Name** for the integration.
 6. For **Port**, enter `17472`.
-This is the default port used by the Tanium endpoints to communicate inbound and outbound with Cloudflare Access. You may need to modify it to reflect your organization's deployment.
+
+   This is the default port used by the Tanium endpoints to communicate inbound and outbound with Cloudflare Access. You may need to modify it to reflect your organization's deployment.
 7. Input the public certificate generated in Step 1.
-Adding the certificate allows Cloudflare to validate that the response from the Tanium agent is valid.
+
+   Adding the certificate allows Cloudflare to validate that the response from the Tanium agent is valid.
 
 You can now build [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) that check [device posture signals](#tanium-endpoint-signals) from the Tanium endpoint.
 
@@ -51,17 +53,17 @@ You can now build [Access policies](https://developers.cloudflare.com/cloudflare
 
 This example will only grant access to users who are part of your team's email domain and running the Tanium agent.
 
-| Action | Rule type | Selector                | Value     |
-| ------ | --------- | ----------------------- | --------- |
-| Allow  | Include   | Emails Ending in        | @team.com |
-|        | Require   | Device Posture - Tanium | Managed   |
+| Action | Rule type | Selector | Value |
+| --- | --- | --- | --- |
+| Allow | Include | Emails Ending in | `@team.com` |
+|  | Require | Device Posture - Tanium | `Managed` |
 
 The Tanium rule will require that the device connecting is managed in your Tanium deployment and has checked into the Tanium server in the last 7 days.
 
 ## Tanium endpoint signals
 
-| Signal  | Value   | Description                                                                 |
-| ------- | ------- | --------------------------------------------------------------------------- |
+| Signal | Value | Description |
+| --- | --- | --- |
 | Managed | Boolean | Validates that the device is managed in your organization's Tanium account. |
 
 Was this helpful?

@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Traffic types
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/traffic-types/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/traffic-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Network Firewall enables you to allow or block traffic on a variety of packet characteristics, including:
 
-* **Source and destination IP** — the sender's and receiver's IP addresses
-* **Source and destination port** — the numeric port identifying the specific service (for example, port 80 for HTTP)
-* **Protocol** — the communication method, such as TCP or UDP
-* **Packet length** — the size of the packet in bytes
-* **Bit field match** — inspect individual flags within packet headers
+- **Source and destination IP** — the sender's and receiver's IP addresses
+- **Source and destination port** — the numeric port identifying the specific service (for example, port 80 for HTTP)
+- **Protocol** — the communication method, such as TCP or UDP
+- **Packet length** — the size of the packet in bytes
+- **Bit field match** — inspect individual flags within packet headers
 
 Cloudflare Network Firewall operates at OSI layers 3 and 4 — the network layer (IP addressing and routing) and transport layer (port-based connections). It supports protocols such as TCP (reliable, ordered connections), UDP (fast, connectionless messages), and ICMP (network diagnostic messages like ping). You can write rules against any layer 3 or 4 protocol, not only TCP and UDP.
 

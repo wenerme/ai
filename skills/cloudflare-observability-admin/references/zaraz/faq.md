@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # FAQ
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/zaraz/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Below you will find answers to our most commonly asked questions. If you cannot find the answer you are looking for, refer to the [community page ↗](https://community.cloudflare.com/) or [Discord channel ↗](https://discord.cloudflare.com) to explore additional resources.
 
-* [General](#general)
-* [Tools](#tools)
-* [Consent](#consent)
+- [General](#general)
+- [Tools](#tools)
+- [Consent](#consent)
 
 If you're looking for information regarding Zaraz Pricing, see the [Zaraz Pricing](https://developers.cloudflare.com/zaraz/pricing-info/) page.
 
@@ -41,10 +41,10 @@ To check if the script is loading correctly, follow these steps:
 
 If Zaraz is not loading, please verify the following:
 
-* The domain running Zaraz [is proxied by Cloudflare](https://developers.cloudflare.com/dns/proxy-status/).
-* Auto Injection is enabled in your [Zaraz Settings](https://developers.cloudflare.com/zaraz/reference/settings/#auto-inject-script).
-* Your website's HTML is valid and includes `<head>` and `</head>` tags.
-* You have at least [one enabled tool](https://developers.cloudflare.com/zaraz/get-started/) configured in Zaraz.
+- The domain running Zaraz [is proxied by Cloudflare](https://developers.cloudflare.com/dns/proxy-status/).
+- Auto Injection is enabled in your [Zaraz Settings](https://developers.cloudflare.com/zaraz/reference/settings/#auto-inject-script).
+- Your website's HTML is valid and includes `<head>` and `</head>` tags.
+- You have at least [one enabled tool](https://developers.cloudflare.com/zaraz/get-started/) configured in Zaraz.
 
 #### The browser extension I'm using cannot find the tool I have added. Why?
 
@@ -78,8 +78,7 @@ To prevent Zaraz from loading on specific pages, refer to [Load Zaraz selectivel
 
 Resetting your Zaraz configuration will erase all of your configuration settings, including any tools, triggers, and variables you've set up. This action will disable Zaraz immediately. If you want to start over with a clean slate, you can always reset your configuration.
 
-1. In the Cloudflare dashboard, go to the **Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/tag-management/settings)
+1. In the Cloudflare dashboard, go to the **Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/tag-management/settings)
 2. Go to **Advanced**.
 3. Click "Reset" and follow the instructions.
 
@@ -101,7 +100,7 @@ Zaraz comes with built-in [Single Page Application (SPA) support](https://develo
 
 #### After moving from Google Analytics 4 to Zaraz, I can no longer see demographics data. Why?
 
-You probably have enabled **Hide Originating IP Address** in the [Settings option](https://developers.cloudflare.com/zaraz/custom-actions/edit-tools-and-actions/) for Google Analytics 4\. This tells Zaraz to not send the IP address to Google. To have access to demographics data and anonymize your visitor's IP, you should use [**Anonymize Originating IP Address**](#i-see-two-ways-of-anonymizing-ip-address-information-on-the-third-party-tool-google-analytics-one-in-privacy-and-one-in-additional-fields-which-is-the-correct-one) instead.
+You probably have enabled **Hide Originating IP Address** in the [Settings option](https://developers.cloudflare.com/zaraz/custom-actions/edit-tools-and-actions/) for Google Analytics 4. This tells Zaraz to not send the IP address to Google. To have access to demographics data and anonymize your visitor's IP, you should use [**Anonymize Originating IP Address**](#i-see-two-ways-of-anonymizing-ip-address-information-on-the-third-party-tool-google-analytics-one-in-privacy-and-one-in-additional-fields-which-is-the-correct-one) instead.
 
 #### I see two ways of anonymizing IP address information on the third-party tool Google Analytics: one in Privacy, and one in Additional fields. Which is the correct one?
 
@@ -121,11 +120,11 @@ Yes. Refer to [Additional fields](https://developers.cloudflare.com/zaraz/custom
 
 #### How do I attach a User Property to my events?
 
-In your Google Analytics 4 action, select **Add field** \> **Add custom field...** and enter a field name that starts with `up.` — for example, `up.name`. This will make Zaraz send the field as a User Property and not as an Event Property.
+In your Google Analytics 4 action, select **Add field** > **Add custom field...** and enter a field name that starts with `up.` — for example, `up.name`. This will make Zaraz send the field as a User Property and not as an Event Property.
 
 #### How can I enable Google Consent Mode signals?
 
-Zaraz has built-in support for Google Consent Mode v2\. Learn more on how to use it in [Google Consent Mode page](https://developers.cloudflare.com/zaraz/advanced/google-consent-mode/).
+Zaraz has built-in support for Google Consent Mode v2. Learn more on how to use it in [Google Consent Mode page](https://developers.cloudflare.com/zaraz/advanced/google-consent-mode/).
 
 ### Facebook Pixel
 
@@ -183,7 +182,7 @@ The Zaraz team is working with third-party vendors to build their own Zaraz inte
 
 ### How do I show the consent modal again to all users?
 
-In such a case, you can change the cookie name in the _Consent cookie name_ field in the Zaraz Consent configuration. This will cause the consent modal to reappear for all users. Make sure to use a cookie name that has not been used for Zaraz on your site.
+In such a case, you can change the cookie name in the *Consent cookie name* field in the Zaraz Consent configuration. This will cause the consent modal to reappear for all users. Make sure to use a cookie name that has not been used for Zaraz on your site.
 
 Was this helpful?
 

@@ -652,7 +652,7 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Cancel Interaction
 
-<iframe src="https:///frame/api/interactions-api_afe8a0a81f13769ae08ec9819006e4681a6788e73acebeb0ecff7d10b1591de5.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_51cc99d1cf6891cf46a52413632d15221a55fdec3919f1dfc02490c2c937d637.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
@@ -741,7 +741,7 @@ If successful, the response is empty.
 
 ### Delete
 
-<iframe src="https:///frame/api/interactions-api_ea87e486401426a4a86b18b84aa3b73ea64565bcac5a098257cd847bd211a633.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_53aae4c0295a1b0267711808f068d4f39c64345e844fbf8869bbdefa51bb0f3a.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ## Resources
 
@@ -1385,17 +1385,6 @@ in the final response.
 processing MediaProcessing or enum (string) (optional) How the model processes this video for understanding.
 <br />
 
-#### Fields
-
-end_offset string (optional) Optional. Segment end time. Specified as a decimal number of seconds followed
-by an 's' suffix, e.g., "30s". Must be non-negative and greater than
-\`start_offset\` if \`start_offset\` is set.
-fps number (optional) Optional. Video frame-rate sampling density.
-start_offset string (optional) Optional. Segment start time. Specified as a decimal number of seconds followed
-by an 's' suffix, e.g., "10.5s". Must be non-negative.
-type object (optional) No description provided.
-
-Always set to `"static"`.
 resolution MediaResolution (optional) The resolution of the media.
 <br />
 

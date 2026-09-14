@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DNS over TLS (DoT)
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/dns-over-tls/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/dns-over-tls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, DNS is sent over a plaintext connection. DNS over TLS (DoT) is a standard for encrypting DNS queries to keep them secure and private. DoT uses the same security protocol, TLS, that HTTPS websites use to encrypt and authenticate communications.
 
@@ -20,17 +20,17 @@ Cloudflare supports DoT on standard port `853` over TLS 1.2 and TLS 1.3 in compl
 
 ## Configure DoT queries
 
-### 1\. Obtain your DoT hostname
+### 1. Obtain your DoT hostname
 
 Each Gateway DNS location has a unique DoT hostname. DNS locations and corresponding DoT hostnames have policies associated with them.
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Resolvers & Proxies**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** > **Resolvers & Proxies**.
 2. Under **DNS locations**, [add a new location](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/) or select an existing location from the list.
 3. Under **DoT endpoint**, copy the value in **DoT addresses**.
 
 The DoT hostname contains your unique location name. For example, if the DoT hostname is `9y65g5srsm.cloudflare-gateway.com`, the location name is `9y65g5srsm`.
 
-### 2\. Configure your DoT client
+### 2. Configure your DoT client
 
 To configure a DoT client such as `dig`, specify the IP address and the DoT hostname for your location in your query. For example:
 

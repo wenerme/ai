@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Rules changelog
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/changelog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/rules.xml)
 
@@ -62,19 +62,19 @@ This allows you to apply different caching strategies for verified bots, high-ri
 
 The following fields are now available in Cache Rules expressions:
 
-| Field                                   | Type    | Description                                                                                                       |
-| --------------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------- |
-| cf.bot\_management.score                | Number  | Bot score from 1 to 99, where a lower value indicates a higher likelihood that the request originates from a bot. |
-| cf.bot\_management.ja3\_hash            | String  | JA3 fingerprint of the request, which helps identify the client making the connection.                            |
-| cf.bot\_management.ja4                  | String  | JA4 fingerprint of the request, which provides a more detailed client identification than JA3.                    |
-| cf.bot\_management.verified\_bot        | Boolean | Whether the request originates from a verified bot, such as a search engine crawler.                              |
-| cf.bot\_management.static\_resource     | Boolean | Whether the request is for a static resource and therefore exempt from bot detection.                             |
-| cf.bot\_management.js\_detection.passed | Boolean | Whether the browser passed JavaScript detection when the feature is enabled.                                      |
-| cf.bot\_management.attack\_score        | Number  | Classifies the request by attack score, from 1 (likely automated) to 99 (likely human).                           |
-| cf.bot\_management.api\_score           | Number  | Classifies the request by API score, from 1 (likely automated) to 99 (likely human).                              |
-| cf.bot\_management.bot\_tags\["<TAG>"\] | Boolean | Whether the bot traffic matches the specified tag, such as google or bing.                                        |
-| cf.bot\_management.corporate\_proxy     | Boolean | Whether the request originates from a known corporate proxy.                                                      |
-| ip.src.asnum                            | Number  | The autonomous system number (ASN) of the incoming request's IP address.                                          |
+| Field | Type | Description |
+| --- | --- | --- |
+| `cf.bot_management.score` | Number | Bot score from `1` to `99`, where a lower value indicates a higher likelihood that the request originates from a bot. |
+| `cf.bot_management.ja3_hash` | String | JA3 fingerprint of the request, which helps identify the client making the connection. |
+| `cf.bot_management.ja4` | String | JA4 fingerprint of the request, which provides a more detailed client identification than JA3. |
+| `cf.bot_management.verified_bot` | Boolean | Whether the request originates from a verified bot, such as a search engine crawler. |
+| `cf.bot_management.static_resource` | Boolean | Whether the request is for a static resource and therefore exempt from bot detection. |
+| `cf.bot_management.js_detection.passed` | Boolean | Whether the browser passed JavaScript detection when the feature is enabled. |
+| `cf.bot_management.attack_score` | Number | Classifies the request by attack score, from `1` (likely automated) to `99` (likely human). |
+| `cf.bot_management.api_score` | Number | Classifies the request by API score, from `1` (likely automated) to `99` (likely human). |
+| `cf.bot_management.bot_tags["<TAG>"]` | Boolean | Whether the bot traffic matches the specified tag, such as `google` or `bing`. |
+| `cf.bot_management.corporate_proxy` | Boolean | Whether the request originates from a known corporate proxy. |
+| `ip.src.asnum` | Number | The autonomous system number (ASN) of the incoming request's IP address. |
 
 Note
 
@@ -97,16 +97,16 @@ To learn more, refer to the [Cache Rules documentation](https://developers.cloud
 
 **New QUIC RTT and delivery rate fields**
 
-Two new fields are now available in rule expressions that surface Layer 4 transport telemetry from the client connection. Together with the existing [cf.timings.client\_tcp\_rtt\_msec](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/) field, these fields give you a complete picture of connection quality for both TCP and QUIC traffic — enabling transport-aware rules without requiring any client-side changes.
+Two new fields are now available in rule expressions that surface Layer 4 transport telemetry from the client connection. Together with the existing [`cf.timings.client_tcp_rtt_msec`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/) field, these fields give you a complete picture of connection quality for both TCP and QUIC traffic — enabling transport-aware rules without requiring any client-side changes.
 
 Previously, QUIC RTT and delivery rate data was only available via the `Server-Timing: cfL4` response header. These new fields make the same data available directly in rule expressions, so you can use them in Transform Rules, WAF Custom Rules, and other phases that support dynamic fields.
 
 #### New fields
 
-| Field                              | Type    | Description                                                                                                                                                             |
-| ---------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| cf.timings.client\_quic\_rtt\_msec | Integer | The smoothed QUIC round-trip time (RTT) between Cloudflare and the client in milliseconds. Only populated for QUIC (HTTP/3) connections. Returns 0 for TCP connections. |
-| cf.edge.l4.delivery\_rate          | Integer | The most recent data delivery rate estimate for the client connection, in bytes per second. Returns 0 when L4 statistics are not available for the request.             |
+| Field | Type | Description |
+| --- | --- | --- |
+| `cf.timings.client_quic_rtt_msec` | Integer | The smoothed QUIC round-trip time (RTT) between Cloudflare and the client in milliseconds. Only populated for QUIC (HTTP/3) connections. Returns `0` for TCP connections. |
+| `cf.edge.l4.delivery_rate` | Integer | The most recent data delivery rate estimate for the client connection, in bytes per second. Returns `0` when L4 statistics are not available for the request. |
 
 #### Example: Route slow connections to a lightweight origin
 
@@ -120,9 +120,9 @@ cf.timings.client_tcp_rtt_msec > 200 or cf.timings.client_quic_rtt_msec > 200
 
 **Header modifications:**
 
-| Operation | Header name    | Value |
-| --------- | -------------- | ----- |
-| Set       | X-High-Latency | true  |
+| Operation | Header name | Value |
+| --- | --- | --- |
+| Set | `X-High-Latency` | `true` |
 
 #### Example: Match low-bandwidth connections
 
@@ -143,12 +143,12 @@ Each certificate is DER-encoded, Base64-encoded, and wrapped in colons. For exam
 
 #### New fields
 
-| Field                                                 | Type    | Description                                                                                                                                                      |
-| ----------------------------------------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| cf.tls\_client\_auth.cert\_rfc9440                    | String  | The client leaf certificate in RFC 9440 format. Empty if no client certificate was presented.                                                                    |
-| cf.tls\_client\_auth.cert\_rfc9440\_too\_large        | Boolean | true if the leaf certificate exceeded 10 KB and was omitted. In practice this will almost always be false.                                                       |
-| cf.tls\_client\_auth.cert\_chain\_rfc9440             | String  | The intermediate certificate chain in RFC 9440 format as a comma-separated list. Empty if no intermediate certificates were sent or if the chain exceeded 16 KB. |
-| cf.tls\_client\_auth.cert\_chain\_rfc9440\_too\_large | Boolean | true if the intermediate chain exceeded 16 KB and was omitted.                                                                                                   |
+| Field | Type | Description |
+| --- | --- | --- |
+| `cf.tls_client_auth.cert_rfc9440` | String | The client leaf certificate in RFC 9440 format. Empty if no client certificate was presented. |
+| `cf.tls_client_auth.cert_rfc9440_too_large` | Boolean | `true` if the leaf certificate exceeded 10 KB and was omitted. In practice this will almost always be `false`. |
+| `cf.tls_client_auth.cert_chain_rfc9440` | String | The intermediate certificate chain in RFC 9440 format as a comma-separated list. Empty if no intermediate certificates were sent or if the chain exceeded 16 KB. |
+| `cf.tls_client_auth.cert_chain_rfc9440_too_large` | Boolean | `true` if the intermediate chain exceeded 16 KB and was omitted. |
 
 The chain encoding follows the same ordering as the TLS handshake: the certificate closest to the leaf appears first, working up toward the trust anchor. The root certificate is not included.
 
@@ -164,10 +164,10 @@ cf.tls_client_auth.cert_verified and not cf.tls_client_auth.cert_revoked
 
 **Header modifications:**
 
-| Operation | Header name       | Value                                     |
-| --------- | ----------------- | ----------------------------------------- |
-| Set       | Client-Cert       | cf.tls\_client\_auth.cert\_rfc9440        |
-| Set       | Client-Cert-Chain | cf.tls\_client\_auth.cert\_chain\_rfc9440 |
+| Operation | Header name | Value |
+| --- | --- | --- |
+| Set | `Client-Cert` | `cf.tls_client_auth.cert_rfc9440` |
+| Set | `Client-Cert-Chain` | `cf.tls_client_auth.cert_chain_rfc9440` |
 
 To get the most out of these fields, upload your client CA certificate to Cloudflare so that Cloudflare validates the client certificate at the edge and populates `cf.tls_client_auth.cert_verified` and `cf.tls_client_auth.cert_revoked`.
 
@@ -175,8 +175,8 @@ Prevent header injection
 
 You should ensure that `Client-Cert` and `Client-Cert-Chain` headers received by your origin server can only originate from this transform rule — any client could send these headers directly.
 
-* **If you use WAF custom rules to block requests with invalid mTLS connections:** The transform rule is sufficient. For all requests that reach your origin server, the rule will overwrite any existing `Client-Cert` and `Client-Cert-Chain` headers.
-* **If you do not enforce mTLS at the WAF:** Add another transform rule that removes any incoming `Client-Cert` and `Client-Cert-Chain` headers from all requests (use expression `true`), ordered before the rule above. This ensures your origin server cannot receive client-supplied values for these HTTP headers.
+- **If you use WAF custom rules to block requests with invalid mTLS connections:** The transform rule is sufficient. For all requests that reach your origin server, the rule will overwrite any existing `Client-Cert` and `Client-Cert-Chain` headers.
+- **If you do not enforce mTLS at the WAF:** Add another transform rule that removes any incoming `Client-Cert` and `Client-Cert-Chain` headers from all requests (use expression `true`), ordered before the rule above. This ensures your origin server cannot receive client-supplied values for these HTTP headers.
 
 For more information, refer to [Mutual TLS authentication](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/), [Request Header Transform Rules](https://developers.cloudflare.com/rules/transform/request-header-modification/), and the [fields reference](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/).
 
@@ -191,9 +191,9 @@ You can use this field to identify slow Worker executions, detect performance re
 
 #### Field details
 
-| Field                   | Type    | Description                                                                                       |
-| ----------------------- | ------- | ------------------------------------------------------------------------------------------------- |
-| cf.timings.worker\_msec | Integer | The time spent executing a Cloudflare Worker in milliseconds. Returns 0 if no Worker was invoked. |
+| Field | Type | Description |
+| --- | --- | --- |
+| `cf.timings.worker_msec` | Integer | The time spent executing a Cloudflare Worker in milliseconds. Returns `0` if no Worker was invoked. |
 
 Example filter expression:
 
@@ -201,7 +201,7 @@ Example filter expression:
 cf.timings.worker_msec > 500
 ```
 
-For more information, refer to the [Fields reference](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.timings.worker%5Fmsec/).
+For more information, refer to the [Fields reference](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.timings.worker_msec/).
 
 ## 2026-01-27
 
@@ -214,20 +214,20 @@ You can now control how Cloudflare buffers HTTP request and response bodies usin
 
 Controls how Cloudflare buffers HTTP request bodies before forwarding them to your origin server:
 
-| Mode                   | Behavior                                                                                                      |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------- |
+| Mode | Behavior |
+| --- | --- |
 | **Standard** (default) | Cloudflare can inspect a prefix of the request body for enabled functionality such as WAF and Bot Management. |
-| **Full**               | Buffers the entire request body before sending to origin.                                                     |
-| **None**               | No buffering — the request body streams directly to origin without inspection.                                |
+| **Full** | Buffers the entire request body before sending to origin. |
+| **None** | No buffering — the request body streams directly to origin without inspection. |
 
 #### Response body buffering
 
 Controls how Cloudflare buffers HTTP response bodies before forwarding them to the client:
 
-| Mode                   | Behavior                                                                            |
-| ---------------------- | ----------------------------------------------------------------------------------- |
-| **Standard** (default) | Cloudflare can inspect a prefix of the response body for enabled functionality.     |
-| **None**               | No buffering — the response body streams directly to the client without inspection. |
+| Mode | Behavior |
+| --- | --- |
+| **Standard** (default) | Cloudflare can inspect a prefix of the response body for enabled functionality. |
+| **None** | No buffering — the response body streams directly to the client without inspection. |
 
 Caution
 
@@ -258,10 +258,10 @@ Cloudflare Rulesets now includes `encode_base64()` and `sha256()` functions, ena
 
 #### New functions
 
-| Function                     | Description                                                                                                                                                                                                                                             | Availability                          |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
-| encode\_base64(input, flags) | Encodes a string to Base64 format. Optional flags parameter: u for URL-safe encoding, p for padding (adds \= characters to make the output length a multiple of 4, as required by some systems). By default, output is standard Base64 without padding. | All plans (in header transform rules) |
-| sha256(input)                | Computes a SHA256 hash of the input string.                                                                                                                                                                                                             | Requires enablement                   |
+| Function | Description | Availability |
+| --- | --- | --- |
+| `encode_base64(input, flags)` | Encodes a string to Base64 format. Optional `flags` parameter: `u` for URL-safe encoding, `p` for padding (adds `=` characters to make the output length a multiple of 4, as required by some systems). By default, output is standard Base64 without padding. | All plans (in header transform rules) |
+| `sha256(input)` | Computes a SHA256 hash of the input string. | Requires enablement |
 
 Note
 
@@ -326,12 +326,12 @@ Cloudflare Rulesets now include new functions that enable advanced expression lo
 
 #### New functions
 
-| Function                 | Description                                                                   |
-| ------------------------ | ----------------------------------------------------------------------------- |
-| split(source, delimiter) | Splits a string into an array of strings using the specified delimiter.       |
-| join(array, delimiter)   | Joins an array of strings into a single string using the specified delimiter. |
-| has\_key(map, key)       | Returns true if the specified key exists in the map.                          |
-| has\_value(map, value)   | Returns true if the specified value exists in the map.                        |
+| Function | Description |
+| --- | --- |
+| `split(source, delimiter)` | Splits a string into an array of strings using the specified delimiter. |
+| `join(array, delimiter)` | Joins an array of strings into a single string using the specified delimiter. |
+| `has_key(map, key)` | Returns `true` if the specified key exists in the map. |
+| `has_value(map, value)` | Returns `true` if the specified value exists in the map. |
 
 ---
 
@@ -368,9 +368,9 @@ You can use this field to build rules that target traffic based on geographic ma
 
 #### Field details
 
-| Field              | Type           | Description                                                                                                                   |
-| ------------------ | -------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| ip.src.metro\_code | String \| null | The metro code (DMA) of the incoming request's IP address. Returns the designated market area code for the client's location. |
+| Field | Type | Description |
+| --- | --- | --- |
+| `ip.src.metro_code` | String \| null | The metro code (DMA) of the incoming request's IP address. Returns the designated market area code for the client's location. |
 
 Example filter expression:
 
@@ -378,7 +378,7 @@ Example filter expression:
 ip.src.metro_code eq "501"
 ```
 
-For more information, refer to the [Fields reference](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/ip.src.metro%5Fcode/).
+For more information, refer to the [Fields reference](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/ip.src.metro_code/).
 
 ## 2025-10-30
 
@@ -393,10 +393,10 @@ Cloudflare now provides two new request fields in the Ruleset engine that let yo
 
 #### New fields
 
-| Field                             | Type    | Description                                                                                                                                                          |
-| --------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| cf.edge.client\_tcp               | Boolean | Indicates whether the request used TCP. A value of true means the client connected using TCP instead of QUIC.                                                        |
-| cf.timings.client\_tcp\_rtt\_msec | Number  | Reports the smoothed TCP round-trip time between the client and Cloudflare in milliseconds. For example, a value of 20 indicates roughly twenty milliseconds of RTT. |
+| Field | Type | Description |
+| --- | --- | --- |
+| `cf.edge.client_tcp` | Boolean | Indicates whether the request used TCP. A value of true means the client connected using TCP instead of QUIC. |
+| `cf.timings.client_tcp_rtt_msec` | Number | Reports the smoothed TCP round-trip time between the client and Cloudflare in milliseconds. For example, a value of 20 indicates roughly twenty milliseconds of RTT. |
 
 Example filter expression:
 
@@ -415,8 +415,8 @@ More information can be found in the Rules language [fields reference](https://d
 
 **What’s new:**
 
-* You can now upload error pages and error assets that return error status codes (for example, 403, 500, 502, 503, 504) when fetched.
-* These assets are stored and minified at the edge, so they can be reused across multiple Custom Error rules without triggering requests to the origin.
+- You can now upload error pages and error assets that return error status codes (for example, 403, 500, 502, 503, 504) when fetched.
+- These assets are stored and minified at the edge, so they can be reused across multiple Custom Error rules without triggering requests to the origin.
 
 This is especially useful for retrieving error content or downtime banners from your backend when you can’t override the origin status code.
 
@@ -427,14 +427,14 @@ Learn more in the [Custom Errors](https://developers.cloudflare.com/rules/custom
 
 **Match Workers subrequests by upstream zone — cf.worker.upstream\_zone now supported in Transform Rules**
 
-You can now use the [cf.worker.upstream\_zone](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.worker.upstream%5Fzone/) field in [Transform Rules](https://developers.cloudflare.com/rules/transform/) to control rule execution based on whether a request originates from [Workers](https://developers.cloudflare.com/workers/), including subrequests issued by Workers in other zones.
+You can now use the [`cf.worker.upstream_zone`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.worker.upstream_zone/) field in [Transform Rules](https://developers.cloudflare.com/rules/transform/) to control rule execution based on whether a request originates from [Workers](https://developers.cloudflare.com/workers/), including subrequests issued by Workers in other zones.
 
 ![Match Workers subrequests by upstream zone in Transform Rules](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1446,height=988,format=webp/_astro/transform-rule-subrequest-matching.BeUBEN67.png)
 
 **What's new:**
 
-* `cf.worker.upstream_zone` is now supported in Transform Rules expressions.
-* Skip or apply logic conditionally when handling [Workers subrequests](https://developers.cloudflare.com/workers/platform/limits/#subrequests).
+- `cf.worker.upstream_zone` is now supported in Transform Rules expressions.
+- Skip or apply logic conditionally when handling [Workers subrequests](https://developers.cloudflare.com/workers/platform/limits/#subrequests).
 
 For example, to add a header when the subrequest comes from another zone:
 
@@ -444,7 +444,7 @@ Text in **Expression Editor** (replace `myappexample.com` with your domain):
 (cf.worker.upstream_zone != "" and cf.worker.upstream_zone != "myappexample.com")
 ```
 
-Selected operation under **Modify request header**: _Set static_
+Selected operation under **Modify request header**: *Set static*
 
 **Header name**: `X-External-Workers-Subrequest`
 
@@ -463,7 +463,7 @@ You can now enable [Polish](https://developers.cloudflare.com/images/polish/acti
 
 **What’s new:**
 
-* [WebP](https://developers.cloudflare.com/images/polish/compression/#webp) is now a supported [value](https://developers.cloudflare.com/rules/configuration-rules/settings/#polish) in the **Polish** setting for Configuration Rules.
+- [WebP](https://developers.cloudflare.com/images/polish/compression/#webp) is now a supported [value](https://developers.cloudflare.com/rules/configuration-rules/settings/#polish) in the **Polish** setting for Configuration Rules.
 
 This gives you more precise control over how images are compressed and delivered, whether you're targeting modern browsers, running experiments, or tailoring performance by geography or device type.
 
@@ -480,8 +480,9 @@ In Snippets, you can now also match on [Bot Score](https://developers.cloudflare
 
 **What’s new:**
 
-* [Custom lists](https://developers.cloudflare.com/waf/tools/lists/custom-lists/) matching – Snippets and Cloud Connector now support user-created IP, AS, and Hostname lists via dashboard or [Lists API](https://developers.cloudflare.com/api/resources/rules/subresources/lists/methods/list/). Great for shared logic across zones.
-* [Bot Score](https://developers.cloudflare.com/bots/concepts/bot-score/) and [WAF Attack Score](https://developers.cloudflare.com/waf/detections/attack-score/) – Use Cloudflare’s intelligent traffic signals to detect bots or attacks and take advanced, tailored actions with just a few lines of code.
+- [Custom lists](https://developers.cloudflare.com/waf/tools/lists/custom-lists/) matching – Snippets and Cloud Connector now support user-created IP, AS, and Hostname lists via dashboard or [Lists API](https://developers.cloudflare.com/api/resources/rules/subresources/lists/methods/list/). Great for shared logic across zones.
+- [Bot Score](https://developers.cloudflare.com/bots/concepts/bot-score/) and [WAF Attack Score](https://developers.cloudflare.com/waf/detections/attack-score/) – Use Cloudflare’s intelligent traffic signals to detect bots or attacks and take advanced, tailored actions with just a few lines of code.
+
 ![New fields in Snippets](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1383,height=1351,format=webp/_astro/snippets-lists-scores.D05l6zgc.png)
 
 These enhancements unlock new possibilities for building smarter traffic workflows with minimal code and maximum efficiency.
@@ -499,11 +500,11 @@ You can now manage **Custom Error Rules**, **Custom Error Assets**, and redesign
 
 What's new:
 
-* **Custom Errors are now GA** – Available on all paid plans and ready for production traffic.
-* **UI for Custom Error Rules and Assets** – Manage your zone-level rules from the Rules > Overview and your zone-level assets from the Rules > Settings tabs.
-* **Define inline content or upload assets** – Create custom responses directly in the rule builder, upload new or reuse previously stored assets.
-* **Refreshed UI and new name for Error Pages** – Formerly known as “Custom Pages,” Error Pages now offer a cleaner, more intuitive experience for both zone and account-level configurations.
-* **Powered by Ruleset Engine** – Custom Error Rules support [conditional logic](https://developers.cloudflare.com/ruleset-engine/rules-language/) and override Error Pages for 500 and 1000 class errors, as well as errors originating from your origin or [other Cloudflare products](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/). You can also configure [Response Header Transform Rules](https://developers.cloudflare.com/rules/transform/response-header-modification/) to add, change, or remove HTTP headers from responses returned by Custom Error Rules.
+- **Custom Errors are now GA** – Available on all paid plans and ready for production traffic.
+- **UI for Custom Error Rules and Assets** – Manage your zone-level rules from the Rules > Overview and your zone-level assets from the Rules > Settings tabs.
+- **Define inline content or upload assets** – Create custom responses directly in the rule builder, upload new or reuse previously stored assets.
+- **Refreshed UI and new name for Error Pages** – Formerly known as “Custom Pages,” Error Pages now offer a cleaner, more intuitive experience for both zone and account-level configurations.
+- **Powered by Ruleset Engine** – Custom Error Rules support [conditional logic](https://developers.cloudflare.com/ruleset-engine/rules-language/) and override Error Pages for 500 and 1000 class errors, as well as errors originating from your origin or [other Cloudflare products](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/). You can also configure [Response Header Transform Rules](https://developers.cloudflare.com/rules/transform/response-header-modification/) to add, change, or remove HTTP headers from responses returned by Custom Error Rules.
 
 Learn more in the [Custom Errors documentation](https://developers.cloudflare.com/rules/custom-errors/).
 
@@ -519,11 +520,10 @@ You can now use Snippets to modify HTTP requests and responses with confidence, 
 
 What's new:
 
-* **Snippets are now GA** – Available at no extra cost on all Pro, Business, and Enterprise plans.
-* **Ready for production** – Snippets deliver a production-grade experience built for scale.
-* **Part of the Cloudflare Rules platform** – Snippets inherit request modifications from other Cloudflare products and support sequential execution, allowing you to run multiple Snippets on the same request and apply custom modifications step by step.
-* **Trace integration** – Use [Cloudflare Trace](https://developers.cloudflare.com/rules/trace-request/) to see which Snippets were triggered on a request — helping you understand traffic flow and debug more effectively.
-![Snippets shown in Cloudflare Trace results](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=800,height=334,format=webp/_astro/snippets-ga-trace.WlCshaFo.gif)
+- **Snippets are now GA** – Available at no extra cost on all Pro, Business, and Enterprise plans.
+- **Ready for production** – Snippets deliver a production-grade experience built for scale.
+- **Part of the Cloudflare Rules platform** – Snippets inherit request modifications from other Cloudflare products and support sequential execution, allowing you to run multiple Snippets on the same request and apply custom modifications step by step.
+- **Trace integration** – Use [Cloudflare Trace](https://developers.cloudflare.com/rules/trace-request/) to see which Snippets were triggered on a request — helping you understand traffic flow and debug more effectively.![Snippets shown in Cloudflare Trace results](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=800,height=334,format=webp/_astro/snippets-ga-trace.WlCshaFo.gif)
 
 Learn more in the [launch blog post ↗](https://blog.cloudflare.com/snippets/).
 
@@ -536,24 +536,24 @@ We have upgraded and streamlined [Cloudflare Rules](https://developers.cloudflar
 
 **New limits by product:**
 
-* [Bulk Redirects](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/)
-  * Free: **20** → **10,000** URL redirects across lists
-  * Pro: **500** → **25,000** URL redirects across lists
-  * Business: **500** → **50,000** URL redirects across lists
-  * Enterprise: **10,000** → **1,000,000** URL redirects across lists
-* [Cloud Connector](https://developers.cloudflare.com/rules/cloud-connector/)
-  * Free: **5** → **10** connectors
-  * Enterprise: **125** → **300** connectors
-* [Custom Errors](https://developers.cloudflare.com/rules/custom-errors/)
-  * Pro: **5** → **25** error assets and rules
-  * Business: **20** → **50** error assets and rules
-  * Enterprise: **50** → **300** error assets and rules
-* [Snippets](https://developers.cloudflare.com/rules/snippets/)
-  * Pro: **10** → **25** code snippets and rules
-  * Business: **25** → **50** code snippets and rules
-  * Enterprise: **50** → **300** code snippets and rules
-* [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/), [Configuration Rules](https://developers.cloudflare.com/rules/configuration-rules/), [Compression Rules](https://developers.cloudflare.com/rules/compression-rules/), [Origin Rules](https://developers.cloudflare.com/rules/origin-rules/), [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/), and [Transform Rules](https://developers.cloudflare.com/rules/transform/)
-  * Enterprise: **125** → **300** rules
+- [Bulk Redirects](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/)
+  - Free: **20** → **10,000** URL redirects across lists
+  - Pro: **500** → **25,000** URL redirects across lists
+  - Business: **500** → **50,000** URL redirects across lists
+  - Enterprise: **10,000** → **1,000,000** URL redirects across lists
+- [Cloud Connector](https://developers.cloudflare.com/rules/cloud-connector/)
+  - Free: **5** → **10** connectors
+  - Enterprise: **125** → **300** connectors
+- [Custom Errors](https://developers.cloudflare.com/rules/custom-errors/)
+  - Pro: **5** → **25** error assets and rules
+  - Business: **20** → **50** error assets and rules
+  - Enterprise: **50** → **300** error assets and rules
+- [Snippets](https://developers.cloudflare.com/rules/snippets/)
+  - Pro: **10** → **25** code snippets and rules
+  - Business: **25** → **50** code snippets and rules
+  - Enterprise: **50** → **300** code snippets and rules
+- [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/), [Configuration Rules](https://developers.cloudflare.com/rules/configuration-rules/), [Compression Rules](https://developers.cloudflare.com/rules/compression-rules/), [Origin Rules](https://developers.cloudflare.com/rules/origin-rules/), [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/), and [Transform Rules](https://developers.cloudflare.com/rules/transform/)
+  - Enterprise: **125** → **300** rules
 
 Gradual rollout
 
@@ -570,8 +570,8 @@ This update allows you to store externally hosted error pages on Cloudflare and 
 
 This brings the following new capabilities:
 
-* **Custom error assets** – Fetch and store external error pages at the edge for use in error responses.
-* **Account-Level custom errors** – Define error handling rules and assets at the account level for consistency across multiple zones. Zone-level rules take precedence over account-level ones, and assets are not shared between levels.
+- **Custom error assets** – Fetch and store external error pages at the edge for use in error responses.
+- **Account-Level custom errors** – Define error handling rules and assets at the account level for consistency across multiple zones. Zone-level rules take precedence over account-level ones, and assets are not shared between levels.
 
 You can use Cloudflare API to upload your existing assets for use with Custom Errors:
 
@@ -620,9 +620,9 @@ The new [Snippets](https://developers.cloudflare.com/rules/snippets/) code edito
 
 What’s new:
 
-* **Single-page editing for code and rule** – No need to jump between screens.
-* **Auto-complete & syntax highlighting** – Get suggestions and avoid mistakes.
-* **Code formatting & refactoring** – Write cleaner, more readable code.
+- **Single-page editing for code and rule** – No need to jump between screens.
+- **Auto-complete & syntax highlighting** – Get suggestions and avoid mistakes.
+- **Code formatting & refactoring** – Write cleaner, more readable code.
 
 Try it now in [Rules > Snippets ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/snippets).
 
@@ -635,10 +635,10 @@ Try it now in [Rules > Snippets ↗](https://dash.cloudflare.com/?to=/:account/:
 
 What you can do:
 
-* **See all your rules in one place** – No more clicking around.
-* **Find rules faster** – Search by name.
-* **Understand execution order** – See how rules run in sequence.
-* **Debug easily** – Use [Trace](https://developers.cloudflare.com/rules/trace-request/) without switching tabs.
+- **See all your rules in one place** – No more clicking around.
+- **Find rules faster** – Search by name.
+- **Understand execution order** – See how rules run in sequence.
+- **Debug easily** – Use [Trace](https://developers.cloudflare.com/rules/trace-request/) without switching tabs.
 
 Check it out in [Rules > Overview ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview).
 
@@ -715,8 +715,8 @@ It’s now easy to create **wildcard-based [URL Rewrites](https://developers.clo
 
 What’s improved:
 
-* **Full wildcard support** – Create rewrite patterns using intuitive interface.
-* **Simplified rule creation** – No need for complex functions.
+- **Full wildcard support** – Create rewrite patterns using intuitive interface.
+- **Simplified rule creation** – No need for complex functions.
 
 Try it via [creating a Rewrite URL rule in the dashboard](https://developers.cloudflare.com/rules/transform/url-rewrite/create-dashboard/#wildcard-pattern-parameters).
 
@@ -742,19 +742,19 @@ The Cloudflare dashboard now automatically validates [DNS records ↗](https://d
 
 **wildcard\_replace() function now supported in URL rewrites**
 
-You can now use the [wildcard\_replace() ↗](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#wildcard%5Freplace) function in rewrite expressions of [URL rewrites ↗](https://developers.cloudflare.com/rules/transform/url-rewrite/).
+You can now use the [`wildcard_replace()` ↗](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#wildcard_replace) function in rewrite expressions of [URL rewrites ↗](https://developers.cloudflare.com/rules/transform/url-rewrite/).
 
 ## 2024-09-05
 
 **New Rules Templates for one-click rule creation**
 
-The new **Rules** \> **Templates** page in the Cloudflare dashboard allows you to create common rules with a single click, featuring dozens of pre-built templates. You can also access these templates directly from each product's rule builder. Also, explore the [Examples gallery ↗](https://developers.cloudflare.com/rules/examples/) in the developer docs for real-world use cases and inspiration.
+The new **Rules** > **Templates** page in the Cloudflare dashboard allows you to create common rules with a single click, featuring dozens of pre-built templates. You can also access these templates directly from each product's rule builder. Also, explore the [Examples gallery ↗](https://developers.cloudflare.com/rules/examples/) in the developer docs for real-world use cases and inspiration.
 
 ## 2024-08-22
 
 **Simplified UI for Single Redirects with wildcard support**
 
-The simplified UI for [Single Redirects ↗](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) is now available to all users, making URL redirects easier and more intuitive. This update builds on the recent [wildcard support ↗](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#wildcard%5Freplace) in Ruleset Engine products. Access the new UI under **Rules > Redirect Rules**. Learn more about wildcard support and our open-source Rust crate in the [blog post ↗](https://blog.cloudflare.com/wildcard-rules).
+The simplified UI for [Single Redirects ↗](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) is now available to all users, making URL redirects easier and more intuitive. This update builds on the recent [wildcard support ↗](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#wildcard_replace) in Ruleset Engine products. Access the new UI under **Rules > Redirect Rules**. Learn more about wildcard support and our open-source Rust crate in the [blog post ↗](https://blog.cloudflare.com/wildcard-rules).
 
 ## 2024-08-20
 
@@ -780,8 +780,8 @@ Cloudflare Snippets (alpha) now allow multiple subrequests depending on your pla
 
 Wildcards are now supported across our Ruleset Engine-based products, including Single Redirects, Cache Rules, Transform Rules, WAF, Waiting Room, and more:
 
-* You can now use the `wildcard` and `strict wildcard` operators with any string field in the Ruleset Engine, such as full URI, host, headers, cookies, user-agent, and country. For more details, refer to [Operators ↗](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/) and [Wildcard matching ↗](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#wildcard-matching).
-* In [Single Redirects ↗](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/), the `wildcard_replace()` function allows you to use segments matched by the `wildcard` and `strict wildcard` operators in redirect URL targets. For more information, refer to [Functions ↗](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#wildcard%5Freplace).
+- You can now use the `wildcard` and `strict wildcard` operators with any string field in the Ruleset Engine, such as full URI, host, headers, cookies, user-agent, and country. For more details, refer to [Operators ↗](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/) and [Wildcard matching ↗](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#wildcard-matching).
+- In [Single Redirects ↗](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/), the `wildcard_replace()` function allows you to use segments matched by the `wildcard` and `strict wildcard` operators in redirect URL targets. For more information, refer to [Functions ↗](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#wildcard_replace).
 
 ## 2024-07-01
 

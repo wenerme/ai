@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Preact
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-preact-site/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-preact-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Preact ↗](https://preactjs.com) is a popular, open-source framework for building modern web applications. Preact can also be used as a lightweight alternative to React because the two share the same API and component model.
 
-In this guide, you will create a new Preact application and deploy it using Cloudflare Pages. You will use [create-preact ↗](https://github.com/preactjs/create-preact), a lightweight project scaffolding tool to set up a new Preact app in seconds.
+In this guide, you will create a new Preact application and deploy it using Cloudflare Pages. You will use [`create-preact` ↗](https://github.com/preactjs/create-preact), a lightweight project scaffolding tool to set up a new Preact app in seconds.
 
 ## Setting up a new project
 
-Create a new project by running the [npm init ↗](https://docs.npmjs.com/cli/v6/commands/npm-init) command in your terminal, giving it a title:
+Create a new project by running the [`npm init` ↗](https://docs.npmjs.com/cli/v6/commands/npm-init) command in your terminal, giving it a title:
 
 ```sh
 npm init preact
@@ -56,19 +56,18 @@ git push -u origin main
 
 To deploy your site to Pages:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**.
 3. Select the **Pages** tab.
 4. Select **Import an existing Git repository**.
 5. Select the new GitHub repository that you created and then select **Begin setup**.
 6. In the **Set up builds and deployments** section, provide the following information:
 
-| Configuration option | Value         |
-| -------------------- | ------------- |
-| Production branch    | main          |
-| Build command        | npm run build |
-| Build directory      | dist          |
+| Configuration option | Value |
+| --- | --- |
+| Production branch | `main` |
+| Build command | `npm run build` |
+| Build directory | `dist` |
 
 Optionally, you can customize the **Project name** field. It defaults to the GitHub repository's name, but it does not need to match. The **Project name** value is assigned as your `*.pages.dev` subdomain.
 

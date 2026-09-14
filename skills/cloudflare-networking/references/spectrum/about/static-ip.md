@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Static IP
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/spectrum/about/static-ip/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/about/static-ip/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you create a Spectrum application, you are assigned an IP. These IPs are normally dynamic, meaning that they will change over time. But, for instance, if you want to set up WAF custom rules for specific IPs, you may want to use static IPs.
 
@@ -32,10 +32,21 @@ Once you get your static IP from Cloudflare, you can use it via API, just like [
 
 When creating a Spectrum application through the API, specify the static IPs that you have been provided. See, for instance, the API example below that creates an application routing traffic through Cloudflare’s HTTP pipeline.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone Settings Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone Settings Write</code>
+
+</details>
+
+*Create Spectrum application using a name for the originbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \
@@ -64,7 +75,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \
 
 ## Check your static IPs
 
-You can find your leased static IPs for Spectrum on the dashboard under [**Address space** \> **Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
+You can find your leased static IPs for Spectrum on the dashboard under [**Address space** > **Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
 
 Was this helpful?
 

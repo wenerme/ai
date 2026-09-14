@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pre-render pages for crawlers
 
-Last updated Jun 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/how-to/pre-render-pages/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/how-to/pre-render-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Pre-rendering generates the final HTML for a page before returning it to a client. For JavaScript-heavy applications, this means loading the page in a browser, waiting for client-side JavaScript to run, and returning the rendered HTML instead of the initial app shell.
 
@@ -20,22 +20,22 @@ Pre-rendering is useful when search crawlers, social preview bots, AI indexing j
 
 In this tutorial, you will:
 
-* Add a Browser Run binding to a Worker
-* Create a minimal pre-rendering endpoint
-* Restrict which hostnames the Worker can render
-* Test the endpoint locally with remote mode
+- Add a Browser Run binding to a Worker
+- Create a minimal pre-rendering endpoint
+- Restrict which hostnames the Worker can render
+- Test the endpoint locally with remote mode
 
 ## Prerequisites
 
 To follow this tutorial, you need:
 
-* A Cloudflare account
-* A Worker project that uses TypeScript
-* A public URL to pre-render
+- A Cloudflare account
+- A Worker project that uses TypeScript
+- A public URL to pre-render
 
 The page you pre-render can run anywhere. The Worker in this tutorial only acts as the pre-rendering service that calls Browser Run.
 
-## 1\. Configure Browser Run
+## 1. Configure Browser Run
 
 Add a Browser Run binding to your Wrangler configuration:
 
@@ -45,7 +45,7 @@ Add a Browser Run binding to your Wrangler configuration:
   "name": "my-prerender-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-08-25",
+  "compatibility_date": "2026-09-14",
   "browser": {
     "binding": "BROWSER"
   }
@@ -56,7 +56,7 @@ Add a Browser Run binding to your Wrangler configuration:
 name = "my-prerender-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [browser]
 binding = "BROWSER"
@@ -66,7 +66,7 @@ Caution
 
 Using the `.quickAction()` method for Browser Run Quick Actions requires a `compatibility_date` of `2026-03-24` or later.
 
-## 2\. Add the pre-rendering Worker
+## 2. Add the pre-rendering Worker
 
 Replace the contents of `src/index.ts` with the following Worker. Update `ALLOWED_HOSTNAMES` to include the hostnames that your Worker can pre-render.
 
@@ -237,51 +237,63 @@ The Worker accepts a `url` query parameter, validates the hostname, asks Browser
 
 The `waitUntil: "networkidle2"` option waits until the page has no more than two network connections for at least 500 ms. This is often enough for client-rendered pages. If your page needs a more specific readiness signal, pass `waitForSelector` to the same Quick Actions payload to wait for an element that only appears after your content has loaded. For more information, refer to [Browser Run Quick Actions timeouts](https://developers.cloudflare.com/browser-run/reference/timeouts/).
 
-## 3\. Test pre-rendering
+## 3. Test pre-rendering
 
-1. Start your Worker in remote mode:
-npmyarnpnpm
-```
-npx wrangler dev --remote
-```
-```
-yarn wrangler dev --remote
-```
-```
-pnpm wrangler dev --remote
-```
-The `.quickAction()` method is not yet supported in local development mode. Use `wrangler dev --remote` when testing Browser Run Quick Actions locally.
+1. Start your Worker in remote mode:npmyarnpnpm
+
+   ```
+   npx wrangler dev --remote
+   ```
+
+   ```
+   yarn wrangler dev --remote
+   ```
+
+   ```
+   pnpm wrangler dev --remote
+   ```
+
+   The `.quickAction()` method is not yet supported in local development mode. Use `wrangler dev --remote` when testing Browser Run Quick Actions locally.
 2. In another terminal, request a rendered page:
-```bash
-curl "http://localhost:8787/?url=https://example.com/"
-```
-The response should contain the rendered HTML for the target page.
 
-## 4\. Deploy
+   ```bash
+   curl "http://localhost:8787/?url=https://example.com/"
+   ```
 
-1. Deploy the Worker after local validation:
-npmyarnpnpm
-```
-npx wrangler deploy
-```
-```
-yarn wrangler deploy
-```
-```
-pnpm wrangler deploy
-```
+   The response should contain the rendered HTML for the target page.
+
+## 4. Deploy
+
+1. Deploy the Worker after local validation:npmyarnpnpm
+
+   ```
+   npx wrangler deploy
+   ```
+
+   ```
+   yarn wrangler deploy
+   ```
+
+   ```
+   pnpm wrangler deploy
+   ```
+
+
 2. After deployment, request a rendered page from your Worker URL:
-```bash
-curl "https://<YOUR_WORKER_HOSTNAME>/?url=https://example.com/"
-```
+
+   ```bash
+   curl "https://<YOUR_WORKER_HOSTNAME>/?url=https://example.com/"
+   ```
+
+
 
 ## Production considerations
 
-* Render only hostnames that you control
-* Use a Worker as the first point of contact when you need edge routing
-* Call Browser Run only for crawler or integration requests
-* Cache rendered HTML if you expect repeated crawler requests
-* Revalidate cached HTML when source content changes
+- Render only hostnames that you control
+- Use a Worker as the first point of contact when you need edge routing
+- Call Browser Run only for crawler or integration requests
+- Cache rendered HTML if you expect repeated crawler requests
+- Revalidate cached HTML when source content changes
 
 Cache rendered HTML
 
@@ -289,9 +301,9 @@ This tutorial renders pages on demand to keep the implementation minimal. For pr
 
 ## Related resources
 
-* [Browser Run /content endpoint](https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/)
-* [Browser Run Quick Actions timeouts](https://developers.cloudflare.com/browser-run/reference/timeouts/)
-* [Browser Run limits](https://developers.cloudflare.com/browser-run/limits/)
+- [Browser Run `/content` endpoint](https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/)
+- [Browser Run Quick Actions timeouts](https://developers.cloudflare.com/browser-run/reference/timeouts/)
+- [Browser Run limits](https://developers.cloudflare.com/browser-run/limits/)
 
 Was this helpful?
 

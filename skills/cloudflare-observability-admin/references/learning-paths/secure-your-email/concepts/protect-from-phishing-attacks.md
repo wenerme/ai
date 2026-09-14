@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Protect your organization from phishing attacks
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/secure-your-email/concepts/protect-from-phishing-attacks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-your-email/concepts/protect-from-phishing-attacks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In the early 2000s, Secure Email Gateways (SEGs) were introduced to deal with a growing need around the routing and filtering of email. While SEGs were successful at their mission for many years, their fundamental design has made it impossible for them to keep pace as phishing threats rapidly grow in scope and sophistication.
 

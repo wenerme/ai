@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Traffic steering
 
-Last updated Sep 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When requests come to your load balancer, it distributes them across your pools and endpoints according to four factors:
 

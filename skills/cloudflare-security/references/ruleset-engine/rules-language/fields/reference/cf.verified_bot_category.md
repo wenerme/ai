@@ -8,15 +8,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.verified\_bot\_category
 
-`cf.verified_bot_category` `String`
+`cf.verified_bot_category``String`
 
 Provides the type and purpose of a verified bot.
 
 For more details, refer to [Verified bot categories](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/#legacy-categories).
 
 Categories:
-* Request
-* Bots
+- Request
+- Bots
 
 Was this helpful?
 

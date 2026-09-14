@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure Queues
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/queues/configuration/configure-queues/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/configuration/configure-queues/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Queues can be configured using [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), the command-line interface for Cloudflare's Developer Platform, which includes [Workers](https://developers.cloudflare.com/workers/), [R2](https://developers.cloudflare.com/r2/), and other developer products.
 
@@ -32,16 +32,14 @@ The following queue level settings can be configured using Wrangler:
 npx wrangler queues update <QUEUE-NAME> --delivery-delay-secs 60 --message-retention-period-secs 3000
 ```
 
-* `--delivery-delay-secs` `number` `optional`
-
-  * How long a published message is delayed for, before it is delivered to consumers.
-  * Must be between 0 and 86400 (24 hours).
-  * Defaults to 0.
-* `--message-retention-period-secs` `number` `optional`
-
-  * How long messages are retained on the Queue.
-  * Defaults to 345600 (4 days).
-  * Must be between 60 and 1209600 (14 days)
+- `--delivery-delay-secs` `number` `optional`
+  - How long a published message is delayed for, before it is delivered to consumers.
+  - Must be between 0 and 86400 (24 hours).
+  - Defaults to 0.
+- `--message-retention-period-secs` `number` `optional`
+  - How long messages are retained on the Queue.
+  - Defaults to 345600 (4 days).
+  - Must be between 60 and 1209600 (14 days)
 
 ## Producer Worker configuration
 
@@ -68,10 +66,10 @@ queue = "my-queue"
 binding = "MY_QUEUE"
 ```
 
-* `queue` `string`
-  * The name of the queue.
-* `binding` `string`
-  * The name of the binding, which is a JavaScript variable.
+- `queue` `string`
+  - The name of the queue.
+- `binding` `string`
+  - The name of the binding, which is a JavaScript variable.
 
 ## Consumer Worker Configuration
 
@@ -104,24 +102,24 @@ dead_letter_queue = "my-queue-dlq"
 
 Refer to [Limits](https://developers.cloudflare.com/queues/platform/limits) to review the maximum values for each of these options.
 
-* `queue` `string`
-  * The name of the queue.
-* `max_batch_size` `number` `optional`
-  * The maximum number of messages allowed in each batch.
-  * Defaults to `10` messages.
-* `max_batch_timeout` `number` `optional`
-  * The maximum number of seconds to wait until a batch is full.
-  * Defaults to `5` seconds.
-* `max_retries` `number` `optional`
-  * The maximum number of retries for a message, if it fails or [retryAll()](https://developers.cloudflare.com/queues/configuration/javascript-apis/#messagebatch) is invoked.
-  * Defaults to `3` retries.
-* `dead_letter_queue` `string` `optional`
-  * The name of another queue to send a message if it fails processing at least `max_retries` times.
-  * If a `dead_letter_queue` is not defined, messages that repeatedly fail processing will eventually be discarded.
-  * If there is no queue with the specified name, it will be created automatically.
-* `max_concurrency` `number` `optional`
-  * The maximum number of concurrent consumers allowed to run at once. Leaving this unset will mean that the number of invocations will scale to the [currently supported maximum](https://developers.cloudflare.com/queues/platform/limits/).
-  * Refer to [Consumer concurrency](https://developers.cloudflare.com/queues/configuration/consumer-concurrency/) for more information on how consumers autoscale, particularly when messages are retried.
+- `queue` `string`
+  - The name of the queue.
+- `max_batch_size` `number` `optional`
+  - The maximum number of messages allowed in each batch.
+  - Defaults to `10` messages.
+- `max_batch_timeout` `number` `optional`
+  - The maximum number of seconds to wait until a batch is full.
+  - Defaults to `5` seconds.
+- `max_retries` `number` `optional`
+  - The maximum number of retries for a message, if it fails or [`retryAll()`](https://developers.cloudflare.com/queues/configuration/javascript-apis/#messagebatch) is invoked.
+  - Defaults to `3` retries.
+- `dead_letter_queue` `string` `optional`
+  - The name of another queue to send a message if it fails processing at least `max_retries` times.
+  - If a `dead_letter_queue` is not defined, messages that repeatedly fail processing will eventually be discarded.
+  - If there is no queue with the specified name, it will be created automatically.
+- `max_concurrency` `number` `optional`
+  - The maximum number of concurrent consumers allowed to run at once. Leaving this unset will mean that the number of invocations will scale to the [currently supported maximum](https://developers.cloudflare.com/queues/platform/limits/).
+  - Refer to [Consumer concurrency](https://developers.cloudflare.com/queues/configuration/consumer-concurrency/) for more information on how consumers autoscale, particularly when messages are retried.
 
 ## Pull-based
 

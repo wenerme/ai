@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Early Hints for SaaS
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/performance/early-hints-for-saas/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/performance/early-hints-for-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Early Hints](https://developers.cloudflare.com/cache/advanced-configuration/early-hints/) allows the browser to begin loading resources while the origin server is compiling the full response. This improves webpage’s loading speed for the end user. As a SaaS provider, you may prioritize speed for some of your custom hostnames. Using custom metadata, you can [enable Early Hints](https://developers.cloudflare.com/cache/advanced-configuration/early-hints/#enable-early-hints) per custom hostname.
 
@@ -28,12 +28,23 @@ Before you can employ Early Hints for SaaS, you need to create a custom hostname
 
 1. [Locate your zone ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/), available in the Cloudflare dashboard.
 2. Locate your Authentication Key on the [**API Tokens** ↗](https://dash.cloudflare.com/?to=/:account/profile/api-tokens) page, under **Global API Key**.
-3. If you are [creating a new custom hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/create/), make an API call such as the example below, specifying `"early_hints": "on"`:
+3. If you are [creating a new custom hostname](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/create/), make an API call such as the example below, specifying `"early_hints": "on"`:
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `SSL and Certificates Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>SSL and Certificates Write</code>
+
+</details>
+
+*Create Custom Hostnamebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames" \
@@ -56,13 +67,24 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames" \
 	}'
 ```
 
-1. For an existing custom hostname, locate the `id` of that hostname via a `GET` call:
+4. For an existing custom hostname, locate the `id` of that hostname via a `GET` call:
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `SSL and Certificates Write`
-* `SSL and Certificates Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>SSL and Certificates Write</code>
+- <code>SSL and Certificates Read</code>
+
+</details>
+
+*List Custom Hostnamesbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames?hostname=%7Bhostname%7D" \
@@ -70,12 +92,23 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames?hostn
 	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
-1. Then make an API call such as the example below, specifying `"early_hints": "on"`:
+5. Then make an API call such as the example below, specifying `"early_hints": "on"`:
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `SSL and Certificates Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>SSL and Certificates Write</code>
+
+</details>
+
+*Edit Custom Hostnamebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \

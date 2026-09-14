@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DNS records
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/load-balancers/dns-records/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/load-balancers/dns-records/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you [create a load balancer](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/), Cloudflare automatically creates an LB DNS record for the specified **Hostname**. This functionality allows you to use a hostname with or without an existing DNS record. Private load balancers do not receive an automatic DNS record. Instead, you can configure a hostname using your internal DNS system or by applying a [Gateway Firewall override](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/#override) to a hostname.
 
@@ -26,21 +26,18 @@ For customers on Enterprise plans, Cloudflare supports load balancing for `A`, `
 
 For hostnames with existing DNS records, the LB record takes precedence when it is more or equally specific:
 
-* **Scenario 1**:
-
-  * **A, AAAA, or CNAME**: `x.example.com`
-  * **LB record**: `x.example.com`
-  * **Outcome**: LB record takes precedence because it is as specific as the DNS record.
-* **Scenario 2**:
-
-  * **A, AAAA, or CNAME**: `y.example.com`
-  * **LB record**: `*.example.com` (wildcard record)
-  * **Outcome**: DNS record takes precedence because it is more specific.
-* **Scenario 3**:
-
-  * **A, AAAA, or CNAME**: `*.example.com`
-  * **LB record**: `*.example.com`
-  * **Outcome**: LB record takes precedence because it is as specific as the DNS record.
+- **Scenario 1**:
+  - **A, AAAA, or CNAME**: `x.example.com`
+  - **LB record**: `x.example.com`
+  - **Outcome**: LB record takes precedence because it is as specific as the DNS record.
+- **Scenario 2**:
+  - **A, AAAA, or CNAME**: `y.example.com`
+  - **LB record**: `*.example.com` (wildcard record)
+  - **Outcome**: DNS record takes precedence because it is more specific.
+- **Scenario 3**:
+  - **A, AAAA, or CNAME**: `*.example.com`
+  - **LB record**: `*.example.com`
+  - **Outcome**: LB record takes precedence because it is as specific as the DNS record.
 
 Note
 
@@ -48,18 +45,18 @@ This behavior only applies to [supported records](#supported-records) (determine
 
 If the DNS record points to a [SaaS provider](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/) and an active [custom hostname](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/) exists, the custom hostname will take precedence over the Load Balancing record:
 
-* **Scenario 4**:
-  * **CNAME**: `x.example.com` with target to a Cloudflare for SaaS provider
-  * **LB record**: `x.example.com`
-  * **Active custom hostname on the SaaS provider side**: `x.example.com`
-  * **Outcome**: Custom hostname takes precedence.
+- **Scenario 4**:
+  - **CNAME**: `x.example.com` with target to a Cloudflare for SaaS provider
+  - **LB record**: `x.example.com`
+  - **Active custom hostname on the SaaS provider side**: `x.example.com`
+  - **Outcome**: Custom hostname takes precedence.
 
 ## Disabling a load balancer
 
 When you disable a load balancer, requests to a specific hostname depend on your existing DNS records:
 
-* If you have existing DNS records, these records will be served.
-* If there are no existing records, requests to the hostname will fail.
+- If you have existing DNS records, these records will be served.
+- If there are no existing records, requests to the hostname will fail.
 
 In both cases, disabling your load balancer prevents traffic from going to any associated endpoint or fallback pools.
 
@@ -69,13 +66,13 @@ If you already have an existing `A`, `AAAA`, or `CNAME` record, be aware that th
 
 Due to internal limitations, on [Partial (CNAME) setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/) the Cloudflare [Universal SSL certificates](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) do not cover load balancing hostnames by default. This behavior will be corrected in the future.
 
-As a current workaround for a domain or first-level subdomain (`lb.example.com`), create a [proxied CNAME/A/AAAA record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) for that hostname.
+As a current workaround for a domain or first-level subdomain (`lb.example.com`), create a [proxied `CNAME`/`A`/`AAAA` record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) for that hostname.
 
 For example, if your load balancer hostname was `lb.example.com`, you could create the following record solely for the purpose of SSL/TLS coverage.
 
 | Type | Name | IPv4 address | Proxy status |
-| ---- | ---- | ------------ | ------------ |
-| A    | lb   | 192.0.2.1    | Proxied      |
+| --- | --- | --- | --- |
+| A | `lb` | `192.0.2.1` | Proxied |
 
 Based on the [priority order](#priority-order), it would not receive any traffic because it is as equally specific as the LB hostname.
 

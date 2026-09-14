@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Error 1014
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1014/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1014/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Error 1014: CNAME Cross-User Banned
 
@@ -26,12 +26,11 @@ Another common cause is connecting a custom domain to an R2 bucket, where the do
 
 ### Resolution
 
-* To allow CNAME record resolution to a domain in a different Cloudflare account, the domain owner of the CNAME target must use [Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/).
-* To allow connecting to a R2 bucket with a custom domain, disable the [zone hold](https://developers.cloudflare.com/fundamentals/account/account-security/zone-holds/) feature on the custom domain target zone to resolve the 1014 error.
-* To allow connections to an R2 bucket whose zone is banned:
-
-  * First, check whether there is any [phishing report](https://developers.cloudflare.com/fundamentals/reference/report-abuse/complaint-types/) for the hostname (and request a review if there is one).
-  * Second, make sure that you have no unpaid invoice(s), as you will not be able to enable any new services until [any outstanding balance](https://developers.cloudflare.com/billing/manage/pay-invoices-overdue-balances/) is addressed. If this does not resolve the issue, contact your account team.
+- To allow CNAME record resolution to a domain in a different Cloudflare account, the domain owner of the CNAME target must use [Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/).
+- To allow connecting to a R2 bucket with a custom domain, disable the [zone hold](https://developers.cloudflare.com/fundamentals/account/account-security/zone-holds/) feature on the custom domain target zone to resolve the 1014 error.
+- To allow connections to an R2 bucket whose zone is banned:
+  - First, check whether there is any [phishing report](https://developers.cloudflare.com/fundamentals/reference/report-abuse/complaint-types/) for the hostname (and request a review if there is one).
+  - Second, make sure that you have no unpaid invoice(s), as you will not be able to enable any new services until [any outstanding balance](https://developers.cloudflare.com/billing/manage/pay-invoices-overdue-balances/) is addressed. If this does not resolve the issue, contact your account team.
 
 Was this helpful?
 

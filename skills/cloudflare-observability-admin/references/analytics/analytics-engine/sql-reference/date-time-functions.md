@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Date and Time functions
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/date-time-functions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/date-time-functions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## formatDateTime
 
@@ -22,7 +22,7 @@ Usage:
 formatDateTime(<datetime expression>, <format string>[, <timezone string>])
 ```
 
-`formatDateTime` prints a datetime as a string according to a provided format string. Refer to [ClickHouse's documentation ↗](https://clickhouse.com/docs/en/sql-reference/functions/date-time-functions/#formatdatetime)for a list of supported formatting options.
+`formatDateTime` prints a datetime as a string according to a provided format string. Refer to [ClickHouse's documentation ↗](https://clickhouse.com/docs/en/sql-reference/functions/date-time-functions/#formatdatetime) for a list of supported formatting options.
 
 Examples:
 

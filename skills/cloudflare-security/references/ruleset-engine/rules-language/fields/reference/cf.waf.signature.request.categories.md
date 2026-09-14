@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.waf.signature.request.categories
 
-`cf.waf.signature.request.categories` `Array<String>`
+`cf.waf.signature.request.categories``Array<String>`
 
 An array of categories associated with attack signatures that matched the request.
 
@@ -29,7 +29,7 @@ any(cf.waf.signature.request.categories[*] eq "sqli")
 ```
 
 Categories:
-* Request
+- Request
 
 Was this helpful?
 

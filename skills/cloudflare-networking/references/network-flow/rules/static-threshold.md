@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Static threshold rule
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network-flow/rules/static-threshold/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-flow/rules/static-threshold/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A static threshold rule monitors your network traffic against a fixed threshold you define, measured in bits or packets per second. Network Flow (formerly Magic Network Monitoring) compares total traffic across all IP prefixes and addresses in the rule against this threshold. If traffic exceeds the threshold for the configured duration, Network Flow sends an alert.
 
@@ -20,19 +20,19 @@ To use static threshold rules, you must send NetFlow or sFlow data to Cloudflare
 
 ## Rule configuration fields
 
-| Field                   | Description                                                                                                                                                                                                                                                                                                                    |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Rule name**           | Must be unique and cannot contain spaces. Supports characters A-Z, a-z, 0-9, underscore (\_), dash (\-), period (.), and tilde (\~). Maximum of 256 characters.                                                                                                                                                                |
-| **Rule type**           | threshold                                                                                                                                                                                                                                                                                                                      |
-| **Rule threshold type** | Can be defined in either bits per second or packets per second.                                                                                                                                                                                                                                                                |
-| **Rule threshold**      | The number of bits per second or packets per second for the rule alert. When this value is exceeded for the rule duration, an alert notification is sent. Minimum of 1 and no maximum.                                                                                                                                         |
-| **Rule duration**       | The amount of time in minutes the rule threshold must exceed to send an alert notification. Choose from the following values: 1, 5, 10, 15, 20, 30, 45, or 60 minutes.                                                                                                                                                         |
-| **Auto-advertisement**  | If you are a Magic Transit On Demand customer, you can enable this feature to automatically enable Magic Transit if the rule alert is triggered. Network Flow (formerly Magic Network Monitoring) supports Magic Transit's supernet capability. To learn more refer to [Auto-Advertisement section](#rule-auto-advertisement). |
-| **Rule IP prefix**      | The IP prefix associated with the rule for monitoring traffic volume. Must be a CIDR range such as 160.168.0.1/24. Max is 5,000 unique CIDR entries. To learn more, refer to [Rule IP prefixes](#rule-ip-prefixes).                                                                                                            |
+| Field | Description |
+| --- | --- |
+| **Rule name** | Must be unique and cannot contain spaces. Supports characters `A-Z`, `a-z`, `0-9`, underscore (`_`), dash (`-`), period (`.`), and tilde (`~`). Maximum of 256 characters. |
+| **Rule type** | threshold |
+| **Rule threshold type** | Can be defined in either bits per second or packets per second. |
+| **Rule threshold** | The number of bits per second or packets per second for the rule alert. When this value is exceeded for the rule duration, an alert notification is sent. Minimum of `1` and no maximum. |
+| **Rule duration** | The amount of time in minutes the rule threshold must exceed to send an alert notification. Choose from the following values: `1`, `5`, `10`, `15`, `20`, `30`, `45`, or `60` minutes. |
+| **Auto-advertisement** | If you are a Magic Transit On Demand customer, you can enable this feature to automatically enable Magic Transit if the rule alert is triggered. Network Flow (formerly Magic Network Monitoring) supports Magic Transit's supernet capability. To learn more refer to [Auto-Advertisement section](#rule-auto-advertisement). |
+| **Rule IP prefix** | The IP prefix associated with the rule for monitoring traffic volume. Must be a CIDR range such as `160.168.0.1/24`. Max is 5,000 unique CIDR entries. To learn more, refer to [Rule IP prefixes](#rule-ip-prefixes). |
 
 ## API documentation
 
-To review an example static threshold rule, go to the [Rules](https://developers.cloudflare.com/api/resources/magic%5Fnetwork%5Fmonitoring/subresources/rules/) section in the Network Flow API documentation.
+To review an example static threshold rule, go to the [Rules](https://developers.cloudflare.com/api/resources/magic_network_monitoring/subresources/rules/) section in the Network Flow API documentation.
 
 ## Recommended rule configuration
 
@@ -55,9 +55,9 @@ When you first configure Network Flow, you may not know the typical traffic patt
 This lets you collect baseline traffic data without receiving alerts. After configuring your initial rules, monitor for alerts and review traffic in Network Flow Analytics. Over time, update each rule's threshold based on historical traffic data.
 
 | Threshold type | Recommended rule threshold to collect initial data |
-| -------------- | -------------------------------------------------- |
-| Bits           | 10 Gbps (10,000,000,000 bits per second)           |
-| Packets        | 10 Mpps (10,000,000 packets per second)            |
+| --- | --- |
+| Bits | 10 Gbps (10,000,000,000 bits per second) |
+| Packets | 10 Mpps (10,000,000 packets per second) |
 
 #### Setting the appropriate threshold
 
@@ -68,13 +68,15 @@ Cloudflare recommends that you set a rule threshold that is two times larger tha
 To find the maximum non-attack traffic for a one minute time interval over the past 14-30 days, filter for the specific rule you want to analyze:
 
 1. Go to the **Network flow** page.
-[Go to **Network flow** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/flow-analytics)
-1. Select **Add filter**.
-2. In **New filter**, use the drop-down menus to create the following filter:
 
-| Field             | Operator | Rule name    |
-| ----------------- | -------- | ------------ |
-| _Monitoring Rule_ | _equals_ | <RULE\_NAME> |
+[Go to **Network flow** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/flow-analytics)
+
+2. Select **Add filter**.
+3. In **New filter**, use the drop-down menus to create the following filter:
+
+| Field | Operator | Rule name |
+| --- | --- | --- |
+| *Monitoring Rule* | *equals* | `<RULE_NAME>` |
 
 Once the rule filter is selected in Network Flow Analytics, you can check the historical traffic volume data for the rule over the selected time period. Cloudflare recommends reviewing historical data in seven-day increments, since that is the largest window that shows one-hour time intervals. To select a custom seven-day range, go to the top right corner of Network Flow analytics, open the time window drop-down menu, and select **Custom range**.
 

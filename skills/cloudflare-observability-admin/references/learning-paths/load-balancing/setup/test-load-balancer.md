@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create load balancer on test domain
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/setup/test-load-balancer/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/setup/test-load-balancer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Instead of starting on your production domain, you likely should create a load balancer on a test or staging domain. This may involve temporary changes to your monitors and pools, depending on your infrastructure setup.
 
@@ -28,33 +28,29 @@ To create a Public or a Private load balancer in the dashboard:
 2. On the **Load Balancer Setup**, select **Public load balancer**
 3. Choose the website to which you want to add this load balancer.
 4. On the **Hostname** page:
-
-  * Enter a **Hostname**, which is the DNS name at which the load balancer is available. For more details on record priority, refer to [DNS records for load balancing](https://developers.cloudflare.com/load-balancing/load-balancers/dns-records/).
-  * From the **Data Localization** dropdown, select the [region](https://developers.cloudflare.com/data-localization/how-to/load-balancing/#regional-services) you would like to use on your domain.
-  * Toggle the orange cloud icon to update the [proxy mode](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/), which affects how traffic is routed and which IP addresses are advertised.
-  * Add a description for your load balancer.
-  * If you want [session-based load balancing](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/), toggle the **Session Affinity** switch.
-  * If you want [Adaptive Routing](https://developers.cloudflare.com/load-balancing/understand-basics/adaptive-routing/), toggle the **Adaptive Routing** switch.
+   - Enter a **Hostname**, which is the DNS name at which the load balancer is available. For more details on record priority, refer to [DNS records for load balancing](https://developers.cloudflare.com/load-balancing/load-balancers/dns-records/).
+   - From the **Data Localization** dropdown, select the [region](https://developers.cloudflare.com/data-localization/how-to/load-balancing/#regional-services) you would like to use on your domain.
+   - Toggle the orange cloud icon to update the [proxy mode](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/), which affects how traffic is routed and which IP addresses are advertised.
+   - Add a description for your load balancer.
+   - If you want [session-based load balancing](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/), toggle the **Session Affinity** switch.
+   - If you want [Adaptive Routing](https://developers.cloudflare.com/load-balancing/understand-basics/adaptive-routing/), toggle the **Adaptive Routing** switch.
 5. Select **Next**.
 6. On the **Add a Pool** page:
-
-  * Select one or more existing pools or [create a new pool](https://developers.cloudflare.com/load-balancing/pools/create-pool/#create-a-pool).
-  * If you are going to set [traffic steering](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/) to **Off**, re-order the pools in your load balancer to adjust the fallback order.
-  * If needed, update the [**Fallback Pool**](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/#fallback-pools).
-  * If you choose to set traffic steering to **Random**, you can set [Weights](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/#random-steering) (via the API) to your pools to determine the percentage of traffic sent to each pool.
+   - Select one or more existing pools or [create a new pool](https://developers.cloudflare.com/load-balancing/pools/create-pool/#create-a-pool).
+   - If you are going to set [traffic steering](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/) to **Off**, re-order the pools in your load balancer to adjust the fallback order.
+   - If needed, update the [**Fallback Pool**](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/#fallback-pools).
+   - If you choose to set traffic steering to **Random**, you can set [Weights](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/#random-steering) (via the API) to your pools to determine the percentage of traffic sent to each pool.
 7. Select **Next**.
 8. On the **Monitors** page:
-
-  * Review the monitors attached to your pools.
-  * If needed, you can attach an existing monitor or [create a new monitor](https://developers.cloudflare.com/load-balancing/monitors/create-monitor/#create-a-monitor).
+   - Review the monitors attached to your pools.
+   - If needed, you can attach an existing monitor or [create a new monitor](https://developers.cloudflare.com/load-balancing/monitors/create-monitor/#create-a-monitor).
 9. Select **Next**.
 10. On the **Traffic Steering** page, choose an option for [Traffic steering](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/) and select **Next**.
 11. On the **Custom Rules** page, select an existing rule or [create a new rule](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/).
 12. Select **Next**.
 13. On the **Review** page:
-
-  * Review your configuration and make any changes.
-  * Choose whether to **Save as Draft** or **Save and Deploy**.
+    - Review your configuration and make any changes.
+    - Choose whether to **Save as Draft** or **Save and Deploy**.
 
 ### Create a Private load balancer
 
@@ -62,34 +58,42 @@ To create a Public or a Private load balancer in the dashboard:
 2. On the **Load Balancer Setup**, select **Private load balancer**
 3. Associate your load balancer with either a Cloudflare private IP or a specified IP address and create a description for your load balancer.
 4. On the **Add a Pool** page:
-
-  * Select one or more existing pools or [create a new pool](https://developers.cloudflare.com/load-balancing/pools/create-pool/#create-a-pool).
-  * If you are going to set [traffic steering](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/) to **Off**, re-order the pools in your load balancer to adjust the fallback order.
-  * If needed, update the [**Fallback Pool**](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/#fallback-pools).
-  * If you choose to set traffic steering to **Random**, you can set [Weights](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/#random-steering) (via the API) to your pools to determine the percentage of traffic sent to each pool.
+   - Select one or more existing pools or [create a new pool](https://developers.cloudflare.com/load-balancing/pools/create-pool/#create-a-pool).
+   - If you are going to set [traffic steering](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/) to **Off**, re-order the pools in your load balancer to adjust the fallback order.
+   - If needed, update the [**Fallback Pool**](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/#fallback-pools).
+   - If you choose to set traffic steering to **Random**, you can set [Weights](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/#random-steering) (via the API) to your pools to determine the percentage of traffic sent to each pool.
 5. Select **Next**.
 6. On the **Monitors** page:
-
-  * Review the monitors attached to your pools.
-  * If needed, you can attach an existing monitor or [create a new monitor](https://developers.cloudflare.com/load-balancing/monitors/create-monitor/#create-a-monitor).
+   - Review the monitors attached to your pools.
+   - If needed, you can attach an existing monitor or [create a new monitor](https://developers.cloudflare.com/load-balancing/monitors/create-monitor/#create-a-monitor).
 7. Select **Next**.
 8. On the **Traffic Steering** page, choose an option for [Traffic steering](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/) and select **Next**.
 9. Select **Next**.
 10. On the **Review** page:
+    - Review your configuration and make any changes.
+    - Choose whether to **Save as Draft** or **Save and Deploy**.
 
-  * Review your configuration and make any changes.
-  * Choose whether to **Save as Draft** or **Save and Deploy**.
-
-For a full list of properties, refer to [Create Load Balancer](https://developers.cloudflare.com/api/resources/load%5Fbalancers/methods/create/). If you need help with API authentication, refer to [Cloudflare API documentation](https://developers.cloudflare.com/fundamentals/api/).
+For a full list of properties, refer to [Create Load Balancer](https://developers.cloudflare.com/api/resources/load_balancers/methods/create/). If you need help with API authentication, refer to [Cloudflare API documentation](https://developers.cloudflare.com/fundamentals/api/).
 
 Note
 
 Since load balancers only exist on a zone — and not an account — you may need to get the zone `id` with the [List Zones](https://developers.cloudflare.com/api/resources/zones/methods/list/) command.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Load Balancers Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Load Balancers Write</code>
+
+</details>
+
+*Create Load Balancerbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/load_balancers" \
@@ -134,6 +138,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/load_balancers" \
 ```
 
 The response contains the complete definition of the new load balancer.
+
+*Responsejson*
 
 ```json
 {

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # How to accelerate dynamic traffic outside of mainland China
 
-Last updated Jun 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/china-network-overview/series/china-express-overview-2/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/china-network-overview/series/china-express-overview-2/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this video, Jess Liu discusses Cloudflare's CDN Global Acceleration (formerly China Express), including solutions for high latency on dynamic content, accelerating API calls, accessing Cloudflare One services like the Cloudflare One Client and Cloudflare WAN from within mainland China, and securely connecting private enterprise networks.
 
@@ -20,10 +20,10 @@ In this video, Jess Liu discusses Cloudflare's CDN Global Acceleration (formerly
 
 For additional resources on the China Network, refer to the following resources:
 
-* [Cloudflare China Network](https://developers.cloudflare.com/china-network/)
-* [CDN Global Acceleration (formerly China Express)](https://developers.cloudflare.com/china-network/concepts/global-acceleration/)
-* [Internet Content Provider (ICP)](https://developers.cloudflare.com/china-network/concepts/icp/)
-* [Authoritative DNS in mainland China](https://developers.cloudflare.com/china-network/concepts/china-dns/)
+- [Cloudflare China Network](https://developers.cloudflare.com/china-network/)
+- [CDN Global Acceleration (formerly China Express)](https://developers.cloudflare.com/china-network/concepts/global-acceleration/)
+- [Internet Content Provider (ICP)](https://developers.cloudflare.com/china-network/concepts/icp/)
+- [Authoritative DNS in mainland China](https://developers.cloudflare.com/china-network/concepts/china-dns/)
 
 ### [Watch Episode 1: How to speed up your web traffic inside mainland China](https://developers.cloudflare.com/learning-paths/china-network-overview/series/china-network-main-features-1/)
 

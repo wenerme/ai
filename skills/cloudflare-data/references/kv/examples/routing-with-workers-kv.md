@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Store routing data in Workers KV to route requests across various web servers with Workers
 
-Last updated Jul 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/kv/examples/routing-with-workers-kv/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/examples/routing-with-workers-kv/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Using Workers KV to store routing data to route requests across various web servers with Workers is an ideal use case for Workers KV. Routing workloads can have high read volume, and Workers KV's low-latency reads can help ensure that routing decisions are made quickly and efficiently.
 
@@ -24,7 +24,7 @@ In single-tenant applications, this can be used to route requests to various ori
 
 In multi-tenant applications, requests can be routed to the tenant's respective origin resources (for example, requests to `tenantA.your-worker-hostname.com` routed to server for Tenant A, `tenantB.your-worker-hostname.com` routed to server for Tenant B).
 
-Routing can also be used to implement [A/B testing](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/a-b-testing-using-workers/), canary deployments, or [blue-green deployments ↗](https://en.wikipedia.org/wiki/Blue%E2%80%93green%5Fdeployment) for your own external applications. If you are looking to implement canary or blue-green deployments of applications built fully on Cloudflare Workers, see [Workers gradual deployments](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/).
+Routing can also be used to implement [A/B testing](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/a-b-testing-using-workers/), canary deployments, or [blue-green deployments ↗](https://en.wikipedia.org/wiki/Blue%E2%80%93green_deployment) for your own external applications. If you are looking to implement canary or blue-green deployments of applications built fully on Cloudflare Workers, see [Workers gradual deployments](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/).
 
 ## Route requests with Workers KV
 
@@ -32,8 +32,9 @@ In this example, a multi-tenant e-Commerce application is built on Cloudflare Wo
 
 For simplicity of demonstration, the storefront will be identified with a path element containing the storefront ID, where `https://<WORKER_HOSTNAME>/<STOREFRONT_ID>/...` is the URL pattern for the storefront. You may prefer to use subdomains to identify storefronts in a real-world scenario.
 
-```js
+*index.tsjs*
 
+```js
 // Example routing data stored in Workers KV:
 // Key: "storefrontA" | Value: {"origin": "https://storefrontA-server.example.com"}
 // Key: "storefrontB" | Value: {"origin": "https://storefrontB-server.example.com"}
@@ -135,8 +136,8 @@ In this example, the Cloudflare Worker receives a request and extracts the store
 
 ## Related resources
 
-* [Rust support in Workers](https://developers.cloudflare.com/workers/languages/rust/).
-* [Using KV in Workers](https://developers.cloudflare.com/kv/get-started/).
+- [Rust support in Workers](https://developers.cloudflare.com/workers/languages/rust/).
+- [Using KV in Workers](https://developers.cloudflare.com/kv/get-started/).
 
 Was this helpful?
 

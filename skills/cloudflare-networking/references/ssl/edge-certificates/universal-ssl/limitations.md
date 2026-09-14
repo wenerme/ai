@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Limitations
 
-Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/limitations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/limitations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Universal SSL certificates present some limitations.
 
@@ -28,8 +28,8 @@ When you rely only on Universal SSL in a full setup zone, coverage is limited to
 
 To enable SSL for deeper subdomains, you can:
 
-* Purchase [Advanced Certificate Manager](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) — then turn on [Total TLS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/) for automatic certificate coverage of all proxied subdomains, or manually create advanced certificates for specific hostnames.
-* Upload a [custom SSL certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/) that includes the required subdomains as Subject Alternative Names (SANs).
+- Purchase [Advanced Certificate Manager](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) — then turn on [Total TLS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/) for automatic certificate coverage of all proxied subdomains, or manually create advanced certificates for specific hostnames.
+- Upload a [custom SSL certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/) that includes the required subdomains as Subject Alternative Names (SANs).
 
 ### CNAME setup
 
@@ -37,7 +37,9 @@ On a [CNAME setup zone](https://developers.cloudflare.com/dns/zone-setups/partia
 
 ## Certificate authority
 
-For Universal SSL certificates, Cloudflare chooses the certificate authority (CA) used for your certificate.
+For Universal SSL certificates, Cloudflare chooses the certificate authority (CA)
+
+ used for your certificate.
 
 Cloudflare can change the [certificate authority](https://developers.cloudflare.com/ssl/reference/certificate-authorities/) without prior notification, and will not send any notification as the change happens.
 
@@ -75,8 +77,8 @@ Some domains are not eligible for Universal SSL if they contain words that confl
 
 To resolve this issue, you can:
 
-* Purchase an [advanced certificate](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/).
-* Upload your own [custom certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/).
+- Purchase an [advanced certificate](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/).
+- Upload your own [custom certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/).
 
 ## Certificate pinning
 

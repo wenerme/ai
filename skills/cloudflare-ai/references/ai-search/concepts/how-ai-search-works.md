@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # How AI Search works
 
-Last updated Jul 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/concepts/how-ai-search-works/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/concepts/how-ai-search-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Search is a managed search service. Connect a website, an R2 bucket, or upload your own documents, and AI Search indexes your content for natural language queries.
 
 AI Search consists of two core processes:
 
-* **Indexing:** An asynchronous process that converts your content into vectors and keyword indexes for search. Indexing runs automatically when you connect a data source or upload files.
-* **Querying:** A synchronous process triggered by user queries. It retrieves the most relevant content using vector search, keyword search, or both, and optionally generates a response.
+- **Indexing:** An asynchronous process that converts your content into vectors and keyword indexes for search. Indexing runs automatically when you connect a data source or upload files.
+- **Querying:** A synchronous process triggered by user queries. It retrieves the most relevant content using vector search, keyword search, or both, and optionally generates a response.
 
 ## How indexing works
 
@@ -29,17 +29,23 @@ Indexing begins automatically when you connect a data source or upload files thr
 
 source
 
-[Data sourceOptionalR2 bucket](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/)[Data source · Browser RunOptionalWebsite](https://developers.cloudflare.com/ai-search/configuration/data-source/website/)
+[Data sourceOptionalR2 bucket](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/) [Data source · Browser RunOptionalWebsite](https://developers.cloudflare.com/ai-search/configuration/data-source/website/)
 
 [AI Search · R2Built-in storage](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/)
 
-[Workers AI · toMarkdown()Parsing](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/)[AI SearchChunking](https://developers.cloudflare.com/ai-search/configuration/indexing/chunking/)
+[Workers AI · toMarkdown()Parsing](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/)
+
+[AI SearchChunking](https://developers.cloudflare.com/ai-search/configuration/indexing/chunking/)
 
 index & store
 
-[AI Gateway / Workers AIOptionalEmbedding](https://developers.cloudflare.com/ai-search/configuration/models/)[AI Search · VectorizeOptionalVector index](https://developers.cloudflare.com/ai-search/configuration/indexing/vector-search/)
+[AI Gateway / Workers AIOptionalEmbedding](https://developers.cloudflare.com/ai-search/configuration/models/)
 
-[AI SearchOptionalKeyword tokenizer](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/)[AI SearchOptionalInverted index](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/)
+[AI Search · VectorizeOptionalVector index](https://developers.cloudflare.com/ai-search/configuration/indexing/vector-search/)
+
+[AI SearchOptionalKeyword tokenizer](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/)
+
+[AI SearchOptionalInverted index](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/)
 
 Here is what happens during indexing:
 
@@ -62,13 +68,25 @@ Your query
 
 hybrid search
 
-[AI Gateway / Workers AIOptionalQuery embedding](https://developers.cloudflare.com/ai-search/configuration/models/)[AI Search · VectorizeOptionalVector retrieval](https://developers.cloudflare.com/ai-search/configuration/indexing/vector-search/)
+[AI Gateway / Workers AIOptionalQuery embedding](https://developers.cloudflare.com/ai-search/configuration/models/)
 
-[AI SearchOptionalQuery tokenization](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/)[AI Search · BM25OptionalKeyword retrieval](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/)
+[AI Search · VectorizeOptionalVector retrieval](https://developers.cloudflare.com/ai-search/configuration/indexing/vector-search/)
+
+[AI SearchOptionalQuery tokenization](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/)
+
+[AI Search · BM25OptionalKeyword retrieval](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/)
 
 [AI SearchOptionalFusion](https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/)
 
-[AI Gateway / Workers AIOptionalReranking](https://developers.cloudflare.com/ai-search/configuration/retrieval/reranking/)[AI Search · R2Chunk content retrieval](https://developers.cloudflare.com/ai-search/api/search/rest-api/)[Search result](https://developers.cloudflare.com/ai-search/api/search/workers-binding/#search)[AI Gateway / Workers AIOptionalResponse generation](https://developers.cloudflare.com/ai-search/configuration/retrieval/system-prompt/)[Chat Completions result](https://developers.cloudflare.com/ai-search/api/search/workers-binding/#chatcompletions)
+[AI Gateway / Workers AIOptionalReranking](https://developers.cloudflare.com/ai-search/configuration/retrieval/reranking/)
+
+[AI Search · R2Chunk content retrieval](https://developers.cloudflare.com/ai-search/api/search/rest-api/)
+
+[Search result](https://developers.cloudflare.com/ai-search/api/search/workers-binding/#search)
+
+[AI Gateway / Workers AIOptionalResponse generation](https://developers.cloudflare.com/ai-search/configuration/retrieval/system-prompt/)
+
+[Chat Completions result](https://developers.cloudflare.com/ai-search/api/search/workers-binding/#chatcompletions)
 
 Here is how the querying pipeline works:
 
@@ -86,15 +104,15 @@ Here is how the querying pipeline works:
 
 AI Search is built on [Vectorize](https://developers.cloudflare.com/vectorize/) and adds the rest of the search pipeline around it. Use Vectorize when you want to manage vectors yourself, and AI Search when you want managed search over your content.
 
-| Capability              | AI Search                                                  | Vectorize                                        |
-| ----------------------- | ---------------------------------------------------------- | ------------------------------------------------ |
-| What it is              | Managed, end-to-end search over your content               | A vector database you build on                   |
-| You give it             | Files, or a connected data source                          | Vectors you generate yourself                    |
-| Chunking and embeddings | Handled for you                                            | You generate and insert them                     |
-| Indexing                | Automatic, with continuous sync                            | You upsert and manage vectors                    |
-| Retrieval               | Vector and keyword (hybrid), reranking, metadata filtering | Vector similarity search with metadata filtering |
-| Generated answers       | Optional, built in                                         | Not included                                     |
-| Best when               | You want to add search or RAG quickly                      | You need full control of the retrieval pipeline  |
+| Capability | AI Search | Vectorize |
+| --- | --- | --- |
+| What it is | Managed, end-to-end search over your content | A vector database you build on |
+| You give it | Files, or a connected data source | Vectors you generate yourself |
+| Chunking and embeddings | Handled for you | You generate and insert them |
+| Indexing | Automatic, with continuous sync | You upsert and manage vectors |
+| Retrieval | Vector and keyword (hybrid), reranking, metadata filtering | Vector similarity search with metadata filtering |
+| Generated answers | Optional, built in | Not included |
+| Best when | You want to add search or RAG quickly | You need full control of the retrieval pipeline |
 
 Was this helpful?
 

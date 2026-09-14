@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Enable mTLS
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/client-certificates/enable-mtls/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/client-certificates/enable-mtls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can enable mutual Transport Layer Security (mTLS) for any hostname. For more information, refer to the [Client certificates overview](https://developers.cloudflare.com/ssl/client-certificates/).
 
@@ -22,12 +22,13 @@ The following process only refers to certificates issued from the Cloudflare-man
 
 To enable mTLS for a host from the Cloudflare dashboard:
 
-1. In the Cloudflare dashboard, go to the **Client Certificates** page.
-[Go to **Client Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)
+1. In the Cloudflare dashboard, go to the **Client Certificates** page. [Go to **Client Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)
 2. On the **Hosts** section of the **Client Certificates** card, select **Edit**.
 3. Enter the name of a host in your current domain.
-Note
-The domain (`example.com`) is automatically appended for you. This means that, if you want to enable mTLS for `abc.example.com`, you only need to type `abc`.
+
+   Note
+
+   The domain ( `example.com`) is automatically appended for you. This means that, if you want to enable mTLS for `abc.example.com`, you only need to type `abc`.
 4. Select **Save** to confirm.
 
 ## CAs in use
@@ -42,8 +43,8 @@ If you need to use your own CA (instead of the Cloudflare-managed CA), refer to 
 
 After enabling mTLS for your host, you can:
 
-* Enforce mTLS with a WAF custom rule. Select **Create mTLS Rule** on the dashboard to use a template, or refer to our [mTLS at Cloudflare learning path](https://developers.cloudflare.com/learning-paths/mtls/mtls-app-security/#3-validate-the-client-certificate-in-the-waf) for further guidance.
-* Enforce mTLS with [API Shield](https://developers.cloudflare.com/api-shield/security/mtls/configure/). While API Shield is **not required** to use mTLS, many teams may use mTLS to protect their APIs.
+- Enforce mTLS with a WAF custom rule. Select **Create mTLS Rule** on the dashboard to use a template, or refer to our [mTLS at Cloudflare learning path](https://developers.cloudflare.com/learning-paths/mtls/mtls-app-security/#3-validate-the-client-certificate-in-the-waf) for further guidance.
+- Enforce mTLS with [API Shield](https://developers.cloudflare.com/api-shield/security/mtls/configure/). While API Shield is **not required** to use mTLS, many teams may use mTLS to protect their APIs.
 
 Was this helpful?
 

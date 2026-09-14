@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Add Custom Controlbar
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/custom-controlbar/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/custom-controlbar/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Prerequisite
 
@@ -26,7 +26,7 @@ WebMobile
 
 ReactWeb ComponentsAngular
 
-RealtimeKit UI Kit provides the [RtkControlbar](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/component-library/#rtk-controlbar) component for a default controlbar.
+RealtimeKit UI Kit provides the [`RtkControlbar`](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/component-library/#rtk-controlbar) component for a default controlbar.
 
 If you need additional controls, replace `RtkControlbar` with individual UI Kit components and custom elements.
 
@@ -135,7 +135,7 @@ const fullScreenRef = useRef<HTMLDivElement>(null);
 
 A complete example to build your own UI with custom controlbar can be found [here ↗](https://github.com/cloudflare/realtimekit-web-examples/tree/main/react-examples/examples/create-your-own-ui) with the custom controlbar component [here ↗](https://github.com/cloudflare/realtimekit-web-examples/blob/main/react-examples/examples/create-your-own-ui/src/components/meeting-control-bar.tsx).
 
-RealtimeKit UI Kit provides the [rtk-controlbar](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/component-library/#rtk-controlbar) component for a default controlbar.
+RealtimeKit UI Kit provides the [`rtk-controlbar`](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/component-library/#rtk-controlbar) component for a default controlbar.
 
 If you need additional controls, replace `rtk-controlbar` with individual UI Kit components and custom elements. In the `renderJoinedScreen` function from [Build Your Own UI](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/build-your-own-ui/), replace:
 
@@ -204,11 +204,13 @@ if (fullscreenToggle) {
 
 A complete example to build your own UI with custom controlbar can be found [here ↗](https://github.com/cloudflare/realtimekit-web-examples/tree/main/html-examples/examples/create-your-own-ui) with the custom controlbar component [here ↗](https://github.com/cloudflare/realtimekit-web-examples/blob/main/html-examples/examples/create-your-own-ui/components/meeting-control-bar.js).
 
-RealtimeKit UI Kit provides the [rtk-controlbar](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/component-library/#rtk-controlbar) component for a default controlbar.
+RealtimeKit UI Kit provides the [`rtk-controlbar`](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/component-library/#rtk-controlbar) component for a default controlbar.
 
 If you need additional controls, replace `rtk-controlbar` with individual UI Kit components and custom elements. Create a custom controlbar component that uses the RealtimeKit angular components directly.
 
 #### Create Custom Controlbar Component
+
+*custom-controlbar.component.tstypescript*
 
 ```typescript
 import { Component, AfterViewInit, ElementRef, ViewChild } from "@angular/core";
@@ -315,6 +317,8 @@ with:
 
 #### Complete Meeting Component Example
 
+*meeting.component.tstypescript*
+
 ```typescript
 import {
 	Component,
@@ -367,6 +371,8 @@ export class MeetingComponent implements OnInit, OnDestroy {
 
 Don't forget to declare your custom controlbar component in your Angular module:
 
+*app.module.tstypescript*
+
 ```typescript
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
@@ -388,6 +394,8 @@ export class AppModule {}
 #### Advanced Customization
 
 You can further customize the controlbar by adding your own buttons or modifying the layout:
+
+*enhanced-controlbar.component.tstypescript*
 
 ```typescript
 import { Component, AfterViewInit, ElementRef, ViewChild } from "@angular/core";
@@ -485,16 +493,16 @@ The iOS UI Kit provides `RtkMeetingControlBar` as the default controlbar for gro
 
 ### Available controlbar button components
 
-| Component                       | Description                                       |
-| ------------------------------- | ------------------------------------------------- |
-| RtkAudioButtonControlBar        | Microphone toggle with automatic state management |
-| RtkVideoButtonControlBar        | Camera toggle with automatic state management     |
-| RtkEndMeetingControlBarButton   | Leave/end meeting button with confirmation dialog |
-| RtkMoreButtonControlBar         | "More" menu button with bottom sheet              |
-| RtkSwitchCameraButtonControlBar | Front/back camera switch                          |
-| RtkStageActionButtonControlBar  | Stage join/leave for webinar and livestream       |
-| RtkControlBarButton             | Base button class for custom buttons              |
-| RtkControlBarSpacerButton       | Invisible spacer for layout                       |
+| Component | Description |
+| --- | --- |
+| `RtkAudioButtonControlBar` | Microphone toggle with automatic state management |
+| `RtkVideoButtonControlBar` | Camera toggle with automatic state management |
+| `RtkEndMeetingControlBarButton` | Leave/end meeting button with confirmation dialog |
+| `RtkMoreButtonControlBar` | "More" menu button with bottom sheet |
+| `RtkSwitchCameraButtonControlBar` | Front/back camera switch |
+| `RtkStageActionButtonControlBar` | Stage join/leave for webinar and livestream |
+| `RtkControlBarButton` | Base button class for custom buttons |
+| `RtkControlBarSpacerButton` | Invisible spacer for layout |
 
 ### Build a custom controlbar using RtkTabBar
 
@@ -598,15 +606,17 @@ The Android UI Kit provides `RtkMeetingControlBarView` as the default controlbar
 
 ### Available controlbar button components
 
-| Component             | Activate with     | Description                                       |
-| --------------------- | ----------------- | ------------------------------------------------- |
-| RtkMicToggleButton    | RealtimeKitClient | Microphone toggle with state management           |
-| RtkCameraToggleButton | RealtimeKitClient | Camera toggle with state management               |
-| RtkLeaveButton        | RealtimeKitClient | Leave/end meeting button with confirmation dialog |
-| RtkMoreToggleButton   | RealtimeKitClient | "More" menu button                                |
-| RtkControlBarButton   | —                 | Base button class for custom buttons              |
+| Component | Activate with | Description |
+| --- | --- | --- |
+| `RtkMicToggleButton` | `RealtimeKitClient` | Microphone toggle with state management |
+| `RtkCameraToggleButton` | `RealtimeKitClient` | Camera toggle with state management |
+| `RtkLeaveButton` | `RealtimeKitClient` | Leave/end meeting button with confirmation dialog |
+| `RtkMoreToggleButton` | `RealtimeKitClient` | "More" menu button |
+| `RtkControlBarButton` | — | Base button class for custom buttons |
 
 ### Define a custom controlbar layout in XML
+
+*layout\_custom\_controlbar.xmlxml*
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -647,6 +657,8 @@ The Android UI Kit provides `RtkMeetingControlBarView` as the default controlbar
 ```
 
 ### Activate the controlbar buttons in your Activity
+
+*CustomMeetingActivity.ktkotlin*
 
 ```kotlin
 import android.os.Bundle
@@ -708,14 +720,14 @@ The React Native UI Kit provides individual toggle components that you can compo
 
 ### Available controlbar components
 
-| Component            | Required prop | Description                                       |
-| -------------------- | ------------- | ------------------------------------------------- |
-| RtkMicToggle         | meeting       | Microphone toggle with permission handling        |
-| RtkCameraToggle      | meeting       | Camera toggle with permission handling            |
-| RtkLeaveButton       | —             | Leave/end meeting button with confirmation dialog |
-| RtkMoreToggle        | meeting       | "More" menu toggle with notification badge        |
-| RtkScreenShareToggle | meeting       | Screen share toggle                               |
-| RtkControlbarButton  | —             | Base button for custom actions                    |
+| Component | Required prop | Description |
+| --- | --- | --- |
+| `RtkMicToggle` | `meeting` | Microphone toggle with permission handling |
+| `RtkCameraToggle` | `meeting` | Camera toggle with permission handling |
+| `RtkLeaveButton` | — | Leave/end meeting button with confirmation dialog |
+| `RtkMoreToggle` | `meeting` | "More" menu toggle with notification badge |
+| `RtkScreenShareToggle` | `meeting` | Screen share toggle |
+| `RtkControlbarButton` | — | Base button for custom actions |
 
 ### Build a custom controlbar
 

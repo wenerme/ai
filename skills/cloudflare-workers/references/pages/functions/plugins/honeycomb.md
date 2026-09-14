@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Honeycomb
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/functions/plugins/honeycomb/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/plugins/honeycomb/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Honeycomb Pages Plugin automatically sends traces to Honeycomb for analysis and observability.
 
@@ -75,10 +75,10 @@ Ensure that you enable the option to **Automatically unpack nested JSON** and se
 
 `data.honeycomb.tracer` has two methods for attaching additional information about a given trace:
 
-* `data.honeycomb.tracer.log` which takes a single argument, a `String`.
-* `data.honeycomb.tracer.addData` which takes a single argument, an object of arbitrary data.
+- `data.honeycomb.tracer.log` which takes a single argument, a `String`.
+- `data.honeycomb.tracer.addData` which takes a single argument, an object of arbitrary data.
 
-More information about these methods can be seen on [@cloudflare/workers-honeycomb-logger's documentation ↗](https://github.com/cloudflare/workers-honeycomb-logger#adding-logs-and-other-data).
+More information about these methods can be seen on [`@cloudflare/workers-honeycomb-logger`'s documentation ↗](https://github.com/cloudflare/workers-honeycomb-logger#adding-logs-and-other-data).
 
 For example, if you wanted to use the `addData` method to attach user information:
 

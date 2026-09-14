@@ -12,42 +12,49 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # CLI
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/get-started/cli/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/get-started/cli/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Manage R2 buckets and objects directly from your terminal. Use CLI tools to automate tasks and manage objects.
 
-| Tool                                                                  | Best for                                                                 |
-| --------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| [Wrangler](https://developers.cloudflare.com/workers/wrangler/)       | Single object operations and managing bucket settings with minimal setup |
-| [rclone](https://developers.cloudflare.com/r2/examples/rclone/)       | Bulk object operations, migrations, and syncing directories              |
-| [AWS CLI](https://developers.cloudflare.com/r2/examples/aws/aws-cli/) | Existing AWS workflows or familiarity with AWS CLI                       |
+| Tool | Best for |
+| --- | --- |
+| [Wrangler](https://developers.cloudflare.com/workers/wrangler/) | Single object operations and managing bucket settings with minimal setup |
+| [rclone](https://developers.cloudflare.com/r2/examples/rclone/) | Bulk object operations, migrations, and syncing directories |
+| [AWS CLI](https://developers.cloudflare.com/r2/examples/aws/aws-cli/) | Existing AWS workflows or familiarity with AWS CLI |
 
-## 1\. Create a bucket
+## 1. Create a bucket
 
-A bucket stores your objects in R2\. To create a new R2 bucket:
+A bucket stores your objects in R2. To create a new R2 bucket:
 
 1. Log in to your Cloudflare account:
-```sh
-npx wrangler login
-```
-2. Create a bucket named `my-bucket`:
-```sh
-npx wrangler r2 bucket create my-bucket
-```
-If prompted, select the account you want to create the bucket in.
-3. Verify the bucket was created:
-```sh
-npx wrangler r2 bucket list
-```
 
-1. In the Cloudflare Dashboard, go to **R2 object storage**.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
+   ```sh
+   npx wrangler login
+   ```
+
+
+2. Create a bucket named `my-bucket`:
+
+   ```sh
+   npx wrangler r2 bucket create my-bucket
+   ```
+
+   If prompted, select the account you want to create the bucket in.
+3. Verify the bucket was created:
+
+   ```sh
+   npx wrangler r2 bucket list
+   ```
+
+
+
+1. In the Cloudflare Dashboard, go to **R2 object storage**. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select **Create bucket**.
 3. Enter a name for your bucket.
 4. Select a [location](https://developers.cloudflare.com/r2/reference/data-location) for your bucket and a [default storage class](https://developers.cloudflare.com/r2/buckets/storage-classes/).
 5. Select **Create bucket**.
 
-## 2\. Generate API credentials
+## 2. Generate API credentials
 
 CLI tools that use the S3 API ([AWS CLI](https://developers.cloudflare.com/r2/examples/aws/aws-cli/), [rclone](https://developers.cloudflare.com/r2/examples/rclone/)) require an Access Key ID and Secret Access Key. If you are using [Wrangler](https://developers.cloudflare.com/workers/wrangler/), you can skip this step.
 
@@ -58,36 +65,47 @@ CLI tools that use the S3 API ([AWS CLI](https://developers.cloudflare.com/r2/ex
 5. Select **Create API Token**.
 6. Copy the **Access Key ID** and **Secret Access Key**. Store these securely — you cannot view the secret again.
 
-## 3\. Set up a CLI tool
+## 3. Set up a CLI tool
 
 [Wrangler](https://developers.cloudflare.com/r2/reference/wrangler-commands/) is the Cloudflare Workers CLI. It authenticates with your Cloudflare account directly, so no API credentials needed.
 
-1. Install Wrangler:
-npmyarnpnpmbun
-```
-npm i -D wrangler
-```
-```
-yarn add -D wrangler
-```
-```
-pnpm add -D wrangler
-```
-```
-bun add -d wrangler
-```
+1. Install Wrangler:npmyarnpnpmbun
+
+   ```
+   npm i -D wrangler
+   ```
+
+   ```
+   yarn add -D wrangler
+   ```
+
+   ```
+   pnpm add -D wrangler
+   ```
+
+   ```
+   bun add -d wrangler
+   ```
+
+
 2. Log in to your Cloudflare account:
-```sh
-wrangler login
-```
+
+   ```sh
+   wrangler login
+   ```
+
+
 
 [rclone](https://developers.cloudflare.com/r2/examples/rclone/) is ideal for bulk uploads, migrations, and syncing directories.
 
 1. [Install rclone ↗](https://rclone.org/install/) (version 1.59 or later).
 2. Configure a new remote:
-```sh
-rclone config
-```
+
+   ```sh
+   rclone config
+   ```
+
+
 3. Create new remote by selecting `n`.
 4. Name your remote `r2`
 5. Select **Amazon S3 Compliant Storage Providers** as the storage type.
@@ -101,17 +119,19 @@ The [AWS CLI](https://developers.cloudflare.com/r2/examples/aws/aws-cli/) works 
 
 1. [Install the AWS CLI ↗](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) for your operating system.
 2. Configure your credentials:
-```sh
-aws configure
-```
+
+   ```sh
+   aws configure
+   ```
+
+
 3. When prompted, enter:
+   - **AWS Access Key ID**: Your R2 Access Key ID
+   - **AWS Secret Access Key**: Your R2 Secret Access Key
+   - **Default region name**: `auto`
+   - **Default output format**: `json` (or press Enter to skip)
 
-  * **AWS Access Key ID**: Your R2 Access Key ID
-  * **AWS Secret Access Key**: Your R2 Secret Access Key
-  * **Default region name**: `auto`
-  * **Default output format**: `json` (or press Enter to skip)
-
-## 4\. Upload and download objects
+## 4. Upload and download objects
 
 (Optional) Create a test file to upload. Run this command in the directory where you plan to run the CLI commands:
 

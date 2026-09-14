@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Process execution
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/1-0-preview/processes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/1-0-preview/processes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Path to Sandbox SDK 1.0
 
-This page documents process execution on `@cloudflare/sandbox@next`, the preview of Sandbox SDK 1.0\. For today's stable command and session behavior, refer to [Commands](https://developers.cloudflare.com/sandbox/api/commands/) and [Sessions](https://developers.cloudflare.com/sandbox/concepts/sessions/).
+This page documents process execution on `@cloudflare/sandbox@next`, the preview of Sandbox SDK 1.0. For today's stable command and session behavior, refer to [Commands](https://developers.cloudflare.com/sandbox/api/commands/) and [Sessions](https://developers.cloudflare.com/sandbox/concepts/sessions/).
 
 In the 1.0 preview, treat the sandbox as a computer you drive with explicit programs.
 
@@ -38,11 +38,11 @@ const sandbox = getSandbox(env.Sandbox, "user-123");
 
 Three different things are in play:
 
-| Term           | Meaning                                                                                                                                                                                                                               |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Sandbox ID** | The stable string your app uses to find that sandbox again (for example "user-123").                                                                                                                                                  |
-| **Container**  | The [Containers](https://developers.cloudflare.com/containers/) instance currently running work for that sandbox. Sandboxes run on containers. The sandbox ID is stable. The container instance behind it is not always the same one. |
-| **Process**    | A program you start with exec() **inside the current container**. The handle and process.id mean “this program in this container,” not “this sandbox ID forever.”                                                                     |
+| Term | Meaning |
+| --- | --- |
+| **Sandbox ID** | The stable string your app uses to find that sandbox again (for example `"user-123"`). |
+| **Container** | The [Containers](https://developers.cloudflare.com/containers/) instance currently running work for that sandbox. Sandboxes run on containers. The sandbox ID is stable. The container instance behind it is not always the same one. |
+| **Process** | A program you start with `exec()` **inside the current container**. The handle and `process.id` mean “this program in this container,” not “this sandbox ID forever.” |
 
 **Same sandbox ID does not mean the same container.** Processes live only in the container that started them. After a new container serves that ID, start new processes — you do not resume the old ones. Full sandbox model: [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/1-0-preview/lifecycle/).
 
@@ -50,11 +50,11 @@ Three different things are in play:
 
 The command model changes in the 1.0 preview compared with the current stable package:
 
-| Current stable package                          | 1.0 preview                                           |
-| ----------------------------------------------- | ----------------------------------------------------- |
-| exec(string) resolves when the command finishes | exec(argv) resolves when the process starts           |
-| Default session can preserve cd / export        | Each launch is independent                            |
-| startProcess / execStream for other shapes      | One process handle covers short and long-running work |
+| Current stable package | 1.0 preview |
+| --- | --- |
+| `exec(string)` resolves when the command finishes | `exec(argv)` resolves when the process starts |
+| Default session can preserve `cd` / `export` | Each launch is independent |
+| `startProcess` / `execStream` for other shapes | One process handle covers short and long-running work |
 
 Use argv for a single binary:
 
@@ -108,11 +108,11 @@ Sandbox-wide values use `setEnvVars`. Refer to [Environment variables](https://d
 
 `await sandbox.exec(argv)` returns a **process handle**:
 
-| Capability | Members                                                                          |
-| ---------- | -------------------------------------------------------------------------------- |
-| Identity   | id, pid                                                                          |
-| Observe    | status(), logs(), output(), waitForExit(), waitForLog(), waitForPort(), exitCode |
-| Control    | kill(signal?) with a numeric signal (default 15)                                 |
+| Capability | Members |
+| --- | --- |
+| Identity | `id`, `pid` |
+| Observe | `status()`, `logs()`, `output()`, `waitForExit()`, `waitForLog()`, `waitForPort()`, `exitCode` |
+| Control | `kill(signal?)` with a numeric signal (default `15`) |
 
 Observation timeouts and `AbortSignal` values cancel **only that wait or stream**. They do not stop the process. Call `kill()` when you intend to stop it.
 
@@ -130,20 +130,20 @@ The container for a sandbox is not meant to run forever. After a period with not
 
 When that happens:
 
-* Your app still uses the same sandbox ID (`user-123`).
-* Processes that were running in the old container have exited. Their process IDs and live log buffers from that container are gone.
-* The next time you use the sandbox for real work, Cloudflare may start a **new** container for the same sandbox ID. You start new processes there. You do not reconnect to process IDs from the previous container. Files from the old container are not still there unless your app restored them (for example from a backup or a mounted bucket).
+- Your app still uses the same sandbox ID ( `user-123`).
+- Processes that were running in the old container have exited. Their process IDs and live log buffers from that container are gone.
+- The next time you use the sandbox for real work, Cloudflare may start a **new** container for the same sandbox ID. You start new processes there. You do not reconnect to process IDs from the previous container. Files from the old container are not still there unless your app restored them (for example from a backup or a mounted bucket).
 
-Container stop and replace are not new in 1.0\. The preview makes process handles fail closed after the container that owned them is gone: the SDK does not retarget an old process ID at a new container for the same sandbox ID.
+Container stop and replace are not new in 1.0. The preview makes process handles fail closed after the container that owned them is gone: the SDK does not retarget an old process ID at a new container for the same sandbox ID.
 
 ### What you see in the API
 
-| What you try                                              | What happens                                                                                                 |
-| --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| The process is still running in the current container     | getProcess(id) returns it; you can read logs and wait as usual                                               |
-| No container is running for the sandbox yet               | getProcess and listProcesses return null / \[\]. They do **not** start a container just to answer the lookup |
-| You still hold a handle from before the container stopped | Calls on that handle fail with StaleProcessHandleError                                                       |
-| You need the same _job_ after a stop                      | Start a new exec() from the launch and checkpoint your app stored                                            |
+| What you try | What happens |
+| --- | --- |
+| The process is still running in the current container | `getProcess(id)` returns it; you can read logs and wait as usual |
+| No container is running for the sandbox yet | `getProcess` and `listProcesses` return `null` / `[]`. They do **not** start a container just to answer the lookup |
+| You still hold a handle from before the container stopped | Calls on that handle fail with `StaleProcessHandleError` |
+| You need the same *job* after a stop | Start a new `exec()` from the launch and checkpoint your app stored |
 
 Recovery procedures: [Errors and recovery](https://developers.cloudflare.com/sandbox/1-0-preview/errors/).
 
@@ -157,12 +157,12 @@ Worker requests are short. Sandbox processes often are not. Design the job so a 
 
 ### What to store
 
-| Always useful                                         | When you stream logs                        |
-| ----------------------------------------------------- | ------------------------------------------- |
-| Sandbox ID                                            | Latest log **cursor** from delivered events |
-| Full exec argv                                        |                                             |
-| cwd and env if the launch needs them                  |                                             |
-| Application checkpoint (repo path, step, agent state) |                                             |
+| Always useful | When you stream logs |
+| --- | --- |
+| Sandbox ID | Latest log **cursor** from delivered events |
+| Full `exec` argv | |
+| `cwd` and `env` if the launch needs them | |
+| Application checkpoint (repo path, step, agent state) | |
 
 A process ID is a resume key for the **current** container only. It is not enough to restart the job after the container may have stopped.
 
@@ -272,12 +272,12 @@ If you still hold a handle object from before the container stopped, calls on th
 
 ## Processes and terminals
 
-|        | Process (exec)             | Terminal                            |
-| ------ | -------------------------- | ----------------------------------- |
-| Role   | Supervised argv process    | Interactive PTY                     |
-| Input  | Launch-time argv           | PTY input (write / browser connect) |
-| Stop   | kill(signal?)              | interrupt() / terminate()           |
-| Lookup | getProcess / listProcesses | getTerminal / listTerminals         |
+|  | Process (`exec`) | Terminal |
+| --- | --- | --- |
+| Role | Supervised argv process | Interactive PTY |
+| Input | Launch-time argv | PTY input (`write` / browser `connect`) |
+| Stop | `kill(signal?)` | `interrupt()` / `terminate()` |
+| Lookup | `getProcess` / `listProcesses` | `getTerminal` / `listTerminals` |
 
 Both follow the same [container lifetime rules](#how-long-a-process-lives). Terminal docs: [Terminals](https://developers.cloudflare.com/sandbox/1-0-preview/terminals/). API: [Terminals API](https://developers.cloudflare.com/sandbox/1-0-preview/api/terminals/).
 
@@ -301,14 +301,14 @@ Event shapes, wait options, and readiness checks: [Processes API](https://develo
 
 ## Related
 
-* [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/1-0-preview/lifecycle/)
-* [Processes API](https://developers.cloudflare.com/sandbox/1-0-preview/api/processes/)
-* [Errors and recovery](https://developers.cloudflare.com/sandbox/1-0-preview/errors/)
-* [Errors API](https://developers.cloudflare.com/sandbox/1-0-preview/api/errors/)
-* [Terminals](https://developers.cloudflare.com/sandbox/1-0-preview/terminals/)
-* [Migrate](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/)
-* [Get started](https://developers.cloudflare.com/sandbox/1-0-preview/get-started/)
-* [1.0 preview overview](https://developers.cloudflare.com/sandbox/1-0-preview/)
+- [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/1-0-preview/lifecycle/)
+- [Processes API](https://developers.cloudflare.com/sandbox/1-0-preview/api/processes/)
+- [Errors and recovery](https://developers.cloudflare.com/sandbox/1-0-preview/errors/)
+- [Errors API](https://developers.cloudflare.com/sandbox/1-0-preview/api/errors/)
+- [Terminals](https://developers.cloudflare.com/sandbox/1-0-preview/terminals/)
+- [Migrate](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/)
+- [Get started](https://developers.cloudflare.com/sandbox/1-0-preview/get-started/)
+- [1.0 preview overview](https://developers.cloudflare.com/sandbox/1-0-preview/)
 
 Was this helpful?
 

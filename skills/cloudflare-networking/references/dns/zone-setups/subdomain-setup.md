@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Subdomain setup
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-When you use a subdomain setup, you can manage the [Cloudflare configurations](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/) for one or more subdomains separately from those associated with your apex domain. This means that, on your [account homepage ↗](https://dash.cloudflare.com/?to=/:account/), you would find websites like `example.com` or `blog.example.com` listed as separate zones.
+When you use a subdomain setup, you can manage the [Cloudflare configurations](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/) for one or more subdomains separately from those associated with your apex domain
+
+. This means that, on your [account homepage ↗](https://dash.cloudflare.com/?to=/:account/), you would find websites like `example.com` or `blog.example.com` listed as separate zones.
 
 Note
 
@@ -26,9 +28,9 @@ Subdomain setups are also useful when different subdomains require entirely diff
 
 ## Availability
 
-|              | Free | Pro | Business | Enterprise |
-| ------------ | ---- | --- | -------- | ---------- |
-| Availability | No   | No  | No       | Yes        |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | No | No | No | Yes |
 
 Setup combinations
 
@@ -38,15 +40,15 @@ The availability of different setups depends on both the parent zone setup and t
 
 To use subdomain setups with [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/), note that:
 
-* If the child zone is in a pending state when you create the Access application, your configuration will not automatically apply when you activate the zone. You must also re-save the Access application once your subdomain setup is active.
-* If you split out a subdomain which already has an Access application, you will also need to re-save the Access application to associate it with the new child zone.
+- If the child zone is in a pending state when you create the Access application, your configuration will not automatically apply when you activate the zone. You must also re-save the Access application once your subdomain setup is active.
+- If you split out a subdomain which already has an Access application, you will also need to re-save the Access application to associate it with the new child zone.
 
 ## Resources
 
-* [Setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/setup/)
-* [Enable DNSSEC](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/dnssec/)
-* [Migrate to new account](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/move-to-new-account/)
-* [Rollback](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/rollback/)
+- [Setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/setup/)
+- [Enable DNSSEC](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/dnssec/)
+- [Migrate to new account](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/move-to-new-account/)
+- [Rollback](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/rollback/)
 
 ## FAQ
 

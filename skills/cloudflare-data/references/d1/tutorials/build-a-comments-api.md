@@ -12,45 +12,58 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Build a Comments API
 
-Last updated Mar 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will use D1 and [Hono ↗](https://hono.dev/) to build a JSON API that stores and retrieves comments for a blog. You will create a D1 database, define a schema, and wire up `GET` and `POST` endpoints that read from and write to the database.
 
 ## Prerequisites
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
 
-## 1\. Create a new Worker project
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
 
-1. Create a new project named `d1-comments-api` by running:
-npmyarnpnpm
-```
-npm create cloudflare@latest -- d1-comments-api
-```
-```
-yarn create cloudflare d1-comments-api
-```
-```
-pnpm create cloudflare@latest d1-comments-api
-```
-For setup, select the following options:
+</details>
 
-  * For _What would you like to start with?_, choose `Hello World example`.
-  * For _Which template would you like to use?_, choose `Worker only`.
-  * For _Which language do you want to use?_, choose `TypeScript`.
-  * For _Do you want to use git for version control?_, choose `Yes`.
-  * For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+## 1. Create a new Worker project
+
+1. Create a new project named `d1-comments-api` by running:npmyarnpnpm
+
+   ```
+   npm create cloudflare@latest -- d1-comments-api
+   ```
+
+   ```
+   yarn create cloudflare d1-comments-api
+   ```
+
+   ```
+   pnpm create cloudflare@latest d1-comments-api
+   ```
+
+   For setup, select the following options:
+   - For *What would you like to start with?*, choose `Hello World example`.
+   - For *Which template would you like to use?*, choose `Worker only`.
+   - For *Which language do you want to use?*, choose `TypeScript`.
+   - For *Do you want to use git for version control?*, choose `Yes`.
+   - For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 2. Move into the project directory:
-```sh
-cd d1-comments-api
-```
 
-## 2\. Install Hono
+   ```sh
+   cd d1-comments-api
+   ```
+
+
+
+## 2. Install Hono
 
 Install [Hono ↗](https://hono.dev/), a lightweight web framework for building APIs on Workers:
 
@@ -72,81 +85,102 @@ pnpm add hono
 bun add hono
 ```
 
-## 3\. Create a database
+## 3. Create a database
 
 1. Create a new D1 database with Wrangler:
-```sh
-npx wrangler@latest d1 create d1-comments-api
-```
+
+   ```sh
+   npx wrangler@latest d1 create d1-comments-api
+   ```
+
+
 2. When prompted `Would you like Wrangler to add it on your behalf?`, select `Yes`. This automatically adds the `DB` binding to your Wrangler configuration file.
-Confirm that your Wrangler configuration file contains the `d1_databases` binding and the full project configuration:
-```jsonc
-{
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "d1-comments-api",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-08-25",
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "d1-comments-api",
-      "database_id": "<YOUR_DATABASE_ID>"
-    }
-  ]
-}
-```
-```toml
-name = "d1-comments-api"
-main = "src/index.ts"
-# Set this to today's date
-compatibility_date = "2026-08-25"
-[[d1_databases]]
-binding = "DB" # available in your Worker on env.DB
-database_name = "d1-comments-api"
-database_id = "<YOUR_DATABASE_ID>"
-```
-Replace `<YOUR_DATABASE_ID>` with the ID output by the `wrangler d1 create` command.
+
+   Confirm that your Wrangler configuration file contains the `d1_databases` binding and the full project configuration:
+
+   ```jsonc
+   {
+     "$schema": "./node_modules/wrangler/config-schema.json",
+     "name": "d1-comments-api",
+     "main": "src/index.ts",
+     // Set this to today's date
+     "compatibility_date": "2026-09-14",
+     "d1_databases": [
+       {
+         "binding": "DB",
+         "database_name": "d1-comments-api",
+         "database_id": "<YOUR_DATABASE_ID>"
+       }
+     ]
+   }
+   ```
+
+   ```toml
+   name = "d1-comments-api"
+   main = "src/index.ts"
+   # Set this to today's date
+   compatibility_date = "2026-09-14"
+
+   [[d1_databases]]
+   binding = "DB" # available in your Worker on env.DB
+   database_name = "d1-comments-api"
+   database_id = "<YOUR_DATABASE_ID>"
+   ```
+
+   Replace `<YOUR_DATABASE_ID>` with the ID output by the `wrangler d1 create` command.
 
 [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) allow your Workers to access resources, like D1 databases, KV namespaces, and R2 buckets, using a variable name in code. Your D1 database is accessible in your Worker on `env.DB`.
 
-## 4\. Create a schema and seed the database
+## 4. Create a schema and seed the database
 
 1. Create a `schemas/schema.sql` file with the following contents:
-```sql
-DROP TABLE IF EXISTS comments;
-CREATE TABLE IF NOT EXISTS comments (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  author TEXT NOT NULL,
-  body TEXT NOT NULL,
-  post_slug TEXT NOT NULL
-);
-CREATE INDEX idx_comments_post_slug ON comments (post_slug);
 
--- Optionally, uncomment the below query to insert seed data
--- INSERT INTO comments (author, body, post_slug) VALUES ('Kristian', 'Great post!', 'hello-world');
-```
+   ```sql
+   DROP TABLE IF EXISTS comments;
+   CREATE TABLE IF NOT EXISTS comments (
+     id INTEGER PRIMARY KEY AUTOINCREMENT,
+     author TEXT NOT NULL,
+     body TEXT NOT NULL,
+     post_slug TEXT NOT NULL
+   );
+   CREATE INDEX idx_comments_post_slug ON comments (post_slug);
+
+   -- Optionally, uncomment the below query to insert seed data
+   -- INSERT INTO comments (author, body, post_slug) VALUES ('Kristian', 'Great post!', 'hello-world');
+   ```
+
+
 2. Run the schema against your local database first:
-```sh
-npx wrangler d1 execute d1-comments-api --local --file schemas/schema.sql
-```
-3. Verify the table was created locally:
-```sh
-npx wrangler d1 execute d1-comments-api --local --command "SELECT name FROM sqlite_schema WHERE type = 'table'"
-```
-```txt
-┌──────────┐
-│ name     │
-├──────────┤
-│ comments │
-└──────────┘
-```
-4. Once you are satisfied with the schema, apply it to your remote (production) database:
-```sh
-npx wrangler d1 execute d1-comments-api --remote --file schemas/schema.sql
-```
 
-## 5\. Initialize the Hono application
+   ```sh
+   npx wrangler d1 execute d1-comments-api --local --file schemas/schema.sql
+   ```
+
+
+3. Verify the table was created locally:
+
+   ```sh
+   npx wrangler d1 execute d1-comments-api --local --command "SELECT name FROM sqlite_schema WHERE type = 'table'"
+   ```
+
+   ```txt
+   ┌──────────┐
+   │ name     │
+   ├──────────┤
+   │ comments │
+   └──────────┘
+   ```
+
+
+4. Once you are satisfied with the schema, apply it to your remote (production) database:
+
+   ```sh
+   npx wrangler d1 execute d1-comments-api --remote --file schemas/schema.sql
+   ```
+
+
+
+## 5. Initialize the Hono application
 
 Replace the contents of `src/index.ts` with the following code. This sets up a Hono application with a typed `Bindings` interface so that `env.DB` is correctly typed as a `D1Database`:
 
@@ -190,7 +224,7 @@ app.post("/api/posts/:slug/comments", async (c) => {
 export default app;
 ```
 
-## 6\. Query comments
+## 6. Query comments
 
 Add the logic for the `GET` endpoint to retrieve comments for a given post. This uses the D1 [Workers Binding API](https://developers.cloudflare.com/d1/worker-api/) to prepare and execute a parameterized query:
 
@@ -218,9 +252,9 @@ app.get("/api/posts/:slug/comments", async (c) => {
 });
 ```
 
-The code uses [prepare](https://developers.cloudflare.com/d1/worker-api/d1-database/#prepare) to create a parameterized statement, [bind](https://developers.cloudflare.com/d1/worker-api/prepared-statements/#bind) to safely pass the slug value (preventing SQL injection), and [run](https://developers.cloudflare.com/d1/worker-api/prepared-statements/#run) to execute the query.
+The code uses [`prepare`](https://developers.cloudflare.com/d1/worker-api/d1-database/#prepare) to create a parameterized statement, [`bind`](https://developers.cloudflare.com/d1/worker-api/prepared-statements/#bind) to safely pass the slug value (preventing SQL injection), and [`run`](https://developers.cloudflare.com/d1/worker-api/prepared-statements/#run) to execute the query.
 
-## 7\. Insert comments
+## 7. Insert comments
 
 Add the `POST` endpoint to create new comments. This validates the request body before inserting a row:
 
@@ -275,7 +309,7 @@ app.post("/api/posts/:slug/comments", async (c) => {
 });
 ```
 
-## 8\. (Optional) Add CORS support
+## 8. (Optional) Add CORS support
 
 If you plan to call this API from a front-end application on a different origin, add CORS middleware. Import the `cors` module from Hono and add it before your routes:
 
@@ -301,40 +335,51 @@ app.use("/api/*", cors());
 
 When you make requests to `/api/*`, Hono will automatically generate and add CORS headers to responses from your API.
 
-## 9\. Deploy your application
+## 9. Deploy your application
 
 1. Log in to your Cloudflare account (if you have not already):
-```sh
-npx wrangler whoami
-```
-If you are not logged in, Wrangler will prompt you to log in.
+
+   ```sh
+   npx wrangler whoami
+   ```
+
+   If you are not logged in, Wrangler will prompt you to log in.
 2. Deploy your Worker:
-```sh
-npx wrangler deploy
-```
+
+   ```sh
+   npx wrangler deploy
+   ```
+
+
 3. Test the API by inserting and then retrieving a comment:
-```sh
-# Replace <YOUR_SUBDOMAIN> with your workers.dev subdomain
-curl -X POST https://d1-comments-api.<YOUR_SUBDOMAIN>.workers.dev/api/posts/hello-world/comments \
-  -H "Content-Type: application/json" \
-  -d '{"author": "Kristian", "body": "Great post!"}'
-```
-```txt
-Created
-```
-```sh
-curl https://d1-comments-api.<YOUR_SUBDOMAIN>.workers.dev/api/posts/hello-world/comments
-```
-```txt
-[
-  {
-    "id": 1,
-    "author": "Kristian",
-    "body": "Great post!",
-    "post_slug": "hello-world"
-  }
-]
-```
+
+   ```sh
+   # Replace <YOUR_SUBDOMAIN> with your workers.dev subdomain
+   curl -X POST https://d1-comments-api.<YOUR_SUBDOMAIN>.workers.dev/api/posts/hello-world/comments \
+     -H "Content-Type: application/json" \
+     -d '{"author": "Kristian", "body": "Great post!"}'
+   ```
+
+   ```txt
+   Created
+   ```
+
+   ```sh
+   curl https://d1-comments-api.<YOUR_SUBDOMAIN>.workers.dev/api/posts/hello-world/comments
+   ```
+
+   ```txt
+   [
+     {
+       "id": 1,
+       "author": "Kristian",
+       "body": "Great post!",
+       "post_slug": "hello-world"
+     }
+   ]
+   ```
+
+
 
 ## Full example
 
@@ -433,9 +478,9 @@ export default app;
 
 ## Next steps
 
-* Refer to the [D1 Workers Binding API](https://developers.cloudflare.com/d1/worker-api/) for a full list of available methods.
-* Learn about [D1 local development](https://developers.cloudflare.com/d1/best-practices/local-development/) for testing your database without deploying.
-* Explore [community projects built on D1](https://developers.cloudflare.com/d1/reference/community-projects/).
+- Refer to the [D1 Workers Binding API](https://developers.cloudflare.com/d1/worker-api/) for a full list of available methods.
+- Learn about [D1 local development](https://developers.cloudflare.com/d1/best-practices/local-development/) for testing your database without deploying.
+- Explore [community projects built on D1](https://developers.cloudflare.com/d1/reference/community-projects/).
 
 Was this helpful?
 
@@ -446,5 +491,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/#page","headline":"Build a Comments API · Cloudflare D1 docs","description":"Use D1 to add comments to a static blog site. Create a D1 database and build a JSON API with Hono that allows the creation and retrieval of comments.","url":"https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Hono","TypeScript","SQL"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/#page","headline":"Build a Comments API · Cloudflare D1 docs","description":"Use D1 to add comments to a static blog site. Create a D1 database and build a JSON API with Hono that allows the creation and retrieval of comments.","url":"https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Hono","TypeScript","SQL"]}
 ```

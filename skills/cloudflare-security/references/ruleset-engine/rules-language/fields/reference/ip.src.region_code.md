@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # ip.src.region\_code
 
-`ip.src.region_code` `String`
+`ip.src.region_code``String`
 
 The region code associated with the incoming request.
 
@@ -19,8 +19,8 @@ Example value:
 ```
 
 Categories:
-* Request
-* Geolocation
+- Request
+- Geolocation
 
 Was this helpful?
 

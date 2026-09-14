@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Zone Analytics Colos Endpoint to GraphQL Analytics
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/migration-guides/zone-analytics-colos/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/migration-guides/zone-analytics-colos/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide shows how you might migrate from the deprecated (and soon to be sunset) zone analytics API to the GraphQL API. It provides an example for a plausible use-case of the colos endpoint, then shows how that use-case is translated to the GraphQL API. It also explores features of the GraphQL API that make it more powerful than the API it replaces.
 
@@ -24,8 +24,8 @@ curl -H "Authorization: Bearer $API_TOKEN" "https://api.cloudflare.com/client/v4
 
 This query says:
 
-* Given an `API_TOKEN` which has Analytics Read access to `ZONE_ID`.
-* Fetch colos analytics for `ZONE_ID` with a time range that starts on `2020-12-10T00:00:00Z` (`since` parameter) to now.
+- Given an `API_TOKEN` which has Analytics Read access to `ZONE_ID`.
+- Fetch colos analytics for `ZONE_ID` with a time range that starts on `2020-12-10T00:00:00Z` ( `since` parameter) to now.
 
 The question that we want to answer is: "What is the number of requests for ZHR per hour?" Using the colos endpoint response data and some wrangling by jq we can answer that question with this command:
 
@@ -61,7 +61,13 @@ This selects only lines that contain more than 0 requests and the `colo_id` is Z
 
 The final data we get looks like the following response:
 
+<details>
+
+<summary>
+
 Response
+
+</summary>
 
 ```json
 {"colo_id":"ZRH","timeslot":"2020-12-10T00:00:00Z","requests":601,"bandwidth":683581}
@@ -77,6 +83,8 @@ Response
 {"colo_id":"ZRH","timeslot":"2020-12-10T10:00:00Z","requests":2203,"bandwidth":2504615}
 ...
 ```
+
+</details>
 
 How do we get the same result using the GraphQL API?
 

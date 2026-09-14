@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/argo-smart-routing/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/argo-smart-routing/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Smart Shield
 
@@ -22,15 +22,13 @@ Argo Smart Routing speeds up your global traffic by routing requests across the 
 
 To enable [Argo Smart Routing ↗](https://dash.cloudflare.com/?to=/:account/:zone/traffic) in the dashboard:
 
-1. In the Cloudflare dashboard, go to the **Argo Smart Routing** page.
-[Go to **Argo Smart Routing** ↗](https://dash.cloudflare.com/?to=/:account/:zone/traffic)
+1. In the Cloudflare dashboard, go to the **Argo Smart Routing** page. [Go to **Argo Smart Routing** ↗](https://dash.cloudflare.com/?to=/:account/:zone/traffic)
 2. For **Argo Smart Routing**, switch the toggle to **On**.
 3. Provide your billing information.
+   - If you do not have a [billing profile](https://developers.cloudflare.com/billing/get-started/create-billing-profile/), enter your billing information.
+   - If you have a billing profile, confirm your billing information.
 
-  * If you do not have a [billing profile](https://developers.cloudflare.com/billing/get-started/create-billing-profile/), enter your billing information.
-  * If you have a billing profile, confirm your billing information.
-
-To enable or disable Argo Smart Routing with the API, send a [PATCH](https://developers.cloudflare.com/api/resources/argo/subresources/smart%5Frouting/methods/edit/) request with the `value` parameter set to your desired setting (`"on"` or `"off"`).
+To enable or disable Argo Smart Routing with the API, send a [`PATCH`](https://developers.cloudflare.com/api/resources/argo/subresources/smart_routing/methods/edit/) request with the `value` parameter set to your desired setting (`"on"` or `"off"`).
 
 You will need to already have a [billing profile](https://developers.cloudflare.com/billing/get-started/create-billing-profile/) on your account to enable Argo Smart Routing.
 
@@ -46,17 +44,17 @@ Since this is a service with [usage-based billing](https://developers.cloudflare
 
 To set up those notifications:
 
-1. In the Cloudflare dashboard, go to the **Notifications** page.
-[Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
+1. In the Cloudflare dashboard, go to the **Notifications** page. [Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 2. On **Alert Type** of **Usage Based Billing**, click **Select**.
 3. Fill out the following information:
+   - **Name**
+   - **Product**
+   - **Notification limit** (exact metric will vary based on product)
+   - **Notification email**
 
-  * **Name**
-  * **Product**
-  * **Notification limit** (exact metric will vary based on product)
-  * **Notification email**
-Note
-Some plans also have access to alerts through [PagerDuty](https://developers.cloudflare.com/notifications/get-started/configure-pagerduty/) and [Webhooks](https://developers.cloudflare.com/notifications/get-started/configure-webhooks/).
+   Note
+
+   Some plans also have access to alerts through [PagerDuty](https://developers.cloudflare.com/notifications/get-started/configure-pagerduty/) and [Webhooks](https://developers.cloudflare.com/notifications/get-started/configure-webhooks/).
 4. Select **Save**.
 
 ## Enable Tiered Cache

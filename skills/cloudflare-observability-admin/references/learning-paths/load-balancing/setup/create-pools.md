@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create pools
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/setup/create-pools/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/setup/create-pools/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Instead of starting on your production domain, you likely should create a load balancer on a test or staging domain. This may involve temporary changes to your monitors and pools, depending on your infrastructure setup.
 
@@ -23,40 +23,47 @@ You can create a pool within the [load balancer workflow](https://developers.clo
 1. Go to **Load Balancing**.
 2. Select the **Pools** tab and then **Create pool**.
 3. For your pool, enter the following information:
-
-  * A name (must be unique)
-  * A description to provide more detail on the name
-  * A choice for [**Endpoint Steering**](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/origin-level-steering/), which affects how your pool routes traffic to each endpoint
+   - A name (must be unique)
+   - A description to provide more detail on the name
+   - A choice for [**Endpoint Steering**](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/origin-level-steering/), which affects how your pool routes traffic to each endpoint
 4. For each endpoint, enter the following information:
-
-  * A name (must be unique)
-  * The endpoint address or associated hostname
-  * (Optional) A [**Virtual Network**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/). Required when the endpoint has a private IP address.
-  * A [**Weight**](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/origin-level-steering/#weights)
-  * (Optional) A [hostname](https://developers.cloudflare.com/load-balancing/additional-options/override-http-host-headers/) by clicking **Add host header**
-  * (Optional) The destination port to which the traffic will be served.
+   - A name (must be unique)
+   - The endpoint address or associated hostname
+   - (Optional) A [**Virtual Network**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/). Required when the endpoint has a private IP address.
+   - A [**Weight**](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/origin-level-steering/#weights)
+   - (Optional) A [hostname](https://developers.cloudflare.com/load-balancing/additional-options/override-http-host-headers/) by clicking **Add host header**
+   - (Optional) The destination port to which the traffic will be served.
 
 Note
 
 If your endpoint is a website or application hosted on [Cloudflare Pages](https://developers.cloudflare.com/pages/), you will need to fill in the host header field with the project domain for it to resolve correctly.
 
-1. Repeat this process for additional endpoints in the pool.
-2. (Optional) Set up coordinates for [Proximity Steering](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/proximity-steering/) on the pool.
-3. On the pool, update the following information:
+5. Repeat this process for additional endpoints in the pool.
+6. (Optional) Set up coordinates for [Proximity Steering](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/proximity-steering/) on the pool.
+7. On the pool, update the following information:
+   - **Health Threshold**: The Health Threshold is the number of healthy endpoints for the pool as a whole to be considered *Healthy* and receive traffic based on pool order in a load balancer. Increasing this number makes the pool more reliable, but also more likely to become unhealthy.
+   - **Monitor**: Attach a [monitor](https://developers.cloudflare.com/load-balancing/monitors/create-monitor/)
+   - **Health Monitor Regions**: Choose whether to check pool health from [multiple locations](https://developers.cloudflare.com/load-balancing/monitors/#health-monitor-regions), which increases accuracy but can lead to probe traffic to your endpoint
+   - **Pool Notifications**: You can set up new alerts - and view existing alerts - to be notified when pools are enabled or disabled, or pools or endpoints have changes in their [health status](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/).
+8. When finished, select **Save**.
 
-  * **Health Threshold**:
-  The Health Threshold is the number of healthy endpoints for the pool as a whole to be considered _Healthy_ and receive traffic based on pool order in a load balancer. Increasing this number makes the pool more reliable, but also more likely to become unhealthy.
-  * **Monitor**: Attach a [monitor](https://developers.cloudflare.com/load-balancing/monitors/create-monitor/)
-  * **Health Monitor Regions**: Choose whether to check pool health from [multiple locations](https://developers.cloudflare.com/load-balancing/monitors/#health-monitor-regions), which increases accuracy but can lead to probe traffic to your endpoint
-  * **Pool Notifications**: You can set up new alerts - and view existing alerts - to be notified when pools are enabled or disabled, or pools or endpoints have changes in their [health status](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/).
-4. When finished, select **Save**.
+For a full list of properties, refer to [Create Pool](https://developers.cloudflare.com/api/resources/load_balancers/subresources/pools/methods/create/). If you need help with API authentication, refer to [Cloudflare API documentation](https://developers.cloudflare.com/fundamentals/api/).
 
-For a full list of properties, refer to [Create Pool](https://developers.cloudflare.com/api/resources/load%5Fbalancers/subresources/pools/methods/create/). If you need help with API authentication, refer to [Cloudflare API documentation](https://developers.cloudflare.com/fundamentals/api/).
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Load Balancing: Monitors and Pools Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Load Balancing: Monitors and Pools Write</code>
+
+</details>
+
+*Create Poolbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/pools" \
@@ -108,6 +115,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/p
 ```
 
 The response contains the complete definition of the new pool.
+
+*Responsejson*
 
 ```json
 {

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Media Acquisition Approaches
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/media-acquisition-approaches/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/media-acquisition-approaches/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -30,10 +30,10 @@ Manual track handling is not available on this platform.
 
 Custom media acquisition is useful when you need to:
 
-* **Validate participants before joining**: Pass audio and video through verification services (for example, proctoring systems in EdTech assessments).
-* **Pre-process media streams**: Apply filters, transformations, or quality checks before the session starts.
-* **Integrate with external services**: Send media to third-party APIs for analysis or compliance checks.
-* **Reuse existing tracks**: Use media tracks acquired elsewhere in your application.
+- **Validate participants before joining**: Pass audio and video through verification services (for example, proctoring systems in EdTech assessments).
+- **Pre-process media streams**: Apply filters, transformations, or quality checks before the session starts.
+- **Integrate with external services**: Send media to third-party APIs for analysis or compliance checks.
+- **Reuse existing tracks**: Use media tracks acquired elsewhere in your application.
 
 Caution
 
@@ -104,10 +104,10 @@ Initialize the media handler first using `RealtimeKitClient.initMedia()`, then p
 
 **Benefits**:
 
-* SDK manages media acquisition and browser compatibility.
-* Participants are not prompted for permissions twice.
-* Media tracks are automatically synchronized between your validation service and the SDK.
-* Acquire media early without the complexity of managing SDK connection state.
+- SDK manages media acquisition and browser compatibility.
+- Participants are not prompted for permissions twice.
+- Media tracks are automatically synchronized between your validation service and the SDK.
+- Acquire media early without the complexity of managing SDK connection state.
 
 ```ts
 import { useEffect, useState } from 'react';
@@ -166,10 +166,10 @@ Initialize the media handler first using `RealtimeKitClient.initMedia()`, then p
 
 **Benefits**:
 
-* SDK manages media acquisition and browser compatibility.
-* Participants are not prompted for permissions twice.
-* Media tracks are automatically synchronized between your validation service and the SDK.
-* Acquire media early without the complexity of managing SDK connection state.
+- SDK manages media acquisition and browser compatibility.
+- Participants are not prompted for permissions twice.
+- Media tracks are automatically synchronized between your validation service and the SDK.
+- Acquire media early without the complexity of managing SDK connection state.
 
 ```js
 const mediaFromSDK = await RealtimeKitClient.initMedia({
@@ -196,10 +196,10 @@ Initialize the media handler first using `RealtimeKitClient.initMedia()`, then p
 
 **Benefits**:
 
-* SDK manages media acquisition and browser compatibility.
-* Participants are not prompted for permissions twice.
-* Media tracks are automatically synchronized between your validation service and the SDK.
-* Acquire media early without the complexity of managing SDK connection state.
+- SDK manages media acquisition and browser compatibility.
+- Participants are not prompted for permissions twice.
+- Media tracks are automatically synchronized between your validation service and the SDK.
+- Acquire media early without the complexity of managing SDK connection state.
 
 ```ts
 class AppComponent {
@@ -236,9 +236,9 @@ Acquire and manage media tracks independently using browser APIs, then pass them
 
 **Considerations**:
 
-* You are responsible for handling browser compatibility and API changes.
-* SDK updates will not automatically fix media acquisition issues in your code.
-* Requires deeper knowledge of WebRTC and browser media APIs.
+- You are responsible for handling browser compatibility and API changes.
+- SDK updates will not automatically fix media acquisition issues in your code.
+- Requires deeper knowledge of WebRTC and browser media APIs.
 
 Initialize the SDK with audio and video disabled, then enable them with your custom tracks:
 

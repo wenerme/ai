@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Audit logs
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/reference/audit-logs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/reference/audit-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Audit logs](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/) provide a comprehensive summary of changes made within your Cloudflare account, including those made to gateways in AI Gateway. This functionality is available on all plan types, free of charge, and is enabled by default.
 
@@ -20,7 +20,7 @@ Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 To view audit logs for AI Gateway, in the Cloudflare dashboard, go to the **Audit logs** page.
 
-[Go to **Audit logs** ↗](https://dash.cloudflare.com/?to=/:account/audit-log)
+[Go to **Audit logs** ↗](https://dash.cloudflare.com/?to=/:account/audit-log)
 
 For more information on how to access and use audit logs, refer to [review audit logs documentation](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/).
 
@@ -28,11 +28,11 @@ For more information on how to access and use audit logs, refer to [review audit
 
 The following configuration actions are logged:
 
-| Operation       | Description                      |
-| --------------- | -------------------------------- |
-| gateway created | Creation of a new gateway.       |
+| Operation | Description |
+| --- | --- |
+| gateway created | Creation of a new gateway. |
 | gateway deleted | Deletion of an existing gateway. |
-| gateway updated | Edit of an existing gateway.     |
+| gateway updated | Edit of an existing gateway. |
 
 ## Example Log Entry
 

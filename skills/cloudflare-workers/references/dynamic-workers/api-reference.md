@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # API reference
 
-Last updated Sep 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dynamic-workers/api-reference/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/api-reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page describes the Worker Loader binding API, assuming you have [configured such a binding](https://developers.cloudflare.com/dynamic-workers/getting-started/#configure-worker-loader) as `env.LOADER`.
 
@@ -52,11 +52,11 @@ This is the structure returned by `getCodeCallback` to represent a worker.
 
 The [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) for the Worker. This has the same meaning as the `compatibility_date` setting in a Wrangler config file.
 
-#### `` compatibilityFlags `string[]` Optional ``
+#### ``compatibilityFlags `string[]` Optional``
 
 An optional list of [compatibility flags](https://developers.cloudflare.com/workers/configuration/compatibility-flags) augmenting the compatibility date. This has the same meaning as the `compatibility_flags` setting in a Wrangler config file.
 
-#### `` allowExperimental `boolean` Optional ``
+#### ``allowExperimental `boolean` Optional``
 
 If true, then experimental compatibility flags will be permitted in `compatibilityFlags`. In order to set this, the worker calling the loader must itself have the compatibility flag `"experimental"` set. Experimental flags cannot be enabled in production.
 
@@ -70,19 +70,19 @@ A dictionary object mapping module names to their string contents. If the module
 
 A module's content can also be specified as an object, in order to specify its type independent from the name. The allowed objects are:
 
-* `{js: string}`: A JavaScript module, using ES modules syntax for imports and exports.
-* `{cjs: string}`: A CommonJS module, using `require()` syntax for imports.
-* `{py: string}`: A [Python module](https://developers.cloudflare.com/workers/languages/python/). See warning below.
-* `{text: string}`: An importable string value.
-* `{data: ArrayBuffer}`: An importable `ArrayBuffer` value.
-* `{wasm: ArrayBuffer}`: A compiled WebAssembly (Wasm) module.
-* `{json: object}`: An importable object. The value must be JSON-serializable. However, note that value is provided as a parsed object, and is delivered as a parsed object; neither side actually sees the JSON serialization.
+- `{js: string}`: A JavaScript module, using ES modules syntax for imports and exports.
+- `{cjs: string}`: A CommonJS module, using `require()` syntax for imports.
+- `{py: string}`: A [Python module](https://developers.cloudflare.com/workers/languages/python/). See warning below.
+- `{text: string}`: An importable string value.
+- `{data: ArrayBuffer}`: An importable `ArrayBuffer` value.
+- `{wasm: ArrayBuffer}`: A compiled WebAssembly (Wasm) module.
+- `{json: object}`: An importable object. The value must be JSON-serializable. However, note that value is provided as a parsed object, and is delivered as a parsed object; neither side actually sees the JSON serialization.
 
 Warning
 
 While Dynamic Workers support Python, Python Workers are currently much slower to start than JavaScript Workers. For one-off AI-generated code, we strongly recommend using JavaScript. AI can write either language equally well.
 
-#### `` globalOutbound `ServiceStub | null` Optional ``
+#### ``globalOutbound `ServiceStub | null` Optional``
 
 Controls whether the dynamic Worker has access to the network. The global `fetch()` and `connect()` functions (for making HTTP requests and TCP connections, respectively) can be blocked or redirected to isolate the Worker.
 
@@ -90,7 +90,7 @@ If `globalOutbound` is not specified, the default is to inherit the parent's net
 
 If `globalOutbound` is `null`, then the dynamic Worker will be totally cut off from the network. Both `fetch()` and `connect()` will throw exceptions.
 
-`globalOutbound` can also be set to any service binding, including service bindings in the parent worker's `env` as well as [loopback bindings from ctx.exports](https://developers.cloudflare.com/workers/runtime-apis/context/#exports).
+`globalOutbound` can also be set to any service binding, including service bindings in the parent worker's `env` as well as [loopback bindings from `ctx.exports`](https://developers.cloudflare.com/workers/runtime-apis/context/#exports).
 
 Using `ctx.exports` is particularly useful as it allows you to customize the binding further for the specific sandbox, by setting the value of `ctx.props` that should be passed back to it. The `props` can contain information to identify the specific dynamic Worker that made the request.
 
@@ -131,10 +131,10 @@ Using this, you can provide custom bindings to the Worker.
 
 `env` is serialized and transferred into the dynamic Worker, where it is used directly as the value of `env` there. It may contain:
 
-* [Structured cloneable types ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FWorkers%5FAPI/Structured%5Fclone%5Falgorithm).
-* [Service Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings), including [loopback bindings from ctx.exports](https://developers.cloudflare.com/workers/runtime-apis/context/#exports).
+- [Structured cloneable types ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm).
+- [Service Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings), including [loopback bindings from `ctx.exports`](https://developers.cloudflare.com/workers/runtime-apis/context/#exports).
 
-The second point is the key to creating custom bindings: you can define a binding with any arbitrary API, by defining a [WorkerEntrypoint class](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc) implementing an RPC API, and then giving it to the dynamic Worker as a Service Binding.
+The second point is the key to creating custom bindings: you can define a binding with any arbitrary API, by defining a [`WorkerEntrypoint` class](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc) implementing an RPC API, and then giving it to the dynamic Worker as a Service Binding.
 
 Moreover, by using `ctx.exports` loopback bindings, you can further customize the bindings for the specific dynamic Worker by setting `ctx.props`, just as described for `globalOutbound`, above.
 
@@ -167,7 +167,7 @@ export default {
 };
 ```
 
-#### `` tails `ServiceStub[]` Optional ``
+#### ``tails `ServiceStub[]` Optional``
 
 You may specify one or more [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/) which will observe console logs, errors, and other details about the dynamically-loaded worker's execution. A tail event will be delivered to the Tail Worker upon completion of a request to the dynamically-loaded Worker. As always, you can implement the Tail Worker as an alternative entrypoint in your parent Worker, referring to it using `ctx.exports`:
 

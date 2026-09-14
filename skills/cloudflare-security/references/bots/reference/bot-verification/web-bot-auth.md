@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Web Bot Auth
 
-Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Web Bot Auth is an authentication method that leverages cryptographic signatures in HTTP messages to verify that a request comes from an automated bot. Web Bot Auth is used as a verification method for [verified bots and agents](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).
 
@@ -20,25 +20,36 @@ It relies on IETF drafts: a [directory draft ↗](https://datatracker.ietf.org/d
 
 This documentation goes over specific integration within Cloudflare.
 
-## 1\. Generate a valid signing key
+## 1. Generate a valid signing key
 
 You need to generate a signing key which will be used to authenticate your bot's requests.
 
 1. Generate a unique [Ed25519 ↗](https://ed25519.cr.yp.to/) private key to sign your requests. This example uses the [OpenSSL ↗](https://openssl-library.org/) `genpkey` command:
-Note
-Cloudflare supports Ed25519 key algorithm.
-```sh
-openssl genpkey -algorithm ed25519 -out private-key.pem
-```
+
+   Note
+
+   Cloudflare supports Ed25519 key algorithm.
+
+   ```sh
+   openssl genpkey -algorithm ed25519 -out private-key.pem
+   ```
+
+
 2. Extract your public key.
-```sh
-openssl pkey -in private-key.pem -pubout -out public-key.pem
-```
-3. Convert the public key to JSON Web Key (JWK) using a tool of your choice. This example uses [jwker ↗](https://github.com/jphastings/jwker) command line application.
-```sh
-go install github.com/jphastings/jwker/cmd/jwker@latest
-jwker public-key.pem public-key.jwk
-```
+
+   ```sh
+   openssl pkey -in private-key.pem -pubout -out public-key.pem
+   ```
+
+
+3. Convert the public key to JSON Web Key (JWK) using a tool of your choice. This example uses [`jwker` ↗](https://github.com/jphastings/jwker) command line application.
+
+   ```sh
+   go install github.com/jphastings/jwker/cmd/jwker@latest
+   jwker public-key.pem public-key.jwk
+   ```
+
+
 
 By following these steps, you have generated a private key and a public key, then converted the public key to a JWK.
 
@@ -48,7 +59,7 @@ You can also [generate a JavaScript key using WebCrypto API ↗](https://develop
 
 Many existing [JWK libraries ↗](https://jwt.io/libraries) support WebCrypto API for generating JavaScript key.
 
-## 2\. Host a key directory
+## 2. Host a key directory
 
 You need to host a key directory which creates a way for your bot to authenticate its requests to Cloudflare. This directory should follow the definition from [draft-meunier-http-message-signatures-directory-03 ↗](https://datatracker.ietf.org/doc/html/draft-meunier-http-message-signatures-directory-03).
 
@@ -56,36 +67,40 @@ You need to host a key directory which creates a way for your bot to authenticat
 2. Serve the web page over HTTPS (not HTTP).
 3. [Calculate the base64 URL-encoded JWK thumbprint ↗](https://www.rfc-editor.org/rfc/rfc8037.html#appendix-A.3) associated with your Ed25519 public key.
 4. Sign your HTTP response using the HTTP message signature specification by attaching one signature per key in your key directory. This ensures no one else can mirror your directory and attempt to register on your behalf. Your response must include the following headers:
+   - `Content-Type`: This header must have the value `application/http-message-signatures-directory+json`.
+   - `Signature`: Construct a [`Signature` header ↗](https://www.rfc-editor.org/rfc/rfc9421#name-the-signature-http-field) over your chosen components.
+   - `Signature-Input`: Construct a [`Signature-Input` header ↗](https://www.rfc-editor.org/rfc/rfc9421#name-the-signature-input-http-fi) over your chosen components. The header must meet the following requirements.
 
-  * `Content-Type`: This header must have the value `application/http-message-signatures-directory+json`.
-  * `Signature`: Construct a [Signature header ↗](https://www.rfc-editor.org/rfc/rfc9421#name-the-signature-http-field) over your chosen components.
-  * `Signature-Input`: Construct a [Signature-Input header ↗](https://www.rfc-editor.org/rfc/rfc9421#name-the-signature-input-http-fi) over your chosen components. The header must meet the following requirements.
+     | Required component / parameter | Requirement |
+     | --- | --- |
+     | `tag` | This should be equal to `http-message-signatures-directory`. |
+     | `keyid` | JWK thumbprint of the corresponding key in your directory. |
+     | `created` | This should be equal to a `Unix` timestamp associated with when the message was sent by your application. |
+     | `expires` | This should be equal to a `Unix` timestamp associated with when Cloudflare should no longer attempt to verify the message. |
+     | `@authority` | This should be equal to the value of the Host header sent by the request. You should set the [`req` component parameter ↗](https://datatracker.ietf.org/doc/html/rfc9421#content-request-response). |
 
-| Required component / parameter | Requirement                                                                                                                                                                                       |
-| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| tag                            | This should be equal to http-message-signatures-directory.                                                                                                                                        |
-| keyid                          | JWK thumbprint of the corresponding key in your directory.                                                                                                                                        |
-| created                        | This should be equal to a Unix timestamp associated with when the message was sent by your application.                                                                                           |
-| expires                        | This should be equal to a Unix timestamp associated with when Cloudflare should no longer attempt to verify the message.                                                                          |
-| @authority                     | This should be equal to the value of the Host header sent by the request. You should set the [req component parameter ↗](https://datatracker.ietf.org/doc/html/rfc9421#content-request-response). |
-The following example shows the annotated request and response with required headers against `https://example.com`. The value of `Signature` here is purely for illustrative purposes, and not the actual generated signature.
-```txt
-GET /.well-known/http-message-signatures-directory HTTP/1.1
-Host: example.com
-Accept: application/http-message-signatures-directory+json
-HTTP/1.1 200 OK
-Content-Type: application/http-message-signatures-directory+json
-Signature: sig1=:TD5arhV1ved6xtx63cUIFCMONT248cpDeVUAljLgkdozbjMNpJGr/WAx4PzHj+WeG0xMHQF1BOdFLDsfjdjvBA==:
-Signature-Input: sig1=("@authority";req);alg="ed25519";keyid="poqkLGiymh_W0uP6PZFw-dvez3QJT5SolqXBCW38r0U";nonce="ZO3/XMEZjrvSnLtAP9M7jK0WGQf3J+pbmQRUpKDhF9/jsNCWqUh2sq+TH4WTX3/GpNoSZUa8eNWMKqxWp2/c2g==";tag="http-message-signatures-directory";created=1750105829;expires=1750105839
-Cache-Control: max-age=86400
-{
-  "keys": [{
-    "kty": "OKP",
-    "crv": "Ed25519",
-    "x": "JrQLj5P_89iXES9-vFgrIy29clF9CC_oPPsw3c5D0bs", // Base64 URL-encoded public key, with no padding
-  }]
-}
-```
+   The following example shows the annotated request and response with required headers against `https://example.com`. The value of `Signature` here is purely for illustrative purposes, and not the actual generated signature.
+
+   ```txt
+   GET /.well-known/http-message-signatures-directory HTTP/1.1
+   Host: example.com
+   Accept: application/http-message-signatures-directory+json
+
+   HTTP/1.1 200 OK
+   Content-Type: application/http-message-signatures-directory+json
+   Signature: sig1=:TD5arhV1ved6xtx63cUIFCMONT248cpDeVUAljLgkdozbjMNpJGr/WAx4PzHj+WeG0xMHQF1BOdFLDsfjdjvBA==:
+   Signature-Input: sig1=("@authority";req);alg="ed25519";keyid="poqkLGiymh_W0uP6PZFw-dvez3QJT5SolqXBCW38r0U";nonce="ZO3/XMEZjrvSnLtAP9M7jK0WGQf3J+pbmQRUpKDhF9/jsNCWqUh2sq+TH4WTX3/GpNoSZUa8eNWMKqxWp2/c2g==";tag="http-message-signatures-directory";created=1750105829;expires=1750105839
+   Cache-Control: max-age=86400
+   {
+     "keys": [{
+       "kty": "OKP",
+       "crv": "Ed25519",
+       "x": "JrQLj5P_89iXES9-vFgrIy29clF9CC_oPPsw3c5D0bs", // Base64 URL-encoded public key, with no padding
+     }]
+   }
+   ```
+
+
 
 Note
 
@@ -93,14 +108,14 @@ This URL serves a standard JSON Web Key Set. Besides `x`, `crv`, and `kty`, you 
 
 Cloudflare will ignore all other key types and key parameters except those containing `kty`, `crv`, and `x` formatted above. Do not include information that would leak your private key, such as the `d` parameter.
 
-You can use the Cloudflare-developed [http-signature-directory CLI tool ↗](https://crates.io/crates/http-signature-directory) to assist you in validating your directory.
+You can use the Cloudflare-developed [`http-signature-directory` CLI tool ↗](https://crates.io/crates/http-signature-directory) to assist you in validating your directory.
 
-## 3\. Register your bot and key directory
+## 3. Register your bot and key directory
 
 You need to register your bot and its key directory to add your bot to the list of verified bots.
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
-2. Go to **Manage Account** \> **Configurations**.
+2. Go to **Manage Account** > **Configurations**.
 3. Go to the **Bot Submission Form** tab.
 4. For **Verification Method**: select **Request Signature**.
 5. For **Validation Instructions**: enter the URL of your key directory. You can additionally supply User Agents values (and their match patterns) that will be sent by your bot.
@@ -110,18 +125,18 @@ Cloudflare accepts all valid Ed25519 keys found in your key directory. In the ev
 
 After successful verification, you will be able to send verified requests.
 
-## 4\. (After verification) Sign your requests
+## 4. (After verification) Sign your requests
 
 After your bot has been successfully verified, your bot is ready to sign its requests. The signature protocol is defined in [draft-meunier-web-bot-auth-architecture-02 ↗](https://datatracker.ietf.org/doc/html/draft-meunier-web-bot-auth-architecture-02)
 
-### 4.1\. Choose a set of components to sign
+### 4.1. Choose a set of components to sign
 
 Choose a set of components to sign.
 
 A component is either an HTTP header, or any [derived components ↗](https://www.rfc-editor.org/rfc/rfc9421#name-derived-components) in the HTTP Message Signatures specification. Cloudflare recommends the following:
 
-* Choose at least the `@authority` derived component, which represents the domain you are sending requests to. For example, a request to `https://example.com` will be interpreted to have an `@authority` of `example.com`.
-* Use components that only contain ASCII values. HTTP Message Signature specification disallows non-ASCII characters, which will result in failure to validate your bot's requests.
+- Choose at least the `@authority` derived component, which represents the domain you are sending requests to. For example, a request to `https://example.com` will be interpreted to have an `@authority` of `example.com`.
+- Use components that only contain ASCII values. HTTP Message Signature specification disallows non-ASCII characters, which will result in failure to validate your bot's requests.
 
 Use components with only ASCII values
 
@@ -133,24 +148,24 @@ If you wish to sign your [message content ↗](https://www.rfc-editor.org/rfc/rf
 
 For example, if the message is unencrypted and proxied to Cloudflare, you should not use `Content-Digest`.
 
-### 4.2\. Calculate the JWK thumbprint
+### 4.2. Calculate the JWK thumbprint
 
 [Calculate the base64 URL-encoded JWK thumbprint ↗](https://www.rfc-editor.org/rfc/rfc8037.html#appendix-A.3) from the public key you registered with Cloudflare.
 
-### 4.3\. Construct the required headers
+### 4.3. Construct the required headers
 
 Construct the three required headers for Web Bot Auth.
 
 #### `Signature-Input` header
 
-Construct a [Signature-Input header ↗](https://www.rfc-editor.org/rfc/rfc9421#name-the-signature-input-http-fi) over your chosen components. The header must meet the following requirements.
+Construct a [`Signature-Input` header ↗](https://www.rfc-editor.org/rfc/rfc9421#name-the-signature-input-http-fi) over your chosen components. The header must meet the following requirements.
 
-| Required component parameter | Requirement                                                                                                                                                                                                                                           |
-| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| tag                          | This should be equal to web-bot-auth.                                                                                                                                                                                                                 |
-| keyid                        | This should be equal to the thumbprint computed in step 2.                                                                                                                                                                                            |
-| created                      | This should be equal to a Unix timestamp associated with when the message was sent by your application.                                                                                                                                               |
-| expires                      | This should be equal to a Unix timestamp associated with when Cloudflare should no longer attempt to verify the message. A short expires reduces the likelihood of replay attacks, and Cloudflare recommends choosing suitable short-lived intervals. |
+| Required component parameter | Requirement |
+| --- | --- |
+| `tag` | This should be equal to `web-bot-auth`. |
+| `keyid` | This should be equal to the thumbprint computed in step 2. |
+| `created` | This should be equal to a `Unix` timestamp associated with when the message was sent by your application. |
+| `expires` | This should be equal to a `Unix` timestamp associated with when Cloudflare should no longer attempt to verify the message. A short `expires` reduces the likelihood of replay attacks, and Cloudflare recommends choosing suitable short-lived intervals. |
 
 \`nonce\`
 
@@ -162,20 +177,20 @@ Instead, Cloudflare recommends short `expires` as a protection against replay at
 
 #### `Signature` header
 
-Construct a [Signature header ↗](https://www.rfc-editor.org/rfc/rfc9421#name-the-signature-http-field) over your chosen components.
+Construct a [`Signature` header ↗](https://www.rfc-editor.org/rfc/rfc9421#name-the-signature-http-field) over your chosen components.
 
 #### `Signature-Agent` header
 
-Construct a [Signature-Agent header ↗](https://datatracker.ietf.org/doc/html/draft-meunier-http-message-signatures-directory-03#name-header-field-definition) that points to your key directory. Cloudflare implements the `Signature-Agent` format from `draft-meunier-http-message-signatures-directory-03`, where the header value is a structured string such as `"https://signature-agent.test"`.
+Construct a [`Signature-Agent` header ↗](https://datatracker.ietf.org/doc/html/draft-meunier-http-message-signatures-directory-03#name-header-field-definition) that points to your key directory. Cloudflare implements the `Signature-Agent` format from `draft-meunier-http-message-signatures-directory-03`, where the header value is a structured string such as `"https://signature-agent.test"`.
 
 Cloudflare will fail to verify a message if:
 
-* The message includes a `Signature-Agent` header that is not an `https://`.
-* The message includes a valid URI but does not enclose it in double quotes. This is due to Signature-Agent being a structured field.
-* The message uses the dictionary form from later drafts, such as `sig2="https://signature-agent.test"`.
-* The message has a valid `Signature-Agent` header, but does not include it in the component list in `Signature-Input`.
+- The message includes a `Signature-Agent` header that is not an `https://`.
+- The message includes a valid URI but does not enclose it in double quotes. This is due to Signature-Agent being a structured field.
+- The message uses the dictionary form from later drafts, such as `sig2="https://signature-agent.test"`.
+- The message has a valid `Signature-Agent` header, but does not include it in the component list in `Signature-Input`.
 
-### 4.4\. Add the headers to your bot's requests
+### 4.4. Add the headers to your bot's requests
 
 Attach these three headers to your bot's requests.
 
@@ -211,7 +226,7 @@ The operator is identified with the `for` parameter:
 Forwarded: for="openai"
 ```
 
-The header can also carry the [content-use](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/#content-use-signal) value that the operator commits to for the content it accesses:
+The header can also carry the [`content-use`](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/#content-use-signal) value that the operator commits to for the content it accesses:
 
 ```txt
 Forwarded: for="openai";use="reference"
@@ -225,18 +240,18 @@ Transitive trust and the `Forwarded` header are experimental and may change.
 
 ## Limitations
 
-Cloudflare's implementation of Web Bot Auth does not support every component and parameter defined in IETF RFC 9421\. If you include any of the following in your request's Signature-Input header, verification will fail.
+Cloudflare's implementation of Web Bot Auth does not support every component and parameter defined in IETF RFC 9421. If you include any of the following in your request's Signature-Input header, verification will fail.
 
-* `@query-params`: Cloudflare recommends signing the whole query using the `@query` component instead of signing an individual parameter.
-* `@status`: This is not possible to include in the request path.
+- `@query-params`: Cloudflare recommends signing the whole query using the `@query` component instead of signing an individual parameter.
+- `@status`: This is not possible to include in the request path.
 
 The following component parameters defined in IETF RFC 9421 are not supported, and Cloudflare will fail to verify a message if they are included:
 
-* `sf` (for HTTP header fields)
-* `bs` (for HTTP header fields)
-* `key` (for HTTP header fields)
-* `req` (for HTTP header fields or derived components)
-* `name` (for `@query-param` support - this requires `@query-param` support)
+- `sf` (for HTTP header fields)
+- `bs` (for HTTP header fields)
+- `key` (for HTTP header fields)
+- `req` (for HTTP header fields or derived components)
+- `name` (for `@query-param` support - this requires `@query-param` support)
 
 ---
 
@@ -246,11 +261,11 @@ The following component parameters defined in IETF RFC 9421 are not supported, a
 
 If your message is failing validation, the cause(s) may include:
 
-* Ensure you have a [Signature-Agent header](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/#signature-agent-header), and that its value is in double-quotes.
-* Ensure your [Signature-Agent header](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/#signature-agent-header) uses a structured string, not a dictionary.
-* Ensure you include `signature-agent` in the component list in your [Signature-Input header](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/#signature-agent-header).
-* Ensure your `expires` timestamp is not too short, such that, by the time it arrives at Cloudflare servers, it has already expired. A minute is often sufficient.
-* Ensure you are not signing components containing non-ASCII values, or on the unsupported list.
+- Ensure you have a [`Signature-Agent` header](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/#signature-agent-header), and that its value is in double-quotes.
+- Ensure your [`Signature-Agent` header](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/#signature-agent-header) uses a structured string, not a dictionary.
+- Ensure you include `signature-agent` in the component list in your [`Signature-Input` header](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/#signature-agent-header).
+- Ensure your `expires` timestamp is not too short, such that, by the time it arrives at Cloudflare servers, it has already expired. A minute is often sufficient.
+- Ensure you are not signing components containing non-ASCII values, or on the unsupported list.
 
 ### Use HTTP message signatures / Web Bot Auth on a zone without Cloudflare's verification
 
@@ -264,10 +279,10 @@ Disabling this feature means that Cloudflare will not validate incoming signatur
 
 You may wish to refer to the following resources.
 
-* Cloudflare blog: [Message Signatures are now part of our Verified Bots Program ↗](https://blog.cloudflare.com/verified-bots-with-cryptography).
-* Cloudflare blog: [Forget IPs: using cryptography to verify bot and agent traffic ↗](https://blog.cloudflare.com/web-bot-auth/).
-* Cloudflare's [web-bot-auth library in Rust ↗](https://crates.io/crates/web-bot-auth).
-* Cloudflare's [web-bot-auth npm package in Typescript ↗](https://www.npmjs.com/package/web-bot-auth).
+- Cloudflare blog: [Message Signatures are now part of our Verified Bots Program ↗](https://blog.cloudflare.com/verified-bots-with-cryptography).
+- Cloudflare blog: [Forget IPs: using cryptography to verify bot and agent traffic ↗](https://blog.cloudflare.com/web-bot-auth/).
+- Cloudflare's [`web-bot-auth` library in Rust ↗](https://crates.io/crates/web-bot-auth).
+- Cloudflare's [`web-bot-auth` npm package in Typescript ↗](https://www.npmjs.com/package/web-bot-auth).
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Nuxt
 
-Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-nuxt-site/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-nuxt-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Nuxt ↗](https://nuxt.com) is a web framework making Vue.js-based development simple and powerful.
 
@@ -22,7 +22,7 @@ In this guide, you will create a new Nuxt application and deploy it using Cloudf
 
 ## Create a new project using the `create-cloudflare` CLI (C3)
 
-The [create-cloudflare CLI (C3)](https://developers.cloudflare.com/pages/get-started/c3/) will configure your Nuxt site for Cloudflare Pages. Run the following command in your terminal to create a new Nuxt site:
+The [`create-cloudflare` CLI (C3)](https://developers.cloudflare.com/pages/get-started/c3/) will configure your Nuxt site for Cloudflare Pages. Run the following command in your terminal to create a new Nuxt site:
 
 npmyarnpnpm
 
@@ -38,7 +38,7 @@ yarn create cloudflare my-nuxt-app --framework=nuxt --platform=pages
 pnpm create cloudflare@latest my-nuxt-app --framework=nuxt --platform=pages
 ```
 
-C3 will ask you a series of setup questions and create a new project with [nuxi (the official Nuxt CLI) ↗](https://github.com/nuxt/cli). C3 will also install the necessary adapters along with the [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/#check-your-wrangler-version).
+C3 will ask you a series of setup questions and create a new project with [`nuxi` (the official Nuxt CLI) ↗](https://github.com/nuxt/cli). C3 will also install the necessary adapters along with the [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/#check-your-wrangler-version).
 
 After creating your project, C3 will generate a new `my-nuxt-app` directory using the default Nuxt template, updated to be fully compatible with Cloudflare Pages.
 
@@ -86,22 +86,22 @@ git push -u origin main
 
 To deploy your site to Pages:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**.
 3. Select the **Pages** tab.
 4. Select **Import an existing Git repository**.
 5. Select the new GitHub repository that you created and then select **Begin setup**.
 6. In the **Set up builds and deployments** section, provide the following information:
 
-| Configuration option | Value         | |  Production branch | main |
-| -------------------- | ------------- | -------------------- | ---- |
-| Build command        | npm run build |                      |      |
-| Build directory      | dist          |                      |      |
+Configuration option | Value
+| Production branch | `main` |
+| --- | --- |
+| Build command | `npm run build` |
+| Build directory | `dist` |
 
 Optionally, you can customize the **Project name** field. It defaults to the GitHub repository's name, but it does not need to match. The **Project name** value is assigned as your `*.pages.dev` subdomain.
 
-1. After completing configuration, select the **Save and Deploy**.
+7. After completing configuration, select the **Save and Deploy**.
 
 Review your first deploy pipeline in progress. Pages installs all dependencies and builds the project as specified. Cloudflare Pages will automatically rebuild your project and deploy it on every new pushed commit.
 
@@ -123,7 +123,7 @@ export default defineNuxtConfig({
 });
 ```
 
-This module is powered by the [getPlatformProxy helper function](https://developers.cloudflare.com/workers/wrangler/api#getplatformproxy). `getPlatformProxy` will automatically detect any bindings defined in your project's Wrangler configuration file and emulate those bindings in local development. Review [Wrangler configuration information on bindings](https://developers.cloudflare.com/workers/wrangler/configuration/#bindings) for more information on how to configure bindings in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
+This module is powered by the [`getPlatformProxy` helper function](https://developers.cloudflare.com/workers/wrangler/api#getplatformproxy). `getPlatformProxy` will automatically detect any bindings defined in your project's Wrangler configuration file and emulate those bindings in local development. Review [Wrangler configuration information on bindings](https://developers.cloudflare.com/workers/wrangler/configuration/#bindings) for more information on how to configure bindings in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
 
 Note
 
@@ -135,7 +135,7 @@ In order to access bindings in a deployed application, you will need to [configu
 
 ### Add bindings to TypeScript projects
 
-To get proper type support, you need to create a new `env.d.ts` file in the root of your project and declare a [binding](https://developers.cloudflare.com/pages/functions/bindings/). Make sure you have generated Cloudflare runtime types by running [wrangler types](https://developers.cloudflare.com/pages/functions/typescript/).
+To get proper type support, you need to create a new `env.d.ts` file in the root of your project and declare a [binding](https://developers.cloudflare.com/pages/functions/bindings/). Make sure you have generated Cloudflare runtime types by running [`wrangler types`](https://developers.cloudflare.com/pages/functions/typescript/).
 
 The following is an example of adding a `KVNamespace` binding:
 

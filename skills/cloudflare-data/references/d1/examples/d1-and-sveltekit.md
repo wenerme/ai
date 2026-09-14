@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Query a D1 database from a SvelteKit application.
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/examples/d1-and-sveltekit/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/examples/d1-and-sveltekit/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [SvelteKit ↗](https://kit.svelte.dev/) is a full-stack framework that combines the Svelte front-end framework with Vite for server-side capabilities and rendering. You can query D1 from SvelteKit by configuring a [server endpoint ↗](https://kit.svelte.dev/docs/routing#server) with a binding to your D1 database(s).
 
@@ -27,8 +27,8 @@ To set up a new SvelteKit site on Cloudflare Pages that can query D1:
 
 The following example shows you how to create a server endpoint configured to query D1.
 
-* Bindings are available on the `platform` parameter passed to each endpoint, via `platform.env.BINDING_NAME`.
-* With SvelteKit's [file-based routing ↗](https://kit.svelte.dev/docs/routing), the server endpoint defined in `src/routes/api/users/+server.ts` is available at `/api/users` within your SvelteKit app.
+- Bindings are available on the `platform` parameter passed to each endpoint, via `platform.env.BINDING_NAME`.
+- With SvelteKit's [file-based routing ↗](https://kit.svelte.dev/docs/routing), the server endpoint defined in `src/routes/api/users/+server.ts` is available at `/api/users` within your SvelteKit app.
 
 The example also shows you how to configure both your app-wide types within `src/app.d.ts` to recognize your `D1Database` binding, import the `@sveltejs/adapter-cloudflare` adapter into `svelte.config.js`, and configure it to apply to all of your routes.
 

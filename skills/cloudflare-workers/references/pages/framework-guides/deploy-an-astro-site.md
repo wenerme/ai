@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Astro
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Astro ↗](https://astro.build) is an all-in-one web framework for building fast, content-focused websites. By default, Astro builds websites that have zero JavaScript runtime code.
 
@@ -49,13 +49,13 @@ Astro will ask:
 
 ### Astro configuration
 
-You can deploy an Astro Server-side Rendered (SSR) site to Cloudflare Pages using the [@astrojs/cloudflare adapter ↗](https://github.com/withastro/adapters/tree/main/packages/cloudflare#readme). SSR sites render on Pages Functions and allow for dynamic functionality and customizations.
+You can deploy an Astro Server-side Rendered (SSR) site to Cloudflare Pages using the [`@astrojs/cloudflare` adapter ↗](https://github.com/withastro/adapters/tree/main/packages/cloudflare#readme). SSR sites render on Pages Functions and allow for dynamic functionality and customizations.
 
 Note
 
-If using [create-cloudflare (C3) ↗](https://www.npmjs.com/package/create-cloudflare), you can bypass adding an adapter as C3 automatically installs any necessary adapters and configures them when creating your project.
+If using [`create-cloudflare` (C3) ↗](https://www.npmjs.com/package/create-cloudflare), you can bypass adding an adapter as C3 automatically installs any necessary adapters and configures them when creating your project.
 
-Add the [@astrojs/cloudflare adapter ↗](https://github.com/withastro/adapters/tree/main/packages/cloudflare#readme) to your project's `package.json` by running:
+Add the [`@astrojs/cloudflare` adapter ↗](https://github.com/withastro/adapters/tree/main/packages/cloudflare#readme) to your project's `package.json` by running:
 
 ```sh
 npm run astro add cloudflare
@@ -86,24 +86,24 @@ git push -u origin main
 
 ### Deploy via the `create-cloudflare` CLI (C3)
 
-If you use [create-cloudflare(C3) ↗](https://www.npmjs.com/package/create-cloudflare) to create your new Astro project, C3 will install all dependencies needed for your project and prompt you to deploy your project via the CLI. If you deploy, your site will be live and you will be provided with a deployment URL.
+If you use [`create-cloudflare`(C3) ↗](https://www.npmjs.com/package/create-cloudflare) to create your new Astro project, C3 will install all dependencies needed for your project and prompt you to deploy your project via the CLI. If you deploy, your site will be live and you will be provided with a deployment URL.
 
 ### Deploy via the Cloudflare dashboard
 
 To deploy your site to Pages:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**.
 3. Select the **Pages** tab.
 4. Select **Import an existing Git repository**.
 5. Select the new GitHub repository that you created and then select **Begin setup**.
 6. In the **Set up builds and deployments** section, provide the following information:
 
-| Configuration option | Value         | |  Production branch | main |
-| -------------------- | ------------- | -------------------- | ---- |
-| Build command        | npm run build |                      |      |
-| Build directory      | dist          |                      |      |
+Configuration option | Value
+| Production branch | `main` |
+| --- | --- |
+| Build command | `npm run build` |
+| Build directory | `dist` |
 
 Optionally, you can customize the **Project name** field. It defaults to the GitHub repository's name, but it does not need to match. The **Project name** value is assigned as your `*.pages.dev` subdomain.
 
@@ -144,7 +144,7 @@ Use bindings in Astro components and API routes by using `context.locals` from [
 
 Refer to the following example of how to access a KV namespace with TypeScript.
 
-First, you need to define Cloudflare runtime and KV type by updating the `env.d.ts`. Make sure you have generated Cloudflare runtime types by running [wrangler types](https://developers.cloudflare.com/pages/functions/typescript/).
+First, you need to define Cloudflare runtime and KV type by updating the `env.d.ts`. Make sure you have generated Cloudflare runtime types by running [`wrangler types`](https://developers.cloudflare.com/pages/functions/typescript/).
 
 ```typescript
 /// <reference types="astro/client" />

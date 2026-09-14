@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # SCIM v1 to v2 Migration
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/reference/migration-guides/scim-virtual-groups-migration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/migration-guides/scim-virtual-groups-migration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare's first iteration of SCIM integration introduced a concept called _Virtual Groups_, typically identified by the pattern `CF-<accountID>-<Role Name>` in your IdP. Virtual Groups were an early implementation of group-based access control: they acted as placeholders created automatically by SCIM to map IdP groups to account memberships.
+Cloudflare's first iteration of SCIM integration introduced a concept called *Virtual Groups*, typically identified by the pattern `CF-<accountID>-<Role Name>` in your IdP. Virtual Groups were an early implementation of group-based access control: they acted as placeholders created automatically by SCIM to map IdP groups to account memberships.
 
 While customers could add or remove members from these groups within their IdP, Virtual Groups had important limitations:
 
-* They could not be renamed or deleted in the IdP.
-* They could not be managed within Cloudflare.
-* Functionally, managing a Virtual Group was equivalent to syncing users and editing each member’s policies individually.
+- They could not be renamed or deleted in the IdP.
+- They could not be managed within Cloudflare.
+- Functionally, managing a Virtual Group was equivalent to syncing users and editing each member’s policies individually.
 
 With the GA of [User Groups](https://developers.cloudflare.com/changelog/2025-06-23-user-groups-ga/), Virtual Groups are now deprecated. Customers should migrate to [User Groups](https://developers.cloudflare.com/fundamentals/manage-members/user-groups/), which provide a more flexible and scalable way to assign and manage policies. To maintain SCIM synchronization with the Cloudflare Dashboard, we strongly recommend migrating to **SCIM User Groups**.
 
@@ -37,10 +37,10 @@ If you have never synced a group linked to a `CF-<accountID>-<Role Name>` Virtua
 
 ## More resources
 
-* [User Groups changelog](https://developers.cloudflare.com/changelog/2025-06-02-user-groups-beta/)
-* [User Groups documentation](https://developers.cloudflare.com/fundamentals/manage-members/user-groups/)
-* [Create an Account Owned Token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/#create-an-account-owned-token)
-* [SCIM provisioning setup guide](https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/)
+- [User Groups changelog](https://developers.cloudflare.com/changelog/2025-06-02-user-groups-beta/)
+- [User Groups documentation](https://developers.cloudflare.com/fundamentals/manage-members/user-groups/)
+- [Create an Account Owned Token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/#create-an-account-owned-token)
+- [SCIM provisioning setup guide](https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/)
 
 Was this helpful?
 

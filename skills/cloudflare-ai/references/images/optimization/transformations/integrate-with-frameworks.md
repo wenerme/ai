@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Integrate with frameworks
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/optimization/transformations/integrate-with-frameworks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/transformations/integrate-with-frameworks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Next.js
 
-Image transformations can be used automatically with the Next.js [<Image /> component ↗](https://nextjs.org/docs/api-reference/next/image).
+Image transformations can be used automatically with the Next.js [`<Image />` component ↗](https://nextjs.org/docs/api-reference/next/image).
 
 To use image transformations, define a global image loader or multiple custom loaders for each `<Image />` component.
 

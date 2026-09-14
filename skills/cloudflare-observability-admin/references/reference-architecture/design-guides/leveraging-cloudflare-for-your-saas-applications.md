@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Leveraging Cloudflare for your SaaS applications
 
-Last updated Mar 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/design-guides/leveraging-cloudflare-for-your-saas-applications/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Mar 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/design-guides/leveraging-cloudflare-for-your-saas-applications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -26,9 +26,9 @@ Cloudflare for Platforms extends far beyond this traditional model of most edge 
 
 This document provides a reference and guidance for using Cloudflare for Platforms. The document is split into three main sections.
 
-* Overview of the SaaS model and the common challenges Cloudflare for Platforms solves
-* SSL certificate issuance in a SaaS model
-* Customizing the experience for each of your clients
+- Overview of the SaaS model and the common challenges Cloudflare for Platforms solves
+- SSL certificate issuance in a SaaS model
+- Customizing the experience for each of your clients
 
 ### Who is this document for and what will you learn?
 
@@ -36,15 +36,15 @@ This reference architecture is designed for SaaS application owners, engineers, 
 
 To build a stronger baseline understanding of Cloudflare, we recommend the following resources:
 
-* What is Cloudflare? | [Website ↗](https://www.cloudflare.com/what-is-cloudflare/) (5 minute read) or [video ↗](https://www.youtube.com/watch?v=XHvmX3FhTwU) (2 minutes)
-* [Cloudflare Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/) \- We will discuss integrations with the ruleset engine. Familiarity with that feature will be helpful.
-* [Cloudflare Workers](https://developers.cloudflare.com/workers/) \- We will also discuss integrations with Cloudflare Workers, our serverless application platform. A basic familiarity with this platform will be helpful.
+- What is Cloudflare? | [Website ↗](https://www.cloudflare.com/what-is-cloudflare/) (5 minute read) or [video ↗](https://www.youtube.com/watch?v=XHvmX3FhTwU) (2 minutes)
+- [Cloudflare Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/) - We will discuss integrations with the ruleset engine. Familiarity with that feature will be helpful.
+- [Cloudflare Workers](https://developers.cloudflare.com/workers/) - We will also discuss integrations with Cloudflare Workers, our serverless application platform. A basic familiarity with this platform will be helpful.
 
 Those who read this reference architecture will learn:
 
-* How Cloudflare's unique offering can solve key challenges for SaaS applications
-* How to customize the Cloudflare experience for each of your end customers
-* Tools to integrate serverless applications, for each of your clients, through Workers for Platforms
+- How Cloudflare's unique offering can solve key challenges for SaaS applications
+- How to customize the Cloudflare experience for each of your end customers
+- Tools to integrate serverless applications, for each of your clients, through Workers for Platforms
 
 ## Why Cloudflare for Platforms?
 
@@ -60,13 +60,13 @@ This is especially true for customer-facing applications like an e-commerce solu
 
 ![Figure 1: eCommerce flow through a SaaS platform.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=950,height=431,format=svg/_astro/figure1.T_DPd5f7.svg "Figure 1: eCommerce flow through a SaaS platform.")
 
-Figure 1: eCommerce flow through a SaaS platform.
+*Figure 1: eCommerce flow through a SaaS platform.*
 
 This is a challenge for SaaS solutions, as certificate issuance is tightly controlled through the [DCV Validation process](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/dcv-flow/). The owner of a domain needs to authorize any certificates, and traditional methods of validation are driven by the domain owner and deliver the certificate only to them.
 
 ![Figure 2: Certificates cannot be automatically renewed on legacy platforms. They will expire and break traffic without manual action.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=952,height=480,format=svg/_astro/figure2.BYh8B09n.svg "Figure 2: Certificates cannot be automatically renewed on legacy platforms. They will expire and break traffic without manual action.")
 
-Figure 2: Certificates cannot be automatically renewed on legacy platforms. They will expire and break traffic without manual action.
+*Figure 2: Certificates cannot be automatically renewed on legacy platforms. They will expire and break traffic without manual action.*
 
 This poses a dilemma: the SaaS model offers clear advantages but introduces a new challenge of its own. A novel solution would let providers and end customers both get the most out of the SaaS model.
 
@@ -82,13 +82,13 @@ Cloudflare has a unique ability to manage the Domain Control Validation (DCV) pr
 
 ![Figure 3: The DCV process.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=933,height=809,format=svg/_astro/figure3.BjRrf7Zl.svg "Figure 3: The DCV process.")
 
-Figure 3: The DCV process.
+*Figure 3: The DCV process.*
 
 Since Cloudflare's network can easily sit in between the client and the SaaS provider, we can automatically respond with the correct DCV token on behalf of any domain that points traffic to the SaaS provider on Cloudflare.
 
 ![Figure 4: Certificates automatically renew on Cloudflare-enabled platforms.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=949,height=544,format=svg/_astro/figure4.TeeqPEfC.svg "Figure 4: Certificates automatically renew on Cloudflare-enabled platforms.")
 
-Figure 4: Certificates automatically renew on Cloudflare-enabled platforms.
+*Figure 4: Certificates automatically renew on Cloudflare-enabled platforms.*
 
 Instead of repeatedly performing a complex process at every certificate renewal, the client performs a much simpler process only once.
 
@@ -119,9 +119,10 @@ In this common design, Cloudflare enables your platform to issue SSL certificate
 1. Cloudflare secures traffic from your clients to your platform, at global scale, by validating and distributing SSL certificates.
 2. In this design, you will use the same L7 configuration - that is, all of the features that act on your traffic, and run after SSL, for each of your clients.
 3. Just set up a [Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/) zone and [order a custom hostname](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/create-custom-hostnames/) for each client hostname. The system will take you through an easy flow to point each client's traffic to your platform, and order their certificate.
-  1. You can almost always use our default settings through this process, but bespoke SSL customization is also possible.
-  2. Origin traffic routing is also handled through the SSL for SaaS process. Our default configuration is secure for most needs.
-    * For highly secure use cases, you can use [Authenticated Origin Pulls](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/), [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/), or an advanced design with [Tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/).
+   1. You can almost always use our default settings through this process, but bespoke SSL customization is also possible.
+   2. Origin traffic routing is also handled through the SSL for SaaS process. Our default configuration is secure for most needs.
+      - For highly secure use cases, you can use [Authenticated Origin Pulls](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/), [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/), or an advanced design with [Tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/).
+
 ![Figure 5](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=873,height=477,format=svg/_astro/figure5.C5V4KUCx.svg)
 
 ### Feature Customization for your Platform customers
@@ -131,6 +132,7 @@ Here, we are not just provisioning a certificate for each client - we are giving
 1. In addition to securing SSL traffic, use an additional field provided when you add each customer ([Custom Metadata](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/custom-metadata/)) to tag the correct feature set.
 2. Cloudflare features read the Metadata to customize for each client. [WAF features are the key security customization](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/waf-for-saas/). Provide different levels of security, or even customized WAF rulesets.
 3. [On the performance side,](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/performance/) you can also add Argo Smart Routing, Cache, and Early Hints to level up the performance for chosen customers.
+
 ![Figure 6](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=868,height=468,format=svg/_astro/figure6.CCbjP4Rl.svg)
 
 ### Serverless application platform for your customers
@@ -140,6 +142,7 @@ In the most advanced design, we are customizing a full serverless application in
 1. Instead of deploying customized Cloudflare capabilities, each customer has their own "User Worker" JavaScript serverless application containing custom code.
 2. You retain control through Dispatch Workers, which determine which code to run, and Outbound Workers, which restrict the access of customer code.
 3. Use advanced Developer Platform capabilities like D1, Workers KV, and Queues to build your entire business on Cloudflare.
+
 ![Figure 7](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=878,height=500,format=svg/_astro/figure7.1flW0nWM.svg)
 
 ## Summary
@@ -148,9 +151,9 @@ With Cloudflare for SaaS, you will be able to easily solve the common challenges
 
 You can find further details on all of the features we have discussed here in the following links:
 
-* [Cloudflare for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/)
-* [Custom metadata](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/custom-metadata/)
-* [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/)
+- [Cloudflare for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/)
+- [Custom metadata](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/custom-metadata/)
+- [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/)
 
 Was this helpful?
 

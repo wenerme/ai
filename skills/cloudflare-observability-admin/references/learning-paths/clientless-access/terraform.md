@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Terraform automation
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/terraform/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/terraform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Integrate Cloudflare Access into your private application development pipeline.
 
@@ -20,7 +20,7 @@ Integrate Cloudflare Access into your private application development pipeline.
 
 By the end of this module, you will be able to:
 
-* Publish internal applications to Cloudflare using Terraform.
+- Publish internal applications to Cloudflare using Terraform.
 
 Was this helpful?
 

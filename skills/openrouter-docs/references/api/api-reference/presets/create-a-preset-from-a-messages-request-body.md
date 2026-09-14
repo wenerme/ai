@@ -82,7 +82,13 @@ tags:
     name: Rerank
   - description: OpenAI-compatible Responses API endpoints
     name: Responses
-  - description: SCIM endpoints
+  - description: >-
+      Management endpoints for SCIM group-to-workspace mappings, authenticated
+      with a management key. These are not the SCIM 2.0 connector endpoints for
+      your identity provider. In your identity provider, enter the SCIM endpoint
+      URL shown when you enable provisioning under Settings > Members > SCIM
+      Mappings. See
+      https://openrouter.ai/docs/guides/features/scim-mappings#set-up-provisioning.
     name: SCIM
   - description: Speech-to-text endpoints
     name: STT
@@ -1480,7 +1486,7 @@ components:
       example:
         analysis_models:
           - ~anthropic/claude-opus-latest
-          - ~openai/gpt-latest
+          - ~openai/gpt-sol-latest
           - ~google/gemini-pro-latest
         enabled: true
         id: fusion
@@ -1494,11 +1500,11 @@ components:
             same user prompt with web_search + web_fetch enabled. Capped at 8
             models to bound cost amplification. When omitted, defaults to the
             Quality preset from the /labs/fusion UI
-            (~anthropic/claude-opus-latest, ~openai/gpt-latest,
+            (~anthropic/claude-opus-latest, ~openai/gpt-sol-latest,
             ~google/gemini-pro-latest).
           example:
             - ~anthropic/claude-opus-latest
-            - ~openai/gpt-latest
+            - ~openai/gpt-sol-latest
             - ~google/gemini-pro-latest
           items:
             type: string

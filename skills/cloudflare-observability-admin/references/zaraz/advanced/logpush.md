@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Send Zaraz logs to Logpush
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/zaraz/advanced/logpush/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/advanced/logpush/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Send Zaraz logs to an external storage provider like R2 or S3.
 
@@ -22,17 +22,17 @@ This is an Enterprise only feature.
 
 Follow these steps to configure Logpush support for Zaraz:
 
-### 1\. Create a Logpush job
+### 1. Create a Logpush job
 
-1. In the Cloudflare dashboard, go to the **Logpush** page.
-[Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
+1. In the Cloudflare dashboard, go to the **Logpush** page. [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
 2. Select **Create a Logpush Job** and follow the steps described in the [Logpush](https://developers.cloudflare.com/logs/logpush/) documentation.
-When selecting a dataset, make sure you select **Zaraz Events**.
+    When selecting a dataset, make sure you select **Zaraz Events**.
 
-### 2\. Enable Logpush from Zaraz settings
+### 2. Enable Logpush from Zaraz settings
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com), go to **Delivery & Performance** \> **Web tag management** \> **Tag setup** \> select your domain > **Settings**.
-Alternatively, navigate directly to [Zaraz settings ↗](https://dash.cloudflare.com/?to=/:account/tag-management/zaraz/:zone/tools-config/tools)
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com), go to **Delivery & Performance** > **Web tag management** > **Tag setup** > select your domain > **Settings**.
+
+   Alternatively, navigate directly to [Zaraz settings ↗](https://dash.cloudflare.com/?to=/:account/tag-management/zaraz/:zone/tools-config/tools)
 2. Enable **Export Zaraz Logs**.
 
 Note
@@ -43,15 +43,15 @@ Zaraz must already be configured on your zone to access the Settings page. If Za
 
 Logs will have the following fields:
 
-| Field          | Type   | Description                                                                                                                                 |
-| -------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| RequestHeaders | JSON   | The headers that were sent with the request.                                                                                                |
-| URL            | String | The Zaraz URL to which the request was made.                                                                                                |
-| IP             | String | The originating IP.                                                                                                                         |
-| Body           | JSON   | The body that was sent along with the request.                                                                                              |
-| Event Type     | String | Can be one of the following: server\_request, server\_response, action\_triggered, ecommerce\_triggered, client\_request, component\_error. |
-| Event Details  | JSON   | Details about the event.                                                                                                                    |
-| TimestampStart | String | The time at which the event occurred.                                                                                                       |
+| Field | Type | Description |
+| --- | --- | --- |
+| RequestHeaders | `JSON` | The headers that were sent with the request. |
+| URL | `String` | The Zaraz URL to which the request was made. |
+| IP | `String` | The originating IP. |
+| Body | `JSON` | The body that was sent along with the request. |
+| Event Type | `String` | Can be one of the following: `server_request`, `server_response`, `action_triggered`, `ecommerce_triggered`, `client_request`, `component_error`. |
+| Event Details | `JSON` | Details about the event. |
+| TimestampStart | `String` | The time at which the event occurred. |
 
 Was this helpful?
 

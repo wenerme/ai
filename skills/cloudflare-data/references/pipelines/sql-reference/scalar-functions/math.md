@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Math functions
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/math/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/math/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-_Cloudflare Pipelines scalar function implementations are based on [Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference._
+*Cloudflare Pipelines scalar function implementations are based on [Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference.*
 
 ## `abs`
 
@@ -26,7 +26,7 @@ abs(numeric_expression)
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `acos`
 
@@ -38,7 +38,7 @@ acos(numeric_expression)
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `acosh`
 
@@ -50,7 +50,7 @@ acosh(numeric_expression)
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `asin`
 
@@ -62,7 +62,7 @@ asin(numeric_expression)
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `asinh`
 
@@ -74,7 +74,7 @@ asinh(numeric_expression)
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `atan`
 
@@ -86,7 +86,7 @@ atan(numeric_expression)
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `atanh`
 
@@ -98,7 +98,7 @@ atanh(numeric_expression)
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `atan2`
 
@@ -110,8 +110,8 @@ atan2(expression_y, expression_x)
 
 **Arguments**
 
-* **expression\_y**: First numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
-* **expression\_x**: Second numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **expression\_y**: First numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **expression\_x**: Second numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `cbrt`
 
@@ -123,7 +123,7 @@ cbrt(numeric_expression)
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `ceil`
 
@@ -135,7 +135,7 @@ ceil(numeric_expression)
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `cos`
 
@@ -147,7 +147,7 @@ cos(numeric_expression)
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `cosh`
 
@@ -159,7 +159,7 @@ cosh(numeric_expression)
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `degrees`
 
@@ -171,7 +171,7 @@ degrees(numeric_expression)
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `exp`
 
@@ -183,7 +183,7 @@ exp(numeric_expression)
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to use as the exponent. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **numeric\_expression**: Numeric expression to use as the exponent. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `factorial`
 
@@ -195,7 +195,7 @@ factorial(numeric_expression)
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `floor`
 
@@ -207,7 +207,7 @@ floor(numeric_expression)
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `gcd`
 
@@ -219,8 +219,8 @@ gcd(expression_x, expression_y)
 
 **Arguments**
 
-* **expression\_x**: First numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
-* **expression\_y**: Second numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **expression\_x**: First numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **expression\_y**: Second numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `isnan`
 
@@ -232,7 +232,7 @@ isnan(numeric_expression)
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `iszero`
 
@@ -244,7 +244,7 @@ iszero(numeric_expression)
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `lcm`
 
@@ -256,8 +256,8 @@ lcm(expression_x, expression_y)
 
 **Arguments**
 
-* **expression\_x**: First numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
-* **expression\_y**: Second numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **expression\_x**: First numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **expression\_y**: Second numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `ln`
 
@@ -269,7 +269,7 @@ ln(numeric_expression)
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `log`
 
@@ -282,8 +282,8 @@ log(numeric_expression)
 
 **Arguments**
 
-* **base**: Base numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **base**: Base numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `log10`
 
@@ -295,7 +295,7 @@ log10(numeric_expression)
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `log2`
 
@@ -307,11 +307,11 @@ log2(numeric_expression)
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `nanvl`
 
-Returns the first argument if it's not _NaN_. Returns the second argument otherwise.
+Returns the first argument if it's not *NaN*. Returns the second argument otherwise.
 
 ```plaintext
 nanvl(expression_x, expression_y)
@@ -319,8 +319,8 @@ nanvl(expression_x, expression_y)
 
 **Arguments**
 
-* **expression\_x**: Numeric expression to return if it's not _NaN_. Can be a constant, column, or function, and any combination of arithmetic operators.
-* **expression\_y**: Numeric expression to return if the first expression is _NaN_. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **expression\_x**: Numeric expression to return if it's not *NaN*. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **expression\_y**: Numeric expression to return if the first expression is *NaN*. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `pi`
 
@@ -340,16 +340,16 @@ power(base, exponent)
 
 **Arguments**
 
-* **base**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
-* **exponent**: Exponent numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **base**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **exponent**: Exponent numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 **Aliases**
 
-* pow
+- pow
 
 ## `pow`
 
-_Alias of [power](#power)._
+*Alias of [power](#power).*
 
 ## `radians`
 
@@ -361,7 +361,7 @@ radians(numeric_expression)
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `random`
 
@@ -381,8 +381,8 @@ round(numeric_expression[, decimal_places])
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
-* **decimal\_places**: Optional. The number of decimal places to round to. Defaults to 0.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **decimal\_places**: Optional. The number of decimal places to round to. Defaults to 0.
 
 ## `signum`
 
@@ -394,7 +394,7 @@ signum(numeric_expression)
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `sin`
 
@@ -406,7 +406,7 @@ sin(numeric_expression)
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `sinh`
 
@@ -418,7 +418,7 @@ sinh(numeric_expression)
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `sqrt`
 
@@ -430,7 +430,7 @@ sqrt(numeric_expression)
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `tan`
 
@@ -442,7 +442,7 @@ tan(numeric_expression)
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `tanh`
 
@@ -454,7 +454,7 @@ tanh(numeric_expression)
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `trunc`
 
@@ -466,8 +466,8 @@ trunc(numeric_expression[, decimal_places])
 
 **Arguments**
 
-* **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
-* **decimal\_places**: Optional. The number of decimal places to truncate to. Defaults to 0 (truncate to a whole number). If `decimal_places` is a positive integer, truncates digits to the right of the decimal point. If `decimal_places` is a negative integer, replaces digits to the left of the decimal point with `0`.
+- **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **decimal\_places**: Optional. The number of decimal places to truncate to. Defaults to 0 (truncate to a whole number). If `decimal_places` is a positive integer, truncates digits to the right of the decimal point. If `decimal_places` is a negative integer, replaces digits to the left of the decimal point with `0`.
 
 Was this helpful?
 

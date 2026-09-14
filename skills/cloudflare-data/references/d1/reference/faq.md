@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # FAQs
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/reference/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/reference/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Pricing
 
@@ -22,7 +22,7 @@ Yes, the [Workers Free plan](https://developers.cloudflare.com/workers/platform/
 
 ### What happens if I exceed the daily limits on reads and writes, or the total storage limit, on the Free plan?
 
-When your account hits the daily read and/or write limits, you will not be able to run queries against D1\. D1 API will return errors to your client indicating that your daily limits have been exceeded. Once you have reached your included storage limit, you will need to delete unused databases or clean up stale data before you can insert new data, create or alter tables or create indexes and triggers.
+When your account hits the daily read and/or write limits, you will not be able to run queries against D1. D1 API will return errors to your client indicating that your daily limits have been exceeded. Once you have reached your included storage limit, you will need to delete unused databases or clean up stale data before you can insert new data, create or alter tables or create indexes and triggers.
 
 Upgrading to the Workers Paid plan will remove these limits, typically within minutes.
 
@@ -85,8 +85,8 @@ Each individual D1 database is inherently single-threaded, and processes queries
 
 Your maximum throughput is directly related to the duration of your queries.
 
-* If your average query takes 1 ms, you can run approximately 1,000 queries per second.
-* If your average query takes 100 ms, you can run 10 queries per second.
+- If your average query takes 1 ms, you can run approximately 1,000 queries per second.
+- If your average query takes 100 ms, you can run 10 queries per second.
 
 A database that receives too many concurrent requests will first attempt to queue them. If the queue becomes full, the database will return an ["overloaded" error](https://developers.cloudflare.com/d1/observability/debug-d1/#error-list).
 
@@ -96,9 +96,9 @@ Each individual D1 database is backed by a single [Durable Object](https://devel
 
 Query performance is the most important factor for throughput. As a rough guideline:
 
-* Read queries like `SELECT name FROM users WHERE id = ?` with an appropriate index on `id` will take less than a millisecond for SQL duration.
-* Write queries like `INSERT` or `UPDATE` can take several milliseconds for SQL duration, and depend on the number of rows written. Writes need to be durably persisted across several locations - learn more on [how D1 persists data under the hood ↗](https://blog.cloudflare.com/d1-read-replication-beta/#under-the-hood-how-d1-read-replication-is-implemented).
-* Data migrations like a large `UPDATE` or `DELETE` affecting millions of rows must be run in batches. A single query that attempts to modify hundreds of thousands of rows or hundreds of MBs of data at once will exceed execution limits. Break the work into smaller chunks (e.g., processing 1,000 rows at a time) to stay within platform limits.
+- Read queries like `SELECT name FROM users WHERE id = ?` with an appropriate index on `id` will take less than a millisecond for SQL duration.
+- Write queries like `INSERT` or `UPDATE` can take several milliseconds for SQL duration, and depend on the number of rows written. Writes need to be durably persisted across several locations - learn more on [how D1 persists data under the hood ↗](https://blog.cloudflare.com/d1-read-replication-beta/#under-the-hood-how-d1-read-replication-is-implemented).
+- Data migrations like a large `UPDATE` or `DELETE` affecting millions of rows must be run in batches. A single query that attempts to modify hundreds of thousands of rows or hundreds of MBs of data at once will exceed execution limits. Break the work into smaller chunks (e.g., processing 1,000 rows at a time) to stay within platform limits.
 
 To ensure your queries are fast and efficient, [use appropriate indexes in your SQL schema](https://developers.cloudflare.com/d1/best-practices/use-indexes/).
 

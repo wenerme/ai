@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # mTLS related features
 
-Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/mtls/mtls-app-security/related-features/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/mtls/mtls-app-security/related-features/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Label Client Certificates
 
@@ -22,7 +22,7 @@ To make it easier to differentiate between Client Certificates, you can generate
 
 In cases of noticing excessive traffic, anomalous traffic (strange sequences of requests), or generally too many attack attempts registered from specific devices using your Client Certificates, it is best to [revoke](https://developers.cloudflare.com/ssl/client-certificates/revoke-client-certificate/) those.
 
-Additionally, ensure to have a WAF [Custom Rule](https://developers.cloudflare.com/waf/custom-rules/) in place to block [revoked](https://developers.cloudflare.com/api-shield/security/mtls/configure/#check-for-revoked-certificates) Client Certificates. Review the available [cf.tls\_\*](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/?field-category=mTLS&field-category=SSL/TLS) fields.
+Additionally, ensure to have a WAF [Custom Rule](https://developers.cloudflare.com/waf/custom-rules/) in place to block [revoked](https://developers.cloudflare.com/api-shield/security/mtls/configure/#check-for-revoked-certificates) Client Certificates. Review the available [`cf.tls_*`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/?field-category=mTLS&field-category=SSL/TLS) fields.
 
 Example WAF Custom Rule with action block:
 
@@ -48,7 +48,7 @@ There are multiple ways to [forward a client certificate](https://developers.clo
 
 If you already have mTLS implemented, client certificates are already installed on devices, and therefore you would like to use your own Certificate Authority (CA), this is possible by [bringing your own CA for mTLS](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/).
 
-You can associate your uploaded CAs with specific hostnames via the dashboard or the [Replace Hostname Associations API endpoint](https://developers.cloudflare.com/api/resources/certificate%5Fauthorities/subresources/hostname%5Fassociations/methods/update/).
+You can associate your uploaded CAs with specific hostnames via the dashboard or the [Replace Hostname Associations API endpoint](https://developers.cloudflare.com/api/resources/certificate_authorities/subresources/hostname_associations/methods/update/).
 
 Note
 
@@ -70,8 +70,8 @@ It is generally recommended to [customize the cipher suites](https://developers.
 
 The recommended TLS versions for mTLS are:
 
-* TLS 1.2: still broadly compatible and secure.
-* TLS 1.3: preferred for new implementations due to its enhanced security and efficiency.
+- TLS 1.2: still broadly compatible and secure.
+- TLS 1.3: preferred for new implementations due to its enhanced security and efficiency.
 
 Using outdated versions like TLS 1.0 or 1.1 is not recommended due to known vulnerabilities.
 
@@ -93,13 +93,13 @@ Note
 
 Resumption and renegotiation are essentially opposites. Resumption re-establishes a previous TLS session over a new TCP connection, keeping the same TLS parameters. In contrast, renegotiation updates certain TLS parameters within an existing session, continuing over the same TCP connection.
 
-If you need to use Client Certificates after the TLS handshake via renegotiation, you will need to use a prior TLS version than 1.3\. This is because TLS 1.3 does not support renegotiation.
+If you need to use Client Certificates after the TLS handshake via renegotiation, you will need to use a prior TLS version than 1.3. This is because TLS 1.3 does not support renegotiation.
 
 For example, if you are using mTLS and you are restricting requests to certain folders, based on a URL path in the request, rather than all content on your origin server, a TLS renegotiation may be triggered. Connections using TLS 1.3 do not support renegotiation.
 
 ## Chain of Trust
 
-Customers create Client Certificates and select the option to _use my private key and CSR_. The customer provides the CSR supplied by end-customers to generate the client certificates shared with end-customers. However, if your end-customers request the Certificate Chain, this can potentially be shared by the Cloudflare account team.
+Customers create Client Certificates and select the option to *use my private key and CSR*. The customer provides the CSR supplied by end-customers to generate the client certificates shared with end-customers. However, if your end-customers request the Certificate Chain, this can potentially be shared by the Cloudflare account team.
 
 Contact your account team for more information.
 
@@ -109,7 +109,7 @@ Note
 
 [Revoked](https://developers.cloudflare.com/api-shield/security/mtls/configure/#check-for-revoked-certificates) Client Certificates are not automatically blocked unless you have an active WAF Custom Rule specifically checking for and blocking them. This check only applies to Client Certificates issued by the Cloudflare-managed CA. Cloudflare currently does not check certificate revocation lists (CRL) for CAs that have been uploaded by the customer ([BYO CA](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/)). One can opt for Workers to manage a custom business logic and block revoked Client Certificates. See the [Workers section](https://developers.cloudflare.com/learning-paths/mtls/mtls-workers/) for more information.
 
-In order to effectively implement mTLS with Cloudflare, it is strongly recommended to properly configure the [Cloudflare WAF](https://developers.cloudflare.com/waf/). Review the available [cf.tls\_\*](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/?field-category=mTLS&field-category=SSL/TLS) fields.
+In order to effectively implement mTLS with Cloudflare, it is strongly recommended to properly configure the [Cloudflare WAF](https://developers.cloudflare.com/waf/). Review the available [`cf.tls_*`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/?field-category=mTLS&field-category=SSL/TLS) fields.
 
 Example WAF Custom Rule with action block:
 
@@ -121,9 +121,9 @@ Example WAF Custom Rule with action block:
 
 This expression will check if the request is coming from one of the hostnames and will block the request if the Client Certificate is either not verified or revoked.
 
-Another example WAF Custom Rule with action block, using the [cf.tls\_client\_auth.cert\_fingerprint\_sha256](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls%5Fclient%5Fauth.cert%5Ffingerprint%5Fsha256/) field, for a specific Client Certificate (replace `ADD_STRING_OF_CLIENT_CERT_SHA256_FINGERPRINT`):
+Another example WAF Custom Rule with action block, using the [`cf.tls_client_auth.cert_fingerprint_sha256`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls_client_auth.cert_fingerprint_sha256/) field, for a specific Client Certificate (replace `ADD_STRING_OF_CLIENT_CERT_SHA256_FINGERPRINT`):
 
-![Example expression of a WAF Custom Rule with action block using the cf.tls_client_auth.cert_fingerprint_sha256 field](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1400,height=190,format=webp/_astro/waf-client-certificates-fingerprint.BqsBG7GT.png)
+![Example expression of a WAF Custom Rule with action block using the cf.tls\_client\_auth.cert\_fingerprint\_sha256 field](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1400,height=190,format=webp/_astro/waf-client-certificates-fingerprint.BqsBG7GT.png)
 
 ```txt
 (http.request.uri.path in {"/headers"} and http.host in {"mtls.example.com" "mtls2.example.com"} and not cf.tls_client_auth.cert_verified and cf.tls_client_auth.cert_fingerprint_sha256 ne "ADD_STRING_OF_CLIENT_CERT_SHA256_FINGERPRINT")
@@ -137,14 +137,14 @@ Here is another example of a WAF custom rule to associate a serial number with a
 (http.host in {"mtls.example.com" "mtls2.example.com"} and cf.tls_client_auth.cert_serial ne "ADD_STRING_OF_CLIENT_CERT_SERIAL")
 ```
 
-This expression will check for a specific [Client Certificate serial number](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls%5Fclient%5Fauth.cert%5Fserial/) linked to specific hostnames, allowing for more granular control.
+This expression will check for a specific [Client Certificate serial number](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls_client_auth.cert_serial/) linked to specific hostnames, allowing for more granular control.
 
 ## Rate Limiting by Client Certificates
 
 By enabling [forwarding a certificate](https://developers.cloudflare.com/ssl/client-certificates/forward-a-client-certificate/#cloudflare-api) via the Cloudflare API, every request of an mTLS connection will include the following headers:
 
-* `Cf-Client-Cert-Der-Base64` (raw certificate in DER format, encoded as base64)
-* `Cf-Client-Cert-Sha256` (SHA256 fingerprint of the certificate)
+- `Cf-Client-Cert-Der-Base64` (raw certificate in DER format, encoded as base64)
+- `Cf-Client-Cert-Sha256` (SHA256 fingerprint of the certificate)
 
 The header `Cf-Client-Cert-Sha256` can be used within the [Rate Limiting characteristics](https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/#with-the-same-characteristics) "Header value of".
 

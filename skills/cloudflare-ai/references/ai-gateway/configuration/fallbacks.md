@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Fallbacks
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/fallbacks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/fallbacks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Specify model or provider fallbacks with your [Universal endpoint](https://developers.cloudflare.com/ai-gateway/usage/universal/) to handle request failures and ensure reliability.
 
-Cloudflare can trigger your fallback provider in response to [request errors](#request-failures) or [predetermined request timeouts](https://developers.cloudflare.com/ai-gateway/configuration/request-handling#request-timeouts). The [response header cf-aig-step](#response-headercf-aig-step) indicates which step successfully processed the request.
+Cloudflare can trigger your fallback provider in response to [request errors](#request-failures) or [predetermined request timeouts](https://developers.cloudflare.com/ai-gateway/configuration/request-handling#request-timeouts). The [response header `cf-aig-step`](#response-headercf-aig-step) indicates which step successfully processed the request.
 
 ## Request failures
 
@@ -29,14 +29,20 @@ In the following example, a request first goes to the [Workers AI](https://devel
 1. Sends a request to Workers AI Inference API.
 2. If that request fails, proceeds to OpenAI.
 
+```
 graph TD
     A[AI Gateway] --> B[Request to Workers AI Inference API]
     B -->|Success| C[Return Response]
     B -->|Failure| D[Request to OpenAI API]
     D --> E[Return Response]
 
+```
+
+
 
 You can add as many fallbacks as you need, just by adding another object in the array.
+
+*Requestbash*
 
 ```bash
 curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id} \
@@ -87,10 +93,10 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id} \
 
 When using the [Universal endpoint](https://developers.cloudflare.com/ai-gateway/usage/universal/) with fallbacks, the response header `cf-aig-step` indicates which model successfully processed the request by returning the step number. This header provides visibility into whether a fallback was triggered and which model ultimately processed the response.
 
-* `cf-aig-step:0` – The first (primary) model was used successfully.
-* `cf-aig-step:1` – The request fell back to the second model.
-* `cf-aig-step:2` – The request fell back to the third model.
-* Subsequent steps – Each fallback increments the step number by 1.
+- `cf-aig-step:0` – The first (primary) model was used successfully.
+- `cf-aig-step:1` – The request fell back to the second model.
+- `cf-aig-step:2` – The request fell back to the third model.
+- Subsequent steps – Each fallback increments the step number by 1.
 
 Was this helpful?
 

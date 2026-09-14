@@ -16,20 +16,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Alibaba
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/alibaba/qwen3.7-plus/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/alibaba/qwen3.7-plus/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `alibaba/qwen3.7-plus`
 
-* Third-party
+- Third-party
 
 Alibaba's Qwen 3.7 Plus is the cost-effective member of the Qwen3.7 series, pairing strong text capabilities with image and video understanding and full-stack agent-level intelligence for coding, tool use, and GUI-based automation, served via DashScope's OpenAI-compatible endpoint.
 
-| Model Info        |                                                                                                                        |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                                   |
-| More information  | [link ↗](https://www.qwencloud.com/models/qwen3.7-plus)                                                                |
-| Request formats   | Chat Completions, Responses                                                                                            |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/qwen3.7-plus) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal) |
+| More information | [link ↗](https://www.qwencloud.com/models/qwen3.7-plus) |
+| Request formats | Chat Completions, Responses |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/qwen3.7-plus) |
 
 ## Usage
 
@@ -56,6 +56,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The laws of thermodynamics govern how energy moves and transforms in the universe. Here are the three main laws, explained simply:
 
 ### 1. The First Law: The Law of Conservation of Energy
@@ -77,6 +78,7 @@ The laws of thermodynamics govern how energy moves and transforms in the univers
 **A Quick Note on the "Zeroth" Law:**
 While you asked for the three laws, physicists actually recognize a **Zeroth Law of Thermodynamics**, which was formulated after the other three but is considered so fundamental that it had to come first.
 * **The Zeroth Law** states that if two objects are both in thermal equilibrium with a third object, then they are in thermal equilibrium with each other. This law is what allows us to define and measure **temperature** using thermometers.
+```
 
 ```json
 {
@@ -113,7 +115,11 @@ While you asked for the three laws, physicists actually recognize a **Zeroth Law
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -147,6 +153,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 To read a JSON file in Python, you can use the built-in **`json`** module. Specifically, you will use the **`json.load()`** function, which reads a JSON file and converts it into a Python dictionary or list.
 
 Here is the standard and safest way to do it:
@@ -198,6 +205,7 @@ except Exception as e:
 * **`json.loads()`** (with an "s" for "string"): Reads JSON data from a **string** or bytes object.
 
 *(Example: `data = json.loads('{"name": "Alice"}')`)*
+````
 
 ```json
 {
@@ -232,7 +240,13 @@ except Exception as e:
 }
 ```
 
-**Vision: Image Understanding** — Describing the contents of an image
+</details>
+
+<details>
+
+<summary>**Vision: Image Understanding** — Describing the contents of an image</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -283,6 +297,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 This image depicts a heartwarming scene of a young woman and her dog interacting on a sandy beach, likely during sunset or sunrise given the warm, golden lighting.
 
 Here are the specific details:
@@ -291,6 +306,7 @@ Here are the specific details:
 *   **The Action:** The dog is sitting facing the woman and has lifted its front paw to touch her hand. They appear to be doing a "high five" or a "shake" trick. The woman is holding the dog's paw with one hand and seems to be holding a treat in the other.
 *   **The Setting:** They are on a beach with textured sand full of footprints. In the background, the ocean stretches out to the horizon with gentle waves rolling in. The sky is bright and hazy, suggesting the sun is low on the horizon, creating a lens flare effect on the right side of the image.
 *   **Accessories:** The dog is wearing a blue harness with a colorful pattern, and a red rope leash is lying on the sand next to it. The woman is wearing a white watch.
+```
 
 ```json
 {
@@ -326,7 +342,13 @@ Here are the specific details:
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -359,6 +381,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 At its core, **recursion** is a programming concept where a function calls *itself* in order to solve a problem.
 
 Instead of attacking a massive problem all at once, recursion breaks the problem down into smaller, simpler versions of the *exact same problem*, until it reaches a point that is easy to solve.
@@ -424,6 +447,7 @@ Every recursive function **must** have these two parts, or your program will cra
 
 ### Why use it?
 While a simple `for` loop can calculate a factorial, recursion is incredibly powerful for problems that involve branching structures, like navigating through folders on your computer, searching through a family tree, or sorting complex data. It allows you to write clean, elegant code for problems that would otherwise require massive, confusing loops.
+````
 
 ```json
 [
@@ -11251,13 +11275,15 @@ While a simple `for` loop can calculate a factorial, recursion is incredibly pow
 ]
 ```
 
+</details>
+
 ## Parameters
 
 Schema variant
 
 Chat CompletionsResponses
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -11279,11 +11305,11 @@ top\_p
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 stream
 
@@ -11293,19 +11319,15 @@ stream
 
 `object`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
 
-``
-
 response\_format
 
-``
-
-▶modalities\[\]
+▶modalities\[]
 
 `array`
 
@@ -11337,13 +11359,11 @@ stream
 
 `boolean`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
-
-``
 
 ▶text{}
 
@@ -11369,7 +11389,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -11393,7 +11413,7 @@ model
 
 `string`
 
-▶output\[\]
+▶output\[]
 
 `array`
 
@@ -11411,9 +11431,9 @@ status
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/alibaba/qwen3.7-plus/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/alibaba/qwen3.7-plus/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/alibaba/qwen3.7-plus/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/alibaba/qwen3.7-plus/schema-output.json)
 
 Was this helpful?
 

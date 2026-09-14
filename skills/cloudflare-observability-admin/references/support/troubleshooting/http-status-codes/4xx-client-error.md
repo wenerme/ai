@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # 4xx Client Error
 
-Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `4xx` codes are error responses that indicate an issue on the client's end, potentially due to a network problem.
 
-* `4xx` codes can be used as a response to any request method.
-* The origin server should include an explanation, which should be displayed by the User-Agent, except in the case of a `HEAD` request.
-* [Custom rules](https://developers.cloudflare.com/waf/custom-rules/) can return any response code in the range of `400–499` on your HTML page if the site owner has created a rule with the _Block_ action and configured a custom response code. For more details, refer to [custom response](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/#configure-a-custom-response-for-blocked-requests).
+- `4xx` codes can be used as a response to any request method.
+- The origin server should include an explanation, which should be displayed by the User-Agent, except in the case of a `HEAD` request.
+- [Custom rules](https://developers.cloudflare.com/waf/custom-rules/) can return any response code in the range of `400–499` on your HTML page if the site owner has created a rule with the *Block* action and configured a custom response code. For more details, refer to [custom response](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/#configure-a-custom-response-for-blocked-requests).
 
 ## Log Explorer
 

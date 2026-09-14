@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Enable IBM QRadar
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/ibm-qradar/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/ibm-qradar/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To configure a QRadar/Cloudflare integration you have the option to use one of the following methods:
 
-* [HTTP Receiver protocol](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/ibm-qradar/#http-receiver-protocol)
-* [Amazon AWS S3 Rest API](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/ibm-qradar/#amazon-aws-s3-rest-api)
+- [HTTP Receiver protocol](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/ibm-qradar/#http-receiver-protocol)
+- [Amazon AWS S3 Rest API](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/ibm-qradar/#amazon-aws-s3-rest-api)
 
 ## HTTP Receiver Protocol
 
@@ -25,10 +25,21 @@ To send Cloudflare logs to QRadar you need to create a [Logpush job to HTTP endp
 
 ### Cloudflare Firewall events
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*Create Logpush jobbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
@@ -79,10 +90,21 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
 
 ### Cloudflare HTTP events
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*Create Logpush jobbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \

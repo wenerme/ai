@@ -12,32 +12,32 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # MeetingViewController
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/ios/meeting-view-controller/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/ios/meeting-view-controller/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The main meeting screen view controller. Displays the participant grid, plugins, screen share, header, and control bar.
 
 ## Initializer parameters
 
-| Parameter  | Type                 | Required | Default | Description                                            |
-| ---------- | -------------------- | -------- | ------- | ------------------------------------------------------ |
-| meeting    | RealtimeKitClient    | ✅        | \-      | The RealtimeKit client instance for the active meeting |
-| completion | @escaping () -> Void | ✅        | \-      | Closure called when the meeting ends                   |
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `meeting` | `RealtimeKitClient` | ✅ | - | The RealtimeKit client instance for the active meeting |
+| `completion` | `@escaping () -> Void` | ✅ | - | Closure called when the meeting ends |
 
 ## Properties
 
-| Property   | Type                             | Required | Default | Description                                                          |
-| ---------- | -------------------------------- | -------- | ------- | -------------------------------------------------------------------- |
-| dataSource | MeetingViewControllerDataSource? | ❌        | nil     | Data source for providing custom topbar, middle view, and bottom bar |
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `dataSource` | `MeetingViewControllerDataSource?` | ❌ | `nil` | Data source for providing custom topbar, middle view, and bottom bar |
 
 ## MeetingViewControllerDataSource protocol
 
 Implement this protocol to provide custom UI sections within the meeting screen.
 
-| Method                           | Return Type           | Description                                                     |
-| -------------------------------- | --------------------- | --------------------------------------------------------------- |
-| getTopbar(viewController:)       | RtkMeetingHeaderView? | Returns a custom header view for the meeting screen             |
-| getMiddleView(viewController:)   | UIView?               | Returns a custom middle view between the header and control bar |
-| getBottomTabbar(viewController:) | RtkMeetingControlBar? | Returns a custom control bar for the meeting screen             |
+| Method | Return Type | Description |
+| --- | --- | --- |
+| `getTopbar(viewController:)` | `RtkMeetingHeaderView?` | Returns a custom header view for the meeting screen |
+| `getMiddleView(viewController:)` | `UIView?` | Returns a custom middle view between the header and control bar |
+| `getBottomTabbar(viewController:)` | `RtkMeetingControlBar?` | Returns a custom control bar for the meeting screen |
 
 ## Usage Examples
 

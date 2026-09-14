@@ -18,21 +18,21 @@ Beta
 
 Text Generation • Microsoft
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/microsoft/phi-2/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/microsoft/phi-2/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/microsoft/phi-2`
 
-* Cloudflare-hosted
-* Deprecated
+- Cloudflare-hosted
+- Deprecated
 
 Phi-2 is a Transformer-based model with a next-word prediction objective, trained on 1.4T tokens from multiple passes on a mixture of Synthetic and Web datasets for NLP and coding.
 
-| Model Info                                                                          |                                                  |
-| ----------------------------------------------------------------------------------- | ------------------------------------------------ |
-| Deprecated                                                                          | 5/30/2026                                        |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 2,048 tokens                                     |
-| More information                                                                    | [link ↗](https://huggingface.co/microsoft/phi-2) |
-| Beta                                                                                | Yes                                              |
+| Model Info | |
+| --- | --- |
+| Deprecated | 5/30/2026 |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 2,048 tokens |
+| More information | [link ↗](https://huggingface.co/microsoft/phi-2) |
+| Beta | Yes |
 
 ## Playground
 
@@ -43,7 +43,6 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 ## Usage
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -72,7 +71,6 @@ export default {
 ```
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -95,7 +93,6 @@ export default {
 ```
 
 ```py
-
 import os
 import requests
 
@@ -118,7 +115,6 @@ print(result)
 ```
 
 ```sh
-
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/microsoft/phi-2 \
   -X POST \
   -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
@@ -179,47 +175,59 @@ repetition\_penalty
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2Decreases the likelihood of the model repeating the same lines verbatim.
+`number`minimum: -2maximum: 2Decreases the likelihood of the model repeating the same lines verbatim.
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2Increases the likelihood of the model introducing new topics.
+`number`minimum: -2maximum: 2Increases the likelihood of the model introducing new topics.
 
 ### Output
 
-Synchronous — Send a request and receive a complete response
+<details>
+
+<summary>Synchronous — Send a request and receive a complete response</summary>
+
+
 
 response
 
-`string`The generated text response from the model
+<code>string</code>The generated text response from the model
 
 ▶usage{}
 
-`object`Usage statistics for the inference request
+<code>object</code>Usage statistics for the inference request
 
-▶tool\_calls\[\]
+▶tool\_calls\[]
 
-`array`An array of tool calls requests made during the response generation
+<code>array</code>An array of tool calls requests made during the response generation
 
-Streaming — Send a request with \`stream: true\` and receive server-sent events
+</details>
+
+<details>
+
+<summary>Streaming — Send a request with `stream: true` and receive server-sent events</summary>
+
+
 
 type
 
-`string`
+<code>string</code>
 
 format
 
-`binary`
+<code>binary</code>
+
+</details>
 
 ## API Schemas (Raw)
 
-SynchronousInput
+SynchronousInput [Open](https://developers.cloudflare.com/ai/models/@cf/microsoft/phi-2/sync-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/microsoft/phi-2/sync-input.json)
 
-SynchronousOutput
+SynchronousOutput [Open](https://developers.cloudflare.com/ai/models/@cf/microsoft/phi-2/sync-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/microsoft/phi-2/sync-output.json)
 
-StreamingInput
+StreamingInput [Open](https://developers.cloudflare.com/ai/models/@cf/microsoft/phi-2/streaming-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/microsoft/phi-2/streaming-input.json)
 
-StreamingOutput
+StreamingOutput [Open](https://developers.cloudflare.com/ai/models/@cf/microsoft/phi-2/streaming-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/microsoft/phi-2/streaming-output.json)
 
 Was this helpful?
 

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Write custom analytics events to Workers Analytics Engine.
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/examples/analytics-engine/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/examples/analytics-engine/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/) provides time-series analytics at scale. Use it to track custom metrics, build usage-based billing, or understand service health on a per-customer basis.
 
@@ -115,9 +115,9 @@ export default {
 
 Each data point consists of:
 
-* **blobs** (strings) - Dimensions for grouping and filtering. Use for paths, regions, status codes, or customer IDs.
-* **doubles** (numbers) - Numeric values to record, such as counts, durations, or sizes.
-* **indexes** (strings) - A single string used as the [sampling key](https://developers.cloudflare.com/analytics/analytics-engine/sql-api/#sampling). Group related events under the same index.
+- **blobs** (strings) - Dimensions for grouping and filtering. Use for paths, regions, status codes, or customer IDs.
+- **doubles** (numbers) - Numeric values to record, such as counts, durations, or sizes.
+- **indexes** (strings) - A single string used as the [sampling key](https://developers.cloudflare.com/analytics/analytics-engine/sql-api/#sampling). Group related events under the same index.
 
 ## Query your data
 
@@ -131,9 +131,9 @@ curl "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/analy
 
 ## Related resources
 
-* [Analytics Engine documentation](https://developers.cloudflare.com/analytics/analytics-engine/) \- Full reference for Workers Analytics Engine.
-* [SQL API reference](https://developers.cloudflare.com/analytics/analytics-engine/sql-api/) \- Query syntax and available functions.
-* [Grafana integration](https://developers.cloudflare.com/analytics/analytics-engine/grafana/) \- Visualize Analytics Engine data in Grafana.
+- [Analytics Engine documentation](https://developers.cloudflare.com/analytics/analytics-engine/) - Full reference for Workers Analytics Engine.
+- [SQL API reference](https://developers.cloudflare.com/analytics/analytics-engine/sql-api/) - Query syntax and available functions.
+- [Grafana integration](https://developers.cloudflare.com/analytics/analytics-engine/grafana/) - Visualize Analytics Engine data in Grafana.
 
 Was this helpful?
 

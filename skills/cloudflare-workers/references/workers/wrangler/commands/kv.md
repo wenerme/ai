@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # KV
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/kv/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/kv/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Manage [Workers KV](https://developers.cloudflare.com/kv/) using Wrangler.
 
@@ -46,37 +46,45 @@ yarn wrangler kv namespace create [NAMESPACE]
 pnpm wrangler kv namespace create [NAMESPACE]
 ```
 
-* `[NAMESPACE]` `string` required
-The name of the new namespace
-* `--preview` `boolean`
-Interact with a preview namespace
-* `--use-remote` `boolean`
-Use a remote binding when adding the newly created resource to your config
-* `--update-config` `boolean`
-Automatically update your config file with the newly added resource
-* `--binding` `string`
-The binding name of this resource in your Worker
+- `[NAMESPACE]` `string` required
+
+  The name of the new namespace
+- `--preview` `boolean` Interact with a preview namespace
+- `--use-remote` `boolean` Use a remote binding when adding the newly created resource to your config
+- `--update-config` `boolean` Automatically update your config file with the newly added resource
+- `--binding` `string` The binding name of this resource in your Worker
+
+<details>
+
+<summary>
 
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ### `kv namespace list`
 
@@ -96,26 +104,37 @@ yarn wrangler kv namespace list
 pnpm wrangler kv namespace list
 ```
 
+<details>
+
+<summary>
+
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ### `kv namespace delete`
 
@@ -135,37 +154,45 @@ yarn wrangler kv namespace delete [NAMESPACE]
 pnpm wrangler kv namespace delete [NAMESPACE]
 ```
 
-* `[NAMESPACE]` `string`
-The name of the namespace to delete
-* `--binding` `string`
-The binding name to the namespace to delete from
-* `--namespace-id` `string`
-The id of the namespace to delete
-* `--preview` `boolean`
-Interact with a preview namespace
-* `--skip-confirmation` `boolean` alias: --ydefault: false
-Skip confirmation
+- `[NAMESPACE]` `string` The name of the namespace to delete
+- `--binding` `string` The binding name to the namespace to delete from
+- `--namespace-id` `string` The id of the namespace to delete
+- `--preview` `boolean` Interact with a preview namespace
+- `--skip-confirmation` `boolean` alias: --ydefault: false
+
+  Skip confirmation
+
+<details>
+
+<summary>
 
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ### `kv namespace rename`
 
@@ -185,33 +212,43 @@ yarn wrangler kv namespace rename [OLD-NAME]
 pnpm wrangler kv namespace rename [OLD-NAME]
 ```
 
-* `[OLD-NAME]` `string`
-The current name of the namespace to rename
-* `--namespace-id` `string`
-The id of the namespace to rename
-* `--new-name` `string` required
-The new name for the namespace
+- `[OLD-NAME]` `string` The current name of the namespace to rename
+- `--namespace-id` `string` The id of the namespace to rename
+- `--new-name` `string` required
+
+  The new name for the namespace
+
+<details>
+
+<summary>
 
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ## `kv key`
 
@@ -243,51 +280,52 @@ yarn wrangler kv key put [KEY] [VALUE]
 pnpm wrangler kv key put [KEY] [VALUE]
 ```
 
-* `[KEY]` `string` required
-The key to write to
-* `[VALUE]` `string`
-The value to write
-* `--path` `string`
-Read value from the file at a given path
-* `--binding` `string`
-The binding name to the namespace to write to
-* `--namespace-id` `string`
-The id of the namespace to write to
-* `--preview` `boolean`
-Interact with a preview namespace
-* `--ttl` `number`
-Time for which the entries should be visible
-* `--expiration` `number`
-Time since the UNIX epoch after which the entry expires
-* `--metadata` `string`
-Arbitrary JSON that is associated with a key
-* `--local` `boolean`
-Interact with local storage
-* `--remote` `boolean`
-Interact with remote storage
-* `--persist-to` `string`
-Directory for local persistence
+- `[KEY]` `string` required
+
+  The key to write to
+- `[VALUE]` `string` The value to write
+- `--path` `string` Read value from the file at a given path
+- `--binding` `string` The binding name to the namespace to write to
+- `--namespace-id` `string` The id of the namespace to write to
+- `--preview` `boolean` Interact with a preview namespace
+- `--ttl` `number` Time for which the entries should be visible
+- `--expiration` `number` Time since the UNIX epoch after which the entry expires
+- `--metadata` `string` Arbitrary JSON that is associated with a key
+- `--local` `boolean` Interact with local storage
+- `--remote` `boolean` Interact with remote storage
+- `--persist-to` `string` Directory for local persistence
+
+<details>
+
+<summary>
 
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ### `kv key list`
 
@@ -307,41 +345,47 @@ yarn wrangler kv key list
 pnpm wrangler kv key list
 ```
 
-* `--binding` `string`
-The binding name to the namespace to list
-* `--namespace-id` `string`
-The id of the namespace to list
-* `--preview` `boolean` default: false
-Interact with a preview namespace
-* `--prefix` `string`
-A prefix to filter listed keys
-* `--local` `boolean`
-Interact with local storage
-* `--remote` `boolean`
-Interact with remote storage
-* `--persist-to` `string`
-Directory for local persistence
+- `--binding` `string` The binding name to the namespace to list
+- `--namespace-id` `string` The id of the namespace to list
+- `--preview` `boolean` default: false
+
+  Interact with a preview namespace
+- `--prefix` `string` A prefix to filter listed keys
+- `--local` `boolean` Interact with local storage
+- `--remote` `boolean` Interact with remote storage
+- `--persist-to` `string` Directory for local persistence
+
+<details>
+
+<summary>
 
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ### `kv key get`
 
@@ -361,43 +405,52 @@ yarn wrangler kv key get [KEY]
 pnpm wrangler kv key get [KEY]
 ```
 
-* `[KEY]` `string` required
-The key value to get.
-* `--text` `boolean` default: false
-Decode the returned value as a utf8 string
-* `--binding` `string`
-The binding name to the namespace to get from
-* `--namespace-id` `string`
-The id of the namespace to get from
-* `--preview` `boolean` default: false
-Interact with a preview namespace
-* `--local` `boolean`
-Interact with local storage
-* `--remote` `boolean`
-Interact with remote storage
-* `--persist-to` `string`
-Directory for local persistence
+- `[KEY]` `string` required
+
+  The key value to get.
+- `--text` `boolean` default: false
+
+  Decode the returned value as a utf8 string
+- `--binding` `string` The binding name to the namespace to get from
+- `--namespace-id` `string` The id of the namespace to get from
+- `--preview` `boolean` default: false
+
+  Interact with a preview namespace
+- `--local` `boolean` Interact with local storage
+- `--remote` `boolean` Interact with remote storage
+- `--persist-to` `string` Directory for local persistence
+
+<details>
+
+<summary>
 
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ### `kv key delete`
 
@@ -417,41 +470,47 @@ yarn wrangler kv key delete [KEY]
 pnpm wrangler kv key delete [KEY]
 ```
 
-* `[KEY]` `string` required
-The key value to delete.
-* `--binding` `string`
-The binding name to the namespace to delete from
-* `--namespace-id` `string`
-The id of the namespace to delete from
-* `--preview` `boolean`
-Interact with a preview namespace
-* `--local` `boolean`
-Interact with local storage
-* `--remote` `boolean`
-Interact with remote storage
-* `--persist-to` `string`
-Directory for local persistence
+- `[KEY]` `string` required
+
+  The key value to delete.
+- `--binding` `string` The binding name to the namespace to delete from
+- `--namespace-id` `string` The id of the namespace to delete from
+- `--preview` `boolean` Interact with a preview namespace
+- `--local` `boolean` Interact with local storage
+- `--remote` `boolean` Interact with remote storage
+- `--persist-to` `string` Directory for local persistence
+
+<details>
+
+<summary>
 
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ## `kv bulk`
 
@@ -483,41 +542,49 @@ yarn wrangler kv bulk get [FILENAME]
 pnpm wrangler kv bulk get [FILENAME]
 ```
 
-* `[FILENAME]` `string` required
-The file containing the keys to get
-* `--binding` `string`
-The binding name to the namespace to get from
-* `--namespace-id` `string`
-The id of the namespace to get from
-* `--preview` `boolean` default: false
-Interact with a preview namespace
-* `--local` `boolean`
-Interact with local storage
-* `--remote` `boolean`
-Interact with remote storage
-* `--persist-to` `string`
-Directory for local persistence
+- `[FILENAME]` `string` required
+
+  The file containing the keys to get
+- `--binding` `string` The binding name to the namespace to get from
+- `--namespace-id` `string` The id of the namespace to get from
+- `--preview` `boolean` default: false
+
+  Interact with a preview namespace
+- `--local` `boolean` Interact with local storage
+- `--remote` `boolean` Interact with remote storage
+- `--persist-to` `string` Directory for local persistence
+
+<details>
+
+<summary>
 
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ### `kv bulk put`
 
@@ -537,47 +604,50 @@ yarn wrangler kv bulk put [FILENAME]
 pnpm wrangler kv bulk put [FILENAME]
 ```
 
-* `[FILENAME]` `string` required
-The file containing the key/value pairs to write
-* `--binding` `string`
-The binding name to the namespace to write to
-* `--namespace-id` `string`
-The id of the namespace to write to
-* `--preview` `boolean`
-Interact with a preview namespace
-* `--ttl` `number`
-Time for which the entries should be visible
-* `--expiration` `number`
-Time since the UNIX epoch after which the entry expires
-* `--metadata` `string`
-Arbitrary JSON that is associated with a key
-* `--local` `boolean`
-Interact with local storage
-* `--remote` `boolean`
-Interact with remote storage
-* `--persist-to` `string`
-Directory for local persistence
+- `[FILENAME]` `string` required
+
+  The file containing the key/value pairs to write
+- `--binding` `string` The binding name to the namespace to write to
+- `--namespace-id` `string` The id of the namespace to write to
+- `--preview` `boolean` Interact with a preview namespace
+- `--ttl` `number` Time for which the entries should be visible
+- `--expiration` `number` Time since the UNIX epoch after which the entry expires
+- `--metadata` `string` Arbitrary JSON that is associated with a key
+- `--local` `boolean` Interact with local storage
+- `--remote` `boolean` Interact with remote storage
+- `--persist-to` `string` Directory for local persistence
+
+<details>
+
+<summary>
 
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ### `kv bulk delete`
 
@@ -597,43 +667,50 @@ yarn wrangler kv bulk delete [FILENAME]
 pnpm wrangler kv bulk delete [FILENAME]
 ```
 
-* `[FILENAME]` `string` required
-The file containing the keys to delete
-* `--force` `boolean` alias: --f
-Do not ask for confirmation before deleting
-* `--binding` `string`
-The binding name to the namespace to delete from
-* `--namespace-id` `string`
-The id of the namespace to delete from
-* `--preview` `boolean`
-Interact with a preview namespace
-* `--local` `boolean`
-Interact with local storage
-* `--remote` `boolean`
-Interact with remote storage
-* `--persist-to` `string`
-Directory for local persistence
+- `[FILENAME]` `string` required
+
+  The file containing the keys to delete
+- `--force` `boolean` alias: --f
+
+  Do not ask for confirmation before deleting
+- `--binding` `string` The binding name to the namespace to delete from
+- `--namespace-id` `string` The id of the namespace to delete from
+- `--preview` `boolean` Interact with a preview namespace
+- `--local` `boolean` Interact with local storage
+- `--remote` `boolean` Interact with remote storage
+- `--persist-to` `string` Directory for local persistence
+
+<details>
+
+<summary>
 
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 Was this helpful?
 

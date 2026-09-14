@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Universal SSL
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, Cloudflare issues — and [renews](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/#universal-ssl) — free, unshared, publicly trusted SSL certificates to all domains [added to](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) and [activated on](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/) Cloudflare.
 
@@ -28,15 +28,15 @@ Universal SSL certificates are issued after your domain is active on Cloudflare.
 
 ## Availability
 
-|              | Free | Pro | Business | Enterprise |
-| ------------ | ---- | --- | -------- | ---------- |
-| Availability | Yes  | Yes | Yes      | Yes        |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | Yes | Yes | Yes | Yes |
 
 ## Related resources
 
-* [Limitations](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/limitations/)
-* [Backup certificates](https://developers.cloudflare.com/ssl/edge-certificates/backup-certificates/)
-* [Validity period and renewal](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/#universal-ssl)
+- [Limitations](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/limitations/)
+- [Backup certificates](https://developers.cloudflare.com/ssl/edge-certificates/backup-certificates/)
+- [Validity period and renewal](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/#universal-ssl)
 
 Was this helpful?
 

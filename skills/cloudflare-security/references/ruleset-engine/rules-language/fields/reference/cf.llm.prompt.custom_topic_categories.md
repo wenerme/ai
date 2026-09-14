@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.llm.prompt.custom\_topic\_categories
 
-`cf.llm.prompt.custom_topic_categories` `Map<Number>`
+`cf.llm.prompt.custom_topic_categories``Map<Number>`
 
 A map of custom topic labels to relevance scores (1–99) for the LLM prompt in the request.
 
@@ -24,7 +24,7 @@ Example usage:
 ```
 
 Categories:
-* Request
+- Request
 
 Was this helpful?
 

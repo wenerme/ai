@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # How Cloudflare prevents email-based phishing attacks
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/secure-your-email/concepts/prevent-phishing-attack/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-your-email/concepts/prevent-phishing-attack/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Email security uses a variety of factors to determine whether a given email message attachment, URL, or specific network traffic is part of a phishing campaign.
 

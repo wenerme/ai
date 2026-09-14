@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Prompt caching
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/features/prompt-caching/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/prompt-caching/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Prompt caching (also called prefix caching) is a performance optimization that allows Workers AI to respond faster to requests with prompts that share common inputs. It reduces Time to First Token (TTFT) and increases Tokens Per Second (TPS) throughput by reusing previously computed input tensors instead of reprocessing them from scratch.
 
@@ -82,9 +82,9 @@ Prefix caching matches the exact token sequence from the start of the prompt. A 
 
 To maximize cache hits:
 
-* **Place static content first.** System prompts, tool definitions, and shared instructions should appear at the beginning of the prompt. Put user-specific or dynamic content (timestamps, user queries) at the end.
-* **Avoid timestamps in system prompts.** Including a timestamp at the start of a system prompt changes the prefix on every request, defeating the cache entirely. If time context is required, add it to the user message instead.
-* **Reuse tool definitions across requests.** For function-calling agents, tools are part of the prompt prefix. Keeping tool definitions consistent across requests in the same session increases cache reuse.
+- **Place static content first.** System prompts, tool definitions, and shared instructions should appear at the beginning of the prompt. Put user-specific or dynamic content (timestamps, user queries) at the end.
+- **Avoid timestamps in system prompts.** Including a timestamp at the start of a system prompt changes the prefix on every request, defeating the cache entirely. If time context is required, add it to the user message instead.
+- **Reuse tool definitions across requests.** For function-calling agents, tools are part of the prompt prefix. Keeping tool definitions consistent across requests in the same session increases cache reuse.
 
 ## Monitoring cached tokens
 

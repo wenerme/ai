@@ -12,20 +12,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Enable
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/enable/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/enable/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To enable or disable Rocket Loader, use the following instructions.
 
 To enable or disable **Rocket Loader** in the dashboard:
 
-1. In the Cloudflare dashboard, go to the **Speed** \> **Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
+1. In the Cloudflare dashboard, go to the **Speed** > **Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
 2. Go to **Content Optimization**.
-3. For **Rocket Loader**, switch the toggle to **On**.
+3. For **Rocket Loader**, switch the toggle to **On**.
 
-If you have a Content Security Policy (CSP) in place for your domain, you will need to [update your headers](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/content-security-policies/#product-requirements) to support Rocket Loader.
+If you have a Content Security Policy (CSP)
 
-To enable or disable **Rocket Loader** with the API, send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `rocket_loader` as the setting name in the URI path, and the `value` parameter set to `"on"` or `"off"`.
+ in place for your domain, you will need to [update your headers](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/content-security-policies/#product-requirements) to support Rocket Loader.
+
+To enable or disable **Rocket Loader** with the API, send a [`PATCH`](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `rocket_loader` as the setting name in the URI path, and the `value` parameter set to `"on"` or `"off"`.
 
 If you have a Content Security Policy (CSP) in place for your domain, you will need to [update your headers](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/content-security-policies/#product-requirements) to support Rocket Loader.
 

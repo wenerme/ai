@@ -14,46 +14,57 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Create a compression rule to turn off compression for AVIF images, based on either the content type or the file extension specified in the request.
 
-Last updated Oct 13, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/compression-rules/examples/disable-compression-avif/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/compression-rules/examples/disable-compression-avif/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following example rule will disable compression for AVIF images, based on either the content type or the file extension specified in the request.
 
 **When incoming requests match**
 
-* Custom filter expression:
-  * _Media Type_ _equals_ `image/avif` **OR**
-  * _File extension_ _equals_ `avif`
+- Custom filter expression:
+  - *Media Type* *equals* `image/avif` **OR**
+  - *File extension* *equals* `avif`
 
 **Then**
 
-* **Compression options** \> _Disable compression_
+- **Compression options** > *Disable compression*
 
 The following example sets the rules of an existing [entry point ruleset](https://developers.cloudflare.com/ruleset-engine/about/rulesets/#entry-point-ruleset) (with ID `{ruleset_id}`) for the `http_response_compression` phase to a single compression rule, using the [Update a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/update/) operation:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Response Compression Write`
-* `Config Settings Write`
-* `Dynamic URL Redirects Write`
-* `Cache Settings Write`
-* `Custom Errors Write`
-* `Origin Write`
-* `Managed headers Write`
-* `Zone Transform Rules Write`
-* `Mass URL Redirects Write`
-* `Magic Firewall Write`
-* `L4 DDoS Managed Ruleset Write`
-* `HTTP DDoS Managed Ruleset Write`
-* `Sanitize Write`
-* `Transform Rules Write`
-* `Select Configuration Write`
-* `Bot Management Write`
-* `Zone WAF Write`
-* `Account WAF Write`
-* `Account Rulesets Write`
-* `Logs Write`
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Response Compression Write</code>
+- <code>Config Settings Write</code>
+- <code>Dynamic URL Redirects Write</code>
+- <code>Cache Settings Write</code>
+- <code>Custom Errors Write</code>
+- <code>Origin Write</code>
+- <code>Managed headers Write</code>
+- <code>Zone Transform Rules Write</code>
+- <code>Mass URL Redirects Write</code>
+- <code>Magic Firewall Write</code>
+- <code>L4 DDoS Managed Ruleset Write</code>
+- <code>HTTP DDoS Managed Ruleset Write</code>
+- <code>Sanitize Write</code>
+- <code>Transform Rules Write</code>
+- <code>Select Configuration Write</code>
+- <code>Bot Management Write</code>
+- <code>Zone WAF Write</code>
+- <code>Account WAF Write</code>
+- <code>Account Rulesets Write</code>
+- <code>Logs Write</code>
+- <code>Logs Write</code>
+
+</details>
+
+*Update a zone rulesetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
@@ -88,5 +99,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/compression-rules/examples/disable-compression-avif/#page","headline":"Disable compression for AVIF images · Cloudflare Rules docs","description":"Create a compression rule to turn off compression for AVIF images, based on either the content type or the file extension specified in the request.","url":"https://developers.cloudflare.com/rules/compression-rules/examples/disable-compression-avif/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/compression-rules/examples/disable-compression-avif/#page","headline":"Disable compression for AVIF images · Cloudflare Rules docs","description":"Create a compression rule to turn off compression for AVIF images, based on either the content type or the file extension specified in the request.","url":"https://developers.cloudflare.com/rules/compression-rules/examples/disable-compression-avif/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

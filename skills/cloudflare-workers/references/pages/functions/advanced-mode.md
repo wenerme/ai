@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Advanced mode
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/functions/advanced-mode/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/advanced-mode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Advanced mode allows you to develop your Pages Functions with a `_worker.js` file rather than the `/functions` directory.
 
@@ -64,10 +64,10 @@ export default {
 
 In the above code, you have configured your Function to return a response under all requests headed for `/api/`. Otherwise, your Function will fallback to returning static assets.
 
-* The `env.ASSETS.fetch()` function will allow you to return assets on a given request.
-* `env` is the object that contains your environment variables and bindings.
-* `ASSETS` is a default Function binding that allows communication between your Function and Pages' asset serving resource.
-* `fetch()` calls to Pages' asset-serving resource and serves the requested asset.
+- The `env.ASSETS.fetch()` function will allow you to return assets on a given request.
+- `env` is the object that contains your environment variables and bindings.
+- `ASSETS` is a default Function binding that allows communication between your Function and Pages' asset serving resource.
+- `fetch()` calls to Pages' asset-serving resource and serves the requested asset.
 
 ## Migrate from Workers
 

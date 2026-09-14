@@ -12,25 +12,27 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Demos and architectures
 
-Last updated May 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/kv/demos/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/demos/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Learn how you can use KV within your existing application and architecture.
 
 ## Reference architectures
 
-Explore the following reference architectures that use KV:
+Explore the following reference architectures
 
-[**Fullstack applications**A practical example of how these services come together in a real fullstack application architecture.](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/fullstack-application/)
+ that use KV:
 
-[**Programmable Platforms**Workers for Platforms provide secure, scalable, cost-effective infrastructure for programmable platforms with global reach.](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/programmable-platforms/)
+[**Fullstack applications** A practical example of how these services come together in a real fullstack application architecture.](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/fullstack-application/)
 
-[**Ingesting BigQuery Data into Workers AI**You can connect a Cloudflare Worker to get data from Google BigQuery and pass it to Workers AI, to run AI Models, powered by serverless GPUs.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/bigquery-workers-ai/)
+[**Programmable Platforms** Workers for Platforms provide secure, scalable, cost-effective infrastructure for programmable platforms with global reach.](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/programmable-platforms/)
 
-[**A/B-testing using Workers**Cloudflare's low-latency, fully serverless compute platform, Workers offers powerful capabilities to enable A/B testing using a server-side implementation.](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/a-b-testing-using-workers/)
+[**Ingesting BigQuery Data into Workers AI** You can connect a Cloudflare Worker to get data from Google BigQuery and pass it to Workers AI, to run AI Models, powered by serverless GPUs.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/bigquery-workers-ai/)
 
-[**Serverless global APIs**An example architecture of a serverless API on Cloudflare and aims to illustrate how different compute and data products could interact with each other.](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-global-apis/)
+[**A/B-testing using Workers** Cloudflare's low-latency, fully serverless compute platform, Workers offers powerful capabilities to enable A/B testing using a server-side implementation.](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/a-b-testing-using-workers/)
 
-[**Serverless image content management**Leverage various components of Cloudflare's ecosystem to construct a scalable image management solution](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-image-content-management/)
+[**Serverless global APIs** An example architecture of a serverless API on Cloudflare and aims to illustrate how different compute and data products could interact with each other.](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-global-apis/)
+
+[**Serverless image content management** Leverage various components of Cloudflare's ecosystem to construct a scalable image management solution](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-image-content-management/)
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Monitor waiting room status
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waiting-room/how-to/monitor-waiting-room/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waiting-room/how-to/monitor-waiting-room/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can monitor the status of your waiting rooms using the [dashboard](#status-in-the-dashboard) or the [API](#status-in-the-api).
 
@@ -26,27 +26,38 @@ Open the **Waiting Room** dashboard to view the list of your waiting rooms.
 
 The **Status** column displays the current state of the waiting room:
 
-* **Not queueing**:
-  * Waiting room enabled, but has not reached traffic threshold to send visitors to waiting room.
-  * Shows estimated number of users in the application.
-* **Queueing**:
-  * Waiting room enabled and sending visitors to waiting room.
-  * Shows estimated number of users in the queue.
-  * On hover, shows maximum wait time expected for users.
-* **Disabled**: The waiting room is suspended.
-* **Queue-all**:
-  * Forces all traffic to queue in the waiting room.
-  * On hover, shows estimated number of users in the queue.
+- **Not queueing**:
+  - Waiting room enabled, but has not reached traffic threshold to send visitors to waiting room.
+  - Shows estimated number of users in the application.
+- **Queueing**:
+  - Waiting room enabled and sending visitors to waiting room.
+  - Shows estimated number of users in the queue.
+  - On hover, shows maximum wait time expected for users.
+- **Disabled**: The waiting room is suspended.
+- **Queue-all**:
+  - Forces all traffic to queue in the waiting room.
+  - On hover, shows estimated number of users in the queue.
 
 ## Status in the API
 
-[Check whether traffic is queueing in a configured waiting room](https://developers.cloudflare.com/api/resources/waiting%5Frooms/subresources/statuses/methods/get/) by appending the following endpoint to the Cloudflare API base URL:
+[Check whether traffic is queueing in a configured waiting room](https://developers.cloudflare.com/api/resources/waiting_rooms/subresources/statuses/methods/get/) by appending the following endpoint to the Cloudflare API base URL:
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Waiting Rooms Read`
-* `Waiting Rooms Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Waiting Rooms Read</code>
+- <code>Waiting Rooms Write</code>
+
+</details>
+
+*Get waiting room statusbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING_ROOM_ID/status" \
@@ -56,16 +67,27 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING
 
 The response is:
 
-* `queueing` if visitors are currently queueing in the waiting room.
-* `not_queueing` if the room is empty or if the waiting room is suspended.
+- `queueing` if visitors are currently queueing in the waiting room.
+- `not_queueing` if the room is empty or if the waiting room is suspended.
 
 To check whether a configured waiting room is suspended or whether the traffic is force-queued to the waiting room, append the following endpoint to the Cloudflare API base URL.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Waiting Rooms Read`
-* `Waiting Rooms Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Waiting Rooms Read</code>
+- <code>Waiting Rooms Write</code>
+
+</details>
+
+*Waiting room detailsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING_ROOM_ID" \
@@ -73,7 +95,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING
 	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
-The endpoint above [fetches all settings](https://developers.cloudflare.com/api/resources/waiting%5Frooms/methods/get/) for a configured waiting room:
+The endpoint above [fetches all settings](https://developers.cloudflare.com/api/resources/waiting_rooms/methods/get/) for a configured waiting room:
 
 ```bash
       "success": true,
@@ -105,13 +127,13 @@ The endpoint above [fetches all settings](https://developers.cloudflare.com/api/
 
 The value of `suspended` indicates whether a waiting room is activated or suspended:
 
-* `false`: The waiting room is activated.
-* `true`: The waiting room is suspended.
+- `false`: The waiting room is activated.
+- `true`: The waiting room is suspended.
 
 The value of `queue_all` indicates whether all traffic is forced to queue in the waiting room:
 
-* `false`: Visitors are diverted to the waiting room only if traffic exceeds the configured threshold.
-* `true`: All traffic is forced to queue in the waiting room, and no traffic passes from the waiting room to the origin.
+- `false`: Visitors are diverted to the waiting room only if traffic exceeds the configured threshold.
+- `true`: All traffic is forced to queue in the waiting room, and no traffic passes from the waiting room to the origin.
 
 ## Queueing activation
 

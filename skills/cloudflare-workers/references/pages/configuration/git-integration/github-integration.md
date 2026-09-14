@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # GitHub integration
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can connect each Cloudflare Pages project to a GitHub repository, and Cloudflare will automatically deploy your code every time you push a change to a branch.
 
@@ -22,9 +22,9 @@ Beyond automatic deployments, the Cloudflare GitHub integration lets you monitor
 
 ### Custom branches
 
-Pages will default to setting your [production environment](https://developers.cloudflare.com/pages/configuration/branch-build-controls/#production-branch-control) to the branch you first push. If a branch other than the default branch (e.g. `main`) represents your project's production branch, then go to **Settings** \> **Builds** \> **Branch control**, change the production branch by clicking the **Production branch** dropdown menu and choose any other branch.
+Pages will default to setting your [production environment](https://developers.cloudflare.com/pages/configuration/branch-build-controls/#production-branch-control) to the branch you first push. If a branch other than the default branch (e.g. `main`) represents your project's production branch, then go to **Settings** > **Builds** > **Branch control**, change the production branch by clicking the **Production branch** dropdown menu and choose any other branch.
 
-You can also use [preview deployments](https://developers.cloudflare.com/pages/configuration/preview-deployments/) to preview versions of your project before merging your production branch, and deploying to production. Pages allows you to configure which of your preview branches are automatically deployed using [branch build controls](https://developers.cloudflare.com/pages/configuration/branch-build-controls/). To configure, go to **Settings** \> **Builds** \> **Branch control** and select an option under **Preview branch**. Use [**Custom branches**](https://developers.cloudflare.com/pages/configuration/branch-build-controls/) to specify branches you wish to include or exclude from automatic preview deployments.
+You can also use [preview deployments](https://developers.cloudflare.com/pages/configuration/preview-deployments/) to preview versions of your project before merging your production branch, and deploying to production. Pages allows you to configure which of your preview branches are automatically deployed using [branch build controls](https://developers.cloudflare.com/pages/configuration/branch-build-controls/). To configure, go to **Settings** > **Builds** > **Branch control** and select an option under **Preview branch**. Use [**Custom branches**](https://developers.cloudflare.com/pages/configuration/branch-build-controls/) to specify branches you wish to include or exclude from automatic preview deployments.
 
 ### Preview URLs
 
@@ -62,7 +62,7 @@ When authorizing Cloudflare Pages to access a GitHub account, you can specify ac
 
 GitHub security consideration
 
-A GitHub account should only point to one Cloudflare account. If you are setting up Cloudflare with GitHub for your organization, Cloudflare recommends that you limit the scope of the application to only the repositories you intend to build with Pages. To modify these permissions, go to the [Applications page ↗](https://github.com/settings/installations) on GitHub and select **Switch settings context** to access your GitHub organization settings. Then, select **Cloudflare Workers & Pages** \> For **Repository access**, select **Only select repositories** \> select your repositories.
+A GitHub account should only point to one Cloudflare account. If you are setting up Cloudflare with GitHub for your organization, Cloudflare recommends that you limit the scope of the application to only the repositories you intend to build with Pages. To modify these permissions, go to the [Applications page ↗](https://github.com/settings/installations) on GitHub and select **Switch settings context** to access your GitHub organization settings. Then, select **Cloudflare Workers & Pages** > For **Repository access**, select **Only select repositories** > select your repositories.
 
 ### Remove access
 
@@ -76,7 +76,7 @@ To remove access to an individual GitHub repository, you can navigate to **Repos
 
 #### Remove Cloudflare access to the entire GitHub account
 
-To remove Cloudflare Workers and Pages access to your entire Git account, you can navigate to **Uninstall "Cloudflare Workers and Pages"**, then select **Uninstall**. Removing access to the Cloudflare Workers and Pages app will revoke Cloudflare's access to _all repositories_ from that GitHub account. If you want to only disable automatic builds and deployments, follow the [Disable Build](https://developers.cloudflare.com/workers/ci-cd/builds/#disconnecting-builds) instructions.
+To remove Cloudflare Workers and Pages access to your entire Git account, you can navigate to **Uninstall "Cloudflare Workers and Pages"**, then select **Uninstall**. Removing access to the Cloudflare Workers and Pages app will revoke Cloudflare's access to *all repositories* from that GitHub account. If you want to only disable automatic builds and deployments, follow the [Disable Build](https://developers.cloudflare.com/workers/ci-cd/builds/#disconnecting-builds) instructions.
 
 Note that removing access to GitHub will disable new builds for Workers and Pages project that were connected to those repositories, though your previous deployments will continue to be hosted by Cloudflare Workers.
 
@@ -85,18 +85,18 @@ Note that removing access to GitHub will disable new builds for Workers and Page
 If you see errors where Cloudflare Pages cannot access your git repository, you should attempt to uninstall and reinstall the GitHub application associated with the Cloudflare Pages installation.
 
 1. Go to the installation settings page on GitHub:
-  * Navigate to **Settings > Builds** for the Pages project and select **Manage** under Git Repository.
-  * Alternatively, visit these links to find the Cloudflare Workers and Pages installation and select **Configure**:
+   - Navigate to **Settings > Builds** for the Pages project and select **Manage** under Git Repository.
+   - Alternatively, visit these links to find the Cloudflare Workers and Pages installation and select **Configure**:
 
-| **Individual**   | https://github.com/settings/installations                                          |
-| ---------------- | ---------------------------------------------------------------------------------- |
-| **Organization** | https://github.com/organizations/<YOUR\_ORGANIZATION\_NAME>/settings/installations |
+| **Individual** | `https://github.com/settings/installations` |
+| --- | --- |
+| **Organization** | `https://github.com/organizations/<YOUR_ORGANIZATION_NAME>/settings/installations` |
 
-1. In the Cloudflare Workers and Pages GitHub App settings page, navigate to **Uninstall "Cloudflare Workers and Pages"** and select **Uninstall**.
-2. Go back to the [**Workers & Pages** overview ↗](https://dash.cloudflare.com) page. Select **Create application** \> **Pages** \> **Connect to Git**.
-3. Select the **\+ Add account** button, select the GitHub account you want to add, and then select **Install & Authorize**.
-4. You should be redirected to the create project page with your GitHub account or organization in the account list.
-5. Attempt to make a new deployment with your project which was previously broken.
+2. In the Cloudflare Workers and Pages GitHub App settings page, navigate to **Uninstall "Cloudflare Workers and Pages"** and select **Uninstall**.
+3. Go back to the [**Workers & Pages** overview ↗](https://dash.cloudflare.com) page. Select **Create application** > **Pages** > **Connect to Git**.
+4. Select the **+ Add account** button, select the GitHub account you want to add, and then select **Install & Authorize**.
+5. You should be redirected to the create project page with your GitHub account or organization in the account list.
+6. Attempt to make a new deployment with your project which was previously broken.
 
 Was this helpful?
 

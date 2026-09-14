@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Ignore JavaScripts
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/ignore-javascripts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/ignore-javascripts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can have Rocket Loader ignore individual scripts by adding the `data-cfasync="false"` attribute to the relevant script tag:
 
@@ -28,10 +28,10 @@ If Rocket Loader is only impacting a specific page, use a [Configuration Rule](h
 
 ## Limitations
 
-* Adding this attribute within JavaScript will not work if you wish to exclude the script from Rocket Loader.
-* If the script you want Rocket Loader to ignore has dependency on other JavaScript(s) on the page, those dependencies must also have the `data-cfasync="false"` attribute.
-* The `data-cfasync` attribute must be added before the `src` attribute.
-* Rocket Loader will recognize the tag when either single or double quotes are placed around the attribute value.
+- Adding this attribute within JavaScript will not work if you wish to exclude the script from Rocket Loader.
+- If the script you want Rocket Loader to ignore has dependency on other JavaScript(s) on the page, those dependencies must also have the `data-cfasync="false"` attribute.
+- The `data-cfasync` attribute must be added before the `src` attribute.
+- Rocket Loader will recognize the tag when either single or double quotes are placed around the attribute value.
 
 Was this helpful?
 

@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Reference
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/reference/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pipelines/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Pipelines](https://developers.cloudflare.com/pipelines/) reference documentation:
 
-* [Legacy pipelines](https://developers.cloudflare.com/pipelines/reference/legacy-pipelines/)
-* [Terraform](https://developers.cloudflare.com/pipelines/reference/terraform/)
-* [Wrangler commands](https://developers.cloudflare.com/pipelines/reference/wrangler-commands/)
-* [REST API](https://developers.cloudflare.com/api/resources/pipelines/)
+- [Legacy pipelines](https://developers.cloudflare.com/pipelines/reference/legacy-pipelines/)
+- [Terraform](https://developers.cloudflare.com/pipelines/reference/terraform/)
+- [Wrangler commands](https://developers.cloudflare.com/pipelines/reference/wrangler-commands/)
+- [REST API](https://developers.cloudflare.com/api/resources/pipelines/)
 
 Was this helpful?
 

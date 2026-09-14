@@ -16,22 +16,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Automatic Speech Recognition • Deepgram
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/flux/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/flux/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/deepgram/flux`
 
-* Cloudflare-hosted
-* Partner
-* Real-time
+- Cloudflare-hosted
+- Partner
+- Real-time
 
 Flux is the first conversational speech recognition model built specifically for voice agents.
 
-| Model Info        |                                      |
-| ----------------- | ------------------------------------ |
+| Model Info | |
+| --- | --- |
 | Terms and License | [link ↗](https://deepgram.com/terms) |
-| Partner           | Yes                                  |
-| Real-time         | Yes                                  |
-| Unit Pricing      | $0.0077 per audio minute (websocket) |
+| Partner | Yes |
+| Real-time | Yes |
+| Unit Pricing | $0.0077 per audio minute (websocket) |
 
 ## Parameters
 
@@ -41,7 +41,7 @@ encoding
 
 sample\_rate
 
-`string`requiredpattern: ^\[0-9\]+$Sample rate of the audio stream in Hz.
+`string`requiredpattern: ^\[0-9]+$Sample rate of the audio stream in Hz.
 
 eager\_eot\_threshold
 
@@ -53,7 +53,7 @@ eot\_threshold
 
 eot\_timeout\_ms
 
-`string`default: 5000pattern: ^\[0-9\]+$A turn will be finished when this much time has passed after speech, regardless of EOT confidence.
+`string`default: 5000pattern: ^\[0-9]+$A turn will be finished when this much time has passed after speech, regardless of EOT confidence.
 
 keyterm
 
@@ -95,7 +95,7 @@ transcript
 
 `string`Text that was said over the course of the current turn
 
-▶words\[\]
+▶words\[]
 
 `array`The words in the transcript
 
@@ -105,9 +105,9 @@ end\_of\_turn\_confidence
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/workers-ai/models/flux/schema-input.json) [Download](https://developers.cloudflare.com/workers-ai/models/flux/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/workers-ai/models/flux/schema-output.json) [Download](https://developers.cloudflare.com/workers-ai/models/flux/schema-output.json)
 
 Was this helpful?
 

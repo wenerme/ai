@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # HTTP/2
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/speed/optimization/protocol/http2/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/optimization/protocol/http2/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 HTTP/2 uses the TCP transport protocol and TLS to secure communications and improves page load times.
 
@@ -22,10 +22,10 @@ For more background on HTTP/2, visit the [Learning Center ↗](https://www.cloud
 
 ## Availability
 
-|               | Free | Pro | Business | Enterprise |
-| ------------- | ---- | --- | -------- | ---------- |
-| Availability  | Yes  | Yes | Yes      | Yes        |
-| Can customize | No   | Yes | Yes      | Yes        |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | Yes | Yes | Yes | Yes |
+| Can customize | No | Yes | Yes | Yes |
 
 ## Enable HTTP/2
 
@@ -39,11 +39,11 @@ To disable **HTTP/2** in the dashboard:
 
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
 2. Select your account and zone.
-3. Go to **Speed** \> **Settings**.
+3. Go to **Speed** > **Settings**.
 4. Go to **Protocol Optimization**.
 5. For **HTTP/2**, switch the toggle to **Off**.
 
-To disable **HTTP/2** with the API, send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `http2` as the setting name in the URI path, and the `value` parameter set to `"off"`.
+To disable **HTTP/2** with the API, send a [`PATCH`](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `http2` as the setting name in the URI path, and the `value` parameter set to `"off"`.
 
 ## ERR\_HTTP2\_PROTOCOL\_ERROR
 
@@ -57,9 +57,9 @@ The origin web server may be sending improperly formatted HTTP response headers.
 
 Make a request directly to your origin web server and inspect its HTTP response headers for anomalies. Make sure that the field values respect the following requirements:
 
-* [RFC 9110 ↗](https://www.rfc-editor.org/rfc/rfc9110.html#section-5.5)
-* [RFC 9113 ↗](https://www.rfc-editor.org/rfc/rfc9113.html#section-8.2.1)
-* [RFC 5234 ↗](https://www.rfc-editor.org/rfc/rfc5234#appendix-B.1)
+- [RFC 9110 ↗](https://www.rfc-editor.org/rfc/rfc9110.html#section-5.5)
+- [RFC 9113 ↗](https://www.rfc-editor.org/rfc/rfc9113.html#section-8.2.1)
+- [RFC 5234 ↗](https://www.rfc-editor.org/rfc/rfc5234#appendix-B.1)
 
 ### Compression issues
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Metrics and analytics
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/observability/metrics-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/observability/metrics-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Email Service exposes analytics that allow you to inspect email sending performance and delivery rates across all your domains.
 
@@ -22,12 +22,12 @@ The metrics displayed in the [Cloudflare dashboard ↗](https://dash.cloudflare.
 
 Email Service currently exposes the below metrics:
 
-| Dataset              | GraphQL Dataset Name       | Description                                                                                                                  |
-| -------------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| Sending (aggregated) | emailSendingAdaptiveGroups | Aggregated email sending counts grouped by dimensions such as status, date, sending domain, and authentication results.      |
-| Sending (events)     | emailSendingAdaptive       | Individual email sending events with full detail including sender, recipient, subject, message ID, and error information.    |
-| Routing (aggregated) | emailRoutingAdaptiveGroups | Aggregated email routing counts grouped by dimensions such as status, date, recipient domain, and authentication results.    |
-| Routing (events)     | emailRoutingAdaptive       | Individual email routing events with full detail including sender, recipient, subject, message ID, and processing decisions. |
+| Dataset | GraphQL Dataset Name | Description |
+| --- | --- | --- |
+| Sending (aggregated) | `emailSendingAdaptiveGroups` | Aggregated email sending counts grouped by dimensions such as status, date, sending domain, and authentication results. |
+| Sending (events) | `emailSendingAdaptive` | Individual email sending events with full detail including sender, recipient, subject, message ID, and error information. |
+| Routing (aggregated) | `emailRoutingAdaptiveGroups` | Aggregated email routing counts grouped by dimensions such as status, date, recipient domain, and authentication results. |
+| Routing (events) | `emailRoutingAdaptive` | Individual email routing events with full detail including sender, recipient, subject, message ID, and processing decisions. |
 
 Metrics can be queried (and are retained) for the past 31 days.
 
@@ -36,7 +36,7 @@ Metrics can be queried (and are retained) for the past 31 days.
 Per-domain analytics for Email Service are available in the Cloudflare dashboard. To view current and historical metrics:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
-2. Go to **Compute** \> **Email Service** and select **Email Sending** or **Email Routing**.
+2. Go to **Compute** > **Email Service** and select **Email Sending** or **Email Routing**.
 3. Select an existing domain or view account-wide metrics.
 4. Select the **Analytics** tab.
 
@@ -50,35 +50,35 @@ To get started using the [GraphQL Analytics API](https://developers.cloudflare.c
 
 These are **zone-level** datasets. To query them, provide your zone ID (not account ID) as the `zoneTag` filter. The GraphQL datasets for Email Service include:
 
-* `emailSendingAdaptiveGroups` — aggregated email sending counts with groupable dimensions
-* `emailSendingAdaptive` — individual email sending events
-* `emailRoutingAdaptiveGroups` — aggregated email routing counts with groupable dimensions
-* `emailRoutingAdaptive` — individual email routing events
+- `emailSendingAdaptiveGroups` — aggregated email sending counts with groupable dimensions
+- `emailSendingAdaptive` — individual email sending events
+- `emailRoutingAdaptiveGroups` — aggregated email routing counts with groupable dimensions
+- `emailRoutingAdaptive` — individual email routing events
 
 ### Email Sending dimensions
 
 The `emailSendingAdaptiveGroups` dataset supports the following dimensions for grouping and filtering:
 
-| Dimension              | Type   | Description                                              |
-| ---------------------- | ------ | -------------------------------------------------------- |
-| date                   | Date   | Day-level grouping                                       |
-| datetime               | Time   | Exact event timestamp                                    |
-| datetimeMinute         | Time   | Minute-level grouping                                    |
-| datetimeFiveMinutes    | Time   | 5-minute interval grouping                               |
-| datetimeFifteenMinutes | Time   | 15-minute interval grouping                              |
-| datetimeHour           | Time   | Hour-level grouping                                      |
-| status                 | string | Delivery status (for example, delivered, deliveryFailed) |
-| eventType              | string | Origin of email (incoming, forward, reply, newEmail)     |
-| sendingDomain          | string | The domain used to send the email                        |
-| envelopeTo             | string | Recipient envelope address                               |
-| errorCause             | string | Error cause for failed sends                             |
-| arc                    | string | ARC authentication result                                |
-| dkim                   | string | DKIM authentication result                               |
-| dmarc                  | string | DMARC authentication result                              |
-| spf                    | string | SPF authentication result                                |
-| isSpam                 | uint8  | Whether the email was flagged as spam                    |
-| isNDR                  | uint8  | Whether the email is a non-delivery report               |
-| isLastEvent            | uint8  | Whether this is the last event for this email            |
+| Dimension | Type | Description |
+| --- | --- | --- |
+| `date` | Date | Day-level grouping |
+| `datetime` | Time | Exact event timestamp |
+| `datetimeMinute` | Time | Minute-level grouping |
+| `datetimeFiveMinutes` | Time | 5-minute interval grouping |
+| `datetimeFifteenMinutes` | Time | 15-minute interval grouping |
+| `datetimeHour` | Time | Hour-level grouping |
+| `status` | string | Delivery status (for example, `delivered`, `deliveryFailed`) |
+| `eventType` | string | Origin of email (`incoming`, `forward`, `reply`, `newEmail`) |
+| `sendingDomain` | string | The domain used to send the email |
+| `envelopeTo` | string | Recipient envelope address |
+| `errorCause` | string | Error cause for failed sends |
+| `arc` | string | ARC authentication result |
+| `dkim` | string | DKIM authentication result |
+| `dmarc` | string | DMARC authentication result |
+| `spf` | string | SPF authentication result |
+| `isSpam` | uint8 | Whether the email was flagged as spam |
+| `isNDR` | uint8 | Whether the email is a non-delivery report |
+| `isLastEvent` | uint8 | Whether this is the last event for this email |
 
 The `emailSendingAdaptive` dataset includes all of the above plus per-event fields: `from`, `to`, `subject`, `messageId`, `sessionId`, `errorDetail`.
 
@@ -86,25 +86,25 @@ The `emailSendingAdaptive` dataset includes all of the above plus per-event fiel
 
 The `emailRoutingAdaptiveGroups` dataset supports the following dimensions for grouping and filtering:
 
-| Dimension              | Type   | Description                                          |
-| ---------------------- | ------ | ---------------------------------------------------- |
-| date                   | Date   | Day-level grouping                                   |
-| datetime               | Time   | Exact event timestamp                                |
-| datetimeMinute         | Time   | Minute-level grouping                                |
-| datetimeFiveMinutes    | Time   | 5-minute interval grouping                           |
-| datetimeFifteenMinutes | Time   | 15-minute interval grouping                          |
-| datetimeHour           | Time   | Hour-level grouping                                  |
-| status                 | string | Resulting outcome for the email                      |
-| eventType              | string | Origin of email (incoming, forward, reply, newEmail) |
-| action                 | string | Action applied by the routing rule                   |
-| ruleMatched            | string | UUID of the routing rule matched by the email        |
-| arc                    | string | ARC authentication result                            |
-| dkim                   | string | DKIM authentication result                           |
-| dmarc                  | string | DMARC authentication result                          |
-| spf                    | string | SPF authentication result                            |
-| isSpam                 | uint8  | Whether the email was flagged as spam                |
-| isNDR                  | uint8  | Whether the email is a non-delivery report           |
-| isLastEvent            | uint8  | Whether this is the last event for this email        |
+| Dimension | Type | Description |
+| --- | --- | --- |
+| `date` | Date | Day-level grouping |
+| `datetime` | Time | Exact event timestamp |
+| `datetimeMinute` | Time | Minute-level grouping |
+| `datetimeFiveMinutes` | Time | 5-minute interval grouping |
+| `datetimeFifteenMinutes` | Time | 15-minute interval grouping |
+| `datetimeHour` | Time | Hour-level grouping |
+| `status` | string | Resulting outcome for the email |
+| `eventType` | string | Origin of email (`incoming`, `forward`, `reply`, `newEmail`) |
+| `action` | string | Action applied by the routing rule |
+| `ruleMatched` | string | UUID of the routing rule matched by the email |
+| `arc` | string | ARC authentication result |
+| `dkim` | string | DKIM authentication result |
+| `dmarc` | string | DMARC authentication result |
+| `spf` | string | SPF authentication result |
+| `isSpam` | uint8 | Whether the email was flagged as spam |
+| `isNDR` | uint8 | Whether the email is a non-delivery report |
+| `isLastEvent` | uint8 | Whether this is the last event for this email |
 
 The `emailRoutingAdaptive` dataset includes all of the above plus per-event fields: `from`, `to`, `subject`, `messageId`, `sessionId`, `errorDetail`, `ruleMatched`.
 
@@ -313,9 +313,9 @@ The `*AdaptiveGroups` datasets use `Date` type filters (`date_geq`, `date_leq`) 
 
 ## Next steps
 
-* [Email logs](https://developers.cloudflare.com/email-service/observability/logs/) — view individual email activity in the dashboard.
-* [Audit logs](https://developers.cloudflare.com/email-service/observability/audit-logs/) — track configuration changes.
-* [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/) — full GraphQL API reference.
+- [Email logs](https://developers.cloudflare.com/email-service/observability/logs/) — view individual email activity in the dashboard.
+- [Audit logs](https://developers.cloudflare.com/email-service/observability/audit-logs/) — track configuration changes.
+- [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/) — full GraphQL API reference.
 
 Was this helpful?
 

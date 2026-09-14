@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Using BigQuery with Workers AI
 
-Last updated Jan 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/guides/tutorials/using-bigquery-with-workers-ai/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jan 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/guides/tutorials/using-bigquery-with-workers-ai/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The easiest way to get started with [Workers AI](https://developers.cloudflare.com/workers-ai/) is to try it out in the [Multi-modal Playground ↗](https://multi-modal.ai.cloudflare.com/) and the [LLM playground ↗](https://playground.ai.cloudflare.com/). If you decide that you want to integrate your code with Workers AI, you may then decide to use its [REST API endpoints](https://developers.cloudflare.com/workers-ai/get-started/rest-api/) or a [Worker binding](https://developers.cloudflare.com/workers-ai/configuration/bindings/).
 
@@ -24,11 +24,11 @@ In this tutorial, you will learn how to bring data from Google BigQuery to a Clo
 
 You will need:
 
-* A [Cloudflare Worker](https://developers.cloudflare.com/workers/) project running a [Hello World script](https://developers.cloudflare.com/workers/get-started/guide/).
-* A Google Cloud Platform [service account ↗](https://cloud.google.com/iam/docs/service-accounts-create#iam-service-accounts-create-console) with an [associated key ↗](https://cloud.google.com/iam/docs/keys-create-delete#iam-service-account-keys-create-console) file downloaded that has read access to BigQuery.
-* Access to a BigQuery table with some test data that allows you to create a [BigQuery Job Query ↗](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/query). For this tutorial it is recommended you that you create your own table as [sampled tables ↗](https://cloud.google.com/bigquery/public-data#sample%5Ftables), unless cloned to your own GCP namespace, won't allow you to run job queries against them. For this example, the [Hacker News Corpus ↗](https://www.kaggle.com/datasets/hacker-news/hacker-news-corpus) was used under its MIT licence.
+- A [Cloudflare Worker](https://developers.cloudflare.com/workers/) project running a [Hello World script](https://developers.cloudflare.com/workers/get-started/guide/).
+- A Google Cloud Platform [service account ↗](https://cloud.google.com/iam/docs/service-accounts-create#iam-service-accounts-create-console) with an [associated key ↗](https://cloud.google.com/iam/docs/keys-create-delete#iam-service-account-keys-create-console) file downloaded that has read access to BigQuery.
+- Access to a BigQuery table with some test data that allows you to create a [BigQuery Job Query ↗](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/query). For this tutorial it is recommended you that you create your own table as [sampled tables ↗](https://cloud.google.com/bigquery/public-data#sample_tables), unless cloned to your own GCP namespace, won't allow you to run job queries against them. For this example, the [Hacker News Corpus ↗](https://www.kaggle.com/datasets/hacker-news/hacker-news-corpus) was used under its MIT licence.
 
-## 1\. Set up your Cloudflare Worker
+## 1. Set up your Cloudflare Worker
 
 To ingest the data into Cloudflare and feed it into Workers AI, you will be using a [Cloudflare Worker](https://developers.cloudflare.com/workers/). If you have not created one yet, please review our [tutorial on how to get started](https://developers.cloudflare.com/workers/get-started/).
 
@@ -58,7 +58,7 @@ Hello World!
 
 If you run into any issues during this step, please review the [Worker's Get Started Guide](https://developers.cloudflare.com/workers/get-started/guide/).
 
-## 2\. Import GCP Service key into the Worker as Secrets
+## 2. Import GCP Service key into the Worker as Secrets
 
 Now that you have verified that the Worker has been created successfully, you will need to reference the Google Cloud Platform service key created in the [Prerequisites](#prerequisites) section of this tutorial.
 
@@ -118,7 +118,7 @@ npx wrangler secret put BQ_PROJECT_ID
 
 At this point, you have successfully imported three fields from the JSON key file downloaded from Google Cloud Platform into Cloudflare Secrets to be used in a Worker.
 
-[Secrets](https://developers.cloudflare.com/workers/configuration/secrets/) are only made available to Workers once they are deployed. To make them available during development, [create a .dev.vars](https://developers.cloudflare.com/workers/configuration/secrets/#local-development-with-secrets) file to locally store these credentials and reference them as environment variables.
+[Secrets](https://developers.cloudflare.com/workers/configuration/secrets/) are only made available to Workers once they are deployed. To make them available during development, [create a `.dev.vars`](https://developers.cloudflare.com/workers/configuration/secrets/#local-development-with-secrets) file to locally store these credentials and reference them as environment variables.
 
 Your `dev.vars` file should look like the following:
 
@@ -162,7 +162,7 @@ If you open `http://localhost:8787` in your browser, you should see the values o
 
 You now have access to the GCP credentials from a Worker. Next, you will install a library to help with the creation of the JSON Web Token needed to interact with GCP's API.
 
-## 3\. Install library to handle JWT operations
+## 3. Install library to handle JWT operations
 
 To interact with BigQuery's REST API, you will need to generate a [JSON Web Token ↗](https://jwt.io/introduction) to authenticate your requests using the credentials that you have loaded into Worker secrets in the previous step.
 
@@ -183,7 +183,7 @@ To verify that the installation succeeded, you can run `npm list`, which lists a
 └── wrangler@3.75.0
 ```
 
-## 4\. Generate JSON web token
+## 4. Generate JSON web token
 
 Now that you have installed the `jose` library, it is time to import it and add a function to your code that generates a signed JSON Web Token (JWT):
 
@@ -228,7 +228,7 @@ export default {
 
 Now that you have created a JWT, it is time to do an API call to BigQuery to fetch some data.
 
-## 5\. Make authenticated requests to Google BigQuery
+## 5. Make authenticated requests to Google BigQuery
 
 With the JWT token created in the previous step, issue an API request to BigQuery's API to retrieve data from a table.
 
@@ -267,7 +267,7 @@ export default {
 
 Having the raw row data from BigQuery means that you can now format it in a JSON-like style next.
 
-## 6\. Format results from the query
+## 6. Format results from the query
 
 Now that you have retrieved the data from BigQuery, your BigQuery API response should look something like this:
 
@@ -390,7 +390,7 @@ export default {
 };
 ```
 
-## 7\. Feed data into Workers AI
+## 7. Feed data into Workers AI
 
 Now that you have converted the response from the BigQuery API into an array of results, generate some tags and attach an associated sentiment score using an LLM via [Workers AI](https://developers.cloudflare.com/workers-ai/):
 

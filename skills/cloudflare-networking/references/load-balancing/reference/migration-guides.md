@@ -12,10 +12,10 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Migration guides
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/reference/migration-guides/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/reference/migration-guides/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [Migrate to new GraphQL nodes](https://developers.cloudflare.com/load-balancing/reference/migration-guides/load-balancing-graphql-nodes/)
-* [Health monitor notifications](https://developers.cloudflare.com/load-balancing/reference/migration-guides/health-monitor-notifications/)
+- [Migrate to new GraphQL nodes](https://developers.cloudflare.com/load-balancing/reference/migration-guides/load-balancing-graphql-nodes/)
+- [Health monitor notifications](https://developers.cloudflare.com/load-balancing/reference/migration-guides/health-monitor-notifications/)
 
 Was this helpful?
 

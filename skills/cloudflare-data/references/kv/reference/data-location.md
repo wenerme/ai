@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Data location
 
-Last updated Jul 31, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/kv/reference/data-location/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 31, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/reference/data-location/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -36,11 +36,11 @@ Jurisdictions can only be set when a namespace is created and cannot be added or
 
 ### Supported jurisdictions
 
-| Parameter | Location                       |
-| --------- | ------------------------------ |
-| eu        | The European Union             |
-| fedramp   | FedRAMP-compliant data centers |
-| us        | The United States of America   |
+| Parameter | Location |
+| --- | --- |
+| eu | The European Union |
+| fedramp | FedRAMP-compliant data centers |
+| us | The United States of America |
 
 ### Get access
 

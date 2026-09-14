@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # TLS decryption
 
-Last updated Jun 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Gateway can perform [SSL/TLS decryption ↗](https://www.cloudflare.com/learning/security/what-is-https-inspection/) to inspect HTTPS traffic for malware and other security risks. TLS decryption is required for HTTP policies to inspect HTTPS traffic. Without it, information contained within HTTPS encryption, such as the full URL, headers, and request body, [will not be visible to Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect).
 
@@ -30,33 +30,35 @@ Before you turn on TLS decryption, ensure you have installed either a [Cloudflar
 
 To turn on TLS decryption:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.
 
-1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
+1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+   - `Zero Trust Write`
+2. Configure the `tls_decrypt` argument in [`cloudflare_zero_trust_gateway_settings` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_gateway_settings):
 
-  * `Zero Trust Write`
-2. Configure the `tls_decrypt` argument in [cloudflare\_zero\_trust\_gateway\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fsettings):
-```tf
-resource "cloudflare_zero_trust_gateway_settings" "team_name" {
-	account_id = var.cloudflare_account_id
-	settings = {
-		tls_decrypt = {
-			enabled = true
-		}
-	}
-}
-```
+   ```tf
+   resource "cloudflare_zero_trust_gateway_settings" "team_name" {
+   	account_id = var.cloudflare_account_id
+   	settings = {
+   		tls_decrypt = {
+   			enabled = true
+   		}
+   	}
+   }
+   ```
+
+
 
 ## Inspection limitations
 
 Gateway does not support TLS decryption for applications which use:
 
-* [Certificate pinning](#incompatible-certificates)
-* [Self-signed certificates](#incompatible-certificates)
-* [Mutual TLS (mTLS) authentication](#incompatible-certificates)
-* [ESNI and ECH handshake encryption](#esni-and-ech)
-* [Automatic HTTPS upgrades](#google-chrome-automatic-https-upgrades)
+- [Certificate pinning](#incompatible-certificates)
+- [Self-signed certificates](#incompatible-certificates)
+- [Mutual TLS (mTLS) authentication](#incompatible-certificates)
+- [ESNI and ECH handshake encryption](#esni-and-ech)
+- [Automatic HTTPS upgrades](#google-chrome-automatic-https-upgrades)
 
 ### Inspect on all ports
 
@@ -66,15 +68,17 @@ To detect and inspect HTTP and HTTPS traffic on ports in addition to `80` and `4
 
 ### Incompatible certificates
 
-Applications that use certificate pinning and mTLS authentication do not trust Cloudflare certificates. For example, most mobile applications use [certificate pinning](https://developers.cloudflare.com/ssl/reference/certificate-pinning/). Cloudflare does not trust applications that use self-signed certificates instead of certificates signed by a public CA.
+Applications that use certificate pinning and mTLS authentication do not trust Cloudflare certificates. For example, most mobile applications use [certificate pinning](https://developers.cloudflare.com/ssl/reference/certificate-pinning/)
+
+. Cloudflare does not trust applications that use self-signed certificates instead of certificates signed by a public CA.
 
 If you try to perform TLS decryption on an application with an incompatible certificate configuration, the application may return an SSL or trust error and/or fail to load. To resolve this issue, you can:
 
-* Add a [Cloudflare certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/manual-deployment/#add-the-certificate-to-applications) to supported applications.
-* Create a [Do Not Inspect policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect) to exempt applications from inspection. The [Application selector](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#application) provides a list of trusted applications that are known to use embedded certificates. Note that if you create a Do Not Inspect policy for an application or website, you will lose the ability to log or block HTTP requests, apply DLP policies, and perform AV scanning.
-* Configure a [Split Tunnel](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) in Include mode to ensure Gateway will only inspect traffic destined for your IPs or domains. This is useful for organizations that deploy Zero Trust on users' personal devices or otherwise expect personal applications to be used.
+- Add a [Cloudflare certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/manual-deployment/#add-the-certificate-to-applications) to supported applications.
+- Create a [Do Not Inspect policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect) to exempt applications from inspection. The [Application selector](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#application) provides a list of trusted applications that are known to use embedded certificates. Note that if you create a Do Not Inspect policy for an application or website, you will lose the ability to log or block HTTP requests, apply DLP policies, and perform AV scanning.
+- Configure a [Split Tunnel](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) in Include mode to ensure Gateway will only inspect traffic destined for your IPs or domains. This is useful for organizations that deploy Zero Trust on users' personal devices or otherwise expect personal applications to be used.
 
-Alternatively, to allow HTTP filtering while accessing a site with an insecure certificate, set your [Untrusted certificate action](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#untrusted-certificates) to _Pass through_.
+Alternatively, to allow HTTP filtering while accessing a site with an insecure certificate, set your [Untrusted certificate action](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#untrusted-certificates) to *Pass through*.
 
 ### Google Chrome automatic HTTPS upgrades
 
@@ -87,17 +91,17 @@ To disable automatic HTTPS upgrades for a URL across your Zero Trust organizatio
 1. Deploy a [custom root certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/custom-certificate/).
 2. Create an [HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) to match the domain of the URL being automatically upgraded. For example:
 
-| Selector | Operator | Value       | Action |
-| -------- | -------- | ----------- | ------ |
-| URL      | in       | example.com | Allow  |
-3. In **Untrusted certificate action**, choose _Pass through_.
+   | Selector | Operator | Value | Action |
+   | --- | --- | --- | --- |
+   | URL | in | `example.com` | Allow |
+3. In **Untrusted certificate action**, choose *Pass through*.
 4. Select **Create policy**.
 
 The pass through policy will bypass insecure connection upgrades for any device connected to your Zero Trust organization. For more information, refer to [Untrusted certificates](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#untrusted-certificates).
 
 To disable automatic HTTPS upgrades on a per-browser basis, go to [Chrome flags](chrome://flags/#https-upgrades) and turn off **HTTPS Upgrades**.
 
-Chrome Enterprise users can turn off automatic HTTPS upgrades for all URLs with a [HttpsUpgradesEnabled management policy ↗](https://chromeenterprise.google/policies/#HttpsUpgradesEnabled).
+Chrome Enterprise users can turn off automatic HTTPS upgrades for all URLs with a [`HttpsUpgradesEnabled` management policy ↗](https://chromeenterprise.google/policies/#HttpsUpgradesEnabled).
 
 ### Mutual TLS (mTLS)
 
@@ -111,35 +115,37 @@ You can still apply all [network policy filters](https://developers.cloudflare.c
 
 ## Post-quantum support
 
-Gateway supports post-quantum cryptography using a hybrid key exchange with X25519 and MLKEM768 over TLS 1.3\. Once the key exchange is complete, Gateway uses AES-128-GCM to encrypt traffic.
+Gateway supports post-quantum cryptography using a hybrid key exchange with X25519 and MLKEM768 over TLS 1.3. Once the key exchange is complete, Gateway uses AES-128-GCM to encrypt traffic.
 
 Refer to [Post-quantum cryptography](https://developers.cloudflare.com/ssl/post-quantum-cryptography/) to learn more.
 
 ## FIPS compliance
 
-By default, TLS decryption can use both TLS version 1.2 and 1.3\. However, some environments such as FedRAMP may require cipher suites and TLS versions compliant with FIPS 140-3\. FIPS compliance currently requires TLS version 1.2.
+By default, TLS decryption can use both TLS version 1.2 and 1.3. However, some environments such as FedRAMP may require cipher suites and TLS versions compliant with FIPS 140-3. FIPS compliance currently requires TLS version 1.2.
 
 ### Enable FIPS compliance
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.
 
-1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
+1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+   - `Zero Trust Write`
+2. Configure the `tls_decrypt` argument in [`cloudflare_zero_trust_gateway_settings` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_gateway_settings):
 
-  * `Zero Trust Write`
-2. Configure the `tls_decrypt` argument in [cloudflare\_zero\_trust\_gateway\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fsettings):
-```tf
-resource "cloudflare_zero_trust_gateway_settings" "team_name" {
-	account_id = var.cloudflare_account_id
-	settings = {
-		tls_decrypt = {
-			enabled = true
-		}
-	}
-}
-```
+   ```tf
+   resource "cloudflare_zero_trust_gateway_settings" "team_name" {
+   	account_id = var.cloudflare_account_id
+   	settings = {
+   		tls_decrypt = {
+   			enabled = true
+   		}
+   	}
+   }
+   ```
 
-1. Select **Enable only cipher suites and TLS versions compliant with FIPS 140-3**.
+
+
+3. Select **Enable only cipher suites and TLS versions compliant with FIPS 140-3**.
 
 ### Limitations
 
@@ -151,6 +157,7 @@ FIPS-compliant traffic defaults to [HTTP/3](https://developers.cloudflare.com/cl
 
 When you use [Cloudflare Regional Services](https://developers.cloudflare.com/data-localization/regional-services/) in the United States and the Cloudflare One Client to on-ramp TLS traffic to Gateway, traffic will egress from a Cloudflare data center within Cloudflare's FedRAMP boundary. If a user's closest data center is non-FedRAMP compliant, their traffic will still egress from a FedRAMP compliant data center, maintaining FedRAMP compliance for the traffic.
 
+```
 flowchart LR
  %% Accessibility
  accTitle: How Gateway routes FedRAMP compliant traffic with Regional Services
@@ -174,24 +181,26 @@ flowchart LR
 
     n5@{ shape: rect}
 
+```
+
 ## Cipher suites
 
 A cipher suite is a set of encryption algorithms for establishing a secure communications connection. There are several cipher suites in wide use, and a client and server agree on the cipher suite to use when establishing the TLS connection. Support of multiple cipher suites allows compatibility across various clients.
 
 The following table lists the default cipher suites Gateway uses for TLS decryption.
 
-| Name (OpenSSL)                | Name (IANA)                                    | FIPS-compliant |
-| ----------------------------- | ---------------------------------------------- | -------------- |
-| ECDHE-ECDSA-AES128-GCM-SHA256 | TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256 | ✅              |
-| ECDHE-ECDSA-AES256-GCM-SHA384 | TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384 | ✅              |
-| ECDHE-RSA-AES128-GCM-SHA256   | TLS\_ECDHE\_RSA\_WITH\_AES\_128\_GCM\_SHA256   | ✅              |
-| ECDHE-RSA-AES256-GCM-SHA384   | TLS\_ECDHE\_RSA\_WITH\_AES\_256\_GCM\_SHA384   | ✅              |
-| ECDHE-RSA-AES128-SHA          | TLS\_ECDHE\_RSA\_WITH\_AES\_128\_CBC\_SHA256   | ❌              |
-| ECDHE-RSA-AES256-SHA384       | TLS\_ECDHE\_RSA\_WITH\_AES\_256\_CBC\_SHA384   | ✅              |
-| AES128-GCM-SHA256             | TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256          | ✅              |
-| AES256-GCM-SHA384             | TLS\_RSA\_WITH\_AES\_256\_GCM\_SHA384          | ✅              |
-| AES128-SHA                    | TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA             | ❌              |
-| AES256-SHA                    | TLS\_RSA\_WITH\_AES\_256\_CBC\_SHA             | ❌              |
+| Name (OpenSSL) | Name (IANA) | FIPS-compliant |
+| --- | --- | --- |
+| ECDHE-ECDSA-AES128-GCM-SHA256 | TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256 | ✅ |
+| ECDHE-ECDSA-AES256-GCM-SHA384 | TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384 | ✅ |
+| ECDHE-RSA-AES128-GCM-SHA256 | TLS\_ECDHE\_RSA\_WITH\_AES\_128\_GCM\_SHA256 | ✅ |
+| ECDHE-RSA-AES256-GCM-SHA384 | TLS\_ECDHE\_RSA\_WITH\_AES\_256\_GCM\_SHA384 | ✅ |
+| ECDHE-RSA-AES128-SHA | TLS\_ECDHE\_RSA\_WITH\_AES\_128\_CBC\_SHA256 | ❌ |
+| ECDHE-RSA-AES256-SHA384 | TLS\_ECDHE\_RSA\_WITH\_AES\_256\_CBC\_SHA384 | ✅ |
+| AES128-GCM-SHA256 | TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256 | ✅ |
+| AES256-GCM-SHA384 | TLS\_RSA\_WITH\_AES\_256\_GCM\_SHA384 | ✅ |
+| AES128-SHA | TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA | ❌ |
+| AES256-SHA | TLS\_RSA\_WITH\_AES\_256\_CBC\_SHA | ❌ |
 
 For more information on cipher suites, refer to [Cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/).
 

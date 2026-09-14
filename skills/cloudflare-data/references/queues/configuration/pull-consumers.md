@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pull consumers
 
-Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/queues/configuration/pull-consumers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/configuration/pull-consumers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A pull-based consumer allows you to pull from a queue over HTTP from any environment and/or programming language outside of Cloudflare Workers. A pull-based consumer can be useful when your message consumption rate is limited by upstream infrastructure or long-running tasks.
 
@@ -20,8 +20,8 @@ A pull-based consumer allows you to pull from a queue over HTTP from any environ
 
 Deciding whether to configure a push-based consumer or a pull-based consumer will depend on how you are using your queues, as well as the configuration of infrastructure upstream from your queue consumer.
 
-* **Starting with a [push-based consumer](https://developers.cloudflare.com/queues/reference/how-queues-works/#consumers) is the easiest way to get started and consume from a queue**. A push-based consumer runs on Workers, and by default, will automatically scale up and consume messages as they are written to the queue.
-* Use a pull-based consumer if you need to consume messages from existing infrastructure outside of Cloudflare Workers, and/or where you need to carefully control how fast messages are consumed. A pull-based consumer must explicitly make a call to pull (and then acknowledge) messages from the queue, only when it is ready to do so.
+- **Starting with a [push-based consumer](https://developers.cloudflare.com/queues/reference/how-queues-works/#consumers) is the easiest way to get started and consume from a queue**. A push-based consumer runs on Workers, and by default, will automatically scale up and consume messages as they are written to the queue.
+- Use a pull-based consumer if you need to consume messages from existing infrastructure outside of Cloudflare Workers, and/or where you need to carefully control how fast messages are consumed. A pull-based consumer must explicitly make a call to pull (and then acknowledge) messages from the queue, only when it is ready to do so.
 
 You can remove and attach a new consumer on a queue at any time, allowing you to change from a pull-based to a push-based consumer if your requirements change.
 
@@ -36,7 +36,7 @@ To configure a pull-based consumer and receive messages from a queue, you need t
 3. Pull message batches from the queue.
 4. Acknowledge and/or retry messages within a batch.
 
-## 1\. Enable HTTP pull
+## 1. Enable HTTP pull
 
 You can enable HTTP pull or change a queue from push-based to pull-based via the `wrangler` CLI or via the [Cloudflare dashboard ↗](https://dash.cloudflare.com/). Enabling HTTP pull from a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) is no longer supported.
 
@@ -64,11 +64,11 @@ If you remove the Worker consumer with `wrangler` but do not delete the `[[queue
 
 Ensure you remove the consumer configuration first.
 
-## 2\. Consumer authentication
+## 2. Consumer authentication
 
 HTTP Pull consumers require an [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the `com.cloudflare.api.account.queues_read` and `com.cloudflare.api.account.queues_write` permissions.
 
-Both read _and_ write are required as a pull-based consumer needs to write to the queue state to acknowledge the messages it receives. Consuming messages mutates the queue.
+Both read *and* write are required as a pull-based consumer needs to write to the queue state to acknowledge the messages it receives. Consuming messages mutates the queue.
 
 API tokens are presented as Bearer tokens in the `Authorization` header of a HTTP request in the format `Authorization: Bearer $YOUR_TOKEN_HERE`. The following example shows how to pass an API token using the `curl` HTTP client:
 
@@ -86,7 +86,7 @@ You may authenticate and run multiple concurrent pull-based consumers against a 
 To create an API token:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
-2. Go to **My Profile** \> [API Tokens ↗](https://dash.cloudflare.com/profile/api-tokens).
+2. Go to **My Profile** > [API Tokens ↗](https://dash.cloudflare.com/profile/api-tokens).
 3. Select **Create Token**.
 4. Scroll to the bottom of the page and select **Create Custom Token**.
 5. Give the token a name. For example, `queue-pull-token`.
@@ -96,9 +96,11 @@ To create an API token:
 
 You will need to note the token down: it will only be displayed once.
 
-## 3\. Pull messages
+## 3. Pull messages
 
 To pull a message, make a HTTP POST request to the [Queues REST API](https://developers.cloudflare.com/api/resources/queues/subresources/messages/methods/pull/) with a JSON-encoded body that optionally specifies a `visibility_timeout` and a `batch_size`, or an empty JSON object (`{}`):
+
+*index.jsjs*
 
 ```js
 // POST /accounts/${CF_ACCOUNT_ID}/queues/${QUEUE_ID}/messages/pull with the timeout & batch size
@@ -115,6 +117,8 @@ let resp = await fetch(
 	},
 );
 ```
+
+*index.tsts*
 
 ```ts
 // POST /accounts/${CF_ACCOUNT_ID}/queues/${QUEUE_ID}/messages/pull with the timeout & batch size
@@ -190,38 +194,40 @@ Pull consumers follow a "short polling" approach: if there are messages availabl
 
 Note
 
-The [pull](https://developers.cloudflare.com/api/resources/queues/subresources/messages/methods/pull/) and [ack](https://developers.cloudflare.com/api/resources/queues/subresources/messages/methods/ack/) endpoints use the new `/queues/queue_id/messages/{action}` API format, as defined in the Queues API documentation.
+The [`pull`](https://developers.cloudflare.com/api/resources/queues/subresources/messages/methods/pull/) and [`ack`](https://developers.cloudflare.com/api/resources/queues/subresources/messages/methods/ack/) endpoints use the new `/queues/queue_id/messages/{action}` API format, as defined in the Queues API documentation.
 
 The undocumented `/queues/queue_id/{action}` endpoints are not supported and will be deprecated as of June 30th, 2024.
 
 Each message object has five fields:
 
-1. `body` \- this may be base64 encoded based on the [content-type the message was published as](#content-types).
-2. `id` \- a unique, read-only ephemeral identifier for the message.
-3. `timestamp_ms` \- when the message was published to the queue in milliseconds since the [Unix epoch ↗](https://en.wikipedia.org/wiki/Unix%5Ftime). This allows you to determine how old a message is by subtracting it from the current timestamp.
-4. `attempts` \- how many times the message has been attempted to be delivered in full. When this reaches the value of `max_retries`, the message will not be re-delivered and will be deleted from the queue permanently.
-5. `lease_id` \- the encoded lease ID of the message. The `lease_id` is used to explicitly acknowledge or retry the message.
+1. `body` - this may be base64 encoded based on the [content-type the message was published as](#content-types).
+2. `id` - a unique, read-only ephemeral identifier for the message.
+3. `timestamp_ms` - when the message was published to the queue in milliseconds since the [Unix epoch ↗](https://en.wikipedia.org/wiki/Unix_time). This allows you to determine how old a message is by subtracting it from the current timestamp.
+4. `attempts` - how many times the message has been attempted to be delivered in full. When this reaches the value of `max_retries`, the message will not be re-delivered and will be deleted from the queue permanently.
+5. `lease_id` - the encoded lease ID of the message. The `lease_id` is used to explicitly acknowledge or retry the message.
 
 The `lease_id` allows your pull consumer to explicitly acknowledge some, none or all messages in the batch or mark them for retry. If messages are not acknowledged or marked for retry by the consumer, then they will be marked for re-delivery once the `visibility_timeout` is reached. A `lease_id` is no longer valid once this timeout has been reached.
 
 You can configure both `batch_size` and `visibility_timeout` when pulling from a queue:
 
-* `batch_size` (defaults to 5; max 100) - how many messages are returned to the consumer in each pull.
-* `visibility_timeout` (defaults to 30 second; max 12 hours) - defines how long the consumer has to explicitly acknowledge messages delivered in the batch based on their `lease_id`. Once this timeout expires, messages are assumed unacknowledged and queued for re-delivery again.
+- `batch_size` (defaults to 5; max 100) - how many messages are returned to the consumer in each pull.
+- `visibility_timeout` (defaults to 30 second; max 12 hours) - defines how long the consumer has to explicitly acknowledge messages delivered in the batch based on their `lease_id`. Once this timeout expires, messages are assumed unacknowledged and queued for re-delivery again.
 
 ### Concurrent consumers
 
 You may have multiple HTTP clients pulling from the same queue concurrently: each client will receive a unique batch of messages and retain the "lease" on those messages up until the `visibility_timeout` expires, or until those messages are marked for retry.
 
-Messages marked for retry will be put back into the queue and can be delivered to any consumer. Messages are _not_ tied to a specific consumer, as consumers do not have an identity and to avoid a slow or stuck consumer from holding up processing of messages in a queue.
+Messages marked for retry will be put back into the queue and can be delivered to any consumer. Messages are *not* tied to a specific consumer, as consumers do not have an identity and to avoid a slow or stuck consumer from holding up processing of messages in a queue.
 
 Multiple consumers can be useful in cases where you have multiple upstream resources (for example, GPU infrastructure), where you want to autoscale based on the [backlog](https://developers.cloudflare.com/queues/observability/metrics/) of a queue, and/or cost.
 
-## 4\. Acknowledge messages
+## 4. Acknowledge messages
 
 Messages pulled by a consumer need to be either acknowledged or marked for retry.
 
 To acknowledge and/or mark messages to be retried, make a HTTP `POST` request to `/ack` endpoint of your queue per the [Queues REST API](https://developers.cloudflare.com/api/resources/queues/subresources/messages/methods/ack/) by providing an array of `lease_id` objects to acknowledge and/or retry:
+
+*index.jsjs*
 
 ```js
 // POST /accounts/${CF_ACCOUNT_ID}/queues/${QUEUE_ID}/messages/ack with the lease_ids
@@ -245,6 +251,8 @@ let resp = await fetch(
 	},
 );
 ```
+
+*index.tsts*
 
 ```ts
 // POST /accounts/${CF_ACCOUNT_ID}/queues/${QUEUE_ID}/messages/ack with the lease_ids
@@ -308,11 +316,11 @@ You may optionally specify the number of seconds to delay a message for when mar
 
 Additionally:
 
-* You should provide every `lease_id` in the request to the `/ack` endpoint if you are processing those messages in your consumer. If you do not acknowledge a message, it will be marked for re-delivery (put back in the queue).
-* You can optionally mark messages to be retried: for example, if there is an error processing the message or you have upstream resource pressure. Explicitly marking a message for retry will place it back into the queue immediately, instead of waiting for a (potentially long) `visibility_timeout` to be reached.
-* You can make multiple calls to the `/ack` endpoint as you make progress through a batch of messages, but we recommend grouping acknowledgements to reduce the number of API calls required.
+- You should provide every `lease_id` in the request to the `/ack` endpoint if you are processing those messages in your consumer. If you do not acknowledge a message, it will be marked for re-delivery (put back in the queue).
+- You can optionally mark messages to be retried: for example, if there is an error processing the message or you have upstream resource pressure. Explicitly marking a message for retry will place it back into the queue immediately, instead of waiting for a (potentially long) `visibility_timeout` to be reached.
+- You can make multiple calls to the `/ack` endpoint as you make progress through a batch of messages, but we recommend grouping acknowledgements to reduce the number of API calls required.
 
-Queues aims to be permissive when it comes to lease IDs: if a consumer acknowledges a message by its lease ID _after_ the visibility timeout is reached, Queues will still accept that acknowledgment. If the message was delivered to another consumer during the intervening period, it will also be able to acknowledge the message without an error.
+Queues aims to be permissive when it comes to lease IDs: if a consumer acknowledges a message by its lease ID *after* the visibility timeout is reached, Queues will still accept that acknowledgment. If the message was delivered to another consumer during the intervening period, it will also be able to acknowledge the message without an error.
 
 ## Content types
 
@@ -332,9 +340,9 @@ Your consumer will need to decode the `json` and `bytes` types before operating 
 
 ## Next steps
 
-* Review the [REST API documentation](https://developers.cloudflare.com/api/resources/queues/subresources/consumers/methods/create/) and schema for Queues.
-* Learn more about [how to make API calls](https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/) to the Cloudflare API.
-* Understand [what limit apply](https://developers.cloudflare.com/queues/platform/limits/) when consuming and writing to a queue.
+- Review the [REST API documentation](https://developers.cloudflare.com/api/resources/queues/subresources/consumers/methods/create/) and schema for Queues.
+- Learn more about [how to make API calls](https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/) to the Cloudflare API.
+- Understand [what limit apply](https://developers.cloudflare.com/queues/platform/limits/) when consuming and writing to a queue.
 
 Was this helpful?
 

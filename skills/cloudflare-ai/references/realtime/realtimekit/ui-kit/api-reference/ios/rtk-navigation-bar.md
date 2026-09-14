@@ -12,28 +12,28 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RtkNavigationBar
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/ios/rtk-navigation-bar/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/ios/rtk-navigation-bar/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A navigation bar with a title label and a close or back button. Used for modal screens such as chat, polls, and participant lists.
 
 ## Initializer parameters
 
-| Parameter | Type   | Required | Default | Description                                    |
-| --------- | ------ | -------- | ------- | ---------------------------------------------- |
-| title     | String | ✅        | \-      | The title text displayed in the navigation bar |
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `title` | `String` | ✅ | - | The title text displayed in the navigation bar |
 
 ## Properties
 
-| Property   | Type                | Required | Default | Description                                               |
-| ---------- | ------------------- | -------- | ------- | --------------------------------------------------------- |
-| titleLabel | RtkLabel            | \-       | \-      | The label displaying the navigation bar title (read-only) |
-| leftButton | RtkControlBarButton | \-       | \-      | The close or back button on the left side (read-only)     |
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `titleLabel` | `RtkLabel` | - | - | The label displaying the navigation bar title (read-only) |
+| `leftButton` | `RtkControlBarButton` | - | - | The close or back button on the left side (read-only) |
 
 ## Methods
 
-| Method                        | Return Type | Description                                       |
-| ----------------------------- | ----------- | ------------------------------------------------- |
-| setBackButtonClick(callBack:) | Void        | Sets the tap handler for the back or close button |
+| Method | Return Type | Description |
+| --- | --- | --- |
+| `setBackButtonClick(callBack:)` | `Void` | Sets the tap handler for the back or close button |
 
 ## Usage Examples
 

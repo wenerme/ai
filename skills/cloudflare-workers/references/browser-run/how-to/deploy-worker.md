@@ -12,18 +12,26 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Deploy a Browser Run Worker
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/how-to/deploy-worker/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/how-to/deploy-worker/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By following this guide, you will create a Worker that uses the Browser Run API to take screenshots from web pages. This is a common use case for browser automation.
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
 
-#### 1\. Create a Worker project
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
+
+#### 1. Create a Worker project
 
 [Cloudflare Workers](https://developers.cloudflare.com/workers/) provides a serverless execution environment that allows you to create new applications or augment existing ones without configuring or maintaining infrastructure. Your Worker application is a container to interact with a headless browser to do actions, such as taking screenshots.
 
@@ -45,13 +53,13 @@ pnpm create cloudflare@latest browser-worker
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `JavaScript / TypeScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `JavaScript / TypeScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
-#### 2\. Install Puppeteer
+#### 2. Install Puppeteer
 
 In your `browser-worker` directory, install Cloudflare’s [fork of Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/):
 
@@ -73,7 +81,7 @@ pnpm add -D @cloudflare/puppeteer
 bun add -d @cloudflare/puppeteer
 ```
 
-#### 3\. Create a KV namespace
+#### 3. Create a KV namespace
 
 Browser Run can be used with other developer products. You might need a [relational database](https://developers.cloudflare.com/d1/), an [R2 bucket](https://developers.cloudflare.com/r2/) to archive your crawled pages and assets, a [Durable Object](https://developers.cloudflare.com/durable-objects/) to keep your browser instance alive and share it with multiple requests, or [Queues](https://developers.cloudflare.com/queues/) to handle your jobs asynchronously.
 
@@ -88,7 +96,7 @@ npx wrangler kv namespace create BROWSER_KV_DEMO --preview
 
 Take note of the IDs for the next step.
 
-#### 4\. Configure the Wrangler configuration file
+#### 4. Configure the Wrangler configuration file
 
 Configure your `browser-worker` project's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) by adding a browser [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) and a [Node.js compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag). Bindings allow your Workers to interact with resources on the Cloudflare developer platform. Your browser `binding` name is set by you, this guide uses the name `MYBROWSER`. Browser bindings allow for communication between a Worker and a headless browser which allows you to do actions such as taking a screenshot, generating a PDF, and more.
 
@@ -100,7 +108,7 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
 	"name": "browser-worker",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"compatibility_flags": ["nodejs_compat"],
 	"browser": {
 		"binding": "MYBROWSER"
@@ -120,7 +128,7 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
 name = "browser-worker"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 compatibility_flags = [ "nodejs_compat" ]
 
 [browser]
@@ -132,7 +140,7 @@ id = "22cf855786094a88a6906f8edac425cd"
 preview_id = "e1f8b68b68d24381b57071445f96e623"
 ```
 
-#### 5\. Code
+#### 5. Code
 
 Update `src/index.js` with your Worker code:
 
@@ -215,7 +223,7 @@ If your Worker is running in production, it will store the screenshot to the pro
 
 If the same `url` is requested again, it will use the cached version in KV instead, unless it expired.
 
-#### 6\. Test
+#### 6. Test
 
 Run `npx wrangler dev` to test your Worker locally.
 
@@ -227,7 +235,7 @@ To test taking your first screenshot, go to the following URL:
 
 `<LOCAL_HOST_URL>/?url=https://example.com`
 
-#### 7\. Deploy
+#### 7. Deploy
 
 Run `npx wrangler deploy` to deploy your Worker to the Cloudflare global network.
 
@@ -239,7 +247,7 @@ To take your first screenshot, go to the following URL:
 
 ## Related resources
 
-* Other [Puppeteer examples ↗](https://github.com/cloudflare/puppeteer/tree/main/examples)
+- Other [Puppeteer examples ↗](https://github.com/cloudflare/puppeteer/tree/main/examples)
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Go SDK
 
-Last updated Aug 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/flagship/sdk/go/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/sdk/go/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Go SDK provides an OpenFeature-compatible server provider for Go applications. It evaluates flags over HTTP and does not support the Cloudflare Workers binding.
 
@@ -106,24 +106,24 @@ The cache is per-provider instance, guarded by a mutex for concurrent use, and c
 
 ## Configuration options
 
-| Option         | Description                                                                                              |
-| -------------- | -------------------------------------------------------------------------------------------------------- |
-| AppID          | Flagship app ID.                                                                                         |
-| AccountID      | Required with AppID.                                                                                     |
-| BaseURL        | Base URL override. Defaults to https://api.cloudflare.com.                                               |
-| AuthToken      | Adds Authorization: Bearer <token> to each request.                                                      |
-| Headers        | Static headers. Explicit Authorization overrides AuthToken.                                              |
-| HeadersFactory | Dynamic per-request headers. Values override Headers and AuthToken.                                      |
-| HTTPClient     | Custom HTTP client.                                                                                      |
-| Timeout        | Per-attempt timeout. Defaults to 5 seconds.                                                              |
-| Retries        | Retry attempts on transient errors. Defaults to 1 and is capped at 10.                                   |
-| DisableRetries | Disables retries when set to true.                                                                       |
-| RetryDelay     | Delay between retries. Defaults to 1 second and is capped at 30 seconds.                                 |
-| CacheTTL       | Enables in-memory response caching when greater than 0\. Cached values may be up to this duration stale. |
-| CacheMaxSize   | Maximum number of cached entries. LRU-evicted beyond this limit. Defaults to 1000 when CacheTTL is set.  |
-| Logging        | Enables debug and error logging. Off by default.                                                         |
-| Logger         | Optional slog\-compatible logger. Uses the default slog logger when unset.                               |
-| Hooks          | Provider-level OpenFeature hooks.                                                                        |
+| Option | Description |
+| --- | --- |
+| `AppID` | Flagship app ID. |
+| `AccountID` | Required with `AppID`. |
+| `BaseURL` | Base URL override. Defaults to `https://api.cloudflare.com`. |
+| `AuthToken` | Adds `Authorization: Bearer <token>` to each request. |
+| `Headers` | Static headers. Explicit `Authorization` overrides `AuthToken`. |
+| `HeadersFactory` | Dynamic per-request headers. Values override `Headers` and `AuthToken`. |
+| `HTTPClient` | Custom HTTP client. |
+| `Timeout` | Per-attempt timeout. Defaults to 5 seconds. |
+| `Retries` | Retry attempts on transient errors. Defaults to 1 and is capped at 10. |
+| `DisableRetries` | Disables retries when set to `true`. |
+| `RetryDelay` | Delay between retries. Defaults to 1 second and is capped at 30 seconds. |
+| `CacheTTL` | Enables in-memory response caching when greater than 0. Cached values may be up to this duration stale. |
+| `CacheMaxSize` | Maximum number of cached entries. LRU-evicted beyond this limit. Defaults to 1000 when `CacheTTL` is set. |
+| `Logging` | Enables debug and error logging. Off by default. |
+| `Logger` | Optional `slog`-compatible logger. Uses the default `slog` logger when unset. |
+| `Hooks` | Provider-level OpenFeature hooks. |
 
 ## Evaluation context
 

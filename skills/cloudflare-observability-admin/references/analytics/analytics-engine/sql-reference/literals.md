@@ -12,17 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Literals
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/literals/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/literals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following literals are supported:
 
-| Type          | Syntax                                                                                |
-| ------------- | ------------------------------------------------------------------------------------- |
-| integer       | 42, \-42                                                                              |
-| double        | 4.2, \-4.2                                                                            |
-| string        | 'so long and thanks for all the fish'                                                 |
-| boolean       | true or false                                                                         |
-| time interval | INTERVAL '42' DAYIntervals of YEAR, MONTH, DAY, HOUR, MINUTE and SECOND are supported |
+| Type | Syntax |
+| --- | --- |
+| integer | `42`, `-42` |
+| double | `4.2`, `-4.2` |
+| string | `'so long and thanks for all the fish'` |
+| boolean | `true` or `false` |
+| time interval | `INTERVAL '42' DAY`<br>Intervals of `YEAR`, `MONTH`, `DAY`, `HOUR`, `MINUTE` and `SECOND` are supported |
 
 Was this helpful?
 

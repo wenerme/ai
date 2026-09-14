@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Authentication
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/privacy-proxy/concepts/authentication/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/privacy-proxy/concepts/authentication/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Privacy Proxy requires clients to authenticate before proxying traffic. This page explains the supported authentication methods and when to use them.
 
@@ -20,11 +20,11 @@ Privacy Proxy requires clients to authenticate before proxying traffic. This pag
 
 Privacy Proxy supports three authentication methods:
 
-| Method               | Use case                  | Privacy level |
-| -------------------- | ------------------------- | ------------- |
-| Pre-shared key (PSK) | Proof of concept, testing | Lower         |
-| Privacy Pass tokens  | Client to server          | High          |
-| mTLS                 | Server to server          | Higher        |
+| Method | Use case | Privacy level |
+| --- | --- | --- |
+| Pre-shared key (PSK) | Proof of concept, testing | Lower |
+| Privacy Pass tokens | Client to server | High |
+| mTLS | Server to server | Higher |
 
 ---
 
@@ -48,9 +48,9 @@ The proxy validates the key and allows the connection if it matches.
 
 PSK authentication has limitations that make it unsuitable for production.
 
-* **Shared secret**: All clients use the same key, so you cannot revoke access for individual users.
-* **No rate limiting per user**: You cannot enforce per-user quotas or limits.
-* **Linkability**: The proxy can link all requests using the same PSK, which reduces user privacy.
+- **Shared secret**: All clients use the same key, so you cannot revoke access for individual users.
+- **No rate limiting per user**: You cannot enforce per-user quotas or limits.
+- **Linkability**: The proxy can link all requests using the same PSK, which reduces user privacy.
 
 Use PSK only for testing. For production deployments, use [Privacy Pass tokens](#privacy-pass-tokens).
 
@@ -64,9 +64,9 @@ Use PSK only for testing. For production deployments, use [Privacy Pass tokens](
 
 Privacy Pass uses a three-party architecture:
 
-* **Attester**: Verifies that the Client is a legitimate user (for example, has a valid account) and forwards token requests to the Issuer.
-* **Issuer**: Signs blinded tokens without learning which Client requested them.
-* **Origin (Privacy Proxy)**: Accepts tokens as proof of authorization.
+- **Attester**: Verifies that the Client is a legitimate user (for example, has a valid account) and forwards token requests to the Issuer.
+- **Issuer**: Signs blinded tokens without learning which Client requested them.
+- **Origin (Privacy Proxy)**: Accepts tokens as proof of authorization.
 
 ### Token issuance
 
@@ -168,23 +168,23 @@ In [double-hop deployments](https://developers.cloudflare.com/privacy-proxy/conc
 
 Proxy A (which you operate) authenticates users. Common methods include:
 
-* Account credentials (username/password, SSO)
-* Privacy Pass tokens issued by your infrastructure
-* Client certificates (mTLS)
+- Account credentials (username/password, SSO)
+- Privacy Pass tokens issued by your infrastructure
+- Client certificates (mTLS)
 
 ### Proxy A to Proxy B
 
 Proxy B authenticates itself to Proxy A using TLS. Depending on your configuration, this can use:
 
-* Standard TLS certificates
-* Raw Public Key (RPK) TLS extension for reduced certificate overhead
+- Standard TLS certificates
+- Raw Public Key (RPK) TLS extension for reduced certificate overhead
 
 ---
 
 ## Related resources
 
-* [Privacy Pass Working Group ↗](https://datatracker.ietf.org/wg/privacypass/about/) \- IETF working group developing the Privacy Pass protocol.
-* [Supporting the latest version of the Privacy Pass protocol ↗](https://blog.cloudflare.com/supporting-the-latest-version-of-the-privacy-pass-protocol/) \- Cloudflare blog post on Privacy Pass implementation.
+- [Privacy Pass Working Group ↗](https://datatracker.ietf.org/wg/privacypass/about/) - IETF working group developing the Privacy Pass protocol.
+- [Supporting the latest version of the Privacy Pass protocol ↗](https://blog.cloudflare.com/supporting-the-latest-version-of-the-privacy-pass-protocol/) - Cloudflare blog post on Privacy Pass implementation.
 
 Was this helpful?
 

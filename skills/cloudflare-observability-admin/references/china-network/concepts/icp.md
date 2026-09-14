@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Internet Content Provider (ICP)
 
-Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/china-network/concepts/icp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/china-network/concepts/icp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To operate a website in China, you need government permission called an Internet Content Provider (ICP) number. Think of it as a permit — without one, your site can be shut down.
 
@@ -28,14 +28,14 @@ To host web services in Mainland China, you are legally required to acquire an *
 
 The type of ICP you must obtain depends on the type of website you are providing to customers in China:
 
-|                    | ICP filing                                                                                                                                                                                                    | ICP license                                                                                                                                                                                          |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Definition         | An ICP filing, known in Chinese as “Bei’An,” is the first level of ICP registration. An ICP filing enables the holder to host a website on a server or CDN in Mainland China for informational purposes only. | An ICP license, known as “ICP Zheng” in Chinese, allows online platforms or third-party sellers selling goods and services to deploy their website on a hosting server or CDN within Mainland China. |
-| Website Purpose    | Non-commercial and non-transactional purposes.                                                                                                                                                                | Commercial and transactional purposes.                                                                                                                                                               |
-| Eligibility        | Representative officeWholly foreign-owned enterpriseJoint ventureLocal companyIndividuals (personal website)                                                                                                  | Joint venture (foreign company with less than 50% ownership)Local company                                                                                                                            |
-| Example format     | Beijing ICP preparation XXXXXXXX number                                                                                                                                                                       | Beijing ICP license XXXXXXXX number                                                                                                                                                                  |
-| Other requirements | N/A                                                                                                                                                                                                           | Companies acquiring an ICP license must already have obtained an ICP filing.                                                                                                                         |
-| Timeline           | 1-2 months                                                                                                                                                                                                    | 2-3 months                                                                                                                                                                                           |
+|  | ICP filing | ICP license |
+| --- | --- | --- |
+| Definition | An ICP filing, known in Chinese as “Bei’An,” is the first level of ICP registration. An ICP filing enables the holder to host a website on a server or CDN in Mainland China for informational purposes only. | An ICP license, known as “ICP Zheng” in Chinese, allows online platforms or third-party sellers selling goods and services to deploy their website on a hosting server or CDN within Mainland China. |
+| Website Purpose | Non-commercial and non-transactional purposes. | Commercial and transactional purposes. |
+| Eligibility | Representative office<br>Wholly foreign-owned enterprise<br>Joint venture<br>Local company<br>Individuals (personal website) | Joint venture (foreign company with less than 50% ownership)<br>Local company |
+| Example format | Beijing ICP preparation XXXXXXXX number | Beijing ICP license XXXXXXXX number |
+| Other requirements | N/A | Companies acquiring an ICP license must already have obtained an ICP filing. |
+| Timeline | 1-2 months | 2-3 months |
 
 If you wish to host a marketing-related website, you only need an ICP filing.
 
@@ -45,9 +45,9 @@ If you wish to host a marketing-related website, you only need an ICP filing.
 
 Cloudflare recommends that you apply for an ICP license through your hosting or cloud services provider, who will register the ICP number on your behalf. You will need to provide the following documents to your provider:
 
-| For Individuals                                                                                                              | For Commercial Companies                                            |
-| ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| – ICP application form– Copy of your personal ID– Forms to authenticate website information– Copy of your domain certificate | – Copy of your business license– Your organization code certificate |
+| For Individuals | For Commercial Companies |
+| --- | --- |
+| – ICP application form<br>– Copy of your personal ID<br>– Forms to authenticate website information<br>– Copy of your domain certificate | – Copy of your business license<br>– Your organization code certificate |
 
 After all required documents are submitted, it can take four to eight weeks to obtain an ICP number, depending on the type of website and the province where the company is registered. Registration with the MIIT is free, but your provider may charge a processing fee.
 

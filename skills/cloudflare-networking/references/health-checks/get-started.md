@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/health-checks/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/health-checks/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Smart Shield
 
@@ -22,19 +22,17 @@ This guide will get you started with creating and managing configured Health Che
 
 ## Create a Health Check
 
-1. In the Cloudflare dashboard, go to the **Health Checks** page.
-[Go to **Health Checks** ↗](https://dash.cloudflare.com/?to=/:account/:zone/traffic/health-checks)
+1. In the Cloudflare dashboard, go to the **Health Checks** page. [Go to **Health Checks** ↗](https://dash.cloudflare.com/?to=/:account/:zone/traffic/health-checks)
 2. Select **Create** and fill out the form, paying special attention to:
-
-  * The values for **Interval** and **Check regions**, because decreasing the **Interval** and increasing **Check regions** may increase the load on your origin server.
-  * **Retries**, which specify the number of retries to attempt in case of a timeout before marking the origin as unhealthy.
-  * **Response body**, which specifies a substring that must be present in the first 10 KB of the response body for the check to succeed.
+   - The values for **Interval** and **Check regions**, because decreasing the **Interval** and increasing **Check regions** may increase the load on your origin server.
+   - **Retries**, which specify the number of retries to attempt in case of a timeout before marking the origin as unhealthy.
+   - **Response body**, which specifies a substring that must be present in the first 10 KB of the response body for the check to succeed.
 3. Select **Save and Deploy**.
 
 ## Manage Health Checks
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account and domain.
-2. Go to **Traffic** \> **Health Checks**.
+2. Go to **Traffic** > **Health Checks**.
 3. Navigate to your health check and select **Edit**.
 4. Edit your Health Check.
 5. Select **Save**.

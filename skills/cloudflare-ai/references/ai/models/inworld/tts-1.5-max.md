@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Speech • Inworld
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `inworld/tts-1.5-max`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 Highest-quality text-to-speech with under 200ms latency, emotion control, and 15-language support.
 
-| Model Info          |                                                                                                                       |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://inworld.ai/terms)                                                                                    |
-| More information    | [link ↗](https://inworld.ai/)                                                                                         |
-| Zero data retention | Yes                                                                                                                   |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/inworld/tts-1.5-max) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://inworld.ai/terms) |
+| More information | [link ↗](https://inworld.ai/) |
+| Zero data retention | Yes |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/inworld/tts-1.5-max) |
 
 ## Usage
 
@@ -78,7 +78,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Slow Narration** — Slower speech for narration
+<details>
+
+<summary>**Slow Narration** — Slower speech for narration</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -124,7 +128,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**High Quality Audio** — Higher sample rate for studio quality
+</details>
+
+<details>
+
+<summary>**High Quality Audio** — Higher sample rate for studio quality</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -170,7 +180,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**With Text Normalization** — Expand numbers and abbreviations before synthesis
+</details>
+
+<details>
+
+<summary>**With Text Normalization** — Expand numbers and abbreviations before synthesis</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -216,6 +232,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 text
@@ -232,19 +250,19 @@ output\_format
 
 bit\_rate
 
-`integer`minimum: \-9007199254740991maximum: 9007199254740991Bits per second of the audio. Only for compressed audio formats (mp3, opus). The default is 128,000.
+`integer`minimum: -9007199254740991maximum: 9007199254740991Bits per second of the audio. Only for compressed audio formats (mp3, opus). The default is 128,000.
 
 sample\_rate
 
-`integer`minimum: \-9007199254740991maximum: 9007199254740991The synthesis sample rate in hertz. Accepts: 8000, 16000, 22050, 24000, 32000, 44100, 48000\. The default is 48,000.
+`integer`minimum: -9007199254740991maximum: 9007199254740991The synthesis sample rate in hertz. Accepts: 8000, 16000, 22050, 24000, 32000, 44100, 48000. The default is 48,000.
 
 speaking\_rate
 
-`number`minimum: 0.5maximum: 1.5Speaking rate/speed, in the range \[0.5, 1.5\]. The default is 1.0\. We recommend using values above 0.8 to ensure high quality.
+`number`minimum: 0.5maximum: 1.5Speaking rate/speed, in the range \[0.5, 1.5]. The default is 1.0. We recommend using values above 0.8 to ensure high quality.
 
 temperature
 
-`number`requireddefault: 1minimum: 0.01maximum: 2Determines the degree of randomness when sampling audio tokens. Defaults to 1.0\. Accepts values between 0 (exclusive) and 2 (inclusive). Higher values = more expressive, lower values = more deterministic.
+`number`requireddefault: 1minimum: 0.01maximum: 2Determines the degree of randomness when sampling audio tokens. Defaults to 1.0. Accepts values between 0 (exclusive) and 2 (inclusive). Higher values = more expressive, lower values = more deterministic.
 
 timestamp\_type
 
@@ -260,9 +278,9 @@ audio
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/schema-output.json)
 
 Was this helpful?
 

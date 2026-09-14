@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Setup
 
-Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can use the [Edit Zone Settings API endpoint](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) to set up Dedicated CDN Egress IPs (formerly known as Aegis). If you are not familiar with how Cloudflare API works, refer to [Fundamentals](https://developers.cloudflare.com/fundamentals/api/).
 
@@ -22,8 +22,8 @@ Dedicated CDN Egress IPs (DCEI) are currently available to Enterprise customers.
 
 ## Requirements
 
-* The Dedicated CDN Egress IPs (DCEI) zone setting is only available within Cloudflare accounts that own leased IPs, or accounts to which a [BYOIP prefix](https://developers.cloudflare.com/byoip/) has been delegated. If you wish to use Dedicated CDN Egress IPs for zones that do not meet this criteria, contact your account team.
-* Each dedicated egress pool can consist of either IPs from a [BYOIP prefix](https://developers.cloudflare.com/byoip/) or Cloudflare-leased IPs. A single dedicated egress pool cannot contain both BYOIPs and leased IPs. Also, a single BYOIP prefix can be used for either CDN ingress or CDN egress, but not both.
+- The Dedicated CDN Egress IPs (DCEI) zone setting is only available within Cloudflare accounts that own leased IPs, or accounts to which a [BYOIP prefix](https://developers.cloudflare.com/byoip/) has been delegated. If you wish to use Dedicated CDN Egress IPs for zones that do not meet this criteria, contact your account team.
+- Each dedicated egress pool can consist of either IPs from a [BYOIP prefix](https://developers.cloudflare.com/byoip/) or Cloudflare-leased IPs. A single dedicated egress pool cannot contain both BYOIPs and leased IPs. Also, a single BYOIP prefix can be used for either CDN ingress or CDN egress, but not both.
 
 Caution
 
@@ -33,13 +33,25 @@ You must allowlist the IP addresses from this pool in your infrastructure before
 
 1. Contact your account team to get the ID for your dedicated egress pool.
 2. Make a `PATCH` request to the [Edit Zone Setting](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) endpoint:
-* Specify `aegis` as the setting ID in the URL.
-* In the request body, set `enabled` to `true` and use the ID from the previous step as the `pool_id` value.
+
+- Specify `aegis` as the setting ID in the URL.
+- In the request body, set `enabled` to `true` and use the ID from the previous step as the `pool_id` value.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone Settings Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone Settings Write</code>
+
+</details>
+
+*Edit zone settingbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/aegis" \
@@ -56,11 +68,22 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/aegis" \
 
 ## Check DCEI status for a zone
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone Settings Write`
-* `Zone Settings Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone Settings Write</code>
+- <code>Zone Settings Read</code>
+
+</details>
+
+*Get zone settingbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/aegis" \
@@ -70,10 +93,21 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/aegis" \
 
 ## Turn off DCEI for a zone
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone Settings Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone Settings Write</code>
+
+</details>
+
+*Edit zone settingbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/aegis" \
@@ -89,7 +123,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/aegis" \
 
 ## Check your IPs
 
-You can find your leased dedicated IPs for CDN egress on the dashboard under [**Address space** \> **Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
+You can find your leased dedicated IPs for CDN egress on the dashboard under [**Address space** > **Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
 
 If you are using BYOIP, refer to **BYOIP prefixes** instead.
 

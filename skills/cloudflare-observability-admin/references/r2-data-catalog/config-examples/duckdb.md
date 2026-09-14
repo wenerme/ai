@@ -12,18 +12,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DuckDB
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2-data-catalog/config-examples/duckdb/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2-data-catalog/config-examples/duckdb/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Below is an example of using [DuckDB ↗](https://duckdb.org/) to connect to R2 Data Catalog. For more information on connecting to R2 Data Catalog with DuckDB, refer to [DuckDB documentation ↗](https://duckdb.org/docs/stable/core%5Fextensions/iceberg/iceberg%5Frest%5Fcatalogs#r2-catalog).
+Below is an example of using [DuckDB ↗](https://duckdb.org/) to connect to R2 Data Catalog. For more information on connecting to R2 Data Catalog with DuckDB, refer to [DuckDB documentation ↗](https://duckdb.org/docs/stable/core_extensions/iceberg/iceberg_rest_catalogs#r2-catalog).
 
 ## Prerequisites
 
-* Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-* [Create an R2 bucket](https://developers.cloudflare.com/r2/buckets/create-buckets/) and [enable the data catalog](https://developers.cloudflare.com/r2-data-catalog/manage-catalogs/#enable-r2-data-catalog-on-a-bucket).
-* [Create an R2 API token](https://developers.cloudflare.com/r2/api/tokens/) with both [R2 and data catalog permissions](https://developers.cloudflare.com/r2/api/tokens/#permissions).
-* Install [DuckDB ↗](https://duckdb.org/docs/installation/).
-  * Note: [DuckDB 1.4.0 ↗](https://github.com/duckdb/duckdb/releases/tag/v1.4.0) or greater is required to attach and write to [Iceberg REST Catalogs ↗](https://duckdb.org/docs/stable/core%5Fextensions/iceberg/iceberg%5Frest%5Fcatalogs).
-* Note: DuckDB [does not currently support ↗](https://duckdb.org/docs/stable/core%5Fextensions/iceberg/iceberg%5Frest%5Fcatalogs#limitations-for-update-and-delete) `DELETE` on partitioned tables.
+- Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
+- [Create an R2 bucket](https://developers.cloudflare.com/r2/buckets/create-buckets/) and [enable the data catalog](https://developers.cloudflare.com/r2-data-catalog/manage-catalogs/#enable-r2-data-catalog-on-a-bucket).
+- [Create an R2 API token](https://developers.cloudflare.com/r2/api/tokens/) with both [R2 and data catalog permissions](https://developers.cloudflare.com/r2/api/tokens/#permissions).
+- Install [DuckDB ↗](https://duckdb.org/docs/installation/).
+  - Note: [DuckDB 1.4.0 ↗](https://github.com/duckdb/duckdb/releases/tag/v1.4.0) or greater is required to attach and write to [Iceberg REST Catalogs ↗](https://duckdb.org/docs/stable/core_extensions/iceberg/iceberg_rest_catalogs).
+- Note: DuckDB [does not currently support ↗](https://duckdb.org/docs/stable/core_extensions/iceberg/iceberg_rest_catalogs#limitations-for-update-and-delete) `DELETE` on partitioned tables.
 
 ## Example usage
 

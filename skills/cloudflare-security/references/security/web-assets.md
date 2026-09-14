@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Web Assets
 
-Last updated Aug 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/security/web-assets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security/web-assets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Web Assets automatically discovers operations in web applications proxied through Cloudflare. Operation context helps you define security protections against application-specific functionalities.
 
@@ -20,15 +20,15 @@ For example, discovering operations that receive LLM prompts so [AI Security for
 
 To access Web Assets in the Cloudflare dashboard, go to the **Web Assets** page.
 
-[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 
 ## Definition of an operation
 
 An operation is a group of HTTP requests that serve the same purpose in your application. Each operation is defined by:
 
-* HTTP method
-* Hostname pattern
-* Path pattern
+- HTTP method
+- Hostname pattern
+- Path pattern
 
 For example, Web Assets can group requests to product detail pages into one operation:
 
@@ -50,9 +50,9 @@ This lets Cloudflare identify requests that serve the same purpose in your appli
 
 Operations can come from several sources:
 
-* **Discovery**: Web Assets continuously reviews proxied HTTP traffic and groups similar requests into operations using machine learning (for [API discovery](https://developers.cloudflare.com/api-shield/security/api-discovery/)) and heuristics.
-* **Manual entry**: You can add operations by method, hostname pattern, and path pattern.
-* **Schema upload**: You can [upload an OpenAPI schema](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/#add-endpoints-from-schema-validation) to create operations from an existing API definition.
+- **Discovery**: Web Assets continuously reviews proxied HTTP traffic and groups similar requests into operations using machine learning (for [API discovery](https://developers.cloudflare.com/api-shield/security/api-discovery/)) and heuristics.
+- **Manual entry**: You can add operations by method, hostname pattern, and path pattern.
+- **Schema upload**: You can [upload an OpenAPI schema](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/#add-endpoints-from-schema-validation) to create operations from an existing API definition.
 
 These sources contribute to the same operation inventory. You do not need to review every discovered operation before security detections can use operation context.
 

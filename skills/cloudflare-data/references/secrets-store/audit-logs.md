@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Audit logs
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/secrets-store/audit-logs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/secrets-store/audit-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Audit logs](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/) provide a comprehensive summary of changes made within your Cloudflare account. This page lists the actions that are logged for Secrets Store.
 
-* Access
-* Create
-  * Duplicating a secret is presented as a `create` log with a field `duplicated_from_id`.
-* Update
-  * A boolean `"value_modified": true` is presented when the secret value is edited.
-* Delete
+- Access
+- Create
+  - Duplicating a secret is presented as a `create` log with a field `duplicated_from_id`.
+- Update
+  - A boolean `"value_modified": true` is presented when the secret value is edited.
+- Delete
 
 For information on how to access and use audit logs, refer to [Fundamentals](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/).
 

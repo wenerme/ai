@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Tags
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/tags/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/tags/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use tags to organize, search, and filter user Workers at scale. Tag Workers based on customer ID, plan type, project ID, or environment. After you tag user Workers, you can perform bulk operations like deleting all Workers for a specific customer.
 
@@ -24,7 +24,7 @@ You can set a maximum of eight tags per script. Avoid special characters like `,
 
 1. Go to **Workers for Platforms** in the Cloudflare dashboard and select your namespace.
 2. Select a user Worker from the list.
-3. Go to **Settings** \> **Tags**.
+3. Go to **Settings** > **Tags**.
 4. Add your tags (for example, `customer-123`, `pro-plan`, `production`).
 5. Select **Save**.
 
@@ -32,18 +32,29 @@ You can also search and filter Workers by tags in the namespace view.
 
 ## Tags API reference
 
-For complete API documentation, refer to [Workers for Platforms API](https://developers.cloudflare.com/api/resources/workers%5Ffor%5Fplatforms/subresources/dispatch/subresources/namespaces/subresources/scripts/subresources/tags/).
+For complete API documentation, refer to [Workers for Platforms API](https://developers.cloudflare.com/api/resources/workers_for_platforms/subresources/dispatch/subresources/namespaces/subresources/scripts/subresources/tags/).
 
 ### Get script tags
 
 Fetch all tags for a Worker script.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Workers Tail Read`
-* `Workers Scripts Write`
-* `Workers Scripts Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Workers Tail Read</code>
+- <code>Workers Scripts Write</code>
+- <code>Workers Scripts Read</code>
+
+</details>
+
+*Get Script Tagsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/namespaces/$DISPATCH_NAMESPACE/scripts/$SCRIPT_NAME/tags" \
@@ -55,10 +66,21 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch
 
 Replace all tags on a Worker script. Existing tags not in the request are removed.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Workers Scripts Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Workers Scripts Write</code>
+
+</details>
+
+*Put Script Tagsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/namespaces/$DISPATCH_NAMESPACE/scripts/$SCRIPT_NAME/tags" \
@@ -70,10 +92,21 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch
 
 Add one tag to a Worker script without affecting existing tags.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Workers Scripts Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Workers Scripts Write</code>
+
+</details>
+
+*Put Script Tagbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/namespaces/$DISPATCH_NAMESPACE/scripts/$SCRIPT_NAME/tags/$TAG" \
@@ -85,10 +118,21 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch
 
 Remove one tag from a Worker script.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Workers Scripts Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Workers Scripts Write</code>
+
+</details>
+
+*Delete Script Tagbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/namespaces/$DISPATCH_NAMESPACE/scripts/$SCRIPT_NAME/tags/$TAG" \
@@ -100,12 +144,23 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch
 
 List all Workers that match a tag filter. Use `tag:yes` to include or `tag:no` to exclude.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Workers Tail Read`
-* `Workers Scripts Write`
-* `Workers Scripts Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Workers Tail Read</code>
+- <code>Workers Scripts Write</code>
+- <code>Workers Scripts Read</code>
+
+</details>
+
+*List Scripts in Namespacebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/namespaces/$DISPATCH_NAMESPACE/scripts?tags=production%3Ayes" \
@@ -117,10 +172,21 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch
 
 Delete all Workers matching a tag filter. Use this to bulk delete Workers when a customer leaves your platform.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Workers Scripts Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Workers Scripts Write</code>
+
+</details>
+
+*Delete Scripts in Namespacebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/namespaces/$DISPATCH_NAMESPACE/scripts?tags=customer-123%3Ayes" \

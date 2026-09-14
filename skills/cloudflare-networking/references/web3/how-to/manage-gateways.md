@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage gateways
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web3/how-to/manage-gateways/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/how-to/manage-gateways/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A Cloudflare Web3 gateway provides HTTP-accessible interfaces to various Web3 networks. You can interact with a gateway in several ways.
 
@@ -20,22 +20,25 @@ A Cloudflare Web3 gateway provides HTTP-accessible interfaces to various Web3 ne
 
 To create a gateway using the dashboard:
 
-1. In the Cloudflare dashboard, go to the **Web3** page.
-[Go to **Web3** ↗](https://dash.cloudflare.com/?to=/:account/:zone/web3)
+1. In the Cloudflare dashboard, go to the **Web3** page. [Go to **Web3** ↗](https://dash.cloudflare.com/?to=/:account/:zone/web3)
 2. Click **Create Gateway**.
 3. Enter the following information:
-* **Hostname**: Enter a hostname to use as your gateway, which has to be a subdomain of the current Cloudflare zone.
-* **Gateway Description**: Enter a description to help distinguish between different gateways.
-* **Gateway Type**: Select a gateway target of [IPFS DNSLink](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/dnslink/), [IPFS Universal Path](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/universal-gateway/), or [Ethereum](https://developers.cloudflare.com/web3/ethereum-gateway/).
-* **DNSLink**: Only applicable to IPFS gateways, more details at [DNSLink](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/dnslink/#how-is-it-used-with-cloudflare).
-1. Click **Deploy**.
 
-To create a gateway using the API, send a [POST](https://developers.cloudflare.com/api/resources/web3/subresources/hostnames/methods/create/) request that includes the following parameters:
+- **Hostname**: Enter a hostname to use as your gateway, which has to be a subdomain of the current Cloudflare zone.
+- **Gateway Description**: Enter a description to help distinguish between different gateways.
+- **Gateway Type**: Select a gateway target of [IPFS DNSLink](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/dnslink/), [IPFS Universal Path](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/universal-gateway/), or [Ethereum](https://developers.cloudflare.com/web3/ethereum-gateway/).
+- **DNSLink**: Only applicable to IPFS gateways, more details at [DNSLink](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/dnslink/#how-is-it-used-with-cloudflare).
 
-* `name`: The hostname that will point to the target gateway via a `CNAME` record.
-* `target`: The gateway target for the hostname (`ethereum`, `ipfs`, `ipfs_universal_path`).
+4. Click **Deploy**.
+
+To create a gateway using the API, send a [`POST`](https://developers.cloudflare.com/api/resources/web3/subresources/hostnames/methods/create/) request that includes the following parameters:
+
+- `name`: The hostname that will point to the target gateway via a `CNAME` record.
+- `target`: The gateway target for the hostname ( `ethereum`, `ipfs`, `ipfs_universal_path`).
 
 If you need help with API authentication, refer to [Cloudflare API documentation](https://developers.cloudflare.com/fundamentals/api/).
+
+*Requestbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/web3/hostnames" \
@@ -51,6 +54,8 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/web3/hostnames" \
 ```
 
 The response contains the complete definition of the new gateway.
+
+*Responsejson*
 
 ```json
 {
@@ -72,9 +77,9 @@ The response contains the complete definition of the new gateway.
 
 When you create a gateway, Cloudflare automatically:
 
-* Creates and adds [records to your Cloudflare DNS](https://developers.cloudflare.com/web3/reference/gateway-dns-records/) so your gateway can receive and route traffic appropriately.
-* [Proxies](https://developers.cloudflare.com/dns/proxy-status/) traffic to that hostname.
-* Issues an SSL/TLS certificate to cover the specified hostname.
+- Creates and adds [records to your Cloudflare DNS](https://developers.cloudflare.com/web3/reference/gateway-dns-records/) so your gateway can receive and route traffic appropriately.
+- [Proxies](https://developers.cloudflare.com/dns/proxy-status/) traffic to that hostname.
+- Issues an SSL/TLS certificate to cover the specified hostname.
 
 ---
 
@@ -86,13 +91,12 @@ If you need to edit other fields, [delete the gateway](#delete-a-gateway) and cr
 
 To edit a gateway using the dashboard:
 
-1. In the Cloudflare dashboard, go to the **Web3** page.
-[Go to **Web3** ↗](https://dash.cloudflare.com/?to=/:account/:zone/web3)
+1. In the Cloudflare dashboard, go to the **Web3** page. [Go to **Web3** ↗](https://dash.cloudflare.com/?to=/:account/:zone/web3)
 2. On a specific gateway, click **Edit**.
 3. Update the **Gateway Description** and — if editing an **IPFS** gateway — the value for the [DNSLink](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/dnslink/).
 4. Click **Reapply**.
 
-To edit specific settings for a gateway, use a [PATCH](https://developers.cloudflare.com/api/resources/web3/subresources/hostnames/methods/edit/) request.
+To edit specific settings for a gateway, use a [`PATCH`](https://developers.cloudflare.com/api/resources/web3/subresources/hostnames/methods/edit/) request.
 
 ---
 
@@ -102,11 +106,10 @@ When your gateway is stuck in an **Error** [status](https://developers.cloudflar
 
 To refresh a gateway using the dashboard:
 
-1. In the Cloudflare dashboard, go to the **Web3** page.
-[Go to **Web3** ↗](https://dash.cloudflare.com/?to=/:account/:zone/web3)
+1. In the Cloudflare dashboard, go to the **Web3** page. [Go to **Web3** ↗](https://dash.cloudflare.com/?to=/:account/:zone/web3)
 2. On a gateway, click the dropdown then **Refresh**.
 
-To refresh a gateway using the API, send a [PATCH](https://developers.cloudflare.com/api/resources/web3/subresources/hostnames/methods/edit/) request with an empty request body.
+To refresh a gateway using the API, send a [`PATCH`](https://developers.cloudflare.com/api/resources/web3/subresources/hostnames/methods/edit/) request with an empty request body.
 
 ---
 
@@ -116,24 +119,22 @@ When you set up a [IPFS Universal Path gateway](https://developers.cloudflare.co
 
 You have the ability to block access to one or more:
 
-* CIDs (`QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB`)
-* IPFS content paths (`/ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/readme`)
-* IPNS content paths (`/ipns/example.com`)
+- CIDs ( `QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB`)
+- IPFS content paths ( `/ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/readme`)
+- IPNS content paths ( `/ipns/example.com`)
 
 To add an item to the blocklist using the dashboard:
 
-1. In the Cloudflare dashboard, go to the **Web3** page.
-[Go to **Web3** ↗](https://dash.cloudflare.com/?to=/:account/:zone/web3)
+1. In the Cloudflare dashboard, go to the **Web3** page. [Go to **Web3** ↗](https://dash.cloudflare.com/?to=/:account/:zone/web3)
 2. On a specific gateway, click the dropdown then **Blocklist**.
 3. Click **Add entry**.
 4. Enter the following information:
-
-  * **Blocklist entry type**: Choose **CID** or **Content path**.
-  * **Blocklist entry content**: Add a CID or content path to block, meaning either a valid CIDv0 or CIDv1 string (CID) or the entry should start with `/ipfs/` or `/ipns/` (content path).
-  * **Blocklist entry description**: Add a description to help you identify the blocklist entry.
+   - **Blocklist entry type**: Choose **CID** or **Content path**.
+   - **Blocklist entry content**: Add a CID or content path to block, meaning either a valid CIDv0 or CIDv1 string (CID) or the entry should start with `/ipfs/` or `/ipns/` (content path).
+   - **Blocklist entry description**: Add a description to help you identify the blocklist entry.
 5. Click **Add**.
 
-To add a blocklist item using the API, send a [POST](https://developers.cloudflare.com/api/resources/web3/subresources/hostnames/subresources/ipfs%5Funiversal%5Fpaths/subresources/content%5Flists/subresources/entries/methods/create/) request.
+To add a blocklist item using the API, send a [`POST`](https://developers.cloudflare.com/api/resources/web3/subresources/hostnames/subresources/ipfs_universal_paths/subresources/content_lists/subresources/entries/methods/create/) request.
 
 ---
 
@@ -143,12 +144,11 @@ When you delete a gateway, Cloudflare will automatically remove all associated h
 
 To delete a gateway using the dashboard:
 
-1. In the Cloudflare dashboard, go to the **Web3** page.
-[Go to **Web3** ↗](https://dash.cloudflare.com/?to=/:account/:zone/web3)
+1. In the Cloudflare dashboard, go to the **Web3** page. [Go to **Web3** ↗](https://dash.cloudflare.com/?to=/:account/:zone/web3)
 2. On a specific gateway, click the dropdown then **Remove**.
 3. Click **Delete hostname**.
 
-To delete a gateway using the API, send a [DELETE](https://developers.cloudflare.com/api/resources/web3/subresources/hostnames/methods/delete/) request.
+To delete a gateway using the API, send a [`DELETE`](https://developers.cloudflare.com/api/resources/web3/subresources/hostnames/methods/delete/) request.
 
 Was this helpful?
 

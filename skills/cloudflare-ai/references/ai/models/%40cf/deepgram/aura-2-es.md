@@ -16,24 +16,24 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Speech • Deepgram
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/deepgram/aura-2-es/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/deepgram/aura-2-es/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/deepgram/aura-2-es`
 
-* Cloudflare-hosted
-* Batch
-* Partner
-* Real-time
+- Cloudflare-hosted
+- Batch
+- Partner
+- Real-time
 
 Aura-2 is a context-aware text-to-speech (TTS) model that applies natural pacing, expressiveness, and fillers based on the context of the provided text. The quality of your text input directly impacts the naturalness of the audio output.
 
-| Model Info        |                                      |
-| ----------------- | ------------------------------------ |
+| Model Info | |
+| --- | --- |
 | Terms and License | [link ↗](https://deepgram.com/terms) |
-| Batch             | Yes                                  |
-| Partner           | Yes                                  |
-| Real-time         | Yes                                  |
-| Unit Pricing      | $0.03 per 1k characters              |
+| Batch | Yes |
+| Partner | Yes |
+| Real-time | Yes |
+| Unit Pricing | $0.03 per 1k characters |
 
 ## Parameters
 
@@ -65,9 +65,9 @@ The binding returns a `ReadableStream` with the audio in MPEG format (check the 
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/@cf/deepgram/aura-2-es/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/deepgram/aura-2-es/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/@cf/deepgram/aura-2-es/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/deepgram/aura-2-es/schema-output.json)
 
 Was this helpful?
 

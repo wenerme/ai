@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # SSH
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/guides/ssh/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/guides/ssh/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Anyone with write access to a Container can SSH into it with Wrangler as long as a matching public key is listed in `authorized_keys`.
 
-SSH does not expose a publicly accessible port on the Container. The only way to connect is through Wrangler with [wrangler containers ssh](https://developers.cloudflare.com/workers/wrangler/commands/containers/#containers-ssh), which authenticates against your Cloudflare account.
+SSH does not expose a publicly accessible port on the Container. The only way to connect is through Wrangler with [`wrangler containers ssh`](https://developers.cloudflare.com/workers/wrangler/commands/containers/#containers-ssh), which authenticates against your Cloudflare account.
 
 ## Configure SSH
 
@@ -53,7 +53,7 @@ public_key = "<YOUR_PUBLIC_KEY_HERE>"
 
 For more information on configuring SSH, refer to [SSH configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#ssh).
 
-Find the instance ID for your Container by running [wrangler containers instances](https://developers.cloudflare.com/workers/wrangler/commands/containers/#containers-instances) or in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/containers). The instance you want to SSH into must be running. SSH will not start a stopped Container, and an active SSH connection alone will not keep a Container alive.
+Find the instance ID for your Container by running [`wrangler containers instances`](https://developers.cloudflare.com/workers/wrangler/commands/containers/#containers-instances) or in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/containers). The instance you want to SSH into must be running. SSH will not start a stopped Container, and an active SSH connection alone will not keep a Container alive.
 
 Once SSH is configured and the Container is running, open the SSH connection with:
 
@@ -73,7 +73,7 @@ When used this way, Wrangler pipes standard input and output to the SSH server i
 
 ## Process visibility
 
-Without the [containers\_pid\_namespace](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#use-an-isolated-pid-namespace-for-containers) compatibility flag, all processes inside the VM are visible when you connect to your Container through SSH. This flag is turned on by default for Workers with a [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) of `2026-04-01` or later.
+Without the [`containers_pid_namespace`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#use-an-isolated-pid-namespace-for-containers) compatibility flag, all processes inside the VM are visible when you connect to your Container through SSH. This flag is turned on by default for Workers with a [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) of `2026-04-01` or later.
 
 Was this helpful?
 

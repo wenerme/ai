@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Learn about SPF, DKIM, and DMARC for secure and deliverable email sending.
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/concepts/email-authentication/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/concepts/email-authentication/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Email authentication verifies sender identity and improves deliverability. **Cloudflare Email Service handles authentication automatically**, but understanding these concepts helps troubleshoot issues.
 
@@ -24,14 +24,20 @@ SPF ensures that no one else can send emails with your domain by authorizing whi
 
 Email Service configures separate SPF records for sending and routing:
 
-* **Email Sending** SPF record on `cf-bounce.yourdomain.com`:
-```txt
-TXT cf-bounce.yourdomain.com "v=spf1 include:_spf.mx.cloudflare.net ~all"
-```
-* **Email Routing** SPF record on the root domain:
-```txt
-TXT yourdomain.com "v=spf1 include:_spf.mx.cloudflare.net ~all"
-```
+- **Email Sending** SPF record on `cf-bounce.yourdomain.com`:
+
+  ```txt
+  TXT cf-bounce.yourdomain.com "v=spf1 include:_spf.mx.cloudflare.net ~all"
+  ```
+
+
+- **Email Routing** SPF record on the root domain:
+
+  ```txt
+  TXT yourdomain.com "v=spf1 include:_spf.mx.cloudflare.net ~all"
+  ```
+
+
 
 SPF works by:
 
@@ -53,8 +59,8 @@ DKIM ensures that emails have not been tampered during transit by cryptographica
 
 Email Service uses separate DKIM selectors for sending and routing:
 
-* **Email Sending**: `cf-bounce._domainkey.yourdomain.com`
-* **Email Routing**: `cf2024-1._domainkey.yourdomain.com`
+- **Email Sending**: `cf-bounce._domainkey.yourdomain.com`
+- **Email Routing**: `cf2024-1._domainkey.yourdomain.com`
 
 Cloudflare automatically generates and manages DKIM keys. You add the provided DNS records from the dashboard.
 
@@ -74,9 +80,9 @@ If the `rua` mailto address is on a different domain than the DMARC record (comm
 
 **DMARC policies:**
 
-* `p=none` \- Monitor only (recommended to start)
-* `p=quarantine` \- Quarantine suspicious emails
-* `p=reject` \- Reject unauthenticated emails
+- `p=none` - Monitor only (recommended to start)
+- `p=quarantine` - Quarantine suspicious emails
+- `p=reject` - Reject unauthenticated emails
 
 **Deployment strategy:**
 
@@ -88,9 +94,9 @@ If the `rua` mailto address is on a different domain than the DMARC record (comm
 
 Email authentication provides:
 
-* **Deliverability**: Improves inbox placement
-* **Security**: Protects your domain from spoofing
-* **Reputation**: Maintains good sender reputation with ISPs
+- **Deliverability**: Improves inbox placement
+- **Security**: Protects your domain from spoofing
+- **Reputation**: Maintains good sender reputation with ISPs
 
 Cloudflare Email Service handles authentication automatically, but you need to configure the DNS records for SPF, DKIM, and DMARC as provided in your dashboard. Email Sending and Email Routing use separate DNS records -- refer to [Domain configuration](https://developers.cloudflare.com/email-service/configuration/domains/) for the full details.
 

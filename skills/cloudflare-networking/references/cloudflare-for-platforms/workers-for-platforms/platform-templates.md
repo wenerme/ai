@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Platform templates
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/platform-templates/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/platform-templates/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Deploy a fully working platform to your Cloudflare account and customize it for your use case.
 
-* [Platform Starter Kit](https://github.com/cloudflare/templates/tree/main/worker-publisher-template)
-* [Deploy an AI vibe coding platform](https://github.com/cloudflare/vibesdk)
-* [Deploy an Internal Static Sites Platform](https://github.com/cloudflare/templates/tree/main/internal-sites-template)
+- [Platform Starter Kit](https://github.com/cloudflare/templates/tree/main/worker-publisher-template)
+- [Deploy an AI vibe coding platform](https://github.com/cloudflare/vibesdk)
+- [Deploy an Internal Static Sites Platform](https://github.com/cloudflare/templates/tree/main/internal-sites-template)
 
 Was this helpful?
 

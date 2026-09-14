@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Network operators
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/1.1.1.1/infrastructure/network-operators/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/infrastructure/network-operators/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Network operators, including Internet Service Providers (ISPs), device manufacturers, public Wi-Fi networks, municipal broadband providers, and security scanning services can use [1.1.1.1](https://developers.cloudflare.com/1.1.1.1/setup/) in place of operating their own recursive DNS infrastructure — DNS servers that resolve queries on behalf of clients by querying authoritative nameservers across the internet.
 
@@ -26,9 +26,9 @@ The 1.1.1.1 resolver was designed with a privacy-first approach. Refer to our [d
 
 There are multiple ways to use 1.1.1.1 as an operator:
 
-* Including a [DNS over HTTPS](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/) or [DNS over TLS](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-tls/) proxy on end-user routers or devices (best for privacy).
-* Pushing 1.1.1.1 to devices via DHCP/PPP (the protocols operators use to automatically assign network settings, including DNS servers, to devices) within an operator network (recommended; most practical).
-* Having a DNS proxy on an edge router make requests to 1.1.1.1 on behalf of all connected devices.
+- Including a [DNS over HTTPS](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/) or [DNS over TLS](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-tls/) proxy on end-user routers or devices (best for privacy).
+- Pushing 1.1.1.1 to devices via DHCP/PPP (the protocols operators use to automatically assign network settings, including DNS servers, to devices) within an operator network (recommended; most practical).
+- Having a DNS proxy on an edge router make requests to 1.1.1.1 on behalf of all connected devices.
 
 Where possible, we recommend using encrypted transports (DNS over HTTPS or TLS) for queries, as this provides the highest degree of privacy for users over last-mile networks (the final segment of connectivity between the operator and the end user).
 
@@ -42,11 +42,11 @@ If you require additional controls over our public 1.1.1.1 resolver, [contact us
 
 The publicly available endpoints for 1.1.1.1 are detailed in the following table. Each resolver variant serves a different filtering level: the unfiltered resolver performs standard DNS resolution with no content blocking, the Malware variant blocks queries to domains associated with malware and phishing, and the Adult Content + Malware variant blocks adult content in addition to malware and phishing.
 
-| Resolver                           | IPv4 address    | IPv6  address                             | DNS over  HTTPS endpoint                      | DNS over  TLS endpoint      |
-| ---------------------------------- | --------------- | ----------------------------------------- | --------------------------------------------- | --------------------------- |
-| 1.1.1.1 (unfiltered)               | 1.1.1.1 1.0.0.1 | 2606:4700:4700::1111 2606:4700:4700::1001 | https://cloudflare-dns.com/dns-query          | one.one.one.one             |
-| Families (Malware)                 | 1.1.1.2 1.0.0.2 | 2606:4700:4700::1112 2606:4700:4700::1002 | https://security.cloudflare-dns.com/dns-query | security.cloudflare-dns.com |
-| Families (Adult Content + Malware) | 1.1.1.3 1.0.0.3 | 2606:4700:4700::1113 2606:4700:4700::1003 | https://family.cloudflare-dns.com/dns-query   | family.cloudflare-dns.com   |
+| Resolver | IPv4 address | IPv6 <br> address | DNS over <br> HTTPS endpoint | DNS over <br> TLS endpoint |
+| --- | --- | --- | --- | --- |
+| 1.1.1.1 <br>(unfiltered) | `1.1.1.1` <br> `1.0.0.1` | `2606:4700:4700::1111` <br> `2606:4700:4700::1001` | `https://cloudflare-dns.com/dns-query` | `one.one.one.one` |
+| Families <br>(Malware) | `1.1.1.2` <br> `1.0.0.2` | `2606:4700:4700::1112` <br> `2606:4700:4700::1002` | `https://security.cloudflare-dns.com/dns-query` | `security.cloudflare-dns.com` |
+| Families <br>(Adult Content + Malware) | `1.1.1.3` <br> `1.0.0.3` | `2606:4700:4700::1113` <br> `2606:4700:4700::1003` | `https://family.cloudflare-dns.com/dns-query` | `family.cloudflare-dns.com` |
 
 You may wish to provide end users with options to change from the default 1.1.1.1 resolver to one of the [1.1.1.1 for Families](https://developers.cloudflare.com/1.1.1.1/setup/#1111-for-families) endpoints.
 
@@ -56,8 +56,8 @@ Operators using 1.1.1.1 for typical Internet-facing applications and/or users sh
 
 Best practices include:
 
-* Avoiding tunneling or proxying all queries from a single IP address at high rates. Distributing queries across multiple public IPs will improve this without impacting cache hit rates (caches are regional).
-* A high rate of "uncacheable" responses (such as `SERVFAIL`, a DNS response code indicating the server failed to complete the query) against the same domain may be rate limited to protect upstream, authoritative nameservers (the DNS servers that hold the official records for a domain). Many authoritative nameservers enforce their own rate limits, and we strive to avoid overloading third party infrastructure where possible.
+- Avoiding tunneling or proxying all queries from a single IP address at high rates. Distributing queries across multiple public IPs will improve this without impacting cache hit rates (caches are regional).
+- A high rate of "uncacheable" responses (such as `SERVFAIL`, a DNS response code indicating the server failed to complete the query) against the same domain may be rate limited to protect upstream, authoritative nameservers (the DNS servers that hold the official records for a domain). Many authoritative nameservers enforce their own rate limits, and we strive to avoid overloading third party infrastructure where possible.
 
 ## Help
 

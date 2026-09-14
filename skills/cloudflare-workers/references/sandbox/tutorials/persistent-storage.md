@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Data persistence with R2
 
-Last updated May 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/persistent-storage/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/persistent-storage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Mount object storage buckets as local filesystem paths to persist data across sandbox lifecycles. This tutorial uses Cloudflare R2, but the same approach works with any S3-compatible provider.
 
@@ -26,25 +26,33 @@ A Worker that processes data, stores results in an R2 bucket mounted as a local 
 
 **Key concepts you'll learn**:
 
-* Mounting R2 buckets as filesystem paths
-* Automatic data persistence across sandbox lifecycles
-* Working with mounted storage using standard file operations
+- Mounting R2 buckets as filesystem paths
+- Automatic data persistence across sandbox lifecycles
+- Working with mounted storage using standard file operations
 
 ## Prerequisites
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
+
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
 
 You'll also need:
 
-* [Docker ↗](https://www.docker.com/) running locally
-* An R2 bucket (create one in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/r2))
+- [Docker ↗](https://www.docker.com/) running locally
+- An R2 bucket (create one in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/r2))
 
-## 1\. Create your project
+## 1. Create your project
 
 npmyarnpnpm
 
@@ -64,9 +72,11 @@ pnpm create cloudflare@latest data-pipeline --template=cloudflare/sandbox-sdk/ex
 cd data-pipeline
 ```
 
-## 2\. Configure R2 binding
+## 2. Configure R2 binding
 
 Add an R2 bucket binding to your `wrangler.json`:
+
+*wrangler.jsonjson*
 
 ```json
 {
@@ -88,7 +98,7 @@ Add an R2 bucket binding to your `wrangler.json`:
 
 Replace `my-data-bucket` with your R2 bucket name. Create the bucket first in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/r2).
 
-## 3\. Build the data processor
+## 3. Build the data processor
 
 Replace `src/index.ts` with code that mounts R2 and processes data:
 
@@ -300,13 +310,13 @@ Try this flow:
 
 Replace YOUR\_ACCOUNT\_ID
 
-Replace `YOUR_ACCOUNT_ID` in the endpoint URL with your Cloudflare account ID. Find it in the [dashboard ↗](https://dash.cloudflare.com/) under **R2** \> **Overview**.
+Replace `YOUR_ACCOUNT_ID` in the endpoint URL with your Cloudflare account ID. Find it in the [dashboard ↗](https://dash.cloudflare.com/) under **R2** > **Overview**.
 
-## 4\. Deploy to production
+## 4. Deploy to production
 
 **Generate R2 API tokens:**
 
-1. Go to **R2** \> **Overview** in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/)
+1. Go to **R2** > **Overview** in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/)
 2. Select **Manage R2 API Tokens**
 3. Create a token with **Object Read & Write** permissions
 4. Copy the **Access Key ID** and **Secret Access Key**
@@ -331,7 +341,7 @@ npx wrangler deploy
 
 After deployment, wrangler outputs your Worker URL (e.g., `https://data-pipeline.yourname.workers.dev`).
 
-## 5\. Test the persistence flow
+## 5. Test the persistence flow
 
 Now test against your deployed Worker. Replace `YOUR_WORKER_URL` with your actual Worker URL:
 
@@ -359,23 +369,23 @@ The key insight: After destroying the sandbox, the next request creates a new sa
 
 In this tutorial, you built a data pipeline that demonstrates filesystem persistence through R2 bucket mounting:
 
-* **Mounting buckets**: Use `mountBucket()` to make R2 accessible as a local directory
-* **Standard file operations**: Access mounted buckets using familiar filesystem commands (`cat`, Python `open()`, etc.)
-* **Automatic persistence**: Data written to mounted directories survives sandbox destruction
-* **Choose the right persistence model**: Use bucket mounts for external storage directories such as `/data`, and consider backup and restore when you need a persistent workspace under `/workspace`
-* **Credential management**: Configure R2 access using environment variables or explicit credentials
+- **Mounting buckets**: Use `mountBucket()` to make R2 accessible as a local directory
+- **Standard file operations**: Access mounted buckets using familiar filesystem commands ( `cat`, Python `open()`, etc.)
+- **Automatic persistence**: Data written to mounted directories survives sandbox destruction
+- **Choose the right persistence model**: Use bucket mounts for external storage directories such as `/data`, and consider backup and restore when you need a persistent workspace under `/workspace`
+- **Credential management**: Configure R2 access using environment variables or explicit credentials
 
 ## Next steps
 
-* [Mount buckets guide](https://developers.cloudflare.com/sandbox/guides/mount-buckets/) \- Comprehensive mounting reference
-* [Storage API](https://developers.cloudflare.com/sandbox/api/storage/) \- Complete API documentation
-* [Environment variables](https://developers.cloudflare.com/sandbox/configuration/environment-variables/) \- Credential configuration options
+- [Mount buckets guide](https://developers.cloudflare.com/sandbox/guides/mount-buckets/) - Comprehensive mounting reference
+- [Storage API](https://developers.cloudflare.com/sandbox/api/storage/) - Complete API documentation
+- [Environment variables](https://developers.cloudflare.com/sandbox/configuration/environment-variables/) - Credential configuration options
 
 ## Related resources
 
-* [R2 documentation](https://developers.cloudflare.com/r2/) \- Learn about Cloudflare R2
-* [Background processes guide](https://developers.cloudflare.com/sandbox/guides/background-processes/) \- Long-running data processing
-* [Sandboxes concept](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) \- Understanding sandbox lifecycle
+- [R2 documentation](https://developers.cloudflare.com/r2/) - Learn about Cloudflare R2
+- [Background processes guide](https://developers.cloudflare.com/sandbox/guides/background-processes/) - Long-running data processing
+- [Sandboxes concept](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) - Understanding sandbox lifecycle
 
 Was this helpful?
 

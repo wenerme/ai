@@ -12,12 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Serve private images
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/optimization/hosted-images/serve-private-images/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/hosted-images/serve-private-images/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can serve private images by using signed URL tokens. When an image requires a signed URL, the image cannot be accessed without a token unless it is being requested for a variant set to always allow public access.
 
-1. In the Cloudflare dashboard, go to the **Hosted Images** page.
-[Go to **Hosted images** ↗](https://dash.cloudflare.com/?to=/:account/images/hosted)
+1. In the Cloudflare dashboard, go to the **Hosted Images** page. [Go to **Hosted images** ↗](https://dash.cloudflare.com/?to=/:account/images/hosted)
 2. Select **Keys**.
 3. Copy your key and use it to generate an expiring tokenized URL.
 
@@ -33,7 +32,7 @@ The Worker accepts a regular Images URL and returns a signed URL that expires af
 
 Note
 
-Never hardcode your signing key in source code. Store it as a secret using [npx wrangler secret put](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret) and access it via the `env` parameter. For more information, refer to [Secrets](https://developers.cloudflare.com/workers/configuration/secrets/).
+Never hardcode your signing key in source code. Store it as a secret using [`npx wrangler secret put`](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret) and access it via the `env` parameter. For more information, refer to [Secrets](https://developers.cloudflare.com/workers/configuration/secrets/).
 
 ```js
 const EXPIRATION = 60 * 60 * 24; // 1 day

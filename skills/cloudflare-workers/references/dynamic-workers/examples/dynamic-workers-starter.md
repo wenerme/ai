@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Dynamic Workers Starter
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dynamic-workers/examples/dynamic-workers-starter/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/examples/dynamic-workers-starter/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A [starter template ↗](https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers) for deploying a Worker that loads and runs [Dynamic Workers](https://developers.cloudflare.com/dynamic-workers/).
 
@@ -47,8 +47,8 @@ binding = "LOADER"
 
 In this example:
 
-* `env.LOADER.load()` creates a one-off dynamic isolate
-* `globalOutbound: null` blocks all outbound network access from the Dynamic Worker
+- `env.LOADER.load()` creates a one-off dynamic isolate
+- `globalOutbound: null` blocks all outbound network access from the Dynamic Worker
 
 ```js
 export default {

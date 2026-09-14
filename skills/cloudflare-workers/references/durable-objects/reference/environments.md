@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Environments
 
-Last updated Jul 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/reference/environments/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/reference/environments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Environments provide isolated spaces where your code runs with specific dependencies and configurations. This can be useful for a number of reasons, such as compatibility testing or version management. Using different environments can help with code consistency, testing, and production segregation, which reduces the risk of errors when deploying code.
 
@@ -123,8 +123,7 @@ KV-backed Durable Objects support remote development using the dashboard playgro
 
 To start remote development:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select an existing Worker.
 3. Select the **Edit code** icon located on the upper-right of the screen.
 

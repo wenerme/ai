@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting Advanced TCP Protection
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Mode transition behavior
 
@@ -32,12 +32,12 @@ When you switch directly from Disabled to Mitigation (Enabled), Advanced TCP Pro
 
 Check the **Mitigation reason** field in the **Advanced TCP Protection** tab of [Network Analytics](https://developers.cloudflare.com/analytics/network-analytics/) and use the reason to identify the cause:
 
-| Mitigation reason                | Likely cause                                                                              | Action                                                                                                  |
-| -------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| **Not found**                    | Learning period was incomplete, or long-lived connections pre-date ATP activation         | Set to Monitoring mode for 4+ hours, then switch to Mitigation (Enabled)                                |
-| **Unexpected**                   | ECMP rehashing — packets from the same flow arriving at different Cloudflare data centers | Set to Monitoring mode; increase burst sensitivity threshold for affected colos; escalate if persistent |
-| **Out of sequence**              | Packet reordering or packet loss in the network path                                      | Increase burst sensitivity threshold for the affected colo                                              |
-| Drops during traffic spikes only | Burst sensitivity threshold too low                                                       | Increase burst sensitivity (keep rate sensitivity the same)                                             |
+| Mitigation reason | Likely cause | Action |
+| --- | --- | --- |
+| **Not found** | Learning period was incomplete, or long-lived connections pre-date ATP activation | Set to Monitoring mode for 4+ hours, then switch to Mitigation (Enabled) |
+| **Unexpected** | ECMP rehashing — packets from the same flow arriving at different Cloudflare data centers | Set to Monitoring mode; increase burst sensitivity threshold for affected colos; escalate if persistent |
+| **Out of sequence** | Packet reordering or packet loss in the network path | Increase burst sensitivity threshold for the affected colo |
+| Drops during traffic spikes only | Burst sensitivity threshold too low | Increase burst sensitivity (keep rate sensitivity the same) |
 
 **Threshold tuning:** Adjust burst sensitivity before rate sensitivity. Burst sensitivity handles momentary spikes; rate sensitivity controls sustained packet rates.
 
@@ -45,14 +45,14 @@ Check the **Mitigation reason** field in the **Advanced TCP Protection** tab of 
 
 The ATP allowlist allows you to bypass mitigation for specific source IP prefixes. However:
 
-* The allowlist supports approximately **200 IP addresses per allowlist expression**. For more information, refer to [Add an IP or prefix to the allowlist](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/how-to/add-prefix-allowlist/).
-* The allowlist is **not a security control** — it is bypass-by-IP-address, which is vulnerable to IP address spoofing. Do not add large IP ranges (for example, entire data center IP blocks) to the allowlist.
-* For large-scale legitimate traffic sources, prefer adjusting rule sensitivities rather than adding broad allowlist entries.
+- The allowlist supports approximately **200 IP addresses per allowlist expression**. For more information, refer to [Add an IP or prefix to the allowlist](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/how-to/add-prefix-allowlist/).
+- The allowlist is **not a security control** — it is bypass-by-IP-address, which is vulnerable to IP address spoofing. Do not add large IP ranges (for example, entire data center IP blocks) to the allowlist.
+- For large-scale legitimate traffic sources, prefer adjusting rule sensitivities rather than adding broad allowlist entries.
 
 ## Known limitations
 
-* **TCP only:** Advanced TCP Protection covers TCP traffic. UDP and ICMP flood attacks are handled by [HTTP DDoS Attack Protection managed rulesets](https://developers.cloudflare.com/ddos-protection/managed-rulesets/) or [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) rules.
-* **ECMP "shifty flows":** When packets from the same TCP flow arrive at different Cloudflare data centers (due to ECMP load balancing upstream), ATP loses connection state and may drop packets with the **Unexpected** mitigation reason. This is a known architecture constraint. Mitigation: reduce burst sensitivity or adjust per-colo thresholds for affected colos.
+- **TCP only:** Advanced TCP Protection covers TCP traffic. UDP and ICMP flood attacks are handled by [HTTP DDoS Attack Protection managed rulesets](https://developers.cloudflare.com/ddos-protection/managed-rulesets/) or [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) rules.
+- **ECMP "shifty flows":** When packets from the same TCP flow arrive at different Cloudflare data centers (due to ECMP load balancing upstream), ATP loses connection state and may drop packets with the **Unexpected** mitigation reason. This is a known architecture constraint. Mitigation: reduce burst sensitivity or adjust per-colo thresholds for affected colos.
 
 ## Attacks not being blocked (false negatives)
 

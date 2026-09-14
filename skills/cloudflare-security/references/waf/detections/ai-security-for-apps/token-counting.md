@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Token counting
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/token-counting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/token-counting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Security for Apps (formerly Firewall for AI) provides an estimated token count for each incoming LLM prompt. This lets you monitor prompt sizes, set limits on overly long prompts, and track token usage across your AI endpoints.
 
 ## How token counting works
 
-When AI Security for Apps processes a request to a `cf-llm` labeled endpoint, it calculates an approximate token count for the prompt content. The result is available in the **LLM Token count** ([cf.llm.prompt.token\_count](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.token%5Fcount/)) field, which you can reference in rule expressions and view in analytics.
+When AI Security for Apps processes a request to a `cf-llm` labeled endpoint, it calculates an approximate token count for the prompt content. The result is available in the **LLM Token count** ([`cf.llm.prompt.token_count`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.token_count/)) field, which you can reference in rule expressions and view in analytics.
 
 Note
 
@@ -30,10 +30,11 @@ Note
 
 Set a hard threshold to block prompts that exceed a certain estimated token count. This prevents unexpectedly large inputs from reaching your model.
 
-* **When incoming requests match**:
-Enter the following expression in the editor:
-`(cf.llm.prompt.token_count gt 4000)`
-* **Action**: _Block_
+- **When incoming requests match**:
+
+  Enter the following expression in the editor:
+  `(cf.llm.prompt.token_count gt 4000)`
+- **Action**: *Block*
 
 ### Rate limit large prompts
 
@@ -42,7 +43,7 @@ Create a [rate limiting rule](https://developers.cloudflare.com/waf/rate-limitin
 Enter the following rule expression in the editor:
 `(cf.llm.prompt.token_count gt 2000)`
 
-Set the rate to, for example, 10 requests per minute per IP, with an action of _Block_ or _Managed Challenge_.
+Set the rate to, for example, 10 requests per minute per IP, with an action of *Block* or *Managed Challenge*.
 
 ### Combine token count with other detections
 
@@ -53,9 +54,9 @@ Example rule expression:
 
 ## Important considerations
 
-* **Estimate only.** The token count is a general approximation. Actual token consumption at your model may differ depending on the model's tokenizer.
-* **Input tokens only.** The token count reflects the incoming prompt. It does not estimate output or response tokens.
-* **Extracted prompt only.** The token count is calculated on the prompt text extracted from the request body. Cloudflare extracts the prompt using a set of known JSON paths for major LLM providers. When the prompt cannot be extracted, Cloudflare uses the full request body as a fallback. In these situations, token count will reflect the full request body.
+- **Estimate only.** The token count is a general approximation. Actual token consumption at your model may differ depending on the model's tokenizer.
+- **Input tokens only.** The token count reflects the incoming prompt. It does not estimate output or response tokens.
+- **Extracted prompt only.** The token count is calculated on the prompt text extracted from the request body. Cloudflare extracts the prompt using a set of known JSON paths for major LLM providers. When the prompt cannot be extracted, Cloudflare uses the full request body as a fallback. In these situations, token count will reflect the full request body.
 
 Was this helpful?
 

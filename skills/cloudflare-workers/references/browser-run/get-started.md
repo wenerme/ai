@@ -12,25 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated May 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Browser Run (formerly Browser Rendering) allows you to programmatically control a headless browser, enabling you to do things like take screenshots, generate PDFs, and perform automated browser tasks. This guide will help you choose the right integration method and get you started with your first project.
 
 Browser Run offers two categories of integration methods:
 
-* **[Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/)**: Simple, stateless browser tasks like screenshots, PDFs, and scraping. No code deployment needed.
-* **Browser Sessions**: Direct browser control via [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), [CDP](https://developers.cloudflare.com/browser-run/cdp/), or [Stagehand](https://developers.cloudflare.com/browser-run/stagehand/). Deploy within Cloudflare Workers or connect from any environment via CDP.
+- **[Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/)**: Simple, stateless browser tasks like screenshots, PDFs, and scraping. No code deployment needed.
+- **Browser Sessions**: Direct browser control via [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), [CDP](https://developers.cloudflare.com/browser-run/cdp/), or [Stagehand](https://developers.cloudflare.com/browser-run/stagehand/). Deploy within Cloudflare Workers or connect from any environment via CDP.
 
-| Use case                                    | Recommended                                                                                                                                                                                                  | Why                                                              |
-| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------- |
-| Simple screenshot, PDF, or scrape           | [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/)                                                                                                                                | No code deployment; single HTTP request                          |
-| Browser automation                          | [Playwright](https://developers.cloudflare.com/browser-run/playwright/), [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), or [CDP](https://developers.cloudflare.com/browser-run/cdp/) | Full browser control with scripting                              |
-| Porting existing scripts                    | [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), or [CDP](https://developers.cloudflare.com/browser-run/cdp/) | Minimal code changes from standard libraries                     |
-| AI-powered data extraction                  | [JSON endpoint](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/)                                                                                                                  | Structured data via natural language prompts                     |
-| Site-wide crawling                          | [Crawl endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/)                                                                                                                | Multi-page content extraction with async results                 |
-| AI agent browsing                           | [Playwright MCP](https://developers.cloudflare.com/browser-run/playwright/playwright-mcp/) or [CDP with MCP clients](https://developers.cloudflare.com/browser-run/cdp/mcp-clients/)                         | LLMs control browsers via MCP                                    |
-| Resilient scraping                          | [Stagehand](https://developers.cloudflare.com/browser-run/stagehand/)                                                                                                                                        | AI finds elements by intent, not selectors                       |
-| Direct browser control from any environment | [CDP](https://developers.cloudflare.com/browser-run/cdp/)                                                                                                                                                    | WebSocket access from local machines, CI/CD, or external servers |
+| Use case | Recommended | Why |
+| --- | --- | --- |
+| Simple screenshot, PDF, or scrape | [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/) | No code deployment; single HTTP request |
+| Browser automation | [Playwright](https://developers.cloudflare.com/browser-run/playwright/), [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), or [CDP](https://developers.cloudflare.com/browser-run/cdp/) | Full browser control with scripting |
+| Porting existing scripts | [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), or [CDP](https://developers.cloudflare.com/browser-run/cdp/) | Minimal code changes from standard libraries |
+| AI-powered data extraction | [JSON endpoint](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/) | Structured data via natural language prompts |
+| Site-wide crawling | [Crawl endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/) | Multi-page content extraction with async results |
+| AI agent browsing | [Playwright MCP](https://developers.cloudflare.com/browser-run/playwright/playwright-mcp/) or [CDP with MCP clients](https://developers.cloudflare.com/browser-run/cdp/mcp-clients/) | LLMs control browsers via MCP |
+| Resilient scraping | [Stagehand](https://developers.cloudflare.com/browser-run/stagehand/) | AI finds elements by intent, not selectors |
+| Direct browser control from any environment | [CDP](https://developers.cloudflare.com/browser-run/cdp/) | WebSocket access from local machines, CI/CD, or external servers |
 
 ## Quick Actions
 
@@ -38,8 +38,8 @@ Quick Actions can be used via the REST API or directly from a Cloudflare Worker 
 
 ### Prerequisites
 
-* Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-* Create a [Cloudflare API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permissions.
+- Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
+- Create a [Cloudflare API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permissions.
 
 ### Example: Take a screenshot
 
@@ -55,12 +55,12 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
 ### Prerequisites
 
-* Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-* Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+- Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
+- Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 ### Example: Take a screenshot from a Worker
 
-#### 1\. Create a Worker project
+#### 1. Create a Worker project
 
 Create a new Worker project named `browser-quick-action` by running:
 
@@ -80,13 +80,13 @@ pnpm create cloudflare@latest browser-quick-action
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `TypeScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `TypeScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
-#### 2\. Configure the browser binding
+#### 2. Configure the browser binding
 
 Update your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with a browser [binding](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings):
 
@@ -96,7 +96,7 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
   "name": "browser-quick-action",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-08-25",
+  "compatibility_date": "2026-09-14",
   "browser": {
     "binding": "BROWSER"
   }
@@ -107,7 +107,7 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
 name = "browser-quick-action"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [browser]
 binding = "BROWSER"
@@ -117,7 +117,7 @@ Caution
 
 Using the `.quickAction()` method requires a `compatibility_date` of `2026-03-24` or later.
 
-#### 3\. Write the Worker code
+#### 3. Write the Worker code
 
 Replace the contents of `src/index.ts` with the following:
 
@@ -147,7 +147,7 @@ export default {
 
 This Worker uses the browser binding to take a screenshot of `example.com` and returns the image directly in the response.
 
-#### 4\. Test
+#### 4. Test
 
 Run `npx wrangler dev --remote` to test your Worker locally.
 
@@ -157,15 +157,15 @@ To interact with a real headless browser during local development, set `"remote"
 
 Visit your local URL to see the screenshot.
 
-#### 5\. Deploy
+#### 5. Deploy
 
 Run `npx wrangler deploy` to deploy your Worker to the Cloudflare global network.
 
 Other Quick Actions endpoints include:
 
-* [Fetch HTML](https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/)
-* [Generate a PDF](https://developers.cloudflare.com/browser-run/quick-actions/pdf-endpoint/)
-* [Crawl web content](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/)
+- [Fetch HTML](https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/)
+- [Generate a PDF](https://developers.cloudflare.com/browser-run/quick-actions/pdf-endpoint/)
+- [Crawl web content](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/)
 
 Check out the full list of [Quick Actions endpoints](https://developers.cloudflare.com/browser-run/quick-actions/).
 
@@ -174,15 +174,23 @@ Check out the full list of [Quick Actions endpoints](https://developers.cloudfla
 ### Prerequisites
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
+
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
 
 ### Example: Navigate to a URL, take a screenshot, and store in KV
 
-#### 1\. Create a Worker project
+#### 1. Create a Worker project
 
 [Cloudflare Workers](https://developers.cloudflare.com/workers/) provides a serverless execution environment that allows you to create new applications or augment existing ones without configuring or maintaining infrastructure. Your Worker application is a container to interact with a headless browser to do actions, such as taking screenshots.
 
@@ -204,13 +212,13 @@ pnpm create cloudflare@latest browser-worker
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `JavaScript / TypeScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `JavaScript / TypeScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
-#### 2\. Install Puppeteer
+#### 2. Install Puppeteer
 
 In your `browser-worker` directory, install Cloudflare’s [fork of Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/):
 
@@ -232,7 +240,7 @@ pnpm add -D @cloudflare/puppeteer
 bun add -d @cloudflare/puppeteer
 ```
 
-#### 3\. Create a KV namespace
+#### 3. Create a KV namespace
 
 Browser Run can be used with other developer products. You might need a [relational database](https://developers.cloudflare.com/d1/), an [R2 bucket](https://developers.cloudflare.com/r2/) to archive your crawled pages and assets, a [Durable Object](https://developers.cloudflare.com/durable-objects/) to keep your browser instance alive and share it with multiple requests, or [Queues](https://developers.cloudflare.com/queues/) to handle your jobs asynchronously.
 
@@ -247,7 +255,7 @@ npx wrangler kv namespace create BROWSER_KV_DEMO --preview
 
 Take note of the IDs for the next step.
 
-#### 4\. Configure the Wrangler configuration file
+#### 4. Configure the Wrangler configuration file
 
 Configure your `browser-worker` project's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) by adding a browser [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) and a [Node.js compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag). Bindings allow your Workers to interact with resources on the Cloudflare developer platform. Your browser `binding` name is set by you, this guide uses the name `MYBROWSER`. Browser bindings allow for communication between a Worker and a headless browser which allows you to do actions such as taking a screenshot, generating a PDF, and more.
 
@@ -259,7 +267,7 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
 	"name": "browser-worker",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"compatibility_flags": ["nodejs_compat"],
 	"browser": {
 		"binding": "MYBROWSER"
@@ -279,7 +287,7 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
 name = "browser-worker"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 compatibility_flags = [ "nodejs_compat" ]
 
 [browser]
@@ -291,7 +299,7 @@ id = "22cf855786094a88a6906f8edac425cd"
 preview_id = "e1f8b68b68d24381b57071445f96e623"
 ```
 
-#### 5\. Code
+#### 5. Code
 
 Update `src/index.js` with your Worker code:
 
@@ -374,7 +382,7 @@ If your Worker is running in production, it will store the screenshot to the pro
 
 If the same `url` is requested again, it will use the cached version in KV instead, unless it expired.
 
-#### 6\. Test
+#### 6. Test
 
 Run `npx wrangler dev` to test your Worker locally.
 
@@ -386,7 +394,7 @@ To test taking your first screenshot, go to the following URL:
 
 `<LOCAL_HOST_URL>/?url=https://example.com`
 
-#### 7\. Deploy
+#### 7. Deploy
 
 Run `npx wrangler deploy` to deploy your Worker to the Cloudflare global network.
 
@@ -398,10 +406,10 @@ To take your first screenshot, go to the following URL:
 
 ## Next steps
 
-* Check out all the [Quick Actions endpoints](https://developers.cloudflare.com/browser-run/quick-actions/)
-* Try out the [Playwright MCP](https://developers.cloudflare.com/browser-run/playwright/playwright-mcp/)
-* Connect from any environment using [CDP](https://developers.cloudflare.com/browser-run/cdp/)
-* Learn more about Browser Run [limits](https://developers.cloudflare.com/browser-run/limits/) and [pricing](https://developers.cloudflare.com/browser-run/pricing/)
+- Check out all the [Quick Actions endpoints](https://developers.cloudflare.com/browser-run/quick-actions/)
+- Try out the [Playwright MCP](https://developers.cloudflare.com/browser-run/playwright/playwright-mcp/)
+- Connect from any environment using [CDP](https://developers.cloudflare.com/browser-run/cdp/)
+- Learn more about Browser Run [limits](https://developers.cloudflare.com/browser-run/limits/) and [pricing](https://developers.cloudflare.com/browser-run/pricing/)
 
 If you have any feature requests or notice any bugs, share your feedback directly with the Cloudflare team by joining the [Cloudflare Developers community on Discord ↗](https://discord.cloudflare.com/).
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Deploy a Worker
 
-Last updated Oct 13, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pulumi/tutorial/hello-world/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pulumi/tutorial/hello-world/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will follow step-by-step instructions to deploy a Hello World application using Cloudflare Workers and Pulumi infrastructure as code (IaC) to familiarize yourself with the resource management lifecycle. In particular, you will create a Worker, a Route, and a DNS Record to access the application before cleaning up all the resources.
 
@@ -24,16 +24,16 @@ You will provision resources that qualify under free tier offerings for both Pul
 
 Ensure you have:
 
-* A Cloudflare account and API Token with permission to edit the resources in this tutorial. If you need to, sign up for a [Cloudflare account ↗](https://www.cloudflare.com/sign-up) before continuing. Your token must have the following:
-  * `Account-Workers Scripts-Edit` permission
-  * `Zone-Workers Route-Edit` permission
-  * `Zone-DNS-Edit` permission
-* A Pulumi Cloud account. You can sign up for an [always-free individual tier ↗](https://app.pulumi.com/signup).
-* The [Pulumi CLI](https://developers.cloudflare.com/pulumi/installing/) is installed on your machine.
-* A [Pulumi-supported programming language ↗](https://github.com/pulumi/pulumi?tab=readme-ov-file#languages) configured. (TypeScript, JavaScript, Python, Go, .NET, Java, or use YAML)
-* A Cloudflare-managed domain. Complete the [Add a site tutorial](https://developers.cloudflare.com/pulumi/tutorial/add-site/) to bring your existing domain under Cloudflare.
+- A Cloudflare account and API Token with permission to edit the resources in this tutorial. If you need to, sign up for a [Cloudflare account ↗](https://www.cloudflare.com/sign-up) before continuing. Your token must have the following:
+  - `Account-Workers Scripts-Edit` permission
+  - `Zone-Workers Route-Edit` permission
+  - `Zone-DNS-Edit` permission
+- A Pulumi Cloud account. You can sign up for an [always-free individual tier ↗](https://app.pulumi.com/signup).
+- The [Pulumi CLI](https://developers.cloudflare.com/pulumi/installing/) is installed on your machine.
+- A [Pulumi-supported programming language ↗](https://github.com/pulumi/pulumi?tab=readme-ov-file#languages) configured. (TypeScript, JavaScript, Python, Go, .NET, Java, or use YAML)
+- A Cloudflare-managed domain. Complete the [Add a site tutorial](https://developers.cloudflare.com/pulumi/tutorial/add-site/) to bring your existing domain under Cloudflare.
 
-## 1\. Initialize your project
+## 1. Initialize your project
 
 A Pulumi project is a collection of files in a dedicated folder that describes the infrastructure you want to create. The Pulumi project folder is identified by the required `Pulumi.yaml` file. You will use the Pulumi CLI to create and configure a new project.
 
@@ -113,9 +113,9 @@ You have not defined any resources at this point, so you'll have an empty stack.
 
 In this step, you will store your application settings in a Pulumi [ESC Environment ↗](https://www.pulumi.com/docs/esc/environments/), a YAML file containing configurations and secrets. These can be accessed in several ways, including a Pulumi program. All ESC Environments securely reside in your Pulumi Cloud account and can be fully managed via the Pulumi CLI. For this tutorial, you will store the following values:
 
-* Your Cloudflare [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
-* A valid Cloudflare API [token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
-* A domain. For instance, `example.com`.
+- Your Cloudflare [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
+- A valid Cloudflare API [token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
+- A domain. For instance, `example.com`.
 
 ```sh
 # Give your new ESC Environment a name
@@ -193,7 +193,7 @@ Below are Apache Maven instructions. For other Java project managers such as Gra
 </dependency>
 ```
 
-1. Run:
+3. Run:
 
 ```sh
 mvn clean install
@@ -215,7 +215,7 @@ info : Adding PackageReference for package 'Pulumi.Cloudflare' into project
 
 There are no dependencies to download for YAML. Skip ahead.
 
-## 2\. Define Cloudflare resources in code
+## 2. Define Cloudflare resources in code
 
 With the Cloudflare package installed, you can now define any [supported Cloudflare resource ↗](https://www.pulumi.com/registry/packages/cloudflare/) in your Pulumi program. Next, define a Worker, a Route, and a DNS Record.
 
@@ -1058,7 +1058,7 @@ outputs:
   url: "https://${record.hostname}"
 ```
 
-## 3\. Deploy your application
+## 3. Deploy your application
 
 Now that you have defined all the Cloudflare resources, you can deploy the Hello World application to your Cloudflare account using the Pulumi CLI.
 
@@ -1072,7 +1072,7 @@ pulumi up --yes
 wait for the dev stack to become ready
 ```
 
-## 4\. Test the Worker
+## 4. Test the Worker
 
 You incrementally added Cloudflare resources to run and access your Hello World application. You can test your application by curling the `url` output from the Pulumi stack.
 
@@ -1084,7 +1084,7 @@ curl $(pulumi stack output url)
 Hello, World!
 ```
 
-## 5\. Clean up
+## 5. Clean up
 
 In this last step, you will clean up the resources and stack used throughout the tutorial.
 

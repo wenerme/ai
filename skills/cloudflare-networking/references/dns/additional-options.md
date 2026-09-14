@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Additional options
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/additional-options/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/additional-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Beyond [setting up your zone](https://developers.cloudflare.com/dns/zone-setups/) and [updating your DNS records](https://developers.cloudflare.com/dns/manage-dns-records/), you may want to customize the following settings in Cloudflare DNS:
 
-* [Configure DNS zone defaults](https://developers.cloudflare.com/dns/additional-options/dns-zone-defaults/)
-* [Analytics and logs](https://developers.cloudflare.com/dns/additional-options/analytics/)
-* [Reverse zones and PTR records](https://developers.cloudflare.com/dns/additional-options/reverse-zones/)
+- [Configure DNS zone defaults](https://developers.cloudflare.com/dns/additional-options/dns-zone-defaults/)
+- [Analytics and logs](https://developers.cloudflare.com/dns/additional-options/analytics/)
+- [Reverse zones and PTR records](https://developers.cloudflare.com/dns/additional-options/reverse-zones/)
 
 Was this helpful?
 

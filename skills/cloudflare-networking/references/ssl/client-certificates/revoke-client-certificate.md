@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Revoke a client certificate
 
-Last updated Sep 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/client-certificates/revoke-client-certificate/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/client-certificates/revoke-client-certificate/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can revoke a client certificate you previously generated with the default [Cloudflare-managed CA](https://developers.cloudflare.com/ssl/client-certificates/).
 
@@ -20,8 +20,7 @@ It is not possible to permanently delete client certificates generated with the 
 
 ## Steps
 
-1. In the Cloudflare dashboard, go to the **Client Certificates** page.
-[Go to **Client Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)
+1. In the Cloudflare dashboard, go to the **Client Certificates** page. [Go to **Client Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)
 2. Select the certificate you want to revoke.
 3. Select **Revoke** and confirm the operation.
 

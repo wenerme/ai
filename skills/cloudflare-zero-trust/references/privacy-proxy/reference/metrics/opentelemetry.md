@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # OpenTelemetry
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/privacy-proxy/reference/metrics/opentelemetry/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/privacy-proxy/reference/metrics/opentelemetry/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Privacy Proxy exports telemetry data using the [OpenTelemetry Protocol (OTLP) ↗](https://opentelemetry.io/docs/specs/otlp/). You can configure an endpoint to receive this data and forward it to your observability platform.
 
@@ -22,8 +22,8 @@ Privacy Proxy exports telemetry data using the [OpenTelemetry Protocol (OTLP) �
 
 During onboarding, provide Cloudflare with your OpenTelemetry collector endpoint:
 
-* **Endpoint URL**: The HTTPS endpoint where telemetry data should be sent.
-* **Authentication**: Headers or credentials required to authenticate with your collector. Supported authentication types include bearer token headers, custom header-based authentication, and mutual TLS (mTLS).
+- **Endpoint URL**: The HTTPS endpoint where telemetry data should be sent.
+- **Authentication**: Headers or credentials required to authenticate with your collector. Supported authentication types include bearer token headers, custom header-based authentication, and mutual TLS (mTLS).
 
 Cloudflare configures your Privacy Proxy instance to export telemetry to this endpoint.
 
@@ -33,10 +33,10 @@ Cloudflare configures your Privacy Proxy instance to export telemetry to this en
 
 Privacy Proxy exports the following telemetry signals:
 
-| Signal  | Description                                                                                           |
-| ------- | ----------------------------------------------------------------------------------------------------- |
-| Metrics | Connection counts, request rates, latency histograms, error rates                                     |
-| Traces  | Per-request traces showing proxy processing time. Traces are sampled at approximately 1% of requests. |
+| Signal | Description |
+| --- | --- |
+| Metrics | Connection counts, request rates, latency histograms, error rates |
+| Traces | Per-request traces showing proxy processing time. Traces are sampled at approximately 1% of requests. |
 
 ---
 
@@ -46,27 +46,27 @@ Privacy Proxy exports metrics that help you understand usage patterns and perfor
 
 ### Connection metrics
 
-| Metric                                         | Description                       |
-| ---------------------------------------------- | --------------------------------- |
-| privacy\_proxy\_connections\_total             | Total number of proxy connections |
-| privacy\_proxy\_connections\_active            | Currently active connections      |
-| privacy\_proxy\_connections\_duration\_seconds | Connection duration histogram     |
+| Metric | Description |
+| --- | --- |
+| `privacy_proxy_connections_total` | Total number of proxy connections |
+| `privacy_proxy_connections_active` | Currently active connections |
+| `privacy_proxy_connections_duration_seconds` | Connection duration histogram |
 
 ### Request metrics
 
-| Metric                                 | Description                              |
-| -------------------------------------- | ---------------------------------------- |
-| privacy\_proxy\_requests\_total        | Total CONNECT requests processed         |
-| privacy\_proxy\_requests\_by\_status   | Requests grouped by response status code |
-| privacy\_proxy\_bytes\_sent\_total     | Total bytes sent to destinations         |
-| privacy\_proxy\_bytes\_received\_total | Total bytes received from destinations   |
+| Metric | Description |
+| --- | --- |
+| `privacy_proxy_requests_total` | Total CONNECT requests processed |
+| `privacy_proxy_requests_by_status` | Requests grouped by response status code |
+| `privacy_proxy_bytes_sent_total` | Total bytes sent to destinations |
+| `privacy_proxy_bytes_received_total` | Total bytes received from destinations |
 
 ### Latency metrics
 
-| Metric                                        | Description                                 |
-| --------------------------------------------- | ------------------------------------------- |
-| privacy\_proxy\_connect\_latency\_seconds     | Time to establish connection to destination |
-| privacy\_proxy\_first\_byte\_latency\_seconds | Time to first byte from destination         |
+| Metric | Description |
+| --- | --- |
+| `privacy_proxy_connect_latency_seconds` | Time to establish connection to destination |
+| `privacy_proxy_first_byte_latency_seconds` | Time to first byte from destination |
 
 ---
 
@@ -88,6 +88,8 @@ To visualize Privacy Proxy metrics in Grafana:
 2. Export metrics from the collector to Prometheus.
 3. Create Grafana dashboards using Prometheus as a data source.
 
+*Example Prometheus queriestxt*
+
 ```txt
 # Request rate over time
 rate(privacy_proxy_requests_total[5m])
@@ -103,8 +105,8 @@ sum(rate(privacy_proxy_requests_by_status{status=~"5.."}[5m])) / sum(rate(privac
 
 ## Related resources
 
-* [OpenTelemetry documentation ↗](https://opentelemetry.io/docs/) — Learn more about OpenTelemetry concepts and configuration.
-* [GraphQL Analytics API](https://developers.cloudflare.com/privacy-proxy/reference/metrics/graphql/) — Query metrics programmatically via Cloudflare's GraphQL API.
+- [OpenTelemetry documentation ↗](https://opentelemetry.io/docs/) — Learn more about OpenTelemetry concepts and configuration.
+- [GraphQL Analytics API](https://developers.cloudflare.com/privacy-proxy/reference/metrics/graphql/) — Query metrics programmatically via Cloudflare's GraphQL API.
 
 Was this helpful?
 

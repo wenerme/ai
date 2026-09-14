@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Send SSO attributes to Access-protected origins with Workers
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/extend-sso-with-workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/extend-sso-with-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial will walk you through extending the single-sign-on (SSO) capabilities of [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) with our serverless computing platform, [Cloudflare Workers](https://developers.cloudflare.com/workers/). Specifically, this guide will demonstrate how to modify requests sent to your secured origin to include additional information from the Cloudflare Access authentication event.
 
@@ -32,91 +32,107 @@ You can extend this functionality by using a Cloudflare Worker to insert additio
 
 This approach allows you to:
 
-* **Enhance security:** By incorporating additional information from the authentication event, you can implement more robust security measures. For example, you can use device posture data to enforce access based on device compliance.
-* **Improve user experience:** You can personalize the user experience by tailoring content or functionality based on user attributes. For example, you can display different content based on the user's role or location.
-* **Simplify development:** By using Cloudflare Workers, you can easily extend your Cloudflare Access configuration without modifying your origin application code.
+- **Enhance security:** By incorporating additional information from the authentication event, you can implement more robust security measures. For example, you can use device posture data to enforce access based on device compliance.
+- **Improve user experience:** You can personalize the user experience by tailoring content or functionality based on user attributes. For example, you can display different content based on the user's role or location.
+- **Simplify development:** By using Cloudflare Workers, you can easily extend your Cloudflare Access configuration without modifying your origin application code.
 
 ## Before you begin
 
-* Add a [self-hosted application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/) to Cloudflare Access.
-* Enable the [Disk encryption](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/disk-encryption/) and [Firewall](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/firewall/) device posture checks.
-* Install [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) on your local machine.
+- Add a [self-hosted application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/) to Cloudflare Access.
+- Enable the [Disk encryption](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/disk-encryption/) and [Firewall](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/firewall/) device posture checks.
+- Install [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) on your local machine.
 
-## 1\. Create the Worker
+## 1. Create the Worker
 
-1. Create a new Workers project:
-npmyarnpnpm
-```
-npm create cloudflare@latest -- device-posture-worker
-```
-```
-yarn create cloudflare device-posture-worker
-```
-```
-pnpm create cloudflare@latest device-posture-worker
-```
-For setup, select the following options:
+1. Create a new Workers project:npmyarnpnpm
 
-  * For _What would you like to start with?_, choose `Hello World example`.
-  * For _Which template would you like to use?_, choose `Worker only`.
-  * For _Which language do you want to use?_, choose `JavaScript`.
-  * For _Do you want to use git for version control?_, choose `Yes`.
-  * For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+   ```
+   npm create cloudflare@latest -- device-posture-worker
+   ```
+
+   ```
+   yarn create cloudflare device-posture-worker
+   ```
+
+   ```
+   pnpm create cloudflare@latest device-posture-worker
+   ```
+
+   For setup, select the following options:
+   - For *What would you like to start with?*, choose `Hello World example`.
+   - For *Which template would you like to use?*, choose `Worker only`.
+   - For *Which language do you want to use?*, choose `JavaScript`.
+   - For *Do you want to use git for version control?*, choose `Yes`.
+   - For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 2. Change to the project directory:
-```sh
-$ cd device-posture-worker
-```
+
+   ```sh
+   $ cd device-posture-worker
+   ```
+
+
 3. Copy-paste the following code into `src/index.js`. Be sure to replace `<your-team-name>` with your Zero Trust team name.
-```js
-import { parse } from "cookie";
-export default {
-	async fetch(request, env, ctx) {
-		// The name of the cookie
-		const COOKIE_NAME = "CF_Authorization";
-		const CF_GET_IDENTITY =
-			"https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/get-identity";
-		const cookie = parse(request.headers.get("Cookie") || "");
-		if (cookie[COOKIE_NAME] != null) {
-			try {
-				let id = await (await fetch(CF_GET_IDENTITY, request)).json();
-				let diskEncryptionStatus = false;
-				let firewallStatus = false;
-				for (const checkId in id.devicePosture) {
-					const check = id.devicePosture[checkId];
-					if (check.type === "disk_encryption") {
-						console.log(check.type);
-						diskEncryptionStatus = check.success;
-					}
-					if (check.type === "firewall") {
-						console.log(check.type);
-						firewallStatus = check.success;
-						break;
-					}
-				}
-				//clone request (immutable otherwise) and insert posture values in new header set
-				let newRequest = await new Request(request);
-				newRequest.headers.set(
-					"Cf-Access-Firewall-Activated",
-					firewallStatus,
-				);
-				newRequest.headers.set("Cf-Access-Disk-Encrypted", firewallStatus);
-				//sent modified request to origin
-				return await fetch(newRequest);
-			} catch (e) {
-				console.log(e);
-				return await fetch(request);
-			}
-		}
-		return await fetch(request);
-	},
-};
-```
 
-## 2\. View the user's identity
+   *index.jsjs*
 
-The script in `index.js` uses the [get-identity](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/#user-identity) endpoint to fetch a user's complete identity from a Cloudflare Access authentication event. To view a list of available data fields, log in to your Access application and append `/cdn-cgi/access/get-identity` to the URL. For example, if `www.example.com` is behind Access, go to `https://www.example.com/cdn-cgi/access/get-identity`.
+
+
+   ```js
+   import { parse } from "cookie";
+   export default {
+   	async fetch(request, env, ctx) {
+   		// The name of the cookie
+   		const COOKIE_NAME = "CF_Authorization";
+   		const CF_GET_IDENTITY =
+   			"https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/get-identity";
+   		const cookie = parse(request.headers.get("Cookie") || "");
+   		if (cookie[COOKIE_NAME] != null) {
+   			try {
+   				let id = await (await fetch(CF_GET_IDENTITY, request)).json();
+   				let diskEncryptionStatus = false;
+   				let firewallStatus = false;
+
+   				for (const checkId in id.devicePosture) {
+   					const check = id.devicePosture[checkId];
+   					if (check.type === "disk_encryption") {
+   						console.log(check.type);
+   						diskEncryptionStatus = check.success;
+   					}
+   					if (check.type === "firewall") {
+   						console.log(check.type);
+   						firewallStatus = check.success;
+   						break;
+   					}
+   				}
+   				//clone request (immutable otherwise) and insert posture values in new header set
+   				let newRequest = await new Request(request);
+   				newRequest.headers.set(
+   					"Cf-Access-Firewall-Activated",
+   					firewallStatus,
+   				);
+   				newRequest.headers.set("Cf-Access-Disk-Encrypted", firewallStatus);
+
+   				//sent modified request to origin
+   				return await fetch(newRequest);
+   			} catch (e) {
+   				console.log(e);
+   				return await fetch(request);
+   			}
+   		}
+   		return await fetch(request);
+   	},
+   };
+   ```
+
+
+
+## 2. View the user's identity
+
+The script in `index.js` uses the [`get-identity`](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/#user-identity) endpoint to fetch a user's complete identity from a Cloudflare Access authentication event. To view a list of available data fields, log in to your Access application and append `/cdn-cgi/access/get-identity` to the URL. For example, if `www.example.com` is behind Access, go to `https://www.example.com/cdn-cgi/access/get-identity`.
 
 Below is an example of a user identity that includes the `disk_encryption` and `firewall` posture checks. The Worker inserts the posture check results into the request headers **Cf-Access-Firewall-Activated** and **Cf-Access-Disk-Encrypted**.
+
+*Example user identityjson*
 
 ```json
 {
@@ -184,7 +200,7 @@ Below is an example of a user identity that includes the `disk_encryption` and `
   }
 ```
 
-## 3\. Route the Worker to your application
+## 3. Route the Worker to your application
 
 In the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), [set up a route](https://developers.cloudflare.com/workers/configuration/routing/routes/) that maps the Worker to your Access application domain:
 
@@ -203,13 +219,15 @@ pattern = "app.example.com/*"
 zone_name = "example.com"
 ```
 
-## 4\. Deploy the Worker
+## 4. Deploy the Worker
 
 ```sh
 npx wrangler deploy
 ```
 
 The Worker will now insert the **Cf-Access-Firewall-Activated** and **Cf-Access-Disk-Encrypted** headers into requests that pass your application's Access policies.
+
+*Example request headersjson*
 
 ```json
 {
@@ -236,5 +254,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/extend-sso-with-workers/#page","headline":"Send SSO attributes to Access-protected origins with Workers · Cloudflare One docs","description":"This tutorial will walk you through extending the single-sign-on (SSO) capabilities of Cloudflare Access with our serverless computing platform, Cloudflare Workers.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/extend-sso-with-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSO"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/extend-sso-with-workers/#page","headline":"Send SSO attributes to Access-protected origins with Workers · Cloudflare One docs","description":"This tutorial will walk you through extending the single-sign-on (SSO) capabilities of Cloudflare Access with our serverless computing platform, Cloudflare Workers.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/extend-sso-with-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSO"]}
 ```

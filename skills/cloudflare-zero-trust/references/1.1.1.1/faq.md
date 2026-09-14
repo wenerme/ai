@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # FAQ
 
-Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/1.1.1.1/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Below you will find answers to our most commonly asked questions. If you cannot find the answer you are looking for, refer to the [community page ↗](https://community.cloudflare.com/) to explore more resources.
 
@@ -44,7 +44,7 @@ This whole system is called the [Domain Name System (DNS) ↗](https://www.cloud
 
 ## Does 1.1.1.1 support ANY?
 
-No. Cloudflare [stopped supporting the ANY query type ↗](https://blog.cloudflare.com/deprecating-dns-any-meta-query-type/) in 2015\. The `ANY` query asks a DNS server to return all record types for a domain at once. In practice, `ANY` is more often used to amplify denial-of-service attacks than for legitimate purposes. When 1.1.1.1 receives an `ANY` query, it responds with `NOTIMPL` (not implemented).
+No. Cloudflare [stopped supporting the ANY query type ↗](https://blog.cloudflare.com/deprecating-dns-any-meta-query-type/) in 2015. The `ANY` query asks a DNS server to return all record types for a domain at once. In practice, `ANY` is more often used to amplify denial-of-service attacks than for legitimate purposes. When 1.1.1.1 receives an `ANY` query, it responds with `NOTIMPL` (not implemented).
 
 ## How does 1.1.1.1 work with DNSSEC?
 
@@ -54,7 +54,9 @@ DNSSEC (Domain Name System Security Extensions) lets domain owners cryptographic
 
 ## Does 1.1.1.1 send EDNS Client Subnet header?
 
-No. 1.1.1.1 is a privacy-focused resolver and does not include client IP information in its queries to authoritative servers. It does not send the EDNS Client Subnet (ECS) header. The only exception is the Akamai debug domain `whoami.ds.akahelp.net`, which is used for cross-provider debugging. Cloudflare does not send ECS to any of Akamai's production domains, such as `akamaihd.net`.
+No. 1.1.1.1 is a privacy-focused resolver and does not include client IP information in its queries to authoritative servers. It does not send the EDNS Client Subnet (ECS)
+
+ header. The only exception is the Akamai debug domain `whoami.ds.akahelp.net`, which is used for cross-provider debugging. Cloudflare does not send ECS to any of Akamai's production domains, such as `akamaihd.net`.
 
 ## Does 1.1.1.1 support IPv6?
 

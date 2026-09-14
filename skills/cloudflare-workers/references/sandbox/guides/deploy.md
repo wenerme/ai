@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Deploy a Sandbox application
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/guides/deploy/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/guides/deploy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Sandbox runs on [Containers](https://developers.cloudflare.com/containers/). For deploy commands, Workers Builds, and rollout flags, refer to [Deploy Containers](https://developers.cloudflare.com/containers/guides/deploy/) and [Rollouts](https://developers.cloudflare.com/containers/configuration/rollouts/).
 
@@ -32,35 +32,42 @@ When you bump the npm package:
 
 1. Update the Dockerfile or image reference for the same line.
 2. Run `wrangler deploy` so the new image is published.
-3. If the Worker and image must cut over together, deploy with an immediate rollout:
-npmyarnpnpm
-```
-npx wrangler deploy --containers-rollout=immediate
-```
-```
-yarn wrangler deploy --containers-rollout=immediate
-```
-```
-pnpm wrangler deploy --containers-rollout=immediate
-```
-Use this for stable to `@next` cutovers and other breaking package/image pairs. Refer to [Migrate](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/#deploy-the-cutover) and [Rollouts](https://developers.cloudflare.com/containers/configuration/rollouts/).
+3. If the Worker and image must cut over together, deploy with an immediate rollout:npmyarnpnpm
+
+   ```
+   npx wrangler deploy --containers-rollout=immediate
+   ```
+
+   ```
+   yarn wrangler deploy --containers-rollout=immediate
+   ```
+
+   ```
+   pnpm wrangler deploy --containers-rollout=immediate
+   ```
+
+   Use this for stable to `@next` cutovers and other breaking package/image pairs. Refer to [Migrate](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/#deploy-the-cutover) and [Rollouts](https://developers.cloudflare.com/containers/configuration/rollouts/).
 
 Do not mix a stable package with a `@next` image, or the reverse.
 
 ## Deploy from your machine
 
 1. Start Docker if `image` is a Dockerfile path. Registry image references do not need Docker at deploy time.
-2. From the project root:
-npmyarnpnpm
-```
-npx wrangler deploy
-```
-```
-yarn wrangler deploy
-```
-```
-pnpm wrangler deploy
-```
+2. From the project root:npmyarnpnpm
+
+   ```
+   npx wrangler deploy
+   ```
+
+   ```
+   yarn wrangler deploy
+   ```
+
+   ```
+   pnpm wrangler deploy
+   ```
+
+
 3. Confirm the Worker URL responds, then exercise a sandbox route.
 
 The first deploy can take several minutes while the image provisions.
@@ -75,10 +82,10 @@ More detail: [Before production](https://developers.cloudflare.com/containers/gu
 
 ## Related
 
-* [Deploy Containers](https://developers.cloudflare.com/containers/guides/deploy/)
-* [Rollouts](https://developers.cloudflare.com/containers/configuration/rollouts/)
-* [Configure preview URLs on a custom domain](https://developers.cloudflare.com/sandbox/guides/preview-urls-custom-domain/)
-* [Migrate to Sandbox SDK 1.0 preview](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/)
+- [Deploy Containers](https://developers.cloudflare.com/containers/guides/deploy/)
+- [Rollouts](https://developers.cloudflare.com/containers/configuration/rollouts/)
+- [Configure preview URLs on a custom domain](https://developers.cloudflare.com/sandbox/guides/preview-urls-custom-domain/)
+- [Migrate to Sandbox SDK 1.0 preview](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/)
 
 Was this helpful?
 

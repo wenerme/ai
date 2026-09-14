@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # How Code Mode works
 
-Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/tools/codemode/how-it-works/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/codemode/how-it-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Code Mode is a pattern where a model writes code to compose tools. The `@cloudflare/codemode` package implements that pattern with an isolated executor, service connectors, and a durable runtime.
 
@@ -140,6 +140,8 @@ The executor and connector instances remain transient. Your application provides
 
 A typical Agent creates all three parts together:
 
+*src/server.jsjs*
+
 ```js
 import {
 	createCodemodeRuntime,
@@ -154,6 +156,8 @@ const runtime = createCodemodeRuntime({
 
 const tools = { codemode: runtime.tool() };
 ```
+
+*src/server.tsts*
 
 ```ts
 import {
@@ -178,6 +182,8 @@ Most Agents need only one Code Mode runtime. If you omit `name`, the runtime use
 
 Set `name` when one Agent needs separate Code Mode histories. For example, a runtime named `research` and another named `operations` keep separate execution records and snippet collections:
 
+*src/server.jsjs*
+
 ```js
 const researchRuntime = createCodemodeRuntime({
 	ctx: this.ctx,
@@ -193,6 +199,8 @@ const operationsRuntime = createCodemodeRuntime({
 	name: "operations",
 });
 ```
+
+*src/server.tsts*
 
 ```ts
 const researchRuntime = createCodemodeRuntime({
@@ -275,8 +283,8 @@ Some connectors need resources beyond one method call. Examples include browser 
 
 Code Mode distinguishes two resource lifetimes:
 
-* **Pass resources** last for one sandbox pass. The runtime invokes `onPassEnd()` after completed, failed, and paused passes.
-* **Execution resources** last for the whole execution. The runtime invokes `disposeExecution()` after completion, failure, rejection, or rollback, but not after a pause.
+- **Pass resources** last for one sandbox pass. The runtime invokes `onPassEnd()` after completed, failed, and paused passes.
+- **Execution resources** last for the whole execution. The runtime invokes `disposeExecution()` after completion, failure, rejection, or rollback, but not after a pause.
 
 A paused execution can resume in another Worker invocation. Connector lifecycle hooks must not depend on instance memory. Cleanup must also be idempotent because a completed execution can later be rolled back and disposed again.
 
@@ -300,7 +308,7 @@ Rollback is compensation, not database transaction isolation. Connector authors 
 
 ## Retention and stale executions
 
-The execution log is an audit trail and grows over time. When a new run begins, the runtime first inserts that run and then prunes older terminal executions. `maxExecutions` defaults to 50\. Because a running execution is not terminal, completion can temporarily leave 51 terminal records until another run begins or you call `pruneExecutions()`.
+The execution log is an audit trail and grows over time. When a new run begins, the runtime first inserts that run and then prunes older terminal executions. `maxExecutions` defaults to 50. Because a running execution is not terminal, completion can temporarily leave 51 terminal records until another run begins or you call `pruneExecutions()`.
 
 Running and paused executions are not pruned automatically. They may still need to finish or resume. Use `expirePaused()` from recurring maintenance to reclaim stale nonterminal runs. The runtime marks stale paused runs as rejected and stale running runs as errors, then disposes their execution resources.
 
@@ -308,7 +316,7 @@ You can also remove individual execution records or prune terminal history expli
 
 ## Durable value and result limits
 
-Each value stored for durable replay has a serialized character limit of 1,000,000\. The implementation checks the JavaScript string length after serialization. This limit applies to connector arguments, recorded connector results, step results, and execution source code.
+Each value stored for durable replay has a serialized character limit of 1,000,000. The implementation checks the JavaScript string length after serialization. This limit applies to connector arguments, recorded connector results, step results, and execution source code.
 
 The runtime cannot truncate these values. Truncation would provide different data during replay. An oversized or unserializable replay value therefore fails the execution and suggests storing the data elsewhere, then passing a small reference such as a file path.
 
@@ -322,6 +330,8 @@ A snippet is saved source from an execution. Snippets turn model-written program
 
 The model does not promote its own code. Your application reviews an execution and calls `runtime.saveSnippet()` with its execution ID. The API accepts any execution status, so verify that the execution completed successfully before saving it. The model can then find the snippet with `codemode.search()`, inspect it with `codemode.describe()`, and invoke it with `codemode.run()`.
 
+*src/server.jsjs*
+
 ```js
 const runs = await runtime.executions(20);
 
@@ -330,6 +340,8 @@ await runtime.saveSnippet("list-open-prs", {
 	description: "List open pull requests for a repository.",
 });
 ```
+
+*src/server.tsts*
 
 ```ts
 const runs = await runtime.executions(20);

@@ -1,5 +1,5 @@
 ---
-description: UForm-Gen is a small generative vision-language model primarily designed for Image Captioning and Visual Question Answering. The model was pre-trained on the internal image captioning dataset and fine-tuned on public instructions datasets: SVIT, LVIS, VQAs datasets.
+description: "UForm-Gen is a small generative vision-language model primarily designed for Image Captioning and Visual Question Answering. The model was pre-trained on the internal image captioning dataset and fine-tuned on public instructions datasets: SVIT, LVIS, VQAs datasets."
 title: uform-gen2-qwen-500m
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -18,20 +18,20 @@ Beta
 
 Image-to-Text • Unum
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/uform-gen2-qwen-500m/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/uform-gen2-qwen-500m/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/unum/uform-gen2-qwen-500m`
 
-* Cloudflare-hosted
-* Deprecated
+- Cloudflare-hosted
+- Deprecated
 
 UForm-Gen is a small generative vision-language model primarily designed for Image Captioning and Visual Question Answering. The model was pre-trained on the internal image captioning dataset and fine-tuned on public instructions datasets: SVIT, LVIS, VQAs datasets.
 
-| Model Info       |                                   |
-| ---------------- | --------------------------------- |
-| Deprecated       | 5/30/2026                         |
+| Model Info | |
+| --- | --- |
+| Deprecated | 5/30/2026 |
 | More information | [link ↗](https://www.unum.cloud/) |
-| Beta             | Yes                               |
+| Beta | Yes |
 
 ## Parameters
 
@@ -51,9 +51,9 @@ description
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/workers-ai/models/uform-gen2-qwen-500m/schema-input.json) [Download](https://developers.cloudflare.com/workers-ai/models/uform-gen2-qwen-500m/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/workers-ai/models/uform-gen2-qwen-500m/schema-output.json) [Download](https://developers.cloudflare.com/workers-ai/models/uform-gen2-qwen-500m/schema-output.json)
 
 Was this helpful?
 

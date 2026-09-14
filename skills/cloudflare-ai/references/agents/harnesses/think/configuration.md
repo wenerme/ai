@@ -12,32 +12,32 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configuration
 
-Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Think is configured by overriding methods and properties on your `Think` subclass. Most agents only override `getModel()`.
 
 ## Configuration overrides
 
-| Method / Property        | Default                        | Description                                                                                                                                                                                                                                                                                                  |
-| ------------------------ | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| getModel()               | throws                         | Return the LanguageModel to use                                                                                                                                                                                                                                                                              |
-| getSystemPrompt()        | "You are a helpful assistant." | System prompt (fallback when no context blocks)                                                                                                                                                                                                                                                              |
-| getTools()               | {}                             | AI SDK ToolSet for the agentic loop                                                                                                                                                                                                                                                                          |
-| getScheduledTasks()      | {}                             | Code-declared recurring prompts or handlers — refer to [Scheduled tasks](https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/)                                                                                                                                                          |
-| getDefaultTimezone()     | undefined                      | Default timezone for wall-clock scheduled tasks                                                                                                                                                                                                                                                              |
-| getMessengers()          | {}                             | Messenger ingress and delivery declarations — refer to [Messengers](https://developers.cloudflare.com/agents/harnesses/think/messengers/)                                                                                                                                                                    |
-| maxSteps                 | 10                             | Max tool-call rounds per turn                                                                                                                                                                                                                                                                                |
-| sendReasoning            | true                           | Send reasoning chunks to chat clients                                                                                                                                                                                                                                                                        |
-| configureSession()       | identity                       | Add context blocks, compaction, search, skills — refer to [Sessions](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/)                                                                                                                                                                   |
-| getSkills()              | \[\]                           | Return Agent Skills sources for on-demand skill activation — refer to [Agent Skills](https://developers.cloudflare.com/agents/runtime/execution/agent-skills/)                                                                                                                                               |
-| getSkillScriptRunner()   | null                           | Enable the optional run\_skill\_script tool                                                                                                                                                                                                                                                                  |
-| workspaceBash            | true                           | Include or configure the default workspace bash tool — refer to [Tools](https://developers.cloudflare.com/agents/harnesses/think/tools/)                                                                                                                                                                     |
-| messageConcurrency       | "queue"                        | How overlapping submits behave — refer to [Client tools](https://developers.cloudflare.com/agents/harnesses/think/client-tools/#message-concurrency)                                                                                                                                                         |
-| includeMcpTools          | true                           | Convert connected MCP tools to AI SDK tools and add them to model turns. Refer to [MCP tools](https://developers.cloudflare.com/agents/harnesses/think/tools/#mcp-tools)                                                                                                                                     |
-| waitForMcpConnections    | false                          | Wait for MCP servers before inference                                                                                                                                                                                                                                                                        |
-| chatRecovery             | Always on                      | Durable recovery configuration. Refer to [Durable recovery](https://developers.cloudflare.com/agents/harnesses/think/recovery/) for all options and defaults                                                                                                                                                 |
-| chatStreamStallTimeoutMs | 0 (off)                        | Opt-in inactivity watchdog: abort a turn whose model stream produces no chunk for this long (measures the gap between chunks, including tool execution). A stall routes into bounded recovery                                                                                                                |
-| contextOverflow          | undefined                      | Opt-in mid-turn context-overflow handling with reactive, maxRetries, and proactive options. Requires classifyChatError plus a session compaction function — refer to [Context-window overflow recovery](https://developers.cloudflare.com/agents/harnesses/think/recovery/#context-window-overflow-recovery) |
+| Method / Property | Default | Description |
+| --- | --- | --- |
+| `getModel()` | throws | Return the `LanguageModel` to use |
+| `getSystemPrompt()` | `"You are a helpful assistant."` | System prompt (fallback when no context blocks) |
+| `getTools()` | `{}` | AI SDK `ToolSet` for the agentic loop |
+| `getScheduledTasks()` | `{}` | Code-declared recurring prompts or handlers — refer to [Scheduled tasks](https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/) |
+| `getDefaultTimezone()` | `undefined` | Default timezone for wall-clock scheduled tasks |
+| `getMessengers()` | `{}` | Messenger ingress and delivery declarations — refer to [Messengers](https://developers.cloudflare.com/agents/harnesses/think/messengers/) |
+| `maxSteps` | `10` | Max tool-call rounds per turn |
+| `sendReasoning` | `true` | Send reasoning chunks to chat clients |
+| `configureSession()` | identity | Add context blocks, compaction, search, skills — refer to [Sessions](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/) |
+| `getSkills()` | `[]` | Return Agent Skills sources for on-demand skill activation — refer to [Agent Skills](https://developers.cloudflare.com/agents/runtime/execution/agent-skills/) |
+| `getSkillScriptRunner()` | `null` | Enable the optional `run_skill_script` tool |
+| `workspaceBash` | `true` | Include or configure the default workspace `bash` tool — refer to [Tools](https://developers.cloudflare.com/agents/harnesses/think/tools/) |
+| `messageConcurrency` | `"queue"` | How overlapping submits behave — refer to [Client tools](https://developers.cloudflare.com/agents/harnesses/think/client-tools/#message-concurrency) |
+| `includeMcpTools` | `true` | Convert connected MCP tools to AI SDK tools and add them to model turns. Refer to [MCP tools](https://developers.cloudflare.com/agents/harnesses/think/tools/#mcp-tools) |
+| `waitForMcpConnections` | `false` | Wait for MCP servers before inference |
+| `chatRecovery` | Always on | Durable recovery configuration. Refer to [Durable recovery](https://developers.cloudflare.com/agents/harnesses/think/recovery/) for all options and defaults |
+| `chatStreamStallTimeoutMs` | `0` (off) | Opt-in inactivity watchdog: abort a turn whose model stream produces no chunk for this long (measures the gap between chunks, including tool execution). A stall routes into bounded recovery |
+| `contextOverflow` | `undefined` | Opt-in mid-turn context-overflow handling with `reactive`, `maxRetries`, and `proactive` options. Requires `classifyChatError` plus a session compaction function — refer to [Context-window overflow recovery](https://developers.cloudflare.com/agents/harnesses/think/recovery/#context-window-overflow-recovery) |
 
 For `chatRecovery` and `chatStreamStallTimeoutMs` behavior, refer to [Durable recovery](https://developers.cloudflare.com/agents/harnesses/think/recovery/).
 
@@ -73,10 +73,10 @@ export class MyAgent extends Think<Env> {
 }
 ```
 
-| Method                    | Description                                                   |
-| ------------------------- | ------------------------------------------------------------- |
-| configure<T>(config: T)   | Persist a typed configuration object                          |
-| getConfig<T>(): T \| null | Read the persisted configuration, or null if never configured |
+| Method | Description |
+| --- | --- |
+| `configure<T>(config: T)` | Persist a typed configuration object |
+| `getConfig<T>(): T \| null` | Read the persisted configuration, or null if never configured |
 
 Expose configuration to the client via `@callable`:
 
@@ -164,38 +164,38 @@ For the full Session API — context blocks, compaction, search, skills, and mul
 
 ## Package exports
 
-| Export                                | Description                                                  |
-| ------------------------------------- | ------------------------------------------------------------ |
-| @cloudflare/think                     | Think, Session, Workspace, skills namespace                  |
-| @cloudflare/think/messengers          | Messenger contracts, Chat SDK bridge, state agent, delivery  |
-| @cloudflare/think/messengers/telegram | Telegram messenger provider and delivery helpers             |
-| @cloudflare/think/workflows           | ThinkWorkflow, step.prompt() — Workflow prompts              |
-| @cloudflare/think/tools/workspace     | createWorkspaceTools() — for custom storage backends         |
-| @cloudflare/think/tools/execute       | createExecuteTool() — sandboxed code execution via Code Mode |
-| @cloudflare/think/tools/browser       | createBrowserTools() — Chrome DevTools Protocol tools        |
-| @cloudflare/think/tools/extensions    | createExtensionTools() — LLM-driven extension loading        |
-| @cloudflare/think/extensions          | ExtensionManager, HostBridgeLoopback — extension runtime     |
+| Export | Description |
+| --- | --- |
+| `@cloudflare/think` | `Think`, `Session`, `Workspace`, `skills` namespace |
+| `@cloudflare/think/messengers` | Messenger contracts, Chat SDK bridge, state agent, delivery |
+| `@cloudflare/think/messengers/telegram` | Telegram messenger provider and delivery helpers |
+| `@cloudflare/think/workflows` | `ThinkWorkflow`, `step.prompt()` — Workflow prompts |
+| `@cloudflare/think/tools/workspace` | `createWorkspaceTools()` — for custom storage backends |
+| `@cloudflare/think/tools/execute` | `createExecuteTool()` — sandboxed code execution via Code Mode |
+| `@cloudflare/think/tools/browser` | `createBrowserTools()` — Chrome DevTools Protocol tools |
+| `@cloudflare/think/tools/extensions` | `createExtensionTools()` — LLM-driven extension loading |
+| `@cloudflare/think/extensions` | `ExtensionManager`, `HostBridgeLoopback` — extension runtime |
 
 ## Dependencies
 
 Peer dependencies you provide:
 
-| Package                | Required | Notes                            |
-| ---------------------- | -------- | -------------------------------- |
-| agents                 | yes      | Cloudflare Agents SDK            |
-| ai                     | yes      | AI SDK v6                        |
-| zod                    | yes      | Schema validation (v4)           |
-| @chat-adapter/telegram | optional | Required for Telegram messengers |
+| Package | Required | Notes |
+| --- | --- | --- |
+| `agents` | yes | Cloudflare Agents SDK |
+| `ai` | yes | AI SDK v6 |
+| `zod` | yes | Schema validation (v4) |
+| `@chat-adapter/telegram` | optional | Required for Telegram messengers |
 
 Bundled with `@cloudflare/think`:
 
-| Package              | Notes                                               |
-| -------------------- | --------------------------------------------------- |
-| @cloudflare/shell    | Workspace filesystem                                |
-| @cloudflare/codemode | Code execution for createExecuteTool()              |
-| just-bash            | Sandboxed shell for the default workspace bash tool |
+| Package | Notes |
+| --- | --- |
+| `@cloudflare/shell` | `Workspace` filesystem |
+| `@cloudflare/codemode` | Code execution for `createExecuteTool()` |
+| `just-bash` | Sandboxed shell for the default workspace `bash` tool |
 
-The Agent Skills engine and its script runner live in [agents/skills](https://developers.cloudflare.com/agents/runtime/execution/agent-skills/), so skill scripts pull `@cloudflare/worker-bundler` and `just-bash` through `agents`, not Think.
+The Agent Skills engine and its script runner live in [`agents/skills`](https://developers.cloudflare.com/agents/runtime/execution/agent-skills/), so skill scripts pull `@cloudflare/worker-bundler` and `just-bash` through `agents`, not Think.
 
 Was this helpful?
 

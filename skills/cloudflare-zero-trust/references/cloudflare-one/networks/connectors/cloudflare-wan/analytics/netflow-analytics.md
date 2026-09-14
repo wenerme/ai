@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # NetFlow statistics
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/analytics/netflow-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/analytics/netflow-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## NetFlow exports from Cloudflare One Appliance to Network Flow
 
@@ -39,11 +39,12 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
 	}'
 ```
 
-1. You can customize the configuration by adding optional fields to the JSON payload. These fields include:
-* `collector_port`: The UDP port for the collector. The default is `2055`.
-* `sampling_rate`: The rate at which packets are sampled.
-* `active_timeout`: The timeout for active flows in seconds.
-* `inactive_timeout`: The timeout for inactive flows in seconds.
+3. You can customize the configuration by adding optional fields to the JSON payload. These fields include:
+
+- `collector_port`: The UDP port for the collector. The default is `2055`.
+- `sampling_rate`: The rate at which packets are sampled.
+- `active_timeout`: The timeout for active flows in seconds.
+- `inactive_timeout`: The timeout for inactive flows in seconds.
 
 Full configuration example:
 

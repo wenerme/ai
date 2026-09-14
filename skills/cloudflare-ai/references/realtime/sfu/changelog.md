@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Changelog
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/sfu/changelog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/realtime/sfu/changelog/index.xml)
 
@@ -22,11 +22,11 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 DataChannels now accept reliability settings on both publisher (`location: "local"`) and subscriber (`location: "remote"`) channels, so unreliable and unordered delivery is honored end to end.
 
-* `ordered` (default `true`) controls in-order delivery. When `false`, a delayed message does not block later messages.
-* Set `ordered: false` and omit both retry fields for reliable, unordered delivery.
-* `maxRetransmits` or `maxPacketLifeTime` enable partial reliability; set `maxRetransmits: 0` for fully unreliable delivery.
-* Set the same fields on local and remote `/datachannels/new` calls, and mirror them on `createDataChannel()` for negotiated channels.
-* Docs: [DataChannels](https://developers.cloudflare.com/realtime/sfu/datachannels/), [Connection API](https://developers.cloudflare.com/realtime/sfu/https-api/)
+- `ordered` (default `true`) controls in-order delivery. When `false`, a delayed message does not block later messages.
+- Set `ordered: false` and omit both retry fields for reliable, unordered delivery.
+- `maxRetransmits` or `maxPacketLifeTime` enable partial reliability; set `maxRetransmits: 0` for fully unreliable delivery.
+- Set the same fields on local and remote `/datachannels/new` calls, and mirror them on `createDataChannel()` for negotiated channels.
+- Docs: [DataChannels](https://developers.cloudflare.com/realtime/sfu/datachannels/), [Connection API](https://developers.cloudflare.com/realtime/sfu/https-api/)
 
 ## 2026-07-23
 
@@ -34,11 +34,11 @@ DataChannels now accept reliability settings on both publisher (`location: "loca
 
 DataChannels now support opt-in reverse traffic from one subscriber back to the publisher on the same channel. When a subscriber pulls a remote DataChannel with `canReply: true` (or is granted it later via `datachannels/update`), the SFU admits that subscriber's messages to the publisher only.
 
-* Opt-in per subscriber; defaults to `false`, so existing publisher-to-subscriber fan-out is unchanged.
-* Reverse traffic is not fanned out to other subscribers.
-* Exclusive: at most one subscriber holds `canReply` per publisher DataChannel; a new grant replaces the previous holder.
-* Grant or revoke without re-pulling via `PUT .../datachannels/update`.
-* Docs: [DataChannels](https://developers.cloudflare.com/realtime/sfu/datachannels/), [Limits, timeouts and quotas](https://developers.cloudflare.com/realtime/sfu/limits/)
+- Opt-in per subscriber; defaults to `false`, so existing publisher-to-subscriber fan-out is unchanged.
+- Reverse traffic is not fanned out to other subscribers.
+- Exclusive: at most one subscriber holds `canReply` per publisher DataChannel; a new grant replaces the previous holder.
+- Grant or revoke without re-pulling via `PUT .../datachannels/update`.
+- Docs: [DataChannels](https://developers.cloudflare.com/realtime/sfu/datachannels/), [Limits, timeouts and quotas](https://developers.cloudflare.com/realtime/sfu/limits/)
 
 ## 2026-06-10
 
@@ -46,10 +46,10 @@ DataChannels now support opt-in reverse traffic from one subscriber back to the 
 
 DataChannels now support an opt-in subscriber acknowledgment gate. When a subscriber pulls a remote DataChannel with `waitForAck: true`, the SFU holds delivery to that subscriber until it sends its first message (the acknowledgment). This avoids losing the first messages before the subscriber is ready to handle them.
 
-* Opt-in per subscriber; defaults to `false`, so existing behavior is unchanged.
-* The acknowledgment is consumed by the SFU and is not forwarded, so the channel stays unidirectional.
-* Send the acknowledgment within 30 seconds of creating the remote DataChannel.
-* Docs: [DataChannels](https://developers.cloudflare.com/realtime/sfu/datachannels/), [Limits, timeouts and quotas](https://developers.cloudflare.com/realtime/sfu/limits/)
+- Opt-in per subscriber; defaults to `false`, so existing behavior is unchanged.
+- The acknowledgment is consumed by the SFU and is not forwarded, so the channel stays unidirectional.
+- Send the acknowledgment within 30 seconds of creating the remote DataChannel.
+- Docs: [DataChannels](https://developers.cloudflare.com/realtime/sfu/datachannels/), [Limits, timeouts and quotas](https://developers.cloudflare.com/realtime/sfu/limits/)
 
 ## 2025-11-21
 
@@ -57,10 +57,10 @@ DataChannels now support an opt-in subscriber acknowledgment gate. When a subscr
 
 Updated Media Transport Adapters (WebSocket adapter) to support video egress as JPEG frames in addition to audio.
 
-* Stream audio and video between WebRTC tracks and WebSocket endpoints
-* Video egress-only as JPEG at approximately 1 FPS for snapshots, thumbnails, and computer vision pipelines
-* Clarified media formats for PCM audio and JPEG video over Protocol Buffers
-* Updated docs: [Adapters](https://developers.cloudflare.com/realtime/sfu/media-transport-adapters/), [WebSocket adapter](https://developers.cloudflare.com/realtime/sfu/media-transport-adapters/websocket-adapter/)
+- Stream audio and video between WebRTC tracks and WebSocket endpoints
+- Video egress-only as JPEG at approximately 1 FPS for snapshots, thumbnails, and computer vision pipelines
+- Clarified media formats for PCM audio and JPEG video over Protocol Buffers
+- Updated docs: [Adapters](https://developers.cloudflare.com/realtime/sfu/media-transport-adapters/), [WebSocket adapter](https://developers.cloudflare.com/realtime/sfu/media-transport-adapters/websocket-adapter/)
 
 ## 2025-08-29
 
@@ -68,8 +68,8 @@ Updated Media Transport Adapters (WebSocket adapter) to support video egress as 
 
 Open beta for Media Transport Adapters (WebSocket adapter) to bridge audio between WebRTC and WebSocket.
 
-* Ingest (WebSocket → WebRTC) and Stream (WebRTC → WebSocket)
-* Opus for WebRTC tracks; PCM over WebSocket via Protocol Buffers
+- Ingest (WebSocket → WebRTC) and Stream (WebRTC → WebSocket)
+- Opus for WebRTC tracks; PCM over WebSocket via Protocol Buffers
 
 Docs: [Adapters](https://developers.cloudflare.com/realtime/sfu/media-transport-adapters/), [WebSocket adapter](https://developers.cloudflare.com/realtime/sfu/media-transport-adapters/websocket-adapter/)
 
@@ -83,7 +83,7 @@ Cloudflare Realtime TURN service is generally available and helps address common
 
 **Orange Meets availability**
 
-Orange Meets, Cloudflare's internal video conferencing app, is open source and available for use from [Github](https://github.com/cloudflare/orange?cf%5Ftarget%5Fid=40DF7321015C5928F9359DD01303E8C2).
+Orange Meets, Cloudflare's internal video conferencing app, is open source and available for use from [Github](https://github.com/cloudflare/orange?cf_target_id=40DF7321015C5928F9359DD01303E8C2).
 
 ## 2024-04-04
 

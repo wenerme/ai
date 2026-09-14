@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Access event analytics
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/analytics/access/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/analytics/access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Access event analytics allows you to review login attempts to the applications you protect behind [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/). Access event analytics are powered by [Access authentication logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/access-authentication-logs/).
 
 To view Access event analytics:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights**.
 2. Go to **Dashboards**.
 3. Select **Access event analytics**.
 
@@ -32,17 +32,17 @@ Refer to [Insights overview](https://developers.cloudflare.com/cloudflare-one/in
 
 The Access event analytics dashboard includes a time-series chart of authentication events, allowing you to identify spikes in login activity over a selected period.
 
-* Events are displayed on the vertical axis.
-* Time (in your local timezone) is shown along the horizontal axis.
+- Events are displayed on the vertical axis.
+- Time (in your local timezone) is shown along the horizontal axis.
 
 The Access event analytics dashboard also shows data on your usage patterns with metrics including:
 
-* Top used applications
-* Top users
-* Top IP addresses
-* Top identities
-* Top countries
-* Top application types
+- Top used applications
+- Top users
+- Top IP addresses
+- Top identities
+- Top countries
+- Top application types
 
 These insights help you detect anomalies, and optimize policy rules.
 

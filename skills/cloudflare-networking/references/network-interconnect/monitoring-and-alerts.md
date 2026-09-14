@@ -12,19 +12,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Monitoring and alerts
 
-Last updated Jul 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network-interconnect/monitoring-and-alerts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-interconnect/monitoring-and-alerts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Monitoring
 
 The Cloudflare dashboard shows a list of all previously created interconnects, as well as useful information such as IP addresses, speed, type of interconnect, and status. In the Cloudflare dashboard, go to **Interconnects**.
 
-[Go to **Interconnects** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections/cni-tunnels)
+[Go to **Interconnects** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections/cni-tunnels)
 
 The Status column displays three statuses:
 
-* **Active**: The interconnect port on the Customer Connectivity Router (CCR) is operationally up. This means that the CCR port sees sufficient light levels and has negotiated an Ethernet link.
-* **Unhealthy**: The link operational state at interconnect port is down. This might mean the CCR does not see light, cannot negotiate an Ethernet signal, or the light levels are below -20 dBm. You can take general troubleshooting steps to solve the issue (such as checking cables and status lights for connectivity issues). If you are unable to solve the issue in this way, contact your account team.
-* **Pending**: The link is not yet active. This is expected and can occur for several reasons: the customer has not received a cross-connect, the device is unresponsive, or physical adjustments may be required, such as swapping RX/TX fibers. The **Pending** status will disappear after the customer completes the cross-connect and status moves to **Active**.
+- **Active**: The interconnect port on the Customer Connectivity Router (CCR) is operationally up. This means that the CCR port sees sufficient light levels and has negotiated an Ethernet link.
+- **Unhealthy**: The link operational state at interconnect port is down. This might mean the CCR does not see light, cannot negotiate an Ethernet signal, or the light levels are below -20 dBm. You can take general troubleshooting steps to solve the issue (such as checking cables and status lights for connectivity issues). If you are unable to solve the issue in this way, contact your account team.
+- **Pending**: The link is not yet active. This is expected and can occur for several reasons: the customer has not received a cross-connect, the device is unresponsive, or physical adjustments may be required, such as swapping RX/TX fibers. The **Pending** status will disappear after the customer completes the cross-connect and status moves to **Active**.
 
 ## Alerts (v1 dataplane only)
 
@@ -32,24 +32,23 @@ You can configure notifications for upcoming CNI maintenance events using the No
 
 **CNI Connection Maintenance Alert:** This alert informs you about maintenance events (scheduled, updated, or canceled) that directly impact your CNI circuits used with the Cloudflare Virtual Network only.
 
-* You will receive warnings up to two weeks in advance for maintenance impacting your Magic Transit/WAN CNI connections.
-* You will be notified if the details of a scheduled maintenance change or if it is canceled.
-* For recently added maintenance, notifications are sent after a six-hour delay to prevent alerting fatigue from minor adjustments.
+- You will receive warnings up to two weeks in advance for maintenance impacting your Magic Transit/WAN CNI connections.
+- You will be notified if the details of a scheduled maintenance change or if it is canceled.
+- For recently added maintenance, notifications are sent after a six-hour delay to prevent alerting fatigue from minor adjustments.
 
 **Cloudflare Status Maintenance Notification:** This alert informs you about maintenance for an entire Cloudflare Point of Presence (PoP). While not specific to your CNI, this maintenance will impact all CNI services in that location. This includes connections used only for peering without Cloudflare Virtual Network.
 
-* You will be warned about potentially disruptive maintenance at the PoP level.
-* By default, you are notified for all event types (Scheduled, Changed, Canceled), but you can filter these.
-* By default, you are notified for all Cloudflare PoPs, but you can filter for only the specific locations where you have CNI circuits.
+- You will be warned about potentially disruptive maintenance at the PoP level.
+- By default, you are notified for all event types (Scheduled, Changed, Canceled), but you can filter these.
+- By default, you are notified for all Cloudflare PoPs, but you can filter for only the specific locations where you have CNI circuits.
 
 ## How to configure alerts
 
 ### Enable CNI Connection Maintenance Alert
 
-1. In the Cloudflare dashboard, go to the **Notifications** page.
-[Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
+1. In the Cloudflare dashboard, go to the **Notifications** page. [Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Select **Add**.
-3. From the product drop-down menu, select _Cloudflare Network Interconnect_.
+3. From the product drop-down menu, select *Cloudflare Network Interconnect*.
 4. Select **Connection Maintenance Alert**.
 5. Give your notification a name and an optional description.
 6. Choose your preferred notification method, such as email address.
@@ -59,15 +58,14 @@ You can configure notifications for upcoming CNI maintenance events using the No
 
 First, identify the PoP code for your CNI circuit:
 
-1. In the Cloudflare dashboard, go to **Interconnects**.
-[Go to **Interconnects** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections/cni-tunnels)
+1. In the Cloudflare dashboard, go to **Interconnects**. [Go to **Interconnects** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections/cni-tunnels)
 2. Select the CNI you want to enable notifications for.
 3. In the menu that appears, note the Data Center code (for example, `gru-b`).
 
 Now, configure the alert:
 
 1. Go to **Notifications** and select **Add**.
-2. From the product drop-down menu, select _Cloudflare Status_.
+2. From the product drop-down menu, select *Cloudflare Status*.
 3. Select **Maintenance Notification**.
 4. Give your notification a name and choose your notification method.
 5. Select **Next**.

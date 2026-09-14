@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Vite Environments
 
-Last updated Jun 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/reference/vite-environments/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/reference/vite-environments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The [Vite Environment API ↗](https://vite.dev/guide/api-environment), released in Vite 6, is the key feature that enables the Cloudflare Vite plugin to integrate Vite directly with the Workers runtime. It is not necessary to understand all the intricacies of the Environment API as an end user, but it is useful to have a high-level understanding.
 
@@ -35,7 +35,7 @@ In the following example we have a Worker named `my-worker` that is associated w
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"main": "./src/index.ts"
 }
 ```
@@ -44,9 +44,11 @@ In the following example we have a Worker named `my-worker` that is associated w
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 main = "./src/index.ts"
 ```
+
+*vite.config.tsts*
 
 ```ts
 import { defineConfig } from "vite";
@@ -71,6 +73,8 @@ The default behavior of using the Worker name as the environment name is appropr
 ## Full-stack frameworks
 
 If you are using the Cloudflare Vite plugin with [TanStack Start ↗](https://tanstack.com/start/) or [React Router v8 ↗](https://reactrouter.com/), then your Worker is used for server-side rendering and tightly integrated with the framework. To support this, you should assign it to the `ssr` environment by setting `viteEnvironment.name` in the plugin config.
+
+*vite.config.tsts*
 
 ```ts
 import { defineConfig } from "vite";

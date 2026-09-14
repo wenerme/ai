@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure Email security
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/secure-your-email/configure-email-security/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-your-email/configure-email-security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With Email security, there is limited manual configuration and tuning. The Active Directory sync, allow policies, and additional detections are important to consider when you set up Email security.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Audit Logs
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/observability/audit-logs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/observability/audit-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Audit logs](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/) provide a comprehensive summary of changes made within your Cloudflare account, including those made to D1 databases. This functionality is available on all plan types, free of charge, and is always enabled.
 
@@ -20,7 +20,7 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 To view audit logs for your D1 databases, go to the **Audit Logs** page.
 
-[Go to **Audit logs** ↗](https://dash.cloudflare.com/?to=/:account/audit-log)
+[Go to **Audit logs** ↗](https://dash.cloudflare.com/?to=/:account/audit-log)
 
 For more information on how to access and use audit logs, refer to [Review audit logs](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/).
 
@@ -28,10 +28,12 @@ For more information on how to access and use audit logs, refer to [Review audit
 
 The following configuration actions are logged:
 
-| Operation                                                                | Description                             | |  CreateDatabase | Creation of a new database. |
-| ------------------------------------------------------------------------ | --------------------------------------- | ----------------- | --------------------------- |
-| DeleteDatabase                                                           | Deletion of an existing database.       |                   |                             |
-| [TimeTravel](https://developers.cloudflare.com/d1/reference/time-travel) | Restoration of a past database version. |                   |                             |
+Operation | | | | | Description | | | |
+
+| CreateDatabase | | | | | Creation of a new database. | | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| DeleteDatabase | | | | | Deletion of an existing database. | | | | |
+| [TimeTravel](https://developers.cloudflare.com/d1/reference/time-travel) | | | | | Restoration of a past database version. | | | | |
 
 ## Example log entry
 

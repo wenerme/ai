@@ -12,19 +12,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RtkCounter
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkcounter/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkcounter/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A number picker with increment and decrement buttons.
 
 ## Properties
 
-| Property | Type      | Required | Default         | Description   |
-| -------- | --------- | -------- | --------------- | ------------- |
-| iconPack | IconPack1 | ❌        | defaultIconPack | Icon pack     |
-| minValue | number    | ✅        | \-              | Minimum value |
-| size     | Size1     | ✅        | \-              | Size          |
-| t        | RtkI18n   | ❌        | useLanguage()   | Language      |
-| value    | number    | ✅        | \-              | Initial value |
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `iconPack` | `IconPack1` | ❌ | `defaultIconPack` | Icon pack |
+| `minValue` | `number` | ✅ | - | Minimum value |
+| `size` | `Size1` | ✅ | - | Size |
+| `t` | `RtkI18n` | ❌ | `useLanguage()` | Language |
+| `value` | `number` | ✅ | - | Initial value |
 
 ## Usage Examples
 

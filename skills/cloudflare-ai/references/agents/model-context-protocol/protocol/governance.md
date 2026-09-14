@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # MCP governance
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/protocol/governance/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/protocol/governance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Model Context Protocol (MCP) allows Large Language Models (LLMs) to interact with proprietary data and internal tools. However, as MCP adoption grows, organizations face security risks from "Shadow MCP", where employees run unmanaged local MCP servers against sensitive internal resources. MCP governance means that administrators have control over which MCP servers are used in the organization, who can use them, and under what conditions.
 
@@ -22,9 +22,9 @@ Cloudflare Access provides a centralized governance layer for MCP, allowing you 
 
 The [MCP server portal](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) serves as the administrative hub for governance. From this portal, administrators can manage both third-party and internal MCP servers and define policies for:
 
-* **Identity**: Which users or groups are authorized to access specific MCP servers.
-* **Conditions**: The security posture (for example, device health or location) required for access.
-* **Scope**: Which specific tools within an MCP server are authorized for use.
+- **Identity**: Which users or groups are authorized to access specific MCP servers.
+- **Conditions**: The security posture (for example, device health or location) required for access.
+- **Scope**: Which specific tools within an MCP server are authorized for use.
 
 Cloudflare Access logs MCP server requests and tool executions made through the portal, providing administrators with visibility into MCP usage across the organization.
 

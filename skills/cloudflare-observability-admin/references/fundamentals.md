@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Fundamentals
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare is one of the world's largest [connectivity cloud networks ↗](https://blog.cloudflare.com/welcome-to-connectivity-cloud). Today, anyone with an Internet presence can have faster and more secure websites and applications thanks to Cloudflare. This includes bloggers, businesses, and even non-profits.
 
@@ -24,12 +24,12 @@ Before you get started, we recommend reviewing [Concepts](https://developers.clo
 
 Refer to the list below for additional Cloudflare resources.
 
-* [Cloudflare blog ↗](https://blog.cloudflare.com)
-* [Cloudflare's Go library ↗](https://github.com/cloudflare/cloudflare-go)
-* [Cloudflare system status ↗](https://www.cloudflarestatus.com/)
-* [Cloudflare Radar ↗](https://radar.cloudflare.com)
-* [Cloudflare TV ↗](https://cloudflare.tv/schedule)
-* [Terraform ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs)
+- [Cloudflare blog ↗](https://blog.cloudflare.com)
+- [Cloudflare's Go library ↗](https://github.com/cloudflare/cloudflare-go)
+- [Cloudflare system status ↗](https://www.cloudflarestatus.com/)
+- [Cloudflare Radar ↗](https://radar.cloudflare.com)
+- [Cloudflare TV ↗](https://cloudflare.tv/schedule)
+- [Terraform ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs)
 
 Was this helpful?
 

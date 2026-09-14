@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Common configurations
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/load-balancers/common-configurations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/load-balancers/common-configurations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Consider the following sections to understand how to achieve some commonly used load balancer configurations.
 
@@ -26,10 +26,10 @@ This setup ensures uninterrupted service and helps with planned outages, but it 
 
 To set up a load balancer with **active-passive failover**:
 
-1. Create a load balancer with two pools (`primary` and `secondary`).
+1. Create a load balancer with two pools ( `primary` and `secondary`).
 2. In the list of pools, set the following order:
-  1. `primary`
-  2. `secondary`
+   1. `primary`
+   2. `secondary`
 3. For **Traffic Steering**, select [**Off**](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/#off---failover).
 
 With this setup, your load balancer will direct all traffic to `primary` until `primary` has fewer available endpoints than specified in its **Health Threshold**. Only then will your load balancer direct traffic to `secondary`.
@@ -44,8 +44,8 @@ This setup speeds up overall requests, but is more vulnerable to planned or unpl
 
 To set up a load balancer with **active-active failover**, either:
 
-* Create a load balancer with a single pool (`primary`) with multiple endpoints (`endpoint-1` and `endpoint-2`) and set the same [**Weight**](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/origin-level-steering/#weights) for each endpoint.
-* Create a load balancer with two pools (`primary` and `secondary`) and — for [**Traffic Steering**](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/) — select any option except for **Off**.
+- Create a load balancer with a single pool ( `primary`) with multiple endpoints ( `endpoint-1` and `endpoint-2`) and set the same [**Weight**](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/origin-level-steering/#weights) for each endpoint.
+- Create a load balancer with two pools ( `primary` and `secondary`) and — for [**Traffic Steering**](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/) — select any option except for **Off**.
 
 Note
 

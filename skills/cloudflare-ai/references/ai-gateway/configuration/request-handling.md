@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Request handling
 
-Last updated Jun 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/request-handling/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/request-handling/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -26,14 +26,16 @@ A request timeout allows you to return an error or trigger a retry if a provider
 
 These timeouts help:
 
-* Improve user experience, by preventing users from waiting too long for a response
-* Proactively handle errors, by detecting unresponsive providers
+- Improve user experience, by preventing users from waiting too long for a response
+- Proactively handle errors, by detecting unresponsive providers
 
 A timeout is set in milliseconds. The timeout is based on when the first part of the response comes back. As long as the first part of the response returns within the specified timeframe — such as when streaming a response — your gateway will wait for the response.
 
 ### Configuration
 
 For a provider-specific endpoint, configure the timeout value by adding a `cf-aig-request-timeout` header.
+
+*Request with timeoutbash*
 
 ```bash
 # Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
@@ -58,9 +60,9 @@ This feature improves your application's resiliency, ensuring you can recover fr
 
 With request retries, you can adjust a combination of three properties:
 
-* Number of attempts (maximum of 5 tries)
-* How long before retrying (in milliseconds, maximum of 5 seconds)
-* Backoff method (constant, linear, or exponential)
+- Number of attempts (maximum of 5 tries)
+- How long before retrying (in milliseconds, maximum of 5 seconds)
+- Backoff method (constant, linear, or exponential)
 
 On the final retry attempt, your gateway will wait until the request completes, regardless of how long it takes.
 
@@ -68,9 +70,9 @@ On the final retry attempt, your gateway will wait until the request completes, 
 
 For a provider-specific endpoint, configure the retry settings by adding different header values:
 
-* `cf-aig-max-attempts` (number)
-* `cf-aig-retry-delay` (number)
-* `cf-aig-backoff` ("constant" | "linear" | "exponential)
+- `cf-aig-max-attempts` (number)
+- `cf-aig-retry-delay` (number)
+- `cf-aig-backoff` ("constant" | "linear" | "exponential)
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Error 400
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-400/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-400/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## 400 Bad Request
 
@@ -24,8 +24,8 @@ For more information, refer to [RFC 7231 ↗](https://tools.ietf.org/html/rfc723
 
 A `400 Bad Request` error occurs due to client-side issues, such as malformed request syntax, invalid request content, message framing problems, or deceptive request routing. For example:
 
-* If the request contains a special character that is not properly [URL Encoded (or percent-encoded) ↗](https://en.wikipedia.org/wiki/Percent-encoding), an `HTTP Error 400` will be returned.
-* If the request contains both `Content Length` and `Transfer Encoding` chunked, these two framing methods contradict each other. `Content Length` declares a fixed size body, while chunked encoding declares a streamed body with no known size. [RFC 7230 section 3.3.3 ↗](https://datatracker.ietf.org/doc/html/rfc7230#section-3.3.3) states that when `Transfer Encoding` is present, the `Content Length` header must be ignored and a request that includes both is considered malformed. This creates ambiguity in body framing and can enable request smuggling if different systems parse the boundary differently. Cloudflare follows the RFC and an `HTTP Error 400` will be returned.
+- If the request contains a special character that is not properly [URL Encoded (or percent-encoded) ↗](https://en.wikipedia.org/wiki/Percent-encoding), an `HTTP Error 400` will be returned.
+- If the request contains both `Content Length` and `Transfer Encoding` chunked, these two framing methods contradict each other. `Content Length` declares a fixed size body, while chunked encoding declares a streamed body with no known size. [RFC 7230 section 3.3.3 ↗](https://datatracker.ietf.org/doc/html/rfc7230#section-3.3.3) states that when `Transfer Encoding` is present, the `Content Length` header must be ignored and a request that includes both is considered malformed. This creates ambiguity in body framing and can enable request smuggling if different systems parse the boundary differently. Cloudflare follows the RFC and an `HTTP Error 400` will be returned.
 
 ### Cloudflare-specific information
 

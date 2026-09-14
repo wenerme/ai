@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Packages
 
-Last updated Sep 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/languages/python/packages/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/python/packages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Pywrangler ↗](https://github.com/cloudflare/workers-py?tab=readme-ov-file#pywrangler) is a CLI tool for managing packages and Python Workers. It is meant as a wrapper for wrangler that sets up a full environment for you, including bundling your packages into your worker bundle on deployment.
 
@@ -57,11 +57,11 @@ The `pywrangler` CLI also supports all commands supported by the `wrangler` tool
 
 Python Workers support pure and [PyEmscripten ↗](https://peps.python.org/pep-0783/) Python packages on [PyPI ↗](https://pypi.org/). Additionally, Python Workers support packages that are included in [Pyodide ↗](https://pyodide.org/en/stable/usage/packages-in-pyodide.html).
 
-WebAssembly support for Python packages is still in early stages, and some packages may not yet be available as PyEmscripten wheels on PyPI. If a package you would like to use is not yet available, we encourage you to reach out to the package maintainers and request PyEmscripten wheels. You can also start a thread in the [Python Packages Discussions ↗](https://github.com/cloudflare/workerd/discussions/categories/python-packages)on the Cloudflare Workers Runtime GitHub repository — we would be happy to help you communicate with package maintainers.
+WebAssembly support for Python packages is still in early stages, and some packages may not yet be available as PyEmscripten wheels on PyPI. If a package you would like to use is not yet available, we encourage you to reach out to the package maintainers and request PyEmscripten wheels. You can also start a thread in the [Python Packages Discussions ↗](https://github.com/cloudflare/workerd/discussions/categories/python-packages) on the Cloudflare Workers Runtime GitHub repository — we would be happy to help you communicate with package maintainers.
 
 ## HTTP Client Libraries
 
-Only HTTP libraries that are able to make requests asynchronously are supported. Currently, these include [aiohttp ↗](https://docs.aiohttp.org/en/stable/index.html) and [httpx2 ↗](https://pydantic.dev/docs/httpx2/). You can also use the [fetch() API](https://developers.cloudflare.com/workers/runtime-apis/fetch/) from JavaScript, using Python Workers' [foreign function interface](https://developers.cloudflare.com/workers/languages/python/ffi) to make HTTP requests.
+Only HTTP libraries that are able to make requests asynchronously are supported. Currently, these include [`aiohttp` ↗](https://docs.aiohttp.org/en/stable/index.html) and [`httpx2` ↗](https://pydantic.dev/docs/httpx2/). You can also use the [`fetch()` API](https://developers.cloudflare.com/workers/runtime-apis/fetch/) from JavaScript, using Python Workers' [foreign function interface](https://developers.cloudflare.com/workers/languages/python/ffi) to make HTTP requests.
 
 Was this helpful?
 

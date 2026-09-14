@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Real-time validation
 
-Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/realtime-validation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/realtime-validation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you use a real-time validation method, Cloudflare verifies your customer's hostname when your customers adds their [DNS routing record](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/#3-have-customer-create-cname-record) to their authoritative DNS.
 
@@ -20,9 +20,9 @@ When you use a real-time validation method, Cloudflare verifies your customer's 
 
 Real-time validation methods put less burden on your customers because it does not require any additional actions.
 
-However, it may cause some downtime since Cloudflare takes a few seconds to iterate over DNS records. This downtime also can increase - due to the increasing [validation backoff schedule](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/backoff-schedule/) \- if your customer takes additional time to add their DNS routing record.
+However, it may cause some downtime since Cloudflare takes a few seconds to iterate over DNS records. This downtime also can increase - due to the increasing [validation backoff schedule](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/backoff-schedule/) - if your customer takes additional time to add their DNS routing record.
 
-To minimize this downtime, you can continually send no-change [PATCH requests](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/) for the specific custom hostname until it validates (which resets the validation backoff schedule).
+To minimize this downtime, you can continually send no-change [`PATCH` requests](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/) for the specific custom hostname until it validates (which resets the validation backoff schedule).
 
 To avoid any chance of downtime, use a [pre-validation method](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/pre-validation/)
 

@@ -8,12 +8,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.api\_gateway.fallthrough\_detected
 
-`cf.api_gateway.fallthrough_detected` `Boolean`
+`cf.api_gateway.fallthrough_detected``Boolean`
 
 Indicates whether the request matched a saved endpoint in [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/).
 
 Categories:
-* Request
+- Request
 
 Was this helpful?
 

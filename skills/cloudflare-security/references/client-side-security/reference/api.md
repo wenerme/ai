@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Client-side security API
 
-Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/client-side-security/reference/api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/client-side-security/reference/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-You can enable and disable client-side security's resource monitoring, configure settings, and fetch information about detected scripts and connections using the [client-side security API](https://developers.cloudflare.com/api/resources/page%5Fshield/methods/get/) (formerly known as Page Shield API).
+You can enable and disable client-side security's resource monitoring, configure settings, and fetch information about detected scripts and connections using the [client-side security API](https://developers.cloudflare.com/api/resources/page_shield/methods/get/) (formerly known as Page Shield API).
 
 To authenticate API requests you need an [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/). For more information on the required API token permissions, refer to [Roles and permissions](https://developers.cloudflare.com/client-side-security/reference/roles-and-permissions/).
 
@@ -24,39 +24,39 @@ Refer to [API deprecations](https://developers.cloudflare.com/fundamentals/api/r
 
 ## Endpoints
 
-You can obtain the complete endpoint by appending the [client-side security API](https://developers.cloudflare.com/api/resources/page%5Fshield/methods/get/) endpoints to the Cloudflare API base URL:
+You can obtain the complete endpoint by appending the [client-side security API](https://developers.cloudflare.com/api/resources/page_shield/methods/get/) endpoints to the Cloudflare API base URL:
 
 ```txt
 https://api.cloudflare.com/client/v4
 ```
 
-The `{zone_id}` argument is the zone ID (a hexadecimal string). You can find this value in the Cloudflare dashboard or using the Cloudflare API's [/zones endpoint](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
+The `{zone_id}` argument is the zone ID (a hexadecimal string). You can find this value in the Cloudflare dashboard or using the Cloudflare API's [`/zones` endpoint](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
 
-The `{script_id}` argument is the script ID (a hexadecimal string). This value is included in the response of the [List client-side security scripts](https://developers.cloudflare.com/api/resources/page%5Fshield/subresources/scripts/methods/list/) operation for every detected script.
+The `{script_id}` argument is the script ID (a hexadecimal string). This value is included in the response of the [List client-side security scripts](https://developers.cloudflare.com/api/resources/page_shield/subresources/scripts/methods/list/) operation for every detected script.
 
 The `{connection_id}` argument is the connection ID (a hexadecimal string). This value is included in the response of the List client-side security connections API operation for every detected connection.
 
 The following table summarizes the available operations:
 
-| Operation                                                                                                                                     | Method + URL stub                                              | Notes                                                            |
-| --------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- | ---------------------------------------------------------------- |
-| [Get client-side security settings](https://developers.cloudflare.com/api/resources/page%5Fshield/methods/get/)                               | GET zones/{zone\_id}/page\_shield                              | Fetch client-side security settings (including the status).      |
-| [Update client-side security settings](https://developers.cloudflare.com/api/resources/page%5Fshield/methods/update/)                         | PUT zones/{zone\_id}/page\_shield                              | Update client-side security settings.                            |
-| [List client-side security scripts](https://developers.cloudflare.com/api/resources/page%5Fshield/subresources/scripts/methods/list/)         | GET zones/{zone\_id}/page\_shield/scripts                      | Fetch a list of detected scripts.                                |
-| [Get a client-side security script](https://developers.cloudflare.com/api/resources/page%5Fshield/subresources/scripts/methods/get/)          | GET zones/{zone\_id}/page\_shield/scripts/{script\_id}         | Fetch the details of a script.                                   |
-| [List client-side security connections](https://developers.cloudflare.com/api/resources/page%5Fshield/subresources/connections/methods/list/) | GET zones/{zone\_id}/page\_shield/connections                  | Fetch a list of detected connections.                            |
-| [Get a client-side security connection](https://developers.cloudflare.com/api/resources/page%5Fshield/subresources/connections/methods/get/)  | GET zones/{zone\_id}/page\_shield/connections/{connection\_id} | Fetch the details of a connection.                               |
-| [List client-side security cookies](https://developers.cloudflare.com/api/resources/page%5Fshield/subresources/cookies/methods/list/)         | GET zones/{zone\_id}/page\_shield/cookies                      | Fetch a list of detected cookies.                                |
-| [Get a client-side security cookie](https://developers.cloudflare.com/api/resources/page%5Fshield/subresources/cookies/methods/get/)          | GET zones/{zone\_id}/page\_shield/cookies/{cookie\_id}         | Fetch the details of a cookie.                                   |
-| [List content security rules](https://developers.cloudflare.com/api/resources/page%5Fshield/subresources/policies/methods/list/)              | GET zones/{zone\_id}/page\_shield/policies                     | Fetch a list of all configured content security rules.           |
-| [Get a content security rule](https://developers.cloudflare.com/api/resources/page%5Fshield/subresources/policies/methods/get/)               | GET zones/{zone\_id}/page\_shield/policies/{policy\_id}        | Fetch the details of a content security rule.                    |
-| [Create a content security rule](https://developers.cloudflare.com/api/resources/page%5Fshield/subresources/policies/methods/create/)         | POST zones/{zone\_id}/page\_shield/policies                    | Creates a content security rule with the provided configuration. |
-| [Update a content security rule](https://developers.cloudflare.com/api/resources/page%5Fshield/subresources/policies/methods/update/)         | PUT zones/{zone\_id}/page\_shield/policies/{policy\_id}        | Updates an existing content security rule.                       |
-| [Delete a content security rule](https://developers.cloudflare.com/api/resources/page%5Fshield/subresources/policies/methods/delete/)         | DELETE zones/{zone\_id}/page\_shield/policies/{policy\_id}     | Deletes an existing content security rule.                       |
+| Operation | Method + URL stub | Notes |
+| --- | --- | --- |
+| [Get client-side security settings](https://developers.cloudflare.com/api/resources/page_shield/methods/get/) | `GET zones/{zone_id}/page_shield` | Fetch client-side security settings (including the status). |
+| [Update client-side security settings](https://developers.cloudflare.com/api/resources/page_shield/methods/update/) | `PUT zones/{zone_id}/page_shield` | Update client-side security settings. |
+| [List client-side security scripts](https://developers.cloudflare.com/api/resources/page_shield/subresources/scripts/methods/list/) | `GET zones/{zone_id}/page_shield/scripts` | Fetch a list of detected scripts. |
+| [Get a client-side security script](https://developers.cloudflare.com/api/resources/page_shield/subresources/scripts/methods/get/) | `GET zones/{zone_id}/page_shield/scripts/{script_id}` | Fetch the details of a script. |
+| [List client-side security connections](https://developers.cloudflare.com/api/resources/page_shield/subresources/connections/methods/list/) | `GET zones/{zone_id}/page_shield/connections` | Fetch a list of detected connections. |
+| [Get a client-side security connection](https://developers.cloudflare.com/api/resources/page_shield/subresources/connections/methods/get/) | `GET zones/{zone_id}/page_shield/connections/{connection_id}` | Fetch the details of a connection. |
+| [List client-side security cookies](https://developers.cloudflare.com/api/resources/page_shield/subresources/cookies/methods/list/) | `GET zones/{zone_id}/page_shield/cookies` | Fetch a list of detected cookies. |
+| [Get a client-side security cookie](https://developers.cloudflare.com/api/resources/page_shield/subresources/cookies/methods/get/) | `GET zones/{zone_id}/page_shield/cookies/{cookie_id}` | Fetch the details of a cookie. |
+| [List content security rules](https://developers.cloudflare.com/api/resources/page_shield/subresources/policies/methods/list/) | `GET zones/{zone_id}/page_shield/policies` | Fetch a list of all configured content security rules. |
+| [Get a content security rule](https://developers.cloudflare.com/api/resources/page_shield/subresources/policies/methods/get/) | `GET zones/{zone_id}/page_shield/policies/{policy_id}` | Fetch the details of a content security rule. |
+| [Create a content security rule](https://developers.cloudflare.com/api/resources/page_shield/subresources/policies/methods/create/) | `POST zones/{zone_id}/page_shield/policies` | Creates a content security rule with the provided configuration. |
+| [Update a content security rule](https://developers.cloudflare.com/api/resources/page_shield/subresources/policies/methods/update/) | `PUT zones/{zone_id}/page_shield/policies/{policy_id}` | Updates an existing content security rule. |
+| [Delete a content security rule](https://developers.cloudflare.com/api/resources/page_shield/subresources/policies/methods/delete/) | `DELETE zones/{zone_id}/page_shield/policies/{policy_id}` | Deletes an existing content security rule. |
 
 ## API notes
 
-The malicious script classification (`Malicious` or `Not malicious`) is not directly available in the API. To determine this classification, compare the script's `js_integrity_score` value with the classification threshold, which is currently set to 10\. Scripts with a score value lower than the threshold are considered malicious.
+The malicious script classification (`Malicious` or `Not malicious`) is not directly available in the API. To determine this classification, compare the script's `js_integrity_score` value with the classification threshold, which is currently set to 10. Scripts with a score value lower than the threshold are considered malicious.
 
 ## Common API calls
 
@@ -64,15 +64,26 @@ The malicious script classification (`Malicious` or `Not malicious`) is not dire
 
 This example obtains the current settings of Cloudflare's client-side security, including the status (enabled/disabled).
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Page Shield`
-* `Domain Page Shield Read`
-* `Domain Page Shield`
-* `Page Shield Read`
-* `Zone Settings Write`
-* `Zone Settings Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Page Shield</code>
+- <code>Domain Page Shield Read</code>
+- <code>Domain Page Shield</code>
+- <code>Page Shield Read</code>
+- <code>Zone Settings Write</code>
+- <code>Zone Settings Read</code>
+
+</details>
+
+*Get client-side security settingsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield" \
@@ -99,12 +110,23 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield" \
 
 This example enables Cloudflare's client-side security in the specified zone.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Page Shield`
-* `Domain Page Shield`
-* `Zone Settings Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Page Shield</code>
+- <code>Domain Page Shield</code>
+- <code>Zone Settings Write</code>
+
+</details>
+
+*Update client-side security settingsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield" \
@@ -134,15 +156,26 @@ This `GET` request fetches a list of scripts detected by Cloudflare's client-sid
 
 By default, the response will only include scripts with `active` status when you do not specify a `status` filter parameter in the URL query string.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Page Shield`
-* `Domain Page Shield Read`
-* `Domain Page Shield`
-* `Page Shield Read`
-* `Zone Settings Write`
-* `Zone Settings Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Page Shield</code>
+- <code>Domain Page Shield Read</code>
+- <code>Domain Page Shield</code>
+- <code>Page Shield Read</code>
+- <code>Zone Settings Write</code>
+- <code>Zone Settings Read</code>
+
+</details>
+
+*List detected scriptsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/scripts?hosts=example.net&page=1&per_page=15" \
@@ -193,21 +226,32 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/scripts?ho
 
 Some fields displayed in the example response may not be available, depending on your Cloudflare plan.
 
-For details on the available filtering, paging, and sorting parameters, refer to the [API reference](https://developers.cloudflare.com/api/resources/page%5Fshield/subresources/scripts/methods/list/).
+For details on the available filtering, paging, and sorting parameters, refer to the [API reference](https://developers.cloudflare.com/api/resources/page_shield/subresources/scripts/methods/list/).
 
 ### Fetch list of infrequently reported scripts
 
 This `GET` request fetches a list of infrequently reported scripts on hostname `example.net`, requesting the first page with 15 items per page. The URL query string includes filtering and paging parameters.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Page Shield`
-* `Domain Page Shield Read`
-* `Domain Page Shield`
-* `Page Shield Read`
-* `Zone Settings Write`
-* `Zone Settings Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Page Shield</code>
+- <code>Domain Page Shield Read</code>
+- <code>Domain Page Shield</code>
+- <code>Page Shield Read</code>
+- <code>Zone Settings Write</code>
+- <code>Zone Settings Read</code>
+
+</details>
+
+*List detected scriptsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/scripts?hosts=example.net&page=1&per_page=15&status=infrequent" \
@@ -257,21 +301,32 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/scripts?ho
 
 Some fields displayed in the example response may not be available, depending on your Cloudflare plan.
 
-For details on the available filtering, paging, and sorting parameters, refer to the [API reference](https://developers.cloudflare.com/api/resources/page%5Fshield/subresources/scripts/methods/list/).
+For details on the available filtering, paging, and sorting parameters, refer to the [API reference](https://developers.cloudflare.com/api/resources/page_shield/subresources/scripts/methods/list/).
 
 ### Get details of a detected script
 
 This `GET` request obtains the details of a script detected by Cloudflare's client-side security with script ID `8337233faec2357ff84465a919534e4d`.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Page Shield`
-* `Domain Page Shield Read`
-* `Domain Page Shield`
-* `Page Shield Read`
-* `Zone Settings Write`
-* `Zone Settings Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Page Shield</code>
+- <code>Domain Page Shield Read</code>
+- <code>Domain Page Shield</code>
+- <code>Page Shield Read</code>
+- <code>Zone Settings Write</code>
+- <code>Zone Settings Read</code>
+
+</details>
+
+*Get a detected scriptbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/scripts/8337233faec2357ff84465a919534e4d" \
@@ -335,15 +390,26 @@ This `GET` request fetches a list of connections detected by Cloudflare's client
 
 By default, the response will only include connections with `active` status when you do not specify a `status` filter parameter in the URL query string.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Page Shield`
-* `Domain Page Shield Read`
-* `Domain Page Shield`
-* `Page Shield Read`
-* `Zone Settings Write`
-* `Zone Settings Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Page Shield</code>
+- <code>Domain Page Shield Read</code>
+- <code>Domain Page Shield</code>
+- <code>Page Shield Read</code>
+- <code>Zone Settings Write</code>
+- <code>Zone Settings Read</code>
+
+</details>
+
+*List detected connectionsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/connections?page=1&per_page=15" \
@@ -385,21 +451,32 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/connection
 }
 ```
 
-For details on the available filtering, paging, and sorting parameters, refer to the [API reference](https://developers.cloudflare.com/api/resources/page%5Fshield/subresources/scripts/methods/list/).
+For details on the available filtering, paging, and sorting parameters, refer to the [API reference](https://developers.cloudflare.com/api/resources/page_shield/subresources/scripts/methods/list/).
 
 ### Get details of a detected connection
 
 This `GET` request obtains the details of a connection detected by Cloudflare's client-side security with connection ID `0a7bb628776f4e50a50d8594c4a01740`.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Page Shield`
-* `Domain Page Shield Read`
-* `Domain Page Shield`
-* `Page Shield Read`
-* `Zone Settings Write`
-* `Zone Settings Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Page Shield</code>
+- <code>Domain Page Shield Read</code>
+- <code>Domain Page Shield</code>
+- <code>Page Shield Read</code>
+- <code>Zone Settings Write</code>
+- <code>Zone Settings Read</code>
+
+</details>
+
+*Get a detected connectionbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/connections/0a7bb628776f4e50a50d8594c4a01740" \
@@ -437,15 +514,26 @@ This `GET` request fetches a list of cookies detected by Cloudflare's client-sid
 
 By default, the response will only include cookies with `active` status when you do not specify a `status` filter parameter in the URL query string.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Page Shield`
-* `Domain Page Shield Read`
-* `Domain Page Shield`
-* `Page Shield Read`
-* `Zone Settings Write`
-* `Zone Settings Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Page Shield</code>
+- <code>Domain Page Shield Read</code>
+- <code>Domain Page Shield</code>
+- <code>Page Shield Read</code>
+- <code>Zone Settings Write</code>
+- <code>Zone Settings Read</code>
+
+</details>
+
+*List detected cookiesbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/cookies?page=1&per_page=15" \
@@ -495,15 +583,26 @@ For details on the available filtering, paging, and sorting parameters, refer to
 
 This `GET` request obtains the details of a cookie detected by Cloudflare's client-side security with ID `beee03ada7e047e79f076785d8cd8b8e`.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Page Shield`
-* `Domain Page Shield Read`
-* `Domain Page Shield`
-* `Page Shield Read`
-* `Zone Settings Write`
-* `Zone Settings Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Page Shield</code>
+- <code>Domain Page Shield Read</code>
+- <code>Domain Page Shield</code>
+- <code>Page Shield Read</code>
+- <code>Zone Settings Write</code>
+- <code>Zone Settings Read</code>
+
+</details>
+
+*Get a detected cookiebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/cookies/beee03ada7e047e79f076785d8cd8b8e" \
@@ -539,27 +638,40 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/cookies/be
 
 ### Create a content security rule
 
-This `POST` request creates a content security rule (previously called a policy) with _Log_ action, defining the following scripts as allowed based on where they are hosted:
+This `POST` request creates a content security rule (previously called a policy) with *Log* action, defining the following scripts as allowed based on where they are hosted:
 
-* Scripts hosted in `myapp.example.com` (which does not include scripts in `example.com`).
-* Scripts hosted in `cdnjs.cloudflare.com`.
-* The Google Analytics script using its full URL.
-* All scripts in the same origin (same HTTP or HTTPS scheme and hostname).
+- Scripts hosted in `myapp.example.com` (which does not include scripts in `example.com`).
+- Scripts hosted in `cdnjs.cloudflare.com`.
+- The Google Analytics script using its full URL.
+- All scripts in the same origin (same HTTP or HTTPS scheme and hostname).
 
 All other scripts would trigger a rule violation, but those scripts would not be blocked.
 
-For more information on Content Security Policy (CSP) directives and values, refer to the [MDN documentation ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy).
+For more information on Content Security Policy (CSP)
+
+ directives and values, refer to the [MDN documentation ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy).
 
 Note
 
 For a list of CSP directives and keywords supported by content security rules, refer to [Supported CSP directives](https://developers.cloudflare.com/client-side-security/rules/csp-directives/).
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Page Shield`
-* `Domain Page Shield`
-* `Zone Settings Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Page Shield</code>
+- <code>Domain Page Shield</code>
+- <code>Zone Settings Write</code>
+
+</details>
+
+*Create a content security rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/policies" \
@@ -591,7 +703,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/policies" 
 }
 ```
 
-To create a content security rule with an _Allow_ action instead of _Log_, use `"action": "allow"` in the request body. In the case of such rule, all scripts not allowed by the rule would be blocked.
+To create a content security rule with an *Allow* action instead of *Log*, use `"action": "allow"` in the request body. In the case of such rule, all scripts not allowed by the rule would be blocked.
 
 Was this helpful?
 

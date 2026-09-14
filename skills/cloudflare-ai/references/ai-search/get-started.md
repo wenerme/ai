@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated Jul 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Search is a managed search service. Connect a website, an R2 bucket, or upload your own documents, and AI Search indexes your content for natural language queries.
 

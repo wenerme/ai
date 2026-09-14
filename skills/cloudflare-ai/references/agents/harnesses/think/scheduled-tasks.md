@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Scheduled tasks
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use `getScheduledTasks()` when code should create recurring Think turns or deterministic scheduled handlers. Think reconciles the declarations on startup, stores a durable one-shot schedule for the next occurrence, and re-arms the next occurrence after each run.
 
@@ -100,13 +100,13 @@ export class DigestAgent extends Think<Env> {
 
 The DSL supports `every <n> minutes`, `every <n> hours`, `every day at HH:mm`, `every weekday at HH:mm`, and `every week on monday,wednesday at HH:mm`. Wall-clock schedules require either an inline timezone, a task `timezone`, or `getDefaultTimezone()`. If an alarm is late, Think runs the intended occurrence once and schedules the next future occurrence; it does not backfill missed runs.
 
-Each task must define exactly one of `prompt` or `handler`. Prompt tasks create a durable submission with [submitMessages()](https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/). Handler tasks receive `{ taskId, scheduledFor, scheduledForDate, occurrenceKey, idempotencyKey, schedule, scheduleKind, timezone, metadata }` and are intended for app-owned work such as creating a Workflow run or writing a run ledger. Delivery is at-least-once; use `idempotencyKey` or `occurrenceKey` for your own durable idempotency.
+Each task must define exactly one of `prompt` or `handler`. Prompt tasks create a durable submission with [`submitMessages()`](https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/). Handler tasks receive `{ taskId, scheduledFor, scheduledForDate, occurrenceKey, idempotencyKey, schedule, scheduleKind, timezone, metadata }` and are intended for app-owned work such as creating a Workflow run or writing a run ledger. Delivery is at-least-once; use `idempotencyKey` or `occurrenceKey` for your own durable idempotency.
 
 Static declarations reconcile on startup. If `getScheduledTasks()` reads product-owned data that can change while the Durable Object is live, call `internal_reconcileScheduledTasks()` after updating that data. During reconciliation Think records the task row before creating the underlying Agent schedule, so a missing `schedule_id` is only a pending reconcile state and is repaired on the next reconcile. The task `retry` option retries the prompt or handler action before the failure is logged. The next occurrence is still scheduled after the action succeeds or exhausts its retries, so failed occurrences do not block future runs.
 
 ## When to use a workflow instead
 
-For a recurring job whose steps matter — multiple deterministic steps, long waits, or human approval — use a handler task to create a [Think Workflow](https://developers.cloudflare.com/agents/harnesses/think/workflows/) run. Keep simple recurring prompts as prompt tasks, and keep one-off background turns on [submitMessages()](https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/).
+For a recurring job whose steps matter — multiple deterministic steps, long waits, or human approval — use a handler task to create a [Think Workflow](https://developers.cloudflare.com/agents/harnesses/think/workflows/) run. Keep simple recurring prompts as prompt tasks, and keep one-off background turns on [`submitMessages()`](https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/).
 
 Was this helpful?
 

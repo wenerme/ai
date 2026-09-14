@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pay from coding tools
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/tools/payments/x402/pay-with-tool-plugins/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/payments/x402/pay-with-tool-plugins/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following examples show how to add x402 payment handling to AI coding tools. When the tool encounters a 402 response, it pays automatically and retries.
 
 Both examples require:
 
-* A wallet private key (set as `X402_PRIVATE_KEY` environment variable)
-* The x402 packages: `@x402/fetch`, `@x402/evm`, and `viem`
+- A wallet private key (set as `X402_PRIVATE_KEY` environment variable)
+- The x402 packages: `@x402/fetch`, `@x402/evm`, and `viem`
 
 ## OpenCode plugin
 
@@ -164,10 +164,10 @@ Register the hook in `.claude/settings.json`:
 
 ## Related
 
-* [Pay from Agents SDK](https://developers.cloudflare.com/agents/tools/payments/x402/pay-from-agents-sdk/) — Use the Agents SDK for more control
-* [Charge for HTTP content](https://developers.cloudflare.com/agents/tools/payments/x402/charge-for-http-content/) — Build the server side
-* [Human-in-the-loop guide](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/) — Implement approval workflows
-* [x402.org ↗](https://x402.org) — Protocol specification
+- [Pay from Agents SDK](https://developers.cloudflare.com/agents/tools/payments/x402/pay-from-agents-sdk/) — Use the Agents SDK for more control
+- [Charge for HTTP content](https://developers.cloudflare.com/agents/tools/payments/x402/charge-for-http-content/) — Build the server side
+- [Human-in-the-loop guide](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/) — Implement approval workflows
+- [x402.org ↗](https://x402.org) — Protocol specification
 
 Was this helpful?
 

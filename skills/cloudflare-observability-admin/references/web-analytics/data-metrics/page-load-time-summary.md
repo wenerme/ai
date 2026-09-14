@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Page load time
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web-analytics/data-metrics/page-load-time-summary/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web-analytics/data-metrics/page-load-time-summary/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Page load time summary gives you an overview of how long your web page takes to load, broken down by area. To access Page load time:
 
@@ -27,27 +27,27 @@ Below is a list of all the components you can inspect:
 
 The total amount of time required to load the page. Note that page load time does not correspond to the sum of the other timings available in Web Analytics. This happens because the page load time also includes timings that are not displayed, such as pre-DNS lookup timings and unattributed gaps between timing metrics.
 
-### DNS (`domainLookupEnd` \- `domainLookupStart`)
+### DNS (`domainLookupEnd` - `domainLookupStart`)
 
 How long a DNS query takes. This could appear as zero for reused connections or content stored in the local cache (memory or disk).
 
-### TCP (`connectEnd` \- `connectStart`)
+### TCP (`connectEnd` - `connectStart`)
 
 How long it takes to establish a TCP connection with the server. If using HTTPS, this process includes TLS negotiation time.
 
-### Request (`responseStart` \- `requestStart`)
+### Request (`responseStart` - `requestStart`)
 
 The time elapsed between making an HTTP request and receiving the first byte of the response.
 
-### Response (`responseEnd` \- `responseStart`)
+### Response (`responseEnd` - `responseStart`)
 
 The time elapsed between the first byte and the last byte of the received response. Think of this as a resource download time.
 
-### Processing (`domComplete` \- `domInteractive`)
+### Processing (`domComplete` - `domInteractive`)
 
 How long it took to render the page. This includes loading any resources that block page rendering, including images, scripts, and style sheets. If this number is big, optimize your document architecture, resource size, or configure settings in the Cloudflare Speed app. This document process can be drilled down more with `domInteractive`, `domContentLoadedEventStart`, `domContentLoadedEventEnd`, and `domComplete`.
 
-### Load Event (`loadEventEnd` \- `loadEventStart`)
+### Load Event (`loadEventEnd` - `loadEventStart`)
 
 An event triggered by the browser when a document and its resources finish loading. The Load Event duration may be a useful metric if you have additional functions or any logic for the load event.
 

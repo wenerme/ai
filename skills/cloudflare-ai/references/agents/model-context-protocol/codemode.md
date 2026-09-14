@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Code Mode MCP server patterns
 
-Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/codemode/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/codemode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A Code Mode MCP server lets any Model Context Protocol (MCP) client use model-written code without providing its own sandbox. The MCP server exposes code execution as its tool interface and runs generated JavaScript in an isolated Worker.
 
 Code Mode MCP servers follow two patterns:
 
-| Pattern            | MCP tools       | Model-facing API                      | Use when                                                               |
-| ------------------ | --------------- | ------------------------------------- | ---------------------------------------------------------------------- |
-| Single code tool   | code            | Typed methods for every upstream tool | You already have an MCP server with a manageable set of tools.         |
-| Search and execute | search, execute | OpenAPI document and request function | You have a large API whose complete schema should stay out of context. |
+| Pattern | MCP tools | Model-facing API | Use when |
+| --- | --- | --- | --- |
+| Single code tool | `code` | Typed methods for every upstream tool | You already have an MCP server with a manageable set of tools. |
+| Search and execute | `search`, `execute` | OpenAPI document and request function | You have a large API whose complete schema should stay out of context. |
 
 Both patterns let generated code compose operations and keep intermediate results outside the model context. They differ in how the model discovers available operations.
 
@@ -56,8 +56,8 @@ A large API can have thousands of operations. Including every operation in one t
 
 The server exposes two MCP tools:
 
-* `search` runs generated code against an OpenAPI document. It returns only the operations, parameters, or schemas needed for the task.
-* `execute` runs generated code with an authenticated request function. It can call the selected operations, compose responses, and return a focused result.
+- `search` runs generated code against an OpenAPI document. It returns only the operations, parameters, or schemas needed for the task.
+- `execute` runs generated code with an authenticated request function. It can call the selected operations, compose responses, and return a focused result.
 
 The model first calls `search` with code such as:
 

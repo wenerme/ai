@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Full
 
-Last updated Jul 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you set your encryption mode to **Full**, Cloudflare allows HTTPS connections between your visitor and Cloudflare and makes connections to the origin using the scheme requested by the visitor. If your visitor uses `http`, then Cloudflare connects to the origin using plaintext HTTP and vice versa.
 
@@ -36,11 +36,10 @@ Depending on your origin configuration, you may have to adjust settings to avoid
 
 To change your encryption mode in the dashboard:
 
-1. In the Cloudflare dashboard, go to the **SSL/TLS Overview** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
+1. In the Cloudflare dashboard, go to the **SSL/TLS Overview** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
 2. Choose an encryption mode.
 
-To adjust your encryption mode with the API, send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `ssl` as the setting name in the URI path, and the `value` parameter set to your desired setting (`off`, `flexible`, `full`, `strict`, or `origin_pull`).
+To adjust your encryption mode with the API, send a [`PATCH`](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `ssl` as the setting name in the URI path, and the `value` parameter set to your desired setting (`off`, `flexible`, `full`, `strict`, or `origin_pull`).
 
 ## Limitations
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Static Forms
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/functions/plugins/static-forms/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/plugins/static-forms/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Static Forms Pages Plugin intercepts all form submissions made which have the `data-static-form-name` attribute set. This allows you to take action on these form submissions by, for example, saving the submission to KV.
 
@@ -62,7 +62,7 @@ export const onRequest: PagesFunction = staticFormsPlugin({
 </body>
 ```
 
-The Plugin takes a single argument, an object with a `respondWith` property. This function takes an object with a `formData` property (the [FormData ↗](https://developer.mozilla.org/en-US/docs/Web/API/FormData) instance) and `name` property (the name value of your `data-static-form-name` attribute). It should return a `Response` or `Promise` of a `Response`. It is in this `respondWith` function that you can take action such as serializing the `formData` and saving it to a KV namespace.
+The Plugin takes a single argument, an object with a `respondWith` property. This function takes an object with a `formData` property (the [`FormData` ↗](https://developer.mozilla.org/en-US/docs/Web/API/FormData) instance) and `name` property (the name value of your `data-static-form-name` attribute). It should return a `Response` or `Promise` of a `Response`. It is in this `respondWith` function that you can take action such as serializing the `formData` and saving it to a KV namespace.
 
 The `method` and `action` attributes of the HTML form do not need to be set. The Plugin will automatically override them to allow it to intercept the submission.
 

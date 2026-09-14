@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Logpush Health Dashboards
 
-Last updated Aug 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-health/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-health/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Logpush Health Dashboards give you a clear view into the performance and reliability of your Logpush jobs. You can monitor the status of log delivery, diagnose issues, and understand the volume of data being sent to your configured destinations. This helps you ensure that critical log data for security, compliance, and observability is always flowing as expected.
 
@@ -30,15 +30,15 @@ Health notifications work alongside the Health Dashboard to provide both real-ti
 2. Go to the **Health** tab.
 3. Select the job you want to analyze.
 4. Specify the time range you want to review.
-5. _(Optional)_ From the **Jobs** tab, locate the job you want to analyze.
+5. *(Optional)* From the **Jobs** tab, locate the job you want to analyze.
 6. Hover over the **Job Health (24h)** column for that job and select **View Health**.
 7. You will be redirected to the **Health** tab, where you can select the desired time range for analysis.
 
 ### Data availability and API access
 
-* The **Health Dashboard** displays up to **30 days** of health metrics for each Logpush job in the Cloudflare dashboard.
-* The raw health metrics can be queried via the `logpushHealthAdaptiveGroups` dataset in the GraphQL API.
-* You can explore or test queries using the [Cloudflare GraphQL Explorer ↗](https://graphql.cloudflare.com/explorer).
+- The **Health Dashboard** displays up to **30 days** of health metrics for each Logpush job in the Cloudflare dashboard.
+- The raw health metrics can be queried via the `logpushHealthAdaptiveGroups` dataset in the GraphQL API.
+- You can explore or test queries using the [Cloudflare GraphQL Explorer ↗](https://graphql.cloudflare.com/explorer).
 
 ## Key concepts in job health
 
@@ -78,25 +78,22 @@ Each view highlights a different aspect of job performance — what was delivere
 
 #### Charts and metrics
 
-* **Batch Upload Success vs. Failure**: Displays the number of batches that were successfully uploaded versus those that failed.
-
-  * **Successful Uploads** \- Total number of batches successfully uploaded.
-  * **Failed Uploads** \- Total number of batches that failed to upload due to connection or destination issues.
-* **Log Lines Uploaded**: Tracks the total number of log lines successfully uploaded to your destination.
-
-  * **Uploaded Log Lines** \- Total number of log lines successfully delivered.
-  * **Dropped Log Lines** \- Total number of log lines that could not be delivered after all retry attempts.
-* **Data Volume**: Shows the total volume of log data uploaded (in bytes), both compressed and uncompressed.
-
-  * **Uncompressed Data (raw)** \- Total size of log data before compression.
-  * **Compressed Data (uploaded)** \- Total size of log data after compression, representing the actual bytes transmitted.
+- **Batch Upload Success vs. Failure**: Displays the number of batches that were successfully uploaded versus those that failed.
+  - **Successful Uploads** - Total number of batches successfully uploaded.
+  - **Failed Uploads** - Total number of batches that failed to upload due to connection or destination issues.
+- **Log Lines Uploaded**: Tracks the total number of log lines successfully uploaded to your destination.
+  - **Uploaded Log Lines** - Total number of log lines successfully delivered.
+  - **Dropped Log Lines** - Total number of log lines that could not be delivered after all retry attempts.
+- **Data Volume**: Shows the total volume of log data uploaded (in bytes), both compressed and uncompressed.
+  - **Uncompressed Data (raw)** - Total size of log data before compression.
+  - **Compressed Data (uploaded)** - Total size of log data after compression, representing the actual bytes transmitted.
 
 #### When to use
 
 Start here to assess overall data delivery health:
 
-* High upload success and stable data volume indicate a healthy Logpush job.
-* Drops, spikes, or failed uploads suggest delivery issues — proceed to **Upload Reliability** to investigate root causes.
+- High upload success and stable data volume indicate a healthy Logpush job.
+- Drops, spikes, or failed uploads suggest delivery issues — proceed to **Upload Reliability** to investigate root causes.
 
 ### Upload Reliability
 
@@ -104,54 +101,51 @@ Upload Reliability helps you identify factors affecting reliability, stability, 
 
 #### Charts and metrics
 
-* **Uploaded Logs by Status Code** Shows the number of batches that were successful, failed, or retried, categorized by status code.
-
-  * **Success Rate** \- Percentage of batches successfully uploaded.
-  * **Successful Uploads** \- Total number of batches successfully completed.
-* **Upload Duration**: Shows the average time taken to complete each batch upload, broken down by status code.
-
-  * **Destination Availability** \- How often Cloudflare successfully connected to your destination and completed uploads.
-  * **Average Upload Duration** \- Average time taken to upload logs after they are generated.
-* **Retry Attempts**: Displays the number of retries made after failed uploads, broken down by status code.
-
-  * **Retry Attempts** \- Total number of upload attempts made after previous failures (includes the first failed attempt).
+- **Uploaded Logs by Status Code** Shows the number of batches that were successful, failed, or retried, categorized by status code.
+  - **Success Rate** - Percentage of batches successfully uploaded.
+  - **Successful Uploads** - Total number of batches successfully completed.
+- **Upload Duration**: Shows the average time taken to complete each batch upload, broken down by status code.
+  - **Destination Availability** - How often Cloudflare successfully connected to your destination and completed uploads.
+  - **Average Upload Duration** - Average time taken to upload logs after they are generated.
+- **Retry Attempts**: Displays the number of retries made after failed uploads, broken down by status code.
+  - **Retry Attempts** - Total number of upload attempts made after previous failures (includes the first failed attempt).
 
 #### When to use
 
 Use this view to troubleshoot reliability issues:
 
-* High latency, frequent retries, or low destination availability indicate potential instability in the destination endpoint or network.
-* Combine with **Upload Health** metrics to correlate delivery success with underlying reliability patterns.
+- High latency, frequent retries, or low destination availability indicate potential instability in the destination endpoint or network.
+- Combine with **Upload Health** metrics to correlate delivery success with underlying reliability patterns.
 
 ## Troubleshooting guide
 
 The Logpush Health Dashboards help you monitor the status, reliability, and performance of your Logpush jobs. Use this guide to interpret each chart, identify the root cause of anomalies, and take corrective action.
 
-| Chart name                                  | Symptom                                       | What it means                                                                                                                                 | Possible causes                                                                                                                                                                                                | Recommended actions                                                                                                                                                                                                                |
-| ------------------------------------------- | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Batch Upload Success vs Failure**         | Failed uploads                                | Cloudflare could not deliver batches after all retry attempts. These batches are marked as **failed**, and all log lines in them are dropped. | \- Destination endpoint unavailable or rejecting connections (expired credentials, downtime).  \- Uploads timing out due to large batch sizes or network latency.  \- Destination throttling or rate limiting. | \- Verify destination credentials and endpoint health.  \- Reduce batch size in the Logpush job configuration.  \- Ensure the destination can handle the expected upload rate.  \- Contact Cloudflare Support if failures persist. |
-| **Log Lines Uploaded**                      | Dropped log lines or reduced delivery volume  | Fewer logs are being delivered than expected, often due to failed uploads or dropped batches.                                                 | \- Spike in failed uploads.  \- Destination ingestion limits or partial uploads.                                                                                                                               | \- Compare **Log Lines Uploaded** and **Data Volume** charts for dips.  \- Check destination for ingestion errors or rate limiting.  \- Review recent Logpush job configuration changes.                                           |
-| **Data Volume (Compressed & Uncompressed)** | Unexpected drop in data volume                | Delivered data volume is lower than expected, suggesting compression inefficiencies or dropped batches.                                       | \- Failed uploads or incomplete deliveries.  \- Destination rejecting uploads due to size or quota limits.                                                                                                     | \- Review compression settings and batch size.  \- Verify destination storage capacity.  \- Check for spikes in failed uploads or retries.                                                                                         |
-| **Uploaded Logs by Status Code**            | High number of retries or failed status codes | Uploads fail on the first attempt but succeed on retries.                                                                                     | \- Temporary destination downtime or throttling.  \- Network instability between Cloudflare and the destination.                                                                                               | \- Review retry and failure distribution by status code.  \- Compare with **Destination Availability** for correlation.  \- Reduce batch size.                                                                                     |
-| **Retry Attempts**                          | Frequent retry activity                       | Uploads are repeatedly failing and retried multiple times.                                                                                    | \- Destination instability or transient errors.  \- High latency or slow acknowledgements from the destination.                                                                                                | \- Verify destination uptime and ingestion rate.  \- Ensure destination is not throttling requests.  \- Occasional retries are expected; persistent spikes require review.                                                         |
-| **Avg. Upload Duration**                    | Long upload times                             | Uploads are taking longer than expected, indicating latency or oversized batches.                                                             | \- Large batches or uncompressed payloads.  \- Network or regional latency.  \- Destination processing delays.                                                                                                 | \- Review **Avg. Upload Duration** trends.  \- Reduce batch size for faster uploads.  \- Verify destination throughput and rate limit settings.                                                                                    |
-| **Destination Availability**                | Low or unstable availability                  | Cloudflare cannot consistently connect to your destination.                                                                                   | \- Destination downtime, DNS errors, or authentication issues.  \- Firewall or network restrictions blocking Cloudflare.                                                                                       | \- Check **Destination Availability** for dips.  \- Confirm destination credentials and endpoint uptime.  \- Review allowlists or network access settings.                                                                         |
+| Chart name | Symptom | What it means | Possible causes | Recommended actions |
+| --- | --- | --- | --- | --- |
+| **Batch Upload Success vs Failure** | Failed uploads | Cloudflare could not deliver batches after all retry attempts. These batches are marked as **failed**, and all log lines in them are dropped. | - Destination endpoint unavailable or rejecting connections (expired credentials, downtime). <br> - Uploads timing out due to large batch sizes or network latency. <br> - Destination throttling or rate limiting. | - Verify destination credentials and endpoint health. <br> - Reduce batch size in the Logpush job configuration. <br> - Ensure the destination can handle the expected upload rate. <br> - Contact Cloudflare Support if failures persist. |
+| **Log Lines Uploaded** | Dropped log lines or reduced delivery volume | Fewer logs are being delivered than expected, often due to failed uploads or dropped batches. | - Spike in failed uploads. <br> - Destination ingestion limits or partial uploads. | - Compare **Log Lines Uploaded** and **Data Volume** charts for dips. <br> - Check destination for ingestion errors or rate limiting. <br> - Review recent Logpush job configuration changes. |
+| **Data Volume (Compressed & Uncompressed)** | Unexpected drop in data volume | Delivered data volume is lower than expected, suggesting compression inefficiencies or dropped batches. | - Failed uploads or incomplete deliveries. <br> - Destination rejecting uploads due to size or quota limits. | - Review compression settings and batch size. <br> - Verify destination storage capacity. <br> - Check for spikes in failed uploads or retries. |
+| **Uploaded Logs by Status Code** | High number of retries or failed status codes | Uploads fail on the first attempt but succeed on retries. | - Temporary destination downtime or throttling. <br> - Network instability between Cloudflare and the destination. | - Review retry and failure distribution by status code. <br> - Compare with **Destination Availability** for correlation. <br> - Reduce batch size. |
+| **Retry Attempts** | Frequent retry activity | Uploads are repeatedly failing and retried multiple times. | - Destination instability or transient errors. <br> - High latency or slow acknowledgements from the destination. | - Verify destination uptime and ingestion rate. <br> - Ensure destination is not throttling requests. <br> - Occasional retries are expected; persistent spikes require review. |
+| **Avg. Upload Duration** | Long upload times | Uploads are taking longer than expected, indicating latency or oversized batches. | - Large batches or uncompressed payloads. <br> - Network or regional latency. <br> - Destination processing delays. | - Review **Avg. Upload Duration** trends. <br> - Reduce batch size for faster uploads. <br> - Verify destination throughput and rate limit settings. |
+| **Destination Availability** | Low or unstable availability | Cloudflare cannot consistently connect to your destination. | - Destination downtime, DNS errors, or authentication issues. <br> - Firewall or network restrictions blocking Cloudflare. | - Check **Destination Availability** for dips. <br> - Confirm destination credentials and endpoint uptime. <br> - Review allowlists or network access settings. |
 
 ## Destination error codes
 
 When Cloudflare cannot receive an HTTP status code from your destination — for example, the connection never completes or the request is aborted — the delivery attempt is recorded with a Cloudflare-generated error code instead of an HTTP status. These codes appear in the [Health Dashboard](#upload-reliability) and in the `logpushHealthAdaptiveGroups` GraphQL dataset.
 
-| Code | Name                 | Meaning                                                                                                                                                                                                                                                 |
-| ---- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1101 | ConnectionError      | A non-timeout network error occurred while Cloudflare was connecting to your destination (for example, a TCP reset or a refused connection).                                                                                                            |
-| 1102 | ConnectionTimeout    | Cloudflare could not open a TCP connection to your destination within the [connection timeout](#upload-timeouts). Typically caused by firewalls, network paths, or unreachable hosts.                                                                   |
-| 1103 | InternalLogpushError | Cloudflare encountered an internal error while processing the upload. If you see this code repeatedly, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).                                          |
-| 1104 | ConfigError          | The job configuration is invalid. Verify the destination URL, credentials, and access permissions, and use the [validate endpoints](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/#endpoints) to test the configuration. |
-| 1105 | DNSError             | Cloudflare could not resolve the hostname of your destination. Verify DNS records for the destination endpoint.                                                                                                                                         |
-| 1106 | Timeout              | The request stalled or exceeded the [overall HTTP client timeout](#upload-timeouts). Common when a destination accepts the connection but stops reading the body, or when a TLS handshake takes too long.                                               |
-| 1107 | RequestError         | The HTTP request failed before a status code was returned, and the failure is not classified as a timeout. Often caused by an HTTP/2 connection being closed by the destination mid-request.                                                            |
-| 1108 | TransferError        | Cloudflare encountered an error while transferring the request body — typically the connection was reset during the upload.                                                                                                                             |
-| 1201 | FlushMaxLag          | Cloudflare dropped a batch because the buffered data aged out of the retention window before it could be delivered. This code indicates persistent delivery failure — investigate the destination and the earlier codes in the same time range.         |
+| Code | Name | Meaning |
+| --- | --- | --- |
+| `1101` | `ConnectionError` | A non-timeout network error occurred while Cloudflare was connecting to your destination (for example, a TCP reset or a refused connection). |
+| `1102` | `ConnectionTimeout` | Cloudflare could not open a TCP connection to your destination within the [connection timeout](#upload-timeouts). Typically caused by firewalls, network paths, or unreachable hosts. |
+| `1103` | `InternalLogpushError` | Cloudflare encountered an internal error while processing the upload. If you see this code repeatedly, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/). |
+| `1104` | `ConfigError` | The job configuration is invalid. Verify the destination URL, credentials, and access permissions, and use the [validate endpoints](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/#endpoints) to test the configuration. |
+| `1105` | `DNSError` | Cloudflare could not resolve the hostname of your destination. Verify DNS records for the destination endpoint. |
+| `1106` | `Timeout` | The request stalled or exceeded the [overall HTTP client timeout](#upload-timeouts). Common when a destination accepts the connection but stops reading the body, or when a TLS handshake takes too long. |
+| `1107` | `RequestError` | The HTTP request failed before a status code was returned, and the failure is not classified as a timeout. Often caused by an HTTP/2 connection being closed by the destination mid-request. |
+| `1108` | `TransferError` | Cloudflare encountered an error while transferring the request body — typically the connection was reset during the upload. |
+| `1201` | `FlushMaxLag` | Cloudflare dropped a batch because the buffered data aged out of the retention window before it could be delivered. This code indicates persistent delivery failure — investigate the destination and the earlier codes in the same time range. |
 
 Note
 
@@ -161,21 +155,21 @@ Codes in the `1100` range describe Cloudflare-side connection or request failure
 
 Cloudflare applies several timeouts at different layers of the upload path. Understanding each layer helps you interpret [destination error codes](#destination-error-codes) and tune your destination endpoint.
 
-| Timeout                     | Default                                  | Applies to                                                                                                                                                | Related error code                                                         |
-| --------------------------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| TCP connection (dial)       | 5 seconds                                | All destinations that use HTTP                                                                                                                            | 1102 ConnectionTimeout                                                     |
-| TLS handshake               | 5 seconds                                | All HTTPS destinations                                                                                                                                    | 1106 Timeout                                                               |
-| No-progress watchdog        | 10 seconds                               | Destinations that use the shared Cloudflare HTTP transport (HTTP endpoints, Cloudflare R2, Splunk, Datadog, New Relic, CrowdStrike, Cloudflare Pipelines) | 1106 Timeout                                                               |
-| Idle connection reuse       | 10 seconds                               | Persistent HTTP connections                                                                                                                               | Not surfaced as an error. The connection is closed and reopened as needed. |
-| Overall HTTP client timeout | 2 minutes                                | HTTP endpoint family only: https://, Datadog, New Relic, CrowdStrike, Cloudflare Pipelines                                                                | 1106 Timeout                                                               |
-| HTTP/2 idle read plus ping  | 10 seconds idle, 15 seconds ping timeout | HTTP/2 connections                                                                                                                                        | 1107 RequestError                                                          |
-| HTTP/2 write stall          | 10 seconds                               | HTTP/2 connections                                                                                                                                        | 1106 Timeout or 1107 RequestError                                          |
+| Timeout | Default | Applies to | Related error code |
+| --- | --- | --- | --- |
+| TCP connection (dial) | 5 seconds | All destinations that use HTTP | `1102 ConnectionTimeout` |
+| TLS handshake | 5 seconds | All HTTPS destinations | `1106 Timeout` |
+| No-progress watchdog | 10 seconds | Destinations that use the shared Cloudflare HTTP transport (HTTP endpoints, Cloudflare R2, Splunk, Datadog, New Relic, CrowdStrike, Cloudflare Pipelines) | `1106 Timeout` |
+| Idle connection reuse | 10 seconds | Persistent HTTP connections | Not surfaced as an error. The connection is closed and reopened as needed. |
+| Overall HTTP client timeout | 2 minutes | HTTP endpoint family only: `https://`, Datadog, New Relic, CrowdStrike, Cloudflare Pipelines | `1106 Timeout` |
+| HTTP/2 idle read plus ping | 10 seconds idle, 15 seconds ping timeout | HTTP/2 connections | `1107 RequestError` |
+| HTTP/2 write stall | 10 seconds | HTTP/2 connections | `1106 Timeout` or `1107 RequestError` |
 
 ### Guidance for HTTP endpoint operators
 
-* Ensure your endpoint acknowledges each `POST` within 2 minutes end-to-end, and keeps the request body flowing with no gap longer than 10 seconds between chunks.
-* If you terminate connections at a load balancer or WAF, verify that idle-connection and read timeouts are not shorter than the values in the timeout table. Aggressive tuning at the receiver frequently manifests as `1106` or `1107` errors on the Cloudflare side.
-* If you rely on HTTP/2, make sure your server responds to `PING` frames within 15 seconds.
+- Ensure your endpoint acknowledges each `POST` within 2 minutes end-to-end, and keeps the request body flowing with no gap longer than 10 seconds between chunks.
+- If you terminate connections at a load balancer or WAF, verify that idle-connection and read timeouts are not shorter than the values in the timeout table. Aggressive tuning at the receiver frequently manifests as `1106` or `1107` errors on the Cloudflare side.
+- If you rely on HTTP/2, make sure your server responds to `PING` frames within 15 seconds.
 
 ### Object storage destinations
 
@@ -185,7 +179,7 @@ Amazon S3, Google Cloud Storage, and Microsoft Azure destinations do not use the
 
 Logpush is designed to handle temporary destination issues through automatic retries. When your destination is temporarily unavailable, Cloudflare buffers the affected batches and retries them.
 
-Retries do not stop after a fixed number of attempts. Instead, Cloudflare continues to retry a batch until either the upload succeeds and the batch is marked as delivered, or the buffered data ages out of the internal retention window. When data ages out, the batch is dropped (recorded as [1201 FlushMaxLag](#destination-error-codes)) and the log lines it contained are permanently lost.
+Retries do not stop after a fixed number of attempts. Instead, Cloudflare continues to retry a batch until either the upload succeeds and the batch is marked as delivered, or the buffered data ages out of the internal retention window. When data ages out, the batch is dropped (recorded as [`1201 FlushMaxLag`](#destination-error-codes)) and the log lines it contained are permanently lost.
 
 If no batch has been successfully delivered for **24 hours**, Cloudflare assumes the destination is permanently unavailable and disables the job. You can re-enable the job from the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) once the destination issue is resolved. Cloudflare cannot backfill logs generated while the job was disabled.
 

@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.tls\_client\_auth.cert\_issuer\_dn\_legacy
 
-`cf.tls_client_auth.cert_issuer_dn_legacy` `String`
+`cf.tls_client_auth.cert_issuer_dn_legacy``String`
 
 The Distinguished Name (DN) of the Certificate Authority (CA) that issued the mTLS client certificate in a legacy format.
 
@@ -21,8 +21,8 @@ Example value:
 ```
 
 Categories:
-* Request
-* mTLS
+- Request
+- mTLS
 
 Was this helpful?
 

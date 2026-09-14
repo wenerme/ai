@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Tail Workers
 
-Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/logs/tail-workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/logs/tail-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A Tail Worker receives information about the execution of other Workers (known as producer Workers), such as HTTP statuses, data passed to `console.log()` or uncaught exceptions. Tail Workers can process logs for alerts, debugging, or analytics.
 
@@ -35,7 +35,7 @@ You should think of Tail Workers as the advanced-mode option, for when you need 
 To configure a Tail Worker:
 
 1. [Create a Worker](https://developers.cloudflare.com/workers/get-started/guide) to serve as the Tail Worker.
-2. Add a [tail()](https://developers.cloudflare.com/workers/runtime-apis/handlers/tail/) handler to your Worker. The `tail()` handler is invoked every time the producer Worker to which a Tail Worker is connected is invoked. The following Worker code is a Tail Worker that sends its data to an HTTP endpoint:
+2. Add a [`tail()`](https://developers.cloudflare.com/workers/runtime-apis/handlers/tail/) handler to your Worker. The `tail()` handler is invoked every time the producer Worker to which a Tail Worker is connected is invoked. The following Worker code is a Tail Worker that sends its data to an HTTP endpoint:
 
 ```js
 export default {
@@ -94,7 +94,7 @@ The following Worker code is an example of what the `events` object may look lik
 ]
 ```
 
-1. Add the following to the Wrangler file of the producer Worker:
+3. Add the following to the Wrangler file of the producer Worker:
 
 ```jsonc
 {
@@ -139,11 +139,11 @@ Refer to the [Analytics Engine documentation](https://developers.cloudflare.com/
 
 ## Related resources
 
-* [tail()](https://developers.cloudflare.com/workers/runtime-apis/handlers/tail/) Handler API docs - Learn how to set up a `tail()` handler in your Worker.
-* [Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/) \- Write custom analytics from your Worker for high-cardinality, time-series queries.
-* [Errors and exceptions](https://developers.cloudflare.com/workers/observability/errors/) \- Review common Workers errors.
-* [Local development](https://developers.cloudflare.com/workers/local-development/) \- Develop and test your Workers locally.
-* [Source maps and stack traces](https://developers.cloudflare.com/workers/observability/source-maps) \- Learn how to enable source maps and generate stack traces for Workers.
+- [`tail()`](https://developers.cloudflare.com/workers/runtime-apis/handlers/tail/) Handler API docs - Learn how to set up a `tail()` handler in your Worker.
+- [Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/) - Write custom analytics from your Worker for high-cardinality, time-series queries.
+- [Errors and exceptions](https://developers.cloudflare.com/workers/observability/errors/) - Review common Workers errors.
+- [Local development](https://developers.cloudflare.com/workers/local-development/) - Develop and test your Workers locally.
+- [Source maps and stack traces](https://developers.cloudflare.com/workers/observability/source-maps) - Learn how to enable source maps and generate stack traces for Workers.
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Prepare test state
 
-Last updated Jul 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/test-harness/prepare-test-state/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/test-harness/prepare-test-state/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An integration test may need data in local storage before it runs. It may also depend on external services that you do not want to call during the test. Use the test harness to prepare this state and replace those dependencies.
 

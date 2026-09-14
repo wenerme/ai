@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Authentication
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/authentication/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/authentication/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Caution
 
@@ -28,9 +28,9 @@ In Cloudflare’s system, a user can have multiple accounts and zones. As a resu
 
 To set up Wrangler to work with your Cloudflare user, use the following commands:
 
-* `login`: a command that opens a Cloudflare account login page to authorize Wrangler.
-* `config`: an alternative to `login` that prompts you to enter your `email` and `api` key.
-* `whoami`: run this command to confirm that your configuration is appropriately set up. When successful, this command will print out your account email and your `account_id` needed for your project's Wrangler file.
+- `login`: a command that opens a Cloudflare account login page to authorize Wrangler.
+- `config`: an alternative to `login` that prompts you to enter your `email` and `api` key.
+- `whoami`: run this command to confirm that your configuration is appropriately set up. When successful, this command will print out your account email and your `account_id` needed for your project's Wrangler file.
 
 ### Using environment variables
 
@@ -77,7 +77,7 @@ Warning
 
 ## Use Tokens
 
-After getting your token or key, you can set up your default credentials on your local machine by running `wrangler config`:
+After getting your token or key, you can set up your default credentials on your local machine by running `wrangler config`:
 
 ```sh
 wrangler config
@@ -88,7 +88,7 @@ Enter API token:
 superlongapitoken
 ```
 
-Use the `--api-key` flag to instead configure with email and global API key:
+Use the `--api-key` flag to instead configure with email and global API key:
 
 ```sh
 wrangler config --api-key

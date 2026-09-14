@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Active Directory (SAML)
 
-Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/adfs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/adfs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Caution
 
@@ -20,18 +20,20 @@ Microsoft recommends migrating your Active Directory Federation Service (AD FS) 
 
 To set up the Microsoft Entra ID IdP integration with Cloudflare One, refer to [Microsoft Entra ID](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/entra-id/).
 
-Active Directory is a directory service developed by Microsoft for Windows domain networks. It is included in most Windows Server operating systems as a set of processes and services. Active Directory integrates with Cloudflare Access using Security Assertion Markup Language (SAML).
+Active Directory is a directory service developed by Microsoft for Windows domain networks. It is included in most Windows Server operating systems as a set of processes and services. Active Directory integrates with Cloudflare Access using Security Assertion Markup Language (SAML
+
+).
 
 ## Before you start
 
 To get started, you need:
 
-* An Active Directory Domain Controller where all users have an email attribute.
-* Generic SAML enabled for your Access Identity Provider (IdP).
-* A Microsoft server running with Active Directory Federation Services (AD FS) installed. All screenshots in these instructions are for Server 2012R2\. Similar steps will work for newer versions.
-* A browser safe certificate for Active Directory Federation Services (AD FS).
+- An Active Directory Domain Controller where all users have an email attribute.
+- Generic SAML enabled for your Access Identity Provider (IdP).
+- A Microsoft server running with Active Directory Federation Services (AD FS) installed. All screenshots in these instructions are for Server 2012R2. Similar steps will work for newer versions.
+- A browser safe certificate for Active Directory Federation Services (AD FS).
 
-Once you fulfill the requirements above, you are ready to begin. Installation and basic configuration of Active Directory Federation Services (AD FS) is outside the scope of this guide. A detailed guide can be found in a [Microsoft KB ↗](https://docs.microsoft.com/en-us/previous-versions/dynamicscrm-2016/deployment-administrators-guide/gg188612%28v=crm.8%29).
+Once you fulfill the requirements above, you are ready to begin. Installation and basic configuration of Active Directory Federation Services (AD FS) is outside the scope of this guide. A detailed guide can be found in a [Microsoft KB ↗](<https://docs.microsoft.com/en-us/previous-versions/dynamicscrm-2016/deployment-administrators-guide/gg188612(v=crm.8)>).
 
 Then to begin the connection between Cloudflare Access and AD FS create a Relying Party Trust in AD FS.
 
@@ -55,12 +57,13 @@ To create a Relying Party Trust:
 12. Select **Next**. The **Configure URL** step displays.
 13. Select the **Enable support for the SAML 2.0 WebSSO protocol** option.
 14. In the **Relying party SAML 2.0 SSO service URL** field, enter the following URL:
-```txt
-https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
-```
-You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
-15. Select **Next**. The **Configure Identifiers** step displays.
-![Add relying party trust wizard with callback URL pasted into open form field](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1446,height=1166,format=webp/_astro/adfs-7.BHM4h9Ct.png)
+
+    ```txt
+    https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
+    ```
+
+    You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
+15. Select **Next**. The **Configure Identifiers** step displays.![Add relying party trust wizard with callback URL pasted into open form field](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1446,height=1166,format=webp/_astro/adfs-7.BHM4h9Ct.png)
 16. Paste your callback URL in the **Relying party trust identifier** field.
 17. Select **Next**. In the **Configure Multi-factor Authentication Now?** step, you can configure multi-factor authentication.
 18. Select **Next**. The **Choose Issuance Authorization Rules** step displays.
@@ -90,27 +93,26 @@ AD FS groups
 
 If you wish to use AD FS groups in your SAML claims, use `token-groups - unqualified names` instead of `is-member-of-DL`. Using `is-member-of-DL` will display the group in the form of LDAP paths, whereas `token-groups - unqualified names` will return only the group name.
 
-1. Select **OK**. You return to the **Choose Rule Type** step.
-2. Select **Transform an Incoming Claim** from the **Claim rule template** drop-down list to create the second rule.
-3. Select **Next**. The **Edit - Create Transient Name Identifier** window displays.
-4. Enter a descriptive **Claim rule name**.
-5. Select **E-Mail Address** from the **Incoming claim type** drop-down list.
-6. Select **Name ID** from the **Outgoing claim type** drop-down list.
-7. Select **Transient Identifier** from the **Outgoing name ID format** drop-down list.
-8. Ensure that the **Pass through all claim values** option is selected.
-9. Select **OK**.
+7. Select **OK**. You return to the **Choose Rule Type** step.
+8. Select **Transform an Incoming Claim** from the **Claim rule template** drop-down list to create the second rule.
+9. Select **Next**. The **Edit - Create Transient Name Identifier** window displays.
+10. Enter a descriptive **Claim rule name**.
+11. Select **E-Mail Address** from the **Incoming claim type** drop-down list.
+12. Select **Name ID** from the **Outgoing claim type** drop-down list.
+13. Select **Transient Identifier** from the **Outgoing name ID format** drop-down list.
+14. Ensure that the **Pass through all claim values** option is selected.
+15. Select **OK**.
 
 Both Claim Rules are now available to export to your Cloudflare Access account.
 
 ## Export the certificate
 
-Now you'll configure Cloudflare to recognize AD FS by extracting the _token-signing certificate_ from AD FS.
+Now you'll configure Cloudflare to recognize AD FS by extracting the *token-signing certificate* from AD FS.
 
 To export the certificate:
 
 1. Within the AD FS management console, select the **Service** under AD FS and choose the **Certificates** folder which contains the certificate to export.
-2. In the **Certificates** card, right-click on the entry under **Token-signing**, and select **View certificate**. The **Certificates** window displays.
-![Certificates window with token-signing certificate selected](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1226,height=690,format=webp/_astro/adfs-16.Rob0iaqT.png)
+2. In the **Certificates** card, right-click on the entry under **Token-signing**, and select **View certificate**. The **Certificates** window displays.![Certificates window with token-signing certificate selected](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1226,height=690,format=webp/_astro/adfs-16.Rob0iaqT.png)
 3. Select the **Details** tab, and select the **Copy to File** option.
 4. The **Certificate Export Wizard** displays.
 5. Select **Next**. The **Export File Format** window displays.
@@ -119,7 +121,8 @@ To export the certificate:
 8. Enter a name for the file.
 9. Select **Next**.
 10. Select **Finish**.
-Note the file path for later.
+
+    Note the file path for later.
 
 ## Configure AD FS to sign SAML responses
 
@@ -133,24 +136,30 @@ Set-ADFSRelyingPartyTrust -TargetName "Name of RPT Display Name" -SamlResponseSi
 
 To enable Cloudflare One to accept the claims and assertions sent from AD FS, follow these steps:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
 3. Select **SAML**.
 4. Enter an IdP **Name**.
 5. Under **Single Sign On URL** enter:
-```txt
-https://hostnameOfADFS/adfs/ls/
-```
-This is the default location. You can find your federation service identifier in AD FS.
+
+   ```txt
+   https://hostnameOfADFS/adfs/ls/
+   ```
+
+   This is the default location. You can find your federation service identifier in AD FS.
 6. In the **IdP Entity ID or Issuer URL** field, enter your Cloudflare Zero Trust team domain and include this callback at the end of the path: `/cdn-cgi/access/callback`. For example:
-```txt
-https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
-```
+
+   ```txt
+   https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
+   ```
+
+
 7. Under **Signing certificate**, paste the exported certificate.
-There can be no spaces or return characters in the text field.
+
+   There can be no spaces or return characters in the text field.
 8. Select **Save**.
 
-To test that your connection is working, go to **Integrations** \> **Identity providers** and select **Test** next to the identity provider you want to test.
+To test that your connection is working, go to **Integrations** > **Identity providers** and select **Test** next to the identity provider you want to test.
 
 ## Download SP metadata (optional)
 
@@ -159,10 +168,12 @@ Some IdPs allow administrators to upload metadata files from their SP (service p
 To get your Cloudflare metadata file:
 
 1. Download your unique SAML metadata file at the following URL:
-```txt
-https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/saml-metadata
-```
-In Cloudflare Access, you can find a link to this URL in the **Edit a SAML identity provider** dialog. The link returns a web page with your SAML SP data in XML format.
+
+   ```txt
+   https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/saml-metadata
+   ```
+
+   In Cloudflare Access, you can find a link to this URL in the **Edit a SAML identity provider** dialog. The link returns a web page with your SAML SP data in XML format.
 2. Save the file in XML format.
 3. Upload the XML document to your **Active Directory** account.
 

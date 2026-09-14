@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Changelog
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network-interconnect/changelog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-interconnect/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/network-interconnect.xml)
 
@@ -21,7 +21,7 @@ Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Interconnects moved to Connectors**
 
-The top-level **Interconnects** page in the Cloudflare dashboard has been removed. Interconnects are now located under **Connectors** \> **Interconnects**.
+The top-level **Interconnects** page in the Cloudflare dashboard has been removed. Interconnects are now located under **Connectors** > **Interconnects**.
 
 Your existing configurations and functionality remain the same.
 
@@ -43,14 +43,14 @@ Magic WAN and Magic Transit customers can use the Cloudflare dashboard to config
 
 Using BGP peering allows customers to:
 
-* Automate the process of adding or removing networks and subnets.
-* Take advantage of failure detection and session recovery features.
+- Automate the process of adding or removing networks and subnets.
+- Take advantage of failure detection and session recovery features.
 
 With this functionality, customers can:
 
-* Establish an eBGP session between their devices and the Magic WAN / Magic Transit service when connected via CNI.
-* Secure the session by MD5 authentication to prevent misconfigurations.
-* Exchange routes dynamically between their devices and their Magic routing table.
+- Establish an eBGP session between their devices and the Magic WAN / Magic Transit service when connected via CNI.
+- Secure the session by MD5 authentication to prevent misconfigurations.
+- Exchange routes dynamically between their devices and their Magic routing table.
 
 Refer to [Magic WAN BGP peering](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#configure-bgp-routes) or [Magic Transit BGP peering](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#configure-bgp-routes) to learn more about this feature and how to set it up.
 

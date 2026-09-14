@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agent-memory/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agent-memory/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Add Agent Memory to an agent so it can recall durable context across conversations.
 
@@ -21,11 +21,19 @@ This guide uses the [Agents SDK](https://developers.cloudflare.com/agents/) and 
 ## Prerequisites
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
+
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
 
 You also need access to Agent Memory.
 
@@ -35,7 +43,7 @@ Use `recall()` when the model needs relevant memory to answer or act. Use `inges
 
 Do not call `ingest()` after every model turn. Instead, batch ingestion after the user goes idle, when a conversation is compacted, or at another natural checkpoint.
 
-## 1\. Create a project
+## 1. Create a project
 
 Create a Worker project:
 
@@ -55,11 +63,11 @@ pnpm create cloudflare@latest memory-agent
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `TypeScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `TypeScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 Move into the project directory:
 
@@ -87,7 +95,7 @@ pnpm add agents ai workers-ai-provider
 bun add agents ai workers-ai-provider
 ```
 
-## 2\. Create a namespace
+## 2. Create a namespace
 
 A [namespace](https://developers.cloudflare.com/agent-memory/concepts/namespaces-profiles/) scopes the memory profiles for your application. Create one with Wrangler:
 
@@ -107,7 +115,7 @@ pnpm wrangler agent-memory namespace create my-agent
 
 You will use the namespace name, `my-agent`, in your Worker binding.
 
-## 3\. Configure bindings
+## 3. Configure bindings
 
 Add an `agent_memory` binding to your Wrangler configuration. If you use the Agents SDK, also register your agent Durable Object.
 
@@ -117,7 +125,7 @@ Add an `agent_memory` binding to your Wrangler configuration. If you use the Age
   "name": "memory-agent",
   "main": "src/server.ts",
   // Set this to today's date
-  "compatibility_date": "2026-08-25",
+  "compatibility_date": "2026-09-14",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -153,7 +161,7 @@ Add an `agent_memory` binding to your Wrangler configuration. If you use the Age
 name = "memory-agent"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 compatibility_flags = ["nodejs_compat"]
 
 [ai]
@@ -188,13 +196,15 @@ yarn wrangler types
 pnpm wrangler types
 ```
 
-## 4\. Add memory recall as a tool
+## 4. Add memory recall as a tool
 
 The model cannot use memory just because your application has a memory binding. You need to expose recall through a tool and instruct the model when to call it.
 
 With the Agents SDK [Session API](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/), add a searchable context provider. Session turns the provider's `search()` method into a `search_context` tool for the model.
 
 Create `src/server.ts` and add the recall setup:
+
+*src/server.jsjs*
 
 ```js
 import { Agent, routeAgentRequest } from "agents";
@@ -247,6 +257,8 @@ export default {
 	},
 };
 ```
+
+*src/server.tsts*
 
 ```ts
 import { Agent, routeAgentRequest } from "agents";
@@ -307,11 +319,13 @@ export default {
 
 The system prompt is as important as the tool. It tells the model when to call `search_context`, when not to call it, and how to treat recalled memory.
 
-## 5\. Extract memories from conversation
+## 5. Extract memories from conversation
 
 Next, give your agent a way to add durable memories. In a chat agent, the usual path is to store the conversation in Session, then call `ingest()` after the user goes idle.
 
 Change the `agents` import and add the AI SDK imports. Keep the `Session` import from step 4.
+
+*src/server.jsjs*
 
 ```js
 import { Agent, getAgentByName, routeAgentRequest } from "agents";
@@ -319,6 +333,8 @@ import { convertToModelMessages, generateText, stepCountIs } from "ai";
 
 import { createWorkersAI } from "workers-ai-provider";
 ```
+
+*src/server.tsts*
 
 ```ts
 import { Agent, getAgentByName, routeAgentRequest } from "agents";
@@ -329,15 +345,21 @@ import { createWorkersAI } from "workers-ai-provider";
 
 Add the ingestion delay near the top of the file, below the imports:
 
+*src/server.jsjs*
+
 ```js
 const MEMORY_INGEST_DELAY_SECONDS = 10;
 ```
+
+*src/server.tsts*
 
 ```ts
 const MEMORY_INGEST_DELAY_SECONDS = 10;
 ```
 
 Then update `ChatAgent` with the following shape. The comment marks where to keep the Session setup from step 4.
+
+*src/server.jsjs*
 
 ```js
 export class ChatAgent extends Agent {
@@ -434,6 +456,8 @@ export class ChatAgent extends Agent {
 	}
 }
 ```
+
+*src/server.tsts*
 
 ```ts
 export class ChatAgent extends Agent<Env, ChatAgentState> {
@@ -535,6 +559,8 @@ export class ChatAgent extends Agent<Env, ChatAgentState> {
 
 Replace the default export with a small test endpoint. Each `conversationId` maps to a separate Agent instance with its own Session history.
 
+*src/server.jsjs*
+
 ```js
 export default {
 	async fetch(request, env) {
@@ -559,6 +585,8 @@ export default {
 	},
 };
 ```
+
+*src/server.tsts*
 
 ```ts
 export default {
@@ -596,7 +624,7 @@ This demo uses one Agent Memory profile, `demo-user`, across multiple conversati
 
 You can also call the ingestion logic from a Session compaction hook. The important constraint is to ingest in batches at natural checkpoints, not after every agent turn. In production, choose an ingest delay that matches your application's user experience.
 
-## 6\. (Optional) Store explicit memories when needed
+## 6. (Optional) Store explicit memories when needed
 
 Automatic ingestion is enough for most apps. If you want the model to store a specific memory immediately, add a server-side tool whose execute function calls `remember()`.
 
@@ -604,7 +632,7 @@ Use this when the agent already knows the exact memory to store. For example, th
 
 If the model can call a memory-write tool, add system prompt instructions that define what is worth remembering and when to ask for confirmation. For many agents, automatic conversation ingestion is simpler and safer than giving the model a direct memory-write tool.
 
-## 7\. Test the app
+## 7. Test the app
 
 Start local development:
 

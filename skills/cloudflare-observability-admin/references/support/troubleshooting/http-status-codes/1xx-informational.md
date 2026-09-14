@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # 1xx Informational
 
-Last updated Jul 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/1xx-informational/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/1xx-informational/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The 1xx Informational status codes serve as interim responses that provide connection status updates without completing the request-response cycle. These codes are not intended for final actions but rather to indicate that the request is being processed or additional steps are required.
 
 The requirements the server must follow when sending 1xx Informational status codes in response to a client's request include:
 
-* Responses must be terminated by the first empty line following the status line.
-* 1xx responses are not supported by HTTP/1.0; the origin server should never send a 1xx response to an HTTP/1.0 client.
+- Responses must be terminated by the first empty line following the status line.
+- 1xx responses are not supported by HTTP/1.0; the origin server should never send a 1xx response to an HTTP/1.0 client.
 
 Cloudflare forwards all 1xx responses from origin servers but does not generate them directly.
 

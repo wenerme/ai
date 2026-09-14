@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Android
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/viewing-videos/using-own-player/android/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/viewing-videos/using-own-player/android/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can stream both on-demand and live video to native Android apps using [ExoPlayer ↗](https://exoplayer.dev/).
 
@@ -22,7 +22,7 @@ Before you can play videos, you must first [upload a video to Cloudflare Stream]
 
 ## Example Apps
 
-* [Android](https://developers.cloudflare.com/stream/examples/android/)
+- [Android](https://developers.cloudflare.com/stream/examples/android/)
 
 ## Using ExoPlayer
 

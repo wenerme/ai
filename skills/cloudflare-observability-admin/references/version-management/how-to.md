@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # How to
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/version-management/how-to/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/version-management/how-to/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [Enable](https://developers.cloudflare.com/version-management/how-to/enable/)
-* [Manage environments](https://developers.cloudflare.com/version-management/how-to/environments/)
-* [Manage versions](https://developers.cloudflare.com/version-management/how-to/versions/)
-* [Compare versions](https://developers.cloudflare.com/version-management/how-to/compare-versions/)
+- [Enable](https://developers.cloudflare.com/version-management/how-to/enable/)
+- [Manage environments](https://developers.cloudflare.com/version-management/how-to/environments/)
+- [Manage versions](https://developers.cloudflare.com/version-management/how-to/versions/)
+- [Compare versions](https://developers.cloudflare.com/version-management/how-to/compare-versions/)
 
 Was this helpful?
 

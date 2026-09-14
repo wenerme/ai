@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Google
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/google/gemini-3.1-pro/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/google/gemini-3.1-pro/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `google/gemini-3.1-pro`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 Google's most intelligent Gemini model with improved reasoning, a medium thinking level, and a 1M token context window.
 
-| Model Info                                                                          |                                                                                                                         |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens                                                                                                        |
-| Terms and License                                                                   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                        |
-| More information                                                                    | [link ↗](https://deepmind.google/technologies/gemini/)                                                                  |
-| Zero data retention                                                                 | Yes                                                                                                                     |
-| Request formats                                                                     | Chat Completions                                                                                                        |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.1-pro) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens |
+| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms) |
+| More information | [link ↗](https://deepmind.google/technologies/gemini/) |
+| Zero data retention | Yes |
+| Request formats | Chat Completions |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.1-pro) |
 
 ## Usage
 
@@ -65,6 +65,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 The laws of thermodynamics are fundamental principles in physics that describe how energy moves, changes form, and interacts with matter in the universe.
 
 Here is a breakdown of the three laws (plus a "bonus" law) explained simply:
@@ -97,6 +98,7 @@ To make these laws easy to remember, physicists sometimes summarize them like a 
 * **1st Law:** You can't win; you can only break even. *(Energy is conserved).*
 * **2nd Law:** You can't even break even; you will always lose. *(Entropy increases; energy is lost as heat).*
 * **3rd Law:** You can't quit the game. *(You can never reach absolute zero).*
+```
 
 ```json
 {
@@ -144,7 +146,11 @@ To make these laws easy to remember, physicists sometimes summarize them like a 
 
 ## Examples
 
-**With System Instruction** — Using a system instruction to set context
+<details>
+
+<summary>**With System Instruction** — Using a system instruction to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -191,6 +197,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+````
 To read a JSON file in Python, you can use the built-in **`json`** module.
 
 Here is the standard and safest way to do it:
@@ -236,6 +243,7 @@ except json.JSONDecodeError:
 It is easy to confuse these two functions in the `json` module:
 * Use **`json.load()`** (no 's') when reading directly from a **file**.
 * Use **`json.loads()`** (with an 's' for **s**tring) when reading JSON data from a **Python string**.
+````
 
 ```json
 {
@@ -281,7 +289,13 @@ It is easy to confuse these two functions in the `json` module:
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -348,6 +362,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 The best places to stop really depend on which route you decide to take. The 5-6 hour drive I mentioned earlier is via the fastest route (Interstate 5), but if you have more time, the coastal routes are world-famous.
 
 Here are the three main routes and the best stops for each:
@@ -379,6 +394,7 @@ This is the famous coastal drive. *(Note: Always check Caltrans for road closure
 *   What are you most interested in: beaches, food, wine, or weird roadside attractions?
 
 Let me know and we can narrow it down to the perfect itinerary!
+```
 
 ```json
 {
@@ -424,7 +440,13 @@ Let me know and we can narrow it down to the perfect itinerary!
 }
 ```
 
-**Creative Writing** — Higher temperature for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Higher temperature for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -467,13 +489,15 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+</details>
+
 ## Parameters
 
 Schema variant
 
 Generate ContentChat Completions
 
-▶contents\[\]
+▶contents\[]
 
 `array`required
 
@@ -485,19 +509,17 @@ Generate ContentChat Completions
 
 `object`
 
-▶safetySettings\[\]
+▶safetySettings\[]
 
 `array`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 toolConfig
 
-``
-
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -519,11 +541,11 @@ top\_p
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 stream
 
@@ -533,19 +555,15 @@ stream
 
 `object`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
 
-``
-
 response\_format
 
-``
-
-▶modalities\[\]
+▶modalities\[]
 
 `array`
 
@@ -553,7 +571,7 @@ response\_format
 
 `object`
 
-▶candidates\[\]
+▶candidates\[]
 
 `array`
 
@@ -581,7 +599,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -591,9 +609,9 @@ model
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/google/gemini-3.1-pro/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/google/gemini-3.1-pro/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/google/gemini-3.1-pro/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/google/gemini-3.1-pro/schema-output.json)
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Random prefix attack mitigation
 
-Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/dns-firewall/random-prefix-attacks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/dns-firewall/random-prefix-attacks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Random prefix attacks are when someone sends a lot of traffic to subdomains that are highly unlikely to exist (`12345.example.com`, `abcdefg.example.com`), but are still associated with your main domain (`example.com`).
 
@@ -22,8 +22,8 @@ As part of [DNS Firewall](https://developers.cloudflare.com/dns/dns-firewall/), 
 
 ## Resources
 
-* [Background information](https://developers.cloudflare.com/dns/dns-firewall/random-prefix-attacks/about/)
-* [Setup](https://developers.cloudflare.com/dns/dns-firewall/random-prefix-attacks/setup/)
+- [Background information](https://developers.cloudflare.com/dns/dns-firewall/random-prefix-attacks/about/)
+- [Setup](https://developers.cloudflare.com/dns/dns-firewall/random-prefix-attacks/setup/)
 
 ## Limitations
 

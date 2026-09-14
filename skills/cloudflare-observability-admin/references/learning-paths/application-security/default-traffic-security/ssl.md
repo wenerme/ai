@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # SSL / TLS
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/application-security/default-traffic-security/ssl/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/application-security/default-traffic-security/ssl/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare offers a range of SSL/TLS options. By default, Cloudflare offers Universal SSL to all domains, but there are many other options available. Cloudflare offers SSL/TLS for free because we believe it is the [right thing to do ↗](https://blog.cloudflare.com/introducing-universal-ssl). Encryption is foundational to the Internet because it prevents data from being manipulated.
 

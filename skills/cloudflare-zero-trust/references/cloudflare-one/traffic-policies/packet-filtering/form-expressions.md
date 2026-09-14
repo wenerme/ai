@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Form expressions
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/form-expressions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/form-expressions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Rules are written using the Cloudflare Rules language - a domain-specific language (DSL) intended to mimic Wireshark semantics. For more information, refer to the [Rules language](https://developers.cloudflare.com/ruleset-engine/rules-language/) documentation.
 
@@ -30,7 +30,9 @@ ip.src == 192.0.2.1 && (tcp.flags.push || tcp.flags.reset)
 
 ## Capabilities
 
-You can use Cloudflare Network Firewall to skip or block packets based on source or destination IP, source or destination port, protocol, packet length, or bit field match.
+You can use Cloudflare Network Firewall to skip or block packets
+
+ based on source or destination IP, source or destination port, protocol, packet length, or bit field match.
 
 ## Restrictions
 

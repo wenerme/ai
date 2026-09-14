@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # About Cloudflare Analytics
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/faq/about-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/faq/about-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In an effort to make analytics an ubiquitous component of all Cloudflare's products, Cloudflare has implemented, and continues to evolve, several ways in which customers can access and gain insights from Internet properties on Cloudflare.
 
@@ -24,10 +24,10 @@ Refer to [Types of analytics](https://developers.cloudflare.com/analytics/types-
 
 The underlying datasets that Cloudflare Analytics captures and processes share the following characteristics:
 
-* All metrics reflect traffic proxied through the Cloudflare network (also known as orange-clouded), as configured via DNS records in the Cloudflare DNS app. Note that for a [CNAME setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/), Cloudflare is unable to offer DNS metrics.
-* Cloudflare does not count traffic for unproxied DNS records. However, if your site is not proxied through Cloudflare but Cloudflare is your authoritative DNS server, then we are able to collect DNS metrics.
-* Cloudflare can only proxy information for traffic targeting [specific ports](https://developers.cloudflare.com/fundamentals/reference/network-ports/).
-* In determining the originating country, Cloudflare uses the IP address associated with each request. Learn about [Configuring Cloudflare IP Geolocation](https://developers.cloudflare.com/network/ip-geolocation/).
+- All metrics reflect traffic proxied through the Cloudflare network (also known as orange-clouded), as configured via DNS records in the Cloudflare DNS app. Note that for a [CNAME setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/), Cloudflare is unable to offer DNS metrics.
+- Cloudflare does not count traffic for unproxied DNS records. However, if your site is not proxied through Cloudflare but Cloudflare is your authoritative DNS server, then we are able to collect DNS metrics.
+- Cloudflare can only proxy information for traffic targeting [specific ports](https://developers.cloudflare.com/fundamentals/reference/network-ports/).
+- In determining the originating country, Cloudflare uses the IP address associated with each request. Learn about [Configuring Cloudflare IP Geolocation](https://developers.cloudflare.com/network/ip-geolocation/).
 
 ## Apparent data discrepancies
 
@@ -43,10 +43,10 @@ Finally, it is likely that unique visitor data from the Cloudflare Analytics app
 
 You may not be seeing metrics on Cloudflare Analytics for the following reasons:
 
-* You only recently signed up for Cloudflare. Metrics are delayed 24 hours for domains on a free Cloudflare plan.
-* If you signed up directly with Cloudflare, your nameservers might not be pointing to Cloudflare at your registrar just yet. Registrars can take 24-72 hours to update their nameservers. Metrics will not start gathering until we detect the nameservers pointing to Cloudflare.
-* If you signed up through a Cloudflare [hosting partner option ↗](https://www.cloudflare.com/partners/), something might not be configured correctly. Contact the hosting partner for support.
-* Some browser extensions designed to block ads may prevent analytics from loading. To address this issue, disable the ad block extension or allow `cloudflare.com` on it.
+- You only recently signed up for Cloudflare. Metrics are delayed 24 hours for domains on a free Cloudflare plan.
+- If you signed up directly with Cloudflare, your nameservers might not be pointing to Cloudflare at your registrar just yet. Registrars can take 24-72 hours to update their nameservers. Metrics will not start gathering until we detect the nameservers pointing to Cloudflare.
+- If you signed up through a Cloudflare [hosting partner option ↗](https://www.cloudflare.com/partners/), something might not be configured correctly. Contact the hosting partner for support.
+- Some browser extensions designed to block ads may prevent analytics from loading. To address this issue, disable the ad block extension or allow `cloudflare.com` on it.
 
 Note
 
@@ -54,7 +54,7 @@ Activations through a hosting partner works via a [CNAME setup](https://develope
 
 ## Why does the analytics data on the **Overview** page not match what I have under **View More Analytics**?
 
-The Overview page shows analytics based on all traffic, including subrequests. However, when you navigate to **Analytics & Logs** \> **HTTP Traffic**, the metrics (for example, `Requests`, `Data`, `Visits`) are filtered to show only end user traffic (that is, `requestSource = eyeball`).
+The Overview page shows analytics based on all traffic, including subrequests. However, when you navigate to **Analytics & Logs** > **HTTP Traffic**, the metrics (for example, `Requests`, `Data`, `Visits`) are filtered to show only end user traffic (that is, `requestSource = eyeball`).
 
 As a result, subrequests are excluded from the **HTTP Traffic** view, which can lead to discrepancies between the numbers shown in **Overview** and those displayed in other analytics sections of the dashboard.
 

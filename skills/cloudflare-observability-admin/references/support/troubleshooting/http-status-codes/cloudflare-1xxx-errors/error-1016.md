@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Error 1016
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1016/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1016/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Error 1016: Origin DNS error
 
@@ -22,11 +22,11 @@ This error indicates that Cloudflare cannot resolve the origin web server's IP a
 
 Common causes for error `1016` are:
 
-* A missing DNS A record that mentions origin IP address.
-* A CNAME record in the Cloudflare DNS points to an unresolvable external domain.
-* The origin hostnames (CNAMEs) in your Cloudflare [Load Balancer](https://developers.cloudflare.com/load-balancing/) default, region, and fallback pools are unresolvable. Use a fallback pool configured with an origin IP as a backup in case all other pools are unavailable.
-* When creating a Spectrum app with a CNAME origin, you need first to create a CNAME on the Cloudflare DNS side that points to the origin. Please see [Spectrum CNAME origins](https://developers.cloudflare.com/spectrum/get-started/#create-a-spectrum-application-using-a-cname-record) for more details.
-* There is no DNS record for the hostname in the target [Partial (CNAME) setup zone](https://developers.cloudflare.com/dns/zone-setups/partial-setup/) of a Workers subrequest ([Fetch API](https://developers.cloudflare.com/workers/runtime-apis/fetch/)).
+- A missing DNS A record that mentions origin IP address.
+- A CNAME record in the Cloudflare DNS points to an unresolvable external domain.
+- The origin hostnames (CNAMEs) in your Cloudflare [Load Balancer](https://developers.cloudflare.com/load-balancing/) default, region, and fallback pools are unresolvable. Use a fallback pool configured with an origin IP as a backup in case all other pools are unavailable.
+- When creating a Spectrum app with a CNAME origin, you need first to create a CNAME on the Cloudflare DNS side that points to the origin. Please see [Spectrum CNAME origins](https://developers.cloudflare.com/spectrum/get-started/#create-a-spectrum-application-using-a-cname-record) for more details.
+- There is no DNS record for the hostname in the target [Partial (CNAME) setup zone](https://developers.cloudflare.com/dns/zone-setups/partial-setup/) of a Workers subrequest ([Fetch API](https://developers.cloudflare.com/workers/runtime-apis/fetch/)).
 
 ### Resolution
 
@@ -42,10 +42,10 @@ Cloudflare returns a `1016` error when the [custom hostname](https://developers.
 
 ### Common cause
 
-* Custom hostname ownership validation is not complete.
-* Fallback origin is not [correctly set](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/#1-create-fallback-origin).
-* A wildcard custom hostname has been created, but the requested hostname is associated with a domain that exists in Cloudflare as a standalone zone.
-* There is no DNS record for the hostname in the Cloudflare for SaaS target zone.
+- Custom hostname ownership validation is not complete.
+- Fallback origin is not [correctly set](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/#1-create-fallback-origin).
+- A wildcard custom hostname has been created, but the requested hostname is associated with a domain that exists in Cloudflare as a standalone zone.
+- There is no DNS record for the hostname in the Cloudflare for SaaS target zone.
 
 ### Resolution
 

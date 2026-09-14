@@ -16,22 +16,21 @@ a
 
 Translation • ai4bharat
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/ai4bharat/indictrans2-en-indic-1B/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/ai4bharat/indictrans2-en-indic-1B/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/ai4bharat/indictrans2-en-indic-1B`
 
-* Cloudflare-hosted
+- Cloudflare-hosted
 
 IndicTrans2 is the first open-source transformer-based multilingual NMT model that supports high-quality translations across all the 22 scheduled Indic languages
 
-| Model Info   |                                                     |
-| ------------ | --------------------------------------------------- |
+| Model Info | |
+| --- | --- |
 | Unit Pricing | $0.34 per M input tokens, $0.34 per M output tokens |
 
 ## Usage
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -54,7 +53,6 @@ export default {
 ```
 
 ```py
-
 import requests
 
 API_BASE_URL = "https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/"
@@ -74,7 +72,6 @@ print(output)
 ```
 
 ```sh
-
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/ai4bharat/indictrans2-en-indic-1B  \
     -X POST  \
     -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
@@ -91,15 +88,15 @@ target\_language
 
 `string`requireddefault: hin\_Devaenum: asm\_Beng, awa\_Deva, ben\_Beng, bho\_Deva, brx\_Deva, doi\_Deva, eng\_Latn, gom\_Deva, gon\_Deva, guj\_Gujr, hin\_Deva, hne\_Deva, kan\_Knda, kas\_Arab, kas\_Deva, kha\_Latn, lus\_Latn, mag\_Deva, mai\_Deva, mal\_Mlym, mar\_Deva, mni\_Beng, mni\_Mtei, npi\_Deva, ory\_Orya, pan\_Guru, san\_Deva, sat\_Olck, snd\_Arab, snd\_Deva, tam\_Taml, tel\_Telu, urd\_Arab, unr\_DevaTarget langauge to translate to
 
-▶translations\[\]
+▶translations\[]
 
 `array`Translated texts
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/@cf/ai4bharat/indictrans2-en-indic-1B/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/ai4bharat/indictrans2-en-indic-1B/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/@cf/ai4bharat/indictrans2-en-indic-1B/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/ai4bharat/indictrans2-en-indic-1B/schema-output.json)
 
 Was this helpful?
 

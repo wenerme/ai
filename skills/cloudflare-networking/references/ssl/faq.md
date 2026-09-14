@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # SSL/TLS FAQ
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Refer to this page for frequently asked questions about Cloudflare SSL/TLS certificate offerings and the CAs that Cloudflare partners with.
 
@@ -56,7 +56,7 @@ If you are on a Business or Enterprise plan, you can [upload a certificate](http
 
 ### I am missing the CAs that Cloudflare uses in my trust store. What should I do?
 
-You can use [CFSSL trust store ↗](https://github.com/cloudflare/cfssl%5Ftrust), which includes all of the CAs that are used by Cloudflare managed certificates.
+You can use [CFSSL trust store ↗](https://github.com/cloudflare/cfssl_trust), which includes all of the CAs that are used by Cloudflare managed certificates.
 
 ---
 
@@ -65,6 +65,7 @@ You can use [CFSSL trust store ↗](https://github.com/cloudflare/cfssl%5Ftrust)
 ### What is CAA and how can I create one?
 
 A Certificate Authority Authorization (CAA) DNS record specifies which certificate authorities (CAs) are allowed to issue certificates for a domain. This record reduces the chance of unauthorized certificate issuance and promotes standardization across your organization.
+
 
 
 For more details, refer to [Add CAA records](https://developers.cloudflare.com/ssl/edge-certificates/caa-records/).

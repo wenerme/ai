@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Amazon Bedrock
 
-Last updated Sep 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/bedrock/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/bedrock/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Amazon Bedrock ↗](https://aws.amazon.com/bedrock/) allows you to build and scale generative AI applications with foundation models.
 
@@ -26,10 +26,10 @@ https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/aws-bedrock
 
 When making requests to Amazon Bedrock, you will need:
 
-* AI Gateway account ID
-* AI Gateway gateway name
-* AWS credentials (`accessKeyId`, `secretAccessKey`, and `region`) with permissions for Amazon Bedrock
-* The name of the Amazon Bedrock model you want to use
+- AI Gateway account ID
+- AI Gateway gateway name
+- AWS credentials ( `accessKeyId`, `secretAccessKey`, and `region`) with permissions for Amazon Bedrock
+- The name of the Amazon Bedrock model you want to use
 
 ## URL structure
 
@@ -43,16 +43,16 @@ https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/aws-bedrock/bedro
 
 ## Authenticating with Amazon Bedrock
 
-Amazon Bedrock uses [AWS Signature Version 4 (SigV4) ↗](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference%5Faws-signing.html) to authenticate API requests. Unlike providers such as OpenAI or Anthropic that use a simple API key, AWS requires each request to be cryptographically signed with your credentials.
+Amazon Bedrock uses [AWS Signature Version 4 (SigV4) ↗](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html) to authenticate API requests. Unlike providers such as OpenAI or Anthropic that use a simple API key, AWS requires each request to be cryptographically signed with your credentials.
 
 AI Gateway handles this complexity for you. When you store your AWS credentials using BYOK, the gateway automatically signs each request before forwarding it to AWS.
 
 ### Authentication methods comparison
 
-| Method                  | cf-aig-authorization header | Authorization header   | Signing                            |
-| ----------------------- | --------------------------- | ---------------------- | ---------------------------------- |
-| **BYOK (Recommended)**  | Bearer {CF\_AIG\_TOKEN}     | Not needed             | Gateway signs automatically        |
-| **Client-side signing** | Bearer {CF\_AIG\_TOKEN}     | Pre-signed AWS headers | You sign with aws4fetch or AWS SDK |
+| Method | `cf-aig-authorization` header | `Authorization` header | Signing |
+| --- | --- | --- | --- |
+| **BYOK (Recommended)** | `Bearer {CF_AIG_TOKEN}` | Not needed | Gateway signs automatically |
+| **Client-side signing** | `Bearer {CF_AIG_TOKEN}` | Pre-signed AWS headers | You sign with `aws4fetch` or AWS SDK |
 
 Do not confuse the headers
 
@@ -62,16 +62,19 @@ Do not confuse the headers
 
 The recommended approach is to store your AWS credentials using AI Gateway's [Bring Your Own Keys (BYOK)](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/) feature. This keeps your credentials secure and eliminates the need for client-side request signing.
 
-1. In the Cloudflare dashboard, go to **AI** \> **AI Gateway** \> your gateway > **Provider Keys**.
+1. In the Cloudflare dashboard, go to **AI** > **AI Gateway** > your gateway > **Provider Keys**.
 2. Select **Add API Key** and choose **Amazon Bedrock** as the provider.
 3. Enter your AWS credentials as a JSON object with the following structure:
-```json
-{
-	"accessKeyId": "AKIAIOSFODNN7EXAMPLE",
-	"secretAccessKey": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
-	"region": "us-east-1"
-}
-```
+
+   ```json
+   {
+   	"accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+   	"secretAccessKey": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+   	"region": "us-east-1"
+   }
+   ```
+
+
 4. Select **Save**.
 
 If you are using temporary credentials from AWS STS (for example, from assuming an IAM role), include the `sessionToken` field:
@@ -89,7 +92,7 @@ With BYOK configured, you only need to include the `cf-aig-authorization` header
 
 ### Option 2: Client-side signing
 
-If you prefer to sign requests yourself, you can use the [aws4fetch ↗](https://github.com/mhart/aws4fetch) library or any AWS SDK to sign the request before sending it through AI Gateway. Refer to the [client-side signing example](#client-side-signing-with-aws4fetch) below.
+If you prefer to sign requests yourself, you can use the [`aws4fetch` ↗](https://github.com/mhart/aws4fetch) library or any AWS SDK to sign the request before sending it through AI Gateway. Refer to the [client-side signing example](#client-side-signing-with-aws4fetch) below.
 
 ## Examples
 
@@ -181,7 +184,7 @@ export default {
 
 ## Use the Anthropic Messages API
 
-Amazon Bedrock provides an Anthropic-native Messages API through the [bedrock-mantle endpoint ↗](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-messages-api.html). AI Gateway passes native Anthropic requests, responses, and server-sent events through without translation.
+Amazon Bedrock provides an Anthropic-native Messages API through the [`bedrock-mantle` endpoint ↗](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-messages-api.html). AI Gateway passes native Anthropic requests, responses, and server-sent events through without translation.
 
 Configure native Anthropic clients with this base URL:
 
@@ -189,7 +192,7 @@ Configure native Anthropic clients with this base URL:
 https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/<GATEWAY_ID>/aws-bedrock/bedrock-mantle/<AWS_REGION>/anthropic
 ```
 
-The client appends `/v1/messages` to the base URL. Choose an AWS Region that [supports the bedrock-mantle endpoint ↗](https://docs.aws.amazon.com/bedrock/latest/userguide/endpoints.html), and use a model ID with the `anthropic.` prefix, such as `anthropic.claude-opus-5`.
+The client appends `/v1/messages` to the base URL. Choose an AWS Region that [supports the `bedrock-mantle` endpoint ↗](https://docs.aws.amazon.com/bedrock/latest/userguide/endpoints.html), and use a model ID with the `anthropic.` prefix, such as `anthropic.claude-opus-5`.
 
 If you use stored AWS credentials, the associated AWS Identity and Access Management (IAM) policy must allow the `bedrock-mantle:CreateInference` action. AI Gateway signs each request for the `bedrock-mantle` service.
 

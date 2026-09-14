@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Build a Durable AI Agent
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workflows/get-started/durable-agents/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/get-started/durable-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this guide, you will build an AI agent that researches GitHub repositories. Give it a task like "Compare open-source LLM projects" and it will:
 
@@ -21,14 +21,16 @@ In this guide, you will build an AI agent that researches GitHub repositories. G
 3. Analyze and compare them
 4. Return a recommendation
 
-Each LLM call and tool call becomes a step — a self-contained, individually retryable unit of work. If any step fails, Workflows retries it automatically. If the entire Workflow crashes mid-task, it resumes from the last successful step.
+Each LLM call and tool call becomes a step
 
-| Challenge                    | Solution with Workflows                                 |
-| ---------------------------- | ------------------------------------------------------- |
-| Long-running agent loops     | Durable execution that survives any interruption        |
-| Unreliable LLM and API calls | Automatic retry with independent checkpoints            |
-| Waiting for human approval   | waitForEvent() pauses for hours or days                 |
-| Polling for job completion   | step.sleep() between checks without consuming resources |
+ — a self-contained, individually retryable unit of work. If any step fails, Workflows retries it automatically. If the entire Workflow crashes mid-task, it resumes from the last successful step.
+
+| Challenge | Solution with Workflows |
+| --- | --- |
+| Long-running agent loops | Durable execution that survives any interruption |
+| Unreliable LLM and API calls | Automatic retry with independent checkpoints |
+| Waiting for human approval | `waitForEvent()` pauses for hours or days |
+| Polling for job completion | `step.sleep()` between checks without consuming resources |
 
 This guide uses the [Agents SDK](https://developers.cloudflare.com/agents/) with Workflows for real-time progress updates and the Anthropic SDK for LLM calls. The same patterns apply to any LLM SDK (OpenAI, Google AI, Mistral, etc.).
 
@@ -47,164 +49,195 @@ Follow the steps below to learn how to build a durable AI agent from scratch.
 ## Prerequisites
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
+
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
 
 You will also need an [Anthropic API key ↗](https://platform.claude.com/settings/keys) for LLM calls. New accounts include free credits.
 
-## 1\. Create a new Worker project
+## 1. Create a new Worker project
 
-1. Create a new Worker project by running the following command:
-npmyarnpnpm
-```
-npm create cloudflare@latest -- durable-ai-agent
-```
-```
-yarn create cloudflare durable-ai-agent
-```
-```
-pnpm create cloudflare@latest durable-ai-agent
-```
-For setup, select the following options:
+1. Create a new Worker project by running the following command:npmyarnpnpm
 
-  * For _What would you like to start with?_, choose `Hello World example`.
-  * For _Which template would you like to use?_, choose `Worker only`.
-  * For _Which language do you want to use?_, choose `TypeScript`.
-  * For _Do you want to use git for version control?_, choose `Yes`.
-  * For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+   ```
+   npm create cloudflare@latest -- durable-ai-agent
+   ```
+
+   ```
+   yarn create cloudflare durable-ai-agent
+   ```
+
+   ```
+   pnpm create cloudflare@latest durable-ai-agent
+   ```
+
+   For setup, select the following options:
+   - For *What would you like to start with?*, choose `Hello World example`.
+   - For *Which template would you like to use?*, choose `Worker only`.
+   - For *Which language do you want to use?*, choose `TypeScript`.
+   - For *Do you want to use git for version control?*, choose `Yes`.
+   - For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 2. Move into your project:
-```sh
-cd durable-ai-agent
-```
-3. Install dependencies:
-```sh
-npm install agents @anthropic-ai/sdk
-```
 
-## 2\. Define your tools
+   ```sh
+   cd durable-ai-agent
+   ```
+
+
+3. Install dependencies:
+
+   ```sh
+   npm install agents @anthropic-ai/sdk
+   ```
+
+
+
+## 2. Define your tools
 
 Tools are functions the LLM can call to interact with external systems. You define the schema (what inputs the tool accepts) and the implementation (what it does). The LLM decides when to use each tool based on the task.
 
 1. Create `src/tools.ts` with two complementary tools:
-```ts
-export interface SearchReposInput {
-	query: string;
-	limit?: number;
-}
-export interface GetRepoInput {
-	owner: string;
-	repo: string;
-}
-interface GitHubSearchResponse {
-	items: Array<{ full_name: string; stargazers_count: number }>;
-}
-interface GitHubRepoResponse {
-	full_name: string;
-	description: string;
-	stargazers_count: number;
-	forks_count: number;
-	open_issues_count: number;
-	language: string;
-	license: { name: string } | null;
-	updated_at: string;
-}
-export const searchReposTool = {
-	name: "search_repos" as const,
-	description:
-		"Search GitHub repositories by keyword. Returns top results. Use get_repo for details.",
-	input_schema: {
-		type: "object" as const,
-		properties: {
-			query: {
-				type: "string",
-				description: "Search query (e.g., 'typescript orm')",
-			},
-			limit: { type: "number", description: "Max results (default 5)" },
-		},
-		required: ["query"],
-	},
-	run: async (input: SearchReposInput): Promise<string> => {
-		const response = await fetch(
-			`https://api.github.com/search/repositories?q=${encodeURIComponent(input.query)}&sort=stars&per_page=${input.limit ?? 5}`,
-			{
-				headers: {
-					Accept: "application/vnd.github+json",
-					"User-Agent": "DurableAgent/1.0",
-				},
-			},
-		);
-		if (!response.ok) return `Search failed: ${response.status}`;
-		const data = await response.json<GitHubSearchResponse>();
-		return JSON.stringify(
-			data.items.map((r) => ({
-				name: r.full_name,
-				stars: r.stargazers_count,
-			})),
-		);
-	},
-};
-export const getRepoTool = {
-	name: "get_repo" as const,
-	description:
-		"Get detailed info about a GitHub repository including stars, forks, and description.",
-	input_schema: {
-		type: "object" as const,
-		properties: {
-			owner: {
-				type: "string",
-				description: "Repository owner (e.g., 'cloudflare')",
-			},
-			repo: {
-				type: "string",
-				description: "Repository name (e.g., 'workers-sdk')",
-			},
-		},
-		required: ["owner", "repo"],
-	},
-	run: async (input: GetRepoInput): Promise<string> => {
-		const response = await fetch(
-			`https://api.github.com/repos/${input.owner}/${input.repo}`,
-			{
-				headers: {
-					Accept: "application/vnd.github+json",
-					"User-Agent": "DurableAgent/1.0",
-				},
-			},
-		);
-		if (!response.ok) return `Repo not found: ${input.owner}/${input.repo}`;
-		const data = await response.json<GitHubRepoResponse>();
-		return JSON.stringify({
-			name: data.full_name,
-			description: data.description,
-			stars: data.stargazers_count,
-			forks: data.forks_count,
-			issues: data.open_issues_count,
-			language: data.language,
-			license: data.license?.name ?? "None",
-			updated: data.updated_at,
-		});
-	},
-};
-export const tools = [searchReposTool, getRepoTool];
-```
+
+   *src/tools.tsts*
+
+
+
+   ```ts
+   export interface SearchReposInput {
+   	query: string;
+   	limit?: number;
+   }
+
+   export interface GetRepoInput {
+   	owner: string;
+   	repo: string;
+   }
+
+   interface GitHubSearchResponse {
+   	items: Array<{ full_name: string; stargazers_count: number }>;
+   }
+
+   interface GitHubRepoResponse {
+   	full_name: string;
+   	description: string;
+   	stargazers_count: number;
+   	forks_count: number;
+   	open_issues_count: number;
+   	language: string;
+   	license: { name: string } | null;
+   	updated_at: string;
+   }
+
+   export const searchReposTool = {
+   	name: "search_repos" as const,
+   	description:
+   		"Search GitHub repositories by keyword. Returns top results. Use get_repo for details.",
+   	input_schema: {
+   		type: "object" as const,
+   		properties: {
+   			query: {
+   				type: "string",
+   				description: "Search query (e.g., 'typescript orm')",
+   			},
+   			limit: { type: "number", description: "Max results (default 5)" },
+   		},
+   		required: ["query"],
+   	},
+   	run: async (input: SearchReposInput): Promise<string> => {
+   		const response = await fetch(
+   			`https://api.github.com/search/repositories?q=${encodeURIComponent(input.query)}&sort=stars&per_page=${input.limit ?? 5}`,
+   			{
+   				headers: {
+   					Accept: "application/vnd.github+json",
+   					"User-Agent": "DurableAgent/1.0",
+   				},
+   			},
+   		);
+   		if (!response.ok) return `Search failed: ${response.status}`;
+   		const data = await response.json<GitHubSearchResponse>();
+   		return JSON.stringify(
+   			data.items.map((r) => ({
+   				name: r.full_name,
+   				stars: r.stargazers_count,
+   			})),
+   		);
+   	},
+   };
+
+   export const getRepoTool = {
+   	name: "get_repo" as const,
+   	description:
+   		"Get detailed info about a GitHub repository including stars, forks, and description.",
+   	input_schema: {
+   		type: "object" as const,
+   		properties: {
+   			owner: {
+   				type: "string",
+   				description: "Repository owner (e.g., 'cloudflare')",
+   			},
+   			repo: {
+   				type: "string",
+   				description: "Repository name (e.g., 'workers-sdk')",
+   			},
+   		},
+   		required: ["owner", "repo"],
+   	},
+   	run: async (input: GetRepoInput): Promise<string> => {
+   		const response = await fetch(
+   			`https://api.github.com/repos/${input.owner}/${input.repo}`,
+   			{
+   				headers: {
+   					Accept: "application/vnd.github+json",
+   					"User-Agent": "DurableAgent/1.0",
+   				},
+   			},
+   		);
+   		if (!response.ok) return `Repo not found: ${input.owner}/${input.repo}`;
+   		const data = await response.json<GitHubRepoResponse>();
+   		return JSON.stringify({
+   			name: data.full_name,
+   			description: data.description,
+   			stars: data.stargazers_count,
+   			forks: data.forks_count,
+   			issues: data.open_issues_count,
+   			language: data.language,
+   			license: data.license?.name ?? "None",
+   			updated: data.updated_at,
+   		});
+   	},
+   };
+
+   export const tools = [searchReposTool, getRepoTool];
+   ```
+
+
 
 These tools complement each other: `search_repos` finds repositories, and `get_repo` fetches details about specific ones.
 
-## 3\. Write your Workflow
+## 3. Write your Workflow
 
 The `AgentWorkflow` class from the Agents SDK extends Cloudflare Workflows with bidirectional Agent communication. Your Workflow can report progress, broadcast to WebSocket clients, and call Agent methods via RPC.
 
-* The [step](https://developers.cloudflare.com/workflows/build/workers-api/#step) object provides methods to define durable steps.
-* `step.do(name, callback)` executes code and persists the result. If the Workflow is interrupted, it resumes from the last successful step.
-* `this.reportProgress()` sends progress updates to the Agent (non-durable).
-* `this.broadcastToClients()` sends messages to all connected WebSocket clients (non-durable).
+- The [`step`](https://developers.cloudflare.com/workflows/build/workers-api/#step) object provides methods to define durable steps.
+- `step.do(name, callback)` executes code and persists the result. If the Workflow is interrupted, it resumes from the last successful step.
+- `this.reportProgress()` sends progress updates to the Agent (non-durable).
+- `this.broadcastToClients()` sends messages to all connected WebSocket clients (non-durable).
 
 For a gentler introduction, refer to [Build your first Workflow](https://developers.cloudflare.com/workflows/get-started/guide/).
 
 Create `src/workflow.ts`:
+
+*src/workflow.tsts*
 
 ```ts
 import { AgentWorkflow } from "agents/workflows";
@@ -317,24 +350,34 @@ export class ResearchWorkflow extends AgentWorkflow<ResearchAgent, Params> {
 }
 ```
 
+<details>
+
+<summary>
+
 Why separate steps for LLM and tools?
 
-Each `step.do()` creates a checkpoint. If your Workflow crashes or the Worker restarts:
+</summary>
 
-* **After LLM step**: The response is persisted. On resume, it skips the LLM call and moves to tool execution.
-* **After tool step**: The result is persisted. If a later tool fails, earlier tools do not re-run.
+Each <code>step.do()</code> creates a checkpoint. If your Workflow crashes or the Worker restarts:
+
+- **After LLM step**: The response is persisted. On resume, it skips the LLM call and moves to tool execution.
+- **After tool step**: The result is persisted. If a later tool fails, earlier tools do not re-run.
 
 This is especially important for:
 
-* **LLM calls**: Expensive and slow, should not repeat unnecessarily
-* **External APIs**: May have rate limits or side effects
-* **Idempotency**: Some tools (like sending emails) should not run twice
+- **LLM calls**: Expensive and slow, should not repeat unnecessarily
+- **External APIs**: May have rate limits or side effects
+- **Idempotency**: Some tools (like sending emails) should not run twice
 
-## 4\. Write your Agent
+</details>
+
+## 4. Write your Agent
 
 The Agent handles HTTP requests, WebSocket connections, and Workflow lifecycle events. It triggers a workflow instance `runWorkflow()` and receives progress updates via callbacks.
 
 Create `src/agent.ts`:
+
+*src/agent.tsts*
 
 ```ts
 import { Agent } from "agents";
@@ -395,72 +438,84 @@ export class ResearchAgent extends Agent<Env, State> {
 }
 ```
 
-## 5\. Configure your project
+## 5. Configure your project
 
 1. Open `wrangler.jsonc` and add the Agent and Workflow configuration:
-```jsonc
-{
-	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "durable-ai-agent",
-	"main": "src/index.ts",
-	// Set this to today's date
-	"compatibility_date": "2026-08-25",
-	"observability": {
-		"enabled": true
-	},
-	"durable_objects": {
-		"bindings": [
-			{
-				"name": "ResearchAgent",
-				"class_name": "ResearchAgent"
-			}
-		]
-	},
-	"workflows": [
-		{
-			"name": "research-workflow",
-			"binding": "RESEARCH_WORKFLOW",
-			"class_name": "ResearchWorkflow"
-		}
-	],
-	"migrations": [
-		{
-			"tag": "v1",
-			"new_sqlite_classes": ["ResearchAgent"]
-		}
-	]
-}
-```
-```toml
-"$schema" = "node_modules/wrangler/config-schema.json"
-name = "durable-ai-agent"
-main = "src/index.ts"
-# Set this to today's date
-compatibility_date = "2026-08-25"
-[observability]
-enabled = true
-[[durable_objects.bindings]]
-name = "ResearchAgent"
-class_name = "ResearchAgent"
-[[workflows]]
-name = "research-workflow"
-binding = "RESEARCH_WORKFLOW"
-class_name = "ResearchWorkflow"
-[[migrations]]
-tag = "v1"
-new_sqlite_classes = [ "ResearchAgent" ]
-```
-2. Generate types for your bindings:
-```sh
-npx wrangler types
-```
-This creates a `worker-configuration.d.ts` file with the `Env` type that includes your bindings.
 
-## 6\. Write your API
+   ```jsonc
+   {
+   	"$schema": "node_modules/wrangler/config-schema.json",
+   	"name": "durable-ai-agent",
+   	"main": "src/index.ts",
+   	// Set this to today's date
+   	"compatibility_date": "2026-09-14",
+   	"observability": {
+   		"enabled": true
+   	},
+   	"durable_objects": {
+   		"bindings": [
+   			{
+   				"name": "ResearchAgent",
+   				"class_name": "ResearchAgent"
+   			}
+   		]
+   	},
+   	"workflows": [
+   		{
+   			"name": "research-workflow",
+   			"binding": "RESEARCH_WORKFLOW",
+   			"class_name": "ResearchWorkflow"
+   		}
+   	],
+   	"migrations": [
+   		{
+   			"tag": "v1",
+   			"new_sqlite_classes": ["ResearchAgent"]
+   		}
+   	]
+   }
+   ```
+
+   ```toml
+   "$schema" = "node_modules/wrangler/config-schema.json"
+   name = "durable-ai-agent"
+   main = "src/index.ts"
+   # Set this to today's date
+   compatibility_date = "2026-09-14"
+
+   [observability]
+   enabled = true
+
+   [[durable_objects.bindings]]
+   name = "ResearchAgent"
+   class_name = "ResearchAgent"
+
+   [[workflows]]
+   name = "research-workflow"
+   binding = "RESEARCH_WORKFLOW"
+   class_name = "ResearchWorkflow"
+
+   [[migrations]]
+   tag = "v1"
+   new_sqlite_classes = [ "ResearchAgent" ]
+   ```
+
+
+2. Generate types for your bindings:
+
+   ```sh
+   npx wrangler types
+   ```
+
+   This creates a `worker-configuration.d.ts` file with the `Env` type that includes your bindings.
+
+## 6. Write your API
 
 The Worker routes requests to the Agent, which manages workflow lifecycle. Use `routeAgentRequest()` for WebSocket connections and `getAgentByName()` for server-side RPC calls.
 
 Replace `src/index.ts`:
+
+*src/index.tsts*
 
 ```ts
 import { getAgentByName, routeAgentRequest } from "agents";
@@ -516,55 +571,83 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
-## 7\. Develop locally
+## 7. Develop locally
 
-1. Create a [.env file](https://developers.cloudflare.com/workers/wrangler/environments/#secrets-in-local-development) for local development:
-```sh
-ANTHROPIC_API_KEY=your-api-key-here
-```
+1. Create a [`.env` file](https://developers.cloudflare.com/workers/wrangler/environments/#secrets-in-local-development) for local development:
+
+   *.envsh*
+
+
+
+   ```sh
+   ANTHROPIC_API_KEY=your-api-key-here
+   ```
+
+
 2. Start the dev server:
-```sh
-npx wrangler dev
-```
+
+   ```sh
+   npx wrangler dev
+   ```
+
+
 3. Start a research task:
-```sh
-curl -X POST http://localhost:8787/research \
-  -H "Content-Type: application/json" \
-  -d '{"task": "Compare open-source LLM projects"}'
-```
-```json
-{ "instanceId": "abc-123-def" }
-```
+
+   ```sh
+   curl -X POST http://localhost:8787/research \
+     -H "Content-Type: application/json" \
+     -d '{"task": "Compare open-source LLM projects"}'
+   ```
+
+   ```json
+   { "instanceId": "abc-123-def" }
+   ```
+
+
 4. Check progress (may take a few seconds to complete):
-```sh
-curl "http://localhost:8787/status?instanceId=abc-123-def"
-```
+
+   ```sh
+   curl "http://localhost:8787/status?instanceId=abc-123-def"
+   ```
+
+
 
 The agent will search for repositories, fetch details, and return a comparison. Progress updates are broadcast to any connected WebSocket clients.
 
-## 8\. Deploy
+## 8. Deploy
 
 1. Deploy the Worker:
-```sh
-npx wrangler deploy
-```
+
+   ```sh
+   npx wrangler deploy
+   ```
+
+
 2. Add your API key as a secret:
-```sh
-npx wrangler secret put ANTHROPIC_API_KEY
-```
+
+   ```sh
+   npx wrangler secret put ANTHROPIC_API_KEY
+   ```
+
+
 3. Start a research task on your deployed Worker:
-```sh
-curl -X POST https://durable-ai-agent.<your-subdomain>.workers.dev/research \
-  -H "Content-Type: application/json" \
-  -d '{"task": "Compare open-source LLM projects"}'
-```
+
+   ```sh
+   curl -X POST https://durable-ai-agent.<your-subdomain>.workers.dev/research \
+     -H "Content-Type: application/json" \
+     -d '{"task": "Compare open-source LLM projects"}'
+   ```
+
+
 4. Inspect workflow runs with the CLI:
-```sh
-npx wrangler workflows instances describe research-workflow latest
-```
-This shows every step the agent took, including LLM calls, tool executions, timing, and any retries.
-You can also view this in the Cloudflare dashboard under **research-workflow**.
-[Go to **Workflows** ↗](https://dash.cloudflare.com/?to=/:account/workers/workflows)
+
+   ```sh
+   npx wrangler workflows instances describe research-workflow latest
+   ```
+
+   This shows every step the agent took, including LLM calls, tool executions, timing, and any retries.
+
+   You can also view this in the Cloudflare dashboard under **research-workflow**. [Go to **Workflows** ↗](https://dash.cloudflare.com/?to=/:account/workers/workflows)
 
 ## Real-time client integration
 

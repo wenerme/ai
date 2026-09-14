@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # OpenAI
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/openai/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/openai/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [OpenAI ↗](https://openai.com/about/) helps you build with GPT models.
 
@@ -38,7 +38,13 @@ When making requests to OpenAI, replace `https://api.openai.com/v1` in the URL y
 
 ### OpenAI SDK
 
+<details>
+
+<summary>
+
 With Key in Request
+
+</summary>
 
 ```js
 import OpenAI from "openai";
@@ -73,7 +79,15 @@ const response = await client.chat.completions.create({
 });
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 With Stored Keys (BYOK) / Unified Billing
+
+</summary>
 
 ```js
 import OpenAI from "openai";
@@ -92,10 +106,18 @@ const response = await client.chat.completions.create({
 });
 ```
 
+</details>
+
 ### cURL
+
+<details>
+
+<summary>
 
 Responses API with API Key in Request
 
+</summary>
+
 ```bash
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/responses \
   --header 'Authorization: Bearer {OPENAI_API_KEY}' \
@@ -126,9 +148,17 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/open
   	]
   }'
 ```
+
+</details>
+
+<details>
+
+<summary>
 
 Chat Completions with API Key in Request
 
+</summary>
+
 ```bash
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
   --header 'Authorization: Bearer {OPENAI_API_KEY}' \
@@ -160,7 +190,15 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/open
   }'
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Responses API with Stored Keys (BYOK) / Unified Billing
+
+</summary>
 
 ```bash
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/responses \
@@ -177,7 +215,15 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/open
   }'
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Chat Completions with Stored Keys (BYOK) / Unified Billing
+
+</summary>
 
 ```bash
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
@@ -193,6 +239,8 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/open
     ]
   }'
 ```
+
+</details>
 
 Was this helpful?
 

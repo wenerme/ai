@@ -12,19 +12,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Authenticate against R2 with temporary credentials
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/examples/authenticate-r2-temp-credentials/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/examples/authenticate-r2-temp-credentials/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following examples show how to generate R2 [temporary credentials](https://developers.cloudflare.com/r2/api/s3/temporary-credentials/) via both the Temporary Credentials API and local client-side signing, and how to use the resulting credentials with an S3 client.
 
 ## Prerequisites
 
-* A parent [R2 API token](https://developers.cloudflare.com/r2/api/tokens/) with at least the permissions you plan to delegate. Never ship parent credentials to a client.
-* Your Cloudflare [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
-* An S3 client that supports session tokens. The examples below use [aws4fetch ↗](https://www.npmjs.com/package/aws4fetch).
+- A parent [R2 API token](https://developers.cloudflare.com/r2/api/tokens/) with at least the permissions you plan to delegate. Never ship parent credentials to a client.
+- Your Cloudflare [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
+- An S3 client that supports session tokens. The examples below use [aws4fetch ↗](https://www.npmjs.com/package/aws4fetch).
 
 ## Generate via the Temporary Credentials API
 
-Call the [Temporary Credentials API](https://developers.cloudflare.com/api/resources/r2/subresources/temporary%5Fcredentials/methods/create/) from a trusted server, then use the returned credentials with any S3 client.
+Call the [Temporary Credentials API](https://developers.cloudflare.com/api/resources/r2/subresources/temporary_credentials/methods/create/) from a trusted server, then use the returned credentials with any S3 client.
 
 ```sh
 curl https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/r2/temp-access-credentials \
@@ -56,7 +56,7 @@ The response wraps the credentials in a `result` object:
 
 ## Generate locally (client-side signing)
 
-This example uses [jose ↗](https://www.npmjs.com/package/jose) to sign the JWT and [aws4fetch ↗](https://www.npmjs.com/package/aws4fetch) to issue signed requests.
+This example uses [`jose` ↗](https://www.npmjs.com/package/jose) to sign the JWT and [`aws4fetch` ↗](https://www.npmjs.com/package/aws4fetch) to issue signed requests.
 
 npmyarnpnpmbun
 
@@ -77,6 +77,8 @@ bun add jose aws4fetch
 ```
 
 The following helper signs a JWT with your parent secret access key and derives the temporary secret access key and session token:
+
+*temp-credentials.tsts*
 
 ```ts
 import { SignJWT } from "jose";
@@ -205,9 +207,9 @@ console.log(denied.status); // 403
 
 ## Related resources
 
-* [Temporary credentials](https://developers.cloudflare.com/r2/api/s3/temporary-credentials/): concept reference and scoping model.
-* [R2 API tokens](https://developers.cloudflare.com/r2/api/tokens/): create the parent token.
-* [Error codes](https://developers.cloudflare.com/r2/api/error-codes/#authentication-and-authorization-errors): authentication error reference.
+- [Temporary credentials](https://developers.cloudflare.com/r2/api/s3/temporary-credentials/): concept reference and scoping model.
+- [R2 API tokens](https://developers.cloudflare.com/r2/api/tokens/): create the parent token.
+- [Error codes](https://developers.cloudflare.com/r2/api/error-codes/#authentication-and-authorization-errors): authentication error reference.
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Review active sessions
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/application-security/account-security/review-active-sessions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/application-security/account-security/review-active-sessions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In the Cloudflare dashboard, you can view a list of active sessions associated with your email address.
 
@@ -26,7 +26,7 @@ By default, the session timeout for the Cloudflare dashboard is 72 hours without
 
 Some customers can also enforce single-sign on (SSO) by [adding a Dashboard SSO application](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/).
 
-If you navigate to **My Profile** \> **Sessions**, you can view active sessions and revoke any session that you do not recognize.
+If you navigate to **My Profile** > **Sessions**, you can view active sessions and revoke any session that you do not recognize.
 
 Was this helpful?
 

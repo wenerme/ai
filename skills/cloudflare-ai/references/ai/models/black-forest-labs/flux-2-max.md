@@ -12,23 +12,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg)
 
-# FLUX.2 \[max\]
+# FLUX.2 \[max]
 
 Text-to-Image • Black Forest Labs
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-max/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-max/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `black-forest-labs/flux-2-max`
 
-* Third-party
+- Third-party
 
-FLUX.2 \[max\] is Black Forest Labs' highest-quality image model — top editing consistency, strongest prompt following, and grounding search for visualizations of real-time information.
+FLUX.2 \[max] is Black Forest Labs' highest-quality image model — top editing consistency, strongest prompt following, and grounding search for visualizations of real-time information.
 
-| Model Info        |                                                                                                                                |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| Terms and License | [link ↗](https://blackforestlabs.ai/terms-of-service/)                                                                         |
-| More information  | [link ↗](https://blackforestlabs.ai/)                                                                                          |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/black-forest-labs/flux-2-max) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://blackforestlabs.ai/terms-of-service/) |
+| More information | [link ↗](https://blackforestlabs.ai/) |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/black-forest-labs/flux-2-max) |
 
 ## Usage
 
@@ -75,7 +75,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Hex Color Control** — Exact color control via hex codes — useful for brand-consistent imagery
+<details>
+
+<summary>**Hex Color Control** — Exact color control via hex codes — useful for brand-consistent imagery</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -114,7 +118,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Image Editing** — Single-reference image editing — relight or restage a product photo
+</details>
+
+<details>
+
+<summary>**Image Editing** — Single-reference image editing — relight or restage a product photo</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -158,6 +168,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 prompt
@@ -166,7 +178,7 @@ prompt
 
 seed
 
-`integer`minimum: \-9007199254740991maximum: 9007199254740991Optional seed for reproducible generation.
+`integer`minimum: -9007199254740991maximum: 9007199254740991Optional seed for reproducible generation.
 
 width
 
@@ -184,7 +196,7 @@ output\_format
 
 `string`enum: jpeg, png, webpOutput image format. Defaults to jpeg.
 
-▶input\_images\[\]
+▶input\_images\[]
 
 `array`maxItems: 8Up to 8 reference images for editing or multi-image composition. Each entry is an HTTPS URL or a data:image/...;base64,... URI.
 
@@ -194,9 +206,9 @@ image
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-max/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-max/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-max/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-max/schema-output.json)
 
 Was this helpful?
 

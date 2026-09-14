@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create a waiting room
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waiting-room/how-to/create-waiting-room/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waiting-room/how-to/create-waiting-room/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can create a waiting room from the dashboard or via API.
 
@@ -20,7 +20,7 @@ Note
 
 For additional context on creating a waiting room, refer to [Get started](https://developers.cloudflare.com/waiting-room/get-started/).
 
-1. Within your application, go to **Traffic** \> **Waiting Room**.
+1. Within your application, go to **Traffic** > **Waiting Room**.
 2. Select **Create**.
 3. Customize the [settings](https://developers.cloudflare.com/waiting-room/reference/configuration-settings/) for your waiting room. For additional guidance refer to [Best practices](https://developers.cloudflare.com/waiting-room/reference/best-practices/).
 4. Select **Next**.
@@ -31,16 +31,27 @@ For additional context on creating a waiting room, refer to [Get started](https:
 9. Review your settings before saving. If you customized your waiting room, make sure to [preview the result](https://developers.cloudflare.com/waiting-room/how-to/customize-waiting-room/#preview-waiting-room).
 10. Select **Save**. Your new waiting room will be enabled by default.
 
-To create a Waiting Room using the API, send a [POST request](https://developers.cloudflare.com/api/resources/waiting%5Frooms/methods/create/) to the `/zones/{zone_identifier}/waiting_rooms` endpoint:
+To create a Waiting Room using the API, send a [`POST` request](https://developers.cloudflare.com/api/resources/waiting_rooms/methods/create/) to the `/zones/{zone_identifier}/waiting_rooms` endpoint:
 
-* For parameter references, refer to [Configuration settings](https://developers.cloudflare.com/waiting-room/reference/configuration-settings/)
-* For authentication instructions, refer to [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
-* For help with endpoints and pagination, refer to [Make API calls](https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/).
+- For parameter references, refer to [Configuration settings](https://developers.cloudflare.com/waiting-room/reference/configuration-settings/)
+- For authentication instructions, refer to [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
+- For help with endpoints and pagination, refer to [Make API calls](https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/).
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Waiting Rooms Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Waiting Rooms Write</code>
+
+</details>
+
+*Create waiting roombash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms" \
@@ -67,6 +78,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms" \
 ```
 
 The response contains the complete definition of the newly created Waiting Room.
+
+*Responsejson*
 
 ```json
 {

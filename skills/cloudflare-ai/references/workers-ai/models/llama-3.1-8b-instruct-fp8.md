@@ -16,19 +16,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Meta
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fp8/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fp8/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/meta/llama-3.1-8b-instruct-fp8`
 
-* Cloudflare-hosted
+- Cloudflare-hosted
 
 Llama 3.1 8B quantized to FP8 precision
 
-| Model Info                                                                          |                                                                                          |
-| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 32,000 tokens                                                                            |
-| Terms and License                                                                   | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3%5F1/LICENSE) |
-| Unit Pricing                                                                        | $0.15 per M input tokens, $0.29 per M output tokens                                      |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 32,000 tokens |
+| Terms and License | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/LICENSE) |
+| Unit Pricing | $0.15 per M input tokens, $0.29 per M output tokens |
 
 ## Playground
 
@@ -39,7 +39,6 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 ## Usage
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -68,7 +67,6 @@ export default {
 ```
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -91,7 +89,6 @@ export default {
 ```
 
 ```py
-
 import os
 import requests
 
@@ -114,7 +111,6 @@ print(result)
 ```
 
 ```sh
-
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/meta/llama-3.1-8b-instruct-fp8 \
   -X POST \
   -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
@@ -175,47 +171,59 @@ repetition\_penalty
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2Decreases the likelihood of the model repeating the same lines verbatim.
+`number`minimum: -2maximum: 2Decreases the likelihood of the model repeating the same lines verbatim.
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2Increases the likelihood of the model introducing new topics.
+`number`minimum: -2maximum: 2Increases the likelihood of the model introducing new topics.
 
 ### Output
 
-Synchronous — Send a request and receive a complete response
+<details>
+
+<summary>Synchronous — Send a request and receive a complete response</summary>
+
+
 
 response
 
-`string`The generated text response from the model
+<code>string</code>The generated text response from the model
 
 ▶usage{}
 
-`object`Usage statistics for the inference request
+<code>object</code>Usage statistics for the inference request
 
-▶tool\_calls\[\]
+▶tool\_calls\[]
 
-`array`An array of tool calls requests made during the response generation
+<code>array</code>An array of tool calls requests made during the response generation
 
-Streaming — Send a request with \`stream: true\` and receive server-sent events
+</details>
+
+<details>
+
+<summary>Streaming — Send a request with `stream: true` and receive server-sent events</summary>
+
+
 
 type
 
-`string`
+<code>string</code>
 
 format
 
-`binary`
+<code>binary</code>
+
+</details>
 
 ## API Schemas (Raw)
 
-SynchronousInput
+SynchronousInput [Open](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fp8/sync-input.json) [Download](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fp8/sync-input.json)
 
-SynchronousOutput
+SynchronousOutput [Open](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fp8/sync-output.json) [Download](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fp8/sync-output.json)
 
-StreamingInput
+StreamingInput [Open](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fp8/streaming-input.json) [Download](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fp8/streaming-input.json)
 
-StreamingOutput
+StreamingOutput [Open](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fp8/streaming-output.json) [Download](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fp8/streaming-output.json)
 
 Was this helpful?
 

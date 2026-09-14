@@ -12,12 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Preview deployments
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/configuration/preview-deployments/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/configuration/preview-deployments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Preview deployments allow you to preview new versions of your project without deploying it to production. To view preview deployments:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your project and find the deployment you would like to view.
 
 Every time you open a new pull request on your GitHub repository, Cloudflare Pages will create a unique preview URL, which will stay updated as you continue to push new commits to the branch. This is only true when pull requests originate from the repository itself.
@@ -30,7 +29,7 @@ For example, if you have a repository called `user-example` connected to Pages, 
 
 While developing `user-example`, you may push new changes to a `development` branch, for example.
 
-In this example, after you create the new `development` branch, Pages will automatically generate a preview deployment for these changes available at `373f31e2.user-example.pages.dev` \- where `373f31e2` is a randomly generated hash.
+In this example, after you create the new `development` branch, Pages will automatically generate a preview deployment for these changes available at `373f31e2.user-example.pages.dev` - where `373f31e2` is a randomly generated hash.
 
 Each new branch you create will receive a new, randomly-generated hash in front of your `pages.dev` subdomain.
 
@@ -50,10 +49,9 @@ By default, preview deployments are enabled and available publicly. In your proj
 
 To protect your preview deployments behind Cloudflare Access:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
-3. Go to **Settings** \> **General** \> and select **Enable access policy**.
+3. Go to **Settings** > **General** > and select **Enable access policy**.
 
 Note that this will only protect your preview deployments (for example, `373f31e2.user-example.pages.dev` and every other randomly generated preview link) and not your `*.pages.dev` domain or custom domain.
 
@@ -81,7 +79,7 @@ To clean up old preview deployments, you can delete them using Wrangler:
 npx wrangler pages deployment delete <DEPLOYMENT_ID> --project-name <PROJECT_NAME>
 ```
 
-Use the `--force` (or `-f`) flag to skip the confirmation prompt, and to force deletion of aliased deployments. You can find deployment IDs by running [wrangler pages deployment list](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-deployment-list).
+Use the `--force` (or `-f`) flag to skip the confirmation prompt, and to force deletion of aliased deployments. You can find deployment IDs by running [`wrangler pages deployment list`](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-deployment-list).
 
 Note
 

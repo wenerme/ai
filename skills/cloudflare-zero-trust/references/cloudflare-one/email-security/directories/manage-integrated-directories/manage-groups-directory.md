@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage groups in your directory
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/directories/manage-integrated-directories/manage-groups-directory/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/directories/manage-integrated-directories/manage-groups-directory/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Email security allows you to view and manage your groups directory and their [impersonation registry](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/). When a group is added to the registry, all members are registered by default.
 
 To manage a group directory:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Email security** \> **Directories**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Email security** > **Directories**.
 2. Locate your directory, select the three dots > **View details**.
 3. Select **Groups**.
 
@@ -60,11 +60,11 @@ A group name is registered when it is part of the [impersonation registry](https
 
 To filter the list:
 
-1. Select **Show filters** \> **Impersonation registry**.
+1. Select **Show filters** > **Impersonation registry**.
 2. Select one of the following:
-  * **All**: To view registered and unregistered groups.
-  * **Registered**: To view registered groups.
-  * **Unregistered**: To view unregistered groups.
+   - **All**: To view registered and unregistered groups.
+   - **Registered**: To view registered groups.
+   - **Unregistered**: To view unregistered groups.
 3. Select **Apply filters**.
 
 Was this helpful?

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/functions/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide will instruct you on creating and deploying a Pages Function.
 
@@ -38,7 +38,7 @@ export function onRequest(context) {
 }
 ```
 
-In the above example code, the `onRequest` handler takes a request [context](https://developers.cloudflare.com/pages/functions/api-reference/#eventcontext) object. The handler must return a `Response` or a `Promise` of a `Response`.
+In the above example code, the `onRequest` handler takes a request [`context`](https://developers.cloudflare.com/pages/functions/api-reference/#eventcontext) object. The handler must return a `Response` or a `Promise` of a `Response`.
 
 This Function will run on the `/helloworld` route and returns `"Hello, world!"`. The reason this Function is available on this route is because the file is named `helloworld.js`. Similarly, if this file was called `howdyworld.js`, this function would run on `/howdyworld`.
 
@@ -52,7 +52,7 @@ Set these configurations by passing an argument to your [Wrangler](https://devel
 
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
 2. Select **Workers & Pages** and select your Pages project.
-3. Select **Settings** \> **Functions** \> **Compatibility Flags**.
+3. Select **Settings** > **Functions** > **Compatibility Flags**.
 4. Configure your Production and Preview compatibility flags as needed.
 
 Additionally, use other Cloudflare products such as [D1](https://developers.cloudflare.com/d1/) (serverless DB) and [R2](https://developers.cloudflare.com/r2/) from within your Pages project by configuring [bindings](https://developers.cloudflare.com/pages/functions/bindings/).
@@ -61,8 +61,8 @@ Additionally, use other Cloudflare products such as [D1](https://developers.clou
 
 After you have set up your Function, deploy your Pages project. Deploy your project by:
 
-* Connecting your [Git provider](https://developers.cloudflare.com/pages/get-started/git-integration/).
-* Using [Wrangler](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages) from the command line.
+- Connecting your [Git provider](https://developers.cloudflare.com/pages/get-started/git-integration/).
+- Using [Wrangler](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages) from the command line.
 
 Caution
 
@@ -70,9 +70,9 @@ Caution
 
 ## Related resources
 
-* Customize your [Function's routing](https://developers.cloudflare.com/pages/functions/routing/)
-* Review the [API reference](https://developers.cloudflare.com/pages/functions/api-reference/)
-* Learn how to [debug your Function](https://developers.cloudflare.com/pages/functions/debugging-and-logging/)
+- Customize your [Function's routing](https://developers.cloudflare.com/pages/functions/routing/)
+- Review the [API reference](https://developers.cloudflare.com/pages/functions/api-reference/)
+- Learn how to [debug your Function](https://developers.cloudflare.com/pages/functions/debugging-and-logging/)
 
 Was this helpful?
 

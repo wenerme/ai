@@ -12,13 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Durable Object ID
 
-Last updated May 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/api/id/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/api/id/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Description
 
-A Durable Object ID is a 64-digit hexadecimal number used to identify a Durable Object. Not all 64-digit hex numbers are valid IDs. Durable Object IDs are constructed indirectly via the [DurableObjectNamespace](https://developers.cloudflare.com/durable-objects/api/namespace) interface.
+A Durable Object ID is a 64-digit hexadecimal number used to identify a Durable Object
 
-The `DurableObjectId` interface refers to a new or existing Durable Object. This interface is most frequently used by [DurableObjectNamespace::get](https://developers.cloudflare.com/durable-objects/api/namespace/#get) to obtain a [DurableObjectStub](https://developers.cloudflare.com/durable-objects/api/stub) for submitting requests to a Durable Object. Note that creating an ID for a Durable Object does not create the Durable Object. The Durable Object is created lazily after creating a stub from a `DurableObjectId`. This ensures that objects are not constructed until they are actually accessed.
+. Not all 64-digit hex numbers are valid IDs. Durable Object IDs are constructed indirectly via the [`DurableObjectNamespace`](https://developers.cloudflare.com/durable-objects/api/namespace) interface.
+
+The `DurableObjectId` interface refers to a new or existing Durable Object. This interface is most frequently used by [`DurableObjectNamespace::get`](https://developers.cloudflare.com/durable-objects/api/namespace/#get) to obtain a [`DurableObjectStub`](https://developers.cloudflare.com/durable-objects/api/stub) for submitting requests to a Durable Object. Note that creating an ID for a Durable Object does not create the Durable Object. The Durable Object is created lazily after creating a stub from a `DurableObjectId`. This ensures that objects are not constructed until they are actually accessed.
 
 Logging
 
@@ -43,11 +45,11 @@ const id = env.MY_DURABLE_OBJECT.idFromString(session_id);
 
 #### Parameters
 
-* None.
+- None.
 
 #### Return values
 
-* A 64 digit hex string.
+- A 64 digit hex string.
 
 ### `equals`
 
@@ -67,23 +69,23 @@ assert not id1.equals(id2), "Different unique ids should never be equal."
 
 #### Parameters
 
-* A required `DurableObjectId` to compare against.
+- A required `DurableObjectId` to compare against.
 
 #### Return values
 
-* A boolean. True if equal and false otherwise.
+- A boolean. True if equal and false otherwise.
 
 ## Properties
 
 ### `name`
 
-`name` is an optional property of a `DurableObjectId`, which returns the name that was used to create the `DurableObjectId` via [DurableObjectNamespace::idFromName](https://developers.cloudflare.com/durable-objects/api/namespace/#idfromname). This value is undefined if the `DurableObjectId` was constructed using [DurableObjectNamespace::newUniqueId](https://developers.cloudflare.com/durable-objects/api/namespace/#newuniqueid).
+`name` is an optional property of a `DurableObjectId`, which returns the name that was used to create the `DurableObjectId` via [`DurableObjectNamespace::idFromName`](https://developers.cloudflare.com/durable-objects/api/namespace/#idfromname). This value is undefined if the `DurableObjectId` was constructed using [`DurableObjectNamespace::newUniqueId`](https://developers.cloudflare.com/durable-objects/api/namespace/#newuniqueid).
 
 The `name` property is also available on `ctx.id` inside the Durable Object when the caller uses `idFromName()` or `getByName()`. `ctx.id.name` will be `undefined` in the following cases:
 
-* The caller accesses the Durable Object using `idFromString()`, even if the ID was originally created with `idFromName()`.
-* Names longer than 1,024 bytes are not passed through to `ctx.id`.
-* The Durable Object was created with `newUniqueId()`.
+- The caller accesses the Durable Object using `idFromString()`, even if the ID was originally created with `idFromName()`.
+- Names longer than 1,024 bytes are not passed through to `ctx.id`.
+- The Durable Object was created with `newUniqueId()`.
 
 Alarms
 
@@ -154,14 +156,14 @@ class ChatRoom(DurableObject):
 
 `jurisdiction` is preserved across every ID-construction path, including:
 
-* IDs created from a jurisdiction-restricted subnamespace, for example `env.MY_DURABLE_OBJECT.jurisdiction("eu").idFromName("foo")` or `.newUniqueId()`.
-* IDs created via `env.MY_DURABLE_OBJECT.newUniqueId({ jurisdiction: "eu" })`.
-* IDs restored from a string via `idFromString()` — the jurisdiction is encoded in the string itself, so it works on any namespace binding.
+- IDs created from a jurisdiction-restricted subnamespace, for example `env.MY_DURABLE_OBJECT.jurisdiction("eu").idFromName("foo")` or `.newUniqueId()`.
+- IDs created via `env.MY_DURABLE_OBJECT.newUniqueId({ jurisdiction: "eu" })`.
+- IDs restored from a string via `idFromString()` — the jurisdiction is encoded in the string itself, so it works on any namespace binding.
 
 `ctx.id.jurisdiction` is `undefined` in two cases:
 
-* The Durable Object was not created in a jurisdiction-restricted namespace.
-* The Durable Object's alarm was scheduled before 2026-03-15\. To backfill the value, reschedule the alarm from a `fetch()` or RPC handler.
+- The Durable Object was not created in a jurisdiction-restricted namespace.
+- The Durable Object's alarm was scheduled before 2026-03-15. To backfill the value, reschedule the alarm from a `fetch()` or RPC handler.
 
 ```js
 const plainId = env.MY_DURABLE_OBJECT.idFromName("foo");
@@ -179,7 +181,7 @@ assert eu_id.jurisdiction == "eu", "jurisdiction matches namespace"
 
 ## Related resources
 
-* [Durable Objects: Easy, Fast, Correct – Choose Three ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
+- [Durable Objects: Easy, Fast, Correct – Choose Three ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
 
 Was this helpful?
 

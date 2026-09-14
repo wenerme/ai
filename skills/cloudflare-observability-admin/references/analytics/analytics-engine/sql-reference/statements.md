@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Statements
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/statements/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/statements/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## SHOW TABLES statement
 
@@ -150,7 +150,7 @@ WHERE <condition>
 
 Expressions containing functions and [operators](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/operators/) are supported.
 
-To filter results after grouping and aggregation, use the [HAVING clause](#having-clause) instead.
+To filter results after grouping and aggregation, use the [`HAVING` clause](#having-clause) instead.
 
 Examples:
 

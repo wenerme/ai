@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Check tunnel health in the dashboard
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/common-settings/check-tunnel-health-dashboard/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/common-settings/check-tunnel-health-dashboard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The Cloudflare dashboard monitors the health of all anycast tunnels on your account that route traffic from Cloudflare to your origin network.
+The Cloudflare dashboard monitors the health of all anycast
+
+ tunnels on your account that route traffic from Cloudflare to your origin network.
 
 The dashboard shows the view of tunnel health as measured from each Cloudflare location where your traffic is likely to land. If the tunnels are healthy on your side, you will see the majority of servers reporting an **up** status. It is normal for a subset of these locations to report tunnel status as degraded or unhealthy, since the Internet is not homogeneous and intermediary path issues between Cloudflare and your network can cause interruptions for specific paths.
 
@@ -27,11 +29,11 @@ Not all data centers are relevant to you at all times. You can refer to the **Tr
 ## Check tunnel health
 
 1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/) and go to **Insights**.
-2. Go to **Network health** \> **WAN connector health**.
+2. Go to **Network health** > **WAN connector health**.
 3. In this view you can access a list of your tunnels and their current health status. You can also check the amount of health checks passed in the last hour as well as traffic volume for each tunnel.
 4. Find the tunnel you want to inspect, select the three dots next to it, and choose:
-  * **Create alert**: Opens the [notifications wizard](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/common-settings/configure-tunnel-health-alerts/) so you can create specific alerts for that tunnel when specific conditions are met.
-  * **Network Analytics**: Opens the Analytics section of the dash, prefiltered with the tunnel you want to inspect.
+   - **Create alert**: Opens the [notifications wizard](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/common-settings/configure-tunnel-health-alerts/) so you can create specific alerts for that tunnel when specific conditions are met.
+   - **Network Analytics**: Opens the Analytics section of the dash, prefiltered with the tunnel you want to inspect.
 5. Alternatively, from the list of tunnels, select the tunnel you want to inspect to access details about it.
 
 ## Check tunnel health for a specific tunnel
@@ -39,22 +41,22 @@ Not all data centers are relevant to you at all times. You can refer to the **Tr
 You can drill down into a specific tunnel to check its health status and other information.
 
 1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/) and go to **Insights**.
-2. Go to **Network health** \> **WAN connector health**.
+2. Go to **Network health** > **WAN connector health**.
 3. Find and select the tunnel you want to inspect.
 
 The next view displays detailed information about the tunnel, including:
 
-* Status information
-  * Up: More than 80% of health checks pass.
-  * Degraded: More than 40% of health checks pass.
-  * Down: Less than 40% of health checks pass.
-* Health checks passed in the last hour
-* Traffic volume in the last hour
+- Status information
+  - Up: More than 80% of health checks pass.
+  - Degraded: More than 40% of health checks pass.
+  - Down: Less than 40% of health checks pass.
+- Health checks passed in the last hour
+- Traffic volume in the last hour
 
 If you select the three dots in front of the tunnel you want to inspect, you have access to the following tools:
 
-* Packet captures: Collect [packet level data for your traffic](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/)
-* Network Analytics: Leverage real-time insights into [network analytics](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/analytics/network-analytics/).
+- Packet captures: Collect [packet level data for your traffic](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/)
+- Network Analytics: Leverage real-time insights into [network analytics](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/analytics/network-analytics/).
 
 Note
 

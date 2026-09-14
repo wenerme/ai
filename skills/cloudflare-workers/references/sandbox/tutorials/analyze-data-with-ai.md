@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Analyze data with AI
 
-Last updated May 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/analyze-data-with-ai/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/analyze-data-with-ai/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build an AI-powered data analysis system that accepts CSV uploads, uses Claude to generate Python analysis code, executes it in sandboxes, and returns visualizations.
 
@@ -21,18 +21,26 @@ Build an AI-powered data analysis system that accepts CSV uploads, uses Claude t
 ## Prerequisites
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
+
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
 
 You'll also need:
 
-* An [Anthropic API key ↗](https://console.anthropic.com/) for Claude
-* [Docker ↗](https://www.docker.com/) running locally
+- An [Anthropic API key ↗](https://console.anthropic.com/) for Claude
+- [Docker ↗](https://www.docker.com/) running locally
 
-## 1\. Create your project
+## 1. Create your project
 
 Create a new Sandbox SDK project:
 
@@ -54,7 +62,7 @@ pnpm create cloudflare@latest analyze-data --template=cloudflare/sandbox-sdk/exa
 cd analyze-data
 ```
 
-## 2\. Install dependencies
+## 2. Install dependencies
 
 npmyarnpnpmbun
 
@@ -74,7 +82,7 @@ pnpm add @anthropic-ai/sdk
 bun add @anthropic-ai/sdk
 ```
 
-## 3\. Build the analysis handler
+## 3. Build the analysis handler
 
 Replace `src/index.ts`:
 
@@ -240,7 +248,7 @@ Use pandas, numpy, matplotlib.`,
 }
 ```
 
-## 4\. Set up local environment variables
+## 4. Set up local environment variables
 
 Create a `.dev.vars` file in your project root for local development:
 
@@ -256,7 +264,7 @@ Note
 
 The `.dev.vars` file is automatically gitignored and only used during local development with `npm run dev`.
 
-## 5\. Test locally
+## 5. Test locally
 
 Download a sample CSV:
 
@@ -293,7 +301,7 @@ Response:
 }
 ```
 
-## 6\. Deploy
+## 6. Deploy
 
 Deploy your Worker:
 
@@ -317,16 +325,16 @@ Wait 2-3 minutes after first deployment for container provisioning.
 
 An AI data analysis system that:
 
-* Uploads CSV files to sandboxes
-* Uses Claude's tool calling to generate analysis code
-* Executes Python with pandas and matplotlib
-* Returns text output and visualizations
+- Uploads CSV files to sandboxes
+- Uses Claude's tool calling to generate analysis code
+- Executes Python with pandas and matplotlib
+- Returns text output and visualizations
 
 ## Next steps
 
-* [Code Interpreter API](https://developers.cloudflare.com/sandbox/api/interpreter/) \- Use the built-in code interpreter
-* [File operations](https://developers.cloudflare.com/sandbox/guides/manage-files/) \- Advanced file handling
-* [Streaming output](https://developers.cloudflare.com/sandbox/guides/streaming-output/) \- Real-time progress updates
+- [Code Interpreter API](https://developers.cloudflare.com/sandbox/api/interpreter/) - Use the built-in code interpreter
+- [File operations](https://developers.cloudflare.com/sandbox/guides/manage-files/) - Advanced file handling
+- [Streaming output](https://developers.cloudflare.com/sandbox/guides/streaming-output/) - Real-time progress updates
 
 Was this helpful?
 

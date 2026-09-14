@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # ip.src.postal\_code
 
-`ip.src.postal_code` `String`
+`ip.src.postal_code``String`
 
 The postal code associated with the incoming request.
 
@@ -19,8 +19,8 @@ Example value:
 ```
 
 Categories:
-* Request
-* Geolocation
+- Request
+- Geolocation
 
 Was this helpful?
 

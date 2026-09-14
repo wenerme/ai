@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Time and date functions
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/time-and-date/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/time-and-date/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-_Cloudflare Pipelines scalar function implementations are based on [Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference._
+*Cloudflare Pipelines scalar function implementations are based on [Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference.*
 
 ## `date_bin`
 
@@ -28,23 +28,23 @@ date_bin(interval, expression, origin-timestamp)
 
 **Arguments**
 
-* **interval**: Bin interval.
-* **expression**: Time expression to operate on. Can be a constant, column, or function.
-* **origin-timestamp**: Optional. Starting point used to determine bin boundaries. If not specified defaults `1970-01-01T00:00:00Z` (the UNIX epoch in UTC).
+- **interval**: Bin interval.
+- **expression**: Time expression to operate on. Can be a constant, column, or function.
+- **origin-timestamp**: Optional. Starting point used to determine bin boundaries. If not specified defaults `1970-01-01T00:00:00Z` (the UNIX epoch in UTC).
 
 The following intervals are supported:
 
-* nanoseconds
-* microseconds
-* milliseconds
-* seconds
-* minutes
-* hours
-* days
-* weeks
-* months
-* years
-* century
+- nanoseconds
+- microseconds
+- milliseconds
+- seconds
+- minutes
+- hours
+- days
+- weeks
+- months
+- years
+- century
 
 ## `date_trunc`
 
@@ -56,25 +56,24 @@ date_trunc(precision, expression)
 
 **Arguments**
 
-* **precision**: Time precision to truncate to. The following precisions are supported:
-
-  * year / YEAR
-  * quarter / QUARTER
-  * month / MONTH
-  * week / WEEK
-  * day / DAY
-  * hour / HOUR
-  * minute / MINUTE
-  * second / SECOND
-* **expression**: Time expression to operate on. Can be a constant, column, or function.
+- **precision**: Time precision to truncate to. The following precisions are supported:
+  - year / YEAR
+  - quarter / QUARTER
+  - month / MONTH
+  - week / WEEK
+  - day / DAY
+  - hour / HOUR
+  - minute / MINUTE
+  - second / SECOND
+- **expression**: Time expression to operate on. Can be a constant, column, or function.
 
 **Aliases**
 
-* datetrunc
+- datetrunc
 
 ## `datetrunc`
 
-_Alias of [date\_trunc](#date%5Ftrunc)._
+*Alias of [date\_trunc](#date_trunc).*
 
 ## `date_part`
 
@@ -86,31 +85,30 @@ date_part(part, expression)
 
 **Arguments**
 
-* **part**: Part of the date to return. The following date parts are supported:
-
-  * year
-  * quarter _(emits value in inclusive range \[1, 4\] based on which quartile of the year the date is in)_
-  * month
-  * week _(week of the year)_
-  * day _(day of the month)_
-  * hour
-  * minute
-  * second
-  * millisecond
-  * microsecond
-  * nanosecond
-  * dow _(day of the week)_
-  * doy _(day of the year)_
-  * epoch _(seconds since Unix epoch)_
-* **expression**: Time expression to operate on. Can be a constant, column, or function.
+- **part**: Part of the date to return. The following date parts are supported:
+  - year
+  - quarter *(emits value in inclusive range \[1, 4] based on which quartile of the year the date is in)*
+  - month
+  - week *(week of the year)*
+  - day *(day of the month)*
+  - hour
+  - minute
+  - second
+  - millisecond
+  - microsecond
+  - nanosecond
+  - dow *(day of the week)*
+  - doy *(day of the year)*
+  - epoch *(seconds since Unix epoch)*
+- **expression**: Time expression to operate on. Can be a constant, column, or function.
 
 **Aliases**
 
-* datepart
+- datepart
 
 ## `datepart`
 
-_Alias of [date\_part](#date%5Fpart)._
+*Alias of [date\_part](#date_part).*
 
 ## `extract`
 
@@ -127,7 +125,7 @@ extract(day FROM '2024-04-13'::date)
 date_part('day', '2024-04-13'::date)
 ```
 
-See [date\_part](#date%5Fpart).
+See [date\_part](#date_part).
 
 ## `make_date`
 
@@ -139,9 +137,9 @@ make_date(year, month, day)
 
 **Arguments**
 
-* **year**: Year to use when making the date. Can be a constant, column or function, and any combination of arithmetic operators.
-* **month**: Month to use when making the date. Can be a constant, column or function, and any combination of arithmetic operators.
-* **day**: Day to use when making the date. Can be a constant, column or function, and any combination of arithmetic operators.
+- **year**: Year to use when making the date. Can be a constant, column or function, and any combination of arithmetic operators.
+- **month**: Month to use when making the date. Can be a constant, column or function, and any combination of arithmetic operators.
+- **day**: Day to use when making the date. Can be a constant, column or function, and any combination of arithmetic operators.
 
 **Example**
 
@@ -170,8 +168,8 @@ to_char(expression, format)
 
 **Arguments**
 
-* **expression**: Expression to operate on. Can be a constant, column, or function that results in a date, time, timestamp or duration.
-* **format**: A [Chrono format ↗](https://docs.rs/chrono/latest/chrono/format/strftime/index.html) string to use to convert the expression.
+- **expression**: Expression to operate on. Can be a constant, column, or function that results in a date, time, timestamp or duration.
+- **format**: A [Chrono format ↗](https://docs.rs/chrono/latest/chrono/format/strftime/index.html) string to use to convert the expression.
 
 **Example**
 
@@ -186,13 +184,13 @@ to_char(expression, format)
 
 **Aliases**
 
-* date\_format
+- date\_format
 
 ## `to_timestamp`
 
-Converts a value to a timestamp (`YYYY-MM-DDT00:00:00Z`). Supports strings, integer, unsigned integer, and double types as input. Strings are parsed as RFC3339 (e.g. '2023-07-20T05:44:00') if no \[Chrono formats\] are provided. Integers, unsigned integers, and doubles are interpreted as seconds since the unix epoch (`1970-01-01T00:00:00Z`). Returns the corresponding timestamp.
+Converts a value to a timestamp (`YYYY-MM-DDT00:00:00Z`). Supports strings, integer, unsigned integer, and double types as input. Strings are parsed as RFC3339 (e.g. '2023-07-20T05:44:00') if no \[Chrono formats] are provided. Integers, unsigned integers, and doubles are interpreted as seconds since the unix epoch (`1970-01-01T00:00:00Z`). Returns the corresponding timestamp.
 
-Note: `to_timestamp` returns `Timestamp(Nanosecond)`. The supported range for integer input is between `-9223372037` and `9223372036`. Supported range for string input is between `1677-09-21T00:12:44.0` and `2262-04-11T23:47:16.0`. Please use `to_timestamp_seconds`for the input outside of supported bounds.
+Note: `to_timestamp` returns `Timestamp(Nanosecond)`. The supported range for integer input is between `-9223372037` and `9223372036`. Supported range for string input is between `1677-09-21T00:12:44.0` and `2262-04-11T23:47:16.0`. Please use `to_timestamp_seconds` for the input outside of supported bounds.
 
 ```plaintext
 to_timestamp(expression[, ..., format_n])
@@ -200,8 +198,8 @@ to_timestamp(expression[, ..., format_n])
 
 **Arguments**
 
-* **expression**: Expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
-* **format\_n**: Optional [Chrono format ↗](https://docs.rs/chrono/latest/chrono/format/strftime/index.html) strings to use to parse the expression. Formats will be tried in the order they appear with the first successful one being returned. If none of the formats successfully parse the expression an error will be returned.
+- **expression**: Expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **format\_n**: Optional [Chrono format ↗](https://docs.rs/chrono/latest/chrono/format/strftime/index.html) strings to use to parse the expression. Formats will be tried in the order they appear with the first successful one being returned. If none of the formats successfully parse the expression an error will be returned.
 
 **Example**
 
@@ -230,8 +228,8 @@ to_timestamp_millis(expression[, ..., format_n])
 
 **Arguments**
 
-* **expression**: Expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
-* **format\_n**: Optional [Chrono format ↗](https://docs.rs/chrono/latest/chrono/format/strftime/index.html) strings to use to parse the expression. Formats will be tried in the order they appear with the first successful one being returned. If none of the formats successfully parse the expression an error will be returned.
+- **expression**: Expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **format\_n**: Optional [Chrono format ↗](https://docs.rs/chrono/latest/chrono/format/strftime/index.html) strings to use to parse the expression. Formats will be tried in the order they appear with the first successful one being returned. If none of the formats successfully parse the expression an error will be returned.
 
 **Example**
 
@@ -260,8 +258,8 @@ to_timestamp_micros(expression[, ..., format_n])
 
 **Arguments**
 
-* **expression**: Expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
-* **format\_n**: Optional [Chrono format ↗](https://docs.rs/chrono/latest/chrono/format/strftime/index.html) strings to use to parse the expression. Formats will be tried in the order they appear with the first successful one being returned. If none of the formats successfully parse the expression an error will be returned.
+- **expression**: Expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **format\_n**: Optional [Chrono format ↗](https://docs.rs/chrono/latest/chrono/format/strftime/index.html) strings to use to parse the expression. Formats will be tried in the order they appear with the first successful one being returned. If none of the formats successfully parse the expression an error will be returned.
 
 **Example**
 
@@ -282,7 +280,7 @@ to_timestamp_micros(expression[, ..., format_n])
 
 ## `to_timestamp_nanos`
 
-Converts a value to a timestamp (`YYYY-MM-DDT00:00:00.000000000Z`). Supports strings, integer, and unsigned integer types as input. Strings are parsed as RFC3339 (e.g. '2023-07-20T05:44:00') if no \[Chrono formats\] are provided. Integers and unsigned integers are interpreted as nanoseconds since the unix epoch (`1970-01-01T00:00:00Z`). Returns the corresponding timestamp.
+Converts a value to a timestamp (`YYYY-MM-DDT00:00:00.000000000Z`). Supports strings, integer, and unsigned integer types as input. Strings are parsed as RFC3339 (e.g. '2023-07-20T05:44:00') if no \[Chrono formats] are provided. Integers and unsigned integers are interpreted as nanoseconds since the unix epoch (`1970-01-01T00:00:00Z`). Returns the corresponding timestamp.
 
 ```plaintext
 to_timestamp_nanos(expression[, ..., format_n])
@@ -290,8 +288,8 @@ to_timestamp_nanos(expression[, ..., format_n])
 
 **Arguments**
 
-* **expression**: Expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
-* **format\_n**: Optional [Chrono format ↗](https://docs.rs/chrono/latest/chrono/format/strftime/index.html) strings to use to parse the expression. Formats will be tried in the order they appear with the first successful one being returned. If none of the formats successfully parse the expression an error will be returned.
+- **expression**: Expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **format\_n**: Optional [Chrono format ↗](https://docs.rs/chrono/latest/chrono/format/strftime/index.html) strings to use to parse the expression. Formats will be tried in the order they appear with the first successful one being returned. If none of the formats successfully parse the expression an error will be returned.
 
 **Example**
 
@@ -320,8 +318,8 @@ to_timestamp_seconds(expression[, ..., format_n])
 
 **Arguments**
 
-* **expression**: Expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
-* **format\_n**: Optional [Chrono format ↗](https://docs.rs/chrono/latest/chrono/format/strftime/index.html) strings to use to parse the expression. Formats will be tried in the order they appear with the first successful one being returned. If none of the formats successfully parse the expression an error will be returned.
+- **expression**: Expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **format\_n**: Optional [Chrono format ↗](https://docs.rs/chrono/latest/chrono/format/strftime/index.html) strings to use to parse the expression. Formats will be tried in the order they appear with the first successful one being returned. If none of the formats successfully parse the expression an error will be returned.
 
 **Example**
 
@@ -350,7 +348,7 @@ from_unixtime(expression)
 
 **Arguments**
 
-* **expression**: Expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **expression**: Expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `now`
 

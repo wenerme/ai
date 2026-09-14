@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Network visibility
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Was this helpful?
 

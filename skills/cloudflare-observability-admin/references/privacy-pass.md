@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Privacy Pass
 
-Last updated Jul 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/privacy-pass/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/privacy-pass/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Privacy Pass, an [IETF standard ↗](https://datatracker.ietf.org/doc/html/rfc9576) that Cloudflare helped pioneer in 2017, offers a way for users to prove something about themselves–that they have passed a CAPTCHA, are of age, are part of a subscription class–to the site they are accessing, without revealing an identifier. The main mechanic is Privacy Pass tokens, which are the cryptographic tool that lets a service provider verify information about a user without learning who that user is or being able to track them across requests.
 
@@ -20,11 +20,11 @@ Privacy Pass, an [IETF standard ↗](https://datatracker.ietf.org/doc/html/rfc95
 
 ## What is in these docs
 
-* **[Getting started](https://developers.cloudflare.com/privacy-pass/getting-started/)** — two self-serve ways to see Privacy Pass work: get a real token with the demo tool, or run the issuance and redemption flow locally.
-* **[Privacy Pass Protocol](https://developers.cloudflare.com/privacy-pass/concepts/privacy-pass-protocol/)** — the four roles, an architecture diagram, and the issuance and redemption flow.
-* **[Deployment Models](https://developers.cloudflare.com/privacy-pass/concepts/deployment-models/)** — who operates each role, detailed example deployment models, and Privacy Pass as a part of other products.
-* **[Production Deployment Testing](https://developers.cloudflare.com/privacy-pass/production-deployment-testing/)** — validate a real, Cloudflare-operated deployment end to end, once you and Cloudflare have built it together.
-* **[References](https://developers.cloudflare.com/privacy-pass/references/)** — the external resources cited across these docs.
+- **[Getting started](https://developers.cloudflare.com/privacy-pass/getting-started/)** — two self-serve ways to see Privacy Pass work: get a real token with the demo tool, or run the issuance and redemption flow locally.
+- **[Privacy Pass Protocol](https://developers.cloudflare.com/privacy-pass/concepts/privacy-pass-protocol/)** — the four roles, an architecture diagram, and the issuance and redemption flow.
+- **[Deployment Models](https://developers.cloudflare.com/privacy-pass/concepts/deployment-models/)** — who operates each role, detailed example deployment models, and Privacy Pass as a part of other products.
+- **[Production Deployment Testing](https://developers.cloudflare.com/privacy-pass/production-deployment-testing/)** — validate a real, Cloudflare-operated deployment end to end, once you and Cloudflare have built it together.
+- **[References](https://developers.cloudflare.com/privacy-pass/references/)** — the external resources cited across these docs.
 
 ---
 
@@ -40,18 +40,18 @@ So far, the main use cases have been providing a privacy-preserving CAPTCHA alte
 
 Every Privacy Pass use case comes down to the same idea: let clients prove something to an origin server without revealing any other information. Some examples include:
 
-* **Authentication for other privacy products** – Privacy Pass can be used as a verification layer for other privacy products, such as Privacy Proxy and Privacy Gateway, to help them complete their functions while preserving the privacy of their users.
-* **Privacy-preserving bot management** – Apple uses their token deployment, Private Access Tokens, to [automatically reduce CAPTCHAs ↗](https://blog.cloudflare.com/eliminating-captchas-on-iphones-and-macs-using-new-standard/) when using iOS 16+ devices on participating websites. Privacy Pass tokens are similarly [built into Turnstile ↗](https://blog.cloudflare.com/privacy-pass-standard/) as a signal in its application layer challenge decisions.
-* **Attribute verification** – Privacy Pass can help attest to whether a user has a valid subscription to the service or meets age requirement without that service learning their identity or linking it to their activity.
-* **Rate limiting**: While production use cases are still in development, Privacy Pass tokens can be used to meter usage without identifying users. Refer to the [Batched Token issuance protocol ↗](https://datatracker.ietf.org/doc/draft-ietf-privacypass-batched-tokens/), [ARC issuance protocol ↗](https://datatracker.ietf.org/doc/draft-ietf-privacypass-arc-protocol/), and [Privacy Pass Reverse Flow ↗](https://datatracker.ietf.org/doc/draft-meunier-privacypass-reverse-flow/) IETF drafts.
+- **Authentication for other privacy products** – Privacy Pass can be used as a verification layer for other privacy products, such as Privacy Proxy and Privacy Gateway, to help them complete their functions while preserving the privacy of their users.
+- **Privacy-preserving bot management** – Apple uses their token deployment, Private Access Tokens, to [automatically reduce CAPTCHAs ↗](https://blog.cloudflare.com/eliminating-captchas-on-iphones-and-macs-using-new-standard/) when using iOS 16+ devices on participating websites. Privacy Pass tokens are similarly [built into Turnstile ↗](https://blog.cloudflare.com/privacy-pass-standard/) as a signal in its application layer challenge decisions.
+- **Attribute verification** – Privacy Pass can help attest to whether a user has a valid subscription to the service or meets age requirement without that service learning their identity or linking it to their activity.
+- **Rate limiting**: While production use cases are still in development, Privacy Pass tokens can be used to meter usage without identifying users. Refer to the [Batched Token issuance protocol ↗](https://datatracker.ietf.org/doc/draft-ietf-privacypass-batched-tokens/), [ARC issuance protocol ↗](https://datatracker.ietf.org/doc/draft-ietf-privacypass-arc-protocol/), and [Privacy Pass Reverse Flow ↗](https://datatracker.ietf.org/doc/draft-meunier-privacypass-reverse-flow/) IETF drafts.
 
 ---
 
 ## Why Cloudflare operates Privacy Pass infrastructure
 
-* **Reliability and scale.** Issuers face high request volumes and must stay highly available so that user experience isn't affected by attacks or latency, something Cloudflare's global network is built to handle. Cloudflare is one of the few providers running Privacy Pass at scale.
-* **Redemption at the edge.** Because Cloudflare sits in front of many origins, it can verify tokens at the edge on the Origin's behalf. Furthermore, Cloudflare Workers natively supports redemption, offering additional infrastructure to ease Privacy Pass integration.
-* **A shared public issuer.** Rather than building and maintaining your own issuer, you can rely on Cloudflare's public, RFC 9578-compliant issuer deployments. We follow Privacy Pass guidelines and adhere to public, auditable commitments you can trust.
+- **Reliability and scale.** Issuers face high request volumes and must stay highly available so that user experience isn't affected by attacks or latency, something Cloudflare's global network is built to handle. Cloudflare is one of the few providers running Privacy Pass at scale.
+- **Redemption at the edge.** Because Cloudflare sits in front of many origins, it can verify tokens at the edge on the Origin's behalf. Furthermore, Cloudflare Workers natively supports redemption, offering additional infrastructure to ease Privacy Pass integration.
+- **A shared public issuer.** Rather than building and maintaining your own issuer, you can rely on Cloudflare's public, RFC 9578-compliant issuer deployments. We follow Privacy Pass guidelines and adhere to public, auditable commitments you can trust.
 
 ---
 

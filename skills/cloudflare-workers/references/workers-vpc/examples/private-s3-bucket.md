@@ -12,17 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Access a private S3 bucket
 
-Last updated Apr 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-vpc/examples/private-s3-bucket/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/examples/private-s3-bucket/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This example demonstrates how to access a private S3 bucket that is not exposed to the public internet. In this guide, we will configure a Workers VPC Service for an internal S3-compatible storage service, create a Worker that makes requests to that bucket, and deploy the Worker to validate our changes.
 
 ## Prerequisites
 
-* A private S3-compatible storage service running in your VPC/virtual network (such as AWS S3 VPC endpoint, MinIO, or similar)
-* A virtual machine/EC2 instance running in the same VPC as your S3 VPC endpoint
-* Workers account with Workers VPC access
+- A private S3-compatible storage service running in your VPC/virtual network (such as AWS S3 VPC endpoint, MinIO, or similar)
+- A virtual machine/EC2 instance running in the same VPC as your S3 VPC endpoint
+- Workers account with Workers VPC access
 
-## 1\. Set up Cloudflare Tunnel
+## 1. Set up Cloudflare Tunnel
 
 A Cloudflare Tunnel creates a secure connection from your private network to Cloudflare. This tunnel will allow Workers to securely access your private resources.
 
@@ -34,7 +34,7 @@ A Cloudflare Tunnel creates a secure connection from your private network to Clo
 
 The dashboard will confirm when your tunnel is successfully connected. Note the tunnel ID for the next step.
 
-## 2\. Create the Workers VPC Service
+## 2. Create the Workers VPC Service
 
 First, create a Workers VPC Service for your internal S3 storage:
 
@@ -57,7 +57,7 @@ npx wrangler vpc service create s3-storage \
 
 Note the service ID returned for the next step.
 
-## 3\. Configure S3 bucket policy
+## 3. Configure S3 bucket policy
 
 Configure your S3 bucket to allow anonymous access from your VPC endpoint. This works for unencrypted S3 objects:
 
@@ -96,7 +96,7 @@ curl -i https://s3.us-west-2.amazonaws.com/your-bucket-name/
 curl -i https://your-bucket-name.s3.us-west-2.amazonaws.com/test-file.txt
 ```
 
-## 4\. Configure your Worker
+## 4. Configure your Worker
 
 Update your Wrangler configuration file:
 
@@ -106,7 +106,7 @@ Update your Wrangler configuration file:
 	"name": "private-s3-gateway",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"vpc_services": [
 		{
 			"binding": "S3_STORAGE",
@@ -121,16 +121,18 @@ Update your Wrangler configuration file:
 name = "private-s3-gateway"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[vpc_services]]
 binding = "S3_STORAGE"
 service_id = "<YOUR_SERVICE_ID>"
 ```
 
-## 5\. Implement the Worker
+## 5. Implement the Worker
 
 In your Workers code, use the Workers VPC Service binding in order to send requests to the service:
+
+*index.jsjs*
 
 ```js
 export default {
@@ -150,7 +152,7 @@ export default {
 
 This guide demonstrates how you could access private object storage from your Workers. You could use Workers VPC Services to fetch files directly and manipulate the responses to enable you to build more full-stack and backend functionality on Workers.
 
-## 6\. Deploy and test
+## 6. Deploy and test
 
 Now, you can deploy and test your Worker that you have created:
 
@@ -165,10 +167,10 @@ curl https://private-s3-gateway.workers.dev
 
 ## Next steps
 
-* Add [authentication and authorization](https://developers.cloudflare.com/workers/examples/auth-with-headers/)
-* Implement [rate limiting](https://developers.cloudflare.com/durable-objects/api/)
-* Set up [monitoring and alerting](https://developers.cloudflare.com/analytics/analytics-engine/)
-* Explore [other examples](https://developers.cloudflare.com/workers-vpc/examples/)
+- Add [authentication and authorization](https://developers.cloudflare.com/workers/examples/auth-with-headers/)
+- Implement [rate limiting](https://developers.cloudflare.com/durable-objects/api/)
+- Set up [monitoring and alerting](https://developers.cloudflare.com/analytics/analytics-engine/)
+- Explore [other examples](https://developers.cloudflare.com/workers-vpc/examples/)
 
 Was this helpful?
 

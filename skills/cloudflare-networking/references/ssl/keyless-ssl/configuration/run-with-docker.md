@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Run with Docker
 
-Last updated Jul 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/configuration/run-with-docker/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/configuration/run-with-docker/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `gokeyless` key server is published as a container image, and most settings can be configured with environment variables instead of a `gokeyless.yaml` file.
 
@@ -26,24 +26,24 @@ Note
 
 The image is published on the GitHub Container Registry (`ghcr.io`), not Docker Hub.
 
-A complete example is available in [docker-compose.example.yaml ↗](https://github.com/cloudflare/gokeyless/blob/master/docker-compose.example.yaml) in the gokeyless repository.
+A complete example is available in [`docker-compose.example.yaml` ↗](https://github.com/cloudflare/gokeyless/blob/master/docker-compose.example.yaml) in the gokeyless repository.
 
 ## Environment variables
 
 Each environment variable maps to the equivalent setting in `gokeyless.yaml`. When both are present, the environment variable takes precedence (the order is command-line flag, then environment variable, then configuration file).
 
-| Environment variable          | Purpose                                                                                                          |
-| ----------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| KEYLESS\_HOSTNAME             | Hostname of this key server (must match the value configured in Cloudflare).                                     |
-| KEYLESS\_ZONE\_ID             | Cloudflare Zone ID.                                                                                              |
-| KEYLESS\_ORIGIN\_CA\_API\_KEY | Origin CA API key used to enroll the key server and obtain its authentication certificate.                       |
-| KEYLESS\_AUTH\_CERT           | Path to the key server authentication certificate (default server.pem).                                          |
-| KEYLESS\_AUTH\_KEY            | Path to the authentication certificate private key (default server-key.pem).                                     |
-| KEYLESS\_AUTH\_CSR            | Path to write the CSR generated during initialization (default server.csr).                                      |
-| KEYLESS\_CLOUDFLARE\_CA\_CERT | Path to the Cloudflare CA certificate used to authenticate connecting key clients (default keyless\_cacert.pem). |
-| KEYLESS\_PORT                 | Port the key server listens on (default 2407).                                                                   |
-| KEYLESS\_METRICS\_PORT        | Port for the /metrics endpoint (default 2406).                                                                   |
-| KEYLESS\_LOGLEVEL             | Log verbosity, 0 (most verbose) to 5.                                                                            |
+| Environment variable | Purpose |
+| --- | --- |
+| `KEYLESS_HOSTNAME` | Hostname of this key server (must match the value configured in Cloudflare). |
+| `KEYLESS_ZONE_ID` | Cloudflare Zone ID. |
+| `KEYLESS_ORIGIN_CA_API_KEY` | Origin CA API key used to enroll the key server and obtain its authentication certificate. |
+| `KEYLESS_AUTH_CERT` | Path to the key server authentication certificate (default `server.pem`). |
+| `KEYLESS_AUTH_KEY` | Path to the authentication certificate private key (default `server-key.pem`). |
+| `KEYLESS_AUTH_CSR` | Path to write the CSR generated during initialization (default `server.csr`). |
+| `KEYLESS_CLOUDFLARE_CA_CERT` | Path to the Cloudflare CA certificate used to authenticate connecting key clients (default `keyless_cacert.pem`). |
+| `KEYLESS_PORT` | Port the key server listens on (default `2407`). |
+| `KEYLESS_METRICS_PORT` | Port for the `/metrics` endpoint (default `2406`). |
+| `KEYLESS_LOGLEVEL` | Log verbosity, `0` (most verbose) to `5`. |
 
 ## Configure private keys
 

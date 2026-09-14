@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Insert vectors
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/vectorize/best-practices/insert-vectors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/vectorize/best-practices/insert-vectors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Vectorize indexes allow you to insert vectors at any point: Vectorize will optimize the index behind the scenes to ensure that vector search remains efficient, even as new vectors are added or existing vectors updated.
 
 Insert vs Upsert
 
-If the same vector id is _inserted_ twice in a Vectorize index, the index would reflect the vector that was added first.
+If the same vector id is *inserted* twice in a Vectorize index, the index would reflect the vector that was added first.
 
-If the same vector id is _upserted_ twice in a Vectorize index, the index would reflect the vector that was added last.
+If the same vector id is *upserted* twice in a Vectorize index, the index would reflect the vector that was added last.
 
 Use the upsert operation if you want to overwrite the vector value for a vector id that already exists in an index.
 
@@ -28,9 +28,9 @@ Use the upsert operation if you want to overwrite the vector value for a vector 
 
 Vectorize supports the insert/upsert of vectors in three formats:
 
-* An array of floating point numbers (converted into a JavaScript `number[]` array).
-* A [Float32Array ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Float32Array)
-* A [Float64Array ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Float64Array)
+- An array of floating point numbers (converted into a JavaScript `number[]` array).
+- A [Float32Array ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array)
+- A [Float64Array ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array)
 
 In most cases, a `number[]` array is the easiest when dealing with other APIs, and is the return type of most machine-learning APIs.
 
@@ -44,9 +44,9 @@ Metadata keys cannot be empty, contain the dot character (`.`), contain the doub
 
 Metadata can be used to:
 
-* Include the object storage key, database UUID or other identifier to look up the content the vector embedding represents.
-* Store JSON data (up to the [metadata limits](https://developers.cloudflare.com/vectorize/platform/limits/)), which can allow you to skip additional lookups for smaller content.
-* Keep track of dates, timestamps, or other metadata that describes when the vector embedding was generated or how it was generated.
+- Include the object storage key, database UUID or other identifier to look up the content the vector embedding represents.
+- Store JSON data (up to the [metadata limits](https://developers.cloudflare.com/vectorize/platform/limits/)), which can allow you to skip additional lookups for smaller content.
+- Keep track of dates, timestamps, or other metadata that describes when the vector embedding was generated or how it was generated.
 
 For example, a vector embedding representing an image could include the path to the [R2 object](https://developers.cloudflare.com/r2/) it was generated from, the format, and a category lookup:
 
@@ -167,8 +167,8 @@ Please use a maximum of 5000 vectors per embeddings.ndjson file to prevent the g
 
 You can bulk upload vector embeddings directly:
 
-* The file must be in newline-delimited JSON (NDJSON format): each complete vector must be newline separated, and not within an array or object.
-* Vectors must be complete and include a unique string `id` per vector.
+- The file must be in newline-delimited JSON (NDJSON format): each complete vector must be newline separated, and not within an array or object.
+- Vectors must be complete and include a unique string `id` per vector.
 
 An example NDJSON formatted file:
 

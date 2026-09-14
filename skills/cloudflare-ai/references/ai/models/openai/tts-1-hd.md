@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Speech • OpenAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `openai/tts-1-hd`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 OpenAI's high-definition text-to-speech model producing higher quality audio output.
 
-| Model Info          |                                                                                                                   |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://openai.com/policies/)                                                                            |
-| More information    | [link ↗](https://platform.openai.com/docs/guides/text-to-speech)                                                  |
-| Zero data retention | Yes                                                                                                               |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/tts-1-hd) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://openai.com/policies/) |
+| More information | [link ↗](https://platform.openai.com/docs/guides/text-to-speech) |
+| Zero data retention | Yes |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/tts-1-hd) |
 
 ## Usage
 
@@ -76,7 +76,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Storytelling** — HD narration with the Fable voice
+<details>
+
+<summary>**Storytelling** — HD narration with the Fable voice</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -118,7 +122,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Podcast Style** — Conversational podcast narration
+</details>
+
+<details>
+
+<summary>**Podcast Style** — Conversational podcast narration</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -160,7 +170,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Shimmer Voice** — Bright and expressive voice
+</details>
+
+<details>
+
+<summary>**Shimmer Voice** — Bright and expressive voice</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -202,6 +218,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 text
@@ -218,7 +236,7 @@ response\_format
 
 speed
 
-`number`requireddefault: 1minimum: 0.25maximum: 4The speed of the generated audio. Select a value from 0.25 to 4.0\. 1.0 is the default.
+`number`requireddefault: 1minimum: 0.25maximum: 4The speed of the generated audio. Select a value from 0.25 to 4.0. 1.0 is the default.
 
 audio
 
@@ -226,9 +244,9 @@ audio
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/schema-output.json)
 
 Was this helpful?
 

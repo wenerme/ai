@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Usage-based billing
 
-Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/recipes/usage-based-billing-for-your-saas-product/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/recipes/usage-based-billing-for-your-saas-product/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Many Cloudflare customers run software-as-a-service products with multiple customers. A big concern for such companies is understanding the cost of each customer, and understanding customer behaviour more widely.
 

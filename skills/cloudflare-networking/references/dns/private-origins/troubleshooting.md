@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/private-origins/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/private-origins/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Error 1002: DNS points to prohibited IP
 

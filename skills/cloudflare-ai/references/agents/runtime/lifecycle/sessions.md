@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Sessions
 
-Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Session API provides persistent conversation storage for agents, with tree-structured messages (inspired by [Pi ↗](https://pi.dev)), context blocks, compaction, full-text search, and AI-controllable tools. By default, it uses Durable Object SQLite. External Postgres storage is also available for apps that need shared database access, analytics, or cross-Durable Object queries.
 
@@ -144,15 +144,15 @@ const session = new Session(new AgentSessionProvider(this), {
 
 All builder methods return `this` for chaining. Order does not matter — providers are resolved lazily on first use.
 
-| Method                                  | Description                                                                                                                                              |
-| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Session.create(agent)                   | Static factory. agent is any object with a sql tagged template method (your Agent or Durable Object).                                                    |
-| .forSession(sessionId)                  | Namespace this session by ID. Required for multi-session isolation when not using SessionManager.                                                        |
-| .withContext(label, options?)           | Add a context block. Refer to [Context blocks](#context-blocks).                                                                                         |
-| .withCachedPrompt(provider?)            | Enable system prompt persistence. The prompt is frozen on first use and survives hibernation and eviction.                                               |
-| .onCompaction(fn)                       | Register a compaction function. Refer to [Compaction](#compaction).                                                                                      |
-| .compactAfter(tokenThreshold, options?) | Auto-compact when estimated token count exceeds the threshold. Requires .onCompaction(). Pass { tokenCounter } to control how the threshold is measured. |
-| .onCompactionError(handler)             | Handle errors from automatic compaction. Handler failures are swallowed so message writes remain non-fatal.                                              |
+| Method | Description |
+| --- | --- |
+| `Session.create(agent)` | Static factory. `agent` is any object with a `sql` tagged template method (your Agent or Durable Object). |
+| `.forSession(sessionId)` | Namespace this session by ID. Required for multi-session isolation when not using `SessionManager`. |
+| `.withContext(label, options?)` | Add a context block. Refer to [Context blocks](#context-blocks). |
+| `.withCachedPrompt(provider?)` | Enable system prompt persistence. The prompt is frozen on first use and survives hibernation and eviction. |
+| `.onCompaction(fn)` | Register a compaction function. Refer to [Compaction](#compaction). |
+| `.compactAfter(tokenThreshold, options?)` | Auto-compact when estimated token count exceeds the threshold. Requires `.onCompaction()`. Pass `{ tokenCounter }` to control how the threshold is measured. |
+| `.onCompactionError(handler)` | Handle errors from automatic compaction. Handler failures are swallowed so message writes remain non-fatal. |
 
 ## Messages
 
@@ -268,12 +268,12 @@ Context blocks are persistent key-value sections injected into the system prompt
 
 There are four provider types, detected by duck-typing:
 
-| Provider                    | Interface                   | Behavior                                                                                     | AI tool                                      |
-| --------------------------- | --------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------- |
-| **ContextProvider**         | get()                       | Read-only block in system prompt                                                             | —                                            |
-| **WritableContextProvider** | get() \+ set()              | Writable via AI                                                                              | set\_context                                 |
-| **SkillProvider**           | get() \+ load() \+ set?()   | On-demand keyed documents. get() returns a metadata listing; load(key) fetches full content. | load\_context, unload\_context, set\_context |
-| **SearchProvider**          | get() \+ search() \+ set?() | Full-text searchable entries. get() returns a summary; search(query) runs FTS5.              | search\_context, set\_context                |
+| Provider | Interface | Behavior | AI tool |
+| --- | --- | --- | --- |
+| **ContextProvider** | `get()` | Read-only block in system prompt | — |
+| **WritableContextProvider** | `get()` + `set()` | Writable via AI | `set_context` |
+| **SkillProvider** | `get()` + `load()` + `set?()` | On-demand keyed documents. `get()` returns a metadata listing; `load(key)` fetches full content. | `load_context`, `unload_context`, `set_context` |
+| **SearchProvider** | `get()` + `search()` + `set?()` | Full-text searchable entries. `get()` returns a summary; `search(query)` runs FTS5. | `search_context`, `set_context` |
 
 ### Built-in providers
 
@@ -549,8 +549,8 @@ By default, the estimate includes stored message parts plus the Session-managed 
 
 There are two token-counting decisions:
 
-* `.compactAfter(threshold, { tokenCounter })` controls **when** automatic compaction is triggered after writes.
-* `createCompactFunction({ tokenCounter })` controls **which** tail messages are protected from summarization. Use this when tool-heavy histories are much larger than the Workers-safe heuristic can estimate.
+- `.compactAfter(threshold, { tokenCounter })` controls **when** automatic compaction is triggered after writes.
+- `createCompactFunction({ tokenCounter })` controls **which** tail messages are protected from summarization. Use this when tool-heavy histories are much larger than the Workers-safe heuristic can estimate.
 
 You usually only need to configure one counter. The `.compactAfter()` counter also flows into `createCompactFunction`'s boundary walk (via `CompactContext`) when no explicit `createCompactFunction({ tokenCounter })` is given, so a single counter drives both "should we compact?" and "what should we compact?".
 
@@ -632,15 +632,15 @@ Context blocks, prompt caching, and compaction settings are propagated to all se
 
 ### Builder methods
 
-| Method                                  | Description                                                                                             |
-| --------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| SessionManager.create(agent)            | Static factory.                                                                                         |
-| .withContext(label, options?)           | Add context block template for all sessions.                                                            |
-| .withCachedPrompt(provider?)            | Enable prompt persistence for all sessions.                                                             |
-| .onCompaction(fn)                       | Register compaction function for all sessions.                                                          |
-| .compactAfter(tokenThreshold, options?) | Auto-compact threshold for all sessions. Supports the same tokenCounter option as Session.              |
-| .onCompactionError(handler)             | Handle automatic compaction errors for managed sessions.                                                |
-| .withSearchableHistory(label)           | Add a cross-session searchable history block. The model can search past conversations from any session. |
+| Method | Description |
+| --- | --- |
+| `SessionManager.create(agent)` | Static factory. |
+| `.withContext(label, options?)` | Add context block template for all sessions. |
+| `.withCachedPrompt(provider?)` | Enable prompt persistence for all sessions. |
+| `.onCompaction(fn)` | Register compaction function for all sessions. |
+| `.compactAfter(tokenThreshold, options?)` | Auto-compact threshold for all sessions. Supports the same `tokenCounter` option as `Session`. |
+| `.onCompactionError(handler)` | Handle automatic compaction errors for managed sessions. |
+| `.withSearchableHistory(label)` | Add a cross-session searchable history block. The model can search past conversations from any session. |
 
 ### Session lifecycle
 
@@ -982,7 +982,7 @@ By default, Session storage uses Durable Object SQLite and creates tables lazily
 
 These providers work with Postgres-compatible databases through [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) for connection pooling.
 
-### 1\. Create a Hyperdrive config
+### 1. Create a Hyperdrive config
 
 Create a Hyperdrive config for your Postgres database:
 
@@ -1024,7 +1024,7 @@ mode = "smart"
 
 If you know your database region, configure placement close to the database to reduce query latency.
 
-### 2\. Create the tables
+### 2. Create the tables
 
 The Postgres user may not have permission to create tables at runtime. Run the schema once in your database console:
 
@@ -1077,7 +1077,7 @@ CREATE INDEX IF NOT EXISTS idx_search_entries_fts
 	ON cf_agents_search_entries USING GIN (content_tsv);
 ```
 
-### 3\. Wire it up
+### 3. Wire it up
 
 Install `pg`, then create a client from the Hyperdrive connection string and pass it to the Postgres providers:
 
@@ -1195,10 +1195,10 @@ export class MyAgent extends Agent<Env> {
 
 When `Session.create()` receives a `SessionProvider` instead of a SQLite-backed provider, it skips SQLite auto-wiring:
 
-* **Context blocks need explicit providers.** Each `withContext()` call that should persist data needs a `provider` option.
-* **`withCachedPrompt()` needs an explicit provider.** Pass a `PostgresContextProvider` to persist the frozen system prompt.
-* **Session methods are async.** Use `await` for reads and writes so the same code works with local SQLite and external storage.
-* **Broadcaster support is skipped.** WebSocket status broadcasts for Session events only work with SQLite-backed sessions.
+- **Context blocks need explicit providers.** Each `withContext()` call that should persist data needs a `provider` option.
+- **`withCachedPrompt()` needs an explicit provider.** Pass a `PostgresContextProvider` to persist the frozen system prompt.
+- **Session methods are async.** Use `await` for reads and writes so the same code works with local SQLite and external storage.
+- **Broadcaster support is skipped.** WebSocket status broadcasts for Session events only work with SQLite-backed sessions.
 
 ### System prompt lifecycle
 
@@ -1210,26 +1210,26 @@ Use `refreshSystemPrompt()` to force reload context blocks, re-render the prompt
 
 By default, storage is in Durable Object SQLite and tables are created lazily on first use. Postgres-backed sessions use the external tables shown in the Postgres providers section.
 
-| Table                                                 | Purpose                                                                                                   |
-| ----------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| assistant\_messages                                   | Tree-structured messages with id, session\_id, parent\_id, role, content (JSON), created\_at              |
-| assistant\_compactions                                | Compaction overlays with summary, from\_message\_id, to\_message\_id                                      |
-| assistant\_fts                                        | FTS5 virtual table for message search (porter stemming, unicode tokenization)                             |
-| assistant\_sessions                                   | Session registry (SessionManager only) with name, parent\_session\_id, model, source, token/cost counters |
-| cf\_agents\_context\_blocks                           | Persistent context block storage (AgentContextProvider)                                                   |
-| cf\_agents\_search\_entries / cf\_agents\_search\_fts | Searchable context entries and FTS5 index (AgentSearchProvider)                                           |
+| Table | Purpose |
+| --- | --- |
+| `assistant_messages` | Tree-structured messages with `id`, `session_id`, `parent_id`, `role`, `content` (JSON), `created_at` |
+| `assistant_compactions` | Compaction overlays with `summary`, `from_message_id`, `to_message_id` |
+| `assistant_fts` | FTS5 virtual table for message search (porter stemming, unicode tokenization) |
+| `assistant_sessions` | Session registry (SessionManager only) with `name`, `parent_session_id`, `model`, `source`, token/cost counters |
+| `cf_agents_context_blocks` | Persistent context block storage (`AgentContextProvider`) |
+| `cf_agents_search_entries` / `cf_agents_search_fts` | Searchable context entries and FTS5 index (`AgentSearchProvider`) |
 
 ## Acknowledgments
 
-* Session's tree-structured messages are inspired by [Pi ↗](https://pi.dev).
-* Context blocks are inspired by [Letta AI memory blocks ↗](https://www.letta.com/blog/memory-blocks).
-* Formatting of blocks is inspired by [Hermes Agent ↗](https://github.com/nousresearch/hermes-agent).
+- Session's tree-structured messages are inspired by [Pi ↗](https://pi.dev).
+- Context blocks are inspired by [Letta AI memory blocks ↗](https://www.letta.com/blog/memory-blocks).
+- Formatting of blocks is inspired by [Hermes Agent ↗](https://github.com/nousresearch/hermes-agent).
 
 ## Related
 
-* [Think](https://developers.cloudflare.com/agents/harnesses/think/) — opinionated chat agent that uses Session for conversation storage via `configureSession()`
-* [Chat agents](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/) — `AIChatAgent` with its own message persistence layer
-* [Store and sync state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) — `setState()` for simpler key-value persistence
+- [Think](https://developers.cloudflare.com/agents/harnesses/think/) — opinionated chat agent that uses Session for conversation storage via `configureSession()`
+- [Chat agents](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/) — `AIChatAgent` with its own message persistence layer
+- [Store and sync state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) — `setState()` for simpler key-value persistence
 
 Was this helpful?
 

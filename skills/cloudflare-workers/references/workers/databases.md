@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Databases
 
-Last updated Jul 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/databases/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/databases/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Explore database integrations for your Worker projects.
 
-* [Connect to databases](https://developers.cloudflare.com/workers/databases/connecting-to-databases/)
-* [Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/)
-* [Vectorize (vector database)](https://developers.cloudflare.com/vectorize/)
-* [Cloudflare D1](https://developers.cloudflare.com/d1/)
-* [Hyperdrive](https://developers.cloudflare.com/hyperdrive/)
-* [3rd Party Integrations](https://developers.cloudflare.com/workers/databases/third-party-integrations/)
+- [Connect to databases](https://developers.cloudflare.com/workers/databases/connecting-to-databases/)
+- [Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/)
+- [Vectorize (vector database)](https://developers.cloudflare.com/vectorize/)
+- [Cloudflare D1](https://developers.cloudflare.com/d1/)
+- [Hyperdrive](https://developers.cloudflare.com/hyperdrive/)
+- [3rd Party Integrations](https://developers.cloudflare.com/workers/databases/third-party-integrations/)
 
 Was this helpful?
 

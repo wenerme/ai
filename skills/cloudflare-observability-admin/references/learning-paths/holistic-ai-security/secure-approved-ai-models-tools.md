@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Secure approved AI models and tools
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/holistic-ai-security/secure-approved-ai-models-tools/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/holistic-ai-security/secure-approved-ai-models-tools/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Manage posture and use within trusted AI tools
 
@@ -28,9 +28,9 @@ Since these integrations are out-of-bound connections to SaaS applications, they
 
 [CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) **Posture Findings** allow you to report on misconfigurations, unauthorized user activity, and other data security issues. You can use it to get insights into issues like:
 
-* Misconfigured sharing settings: See who in your organization has access to your tenant.
-* API key management: Ensure you are following best practices.
-* Anomalous and suspicious activity: Detect things like pending invites and file uploads.
+- Misconfigured sharing settings: See who in your organization has access to your tenant.
+- API key management: Ensure you are following best practices.
+- Anomalous and suspicious activity: Detect things like pending invites and file uploads.
 
 By combining this with DLP profiles, you can report on data exposure within an AI tool without capturing and decrypting inline user traffic. For example, you can detect sensitive data or specific patterns (regex) within user prompts. For more information, refer to [Scan for sensitive data](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/casb-dlp/).
 

@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure tunnel endpoints
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare assigns an IPv4 anycast address to your account for use as the tunnel destination for your network's routers. You can find this address in the Cloudflare dashboard under **Address Space** \> [**Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space). To request additional endpoint addresses, contact your account team.
+Cloudflare assigns an IPv4 anycast address to your account for use as the tunnel destination for your network's routers. You can find this address in the Cloudflare dashboard under **Address Space** > [**Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space). To request additional endpoint addresses, contact your account team.
 
 Cloudflare handles failures on its network automatically by advertising your endpoint IP from multiple nodes across many globally distributed data centers. To handle failures on your network, configure two tunnels from separate routers.
 
@@ -22,9 +22,9 @@ Cloudflare handles failures on its network automatically by advertising your end
 
 Before creating a tunnel, make sure you have the following information:
 
-* **Cloudflare endpoint address**: The anycast IP address assigned to your account. You can find it in the Cloudflare dashboard under **Address Space** \> [**Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
-* **Customer endpoint IP**: A public Internet routable IP address outside of the prefixes Cloudflare will advertise on your behalf (typically provided by your ISP). Not required if using [Cloudflare Network Interconnect](https://developers.cloudflare.com/network-interconnect/) or for IPsec tunnels (unless your router uses an IKE ID of type `ID_IPV4_ADDR`).
-* **Interface address**: A `/31` (recommended) or `/30` subnet from RFC 1918 private IP space (`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) or `169.254.240.0/20`(this address space is also a link-local address).
+- **Cloudflare endpoint address**: The anycast IP address assigned to your account. You can find it in the Cloudflare dashboard under **Address Space** > [**Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
+- **Customer endpoint IP**: A public Internet routable IP address outside of the prefixes Cloudflare will advertise on your behalf (typically provided by your ISP). Not required if using [Cloudflare Network Interconnect](https://developers.cloudflare.com/network-interconnect/) or for IPsec tunnels (unless your router uses an IKE ID of type `ID_IPV4_ADDR`).
+- **Interface address**: A `/31` (recommended) or `/30` subnet from RFC 1918 private IP space ( `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) or `169.254.240.0/20`(this address space is also a link-local address).
 
 Caution
 
@@ -38,12 +38,12 @@ You can use GRE or IPsec tunnels to onboard your traffic to Cloudflare WAN, and 
 
 #### Choose between GRE and IPsec
 
-| Feature          | GRE                               | IPsec                                            |
-| ---------------- | --------------------------------- | ------------------------------------------------ |
-| Encryption       | No                                | Yes                                              |
-| Authentication   | No                                | Pre-shared key (PSK)                             |
-| Setup complexity | Simpler                           | Requires PSK exchange                            |
-| Best for         | Trusted networks, CNI connections | Internet-facing connections requiring encryption |
+| Feature | GRE | IPsec |
+| --- | --- | --- |
+| Encryption | No | Yes |
+| Authentication | No | Pre-shared key (PSK) |
+| Setup complexity | Simpler | Requires PSK exchange |
+| Best for | Trusted networks, CNI connections | Internet-facing connections requiring encryption |
 
 Refer to [Tunnels and encapsulation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/gre-ipsec-tunnels/) to learn more about the technical requirements for both tunnel types.
 
@@ -68,81 +68,115 @@ Caution
 Cloudflare Network Firewall rules apply to Internet Control Message Protocol (ICMP) traffic. If you enable Cloudflare Network Firewall, ensure your rules allow ICMP traffic sourced from Cloudflare public IPs. Otherwise, health checks will fail. Refer to [Cloudflare Network Firewall rules](https://developers.cloudflare.com/cloudflare-network-firewall/about/ruleset-logic/#cloudflare-network-firewall-rules-and-magic-transit-endpoint-health-checks) for more information.
 
 1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
-2. Go to **Connectors** \> **Cloudflare WAN**, and select **Create**.
+2. Go to **Connectors** > **Cloudflare WAN**, and select **Create**.
 3. On the **Add Tunnel** page, choose either a **GRE tunnel** or **IPsec tunnel**.
 4. In **Name**, give your tunnel a descriptive name. This name must be unique, cannot contain spaces or special characters, and cannot be shared with other tunnels.
-5. _(Optional)_ Give your tunnel a description in **Description**.
-6. In **IPv4 Interface address**, enter the internal IP address for your tunnel along with the interface's prefix length (`/31` or `/30`). This is used to route traffic through the tunnel on the Cloudflare side. We recommend using a `/31` subnet, as it provides the most efficient use of IP address space.
+5. *(Optional)* Give your tunnel a description in **Description**.
+6. In **IPv4 Interface address**, enter the internal IP address for your tunnel along with the interface's prefix length ( `/31` or `/30`). This is used to route traffic through the tunnel on the Cloudflare side. We recommend using a `/31` subnet, as it provides the most efficient use of IP address space.
 
 Expand the section below for your tunnel type to complete the configuration:
 
+<details>
+
+<summary>
+
 GRE tunnel
 
-1. In **Customer GRE endpoint**, enter your router's public IP address. You do not need this value if you use a physical or virtual connection like Cloudflare Network Interconnect because Cloudflare provides it.
-2. In **Cloudflare GRE endpoint**, enter one of the anycast addresses assigned to your account. You can find them in [Leased IPs ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
-3. _(Optional)_ Leave the default values for **TTL** and **MTU**, or customize them for your network.
-4. _(Optional)_ Configure health check settings. Expand the following to learn more about each option:
-Health check options
+</summary>
 
-  * **Tunnel health checks**: Enabled by default. If you disable tunnel health checks, your tunnels appear 100% down in your [tunnel health dashboard](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/common-settings/check-tunnel-health-dashboard/) even when working. Cloudflare keeps sending traffic through the tunnel without the means to detect if the tunnel goes down. You must set up your own system to detect down tunnels, as Cloudflare cannot warn you about down tunnels. Refer to [Tunnel health checks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/tunnel-health-checks/) for more information.
-  * **Health check rate**: If you keep tunnel health checks enabled, choose a [health check rate](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/common-settings/update-tunnel-health-checks-frequency/) for your tunnel. Available options are _Low_, _Medium_, and _High_.
-  * **Health check type**: Defaults to _Reply_ and to creating an ICMP (Internet Control Message Protocol) reply. If your firewall drops this type of packet because it assumes the packet is an attack, change this option to _Request_ which creates an ICMP request. Refer to [Tunnel health checks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/tunnel-health-checks/) for more information.
-  * **Health check direction**: Defaults to **bidirectional** for Cloudflare WAN. Refer to [Bidirectional vs unidirectional health checks](#bidirectional-vs-unidirectional-health-checks) for more details.
-  * **Health check target**: The customer end of the tunnel. This field is only visible when **Health check direction** is set to _Unidirectional_.
-5. _(Optional)_ We recommend you test your tunnel before officially adding it. To test the tunnel, select **Test tunnels**.
-6. (_Optional_) Select **Automatic return routing** if you are setting up this tunnel for a site that only needs to send traffic to and receive responses from Cloudflare, and does not need to receive traffic from other sites in your WAN. This feature requires [Unified Routing (beta)](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta). Refer to [Configure Automatic Return Routing](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-routes/#configure-automatic-return-routing-beta) for more information.
-7. To add multiple tunnels, select **Add GRE tunnel** for each new tunnel.
-8. After adding your tunnel information, select **Add tunnels**.
-9. (_Optional_) Select **Allow BGP (Border Gateway Protocol) peering** (beta) if you want to dynamically exchange routes between your network and Cloudflare. This feature requires [Unified Routing (beta)](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta).
- BGP is recommended for environments with frequently changing routes or when you need automatic failover. Refer to [Configure BGP routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-routes/#configure-bgp-routes) for more information.
+7. In **Customer GRE endpoint**, enter your router's public IP address. You do not need this value if you use a physical or virtual connection like Cloudflare Network Interconnect because Cloudflare provides it.
+8. In **Cloudflare GRE endpoint**, enter one of the anycast addresses assigned to your account. You can find them in <a href="https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space">Leased IPs ↗</a>.
+9. *(Optional)* Leave the default values for **TTL** and **MTU**, or customize them for your network.
+10. *(Optional)* Configure health check settings. Expand the following to learn more about each option:<details><summary>
+
+    Health check options</summary>
+
+    - **Tunnel health checks**: Enabled by default. If you disable tunnel health checks, your tunnels appear 100% down in your <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/common-settings/check-tunnel-health-dashboard/">tunnel health dashboard</a> even when working. Cloudflare keeps sending traffic through the tunnel without the means to detect if the tunnel goes down. You must set up your own system to detect down tunnels, as Cloudflare cannot warn you about down tunnels. Refer to <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/tunnel-health-checks/">Tunnel health checks</a> for more information.
+    - **Health check rate**: If you keep tunnel health checks enabled, choose a <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/common-settings/update-tunnel-health-checks-frequency/">health check rate</a> for your tunnel. Available options are *Low*, *Medium*, and *High*.
+    - **Health check type**: Defaults to *Reply* and to creating an ICMP (Internet Control Message Protocol) reply. If your firewall drops this type of packet because it assumes the packet is an attack, change this option to *Request* which creates an ICMP request. Refer to <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/tunnel-health-checks/">Tunnel health checks</a> for more information.
+    - **Health check direction**: Defaults to **bidirectional** for Cloudflare WAN. Refer to <a href="#bidirectional-vs-unidirectional-health-checks">Bidirectional vs unidirectional health checks</a> for more details.
+    - **Health check target**: The customer end of the tunnel. This field is only visible when **Health check direction** is set to *Unidirectional*.</details>
+
+11. *(Optional)* We recommend you test your tunnel before officially adding it. To test the tunnel, select **Test tunnels**.
+12. (*Optional*) Select **Automatic return routing** if you are setting up this tunnel for a site that only needs to send traffic to and receive responses from Cloudflare, and does not need to receive traffic from other sites in your WAN. This feature requires <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta">Unified Routing (beta)</a>. Refer to <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-routes/#configure-automatic-return-routing-beta">Configure Automatic Return Routing</a> for more information.
+13. To add multiple tunnels, select **Add GRE tunnel** for each new tunnel.
+14. After adding your tunnel information, select **Add tunnels**.
+15. (*Optional*) Select **Allow BGP (Border Gateway Protocol) peering** (beta) if you want to dynamically exchange routes between your network and Cloudflare. This feature requires <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta">Unified Routing (beta)</a>. <br> BGP is recommended for environments with frequently changing routes or when you need automatic failover. Refer to <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-routes/#configure-bgp-routes">Configure BGP routes</a> for more information.
+
+</details>
+
+<details>
+
+<summary>
 
 IPsec tunnel
 
-1. _(Optional)_ In **Customer endpoint**, enter your router's public IP address. This value is only required if your router uses an IKE ID of type `ID_IPV4_ADDR`.
-2. In **Cloudflare endpoint**, enter one of the anycast addresses assigned to your account. You can find them in [Leased IPs ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
-3. _(Optional)_ Configure health check settings. Expand the following to learn more about each option:
-Health check options
+</summary>
 
-  * **Tunnel health checks**: Enabled by default. If you disable tunnel health checks, your tunnels appear 100% down in your [tunnel health dashboard](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/common-settings/check-tunnel-health-dashboard/) even when working. Cloudflare keeps sending traffic through the tunnel without the means to detect if the tunnel goes down. You must set up your own system to detect down tunnels, as Cloudflare cannot warn you about down tunnels. Refer to [Tunnel health checks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/tunnel-health-checks/) for more information.
-  * **Health check rate**: If you keep tunnel health checks enabled, choose a [health check rate](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/common-settings/update-tunnel-health-checks-frequency/) for your tunnel. Available options are _Low_, _Medium_, and _High_.
-  * **Health check type**: Defaults to _Reply_ and to creating an ICMP (Internet Control Message Protocol) reply. If your firewall drops this type of packet because it assumes the packet is an attack, change this option to _Request_ which creates an ICMP request. Refer to [Tunnel health checks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/tunnel-health-checks/) for more information.
-  * **Health check direction**: Defaults to **bidirectional** for Cloudflare WAN. Refer to [Bidirectional vs unidirectional health checks](#bidirectional-vs-unidirectional-health-checks) for more details.
-  * **Health check target**: The customer end of the tunnel. This field is only visible when **Health check direction** is set to _Unidirectional_.
+7. *(Optional)* In **Customer endpoint**, enter your router's public IP address. This value is only required if your router uses an IKE ID of type <code>ID_IPV4_ADDR</code>.
+8. In **Cloudflare endpoint**, enter one of the anycast addresses assigned to your account. You can find them in <a href="https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space">Leased IPs ↗</a>.
+9. *(Optional)* Configure health check settings. Expand the following to learn more about each option:<details><summary>
+
+   Health check options</summary>
+
+   - **Tunnel health checks**: Enabled by default. If you disable tunnel health checks, your tunnels appear 100% down in your <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/common-settings/check-tunnel-health-dashboard/">tunnel health dashboard</a> even when working. Cloudflare keeps sending traffic through the tunnel without the means to detect if the tunnel goes down. You must set up your own system to detect down tunnels, as Cloudflare cannot warn you about down tunnels. Refer to <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/tunnel-health-checks/">Tunnel health checks</a> for more information.
+   - **Health check rate**: If you keep tunnel health checks enabled, choose a <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/common-settings/update-tunnel-health-checks-frequency/">health check rate</a> for your tunnel. Available options are *Low*, *Medium*, and *High*.
+   - **Health check type**: Defaults to *Reply* and to creating an ICMP (Internet Control Message Protocol) reply. If your firewall drops this type of packet because it assumes the packet is an attack, change this option to *Request* which creates an ICMP request. Refer to <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/tunnel-health-checks/">Tunnel health checks</a> for more information.
+   - **Health check direction**: Defaults to **bidirectional** for Cloudflare WAN. Refer to <a href="#bidirectional-vs-unidirectional-health-checks">Bidirectional vs unidirectional health checks</a> for more details.
+   - **Health check target**: The customer end of the tunnel. This field is only visible when **Health check direction** is set to *Unidirectional*.</details>
+
 Note
-IPsec tunnels will not function without a pre-shared key (PSK).
-4. If you do not have a pre-shared key yet:
 
-  1. Select **Add pre-shared key later**.
-  2. _(Optional)_ We recommend you test your tunnel configuration before officially adding it. To test the tunnel, select **Test tunnels**.
-  3. Select **Add tunnels**.
-  4. The Cloudflare dashboard loads the list of tunnels you have configured. The IPsec tunnel you just created displays a warning triangle icon to indicate it is not yet functional. Select **Edit**.
-  5. Choose **Generate a new pre-shared key** \> **Update and generate a pre-shared key**. Save the key to a safe place, and select **Done**.
-5. If you already have a pre-shared key:
+   IPsec tunnels will not function without a pre-shared key (PSK).
+10. If you do not have a pre-shared key yet:
+    1. Select **Add pre-shared key later**.
+    2. *(Optional)* We recommend you test your tunnel configuration before officially adding it. To test the tunnel, select **Test tunnels**.
+    3. Select **Add tunnels**.
+    4. The Cloudflare dashboard loads the list of tunnels you have configured. The IPsec tunnel you just created displays a warning triangle icon to indicate it is not yet functional. Select **Edit**.
+    5. Choose **Generate a new pre-shared key** &gt; **Update and generate a pre-shared key**. Save the key to a safe place, and select **Done**.
+11. If you already have a pre-shared key:
+    1. Select **Use my own pre-shared key**.
+    2. Paste your key in **Your pre-shared key**.
+    3. *(Optional)* We recommend you test your tunnel before officially adding it. To test the tunnel, select **Test tunnels**.
+    4. Select **Add tunnels**.
+12. *(Optional)* Enable **Replay protection** if you have devices that do not support disabling it. Refer to <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/anti-replay-protection/">Anti-replay protection</a> for more information.
+13. (*Optional*) Select **Automatic return routing** if you are setting up this tunnel for a site that only needs to send traffic to and receive responses from Cloudflare, and does not need to receive traffic from other sites in your WAN. This feature requires <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta">Unified Routing (beta)</a>. Refer to <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-routes/#configure-automatic-return-routing-beta">Configure Automatic Return Routing</a> for more information.
+14. To add multiple tunnels, select **Add IPsec tunnel** for each new tunnel.
+15. After adding your tunnel information, select **Add tunnels**.
+16. (*Optional*) Select **Allow BGP (Border Gateway Protocol) peering** (beta) if you want to dynamically exchange routes between your network and Cloudflare. This feature requires <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta">Unified Routing (beta)</a>. <br> BGP is recommended for environments with frequently changing routes or when you need automatic failover. Refer to <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-routes/#configure-bgp-routes">Configure BGP routes</a> for more information.
 
-  1. Select **Use my own pre-shared key**.
-  2. Paste your key in **Your pre-shared key**.
-  3. _(Optional)_ We recommend you test your tunnel before officially adding it. To test the tunnel, select **Test tunnels**.
-  4. Select **Add tunnels**.
-6. _(Optional)_ Enable **Replay protection** if you have devices that do not support disabling it. Refer to [Anti-replay protection](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/anti-replay-protection/) for more information.
-7. (_Optional_) Select **Automatic return routing** if you are setting up this tunnel for a site that only needs to send traffic to and receive responses from Cloudflare, and does not need to receive traffic from other sites in your WAN. This feature requires [Unified Routing (beta)](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta). Refer to [Configure Automatic Return Routing](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-routes/#configure-automatic-return-routing-beta) for more information.
-8. To add multiple tunnels, select **Add IPsec tunnel** for each new tunnel.
-9. After adding your tunnel information, select **Add tunnels**.
-10. (_Optional_) Select **Allow BGP (Border Gateway Protocol) peering** (beta) if you want to dynamically exchange routes between your network and Cloudflare. This feature requires [Unified Routing (beta)](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta).
- BGP is recommended for environments with frequently changing routes or when you need automatic failover. Refer to [Configure BGP routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-routes/#configure-bgp-routes) for more information.
+</details>
 
 Note
 
 You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
 
+<details>
+
+<summary>
+
 GRE tunnel
 
-Create a `POST` request [using the API](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/gre%5Ftunnels/methods/create/) to create a GRE tunnel.
+</summary>
+
+Create a <code>POST</code> request <a href="https://developers.cloudflare.com/api/resources/magic_transit/subresources/gre_tunnels/methods/create/">using the API</a> to create a GRE tunnel.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Magic WAN Write`
-* `Magic Transit Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Magic WAN Write</code>
+- <code>Magic Transit Write</code>
+
+</details>
+
+*Create a GRE tunnelbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/gre_tunnels" \
@@ -194,98 +228,128 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/gre_tunnel
 }
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 IPsec tunnel
 
-1. Create a `POST` request [using the API](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/ipsec%5Ftunnels/methods/create/) to create an IPsec tunnel.
-Note that in the example, replay protection is disabled by default. You can enable it with the flag `"replay_protection": true` for each IPsec tunnel, if the devices you use do not support disabling this feature. If you have already created IPsec tunnels, update them with a [PUT request](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/ipsec%5Ftunnels/methods/update/). Refer to [Anti-replay protection](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/anti-replay-protection/) for more information on this topic.
-Required API token permissions
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-  * `Magic WAN Write`
-  * `Magic Transit Write`
-```bash
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/ipsec_tunnels" \
-	--request POST \
-	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-	--json '{
-		"name": "<TUNNEL_NAME>",
-		"description": "<TUNNEL_DESCRIPTION>",
-		"interface_address": "<INTERFACE_ADDRESS>",
-		"cloudflare_endpoint": "<CLOUDFLARE_ENDPOINT>",
-		"customer_endpoint": "<CUSTOMER_ENDPOINT>"
-	}'
-```
-```json
-{
-	"errors": [
-		{
-			"code": 1000,
-			"message": "message"
-		}
-	],
-	"messages": [
-		{
-			"code": 1000,
-			"message": "message"
-		}
-	],
-	"result": {
-		"ipsec_tunnels": [
-			{
-				"id": "<IPSEC_TUNNEL_ID>",
-				"interface_address": "<INTERFACE_CIDR>",
-				"name": "<TUNNEL_NAME>",
-				"cloudflare_endpoint": "<IP_ADDRESS>",
-				"customer_endpoint": "<IP_ADDRESS>",
-				"description": "<TUNNEL_DESCRIPTION>",
-				"health_check": {
-					"direction": "unidirectional",
-					"enabled": true,
-					"rate": "low",
-					"type": "reply"
-				},
-				"psk_metadata": {},
-				"replay_protection": false
-			}
-		]
-	},
-	"success": true
-}
-```
-Take note of the tunnel `id` value. We will use it to generate a pre-shared key (PSK).
-2. Create a `POST` [request](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/ipsec%5Ftunnels/methods/psk%5Fgenerate/) to generate a PSK. Use the tunnel `id` value you received from the previous command.
-Required API token permissions
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-  * `Magic WAN Write`
-  * `Magic Transit Write`
-```bash
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/ipsec_tunnels/$IPSEC_TUNNEL_ID/psk_generate" \
-	--request POST \
-	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-```
-```json
-{
-	"result": {
-		"ipsec_id": "<IPSEC_ID>",
-		"ipsec_tunnel_id": "<IPSEC_TUNNEL_ID>",
-		"psk": "<PSK_CODE>",
-		"psk_metadata": {
-			"last_generated_on": "2025-03-13T14:28:47.054317925Z"
-		}
-	},
-	"success": true,
-	"errors": [],
-	"messages": []
-}
-```
-Take note of your `psk` value.
-3. Create a `PUT` [request](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/ipsec%5Ftunnels/methods/update/) to update your IPsec tunnel with the PSK.
-```bash
-curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/ipsec_tunnels/%7Bipsec_tunnel_id%7D" \
-	--request PUT \
-	--json '{
-		"psk": "<PSK_VALUE>"
-	}'
-```
+</summary>
+
+1. Create a <code>POST</code> request <a href="https://developers.cloudflare.com/api/resources/magic_transit/subresources/ipsec_tunnels/methods/create/">using the API</a> to create an IPsec tunnel.
+
+   Note that in the example, replay protection is disabled by default. You can enable it with the flag <code>"replay_protection": true</code> for each IPsec tunnel, if the devices you use do not support disabling this feature. If you have already created IPsec tunnels, update them with a <a href="https://developers.cloudflare.com/api/resources/magic_transit/subresources/ipsec_tunnels/methods/update/"><code>PUT</code> request</a>. Refer to <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/anti-replay-protection/">Anti-replay protection</a> for more information on this topic.<details><summary>
+
+   Required API token permissions</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+   - <code>Magic WAN Write</code>
+   - <code>Magic Transit Write</code></details>
+
+   *Create an IPsec tunnelbash*
+
+
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/ipsec_tunnels" \
+   	--request POST \
+   	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+   	--json '{
+   		"name": "<TUNNEL_NAME>",
+   		"description": "<TUNNEL_DESCRIPTION>",
+   		"interface_address": "<INTERFACE_ADDRESS>",
+   		"cloudflare_endpoint": "<CLOUDFLARE_ENDPOINT>",
+   		"customer_endpoint": "<CUSTOMER_ENDPOINT>"
+   	}'
+   ```
+
+   ```json
+   {
+   	"errors": [
+   		{
+   			"code": 1000,
+   			"message": "message"
+   		}
+   	],
+   	"messages": [
+   		{
+   			"code": 1000,
+   			"message": "message"
+   		}
+   	],
+   	"result": {
+   		"ipsec_tunnels": [
+   			{
+   				"id": "<IPSEC_TUNNEL_ID>",
+   				"interface_address": "<INTERFACE_CIDR>",
+   				"name": "<TUNNEL_NAME>",
+   				"cloudflare_endpoint": "<IP_ADDRESS>",
+   				"customer_endpoint": "<IP_ADDRESS>",
+   				"description": "<TUNNEL_DESCRIPTION>",
+   				"health_check": {
+   					"direction": "unidirectional",
+   					"enabled": true,
+   					"rate": "low",
+   					"type": "reply"
+   				},
+   				"psk_metadata": {},
+   				"replay_protection": false
+   			}
+   		]
+   	},
+   	"success": true
+   }
+   ```
+
+   Take note of the tunnel <code>id</code> value. We will use it to generate a pre-shared key (PSK).
+2. Create a <code>POST</code> <a href="https://developers.cloudflare.com/api/resources/magic_transit/subresources/ipsec_tunnels/methods/psk_generate/">request</a> to generate a PSK. Use the tunnel <code>id</code> value you received from the previous command.<details><summary>
+
+   Required API token permissions</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+   - <code>Magic WAN Write</code>
+   - <code>Magic Transit Write</code></details>
+
+   *Generate Pre-Shared Key (PSK) for IPsec tunnelsbash*
+
+
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/ipsec_tunnels/$IPSEC_TUNNEL_ID/psk_generate" \
+   	--request POST \
+   	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+   ```
+
+   ```json
+   {
+   	"result": {
+   		"ipsec_id": "<IPSEC_ID>",
+   		"ipsec_tunnel_id": "<IPSEC_TUNNEL_ID>",
+   		"psk": "<PSK_CODE>",
+   		"psk_metadata": {
+   			"last_generated_on": "2025-03-13T14:28:47.054317925Z"
+   		}
+   	},
+   	"success": true,
+   	"errors": [],
+   	"messages": []
+   }
+   ```
+
+   Take note of your <code>psk</code> value.
+3. Create a <code>PUT</code> <a href="https://developers.cloudflare.com/api/resources/magic_transit/subresources/ipsec_tunnels/methods/update/">request</a> to update your IPsec tunnel with the PSK.
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/ipsec_tunnels/%7Bipsec_tunnel_id%7D" \
+   	--request PUT \
+   	--json '{
+   		"psk": "<PSK_VALUE>"
+   	}'
+   ```
+
+
 
 ```json
 {
@@ -323,13 +387,21 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/ipsec
 }
 ```
 
-1. Use the `psk` value from step 3 to configure the IPsec tunnel on your equipment as well.
+4. Use the <code>psk</code> value from step 3 to configure the IPsec tunnel on your equipment as well.
+
+</details>
+
+<details>
+
+<summary>
 
 Configure bidirectional health checks
 
+</summary>
+
 Bidirectional health checks are available for GRE and IPsec tunnels. For Cloudflare WAN this option defaults to bidirectional.
 
-You can change this setting via the API with `"bidirectional"` or `"unidirectional"`:
+You can change this setting via the API with <code>"bidirectional"</code> or <code>"unidirectional"</code>:
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/ipsec_tunnels/%7Bipsec_tunnel_id%7D" \
@@ -377,6 +449,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/ipsec
 }
 ```
 
+</details>
+
 ## Bidirectional vs unidirectional health checks
 
 To check for tunnel health, Cloudflare sends a [health check probe](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/tunnel-health-checks/) consisting of ICMP (Internet Control Message Protocol) reply [packets ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) to your network. Cloudflare needs to receive these probes to know if your tunnel is healthy.
@@ -387,15 +461,15 @@ Cloudflare defaults to bidirectional health checks for Cloudflare WAN, and unidi
 
 For customers using the legacy health check system with a public IP range, Cloudflare recommends:
 
-* Configuring the tunnel health check target IP address to one within the `172.64.240.252/30` prefix range.
-* Applying a policy-based route that matches [packets ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) with a source IP address equal to the configured tunnel health check target (for example `172.64.240.253/32`), and route them over the tunnel back to Cloudflare.
+- Configuring the tunnel health check target IP address to one within the `172.64.240.252/30` prefix range.
+- Applying a policy-based route that matches [packets ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) with a source IP address equal to the configured tunnel health check target (for example `172.64.240.253/32`), and route them over the tunnel back to Cloudflare.
 
 ## Next steps
 
 Now that you have set up your tunnel endpoints, you need to configure routes to direct your traffic through Cloudflare. You have two routing options:
 
-* **Static routes**: Best for simple, stable networks where routes rarely change. You manually define each route.
-* **BGP peering**: Best for dynamic environments with frequently changing routes, multiple prefixes, or when you need automatic failover. Requires enabling BGP on your tunnel during creation.
+- **Static routes**: Best for simple, stable networks where routes rarely change. You manually define each route.
+- **BGP peering**: Best for dynamic environments with frequently changing routes, multiple prefixes, or when you need automatic failover. Requires enabling BGP on your tunnel during creation.
 
 Refer to [Configure routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-routes/) for detailed instructions on both options.
 
@@ -405,8 +479,8 @@ After configuring your routes, you need to [set up a site](https://developers.cl
 
 If you experience issues with your tunnels:
 
-* For tunnel health check problems, refer to [Troubleshoot tunnel health](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/troubleshooting/tunnel-health/).
-* For IPsec tunnel establishment issues, refer to [Troubleshoot with IPsec logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/troubleshooting/ipsec-troubleshoot/).
+- For tunnel health check problems, refer to [Troubleshoot tunnel health](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/troubleshooting/tunnel-health/).
+- For IPsec tunnel establishment issues, refer to [Troubleshoot with IPsec logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/troubleshooting/ipsec-troubleshoot/).
 
 Was this helpful?
 

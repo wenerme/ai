@@ -12,20 +12,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RtkButton
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkbutton/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkbutton/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A button that follows RTK Design System.
 
 ## Properties
 
-| Property | Type                        | Required | Default | Description                          |
-| -------- | --------------------------- | -------- | ------- | ------------------------------------ |
-| disabled | boolean                     | ✅        | \-      | Where the button is disabled or not  |
-| kind     | ButtonKind                  | ✅        | \-      | Button type                          |
-| reverse  | boolean                     | ✅        | \-      | Whether to reverse order of children |
-| size     | Size                        | ✅        | \-      | Size                                 |
-| type     | HTMLButtonElement\['type'\] | ✅        | \-      | Button type                          |
-| variant  | ButtonVariant               | ✅        | \-      | Button variant                       |
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `disabled` | `boolean` | ✅ | - | Where the button is disabled or not |
+| `kind` | `ButtonKind` | ✅ | - | Button type |
+| `reverse` | `boolean` | ✅ | - | Whether to reverse order of children |
+| `size` | `Size` | ✅ | - | Size |
+| `type` | `HTMLButtonElement['type']` | ✅ | - | Button type |
+| `variant` | `ButtonVariant` | ✅ | - | Button variant |
 
 ## Usage Examples
 

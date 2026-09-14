@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Profiling CPU usage
 
-Last updated Sep 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/dev-tools/cpu-usage/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/dev-tools/cpu-usage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If a Worker spends too much time performing CPU-intensive tasks, responses may be slow or the Worker might fail to startup due to [time limits](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
 
 Profiling in DevTools can help you identify and fix code that uses too much CPU.
 
-Measuring execution time of specific functions in production can be difficult because Workers [only increment timers on I/O](https://developers.cloudflare.com/workers/reference/security-model/#step-1-disallow-timers-and-multi-threading)for security purposes. However, measuring CPU execution times is possible in local development with DevTools.
+Measuring execution time of specific functions in production can be difficult because Workers [only increment timers on I/O](https://developers.cloudflare.com/workers/reference/security-model/#step-1-disallow-timers-and-multi-threading) for security purposes. However, measuring CPU execution times is possible in local development with DevTools.
 
 When using DevTools to monitor CPU usage, it may be difficult to replicate specific behavior you are seeing in production. To mimic production behavior, make sure the requests you send to the local Worker are similar to requests in production. This might mean sending a large volume of requests, making requests to specific routes, or using production-like data via [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings).
 
@@ -26,12 +26,12 @@ When using DevTools to monitor CPU usage, it may be difficult to replicate speci
 
 To generate a CPU profile:
 
-* Run `wrangler dev` to start your Worker
-* Press the `D` key from your terminal to open DevTools
-* Select the "Profiler" tab
-* Select `Start` to begin recording CPU usage
-* Send requests to your Worker from a new tab
-* Select `Stop`
+- Run `wrangler dev` to start your Worker
+- Press the `D` key from your terminal to open DevTools
+- Select the "Profiler" tab
+- Select `Start` to begin recording CPU usage
+- Send requests to your Worker from a new tab
+- Select `Stop`
 
 You now have a CPU profile.
 
@@ -39,12 +39,16 @@ Note
 
 For Rust Workers, add the following to your `Cargo.toml` to preserve [DWARF ↗](https://dwarfstd.org/) debug symbols (from [this comment ↗](https://github.com/rustwasm/wasm-pack/issues/1351#issuecomment-2100231587)):
 
+*Cargo.tomltoml*
+
 ```toml
 [package.metadata.wasm-pack.profile.dev.wasm-bindgen]
 dwarf-debug-info = true
 ```
 
 Then, update your `wrangler.toml` to configure wasm-pack (via worker-build) to use the `dev` [profile ↗](https://rustwasm.github.io/docs/wasm-pack/commands/build.html#profile) to preserve debug symbols.
+
+*wrangler.tomltoml*
 
 ```toml
 [build]
@@ -54,6 +58,8 @@ command = "cargo install -q worker-build && worker-build --dev"
 ## An Example Profile
 
 Let's look at an example to learn how to read a CPU profile. Imagine you have the following Worker:
+
+*index.jsjs*
 
 ```js
 const addNumbers = (body) => {

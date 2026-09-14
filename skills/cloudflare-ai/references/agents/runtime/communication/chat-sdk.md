@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Chat SDK
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use `agents/chat-sdk` when you run the [Chat SDK ↗](https://chat-sdk.dev/) inside an Agent. The first integration helper is a Chat SDK `StateAdapter` that stores state in Agents sub-agents.
 
@@ -108,7 +108,7 @@ Add the parent Agent to your Durable Object migration:
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-08-25",
+  "compatibility_date": "2026-09-14",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -133,7 +133,7 @@ Add the parent Agent to your Durable Object migration:
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 compatibility_flags = ["nodejs_compat"]
 
 [[durable_objects.bindings]]
@@ -155,10 +155,10 @@ For example, `telegram:-100123:456` and `telegram:-100123:789` share the same st
 
 The default key sharder recognizes these Chat SDK key prefixes:
 
-* `thread-state:`
-* `channel-state:`
-* `msg-history:`
-* `transcripts:user:`
+- `thread-state:`
+- `channel-state:`
+- `msg-history:`
+- `transcripts:user:`
 
 Unknown keys use the adapter's default shard name, `default`.
 
@@ -240,13 +240,13 @@ const state = createChatSdkState({
 
 Options:
 
-| Option   | Description                                                                                                                   |
-| -------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| agent    | Optional custom subclass of ChatSdkStateAgent. Defaults to ChatSdkStateAgent.                                                 |
-| parent   | Optional parent Agent that will call subAgent() to create state shards. Defaults to the current Agent from getCurrentAgent(). |
-| name     | Default shard name for keys that cannot be mapped. Defaults to default.                                                       |
-| shardKey | Maps Chat SDK thread IDs and lock keys to a shard name.                                                                       |
-| keyShard | Maps generic Chat SDK cache or list keys to a shard name.                                                                     |
+| Option | Description |
+| --- | --- |
+| `agent` | Optional custom subclass of `ChatSdkStateAgent`. Defaults to `ChatSdkStateAgent`. |
+| `parent` | Optional parent Agent that will call `subAgent()` to create state shards. Defaults to the current Agent from `getCurrentAgent()`. |
+| `name` | Default shard name for keys that cannot be mapped. Defaults to `default`. |
+| `shardKey` | Maps Chat SDK thread IDs and lock keys to a shard name. |
+| `keyShard` | Maps generic Chat SDK cache or list keys to a shard name. |
 
 ### `ChatSdkStateAgent`
 
@@ -268,20 +268,20 @@ The concrete `StateAdapter` implementation returned by `createChatSdkState()`. M
 
 The adapter implements the full Chat SDK `StateAdapter` interface:
 
-* Subscriptions for `thread.subscribe()` and `thread.unsubscribe()`.
-* Locks for per-thread or per-channel concurrency.
-* Pending message queues for `queue`, `debounce`, and `burst` concurrency strategies.
-* Generic key-value cache entries with optional TTL.
-* Append-only lists with max-length trimming and list-level TTL refresh.
+- Subscriptions for `thread.subscribe()` and `thread.unsubscribe()`.
+- Locks for per-thread or per-channel concurrency.
+- Pending message queues for `queue`, `debounce`, and `burst` concurrency strategies.
+- Generic key-value cache entries with optional TTL.
+- Append-only lists with max-length trimming and list-level TTL refresh.
 
 Chat SDK features built on these primitives include:
 
-* Message deduplication.
-* Thread and channel state.
-* Persistent thread history for adapters that opt in to `persistThreadHistory`.
-* Callback URL token storage.
-* Modal context storage.
-* Cross-platform transcripts.
+- Message deduplication.
+- Thread and channel state.
+- Persistent thread history for adapters that opt in to `persistThreadHistory`.
+- Callback URL token storage.
+- Modal context storage.
+- Cross-platform transcripts.
 
 ## Cleanup behavior
 

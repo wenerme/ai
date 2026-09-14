@@ -12,39 +12,39 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # NAv1 to NAv2 schema map
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/migration-guides/network-analytics-v2/schema-map/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/migration-guides/network-analytics-v2/schema-map/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following table lists direct mappings between NAv1 and NAv2 fields, when available, and provides related fields when there is no direct mapping available.
 
-| ipFlows1mGroups        | magicTransitNetworkAnalytics-AdaptiveGroups /spectrumNetworkAnalytics-AdaptiveGroups | dosdNetworkAnalytics-AdaptiveGroups         | dosdAttackAnalytics-Groups | flowtrackdNetworkAnalytics-AdaptiveGroups   | magicFirewallNetworkAnalytics-AdaptiveGroups |
-| ---------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------- | -------------------------- | ------------------------------------------- | -------------------------------------------- |
-| date                   | _Related fields:_datetimedatetimeTenSeconds                                          | _Related fields:_datetimedatetimeTenSeconds |                            | _Related fields:_datetimedatetimeTenSeconds | _Related fields:_datetimedatetimeTenSeconds  |
-| datetimeMinute         | datetimeMinute                                                                       | datetimeMinute                              |                            | datetimeMinute                              | datetimeMinute                               |
-| datetimeFiveMinutes    | datetimeFiveMinutes                                                                  | datetimeFiveMinutes                         |                            | datetimeFiveMinutes                         | datetimeFiveMinutes                          |
-| datetimeFifteenMinutes | datetimeFifteenMinutes                                                               | datetimeFifteenMinutes                      |                            | datetimeFifteenMinutes                      | datetimeFifteenMinutes                       |
-| datetimeHour           | datetimeHour                                                                         | datetimeHour                                |                            | datetimeHour                                | datetimeHour                                 |
-| attackId\*             |                                                                                      | attackId\*                                  | attackId\*                 |                                             |                                              |
-| attackType             |                                                                                      |                                             | attackType                 |                                             |                                              |
-| attackMitigationType   |                                                                                      |                                             | mitigationType             |                                             |                                              |
-| sourceIPCountry        | sourceCountry                                                                        | sourceCountry                               |                            | sourceCountry                               | sourceCountry                                |
-| sourceIPAsn            | sourceAsn                                                                            | sourceAsn                                   |                            | sourceAsn                                   | sourceAsn                                    |
-| sourceIPASNDescription | _Related field:_sourceGeohash                                                        | _Related field:_sourceGeohash               |                            | _Related field:_sourceGeohash               | _Related field:_sourceGeohash                |
-| coloCode               | coloCode                                                                             | coloCode                                    |                            | coloCode                                    | coloCode                                     |
-| coloCity               | coloCity                                                                             | coloCity                                    |                            | coloCity                                    | coloCity                                     |
-| coloCountry            | coloCountry                                                                          | coloCountry                                 |                            | coloCountry                                 | coloCountry                                  |
-| coloRegion             | _Related field:_coloGeohash                                                          | _Related field:_coloGeohash                 |                            | _Related field:_coloGeohash                 | _Related field:_coloGeohash                  |
-| ipFlows1mGroups        | magicTransitNetworkAnalytics-AdaptiveGroups /spectrumNetworkAnalytics-AdaptiveGroups | dosdNetworkAnalytics-AdaptiveGroups         | dosdAttackAnalytics-Groups | flowtrackdNetworkAnalytics-AdaptiveGroups   | magicFirewallNetworkAnalytics-AdaptiveGroups |
-| ipVersion              | ethertype                                                                            | ethertype                                   |                            | ethertype                                   | ethertype                                    |
-| bits                   | ipTotalLength (bits divided by 8)                                                    | ipTotalLength (bits divided by 8)           | bits                       | ipTotalLength (bits divided by 8)           | ipTotalLength (bits divided by 8)            |
-| packets                | _n/a_                                                                                | _n/a_                                       | packets                    | _n/a_                                       | _n/a_                                        |
-| ipProtocol             | ipProtocol                                                                           | ipProtocol                                  | ipProtocol                 | ipProtocol                                  | ipProtocol                                   |
-| sourceIP               | ipSourceAddress                                                                      | ipSourceAddress                             | sourceIp                   | ipSourceAddress                             | ipSourceAddress                              |
-| destinationIP          | ipDestinationAddress                                                                 | ipDestinationAddress                        | destinationIp              | ipDestinationAddress                        | ipDestinationAddress                         |
-| destinationIPv4Range24 | ipDestinationSubnet                                                                  | ipDestinationSubnet                         |                            | ipDestinationSubnet                         | ipDestinationSubnet                          |
-| destinationIPv4Range23 | _n/a_                                                                                | _n/a_                                       |                            | _n/a_                                       | _n/a_                                        |
-| sourcePort             | sourcePort                                                                           | sourcePort                                  | sourcePort                 | sourcePort                                  | sourcePort                                   |
-| destinationPort        | destinationPort                                                                      | destinationPort                             | destinationPort            | destinationPort                             | destinationPort                              |
-| tcpFlags               | tcpFlags                                                                             | tcpFlags                                    | tcpFlags                   | tcpFlags                                    | tcpFlags                                     |
+| ipFlows1mGroups | magicTransitNetworkAnalytics-AdaptiveGroups /<br> spectrumNetworkAnalytics-AdaptiveGroups | dosdNetworkAnalytics-AdaptiveGroups | dosdAttackAnalytics-Groups | flowtrackdNetworkAnalytics-AdaptiveGroups | magicFirewallNetworkAnalytics-AdaptiveGroups |
+| --- | --- | --- | --- | --- | --- |
+| `date` | *Related fields:*<br>`datetime`<br>`datetimeTenSeconds` | *Related fields:*<br>`datetime`<br>`datetimeTenSeconds` |  | *Related fields:*<br>`datetime`<br>`datetimeTenSeconds` | *Related fields:*<br>`datetime`<br>`datetimeTenSeconds` |
+| `datetimeMinute` | `datetimeMinute` | `datetimeMinute` |  | `datetimeMinute` | `datetimeMinute` |
+| `datetimeFiveMinutes` | `datetimeFiveMinutes` | `datetimeFiveMinutes` |  | `datetimeFiveMinutes` | `datetimeFiveMinutes` |
+| `datetimeFifteenMinutes` | `datetimeFifteenMinutes` | `datetimeFifteenMinutes` |  | `datetimeFifteenMinutes` | `datetimeFifteenMinutes` |
+| `datetimeHour` | `datetimeHour` | `datetimeHour` |  | `datetimeHour` | `datetimeHour` |
+| `attackId`\* |  | `attackId`\* | `attackId`\* |  | |
+| `attackType` |  |  | `attackType` |  | |
+| `attackMitigationType` |  |  | `mitigationType` |  | |
+| `sourceIPCountry` | `sourceCountry` | `sourceCountry` |  | `sourceCountry` | `sourceCountry` |
+| `sourceIPAsn` | `sourceAsn` | `sourceAsn` |  | `sourceAsn` | `sourceAsn` |
+| `sourceIPASNDescription` | *Related field:*<br>`sourceGeohash` | *Related field:*<br>`sourceGeohash` |  | *Related field:*<br>`sourceGeohash` | *Related field:*<br>`sourceGeohash` |
+| `coloCode` | `coloCode` | `coloCode` |  | `coloCode` | `coloCode` |
+| `coloCity` | `coloCity` | `coloCity` |  | `coloCity` | `coloCity` |
+| `coloCountry` | `coloCountry` | `coloCountry` |  | `coloCountry` | `coloCountry` |
+| `coloRegion` | *Related field:*<br>`coloGeohash` | *Related field:*<br>`coloGeohash` |  | *Related field:*<br>`coloGeohash` | *Related field:*<br>`coloGeohash` |
+| ipFlows1mGroups | magicTransitNetworkAnalytics-AdaptiveGroups /<br> spectrumNetworkAnalytics-AdaptiveGroups | dosdNetworkAnalytics-AdaptiveGroups | dosdAttackAnalytics-Groups | flowtrackdNetworkAnalytics-AdaptiveGroups | magicFirewallNetworkAnalytics-AdaptiveGroups |
+| `ipVersion` | `ethertype` | `ethertype` |  | `ethertype` | `ethertype` |
+| `bits` | `ipTotalLength` <br>(`bits` divided by 8) | `ipTotalLength` <br>(`bits` divided by 8) | `bits` | `ipTotalLength` <br>(`bits` divided by 8) | `ipTotalLength` <br>(`bits` divided by 8) |
+| `packets` | *n/a* | *n/a* | `packets` | *n/a* | *n/a* |
+| `ipProtocol` | `ipProtocol` | `ipProtocol` | `ipProtocol` | `ipProtocol` | `ipProtocol` |
+| `sourceIP` | `ipSourceAddress` | `ipSourceAddress` | `sourceIp` | `ipSourceAddress` | `ipSourceAddress` |
+| `destinationIP` | `ipDestinationAddress` | `ipDestinationAddress` | `destinationIp` | `ipDestinationAddress` | `ipDestinationAddress` |
+| `destinationIPv4Range24` | `ipDestinationSubnet` | `ipDestinationSubnet` |  | `ipDestinationSubnet` | `ipDestinationSubnet` |
+| `destinationIPv4Range23` | *n/a* | *n/a* |  | *n/a* | *n/a* |
+| `sourcePort` | `sourcePort` | `sourcePort` | `sourcePort` | `sourcePort` | `sourcePort` |
+| `destinationPort` | `destinationPort` | `destinationPort` | `destinationPort` | `destinationPort` | `destinationPort` |
+| `tcpFlags` | `tcpFlags` | `tcpFlags` | `tcpFlags` | `tcpFlags` | `tcpFlags` |
 
 \* The `attackId` field value may be different between NAv1 and NAv2 for the same attack.
 

@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # http.request.headers
 
-`http.request.headers` `Map<Array<String>>`
+`http.request.headers``Map<Array<String>>`
 
 The HTTP request headers represented as a Map (or associative array).
 
@@ -18,11 +18,11 @@ When there are repeating headers, the array includes them in the order they appe
 
 The request header values are not pre-processed and retain the original case used in the request.
 
-* **Decoding**: No decoding performed
-* **Whitespace**: Preserved
-* **Non-ASCII**: Preserved
+- **Decoding**: No decoding performed
+- **Whitespace**: Preserved
+- **Non-ASCII**: Preserved
 
-When the HTTP request contains too many headers, this field may not contain all of the headers sent in the HTTP request. In this situation, the [http.request.headers.truncated](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.headers.truncated/) field will be set to `true`.
+When the HTTP request contains too many headers, this field may not contain all of the headers sent in the HTTP request. In this situation, the [`http.request.headers.truncated`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.headers.truncated/) field will be set to `true`.
 
 Example value:
 
@@ -37,8 +37,8 @@ any(http.request.headers["content-type"][*] == "application/json")
 ```
 
 Categories:
-* Request
-* Headers
+- Request
+- Headers
 
 Was this helpful?
 

@@ -12,18 +12,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Integration test harness
 
-Last updated Jul 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/test-harness/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/test-harness/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[createTestHarness()](https://developers.cloudflare.com/workers/wrangler/api/#createtestharness) is a Wrangler API for integration testing from any Node.js test runner. It runs one or more Workers from [Wrangler](https://developers.cloudflare.com/workers/wrangler/) projects or Vite projects that use the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
+[`createTestHarness()`](https://developers.cloudflare.com/workers/wrangler/api/#createtestharness) is a Wrangler API for integration testing from any Node.js test runner. It runs one or more Workers from [Wrangler](https://developers.cloudflare.com/workers/wrangler/) projects or Vite projects that use the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
 
 [Get started](https://developers.cloudflare.com/workers/testing/test-harness/get-started/) [View complete example](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/create-test-harness-example)
 
 ## Features
 
-* Runs production build output from Wrangler or the Cloudflare Vite plugin
-* Dispatches requests and events to one or more Workers
-* Provides access to bindings and local storage from tests
-* Captures logs and diagnostic output from the Workers runtime
+- Runs production build output from Wrangler or the Cloudflare Vite plugin
+- Dispatches requests and events to one or more Workers
+- Provides access to bindings and local storage from tests
+- Captures logs and diagnostic output from the Workers runtime
 
 ## Guides
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshoot Gateway
 
-Last updated Aug 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/troubleshoot-gateway/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/troubleshoot-gateway/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide helps you troubleshoot common issues with Cloudflare Gateway policies. The issues are ordered by the most frequent problems.
 
@@ -24,19 +24,19 @@ Egress policies are the most common category of issues for Gateway. Symptoms inc
 
 Even with an active egress policy, you may find that traffic is egressing from a default Cloudflare IP address instead of your dedicated egress IP.
 
-| Common cause                             | Solution                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| DNS resolution to an initial resolved IP | When an egress policy uses a _Domain_ or _Host_ selector, Gateway must first resolve that domain to an [initial resolved IP](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#gateway-initial-resolved-ips). If your account still uses a legacy range within CGNAT (carrier-grade NAT) address space, this IP may be treated as internal to Cloudflare's network and may not be subject to egress policies, which apply to traffic leaving the network. Change the selector in your egress policy from _Domain_ or _Host_ to _Destination IP_ (using the public IP addresses of the service you are trying to reach), or [move your initial resolved IP range off CGNAT](https://developers.cloudflare.com/cloudflare-one/networks/routes/configure-initial-resolved-ips/). |
-| Policy precedence                        | A different egress policy with a higher precedence (a lower number) is matching the traffic first. Remember that egress policies follow the same first-match-wins logic.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| Split Tunnel configuration               | The destination IP or domain is excluded from the WARP tunnel via your [Split Tunnel](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) configuration (which controls whether traffic for specific IPs or domains is sent through or excluded from the WARP tunnel). Traffic that is excluded from the tunnel will not be subject to any Gateway policies, including egress.                                                                                                                                                                                                                                                                                                                                       |
-| No egress logs                           | Egress logging is available via Logpush with the Gateway Egress dataset. This is essential for troubleshooting. You can also use a third-party IP check service to verify the egress IP from a test device.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| Common cause | Solution |
+| --- | --- |
+| DNS resolution to an initial resolved IP | When an egress policy uses a *Domain* or *Host* selector, Gateway must first resolve that domain to an [initial resolved IP](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#gateway-initial-resolved-ips). If your account still uses a legacy range within CGNAT (carrier-grade NAT) address space, this IP may be treated as internal to Cloudflare's network and may not be subject to egress policies, which apply to traffic leaving the network. Change the selector in your egress policy from *Domain* or *Host* to *Destination IP* (using the public IP addresses of the service you are trying to reach), or [move your initial resolved IP range off CGNAT](https://developers.cloudflare.com/cloudflare-one/networks/routes/configure-initial-resolved-ips/). |
+| Policy precedence | A different egress policy with a higher precedence (a lower number) is matching the traffic first. Remember that egress policies follow the same first-match-wins logic. |
+| Split Tunnel configuration | The destination IP or domain is excluded from the WARP tunnel via your [Split Tunnel](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) configuration (which controls whether traffic for specific IPs or domains is sent through or excluded from the WARP tunnel). Traffic that is excluded from the tunnel will not be subject to any Gateway policies, including egress. |
+| No egress logs | Egress logging is available via Logpush with the Gateway Egress dataset. This is essential for troubleshooting. You can also use a third-party IP check service to verify the egress IP from a test device. |
 
 ### Symptom: failover is not working or is using the wrong IP
 
 Your primary dedicated egress IP becomes unavailable, but instead of using your configured secondary dedicated IP, traffic fails over to a default Cloudflare shared IP.
 
-| Common cause                                          | Solution                                                                                                                                                                                                                                                                |
-| ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Common cause | Solution |
+| --- | --- |
 | Routing or configuration issue on the Cloudflare side | Document the time of the incident and collect Request IDs from Gateway HTTP or DNS logs for affected users. Open a support ticket and provide this information. Temporarily, you can edit the egress policy to set your secondary IP as the primary to restore service. |
 
 ### Symptom: users are egressing from a geographically distant location
@@ -45,10 +45,10 @@ Gateway routes your users in one country (such as Australia) through a dedicated
 
 Common causes and solutions:
 
-| Common cause               | Solution                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Single egress policy       | You may have one broad egress policy that applies to all users regardless of their location. Create location-aware egress policies. Use the _User Location_ selector in your policy to tie specific user locations to their nearest dedicated egress IP. For example, create one policy for when _User Location_ is United Kingdom, egress via London IP; create a second policy for when _User Location_ is Australia, egress via Sydney IP. |
-| Incorrect geolocation data | The IP address of the user's ISP may not be correctly geolocated. Check the user's location as seen by Cloudflare in the Gateway logs. If it appears incorrect, you can report it to Cloudflare Support.                                                                                                                                                                                                                                      |
+| Common cause | Solution |
+| --- | --- |
+| Single egress policy | You may have one broad egress policy that applies to all users regardless of their location. Create location-aware egress policies. Use the *User Location* selector in your policy to tie specific user locations to their nearest dedicated egress IP. For example, create one policy for when *User Location* is `United Kingdom`, egress via London IP; create a second policy for when *User Location* is `Australia`, egress via Sydney IP. |
+| Incorrect geolocation data | The IP address of the user's ISP may not be correctly geolocated. Check the user's location as seen by Cloudflare in the Gateway logs. If it appears incorrect, you can report it to Cloudflare Support. |
 
 ## Gateway does not apply policies in the correct order
 
@@ -62,7 +62,7 @@ The most important concept is [Gateway policy precedence](https://developers.clo
 
 To resolve Gateway policy precedence issues:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**.
 2. Review the order of your DNS, Network, and HTTP policies.
 3. Ensure that your most specific Allow, Do Not Scan, or Do Not Inspect policies have a lower order number than your general Block policies.
 4. Drag and drop policies to reorder them as needed. An Allow policy for `teams.microsoft.com` should be placed before a general Block policy for all file sharing applications.
@@ -83,9 +83,9 @@ Create a targeted HTTP policy to bypass decryption for the specific domains thes
 
 Create a [list](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/) that includes hosts such as `github.com`, `*.amazonaws.com`, and `*.docker.io`.
 
-| Selector | Operator | Value              | Action         |
-| -------- | -------- | ------------------ | -------------- |
-| Domain   | in list  | _CLI Tool Domains_ | Do Not Inspect |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Domain | in list | *CLI Tool Domains* | Do Not Inspect |
 
 You can configure some tools to trust a custom CA or disable SSL verification. This is less secure and harder to manage at scale. For more information, refer to [Install certificate manually](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/manual-deployment/).
 
@@ -105,11 +105,11 @@ To resolve this issue:
 
 You have configured Gateway to resolve internal hostnames, but users are unable to access them. For example, a user connected to the Cloudflare One Client tries to access an internal service like `jira.mycompany.local`, but the DNS query fails.
 
-| Common causes                              | Solution                                                                                                                                                                                                                                     |
-| ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Missing or incorrect resolver policy       | Go to **Traffic policies** \> **Resolver policies**. Create a policy that matches your internal domain suffix and forwards queries to your internal DNS servers' IP addresses.                                                               |
-| Split Tunnel excludes the private IP range | If your internal resources are in a private IP range (such as 10.0.0.0/8), that range must be included in the tunnel. If it is in the Exclude list of your Split Tunnel configuration, the Cloudflare One Client will not proxy the traffic. |
-| Local Domain Fallback misconfiguration     | Use resolver policies for corporate DNS. Only use Local Domain Fallback for domains specific to a user's immediate physical network.                                                                                                         |
+| Common causes | Solution |
+| --- | --- |
+| Missing or incorrect resolver policy | Go to **Traffic policies** > **Resolver policies**. Create a policy that matches your internal domain suffix and forwards queries to your internal DNS servers' IP addresses. |
+| Split Tunnel excludes the private IP range | If your internal resources are in a private IP range (such as `10.0.0.0/8`), that range must be included in the tunnel. If it is in the Exclude list of your Split Tunnel configuration, the Cloudflare One Client will not proxy the traffic. |
+| Local Domain Fallback misconfiguration | Use resolver policies for corporate DNS. Only use Local Domain Fallback for domains specific to a user's immediate physical network. |
 
 Was this helpful?
 

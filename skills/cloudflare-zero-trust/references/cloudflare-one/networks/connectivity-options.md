@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Connectivity options
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectivity-options/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectivity-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare One provides multiple connectivity options for your users, devices, and network infrastructure. Each option serves different use cases, from protecting individual devices to connecting entire data centers.
 
@@ -22,8 +22,8 @@ This page helps you understand which connectivity options to use based on your r
 
 Cloudflare One connectivity options use the concept of on-ramps and off-ramps:
 
-* **On-ramps** send traffic into Cloudflare's network. For example, a user's device with the Cloudflare One Client installed on-ramps their traffic to Cloudflare for inspection and policy enforcement.
-* **Off-ramps** send traffic from Cloudflare's network to your infrastructure. For example, Cloudflare Tunnel off-ramps traffic to your private applications without exposing them to the public Internet.
+- **On-ramps** send traffic into Cloudflare's network. For example, a user's device with the Cloudflare One Client installed on-ramps their traffic to Cloudflare for inspection and policy enforcement.
+- **Off-ramps** send traffic from Cloudflare's network to your infrastructure. For example, Cloudflare Tunnel off-ramps traffic to your private applications without exposing them to the public Internet.
 
 Some connectivity options support both directions (bidirectional), while others only support one direction.
 
@@ -33,19 +33,19 @@ The following table provides a high-level comparison of all connectivity options
 
 **Table 1: All Cloudflare One connectivity options**
 
-| Connectivity option                                                     | Protocol                    | Direction     | Typical deployment model                | Use when                                          |
-| ----------------------------------------------------------------------- | --------------------------- | ------------- | --------------------------------------- | ------------------------------------------------- |
-| [Cloudflare Tunnel](#cloudflare-tunnel)                                 | HTTP/2, QUIC                | Off-ramp only | Software daemon (cloudflared) on server | Exposing private applications without a public IP |
-| [Cloudflare One Client](#cloudflare-one-client)                         | MASQUE (default), WireGuard | Bidirectional | Client software on end-user devices     | Securing remote workforce devices                 |
-| [Cloudflare Mesh](#cloudflare-mesh)                                     | MASQUE                      | Bidirectional | Software client on Linux host           | Connecting sites with IoT or VoIP devices         |
-| [DNS locations](#dns-locations)                                         | DNS (DoH, DoT, IPv4/IPv6)   | On-ramp only  | DNS resolver configuration              | Filtering DNS traffic without device agents       |
-| [Proxy endpoints](#proxy-endpoints)                                     | HTTP/HTTPS                  | On-ramp only  | Browser PAC file configuration          | Filtering web traffic without device agents       |
-| [Clientless Web Isolation](#clientless-web-isolation)                   | HTTP/HTTPS                  | On-ramp only  | Prefixed URL with Access authentication | Secure web access for unmanaged devices           |
-| [GRE tunnels](#gre-tunnels)                                             | GRE                         | Bidirectional | Network tunnel from router or firewall  | Connecting sites with existing network hardware   |
-| [IPsec tunnels](#ipsec-tunnels)                                         | IPsec                       | Bidirectional | Network tunnel from router or firewall  | Encrypted site connectivity over the Internet     |
-| [Cloudflare One Appliance](#cloudflare-one-appliance)                   | IPsec                       | Bidirectional | Hardware or virtual appliance           | Zero-touch branch office deployments              |
-| [Cloudflare Network Interconnect](#cloudflare-network-interconnect-cni) | Direct, Partner, Cloud      | Bidirectional | Physical or virtual cross-connect       | Bypassing the public Internet entirely            |
-| [Multi-Cloud Networking](#multi-cloud-networking)                       | IPsec (automated)           | Bidirectional | Cloud provider VPN integration          | Connecting cloud VPCs with automated tunnel setup |
+| Connectivity option | Protocol | Direction | Typical deployment model | Use when |
+| --- | --- | --- | --- | --- |
+| [Cloudflare Tunnel](#cloudflare-tunnel) | HTTP/2, QUIC | Off-ramp only | Software daemon (`cloudflared`) on server | Exposing private applications without a public IP |
+| [Cloudflare One Client](#cloudflare-one-client) | MASQUE (default), WireGuard | Bidirectional | Client software on end-user devices | Securing remote workforce devices |
+| [Cloudflare Mesh](#cloudflare-mesh) | MASQUE | Bidirectional | Software client on Linux host | Connecting sites with IoT or VoIP devices |
+| [DNS locations](#dns-locations) | DNS (DoH, DoT, IPv4/IPv6) | On-ramp only | DNS resolver configuration | Filtering DNS traffic without device agents |
+| [Proxy endpoints](#proxy-endpoints) | HTTP/HTTPS | On-ramp only | Browser PAC file configuration | Filtering web traffic without device agents |
+| [Clientless Web Isolation](#clientless-web-isolation) | HTTP/HTTPS | On-ramp only | Prefixed URL with Access authentication | Secure web access for unmanaged devices |
+| [GRE tunnels](#gre-tunnels) | GRE | Bidirectional | Network tunnel from router or firewall | Connecting sites with existing network hardware |
+| [IPsec tunnels](#ipsec-tunnels) | IPsec | Bidirectional | Network tunnel from router or firewall | Encrypted site connectivity over the Internet |
+| [Cloudflare One Appliance](#cloudflare-one-appliance) | IPsec | Bidirectional | Hardware or virtual appliance | Zero-touch branch office deployments |
+| [Cloudflare Network Interconnect](#cloudflare-network-interconnect-cni) | Direct, Partner, Cloud | Bidirectional | Physical or virtual cross-connect | Bypassing the public Internet entirely |
+| [Multi-Cloud Networking](#multi-cloud-networking) | IPsec (automated) | Bidirectional | Cloud provider VPN integration | Connecting cloud VPCs with automated tunnel setup |
 
 ---
 
@@ -105,9 +105,9 @@ DNS locations allow you to filter DNS traffic from networks without deploying th
 
 DNS locations support multiple endpoint types:
 
-* **IPv4/IPv6**: Standard DNS resolution using Cloudflare's resolver IPs
-* **DNS over HTTPS (DoH)**: Encrypted DNS queries over HTTPS
-* **DNS over TLS (DoT)**: Encrypted DNS queries over TLS
+- **IPv4/IPv6**: Standard DNS resolution using Cloudflare's resolver IPs
+- **DNS over HTTPS (DoH)**: Encrypted DNS queries over HTTPS
+- **DNS over TLS (DoT)**: Encrypted DNS queries over TLS
 
 Use DNS locations when you need to filter DNS traffic for an entire office or network, per device without installing agents on devices, or integrate with existing network infrastructure.
 
@@ -127,8 +127,8 @@ Proxy endpoints allow you to apply Cloudflare Gateway HTTP policies without inst
 
 Cloudflare One supports two types of proxy endpoints:
 
-* **Authorization endpoints**: Use Cloudflare Access for identity-based authentication
-* **Source IP endpoints**: Authorize traffic based on originating IP address (Enterprise only)
+- **Authorization endpoints**: Use Cloudflare Access for identity-based authentication
+- **Source IP endpoints**: Authorize traffic based on originating IP address (Enterprise only)
 
 Use proxy endpoints when you need to filter web traffic without device agents, integrate with existing proxy infrastructure, or deploy Gateway alongside other security tools.
 
@@ -208,11 +208,11 @@ The following table describes the Cloudflare Network Interconnect (CNI) connecti
 
 **Table 2: Cloudflare One CNI connection types**
 
-| Type                     | Description                                                                               | Ideal for                                                                       |
-| ------------------------ | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| **Direct Interconnect**  | Physical fiber cross-connect in a shared data center                                      | Customers colocated with Cloudflare who require maximum control and performance |
-| **Partner Interconnect** | Virtual connection through connectivity partners (Megaport, Equinix Fabric, PacketFabric) | Customers not colocated with Cloudflare or who prefer managed connectivity      |
-| **Cloud Interconnect**   | Private connection from cloud providers (AWS, GCP, Azure)                                 | Customers with workloads in public clouds requiring private connectivity        |
+| Type | Description | Ideal for |
+| --- | --- | --- |
+| **Direct Interconnect** | Physical fiber cross-connect in a shared data center | Customers colocated with Cloudflare who require maximum control and performance |
+| **Partner Interconnect** | Virtual connection through connectivity partners (Megaport, Equinix Fabric, PacketFabric) | Customers not colocated with Cloudflare or who prefer managed connectivity |
+| **Cloud Interconnect** | Private connection from cloud providers (AWS, GCP, Azure) | Customers with workloads in public clouds requiring private connectivity |
 
 Key consideration
 
@@ -234,10 +234,10 @@ Multi-Cloud Networking is not a separate tunnel type — it orchestrates your cl
 
 ### Use cases
 
-* Connect AWS, Azure, or GCP VPCs to Cloudflare WAN with minimal configuration
-* Automate tunnel and route creation instead of manual IPsec setup
-* Connect multiple VPCs through a hub architecture (AWS Transit Gateway)
-* Simplify multi-cloud networking across different providers
+- Connect AWS, Azure, or GCP VPCs to Cloudflare WAN with minimal configuration
+- Automate tunnel and route creation instead of manual IPsec setup
+- Connect multiple VPCs through a hub architecture (AWS Transit Gateway)
+- Simplify multi-cloud networking across different providers
 
 ### Cloudflare One Multi-Cloud on-ramp types
 
@@ -245,16 +245,16 @@ The following table describes the Multi-Cloud Networking on-ramp types.
 
 **Table 3: Cloudflare One Multi-Cloud Networking on-ramp types**
 
-| Type           | Description                                                                   | Use when                                                       |
-| -------------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------- |
-| **Single VPC** | Connects one VPC directly to Cloudflare WAN via VPN tunnel                    | You have a single VPC to connect                               |
-| **Hub**        | Connects multiple VPCs through a cloud hub (for example, AWS Transit Gateway) | You need to connect multiple VPCs with inter-VPC communication |
+| Type | Description | Use when |
+| --- | --- | --- |
+| **Single VPC** | Connects one VPC directly to Cloudflare WAN via VPN tunnel | You have a single VPC to connect |
+| **Hub** | Connects multiple VPCs through a cloud hub (for example, AWS Transit Gateway) | You need to connect multiple VPCs with inter-VPC communication |
 
 ### Supported cloud providers
 
-* AWS (single VPC and hubs)
-* Azure (single VPC)
-* GCP (single VPC)
+- AWS (single VPC and hubs)
+- Azure (single VPC)
+- GCP (single VPC)
 
 Key consideration
 
@@ -262,9 +262,9 @@ Multi-Cloud Networking requires a Cloudflare WAN subscription with Multi-Cloud N
 
 ### Deployment notes
 
-* **Azure VNet sizing**: Multi-Cloud Networking creates a GatewaySubnet (`/27`) within your VNet for the Azure VPN Gateway. Ensure your VNet has sufficient address space. A `/20` or larger VNet is recommended to avoid address exhaustion.
-* **Cloud provider costs**: Multi-Cloud Networking uses your cloud provider's native VPN services. Standard VPN gateway and data transfer costs from your cloud provider apply in addition to Cloudflare WAN costs.
-* **Tunnel creation time**: Cloud provider VPN gateways can take 15-45 minutes to provision. Plan for this delay when onboarding new VPCs.
+- **Azure VNet sizing**: Multi-Cloud Networking creates a GatewaySubnet ( `/27`) within your VNet for the Azure VPN Gateway. Ensure your VNet has sufficient address space. A `/20` or larger VNet is recommended to avoid address exhaustion.
+- **Cloud provider costs**: Multi-Cloud Networking uses your cloud provider's native VPN services. Standard VPN gateway and data transfer costs from your cloud provider apply in addition to Cloudflare WAN costs.
+- **Tunnel creation time**: Cloud provider VPN gateways can take 15-45 minutes to provision. Plan for this delay when onboarding new VPCs.
 
 For detailed configuration, refer to the [Multi-Cloud Networking documentation](https://developers.cloudflare.com/multi-cloud-networking/).
 
@@ -274,53 +274,53 @@ For detailed configuration, refer to the [Multi-Cloud Networking documentation](
 
 The following table maps common requirements to recommended Cloudflare One connectivity options. These are not exhaustive recommendations.
 
-**Table 4\. Recommend Cloudflare One connectivity options for common requirements**
+**Table 4. Recommend Cloudflare One connectivity options for common requirements**
 
-| Requirement                                                     | Recommended option                                                                                                                                                                                                                    |
-| --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Expose a private web application without a public IP            | [Cloudflare Tunnel](#cloudflare-tunnel)                                                                                                                                                                                               |
-| Secure end-user devices                                         | [Cloudflare One Client](#cloudflare-one-client)                                                                                                                                                                                       |
-| Replace traditional VPN for remote access                       | [Cloudflare Tunnel](#cloudflare-tunnel) (primary) + [Cloudflare Mesh](#cloudflare-mesh) (for bidirectional needs)                                                                                                                     |
-| Connect a site with IoT devices or VoIP systems                 | [GRE](#gre-tunnels) or [IPsec tunnels](#ipsec-tunnels) (from existing router/firewall), [Cloudflare One Appliance](#cloudflare-one-appliance) (zero-touch deployment), or [Cloudflare Mesh](#cloudflare-mesh) (requires a Linux host) |
-| Connect a branch office using existing routers                  | [GRE](#gre-tunnels) or [IPsec tunnels](#ipsec-tunnels)                                                                                                                                                                                |
-| Encrypt traffic over the public Internet                        | [IPsec tunnels](#ipsec-tunnels)                                                                                                                                                                                                       |
-| Zero-touch branch office deployment                             | [Cloudflare One Appliance](#cloudflare-one-appliance)                                                                                                                                                                                 |
-| Connect cloud VPCs (AWS, Azure, GCP) with minimal configuration | [Multi-Cloud Networking](#multi-cloud-networking)                                                                                                                                                                                     |
-| Bypass the public Internet entirely                             | [Cloudflare Network Interconnect](#cloudflare-network-interconnect-cni)                                                                                                                                                               |
-| High-throughput enterprise connectivity                         | [Cloudflare One Appliance](#cloudflare-one-appliance) or [CNI](#cloudflare-network-interconnect-cni)                                                                                                                                  |
+| Requirement | Recommended option |
+| --- | --- |
+| Expose a private web application without a public IP | [Cloudflare Tunnel](#cloudflare-tunnel) |
+| Secure end-user devices | [Cloudflare One Client](#cloudflare-one-client) |
+| Replace traditional VPN for remote access | [Cloudflare Tunnel](#cloudflare-tunnel) (primary) + [Cloudflare Mesh](#cloudflare-mesh) (for bidirectional needs) |
+| Connect a site with IoT devices or VoIP systems | [GRE](#gre-tunnels) or [IPsec tunnels](#ipsec-tunnels) (from existing router/firewall), [Cloudflare One Appliance](#cloudflare-one-appliance) (zero-touch deployment), or [Cloudflare Mesh](#cloudflare-mesh) (requires a Linux host) |
+| Connect a branch office using existing routers | [GRE](#gre-tunnels) or [IPsec tunnels](#ipsec-tunnels) |
+| Encrypt traffic over the public Internet | [IPsec tunnels](#ipsec-tunnels) |
+| Zero-touch branch office deployment | [Cloudflare One Appliance](#cloudflare-one-appliance) |
+| Connect cloud VPCs (AWS, Azure, GCP) with minimal configuration | [Multi-Cloud Networking](#multi-cloud-networking) |
+| Bypass the public Internet entirely | [Cloudflare Network Interconnect](#cloudflare-network-interconnect-cni) |
+| High-throughput enterprise connectivity | [Cloudflare One Appliance](#cloudflare-one-appliance) or [CNI](#cloudflare-network-interconnect-cni) |
 
 Note
 
 The connectivity options on this page connect your private infrastructure, sites, and users through Cloudflare's network. If you also need to protect public-facing services, these are handled by separate products:
 
-* **Non-HTTP traffic** (TCP/UDP protocols such as gaming, email, or custom services) — refer to [Spectrum](https://developers.cloudflare.com/spectrum/).
-* **Network-level DDoS protection** (for on-premises, cloud-hosted, and hybrid networks) — refer to [Magic Transit](https://developers.cloudflare.com/magic-transit/).
+- **Non-HTTP traffic** (TCP/UDP protocols such as gaming, email, or custom services) — refer to [Spectrum](https://developers.cloudflare.com/spectrum/).
+- **Network-level DDoS protection** (for on-premises, cloud-hosted, and hybrid networks) — refer to [Magic Transit](https://developers.cloudflare.com/magic-transit/).
 
 ### Cloudflare One recommendations by team
 
 The team driving your Cloudflare One connectivity project influences which option provides the smoothest adoption path. The following table provides examples.
 
-**Table 5\. Cloudflare One connectivity recommendations for teams**
+**Table 5. Cloudflare One connectivity recommendations for teams**
 
-| Primary team                  | Recommended starting point                                                                            | Rationale                                                                                                           |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Security / InfoSec            | [Cloudflare Tunnel](#cloudflare-tunnel) \+ [Cloudflare One Client](#cloudflare-one-client)            | Minimal network infrastructure changes required. Security controls are managed within the Cloudflare One dashboard. |
-| Network Operations            | [Cloudflare WAN](#ipsec-tunnels) (IPsec/GRE) or [Cloudflare One Appliance](#cloudflare-one-appliance) | Familiar routing and tunnel configuration. Integrates with existing network equipment and workflows.                |
-| DevOps / Platform Engineering | [Cloudflare Mesh](#cloudflare-mesh) or [Cloudflare Tunnel](#cloudflare-tunnel)                        | Software-defined deployment. Scriptable via API. No hardware dependencies.                                          |
-| Facilities / Branch IT        | [Cloudflare One Appliance](#cloudflare-one-appliance)                                                 | Zero-touch deployment with centralized management. No on-site networking expertise required.                        |
+| Primary team | Recommended starting point | Rationale |
+| --- | --- | --- |
+| Security / InfoSec | [Cloudflare Tunnel](#cloudflare-tunnel) + [Cloudflare One Client](#cloudflare-one-client) | Minimal network infrastructure changes required. Security controls are managed within the Cloudflare One dashboard. |
+| Network Operations | [Cloudflare WAN](#ipsec-tunnels) (IPsec/GRE) or [Cloudflare One Appliance](#cloudflare-one-appliance) | Familiar routing and tunnel configuration. Integrates with existing network equipment and workflows. |
+| DevOps / Platform Engineering | [Cloudflare Mesh](#cloudflare-mesh) or [Cloudflare Tunnel](#cloudflare-tunnel) | Software-defined deployment. Scriptable via API. No hardware dependencies. |
+| Facilities / Branch IT | [Cloudflare One Appliance](#cloudflare-one-appliance) | Zero-touch deployment with centralized management. No on-site networking expertise required. |
 
 ### Cloudflare Mesh and Cloudflare One Appliance comparison
 
 Cloudflare Mesh and Cloudflare One Appliance both provide site-level connectivity, but serve different deployment scenarios.
 
-| Aspect                | Cloudflare Mesh                                                                                                                                          | Cloudflare One Appliance                                                           |
-| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| **Protocol**          | MASQUE                                                                                                                                                   | IPsec                                                                              |
-| **Deployment model**  | Software on Linux host (can run alongside other workloads)                                                                                               | Dedicated hardware appliance or virtual machine                                    |
-| **Best for**          | Cloud VPCs, development environments, smaller deployments with an available Linux host                                                                   | Enterprise branch offices, data centers, sites requiring high throughput (1 Gbps+) |
-| **Platform support**  | Linux only (x86\_64, ARM64). Currently in beta.                                                                                                          | Hardware appliance (Dell VEP1460) or virtual (VMware ESXi, Proxmox)                |
-| **High availability** | [Active-passive replicas](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) for nodes with routes | Supported through multiple connectors per site                                     |
-| **Management**        | Configured as a device in the Cloudflare One Client settings                                                                                             | Centralized through the Cloudflare WAN dashboard with zero-touch provisioning      |
+| Aspect | Cloudflare Mesh | Cloudflare One Appliance |
+| --- | --- | --- |
+| **Protocol** | MASQUE | IPsec |
+| **Deployment model** | Software on Linux host (can run alongside other workloads) | Dedicated hardware appliance or virtual machine |
+| **Best for** | Cloud VPCs, development environments, smaller deployments with an available Linux host | Enterprise branch offices, data centers, sites requiring high throughput (1 Gbps+) |
+| **Platform support** | Linux only (x86\_64, ARM64). Currently in beta. | Hardware appliance (Dell VEP1460) or virtual (VMware ESXi, Proxmox) |
+| **High availability** | [Active-passive replicas](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) for nodes with routes | Supported through multiple connectors per site |
+| **Management** | Configured as a device in the Cloudflare One Client settings | Centralized through the Cloudflare WAN dashboard with zero-touch provisioning |
 
 Use Cloudflare Mesh when you need lightweight, software-only connectivity for cloud workloads or sites where a Linux host is available. Use Cloudflare One Appliance when you need enterprise-grade throughput, high availability, or integration with existing network infrastructure.
 
@@ -334,38 +334,38 @@ Most enterprise Cloudflare One deployments use multiple connectivity options tog
 
 Not all Cloudflare One connectivity options work together in the same account. Review the following compatibility information before designing your deployment.
 
-**Table 7\. Cloudflare One connectivity compatibility**
+**Table 7. Cloudflare One connectivity compatibility**
 
-| Combination                                                 | Compatible  | Notes                                                                                                                                                                                                                                             |
-| ----------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Cloudflare Mesh + Cloudflare WAN                            | Conditional | Requires [Cloudflare One Unified Routing](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta). Accounts on Legacy routing mode cannot use both.            |
-| Cloudflare One Client + Cloudflare WAN                      | Yes         | Cloudflare One Client users can access Cloudflare WAN-connected sites. Cloudflare WAN sites can also initiate connections to Cloudflare One Client devices using their virtual IP addresses.                                                      |
-| Cloudflare Tunnel + Cloudflare WAN                          | Yes         | Avoid overlapping IP routes. Cloudflare Tunnel takes priority if the same CIDR is configured for both.                                                                                                                                            |
-| GRE + IPsec                                                 | Yes         | Use for redundancy or migration scenarios.                                                                                                                                                                                                        |
-| CNI + GRE or IPsec                                          | Yes         | Use Internet-based GRE or IPsec tunnels as backup connectivity alongside CNI.                                                                                                                                                                     |
-| Cloudflare One Client + Cloudflare Tunnel + Cloudflare Mesh | Yes         | Common pattern for remote access to private applications. All three work together.                                                                                                                                                                |
-| CNI + Cloudflare Tunnel                                     | Conditional | cloudflared connects to multiple Cloudflare regions for redundancy. If CNI only advertises one region, the tunnel operates with reduced redundancy. Evaluate whether Cloudflare Tunnel is necessary if CNI already provides private connectivity. |
+| Combination | Compatible | Notes |
+| --- | --- | --- |
+| Cloudflare Mesh + Cloudflare WAN | Conditional | Requires [Cloudflare One Unified Routing](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta). Accounts on Legacy routing mode cannot use both. |
+| Cloudflare One Client + Cloudflare WAN | Yes | Cloudflare One Client users can access Cloudflare WAN-connected sites. Cloudflare WAN sites can also initiate connections to Cloudflare One Client devices using their virtual IP addresses. |
+| Cloudflare Tunnel + Cloudflare WAN | Yes | Avoid overlapping IP routes. Cloudflare Tunnel takes priority if the same CIDR is configured for both. |
+| GRE + IPsec | Yes | Use for redundancy or migration scenarios. |
+| CNI + GRE or IPsec | Yes | Use Internet-based GRE or IPsec tunnels as backup connectivity alongside CNI. |
+| Cloudflare One Client + Cloudflare Tunnel + Cloudflare Mesh | Yes | Common pattern for remote access to private applications. All three work together. |
+| CNI + Cloudflare Tunnel | Conditional | `cloudflared` connects to multiple Cloudflare regions for redundancy. If CNI only advertises one region, the tunnel operates with reduced redundancy. Evaluate whether Cloudflare Tunnel is necessary if CNI already provides private connectivity. |
 
 ### Cloudflare One routing considerations
 
 When using multiple Cloudflare One connectivity options, follow these guidelines to avoid routing conflicts:
 
-* **Avoid overlapping CIDR ranges**: Do not configure the same IP range for multiple tunnel types. If an overlap exists, Cloudflare Tunnel takes priority over Cloudflare WAN routes.
-* **No automatic failover**: Cloudflare does not automatically fail over traffic between different connectivity options. Plan your routing to handle failures within each tunnel type.
-* **Virtual Networks**: Use [Virtual Networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) to handle overlapping private IP ranges from different environments (for example, multiple cloud VPCs using `10.0.0.0/8`).
+- **Avoid overlapping CIDR ranges**: Do not configure the same IP range for multiple tunnel types. If an overlap exists, Cloudflare Tunnel takes priority over Cloudflare WAN routes.
+- **No automatic failover**: Cloudflare does not automatically fail over traffic between different connectivity options. Plan your routing to handle failures within each tunnel type.
+- **Virtual Networks**: Use [Virtual Networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) to handle overlapping private IP ranges from different environments (for example, multiple cloud VPCs using `10.0.0.0/8`).
 
 ### Cloudflare One MTU planning
 
 When layering Cloudflare One tunnels or using multiple encapsulation methods, account for overhead to prevent fragmentation.
 
-**Table 8\. Effective MTU values for Cloudflare One tunnel types**
+**Table 8. Effective MTU values for Cloudflare One tunnel types**
 
-| Scenario                                                           | Effective MTU                            | MSS clamping                                                                                                                                        |
-| ------------------------------------------------------------------ | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| GRE tunnel                                                         | 1,476 bytes                              | 1,436 bytes or lower                                                                                                                                |
-| IPsec tunnel                                                       | 1,400-1,436 bytes (varies by encryption) | 1,360-1,396 bytes                                                                                                                                   |
-| Cloudflare One Client behind Cloudflare WAN (double encapsulation) | \~1,300 bytes                            | Configure based on testing                                                                                                                          |
-| Cloudflare Mesh to Cloudflare One Client                           | \~1,280 bytes                            | Configure based on testing. Traffic is encapsulated twice: by Cloudflare Mesh and again by Cloudflare before delivery to the Cloudflare One Client. |
+| Scenario | Effective MTU | MSS clamping |
+| --- | --- | --- |
+| GRE tunnel | 1,476 bytes | 1,436 bytes or lower |
+| IPsec tunnel | 1,400-1,436 bytes (varies by encryption) | 1,360-1,396 bytes |
+| Cloudflare One Client behind Cloudflare WAN (double encapsulation) | \~1,300 bytes | Configure based on testing |
+| Cloudflare Mesh to Cloudflare One Client | \~1,280 bytes | Configure based on testing. Traffic is encapsulated twice: by Cloudflare Mesh and again by Cloudflare before delivery to the Cloudflare One Client. |
 
 Configure MSS clamping on your edge devices to ensure TCP traffic does not require fragmentation.
 
@@ -373,35 +373,35 @@ Configure MSS clamping on your edge devices to ensure TCP traffic does not requi
 
 Cloudflare One connectivity options handle source IP addresses differently. The following table shows how each Cloudflare One connectivity option handles source IP addresses.
 
-**Table 9\. Cloudflare One source IP behavior**
+**Table 9. Cloudflare One source IP behavior**
 
-| Connectivity option      | Source IP behavior                                                                    |
-| ------------------------ | ------------------------------------------------------------------------------------- |
-| Cloudflare Tunnel        | Origin sees the cloudflared process IP. Use CF-Connecting-IP header for HTTP traffic. |
-| Cloudflare Mesh          | Preserves original source IP end-to-end.                                              |
-| GRE and IPsec tunnels    | Preserves original source IP within the tunnel.                                       |
-| Cloudflare One Appliance | Preserves original source IP within the tunnel.                                       |
+| Connectivity option | Source IP behavior |
+| --- | --- |
+| Cloudflare Tunnel | Origin sees the `cloudflared` process IP. Use `CF-Connecting-IP` header for HTTP traffic. |
+| Cloudflare Mesh | Preserves original source IP end-to-end. |
+| GRE and IPsec tunnels | Preserves original source IP within the tunnel. |
+| Cloudflare One Appliance | Preserves original source IP within the tunnel. |
 
 Source IP preservation is required for:
 
-* VoIP and SIP protocols that embed IP addresses in signaling
-* Audit logging that requires client IP visibility
-* Applications that make authorization decisions based on source IP
+- VoIP and SIP protocols that embed IP addresses in signaling
+- Audit logging that requires client IP visibility
+- Applications that make authorization decisions based on source IP
 
 ### Cloudflare One Traffic direction capabilities
 
 The following table shows traffic direction support for each Cloudflare One connectivity option.
 
-**Table 10\. Cloudflare One connectivity traffic direction support**
+**Table 10. Cloudflare One connectivity traffic direction support**
 
-| Connectivity option      | Client-initiated traffic | Server-initiated traffic |
-| ------------------------ | ------------------------ | ------------------------ |
-| Cloudflare Tunnel        | Yes                      | No                       |
-| Cloudflare One Client    | Yes                      | Yes                      |
-| Cloudflare Mesh          | Yes                      | Yes                      |
-| GRE and IPsec tunnels    | Yes                      | Yes                      |
-| Cloudflare One Appliance | Yes                      | Yes                      |
-| CNI                      | Yes                      | Yes                      |
+| Connectivity option | Client-initiated traffic | Server-initiated traffic |
+| --- | --- | --- |
+| Cloudflare Tunnel | Yes | No |
+| Cloudflare One Client | Yes | Yes |
+| Cloudflare Mesh | Yes | Yes |
+| GRE and IPsec tunnels | Yes | Yes |
+| Cloudflare One Appliance | Yes | Yes |
+| CNI | Yes | Yes |
 
 If your application requires server-initiated connections (for example, VoIP callbacks, database replication), use a bidirectional connectivity option such as Cloudflare One Client, Cloudflare Mesh, Cloudflare WAN (IPsec/GRE), or CNI. Cloudflare Tunnel does not support server-initiated traffic.
 
@@ -417,9 +417,9 @@ This pattern serves organizations with a distributed workforce and multiple phys
 
 **Components:**
 
-* **Cloudflare One Client** for remote employees, providing secure access from any location
-* **IPsec tunnels** (via Cloudflare WAN) for branch offices with existing network infrastructure
-* **Cloudflare Tunnel** for specific internal applications that need clientless browser access
+- **Cloudflare One Client** for remote employees, providing secure access from any location
+- **IPsec tunnels** (via Cloudflare WAN) for branch offices with existing network infrastructure
+- **Cloudflare Tunnel** for specific internal applications that need clientless browser access
 
 **Traffic flow:**
 
@@ -434,9 +434,9 @@ This pattern serves organizations with primarily cloud-based infrastructure and 
 
 **Components:**
 
-* **Multi-Cloud Networking** for cloud VPCs (AWS, GCP, Azure), automating IPsec tunnel creation to Cloudflare WAN
-* **Cloudflare Tunnel** for Kubernetes services and containerized applications
-* **Cloudflare One Client** for employee devices
+- **Multi-Cloud Networking** for cloud VPCs (AWS, GCP, Azure), automating IPsec tunnel creation to Cloudflare WAN
+- **Cloudflare Tunnel** for Kubernetes services and containerized applications
+- **Cloudflare One Client** for employee devices
 
 **Traffic flow:**
 
@@ -452,9 +452,9 @@ This pattern serves organizations with strict compliance requirements that prohi
 
 **Components:**
 
-* **Cloudflare Network Interconnect (CNI)** for primary connectivity from data centers
-* **IPsec tunnels** as backup connectivity in case of CNI issues
-* **Cloudflare One Client** for remote employees
+- **Cloudflare Network Interconnect (CNI)** for primary connectivity from data centers
+- **IPsec tunnels** as backup connectivity in case of CNI issues
+- **Cloudflare One Client** for remote employees
 
 **Traffic flow:**
 
@@ -467,21 +467,21 @@ This pattern serves organizations with strict compliance requirements that prohi
 
 ## Related resources
 
-* [SASE reference architecture](https://developers.cloudflare.com/reference-architecture/architectures/sase/) \- Guide to deploying Cloudflare One
-* [WAN transformation](https://developers.cloudflare.com/cloudflare-wan/wan-transformation/) \- Plan your migration from legacy WAN to Cloudflare One
-* [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
-* [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
-* [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
-* [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
-* [WAN Connectors on-ramps](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/on-ramps/) \- Full list of supported on-ramps
-* [Multi-Cloud Networking](https://developers.cloudflare.com/multi-cloud-networking/) \- Automate cloud VPC connectivity
-* [Magic Transit](https://developers.cloudflare.com/magic-transit/)
-* [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliances/)
-* [Cloudflare Network Interconnect](https://developers.cloudflare.com/network-interconnect/)
-* [Virtual Networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/)
-* [DNS locations](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/) \- Filter DNS traffic without device agents
-* [Proxy endpoints](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) \- Filter web traffic using PAC files
-* [Clientless Web Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation/) \- Secure web access without device agents
+- [SASE reference architecture](https://developers.cloudflare.com/reference-architecture/architectures/sase/) - Guide to deploying Cloudflare One
+- [WAN transformation](https://developers.cloudflare.com/cloudflare-wan/wan-transformation/) - Plan your migration from legacy WAN to Cloudflare One
+- [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+- [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+- [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
+- [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+- [WAN Connectors on-ramps](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/on-ramps/) - Full list of supported on-ramps
+- [Multi-Cloud Networking](https://developers.cloudflare.com/multi-cloud-networking/) - Automate cloud VPC connectivity
+- [Magic Transit](https://developers.cloudflare.com/magic-transit/)
+- [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliances/)
+- [Cloudflare Network Interconnect](https://developers.cloudflare.com/network-interconnect/)
+- [Virtual Networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/)
+- [DNS locations](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/) - Filter DNS traffic without device agents
+- [Proxy endpoints](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) - Filter web traffic using PAC files
+- [Clientless Web Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation/) - Secure web access without device agents
 
 For implementation guidance on combining Cloudflare One connectivity options, refer to the [SASE reference architecture](https://developers.cloudflare.com/reference-architecture/architectures/sase/).
 

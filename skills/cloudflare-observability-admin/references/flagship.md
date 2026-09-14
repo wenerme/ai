@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Flagship
 
-Last updated Jun 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/flagship/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Ship features safely with feature flags.
 

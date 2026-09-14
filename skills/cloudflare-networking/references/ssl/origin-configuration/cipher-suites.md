@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cipher suites
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/cipher-suites/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/cipher-suites/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Refer to the following list to know what cipher suites Cloudflare presents to origin servers during an SSL/TLS handshake.
 
@@ -24,33 +24,33 @@ The list order is based on how the cipher suites appear in the [ClientHello ↗]
 
 ## Supported cipher suites by protocol
 
-| Cipher name                                           | TLS 1.0 | TLS 1.1 | TLS 1.2 | TLS 1.3 |
-| ----------------------------------------------------- | ------- | ------- | ------- | ------- |
-| AEAD-AES128-GCM-SHA256 [1](#user-content-fn-1)        | ❌       | ❌       | ❌       | ✅       |
-| AEAD-AES256-GCM-SHA384 [1](#user-content-fn-1)        | ❌       | ❌       | ❌       | ✅       |
-| AEAD-CHACHA20-POLY1305-SHA256 [1](#user-content-fn-1) | ❌       | ❌       | ❌       | ✅       |
-| ECDHE-ECDSA-AES128-GCM-SHA256                         | ❌       | ❌       | ✅       | ❌       |
-| ECDHE-RSA-AES128-GCM-SHA256                           | ❌       | ❌       | ✅       | ❌       |
-| ECDHE-RSA-AES128-SHA                                  | ✅       | ✅       | ✅       | ❌       |
-| AES128-GCM-SHA256                                     | ❌       | ❌       | ✅       | ❌       |
-| AES128-SHA                                            | ✅       | ✅       | ✅       | ❌       |
-| ECDHE-ECDSA-AES256-GCM-SHA384                         | ❌       | ❌       | ✅       | ❌       |
-| ECDHE-RSA-AES256-GCM-SHA384                           | ❌       | ❌       | ✅       | ❌       |
-| ECDHE-RSA-AES256-SHA384                               | ❌       | ❌       | ✅       | ❌       |
-| AES256-SHA                                            | ✅       | ✅       | ✅       | ❌       |
-| DES-CBC3-SHA                                          | ✅       | ❌       | ❌       | ❌       |
+| Cipher name | TLS 1.0 | TLS 1.1 | TLS 1.2 | TLS 1.3 |
+| --- | --- | --- | --- | --- |
+| AEAD-AES128-GCM-SHA256 <sup>[1](#user-content-fn-1)</sup> | ❌ | ❌ | ❌ | ✅ |
+| AEAD-AES256-GCM-SHA384 <sup>[1](#user-content-fn-1)</sup> | ❌ | ❌ | ❌ | ✅ |
+| AEAD-CHACHA20-POLY1305-SHA256 <sup>[1](#user-content-fn-1)</sup> | ❌ | ❌ | ❌ | ✅ |
+| ECDHE-ECDSA-AES128-GCM-SHA256 | ❌ | ❌ | ✅ | ❌ |
+| ECDHE-RSA-AES128-GCM-SHA256 | ❌ | ❌ | ✅ | ❌ |
+| ECDHE-RSA-AES128-SHA | ✅ | ✅ | ✅ | ❌ |
+| AES128-GCM-SHA256 | ❌ | ❌ | ✅ | ❌ |
+| AES128-SHA | ✅ | ✅ | ✅ | ❌ |
+| ECDHE-ECDSA-AES256-GCM-SHA384 | ❌ | ❌ | ✅ | ❌ |
+| ECDHE-RSA-AES256-GCM-SHA384 | ❌ | ❌ | ✅ | ❌ |
+| ECDHE-RSA-AES256-SHA384 | ❌ | ❌ | ✅ | ❌ |
+| AES256-SHA | ✅ | ✅ | ✅ | ❌ |
+| DES-CBC3-SHA | ✅ | ❌ | ❌ | ❌ |
 
 ### TLS 1.3 cipher suites
 
 Although TLS 1.3 uses the same cipher suite space as previous versions of TLS, TLS 1.3 cipher suites are defined differently, only specifying the symmetric ciphers, and cannot be used for TLS 1.2 ([RFC 8446 ↗](https://www.rfc-editor.org/rfc/rfc8446.html)).
 
-Similarly, TLS 1.2 and lower cipher suites cannot be used with TLS 1.3\. BoringSSL also hard-codes cipher preferences in the order above for TLS 1.3.
+Similarly, TLS 1.2 and lower cipher suites cannot be used with TLS 1.3. BoringSSL also hard-codes cipher preferences in the order above for TLS 1.3.
 
 Based on BoringSSL, Cloudflare system will return the names listed above. However, the corresponding names defined in [RFC 8446 ↗](https://www.rfc-editor.org/rfc/rfc8446.html) are the following:
 
-* `TLS_AES_128_GCM_SHA256`
-* `TLS_AES_256_GCM_SHA384`
-* `TLS_CHACHA20_POLY1305_SHA256`
+- `TLS_AES_128_GCM_SHA256`
+- `TLS_AES_256_GCM_SHA384`
+- `TLS_CHACHA20_POLY1305_SHA256`
 
 ## Match on origin
 
@@ -67,7 +67,7 @@ ssl_prefer_server_ciphers on;
 
 ## Footnotes
 
-1. Refer to [TLS 1.3 cipher suites](#tls-13-cipher-suites) for details. [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2) [↩3](#user-content-fnref-1-3)
+1. Refer to [TLS 1.3 cipher suites](#tls-13-cipher-suites) for details. [↩](#user-content-fnref-1) [↩<sup>2</sup>](#user-content-fnref-1-2) [↩<sup>3</sup>](#user-content-fnref-1-3)
 
 Was this helpful?
 

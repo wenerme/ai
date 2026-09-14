@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Prevent data loss
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/company-security/data-loss-prevention/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/company-security/data-loss-prevention/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Sensitive data — Personally Identifiable Information (PII), payment card numbers, health records — can leave your network through employee uploads, SaaS misconfigurations, or compromised applications. Cloudflare One detects sensitive data patterns in traffic and blocks exfiltration in real time.
 
@@ -22,10 +22,10 @@ Sensitive data — Personally Identifiable Information (PII), payment card numbe
 
 Secure your organization with a cloud security platform that replaces legacy perimeters with Cloudflare's global network. [Learn more about Cloudflare One](https://developers.cloudflare.com/cloudflare-one/).
 
-* **Data detection** \- Identify sensitive data patterns — Personally Identifiable Information (PII), Payment Card Industry (PCI), Protected Health Information (PHI), and custom patterns — in traffic flowing through Gateway
-* **Inline protection** \- Block uploads or transfers of sensitive data in real time before they leave the network
-* **SaaS visibility** \- Discover which SaaS applications employees are using, including unsanctioned shadow IT
-* **Posture management** \- Identify misconfigurations and overly permissive sharing settings across connected SaaS apps
+- **Data detection** - Identify sensitive data patterns — Personally Identifiable Information (PII), Payment Card Industry (PCI), Protected Health Information (PHI), and custom patterns — in traffic flowing through Gateway
+- **Inline protection** - Block uploads or transfers of sensitive data in real time before they leave the network
+- **SaaS visibility** - Discover which SaaS applications employees are using, including unsanctioned shadow IT
+- **Posture management** - Identify misconfigurations and overly permissive sharing settings across connected SaaS apps
 
 ## Get started
 

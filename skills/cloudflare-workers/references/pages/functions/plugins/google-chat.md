@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Google Chat
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/functions/plugins/google-chat/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/plugins/google-chat/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Google Chat Pages Plugin creates a Google Chat bot which can respond to messages. It also includes an API for interacting with Google Chat (for example, for creating messages) without the need for user input. This API is useful for situations such as alerts.
 
@@ -90,16 +90,16 @@ We recommend storing your service account's credentials in KV rather than in pla
 
 The following functions are available on a `GoogleChatAPI` instance. Each take up to three arguments: an object of path parameters, an object of query parameters, and an object of the request body; as described in the [Google Chat API's documentation ↗](https://developers.google.com/chat/api/reference/rest).
 
-* [downloadMedia ↗](https://developers.google.com/chat/api/reference/rest/v1/media/download)
-* [getSpace ↗](https://developers.google.com/chat/api/reference/rest/v1/spaces/get)
-* [listSpaces ↗](https://developers.google.com/chat/api/reference/rest/v1/spaces/list)
-* [getMember ↗](https://developers.google.com/chat/api/reference/rest/v1/spaces.members/get)
-* [listMembers ↗](https://developers.google.com/chat/api/reference/rest/v1/spaces.members/list)
-* [createMessage ↗](https://developers.google.com/chat/api/reference/rest/v1/spaces.messages/create)
-* [deleteMessage ↗](https://developers.google.com/chat/api/reference/rest/v1/spaces.messages/delete)
-* [getMessage ↗](https://developers.google.com/chat/api/reference/rest/v1/spaces.messages/get)
-* [updateMessage ↗](https://developers.google.com/chat/api/reference/rest/v1/spaces.messages/update)
-* [getAttachment ↗](https://developers.google.com/chat/api/reference/rest/v1/spaces.messages.attachments/get)
+- [`downloadMedia` ↗](https://developers.google.com/chat/api/reference/rest/v1/media/download)
+- [`getSpace` ↗](https://developers.google.com/chat/api/reference/rest/v1/spaces/get)
+- [`listSpaces` ↗](https://developers.google.com/chat/api/reference/rest/v1/spaces/list)
+- [`getMember` ↗](https://developers.google.com/chat/api/reference/rest/v1/spaces.members/get)
+- [`listMembers` ↗](https://developers.google.com/chat/api/reference/rest/v1/spaces.members/list)
+- [`createMessage` ↗](https://developers.google.com/chat/api/reference/rest/v1/spaces.messages/create)
+- [`deleteMessage` ↗](https://developers.google.com/chat/api/reference/rest/v1/spaces.messages/delete)
+- [`getMessage` ↗](https://developers.google.com/chat/api/reference/rest/v1/spaces.messages/get)
+- [`updateMessage` ↗](https://developers.google.com/chat/api/reference/rest/v1/spaces.messages/update)
+- [`getAttachment` ↗](https://developers.google.com/chat/api/reference/rest/v1/spaces.messages.attachments/get)
 
 Was this helpful?
 

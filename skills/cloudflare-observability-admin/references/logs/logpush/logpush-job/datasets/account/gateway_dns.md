@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Gateway DNS
 
-Last updated Jul 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway%5Fdns/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_dns/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The descriptions below detail the fields available for `gateway_dns`.
 
@@ -44,31 +44,31 @@ Maximum TTL cap applied to the response records, in seconds. Set to 0 when no ca
 
 Type: `array[string]`
 
-The IPs of the authoritative nameservers that provided the answers, if any (for example \['203.0.113.1', '203.0.113.2'\]).
+The IPs of the authoritative nameservers that provided the answers, if any (for example \['203.0.113.1', '203.0.113.2']).
 
 ## CNAMECategoryIDs
 
 Type: `array[int]`
 
-ID or IDs of category that the intermediate cname domains belongs to (for example, \[7,12,28,122,129,163\]).
+ID or IDs of category that the intermediate cname domains belongs to (for example, \[7,12,28,122,129,163]).
 
 ## CNAMECategoryNames
 
 Type: `array[string]`
 
-Name or names of category that the intermediate cname domains belongs to (for example, \['Photography', 'Weather'\]).
+Name or names of category that the intermediate cname domains belongs to (for example, \['Photography', 'Weather']).
 
 ## CNAMEs
 
 Type: `array[string]`
 
-Resolved intermediate cname domains (for example, \['alias.example.com'\]).
+Resolved intermediate cname domains (for example, \['alias.example.com']).
 
 ## CNAMEsReversed
 
 Type: `array[string]`
 
-Resolved intermediate cname domains in reverse (for example, \['com.example.alias'\]).
+Resolved intermediate cname domains in reverse (for example, \['com.example.alias']).
 
 ## ColoCode
 
@@ -158,25 +158,25 @@ The destination port used at the edge. The port changes based on the protocol us
 
 Type: `array[int]`
 
-List of returned Extended DNS Error Codes (for example, \[2, 3\]).
+List of returned Extended DNS Error Codes (for example, \[2, 3]).
 
 ## Email
 
 Type: `string`
 
-Email used to authenticate the client (for example, '[user@test.com](mailto:user@test.com)').
+Email used to authenticate the client (for example, ' [user@test.com](mailto:user@test.com)').
 
 ## InitialCategoryIDs
 
 Type: `array[int]`
 
-ID or IDs of category that the queried domains belongs to (for example, \[7,12,28,122,129,163\]).
+ID or IDs of category that the queried domains belongs to (for example, \[7,12,28,122,129,163]).
 
 ## InitialCategoryNames
 
 Type: `array[string]`
 
-Name or names of category that the queried domains belongs to (for example, \['Photography', 'Weather'\]).
+Name or names of category that the queried domains belongs to (for example, \['Photography', 'Weather']).
 
 ## InitialResolvedIPs
 
@@ -236,25 +236,25 @@ UUID of the location the DNS request is coming from. Location is created by the 
 
 Type: `array[int]`
 
-ID or IDs of category that the domain was matched with the policy (for example, \[7,12,28,122,129,163\]).
+ID or IDs of category that the domain was matched with the policy (for example, \[7,12,28,122,129,163]).
 
 ## MatchedCategoryNames
 
 Type: `array[string]`
 
-Name or names of category that the domain was matched with the policy (for example, \['Photography', 'Weather'\]).
+Name or names of category that the domain was matched with the policy (for example, \['Photography', 'Weather']).
 
 ## MatchedIndicatorFeedIDs
 
 Type: `array[int]`
 
-ID or IDs of indicator feed(s) that the domain was matched with the policy (for example, \[7,12\]).
+ID or IDs of indicator feed(s) that the domain was matched with the policy (for example, \[7,12]).
 
 ## MatchedIndicatorFeedNames
 
 Type: `array[string]`
 
-Name or names of indicator feed(s) that the domain was matched with the policy (for example, \['Vendor Malware Feed', 'Vendor CoC Feed'\]).
+Name or names of indicator feed(s) that the domain was matched with the policy (for example, \['Vendor Malware Feed', 'Vendor CoC Feed']).
 
 ## Policy (deprecated)
 
@@ -284,13 +284,13 @@ The protocol used for the DNS query by the client (for example, 'udp').
 
 Type: `array[int]`
 
-ID or IDs of applications the queried domain belongs to (for example, \[1, 51\])
+ID or IDs of applications the queried domain belongs to (for example, \[1, 51])
 
 ## QueryApplicationNames
 
 Type: `array[string]`
 
-Name or names of applications the queried domain belongs to (for example, \['Cloudflare Dashboard'\])
+Name or names of applications the queried domain belongs to (for example, \['Cloudflare Dashboard'])
 
 ## QueryCategoryIDs
 
@@ -314,13 +314,13 @@ Globally unique identifier of the query.
 
 Type: `array[int]`
 
-ID or IDs of indicator feed(s) that the domain belongs to (for example, \[7,12,28\]).
+ID or IDs of indicator feed(s) that the domain belongs to (for example, \[7,12,28]).
 
 ## QueryIndicatorFeedNames
 
 Type: `array[string]`
 
-Name or names of indicator feed(s) that the domain belongs to (for example, \['Vendor Malware Feed', 'Vendor CoC Feed', 'Vendor Phishing Feed'\]).
+Name or names of indicator feed(s) that the domain belongs to (for example, \['Vendor Malware Feed', 'Vendor CoC Feed', 'Vendor Phishing Feed']).
 
 ## QueryName
 
@@ -362,7 +362,7 @@ The return code sent back by the DNS resolver.
 
 Type: `array[object]`
 
-The rdata objects (for example, \[{"type":"5","data":"dns-packet-placeholder..."}\]).
+The rdata objects (for example, \[{"type":"5","data":"dns-packet-placeholder..."}]).
 
 ## RedirectTargetURI
 
@@ -380,43 +380,43 @@ The UUID of the device registration from which the HTTP request originated (for 
 
 Type: `array[int]`
 
-ID or IDs of the category that was sent to gateway in the EDNS request for filtering (for example, \[7,12,28,122,129,163\]).
+ID or IDs of the category that was sent to gateway in the EDNS request for filtering (for example, \[7,12,28,122,129,163]).
 
 ## RequestContextCategoryNames
 
 Type: `array[string]`
 
-Name or names of the category that was sent to gateway in the EDNS request for filtering (for example, \['Photography', 'Weather'\]).
+Name or names of the category that was sent to gateway in the EDNS request for filtering (for example, \['Photography', 'Weather']).
 
 ## ResolvedIPCategoryIDs
 
 Type: `array[int]`
 
-ID or IDs of category that the ips in the response belongs to (for example, \[7,12,28,122,129,163\]).
+ID or IDs of category that the ips in the response belongs to (for example, \[7,12,28,122,129,163]).
 
 ## ResolvedIPCategoryNames
 
 Type: `array[string]`
 
-Name or names of category that the ips in the response belongs to (for example, \['Photography', 'Weather'\]).
+Name or names of category that the ips in the response belongs to (for example, \['Photography', 'Weather']).
 
 ## ResolvedIPContinentCodes
 
 Type: `array[string]`
 
-Continent code of each resolved IP, if any (for example \['NA', 'EU'\]).
+Continent code of each resolved IP, if any (for example \['NA', 'EU']).
 
 ## ResolvedIPCountryCodes
 
 Type: `array[string]`
 
-Country code of each resolved IP, if any (for example \['US', 'PT'\]).
+Country code of each resolved IP, if any (for example \['US', 'PT']).
 
 ## ResolvedIPs
 
 Type: `array[string]`
 
-The resolved IPs in the response, if any (for example \['203.0.113.1', '203.0.113.2'\]).
+The resolved IPs in the response, if any (for example \['203.0.113.1', '203.0.113.2']).
 
 ## ResolverDecision
 
@@ -440,13 +440,13 @@ Resolver policy name, if any matched.
 
 Type: `array[object]`
 
-The rdata objects (for example, \[{"type":"5","data":"dns-packet-placeholder..."}\]).
+The rdata objects (for example, \[{"type":"5","data":"dns-packet-placeholder..."}]).
 
 ## ResourceRecordsJSON
 
 Type: `string`
 
-String that represents the JSON array with the returned resource records (for example, '\[{"name": "example.com", "type": "CNAME", "class": "IN", "ttl": 3600, "rdata": "cname.example.com."}\]').
+String that represents the JSON array with the returned resource records (for example, '\[{"name": "example.com", "type": "CNAME", "class": "IN", "ttl": 3600, "rdata": "cname.example.com."}]').
 
 ## ResponseTimeMs
 
@@ -500,7 +500,7 @@ Method used to pick the time zone for the schedule (from rule/ from user ip/ fro
 
 Type: `array[int]`
 
-TTL of each record in the upstream response, in seconds. Maps one-to-one with the resource records (for example, \[3600, 300\]).
+TTL of each record in the upstream response, in seconds. Maps one-to-one with the resource records (for example, \[3600, 300]).
 
 ## UserID
 
@@ -517,5 +517,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_dns/#page","headline":"Gateway DNS · Cloudflare Logs docs","description":"The descriptions below detail the fields available for gateway_dns.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_dns/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_dns/#page","headline":"Gateway DNS · Cloudflare Logs docs","description":"The descriptions below detail the fields available for gateway_dns.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_dns/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

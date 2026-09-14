@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Bot Feedback Loop
 
-Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/concepts/feedback-loop/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/concepts/feedback-loop/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The Bot Feedback Loop allows you to report requests that Bot Management [scored](https://developers.cloudflare.com/bots/concepts/bot-score/) incorrectly. When you submit a false negative or false positive report, Cloudflare analyzes the data and uses it to train the next machine learning model.
+The Bot Feedback Loop allows you to report requests that Bot Management [scored](https://developers.cloudflare.com/bots/concepts/bot-score/)
+
+ incorrectly. When you submit a false negative or false positive report, Cloudflare analyzes the data and uses it to train the next machine learning model.
 
 ## Availability
 
@@ -22,7 +24,7 @@ Bot Feedback Loop is available for Enterprise Bot Management customers. Visit [P
 
 ## False Positive
 
-A false positive can happen if Cloudflare scores a request from a person using a browser, mobile application or desktop application in the _automated_ or _likely automated_ range.
+A false positive can happen if Cloudflare scores a request from a person using a browser, mobile application or desktop application in the *automated* or *likely automated* range.
 
 ## False Negative
 
@@ -30,26 +32,25 @@ If Cloudflare is unable to detect a portion of automated traffic on your site, s
 
 ### Subtypes
 
-| Subtype                | Definition                                                                                                                                                                                                |
-| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Account Creation Abuse | The automated creation of many new accounts in order to gain access to site resources.                                                                                                                    |
-| Ad Fraud               | Fraudulent increase in the number of times an advertisement is clicked on or displayed.                                                                                                                   |
-| Credit Card Abuse      | Attempts to repeatedly validate many credit card numbers or the same credit card number with different validation details.                                                                                |
-| Cashing Out            | Abusing the target Internet application to obtain valuable goods.                                                                                                                                         |
-| Login Abuse            | Attempts to gain access to a password protected portion of an Internet application using many different combinations of usernames and passwords.                                                          |
-| Inventory Abuse        | Automated abuse related to purchasing limited stock inventory or holding inventory to prevent others from making transactions.                                                                            |
-| Denial of Service      | Automated requests with the intent of exhausting server resources to prevent the Internet application from functioning.                                                                                   |
-| Expediting             | Automating the use of an Internet application to make transactions faster than a human visitor to gain unfair advantage.                                                                                  |
-| Fuzzing                | Finding implementation bugs through the use of malformed data injection in an automated fashion.                                                                                                          |
-| Scraping               | Automated retrieval of valuable or proprietary information from an Internet application.                                                                                                                  |
-| Spamming               | The abuse of content forms to send spam.                                                                                                                                                                  |
-| Token Cracking         | Identification of valid token codes providing some form of user benefit within the application.                                                                                                           |
+| Subtype | Definition |
+| --- | --- |
+| Account Creation Abuse | The automated creation of many new accounts in order to gain access to site resources. |
+| Ad Fraud | Fraudulent increase in the number of times an advertisement is clicked on or displayed. |
+| Credit Card Abuse | Attempts to repeatedly validate many credit card numbers or the same credit card number with different validation details. |
+| Cashing Out | Abusing the target Internet application to obtain valuable goods. |
+| Login Abuse | Attempts to gain access to a password protected portion of an Internet application using many different combinations of usernames and passwords. |
+| Inventory Abuse | Automated abuse related to purchasing limited stock inventory or holding inventory to prevent others from making transactions. |
+| Denial of Service | Automated requests with the intent of exhausting server resources to prevent the Internet application from functioning. |
+| Expediting | Automating the use of an Internet application to make transactions faster than a human visitor to gain unfair advantage. |
+| Fuzzing | Finding implementation bugs through the use of malformed data injection in an automated fashion. |
+| Scraping | Automated retrieval of valuable or proprietary information from an Internet application. |
+| Spamming | The abuse of content forms to send spam. |
+| Token Cracking | Identification of valid token codes providing some form of user benefit within the application. |
 | Vulnerability Scanning | Systematic enumeration and examination of identifiable, guessable and unknown content locations, paths, file names, parameters, to find weaknesses and points where a security vulnerability might exist. |
 
 ## Submit a report
 
-1. In the Cloudflare dashboard, go to the **Security Analytics** page.
-[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+1. In the Cloudflare dashboard, go to the **Security Analytics** page. [Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. Apply one or more filters.
 3. Under **Request activity**, filter by **Bot analysis**.
 4. Select **Report incorrect data** and fill out the form.
@@ -142,17 +143,17 @@ curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/bot_management/feedba
 
 ## API Fields
 
-| Field                    | Type    | Description                                                                 | Value Example                                                                                                                                                         |
-| ------------------------ | ------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| type                     | string  | The feedback report type.                                                   | false\_positive                                                                                                                                                       |
-| description              | string  | The feedback report description with more details on the issue.             | Legitimate customers having low scores.                                                                                                                               |
-| expression               | string  | The wirefilter expression matching reported requests.                       | (cf.bot\_management.score le 46 and ip.src.asnum eq 132892 and http.host eq "app.example.com" and cf.bot\_management.ja3\_hash eq "3fed133de60c35724739b913924b6c24") |
-| first\_request\_seen\_at | string  | The time range start when the first request has been seen, RFC 3339 format. | 2022-08-01T00:00:00Z                                                                                                                                                  |
-| last\_request\_seen\_at  | string  | The time range end when the last request has been seen, RFC 3339 format.    | 2022-08-10T00:00:00Z                                                                                                                                                  |
-| requests                 | integer | The total number of reported requests.                                      | 100                                                                                                                                                                   |
-| requests\_by\_score      | object  | The requests breakdown by score.                                            | See example below.                                                                                                                                                    |
-| requests\_by\_score\_src | object  | Requests breakdown by score source.                                         | See example below.                                                                                                                                                    |
-| requests\_by\_attribute  | object  | Requests breakdown by attribute (optional).                                 | See example below.                                                                                                                                                    |
+| Field | Type | Description | Value Example |
+| --- | --- | --- | --- |
+| `type` | string | The feedback report type. | `false_positive` |
+| `description` | string | The feedback report description with more details on the issue. | Legitimate customers having low scores. |
+| `expression` | string | The wirefilter expression matching reported requests. | `(cf.bot_management.score le 46 and ip.src.asnum eq 132892 and http.host eq "app.example.com" and cf.bot_management.ja3_hash eq "3fed133de60c35724739b913924b6c24")` |
+| `first_request_seen_at` | string | The time range start when the first request has been seen, RFC 3339 format. | `2022-08-01T00:00:00Z` |
+| `last_request_seen_at` | string | The time range end when the last request has been seen, RFC 3339 format. | `2022-08-10T00:00:00Z` |
+| `requests` | integer | The total number of reported requests. | `100` |
+| `requests_by_score` | object | The requests breakdown by score. | See example below. |
+| `requests_by_score_src` | object | Requests breakdown by score source. | See example below. |
+| `requests_by_attribute` | object | Requests breakdown by attribute (optional). | See example below. |
 
 `requests_by_score`
 
@@ -193,16 +194,16 @@ curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/bot_management/feedba
 
 ### Expression fields
 
-| Field                        | Type    | Description                                                                                                                                                                 |
-| ---------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| cf.bot\_management.ja3\_hash | string  | This provides an SSL/TLS fingerprint to help you identify potential bot requests.                                                                                           |
-| cf.bot\_management.score     | integer | This represents the likelihood that a request originates from a bot using a score from 1-99.                                                                                |
-| http.host                    | string  | This represents the hostname used in the full request URI.                                                                                                                  |
-| http.request.uri.path        | string  | This represents the URI path of the request.                                                                                                                                |
-| http.user\_agent             | string  | This represents the HTTP user agent which is a request header that contains a characteristic string to allow identification of the client operating system and web browser. |
-| ip.src.asnum                 | integer | This represents the 16- or 32-bit integer representing the Autonomous System (AS) number associated with client IP address.                                                 |
-| ip.src.country               | string  | This represents the 2-letter country code in ISO 3166-1 Alpha 2 format.                                                                                                     |
-| ip.src                       | string  | The source address of the IP.                                                                                                                                               |
+| Field | Type | Description |
+| --- | --- | --- |
+| `cf.bot_management.ja3_hash` | string | This provides an SSL/TLS fingerprint to help you identify potential bot requests. |
+| `cf.bot_management.score` | integer | This represents the likelihood that a request originates from a bot using a score from 1-99. |
+| `http.host` | string | This represents the hostname used in the full request URI. |
+| `http.request.uri.path` | string | This represents the URI path of the request. |
+| `http.user_agent` | string | This represents the HTTP user agent which is a request header that contains a characteristic string to allow identification of the client operating system and web browser. |
+| `ip.src.asnum` | integer | This represents the 16- or 32-bit integer representing the Autonomous System (AS) number associated with client IP address. |
+| `ip.src.country` | string | This represents the 2-letter country code in ISO 3166-1 Alpha 2 format. |
+| `ip.src` | string | The source address of the IP. |
 
 ## Recommendations when submitting a report
 
@@ -220,16 +221,16 @@ The instructions below apply to Enterprise subscription with Bot Management only
 
 After submitting a false positive, you can explicitly allow the traffic if you are confident that this traffic source cannot be used for abuse in the future. To allow traffic, you can create a WAF custom rule with a [Skip the remaining custom rules](https://developers.cloudflare.com/waf/custom-rules/skip/options/#skip-the-remaining-custom-rules-current-ruleset) action that matches the characteristics of your false positive report. We recommend any skip rule that you create uses the most narrow possible scope, including restricting the request methods and URIs that the expected traffic has access to, to limit potential abuse.
 
-* Allowing a **[JA3/JA4 fingerprint](https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/)**: If you want to allow access to a stable software client that does not come from a dedicated IP, you can do so by looking up the JA3 fingerprint(s) used by that client in the Bot Analytics dashboard, and creating a WAF custom rule to allow traffic based on that JA3 fingerprint. JA3 fingerprints will only match a client’s TLS library, so be cautious in looking for both overlap with other clients and with variation based on the operating system.
+- Allowing a **[JA3/JA4 fingerprint](https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/)**: If you want to allow access to a stable software client that does not come from a dedicated IP, you can do so by looking up the JA3 fingerprint(s) used by that client in the Bot Analytics dashboard, and creating a WAF custom rule to allow traffic based on that JA3 fingerprint. JA3 fingerprints will only match a client’s TLS library, so be cautious in looking for both overlap with other clients and with variation based on the operating system.
 
-Cloudflare does not recommend relying on JA3 rules for mobile applications that may be abused. If you have questions about how to securely allow traffic from your mobile application, please contact your account team.
+  Cloudflare does not recommend relying on JA3 rules for mobile applications that may be abused. If you have questions about how to securely allow traffic from your mobile application, please contact your account team.
 
 Note
 
 The instructions below apply to Enterprise subscription with Bot Management, Bot Fight Mode and Super Bot Fight Mode.
 
-* Allowing an **IP address**: Only use an IP address to allow traffic if the IP is a dedicated resource that belongs only to the traffic source you wish to allow.
-If the traffic you want to allow shares an IP with other traffic sources, or if the IP changes frequently, consider an alternative to allowing by IP address.
+- Allowing an **IP address**: Only use an IP address to allow traffic if the IP is a dedicated resource that belongs only to the traffic source you wish to allow.
+  If the traffic you want to allow shares an IP with other traffic sources, or if the IP changes frequently, consider an alternative to allowing by IP address.
 
 ## Recommendations after submitting a false negative
 

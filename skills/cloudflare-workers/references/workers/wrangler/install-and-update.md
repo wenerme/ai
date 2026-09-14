@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Install/Update Wrangler
 
-Last updated Jul 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/wrangler/install-and-update/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/install-and-update/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler is a command-line tool for building with Cloudflare developer products.
 
@@ -20,11 +20,17 @@ Wrangler is a command-line tool for building with Cloudflare developer products.
 
 To install [Wrangler ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler), ensure you have [Node.js ↗](https://nodejs.org/en/) and [npm ↗](https://docs.npmjs.com/getting-started) installed, preferably using a Node version manager like [mise ↗](https://github.com/jdx/mise) or [nvm ↗](https://github.com/nvm-sh/nvm). Using a version manager helps avoid permission issues and allows you to change Node.js versions.
 
-Wrangler System Requirements
+<details>
 
-We support running the Wrangler CLI with the [Current, Active, and Maintenance ↗](https://nodejs.org/en/about/previous-releases) versions of Node.js. Your Worker will always be executed in `workerd`, the open source Cloudflare Workers runtime.
+<summary>Wrangler System Requirements</summary>
 
-Wrangler is only supported on macOS 13.5+, Windows 11, and Linux distros that support glib 2.35\. This follows [workerd's OS support policy ↗](https://github.com/cloudflare/workerd?tab=readme-ov-file#running-workerd).
+
+
+We support running the Wrangler CLI with the <a href="https://nodejs.org/en/about/previous-releases">Current, Active, and Maintenance ↗</a> versions of Node.js. Your Worker will always be executed in <code>workerd</code>, the open source Cloudflare Workers runtime.
+
+Wrangler is only supported on macOS 13.5+, Windows 11, and Linux distros that support glib 2.35. This follows <a href="https://github.com/cloudflare/workerd?tab=readme-ov-file#running-workerd"><code>workerd</code>'s OS support policy ↗</a>.
+
+</details>
 
 Wrangler is installed locally into each of your projects. This allows you and your team to use the same Wrangler version, control Wrangler versions for each project, and roll back to an earlier version of Wrangler, if needed.
 
@@ -88,8 +94,8 @@ bun add -d wrangler@latest
 
 ## Related resources
 
-* [Commands](https://developers.cloudflare.com/workers/wrangler/commands/) \- A detailed list of the commands that Wrangler supports.
-* [Configuration](https://developers.cloudflare.com/workers/wrangler/configuration/) \- Learn more about Wrangler's configuration file.
+- [Commands](https://developers.cloudflare.com/workers/wrangler/commands/) - A detailed list of the commands that Wrangler supports.
+- [Configuration](https://developers.cloudflare.com/workers/wrangler/configuration/) - Learn more about Wrangler's configuration file.
 
 Was this helpful?
 

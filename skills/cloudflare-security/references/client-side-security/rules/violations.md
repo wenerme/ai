@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Content security rule violations
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/client-side-security/rules/violations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/client-side-security/rules/violations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -20,7 +20,7 @@ Only available to customers with Client-Side Security Advanced.
 
 A rule violation occurs when a browser loads a resource that is not covered by one of your [content security rules](https://developers.cloudflare.com/client-side-security/rules/). For log rules, the resource loads normally but is reported. For allow rules, the browser blocks the resource.
 
-Shortly after you configure content security rules, the Cloudflare dashboard will start displaying any violations of those rules. This information is available for rules with any [action](https://developers.cloudflare.com/client-side-security/rules/#rule-actions) (_Allow_ and _Log_).
+Shortly after you configure content security rules, the Cloudflare dashboard will start displaying any violations of those rules. This information is available for rules with any [action](https://developers.cloudflare.com/client-side-security/rules/#rule-actions) (*Allow* and *Log*).
 
 Information about rule violations is also available via [GraphQL API](#get-rule-violations-via-graphql-api) and [Logpush](#get-rule-violations-via-logpush).
 
@@ -28,20 +28,19 @@ Information about rule violations is also available via [GraphQL API](#get-rule-
 
 To view rule violation information:
 
-1. In the Cloudflare dashboard, go to the **Security rules** page.
-[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+1. In the Cloudflare dashboard, go to the **Security rules** page. [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. (Optional) Filter by **Content security rules**.
 
 The displayed information includes the following:
 
-* A sparkline next to the rule name, showing violations in the past seven days.
-* For content security rules with associated violations, an expandable details section for each rule, with the top resources present in violation events and a sparkline per top resource.
+- A sparkline next to the rule name, showing violations in the past seven days.
+- For content security rules with associated violations, an expandable details section for each rule, with the top resources present in violation events and a sparkline per top resource.
 
 ## Get rule violations via GraphQL API
 
 Use the [Cloudflare GraphQL API](https://developers.cloudflare.com/analytics/graphql-api/) to obtain rule violation information through the following dataset:
 
-* `pageShieldReportsAdaptiveGroups`
+- `pageShieldReportsAdaptiveGroups`
 
 You can query the dataset for rule violations that occurred in the past 30 days.
 
@@ -50,6 +49,8 @@ Use [introspection](https://developers.cloudflare.com/analytics/graphql-api/feat
 For an introduction to GraphQL querying, refer to [Querying basics](https://developers.cloudflare.com/analytics/graphql-api/getting-started/querying-basics/).
 
 ### Example
+
+*Example GraphQL querygraphql*
 
 ```graphql
 query PageShieldReports(
@@ -89,7 +90,13 @@ query PageShieldReports(
 }
 ```
 
+<details>
+
+<summary>
+
 Example curl request
+
+</summary>
 
 ```bash
 echo '{ "query":
@@ -132,11 +139,15 @@ https://api.cloudflare.com/client/v4/graphql \
 --data @-
 ```
 
+</details>
+
 ## Get rule violations via Logpush
 
-[Cloudflare Logpush](https://developers.cloudflare.com/logs/logpush/) supports pushing logs to storage services, SIEM systems, and log management providers.
+[Cloudflare Logpush](https://developers.cloudflare.com/logs/logpush/) supports pushing logs to storage services, SIEM systems
 
-Information about rule violations is available in the [page\_shield\_events dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/page%5Fshield%5Fevents/).
+, and log management providers.
+
+Information about rule violations is available in the [`page_shield_events` dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/page_shield_events/).
 
 For more information on configuring Logpush jobs, refer to [Logpush](https://developers.cloudflare.com/logs/logpush/) documentation.
 

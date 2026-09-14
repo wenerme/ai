@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure via API
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/configure-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/configure-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Configure the HTTP DDoS Attack Protection managed ruleset by defining overrides using the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/).
 
@@ -30,10 +30,10 @@ You can create overrides at the zone level and at the account level. Account-lev
 
 Important
 
-* The HTTP DDoS Attack Protection managed ruleset is always enabled — you cannot disable its rules using an override with `"enabled": false`.
-* The managed ruleset includes some read-only rules that you cannot override.
-* If you configure both account-level and zone-level overrides, only the zone-level overrides (the most specific ones) will be evaluated.
-* Currently, account-level overrides for the HTTP DDoS Attack Protection managed ruleset are only available via API.
+- The HTTP DDoS Attack Protection managed ruleset is always enabled — you cannot disable its rules using an override with `"enabled": false`.
+- The managed ruleset includes some read-only rules that you cannot override.
+- If you configure both account-level and zone-level overrides, only the zone-level overrides (the most specific ones) will be evaluated.
+- Currently, account-level overrides for the HTTP DDoS Attack Protection managed ruleset are only available via API.
 
 ### Creating multiple rules
 
@@ -51,9 +51,11 @@ Rules in the phase entry point ruleset, where you create overrides, are evaluate
 
 The following `PUT` example creates a new phase ruleset (or updates the existing one) for the `ddos_l7` phase at the zone level. The request includes several overrides to adjust the default behavior of the HTTP DDoS Attack Protection managed ruleset. These overrides are the following:
 
-* All rules of the managed ruleset will use the `managed_challenge` action and have a sensitivity level of `medium`.
-* All rules tagged with `<TAG_NAME>` will have a sensitivity level of `low`.
-* The rule with ID `<MANAGED_RULESET_RULE_ID>` will use the `block` action.
+- All rules of the managed ruleset will use the `managed_challenge` action and have a sensitivity level of `medium`.
+- All rules tagged with `<TAG_NAME>` will have a sensitivity level of `low`.
+- The rule with ID `<MANAGED_RULESET_RULE_ID>` will use the `block` action.
+
+*Requestbash*
 
 ```bash
 curl --request PUT \
@@ -92,7 +94,13 @@ https://api.cloudflare.com/client/v4/zones/{zone_id}/rulesets/phases/ddos_l7/ent
 
 The response returns the created (or updated) phase entry point ruleset.
 
+<details>
+
+<summary>
+
 Response
+
+</summary>
 
 ```json
 {
@@ -139,17 +147,21 @@ Response
 }
 ```
 
+</details>
+
 For more information on defining overrides for managed rulesets using the Rulesets API, refer to [Override a managed ruleset](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/) in the Ruleset Engine documentation.
 
 ### Account-level configuration example
 
 The following `PUT` example creates a new phase ruleset (or updates the existing one) for the `ddos_l7` phase at the account level. The example defines a single rule override for requests coming from IP addresses in the `allowlisted_ips` [IP list](https://developers.cloudflare.com/waf/tools/lists/custom-lists/#ip-lists), with the following configuration:
 
-* The rule with ID `<MANAGED_RULESET_RULE_ID>`, belonging to the HTTP DDoS Attack Protection managed ruleset (with ID `<MANAGED_RULESET_ID>`), will have an `eoff` (_Essentially Off_) sensitivity level and it will perform a `log` action.
+- The rule with ID `<MANAGED_RULESET_RULE_ID>`, belonging to the HTTP DDoS Attack Protection managed ruleset (with ID `<MANAGED_RULESET_ID>`), will have an `eoff` (*Essentially Off*) sensitivity level and it will perform a `log` action.
 
 Note
 
 Custom rule expressions (different from `"true"`) and the `log` action require an Enterprise plan with the Advanced DDoS Protection subscription.
+
+*Requestbash*
 
 ```bash
 curl --request PUT \
@@ -181,7 +193,13 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets/phases/ddos_
 
 The response returns the created (or updated) phase entry point ruleset.
 
+<details>
+
+<summary>
+
 Response
+
+</summary>
 
 ```json
 {
@@ -220,6 +238,8 @@ Response
 	}
 }
 ```
+
+</details>
 
 For more information on defining overrides for managed rulesets using the Rulesets API, refer to [Override a managed ruleset](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/) in the Ruleset Engine documentation.
 

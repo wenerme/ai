@@ -1,5 +1,5 @@
 ---
-description: Specify Durable Objects to add to your environment as follows:
+description: "Specify Durable Objects to add to your environment as follows:"
 title: Durable Objects
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -12,10 +12,10 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Durable Objects
 
-Last updated Jan 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/storage/durable-objects/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jan 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/storage/durable-objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [Durable Objects Reference](https://developers.cloudflare.com/durable-objects/api/)
-* [Using Durable Objects](https://developers.cloudflare.com/durable-objects/)
+- [Durable Objects Reference](https://developers.cloudflare.com/durable-objects/api/)
+- [Using Durable Objects](https://developers.cloudflare.com/durable-objects/)
 
 ## Objects
 

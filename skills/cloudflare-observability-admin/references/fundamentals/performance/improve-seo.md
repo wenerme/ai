@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Improve SEO
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/performance/improve-seo/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/performance/improve-seo/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The goal of Search Engine Optimization (SEO) is to get your website to rank higher on various search engine providers (Google, Bing, etc.).
 
@@ -51,9 +51,9 @@ Depending on your domain's security settings, you might accidentally block searc
 
 If you notice SEO issues, make sure your:
 
-* [WAF custom rules](https://developers.cloudflare.com/waf/troubleshooting/faq/#caution-about-potentially-blocking-bots) are allowing **Verified Bots**.
-* [Rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) are allowing **Verified Bots**.
-* [Bot protection](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/) settings are not blocking **Verified Bots**.
+- [WAF custom rules](https://developers.cloudflare.com/waf/troubleshooting/faq/#caution-about-potentially-blocking-bots) are allowing **Verified Bots**.
+- [Rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) are allowing **Verified Bots**.
+- [Bot protection](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/) settings are not blocking **Verified Bots**.
 
 If you still notice issues with search engine crawlers, refer to our [Troubleshooting guide](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/troubleshooting-crawl-errors/).
 
@@ -61,10 +61,10 @@ If you still notice issues with search engine crawlers, refer to our [Troublesho
 
 The following characteristics do not affect your domain's SEO:
 
-* **Changing your nameservers**: Using Cloudflare's nameservers does not affect your domain's SEO.
-* **Server location**: According to Google, [server location ↗](http://www.seroundtable.com/seo-geo-location-server-google-17468.html) is not important for SEO.
-* **Sites sharing IP addresses**: Search engines do not generally penalize domains using shared IP addresses unless several of these sites are malicious or spammy.
-* **Cloudflare caching**: When Cloudflare caches your content, it actually speeds up content delivery and only improves SEO. Our caching does not create duplicate content, rewrite URLs, or create additional subdomains.
+- **Changing your nameservers**: Using Cloudflare's nameservers does not affect your domain's SEO.
+- **Server location**: According to Google, [server location ↗](http://www.seroundtable.com/seo-geo-location-server-google-17468.html) is not important for SEO.
+- **Sites sharing IP addresses**: Search engines do not generally penalize domains using shared IP addresses unless several of these sites are malicious or spammy.
+- **Cloudflare caching**: When Cloudflare caches your content, it actually speeds up content delivery and only improves SEO. Our caching does not create duplicate content, rewrite URLs, or create additional subdomains.
 
 Was this helpful?
 

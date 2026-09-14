@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Available debug endpoints
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/troubleshooting/dns-debug-endpoints/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/troubleshooting/dns-debug-endpoints/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following debug endpoints are available via `dig` or other DNS query tools.
 

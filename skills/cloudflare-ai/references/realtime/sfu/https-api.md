@@ -12,32 +12,32 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Connection API
 
-Last updated Jul 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/sfu/https-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/https-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Realtime simplifies the management of peer connections and media tracks through HTTPS API endpoints. These endpoints allow developers to efficiently manage sessions, add or remove tracks, and gather session information.
 
 ## API Endpoints
 
-* **Create a New Session**: Initiates a new session on Cloudflare Realtime, which can be modified with other endpoints below.
-  * `POST /apps/{appId}/sessions/new`
-* **Add a New Track**: Adds a media track (audio or video) to an existing session.
-  * `POST /apps/{appId}/sessions/{sessionId}/tracks/new`
-* **Update Tracks**: Changes tracks by reusing existing transceivers.
-  * `PUT /apps/{appId}/sessions/{sessionId}/tracks/update`
-* **Renegotiate a Session**: Updates the session's negotiation state to accommodate new tracks or changes in the existing ones.
-  * `PUT /apps/{appId}/sessions/{sessionId}/renegotiate`
-* **Close a Track**: Removes a specified track from the session.
-  * `PUT /apps/{appId}/sessions/{sessionId}/tracks/close`
-* **Establish a DataChannel Transport**: Pulls the `server-events` channel to establish DataChannel transport. Call this before you add DataChannels.
-  * `POST /apps/{appId}/sessions/{sessionId}/datachannels/establish`
-* **Add DataChannels**: Publishes a local DataChannel or pulls a remote one (optional `waitForAck`, `canReply`).
-  * `POST /apps/{appId}/sessions/{sessionId}/datachannels/new`
-* **Update DataChannels**: Grants or revokes flags on an already pulled remote DataChannel (for example `canReply`).
-  * `PUT /apps/{appId}/sessions/{sessionId}/datachannels/update`
-* **Close DataChannels**: Removes a specified DataChannel from the session.
-  * `PUT /apps/{appId}/sessions/{sessionId}/datachannels/close`
-* **Retrieve Session Information**: Fetches detailed information about a specific session.
-  * `GET /apps/{appId}/sessions/{sessionId}`
+- **Create a New Session**: Initiates a new session on Cloudflare Realtime, which can be modified with other endpoints below.
+  - `POST /apps/{appId}/sessions/new`
+- **Add a New Track**: Adds a media track (audio or video) to an existing session.
+  - `POST /apps/{appId}/sessions/{sessionId}/tracks/new`
+- **Update Tracks**: Changes tracks by reusing existing transceivers.
+  - `PUT /apps/{appId}/sessions/{sessionId}/tracks/update`
+- **Renegotiate a Session**: Updates the session's negotiation state to accommodate new tracks or changes in the existing ones.
+  - `PUT /apps/{appId}/sessions/{sessionId}/renegotiate`
+- **Close a Track**: Removes a specified track from the session.
+  - `PUT /apps/{appId}/sessions/{sessionId}/tracks/close`
+- **Establish a DataChannel Transport**: Pulls the `server-events` channel to establish DataChannel transport. Call this before you add DataChannels.
+  - `POST /apps/{appId}/sessions/{sessionId}/datachannels/establish`
+- **Add DataChannels**: Publishes a local DataChannel or pulls a remote one (optional `waitForAck`, `canReply`).
+  - `POST /apps/{appId}/sessions/{sessionId}/datachannels/new`
+- **Update DataChannels**: Grants or revokes flags on an already pulled remote DataChannel (for example `canReply`).
+  - `PUT /apps/{appId}/sessions/{sessionId}/datachannels/update`
+- **Close DataChannels**: Removes a specified DataChannel from the session.
+  - `PUT /apps/{appId}/sessions/{sessionId}/datachannels/close`
+- **Retrieve Session Information**: Fetches detailed information about a specific session.
+  - `GET /apps/{appId}/sessions/{sessionId}`
 
 [View full API and schema (OpenAPI format)](https://developers.cloudflare.com/realtime/static/realtime-api-2024-05-21.yaml)
 
@@ -49,7 +49,7 @@ It is vital to manage App ID and its secret securely. While track and session ID
 
 Cloudflare Realtime is designed to operate efficiently without the need for TURN servers in most scenarios, as Cloudflare exposes a publicly routable IP address for Realtime. However, integrating a STUN server can be necessary for facilitating peer discovery and connectivity.
 
-* **Cloudflare STUN Server**: `stun.cloudflare.com:3478`
+- **Cloudflare STUN Server**: `stun.cloudflare.com:3478`
 
 Utilizing Cloudflare's STUN server can help the connection process for Realtime applications.
 
@@ -57,6 +57,7 @@ Utilizing Cloudflare's STUN server can help the connection process for Realtime 
 
 This section provides an overview of the typical lifecycle of a simple session, focusing on audio-only applications. It illustrates how clients are notified by the backend server as new remote clients join or leave, incorporating video would introduce additional tracks and considerations into the session.
 
+```
 sequenceDiagram
     participant WA as WebRTC Agent
     participant BS as Backend Server
@@ -106,6 +107,8 @@ sequenceDiagram
     BS->>CA: PUT /sessions/<ID>/tracks/close
     CA->>BS: closeTracksResponse
     BS->>WA: Response
+
+```
 
 Was this helpful?
 

@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Google
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/google/gemini-3-flash/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/google/gemini-3-flash/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `google/gemini-3-flash`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 Gemini 3 Flash is Google's fast multimodal model with frontier intelligence, superior search, and grounding capabilities.
 
-| Model Info                                                                          |                                                                                                                         |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens                                                                                                        |
-| Terms and License                                                                   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                        |
-| More information                                                                    | [link ↗](https://deepmind.google/technologies/gemini/)                                                                  |
-| Zero data retention                                                                 | Yes                                                                                                                     |
-| Request formats                                                                     | Chat Completions                                                                                                        |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3-flash) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens |
+| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms) |
+| More information | [link ↗](https://deepmind.google/technologies/gemini/) |
+| Zero data retention | Yes |
+| Request formats | Chat Completions |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3-flash) |
 
 ## Usage
 
@@ -65,6 +65,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 While there are technically four laws (starting with the Zeroth Law), here are the **three primary laws of thermodynamics** that describe how energy, heat, and work behave in a system:
 
 ### 1. The First Law: The Law of Conservation of Energy
@@ -105,6 +106,7 @@ Scientists often use a humorous summary to remember these laws:
 
 **Note on the "Zeroth Law":**
 There is also a **Zeroth Law**, which was identified after the first three but is more fundamental. It states that if two systems are each in thermal equilibrium with a third system, they are in thermal equilibrium with each other. This is the law that allows us to use thermometers.
+```
 
 ```json
 {
@@ -152,7 +154,11 @@ There is also a **Zeroth Law**, which was identified after the first three but i
 
 ## Examples
 
-**With System Instruction** — Using a system instruction to set context
+<details>
+
+<summary>**With System Instruction** — Using a system instruction to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -199,6 +205,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+````
 To read a JSON file in Python, you use the built-in `json` module.
 
 Here is the most common and recommended way to do it:
@@ -255,6 +262,7 @@ except json.JSONDecodeError:
 | `json.loads()` | String | Python Object (dict/list) |
 | `json.dump()` | Python Object | Write to File |
 | `json.dumps()` | Python Object | Return as String |
+````
 
 ```json
 {
@@ -300,7 +308,13 @@ except json.JSONDecodeError:
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -367,6 +381,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 A road trip from San Francisco to Los Angeles can take several different paths depending on whether you want speed or scenery.
 
 **Important Note:** If you plan on taking the scenic Highway 1 (Pacific Coast Highway), there is currently a major road closure south of Big Sur (near Lucia) due to landslides. You can visit Big Sur from the north, but you currently cannot drive all the way through to LA on the coast. You have to cut back to Highway 101.
@@ -403,6 +418,7 @@ Here are the best stops based on the route you choose:
 3.  **The "Grapevine":** If taking the I-5, be aware of the "Grapevine" (Tejon Pass). It is a steep mountain pass that can occasionally close due to snow in winter or high winds.
 
 **How many days are you planning to take for the trip?** I can help you narrow down a specific itinerary!
+```
 
 ```json
 {
@@ -448,7 +464,13 @@ Here are the best stops based on the route you choose:
 }
 ```
 
-**Creative Writing** — Higher temperature for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Higher temperature for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -491,13 +513,15 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+</details>
+
 ## Parameters
 
 Schema variant
 
 Generate ContentChat Completions
 
-▶contents\[\]
+▶contents\[]
 
 `array`required
 
@@ -509,19 +533,17 @@ Generate ContentChat Completions
 
 `object`
 
-▶safetySettings\[\]
+▶safetySettings\[]
 
 `array`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 toolConfig
 
-``
-
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -543,11 +565,11 @@ top\_p
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 stream
 
@@ -557,19 +579,15 @@ stream
 
 `object`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
 
-``
-
 response\_format
 
-``
-
-▶modalities\[\]
+▶modalities\[]
 
 `array`
 
@@ -577,7 +595,7 @@ response\_format
 
 `object`
 
-▶candidates\[\]
+▶candidates\[]
 
 `array`
 
@@ -605,7 +623,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -615,9 +633,9 @@ model
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/google/gemini-3-flash/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/google/gemini-3-flash/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/google/gemini-3-flash/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/google/gemini-3-flash/schema-output.json)
 
 Was this helpful?
 

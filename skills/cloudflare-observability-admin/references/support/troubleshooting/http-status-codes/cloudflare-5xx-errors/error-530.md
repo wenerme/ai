@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Error 530
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-530/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-530/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Error 530
 

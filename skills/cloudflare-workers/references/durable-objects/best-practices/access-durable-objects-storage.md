@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Access Durable Objects Storage
 
-Last updated Jul 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Durable Objects are a powerful compute API that provides a compute with storage building block. Each Durable Object has its own private, transactional, and strongly consistent storage. Durable Objects Storage API provides access to a Durable Object's attached storage.
+Durable Objects
+
+ are a powerful compute API that provides a compute with storage building block. Each Durable Object has its own private, transactional, and strongly consistent storage. Durable Objects Storage API provides access to a Durable Object's attached storage.
 
 A Durable Object's [in-memory state](https://developers.cloudflare.com/durable-objects/reference/in-memory-state/) is preserved as long as the Durable Object is not evicted from memory. Inactive Durable Objects with no incoming request traffic can be evicted. There are normal operations like [code deployments](https://developers.cloudflare.com/workers/versions-and-deployments/) that trigger Durable Objects to restart and lose their in-memory state. For these reasons, you should use Storage API to persist state durably on disk that needs to survive eviction or restart of Durable Objects.
 
@@ -94,7 +96,7 @@ export class Counter extends DurableObject {
 
 A Durable Object fully ceases to exist if, when it shuts down, its storage is empty. If you never write to a Durable Object's storage at all (including setting alarms), then storage remains empty, and so the Durable Object will no longer exist once it shuts down.
 
-However if you ever write using [Storage API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/), including setting alarms, then you must explicitly call [storage.deleteAll()](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#deleteall) to empty storage and [storage.deleteAlarm()](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#deletealarm) if you've configured an alarm. It is not sufficient to simply delete the specific data that you wrote, such as deleting a key or dropping a table, as some metadata may remain. The only way to remove all storage is to call `deleteAll()`. Calling `deleteAll()` ensures that a Durable Object will not be billed for storage.
+However if you ever write using [Storage API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/), including setting alarms, then you must explicitly call [`storage.deleteAll()`](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#deleteall) to empty storage and [`storage.deleteAlarm()`](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#deletealarm) if you've configured an alarm. It is not sufficient to simply delete the specific data that you wrote, such as deleting a key or dropping a table, as some metadata may remain. The only way to remove all storage is to call `deleteAll()`. Calling `deleteAll()` ensures that a Durable Object will not be billed for storage.
 
 ```ts
 export class MyDurableObject extends DurableObject<Env> {
@@ -235,7 +237,7 @@ You can use TypeScript [type parameters ↗](https://www.typescriptlang.org/docs
 
 Caution
 
-Providing a type parameter does _not_ validate that the query result matches your type definition. In TypeScript, properties (fields) that do not exist in your result type will be silently dropped.
+Providing a type parameter does *not* validate that the query result matches your type definition. In TypeScript, properties (fields) that do not exist in your result type will be silently dropped.
 
 Your type must conform to the shape of a TypeScript [Record ↗](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type) type representing the name (`string`) of the column and the type of the column. The column type must be a valid `SqlStorageValue`: one of `ArrayBuffer | string | number | null`.
 
@@ -304,11 +306,11 @@ Cloudflare Workers offers a SQLite-backed serverless database product - [D1](htt
 
 **D1 is a managed database product.**
 
-D1 fits into a familiar architecture for developers, where application servers communicate with a database over the network. Application servers are typically Workers; however, D1 also supports external, non-Worker access via an [HTTP API ↗](https://developers.cloudflare.com/api/resources/d1/subresources/database/methods/query/), which helps unlock [third-party tooling](https://developers.cloudflare.com/d1/reference/community-projects/#%5Ftop) support for D1.
+D1 fits into a familiar architecture for developers, where application servers communicate with a database over the network. Application servers are typically Workers; however, D1 also supports external, non-Worker access via an [HTTP API ↗](https://developers.cloudflare.com/api/resources/d1/subresources/database/methods/query/), which helps unlock [third-party tooling](https://developers.cloudflare.com/d1/reference/community-projects/#_top) support for D1.
 
-D1 aims for a "batteries included" feature set, including the above HTTP API, [database schema management](https://developers.cloudflare.com/d1/reference/migrations/#%5Ftop), [data import/export](https://developers.cloudflare.com/d1/best-practices/import-export-data/), and [database query insights](https://developers.cloudflare.com/d1/observability/metrics-analytics/#query-insights).
+D1 aims for a "batteries included" feature set, including the above HTTP API, [database schema management](https://developers.cloudflare.com/d1/reference/migrations/#_top), [data import/export](https://developers.cloudflare.com/d1/best-practices/import-export-data/), and [database query insights](https://developers.cloudflare.com/d1/observability/metrics-analytics/#query-insights).
 
-With D1, your application code and SQL database queries are not colocated which can impact application performance. If performance is a concern with D1, Workers has [Smart Placement](https://developers.cloudflare.com/workers/configuration/placement/#%5Ftop) to dynamically run your Worker in the best location to reduce total Worker request latency, considering everything your Worker talks to, including D1.
+With D1, your application code and SQL database queries are not colocated which can impact application performance. If performance is a concern with D1, Workers has [Smart Placement](https://developers.cloudflare.com/workers/configuration/placement/#_top) to dynamically run your Worker in the best location to reduce total Worker request latency, considering everything your Worker talks to, including D1.
 
 **SQLite in Durable Objects is a lower-level compute with storage building block for distributed systems.**
 
@@ -322,7 +324,7 @@ SQL query pricing and limits are intended to be identical between D1 ([pricing](
 
 ## Related resources
 
-* [Zero-latency SQLite storage in every Durable Object blog post ↗](https://blog.cloudflare.com/sqlite-in-durable-objects)
+- [Zero-latency SQLite storage in every Durable Object blog post ↗](https://blog.cloudflare.com/sqlite-in-durable-objects)
 
 Was this helpful?
 

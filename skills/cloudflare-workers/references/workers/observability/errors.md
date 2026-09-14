@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Errors and exceptions
 
-Last updated Jun 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/errors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/errors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Review Workers errors and exceptions.
 
@@ -20,24 +20,24 @@ Review Workers errors and exceptions.
 
 When a Worker running in production has an error that prevents it from returning a response, the client will receive an error page with an error code, defined as follows:
 
-| Error code | Meaning                                                                                                                                                                                                                                                                                                                                |
-| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1101       | Worker threw a JavaScript exception.                                                                                                                                                                                                                                                                                                   |
-| 1102       | Worker exceeded [CPU time limit](https://developers.cloudflare.com/workers/platform/limits/#cpu-time).                                                                                                                                                                                                                                 |
-| 1103       | The owner of this worker needs to contact [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/)                                                                                                                                                                                               |
-| 1019       | Worker hit [loop limit](#loop-limit).                                                                                                                                                                                                                                                                                                  |
-| 1021       | Worker has requested a host it cannot access.                                                                                                                                                                                                                                                                                          |
-| 1022       | Cloudflare has failed to route the request to the Worker.                                                                                                                                                                                                                                                                              |
-| 1024       | Worker cannot make a subrequest to a Cloudflare-owned IP address.                                                                                                                                                                                                                                                                      |
-| 1027       | Worker exceeded free tier [daily request limit](https://developers.cloudflare.com/workers/platform/limits/#daily-requests).                                                                                                                                                                                                            |
-| 1042       | Worker tried to fetch from another Worker on the same zone, which is only [supported](https://developers.cloudflare.com/workers/runtime-apis/fetch/) when the [global\_fetch\_strictly\_public compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#global-fetch-strictly-public) is used. |
-| 10162      | Module has an unsupported Content-Type.                                                                                                                                                                                                                                                                                                |
+| Error code | Meaning |
+| --- | --- |
+| `1101` | Worker threw a JavaScript exception. |
+| `1102` | Worker exceeded [CPU time limit](https://developers.cloudflare.com/workers/platform/limits/#cpu-time). |
+| `1103` | The owner of this worker needs to contact [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) |
+| `1019` | Worker hit [loop limit](#loop-limit). |
+| `1021` | Worker has requested a host it cannot access. |
+| `1022` | Cloudflare has failed to route the request to the Worker. |
+| `1024` | Worker cannot make a subrequest to a Cloudflare-owned IP address. |
+| `1027` | Worker exceeded free tier [daily request limit](https://developers.cloudflare.com/workers/platform/limits/#daily-requests). |
+| `1042` | Worker tried to fetch from another Worker on the same zone, which is only [supported](https://developers.cloudflare.com/workers/runtime-apis/fetch/) when the [`global_fetch_strictly_public` compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#global-fetch-strictly-public) is used. |
+| `10162` | Module has an unsupported Content-Type. |
 
 Other `11xx` errors generally indicate a problem with the Workers runtime itself. Refer to the [status page ↗](https://www.cloudflarestatus.com) if you are experiencing an error.
 
 ### Loop limit
 
-A Worker cannot call itself or another Worker more than 16 times. In order to prevent infinite loops between Workers, the [CF-EW-Via](https://developers.cloudflare.com/fundamentals/reference/http-headers/#cf-ew-via) header's value is an integer that indicates how many invocations are left. Every time a Worker is invoked, the integer will decrement by 1\. If the count reaches zero, a [1019](#error-pages-generated-by-workers) error is returned.
+A Worker cannot call itself or another Worker more than 16 times. In order to prevent infinite loops between Workers, the [`CF-EW-Via`](https://developers.cloudflare.com/fundamentals/reference/http-headers/#cf-ew-via) header's value is an integer that indicates how many invocations are left. Every time a Worker is invoked, the integer will decrement by 1. If the count reaches zero, a [`1019`](#error-pages-generated-by-workers) error is returned.
 
 ### "The script will never generate a response" errors
 
@@ -67,7 +67,7 @@ export default {
 };
 ```
 
-You can prevent this by enforcing the [no-floating-promises eslint rule ↗](https://typescript-eslint.io/rules/no-floating-promises/), which reports when a Promise is created and not properly handled.
+You can prevent this by enforcing the [`no-floating-promises` eslint rule ↗](https://typescript-eslint.io/rules/no-floating-promises/), which reports when a Promise is created and not properly handled.
 
 #### Cause 2: WebSocket connections that are never closed
 
@@ -75,7 +75,7 @@ If a WebSocket is missing the proper code to close its server-side connection, t
 
 Note
 
-With the [web\_socket\_auto\_reply\_to\_close](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#websocket-auto-reply-to-close) compatibility flag (enabled by default on compatibility dates on or after `2026-04-07`), the runtime automatically completes the WebSocket close handshake. This specific error scenario is less likely to occur because the runtime handles the close for you. The example below applies to Workers on older compatibility dates.
+With the [`web_socket_auto_reply_to_close`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#websocket-auto-reply-to-close) compatibility flag (enabled by default on compatibility dates on or after `2026-04-07`), the runtime automatically completes the WebSocket close handshake. This specific error scenario is less likely to occur because the runtime handles the close for you. The example below applies to Workers on older compatibility dates.
 
 ```js
 async function handleRequest(request) {
@@ -193,23 +193,23 @@ If you need to share state across requests, consider using [Durable Objects](htt
 
 These errors occur when a Worker is uploaded or modified.
 
-| Error code | Meaning                                                                                                                                                      |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 10006      | Could not parse your Worker's code.                                                                                                                          |
-| 10007      | Worker or [workers.dev subdomain](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/) not found.                                   |
-| 10015      | Account is not entitled to use Workers.                                                                                                                      |
-| 10016      | Invalid Worker name.                                                                                                                                         |
-| 10021      | Validation Error. Refer to [Validation Errors](https://developers.cloudflare.com/workers/observability/errors/#validation-errors-10021) for details.         |
-| 10026      | Could not parse request body.                                                                                                                                |
-| 10027      | The uploaded Worker exceeded the [Worker size limits](https://developers.cloudflare.com/workers/platform/limits/#worker-size).                               |
-| 10035      | Multiple attempts to modify a resource at the same time                                                                                                      |
-| 10037      | An account has exceeded the number of [Workers allowed](https://developers.cloudflare.com/workers/platform/limits/#number-of-workers).                       |
-| 10052      | A [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) is uploaded without a name.                                                    |
-| 10054      | A environment variable or secret exceeds the [size limit](https://developers.cloudflare.com/workers/platform/limits/#environment-variables).                 |
-| 10055      | The number of environment variables or secrets exceeds the [limit/Worker](https://developers.cloudflare.com/workers/platform/limits/#environment-variables). |
-| 10056      | [Binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) not found.                                                                       |
-| 10068      | The uploaded Worker has no registered [event handlers](https://developers.cloudflare.com/workers/runtime-apis/handlers/).                                    |
-| 10069      | The uploaded Worker contains [event handlers](https://developers.cloudflare.com/workers/runtime-apis/handlers/) unsupported by the Workers runtime.          |
+| Error code | Meaning |
+| --- | --- |
+| `10006` | Could not parse your Worker's code. |
+| `10007` | Worker or [workers.dev subdomain](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/) not found. |
+| `10015` | Account is not entitled to use Workers. |
+| `10016` | Invalid Worker name. |
+| `10021` | Validation Error. Refer to [Validation Errors](https://developers.cloudflare.com/workers/observability/errors/#validation-errors-10021) for details. |
+| `10026` | Could not parse request body. |
+| `10027` | The uploaded Worker exceeded the [Worker size limits](https://developers.cloudflare.com/workers/platform/limits/#worker-size). |
+| `10035` | Multiple attempts to modify a resource at the same time |
+| `10037` | An account has exceeded the number of [Workers allowed](https://developers.cloudflare.com/workers/platform/limits/#number-of-workers). |
+| `10052` | A [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) is uploaded without a name. |
+| `10054` | A environment variable or secret exceeds the [size limit](https://developers.cloudflare.com/workers/platform/limits/#environment-variables). |
+| `10055` | The number of environment variables or secrets exceeds the [limit/Worker](https://developers.cloudflare.com/workers/platform/limits/#environment-variables). |
+| `10056` | [Binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) not found. |
+| `10068` | The uploaded Worker has no registered [event handlers](https://developers.cloudflare.com/workers/runtime-apis/handlers/). |
+| `10069` | The uploaded Worker contains [event handlers](https://developers.cloudflare.com/workers/runtime-apis/handlers/) unsupported by the Workers runtime. |
 
 ### Validation Errors (10021)
 
@@ -229,37 +229,36 @@ This means that you are doing work in the top-level scope of your Worker that al
 
 Runtime errors will occur within the runtime, do not throw up an error page, and are not visible to the end user. Runtime errors are detected by the user with logs.
 
-| Error message                            | Meaning                                                                                                                                           |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Network connection lost                  | Connection failure. Catch a fetch or binding invocation and retry it.                                                                             |
-| Memory limitwould be exceeded before EOF | Trying to read a stream or buffer that would take you over the [memory limit](https://developers.cloudflare.com/workers/platform/limits/#memory). |
-| daemonDown                               | A temporary problem invoking the Worker.                                                                                                          |
+| Error message | Meaning |
+| --- | --- |
+| `Network connection lost` | Connection failure. Catch a `fetch` or binding invocation and retry it. |
+| `Memory limit`<br>`would be exceeded`<br> `before EOF` | Trying to read a stream or buffer that would take you over the [memory limit](https://developers.cloudflare.com/workers/platform/limits/#memory). |
+| `daemonDown` | A temporary problem invoking the Worker. |
 
 ## Identify errors: Workers Metrics
 
 To review whether your application is experiencing any downtime or returning any errors:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your Worker and review your Worker's metrics.
 
 ### Worker Errors
 
 The **Errors by invocation status** chart shows the number of errors broken down into the following categories:
 
-| Error                    | Meaning                                                         |
-| ------------------------ | --------------------------------------------------------------- |
-| Uncaught Exception       | Your Worker code threw a JavaScript exception during execution. |
-| Exceeded CPU Time Limits | Worker exceeded CPU time limit or other resource constraints.   |
-| Exceeded Memory          | Worker exceeded the memory limit during execution.              |
-| Internal                 | An internal error occurred in the Workers runtime.              |
+| Error | Meaning |
+| --- | --- |
+| `Uncaught Exception` | Your Worker code threw a JavaScript exception during execution. |
+| `Exceeded CPU Time Limits` | Worker exceeded CPU time limit or other resource constraints. |
+| `Exceeded Memory` | Worker exceeded the memory limit during execution. |
+| `Internal` | An internal error occurred in the Workers runtime. |
 
 The **Client disconnected by type** chart shows the number of client disconnect errors broken down into the following categories:
 
-| Client Disconnects           | Meaning                                                                                                                                                                                                                           |
-| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Response Stream Disconnected | Connection was terminated during the deferred proxying stage of a Worker request flow. It commonly appears for longer lived connections such as [WebSockets](https://developers.cloudflare.com/workers/runtime-apis/websockets/). |
-| Cancelled                    | The Client disconnected before the Worker completed its response.                                                                                                                                                                 |
+| Client Disconnects | Meaning |
+| --- | --- |
+| `Response Stream Disconnected` | Connection was terminated during the deferred proxying stage of a Worker request flow. It commonly appears for longer lived connections such as [WebSockets](https://developers.cloudflare.com/workers/runtime-apis/websockets/). |
+| `Cancelled` | The Client disconnected before the Worker completed its response. |
 
 ## Debug exceptions with Workers Logs
 
@@ -267,7 +266,7 @@ The **Client disconnected by type** chart shows the number of client disconnect 
 
 To find all your errors in Workers Logs, you can use the following filter: `$metadata.error EXISTS`. This will show all the logs that have an error associated with them. You can also filter by `$workers.outcome` to find the requests that resulted in an error. For example, you can filter by `$workers.outcome = "exception"` to find all the requests that resulted in an uncaught exception.
 
-All the possible outcome values can be found in the [Workers Trace Event](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/workers%5Ftrace%5Fevents/#outcome) reference.
+All the possible outcome values can be found in the [Workers Trace Event](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/workers_trace_events/#outcome) reference.
 
 ## Debug exceptions from `Wrangler`
 
@@ -279,7 +278,7 @@ Exceptions will show up under the `exceptions` field in the JSON returned by `wr
 
 A Worker can make HTTP requests to any HTTP service on the public Internet. You can use a service like [Sentry ↗](https://sentry.io) to collect error logs from your Worker, by making an HTTP request to the service to report the error. Refer to your service’s API documentation for details on what kind of request to make.
 
-When using an external logging strategy, remember that floating promises (promises that are neither `await`ed, `return`ed, nor passed to `ctx.waitUntil()`) may be canceled when the Worker invocation completes. A Worker invocation has not completed while it is still streaming a response body to the client. To run logging after the response is complete, pass the request promise to [ctx.waitUntil()](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil). For example:
+When using an external logging strategy, remember that floating promises (promises that are neither `await`ed, `return`ed, nor passed to `ctx.waitUntil()`) may be canceled when the Worker invocation completes. A Worker invocation has not completed while it is still streaming a response body to the client. To run logging after the response is complete, pass the request promise to [`ctx.waitUntil()`](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil). For example:
 
 ```js
 export default {
@@ -329,7 +328,7 @@ Configure the [Wasm Coredump Service ↗](https://github.com/cloudflare/wasm-cor
 
 ## Go to origin on error
 
-By using [passThroughOnException()](https://developers.cloudflare.com/workers/runtime-apis/context/#passthroughonexception), a Workers application can forward requests to your origin if an exception is thrown during the Worker's execution. This allows you to add logging, tracking, or other features with Workers, without degrading your application's functionality.
+By using [`passThroughOnException()`](https://developers.cloudflare.com/workers/runtime-apis/context/#passthroughonexception), a Workers application can forward requests to your origin if an exception is thrown during the Worker's execution. This allows you to add logging, tracking, or other features with Workers, without degrading your application's functionality.
 
 `ctx.passThroughOnException()` forwards requests for unhandled exceptions in your Worker code, not for errors from the origin `fetch()`. When proxying requests to an origin, wrap `fetch(request)` in `try...catch` and return a `5xx` response on failure. If the origin `fetch()` throws after consuming the request body, `passThroughOnException()` cannot replay the body.
 
@@ -362,9 +361,9 @@ async function handleRequest(request) {
 
 ## Related resources
 
-* [Log from Workers](https://developers.cloudflare.com/workers/observability/logs/) \- Learn how to log your Workers.
-* [Logpush](https://developers.cloudflare.com/workers/observability/logs/logpush/) \- Learn how to push Workers Trace Event Logs to supported destinations.
-* [RPC error handling](https://developers.cloudflare.com/workers/runtime-apis/rpc/error-handling/) \- Learn how to handle errors from remote-procedure calls.
+- [Log from Workers](https://developers.cloudflare.com/workers/observability/logs/) - Learn how to log your Workers.
+- [Logpush](https://developers.cloudflare.com/workers/observability/logs/logpush/) - Learn how to push Workers Trace Event Logs to supported destinations.
+- [RPC error handling](https://developers.cloudflare.com/workers/runtime-apis/rpc/error-handling/) - Learn how to handle errors from remote-procedure calls.
 
 Was this helpful?
 

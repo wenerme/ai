@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Google
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/google/gemini-3.7-flash/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/google/gemini-3.7-flash/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `google/gemini-3.7-flash`
 
-* Third-party
+- Third-party
 
 Gemini 3.7 Flash is a highly capable, natively multimodal reasoning model optimized for agentic workflows and real-world tasks.
 
-| Model Info                                                                          |                                                                                                                           |
-| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,048,576 tokens                                                                                                          |
-| Terms and License                                                                   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                          |
-| More information                                                                    | [link ↗](https://ai.google.dev/gemini-api/docs/models/gemini-3.7-flash)                                                   |
-| Request formats                                                                     | Chat Completions                                                                                                          |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.7-flash) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,048,576 tokens |
+| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms) |
+| More information | [link ↗](https://ai.google.dev/gemini-api/docs/models/gemini-3.7-flash) |
+| Request formats | Chat Completions |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.7-flash) |
 
 ## Usage
 
@@ -63,6 +63,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 The **laws of thermodynamics** define fundamental physical quantities (like temperature, energy, and entropy) and describe how they behave under various circumstances.
 
 While there are historically **three** main laws, scientists later added a foundational law called the **Zeroth Law**. Here are all four, clearly explained:
@@ -110,6 +111,7 @@ A humorous way physicists summarize the laws of thermodynamics:
 1. **First Law:** You can't win; you can only break even (energy is conserved).
 2. **Second Law:** You can't break even (entropy always increases, so energy is lost as unusable heat).
 3. **Third Law:** You can't get out of the game (you can never reach absolute zero).
+```
 
 ```json
 {
@@ -154,7 +156,11 @@ A humorous way physicists summarize the laws of thermodynamics:
 
 ## Examples
 
-**With System Instruction** — Using a system instruction to set an agentic coding persona
+<details>
+
+<summary>**With System Instruction** — Using a system instruction to set an agentic coding persona</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -212,6 +218,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+````
 Here is a clean, efficient Python function using the two-pointer approach, running in $O(n + m)$ time and space complexity:
 
 ```python
@@ -272,6 +279,7 @@ import heapq
 def merge_sorted_lists_lazy(list1: list, list2: list) -> list:
     return list(heapq.merge(list1, list2))
 ```
+````
 
 ```json
 {
@@ -314,7 +322,13 @@ def merge_sorted_lists_lazy(list1: list, list2: list) -> list:
 }
 ```
 
-**Multi-turn Conversation** — Continuing a multi-step coding conversation, typical of an agentic loop
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a multi-step coding conversation, typical of an agentic loop</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -381,6 +395,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+````
 Here is how to memoize the recursive Fibonacci function.
 
 ### 1. Using a Dictionary / Cache (Explicit)
@@ -439,6 +454,7 @@ print(fib(40))  # Returns 102334155 instantly
 ### Why this fixes the issue:
 * **Naive recursion:** Time complexity is $O(2^n)$ because it recomputes identical values millions of times.
 * **Memoized recursion:** Time complexity drops to $O(n)$ because each Fibonacci number from $0$ to $n$ is calculated only once. Space complexity is $O(n)$ to store the cache and recursion stack.
+````
 
 ```json
 {
@@ -481,7 +497,13 @@ print(fib(40))  # Returns 102334155 instantly
 }
 ```
 
-**Spatial Reasoning** — Higher thinking budget for a spatial reasoning task
+</details>
+
+<details>
+
+<summary>**Spatial Reasoning** — Higher thinking budget for a spatial reasoning task</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -527,6 +549,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 To find the number of smaller cubes with **exactly two red faces**, we can analyze how the $3 \times 3 \times 3$ cube is structured:
 
 1. **Corner cubes (3 painted faces):** There are **8** corners in a cube.
@@ -538,6 +561,7 @@ To find the number of smaller cubes with **exactly two red faces**, we can analy
 *(Check: $8 + 12 + 6 + 1 = 27$ total cubes)*
 
 Therefore, there are **12** smaller cubes with exactly two red faces.
+```
 
 ```json
 {
@@ -580,13 +604,15 @@ Therefore, there are **12** smaller cubes with exactly two red faces.
 }
 ```
 
+</details>
+
 ## Parameters
 
 Schema variant
 
 Generate ContentChat Completions
 
-▶contents\[\]
+▶contents\[]
 
 `array`required
 
@@ -598,19 +624,17 @@ Generate ContentChat Completions
 
 `object`
 
-▶safetySettings\[\]
+▶safetySettings\[]
 
 `array`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 toolConfig
 
-``
-
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -632,11 +656,11 @@ top\_p
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 stream
 
@@ -646,19 +670,15 @@ stream
 
 `object`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
 
-``
-
 response\_format
 
-``
-
-▶modalities\[\]
+▶modalities\[]
 
 `array`
 
@@ -666,7 +686,7 @@ response\_format
 
 `object`
 
-▶candidates\[\]
+▶candidates\[]
 
 `array`
 
@@ -694,7 +714,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -704,9 +724,9 @@ model
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/google/gemini-3.7-flash/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/google/gemini-3.7-flash/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/google/gemini-3.7-flash/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/google/gemini-3.7-flash/schema-output.json)
 
 Was this helpful?
 

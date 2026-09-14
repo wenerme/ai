@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Local uploads
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/buckets/local-uploads/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/buckets/local-uploads/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can enable Local Uploads on your bucket to improve the performance of upload requests when clients upload data from a different region than your bucket. Local Uploads writes object data to a nearby location, then asynchronously copies it to your bucket. Data is available immediately and remains strongly consistent.
 
@@ -28,8 +28,8 @@ When a client uploads an object to your R2 bucket, the object data must travel f
 
 When you make an upload request (i.e. `PutObject` and `UploadPart`) to a bucket with Local Uploads enabled, there are two cases that are handled:
 
-* **Client and bucket in same region:** R2 follows the normal upload flow where object data is uploaded from the client to the storage infrastructure of your bucket.
-* **Client and bucket in different regions:** Object data is written to storage near the client, then asynchronously replicated to your bucket. The object is immediately accessible and remains durable during the process.
+- **Client and bucket in same region:** R2 follows the normal upload flow where object data is uploaded from the client to the storage infrastructure of your bucket.
+- **Client and bucket in different regions:** Object data is written to storage near the client, then asynchronously replicated to your bucket. The object is immediately accessible and remains durable during the process.
 
 Local uploads
 
@@ -63,14 +63,13 @@ Data is uploaded and accessible
 
 Local uploads are built for workloads that receive a lot of uploads originating from different geographic regions than where your bucket is located. This feature is ideal when:
 
-* Your users are globally distributed
-* Upload performance and reliability is critical to your application
-* You want to optimize write performance without changing your bucket's primary location
+- Your users are globally distributed
+- Upload performance and reliability is critical to your application
+- You want to optimize write performance without changing your bucket's primary location
 
 To understand the geographic distribution of where your read and write requests are initiated:
 
-1. Log in to the Cloudflare dashboard, and go to R2 Overview.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
+1. Log in to the Cloudflare dashboard, and go to R2 Overview. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select your bucket.
 3. Select **Metrics** and view the **Request Distribution** chart.
 
@@ -88,8 +87,7 @@ Local uploads are not supported for buckets with [jurisdictional restrictions](h
 
 When you enable Local Uploads, existing uploads will complete as expected with no interruption to traffic.
 
-1. Log in to the Cloudflare dashboard, and go to R2 Overview.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
+1. Log in to the Cloudflare dashboard, and go to R2 Overview. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select your bucket.
 3. Select **Settings**.
 4. Under **Local Uploads**, select **Enable**.
@@ -104,8 +102,7 @@ npx wrangler r2 bucket local-uploads enable <BUCKET_NAME>
 
 You can disable local uploads at any time. Existing requests made with local uploads will complete replication with no interruption to your traffic.
 
-1. Log in to the Cloudflare dashboard, and go to R2 Overview.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
+1. Log in to the Cloudflare dashboard, and go to R2 Overview. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select your bucket.
 3. Select **Settings**.
 4. Under **Local Uploads**, select **Disable**.

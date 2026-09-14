@@ -8,14 +8,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.edge.server\_ip
 
-`cf.edge.server_ip` `IP address`
+`cf.edge.server_ip``IP address`
 
 Represents the global network's IP address to which the HTTP request has resolved.
 
 This field is only meaningful for [BYOIP customers](https://developers.cloudflare.com/byoip/).
 
 Categories:
-* Request
+- Request
 
 Was this helpful?
 

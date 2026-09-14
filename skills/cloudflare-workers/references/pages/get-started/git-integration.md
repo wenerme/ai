@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Git integration
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/get-started/git-integration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/get-started/git-integration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this guide, you will get started with Cloudflare Pages and deploy your first website to the Pages platform through Git integration. The Git integration enables automatic builds and deployments every time you push a change to your connected [GitHub](https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/) or [GitLab](https://developers.cloudflare.com/pages/configuration/git-integration/gitlab-integration/) repository.
 
@@ -24,9 +24,8 @@ If you deploy using the Git integration, you cannot switch to [Direct Upload](ht
 
 Pages offers support for [GitHub ↗](https://github.com/) and [GitLab ↗](https://gitlab.com/). To create your first Pages project:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
-2. Select **Create application** \> **Pages** \> **Connect to Git**.
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+2. Select **Create application** > **Pages** > **Connect to Git**.
 
 You will be prompted to sign in with your preferred Git provider. This allows Cloudflare Pages to deploy your projects, and update your PRs with [preview deployments](https://developers.cloudflare.com/pages/configuration/preview-deployments/).
 
@@ -70,19 +69,27 @@ The dashboard provides a number of framework-specific presets. These presets pro
 
 ![Build setting fields that need to be filled in](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=966,height=802,format=webp/_astro/build-settings.BREiHFn0.png)
 
-Cloudflare Pages begins by working from your repository's root directory. The entire build pipeline, including the installation steps, will begin from this location. If you would like to change this, specify a new root directory location through the **Root directory (advanced)** \> **Path** field.
+Cloudflare Pages begins by working from your repository's root directory. The entire build pipeline, including the installation steps, will begin from this location. If you would like to change this, specify a new root directory location through the **Root directory (advanced)** > **Path** field.
 
 ![Root directory field to be filled in](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1023,height=322,format=webp/_astro/root-directory.CKTDgRpM.png)
 
+<details>
+
+<summary>
+
 Understanding your build configuration
 
-The build command is provided by your framework. For example, the Gatsby framework uses `gatsby build` as its build command. When you are working without a framework, leave the **Build command** field blank.
+</summary>
 
-The build output directory is generated from the build command. Each [framework](https://developers.cloudflare.com/pages/configuration/build-configuration/#framework-presets) has its own naming convention, for example, the build output directory is named `/public` for many frameworks.
+The build command is provided by your framework. For example, the Gatsby framework uses <code>gatsby build</code> as its build command. When you are working without a framework, leave the **Build command** field blank.
+
+The build output directory is generated from the build command. Each <a href="https://developers.cloudflare.com/pages/configuration/build-configuration/#framework-presets">framework</a> has its own naming convention, for example, the build output directory is named <code>/public</code> for many frameworks.
 
 The root directory is where your site's content lives. If not specified, Cloudflare assumes that your linked Git repository is the root directory. The root directory needs to be specified in cases like monorepos, where there may be multiple projects in one repository.
 
-Refer to [Build configuration](https://developers.cloudflare.com/pages/configuration/build-configuration/) for more information.
+Refer to <a href="https://developers.cloudflare.com/pages/configuration/build-configuration/">Build configuration</a> for more information.
+
+</details>
 
 ### Environment variables
 
@@ -90,7 +97,7 @@ Environment variables are a common way of providing configuration to your build 
 
 Refer to the [Hexo framework guide](https://developers.cloudflare.com/pages/framework-guides/deploy-a-hexo-site/#using-a-specific-nodejs-version) for more information on how to set up a Node.js version environment variable.
 
-After you have chosen your _Framework preset_ or left this field blank if you are working without a framework, configured **Root directory (advanced)**, and customized your **Environment variables (optional)**, you are ready to deploy.
+After you have chosen your *Framework preset* or left this field blank if you are working without a framework, configured **Root directory (advanced)**, and customized your **Environment variables (optional)**, you are ready to deploy.
 
 ## Your first deploy
 
@@ -114,9 +121,8 @@ After your first deploy, select **Continue to project** to see your project's co
 
 To delete your Pages project:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
-2. Select your Pages project > **Settings** \> **Delete project**.
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+2. Select your Pages project > **Settings** > **Delete project**.
 
 Caution
 
@@ -130,9 +136,9 @@ In the **Settings** section, you can configure advanced settings, such as changi
 
 ## Related resources
 
-* Set up a [custom domain for your Pages project](https://developers.cloudflare.com/pages/configuration/custom-domains/).
-* Enable [Cloudflare Web Analytics](https://developers.cloudflare.com/pages/how-to/web-analytics/).
-* Set up Access policies to [manage who can view your deployment previews](https://developers.cloudflare.com/pages/configuration/preview-deployments/#customize-preview-deployments-access).
+- Set up a [custom domain for your Pages project](https://developers.cloudflare.com/pages/configuration/custom-domains/).
+- Enable [Cloudflare Web Analytics](https://developers.cloudflare.com/pages/how-to/web-analytics/).
+- Set up Access policies to [manage who can view your deployment previews](https://developers.cloudflare.com/pages/configuration/preview-deployments/#customize-preview-deployments-access).
 
 Was this helpful?
 

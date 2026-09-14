@@ -12,27 +12,27 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # SameSite cookie interaction with Cloudflare
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Google Chrome enforces SameSite cookie behavior ↗](https://www.chromium.org/updates/same-site) to protect against marketing cookies that track users and Cross-site Request Forgery (CSRF) that allows attackers to steal or manipulate your cookies.
 
 The `SameSite` cookie attribute has three different modes:
 
-* **Strict**: Cookies are created by the first party (the visited domain). For example, a first-party cookie is set by Cloudflare when visiting `cloudflare.com`.
-* **Lax**: Cookies are only sent to the apex domain (such as `example.com`). For example, if someone (`blog.example.net`) hotlinked an image (`img.example.com/bar.png`), the client does not send a cookie to `img.example.com` since it is neither the first-party nor apex context.
-* **None**: Cookies are sent with all requests.
+- **Strict**: Cookies are created by the first party (the visited domain). For example, a first-party cookie is set by Cloudflare when visiting `cloudflare.com`.
+- **Lax**: Cookies are only sent to the apex domain (such as `example.com`). For example, if someone ( `blog.example.net`) hotlinked an image ( `img.example.com/bar.png`), the client does not send a cookie to `img.example.com` since it is neither the first-party nor apex context.
+- **None**: Cookies are sent with all requests.
 
 `SameSite` settings for [Cloudflare cookies](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/) include:
 
-| Cloudflare cookie | SameSite setting      | HTTPS Only | Partitioned (CHIPS) |
-| ----------------- | --------------------- | ---------- | ------------------- |
-| \_\_cf\_bm        | SameSite=None; Secure | Yes        | No                  |
-| cf\_clearance     | SameSite=None; Secure | Yes        | Yes                 |
-| \_\_cflb          | SameSite=Lax          | No         | No                  |
+| Cloudflare cookie | SameSite setting | HTTPS Only | Partitioned (CHIPS) |
+| --- | --- | --- | --- |
+| `__cf_bm` | `SameSite=None; Secure` | Yes | No |
+| `cf_clearance` | `SameSite=None; Secure` | Yes | Yes |
+| `__cflb` | `SameSite=Lax` | No | No |
 
 ## SameSite attribute in session affinity cookies
 
-Currently, to configure the `SameSite` attribute on [session affinity cookies](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/) you must use the Cloudflare API (for example, the [Create Load Balancer](https://developers.cloudflare.com/api/resources/load%5Fbalancers/methods/create/) operation).
+Currently, to configure the `SameSite` attribute on [session affinity cookies](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/) you must use the Cloudflare API (for example, the [Create Load Balancer](https://developers.cloudflare.com/api/resources/load_balancers/methods/create/) operation).
 
 To configure the value of the `SameSite` cookie attribute, include the `samesite` and `secure` JSON attributes in your HTTP request, inside the `session_affinity_attributes` object.
 
@@ -40,21 +40,21 @@ The available values for these two attributes are the following:
 
 **`samesite` attribute:**
 
-* Valid values: `Auto` (default), `Lax`, `None`, `Strict`.
+- Valid values: `Auto` (default), `Lax`, `None`, `Strict`.
 
 **`secure` attribute:**
 
-* Valid values: `Auto` (default), `Always`, `Never`.
+- Valid values: `Auto` (default), `Always`, `Never`.
 
 The `Auto` value for the `samesite` attribute will have the following behavior:
 
-* If [**Always Use HTTPS**](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/) is enabled, session affinity cookies will use the `Lax` SameSite mode.
-* If **Always Use HTTPS** is disabled, session affinity cookies will use the `None` SameSite mode.
+- If [**Always Use HTTPS**](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/) is enabled, session affinity cookies will use the `Lax` SameSite mode.
+- If **Always Use HTTPS** is disabled, session affinity cookies will use the `None` SameSite mode.
 
 The `Auto` value for the `secure` attribute will have the following behavior:
 
-* If **Always Use HTTPS** is enabled, session affinity cookies will include `Secure` in the SameSite attribute.
-* If **Always Use HTTPS** is disabled, session affinity cookies will not include `Secure` in the SameSite attribute.
+- If **Always Use HTTPS** is enabled, session affinity cookies will include `Secure` in the SameSite attribute.
+- If **Always Use HTTPS** is disabled, session affinity cookies will not include `Secure` in the SameSite attribute.
 
 If you set `samesite` to `None` in your API request, you cannot set `secure` to `Never`.
 
@@ -68,12 +68,12 @@ When a visitor solves a [challenge](https://developers.cloudflare.com/cloudflare
 
 Cloudflare uses `SameSite=None` in the `cf_clearance` cookie so that visitor requests from different hostnames are not met with later challenges or errors. When `SameSite=None` is used, it must be set in conjunction with the `Secure` flag.
 
-Using the `Secure` flag requires sending the cookie via an HTTPS connection. If you use HTTP on any part of your website, the `cf_clearance` cookie defaults to `SameSite=Lax`, which may cause your website not to function properly.
+Using the `Secure` flag requires sending the cookie via an HTTPS connection. If you use HTTP on any part of your website, the `cf_clearance` cookie defaults to `SameSite=Lax`, which may cause your website not to function properly.
 
 To resolve the issue, move your website traffic to HTTPS. Cloudflare offers two features for this purpose:
 
-* [Automatic HTTPS Rewrites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/automatic-https-rewrites/)
-* [Always Use HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/)
+- [Automatic HTTPS Rewrites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/automatic-https-rewrites/)
+- [Always Use HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/)
 
 ---
 
@@ -91,17 +91,17 @@ Because `cf_clearance` is partitioned, a clearance obtained in one top-level con
 
 ### `Partitioned` requires `SameSite=None; Secure`
 
-The `Partitioned` attribute only takes effect on cookies that are also set with `SameSite=None; Secure`. If your site does not serve all traffic over HTTPS, the `cf_clearance` cookie falls back to `SameSite=Lax` (refer to [Known issues with SameSite and cf\_clearance cookies](#known-issues-with-samesite-and-cf%5Fclearance-cookies)), and the `Partitioned` attribute has no effect.
+The `Partitioned` attribute only takes effect on cookies that are also set with `SameSite=None; Secure`. If your site does not serve all traffic over HTTPS, the `cf_clearance` cookie falls back to `SameSite=Lax` (refer to [Known issues with SameSite and `cf_clearance` cookies](#known-issues-with-samesite-and-cf_clearance-cookies)), and the `Partitioned` attribute has no effect.
 
 ---
 
 ## Related resources
 
-* [SameSite cookies explained ↗](https://web.dev/samesite-cookies-explained/)
-* [Cloudflare Cookies](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/)
-* [Cloudflare SSL FAQ](https://developers.cloudflare.com/ssl/faq/)
-* [Automatic HTTPS Rewrites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/automatic-https-rewrites/)
-* [Always Use HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/)
+- [SameSite cookies explained ↗](https://web.dev/samesite-cookies-explained/)
+- [Cloudflare Cookies](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/)
+- [Cloudflare SSL FAQ](https://developers.cloudflare.com/ssl/faq/)
+- [Automatic HTTPS Rewrites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/automatic-https-rewrites/)
+- [Always Use HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/)
 
 Was this helpful?
 

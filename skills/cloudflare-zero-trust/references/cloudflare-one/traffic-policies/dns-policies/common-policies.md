@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Common policies
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/common-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/common-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following Cloudflare Gateway DNS policies are commonly used to secure DNS traffic. Each example includes both dashboard and API instructions that you can adapt for your organization.
 
@@ -22,11 +22,13 @@ Refer to the [DNS policies page](https://developers.cloudflare.com/cloudflare-on
 
 ## Allow corporate domains
 
-This policy allows users to access official corporate domains. By deploying the policy with high [order of precedence](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/#order-of-precedence), you ensure that employees can access trusted domains even if they fall under a blocked category like _Newly seen domains_ or _Login pages_.
+This policy allows users to access official corporate domains. By deploying the policy with high [order of precedence](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/#order-of-precedence), you ensure that employees can access trusted domains even if they fall under a blocked category like *Newly seen domains* or *Login pages*.
 
-| Selector | Operator | Value             | Action | Precedence |
-| -------- | -------- | ----------------- | ------ | ---------- |
-| Domain   | in list  | _Allowed domains_ | Allow  | 1          |
+| Selector | Operator | Value | Action | Precedence |
+| --- | --- | --- | --- | --- |
+| Domain | in list | *Allowed domains* | Allow | 1 |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -46,15 +48,17 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 	}'
 ```
 
-To get the UUIDs of your lists, use the [List Zero Trust lists](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/lists/methods/list/) endpoint.
+To get the UUIDs of your lists, use the [List Zero Trust lists](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/lists/methods/list/) endpoint.
 
 ## Block security threats
 
 Block [security categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-categories) such as Command & Control, Botnet and Malware based on Cloudflare's threat intelligence.
 
-| Selector            | Operator | Value                | Action |
-| ------------------- | -------- | -------------------- | ------ |
-| Security Categories | in       | _All security risks_ | Block  |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Security Categories | in | *All security risks* | Block |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -91,9 +95,11 @@ resource "cloudflare_zero_trust_gateway_policy" "block_security_threats" {
 
 The categories included in this policy are not always a security threat, but blocking them can help minimize the risk that your organization is exposed to. For more information, refer to [domain categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/).
 
-| Selector           | Operator | Value                                                     | Action |
-| ------------------ | -------- | --------------------------------------------------------- | ------ |
-| Content Categories | in       | _Questionable Content_, _Security Risks_, _Miscellaneous_ | Block  |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Content Categories | in | *Questionable Content*, *Security Risks*, *Miscellaneous* | Block |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -138,9 +144,11 @@ You can add a list of category IDs to the [EDNS (Extension Mechanisms for DNS) �
 
 With the [Request Context Categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/#request-context-categories) selector, you can block the category IDs sent with EDNS. This is useful to filter by categories not known at the time of creating a policy, or to enforce device-specific DNS content filtering without reaching your account limit. When Gateway uses this selector to block a DNS query, the request will return an Extended DNS Error (EDE) Code 15 (`Blocked`), along with a field containing an array of the matched categories.
 
-| Selector                 | Operator | Value     | Action |
-| ------------------------ | -------- | --------- | ------ |
-| Request Context Category | is       | _Present_ | Block  |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Request Context Category | is | *Present* | Block |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -178,11 +186,15 @@ Note
 
 After seven days, view your [Shadow IT SaaS Analytics](https://developers.cloudflare.com/cloudflare-one/insights/analytics/shadow-it-discovery/) and block additional applications based on what your users are accessing.
 
-To minimize the risk of [shadow IT](https://www.cloudflare.com/learning/access-management/what-is-shadow-it/), some organizations choose to limit their users' access to certain web-based tools and applications. For example, the following policy blocks known AI tools:
+To minimize the risk of [shadow IT](https://www.cloudflare.com/learning/access-management/what-is-shadow-it/)
 
-| Selector    | Operator | Value                     | Action |
-| ----------- | -------- | ------------------------- | ------ |
-| Application | in       | _Artificial Intelligence_ | Block  |
+, some organizations choose to limit their users' access to certain web-based tools and applications. For example, the following policy blocks known AI tools:
+
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Application | in | *Artificial Intelligence* | Block |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -219,9 +231,11 @@ resource "cloudflare_zero_trust_gateway_policy" "block_unauthorized_apps" {
 
 You can implement policies to block websites hosted in countries categorized as high risk. The designation of such countries may result from your organization's requirements or through regulations including [EAR (Export Administration Regulations) ↗](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries), [OFAC (Office of Foreign Assets Control) ↗](https://orpa.princeton.edu/export-controls/sanctioned-countries), and [ITAR (International Traffic in Arms Regulations) ↗](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries). This policy blocks DNS queries that resolve to IP addresses geolocated in the countries you specify.
 
-| Selector                        | Operator | Value                                                                                                                                                          | Action |
-| ------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
-| Resolved Country IP Geolocation | in       | _Afghanistan_, _Belarus_, _Congo (Kinshasa)_, _Cuba_, _Iran_, _Iraq_, _Korea, North_, _Myanmar_, _Russian Federation_, _Sudan_, _Syria_, _Ukraine_, _Zimbabwe_ | Block  |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Resolved Country IP Geolocation | in | *Afghanistan*, *Belarus*, *Congo (Kinshasa)*, *Cuba*, *Iran*, *Iraq*, *Korea, North*, *Myanmar*, *Russian Federation*, *Sudan*, *Syria*, *Ukraine*, *Zimbabwe* | Block |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -244,11 +258,13 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Blocking [frequently misused ↗](https://www.spamhaus.org/statistics/tlds/) top-level domains (TLDs) — the last segment of a domain name, such as `.com` or `.ru` — can reduce security risks, especially when there is no discernible advantage to be gained from allowing access. Similarly, restricting access to specific country-level TLDs may be necessary to comply with regulations like [ITAR ↗](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries) or [OFAC ↗](https://orpa.princeton.edu/export-controls/sanctioned-countries).
 
-| Selector | Operator      | Value                                                         | Logic | Action |
-| -------- | ------------- | ------------------------------------------------------------- | ----- | ------ |
-| Domain   | matches regex | \[.\](cn\|ru)$                                                | Or    | Block  |
-| Domain   | matches regex | \[.\](rest\|hair|top|live|cfd|boats|beauty|mom|skin|okinawa)$ | Or    |        |
-| Domain   | matches regex | \[.\](zip\|mobi)$                                             |       |        |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Domain | matches regex | `[.](cn\|ru)$` | Or | Block |
+| Domain | matches regex | `[.](rest\|hair\|top\|live\|cfd\|boats\|beauty\|mom\|skin\|okinawa)$` | Or | |
+| Domain | matches regex | `[.](zip\|mobi)$` |  | |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -269,12 +285,14 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ## Block phishing attacks
 
-To protect against [sophisticated phishing attacks ↗](https://blog.cloudflare.com/2022-07-sms-phishing-attacks/), you could prevent users from accessing phishing domains that are specifically targeting your organization. The following policy blocks specific keywords associated with an organization or its authentication services (such as _okta_, _2fa_, _cloudflare_ or _sso_), while still allowing access to official corporate domains.
+To protect against [sophisticated phishing attacks ↗](https://blog.cloudflare.com/2022-07-sms-phishing-attacks/), you could prevent users from accessing phishing domains that are specifically targeting your organization. The following policy blocks specific keywords associated with an organization or its authentication services (such as *okta*, *2fa*, *cloudflare* or *sso*), while still allowing access to official corporate domains.
 
-| Selector | Operator      | Value                                          | Logic | Action |
-| -------- | ------------- | ---------------------------------------------- | ----- | ------ |
-| Domain   | not in list   | _Corporate Domains_                            | And   | Block  |
-| Domain   | matches regex | .\*okta.\*\|.\*cloudflare.\*|.\*mfa.\*|.sso.\* |       |        |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Domain | not in list | *Corporate Domains* | And | Block |
+| Domain | matches regex | `.*okta.*\|.*cloudflare.*\|.*mfa.*\|.sso.*` |  | |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -293,15 +311,17 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 	}'
 ```
 
-To get the UUIDs of your lists, use the [List Zero Trust lists](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/lists/methods/list/) endpoint.
+To get the UUIDs of your lists, use the [List Zero Trust lists](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/lists/methods/list/) endpoint.
 
 ## Block online tracking
 
 To safeguard user privacy, some organizations will block tracking domains such as `dig.whatsapp.com` as well as other tracking domains embedded at the OS level. This policy is implemented by creating a custom blocklist. Refer to [this repository ↗](https://github.com/nextdns/native-tracking-domains/tree/28991a0d5b2ab6d35588a74af82162ea7caff420/domains) for a list of widespread tracking domains that you can add to your blocklist.
 
-| Selector | Operator | Value                  | Action |
-| -------- | -------- | ---------------------- | ------ |
-| Domain   | in list  | _Top tracking domains_ | Block  |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Domain | in list | *Top tracking domains* | Block |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -320,15 +340,17 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 	}'
 ```
 
-To get the UUIDs of your lists, use the [List Zero Trust lists](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/lists/methods/list/) endpoint.
+To get the UUIDs of your lists, use the [List Zero Trust lists](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/lists/methods/list/) endpoint.
 
 ## Block malicious IPs
 
 Block specific IP addresses that are known to be malicious or pose a threat to your organization. This policy is usually implemented by creating custom blocklists or by using blocklists provided by threat intelligence partners or regional Computer Emergency and Response Teams (CERTs).
 
-| Selector    | Operator | Value     | Action |
-| ----------- | -------- | --------- | ------ |
-| Resolved IP | in list  | _DShield_ | Block  |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Resolved IP | in list | *DShield* | Block |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -347,15 +369,17 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 	}'
 ```
 
-To get the UUIDs of your lists, use the [List Zero Trust lists](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/lists/methods/list/) endpoint.
+To get the UUIDs of your lists, use the [List Zero Trust lists](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/lists/methods/list/) endpoint.
 
 ## Turn on CIPA filter
 
 The CIPA (Children's Internet Protection Act) Filter is a collection of subcategories that encompass a wide range of topics that could be harmful or inappropriate for minors. It is used as a part of [Project Cybersafe Schools](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cybersafe/) to block access to unwanted or harmful online content. Upon creating this policy, your organization will have minimum [CIPA compliance ↗](https://www.fcc.gov/consumers/guides/childrens-internet-protection-act).
 
-| Selector           | Operator | Value         | Action |
-| ------------------ | -------- | ------------- | ------ |
-| Content Categories | in       | _CIPA Filter_ | Block  |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Content Categories | in | *CIPA Filter* | Block |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -378,9 +402,11 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 SafeSearch is a feature of search engines that helps you filter explicit or offensive content. You can force SafeSearch on search engines like Google, Bing, Yandex, YouTube, and DuckDuckGo:
 
-| Selector           | Operator | Value            | Action      |
-| ------------------ | -------- | ---------------- | ----------- |
-| Content Categories | in       | _Search Engines_ | Safe Search |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Content Categories | in | *Search Engines* | Safe Search |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -403,10 +429,12 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Configure access on a per user or group basis by adding [identity-based conditions](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/) to your policies.
 
-| Selector         | Operator | Value        | Logic | Action |
-| ---------------- | -------- | ------------ | ----- | ------ |
-| Application      | in       | _Salesforce_ | And   | Block  |
-| User Group Names | in       | Contractors  |       |        |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Application | in | *Salesforce* | And | Block |
+| User Group Names | in | `Contractors` |  | |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -431,12 +459,14 @@ Filter DNS queries to allow only specific users access.
 
 The following example includes two policies. The first policy allows the specified group, while the second policy blocks all other users. To ensure the policies are evaluated properly, place the Allow policy above the Block policy. For more information, refer to the [order of precedence](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/#order-of-precedence).
 
-### 1\. Allow a group
+### 1. Allow a group
 
-| Selector           | Operator | Value             | Logic | Action |
-| ------------------ | -------- | ----------------- | ----- | ------ |
-| Content Categories | in       | _Social Networks_ | And   | Allow  |
-| User Group Names   | in       | Marketing         |       |        |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Content Categories | in | *Social Networks* | And | Allow |
+| User Group Names | in | `Marketing` |  | |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -456,11 +486,13 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 	}'
 ```
 
-### 2\. Block all other users
+### 2. Block all other users
 
-| Selector           | Operator | Value             | Action |
-| ------------------ | -------- | ----------------- | ------ |
-| Content Categories | in       | _Social Networks_ | Block  |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Content Categories | in | *Social Networks* | Block |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -494,9 +526,11 @@ To ensure traffic routes through your preferred IP version, turn off **Modify Ga
 
 Force users to connect with IPv4 by blocking `AAAA` (IPv6) record resolution.
 
-| Selector          | Operator | Value  | Action |
-| ----------------- | -------- | ------ | ------ |
-| Query Record Type | is       | _AAAA_ | Block  |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Query Record Type | is | *AAAA* | Block |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -519,9 +553,11 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Force users to connect with IPv6 by blocking `A` (IPv4) record resolution.
 
-| Selector          | Operator | Value | Action |
-| ----------------- | -------- | ----- | ------ |
-| Query Record Type | is       | _A_   | Block  |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Query Record Type | is | *A* | Block |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \

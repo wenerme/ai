@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Migrate to new account
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/move-to-new-account/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/move-to-new-account/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When using a [subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/), you can have your subdomain as a separate zone within the same account as the parent domain or within a different account.
 

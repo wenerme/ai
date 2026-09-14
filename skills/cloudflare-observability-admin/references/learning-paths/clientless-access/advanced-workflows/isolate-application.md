@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Isolate Access applications
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/advanced-workflows/isolate-application/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/advanced-workflows/isolate-application/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -22,9 +22,9 @@ Requires the Browser Isolation add-on.
 
 Cloudflare sends all isolated traffic through our Secure Web Gateway inspection engine, which allows you to apply [Gateway HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) such as:
 
-* Restrict specific actions and HTTP request methods.
-* Inspect the request body to match against [Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) (DLP) profiles with as much specificity and control as if the user had deployed an endpoint agent.
-* Control users ability to cut and paste, upload and download files, or print while in an isolated session.
+- Restrict specific actions and HTTP request methods.
+- Inspect the request body to match against [Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) (DLP) profiles with as much specificity and control as if the user had deployed an endpoint agent.
+- Control users ability to cut and paste, upload and download files, or print while in an isolated session.
 
 ## Prerequisites
 
@@ -32,14 +32,15 @@ Your browser must [allow third-party cookies](https://developers.cloudflare.com/
 
 ## Enable Browser Isolation
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Browser isolation** \> **Browser isolation settings**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Browser isolation** > **Browser isolation settings**.
 2. Turn on **Allow users to open a remote browser without the device client**.
-1. Go to **Access controls** \> **Applications**.
-2. Choose a [self-hosted application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/) and select **Configure**.
-3. Go to **Policies**.
-4. Choose an [Allow policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) and select **Configure**.
-5. Under **Additional settings**, turn on **Isolate application**.
-6. Save the policy.
+
+3. Go to **Access controls** > **Applications**.
+4. Choose a [self-hosted application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/) and select **Configure**.
+5. Go to **Policies**.
+6. Choose an [Allow policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) and select **Configure**.
+7. Under **Additional settings**, turn on **Isolate application**.
+8. Save the policy.
 
 Browser Isolation is now enabled for users who match this policy. After the user logs into Access, the application will launch in a remote browser. To confirm that the application is isolated, refer to [Check if a web page is isolated](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/#3-check-if-a-web-page-is-isolated).
 
@@ -49,6 +50,7 @@ You can optionally add another Allow policy for users on managed devices who do 
 
 In the following example, Policy 1 allows employees on corporate devices to access the application directly. Users who do not match Policy 1, such as employees and contractors on unmanaged devices, will load the application in an isolated browser.
 
+```
 flowchart LR
 accTitle: Access policies for a private web application
 A[Full-time employee]-->policy1-->D
@@ -64,15 +66,17 @@ D[Normal browsing]
 E["Isolated browsing
 with HTTP policies applied"]
 
+```
+
 **Policy 1: Allow employees who pass device posture checks**
 
-| Action | Rule type | Selector                                                                                                                                              | Value                    |
-| ------ | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
-| Allow  | Include   | Emails ending in                                                                                                                                      | @team.com                |
-|        | Require   | [Device Posture - Serial Number List](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/corp-device/) | Corporate serial numbers |
+| Action | Rule type | Selector | Value |
+| --- | --- | --- | --- |
+| Allow | Include | Emails ending in | `@team.com` |
+|  | Require | [Device Posture - Serial Number List](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/corp-device/) | `Corporate serial numbers` |
 
-| Additional settings | Status   |
-| ------------------- | -------- |
+| Additional settings | Status |
+| --- | --- |
 | Isolate application | Disabled |
 
 ```bash
@@ -101,16 +105,16 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_
 }'
 ```
 
-To create a list of serial numbers, refer to [Create Zero Trust list](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/lists/methods/create/).
+To create a list of serial numbers, refer to [Create Zero Trust list](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/lists/methods/create/).
 
 **Policy 2: Allow and isolate contractors**
 
-| Action | Rule type | Selector         | Value                       |
-| ------ | --------- | ---------------- | --------------------------- |
-| Allow  | Include   | Emails ending in | @team.com, @contractors.com |
+| Action | Rule type | Selector | Value |
+| --- | --- | --- | --- |
+| Allow | Include | Emails ending in | `@team.com`, `@contractors.com` |
 
-| Additional settings | Status  |
-| ------------------- | ------- |
+| Additional settings | Status |
+| --- | --- |
 | Isolate application | Enabled |
 
 ```bash
@@ -145,13 +149,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_
 
 Prevents users on unmanaged devices from downloading any files from your private application.
 
-| Selector                     | Operator | Value                    | Logic | Action  |
-| ---------------------------- | -------- | ------------------------ | ----- | ------- |
-| Host                         | in       | internal.site.com        | And   | Isolate |
-| Passed Device Posture Checks | not in   | Corporate serial numbers |       |         |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Host | in | `internal.site.com` | And | Isolate |
+| Passed Device Posture Checks | not in | `Corporate serial numbers` |  | |
 
-| Policy settings        | Status  |
-| ---------------------- | ------- |
+| Policy settings | Status |
+| --- | --- |
 | Disable file downloads | Enabled |
 
 ```bash
@@ -210,7 +214,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules \
 }'
 ```
 
-To create a list of serial numbers, refer to [Create Zero Trust list](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/lists/methods/create/).
+To create a list of serial numbers, refer to [Create Zero Trust list](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/lists/methods/create/).
 
 ### Block file downloads of sensitive data
 
@@ -220,14 +224,14 @@ Requires Data Loss Prevention add-on.
 
 Block users on unmanaged devices from downloading files that contain credit card numbers. This logic requires two policies:
 
-* **Policy 1: [Disable file downloads in isolated browser](https://developers.cloudflare.com/learning-paths/clientless-access/advanced-workflows/isolate-application/#disable-file-downloads-in-isolated-browser)**
-* **Policy 2: Block credit card numbers**
+- **Policy 1: [Disable file downloads in isolated browser](https://developers.cloudflare.com/learning-paths/clientless-access/advanced-workflows/isolate-application/#disable-file-downloads-in-isolated-browser)**
+- **Policy 2: Block credit card numbers**
 
-| Selector                                                                                           | Operator | Value                      | Logic | Action |
-| -------------------------------------------------------------------------------------------------- | -------- | -------------------------- | ----- | ------ |
-| Host                                                                                               | in       | internal.site.com          | And   | Block  |
-| [DLP Profile](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/) | in       | _Financial Information_    | And   |        |
-| Passed Device Posture Checks                                                                       | not in   | _Corporate serial numbers_ |       |        |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Host | in | `internal.site.com` | And | Block |
+| [DLP Profile](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/) | in | *Financial Information* | And | |
+| Passed Device Posture Checks | not in | *Corporate serial numbers* |  | |
 
 ```bash
 curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules \
@@ -294,7 +298,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules \
 }'
 ```
 
-To configure a DLP profile, refer to [Update predefined profile](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/dlp/subresources/profiles/subresources/predefined/methods/update/) or [Create custom profile](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/dlp/subresources/profiles/subresources/custom/methods/create/).
+To configure a DLP profile, refer to [Update predefined profile](https://developers.cloudflare.com/api/resources/zero_trust/subresources/dlp/subresources/profiles/subresources/predefined/methods/update/) or [Create custom profile](https://developers.cloudflare.com/api/resources/zero_trust/subresources/dlp/subresources/profiles/subresources/custom/methods/create/).
 
 Was this helpful?
 

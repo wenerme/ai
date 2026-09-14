@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Migrating a Jekyll-based site from GitHub Pages
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/migrations/migrating-jekyll-from-github-pages/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/migrations/migrating-jekyll-from-github-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn how to migrate an existing [GitHub Pages site using Jekyll ↗](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll) to Cloudflare Pages. Jekyll is one of the most popular static site generators used with GitHub Pages, and migrating your GitHub Pages site to Cloudflare Pages will take a few short steps.
 
@@ -52,10 +52,14 @@ Specifically, you will need to create a `Gemfile` and install the `github-pages`
 
 [Version 2 of the Pages build environment](https://developers.cloudflare.com/pages/configuration/build-image/#languages-and-runtime) will use Ruby 3.2.2 for the default Jekyll build. Please make sure your local development environment is compatible.
 
+*Set Ruby Versionsh*
+
 ```sh
 brew install ruby@3.2
 export PATH="/usr/local/opt/ruby@3.2/bin:$PATH"
 ```
+
+*Create a Gemfilesh*
 
 ```sh
 cd my-github-pages-repo
@@ -63,6 +67,8 @@ bundle init
 ```
 
 Open the `Gemfile` that was created for you, and add the following line to the bottom of the file:
+
+*Specifying the github-pages versionruby*
 
 ```ruby
 gem "github-pages", group: :jekyll_plugins
@@ -83,6 +89,8 @@ gem "github-pages", group: :jekyll_plugins
 
 Run `bundle update`, which will install the `github-pages` gem for you, and create a `Gemfile.lock` file with the resolved dependency versions.
 
+*Running bundle updatesh*
+
 ```sh
 bundle update
 # Bundler will show a lot of output as it fetches the dependencies
@@ -91,6 +99,8 @@ bundle update
 This should complete successfully. If not, verify that you have copied the `github-pages` line above exactly, and have not commented it out with a leading `#`.
 
 You will now need to commit these files to your repository so that Cloudflare Pages can reference them in the following steps:
+
+*Commit Gemfile and Gemfile.locksh*
 
 ```sh
 git add Gemfile Gemfile.lock
@@ -108,16 +118,15 @@ If you are configuring your Cloudflare Pages site for the first time, refer to t
 
 To deploy your site to Pages:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
-2. Select **Create application** \> **Pages** \> **Import an existing Git repository**.
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+2. Select **Create application** > **Pages** > **Import an existing Git repository**.
 3. Select the new GitHub repository that you created and, in the **Set up builds and deployments** section, provide the following information:
 
-| Configuration option | Value        |
-| -------------------- | ------------ |
-| Production branch    | main         |
-| Build command        | jekyll build |
-| Build directory      | \_site       |
+| Configuration option | Value |
+| --- | --- |
+| Production branch | `main` |
+| Build command | `jekyll build` |
+| Build directory | `_site` |
 
 After you have configured your site, you can begin your first deploy. You should see Cloudflare Pages installing `jekyll`, your project dependencies, and building your site, before deploying it.
 
@@ -137,9 +146,9 @@ Refer to the [adding a custom domain](https://developers.cloudflare.com/pages/co
 
 ## What's next?
 
-* Learn how to [customize HTTP response headers](https://developers.cloudflare.com/pages/how-to/add-custom-http-headers/) for your Pages site using Cloudflare Workers.
-* Understand how to [rollback a potentially broken deployment](https://developers.cloudflare.com/pages/configuration/rollbacks/) to a previously working version.
-* [Configure redirects](https://developers.cloudflare.com/pages/configuration/redirects/) so that visitors are always directed to your 'canonical' custom domain.
+- Learn how to [customize HTTP response headers](https://developers.cloudflare.com/pages/how-to/add-custom-http-headers/) for your Pages site using Cloudflare Workers.
+- Understand how to [rollback a potentially broken deployment](https://developers.cloudflare.com/pages/configuration/rollbacks/) to a previously working version.
+- [Configure redirects](https://developers.cloudflare.com/pages/configuration/redirects/) so that visitors are always directed to your 'canonical' custom domain.
 
 Was this helpful?
 

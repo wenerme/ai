@@ -12,20 +12,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # AI Crawl Control with Cloudflare Bots
 
-Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-crawl-control/configuration/ai-crawl-control-with-bots/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-crawl-control/configuration/ai-crawl-control-with-bots/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Crawl Control works alongside other Cloudflare products, such as Cloudflare [bot solutions](https://developers.cloudflare.com/bots/). Bot solutions identifies traffic matching patterns of known bots, and can challenge or block the bots as you wish.
 
 ## Order of precedence
 
-* AI Crawl Control's AI crawler blocking uses [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/), which take place before Cloudflare bot solutions.
-* AI Crawl Control's pay per crawl takes place after Cloudflare bot solutions.
+- AI Crawl Control's AI crawler blocking uses [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/), which take place before Cloudflare bot solutions.
+- AI Crawl Control's pay per crawl takes place after Cloudflare bot solutions.
 
+```
 graph LR
 A[Traffic] --> B[WAF custom rules<br>AI Crawl Control: Crawler blocks]
 B --> C[Cloudflare<br>Bot Solutions]
 C --> D[AI Crawl Control:<br>Pay Per Crawl]
 classDef highlight fill:#F6821F,color:white
+
+```
 
 For more information on how Cloudflare classifies bot traffic, refer to [AI bots](https://developers.cloudflare.com/bots/concepts/bot/#ai-bots).
 
@@ -37,8 +40,8 @@ Consider the following examples.
 
 You may have both of the following enabled:
 
-* A selection of AI crawlers to be charged through AI Crawl Control's pay per crawl
-* Bot configuration option to [Block AI Bots](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/#block-ai-bots).
+- A selection of AI crawlers to be charged through AI Crawl Control's pay per crawl
+- Bot configuration option to [Block AI Bots](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/#block-ai-bots).
 
 Since pay per crawl happens after bot solutions, you need to first turn off **Block AI Bots** to ensure pay per crawl works as intended.
 

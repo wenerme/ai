@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # FAQ
 
-Last updated Sep 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/log-explorer/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/log-explorer/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Which fields (or columns) are available for querying?
 
@@ -36,7 +36,7 @@ We are actively working on improving error codes. If you receive a generic error
 
 ## Where is the data stored?
 
-The data is stored in Cloudflare R2\. Each Log Explorer dataset is stored on a per-customer level, similar to Cloudflare D1, ensuring that your data is kept separate from that of other customers. In the future, this single-tenant storage model will provide you with the flexibility to create your own retention policies and decide in which regions you want to store your data.
+The data is stored in Cloudflare R2. Each Log Explorer dataset is stored on a per-customer level, similar to Cloudflare D1, ensuring that your data is kept separate from that of other customers. In the future, this single-tenant storage model will provide you with the flexibility to create your own retention policies and decide in which regions you want to store your data.
 
 ## Does Log Explorer support Customer Metadata Boundary?
 
@@ -91,29 +91,26 @@ To turn off Log Explorer you must:
 1. **Stop log ingestion to immediately stop incurring additional charges.** To stop log ingestion, disable any enabled datasets at both the account level and zone level.
 2. **Cancel the Log Explorer subscription to stop renewal.** Your subscription may remain active until the end of the current billing cycle.
 
-### 1\. Stop log ingestion
+### 1. Stop log ingestion
 
 After performing the following steps, you will immediately stop incurring additional charges for Log Explorer.
 
 #### Review and disable account-level datasets
 
-1. In the Cloudflare dashboard, go to the account-level **Manage datasets** page.
-[Go to **Manage datasets** ↗](https://dash.cloudflare.com/?to=/:account/log-explorer/manage-sources)
+1. In the Cloudflare dashboard, go to the account-level **Manage datasets** page. [Go to **Manage datasets** ↗](https://dash.cloudflare.com/?to=/:account/log-explorer/manage-sources)
 2. Turn off each dataset you no longer need using the toggle. To confirm each operation, select **Stop ingesting logs**.
 
 #### Review and disable zone-level datasets
 
-1. In the Cloudflare dashboard, go to the zone-level **Manage datasets** page.
-[Go to **Manage datasets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/log-explorer/manage-sources)
+1. In the Cloudflare dashboard, go to the zone-level **Manage datasets** page. [Go to **Manage datasets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/log-explorer/manage-sources)
 2. Turn off each dataset you no longer need using the toggle. To confirm each operation, select **Stop ingesting logs**.
 3. Repeat for all relevant zones.
 
-### 2\. Cancel the Log Explorer subscription
+### 2. Cancel the Log Explorer subscription
 
 This operation will stop Log Explorer's renewal.
 
-1. In the Cloudflare dashboard, go to the **Billing** page.
-[Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
+1. In the Cloudflare dashboard, go to the **Billing** page. [Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
 2. In the **Subscriptions** tab, find the Log Explorer subscription and select **Cancel**.
 
 Was this helpful?

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # CASB
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/troubleshooting/casb/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/troubleshooting/casb/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use this guide to troubleshoot common issues with Cloud Access Security Broker (CASB).
 
@@ -22,15 +22,15 @@ Use this guide to troubleshoot common issues with Cloud Access Security Broker (
 
 If you do not see findings for an integrated application:
 
-* **Wait for scan**: Initial scans can take up to 24 hours depending on the size of the application.
-* **Permissions**: Ensure the account used to integrate the application has the necessary administrative permissions.
-* **Enabled status**: Verify that the integration is enabled in the Zero Trust dashboard.
+- **Wait for scan**: Initial scans can take up to 24 hours depending on the size of the application.
+- **Permissions**: Ensure the account used to integrate the application has the necessary administrative permissions.
+- **Enabled status**: Verify that the integration is enabled in the Zero Trust dashboard.
 
 ### False positives
 
 If CASB flags a configuration that is intended for your organization:
 
-1. Go to **CASB** \> **Findings**.
+1. Go to **CASB** > **Findings**.
 2. Select the finding and choose **Dismiss**.
 3. Provide a reason for dismissal to help refine future scans.
 

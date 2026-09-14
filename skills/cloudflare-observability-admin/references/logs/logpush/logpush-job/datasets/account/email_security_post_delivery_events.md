@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Email Security Post-Delivery Events
 
-Last updated May 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/email%5Fsecurity%5Fpost%5Fdelivery%5Fevents/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/email_security_post_delivery_events/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The descriptions below detail the fields available for `email_security_post_delivery_events`.
 
@@ -39,7 +39,7 @@ Target folder for MOVE operations (for example, 'RecoverableItemsPurges').
 Type: `string`
 
 Threat disposition of the original message.
-Possible values are _unset_ | _none_ | _malicious_ | _suspicious_ | _spam_ | _spoof_ | _bulk_.
+Possible values are *unset* | *none* | *malicious* | *suspicious* | *spam* | *spoof* | *bulk*.
 
 ## Folder
 
@@ -51,7 +51,7 @@ Resolved folder name after a successful MOVE.
 
 Type: `string`
 
-From header address of the original message (for example, '[firstlast@cloudflare.com](mailto:firstlast@cloudflare.com)').
+From header address of the original message (for example, ' [firstlast@cloudflare.com](mailto:firstlast@cloudflare.com)').
 
 ## FromName
 
@@ -82,7 +82,7 @@ Microsoft 365 tenant identifier.
 Type: `string`
 
 Post-delivery action type.
-Possible values are _move_ | _submission_ | _quarantineRelease_.
+Possible values are *move* | *submission* | *quarantineRelease*.
 
 ## PostfixID
 
@@ -100,7 +100,7 @@ Detection findings that prompted the post-delivery action (for example, 'Malicio
 
 Type: `string`
 
-Email address of the targeted mailbox (for example, '[firstlast@cloudflare.com](mailto:firstlast@cloudflare.com)').
+Email address of the targeted mailbox (for example, ' [firstlast@cloudflare.com](mailto:firstlast@cloudflare.com)').
 
 ## RequestedAt
 
@@ -142,7 +142,7 @@ Whether the post-delivery action succeeded.
 
 Type: `array[string]`
 
-Recipient addresses of the original message (for example, '[firstlast@cloudflare.com](mailto:firstlast@cloudflare.com)').
+Recipient addresses of the original message (for example, ' [firstlast@cloudflare.com](mailto:firstlast@cloudflare.com)').
 
 Was this helpful?
 
@@ -153,5 +153,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/email_security_post_delivery_events/#page","headline":"Email Security Post-Delivery Events · Cloudflare Logs docs","description":"The descriptions below detail the fields available for email_security_post_delivery_events.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/email_security_post_delivery_events/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/email_security_post_delivery_events/#page","headline":"Email Security Post-Delivery Events · Cloudflare Logs docs","description":"The descriptions below detail the fields available for email_security_post_delivery_events.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/email_security_post_delivery_events/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

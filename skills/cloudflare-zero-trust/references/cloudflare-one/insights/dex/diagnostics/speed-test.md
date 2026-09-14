@@ -12,41 +12,49 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Speed test
 
-Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/speed-test/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/speed-test/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Speed tests allow administrators to remotely measure network performance from end-user devices running the [Cloudflare One client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/). Each test runs from the client to Cloudflare's network edge and reports metrics for internet speed, latency, and network quality.
 
 Speed tests help IT teams:
 
-* Objectively measure network performance with the Cloudflare One client turned on.
-* Identify performance bottlenecks affecting specific users, devices, or locations.
-* Respond to user reports of slow connectivity with concrete data.
+- Objectively measure network performance with the Cloudflare One client turned on.
+- Identify performance bottlenecks affecting specific users, devices, or locations.
+- Respond to user reports of slow connectivity with concrete data.
+
+<details>
+
+<summary>
 
 Feature compatibility
 
+</summary>
+
 Feature availability
 
-* All Cloudflare One plans
+- All Cloudflare One plans
 
 Supported client modes
 
-* Traffic and DNS mode
-* Traffic only mode
+- Traffic and DNS mode
+- Traffic only mode
 
 Supported operating systems:
 
-| System   | Support |
-| -------- | ------- |
-| Windows  | ✅       |
-| macOS    | ✅       |
-| Linux    | ✅       |
-| iOS      | ❌       |
-| Android  | ❌       |
-| ChromeOS | ❌       |
+| System | Support |
+| --- | --- |
+| Windows | ✅ |
+| macOS | ✅ |
+| Linux | ✅ |
+| iOS | ❌ |
+| Android | ❌ |
+| ChromeOS | ❌ |
+
+</details>
 
 To run a speed test from a device:
 
-1. In [Zero Trust ↗](https://dash.cloudflare.com/one), go to **Insights** \> **Digital experience** \> **Diagnostics**.
+1. In [Zero Trust ↗](https://dash.cloudflare.com/one), go to **Insights** > **Digital experience** > **Diagnostics**.
 2. Select **Run diagnostics**.
 3. Search for a device by user email, device name, or device ID.
 4. Select the device, then select **Device speed test**.
@@ -59,29 +67,29 @@ Each speed test reports the following metrics:
 
 ### Internet speed
 
-| Metric              | Description                                                                                        |
-| ------------------- | -------------------------------------------------------------------------------------------------- |
+| Metric | Description |
+| --- | --- |
 | Download throughput | The rate at which data is received by the device from Cloudflare's network edge, measured in Mbps. |
-| Upload throughput   | The rate at which data is sent from the device to Cloudflare's network edge, measured in Mbps.     |
+| Upload throughput | The rate at which data is sent from the device to Cloudflare's network edge, measured in Mbps. |
 
 ### Latency
 
-| Metric           | Description                                                                                                                                 |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| Download latency | The round-trip time measured during an active download, reflecting latency under load.                                                      |
-| Upload latency   | The round-trip time measured during an active upload, reflecting latency under load.                                                        |
+| Metric | Description |
+| --- | --- |
+| Download latency | The round-trip time measured during an active download, reflecting latency under load. |
+| Upload latency | The round-trip time measured during an active upload, reflecting latency under load. |
 | Unloaded latency | The baseline round-trip time measured when no significant data transfer is occurring. This reflects the inherent latency of the connection. |
-| Jitter           | The variation in latency over time. High jitter can cause inconsistent performance in real-time applications.                               |
+| Jitter | The variation in latency over time. High jitter can cause inconsistent performance in real-time applications. |
 
 ### Network quality score
 
 Network quality scores estimate the end-user experience for common application types based on the measured speed and latency values.
 
-| Score           | Description                                                                                             |
-| --------------- | ------------------------------------------------------------------------------------------------------- |
-| Video streaming | Rates the connection quality for video streaming applications based on throughput and latency.          |
-| Video streaming | Estimates the connection quality for video streaming applications based on throughput and latency.      |
-| Web chat / RTC  | Estimates the connection quality for real-time communication applications such as video calls and VoIP. |
+| Score | Description |
+| --- | --- |
+| Video streaming | Rates the connection quality for video streaming applications based on throughput and latency. |
+| Video streaming | Estimates the connection quality for video streaming applications based on throughput and latency. |
+| Web chat / RTC | Estimates the connection quality for real-time communication applications such as video calls and VoIP. |
 
 Was this helpful?
 

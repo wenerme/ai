@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Sphinx
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-sphinx-site/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-sphinx-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Sphinx ↗](https://www.sphinx-doc.org/) is a tool that makes it easy to create documentation and was originally made for the publication of Python documentation. It is well known for its simplicity and ease of use.
 
@@ -20,9 +20,9 @@ In this guide, you will create a new Sphinx project and deploy it using Cloudfla
 
 ## Prerequisites
 
-* Python 3 - Sphinx is based on Python, therefore you must have Python installed
-* [pip ↗](https://pypi.org/project/pip/) \- The PyPA recommended tool for installing Python packages
-* [pipenv ↗](https://pipenv.pypa.io/en/latest/) \- automatically creates and manages a virtualenv for your projects
+- Python 3 - Sphinx is based on Python, therefore you must have Python installed
+- [pip ↗](https://pypi.org/project/pip/) - The PyPA recommended tool for installing Python packages
+- [pipenv ↗](https://pipenv.pypa.io/en/latest/) - automatically creates and manages a virtualenv for your projects
 
 Note
 
@@ -36,10 +36,10 @@ The latest version of Python 3.7 is 3.7.11:
 
 Refer to the official Python documentation for installation guidance:
 
-* [Windows ↗](https://www.python.org/downloads/windows/)
-* [Linux/UNIX ↗](https://www.python.org/downloads/source/)
-* [macOS ↗](https://www.python.org/downloads/macos/)
-* [Other ↗](https://www.python.org/download/other/)
+- [Windows ↗](https://www.python.org/downloads/windows/)
+- [Linux/UNIX ↗](https://www.python.org/downloads/source/)
+- [macOS ↗](https://www.python.org/downloads/macos/)
+- [Other ↗](https://www.python.org/download/other/)
 
 ### Installing Pipenv
 
@@ -211,7 +211,6 @@ ssh -T git@github.com
 ```
 
 ```sh
-
 The authenticity of host 'github.com (140.82.113.4)' can't be established.
 RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
@@ -236,27 +235,26 @@ git push -u origin main
 
 To deploy your site to Pages:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**.
 3. Select the **Pages** tab.
 4. Select **Import an existing Git repository**.
 5. Select the new GitHub repository that you created and then select **Begin setup**.
 6. In the **Set up builds and deployments** section, provide the following information:
 
-| Configuration option | Value      |
-| -------------------- | ---------- |
-| Production branch    | main       |
-| Build command        | make html  |
-| Build directory      | build/html |
+| Configuration option | Value |
+| --- | --- |
+| Production branch | `main` |
+| Build command | `make html` |
+| Build directory | `build/html` |
 
 Below the configuration, make sure to set the environment variable for specifying the `PYTHON_VERSION`.
 
 For example:
 
-| Variable name   | Value |
-| --------------- | ----- |
-| PYTHON\_VERSION | 3.7   |
+| Variable name | Value |
+| --- | --- |
+| PYTHON\_VERSION | 3.7 |
 
 After configuring your site, you can begin your first deploy. You should see Cloudflare Pages installing `Pipenv`, your project dependencies, and building your site, before deployment.
 

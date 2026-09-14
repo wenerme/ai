@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Policy design
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/policy-design/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/policy-design/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Most policy building for private network access happens within the Gateway DNS and Gateway Network policy builders. For the most part, customers use a mixture of DNS resolution, SNI hostname values, and IP address groupings as the baseline for defining policies that pertain to specific applications.
 
@@ -20,17 +20,17 @@ Most policy building for private network access happens within the Gateway DNS a
 
 Before building your policies, it is helpful to ask yourself a few questions:
 
-* Should all users and services be able to reach all connected subnets? Are there explicit exceptions?
-* Do all applications live within a primary network range, and are they defined by static or dynamic hosts and IP addresses?
-* Are there DevOps workflows that rely on completely ephemeral IPs or subdomains?
-* Do you have sources of truth for identity and device posture that will be used in policies?
-* Do you plan to immediately implement a default-deny model? In other words, will you block all users except for those who match an explicit Allow policy?
+- Should all users and services be able to reach all connected subnets? Are there explicit exceptions?
+- Do all applications live within a primary network range, and are they defined by static or dynamic hosts and IP addresses?
+- Are there DevOps workflows that rely on completely ephemeral IPs or subdomains?
+- Do you have sources of truth for identity and device posture that will be used in policies?
+- Do you plan to immediately implement a default-deny model? In other words, will you block all users except for those who match an explicit Allow policy?
 
 ## Prepare to build policies
 
 We recommend the following approach when planning your Zero Trust Network Access policies.
 
-### 1\. Determine your sources of truth
+### 1. Determine your sources of truth
 
 #### Identity
 
@@ -50,27 +50,27 @@ Note
 
 Be sure to [enable the device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/) that you want to use in your policies.
 
-### 2\. Define your networks
+### 2. Define your networks
 
 Almost all businesses have a series of interconnected networks, either physical or virtual. Prepare a list of all relevant networks, subnets, or segments within your network that users currently access, either locally or when using the VPN. For example,
 
-| Network name | Location              | IP range   | Accessible by VPN? |
-| ------------ | --------------------- | ---------- | ------------------ |
-| Corporate DC | AWS US East - VA, USA | 10.0.0.0/8 | Yes                |
+| Network name | Location | IP range | Accessible by VPN? |
+| --- | --- | --- | --- |
+| Corporate DC | AWS US East - VA, USA | `10.0.0.0/8` | Yes |
 
-### 3\. Define your applications
+### 3. Define your applications
 
 Next, prepare a list of all relevant internal applications on your networks that will have distinct policy requirements (for example, different user identity or device posture requirements). Each application should be defined by an IP list, a hostname/domain list, or sometimes both.
 
-| Application name | Local IPs   | Hostnames         | Accessible via IP? | Static or dynamic IP? |
-| ---------------- | ----------- | ----------------- | ------------------ | --------------------- |
-| Company Wiki     | 10.128.0.10 | wiki.internal.com | Yes                | Static                |
+| Application name | Local IPs | Hostnames | Accessible via IP? | Static or dynamic IP? |
+| --- | --- | --- | --- | --- |
+| Company Wiki | `10.128.0.10` | `wiki.internal.com` | Yes | Static |
 
 For example, you may have an application at `a.internal.com` which points to a load balancer with a static IP address, balancing a series of dynamic hosts serving the application on `a.internal.com`. Because the IPs of the application hosts are dynamic, the best practice would be to build two policies: a network policy for the load balancer IP, and a DNS policy for the application hostnames.
 
 On the other hand, if the IPs behind the load balancer are static or only semi-dynamic, it may make sense to directly use the application IPs in your network policy. You can build a workflow to update the application IP list via a Cloudflare API call whenever host changes are made in your infrastructure provider.
 
-### 4\. List existing policies
+### 4. List existing policies
 
 Gather any existing security policies or block lists that you wish to migrate from your VPN provider to Zero Trust.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Images
 
-Last updated Sep 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Create scalable and reliable image pipelines without managing complex infrastructure.
 
@@ -38,9 +38,9 @@ Upload directly to Images for a fully managed solution to handle storage, optimi
 
 If you’re new to Images, start here to learn the essentials:
 
-* Understand how [image optimization](https://developers.cloudflare.com/images/get-started/introduction/) improves your user experience and website performance.
-* Familiarize yourself with the [terminology](https://developers.cloudflare.com/images/get-started/key-concepts/) used through our documentation.
-* Read about the [limits and supported formats](https://developers.cloudflare.com/images/optimization/features/) for image inputs and outputs.
+- Understand how [image optimization](https://developers.cloudflare.com/images/get-started/introduction/) improves your user experience and website performance.
+- Familiarize yourself with the [terminology](https://developers.cloudflare.com/images/get-started/key-concepts/) used through our documentation.
+- Read about the [limits and supported formats](https://developers.cloudflare.com/images/optimization/features/) for image inputs and outputs.
 
 ---
 

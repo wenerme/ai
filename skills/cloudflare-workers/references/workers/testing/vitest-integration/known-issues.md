@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Known issues
 
-Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/known-issues/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/known-issues/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Workers Vitest plugin has the following known issues:
 
@@ -135,7 +135,7 @@ You can find an example in the [Recipes](https://developers.cloudflare.com/worke
 
 ### Importing modules from global setup file
 
-Although Vitest is set up to resolve packages for the [workerd ↗](https://github.com/cloudflare/workerd) runtime, it runs your global setup file in the Node.js environment. This can cause issues when importing packages like [Postgres.js ↗](https://github.com/cloudflare/workers-sdk/issues/6465), which exports a non-Node version for `workerd`. To work around this, you can create a wrapper that uses Vite's SSR module loader to import the global setup file under the correct conditions. Then, adjust your Vitest configuration to point to this wrapper. For example:
+Although Vitest is set up to resolve packages for the [`workerd` ↗](https://github.com/cloudflare/workerd) runtime, it runs your global setup file in the Node.js environment. This can cause issues when importing packages like [Postgres.js ↗](https://github.com/cloudflare/workers-sdk/issues/6465), which exports a non-Node version for `workerd`. To work around this, you can create a wrapper that uses Vite's SSR module loader to import the global setup file under the correct conditions. Then, adjust your Vitest configuration to point to this wrapper. For example:
 
 ```ts
 // File: global-setup-wrapper.ts

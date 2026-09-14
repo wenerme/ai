@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Sandbox SDK
 
-Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build secure, isolated code execution environments
 

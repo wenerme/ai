@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Understanding Email Security Deployments
 
-Last updated Feb 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/architectures/email-security-deployments/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Feb 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/architectures/email-security-deployments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -32,18 +32,18 @@ This reference architecture provides a detailed overview of how to deploy and co
 
 This reference architecture is designed for IT or security professionals who are looking at using Cloudflare to secure aspects of their business. This reference architecture is designed for a broad audience, including:
 
-* **IT security professionals**: Security engineers, architects, and administrators responsible for designing, implementing, and managing Email security solutions.
-* **Network engineers**: Network engineers who manage network infrastructure and email gateways.
-* **Cloud architects**: Cloud architects who design and implement cloud-based Email security solutions.
-* **Security and IT decision-makers**: Managers and executives who need to understand the technical aspects of Email security and make informed decisions.
+- **IT security professionals**: Security engineers, architects, and administrators responsible for designing, implementing, and managing Email security solutions.
+- **Network engineers**: Network engineers who manage network infrastructure and email gateways.
+- **Cloud architects**: Cloud architects who design and implement cloud-based Email security solutions.
+- **Security and IT decision-makers**: Managers and executives who need to understand the technical aspects of Email security and make informed decisions.
 
 Whether you are a seasoned security expert or a newcomer to Email security, this document will provide you with the necessary information to effectively deploy and manage Cloudflare Email security.
 
 To build a stronger understanding of Cloudflare, we recommend the following resources:
 
-* What is Cloudflare? | [Website ↗](https://www.cloudflare.com/what-is-cloudflare/) (five-minute read) or [Video ↗](https://www.cloudflare.com/what-is-cloudflare/video) (two minutes)
-* [Cloudflare Blog ↗](https://blog.cloudflare.com/tag/cloud-email-security/) | [Email security ↗](https://blog.cloudflare.com/tag/cloud-email-security/) and [Phishing ↗](https://blog.cloudflare.com/tag/phishing/)
-* CISA | [Phishing Guidance: Stopping the Attack Cycle at Phase One ↗](https://www.cisa.gov/publications/phishing-guidance-stopping-attack-cycle-phase-one)
+- What is Cloudflare? | [Website ↗](https://www.cloudflare.com/what-is-cloudflare/) (five-minute read) or [Video ↗](https://www.cloudflare.com/what-is-cloudflare/video) (two minutes)
+- [Cloudflare Blog ↗](https://blog.cloudflare.com/tag/cloud-email-security/) | [Email security ↗](https://blog.cloudflare.com/tag/cloud-email-security/) and [Phishing ↗](https://blog.cloudflare.com/tag/phishing/)
+- CISA | [Phishing Guidance: Stopping the Attack Cycle at Phase One ↗](https://www.cisa.gov/publications/phishing-guidance-stopping-attack-cycle-phase-one)
 
 By the end of this reference architecture, you will have learned how Cloudflare protects your email and what considerations should be made for choosing how to deploy. You will learn about the specific components, technologies, and configurations involved in the Cloudflare Email security solution. This includes how it integrates with existing email infrastructure and leverages cloud-based services.
 
@@ -53,19 +53,19 @@ Cloudflare Email security is a modern approach to solving phishing attacks. Clou
 
 This document will discuss the following methods to deploy and where you would use them:
 
-* [Inline or MX](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/mx-inline-deployment/)
-* [Microsoft 365 API integration](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/api/m365-api/)
-* [Journaling](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/journaling-setup/m365-journaling/) or [BCC](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/enable-gmail-integration/) with auto-move
-* Mixed deployment
+- [Inline or MX](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/mx-inline-deployment/)
+- [Microsoft 365 API integration](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/api/m365-api/)
+- [Journaling](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/journaling-setup/m365-journaling/) or [BCC](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/enable-gmail-integration/) with auto-move
+- Mixed deployment
 
 ## Choose a deployment model
 
 Before you choose a deployment option, it is important to consider your needs and desired experience. Our best practice is typically to go with an MX deployment when we are the primary phishing protection in place. The key reasons for this are as follows:
 
-* [Pre-delivery](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/mx-inline-deployment/) remediation allows us to tune how messages are delivered by appending to the subject/body, applying URL Rewriting to Cloudflare [Remote Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/), and delivering messages into the junk folder or downstream email quarantine. This enables you to design with a specific user experience in mind.
-* We can remove messages before they are consumed by systems that ingest emails such as a ServiceNow or an Archiving Solution.
-* We remove the risk of dwell time issues where there is a time difference between delivery to the inbox and when the message is moved from the inbox.
-* We can support mixed deployments such as a mix of Microsoft 365 and Microsoft Exchange or Microsoft 365 and Google Workspace.
+- [Pre-delivery](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/mx-inline-deployment/) remediation allows us to tune how messages are delivered by appending to the subject/body, applying URL Rewriting to Cloudflare [Remote Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/), and delivering messages into the junk folder or downstream email quarantine. This enables you to design with a specific user experience in mind.
+- We can remove messages before they are consumed by systems that ingest emails such as a ServiceNow or an Archiving Solution.
+- We remove the risk of dwell time issues where there is a time difference between delivery to the inbox and when the message is moved from the inbox.
+- We can support mixed deployments such as a mix of Microsoft 365 and Microsoft Exchange or Microsoft 365 and Google Workspace.
 
 If those needs are not important or you are using layered security that does not include another API-based solution, then our API method is quick and efficient to deploy with no changes to your mail flow. If you want the benefits of API without the risk of API Throttling, then Journal/BCC is the best choice as the ingestion method does not use API calls. However, if you want the protection of an MX deployment along with the benefits of API for internal messaging, then our mixed deployment is ideal.
 
@@ -77,7 +77,9 @@ Before you commit to a specific deployment, Cloudflare suggests you review all o
 
 ### Inline
 
-With an Inline deployment, all emails destined for one or more domains are filtered through Cloudflare before they are delivered to the user's inbox. Cloudflare can be deployed anywhere in your email processing chain. When deployed as the first hop, you will need to update the domain's DNS MX records to point to Cloudflare. If you prefer Cloudflare to inspect messages after your existing SEG (Secure Email Gateway), Cloudflare can be inserted as a hop in the processing chain, and will then forward processed messages downstream to the next hop. Based on policies, messages are blocked and/or quarantined if they are marked as Spam, Malicious, Bulk, and more.
+With an Inline deployment, all emails destined for one or more domains are filtered through Cloudflare before they are delivered to the user's inbox. Cloudflare can be deployed anywhere in your email processing chain. When deployed as the first hop
+
+, you will need to update the domain's DNS MX records to point to Cloudflare. If you prefer Cloudflare to inspect messages after your existing SEG (Secure Email Gateway), Cloudflare can be inserted as a hop in the processing chain, and will then forward processed messages downstream to the next hop. Based on policies, messages are blocked and/or quarantined if they are marked as Spam, Malicious, Bulk, and more.
 
 ![Inline deployment](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2226,height=861,format=svg/_astro/Inline_MX.W7ooc9mD.svg)
 
@@ -85,12 +87,12 @@ The diagram above describes the following:
 
 1. Email arrives at Cloudflare based on [MX records ↗](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-mx-record/).
 2. Cloudflare inspects email body, header, and attachments and assigns the appropriate disposition:
-  * Malicious
-  * Spam
-  * Bulk
-  * Suspicious
-  * Spoof
-  * Clean
+   - Malicious
+   - Spam
+   - Bulk
+   - Suspicious
+   - Spoof
+   - Clean
 3. Apply any policy, such as allow or block certain domains.
 4. Quarantine high risk emails
 5. All messages that received a [disposition](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/#dispositions) by Cloudflare will have the header `X-CFEmailSecurity-Disposition` added. This header can be used by downstream systems to enact any special handling (rerouting, external quarantining, and more).
@@ -101,11 +103,11 @@ From a security perspective, the Inline deployment is the preferred method of de
 
 #### Benefits of Inline deployment
 
-* Messages are processed and blocked before delivery to the user mailbox.
-* Inline deployment allows you to modify the message, adding subject or body mark-ups such as appending \[SPAM\] or \[EXTERNAL SPAM\] to the subject.
-* Provides high availability and adaptive message pooling as Cloudflare will continue to accept incoming emails in queue, even when the downstream services are not available. When the downstream services are restored, messages will resume delivery for the queue.
-* Messages with an assigned [disposition](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/#dispositions) that are not quarantined receive an `X-header` that may be used for advanced handling downstream.
-* Compatible with all mail systems including Microsoft Exchange On-Prem, Postfix, Lotus Notes, Google Workspace, Microsoft 365, and more.
+- Messages are processed and blocked before delivery to the user mailbox.
+- Inline deployment allows you to modify the message, adding subject or body mark-ups such as appending \[SPAM] or \[EXTERNAL SPAM] to the subject.
+- Provides high availability and adaptive message pooling as Cloudflare will continue to accept incoming emails in queue, even when the downstream services are not available. When the downstream services are restored, messages will resume delivery for the queue.
+- Messages with an assigned [disposition](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/#dispositions) that are not quarantined receive an `X-header` that may be used for advanced handling downstream.
+- Compatible with all mail systems including Microsoft Exchange On-Prem, Postfix, Lotus Notes, Google Workspace, Microsoft 365, and more.
 
 #### Considerations
 
@@ -124,7 +126,7 @@ Cisco offers a unique capability to integrate with Cloudflare using a connector 
 
 ### API
 
-An alternative approach is to integrate via the Graph [API](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/api/m365-api/) in Microsoft 365\. In this model, emails are delivered directly to the user inbox, where Cloudflare then receives copies of messages, scans them, and moves them as configured by [disposition](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/#dispositions).
+An alternative approach is to integrate via the Graph [API](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/api/m365-api/) in Microsoft 365. In this model, emails are delivered directly to the user inbox, where Cloudflare then receives copies of messages, scans them, and moves them as configured by [disposition](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/#dispositions).
 
 This is performed by subscribing to all user mailboxes on the authorized domains. You have the ability to choose if the scope should be restricted to the Inbox only, or All Folders during the authorization process. Upon delivery to the mailbox, the subscription triggers an action within Microsoft 365 that sends Cloudflare a copy of the email to be scanned and assigned a disposition. Once the disposition has been assigned, our solution will look at the [auto-move](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/) policy and perform the desired action.
 
@@ -134,46 +136,46 @@ The diagram above describes the following:
 
 1. An email is delivered directly to the user inbox via an existing route.
 2. Cloudflare retrieves messages for inspection via email vendors API. Cloudflare inspects email body, header, and attachments and assigns the appropriate disposition:
-  * Malicious
-  * Spam
-  * Bulk
-  * Suspicious
-  * Spoof
-  * Clean
+   - Malicious
+   - Spam
+   - Bulk
+   - Suspicious
+   - Spoof
+   - Clean
 3. Apply any policy, such as allow or block certain domains.
 4. Messages are moved per policy in the Cloudflare solution. The following actions are available:
-  * Inbox
-  * Junk
-  * Trash
-  * Soft Delete (User Recoverable)
-  * Hard Delete (Admin Recoverable)
+   - Inbox
+   - Junk
+   - Trash
+   - Soft Delete (User Recoverable)
+   - Hard Delete (Admin Recoverable)
 
 Under normal circumstances, this process is typically performed in less than 2-3 seconds from inbox delivery to the move request. There is no SLA from Google or Microsoft 365 on how long they will take to perform the action. If the move action is not successful, our solution will retry numerous times every five minutes.
 
 #### Benefits of API deployment
 
-* Easy way to add protection in complex email architectures with no changes to mail flow operations.
-* Agentless deployment for Microsoft 365.
-* Microsoft 365 Defender/ATP operates on the message first.
-* This method can be used for a Proof of Value to collect and report on emails without requiring changes to mail flow. In this scenario you would leave the remediation policy not configured to prevent actions being taken.
+- Easy way to add protection in complex email architectures with no changes to mail flow operations.
+- Agentless deployment for Microsoft 365.
+- Microsoft 365 Defender/ATP operates on the message first.
+- This method can be used for a Proof of Value to collect and report on emails without requiring changes to mail flow. In this scenario you would leave the remediation policy not configured to prevent actions being taken.
 
 #### Considerations
 
 Before deploying Email security via [API deployment](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/api/m365-api/), you will need to consider the following:
 
-* Depending on the API infrastructure, Microsoft 365 or Google outages and maintenance windows will increase message dwell time in the inbox as emails cannot be scanned or remediated until after delivery to the user. This is a limitation of all API vendors.
-* Microsoft 365 may throttle API requests to the Graph API on a Service by Service basis. The Mail API with Graph is within the Outlook Services section. These limits could be abused by a threat actor to functionally disable any API based deployment granting an additional window for attack. The limits are as follows:
-  * 10,000 API requests in a 10 minute period
-  * Four concurrent requests
-  * 150 megabytes (MB) upload (PATCH, POST, PUT) in a five-minute period
-  * Refer to [Outlook service limits ↗](https://learn.microsoft.com/en-us/graph/throttling-limits#outlook-service-limits)
-* The Gmail API is subject to a daily usage limit that applies to all requests made from your application, and per-user rate limits. Each limit is identified in terms of quota units, or an abstract unit of measurement representing Gmail resource usage. The main request limits are described as follows:
-  * Per user rate limit of 250 quota units per user per second, moving average (allows short bursts).
-  * Per-method Quota Usage is based on the number of quota units consumed by a request depending on the method called.
-  * For example, `messages.get` and `messages.attachments.get` consume five quota units. Refer to [Per-method quota usage ↗](https://developers.google.com/gmail/api/reference/quota#per-method%5Fquota%5Fusage)
-* Requires read/write access into mailboxes which some security/email teams may not allow.
-* Only Microsoft 365 has true API support. Google allows for API remediation but still requires a Compliance Rule to deliver emails using SMTP for scanning. On-prem Exchange requires PowerShell and does not have APIs for auto-moves.
-* Messages cannot be modified after delivery as per Microsoft 365/Google requirements. This means we cannot perform URL Rewriting to Cloudflare [email link isolation](https://developers.cloudflare.com/cloudflare-one/email-security/investigation/search-email/#open-links) or append text to the email subject or body. Those features are only available using an Inline deployment.
+- Depending on the API infrastructure, Microsoft 365 or Google outages and maintenance windows will increase message dwell time in the inbox as emails cannot be scanned or remediated until after delivery to the user. This is a limitation of all API vendors.
+- Microsoft 365 may throttle API requests to the Graph API on a Service by Service basis. The Mail API with Graph is within the Outlook Services section. These limits could be abused by a threat actor to functionally disable any API based deployment granting an additional window for attack. The limits are as follows:
+  - 10,000 API requests in a 10 minute period
+  - Four concurrent requests
+  - 150 megabytes (MB) upload (PATCH, POST, PUT) in a five-minute period
+  - Refer to [Outlook service limits ↗](https://learn.microsoft.com/en-us/graph/throttling-limits#outlook-service-limits)
+- The Gmail API is subject to a daily usage limit that applies to all requests made from your application, and per-user rate limits. Each limit is identified in terms of quota units, or an abstract unit of measurement representing Gmail resource usage. The main request limits are described as follows:
+  - Per user rate limit of 250 quota units per user per second, moving average (allows short bursts).
+  - Per-method Quota Usage is based on the number of quota units consumed by a request depending on the method called.
+  - For example, `messages.get` and `messages.attachments.get` consume five quota units. Refer to [Per-method quota usage ↗](https://developers.google.com/gmail/api/reference/quota#per-method_quota_usage)
+- Requires read/write access into mailboxes which some security/email teams may not allow.
+- Only Microsoft 365 has true API support. Google allows for API remediation but still requires a Compliance Rule to deliver emails using SMTP for scanning. On-prem Exchange requires PowerShell and does not have APIs for auto-moves.
+- Messages cannot be modified after delivery as per Microsoft 365/Google requirements. This means we cannot perform URL Rewriting to Cloudflare [email link isolation](https://developers.cloudflare.com/cloudflare-one/email-security/investigation/search-email/#open-links) or append text to the email subject or body. Those features are only available using an Inline deployment.
 
 ### BCC/Journaling
 
@@ -187,21 +189,21 @@ During a proof of value, this deployment can be configured with any Email securi
 
 #### Benefits of BCC/Journaling deployment
 
-* Easy way to add protection in complex email architectures with no changes to mail flow operations.
-* Agentless deployment for Microsoft 365\. Microsoft 365 would transmit emails after delivery to Cloudflare and the API Authorization can be configured with a Remediation policy to move emails with a disposition out of the inbox.
-* Google makes use of Compliance Rules for BCC which can be combined with an API Authorization to move emails after delivery. This provides for the same outcome as the API deployment detailed above.
-* Microsoft 365 and Google operate on the message first. This provides a more layered approach taking advantage of the security capabilities of Microsoft 365/Google in addition to Cloudflare.
-* You can control the scope of messages inspected (external, internal, or both)
-* This method can be used for a Proof of Value to collect and report on emails without requiring changes to mail flow. This does not require an API Authorization to be in place. If the API is configured for Microsoft 365 or Google, you would leave the Remediation policy not configured to prevent actions being taken.
+- Easy way to add protection in complex email architectures with no changes to mail flow operations.
+- Agentless deployment for Microsoft 365. Microsoft 365 would transmit emails after delivery to Cloudflare and the API Authorization can be configured with a Remediation policy to move emails with a disposition out of the inbox.
+- Google makes use of Compliance Rules for BCC which can be combined with an API Authorization to move emails after delivery. This provides for the same outcome as the API deployment detailed above.
+- Microsoft 365 and Google operate on the message first. This provides a more layered approach taking advantage of the security capabilities of Microsoft 365/Google in addition to Cloudflare.
+- You can control the scope of messages inspected (external, internal, or both)
+- This method can be used for a Proof of Value to collect and report on emails without requiring changes to mail flow. This does not require an API Authorization to be in place. If the API is configured for Microsoft 365 or Google, you would leave the Remediation policy not configured to prevent actions being taken.
 
 #### Considerations
 
 Before deploying Email security via BCC/Journaling deployment, you will need to consider the following:
 
-* Same limitations of API.
-* Depends on Google or Microsoft 365 to deliver messages via SMTP.
-* May require a Connector in Microsoft 365 to facilitate direct communication.
-* Messages cannot be modified after delivery as per Microsoft 365/Google requirements. This means we cannot perform URL Rewriting to Cloudflare Email Link Isolation or append text to the email Subject or Body. Those features are only available using an Inline deployment.
+- Same limitations of API.
+- Depends on Google or Microsoft 365 to deliver messages via SMTP.
+- May require a Connector in Microsoft 365 to facilitate direct communication.
+- Messages cannot be modified after delivery as per Microsoft 365/Google requirements. This means we cannot perform URL Rewriting to Cloudflare Email Link Isolation or append text to the email Subject or Body. Those features are only available using an Inline deployment.
 
 ### Mixed
 
@@ -219,8 +221,8 @@ mixed deployment combines the benefits of Inline deployment for external emails 
 
 When you choose mixed deployment, you need to consider that:
 
-* Internal email detections are limited due to a lack of information such as Email Authentication, Sending Server, and Delivery Path. Only the content within the body of the email can be analyzed.
-* Internal emails may have higher False Positives when using Protecting Users with impersonation registry.
+- Internal email detections are limited due to a lack of information such as Email Authentication, Sending Server, and Delivery Path. Only the content within the body of the email can be analyzed.
+- Internal emails may have higher False Positives when using Protecting Users with impersonation registry.
 
 ## Automated Post Delivery
 

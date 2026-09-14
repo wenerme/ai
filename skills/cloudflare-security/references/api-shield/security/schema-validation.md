@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Schema validation
 
-Last updated Aug 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/schema-validation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/schema-validation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -30,14 +30,15 @@ Schema Validation 2.0 is the current version. For previous-version reference, re
 
 ## Configure an uploaded schema
 
-Endpoints must exist as operations in **Web Assets** \> **Operations**. Uploading through the dashboard adds schema operations automatically.
+Endpoints
+
+ must exist as operations in **Web Assets** > **Operations**. Uploading through the dashboard adds schema operations automatically.
 
 When using the API or Terraform, add schema operations separately. For automation details, refer to [API configuration](https://developers.cloudflare.com/api-shield/security/schema-validation/api/) or [Terraform](https://developers.cloudflare.com/api-shield/reference/terraform/#manage-schema-validation).
 
 ### Upload a schema
 
-1. In the Cloudflare dashboard, go to the **Web Assets** page.
-[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+1. In the Cloudflare dashboard, go to the **Web Assets** page. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Go to the **Schema validation** tab.
 3. Select **Add validation**.
 4. Upload an OpenAPI schema file.
@@ -47,12 +48,11 @@ Changes may take several minutes, depending on the operation count.
 
 ### Manage uploaded schemas
 
-1. In the Cloudflare dashboard, go to the **Web Assets** page.
-[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+1. In the Cloudflare dashboard, go to the **Web Assets** page. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Go to the **Schema validation** tab.
 3. Select **Schema settings**.
 4. Filter by **API abuse**.
-5. Under **Schema validation** \> **Active schemas**, review uploaded schemas.
+5. Under **Schema validation** > **Active schemas**, review uploaded schemas.
 6. From the schema overflow menu, download or delete the schema.
 
 Deleting an uploaded schema stops its profile evaluation. Associated operations remain in the Web Assets inventory.
@@ -61,8 +61,7 @@ Deleting an uploaded schema stops its profile evaluation. Associated operations 
 
 A fallthrough rule matches requests that do not match known operations. Use this WAF Custom Rule to protect against unidentified endpoints.
 
-1. In the Cloudflare dashboard, go to the **Security rules** page.
-[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+1. In the Cloudflare dashboard, go to the **Security rules** page. [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Templates**.
 3. Find `Mitigate API requests to unidentified endpoints` and select **Preview template**.
 4. Enter a descriptive rule name.
@@ -101,12 +100,12 @@ Schema Validation inspects request bodies up to a plan-specific maximum size. Re
 
 The default body size limits are:
 
-| Plan       | Default body size limit |
-| ---------- | ----------------------- |
-| Free       | 1 KB                    |
-| Pro        | 8 KB                    |
-| Business   | 8 KB                    |
-| Enterprise | 128 KB                  |
+| Plan | Default body size limit |
+| --- | --- |
+| Free | 1 KB |
+| Pro | 8 KB |
+| Business | 8 KB |
+| Enterprise | 128 KB |
 
 Note
 
@@ -124,13 +123,13 @@ Although not strictly required by the OpenAPI specification, Schema validation s
 
 #### `schema`
 
-* [type ↗](https://spec.openapis.org/oas/v3.0.3#schema-object)
-  * All schemas require a type to be set. If the specific type is not supported by Schema validation, set the type to `string` instead.
+- [`type` ↗](https://spec.openapis.org/oas/v3.0.3#schema-object)
+  - All schemas require a type to be set. If the specific type is not supported by Schema validation, set the type to `string` instead.
 
 #### `parameter`
 
-* [schema ↗](https://spec.openapis.org/oas/v3.0.3#schema-object)
-  * Schema validation does not support the content field in parameters. For more details, refer to the [notes on validated and supported fields](#notes-on-validated-and-supported-fields) below. Instead, a schema is strictly required on all parameters objects.
+- [`schema` ↗](https://spec.openapis.org/oas/v3.0.3#schema-object)
+  - Schema validation does not support the content field in parameters. For more details, refer to the [notes on validated and supported fields](#notes-on-validated-and-supported-fields) below. Instead, a schema is strictly required on all parameters objects.
 
 ### Notes on validated and supported fields
 
@@ -138,66 +137,66 @@ Refer to the information below for more details on Schema validation's current s
 
 #### `servers`
 
-* [url ↗](https://spec.openapis.org/oas/v3.0.3#server-object)
-  * Schema validation does not support relative URLs.
-* [variables ↗](https://spec.openapis.org/oas/v3.0.3#server-variable-object)
-  * Server variables are not validated.
+- [`url` ↗](https://spec.openapis.org/oas/v3.0.3#server-object)
+  - Schema validation does not support relative URLs.
+- [`variables` ↗](https://spec.openapis.org/oas/v3.0.3#server-variable-object)
+  - Server variables are not validated.
 
 #### `parameter`
 
-* [style ↗](https://spec.openapis.org/oas/v3.0.3#parameter-object)
-  * Only the default values are supported: `"simple"` (path or header parameters) and `"form"` (query or cookie parameters).
-* [explode ↗](https://spec.openapis.org/oas/v3.0.3#parameter-object)
-  * Only the default values are supported: `true` (for form) and `false` (for simple).
-* [content ↗](https://spec.openapis.org/oas/v3.0.3#parameter-object)
-  * The content field is not supported in parameters. Use the schema field instead.
-* [type ↗](https://spec.openapis.org/oas/v3.0.3#parameter-object)
-  * Cloudflare currently does not validate object type parameters.
+- [`style` ↗](https://spec.openapis.org/oas/v3.0.3#parameter-object)
+  - Only the default values are supported: `"simple"` (path or header parameters) and `"form"` (query or cookie parameters).
+- [`explode` ↗](https://spec.openapis.org/oas/v3.0.3#parameter-object)
+  - Only the default values are supported: `true` (for form) and `false` (for simple).
+- [`content` ↗](https://spec.openapis.org/oas/v3.0.3#parameter-object)
+  - The content field is not supported in parameters. Use the schema field instead.
+- [`type` ↗](https://spec.openapis.org/oas/v3.0.3#parameter-object)
+  - Cloudflare currently does not validate object type parameters.
 
 #### `reference`
 
-* [$ref ↗](https://spec.openapis.org/oas/v3.0.3#reference-object)
-  * External or relative references are not supported.
+- [`$ref` ↗](https://spec.openapis.org/oas/v3.0.3#reference-object)
+  - External or relative references are not supported.
 
 #### `requestBody`
 
-* `content`
-  * [Request Body Object ↗](https://spec.openapis.org/oas/v3.0.3#request-body-object)
-  * [Media Type Object ↗](https://spec.openapis.org/oas/v3.0.3#media-type-object)
-    * Schema validation is able to validate `application/json` documents. If a given schema allows other content types, Schema validation will accept those requests without validation.
+- `content`
+  - [Request Body Object ↗](https://spec.openapis.org/oas/v3.0.3#request-body-object)
+  - [Media Type Object ↗](https://spec.openapis.org/oas/v3.0.3#media-type-object)
+    - Schema validation is able to validate `application/json` documents. If a given schema allows other content types, Schema validation will accept those requests without validation.
 
 #### `parameter/schema`
 
-* `anyOf`
-  * [Parameter Object ↗](https://spec.openapis.org/oas/v3.0.3#parameter-object)
-  * [Schema Object ↗](https://spec.openapis.org/oas/v3.0.3#schema-object)
-    * `anyOf` schemas are currently not supported in parameter schemas.
+- `anyOf`
+  - [Parameter Object ↗](https://spec.openapis.org/oas/v3.0.3#parameter-object)
+  - [Schema Object ↗](https://spec.openapis.org/oas/v3.0.3#schema-object)
+    - `anyOf` schemas are currently not supported in parameter schemas.
 
 #### `schema`
 
-* [format ↗](https://spec.openapis.org/oas/v3.0.3#schema-object)
-  * Validated formats:
-    * `date-time`
-    * `time`
-    * `date`
-    * `email`
-    * `hostname`
-    * `ipv4`
-    * `ipv6`
-    * `uri`
-    * `uri-reference`
-    * `iri`
-    * `iri-reference`
-    * `int32`
-    * `int64`
-    * `float`
-    * `double`
-    * `password`
-    * `uuid`
-    * `byte`
-    * `uint64`
-* [uniqueItems ↗](https://spec.openapis.org/oas/v3.0.3#schema-object)
-  * This field is currently not validated by Schema validation.
+- [`format` ↗](https://spec.openapis.org/oas/v3.0.3#schema-object)
+  - Validated formats:
+    - `date-time`
+    - `time`
+    - `date`
+    - `email`
+    - `hostname`
+    - `ipv4`
+    - `ipv6`
+    - `uri`
+    - `uri-reference`
+    - `iri`
+    - `iri-reference`
+    - `int32`
+    - `int64`
+    - `float`
+    - `double`
+    - `password`
+    - `uuid`
+    - `byte`
+    - `uint64`
+- [`uniqueItems` ↗](https://spec.openapis.org/oas/v3.0.3#schema-object)
+  - This field is currently not validated by Schema validation.
 
 ---
 
@@ -221,9 +220,9 @@ As such, if you need to support `application/json` and `application/xml` on the 
 
 Cloudflare allows specifying the following media-ranges in the OpenAPI request body content map:
 
-* `*/*`
-* `application/*`
-* `application/json`.
+- `*/*`
+- `application/*`
+- `application/json`.
 
 Media-ranges can also be configured to enforce a `charset` parameter. For this, Cloudflare only accepts the `charset` parameter with a static value of `utf-8` as part of the media-range specification and when configured, we will similarly require the request's content-type to carry this charset.
 
@@ -235,12 +234,12 @@ This section addresses common issues you may encounter when using schema validat
 
 ### Resolve a `OneOf` constraint violation
 
-A `OneOf` constraint error means a request violated its uploaded profile. Its body did not match exactly one [oneOf ↗](https://swagger.io/docs/specification/v3%5F0/data-models/oneof-anyof-allof-not/) option.
+A `OneOf` constraint error means a request violated its uploaded profile. Its body did not match exactly one [`oneOf` ↗](https://swagger.io/docs/specification/v3_0/data-models/oneof-anyof-allof-not/) option.
 
 The request was invalid for one of two reasons:
 
-* **Matches Zero**: The payload did not correctly match any of the available subschemas. This is common when a discriminator field is set, but the payload is missing other required fields for that type.
-* **Matches Multiple**: The payload was ambiguous and matched more than one subschema. This happens with generic schemas (for example, if a payload includes both an `email` and a `phone` field, it might match both an `email` and a `phone` schema definition, violating the "exactly one" rule).
+- **Matches Zero**: The payload did not correctly match any of the available subschemas. This is common when a discriminator field is set, but the payload is missing other required fields for that type.
+- **Matches Multiple**: The payload was ambiguous and matched more than one subschema. This happens with generic schemas (for example, if a payload includes both an `email` and a `phone` field, it might match both an `email` and a `phone` schema definition, violating the "exactly one" rule).
 
 To fix this, compare the sampled request with its schema definition. The request may omit required fields or match conflicting types.
 

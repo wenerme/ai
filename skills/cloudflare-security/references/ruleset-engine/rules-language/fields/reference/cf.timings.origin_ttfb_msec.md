@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.timings.origin\_ttfb\_msec
 
-`cf.timings.origin_ttfb_msec` `Integer`
+`cf.timings.origin_ttfb_msec``Integer`
 
 The round-trip time (RTT) between the Cloudflare global network and the origin server in milliseconds.
 
@@ -32,7 +32,7 @@ cf.timings.origin_ttfb_msec > 2000
 ```
 
 Categories:
-* Request
+- Request
 
 Was this helpful?
 

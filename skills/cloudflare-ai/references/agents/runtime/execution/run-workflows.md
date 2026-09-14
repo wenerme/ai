@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Run Workflows
 
-Last updated Jun 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Integrate [Cloudflare Workflows](https://developers.cloudflare.com/workflows/) with Agents for durable, multi-step background processing while Agents handle real-time communication.
 
@@ -24,7 +24,7 @@ Use Agents alone for chat, messaging, and quick API calls. Use Agent + Workflow 
 
 ## Quick start
 
-### 1\. Define a Workflow
+### 1. Define a Workflow
 
 Extend `AgentWorkflow` for typed access to the originating Agent:
 
@@ -98,7 +98,7 @@ export class ProcessingWorkflow extends AgentWorkflow<MyAgent, TaskParams> {
 }
 ```
 
-### 2\. Start a Workflow from an Agent
+### 2. Start a Workflow from an Agent
 
 Use `runWorkflow()` to start and track workflows:
 
@@ -164,14 +164,14 @@ export class MyAgent extends Agent {
 }
 ```
 
-### 3\. Configure Wrangler
+### 3. Configure Wrangler
 
 ```jsonc
 {
 	"name": "my-app",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"durable_objects": {
 		"bindings": [{ "name": "MY_AGENT", "class_name": "MyAgent" }],
 	},
@@ -190,7 +190,7 @@ export class MyAgent extends Agent {
 name = "my-app"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[durable_objects.bindings]]
 name = "MY_AGENT"
@@ -212,21 +212,21 @@ Base class for Workflows that integrate with Agents.
 
 ### Type parameters
 
-| Parameter    | Description                                               |
-| ------------ | --------------------------------------------------------- |
-| AgentType    | The Agent class type for typed RPC                        |
-| Params       | Parameters passed to the workflow                         |
-| ProgressType | Type for progress reporting (defaults to DefaultProgress) |
-| Env          | Environment type (defaults to Cloudflare.Env)             |
+| Parameter | Description |
+| --- | --- |
+| `AgentType` | The Agent class type for typed RPC |
+| `Params` | Parameters passed to the workflow |
+| `ProgressType` | Type for progress reporting (defaults to `DefaultProgress`) |
+| `Env` | Environment type (defaults to `Cloudflare.Env`) |
 
 ### Properties
 
-| Property     | Type   | Description                                                                                                                                                                                       |
-| ------------ | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| agent        | Stub   | Typed stub for calling Agent methods. For workflows started from a sub-agent, this is an RPC-only stub back to the originating facet; use sub-agent routing for HTTP or WebSocket fetch() traffic |
-| instanceId   | string | The workflow instance ID                                                                                                                                                                          |
-| workflowName | string | The workflow binding name                                                                                                                                                                         |
-| env          | Env    | Environment bindings                                                                                                                                                                              |
+| Property | Type | Description |
+| --- | --- | --- |
+| `agent` | Stub | Typed stub for calling Agent methods. For workflows started from a sub-agent, this is an RPC-only stub back to the originating facet; use sub-agent routing for HTTP or WebSocket `fetch()` traffic |
+| `instanceId` | string | The workflow instance ID |
+| `workflowName` | string | The workflow binding name |
+| `env` | Env | Environment bindings |
 
 ### Instance methods (non-durable)
 
@@ -284,14 +284,14 @@ const approval = await this.waitForApproval<{ approvedBy: string }>(step, {
 
 These methods are idempotent and will not repeat on retry. Use for state changes that must persist.
 
-| Method                        | Description                                    |
-| ----------------------------- | ---------------------------------------------- |
-| step.reportComplete(result?)  | Report successful completion                   |
-| step.reportError(error)       | Report an error                                |
-| step.sendEvent(event)         | Send a custom event to the Agent               |
-| step.updateAgentState(state)  | Replace Agent state (broadcasts to clients)    |
-| step.mergeAgentState(partial) | Merge into Agent state (broadcasts to clients) |
-| step.resetAgentState()        | Reset Agent state to initialState              |
+| Method | Description |
+| --- | --- |
+| `step.reportComplete(result?)` | Report successful completion |
+| `step.reportError(error)` | Report an error |
+| `step.sendEvent(event)` | Send a custom event to the Agent |
+| `step.updateAgentState(state)` | Replace Agent state (broadcasts to clients) |
+| `step.mergeAgentState(partial)` | Merge into Agent state (broadcasts to clients) |
+| `step.resetAgentState()` | Reset Agent state to initialState |
 
 ### DefaultProgress type
 
@@ -315,15 +315,15 @@ Start a workflow instance and track it in the Agent database.
 
 **Parameters:**
 
-| Parameter            | Type   | Description                                                                                                           |
-| -------------------- | ------ | --------------------------------------------------------------------------------------------------------------------- |
-| workflowName         | string | Workflow binding name from env                                                                                        |
-| params               | object | Parameters to pass to the workflow                                                                                    |
-| options.id           | string | Custom workflow ID (auto-generated if not provided)                                                                   |
-| options.metadata     | object | Metadata stored for querying (not passed to workflow)                                                                 |
-| options.agentBinding | string | Agent binding name (auto-detected if not provided). When called from a sub-agent, this is the root Agent binding name |
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `workflowName` | string | Workflow binding name from `env` |
+| `params` | object | Parameters to pass to the workflow |
+| `options.id` | string | Custom workflow ID (auto-generated if not provided) |
+| `options.metadata` | object | Metadata stored for querying (not passed to workflow) |
+| `options.agentBinding` | string | Agent binding name (auto-detected if not provided). When called from a sub-agent, this is the root Agent binding name |
 
-**Returns:** `Promise<string>` \- Workflow instance ID
+**Returns:** `Promise<string>` - Workflow instance ID
 
 ```js
 const instanceId = await this.runWorkflow(
@@ -413,9 +413,9 @@ For sub-agent origins, `AgentWorkflow.agent` is an RPC-only stub. Use it to call
 
 Because the originating identity is persisted durably in the workflow params and replayed on every callback, a few constraints apply to all workflows (sub-agent and top-level alike):
 
-* **Callbacks resolve the Agent by name.** The runtime re-resolves the originating Agent with `getAgentByName(...)`. If you addressed the Agent by a raw Durable Object ID (`idFromString` / `get(id)`) instead of by name, callbacks land on a different instance. Start workflows from name-addressed Agents.
-* **Class names must survive bundling.** The originating path is keyed by `constructor.name`. Configure your bundler to preserve class names (esbuild `keepNames: true`) so progress, completion, and `this.agent` RPC can be routed back to the right facet.
-* **`agentBinding` is the root binding.** When you pass `options.agentBinding` from a sub-agent, use the **root** Agent's Durable Object binding name, not a child binding.
+- **Callbacks resolve the Agent by name.** The runtime re-resolves the originating Agent with `getAgentByName(...)`. If you addressed the Agent by a raw Durable Object ID ( `idFromString` / `get(id)`) instead of by name, callbacks land on a different instance. Start workflows from name-addressed Agents.
+- **Class names must survive bundling.** The originating path is keyed by `constructor.name`. Configure your bundler to preserve class names (esbuild `keepNames: true`) so progress, completion, and `this.agent` RPC can be routed back to the right facet.
+- **`agentBinding` is the root binding.** When you pass `options.agentBinding` from a sub-agent, use the **root** Agent's Durable Object binding name, not a child binding.
 
 ### sendWorkflowEvent(workflowName, instanceId, event)
 
@@ -695,13 +695,13 @@ class MyAgent extends Agent {
 
 Override these methods in your Agent to handle workflow events:
 
-| Callback           | Parameters                         | Description                           |
-| ------------------ | ---------------------------------- | ------------------------------------- |
-| onWorkflowProgress | workflowName, instanceId, progress | Called when workflow reports progress |
-| onWorkflowComplete | workflowName, instanceId, result?  | Called when workflow completes        |
-| onWorkflowError    | workflowName, instanceId, error    | Called when workflow errors           |
-| onWorkflowEvent    | workflowName, instanceId, event    | Called when workflow sends an event   |
-| onWorkflowCallback | callback: WorkflowCallback         | Called for all callback types         |
+| Callback | Parameters | Description |
+| --- | --- | --- |
+| `onWorkflowProgress` | `workflowName`, `instanceId`, `progress` | Called when workflow reports progress |
+| `onWorkflowComplete` | `workflowName`, `instanceId`, `result?` | Called when workflow completes |
+| `onWorkflowError` | `workflowName`, `instanceId`, `error` | Called when workflow errors |
+| `onWorkflowEvent` | `workflowName`, `instanceId`, `event` | Called when workflow sends an event |
+| `onWorkflowCallback` | `callback: WorkflowCallback` | Called for all callback types |
 
 ```js
 class MyAgent extends Agent {
@@ -761,15 +761,15 @@ Sub-agent scoping
 
 ### Status values
 
-| Status     | Description           |
-| ---------- | --------------------- |
-| queued     | Waiting to start      |
-| running    | Currently executing   |
-| paused     | Paused by user        |
-| waiting    | Waiting for event     |
-| complete   | Finished successfully |
-| errored    | Failed with error     |
-| terminated | Manually terminated   |
+| Status | Description |
+| --- | --- |
+| `queued` | Waiting to start |
+| `running` | Currently executing |
+| `paused` | Paused by user |
+| `waiting` | Waiting for event |
+| `complete` | Finished successfully |
+| `errored` | Failed with error |
+| `terminated` | Manually terminated |
 
 Use the `metadata` option in `runWorkflow()` to store queryable information (like user IDs or task types) that you can filter on later with `getWorkflows()`.
 
@@ -1200,12 +1200,12 @@ await this.rejectWorkflow(instanceId, { reason: "Request denied" });
 
 ## Limitations
 
-| Constraint          | Limit                                                     |
-| ------------------- | --------------------------------------------------------- |
-| Maximum steps       | 10,000 per workflow (default) / configurable up to 25,000 |
-| State size          | 10 MB per workflow                                        |
-| Event wait time     | 1 year maximum                                            |
-| Step execution time | 30 minutes per step                                       |
+| Constraint | Limit |
+| --- | --- |
+| Maximum steps | 10,000 per workflow (default) / configurable up to 25,000 |
+| State size | 10 MB per workflow |
+| Event wait time | 1 year maximum |
+| Step execution time | 30 minutes per step |
 
 Workflows cannot open WebSocket connections directly. Use `broadcastToClients()` to communicate with connected clients through the Agent.
 

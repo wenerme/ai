@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Changelog
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/queues/platform/changelog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/platform/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/queues/platform/changelog/index.xml)
 
@@ -52,7 +52,7 @@ Queues is now generally available.
 
 The per-queue message throughput has increased from 400 to 5,000 messages per second. This applies to new and existing queues.
 
-Maximum concurrent consumers has increased from 20 to 250\. This applies to new and existing queues. Queues with no explicit limit will automatically scale to the new maximum. Review the [consumer concurrency documentation](https://developers.cloudflare.com/queues/configuration/consumer-concurrency) to learn more.
+Maximum concurrent consumers has increased from 20 to 250. This applies to new and existing queues. Queues with no explicit limit will automatically scale to the new maximum. Review the [consumer concurrency documentation](https://developers.cloudflare.com/queues/configuration/consumer-concurrency) to learn more.
 
 ## 2024-03-26
 
@@ -98,7 +98,7 @@ Refer to [Limits](https://developers.cloudflare.com/queues/platform/limits) to l
 
 **Higher consumer concurrency limits**
 
-[Queue consumers](https://developers.cloudflare.com/queues/configuration/consumer-concurrency/) can now scale to 20 concurrent invocations (per queue), up from 10\. This allows you to scale out and process higher throughput queues more quickly.
+[Queue consumers](https://developers.cloudflare.com/queues/configuration/consumer-concurrency/) can now scale to 20 concurrent invocations (per queue), up from 10. This allows you to scale out and process higher throughput queues more quickly.
 
 Queues with [no explicit limit specified](https://developers.cloudflare.com/queues/configuration/consumer-concurrency/#limit-concurrency) will automatically scale to the new maximum.
 
@@ -108,7 +108,7 @@ This limit will continue to grow during the Queues beta.
 
 **Consumer concurrency (enabled)**
 
-Queue consumers will now [automatically scale up](https://developers.cloudflare.com/queues/configuration/consumer-concurrency/) based on the number of messages being written to the queue. To control or limit concurrency, you can explicitly define a [max\_concurrency](https://developers.cloudflare.com/queues/configuration/configure-queues/#consumer) for your consumer.
+Queue consumers will now [automatically scale up](https://developers.cloudflare.com/queues/configuration/consumer-concurrency/) based on the number of messages being written to the queue. To control or limit concurrency, you can explicitly define a [`max_concurrency`](https://developers.cloudflare.com/queues/configuration/configure-queues/#consumer) for your consumer.
 
 ## 2023-03-15
 

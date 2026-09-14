@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Simple Proxy Protocol Header
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/spectrum/reference/simple-proxy-protocol-header/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/reference/simple-proxy-protocol-header/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The client source IP and port is encoded in a fixed-length, 38-octet long header and prepended to the payload of each proxied UDP datagram in the format described below.
 

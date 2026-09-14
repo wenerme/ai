@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DNS Firewall
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/dns-firewall/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/dns-firewall/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Speed up and protect entire authoritative nameservers
 
@@ -41,14 +41,14 @@ When a DNS query for your domain takes place:
 
 DNS Firewall provides the following benefits while allowing your organization total control over your authoritative nameservers:
 
-* DDoS mitigation
-* High availability
-* Global distribution
-* Enhanced performance
-* Bandwidth savings
-* [Rate limiting per data center](https://developers.cloudflare.com/dns/dns-firewall/setup/#additional-options)
-* Minimum and maximum cache TTL specification
-* DNS [ANY ↗](https://datatracker.ietf.org/doc/html/rfc8482) query type block
+- DDoS mitigation
+- High availability
+- Global distribution
+- Enhanced performance
+- Bandwidth savings
+- [Rate limiting per data center](https://developers.cloudflare.com/dns/dns-firewall/setup/#additional-options)
+- Minimum and maximum cache TTL specification
+- DNS [ANY ↗](https://datatracker.ietf.org/doc/html/rfc8482) query type block
 
 Was this helpful?
 

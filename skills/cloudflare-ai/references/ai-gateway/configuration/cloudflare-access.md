@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Access
 
-Last updated Aug 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/cloudflare-access/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/cloudflare-access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Protect your gateway with [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/) so users authenticate with your identity provider before they can send requests. Putting AI Gateway behind Access gives you identity-aware control over your AI traffic: you decide who can reach the gateway, tie each request to a verified user, and govern usage per user without building your own authentication layer or passing user IDs from the client application.
 
@@ -22,7 +22,7 @@ To put AI Gateway behind Access, you must first [set a custom domain](https://de
 
 When a request to a custom domain includes a valid Cloudflare Access JWT, AI Gateway accepts the Access JWT as the request credential. The client does not need to send an AI Gateway token for that request.
 
-AI Gateway also adds the verified Access user ID to request metadata as [cf.user\_id](https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/#reserved-metadata). This value is the Access JWT `sub` claim, not the user's email address. You can then filter logs, analytics, and spend by the authenticated user.
+AI Gateway also adds the verified Access user ID to request metadata as [`cf.user_id`](https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/#reserved-metadata). This value is the Access JWT `sub` claim, not the user's email address. You can then filter logs, analytics, and spend by the authenticated user.
 
 Before AI Gateway forwards the request to the upstream provider, it removes Cloudflare-only credentials such as the Access JWT and AI Gateway authorization headers.
 
@@ -31,7 +31,7 @@ Once a custom domain is protected by Access, every request to that domain must p
 ## Set up Access on a gateway
 
 1. [Set up a custom domain](https://developers.cloudflare.com/ai-gateway/configuration/custom-domains/) for the gateway you want to protect.
-2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **AI** \> **AI Gateway**.
+2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **AI** > **AI Gateway**.
 3. Select the gateway you configured with a custom domain.
 4. Go to the **Access** tab and set up Cloudflare Access on the gateway.
 5. Add Access policies that define which users can call the gateway.
@@ -58,15 +58,15 @@ curl -X POST "https://ai.example.com/openai/v1/chat/completions" \
   }'
 ```
 
-If you call the custom domain from a non-browser client, include the Access token using the header or cookie format supported by Cloudflare Access. For example, [cloudflared access curl](https://developers.cloudflare.com/cloudflare-one/access-controls/authenticate-agents/#make-requests-with-cloudflared-access-curl) can send the Access token for command-line requests.
+If you call the custom domain from a non-browser client, include the Access token using the header or cookie format supported by Cloudflare Access. For example, [`cloudflared access curl`](https://developers.cloudflare.com/cloudflare-one/access-controls/authenticate-agents/#make-requests-with-cloudflared-access-curl) can send the Access token for command-line requests.
 
 For coding agents, refer to the per-agent setup under [Coding agents](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/) — for example, [Claude Code](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/claude-code/#use-with-cloudflare-access) and [OpenAI Codex](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/openai-codex/#use-with-cloudflare-access).
 
 ## Limitations
 
-* `cf.user_id` is only added when AI Gateway receives a valid Access JWT with a non-empty user subject.
-* Service-token requests do not include `cf.user_id` because they do not represent an individual Access user.
-* You may not supply metadata keys that begin with `cf.`. These keys are reserved and are not saved.
+- `cf.user_id` is only added when AI Gateway receives a valid Access JWT with a non-empty user subject.
+- Service-token requests do not include `cf.user_id` because they do not represent an individual Access user.
+- You may not supply metadata keys that begin with `cf.`. These keys are reserved and are not saved.
 
 Was this helpful?
 

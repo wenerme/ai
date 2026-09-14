@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Image • Recraft
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `recraft/recraftv4-1-utility`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 Recraft V4.1 Utility is a general-purpose text-to-image model balancing quality and flexibility for a wide range of everyday use cases at standard resolution.
 
-| Model Info          |                                                                                                                               |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://www.recraft.ai/terms)                                                                                        |
-| More information    | [link ↗](https://www.recraft.ai/)                                                                                             |
-| Zero data retention | Yes                                                                                                                           |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/recraft/recraftv4-1-utility) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://www.recraft.ai/terms) |
+| More information | [link ↗](https://www.recraft.ai/) |
+| Zero data retention | Yes |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/recraft/recraftv4-1-utility) |
 
 ## Usage
 
@@ -70,7 +70,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Product Mockup** — Generate a product concept image
+<details>
+
+<summary>**Product Mockup** — Generate a product concept image</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -106,7 +110,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Custom Size** — Specify output dimensions
+</details>
+
+<details>
+
+<summary>**Custom Size** — Specify output dimensions</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -146,7 +156,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**With Color Controls** — Guide generation with specific colors
+</details>
+
+<details>
+
+<summary>**With Color Controls** — Guide generation with specific colors</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -203,7 +219,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Background Color** — Set a specific background color
+</details>
+
+<details>
+
+<summary>**Background Color** — Set a specific background color</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -253,6 +275,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 prompt
@@ -281,9 +305,9 @@ image
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility/schema-output.json)
 
 Was this helpful?
 

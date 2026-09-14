@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage gateways
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You have several different options for managing an AI Gateway.
 
@@ -28,12 +28,12 @@ The request that triggers auto-creation must be authenticated. When using the [R
 
 The auto-created default gateway uses the following settings:
 
-| Setting            | Default value    |
-| ------------------ | ---------------- |
-| Authentication     | On               |
-| Log collection     | On               |
-| Caching            | Off (TTL of 0)   |
-| Rate limiting      | Off              |
+| Setting | Default value |
+| --- | --- |
+| Authentication | On |
+| Log collection | On |
+| Caching | Off (TTL of 0) |
+| Rate limiting | Off |
 | Workers AI billing | Standard billing |
 
 After creation, you can edit the default gateway settings like any other gateway. If you delete the default gateway, sending a new authenticated request to the `default` gateway ID auto-creates it again.
@@ -44,35 +44,35 @@ Auto-creation only applies to the gateway ID `default`. Using any other gateway 
 
 ### Create a gateway manually
 
-[Go to **AI Gateway** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
+[Go to **AI Gateway** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
+
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
-2. Go to **AI** \> **AI Gateway**.
+2. Go to **AI** > **AI Gateway**.
 3. Select **Create Gateway**.
 4. Enter your **Gateway name**. Note: Gateway name has a 64 character limit.
 5. In **Workers AI Billing**, choose how Workers AI requests through this gateway are billed:
-  * **Standard billing** charges your Cloudflare account at the end of each billing cycle.
-  * **Unified billing** deducts from your prepaid AI Gateway credit balance in real time.
+   - **Standard billing** charges your Cloudflare account at the end of each billing cycle.
+   - **Unified billing** deducts from your prepaid AI Gateway credit balance in real time.
 6. Select **Create**.
 
 To set up an AI Gateway using the API:
 
 1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
-
-  * `AI Gateway - Read`
-  * `AI Gateway - Edit`
+   - `AI Gateway - Read`
+   - `AI Gateway - Edit`
 2. Get your [Account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
-3. Using that API token and Account ID, send a [POST request](https://developers.cloudflare.com/api/resources/ai%5Fgateway/methods/create/) to the Cloudflare API.
+3. Using that API token and Account ID, send a [`POST` request](https://developers.cloudflare.com/api/resources/ai_gateway/methods/create/) to the Cloudflare API.
 
 ## Edit gateway
 
 To edit an AI Gateway in the dashboard:
 
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
-2. Go to **AI** \> **AI Gateway**.
+2. Go to **AI** > **AI Gateway**.
 3. Select your gateway.
 4. Go to **Settings** and update as needed.
 
-To edit an AI Gateway, send a [PUT request](https://developers.cloudflare.com/api/resources/ai%5Fgateway/methods/update/) to the Cloudflare API.
+To edit an AI Gateway, send a [`PUT` request](https://developers.cloudflare.com/api/resources/ai_gateway/methods/update/) to the Cloudflare API.
 
 Note
 
@@ -85,7 +85,7 @@ By default, Workers AI requests use **Standard billing**, which charges your Clo
 To use prepaid AI Gateway credits for Workers AI requests:
 
 1. [Load credits](https://developers.cloudflare.com/ai-gateway/features/unified-billing/#load-credits) into your Cloudflare account.
-2. In the Cloudflare dashboard, go to **AI** \> **AI Gateway** and select your gateway.
+2. In the Cloudflare dashboard, go to **AI** > **AI Gateway** and select your gateway.
 3. Go to **Settings** and find **Workers AI Billing**.
 4. Select **Unified billing**.
 5. Select **Save**.
@@ -99,14 +99,15 @@ You can configure your gateway to automatically retry failed requests to upstrea
 To configure retry settings:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
-2. Go to **AI** \> **AI Gateway** and select your gateway.
+2. Go to **AI** > **AI Gateway** and select your gateway.
 3. Go to **Settings** and find the **Retry Requests** section.
 4. Turn on the toggle to turn on automatic retries.
 5. Configure the following settings:
-  * **Retry count** — the maximum number of retry attempts (up to 5).
-  * **Delay** — the base delay between retries. Available values: 100ms, 500ms, 1 second, 2 seconds, 3 seconds, or 5 seconds.
-  * **Backoff** — the backoff strategy for subsequent retries: Constant, Linear, or Exponential.
+   - **Retry count** — the maximum number of retry attempts (up to 5).
+   - **Delay** — the base delay between retries. Available values: 100ms, 500ms, 1 second, 2 seconds, 3 seconds, or 5 seconds.
+   - **Backoff** — the backoff strategy for subsequent retries: Constant, Linear, or Exponential.
 6. Select **Save**.
+
 ![Retry Requests settings in the AI Gateway dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2344,height=636,format=webp/_astro/auto-retry-settings.UcvmkohL.png)
 
 These gateway-level defaults apply to all requests routed through the gateway. Per-request headers can override these defaults — refer to [Request handling](https://developers.cloudflare.com/ai-gateway/configuration/request-handling/#request-retries) for details.
@@ -120,12 +121,12 @@ Deleting your gateway is permanent and can not be undone.
 To delete an AI Gateway in the dashboard:
 
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
-2. Go to **AI** \> **AI Gateway**.
+2. Go to **AI** > **AI Gateway**.
 3. Select your gateway from the list of available options.
 4. Go to **Settings**.
 5. For **Delete Gateway**, select **Delete** (and confirm your deletion).
 
-To delete an AI Gateway, send a [DELETE request](https://developers.cloudflare.com/api/resources/ai%5Fgateway/methods/delete/) to the Cloudflare API.
+To delete an AI Gateway, send a [`DELETE` request](https://developers.cloudflare.com/api/resources/ai_gateway/methods/delete/) to the Cloudflare API.
 
 Was this helpful?
 

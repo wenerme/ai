@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Browser compatibility
 
-Last updated May 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/reference/browser-compatibility/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/reference/browser-compatibility/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare attempts to provide compatibility for as wide a range of user agents (browsers, API clients, etc.) as possible. However, the specific set of supported clients can vary depending on the different SSL/TLS certificate types, your visitor's [browser version](#non-sni-support), and the [certificate authority (CA)](https://developers.cloudflare.com/ssl/reference/certificate-authorities/) that issues the certificate.
 
@@ -34,10 +34,11 @@ Although [SNI extensions ↗](https://www.cloudflare.com/learning/ssl/what-is-sn
 
 To support non-SNI requests, you can:
 
-* [Upload a custom certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/#upload-a-custom-certificate) and specify a value of `Legacy` for its client support.
-Note that `Legacy` custom certificates are not compatible with [BYOIP](https://developers.cloudflare.com/byoip/) and that, unlike [Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) or [advanced certificates](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/), Cloudflare does not manage issuance and renewal for [custom certificates](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/).
-* (BYOIP customers only) Enterprise customers can choose to bring their own IP prefix to the Cloudflare network and [specify the default SNI used for any non-SNI handshake in the address map](https://developers.cloudflare.com/byoip/address-maps/setup/#non-sni-support).
-* (Paid plans only) [Contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) and request a set of non-SNI IPs for your zone.
+- [Upload a custom certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/#upload-a-custom-certificate) and specify a value of `Legacy` for its client support.
+
+  Note that `Legacy` custom certificates are not compatible with [BYOIP](https://developers.cloudflare.com/byoip/) and that, unlike [Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) or [advanced certificates](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/), Cloudflare does not manage issuance and renewal for [custom certificates](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/).
+- (BYOIP customers only) Enterprise customers can choose to bring their own IP prefix to the Cloudflare network and [specify the default SNI used for any non-SNI handshake in the address map](https://developers.cloudflare.com/byoip/address-maps/setup/#non-sni-support).
+- (Paid plans only) [Contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) and request a set of non-SNI IPs for your zone.
 
 ## HTTPS records
 

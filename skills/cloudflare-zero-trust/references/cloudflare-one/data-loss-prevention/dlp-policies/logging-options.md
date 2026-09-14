@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Logging options
 
-Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Data Loss Prevention allows you to capture, store, and view the data that triggered a specific DLP policy for use as forensic evidence. DLP offers three logging approaches, each suited to different needs:
 
-| Approach                                                                    | What it captures                                            | Encryption                      | Availability |
-| --------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------- | ------------ |
-| [Payload logging](#log-the-payload-of-matched-rules)                        | Redacted match + 75 bytes of surrounding context            | Encrypted with your public key  | All plans    |
-| [AI prompt logging](#log-generative-ai-prompt-content)                      | Generative AI prompt topic, user prompt, and model response | Encrypted with your public key  | All plans    |
-| [Logpush forensic copies](#send-dlp-forensic-copies-to-logpush-destination) | Complete HTTP request (headers + body)                      | Encrypted in transit only (TLS) | Enterprise   |
+| Approach | What it captures | Encryption | Availability |
+| --- | --- | --- | --- |
+| [Payload logging](#log-the-payload-of-matched-rules) | Redacted match + 75 bytes of surrounding context | Encrypted with your public key | All plans |
+| [AI prompt logging](#log-generative-ai-prompt-content) | Generative AI prompt topic, user prompt, and model response | Encrypted with your public key | All plans |
+| [Logpush forensic copies](#send-dlp-forensic-copies-to-logpush-destination) | Complete HTTP request (headers + body) | Encrypted in transit only (TLS) | Enterprise |
 
 Users on all plans can log the [payload](#log-the-payload-of-matched-rules) or [generative AI prompt content](#log-generative-ai-prompt-content) of matched HTTP requests in their Cloudflare logs. Additionally, Enterprise users can [configure a Logpush job](#send-dlp-forensic-copies-to-logpush-destination) to send copies of entire matched HTTP requests to storage destinations.
 
@@ -38,9 +38,9 @@ DLP can log the payload of matched HTTP requests in your Cloudflare logs. Use pa
 
 ### Turn on payload logging for a DLP policy
 
-You can enable payload logging for any Allow or Block HTTP policy that uses the [_DLP Profile_](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#dlp-profile) selector — the filter condition that matches traffic against your DLP detection profiles.
+You can enable payload logging for any Allow or Block HTTP policy that uses the [*DLP Profile*](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#dlp-profile) selector — the filter condition that matches traffic against your DLP detection profiles.
 
-1. Go to **Traffic policies** \> **Firewall policies** \> **HTTP**.
+1. Go to **Traffic policies** > **Firewall policies** > **HTTP**.
 2. Edit an existing Allow or Block DLP policy, or [create a new policy](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/#2-create-a-dlp-policy).
 3. In the policy builder, scroll down to **Configure policy settings** and turn on **Log the payload of matched rules**.
 4. Select **Save**.
@@ -51,12 +51,12 @@ Data Loss Prevention will now store a portion of the payload for HTTP requests t
 
 To view DLP payload logs:
 
-1. Go to **Insights** \> **Logs** \> **HTTP request logs**.
+1. Go to **Insights** > **Logs** > **HTTP request logs**.
 2. Go to the DLP log you are interested in reviewing and expand the row.
 3. Select **Decrypt payload log**.
 4. Enter your private key and select **Decrypt**.
 
-You will see the [ID of the matched DLP Profile](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/dlp/subresources/profiles/methods/list/) followed by the decrypted payload.
+You will see the [ID of the matched DLP Profile](https://developers.cloudflare.com/api/resources/zero_trust/subresources/dlp/subresources/profiles/methods/list/) followed by the decrypted payload.
 
 Note
 
@@ -77,10 +77,10 @@ Based on your report, DLP's machine learning will adjust its confidence in futur
 
 ### Data privacy
 
-* All Cloudflare logs are encrypted at rest (encrypted while stored on disk). Encrypting the payload content adds a second layer of encryption for the matched values that triggered a DLP rule.
-* Cloudflare cannot decrypt encrypted payloads, since this operation requires your private key. Cloudflare staff will never ask for the private key.
-* By default, DLP uses Full Mask to redact alphanumeric characters in the matched pattern, replacing them with `*` while preserving the format. For example, `123-45-6789` becomes `***-**-****`. You can [configure the masking level](#configure-payload-log-masking) to show partial or full matches if your incident response workflow requires more context.
-  * You can define sensitive data with [Exact Data Match (EDM)](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#exact-data-match-datasets). EDM match logs will redact your defined strings.
+- All Cloudflare logs are encrypted at rest (encrypted while stored on disk). Encrypting the payload content adds a second layer of encryption for the matched values that triggered a DLP rule.
+- Cloudflare cannot decrypt encrypted payloads, since this operation requires your private key. Cloudflare staff will never ask for the private key.
+- By default, DLP uses Full Mask to redact alphanumeric characters in the matched pattern, replacing them with `*` while preserving the format. For example, `123-45-6789` becomes `***-**-****`. You can [configure the masking level](#configure-payload-log-masking) to show partial or full matches if your incident response workflow requires more context.
+  - You can define sensitive data with [Exact Data Match (EDM)](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#exact-data-match-datasets). EDM match logs will redact your defined strings.
 
 ## Log generative AI prompt content
 
@@ -88,9 +88,9 @@ DLP can detect and log the prompt topic sent to an AI tool.
 
 ### Turn on AI prompt content logging for a DLP policy
 
-You can enable AI prompt content logging for any Allow or Block HTTP policy that uses the [_Application_](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#application) selector with a supported [Application Granular Controls](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#granular-controls) application. This means your policy must target a specific AI application (such as ChatGPT) that Gateway can inspect at a granular level.
+You can enable AI prompt content logging for any Allow or Block HTTP policy that uses the [*Application*](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#application) selector with a supported [Application Granular Controls](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#granular-controls) application. This means your policy must target a specific AI application (such as ChatGPT) that Gateway can inspect at a granular level.
 
-1. Go to **Traffic policies** \> **Firewall policies** \> **HTTP**.
+1. Go to **Traffic policies** > **Firewall policies** > **HTTP**.
 2. Edit an existing Allow or Block DLP policy, or [create a new policy](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/#2-create-a-dlp-policy).
 3. In the policy builder, scroll down to **Configure policy settings** and turn on **Capture generative AI prompt content in logs**.
 4. Select **Save**.
@@ -101,11 +101,11 @@ Data Loss Prevention will now store the user prompt and AI model response for re
 
 To view generative AI prompt log details:
 
-1. Go to **Insights** \> **Logs** \> **HTTP request logs**.
+1. Go to **Insights** > **Logs** > **HTTP request logs**.
 2. Go to the DLP log you are interested in reviewing and expand the row.
 3. Select **Decrypt payload log**.
 4. Enter your private key and select **Decrypt**.
-5. In **Summary** \> **GenAI prompt captured**, select **View prompt**.
+5. In **Summary** > **GenAI prompt captured**, select **View prompt**.
 
 Gateway logs will provide a summary of the conversation, including the topic and AI model used, and the user prompt and AI model's raw response if available. A text prompt must be present for DLP to capture the prompt.
 
@@ -121,11 +121,11 @@ Gateway allows you to send copies of entire HTTP requests matched in HTTP Allow 
 
 To set up the DLP Forensic Copy Logpush job:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights** \>**Logs**, and select **Manage Logpush**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights** >**Logs**, and select **Manage Logpush**.
 2. In Logpush, select **Create a Logpush job**.
 3. Choose a [Logpush destination](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/).
-4. In **Configure logpush job**, choose the _DLP forensic copies_ dataset. Select **Create Logpush job**.
-5. Return to **Zero Trust** and go to **Traffic policies** \> **Firewall policies** \> **HTTP**.
+4. In **Configure logpush job**, choose the *DLP forensic copies* dataset. Select **Create Logpush job**.
+5. Return to **Zero Trust** and go to **Traffic policies** > **Firewall policies** > **HTTP**.
 6. Edit an existing Allow or Block policy, or [create a new policy](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/#2-create-a-dlp-policy). Your policy does not need to include a DLP profile — any Gateway HTTP policy can send forensic copies.
 7. In the policy builder, scroll down to **Configure policy settings** and turn on **Send DLP forensic copies to storage**.
 8. Select a storage destination. Gateway will list any configured Logpush jobs or integrations that can receive HTTP requests.

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Create a redirect rule to redirect visitors using mobile devices to a different hostname.
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/examples/perform-mobile-redirects/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/examples/perform-mobile-redirects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following examples will redirect visitors using mobile devices — based on the request user agent string — to a different hostname.
 
@@ -24,21 +24,21 @@ This example static redirect will redirect requests for the current zone (`examp
 
 **When incoming requests match**
 
-* Enter the following expression in the [Expression Editor](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/#expression-editor):
-`not http.host in {"m.example.com"} and (http.user_agent contains "mobi" or http.user_agent contains "Mobi")`
+- Enter the following expression in the [Expression Editor](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/#expression-editor):
+  `not http.host in {"m.example.com"} and (http.user_agent contains "mobi" or http.user_agent contains "Mobi")`
 
 **Then**
 
-* **Type:** _Static_
-* **URL:** `m.example.com`
-* **Status code:** _301_
+- **Type:** *Static*
+- **URL:** `m.example.com`
+- **Status code:** *301*
 
 Notes about this example:
 
-* The `not http.host in {"m.example.com"}` condition prevents redirect loops.
-* The user agent condition follows [Mozilla's recommendation ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/User-Agent/Firefox#device-specific%5Fuser%5Fagent%5Fstrings) for identifying mobile devices.
-* The **Then** \> **URL** value should be the same as the one you entered in the `http.host` condition of the rule's filter expression.
-* You can redirect users to other zones on Cloudflare or to other hostnames not on Cloudflare.
+- The `not http.host in {"m.example.com"}` condition prevents redirect loops.
+- The user agent condition follows [Mozilla's recommendation ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/User-Agent/Firefox#device-specific_user_agent_strings) for identifying mobile devices.
+- The **Then** > **URL** value should be the same as the one you entered in the `http.host` condition of the rule's filter expression.
+- You can redirect users to other zones on Cloudflare or to other hostnames not on Cloudflare.
 
 ## Redirect mobile users keeping the original path
 
@@ -46,22 +46,22 @@ This example single redirect will redirect requests for the current zone (`examp
 
 **When incoming requests match**
 
-* Enter the following expression in the [Expression Editor](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/#expression-editor):
-`not http.host in {"m.example.com"} and (http.user_agent contains "mobi" or http.user_agent contains "Mobi")`
+- Enter the following expression in the [Expression Editor](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/#expression-editor):
+  `not http.host in {"m.example.com"} and (http.user_agent contains "mobi" or http.user_agent contains "Mobi")`
 
 **Then**
 
-* **Type:** _Dynamic_
-* **Expression:** `concat("https://m.example.com", http.request.uri.path)`
-* **Status code:** _301_
+- **Type:** *Dynamic*
+- **Expression:** `concat("https://m.example.com", http.request.uri.path)`
+- **Status code:** *301*
 
 Notes about this example:
 
-* The `not http.host in {"m.example.com"}` condition prevents redirect loops.
-* The user agent condition follows [Mozilla's recommendation ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/User-Agent/Firefox#device-specific%5Fuser%5Fagent%5Fstrings) for identifying mobile devices.
-* The hostname in **Then** \> **Expression** should be the same as the one you entered in the `http.host` condition of the rule's filter expression.
-* Depending on your use case, you may want to enable **Then** \> **Preserve query string** to also keep the query string of the original request.
-* You can redirect users to other zones on Cloudflare or to other hostnames not on Cloudflare.
+- The `not http.host in {"m.example.com"}` condition prevents redirect loops.
+- The user agent condition follows [Mozilla's recommendation ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/User-Agent/Firefox#device-specific_user_agent_strings) for identifying mobile devices.
+- The hostname in **Then** > **Expression** should be the same as the one you entered in the `http.host` condition of the rule's filter expression.
+- Depending on your use case, you may want to enable **Then** > **Preserve query string** to also keep the query string of the original request.
+- You can redirect users to other zones on Cloudflare or to other hostnames not on Cloudflare.
 
 Was this helpful?
 

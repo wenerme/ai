@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare analytics with Workers
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/account-and-zone-analytics/analytics-with-workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/account-and-zone-analytics/analytics-with-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Learn how Cloudflare analytics tracks requests made by [Cloudflare Workers](https://developers.cloudflare.com/workers/).
 
@@ -32,7 +32,7 @@ Similarly, the bandwidth is counted based on the bandwidth that is sent to the c
 
 ## Worker analytics
 
-For a breakdown of subrequest traffic (origin facing traffic), you may go to the Cloudflare **Analytics** app and select the **Workers** tab. Under the **Workers** tab, below the Service Workers panel, are a **Subrequests** breakdown by count, **Bandwidth** and **Status Codes**. This will help you spot and debug errors at your origin (such as spikes in 500s), and identify your cache-hit ratio to help you understand traffic going to your origin.
+For a breakdown of subrequest traffic (origin facing traffic), you may go to the Cloudflare **Analytics** app and select the **Workers** tab. Under the **Workers** tab, below the Service Workers panel, are a **Subrequests** breakdown by count, **Bandwidth** and **Status Codes**. This will help you spot and debug errors at your origin (such as spikes in 500s), and identify your cache-hit ratio to help you understand traffic going to your origin.
 
 ---
 
@@ -40,16 +40,16 @@ For a breakdown of subrequest traffic (origin facing traffic), you may go to the
 
 **Why do I not have any analytics for Workers?**
 
-* If you are not currently using Workers (do not have Workers deployed on any routes or filters), we will not have any information to show you.
-* If your Worker sends a static response back to the client without ever calling fetch() to an origin, you are not making any subrequests, thus, all traffic will be shown in zone Analytics
+- If you are not currently using Workers (do not have Workers deployed on any routes or filters), we will not have any information to show you.
+- If your Worker sends a static response back to the client without ever calling fetch() to an origin, you are not making any subrequests, thus, all traffic will be shown in zone Analytics
 
-**Will this impact billing?**
+**Will this impact billing?** 
 
-No, [billing for Workers](https://developers.cloudflare.com/workers/platform/pricing/) is based on requests that go through a Worker.
+No,  [billing for Workers](https://developers.cloudflare.com/workers/platform/pricing/) is based on requests that go through a Worker. 
 
 **Why am I seeing such a high cache hit ratio?**
 
-Requests served by a Worker always show as cached. For an accurate cache hit ratio on subrequests, refer to the **Subrequests** graph in the **Analytics** app under the **Workers** analytics tab.
+Requests served by a Worker always show as cached. For an accurate cache hit ratio on subrequests, refer to the **Subrequests** graph in the **Analytics** app under the **Workers** analytics tab.
 
 Was this helpful?
 

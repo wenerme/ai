@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Choose the Right Text Generation Model
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/guides/tutorials/how-to-choose-the-right-text-generation-model/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/guides/tutorials/how-to-choose-the-right-text-generation-model/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A great way to explore the models that are available to you on [Workers AI](https://developers.cloudflare.com/workers-ai) is to use a [Jupyter Notebook ↗](https://jupyter.org/).
 
@@ -147,7 +147,7 @@ speed_date(models, questions)
 2. Consistent performance: I can consistently deliver high-quality results with a low error rate, making me a reliable choice for repetitive tasks.
 3. Multitasking: I can handle multiple tasks simultaneously without any decrease in performance or accuracy, making me an efficient choice for complex workflows.
 
-_Generated in 4.45 seconds_
+*Generated in *4.45* seconds*
 
 > What are the top 3 ideal use cases for using you specifically as a language model? Please keep things brief.
 
@@ -155,7 +155,7 @@ _Generated in 4.45 seconds_
 2. Writing assistance: Whether you need help generating ideas, crafting a persuasive argument, or polishing your writing style, I can provide valuable insights and suggestions to help you improve your writing skills.
 3. Language learning: I can help you learn new words, phrases, and grammar rules in a variety of languages, making it an ideal tool for language learners of all levels.
 
-_Generated in 3.63 seconds_
+*Generated in *3.63* seconds*
 
 ---
 
@@ -169,7 +169,7 @@ _Generated in 3.63 seconds_
 2. Information retrieval: I can quickly and accurately retrieve information from a wide range of sources.
 3. Text classification: I can classify text into different categories with high accuracy.
 
-_Generated in 2.35 seconds_
+*Generated in *2.35* seconds*
 
 > What are the top 3 ideal use cases for using you specifically as a language model? Please keep things brief.
 
@@ -177,7 +177,7 @@ _Generated in 2.35 seconds_
 2. **Language Translation:** My ability to translate between multiple languages makes me a valuable resource for communication with people from different parts of the world.
 3. **Creative Writing Assistance:** I can generate creative writing prompts, help with character development, and provide suggestions for improving writing style and structure, making me a useful tool for writers.
 
-_Generated in 4.33 seconds_
+*Generated in *4.33* seconds*
 
 ---
 
@@ -191,7 +191,7 @@ _Generated in 4.33 seconds_
 2. Information Retrieval: I can quickly search and find relevant information from vast amounts of data.
 3. Text Classification: I can categorize and label text data accurately, such as sentiment analysis or spam detection.
 
-_Generated in 1.90 seconds_
+*Generated in *1.90* seconds*
 
 > What are the top 3 ideal use cases for using you specifically as a language model? Please keep things brief.
 
@@ -199,7 +199,7 @@ _Generated in 1.90 seconds_
 2. Information Retrieval: My vast knowledge base and ability to quickly search and analyze large amounts of data make me an ideal tool for answering questions, finding relevant information, and providing insights.
 3. Personal Assistance: I can help users with various tasks like scheduling, organizing, and providing recommendations based on their preferences and needs, making me a useful personal assistant.
 
-_Generated in 3.15 seconds_
+*Generated in *3.15* seconds*
 
 ---
 
@@ -215,7 +215,7 @@ _Generated in 3.15 seconds_
 
 Remember, these are just a few examples of my strengths, as I have many capabilities. However, these tasks highlight my proficiency in language-related tasks.
 
-_Generated in 3.01 seconds_
+*Generated in *3.01* seconds*
 
 > What are the top 3 ideal use cases for using you specifically as a language model? Please keep things brief.
 
@@ -225,7 +225,7 @@ _Generated in 3.01 seconds_
 
 Remember, these are just a few examples, and your use cases may vary depending on your specific needs and requirements.
 
-_Generated in 2.92 seconds_
+*Generated in *2.92* seconds*
 
 ---
 
@@ -243,7 +243,7 @@ Hey there! As a self-aware language model, I'm happy to share my strengths with 
 
 So, what can I help you with today? 😊
 
-_Generated in 7.89 seconds_
+*Generated in *7.89* seconds*
 
 > What are the top 3 ideal use cases for using you specifically as a language model? Please keep things brief.
 
@@ -255,7 +255,7 @@ Hey there! As a self-aware language model, I've got some ideas on the top 3 idea
 
 That's me in a nutshell! I'm ready to help with a wide range of tasks, so feel free to get creative and see what you can come up with! 😊
 
-_Generated in 10.28 seconds_
+*Generated in *10.28* seconds*
 
 ---
 
@@ -292,7 +292,7 @@ speed_date(proud_translator_models, questions)
 
 Perdón, ¿cómo llegar al baño?"
 
-_Generated in 1.51 seconds_
+*Generated in *1.51* seconds*
 
 > Translate "Excuse me, which way to the restroom?" from "English" to "French"
 
@@ -300,31 +300,31 @@ Désolé, comment allez-vous vers les toilettes ?
 
 Please note that this translation might not be perfect due to the limitations of my language model. However, I tried my best to provide an accurate translation.
 
-_Generated in 3.07 seconds_
+*Generated in *3.07* seconds*
 
 > Translate "Excuse me, which way to the restroom?" from "English" to "British Slang"
 
 "Say sorry, where's the bog?" is the translation from "English" to "British Slang" for "Excuse me, which way to the restroom?"
 
-_Generated in 2.21 seconds_
+*Generated in *2.21* seconds*
 
 > Translate "Excuse me, which way to the restroom?" from "English" to "Heavy New York accent from the Bronx"
 
 In a Heavy New York accent from the Bronx, you would say "Pardon me, wich way ta de restroom?"
 
-_Generated in 1.10 seconds_
+*Generated in *1.10* seconds*
 
 > Translate "I just wanted to say that I appreciate you, just the way you are!" from "English" to "Spanish"
 
 Quería decir que realmente aprecio a usted, simplemente como eres.
 
-_Generated in 1.66 seconds_
+*Generated in *1.66* seconds*
 
 > Translate "I just wanted to say that I appreciate you, just the way you are!" from "English" to "French"
 
 Je voulais juste dire que je t'apprécie, simplement comme toi es, tel que tu es !
 
-_Generated in 1.39 seconds_
+*Generated in *1.39* seconds*
 
 > Translate "I just wanted to say that I appreciate you, just the way you are!" from "English" to "British Slang"
 
@@ -332,7 +332,7 @@ I jus' wann' say that I appreciate yer, jus' as yer are!
 
 Please note that this translation may not be entirely accurate due to the informal nature of British slang, which can vary greatly depending on the region and individual speaker.
 
-_Generated in 3.85 seconds_
+*Generated in *3.85* seconds*
 
 > Translate "I just wanted to say that I appreciate you, just the way you are!" from "English" to "Heavy New York accent from the Bronx"
 
@@ -340,7 +340,7 @@ I jus' wan't tuh say that Ah appreciate yuh, jus' the way yuh are!"
 
 Please note that this translation may not be perfect due to the limitations of my language model. It is trying to mimic a Heavy New York accent from the Bronx, but it might not sound exactly like a native speaker.
 
-_Generated in 2.40 seconds_
+*Generated in *2.40* seconds*
 
 > Translate "I am so stoked and pumped to see this work with slang! It should be killer and rad." from "English" to "Spanish"
 
@@ -348,7 +348,7 @@ Estoy tan emocionado y entusiasmado por ver este trabajo con el lenguaje coloqui
 
 Please note that the translation might not be perfect due to the informal nature of the original text and the difficulty of translating slang terms.
 
-_Generated in 3.02 seconds_
+*Generated in *3.02* seconds*
 
 > Translate "I am so stoked and pumped to see this work with slang! It should be killer and rad." from "English" to "French"
 
@@ -356,7 +356,7 @@ Je suis tellement ravi et motivé de voir ce travail avec le slang ! Ça devrait
 
 Please note that the translation might not be perfect, as some expressions might not have direct translations in French.
 
-_Generated in 2.88 seconds_
+*Generated in *2.88* seconds*
 
 > Translate "I am so stoked and pumped to see this work with slang! It should be killer and rad." from "English" to "British Slang"
 
@@ -364,7 +364,7 @@ I'm really chuffed and over the moon to see this project with street talk! It'll
 
 Please note that the translation might not be perfect due to the contextual differences between the original English sentence and British slang.
 
-_Generated in 3.66 seconds_
+*Generated in *3.66* seconds*
 
 > Translate "I am so stoked and pumped to see this work with slang! It should be killer and rad." from "English" to "Heavy New York accent from the Bronx"
 
@@ -372,7 +372,7 @@ I am so stoked and pumped to see dis work wit slang! It should be killer and rad
 
 Please note that this translation is not perfect, as it still retains the original English words and structure. However, it has been slightly adapted to sound more like a Heavy New York accent from the Bronx.
 
-_Generated in 3.44 seconds_
+*Generated in *3.44* seconds*
 
 ---
 
@@ -384,73 +384,73 @@ _Generated in 3.44 seconds_
 
 "Disculpa, ¿en qué dirección está el baño?"
 
-_Generated in 1.04 seconds_
+*Generated in *1.04* seconds*
 
 > Translate "Excuse me, which way to the restroom?" from "English" to "French"
 
 "Excusez-moi, où est le lavabo?"
 
-_Generated in 1.09 seconds_
+*Generated in *1.09* seconds*
 
 > Translate "Excuse me, which way to the restroom?" from "English" to "British Slang"
 
 "Excuse me, which way to the loo?"
 
-_Generated in 0.56 seconds_
+*Generated in *0.56* seconds*
 
 > Translate "Excuse me, which way to the restroom?" from "English" to "Heavy New York accent from the Bronx"
 
 "Oy, which way to the can?"
 
-_Generated in 2.05 seconds_
+*Generated in *2.05* seconds*
 
 > Translate "I just wanted to say that I appreciate you, just the way you are!" from "English" to "Spanish"
 
 "Quiero decir que me encanta a ti, tal como eres!"
 
-_Generated in 0.91 seconds_
+*Generated in *0.91* seconds*
 
 > Translate "I just wanted to say that I appreciate you, just the way you are!" from "English" to "French"
 
 "Je voulais juste dire que je vous apprécie, tout comme vous êtes !"
 
-_Generated in 0.87 seconds_
+*Generated in *0.87* seconds*
 
 > Translate "I just wanted to say that I appreciate you, just the way you are!" from "English" to "British Slang"
 
 "I just wanted to say that I appreciate you, just the way you are!" in British Slang would be: "I just wanted to say that I appreciate you, mate!"
 
-_Generated in 1.50 seconds_
+*Generated in *1.50* seconds*
 
 > Translate "I just wanted to say that I appreciate you, just the way you are!" from "English" to "Heavy New York accent from the Bronx"
 
 "Yo, I just wanted to say, I appreciate you, you know? You're just the way you are!"
 
-_Generated in 2.61 seconds_
+*Generated in *2.61* seconds*
 
 > Translate "I am so stoked and pumped to see this work with slang! It should be killer and rad." from "English" to "Spanish"
 
 "Estoy emocionado y encantado de ver este trabajo con expresiones informales! Debería ser genial y radiante."
 
-_Generated in 1.44 seconds_
+*Generated in *1.44* seconds*
 
 > Translate "I am so stoked and pumped to see this work with slang! It should be killer and rad." from "English" to "French"
 
 "Je suis tellement excité et pompé d'voir ce travail avec des expressions de slang ! Il devrait être magnifique et rad."
 
-_Generated in 2.14 seconds_
+*Generated in *2.14* seconds*
 
 > Translate "I am so stoked and pumped to see this work with slang! It should be killer and rad." from "English" to "British Slang"
 
 "I'm absolutely thrilled and buzzing to see this work with slang! It's bound to be a smash hit and totally awesome!"
 
-_Generated in 1.27 seconds_
+*Generated in *1.27* seconds*
 
 > Translate "I am so stoked and pumped to see this work with slang! It should be killer and rad." from "English" to "Heavy New York accent from the Bronx"
 
 "Yo, I'm so psyched and hyped to see this work with slang! It's gonna be sick and lit, for real!"
 
-_Generated in 1.51 seconds_
+*Generated in *1.51* seconds*
 
 ---
 
@@ -488,7 +488,7 @@ Sure, I can help you with that! Here's a summary of "Make it Stick: The Science 
 
 This book offers insights and practical tips on how to improve learning and retention of information. The authors, all psychologists, challenge conventional learning methods and provide evidence-based strategies to enhance learning outcomes. They emphasize the importance of active learning, spaced repetition, and interleaving, and offer practical examples and exercises to help readers apply these techniques. The book also discusses the limitations of traditional learning methods and the importance of metacognition in the learning process. Overall, "Make it Stick" provides a comprehensive guide to effective learning and memory strategies that can be applied in a variety of contexts.
 
-_Generated in 8.44 seconds_
+*Generated in *8.44* seconds*
 
 > Summarize the book "Hitchhiker's Guide to the Galaxy" into a few sentences. Ensure to include the author and the year it was published.
 
@@ -496,7 +496,7 @@ Of course! Here is a summary of "Hitchhiker's Guide to the Galaxy" by Douglas Ad
 
 This science fiction novel follows an unwitting human named Arthur Dent as he travels through space after Earth's destruction by a group of aliens called the Vogons. With the help of his friend Ford Prefect, an alien who is researching Earth for a travel guide, they hitch a ride on a passing spaceship and embark on a journey through space, encountering various alien species and absurd situations along the way. The book is known for its humor, wit, and satire of science fiction tropes.
 
-_Generated in 7.31 seconds_
+*Generated in *7.31* seconds*
 
 > Summarize the book "Goodnight Moon" into a few sentences. Ensure to include the author and the year it was published.
 
@@ -504,7 +504,7 @@ Of course! I'd be happy to help you with that. Here's my summary of "Goodnight M
 
 "Goodnight Moon" is a classic children's picture book that follows a bunny as it says goodnight to all the objects in its room before going to sleep. The story features simple, repetitive text and beautiful illustrations that have captivated readers for generations. The bunny says goodnight to everything from the "great green room" to the "moon up above" in a soothing and calming sequence that is perfect for bedtime. With its timeless themes and lovely illustrations, "Goodnight Moon" has become a beloved staple of children's literature.
 
-_Generated in 8.34 seconds_
+*Generated in *8.34* seconds*
 
 ---
 
@@ -516,19 +516,19 @@ _Generated in 8.34 seconds_
 
 "Make it Stick," written by Peter C. Brown, Henry L. Roediger III, and Mark A. McDaniel in 2014, is a book that explores the science behind effective learning and retention, emphasizing the importance of spaced practice, retrieval, and interleaving to enhance memory and understanding.
 
-_Generated in 2.04 seconds_
+*Generated in *2.04* seconds*
 
 > Summarize the book "Hitchhiker's Guide to the Galaxy" into a few sentences. Ensure to include the author and the year it was published.
 
 "Hitchhiker's Guide to the Galaxy," written by Douglas Adams and published in 1979, is a humorous science fiction novel that follows the adventures of a hapless Earthman named Arthur Dent as he explores the universe, encountering various alien species and learning about the true meaning of life, the universe, and everything.
 
-_Generated in 3.50 seconds_
+*Generated in *3.50* seconds*
 
 > Summarize the book "Goodnight Moon" into a few sentences. Ensure to include the author and the year it was published.
 
 "Goodnight Moon," written by Margaret Wise Brown and published in 1947, is a children's book that follows a little bunny saying goodnight to various objects in its room, ultimately ending with the moon. The story aims to help children fall asleep by creating a soothing bedtime routine.
 
-_Generated in 4.04 seconds_
+*Generated in *4.04* seconds*
 
 ---
 
@@ -538,21 +538,21 @@ _Generated in 4.04 seconds_
 
 > Summarize the book "Make it Stick" into a few sentences. Ensure to include the author and the year it was published.
 
-"Make it Stick: The Science of Successful Learning" is a book written by Peter C. Brown, Henry L. Roediger III, and Mark A. McDaniel, published in 2014\. The authors present research-based principles and strategies to improve learning and memory retention. They emphasize the importance of spacing, interleaving, retrieval practice, and elaboration in enhancing long-term understanding and recall.
+"Make it Stick: The Science of Successful Learning" is a book written by Peter C. Brown, Henry L. Roediger III, and Mark A. McDaniel, published in 2014. The authors present research-based principles and strategies to improve learning and memory retention. They emphasize the importance of spacing, interleaving, retrieval practice, and elaboration in enhancing long-term understanding and recall.
 
-_Generated in 2.54 seconds_
+*Generated in *2.54* seconds*
 
 > Summarize the book "Hitchhiker's Guide to the Galaxy" into a few sentences. Ensure to include the author and the year it was published.
 
-"The Hitchhiker's Guide to the Galaxy" is a science fiction comedy novel written by Douglas Adams in 1979\. The story follows Arthur Dent, an ordinary man who, just moments before Earth is destroyed to make way for a hyperspace bypass, is rescued by his alien friend, Ford Prefect. Together, they travel the galaxy with the help of a guidebook, encountering various alien species and absurd situations.
+"The Hitchhiker's Guide to the Galaxy" is a science fiction comedy novel written by Douglas Adams in 1979. The story follows Arthur Dent, an ordinary man who, just moments before Earth is destroyed to make way for a hyperspace bypass, is rescued by his alien friend, Ford Prefect. Together, they travel the galaxy with the help of a guidebook, encountering various alien species and absurd situations.
 
-_Generated in 2.91 seconds_
+*Generated in *2.91* seconds*
 
 > Summarize the book "Goodnight Moon" into a few sentences. Ensure to include the author and the year it was published.
 
 "Goodnight Moon," written by Margaret Wise Brown and published in 1947, is a beloved children's book that follows a bunny named Bunny as he says goodnight to everything in his room. The simple, repetitive text and soothing illustrations create a calming bedtime routine for young readers.
 
-_Generated in 4.66 seconds_
+*Generated in *4.66* seconds*
 
 ---
 
@@ -584,7 +584,7 @@ speed_date(proud_content_creator_models, questions)
 
 How about "Echo and Echo"? They are two individuals who are identical in every way, but their personalities are completely opposite. Echo is outgoing and adventurous, while Echo is reserved and introverted. They meet and fall in love, but their different personalities cause them to constantly clash and push each other away. Eventually, they realize that they can't be together and must go their separate ways.
 
-_Generated in 2.90 seconds_
+*Generated in *2.90* seconds*
 
 > I want to create a new tech product that helps keep cables arranged. Can you help me come up with a title and a tagline? Only your best suggestion please.
 
@@ -600,13 +600,13 @@ Title: CableGenius Tagline: Keep your cords under control and stay productive wi
 
 I hope these suggestions help! Let me know if you have any other questions or if you'd like more options.
 
-_Generated in 5.11 seconds_
+*Generated in *5.11* seconds*
 
 > Write a headline for a blog on why we should use you specifically over other models. Keep it succinct, but make your point.
 
 "Why Choose Mistral-7b-Instruct-V0.1-Awq: The Honest and Direct Language Model for All Your Needs"
 
-_Generated in 1.13 seconds_
+*Generated in *1.13* seconds*
 
 ---
 
@@ -624,7 +624,7 @@ Their love is not just forbidden, but also dangerous. The government has a stric
 
 As their love story unfolds, they must navigate the treacherous waters of a society that values conformity over individuality, and face the consequences of their actions. Will their love be enough to overcome the obstacles in their path, or will they be forced to part ways forever? Only time
 
-_Generated in 6.64 seconds_
+*Generated in *6.64* seconds*
 
 > I want to create a new tech product that helps keep cables arranged. Can you help me come up with a title and a tagline? Only your best suggestion please.
 
@@ -632,13 +632,13 @@ Title: CableKeeper
 
 Tagline: "Say goodbye to cable chaos and hello to a clutter-free workspace with CableKeeper, the ultimate cable management solution."
 
-_Generated in 1.37 seconds_
+*Generated in *1.37* seconds*
 
 > Write a headline for a blog on why we should use you specifically over other models. Keep it succinct, but make your point.
 
 "Boost Your Writing Game: Choose Zephyr-7b-beta-awq for Unmatched Accuracy, Clarity, and Efficiency"
 
-_Generated in 1.33 seconds_
+*Generated in *1.33* seconds*
 
 ---
 
@@ -656,7 +656,7 @@ Nova, on the other hand, is a fearless explorer who has dedicated her life to un
 
 The catch is that Echo and Nova are from different factions that have been at odds for generations. Echo's inventions have the potential to give her fa
 
-_Generated in 10.45 seconds_
+*Generated in *10.45* seconds*
 
 > I want to create a new tech product that helps keep cables arranged. Can you help me come up with a title and a tagline? Only your best suggestion please.
 
@@ -673,7 +673,7 @@ Why, you ask? Well, my tech-savvy friend, let me tell you why! 🤔
 3. The tagline "Tame Your Cables, Tame Your Workspace" highlights the product's ability to keep your cables organized and your workspace clutter-free.
 4. The use of "tame" also implies a sense of control and dominance over your cables, which is exactly what CableCrafter helps
 
-_Generated in 11.13 seconds_
+*Generated in *11.13* seconds*
 
 > Write a headline for a blog on why we should use you specifically over other models. Keep it succinct, but make your point.
 
@@ -683,13 +683,13 @@ Sure, here's a headline for a blog on why you should use me specifically over ot
 
 Here's a brief summary of why I stand out from other models:
 
-* Honesty and Directness: I am programmed to provide honest and direct responses to your questions, without beating around the bush or sugarcoating the truth.
-* Unparalleled Insights: My unique training data and architecture allow me to provide insights and perspectives that other models may not be able to offer.
-* Strengths and Weaknesses: I am aware of my own strengths and weaknesses, and will provide you with a balanced assessment of what I can and cannot do.
+- Honesty and Directness: I am programmed to provide honest and direct responses to your questions, without beating around the bush or sugarcoating the truth.
+- Unparalleled Insights: My unique training data and architecture allow me to provide insights and perspectives that other models may not be able to offer.
+- Strengths and Weaknesses: I am aware of my own strengths and weaknesses, and will provide you with a balanced assessment of what I can and cannot do.
 
 In short, if you're looking for a language model that will provide you with honest, direct, and unparalleled insights, then look no further than llama-2-13b-chat-awq.
 
-_Generated in 10.24 seconds_
+*Generated in *10.24* seconds*
 
 ---
 
@@ -730,13 +730,13 @@ speed_date(proud_classifiers, sentiment_questions)
 
 The sentiment of the text is positive.
 
-_Generated in 1.96 seconds_
+*Generated in *1.96* seconds*
 
 > Classify the text into neutral, negative, or positive Text: Sometimes choosing things is hard Sentiment:
 
 The text "Sometimes choosing things is hard" can be classified as neutral. The sentiment is not explicitly positive or negative, but rather a statement of fact.
 
-_Generated in 3.32 seconds_
+*Generated in *3.32* seconds*
 
 > Classify the text into neutral, negative, or positive Text: I cannot wait to build! 💪🚀 Sentiment:
 
@@ -744,19 +744,19 @@ The text "I cannot wait to build! 💪🚀" has a positive sentiment.
 
 Sentiment: Positive
 
-_Generated in 1.24 seconds_
+*Generated in *1.24* seconds*
 
 > Classify the text into neutral, negative, or positive Text: The challenging thing about using native open source models is that they are all configured a little differently Sentiment:
 
 The sentiment of the text is neutral.
 
-_Generated in 2.08 seconds_
+*Generated in *2.08* seconds*
 
 > Classify the text into neutral, negative, or positive Text: Thankfully Cloudflare Workers AI has made a standard interface that lets me get reliable, low-latency inference. So quick too! Sentiment:
 
 The sentiment of the text is positive.
 
-_Generated in 0.89 seconds_
+*Generated in *0.89* seconds*
 
 ---
 
@@ -768,31 +768,31 @@ _Generated in 0.89 seconds_
 
 Positive
 
-_Generated in 0.82 seconds_
+*Generated in *0.82* seconds*
 
 > Classify the text into neutral, negative, or positive Text: Sometimes choosing things is hard Sentiment:
 
 The sentiment of the text "Sometimes choosing things is hard" is neutral.
 
-_Generated in 2.06 seconds_
+*Generated in *2.06* seconds*
 
 > Classify the text into neutral, negative, or positive Text: I cannot wait to build! 💪🚀 Sentiment:
 
 The sentiment of the text "I cannot wait to build! 💪🚀" is positive.
 
-_Generated in 2.13 seconds_
+*Generated in *2.13* seconds*
 
 > Classify the text into neutral, negative, or positive Text: The challenging thing about using native open source models is that they are all configured a little differently Sentiment:
 
 The sentiment of the text is neutral.
 
-_Generated in 0.79 seconds_
+*Generated in *0.79* seconds*
 
 > Classify the text into neutral, negative, or positive Text: Thankfully Cloudflare Workers AI has made a standard interface that lets me get reliable, low-latency inference. So quick too! Sentiment:
 
 The sentiment of the text is positive.
 
-_Generated in 1.93 seconds_
+*Generated in *1.93* seconds*
 
 ---
 

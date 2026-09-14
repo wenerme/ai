@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Zone Lockdown
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/tools/zone-lockdown/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/tools/zone-lockdown/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Zone Lockdown specifies a list of one or more IP addresses, CIDR ranges, or networks that are the only IPs allowed to access a domain, subdomain, or URL. You can configure multiple destinations, including IPv4/IPv6 addresses, in a single zone lockdown rule.
 
@@ -24,8 +24,8 @@ Cloudflare recommends that you use [custom rules](https://developers.cloudflare.
 
 For examples of using custom rules for this purpose, refer to the following use cases:
 
-* [Allow traffic from IP addresses in allowlist only](https://developers.cloudflare.com/waf/custom-rules/use-cases/allow-traffic-from-ips-in-allowlist/)
-* [Require known IP addresses in site admin area](https://developers.cloudflare.com/waf/custom-rules/use-cases/site-admin-only-known-ips/)
+- [Allow traffic from IP addresses in allowlist only](https://developers.cloudflare.com/waf/custom-rules/use-cases/allow-traffic-from-ips-in-allowlist/)
+- [Require known IP addresses in site admin area](https://developers.cloudflare.com/waf/custom-rules/use-cases/site-admin-only-known-ips/)
 
 ## Availability
 
@@ -33,10 +33,10 @@ Cloudflare Zone Lockdown is available on paid plans. The **Zone lockdown rules**
 
 The number of available zone lockdown rules depends on your Cloudflare plan.
 
-|                 | Free | Pro | Business | Enterprise |
-| --------------- | ---- | --- | -------- | ---------- |
-| Availability    | No   | Yes | Yes      | Yes        |
-| Number of rules | 0    | 3   | 10       | 200        |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | No | Yes | Yes | Yes |
+| Number of rules | 0 | 3 | 10 | 200 |
 
 ## Create a zone lockdown rule
 
@@ -46,10 +46,9 @@ The **Zone lockdown rules** option appears only if you have configured at least 
 
 **If you have access to Zone Lockdown rules**
 
-1. In the Cloudflare dashboard, go to the **Security rules** page.
-[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
-2. Select **Create rule** \> **Zone lockdown rules**.
-If this option is not available, refer to the instructions below.
+1. In the Cloudflare dashboard, go to the **Security rules** page. [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+2. Select **Create rule** > **Zone lockdown rules**.
+    If this option is not available, refer to the instructions below.
 3. Enter a descriptive name for the rule in **Name**.
 4. For **URLs**, enter the domains, subdomains, or URLs you wish to protect from unauthorized IPs. You can use wildcards such as `*`. Enter one item per line.
 5. For **IP Range**, enter one or more allowed IPv4/IPv6 addresses or CIDR ranges, one per line. Only these IP addresses and ranges will be able to access the resources you entered in **URLs**.
@@ -60,17 +59,27 @@ If this option is not available, refer to the instructions below.
 
 Create a [custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) to perform zone lockdown:
 
-1. In the Cloudflare dashboard, go to the **Security rules** page.
-[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+1. In the Cloudflare dashboard, go to the **Security rules** page. [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Templates**, and then select the template **Allow only specified IP addresses**.
 3. Fill in the required fields and select **Deploy**.
 
 Issue a `POST` request for the [Create a Zone Lockdown rule](https://developers.cloudflare.com/api/resources/firewall/subresources/lockdowns/methods/create/) operation similar to the following:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Firewall Services Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Firewall Services Write</code>
+
+</details>
+
+*Create a Zone Lockdown rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/firewall/lockdowns" \
@@ -103,21 +112,30 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/firewall/lockdowns" \
 
 The following example rule will only allow visitors connecting from a company’s headquarters or branch offices to access the staging environment and the wiki:
 
-* Name:
-```txt
-Block all traffic to staging and wiki unless it comes from HQ or branch offices
-```
-* URLs:
-```txt
-staging.example.com/*
-example.com/wiki/*
-```
-* IP Range:
-```txt
-192.0.2.0/24
-2001:DB8::/64
-203.0.133.1
-```
+- Name:
+
+  ```txt
+  Block all traffic to staging and wiki unless it comes from HQ or branch offices
+  ```
+
+
+- URLs:
+
+  ```txt
+  staging.example.com/*
+  example.com/wiki/*
+  ```
+
+
+- IP Range:
+
+  ```txt
+  192.0.2.0/24
+  2001:DB8::/64
+  203.0.133.1
+  ```
+
+
 
 This example would not protect an internal wiki located on a different directory path such as `example.com/internal/wiki`.
 
@@ -134,21 +152,21 @@ A [custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashbo
 ((http.host eq "staging.example.com") or (http.host eq "example.com" and http.request.uri.path wildcard "/wiki/*")) and not ip.src in {192.0.2.0/24 2001:DB8::/64 203.0.133.1}
 ```
 
-**Action**: _Block_
+**Action**: *Block*
 
 ## Access denied example
 
 A visitor from an unauthorized IP will get the following error when there is a match for a zone lockdown rule:
 
-![Example of Error 1106 \(access denied\) received by a user accessing the zone from an unauthorized IP address](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=800,height=353,format=webp/_astro/zone-lockdown-rule-error-1106-access-denied.BUWE8ETx.png)
+![Example of Error 1106 (access denied) received by a user accessing the zone from an unauthorized IP address](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=800,height=353,format=webp/_astro/zone-lockdown-rule-error-1106-access-denied.BUWE8ETx.png)
 
 ---
 
 ## Related resources
 
-* [Secure your application](https://developers.cloudflare.com/learning-paths/application-security/account-security/)
-* [User Agent Blocking](https://developers.cloudflare.com/waf/tools/user-agent-blocking/)
-* [Allow Health Checks to bypass Zone Lockdown](https://developers.cloudflare.com/health-checks/how-to/zone-lockdown/)
+- [Secure your application](https://developers.cloudflare.com/learning-paths/application-security/account-security/)
+- [User Agent Blocking](https://developers.cloudflare.com/waf/tools/user-agent-blocking/)
+- [Allow Health Checks to bypass Zone Lockdown](https://developers.cloudflare.com/health-checks/how-to/zone-lockdown/)
 
 Was this helpful?
 

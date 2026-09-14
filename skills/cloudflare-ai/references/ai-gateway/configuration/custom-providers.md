@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Custom Providers
 
-Last updated Jun 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/custom-providers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/custom-providers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Overview
 
@@ -20,18 +20,18 @@ Custom Providers allow you to integrate AI providers that are not natively suppo
 
 ## Use cases
 
-* **Internal AI models**: Connect to your organization's self-hosted AI models
-* **Regional providers**: Integrate with AI providers specific to your region
-* **Specialized models**: Use domain-specific AI services not available through standard providers
-* **Custom endpoints**: Route requests to your own AI infrastructure
+- **Internal AI models**: Connect to your organization's self-hosted AI models
+- **Regional providers**: Integrate with AI providers specific to your region
+- **Specialized models**: Use domain-specific AI services not available through standard providers
+- **Custom endpoints**: Route requests to your own AI infrastructure
 
 ## Before you begin
 
 ### Prerequisites
 
-* An active Cloudflare account with AI Gateway access
-* A valid API key from your custom AI provider
-* The HTTPS base URL for your provider's API
+- An active Cloudflare account with AI Gateway access
+- A valid API key from your custom AI provider
+- The HTTPS base URL for your provider's API
 
 ### Authentication
 
@@ -42,7 +42,7 @@ To create an API token:
 1. Go to the [Cloudflare dashboard API tokens page ↗](https://dash.cloudflare.com/?to=:account/api-tokens)
 2. Click **Create Token**
 3. Select **Custom Token** and add the following permissions:
-  * `AI Gateway - Edit`
+   - `AI Gateway - Edit`
 4. Click **Continue to summary** and then **Create Token**
 5. Copy the token - you'll use it in the `Authorization: Bearer $CLOUDFLARE_API_TOKEN` header
 
@@ -52,6 +52,8 @@ To create a new custom provider using the API:
 
 1. Get your [Account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and Account Tag.
 2. Send a `POST` request to create a new custom provider:
+
+*Create Custom Providerbash*
 
 ```bash
 # Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
@@ -70,18 +72,18 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gatew
 
 **Required fields:**
 
-* `name` (string): Display name for your provider
-* `slug` (string): Unique identifier (alphanumeric with hyphens). Must be unique within your account.
-* `base_url` (string): HTTPS URL for your provider's API endpoint. Must start with `https://`.
+- `name` (string): Display name for your provider
+- `slug` (string): Unique identifier (alphanumeric with hyphens). Must be unique within your account.
+- `base_url` (string): HTTPS URL for your provider's API endpoint. Must start with `https://`.
 
 **Optional fields:**
 
-* `description` (string): Description of the provider
-* `link` (string): URL to provider documentation
-* `enable` (boolean): Whether the provider is active (default: `false`)
-* `beta` (boolean): Mark as beta feature (default: `false`)
-* `curl_example` (string): Example cURL command for using the provider
-* `js_example` (string): Example JavaScript code for using the provider
+- `description` (string): Description of the provider
+- `link` (string): URL to provider documentation
+- `enable` (boolean): Whether the provider is active (default: `false`)
+- `beta` (boolean): Mark as beta feature (default: `false`)
+- `curl_example` (string): Example cURL command for using the provider
+- `js_example` (string): Example JavaScript code for using the provider
 
 **Response:**
 
@@ -115,17 +117,19 @@ A default SVG logo is automatically generated for each custom provider. The logo
 To create a new custom provider using the dashboard:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
-2. Go to [**Compute & AI** \> **AI Gateway** \> **Custom Providers** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway/custom-providers).
+2. Go to [**Compute & AI** > **AI Gateway** > **Custom Providers** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway/custom-providers).
 3. Select **Add Custom Provider**.
 4. Enter the following information:
-  * **Provider Name**: Display name for your provider
-  * **Provider Slug**: Unique identifier (alphanumeric with hyphens)
-  * **Base URL**: HTTPS URL for your provider's API endpoint (e.g., `https://api.myprovider.com/v1`)
+   - **Provider Name**: Display name for your provider
+   - **Provider Slug**: Unique identifier (alphanumeric with hyphens)
+   - **Base URL**: HTTPS URL for your provider's API endpoint (e.g., `https://api.myprovider.com/v1`)
 5. Select **Save** to create your custom provider.
 
 ## List custom providers
 
 Retrieve all custom providers with optional filtering and pagination:
+
+*List all providersbash*
 
 ```bash
 # Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
@@ -136,12 +140,12 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/custo
 
 **Query parameters:**
 
-* `page` (number): Page number (default: `1`)
-* `per_page` (number): Items per page (default: `20`, max: `100`)
-* `enable` (boolean): Filter by enabled status
-* `beta` (boolean): Filter by beta status
-* `search` (string): Search in id, name, or slug fields
-* `order_by` (string): Sort field and direction (default: `"name ASC"`)
+- `page` (number): Page number (default: `1`)
+- `per_page` (number): Items per page (default: `20`, max: `100`)
+- `enable` (boolean): Filter by enabled status
+- `beta` (boolean): Filter by beta status
+- `search` (string): Search in id, name, or slug fields
+- `order_by` (string): Sort field and direction (default: `"name ASC"`)
 
 **Examples:**
 
@@ -191,12 +195,14 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/custo
 To view all your custom providers:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
-2. Go to [**Compute & AI** \> **AI Gateway** \> **Custom Providers** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway/custom-providers).
+2. Go to [**Compute & AI** > **AI Gateway** > **Custom Providers** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway/custom-providers).
 3. You will see a list of all your custom providers with their names, slugs, base URLs, and status.
 
 ## Get a specific custom provider
 
 Retrieve details for a specific custom provider by its ID:
+
+*Get provider by IDbash*
 
 ```bash
 # Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
@@ -234,6 +240,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/custo
 
 Update an existing custom provider. All fields are optional - only include the fields you want to change:
 
+*Update providerbash*
+
 ```bash
 # Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
 # and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
@@ -249,15 +257,15 @@ curl -X PATCH "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gate
 
 **Updatable fields:**
 
-* `name` (string): Provider display name
-* `slug` (string): Provider identifier
-* `base_url` (string): API endpoint URL (must be HTTPS)
-* `description` (string): Provider description
-* `link` (string): Documentation URL
-* `enable` (boolean): Active status
-* `beta` (boolean): Beta flag
-* `curl_example` (string): Example cURL command
-* `js_example` (string): Example JavaScript code
+- `name` (string): Provider display name
+- `slug` (string): Provider identifier
+- `base_url` (string): API endpoint URL (must be HTTPS)
+- `description` (string): Provider description
+- `link` (string): Documentation URL
+- `enable` (boolean): Active status
+- `beta` (boolean): Beta flag
+- `curl_example` (string): Example cURL command
+- `js_example` (string): Example JavaScript code
 
 **Examples:**
 
@@ -290,7 +298,7 @@ Updates to custom providers automatically invalidate any cached entries related 
 To update an existing custom provider:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
-2. Go to [**Compute & AI** \> **AI Gateway** \> **Custom Providers** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway/custom-providers).
+2. Go to [**Compute & AI** > **AI Gateway** > **Custom Providers** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway/custom-providers).
 3. Find the custom provider you want to update and select **Edit**.
 4. Update the fields you want to change (name, slug, base URL, etc.).
 5. Select **Save** to apply your changes.
@@ -298,6 +306,8 @@ To update an existing custom provider:
 ## Delete a custom provider
 
 Delete a custom provider:
+
+*Delete providerbash*
 
 ```bash
 # Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
@@ -326,7 +336,7 @@ Deleting a custom provider will immediately stop all requests routed through it.
 To delete a custom provider:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
-2. Go to [**Compute & AI** \> **AI Gateway** \> **Custom Providers** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway/custom-providers).
+2. Go to [**Compute & AI** > **AI Gateway** > **Custom Providers** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway/custom-providers).
 3. Find the custom provider you want to delete and select **Delete**.
 4. Confirm the deletion when prompted.
 
@@ -359,12 +369,12 @@ Everything after `custom-{slug}/` in your request URL is appended directly to th
 
 ### Choosing between Unified API and provider-specific endpoint
 
-|                                 | Unified API (/compat)                           | Provider-specific endpoint                |
-| ------------------------------- | ----------------------------------------------- | ----------------------------------------- |
-| **Best for**                    | Providers with OpenAI-compatible APIs           | Providers with any API structure          |
-| **Request format**              | Must follow the OpenAI /chat/completions schema | Uses the provider's native request format |
-| **Path control**                | Fixed to /compat/chat/completions               | Full control over the upstream path       |
-| **How to specify the provider** | model field: custom-{slug}/{model-name}         | URL path: /custom-{slug}/{path}           |
+|  | Unified API (`/compat`) | Provider-specific endpoint |
+| --- | --- | --- |
+| **Best for** | Providers with OpenAI-compatible APIs | Providers with any API structure |
+| **Request format** | Must follow the OpenAI `/chat/completions` schema | Uses the provider's native request format |
+| **Path control** | Fixed to `/compat/chat/completions` | Full control over the upstream path |
+| **How to specify the provider** | `model` field: `custom-{slug}/{model-name}` | URL path: `/custom-{slug}/{path}` |
 
 Use the **Unified API** when your custom provider accepts the OpenAI-compatible `/chat/completions` request format. This is the simplest option and works well with OpenAI SDKs.
 
@@ -373,6 +383,8 @@ Use the **provider-specific endpoint** when your custom provider uses a non-stan
 ### Via Unified API
 
 The Unified API sends requests to the provider's chat completions endpoint using the OpenAI-compatible format. Specify the model using the format `custom-{slug}/{model-name}`.
+
+*Request using custom provider via Unified APIbash*
 
 ```bash
 # Run `wrangler auth token` to get an auth token to replace $CF_AIG_TOKEN for use with the API.
@@ -389,6 +401,8 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/
 ### Via provider-specific endpoint
 
 The provider-specific endpoint gives you full control over the upstream path. Everything after `custom-{slug}/` in the URL is appended to the `base_url`.
+
+*Direct provider endpointbash*
 
 ```bash
 # Run `wrangler auth token` to get an auth token to replace $CF_AIG_TOKEN for use with the API.
@@ -414,8 +428,8 @@ Many providers follow the OpenAI convention of hosting their API at `{domain}/v1
 
 **Configuration:**
 
-* `slug`: `my-openai-compat`
-* `base_url`: `https://api.example-provider.com`
+- `slug`: `my-openai-compat`
+- `base_url`: `https://api.example-provider.com`
 
 **Provider-specific endpoint:**
 
@@ -431,12 +445,12 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/custom-my-op
 
 **URL mapping:**
 
-| Component     | Value                                                                                                        |
-| ------------- | ------------------------------------------------------------------------------------------------------------ |
-| Gateway URL   | https://gateway.ai.cloudflare.com/v1/{account\_id}/{gateway\_id}/custom-my-openai-compat/v1/chat/completions |
-| base\_url     | https://api.example-provider.com                                                                             |
-| Provider path | /v1/chat/completions                                                                                         |
-| Upstream URL  | https://api.example-provider.com/v1/chat/completions                                                         |
+| Component | Value |
+| --- | --- |
+| Gateway URL | `https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/custom-my-openai-compat/v1/chat/completions` |
+| `base_url` | `https://api.example-provider.com` |
+| Provider path | `/v1/chat/completions` |
+| Upstream URL | `https://api.example-provider.com/v1/chat/completions` |
 
 Since this provider is OpenAI-compatible, you could also use the Unified API:
 
@@ -456,8 +470,8 @@ Some providers use API paths that don't follow the `/v1/` convention. For exampl
 
 **Configuration:**
 
-* `slug`: `custom-ai`
-* `base_url`: `https://api.custom-ai.com`
+- `slug`: `custom-ai`
+- `base_url`: `https://api.custom-ai.com`
 
 **Provider-specific endpoint:**
 
@@ -473,12 +487,12 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/custom-custo
 
 **URL mapping:**
 
-| Component     | Value                                                                                                                 |
-| ------------- | --------------------------------------------------------------------------------------------------------------------- |
-| Gateway URL   | https://gateway.ai.cloudflare.com/v1/{account\_id}/{gateway\_id}/custom-custom-ai/api/coding/paas/v4/chat/completions |
-| base\_url     | https://api.custom-ai.com                                                                                             |
-| Provider path | /api/coding/paas/v4/chat/completions                                                                                  |
-| Upstream URL  | https://api.custom-ai.com/api/coding/paas/v4/chat/completions                                                         |
+| Component | Value |
+| --- | --- |
+| Gateway URL | `https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/custom-custom-ai/api/coding/paas/v4/chat/completions` |
+| `base_url` | `https://api.custom-ai.com` |
+| Provider path | `/api/coding/paas/v4/chat/completions` |
+| Upstream URL | `https://api.custom-ai.com/api/coding/paas/v4/chat/completions` |
 
 Note
 
@@ -490,8 +504,8 @@ If you host your own model behind a reverse proxy or on a platform that adds a p
 
 **Configuration (domain-only `base_url`):**
 
-* `slug`: `internal-llm`
-* `base_url`: `https://ml.internal.example.com`
+- `slug`: `internal-llm`
+- `base_url`: `https://ml.internal.example.com`
 
 **Provider-specific endpoint:**
 
@@ -506,12 +520,12 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/custom-inter
 
 **URL mapping:**
 
-| Component     | Value                                                                                                                |
-| ------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Gateway URL   | https://gateway.ai.cloudflare.com/v1/{account\_id}/{gateway\_id}/custom-internal-llm/serving/models/my-model:predict |
-| base\_url     | https://ml.internal.example.com                                                                                      |
-| Provider path | /serving/models/my-model:predict                                                                                     |
-| Upstream URL  | https://ml.internal.example.com/serving/models/my-model:predict                                                      |
+| Component | Value |
+| --- | --- |
+| Gateway URL | `https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/custom-internal-llm/serving/models/my-model:predict` |
+| `base_url` | `https://ml.internal.example.com` |
+| Provider path | `/serving/models/my-model:predict` |
+| Upstream URL | `https://ml.internal.example.com/serving/models/my-model:predict` |
 
 #### Example 4: Provider using OpenAI SDK with a custom base URL
 
@@ -519,10 +533,12 @@ When using the OpenAI SDK to connect to a custom provider through AI Gateway, se
 
 **Configuration:**
 
-* `slug`: `alt-provider`
-* `base_url`: `https://api.alt-provider.com`
+- `slug`: `alt-provider`
+- `base_url`: `https://api.alt-provider.com`
 
 **Python (OpenAI SDK):**
+
+*Using OpenAI SDK with a custom providerpython*
 
 ```python
 from openai import OpenAI
@@ -545,14 +561,14 @@ response = client.chat.completions.create(
 
 **URL mapping:**
 
-| Component          | Value                                                                                                    |
-| ------------------ | -------------------------------------------------------------------------------------------------------- |
-| SDK base\_url      | https://gateway.ai.cloudflare.com/v1/{account\_id}/{gateway\_id}/custom-alt-provider/v1                  |
-| SDK appends        | /chat/completions                                                                                        |
-| Full gateway URL   | https://gateway.ai.cloudflare.com/v1/{account\_id}/{gateway\_id}/custom-alt-provider/v1/chat/completions |
-| Provider base\_url | https://api.alt-provider.com                                                                             |
-| Provider path      | /v1/chat/completions                                                                                     |
-| Upstream URL       | https://api.alt-provider.com/v1/chat/completions                                                         |
+| Component | Value |
+| --- | --- |
+| SDK `base_url` | `https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/custom-alt-provider/v1` |
+| SDK appends | `/chat/completions` |
+| Full gateway URL | `https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/custom-alt-provider/v1/chat/completions` |
+| Provider `base_url` | `https://api.alt-provider.com` |
+| Provider path | `/v1/chat/completions` |
+| Upstream URL | `https://api.alt-provider.com/v1/chat/completions` |
 
 ## Common errors
 
@@ -625,19 +641,19 @@ If you receive a 404 from the upstream provider, the most common cause is an inc
 
 ## Limitations
 
-* Custom providers are account-specific and not shared across Cloudflare accounts
-* The `base_url` must use HTTPS (HTTP is not supported)
-* Provider slugs must be unique within each account
-* Cache and rate limiting settings apply globally to the provider, not per-model
+- Custom providers are account-specific and not shared across Cloudflare accounts
+- The `base_url` must use HTTPS (HTTP is not supported)
+- Provider slugs must be unique within each account
+- Cache and rate limiting settings apply globally to the provider, not per-model
 
 ## Related resources
 
-* [Get started with AI Gateway](https://developers.cloudflare.com/ai-gateway/get-started/)
-* [Configure authentication](https://developers.cloudflare.com/ai-gateway/configuration/authentication/)
-* [BYOK (Store Keys)](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/)
-* [Dynamic routing](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/)
-* [Caching](https://developers.cloudflare.com/ai-gateway/features/caching/)
-* [Rate limiting](https://developers.cloudflare.com/ai-gateway/features/rate-limiting/)
+- [Get started with AI Gateway](https://developers.cloudflare.com/ai-gateway/get-started/)
+- [Configure authentication](https://developers.cloudflare.com/ai-gateway/configuration/authentication/)
+- [BYOK (Store Keys)](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/)
+- [Dynamic routing](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/)
+- [Caching](https://developers.cloudflare.com/ai-gateway/features/caching/)
+- [Rate limiting](https://developers.cloudflare.com/ai-gateway/features/rate-limiting/)
 
 Was this helpful?
 

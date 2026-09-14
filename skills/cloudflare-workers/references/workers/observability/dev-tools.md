@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DevTools
 
-Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/dev-tools/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/dev-tools/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Using DevTools
 
@@ -20,22 +20,22 @@ When running your Worker locally using the [Wrangler CLI ↗](https://developers
 
 You can use Chrome DevTools to:
 
-* View logs directly in the Chrome console
-* [Debug code by setting breakpoints](https://developers.cloudflare.com/workers/observability/dev-tools/breakpoints/)
-* [Profile CPU usage](https://developers.cloudflare.com/workers/observability/dev-tools/cpu-usage/)
-* [Observe memory usage and debug memory leaks in your code that can cause out-of-memory (OOM) errors](https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/)
+- View logs directly in the Chrome console
+- [Debug code by setting breakpoints](https://developers.cloudflare.com/workers/observability/dev-tools/breakpoints/)
+- [Profile CPU usage](https://developers.cloudflare.com/workers/observability/dev-tools/cpu-usage/)
+- [Observe memory usage and debug memory leaks in your code that can cause out-of-memory (OOM) errors](https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/)
 
 ## Opening DevTools
 
 ### Wrangler
 
-* Run your Worker locally, by running `wrangler dev`
-* Press the `D` key from your terminal to open DevTools in a browser tab
+- Run your Worker locally, by running `wrangler dev`
+- Press the `D` key from your terminal to open DevTools in a browser tab
 
 ### Vite
 
-* Run your Worker locally by running `vite`
-* In a new Chrome tab, open the debug URL that shows in your console (for example, `http://localhost:5173/__debug`)
+- Run your Worker locally by running `vite`
+- In a new Chrome tab, open the debug URL that shows in your console (for example, `http://localhost:5173/__debug`)
 
 ### Dashboard editor & playground
 
@@ -43,7 +43,7 @@ Both the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and the [Worke
 
 ## Related resources
 
-* [Local development](https://developers.cloudflare.com/workers/local-development/) \- Develop your Workers and connected resources locally via Wrangler and workerd, for a fast, accurate feedback loop.
+- [Local development](https://developers.cloudflare.com/workers/local-development/) - Develop your Workers and connected resources locally via Wrangler and workerd, for a fast, accurate feedback loop.
 
 Was this helpful?
 

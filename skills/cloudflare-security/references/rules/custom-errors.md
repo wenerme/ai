@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Custom Errors
 
-Last updated Sep 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/custom-errors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/custom-errors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use Custom Errors to replace default Cloudflare error pages with your own custom content. Custom error content is shown to visitors when an HTTP error occurs, whether the error comes from your origin server, a Cloudflare product (including [Cloudflare Workers](https://developers.cloudflare.com/workers/)), or a [security challenge](https://developers.cloudflare.com/cloudflare-challenges/).
 
 You can configure custom error content using the following methods:
 
-* [**Error Page**](#error-pages): An HTML page shown to website visitors when a specific error occurs (refer to the different [error page types](https://developers.cloudflare.com/rules/custom-errors/reference/error-page-types/)) or when showing a security challenge. Error Pages can be defined at the zone level and at the account level on paid plans, with zone-level configurations taking precedence.
-* [**Custom Error Rule**](#custom-error-rules): Defines the conditions under which Cloudflare will serve a custom error response to visitors in case of HTTP errors (status codes `400` and above), and the exact content that will be served. A matching custom error rule has priority over an Error Page configured at the account or at the zone level that would apply to the same error.
+- [**Error Page**](#error-pages): An HTML page shown to website visitors when a specific error occurs (refer to the different [error page types](https://developers.cloudflare.com/rules/custom-errors/reference/error-page-types/)) or when showing a security challenge. Error Pages can be defined at the zone level and at the account level on paid plans, with zone-level configurations taking precedence.
+- [**Custom Error Rule**](#custom-error-rules): Defines the conditions under which Cloudflare will serve a custom error response to visitors in case of HTTP errors (status codes `400` and above), and the exact content that will be served. A matching custom error rule has priority over an Error Page configured at the account or at the zone level that would apply to the same error.
 
 Custom Errors require that you [proxy the DNS records](https://developers.cloudflare.com/dns/proxy-status/) of your domain (or subdomain) through Cloudflare.
 
@@ -44,13 +44,13 @@ To customize a challenge page or the default Cloudflare WAF block page, use an E
 
 Custom Errors are available to all paid plans. The exact features depend on your Cloudflare plan.
 
-|                    | Free | Pro | Business | Enterprise |
-| ------------------ | ---- | --- | -------- | ---------- |
-| Availability       | No   | Yes | Yes      | Yes        |
-| Number of rules    | 0    | 25  | 50       | 300        |
-| Number of assets   | 0    | 25  | 50       | 300        |
-| Error Pages        | No   | Yes | Yes      | Yes        |
-| Origin Error Pages | No   | No  | No       | Yes        |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | No | Yes | Yes | Yes |
+| Number of rules | 0 | 25 | 50 | 300 |
+| Number of assets | 0 | 25 | 50 | 300 |
+| Error Pages | No | Yes | Yes | Yes |
+| Origin Error Pages | No | No | No | Yes |
 
 ---
 
@@ -62,7 +62,7 @@ Error Pages do not apply to responses with an HTTP status code of `500`, `501`, 
 
 If you are on a Cloudflare paid plan, you can create custom error pages at the zone level or for your entire account. Zone-level error pages have priority over account-level error pages.
 
-Additionally, Enterprise customers can customize 5XX error pages (except errors `520`\-`527`) at their origin by turning on **Origin Error Pages** in **Error Pages** in the dashboard.
+Additionally, Enterprise customers can customize 5XX error pages (except errors `520`-`527`) at their origin by turning on **Origin Error Pages** in **Error Pages** in the dashboard.
 
 You can design custom error pages to appear during a security challenge or when an error occurs. For more information on the different error page types, refer to [Error page types](https://developers.cloudflare.com/rules/custom-errors/reference/error-page-types/).
 

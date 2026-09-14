@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshoot crawl errors
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/troubleshooting-crawl-errors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/troubleshooting-crawl-errors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare allows search engine crawlers and bots. If you observe crawl issues or Cloudflare challenges presented to the search engine crawler or bot, [contact Cloudflare support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) with the information you gather when troubleshooting the crawl errors via the methods outlined in this guide.
 
@@ -28,10 +28,10 @@ Search engine crawlers' requests, when proxied through Cloudflare, can be blocke
 
 To optimize CDN performance, Google and Bing assign special crawl rates to websites that use CDN services in order. Special crawl rates do not negatively affect Search Engine Optimization (SEO) and Search Engine Results Pages (SERPs). To change your crawl rates for Bing and Google, follow the guides below:
 
-* Change the Google crawl rate by [reviewing Google’s documentation ↗](https://support.google.com/webmasters/answer/48620?hl=en).
-* Change your Bing crawl rate via guidance from Bing’s documentation:
-  * [Bing Crawl Control ↗](https://www.bing.com/webmasters/help/?topicid=55a30303)
-  * [Crawl Delay and the Bing Crawler ↗](https://blogs.bing.com/webmaster/2009/08/10/crawl-delay-and-the-bing-crawler-msnbot)
+- Change the Google crawl rate by [reviewing Google’s documentation ↗](https://support.google.com/webmasters/answer/48620?hl=en).
+- Change your Bing crawl rate via guidance from Bing’s documentation:
+  - [Bing Crawl Control ↗](https://www.bing.com/webmasters/help/?topicid=55a30303)
+  - [Crawl Delay and the Bing Crawler ↗](https://blogs.bing.com/webmaster/2009/08/10/crawl-delay-and-the-bing-crawler-msnbot)
 
 ---
 
@@ -39,20 +39,20 @@ To optimize CDN performance, Google and Bing assign special crawl rates to websi
 
 Review the following recommendations to prevent crawler errors:
 
-* Monitor the performance and availability of your website using a third-party tool:
+- Monitor the performance and availability of your website using a third-party tool:
+  - [StatusCake ↗](http://www.statuscake.com/)
+  - [Pingdom ↗](http://www.pingdom.com/)
+  - [Monitor.Us ↗](http://www.monitor.us/)
+  - [Updown ↗](https://updown.io/)
+- Do not block Google crawler IP addresses via [custom rules](https://developers.cloudflare.com/waf/custom-rules/) or [IP Access rules](https://developers.cloudflare.com/waf/tools/ip-access-rules/). If you are using [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/), make sure they do not apply to the Google crawler.
 
-  * [StatusCake ↗](http://www.statuscake.com/)
-  * [Pingdom ↗](http://www.pingdom.com/)
-  * [Monitor.Us ↗](http://www.monitor.us/)
-  * [Updown ↗](https://updown.io/)
-* Do not block Google crawler IP addresses via [custom rules](https://developers.cloudflare.com/waf/custom-rules/) or [IP Access rules](https://developers.cloudflare.com/waf/tools/ip-access-rules/). If you are using [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/), make sure they do not apply to the Google crawler.
-Confirm an IP address belongs to Google by consulting Google’s documentation on [verifying googlebot IP addresses ↗](https://support.google.com/webmasters/bin/answer.py?answer=80553).
-* Do not block the United States via [custom rules](https://developers.cloudflare.com/waf/custom-rules/) or [IP Access rules](https://developers.cloudflare.com/waf/tools/ip-access-rules/).
-* Do not block Google User-Agents in your `.htaccess` file, server configuration, [robots.txt ↗](http://support.google.com/webmasters/bin/answer.py?answer=35303), or web application.
+  Confirm an IP address belongs to Google by consulting Google’s documentation on [verifying googlebot IP addresses ↗](https://support.google.com/webmasters/bin/answer.py?answer=80553).
+- Do not block the United States via [custom rules](https://developers.cloudflare.com/waf/custom-rules/) or [IP Access rules](https://developers.cloudflare.com/waf/tools/ip-access-rules/).
+- Do not block Google User-Agents in your `.htaccess` file, server configuration, [`robots.txt` ↗](http://support.google.com/webmasters/bin/answer.py?answer=35303), or web application.
 
-Google uses a [variety of User-Agents ↗](https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers) to crawl your website. You can [test your robots.txt via Google ↗](https://support.google.com/webmasters/answer/6062598?hl=en).
+Google uses a [variety of User-Agents ↗](https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers) to crawl your website. You can [test your `robots.txt` via Google ↗](https://support.google.com/webmasters/answer/6062598?hl=en).
 
-* Do not allow crawling of files in the `/cdn-cgi/` directory. This path is used internally by Cloudflare and Google encounters errors when crawling it. Disallow crawls of `cdn-cgi` via `robots.txt`:
+- Do not allow crawling of files in the `/cdn-cgi/` directory. This path is used internally by Cloudflare and Google encounters errors when crawling it. Disallow crawls of `cdn-cgi` via `robots.txt`:
 
 `Disallow: /cdn-cgi/`
 
@@ -60,8 +60,8 @@ Note
 
 Errors for `cdn-cgi` do not impact site rankings.
 
-* Ensure your [robots.txt file allows the AdSense crawler ↗](http://support.google.com/webmasters/bin/answer.py?hl=en&answer=1061943).
-* [Restore original visitor IP addresses](https://developers.cloudflare.com/support/troubleshooting/restoring-visitor-ips/restoring-original-visitor-ips/) in your server logs.
+- Ensure your [`robots.txt` file allows the AdSense crawler ↗](http://support.google.com/webmasters/bin/answer.py?hl=en&answer=1061943).
+- [Restore original visitor IP addresses](https://developers.cloudflare.com/support/troubleshooting/restoring-visitor-ips/restoring-original-visitor-ips/) in your server logs.
 
 ---
 
@@ -114,7 +114,7 @@ If the above troubleshooting steps do not resolve your crawl errors, follow the 
 
 ## Related resources
 
-[Google’s documentation on crawl errors and troubleshooting ↗](https://support.google.com/webmasters/answer/7440203#not%5Ffound%5F404)
+[Google’s documentation on crawl errors and troubleshooting ↗](https://support.google.com/webmasters/answer/7440203#not_found_404)
 
 Was this helpful?
 

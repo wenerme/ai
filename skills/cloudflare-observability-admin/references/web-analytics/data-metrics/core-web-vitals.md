@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Core Web Vitals
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web-analytics/data-metrics/core-web-vitals/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web-analytics/data-metrics/core-web-vitals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Core Web Vitals ↗](https://www.cloudflare.com/learning/performance/what-are-core-web-vitals/) are high-level metrics designed to measure the perceived performance of websites and web applications.
 
@@ -22,17 +22,16 @@ Three core Web Vitals metrics are measured: Largest Contentful Paint, Interactio
 
 Core Web Vitals enables you to easily pinpoint which elements in a web page are affecting the user's experience while browsing your website, in a visual form. To access Core Web Vitals:
 
-1. In the Cloudflare dashboard, go to the **Web Analytics** page.
-[Go to **Web analytics** ↗](https://dash.cloudflare.com/?to=/:account/web-analytics)
+1. In the Cloudflare dashboard, go to the **Web Analytics** page. [Go to **Web analytics** ↗](https://dash.cloudflare.com/?to=/:account/web-analytics)
 2. Select your website and select **Core Web Vitals**.
 
 ### Core Web Vitals metrics
 
 Core Web Vitals is divided into three main sections, each one with information about a specific feature that affects user experience:
 
-* [Largest Contentful Paint (LCP) ↗](https://web.dev/optimize-lcp/): Measures perceived load speed by the user — how long the main content of the page takes to be loaded.
-* [Interaction to Next Paint (INP) ↗](https://web.dev/inp/): Measures user interface responsiveness – how quickly a website responds to user interactions like clicks, taps or key presses.
-* [Cumulative Layout Shift (CLS) ↗](https://web.dev/optimize-cls/): Measures visual stability — to what extent there are unexpected shifts in the page layout during and after page load.
+- [Largest Contentful Paint (LCP) ↗](https://web.dev/optimize-lcp/): Measures perceived load speed by the user — how long the main content of the page takes to be loaded.
+- [Interaction to Next Paint (INP) ↗](https://web.dev/inp/): Measures user interface responsiveness – how quickly a website responds to user interactions like clicks, taps or key presses.
+- [Cumulative Layout Shift (CLS) ↗](https://web.dev/optimize-cls/): Measures visual stability — to what extent there are unexpected shifts in the page layout during and after page load.
 
 Note
 

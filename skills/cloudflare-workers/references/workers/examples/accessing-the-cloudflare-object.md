@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Access custom Cloudflare properties and control how Cloudflare features are applied to every request.
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/examples/accessing-the-cloudflare-object/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/examples/accessing-the-cloudflare-object/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you want to get started quickly, click on the button below.
 

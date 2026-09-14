@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # TLS Management
 
-Last updated Jul 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Mutual TLS (mTLS) ↗](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/) adds an extra layer of protection to application connections by validating certificates on the server and the client. When building a SaaS application, you may want to enforce mTLS to protect sensitive endpoints related to payment processing, database updates, and more.
 
@@ -46,15 +46,32 @@ While TLS 1.3 is the most recent and secure version, it is not supported by some
 
 Minimum TLS version exists both as a [zone-level setting](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/minimum-tls/) (on the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page under **Minimum TLS Version**) and as a custom hostname setting. What this implies is:
 
-* For custom hostnames created via API, it is possible not to explicitly define a value for `min_tls_version`. When that is the case, whatever value is defined as your zone's minimum TLS version will be applied. To confirm whether a given custom hostname has a specific minimum TLS version set, use the following API call.
+- For custom hostnames created via API, it is possible not to explicitly define a value for `min_tls_version`. When that is the case, whatever value is defined as your zone's minimum TLS version will be applied. To confirm whether a given custom hostname has a specific minimum TLS version set, use the following API call.
+
+<details>
+
+<summary>
 
 Check custom hostname TLS settings
 
+</summary>
+
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `SSL and Certificates Write`
-* `SSL and Certificates Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>SSL and Certificates Write</code>
+- <code>SSL and Certificates Read</code>
+
+</details>
+
+*Custom Hostname Detailsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \
@@ -62,8 +79,10 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUST
 	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
+*Response examplejson*
+
 ```json
-  "success": true,
+ "success": true,
   "result": {
     "id": "<CUSTOM_HOSTNAME_ID>",
     "ssl": {
@@ -106,31 +125,57 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUST
   }
 ```
 
-* Whenever you make changes to a custom hostname via dashboard, the value that is set for Minimum TLS version will apply. If you have a scenario as explained in the bullet above, the dashboard change will override the zone-level configuration that was being applied.
-* For custom hostnames with wildcards enabled, the direct custom hostname you create (for example, `saas-customer.test`) will use the hostname-specific setting, while the others (`sub1.saas-customer.test`, `sub2.saas-customer.test`, etc) will default to the zone-level setting.
+</details>
+
+- Whenever you make changes to a custom hostname via dashboard, the value that is set for Minimum TLS version will apply. If you have a scenario as explained in the bullet above, the dashboard change will override the zone-level configuration that was being applied.
+- For custom hostnames with wildcards enabled, the direct custom hostname you create (for example, `saas-customer.test`) will use the hostname-specific setting, while the others ( `sub1.saas-customer.test`, `sub2.saas-customer.test`, etc) will default to the zone-level setting.
 
 ### Setup
 
+<details>
+
+<summary>
+
 Minimum TLS version for your zone
 
-Refer to [Minimum TLS version - SSL/TLS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/minimum-tls/#zone-level).
+</summary>
+
+Refer to <a href="https://developers.cloudflare.com/ssl/edge-certificates/additional-options/minimum-tls/#zone-level">Minimum TLS version - SSL/TLS</a>.
+
+</details>
+
+<details>
+
+<summary>
 
 Minimum TLS version for custom hostname
 
-1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.
-[Go to **Custom Hostnames** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
+</summary>
+
+1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.<a href="https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames">Go to **Custom Hostnames** ↗</a>
 2. Find the hostname to which you want to apply Minimum TLS Version. Select **Edit**.
 3. Choose the desired TLS version under **Minimum TLS Version** and select **Save**.
 
-In the API documentation, refer to [SSL properties of a custom hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/). Besides the `settings` specifications, you must include `type` and `method` within the `ssl` object, as explained below.
+In the API documentation, refer to <a href="https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/">SSL properties of a custom hostname</a>. Besides the <code>settings</code> specifications, you must include <code>type</code> and <code>method</code> within the <code>ssl</code> object, as explained below.
 
-1. Make a `GET` request to the [Custom Hostname Details](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/get/) endpoint to check what are the current values for `ssl.type` and `ssl.method`.
+1. Make a <code>GET</code> request to the <a href="https://developers.cloudflare.com/api/resources/custom_hostnames/methods/get/">Custom Hostname Details</a> endpoint to check what are the current values for <code>ssl.type</code> and <code>ssl.method</code>.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `SSL and Certificates Write`
-* `SSL and Certificates Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>SSL and Certificates Write</code>
+- <code>SSL and Certificates Read</code>
+
+</details>
+
+*Custom Hostname Detailsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \
@@ -138,8 +183,10 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUST
 	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
+*Response examplejson*
+
 ```json
-  "success": true,
+ "success": true,
   "result": {
     "id": "<CUSTOM_HOSTNAME_ID>",
     "ssl": {
@@ -182,12 +229,23 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUST
   }
 ```
 
-1. After you take note of these values, make a `PATCH` request to the [Edit Custom Hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/) endpoint, providing both the minimum TLS version you want to define and the same `type` and `method` values that you obtained from the previous step.
+2. After you take note of these values, make a <code>PATCH</code> request to the <a href="https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/">Edit Custom Hostname</a> endpoint, providing both the minimum TLS version you want to define and the same <code>type</code> and <code>method</code> values that you obtained from the previous step.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `SSL and Certificates Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>SSL and Certificates Write</code>
+
+</details>
+
+*Edit Custom Hostnamebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \
@@ -204,25 +262,52 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUST
 	}'
 ```
 
+</details>
+
 ## Cipher suites
 
 For security and regulatory reasons, you may want to only allow connections from certain cipher suites. Cloudflare provides recommended values and full cipher suite reference in our [Cipher suites documentation](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/#resources).
 
+<details>
+
+<summary>
+
 Restrict cipher suites for your zone
 
-Refer to [Customize cipher suites - SSL/TLS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/).
+</summary>
+
+Refer to <a href="https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/">Customize cipher suites - SSL/TLS</a>.
+
+</details>
+
+<details>
+
+<summary>
 
 Restrict cipher suites for custom hostname
 
-In the API documentation, refer to [SSL properties of a custom hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/). Besides the `settings` specifications, you must include `type` and `method` within the `ssl` object, as explained below.
+</summary>
 
-1. Make a `GET` request to the [Custom Hostname Details](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/get/) endpoint to check what are the current values for `ssl.type` and `ssl.method`.
+In the API documentation, refer to <a href="https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/">SSL properties of a custom hostname</a>. Besides the <code>settings</code> specifications, you must include <code>type</code> and <code>method</code> within the <code>ssl</code> object, as explained below.
+
+1. Make a <code>GET</code> request to the <a href="https://developers.cloudflare.com/api/resources/custom_hostnames/methods/get/">Custom Hostname Details</a> endpoint to check what are the current values for <code>ssl.type</code> and <code>ssl.method</code>.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `SSL and Certificates Write`
-* `SSL and Certificates Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>SSL and Certificates Write</code>
+- <code>SSL and Certificates Read</code>
+
+</details>
+
+*Custom Hostname Detailsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \
@@ -230,8 +315,10 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUST
 	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
+*Response examplejson*
+
 ```json
-  "success": true,
+ "success": true,
   "result": {
     "id": "<CUSTOM_HOSTNAME_ID>",
     "ssl": {
@@ -274,12 +361,23 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUST
   }
 ```
 
-1. After you take note of these values, make a `PATCH` request to the [Edit Custom Hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/) endpoint, providing both the list of authorized cipher suites and the same `type` and `method` values that you obtained from the previous step.
+2. After you take note of these values, make a <code>PATCH</code> request to the <a href="https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/">Edit Custom Hostname</a> endpoint, providing both the list of authorized cipher suites and the same <code>type</code> and <code>method</code> values that you obtained from the previous step.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `SSL and Certificates Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>SSL and Certificates Write</code>
+
+</details>
+
+*Edit Custom Hostnamebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \
@@ -299,17 +397,36 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUST
 	}'
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Restrict cipher suites for custom hostname with custom certificate
 
-In the API documentation, refer to [SSL properties of a custom hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/). In the case of a custom hostname with custom certificate, you must include the custom certificate in the [Edit Custom Hostname PATCH call](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/), with the `settings` specifications where you must include `type` and `method` within the `ssl` object, as explained below.
+</summary>
 
-1. Make a `GET` request to the [Custom Hostname Details](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/get/) endpoint to check what are the current values for `ssl.type` and `ssl.method`.
+In the API documentation, refer to <a href="https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/">SSL properties of a custom hostname</a>. In the case of a custom hostname with custom certificate, you must include the custom certificate in the <a href="https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/">Edit Custom Hostname PATCH call</a>, with the <code>settings</code> specifications where you must include <code>type</code> and <code>method</code> within the <code>ssl</code> object, as explained below.
+
+1. Make a <code>GET</code> request to the <a href="https://developers.cloudflare.com/api/resources/custom_hostnames/methods/get/">Custom Hostname Details</a> endpoint to check what are the current values for <code>ssl.type</code> and <code>ssl.method</code>.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `SSL and Certificates Write`
-* `SSL and Certificates Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>SSL and Certificates Write</code>
+- <code>SSL and Certificates Read</code>
+
+</details>
+
+*Custom Hostname Detailsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \
@@ -317,8 +434,10 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUST
 	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
+*Response examplejson*
+
 ```json
-  "success": true,
+ "success": true,
   "result": {
     "id": "<CUSTOM_HOSTNAME_ID>",
     "ssl": {
@@ -361,12 +480,23 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUST
   }
 ```
 
-1. After you take note of these values, make a `PATCH` request to the [Edit Custom Hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/) endpoint, providing both the list of authorized cipher suites and the same `type` and `method` values that you obtained from the previous step, but also the `custom_certificate` and `custom_key`.
+2. After you take note of these values, make a <code>PATCH</code> request to the <a href="https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/">Edit Custom Hostname</a> endpoint, providing both the list of authorized cipher suites and the same <code>type</code> and <code>method</code> values that you obtained from the previous step, but also the <code>custom_certificate</code> and <code>custom_key</code>.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `SSL and Certificates Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>SSL and Certificates Write</code>
+
+</details>
+
+*Edit Custom Hostnamebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \
@@ -389,15 +519,23 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUST
 	}'
 ```
 
+</details>
+
 ## Alerts for mutual TLS certificates
 
 You can configure alerts to receive notifications before your mutual TLS certificates expire.
 
+<details>
+
+<summary>
+
 Access mTLS Certificate Expiration Alert
+
+</summary>
 
 **Who is it for?**
 
-[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) customers that use client certificates for mutual TLS authentication. This notification will be sent 30 and 14 days before the expiration of the certificate.
+<a href="https://developers.cloudflare.com/cloudflare-one/access-controls/policies/">Access</a> customers that use client certificates for mutual TLS authentication. This notification will be sent 30 and 14 days before the expiration of the certificate.
 
 **Other options / filters**
 
@@ -405,11 +543,13 @@ None.
 
 **Included with**
 
-Purchase of [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/) and/or [Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/).
+Purchase of <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/">Access</a> and/or <a href="https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/">Cloudflare for SaaS</a>.
 
 **What should you do if you receive one?**
 
-Upload a [renewed certificate](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#add-mtls-authentication-to-your-access-configuration).
+Upload a <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#add-mtls-authentication-to-your-access-configuration">renewed certificate</a>.
+
+</details>
 
 Refer to [Cloudflare Notifications](https://developers.cloudflare.com/notifications/get-started/) for more information on how to set up an alert.
 

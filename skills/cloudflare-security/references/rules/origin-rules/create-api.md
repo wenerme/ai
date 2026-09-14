@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create an origin rule via API
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/origin-rules/create-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/origin-rules/create-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to create origin rules via API.
 
@@ -20,9 +20,9 @@ Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets
 
 When creating an origin rule via API, make sure you:
 
-* Set the rule action to `route`.
-* Define the [parameters](https://developers.cloudflare.com/rules/origin-rules/parameters/) in the `action_parameters` field according to the type of origin override.
-* Deploy the rule to the `http_request_origin` phase at the zone level.
+- Set the rule action to `route`.
+- Define the [parameters](https://developers.cloudflare.com/rules/origin-rules/parameters/) in the `action_parameters` field according to the type of origin override.
+- Deploy the rule to the `http_request_origin` phase at the zone level.
 
 ## Procedure
 
@@ -30,43 +30,59 @@ Follow this workflow to create an origin rule for a given zone via API:
 
 1. Use the [List zone rulesets](https://developers.cloudflare.com/api/resources/rulesets/methods/list/) operation to check if there is already a ruleset for the `http_request_origin` phase at the zone level.
 2. If the phase ruleset does not exist, create it using the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation. In the new ruleset properties, set the following values:
-
-  * **kind**: `zone`
-  * **phase**: `http_request_origin`
+   - **kind**: `zone`
+   - **phase**: `http_request_origin`
 3. Use the [Update a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/update/) operation to add an origin rule to the list of ruleset rules. Alternatively, include the rule in the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) request mentioned in the previous step.
 
 Make sure your API token has the [required permissions](#required-api-token-permissions) to perform the API operations.
 
 ## Example requests
 
-Example: Add a rule that overrides the `Host` header of incoming requests and the resolved DNS record
+<details>
 
-The following example sets the rules of an existing phase ruleset (`$RULESET_ID`) to a single origin rule — overriding the `Host` header of incoming requests and the resolved DNS record — using the [Update a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/update/) operation. The response will contain the complete definition of the ruleset you updated.
+<summary>
+
+Example: Add a rule that overrides the <code>Host</code> header of incoming requests and the resolved DNS record
+
+</summary>
+
+The following example sets the rules of an existing phase ruleset (<code>$RULESET_ID</code>) to a single origin rule — overriding the <code>Host</code> header of incoming requests and the resolved DNS record — using the <a href="https://developers.cloudflare.com/api/resources/rulesets/methods/update/">Update a zone ruleset</a> operation. The response will contain the complete definition of the ruleset you updated.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Response Compression Write`
-* `Config Settings Write`
-* `Dynamic URL Redirects Write`
-* `Cache Settings Write`
-* `Custom Errors Write`
-* `Origin Write`
-* `Managed headers Write`
-* `Zone Transform Rules Write`
-* `Mass URL Redirects Write`
-* `Magic Firewall Write`
-* `L4 DDoS Managed Ruleset Write`
-* `HTTP DDoS Managed Ruleset Write`
-* `Sanitize Write`
-* `Transform Rules Write`
-* `Select Configuration Write`
-* `Bot Management Write`
-* `Zone WAF Write`
-* `Account WAF Write`
-* `Account Rulesets Write`
-* `Logs Write`
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Response Compression Write</code>
+- <code>Config Settings Write</code>
+- <code>Dynamic URL Redirects Write</code>
+- <code>Cache Settings Write</code>
+- <code>Custom Errors Write</code>
+- <code>Origin Write</code>
+- <code>Managed headers Write</code>
+- <code>Zone Transform Rules Write</code>
+- <code>Mass URL Redirects Write</code>
+- <code>Magic Firewall Write</code>
+- <code>L4 DDoS Managed Ruleset Write</code>
+- <code>HTTP DDoS Managed Ruleset Write</code>
+- <code>Sanitize Write</code>
+- <code>Transform Rules Write</code>
+- <code>Select Configuration Write</code>
+- <code>Bot Management Write</code>
+- <code>Zone WAF Write</code>
+- <code>Account WAF Write</code>
+- <code>Account Rulesets Write</code>
+- <code>Logs Write</code>
+- <code>Logs Write</code>
+
+</details>
+
+*Update a zone rulesetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
@@ -125,36 +141,55 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" 
 }
 ```
 
-Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.
+Use the <code>ref</code> field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to <a href="https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications">Troubleshooting</a> in the Terraform documentation.
+
+</details>
+
+<details>
+
+<summary>
 
 Example: Add a rule that overrides the port of incoming requests
 
-The following example sets the rules of an existing phase ruleset (`$RULESET_ID`) to a single origin rule — overriding the port of incoming requests — using the [Update a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/update/) operation. The response will contain the complete definition of the ruleset you updated.
+</summary>
+
+The following example sets the rules of an existing phase ruleset (<code>$RULESET_ID</code>) to a single origin rule — overriding the port of incoming requests — using the <a href="https://developers.cloudflare.com/api/resources/rulesets/methods/update/">Update a zone ruleset</a> operation. The response will contain the complete definition of the ruleset you updated.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Response Compression Write`
-* `Config Settings Write`
-* `Dynamic URL Redirects Write`
-* `Cache Settings Write`
-* `Custom Errors Write`
-* `Origin Write`
-* `Managed headers Write`
-* `Zone Transform Rules Write`
-* `Mass URL Redirects Write`
-* `Magic Firewall Write`
-* `L4 DDoS Managed Ruleset Write`
-* `HTTP DDoS Managed Ruleset Write`
-* `Sanitize Write`
-* `Transform Rules Write`
-* `Select Configuration Write`
-* `Bot Management Write`
-* `Zone WAF Write`
-* `Account WAF Write`
-* `Account Rulesets Write`
-* `Logs Write`
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Response Compression Write</code>
+- <code>Config Settings Write</code>
+- <code>Dynamic URL Redirects Write</code>
+- <code>Cache Settings Write</code>
+- <code>Custom Errors Write</code>
+- <code>Origin Write</code>
+- <code>Managed headers Write</code>
+- <code>Zone Transform Rules Write</code>
+- <code>Mass URL Redirects Write</code>
+- <code>Magic Firewall Write</code>
+- <code>L4 DDoS Managed Ruleset Write</code>
+- <code>HTTP DDoS Managed Ruleset Write</code>
+- <code>Sanitize Write</code>
+- <code>Transform Rules Write</code>
+- <code>Select Configuration Write</code>
+- <code>Bot Management Write</code>
+- <code>Zone WAF Write</code>
+- <code>Account WAF Write</code>
+- <code>Account Rulesets Write</code>
+- <code>Logs Write</code>
+- <code>Logs Write</code>
+
+</details>
+
+*Update a zone rulesetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
@@ -211,36 +246,55 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" 
 }
 ```
 
-Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.
+Use the <code>ref</code> field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to <a href="https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications">Troubleshooting</a> in the Terraform documentation.
+
+</details>
+
+<details>
+
+<summary>
 
 Example: Add a rule that overrides the SNI value of incoming requests
 
-The following example sets the rules of an existing phase ruleset (`$RULESET_ID`) to a single origin rule — overriding the SNI value of incoming requests addressed at `admin.example.com` — using the [Update a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/update/) operation.
+</summary>
+
+The following example sets the rules of an existing phase ruleset (<code>$RULESET_ID</code>) to a single origin rule — overriding the SNI value of incoming requests addressed at <code>admin.example.com</code> — using the <a href="https://developers.cloudflare.com/api/resources/rulesets/methods/update/">Update a zone ruleset</a> operation.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Response Compression Write`
-* `Config Settings Write`
-* `Dynamic URL Redirects Write`
-* `Cache Settings Write`
-* `Custom Errors Write`
-* `Origin Write`
-* `Managed headers Write`
-* `Zone Transform Rules Write`
-* `Mass URL Redirects Write`
-* `Magic Firewall Write`
-* `L4 DDoS Managed Ruleset Write`
-* `HTTP DDoS Managed Ruleset Write`
-* `Sanitize Write`
-* `Transform Rules Write`
-* `Select Configuration Write`
-* `Bot Management Write`
-* `Zone WAF Write`
-* `Account WAF Write`
-* `Account Rulesets Write`
-* `Logs Write`
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Response Compression Write</code>
+- <code>Config Settings Write</code>
+- <code>Dynamic URL Redirects Write</code>
+- <code>Cache Settings Write</code>
+- <code>Custom Errors Write</code>
+- <code>Origin Write</code>
+- <code>Managed headers Write</code>
+- <code>Zone Transform Rules Write</code>
+- <code>Mass URL Redirects Write</code>
+- <code>Magic Firewall Write</code>
+- <code>L4 DDoS Managed Ruleset Write</code>
+- <code>HTTP DDoS Managed Ruleset Write</code>
+- <code>Sanitize Write</code>
+- <code>Transform Rules Write</code>
+- <code>Select Configuration Write</code>
+- <code>Bot Management Write</code>
+- <code>Zone WAF Write</code>
+- <code>Account WAF Write</code>
+- <code>Account Rulesets Write</code>
+- <code>Logs Write</code>
+- <code>Logs Write</code>
+
+</details>
+
+*Update a zone rulesetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
@@ -263,7 +317,9 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" 
 	}'
 ```
 
-Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.
+Use the <code>ref</code> field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to <a href="https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications">Troubleshooting</a> in the Terraform documentation.
+
+</details>
 
 ---
 
@@ -271,7 +327,7 @@ Use the `ref` field to get stable rule IDs across updates when using Terraform. 
 
 The API token used in API requests to manage origin rules must have at least the following permission:
 
-* _Zone_ \> _Origin Rules_ \> _Edit_
+- *Zone* > *Origin Rules* > *Edit*
 
 Was this helpful?
 
@@ -282,5 +338,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/origin-rules/create-api/#page","headline":"Create an origin rule via API · Cloudflare Rules docs","description":"Create origin rules using the Rulesets API.","url":"https://developers.cloudflare.com/rules/origin-rules/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/origin-rules/create-api/#page","headline":"Create an origin rule via API · Cloudflare Rules docs","description":"Create origin rules using the Rulesets API.","url":"https://developers.cloudflare.com/rules/origin-rules/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

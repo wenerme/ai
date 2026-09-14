@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Use the OpenAI v4 SDK to stream responses from OpenAI.
 
-Last updated Sep 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/examples/openai-sdk-streaming/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/examples/openai-sdk-streaming/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you want to get started quickly, click on the button below.
 

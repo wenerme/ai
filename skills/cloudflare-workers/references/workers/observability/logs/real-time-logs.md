@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Real-time logs
 
-Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/logs/real-time-logs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/logs/real-time-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With Real-time logs, access all your log events in near real-time for log events happening globally. Real-time logs is helpful for immediate feedback, such as the status of a new deployment.
 
@@ -26,8 +26,7 @@ Real-time logs are not available for zones on the [Cloudflare China Network](htt
 
 To view real-time logs associated with any deployed Worker using the Cloudflare dashboard:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your **Worker**.
 3. Select **Logs**.
 4. In the right-hand navigation bar, select **Live**.
@@ -37,7 +36,7 @@ To view real-time logs associated with any deployed Worker using the Cloudflare 
 To view real-time logs associated with any deployed Worker using Wrangler:
 
 1. Go to your Worker project directory.
-2. Run [npx wrangler tail](https://developers.cloudflare.com/workers/wrangler/commands/general/#tail).
+2. Run [`npx wrangler tail`](https://developers.cloudflare.com/workers/wrangler/commands/general/#tail).
 
 This will log any incoming requests to your application available in your local terminal.
 
@@ -61,7 +60,7 @@ The output of each `wrangler tail` log is a structured JSON object:
 }
 ```
 
-By piping the output to tools like [jq ↗](https://stedolan.github.io/jq/), you can query and manipulate the requests to look for specific information:
+By piping the output to tools like [`jq` ↗](https://stedolan.github.io/jq/), you can query and manipulate the requests to look for specific information:
 
 ```sh
 npx wrangler tail | jq .event.request.url
@@ -73,19 +72,19 @@ npx wrangler tail | jq .event.request.url
 "https://www.bytesized.xyz/page-data/app-data.json"
 ```
 
-You can customize how `wrangler tail` works to fit your needs. Refer to [the wrangler tail documentation](https://developers.cloudflare.com/workers/wrangler/commands/general/#tail) for available configuration options.
+You can customize how `wrangler tail` works to fit your needs. Refer to [the `wrangler tail` documentation](https://developers.cloudflare.com/workers/wrangler/commands/general/#tail) for available configuration options.
 
 ## Limits
 
 Note
 
-You can filter real-time logs in the dashboard or using [wrangler tail](https://developers.cloudflare.com/workers/wrangler/commands/general/#tail). If your Worker has a high volume of messages, filtering real-time logs can help mitigate messages from being dropped.
+You can filter real-time logs in the dashboard or using [`wrangler tail`](https://developers.cloudflare.com/workers/wrangler/commands/general/#tail). If your Worker has a high volume of messages, filtering real-time logs can help mitigate messages from being dropped.
 
-* Real-time logs does not store Workers Logs. To store logs, use [Workers Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs).
-* If your Worker has a high volume of traffic, the real-time logs might enter sampling mode. This will cause some of your messages to be dropped and a warning to appear in your logs.
-* Logs from any [Durable Objects](https://developers.cloudflare.com/durable-objects/) your Worker is using will show up in the dashboard.
-* A maximum of 10 clients can view a Worker's logs at one time. This can be a combination of either dashboard sessions or `wrangler tail` calls.
-* When using `wrangler tail` with [WebSocket event handlers](https://developers.cloudflare.com/workers/runtime-apis/websockets/), any `console.log` statements within those handlers are hidden until the WebSocket client closes the connection. Once the `close` is received, all messages are flushed, printing everything to the terminal at once.
+- Real-time logs does not store Workers Logs. To store logs, use [Workers Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs).
+- If your Worker has a high volume of traffic, the real-time logs might enter sampling mode. This will cause some of your messages to be dropped and a warning to appear in your logs.
+- Logs from any [Durable Objects](https://developers.cloudflare.com/durable-objects/) your Worker is using will show up in the dashboard.
+- A maximum of 10 clients can view a Worker's logs at one time. This can be a combination of either dashboard sessions or `wrangler tail` calls.
+- When using `wrangler tail` with [WebSocket event handlers](https://developers.cloudflare.com/workers/runtime-apis/websockets/), any `console.log` statements within those handlers are hidden until the WebSocket client closes the connection. Once the `close` is received, all messages are flushed, printing everything to the terminal at once.
 
 ## Persist logs
 
@@ -93,12 +92,12 @@ Logs can be persisted, filtered, and analyzed with [Workers Logs](https://develo
 
 ## Related resources
 
-* [Errors and exceptions](https://developers.cloudflare.com/workers/observability/errors/) \- Review common Workers errors.
-* [Local development](https://developers.cloudflare.com/workers/local-development/) \- Develop and test your Workers locally.
-* [Workers Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs) \- Collect, store, filter and analyze logging data emitted from Cloudflare Workers.
-* [Logpush](https://developers.cloudflare.com/workers/observability/logs/logpush/) \- Learn how to push Workers Trace Event Logs to supported destinations.
-* [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/) \- Learn how to attach Tail Workers to transform your logs and send them to HTTP endpoints.
-* [Source maps and stack traces](https://developers.cloudflare.com/workers/observability/source-maps) \- Learn how to enable source maps and generate stack traces for Workers.
+- [Errors and exceptions](https://developers.cloudflare.com/workers/observability/errors/) - Review common Workers errors.
+- [Local development](https://developers.cloudflare.com/workers/local-development/) - Develop and test your Workers locally.
+- [Workers Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs) - Collect, store, filter and analyze logging data emitted from Cloudflare Workers.
+- [Logpush](https://developers.cloudflare.com/workers/observability/logs/logpush/) - Learn how to push Workers Trace Event Logs to supported destinations.
+- [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/) - Learn how to attach Tail Workers to transform your logs and send them to HTTP endpoints.
+- [Source maps and stack traces](https://developers.cloudflare.com/workers/observability/source-maps) - Learn how to enable source maps and generate stack traces for Workers.
 
 Was this helpful?
 

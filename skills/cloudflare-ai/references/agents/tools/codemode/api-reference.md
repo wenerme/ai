@@ -12,18 +12,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Code Mode API reference
 
-Last updated Jul 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/tools/codemode/api-reference/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/codemode/api-reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Code Mode publishes six package entry points. Import framework-specific APIs from their matching entry point:
 
-| Entry point                      | Purpose                                                                    |
-| -------------------------------- | -------------------------------------------------------------------------- |
-| @cloudflare/codemode             | Runtime, connectors, Workers executor, and framework-independent utilities |
-| @cloudflare/codemode/ai          | AI SDK tools and connector adapter                                         |
-| @cloudflare/codemode/mcp         | Model Context Protocol (MCP) server wrappers                               |
-| @cloudflare/codemode/tanstack-ai | TanStack AI tools and adapter                                              |
-| @cloudflare/codemode/browser     | Browser tool descriptor and iframe executor                                |
-| @cloudflare/codemode/vite        | Vite plugin for connector discovery and Worker exports                     |
+| Entry point | Purpose |
+| --- | --- |
+| `@cloudflare/codemode` | Runtime, connectors, Workers executor, and framework-independent utilities |
+| `@cloudflare/codemode/ai` | AI SDK tools and connector adapter |
+| `@cloudflare/codemode/mcp` | Model Context Protocol (MCP) server wrappers |
+| `@cloudflare/codemode/tanstack-ai` | TanStack AI tools and adapter |
+| `@cloudflare/codemode/browser` | Browser tool descriptor and iframe executor |
+| `@cloudflare/codemode/vite` | Vite plugin for connector discovery and Worker exports |
 
 ## `@cloudflare/codemode`
 
@@ -43,14 +43,14 @@ Creates the host-side control plane for a named Code Mode runtime.
 
 `CreateCodemodeRuntimeOptions` has these fields:
 
-| Field           | Type                  | Required | Description                                                                                                |
-| --------------- | --------------------- | -------- | ---------------------------------------------------------------------------------------------------------- |
-| ctx             | DurableObjectState    | Yes      | Durable Object state that hosts the runtime facet.                                                         |
-| connectors      | CodemodeConnector\[\] | Yes      | Connectors exposed as sandbox globals. Connector names must be unique, and codemode is reserved.           |
-| executor        | Executor              | Yes      | Sandbox that runs generated code.                                                                          |
-| name            | string                | No       | Durable runtime identity. Defaults to "default". Valid characters are letters, digits, \_, \-, and ..      |
-| maxExecutions   | number                | No       | Terminal records kept when a new run begins. Defaults to 50. Running and paused executions are not pruned. |
-| transformResult | TransformResult       | No       | Reshapes a completed result returned to the model. The audit trail retains the unmodified result.          |
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `ctx` | `DurableObjectState` | Yes | Durable Object state that hosts the runtime facet. |
+| `connectors` | `CodemodeConnector[]` | Yes | Connectors exposed as sandbox globals. Connector names must be unique, and `codemode` is reserved. |
+| `executor` | `Executor` | Yes | Sandbox that runs generated code. |
+| `name` | `string` | No | Durable runtime identity. Defaults to `"default"`. Valid characters are letters, digits, `_`, `-`, and `.`. |
+| `maxExecutions` | `number` | No | Terminal records kept when a new run begins. Defaults to `50`. Running and paused executions are not pruned. |
+| `transformResult` | `TransformResult` | No | Reshapes a completed result returned to the model. The audit trail retains the unmodified result. |
 
 ```ts
 interface CodemodeRuntimeHandle {
@@ -76,23 +76,23 @@ interface CodemodeRuntimeHandle {
 
 The handle methods have these effects:
 
-| Method                       | Effect                                                                                                                                                                               |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| tool(options?)               | Returns the AI SDK tool given to the model. description replaces the default description. connectorHints adds a one-line hint for each connector when using the default description. |
-| execute({ code })            | Runs code directly without adapting the runtime to an AI SDK tool. The result can complete, pause for approval, or return an error status.                                           |
-| search(query)                | Searches connector methods and saved snippets without running sandbox code.                                                                                                          |
-| describe(target)             | Returns on-demand TypeScript documentation for a connector, method, or saved snippet.                                                                                                |
-| approve({ executionId })     | Resumes a paused execution through replay. The result can complete, pause again, or return an error status. It does not revive a non-paused execution.                               |
-| reject({ seq, executionId }) | Rejects one pending action and terminates the execution. Returns false if the action is no longer pending. It does not roll back earlier actions.                                    |
-| rollback({ executionId })    | Calls available revert functions in reverse call order. Missing connectors and methods without revert remain applied. It attempts later reverts after a failure.                     |
-| pending(executionId?)        | Lists pending actions. Without an ID, it combines actions from all paused executions.                                                                                                |
-| expirePaused({ maxAgeMs? })  | Terminates stale paused or running executions and returns their IDs. The default age is 24 hours.                                                                                    |
-| executions(limit?)           | Returns audit records, newest first.                                                                                                                                                 |
-| deleteExecution(id)          | Deletes one audit record. It also disposes resources for a non-terminal execution. Returns whether the record existed.                                                               |
-| pruneExecutions(keep?)       | Deletes older terminal records and returns the count deleted. Defaults to keeping 50.                                                                                                |
-| saveSnippet(name, options)   | Saves code from options.executionId as a reusable snippet. It accepts any execution status, so applications should verify successful completion first. Replaces the same name.       |
-| snippets()                   | Returns saved snippets, ordered by name.                                                                                                                                             |
-| deleteSnippet(name)          | Deletes a snippet and returns whether it existed.                                                                                                                                    |
+| Method | Effect |
+| --- | --- |
+| `tool(options?)` | Returns the AI SDK tool given to the model. `description` replaces the default description. `connectorHints` adds a one-line hint for each connector when using the default description. |
+| `execute({ code })` | Runs code directly without adapting the runtime to an AI SDK tool. The result can complete, pause for approval, or return an error status. |
+| `search(query)` | Searches connector methods and saved snippets without running sandbox code. |
+| `describe(target)` | Returns on-demand TypeScript documentation for a connector, method, or saved snippet. |
+| `approve({ executionId })` | Resumes a paused execution through replay. The result can complete, pause again, or return an error status. It does not revive a non-paused execution. |
+| `reject({ seq, executionId })` | Rejects one pending action and terminates the execution. Returns `false` if the action is no longer pending. It does not roll back earlier actions. |
+| `rollback({ executionId })` | Calls available `revert` functions in reverse call order. Missing connectors and methods without `revert` remain applied. It attempts later reverts after a failure. |
+| `pending(executionId?)` | Lists pending actions. Without an ID, it combines actions from all paused executions. |
+| `expirePaused({ maxAgeMs? })` | Terminates stale paused or running executions and returns their IDs. The default age is 24 hours. |
+| `executions(limit?)` | Returns audit records, newest first. |
+| `deleteExecution(id)` | Deletes one audit record. It also disposes resources for a non-terminal execution. Returns whether the record existed. |
+| `pruneExecutions(keep?)` | Deletes older terminal records and returns the count deleted. Defaults to keeping `50`. |
+| `saveSnippet(name, options)` | Saves code from `options.executionId` as a reusable snippet. It accepts any execution status, so applications should verify successful completion first. Replaces the same name. |
+| `snippets()` | Returns saved snippets, ordered by name. |
+| `deleteSnippet(name)` | Deletes a snippet and returns whether it existed. |
 
 The method option types are:
 
@@ -120,11 +120,11 @@ class CodemodeRuntime extends DurableObject<unknown> {
 
 The main entry point also exports these runtime constants:
 
-| Constant                   | Value    | Purpose                                                         |
-| -------------------------- | -------- | --------------------------------------------------------------- |
-| DEFAULT\_MAX\_EXECUTIONS   | 50       | Default terminal execution retention count                      |
-| DEFAULT\_PAUSED\_TTL\_MS   | 86400000 | Default stale execution age in milliseconds (24 hours)          |
-| MAX\_DURABLE\_VALUE\_BYTES | 1000000  | Serialized JavaScript string-length limit for one durable value |
+| Constant | Value | Purpose |
+| --- | --- | --- |
+| `DEFAULT_MAX_EXECUTIONS` | `50` | Default terminal execution retention count |
+| `DEFAULT_PAUSED_TTL_MS` | `86400000` | Default stale execution age in milliseconds (24 hours) |
+| `MAX_DURABLE_VALUE_BYTES` | `1000000` | Serialized JavaScript string-length limit for one durable value |
 
 ### Runtime tool input and output
 
@@ -225,12 +225,12 @@ declare const codemode: {
 
 The sandbox methods behave as follows:
 
-| Method            | Description                                                                                                       |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------- |
-| search(query)     | Searches connector methods and saved snippets. Results are ranked and limited to 50.                              |
-| describe(target)  | Returns generated TypeScript for a connector, connector.method, or snippet name.                                  |
-| step(name, fn)    | Runs a closure once and records its result. Replay returns the recorded result without running the closure again. |
-| run(name, input?) | Runs a saved snippet. A missing snippet or recorded connector resolves to an object with an error property.       |
+| Method | Description |
+| --- | --- |
+| `search(query)` | Searches connector methods and saved snippets. Results are ranked and limited to `50`. |
+| `describe(target)` | Returns generated TypeScript for a connector, `connector.method`, or snippet name. |
+| `step(name, fn)` | Runs a closure once and records its result. Replay returns the recorded result without running the closure again. |
+| `run(name, input?)` | Runs a saved snippet. A missing snippet or recorded connector resolves to an object with an `error` property. |
 
 Use `step()` around nondeterministic or side-effectful sandbox work that does not use a connector. Issue connector calls sequentially when an execution can pause. Concurrent calls can reach the replay cursor in a different order.
 
@@ -347,13 +347,13 @@ class DynamicWorkerExecutor implements Executor {
 
 `DynamicWorkerExecutorOptions` has these fields:
 
-| Field          | Type                    | Required | Default | Description                                                                            |
-| -------------- | ----------------------- | -------- | ------- | -------------------------------------------------------------------------------------- |
-| loader         | WorkerLoader            | Yes      | —       | Worker Loader binding used to create isolated Workers.                                 |
-| timeout        | number                  | No       | 60000   | Execution timeout in milliseconds.                                                     |
-| globalOutbound | Fetcher \| null         | No       | null    | Outbound network policy. null blocks access. A Fetcher receives all outbound requests. |
-| modules        | Record<string, string>  | No       | {}      | Module source keyed by import specifier. The reserved executor.js key is ignored.      |
-| bindings       | Record<string, unknown> | No       | {}      | Additional environment bindings injected into each sandbox Worker.                     |
+| Field | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `loader` | `WorkerLoader` | Yes | — | Worker Loader binding used to create isolated Workers. |
+| `timeout` | `number` | No | `60000` | Execution timeout in milliseconds. |
+| `globalOutbound` | `Fetcher \| null` | No | `null` | Outbound network policy. `null` blocks access. A `Fetcher` receives all outbound requests. |
+| `modules` | `Record<string, string>` | No | `{}` | Module source keyed by import specifier. The reserved `executor.js` key is ignored. |
+| `bindings` | `Record<string, unknown>` | No | `{}` | Additional environment bindings injected into each sandbox Worker. |
 
 The executor validates provider and connector namespaces. Names must be valid JavaScript identifiers, unique, and must not shadow executor globals.
 
@@ -393,11 +393,11 @@ interface ToolProvider {
 
 Tool providers have these fields:
 
-| Field | Description                                                                        |
-| ----- | ---------------------------------------------------------------------------------- |
-| name  | Sandbox namespace. Defaults to codemode.                                           |
-| tools | Tool descriptors, an AI SDK ToolSet, or records containing execute.                |
-| types | TypeScript declarations shown to the model. Code Mode generates them when omitted. |
+| Field | Description |
+| --- | --- |
+| `name` | Sandbox namespace. Defaults to `codemode`. |
+| `tools` | Tool descriptors, an AI SDK `ToolSet`, or records containing `execute`. |
+| `types` | TypeScript declarations shown to the model. Code Mode generates them when omitted. |
 
 ```ts
 function resolveProvider(provider: ToolProvider): ResolvedProvider;
@@ -444,14 +444,14 @@ abstract class CodemodeConnector<
 
 Connector authors implement or override these hooks:
 
-| Hook                                  | Required | Description                                                                                     |
-| ------------------------------------- | -------- | ----------------------------------------------------------------------------------------------- |
-| name()                                | Yes      | Returns the unique sandbox namespace.                                                           |
-| instructions()                        | No       | Returns connector guidance included by describe().                                              |
-| tools()                               | Yes      | Returns the connector tool record. Derived connectors implement this hook.                      |
-| tool(name, tool)                      | No       | Decorates a resolved tool. Use it to add approval, replay, or revert behavior to derived tools. |
-| onPassEnd(executionId, status)        | No       | Releases per-pass resources. Runs after every pass, including a paused pass.                    |
-| disposeExecution(executionId, status) | No       | Releases per-execution resources after a terminal transition. It does not run on pause.         |
+| Hook | Required | Description |
+| --- | --- | --- |
+| `name()` | Yes | Returns the unique sandbox namespace. |
+| `instructions()` | No | Returns connector guidance included by `describe()`. |
+| `tools()` | Yes | Returns the connector tool record. Derived connectors implement this hook. |
+| `tool(name, tool)` | No | Decorates a resolved tool. Use it to add approval, replay, or revert behavior to derived tools. |
+| `onPassEnd(executionId, status)` | No | Releases per-pass resources. Runs after every pass, including a paused pass. |
+| `disposeExecution(executionId, status)` | No | Releases per-execution resources after a terminal transition. It does not run on pause. |
 
 Lifecycle hooks should be idempotent, should not rely on instance memory, and should not throw. On a terminal pass, `onPassEnd()` runs before `disposeExecution()`.
 
@@ -586,12 +586,12 @@ function jsonSchemaToType(schema: JSONSchema7, typeName: string): string;
 
 The main entry point provides these code and result utilities:
 
-| Function         | Signature                                              | Behavior                                                                                                                      |
-| ---------------- | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
-| sanitizeToolName | (name: string) => string                               | Replaces common separators, removes invalid characters, prefixes digit-leading names, and suffixes JavaScript reserved words. |
-| normalizeCode    | (code: string) => string                               | Converts common model output forms into an async arrow function. It also removes supported Markdown fences.                   |
-| truncateResponse | (text: string, options?: TruncateOptions) => string    | Truncates text to a character budget and appends a size marker.                                                               |
-| truncateResult   | (value: unknown, options?: TruncateOptions) => unknown | Preserves small structured values. Oversized serializable values become truncated JSON text.                                  |
+| Function | Signature | Behavior |
+| --- | --- | --- |
+| `sanitizeToolName` | `(name: string) => string` | Replaces common separators, removes invalid characters, prefixes digit-leading names, and suffixes JavaScript reserved words. |
+| `normalizeCode` | `(code: string) => string` | Converts common model output forms into an async arrow function. It also removes supported Markdown fences. |
+| `truncateResponse` | `(text: string, options?: TruncateOptions) => string` | Truncates text to a character budget and appends a size marker. |
+| `truncateResult` | `(value: unknown, options?: TruncateOptions) => unknown` | Preserves small structured values. Oversized serializable values become truncated JSON text. |
 
 ```ts
 type TruncateOptions = {
@@ -631,11 +631,11 @@ Tools whose `needsApproval` is `true` or a function are excluded. This API does 
 
 The AI SDK entry point provides these tool-provider utilities:
 
-| Export          | Signature                                                         | Description                                                                                                             |
-| --------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| aiTools         | (tools: ToolDescriptors \| ToolSet) => ToolProvider               | Wraps AI SDK tools in the default provider.                                                                             |
-| generateTypes   | (tools: ToolDescriptors \| ToolSet, namespace?: string) => string | Generates declarations from AI SDK or Zod schemas. The namespace defaults to codemode.                                  |
-| resolveProvider | (provider: ToolProvider) => ResolvedProvider                      | Filters approval-gated tools, validates input with AI SDK asSchema() when available, and extracts executable functions. |
+| Export | Signature | Description |
+| --- | --- | --- |
+| `aiTools` | `(tools: ToolDescriptors \| ToolSet) => ToolProvider` | Wraps AI SDK tools in the default provider. |
+| `generateTypes` | `(tools: ToolDescriptors \| ToolSet, namespace?: string) => string` | Generates declarations from AI SDK or Zod schemas. The namespace defaults to `codemode`. |
+| `resolveProvider` | `(provider: ToolProvider) => ResolvedProvider` | Filters approval-gated tools, validates input with AI SDK `asSchema()` when available, and extracts executable functions. |
 
 ```ts
 interface ToolDescriptor {
@@ -718,10 +718,10 @@ function openApiMcpServer(options: OpenApiMcpServerOptions): McpServer;
 
 Creates an MCP server with two tools:
 
-| MCP tool | Sandbox API                                   | Purpose                                                                                                       |
-| -------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| search   | codemode.spec()                               | Runs code against the OpenAPI document. Local $ref values are resolved before the code receives the document. |
-| execute  | codemode.spec() and codemode.request(options) | Runs code that can inspect the document and call the host-provided request function.                          |
+| MCP tool | Sandbox API | Purpose |
+| --- | --- | --- |
+| `search` | `codemode.spec()` | Runs code against the OpenAPI document. Local `$ref` values are resolved before the code receives the document. |
+| `execute` | `codemode.spec()` and `codemode.request(options)` | Runs code that can inspect the document and call the host-provided request function. |
 
 `name` defaults to `openapi`. `version` defaults to `1.0.0`. The host request function keeps credentials outside the sandbox. Text responses are limited to approximately 6,000 tokens and include a truncation marker when clipped.
 
@@ -743,12 +743,12 @@ The options, `CodeInput`, and `CodeOutput` match the `/ai` entry point. The retu
 
 The TanStack AI entry point provides these tool-provider utilities:
 
-| Export             | Signature                                                          | Description                                                                                                                  |
-| ------------------ | ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
-| tanstackTools      | (tools: TanStackTool\[\], name?: string) => ToolProvider           | Wraps TanStack AI tools in a provider. Only tools with an execute function are callable. The namespace defaults to codemode. |
-| generateTypes      | (tools: TanStackTool\[\], namespace?: string) => string            | Converts supported TanStack AI schemas to JSON Schema, then generates declarations.                                          |
-| resolveProvider    | (provider: ToolProvider) => ResolvedProvider                       | Resolves a framework-independent provider without schema validation.                                                         |
-| normalizeProviders | (tools: ToolProviderTools \| ToolProvider\[\]) => ToolProvider\[\] | Converts raw tools into a one-element provider array.                                                                        |
+| Export | Signature | Description |
+| --- | --- | --- |
+| `tanstackTools` | `(tools: TanStackTool[], name?: string) => ToolProvider` | Wraps TanStack AI tools in a provider. Only tools with an `execute` function are callable. The namespace defaults to `codemode`. |
+| `generateTypes` | `(tools: TanStackTool[], namespace?: string) => string` | Converts supported TanStack AI schemas to JSON Schema, then generates declarations. |
+| `resolveProvider` | `(provider: ToolProvider) => ResolvedProvider` | Resolves a framework-independent provider without schema validation. |
+| `normalizeProviders` | `(tools: ToolProviderTools \| ToolProvider[]) => ToolProvider[]` | Converts raw tools into a one-element provider array. |
 
 This entry point also exports `DEFAULT_DESCRIPTION`. `tanstackTools()` excludes tools with `needsApproval: true` or a function-valued `needsApproval`. Tools with `needsApproval: false` remain callable.
 
@@ -838,10 +838,10 @@ interface IframeSandboxExecutorOptions {
 
 The iframe executor accepts these options:
 
-| Field   | Default                                                       | Description                                                                                                      |
-| ------- | ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| timeout | 30000                                                         | Maximum execution time in milliseconds. It cannot preempt a synchronous loop that blocks the browser event loop. |
-| csp     | default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval'; | Content Security Policy applied to the sandbox iframe document.                                                  |
+| Field | Default | Description |
+| --- | --- | --- |
+| `timeout` | `30000` | Maximum execution time in milliseconds. It cannot preempt a synchronous loop that blocks the browser event loop. |
+| `csp` | `default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval';` | Content Security Policy applied to the sandbox iframe document. |
 
 Each execution creates a hidden iframe with `sandbox="allow-scripts"`. Tool calls cross the iframe boundary through nonce-scoped `postMessage` messages. The iframe is removed after success, error, or timeout.
 

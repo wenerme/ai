@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # mTLS with Application Security
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/mtls/mtls-app-security/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/mtls/mtls-app-security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -22,15 +22,17 @@ API Shield is not required to use mTLS.
 
 By default, mTLS uses Client Certificates issued by a Cloudflare-managed CA and set at account-level. If you have an Enterprise account, you also have the option to [bring your own CA](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/).
 
-## 1\. Enable mTLS
+## 1. Enable mTLS
 
 1. Go to your Cloudflare dashboard and select your account and domain.
-2. Go to **SSL/TLS** \> **[Client Certificates](https://developers.cloudflare.com/ssl/client-certificates/)** and, on the **Hosts** section, select **Edit** to add the hostnames you want to [enable mTLS](https://developers.cloudflare.com/ssl/client-certificates/enable-mtls/) for.
-Example host: `mtls-test.example.com`
+2. Go to **SSL/TLS** > **[Client Certificates](https://developers.cloudflare.com/ssl/client-certificates/)** and, on the **Hosts** section, select **Edit** to add the hostnames you want to [enable mTLS](https://developers.cloudflare.com/ssl/client-certificates/enable-mtls/) for.
+
+   Example host: `mtls-test.example.com`
 3. Select **Add Certificate**. The Cloudflare-managed CA is the default **Certificate Authority**.
 4. Fill in the required fields. You can choose one of the following options:
-* Generate a private key (usually referred to as Private Certificate) and Certificate Signing Request (CSR) with Cloudflare (which includes the Public Certificate).
-* Use your own private key and CSR which allows you to also [label client certificates](https://developers.cloudflare.com/ssl/client-certificates/label-client-certificate/).
+
+- Generate a private key (usually referred to as Private Certificate) and Certificate Signing Request (CSR) with Cloudflare (which includes the Public Certificate).
+- Use your own private key and CSR which allows you to also [label client certificates](https://developers.cloudflare.com/ssl/client-certificates/label-client-certificate/).
 
 To generate and use your own CSR, you can run a command like the following:
 
@@ -42,7 +44,7 @@ Or use a script like this one from [GitHub ↗](https://github.com/erfianugrah/r
 
 Do not forget to copy the values shown when creating the certificate as they become unavailable after creation.
 
-## 2\. Install the client certificate
+## 2. Install the client certificate
 
 In order for a client to utilize the Client Certificate you created, it must be on the devices that you want to use them on. You will want to place them in the same directory as your process / script that targets your APIs / hostnames.
 
@@ -50,7 +52,7 @@ We generally recommended using one Client Certificate per device. Configuring yo
 
 An example is to [add both certificates to the Keychain ↗](https://support.apple.com/en-gb/guide/keychain-access/kyca2431/mac) on a MacBook laptop.
 
-Another example is to generate a [PKCS12 (P12) certificate ↗](https://en.wikipedia.org/wiki/PKCS%5F12) file and then [add it to your browser ↗](https://www.ibm.com/docs/en/engineering-lifecycle-management-suite/lifecycle-management/7.0.2?topic=dashboards-importing-certificates-configuring-browsers):
+Another example is to generate a [PKCS12 (P12) certificate ↗](https://en.wikipedia.org/wiki/PKCS_12) file and then [add it to your browser ↗](https://www.ibm.com/docs/en/engineering-lifecycle-management-suite/lifecycle-management/7.0.2?topic=dashboards-importing-certificates-configuring-browsers):
 
 ```sh
 openssl pkcs12 -export -out certificate.p12 -inkey private-cert.pem -in cert.pem
@@ -66,11 +68,11 @@ curl -v --cert cert.pem --key private-cert.pem <HOSTNAME>
 
 Use the values from the previous step.
 
-## 3\. Validate the client certificate in the WAF
+## 3. Validate the client certificate in the WAF
 
 mTLS is verified and checked in the [Cloudflare WAF phase](https://developers.cloudflare.com/waf/reference/phases/). This is done by creating WAF [Custom Rules](https://developers.cloudflare.com/waf/custom-rules/) using the dynamic fields.
 
-All Client Certificate details can be found in the [cf.tls\_\*](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/?field-category=mTLS&field-category=SSL/TLS) fields in the [Cloudflare Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/).
+All Client Certificate details can be found in the [`cf.tls_*`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/?field-category=mTLS&field-category=SSL/TLS) fields in the [Cloudflare Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/).
 
 Example WAF Custom Rule with action block:
 

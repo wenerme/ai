@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Application Profiles
 
-Last updated Sep 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/application-profiles/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/application-profiles/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Application Profiles define application-specific expectations and classify requests against them. They add a positive-security model to your existing protections.
 
@@ -42,16 +42,16 @@ Application Profiles complement [Managed Rules](https://developers.cloudflare.co
 
 ## Explore Application Profiles
 
-* [Get started](https://developers.cloudflare.com/waf/detections/application-profiles/get-started/)
-* [Schema Profiles](https://developers.cloudflare.com/waf/detections/application-profiles/schema-profiles/)
-* [Analyze profile detections](https://developers.cloudflare.com/waf/detections/application-profiles/analyze-profile-detections/)
-* [Enforce profiles with Custom Rules](https://developers.cloudflare.com/waf/detections/application-profiles/enforce-profiles-with-custom-rules/)
-* [Fields](https://developers.cloudflare.com/waf/detections/application-profiles/fields/)
+- [Get started](https://developers.cloudflare.com/waf/detections/application-profiles/get-started/)
+- [Schema Profiles](https://developers.cloudflare.com/waf/detections/application-profiles/schema-profiles/)
+- [Analyze profile detections](https://developers.cloudflare.com/waf/detections/application-profiles/analyze-profile-detections/)
+- [Enforce profiles with Custom Rules](https://developers.cloudflare.com/waf/detections/application-profiles/enforce-profiles-with-custom-rules/)
+- [Fields](https://developers.cloudflare.com/waf/detections/application-profiles/fields/)
 
 ## See also
 
-* [Schema learning](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/)
-* [Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/)
+- [Schema learning](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/)
+- [Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/)
 
 Was this helpful?
 

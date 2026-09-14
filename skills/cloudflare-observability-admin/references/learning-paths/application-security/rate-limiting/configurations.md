@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configurations
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/application-security/rate-limiting/configurations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/application-security/rate-limiting/configurations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Let's step through an example. If your `/create-account` page is being attacked, you will create a rule to limit the amount of requests, per `counting characteristic`, that you feel comfortable permitting through to your origin.
 
-The rule below is being created on the `free` plan, which limits configuration options. The rule will trigger if the URI path matches `/create-account`, from the same IP address, _after_ 5 requests and within a 10 second window, [within each Cloudflare datacenter](https://developers.cloudflare.com/waf/rate-limiting-rules/request-rate/), globally.
+The rule below is being created on the `free` plan, which limits configuration options. The rule will trigger if the URI path matches `/create-account`, from the same IP address, *after* 5 requests and within a 10 second window, [within each Cloudflare datacenter](https://developers.cloudflare.com/waf/rate-limiting-rules/request-rate/), globally.
 
 ---
 
@@ -30,10 +30,11 @@ In the previous module, we reviewed the various configurations available per pla
 
 The rule below is being created on the `enterprise` plan, so we are no longer limited to default configurations.
 
-* The rule will also limit the number of requests to `/create-account`, but will only trigger against `POST` requests. In the basic example, even requests with the `GET` method will increment the counter.
-* Requests that do not have a [client certificate (mTLS)](https://developers.cloudflare.com/ssl/client-certificates/), will increment the counter.
-* Requests will be counted using the [IP with NAT support](https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/#use-cases-of-ip-with-nat-support) characteristic.
-* Within a 1 minute period, for each counted entity, if the number of requests exceeds 10, then the user will be presented with a [Managed Challenge](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/#managed-challenge) for a custom duration of 1 day.
+- The rule will also limit the number of requests to `/create-account`, but will only trigger against `POST` requests. In the basic example, even requests with the `GET` method will increment the counter.
+- Requests that do not have a [client certificate (mTLS)](https://developers.cloudflare.com/ssl/client-certificates/), will increment the counter.
+- Requests will be counted using the [IP with NAT support](https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/#use-cases-of-ip-with-nat-support) characteristic.
+- Within a 1 minute period, for each counted entity, if the number of requests exceeds 10, then the user will be presented with a [Managed Challenge](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/#managed-challenge) for a custom duration of 1 day.
+
 ![rate-limiting-advanced-config-1](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=688,height=868,format=webp/_astro/rl-advanced-config.CWcevnzk.png)
 
 ---

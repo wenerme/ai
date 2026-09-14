@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Testing your Agents
 
-Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/getting-started/testing-your-agent/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/getting-started/testing-your-agent/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Because Agents run on Cloudflare Workers and Durable Objects, they can be tested using the same tools and techniques as Workers and Durable Objects.
 
@@ -126,7 +126,7 @@ Your worker has access to the following bindings:
 
 This spins up a local development server that runs the same runtime as Cloudflare Workers, and allows you to iterate on your Agent's code and test it locally without deploying it.
 
-Visit the [wrangler dev ↗](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) docs to review the CLI flags and configuration options.
+Visit the [`wrangler dev` ↗](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) docs to review the CLI flags and configuration options.
 
 Was this helpful?
 

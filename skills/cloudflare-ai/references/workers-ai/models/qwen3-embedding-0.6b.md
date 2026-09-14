@@ -1,5 +1,5 @@
 ---
-description: The Qwen3 Embedding model series is the latest proprietary model of the Qwen family, specifically designed for text embedding and ranking tasks.
+description: "The Qwen3 Embedding model series is the latest proprietary model of the Qwen family, specifically designed for text embedding and ranking tasks. "
 title: qwen3-embedding-0.6b
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -16,23 +16,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Embeddings • Qwen
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/qwen/qwen3-embedding-0.6b`
 
-* Cloudflare-hosted
+- Cloudflare-hosted
 
 The Qwen3 Embedding model series is the latest proprietary model of the Qwen family, specifically designed for text embedding and ranking tasks.
 
-| Model Info                                                                          |                           |
-| ----------------------------------------------------------------------------------- | ------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 8,192 tokens              |
-| Unit Pricing                                                                        | $0.012 per M input tokens |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 8,192 tokens |
+| Unit Pricing | $0.012 per M input tokens |
 
 ## Usage
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -60,7 +59,6 @@ export default {
 ```
 
 ```py
-
 import os
 import requests
 
@@ -84,7 +82,6 @@ print(response.json())
 ```
 
 ```sh
-
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/qwen/qwen3-embedding-0.6b  \
   -X POST  \
   -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
@@ -113,19 +110,19 @@ instruction
 
 `one of`
 
-▶data\[\]
+▶data\[]
 
 `array`
 
-▶shape\[\]
+▶shape\[]
 
 `array`
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/schema-input.json) [Download](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/schema-output.json) [Download](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/schema-output.json)
 
 Was this helpful?
 

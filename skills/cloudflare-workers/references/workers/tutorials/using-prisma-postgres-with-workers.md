@@ -12,27 +12,27 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Set up and use a Prisma Postgres database
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Prisma Postgres ↗](https://www.prisma.io/postgres) is a managed, serverless PostgreSQL database. It supports features like connection pooling, caching, real-time subscriptions, and query optimization recommendations.
 
 In this tutorial, you will learn how to:
 
-* Set up a Cloudflare Workers project with [Prisma ORM ↗](https://www.prisma.io/docs).
-* Create a Prisma Postgres instance from the Prisma CLI.
-* Model data and run migrations with Prisma Postgres.
-* Query the database from Workers.
-* Deploy the Worker to Cloudflare.
+- Set up a Cloudflare Workers project with [Prisma ORM ↗](https://www.prisma.io/docs).
+- Create a Prisma Postgres instance from the Prisma CLI.
+- Model data and run migrations with Prisma Postgres.
+- Query the database from Workers.
+- Deploy the Worker to Cloudflare.
 
 ## Prerequisites
 
 To follow this guide, ensure you have the following:
 
-* Node.js `v18.18` or higher installed.
-* An active [Cloudflare account ↗](https://dash.cloudflare.com/).
-* A basic familiarity with installing and using command-line interface (CLI) applications.
+- Node.js `v18.18` or higher installed.
+- An active [Cloudflare account ↗](https://dash.cloudflare.com/).
+- A basic familiarity with installing and using command-line interface (CLI) applications.
 
-## 1\. Create a new Worker project
+## 1. Create a new Worker project
 
 Begin by using [C3](https://developers.cloudflare.com/pages/get-started/c3/) to create a Worker project in the command line:
 
@@ -48,6 +48,8 @@ cd ./prisma-postgres-worker
 
 Your initial `src/index.ts` file currently contains a simple request handler:
 
+*src/index.tsts*
+
 ```ts
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
@@ -56,11 +58,11 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
-## 2\. Setup Prisma in your project
+## 2. Setup Prisma in your project
 
 In this step, you will set up Prisma ORM with a Prisma Postgres database using the CLI. Then you will create and execute helper scripts to create tables in the database and generate a Prisma client to query it.
 
-### 2.1\. Install required dependencies
+### 2.1. Install required dependencies
 
 Install Prisma CLI as a dev dependency:
 
@@ -102,7 +104,7 @@ pnpm add @prisma/extension-accelerate
 bun add @prisma/extension-accelerate
 ```
 
-Install the [dotenv-cli package ↗](https://www.npmjs.com/package/dotenv-cli) to load environment variables from `.dev.vars`:
+Install the [`dotenv-cli` package ↗](https://www.npmjs.com/package/dotenv-cli) to load environment variables from `.dev.vars`:
 
 npmyarnpnpmbun
 
@@ -122,7 +124,7 @@ pnpm add -D dotenv-cli
 bun add -d dotenv-cli
 ```
 
-### 2.2\. Create a Prisma Postgres database and initialize Prisma
+### 2.2. Create a Prisma Postgres database and initialize Prisma
 
 Initialize Prisma in your application:
 
@@ -146,13 +148,13 @@ Once logged in (or if you were already logged in), the CLI will prompt you to se
 
 Once the command has terminated, it will have created:
 
-* A project in your [Platform Console ↗](https://console.prisma.io/) containing a Prisma Postgres database instance.
-* A `prisma` folder containing `schema.prisma`, where you will define your database schema.
-* An `.env` file in the project root, which will contain the Prisma Postgres database url `DATABASE_URL=<your-prisma-postgres-database-url>`.
+- A project in your [Platform Console ↗](https://console.prisma.io/) containing a Prisma Postgres database instance.
+- A `prisma` folder containing `schema.prisma`, where you will define your database schema.
+- An `.env` file in the project root, which will contain the Prisma Postgres database url `DATABASE_URL=<your-prisma-postgres-database-url>`.
 
 Note that Cloudflare Workers do not support `.env` files. You will use a file called `.dev.vars` instead of the `.env` file that was just created.
 
-### 2.3\. Prepare environment variables
+### 2.3. Prepare environment variables
 
 Rename the `.env` file in the root of your application to `.dev.vars` file:
 
@@ -160,9 +162,11 @@ Rename the `.env` file in the root of your application to `.dev.vars` file:
 mv .env .dev.vars
 ```
 
-### 2.4\. Apply database schema changes
+### 2.4. Apply database schema changes
 
 Open the `schema.prisma` file in the `prisma` folder and add the following `User` model to your database:
+
+*prisma/schema.prismaprisma*
 
 ```prisma
 generator client {
@@ -183,6 +187,8 @@ model User {
 
 Next, add the following helper scripts to the `scripts` section of your `package.json`:
 
+*package.jsonjson*
+
 ```json
 "scripts": {
   "migrate": "dotenv -e .dev.vars -- npx prisma migrate dev",
@@ -202,9 +208,11 @@ When prompted, provide a name for the migration (for example, `init`).
 
 After these steps are complete, Prisma ORM is fully set up and connected to your Prisma Postgres database.
 
-## 3\. Develop the application
+## 3. Develop the application
 
 Modify the `src/index.ts` file and replace its contents with the following code:
+
+*src/index.tsts*
 
 ```ts
 import { PrismaClient } from "@prisma/client/edge";
@@ -252,7 +260,7 @@ Run the development server:
 npm run dev
 ```
 
-Visit [https://localhost:8787 ↗](https://localhost:8787) to see your app display the following output:
+Visit [`https://localhost:8787` ↗](https://localhost:8787) to see your app display the following output:
 
 ```sh
 Number of users in the database: 1
@@ -260,9 +268,9 @@ Number of users in the database: 1
 
 Every time you refresh the page, a new user is created. The number displayed will increment by `1` with each refresh as it returns the total number of users in your database.
 
-## 4\. Deploy the application to Cloudflare
+## 4. Deploy the application to Cloudflare
 
-When the application is deployed to Cloudflare, it needs access to the `DATABASE_URL` environment variable that is defined locally in `.dev.vars`. You can use the [npx wrangler secret put](https://developers.cloudflare.com/workers/configuration/secrets/#adding-secrets-to-your-project) command to upload the `DATABASE_URL` to the deployment environment:
+When the application is deployed to Cloudflare, it needs access to the `DATABASE_URL` environment variable that is defined locally in `.dev.vars`. You can use the [`npx wrangler secret put`](https://developers.cloudflare.com/workers/configuration/secrets/#adding-secrets-to-your-project) command to upload the `DATABASE_URL` to the deployment environment:
 
 ```sh
 npx wrangler secret put DATABASE_URL
@@ -296,8 +304,8 @@ Congratulations on building and deploying a simple application with Prisma Postg
 
 To enhance your application further:
 
-* Add [caching ↗](https://www.prisma.io/docs/postgres/caching) to your queries.
-* Explore the [Prisma Postgres documentation ↗](https://www.prisma.io/docs/postgres/getting-started).
+- Add [caching ↗](https://www.prisma.io/docs/postgres/caching) to your queries.
+- Explore the [Prisma Postgres documentation ↗](https://www.prisma.io/docs/postgres/getting-started).
 
 To see how to build a real-time application with Cloudflare Workers and Prisma Postgres, read [this ↗](https://www.prisma.io/docs/guides/prisma-postgres-realtime-on-cloudflare) guide.
 

@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Migrate from Wrangler v2 to v3
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/wrangler/migration/update-v2-to-v3/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/migration/update-v2-to-v3/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-There are no special instructions for migrating from Wrangler v2 to v3\. You should be able to update Wrangler by following the instructions in [Install/Update Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/#update-wrangler). You should experience no disruption to your workflow.
+There are no special instructions for migrating from Wrangler v2 to v3. You should be able to update Wrangler by following the instructions in [Install/Update Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/#update-wrangler). You should experience no disruption to your workflow.
 
 Caution
 

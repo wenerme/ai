@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Enabling log retention
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpull/enabling-log-retention/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpull/enabling-log-retention/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, your HTTP request logs are not retained. When using the Logpull API for the first time, you will need to enable retention. You can also turn off retention at any time. Note that after retention is turned off, previously saved logs will be available until the retention period expires (refer to [Data retention period](https://developers.cloudflare.com/logs/logpull/understanding-the-basics/#data-retention-period)).
 
@@ -20,8 +20,8 @@ By default, your HTTP request logs are not retained. When using the Logpull API 
 
 There are two endpoints for managing log retention:
 
-* `GET /logs/control/retention/flag` \- returns the current status of retention
-* `POST /logs/control/retention/flag` \- turns retention on or off
+- `GET /logs/control/retention/flag` - returns the current status of retention
+- `POST /logs/control/retention/flag` - turns retention on or off
 
 Note
 
@@ -33,11 +33,22 @@ To make a `POST` call, you must have zone-scoped `edit` permissions, such as Sup
 
 ### Check log retention status
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
-* `Logs Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+- <code>Logs Read</code>
+
+</details>
+
+*Get log retention flagbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logs/control/retention/flag" \
@@ -60,10 +71,21 @@ If the zone has log retention [enabled](https://developers.cloudflare.com/logs/l
 
 ### Turn on log retention
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*Update log retention flagbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logs/control/retention/flag" \
@@ -99,10 +121,21 @@ Invoke-RestMethod -Uri $uri -Method Post -Headers $headers -Body $bodyFlag -Cont
 
 ### Turn off log retention
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*Update log retention flagbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logs/control/retention/flag" \

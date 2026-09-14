@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Ownership challenge FAQ
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/logpush-ownership-challenge/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/logpush-ownership-challenge/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The ownership challenge is a one-time verification that proves you have read access to a destination bucket before Cloudflare pushes logs to it. This mechanism prevents you from accidentally configuring a Logpush job that pushes data to a bucket you do not control.
 
@@ -33,9 +33,9 @@ The ownership challenge primarily protects you from accidental misconfiguration.
 
 The challenge also prevents malicious scenarios where someone could:
 
-* Point a Logpush job at another customer's bucket
-* Push bogus or malicious log data to that bucket
-* Pollute or corrupt the victim's log storage
+- Point a Logpush job at another customer's bucket
+- Push bogus or malicious log data to that bucket
+- Pollute or corrupt the victim's log storage
 
 Note
 
@@ -45,11 +45,11 @@ You may find the ownership challenge cumbersome because it is unusual and diffic
 
 The ownership challenge is a JSON Web Token (JWT) containing claims that bind it to a specific context. The token includes:
 
-* **Object type** \- Whether the job is zone-scoped, account-scoped, or tenant-scoped
-* **Object ID** \- The specific zone or account identifier
-* **Destination configuration** \- The full destination configuration string
-* **Destination fingerprint** \- A hash of the bucket name and paths/prefixes
-* **Expiration** \- The token expires after 7 days
+- **Object type** - Whether the job is zone-scoped, account-scoped, or tenant-scoped
+- **Object ID** - The specific zone or account identifier
+- **Destination configuration** - The full destination configuration string
+- **Destination fingerprint** - A hash of the bucket name and paths/prefixes
+- **Expiration** - The token expires after 7 days
 
 When you submit the challenge token, Cloudflare validates that all claims match your job creation request. This prevents the token from being reused for a different account, zone, or destination.
 
@@ -67,33 +67,33 @@ Your bucket's IAM/access controls and Cloudflare account security are the primar
 
 ### Best practices
 
-* **Delete the challenge file after job creation** \- Once your Logpush job is created, you can safely delete the `ownership-challenge.txt` file from your bucket.
-* **Restrict bucket permissions** \- Grant write access only to Cloudflare's service accounts. For AWS S3, grant `PutObject` permission to `arn:aws:iam::391854517948:user/cloudflare-logpush`. For GCS, grant `Storage Object Admin` to `logpush@cloudflare-data.iam.gserviceaccount.com`.
-* **Monitor your Logpush jobs** \- Use the [Logpush health dashboards](https://developers.cloudflare.com/logs/logpush/logpush-health/) to monitor job status and detect anomalies.
+- **Delete the challenge file after job creation** - Once your Logpush job is created, you can safely delete the `ownership-challenge.txt` file from your bucket.
+- **Restrict bucket permissions** - Grant write access only to Cloudflare's service accounts. For AWS S3, grant `PutObject` permission to `arn:aws:iam::391854517948:user/cloudflare-logpush`. For GCS, grant `Storage Object Admin` to `logpush@cloudflare-data.iam.gserviceaccount.com`.
+- **Monitor your Logpush jobs** - Use the [Logpush health dashboards](https://developers.cloudflare.com/logs/logpush/logpush-health/) to monitor job status and detect anomalies.
 
 ## Which destinations require an ownership challenge?
 
-| Destination           | Ownership challenge required       |
-| --------------------- | ---------------------------------- |
-| AWS S3                | Yes (or use access key/secret key) |
-| Google Cloud Storage  | Yes                                |
-| Azure Blob Storage    | Yes                                |
-| Sumo Logic            | Yes                                |
-| S3-compatible storage | No                                 |
-| HTTP endpoints        | No                                 |
-| Datadog               | No                                 |
-| Splunk                | No                                 |
-| New Relic             | No                                 |
+| Destination | Ownership challenge required |
+| --- | --- |
+| AWS S3 | Yes (or use access key/secret key) |
+| Google Cloud Storage | Yes |
+| Azure Blob Storage | Yes |
+| Sumo Logic | Yes |
+| S3-compatible storage | No |
+| HTTP endpoints | No |
+| Datadog | No |
+| Splunk | No |
+| New Relic | No |
 
 For destinations that do not require an ownership challenge, Cloudflare uses alternative authentication methods such as API keys or tokens.
 
 ## Related resources
 
-* [API configuration](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/)
-* [Manage Logpush with cURL](https://developers.cloudflare.com/logs/logpush/examples/example-logpush-curl/)
-* [Logpush permissions](https://developers.cloudflare.com/logs/logpush/permissions/)
-* [Enable AWS S3 destination](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/aws-s3/)
-* [Enable GCS destination](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/google-cloud-storage/)
+- [API configuration](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/)
+- [Manage Logpush with cURL](https://developers.cloudflare.com/logs/logpush/examples/example-logpush-curl/)
+- [Logpush permissions](https://developers.cloudflare.com/logs/logpush/permissions/)
+- [Enable AWS S3 destination](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/aws-s3/)
+- [Enable GCS destination](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/google-cloud-storage/)
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Platform
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/platform/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/platform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Was this helpful?
 

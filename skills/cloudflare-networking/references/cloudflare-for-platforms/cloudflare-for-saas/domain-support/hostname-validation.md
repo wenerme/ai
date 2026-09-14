@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Hostname validation
 
-Last updated Jun 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Before Cloudflare can proxy traffic through a custom hostname, we need to verify your customer's ownership of that hostname.
 
@@ -30,8 +30,8 @@ If ease of use for your customers is more important, review our [real-time valid
 
 Hostname validation and certificate validation use different tokens and API fields.
 
-* `ownership_verification` and `ownership_verification_http` validate hostname ownership and affect the custom hostname `status`.
-* `ssl.validation_records` validates certificate issuance and affects `ssl.status`.
+- `ownership_verification` and `ownership_verification_http` validate hostname ownership and affect the custom hostname `status`.
+- `ssl.validation_records` validates certificate issuance and affects `ssl.status`.
 
 For production traffic, the hostname should have `status: active`, `ssl.status: active`, and DNS that points to your SaaS target.
 
@@ -54,12 +54,12 @@ Multiple SaaS providers can hold an active custom hostname for the same domain s
 
 ## Related resources
 
-* [Pre-validation](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/pre-validation/)
-* [Real-time validation](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/realtime-validation/)
-* [Zero-downtime migration](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/zero-downtime-migration/)
-* [Backoff schedule](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/backoff-schedule/)
-* [Validation status](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/validation-status/)
-* [Error codes](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/error-codes/)
+- [Pre-validation](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/pre-validation/)
+- [Real-time validation](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/realtime-validation/)
+- [Zero-downtime migration](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/zero-downtime-migration/)
+- [Backoff schedule](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/backoff-schedule/)
+- [Validation status](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/validation-status/)
+- [Error codes](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/error-codes/)
 
 Was this helpful?
 

@@ -1,6 +1,5 @@
 ---
-description: scheduled events are automatically dispatched according to the specified cron
-triggers:
+description: "scheduled events are automatically dispatched according to the specified cron\ntriggers:"
 title: Scheduled Events
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -13,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Scheduled Events
 
-Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/core/scheduled/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/core/scheduled/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [ScheduledEvent Reference](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/)
+- [`ScheduledEvent` Reference](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/)
 
 ## Cron Triggers
 

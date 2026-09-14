@@ -12,23 +12,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create custom error rules
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/custom-errors/create-rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/custom-errors/create-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## In the dashboard
 
 ### Create a custom error rule
 
-1. In the Cloudflare dashboard, go to the Rules **Overview** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
-2. Select **Create rule** \> **Custom Error Rule**.
+1. In the Cloudflare dashboard, go to the Rules **Overview** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
+2. Select **Create rule** > **Custom Error Rule**.
 3. Enter a descriptive name for the rule in **Rule name**.
 4. Under **If incoming requests match**, select one of the following options:
+   - **Custom filter expression**: The rule will only apply to traffic matching a custom expression. Define the [rule expression](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/) to configure which requests should be rewritten. Use either the Expression Builder or the Expression Editor to define the custom expression. For more information, refer to [Edit expressions in the dashboard](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/).
+   - **All incoming requests**: The rule will apply to all responses with a `400` status code or above, except for block and challenge actions issued by Cloudflare’s security products.
+5. In **Deliver a custom error response**, select the response type (either *Custom error asset* or one of the available inline responses).
 
-  * **Custom filter expression**: The rule will only apply to traffic matching a custom expression. Define the [rule expression](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/) to configure which requests should be rewritten. Use either the Expression Builder or the Expression Editor to define the custom expression. For more information, refer to [Edit expressions in the dashboard](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/).
-  * **All incoming requests**: The rule will apply to all responses with a `400` status code or above, except for block and challenge actions issued by Cloudflare’s security products.
-5. In **Deliver a custom error response**, select the response type (either _Custom error asset_ or one of the available inline responses).
-If you select _Custom error asset_, select an existing custom error asset in **Asset**, or select **Create new asset** to [create a new custom error asset](#create-a-custom-error-asset-dashboard).
-If you select _JSON response_, _HTML response_, _Text response_, or _XML response_, enter the custom error response you want to send to web site visitors in **JSON response**, **HTML response**, **Text response**, or **XML response**, respectively. The response can include [error tokens](https://developers.cloudflare.com/rules/custom-errors/reference/error-tokens/) that Cloudflare will replace with real values before sending the response to the visitor. The maximum response size is 10 KB.
+   If you select *Custom error asset*, select an existing custom error asset in **Asset**, or select **Create new asset** to [create a new custom error asset](#create-a-custom-error-asset-dashboard).
+
+   If you select *JSON response*, *HTML response*, *Text response*, or *XML response*, enter the custom error response you want to send to web site visitors in **JSON response**, **HTML response**, **Text response**, or **XML response**, respectively. The response can include [error tokens](https://developers.cloudflare.com/rules/custom-errors/reference/error-tokens/) that Cloudflare will replace with real values before sending the response to the visitor. The maximum response size is 10 KB.
 6. (Optional) In **Response code**, enter the HTTP status code of the response (an integer value between `400` and `999`). If provided, this value will override the current response status code.
 7. (Optional) Under **Place at**, define where to place the rule in the rules list: first rule in the list, last rule in the list, or in a custom position (after a given rule).
 8. To save and deploy your rule, select **Deploy**. If you are not ready to deploy your rule, select **Save as Draft**.
@@ -40,7 +40,7 @@ If you select _JSON response_, _HTML response_, _Text response_, or _XML respons
 3. In **URL**, enter the URL of the page you want to fetch and store in Cloudflare's global network. Cloudflare will fetch all the page resources and store a minified version of the page you can use in one or more custom error rules.
 4. Select **Save**.
 
-To review existing custom error assets, go to **Rules** \> **Settings** \> **Custom Error Assets** tab.
+To review existing custom error assets, go to **Rules** > **Settings** > **Custom Error Assets** tab.
 
 ## Via API
 
@@ -80,9 +80,9 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_pages/assets" \
 
 When creating a custom error rule via API, make sure you:
 
-* Set the rule action to `serve_error`.
-* Define the [rule parameters](https://developers.cloudflare.com/rules/custom-errors/reference/parameters/#custom-error-rules) in the `action_parameters` field according to response type.
-* Deploy the rule to the `http_custom_errors` phase.
+- Set the rule action to `serve_error`.
+- Define the [rule parameters](https://developers.cloudflare.com/rules/custom-errors/reference/parameters/#custom-error-rules) in the `action_parameters` field according to response type.
+- Deploy the rule to the `http_custom_errors` phase.
 
 The first rule in the `http_custom_errors` phase ruleset that matches will be applied. No other rules in the ruleset will be matched or applied. Additionally, custom error rules defined at the zone level will have priority over rules defined at the account level.
 
@@ -92,7 +92,8 @@ Follow this workflow to create a custom error rule for a given zone via API:
 
 1. Use the [List zone rulesets](https://developers.cloudflare.com/api/resources/rulesets/methods/list/) operation to check if there is already a ruleset for the `http_custom_errors` phase at the zone level.
 2. If the phase ruleset does not exist, create it using the [Update a zone entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/update/) operation, which allows you to create a ruleset if it does not exist and update all the rules in the ruleset. Create the ruleset in the `http_custom_errors` phase.
-If the phase ruleset already exists, use the [Update a zone entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/update/) operation to replace all the rules in the ruleset, or the [Add a rule to a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/add-rule/) operation to add a rule to the existing rules in the ruleset.
+
+   If the phase ruleset already exists, use the [Update a zone entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/update/) operation to replace all the rules in the ruleset, or the [Add a rule to a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/add-rule/) operation to add a rule to the existing rules in the ruleset.
 
 To create a custom error rule at the account level, use the corresponding account-level API endpoints.
 
@@ -100,30 +101,41 @@ To create a custom error rule at the account level, use the corresponding accoun
 
 This example configures a custom error rule returning a [previously created custom error asset](#create-a-custom-error-asset-api) named `500_error_template` for responses with a `500` HTTP status code.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Response Compression Write`
-* `Config Settings Write`
-* `Dynamic URL Redirects Write`
-* `Cache Settings Write`
-* `Custom Errors Write`
-* `Origin Write`
-* `Managed headers Write`
-* `Zone Transform Rules Write`
-* `Mass URL Redirects Write`
-* `Magic Firewall Write`
-* `L4 DDoS Managed Ruleset Write`
-* `HTTP DDoS Managed Ruleset Write`
-* `Sanitize Write`
-* `Transform Rules Write`
-* `Select Configuration Write`
-* `Bot Management Write`
-* `Zone WAF Write`
-* `Account WAF Write`
-* `Account Rulesets Write`
-* `Logs Write`
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Response Compression Write</code>
+- <code>Config Settings Write</code>
+- <code>Dynamic URL Redirects Write</code>
+- <code>Cache Settings Write</code>
+- <code>Custom Errors Write</code>
+- <code>Origin Write</code>
+- <code>Managed headers Write</code>
+- <code>Zone Transform Rules Write</code>
+- <code>Mass URL Redirects Write</code>
+- <code>Magic Firewall Write</code>
+- <code>L4 DDoS Managed Ruleset Write</code>
+- <code>HTTP DDoS Managed Ruleset Write</code>
+- <code>Sanitize Write</code>
+- <code>Transform Rules Write</code>
+- <code>Select Configuration Write</code>
+- <code>Bot Management Write</code>
+- <code>Zone WAF Write</code>
+- <code>Account WAF Write</code>
+- <code>Account Rulesets Write</code>
+- <code>Logs Write</code>
+- <code>Logs Write</code>
+
+</details>
+
+*Update a zone entry point rulesetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_custom_errors/entrypoint" \
@@ -153,7 +165,7 @@ This `PUT` request, corresponding to the [Update a zone entry point ruleset](htt
 
 The API token used in API requests to manage Custom Error Rules and Custom Error Assets must have at least the following permission:
 
-* _Custom Error Rules_ \> _Edit_
+- *Custom Error Rules* > *Edit*
 
 Was this helpful?
 
@@ -164,5 +176,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/custom-errors/create-rules/#page","headline":"Create custom error rules · Cloudflare Rules docs","description":"Create custom error rules in the dashboard or via the API.","url":"https://developers.cloudflare.com/rules/custom-errors/create-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/custom-errors/create-rules/#page","headline":"Create custom error rules · Cloudflare Rules docs","description":"Create custom error rules in the dashboard or via the API.","url":"https://developers.cloudflare.com/rules/custom-errors/create-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Angular
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/angular/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/angular/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this guide, you will create a new [Angular ↗](https://angular.dev/) application and deploy to Cloudflare Workers (with the new [Workers Assets](https://developers.cloudflare.com/workers/static-assets/)).
 
@@ -52,9 +52,9 @@ WorkersDeployed
 
 Wrangler handles configuration automatically
 
-## 1\. Set up a new project
+## 1. Set up a new project
 
-Use the [create-cloudflare ↗](https://www.npmjs.com/package/create-cloudflare) CLI (C3) to set up a new project. C3 will create a new project directory, initiate Angular's official setup tool, and provide the option to deploy instantly.
+Use the [`create-cloudflare` ↗](https://www.npmjs.com/package/create-cloudflare) CLI (C3) to set up a new project. C3 will create a new project directory, initiate Angular's official setup tool, and provide the option to deploy instantly.
 
 To use `create-cloudflare` to create a new Angular project with Workers Assets, run the following command:
 
@@ -78,7 +78,7 @@ After setting up your project, change your directory by running the following co
 cd my-angular-app
 ```
 
-## 2\. Develop locally
+## 2. Develop locally
 
 After you have created your project, run the following command in the project directory to start a local server. This will allow you to preview your project locally during development.
 
@@ -96,7 +96,7 @@ yarn run start
 pnpm run start
 ```
 
-## 3\. Deploy your Project
+## 3. Deploy your Project
 
 Your project can be deployed to a `*.workers.dev` subdomain or a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/), from your own machine or from any CI/CD system, including [Cloudflare's own](https://developers.cloudflare.com/workers/ci-cd/builds/).
 
@@ -120,7 +120,7 @@ pnpm run deploy
 
 ## Static assets
 
-By default, Cloudflare first tries to match a request path against a static asset path, which is based on the file structure of the uploaded asset directory. This is either the directory specified by `assets.directory` in your Wrangler config or, in the case of the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/), the output directory of the client build. Failing that, we invoke a Worker if one is present. If there is no Worker, or the Worker then uses the asset binding, Cloudflare will fallback to the behaviour set by [not\_found\_handling](https://developers.cloudflare.com/workers/static-assets/#routing-behavior).
+By default, Cloudflare first tries to match a request path against a static asset path, which is based on the file structure of the uploaded asset directory. This is either the directory specified by `assets.directory` in your Wrangler config or, in the case of the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/), the output directory of the client build. Failing that, we invoke a Worker if one is present. If there is no Worker, or the Worker then uses the asset binding, Cloudflare will fallback to the behaviour set by [`not_found_handling`](https://developers.cloudflare.com/workers/static-assets/#routing-behavior).
 
 Refer to the [routing documentation](https://developers.cloudflare.com/workers/static-assets/routing/) for more information about how routing works with static assets, and how to customize this behavior.
 

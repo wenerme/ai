@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RealtimeKit
 
-Last updated Sep 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare RealtimeKit lets you build your own audio and video experiences inside web and mobile apps. It routes media on [Cloudflare's global WebRTC infrastructure](https://developers.cloudflare.com/realtime/sfu/calls-vs-sfus/), so you can deliver low-latency experiences to a global audience without scaling media servers or choosing regions.
 
@@ -68,7 +68,7 @@ sessions + media
 
 **Managed realtime network**Routes realtime media between participants.
 
-Your backend creates Meetings and adds Participants through the RealtimeKit REST API, then passes participant auth tokens to the client SDK. RealtimeKit manages session state and routes realtime media between participants.
+*Your backend creates Meetings and adds Participants through the RealtimeKit REST API, then passes participant auth tokens to the client SDK. RealtimeKit manages session state and routes realtime media between participants.*
 
 ## Key features
 

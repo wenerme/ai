@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Protocol validation rules
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/about/protocol-validation-rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/about/protocol-validation-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Network Firewall (formerly Magic Firewall) supports [Session Initiation Protocol (SIP) ↗](https://datatracker.ietf.org/doc/html/rfc2543) to inspect traffic validity and enforce a positive security model.
 

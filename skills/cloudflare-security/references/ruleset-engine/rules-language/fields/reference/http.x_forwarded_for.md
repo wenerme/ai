@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # http.x\_forwarded\_for
 
-`http.x_forwarded_for` `String`
+`http.x_forwarded_for``String`
 
 The full value of the `X-Forwarded-For` HTTP header.
 
@@ -19,8 +19,8 @@ Example value:
 ```
 
 Categories:
-* Request
-* Headers
+- Request
+- Headers
 
 Was this helpful?
 

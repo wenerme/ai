@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Subrequests
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/subrequests/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/subrequests/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When a Cloudflare Worker intercepts a visitor request, it can dispatch additional outbound fetch calls called subrequests. By default, each subrequest generates its own log entry in Logpush, resulting in multiple log lines for a single visitor-facing request.
 
@@ -22,19 +22,19 @@ Each request stage can be identified by its log fields. You can also opt in to s
 
 Each request stage generates its own log line. You can distinguish between them using the following fields.
 
-_Visitor request_ — the original request from the visitor to your zone:
+*Visitor request* — the original request from the visitor to your zone:
 
-* ClientRequestSource == "eyeball"
+- ClientRequestSource == "eyeball"
 
-_Origin request_ — a request forwarded from Cloudflare to your origin server:
+*Origin request* — a request forwarded from Cloudflare to your origin server:
 
-* OriginIP != "", or
-* OriginResponseStatus != 0 (for example, OriginResponseStatus == 200)
+- OriginIP != "", or
+- OriginResponseStatus != 0 (for example, OriginResponseStatus == 200)
 
-_Worker subrequest_ — a fetch call dispatched by a Worker:
+*Worker subrequest* — a fetch call dispatched by a Worker:
 
-* WorkerSubrequest == true
-* ClientRequestSource == "edgeWorkerFetch"
+- WorkerSubrequest == true
+- ClientRequestSource == "edgeWorkerFetch"
 
 To correlate a subrequest log with its parent, match the subrequest's ParentRayID field to the RayID of the parent request.
 
@@ -44,8 +44,8 @@ Subrequest merging is an opt-in feature on the http\_requests dataset. With subr
 
 ## Merging Eligibility
 
-* A maximum of 50 subrequests are merged per parent request. Subrequests beyond this limit are passed through unmodified as individual log entries.
-* Subrequests must complete within 5 minutes of the visitor request. Subrequests that exceed this window are passed through unmodified.
+- A maximum of 50 subrequests are merged per parent request. Subrequests beyond this limit are passed through unmodified as individual log entries.
+- Subrequests must complete within 5 minutes of the visitor request. Subrequests that exceed this window are passed through unmodified.
 
 Note
 
@@ -55,7 +55,7 @@ Subrequest merging is being gradually rolled out and is not yet available on all
 
 When subrequest merging is enabled, a `Subrequests` field (`array<object>`) is added to each parent request log record. Each element in the array contains the standard http\_requests fields for that subrequest.
 
-The array only includes subrequests that qualify for merging based on the eligibility criteria above. Subrequests that do not qualify appear as separate log entries. The field will be empty (\[\]) if the request has no subrequests, or none qualify.
+The array only includes subrequests that qualify for merging based on the eligibility criteria above. Subrequests that do not qualify appear as separate log entries. The field will be empty (\[]) if the request has no subrequests, or none qualify.
 
 ## Enable subrequest merging
 
@@ -63,7 +63,7 @@ Subrequest merging can be enabled via API or the Cloudflare dashboard.
 
 ### Dashboard
 
-1. In the Cloudflare dashboard, go to the Logpush page at the domain (also known as zone) level. [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
+1. In the Cloudflare dashboard, go to the Logpush page at the domain (also known as zone) level. [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
 2. Select Create a Logpush job or select Edit next to an existing http\_requests job.
 3. Under Advanced Options, enable the Subrequest merging toggle.
 4. Select Save.
@@ -76,7 +76,7 @@ Subrequest merging can be enabled via API or the Cloudflare dashboard.
 
 At least one of the following token permissions is required:
 
-* Logs Write
+- Logs Write
 
 **Create Logpush job**
 

@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # TLS protocols
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/reference/protocols/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/reference/protocols/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare supports the following TLS protocols:
 
-* TLS 1.0
-* TLS 1.1
-* TLS 1.2
-* TLS 1.3
+- TLS 1.0
+- TLS 1.1
+- TLS 1.2
+- TLS 1.3
 
 TLS 1.0 is the [version that Cloudflare sets by default](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/minimum-tls/) for all customers using certificate-based encryption.
 
@@ -43,14 +43,14 @@ TLS 1.3 has become widely adopted. As a general rule, Cloudflare recommends sett
 
 However, not all browser versions support TLS 1.2 and above. Depending on your particular business situation, this may present some limitations in using stronger encryption standards:
 
-* Consider using TLS 1.0 or 1.1 for sites with a broad user base, particularly non-transactional sites. In this way, you minimize the possibility that some clients cannot connect to your site securely.
-* For a narrow user base and sites that run internal applications or business and productivity applications, Cloudflare recommends TLS 1.2\. These sites might already have more stringent security requirements or might be subject to [PCI compliance](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/compliance-status/). You also need to ensure that your users upgrade to a TLS 1.2 compliant browser.
+- Consider using TLS 1.0 or 1.1 for sites with a broad user base, particularly non-transactional sites. In this way, you minimize the possibility that some clients cannot connect to your site securely.
+- For a narrow user base and sites that run internal applications or business and productivity applications, Cloudflare recommends TLS 1.2. These sites might already have more stringent security requirements or might be subject to [PCI compliance](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/compliance-status/). You also need to ensure that your users upgrade to a TLS 1.2 compliant browser.
 
 ## Related resources
 
-* [PCI compliance and vulnerabilities mitigation](https://developers.cloudflare.com/ssl/reference/compliance-and-vulnerabilities/)
-* [Transport Layer Security ↗](https://www.cloudflare.com/learning/ssl/transport-layer-security-tls/)
-* [PCI Security Standards Council ↗](https://www.pcisecuritystandards.org/)
+- [PCI compliance and vulnerabilities mitigation](https://developers.cloudflare.com/ssl/reference/compliance-and-vulnerabilities/)
+- [Transport Layer Security ↗](https://www.cloudflare.com/learning/ssl/transport-layer-security-tls/)
+- [PCI Security Standards Council ↗](https://www.pcisecuritystandards.org/)
 
 Was this helpful?
 

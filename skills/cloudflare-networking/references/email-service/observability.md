@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Observability and logs
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/observability/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/observability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Monitor Email Service performance with logs, metrics, and analytics for sending and routing activity.
 
-* [Metrics and analytics](https://developers.cloudflare.com/email-service/observability/metrics-analytics/)
-* [Audit logs](https://developers.cloudflare.com/email-service/observability/audit-logs/)
-* [Email logs](https://developers.cloudflare.com/email-service/observability/logs/)
+- [Metrics and analytics](https://developers.cloudflare.com/email-service/observability/metrics-analytics/)
+- [Audit logs](https://developers.cloudflare.com/email-service/observability/audit-logs/)
+- [Email logs](https://developers.cloudflare.com/email-service/observability/logs/)
 
 Was this helpful?
 

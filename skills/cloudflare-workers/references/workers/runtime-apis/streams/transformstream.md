@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # TransformStream
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/streams/transformstream/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/streams/transformstream/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -28,16 +28,15 @@ Workers currently only implements an identity transform stream, a type of transf
 let { readable, writable } = new TransformStream();
 ```
 
-* `TransformStream()` TransformStream
-
-  * Returns a new identity transform stream.
+- `TransformStream()` TransformStream
+  - Returns a new identity transform stream.
 
 ## Properties
 
-* `readable` ReadableStream
-  * An instance of a `ReadableStream`.
-* `writable` WritableStream
-  * An instance of a `WritableStream`.
+- `readable` ReadableStream
+  - An instance of a `ReadableStream`.
+- `writable` WritableStream
+  - An instance of a `WritableStream`.
 
 ---
 
@@ -53,16 +52,15 @@ The `IdentityTransformStream` readable side supports [bring your own buffer (BYO
 let { readable, writable } = new IdentityTransformStream();
 ```
 
-* `IdentityTransformStream()` IdentityTransformStream
-
-  * Returns a new identity transform stream.
+- `IdentityTransformStream()` IdentityTransformStream
+  - Returns a new identity transform stream.
 
 ### Properties
 
-* `readable` ReadableStream
-  * An instance of a `ReadableStream`.
-* `writable` WritableStream
-  * An instance of a `WritableStream`.
+- `readable` ReadableStream
+  - An instance of a `ReadableStream`.
+- `writable` WritableStream
+  - An instance of a `WritableStream`.
 
 ---
 
@@ -76,24 +74,23 @@ The `FixedLengthStream` is a specialization of `IdentityTransformStream` that li
 let { readable, writable } = new FixedLengthStream(1000);
 ```
 
-* `FixedLengthStream(length)` FixedLengthStream
-
-  * Returns a new identity transform stream.
-  * `length` maybe a `number` or `bigint` with a maximum value of `2^53 - 1`.
+- `FixedLengthStream(length)` FixedLengthStream
+  - Returns a new identity transform stream.
+  - `length` maybe a `number` or `bigint` with a maximum value of `2^53 - 1`.
 
 ### Properties
 
-* `readable` ReadableStream
-  * An instance of a `ReadableStream`.
-* `writable` WritableStream
-  * An instance of a `WritableStream`.
+- `readable` ReadableStream
+  - An instance of a `ReadableStream`.
+- `writable` WritableStream
+  - An instance of a `WritableStream`.
 
 ---
 
 ## Related resources
 
-* [Streams](https://developers.cloudflare.com/workers/runtime-apis/streams/)
-* [Transform Streams in the WHATWG Streams API specification ↗](https://streams.spec.whatwg.org/#transform-stream)
+- [Streams](https://developers.cloudflare.com/workers/runtime-apis/streams/)
+- [Transform Streams in the WHATWG Streams API specification ↗](https://streams.spec.whatwg.org/#transform-stream)
 
 Was this helpful?
 

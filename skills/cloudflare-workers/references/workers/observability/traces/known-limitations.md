@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Known limitations
 
-Last updated Jun 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/traces/known-limitations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/traces/known-limitations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers tracing is currently in open beta. This page documents current limitations and any upcoming features on our roadmap.
 
@@ -34,7 +34,7 @@ We are working on automatic trace context propagation using [W3C Trace Context s
 
 We are planning to add more detailed attributes on each span. You can find a complete list of what is already instrumented [here](https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes).
 
-Your feedback on any missing information will help us prioritize additions and changes. Please comment on the [Workers tracing GitHub discussion ↗](https://github.com/cloudflare/workers-sdk/discussions/11062)if specific attributes would be helpful to use tracing effectively.
+Your feedback on any missing information will help us prioritize additions and changes. Please comment on the [Workers tracing GitHub discussion ↗](https://github.com/cloudflare/workers-sdk/discussions/11062) if specific attributes would be helpful to use tracing effectively.
 
 ### Span and attribute names subject to change
 
@@ -42,8 +42,8 @@ As Workers tracing is currently in beta, span names and attribute names are not 
 
 ### Known bugs and other call outs
 
-* There are currently are a few attributes that only apply to some spans (e.g.`service.name`, `faas.name`). When filtering or grouping by the Worker name across traces and logs, use `$metadata.service` instead, as it will apply consistently across all event types.
-* While a trace is in progress, the event will show `Trace in Progress` on the root span. Please wait a few moments for the full trace to become available
+- There are currently are a few attributes that only apply to some spans (e.g. `service.name`, `faas.name`). When filtering or grouping by the Worker name across traces and logs, use `$metadata.service` instead, as it will apply consistently across all event types.
+- While a trace is in progress, the event will show `Trace in Progress` on the root span. Please wait a few moments for the full trace to become available
 
 Was this helpful?
 

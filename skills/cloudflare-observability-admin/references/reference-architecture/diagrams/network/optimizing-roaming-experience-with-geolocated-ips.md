@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Optimizing device roaming experience with geolocated IPs
 
-Last updated Feb 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/network/optimizing-roaming-experience-with-geolocated-ips/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Feb 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/network/optimizing-roaming-experience-with-geolocated-ips/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
-A private [Access Point Name ↗](https://en.wikipedia.org/wiki/Access%5FPoint%5FName) (APN) enables devices, like connected vehicles, connected containers, healthcare devices or drones, to be connected while roaming across different countries. The device connects with a SIM or eSIM card to a dedicated network, and as the device moves to a new country, it automatically selects the appropriate private APN for the local provider.
+A private [Access Point Name ↗](https://en.wikipedia.org/wiki/Access_Point_Name) (APN) enables devices, like connected vehicles, connected containers, healthcare devices or drones, to be connected while roaming across different countries. The device connects with a SIM or eSIM card to a dedicated network, and as the device moves to a new country, it automatically selects the appropriate private APN for the local provider.
 
 APN traffic, typically managed by a third party provider such as a telecommunications company, is routed through specific regional Internet breakouts to get access to the Internet. This architecture can create challenges in regards to the localization of that traffic. For example, a device roaming in France might have traffic exit to the Internet from a UK-based Internet breakout. Therefore web sites and other Internet services will treat the device as if it is in the UK and deliver content in the wrong language or apply regional restrictions.
 
@@ -24,7 +24,7 @@ In this document, we'll discuss how Cloudflare can be used to solve this problem
 
 ![Figure 1: Showing how Internet breakouts can present an egress IP that doesn't match the country the device is in.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1299,height=703,format=svg/_astro/figure1.CJM1DAO-.svg "Figure 1: Showing how Internet breakouts can present an egress IP that doesn't match the country the device is in.")
 
-Figure 1: Showing how Internet breakouts can present an egress IP that doesn't match the country the device is in.
+*Figure 1: Showing how Internet breakouts can present an egress IP that doesn't match the country the device is in.*
 
 # Correctly locate and secure devices by connecting them to the Cloudflare global network
 
@@ -39,34 +39,37 @@ This diagram is intended for network engineers, IT architects, and decision-make
 
 ![Figure 2: Using Cloudflare you can ensure the egress IP as seen by Internet sites matches the country the device is roaming in.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1806,height=698,format=svg/_astro/figure2._3vKC8Cc.svg "Figure 2: Using Cloudflare you can ensure the egress IP as seen by Internet sites matches the country the device is roaming in.")
 
-Figure 2: Using Cloudflare you can ensure the egress IP as seen by Internet sites matches the country the device is roaming in.
+*Figure 2: Using Cloudflare you can ensure the egress IP as seen by Internet sites matches the country the device is roaming in.*
 
-_Note: Labels in this image may reflect a previous product name._
+*Note: Labels in this image may reflect a previous product name.*
 
 1. **Data collection and regional routing**.
-Traffic from roaming devices is securely collected through the service provider's private APN and routed to third-party regional Internet breakouts. Each country in the network is assigned a specific RFC1918 IP subnet, simplifying traffic segmentation and management.
+
+   Traffic from roaming devices is securely collected through the service provider's private APN and routed to third-party regional Internet breakouts. Each country in the network is assigned a specific RFC1918 IP subnet, simplifying traffic segmentation and management.
 2. **Traffic sorting**.
-The Internet breakout will categorize the traffic into separate buckets to identify its country of origin - in this example each country's APN is given a dedicated private IP subnet.
+
+   The Internet breakout will categorize the traffic into separate buckets to identify its country of origin - in this example each country's APN is given a dedicated private IP subnet.
 3. **Connectivity options**.
-Cloudflare supports multiple connection methods to integrate with the regional breakout architecture:
 
-  * [**GRE tunnels**](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/) for ease of use.
-  * [**IPsec tunnels**](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/) for encrypted communication.
-  * [**Cloudflare Network Interconnect (CNI)**](https://developers.cloudflare.com/cloudflare-wan/network-interconnect/) for direct, high-performance connections.
+   Cloudflare supports multiple connection methods to integrate with the regional breakout architecture:
+   - [**GRE tunnels**](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/) for ease of use.
+   - [**IPsec tunnels**](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/) for encrypted communication.
+   - [**Cloudflare Network Interconnect (CNI)**](https://developers.cloudflare.com/cloudflare-wan/network-interconnect/) for direct, high-performance connections.
 4. **Localized Internet breakout using [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) (formerly Magic WAN) and [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)**.
-With Cloudflare WAN and using [dedicated egress](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/) with our [secure web gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/), Cloudflare enables Internet traffic to exit with source IPs registered in the desired country. This ensures end-users benefit from geolocalized content and services, such as access to region-specific platforms, tailored to their location.
-5. **Advanced security and filtering options**.
-Cloudflare enhances the security of Internet breakouts with advanced features, including:
 
-  * [**DNS filtering**](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/dns/) to manage and block access to unwanted, high risk domains.
-  * [**Network firewalling**](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) for enforcing detailed security policies. For example, you can restrict vehicles to only send data over the Internet to a designated set of cloud telemetry systems while blocking all other traffic.
-  * [**Full SSL inspection**](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) to protect against sophisticated threats and provide traffic visibility on encrypted traffic. It enables additional protections such as antivirus scanning, malware prevention, and file sandboxing.
+   With Cloudflare WAN and using [dedicated egress](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/) with our [secure web gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/), Cloudflare enables Internet traffic to exit with source IPs registered in the desired country. This ensures end-users benefit from geolocalized content and services, such as access to region-specific platforms, tailored to their location.
+5. **Advanced security and filtering options**.
+
+   Cloudflare enhances the security of Internet breakouts with advanced features, including:
+   - [**DNS filtering**](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/dns/) to manage and block access to unwanted, high risk domains.
+   - [**Network firewalling**](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) for enforcing detailed security policies. For example, you can restrict vehicles to only send data over the Internet to a designated set of cloud telemetry systems while blocking all other traffic.
+   - [**Full SSL inspection**](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) to protect against sophisticated threats and provide traffic visibility on encrypted traffic. It enables additional protections such as antivirus scanning, malware prevention, and file sandboxing.
 
 # Related Resources
 
-* [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
-* [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
-* [Cloudflare servers don't own IPs anymore ↗](https://blog.cloudflare.com/cloudflare-servers-dont-own-ips-anymore/)
+- [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+- [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+- [Cloudflare servers don't own IPs anymore ↗](https://blog.cloudflare.com/cloudflare-servers-dont-own-ips-anymore/)
 
 Was this helpful?
 

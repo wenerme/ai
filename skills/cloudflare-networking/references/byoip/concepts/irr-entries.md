@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Internet Routing Registry (IRR)
 
-Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/byoip/concepts/irr-entries/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/byoip/concepts/irr-entries/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The [Internet Routing Registry (IRR)](http://www.irr.net/index.html) is a globally distributed database of routing information which contains announced routes and routing policies in a common format. Network operators use this information, as well as [RPKI](https://developers.cloudflare.com/byoip/concepts/route-filtering-rpki/), to configure backbone routers.
 

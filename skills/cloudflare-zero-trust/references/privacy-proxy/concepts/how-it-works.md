@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # How Privacy Proxy works
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/privacy-proxy/concepts/how-it-works/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/privacy-proxy/concepts/how-it-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Privacy Proxy uses the MASQUE protocol suite to create encrypted tunnels between clients and destination servers. This page explains the protocol mechanics and how privacy is preserved.
 
@@ -45,10 +45,10 @@ Throughout this process, the proxy learns the destination but not the content. T
 
 [MASQUE ↗](https://datatracker.ietf.org/wg/masque/about/) (Multiplexed Application Substrate over QUIC Encryption) defines methods for proxying traffic over HTTP. Privacy Proxy supports two MASQUE methods:
 
-| Method       | Transport | Use case                                   |
-| ------------ | --------- | ------------------------------------------ |
-| HTTP CONNECT | TCP       | Traditional HTTPS traffic                  |
-| CONNECT-UDP  | UDP       | QUIC-based traffic, real-time applications |
+| Method | Transport | Use case |
+| --- | --- | --- |
+| HTTP CONNECT | TCP | Traditional HTTPS traffic |
+| CONNECT-UDP | UDP | QUIC-based traffic, real-time applications |
 
 Both methods create encrypted tunnels where the proxy forwards traffic without inspecting the content. The proxy sees only the destination hostname and port, not the actual requests, paths, or data exchanged.
 
@@ -60,19 +60,19 @@ For a technical deep dive into how these protocols work, refer to our [blog post
 
 Privacy Proxy creates a privacy boundary between user identity and user activity:
 
-| Information                         | Who knows it                                                  |
-| ----------------------------------- | ------------------------------------------------------------- |
+| Information | Who knows it |
+| --- | --- |
 | User identity (IP address, account) | Authentication service, first-hop proxy (if using double-hop) |
-| Destination server                  | Privacy Proxy, destination server                             |
-| Request content                     | Client, destination server only                               |
+| Destination server | Privacy Proxy, destination server |
+| Request content | Client, destination server only |
 
 The proxy authenticates users to verify they have permission to use the service, but authentication happens separately from proxying. Once authenticated, the proxy forwards traffic without linking individual requests to specific users.
 
 ## Related resources
 
-* [A Primer on Proxies ↗](https://blog.cloudflare.com/a-primer-on-proxies/) \- Technical deep dive into HTTP CONNECT and MASQUE protocols.
-* [MASQUE Working Group ↗](https://datatracker.ietf.org/wg/masque/about/) \- IETF working group developing proxy protocol standards.
-* [RFC 9298 ↗](https://datatracker.ietf.org/doc/html/rfc9298) \- CONNECT-UDP specification for proxying UDP over HTTP.
+- [A Primer on Proxies ↗](https://blog.cloudflare.com/a-primer-on-proxies/) - Technical deep dive into HTTP CONNECT and MASQUE protocols.
+- [MASQUE Working Group ↗](https://datatracker.ietf.org/wg/masque/about/) - IETF working group developing proxy protocol standards.
+- [RFC 9298 ↗](https://datatracker.ietf.org/doc/html/rfc9298) - CONNECT-UDP specification for proxying UDP over HTTP.
 
 Was this helpful?
 

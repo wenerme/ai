@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Placement
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/concepts/placement/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/concepts/placement/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, containers run in the location nearest to the incoming request with a pre-fetched image. Use placement constraints to restrict where your containers run for data residency, compliance, or latency requirements.
 
@@ -20,17 +20,17 @@ By default, containers run in the location nearest to the incoming request with 
 
 Use the `regions` constraint to limit container placement to specific geographic areas:
 
-| Region | Description           | Notes            |
-| ------ | --------------------- | ---------------- |
-| ENAM   | Eastern North America |                  |
-| WNAM   | Western North America |                  |
-| EEUR   | Eastern Europe        |                  |
-| WEUR   | Western Europe        |                  |
-| APAC   | Asia Pacific          |                  |
-| SAM    | South America         |                  |
-| ME     | Middle East           | Limited capacity |
-| OC     | Oceania               | Limited capacity |
-| AFR    | Africa                | Limited capacity |
+| Region | Description | Notes |
+| --- | --- | --- |
+| `ENAM` | Eastern North America | |
+| `WNAM` | Western North America | |
+| `EEUR` | Eastern Europe | |
+| `WEUR` | Western Europe | |
+| `APAC` | Asia Pacific | |
+| `SAM` | South America | |
+| `ME` | Middle East | Limited capacity |
+| `OC` | Oceania | Limited capacity |
+| `AFR` | Africa | Limited capacity |
 
 Limited capacity regions (ME, OC, AFR) cannot be used exclusively. Include at least one other region, or contact support for dedicated access.
 
@@ -38,10 +38,10 @@ Limited capacity regions (ME, OC, AFR) cannot be used exclusively. Include at le
 
 Use the `jurisdiction` constraint to restrict containers to compliance boundaries:
 
-| Jurisdiction | Regions    | Use case          |
-| ------------ | ---------- | ----------------- |
-| eu           | EEUR, WEUR | EU data residency |
-| fedramp      | ENAM, WNAM | FedRAMP regions   |
+| Jurisdiction | Regions | Use case |
+| --- | --- | --- |
+| `eu` | EEUR, WEUR | EU data residency |
+| `fedramp` | ENAM, WNAM | FedRAMP regions |
 
 When you specify both `jurisdiction` and `regions`, the regions must be valid for that jurisdiction. For example, specifying `jurisdiction: "eu"` with `regions: ["ENAM"]` is invalid.
 

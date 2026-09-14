@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Wrangler
 
-Last updated May 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/reference/wrangler/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/reference/wrangler/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Wrangler](https://developers.cloudflare.com/workers/wrangler/) is a command-line tool for building with Cloudflare developer products.
 
@@ -102,7 +102,7 @@ This opens a browser window on screen so you can watch navigations, interactions
 
 Note
 
-When using [@cloudflare/playwright](https://developers.cloudflare.com/browser-run/playwright/), two Chrome windows may appear. This is expected behavior due to how Playwright handles browser contexts via CDP.
+When using [`@cloudflare/playwright`](https://developers.cloudflare.com/browser-run/playwright/), two Chrome windows may appear. This is expected behavior due to how Playwright handles browser contexts via CDP.
 
 Use real headless browser during local development
 

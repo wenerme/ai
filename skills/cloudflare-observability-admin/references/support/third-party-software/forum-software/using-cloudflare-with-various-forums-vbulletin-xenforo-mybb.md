@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Using Cloudflare with various forums
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/third-party-software/forum-software/using-cloudflare-with-various-forums-vbulletin-xenforo-mybb/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/third-party-software/forum-software/using-cloudflare-with-various-forums-vbulletin-xenforo-mybb/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Overview
 
@@ -20,10 +20,10 @@ Many widely used forum platforms are compatible with Cloudflare.
 
 These include:
 
-* [Discourse ↗](https://community.cloudflare.com/t/using-discourse-with-cloudflare-best-practices/602890)
-* vBulletin
-* Xenforo
-* MyBB
+- [Discourse ↗](https://community.cloudflare.com/t/using-discourse-with-cloudflare-best-practices/602890)
+- vBulletin
+- Xenforo
+- MyBB
 
 If you have a forum using these platforms, you can increase its speed and safety by adding Cloudflare.
 

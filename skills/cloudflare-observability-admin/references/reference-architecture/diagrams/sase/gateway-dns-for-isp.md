@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DNS filtering solution for Internet service providers
 
-Last updated Nov 21, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/sase/gateway-dns-for-isp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 21, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/sase/gateway-dns-for-isp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -38,13 +38,13 @@ On Locations
 
 If stable and defined source IPv4 addresses cannot be assigned to the on-premises DNS servers, service providers can instead use unique destination location endpoints. Each location is assigned a distinct [DoT](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/dns-resolver-ips/#dns-over-tls-dot) and [DoH](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/dns-resolver-ips/#dns-over-https-doh) hostname, as well as a unique [destination IPv6 address](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/dns-resolver-ips/#ipv4ipv6-address). Additionally, Cloudflare can provide unique [destination IPv4 addresses upon request](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/dns-resolver-ips/#dns-resolver-ip).
 
-DNS filtering is then enforced through DNS policies set up by the service provider to detect domains linked to [security risks](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-categories). Cloudflare continuously updates the list of risky domains using [its extensive threat intelligence ↗](https://www.cloudflare.com/en-gb/security/). When a DNS query matches a flagged domain, the corresponding action specified in the DNS policy is executed. This action can be a '[Block](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/#block),' where Gateway responds with `0.0.0.0` for IPv4 queries or `::` for IPv6 queries, or displays a [custom block page hosted by Cloudflare](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/). Alternatively, an `[Override](/cloudflare-one/traffic-policies/dns-policies/#override)` action or [block page URL redirect](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/#redirect-to-a-block-page) can redirect the DNS query to a block page hosted by the service provider.
+DNS filtering is then enforced through DNS policies set up by the service provider to detect domains linked to [security risks](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-categories). Cloudflare continuously updates the list of risky domains using [its extensive threat intelligence ↗](https://www.cloudflare.com/en-gb/security/). When a DNS query matches a flagged domain, the corresponding action specified in the DNS policy is executed. This action can be a ' [Block](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/#block),' where Gateway responds with `0.0.0.0` for IPv4 queries or `::` for IPv6 queries, or displays a [custom block page hosted by Cloudflare](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/). Alternatively, an `[Override](/cloudflare-one/traffic-policies/dns-policies/#override)` action or [block page URL redirect](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/#redirect-to-a-block-page) can redirect the DNS query to a block page hosted by the service provider.
 
 ![Figure 2: A DNS policy to prevent users from navigating to malicious domains. The action is to override and redirect the DNS query to a block page hosted by the service provider.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1293,height=335,format=svg/_astro/gateway-dns-for-isp-image-02.BLGXVL4a.svg)
 
 To achieve more precise control over which domains are allowed or blocked, the service provider can configure additional Allowed Domain and Blocked Domains policies. By setting these policies with [lower precedence](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/#order-of-precedence) than the Security Risks policy, the service provider can override the Security Risks policy for specific domains.
 
-To streamline the management of allowed and blocked domains, use [lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/). Lists are easily updated through the dashboard or via [APIs](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/lists/methods/update/), making policy adjustments more efficient.
+To streamline the management of allowed and blocked domains, use [lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/). Lists are easily updated through the dashboard or via [APIs](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/lists/methods/update/), making policy adjustments more efficient.
 
 ![Figure 3: DNS policies are applied according to their order of precedence. In this example, the 'Allow List Policy' and 'Block List Policy' will be considered before the 'Security List' policy.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1307,height=695,format=svg/_astro/gateway-dns-for-isp-image-03.Dy2ZZQ-9.svg)
 
@@ -60,17 +60,17 @@ Service providers can enhance their offerings by using Cloudflare Gateway DNS po
 
 Some potential applications include:
 
-* **Parental Control Services**: This service can block categories such as adult themes, child abuse, violence, and questionable content to ensure a safer online environment for children.
-* **Educational Services**: Designed for schools and educational organizations, this service can extend beyond parental controls by blocking additional categories like CIPA, gambling, and entertainment, thereby promoting a focused learning atmosphere.
-* **Enterprise Services**: This offering allows businesses to easily restrict access to non-work-related domains, including categories such as entertainment, social networking, gambling, shopping & auctions, society & lifestyle, and sports.
+- **Parental Control Services**: This service can block categories such as adult themes, child abuse, violence, and questionable content to ensure a safer online environment for children.
+- **Educational Services**: Designed for schools and educational organizations, this service can extend beyond parental controls by blocking additional categories like CIPA, gambling, and entertainment, thereby promoting a focused learning atmosphere.
+- **Enterprise Services**: This offering allows businesses to easily restrict access to non-work-related domains, including categories such as entertainment, social networking, gambling, shopping & auctions, society & lifestyle, and sports.
 
 To differentiate these additional services from the core DNS security offering, the service provider would create additional DNS locations, one for each service. Cloudflare would be able to distinguish DNS queries for these services if the service provider sends them to one of the unique identifiers of a location. Each location has a unique [DoH](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/dns-resolver-ips/#dns-over-https-doh) and [DoT](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/dns-resolver-ips/#dns-over-tls-dot) hostname and a unique [destination IPv6 address](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/dns-resolver-ips/#ipv4ipv6-address). Cloudflare can also provision [dedicated destination IPv4 addresses](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/dns-resolver-ips/#dns-resolver-ip) per location.
 
 ## Related resources
 
-* [Cloudflare Gateway DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/)
-* [Cloudflare Blog: Using the power of Cloudflare's global network to detect malicious domains using machine learning ↗](https://blog.cloudflare.com/threat-detection-machine-learning-models/)
-* [Protect ISP and telecommunications networks from DDoS attacks](https://developers.cloudflare.com/reference-architecture/diagrams/network/protecting-sp-networks-from-ddos/)
+- [Cloudflare Gateway DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/)
+- [Cloudflare Blog: Using the power of Cloudflare's global network to detect malicious domains using machine learning ↗](https://blog.cloudflare.com/threat-detection-machine-learning-models/)
+- [Protect ISP and telecommunications networks from DDoS attacks](https://developers.cloudflare.com/reference-architecture/diagrams/network/protecting-sp-networks-from-ddos/)
 
 Was this helpful?
 

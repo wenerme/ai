@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • NVIDIA
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/nvidia/nemotron-3-120b-a12b`
 
-* Cloudflare-hosted
-* Function calling
-* Reasoning
+- Cloudflare-hosted
+- Function calling
+- Reasoning
 
 NVIDIA Nemotron 3 Super is a hybrid MoE model with leading accuracy for multi-agent applications and specialized agentic AI systems.
 
-| Model Info                                                                            |                                                                                                           |
-| ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/)   | 256,000 tokens                                                                                            |
-| Terms and License                                                                     | [link ↗](https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-nemotron-open-model-license/) |
-| Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes                                                                                                       |
-| Reasoning                                                                             | Yes                                                                                                       |
-| Unit Pricing                                                                          | $0.50 per M input tokens, $1.50 per M output tokens                                                       |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 256,000 tokens |
+| Terms and License | [link ↗](https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-nemotron-open-model-license/) |
+| Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
+| Reasoning | Yes |
+| Unit Pricing | $0.50 per M input tokens, $1.50 per M output tokens |
 
 ## Playground
 
@@ -43,7 +43,6 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 ## Usage
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -72,7 +71,6 @@ export default {
 ```
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -95,7 +93,6 @@ export default {
 ```
 
 ```py
-
 import os
 import requests
 
@@ -118,7 +115,6 @@ print(result)
 ```
 
 ```sh
-
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/nvidia/nemotron-3-120b-a12b \
   -X POST \
   -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
@@ -175,7 +171,7 @@ metadata
 
 modalities
 
-`array | null`Output types requested from the model (e.g. \['text'\] or \['text', 'audio'\]).
+`array | null`Output types requested from the model (e.g. \['text'] or \['text', 'audio']).
 
 n
 
@@ -237,7 +233,7 @@ temperature
 
 `one of`Controls which (if any) tool is called by the model. 'none' = no tools, 'auto' = model decides, 'required' = must call a tool.
 
-▶tools\[\]
+▶tools\[]
 
 `array`A list of tools the model may call.
 
@@ -257,69 +253,81 @@ user
 
 `one of`
 
-▶functions\[\]
+▶functions\[]
 
 `array`minItems: 1maxItems: 128
 
 ### Output
 
-Synchronous — Send a request and receive a complete response
+<details>
+
+<summary>Synchronous — Send a request and receive a complete response</summary>
+
+
 
 id
 
-`string`A unique identifier for the chat completion.
+<code>string</code>A unique identifier for the chat completion.
 
 object
 
-`string`
+<code>string</code>
 
 created
 
-`integer`Unix timestamp (seconds) of when the completion was created.
+<code>integer</code>Unix timestamp (seconds) of when the completion was created.
 
 model
 
-`string`The model used for the chat completion.
+<code>string</code>The model used for the chat completion.
 
-▶choices\[\]
+▶choices\[]
 
-`array`minItems: 1
+<code>array</code>minItems: 1
 
 ▶usage{}
 
-`object`
+<code>object</code>
 
 system\_fingerprint
 
-`string | null`
+<code>string | null</code>
 
 service\_tier
 
-`string | null`enum: auto, default, flex, scale, priority
+<code>string | null</code>enum: auto, default, flex, scale, priority
 
-Streaming — Send a request with \`stream: true\` and receive server-sent events
+</details>
+
+<details>
+
+<summary>Streaming — Send a request with `stream: true` and receive server-sent events</summary>
+
+
 
 type
 
-`string`
+<code>string</code>
 
 contentType
 
-`text/event-stream`
+<code>text/event-stream</code>
 
 format
 
-`binary`
+<code>binary</code>
+
+</details>
 
 ## API Schemas (Raw)
 
-SynchronousInput
+SynchronousInput [Open](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/sync-input.json) [Download](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/sync-input.json)
 
-SynchronousOutput
+SynchronousOutput [Open](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/sync-output.json) [Download](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/sync-output.json)
 
-StreamingInput
+StreamingInput [Open](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/streaming-input.json) [Download](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/streaming-input.json)
 
-StreamingOutput
+StreamingOutput [Open](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/streaming-output.json) [Download](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/streaming-output.json)
 
 Was this helpful?
 

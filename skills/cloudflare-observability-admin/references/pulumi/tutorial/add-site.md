@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Add a site
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pulumi/tutorial/add-site/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pulumi/tutorial/add-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will follow step-by-step instructions to bring an existing site to Cloudflare using Pulumi infrastructure as code (IaC) to familiarize yourself with the resource management lifecycle. In particular, you will create a Zone and a DNS record to resolve your newly added site. This tutorial adopts the IaC principle to complete the steps listed in the [Add site tutorial](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/).
 
@@ -24,16 +24,16 @@ You will provision resources that qualify under free tier offerings for both Pul
 
 Ensure you have:
 
-* A Cloudflare account and API Token with permission to edit the resources in this tutorial. If you need to, sign up for a [Cloudflare account ↗](https://www.cloudflare.com/sign-up) before continuing. Your token must have:
-  * `Zone-Zone-Edit` permission
-  * `Zone-DNS-Edit` permission
-  * `include-All zones from an account-<your account>` zone resource
-* A Pulumi Cloud account. You can sign up for an [always-free individual tier ↗](https://app.pulumi.com/signup).
-* The [Pulumi CLI](https://developers.cloudflare.com/pulumi/installing/) is installed on your machine.
-* A [Pulumi-supported programming language ↗](https://github.com/pulumi/pulumi?tab=readme-ov-file#languages) is configured. (TypeScript, JavaScript, Python, Go, .NET, Java, or use YAML)
-* A domain name. You may use `example.com` to complete the tutorial.
+- A Cloudflare account and API Token with permission to edit the resources in this tutorial. If you need to, sign up for a [Cloudflare account ↗](https://www.cloudflare.com/sign-up) before continuing. Your token must have:
+  - `Zone-Zone-Edit` permission
+  - `Zone-DNS-Edit` permission
+  - `include-All zones from an account-<your account>` zone resource
+- A Pulumi Cloud account. You can sign up for an [always-free individual tier ↗](https://app.pulumi.com/signup).
+- The [Pulumi CLI](https://developers.cloudflare.com/pulumi/installing/) is installed on your machine.
+- A [Pulumi-supported programming language ↗](https://github.com/pulumi/pulumi?tab=readme-ov-file#languages) is configured. (TypeScript, JavaScript, Python, Go, .NET, Java, or use YAML)
+- A domain name. You may use `example.com` to complete the tutorial.
 
-## 1\. Initialize your project
+## 1. Initialize your project
 
 A Pulumi project is a collection of files in a dedicated folder that describes the infrastructure you want to create. The Pulumi project folder is identified by the required `Pulumi.yaml` file. You will use the Pulumi CLI to create and configure a new project.
 
@@ -113,9 +113,9 @@ You have not defined any resources at this point, so you'll have an empty stack.
 
 In this step, you will store your settings in a Pulumi [ESC Environment ↗](https://www.pulumi.com/docs/esc/environments/), a YAML file containing configurations and secrets. These can be accessed in several ways, including a Pulumi program. All ESC Environments securely reside in your Pulumi Cloud account and can be fully managed via the Pulumi CLI. For this tutorial, you will store the following values:
 
-* Your Cloudflare [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
-* A valid Cloudflare API [token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
-* A domain. For instance, `example.com`.
+- Your Cloudflare [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
+- A valid Cloudflare API [token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
+- A domain. For instance, `example.com`.
 
 ```sh
 # Define an ESC Environment name
@@ -193,7 +193,7 @@ Below are Apache Maven instructions. For other Java project managers such as Gra
 </dependency>
 ```
 
-1. Run:
+3. Run:
 
 ```sh
 mvn clean install
@@ -215,7 +215,7 @@ info : Adding PackageReference for package 'Pulumi.Cloudflare' into project
 
 There are no dependencies to download for YAML. Skip ahead.
 
-## 2\. Define Cloudflare resources in code
+## 2. Define Cloudflare resources in code
 
 With the Cloudflare package installed, you can now define any [supported Cloudflare resource ↗](https://www.pulumi.com/registry/packages/cloudflare/) in your Pulumi program. You'll define a Zone, and a DNS Record next.
 
@@ -467,7 +467,6 @@ record = cloudflare.Record("my-record",
 **Filename: `main.go`**
 
 ```go
-
     _, err = cloudflare.NewRecord(ctx, "my-record", &cloudflare.RecordArgs{
       ZoneId:  zone.ID(),
       Name:    pulumi.String(domain),
@@ -483,7 +482,6 @@ record = cloudflare.Record("my-record",
 **Filename: `src/main/java/myproject/App.java`**
 
 ```java
-
 // Add imports
 import com.pulumi.cloudflare.Record;
 import com.pulumi.cloudflare.RecordArgs;
@@ -524,7 +522,7 @@ myRecord:
     proxied: true
 ```
 
-## 3\. Deploy your changes
+## 3. Deploy your changes
 
 Now that you have defined your resources, you can deploy the changes using the Pulumi CLI so that they are reflected in your Cloudflare account.
 
@@ -538,7 +536,7 @@ pulumi up --yes
 wait for the dev stack to become ready
 ```
 
-## 4\. Configure your DNS provider
+## 4. Configure your DNS provider
 
 Note
 
@@ -576,7 +574,7 @@ Once successfully registered, your domain `status` will change to `active`.
 pulumi stack output
 ```
 
-## 5\. Test your site
+## 5. Test your site
 
 You will run two `nslookup` commands against the Cloudflare-assigned nameservers.
 
@@ -598,7 +596,7 @@ Note
 
 You will not receive a valid response if you use `example.com` as your site.
 
-## 6\. Clean up
+## 6. Clean up
 
 In this last step, you will remove the resources and stack used throughout the tutorial.
 

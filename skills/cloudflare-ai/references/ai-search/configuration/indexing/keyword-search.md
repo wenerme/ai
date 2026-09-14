@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Keyword search
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Enable keyword search to match chunks that contain your query terms exactly. For an overview of search modes, refer to [Search modes](https://developers.cloudflare.com/ai-search/concepts/search-modes/).
 
@@ -20,10 +20,10 @@ Enable keyword search to match chunks that contain your query terms exactly. For
 
 Set `index_method.keyword` to `true` when creating or updating an instance. You can use keyword search on its own or alongside vector search for [hybrid search](https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/).
 
-| Field   | Type    | Default | Description                      |
-| ------- | ------- | ------- | -------------------------------- |
-| vector  | boolean | true    | Enable vector (semantic) search. |
-| keyword | boolean | false   | Enable keyword (BM25) search.    |
+| Field | Type | Default | Description |
+| --- | --- | --- | --- |
+| `vector` | boolean | `true` | Enable vector (semantic) search. |
+| `keyword` | boolean | `false` | Enable keyword (BM25) search. |
 
 At least one of `vector` or `keyword` must be `true`. Changing `index_method` triggers a full reindex of your content.
 
@@ -41,19 +41,19 @@ const instance = await env.AI_SEARCH.create({
 
 The `keyword_tokenizer` field (inside `indexing_options`) controls how text is split into tokens. Changing this triggers a full reindex.
 
-| Value   | Default | Description                                                                       |
-| ------- | ------- | --------------------------------------------------------------------------------- |
-| porter  | Yes     | Applies Porter stemming. "running" matches "run." Best for natural language.      |
-| trigram | No      | Overlapping 3-character windows. "config" matches "configuration." Best for code. |
+| Value | Default | Description |
+| --- | --- | --- |
+| `porter` | Yes | Applies Porter stemming. "running" matches "run." Best for natural language. |
+| `trigram` | No | Overlapping 3-character windows. "config" matches "configuration." Best for code. |
 
 ## Keyword match mode
 
 The `keyword_match_mode` field (inside `retrieval_options`) controls how multiple query terms are combined.
 
-| Value | Default | Description                                                   |
-| ----- | ------- | ------------------------------------------------------------- |
-| and   | Yes     | All query terms must appear. Higher precision, fewer results. |
-| or    | No      | Any query term can match. Higher recall, more results.        |
+| Value | Default | Description |
+| --- | --- | --- |
+| `and` | Yes | All query terms must appear. Higher precision, fewer results. |
+| `or` | No | Any query term can match. Higher recall, more results. |
 
 You can override `keyword_match_mode` per request:
 

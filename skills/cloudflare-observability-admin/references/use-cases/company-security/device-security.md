@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Ensure device endpoint security
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/company-security/device-security/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/company-security/device-security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Granting access to corporate applications without verifying device health creates risk. Cloudflare One checks OS version, disk encryption, and antivirus status before allowing a device to connect, and integrates with CrowdStrike, SentinelOne, and other Endpoint Detection and Response (EDR) tools.
 
@@ -22,15 +22,15 @@ Granting access to corporate applications without verifying device health create
 
 Secure your organization with a cloud security platform that replaces legacy perimeters with Cloudflare's global network. [Learn more about Cloudflare One](https://developers.cloudflare.com/cloudflare-one/).
 
-* **Posture checks** \- Verify OS version, disk encryption status, and antivirus presence before granting access
-* **Endpoint integration** \- Pull real-time device health signals from CrowdStrike, SentinelOne, and other Endpoint Detection and Response (EDR) tools
-* **Conditional access** \- Gate application access on device posture results, so only healthy devices can connect
+- **Posture checks** - Verify OS version, disk encryption status, and antivirus presence before granting access
+- **Endpoint integration** - Pull real-time device health signals from CrowdStrike, SentinelOne, and other Endpoint Detection and Response (EDR) tools
+- **Conditional access** - Gate application access on device posture results, so only healthy devices can connect
 
 ### Cloudflare One client
 
 Device agent that routes traffic through Cloudflare's network. [Learn more about Cloudflare One client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/).
 
-* **Always-on protection** \- Route device traffic through Cloudflare One at all times, enforcing Gateway policies regardless of network
+- **Always-on protection** - Route device traffic through Cloudflare One at all times, enforcing Gateway policies regardless of network
 
 ## Get started
 

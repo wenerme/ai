@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Search across multiple instances
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/how-to/search-multiple-sources/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/how-to/search-multiple-sources/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Search can query several instances in one request, merge the results, and tag each result with the instance it came from. This guide uses that to search two knowledge bases together: a shared **general** knowledge base that every user can search, plus a **tenant-specific** knowledge base that holds one customer's private content. A single query returns relevant content from both.
 
@@ -23,15 +23,23 @@ Keeping each tenant's content in its own instance is the recommended way to isol
 ## Prerequisites
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
+
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
 
 The instances you search across must belong to the same [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/). This guide creates them for you.
 
-## 1\. Create a Worker project
+## 1. Create a Worker project
 
 Create a new Worker project using the `create-cloudflare` CLI (C3). [C3 ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) is a command-line tool designed to help you set up and deploy new applications to Cloudflare.
 
@@ -53,11 +61,11 @@ pnpm create cloudflare@latest multi-source-search
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `TypeScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `TypeScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 Go to your application directory:
 
@@ -65,7 +73,7 @@ Go to your application directory:
 cd multi-source-search
 ```
 
-## 2\. Configure Wrangler
+## 2. Configure Wrangler
 
 Add an [AI Search namespace binding](https://developers.cloudflare.com/ai-search/concepts/namespaces/) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). Searching across instances is a method on the namespace binding, so a single binding can reach every instance in the namespace.
 
@@ -75,7 +83,7 @@ Add an [AI Search namespace binding](https://developers.cloudflare.com/ai-search
   "name": "multi-source-search",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-08-25",
+  "compatibility_date": "2026-09-14",
   "ai_search_namespaces": [
     {
       "binding": "AI_SEARCH",
@@ -90,7 +98,7 @@ Add an [AI Search namespace binding](https://developers.cloudflare.com/ai-search
 name = "multi-source-search"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[ai_search_namespaces]]
 binding = "AI_SEARCH"
@@ -100,9 +108,11 @@ remote = true
 
 The `remote` option lets `wrangler dev` proxy requests to your deployed instances, since AI Search does not run locally.
 
-## 3\. Add the Worker code
+## 3. Add the Worker code
 
 Update `src/index.ts`. This Worker identifies the tenant from a request header, then searches the shared instance and that tenant's instance in one call. Each returned chunk carries an `instance_id`, so the Worker can group results by source.
+
+*src/index.jsjs*
 
 ```js
 // The shared instance that every tenant can search.
@@ -186,6 +196,8 @@ async function ensureInstance(env, id, key, content) {
 	}
 }
 ```
+
+*src/index.tsts*
 
 ```ts
 export interface Env {
@@ -283,7 +295,7 @@ async function ensureInstance(
 
 If one instance fails, for example because the ID does not exist, the others still return, and the failure is reported in `errors` instead of throwing. This makes a missing tenant instance a partial result rather than a hard error.
 
-## 4\. Run it
+## 4. Run it
 
 Start a local development server:
 
@@ -319,7 +331,7 @@ The response separates results from the shared instance and the tenant instance:
 
 When every instance succeeds, the response has no `errors` field. If an instance fails, an `errors` array lists the failures while the other instances' results are still returned.
 
-## 5\. Generate an answer over both instances
+## 5. Generate an answer over both instances
 
 To return a single written answer grounded in both instances instead of raw chunks, use `chatCompletions` with the same `instance_ids`. It retrieves from every listed instance, then generates one response from the combined context:
 
@@ -337,7 +349,7 @@ const answer = completion.choices[0]?.message.content;
 
 The response also includes the retrieved `chunks` (each tagged with its `instance_id`) so you can cite sources, and an `errors` array for any instance that failed.
 
-## 6\. Deploy
+## 6. Deploy
 
 Log in with your Cloudflare account, then deploy your Worker:
 

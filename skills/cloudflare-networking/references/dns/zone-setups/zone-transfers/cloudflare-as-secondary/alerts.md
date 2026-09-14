@@ -12,11 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Alerts
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/alerts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/alerts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can configure alerts to receive notifications for changes in your secondary DNS.
 
+<details>
+
+<summary>
+
 Secondary DNS all Primaries Failing
+
+</summary>
 
 **Who is it for?**
 
@@ -33,10 +39,18 @@ Purchase of Secondary DNS
 **What should you do if you receive one?**
 
 1. Confirm that your primary nameservers are up and running.
-2. Confirm that the [Access Control Lists (ACLs)](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/access-control-lists/cloudflare-ip-addresses/) on your primary nameservers are configured correctly.
+2. Confirm that the <a href="https://developers.cloudflare.com/dns/zone-setups/zone-transfers/access-control-lists/cloudflare-ip-addresses/">Access Control Lists (ACLs)</a> on your primary nameservers are configured correctly.
 3. Confirm that your primary nameservers are configured correctly in your Cloudflare account (correct IP, port, TSIG).
 
+</details>
+
+<details>
+
+<summary>
+
 Secondary DNS Primaries Failing
+
+</summary>
 
 **Who is it for?**
 
@@ -53,10 +67,18 @@ Purchase of Secondary DNS.
 **What should you do if you receive one?**
 
 1. Confirm that your primary nameservers are up and running.
-2. Confirm that the [Access Control Lists (ACLs)](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/access-control-lists/cloudflare-ip-addresses/) on your primary nameservers are configured correctly.
+2. Confirm that the <a href="https://developers.cloudflare.com/dns/zone-setups/zone-transfers/access-control-lists/cloudflare-ip-addresses/">Access Control Lists (ACLs)</a> on your primary nameservers are configured correctly.
 3. Confirm that your primary nameservers are configured correctly in your Cloudflare account (correct IP, port, TSIG).
 
+</details>
+
+<details>
+
+<summary>
+
 Secondary DNS Successfully Updated
+
+</summary>
 
 **Who is it for?**
 
@@ -74,7 +96,15 @@ Purchase of Secondary DNS.
 
 No action needed. Everything is working correctly.
 
+</details>
+
+<details>
+
+<summary>
+
 Secondary DNS Warning
+
+</summary>
 
 **Who is it for?**
 
@@ -91,6 +121,8 @@ Enterprise plans.
 **What should you do if you receive one?**
 
 Actions for failure notifications will depend on the type of failure.
+
+</details>
 
 Refer to [Cloudflare Notifications](https://developers.cloudflare.com/notifications/get-started/) for more information on how to set up an alert.
 

@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Image-to-Video • Alibaba
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/alibaba/hh1-i2v/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/alibaba/hh1-i2v/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `alibaba/hh1-i2v`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 Alibaba's HappyHorse 1.0 image-to-video model. Animates a reference image with an optional text prompt. Supports 720P and 1080P output with durations from 3 to 15 seconds.
 
-| Model Info          |                                                                                                                   |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                              |
-| More information    | [link ↗](https://modelstudio.console.alibabacloud.com/)                                                           |
-| Zero data retention | Yes                                                                                                               |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/hh1-i2v) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal) |
+| More information | [link ↗](https://modelstudio.console.alibabacloud.com/) |
+| Zero data retention | Yes |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/hh1-i2v) |
 
 ## Usage
 
@@ -73,7 +73,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**High Resolution** — Generate at 1080P with a longer duration
+<details>
+
+<summary>**High Resolution** — Generate at 1080P with a longer duration</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -116,7 +120,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Reproducible Output** — Use a fixed seed for reproducibility
+</details>
+
+<details>
+
+<summary>**Reproducible Output** — Use a fixed seed for reproducibility</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -161,6 +171,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 image
@@ -197,9 +209,9 @@ video
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/alibaba/hh1-i2v/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/alibaba/hh1-i2v/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/alibaba/hh1-i2v/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/alibaba/hh1-i2v/schema-output.json)
 
 Was this helpful?
 

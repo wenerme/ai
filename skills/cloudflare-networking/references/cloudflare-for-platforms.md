@@ -12,17 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare for Platforms
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build a platform where your customers can deploy code, each with their own subdomain or custom domain.
 
 Cloudflare for Platforms is used by leading platforms big and small to:
 
-* Build application development platforms tailored to specific domains, like ecommerce storefronts or mobile apps
-* Power AI coding platforms that let anyone build and deploy software
-* Customize product behavior by allowing any user to write a short code snippet
-* Offer every customer their own isolated database
-* Provide each customer with their own subdomain
+- Build application development platforms tailored to specific domains, like ecommerce storefronts or mobile apps
+- Power AI coding platforms that let anyone build and deploy software
+- Customize product behavior by allowing any user to write a short code snippet
+- Offer every customer their own isolated database
+- Provide each customer with their own subdomain
 
 ---
 
@@ -52,10 +52,10 @@ Build an [AI vibe coding platform](https://developers.cloudflare.com/reference-a
 
 ## Features
 
-* **Isolation and multitenancy** — Each of your customers runs code in their own Worker, a [secure and isolated sandbox](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/worker-isolation/).
-* **Programmable routing, ingress, egress, and limits** — You write code that dispatches requests to your customers' code, and can control [ingress](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch/), [egress](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/), and set [per-customer limits](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/custom-limits/).
-* **Databases and storage** — You can provide [databases, object storage, and more](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/bindings/) to your customers as APIs they can call directly, without API tokens, keys, or external dependencies.
-* **Custom domains and subdomains** — You [call an API](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/) to create custom subdomains or configure custom domains for each of your customers.
+- **Isolation and multitenancy** — Each of your customers runs code in their own Worker, a [secure and isolated sandbox](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/worker-isolation/).
+- **Programmable routing, ingress, egress, and limits** — You write code that dispatches requests to your customers' code, and can control [ingress](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch/), [egress](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/), and set [per-customer limits](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/custom-limits/).
+- **Databases and storage** — You can provide [databases, object storage, and more](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/bindings/) to your customers as APIs they can call directly, without API tokens, keys, or external dependencies.
+- **Custom domains and subdomains** — You [call an API](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/) to create custom subdomains or configure custom domains for each of your customers.
 
 To learn how these components work together, refer to [How Workers for Platforms works](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/).
 

@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Available sinks
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/sinks/available-sinks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pipelines/sinks/available-sinks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Pipelines](https://developers.cloudflare.com/pipelines/) supports the following sink types:
 
-* [R2](https://developers.cloudflare.com/pipelines/sinks/available-sinks/r2/)
-* [R2 Data Catalog](https://developers.cloudflare.com/pipelines/sinks/available-sinks/r2-data-catalog/)
+- [R2](https://developers.cloudflare.com/pipelines/sinks/available-sinks/r2/)
+- [R2 Data Catalog](https://developers.cloudflare.com/pipelines/sinks/available-sinks/r2-data-catalog/)
 
 Was this helpful?
 

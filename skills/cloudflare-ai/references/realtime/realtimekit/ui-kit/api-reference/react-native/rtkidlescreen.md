@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RtkIdleScreen
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react-native/rtkidlescreen/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react-native/rtkidlescreen/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Loading/idle screen displayed while the meeting is initializing, showing a logo and spinner.
 
 ## Properties
 
-| Property | Type     | Required | Default | Description                                 |
-| -------- | -------- | -------- | ------- | ------------------------------------------- |
-| config   | UIConfig | ✅        | \-      | UI configuration object (used for logo URL) |
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `config` | `UIConfig` | ✅ | - | UI configuration object (used for logo URL) |
 
 ## Usage Examples
 

@@ -12,10 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Request Header Transform Rules
 
-Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/transform/request-header-modification/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/request-header-modification/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use Request Header Transform Rules to manipulate the headers of HTTP requests sent to your origin server (the server where your website or application is hosted).
 
+```
 flowchart LR
 accTitle: Header modifications diagram
 accDescr: Header transform rules can change the headers sent to your origin server (request header modifications) or sent your website visitors (response header modifications).
@@ -32,14 +33,17 @@ style B stroke: orange,fill: orange,color: black
 linkStyle 0,2,3 stroke-width: 1px
 linkStyle 1 stroke-width: 3px
 
+```
+
+
 
 To modify HTTP headers in the **response** sent to website visitors, refer to [Response Header Transform Rules](https://developers.cloudflare.com/rules/transform/response-header-modification/).
 
 Through Request Header Transform Rules you can:
 
-* Set the value of an HTTP request header to a literal string value, overwriting its previous value or adding a new header to the request.
-* Set the value of an HTTP request header according to an expression (a formula that computes a value based on request properties), overwriting its previous value or adding a new header to the request.
-* Remove an HTTP header from the request.
+- Set the value of an HTTP request header to a literal string value, overwriting its previous value or adding a new header to the request.
+- Set the value of an HTTP request header according to an expression (a formula that computes a value based on request properties), overwriting its previous value or adding a new header to the request.
+- Remove an HTTP header from the request.
 
 You can create a request header transform rule [in the dashboard](https://developers.cloudflare.com/rules/transform/request-header-modification/create-dashboard/), [via API](https://developers.cloudflare.com/rules/transform/request-header-modification/create-api/), or [using Terraform](https://developers.cloudflare.com/terraform/additional-configurations/transform-rules/#create-a-request-header-transform-rule).
 
@@ -47,38 +51,38 @@ For more complex request header modifications, consider using [Snippets](https:/
 
 ## Important remarks
 
-* You cannot modify or remove HTTP request headers whose name starts with `x-cf-` or `cf-` except for the `cf-connecting-ip` HTTP request header, which you can remove.
-* Due to protocol compliance reasons, modifying or removing request headers with [forbidden header names ↗](https://developer.mozilla.org/en-US/docs/Glossary/Forbidden%5Fheader%5Fname) (such as `Accept-Encoding`) is generally not allowed in Request Header Transform Rules.
-* You cannot modify the value of any header commonly used to identify the website visitor's IP address or initial protocol, such as `x-forwarded-for`, `true-client-ip`, `x-real-ip`, or `x-forwarded-proto`. If your origin needs a custom value in a header like `x-real-ip` on requests reaching your origin server, use [Cloudflare Snippets](https://developers.cloudflare.com/rules/snippets/) or [Cloudflare Workers](https://developers.cloudflare.com/workers/) and set the header on a `fetch()` subrequest. The value must be a syntactically valid IP address. This workaround does not work for cross-zone subrequests, where Cloudflare unconditionally replaces the value with an internal Cloudflare address to prevent IP spoofing.
-* Although you can remove the `x-forwarded-for` header in a Request Header Transform Rule, Cloudflare's backend proxy re-adds it (with the visitor's IP address) before the request reaches your origin server, because the proxy runs after all rule phases. The same applies to [Managed Transforms](https://developers.cloudflare.com/rules/transform/managed-transforms/). However, if the request is handled by Cloudflare Workers — which [run before the cache](https://developers.cloudflare.com/workers/reference/how-the-cache-works/) — the `x-forwarded-for` request header will be absent because the proxy has not yet re-added it.
-* You cannot set or modify the value of `cookie` HTTP request headers, but you can remove these headers. Configuring a rule that removes the `cookie` HTTP request header will remove all `cookie` headers in matching requests.
-* If you modify the value of an existing HTTP request header using an expression that evaluates to an empty string (`""`) or an undefined value, the HTTP request header is **removed**.
-* The HTTP request header removal operation will remove all request headers with the provided name.
-* Currently, there is a limited number of HTTP request headers that you cannot modify. Cloudflare may remove restrictions for some of these HTTP request headers when presented with valid use cases. [Create a post in the community ↗](https://community.cloudflare.com) for consideration.
-* To use [claims inside a JSON Web Token (JWT)](https://developers.cloudflare.com/api-shield/security/jwt-validation/transform-rules/), you must first set up a token validation configuration in API Shield.
-* Request header transform rules run in order, and later rules can overwrite changes done by previous rules.
-* The values of request and response fields are immutable within each [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/), such as the `http_request_late_transform` phase where request header transform rules are defined. This means that later request header transform rules will still use the original field values when evaluating their filter expressions, not the values changed by previous rules. Refer to [Field values during rule evaluation](https://developers.cloudflare.com/ruleset-engine/about/rules/#field-values-during-rule-evaluation) for more information.
+- You cannot modify or remove HTTP request headers whose name starts with `x-cf-` or `cf-` except for the `cf-connecting-ip` HTTP request header, which you can remove.
+- Due to protocol compliance reasons, modifying or removing request headers with [forbidden header names ↗](https://developer.mozilla.org/en-US/docs/Glossary/Forbidden_header_name) (such as `Accept-Encoding`) is generally not allowed in Request Header Transform Rules.
+- You cannot modify the value of any header commonly used to identify the website visitor's IP address or initial protocol, such as `x-forwarded-for`, `true-client-ip`, `x-real-ip`, or `x-forwarded-proto`. If your origin needs a custom value in a header like `x-real-ip` on requests reaching your origin server, use [Cloudflare Snippets](https://developers.cloudflare.com/rules/snippets/) or [Cloudflare Workers](https://developers.cloudflare.com/workers/) and set the header on a `fetch()` subrequest. The value must be a syntactically valid IP address. This workaround does not work for cross-zone subrequests, where Cloudflare unconditionally replaces the value with an internal Cloudflare address to prevent IP spoofing.
+- Although you can remove the `x-forwarded-for` header in a Request Header Transform Rule, Cloudflare's backend proxy re-adds it (with the visitor's IP address) before the request reaches your origin server, because the proxy runs after all rule phases. The same applies to [Managed Transforms](https://developers.cloudflare.com/rules/transform/managed-transforms/). However, if the request is handled by Cloudflare Workers — which [run before the cache](https://developers.cloudflare.com/workers/reference/how-the-cache-works/) — the `x-forwarded-for` request header will be absent because the proxy has not yet re-added it.
+- You cannot set or modify the value of `cookie` HTTP request headers, but you can remove these headers. Configuring a rule that removes the `cookie` HTTP request header will remove all `cookie` headers in matching requests.
+- If you modify the value of an existing HTTP request header using an expression that evaluates to an empty string ( `""`) or an undefined value, the HTTP request header is **removed**.
+- The HTTP request header removal operation will remove all request headers with the provided name.
+- Currently, there is a limited number of HTTP request headers that you cannot modify. Cloudflare may remove restrictions for some of these HTTP request headers when presented with valid use cases. [Create a post in the community ↗](https://community.cloudflare.com) for consideration.
+- To use [claims inside a JSON Web Token (JWT)](https://developers.cloudflare.com/api-shield/security/jwt-validation/transform-rules/), you must first set up a token validation configuration in API Shield.
+- Request header transform rules run in order, and later rules can overwrite changes done by previous rules.
+- The values of request and response fields are immutable within each [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/), such as the `http_request_late_transform` phase where request header transform rules are defined. This means that later request header transform rules will still use the original field values when evaluating their filter expressions, not the values changed by previous rules. Refer to [Field values during rule evaluation](https://developers.cloudflare.com/ruleset-engine/about/rules/#field-values-during-rule-evaluation) for more information.
 
 ## Execution order
 
 The execution order of Rules features is the following:
 
-* [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/)
-* [URL Rewrite Rules](https://developers.cloudflare.com/rules/transform/url-rewrite/)
-* [Configuration Rules](https://developers.cloudflare.com/rules/configuration-rules/)
-* [Origin Rules](https://developers.cloudflare.com/rules/origin-rules/)
-* [Bulk Redirects](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/)
-* [Managed Transforms](https://developers.cloudflare.com/rules/transform/managed-transforms/)
-* [Request Header Transform Rules](https://developers.cloudflare.com/rules/transform/request-header-modification/)
-* [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/)
-* [Snippets](https://developers.cloudflare.com/rules/snippets/)
-* [Cloud Connector](https://developers.cloudflare.com/rules/cloud-connector/)
+- [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/)
+- [URL Rewrite Rules](https://developers.cloudflare.com/rules/transform/url-rewrite/)
+- [Configuration Rules](https://developers.cloudflare.com/rules/configuration-rules/)
+- [Origin Rules](https://developers.cloudflare.com/rules/origin-rules/)
+- [Bulk Redirects](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/)
+- [Managed Transforms](https://developers.cloudflare.com/rules/transform/managed-transforms/)
+- [Request Header Transform Rules](https://developers.cloudflare.com/rules/transform/request-header-modification/)
+- [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/)
+- [Snippets](https://developers.cloudflare.com/rules/snippets/)
+- [Cloud Connector](https://developers.cloudflare.com/rules/cloud-connector/)
 
 The different types of rules listed above will take precedence over [Page Rules](https://developers.cloudflare.com/rules/page-rules/). This means that Page Rules will be overridden if there is a match for both Page Rules and the Rules products listed above.
 
-Generally speaking, for [non-terminating actions](https://developers.cloudflare.com/ruleset-engine/rules-language/actions/) the last change made by rules in the same [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/) will win (later rules can overwrite changes done by previous rules). However, for terminating actions (_Block_, _Redirect_, or one of the challenge actions), rule evaluation will stop and the action will be executed immediately.
+Generally speaking, for [non-terminating actions](https://developers.cloudflare.com/ruleset-engine/rules-language/actions/) the last change made by rules in the same [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/) will win (later rules can overwrite changes done by previous rules). However, for terminating actions (*Block*, *Redirect*, or one of the challenge actions), rule evaluation will stop and the action will be executed immediately.
 
-For example, if multiple rules with the _Redirect_ action match, Cloudflare will always use the URL redirect of the first rule that matches. Also, if you configure URL redirects using different Cloudflare products (Single Redirects and Bulk Redirects), the product executed first will apply, if there is a rule match (in this case, Single Redirects).
+For example, if multiple rules with the *Redirect* action match, Cloudflare will always use the URL redirect of the first rule that matches. Also, if you configure URL redirects using different Cloudflare products (Single Redirects and Bulk Redirects), the product executed first will apply, if there is a rule match (in this case, Single Redirects).
 
 Refer to the [Phases list](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/) for the product execution order.
 

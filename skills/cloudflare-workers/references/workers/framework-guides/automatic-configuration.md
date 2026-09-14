@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Deploy an existing project
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler can automatically detect your framework and configure your project for Cloudflare Workers. This allows you to deploy existing projects with a single command, without manually setting up configuration files or installing adapters.
 
@@ -24,32 +24,32 @@ Minimum required Wrangler version: **4.68.0**. Check your version by running `wr
 
 When you run `wrangler deploy` or `wrangler setup` in a project directory without a Wrangler configuration file, Wrangler will:
 
-1. **Detect your framework** \- Analyzes your project to identify the framework you're using
-2. **Prompt for confirmation** \- Shows the detected settings and asks you to confirm before making changes
-3. **Install adapters** \- Installs any required Cloudflare adapters for your framework
-4. **Generate configuration** \- Creates a `wrangler.jsonc` file with appropriate settings
-5. **Update package.json** \- Adds helpful scripts like `deploy`, `preview`, and `cf-typegen`
-6. **Configure git** \- Adds Wrangler-specific entries to `.gitignore`
+1. **Detect your framework** - Analyzes your project to identify the framework you're using
+2. **Prompt for confirmation** - Shows the detected settings and asks you to confirm before making changes
+3. **Install adapters** - Installs any required Cloudflare adapters for your framework
+4. **Generate configuration** - Creates a `wrangler.jsonc` file with appropriate settings
+5. **Update package.json** - Adds helpful scripts like `deploy`, `preview`, and `cf-typegen`
+6. **Configure git** - Adds Wrangler-specific entries to `.gitignore`
 
 ## Supported frameworks
 
 Automatic configuration supports the following frameworks:
 
-| Framework                                                                                                     | Adapter/Tool                 | Notes                                                                                           |
-| ------------------------------------------------------------------------------------------------------------- | ---------------------------- | ----------------------------------------------------------------------------------------------- |
-| [Next.js](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/)                        | vinext                       | Configures vinext for Cloudflare Workers and adds the required Vite and Wrangler configuration. |
-| [Astro](https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/)                           | @astrojs/cloudflare          | Runs astro add cloudflare automatically                                                         |
-| [SvelteKit](https://developers.cloudflare.com/workers/framework-guides/web-apps/sveltekit/)                   | @sveltejs/adapter-cloudflare | Runs sv add sveltekit-adapter automatically                                                     |
-| [Nuxt](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/nuxt/)         | Built-in Cloudflare preset   |                                                                                                 |
-| [React Router](https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/)             | Cloudflare Vite plugin       |                                                                                                 |
-| [Solid Start](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/solid/) | Built-in Cloudflare preset   |                                                                                                 |
-| [TanStack Start](https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/)         | Cloudflare Vite plugin       |                                                                                                 |
-| [Angular](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/angular/)   |                              |                                                                                                 |
-| [Analog](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/analog/)     | Built-in Cloudflare preset   |                                                                                                 |
-| [Vite](https://developers.cloudflare.com/workers/vite-plugin/)                                                | Cloudflare Vite plugin       |                                                                                                 |
-| [Vike](https://developers.cloudflare.com/workers/framework-guides/web-apps/vike/)                             |                              |                                                                                                 |
-| [Waku](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/waku/)         |                              |                                                                                                 |
-| Static sites                                                                                                  | None                         | Any directory with an index.html                                                                |
+| Framework | Adapter/Tool | Notes |
+| --- | --- | --- |
+| [Next.js](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/) | `vinext` | Configures vinext for Cloudflare Workers and adds the required Vite and Wrangler configuration. |
+| [Astro](https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/) | `@astrojs/cloudflare` | Runs `astro add cloudflare` automatically |
+| [SvelteKit](https://developers.cloudflare.com/workers/framework-guides/web-apps/sveltekit/) | `@sveltejs/adapter-cloudflare` | Runs `sv add sveltekit-adapter` automatically |
+| [Nuxt](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/nuxt/) | Built-in Cloudflare preset | |
+| [React Router](https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/) | Cloudflare Vite plugin | |
+| [Solid Start](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/solid/) | Built-in Cloudflare preset | |
+| [TanStack Start](https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/) | Cloudflare Vite plugin | |
+| [Angular](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/angular/) |  | |
+| [Analog](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/analog/) | Built-in Cloudflare preset | |
+| [Vite](https://developers.cloudflare.com/workers/vite-plugin/) | Cloudflare Vite plugin | |
+| [Vike](https://developers.cloudflare.com/workers/framework-guides/web-apps/vike/) |  | |
+| [Waku](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/waku/) |  | |
+| Static sites | None | Any directory with an `index.html` |
 
 Automatic configuration may also work with other projects, such as React or Vue SPAs. Try running `wrangler deploy` or `wrangler setup` to see if your project is detected.
 
@@ -67,7 +67,7 @@ A new Wrangler configuration file is created with settings appropriate for your 
 	"name": "my-project",
 	"main": "dist/_worker.js/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"compatibility_flags": ["nodejs_compat"],
 	"assets": {
 		"binding": "ASSETS",
@@ -84,7 +84,7 @@ A new Wrangler configuration file is created with settings appropriate for your 
 name = "my-project"
 main = "dist/_worker.js/index.js"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 compatibility_flags = [ "nodejs_compat" ]
 
 [assets]
@@ -135,7 +135,7 @@ _routes.json
 
 ### Deploy with automatic configuration
 
-To deploy an existing project, run [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) in your project directory:
+To deploy an existing project, run [`wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) in your project directory:
 
 npmyarnpnpm
 
@@ -155,7 +155,7 @@ Wrangler will detect your framework, show the configuration it will apply, and p
 
 ### Configure without deploying
 
-To configure your project without deploying, use [wrangler setup](https://developers.cloudflare.com/workers/wrangler/commands/general/#setup):
+To configure your project without deploying, use [`wrangler setup`](https://developers.cloudflare.com/workers/wrangler/commands/general/#setup):
 
 npmyarnpnpm
 
@@ -195,7 +195,7 @@ This outputs a summary of the configuration that would be generated.
 
 ## Non-interactive mode
 
-To skip the confirmation prompts, use the [\--yes flag](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy):
+To skip the confirmation prompts, use the [`--yes` flag](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy):
 
 npmyarnpnpm
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Serverless global APIs
 
-Last updated Oct 13, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-global-apis/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-global-apis/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -28,13 +28,13 @@ Most cloud serverless implementations have a single region where your code is ex
 
 ![Figure 1: Traditional single-region architecture](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=1125,format=webp/_astro/single-region.DcjMitxL.png "Figure 1:  Traditional single-region architecture")
 
-Figure 1: Traditional single-region architecture
+*Figure 1: Traditional single-region architecture*
 
 Cloudflare follows a different, global-first approach. Globally-deployed architectures enable lower latency and high availability for users accessing the API from different parts of the world. In order to realize performance gains, not only the compute needs to be distributed, but ideally the data as well. Different solutions such as a caching as well as global replication can enable this.
 
 ![Figure 2: Region Earth](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=1126,format=webp/_astro/region-earth.DPRpgTD0.png "Figure 2:  Region Earth")
 
-Figure 2: Region Earth
+*Figure 2: Region Earth*
 
 Overall, serverless globally-deployed APIs offer a cost-effective, scalable, and agile approach to building modern applications and services, allowing organizations to focus on delivering value to their users without being encumbered by the complexities of managing infrastructure.
 
@@ -42,7 +42,7 @@ Overall, serverless globally-deployed APIs offer a cost-effective, scalable, and
 
 ![Figure 3: Serverless global APIs](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=466,format=svg/_astro/serverless-global-apis.BnHHhP-u.svg "Figure 3: Serverless global APIs")
 
-Figure 3: Serverless global APIs
+*Figure 3: Serverless global APIs*
 
 This is an example architecture of a serverless API on Cloudflare and aims to illustrate how different compute and data products could interact with each other.
 
@@ -54,9 +54,9 @@ This is an example architecture of a serverless API on Cloudflare and aims to il
 
 ## Related resources
 
-* [Workers: Get started](https://developers.cloudflare.com/workers/get-started/guide/)
-* [Queues: Get started](https://developers.cloudflare.com/queues/get-started/)
-* [R2: Get started](https://developers.cloudflare.com/r2/get-started/)
+- [Workers: Get started](https://developers.cloudflare.com/workers/get-started/guide/)
+- [Queues: Get started](https://developers.cloudflare.com/queues/get-started/)
+- [R2: Get started](https://developers.cloudflare.com/r2/get-started/)
 
 Was this helpful?
 

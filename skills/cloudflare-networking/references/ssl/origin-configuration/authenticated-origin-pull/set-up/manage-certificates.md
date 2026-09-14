@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage certificates
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/manage-certificates/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/manage-certificates/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Refer to the following sections to learn how to manage certificates used with [zone-level](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/) and [per-hostname](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/) Authenticated Origin Pulls. [Global AOP](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/global/) uses a Cloudflare-provided certificate and does not require certificate management.
 
@@ -20,7 +20,7 @@ Refer to the following sections to learn how to manage certificates used with [z
 
 ## Expired certificates
 
-Cloudflare does not delete client certificates upon expiration unless you send a delete request to the Cloudflare API for the relevant certificate ([Delete a zone-level certificate](https://developers.cloudflare.com/api/resources/origin%5Ftls%5Fclient%5Fauth/subresources/zone%5Fcertificates/methods/delete/) or [Delete a hostname-level certificate](https://developers.cloudflare.com/api/resources/origin%5Ftls%5Fclient%5Fauth/subresources/hostname%5Fcertificates/methods/delete/)). If your origin only accepts a valid client certificate, it will drop requests when the certificate expires.
+Cloudflare does not delete client certificates upon expiration unless you send a delete request to the Cloudflare API for the relevant certificate ([Delete a zone-level certificate](https://developers.cloudflare.com/api/resources/origin_tls_client_auth/subresources/zone_certificates/methods/delete/) or [Delete a hostname-level certificate](https://developers.cloudflare.com/api/resources/origin_tls_client_auth/subresources/hostname_certificates/methods/delete/)). If your origin only accepts a valid client certificate, it will drop requests when the certificate expires.
 
 Make sure you have [notifications](https://developers.cloudflare.com/notifications/notification-available/#ssltls) set up to get alerts 30 days and 14 days before an AOP certificate expires.
 
@@ -38,18 +38,29 @@ First, set up [zone-level AOP](https://developers.cloudflare.com/ssl/origin-conf
 
 No automatic removal
 
-Cloudflare does not delete client certificates upon expiration unless you send a delete request to the Cloudflare API for the relevant certificate ([Delete a zone-level certificate](https://developers.cloudflare.com/api/resources/origin%5Ftls%5Fclient%5Fauth/subresources/zone%5Fcertificates/methods/delete/) or [Delete a hostname-level certificate](https://developers.cloudflare.com/api/resources/origin%5Ftls%5Fclient%5Fauth/subresources/hostname%5Fcertificates/methods/delete/)).
+Cloudflare does not delete client certificates upon expiration unless you send a delete request to the Cloudflare API for the relevant certificate ([Delete a zone-level certificate](https://developers.cloudflare.com/api/resources/origin_tls_client_auth/subresources/zone_certificates/methods/delete/) or [Delete a hostname-level certificate](https://developers.cloudflare.com/api/resources/origin_tls_client_auth/subresources/hostname_certificates/methods/delete/)).
 
 ### Per-hostname
 
-1. [Upload the new certificate](https://developers.cloudflare.com/api/resources/origin%5Ftls%5Fclient%5Fauth/subresources/hostname%5Fcertificates/methods/create/).
-2. [List your certificates](https://developers.cloudflare.com/api/resources/origin%5Ftls%5Fclient%5Fauth/subresources/hostname%5Fcertificates/methods/list/) and note the ID for the certificate you uploaded.
-3. [Enable Authenticated Origin Pulls for the specific hostname](https://developers.cloudflare.com/api/resources/origin%5Ftls%5Fclient%5Fauth/subresources/hostnames/methods/update/), using the ID obtained in step 2 to specify the certificate you want to use:
+1. [Upload the new certificate](https://developers.cloudflare.com/api/resources/origin_tls_client_auth/subresources/hostname_certificates/methods/create/).
+2. [List your certificates](https://developers.cloudflare.com/api/resources/origin_tls_client_auth/subresources/hostname_certificates/methods/list/) and note the ID for the certificate you uploaded.
+3. [Enable Authenticated Origin Pulls for the specific hostname](https://developers.cloudflare.com/api/resources/origin_tls_client_auth/subresources/hostnames/methods/update/), using the ID obtained in step 2 to specify the certificate you want to use:
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `SSL and Certificates Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>SSL and Certificates Write</code>
+
+</details>
+
+*Enable or Disable a Hostname for Client Authenticationbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/origin_tls_client_auth/hostnames" \
@@ -72,9 +83,9 @@ If you keep both certificates, the API will state `active` for both but the most
 
 ### Zone-level
 
-1. [Upload the new certificate](https://developers.cloudflare.com/api/resources/origin%5Ftls%5Fclient%5Fauth/subresources/zone%5Fcertificates/methods/create/).
-2. [Check whether new certificate is Active](https://developers.cloudflare.com/api/resources/origin%5Ftls%5Fclient%5Fauth/subresources/zone%5Fcertificates/methods/get/).
-3. Once certificate is active, [delete the previous certificate](https://developers.cloudflare.com/api/resources/origin%5Ftls%5Fclient%5Fauth/subresources/zone%5Fcertificates/methods/delete/).
+1. [Upload the new certificate](https://developers.cloudflare.com/api/resources/origin_tls_client_auth/subresources/zone_certificates/methods/create/).
+2. [Check whether new certificate is Active](https://developers.cloudflare.com/api/resources/origin_tls_client_auth/subresources/zone_certificates/methods/get/).
+3. Once certificate is active, [delete the previous certificate](https://developers.cloudflare.com/api/resources/origin_tls_client_auth/subresources/zone_certificates/methods/delete/).
 
 Note
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Watch filesystem changes
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/guides/file-watching/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/guides/file-watching/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide shows you how to monitor filesystem changes in real-time using the Sandbox SDK's file watching API. File watching is useful for building development tools, automated workflows, and applications that react to file changes as they happen.
 
@@ -51,18 +51,18 @@ for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
 
 The stream emits four lifecycle event types:
 
-* **`watching`** — Watch established, includes the `watchId`
-* **`event`** — A filesystem change occurred
-* **`error`** — The watch encountered an error
-* **`stopped`** — The watch was stopped
+- **`watching`** — Watch established, includes the `watchId`
+- **`event`** — A filesystem change occurred
+- **`error`** — The watch encountered an error
+- **`stopped`** — The watch was stopped
 
 Filesystem change events (`event.eventType`) include:
 
-* **`create`** — File or directory was created
-* **`modify`** — File content changed
-* **`delete`** — File or directory was removed
-* **`move_from`** / **`move_to`** — File or directory was moved or renamed
-* **`attrib`** — File attributes changed (permissions, timestamps)
+- **`create`** — File or directory was created
+- **`modify`** — File content changed
+- **`delete`** — File or directory was removed
+- **`move_from`** / **`move_to`** — File or directory was moved or renamed
+- **`attrib`** — File attributes changed (permissions, timestamps)
 
 ## Filter by file type
 
@@ -101,11 +101,11 @@ for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
 
 Common include patterns:
 
-* `*.ts` — TypeScript files
-* `*.js` — JavaScript files
-* `*.json` — JSON configuration files
-* `*.md` — Markdown documentation
-* `package*.json` — Package files specifically
+- `*.ts` — TypeScript files
+- `*.js` — JavaScript files
+- `*.json` — JSON configuration files
+- `*.md` — Markdown documentation
+- `package*.json` — Package files specifically
 
 ## Exclude directories
 
@@ -739,10 +739,10 @@ File watchers are automatically stopped when the sandbox sleeps or shuts down. I
 
 ## Related resources
 
-* [File Watching API reference](https://developers.cloudflare.com/sandbox/api/file-watching/) — Complete API documentation and types
-* [Manage files guide](https://developers.cloudflare.com/sandbox/guides/manage-files/) — File operations
-* [Background processes guide](https://developers.cloudflare.com/sandbox/guides/background-processes/) — Long-running processes
-* [Stream output guide](https://developers.cloudflare.com/sandbox/guides/streaming-output/) — Real-time output handling
+- [File Watching API reference](https://developers.cloudflare.com/sandbox/api/file-watching/) — Complete API documentation and types
+- [Manage files guide](https://developers.cloudflare.com/sandbox/guides/manage-files/) — File operations
+- [Background processes guide](https://developers.cloudflare.com/sandbox/guides/background-processes/) — Long-running processes
+- [Stream output guide](https://developers.cloudflare.com/sandbox/guides/streaming-output/) — Real-time output handling
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Maximum transmission unit and maximum segment size
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/magic-transit/reference/mtu-mss/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/reference/mtu-mss/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Because Magic Transit wraps your traffic in additional headers (encapsulation), the effective space available for your original data in each packet is reduced. If you do not account for this overhead, packets may be too large for the network path and will be dropped or fragmented — leading to performance loss or failed connections. This page explains the two key values you need to configure: maximum transmission unit (MTU) and maximum segment size (MSS).
 
@@ -56,9 +56,9 @@ So the question is: which of these fragments does Cloudflare drop and which does
 
 The following diagram shows how the three UDP fragments in the preceding example flow through Cloudflare and Magic Transit. The main takeaways are:
 
-* **Cloudflare never sends incomplete packets to customers**: If Cloudflare does not see all parts of a packet required to fully reassemble that packet, Cloudflare will not send the partial data fragments to the customer.
-* **Cloudflare Network Firewall operates on fully reassembled packets, not individual fragments**: This means that filters that match on UDP/TCP header information, for example, apply to the fully reassembled packet, not just the initial fragment. Cloudflare will not leak non-initial fragments to customers.
-* **Customers can still see fragmented packets**: By default (without `clear_dont_fragment_bit` set), Cloudflare fragments packets to fit within the configured MTU of the tunnel before sending the data to the customer. If a packet is larger than 1,476 bytes, Cloudflare will fragment it and send those fragments to the customer for reassembly.
+- **Cloudflare never sends incomplete packets to customers**: If Cloudflare does not see all parts of a packet required to fully reassemble that packet, Cloudflare will not send the partial data fragments to the customer.
+- **Cloudflare Network Firewall operates on fully reassembled packets, not individual fragments**: This means that filters that match on UDP/TCP header information, for example, apply to the fully reassembled packet, not just the initial fragment. Cloudflare will not leak non-initial fragments to customers.
+- **Customers can still see fragmented packets**: By default (without `clear_dont_fragment_bit` set), Cloudflare fragments packets to fit within the configured MTU of the tunnel before sending the data to the customer. If a packet is larger than 1,476 bytes, Cloudflare will fragment it and send those fragments to the customer for reassembly.
 
 In all cases, Cloudflare sends all fragments to the customer.
 
@@ -88,7 +88,7 @@ In an asymmetric scenario, you need to reduce the MSS value of packets sent by M
 
 ![A diagram showing how MSS works with Magic Transit and Direct Server Return.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=1034,format=webp/_astro/dsr.Cp2EyoU3.png)
 
-_Key takeaway from the preceding chart: MSS clamping affects TCP packet payload sizes flowing in the opposite direction versus where the clamp is applied._
+*Key takeaway from the preceding chart: MSS clamping affects TCP packet payload sizes flowing in the opposite direction versus where the clamp is applied.*
 
 ## Tunnel-in-tunnel scenario with Magic Transit
 
@@ -106,27 +106,23 @@ For example, if you have a Magic Transit GRE tunnel set up, and then another IPs
 
 The MSS value depends on how your network is set up.
 
-* **Magic Transit ingress-only traffic (DSR):**
-
-  * **On your edge router transit ports**: Set a TCP MSS clamp to a maximum of 1,436 bytes.
-  * **On any IPsec/GRE tunnels with third parties on your Magic Transit prefix**: Apply the MSS clamp on the internal tunnel interface (most likely on a separate firewall behind the GRE-terminating router) to reduce the current value by 24 bytes.
-* **For Magic Transit ingress + egress traffic:**
-
-  * **On the Magic Transit GRE tunnel internal interface**: Meaning where the Magic Transit egress traffic will traverse. Your devices may do this automatically once the tunnel is configured, but it depends on your devices. Set the TCP MSS clamp to 1,436 bytes maximum.
-  * **On any IPsec/GRE tunnels with third parties on your Magic Transit prefix**: On the internal tunnel interface (most likely on a separate firewall behind the GRE-terminating router) to reduce its current value by 24 bytes.
+- **Magic Transit ingress-only traffic (DSR):**
+  - **On your edge router transit ports**: Set a TCP MSS clamp to a maximum of 1,436 bytes.
+  - **On any IPsec/GRE tunnels with third parties on your Magic Transit prefix**: Apply the MSS clamp on the internal tunnel interface (most likely on a separate firewall behind the GRE-terminating router) to reduce the current value by 24 bytes.
+- **For Magic Transit ingress + egress traffic:**
+  - **On the Magic Transit GRE tunnel internal interface**: Meaning where the Magic Transit egress traffic will traverse. Your devices may do this automatically once the tunnel is configured, but it depends on your devices. Set the TCP MSS clamp to 1,436 bytes maximum.
+  - **On any IPsec/GRE tunnels with third parties on your Magic Transit prefix**: On the internal tunnel interface (most likely on a separate firewall behind the GRE-terminating router) to reduce its current value by 24 bytes.
 
 ### IPsec tunnels
 
 For IPsec tunnels, the value you need to specify depends on how your network is set up. The MSS clamping value is lower than for GRE tunnels because the physical interface sees IPsec-encrypted [packets ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/), not TCP packets, and MSS clamping does not apply to those.
 
-* **Magic Transit ingress-only traffic (DSR):**
-
-  * **On your edge router transit ports**: Set the TCP MSS clamp to 1,436 bytes maximum.
-  * **On any IPsec/GRE tunnels with third parties on your Magic Transit prefix**: On the internal tunnel interface (most likely on a separate firewall behind the GRE-terminating router) to reduce its current value by 140 bytes.
-* **Magic Transit ingress + egress traffic:**
-
-  * **On your edge router**: Apply this on your Magic Transit IPsec tunnel internal interface (that is, where the Magic Transit egress traffic will traverse). Your devices may do this automatically once the tunnel is configured, but it depends on your devices. Set the TCP MSS clamp to 1,360 bytes maximum.
-  * **On any IPsec/GRE tunnels with third parties on your Magic Transit prefix**: On the internal tunnel interface (most likely on a separate firewall behind the IPsec-terminating device in your premises) to reduce its current value by 140 bytes.
+- **Magic Transit ingress-only traffic (DSR):**
+  - **On your edge router transit ports**: Set the TCP MSS clamp to 1,436 bytes maximum.
+  - **On any IPsec/GRE tunnels with third parties on your Magic Transit prefix**: On the internal tunnel interface (most likely on a separate firewall behind the GRE-terminating router) to reduce its current value by 140 bytes.
+- **Magic Transit ingress + egress traffic:**
+  - **On your edge router**: Apply this on your Magic Transit IPsec tunnel internal interface (that is, where the Magic Transit egress traffic will traverse). Your devices may do this automatically once the tunnel is configured, but it depends on your devices. Set the TCP MSS clamp to 1,360 bytes maximum.
+  - **On any IPsec/GRE tunnels with third parties on your Magic Transit prefix**: On the internal tunnel interface (most likely on a separate firewall behind the IPsec-terminating device in your premises) to reduce its current value by 140 bytes.
 
 Was this helpful?
 

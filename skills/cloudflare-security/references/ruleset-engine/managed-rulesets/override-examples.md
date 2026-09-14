@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Override examples
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The examples in the topics below use overrides to customize the behavior of managed rulesets:
 
-* [Set WordPress rules to Block](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/deploy-cmr-wordpress-block/)
-* [Enable only Joomla rules](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/deploy-cmr-joomla-only/)
-* [Enable only selected rules](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/enable-selected-rules/)
-* [Deploy a managed ruleset with ruleset, tag, and rule overrides](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/override-ruleset-tag-rule/)
-* [Adjust the sensitivity of an HTTP DDoS rule to Low](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/override-ddos-rule-sensitivity/)
-* [Adjust an L3/4 DDoS rule](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/configure-api/#configure-an-override-for-the-network-layer-ddos-attack-protection-managed-ruleset)
+- [Set WordPress rules to Block](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/deploy-cmr-wordpress-block/)
+- [Enable only Joomla rules](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/deploy-cmr-joomla-only/)
+- [Enable only selected rules](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/enable-selected-rules/)
+- [Deploy a managed ruleset with ruleset, tag, and rule overrides](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/override-ruleset-tag-rule/)
+- [Adjust the sensitivity of an HTTP DDoS rule to Low](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/override-ddos-rule-sensitivity/)
+- [Adjust an L3/4 DDoS rule](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/configure-api/#configure-an-override-for-the-network-layer-ddos-attack-protection-managed-ruleset)
 
 ## Related resources
 

@@ -12,18 +12,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # /json - Capture structured data using AI
 
-Last updated Jul 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `/json` endpoint extracts structured data from a webpage. You can specify the expected output using either a `prompt` or a `response_format` parameter which accepts a JSON schema. The endpoint returns the extracted data in JSON format.
 
 Note
 
-By default, the `/json` endpoint leverages [Workers AI](https://developers.cloudflare.com/workers-ai/) for data extraction using [@cf/meta/llama-3.3-70b-instruct-fp8-fast](https://developers.cloudflare.com/workers-ai/models/llama-3.3-70b-instruct-fp8-fast/). Using this endpoint incurs usage on Workers AI, which you can monitor in the [Workers AI Dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/workers-ai). To use a different model, refer to [Using a custom model (BYO API Key)](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/#using-a-custom-model-byo-api-key).
+By default, the `/json` endpoint leverages [Workers AI](https://developers.cloudflare.com/workers-ai/) for data extraction using [`@cf/meta/llama-3.3-70b-instruct-fp8-fast`](https://developers.cloudflare.com/workers-ai/models/llama-3.3-70b-instruct-fp8-fast/). Using this endpoint incurs usage on Workers AI, which you can monitor in the [Workers AI Dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/workers-ai). To use a different model, refer to [Using a custom model (BYO API Key)](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/#using-a-custom-model-byo-api-key).
 
 You can use this endpoint in two ways:
 
-* **REST API**: [Create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission.
-* **Workers Bindings**: Call the endpoint directly from a [Cloudflare Worker](https://developers.cloudflare.com/workers/) using the [Workers Bindings](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings). No API token is needed.
+- **REST API**: [Create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission.
+- **Workers Bindings**: Call the endpoint directly from a [Cloudflare Worker](https://developers.cloudflare.com/workers/) using the [Workers Bindings](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings). No API token is needed.
 
 For more information, refer to [Quick Actions: Before you begin](https://developers.cloudflare.com/browser-run/quick-actions/#before-you-begin).
 
@@ -37,19 +37,19 @@ https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/json
 
 You must provide either `url` or `html`:
 
-* `url` (string)
-* `html` (string)
+- `url` (string)
+- `html` (string)
 
 And at least one of:
 
-* `prompt` (string), or
-* `response_format` (object with a JSON Schema)
+- `prompt` (string), or
+- `response_format` (object with a JSON Schema)
 
 ## Common use cases
 
-* Extract product info (title, price, availability) or listings (jobs, rentals)
-* Normalize article metadata (title, author, publish date, canonical URL)
-* Convert unstructured pages into typed JSON for downstream pipelines
+- Extract product info (title, price, availability) or listings (jobs, rentals)
+- Normalize article metadata (title, author, publish date, canonical URL)
+- Convert unstructured pages into typed JSON for downstream pipelines
 
 ## Basic usage
 
@@ -337,14 +337,14 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
 Looking for more parameters?
 
-Visit the [Browser Run API reference](https://developers.cloudflare.com/api/resources/browser%5Frendering/subresources/json/methods/create/) for all available parameters, such as setting HTTP credentials using `authenticate`, setting `cookies`, and customizing load behavior using `gotoOptions`.
+Visit the [Browser Run API reference](https://developers.cloudflare.com/api/resources/browser_rendering/subresources/json/methods/create/) for all available parameters, such as setting HTTP credentials using `authenticate`, setting `cookies`, and customizing load behavior using `gotoOptions`.
 
 ### Using a custom model (BYO API Key)
 
 Browser Run can use a custom model for which you supply credentials. List the model(s) in the `custom_ai` array:
 
-* `model` should be formed as `<provider>/<model_name>` and the provider must be one of these [supported providers](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/#supported-providers).
-* `authorization` is the bearer token or API key that allows Browser Run to call the provider on your behalf.
+- `model` should be formed as `<provider>/<model_name>` and the provider must be one of these [supported providers](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/#supported-providers).
+- `authorization` is the bearer token or API key that allows Browser Run to call the provider on your behalf.
 
 This example uses the `custom_ai` parameter to instruct Browser Run to use a Anthropic's Claude Sonnet 4 model. The prompt asks the model to extract the main `<h1>` and `<h2>` headings from the target URL and return them in a structured JSON object.
 
@@ -420,9 +420,9 @@ In this example, Browser Run first calls Anthropic's Claude Sonnet 4 model. If t
 
 If the `/json` endpoint returns null or empty results:
 
-* **Provide a clear prompt** — Be specific about what data to extract and where it appears on the page (for example, "Extract the product name, price, and description from the main product section").
-* **Define a response schema** — Use `response_format` with a JSON schema to enforce the expected output structure.
-* **Use a custom model** — If the default [Workers AI](https://developers.cloudflare.com/workers-ai/) model does not produce the desired results, use the `custom_ai` parameter to specify a different model. Refer to [Using a custom model (BYO API Key)](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/#using-a-custom-model-byo-api-key) for details.
+- **Provide a clear prompt** — Be specific about what data to extract and where it appears on the page (for example, "Extract the product name, price, and description from the main product section").
+- **Define a response schema** — Use `response_format` with a JSON schema to enforce the expected output structure.
+- **Use a custom model** — If the default [Workers AI](https://developers.cloudflare.com/workers-ai/) model does not produce the desired results, use the `custom_ai` parameter to specify a different model. Refer to [Using a custom model (BYO API Key)](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/#using-a-custom-model-byo-api-key) for details.
 
 ### Handling JavaScript-heavy pages
 

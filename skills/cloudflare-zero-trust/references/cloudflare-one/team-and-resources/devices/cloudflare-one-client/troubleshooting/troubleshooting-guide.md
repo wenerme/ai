@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare One Client troubleshooting guide
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/troubleshooting-guide/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/troubleshooting-guide/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide helps you diagnose and resolve common issues with the Cloudflare One Client (formerly WARP). It covers how to troubleshoot the Cloudflare One Client on desktop operating systems, including Windows, macOS, and Linux.
 
 1. **Before you start**: [Prerequisites](#prerequisites), permissions, [version control](#check-your-client-version), and client basics.
-2. **Collect logs**: Through the [Cloudflare dashboard](#option-a-collect-logs-via-the-cloudflare-dashboard) (with DEX remote capture) or the [command-line interface](#option-b-collect-logs-via-the-cli) (CLI) (`warp-diag`).
+2. **Collect logs**: Through the [Cloudflare dashboard](#option-a-collect-logs-via-the-cloudflare-dashboard) (with DEX remote capture) or the [command-line interface](#option-b-collect-logs-via-the-cli) (CLI) ( `warp-diag`).
 3. **Review logs**: [Status](#check-client-status), [settings](#check-client-settings), [profile ID](#profile-id), [split tunnel](#exclude-mode-with-hostsips) configuration, and other settings.
 4. **Fix common misconfigurations**: [Profile mismatch](#wrong-profile-id), [split tunnel issues](#wrong-split-tunnel-configuration), [managed network issues](#review-your-managed-network-settings), [user group mismatch](#check-a-users-group-membership).
 5. **File a support ticket**: [How to file a ticket](#5-file-a-support-ticket) after you have exhausted your troubleshooting options.
@@ -26,17 +26,17 @@ AI-assisted troubleshooting
 
 Cloudflare One includes two free AI helpers to speed up Cloudflare One Client investigations:
 
-[**Diagnostics Analyzer**](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#diagnostics-analyzer-beta) \- Uses AI to parse a device's client diagnostic log and summarizes key events, likely causes, and recommended next steps in a concise summary. This analyzer is available for logs collected via the dashboard.
+[**Diagnostics Analyzer**](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#diagnostics-analyzer-beta) - Uses AI to parse a device's client diagnostic log and summarizes key events, likely causes, and recommended next steps in a concise summary. This analyzer is available for logs collected via the dashboard.
 
 [**DEX MCP server**](https://developers.cloudflare.com/cloudflare-one/insights/dex/dex-mcp-server/) — An AI tool that allows customers to ask a question like, "Show me the connectivity and performance metrics for the device used by [carly@acme.com](mailto:carly@acme.com)", and receive an answer that contains data from the DEX API.
 
-## 1\. Before you start
+## 1. Before you start
 
 ### Prerequisites
 
-* You must have completed the [Zero Trust onboarding flow](https://developers.cloudflare.com/cloudflare-one/setup/) with a Zero Trust organization created.
-* You must have the Cloudflare One Client installed on an end user device.
-* You must have a [role](https://developers.cloudflare.com/cloudflare-one/roles-permissions/) that gives admin permission to access logs on the Cloudflare dashboard.
+- You must have completed the [Zero Trust onboarding flow](https://developers.cloudflare.com/cloudflare-one/setup/) with a Zero Trust organization created.
+- You must have the Cloudflare One Client installed on an end user device.
+- You must have a [role](https://developers.cloudflare.com/cloudflare-one/roles-permissions/) that gives admin permission to access logs on the Cloudflare dashboard.
 
 ### Check your client version
 
@@ -50,14 +50,14 @@ After updating the Cloudflare One Client, monitor the issue to see if it recurs.
 2. Select **About**.
 3. Compare your device's version with the [latest version](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
 
-1. Open the Cloudflare One Client on the desktop.
-2. Select the gear icon.
-3. Select **About WARP**.
-4. Compare your device's version with the [latest version of the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+4. Open the Cloudflare One Client on the desktop.
+5. Select the gear icon.
+6. Select **About WARP**.
+7. Compare your device's version with the [latest version of the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
 
 #### Via the Cloudflare dashboard
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Your devices**.
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** > **Team & Resources** > **Devices** > **Your devices**.
 2. Select the device you want to investigate.
 3. Find the device's client version under **Client version** in the side menu.
 4. Compare your device's version with the [latest version of the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
@@ -66,33 +66,29 @@ After updating the Cloudflare One Client, monitor the issue to see if it recurs.
 
 Understand the Cloudflare One Client's architecture, installation paths, and modes to help you diagnose issues with greater accuracy.
 
+<details>
+
+<summary>
+
 Chapters
 
-* ![Introduction and WARP GUI Basics](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=0s)
+</summary>
 
-**Introduction and WARP GUI Basics**0s
-* ![Consumer vs. Corporate WARP](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=57s)
+- ![Introduction and WARP GUI Basics](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=0s)**Introduction and WARP GUI Basics**0s
+- ![Consumer vs. Corporate WARP](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=57s)**Consumer vs. Corporate WARP**57s
+- ![Device Profiles Explained](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=95s)**Device Profiles Explained**1m35s
+- ![WARP Operating Modes](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=132s)**WARP Operating Modes**2m12s
+- ![Split Tunneling](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=224s)**Split Tunneling**3m44s
+- ![Conclusion](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=296s)**Conclusion**4m56s
 
-**Consumer vs. Corporate WARP**57s
-* ![Device Profiles Explained](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=95s)
-
-**Device Profiles Explained**1m35s
-* ![WARP Operating Modes](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=132s)
-
-**WARP Operating Modes**2m12s
-* ![Split Tunneling](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=224s)
-
-**Split Tunneling**3m44s
-* ![Conclusion](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=296s)
-
-**Conclusion**4m56s
+</details>
 
 #### Client architecture
 
 The Cloudflare One Client consists of:
 
-* **Graphical User Interface (GUI)**: Control panel that allows end users to view the client's [status](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/connectivity-status/) and perform actions such as turning the Cloudflare One Client on or off.
-* **WARP daemon (or service)**: Core background component responsible for establishing secure tunnels (using WireGuard or MASQUE) and handling all client functionality on your device.
+- **Graphical User Interface (GUI)**: Control panel that allows end users to view the client's [status](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/connectivity-status/) and perform actions such as turning the Cloudflare One Client on or off.
+- **WARP daemon (or service)**: Core background component responsible for establishing secure tunnels (using WireGuard or MASQUE) and handling all client functionality on your device.
 
 Refer to [client architecture](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/) for more information on how the Cloudflare One Client interacts with a device's operating system to route traffic.
 
@@ -100,33 +96,51 @@ Refer to [client architecture](https://developers.cloudflare.com/cloudflare-one/
 
 The GUI and daemon (or service) have different names and are stored in the following locations:
 
-Windows
+<details>
 
-|                      | Windows                                                                                                       |
-| -------------------- | ------------------------------------------------------------------------------------------------------------- |
-| **Service / Daemon** | C:\\Program Files\\Cloudflare\\Cloudflare WARP\\warp-svc.exe                                                  |
-| **GUI application**  | C:\\Program Files\\Cloudflare\\Cloudflare WARP\\Cloudflare WARP.exe                                           |
-| **Logs Location**    | DaemonC:\\ProgramData\\Cloudflare\\GUI LogsC:\\Users\\<USER>.WARP\\AppData\\Localor%LOCALAPPDATA%\\Cloudflare |
+<summary>Windows</summary>
 
-macOS
 
-|                      | macOS                                                                             |
-| -------------------- | --------------------------------------------------------------------------------- |
-| **Service / Daemon** | /Applications/Cloudflare WARP.app/Contents/Resources/CloudflareWARP               |
-| **GUI application**  | /Applications/Cloudflare WARP.app/Contents/MacOS/Cloudflare WARP                  |
-| **Logs Location**    | Daemon/Library/Application Support/Cloudflare/GUI Logs\~/Library/Logs/Cloudflare/ |
 
-Linux
+|  | Windows |
+| --- | --- |
+| **Service / Daemon** | <code>C:\Program Files\Cloudflare\Cloudflare WARP\warp-svc.exe</code> |
+| **GUI application** | <code>C:\Program Files\Cloudflare\Cloudflare WARP\Cloudflare WARP.exe</code> |
+| **Logs Location** | <details><summary>Daemon</summary><code>C:\ProgramData\Cloudflare\</code></details><br><details><summary>GUI Logs</summary><code>C:\Users\&lt;USER&gt;.WARP\AppData\Local</code><br>or<br><code>%LOCALAPPDATA%\Cloudflare</code></details> |
 
-|                      | Linux                                             |
-| -------------------- | ------------------------------------------------- |
-| **Service / Daemon** | /bin/warp-svc                                     |
-| **GUI application**  | /bin/warp-taskbar                                 |
-| **Logs Location**    | /var/log/cloudflare-warp//var/lib/cloudflare-warp |
+</details>
+
+<details>
+
+<summary>macOS</summary>
+
+
+
+|  | macOS |
+| --- | --- |
+| **Service / Daemon** | <code>/Applications/Cloudflare WARP.app/Contents/Resources/CloudflareWARP</code> |
+| **GUI application** | <code>/Applications/Cloudflare WARP.app/Contents/MacOS/Cloudflare WARP</code> |
+| **Logs Location** | <details><summary>Daemon</summary><code>/Library/Application Support/Cloudflare/</code></details><details><summary>GUI Logs</summary><code>~/Library/Logs/Cloudflare/</code></details> |
+
+</details>
+
+<details>
+
+<summary>Linux</summary>
+
+
+
+|  | Linux |
+| --- | --- |
+| **Service / Daemon** | <code>/bin/warp-svc</code> |
+| **GUI application** | <code>/bin/warp-taskbar</code> |
+| **Logs Location** | <code>/var/log/cloudflare-warp/</code><br><code>/var/lib/cloudflare-warp</code> |
+
+</details>
 
 Along with the Cloudflare One Client GUI and daemon, `warp-cli` and `warp-diag` are also [installed](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) on the machine and added to the system path for use from any terminal session.
 
-[warp-diag](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/) is a command-line diagnostics tool that collects logs, configuration details, and connectivity data from the Cloudflare One Client to help troubleshoot issues.
+[`warp-diag`](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/) is a command-line diagnostics tool that collects logs, configuration details, and connectivity data from the Cloudflare One Client to help troubleshoot issues.
 
 `warp-cli` is the command-line interface (CLI) for managing and configuring the Cloudflare One Client, allowing users to connect, disconnect, and adjust settings programmatically.
 
@@ -136,17 +150,17 @@ The Cloudflare One Client operates in several modes, each with different traffic
 
 Each client mode offers a different set of Zero Trust features.
 
-| Client mode                                                                                                                                                                           | DNS Filtering | Network Filtering | HTTP Filtering | Service mode (displayed in warp-cli settings) |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ----------------- | -------------- | --------------------------------------------- |
-| [**Traffic and DNS mode (default)**](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#traffic-and-dns-mode-default) | ✅             | ✅                 | ✅              | WarpWithDnsOverHttps                          |
-| [**DNS only mode**](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#dns-only-mode)                                 | ✅             | ❌                 | ❌              | DnsOverHttps                                  |
-| [**Traffic only mode**](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#traffic-only-mode)                         | ❌             | ✅                 | ✅              | TunnelOnly                                    |
-| [**Local proxy mode**](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode)                           | ❌             | ❌                 | ✅              | WarpProxy                                     |
-| [**Posture only mode**](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#posture-only-mode)                         | ❌             | ❌                 | ❌              | PostureOnly                                   |
+| Client mode | DNS Filtering | Network Filtering | HTTP Filtering | Service mode (displayed in `warp-cli settings`) |
+| --- | --- | --- | --- | --- |
+| [**Traffic and DNS mode (default)**](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#traffic-and-dns-mode-default) | ✅ | ✅ | ✅ | `WarpWithDnsOverHttps` |
+| [**DNS only mode**](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#dns-only-mode) | ✅ | ❌ | ❌ | `DnsOverHttps` |
+| [**Traffic only mode**](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#traffic-only-mode) | ❌ | ✅ | ✅ | `TunnelOnly` |
+| [**Local proxy mode**](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) | ❌ | ❌ | ✅ | `WarpProxy` |
+| [**Posture only mode**](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#posture-only-mode) | ❌ | ❌ | ❌ | `PostureOnly` |
 
-## 2\. Collect diagnostic logs
+## 2. Collect diagnostic logs
 
-You can collect diagnostic logs in two ways: the [Cloudflare dashboard](#option-a-collect-logs-via-the-cloudflare-dashboard) or the [warp-diag](#option-b-collect-logs-via-the-cli) command-line interface (CLI).
+You can collect diagnostic logs in two ways: the [Cloudflare dashboard](#option-a-collect-logs-via-the-cloudflare-dashboard) or the [`warp-diag`](#option-b-collect-logs-via-the-cli) command-line interface (CLI).
 
 ### Option A: Collect logs via the Cloudflare dashboard
 
@@ -164,31 +178,31 @@ Devices must be actively connected to the Internet for remote captures to run.
 
 To capture data from a remote device:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **DEX** \> **Remote captures**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **DEX** > **Remote captures**.
 2. Select up to 10 devices that you want to run a capture on. Devices must be [registered](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/) in your Zero Trust organization.
 3. Configure the types of captures to run.
-  * **Packet captures (PCAP)**: Performs packet captures for traffic outside of the WARP tunnel (default network interface) and traffic inside of the WARP tunnel ([virtual interface](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#ip-traffic)).
-  * **Device diagnostic logs**: Generates a [Cloudflare One Client diagnostic log](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#warp-diag-logs) of the past 96 hours. To include a routing test for all IPs and domains in your [Split Tunnel configuration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/), select **Test all routes**.
-  Note
+   - **Packet captures (PCAP)**: Performs packet captures for traffic outside of the WARP tunnel (default network interface) and traffic inside of the WARP tunnel ([virtual interface](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#ip-traffic)).
+   - **Device diagnostic logs**: Generates a [Cloudflare One Client diagnostic log](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#warp-diag-logs) of the past 96 hours. To include a routing test for all IPs and domains in your [Split Tunnel configuration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/), select **Test all routes**.
 
-**Test all routes** will extend the time for diagnostics to run and may temporarily impact device performance during the test.
-  You must select Device Diagnostic Logs. You can also choose to run a PCAP and reproduce the issue in the window the PCAP is running to gain further network insight. The scope of this troubleshooting covers only client diagnostic logs. If not choosing PCAPs, reproduce the issue right before running diagnostics.
+     Note
+
+     **Test all routes** will extend the time for diagnostics to run and may temporarily impact device performance during the test. You must select Device Diagnostic Logs. You can also choose to run a PCAP and reproduce the issue in the window the PCAP is running to gain further network insight. The scope of this troubleshooting covers only client diagnostic logs. If not choosing PCAPs, reproduce the issue right before running diagnostics.
 4. Select **Run diagnostics**.
 
 DEX will now send capture requests to the configured devices. If the Cloudflare One Client is disconnected, the capture will time out after 10 minutes.
 
 #### Check remote capture status
 
-To view a list of captures, go to **Insights** \> **Digital experience** \> **Diagnostics**. The **Status** column displays one of the following options:
+To view a list of captures, go to **Insights** > **Digital experience** > **Diagnostics**. The **Status** column displays one of the following options:
 
-* **Success**: The capture is complete and ready for download. Any partially successful captures will still upload to Cloudflare. For example, there could be a scenario where the PCAP succeeds on the primary network interface but fails on the WARP tunnel interface. You can [review PCAP results](https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/client-packet-capture/#download-remote-captures) to determine which PCAPs succeeded or failed.
-* **Running**: The capture is in progress on the device.
-* **Pending Upload**: The capture is complete but not yet ready for download.
-* **Failed**: The capture has either timed out or encountered an error. To retry the capture, check the Cloudflare One Client version and [connectivity status](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/#fleet-status), then start a [new capture](https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/client-packet-capture/#start-a-remote-capture).
+- **Success**: The capture is complete and ready for download. Any partially successful captures will still upload to Cloudflare. For example, there could be a scenario where the PCAP succeeds on the primary network interface but fails on the WARP tunnel interface. You can [review PCAP results](https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/client-packet-capture/#download-remote-captures) to determine which PCAPs succeeded or failed.
+- **Running**: The capture is in progress on the device.
+- **Pending Upload**: The capture is complete but not yet ready for download.
+- **Failed**: The capture has either timed out or encountered an error. To retry the capture, check the Cloudflare One Client version and [connectivity status](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/#fleet-status), then start a [new capture](https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/client-packet-capture/#start-a-remote-capture).
 
 #### Download remote captures
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **DEX** \> **Remote captures**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **DEX** > **Remote captures**.
 2. Find a successful capture.
 3. Select the three-dot menu and select **Download**.
 
@@ -202,9 +216,9 @@ The [diagnostics analyzer](https://developers.cloudflare.com/cloudflare-one/team
 
 After you run a [DEX remote capture](#option-a-collect-logs-via-the-cloudflare-dashboard) for client diagnostics:
 
-1. Go to **Insights** \> **Digital experience** and select the **Diagnostics** tab.
+1. Go to **Insights** > **Digital experience** and select the **Diagnostics** tab.
 2. Find your capture in the list of captures.
-3. Select the three-dot icon next to **Status** \> select **View Device Diag** to generate an AI summary.
+3. Select the three-dot icon next to **Status** > select **View Device Diag** to generate an AI summary.
 
 This analyzer is available for logs collected via the dashboard.
 
@@ -216,25 +230,28 @@ To view client logs on desktop devices:
 
 1. Open a Terminal window.
 2. Run the `warp-diag` tool:
-```sh
-warp-diag
-```
+
+   ```sh
+   warp-diag
+   ```
 
 This will place a `warp-debugging-info-<date>-<time>.zip` on your desktop.
 
 1. Open a Command Prompt or PowerShell window.
 2. Run the `warp-diag` tool:
-```bash
-C:\Users\JohnDoe>warp-diag
-```
+
+   ```bash
+   C:\Users\JohnDoe>warp-diag
+   ```
 
 This will place a `warp-debugging-info-<date>-<time>.zip` on your desktop.
 
 1. Open a Terminal window.
 2. Run the `warp-diag` tool:
-```sh
-warp-diag
-```
+
+   ```sh
+   warp-diag
+   ```
 
 This will place a `warp-debugging-info-<date>-<time>.zip` in the same folder you ran the command from.
 
@@ -244,36 +261,28 @@ To troubleshoot effectively, Cloudflare recommends that you recreate the steps t
 
 After you have your diagnostic files, go to [Review key files](#option-b-collect-logs-via-the-cli) to continue troubleshooting.
 
-## 3\. Review key files
+## 3. Review key files
 
 Client diagnostic logs capture the final Cloudflare One Client configuration and status on a device after all MDM policies and other software settings have been applied. Reviewing these logs can help you identify misconfigurations or unexpected behavior.
 
+<details>
+
+<summary>
+
 Chapters
 
-* ![Introduction](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=0s)
+</summary>
 
-**Introduction**0s
-* ![What are warp-diag files?](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=44s)
+- ![Introduction](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=0s)**Introduction**0s
+- ![What are warp-diag files?](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=44s)**What are warp-diag files?**44s
+- ![How to download and navigate warp-diag files](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=76s)**How to download and navigate warp-diag files**1m16s
+- ![warp-status.txt](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=126s)**warp-status.txt**2m06s
+- ![warp-settings.txt](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=149s)**warp-settings.txt**2m29s
+- ![daemon.log](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=217s)**daemon.log**3m37s
+- ![Addition tips](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=487s)**Addition tips**8m07s
+- ![Conclusion](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=523s)**Conclusion**8m43s
 
-**What are warp-diag files?**44s
-* ![How to download and navigate warp-diag files](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=76s)
-
-**How to download and navigate warp-diag files**1m16s
-* ![warp-status.txt](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=126s)
-
-**warp-status.txt**2m06s
-* ![warp-settings.txt](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=149s)
-
-**warp-settings.txt**2m29s
-* ![daemon.log](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=217s)
-
-**daemon.log**3m37s
-* ![Addition tips](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=487s)
-
-**Addition tips**8m07s
-* ![Conclusion](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=523s)
-
-**Conclusion**8m43s
+</details>
 
 ### Check client status
 
@@ -362,7 +371,7 @@ Mode: WarpWithDnsOverHttps
 
 ##### Exclude mode, with hosts/ips
 
-Refers to your [split tunnel](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) settings. In the example file, the Cloudflare One Client is running in Exclude mode, meaning all traffic except for the traffic destined for these hosts and IPs will be sent through the WARP tunnel. The host `cname.user.net` and the IP `1xx.1xx.1xx.1xx/25 ` are both excluded from the WARP tunnel.
+Refers to your [split tunnel](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) settings. In the example file, the Cloudflare One Client is running in Exclude mode, meaning all traffic except for the traffic destined for these hosts and IPs will be sent through the WARP tunnel. The host `cname.user.net` and the IP `1xx.1xx.1xx.1xx/25` are both excluded from the WARP tunnel.
 
 ```txt
 Exclude mode, with hosts/ips:
@@ -427,7 +436,7 @@ Refers to the [Device profile](https://developers.cloudflare.com/cloudflare-one/
 Profile ID: 000000x1-00x1-1xx0-1xx1-11101x1axx11
 ```
 
-## 4\. Fix common misconfigurations
+## 4. Fix common misconfigurations
 
 To verify that the Cloudflare One Client is configured and working properly, review the following:
 
@@ -442,16 +451,16 @@ A profile ID is a unique identifier assigned to each [device profile](https://de
 
 To check that the applied device profile is the intended device profile:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
 2. Find and select the device profile intended for the device.
 3. Under **Profile details**, compare the displayed **Profile ID** with the `Profile ID` in the `warp-settings.txt` file.
 
 If your organization has multiple device profiles defined in the Cloudflare dashboard, a device may be matched to an unexpected profile because:
 
-* How [profile precedence](#review-profile-precedence) is configured.
-* [Managed network](#review-your-managed-network-settings) issues (if you are using a managed network.)
-* User group [mismatch](#check-a-users-group-membership).
-* Lack of [precise match rules](#edit-your-device-profile-match-rules).
+- How [profile precedence](#review-profile-precedence) is configured.
+- [Managed network](#review-your-managed-network-settings) issues (if you are using a managed network.)
+- User group [mismatch](#check-a-users-group-membership).
+- Lack of [precise match rules](#edit-your-device-profile-match-rules).
 
 #### Review profile precedence
 
@@ -474,23 +483,30 @@ If the managed network is misconfigured or the TLS endpoint is unreachable, the 
 When troubleshooting the Cloudflare One Client for managed network issues:
 
 1. Verify the endpoint is reachable.
-The Cloudflare One Client connects to the TLS endpoint to identify the network. If the endpoint is down or unreachable, the Cloudflare One Client will fail to detect the network and apply the wrong profile.
-To test connectivity and obtain the SHA-256 fingerprint of a remote server:
-```sh
-openssl s_client -connect <private-server-IP>:443 < /dev/null 2> /dev/null | openssl x509 -noout -fingerprint -sha256 | tr -d :
-```
-The output will look something like:
-```txt
-SHA256 Fingerprint=DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8662
-```
-If the endpoint is down, you will receive a `Could not find certificate from <stdin>` response.
-If you received a returned SHA-256 fingerprint:
 
-  1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles**.
-  2. Go to **Managed networks** \> **Edit**.
-  3. Compare the TLS Cert SHA-256 in the dashboard with the returned fingerprint in your terminal to ensure they match.
+   The Cloudflare One Client connects to the TLS endpoint to identify the network. If the endpoint is down or unreachable, the Cloudflare One Client will fail to detect the network and apply the wrong profile.
+
+   To test connectivity and obtain the SHA-256 fingerprint of a remote server:
+
+   ```sh
+   openssl s_client -connect <private-server-IP>:443 < /dev/null 2> /dev/null | openssl x509 -noout -fingerprint -sha256 | tr -d :
+   ```
+
+   The output will look something like:
+
+   ```txt
+   SHA256 Fingerprint=DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8662
+   ```
+
+   If the endpoint is down, you will receive a `Could not find certificate from <stdin>` response.
+
+   If you received a returned SHA-256 fingerprint:
+   1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles**.
+   2. Go to **Managed networks** > **Edit**.
+   3. Compare the TLS Cert SHA-256 in the dashboard with the returned fingerprint in your terminal to ensure they match.
 2. Use a single profile for a single location.
-To simplify management and prevent errors, avoid creating multiple managed network profiles for the same location. For example, if you have multiple TLS endpoints in one office, link them all to a single device profile. This reduces the risk of a device matching an unintended profile due to a configuration error.
+
+   To simplify management and prevent errors, avoid creating multiple managed network profiles for the same location. For example, if you have multiple TLS endpoints in one office, link them all to a single device profile. This reduces the risk of a device matching an unintended profile due to a configuration error.
 
 #### Check a user's group membership
 
@@ -498,7 +514,7 @@ If a user is having issues with a device profile, it may be because they are not
 
 To check that the user belongs to the intended group:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Your devices**.
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** > **Team & Resources** > **Devices** > **Your devices**.
 2. Select the user.
 3. Under **User Registry Identity**, select the user's name.
 4. The **Get-identity endpoint** lists all the groups the user belongs to.
@@ -515,15 +531,16 @@ Reauthenticating resets your [session duration](https://developers.cloudflare.co
 
 To modify the match rules of a device profile, you will need to edit the device profile. To edit the device profile:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
 2. Locate the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to update and select **Configure**.
 3. Use [selectors](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/#selectors) to add or adjust match rules, and modify [device client settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-settings) for this profile as needed.
-Note
-Changing any of the settings below will cause the client connection to restart. The user may experience a brief period of connectivity loss while the new settings are being applied.
 
-  * [Service mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#service-mode)
-  * [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#local-domain-fallback)
-  * [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#split-tunnels)
+   Note
+
+   Changing any of the settings below will cause the client connection to restart. The user may experience a brief period of connectivity loss while the new settings are being applied.
+   - [Service mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#service-mode)
+   - [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#local-domain-fallback)
+   - [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#split-tunnels)
 4. Select **Save profile**.
 
 It may take up to 10 minutes for newly updated settings to propagate to devices.
@@ -546,15 +563,18 @@ A misconfigured [split tunnel](https://developers.cloudflare.com/cloudflare-one/
 
 For example, if you set your mode to Exclude IPs and domains and accidentally exclude an IP address needed by an application, that application may not work correctly. Similarly, in Include IPs and domains mode, forgetting to include a necessary IP or domain will cause traffic to bypass the Cloudflare One Client, and you will lose access to your Zero Trust security features.
 
-#### 1\. Check the applied split tunnel configuration
+#### 1. Check the applied split tunnel configuration
 
 After downloading the client diagnostic logs, review that your configuration is working as intended:
 
 1. Open the `warp-settings.txt` file and find `Exclude mode, with hosts/ips:` or `Include mode, with hosts/ips:`.
-Exclude mode versus Include mode
-`Exclude mode` means all traffic will be sent through the WARP tunnel except for the IPs and domains you specify.
-`Include mode` means only traffic destined to the IPs or domains you specify will be sent through the WARP tunnel.
-2. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
+
+   Exclude mode versus Include mode
+
+   `Exclude mode` means all traffic will be sent through the WARP tunnel except for the IPs and domains you specify.
+
+   `Include mode` means only traffic destined to the IPs or domains you specify will be sent through the WARP tunnel.
+2. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
 3. Find and select the device profile intended for the device.
 4. Select **Edit**.
 5. Find **Split Tunnels** and note the mode you have selected > select **Manage**.
@@ -562,7 +582,7 @@ Exclude mode versus Include mode
 
 If your dashboard split tunnel configuration does not match your `warp-settings.txt` file configuration, you may need to force the Cloudflare One Client to [update its settings](#update-the-cloudflare-one-clients-settings).
 
-#### 2\. Update the Cloudflare One Client's settings
+#### 2. Update the Cloudflare One Client's settings
 
 If the split tunnel configuration in `warp-settings.txt` does not match the dashboard, you can force the Cloudflare One Client to fetch the latest settings.
 
@@ -580,7 +600,7 @@ If the end user does not see the [disconnect button](https://developers.cloudfla
 
 [Resetting the encryption keys](#option-b-reset-the-encryption-keys) may be a faster solution.
 
-1. Select **Connect**.
+2. Select **Connect**.
 
 1. On the end user device, open the Cloudflare One Client and disconnect.
 
@@ -590,7 +610,7 @@ If the end user's [connection toggle](https://developers.cloudflare.com/cloudfla
 
 [Resetting the encryption keys](#option-b-reset-the-encryption-keys) may be a faster solution.
 
-1. Reconnect the Cloudflare One Client.
+2. Reconnect the Cloudflare One Client.
 
 The client will fetch new settings when it reconnects.
 
@@ -599,26 +619,26 @@ The client will fetch new settings when it reconnects.
 To reset the encryption keys on an end user's desktop:
 
 1. Open the Cloudflare One Client on your device.
-2. Go to **Connectivity** \> **Encryption keys**
+2. Go to **Connectivity** > **Encryption keys**
 3. Select **Reset keys**.
 
 1. Open the Cloudflare One Client GUI on your device.
-2. Select the gear icon > **Preferences** \> **Connection**.
+2. Select the gear icon > **Preferences** > **Connection**.
 3. Select **Reset Encryption Keys**.
 
 Resetting the encryption keys forces the client to reestablish its tunnel and retrieve the latest configuration.
 
-## 5\. Get help
+## 5. Get help
 
 For the fastest possible troubleshooting, ensure your support ticket includes comprehensive details. The more context you provide, the faster your issue can be identified and resolved.
 
 To ensure efficient resolution when [contacting support](https://developers.cloudflare.com/support/contacting-cloudflare-support/), include as much relevant detail as possible in your ticket:
 
-* Context: Briefly describe the scenario or use case (for example, where the user was, what they were trying to do).
-* Reproduction steps: Describe the steps you took to reproduce the issue during troubleshhooting.
-* Timestamps: Be specific and include the exact time and time zone when the issue occurred.
-* Troubleshooting attempts: Outline any troubleshooting steps or changes already attempted to resolve the issue.
-* Client diagnostics logs: Include the client diagnostics you downloaded from the dashboard or through the CLI.
+- Context: Briefly describe the scenario or use case (for example, where the user was, what they were trying to do).
+- Reproduction steps: Describe the steps you took to reproduce the issue during troubleshhooting.
+- Timestamps: Be specific and include the exact time and time zone when the issue occurred.
+- Troubleshooting attempts: Outline any troubleshooting steps or changes already attempted to resolve the issue.
+- Client diagnostics logs: Include the client diagnostics you downloaded from the dashboard or through the CLI.
 
 Write a detailed ticket to resolve your issue faster
 

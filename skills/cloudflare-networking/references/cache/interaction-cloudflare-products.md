@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Interaction with Cloudflare products
 
-Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/interaction-cloudflare-products/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/interaction-cloudflare-products/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare caches content at data centers close to your visitors so your origin server handles fewer requests. The pages below explain how caching works when you also use Workers, R2 storage, or WAF security rules, and what to watch out for when combining them.
 
-* [Customize cache behavior with Workers](https://developers.cloudflare.com/cache/interaction-cloudflare-products/workers/)
-* [How Workers interact with Cache Rules](https://developers.cloudflare.com/cache/interaction-cloudflare-products/workers-cache-rules/)
-* [Enable cache in an R2 bucket](https://developers.cloudflare.com/cache/interaction-cloudflare-products/r2/)
-* [Control cache access with WAF and Snippets](https://developers.cloudflare.com/cache/interaction-cloudflare-products/waf-snippets/)
+- [Customize cache behavior with Workers](https://developers.cloudflare.com/cache/interaction-cloudflare-products/workers/)
+- [How Workers interact with Cache Rules](https://developers.cloudflare.com/cache/interaction-cloudflare-products/workers-cache-rules/)
+- [Enable cache in an R2 bucket](https://developers.cloudflare.com/cache/interaction-cloudflare-products/r2/)
+- [Control cache access with WAF and Snippets](https://developers.cloudflare.com/cache/interaction-cloudflare-products/waf-snippets/)
 
 Was this helpful?
 

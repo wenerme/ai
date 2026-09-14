@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Place a waiting room
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waiting-room/how-to/place-waiting-room/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waiting-room/how-to/place-waiting-room/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When [configuring a waiting room](https://developers.cloudflare.com/waiting-room/how-to/create-waiting-room/), you need to indicate which pages the waiting room will cover.
 
@@ -26,8 +26,8 @@ You cannot add any hostname and path combinations already configured for another
 
 A single waiting room can be applied to multiple custom hostnames as long as the following is true:
 
-* The apex domain is the same between the custom hostnames
-* Each custom hostname is [configured explicitly](#custom-hostnames) in SSL for SaaS setup.
+- The apex domain is the same between the custom hostnames
+- Each custom hostname is [configured explicitly](#custom-hostnames) in SSL for SaaS setup.
 
 ## Custom hostnames
 

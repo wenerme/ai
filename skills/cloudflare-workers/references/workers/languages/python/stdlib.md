@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Standard Library
 
-Last updated Jun 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/languages/python/stdlib/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/python/stdlib/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers written in Python are executed by [Pyodide ↗](https://pyodide.org/en/stable/index.html).
 
-Pyodide is a port of CPython to WebAssembly — for the most part it behaves identically to [CPython ↗](https://github.com/python) (the reference implementation of Python — commonly referred to as just "Python"). The majority of the CPython test suite passes when run against Pyodide. For the most part, you shouldn't need to worry about differences in behavior.
+Pyodide is a port of CPython to WebAssembly — for the most part it behaves identically to [CPython ↗](https://github.com/python) (the reference implementation of Python — commonly referred to as just "Python"). The majority of the CPython test suite passes when run against Pyodide. For the most part, you shouldn't need to worry about differences in behavior.
 
 The full [Python Standard Library ↗](https://docs.python.org/3/library/index.html) is available in Python Workers, with the following exceptions:
 
@@ -24,40 +24,40 @@ The full [Python Standard Library ↗](https://docs.python.org/3/library/index.h
 
 The following modules are not available in Python Workers:
 
-* curses
-* dbm
-* ensurepip
-* fcntl
-* grp
-* idlelib
-* lib2to3
-* msvcrt
-* pwd
-* resource
-* syslog
-* termios
-* tkinter
-* turtle.py
-* turtledemo
-* venv
-* winreg
-* winsound
+- curses
+- dbm
+- ensurepip
+- fcntl
+- grp
+- idlelib
+- lib2to3
+- msvcrt
+- pwd
+- resource
+- syslog
+- termios
+- tkinter
+- turtle.py
+- turtledemo
+- venv
+- winreg
+- winsound
 
 The following modules can be imported, but are not functional due to the limitations of the WebAssembly VM.
 
-* multiprocessing
-* threading
+- multiprocessing
+- threading
 
 The following are present but cannot be imported due to a dependency on the termios package which has been removed:
 
-* pty
-* tty
+- pty
+- tty
 
 ## Modules with limited functionality
 
-* `decimal`: The decimal module has C (\_decimal) and Python (\_pydecimal) implementations with the same functionality. Only the C implementation is available (compiled to WebAssembly)
-* `pydoc`: Help messages for Python builtins are not available
-* `webbrowser`: The original webbrowser module is not available.
+- `decimal`: The decimal module has C (\_decimal) and Python (\_pydecimal) implementations with the same functionality. Only the C implementation is available (compiled to WebAssembly)
+- `pydoc`: Help messages for Python builtins are not available
+- `webbrowser`: The original webbrowser module is not available.
 
 ## In-memory filesystem
 

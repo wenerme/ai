@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Limits
 
-Last updated Aug 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dynamic-workers/platform/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare limits the number of distinct Dynamic Workers with in-flight requests. Multiple in-flight requests to the same Dynamic Worker count as one toward this limit.
 
-| Context                                                              | Concurrent Dynamic Workers |
-| -------------------------------------------------------------------- | -------------------------- |
-| Worker request                                                       | 4                          |
-| [Durable Object](https://developers.cloudflare.com/durable-objects/) | 10 (previously 4)          |
+| Context | Concurrent Dynamic Workers |
+| --- | --- |
+| Worker request | 4 |
+| [Durable Object](https://developers.cloudflare.com/durable-objects/) | 10 (previously 4) |
 
 In a Worker, each request has its own input/output (I/O) context. Each request can therefore have up to four distinct Dynamic Workers with in-flight requests.
 

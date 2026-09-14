@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # C3 & Wrangler
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/workers/get-started/c3-and-wrangler/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/workers/get-started/c3-and-wrangler/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Before deploying your first Worker, learn about the CLI tools you will use to build and deploy your Worker project.
 
@@ -24,8 +24,8 @@ You can build and develop your Worker on the Cloudflare dashboard, without needi
 
 The Cloudflare Developer Platform ecosystem has two command-line interfaces (CLI):
 
-* C3: To create new projects.
-* Wrangler: To build and deploy your projects.
+- C3: To create new projects.
+- Wrangler: To build and deploy your projects.
 
 ## C3
 
@@ -51,8 +51,8 @@ Cloudflare recommends choosing and using one [source of truth](https://developer
 
 By reading this page, you have learned:
 
-* How to use C3 to create new Workers and Pages projects.
-* How to use Wrangler to develop, configure, and delete your projects.
+- How to use C3 to create new Workers and Pages projects.
+- How to use Wrangler to develop, configure, and delete your projects.
 
 In the next section, you will learn more about the Cloudflare dashboard before moving on to deploy your first Worker.
 

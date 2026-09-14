@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Given the cookie name, get the value of a cookie. You can also use cookies for A/B testing.
 
-Last updated Sep 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/examples/extract-cookie-value/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/examples/extract-cookie-value/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you want to get started quickly, click on the button below.
 
@@ -98,7 +98,7 @@ export default app;
 
 External dependencies
 
-This example requires the npm package [cookie ↗](https://www.npmjs.com/package/cookie) to be installed in your JavaScript project.
+This example requires the npm package [`cookie` ↗](https://www.npmjs.com/package/cookie) to be installed in your JavaScript project.
 
 The Hono example uses the built-in cookie utilities provided by Hono, so no external dependencies are needed for that implementation.
 

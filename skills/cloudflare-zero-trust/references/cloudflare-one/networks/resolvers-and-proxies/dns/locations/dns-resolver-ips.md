@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DNS resolver IPs and hostnames
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/dns-resolver-ips/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/dns-resolver-ips/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you create a DNS location, Gateway assigns IPv4/IPv6 addresses and DoT/DoH hostnames to that location. These are the IP addresses and hostnames you send your DNS queries to for Gateway to resolve.
 
 To view the resolver endpoint IP addresses and hostnames for a DNS location:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Resolvers & Proxies**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** > **Resolvers & Proxies**.
 2. Select the DNS location, then select **Edit**.
 3. Go to **Setup instructions**. The addresses and hostnames will appear in **Your configuration**.
 
@@ -26,6 +26,7 @@ To view the resolver endpoint IP addresses and hostnames for a DNS location:
 
 Gateway uses different methods to match a DNS query to DNS locations depending on the type of request and network:
 
+```
 flowchart TB
     %% Accessibility
     accTitle: How Gateway matches queries to DNS locations
@@ -42,9 +43,11 @@ flowchart TB
     ipv4--"Yes"-->source["Look up location by<br />source IPv4 address"]
     ipv4--"No"-->destination["Look up location by<br />destination IPv6 address"]
 
+```
+
 1. First, Gateway checks whether the query was sent using DNS over HTTPS. If yes, Gateway looks up the DNS location by its unique hostname.
-2. Next, if the query was not sent with DNS over HTTPS, Gateway checks whether it was sent over IPv4\. If yes, it looks up the DNS location by the source IPv4 address.
-3. Last, if the query was not sent over IPv4, it means it was sent over IPv6\. Gateway will look up the DNS location associated with the query based on the unique DNS resolver IPv6 address.
+2. Next, if the query was not sent with DNS over HTTPS, Gateway checks whether it was sent over IPv4. If yes, it looks up the DNS location by the source IPv4 address.
+3. Last, if the query was not sent over IPv4, it means it was sent over IPv6. Gateway will look up the DNS location associated with the query based on the unique DNS resolver IPv6 address.
 
 ## IPv4/IPv6 address
 
@@ -95,10 +98,10 @@ By default, all queries from a configured DNS location will be sent to its DNS r
 
 For example, to block security threats for specific networks, you could create the following policy:
 
-| Selector            | Operator | Value                                                           | Logic | Action |
-| ------------------- | -------- | --------------------------------------------------------------- | ----- | ------ |
-| Security Categories | in       | Select all categories that apply                                | And   | Block  |
-| Source IP           | in list  | The name of the IP list containing your organization's networks |       |        |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Security Categories | in | Select all categories that apply | And | Block |
+| Source IP | in list | The name of the IP list containing your organization's networks |  | |
 
 DNS queries made from IP addresses that are not in your IP list will not be filtered or populate your organization's [Gateway activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/).
 

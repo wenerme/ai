@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Remove custom hostnames
 
-Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/remove-custom-hostnames/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/remove-custom-hostnames/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 As a SaaS provider, your customers may decide to no longer participate in your service offering. If that happens, you need to stop routing traffic through those custom hostnames.
 
@@ -20,10 +20,10 @@ As a SaaS provider, your customers may decide to no longer participate in your s
 
 If your customer's domain is also using Cloudflare, they can stop routing their traffic through your custom hostname by updating their Cloudflare DNS.
 
-If they update their [CNAME record](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/#3-have-customer-create-cname-record) so that it no longer points to your `CNAME` target:
+If they update their [`CNAME` record](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/#3-have-customer-create-cname-record) so that it no longer points to your `CNAME` target:
 
-* The domain's traffic will not route through your custom hostname.
-* The custom hostname will enter into a **Moved** state.
+- The domain's traffic will not route through your custom hostname.
+- The custom hostname will enter into a **Moved** state.
 
 If the custom hostname is in a **Moved** state for seven days, it will transition into a **Deleted** state.
 
@@ -33,12 +33,11 @@ You should remove a customer's custom hostname from your zone if they decide to 
 
 If your customer's domain is not using Cloudflare, you must remove a customer's custom hostname from your zone if they decide to churn.
 
-1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.
-[Go to **Custom Hostnames** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
+1. In the Cloudflare dashboard, go to the **Custom Hostnames** page. [Go to **Custom Hostnames** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
 2. Select the custom hostname and select **Delete**.
 3. A confirmation window will appear. Acknowledge the warning and select **Delete** again.
 
-To delete a custom hostname and any issued certificates using the API, send a [DELETE request](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/delete/).
+To delete a custom hostname and any issued certificates using the API, send a [`DELETE` request](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/delete/).
 
 ## For end customers
 

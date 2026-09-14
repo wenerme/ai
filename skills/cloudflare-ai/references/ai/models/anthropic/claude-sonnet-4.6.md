@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Anthropic
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.6/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.6/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `anthropic/claude-sonnet-4.6`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 Claude Sonnet 4.6 is Anthropic's latest balanced model offering strong coding, reasoning, and agentic capabilities with improved instruction following.
 
-| Model Info                                                                          |                                                                                                                               |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 200,000 tokens                                                                                                                |
-| Terms and License                                                                   | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                    |
-| More information                                                                    | [link ↗](https://www.anthropic.com/claude/sonnet)                                                                             |
-| Zero data retention                                                                 | Yes                                                                                                                           |
-| Request formats                                                                     | Anthropic Messages                                                                                                            |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-sonnet-4.6) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 200,000 tokens |
+| Terms and License | [link ↗](https://www.anthropic.com/legal/commercial-terms) |
+| More information | [link ↗](https://www.anthropic.com/claude/sonnet) |
+| Zero data retention | Yes |
+| Request formats | Anthropic Messages |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-sonnet-4.6) |
 
 ## Usage
 
@@ -63,6 +63,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 There are actually **four** laws of thermodynamics (including the Zeroth Law):
 
 ## The Laws of Thermodynamics
@@ -87,6 +88,7 @@ The laws are often summarized humorously as:
 - **You can't quit the game** (you can never reach absolute zero)
 
 Would you like more detail on any of these?
+```
 
 ```json
 {
@@ -115,7 +117,11 @@ Would you like more detail on any of these?
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -148,6 +154,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 ## Reading a JSON File in Python
 
 ### Basic Method using `json` module
@@ -230,6 +237,7 @@ data['hobbies'] # → ["reading", "coding"]
 ```
 
 > **Tip:** Use `with open()` to ensure the file is automatically closed after reading.
+````
 
 ```json
 {
@@ -256,7 +264,13 @@ data['hobbies'] # → ["reading", "coding"]
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -304,6 +318,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Here are some great stops depending on which route you take:
 
 **Pacific Coast Highway (Highway 1) - Scenic Route**
@@ -331,6 +346,7 @@ Here are some great stops depending on which route you take:
 - Try to drive Big Sur during daylight for the best views
 
 Would you like more details about any specific stop or help planning an overnight itinerary?
+```
 
 ```json
 {
@@ -357,7 +373,13 @@ Would you like more details about any specific stop or help planning an overnigh
 }
 ```
 
-**Creative Writing** — Higher temperature for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Higher temperature for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -393,6 +415,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 # The Weight of Paper
 
 Detective Mara Osei had seen plenty of strange things in fourteen years on the job. She had once found a murder weapon wrapped in a birthday cake. She had once interviewed a parrot that knew the killer's name.
@@ -418,6 +441,7 @@ She stood up slowly, slipping her hands into her pockets.
 ---
 
 *The fern, she noticed, had been recently watered.*
+```
 
 ```json
 {
@@ -444,7 +468,13 @@ She stood up slowly, slipping her hands into her pockets.
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -475,6 +505,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 # Recursion
 
 ## Core Concept
@@ -580,6 +611,7 @@ def broken(n):
 ---
 
 **The key insight:** Trust that your function works for a smaller input, use that result to solve the current input, and define where to stop.
+````
 
 ```json
 [
@@ -843,7 +875,13 @@ def broken(n):
 ]
 ```
 
-**Web Search** — Letting Claude use Anthropic's server-side web search tool to answer with current information
+</details>
+
+<details>
+
+<summary>**Web Search** — Letting Claude use Anthropic's server-side web search tool to answer with current information</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -886,11 +924,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Here's a summary of the top Cloudflare news stories this week:
 
 ---
 
 • **AI Agent Verification in Bot Management** —
+```
 
 ```json
 {
@@ -1085,9 +1125,11 @@ Here's a summary of the top Cloudflare news stories this week:
 }
 ```
 
+</details>
+
 ## Parameters
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -1131,7 +1173,7 @@ role
 
 `string`const: assistant
 
-▶content\[\]
+▶content\[]
 
 `array`
 
@@ -1149,9 +1191,9 @@ stop\_reason
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.6/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.6/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.6/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.6/schema-output.json)
 
 Was this helpful?
 

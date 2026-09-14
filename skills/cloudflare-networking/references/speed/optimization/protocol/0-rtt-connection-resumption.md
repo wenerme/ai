@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # 0-RTT Connection Resumption
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/speed/optimization/protocol/0-rtt-connection-resumption/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/optimization/protocol/0-rtt-connection-resumption/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Zero round trip time resumption (0-RTT) improves performance for clients who have previously connected to your website, reducing latency for returning users. This feature is especially beneficial for those who frequently visit your application or connect over mobile networks.
 
@@ -24,9 +24,9 @@ For more information on 0-RTT, including its functionality and potential limitat
 
 ## Availability
 
-|              | Free | Pro | Business | Enterprise |
-| ------------ | ---- | --- | -------- | ---------- |
-| Availability | Yes  | Yes | Yes      | Yes        |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | Yes | Yes | Yes | Yes |
 
 ## Enable 0-RTT Connection Resumption
 
@@ -34,11 +34,10 @@ By default, 0-RTT Connection Resumption is not enabled on your Cloudflare applic
 
 To enable 0-RTT Connection Resumption in the dashboard:
 
-1. In the Cloudflare dashboard, go to the **Speed** \> **Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
+1. In the Cloudflare dashboard, go to the **Speed** > **Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
 2. Go to the **Protocol Optimization** tab and under **0-RTT Connection Resumption**, switch the toggle to **On**.
 
-To adjust your 0-RTT Connection Resumption settings with the API, send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `0rtt` as the setting name in the URI path, and the `value` parameter set to `"on"` or `"off"`.
+To adjust your 0-RTT Connection Resumption settings with the API, send a [`PATCH`](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `0rtt` as the setting name in the URI path, and the `value` parameter set to `"on"` or `"off"`.
 
 Note
 

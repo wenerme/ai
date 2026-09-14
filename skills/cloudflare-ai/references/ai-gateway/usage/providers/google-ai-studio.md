@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Google AI Studio
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/google-ai-studio/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/google-ai-studio/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Google AI Studio ↗](https://ai.google.dev/aistudio) helps you build quickly with Google Gemini models.
 
@@ -32,7 +32,13 @@ So your final URL will come together as: `https://gateway.ai.cloudflare.com/v1/{
 
 ### cURL
 
+<details>
+
+<summary>
+
 With API Key in Request
+
+</summary>
 
 ```bash
 curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_name}/google-ai-studio/v1/models/gemini-2.5-flash:generateContent" \
@@ -66,9 +72,17 @@ curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_name}/google-ai
         ]
       }'
 ```
+
+</details>
+
+<details>
+
+<summary>
 
 With Stored Keys (BYOK) / Unified Billing
 
+</summary>
+
 ```bash
 curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_name}/google-ai-studio/v1/models/gemini-2.5-flash:generateContent" \
  --header 'content-type: application/json' \
@@ -84,12 +98,20 @@ curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_name}/google-ai
         ]
       }'
 ```
+
+</details>
 
 ### `@google/genai`
 
 If you are using the `@google/genai` package, you can set your endpoint like this:
 
+<details>
+
+<summary>
+
 With Key in Request
+
+</summary>
 
 ```js
 import { GoogleGenAI } from "@google/genai";
@@ -130,7 +152,15 @@ const response = await ai.models.generateContent({
 console.log(response.text);
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 With Stored Keys (BYOK) / Unified Billing
+
+</summary>
 
 ```js
 import { GoogleGenAI } from "@google/genai";
@@ -150,6 +180,8 @@ const response = await ai.models.generateContent({
 console.log(response.text);
 ```
 
+</details>
+
 ## OpenAI-Compatible Endpoint
 
 You can also access Google AI Studio models using the OpenAI API schema through the [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/). Send your requests to:
@@ -161,7 +193,6 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1/chat/completion
 Specify:
 
 ```json
-
 {
 "model": "google-ai-studio/{model}"
 }

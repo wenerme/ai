@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Conditionally enforce Turnstile
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/turnstile/tutorials/conditionally-enforcing-turnstile/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/tutorials/conditionally-enforcing-turnstile/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial explains how to conditionally enforce Turnstile based on the incoming request, such as a pre-shared secret in a header or a specific IP address.
 
 ## Overview
 
-You may have setups such as automation that cannot load or run the Turnstile challenge. Using [HTMLRewriter](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/), this tutorial will demonstrate how to conditionally handle the [client-side widget](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/) and [Siteverify API](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/) when specific criteria are met.
+You may have setups such as automation that cannot load or run the Turnstile challenge. Using [`HTMLRewriter`](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/), this tutorial will demonstrate how to conditionally handle the [client-side widget](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/) and [Siteverify API](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/) when specific criteria are met.
 
 Note
 
@@ -33,6 +33,8 @@ It is not sufficient to only remove the client-side widget from the page, as an 
 ## Implementation
 
 This tutorial will modify the existing [Turnstile demo ↗](https://github.com/cloudflare/turnstile-demo-workers/blob/main/src/) to conditionally remove the existing `script` and widget container elements.
+
+*src/index.mjsdiff*
 
 ```diff
 export default {
@@ -81,6 +83,8 @@ We will exit early in our validation if the same logic we used to remove the cli
 Caution
 
 The same logic must be used in both the client-side and the server-side implementations.
+
+*src/index.mjsdiff*
 
 ```diff
 async function handlePost(request) {

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Usage-based billing
 
-Last updated May 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/billing/understand/usage-based-billing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/understand/usage-based-billing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 For some Cloudflare subscriptions and services, Cloudflare charges you based on how much you used a feature during your previous billing period. This differs from other services, which are a prepaid flat fee for the upcoming month (for example, plans and page rules).
 
@@ -28,34 +28,34 @@ The following products bill based on consumption. Many products include a free t
 
 For current overage rates, refer to the [Cloudflare plans page ↗](https://www.cloudflare.com/plans/) or each product's pricing page linked below. Rates may change — the links below are always up to date.
 
-| Product                                                                                        | Billable metric                       | Free tier or included usage                                      | Pricing details                                                                                   |
-| ---------------------------------------------------------------------------------------------- | ------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| [Workers](https://developers.cloudflare.com/workers/platform/pricing/)                         | Requests and CPU time                 | 10M requests and 30M CPU-ms                                      | [Workers pricing](https://developers.cloudflare.com/workers/platform/pricing/)                    |
-| [R2](https://developers.cloudflare.com/r2/pricing/)                                            | Storage and operations                | 10 GB storage, 1M Class A operations, and 10M Class B operations | [R2 pricing](https://developers.cloudflare.com/r2/pricing/)                                       |
-| [Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/)                    | Data transfer                         | First 1 GB                                                       | [Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/)                       |
-| [Cache Reserve](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/) | Reads, writes, and storage            | None                                                             | [Cache Reserve](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/)    |
-| [Load Balancing](https://developers.cloudflare.com/load-balancing/)                            | DNS queries                           | First 500K queries                                               | [Load Balancing](https://developers.cloudflare.com/load-balancing/)                               |
-| [Stream](https://developers.cloudflare.com/stream/pricing/)                                    | Minutes stored and minutes viewed     | Varies by plan                                                   | [Stream pricing](https://developers.cloudflare.com/stream/pricing/)                               |
-| [Images](https://developers.cloudflare.com/images/pricing/)                                    | Transformations and storage           | Varies by plan                                                   | [Images pricing](https://developers.cloudflare.com/images/pricing/)                               |
-| [Spectrum](https://developers.cloudflare.com/spectrum/)                                        | Data transfer                         | None                                                             | [Spectrum](https://developers.cloudflare.com/spectrum/)                                           |
-| [Rate Limiting](https://developers.cloudflare.com/waf/rate-limiting-rules/)                    | Rule requests                         | Varies by plan                                                   | [Rate Limiting](https://developers.cloudflare.com/waf/rate-limiting-rules/)                       |
-| [Log Explorer](https://developers.cloudflare.com/log-explorer/pricing/)                        | Log storage and queries               | Varies by plan                                                   | [Log Explorer pricing](https://developers.cloudflare.com/log-explorer/pricing/)                   |
-| [Zero Trust](https://developers.cloudflare.com/cloudflare-one/)                                | Seats and usage-based services        | Varies by plan                                                   | [Zero Trust](https://developers.cloudflare.com/cloudflare-one/)                                   |
-| [Vectorize](https://developers.cloudflare.com/vectorize/platform/pricing/)                     | Stored dimensions and queried vectors | Varies by plan                                                   | [Vectorize pricing](https://developers.cloudflare.com/vectorize/platform/pricing/)                |
-| [Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/pricing/)      | Data points read and written          | Varies by plan                                                   | [Analytics Engine pricing](https://developers.cloudflare.com/analytics/analytics-engine/pricing/) |
+| Product | Billable metric | Free tier or included usage | Pricing details |
+| --- | --- | --- | --- |
+| [Workers](https://developers.cloudflare.com/workers/platform/pricing/) | Requests and CPU time | 10M requests and 30M CPU-ms | [Workers pricing](https://developers.cloudflare.com/workers/platform/pricing/) |
+| [R2](https://developers.cloudflare.com/r2/pricing/) | Storage and operations | 10 GB storage, 1M Class A operations, and 10M Class B operations | [R2 pricing](https://developers.cloudflare.com/r2/pricing/) |
+| [Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/) | Data transfer | First 1 GB | [Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/) |
+| [Cache Reserve](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/) | Reads, writes, and storage | None | [Cache Reserve](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/) |
+| [Load Balancing](https://developers.cloudflare.com/load-balancing/) | DNS queries | First 500K queries | [Load Balancing](https://developers.cloudflare.com/load-balancing/) |
+| [Stream](https://developers.cloudflare.com/stream/pricing/) | Minutes stored and minutes viewed | Varies by plan | [Stream pricing](https://developers.cloudflare.com/stream/pricing/) |
+| [Images](https://developers.cloudflare.com/images/pricing/) | Transformations and storage | Varies by plan | [Images pricing](https://developers.cloudflare.com/images/pricing/) |
+| [Spectrum](https://developers.cloudflare.com/spectrum/) | Data transfer | None | [Spectrum](https://developers.cloudflare.com/spectrum/) |
+| [Rate Limiting](https://developers.cloudflare.com/waf/rate-limiting-rules/) | Rule requests | Varies by plan | [Rate Limiting](https://developers.cloudflare.com/waf/rate-limiting-rules/) |
+| [Log Explorer](https://developers.cloudflare.com/log-explorer/pricing/) | Log storage and queries | Varies by plan | [Log Explorer pricing](https://developers.cloudflare.com/log-explorer/pricing/) |
+| [Zero Trust](https://developers.cloudflare.com/cloudflare-one/) | Seats and usage-based services | Varies by plan | [Zero Trust](https://developers.cloudflare.com/cloudflare-one/) |
+| [Vectorize](https://developers.cloudflare.com/vectorize/platform/pricing/) | Stored dimensions and queried vectors | Varies by plan | [Vectorize pricing](https://developers.cloudflare.com/vectorize/platform/pricing/) |
+| [Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/pricing/) | Data points read and written | Varies by plan | [Analytics Engine pricing](https://developers.cloudflare.com/analytics/analytics-engine/pricing/) |
 
 ## Optimize usage-based costs
 
 Reducing usage-based charges starts with understanding where your consumption comes from. Use the [billable usage dashboard](https://developers.cloudflare.com/billing/manage/billable-usage/) to identify which products are driving costs, then apply the strategies below.
 
-| Strategy                                                                                                                                  | What it reduces                                      |
-| ----------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| Increase cache hit ratio with longer TTLs and appropriate Cache-Control headers                                                           | Argo data transfer, Workers invocations, origin load |
-| Use [Cache Reserve](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/) for long-tail content                  | Origin fetches for infrequently accessed assets      |
-| Set up [R2 lifecycle rules](https://developers.cloudflare.com/r2/buckets/object-lifecycles/) to transition cold data to Infrequent Access | R2 storage costs                                     |
-| Use [Workers Smart Placement](https://developers.cloudflare.com/workers/configuration/placement/) for data-heavy Workers                  | Workers CPU time                                     |
-| Batch R2 operations where possible instead of per-object reads                                                                            | R2 Class B operation count                           |
-| Set up [budget alerts](https://developers.cloudflare.com/billing/manage/budget-alerts/) to catch unexpected spikes early                  | All products — prevents surprise invoices            |
+| Strategy | What it reduces |
+| --- | --- |
+| Increase cache hit ratio with longer TTLs and appropriate `Cache-Control` headers | Argo data transfer, Workers invocations, origin load |
+| Use [Cache Reserve](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/) for long-tail content | Origin fetches for infrequently accessed assets |
+| Set up [R2 lifecycle rules](https://developers.cloudflare.com/r2/buckets/object-lifecycles/) to transition cold data to Infrequent Access | R2 storage costs |
+| Use [Workers Smart Placement](https://developers.cloudflare.com/workers/configuration/placement/) for data-heavy Workers | Workers CPU time |
+| Batch R2 operations where possible instead of per-object reads | R2 Class B operation count |
+| Set up [budget alerts](https://developers.cloudflare.com/billing/manage/budget-alerts/) to catch unexpected spikes early | All products — prevents surprise invoices |
 
 For a detailed walkthrough of how a single request generates charges across multiple products, refer to [How charges accrue](https://developers.cloudflare.com/billing/understand/how-charges-accrue/).
 
@@ -81,8 +81,7 @@ For example, Argo Smart Routing has **Notify when total bytes of traffic exceeds
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
 2. Select your account.
-3. Go to **Notifications**.
-[Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
+3. Go to **Notifications**. [Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 4. Select **Add** to create a new notification for **Billable Usage**.
 
 For more information, refer to [Cloudflare notifications](https://developers.cloudflare.com/notifications/get-started/).
@@ -93,10 +92,10 @@ Usage notifications monitor a single product metric (bytes, requests, minutes). 
 
 ## Related resources
 
-* [How charges accrue](https://developers.cloudflare.com/billing/understand/how-charges-accrue/) — How a request generates charges across products
-* [Monitor billable usage](https://developers.cloudflare.com/billing/manage/billable-usage/) — Track daily usage-based costs
-* [Budget alerts](https://developers.cloudflare.com/billing/manage/budget-alerts/) — Get notified when spend crosses a threshold
-* [How Cloudflare billing works](https://developers.cloudflare.com/billing/understand/how-billing-works/) — Billing lifecycle and charge types
+- [How charges accrue](https://developers.cloudflare.com/billing/understand/how-charges-accrue/) — How a request generates charges across products
+- [Monitor billable usage](https://developers.cloudflare.com/billing/manage/billable-usage/) — Track daily usage-based costs
+- [Budget alerts](https://developers.cloudflare.com/billing/manage/budget-alerts/) — Get notified when spend crosses a threshold
+- [How Cloudflare billing works](https://developers.cloudflare.com/billing/understand/how-billing-works/) — Billing lifecycle and charge types
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Debugging and logging
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/functions/debugging-and-logging/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/debugging-and-logging/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Access your Functions logs by using the Cloudflare dashboard or the [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-deployment-tail).
 
@@ -20,11 +20,11 @@ Logs are a powerful debugging tool that can help you test and monitor the behavi
 
 Logs provide detailed information about events and can give insight into:
 
-* Successful or failed requests to your Functions.
-* Uncaught exceptions thrown by your Functions.
-* Custom `console.log`s declared within your Functions.
-* Production issues that cannot be easily reproduced.
-* Real-time view of incoming requests to your application.
+- Successful or failed requests to your Functions.
+- Uncaught exceptions thrown by your Functions.
+- Custom `console.log`s declared within your Functions.
+- Production issues that cannot be easily reproduced.
+- Real-time view of incoming requests to your application.
 
 There are two ways to start a logging session:
 
@@ -92,15 +92,14 @@ The output of each `wrangler pages deployment tail` log is a structured JSON obj
 }
 ```
 
-`wrangler pages deployment tail` allows you to customize a logging session to better suit your needs. Refer to the [wrangler pages deployment tail documentation](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-deployment-tail) for available configuration options.
+`wrangler pages deployment tail` allows you to customize a logging session to better suit your needs. Refer to the [`wrangler pages deployment tail` documentation](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-deployment-tail) for available configuration options.
 
 ## View logs in the Cloudflare Dashboard
 
 To view logs for your `production` or `preview` environments associated with any deployment:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
-2. Select your Pages project, go to the deployment you want to view logs for and select **View details** \> **Functions**.
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+2. Select your Pages project, go to the deployment you want to view logs for and select **View details** > **Functions**.
 
 Logging is available for all customers (Free, Paid, Enterprise).
 
@@ -108,14 +107,14 @@ Logging is available for all customers (Free, Paid, Enterprise).
 
 The following limits apply to Functions logs:
 
-* Logs are not stored. You can start and stop the stream at any time to view them, but they do not persist.
-* Logs will not display if the Function’s requests per second are over 100 for the last five minutes.
-* Logs from any [Durable Objects](https://developers.cloudflare.com/pages/functions/bindings/#durable-objects) your Functions bind to will show up in the Cloudflare dashboard.
-* A maximum of 10 clients can view a deployment’s logs at one time. This can be a combination of either dashboard sessions or `wrangler pages deployment tail` calls.
+- Logs are not stored. You can start and stop the stream at any time to view them, but they do not persist.
+- Logs will not display if the Function’s requests per second are over 100 for the last five minutes.
+- Logs from any [Durable Objects](https://developers.cloudflare.com/pages/functions/bindings/#durable-objects) your Functions bind to will show up in the Cloudflare dashboard.
+- A maximum of 10 clients can view a deployment’s logs at one time. This can be a combination of either dashboard sessions or `wrangler pages deployment tail` calls.
 
 ## Sourcemaps
 
-If you're debugging an uncaught exception, you might find that the [stack traces ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Error/stack) in your logs contain line numbers to generated JavaScript files. Using Pages' support for [source maps ↗](https://web.dev/articles/source-maps) you can get stack traces that match with the line numbers and symbols of your original source code.
+If you're debugging an uncaught exception, you might find that the [stack traces ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack) in your logs contain line numbers to generated JavaScript files. Using Pages' support for [source maps ↗](https://web.dev/articles/source-maps) you can get stack traces that match with the line numbers and symbols of your original source code.
 
 Note
 

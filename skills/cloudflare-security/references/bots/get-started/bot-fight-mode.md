@@ -12,20 +12,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Bot Fight Mode
 
-Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Bot Fight Mode is a simple, free product that helps detect and mitigate bot traffic on your domain. When enabled, the product:
 
-* Identifies traffic matching patterns of known bots
-* Issues computationally expensive challenges that force the requesting client to perform CPU-intensive calculations, increasing the cost for bots to send automated requests
-* Notifies [Bandwidth Alliance ↗](https://cloudflare.com/bandwidth-alliance/) partners (if applicable) to disable bots
+- Identifies traffic matching patterns of known bots
+- Issues computationally expensive challenges that force the requesting client to perform CPU-intensive calculations, increasing the cost for bots to send automated requests
+- Notifies [Bandwidth Alliance ↗](https://cloudflare.com/bandwidth-alliance/) partners (if applicable) to disable bots
 
 ## Considerations
 
 Bot Fight Mode and Super Bot Fight Mode use the same underlying technology that powers our [Bot Management ↗](https://www.cloudflare.com/products/bot-management/) product. Specifically, these products:
 
-* Protect entire domains without endpoint restrictions
-* Cannot be customized, adjusted, or reconfigured via WAF custom rules
+- Protect entire domains without endpoint restrictions
+- Cannot be customized, adjusted, or reconfigured via WAF custom rules
 
 Although these products are designed to fight malicious actors on the Internet, they may challenge API or mobile app traffic. For more granular control, upgrade to [Bot Management for Enterprise](https://developers.cloudflare.com/bots/plans/bm-subscription/).
 
@@ -39,15 +39,14 @@ If you are using several app security features like custom rules, Managed Rules,
 
 To start using Bot Fight Mode:
 
-1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+1. In the Cloudflare dashboard, go to the **Security Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Bot fight mode**.
 4. Turn **Bot fight mode** on.
 
 Note
 
-If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, go to **Security** \> **Settings**, filter by **Bot traffic**, and turn **Bot fight mode** off.
+If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, go to **Security** > **Settings**, filter by **Bot traffic**, and turn **Bot fight mode** off.
 
 ---
 
@@ -57,8 +56,7 @@ If you find that **Bot Fight Mode** is causing problems with your application tr
 
 To disable Bot Fight Mode:
 
-1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+1. In the Cloudflare dashboard, go to the **Security Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Bot Fight Mode**.
 4. Turn **Bot Fight Mode** off.
@@ -77,7 +75,7 @@ You can view blocked AI bot traffic via [Security Analytics](https://developers.
 
 ## Visibility
 
-You can see bot-related actions by going to **Security** \> **Analytics** and selecting the **Events** tab. Any requests challenged by this product will be labeled **Bot Fight Mode** in the **Service** field. This allows you to observe, analyze, and follow trends in your bot traffic over time.
+You can see bot-related actions by going to **Security** > **Analytics** and selecting the **Events** tab. Any requests challenged by this product will be labeled **Bot Fight Mode** in the **Service** field. This allows you to observe, analyze, and follow trends in your bot traffic over time.
 
 ---
 
@@ -85,7 +83,7 @@ You can see bot-related actions by going to **Security** \> **Analytics** and se
 
 ### Rules
 
-You cannot bypass or skip Bot Fight Mode using WAF custom rules or Page Rules. This is because Bot Fight Mode does not run on the [Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/) — it operates in a separate evaluation pipeline where _Skip_, _Bypass_, and _Allow_ actions have no effect.
+You cannot bypass or skip Bot Fight Mode using WAF custom rules or Page Rules. This is because Bot Fight Mode does not run on the [Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/) — it operates in a separate evaluation pipeline where *Skip*, *Bypass*, and *Allow* actions have no effect.
 
 If you need to create exceptions for specific traffic (for example, your own API clients or monitoring tools), use [Super Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/) instead. Super Bot Fight Mode runs on the Ruleset Engine and supports Skip rules.
 
@@ -95,12 +93,14 @@ Bot Fight Mode can still trigger if you have [IP Access rules](https://developer
 
 For Bot Fight Mode customers, [JavaScript Detections](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/) is automatically enabled and cannot be disabled.
 
-If you have a Content Security Policy (CSP), you need to take additional steps to implement JavaScript Detections:
+If you have a Content Security Policy (CSP)
 
-* Ensure that anything under `/cdn-cgi/challenge-platform/` is allowed. Your CSP should allow scripts served from your origin domain (`script-src self`).
-* For `nonce` script tags:
-  * If your CSP uses a `nonce` for script tags, Cloudflare will add these nonces to the scripts it injects by parsing your CSP response header.
-  * If your CSP does not use `nonce` for script tags and **JavaScript Detections** is enabled, you may see a console error such as `Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'self'". Either the 'unsafe-inline' keyword, a hash ('sha256-b123b8a70+4jEj+d6gWI9U6IilUJIrlnRJbRR/uQl2Jc='), or a nonce ('nonce-...') is required to enable inline execution.` We highly discourage the use of `unsafe-inline` and instead recommend the use CSP `nonces` in script tags which we parse and support in our CDN.
+, you need to take additional steps to implement JavaScript Detections:
+
+- Ensure that anything under `/cdn-cgi/challenge-platform/` is allowed. Your CSP should allow scripts served from your origin domain ( `script-src self`).
+- For `nonce` script tags:
+  - If your CSP uses a `nonce` for script tags, Cloudflare will add these nonces to the scripts it injects by parsing your CSP response header.
+  - If your CSP does not use `nonce` for script tags and **JavaScript Detections** is enabled, you may see a console error such as `Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'self'". Either the 'unsafe-inline' keyword, a hash ('sha256-b123b8a70+4jEj+d6gWI9U6IilUJIrlnRJbRR/uQl2Jc='), or a nonce ('nonce-...') is required to enable inline execution.` We highly discourage the use of `unsafe-inline` and instead recommend the use CSP `nonces` in script tags which we parse and support in our CDN.
 
 Warning
 

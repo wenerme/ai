@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Wrangler commands
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/reference/wrangler-commands/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pipelines/reference/wrangler-commands/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## `pipelines setup`
 
@@ -32,29 +32,39 @@ yarn wrangler pipelines setup
 pnpm wrangler pipelines setup
 ```
 
-* `--name` `string`
-Pipeline name
+- `--name` `string` Pipeline name
+
+<details>
+
+<summary>
 
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ## `pipelines create`
 
@@ -74,33 +84,43 @@ yarn wrangler pipelines create [PIPELINE]
 pnpm wrangler pipelines create [PIPELINE]
 ```
 
-* `[PIPELINE]` `string` required
-The name of the pipeline to create
-* `--sql` `string`
-Inline SQL query for the pipeline
-* `--sql-file` `string`
-Path to file containing SQL query for the pipeline
+- `[PIPELINE]` `string` required
+
+  The name of the pipeline to create
+- `--sql` `string` Inline SQL query for the pipeline
+- `--sql-file` `string` Path to file containing SQL query for the pipeline
+
+<details>
+
+<summary>
 
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ## `pipelines list`
 
@@ -120,33 +140,47 @@ yarn wrangler pipelines list
 pnpm wrangler pipelines list
 ```
 
-* `--page` `number` default: 1
-Page number for pagination
-* `--per-page` `number` default: 20
-Number of pipelines per page
-* `--json` `boolean` default: false
-Output in JSON format
+- `--page` `number` default: 1
+
+  Page number for pagination
+- `--per-page` `number` default: 20
+
+  Number of pipelines per page
+- `--json` `boolean` default: false
+
+  Output in JSON format
+
+<details>
+
+<summary>
 
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ## `pipelines get`
 
@@ -166,31 +200,44 @@ yarn wrangler pipelines get [PIPELINE]
 pnpm wrangler pipelines get [PIPELINE]
 ```
 
-* `[PIPELINE]` `string` required
-The ID or name of the pipeline to retrieve
-* `--json` `boolean` default: false
-Output in JSON format
+- `[PIPELINE]` `string` required
+
+  The ID or name of the pipeline to retrieve
+- `--json` `boolean` default: false
+
+  Output in JSON format
+
+<details>
+
+<summary>
 
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ## `pipelines update`
 
@@ -210,53 +257,53 @@ yarn wrangler pipelines update [PIPELINE]
 pnpm wrangler pipelines update [PIPELINE]
 ```
 
-* `[PIPELINE]` `string` required
-The name of the legacy pipeline to update
-* `--source` `array`
-Space separated list of allowed sources. Options are 'http' or 'worker'
-* `--require-http-auth` `boolean`
-Require Cloudflare API Token for HTTPS endpoint authentication
-* `--cors-origins` `array`
-CORS origin allowlist for HTTP endpoint (use \* for any origin). Defaults to an empty array
-* `--batch-max-mb` `number`
-Maximum batch size in megabytes before flushing. Defaults to 100 MB if unset. Minimum: 1, Maximum: 100
-* `--batch-max-rows` `number`
-Maximum number of rows per batch before flushing. Defaults to 10,000,000 if unset. Minimum: 100, Maximum: 10,000,000
-* `--batch-max-seconds` `number`
-Maximum age of batch in seconds before flushing. Defaults to 300 if unset. Minimum: 1, Maximum: 300
-* `--r2-bucket` `string`
-Destination R2 bucket name
-* `--r2-access-key-id` `string`
-R2 service Access Key ID for authentication. Leave empty for OAuth confirmation.
-* `--r2-secret-access-key` `string`
-R2 service Secret Access Key for authentication. Leave empty for OAuth confirmation.
-* `--r2-prefix` `string`
-Prefix for storing files in the destination bucket. Default is no prefix
-* `--compression` `string`
-Compression format for output files
-* `--shard-count` `number`
-Number of shards for the pipeline. More shards handle higher request volume; fewer shards produce larger output files. Defaults to 2 if unset. Minimum: 1, Maximum: 15
+- `[PIPELINE]` `string` required
+
+  The name of the legacy pipeline to update
+- `--source` `array` Space separated list of allowed sources. Options are 'http' or 'worker'
+- `--require-http-auth` `boolean` Require Cloudflare API Token for HTTPS endpoint authentication
+- `--cors-origins` `array` CORS origin allowlist for HTTP endpoint (use \* for any origin). Defaults to an empty array
+- `--batch-max-mb` `number` Maximum batch size in megabytes before flushing. Defaults to 100 MB if unset. Minimum: 1, Maximum: 100
+- `--batch-max-rows` `number` Maximum number of rows per batch before flushing. Defaults to 10,000,000 if unset. Minimum: 100, Maximum: 10,000,000
+- `--batch-max-seconds` `number` Maximum age of batch in seconds before flushing. Defaults to 300 if unset. Minimum: 1, Maximum: 300
+- `--r2-bucket` `string` Destination R2 bucket name
+- `--r2-access-key-id` `string` R2 service Access Key ID for authentication. Leave empty for OAuth confirmation.
+- `--r2-secret-access-key` `string` R2 service Secret Access Key for authentication. Leave empty for OAuth confirmation.
+- `--r2-prefix` `string` Prefix for storing files in the destination bucket. Default is no prefix
+- `--compression` `string` Compression format for output files
+- `--shard-count` `number` Number of shards for the pipeline. More shards handle higher request volume; fewer shards produce larger output files. Defaults to 2 if unset. Minimum: 1, Maximum: 15
+
+<details>
+
+<summary>
 
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ## `pipelines delete`
 
@@ -276,31 +323,44 @@ yarn wrangler pipelines delete [PIPELINE]
 pnpm wrangler pipelines delete [PIPELINE]
 ```
 
-* `[PIPELINE]` `string` required
-The ID or name of the pipeline to delete
-* `--force` `boolean` alias: --ydefault: false
-Skip confirmation
+- `[PIPELINE]` `string` required
+
+  The ID or name of the pipeline to delete
+- `--force` `boolean` alias: --ydefault: false
+
+  Skip confirmation
+
+<details>
+
+<summary>
 
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ## `pipelines streams create`
 
@@ -320,37 +380,49 @@ yarn wrangler pipelines streams create [STREAM]
 pnpm wrangler pipelines streams create [STREAM]
 ```
 
-* `[STREAM]` `string` required
-The name of the stream to create
-* `--schema-file` `string`
-Path to JSON file containing stream schema
-* `--http-enabled` `boolean` default: true
-Enable HTTP endpoint
-* `--http-auth` `boolean` default: true
-Require authentication for HTTP endpoint
-* `--cors-origin` `string`
-CORS origin
+- `[STREAM]` `string` required
+
+  The name of the stream to create
+- `--schema-file` `string` Path to JSON file containing stream schema
+- `--http-enabled` `boolean` default: true
+
+  Enable HTTP endpoint
+- `--http-auth` `boolean` default: true
+
+  Require authentication for HTTP endpoint
+- `--cors-origin` `string` CORS origin
+
+<details>
+
+<summary>
 
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ## `pipelines streams list`
 
@@ -370,35 +442,48 @@ yarn wrangler pipelines streams list
 pnpm wrangler pipelines streams list
 ```
 
-* `--page` `number` default: 1
-Page number for pagination
-* `--per-page` `number` default: 20
-Number of streams per page
-* `--pipeline-id` `string`
-Filter streams by pipeline ID
-* `--json` `boolean` default: false
-Output in JSON format
+- `--page` `number` default: 1
+
+  Page number for pagination
+- `--per-page` `number` default: 20
+
+  Number of streams per page
+- `--pipeline-id` `string` Filter streams by pipeline ID
+- `--json` `boolean` default: false
+
+  Output in JSON format
+
+<details>
+
+<summary>
 
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ## `pipelines streams get`
 
@@ -418,31 +503,44 @@ yarn wrangler pipelines streams get [STREAM]
 pnpm wrangler pipelines streams get [STREAM]
 ```
 
-* `[STREAM]` `string` required
-The ID or name of the stream to retrieve
-* `--json` `boolean` default: false
-Output in JSON format
+- `[STREAM]` `string` required
+
+  The ID or name of the stream to retrieve
+- `--json` `boolean` default: false
+
+  Output in JSON format
+
+<details>
+
+<summary>
 
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ## `pipelines streams delete`
 
@@ -462,31 +560,44 @@ yarn wrangler pipelines streams delete [STREAM]
 pnpm wrangler pipelines streams delete [STREAM]
 ```
 
-* `[STREAM]` `string` required
-The ID or name of the stream to delete
-* `--force` `boolean` alias: --ydefault: false
-Skip confirmation
+- `[STREAM]` `string` required
+
+  The ID or name of the stream to delete
+- `--force` `boolean` alias: --ydefault: false
+
+  Skip confirmation
+
+<details>
+
+<summary>
 
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ## `pipelines sinks create`
 
@@ -506,57 +617,63 @@ yarn wrangler pipelines sinks create [SINK]
 pnpm wrangler pipelines sinks create [SINK]
 ```
 
-* `[SINK]` `string` required
-The name of the sink to create
-* `--type` `string` required
-The type of sink to create
-* `--bucket` `string` required
-R2 bucket name
-* `--format` `string` default: parquet
-Output format
-* `--compression` `string`
-Compression method (JSON supports uncompressed and gzip; Parquet defaults to zstd)
-* `--target-row-group-size` `string`
-Target row group size for parquet format
-* `--path` `string`
-The base prefix in your bucket where data will be written
-* `--partitioning` `string`
-Time partition pattern (r2 sinks only)
-* `--roll-size` `number`
-Roll file size in MB
-* `--roll-interval` `number` default: 300
-Roll file interval in seconds
-* `--access-key-id` `string`
-R2 access key ID (leave empty for R2 credentials to be automatically created)
-* `--secret-access-key` `string`
-R2 secret access key (leave empty for R2 credentials to be automatically created)
-* `--namespace` `string`
-Data catalog namespace (required for r2-data-catalog)
-* `--table` `string`
-Table name within namespace (required for r2-data-catalog)
-* `--catalog-token` `string`
-Authentication token for data catalog (required for r2-data-catalog)
+- `[SINK]` `string` required
+
+  The name of the sink to create
+- `--type` `string` required
+
+  The type of sink to create
+- `--bucket` `string` required
+
+  R2 bucket name
+- `--format` `string` default: parquet
+
+  Output format
+- `--compression` `string` Compression method (JSON supports uncompressed and gzip; Parquet defaults to zstd)
+- `--target-row-group-size` `string` Target row group size for parquet format
+- `--path` `string` The base prefix in your bucket where data will be written
+- `--partitioning` `string` Time partition pattern (r2 sinks only)
+- `--roll-size` `number` Roll file size in MB
+- `--roll-interval` `number` default: 300
+
+  Roll file interval in seconds
+- `--access-key-id` `string` R2 access key ID (leave empty for R2 credentials to be automatically created)
+- `--secret-access-key` `string` R2 secret access key (leave empty for R2 credentials to be automatically created)
+- `--namespace` `string` Data catalog namespace (required for r2-data-catalog)
+- `--table` `string` Table name within namespace (required for r2-data-catalog)
+- `--catalog-token` `string` Authentication token for data catalog (required for r2-data-catalog)
+
+<details>
+
+<summary>
 
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ## `pipelines sinks list`
 
@@ -576,35 +693,48 @@ yarn wrangler pipelines sinks list
 pnpm wrangler pipelines sinks list
 ```
 
-* `--page` `number` default: 1
-Page number for pagination
-* `--per-page` `number` default: 20
-Number of sinks per page
-* `--pipeline-id` `string`
-Filter sinks by pipeline ID
-* `--json` `boolean` default: false
-Output in JSON format
+- `--page` `number` default: 1
+
+  Page number for pagination
+- `--per-page` `number` default: 20
+
+  Number of sinks per page
+- `--pipeline-id` `string` Filter sinks by pipeline ID
+- `--json` `boolean` default: false
+
+  Output in JSON format
+
+<details>
+
+<summary>
 
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ## `pipelines sinks get`
 
@@ -624,31 +754,44 @@ yarn wrangler pipelines sinks get [SINK]
 pnpm wrangler pipelines sinks get [SINK]
 ```
 
-* `[SINK]` `string` required
-The ID or name of the sink to retrieve
-* `--json` `boolean` default: false
-Output in JSON format
+- `[SINK]` `string` required
+
+  The ID or name of the sink to retrieve
+- `--json` `boolean` default: false
+
+  Output in JSON format
+
+<details>
+
+<summary>
 
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ## `pipelines sinks delete`
 
@@ -668,31 +811,44 @@ yarn wrangler pipelines sinks delete [SINK]
 pnpm wrangler pipelines sinks delete [SINK]
 ```
 
-* `[SINK]` `string` required
-The ID or name of the sink to delete
-* `--force` `boolean` alias: --ydefault: false
-Skip confirmation
+- `[SINK]` `string` required
+
+  The ID or name of the sink to delete
+- `--force` `boolean` alias: --ydefault: false
+
+  Skip confirmation
+
+<details>
+
+<summary>
 
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 Was this helpful?
 

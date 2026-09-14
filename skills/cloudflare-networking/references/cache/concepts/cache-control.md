@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Origin Cache Control
 
-Last updated Jun 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/concepts/cache-control/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/concepts/cache-control/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Origin Cache Control is a Cloudflare feature. When enabled on an Enterprise customer's website, it indicates that Cloudflare should strictly respect `Cache-Control` directives received from the origin server. Free, Pro and Business customers have this feature enabled by default.
 
@@ -24,10 +24,10 @@ Cloudflare's [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-
 
 The following sections cover:
 
-* The most common `Cache-Control` directives.
-* How to enable Origin Cache Control.
-* How Origin Cache Control behaves with `Cache-Control` directives.
-* How other Cloudflare products interact with `Cache-Control` directives.
+- The most common `Cache-Control` directives.
+- How to enable Origin Cache Control.
+- How Origin Cache Control behaves with `Cache-Control` directives.
+- How other Cloudflare products interact with `Cache-Control` directives.
 
 ## `Cache-control` directives
 
@@ -45,9 +45,9 @@ Directives can be broken down into four groups: [cacheability](https://developer
 
 Cacheability refers to whether or not a resource should enter a cache, and the directives below indicate a resource's cacheability.
 
-* `public` — Indicates any cache may store the response, even if the response is normally non-cacheable or cacheable only within a private cache.
-* `private` — Indicates the response message is intended for a single user, such as a browser cache, and must not be stored by a shared cache like Cloudflare or a corporate proxy.
-* `no-store` — Indicates any cache, such as a client or proxy cache, must not store any part of either the immediate request or response.
+- `public` — Indicates any cache may store the response, even if the response is normally non-cacheable or cacheable only within a private cache.
+- `private` — Indicates the response message is intended for a single user, such as a browser cache, and must not be stored by a shared cache like Cloudflare or a corporate proxy.
+- `no-store` — Indicates any cache, such as a client or proxy cache, must not store any part of either the immediate request or response.
 
 ### Expiration
 
@@ -61,14 +61,14 @@ When using Origin Cache Control and setting `max-age=0`, Cloudflare prefers to c
 
 When setting `no-cache` with Origin Cache Control off, Cloudflare does not cache. When setting `no-cache` with Origin Cache Control on, Cloudflare caches and always revalidates.
 
-* `max-age=seconds` — Indicates the response is stale after its age is greater than the specified number of seconds. Age is defined as the time in seconds since the asset was served from the origin server. The `seconds` argument is an unquoted integer.
-* `s-maxage=seconds` — Indicates that in shared caches, the maximum age specified by this directive overrides the maximum age specified by either the `max-age` directive or the `Expires` header field. The `s-maxage` directive also implies the semantics of the `proxy-revalidate` response directive. Browsers ignore `s-maxage`.
+- `max-age=seconds` — Indicates the response is stale after its age is greater than the specified number of seconds. Age is defined as the time in seconds since the asset was served from the origin server. The `seconds` argument is an unquoted integer.
+- `s-maxage=seconds` — Indicates that in shared caches, the maximum age specified by this directive overrides the maximum age specified by either the `max-age` directive or the `Expires` header field. The `s-maxage` directive also implies the semantics of the `proxy-revalidate` response directive. Browsers ignore `s-maxage`.
 
 \`s-maxage\` disables \`stale-while-revalidate\`
 
 Per [RFC 9111 ↗](https://www.rfc-editor.org/rfc/rfc9111.html#section-5.2.2.10-4), `s-maxage` incorporates the semantics of `proxy-revalidate`, which means a shared cache must not serve stale content without first revalidating with the origin. For a complete list of directives that disable `stale-while-revalidate` and workarounds, refer to [Controlling stale behavior](https://developers.cloudflare.com/cache/concepts/revalidation/#controlling-stale-behavior).
 
-* `no-cache` — Indicates the response cannot be used to satisfy a subsequent request without successful validation on the origin server. This allows an origin server to prevent a cache from using the origin to satisfy a request without contacting it, even by caches that have been configured to send stale responses.
+- `no-cache` — Indicates the response cannot be used to satisfy a subsequent request without successful validation on the origin server. This allows an origin server to prevent a cache from using the origin to satisfy a request without contacting it, even by caches that have been configured to send stale responses.
 
 Ensure the HTTP `Expires` header is set in your origin server to use Greenwich Mean Time (GMT) as stipulated in [RFC 2616 ↗](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3 "3.3.1 Full Date").
 
@@ -76,9 +76,9 @@ Ensure the HTTP `Expires` header is set in your origin server to use Greenwich M
 
 Revalidation determines how the cache should behave when a resource expires, and the directives below affect the revalidation behavior.
 
-* `must-revalidate` — Indicates that once the resource is stale, a cache (client or proxy) must not use the response to satisfy subsequent requests without successful validation on the origin server.
-* `proxy-revalidate` — Has the same meaning as the `must-revalidate` response directive except that it does not apply to private client caches.
-* `stale-while-revalidate=<seconds>` — When present in an HTTP response, indicates caches may serve the response in which it appears after it becomes stale, up to the indicated number of seconds since the resource expired. If [Always Online](https://developers.cloudflare.com/cache/how-to/always-online/) is enabled, then the `stale-while-revalidate` and `stale-if-error` directives are ignored. This directive is not supported when using the Cache API methods `cache.match` or `cache.put`. For more information, refer to the [Workers documentation for Cache API](https://developers.cloudflare.com/workers/runtime-apis/cache/#methods).
+- `must-revalidate` — Indicates that once the resource is stale, a cache (client or proxy) must not use the response to satisfy subsequent requests without successful validation on the origin server.
+- `proxy-revalidate` — Has the same meaning as the `must-revalidate` response directive except that it does not apply to private client caches.
+- `stale-while-revalidate=<seconds>` — When present in an HTTP response, indicates caches may serve the response in which it appears after it becomes stale, up to the indicated number of seconds since the resource expired. If [Always Online](https://developers.cloudflare.com/cache/how-to/always-online/) is enabled, then the `stale-while-revalidate` and `stale-if-error` directives are ignored. This directive is not supported when using the Cache API methods `cache.match` or `cache.put`. For more information, refer to the [Workers documentation for Cache API](https://developers.cloudflare.com/workers/runtime-apis/cache/#methods).
 
 Note
 
@@ -86,7 +86,7 @@ Note
 
 For more details, refer to [Revalidation](https://developers.cloudflare.com/cache/concepts/revalidation/#asynchronous-revalidation).
 
-* `stale-if-error=<seconds>` — Indicates that when an error is encountered, a cached stale response may be used to satisfy the request, regardless of other freshness information. To avoid this behavior, include `stale-if-error=0` directive with the object returned from the origin. This directive is not supported when using the Cache API methods `cache.match` or `cache.put`. For more information, refer to the [Workers documentation for Cache API](https://developers.cloudflare.com/workers/runtime-apis/cache/#methods).
+- `stale-if-error=<seconds>` — Indicates that when an error is encountered, a cached stale response may be used to satisfy the request, regardless of other freshness information. To avoid this behavior, include `stale-if-error=0` directive with the object returned from the origin. This directive is not supported when using the Cache API methods `cache.match` or `cache.put`. For more information, refer to the [Workers documentation for Cache API](https://developers.cloudflare.com/workers/runtime-apis/cache/#methods).
 
 Error status codes
 
@@ -98,9 +98,9 @@ The `stale-if-error` directive is ignored if [Always Online](https://developers.
 
 Additional directives that influence cache behavior are listed below.
 
-* `no-transform` — Indicates that an intermediary — regardless of whether it implements a cache — must not transform the payload.
-* `vary` — By default, Cloudflare does not consider vary values in caching decisions. Vary values are respected when you configure the [Cache Rules Vary setting](https://developers.cloudflare.com/cache/concepts/vary/), when [Vary for images](https://developers.cloudflare.com/cache/advanced-configuration/vary-for-images/) is configured, and when the vary header is [vary: accept-encoding](https://developers.cloudflare.com/speed/optimization/content/compression/).
-* `immutable` — Indicates to clients the response body does not change over time. The resource, if unexpired, is unchanged on the server. The user should not send a conditional revalidation request, such as `If-None-Match` or `If-Modified-Since`, to check for updates, even when the user explicitly refreshes the page. This directive has no effect on public caches like Cloudflare, but does change browser behavior.
+- `no-transform` — Indicates that an intermediary — regardless of whether it implements a cache — must not transform the payload.
+- `vary` — By default, Cloudflare does not consider vary values in caching decisions. Vary values are respected when you configure the [Cache Rules Vary setting](https://developers.cloudflare.com/cache/concepts/vary/), when [Vary for images](https://developers.cloudflare.com/cache/advanced-configuration/vary-for-images/) is configured, and when the vary header is [`vary: accept-encoding`](https://developers.cloudflare.com/speed/optimization/content/compression/).
+- `immutable` — Indicates to clients the response body does not change over time. The resource, if unexpired, is unchanged on the server. The user should not send a conditional revalidation request, such as `If-None-Match` or `If-Modified-Since`, to check for updates, even when the user explicitly refreshes the page. This directive has no effect on public caches like Cloudflare, but does change browser behavior.
 
 ### Understand `no-store` and `no-cache` directives
 
@@ -108,16 +108,16 @@ There is often confusion between the directives `Cache-Control: no-store` and `C
 
 #### `no-store`
 
-* Tells both browsers and intermediaries (like CDNs) not to store a copy of the response under any circumstance.
-* The response is never written to disk or memory, which means the browser must fetch it again every time.
-* In many browsers, `no-store` disables BFCache, because restoring a page from BFCache requires the browser to keep a copy of the page's memory state, which contradicts the “do not store” directive.
-* This directive is used for highly sensitive or dynamic data (for example, banking apps, personal information, secure dashboards).
+- Tells both browsers and intermediaries (like CDNs) not to store a copy of the response under any circumstance.
+- The response is never written to disk or memory, which means the browser must fetch it again every time.
+- In many browsers, `no-store` disables BFCache, because restoring a page from BFCache requires the browser to keep a copy of the page's memory state, which contradicts the “do not store” directive.
+- This directive is used for highly sensitive or dynamic data (for example, banking apps, personal information, secure dashboards).
 
 #### `no-cache`
 
-* Allows storing of the response (in both browser and intermediate caches), but requires revalidation with the origin server before using it.
-* This ensures the content is always up-to-date, while still potentially allowing BFCache or other forms of performance optimization.
-* This directive is used for data that changes frequently but is not sensitive, and can be served faster if validated rather than re-downloaded.
+- Allows storing of the response (in both browser and intermediate caches), but requires revalidation with the origin server before using it.
+- This ensures the content is always up-to-date, while still potentially allowing BFCache or other forms of performance optimization.
+- This directive is used for data that changes frequently but is not sensitive, and can be served faster if validated rather than re-downloaded.
 
 For more information about how these directives behave when Origin Cache Control is enabled or disabled refer to the [Directives](https://developers.cloudflare.com/cache/concepts/cache-control/#directives) section.
 
@@ -131,35 +131,37 @@ The following section covers the directives and behavioral conditions associated
 
 Integer values required
 
-The `max-age`, `s-maxage`, and `stale-while-revalidate` directives require integer values per RFC 9111\. Floating-point values (for example, `max-age=2.5`) are not valid and will be ignored, potentially causing cache bypass. Ensure your origin returns integer TTL values.
+The `max-age`, `s-maxage`, and `stale-while-revalidate` directives require integer values per RFC 9111. Floating-point values (for example, `max-age=2.5`) are not valid and will be ignored, potentially causing cache bypass. Ensure your origin returns integer TTL values.
 
 ### Directives
 
 The table below lists directives and their behaviors when Origin Cache Control is disabled and when it is enabled.
 
-| Directive               | Origin Cache Control Disabled Behavior          | Origin Cache Control Enabled Behavior                                                                                                        |
-| ----------------------- | ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| s-maxage=0              | Will not cache.                                 | Caches and always revalidates                                                                                                                |
-| max-age=0               | Will not cache.                                 | Caches and always revalidates.                                                                                                               |
-| no-cache                | Will not cache.                                 | Caches and always revalidates. Does not serve stale.                                                                                         |
-| no-cache=<headers>      | Will not cache.                                 | Caches if headers mentioned in no-cache=<headers> do not exist. Always revalidates if any header mentioned in no-cache=<headers> is present. |
-| Private=<headers>       | Will not cache.                                 | Does not cache <headers> values mentioned in Private=<headers> directive.                                                                    |
-| must-revalidate         | Cache directive is ignored and stale is served. | Does not serve stale. Must revalidate for CDN and for browser.                                                                               |
-| proxy-revalidate        | Cache directive is ignored and stale is served. | Does not serve stale. Must revalidate for CDN but not for browser.                                                                           |
-| no-transform            | May (un)Gzip, Polish, email filter, etc.        | Does not transform body.                                                                                                                     |
-| s-maxage=delta, delta>1 | Same as max-age.                                | Max-age and proxy-revalidate.                                                                                                                |
-| immutable               | Not proxied downstream.                         | Proxied downstream. Browser facing, does not impact caching proxies.                                                                         |
-| no-store                | Will not cache.                                 | Will not cache.                                                                                                                              |
+| Directive | Origin Cache Control Disabled Behavior | Origin Cache Control Enabled Behavior |
+| --- | --- | --- |
+| `s-maxage=0` | Will not cache. | Caches and always revalidates |
+| `max-age=0` | Will not cache. | Caches and always revalidates. |
+| `no-cache` | Will not cache. | Caches and always revalidates. Does not serve stale. |
+| `no-cache=<headers>` | Will not cache. | Caches if headers mentioned in `no-cache=<headers>` do not exist. Always revalidates if any header mentioned in `no-cache=<headers>` is present. |
+| `Private=<headers>` | Will not cache. | Does not cache `<headers>` values mentioned in `Private=<headers>` directive. |
+| `must-revalidate` | Cache directive is ignored and stale is served. | Does not serve stale. Must revalidate for CDN and for browser. |
+| `proxy-revalidate` | Cache directive is ignored and stale is served. | Does not serve stale. Must revalidate for CDN but not for browser. |
+| `no-transform` | May (un)Gzip, Polish, email filter, etc. | Does not transform body. |
+| `s-maxage=delta, delta>1` | Same as `max-age`. | `Max-age` and `proxy-revalidate`. |
+| `immutable` | Not proxied downstream. | Proxied downstream. Browser facing, does not impact caching proxies. |
+| `no-store` | Will not cache. | Will not cache. |
 
 ### Conditions
 
 Certain scenarios also affect Origin Cache Control behavior when it is enabled or disabled.
 
-| Condition                                                              | Origin Cache Control disabled behavior                      | Origin Cache Control enabled behavior                        | |  Presence of Authorization header. | Content may be cached. | Content is cached only if must-revalidate, public, or s-maxage is also present. |
-| ---------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------ | ---------------------- | ------------------------------------------------------------------------------- |
-| Use of no-cache header.                                                | In logs, cacheStatus=miss.                                  | In logs, cacheStatus=bypass.                                 |                                      |                        |                                                                                 |
-| Origin response has Set-Cookie header and default cache level is used. | Content may be cached with stripped set-cookie header.      | Content is not cached.                                       |                                      |                        |                                                                                 |
-| Browser Cache TTL is set.                                              | Cache-Control returned to eyeball does not include private. | If origin returns private in Cache-Control then preserve it. |                                      |                        |                                                                                 |
+Condition | | | | | Origin Cache Control disabled behavior | | | | | Origin Cache Control enabled behavior | | | |
+
+| Presence of `Authorization` header. | | | | | Content may be cached. | | | | | Content is cached only if `must-revalidate`, `public`, or `s-maxage` is also present. | | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Use of `no-cache` header. | | | | | In logs, `cacheStatus=miss`. | | | | | In logs, `cacheStatus=bypass`. | | | | |
+| Origin response has `Set-Cookie` header and default cache level is used. | | | | | Content may be cached with stripped `set-cookie` header. | | | | | Content is not cached. | | | | |
+| Browser Cache TTL is set. | | | | | `Cache-Control` returned to eyeball does not include `private`. | | | | | If origin returns `private` in `Cache-Control` then preserve it. | | | | |
 
 Note
 
@@ -169,55 +171,135 @@ When the `Cloudflare-Cdn-Cache-Control` header is set, OCC is turned **on** (reg
 
 Review the examples below to learn which directives to use with the `Cache-Control` header to control specific caching behavior.
 
+<details>
+
+<summary>
+
 Cache a static asset.
 
-`Cache-Control: public, max-age=86400`
+</summary>
+
+<code>Cache-Control: public, max-age=86400</code>
+
+</details>
+
+<details>
+
+<summary>
 
 Ensure a secret asset is never cached.
 
-`Cache-Control: no-store`
+</summary>
+
+<code>Cache-Control: no-store</code>
+
+</details>
+
+<details>
+
+<summary>
 
 Cache assets on browsers but not on proxy cache.
 
-`Cache-Control: private, max-age=3600`
+</summary>
+
+<code>Cache-Control: private, max-age=3600</code>
+
+</details>
+
+<details>
+
+<summary>
 
 Cache assets in client and proxy caches, but prefer revalidation when serve.
 
-`Cache-Control: public, no-cache`
+</summary>
+
+<code>Cache-Control: public, no-cache</code>
+
+</details>
+
+<details>
+
+<summary>
 
 Cache assets in proxy caches but REQUIRE revalidation by the proxy when serve.
 
-`Cache-Control: public, no-cache, proxy-revalidate` or `Cache-Control: public, s-maxage=0`
+</summary>
+
+<code>Cache-Control: public, no-cache, proxy-revalidate</code> or <code>Cache-Control: public, s-maxage=0</code>
+
+</details>
+
+<details>
+
+<summary>
 
 Cache assets in proxy caches, but REQUIRE revalidation by any cache when serve.
 
-`Cache-Control: public, no-cache, must-revalidate`
+</summary>
+
+<code>Cache-Control: public, no-cache, must-revalidate</code>
+
+</details>
+
+<details>
+
+<summary>
 
 Cache assets, but ensure the proxy does not modify it.
 
-`Cache-Control: public, no-transform`
+</summary>
+
+<code>Cache-Control: public, no-transform</code>
 
 This configuration also disables transformation like gzip or brotli compression from our edge to your visitors if the original payload was served uncompressed.
 
+</details>
+
+<details>
+
+<summary>
+
 Cache assets with revalidation, but allow stale responses if origin server is unreachable.
 
-`Cache-Control: public, max-age=3600, stale-if-error=60`
+</summary>
+
+<code>Cache-Control: public, max-age=3600, stale-if-error=60</code>
 
 With this configuration, Cloudflare attempts to revalidate the content with the origin server after it has been in cache for 3600 seconds (one hour). If the server returns an error instead of proper revalidation responses, Cloudflare continues serving the stale resource for a total of one minute beyond the expiration of the resource.
 
+</details>
+
+<details>
+
+<summary>
+
 Cache assets for different amounts of time on Cloudflare and in visitor browsers.
 
-`Cache-Control: public, max-age=7200, s-maxage=3600`
+</summary>
+
+<code>Cache-Control: public, max-age=7200, s-maxage=3600</code>
+
+</details>
+
+<details>
+
+<summary>
 
 Cache an asset and serve while asset is being revalidated.
 
-`Cache-Control: max-age=600, stale-while-revalidate=30`
+</summary>
 
-This configuration indicates the asset is fresh for 600 seconds. The asset can be served stale for up to an additional 30 seconds while Cloudflare revalidates the asset with the origin in the background. For more information, refer to [Revalidation](https://developers.cloudflare.com/cache/concepts/revalidation/).
+<code>Cache-Control: max-age=600, stale-while-revalidate=30</code>
+
+This configuration indicates the asset is fresh for 600 seconds. The asset can be served stale for up to an additional 30 seconds while Cloudflare revalidates the asset with the origin in the background. For more information, refer to <a href="https://developers.cloudflare.com/cache/concepts/revalidation/">Revalidation</a>.
 
 Note
 
-Do not use `s-maxage` with `stale-while-revalidate`. The `s-maxage` directive implies `proxy-revalidate`, which prevents shared caches from serving stale content. For workarounds, refer to [Controlling stale behavior](https://developers.cloudflare.com/cache/concepts/revalidation/#controlling-stale-behavior).
+Do not use <code>s-maxage</code> with <code>stale-while-revalidate</code>. The <code>s-maxage</code> directive implies <code>proxy-revalidate</code>, which prevents shared caches from serving stale content. For workarounds, refer to <a href="https://developers.cloudflare.com/cache/concepts/revalidation/#controlling-stale-behavior">Controlling stale behavior</a>.
+
+</details>
 
 ## Interaction with other Cloudflare features
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Policies FAQ
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/faq/policies-faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/faq/policies-faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [❮ Back to FAQ](https://developers.cloudflare.com/cloudflare-one/faq/)
 
@@ -48,17 +48,17 @@ No. Cloudflare Access cannot enforce a policy that would contain a port appended
 
 If the domain is blocked by a DNS, network, or HTTP policy, it may be because:
 
-* **Your policy is still being updated.** After you edit or create a policy, Cloudflare updates the new setting across all of our data centers around the world. It takes about 60 seconds for the change to propagate.
+- **Your policy is still being updated.** After you edit or create a policy, Cloudflare updates the new setting across all of our data centers around the world. It takes about 60 seconds for the change to propagate.
 
 If the domain is only blocked by a DNS policy, it may be because:
 
-* **Your device is using another DNS resolver.** If you have other DNS resolvers in your DNS settings, your device could be using IP addresses for resolvers that are not part of Gateway. As a result, the domain you are trying to block is still accessible from your device. Make sure to remove all other IP addresses from your DNS settings and only include Gateway's DNS resolver IP addresses.
-* **Your policy is not assigned to a DNS location.** If your policy is not assigned to a DNS location and you send a DNS query from that location, Gateway will not apply that policy. Assign a policy to a DNS location to make sure the desired policy is applied when you send a DNS query from that location.
-* **Your DoH endpoint is not a Gateway DNS location**. Browsers can be configured to use any DoH endpoint. If you chose to configure DoH directly in your browser, make sure that the DoH endpoint is a Gateway DNS location.
+- **Your device is using another DNS resolver.** If you have other DNS resolvers in your DNS settings, your device could be using IP addresses for resolvers that are not part of Gateway. As a result, the domain you are trying to block is still accessible from your device. Make sure to remove all other IP addresses from your DNS settings and only include Gateway's DNS resolver IP addresses.
+- **Your policy is not assigned to a DNS location.** If your policy is not assigned to a DNS location and you send a DNS query from that location, Gateway will not apply that policy. Assign a policy to a DNS location to make sure the desired policy is applied when you send a DNS query from that location.
+- **Your DoH endpoint is not a Gateway DNS location**. Browsers can be configured to use any DoH endpoint. If you chose to configure DoH directly in your browser, make sure that the DoH endpoint is a Gateway DNS location.
 
 If the domain is only blocked by a network policy, it may be because:
 
-* **Your browser is reusing an existing connection**. Network policies only apply when a connection is opened. If a browser is connected to a domain to be blocked by a network policy, Gateway will not block requests until the connection is closed. To block the domain, close any related tabs or restart your browser.
+- **Your browser is reusing an existing connection**. Network policies only apply when a connection is opened. If a browser is connected to a domain to be blocked by a network policy, Gateway will not block requests until the connection is closed. To block the domain, close any related tabs or restart your browser.
 
 ## When does Access return a Forbidden status page versus a login page?
 

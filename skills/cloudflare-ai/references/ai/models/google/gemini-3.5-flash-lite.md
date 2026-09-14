@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Google
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/google/gemini-3.5-flash-lite/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/google/gemini-3.5-flash-lite/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `google/gemini-3.5-flash-lite`
 
-* Third-party
+- Third-party
 
 Gemini 3.5 Flash-Lite is a low-latency, cost-effective multimodal model optimized for high-throughput, low-cost execution for subagent tasks and document parsing.
 
-| Model Info                                                                          |                                                                                                                                |
-| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,048,576 tokens                                                                                                               |
-| Terms and License                                                                   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                               |
-| More information                                                                    | [link ↗](https://deepmind.google/technologies/gemini/)                                                                         |
-| Request formats                                                                     | Chat Completions                                                                                                               |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.5-flash-lite) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,048,576 tokens |
+| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms) |
+| More information | [link ↗](https://deepmind.google/technologies/gemini/) |
+| Request formats | Chat Completions |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.5-flash-lite) |
 
 ## Usage
 
@@ -63,6 +63,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 The three laws of thermodynamics are fundamental physical principles that describe how energy behaves in the universe—specifically regarding heat, work, entropy, and the limits of energy transfer.
 
 Here is a summary of the three laws, along with a "zeroth law" that was established later but is equally fundamental.
@@ -99,6 +100,7 @@ Here is a summary of the three laws, along with a "zeroth law" that was establis
 * **The Law:** As the temperature of a system approaches absolute zero ($0\text{ Kelvin}$ or $-273.15^\circ\text{C}$), the entropy of a pure, perfect crystalline substance approaches a minimum value (typically zero).
 * **Plain English:** You cannot reach absolute zero. As atoms get colder and colder, they slow down and lose thermal motion, but you can never completely stop molecular motion entirely.
 * **Why it matters:** It sets a fundamental lower limit on temperature and helps scientists calculate the absolute entropy of substances.
+```
 
 ```json
 {
@@ -142,7 +144,11 @@ Here is a summary of the three laws, along with a "zeroth law" that was establis
 
 ## Examples
 
-**Data Extraction** — Structured data extraction from unstructured text, a common subagent task
+<details>
+
+<summary>**Data Extraction** — Structured data extraction from unstructured text, a common subagent task</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -202,11 +208,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 {
   "name": "Jordan Blake",
   "email": "jordan.blake@example.com",
   "phone": "555-2938"
 }
+```
 
 ```json
 {
@@ -248,7 +256,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Multi-turn Conversation** — Continuing a short conversation with low-latency, high-throughput responses
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a short conversation with low-latency, high-throughput responses</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -319,7 +333,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 Addressing Q3 budget overruns, hiring freezes, and vendor contracts.
+```
 
 ```json
 {
@@ -361,13 +377,15 @@ Addressing Q3 budget overruns, hiring freezes, and vendor contracts.
 }
 ```
 
+</details>
+
 ## Parameters
 
 Schema variant
 
 Generate ContentChat Completions
 
-▶contents\[\]
+▶contents\[]
 
 `array`required
 
@@ -379,19 +397,17 @@ Generate ContentChat Completions
 
 `object`
 
-▶safetySettings\[\]
+▶safetySettings\[]
 
 `array`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 toolConfig
 
-``
-
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -413,11 +429,11 @@ top\_p
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 stream
 
@@ -427,19 +443,15 @@ stream
 
 `object`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
 
-``
-
 response\_format
 
-``
-
-▶modalities\[\]
+▶modalities\[]
 
 `array`
 
@@ -447,7 +459,7 @@ response\_format
 
 `object`
 
-▶candidates\[\]
+▶candidates\[]
 
 `array`
 
@@ -475,7 +487,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -485,9 +497,9 @@ model
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/google/gemini-3.5-flash-lite/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/google/gemini-3.5-flash-lite/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/google/gemini-3.5-flash-lite/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/google/gemini-3.5-flash-lite/schema-output.json)
 
 Was this helpful?
 

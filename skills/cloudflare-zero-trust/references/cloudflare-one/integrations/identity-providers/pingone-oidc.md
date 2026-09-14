@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # PingOne
 
-Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/pingone-oidc/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/pingone-oidc/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The PingOne cloud platform from PingIdentity provides SSO identity management. Cloudflare Access supports PingOne as an OIDC identity provider.
 
 ## Set up PingOne as an OIDC provider
 
-### 1\. Create an application in PingOne
+### 1. Create an application in PingOne
 
-1. In your PingIdentity environment, go to **Connections** \> **Applications**.
+1. In your PingIdentity environment, go to **Connections** > **Applications**.
 2. Select **Add Application**.
 3. Enter an **Application Name**.
 4. Select **OIDC Web App** and then **Save**.
@@ -29,15 +29,17 @@ The PingOne cloud platform from PingIdentity provides SSO identity management. C
 7. Copy the **Client ID**, **Client Secret**, and **Environment ID** to a safe place. These IDs will be used in a later step to add PingOne to Cloudflare One.
 8. In the **Configuration** tab, select the pencil icon.
 9. In the **Redirect URIs** field, enter the following URL:
-```txt
-https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
-```
-You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
+
+   ```txt
+   https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
+   ```
+
+   You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
 10. Select **Save**.
 
-### 2\. Add PingOne to Cloudflare One
+### 2. Add PingOne to Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
 3. Select **PingOne**.
 4. Input the **Client ID**, **Client Secret**, and **Environment ID** generated previously.

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Agentic patterns
 
-Last updated Aug 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/concepts/agentic-patterns/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/concepts/agentic-patterns/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page lists and defines common patterns for implementing AI agents, based on [Anthropic's patterns for building effective agents ↗](https://www.anthropic.com/research/building-effective-agents).
 

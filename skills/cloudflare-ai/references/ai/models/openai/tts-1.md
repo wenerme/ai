@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Speech • OpenAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/tts-1/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/openai/tts-1/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `openai/tts-1`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 OpenAI's text-to-speech model optimized for real-time use with low latency.
 
-| Model Info          |                                                                                                                |
-| ------------------- | -------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://openai.com/policies/)                                                                         |
-| More information    | [link ↗](https://platform.openai.com/docs/guides/text-to-speech)                                               |
-| Zero data retention | Yes                                                                                                            |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/tts-1) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://openai.com/policies/) |
+| More information | [link ↗](https://platform.openai.com/docs/guides/text-to-speech) |
+| Zero data retention | Yes |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/tts-1) |
 
 ## Usage
 
@@ -76,7 +76,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Different Voice** — Use the Nova voice for a different tone
+<details>
+
+<summary>**Different Voice** — Use the Nova voice for a different tone</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -118,7 +122,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Narration** — Slower narration style with the Onyx voice
+</details>
+
+<details>
+
+<summary>**Narration** — Slower narration style with the Onyx voice</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -160,7 +170,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Echo Voice** — Use the Echo voice for a deeper tone
+</details>
+
+<details>
+
+<summary>**Echo Voice** — Use the Echo voice for a deeper tone</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -202,7 +218,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Fast Playback** — Speed up speech for quick listening
+</details>
+
+<details>
+
+<summary>**Fast Playback** — Speed up speech for quick listening</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -244,6 +266,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 text
@@ -260,7 +284,7 @@ response\_format
 
 speed
 
-`number`requireddefault: 1minimum: 0.25maximum: 4The speed of the generated audio. Select a value from 0.25 to 4.0\. 1.0 is the default.
+`number`requireddefault: 1minimum: 0.25maximum: 4The speed of the generated audio. Select a value from 0.25 to 4.0. 1.0 is the default.
 
 audio
 
@@ -268,9 +292,9 @@ audio
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/openai/tts-1/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/openai/tts-1/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/openai/tts-1/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/openai/tts-1/schema-output.json)
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Coding agents
 
-Last updated Sep 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Coding agents send model requests to a provider on your behalf. By pointing the agent at AI Gateway instead of the provider, you observe and control that traffic without changing how you work.
 
@@ -20,22 +20,22 @@ Coding agents send model requests to a provider on your behalf. By pointing the 
 
 Routing a coding agent through AI Gateway gives you:
 
-* **Observability** — view every request, token count, and latency in the dashboard.
-* **Caching** — return [cached responses](https://developers.cloudflare.com/ai-gateway/features/caching/) for repeated prompts.
-* **Rate limiting** — cap request volume with [rate limiting](https://developers.cloudflare.com/ai-gateway/features/rate-limiting/).
-* **Cost tracking** — attribute spend across sessions and models.
-* **Data Loss Prevention** — scan prompts and responses for secrets, credentials, and other sensitive data with [DLP](https://developers.cloudflare.com/ai-gateway/features/dlp/).
+- **Observability** — view every request, token count, and latency in the dashboard.
+- **Caching** — return [cached responses](https://developers.cloudflare.com/ai-gateway/features/caching/) for repeated prompts.
+- **Rate limiting** — cap request volume with [rate limiting](https://developers.cloudflare.com/ai-gateway/features/rate-limiting/).
+- **Cost tracking** — attribute spend across sessions and models.
+- **Data Loss Prevention** — scan prompts and responses for secrets, credentials, and other sensitive data with [DLP](https://developers.cloudflare.com/ai-gateway/features/dlp/).
 
 ## Set up your agent
 
 Follow the setup guide for your coding agent:
 
-* [Claude Code](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/claude-code/)
-* [Claude Desktop](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/claude-desktop/)
-* [GitHub Copilot CLI](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/github-copilot-cli/)
-* [OpenAI Codex](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/openai-codex/)
-* [OpenCode](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/opencode/)
-* [Pi](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/pi/)
+- [Claude Code](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/claude-code/)
+- [Claude Desktop](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/claude-desktop/)
+- [GitHub Copilot CLI](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/github-copilot-cli/)
+- [OpenAI Codex](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/openai-codex/)
+- [OpenCode](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/opencode/)
+- [Pi](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/pi/)
 
 ## Protect sensitive code with DLP
 
@@ -52,8 +52,7 @@ Many coding agents stream responses by default. When DLP response scanning is en
 After you configure a tool, confirm that traffic reaches AI Gateway.
 
 1. Send a prompt from the coding agent.
-2. In the Cloudflare dashboard, go to the **AI Gateway** page.
-[Go to **AI Gateway** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
+2. In the Cloudflare dashboard, go to the **AI Gateway** page. [Go to **AI Gateway** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 3. Select your gateway, then select **Logs**. Confirm that the request appears with its model, token count, and latency.
 
 For more information on logs, refer to [Logging](https://developers.cloudflare.com/ai-gateway/observability/logging/).

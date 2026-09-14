@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Using a dynamic route
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/usage/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/usage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Caution
 
@@ -68,6 +68,8 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
 
 ### Workers
 
+*index.tsts*
+
 ```ts
 export interface Env {
 	AI: Ai;
@@ -98,8 +100,8 @@ export default {
 
 The response from a dynamic route is the same as the response from a model. There is additional metadata used to notify the model and provider used, you can check the following headers
 
-* `cf-aig-model` \- The model used
-* `cf-aig-provider` \- The slug of provider used
+- `cf-aig-model` - The model used
+- `cf-aig-provider` - The slug of provider used
 
 Was this helpful?
 

@@ -1,7 +1,5 @@
 ---
-description: Miniflare will always upgrade Web Socket connections. The Worker must respond
-with a status 101 Switching Protocols response including a webSocket. For
-example, the Worker below implements an echo WebSocket server:
+description: "Miniflare will always upgrade Web Socket connections. The Worker must respond\nwith a status 101 Switching Protocols response including a webSocket. For\nexample, the Worker below implements an echo WebSocket server:"
 title: WebSockets
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -14,10 +12,10 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # WebSockets
 
-Last updated Jan 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/core/web-sockets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jan 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/core/web-sockets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [WebSockets Reference](https://developers.cloudflare.com/workers/runtime-apis/websockets)
-* [Using WebSockets](https://developers.cloudflare.com/workers/examples/websockets/)
+- [WebSockets Reference](https://developers.cloudflare.com/workers/runtime-apis/websockets)
+- [Using WebSockets](https://developers.cloudflare.com/workers/examples/websockets/)
 
 ## Server
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Compliance standards
 
-Last updated Jun 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/compliance-status/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/compliance-status/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Consider the following recommendations on custom [cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/) for when your organization needs to comply with regulatory standards.
 
@@ -26,9 +26,17 @@ Also [enable TLS 1.3](https://developers.cloudflare.com/ssl/edge-certificates/ad
 
 Recommended cipher suites for compliance with the [Payment Card Industry Data Security Standard (PCI DSS) ↗](https://www.pcisecuritystandards.org/standards/pci-dss/). Enhances payment card data security.
 
+<details>
+
+<summary>
+
 Cipher suites list
 
-`AEAD-AES128-GCM-SHA256`[1](#user-content-fn-1), `AEAD-AES256-GCM-SHA384`[2](#user-content-fn-2), `AEAD-CHACHA20-POLY1305-SHA256`[3](#user-content-fn-3), `ECDHE-ECDSA-AES128-GCM-SHA256`, `ECDHE-RSA-AES128-GCM-SHA256`, `ECDHE-ECDSA-AES256-GCM-SHA384`, `ECDHE-RSA-AES256-GCM-SHA384`, `ECDHE-ECDSA-CHACHA20-POLY1305`, `ECDHE-RSA-CHACHA20-POLY1305`
+</summary>
+
+<code>AEAD-AES128-GCM-SHA256</code><sup><a href="#user-content-fn-1">1</a></sup>, <code>AEAD-AES256-GCM-SHA384</code><sup><a href="#user-content-fn-2">2</a></sup>, <code>AEAD-CHACHA20-POLY1305-SHA256</code><sup><a href="#user-content-fn-3">3</a></sup>, <code>ECDHE-ECDSA-AES128-GCM-SHA256</code>, <code>ECDHE-RSA-AES128-GCM-SHA256</code>, <code>ECDHE-ECDSA-AES256-GCM-SHA384</code>, <code>ECDHE-RSA-AES256-GCM-SHA384</code>, <code>ECDHE-ECDSA-CHACHA20-POLY1305</code>, <code>ECDHE-RSA-CHACHA20-POLY1305</code>
+
+</details>
 
 If you are customizing cipher suites via API, refer to [Steps and API examples](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/api/#steps-and-api-examples) for a snippet you can copy with the formatted array.
 
@@ -36,9 +44,17 @@ If you are customizing cipher suites via API, refer to [Steps and API examples](
 
 Recommended cipher suites for compliance with the [Federal Information Processing Standard (140-3) ↗](https://csrc.nist.gov/pubs/fips/140-3/final). Used to approve cryptographic modules.
 
+<details>
+
+<summary>
+
 Cipher suites list
 
-`AES128-GCM-SHA256`, `AES128-SHA`, `AES128-SHA256`, `AES256-SHA`, `AES256-SHA256`, `DES-CBC3-SHA`, `ECDHE-ECDSA-AES128-GCM-SHA256`, `ECDHE-ECDSA-AES128-SHA`, `ECDHE-ECDSA-AES128-SHA256`, `ECDHE-ECDSA-AES256-GCM-SHA384`, `ECDHE-ECDSA-AES256-SHA384`, `ECDHE-RSA-AES128-GCM-SHA256`, `ECDHE-RSA-AES128-SHA`, `ECDHE-RSA-AES128-SHA256`, `ECDHE-RSA-AES256-GCM-SHA384`, `ECDHE-RSA-AES256-SHA`, `ECDHE-RSA-AES256-SHA384`
+</summary>
+
+<code>AES128-GCM-SHA256</code>, <code>AES128-SHA</code>, <code>AES128-SHA256</code>, <code>AES256-SHA</code>, <code>AES256-SHA256</code>, <code>DES-CBC3-SHA</code>, <code>ECDHE-ECDSA-AES128-GCM-SHA256</code>, <code>ECDHE-ECDSA-AES128-SHA</code>, <code>ECDHE-ECDSA-AES128-SHA256</code>, <code>ECDHE-ECDSA-AES256-GCM-SHA384</code>, <code>ECDHE-ECDSA-AES256-SHA384</code>, <code>ECDHE-RSA-AES128-GCM-SHA256</code>, <code>ECDHE-RSA-AES128-SHA</code>, <code>ECDHE-RSA-AES128-SHA256</code>, <code>ECDHE-RSA-AES256-GCM-SHA384</code>, <code>ECDHE-RSA-AES256-SHA</code>, <code>ECDHE-RSA-AES256-SHA384</code>
+
+</details>
 
 If you are customizing cipher suites via API, refer to [Steps and API examples](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/api/#steps-and-api-examples) for a snippet you can copy with the formatted array.
 

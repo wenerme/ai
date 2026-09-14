@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Load Zaraz selectively
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/zaraz/advanced/load-selectively/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/advanced/load-selectively/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can use [Configuration Rules](https://developers.cloudflare.com/rules/configuration-rules/) to load Zaraz selectively on specific URLs or subdomains. Configuration Rules can also be used to block Zaraz from loading based on cookies, IP addresses or anything else related to a request.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Main dashboard
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/network-analytics/understand/main-dashboard/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/network-analytics/understand/main-dashboard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following sections are a guide on the different sections of the main Network Analytics dashboard.
 
@@ -22,13 +22,13 @@ The **All traffic** tab displays global information about layer 3/4 traffic, DNS
 
 The following table contains a summary of what is shown in each tab:
 
-| Tab name                        | For Magic Transit users                                                                                                                                                                                                                                                | For Spectrum users                                                                                                       |
-| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| **All traffic**                 | Traffic dropped by DDoS managed rules, Advanced TCP Protection, Advanced DNS Protection, and Cloudflare Network Firewall, and traffic passed to the origin server.                                                                                                     | Traffic dropped and passed by DDoS managed rules.                                                                        |
-| **DDoS managed rules**          | Traffic dropped and passed by [DDoS managed rules](https://developers.cloudflare.com/ddos-protection/managed-rulesets/).                                                                                                                                               | Traffic dropped and passed by [DDoS managed rules](https://developers.cloudflare.com/ddos-protection/managed-rulesets/). |
-| **TCP Protection**              | Traffic dropped and passed by the [Advanced TCP Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection/) system. Does not include traffic dropped by DDoS managed rules.                                 | N/A                                                                                                                      |
-| **DNS Protection**              | Traffic dropped and passed by the [Advanced DNS Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-dns-protection/) system. Does not include traffic dropped by DDoS managed rules.                                 | N/A                                                                                                                      |
-| **Cloudflare Network Firewall** | Traffic dropped by [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) and traffic passed to the origin server. Does not include traffic dropped by DDoS managed rules, Advanced TCP Protection, or Advanced DNS Protection. | N/A                                                                                                                      |
+| Tab name | For Magic Transit users | For Spectrum users |
+| --- | --- | --- |
+| **All traffic** | Traffic dropped by DDoS managed rules, Advanced TCP Protection, Advanced DNS Protection, and Cloudflare Network Firewall, and traffic passed to the origin server. | Traffic dropped and passed by DDoS managed rules. |
+| **DDoS managed <br>rules** | Traffic dropped and passed by [DDoS managed rules](https://developers.cloudflare.com/ddos-protection/managed-rulesets/). | Traffic dropped and passed by [DDoS managed rules](https://developers.cloudflare.com/ddos-protection/managed-rulesets/). |
+| **TCP <br>Protection** | Traffic dropped and passed by the [Advanced TCP Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection/) system. Does not include traffic dropped by DDoS managed rules. | N/A |
+| **DNS <br>Protection** | Traffic dropped and passed by the [Advanced DNS Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-dns-protection/) system. Does not include traffic dropped by DDoS managed rules. | N/A |
+| **Cloudflare Network Firewall** | Traffic dropped by [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) and traffic passed to the origin server. Does not include traffic dropped by DDoS managed rules, Advanced TCP Protection, or Advanced DNS Protection. | N/A |
 
 Use these tabs to better understand the decisions made by each mitigation system, and which rules are being applied to mitigate attacks.
 
@@ -36,9 +36,9 @@ Note
 
 Network Analytics will not show other traffic, such as:
 
-* Traffic dropped by Spectrum
-* Traffic dropped by the WAF/CDN service
-* Traffic served from cache or from Workers
+- Traffic dropped by Spectrum
+- Traffic dropped by the WAF/CDN service
+- Traffic served from cache or from Workers
 
 ## High-level metrics
 
@@ -46,7 +46,7 @@ The side panels in the Network Analytics page provide a summary of activity over
 
 ![Available high-level metrics in the Network Analytics dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1440,height=602,format=webp/_astro/high-level-metrics.DFUDKbKH.png)
 
-_Note: Labels in this image may reflect a previous product name._
+*Note: Labels in this image may reflect a previous product name.*
 
 Selecting one of the metrics in the sidebar will define the base unit (packets or bits/bytes) for the data displayed in the dashboard.
 
@@ -66,7 +66,7 @@ The total number of attacks is based on unique attack IDs of mitigations issued 
 
 Since the mitigation system may generate several mitigation rules (and therefore several attack IDs) for a single attack, the actual number of attacks may seem higher in some cases.
 
-To obtain the metadata of recently mitigated DDoS attacks, query the [dosdAttackAnalyticsGroups](https://developers.cloudflare.com/analytics/graphql-api/migration-guides/network-analytics-v2/node-reference/#dosdattackanalyticsgroups) GraphQL node.
+To obtain the metadata of recently mitigated DDoS attacks, query the [`dosdAttackAnalyticsGroups`](https://developers.cloudflare.com/analytics/graphql-api/migration-guides/network-analytics-v2/node-reference/#dosdattackanalyticsgroups) GraphQL node.
 
 Note about attack rates
 
@@ -80,15 +80,15 @@ In the main dashboard card you can apply filters to the displayed data.
 
 You can filter by the following parameters:
 
-* Mitigation action taken by Cloudflare
-* Mitigation system that performed the action
-* Source IP, port, ASN, tunnel
-* [Direction](#traffic-direction)
-* Destination IP, port, IP range (description or CIDR of provisioned prefixes), tunnel
-* Source Cloudflare data center and data center country of where the traffic was observed
-* Packet size
-* TCP flag
-* TTL
+- Mitigation action taken by Cloudflare
+- Mitigation system that performed the action
+- Source IP, port, ASN, tunnel
+- [Direction](#traffic-direction)
+- Destination IP, port, IP range (description or CIDR of provisioned prefixes), tunnel
+- Source Cloudflare data center and data center country of where the traffic was observed
+- Packet size
+- TCP flag
+- TTL
 
 Note that the IP Range filter currently has a limitation that only supports filtering /24 IPv4 Ranges and /64 IPv6 Ranges.
 
@@ -98,9 +98,9 @@ Dashboard tabs for [specific mitigation systems](https://developers.cloudflare.c
 
 The available values in the **Direction** filter have the following meaning, from the point of view of a specific customer's network:
 
-* **Ingress**: Incoming traffic from the public Internet (ingress) to the customer's network via Cloudflare's network (for example, through [Magic Transit](https://developers.cloudflare.com/magic-transit/));
-* **Egress**: Outgoing traffic leaving the customer's network through Cloudflare's network to the public Internet (for example, through [Magic Transit deployed with the egress option](https://developers.cloudflare.com/magic-transit/reference/egress/));
-* **Lateral**: Traffic that stayed within the customer's network, routed through Cloudflare's network (for example, traffic between customer office branches or data centers routed through [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)).
+- **Ingress**: Incoming traffic from the public Internet (ingress) to the customer's network via Cloudflare's network (for example, through [Magic Transit](https://developers.cloudflare.com/magic-transit/));
+- **Egress**: Outgoing traffic leaving the customer's network through Cloudflare's network to the public Internet (for example, through [Magic Transit deployed with the egress option](https://developers.cloudflare.com/magic-transit/reference/egress/));
+- **Lateral**: Traffic that stayed within the customer's network, routed through Cloudflare's network (for example, traffic between customer office branches or data centers routed through [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)).
 
 ## Packets summary or Bits summary
 
@@ -110,21 +110,21 @@ Displays a plot of the traffic (in terms of bits or packets) in the selected tim
 
 You can choose one of the following dimensions:
 
-* Action
-* Destination IP
-* Destination IP range
-* Destination port
-* Destination tunnels
-* Mitigation system
-* Source ASN
-* Data center country
-* Source data center
-* Source IP
-* Source port
-* Source tunnels
-* Packet size
-* Protocol
-* TCP flag
+- Action
+- Destination IP
+- Destination IP range
+- Destination port
+- Destination tunnels
+- Mitigation system
+- Source ASN
+- Data center country
+- Source data center
+- Source IP
+- Source port
+- Source tunnels
+- Packet size
+- Protocol
+- TCP flag
 
 Dashboard tabs for [specific mitigation systems](https://developers.cloudflare.com/analytics/network-analytics/understand/main-dashboard/#available-tabs) (DDoS managed rules, Advanced TCP Protection, or Cloudflare Network Firewall) may have additional dimensions.
 

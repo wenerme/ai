@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Debugging
 
-Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/debugging/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/debugging/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide shows you how to debug your Workers tests with Vitest and `@cloudflare/vitest-plugin`.
 

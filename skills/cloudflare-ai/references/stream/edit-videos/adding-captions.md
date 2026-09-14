@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Add captions
 
-Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/edit-videos/adding-captions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/edit-videos/adding-captions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Adding captions and subtitles to your video library.
 
@@ -22,7 +22,7 @@ There are two ways to add captions to a video: generating via AI or uploading a 
 
 To create or modify a caption on a video a [Cloudflare API Token ↗](https://www.cloudflare.com/a/account/my-account) is required.
 
-The `<LANGUAGE_TAG>` must adhere to the [BCP 47 format ↗](http://www.unicode.org/reports/tr35/#Unicode%5FLanguage%5Fand%5FLocale%5FIdentifiers). For convenience, many common language codes are provided [at the bottom of this document](#most-common-language-codes). If the language you are adding is not included in the table, you can find the value through the [The IANA registry ↗](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry), which maintains a list of language codes. To find the value to send, search for the language. Below is an example value from IANA when we look for the value to send for a Turkish subtitle:
+The `<LANGUAGE_TAG>` must adhere to the [BCP 47 format ↗](http://www.unicode.org/reports/tr35/#Unicode_Language_and_Locale_Identifiers). For convenience, many common language codes are provided [at the bottom of this document](#most-common-language-codes). If the language you are adding is not included in the table, you can find the value through the [The IANA registry ↗](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry), which maintains a list of language codes. To find the value to send, search for the language. Below is an example value from IANA when we look for the value to send for a Turkish subtitle:
 
 ```bash
 %%
@@ -46,18 +46,18 @@ A video must be uploaded and in a ready state before captions can be generated. 
 
 Captions can be generated for the following languages:
 
-* `cs` \- Czech
-* `nl` \- Dutch
-* `en` \- English
-* `fr` \- French
-* `de` \- German
-* `it` \- Italian
-* `ja` \- Japanese
-* `ko` \- Korean
-* `pl` \- Polish
-* `pt` \- Portuguese
-* `ru` \- Russian
-* `es` \- Spanish
+- `cs` - Czech
+- `nl` - Dutch
+- `en` - English
+- `fr` - French
+- `de` - German
+- `it` - Italian
+- `ja` - Japanese
+- `ko` - Korean
+- `pl` - Polish
+- `pt` - Portuguese
+- `ru` - Russian
+- `es` - Spanish
 
 When generating captions, generate them for the spoken language in the audio.
 
@@ -128,7 +128,7 @@ Example response:
 ```
 
 The result will provide a `status` denoting the progress of the caption generation.
-There are three statuses: inprogress, ready, and error. Note that (auto-generated) is applied to the label.
+ There are three statuses: inprogress, ready, and error. Note that (auto-generated) is applied to the label.
 
 Once the generated caption is ready, it will automatically appear in the video player and video manifest.
 
@@ -209,7 +209,7 @@ See the full [Workers Stream binding API reference](https://developers.cloudflar
 
 ## List the captions associated with a video
 
-To view captions associated with a video. Note this results list will also include generated captions that are `inprogress`and `error` status:
+To view captions associated with a video. Note this results list will also include generated captions that are `inprogress` and `error` status:
 
 ```bash
 curl -H 'Authorization: Bearer <API_TOKEN>' \
@@ -369,38 +369,38 @@ If there is an entry in `errors` response field, the caption has not been delete
 
 ## Limitations
 
-* A video must be uploaded before a caption can be attached to it. In the following example URLs, the video's ID is referenced as `media_id`.
-* Stream only supports [WebVTT ↗](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT%5FAPI)formatted caption files. If you have a differently formatted caption file, use [a tool to convert your file to WebVTT ↗](https://subtitletools.com/convert-to-vtt-online)prior to uploading it.
-* Videos may include several language captions, but each language must be unique. For example, a video may have English, French, and German captions associated with it, but it cannot have two French captions.
-* Each caption file is limited to 10 MB in size. [Contact support](https://developers.cloudflare.com/support/contacting-cloudflare-support/)if you need to upload a larger file.
+- A video must be uploaded before a caption can be attached to it. In the following example URLs, the video's ID is referenced as `media_id`.
+- Stream only supports [WebVTT ↗](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) formatted caption files. If you have a differently formatted caption file, use [a tool to convert your file to WebVTT ↗](https://subtitletools.com/convert-to-vtt-online) prior to uploading it.
+- Videos may include several language captions, but each language must be unique. For example, a video may have English, French, and German captions associated with it, but it cannot have two French captions.
+- Each caption file is limited to 10 MB in size. [Contact support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) if you need to upload a larger file.
 
 ## Most common language codes
 
-| Language Code | Language         |
-| ------------- | ---------------- |
-| zh            | Mandarin Chinese |
-| hi            | Hindi            |
-| es            | Spanish          |
-| en            | English          |
-| ar            | Arabic           |
-| pt            | Portuguese       |
-| bn            | Bengali          |
-| ru            | Russian          |
-| ja            | Japanese         |
-| de            | German           |
-| pa            | Panjabi          |
-| jv            | Javanese         |
-| ko            | Korean           |
-| vi            | Vietnamese       |
-| fr            | French           |
-| ur            | Urdu             |
-| it            | Italian          |
-| tr            | Turkish          |
-| fa            | Persian          |
-| pl            | Polish           |
-| uk            | Ukrainian        |
-| my            | Burmese          |
-| th            | Thai             |
+| Language Code | Language |
+| --- | --- |
+| zh | Mandarin Chinese |
+| hi | Hindi |
+| es | Spanish |
+| en | English |
+| ar | Arabic |
+| pt | Portuguese |
+| bn | Bengali |
+| ru | Russian |
+| ja | Japanese |
+| de | German |
+| pa | Panjabi |
+| jv | Javanese |
+| ko | Korean |
+| vi | Vietnamese |
+| fr | French |
+| ur | Urdu |
+| it | Italian |
+| tr | Turkish |
+| fa | Persian |
+| pl | Polish |
+| uk | Ukrainian |
+| my | Burmese |
+| th | Thai |
 
 Was this helpful?
 

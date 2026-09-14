@@ -12,17 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create tokens via API
 
-Last updated Aug 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/api/how-to/create-via-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/api/how-to/create-via-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Generate new API tokens on the fly via the API. Before you can do this, you must create an API token in the Cloudflare dashboard that can create subsequent tokens.
 
 Note
 
-To create user-owned API tokens, use the [**Create additional tokens**](https://developers.cloudflare.com/fundamentals/api/reference/template/) template. The **User** \> **API Tokens** \> **Edit** permission is not available in any other template or in the Custom Token builder.
+To create user-owned API tokens, use the [**Create additional tokens**](https://developers.cloudflare.com/fundamentals/api/reference/template/) template. The **User** > **API Tokens** > **Edit** permission is not available in any other template or in the Custom Token builder.
 
 ## Generating the initial token
 
-Before you can use the API, you need to [generate an initial token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) via the Cloudflare dashboard. The required permission depends on the API operation. To grant users access to an account as members, create a token with **Account** \> **Account Settings** \> **Edit**. To create account-owned API tokens, create a token with **Account** \> **Account API Tokens** \> **Edit**. To create user-owned API tokens, use the **Create additional tokens** template.
+Before you can use the API, you need to [generate an initial token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) via the Cloudflare dashboard. The required permission depends on the API operation. To grant users access to an account as members, create a token with **Account** > **Account Settings** > **Edit**. To create account-owned API tokens, create a token with **Account** > **Account API Tokens** > **Edit**. To create user-owned API tokens, use the **Create additional tokens** template.
 
 Warning
 
@@ -44,7 +44,7 @@ To create a token:
 2. Define the restrictions.
 3. Create the token.
 
-### 1\. Define the Access Policy
+### 1. Define the Access Policy
 
 An Access Policy defines what resources the token can act on and what permissions the token has to those resources. This process is similar to how you [create tokens in the Cloudflare dashboard](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
 
@@ -73,12 +73,12 @@ Each token can contain multiple policies.
 ]
 ```
 
-| Field              | Description                                                                                                                                                                                                                         |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| id                 | Unique read-only identifier for the policy generated after creation.                                                                                                                                                                |
-| effect             | Defines whether this policy is allowing or denying access. If only creating one policy, use allow. The evaluation order for policies is as follows: 1\. Explicit DENY Policies; 2\. Explicit ALLOW Policies; 3\. Implicit DENY ALL. |
-| resources          | Defines what resources are allowed to be configured.                                                                                                                                                                                |
-| permission\_groups | Defines what permissions the policy grants to the included resources.                                                                                                                                                               |
+| Field | Description |
+| --- | --- |
+| `id` | Unique read-only identifier for the policy generated after creation. |
+| `effect` | Defines whether this policy is allowing or denying access. If only creating one policy, use `allow`. The evaluation order for policies is as follows: 1. Explicit `DENY` Policies; 2. Explicit `ALLOW` Policies; 3. Implicit `DENY ALL`. |
+| `resources` | Defines what resources are allowed to be configured. |
+| `permission_groups` | Defines what permissions the policy grants to the included resources. |
 
 #### Resources
 
@@ -92,16 +92,16 @@ Fetch each object's ID by calling the appropriate `GET <object>` API. Refer to [
 
 Include a single account or all accounts in a token policy.
 
-* A **single account** is denoted as:`"com.cloudflare.api.account.<ACCOUNT_ID>": "*"`.
-* **All accounts** is denoted as:`"com.cloudflare.api.account.*": "*"`
+- A **single account** is denoted as: `"com.cloudflare.api.account.<ACCOUNT_ID>": "*"`.
+- **All accounts** is denoted as: `"com.cloudflare.api.account.*": "*"`
 
 ##### Zone
 
 Include a **single zone**, **all zones in an account**, or **all zones in all accounts** in a token policy.
 
-* A **single zone** is denoted as:`"com.cloudflare.api.account.zone.<ZONE_ID>": "*"`
-* **All Zones in an account** are denoted as:`"com.cloudflare.api.account.<ACCOUNT_ID>": {"com.cloudflare.api.account.zone.*": "*"}`
-* **All zones in all accounts** is denoted as:`"com.cloudflare.api.account.zone.*": "*"`
+- A **single zone** is denoted as: `"com.cloudflare.api.account.zone.<ZONE_ID>": "*"`
+- **All Zones in an account** are denoted as: `"com.cloudflare.api.account.<ACCOUNT_ID>": {"com.cloudflare.api.account.zone.*": "*"}`
+- **All zones in all accounts** is denoted as: `"com.cloudflare.api.account.zone.*": "*"`
 
 ##### User
 
@@ -111,13 +111,24 @@ For user resources, you can only reference yourself, which is denoted as:`"com.c
 
 Add permission groups to the API token by specifying their `id` values. We recommend using `id` as the key for interacting with Cloudflare APIs; the permission `name` is cosmetic and subject to change. Permission groups are scoped to specific resources (user, account, or zone), so a permission group in a policy will only apply to the resource type it is scoped for.
 
-To fetch all available permission groups and their IDs, use the [List permission groups](https://developers.cloudflare.com/api/resources/user/subresources/tokens/subresources/permission%5Fgroups/methods/list/) endpoint:
+To fetch all available permission groups and their IDs, use the [List permission groups](https://developers.cloudflare.com/api/resources/user/subresources/tokens/subresources/permission_groups/methods/list/) endpoint:
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `API Tokens Write`
-* `API Tokens Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>API Tokens Write</code>
+- <code>API Tokens Read</code>
+
+</details>
+
+*List Token Permission Groupsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/user/tokens/permission_groups" \
@@ -149,7 +160,7 @@ curl "https://api.cloudflare.com/client/v4/user/tokens/permission_groups" \
 }
 ```
 
-### 2\. Define the restrictions
+### 2. Define the restrictions
 
 Set up any limitations on how the token can be used. API tokens allow restrictions for client IP address filtering and TTLs. Refer to [Restrict token use](https://developers.cloudflare.com/fundamentals/api/how-to/restrict-tokens/) for more information.
 
@@ -168,7 +179,7 @@ Limit usage of a token by client IP address filters with the following object:
 
 Each parameter in the `in` and `not_in` objects must be in CIDR notation. For example, use `192.168.0.1/32` to specify a single IP address.
 
-### 3\. Create the token
+### 3. Create the token
 
 Combine the previous information to create a token as in the following example:
 

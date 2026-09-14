@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Add policies
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/add-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/add-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-A root ruleset is the top-level container that holds all your firewall policies. You can check for an existing root ruleset from the dashboard or via the [Account rulesets API](https://developers.cloudflare.com/api/resources/rulesets/methods/list/). If you are a new Magic Transit customer, you may not have a root ruleset created for your account. To view examples for root rulesets, review the [Cloudflare Network Firewall Terraform documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/magic%5Ffirewall%5Fruleset).
+A root ruleset is the top-level container that holds all your firewall policies. You can check for an existing root ruleset from the dashboard or via the [Account rulesets API](https://developers.cloudflare.com/api/resources/rulesets/methods/list/). If you are a new Magic Transit customer, you may not have a root ruleset created for your account. To view examples for root rulesets, review the [Cloudflare Network Firewall Terraform documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/magic_firewall_ruleset).
 
 By default, you can create a maximum of 200 policies. Contact your account team to request a higher limit if needed. We recommend you create lists of IP addresses to reference within policies to streamline policy management.
 
 ## Add a policy
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and go to **Networking** \> **Firewall policies**.
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and go to **Networking** > **Firewall policies**.
 2. Select **Add a policy**.
 3. Fill out the information for your new policy. All existing policies apply to IPv4 traffic only. You can use a [Managed IP List](https://developers.cloudflare.com/waf/tools/lists/managed-lists/#managed-ip-lists) when populating the **Value**.
 4. When you are done, select **Add new policy**.
@@ -35,7 +35,7 @@ To disable an existing policy, from the **Custom policies** tab, set the **Enabl
 
 ## Update a policy
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and go to **Networking** \> **Firewall policies**.
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and go to **Networking** > **Firewall policies**.
 2. Locate the policy you want to edit and select the three dots > **Edit**.
 3. Update the policy with your changes and select **Save**.
 
@@ -113,10 +113,10 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets \
 
 Cloudflare Network Firewall supports [using lists in expressions](https://developers.cloudflare.com/waf/tools/lists/use-in-expressions/) for the `ip.src` and `ip.dst` fields. The supported lists are:
 
-* `$cf.anonymizer` \- Anonymizer proxies
-* `$cf.botnetcc` \- Botnet command and control channel
-* `$cf.malware` \- Sources of malware
-* `$<IP_LIST_NAME>` \- The name of an account-level IP list
+- `$cf.anonymizer` - Anonymizer proxies
+- `$cf.botnetcc` - Botnet command and control channel
+- `$cf.malware` - Sources of malware
+- `$<IP_LIST_NAME>` - The name of an account-level IP list
 
 ```bash
 curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets \

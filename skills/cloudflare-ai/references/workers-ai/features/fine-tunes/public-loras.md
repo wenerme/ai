@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Public LoRA adapters
 
-Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/features/fine-tunes/public-loras/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/fine-tunes/public-loras/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare offers a few public LoRA adapters that can immediately be used for fine-tuned inference. You can try them out immediately via our [playground ↗](https://playground.ai.cloudflare.com).
 
@@ -22,19 +22,30 @@ Note
 
 Have more LoRAs you would like to see? Let us know on [Discord ↗](https://discord.cloudflare.com).
 
-| Name                                                                         | Description                        | Compatible with                                                           |
-| ---------------------------------------------------------------------------- | ---------------------------------- | ------------------------------------------------------------------------- |
-| [cf-public-magicoder ↗](https://huggingface.co/predibase/magicoder)          | Coding tasks in multiple languages | @cf/mistral/mistral-7b-instruct-v0.1 @hf/mistral/mistral-7b-instruct-v0.2 |
-| [cf-public-jigsaw-classification ↗](https://huggingface.co/predibase/jigsaw) | Toxic comment classification       | @cf/mistral/mistral-7b-instruct-v0.1 @hf/mistral/mistral-7b-instruct-v0.2 |
-| [cf-public-cnn-summarization ↗](https://huggingface.co/predibase/cnn)        | Article summarization              | @cf/mistral/mistral-7b-instruct-v0.1 @hf/mistral/mistral-7b-instruct-v0.2 |
+| Name | Description | Compatible with |
+| --- | --- | --- |
+| [cf-public-magicoder ↗](https://huggingface.co/predibase/magicoder) | Coding tasks in multiple languages | `@cf/mistral/mistral-7b-instruct-v0.1` <br> `@hf/mistral/mistral-7b-instruct-v0.2` |
+| [cf-public-jigsaw-classification ↗](https://huggingface.co/predibase/jigsaw) | Toxic comment classification | `@cf/mistral/mistral-7b-instruct-v0.1` <br> `@hf/mistral/mistral-7b-instruct-v0.2` |
+| [cf-public-cnn-summarization ↗](https://huggingface.co/predibase/cnn) | Article summarization | `@cf/mistral/mistral-7b-instruct-v0.1` <br> `@hf/mistral/mistral-7b-instruct-v0.2` |
 
 You can also list these public LoRAs with an API call:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Workers AI Write`
-* `Workers AI Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Workers AI Write</code>
+- <code>Workers AI Read</code>
+
+</details>
+
+*List Public Finetunesbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai/finetunes/public" \

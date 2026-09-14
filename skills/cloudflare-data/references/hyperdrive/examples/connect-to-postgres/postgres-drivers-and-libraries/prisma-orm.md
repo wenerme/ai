@@ -12,18 +12,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Prisma ORM
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/prisma-orm/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/prisma-orm/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Prisma ORM ↗](https://www.prisma.io/docs) is a Node.js and TypeScript ORM with a focus on type safety and developer experience. This example demonstrates how to use Prisma ORM with PostgreSQL via Cloudflare Hyperdrive in a Workers application.
 
 ## Prerequisites
 
-* A Cloudflare account with Workers access
-* A PostgreSQL database (such as [Prisma Postgres ↗](https://www.prisma.io/postgres))
-* A [Hyperdrive configuration to your PostgreSQL database](https://developers.cloudflare.com/hyperdrive/get-started/#3-connect-hyperdrive-to-a-database)
-* An existing [Worker project](https://developers.cloudflare.com/workers/get-started/guide/)
+- A Cloudflare account with Workers access
+- A PostgreSQL database (such as [Prisma Postgres ↗](https://www.prisma.io/postgres))
+- A [Hyperdrive configuration to your PostgreSQL database](https://developers.cloudflare.com/hyperdrive/get-started/#3-connect-hyperdrive-to-a-database)
+- An existing [Worker project](https://developers.cloudflare.com/workers/get-started/guide/)
 
-## 1\. Install Prisma ORM
+## 1. Install Prisma ORM
 
 Install Prisma CLI as a dev dependency:
 
@@ -94,7 +94,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your Wran
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -107,16 +107,16 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your Wran
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
 id = "<your-hyperdrive-id-here>"
 ```
 
-## 2\. Configure Prisma ORM
+## 2. Configure Prisma ORM
 
-### 2.1\. Initialize Prisma
+### 2.1. Initialize Prisma
 
 Initialize Prisma in your application:
 
@@ -126,9 +126,11 @@ npx prisma init
 
 This creates a `prisma` folder with a `schema.prisma` file and an `.env` file.
 
-### 2.2\. Define a schema
+### 2.2. Define a schema
 
 Define your database schema in the `prisma/schema.prisma` file:
+
+*prisma/schema.prismaprisma*
 
 ```prisma
 generator client {
@@ -149,15 +151,19 @@ model User {
 }
 ```
 
-### 2.3\. Set up environment variables
+### 2.3. Set up environment variables
 
 Add your database connection string to the `.env` file created by Prisma:
+
+*.envtxt*
 
 ```txt
 DATABASE_URL="postgres://user:password@host:port/database"
 ```
 
 Add helper scripts to your `package.json`:
+
+*package.jsonjson*
 
 ```json
 "scripts": {
@@ -167,7 +173,7 @@ Add helper scripts to your `package.json`:
 }
 ```
 
-### 2.4\. Generate Prisma Client
+### 2.4. Generate Prisma Client
 
 Generate the Prisma client with driver adapter support:
 
@@ -175,7 +181,7 @@ Generate the Prisma client with driver adapter support:
 npm run generate
 ```
 
-### 2.5\. Run migrations
+### 2.5. Run migrations
 
 Generate and apply the database schema:
 
@@ -185,9 +191,11 @@ npm run migrate
 
 When prompted, provide a name for the migration (for example, `init`).
 
-## 3\. Connect Prisma ORM to Hyperdrive
+## 3. Connect Prisma ORM to Hyperdrive
 
 Use your Hyperdrive configuration when using Prisma ORM. Update your `src/index.ts` file:
+
+*src/index.tsts*
 
 ```ts
 import { PrismaPg } from "@prisma/adapter-pg";
@@ -225,7 +233,7 @@ Note
 
 When using Prisma ORM with Hyperdrive, you must use driver adapters to properly utilize the Hyperdrive connection string. The `@prisma/adapter-pg` driver adapter allows Prisma ORM to work with the `pg` driver and Hyperdrive's connection pooling. This approach provides connection pooling at the network level through Hyperdrive, so you don't need Prisma-specific connection pooling extensions like Prisma Accelerate.
 
-## 4\. Deploy your Worker
+## 4. Deploy your Worker
 
 Deploy your Worker:
 
@@ -235,9 +243,9 @@ npx wrangler deploy
 
 ## Next steps
 
-* Learn more about [How Hyperdrive Works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
-* Refer to the [troubleshooting guide](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) to debug common issues.
-* Understand more about other [storage options](https://developers.cloudflare.com/workers/platform/storage-options/) available to Cloudflare Workers.
+- Learn more about [How Hyperdrive Works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
+- Refer to the [troubleshooting guide](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) to debug common issues.
+- Understand more about other [storage options](https://developers.cloudflare.com/workers/platform/storage-options/) available to Cloudflare Workers.
 
 Was this helpful?
 

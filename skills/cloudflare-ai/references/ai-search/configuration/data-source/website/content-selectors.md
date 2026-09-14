@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Content selectors
 
-Last updated Aug 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/configuration/data-source/website/content-selectors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/data-source/website/content-selectors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Content selectors let you control which parts of a crawled page are indexed. Each entry pairs a URL glob pattern with a CSS selector. When a page URL matches a glob pattern, only the elements matching the corresponding CSS selector, and their descendants, are extracted and converted to Markdown for indexing.
 
@@ -24,8 +24,7 @@ Without content selectors, AI Search applies a default processing pipeline that 
 
 ## Configure in the dashboard
 
-1. Go to the [AI Search ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search) page in the Cloudflare dashboard.
-[Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
+1. Go to the [AI Search ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search) page in the Cloudflare dashboard. [Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
 2. Select your AI Search instance, or select **Create** to create a new one with a **Website** data source.
 3. Under the data source settings, locate the **Content selectors** section.
 4. Select **Add selector**.
@@ -64,10 +63,10 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-sear
   }'
 ```
 
-| Field    | Type   | Description                                                                                                                                                                                                                                                        |
-| -------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| path     | string | Glob pattern to match against the full page URL. Uses the same glob syntax as [path filtering](https://developers.cloudflare.com/ai-search/configuration/indexing/path-filtering/): \* matches within a segment, \*\* crosses directories. Maximum 200 characters. |
-| selector | string | CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including element, class, ID, and attribute selectors. Maximum 200 characters.                                                                               |
+| Field | Type | Description |
+| --- | --- | --- |
+| `path` | string | Glob pattern to match against the full page URL. Uses the same glob syntax as [path filtering](https://developers.cloudflare.com/ai-search/configuration/indexing/path-filtering/): `*` matches within a segment, `**` crosses directories. Maximum 200 characters. |
+| `selector` | string | CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including element, class, ID, and attribute selectors. Maximum 200 characters. |
 
 ## Examples
 
@@ -75,27 +74,27 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-sear
 
 To index only the article body on blog pages and ignore navigation, sidebars, and footers:
 
-| Path           | Selector           |
-| -------------- | ------------------ |
-| \*\*/blog/\*\* | article .post-body |
+| Path | Selector |
+| --- | --- |
+| `**/blog/**` | `article .post-body` |
 
 ### Target documentation content
 
 To index the main content area of a documentation site:
 
-| Path           | Selector      |
-| -------------- | ------------- |
-| \*\*/docs/\*\* | main .content |
+| Path | Selector |
+| --- | --- |
+| `**/docs/**` | `main .content` |
 
 ### Different selectors for different sections
 
 You can define multiple entries to apply different selectors to different parts of your site. The first matching path wins, so place more specific patterns first:
 
-| Path                    | Selector           |
-| ----------------------- | ------------------ |
-| \*\*/blog/releases/\*\* | .release-notes     |
-| \*\*/blog/\*\*          | article .post-body |
-| \*\*/docs/\*\*          | main .content      |
+| Path | Selector |
+| --- | --- |
+| `**/blog/releases/**` | `.release-notes` |
+| `**/blog/**` | `article .post-body` |
+| `**/docs/**` | `main .content` |
 
 In this example, a page at `https://example.com/blog/releases/v2` matches the first pattern and uses the `.release-notes` selector. A page at `https://example.com/blog/my-post` skips the first pattern and matches the second.
 
@@ -105,9 +104,9 @@ If a CSS selector does not match any elements on a page, the resulting Markdown 
 
 ## Interaction with other features
 
-* **Path filtering**: [Path filtering](https://developers.cloudflare.com/ai-search/configuration/indexing/path-filtering/) takes priority over content selectors. Pages excluded by path filters are never crawled, so content selectors do not apply to them.
-* **Rendering mode**: Content selectors apply to the HTML that AI Search receives. For sites that render content with JavaScript, use [Rendered sites](https://developers.cloudflare.com/ai-search/configuration/data-source/website/#rendering-mode) mode so that selectors can target the fully rendered DOM.
-* **Automatic re-indexing**: Updating content selectors triggers a new [sync job](https://developers.cloudflare.com/ai-search/configuration/indexing/) immediately, so changes are applied to all indexed pages.
+- **Path filtering**: [Path filtering](https://developers.cloudflare.com/ai-search/configuration/indexing/path-filtering/) takes priority over content selectors. Pages excluded by path filters are never crawled, so content selectors do not apply to them.
+- **Rendering mode**: Content selectors apply to the HTML that AI Search receives. For sites that render content with JavaScript, use [Rendered sites](https://developers.cloudflare.com/ai-search/configuration/data-source/website/#rendering-mode) mode so that selectors can target the fully rendered DOM.
+- **Automatic re-indexing**: Updating content selectors triggers a new [sync job](https://developers.cloudflare.com/ai-search/configuration/indexing/) immediately, so changes are applied to all indexed pages.
 
 ## Limits
 

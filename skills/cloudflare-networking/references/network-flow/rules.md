@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Rules
 
-Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network-flow/rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-flow/rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Network Flow (formerly Magic Network Monitoring) rules monitor your network traffic for Distributed Denial of Service (DDoS) attacks targeting specific IP addresses or prefixes. When traffic exceeds a rule's threshold or matches a known DDoS attack fingerprint, you receive an alert.
 
@@ -20,11 +20,11 @@ Network Flow (formerly Magic Network Monitoring) rules monitor your network traf
 
 Network Flow supports three rule types:
 
-| Rule Type                                                                                                  | Description                                                                                                                                 | Availability               |
-| ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
-| [Dynamic threshold](https://developers.cloudflare.com/network-flow/rules/dynamic-threshold/) (recommended) | Analyzes your network's traffic patterns over time and automatically adjusts the DDoS threshold (bits or packets) based on traffic history. | API only                   |
-| [Static threshold](https://developers.cloudflare.com/network-flow/rules/static-threshold/)                 | You define a fixed threshold (bits or packets) for DDoS traffic monitoring.                                                                 | API and dashboard          |
-| [sFlow DDoS attack](https://developers.cloudflare.com/network-flow/rules/s-flow-ddos-attack/)              | If you send sFlow data to Cloudflare, you can receive alerts when a specific DDoS attack type is detected in your traffic.                  | API only (sFlow data only) |
+| Rule Type | Description | Availability |
+| --- | --- | --- |
+| [Dynamic threshold](https://developers.cloudflare.com/network-flow/rules/dynamic-threshold/) (recommended) | Analyzes your network's traffic patterns over time and automatically adjusts the DDoS threshold (bits or packets) based on traffic history. | API only |
+| [Static threshold](https://developers.cloudflare.com/network-flow/rules/static-threshold/) | You define a fixed threshold (bits or packets) for DDoS traffic monitoring. | API and dashboard |
+| [sFlow DDoS attack](https://developers.cloudflare.com/network-flow/rules/s-flow-ddos-attack/) | If you send sFlow data to Cloudflare, you can receive alerts when a specific DDoS attack type is detected in your traffic. | API only (sFlow data only) |
 
 ## Create rules in the dashboard
 
@@ -43,28 +43,34 @@ Refer to [Account name](https://developers.cloudflare.com/fundamentals/account/c
 To create a new rule:
 
 1. Go to the **Network flow** page.
-[Go to **Network flow** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/flow-analytics)
-1. Select **Configure Network flow**.
-2. In the **Configure rules** tab, select **Add new rule**.
-3. Fill in the rule fields. For details on each field, refer to [Static threshold rules](https://developers.cloudflare.com/network-flow/rules/static-threshold/).
-4. Select **Create a new rule** when you are finished.
+
+[Go to **Network flow** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/flow-analytics)
+
+2. Select **Configure Network flow**.
+3. In the **Configure rules** tab, select **Add new rule**.
+4. Fill in the rule fields. For details on each field, refer to [Static threshold rules](https://developers.cloudflare.com/network-flow/rules/static-threshold/).
+5. Select **Create a new rule** when you are finished.
 
 ## Edit rules in the dashboard
 
 1. Go to the **Network flow** page.
-[Go to **Network flow** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/flow-analytics)
-1. Select **Configure Network flow**.
-2. In the **Configure rules** tab, find the static threshold rule you want to edit, and select **Edit**.
-3. Edit the appropriate fields. Refer to [Rule configuration fields](https://developers.cloudflare.com/network-flow/rules/static-threshold/#rule-configuration-fields) for more information on what each field does.
-4. Select **Save** when you are finished.
+
+[Go to **Network flow** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/flow-analytics)
+
+2. Select **Configure Network flow**.
+3. In the **Configure rules** tab, find the static threshold rule you want to edit, and select **Edit**.
+4. Edit the appropriate fields. Refer to [Rule configuration fields](https://developers.cloudflare.com/network-flow/rules/static-threshold/#rule-configuration-fields) for more information on what each field does.
+5. Select **Save** when you are finished.
 
 ## Delete rules in the dashboard
 
 1. Go to the **Network flow** page.
-[Go to **Network flow** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/flow-analytics)
-1. Select **Configure Network flow**.
-2. In the **Configure rules** tab, find the static threshold rule you want to delete, and select **Delete**.
-3. Select **I understand that deleting a rule is permanent**, and select **Delete** again.
+
+[Go to **Network flow** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/flow-analytics)
+
+2. Select **Configure Network flow**.
+3. In the **Configure rules** tab, find the static threshold rule you want to delete, and select **Delete**.
+4. Select **I understand that deleting a rule is permanent**, and select **Delete** again.
 
 ## Common settings that apply to all rule types
 
@@ -82,25 +88,25 @@ Webhook, PagerDuty, and email notifications are sent following an auto-advertise
 
 You will receive the status of the advertisement for each prefix with the following available statuses:
 
-* **Advertised**: The prefix was successfully advertised.
-* **Already Advertised**: The prefix was advertised prior to the auto advertisement attempt.
-* **Delayed**: The prefix cannot currently be advertised but will attempt advertisement. After the prefix can be advertised, a new notification is sent with the updated status.
-* **Locked**: The prefix is locked and cannot be advertised.
-* **Could not Advertise**: Cloudflare was unable to advertise the prefix. This status can occur for multiple reasons, but usually occurs when you are not allowed to advertise a prefix.
-* **Error**: A general error occurred during prefix advertisement.
+- **Advertised**: The prefix was successfully advertised.
+- **Already Advertised**: The prefix was advertised prior to the auto advertisement attempt.
+- **Delayed**: The prefix cannot currently be advertised but will attempt advertisement. After the prefix can be advertised, a new notification is sent with the updated status.
+- **Locked**: The prefix is locked and cannot be advertised.
+- **Could not Advertise**: Cloudflare was unable to advertise the prefix. This status can occur for multiple reasons, but usually occurs when you are not allowed to advertise a prefix.
+- **Error**: A general error occurred during prefix advertisement.
 
 ### Rule IP prefixes
 
 Each rule must include one or more IP prefixes. All prefixes in a rule are evaluated as aggregate traffic — their combined volume is measured against the threshold.
 
-* To alert on the **combined** traffic of multiple prefixes, add them to the same rule.
-* To alert on **individual** prefix traffic, create a separate rule for each prefix.
+- To alert on the **combined** traffic of multiple prefixes, add them to the same rule.
+- To alert on **individual** prefix traffic, create a separate rule for each prefix.
 
 #### Rule IP prefixes example
 
 In the following example, the rule triggers when the **combined** packet traffic of `192.168.0.0/24` and `172.118.0.0/24` exceeds `10000` packets. If Auto-Advertisement is enabled, Cloudflare advertises both prefixes when the rule triggers.
 
-You can also [configure rule IP prefixes at scale using the API](https://developers.cloudflare.com/api/resources/magic%5Fnetwork%5Fmonitoring/subresources/rules/).
+You can also [configure rule IP prefixes at scale using the API](https://developers.cloudflare.com/api/resources/magic_network_monitoring/subresources/rules/).
 
 ```json
 {

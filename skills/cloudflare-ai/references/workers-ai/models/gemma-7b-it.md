@@ -18,24 +18,24 @@ Beta
 
 Text Generation • Google
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/gemma-7b-it/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/gemma-7b-it/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@hf/google/gemma-7b-it`
 
-* Cloudflare-hosted
-* LoRA
-* Deprecated
+- Cloudflare-hosted
+- LoRA
+- Deprecated
 
 Gemma is a family of lightweight, state-of-the-art open models from Google, built from the same research and technology used to create the Gemini models. They are text-to-text, decoder-only large language models, available in English, with open weights, pre-trained variants, and instruction-tuned variants.
 
-| Model Info                                                                          |                                             |
-| ----------------------------------------------------------------------------------- | ------------------------------------------- |
-| Deprecated                                                                          | 5/30/2026                                   |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 8,192 tokens                                |
-| Terms and License                                                                   | [link ↗](https://ai.google.dev/gemma/terms) |
-| More information                                                                    | [link ↗](https://ai.google.dev/gemma/docs)  |
-| LoRA                                                                                | Yes                                         |
-| Beta                                                                                | Yes                                         |
+| Model Info | |
+| --- | --- |
+| Deprecated | 5/30/2026 |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 8,192 tokens |
+| Terms and License | [link ↗](https://ai.google.dev/gemma/terms) |
+| More information | [link ↗](https://ai.google.dev/gemma/docs) |
+| LoRA | Yes |
+| Beta | Yes |
 
 ## Playground
 
@@ -46,7 +46,6 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 ## Usage
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -75,7 +74,6 @@ export default {
 ```
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -98,7 +96,6 @@ export default {
 ```
 
 ```py
-
 import os
 import requests
 
@@ -121,7 +118,6 @@ print(result)
 ```
 
 ```sh
-
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@hf/google/gemma-7b-it \
   -X POST \
   -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
@@ -182,47 +178,59 @@ repetition\_penalty
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2Decreases the likelihood of the model repeating the same lines verbatim.
+`number`minimum: -2maximum: 2Decreases the likelihood of the model repeating the same lines verbatim.
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2Increases the likelihood of the model introducing new topics.
+`number`minimum: -2maximum: 2Increases the likelihood of the model introducing new topics.
 
 ### Output
 
-Synchronous — Send a request and receive a complete response
+<details>
+
+<summary>Synchronous — Send a request and receive a complete response</summary>
+
+
 
 response
 
-`string`The generated text response from the model
+<code>string</code>The generated text response from the model
 
 ▶usage{}
 
-`object`Usage statistics for the inference request
+<code>object</code>Usage statistics for the inference request
 
-▶tool\_calls\[\]
+▶tool\_calls\[]
 
-`array`An array of tool calls requests made during the response generation
+<code>array</code>An array of tool calls requests made during the response generation
 
-Streaming — Send a request with \`stream: true\` and receive server-sent events
+</details>
+
+<details>
+
+<summary>Streaming — Send a request with `stream: true` and receive server-sent events</summary>
+
+
 
 type
 
-`string`
+<code>string</code>
 
 format
 
-`binary`
+<code>binary</code>
+
+</details>
 
 ## API Schemas (Raw)
 
-SynchronousInput
+SynchronousInput [Open](https://developers.cloudflare.com/workers-ai/models/gemma-7b-it/sync-input.json) [Download](https://developers.cloudflare.com/workers-ai/models/gemma-7b-it/sync-input.json)
 
-SynchronousOutput
+SynchronousOutput [Open](https://developers.cloudflare.com/workers-ai/models/gemma-7b-it/sync-output.json) [Download](https://developers.cloudflare.com/workers-ai/models/gemma-7b-it/sync-output.json)
 
-StreamingInput
+StreamingInput [Open](https://developers.cloudflare.com/workers-ai/models/gemma-7b-it/streaming-input.json) [Download](https://developers.cloudflare.com/workers-ai/models/gemma-7b-it/streaming-input.json)
 
-StreamingOutput
+StreamingOutput [Open](https://developers.cloudflare.com/workers-ai/models/gemma-7b-it/streaming-output.json) [Download](https://developers.cloudflare.com/workers-ai/models/gemma-7b-it/streaming-output.json)
 
 Was this helpful?
 

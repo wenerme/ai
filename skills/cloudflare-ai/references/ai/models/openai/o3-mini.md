@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • OpenAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/o3-mini/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/openai/o3-mini/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `openai/o3-mini`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 o3-mini is the lightweight, low-cost reasoning variant of o3, well suited to quick analytical tasks at scale.
 
-| Model Info                                                                          |                                                                                                                  |
-| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 200,000 tokens                                                                                                   |
-| Terms and License                                                                   | [link ↗](https://openai.com/policies/)                                                                           |
-| More information                                                                    | [link ↗](https://openai.com/)                                                                                    |
-| Zero data retention                                                                 | Yes                                                                                                              |
-| Request formats                                                                     | Responses, Chat Completions                                                                                      |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/o3-mini) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 200,000 tokens |
+| Terms and License | [link ↗](https://openai.com/policies/) |
+| More information | [link ↗](https://openai.com/) |
+| Zero data retention | Yes |
+| Request formats | Responses, Chat Completions |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/o3-mini) |
 
 ## Usage
 
@@ -59,6 +59,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 There are a few ways people count the laws of thermodynamics, but a common approach (especially in basic texts) is to focus on these three:
 
 1. First Law of Thermodynamics (Law of Energy Conservation)
@@ -73,6 +74,7 @@ There are a few ways people count the laws of thermodynamics, but a common appro
 Note: There is also the Zeroth Law of Thermodynamics, which is sometimes considered foundational. It states that if two systems are each in thermal equilibrium with a third system, then they are in thermal equilibrium with each other. This law is crucial in defining temperature but is not always numbered among the “three” if one starts counting from the first law.
 
 These laws together form the basis of classical thermodynamics, helping us understand energy flow, heat transfer, and the directionality of physical processes.
+```
 
 ```json
 {
@@ -117,7 +119,11 @@ These laws together form the basis of classical thermodynamics, helping us under
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -151,6 +157,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 To read a JSON file in Python, you can use the built-in json module. This module provides methods for encoding and decoding JSON data. Typically, you'll want to use the json.load() function to read and parse JSON data from a file. Here’s a simple step-by-step example:
 
 1. Import the json module.
@@ -177,6 +184,7 @@ Explanation:
 • The resulting data is stored in the variable data, which you can then work with as needed.
 
 If you have any questions or need further assistance, feel free to ask!
+```
 
 ```json
 {
@@ -219,7 +227,13 @@ If you have any questions or need further assistance, feel free to ask!
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -267,6 +281,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Great! When planning a road trip along the scenic coast (California's Highway 1), here are some must-see stops between San Francisco and Los Angeles:
 
 1. Santa Cruz:
@@ -303,6 +318,7 @@ Some additional tips:
 • Pack some snacks and water, as some stretches between stops can be remote.
 
 Would you like more detailed itineraries for any of these stops, or do you have specific interests (like hiking, dining, or cultural attractions) that we should highlight?
+```
 
 ```json
 {
@@ -345,7 +361,13 @@ Would you like more detailed itineraries for any of these stops, or do you have 
 }
 ```
 
-**Creative Writing** — Longer completion for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Longer completion for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -379,9 +401,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Detective Elena Marquez stood motionless in the dim glow of the abandoned warehouse, her eyes fixated on a peculiar object half-buried in layers of dust and cobwebs. Amidst scattered papers and defaced photographs, the unusual clue—a small porcelain figurine with an ethereal, almost luminescent crack running down its side—seemed to beckon her closer. Its delicate features, strangely out of place in this grim setting, whispered secrets of a long-forgotten past and hinted at connections far deeper than any ordinary case.
 
 As she carefully lifted the figurine with gloved hands, Elena noted an inscription faintly etched along its base, its characters reminiscent of an undiscovered language. The artifact pulsed with an energy that both unnerved and fascinated her, a silent promise that solving its mystery might unravel the threads of a labyrinthine conspiracy. In that hushed moment, the detective realized that this was no random piece of debris—it was an intentional breadcrumb leading to a truth hidden beneath layers of time and deceit.
+```
 
 ```json
 {
@@ -424,7 +448,13 @@ As she carefully lifted the figurine with gloved hands, Elena noted an inscripti
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -457,6 +487,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Recursion is a technique in programming where a function calls itself to solve a problem. The function breaks the problem into smaller, similar subproblems until it reaches a simple case that can be solved directly—this is known as the base case. Once the base case is reached, the recursion stops, and the solutions to the smaller subproblems are combined to solve the original problem.
 
 A simple example is calculating the factorial of a number. The factorial of a non-negative integer n (written as n!) is defined as:
@@ -490,6 +521,7 @@ Working back up:
 Thus, 3! equals 6.
 
 This example illustrates how recursion solves a problem by simplifying it step by step until it reaches a solution.
+```
 
 ```json
 [
@@ -7608,6 +7640,8 @@ This example illustrates how recursion solves a problem by simplifying it step b
 ]
 ```
 
+</details>
+
 ## Parameters
 
 Schema variant
@@ -7638,13 +7672,11 @@ stream
 
 `boolean`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
-
-``
 
 ▶text{}
 
@@ -7654,7 +7686,7 @@ tool\_choice
 
 `object`
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -7676,11 +7708,11 @@ top\_p
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 stream
 
@@ -7690,19 +7722,15 @@ stream
 
 `object`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
 
-``
-
 response\_format
 
-``
-
-▶modalities\[\]
+▶modalities\[]
 
 `array`
 
@@ -7726,7 +7754,7 @@ model
 
 `string`
 
-▶output\[\]
+▶output\[]
 
 `array`
 
@@ -7758,7 +7786,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -7768,9 +7796,9 @@ model
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/openai/o3-mini/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/openai/o3-mini/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/openai/o3-mini/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/openai/o3-mini/schema-output.json)
 
 Was this helpful?
 

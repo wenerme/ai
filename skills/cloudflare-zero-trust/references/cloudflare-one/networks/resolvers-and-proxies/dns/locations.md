@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Locations
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 DNS locations are a collection of DNS endpoints which can be mapped to physical entities such as offices, homes, or data centers.
 
@@ -22,21 +22,22 @@ The fastest way to start filtering DNS queries from a location is by changing th
 
 To add a DNS location to Gateway:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Resolvers & Proxies** \> **DNS locations**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Networks** > **Resolvers & Proxies** > **DNS locations**.
 2. Select **Add a location**.
 3. Choose a name for your DNS location.
 4. Choose at least one [DNS endpoint](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/#dns-endpoints) to resolve your organization's DNS queries.
 5. (Optional) Toggle the following settings:
-  * **Enable EDNS client subnet** sends a user's IP geolocation to authoritative DNS nameservers. [EDNS Client Subnet (ECS)](https://developers.cloudflare.com/cloudflare-one/glossary/?term=ecs) helps reduce latency by routing the user to the closest origin server. Cloudflare enables EDNS in a privacy preserving way by not sending the user's exact IP address but rather the first `/24` range of the larger range that contains their IP address. This `/24` range will share the same geographic location as the user's exact IP address.
-  * **Set as Default DNS Location** sets this location as the default DoH endpoint for DNS queries.
+   - **Enable EDNS client subnet** sends a user's IP geolocation to authoritative DNS nameservers. [EDNS Client Subnet (ECS)](https://developers.cloudflare.com/cloudflare-one/glossary/?term=ecs) helps reduce latency by routing the user to the closest origin server. Cloudflare enables EDNS in a privacy preserving way by not sending the user's exact IP address but rather the first `/24` range of the larger range that contains their IP address. This `/24` range will share the same geographic location as the user's exact IP address.
+   - **Set as Default DNS Location** sets this location as the default DoH endpoint for DNS queries.
 6. Select **Continue**.
 7. (Optional) Turn on source IP filtering for your configured endpoints, then add any source IPv4/IPv6 addresses to validate.
-  * Endpoint authentication is required for standard IPv4 addresses and optional for dedicated IPv4 addresses.
-  * **DoH endpoint filtering & authentication** lets you restrict DNS resolution to only valid identities or user tokens in addition to IPv4/IPv6 addresses.
+   - Endpoint authentication is required for standard IPv4 addresses and optional for dedicated IPv4 addresses.
+   - **DoH endpoint filtering & authentication** lets you restrict DNS resolution to only valid identities or user tokens in addition to IPv4/IPv6 addresses.
 8. Select **Continue**.
 9. Review the settings for your DNS location, then choose **Done**.
-1. Change the DNS resolvers on your router, browser, or OS by following the setup instructions in the UI.
-2. Select **Go to DNS Location**. Your location will appear in your list of locations.
+
+10. Change the DNS resolvers on your router, browser, or OS by following the setup instructions in the UI.
+11. Select **Go to DNS Location**. Your location will appear in your list of locations.
 
 You can now apply [DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/) to your location using the [Location selector](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/#location).
 
@@ -48,13 +49,13 @@ Cloudflare will prefill the [**Source IPv4 Address**](https://developers.cloudfl
 
 You do not need to configure the IPv4 DNS endpoint if:
 
-* Your network only uses IPv6.
-* Your users will send all DNS requests from this location using [DNS over HTTPS](#dns-over-https-doh) via a browser.
-* You will deploy the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/).
+- Your network only uses IPv6.
+- Your users will send all DNS requests from this location using [DNS over HTTPS](#dns-over-https-doh) via a browser.
+- You will deploy the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/).
 
 Your IPv4 address is taken error
 
-When you try to configure a DNS location over IPv4, Gateway may display a **Your source IPv4 address is taken** error. This may mean someone else in the same network configured Gateway before you did. If your network supports IPv6, you can still use Gateway's DNS filtering by sending DNS queries over IPv6\. You can also use the DNS over HTTPS hostname to send queries using a DNS over HTTPS client.
+When you try to configure a DNS location over IPv4, Gateway may display a **Your source IPv4 address is taken** error. This may mean someone else in the same network configured Gateway before you did. If your network supports IPv6, you can still use Gateway's DNS filtering by sending DNS queries over IPv6. You can also use the DNS over HTTPS hostname to send queries using a DNS over HTTPS client.
 
 If you think someone else is wrongfully using this IPv4 address, [contact Cloudflare support](https://developers.cloudflare.com/support/contacting-cloudflare-support/#getting-help-with-an-issue).
 
@@ -74,18 +75,18 @@ Gateway requires a DoH endpoint for default DNS locations. For more information,
 
 Secure DNS locations provide additional protection against malicious domains for use in services such as [protective DNS (PDNS)](https://developers.cloudflare.com/reference-architecture/diagrams/sase/gateway-for-protective-dns/). For a DNS location to be considered secure, Gateway requires that:
 
-* Your IPv4 and IPv6 endpoints use your [BYOIP addresses](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/dns-resolver-ips/#bring-your-own-dns-resolver-ip) (if any).
-* [Source network filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) is configured for your IPv4, IPv6, and DoT endpoints.
-* Source network filtering or token authentication are configured for your DoH endpoints.
-* Any enabled endpoints for a DNS location meet security permissions.
+- Your IPv4 and IPv6 endpoints use your [BYOIP addresses](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/dns-resolver-ips/#bring-your-own-dns-resolver-ip) (if any).
+- [Source network filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) is configured for your IPv4, IPv6, and DoT endpoints.
+- Source network filtering or token authentication are configured for your DoH endpoints.
+- Any enabled endpoints for a DNS location meet security permissions.
 
 You can assign users the [**Cloudflare Zero Trust DNS Locations Write** role](https://developers.cloudflare.com/cloudflare-one/roles-permissions/#zero-trust-roles) to grant them the permission to create and edit secure DNS locations. To allow users to view locations, you must also assign the **Cloudflare Zero Trust Read Only** role. Users with these roles can view any DNS location, but can only create or edit secure locations.
 
 Roles that supersede **Cloudflare Zero Trust DNS Locations Write** include:
 
-* Cloudflare Gateway
-* Cloudflare Zero Trust
-* Super Administrator
+- Cloudflare Gateway
+- Cloudflare Zero Trust
+- Super Administrator
 
 ## Limitations
 

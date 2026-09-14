@@ -12,34 +12,32 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Python SDK
 
-Last updated Jul 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/get-started/python/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/get-started/python/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide walks you through creating an AI Search instance, uploading content, and querying it from a Python application using the [Cloudflare Python SDK ↗](https://github.com/cloudflare/cloudflare-python).
 
 ## Prerequisites
 
-* [Python ↗](https://www.python.org/downloads/) 3.8 or later.
-* Your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
+- [Python ↗](https://www.python.org/downloads/) 3.8 or later.
+- Your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
 
 This guide uses the `default` [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/), which exists automatically on every account. To group instances into your own namespace, create one with `client.aisearch.namespaces.create()`.
 
-## 1\. Create an API token
+## 1. Create an API token
 
 You need an API token with **AI Search:Edit** and **AI Search:Run** permissions.
 
-1. In the Cloudflare dashboard, go to **My Profile** \> **API Tokens**.
-[Go to **API Tokens** ↗](https://dash.cloudflare.com/profile/api-tokens)
+1. In the Cloudflare dashboard, go to **My Profile** > **API Tokens**. [Go to **API Tokens** ↗](https://dash.cloudflare.com/profile/api-tokens)
 2. Select **Create Token**.
 3. Select **Create Custom Token**.
 4. Enter a **Token name**, for example `AI Search Python`.
 5. Under **Permissions**, add two permissions:
-
-  * **Account** \> **AI Search:Edit**
-  * **Account** \> **AI Search:Run**
+   - **Account** > **AI Search:Edit**
+   - **Account** > **AI Search:Run**
 6. Select **Continue to summary**, then select **Create Token**.
 7. Copy and save the token value. This is your `API_TOKEN`.
 
-## 2\. Set up your Python environment
+## 2. Set up your Python environment
 
 Create a project directory and a virtual environment to isolate your dependencies.
 
@@ -51,7 +49,7 @@ source .venv/bin/activate
 
 On Windows, activate the virtual environment with `.venv\Scripts\activate` instead.
 
-## 3\. Install the Cloudflare Python SDK
+## 3. Install the Cloudflare Python SDK
 
 Install the official `cloudflare` package:
 
@@ -59,7 +57,7 @@ Install the official `cloudflare` package:
 pip install cloudflare
 ```
 
-## 4\. Set your credentials
+## 4. Set your credentials
 
 Export your account ID and API token as environment variables.
 
@@ -68,9 +66,11 @@ export CLOUDFLARE_ACCOUNT_ID="<ACCOUNT_ID>"
 export CLOUDFLARE_API_TOKEN="<API_TOKEN>"
 ```
 
-## 5\. Create an AI Search instance
+## 5. Create an AI Search instance
 
 Create a file named `quickstart.py`. The following code sets up a client and creates an instance named `my-instance` in the `default` namespace. Because no data source is specified, the instance uses [built-in storage](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/), so you can upload files to it directly.
+
+*quickstart.pypython*
 
 ```python
 import os
@@ -93,9 +93,11 @@ Note
 
 Creating an instance is a one-time action. If you run the script again, remove this step, because an instance name must be unique within a namespace.
 
-## 6\. Upload content
+## 6. Upload content
 
 Add the following to `quickstart.py` to upload a document. Setting `wait_for_completion` to `True` waits for indexing before returning so the file is ready to search. If indexing is still finishing, `item.status` may be `running`; the file continues indexing in the background and becomes searchable shortly after.
+
+*quickstart.pypython*
 
 ```python
 item = client.aisearch.namespaces.instances.items.upload(
@@ -115,9 +117,11 @@ item = client.aisearch.namespaces.instances.items.upload(
 print(f"Uploaded item status: {item.status}")
 ```
 
-## 7\. Search your instance
+## 7. Search your instance
 
 Add the following to `quickstart.py` to run a query against your indexed content.
+
+*quickstart.pypython*
 
 ```python
 results = client.aisearch.namespaces.instances.search(

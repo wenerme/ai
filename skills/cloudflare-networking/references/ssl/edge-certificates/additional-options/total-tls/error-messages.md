@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Error messages
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/error-messages/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/error-messages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-To help avoid [ERR\_SSL\_VERSION\_OR\_CIPHER\_MISMATCH](https://developers.cloudflare.com/ssl/troubleshooting/version-cipher-mismatch/) errors, Cloudflare automatically shows an error message - `This hostname is not covered by a certificate` \- on proxied DNS records not covered by a TLS certificate.
+To help avoid [`ERR_SSL_VERSION_OR_CIPHER_MISMATCH`](https://developers.cloudflare.com/ssl/troubleshooting/version-cipher-mismatch/) errors, Cloudflare automatically shows an error message - `This hostname is not covered by a certificate` - on proxied DNS records not covered by a TLS certificate.
 
 ## Pending domains
 
-If you recently [added your domain](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) to Cloudflare - meaning that your zone is in a [pending state](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/) \- you can often ignore this warning.
+If you recently [added your domain](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) to Cloudflare - meaning that your zone is in a [pending state](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/) - you can often ignore this warning.
 
 Once most domains becomes **Active**, Cloudflare will automatically issue a Universal SSL certificate, which will provide SSL/TLS coverage and remove the warning message.
 
@@ -32,19 +32,19 @@ If your zone is already active on Cloudflare, this warning identifies subdomains
 
 By default, Cloudflare [Universal SSL certificates](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) only cover your apex domain and one level of subdomain.
 
-| Hostname                 | Covered by Universal certificate? |
-| ------------------------ | --------------------------------- |
-| example.com              | Yes                               |
-| www.example.com          | Yes                               |
-| docs.example.com         | Yes                               |
-| dev.docs.example.com     | No                                |
-| test.dev.api.example.com | No                                |
+| Hostname | Covered by Universal certificate? |
+| --- | --- |
+| `example.com` | Yes |
+| `www.example.com` | Yes |
+| `docs.example.com` | Yes |
+| `dev.docs.example.com` | No |
+| `test.dev.api.example.com` | No |
 
 To prevent insecure connections on a multi-level subdomain, do one of the following:
 
-* Enable [Total TLS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/), which automatically issues individual certificates to your proxied hostnames not covered by a Universal certificate.
-* Order an [Advanced Certificate](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/) covering the subdomain.
-* Upload a [Custom Certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/) covering the subdomain.
+- Enable [Total TLS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/), which automatically issues individual certificates to your proxied hostnames not covered by a Universal certificate.
+- Order an [Advanced Certificate](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/) covering the subdomain.
+- Upload a [Custom Certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/) covering the subdomain.
 
 If none of these solutions work, you could also remove the multi-level subdomain.
 

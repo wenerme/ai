@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Hyperdrive (Postgres & MySQL)
 
-Last updated Jun 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Turn your existing regional database into a globally distributed database.
 

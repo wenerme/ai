@@ -8,12 +8,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.hostname.metadata
 
-`cf.hostname.metadata` `String`
+`cf.hostname.metadata``String`
 
 Returns the string representation of the per-hostname [custom metadata](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/custom-metadata/) JSON object set by SSL for SaaS customers.
 
 Categories:
-* Request
+- Request
 
 Was this helpful?
 

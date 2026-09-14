@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Security model
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/concepts/security/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/concepts/security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Sandbox SDK is built on [Containers](https://developers.cloudflare.com/containers/), which run each sandbox in its own VM for strong isolation.
 
@@ -20,10 +20,10 @@ The Sandbox SDK is built on [Containers](https://developers.cloudflare.com/conta
 
 Each sandbox runs in a separate VM, providing complete isolation:
 
-* **Filesystem isolation** \- Sandboxes cannot access other sandboxes' files
-* **Process isolation** \- Processes in one sandbox cannot see or affect others
-* **Network isolation** \- Sandboxes have separate network stacks
-* **Resource limits** \- CPU, memory, and disk quotas are enforced per sandbox
+- **Filesystem isolation** - Sandboxes cannot access other sandboxes' files
+- **Process isolation** - Processes in one sandbox cannot see or affect others
+- **Network isolation** - Sandboxes have separate network stacks
+- **Resource limits** - CPU, memory, and disk quotas are enforced per sandbox
 
 For complete security details about the underlying container platform, see [Containers architecture](https://developers.cloudflare.com/containers/concepts/architecture/).
 
@@ -31,9 +31,9 @@ For complete security details about the underlying container platform, see [Cont
 
 All code within a single sandbox shares resources:
 
-* **Filesystem** \- All processes see the same files
-* **Processes** \- All sessions can see all processes
-* **Network** \- Processes can communicate via localhost
+- **Filesystem** - All processes see the same files
+- **Processes** - All sessions can see all processes
+- **Network** - Processes can communicate via localhost
 
 For complete isolation, use separate sandboxes per user:
 
@@ -172,16 +172,16 @@ This pattern is useful when accessing GitHub for private repository operations, 
 
 ## What the SDK protects against
 
-* Sandbox-to-sandbox access (VM isolation)
-* Resource exhaustion (enforced quotas)
-* Container escapes (VM-based isolation)
+- Sandbox-to-sandbox access (VM isolation)
+- Resource exhaustion (enforced quotas)
+- Container escapes (VM-based isolation)
 
 ## What you must implement
 
-* Authentication and authorization
-* Input validation and sanitization
-* Rate limiting
-* Application-level security (SQL injection, XSS, etc.)
+- Authentication and authorization
+- Input validation and sanitization
+- Rate limiting
+- Application-level security (SQL injection, XSS, etc.)
 
 ## Best practices
 
@@ -219,8 +219,8 @@ try {
 
 ## Related resources
 
-* [Containers architecture](https://developers.cloudflare.com/containers/concepts/architecture/) \- Underlying platform security
-* [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) \- Resource management
+- [Containers architecture](https://developers.cloudflare.com/containers/concepts/architecture/) - Underlying platform security
+- [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) - Resource management
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Common API calls
 
-Last updated Jun 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/examples/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following sections contain example requests for common API calls. For a list of available API endpoints, refer to [Endpoints](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/#endpoints).
 
@@ -20,10 +20,14 @@ The following sections contain example requests for common API calls. For a list
 
 This example fetches all Programmable Flow Protection programs in the account.
 
+*Requestbash*
+
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/programs" \
 --header "Authorization: Bearer <API_TOKEN>"
 ```
+
+*Responsejson*
 
 ```json
 {
@@ -48,6 +52,8 @@ This example uploads a new eBPF program written in C. The program source code is
 
 Include the optional `X-Program-Name` header to specify a human-readable program name. If omitted, the API generates a UUID as the program name.
 
+*Requestbash*
+
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/programs" \
 --header "Authorization: Bearer <API_TOKEN>" \
@@ -55,6 +61,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programma
 --header "X-Program-Name: my-rate-limiter" \
 --data-binary "@/path/to/program.c"
 ```
+
+*Responsejson*
 
 ```json
 {
@@ -72,6 +80,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programma
 ```
 
 If the program fails compilation or verification, the API returns a detailed error message:
+
+*Example error responsejson*
 
 ```json
 {
@@ -91,6 +101,8 @@ If the program fails compilation or verification, the API returns a detailed err
 
 This example updates an existing program with new source code. You can update a program even if it is currently in use by one or more rules. If the new program fails compilation or verification, the update fails and the existing program remains active.
 
+*Requestbash*
+
 ```bash
 curl --request PATCH \
 "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/programs/{program_id}" \
@@ -98,6 +110,8 @@ curl --request PATCH \
 --header "Content-Type: text/plain" \
 --data-binary "@/path/to/updated-program.c"
 ```
+
+*Responsejson*
 
 ```json
 {
@@ -118,11 +132,15 @@ curl --request PATCH \
 
 This example deletes a program. You cannot delete a program that is currently referenced by an active rule.
 
+*Requestbash*
+
 ```bash
 curl --request DELETE \
 "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/programs/{program_id}" \
 --header "Authorization: Bearer <API_TOKEN>"
 ```
+
+*Responsejson*
 
 ```json
 {
@@ -137,10 +155,14 @@ curl --request DELETE \
 
 This example fetches all Programmable Flow Protection rules in the account.
 
+*Requestbash*
+
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/rules" \
 --header "Authorization: Bearer <API_TOKEN>"
 ```
+
+*Responsejson*
 
 ```json
 {
@@ -166,6 +188,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programma
 
 This example creates a Programmable Flow Protection rule with a global scope in monitoring mode.
 
+*Requestbash*
+
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/rules" \
 --header "Authorization: Bearer <API_TOKEN>" \
@@ -177,6 +201,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programma
   "mode": "monitoring"
 }'
 ```
+
+*Responsejson*
 
 ```json
 {
@@ -202,6 +228,8 @@ Refer to [JSON objects](https://developers.cloudflare.com/ddos-protection/advanc
 
 This example creates a rule scoped to the Western Europe region with an expression filter.
 
+*Requestbash*
+
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/rules" \
 --header "Authorization: Bearer <API_TOKEN>" \
@@ -214,6 +242,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programma
   "expression": "ip.dst in { 192.0.2.0/24 }"
 }'
 ```
+
+*Responsejson*
 
 ```json
 {
@@ -239,6 +269,8 @@ Refer to [JSON objects](https://developers.cloudflare.com/ddos-protection/advanc
 
 This example updates an existing rule. You can update the mode, scope, and expression, but not the program. To change the program, delete the rule and create a new one.
 
+*Requestbash*
+
 ```bash
 curl --request PATCH \
 "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/rules/{rule_id}" \
@@ -248,6 +280,8 @@ curl --request PATCH \
   "mode": "enabled"
 }'
 ```
+
+*Responsejson*
 
 ```json
 {
@@ -273,11 +307,15 @@ Refer to [JSON objects](https://developers.cloudflare.com/ddos-protection/advanc
 
 This example deletes an existing rule.
 
+*Requestbash*
+
 ```bash
 curl --request DELETE \
 "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/rules/{rule_id}" \
 --header "Authorization: Bearer <API_TOKEN>"
 ```
+
+*Responsejson*
 
 ```json
 {
@@ -294,6 +332,8 @@ This example runs a program against a PCAP file for debugging. The API returns a
 
 The request body must contain the PCAP file in binary format. The API automatically detects the IP header offset based on the input PCAP. To override automatic detection, use the optional `ip_offset` query parameter to specify the number of bytes the IP header is offset by in each packet (for example, `14` for Ethernet frames).
 
+*Requestbash*
+
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/programs/{program_id}/pcap" \
 --header "Authorization: Bearer <API_TOKEN>" \
@@ -304,10 +344,10 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programma
 
 The output PCAP file contains the same packets as the input file, but with annotations on each packet. The Packet Comment annotation may contain:
 
-* Program return value: `CF_EBPF_PASS` or `CF_EBPF_DROP`
-* `Ignored`: if the incoming packet is not UDP
-* `Analytics tag`: the custom network analytics tag set by the program on this packet, if any
-* `Challenge packet`: the challenge packet emitted from the program back to the client, if any
+- Program return value: `CF_EBPF_PASS` or `CF_EBPF_DROP`
+- `Ignored`: if the incoming packet is not UDP
+- `Analytics tag`: the custom network analytics tag set by the program on this packet, if any
+- `Challenge packet`: the challenge packet emitted from the program back to the client, if any
 
 Was this helpful?
 

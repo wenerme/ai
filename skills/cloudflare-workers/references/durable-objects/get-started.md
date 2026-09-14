@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Getting started
 
-Last updated Jul 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide will instruct you through:
 
-* Writing a JavaScript class that defines a Durable Object.
-* Using Durable Objects SQL API to query a Durable Object's private, embedded SQLite database.
-* Instantiating and communicating with a Durable Object from another Worker.
-* Deploying a Durable Object and a Worker that communicates with a Durable Object.
+- Writing a JavaScript class that defines a Durable Object.
+- Using Durable Objects SQL API to query a Durable Object's private, embedded SQLite database.
+- Instantiating and communicating with a Durable Object from another Worker.
+- Deploying a Durable Object and a Worker that communicates with a Durable Object.
 
 If you wish to learn more about Durable Objects, refer to [What are Durable Objects?](https://developers.cloudflare.com/durable-objects/concepts/what-are-durable-objects/).
 
@@ -36,13 +36,21 @@ You may wish to manually follow the steps if you are new to Cloudflare Workers.
 ## Prerequisites
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
 
-## 1\. Create a Worker project
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
+
+## 1. Create a Worker project
 
 You will access your Durable Object from a [Worker](https://developers.cloudflare.com/workers/). Your Worker application is an interface to interact with your Durable Object.
 
@@ -66,13 +74,13 @@ Running `create cloudflare@latest` will install [Wrangler](https://developers.cl
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker + Durable Objects`.
-* For _Which language do you want to use?_, choose `TypeScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker + Durable Objects`.
+- For *Which language do you want to use?*, choose `TypeScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
-This will create a new directory, which will include either a `src/index.js` or `src/index.ts` file to write your code and a [wrangler.jsonc](https://developers.cloudflare.com/workers/wrangler/configuration/) configuration file.
+This will create a new directory, which will include either a `src/index.js` or `src/index.ts` file to write your code and a [`wrangler.jsonc`](https://developers.cloudflare.com/workers/wrangler/configuration/) configuration file.
 
 Move into your new directory:
 
@@ -84,25 +92,33 @@ Adding a Durable Object to an existing Worker
 
 To add a Durable Object to an existing Worker, you need to:
 
-* Modify the code of the existing Worker to include the following:
-```ts
-export class MyDurableObject extends DurableObject<Env> {
-  constructor(ctx: DurableObjectState, env: Env) {
-    // Required, as we're extending the base class.
-    super(ctx, env)
-  }
-  {/* Define your Durable Object methods here */}
-}
-export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    const stub = env.MY_DURABLE_OBJECT.getByName(new URL(request.url).pathname);
-    {/* Access your Durable Object methods here */}
-  },
-} satisfies ExportedHandler<Env>;
-```
-* Update the Wrangler configuration file of your existing Worker to bind the Durable Object to the Worker.
+- Modify the code of the existing Worker to include the following:
 
-## 2\. Write a Durable Object class using SQL API
+  ```ts
+  export class MyDurableObject extends DurableObject<Env> {
+    constructor(ctx: DurableObjectState, env: Env) {
+      // Required, as we're extending the base class.
+      super(ctx, env)
+    }
+
+    {/* Define your Durable Object methods here */}
+
+  }
+
+  export default {
+    async fetch(request, env, ctx): Promise<Response> {
+      const stub = env.MY_DURABLE_OBJECT.getByName(new URL(request.url).pathname);
+
+      {/* Access your Durable Object methods here */}
+
+    },
+  } satisfies ExportedHandler<Env>;
+  ```
+
+
+- Update the Wrangler configuration file of your existing Worker to bind the Durable Object to the Worker.
+
+## 2. Write a Durable Object class using SQL API
 
 Before you create and access a Durable Object, its behavior must be defined by an ordinary exported JavaScript class.
 
@@ -138,7 +154,7 @@ class MyDurableObject(DurableObject):
         super().__init__(ctx, env)
 ```
 
-Workers communicate with a Durable Object using [remote-procedure call](https://developers.cloudflare.com/workers/runtime-apis/rpc/#%5Ftop). Public methods on a Durable Object class are exposed as [RPC methods](https://developers.cloudflare.com/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/) to be called by another Worker.
+Workers communicate with a Durable Object using [remote-procedure call](https://developers.cloudflare.com/workers/runtime-apis/rpc/#_top). Public methods on a Durable Object class are exposed as [RPC methods](https://developers.cloudflare.com/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/) to be called by another Worker.
 
 Your file should now look like:
 
@@ -190,11 +206,11 @@ class MyDurableObject(DurableObject):
 In the code above, you have:
 
 1. Defined a RPC method, `sayHello()`, that can be called by a Worker to communicate with a Durable Object.
-2. Accessed a Durable Object's attached storage, which is a private SQLite database only accessible to the object, using [SQL API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#exec) methods (`sql.exec()`) available on `ctx.storage` .
+2. Accessed a Durable Object's attached storage, which is a private SQLite database only accessible to the object, using [SQL API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#exec) methods ( `sql.exec()`) available on `ctx.storage` .
 3. Returned an object representing the single row query result using `one()`, which checks that the query result has exactly one row.
 4. Return the `greeting` column from the row object result.
 
-## 3\. Instantiate and communicate with a Durable Object
+## 3. Instantiate and communicate with a Durable Object
 
 Note
 
@@ -251,7 +267,7 @@ In the code above, you have:
 
 Refer to [Access a Durable Object from a Worker](https://developers.cloudflare.com/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/) to learn more about communicating with a Durable Object.
 
-## 4\. Configure Durable Object bindings
+## 4. Configure Durable Object bindings
 
 [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) allow your Workers to interact with resources on the Cloudflare developer platform. The Durable Object bindings in your Worker project's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) will include a binding name (for this guide, use `MY_DURABLE_OBJECT`) and the class name (`MyDurableObject`).
 
@@ -276,11 +292,11 @@ class_name = "MyDurableObject"
 
 The `bindings` section contains the following fields:
 
-* `name` \- Required. The binding name to use within your Worker.
-* `class_name` \- Required. The class name you wish to bind to.
-* `script_name` \- Optional. Defaults to the current [environment's](https://developers.cloudflare.com/durable-objects/reference/environments/) Worker code.
+- `name` - Required. The binding name to use within your Worker.
+- `class_name` - Required. The class name you wish to bind to.
+- `script_name` - Optional. Defaults to the current [environment's](https://developers.cloudflare.com/durable-objects/reference/environments/) Worker code.
 
-## 5\. Configure Durable Object class with SQLite storage backend
+## 5. Configure Durable Object class with SQLite storage backend
 
 You declare each Durable Object class your Worker exports in the `exports` field of your Wrangler configuration file. Cloudflare uses this declaration to provision a namespace for the class the first time you deploy, and to manage its lifecycle on later deploys (rename, delete, transfer).
 
@@ -305,9 +321,9 @@ storage = "sqlite"
 
 Refer to [Durable Object class exports](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) to learn more about declaring and managing Durable Object classes. If you have an existing Worker on the legacy `migrations` array, refer to [Durable Object class migrations (legacy)](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/).
 
-## 6\. Develop a Durable Object Worker locally
+## 6. Develop a Durable Object Worker locally
 
-To test your Durable Object locally, run [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev):
+To test your Durable Object locally, run [`wrangler dev`](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev):
 
 ```sh
 npx wrangler dev
@@ -315,7 +331,7 @@ npx wrangler dev
 
 In your console, you should see a`Hello world` string returned by the Durable Object.
 
-## 7\. Deploy your Durable Object Worker
+## 7. Deploy your Durable Object Worker
 
 To deploy your Durable Object Worker:
 
@@ -325,7 +341,7 @@ npx wrangler deploy
 
 Once deployed, you should be able to see your newly created Durable Object Worker on the Cloudflare dashboard.
 
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 
 Preview your Durable Object Worker at `<YOUR_WORKER>.<YOUR_SUBDOMAIN>.workers.dev`.
 
@@ -358,6 +374,8 @@ export default {
 	},
 };
 ```
+
+*index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -409,15 +427,15 @@ class Default(WorkerEntrypoint):
 
 By finishing this tutorial, you have:
 
-* Successfully created a Durable Object
-* Called the Durable Object by invoking a [RPC method](https://developers.cloudflare.com/workers/runtime-apis/rpc/)
-* Deployed the Durable Object globally
+- Successfully created a Durable Object
+- Called the Durable Object by invoking a [RPC method](https://developers.cloudflare.com/workers/runtime-apis/rpc/)
+- Deployed the Durable Object globally
 
 ## Related resources
 
-* [Create Durable Object stubs](https://developers.cloudflare.com/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/)
-* [Access Durable Objects Storage](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/)
-* [Miniflare ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare) \- Helpful tools for mocking and testing your Durable Objects.
+- [Create Durable Object stubs](https://developers.cloudflare.com/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/)
+- [Access Durable Objects Storage](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/)
+- [Miniflare ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare) - Helpful tools for mocking and testing your Durable Objects.
 
 Was this helpful?
 
@@ -428,5 +446,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/get-started/#page","headline":"Getting started · Cloudflare Durable Objects docs","description":"Create and deploy your first Durable Object with SQLite storage and a companion Worker.","url":"https://developers.cloudflare.com/durable-objects/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/get-started/#page","headline":"Getting started · Cloudflare Durable Objects docs","description":"Create and deploy your first Durable Object with SQLite storage and a companion Worker.","url":"https://developers.cloudflare.com/durable-objects/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

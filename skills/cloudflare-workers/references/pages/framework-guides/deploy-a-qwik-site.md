@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Qwik
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-qwik-site/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-qwik-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Qwik ↗](https://github.com/builderio/qwik) is an open-source, DOM-centric, resumable web application framework designed for best possible time to interactive by focusing on [resumability ↗](https://qwik.builder.io/docs/concepts/resumable/), server-side rendering of HTML and [fine-grained lazy-loading ↗](https://qwik.builder.io/docs/concepts/progressive/#lazy-loading) of code.
 
@@ -20,7 +20,7 @@ In this guide, you will create a new Qwik application implemented via [Qwik City
 
 ## Creating a new project
 
-Use the [create-cloudflare ↗](https://www.npmjs.com/package/create-cloudflare) CLI (C3) to create a new project. C3 will create a new project directory, initiate Qwik's official setup tool, and provide the option to deploy instantly.
+Use the [`create-cloudflare` ↗](https://www.npmjs.com/package/create-cloudflare) CLI (C3) to create a new project. C3 will create a new project directory, initiate Qwik's official setup tool, and provide the option to deploy instantly.
 
 To use `create-cloudflare` to create a new Qwik project, run the following command:
 
@@ -73,24 +73,24 @@ git push -u origin main
 
 ### Deploy via the `create-cloudflare` CLI (C3)
 
-If you use [create-cloudflare(C3) ↗](https://www.npmjs.com/package/create-cloudflare) to create your new Qwik project, C3 will install all dependencies needed for your project and prompt you to deploy your project via the CLI. If you deploy, your site will be live and you will be provided with a deployment URL.
+If you use [`create-cloudflare`(C3) ↗](https://www.npmjs.com/package/create-cloudflare) to create your new Qwik project, C3 will install all dependencies needed for your project and prompt you to deploy your project via the CLI. If you deploy, your site will be live and you will be provided with a deployment URL.
 
 ### Deploy via the Cloudflare dashboard
 
 To deploy your site to Pages:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**.
 3. Select the **Pages** tab.
 4. Select **Import an existing Git repository**.
 5. Select the new GitHub repository that you created and then select **Begin setup**.
 6. In the **Set up builds and deployments** section, provide the following information:
 
-| Configuration option | Value         | |  Production branch | main |
-| -------------------- | ------------- | -------------------- | ---- |
-| Build command        | npm run build |                      |      |
-| Build directory      | dist          |                      |      |
+Configuration option | Value
+| Production branch | `main` |
+| --- | --- |
+| Build command | `npm run build` |
+| Build directory | `dist` |
 
 After configuring your site, you can begin your first deploy. You should see Cloudflare Pages installing `npm`, your project dependencies, and building your site before deploying it.
 

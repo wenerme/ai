@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Markdown Conversion
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Markdown ↗](https://en.wikipedia.org/wiki/Markdown) is essential for text generation and large language models (LLMs) in training and inference because it can provide structured, semantic, human, and machine-readable input. Likewise, Markdown facilitates chunking and structuring input data for better retrieval and synthesis in the context of RAGs, and its simplicity and ease of parsing and rendering make it ideal for AI Agents.
 
-For these reasons, document conversion plays an important role when designing and developing AI applications. Workers AI provides the `toMarkdown` utility method that developers can use from the [env.AI](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/usage/binding/) binding or the [REST APIs](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/usage/rest-api/) for quick, easy, and convenient conversion and summary of documents in multiple formats to Markdown language.
+For these reasons, document conversion plays an important role when designing and developing AI applications. Workers AI provides the `toMarkdown` utility method that developers can use from the [`env.AI`](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/usage/binding/) binding or the [REST APIs](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/usage/rest-api/) for quick, easy, and convenient conversion and summary of documents in multiple formats to Markdown language.
 
 ## Pricing
 
@@ -24,8 +24,8 @@ For these reasons, document conversion plays an important role when designing an
 
 ## Other Markdown conversion features
 
-* The Browser Run [/markdown](https://developers.cloudflare.com/browser-run/quick-actions/markdown-endpoint/) endpoint supports markdown conversion if you need to render a dynamic page or application in a real browser before converting it.
-* [Markdown for Agents](https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/) allows real-time document conversion for Cloudflare zones using content negotiation headers.
+- The Browser Run [/markdown](https://developers.cloudflare.com/browser-run/quick-actions/markdown-endpoint/) endpoint supports markdown conversion if you need to render a dynamic page or application in a real browser before converting it.
+- [Markdown for Agents](https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/) allows real-time document conversion for Cloudflare zones using content negotiation headers.
 
 Was this helpful?
 

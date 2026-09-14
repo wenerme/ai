@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Egress IPs
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When Email Security processes inbound messages through an [MX/Inline deployment](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/mx-inline-deployment/), it re-delivers the messages to your mailbox from its own IP addresses, known as egress IPs (the source addresses Cloudflare sends outbound mail from). Your existing email provider (such as Microsoft 365 or Google Workspace) needs to be configured to accept connections from these addresses, otherwise it will reject the messages as coming from an unauthorized sender.
 
@@ -22,10 +22,10 @@ Additional information for Microsoft 365
 
 Microsoft 365 does not support IPv6 addresses or the following IPv4 ranges:
 
-* `104.30.32.0/19`
-* `134.195.26.0/23`
+- `104.30.32.0/19`
+- `134.195.26.0/23`
 
-If you use Microsoft 365, use the individual `/24` blocks (256 addresses each) listed in [Microsoft 365 /24 addresses](#microsoft-365-24-addresses) instead.
+If you use Microsoft 365, use the individual `/24` blocks (256 addresses each) listed in [Microsoft 365 `/24` addresses](#microsoft-365-24-addresses) instead.
 
 ### IPv4
 

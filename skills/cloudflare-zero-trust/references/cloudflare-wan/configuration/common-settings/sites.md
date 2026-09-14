@@ -12,32 +12,34 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Set up a site
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/sites/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/sites/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Sites represent the local network of a data center, office, or other physical location, and combine all on-ramps available there. Sites also allow you to quickly check the state of your on-ramps and set up health alert settings so that you get notified when there are issues with the site's on-ramps.
 
 To use a site, start by setting up your on-ramps. On-ramps can be:
 
-* [GRE or IPsec tunnels](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/)
-* [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)
-* Direct [CNI link](https://developers.cloudflare.com/cloudflare-wan/network-interconnect/)
+- [GRE or IPsec tunnels](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/)
+- [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)
+- Direct [CNI link](https://developers.cloudflare.com/cloudflare-wan/network-interconnect/)
 
 Before creating a site, ensure you have set up at least one on-ramp. Then, follow these steps:
 
 ## Add a site
 
 1. Go to the **Network health** page.
-[Go to **Network health** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
-1. In **Network overview**, select **Add a site**.
-2. Add a name and description for your new site. Optionally, you can also add the geographical coordinates for your site in **Latitude** and **Longitude**. If you add geographical coordinates, your site's location will appear in the map once created.
-3. Select **Create and continue**.
-4. Choose one or more on-ramps for your site from the list. Remember to only choose the on-ramps available to that particular site, as the list might include on-ramps available on other locations.
-5. Select **Continue**.
-6. In **Define alert settings** you set up alerts to notify you when there are issues with your site's on-ramps. If you want to set up alerts later, select **Skip this for now** to complete your setup. Otherwise, continue reading.
-7. In **Tunnel Health Check Alert** \> **Notification name**, enter a name for the site's alert.
-8. Under **Alert settings**, choose how you want to be notified when there is an issue. You can add webhooks as well as email addresses.
-9. In **Alert sensitivity level** define the threshold for Tunnel health alerts to be fired. For details, refer to [How Cloudflare calculates Tunnel health alerts](https://developers.cloudflare.com/cloudflare-wan/reference/how-cloudflare-calculates-tunnel-health-alerts/).
-10. Select **Complete setup** to finish setting up your site.
+
+[Go to **Network health** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
+
+2. In **Network overview**, select **Add a site**.
+3. Add a name and description for your new site. Optionally, you can also add the geographical coordinates for your site in **Latitude** and **Longitude**. If you add geographical coordinates, your site's location will appear in the map once created.
+4. Select **Create and continue**.
+5. Choose one or more on-ramps for your site from the list. Remember to only choose the on-ramps available to that particular site, as the list might include on-ramps available on other locations.
+6. Select **Continue**.
+7. In **Define alert settings** you set up alerts to notify you when there are issues with your site's on-ramps. If you want to set up alerts later, select **Skip this for now** to complete your setup. Otherwise, continue reading.
+8. In **Tunnel Health Check Alert** > **Notification name**, enter a name for the site's alert.
+9. Under **Alert settings**, choose how you want to be notified when there is an issue. You can add webhooks as well as email addresses.
+10. In **Alert sensitivity level** define the threshold for Tunnel health alerts to be fired. For details, refer to [How Cloudflare calculates Tunnel health alerts](https://developers.cloudflare.com/cloudflare-wan/reference/how-cloudflare-calculates-tunnel-health-alerts/).
+11. Select **Complete setup** to finish setting up your site.
 
 Your site is now set up. If you have other sites you need to set up, repeat the steps above. If you did not set up alerts, we strongly recommend that you do it. Otherwise you will not be notified when there is a problem with one of your on-ramps.
 
@@ -49,29 +51,53 @@ After adding your sites, the Network overview section of the dashboard provides 
 
 Network overview has the following data types available:
 
+<details>
+
+<summary>
+
 Geographic map summary
 
-* [Aggregate Cloudflare WAN site health](#site-health)
-* [Cloudflare WAN availability status for sites](#no-status-available)
-* [Cloudflare WAN site geographic location](#no-location-set)
+</summary>
+
+- <a href="#site-health">Aggregate Cloudflare WAN site health</a>
+- <a href="#no-status-available">Cloudflare WAN availability status for sites</a>
+- <a href="#no-location-set">Cloudflare WAN site geographic location</a>
+
+</details>
+
+<details>
+
+<summary>
 
 Cloudflare WAN site data table
 
-* Site Name
-* Site Health
-* Site Tunnel Names
-* Site Tunnel Statuses
-* Site Traffic Sent
-* Site Traffic Received
+</summary>
+
+- Site Name
+- Site Health
+- Site Tunnel Names
+- Site Tunnel Statuses
+- Site Traffic Sent
+- Site Traffic Received
+
+</details>
+
+<details>
+
+<summary>
 
 Cloudflare WAN site data
 
-* Traffic Sent by Tunnel
-* Traffic Received by Tunnel
+</summary>
+
+- Traffic Sent by Tunnel
+- Traffic Received by Tunnel
+
+</details>
 
 To start using network overview:
 
-[Go to **Network health** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
+[Go to **Network health** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
 
 You will have access to an overview map with all your active sites, and any alerts for sites that are unhealthy or have no status available to them.
 
@@ -81,11 +107,11 @@ Review the following topics to learn more about the options available to you.
 
 The network map section shows all the sites configured with Cloudflare WAN. At a glance, you can check:
 
-* How many active sites you have
-* Location for sites in a map (if you set up their geographic location)
-* Sites that are healthy or unhealthy
-* Sites that have no status available
-* Sites that have no location set
+- How many active sites you have
+- Location for sites in a map (if you set up their geographic location)
+- Sites that are healthy or unhealthy
+- Sites that have no status available
+- Sites that have no location set
 
 The Traffic overview section displays a more granular list of your sites and their status.
 
@@ -105,8 +131,8 @@ The dashboard displays the number of sites with no location set, meaning sites f
 
 Traffic overview aggregates all Cloudflare WAN sites configured in your account. Here, you can check summary information about each site like:
 
-* Site status
-* Traffic sent and received
+- Site status
+- Traffic sent and received
 
 Select one of your sites to have access to a more detailed view of its traffic, including traffic by tunnel.
 
@@ -117,23 +143,27 @@ Select one of your sites to have access to a more detailed view of its traffic, 
 ### Add or remove on-ramps
 
 1. Go to the **Network health** page.
-[Go to **Network health** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
-1. Go to **Network overview** \> **Traffic overview**.
-2. Find your site > select the three dots in front of it > **Edit**.
-3. Select **On-ramps**.
-4. Select **Add** to add a new on-ramp.
-5. If you want to remove an on-ramp, select the three dots in front of your on-ramp > **Remove**.
+
+[Go to **Network health** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
+
+2. Go to **Network overview** > **Traffic overview**.
+3. Find your site > select the three dots in front of it > **Edit**.
+4. Select **On-ramps**.
+5. Select **Add** to add a new on-ramp.
+6. If you want to remove an on-ramp, select the three dots in front of your on-ramp > **Remove**.
 
 ### Set geographic coordinates
 
 If you add geographic coordinates to your site, it will appear in the Network map. To set up or edit geographic coordinates to an existing site:
 
 1. Go to the **Network health** page.
-[Go to **Network health** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
-1. Go to **Network overview** \> **Traffic overview**.
-2. Find your site > select the three dots in front of it > **Edit**.
-3. In **Basic information**, edit your site's **Latitude** and **Longitude** coordinates.
-4. Select **Save**.
+
+[Go to **Network health** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
+
+2. Go to **Network overview** > **Traffic overview**.
+3. Find your site > select the three dots in front of it > **Edit**.
+4. In **Basic information**, edit your site's **Latitude** and **Longitude** coordinates.
+5. Select **Save**.
 
 ### Set thresholds for site health
 

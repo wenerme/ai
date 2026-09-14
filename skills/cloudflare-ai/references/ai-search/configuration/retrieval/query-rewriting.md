@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Query rewriting
 
-Last updated Jun 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/query-rewriting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/query-rewriting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Query rewriting is an optional step in the AI Search pipeline that improves retrieval quality for follow-up queries. It applies to both [Search](https://developers.cloudflare.com/ai-search/api/search/workers-binding/#search) and [Chat Completions](https://developers.cloudflare.com/ai-search/api/search/workers-binding/#chatcompletions) requests.
 
@@ -20,10 +20,10 @@ Query rewriting is an optional step in the AI Search pipeline that improves retr
 
 The wording of a user's question may not match how your documents are written. Query rewriting helps bridge this gap by:
 
-* Rephrasing informal or vague queries into precise, information-dense terms
-* Adding synonyms or related keywords
-* Removing filler words or irrelevant details
-* Resolving follow-up queries that reference previous messages (for example, "tell me more about that" becomes a specific query based on conversation history)
+- Rephrasing informal or vague queries into precise, information-dense terms
+- Adding synonyms or related keywords
+- Removing filler words or irrelevant details
+- Resolving follow-up queries that reference previous messages (for example, "tell me more about that" becomes a specific query based on conversation history)
 
 This leads to more relevant search matches, which improves the accuracy of results and generated responses.
 
@@ -33,7 +33,7 @@ Query rewriting requires the `messages` format and does not apply when using the
 
 ## Example
 
-**First message:** `What is Cloudflare Workers?`(used as-is, no rewriting)
+**First message:** `What is Cloudflare Workers?` (used as-is, no rewriting)
 
 **Follow-up message:** `How do I deploy one?` **Rewritten query:** `deploy Cloudflare Worker getting started`
 

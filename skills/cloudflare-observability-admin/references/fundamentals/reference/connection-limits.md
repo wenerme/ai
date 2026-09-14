@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Connection limits
 
-Last updated Jul 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/reference/connection-limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/connection-limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When HTTP/HTTPS traffic is [proxied through Cloudflare](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/#cloudflare-as-a-reverse-proxy), there are often two established [TCP connections](https://developers.cloudflare.com/fundamentals/reference/tcp-connections/): the first is between the requesting client to Cloudflare and the second is between Cloudflare and the origin server. Each connection has their own set of TCP and HTTP limits, which are documented below.
 
 ## Between client and Cloudflare
 
-| Type                           | Limit (seconds) | HTTP status code at limit | Configurable |
-| ------------------------------ | --------------- | ------------------------- | ------------ |
-| Connection Keep-Alive HTTP/1.1 | 400             | TCP connection closed     | No           |
-| Connection Idle HTTP/2         | 400             | TCP connection closed     | No           |
+| Type | Limit (seconds) | HTTP status code at limit | Configurable |
+| --- | --- | --- | --- |
+| Connection Keep-Alive HTTP/1.1 | 400 | TCP connection closed | No |
+| Connection Idle HTTP/2 | 400 | TCP connection closed | No |
 
 ## Between Cloudflare and origin server
 
@@ -29,16 +29,16 @@ Note
 
 If you are using [Cloudflare tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), refer to [Origin configuration](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/origin-parameters/) to view or modify your connection settings.
 
-| Type                    | Limit (seconds) | HTTP status code at limit                                                                                           | [Configurable](https://developers.cloudflare.com/fundamentals/reference/connection-limits/#configurable-limits)        |
-| ----------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| Complete TCP Connection | 19              | [522](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-522/) | No                                                                                                                     |
-| TCP ACK Timeout         | 90              | [522](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-522/) | No                                                                                                                     |
-| TCP Keep-Alive Interval | 30              | [520](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-520/) | No                                                                                                                     |
-| Proxy Idle Timeout      | 900             | [520](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-520/) | No                                                                                                                     |
-| Proxy Read Timeout      | 125             | [524](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-524/) | [Yes, for Enterprise zones](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) |
-| Proxy Write Timeout     | 30              | [524](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-524/) | No                                                                                                                     |
-| HTTP/2 Pings to Origin  | Off             | \-                                                                                                                  | Yes                                                                                                                    |
-| HTTP/2 Connection Idle  | 900             | No                                                                                                                  | No                                                                                                                     |
+| Type | Limit (seconds) | HTTP status code at limit | [Configurable](https://developers.cloudflare.com/fundamentals/reference/connection-limits/#configurable-limits) |
+| --- | --- | --- | --- |
+| Complete TCP Connection | 19 | [522](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-522/) | No |
+| TCP ACK Timeout | 90 | [522](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-522/) | No |
+| TCP Keep-Alive Interval | 30 | [520](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-520/) | No |
+| Proxy Idle Timeout | 900 | [520](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-520/) | No |
+| Proxy Read Timeout | 125 | [524](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-524/) | [Yes, for Enterprise zones](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) |
+| Proxy Write Timeout | 30 | [524](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-524/) | No |
+| HTTP/2 Pings to Origin | Off | - | Yes |
+| HTTP/2 Connection Idle | 900 | No | No |
 
 ## Configurable limits
 

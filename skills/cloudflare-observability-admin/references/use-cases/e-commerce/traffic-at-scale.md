@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Handle traffic at scale
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/e-commerce/traffic-at-scale/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/e-commerce/traffic-at-scale/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Flash sales, seasonal peaks, and viral moments can overwhelm your origin infrastructure. Cloudflare Load Balancing distributes traffic across multiple origins with automatic failover, Waiting Room queues excess visitors to prevent overload, and Argo Smart Routing reduces latency between edge and origin.
 
@@ -22,20 +22,20 @@ Flash sales, seasonal peaks, and viral moments can overwhelm your origin infrast
 
 Distribute traffic across origins with health checks and automatic failover. [Learn more about Load balancing](https://developers.cloudflare.com/load-balancing/).
 
-* **Origin protection** \- Distribute traffic across origin servers and queue excess visitors to prevent overload during peak events
-* **Automatic failover** \- Health checks detect unhealthy origins and reroute traffic automatically
+- **Origin protection** - Distribute traffic across origin servers and queue excess visitors to prevent overload during peak events
+- **Automatic failover** - Health checks detect unhealthy origins and reroute traffic automatically
 
 ### Waiting Room
 
 Manage visitor queuing during traffic surges. [Learn more about Waiting Room](https://developers.cloudflare.com/waiting-room/).
 
-* **Flash sale readiness** \- Queue visitors fairly during extreme demand, preserving a consistent experience without crashing the site
+- **Flash sale readiness** - Queue visitors fairly during extreme demand, preserving a consistent experience without crashing the site
 
 ### Argo Smart Routing
 
 Route traffic through the fastest paths across Cloudflare's network. [Learn more about Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/).
 
-* **Reduced latency** \- Route requests through the fastest available network paths between edge and origin
+- **Reduced latency** - Route requests through the fastest available network paths between edge and origin
 
 ## Get started
 

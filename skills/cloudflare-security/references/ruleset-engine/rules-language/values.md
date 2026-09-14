@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Values
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ruleset-engine/rules-language/values/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/rules-language/values/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When an HTTP request reaches the Cloudflare global network, Cloudflare creates a table of field–value pairs against which to match expressions. This table exists for as long as the current request is being processed.
 
 The values that populate the lookup tables of the Rules language are drawn from a variety of sources:
 
-* **Primitive properties** are obtained directly from the request (`http.request.uri.path`, for example).
-* **Derived values** are the product of a transformation, composition, or basic operation. For example, the transformation `lower(http.request.uri.path)` converts the value of `http.request.uri.path` to lowercase.
-* **Computed values** are the product of a lookup, computation, or other intelligence. For example, Cloudflare uses a machine learning process to dynamically calculate attack scores, represented by `cf.waf.score*` fields.
+- **Primitive properties** are obtained directly from the request ( `http.request.uri.path`, for example).
+- **Derived values** are the product of a transformation, composition, or basic operation. For example, the transformation `lower(http.request.uri.path)` converts the value of `http.request.uri.path` to lowercase.
+- **Computed values** are the product of a lookup, computation, or other intelligence. For example, Cloudflare uses a machine learning process to dynamically calculate attack scores, represented by `cf.waf.score*` fields.
 
 Besides these values, expressions may also contain literal values. These are static, known values that you incorporate into expressions to compare them with values from request/response fields with or without any transformations.
 
@@ -42,8 +42,10 @@ When using the quoted string syntax, a string literal is delimited by `"` (doubl
 
 The quoted string syntax has the following additional escaping requirements:
 
-* When used to specify a regular expression on the right-hand side of the [regex operator](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#comparison-operators) (`matches` or `~`), the string is parsed using regex escaping rules.
-* When used on the right hand-side of expressions with other operators, or in [function parameters](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/), the string is parsed using basic escaping rules.
+- When used to specify a regular expression on the right-hand side of the [regex operator](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#comparison-operators) ( `matches` or `~`), the string is parsed using regex escaping rules.
+- When used on the right hand-side of expressions with other operators, or in [function parameters](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/), the string is parsed using basic escaping rules.
+
+*Examplestxt*
 
 ```txt
 # Test if URI path contains 'a"b'
@@ -58,7 +60,7 @@ regex_replace(http.host, "a", "\\")
 
 Caution
 
-In some situations you will need to double-escape a string — for example, when using the [regex\_replace()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#regex%5Freplace) function with a regular expression matching a backslash (`\`).
+In some situations you will need to double-escape a string — for example, when using the [`regex_replace()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#regex_replace) function with a regular expression matching a backslash (`\`).
 
 In this case, you must do the basic escaping required by strings as function parameters (using `\\` for each `\` character) and also the regex escaping (using `\\` for each `\` character), since the backslash has a special meaning in regular expressions.
 
@@ -74,12 +76,14 @@ To avoid this situation, Cloudflare recommends that you use the [raw string synt
 
 To specify a string (or regular expression) using the raw string syntax you use special delimiters:
 
-* The initial delimiter is composed of an `r` character, optionally followed by one or more `#` characters (up to 255), followed by a `"` (double quote) character.
-* The ending delimiter is a `"` (double quote) character followed by the same number of `#` characters as in the initial delimiter (from 0 to 255).
+- The initial delimiter is composed of an `r` character, optionally followed by one or more `#` characters (up to 255), followed by a `"` (double quote) character.
+- The ending delimiter is a `"` (double quote) character followed by the same number of `#` characters as in the initial delimiter (from 0 to 255).
 
 In a raw string there are no special characters, so all characters up to the ending delimiter are interpreted as is (there are no escape sequences).
 
 Unlike the quoted string syntax, the raw string syntax is always the same, regardless of the context where it is being used (for example, as a regular expression with a [regex operator](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#comparison-operators) or as a parameter of a [function call](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/)).
+
+*Examplestxt*
 
 ```txt
 # Test if URI path contains 'a"b'
@@ -101,10 +105,10 @@ http.request.uri.path matches r"/api/login\.aspx$"
 
 Since the evaluation of string literal values in expressions is case-sensitive, consider one of the following options to capture capitalization variants in your expression:
 
-* Use the [wildcard](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#wildcard-matching) operator, which is case-insensitive, to match a string literal.
-* Use the [lower()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lower) function to convert the string to lowercase before comparison.
-* Use the [matches](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#regular-expression-matching) operator (only available in Business and Enterprise plans) with a regular expression that matches different variants.
-* Write several sub-expressions with the [eq](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#comparison-operators) or [contains](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#comparison-operators) operator, joined with the [or](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#supported-logical-operators) operator, to capture different variations of the string literal (for example, `<field> eq "a" or <field> eq "A"`).
+- Use the [`wildcard`](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#wildcard-matching) operator, which is case-insensitive, to match a string literal.
+- Use the [`lower()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lower) function to convert the string to lowercase before comparison.
+- Use the [`matches`](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#regular-expression-matching) operator (only available in Business and Enterprise plans) with a regular expression that matches different variants.
+- Write several sub-expressions with the [`eq`](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#comparison-operators) or [`contains`](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#comparison-operators) operator, joined with the [`or`](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#supported-logical-operators) operator, to capture different variations of the string literal (for example, `<field> eq "a" or <field> eq "A"`).
 
 ### Regular expression limits
 
@@ -112,9 +116,9 @@ Cloudflare has a few limits in place regarding regular expressions. One of those
 
 You can use the following strategies to reduce the number of regular expressions in a rule:
 
-* Use the [contains](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#comparison-operators) operator.
-* Use the [wildcard](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#wildcard-matching) / [strict wildcard](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#wildcard-matching) operators.
-* Use the [starts\_with()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#starts%5Fwith) and [ends\_with()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#ends%5Fwith) functions.
+- Use the [`contains`](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#comparison-operators) operator.
+- Use the [`wildcard`](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#wildcard-matching) / [`strict wildcard`](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#wildcard-matching) operators.
+- Use the [`starts_with()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#starts_with) and [`ends_with()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#ends_with) functions.
 
 ## Boolean values
 
@@ -138,20 +142,20 @@ The Cloudflare Rules language includes [fields](https://developers.cloudflare.co
 
 You can access individual array elements using an index (a non-negative value) between square brackets (`[]`). Array indexes start at `0` (zero).
 
-Use the special notation `[*]` when specifying an expression that will be evaluated for each array element (like the [map high-order function ↗](https://wikipedia.org/wiki/Map%5F%28higher-order%5Ffunction%29)). This special index notation will unpack the array, call the enclosing function for all its elements individually, and return a new array containing all the individual return values.
+Use the special notation `[*]` when specifying an expression that will be evaluated for each array element (like the [`map` high-order function ↗](<https://wikipedia.org/wiki/Map_(higher-order_function)>)). This special index notation will unpack the array, call the enclosing function for all its elements individually, and return a new array containing all the individual return values.
 
 ### Examples
 
 Consider the `http.request.headers.names` field with type `Array<String>` in the following examples:
 
-* Obtain the first element in the array:
-`http.request.headers.names[0]`
-* Check if the first array element is equal to `Content-Type` (case sensitive):
-`http.request.headers.names[0] == "Content-Type"`
-* Check if any array element is equal to `Content-Type` (case sensitive):
-`any(http.request.headers.names[*] == "Content-Type")`
-* Check if any array element is equal to `Content-Type`, ignoring the case:
-`any(lower(http.request.headers.names[*])[*] == "content-type")`
+- Obtain the first element in the array:
+  `http.request.headers.names[0]`
+- Check if the first array element is equal to `Content-Type` (case sensitive):
+  `http.request.headers.names[0] == "Content-Type"`
+- Check if any array element is equal to `Content-Type` (case sensitive):
+  `any(http.request.headers.names[*] == "Content-Type")`
+- Check if any array element is equal to `Content-Type`, ignoring the case:
+  `any(lower(http.request.headers.names[*])[*] == "content-type")`
 
 In the last example, the `lower()` function includes the `[*]` notation so that the function is evaluated for each array element. This function, used along `[*]`, returns a new array where each element of the input array is converted to lowercase. Then, the string comparison uses `[*]` to transform the array resulting from applying `lower()` to each header name into an array of boolean values. Finally, `any()` evaluates to true if at least one of these array elements is true.
 
@@ -161,15 +165,15 @@ It is not possible to define your own arrays. You can only use arrays returned b
 
 Accessing an out-of-bounds array index produces a "missing value". A missing value has the following behavior:
 
-* Any comparison `<expr> <op> <literal>` where `<expr>` evaluates to a missing value will evaluate to false.
-* Function calls like `function(<expr>)`, where `<expr>` evaluates to a missing value, will return a missing value in most cases, but the exact behavior can vary per function.
+- Any comparison `<expr> <op> <literal>` where `<expr>` evaluates to a missing value will evaluate to false.
+- Function calls like `function(<expr>)`, where `<expr>` evaluates to a missing value, will return a missing value in most cases, but the exact behavior can vary per function.
 
 You can only use `[*]` multiple times in the same expression if applied to the same array. Also, you can only use `[*]` in the first argument of a function call.
 
 The Rules language [operators](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/) do not directly support arrays or the `[*]` operator — however, they support indexed array elements like `array_value[0]`. For example, you cannot use `[*]` with the `==` operator outside the context of an enclosing function call:
 
-* `http.request.headers.names[*] == "Content-Type"` — **Invalid** expression
-* `any(http.request.headers.names[*] == "Content-Type")` — **Valid** expression
+- `http.request.headers.names[*] == "Content-Type"` — **Invalid** expression
+- `any(http.request.headers.names[*] == "Content-Type")` — **Valid** expression
 
 ## Maps
 
@@ -187,7 +191,7 @@ For maps where the values have an `Array` type, you cannot directly use [operato
 
 ### Examples
 
-The following example is based on the [http.request.headers](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.headers/) field with a data type of `Map<Array<String>>`, where array elements are of `String` data type.
+The following example is based on the [`http.request.headers`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.headers/) field with a data type of `Map<Array<String>>`, where array elements are of `String` data type.
 
 If an incoming HTTP request included a single `Accept: application/json` HTTP header, the following expressions would evaluate to the indicated values:
 
@@ -199,7 +203,7 @@ any(http.request.headers["accept"][*] == "application/json") # ==> true
 any(http.request.headers["accept"][*] == "text/plain")       # ==> false
 ```
 
-The following example is based on the [http.request.uri.args](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.uri.args/) field with a data type of `Map<Array<String>>`, where array elements are of `String` data type.
+The following example is based on the [`http.request.uri.args`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.uri.args/) field with a data type of `Map<Array<String>>`, where array elements are of `String` data type.
 
 If an HTTP request included three `filter` URI arguments `waf`, `botm`, and `cdn`, the following expressions would evaluate to the indicated values:
 
@@ -232,8 +236,8 @@ It is not possible to define your own maps. You can only use maps returned by fi
 
 Accessing a non-existing key in a map produces a "missing value". A missing value has the following behavior:
 
-* Any comparison `<expr> <op> <literal>` where `<expr>` evaluates to a missing value will evaluate to false.
-* Function calls like `function(<expr>)`, where `<expr>` evaluates to a missing value, will return a missing value in most cases, but the exact behavior can vary per function.
+- Any comparison `<expr> <op> <literal>` where `<expr>` evaluates to a missing value will evaluate to false.
+- Function calls like `function(<expr>)`, where `<expr>` evaluates to a missing value, will return a missing value in most cases, but the exact behavior can vary per function.
 
 ## Lists
 
@@ -257,12 +261,14 @@ Elements in an inline list can be strings, integers, or IP addresses/ranges. All
 
 Additionally, for some data types you can use ranges as elements:
 
-* For integer values, enter ranges in the form `<start_value>..<end_value>`. An inline list can contain both integer ranges and integer values.
-* For IP addresses, you can enter:
+- For integer values, enter ranges in the form `<start_value>..<end_value>`. An inline list can contain both integer ranges and integer values.
+- For IP addresses, you can enter:
+  - Explicit IP ranges in the form `<start_address>..<end_address>` (for example, `198.51.100.3..198.51.100.7`).
+  - CIDR ranges (for example, `192.0.2.0/24` or `2001:0db8::/32`).
 
-  * Explicit IP ranges in the form `<start_address>..<end_address>` (for example, `198.51.100.3..198.51.100.7`).
-  * CIDR ranges (for example, `192.0.2.0/24` or `2001:0db8::/32`).
-An inline list can contain explicit IP ranges, CIDR ranges, and individual IP addresses.
+  An inline list can contain explicit IP ranges, CIDR ranges, and individual IP addresses.
+
+*Examplessql*
 
 ```sql
 http.host in {"example.com" "example.net"}

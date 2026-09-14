@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pelican
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-pelican-site/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-pelican-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Pelican ↗](https://docs.getpelican.com) is a static site generator, written in Python. With Pelican, you can write your content directly with your editor of choice in reStructuredText or Markdown formats.
 
@@ -63,20 +63,20 @@ git push -u origin main
 
 To deploy your site to Pages:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**.
 3. Select the **Pages** tab.
 4. Select **Import an existing Git repository**.
 5. Select the new GitHub repository that you created and then select **Begin setup**.
 6. In the **Set up builds and deployments** section, provide the following information:
 
-| Configuration option | Value           | |  Production branch | main |
-| -------------------- | --------------- | -------------------- | ---- |
-| Build command        | pelican content |                      |      |
-| Build directory      | output          |                      |      |
+Configuration option | Value
+| Production branch | `main` |
+| --- | --- |
+| Build command | `pelican content` |
+| Build directory | `output` |
 
-1. Select **Environment variables (advanced)** and set the `PYTHON_VERSION` variable with the value of `3.7`.
+7. Select **Environment variables (advanced)** and set the `PYTHON_VERSION` variable with the value of `3.7`.
 
 For the complete guide to deploying your first site to Cloudflare Pages, refer to the [Get started guide](https://developers.cloudflare.com/pages/get-started/).
 

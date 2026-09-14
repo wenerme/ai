@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Stream output
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/guides/streaming-output/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/guides/streaming-output/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide shows you how to handle real-time output from commands, processes, and code execution.
 
@@ -26,17 +26,17 @@ In the **1.0 preview** (`@next`), stream with process handle methods such as `lo
 
 Use streaming when you need:
 
-* **Real-time feedback** \- Show progress as it happens
-* **Long-running operations** \- Builds, tests, installations that take time
-* **Interactive applications** \- Chat bots, code execution, live demos
-* **Large output** \- Process output incrementally instead of all at once
-* **User experience** \- Prevent users from waiting with no feedback
+- **Real-time feedback** - Show progress as it happens
+- **Long-running operations** - Builds, tests, installations that take time
+- **Interactive applications** - Chat bots, code execution, live demos
+- **Large output** - Process output incrementally instead of all at once
+- **User experience** - Prevent users from waiting with no feedback
 
 Use non-streaming (`exec()`) for:
 
-* **Quick operations** \- Commands that complete in seconds
-* **Small output** \- When output fits easily in memory
-* **Post-processing** \- When you need complete output before processing
+- **Quick operations** - Commands that complete in seconds
+- **Small output** - When output fits easily in memory
+- **Post-processing** - When you need complete output before processing
 
 ## Stream command execution
 
@@ -264,17 +264,17 @@ for await (const event of parseSSEStream<ExecEvent>(stream)) {
 
 ## Best practices
 
-* **Always consume streams** \- Don't let streams hang unconsumed
-* **Handle all event types** \- Process stdout, stderr, complete, and error events
-* **Check exit codes** \- Non-zero exit codes indicate failure
-* **Provide feedback** \- Show progress to users for long operations
+- **Always consume streams** - Don't let streams hang unconsumed
+- **Handle all event types** - Process stdout, stderr, complete, and error events
+- **Check exit codes** - Non-zero exit codes indicate failure
+- **Provide feedback** - Show progress to users for long operations
 
 ## Related resources
 
-* [Commands API reference](https://developers.cloudflare.com/sandbox/api/commands/) \- Complete streaming API
-* [Execute commands guide](https://developers.cloudflare.com/sandbox/guides/execute-commands/) \- Command execution patterns
-* [Background processes guide](https://developers.cloudflare.com/sandbox/guides/background-processes/) \- Process log streaming
-* [Code Interpreter guide](https://developers.cloudflare.com/sandbox/guides/code-execution/) \- Stream code execution output
+- [Commands API reference](https://developers.cloudflare.com/sandbox/api/commands/) - Complete streaming API
+- [Execute commands guide](https://developers.cloudflare.com/sandbox/guides/execute-commands/) - Command execution patterns
+- [Background processes guide](https://developers.cloudflare.com/sandbox/guides/background-processes/) - Process log streaming
+- [Code Interpreter guide](https://developers.cloudflare.com/sandbox/guides/code-execution/) - Stream code execution output
 
 Was this helpful?
 

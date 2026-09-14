@@ -12,10 +12,10 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Examples
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [Connect to PostgreSQL](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/)
-* [Connect to MySQL](https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/)
+- [Connect to PostgreSQL](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/)
+- [Connect to MySQL](https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/)
 
 Was this helpful?
 

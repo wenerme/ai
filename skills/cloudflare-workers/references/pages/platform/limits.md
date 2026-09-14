@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Limits
 
-Last updated Sep 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/platform/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Below are limits observed by the Cloudflare Free plan. For more details on removing these limits, refer to the [Cloudflare plans ↗](https://www.cloudflare.com/plans) page.
 
@@ -24,10 +24,10 @@ To request an adjustment to a limit, complete the [Limit Increase Request Form �
 
 Each time you push new code to your Git repository, Pages will build and deploy your site. Build limits depend on your plan:
 
-|                  | Free              | Pro                 | Business             |
-| ---------------- | ----------------- | ------------------- | -------------------- |
-| Builds           | 1 build at a time | 5 concurrent builds | 20 concurrent builds |
-| Builds per month | 500               | 5,000               | 20,000               |
+|  | Free | Pro | Business |
+| --- | --- | --- | --- |
+| Builds | 1 build at a time | 5 concurrent builds | 20 concurrent builds |
+| Builds per month | 500 | 5,000 | 20,000 |
 
 Builds will timeout after 20 minutes. Concurrent builds are counted per account.
 
@@ -35,9 +35,9 @@ Builds will timeout after 20 minutes. Concurrent builds are counted per account.
 
 Based on your Cloudflare plan type, a Pages project is limited to a specific number of custom domains. This limit is on a per-project basis.
 
-| Free | Pro | Business | Enterprise                 |
-| ---- | --- | -------- | -------------------------- |
-| 100  | 250 | 500      | 500[1](#user-content-fn-1) |
+| Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- |
+| 100 | 250 | 500 | 500<sup>[1](#user-content-fn-1)</sup> |
 
 ## Files
 
@@ -71,7 +71,7 @@ You can have an unlimited number of [preview deployments](https://developers.clo
 
 ## Redirects
 
-A `_redirects` file can have a maximum of 2,000 static redirects and 100 dynamic redirects, for a combined total of 2,100 redirects. It is recommended to use [Bulk Redirects](https://developers.cloudflare.com/pages/configuration/redirects/#surpass-%5Fredirects-limits) when you have a need for more than the `_redirects` file supports.
+A `_redirects` file can have a maximum of 2,000 static redirects and 100 dynamic redirects, for a combined total of 2,100 redirects. It is recommended to use [Bulk Redirects](https://developers.cloudflare.com/pages/configuration/redirects/#surpass-_redirects-limits) when you have a need for more than the `_redirects` file supports.
 
 ## Users
 
@@ -79,12 +79,12 @@ Your Pages site can be managed by an unlimited number of users via the Cloudflar
 
 ## Projects
 
-Cloudflare Pages has a limit of 100 projects[2](#user-content-fn-2) per account. This limit is not routinely increased.
+Cloudflare Pages has a limit of 100 projects<sup>[2](#user-content-fn-2)</sup> per account. This limit is not routinely increased.
 
 If you need to host more than 100 sites, use one of these products designed for scale:
 
-* **[Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/)** — Deploy sites and applications at scale with no project limit. Supports [static assets](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/static-assets/).
-* **[Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/)** — Deploy static sites as individual Workers. Paid plans support up to 500 Workers per account, each serving up to 100,000 static asset files.
+- **[Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/)** — Deploy sites and applications at scale with no project limit. Supports [static assets](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/static-assets/).
+- **[Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/)** — Deploy static sites as individual Workers. Paid plans support up to 500 Workers per account, each serving up to 100,000 static asset files.
 
 Note
 

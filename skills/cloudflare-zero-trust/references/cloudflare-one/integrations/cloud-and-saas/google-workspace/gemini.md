@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Gemini for Google Workspace
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/gemini/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/gemini/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Gemini for Google Workspace integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated Google Workspace account that could leave you and your organization vulnerable.
 
 ## Integration prerequisites
 
-* A Google Workspace account with a Business Starter, Business Standard, Business Plus or Enterprise plan
-* A Google Workspace user with [Super Admin privileges ↗](https://support.google.com/a/answer/2405986) and [Owner permissions ↗](https://cloud.google.com/iam/docs/understanding-roles) in the Google Cloud Platform (GCP) project used
+- A Google Workspace account with a Business Starter, Business Standard, Business Plus or Enterprise plan
+- A Google Workspace user with [Super Admin privileges ↗](https://support.google.com/a/answer/2405986) and [Owner permissions ↗](https://cloud.google.com/iam/docs/understanding-roles) in the Google Cloud Platform (GCP) project used
 
 ## Integration permissions
 
@@ -33,24 +33,24 @@ To stay up-to-date with new CASB findings as they are added, bookmark this page 
 
 ### User account settings
 
-| Finding type                                                                             | FindingTypeID                        | Severity | Description                                                                                                  |
-| ---------------------------------------------------------------------------------------- | ------------------------------------ | -------- | ------------------------------------------------------------------------------------------------------------ |
-| Google Workspace: Admin user with Gemini license with two-factor authentication disabled | 27a0a9a0-13c6-4d8f-a67c-b455dd213cb9 | High     | An administrator with a Gemini for Google Workspace license does not have two-factor authentication enabled. |
-| Google Workspace: User with Gemini license with two-factor authentication disabled       | c82024dc-b836-4b86-8c90-ab07971474e4 | Medium   | A user with a Gemini for Google Workspace license does not have two-factor authentication enabled.           |
+| Finding type | FindingTypeID | Severity | Description |
+| --- | --- | --- | --- |
+| Google Workspace: Admin user with Gemini license with two-factor authentication disabled | `27a0a9a0-13c6-4d8f-a67c-b455dd213cb9` | High | An administrator with a Gemini for Google Workspace license does not have two-factor authentication enabled. |
+| Google Workspace: User with Gemini license with two-factor authentication disabled | `c82024dc-b836-4b86-8c90-ab07971474e4` | Medium | A user with a Gemini for Google Workspace license does not have two-factor authentication enabled. |
 
 ### Inactive or suspended users
 
-| Finding type                                                 | FindingTypeID                        | Severity | Description                                                                            |
-| ------------------------------------------------------------ | ------------------------------------ | -------- | -------------------------------------------------------------------------------------- |
-| Google Workspace: Admin user suspended with AI Ultra license | ee7d4ed6-479f-404f-8dbd-f82dce2a0f66 | Low      | An administrator account with an AI Ultra (Gemini for Workspace) license is suspended. |
-| Google Workspace: User suspended with AI Ultra license       | cf20e808-29ad-4026-a8f9-6ec3e069376c | Low      | A user account with an AI Ultra (Gemini for Workspace) license is suspended.           |
+| Finding type | FindingTypeID | Severity | Description |
+| --- | --- | --- | --- |
+| Google Workspace: Admin user suspended with AI Ultra license | `ee7d4ed6-479f-404f-8dbd-f82dce2a0f66` | Low | An administrator account with an AI Ultra (Gemini for Workspace) license is suspended. |
+| Google Workspace: User suspended with AI Ultra license | `cf20e808-29ad-4026-a8f9-6ec3e069376c` | Low | A user account with an AI Ultra (Gemini for Workspace) license is suspended. |
 
 ### Gemini licensing
 
-| Finding type                                       | FindingTypeID                        | Severity | Description                                                                                  |
-| -------------------------------------------------- | ------------------------------------ | -------- | -------------------------------------------------------------------------------------------- |
-| Google Workspace: Admin user with AI Ultra license | 62fa682a-c2b5-4d5a-a086-8e60bed804d3 | Low      | An administrator in Google Workspace is assigned an AI Ultra (Gemini for Workspace) license. |
-| Google Workspace: User with AI Ultra license       | 5b847ed3-6c02-4963-a1ab-82a4aa2b6c64 | Low      | A user in Google Workspace is assigned an AI Ultra (Gemini for Workspace) license.           |
+| Finding type | FindingTypeID | Severity | Description |
+| --- | --- | --- | --- |
+| Google Workspace: Admin user with AI Ultra license | `62fa682a-c2b5-4d5a-a086-8e60bed804d3` | Low | An administrator in Google Workspace is assigned an AI Ultra (Gemini for Workspace) license. |
+| Google Workspace: User with AI Ultra license | `5b847ed3-6c02-4963-a1ab-82a4aa2b6c64` | Low | A user in Google Workspace is assigned an AI Ultra (Gemini for Workspace) license. |
 
 Was this helpful?
 

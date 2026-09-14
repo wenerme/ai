@@ -12,16 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Add a prefix
 
-Last updated Jun 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/how-to/add-prefix/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/how-to/add-prefix/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To add a [prefix](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#prefixes) to Advanced DDoS Protection:
 
-1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page.
-[Go to **DDoS Managed Rules** ↗](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
+1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page. [Go to **DDoS Managed Rules** ↗](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
 2. Go to **Advanced Protection**.
-3. Under **General settings** \> **Prefixes**, select **Edit**.
+3. Under **General settings** > **Prefixes**, select **Edit**.
 4. Expand the **Add existing prefix** section and select **Add** next to the prefix you wish to add.
-Alternatively, enter a prefix and (optionally) a description in **Prefix** and **Description**, respectively, and select **Add**.
+    Alternatively, enter a prefix and (optionally) a description in **Prefix** and **Description**, respectively, and select **Add**.
 
 Note
 

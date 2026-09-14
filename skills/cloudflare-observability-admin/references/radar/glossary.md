@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Glossary
 
-Last updated Jun 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/radar/glossary/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/glossary/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page provides a list of terms and concepts to help you understand Radar and the information shown.
 
@@ -32,32 +32,32 @@ Layer 7 attack information based on mitigated requests, including the most frequ
 
 The Internet is a network of networks, and autonomous systems are the networks that make up the Internet. More specifically, an autonomous system (AS) is a large network or group of networks that has a unified routing policy - the process by which a path through one or more networks is chosen.
 
-Data packets hop from one AS to another until they reach their final destination. Every computer or device that connects to the Internet is connected to an AS. ISPs have one or more ASes, and each AS is assigned an official Autonomous System Number (ASN) for use in Border Gateway Protocol (BGP) routing. For example, Cloudflare's ASN is AS13335\. Learn more in the [Cloudflare Learning Center ↗](https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/).
+Data packets hop from one AS to another until they reach their final destination. Every computer or device that connects to the Internet is connected to an AS. ISPs have one or more ASes, and each AS is assigned an official Autonomous System Number (ASN) for use in Border Gateway Protocol (BGP) routing. For example, Cloudflare's ASN is AS13335. Learn more in the [Cloudflare Learning Center ↗](https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/).
 
 ## Autonomous System Provider Authorization (ASPA)
 
-[Autonomous System Provider Authorization (ASPA) ↗](https://datatracker.ietf.org/doc/draft-ietf-sidrops-aspa-verification/) is a cryptographic object within the [Resource Public Key Infrastructure (RPKI) ↗](https://en.wikipedia.org/wiki/Resource%5FPublic%5FKey%5FInfrastructure) that extends route security beyond origin validation. While RPKI Route Origin Authorizations (ROAs) verify which [Autonomous System (AS) ↗](https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/) is authorized to originate a prefix, ASPA validates the BGP `AS_PATH` by allowing an AS to declare its authorized upstream transit providers, enabling detection of route leaks and certain BGP hijacks with forged path segments.
+[Autonomous System Provider Authorization (ASPA) ↗](https://datatracker.ietf.org/doc/draft-ietf-sidrops-aspa-verification/) is a cryptographic object within the [Resource Public Key Infrastructure (RPKI) ↗](https://en.wikipedia.org/wiki/Resource_Public_Key_Infrastructure) that extends route security beyond origin validation. While RPKI Route Origin Authorizations (ROAs) verify which [Autonomous System (AS) ↗](https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/) is authorized to originate a prefix, ASPA validates the BGP `AS_PATH` by allowing an AS to declare its authorized upstream transit providers, enabling detection of route leaks and certain BGP hijacks with forged path segments.
 
-Each ASPA record is created by a **Customer AS (CAS)** and lists a **Set of Provider ASes (SPAS)** authorized to propagate its routes upstream. Routers use these Customer-to-Provider relationships to evaluate whether a BGP `AS_PATH` is consistent with the legitimate routing topology, producing a verification outcome of `Valid`, `Invalid`, or `Unknown`. Although the IETF specification remains in draft, support for creating ASPA objects is available in RIR portals such as [ARIN ↗](https://www.arin.net/announcements/20260120/) and [RIPE NCC ↗](https://labs.ripe.net/author/tim%5Fbruijnzeels/aspa-in-the-rpki-dashboard-a-new-layer-of-routing-security/), and validation logic has been implemented in routing stacks including [OpenBGPD ↗](https://www.undeadly.org/cgi?action=article;sid=20231002135058) and [BIRD ↗](https://bird.network.cz/?get%5Fdoc&v=20&f=bird-5.html).
+Each ASPA record is created by a **Customer AS (CAS)** and lists a **Set of Provider ASes (SPAS)** authorized to propagate its routes upstream. Routers use these Customer-to-Provider relationships to evaluate whether a BGP `AS_PATH` is consistent with the legitimate routing topology, producing a verification outcome of `Valid`, `Invalid`, or `Unknown`. Although the IETF specification remains in draft, support for creating ASPA objects is available in RIR portals such as [ARIN ↗](https://www.arin.net/announcements/20260120/) and [RIPE NCC ↗](https://labs.ripe.net/author/tim_bruijnzeels/aspa-in-the-rpki-dashboard-a-new-layer-of-routing-security/), and validation logic has been implemented in routing stacks including [OpenBGPD ↗](https://www.undeadly.org/cgi?action=article;sid=20231002135058) and [BIRD ↗](https://bird.network.cz/?get_doc&v=20&f=bird-5.html).
 
 ## BGP announcements
 
 Border Gateway Protocol (BGP) is the routing protocol for the Internet. Much like the post office processing mail, BGP picks the most efficient routes for delivering Internet traffic. A BGP announcement is a way for an AS to say to another, "When you receive traffic to this network prefix, please send it to me". That message is then processed and (possibly) forwarded to other ASes, allowing for every AS in the path to learn where to send traffic to that network prefix. Learn more in the [Cloudflare Learning Center ↗](https://www.cloudflare.com/learning/security/glossary/what-is-bgp/).
 
-On Cloudflare Radar, we provide time series charts for both the volume of BGP messages announced by ASes and the total size of their announced IP address space. BGP message volume shows the level of overall routing activity for a given AS, while announced IP address space indicates the size of the networks a given AS operates over time. We represent the IP address space size with the number of minimum routable network prefix sizes, which are the number of /24 prefixes for IPv4 and /48s for IPv6\. Correspondingly, a /24 prefix represents 256 IP addresses while a /48 represents 2^80 IP addresses.
+On Cloudflare Radar, we provide time series charts for both the volume of BGP messages announced by ASes and the total size of their announced IP address space. BGP message volume shows the level of overall routing activity for a given AS, while announced IP address space indicates the size of the networks a given AS operates over time. We represent the IP address space size with the number of minimum routable network prefix sizes, which are the number of /24 prefixes for IPv4 and /48s for IPv6. Correspondingly, a /24 prefix represents 256 IP addresses while a /48 represents 2^80 IP addresses.
 
 ## BGP route leaks
 
 [BGP route leaks ↗](https://www.rfc-editor.org/rfc/rfc7908.html) are defined as the propagation of routing announcements beyond their intended scope. In Cloudflare Radar, you can inspect the detected route leak events on the corresponding autonomous system number (ASN) pages. The columns in the table are defined as follows:
 
-* `From`: The autonomous system (AS) from which the routes are learned from.
-* `By`: The AS that leaked the routes, or the leaker.
-* `To`: The AS that received and propagated the leaked routes.
-* `Start` and `End`: The starting and ending time of a route leak event.
-* `BGP Msgs.`: The number of BGP announcements that contain leaked routes.
-* `Prefixes`: The number of IP prefixes a route leak event affects.
-* `Origins`: The number of origin ASes a route leak event affects.
-* `Vantage Points`: The number of route collectors that observed a route leak event.
+- `From`: The autonomous system (AS) from which the routes are learned from.
+- `By`: The AS that leaked the routes, or the leaker.
+- `To`: The AS that received and propagated the leaked routes.
+- `Start` and `End`: The starting and ending time of a route leak event.
+- `BGP Msgs.`: The number of BGP announcements that contain leaked routes.
+- `Prefixes`: The number of IP prefixes a route leak event affects.
+- `Origins`: The number of origin ASes a route leak event affects.
+- `Vantage Points`: The number of route collectors that observed a route leak event.
 
 Learn more about our route leak detection system design and usages in [How we detect route leaks and our new Cloudflare Radar route leak service ↗](https://blog.cloudflare.com/route-leak-detection-with-cloudflare-radar/) blog post.
 
@@ -67,22 +67,22 @@ Learn more about our route leak detection system design and usages in [How we de
 
 In Cloudflare Radar, you can inspect the detected BGP origin hijack events in the "BGP Origin Hijacks" table. The columns of the table are defined as follows:
 
-* `ID`: Event ID, clickable and navigates to the event details page.
-* `Detected Origin`: The AS that originated the prefixes at the time of detection, potentially being a BGP hijacker.
-* `Expected Origin(s)`: The AS(es) that are expected to originate the corresponding prefixes based on various evidences.
-* `Start Time (UTC)` and `Duration`: The detected timestamp in UTC with a human-readable time duration for how long the event lasted. Ongoing events will not have a duration value, indicated by the `--` sign.
-* `BGP Messages`: The number of BGP messages that contain the detected anomaly.
-* `Prefixes`: The prefixes hijacked during the event, showing only one full prefix due to table space limitation.
-* `Confidence`: The level of confidence that we have on the event being a true hijacks. Values can be `High`, `Medium`, or `Low`.
-* `Tags`: The relevant evidence presented as short tags, presenting key facts we compiled using additional data sources, such as RPKI validation results or network relationship.
+- `ID`: Event ID, clickable and navigates to the event details page.
+- `Detected Origin`: The AS that originated the prefixes at the time of detection, potentially being a BGP hijacker.
+- `Expected Origin(s)`: The AS(es) that are expected to originate the corresponding prefixes based on various evidences.
+- `Start Time (UTC)` and `Duration`: The detected timestamp in UTC with a human-readable time duration for how long the event lasted. Ongoing events will not have a duration value, indicated by the `--` sign.
+- `BGP Messages`: The number of BGP messages that contain the detected anomaly.
+- `Prefixes`: The prefixes hijacked during the event, showing only one full prefix due to table space limitation.
+- `Confidence`: The level of confidence that we have on the event being a true hijacks. Values can be `High`, `Medium`, or `Low`.
+- `Tags`: The relevant evidence presented as short tags, presenting key facts we compiled using additional data sources, such as RPKI validation results or network relationship.
 
 You can also access the detection result programmatically via our [public API](https://developers.cloudflare.com/api/resources/radar/subresources/bgp/subresources/hijacks/subresources/events/methods/list/) ([CC BY-NC 4.0 ↗](https://creativecommons.org/licenses/by-nc/4.0/) license).
 
 ## BGP real-time routes
 
-Cloudflare Radar's prefix routing page displays real-time BGP routes as a [Sankey diagram ↗](https://en.wikipedia.org/wiki/Sankey%5Fdiagram). This visualization is built using MRT data from [RouteViews ↗](https://www.routeviews.org/routeviews/) and [RIPE RIS ↗](https://www.ripe.net/analyse/internet-measurements/routing-information-service-ris/), combined with real-time streams from RouteViews' Kafka instance and [RIS Live ↗](https://ris-live.ripe.net/).
+Cloudflare Radar's prefix routing page displays real-time BGP routes as a [Sankey diagram ↗](https://en.wikipedia.org/wiki/Sankey_diagram). This visualization is built using MRT data from [RouteViews ↗](https://www.routeviews.org/routeviews/) and [RIPE RIS ↗](https://www.ripe.net/analyse/internet-measurements/routing-information-service-ris/), combined with real-time streams from RouteViews' Kafka instance and [RIS Live ↗](https://ris-live.ripe.net/).
 
-By default, the route visualization shows paths from the originating AS to [Tier-1 networks ↗](https://en.wikipedia.org/wiki/Tier%5F1%5Fnetwork), omitting the segments from Tier-1 networks to BGP route collectors for clarity. Users can choose to see the complete paths using the "Show full paths" toggle.
+By default, the route visualization shows paths from the originating AS to [Tier-1 networks ↗](https://en.wikipedia.org/wiki/Tier_1_network), omitting the segments from Tier-1 networks to BGP route collectors for clarity. Users can choose to see the complete paths using the "Show full paths" toggle.
 
 Above the visualization, a table details the prefix origin, including the originating AS, its visibility percentage across route collectors, and [RPKI ↗](https://blog.cloudflare.com/rpki-details/) validation status (`valid`, `invalid`, `unknown`).
 
@@ -108,15 +108,15 @@ You can review the certificates issued for your domain name to ensure that there
 
 Key entities in CT include:
 
-* **CAs:** Organizations that issue certificates.
-* **CT Logs:** Public, append-only logs where issued certificates are recorded.
-* **Monitors:** Parties that check logs for correctness.
+- **CAs:** Organizations that issue certificates.
+- **CT Logs:** Public, append-only logs where issued certificates are recorded.
+- **Monitors:** Parties that check logs for correctness.
 
 The data available in Cloudflare Radar is derived from the CT logs currently monitored by Cloudflare. This enables visibility into certificate issuance trends, distributions, and metadata across the web.
 
 ## Connection characteristics
 
-Share of inbound connections to Cloudflare from mail transfer agents with the given characteristics. “IP Version” breaks down connections made over IPv4 and IPv6\. “Encryption” breaks down connections made over an encrypted connection using TLS, and those made over an unencrypted connection, in the clear. Data for these metrics comes from Cloudflare’s email routing service.
+Share of inbound connections to Cloudflare from mail transfer agents with the given characteristics. “IP Version” breaks down connections made over IPv4 and IPv6. “Encryption” breaks down connections made over an encrypted connection using TLS, and those made over an unencrypted connection, in the clear. Data for these metrics comes from Cloudflare’s email routing service.
 
 ## Connection quality
 
@@ -242,17 +242,17 @@ Currently, we only include AI-focused user agents listed in the [ai.robots.txt �
 
 ## TCP resets and timeouts
 
-In the Transmission Control Protocol (TCP), client-initiated connection resets (via the RST flag, TCP's "panic button") are atypical, and indicate to the server that _something went wrong_ requiring the connection to be closed immediately. Similarly, connection timeouts (where the server closes a connection due to an unresponsive client) should not happen in conventional data exchanges. For comparison, a typical TCP connection consists of a 3-way handshake initiated by a client with a SYN packet to the server, then a data exchange moderated with ACK and PSH flags in the data packets, and finally a graceful close initiated from either side with a FIN packet. A FIN close is considered graceful because it ensures both sides complete their data transfer before closing the connection. In contrast, a timeout or RST flag triggers a hard stop, even if data is waiting to be sent or acknowledged. See [RFC 9293 ↗](https://datatracker.ietf.org/doc/html/rfc9293) for more details on the TCP protocol.
+In the Transmission Control Protocol (TCP), client-initiated connection resets (via the RST flag, TCP's "panic button") are atypical, and indicate to the server that *something went wrong* requiring the connection to be closed immediately. Similarly, connection timeouts (where the server closes a connection due to an unresponsive client) should not happen in conventional data exchanges. For comparison, a typical TCP connection consists of a 3-way handshake initiated by a client with a SYN packet to the server, then a data exchange moderated with ACK and PSH flags in the data packets, and finally a graceful close initiated from either side with a FIN packet. A FIN close is considered graceful because it ensures both sides complete their data transfer before closing the connection. In contrast, a timeout or RST flag triggers a hard stop, even if data is waiting to be sent or acknowledged. See [RFC 9293 ↗](https://datatracker.ietf.org/doc/html/rfc9293) for more details on the TCP protocol.
 
 A TCP server may see timed-out or reset connections for a variety of reasons. Some are benign, such as client applications that lose connectivity or abruptly shut down (e.g., browsers cleaning up closed tabs or port scanners). Others are more concerning, such as [DoS attacks ↗](https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack/) or third-party interference. In some cases, a close examination of the packets in a connection can help to shed light on the reason for termination. For example, [Global, Passive Detection of Connection Tampering ↗](https://research.cloudflare.com/publications/SundaraRaman2023/) finds that certain packet patterns can be linked to middlebox connection tampering.
 
 On Cloudflare Radar’s [Security & Attacks page ↗](https://radar.cloudflare.com/security-and-attacks), you can view statistics on resets and timeouts from a sample of TCP connections to Cloudflare’s servers, broken down by how far the connection progressed before termination. The plot lines are defined as follows:
 
-* **Post-SYN (mid-handshake)**: Connection resets or timeouts after the server received only a single SYN packet.
-* **Post-ACK (immediately post-handshake)**: Connection resets or timeouts after the server received both a SYN packet and an ACK packet, meaning the connection was successfully established.
-* **Post-PSH (after first data packet)**: Connection resets or timeouts after the server received a packet with PSH flag set, following connection establishment. The PSH flag indicates that the TCP packet contains data (such as a TLS Client Hello message) ready to deliver to the application.
-* **Later (after multiple data packets)**: Connection resets within the first 10 packets from the client, but after the server has received multiple data packets.
-* **None**: All other connections.
+- **Post-SYN (mid-handshake)**: Connection resets or timeouts after the server received only a single SYN packet.
+- **Post-ACK (immediately post-handshake)**: Connection resets or timeouts after the server received both a SYN packet and an ACK packet, meaning the connection was successfully established.
+- **Post-PSH (after first data packet)**: Connection resets or timeouts after the server received a packet with PSH flag set, following connection establishment. The PSH flag indicates that the TCP packet contains data (such as a TLS Client Hello message) ready to deliver to the application.
+- **Later (after multiple data packets)**: Connection resets within the first 10 packets from the client, but after the server has received multiple data packets.
+- **None**: All other connections.
 
 Learn more about the TCP resets and timeouts dataset in our [blog post ↗](https://blog.cloudflare.com/tcp-resets-timeouts).
 
@@ -270,9 +270,9 @@ Malicious email messages may be part of a phishing campaign, where recipients ar
 
 ## Traffic type filter
 
-* **Human Only Traffic**: Traffic that our algorithms determine as being generated by human activity.
-* **Automated Only Traffic**: Traffic that our algorithms determine as being generated by bot or automated script activity.
-* **All Traffic**: Use all traffic, which includes both human activity and automated activity.
+- **Human Only Traffic**: Traffic that our algorithms determine as being generated by human activity.
+- **Automated Only Traffic**: Traffic that our algorithms determine as being generated by bot or automated script activity.
+- **All Traffic**: Use all traffic, which includes both human activity and automated activity.
 
 ## Trends
 

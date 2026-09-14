@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Getting started
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/queues/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Queues is a flexible messaging queue that allows you to queue messages for asynchronous processing. By following this guide, you will create your first queue, a Worker to publish messages to that queue, and a consumer Worker to consume messages from that queue.
 
@@ -21,13 +21,21 @@ Cloudflare Queues is a flexible messaging queue that allows you to queue message
 To use Queues, you will need:
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
 
-## 1\. Create a Worker project
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
+
+## 1. Create a Worker project
 
 You will access your queue from a Worker, the producer Worker. You must create at least one producer Worker to publish messages onto your queue. If you are using [R2 Bucket Event Notifications](https://developers.cloudflare.com/r2/buckets/event-notifications/), then you do not need a producer Worker.
 
@@ -49,13 +57,13 @@ pnpm create cloudflare@latest producer-worker
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `TypeScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `TypeScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
-This will create a new directory, which will include both a `src/index.ts` Worker script, and a [wrangler.jsonc](https://developers.cloudflare.com/workers/wrangler/configuration/) configuration file. After you create your Worker, you will create a Queue to access.
+This will create a new directory, which will include both a `src/index.ts` Worker script, and a [`wrangler.jsonc`](https://developers.cloudflare.com/workers/wrangler/configuration/) configuration file. After you create your Worker, you will create a Queue to access.
 
 Move into the newly created directory:
 
@@ -63,7 +71,7 @@ Move into the newly created directory:
 cd producer-worker
 ```
 
-## 2\. Create a queue
+## 2. Create a queue
 
 To use queues, you need to create at least one queue to publish messages to and consume messages from.
 
@@ -79,7 +87,7 @@ Queue names must be 1 to 63 characters long. Queue names cannot contain special 
 
 You cannot change your queue name after you have set it. After you create your queue, you will set up your producer Worker to access it.
 
-## 3\. Set up your producer Worker
+## 3. Set up your producer Worker
 
 To expose your queue to the code inside your Worker, you need to connect your queue to your Worker by creating a binding. [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) allow your Worker to access resources, such as Queues, on the Cloudflare developer platform.
 
@@ -142,7 +150,7 @@ export interface Env {
 
 If this write fails, your Worker will return an error (raise an exception). If this write works, it will return `Success` back with a HTTP `200` status code to the browser.
 
-In a production application, you would likely use a [try...catch ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) statement to catch the exception and handle it directly (for example, return a custom error or even retry).
+In a production application, you would likely use a [`try...catch` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) statement to catch the exception and handle it directly (for example, return a custom error or even retry).
 
 ### Publish your producer Worker
 
@@ -164,11 +172,11 @@ Copy your `*.workers.dev` subdomain and paste it into a new browser tab. Refresh
 
 You have built a queue and a producer Worker to publish messages to the queue. You will now create a consumer Worker to consume the messages published to your queue. Without a consumer Worker, the messages will stay on the queue until they expire, which defaults to four (4) days.
 
-## 4\. Create your consumer Worker
+## 4. Create your consumer Worker
 
 A consumer Worker receives messages from your queue. When the consumer Worker receives your queue's messages, it can write them to another source, such as a logging console or storage objects.
 
-In this guide, you will create a consumer Worker and use it to log and inspect the messages with [wrangler tail](https://developers.cloudflare.com/workers/wrangler/commands/general/#tail). You will create your consumer Worker in the same Worker project that you created your producer Worker.
+In this guide, you will create a consumer Worker and use it to log and inspect the messages with [`wrangler tail`](https://developers.cloudflare.com/workers/wrangler/commands/general/#tail). You will create your consumer Worker in the same Worker project that you created your producer Worker.
 
 Note
 
@@ -250,7 +258,7 @@ With your Wrangler file and `index.ts` file configured, publish your consumer Wo
 npx wrangler deploy
 ```
 
-## 5\. Read messages from your queue
+## 5. Read messages from your queue
 
 After you set up consumer Worker, you can read messages from the queue.
 
@@ -276,7 +284,7 @@ By completing this guide, you have now created a queue, a producer Worker that p
 
 ## Related resources
 
-* Learn more about [Cloudflare Workers](https://developers.cloudflare.com/workers/) and the applications you can build on Cloudflare.
+- Learn more about [Cloudflare Workers](https://developers.cloudflare.com/workers/) and the applications you can build on Cloudflare.
 
 Was this helpful?
 
@@ -287,5 +295,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/get-started/#page","headline":"Getting started · Cloudflare Queues docs","description":"Create your first Cloudflare Queue, a producer Worker, and a consumer Worker.","url":"https://developers.cloudflare.com/queues/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/get-started/#page","headline":"Getting started · Cloudflare Queues docs","description":"Create your first Cloudflare Queue, a producer Worker, and a consumer Worker.","url":"https://developers.cloudflare.com/queues/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

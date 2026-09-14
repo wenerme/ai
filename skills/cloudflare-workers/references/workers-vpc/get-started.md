@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-vpc/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide will walk you through creating your first Workers VPC Service, allowing your Worker to access resources in your private network.
 
@@ -27,19 +27,27 @@ Workers VPC is currently in beta. Features and APIs may change before general av
 Before you begin, ensure you have completed the following:
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
+
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
 
 Additionally, you will need:
 
-* Access to a private network (your local network, AWS VPC, Azure VNet, GCP VPC, or on-premise networks)
-* The **Connectivity Directory Bind** role to bind to existing VPC Services from Workers.
-* Or, the **Connectivity Directory Admin** role to create VPC Services, and bind to them from Workers.
+- Access to a private network (your local network, AWS VPC, Azure VNet, GCP VPC, or on-premise networks)
+- The **Connectivity Directory Bind** role to bind to existing VPC Services from Workers.
+- Or, the **Connectivity Directory Admin** role to create VPC Services, and bind to them from Workers.
 
-## 1\. Create a new Worker project
+## 1. Create a new Worker project
 
 Create a new Worker project using Wrangler:
 
@@ -59,11 +67,11 @@ pnpm create cloudflare@latest workers-vpc-app
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `TypeScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `TypeScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 Navigate to your project directory:
 
@@ -71,7 +79,7 @@ Navigate to your project directory:
 cd workers-vpc-app
 ```
 
-## 2\. Set up Cloudflare Tunnel
+## 2. Set up Cloudflare Tunnel
 
 A Cloudflare Tunnel creates a secure connection from your private network to Cloudflare. This tunnel will allow Workers to securely access your private resources. You can create the tunnel on a virtual machine or container in your external cloud, or even on your local desktop for the sake of this tutorial.
 
@@ -93,7 +101,7 @@ This guide provides a quick setup for Workers VPC.
 
 For comprehensive tunnel configuration, monitoring, and management, refer to the [full Cloudflare Tunnel documentation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/).
 
-## 3\. Create a VPC Service
+## 3. Create a VPC Service
 
 Now that your tunnel is running, create a VPC Service that Workers can use to access your internal resources:
 
@@ -103,13 +111,11 @@ Now that your tunnel is running, create a VPC Service that Workers can use to ac
 4. Select your tunnel from the **Tunnel** dropdown, or select **Create Tunnel** if you need to create a new one.
 5. Enter the **Host or IP address** of your internal service (for example, `localhost`, `internal-api.company.local`, or `10.0.1.50`).
 6. Configure **Ports**. Select either:
-
-  * **Use default ports** for standard HTTP (80) and HTTPS (443)
-  * **Provide port values** to specify custom HTTP and HTTPS ports
+   - **Use default ports** for standard HTTP (80) and HTTPS (443)
+   - **Provide port values** to specify custom HTTP and HTTPS ports
 7. Configure **DNS Resolver**. Select either:
-
-  * **Use tunnel as resolver** to use the tunnel's built-in DNS resolution
-  * **Custom resolver** and enter your DNS resolver IP (for example, `8.8.8.8`)
+   - **Use tunnel as resolver** to use the tunnel's built-in DNS resolution
+   - **Custom resolver** and enter your DNS resolver IP (for example, `8.8.8.8`)
 8. Select **Create service** to create your VPC Service.
 
 The dashboard will display your new VPC Service with a unique Service ID. Save this Service ID for the next step.
@@ -136,21 +142,21 @@ npx wrangler vpc service create my-database \
 
 Replace:
 
-* `<YOUR_TUNNEL_ID>` with your tunnel ID from step 2
-* `<YOUR_HOSTNAME>` with your internal service hostname (for example, `internal-api.company.local`)
-* `<YOUR_IPV4_ADDRESS>` with the private IP address of your service (for example, `10.0.1.50`)
+- `<YOUR_TUNNEL_ID>` with your tunnel ID from step 2
+- `<YOUR_HOSTNAME>` with your internal service hostname (for example, `internal-api.company.local`)
+- `<YOUR_IPV4_ADDRESS>` with the private IP address of your service (for example, `10.0.1.50`)
 
 You can also:
 
-* Create services using IP addresses by replacing `--hostname <YOUR_HOSTNAME>` with `--ipv4 <YOUR_IPV4_ADDRESS>`, `--ipv6 <YOUR_IPV6_ADDRESS>`, or both for dual-stack configuration
-* Specify custom ports for HTTP services by adding `--http-port <PORT>` and/or `--https-port <PORT>` (for example, `--http-port 8080 --https-port 8443`)
-* Set the TLS certificate verification mode with `--cert-verification-mode` (`verify_full`, `verify_ca`, or `disabled`)
+- Create services using IP addresses by replacing `--hostname <YOUR_HOSTNAME>` with `--ipv4 <YOUR_IPV4_ADDRESS>`, `--ipv6 <YOUR_IPV6_ADDRESS>`, or both for dual-stack configuration
+- Specify custom ports for HTTP services by adding `--http-port <PORT>` and/or `--https-port <PORT>` (for example, `--http-port 8080 --https-port 8443`)
+- Set the TLS certificate verification mode with `--cert-verification-mode` ( `verify_full`, `verify_ca`, or `disabled`)
 
 The command will return a service ID. Save this for the next step.
 
 If you encounter permission errors, refer to [Required roles](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/#required-roles).
 
-## 4\. Configure your Worker
+## 4. Configure your Worker
 
 Add the VPC Service binding to your Wrangler configuration file:
 
@@ -160,7 +166,7 @@ Add the VPC Service binding to your Wrangler configuration file:
 	"name": "workers-vpc-app",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"vpc_services": [
 		{
 			"binding": "VPC_SERVICE",
@@ -175,7 +181,7 @@ Add the VPC Service binding to your Wrangler configuration file:
 name = "workers-vpc-app"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[vpc_services]]
 binding = "VPC_SERVICE"
@@ -184,7 +190,7 @@ service_id = "<YOUR_SERVICE_ID>"
 
 Replace `<YOUR_SERVICE_ID>` with the service ID from step 3.
 
-## 5\. Write your Worker code
+## 5. Write your Worker code
 
 Update your Worker to use the VPC Service binding. The following example:
 
@@ -214,7 +220,7 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
-## 6\. Test locally
+## 6. Test locally
 
 Test your Worker locally. You must use remote VPC Services, using either [Workers remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings) as was configured in your `wrangler.jsonc` configuration file, or using `npx wrangler dev --remote`:
 
@@ -224,7 +230,7 @@ npx wrangler dev
 
 Visit `http://localhost:8787` to test your Worker's connection to your private network.
 
-## 7\. Deploy your Worker
+## 7. Deploy your Worker
 
 Once testing is complete, deploy your Worker:
 
@@ -236,10 +242,10 @@ Your Worker is now deployed and can access your private network resources secure
 
 ## Next steps
 
-* Explore [configuration options](https://developers.cloudflare.com/workers-vpc/configuration/) for advanced setups
-* Set up [high availability tunnels](https://developers.cloudflare.com/workers-vpc/configuration/tunnel/hardware-requirements/) for production
-* View [platform-specific guides](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/deployment-guides/) for AWS, Azure, GCP, and Kubernetes
-* Check out [examples](https://developers.cloudflare.com/workers-vpc/examples/) for common use cases
+- Explore [configuration options](https://developers.cloudflare.com/workers-vpc/configuration/) for advanced setups
+- Set up [high availability tunnels](https://developers.cloudflare.com/workers-vpc/configuration/tunnel/hardware-requirements/) for production
+- View [platform-specific guides](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/deployment-guides/) for AWS, Azure, GCP, and Kubernetes
+- Check out [examples](https://developers.cloudflare.com/workers-vpc/examples/) for common use cases
 
 Was this helpful?
 
@@ -250,5 +256,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/get-started/#page","headline":"Get started · Cloudflare Workers VPC","description":"Create your first Workers VPC Service and connect a Worker to your private network.","url":"https://developers.cloudflare.com/workers-vpc/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/get-started/#page","headline":"Get started · Cloudflare Workers VPC","description":"Create your first Workers VPC Service and connect a Worker to your private network.","url":"https://developers.cloudflare.com/workers-vpc/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

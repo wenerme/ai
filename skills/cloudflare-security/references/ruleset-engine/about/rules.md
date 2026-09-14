@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Rules
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ruleset-engine/about/rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/about/rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A rule defines a filter and an action to perform on the incoming requests that match the filter.
 
-* The rule [expression](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/), also called filter expression, defines the scope of the rule.
-* The rule [action](https://developers.cloudflare.com/ruleset-engine/rules-language/actions/) defines what happens when there is a match for the expression.
+- The rule [expression](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/), also called filter expression, defines the scope of the rule.
+- The rule [action](https://developers.cloudflare.com/ruleset-engine/rules-language/actions/) defines what happens when there is a match for the expression.
 
 Rule expressions are defined using the [Rules language](https://developers.cloudflare.com/ruleset-engine/rules-language/).
 
-For example, consider the following ruleset with four rules (R1, R2, R3, and R4). For a given incoming request, the expression of the first two rules matches the request properties. Therefore, the action for these rules runs (_Execute_ and _Log_, respectively). The action of the first rule executes a managed ruleset, which means that every rule in the managed ruleset is evaluated. The action of the second rule logs an event associated with the current phase. There is no match for the expressions of rules 3 and 4, so their actions do not run. Since no rule blocks the request, it proceeds to the next phase.
+For example, consider the following ruleset with four rules (R1, R2, R3, and R4). For a given incoming request, the expression of the first two rules matches the request properties. Therefore, the action for these rules runs (*Execute* and *Log*, respectively). The action of the first rule executes a managed ruleset, which means that every rule in the managed ruleset is evaluated. The action of the second rule logs an event associated with the current phase. There is no match for the expressions of rules 3 and 4, so their actions do not run. Since no rule blocks the request, it proceeds to the next phase.
 
 ![Example of a rule execution scenario. Defines a ruleset with four rules, where the first rule executes a managed ruleset.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=663,height=334,format=webp/_astro/rulesets-rules-example.BDy4co6D.png)
 
@@ -33,9 +33,9 @@ When evaluating a rule, Cloudflare compares the values of request/response prope
 
 If the entire expression evaluates to `true`, there is a rule match and Cloudflare triggers the [action](https://developers.cloudflare.com/ruleset-engine/rules-language/actions/) configured in the rule. If the expression evaluates to `false`, the rule does not match and its configured action is not applied.
 
-Generally speaking, for [non-terminating actions](https://developers.cloudflare.com/ruleset-engine/rules-language/actions/) the last change made by rules in the same [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/) will win (later rules can overwrite changes done by previous rules). However, for terminating actions (_Block_, _Redirect_, or one of the challenge actions), rule evaluation will stop and the action will be executed immediately.
+Generally speaking, for [non-terminating actions](https://developers.cloudflare.com/ruleset-engine/rules-language/actions/) the last change made by rules in the same [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/) will win (later rules can overwrite changes done by previous rules). However, for terminating actions (*Block*, *Redirect*, or one of the challenge actions), rule evaluation will stop and the action will be executed immediately.
 
-For example, if multiple rules with the _Redirect_ action match, Cloudflare will always use the URL redirect of the first rule that matches. Also, if you configure URL redirects using different Cloudflare products (Single Redirects and Bulk Redirects), the product executed first will apply, if there is a rule match (in this case, Single Redirects).
+For example, if multiple rules with the *Redirect* action match, Cloudflare will always use the URL redirect of the first rule that matches. Also, if you configure URL redirects using different Cloudflare products (Single Redirects and Bulk Redirects), the product executed first will apply, if there is a rule match (in this case, Single Redirects).
 
 Refer to the [Phases list](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/) for the product execution order.
 
@@ -43,8 +43,8 @@ When you use `true` as the rule filter expression, this means "apply the rule to
 
 Notes
 
-* A rule filter expression must evaluate to a boolean value (either `true` or `false`).
-* Rules of specific Cloudflare products, such as [Transform Rules](https://developers.cloudflare.com/rules/transform/), may include other expressions used to specify dynamic values. These expressions do not have to evaluate to a boolean value.
+- A rule filter expression must evaluate to a boolean value (either `true` or `false`).
+- Rules of specific Cloudflare products, such as [Transform Rules](https://developers.cloudflare.com/rules/transform/), may include other expressions used to specify dynamic values. These expressions do not have to evaluate to a boolean value.
 
 ### Field values during rule evaluation
 
@@ -52,9 +52,9 @@ While evaluating rules for a given request/response, the values of all request a
 
 For example:
 
-* If a [URL rewrite rule](https://developers.cloudflare.com/rules/transform/url-rewrite/) #1 updates the URI path or the query string of a request, URL rewrite rule #2 will not take these earlier changes into consideration.
-* If a [request header transform rule](https://developers.cloudflare.com/rules/transform/request-header-modification/) #1 sets the value of an HTTP request header, request header transform rule #2 will not be able to read or evaluate this new value.
-* If a URL rewrite rule updates the URI path or query string of a request, the `http.request.uri`, `http.request.uri.*`, and `http.request.full_uri` fields will have a different value in phases after the `http_request_transform` phase (where URL Rewrite Rules are executed).
+- If a [URL rewrite rule](https://developers.cloudflare.com/rules/transform/url-rewrite/) #1 updates the URI path or the query string of a request, URL rewrite rule #2 will not take these earlier changes into consideration.
+- If a [request header transform rule](https://developers.cloudflare.com/rules/transform/request-header-modification/) #1 sets the value of an HTTP request header, request header transform rule #2 will not be able to read or evaluate this new value.
+- If a URL rewrite rule updates the URI path or query string of a request, the `http.request.uri`, `http.request.uri.*`, and `http.request.full_uri` fields will have a different value in phases after the `http_request_transform` phase (where URL Rewrite Rules are executed).
 
 Note
 

@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage event subscriptions
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/queues/event-subscriptions/manage-event-subscriptions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/event-subscriptions/manage-event-subscriptions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Learn how to:
 
-* Create event subscriptions to receive messages from Cloudflare services.
-* View existing subscriptions on your queues.
-* Delete subscriptions you no longer need.
+- Create event subscriptions to receive messages from Cloudflare services.
+- View existing subscriptions on your queues.
+- Delete subscriptions you no longer need.
 
 ## Create subscription
 
@@ -26,8 +26,7 @@ Creating a subscription allows your queue to receive messages when events occur 
 
 ### Dashboard
 
-1. In the Cloudflare dashboard, go to the **Queues** page.
-[Go to **Queues** ↗](https://dash.cloudflare.com/?to=/:account/workers/queues)
+1. In the Cloudflare dashboard, go to the **Queues** page. [Go to **Queues** ↗](https://dash.cloudflare.com/?to=/:account/workers/queues)
 2. Select the queue you want to add a subscription to.
 3. Switch to the **Subscriptions** tab.
 4. Select **Subscribe to events**.
@@ -36,7 +35,7 @@ Creating a subscription allows your queue to receive messages when events occur 
 
 ### Wrangler CLI
 
-To create a subscription using Wrangler, run the [queues subscription create command](https://developers.cloudflare.com/queues/reference/wrangler-commands/#queues-subscription-create):
+To create a subscription using Wrangler, run the [`queues subscription create command`](https://developers.cloudflare.com/queues/reference/wrangler-commands/#queues-subscription-create):
 
 ```bash
 npx wrangler queues subscription create <queue-name> --source <source-type> --events <event1,event2> --<source-specific-option> <value>
@@ -50,14 +49,13 @@ You can view all subscriptions configured for a queue to see what events it is c
 
 ### Dashboard
 
-1. In the Cloudflare dashboard, go to the **Queues** page.
-[Go to **Queues** ↗](https://dash.cloudflare.com/?to=/:account/workers/queues)
+1. In the Cloudflare dashboard, go to the **Queues** page. [Go to **Queues** ↗](https://dash.cloudflare.com/?to=/:account/workers/queues)
 2. Select the queue you want to view subscriptions for.
 3. Switch to the **Subscriptions** tab.
 
 ### Wrangler CLI
 
-To list subscriptions for a queue, run the [queues subscription list command](https://developers.cloudflare.com/queues/reference/wrangler-commands/#queues-subscription-list):
+To list subscriptions for a queue, run the [`queues subscription list command`](https://developers.cloudflare.com/queues/reference/wrangler-commands/#queues-subscription-list):
 
 ```bash
 npx wrangler queues subscription list <queue-name>
@@ -69,8 +67,7 @@ When you delete a subscription, your queue will stop receiving messages for thos
 
 ### Dashboard
 
-1. In the Cloudflare dashboard, go to the **Queues** page.
-[Go to **Queues** ↗](https://dash.cloudflare.com/?to=/:account/workers/queues)
+1. In the Cloudflare dashboard, go to the **Queues** page. [Go to **Queues** ↗](https://dash.cloudflare.com/?to=/:account/workers/queues)
 2. Select the queue containing the subscription you want to delete.
 3. Switch to the **Subscriptions** tab.
 4. Select **...** for the subscription you want to delete.
@@ -78,7 +75,7 @@ When you delete a subscription, your queue will stop receiving messages for thos
 
 ### Wrangler CLI
 
-To delete a subscription, run the [queues subscription delete command](https://developers.cloudflare.com/queues/reference/wrangler-commands/#queues-subscription-delete):
+To delete a subscription, run the [`queues subscription delete command`](https://developers.cloudflare.com/queues/reference/wrangler-commands/#queues-subscription-delete):
 
 ```bash
 npx wrangler queues subscription delete <queue-name> --id <subscription-id>

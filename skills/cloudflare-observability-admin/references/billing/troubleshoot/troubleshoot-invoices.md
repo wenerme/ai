@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshoot invoices
 
-Last updated May 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-invoices/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-invoices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use this page when invoice information is missing, invoice amounts differ from the Cloudflare dashboard, or company details do not appear as expected.
 
@@ -68,9 +68,9 @@ If the invoice discrepancy remains after one billing period, [contact Cloudflare
 
 ## Related resources
 
-* [Invoices](https://developers.cloudflare.com/billing/manage/invoices/) — Download and manage invoices
-* [How Cloudflare billing works](https://developers.cloudflare.com/billing/understand/how-billing-works/) — How to read your invoice
-* [Update billing information](https://developers.cloudflare.com/billing/get-started/update-billing-info/) — Change your billing email
+- [Invoices](https://developers.cloudflare.com/billing/manage/invoices/) — Download and manage invoices
+- [How Cloudflare billing works](https://developers.cloudflare.com/billing/understand/how-billing-works/) — How to read your invoice
+- [Update billing information](https://developers.cloudflare.com/billing/get-started/update-billing-info/) — Change your billing email
 
 Was this helpful?
 

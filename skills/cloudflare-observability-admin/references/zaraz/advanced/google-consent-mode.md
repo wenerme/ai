@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Google Consent Mode
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/zaraz/advanced/google-consent-mode/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/advanced/google-consent-mode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -66,7 +66,7 @@ You can verify that Zaraz is processing the Consent Mode settings by enabling th
 
 ## Consent Mode v1
 
-Consent Mode v1 was deprecated by Google in November 2023, but is still supported. Integration with Zaraz is more complex than Consent Mode v2\. You do not need to use Consent Mode v1 if you have implemented Consent Mode v2.
+Consent Mode v1 was deprecated by Google in November 2023, but is still supported. Integration with Zaraz is more complex than Consent Mode v2. You do not need to use Consent Mode v1 if you have implemented Consent Mode v2.
 
 ### Set up Consent Mode v1
 

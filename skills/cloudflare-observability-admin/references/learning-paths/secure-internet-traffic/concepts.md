@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Concepts
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/concepts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Learn the core concepts of using Cloudflare Zero Trust functionality to provide granular security policy for devices and networks accessing the Internet.
 
@@ -20,8 +20,8 @@ Learn the core concepts of using Cloudflare Zero Trust functionality to provide 
 
 By the end of this module, you will be able to:
 
-* Understand what products and features Cloudflare offers.
-* Describe how Cloudflare implements Internet traffic and SaaS app security.
+- Understand what products and features Cloudflare offers.
+- Describe how Cloudflare implements Internet traffic and SaaS app security.
 
 Was this helpful?
 

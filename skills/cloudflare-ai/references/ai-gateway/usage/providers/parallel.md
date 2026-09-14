@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Parallel
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/parallel/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/parallel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Parallel ↗](https://parallel.ai/) is a web API purpose-built for AIs, providing production-ready outputs with minimal hallucination and evidence-based results.
 
@@ -34,9 +34,9 @@ https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/parallel/v1/tasks
 
 When making requests to Parallel, ensure you have the following:
 
-* Your AI Gateway Account ID.
-* Your AI Gateway gateway name.
-* An active Parallel API key.
+- Your AI Gateway Account ID.
+- Your AI Gateway gateway name.
+- An active Parallel API key.
 
 ## Examples
 
@@ -93,7 +93,6 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1/chat/completion
 Specify:
 
 ```json
-
 {
 "model": "parallel/{model}"
 }

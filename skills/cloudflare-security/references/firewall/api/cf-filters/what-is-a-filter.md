@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # What is a filter?
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A filter is a way of saying:
 
@@ -42,8 +42,8 @@ The expression specified in this example filter is:
 
 This filter expression has a `(this or that) and not this` structure designed to:
 
-* Capture two WordPress paths that may be subject to brute force password attacks, and
-* Exclude traffic that comes from the IP address `93.184.216.34`.
+- Capture two WordPress paths that may be subject to brute force password attacks, and
+- Exclude traffic that comes from the IP address `93.184.216.34`.
 
 Imagine that this is an IP for your office. This expression demonstrates a filter that might be used (in a firewall rule) to block access to the WordPress login when accessed outside the office network.
 

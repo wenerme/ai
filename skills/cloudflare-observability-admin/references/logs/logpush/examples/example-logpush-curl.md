@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage Logpush with cURL
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/examples/example-logpush-curl/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/examples/example-logpush-curl/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can manage your Cloudflare Logpush service from the command line using cURL.
 
 Before getting started, review the following documentation:
 
-* [API configuration](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/)
+- [API configuration](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/)
 
 Note
 
@@ -26,10 +26,21 @@ The examples below are for zone-scoped datasets. Account-scoped datasets should 
 
 ## Step 1 - Get ownership challenge
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*Get ownership challengebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/ownership" \
@@ -42,7 +53,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/ownership" \
 
 ### Parameters
 
-* **destination\_conf** \- Refer to [Destination](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/#destination) for details.
+- **destination\_conf** - Refer to [Destination](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/#destination) for details.
 
 ### Response
 
@@ -69,10 +80,21 @@ When using Sumo Logic, you may find it helpful to have [Live Tail ↗](https://h
 
 ## Step 2 - Create a job
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*Create Logpush jobbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
@@ -102,17 +124,17 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
 
 ### Parameters
 
-* **name** (optional) - We suggest using your domain name as the job name; the name cannot be changed after the job is created.
-* **destination\_conf** \- Refer to [Destination](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/#destination) for details.
-* **dataset** \- The category of logs you want to receive. Refer to [Datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/) for the full list of supported datasets; this parameter cannot be changed after the job is created.
-* **output\_options** (optional) - Refer to [Log Output Options](https://developers.cloudflare.com/logs/logpush/logpush-job/log-output-options/).
-  * Typically includes the desired fields and timestamp format.
-  * Set the timestamp format to `RFC 3339` (`"timestamp_format": "rfc3339"`) for:
-    * Google BigQuery usage.
-    * Automated timestamp parsing within Sumo Logic; refer to [timestamps from Sumo Logic ↗](https://help.sumologic.com/03Send-Data/Sources/04Reference-Information-for-Sources/Timestamps%2C-Time-Zones%2C-Time-Ranges%2C-and-Date-Formats) for details.
-* **ownership\_challenge** \- Challenge token required to prove destination ownership.
-* **kind** (optional) - Used to differentiate between Logpush and Edge Log Delivery jobs. Refer to [Kind](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/#kind) for details.
-* **filter** (optional) - Refer to [Filters](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/) for details.
+- **name** (optional) - We suggest using your domain name as the job name; the name cannot be changed after the job is created.
+- **destination\_conf** - Refer to [Destination](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/#destination) for details.
+- **dataset** - The category of logs you want to receive. Refer to [Datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/) for the full list of supported datasets; this parameter cannot be changed after the job is created.
+- **output\_options** (optional) - Refer to [Log Output Options](https://developers.cloudflare.com/logs/logpush/logpush-job/log-output-options/).
+  - Typically includes the desired fields and timestamp format.
+  - Set the timestamp format to `RFC 3339` ( `"timestamp_format": "rfc3339"`) for:
+    - Google BigQuery usage.
+    - Automated timestamp parsing within Sumo Logic; refer to [timestamps from Sumo Logic ↗](https://help.sumologic.com/03Send-Data/Sources/04Reference-Information-for-Sources/Timestamps%2C-Time-Zones%2C-Time-Ranges%2C-and-Date-Formats) for details.
+- **ownership\_challenge** - Challenge token required to prove destination ownership.
+- **kind** (optional) - Used to differentiate between Logpush and Edge Log Delivery jobs. Refer to [Kind](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/#kind) for details.
+- **filter** (optional) - Refer to [Filters](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/) for details.
 
 ### Response
 
@@ -145,10 +167,21 @@ In the response, you get a newly-created job ID. For example:
 
 Start by retrieving information about a specific job, using a job ID:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*Get Logpush job detailsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \
@@ -185,10 +218,21 @@ Note that by default a job is not enabled (`"enabled": false`).
 
 If you do not remember your job ID, you can retrieve it using your zone ID:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*List Logpush jobsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
@@ -198,10 +242,21 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
 
 Next, to enable the job, send an update request:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*Update Logpush jobbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \
@@ -245,10 +300,21 @@ Once a job has been enabled and has started executing, the **last\_complete** fi
 
 ### Request to get job by ID and see **last\_complete** info
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*Get Logpush job detailsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \
@@ -283,10 +349,21 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" 
 
 ## Optional - Delete a job
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*Delete Logpush jobbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \
@@ -311,10 +388,21 @@ Be careful when deleting a job because this action cannot be reversed.
 
 Retrieve a specific job, using the job ID:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*Get Logpush job detailsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \
@@ -351,10 +439,21 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" 
 
 Retrieve all jobs for all datasets:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*List Logpush jobsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
@@ -406,10 +505,21 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
 
 If you want to add (or remove) fields, change the timestamp format, or enable protection against the `Log4j - CVE-2021-44228` vulnerability, first retrieve the current **output\_options** for your zone.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*Get Logpush job detailsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \
@@ -444,10 +554,21 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" 
 
 Next, edit the **output\_options** as desired and create a `PUT` request. The following example enables the **CVE-2021-44228** redaction option.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*Update Logpush jobbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" \

@@ -12,14 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Delete images
 
-Last updated Jun 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/storage/manage-images/delete-images/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/storage/manage-images/delete-images/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can delete an image from the Cloudflare Images storage using the dashboard, the API, or from a Worker via the [Images binding](https://developers.cloudflare.com/images/storage/binding/#imageimageiddelete).
 
 ## Delete images via the Cloudflare dashboard
 
-1. In the Cloudflare dashboard, go to the **Hosted Images** page.
-[Go to **Hosted images** ↗](https://dash.cloudflare.com/?to=/:account/images/hosted)
+1. In the Cloudflare dashboard, go to the **Hosted Images** page. [Go to **Hosted images** ↗](https://dash.cloudflare.com/?to=/:account/images/hosted)
 2. Find the image you want to remove and select **Delete**.
 3. (Optional) To delete more than one image, select the checkbox next to the images you want to delete and then **Delete selected**.
 

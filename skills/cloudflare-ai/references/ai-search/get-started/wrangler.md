@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # CLI
 
-Last updated Jul 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/get-started/wrangler/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/get-started/wrangler/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide walks you through creating an AI Search instance using the [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/).
 
-## 1\. Install Wrangler
+## 1. Install Wrangler
 
 Install [Wrangler](https://developers.cloudflare.com/workers/wrangler/), the command-line tool for Cloudflare Workers and developer platform products.
 
@@ -38,7 +38,7 @@ pnpm install wrangler
 bun install wrangler
 ```
 
-## 2\. Create an AI Search instance
+## 2. Create an AI Search instance
 
 Create a new instance.
 
@@ -46,7 +46,7 @@ Create a new instance.
 wrangler ai-search create my-instance
 ```
 
-You can upload files to the instance using the [dashboard](https://developers.cloudflare.com/ai-search/get-started/dashboard/#upload-content) or the [REST API](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/namespaces/subresources/instances/subresources/items/methods/upload/).
+You can upload files to the instance using the [dashboard](https://developers.cloudflare.com/ai-search/get-started/dashboard/#upload-content) or the [REST API](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/subresources/items/methods/upload/).
 
 ### Connect a data source (optional)
 
@@ -68,7 +68,7 @@ Index documents stored in an [R2 bucket](https://developers.cloudflare.com/ai-se
 wrangler ai-search create my-instance --type r2 --source my-bucket
 ```
 
-## 3\. Check indexing status
+## 3. Check indexing status
 
 Check if your content has finished indexing by running the `stats` command.
 
@@ -76,7 +76,7 @@ Check if your content has finished indexing by running the `stats` command.
 wrangler ai-search stats my-instance
 ```
 
-## 4\. Test your instance
+## 4. Test your instance
 
 Once indexing is complete, run a search query against your instance.
 

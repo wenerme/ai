@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Remote Participants
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide explains how to access participant data, display videos, handle events, and manage participant permissions in your RealtimeKit meetings.
 
@@ -30,52 +30,52 @@ The participant object contains all information related to a particular particip
 
 #### Metadata properties
 
-* `id` \- The `participantId` of the participant (aka `peerId`)
-* `userId` \- The `userId` of the participant
-* `name` \- The participant's name
-* `picture` \- The participant's picture (if any)
-* `customParticipantId` \- An arbitrary ID that can be set to identify the participant
-* `isPinned` \- Set to `true` if the participant is pinned
-* `presetName` \- Name of the preset associated with the participant
+- `id` - The `participantId` of the participant (aka `peerId`)
+- `userId` - The `userId` of the participant
+- `name` - The participant's name
+- `picture` - The participant's picture (if any)
+- `customParticipantId` - An arbitrary ID that can be set to identify the participant
+- `isPinned` - Set to `true` if the participant is pinned
+- `presetName` - Name of the preset associated with the participant
 
 #### Metadata properties
 
-* `id` \- Session-specific identifier generated when the participant joins meeting session (also known as `peerId`)
-* `userId` \- Permanent identifier of the participant generated when adding the participant to a meeting
-* `name` \- Display name of the participant
-* `picture` \- String URL to the participant's display picture (if any)
-* `customParticipantId` \- Custom identifier that can be set while adding participant to a meeting by customer
-* `isHost` \- Boolean value whether this participant has host privileges
-* `isPinned` \- Whether this participant is currently pinned in the meeting
-* `presetName` \- Name of the preset applied to this participant while adding to meeting
-* `stageStatus` \- Indicates the participant's current stage status (applicable only in stage-enabled meetings)
+- `id` - Session-specific identifier generated when the participant joins meeting session (also known as `peerId`)
+- `userId` - Permanent identifier of the participant generated when adding the participant to a meeting
+- `name` - Display name of the participant
+- `picture` - String URL to the participant's display picture (if any)
+- `customParticipantId` - Custom identifier that can be set while adding participant to a meeting by customer
+- `isHost` - Boolean value whether this participant has host privileges
+- `isPinned` - Whether this participant is currently pinned in the meeting
+- `presetName` - Name of the preset applied to this participant while adding to meeting
+- `stageStatus` - Indicates the participant's current stage status (applicable only in stage-enabled meetings)
 
 #### Metadata properties
 
-* `id` \- Session-specific identifier generated when the participant joins meeting session (also known as `peerId`)
-* `userId` \- Permanent identifier of the participant generated when adding the participant to a meeting
-* `name` \- Display name of the participant
-* `picture` \- String URL to the participant's display picture (if any)
-* `customParticipantId` \- Custom identifier that can be set while adding participant to a meeting by customer
-* `isHost` \- Boolean value whether this participant has host privileges
-* `isPinned` \- Whether this participant is currently pinned in the meeting
-* `presetName` \- Name of the preset applied to this participant while adding to meeting
-* `stageStatus` \- Indicates the participant's current stage status (applicable only in stage-enabled meetings)
+- `id` - Session-specific identifier generated when the participant joins meeting session (also known as `peerId`)
+- `userId` - Permanent identifier of the participant generated when adding the participant to a meeting
+- `name` - Display name of the participant
+- `picture` - String URL to the participant's display picture (if any)
+- `customParticipantId` - Custom identifier that can be set while adding participant to a meeting by customer
+- `isHost` - Boolean value whether this participant has host privileges
+- `isPinned` - Whether this participant is currently pinned in the meeting
+- `presetName` - Name of the preset applied to this participant while adding to meeting
+- `stageStatus` - Indicates the participant's current stage status (applicable only in stage-enabled meetings)
 
 #### Media properties
 
-* `videoEnabled` \- Set to `true` if the participant's camera is on
-* `audioEnabled` \- Set to `true` if the participant is unmuted
-* `screenShareEnabled` \- Set to `true` if the participant is sharing their screen
-* `videoTrack` \- The video track of the participant
-* `audioTrack` \- The audio track of the participant
-* `screenShareTracks` \- The video and audio tracks of the participant's screen share
+- `videoEnabled` - Set to `true` if the participant's camera is on
+- `audioEnabled` - Set to `true` if the participant is unmuted
+- `screenShareEnabled` - Set to `true` if the participant is sharing their screen
+- `videoTrack` - The video track of the participant
+- `audioTrack` - The audio track of the participant
+- `screenShareTracks` - The video and audio tracks of the participant's screen share
 
 #### Media properties
 
-* `videoEnabled` \- Whether the participant's camera is currently enabled
-* `audioEnabled` \- Whether the participant's microphone is currently unmuted
-* `screenshareEnabled` \- Whether the participant is currently sharing their screen
+- `videoEnabled` - Whether the participant's camera is currently enabled
+- `audioEnabled` - Whether the participant's microphone is currently unmuted
+- `screenshareEnabled` - Whether the participant is currently sharing their screen
 
 ### Access participant properties
 
@@ -222,10 +222,10 @@ All participants are stored under `meeting.participants`. These do not include t
 
 The `meeting.participants` object contains the following maps:
 
-* **`joined`** \- All participants currently in the meeting (excluding the local user)
-* **`waitlisted`** \- All participants waiting to join the meeting
-* **`active`** \- All participants whose media is subscribed to (participants that should be displayed on screen)
-* **`pinned`** \- All pinned participants in the meeting
+- **`joined`** - All participants currently in the meeting (excluding the local user)
+- **`waitlisted`** - All participants waiting to join the meeting
+- **`active`** - All participants whose media is subscribed to (participants that should be displayed on screen)
+- **`pinned`** - All pinned participants in the meeting
 
 If you are building a video/audio grid, use the `active` map. To display a list of all participants, use the `joined` map.
 
@@ -235,11 +235,11 @@ All participants are stored under `meeting.participants`. These do not include t
 
 The `meeting.participants` object contains the following lists:
 
-* **`joined`** \- All participants currently in the meeting (excluding the local user)
-* **`waitlisted`** \- All participants waiting to join the meeting
-* **`active`** \- All participants whose media is subscribed to (participants that should be displayed on screen)
-* **`pinned`** \- All pinned participants in the meeting
-* **`screenShares`** \- All participants who are sharing their screen
+- **`joined`** - All participants currently in the meeting (excluding the local user)
+- **`waitlisted`** - All participants waiting to join the meeting
+- **`active`** - All participants whose media is subscribed to (participants that should be displayed on screen)
+- **`pinned`** - All pinned participants in the meeting
+- **`screenShares`** - All participants who are sharing their screen
 
 If you are building a video/audio grid, use the `active` list. To display a list of all participants, use the `joined` list.
 
@@ -335,8 +335,8 @@ const waitlistedParticipants = useRealtimeKitSelector(
 
 The view mode indicates whether participants are populated in `ACTIVE_GRID` mode or `PAGINATED` mode.
 
-* **`ACTIVE_GRID` mode** \- Participants are automatically replaced in `meeting.participants.active` based on who is speaking or who has their video turned on
-* **`PAGINATED` mode** \- Participants in `meeting.participants.active` are fixed. Use `setPage()` to change the active participants
+- **`ACTIVE_GRID` mode** - Participants are automatically replaced in `meeting.participants.active` based on who is speaking or who has their video turned on
+- **`PAGINATED` mode** - Participants in `meeting.participants.active` are fixed. Use `setPage()` to change the active participants
 
 ### Set view mode
 
@@ -362,9 +362,9 @@ await meeting.participants.setViewMode("PAGINATED");
 await meeting.participants.setViewMode("ACTIVE_GRID");
 ```
 
-Android SDK uses active grid mode by default on page 0\. If you switch to the next page, it automatically switches to paginated mode.
+Android SDK uses active grid mode by default on page 0. If you switch to the next page, it automatically switches to paginated mode.
 
-iOS SDK uses active grid mode by default on page 0\. If you switch to the next page, it automatically switches to paginated mode.
+iOS SDK uses active grid mode by default on page 0. If you switch to the next page, it automatically switches to paginated mode.
 
 ```tsx
 // Set the view mode to paginated
@@ -426,7 +426,7 @@ const currentPage = useRealtimeKitSelector((m) => m.participants.currentPage);
 
 ## Host Controls
 
-The participant object allows the host several controls. These can be selected while creating the host [preset](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/presets/methods/create/).
+The participant object allows the host several controls. These can be selected while creating the host [preset](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/presets/methods/create/).
 
 ### Media controls
 
@@ -506,7 +506,7 @@ participant.kick();
 
 The waiting room allows the host to control which users can join your meeting and when. They can either choose to accept or reject the request.
 
-You can also automate this flow so that users join the meeting automatically when the host joins the meeting, using [presets](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/presets/methods/create/).
+You can also automate this flow so that users join the meeting automatically when the host joins the meeting, using [presets](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/presets/methods/create/).
 
 #### Accept waiting room request
 

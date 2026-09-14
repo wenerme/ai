@@ -12,44 +12,45 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # OneLogin
 
-Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/onelogin-oidc/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/onelogin-oidc/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 OneLogin provides SSO identity management. Cloudflare Access supports OneLogin as an OIDC identity provider.
 
 ## Set up OneLogin as an OIDC provider
 
-### 1\. Create an application in OneLogin
+### 1. Create an application in OneLogin
 
 1. Log in to your OneLogin admin portal.
-2. Go to **Applications** \> **Applications** and select **Add App**.
+2. Go to **Applications** > **Applications** and select **Add App**.
 3. Search for `OIDC` and select **OpenId Connect (OIDC)** by OneLogin, Inc.
 4. In **Display Name**, enter any name for your application. Select **Save**.
 5. Next, go to **Configuration**. In the **Redirect URI** field, enter the following URL:
-```txt
-https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
-```
-You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
+
+   ```txt
+   https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
+   ```
+
+   You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
 6. Select **Save**.
 7. Go to **Access** and choose the **Roles** that can access this application. Select **Save**.
 8. Go to **SSO** and select **Show client secret**.
 9. Copy the **Client ID** and **Client Secret**.
 
-### 2\. Add OneLogin to Cloudflare One
+### 2. Add OneLogin to Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
 3. Select **OneLogin**.
 4. Fill in the following information:
-
-  * **Name**: Name your identity provider.
-  * **App ID**: Enter your OneLogin client ID.
-  * **Client secret**: Enter your OneLogin client secret.
-  * **OneLogin account URL**: Enter your OneLogin domain, for example `https://<your-domain>.onelogin.com`.
+   - **Name**: Name your identity provider.
+   - **App ID**: Enter your OneLogin client ID.
+   - **Client secret**: Enter your OneLogin client secret.
+   - **OneLogin account URL**: Enter your OneLogin domain, for example `https://<your-domain>.onelogin.com`.
 5. (Optional) To enable SCIM, refer to [Synchronize users and groups](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/#synchronize-users-and-groups).
 6. (Optional) Under **Optional configurations**, enter [custom OIDC claims](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/#custom-oidc-claims) that you wish to add to your user's identity.
 7. Select **Save**.
 
-To test that your connection is working, go to **Integrations** \> **Identity providers** and select **Test** next to OneLogin.
+To test that your connection is working, go to **Integrations** > **Identity providers** and select **Test** next to OneLogin.
 
 ## Example API Config
 

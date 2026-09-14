@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Network layer attacks
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/radar/investigate/network-layer-attacks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/investigate/network-layer-attacks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Network layer attacks show [DDoS ↗](https://www.cloudflare.com/en-gb/learning/ddos/layer-3-ddos-attacks/) attack trends at the network layer. These attacks can be split by the network protocol they use: [ICMP ↗](https://www.cloudflare.com/en-gb/learning/ddos/glossary/internet-control-message-protocol-icmp/), [TCP ↗](https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/), [UDP ↗](https://www.cloudflare.com/en-gb/learning/ddos/glossary/user-datagram-protocol-udp/) and others.
 

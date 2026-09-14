@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Quickstart guide
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/sfu/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Before you get started:
 
@@ -22,8 +22,8 @@ You must first [create a Cloudflare account](https://developers.cloudflare.com/f
 
 Every Realtime App is a separate environment, so you can make one for development, staging and production versions for your product. Either using [Dashboard ↗](https://dash.cloudflare.com/?to=/:account/realtime/sfu), or the [API](https://developers.cloudflare.com/api/resources/calls/subresources/sfu/methods/create/) create a Realtime App. When you create a Realtime App, you will get:
 
-* App ID
-* App Secret
+- App ID
+- App Secret
 
 These two combined will allow you to make API Realtime from your backend server to Realtime.
 

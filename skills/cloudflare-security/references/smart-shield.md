@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Smart Shield
 
-Last updated Jun 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/smart-shield/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/smart-shield/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Protect your origin server, reduce load, and improve content delivery performance.
 
@@ -22,11 +22,11 @@ Smart Shield includes [Smart Tiered Cache](https://developers.cloudflare.com/sma
 
 Depending on your [package tier](https://developers.cloudflare.com/smart-shield/get-started/#packages-and-availability), Smart Shield can also include:
 
-* [Argo Smart Routing](https://developers.cloudflare.com/smart-shield/configuration/argo/) — routes traffic through the fastest network paths to reduce latency.
-* [Regional Tiered Cache](https://developers.cloudflare.com/smart-shield/configuration/regional-tiered-cache/) — adds a regional cache layer between lower-tier and upper-tier data centers for geographic data locality (Enterprise plans, or Smart Shield Advanced).
-* [Cache Reserve](https://developers.cloudflare.com/smart-shield/configuration/cache-reserve/) — persistent cache storage that reduces cache misses for infrequently accessed content.
-* [Health Checks](https://developers.cloudflare.com/smart-shield/configuration/health-checks/) — monitors your origin server availability (Pro plans and above).
-* [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/) — reserved IP addresses for origin allowlisting (Enterprise).
+- [Argo Smart Routing](https://developers.cloudflare.com/smart-shield/configuration/argo/) — routes traffic through the fastest network paths to reduce latency.
+- [Regional Tiered Cache](https://developers.cloudflare.com/smart-shield/configuration/regional-tiered-cache/) — adds a regional cache layer between lower-tier and upper-tier data centers for geographic data locality (Enterprise plans, or Smart Shield Advanced).
+- [Cache Reserve](https://developers.cloudflare.com/smart-shield/configuration/cache-reserve/) — persistent cache storage that reduces cache misses for infrequently accessed content.
+- [Health Checks](https://developers.cloudflare.com/smart-shield/configuration/health-checks/) — monitors your origin server availability (Pro plans and above).
+- [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/) — reserved IP addresses for origin allowlisting (Enterprise).
 
 For a visual overview of how these features work together, refer to the [network diagram](https://developers.cloudflare.com/smart-shield/concepts/network-diagram/).
 

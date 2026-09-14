@@ -12,22 +12,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Return objects
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/worker-api/return-object/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/worker-api/return-object/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Some D1 Worker Binding APIs return a typed object.
 
-| D1 Worker Binding API                                                                                                                                                                         | Return object |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
-| [D1PreparedStatement::run](https://developers.cloudflare.com/d1/worker-api/prepared-statements/#run), [D1Database::batch](https://developers.cloudflare.com/d1/worker-api/d1-database/#batch) | D1Result      |
-| [D1Database::exec](https://developers.cloudflare.com/d1/worker-api/d1-database/#exec)                                                                                                         | D1ExecResult  |
+| D1 Worker Binding API | Return object |
+| --- | --- |
+| [`D1PreparedStatement::run`](https://developers.cloudflare.com/d1/worker-api/prepared-statements/#run), [`D1Database::batch`](https://developers.cloudflare.com/d1/worker-api/d1-database/#batch) | `D1Result` |
+| [`D1Database::exec`](https://developers.cloudflare.com/d1/worker-api/d1-database/#exec) | `D1ExecResult` |
 
 ## `D1Result`
 
-The methods [D1PreparedStatement::run](https://developers.cloudflare.com/d1/worker-api/prepared-statements/#run) and [D1Database::batch](https://developers.cloudflare.com/d1/worker-api/d1-database/#batch) return a typed [D1Result](#d1result) object for each query statement. This object contains:
+The methods [`D1PreparedStatement::run`](https://developers.cloudflare.com/d1/worker-api/prepared-statements/#run) and [`D1Database::batch`](https://developers.cloudflare.com/d1/worker-api/d1-database/#batch) return a typed [`D1Result`](#d1result) object for each query statement. This object contains:
 
-* The success status
-* A meta object with the internal duration of the operation in milliseconds
-* The results (if applicable) as an array
+- The success status
+- A meta object with the internal duration of the operation in milliseconds
+- The results (if applicable) as an array
 
 ```js
 {
@@ -105,10 +105,10 @@ return Response.json(return_value)
 
 ## `D1ExecResult`
 
-The method [D1Database::exec](https://developers.cloudflare.com/d1/worker-api/d1-database/#exec) returns a typed [D1ExecResult](#d1execresult) object for each query statement. This object contains:
+The method [`D1Database::exec`](https://developers.cloudflare.com/d1/worker-api/d1-database/#exec) returns a typed [`D1ExecResult`](#d1execresult) object for each query statement. This object contains:
 
-* The number of executed queries
-* The duration of the operation in milliseconds
+- The number of executed queries
+- The duration of the operation in milliseconds
 
 ```js
 {

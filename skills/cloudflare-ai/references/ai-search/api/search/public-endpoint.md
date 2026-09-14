@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Public endpoint
 
-Last updated Aug 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/api/search/public-endpoint/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/search/public-endpoint/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Search public endpoints allow you to expose AI Search capabilities without requiring authentication. This enables you to integrate AI Search into public-facing applications or share it with external users.
 
@@ -22,9 +22,9 @@ For pre-built search and chat components you can embed on your website using the
 
 Enable public endpoints for your AI Search instance:
 
-1. Go to **AI Search** in the Cloudflare dashboard. [Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
+1. Go to **AI Search** in the Cloudflare dashboard. [Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
 2. Select your AI Search instance.
-3. Go to **Settings** \> **Public Endpoint**.
+3. Go to **Settings** > **Public Endpoint**.
 4. Turn on **Enable Public Endpoint**.
 5. Copy the public endpoint URL.
 
@@ -36,10 +36,10 @@ You can enable a public endpoint on a single instance or on a whole [namespace](
 
 Cloudflare generates the hostname when you enable the endpoint:
 
-| Hostname                                              | Description                                                                                                                                               |
-| ----------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <PUBLIC\_ENDPOINT\_ID>.search.ai.cloudflare.com       | Serves a single instance.                                                                                                                                 |
-| ns-<NAMESPACE\_ENDPOINT\_ID>.search.ai.cloudflare.com | Serves a [namespace](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/namespace/), searching across several instances. |
+| Hostname | Description |
+| --- | --- |
+| `<PUBLIC_ENDPOINT_ID>.search.ai.cloudflare.com` | Serves a single instance. |
+| `ns-<NAMESPACE_ENDPOINT_ID>.search.ai.cloudflare.com` | Serves a [namespace](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/namespace/), searching across several instances. |
 
 The request and response formats are identical for both. The examples on this page use the instance hostname.
 
@@ -55,7 +55,7 @@ https://search.example.com/mcp
 
 The hostname must belong to a zone on the same Cloudflare account. To attach a custom domain:
 
-1. Go to **AI Search** in the Cloudflare dashboard. [Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
+1. Go to **AI Search** in the Cloudflare dashboard. [Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
 2. Select your instance or namespace.
 3. Go to **Public Endpoints** and enable the public endpoint. A custom domain requires an active public endpoint.
 4. Go to **Custom Domains** and attach your hostname.
@@ -81,7 +81,7 @@ curl https://<PUBLIC_ENDPOINT_ID>.search.ai.cloudflare.com/chat/completions \
   }'
 ```
 
-For the full list of options, refer to the [Chat Completions API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/methods/chat%5Fcompletions/).
+For the full list of options, refer to the [Chat Completions API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/instances/methods/chat_completions/).
 
 ## Search
 
@@ -100,15 +100,15 @@ curl https://<PUBLIC_ENDPOINT_ID>.search.ai.cloudflare.com/search \
   }'
 ```
 
-For the full list of options, refer to the [Search API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/methods/search/).
+For the full list of options, refer to the [Search API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/instances/methods/search/).
 
 ## Next steps
 
-* [UI snippets](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/embed-search-snippets/) \- Add pre-built search and chat components to your website.
-* [MCP](https://developers.cloudflare.com/ai-search/api/search/mcp/) \- Connect AI agents using the Model Context Protocol.
-* [Public endpoint configuration](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/) \- Configure rate limiting, CORS, and security settings.
-* [Custom domains](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/custom-domains/) \- Serve these endpoints from a hostname that you own.
-* [Cloudflare Access](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/cloudflare-access/) \- Require callers to authenticate before they reach these endpoints.
+- [UI snippets](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/embed-search-snippets/) - Add pre-built search and chat components to your website.
+- [MCP](https://developers.cloudflare.com/ai-search/api/search/mcp/) - Connect AI agents using the Model Context Protocol.
+- [Public endpoint configuration](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/) - Configure rate limiting, CORS, and security settings.
+- [Custom domains](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/custom-domains/) - Serve these endpoints from a hostname that you own.
+- [Cloudflare Access](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/cloudflare-access/) - Require callers to authenticate before they reach these endpoints.
 
 Was this helpful?
 

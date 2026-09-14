@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # HTTP API
 
-Last updated Jun 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agent-memory/api/http-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agent-memory/api/http-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the HTTP API to call Agent Memory from services that do not run inside [Cloudflare Workers](https://developers.cloudflare.com/workers/). For Workers applications, use the [Workers API](https://developers.cloudflare.com/agent-memory/api/workers-api/) through an `agent_memory` binding.
 
@@ -403,13 +403,13 @@ All endpoints return standard Cloudflare V4 error responses on failure:
 
 Common error scenarios include:
 
-| Scenario                      | HTTP status |
-| ----------------------------- | ----------- |
-| Invalid namespace name format | 400         |
-| Authentication failure        | 401         |
-| Namespace name already exists | 409         |
-| Namespace not found           | 404         |
-| Profile not found             | 404         |
+| Scenario | HTTP status |
+| --- | --- |
+| Invalid namespace name format | `400` |
+| Authentication failure | `401` |
+| Namespace name already exists | `409` |
+| Namespace not found | `404` |
+| Profile not found | `404` |
 
 Was this helpful?
 

@@ -12,8 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Select crawlers to charge
 
-Last updated Jul 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/select-crawlers-to-charge/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/select-crawlers-to-charge/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
+```
 graph LR
 A[Enable in<br>account settings] --> B[Set a pay per <br/>crawl price ]
 B --> C[Select crawlers<br>to charge]:::highlight
@@ -26,16 +27,16 @@ click B "/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owne
 click D "/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/monitor-activity/"
 click E "/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/manage-payouts/"
 
+```
+
 Once you have enabled pay per crawl and set a price, you can specify which AI crawlers to charge for accessing your content.
 
-1. Go to **AI Crawl Control**.
-[Go to **AI Crawl Control** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ai)
+1. Go to **AI Crawl Control**. [Go to **AI Crawl Control** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ai)
 2. Go to the **Security** tab.
 3. For each crawler, choose an action from the **Actions** column:
-
-  * **Charge**: Charge the set price for successful content access
-  * **Allow**: Allow free access without charging
-  * **Block**: Block access completely
+   - **Charge**: Charge the set price for successful content access
+   - **Allow**: Allow free access without charging
+   - **Block**: Block access completely
 
 Search Engine Crawlers and SEO
 

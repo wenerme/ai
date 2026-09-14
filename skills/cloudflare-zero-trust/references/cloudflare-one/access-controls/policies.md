@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Policies
 
-Last updated Jul 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Access determines who can reach your application by applying the Access policies you configure.
 
 Every Access policy has four building blocks:
 
-* [**Actions**](#actions): What happens when a user matches the policy (Allow, Block, Bypass, or Service Auth)
-* [**Rule types**](#rule-types): How criteria are combined (Include, Require, or Exclude)
-* [**Selectors**](#selectors): The attributes being checked (for example, email domain, country, or device posture)
-* **Values**: The specific values to match against (for example, `@example.com`)
+- [**Actions**](#actions): What happens when a user matches the policy (Allow, Block, Bypass, or Service Auth)
+- [**Rule types**](#rule-types): How criteria are combined (Include, Require, or Exclude)
+- [**Selectors**](#selectors): The attributes being checked (for example, email domain, country, or device posture)
+- **Values**: The specific values to match against (for example, `@example.com`)
 
 ## Cloudflare Access policy actions
 
@@ -33,28 +33,28 @@ The Allow action in Cloudflare Access allows users that meet certain criteria to
 
 The following table shows an example Cloudflare Access Allow policy that lets any user with an `@example.com` email address, as validated against an IdP, reach the application:
 
-| Action | Rule type | Selector         | Value        |
-| ------ | --------- | ---------------- | ------------ |
-| Allow  | Include   | Emails ending in | @example.com |
+| Action | Rule type | Selector | Value |
+| --- | --- | --- | --- |
+| Allow | Include | Emails ending in | `@example.com` |
 
 You can add a Require rule in the same policy action to enforce additional checks. Finally, if the policy contains an Exclude rule, users meeting that definition are prevented from reaching the application.
 
 For example, the following table shows an Allow policy with Require and Exclude rules. This configuration lets any user from Portugal with an `@team.com` email address, as validated against an IdP, reach the application, except for `user-1` and `user-2`:
 
-| Action | Rule type | Selector         | Value                            |
-| ------ | --------- | ---------------- | -------------------------------- |
-| Allow  | Include   | Country          | Portugal                         |
-|        | Require   | Emails Ending In | @team.com                        |
-|        | Exclude   | Email            | user-1@team.com, user-2@team.com |
+| Action | Rule type | Selector | Value |
+| --- | --- | --- | --- |
+| Allow | Include | Country | `Portugal` |
+|  | Require | Emails Ending In | `@team.com` |
+|  | Exclude | Email | `user-1@team.com`, `user-2@team.com` |
 
 ### Block
 
 The Block action in Cloudflare Access prevents users who meet certain criteria from reaching an application. For example, the following table shows a Block policy that blocks requests from Russian source IPs that are not on your [list of approved IPs](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/).
 
-| Action | Rule type | Selector | Value                  |
-| ------ | --------- | -------- | ---------------------- |
-| Block  | Include   | Country  | Russian Federation     |
-|        | Exclude   | IP list  | Corporate IP allowlist |
+| Action | Rule type | Selector | Value |
+| --- | --- | --- | --- |
+| Block | Include | Country | `Russian Federation` |
+|  | Exclude | IP list | `Corporate IP allowlist` |
 
 Block policies are best used in conjunction with [Allow policies](#allow) as a way to carve out exceptions in those Allow policies. Since Access is deny by default, users who do not match a Block policy will still be denied access unless they explicitly match an Allow policy.
 
@@ -72,9 +72,9 @@ The Bypass action disables any Access enforcement for traffic that meets the def
 
 For example, some applications have an endpoint under the `/admin` route that must be publicly routable. In this situation, you could create an Access application for the domain `test.example.com/admin/<your-url>` and add the Bypass policy shown in the following table:
 
-| Action | Rule type | Selector | Value    |
-| ------ | --------- | -------- | -------- |
-| Bypass | Include   | Everyone | Everyone |
+| Action | Rule type | Selector | Value |
+| --- | --- | --- | --- |
+| Bypass | Include | Everyone | `Everyone` |
 
 As part of implementing a Zero Trust security model, Cloudflare does not recommend using Bypass to grant direct permanent access to your internal applications. To enable seamless and secure access for on-network employees, use Cloudflare Tunnel to [connect your private network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/) and have users connect through the Cloudflare One Client.
 
@@ -86,8 +86,8 @@ When applying a Bypass action, security settings revert to the defaults configur
 
 Bypass policies which contain [device posture check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/) rules will not function when:
 
-* [Zaraz](https://developers.cloudflare.com/zaraz/) is enabled for the zone protected by Access
-* A [Worker](https://developers.cloudflare.com/workers/) intercepts the request
+- [Zaraz](https://developers.cloudflare.com/zaraz/) is enabled for the zone protected by Access
+- A [Worker](https://developers.cloudflare.com/workers/) intercepts the request
 
 To work around these limitations and bypass Access, we recommend changing the policy action to [Service Auth](#service-auth).
 
@@ -97,9 +97,9 @@ Service Auth rules in Cloudflare Access enforce authentication flows that do not
 
 The following table shows an example Cloudflare Access Service Auth policy configuration:
 
-| Action       | Rule type | Selector          |
-| ------------ | --------- | ----------------- |
-| Service Auth | Include   | Valid certificate |
+| Action | Rule type | Selector |
+| --- | --- | --- |
+| Service Auth | Include | Valid certificate |
 
 ## Cloudflare Access rule types
 
@@ -121,10 +121,10 @@ The Require rule in Cloudflare Access works like an AND logical operator. A user
 
 By default, any values added to a Require rule are concatenated by an AND operator. For example, let's say you want to grant access to an application to both the full-time employees and the contractors, and only the ones based in specific countries — say Portugal and the United States. If you set up a rule with the following configuration:
 
-| Action | Rule type | Selector         | Value                             |
-| ------ | --------- | ---------------- | --------------------------------- |
-| Allow  | Require   | Country          | United States, Portugal           |
-|        | Require   | Emails ending in | @cloudflare.com, @contractors.com |
+| Action | Rule type | Selector | Value |
+| --- | --- | --- | --- |
+| Allow | Require | Country | `United States`, `Portugal` |
+|  | Require | Emails ending in | `@cloudflare.com`, `@contractors.com` |
 
 This policy requires the user to be in the United States AND Portugal simultaneously, and have an email ending in both `@cloudflare.com` AND `@contractors.com`. Therefore, nobody will have access to the application.
 
@@ -132,15 +132,15 @@ This policy requires the user to be in the United States AND Portugal simultaneo
 
 1. Create a rule group called `Country requirements` that includes users in Portugal OR the United States:
 
-| Rule type | Selector | Value                   |
-| --------- | -------- | ----------------------- |
-| Include   | Country  | United States, Portugal |
+   | Rule type | Selector | Value |
+   | --- | --- | --- |
+   | Include | Country | `United States`, `Portugal` |
 2. Create a policy that requires the rule group, and that also includes users with emails ending in either `@cloudflare.com` OR `@contractors.com`:
 
-| Action | Rule type | Selector         | Value                             |
-| ------ | --------- | ---------------- | --------------------------------- |
-| Allow  | Require   | Rule group       | Country requirements              |
-|        | Include   | Emails ending in | @cloudflare.com, @contractors.com |
+   | Action | Rule type | Selector | Value |
+   | --- | --- | --- | --- |
+   | Allow | Require | Rule group | `Country requirements` |
+   |  | Include | Emails ending in | `@cloudflare.com`, `@contractors.com` |
 
 ## Cloudflare Access selectors
 
@@ -148,31 +148,31 @@ When you add a rule to your Cloudflare Access policy, you will be asked to speci
 
 Non-identity attributes are polled continuously, meaning they are evaluated with each new HTTP request for changes during the [user session](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/). If you have configured [SCIM provisioning](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/), you can force a user to re-attest all attributes with Access whenever you revoke the user in the IdP or update their IdP group membership.
 
-| Selector                  | Description                                                                                                                                                                                                                                                                                                                                                                                                | Checked at login | Checked continuously1 | Identity-based selector? |
-| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | --------------------- | ------------------------ |
-| Emails                    | you@company.com                                                                                                                                                                                                                                                                                                                                                                                            | ✅                | ❌                     | ✅                        |
-| Emails ending in          | @company.com                                                                                                                                                                                                                                                                                                                                                                                               | ✅                | ❌                     | ✅                        |
-| External Evaluation       | Allows or denies access based on [custom logic](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/external-evaluation/) in an external API.                                                                                                                                                                                                                                        | ✅                | ❌                     | ✅                        |
-| IP ranges                 | 192.168.100.1/24 (supports IPv4/IPv6 addresses and CIDR ranges)                                                                                                                                                                                                                                                                                                                                            | ✅                | ✅                     | ❌                        |
-| Country                   | Uses the IP address to determine country.                                                                                                                                                                                                                                                                                                                                                                  | ✅                | ✅                     | ❌                        |
-| Everyone                  | Allows, denies, or bypasses access to everyone.                                                                                                                                                                                                                                                                                                                                                            | ✅                | ❌                     | ❌                        |
-| Common Name               | The request will need to present a valid certificate with an expected common name.                                                                                                                                                                                                                                                                                                                         | ✅                | ✅                     | ❌                        |
-| Valid Certificate         | The request will need to present any valid client certificate.                                                                                                                                                                                                                                                                                                                                             | ✅                | ✅                     | ❌                        |
-| Service Token             | The request will need to present the correct service token headers configured for the specific application. Requires the [Service Auth](#service-auth) action.                                                                                                                                                                                                                                             | ✅                | ✅                     | ❌                        |
-| Any Access Service Token  | The request will need to present the headers for any [service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) created for this account. Requires the [Service Auth](#service-auth) action.                                                                                                                                                    | ✅                | ✅                     | ❌                        |
-| User Risk Score           | The user's current [risk score](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/) (Low, Medium, or High). Acts as a threshold — users with a score at or below the specified level pass the check. This selector only displays for Enterprise plans.                                                                                                                  | ✅                | ✅                     | ✅                        |
-| Linked App Token          | Checks for a valid [OAuth access token](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/linked-app-token/) issued to a specific Access application. Requires the [Service Auth](#service-auth) action.                                                                                                                                                                       | ✅                | ✅                     | ❌                        |
-| Login Methods             | Checks the identity provider used at the time of login.                                                                                                                                                                                                                                                                                                                                                    | ✅                | ❌                     | ✅                        |
-| Authentication Method     | Checks the [multi-factor authentication](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#identity-provider-based-mfa) method used by the user, if supported by the identity provider. To enforce MFA independently of your IdP, refer to [independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/). | ✅                | ❌                     | ✅                        |
-| Identity provider group   | Checks the user groups configured with your identity provider (IdP). This selector only displays if you use Microsoft Entra ID, GitHub, Google, Okta, or an IdP that provisions groups with [SCIM](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/).                                                                                                                       | ✅                | ❌                     | ✅                        |
-| SAML Group                | Checks a SAML attribute name / value pair. This selector only displays if you use a [generic SAML](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/) identity provider.                                                                                                                                                                                      | ✅                | ❌                     | ✅                        |
-| OIDC Claim                | Checks an OIDC claim name / value pair. This selector only displays if you use a [generic OIDC](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/) identity provider.                                                                                                                                                                                         | ✅                | ❌                     | ✅                        |
-| Device posture            | Checks device posture signals from the Cloudflare One Client or a third-party service provider. This selector only displays after you create a [device posture check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/).                                                                                                                                               | ✅                | ✅                     | ❌                        |
-| Warp                      | Checks that the device is connected to the Cloudflare One Client, including the consumer version. This selector only displays after you enable the [WARP posture check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-warp/).                                                                                                                  | ✅                | ✅                     | ❌                        |
-| Gateway                   | Checks that the device is connected to your Zero Trust instance through the Cloudflare One Client. This selector only displays after you enable the [Gateway posture check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-gateway/).                                                                                                           | ✅                | ✅                     | ❌                        |
-| Cloudflare Account Member | Checks that the user is a member of a specific Cloudflare account. If no account ID is specified, defaults to the current account. This selector only displays if you use the [Cloudflare](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/cloudflare/) identity provider.                                                                                                | ✅                | ❌                     | ✅                        |
+| Selector | Description | Checked at login | Checked continuously<sup>1</sup> | Identity-based selector? |
+| --- | --- | --- | --- | --- |
+| Emails | `you@company.com` | ✅ | ❌ | ✅ |
+| Emails ending in | `@company.com` | ✅ | ❌ | ✅ |
+| External Evaluation | Allows or denies access based on [custom logic](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/external-evaluation/) in an external API. | ✅ | ❌ | ✅ |
+| IP ranges | `192.168.100.1/24` (supports IPv4/IPv6 addresses and CIDR ranges) | ✅ | ✅ | ❌ |
+| Country | Uses the IP address to determine country. | ✅ | ✅ | ❌ |
+| Everyone | Allows, denies, or bypasses access to everyone. | ✅ | ❌ | ❌ |
+| Common Name | The request will need to present a valid certificate with an expected common name. | ✅ | ✅ | ❌ |
+| Valid Certificate | The request will need to present any valid client certificate. | ✅ | ✅ | ❌ |
+| Service Token | The request will need to present the correct service token headers configured for the specific application. Requires the [Service Auth](#service-auth) action. | ✅ | ✅ | ❌ |
+| Any Access Service Token | The request will need to present the headers for any [service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) created for this account. Requires the [Service Auth](#service-auth) action. | ✅ | ✅ | ❌ |
+| User Risk Score | The user's current [risk score](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/) (Low, Medium, High, or Unscored). Matches only the values selected in the rule. This selector only displays for Enterprise plans. | ✅ | ✅ | ✅ |
+| Linked App Token | Checks for a valid [OAuth access token](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/linked-app-token/) issued to a specific Access application. Requires the [Service Auth](#service-auth) action. | ✅ | ✅ | ❌ |
+| Login Methods | Checks the identity provider used at the time of login. | ✅ | ❌ | ✅ |
+| Authentication Method | Checks the [multi-factor authentication](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#identity-provider-based-mfa) method used by the user, if supported by the identity provider. To enforce MFA independently of your IdP, refer to [independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/). | ✅ | ❌ | ✅ |
+| Identity provider group | Checks the user groups configured with your identity provider (IdP). This selector only displays if you use Microsoft Entra ID, GitHub, Google, Okta, or an IdP that provisions groups with [SCIM](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/). | ✅ | ❌ | ✅ |
+| SAML Group | Checks a SAML attribute name / value pair. This selector only displays if you use a [generic SAML](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/) identity provider. | ✅ | ❌ | ✅ |
+| OIDC Claim | Checks an OIDC claim name / value pair. This selector only displays if you use a [generic OIDC](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/) identity provider. | ✅ | ❌ | ✅ |
+| Device posture | Checks device posture signals from the Cloudflare One Client or a third-party service provider. This selector only displays after you create a [device posture check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/). | ✅ | ✅ | ❌ |
+| Warp | Checks that the device is connected to the Cloudflare One Client, including the consumer version. This selector only displays after you enable the [WARP posture check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-warp/). | ✅ | ✅ | ❌ |
+| Gateway | Checks that the device is connected to your Zero Trust instance through the Cloudflare One Client. This selector only displays after you enable the [Gateway posture check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-gateway/). | ✅ | ✅ | ❌ |
+| Cloudflare Account Member | Checks that the user is a member of a specific Cloudflare account. If no account ID is specified, defaults to the current account. This selector only displays if you use the [Cloudflare](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/cloudflare/) identity provider. | ✅ | ❌ | ✅ |
 
-1 For SaaS applications, Access can only enforce policies at the time of initial sign on and when reissuing the SaaS session. Once the user has authenticated to the SaaS app, session management falls solely within the purview of the SaaS app.
+<sup>1</sup> For SaaS applications, Access can only enforce policies at the time of initial sign on and when reissuing the SaaS session. Once the user has authenticated to the SaaS app, session management falls solely within the purview of the SaaS app.
 
 ## Connection context in Cloudflare Access
 
@@ -180,9 +180,9 @@ Connection context settings allow you to control how users interact with an appl
 
 Connection context is configured per policy, allowing you to grant different permissions to different groups of users. For example, you could allow full-time employees to copy data from a remote RDP session while restricting contractors to read-only access.
 
-| Application type                                                                                                                                           | Available settings                         |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| [Infrastructure (SSH)](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/)                        | Allowed UNIX usernames                     |
+| Application type | Available settings |
+| --- | --- |
+| [Infrastructure (SSH)](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/) | Allowed UNIX usernames |
 | [Browser-based RDP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/#connection-settings) | Clipboard controls, file transfer controls |
 
 ## Cloudflare Access policy order of execution
@@ -191,11 +191,11 @@ Cloudflare Access policies are evaluated based on their action type and order yo
 
 For example, if you have policies arranged as follows:
 
-* Allow A
-* Block B
-* Service Auth C
-* Bypass D
-* Allow E
+- Allow A
+- Block B
+- Service Auth C
+- Bypass D
+- Allow E
 
 The policies will execute in this order: Service Auth C > Bypass D > Allow A > Block B > Allow E. Once a user matches an Allow or Block policy, evaluation stops and no subsequent policies can override the decision.
 
@@ -207,17 +207,17 @@ If you add any of the following rules to an Allow policy, anyone will be able to
 
 The following table shows a Cloudflare Access policy that includes everyone:
 
-| Rule type | Selector | Value    |
-| --------- | -------- | -------- |
-| Include   | Everyone | Everyone |
+| Rule type | Selector | Value |
+| --- | --- | --- |
+| Include | Everyone | `Everyone` |
 
 ### Include all valid emails
 
 The following table shows a Cloudflare Access policy that includes all users with valid email login methods:
 
-| Rule type | Selector      | Value        |
-| --------- | ------------- | ------------ |
-| Include   | Login Methods | One-time PIN |
+| Rule type | Selector | Value |
+| --- | --- | --- |
+| Include | Login Methods | `One-time PIN` |
 
 ## Additional Cloudflare Access resources
 
@@ -232,5 +232,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#page","headline":"Access policies · Cloudflare One docs","description":"Configure Policies in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#page","headline":"Access policies · Cloudflare One docs","description":"Configure Policies in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

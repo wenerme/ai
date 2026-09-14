@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Optimize with Workers
 
-Last updated Sep 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/optimization/binding/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/binding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) connects your [Worker](https://developers.cloudflare.com/workers/) to external resources on the Developer Platform, like [Images](https://developers.cloudflare.com/images/), [R2 buckets](https://developers.cloudflare.com/r2/buckets/), or [KV namespaces](https://developers.cloudflare.com/kv/concepts/kv-namespaces/).
 
@@ -20,15 +20,15 @@ The Images binding lets you optimize and manipulate images directly in a Worker.
 
 With the Images binding, you can:
 
-* Optimize an image stored in Images or R2 by passing the bytes directly, instead of fetching through a public URL.
-* Resize an image, overlay a watermark, then resize the combined output into a final result — all in a single chain of operations.
-* Control the order of operations for optimization parameters. When you use the URL interface, the optimization parameters follow a fixed order of operations.
+- Optimize an image stored in Images or R2 by passing the bytes directly, instead of fetching through a public URL.
+- Resize an image, overlay a watermark, then resize the combined output into a final result — all in a single chain of operations.
+- Control the order of operations for optimization parameters. When you use the URL interface, the optimization parameters follow a fixed order of operations.
 
 Bindings can be configured in the Cloudflare dashboard for your Worker or in the Wrangler configuration file in your project's directory.
 
 Billing
 
-Calls to the Images binding are billed as [unique transformations](https://developers.cloudflare.com/images/pricing/#images-transformed): each unique combination of source image and parameters is billed only once per calendar month, and repeat requests within the same month do not incur additional usage. Calls to [.info()](#infostream) are free.
+Calls to the Images binding are billed as [unique transformations](https://developers.cloudflare.com/images/pricing/#images-transformed): each unique combination of source image and parameters is billed only once per calendar month, and repeat requests within the same month do not incur additional usage. Calls to [`.info()`](#infostream) are free.
 
 Refer to [Images pricing](https://developers.cloudflare.com/images/pricing/) for more information about billing.
 
@@ -164,9 +164,9 @@ Sets the styling options for the text. These options apply to both the `.text()`
 
 Accepts the following options:
 
-* `font` — Sets the font for the text. Accepts an object with a `url` property that points to a custom TrueType (`.ttf`), OpenType (`.otf`), Web Open (`.woff` and `.woff2`) font file, up to 20 MB. If the font cannot be fetched or parsed, then the request returns an error.
-* `color` — Sets the fill color for the text. Accepts a HEX code, a CSS color name, or a CSS color function. The default is `#000000` (black).
-* `size` — Sets the font size in pixels. The default is `12`.
+- `font` — Sets the font for the text. Accepts an object with a `url` property that points to a custom TrueType ( `.ttf`), OpenType ( `.otf`), Web Open ( `.woff` and `.woff2`) font file, up to 20 MB. If the font cannot be fetched or parsed, then the request returns an error.
+- `color` — Sets the fill color for the text. Accepts a HEX code, a CSS color name, or a CSS color function. The default is `#000000` (black).
+- `size` — Sets the font size in pixels. The default is `12`.
 
 The rendered text can be up to 1,000 characters and up to 4096 x 4096 pixels. If a text overlay exceeds these limits, then the request returns an error.
 
@@ -224,13 +224,13 @@ Accepts `opacity`, `repeat`, a side (`left`, `right`, `top`, `bottom`), and `com
 
 ### `.output(options)`
 
-Generates the final image with the specified output options. Returns a result that you can call [.response()](https://developers.cloudflare.com/images/optimization/binding/#responseoptions) on to return the image from your Worker.
+Generates the final image with the specified output options. Returns a result that you can call [`.response()`](https://developers.cloudflare.com/images/optimization/binding/#responseoptions) on to return the image from your Worker.
 
 Accepts the following options:
 
-* `format` — Encodes the image in [a supported format](https://developers.cloudflare.com/images/get-started/limits/#output-formats), such as AVIF, WebP, or JPEG. This method is required — there is no default output format.
-* `quality` — Specifies the output [quality](https://developers.cloudflare.com/images/optimization/features/#quality--q) of an image for JPEG, WebP, and AVIF formats, expressed as a fixed value or perceptual quality level.
-* `anim` — Specifies whether to [preserve animation frames](https://developers.cloudflare.com/images/optimization/features/#anim) from input files. Set `anim:false` to convert animations to still images.
+- `format` — Encodes the image in [a supported format](https://developers.cloudflare.com/images/get-started/limits/#output-formats), such as AVIF, WebP, or JPEG. This method is required — there is no default output format.
+- `quality` — Specifies the output [quality](https://developers.cloudflare.com/images/optimization/features/#quality--q) of an image for JPEG, WebP, and AVIF formats, expressed as a fixed value or perceptual quality level.
+- `anim` — Specifies whether to [preserve animation frames](https://developers.cloudflare.com/images/optimization/features/#anim) from input files. Set `anim:false` to convert animations to still images.
 
 ```js
 const response = (
@@ -262,7 +262,7 @@ Returns a `Response` that you can return from your Worker.
 
 Accepts the following options:
 
-* `headers` — Additional headers to set on the `Response` as a [HeadersInit](https://developers.cloudflare.com/workers/runtime-apis/response/#parameters). Use this to set `Cache-Control` or other headers directly, instead of rebuilding the `Response`.
+- `headers` — Additional headers to set on the `Response` as a [`HeadersInit`](https://developers.cloudflare.com/workers/runtime-apis/response/#parameters). Use this to set `Cache-Control` or other headers directly, instead of rebuilding the `Response`.
 
 The `Content-Type` is always set from the output format and cannot be overridden.
 
@@ -276,8 +276,8 @@ The Images API can be used in local development through [Wrangler](https://devel
 
 Wrangler supports two different versions of the Images API:
 
-* A high-fidelity version that supports all features that are available through the Images API. This is the same version that Cloudflare runs globally in production.
-* A low-fidelity offline version that supports only a subset of features, such as resizing and rotation.
+- A high-fidelity version that supports all features that are available through the Images API. This is the same version that Cloudflare runs globally in production.
+- A low-fidelity offline version that supports only a subset of features, such as resizing and rotation.
 
 To test the low-fidelity version of Images, you can run `wrangler dev`:
 

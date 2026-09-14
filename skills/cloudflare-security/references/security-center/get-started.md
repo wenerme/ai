@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated Jun 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/security-center/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security-center/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Security Center scans your Cloudflare account configuration and identifies potential security risks, misconfigurations, and vulnerabilities across your domains. This guide covers the initial setup.
 
 ## Prerequisites
 
-* A Cloudflare account.
-* At least one [zone](https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/#zones) (domain or subdomain) added to your Cloudflare account.
+- A Cloudflare account.
+- At least one [zone](https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/#zones) (domain or subdomain) added to your Cloudflare account.
 
 ## Turn Security Insights on or off
 
@@ -31,22 +31,19 @@ You can decide to stop a scan, and restart a scan later.
 
 To disable scans:
 
-1. In the Cloudflare dashboard, go to the **Security Insights** page.
-[Go to **Security insights** ↗](https://dash.cloudflare.com/?to=/:account/security-center)
+1. In the Cloudflare dashboard, go to the **Security Insights** page. [Go to **Security insights** ↗](https://dash.cloudflare.com/?to=/:account/security-center)
 2. Go to **Disable Security Center scans**, select **Disable scans**.
 
 To restart a scan:
 
-1. In the Cloudflare dashboard, go to the **Security Insights** page.
-[Go to **Security insights** ↗](https://dash.cloudflare.com/?to=/:account/security-center)
+1. In the Cloudflare dashboard, go to the **Security Insights** page. [Go to **Security insights** ↗](https://dash.cloudflare.com/?to=/:account/security-center)
 2. Select **Scan now**.
 
 ### Start a new scan
 
 To manually start a scan:
 
-1. In the Cloudflare dashboard, go to the **Security insights** page.
-[Go to **Security insights** ↗](https://dash.cloudflare.com/?to=/:account/security-center)
+1. In the Cloudflare dashboard, go to the **Security insights** page. [Go to **Security insights** ↗](https://dash.cloudflare.com/?to=/:account/security-center)
 2. Select **Scan now**.
 
 Note
@@ -57,11 +54,11 @@ Only accounts with at least one Business or Enterprise zone, or accounts on the 
 
 Cloudflare performs scans automatically for all accounts and zones by default. On-demand scans are available on all plans:
 
-| Plan             | Scan Frequency | On-Demand |
-| ---------------- | -------------- | --------- |
-| Free             | Every 7 days   | Yes       |
-| Pro and Business | Every 3 days   | Yes       |
-| Enterprise       | Daily          | Yes       |
+| Plan | Scan Frequency | On-Demand |
+| --- | --- | --- |
+| Free | Every 7 days | Yes |
+| Pro and Business | Every 3 days | Yes |
+| Enterprise | Daily | Yes |
 
 For more details, refer to [How it works](https://developers.cloudflare.com/security/security-insights/how-it-works/#scan-frequency).
 

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Mount R2 buckets as filesystems using FUSE in Containers
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/examples/r2-fuse-mount/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/examples/r2-fuse-mount/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 FUSE (Filesystem in Userspace) allows you to mount [R2 buckets](https://developers.cloudflare.com/r2/) as filesystems within Containers. Applications can then interact with R2 using standard filesystem operations rather than object storage APIs.
 
@@ -22,10 +22,10 @@ To run a FUSE container locally, refer to [FUSE support during local development
 
 Common use cases include:
 
-* **Bootstrapping containers with assets** \- Mount datasets, models, or dependencies for sandboxes and agent environments
-* **Persisting user state** \- Store and access user configuration or application state without managing downloads
-* **Large static files** \- Avoid bloating container images or downloading files at startup
-* **Editing files** \- Make code or config available within the container and save edits across instances.
+- **Bootstrapping containers with assets** - Mount datasets, models, or dependencies for sandboxes and agent environments
+- **Persisting user state** - Store and access user configuration or application state without managing downloads
+- **Large static files** - Avoid bloating container images or downloading files at startup
+- **Editing files** - Make code or config available within the container and save edits across instances.
 
 Performance considerations
 
@@ -39,7 +39,13 @@ To mount an R2 bucket, install a FUSE adapter in your Dockerfile and configure i
 
 This example uses [tigrisfs ↗](https://github.com/tigrisdata/tigrisfs), which supports S3-compatible storage including R2:
 
+<details>
+
+<summary>
+
 Dockerfile
+
+</summary>
 
 ```dockerfile
 FROM alpine:3.20
@@ -78,11 +84,15 @@ EXPOSE 8080
 CMD ["/startup.sh"]
 ```
 
+</details>
+
 The startup script creates a mount point, starts tigrisfs in the background to mount the bucket, and then lists the mounted directory contents.
 
 ### Passing credentials to the container
 
 Your Container needs [R2 credentials](https://developers.cloudflare.com/r2/api/tokens/) and configuration passed as environment variables. Store credentials as [Worker secrets](https://developers.cloudflare.com/workers/configuration/secrets/), then pass them through the `envVars` property:
+
+*src/index.jsjs*
 
 ```js
 import { Container, getContainer } from "@cloudflare/containers";
@@ -98,6 +108,8 @@ export class FUSEDemo extends Container {
 	};
 }
 ```
+
+*src/index.tsts*
 
 ```ts
 import { Container, getContainer } from "@cloudflare/containers";
@@ -139,7 +151,7 @@ To get your `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`, [head to your R2 da
 
 ### Other S3-compatible storage providers
 
-Other S3-compatible storage providers, including AWS S3 and Google Cloud Storage, can be mounted using the same approach as R2\. You will need to provide the appropriate endpoint URL and access credentials for the storage provider.
+Other S3-compatible storage providers, including AWS S3 and Google Cloud Storage, can be mounted using the same approach as R2. You will need to provide the appropriate endpoint URL and access credentials for the storage provider.
 
 ## Mounting bucket prefixes
 
@@ -186,10 +198,10 @@ This is useful for shared assets or configuration files where you want to ensure
 
 ## Related resources
 
-* [Container environment variables](https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/) \- Learn how to pass secrets and variables to Containers
-* [tigrisfs ↗](https://github.com/tigrisdata/tigrisfs) \- FUSE adapter for S3-compatible storage including R2
-* [s3fs ↗](https://github.com/s3fs-fuse/s3fs-fuse) \- Alternative FUSE adapter for S3-compatible storage
-* [gcsfuse ↗](https://github.com/GoogleCloudPlatform/gcsfuse) \- FUSE adapter for Google Cloud Storage buckets
+- [Container environment variables](https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/) - Learn how to pass secrets and variables to Containers
+- [tigrisfs ↗](https://github.com/tigrisdata/tigrisfs) - FUSE adapter for S3-compatible storage including R2
+- [s3fs ↗](https://github.com/s3fs-fuse/s3fs-fuse) - Alternative FUSE adapter for S3-compatible storage
+- [gcsfuse ↗](https://github.com/GoogleCloudPlatform/gcsfuse) - FUSE adapter for Google Cloud Storage buckets
 
 Was this helpful?
 

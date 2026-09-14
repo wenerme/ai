@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Blazor
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-blazor-site/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-blazor-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Blazor ↗](https://blazor.net) is an SPA framework that can use C# code, rather than JavaScript in the browser. In this guide, you will build a site using Blazor, and deploy it using Cloudflare Pages.
 
@@ -78,19 +78,18 @@ git push -u origin main
 
 To deploy your site to Pages:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**.
 3. Select the **Pages** tab.
 4. Select **Import an existing Git repository**.
 5. Select the new GitHub repository that you created and then select **Begin setup**.
 6. In the **Set up builds and deployments** section, provide the following information:
 
-| Configuration option | Value          |
-| -------------------- | -------------- |
-| Production branch    | main           |
-| Build command        | ./build.sh     |
-| Build directory      | output/wwwroot |
+| Configuration option | Value |
+| --- | --- |
+| Production branch | `main` |
+| Build command | `./build.sh` |
+| Build directory | `output/wwwroot` |
 
 After configuring your site, you can begin your first deploy. You should see Cloudflare Pages installing `dotnet`, your project dependencies, and building your site, before deploying it.
 
@@ -110,7 +109,7 @@ If you receive the error message `Error: Asset "/opt/buildhome/repo/output/wwwro
 
 Or
 
-1. Remove the `*.wasm` files from the output (`rm output/wwwroot/_framework/*.wasm`) and modify your Blazor application to [load the Brotli compressed files ↗](https://docs.microsoft.com/en-us/aspnet/core/blazor/host-and-deploy/webassembly?view=aspnetcore-6.0#compression) instead.
+2. Remove the `*.wasm` files from the output ( `rm output/wwwroot/_framework/*.wasm`) and modify your Blazor application to [load the Brotli compressed files ↗](https://docs.microsoft.com/en-us/aspnet/core/blazor/host-and-deploy/webassembly?view=aspnetcore-6.0#compression) instead.
 
 ## Learn more
 

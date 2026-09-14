@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Human-in-the-loop knowledge base updates
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/how-to/human-in-the-loop-knowledge-base/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/how-to/human-in-the-loop-knowledge-base/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial builds an agent that searches a knowledge base and adds to it, with a human approving every write. Letting an agent modify your data is risky, so each save pauses for approval before it runs, and you can roll back a save that turned out wrong.
 
@@ -23,11 +23,19 @@ A Cloudflare Agent that searches an AI Search instance, proposes new documents t
 ## Prerequisites
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
+
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
 
 You do not need anything else. The agent provisions its own AI Search instance the first time it runs.
 
@@ -41,7 +49,7 @@ Caution
 
 Code Mode is experimental and may introduce breaking changes. Use caution in production.
 
-## 1\. Create a Worker project
+## 1. Create a Worker project
 
 Create a new Worker project using the `create-cloudflare` CLI (C3). [C3 ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) is a command-line tool designed to help you set up and deploy new applications to Cloudflare.
 
@@ -63,11 +71,11 @@ pnpm create cloudflare@latest kb-agent
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `TypeScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `TypeScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 Go to your application directory:
 
@@ -95,7 +103,7 @@ pnpm add @cloudflare/codemode @cloudflare/ai-chat agents ai@6 workers-ai-provide
 bun add @cloudflare/codemode @cloudflare/ai-chat agents ai@6 workers-ai-provider zod@4
 ```
 
-This tutorial uses the AI Search and Worker Loader bindings, which require Wrangler v4\. If `create-cloudflare` set up your project with an earlier version, upgrade it:
+This tutorial uses the AI Search and Worker Loader bindings, which require Wrangler v4. If `create-cloudflare` set up your project with an earlier version, upgrade it:
 
 npmyarnpnpmbun
 
@@ -115,7 +123,7 @@ pnpm add -D wrangler@4
 bun add -d wrangler@4
 ```
 
-## 2\. Configure Wrangler
+## 2. Configure Wrangler
 
 Replace your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the following. This adds the AI Search binding, a Workers AI binding for the model, a Worker Loader binding that runs the model's code in an isolated Worker, and the Durable Object that stores the agent's chat history and durable runtime state.
 
@@ -125,7 +133,7 @@ Replace your [Wrangler configuration file](https://developers.cloudflare.com/wor
   "name": "kb-agent",
   "main": "src/server.ts",
   // Set this to today's date
-  "compatibility_date": "2026-08-25",
+  "compatibility_date": "2026-09-14",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -167,7 +175,7 @@ Replace your [Wrangler configuration file](https://developers.cloudflare.com/wor
 name = "kb-agent"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 compatibility_flags = ["nodejs_compat"]
 
 [ai]
@@ -192,11 +200,13 @@ new_sqlite_classes = ["Chat"]
 
 AI Search has no local emulator, so the binding always talks to the remote service (`remote = true`). Because of this, you exercise the agent by deploying it rather than with `wrangler dev`. `AIChatAgent` persists messages to SQLite, so its class must be listed in `new_sqlite_classes`.
 
-## 3\. Create the AI Search connector
+## 3. Create the AI Search connector
 
 Create `src/ai-search-connector.ts`. The connector calls the AI Search binding directly, so requests stay in-process and no public endpoint is required.
 
 Give the model a read-only `search` method and a `saveDocument` method. Because `saveDocument` writes content, mark it `requiresApproval` and add a `revert` so the runtime can roll it back.
+
+*src/ai-search-connector.jsjs*
 
 ```js
 import { CodemodeConnector } from "@cloudflare/codemode";
@@ -272,6 +282,8 @@ export class AISearchConnector extends CodemodeConnector {
 	}
 }
 ```
+
+*src/ai-search-connector.tsts*
 
 ```ts
 import { CodemodeConnector, type ConnectorTools } from "@cloudflare/codemode";
@@ -350,9 +362,11 @@ export class AISearchConnector extends CodemodeConnector<Env> {
 
 The `name()` result (`aiSearch`) becomes the global the model's code calls, so the methods are available as `aiSearch.search()` and `aiSearch.saveDocument()`.
 
-## 4\. Build the agent
+## 4. Build the agent
 
 Create `src/server.ts`. The agent provisions an AI Search instance with [hybrid search](https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/) enabled the first time it runs, then creates the Code Mode runtime with the connector and exposes it to the model as a single `codemode` tool. The `@callable()` methods let your client list pending approvals and approve, reject, or roll back a write.
+
+*src/server.jsjs*
 
 ```js
 import { AIChatAgent } from "@cloudflare/ai-chat";
@@ -471,6 +485,8 @@ export default {
 	},
 };
 ```
+
+*src/server.tsts*
 
 ```ts
 import { AIChatAgent } from "@cloudflare/ai-chat";
@@ -598,7 +614,7 @@ Generate types:
 npx wrangler types
 ```
 
-## 5\. Deploy
+## 5. Deploy
 
 Because AI Search runs remotely, you deploy the Worker to run the agent.
 
@@ -616,7 +632,7 @@ npx wrangler deploy
 
 Wrangler prints your Worker's URL, for example `https://kb-agent.<your-subdomain>.workers.dev`. You use it in the next step.
 
-## 6\. Try the approval and rollback flow
+## 6. Try the approval and rollback flow
 
 The model receives one `codemode` tool. When you ask it to find and save content, it writes a short program that calls the connector methods:
 
@@ -642,6 +658,8 @@ async () => {
 `aiSearch.search()` runs immediately. When the program reaches `aiSearch.saveDocument()`, the runtime records the call as pending and pauses the execution before the upload runs.
 
 Your client sends the chat message that starts the run, then drives the approval with the `@callable()` methods. The following script uses the [Agents SDK client](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/) to do both. Save it as `client.mjs`, set `HOST` to your deployed Worker, and run it with `node client.mjs`:
+
+*client.mjsjs*
 
 ```js
 import { AgentClient } from "agents/client";
@@ -697,6 +715,8 @@ if (pending.length > 0) {
 
 client.close();
 ```
+
+*client.mjsts*
 
 ```ts
 import { AgentClient } from "agents/client";
@@ -755,18 +775,18 @@ client.close();
 
 Each `PendingAction` from `pendingApprovals()` includes the `executionId`, a `seq` number, and the method and arguments, so you can show the pending document to the user before deciding. The approval methods behave as follows:
 
-* `approveExecution(executionId)` replays the program and runs the approved `saveDocument`. The document is queued for indexing and becomes searchable a few seconds later.
-* `rejectExecution(executionId, seq)` ends the execution without saving.
-* `rollbackExecution(executionId)` undoes an applied write by running the connector's `revert`, which deletes the uploaded document.
+- `approveExecution(executionId)` replays the program and runs the approved `saveDocument`. The document is queued for indexing and becomes searchable a few seconds later.
+- `rejectExecution(executionId, seq)` ends the execution without saving.
+- `rollbackExecution(executionId)` undoes an applied write by running the connector's `revert`, which deletes the uploaded document.
 
 ## What you built
 
 Your agent can now:
 
-* Search the knowledge base with a read-only tool.
-* Propose new documents through a write tool that pauses for human approval.
-* Resume the same program after approval, without re-running completed work.
-* Roll back an approved save by deleting the indexed document.
+- Search the knowledge base with a read-only tool.
+- Propose new documents through a write tool that pauses for human approval.
+- Resume the same program after approval, without re-running completed work.
+- Roll back an approved save by deleting the indexed document.
 
 ## Next steps
 

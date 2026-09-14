@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Anthropic
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `anthropic/claude-sonnet-4.5`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 Claude Sonnet 4.5 is the best coding model to date, with significant improvements across the entire development lifecycle.
 
-| Model Info                                                                          |                                                                                                                               |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 200,000 tokens                                                                                                                |
-| Terms and License                                                                   | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                    |
-| More information                                                                    | [link ↗](https://www.anthropic.com/claude/sonnet)                                                                             |
-| Zero data retention                                                                 | Yes                                                                                                                           |
-| Request formats                                                                     | Anthropic Messages                                                                                                            |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-sonnet-4.5) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 200,000 tokens |
+| Terms and License | [link ↗](https://www.anthropic.com/legal/commercial-terms) |
+| More information | [link ↗](https://www.anthropic.com/claude/sonnet) |
+| Zero data retention | Yes |
+| Request formats | Anthropic Messages |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-sonnet-4.5) |
 
 ## Usage
 
@@ -63,6 +63,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 # The Three Laws of Thermodynamics
 
 ## **First Law: Conservation of Energy**
@@ -78,6 +79,7 @@ As temperature approaches absolute zero (0 Kelvin or -273.15°C), the entropy of
 - Practically, this means absolute zero cannot be reached through any finite number of processes
 
 **Note:** There's also a "Zeroth Law" (named later): If two systems are each in thermal equilibrium with a third system, they are in thermal equilibrium with each other. This establishes the concept of temperature.
+```
 
 ```json
 {
@@ -106,7 +108,11 @@ As temperature approaches absolute zero (0 Kelvin or -273.15°C), the entropy of
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -139,6 +145,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 # Reading a JSON File in Python
 
 You can read a JSON file using Python's built-in `json` module. Here are the common methods:
@@ -203,6 +210,7 @@ print(data)
 - Always use `with open()` to ensure the file is properly closed
 - JSON objects become Python dictionaries
 - JSON arrays become Python lists
+````
 
 ```json
 {
@@ -229,7 +237,13 @@ print(data)
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -277,6 +291,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Here are some great stops between San Francisco and Los Angeles:
 
 **Scenic Route (Highway 1/PCH - about 10 hours driving):**
@@ -300,6 +315,7 @@ Here are some great stops between San Francisco and Los Angeles:
 - Consider splitting into 2-3 days to enjoy stops
 
 What interests you most - beaches, nature, food, or historic sites? I can refine recommendations based on your preferences!
+```
 
 ```json
 {
@@ -326,7 +342,13 @@ What interests you most - beaches, nature, food, or historic sites? I can refine
 }
 ```
 
-**Creative Writing** — Higher temperature for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Higher temperature for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -362,6 +384,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 # The Blue Feather
 
 Detective Sarah Chen had seen plenty of strange things at crime scenes over her fifteen years on the force, but she'd never seen anything quite like this.
@@ -377,6 +400,7 @@ But it was what happened when she picked it up that made her breath catch.
 The feather was warm. And getting warmer.
 
 Then it started to hum.
+```
 
 ```json
 {
@@ -403,7 +427,13 @@ Then it started to hum.
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -434,6 +464,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 # Recursion Explained
 
 **Recursion** is when a function calls itself to solve a problem by breaking it down into smaller, similar subproblems.
@@ -484,6 +515,7 @@ Think of Russian nesting dolls:
 - Tree/graph traversal
 - Sorting algorithms (quicksort, mergesort)
 - Processing nested structures
+````
 
 ```json
 [
@@ -643,7 +675,13 @@ Think of Russian nesting dolls:
 ]
 ```
 
-**Web Search** — Letting Claude use Anthropic's server-side web search tool to answer with current information
+</details>
+
+<details>
+
+<summary>**Web Search** — Letting Claude use Anthropic's server-side web search tool to answer with current information</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -686,9 +724,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Based on the search results, here are the top news stories about Cloudflare this week:
 
 • **Ongoing Network Outage**:
+```
 
 ```json
 {
@@ -860,9 +900,11 @@ Based on the search results, here are the top news stories about Cloudflare this
 }
 ```
 
+</details>
+
 ## Parameters
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -906,7 +948,7 @@ role
 
 `string`const: assistant
 
-▶content\[\]
+▶content\[]
 
 `array`
 
@@ -924,9 +966,9 @@ stop\_reason
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/schema-output.json)
 
 Was this helpful?
 

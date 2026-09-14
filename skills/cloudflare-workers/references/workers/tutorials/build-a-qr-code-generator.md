@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Build a QR code generator
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/tutorials/build-a-qr-code-generator/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/build-a-qr-code-generator/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will build and publish a Worker application that generates QR codes.
 
@@ -22,9 +22,9 @@ If you would like to review the code for this tutorial, the final version of the
 
 All of the tutorials assume you have already completed the [Get started guide](https://developers.cloudflare.com/workers/get-started/guide/), which gets you set up with a Cloudflare Workers account, [C3 ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare), and [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
 
-## 1\. Create a new Workers project
+## 1. Create a new Workers project
 
-First, use the [create-cloudflare CLI](https://developers.cloudflare.com/pages/get-started/c3) to create a new Cloudflare Workers project. To do this, open a terminal window and run the following command:
+First, use the [`create-cloudflare` CLI](https://developers.cloudflare.com/pages/get-started/c3) to create a new Cloudflare Workers project. To do this, open a terminal window and run the following command:
 
 npmyarnpnpm
 
@@ -42,11 +42,11 @@ pnpm create cloudflare@latest qr-code-generator
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `JavaScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `JavaScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 Then, move into your newly created directory:
 
@@ -70,9 +70,9 @@ In your default `index.js` file, you can see that request/response pattern in ac
 
 When a Worker receives a `fetch` event, the Worker returns the newly constructed response to the client. Your Worker will serve new responses directly from [Cloudflare's global network ↗](https://www.cloudflare.com/network) instead of continuing to your origin server. A standard server would accept requests and return responses. Cloudflare Workers allows you to respond quickly by constructing responses directly on the Cloudflare global network.
 
-## 2\. Handle Incoming Request
+## 2. Handle Incoming Request
 
-Any project you publish to Cloudflare Workers can make use of modern JavaScript tooling like ES modules, `npm` packages, and [async/await ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async%5Ffunction) functions to build your application. In addition to writing Workers, you can use Workers to [build full applications](https://developers.cloudflare.com/workers/tutorials/build-a-slackbot/) using the same tooling and process as in this tutorial.
+Any project you publish to Cloudflare Workers can make use of modern JavaScript tooling like ES modules, `npm` packages, and [`async`/`await` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) functions to build your application. In addition to writing Workers, you can use Workers to [build full applications](https://developers.cloudflare.com/workers/tutorials/build-a-slackbot/) using the same tooling and process as in this tutorial.
 
 The QR code generator you will build in this tutorial will be a Worker that runs on a single route and receives requests. Each request will contain a text message (a URL, for example), which the function will encode into a QR code. The function will then respond with the QR code in PNG image format.
 
@@ -88,7 +88,7 @@ export default {
 };
 ```
 
-Currently, if an incoming request is not a `POST`, the function will return `undefined`. However, a Worker always needs to return a `Response`. Since the function should only accept incoming `POST` requests, return a new `Response` with a [405 status code ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/405) if the incoming request is not a `POST`:
+Currently, if an incoming request is not a `POST`, the function will return `undefined`. However, a Worker always needs to return a `Response`. Since the function should only accept incoming `POST` requests, return a new `Response` with a [`405` status code ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/405) if the incoming request is not a `POST`:
 
 ```js
 export default {
@@ -132,7 +132,7 @@ export default {
 };
 ```
 
-## 3\. Build a QR code generator
+## 3. Build a QR code generator
 
 All projects deployed to Cloudflare Workers support npm packages. This support makes it easy to rapidly build out functionality in your Workers. The ['qrcode-svg' ↗](https://github.com/papnkukn/qrcode-svg) package is a great way to take text and encode it into a QR code. In the command line, install and save 'qrcode-svg' to your project’s 'package.json':
 
@@ -168,7 +168,7 @@ async function generateQRCode(request) {
 }
 ```
 
-## 4\. Test in an application UI
+## 4. Test in an application UI
 
 The Worker will execute when a user sends a `POST` request to a route, but it is best practice to also provide a proper interface for testing the function. At this point in the tutorial, if any request is received by your function that is not a `POST`, a `405` response is returned. The new version of `fetch` should return a new `Response` with a static HTML document instead of the `405` error:
 
@@ -278,11 +278,13 @@ const landing = `
 `;
 ```
 
-## 5\. Deploy your Worker
+## 5. Deploy your Worker
 
 With all the above steps complete, you have written the code for a QR code generator on Cloudflare Workers.
 
 Wrangler has built-in support for bundling, uploading, and releasing your Cloudflare Workers application. To do this, run `npx wrangler deploy`, which will build and deploy your code.
+
+*Deploy your Worker projectsh*
 
 ```sh
 npx wrangler deploy
@@ -303,5 +305,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/build-a-qr-code-generator/#page","headline":"Build a QR code generator · Cloudflare Workers docs","description":"This tutorial shows you how to build and publish a Worker application that generates QR codes. The final version of the codebase is available on GitHub.","url":"https://developers.cloudflare.com/workers/tutorials/build-a-qr-code-generator/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/build-a-qr-code-generator/#page","headline":"Build a QR code generator · Cloudflare Workers docs","description":"This tutorial shows you how to build and publish a Worker application that generates QR codes. The final version of the codebase is available on GitHub.","url":"https://developers.cloudflare.com/workers/tutorials/build-a-qr-code-generator/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
 ```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Concepts
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/data-center-protection/concepts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/data-center-protection/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Learn core concepts about Magic Transit and its functionality, in order to protect your data centers from distributed denial-of-service (DDoS) attacks.
 
@@ -20,8 +20,8 @@ Learn core concepts about Magic Transit and its functionality, in order to prote
 
 By the end of this module you will be able to:
 
-* Understand what Magic Transit is
-* Why you should use it to protect your IP network
+- Understand what Magic Transit is
+- Why you should use it to protect your IP network
 
 Was this helpful?
 

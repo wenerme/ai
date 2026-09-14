@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cache Reserve
 
-Last updated Jun 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Smart Shield
 
@@ -22,7 +22,7 @@ Cache Reserve is a large, persistent data store [implemented on top of R2](https
 
 In the same way that Tiered Cache builds a hierarchy of caches between your visitors and your origin, Cache Reserve serves as the ultimate upper-tier cache, that will reserve storage space for your assets for as long as you want. This ensures that your content is served from cache longer, shielding your origin from unneeded egress fees.
 
-![Content served from origin and getting cached in Cache Reserve, and Edge Cache Data Centers \(T1=upper-tier, T2=lower-tier\) on its way back to the client](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1870,height=462,format=webp/_astro/content-being-served.6zIZl3YT.png)
+![Content served from origin and getting cached in Cache Reserve, and Edge Cache Data Centers (T1=upper-tier, T2=lower-tier) on its way back to the client](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1870,height=462,format=webp/_astro/content-being-served.6zIZl3YT.png)
 
 Content in Cache Reserve is considered fresh based on the [Edge Cache TTL](https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/#edge-cache-ttl) setting, or your origin's `Cache-Control` headers if Edge Cache TTL is not set. After the freshness period expires, Cloudflare revalidates the asset with your origin the next time it is requested. This is the same behavior as in Cloudflare's regular CDN.
 
@@ -36,11 +36,10 @@ Cache Reserve is a usage-based product and [pricing](#pricing) is detailed below
 
 A paid Cache Reserve plan is required.
 
-1. In the Cloudflare dashboard, go to the **Cache Reserve** page.
-[Go to **Cache Reserve** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-reserve)
+1. In the Cloudflare dashboard, go to the **Cache Reserve** page. [Go to **Cache Reserve** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-reserve)
 2. Select **Enable storage sync**.
 
-Refer to the [Change Cache Reserve setting API](https://developers.cloudflare.com/api/resources/cache/subresources/cache%5Freserve/methods/edit/) for more information.
+Refer to the [Change Cache Reserve setting API](https://developers.cloudflare.com/api/resources/cache/subresources/cache_reserve/methods/edit/) for more information.
 
 Note
 
@@ -52,10 +51,10 @@ If you are an Enterprise customer and are interested in Cache Reserve, contact y
 
 Not all assets are eligible for Cache Reserve. To be admitted into Cache Reserve, assets must:
 
-* Be cacheable, according to Cloudflare's standard [cacheability factors](https://developers.cloudflare.com/cache/).
-* Have a freshness time-to-live (TTL) of at least 10 hours (set by any means such as Cache-Control / [CDN-Cache-Control](https://developers.cloudflare.com/cache/concepts/cache-control/) origin response headers, [Edge Cache TTL](https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/#edge-cache-ttl), [Cache TTL By Status](https://developers.cloudflare.com/cache/how-to/configure-cache-status-code/), or [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/)),
-* Have a Content-Length response header.
-* When using [Image transformations](https://developers.cloudflare.com/images/optimization/hosted-images/create-variants/), original files are eligible for Cache Reserve, but resized file variants are not eligible because transformations happen after Cache Reserve in the response flow.
+- Be cacheable, according to Cloudflare's standard [cacheability factors](https://developers.cloudflare.com/cache/).
+- Have a freshness time-to-live (TTL) of at least 10 hours (set by any means such as Cache-Control / [CDN-Cache-Control](https://developers.cloudflare.com/cache/concepts/cache-control/) origin response headers, [Edge Cache TTL](https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/#edge-cache-ttl), [Cache TTL By Status](https://developers.cloudflare.com/cache/how-to/configure-cache-status-code/), or [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/)),
+- Have a Content-Length response header.
+- When using [Image transformations](https://developers.cloudflare.com/images/optimization/hosted-images/create-variants/), original files are eligible for Cache Reserve, but resized file variants are not eligible because transformations happen after Cache Reserve in the response flow.
 
 ## Purge behavior
 
@@ -65,18 +64,18 @@ Note that [Purge Everything](https://developers.cloudflare.com/cache/how-to/purg
 
 ## Limits
 
-* Cache Reserve file limits are the same as [R2 limits](https://developers.cloudflare.com/r2/platform/limits/). Note that [CDN cache limits](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#customization-options-and-limits) still apply. Assets larger than standard limits will not be stored in the standard CDN cache, so these assets will incur Cache Reserve operations costs far more frequently.
-* Origin Range requests are not supported at this time from Cache Reserve.
-* [Vary for images](https://developers.cloudflare.com/cache/advanced-configuration/vary-for-images/) is currently not compatible with Cache Reserve.
-* Requests to [R2 public buckets linked to a zone's domain](https://developers.cloudflare.com/r2/buckets/public-buckets/) will not use Cache Reserve. Enabling Cache Reserve for the connected zone will use Cache Reserve only for requests not destined for the R2 bucket.
-* Cache Reserve makes requests for uncompressed content directly from the origin. Unlike the standard Cloudflare CDN, Cache Reserve does not include the `Accept-Encoding: gzip` header when sending requests to the origin.
-* Cache Reserve is bypassed when using the Cloudflare [O2O](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/how-it-works/) setup.
+- Cache Reserve file limits are the same as [R2 limits](https://developers.cloudflare.com/r2/platform/limits/). Note that [CDN cache limits](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#customization-options-and-limits) still apply. Assets larger than standard limits will not be stored in the standard CDN cache, so these assets will incur Cache Reserve operations costs far more frequently.
+- Origin Range requests are not supported at this time from Cache Reserve.
+- [Vary for images](https://developers.cloudflare.com/cache/advanced-configuration/vary-for-images/) is currently not compatible with Cache Reserve.
+- Requests to [R2 public buckets linked to a zone's domain](https://developers.cloudflare.com/r2/buckets/public-buckets/) will not use Cache Reserve. Enabling Cache Reserve for the connected zone will use Cache Reserve only for requests not destined for the R2 bucket.
+- Cache Reserve makes requests for uncompressed content directly from the origin. Unlike the standard Cloudflare CDN, Cache Reserve does not include the `Accept-Encoding: gzip` header when sending requests to the origin.
+- Cache Reserve is bypassed when using the Cloudflare [O2O](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/how-it-works/) setup.
 
 ## Usage
 
 Like the standard CDN, Cache Reserve also uses the `cf-cache-status` header to indicate [cache response statuses](https://developers.cloudflare.com/cache/concepts/cache-responses/) like `MISS`, `HIT`, and `REVALIDATED`. Cache Reserve cache misses and hits are factored into the dashboard's cache hit ratio.
 
-Individual sampled requests that filled or were served by Cache Reserve are viewable via the [CacheReserveUsed](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http%5Frequests/) Logpush field.
+Individual sampled requests that filled or were served by Cache Reserve are viewable via the [CacheReserveUsed](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/) Logpush field.
 
 Cache Reserve monthly operations and storage usage are viewable in the dashboard.
 
@@ -84,17 +83,18 @@ Cache Reserve monthly operations and storage usage are viewable in the dashboard
 
 Cache Reserve charges based on the total volume of data stored, along with two classes of operations on that data:
 
-* [Class A operations](https://developers.cloudflare.com/r2/pricing/#class-a-operations) which are more expensive and tend to mutate state.
-* [Class B operations](https://developers.cloudflare.com/r2/pricing/#class-b-operations) which tend to read existing state.
+- [Class A operations](https://developers.cloudflare.com/r2/pricing/#class-a-operations) which are more expensive and tend to mutate state.
+- [Class B operations](https://developers.cloudflare.com/r2/pricing/#class-b-operations) which tend to read existing state.
 
 In most cases, a Cache Reserve miss will result in both one class A and one class B operation, and a Cache Reserve hit will result in one class B operation. Assets larger than 1 GB will incur more operations proportional to their size.
 
 ### Cache Reserve pricing
 
-|                             | Rates                    | |  Storage | $0.015 / GB-month |
-| --------------------------- | ------------------------ | ---------- | ----------------- |
-| Class A Operations (writes) | $4.50 / million requests |            |                   |
-| Class B Operations (reads)  | $0.36 / million requests |            |                   |
+ | Rates
+| Storage | $0.015 / GB-month |
+| --- | --- |
+| Class A Operations (writes) | $4.50 / million requests |
+| Class B Operations (reads) | $0.36 / million requests |
 
 Note
 
@@ -106,8 +106,8 @@ Storage is billed using gigabyte-month (GB-month) as the billing metric. A GB-mo
 
 For example:
 
-* Storing 1 GB for 30 days will be charged as 1 GB-month.
-* Storing 2 GB for 15 days will be charged as 1 GB-month.
+- Storing 1 GB for 30 days will be charged as 1 GB-month.
+- Storing 2 GB for 15 days will be charged as 1 GB-month.
 
 ### Operations
 
@@ -139,13 +139,13 @@ Note this differs from the standard CDN's purge by tag, host, or prefix features
 
 Assuming 1,000 assets (each 1 GB) are written to Cache Reserve at the start of the month and each asset is read 1,000 times, the estimated cost for the month would be:
 
-|                    | Usage                                     | Billable Quantity | Price      |
-| ------------------ | ----------------------------------------- | ----------------- | ---------- |
-| Class B Operations | (1,000 assets) \* (1,000 reads per asset) | 1,000,000         | $0.36      |
-| Class A Operations | (1,000 assets) \* (1 write per asset)     | 1,000             | $4.50      |
-| Storage            | (1,000 assets) \* (1GB per asset)         | 1,000 GB-months   | $15.00     |
-| **TOTAL**          |                                           |                   | **$19.86** |
-|                    |                                           |                   |            |
+|  | Usage | Billable Quantity | Price |
+| --- | --- | --- | --- |
+| Class B Operations | (1,000 assets) \* (1,000 reads per asset) | 1,000,000 | $0.36 |
+| Class A Operations | (1,000 assets) \* (1 write per asset) | 1,000 | $4.50 |
+| Storage | (1,000 assets) \* (1GB per asset) | 1,000 GB-months | $15.00 |
+| **TOTAL** |  |  | **$19.86** |
+|  |  |  | |
 
 Note
 
@@ -155,18 +155,18 @@ The billable quantity is rounded up to the nearest million.
 
 Assuming 1,000,000 assets (each 1 MB) are in Cache Reserve, and:
 
-* each asset expires and is rewritten into Cache Reserve 1 time per day
-* each asset is read 2 times per day
+- each asset expires and is rewritten into Cache Reserve 1 time per day
+- each asset is read 2 times per day
 
 the estimated cost for the month would be:
 
-|                    | Usage                                                | Billable Quantity | Price       |
-| ------------------ | ---------------------------------------------------- | ----------------- | ----------- |
-| Class B Operations | (1,000,000 assets) \* (2 reads per day) \* (30 days) | 60,000,000        | $21.60      |
-| Class A Operations | (1,000,000 assets) \* (1 write per day) \* (30 days) | 30,000,000        | $135.00     |
-| Storage            | (1,000,000 assets) \* (1MB per asset)                | 1,000 GB-months   | $15.00      |
-| **TOTAL**          |                                                      |                   | **$171.60** |
-|                    |                                                      |                   |             |
+|  | Usage | Billable Quantity | Price |
+| --- | --- | --- | --- |
+| Class B Operations | (1,000,000 assets) \* (2 reads per day) \* (30 days) | 60,000,000 | $21.60 |
+| Class A Operations | (1,000,000 assets) \* (1 write per day) \* (30 days) | 30,000,000 | $135.00 |
+| Storage | (1,000,000 assets) \* (1MB per asset) | 1,000 GB-months | $15.00 |
+| **TOTAL** |  |  | **$171.60** |
+|  |  |  | |
 
 Note
 
@@ -182,43 +182,55 @@ Cache Reserve Analytics provides insights regarding your Cache Reserve usage. It
 
 In the **Overview** section, under **Cache Reserve**, you have access to the following metrics:
 
-* **Egress savings (bandwidth)** \- is an estimation based on response bytes served from Cache Reserve that did not need to be served from your origin server. These are represented as cache hits.
-* **Requests served by Cache Reserve** \- is the number of requests served by Cache Reserve (total).
-* **Data storage summary** \- is based on a representative sample of requests. Refer to [Sampling](https://developers.cloudflare.com/analytics/graphql-api/sampling/) for more details about how Cloudflare samples data.
-  * **Current data stored** \- is the data stored (currently) over time.
-  * **Aggregate storage usage** \- is the total of storage used for the selected timestamp.
-* **Operations** \- Class A (writes) and Class B (reads) operations over time.
+- **Egress savings (bandwidth)** - is an estimation based on response bytes served from Cache Reserve that did not need to be served from your origin server. These are represented as cache hits.
+- **Requests served by Cache Reserve** - is the number of requests served by Cache Reserve (total).
+- **Data storage summary** - is based on a representative sample of requests. Refer to [Sampling](https://developers.cloudflare.com/analytics/graphql-api/sampling/) for more details about how Cloudflare samples data.
+  - **Current data stored** - is the data stored (currently) over time.
+  - **Aggregate storage usage** - is the total of storage used for the selected timestamp.
+- **Operations** - Class A (writes) and Class B (reads) operations over time.
 
 ## Cache Reserve clear button
 
 You can remove all data stored in Cache Reserve through the dashboard or via API. To clear your cache reserve:
 
-* Cache Reserve must have already been enabled for the zone.
-* Cache Reserve needs to be off.
+- Cache Reserve must have already been enabled for the zone.
+- Cache Reserve needs to be off.
 
 Be aware that the deletion may take up to 24 hours to complete.
 
-1. In the Cloudflare dashboard, go to the **Cache Reserve** page.
-[Go to **Cache Reserve** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-reserve)
+1. In the Cloudflare dashboard, go to the **Cache Reserve** page. [Go to **Cache Reserve** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-reserve)
 2. In **Delete Cache Reserve Data**, select **Delete Storage**.
 
-To delete Cache Reserve data via API use the following example requests. For more information, refer to the [API documentation](https://developers.cloudflare.com/api/resources/cache/subresources/cache%5Freserve/methods/clear/).
+To delete Cache Reserve data via API use the following example requests. For more information, refer to the [API documentation](https://developers.cloudflare.com/api/resources/cache/subresources/cache_reserve/methods/clear/).
 
 **Request 1: Get Cache Reserve status**
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone Settings Write`
-* `Zone Settings Read`
-* `Zone Read`
-* `Zone Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone Settings Write</code>
+- <code>Zone Settings Read</code>
+- <code>Zone Read</code>
+- <code>Zone Write</code>
+
+</details>
+
+*Get Cache Reserve settingbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/cache_reserve" \
 	--request GET \
 	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
+
+*Responsejson*
 
 ```json
 {
@@ -237,17 +249,30 @@ If Cache Reserve is turned off, you can proceed to the Cache Reserve Clear opera
 
 **Request 2: Start Cache Reserve Clear**
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone Settings Write`
-* `Zone Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone Settings Write</code>
+- <code>Zone Write</code>
+
+</details>
+
+*Start Cache Reserve Clearbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/cache_reserve_clear" \
 	--request POST \
 	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
+
+*Responsejson*
 
 ```json
 {
@@ -271,5 +296,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/#page","headline":"Cache Reserve · Cloudflare Cache (CDN) docs","description":"Persist cached content in R2 storage to eliminate cache evictions.","url":"https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/#page","headline":"Cache Reserve · Cloudflare Cache (CDN) docs","description":"Persist cached content in R2 storage to eliminate cache evictions.","url":"https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

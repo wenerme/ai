@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # String functions
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/string/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/string/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-_Cloudflare Pipelines scalar function implementations are based on [Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference._
+*Cloudflare Pipelines scalar function implementations are based on [Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference.*
 
 ## `ascii`
 
@@ -26,7 +26,7 @@ ascii(str)
 
 **Arguments**
 
-* **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+- **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
 
 **Related functions**: [chr](#chr)
 
@@ -40,9 +40,9 @@ bit_length(str)
 
 **Arguments**
 
-* **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+- **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
 
-**Related functions**: [length](#length), [octet\_length](#octet%5Flength)
+**Related functions**: [length](#length), [octet\_length](#octet_length)
 
 ## `btrim`
 
@@ -54,22 +54,22 @@ btrim(str[, trim_str])
 
 **Arguments**
 
-* **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
-* **trim\_str**: String expression to trim from the beginning and end of the input string. Can be a constant, column, or function, and any combination of arithmetic operators. _Default is whitespace characters._
+- **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+- **trim\_str**: String expression to trim from the beginning and end of the input string. Can be a constant, column, or function, and any combination of arithmetic operators. *Default is whitespace characters.*
 
 **Related functions**: [ltrim](#ltrim), [rtrim](#rtrim)
 
 **Aliases**
 
-* trim
+- trim
 
 ## `char_length`
 
-_Alias of [length](#length)._
+*Alias of [length](#length).*
 
 ## `character_length`
 
-_Alias of [length](#length)._
+*Alias of [length](#length).*
 
 ## `concat`
 
@@ -81,10 +81,10 @@ concat(str[, ..., str_n])
 
 **Arguments**
 
-* **str**: String expression to concatenate. Can be a constant, column, or function, and any combination of string operators.
-* **str\_n**: Subsequent string column or literal string to concatenate.
+- **str**: String expression to concatenate. Can be a constant, column, or function, and any combination of string operators.
+- **str\_n**: Subsequent string column or literal string to concatenate.
 
-**Related functions**: [concat\_ws](#concat%5Fws)
+**Related functions**: [concat\_ws](#concat_ws)
 
 ## `concat_ws`
 
@@ -96,9 +96,9 @@ concat(separator, str[, ..., str_n])
 
 **Arguments**
 
-* **separator**: Separator to insert between concatenated strings.
-* **str**: String expression to concatenate. Can be a constant, column, or function, and any combination of string operators.
-* **str\_n**: Subsequent string column or literal string to concatenate.
+- **separator**: Separator to insert between concatenated strings.
+- **str**: String expression to concatenate. Can be a constant, column, or function, and any combination of string operators.
+- **str\_n**: Subsequent string column or literal string to concatenate.
 
 **Related functions**: [concat](#concat)
 
@@ -112,7 +112,7 @@ chr(expression)
 
 **Arguments**
 
-* **expression**: Expression containing the ASCII or Unicode code value to operate on. Can be a constant, column, or function, and any combination of arithmetic or string operators.
+- **expression**: Expression containing the ASCII or Unicode code value to operate on. Can be a constant, column, or function, and any combination of arithmetic or string operators.
 
 **Related functions**: [ascii](#ascii)
 
@@ -126,8 +126,8 @@ ends_with(str, substr)
 
 **Arguments**
 
-* **str**: String expression to test. Can be a constant, column, or function, and any combination of string operators.
-* **substr**: Substring to test for.
+- **str**: String expression to test. Can be a constant, column, or function, and any combination of string operators.
+- **substr**: Substring to test for.
 
 ## `initcap`
 
@@ -139,18 +139,18 @@ initcap(str)
 
 **Arguments**
 
-* **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+- **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
 
 **Related functions**: [lower](#lower), [upper](#upper)
 
 ## `instr`
 
-_Alias of [strpos](#strpos)._
+*Alias of [strpos](#strpos).*
 
 **Arguments**
 
-* **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
-* **substr**: Substring expression to search for. Can be a constant, column, or function, and any combination of string operators.
+- **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+- **substr**: Substring expression to search for. Can be a constant, column, or function, and any combination of string operators.
 
 ## `left`
 
@@ -162,8 +162,8 @@ left(str, n)
 
 **Arguments**
 
-* **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
-* **n**: Number of characters to return.
+- **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+- **n**: Number of characters to return.
 
 **Related functions**: [right](#right)
 
@@ -177,14 +177,14 @@ length(str)
 
 **Arguments**
 
-* **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+- **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
 
 **Aliases**
 
-* char\_length
-* character\_length
+- char\_length
+- character\_length
 
-**Related functions**: [bit\_length](#bit%5Flength), [octet\_length](#octet%5Flength)
+**Related functions**: [bit\_length](#bit_length), [octet\_length](#octet_length)
 
 ## `lower`
 
@@ -196,7 +196,7 @@ lower(str)
 
 **Arguments**
 
-* **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+- **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
 
 **Related functions**: [initcap](#initcap), [upper](#upper)
 
@@ -210,9 +210,9 @@ lpad(str, n[, padding_str])
 
 **Arguments**
 
-* **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
-* **n**: String length to pad to.
-* **padding\_str**: String expression to pad with. Can be a constant, column, or function, and any combination of string operators. _Default is a space._
+- **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+- **n**: String length to pad to.
+- **padding\_str**: String expression to pad with. Can be a constant, column, or function, and any combination of string operators. *Default is a space.*
 
 **Related functions**: [rpad](#rpad)
 
@@ -226,8 +226,8 @@ ltrim(str[, trim_str])
 
 **Arguments**
 
-* **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
-* **trim\_str**: String expression to trim from the beginning of the input string. Can be a constant, column, or function, and any combination of arithmetic operators. _Default is whitespace characters._
+- **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+- **trim\_str**: String expression to trim from the beginning of the input string. Can be a constant, column, or function, and any combination of arithmetic operators. *Default is whitespace characters.*
 
 **Related functions**: [btrim](#btrim), [rtrim](#rtrim)
 
@@ -241,9 +241,9 @@ octet_length(str)
 
 **Arguments**
 
-* **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+- **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
 
-**Related functions**: [bit\_length](#bit%5Flength), [length](#length)
+**Related functions**: [bit\_length](#bit_length), [length](#length)
 
 ## `repeat`
 
@@ -255,8 +255,8 @@ repeat(str, n)
 
 **Arguments**
 
-* **str**: String expression to repeat. Can be a constant, column, or function, and any combination of string operators.
-* **n**: Number of times to repeat the input string.
+- **str**: String expression to repeat. Can be a constant, column, or function, and any combination of string operators.
+- **n**: Number of times to repeat the input string.
 
 ## `replace`
 
@@ -268,9 +268,9 @@ replace(str, substr, replacement)
 
 **Arguments**
 
-* **str**: String expression to repeat. Can be a constant, column, or function, and any combination of string operators.
-* **substr**: Substring expression to replace in the input string. Can be a constant, column, or function, and any combination of string operators.
-* **replacement**: Replacement substring expression. Can be a constant, column, or function, and any combination of string operators.
+- **str**: String expression to repeat. Can be a constant, column, or function, and any combination of string operators.
+- **substr**: Substring expression to replace in the input string. Can be a constant, column, or function, and any combination of string operators.
+- **replacement**: Replacement substring expression. Can be a constant, column, or function, and any combination of string operators.
 
 ## `reverse`
 
@@ -282,7 +282,7 @@ reverse(str)
 
 **Arguments**
 
-* **str**: String expression to repeat. Can be a constant, column, or function, and any combination of string operators.
+- **str**: String expression to repeat. Can be a constant, column, or function, and any combination of string operators.
 
 ## `right`
 
@@ -294,8 +294,8 @@ right(str, n)
 
 **Arguments**
 
-* **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
-* **n**: Number of characters to return.
+- **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+- **n**: Number of characters to return.
 
 **Related functions**: [left](#left)
 
@@ -309,9 +309,9 @@ rpad(str, n[, padding_str])
 
 **Arguments**
 
-* **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
-* **n**: String length to pad to.
-* **padding\_str**: String expression to pad with. Can be a constant, column, or function, and any combination of string operators. _Default is a space._
+- **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+- **n**: String length to pad to.
+- **padding\_str**: String expression to pad with. Can be a constant, column, or function, and any combination of string operators. *Default is a space.*
 
 **Related functions**: [lpad](#lpad)
 
@@ -325,8 +325,8 @@ rtrim(str[, trim_str])
 
 **Arguments**
 
-* **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
-* **trim\_str**: String expression to trim from the end of the input string. Can be a constant, column, or function, and any combination of arithmetic operators. _Default is whitespace characters._
+- **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+- **trim\_str**: String expression to trim from the end of the input string. Can be a constant, column, or function, and any combination of arithmetic operators. *Default is whitespace characters.*
 
 **Related functions**: [btrim](#btrim), [ltrim](#ltrim)
 
@@ -340,9 +340,9 @@ split_part(str, delimiter, pos)
 
 **Arguments**
 
-* **str**: String expression to spit. Can be a constant, column, or function, and any combination of string operators.
-* **delimiter**: String or character to split on.
-* **pos**: Position of the part to return.
+- **str**: String expression to spit. Can be a constant, column, or function, and any combination of string operators.
+- **delimiter**: String or character to split on.
+- **pos**: Position of the part to return.
 
 ## `starts_with`
 
@@ -354,12 +354,12 @@ starts_with(str, substr)
 
 **Arguments**
 
-* **str**: String expression to test. Can be a constant, column, or function, and any combination of string operators.
-* **substr**: Substring to test for.
+- **str**: String expression to test. Can be a constant, column, or function, and any combination of string operators.
+- **substr**: Substring to test for.
 
 ## `strpos`
 
-Returns the starting position of a specified substring in a string. Positions begin at 1\. If the substring does not exist in the string, the function returns 0.
+Returns the starting position of a specified substring in a string. Positions begin at 1. If the substring does not exist in the string, the function returns 0.
 
 ```plaintext
 strpos(str, substr)
@@ -367,12 +367,12 @@ strpos(str, substr)
 
 **Arguments**
 
-* **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
-* **substr**: Substring expression to search for. Can be a constant, column, or function, and any combination of string operators.
+- **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+- **substr**: Substring expression to search for. Can be a constant, column, or function, and any combination of string operators.
 
 **Aliases**
 
-* instr
+- instr
 
 ## `substr`
 
@@ -384,9 +384,9 @@ substr(str, start_pos[, length])
 
 **Arguments**
 
-* **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
-* **start\_pos**: Character position to start the substring at. The first character in the string has a position of 1.
-* **length**: Number of characters to extract. If not specified, returns the rest of the string after the start position.
+- **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+- **start\_pos**: Character position to start the substring at. The first character in the string has a position of 1.
+- **length**: Number of characters to extract. If not specified, returns the rest of the string after the start position.
 
 ## `translate`
 
@@ -396,9 +396,9 @@ Translates characters in a string to specified translation characters.
 translate(str, chars, translation)
 ```
 
-* **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
-* **chars**: Characters to translate.
-* **translation**: Translation characters. Translation characters replace only characters at the same position in the **chars** string.
+- **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+- **chars**: Characters to translate.
+- **translation**: Translation characters. Translation characters replace only characters at the same position in the **chars** string.
 
 ## `to_hex`
 
@@ -410,11 +410,11 @@ to_hex(int)
 
 **Arguments**
 
-* **int**: Integer expression to convert. Can be a constant, column, or function, and any combination of arithmetic operators.
+- **int**: Integer expression to convert. Can be a constant, column, or function, and any combination of arithmetic operators.
 
 ## `trim`
 
-_Alias of [btrim](#btrim)._
+*Alias of [btrim](#btrim).*
 
 ## `upper`
 
@@ -426,7 +426,7 @@ upper(str)
 
 **Arguments**
 
-* **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+- **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
 
 **Related functions**: [initcap](#initcap), [lower](#lower)
 
@@ -448,10 +448,10 @@ overlay(str PLACING substr FROM pos [FOR count])
 
 **Arguments**
 
-* **str**: String expression to operate on.
-* **substr**: the string to replace part of str.
-* **pos**: the start position to replace of str.
-* **count**: the count of characters to be replaced from start position of str. If not specified, will use substr length instead.
+- **str**: String expression to operate on.
+- **substr**: the string to replace part of str.
+- **pos**: the start position to replace of str.
+- **count**: the count of characters to be replaced from start position of str. If not specified, will use substr length instead.
 
 ## `levenshtein`
 
@@ -463,8 +463,8 @@ levenshtein(str1, str2)
 
 **Arguments**
 
-* **str1**: String expression to compute Levenshtein distance with str2.
-* **str2**: String expression to compute Levenshtein distance with str1.
+- **str1**: String expression to compute Levenshtein distance with str2.
+- **str2**: String expression to compute Levenshtein distance with str1.
 
 ## `substr_index`
 
@@ -476,9 +476,9 @@ substr_index(str, delim, count)
 
 **Arguments**
 
-* **str**: String expression to operate on.
-* **delim**: the string to find in str to split str.
-* **count**: The number of times to search for the delimiter. Can be both a positive or negative number.
+- **str**: String expression to operate on.
+- **delim**: the string to find in str to split str.
+- **count**: The number of times to search for the delimiter. Can be both a positive or negative number.
 
 ## `find_in_set`
 
@@ -490,8 +490,8 @@ find_in_set(str, strlist)
 
 **Arguments**
 
-* **str**: String expression to find in strlist.
-* **strlist**: A string list is a string composed of substrings separated by , characters.
+- **str**: String expression to find in strlist.
+- **strlist**: A string list is a string composed of substrings separated by , characters.
 
 Was this helpful?
 

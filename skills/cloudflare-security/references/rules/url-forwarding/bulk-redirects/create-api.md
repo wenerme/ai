@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create Bulk Redirects via API
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/create-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/create-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To create Bulk Redirects via API, you must:
 
@@ -24,14 +24,25 @@ Note
 
 Bulk Redirects require that the incoming traffic for the hostname referenced in visitors' requests is [proxied by Cloudflare](https://developers.cloudflare.com/dns/proxy-status/).
 
-## 1\. Create a Bulk Redirect List via API
+## 1. Create a Bulk Redirect List via API
 
 Use the [Create a list](https://developers.cloudflare.com/api/resources/rules/subresources/lists/methods/create/) operation to create a new Bulk Redirect List. The list `kind` must be `redirect`.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Account Filter Lists Edit`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Account Filter Lists Edit</code>
+
+</details>
+
+*Create a listbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rules/lists" \
@@ -66,14 +77,25 @@ Take note of the list ID — you will need it in the next step.
 
 For more information on list operations, refer to the [Lists API](https://developers.cloudflare.com/waf/tools/lists/lists-api/) documentation.
 
-## 2\. Add items to the list
+## 2. Add items to the list
 
 Use the [Create list items](https://developers.cloudflare.com/api/resources/rules/subresources/lists/subresources/items/methods/create/) operation to add URL redirect items to the list. Enter the list ID from the previous step in the endpoint URL:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Account Filter Lists Edit`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Account Filter Lists Edit</code>
+
+</details>
+
+*Create list itemsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rules/lists/f848b6ccb07647749411f504d6f88794/items" \
@@ -107,13 +129,24 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rules/lists/f848
 }
 ```
 
-This is an asynchronous operation. The response will contain an `operation_id` which you will use to check if the operation completed successfully using the [Get bulk operation status](https://developers.cloudflare.com/api/resources/rules/subresources/lists/subresources/bulk%5Foperations/methods/get/) operation:
+This is an asynchronous operation. The response will contain an `operation_id` which you will use to check if the operation completed successfully using the [Get bulk operation status](https://developers.cloudflare.com/api/resources/rules/subresources/lists/subresources/bulk_operations/methods/get/) operation:
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Account Filter Lists Edit`
-* `Account Filter Lists Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Account Filter Lists Edit</code>
+- <code>Account Filter Lists Read</code>
+
+</details>
+
+*Get bulk operation statusbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rules/lists/bulk_operations/92558f8b296d4dbe9d0419e0e53f6622" \
@@ -122,6 +155,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rules/lists/bulk
 ```
 
 Once the operation has completed successfully, the response will be similar to the following:
+
+*Responsejson*
 
 ```json
 {
@@ -136,7 +171,7 @@ Once the operation has completed successfully, the response will be similar to t
 }
 ```
 
-## 3\. Create a Bulk Redirect Rule via API
+## 3. Create a Bulk Redirect Rule via API
 
 Since Bulk Redirect Lists are essentially containers of URL redirects, you have to enable the URL redirects in the list by creating a Bulk Redirect Rule.
 
@@ -144,22 +179,33 @@ Add Bulk Redirect Rules to the [entry point ruleset](https://developers.cloudfla
 
 A Bulk Redirect Rule must have:
 
-* `action` set to `redirect`
-* An `action_parameters` object with additional configuration settings — refer to [Bulk Redirects API JSON objects](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/json-objects/#bulk-redirect-rule) for details.
+- `action` set to `redirect`
+- An `action_parameters` object with additional configuration settings — refer to [Bulk Redirects API JSON objects](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/json-objects/#bulk-redirect-rule) for details.
 
 The following request of the [Create an account ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation creates a phase entry point ruleset for the `http_request_redirect` phase at the account level, and defines a single redirect rule. Use this operation if you have not created a phase entry point ruleset for the `http_request_redirect` phase yet.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Mass URL Redirects Write`
-* `Magic Firewall Write`
-* `L4 DDoS Managed Ruleset Write`
-* `Transform Rules Write`
-* `Select Configuration Write`
-* `Account WAF Write`
-* `Account Rulesets Write`
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Mass URL Redirects Write</code>
+- <code>Magic Firewall Write</code>
+- <code>L4 DDoS Managed Ruleset Write</code>
+- <code>Transform Rules Write</code>
+- <code>Select Configuration Write</code>
+- <code>Account WAF Write</code>
+- <code>Account Rulesets Write</code>
+- <code>Logs Write</code>
+
+</details>
+
+*Create an account rulesetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
@@ -223,17 +269,28 @@ Use the `ref` field to get stable rule IDs across updates when using Terraform. 
 
 If there is already a phase entry point ruleset for the `http_request_redirect` phase, use the [Update an account ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/update/) operation instead, like in the following example:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Mass URL Redirects Write`
-* `Magic Firewall Write`
-* `L4 DDoS Managed Ruleset Write`
-* `Transform Rules Write`
-* `Select Configuration Write`
-* `Account WAF Write`
-* `Account Rulesets Write`
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Mass URL Redirects Write</code>
+- <code>Magic Firewall Write</code>
+- <code>L4 DDoS Managed Ruleset Write</code>
+- <code>Transform Rules Write</code>
+- <code>Select Configuration Write</code>
+- <code>Account WAF Write</code>
+- <code>Account Rulesets Write</code>
+- <code>Logs Write</code>
+
+</details>
+
+*Update an account rulesetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESET_ID" \
@@ -331,11 +388,11 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESE
 
 The API token used in API requests to manage Bulk Redirects objects (lists, list items, and rules) must have at least the following [permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/):
 
-* _Account_ \> _Bulk URL Redirects_ \> _Edit_
-* _Account_ \> _Account Filter Lists_ \> _Edit_
+- *Account* > *Bulk URL Redirects* > *Edit*
+- *Account* > *Account Filter Lists* > *Edit*
 
-* Mass URL Redirects Write
-* Account Rule Lists Write
+- Mass URL Redirects Write
+- Account Rule Lists Write
 
 Was this helpful?
 

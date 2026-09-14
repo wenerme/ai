@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Serving a subdirectory
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/static-assets/routing/advanced/serving-a-subdirectory/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/routing/advanced/serving-a-subdirectory/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -22,12 +22,12 @@ Like with any other Worker, [you can configure a Worker with assets to run on a 
 
 For example, to serve assets from `example.com/blog/*`, create a `blog` directory in your asset directory.
 
-* dist
-  * blog
-    * index.html
-    * posts
-      * post1.html
-      * post2.html
+- dist
+  - blog
+    - index.html
+    - posts
+      - post1.html
+      - post2.html
 
 With a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) like so:
 

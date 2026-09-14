@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Integrations
 
-Last updated Sep 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Integrate third-party applications and services with Cloudflare One.
 
-* [Cloud and SaaS integrations](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)
-* [Service providers](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/)
-* [Identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/)
+- [Cloud and SaaS integrations](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)
+- [Service providers](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/)
+- [Identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/)
 
 Was this helpful?
 

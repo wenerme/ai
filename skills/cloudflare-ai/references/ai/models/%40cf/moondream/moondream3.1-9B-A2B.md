@@ -16,18 +16,18 @@ m
 
 Image-to-Text • moondream
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/moondream/moondream3.1-9B-A2B/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/moondream/moondream3.1-9B-A2B/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/moondream/moondream3.1-9B-A2B`
 
-* Cloudflare-hosted
-* Vision
+- Cloudflare-hosted
+- Vision
 
 Moondream 3 is a fast, efficient 9B mixture-of-experts vision language model (2B active parameters) that delivers frontier-level visual reasoning for tasks like object detection, pointing, OCR, and structured output.
 
-| Model Info   |                                                     |
-| ------------ | --------------------------------------------------- |
-| Vision       | Yes                                                 |
+| Model Info | |
+| --- | --- |
+| Vision | Yes |
 | Unit Pricing | $0.30 per M input tokens, $1.00 per M output tokens |
 
 ## Parameters
@@ -92,11 +92,11 @@ caption
 
 `string`Caption text for the \`caption\` task. Null for other tasks.
 
-▶points\[\]
+▶points\[]
 
 `array`Located points for the \`point\` task. Null for other tasks.
 
-▶objects\[\]
+▶objects\[]
 
 `array`Detected bounding boxes for the \`detect\` task. Null for other tasks.
 
@@ -106,9 +106,9 @@ caption
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/@cf/moondream/moondream3.1-9B-A2B/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/moondream/moondream3.1-9B-A2B/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/@cf/moondream/moondream3.1-9B-A2B/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/moondream/moondream3.1-9B-A2B/schema-output.json)
 
 Was this helpful?
 

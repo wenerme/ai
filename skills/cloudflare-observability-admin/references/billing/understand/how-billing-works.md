@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # How Cloudflare billing works
 
-Last updated May 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/billing/understand/how-billing-works/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/understand/how-billing-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare billing has a few moving parts. This page explains the full billing lifecycle, the different types of charges on your account, and how to read a typical invoice.
 
@@ -48,9 +48,9 @@ Domain plan charges (Free, Pro, Business, Enterprise) are flat-rate and billed a
 
 The line item lists the domain names the plan covers. For example:
 
-| Description                                                    | Qty | Unit price | Amount |
-| -------------------------------------------------------------- | --- | ---------- | ------ |
-| Cloudflare Pro Plan (example1.com, example2.com, example3.com) | 3   | $25.00     | $75.00 |
+| Description | Qty | Unit price | Amount |
+| --- | --- | --- | --- |
+| Cloudflare Pro Plan (example1.com, example2.com, example3.com) | 3 | $25.00 | $75.00 |
 
 ### Subscription and add-on charges (flat rate, billed in advance)
 
@@ -58,11 +58,11 @@ Add-on services with flat monthly fees — such as Load Balancing, Argo Smart Ro
 
 For example:
 
-| Description                               | Period          | Qty | Amount |
-| ----------------------------------------- | --------------- | --- | ------ |
-| Basic Load Balancing                      | Apr 14 - May 13 | 1   | $5.00  |
-| Images Stream Bundle Basic                | Apr 14 - May 13 | 1   | $5.00  |
-| Smart Shield Argo Zone Level Plan - Basic | Apr 14 - May 13 | 1   | $5.00  |
+| Description | Period | Qty | Amount |
+| --- | --- | --- | --- |
+| Basic Load Balancing | Apr 14 - May 13 | 1 | $5.00 |
+| Images Stream Bundle Basic | Apr 14 - May 13 | 1 | $5.00 |
+| Smart Shield Argo Zone Level Plan - Basic | Apr 14 - May 13 | 1 | $5.00 |
 
 Some add-ons have multiple sub-line items (for example, Load Balancing shows separate lines for pools, origins, health check intervals, and health check regions). Many of these sub-items may show $0.00 if they are within your included allocation.
 
@@ -72,11 +72,11 @@ Products like Workers, R2, Cache Reserve operations, Stream minutes viewed, and 
 
 For example:
 
-| Description                                                    | Period          | Qty     | Unit price          | Amount |
-| -------------------------------------------------------------- | --------------- | ------- | ------------------- | ------ |
-| Cache Reserve Reads                                            | Mar 14 - Apr 13 | 166,865 | $0.36 per 1,000,000 | $0.36  |
-| Smart Shield Argo Accelerated Gigabytes (First GB is included) | Mar 14 - Apr 13 | 34      | $0.10               | $3.40  |
-| Stream Bundle Basic Minutes of Video Viewed (in thousands)     | Mar 14 - Apr 13 | 198     | $1.00 per 1,000     | $1.00  |
+| Description | Period | Qty | Unit price | Amount |
+| --- | --- | --- | --- | --- |
+| Cache Reserve Reads | Mar 14 - Apr 13 | 166,865 | $0.36 per 1,000,000 | $0.36 |
+| Smart Shield Argo Accelerated Gigabytes (First GB is included) | Mar 14 - Apr 13 | 34 | $0.10 | $3.40 |
+| Stream Bundle Basic Minutes of Video Viewed (in thousands) | Mar 14 - Apr 13 | 198 | $1.00 per 1,000 | $1.00 |
 
 Many usage-based products include a free tier (for example, "First 10GB-Month included" for R2 storage). If your usage stays within the free tier, the line item appears with a quantity of 0 and a $0.00 amount.
 
@@ -90,65 +90,73 @@ A typical Cloudflare invoice may span several pages and contain 20-30+ line item
 
 The top of the invoice shows:
 
-* **Invoice number** (for example, IN-62358374)
-* **Date of issue** and **date due** (usually the same day for automatic payments)
-* **Company name** — the name on your billing profile
-* **Cloudflare address** and your **billing address**
-* **Total amount due**
+- **Invoice number** (for example, IN-62358374)
+- **Date of issue** and **date due** (usually the same day for automatic payments)
+- **Company name** — the name on your billing profile
+- **Cloudflare address** and your **billing address**
+- **Total amount due**
 
 ### Line items
 
 Line items are grouped by billing period. You will typically see two groups on every invoice:
 
-| Section             | Billing period                                 | What it covers                                                                 |
-| ------------------- | ---------------------------------------------- | ------------------------------------------------------------------------------ |
-| Usage-based charges | Previous period (for example, Mar 14 - Apr 13) | Metered consumption from the period that just ended                            |
-| Flat-rate charges   | Upcoming period (for example, Apr 14 - May 13) | Plan fees, subscription fees, and add-on base fees prepaid for the next period |
+| Section | Billing period | What it covers |
+| --- | --- | --- |
+| Usage-based charges | Previous period (for example, Mar 14 - Apr 13) | Metered consumption from the period that just ended |
+| Flat-rate charges | Upcoming period (for example, Apr 14 - May 13) | Plan fees, subscription fees, and add-on base fees prepaid for the next period |
 
 Each line item shows:
 
-* **Description**: Product name and any included free tier
-* **Date range**: The billing period the charge covers
-* **Qty**: Units consumed (for usage) or count (for plans/subscriptions)
-* **Unit price**: Price per unit, sometimes shown as "per 1,000,000" or "per 50,000" for high-volume metrics
-* **Amount**: Total charge for that line item
+- **Description**: Product name and any included free tier
+- **Date range**: The billing period the charge covers
+- **Qty**: Units consumed (for usage) or count (for plans/subscriptions)
+- **Unit price**: Price per unit, sometimes shown as "per 1,000,000" or "per 50,000" for high-volume metrics
+- **Amount**: Total charge for that line item
 
 ### Zero-amount line items
 
-Many products have multiple billable dimensions (for example, R2 has separate lines for storage, data retrieval, Class A operations, and Class B operations). Even if you did not use a dimension during the billing period, it appears on the invoice at $0.00\. This is expected — it confirms the product is active and shows that no charges were incurred for that specific dimension.
+Many products have multiple billable dimensions (for example, R2 has separate lines for storage, data retrieval, Class A operations, and Class B operations). Even if you did not use a dimension during the billing period, it appears on the invoice at $0.00. This is expected — it confirms the product is active and shows that no charges were incurred for that specific dimension.
+
+<details>
+
+<summary>
 
 Example: R2 line items on a typical invoice
 
+</summary>
+
 A single R2 subscription can generate six or more line items:
 
-| Line item                                          | What it measures        |
-| -------------------------------------------------- | ----------------------- |
-| R2 Data Storage (First 10GB-Month included)        | Stored data volume      |
-| R2 Storage Class A Operations (First 1M included)  | Write/modify operations |
-| R2 Storage Class B Operations (First 10M included) | Read/list operations    |
-| R2 Infrequent Access - Storage                     | IA tier storage         |
-| R2 Infrequent Access - Data Retrieval              | IA tier reads           |
-| R2 Infrequent Access - Class A Operations          | IA tier writes          |
-| R2 Infrequent Access - Class B Operations          | IA tier reads           |
+| Line item | What it measures |
+| --- | --- |
+| R2 Data Storage (First 10GB-Month included) | Stored data volume |
+| R2 Storage Class A Operations (First 1M included) | Write/modify operations |
+| R2 Storage Class B Operations (First 10M included) | Read/list operations |
+| R2 Infrequent Access - Storage | IA tier storage |
+| R2 Infrequent Access - Data Retrieval | IA tier reads |
+| R2 Infrequent Access - Class A Operations | IA tier writes |
+| R2 Infrequent Access - Class B Operations | IA tier reads |
 
 If your usage falls within the included free tier, all of these show $0.00.
+
+</details>
 
 ### Invoice total
 
 The bottom of the invoice shows:
 
-* **Subtotal**: Sum of all line items
-* **Sales tax**: If applicable based on your billing address (refer to [Sales tax](https://developers.cloudflare.com/billing/understand/sales-tax/))
-* **Total** and **Amount due**: The final amount charged
+- **Subtotal**: Sum of all line items
+- **Sales tax**: If applicable based on your billing address (refer to [Sales tax](https://developers.cloudflare.com/billing/understand/sales-tax/))
+- **Total** and **Amount due**: The final amount charged
 
 ## The billing dashboard
 
-The Cloudflare dashboard organizes billing information across four tabs under **Manage Account** \> **Billing**:
+The Cloudflare dashboard organizes billing information across four tabs under **Manage Account** > **Billing**:
 
-* **Invoices and documents** — view, download, and pay invoices. Configure your billing email preference and set up billable usage notifications.
-* **Billable Usage** — track daily usage-based costs across all products for the current or previous billing period.
-* **Payment** — manage your primary and additional payment methods, billing address, and tax-exempt status.
-* **Subscriptions** — view all active subscriptions with their renewal dates, pricing, and invoice status. Cancel or modify subscriptions from this tab.
+- **Invoices and documents** — view, download, and pay invoices. Configure your billing email preference and set up billable usage notifications.
+- **Billable Usage** — track daily usage-based costs across all products for the current or previous billing period.
+- **Payment** — manage your primary and additional payment methods, billing address, and tax-exempt status.
+- **Subscriptions** — view all active subscriptions with their renewal dates, pricing, and invoice status. Cancel or modify subscriptions from this tab.
 
 ### Billable usage dashboard
 
@@ -158,7 +166,7 @@ The billable usage dashboard shows a daily cost breakdown chart and a per-produc
 
 ### Budget alerts
 
-Budget alerts notify you by email when your account-wide usage-based spend crosses a dollar threshold. Set these up under **Manage Account** \> **Billing** \> **Billable Usage**.
+Budget alerts notify you by email when your account-wide usage-based spend crosses a dollar threshold. Set these up under **Manage Account** > **Billing** > **Billable Usage**.
 
 ![The budget alert creation modal showing threshold and notification configuration](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=315,height=374,format=webp/_astro/budget-alert-modal.BjIzGOLV.png)
 
@@ -174,18 +182,18 @@ For example, if you upgrade to the Pro plan on the 10th of a month, all monthly 
 
 ## Upgrades and downgrades
 
-* **Upgrades** take effect immediately. You are charged a prorated amount for the remainder of the current billing period, and your account is credited for the unused portion of the lower plan.
-* **Downgrades** take effect at the end of the current billing period. You continue to have access to the higher-tier features until the new period begins.
-* **Cancellations** follow the same timing as downgrades — service continues until the end of the billing period. Cloudflare does not issue refunds for the remaining time.
+- **Upgrades** take effect immediately. You are charged a prorated amount for the remainder of the current billing period, and your account is credited for the unused portion of the lower plan.
+- **Downgrades** take effect at the end of the current billing period. You continue to have access to the higher-tier features until the new period begins.
+- **Cancellations** follow the same timing as downgrades — service continues until the end of the billing period. Cloudflare does not issue refunds for the remaining time.
 
 For details, refer to [Billing policy](https://developers.cloudflare.com/billing/understand/billing-policy/).
 
 ## Related resources
 
-* [Invoices](https://developers.cloudflare.com/billing/manage/invoices/) — Download and manage your invoices
-* [Usage-based billing](https://developers.cloudflare.com/billing/understand/usage-based-billing/) — Products that bill based on consumption
-* [Billing policy](https://developers.cloudflare.com/billing/understand/billing-policy/) — Refund policy, payment methods, and terms
-* [Pay an outstanding balance](https://developers.cloudflare.com/billing/manage/pay-invoices-overdue-balances/) — Resolve unpaid invoices
+- [Invoices](https://developers.cloudflare.com/billing/manage/invoices/) — Download and manage your invoices
+- [Usage-based billing](https://developers.cloudflare.com/billing/understand/usage-based-billing/) — Products that bill based on consumption
+- [Billing policy](https://developers.cloudflare.com/billing/understand/billing-policy/) — Refund policy, payment methods, and terms
+- [Pay an outstanding balance](https://developers.cloudflare.com/billing/manage/pay-invoices-overdue-balances/) — Resolve unpaid invoices
 
 Was this helpful?
 

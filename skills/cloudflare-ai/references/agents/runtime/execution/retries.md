@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Retries
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/execution/retries/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/execution/retries/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Retry failed operations with exponential backoff and jitter. The Agents SDK provides built-in retry support for scheduled tasks, queued tasks, and a general-purpose `this.retry()` method for your own code.
 
@@ -20,10 +20,10 @@ Retry failed operations with exponential backoff and jitter. The Agents SDK prov
 
 Transient failures are common when calling external APIs, interacting with other services, or running background tasks. The retry system handles these automatically:
 
-* **Exponential backoff** — each retry waits longer than the last
-* **Jitter** — randomized delays prevent thundering herd problems
-* **Configurable** — tune attempts, delays, and caps per call site
-* **Built-in** — schedule, queue, and workflow operations retry automatically
+- **Exponential backoff** — each retry waits longer than the last
+- **Jitter** — randomized delays prevent thundering herd problems
+- **Configurable** — tune attempts, delays, and caps per call site
+- **Built-in** — schedule, queue, and workflow operations retry automatically
 
 ## Quick start
 
@@ -78,9 +78,9 @@ async retry<T>(
 
 **Parameters:**
 
-* `fn` — the async function to retry. Receives the current attempt number (1-indexed).
-* `options` — optional retry configuration (refer to [RetryOptions](#retryoptions) below). Options are validated eagerly — invalid values throw immediately.
-* `options.shouldRetry` — optional predicate called with the thrown error and the next attempt number. Return `false` to stop retrying immediately. If not provided, all errors are retried.
+- `fn` — the async function to retry. Receives the current attempt number (1-indexed).
+- `options` — optional retry configuration (refer to [RetryOptions](#retryoptions) below). Options are validated eagerly — invalid values throw immediately.
+- `options.shouldRetry` — optional predicate called with the thrown error and the next attempt number. Return `false` to stop retrying immediately. If not provided, all errors are retried.
 
 **Returns:** the result of `fn` on success.
 
@@ -392,11 +392,11 @@ Validation resolves partial options against class-level or built-in defaults bef
 
 Even without explicit retry options, scheduled and queued callbacks are retried with sensible defaults:
 
-| Setting     | Default |
-| ----------- | ------- |
-| maxAttempts | 3       |
-| baseDelayMs | 100     |
-| maxDelayMs  | 3000    |
+| Setting | Default |
+| --- | --- |
+| `maxAttempts` | 3 |
+| `baseDelayMs` | 100 |
+| `maxDelayMs` | 3000 |
 
 These defaults apply to `this.retry()`, `queue()`, `schedule()`, and `scheduleEvery()`. Per-call-site options override them.
 
@@ -509,21 +509,21 @@ This means early retries are fast (often under 200ms), and later retries back of
 
 The retry system uses the "Full Jitter" strategy from the [AWS Architecture Blog ↗](https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/). Given 3 attempts with default settings:
 
-| Attempt | Upper Bound                   | Actual Delay     |
-| ------- | ----------------------------- | ---------------- |
-| 1       | min(2^1 \* 100, 3000) = 200ms | random(0, 200ms) |
-| 2       | min(2^2 \* 100, 3000) = 400ms | random(0, 400ms) |
-| 3       | (no retry — final attempt)    | —                |
+| Attempt | Upper Bound | Actual Delay |
+| --- | --- | --- |
+| 1 | min(2^1 \* 100, 3000) = 200ms | random(0, 200ms) |
+| 2 | min(2^2 \* 100, 3000) = 400ms | random(0, 400ms) |
+| 3 | (no retry — final attempt) | — |
 
 With `maxAttempts: 5` and `baseDelayMs: 500`:
 
-| Attempt | Upper Bound                   | Actual Delay      |
-| ------- | ----------------------------- | ----------------- |
-| 1       | min(2 \* 500, 3000) = 1000ms  | random(0, 1000ms) |
-| 2       | min(4 \* 500, 3000) = 2000ms  | random(0, 2000ms) |
-| 3       | min(8 \* 500, 3000) = 3000ms  | random(0, 3000ms) |
-| 4       | min(16 \* 500, 3000) = 3000ms | random(0, 3000ms) |
-| 5       | (no retry — final attempt)    | —                 |
+| Attempt | Upper Bound | Actual Delay |
+| --- | --- | --- |
+| 1 | min(2 \* 500, 3000) = 1000ms | random(0, 1000ms) |
+| 2 | min(4 \* 500, 3000) = 2000ms | random(0, 2000ms) |
+| 3 | min(8 \* 500, 3000) = 3000ms | random(0, 3000ms) |
+| 4 | min(16 \* 500, 3000) = 3000ms | random(0, 3000ms) |
+| 5 | (no retry — final attempt) | — |
 
 ### MCP server retries
 
@@ -543,8 +543,8 @@ await this.addMcpServer("github", "https://mcp.github.com", {
 
 These options are persisted and used when:
 
-* Restoring server connections after hibernation
-* Establishing connections after OAuth completion
+- Restoring server connections after hibernation
+- Establishing connections after OAuth completion
 
 Default: 3 attempts, 500ms base delay, 5s max delay.
 
@@ -702,11 +702,11 @@ class MyAgent extends Agent {
 
 ## Limitations
 
-* **No dead-letter queue.** If a queued or scheduled task fails all retry attempts, it is removed. Implement your own persistence if you need to track failed tasks.
-* **Retry delays block the agent.** During the backoff delay, the Durable Object is awake but idle. For short delays (under 3 seconds) this is fine. For longer recovery times, use `this.schedule()` instead.
-* **Queue retries are head-of-line blocking.** Queue items are processed sequentially. If one item is being retried with long delays, it blocks all subsequent items. If you need independent retry behavior, use `this.retry()` inside the callback rather than per-task retry options on `queue()`.
-* **No circuit breaker.** The retry system does not track failure rates across calls. If a service is persistently down, each task will exhaust its retry budget independently.
-* **`shouldRetry` is only available on `this.retry()`.** The `shouldRetry` predicate cannot be used with `schedule()` or `queue()` because functions cannot be serialized to the database. For scheduled/queued tasks, handle non-retryable errors inside the callback itself.
+- **No dead-letter queue.** If a queued or scheduled task fails all retry attempts, it is removed. Implement your own persistence if you need to track failed tasks.
+- **Retry delays block the agent.** During the backoff delay, the Durable Object is awake but idle. For short delays (under 3 seconds) this is fine. For longer recovery times, use `this.schedule()` instead.
+- **Queue retries are head-of-line blocking.** Queue items are processed sequentially. If one item is being retried with long delays, it blocks all subsequent items. If you need independent retry behavior, use `this.retry()` inside the callback rather than per-task retry options on `queue()`.
+- **No circuit breaker.** The retry system does not track failure rates across calls. If a service is persistently down, each task will exhaust its retry budget independently.
+- **`shouldRetry` is only available on `this.retry()`.** The `shouldRetry` predicate cannot be used with `schedule()` or `queue()` because functions cannot be serialized to the database. For scheduled/queued tasks, handle non-retryable errors inside the callback itself.
 
 ## Next steps
 

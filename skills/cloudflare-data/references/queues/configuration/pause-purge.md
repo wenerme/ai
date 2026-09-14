@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pause and Purge
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/queues/configuration/pause-purge/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/configuration/pause-purge/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Pause Delivery
 
@@ -30,8 +30,8 @@ The following command will pause message delivery from your queue:
 $ npx wrangler queues pause-delivery <QUEUE-NAME>
 ```
 
-* `queue-name` `string` required
-  * The name of the queue for which delivery should be paused.
+- `queue-name` `string` required
+  - The name of the queue for which delivery should be paused.
 
 The following command will resume message delivery:
 
@@ -39,8 +39,8 @@ The following command will resume message delivery:
 $ npx wrangler queues resume-delivery <QUEUE-NAME>
 ```
 
-* `queue-name` `string` required
-  * The name of the queue for which delivery should be resumed.
+- `queue-name` `string` required
+  - The name of the queue for which delivery should be resumed.
 
 ### What happens to HTTP Pull consumers with a paused queue?
 

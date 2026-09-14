@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Optimize performance
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/web-apps/performance/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/web-apps/performance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Slow page loads increase bounce rates and reduce conversions. Cloudflare accelerates your application with edge caching, Argo Smart Routing to avoid congested network paths, and automatic asset optimization that improves Core Web Vitals scores.
 
@@ -22,26 +22,26 @@ Slow page loads increase bounce rates and reduce conversions. Cloudflare acceler
 
 Cache content at Cloudflare's global network of edge locations. [Learn more about Cache](https://developers.cloudflare.com/cache/).
 
-* **Edge caching** \- Serve responses from the nearest Cloudflare location to reduce latency and origin load
+- **Edge caching** - Serve responses from the nearest Cloudflare location to reduce latency and origin load
 
 ### Argo Smart Routing
 
 Route traffic through the fastest paths across Cloudflare's network. [Learn more about Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/).
 
-* **Smart routing** \- Automatically avoid congested network paths between edge and origin
+- **Smart routing** - Automatically avoid congested network paths between edge and origin
 
 ### Speed
 
 Automatic optimizations for HTML, CSS, JavaScript, and fonts. [Learn more about Speed](https://developers.cloudflare.com/speed/).
 
-* **Asset optimization** \- Automatic minification of HTML, CSS, and JavaScript plus Brotli compression
-* **Core Web Vitals** \- Improve Largest Contentful Paint (LCP), Interaction to Next Paint (INP), and Cumulative Layout Shift (CLS) scores with built-in optimizations
+- **Asset optimization** - Automatic minification of HTML, CSS, and JavaScript plus Brotli compression
+- **Core Web Vitals** - Improve Largest Contentful Paint (LCP), Interaction to Next Paint (INP), and Cumulative Layout Shift (CLS) scores with built-in optimizations
 
 ### Workers
 
 Build and deploy serverless applications on Cloudflare's global network. [Learn more about Workers](https://developers.cloudflare.com/workers/).
 
-* **Edge logic** \- Run custom performance optimizations at the edge, such as HTML rewriting and dynamic content assembly, without round-trips to your origin
+- **Edge logic** - Run custom performance optimizations at the edge, such as HTML rewriting and dynamic content assembly, without round-trips to your origin
 
 ## Get started
 

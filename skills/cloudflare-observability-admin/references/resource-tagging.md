@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Resource Tagging
 
-Last updated Apr 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/resource-tagging/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/resource-tagging/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Attach custom key-value metadata to Cloudflare resources for organization, access control, and billing attribution.
 
@@ -42,10 +42,10 @@ Authentication uses [Account Owned Tokens (AOTs)](https://developers.cloudflare.
 
 ## Limitations
 
-* The dashboard is in beta. You can view and manage tags in the dashboard under **Manage Account** \> **Resource Tagging**, but the API remains the recommended interface for automation workflows.
-* `PUT` replaces all tags. There is no `PATCH` endpoint. The `PUT` operation replaces all tags on a resource. Use the [GET, merge, PUT workflow](https://developers.cloudflare.com/resource-tagging/how-to/manage-tags/#add-a-single-tag) to modify individual tags.
-* `DELETE` removes all tags. There is no way to delete a single tag. Use `PUT` with the remaining tags instead.
-* Querying tags for a resource that has never been tagged returns a `500` error instead of `404`. This is a known beta limitation.
+- The dashboard is in beta. You can view and manage tags in the dashboard under **Manage Account** > **Resource Tagging**, but the API remains the recommended interface for automation workflows.
+- `PUT` replaces all tags. There is no `PATCH` endpoint. The `PUT` operation replaces all tags on a resource. Use the [`GET`, merge, `PUT` workflow](https://developers.cloudflare.com/resource-tagging/how-to/manage-tags/#add-a-single-tag) to modify individual tags.
+- `DELETE` removes all tags. There is no way to delete a single tag. Use `PUT` with the remaining tags instead.
+- Querying tags for a resource that has never been tagged returns a `500` error instead of `404`. This is a known beta limitation.
 
 ## Get started
 

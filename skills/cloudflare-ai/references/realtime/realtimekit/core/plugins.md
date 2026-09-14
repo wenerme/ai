@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Plugins
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/plugins/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/plugins/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide explains how to register, activate, and render plugins in a meeting using the Cloudflare RealtimeKit Core SDK.
 
@@ -28,10 +28,10 @@ You must register a plugin with the same `id` on every platform your participant
 
 ## The Plugins module
 
-The meeting plugins object is available at `meeting.plugins`. It exposes two collections of [Plugin](#the-plugin-object) objects:
+The meeting plugins object is available at `meeting.plugins`. It exposes two collections of [`Plugin`](#the-plugin-object) objects:
 
-* `all`: every plugin available to the local participant.
-* `active`: the plugins that are currently running in the session.
+- `all`: every plugin available to the local participant.
+- `active`: the plugins that are currently running in the session.
 
 ```js
 // All plugins available to you
@@ -119,17 +119,17 @@ RealtimeKitClient.init({
 });
 ```
 
-The `component` is an `HTMLElement`. The [rtk-plugin-main](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/core/rtk-plugin-main/) component projects it into the meeting layout, so your application styles continue to apply.
+The `component` is an `HTMLElement`. The [`rtk-plugin-main`](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/core/rtk-plugin-main/) component projects it into the meeting layout, so your application styles continue to apply.
 
 Each plugin configuration accepts the following fields:
 
-| Field       | Description                                                                                | Type                                             | Required |
-| ----------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------ | -------- |
-| id          | Unique identifier for the plugin. The SDK prefixes it with {meetingId}: to form plugin.id. | string                                           | true     |
-| name        | Display name shown in the plugins panel.                                                   | string                                           | true     |
-| icon        | Icon URL or data URI shown next to the name.                                               | string                                           | true     |
-| permissions | Controls whether the local participant can activate or deactivate the plugin.              | { canActivate: boolean; canDeactivate: boolean } | true     |
-| component   | Element rendered when the plugin is active.                                                | HTMLElement                                      | true     |
+| Field | Description | Type | Required |
+| --- | --- | --- | --- |
+| `id` | Unique identifier for the plugin. The SDK prefixes it with `{meetingId}:` to form `plugin.id`. | `string` | true |
+| `name` | Display name shown in the plugins panel. | `string` | true |
+| `icon` | Icon URL or data URI shown next to the name. | `string` | true |
+| `permissions` | Controls whether the local participant can activate or deactivate the plugin. | `{ canActivate: boolean; canDeactivate: boolean }` | true |
+| `component` | Element rendered when the plugin is active. | `HTMLElement` | true |
 
 Pass plugin configurations as `defaults.plugins` when calling `initMeeting`. In React Native, `component` should be an object with a `src` property containing the URL to render — you can load this in a `WebView` or use the UI Kit to handle rendering automatically.
 
@@ -164,13 +164,13 @@ await initMeeting({
 
 Each plugin configuration accepts the following fields:
 
-| Field       | Description                                                                                | Type                                             | Required |
-| ----------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------ | -------- |
-| id          | Unique identifier for the plugin. The SDK prefixes it with {meetingId}: to form plugin.id. | string                                           | true     |
-| name        | Display name shown in the plugins panel.                                                   | string                                           | true     |
-| icon        | Icon URL shown next to the name.                                                           | string                                           | true     |
-| permissions | Controls whether the local participant can activate or deactivate the plugin.              | { canActivate: boolean; canDeactivate: boolean } | true     |
-| component   | Object with a src URL to render when the plugin is active.                                 | { src: string }                                  | true     |
+| Field | Description | Type | Required |
+| --- | --- | --- | --- |
+| `id` | Unique identifier for the plugin. The SDK prefixes it with `{meetingId}:` to form `plugin.id`. | `string` | true |
+| `name` | Display name shown in the plugins panel. | `string` | true |
+| `icon` | Icon URL shown next to the name. | `string` | true |
+| `permissions` | Controls whether the local participant can activate or deactivate the plugin. | `{ canActivate: boolean; canDeactivate: boolean }` | true |
+| `component` | Object with a `src` URL to render when the plugin is active. | `{ src: string }` | true |
 
 Pass a `pluginConfigs` list to `RtkMeetingInfo`. The SDK loads each plugin's `url` directly into a WebView when the plugin is activated.
 
@@ -200,13 +200,13 @@ val meetingInfo = RtkMeetingInfo(
 
 Each plugin configuration accepts the following fields:
 
-| Field       | Description                                                                                | Type                       | Required |
-| ----------- | ------------------------------------------------------------------------------------------ | -------------------------- | -------- |
-| id          | Unique identifier for the plugin. The SDK prefixes it with {meetingId}: to form plugin.id. | String                     | true     |
-| name        | Display name shown in the plugins list.                                                    | String                     | true     |
-| icon        | Icon URL shown next to the name.                                                           | String                     | true     |
-| url         | URL loaded into the plugin WebView when the plugin is active.                              | String                     | true     |
-| permissions | Controls whether the local participant can activate or deactivate the plugin.              | RtkClientPluginPermissions | true     |
+| Field | Description | Type | Required |
+| --- | --- | --- | --- |
+| `id` | Unique identifier for the plugin. The SDK prefixes it with `{meetingId}:` to form `plugin.id`. | `String` | true |
+| `name` | Display name shown in the plugins list. | `String` | true |
+| `icon` | Icon URL shown next to the name. | `String` | true |
+| `url` | URL loaded into the plugin WebView when the plugin is active. | `String` | true |
+| `permissions` | Controls whether the local participant can activate or deactivate the plugin. | `RtkClientPluginPermissions` | true |
 
 Pass a `pluginConfigs` array to `RtkMeetingInfo`. The SDK loads each plugin's `url` directly into a WebView when the plugin is activated.
 
@@ -236,13 +236,13 @@ let meetingInfo = RtkMeetingInfo(
 
 Each plugin configuration accepts the following fields:
 
-| Field       | Description                                                                                | Type                       | Required |
-| ----------- | ------------------------------------------------------------------------------------------ | -------------------------- | -------- |
-| id          | Unique identifier for the plugin. The SDK prefixes it with {meetingId}: to form plugin.id. | String                     | true     |
-| name        | Display name shown in the plugins list.                                                    | String                     | true     |
-| icon        | Icon URL shown next to the name.                                                           | String                     | true     |
-| url         | URL loaded into the plugin WebView when the plugin is active.                              | String                     | true     |
-| permissions | Controls whether the local participant can activate or deactivate the plugin.              | RtkClientPluginPermissions | true     |
+| Field | Description | Type | Required |
+| --- | --- | --- | --- |
+| `id` | Unique identifier for the plugin. The SDK prefixes it with `{meetingId}:` to form `plugin.id`. | `String` | true |
+| `name` | Display name shown in the plugins list. | `String` | true |
+| `icon` | Icon URL shown next to the name. | `String` | true |
+| `url` | URL loaded into the plugin WebView when the plugin is active. | `String` | true |
+| `permissions` | Controls whether the local participant can activate or deactivate the plugin. | `RtkClientPluginPermissions` | true |
 
 ## Activate and deactivate a plugin
 
@@ -298,54 +298,54 @@ A participant can only activate a plugin when `permissions.canActivate` is `true
 
 A `Plugin` object represents a single plugin. You obtain it from either collection in `meeting.plugins`.
 
-| Property    | Description                                               | Type                                             |
-| ----------- | --------------------------------------------------------- | ------------------------------------------------ |
-| id          | Namespaced plugin id, in the form {meetingId}:{configId}. | string                                           |
-| name        | Display name of the plugin.                               | string                                           |
-| icon        | Icon URL or data URI.                                     | string                                           |
-| permissions | Activation permissions for the local participant.         | { canActivate: boolean; canDeactivate: boolean } |
-| component   | Element rendered when the plugin is active.               | HTMLElement                                      |
-| active      | Whether the plugin is currently running.                  | boolean                                          |
-| enabledBy   | Id of the participant who activated the plugin.           | string                                           |
+| Property | Description | Type |
+| --- | --- | --- |
+| `id` | Namespaced plugin id, in the form `{meetingId}:{configId}`. | `string` |
+| `name` | Display name of the plugin. | `string` |
+| `icon` | Icon URL or data URI. | `string` |
+| `permissions` | Activation permissions for the local participant. | `{ canActivate: boolean; canDeactivate: boolean }` |
+| `component` | Element rendered when the plugin is active. | `HTMLElement` |
+| `active` | Whether the plugin is currently running. | `boolean` |
+| `enabledBy` | Id of the participant who activated the plugin. | `string` |
 
-| Property    | Description                                               | Type                       |
-| ----------- | --------------------------------------------------------- | -------------------------- |
-| id          | Namespaced plugin id, in the form {meetingId}:{configId}. | String                     |
-| name        | Display name of the plugin.                               | String                     |
-| icon        | Icon URL.                                                 | String                     |
-| permissions | Activation permissions for the local participant.         | RtkClientPluginPermissions |
+| Property | Description | Type |
+| --- | --- | --- |
+| `id` | Namespaced plugin id, in the form `{meetingId}:{configId}`. | `String` |
+| `name` | Display name of the plugin. | `String` |
+| `icon` | Icon URL. | `String` |
+| `permissions` | Activation permissions for the local participant. | `RtkClientPluginPermissions` |
 
 While a plugin is active, call `getPluginView()` to obtain the Android `WebView` that hosts it, and `sendData(eventName, data)` to push data into that WebView.
 
-| Property    | Description                                               | Type                       |
-| ----------- | --------------------------------------------------------- | -------------------------- |
-| id          | Namespaced plugin id, in the form {meetingId}:{configId}. | String                     |
-| name        | Display name of the plugin.                               | String                     |
-| icon        | Icon URL.                                                 | String                     |
-| permissions | Activation permissions for the local participant.         | RtkClientPluginPermissions |
+| Property | Description | Type |
+| --- | --- | --- |
+| `id` | Namespaced plugin id, in the form `{meetingId}:{configId}`. | `String` |
+| `name` | Display name of the plugin. | `String` |
+| `icon` | Icon URL. | `String` |
+| `permissions` | Activation permissions for the local participant. | `RtkClientPluginPermissions` |
 
 While a plugin is active, call `getPluginView()` to obtain the `WKWebView` that hosts it, and `sendData(eventName:data:)` to push data into that WebView.
 
-| Property    | Description                                                                              | Type                                             |
-| ----------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| id          | Namespaced plugin id, in the form {meetingId}:{configId}.                                | string                                           |
-| name        | Display name of the plugin.                                                              | string                                           |
-| icon        | Icon URL.                                                                                | string                                           |
-| permissions | Activation permissions for the local participant.                                        | { canActivate: boolean; canDeactivate: boolean } |
-| component   | The object provided at registration. Contains a src URL that your rendering layer loads. | { src: string }                                  |
-| active      | Whether the plugin is currently running.                                                 | boolean                                          |
-| enabledBy   | Id of the participant who activated the plugin.                                          | string                                           |
+| Property | Description | Type |
+| --- | --- | --- |
+| `id` | Namespaced plugin id, in the form `{meetingId}:{configId}`. | `string` |
+| `name` | Display name of the plugin. | `string` |
+| `icon` | Icon URL. | `string` |
+| `permissions` | Activation permissions for the local participant. | `{ canActivate: boolean; canDeactivate: boolean }` |
+| `component` | The object provided at registration. Contains a `src` URL that your rendering layer loads. | `{ src: string }` |
+| `active` | Whether the plugin is currently running. | `boolean` |
+| `enabledBy` | Id of the participant who activated the plugin. | `string` |
 
 ## Listen to plugin events
 
 A `Plugin` object emits events as its state changes. You can listen on a single plugin, or on a map to receive events for every plugin it contains.
 
-| Event       | Description                                                       |
-| ----------- | ----------------------------------------------------------------- |
-| stateUpdate | Emitted when the plugin is activated or deactivated.              |
-| enabled     | Emitted when the plugin becomes active for the local participant. |
-| closed      | Emitted when the plugin is deactivated for the local participant. |
-| ready       | Emitted when the plugin is ready to use.                          |
+| Event | Description |
+| --- | --- |
+| `stateUpdate` | Emitted when the plugin is activated or deactivated. |
+| `enabled` | Emitted when the plugin becomes active for the local participant. |
+| `closed` | Emitted when the plugin is deactivated for the local participant. |
+| `ready` | Emitted when the plugin is ready to use. |
 
 ```js
 const plugin = meeting.plugins.all.get(pluginId);
@@ -366,12 +366,12 @@ meeting.plugins.all.on("pluginDeleted", (plugin) => {
 
 Register an `RtkPluginsEventListener` to receive plugin events.
 
-| Callback            | Description                                               |
-| ------------------- | --------------------------------------------------------- |
-| onPluginActivated   | Called when a plugin is activated for all participants.   |
-| onPluginDeactivated | Called when a plugin is deactivated for all participants. |
-| onPluginMessage     | Called when a plugin sends a message to the app.          |
-| onPluginFileRequest | Called when a plugin requests a file from the app.        |
+| Callback | Description |
+| --- | --- |
+| `onPluginActivated` | Called when a plugin is activated for all participants. |
+| `onPluginDeactivated` | Called when a plugin is deactivated for all participants. |
+| `onPluginMessage` | Called when a plugin sends a message to the app. |
+| `onPluginFileRequest` | Called when a plugin requests a file from the app. |
 
 ```kotlin
 val pluginsEventListener = object : RtkPluginsEventListener {
@@ -397,12 +397,12 @@ meeting.addPluginsEventListener(pluginsEventListener)
 
 Conform to `RtkPluginsEventListener` and register the listener to receive plugin events.
 
-| Callback            | Description                                               |
-| ------------------- | --------------------------------------------------------- |
-| onPluginActivated   | Called when a plugin is activated for all participants.   |
-| onPluginDeactivated | Called when a plugin is deactivated for all participants. |
-| onPluginMessage     | Called when a plugin sends a message to the app.          |
-| onPluginFileRequest | Called when a plugin requests a file from the app.        |
+| Callback | Description |
+| --- | --- |
+| `onPluginActivated` | Called when a plugin is activated for all participants. |
+| `onPluginDeactivated` | Called when a plugin is deactivated for all participants. |
+| `onPluginMessage` | Called when a plugin sends a message to the app. |
+| `onPluginFileRequest` | Called when a plugin requests a file from the app. |
 
 ```swift
 extension MeetingViewModel: RtkPluginsEventListener {
@@ -430,9 +430,9 @@ meeting.addPluginsEventListener(self)
 
 If you use the UI Kit, RealtimeKit provides ready-made components for plugins:
 
-* [rtk-plugins-toggle](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/core/rtk-plugins-toggle/): a control bar button that opens and closes the plugins sidebar.
-* [rtk-plugins](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/core/rtk-plugins/): a list of available plugins with controls to activate or deactivate each one.
-* [rtk-plugin-main](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/core/rtk-plugin-main/): renders the `component` of an active plugin in the meeting layout.
+- [`rtk-plugins-toggle`](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/core/rtk-plugins-toggle/): a control bar button that opens and closes the plugins sidebar.
+- [`rtk-plugins`](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/core/rtk-plugins/): a list of available plugins with controls to activate or deactivate each one.
+- [`rtk-plugin-main`](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/core/rtk-plugin-main/): renders the `component` of an active plugin in the meeting layout.
 
 These components read from `meeting.plugins`, so they reflect plugin state automatically once you register your plugins at initialization.
 
@@ -456,9 +456,9 @@ let pluginView = plugin.getPluginView()
 
 The React Native UI Kit provides ready-made components for plugins:
 
-* [RtkPluginsToggle](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react-native/rtkpluginstoggle/): a control bar button that opens and closes the plugins sidebar.
-* [RtkPlugins](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react-native/rtkplugins/): a panel listing available plugins with controls to activate or deactivate each one.
-* [RtkPluginMain](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react-native/rtkpluginmain/): renders the active plugin in a `WebView`.
+- [`RtkPluginsToggle`](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react-native/rtkpluginstoggle/): a control bar button that opens and closes the plugins sidebar.
+- [`RtkPlugins`](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react-native/rtkplugins/): a panel listing available plugins with controls to activate or deactivate each one.
+- [`RtkPluginMain`](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react-native/rtkpluginmain/): renders the active plugin in a `WebView`.
 
 These components read from `meeting.plugins` automatically once plugins are registered at initialization. If you use `RtkMeeting`, plugin UI is included without any additional setup.
 

@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RtkRecordingIndicator
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/android/recording-indicator/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/android/recording-indicator/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A component which indicates the recording status of a meeting. It does not render anything if no recording is taking place.
 
 ## Methods
 
-| Method            | Parameters                    | Description                             |
-| ----------------- | ----------------------------- | --------------------------------------- |
-| activate          | meeting: RealtimeKitClient    | Bind the indicator to the meeting state |
-| applyDesignTokens | designTokens: RtkDesignTokens | Apply custom design tokens for theming  |
+| Method | Parameters | Description |
+| --- | --- | --- |
+| `activate` | `meeting: RealtimeKitClient` | Bind the indicator to the meeting state |
+| `applyDesignTokens` | `designTokens: RtkDesignTokens` | Apply custom design tokens for theming |
 
 ## Usage Examples
 

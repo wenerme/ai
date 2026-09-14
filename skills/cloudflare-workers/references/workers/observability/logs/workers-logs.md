@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers Logs
 
-Last updated Aug 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/logs/workers-logs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/logs/workers-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers Logs lets you automatically collect, store, filter, and analyze logging data emitted from Cloudflare Workers. Data is written to your Cloudflare Account, and you can query it in the dashboard for each of your Workers. All newly created Workers will come with the observability setting enabled by default.
 
@@ -26,7 +26,7 @@ To send logs to a third party, use [OpenTelemetry export](https://developers.clo
 
 Wrangler version
 
-Minimum required Wrangler version: 3.78.6\. Check your version by running `wrangler --version`. To update Wrangler, refer to [Install/Update Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
+Minimum required Wrangler version: 3.78.6. Check your version by running `wrangler --version`. To update Wrangler, refer to [Install/Update Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
 
 You must add the observability setting for your Worker to write logs to Workers Logs. Add the following setting to your Worker's Wrangler file and redeploy your Worker.
 
@@ -49,7 +49,7 @@ head_sampling_rate = 1
 
 ### Enabling with environments
 
-[Environments](https://developers.cloudflare.com/workers/wrangler/environments/) allow you to deploy the same Worker application with different configurations. For example, you may want to configure a different `head_sampling_rate` to staging and production. To configure observability for an environment named `staging`: 1\. Add the following configuration below `[env.staging]`
+[Environments](https://developers.cloudflare.com/workers/wrangler/environments/) allow you to deploy the same Worker application with different configurations. For example, you may want to configure a different `head_sampling_rate` to staging and production. To configure observability for an environment named `staging`: 1. Add the following configuration below `[env.staging]`
 
 ```jsonc
 {
@@ -70,15 +70,14 @@ enabled = true
 head_sampling_rate = 1
 ```
 
-1. Deploy your Worker with `npx wrangler deploy -e staging`
-2. Repeat step 1 and 2 for each environment.
+2. Deploy your Worker with `npx wrangler deploy -e staging`
+3. Repeat step 1 and 2 for each environment.
 
 ## View logs from the dashboard
 
 Access logs for your Worker from the Cloudflare dashboard:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your **Worker**.
 3. Select **Observability**.
 
@@ -88,11 +87,11 @@ Access logs for your Worker from the Cloudflare dashboard:
 
 To get the most out of Workers Logs, it is recommended you log in JSON format. Workers Logs automatically extracts the fields and indexes them intelligently in the database. The benefit of this structured logging technique is in how it allows you to easily segment data across any dimension for fields with unlimited cardinality. Consider the following scenarios:
 
-| Scenario | Logging Code                                               | Event Log (Partial)                           |
-| -------- | ---------------------------------------------------------- | --------------------------------------------- |
-| 1        | console.log("user\_id: " + 123)                            | {message: "user\_id: 123"}                    |
-| 2        | console.log({user\_id: 123})                               | {user\_id: 123}                               |
-| 3        | console.log({user\_id: 123, user\_email: "a@example.com"}) | {user\_id: 123, user\_email: "a@example.com"} |
+| Scenario | Logging Code | Event Log (Partial) |
+| --- | --- | --- |
+| 1 | `console.log("user_id: " + 123)` | `{message: "user_id: 123"}` |
+| 2 | `console.log({user_id: 123})` | `{user_id: 123}` |
+| 3 | `console.log({user_id: 123, user_email: "a@example.com"})` | `{user_id: 123, user_email: "a@example.com"}` |
 
 The difference between these examples is in how you index your logs to enable faster queries. In scenario 1, the `user_id` is embedded within a message. To find all logs relating to a particular user\_id, you would have to run a text match. In scenarios 2 and 3, your logs can be filtered against the keys `user_id` and `user_email`.
 
@@ -121,16 +120,16 @@ Invocation logs can be disabled in wrangler by adding the `invocation_logs = fal
 invocation_logs = false
 ```
 
-| Invocation Handler                                                                        | Invocation Message     |
-| ----------------------------------------------------------------------------------------- | ---------------------- |
-| [Alarm](https://developers.cloudflare.com/durable-objects/api/alarms/)                    | <Scheduled Time>       |
-| [Email](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/)  | <Email Recipient>      |
-| [Fetch](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/)           | <Method> <URL>         |
-| [Queue](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) | <Queue Name>           |
-| [Cron](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/)        | <UNIX-cron schedule>   |
-| [Tail](https://developers.cloudflare.com/workers/runtime-apis/handlers/tail/)             | tail                   |
-| [RPC](https://developers.cloudflare.com/workers/runtime-apis/rpc/)                        | <RPC method>           |
-| [WebSocket](https://developers.cloudflare.com/workers/examples/websockets/)               | <WebSocket Event Type> |
+| Invocation Handler | Invocation Message |
+| --- | --- |
+| [Alarm](https://developers.cloudflare.com/durable-objects/api/alarms/) | \<Scheduled Time> |
+| [Email](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/) | \<Email Recipient> |
+| [Fetch](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) | \<Method> \<URL> |
+| [Queue](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) | \<Queue Name> |
+| [Cron](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/) | \<UNIX-cron schedule> |
+| [Tail](https://developers.cloudflare.com/workers/runtime-apis/handlers/tail/) | tail |
+| [RPC](https://developers.cloudflare.com/workers/runtime-apis/rpc/) | \<RPC method> |
+| [WebSocket](https://developers.cloudflare.com/workers/examples/websockets/) | \<WebSocket Event Type> |
 
 ### Custom logs
 
@@ -203,24 +202,24 @@ head_sampling_rate = 0.01
 
 ## Limits
 
-| Description                       | Limit     |
-| --------------------------------- | --------- |
-| Maximum log retention period      | 7 Days    |
-| Maximum logs per account per day1 | 5 Billion |
-| Maximum log size2                 | 256 KB    |
+| Description | Limit |
+| --- | --- |
+| Maximum log retention period | 7 Days |
+| Maximum logs per account per day<sup>1</sup> | 5 Billion |
+| Maximum log size<sup>2</sup> | 256 KB |
 
-1 There is a daily limit of 5 billion logs per account per day. After the limit is exceed, a 1% head-based sample will be applied for the remainder of the day.
+<sup>1</sup> There is a daily limit of 5 billion logs per account per day. After the limit is exceed, a 1% head-based sample will be applied for the remainder of the day.
 
-2 A single log has a maximum size limit of [256 KB](https://developers.cloudflare.com/workers/platform/limits/#log-size). Logs exceeding that size will be truncated and the log's `$cloudflare.truncated` field will be set to true.
+<sup>2</sup> A single log has a maximum size limit of [256 KB](https://developers.cloudflare.com/workers/platform/limits/#log-size). Logs exceeding that size will be truncated and the log's `$cloudflare.truncated` field will be set to true.
 
 ## Pricing
 
 Workers Logs is included in both the Free and Paid [Workers plans](https://developers.cloudflare.com/workers/platform/pricing/).
 
-|                  | Log Events Written                                           | Retention |
-| ---------------- | ------------------------------------------------------------ | --------- |
-| **Workers Free** | 200,000 per day                                              | 3 Days    |
-| **Workers Paid** | 20 million included per month  +$0.60 per additional million | 7 Days    |
+|  | Log Events Written | Retention |
+| --- | --- | --- |
+| **Workers Free** | 200,000 per day | 3 Days |
+| **Workers Paid** | 20 million included per month <br> +$0.60 per additional million | 7 Days |
 
 ### Examples
 
@@ -228,19 +227,19 @@ Workers Logs is included in both the Free and Paid [Workers plans](https://devel
 
 A Worker serves 15 million requests per month. Each request emits 1 invocation log and 1 `console.log`. `head_sampling_rate` is configured to 1.
 
-|           | Monthly Costs | Formula                                                                                                                |
-| --------- | ------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| **Logs**  | $6.00         | ((15,000,000 requests per month \* 2 logs per request \* 100% sample) - 20,000,000 included logs) / 1,000,000 \* $0.60 |
-| **Total** | $6.00         |                                                                                                                        |
+|  | Monthly Costs | Formula |
+| --- | --- | --- |
+| **Logs** | $6.00 | ((15,000,000 requests per month \* 2 logs per request \* 100% sample) - 20,000,000 included logs) / 1,000,000 \* $0.60 |
+| **Total** | $6.00 | |
 
 #### Example 2
 
 A Worker serves 1 billion requests per month. Each request emits 1 invocation log and 1 `console.log`. `head_sampling_rate` is configured to 0.1.
 
-|           | Monthly Costs | Formula                                                                                                                  |
-| --------- | ------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| **Logs**  | $108.00       | ((1,000,000,000 requests per month \* 2 logs per request \* 10% sample) - 20,000,000 included logs) / 1,000,000 \* $0.60 |
-| **Total** | $108.00       |                                                                                                                          |
+|  | Monthly Costs | Formula |
+| --- | --- | --- |
+| **Logs** | $108.00 | ((1,000,000,000 requests per month \* 2 logs per request \* 10% sample) - 20,000,000 included logs) / 1,000,000 \* $0.60 |
+| **Total** | $108.00 | |
 
 Was this helpful?
 

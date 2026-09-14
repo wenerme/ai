@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Firewall Rules API
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/firewall/api/cf-firewall-rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/firewall/api/cf-firewall-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the Firewall Rules API to programmatically manage your rules.
 
@@ -22,8 +22,8 @@ Cloudflare Firewall Rules has been deprecated. Cloudflare has moved existing fir
 
 When working with the Firewall Rules API, refer to these topics for additional context:
 
-* [Firewall rules actions](https://developers.cloudflare.com/firewall/cf-firewall-rules/actions/)
-* [Cloudflare Filters API](https://developers.cloudflare.com/firewall/api/cf-filters/)
+- [Firewall rules actions](https://developers.cloudflare.com/firewall/cf-firewall-rules/actions/)
+- [Cloudflare Filters API](https://developers.cloudflare.com/firewall/api/cf-filters/)
 
 To get started with the API, review the Firewall Rules API [JSON object](https://developers.cloudflare.com/firewall/api/cf-firewall-rules/json-object/) and [Endpoints](https://developers.cloudflare.com/firewall/api/cf-firewall-rules/endpoints/).
 
@@ -33,8 +33,8 @@ For more information on the Rules language used to write rule expressions, refer
 
 The Firewall Rules API behaves differently from most Cloudflare APIs in two ways:
 
-* API calls accept and return multiple items, and allow applying data changes to multiple items.
-* Although API calls return the [standard response](https://developers.cloudflare.com/fundamentals/api/), the error object follows the [JSON API standard ↗](http://jsonapi.org/format/#errors), such that in an error condition, it is clear which item produced the error and why.
+- API calls accept and return multiple items, and allow applying data changes to multiple items.
+- Although API calls return the [standard response](https://developers.cloudflare.com/fundamentals/api/), the error object follows the [JSON API standard ↗](http://jsonapi.org/format/#errors), such that in an error condition, it is clear which item produced the error and why.
 
 Was this helpful?
 

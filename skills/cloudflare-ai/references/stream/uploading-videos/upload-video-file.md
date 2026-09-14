@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Basic video uploads
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/uploading-videos/upload-video-file/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/uploading-videos/upload-video-file/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Basic Uploads
 
@@ -20,8 +20,7 @@ For files smaller than 200 MB, you can use simple form-based uploads.
 
 ## Upload through the Cloudflare dashboard
 
-1. In the Cloudflare dashboard, go to the **Stream** page.
-[Go to **Videos** ↗](https://dash.cloudflare.com/?to=/:account/stream/videos)
+1. In the Cloudflare dashboard, go to the **Stream** page. [Go to **Videos** ↗](https://dash.cloudflare.com/?to=/:account/stream/videos)
 2. Drag and drop your video into the **Quick upload** area. You can also click to browse for the file on your machine.
 
 After the video finishes uploading, the video appears in the list.
@@ -29,6 +28,8 @@ After the video finishes uploading, the video appears in the list.
 ## Upload with the Stream API
 
 Make a `POST` request with the `content-type` header set to `multipart/form-data` and include the media as an input with the name set to `file`.
+
+*Upload video POST requestbash*
 
 ```bash
 curl --request POST \

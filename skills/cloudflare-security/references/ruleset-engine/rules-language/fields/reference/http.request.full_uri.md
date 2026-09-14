@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # http.request.full\_uri
 
-`http.request.full_uri` `String`
+`http.request.full_uri``String`
 
 The full URI as received by the web server.
 
@@ -21,8 +21,8 @@ Example value:
 ```
 
 Categories:
-* Request
-* URI
+- Request
+- URI
 
 Was this helpful?
 

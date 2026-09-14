@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Clientless Web Isolation
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/alternative-onramps/clientless-rbi/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/alternative-onramps/clientless-rbi/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -30,9 +30,9 @@ To configure Clientless Web Isolation to augment clientless access, refer to [th
 
 ## Best practices
 
-* For guidance on building Gateway policies for private network applications, refer to [Secure your first application](https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/create-policy/).
-* If you already deployed the Cloudflare One Client to some devices as part of a mixed-access methodology, ensure that your Gateway firewall policies do not rely on device posture checks. Because Clientless Web Isolation is not a machine in your fleet, it will not return any values for device posture checks.
-* You can standardize the user experience by making specific applications available in your App Launcher as [bookmarks](https://developers.cloudflare.com/learning-paths/clientless-access/customize-ux/bookmarks/). In this case, you would create a new bookmark for `https://<team-name>.cloudflareaccess.com/browser/https://internalresource.com`, which would take users directly to an isolated session with your application.
+- For guidance on building Gateway policies for private network applications, refer to [Secure your first application](https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/create-policy/).
+- If you already deployed the Cloudflare One Client to some devices as part of a mixed-access methodology, ensure that your Gateway firewall policies do not rely on device posture checks. Because Clientless Web Isolation is not a machine in your fleet, it will not return any values for device posture checks.
+- You can standardize the user experience by making specific applications available in your App Launcher as [bookmarks](https://developers.cloudflare.com/learning-paths/clientless-access/customize-ux/bookmarks/). In this case, you would create a new bookmark for `https://<team-name>.cloudflareaccess.com/browser/https://internalresource.com`, which would take users directly to an isolated session with your application.
 
 Was this helpful?
 

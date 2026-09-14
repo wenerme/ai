@@ -12,12 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Export to Sentry
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/sentry/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/sentry/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Sentry is a software monitoring tool that helps developers identify and debug performance issues and errors. From end-to-end distributed tracing to performance monitoring, Sentry provides code-level observability that makes it easy to diagnose issues and learn continuously about your application code health across systems and services. By exporting your Cloudflare Workers application telemetry to Sentry, you can:
 
-* Query logs and traces in Sentry
-* Create custom alerts and dashboards to monitor your Workers
+- Query logs and traces in Sentry
+- Create custom alerts and dashboards to monitor your Workers
+
 ![Sentry trace view with timing information displayed on a timeline](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2474,height=862,format=webp/_astro/sentry-example.DU-HO2rh.png)
 
 This guide will walk you through exporting OpenTelemetry-compliant traces and logs to Sentry from your Cloudflare Worker application
@@ -26,8 +27,8 @@ This guide will walk you through exporting OpenTelemetry-compliant traces and lo
 
 Before you begin, ensure you have:
 
-* Are signed up for a [Sentry account ↗](https://sentry.io/signup/) (free tier available)
-* A deployed Worker that you want to monitor
+- Are signed up for a [Sentry account ↗](https://sentry.io/signup/) (free tier available)
+- A deployed Worker that you want to monitor
 
 ## Step 1: Create a Sentry project
 
@@ -42,8 +43,8 @@ If you don't already have a Sentry project to send data to, you'll need to creat
 
 Sentry provides separate OTLP endpoints for traces and logs which you can use to send your telemetry data to Sentry.
 
-* **Traces**: `https://{HOST}/api/{PROJECT_ID}/integration/otlp/v1/traces`
-* **Logs**: `https://{HOST}/api/{PROJECT_ID}/integration/otlp/v1/logs`
+- **Traces**: `https://{HOST}/api/{PROJECT_ID}/integration/otlp/v1/traces`
+- **Logs**: `https://{HOST}/api/{PROJECT_ID}/integration/otlp/v1/logs`
 
 You can find your OTLP endpoints in the your project settings.
 
@@ -63,23 +64,23 @@ To set up a destination in the Cloudflare dashboard, navigate to your Cloudflare
 
 To configure your traces destination, click **Add destination** and configure the following:
 
-* **Destination Name**: `sentry-traces` (or any descriptive name)
-* **Destination Type**: Select **Traces**
-* **OTLP Endpoint**: Your Sentry OTLP traces endpoint (e.g., `https://{HOST}/api/{PROJECT_ID}/integration/otlp/v1/traces`)
-* **Custom Headers**: Add the Sentry authentication header:
-  * Header name: `x-sentry-auth`
-  * Header value: `sentry sentry_key={SENTRY_PUBLIC_KEY}` where `{SENTRY_PUBLIC_KEY}` is your Sentry project's public key
+- **Destination Name**: `sentry-traces` (or any descriptive name)
+- **Destination Type**: Select **Traces**
+- **OTLP Endpoint**: Your Sentry OTLP traces endpoint (e.g., `https://{HOST}/api/{PROJECT_ID}/integration/otlp/v1/traces`)
+- **Custom Headers**: Add the Sentry authentication header:
+  - Header name: `x-sentry-auth`
+  - Header value: `sentry sentry_key={SENTRY_PUBLIC_KEY}` where `{SENTRY_PUBLIC_KEY}` is your Sentry project's public key
 
 ### Logs destination
 
 To configure your logs destination, click **Add destination** and configure the following:
 
-* **Destination Name**: `sentry-logs` (or any descriptive name)
-* **Destination Type**: Select **Logs**
-* **OTLP Endpoint**: Your Sentry OTLP logs endpoint (e.g., `https://{HOST}/api/{PROJECT_ID}/integration/otlp/v1/logs`)
-* **Custom Headers**: Add the Sentry authentication header:
-  * Header name: `x-sentry-auth`
-  * Header value: `sentry sentry_key={SENTRY_PUBLIC_KEY}` where `{SENTRY_PUBLIC_KEY}` is your Sentry project's public key
+- **Destination Name**: `sentry-logs` (or any descriptive name)
+- **Destination Type**: Select **Logs**
+- **OTLP Endpoint**: Your Sentry OTLP logs endpoint (e.g., `https://{HOST}/api/{PROJECT_ID}/integration/otlp/v1/logs`)
+- **Custom Headers**: Add the Sentry authentication header:
+  - Header name: `x-sentry-auth`
+  - Header value: `sentry sentry_key={SENTRY_PUBLIC_KEY}` where `{SENTRY_PUBLIC_KEY}` is your Sentry project's public key
 
 ## Step 4: Configure your Worker
 

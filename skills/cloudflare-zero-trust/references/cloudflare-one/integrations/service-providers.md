@@ -12,28 +12,28 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Service providers
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Service-to-service integrations allow the Cloudflare One Client to get device posture data from a third-party API. To use this feature, you must [deploy the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/) to your devices and enable the desired posture checks.
 
 ## Supported Client modes
 
-* Traffic and DNS mode
-* Traffic only mode
-* Posture only mode
+- Traffic and DNS mode
+- Traffic only mode
+- Posture only mode
 
 ## Supported operating systems
 
-| Device posture check                                                                                                     | macOS | Windows | Linux | iOS | Android/ChromeOS |
-| ------------------------------------------------------------------------------------------------------------------------ | ----- | ------- | ----- | --- | ---------------- |
-| [Custom integration](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/custom/)            | ✅     | ✅       | ✅     | ✅   | ✅                |
-| [Crowdstrike](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/crowdstrike/)              | ✅     | ✅       | ✅     | ❌   | ❌                |
-| [Kolide](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/kolide/)                        | ✅     | ✅       | ✅     | ❌   | ❌                |
-| [Microsoft Endpoint Manager](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/microsoft/) | ✅     | ✅       | ✅     | ❌   | ❌                |
-| [SentinelOne](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/sentinelone/)              | ✅     | ✅       | ✅     | ❌   | ❌                |
-| [Tanium](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/taniums2s/)                     | ✅     | ✅       | ✅     | ❌   | ❌                |
-| [Uptycs](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/uptycs/)                        | ✅     | ✅       | ✅     | ❌   | ❌                |
-| [Workspace ONE](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/workspace-one/)          | ✅     | ✅       | ✅     | ❌   | ❌                |
+| Device posture check | macOS | Windows | Linux | iOS | Android/ChromeOS |
+| --- | --- | --- | --- | --- | --- |
+| [Custom integration](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/custom/) | ✅ | ✅ | ✅ | ✅ | ✅ |
+| [Crowdstrike](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/crowdstrike/) | ✅ | ✅ | ✅ | ❌ | ❌ |
+| [Kolide](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/kolide/) | ✅ | ✅ | ✅ | ❌ | ❌ |
+| [Microsoft Endpoint Manager](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/microsoft/) | ✅ | ✅ | ✅ | ❌ | ❌ |
+| [SentinelOne](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/sentinelone/) | ✅ | ✅ | ✅ | ❌ | ❌ |
+| [Tanium](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/taniums2s/) | ✅ | ✅ | ✅ | ❌ | ❌ |
+| [Uptycs](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/uptycs/) | ✅ | ✅ | ✅ | ❌ | ❌ |
+| [Workspace ONE](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/workspace-one/) | ✅ | ✅ | ✅ | ❌ | ❌ |
 
 Was this helpful?
 

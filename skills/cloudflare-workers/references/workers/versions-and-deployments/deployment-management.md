@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Deployment management
 
-Last updated Jul 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, a new version is created and immediately deployed to 100% of traffic when you use any of the following:
 
-* [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy)
-* [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/)
-* The [Workers Script Upload API](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/methods/update/)
+- [`wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy)
+- [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/)
+- The [Workers Script Upload API](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/methods/update/)
 
 You can separate these steps so that uploading a version and deploying it are independent actions. This lets you control exactly when a new version goes live.
 
@@ -26,7 +26,7 @@ You can separate these steps so that uploading a version and deploying it are in
 
 ### Via Wrangler
 
-Use the [wrangler versions upload](https://developers.cloudflare.com/workers/wrangler/commands/workers/#versions-upload) command:
+Use the [`wrangler versions upload`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#versions-upload) command:
 
 npmyarnpnpm
 
@@ -48,14 +48,13 @@ Wrangler versions before 3.73.0 require you to specify a `--x-versions` flag.
 
 Note
 
-To apply changes to a Worker's triggers ([routes, domains](https://developers.cloudflare.com/workers/configuration/routing/), or [cron triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/)), use the [wrangler triggers deploy](https://developers.cloudflare.com/workers/wrangler/commands/workers/#triggers-deploy) command.
+To apply changes to a Worker's triggers ([routes, domains](https://developers.cloudflare.com/workers/configuration/routing/), or [cron triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/)), use the [`wrangler triggers deploy`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#triggers-deploy) command.
 
 ### Via the Cloudflare dashboard
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Worker > **Edit code**.
-3. Make your changes, then select the **down arrow** next to **Deploy** \> **Save**.
+3. Make your changes, then select the **down arrow** next to **Deploy** > **Save**.
 
 Note
 
@@ -67,7 +66,7 @@ Once you have uploaded a version, you can create a deployment that routes traffi
 
 ### Via Wrangler
 
-Use the [wrangler versions deploy](https://developers.cloudflare.com/workers/wrangler/commands/workers/#versions-deploy) command and follow the interactive prompts to select the version and set it to 100%:
+Use the [`wrangler versions deploy`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#versions-deploy) command and follow the interactive prompts to select the version and set it to 100%:
 
 npmyarnpnpm
 
@@ -87,8 +86,7 @@ You can also set the traffic percentage to less than 100% to start a [gradual de
 
 ### Via the Cloudflare dashboard
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Worker > **Deployments**.
 3. Select **Promote deployment** and choose the version you want to deploy.
 
@@ -104,17 +102,17 @@ You can only create a deployment with the last 100 uploaded versions of your Wor
 
 ### First upload
 
-You must use [C3](https://developers.cloudflare.com/workers/get-started/guide/#1-create-a-new-worker-project) or [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy) the first time you create a new Workers project. Using [wrangler versions upload](https://developers.cloudflare.com/workers/wrangler/commands/workers/#versions-upload) the first time you upload a Worker will fail.
+You must use [C3](https://developers.cloudflare.com/workers/get-started/guide/#1-create-a-new-worker-project) or [`wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy) the first time you create a new Workers project. Using [`wrangler versions upload`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#versions-upload) the first time you upload a Worker will fail.
 
 ### Service worker syntax
 
-Service worker syntax is not supported for versions that are uploaded through [wrangler versions upload](https://developers.cloudflare.com/workers/wrangler/commands/workers/#versions-upload). You must use ES modules format.
+Service worker syntax is not supported for versions that are uploaded through [`wrangler versions upload`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#versions-upload). You must use ES modules format.
 
 Refer to [Migrate from Service Workers to ES modules](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/#advantages-of-migrating) to learn how to migrate your Workers from the service worker format to the ES modules format.
 
 ### Durable Object migrations
 
-Uploading a version that changes Durable Object class lifecycle is not supported. This applies to both the declarative [exports](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) field and the legacy [migrations](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/) array - any change that creates, deletes, renames, or transfers a Durable Object class must be applied through [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy).
+Uploading a version that changes Durable Object class lifecycle is not supported. This applies to both the declarative [`exports`](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) field and the legacy [`migrations`](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/) array - any change that creates, deletes, renames, or transfers a Durable Object class must be applied through [`wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy).
 
 Was this helpful?
 

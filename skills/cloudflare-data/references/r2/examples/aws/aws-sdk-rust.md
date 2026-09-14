@@ -12,9 +12,10 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # aws-sdk-rust
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-rust/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-rust/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You must [generate an Access Key](https://developers.cloudflare.com/r2/api/tokens/) before getting started. All examples will utilize `access_key_id` and `access_key_secret` variables which represent the **Access Key ID** and **Secret Access Key** values you generated.
+
 
 
 This example uses the [aws-sdk-s3 ↗](https://crates.io/crates/aws-sdk-s3) crate from the [AWS SDK for Rust ↗](https://github.com/awslabs/aws-sdk-rust). You must pass in the R2 configuration credentials when instantiating your `S3` client:

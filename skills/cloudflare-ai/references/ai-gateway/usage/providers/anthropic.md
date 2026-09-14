@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Anthropic
 
-Last updated Jul 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/anthropic/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/anthropic/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Anthropic ↗](https://www.anthropic.com/) helps build reliable, interpretable, and steerable AI systems.
 
@@ -28,7 +28,13 @@ https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic
 
 ### cURL
 
+<details>
+
+<summary>
+
 With API Key in Request
+
+</summary>
 
 ```bash
 curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic/v1/messages \
@@ -58,9 +64,17 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic/v1
     ]
   }'
 ```
+
+</details>
+
+<details>
+
+<summary>
 
 With Stored Keys (BYOK) / Unified Billing
 
+</summary>
+
 ```bash
 curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic/v1/messages \
  --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
@@ -75,9 +89,17 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic/v1
   }'
 ```
 
+</details>
+
 ### Anthropic SDK
 
+<details>
+
+<summary>
+
 With Key in Request
+
+</summary>
 
 ```js
 import Anthropic from "@anthropic-ai/sdk";
@@ -116,7 +138,15 @@ const message = await anthropic.messages.create({
 });
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 With Stored Keys (BYOK) / Unified Billing
+
+</summary>
 
 ```js
 import Anthropic from "@anthropic-ai/sdk";
@@ -140,7 +170,9 @@ const message = await anthropic.messages.create({
 
 Note
 
-When using BYOK or Unified Billing, do not set `x-api-key` in `defaultHeaders`. AI Gateway supplies the Anthropic key for you, and adding your own `x-api-key` header will cause the request to fail. The `apiKey` value in the example is a placeholder to satisfy the Anthropic SDK, which requires either the `apiKey` option or the `ANTHROPIC_API_KEY` environment variable to be set.
+When using BYOK or Unified Billing, do not set <code>x-api-key</code> in <code>defaultHeaders</code>. AI Gateway supplies the Anthropic key for you, and adding your own <code>x-api-key</code> header will cause the request to fail. The <code>apiKey</code> value in the example is a placeholder to satisfy the Anthropic SDK, which requires either the <code>apiKey</code> option or the <code>ANTHROPIC_API_KEY</code> environment variable to be set.
+
+</details>
 
 ## OpenAI-Compatible Endpoint
 
@@ -153,7 +185,6 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1/chat/completion
 Specify:
 
 ```json
-
 {
 	"model": "anthropic/{model}"
 }

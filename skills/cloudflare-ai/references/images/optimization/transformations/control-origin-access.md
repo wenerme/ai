@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Control origin access
 
-Last updated May 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/optimization/transformations/control-origin-access/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/transformations/control-origin-access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can serve resized images without giving access to the original image. Images can be hosted on another server outside of your zone, and the true source of the image can be entirely hidden. The origin server may require authentication to disclose the original image, without needing visitors to be aware of it. Access to the full-size image may be prevented by making it impossible to manipulate resizing parameters.
 
@@ -139,23 +139,23 @@ fetch(private_url, {
 
 When using this code, the following headers are passed through to the origin, and allow your request to be successful:
 
-* `Authorization`
-* `Cookie`
-* `x-amz-content-sha256`
-* `x-amz-date`
-* `x-ms-date`
-* `x-ms-version`
-* `x-sa-date`
-* `cf-access-client-id`
-* `cf-access-client-secret`
+- `Authorization`
+- `Cookie`
+- `x-amz-content-sha256`
+- `x-amz-date`
+- `x-ms-date`
+- `x-ms-version`
+- `x-sa-date`
+- `cf-access-client-id`
+- `cf-access-client-secret`
 
 For more information, refer to:
 
-* [AWS docs ↗](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html)
-* [Azure docs ↗](https://docs.microsoft.com/en-us/rest/api/storageservices/List-Containers2#request-headers)
-* [Google Cloud docs ↗](https://cloud.google.com/storage/docs/aws-simple-migration)
-* [Cloudflare Zero Trust docs](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/)
-* [SecureAuth docs ↗](https://docs.secureauth.com/2104/en/authentication-api-guide.html)
+- [AWS docs ↗](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html)
+- [Azure docs ↗](https://docs.microsoft.com/en-us/rest/api/storageservices/List-Containers2#request-headers)
+- [Google Cloud docs ↗](https://cloud.google.com/storage/docs/aws-simple-migration)
+- [Cloudflare Zero Trust docs](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/)
+- [SecureAuth docs ↗](https://docs.secureauth.com/2104/en/authentication-api-guide.html)
 
 Was this helpful?
 

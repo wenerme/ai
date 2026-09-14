@@ -16,20 +16,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Image • Black Forest Labs
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/black-forest-labs/flux-2-dev/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/black-forest-labs/flux-2-dev/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/black-forest-labs/flux-2-dev`
 
-* Cloudflare-hosted
-* Partner
+- Cloudflare-hosted
+- Partner
 
-FLUX.2 \[dev\] is an image model from Black Forest Labs where you can generate highly realistic and detailed images, with multi-reference support.
+FLUX.2 \[dev] is an image model from Black Forest Labs where you can generate highly realistic and detailed images, with multi-reference support.
 
-| Model Info        |                                                                                       |
-| ----------------- | ------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://bfl.ai/legal/terms-of-service)                                       |
-| Partner           | Yes                                                                                   |
-| Unit Pricing      | $0.00021 per input 512x512 tile, per step, $0.00041 per output 512x512 tile, per step |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://bfl.ai/legal/terms-of-service) |
+| Partner | Yes |
+| Unit Pricing | $0.00021 per input 512x512 tile, per step, $0.00041 per output 512x512 tile, per step |
 
 ## Parameters
 
@@ -43,9 +43,9 @@ image
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/@cf/black-forest-labs/flux-2-dev/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/black-forest-labs/flux-2-dev/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/@cf/black-forest-labs/flux-2-dev/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/black-forest-labs/flux-2-dev/schema-output.json)
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # General settings
 
-Last updated Jun 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Advanced DDoS Protection system includes [Advanced TCP Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection/), [Advanced DNS Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-dns-protection/), and [Programmable Flow Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/). These systems are configured using the general settings, but also comprise of their own dedicated settings. Advanced DDoS Protection systems is available to [Magic Transit](https://developers.cloudflare.com/magic-transit/) customers.
 
@@ -26,7 +26,7 @@ Thresholds are based on your network's unique traffic and are configured by Clou
 
 When you get access to Advanced DDoS Protection systems, you are [automatically provisioned](#automatic-thresholds) with default settings in monitoring mode.
 
-Thresholds are based on your network's individual behavior, derived from your traffic profile as monitored by Cloudflare. Defining the thresholds will effectively determine what the _High_, _Medium_, and _Low_ [sensitivities](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#burst-sensitivity) will be for your specific case.
+Thresholds are based on your network's individual behavior, derived from your traffic profile as monitored by Cloudflare. Defining the thresholds will effectively determine what the *High*, *Medium*, and *Low* [sensitivities](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#burst-sensitivity) will be for your specific case.
 
 If needed, you can change the sensitivity levels that will manipulate the thresholds for Advanced TCP Protection and Advanced DNS Protection from the default settings.
 
@@ -42,8 +42,8 @@ Make sure that you have properly onboarded to the Advanced DDoS Protection syste
 
 The automatic threshold system calculates thresholds every 10 minutes for both new and existing Magic Transit accounts, provided they meet the requirements outlined in the process below.
 
-* The `flowtrackd` account was created within the past 7 to 10 days.
-* The account has at least one configured global threshold (rate and burst). This can be a threshold that was automatically provisioned by the system or manually provisioned by Cloudflare.
+- The `flowtrackd` account was created within the past 7 to 10 days.
+- The account has at least one configured global threshold (rate and burst). This can be a threshold that was automatically provisioned by the system or manually provisioned by Cloudflare.
 
 These checks are performed independently for SYN Flood Protection, Out-of-State TCP Flood Protection, and Advanced DNS Protection. The criteria does not require the presence of any rules to be configured. Accounts initially provisioned by the automatic system will have default thresholds. Otherwise, thresholds may be unconfigured if they are not set by Cloudflare.
 
@@ -53,9 +53,9 @@ Thresholds are applied globally per account. There is no minimum packets-per-sec
 
 Thresholds are derived using the 95th percentile (P95) of observed traffic over the preceding seven days:
 
-* SYN Flood Protection: Based on SYN and SYN-ACK traffic.
-* Out-of-State TCP Flood Protection: Based on all other TCP flag traffic.
-* Advanced DNS Protection: Based on DNS over UDP traffic.
+- SYN Flood Protection: Based on SYN and SYN-ACK traffic.
+- Out-of-State TCP Flood Protection: Based on all other TCP flag traffic.
+- Advanced DNS Protection: Based on DNS over UDP traffic.
 
 While the calculation typically occurs automatically after seven days, Cloudflare can force an earlier calculation if you want to enable the system in protective mode in advance.
 
@@ -95,7 +95,9 @@ You cannot add unapproved prefixes to Advanced DDoS Protection systems. Contact 
 
 Optionally, you can [add prefixes to the allowlist](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/how-to/add-prefix-allowlist/) if your traffic should bypass Advanced DDoS Protection rules.
 
-The allowlist only applies to source IPs — it does not apply to your own IPs or prefixes. You can also [exclude a subset of an onboarded prefix](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/how-to/exclude-prefix/) from Advanced TCP Protection.
+The allowlist
+
+ only applies to source IPs — it does not apply to your own IPs or prefixes. You can also [exclude a subset of an onboarded prefix](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/how-to/exclude-prefix/) from Advanced TCP Protection.
 
 Refer to [Concepts](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/) for more information.
 
@@ -117,9 +119,8 @@ A filter modifies Advanced TCP Protection's [execution mode](https://developers.
 
 Enable the Advanced DDoS system and begin routing traffic through it.
 
-1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page.
-[Go to **DDoS Managed Rules** ↗](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
-2. Go to **Advanced Protection** \> **General settings**.
+1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page. [Go to **DDoS Managed Rules** ↗](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
+2. Go to **Advanced Protection** > **General settings**.
 3. Under **General settings**, toggle the feature status **On**.
 
 Was this helpful?

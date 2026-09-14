@@ -12,17 +12,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # GET examples
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/firewall/api/cf-firewall-rules/get/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/firewall/api/cf-firewall-rules/get/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Get all rules
 
 This example returns all the firewall rules in the zone with ID `{zone_id}`.
+
+*Requestbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules" \
 --header "X-Auth-Email: <EMAIL>" \
 --header "X-Auth-Key: <API_KEY>"
 ```
+
+*Responsejson*
 
 ```json
 {
@@ -97,11 +101,15 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules" \
 
 This example returns the firewall rule with ID `{rule_id}`.
 
+*Requestbash*
+
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules/{rule_id}" \
 --header "X-Auth-Email: <EMAIL>" \
 --header "X-Auth-Key: <API_KEY>"
 ```
+
+*Responsejson*
 
 ```json
 {

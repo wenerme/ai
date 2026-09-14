@@ -1,6 +1,5 @@
 ---
-description: Cloudflare Workflows provides durable execution capabilities, allowing developers to create reliable, repeatable workflows that run in the background. Workflows are designed to resume execution even if the underlying compute fails, ensuring that tasks complete eventually. They are built on top of Cloudflare Workers and handle scaling and provisioning automatically.
-
+description: "Cloudflare Workflows provides durable execution capabilities, allowing developers to create reliable, repeatable workflows that run in the background. Workflows are designed to resume execution even if the underlying compute fails, ensuring that tasks complete eventually. They are built on top of Cloudflare Workers and handle scaling and provisioning automatically.\n"
 title: Introduction to Workflows
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -13,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Introduction to Workflows
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-1/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-1/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Workflows provides durable execution capabilities, allowing developers to create reliable, repeatable workflows that run in the background. Workflows are designed to resume execution even if the underlying compute fails, ensuring that tasks complete eventually. They are built on top of Cloudflare Workers and handle scaling and provisioning automatically.
 
@@ -23,13 +22,13 @@ Workflows are triggered by events, such as Event Notifications consumed from a Q
 
 If you want to dive into detail, refer to the following pages:
 
-* [Source code for the Punderful repository ↗](https://github.com/craigsdennis/punderful-workflows)
-* [Cloudflare Workflows](https://developers.cloudflare.com/workflows/)
-* [Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/)
+- [Source code for the Punderful repository ↗](https://github.com/craigsdennis/punderful-workflows)
+- [Cloudflare Workflows](https://developers.cloudflare.com/workflows/)
+- [Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/)
 
 Punderful is a sample application that showcases the use of various Cloudflare primitives, including Workers, D1, Vectorize, Workers AI, and Workflows. The application displays a list of puns stored in a D1 database.
 
-The homepage lists the latest puns stored in D1\. The application also includes a semantic search feature powered by Vectorize. To perform a search:
+The homepage lists the latest puns stored in D1. The application also includes a semantic search feature powered by Vectorize. To perform a search:
 
 1. Go to the Punderful search page.
 2. Type a search query in the "Search for a pun..." input box.

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pricing and managing usage
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/log-explorer/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/log-explorer/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Log Explorer billing is based on the volume of logs ingested and stored, measured in gigabytes (GB). Your charges scale with the amount of log data you choose to retain in Log Explorer.
 
@@ -42,46 +42,46 @@ To estimate your Log Explorer usage, review your request volumes in **Analytics*
 
 The following table provides average and maximum record sizes for each dataset to help you estimate potential storage needs:
 
-| Dataset                        | Average Record Size | Maximum Record Size |
-| ------------------------------ | ------------------- | ------------------- |
-| audit\_logs                    | 2.69 kB             | 172 kB              |
-| email\_security\_alerts        | 6.74 kB             | 74.9 kB             |
-| firewall\_events               | 1.36 kB             | 47.2 kB             |
-| audit\_logs\_v2                | 1.73 kB             | 28.5 kB             |
-| zaraz\_events                  | 7.30 kB             | 11.7 kB             |
-| http\_requests                 | 1.56 kB             | 9.76 kB             |
-| gateway\_dns                   | 1.44 kB             | 6.23 kB             |
-| dex\_application\_tests        | 3.29 kB             | 5.67 kB             |
-| casb\_findings                 | 2.67 kB             | 3.80 kB             |
-| gateway\_http                  | 1.47 kB             | 2.60 kB             |
-| dex\_device\_state\_events     | 1.98 kB             | 2.57 kB             |
-| page\_shield\_events           | 443 B               | 2.02 kB             |
-| network\_analytics\_logs       | 1.31 kB             | 1.87 kB             |
-| zero\_trust\_network\_sessions | 1.21 kB             | 1.52 kB             |
-| gateway\_network               | 877 B               | 1.17 kB             |
-| device\_posture\_results       | 730 B               | 944 B               |
-| spectrum\_events               | 685 B               | 925 B               |
-| sinkhole\_http\_logs           | 705 B               | 705 B               |
-| access\_requests               | 446 B               | 541 B               |
-| dns\_firewall\_logs            | 387 B               | 469 B               |
-| dns\_logs                      | 199 B               | 409 B               |
-| magic\_ids\_detections         | 334 B               | 349 B               |
-| warp\_toggle\_changes          | 327 B               | 335 B               |
-| ipsec\_logs                    | 207 B               | 260 B               |
-| nel\_reports                   | 204 B               | 224 B               |
+| Dataset | Average Record Size | Maximum Record Size |
+| --- | --- | --- |
+| `audit_logs` | 2.69 kB | 172 kB |
+| `email_security_alerts` | 6.74 kB | 74.9 kB |
+| `firewall_events` | 1.36 kB | 47.2 kB |
+| `audit_logs_v2` | 1.73 kB | 28.5 kB |
+| `zaraz_events` | 7.30 kB | 11.7 kB |
+| `http_requests` | 1.56 kB | 9.76 kB |
+| `gateway_dns` | 1.44 kB | 6.23 kB |
+| `dex_application_tests` | 3.29 kB | 5.67 kB |
+| `casb_findings` | 2.67 kB | 3.80 kB |
+| `gateway_http` | 1.47 kB | 2.60 kB |
+| `dex_device_state_events` | 1.98 kB | 2.57 kB |
+| `page_shield_events` | 443 B | 2.02 kB |
+| `network_analytics_logs` | 1.31 kB | 1.87 kB |
+| `zero_trust_network_sessions` | 1.21 kB | 1.52 kB |
+| `gateway_network` | 877 B | 1.17 kB |
+| `device_posture_results` | 730 B | 944 B |
+| `spectrum_events` | 685 B | 925 B |
+| `sinkhole_http_logs` | 705 B | 705 B |
+| `access_requests` | 446 B | 541 B |
+| `dns_firewall_logs` | 387 B | 469 B |
+| `dns_logs` | 199 B | 409 B |
+| `magic_ids_detections` | 334 B | 349 B |
+| `warp_toggle_changes` | 327 B | 335 B |
+| `ipsec_logs` | 207 B | 260 B |
+| `nel_reports` | 204 B | 224 B |
 
 ## Monitor usage
 
 Cloudflare provides three primary ways to track your consumption and maintain financial oversight:
 
-* **In-product quick indicator**: View your current month's usage directly within the Log Explorer interface at the top of the **Log Search** and **Manage Datasets** sections.
-* **Account-level billing**: Access a detailed view of current and previous months' cumulative usage under **Manage Account** \> **Billing**.
-* **Usage alerts**: Set up automated notifications to trigger when billable usage exceeds a defined threshold.
+- **In-product quick indicator**: View your current month's usage directly within the Log Explorer interface at the top of the **Log Search** and **Manage Datasets** sections.
+- **Account-level billing**: Access a detailed view of current and previous months' cumulative usage under **Manage Account** > **Billing**.
+- **Usage alerts**: Set up automated notifications to trigger when billable usage exceeds a defined threshold.
 
 ### Configure a usage alert
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select **Manage account**.
-2. Go to **Notifications** \> **Add**.
+2. Go to **Notifications** > **Add**.
 3. Select **Usage-based Billing**.
 4. Define your threshold and the notification destination (email, PagerDuty, or webhooks).
 
@@ -89,7 +89,7 @@ Cloudflare provides three primary ways to track your consumption and maintain fi
 
 To stop using Log Explorer and end associated charges, you must complete both of the following steps:
 
-### 1\. Stop log ingestion
+### 1. Stop log ingestion
 
 Disabling datasets stops additional ingestion charges immediately.
 
@@ -97,7 +97,7 @@ Disabling datasets stops additional ingestion charges immediately.
 2. Use the toggle to turn off each dataset you no longer need.
 3. Select **Stop ingesting logs** to confirm.
 
-### 2\. Cancel the subscription
+### 2. Cancel the subscription
 
 This prevents the subscription from renewing at the next billing cycle.
 

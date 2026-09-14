@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Introduction
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/get-started/introduction/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/get-started/introduction/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare provides a platform for building and scaling media applications with Images. On this page, we'll answer the following questions:
 
-* Why optimize images?
-* How do I get started with Images?
-* Should I store with Images or R2?
+- Why optimize images?
+- How do I get started with Images?
+- Should I store with Images or R2?
 
 ---
 
@@ -30,10 +30,10 @@ Meanwhile, creating and storing multiple versions of the same image adds complex
 
 When you serve large amounts of media, image optimization provides:
 
-* **Streamlined infrastructure** — Simplify your workflow and reduce infrastructure costs by dynamically generating optimized versions on request.
-* **Smaller file sizes** — Automatically deliver images in modern formats like AVIF and WebP, which improves page speed and lowers bandwidth.
-* **Responsive sizing** — Crop and resize for any use case, from square thumbnails to landscape banners, using the same original image in storage.
-* **Visual effects** — Apply blur, overlays, background fills, and more at the edge.
+- **Streamlined infrastructure** — Simplify your workflow and reduce infrastructure costs by dynamically generating optimized versions on request.
+- **Smaller file sizes** — Automatically deliver images in modern formats like AVIF and WebP, which improves page speed and lowers bandwidth.
+- **Responsive sizing** — Crop and resize for any use case, from square thumbnails to landscape banners, using the same original image in storage.
+- **Visual effects** — Apply blur, overlays, background fills, and more at the edge.
 
 ## How do I get started with Images?
 

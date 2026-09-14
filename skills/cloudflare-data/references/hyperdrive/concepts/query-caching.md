@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Query caching
 
-Last updated Jul 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/concepts/query-caching/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/concepts/query-caching/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Hyperdrive automatically caches cacheable read queries that your Worker sends to your database when query caching is turned on. This reduces database load and avoids a network round trip to your database for popular queries. Query caching is enabled by default.
 
@@ -36,7 +36,7 @@ SELECT * FROM articles WHERE DATE(published_time) = ?
 ORDER BY published_time DESC LIMIT 50
 ```
 
-Mutating queries (including `INSERT`, `UPSERT`, or `CREATE TABLE`) and queries that use functions designated as [volatile ↗](https://www.postgresql.org/docs/current/xfunc-volatility.html) or [stable ↗](https://www.postgresql.org/docs/current/xfunc-volatility.html) by PostgreSQL are not cached:
+Mutating queries (including `INSERT`, `UPSERT`, or `CREATE TABLE`) and queries that use functions designated as [`volatile` ↗](https://www.postgresql.org/docs/current/xfunc-volatility.html) or [`stable` ↗](https://www.postgresql.org/docs/current/xfunc-volatility.html) by PostgreSQL are not cached:
 
 ```sql
 -- Not cached: mutating queries
@@ -62,18 +62,18 @@ SELECT * FROM events WHERE created_at > NOW() - INTERVAL 1 HOUR;
 
 Common PostgreSQL functions that are **not cacheable** include:
 
-| Function           | PostgreSQL volatility category | Cached |
-| ------------------ | ------------------------------ | ------ |
-| NOW()              | STABLE                         | No     |
-| CURRENT\_TIMESTAMP | STABLE                         | No     |
-| CURRENT\_DATE      | STABLE                         | No     |
-| CURRENT\_TIME      | STABLE                         | No     |
-| LOCALTIME          | STABLE                         | No     |
-| LOCALTIMESTAMP     | STABLE                         | No     |
-| TIMEOFDAY()        | VOLATILE                       | No     |
-| RANDOM()           | VOLATILE                       | No     |
-| LASTVAL()          | VOLATILE                       | No     |
-| TXID\_CURRENT()    | STABLE                         | No     |
+| Function | PostgreSQL volatility category | Cached |
+| --- | --- | --- |
+| `NOW()` | STABLE | No |
+| `CURRENT_TIMESTAMP` | STABLE | No |
+| `CURRENT_DATE` | STABLE | No |
+| `CURRENT_TIME` | STABLE | No |
+| `LOCALTIME` | STABLE | No |
+| `LOCALTIMESTAMP` | STABLE | No |
+| `TIMEOFDAY()` | VOLATILE | No |
+| `RANDOM()` | VOLATILE | No |
+| `LASTVAL()` | VOLATILE | No |
+| `TXID_CURRENT()` | STABLE | No |
 
 Only functions designated as `IMMUTABLE` by PostgreSQL (functions whose return value never changes for the same inputs) are compatible with Hyperdrive caching. If your query uses a `STABLE` or `VOLATILE` function, move the function call to your application code and pass the resulting value as a query parameter instead.
 
@@ -85,7 +85,7 @@ Comments that contain volatile or uncacheable function names, such as `-- NOW()`
 
 For example:
 
-A: `/* some text here */ SELECT * FROM some_table;`B: `/* some different text here */ SELECT * FROM some_table;`
+A: `/* some text here */ SELECT * FROM some_table;` B: `/* some different text here */ SELECT * FROM some_table;`
 
 Both A and B share the same cached value. If A is run before B, B will receive the value cached by A.
 
@@ -97,8 +97,8 @@ Avoid referencing uncacheable function names anywhere in query text, including c
 
 The default caching behavior for Hyperdrive is:
 
-* `max_age` \= 60 seconds (1 minute)
-* `stale_while_revalidate` \= 15 seconds
+- `max_age` = 60 seconds (1 minute)
+- `stale_while_revalidate` = 15 seconds
 
 The `max_age` setting determines the maximum lifetime a query response will be served from cache. Cached responses may be evicted from the cache prior to this time if they are rarely used.
 
@@ -114,10 +114,10 @@ Writes still go to your database. Hyperdrive only caches eligible read query res
 
 This means you should choose a caching strategy based on how fresh each read must be:
 
-* **Use query caching for reads that can tolerate brief staleness.** Good examples include public content, dashboards, search results, product catalogs, and other high-volume reads where a short delay after writes is acceptable.
-* **Lower `max_age` and `stale_while_revalidate` when a short stale window works.** This keeps query caching enabled while reducing how long Hyperdrive can serve an older result.
-* **Use a cache-disabled Hyperdrive configuration for reads that must be fresh.** Create a second Hyperdrive configuration with `--caching-disabled`, bind it alongside your cached configuration, and route those reads through the cache-disabled binding. Good examples include authentication, sessions, permissions, billing state, admin settings, and reads immediately after a write. Refer to [Disable caching](#disable-caching) for an example.
-* **Disable query caching everywhere only when most reads must be fresh.** You still get Hyperdrive's connection pooling and fast connection setup when caching is disabled.
+- **Use query caching for reads that can tolerate brief staleness.** Good examples include public content, dashboards, search results, product catalogs, and other high-volume reads where a short delay after writes is acceptable.
+- **Lower `max_age` and `stale_while_revalidate` when a short stale window works.** This keeps query caching enabled while reducing how long Hyperdrive can serve an older result.
+- **Use a cache-disabled Hyperdrive configuration for reads that must be fresh.** Create a second Hyperdrive configuration with `--caching-disabled`, bind it alongside your cached configuration, and route those reads through the cache-disabled binding. Good examples include authentication, sessions, permissions, billing state, admin settings, and reads immediately after a write. Refer to [Disable caching](#disable-caching) for an example.
+- **Disable query caching everywhere only when most reads must be fresh.** You still get Hyperdrive's connection pooling and fast connection setup when caching is disabled.
 
 If an object-relational mapping (ORM) library or authentication library owns the SQL, create separate database clients for the cached and cache-disabled Hyperdrive bindings. Pass the cache-disabled client to the library or module that needs fresh reads, and use the cached client for reads that can tolerate the configured stale window.
 
@@ -143,6 +143,8 @@ When you use multiple Hyperdrive configurations for the same database, account f
 
 For example, using database drivers:
 
+*index.tsts*
+
 ```ts
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
@@ -154,6 +156,8 @@ export default {
 	},
 } satisfies ExportedHandler<Env>;
 ```
+
+*index.tsts*
 
 ```ts
 export default {
@@ -208,9 +212,9 @@ id = "<YOUR_HYPERDRIVE_CACHE_DISABLED_CONFIGURATION_ID>"
 
 ## Next steps
 
-* For more information, refer to [How Hyperdrive works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
-* To connect to PostgreSQL, refer to [Connect to PostgreSQL](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/).
-* For troubleshooting guidance, refer to [Troubleshoot and debug](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/).
+- For more information, refer to [How Hyperdrive works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
+- To connect to PostgreSQL, refer to [Connect to PostgreSQL](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/).
+- For troubleshooting guidance, refer to [Troubleshoot and debug](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/).
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Wildcard DNS records
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/reference/wildcard-dns-records/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/reference/wildcard-dns-records/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Normal DNS records map a domain name to one or multiple IP addresses or other associated resources to a specific domain name (a one-to-many mapping). Wildcard DNS records allow you to have a many-to-many mapping, for example if you had hundreds or thousands of subdomains you wanted to point to the same resources.
 
@@ -23,8 +23,8 @@ Within Cloudflare, wildcard DNS records can be either [proxied or DNS-only](http
 To create a wildcard DNS record, [create a DNS record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) with an `*` in the **Name** field.
 
 | Type | Name | IPv4 address | Proxy status |
-| ---- | ---- | ------------ | ------------ |
-| A    | \*   | 192.0.2.1    | Proxied      |
+| --- | --- | --- | --- |
+| `A` | `*` | `192.0.2.1` | Proxied |
 
 Caution
 
@@ -32,9 +32,9 @@ If your project is on [Cloudflare Pages](https://developers.cloudflare.com/pages
 
 You can also create a wildcard DNS record specifically for a deeper subdomain. For example, if you wanted to create a wildcard record on `*.www.example.com`, you would create a record with `*.www` in the name field.
 
-| Type  | Name   | IPv4 address | Proxy status |
-| ----- | ------ | ------------ | ------------ |
-| CNAME | \*.www | example.com  | Proxied      |
+| Type | Name | IPv4 address | Proxy status |
+| --- | --- | --- | --- |
+| `CNAME` | `*.www` | `example.com` | Proxied |
 
 ### Aspects to consider
 
@@ -50,32 +50,48 @@ If you create a DNS record on `*.*.example.com`, only the first asterisk is inte
 
 A wildcard record applies only when no exact record exists at the queried name. If a record or delegation exists, the wildcard does not apply.
 
+<details>
+
+<summary>
+
 Example 1 - specific or below
+
+</summary>
 
 If you have only these two records on your domain:
 
-| Type | Name | Content      |
-| ---- | ---- | ------------ |
-| A    | \*   | 192.0.2.1    |
-| TXT  | abc  | <some\_text> |
+| Type | Name | Content |
+| --- | --- | --- |
+| <code>A</code> | <code>*</code> | <code>192.0.2.1</code> |
+| <code>TXT</code> | <code>abc</code> | <code>&lt;some_text&gt;</code> |
 
-The `A` wildcard record will be used for queries going to any subdomain of `example.com` except `abc.example.com` or anything below that specific label (`123.abc.example.com` or `deeper.label.abc.example.com`, and so on).
+The <code>A</code> wildcard record will be used for queries going to any subdomain of <code>example.com</code> except <code>abc.example.com</code> or anything below that specific label (<code>123.abc.example.com</code> or <code>deeper.label.abc.example.com</code>, and so on).
 
-The wildcard will still be used for deeper labels that are not below the specific record on `abc.example.com` — for example, `deeper.label.xyz.example.com`.
+The wildcard will still be used for deeper labels that are not below the specific record on <code>abc.example.com</code> — for example, <code>deeper.label.xyz.example.com</code>.
+
+</details>
+
+<details>
+
+<summary>
 
 Example 2 - implicit parent
 
+</summary>
+
 If you have only these two records on your domain:
 
-| Type | Name    | Content      |
-| ---- | ------- | ------------ |
-| A    | \*      | 192.0.2.1    |
-| TXT  | 123.abc | <some\_text> |
+| Type | Name | Content |
+| --- | --- | --- |
+| <code>A</code> | <code>*</code> | <code>192.0.2.1</code> |
+| <code>TXT</code> | <code>123.abc</code> | <code>&lt;some_text&gt;</code> |
 
-In this example, `123.abc.example.com` is a descendant of `abc.example.com`, and `abc.example.com` has no records associated with it. The behavior will depend on the type of nameservers you are using:
+In this example, <code>123.abc.example.com</code> is a descendant of <code>abc.example.com</code>, and <code>abc.example.com</code> has no records associated with it. The behavior will depend on the type of nameservers you are using:
 
-* Standard nameservers: The wildcard `*.example.com` will still apply to `abc.example.com`.
-* [Advanced nameservers](https://developers.cloudflare.com/dns/foundation-dns/setup/)[1](#user-content-fn-1): In compliance with [RFC 4592 ↗](https://www.rfc-editor.org/rfc/rfc4592.html), the wildcard `*.example.com` will not apply to `abc.example.com`.
+- Standard nameservers: The wildcard <code>*.example.com</code> will still apply to <code>abc.example.com</code>.
+- <a href="https://developers.cloudflare.com/dns/foundation-dns/setup/">Advanced nameservers</a><sup><a href="#user-content-fn-1">1</a></sup>: In compliance with <a href="https://www.rfc-editor.org/rfc/rfc4592.html">RFC 4592 ↗</a>, the wildcard <code>*.example.com</code> will not apply to <code>abc.example.com</code>.
+
+</details>
 
 ## Availability
 
@@ -87,8 +103,8 @@ If you are using a [CNAME setup (partial)](https://developers.cloudflare.com/dns
 
 For wildcard hostname certificates, certificate issuance and renewal varies based on the type of certificate you are using:
 
-* **Universal**: Perform DCV using [TXT validation method](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/txt/).
-* **Advanced**: In most cases, you can opt for [Delegated DCV](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/), which greatly simplifies certificate management.
+- **Universal**: Perform DCV using [TXT validation method](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/txt/).
+- **Advanced**: In most cases, you can opt for [Delegated DCV](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/), which greatly simplifies certificate management.
 
 If you cannot use Delegated DCV, you need to use [TXT based DCV](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/txt/) for certificate issuance and renewal. This means you will need to place one TXT DCV token for every hostname on the certificate. If one or more of the hostnames on the certificate fails to validate, the certificate will not be issued or renewed.
 

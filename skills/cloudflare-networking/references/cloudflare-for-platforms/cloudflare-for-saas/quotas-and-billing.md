@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Quotas and billing
 
-Last updated Jul 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/quotas-and-billing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/quotas-and-billing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare for SaaS plans include a number of custom hostnames. Additional hostnames are billed according to your plan. For included hostnames, maximum hostnames, and current usage pricing, refer to [Plans](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/plans/).
 
@@ -20,7 +20,7 @@ Cloudflare for SaaS plans include a number of custom hostnames. Additional hostn
 
 Custom hostname quotas apply at either the zone or account level. A zone-level quota includes hostnames in one zone. An account-level quota includes hostnames across every zone in the account.
 
-The assigned quota is a soft limit. When usage reaches this limit, you can continue creating custom hostnames. The [Create Custom Hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/create/) response then includes a billing warning.
+The assigned quota is a soft limit. When usage reaches this limit, you can continue creating custom hostnames. The [Create Custom Hostname](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/create/) response then includes a billing warning.
 
 Non-Enterprise plans also have an API enforcement threshold. After usage reaches this threshold, the API rejects requests to create custom hostnames. Enterprise plans can continue to create custom hostnames after reaching this threshold.
 
@@ -37,12 +37,12 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/quota
 
 The response contains these quota fields:
 
-| Field     | Description                                                                                     |
-| --------- | ----------------------------------------------------------------------------------------------- |
-| allocated | The operational soft quota for the zone or account.                                             |
-| used      | The custom hostnames counted toward the allocation.                                             |
-| exceeded  | Whether usage has reached or exceeded the allocation.                                           |
-| hard\_cap | The API enforcement threshold for non-Enterprise plans. Enterprise plans can exceed this value. |
+| Field | Description |
+| --- | --- |
+| `allocated` | The operational soft quota for the zone or account. |
+| `used` | The custom hostnames counted toward the allocation. |
+| `exceeded` | Whether usage has reached or exceeded the allocation. |
+| `hard_cap` | The API enforcement threshold for non-Enterprise plans. Enterprise plans can exceed this value. |
 
 Use `used` and `allocated` to monitor operational capacity. The `exceeded` field becomes `true` when `used` is greater than or equal to `allocated`.
 

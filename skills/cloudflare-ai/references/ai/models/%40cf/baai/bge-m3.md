@@ -16,23 +16,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Embeddings • BAAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/baai/bge-m3/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/baai/bge-m3/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/baai/bge-m3`
 
-* Cloudflare-hosted
+- Cloudflare-hosted
 
 Multi-Functionality, Multi-Linguality, and Multi-Granularity embeddings model.
 
-| Model Info                                                                          |                           |
-| ----------------------------------------------------------------------------------- | ------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 60,000 tokens             |
-| Unit Pricing                                                                        | $0.012 per M input tokens |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 60,000 tokens |
+| Unit Pricing | $0.012 per M input tokens |
 
 ## Usage
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -60,7 +59,6 @@ export default {
 ```
 
 ```py
-
 import os
 import requests
 
@@ -84,7 +82,6 @@ print(response.json())
 ```
 
 ```sh
-
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/baai/bge-m3  \
   -X POST  \
   -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
@@ -97,43 +94,55 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## Parameters
 
-Synchronous — Send a request and receive a complete response
+<details>
+
+<summary>Synchronous — Send a request and receive a complete response</summary>
+
+
 
 query
 
-`string`minLength: 1A query you wish to perform against the provided contexts. If no query is provided the model with respond with embeddings for contexts
+<code>string</code>minLength: 1A query you wish to perform against the provided contexts. If no query is provided the model with respond with embeddings for contexts
 
-▶contexts\[\]
+▶contexts\[]
 
-`array`requiredList of provided contexts. Note that the index in this array is important, as the response will refer to it.
+<code>array</code>requiredList of provided contexts. Note that the index in this array is important, as the response will refer to it.
 
 truncate\_inputs
 
-`boolean`default: falseWhen provided with too long context should the model error out or truncate the context to fit?
+<code>boolean</code>default: falseWhen provided with too long context should the model error out or truncate the context to fit?
 
 request\_id
 
-`string`The async request id that can be used to obtain the results.
+<code>string</code>The async request id that can be used to obtain the results.
 
-Batch — Send multiple requests in a single API call
+</details>
 
-▶requests\[\]
+<details>
 
-`array`requiredBatch of the embeddings requests to run using async-queue
+<summary>Batch — Send multiple requests in a single API call</summary>
+
+
+
+▶requests\[]
+
+<code>array</code>requiredBatch of the embeddings requests to run using async-queue
 
 request\_id
 
-`string`The async request id that can be used to obtain the results.
+<code>string</code>The async request id that can be used to obtain the results.
+
+</details>
 
 ## API Schemas (Raw)
 
-SynchronousInput
+SynchronousInput [Open](https://developers.cloudflare.com/ai/models/@cf/baai/bge-m3/sync-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/baai/bge-m3/sync-input.json)
 
-SynchronousOutput
+SynchronousOutput [Open](https://developers.cloudflare.com/ai/models/@cf/baai/bge-m3/sync-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/baai/bge-m3/sync-output.json)
 
-BatchInput
+BatchInput [Open](https://developers.cloudflare.com/ai/models/@cf/baai/bge-m3/batch-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/baai/bge-m3/batch-input.json)
 
-BatchOutput
+BatchOutput [Open](https://developers.cloudflare.com/ai/models/@cf/baai/bge-m3/batch-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/baai/bge-m3/batch-output.json)
 
 Was this helpful?
 

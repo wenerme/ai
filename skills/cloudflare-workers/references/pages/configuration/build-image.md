@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Build image
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/configuration/build-image/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/configuration/build-image/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Pages' build environment has broad support for a variety of languages, such as Ruby, Node.js, Python, PHP, and Go.
 
@@ -24,32 +24,35 @@ In the following tables, review the preinstalled versions for languages and tool
 
 ### Languages and runtime
 
-| Tool        | Default version | Supported versions | Environment variable | File                         | |  **Go** | 1.24.3 | Any version | GO\_VERSION |  |
-| ----------- | --------------- | ------------------ | -------------------- | ---------------------------- | --------- | ------ | ----------- | ----------- |  |
-| **Node.js** | 22.16.0         | Any version        | NODE\_VERSION        | .nvmrc, .node-version        |           |        |             |             |  |
-| **Bun**     | 1.2.15          | Any version        | BUN\_VERSION         |                              |           |        |             |             |  |
-| **Python**  | 3.13.3          | Any version        | PYTHON\_VERSION      | .python-version, runtime.txt |           |        |             |             |  |
-| **Ruby**    | 3.4.4           | Any version        | RUBY\_VERSION        | .ruby-version                |           |        |             |             |  |
+Tool | Default version | Supported versions | Environment variable | File
+| **Go** | 1.24.3 | Any version | `GO_VERSION` | |
+| --- | --- | --- | --- | --- |
+| **Node.js** | 22.16.0 | Any version | `NODE_VERSION` | .nvmrc, .node-version |
+| **Bun** | 1.2.15 | Any version | `BUN_VERSION` | |
+| **Python** | 3.13.3 | Any version | `PYTHON_VERSION` | .python-version, runtime.txt |
+| **Ruby** | 3.4.4 | Any version | `RUBY_VERSION` | .ruby-version |
 
-| Tool        | Default version | Supported versions | Environment variable | File                         | |  **Go** | 1.21.0 | Any version | GO\_VERSION |  |
-| ----------- | --------------- | ------------------ | -------------------- | ---------------------------- | --------- | ------ | ----------- | ----------- |  |
-| **Node.js** | 18.17.1         | Any version        | NODE\_VERSION        | .nvmrc, .node-version        |           |        |             |             |  |
-| **Bun**     | 1.1.33          | Any version        | BUN\_VERSION         |                              |           |        |             |             |  |
-| **Python**  | 3.11.5          | Any version        | PYTHON\_VERSION      | .python-version, runtime.txt |           |        |             |             |  |
-| **Ruby**    | 3.2.2           | Any version        | RUBY\_VERSION        | .ruby-version                |           |        |             |             |  |
+Tool | Default version | Supported versions | Environment variable | File
+| **Go** | 1.21.0 | Any version | `GO_VERSION` | |
+| --- | --- | --- | --- | --- |
+| **Node.js** | 18.17.1 | Any version | `NODE_VERSION` | .nvmrc, .node-version |
+| **Bun** | 1.1.33 | Any version | `BUN_VERSION` | |
+| **Python** | 3.11.5 | Any version | `PYTHON_VERSION` | .python-version, runtime.txt |
+| **Ruby** | 3.2.2 | Any version | `RUBY_VERSION` | .ruby-version |
 
-| Tool        | Default version | Supported versions                  | Environment variable | File                  | |  **Clojure** |  |  |  |  |
-| ----------- | --------------- | ----------------------------------- | -------------------- | --------------------- | -------------- |  |  |  |  |
-| **Elixir**  | 1.7             | 1.7 only                            |                      |                       |                |  |  |  |  |
-| **Erlang**  | 21              | 21 only                             |                      |                       |                |  |  |  |  |
-| **Go**      | 1.14.4          | Any version                         | GO\_VERSION          |                       |                |  |  |  |  |
-| **Java**    | 8               | 8 only                              |                      |                       |                |  |  |  |  |
-| **Node.js** | 12.18.0         | Any version                         | NODE\_VERSION        | .nvmrc, .node-version |                |  |  |  |  |
-| **PHP**     | 5.6             | 5.6, 7.2, 7.4 only                  | PHP\_VERSION         |                       |                |  |  |  |  |
-| **Python**  | 2.7             | 2.7, 3.5, 3.7 only                  | PYTHON\_VERSION      | runtime.txt, Pipfile  |                |  |  |  |  |
-| **Ruby**    | 2.7.1           | Any version between 2.6.2 and 2.7.5 | RUBY\_VERSION        | .ruby-version         |                |  |  |  |  |
-| **Swift**   | 5.2.5           | Any 5.x version                     | SWIFT\_VERSION       | .swift-version        |                |  |  |  |  |
-| **.NET**    | 3.1.302         |                                     |                      |                       |                |  |  |  |  |
+Tool | Default version | Supported versions | Environment variable | File
+| **Clojure** |  |  |  | |
+| --- | --- | --- | --- | --- |
+| **Elixir** | 1.7 | 1.7 only |  | |
+| **Erlang** | 21 | 21 only |  | |
+| **Go** | 1.14.4 | Any version | `GO_VERSION` | |
+| **Java** | 8 | 8 only |  | |
+| **Node.js** | 12.18.0 | Any version | `NODE_VERSION` | .nvmrc, .node-version |
+| **PHP** | 5.6 | 5.6, 7.2, 7.4 only | `PHP_VERSION` | |
+| **Python** | 2.7 | 2.7, 3.5, 3.7 only | `PYTHON_VERSION` | runtime.txt, Pipfile |
+| **Ruby** | 2.7.1 | Any version between 2.6.2 and 2.7.5 | `RUBY_VERSION` | .ruby-version |
+| **Swift** | 5.2.5 | Any 5.x version | `SWIFT_VERSION` | .swift-version |
+| **.NET** | 3.1.302 |  |  | |
 
 Any version
 
@@ -57,52 +60,55 @@ Under Supported versions, "Any version" refers to support for all versions of th
 
 ### Tools
 
-| Tool                   | Default version | Supported versions               | Environment variable          | |  **Bundler** | 2.6.9 | Corresponds with Ruby version |  |
-| ---------------------- | --------------- | -------------------------------- | ----------------------------- | -------------- | ----- | ----------------------------- |  |
-| **Embedded Dart Sass** | 1.62.1          | Up to 1.62.1                     | EMBEDDED\_DART\_SASS\_VERSION |                |       |                               |  |
-| **gem**                | 3.6.9           | Corresponds with Ruby version    |                               |                |       |                               |  |
-| **Hugo**               | 0.147.7         | Any version                      | HUGO\_VERSION                 |                |       |                               |  |
-| **npm**                | 10.9.2          | Corresponds with Node.js version |                               |                |       |                               |  |
-| **pip**                | 25.1.1          | Corresponds with Python version  |                               |                |       |                               |  |
-| **pipx**               | 1.7.1           |                                  |                               |                |       |                               |  |
-| **pnpm**               | 10.11.1         | Any version                      | PNPM\_VERSION                 |                |       |                               |  |
-| **Poetry**             | 2.1.3           |                                  |                               |                |       |                               |  |
-| **Yarn**               | 4.9.1           | Any version                      | YARN\_VERSION                 |                |       |                               |  |
-| **Zola**               | 0.22.1          | Any version                      | ZOLA\_VERSION                 |                |       |                               |  |
+Tool | Default version | Supported versions | Environment variable
+| **Bundler** | 2.6.9 | Corresponds with Ruby version | |
+| --- | --- | --- | --- |
+| **Embedded Dart Sass** | 1.62.1 | Up to 1.62.1 | `EMBEDDED_DART_SASS_VERSION` |
+| **gem** | 3.6.9 | Corresponds with Ruby version | |
+| **Hugo** | 0.147.7 | Any version | `HUGO_VERSION` |
+| **npm** | 10.9.2 | Corresponds with Node.js version | |
+| **pip** | 25.1.1 | Corresponds with Python version | |
+| **pipx** | 1.7.1 |  | |
+| **pnpm** | 10.11.1 | Any version | `PNPM_VERSION` |
+| **Poetry** | 2.1.3 |  | |
+| **Yarn** | 4.9.1 | Any version | `YARN_VERSION` |
+| **Zola** | 0.22.1 | Any version | `ZOLA_VERSION` |
 
-| Tool                   | Default version | Supported versions               | Environment variable          | |  **Bundler** | 2.4.10 | Corresponds with Ruby version |  |
-| ---------------------- | --------------- | -------------------------------- | ----------------------------- | -------------- | ------ | ----------------------------- |  |
-| **Embedded Dart Sass** | 1.62.1          | Up to 1.62.1                     | EMBEDDED\_DART\_SASS\_VERSION |                |        |                               |  |
-| **gem**                | 3.4.10          | Corresponds with Ruby version    |                               |                |        |                               |  |
-| **Hugo**               | 0.118.2         | Any version                      | HUGO\_VERSION                 |                |        |                               |  |
-| **npm**                | 9.6.7           | Corresponds with Node.js version |                               |                |        |                               |  |
-| **pip**                | 23.2.1          | Corresponds with Python version  |                               |                |        |                               |  |
-| **pipx**               | 1.2.0           |                                  |                               |                |        |                               |  |
-| **pnpm**               | 8.7.1           | Any version                      | PNPM\_VERSION                 |                |        |                               |  |
-| **Poetry**             | 1.6.1           |                                  |                               |                |        |                               |  |
-| **Yarn**               | 3.6.3           | Any version                      | YARN\_VERSION                 |                |        |                               |  |
-| **Zola**               | 0.22.1          | Any version                      | ZOLA\_VERSION                 |                |        |                               |  |
+Tool | Default version | Supported versions | Environment variable
+| **Bundler** | 2.4.10 | Corresponds with Ruby version | |
+| --- | --- | --- | --- |
+| **Embedded Dart Sass** | 1.62.1 | Up to 1.62.1 | `EMBEDDED_DART_SASS_VERSION` |
+| **gem** | 3.4.10 | Corresponds with Ruby version | |
+| **Hugo** | 0.118.2 | Any version | `HUGO_VERSION` |
+| **npm** | 9.6.7 | Corresponds with Node.js version | |
+| **pip** | 23.2.1 | Corresponds with Python version | |
+| **pipx** | 1.2.0 |  | |
+| **pnpm** | 8.7.1 | Any version | `PNPM_VERSION` |
+| **Poetry** | 1.6.1 |  | |
+| **Yarn** | 3.6.3 | Any version | `YARN_VERSION` |
+| **Zola** | 0.22.1 | Any version | `ZOLA_VERSION` |
 
-| Tool            | Default version                  | Supported versions                | Environment variable | |  **Boot** | 2.5.2 | 2.5.2 |  |
-| --------------- | -------------------------------- | --------------------------------- | -------------------- | ----------- | ----- | ----- |  |
-| **Bower**       |                                  |                                   |                      |             |       |       |  |
-| **Cask**        |                                  |                                   |                      |             |       |       |  |
-| **Composer**    |                                  |                                   |                      |             |       |       |  |
-| **Doxygen**     | 1.8.6                            |                                   |                      |             |       |       |  |
-| **Emacs**       | 25                               |                                   |                      |             |       |       |  |
-| **Gutenberg**   | (requires environment variable)  | Any version                       | GUTENBERG\_VERSION   |             |       |       |  |
-| **Hugo**        | 0.54.0                           | Any version                       | HUGO\_VERSION        |             |       |       |  |
-| **GNU Make**    | 3.8.1                            |                                   |                      |             |       |       |  |
-| **ImageMagick** | 6.7.7                            |                                   |                      |             |       |       |  |
-| **jq**          | 1.5                              |                                   |                      |             |       |       |  |
-| **Leiningen**   |                                  |                                   |                      |             |       |       |  |
-| **OptiPNG**     | 0.6.4                            |                                   |                      |             |       |       |  |
-| **npm**         | Corresponds with Node.js version | Any version                       | NPM\_VERSION         |             |       |       |  |
-| **pip**         | Corresponds with Python version  |                                   |                      |             |       |       |  |
-| **Pipenv**      | Latest version                   |                                   |                      |             |       |       |  |
-| **sqlite3**     | 3.11.0                           |                                   |                      |             |       |       |  |
-| **Yarn**        | 1.22.4                           | Any version from 0.2.0 to 1.22.19 | YARN\_VERSION        |             |       |       |  |
-| **Zola**        | (requires environment variable)  | Any version from 0.5.0 and up     | ZOLA\_VERSION        |             |       |       |  |
+Tool | Default version | Supported versions | Environment variable
+| **Boot** | 2.5.2 | 2.5.2 | |
+| --- | --- | --- | --- |
+| **Bower** |  |  | |
+| **Cask** |  |  | |
+| **Composer** |  |  | |
+| **Doxygen** | 1.8.6 |  | |
+| **Emacs** | 25 |  | |
+| **Gutenberg** | (requires environment variable) | Any version | `GUTENBERG_VERSION` |
+| **Hugo** | 0.54.0 | Any version | `HUGO_VERSION` |
+| **GNU Make** | 3.8.1 |  | |
+| **ImageMagick** | 6.7.7 |  | |
+| **jq** | 1.5 |  | |
+| **Leiningen** |  |  | |
+| **OptiPNG** | 0.6.4 |  | |
+| **npm** | Corresponds with Node.js version | Any version | `NPM_VERSION` |
+| **pip** | Corresponds with Python version |  | |
+| **Pipenv** | Latest version |  | |
+| **sqlite3** | 3.11.0 |  | |
+| **Yarn** | 1.22.4 | Any version from 0.2.0 to 1.22.19 | `YARN_VERSION` |
+| **Zola** | (requires environment variable) | Any version from 0.5.0 and up | `ZOLA_VERSION` |
 
 Any version
 
@@ -129,7 +135,7 @@ To override default versions of languages and tools in the build system, you can
 To set the version using environment variables, you can:
 
 1. Find the environment variable name for the language or tool in [this table](https://developers.cloudflare.com/pages/configuration/build-image/#supported-languages-and-tools).
-2. Add the environment variable on the dashboard by going to **Settings** \> **Environment variables** in your Pages project, or [add the environment variable via Wrangler](https://developers.cloudflare.com/workers/configuration/environment-variables/#add-environment-variables-via-wrangler).
+2. Add the environment variable on the dashboard by going to **Settings** > **Environment variables** in your Pages project, or [add the environment variable via Wrangler](https://developers.cloudflare.com/workers/configuration/environment-variables/#add-environment-variables-via-wrangler).
 
 Or, to set the version by adding a file to your project, you can:
 
@@ -142,9 +148,9 @@ For example, if you were previously relying on the default version of Node.js in
 
 You can add the following environment variable to disable automatic dependency installation, and run a custom install command instead.
 
-| Build variable            | Value     |
-| ------------------------- | --------- |
-| SKIP\_DEPENDENCY\_INSTALL | 1 or true |
+| Build variable | Value |
+| --- | --- |
+| `SKIP_DEPENDENCY_INSTALL` | `1` or `true` |
 
 ## v3 build system
 
@@ -154,38 +160,37 @@ The v3 build system updates the default tools, libraries and languages to their 
 
 To migrate to this new version, configure your Pages project settings in the dashboard:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
-3. Go to **Deployments** \> **All deployments** \> and select the latest version.
+3. Go to **Deployments** > **All deployments** > and select the latest version.
 
-If you were previously relying on the default versions of any languages or tools in the build system, your build may fail when migrating to v3\. To fix this, you must specify the version you wish to use by [overriding](https://developers.cloudflare.com/pages/configuration/build-image/#overriding-default-versions) the default versions.
+If you were previously relying on the default versions of any languages or tools in the build system, your build may fail when migrating to v3. To fix this, you must specify the version you wish to use by [overriding](https://developers.cloudflare.com/pages/configuration/build-image/#overriding-default-versions) the default versions.
 
 ### Limitations
 
 The following features are not currently supported when using the v3 build system:
 
-* Specifying Node.js versions as codenames (for example, `hydrogen` or `lts/hydrogen`).
-* Detecting Yarn version from `yarn.lock` file version.
-* Detecting pnpm version detection based `pnpm-lock.yaml` file version.
-* Detecting Node.js and package managers from `package.json` \-> `"engines"`.
-* `pipenv` and `Pipfile` support.
+- Specifying Node.js versions as codenames (for example, `hydrogen` or `lts/hydrogen`).
+- Detecting Yarn version from `yarn.lock` file version.
+- Detecting pnpm version detection based `pnpm-lock.yaml` file version.
+- Detecting Node.js and package managers from `package.json` -> `"engines"`.
+- `pipenv` and `Pipfile` support.
 
 ## Build environment
 
 Cloudflare Pages builds are run in a [gVisor ↗](https://gvisor.dev/docs/) container.
 
-| **Build environment** | Ubuntu 22.04.2 |
-| --------------------- | -------------- |
-| **Architecture**      | x86\_64        |
+| **Build environment** | Ubuntu `22.04.2` |
+| --- | --- |
+| **Architecture** | x86\_64 |
 
-| **Build environment** | Ubuntu 22.04.2 |
-| --------------------- | -------------- |
-| **Architecture**      | x86\_64        |
+| **Build environment** | Ubuntu `22.04.2` |
+| --- | --- |
+| **Architecture** | x86\_64 |
 
-| **Build environment** | Ubuntu 20.04.5 |
-| --------------------- | -------------- |
-| **Architecture**      | x86\_64        |
+| **Build environment** | Ubuntu `20.04.5` |
+| --- | --- |
+| **Architecture** | x86\_64 |
 
 ## Build Image Policy
 
@@ -193,8 +198,8 @@ Cloudflare Pages builds are run in a [gVisor ↗](https://gvisor.dev/docs/) cont
 
 If you are currently using the v1 or v2 build image, your project will be automatically moved to v3:
 
-* **v1 build image**: If you are using the Pages v1 build image, your project will be automatically moved to v3 on September 15, 2026.
-* **v2 build image**: If you are using the Pages v2 build image, your project will be automatically moved to v3 on February 23, 2027.
+- **v1 build image**: If you are using the Pages v1 build image, your project will be automatically moved to v3 on September 15, 2026.
+- **v2 build image**: If you are using the Pages v2 build image, your project will be automatically moved to v3 on February 23, 2027.
 
 You will receive 6 months’ notice before the deprecation date via the [Cloudflare Changelog ↗](https://developers.cloudflare.com/changelog/), dashboard notifications, and email.
 
@@ -204,14 +209,14 @@ Going forward, the v3 build image will receive rolling updates to preinstalled s
 
 Preinstalled software (languages and tools) will be updated before reaching end-of-life (EOL). These updates apply only if you have not [overridden the default version](https://developers.cloudflare.com/pages/configuration/build-image/#override-default-versions).
 
-* **Minor version updates**: May be updated to the latest available minor version without notice. For tools that do not follow semantic versioning (e.g., Bun or Hugo), updates that may contain breaking changes will receive 3 months’ notice.
-* **Major version updates**: Updated to the next stable long-term support (LTS) version with 3 months’ notice.
+- **Minor version updates**: May be updated to the latest available minor version without notice. For tools that do not follow semantic versioning (e.g., Bun or Hugo), updates that may contain breaking changes will receive 3 months’ notice.
+- **Major version updates**: Updated to the next stable long-term support (LTS) version with 3 months’ notice.
 
 **How you'll be notified (for changes requiring notice):**
 
-* [Cloudflare Changelog ↗](https://developers.cloudflare.com/changelog/)
-* Dashboard notifications for projects that will receive the update
-* Email notifications to project owners
+- [Cloudflare Changelog ↗](https://developers.cloudflare.com/changelog/)
+- Dashboard notifications for projects that will receive the update
+- Email notifications to project owners
 
 To maintain a specific version and avoid automatic updates, [override the default version](https://developers.cloudflare.com/pages/configuration/build-image/#override-default-versions).
 
@@ -219,9 +224,9 @@ To maintain a specific version and avoid automatic updates, [override the defaul
 
 To avoid unexpected build failures:
 
-* **Monitor announcements** via the [Cloudflare Changelog ↗](https://developers.cloudflare.com/changelog/), dashboard notifications, and email
-* **Plan for migration** when you receive update notices
-* **Pin specific versions** of critical preinstalled software by [overriding default versions](https://developers.cloudflare.com/pages/configuration/build-image/#override-default-versions)
+- **Monitor announcements** via the [Cloudflare Changelog ↗](https://developers.cloudflare.com/changelog/), dashboard notifications, and email
+- **Plan for migration** when you receive update notices
+- **Pin specific versions** of critical preinstalled software by [overriding default versions](https://developers.cloudflare.com/pages/configuration/build-image/#override-default-versions)
 
 Was this helpful?
 

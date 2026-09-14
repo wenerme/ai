@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # R2 Data Catalog
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2-data-catalog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2-data-catalog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -28,9 +28,9 @@ To get started with R2 Data Catalog, refer to the [R2 Data Catalog: Getting star
 
 [Apache Iceberg ↗](https://iceberg.apache.org/) is an open table format designed to handle large-scale analytics datasets stored in object storage. Key features include:
 
-* ACID transactions - Ensures reliable, concurrent reads and writes with full data integrity.
-* Optimized metadata - Avoids costly full table scans by using indexed metadata for faster queries.
-* Full schema evolution - Allows adding, renaming, and deleting columns without rewriting data.
+- ACID transactions - Ensures reliable, concurrent reads and writes with full data integrity.
+- Optimized metadata - Avoids costly full table scans by using indexed metadata for faster queries.
+- Full schema evolution - Allows adding, renaming, and deleting columns without rewriting data.
 
 Iceberg is already [widely supported ↗](https://iceberg.apache.org/vendors/) by engines like Apache Spark, Trino, Snowflake, DuckDB, and ClickHouse, with a fast-growing community behind it.
 

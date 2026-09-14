@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Migrate from unstable\_dev
 
-Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-unstable-dev/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-unstable-dev/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
-Cloudflare recommends using the [createTestHarness()](https://developers.cloudflare.com/workers/testing/test-harness/) API, which provides a harness specifically designed for integration testing.
+Cloudflare recommends using the [`createTestHarness()`](https://developers.cloudflare.com/workers/testing/test-harness/) API, which provides a harness specifically designed for integration testing.
 
-The [unstable\_dev](https://developers.cloudflare.com/workers/wrangler/api/#unstable%5Fdev) API has been a recommended approach to run integration tests. The `@cloudflare/vitest-plugin` package integrates directly with Vitest for fast re-runs, supports both unit and integration tests, and provides isolated per-test storage.
+The [`unstable_dev`](https://developers.cloudflare.com/workers/wrangler/api/#unstable_dev) API has been a recommended approach to run integration tests. The `@cloudflare/vitest-plugin` package integrates directly with Vitest for fast re-runs, supports both unit and integration tests, and provides isolated per-test storage.
 
 This guide demonstrates key differences between tests written with the `unstable_dev` API and the Workers Vitest integration. For more information on writing tests with the Workers Vitest integration, refer to [Write your first test](https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/).
 
@@ -100,7 +100,7 @@ You can remove `UnstableDevWorker` imports from your code. Instead, follow the [
 
 ## Related resources
 
-* [Write your first test](https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/#define-types) \- Write unit tests against Workers.
+- [Write your first test](https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/#define-types) - Write unit tests against Workers.
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Protocol detection
 
-Last updated Apr 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/protocol-detection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/protocol-detection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Gateway supports the detection, logging, and filtering of network protocols using packet attributes.
 
@@ -22,16 +22,16 @@ Protocol detection only applies to devices connected to Cloudflare One via the C
 
 To turn on protocol detection:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings** \> **Proxy and inspection settings**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings** > **Proxy and inspection settings**.
 2. Turn on **Allow protocol detection**.
 
-You can now use _Detected Protocol_ as a selector in a [Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/#detected-protocol).
+You can now use *Detected Protocol* as a selector in a [Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/#detected-protocol).
 
 ### Inspect on all ports
 
 By default, Gateway will only inspect HTTP traffic through port `80`. Additionally, if you [turn on TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/#turn-on-tls-decryption), Gateway will inspect HTTPS traffic through port `443`.
 
-To detect and inspect HTTP and HTTPS traffic on ports in addition to `80` and `443`, under **Manage HTTP inspection by port**, choose _Inspect on all ports_.
+To detect and inspect HTTP and HTTPS traffic on ports in addition to `80` and `443`, under **Manage HTTP inspection by port**, choose *Inspect on all ports*.
 
 #### Important considerations
 
@@ -47,30 +47,30 @@ To use HTTP policies to filter all HTTPS traffic on all ports when using a defau
 
 Gateway supports detection and filtering of the following protocols:
 
-| Protocol     | Notes                                                                                        |
-| ------------ | -------------------------------------------------------------------------------------------- |
-| HTTP         | Hypertext Transfer Protocol (HTTP/1.1).                                                      |
-| HTTP2        | Hypertext Transfer Protocol Version 2.                                                       |
-| SSH          | Secure Shell Protocol — remote login and command execution.                                  |
-| TLS          | Transport Layer Security. Gateway detects TLS versions 1.1 through 1.3 with the _TLS_ value. |
-| DCERPC       | Distributed Computing Environment / Remote Procedure Call.                                   |
-| MQTT         | Message Queuing Telemetry Transport — lightweight IoT messaging protocol.                    |
-| TPKT         | TPKT commonly initiates RDP sessions, so you can use it to identify and filter RDP traffic.  |
-| IMAP         | Internet Message Access Protocol — email retrieval.                                          |
-| POP3         | Post Office Protocol v3 — email retrieval.                                                   |
-| SMTP         | Simple Mail Transfer Protocol — email sending.                                               |
-| MYSQL        | MySQL database wire protocol.                                                                |
-| RSYNC-DAEMON | rsync daemon protocol.                                                                       |
-| LDAP         | Lightweight Directory Access Protocol.                                                       |
-| NTP          | Network Time Protocol.                                                                       |
+| Protocol | Notes |
+| --- | --- |
+| HTTP | Hypertext Transfer Protocol (HTTP/1.1). |
+| HTTP2 | Hypertext Transfer Protocol Version 2. |
+| SSH | Secure Shell Protocol — remote login and command execution. |
+| TLS | Transport Layer Security. Gateway detects TLS versions 1.1 through 1.3 with the *TLS* value. |
+| DCERPC | Distributed Computing Environment / Remote Procedure Call. |
+| MQTT | Message Queuing Telemetry Transport — lightweight IoT messaging protocol. |
+| TPKT | TPKT commonly initiates RDP sessions, so you can use it to identify and filter RDP traffic. |
+| IMAP | Internet Message Access Protocol — email retrieval. |
+| POP3 | Post Office Protocol v3 — email retrieval. |
+| SMTP | Simple Mail Transfer Protocol — email sending. |
+| MYSQL | MySQL database wire protocol. |
+| RSYNC-DAEMON | rsync daemon protocol. |
+| LDAP | Lightweight Directory Access Protocol. |
+| NTP | Network Time Protocol. |
 
 ## Example network policy
 
 You can create network policies that filter traffic based on protocol detections rather than common ports. For example, you can block all SSH traffic on your network without blocking port 22 or any other non-default ports:
 
-| Selector          | Operator | Value | Action |
-| ----------------- | -------- | ----- | ------ |
-| Detected Protocol | in       | _SSH_ | Block  |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Detected Protocol | in | *SSH* | Block |
 
 Was this helpful?
 

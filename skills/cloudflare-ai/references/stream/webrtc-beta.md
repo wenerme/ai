@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Ultra-low Latency with WebRTC
 
-Last updated Sep 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/webrtc-beta/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/webrtc-beta/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Stream Live WebRTC is going GA:
 
@@ -20,18 +20,19 @@ Billing for WebRTC delivery will begin on October 15th, 2026.
 
 WebRTC allows ultra-low latency (sub-second) live streaming (using WHIP) and playback (using WHEP) to thousands of concurrent viewers. WebRTC is ideally suited for one-to-many broadcasts with a real-time experience, for example:
 
-* When the outcome of a live event is time-sensitive: gaming, live sports, financial news
-* When viewers interact with the content: e-learning, live Q&A, auctions
+- When the outcome of a live event is time-sensitive: gaming, live sports, financial news
+- When viewers interact with the content: e-learning, live Q&A, auctions
 
-WebRTC is also ideally suited to creator platforms or in-browser experiences because your users can go live _without_ special broadcast applications or dedicated hardware encoders.
+WebRTC is also ideally suited to creator platforms or in-browser experiences because your users can go live *without* special broadcast applications or dedicated hardware encoders.
 
 ## Step 1: Create a live input
 
 Create a live input using one of the two options:
 
-* Use the **Live inputs** page of the Cloudflare dashboard, then look under the Broadcast and Playback tabs to get the WebRTC URLs.
-[Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs)
-* Make a POST request to the [/live\_inputs API endpoint](https://developers.cloudflare.com/api/resources/stream/subresources/live%5Finputs/methods/create/)
+- Use the **Live inputs** page of the Cloudflare dashboard, then look under the Broadcast and Playback tabs to get the WebRTC URLs. [Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs)
+- Make a POST request to the [`/live_inputs` API endpoint](https://developers.cloudflare.com/api/resources/stream/subresources/live_inputs/methods/create/)
+
+*API response from a POST request to /live\_inputsjson*
 
 ```json
 {
@@ -51,13 +52,12 @@ Create a live input using one of the two options:
 
 ### Broadcasting from the browser
 
-Every live input has a unique URL that one creator can be stream to. _This is a credential_ and should _only_ be shared with the creator — anyone with this URL can stream live video to this input.
+Every live input has a unique URL that one creator can be stream to. *This is a credential* and should *only* be shared with the creator — anyone with this URL can stream live video to this input.
 
 Retrieve the WHIP endpoint URL:
 
-* The **Live inputs** page of the Cloudflare dashboard.
-[Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs)
-* The `webRTC.url` property in the API response when the input is created.
+- The **Live inputs** page of the Cloudflare dashboard. [Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs)
+- The `webRTC.url` property in the API response when the input is created.
 
 For a complete, no-dependency example of going live from a browser, see the [First WebRTC broadcast in the browser](https://developers.cloudflare.com/stream/examples/browser-based-webrtc/) tutorial.
 
@@ -67,19 +67,19 @@ You can also use this URL with any client that supports the [WebRTC-HTTP Ingesti
 
 **Using OBS 31.0 or higher:** Recommended settings to broadcast WebRTC/WHIP. In Settings:
 
-* In the **Stream** tab
-  * **Service:** WHIP
-  * **Server:** Paste the entire WebRTC (WHIP) URL from Cloudflare Stream
-    * The broadcast secret is part of this URL, leave "Bearer Token" blank
-* In the **Output** tab
-  * **Audio Encoder:** FFmpeg Opus _(or another Opus encoder, if available)_
-  * **Video Encoder:** x264 _(or a hardware accelerated H.264 encoder like QuickSync or NVENC)_
-  * **Rate Control:** `CBR` or `VBR`
-  * **Bitrate:** between 3000 Kbps and 7000 Kpbs
-  * **Profile:** `main` or `baseline`
-  * **B Frames:** 0
-* In the **Video** tab
-  * **Framerate:** field may be called "Common FPS Values" or "Integer FPS Value", set to 30
+- In the **Stream** tab
+  - **Service:** WHIP
+  - **Server:** Paste the entire WebRTC (WHIP) URL from Cloudflare Stream
+    - The broadcast secret is part of this URL, leave "Bearer Token" blank
+- In the **Output** tab
+  - **Audio Encoder:** FFmpeg Opus *(or another Opus encoder, if available)*
+  - **Video Encoder:** x264 *(or a hardware accelerated H.264 encoder like QuickSync or NVENC)*
+  - **Rate Control:** `CBR` or `VBR`
+  - **Bitrate:** between 3000 Kbps and 7000 Kpbs
+  - **Profile:** `main` or `baseline`
+  - **B Frames:** 0
+- In the **Video** tab
+  - **Framerate:** field may be called "Common FPS Values" or "Integer FPS Value", set to 30
 
 **Using FFmpeg 8.1 or higher:** This sample command outputs a clock and a constant tone. Revise the input criteria with your content.
 
@@ -97,22 +97,21 @@ ffmpeg -hide_banner -y \
 
 If using Windows/PowerShell:
 
-* Add `:fontfile='C\:/Windows/Fonts/consola.ttf'` to the `vf` string; a font must be specified in Windows environments
-* Use backticks ``` \`` instead of backslashes  ```\` to segment a multiline command
+- Add `:fontfile='C\:/Windows/Fonts/consola.ttf'` to the `vf` string; a font must be specified in Windows environments
+- Use backticks ```\`` instead of backslashes``` \` to segment a multiline command
 
 FFmpeg's WHIP support currently requires the use of `libx264` at `baseline`. The `ts_buffer_size` is a memory allocation strategy, not a buffer that increases latency.
 
 ## Step 3: Play live video using WHEP
 
-**Using the Stream Player:** Stream's built-in player already supports playing WebRTC broadcasts by automatically upgrading to WHEP when available. Refer to "[Use the Stream Player](https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/)" for more information. The player embed code can be generated on the live input's settings page in the Dashboard.
+**Using the Stream Player:** Stream's built-in player already supports playing WebRTC broadcasts by automatically upgrading to WHEP when available. Refer to " [Use the Stream Player](https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/)" for more information. The player embed code can be generated on the live input's settings page in the Dashboard.
 
 **Using the WHEP endpoint in a custom player:**
 
 Copy the URL from either:
 
-* The **Live inputs** page of the Cloudflare dashboard.
-[Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs)
-* The `webRTCPlayback.url` property in the API response when the input is created.
+- The **Live inputs** page of the Cloudflare dashboard. [Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs)
+- The `webRTCPlayback.url` property in the API response when the input is created.
 
 While the creator is actively streaming, viewers can watch the broadcast in their browsers with less than 500 milliseconds of latency. There are no fixed limits on the number of concurrent viewers.
 
@@ -122,9 +121,9 @@ This URL can also be used with any client that supports the [WebRTC-HTTP Egress 
 
 ## Debugging WebRTC
 
-* **Chrome**: Navigate to `chrome://webrtc-internals` to view detailed logs and graphs.
-* **Firefox**: Navigate to `about:webrtc` to view information about WebRTC sessions, similar to Chrome.
-* **Safari**: To enable WebRTC logs, from the inspector, open the settings tab (cogwheel icon), and set WebRTC logging to "Verbose" in the dropdown menu.
+- **Chrome**: Navigate to `chrome://webrtc-internals` to view detailed logs and graphs.
+- **Firefox**: Navigate to `about:webrtc` to view information about WebRTC sessions, similar to Chrome.
+- **Safari**: To enable WebRTC logs, from the inspector, open the settings tab (cogwheel icon), and set WebRTC logging to "Verbose" in the dropdown menu.
 
 ## Supported WHIP and WHEP clients
 
@@ -134,21 +133,21 @@ You can write your own broadcast and publishing apps using the browser's native 
 
 Dedicated applications:
 
-* [OBS (Open Broadcaster Software) ↗](https://obsproject.com) version 31.0 or higher (desktop streaming app)
-* [Larix Broadcaster ↗](https://softvelum.com/larix/) (mobile app)
-* [FFmpeg ↗](https://www.ffmpeg.org/) version 8.1 or higher (cross-platform command-line application)
+- [OBS (Open Broadcaster Software) ↗](https://obsproject.com) version 31.0 or higher (desktop streaming app)
+- [Larix Broadcaster ↗](https://softvelum.com/larix/) (mobile app)
+- [FFmpeg ↗](https://www.ffmpeg.org/) version 8.1 or higher (cross-platform command-line application)
 
 Development libraries:
 
-* [whip-whep ↗](https://www.npmjs.com/package/whip-whep) (JavaScript, the reference implementation from a WHIP specification author)
-* [@eyevinn/whip-web-client ↗](https://www.npmjs.com/package/@eyevinn/whip-web-client) (TypeScript)
+- [whip-whep ↗](https://www.npmjs.com/package/whip-whep) (JavaScript, the reference implementation from a WHIP specification author)
+- [@eyevinn/whip-web-client ↗](https://www.npmjs.com/package/@eyevinn/whip-web-client) (TypeScript)
 
 ### WHEP for Playback
 
-* Stream's built-in player
-* [whip-whep ↗](https://www.npmjs.com/package/whip-whep) (JavaScript, the reference implementation from a WHEP specification author)
-* [@eyevinn/webrtc-player ↗](https://www.npmjs.com/package/@eyevinn/webrtc-player) (TypeScript)
-* [react-native-whip-whep ↗](https://www.npmjs.com/package/react-native-whip-whep) (React Native)
+- Stream's built-in player
+- [whip-whep ↗](https://www.npmjs.com/package/whip-whep) (JavaScript, the reference implementation from a WHEP specification author)
+- [@eyevinn/webrtc-player ↗](https://www.npmjs.com/package/@eyevinn/webrtc-player) (TypeScript)
+- [react-native-whip-whep ↗](https://www.npmjs.com/package/react-native-whip-whep) (React Native)
 
 ## Using WebRTC in native apps
 
@@ -156,16 +155,16 @@ If you are building a native app, the browser example from the [First WebRTC bro
 
 ## Supported broadcast codecs
 
-* [VP9 ↗](https://developers.google.com/media/vp9)
-* [VP8 ↗](https://en.wikipedia.org/wiki/VP8)
-* [h264 ↗](https://en.wikipedia.org/wiki/Advanced%5FVideo%5FCoding) (Constrained Baseline Profile Level 3.1, referred to as `42e01f` in the SDP offer's `profile-level-id` parameter.)
+- [VP9 ↗](https://developers.google.com/media/vp9)
+- [VP8 ↗](https://en.wikipedia.org/wiki/VP8)
+- [h264 ↗](https://en.wikipedia.org/wiki/Advanced_Video_Coding) (Constrained Baseline Profile Level 3.1, referred to as `42e01f` in the SDP offer's `profile-level-id` parameter.)
 
 ## Conformance with WHIP and WHEP specifications
 
 Cloudflare Stream supports the [WHIP ↗](https://www.ietf.org/archive/id/draft-ietf-wish-whip-16.html) and [WHEP ↗](https://www.ietf.org/archive/id/draft-murillo-whep-01.html) specifications, including:
 
-* [Trickle ICE ↗](https://datatracker.ietf.org/doc/rfc8838/)
-* [Server and client offer modes ↗](https://www.ietf.org/archive/id/draft-murillo-whep-01.html#section-3) for WHEP
+- [Trickle ICE ↗](https://datatracker.ietf.org/doc/rfc8838/)
+- [Server and client offer modes ↗](https://www.ietf.org/archive/id/draft-murillo-whep-01.html#section-3) for WHEP
 
 You can find the specific version of WHIP and WHEP being used in the `protocol-version` header in WHIP and WHEP API responses. The value of this header references the IETF draft slug for each protocol. Currently, Stream uses `draft-ietf-wish-whip-06` (expected to be the final WHIP draft revision) and `draft-murillo-whep-01` (the most current WHEP draft).
 
@@ -173,10 +172,10 @@ You can find the specific version of WHIP and WHEP being used in the `protocol-v
 
 **WHIP and WHEP must be used together:** we do not yet support inputs using RTMP/SRT to be played using WHEP, or inputs using WHIP to be recorded and played played using HLS/DASH.
 
-* Broadcast metrics and player experience metrics are not supported
-* Recording and live HLS playback are not yet supported
-* Simulcasting (restreaming via RTMP/SRT) is not supported
-* Live viewer counts are not supported
+- Broadcast metrics and player experience metrics are not supported
+- Recording and live HLS playback are not yet supported
+- Simulcasting (restreaming via RTMP/SRT) is not supported
+- Live viewer counts are not supported
 
 ## Pricing
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Common issues
 
-Last updated Sep 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/common-issues/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/common-issues/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This section covers the most common issues you might encounter as you deploy the Cloudflare One Client (formerly WARP) in your organization, or turn on new features that interact with the client.
 
@@ -20,10 +20,10 @@ Troubleshoot the Cloudflare One Client
 
 For step-by-step guidance on diagnosing and resolving Cloudflare One Client issues, refer to the [Cloudflare One Client troubleshooting guide](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/troubleshooting-guide/). The guide covers:
 
-* How to collect diagnostic logs via the Cloudflare dashboard or CLI
-* How to review key configuration files
-* Common misconfigurations and their fixes
-* Best practices for filing support tickets
+- How to collect diagnostic logs via the Cloudflare dashboard or CLI
+- How to review key configuration files
+- Common misconfigurations and their fixes
+- Best practices for filing support tickets
 
 ## Connectivity and registration
 
@@ -33,14 +33,14 @@ If the Cloudflare One Client is stuck in the `Disconnected` state or frequently 
 
 In your [client diagnostic logs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/), `daemon.log` will typically show one or more of the following errors:
 
-* Happy Eyeball checks failing: `All Happy Eyeballs checks failed`.
-* Connectivity checks timing out for `connectivity.cloudflareclient.com`.
+- Happy Eyeball checks failing: `All Happy Eyeballs checks failed`.
+- Connectivity checks timing out for `connectivity.cloudflareclient.com`.
 
 **Common causes**:
 
-* **Firewall blocks**: A local or network firewall is blocking the [required IP addresses](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/).
-* **VPN interference**: A third-party VPN is fighting for control over the routing table or DNS. Refer to the [VPN compatibility guide](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/vpn/).
-* **ISP blocks**: Your country or ISP may be explicitly blocking client traffic.
+- **Firewall blocks**: A local or network firewall is blocking the [required IP addresses](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/).
+- **VPN interference**: A third-party VPN is fighting for control over the routing table or DNS. Refer to the [VPN compatibility guide](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/vpn/).
+- **ISP blocks**: Your country or ISP may be explicitly blocking client traffic.
 
 ### Registration error (Authentication Expired)
 
@@ -48,8 +48,8 @@ When registering the client, you may see `Authentication Expired` or `Registrati
 
 **Common causes**:
 
-* **System clock out of sync**: Your computer system clock must be properly synced via NTP. If your clock is off by more than 20 seconds, the authentication token (JWT) will be invalid.
-* **Prompt timeout**: You must complete the registration in your browser and return to the client within one minute of the prompt.
+- **System clock out of sync**: Your computer system clock must be properly synced via NTP. If your clock is off by more than 20 seconds, the authentication token (JWT) will be invalid.
+- **Prompt timeout**: You must complete the registration in your browser and return to the client within one minute of the prompt.
 
 ### (Linux) DNS connectivity check failed
 
@@ -71,8 +71,8 @@ The client cannot parse `resolv.conf` files containing invalid characters like `
 
 Advanced security features require the [Cloudflare root certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/) to be trusted on the device.
 
-* **Chrome/Edge**: These browsers cache certificates. If you installed the certificate while the browser was running, you must restart the browser.
-* **Root certificate expiry**: The default Cloudflare root certificate expired on February 2, 2025\. If you are seeing errors, [generate and activate a new certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/#generate-a-cloudflare-root-certificate) in the dashboard.
+- **Chrome/Edge**: These browsers cache certificates. If you installed the certificate while the browser was running, you must restart the browser.
+- **Root certificate expiry**: The default Cloudflare root certificate expired on February 2, 2025. If you are seeing errors, [generate and activate a new certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/#generate-a-cloudflare-root-certificate) in the dashboard.
 
 ### 2025 Certificate migration
 
@@ -86,8 +86,8 @@ This is often a cosmetic error with Windows Network Connectivity Status Indicato
 
 **Solution**: Configure NCSI to detect the client's local DNS proxy and use active probing by setting these registry keys to `1`:
 
-* `HKEY_LOCAL_MACHINE\SOFTWARE\POLICIES\MICROSOFT\Windows\NetworkConnectivityStatusIndicator\UseGlobalDNS`
-* `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet\EnableActiveProbing`
+- `HKEY_LOCAL_MACHINE\SOFTWARE\POLICIES\MICROSOFT\Windows\NetworkConnectivityStatusIndicator\UseGlobalDNS`
+- `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet\EnableActiveProbing`
 
 ### Setup Wizard ends prematurely
 
@@ -111,9 +111,9 @@ The client blocks outgoing traffic on port `25` to prevent spam and reputational
 
 ## Next steps
 
-* [Diagnostic logs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/) \- Learn how to collect logs for support.
-* [Known limitations](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/) \- Review unsupported features and environments.
-* [Troubleshooting Cloudflare One](https://developers.cloudflare.com/cloudflare-one/troubleshooting/) \- View troubleshooting guides for other products.
+- [Diagnostic logs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/) - Learn how to collect logs for support.
+- [Known limitations](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/) - Review unsupported features and environments.
+- [Troubleshooting Cloudflare One](https://developers.cloudflare.com/cloudflare-one/troubleshooting/) - View troubleshooting guides for other products.
 
 Was this helpful?
 

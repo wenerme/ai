@@ -1,6 +1,5 @@
 ---
-description: Configure firewall rules to allow `cloudflared` egress traffic while blocking all ingress, implementing a positive security model.
-
+description: "Configure firewall rules to allow `cloudflared` egress traffic while blocking all ingress, implementing a positive security model.\n"
 title: Tunnel with firewall
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -13,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Tunnel with firewall
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-with-firewall/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-with-firewall/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can implement a positive security model with Cloudflare Tunnel by blocking all ingress traffic and allowing only egress traffic from `cloudflared`. Only the services specified in your tunnel configuration will be exposed to the outside world.
 
@@ -23,8 +22,8 @@ The parameters below can be configured for egress traffic inside of a firewall.
 
 How you configure your firewall depends on the firewall type:
 
-* If your firewall supports domain-based rules (FQDN allowlists), you can allow outbound connections to the hostnames listed below.
-* If your firewall requires IP-based rules, allow outbound connections to all listed IP addresses for each domain.
+- If your firewall supports domain-based rules (FQDN allowlists), you can allow outbound connections to the hostnames listed below.
+- If your firewall requires IP-based rules, allow outbound connections to all listed IP addresses for each domain.
 
 Ensure port `7844` is allowed for both TCP and UDP protocols (for `http2` and `quic`).
 
@@ -34,42 +33,42 @@ Ensure port `7844` is allowed for both TCP and UDP protocols (for `http2` and `q
 
 #### `region1.v2.argotunnel.com`
 
-| IPv4                                                                                                                                          | IPv6                                                                                                                                                             | Port | Protocols            |
-| --------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- | -------------------- |
-| 198.41.192.167 198.41.192.67 198.41.192.57 198.41.192.107 198.41.192.27 198.41.192.7 198.41.192.227 198.41.192.47 198.41.192.37 198.41.192.77 | 2606:4700:a0::1 2606:4700:a0::2 2606:4700:a0::3 2606:4700:a0::4 2606:4700:a0::5 2606:4700:a0::6 2606:4700:a0::7 2606:4700:a0::8 2606:4700:a0::9 2606:4700:a0::10 | 7844 | TCP/UDP (http2/quic) |
+| IPv4 | IPv6 | Port | Protocols |
+| --- | --- | --- | --- |
+| `198.41.192.167` `198.41.192.67` `198.41.192.57` `198.41.192.107` `198.41.192.27` `198.41.192.7` `198.41.192.227` `198.41.192.47` `198.41.192.37` `198.41.192.77` | `2606:4700:a0::1` `2606:4700:a0::2` `2606:4700:a0::3` `2606:4700:a0::4` `2606:4700:a0::5` `2606:4700:a0::6` `2606:4700:a0::7` `2606:4700:a0::8` `2606:4700:a0::9` `2606:4700:a0::10` | 7844 | TCP/UDP (`http2`/`quic`) |
 
 #### `region2.v2.argotunnel.com`
 
-| IPv4                                                                                                                                           | IPv6                                                                                                                                                             | Port | Protocols            |
-| ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- | -------------------- |
-| 198.41.200.13 198.41.200.193 198.41.200.33 198.41.200.233 198.41.200.53 198.41.200.63 198.41.200.113 198.41.200.73 198.41.200.43 198.41.200.23 | 2606:4700:a8::1 2606:4700:a8::2 2606:4700:a8::3 2606:4700:a8::4 2606:4700:a8::5 2606:4700:a8::6 2606:4700:a8::7 2606:4700:a8::8 2606:4700:a8::9 2606:4700:a8::10 | 7844 | TCP/UDP (http2/quic) |
+| IPv4 | IPv6 | Port | Protocols |
+| --- | --- | --- | --- |
+| `198.41.200.13` `198.41.200.193` `198.41.200.33` `198.41.200.233` `198.41.200.53` `198.41.200.63` `198.41.200.113` `198.41.200.73` `198.41.200.43` `198.41.200.23` | `2606:4700:a8::1` `2606:4700:a8::2` `2606:4700:a8::3` `2606:4700:a8::4` `2606:4700:a8::5` `2606:4700:a8::6` `2606:4700:a8::7` `2606:4700:a8::8` `2606:4700:a8::9` `2606:4700:a8::10` | 7844 | TCP/UDP (`http2`/`quic`) |
 
 #### SNI-enforcing firewalls
 
 If your firewall enforces Server Name Indication (SNI), also allow these hostnames on port `7844`:
 
-| Hostname                                | Port | Protocols            |
-| --------------------------------------- | ---- | -------------------- |
-| \_v2-origintunneld.\_tcp.argotunnel.com | 7844 | TCP (http2)          |
-| cftunnel.com                            | 7844 | TCP/UDP (http2/quic) |
-| h2.cftunnel.com                         | 7844 | TCP (http2)          |
-| quic.cftunnel.com                       | 7844 | UDP (quic)           |
+| Hostname | Port | Protocols |
+| --- | --- | --- |
+| `_v2-origintunneld._tcp.argotunnel.com` | 7844 | TCP (`http2`) |
+| `cftunnel.com` | 7844 | TCP/UDP (`http2`/`quic`) |
+| `h2.cftunnel.com` | 7844 | TCP (`http2`) |
+| `quic.cftunnel.com` | 7844 | UDP (`quic`) |
 
 ### Region US
 
-When using the [\--region us](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#region) flag, ensure your firewall allows outbound connections to these US-region destinations on port `7844` (TCP/UDP).
+When using the [`--region us`](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#region) flag, ensure your firewall allows outbound connections to these US-region destinations on port `7844` (TCP/UDP).
 
 #### `us-region1.v2.argotunnel.com`
 
-| IPv4                                                                                                                               | IPv6                                                                                                                                                             | Port | Protocol             |
-| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- | -------------------- |
-| 198.41.218.1 198.41.218.2 198.41.218.3 198.41.218.4 198.41.218.5 198.41.218.6 198.41.218.7 198.41.218.8 198.41.218.9 198.41.218.10 | 2606:4700:a1::1 2606:4700:a1::2 2606:4700:a1::3 2606:4700:a1::4 2606:4700:a1::5 2606:4700:a1::6 2606:4700:a1::7 2606:4700:a1::8 2606:4700:a1::9 2606:4700:a1::10 | 7844 | TCP/UDP (http2/quic) |
+| IPv4 | IPv6 | Port | Protocol |
+| --- | --- | --- | --- |
+| `198.41.218.1` `198.41.218.2` `198.41.218.3` `198.41.218.4` `198.41.218.5` `198.41.218.6` `198.41.218.7` `198.41.218.8` `198.41.218.9` `198.41.218.10` | `2606:4700:a1::1` `2606:4700:a1::2` `2606:4700:a1::3` `2606:4700:a1::4` `2606:4700:a1::5` `2606:4700:a1::6` `2606:4700:a1::7` `2606:4700:a1::8` `2606:4700:a1::9` `2606:4700:a1::10` | 7844 | TCP/UDP (`http2`/`quic`) |
 
 #### `us-region2.v2.argotunnel.com`
 
-| IPv4                                                                                                                               | IPv6                                                                                                                                                             | Port | Protocol             |
-| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- | -------------------- |
-| 198.41.219.1 198.41.219.2 198.41.219.3 198.41.219.4 198.41.219.5 198.41.219.6 198.41.219.7 198.41.219.8 198.41.219.9 198.41.219.10 | 2606:4700:a9::1 2606:4700:a9::2 2606:4700:a9::3 2606:4700:a9::4 2606:4700:a9::5 2606:4700:a9::6 2606:4700:a9::7 2606:4700:a9::8 2606:4700:a9::9 2606:4700:a9::10 | 7844 | TCP/UDP (http2/quic) |
+| IPv4 | IPv6 | Port | Protocol |
+| --- | --- | --- | --- |
+| `198.41.219.1` `198.41.219.2` `198.41.219.3` `198.41.219.4` `198.41.219.5` `198.41.219.6` `198.41.219.7` `198.41.219.8` `198.41.219.9` `198.41.219.10` | `2606:4700:a9::1` `2606:4700:a9::2` `2606:4700:a9::3` `2606:4700:a9::4` `2606:4700:a9::5` `2606:4700:a9::6` `2606:4700:a9::7` `2606:4700:a9::8` `2606:4700:a9::9` `2606:4700:a9::10` | 7844 | TCP/UDP (`http2`/`quic`) |
 
 ### Region FedRAMP High
 
@@ -77,15 +76,15 @@ When deploying `cloudflared` in a [FedRAMP High ↗](https://www.cloudflare.com/
 
 #### `fed-region1.v2.argotunnel.com`
 
-| IPv4                                                                                                                                         | IPv6                                                                                                                                                             | Port | Protocols            |
-| -------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- | -------------------- |
-| 162.159.234.1 162.159.234.2 162.159.234.3 162.159.234.4 162.159.234.5 162.159.234.6 162.159.234.7 162.159.234.8 162.159.234.9 162.159.234.10 | 2a06:98c1:4d::1 2a06:98c1:4d::2 2a06:98c1:4d::3 2a06:98c1:4d::4 2a06:98c1:4d::5 2a06:98c1:4d::6 2a06:98c1:4d::7 2a06:98c1:4d::8 2a06:98c1:4d::9 2a06:98c1:4d::10 | 7844 | TCP/UDP (http2/quic) |
+| IPv4 | IPv6 | Port | Protocols |
+| --- | --- | --- | --- |
+| `162.159.234.1` `162.159.234.2` `162.159.234.3` `162.159.234.4` `162.159.234.5` `162.159.234.6` `162.159.234.7` `162.159.234.8` `162.159.234.9` `162.159.234.10` | `2a06:98c1:4d::1` `2a06:98c1:4d::2` `2a06:98c1:4d::3` `2a06:98c1:4d::4` `2a06:98c1:4d::5` `2a06:98c1:4d::6` `2a06:98c1:4d::7` `2a06:98c1:4d::8` `2a06:98c1:4d::9` `2a06:98c1:4d::10` | 7844 | TCP/UDP (`http2`/`quic`) |
 
 #### `fed-region2.v2.argotunnel.com`
 
-| IPv4                                                                                                                               | IPv6                                                                                                                                                             | Port | Protocols            |
-| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- | -------------------- |
-| 172.64.234.1 172.64.234.2 172.64.234.3 172.64.234.4 172.64.234.5 172.64.234.6 172.64.234.7 172.64.234.8 172.64.234.9 172.64.234.10 | 2606:4700:f6::1 2606:4700:f6::2 2606:4700:f6::3 2606:4700:f6::4 2606:4700:f6::5 2606:4700:f6::6 2606:4700:f6::7 2606:4700:f6::8 2606:4700:f6::9 2606:4700:f6::10 | 7844 | TCP/UDP (http2/quic) |
+| IPv4 | IPv6 | Port | Protocols |
+| --- | --- | --- | --- |
+| `172.64.234.1` `172.64.234.2` `172.64.234.3` `172.64.234.4` `172.64.234.5` `172.64.234.6` `172.64.234.7` `172.64.234.8` `172.64.234.9` `172.64.234.10` | `2606:4700:f6::1` `2606:4700:f6::2` `2606:4700:f6::3` `2606:4700:f6::4` `2606:4700:f6::5` `2606:4700:f6::6` `2606:4700:f6::7` `2606:4700:f6::8` `2606:4700:f6::9` `2606:4700:f6::10` | 7844 | TCP/UDP (`http2`/`quic`) |
 
 ### Optional
 
@@ -95,46 +94,46 @@ Opening port `443` enables some optional features. Failure to allow these connec
 
 Allows `cloudflared` to query if software updates are available.
 
-| IPv4                                                                                    | IPv6                                                                                                                                                        | Port | Protocols   |
-| --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- | ----------- |
-| 104.19.192.29 104.19.192.177 104.19.192.175 104.19.193.29 104.19.192.174 104.19.192.176 | 2606:4700:300a::6813:c0af 2606:4700:300a::6813:c01d 2606:4700:300a::6813:c0ae 2606:4700:300a::6813:c11d 2606:4700:300a::6813:c0b0 2606:4700:300a::6813:c0b1 | 443  | TCP (HTTPS) |
+| IPv4 | IPv6 | Port | Protocols |
+| --- | --- | --- | --- |
+| `104.19.192.29` `104.19.192.177` `104.19.192.175` `104.19.193.29` `104.19.192.174` `104.19.192.176` | `2606:4700:300a::6813:c0af` `2606:4700:300a::6813:c01d` `2606:4700:300a::6813:c0ae` `2606:4700:300a::6813:c11d` `2606:4700:300a::6813:c0b0` `2606:4700:300a::6813:c0b1` | 443 | TCP (HTTPS) |
 
 #### `update.argotunnel.com`
 
 Allows `cloudflared` to query if software updates are available.
 
-| IPv4                        | IPv6                                      | Port | Protocols   |
-| --------------------------- | ----------------------------------------- | ---- | ----------- |
-| 104.18.25.129 104.18.24.129 | 2606:4700::6812:1881 2606:4700::6812:1981 | 443  | TCP (HTTPS) |
+| IPv4 | IPv6 | Port | Protocols |
+| --- | --- | --- | --- |
+| `104.18.25.129` `104.18.24.129` | `2606:4700::6812:1881` `2606:4700::6812:1981` | 443 | TCP (HTTPS) |
 
 #### `github.com`
 
 Allows `cloudflared` to download the latest release and perform a software update.
 
-| IPv4                                                                                                                        | IPv6                                                                                                                        | Port | Protocols   |
-| --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | ---- | ----------- |
-| [GitHub's IPs ↗](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-githubs-ip-addresses) | [GitHub's IPs ↗](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-githubs-ip-addresses) | 443  | TCP (HTTPS) |
+| IPv4 | IPv6 | Port | Protocols |
+| --- | --- | --- | --- |
+| [GitHub's IPs ↗](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-githubs-ip-addresses) | [GitHub's IPs ↗](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-githubs-ip-addresses) | 443 | TCP (HTTPS) |
 
 #### `<your-team-name>.cloudflareaccess.com`
 
-Allows `cloudflared` to validate the Access JWT. Only required if the [access ↗](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/cloudflared-parameters/origin-parameters/#access) setting is enabled.
+Allows `cloudflared` to validate the Access JWT. Only required if the [`access` ↗](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/cloudflared-parameters/origin-parameters/#access) setting is enabled.
 
-| IPv4                        | IPv6                                                | Port | Protocols   |
-| --------------------------- | --------------------------------------------------- | ---- | ----------- |
-| 104.19.194.29 104.19.195.29 | 2606:4700:300a::6813:c31d 2606:4700:300a::6813:c21d | 443  | TCP (HTTPS) |
+| IPv4 | IPv6 | Port | Protocols |
+| --- | --- | --- | --- |
+| `104.19.194.29` `104.19.195.29` | `2606:4700:300a::6813:c31d` `2606:4700:300a::6813:c21d` | 443 | TCP (HTTPS) |
 
 #### `pqtunnels.cloudflareresearch.com`
 
 Allows `cloudflared` to report [post-quantum key exchange ↗](https://blog.cloudflare.com/post-quantum-tunnel/) errors to Cloudflare.
 
-| IPv4                    | IPv6                                    | Port | Protocols   |
-| ----------------------- | --------------------------------------- | ---- | ----------- |
-| 104.18.4.64 104.18.5.64 | 2606:4700::6812:540 2606:4700::6812:440 | 443  | TCP (HTTPS) |
+| IPv4 | IPv6 | Port | Protocols |
+| --- | --- | --- | --- |
+| `104.18.4.64` `104.18.5.64` | `2606:4700::6812:540` `2606:4700::6812:440` | 443 | TCP (HTTPS) |
 
 #### `cfd-features.argotunnel.com`
 
-| IPv4           | IPv6           | Port           | Protocols      |
-| -------------- | -------------- | -------------- | -------------- |
+| IPv4 | IPv6 | Port | Protocols |
+| --- | --- | --- | --- |
 | Not applicable | Not applicable | Not applicable | Not applicable |
 
 Performing a DNS query for a `TXT` record to this hostname allows `cloudflared` to determine which version of [UDP datagram](https://developers.cloudflare.com/changelog/2025-07-15-udp-improvements/) to use when connecting via the `quic` protocol. If your firewall filters egress DNS queries by FQDN, you may need to allow queries for this domain to ensure optimal `quic` performance.
@@ -150,37 +149,60 @@ If you host your services on a virtual machine (VM) instance in a cloud provider
 Alternatively, you may use operating system (OS)-level firewall rules to block all ingress traffic and allow only egress traffic. For example, if your server runs on Linux, you may use `iptables` to set up firewall rules:
 
 1. Check your current firewall rules.
-```sh
-sudo iptables -L
-```
+
+   ```sh
+   sudo iptables -L
+   ```
+
+
 2. Allow `localhost` to communicate with itself.
-```sh
-sudo iptables -A INPUT -i lo -j ACCEPT
-```
+
+   ```sh
+   sudo iptables -A INPUT -i lo -j ACCEPT
+   ```
+
+
 3. Allow already established connection and related traffic.
-```sh
-sudo iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
-```
+
+   ```sh
+   sudo iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+   ```
+
+
 4. Allow new SSH connections.
-```sh
-sudo iptables -A INPUT -p tcp --dport ssh -j ACCEPT
-```
+
+   ```sh
+   sudo iptables -A INPUT -p tcp --dport ssh -j ACCEPT
+   ```
+
+
 5. Drop all other ingress traffic.
-Warning
-Be very careful with the following command. If you did not preserve the current SSH connection or allow new SSH connections, you would be logged out and unable to SSH back into the system again.
-```sh
-sudo iptables -A INPUT -j DROP
-```
+
+   Warning
+
+   Be very careful with the following command. If you did not preserve the current SSH connection or allow new SSH connections, you would be logged out and unable to SSH back into the system again.
+
+   ```sh
+   sudo iptables -A INPUT -j DROP
+   ```
+
+
 6. After setting the firewall rules, use this command to check the current `iptables` settings:
-```sh
-sudo iptables -L
-```
+
+   ```sh
+   sudo iptables -L
+   ```
+
+
 7. Run your tunnel and check that all configured services are still accessible to the outside world via the tunnel, but not via the external IP address of the server.
-8. By default, rules you add via the `iptables` command are stored only in memory and do not persist on reboot. There are many different ways to save and reload your firewall rules, depending on your Linux distribution. For example, on Debian you can use the [iptables-persistent ↗](https://packages.debian.org/sid/iptables-persistent) package:
-```sh
-sudo apt install iptables-persistent
-sudo netfilter-persistent save
-```
+8. By default, rules you add via the `iptables` command are stored only in memory and do not persist on reboot. There are many different ways to save and reload your firewall rules, depending on your Linux distribution. For example, on Debian you can use the [`iptables-persistent` ↗](https://packages.debian.org/sid/iptables-persistent) package:
+
+   ```sh
+   sudo apt install iptables-persistent
+   sudo netfilter-persistent save
+   ```
+
+
 
 ## Test connectivity
 

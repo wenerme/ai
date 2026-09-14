@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshoot Browser Isolation
 
-Last updated Jul 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Review common troubleshooting scenarios for Cloudflare Browser Isolation.
 
@@ -35,18 +35,18 @@ Cloudflare Browser Isolation uses Network Vector Rendering (NVR), which does not
 To resolve this, try enabling software rasterization in your browser:
 
 1. Go to `chrome://flags/#override-software-rendering-list`.
-2. Set **Override software rendering list** to _Enabled_.
+2. Set **Override software rendering list** to *Enabled*.
 3. Select **Relaunch**.
 
 ### Blank screen on Windows
 
 On Windows devices, Clientless Web Isolation may load with a blank screen if there is a conflict between browser mDNS settings and Windows IGMP configuration.
 
-| IGMPLevel    | WebRTC Anonymization | Result         |
-| ------------ | -------------------- | -------------- |
-| 0 (disabled) | Enabled / Default    | ❌ Blank screen |
-| 0 (disabled) | Disabled             | ✅ Works        |
-| 2 (enabled)  | Enabled / Default    | ✅ Works        |
+| IGMPLevel | WebRTC Anonymization | Result |
+| --- | --- | --- |
+| 0 (disabled) | Enabled / Default | ❌ Blank screen |
+| 0 (disabled) | Disabled | ✅ Works |
+| 2 (enabled) | Enabled / Default | ✅ Works |
 
 To fix this, either disable **Anonymize local IPs exposed by WebRTC** in your browser flags or ensure `IGMPLevel` is enabled (set to `2`) in your Windows network settings.
 

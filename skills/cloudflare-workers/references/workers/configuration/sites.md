@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers Sites
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/configuration/sites/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/sites/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use Workers Static Assets Instead
 
@@ -24,7 +24,7 @@ To deploy with Workers Sites, select from one of these three approaches dependin
 
 ---
 
-## 1\. Start from scratch
+## 1. Start from scratch
 
 If you are ready to start a brand new project, this quick start guide will help you set up the infrastructure to deploy a HTML website to Workers.
 
@@ -32,7 +32,7 @@ If you are ready to start a brand new project, this quick start guide will help 
 
 ---
 
-## 2\. Deploy an existing static site
+## 2. Deploy an existing static site
 
 If you have an existing project or static assets that you want to deploy with Workers, this quick start guide will help you install Wrangler and configure Workers Sites for your project.
 
@@ -40,7 +40,7 @@ If you have an existing project or static assets that you want to deploy with Wo
 
 ---
 
-## 3\. Add static assets to an existing Workers project
+## 3. Add static assets to an existing Workers project
 
 If you already have a Worker deployed to Cloudflare, this quick start guide will show you how to configure the existing codebase to use Workers Sites.
 

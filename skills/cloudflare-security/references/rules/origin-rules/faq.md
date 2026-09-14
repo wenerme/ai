@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Origin Rules FAQ
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/origin-rules/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/origin-rules/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Below you will find answers to the most commonly asked questions regarding Origin Rules.
 
@@ -22,8 +22,8 @@ In this situation the origin rule parameters will override the [page rule](https
 
 Consider the following example scenarios:
 
-* A page rule defines a Host header override, but not a resolve override (or DNS record override). An origin rule defines a DNS record override, but not a Host header override. The resulting request will have the `Host` header defined by the page rule and the origin hostname defined by the origin rule.
-* A page rule defines a Host header override, and an origin rule also defines a Host header override. The resulting request will have the `Host` header defined by the origin rule.
+- A page rule defines a Host header override, but not a resolve override (or DNS record override). An origin rule defines a DNS record override, but not a Host header override. The resulting request will have the `Host` header defined by the page rule and the origin hostname defined by the origin rule.
+- A page rule defines a Host header override, and an origin rule also defines a Host header override. The resulting request will have the `Host` header defined by the origin rule.
 
 ## Will Cloudflare automatically migrate my Page Rules with Host header and DNS record overrides to origin rules?
 
@@ -37,21 +37,27 @@ For example, if you configure the following two [origin rules](https://developer
 
 **Origin rule #1**
 
-| Parameter            | Value       |
-| -------------------- | ----------- |
-| Set Host header      | example.com |
-| Set destination port | 8081        |
+| Parameter | Value |
+| --- | --- |
+| Set `Host` header | `example.com` |
+| Set destination port | `8081` |
 
 **Origin rule #2**
 
-| Parameter        | Value       |
-| ---------------- | ----------- |
-| Set Host header  | example.net |
-| Set DNS hostname | example.net |
+| Parameter | Value |
+| --- | --- |
+| Set `Host` header | `example.net` |
+| Set DNS hostname | `example.net` |
+
+<details>
+
+<summary>
 
 JSON example for API users
 
-When [using the API](https://developers.cloudflare.com/rules/origin-rules/create-api/), you configure origin rule parameters in an `action_parameters` object.
+</summary>
+
+When <a href="https://developers.cloudflare.com/rules/origin-rules/create-api/">using the API</a>, you configure origin rule parameters in an <code>action_parameters</code> object.
 
 ```json
 {
@@ -82,13 +88,15 @@ When [using the API](https://developers.cloudflare.com/rules/origin-rules/create
 }
 ```
 
+</details>
+
 The merged configuration to apply would be the following:
 
-| Parameter            | Value       |
-| -------------------- | ----------- |
-| Set Host header      | example.net |
-| Set destination port | 8081        |
-| Set DNS hostname     | example.net |
+| Parameter | Value |
+| --- | --- |
+| Set `Host` header | `example.net` |
+| Set destination port | `8081` |
+| Set DNS hostname | `example.net` |
 
 If you also configured a destination port in rule #2, that value would override the `8081` destination port defined in rule #1.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Zero Trust Network Session Logs
 
-Last updated May 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero%5Ftrust%5Fnetwork%5Fsessions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Network session logs are generated for all traffic proxied through Cloudflare Gateway across all supported [on-ramps](https://developers.cloudflare.com/cloudflare-one/networks/connectivity-options/), such as the Cloudflare One Client (WARP), proxy endpoints (PAC files), Browser Isolation, and Cloudflare Tunnel.
 
@@ -65,7 +65,7 @@ TLS protocol version used in the connection between the client and Cloudflare.
 Type: `string`
 
 The reason for closing the connection, only applicable for TCP.
-Possible values are _CLIENT\_CLOSED_ | _CLIENT\_IDLE\_TIMEOUT_ | _CLIENT\_TLS\_ERROR_ | _CLIENT\_ERROR_ | _ORIGIN\_CLOSED_ | _ORIGIN\_TLS\_ERROR_ | _ORIGIN\_ERROR_ | _ORIGIN\_UNREACHABLE_ | _ORIGIN\_UNROUTABLE_ | _PROXY\_CONN\_REFUSED_ | _UNKNOWN_ | _MISMATCHED\_IP\_VERSIONS_ | _TOO\_MANY\_ACTIVE\_SESSIONS\_FOR\_ACCOUNT_ | _TOO\_MANY\_ACTIVE\_SESSIONS\_FOR\_USER_ | _TOO\_MANY\_NEW\_SESSIONS\_FOR\_ACCOUNT_ | _TOO\_MANY\_NEW\_SESSIONS\_FOR\_USER_.
+Possible values are *CLIENT\_CLOSED* | *CLIENT\_IDLE\_TIMEOUT* | *CLIENT\_TLS\_ERROR* | *CLIENT\_ERROR* | *ORIGIN\_CLOSED* | *ORIGIN\_TLS\_ERROR* | *ORIGIN\_ERROR* | *ORIGIN\_UNREACHABLE* | *ORIGIN\_UNROUTABLE* | *PROXY\_CONN\_REFUSED* | *UNKNOWN* | *MISMATCHED\_IP\_VERSIONS* | *TOO\_MANY\_ACTIVE\_SESSIONS\_FOR\_ACCOUNT* | *TOO\_MANY\_ACTIVE\_SESSIONS\_FOR\_USER* | *TOO\_MANY\_NEW\_SESSIONS\_FOR\_ACCOUNT* | *TOO\_MANY\_NEW\_SESSIONS\_FOR\_USER*.
 
 ## ConnectionReuse
 
@@ -150,7 +150,7 @@ The IP used to correlate existing FQDN matching policy between Gateway DNS and G
 Type: `string`
 
 The type of destination to which the network session was routed.
-Possible values are _INTERNET_ | _MAGIC_ | _CFD\_TUNNEL_ | _WARP_.
+Possible values are *INTERNET* | *MAGIC* | *CFD\_TUNNEL* | *WARP*.
 
 ## OriginIP
 
@@ -175,7 +175,7 @@ The issuer of the origin TLS certificate.
 Type: `string`
 
 The result of validating the TLS certificate of the origin.
-Possible values are _VALID_ | _EXPIRED_ | _REVOKED_ | _HOSTNAME\_MISMATCH_ | _NONE_ | _UNKNOWN_.
+Possible values are *VALID* | *EXPIRED* | *REVOKED* | *HOSTNAME\_MISMATCH* | *NONE* | *UNKNOWN*.
 
 ## OriginTLSCipher
 
@@ -200,7 +200,7 @@ TLS protocol version used in the connection between Cloudflare and the origin.
 Type: `string`
 
 Network protocol used for this network session.
-Possible values are _TCP_ | _UDP_ | _ICMP_ | _ICMPV6_.
+Possible values are *TCP* | *UDP* | *ICMP* | *ICMPV6*.
 
 ## RegistrationID
 
@@ -254,7 +254,7 @@ Source IP of the network session.
 
 Type: `string`
 
-Local LAN IP of the device. Only available when connected via a GRE/IPsec tunnel on-ramp.
+Internal IP of the device. For Cloudflare One Client (WARP) traffic, this is the WARP CGNAT address. For GRE/IPsec on-ramps, this is the source IP behind the tunnel.
 
 ## SourcePort
 
@@ -289,5 +289,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/#page","headline":"Zero Trust Network Session Logs · Cloudflare Logs docs","description":"Network session logs are generated for all traffic proxied through Cloudflare Gateway across all supported on-ramps, such as the Cloudflare One Client (WARP), proxy endpoints (PAC files), Browser Isolation, and Cloudflare Tunnel.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/#page","headline":"Zero Trust Network Session Logs · Cloudflare Logs docs","description":"Network session logs are generated for all traffic proxied through Cloudflare Gateway across all supported on-ramps, such as the Cloudflare One Client (WARP), proxy endpoints (PAC files), Browser Isolation, and Cloudflare Tunnel.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

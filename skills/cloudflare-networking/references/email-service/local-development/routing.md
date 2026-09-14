@@ -14,18 +14,26 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Test email routing Workers locally using wrangler dev with simulated incoming emails
 
-Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/local-development/routing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/local-development/routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Test email routing behavior locally using `wrangler dev` to simulate incoming emails and verify your routing logic before deploying.
 
 ## Prerequisites
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
+
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
 
 ## Configuration
 
@@ -35,14 +43,14 @@ Configure your Wrangler file:
 {
 	"name": "email-routing-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-05",
+	"compatibility_date": "2026-09-14",
 }
 ```
 
 ```toml
 name = "email-routing-worker"
 # Set this to today's date
-compatibility_date = "2026-09-05"
+compatibility_date = "2026-09-14"
 ```
 
 ## Basic routing worker
@@ -138,8 +146,8 @@ This will output the parsed email structure in the console:
 
 ## Next steps
 
-* Deploy your routing worker: [Route emails get started](https://developers.cloudflare.com/email-service/get-started/route-emails/)
-* See advanced patterns: [Email routing examples](https://developers.cloudflare.com/email-service/examples/email-routing/)
+- Deploy your routing worker: [Route emails get started](https://developers.cloudflare.com/email-service/get-started/route-emails/)
+- See advanced patterns: [Email routing examples](https://developers.cloudflare.com/email-service/examples/email-routing/)
 
 Was this helpful?
 

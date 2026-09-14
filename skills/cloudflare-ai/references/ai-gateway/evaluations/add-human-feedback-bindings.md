@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Add human feedback using Worker Bindings
 
-Last updated Jun 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-bindings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide explains how to provide human feedback for AI Gateway evaluations using Worker bindings.
 
-## 1\. Run an AI Evaluation
+## 1. Run an AI Evaluation
 
 Start by sending a prompt to the AI model through your AI Gateway.
 
@@ -38,9 +38,9 @@ const myLogId = env.AI.aiGatewayLogId;
 
 Let the user interact with or evaluate the AI response. This interaction will inform the feedback you send back to the AI Gateway.
 
-## 2\. Send Human Feedback
+## 2. Send Human Feedback
 
-Use the [patchLog()](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/#patchlog) method to provide feedback for the AI evaluation.
+Use the [`patchLog()`](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/#patchlog) method to provide feedback for the AI evaluation.
 
 ```javascript
 await env.AI.gateway("my-gateway").patchLog(myLogId, {
@@ -54,9 +54,9 @@ await env.AI.gateway("my-gateway").patchLog(myLogId, {
 
 ## Feedback parameters explanation
 
-* `feedback`: is either `-1` for negative or `1` to positive, `0` is considered not evaluated.
-* `score`: A number between 0 and 100.
-* `metadata`: An object containing additional contextual information.
+- `feedback`: is either `-1` for negative or `1` to positive, `0` is considered not evaluated.
+- `score`: A number between 0 and 100.
+- `metadata`: An object containing additional contextual information.
 
 ### patchLog: Send Feedback
 

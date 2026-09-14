@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Import Cloudflare resources
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/terraform/advanced-topics/import-cloudflare-resources/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/advanced-topics/import-cloudflare-resources/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An important point to understand about Terraform is that it can only manage configuration it created or was explicitly told about after the fact. The reason for this limitation is that Terraform expects to be authoritative for the resources it manages. It relies on two types of files to understand what resources it controls and what state they are in. Terraform determines when and how to make changes from the following:
 
-* A [configuration file ↗](https://developer.hashicorp.com/terraform/language) (ending in `.tf`) that defines the configuration of resources for Terraform to manage. This is what you worked with in the tutorial steps.
-* A local [state file ↗](https://developer.hashicorp.com/terraform/language/state) that maps the resource names defined in your configuration file — for example, `cloudflare_load_balancer.www-lb` — to the resources that exist in Cloudflare.
+- A [configuration file ↗](https://developer.hashicorp.com/terraform/language) (ending in `.tf`) that defines the configuration of resources for Terraform to manage. This is what you worked with in the tutorial steps.
+- A local [state file ↗](https://developer.hashicorp.com/terraform/language/state) that maps the resource names defined in your configuration file — for example, `cloudflare_load_balancer.www-lb` — to the resources that exist in Cloudflare.
 
 When Terraform makes calls to Cloudflare's API to create new resources as explained in the [tutorial](https://developers.cloudflare.com/terraform/tutorial/), it persists those IDs to a state file. By default, Terraform uses the `terraform.tfstate` file in your directory, but this can also be a [remote location ↗](https://developer.hashicorp.com/terraform/language/state/remote). These IDs are later looked up and refreshed when you call `terraform plan` and `terraform apply`.
 
@@ -25,7 +25,7 @@ If you configured Cloudflare through other means, for example, by logging in to 
 
 ## `cf-terraforming`
 
-[cf-terraforming ↗](https://github.com/cloudflare/cf-terraforming) helps existing Cloudflare customers get started with Terraform. Currently, `cf-terraforming` helps to generate the Terraform config state by fetching all the resources of a specified type from the account and/or zone of your choosing.
+[`cf-terraforming` ↗](https://github.com/cloudflare/cf-terraforming) helps existing Cloudflare customers get started with Terraform. Currently, `cf-terraforming` helps to generate the Terraform config state by fetching all the resources of a specified type from the account and/or zone of your choosing.
 
 ### Installation
 
@@ -49,7 +49,7 @@ To use `cf-terraforming`, specify the items below:
 1. The command to execute (for example, `generate` or `import`).
 2. Your Cloudflare user email - `--email` or `-e`.
 3. Your Cloudflare API token - `--token` or `-t`.
-4. The account and/or zone to pull resources from - `--account`/`--zone` or `-a`/`-z`.
+4. The account and/or zone to pull resources from - `--account`/ `--zone` or `-a`/ `-z`.
 5. The Cloudflare resources to generate config.
 
 The list of supported resources is available in the [Terraform README ↗](https://github.com/cloudflare/cf-terraforming#supported-resources).
@@ -58,8 +58,8 @@ The list of supported resources is available in the [Terraform README ↗](https
 
 To start managing existing Cloudflare resources in Terraform, for example, DNS records, you need:
 
-* The Terraform configuration of that resource (defined in a `.tf` file)
-* An accompanying Terraform state file of that resources state (defined in a `.tfstate` file)
+- The Terraform configuration of that resource (defined in a `.tf` file)
+- An accompanying Terraform state file of that resources state (defined in a `.tfstate` file)
 
 ### Generate Terraform configuration with `cf-terraforming`
 
@@ -226,9 +226,12 @@ To fix this, you must import the real state of those resources from Cloudflare i
 When you run `cf-terraforming import ...`, you will obtain a list of `terraform import ...` commands that you must run manually afterward to import those resources into Terraform state. This is currently a manual process, but it may be automated in the future.
 
 1. Run the following command:
-```sh
-cf-terraforming import --resource-type "cloudflare_record" --email $CLOUDFLARE_EMAIL --key $CLOUDFLARE_API_KEY --zone $CLOUDFLARE_ZONE_ID
-```
+
+   ```sh
+   cf-terraforming import --resource-type "cloudflare_record" --email $CLOUDFLARE_EMAIL --key $CLOUDFLARE_API_KEY --zone $CLOUDFLARE_ZONE_ID
+   ```
+
+
 2. Copy each `terraform import ...` command included in the output and run it. Terraform will import each resource individually into Terraform state.
 
 For example, if the output of the first command (`cf-terraforming import ...`) contained the following `terraform` commands:

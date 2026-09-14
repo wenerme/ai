@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Reference
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/kv/reference/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [Wrangler KV commands](https://developers.cloudflare.com/kv/reference/kv-commands/)
-* [Environments](https://developers.cloudflare.com/kv/reference/environments/)
-* [Data location](https://developers.cloudflare.com/kv/reference/data-location/)
-* [Data security](https://developers.cloudflare.com/kv/reference/data-security/)
-* [FAQ](https://developers.cloudflare.com/kv/reference/faq/)
+- [Wrangler KV commands](https://developers.cloudflare.com/kv/reference/kv-commands/)
+- [Environments](https://developers.cloudflare.com/kv/reference/environments/)
+- [Data location](https://developers.cloudflare.com/kv/reference/data-location/)
+- [Data security](https://developers.cloudflare.com/kv/reference/data-security/)
+- [FAQ](https://developers.cloudflare.com/kv/reference/faq/)
 
 Was this helpful?
 

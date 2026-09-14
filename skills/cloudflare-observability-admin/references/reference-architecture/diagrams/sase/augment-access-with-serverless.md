@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Extend ZTNA with external authorization and serverless computing
 
-Last updated Mar 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/sase/augment-access-with-serverless/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Mar 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/sase/augment-access-with-serverless/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -40,19 +40,19 @@ Cloudflare Zero Trust replaces legacy security perimeters with Cloudflare's glob
 
 ## Use-cases
 
-* **Custom authorization logic**: Access External evaluation using Workers as a backend (for example, using your own implementation of [Open Policy Agent aka OPA ↗](https://www.openpolicyagent.org/integrations/cloudflare-worker/)\])
-* **Augmented [JSON Web Token (JWT)](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/)**: Using Cloudflare's own authentication JWT material, for example, adding posture details as part of an incoming request.
-* **Serverless augmented apps protected with Zero-trust**: Allowing anyone building serverless applications to benefit from native ZTNA features
+- **Custom authorization logic**: Access External evaluation using Workers as a backend (for example, using your own implementation of [Open Policy Agent aka OPA ↗](https://www.openpolicyagent.org/integrations/cloudflare-worker/)])
+- **Augmented [JSON Web Token (JWT)](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/)**: Using Cloudflare's own authentication JWT material, for example, adding posture details as part of an incoming request.
+- **Serverless augmented apps protected with Zero-trust**: Allowing anyone building serverless applications to benefit from native ZTNA features
 
 ![Figure 1: Showing a request to a private resource and where  Access can be customized for AuthZ and AuthN](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1330,height=676,format=svg/_astro/diagram1.D2YkG0lA.svg "Figure 1: Showing a request to a private resource and where  Access can be customized for AuthZ and AuthN")
 
-Figure 1: Showing a request to a private resource and where Access can be customized for AuthZ and AuthN
+*Figure 1: Showing a request to a private resource and where Access can be customized for AuthZ and AuthN*
 
 ## Getting started
 
 The following outlines how organizations can run their own custom business logic, allowing them to tailor authentication and authorization processes to meet almost any requirement. Each use case below refers to a step in the above diagram.
 
-### 1\. Custom authorization process using your own rules
+### 1. Custom authorization process using your own rules
 
 During policy evaluation, the [external evaluation](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/external-evaluation/) rule allows for executing your own code during access policy evaluation. In this example an API exposed by Cloudflare Workers receives data about the user making the request, the important part being their username.
 
@@ -62,11 +62,13 @@ The code typically makes calls to either a [database](https://developers.cloudfl
 
 External authorization with Cloudflare's external evaluation functionality
 
-### 2\. Analyze and validate the authentication material (JWT)
+### 2. Analyze and validate the authentication material (JWT)
 
 When a user successfully authenticates and is authorized to access a protected application, Cloudflare inserts a [JSON Web Token (JWT)](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/) into the HTTP traffic sent to the origin. This token serves as a valuable asset for expanding custom business logic through secure processing. The format for that JWT is deterministic and rather lightweight to avoid overloading the requests towards origin unnecessarily.
 
 Here is an example of a JWT sent to an origin (use [JWT.io ↗](http://jwt.io) to read the contents of a JWT)
+
+*JWT contentjson*
 
 ```json
 {
@@ -84,7 +86,7 @@ Here is an example of a JWT sent to an origin (use [JWT.io ↗](http://jwt.io) t
 }
 ```
 
-Cloudflare exposes a specific [endpoint](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/#%5Ftop) to allow anyone to validate and expand a Cloudflare signed JWT.
+Cloudflare exposes a specific [endpoint](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/#_top) to allow anyone to validate and expand a Cloudflare signed JWT.
 
 Cloudflare's Workers are a great candidate for interacting with incoming JSON Web Tokens (JWTs), enabling additional processing directly within the serverless platform without introducing any added latency.
 
@@ -92,7 +94,7 @@ Cloudflare's Workers are a great candidate for interacting with incoming JSON We
 
 How to validate and visualize Cloudflare Access JWTs
 
-### 3\. Augment the authentication material (JWT) with extra authentication details
+### 3. Augment the authentication material (JWT) with extra authentication details
 
 In some situations, it is beneficial to elaborate on this JWT in order to execute additional processing on the protected destination application (for example, adding device [posture details](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/) as part of an incoming request).
 
@@ -100,9 +102,11 @@ In the following example, we want to make sure the exposed application is aware 
 
 ![Figure 2: Modified origin request including posture details](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1008,height=576,format=svg/_astro/diagram2.DPpYfIXE.svg "Figure 2: Modified origin request including posture details")
 
-Figure 2: Modified origin request including posture details
+*Figure 2: Modified origin request including posture details*
 
 When a JSON Web Token (JWT) is expanded, the details of the attached authentication event become visible. This expansion reveals much more information than what is provided by default within the JWT itself, an example is below.
+
+*Expanded JWTjson*
 
 ```json
 {
@@ -178,9 +182,9 @@ How to augment Cloudflare Access JWT with Cloudflare's Workers
 
 ## Related Resources
 
-* [External Evaluation rules](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/external-evaluation/)
-* [SASE reference architecture](https://developers.cloudflare.com/reference-architecture/architectures/sase/)
-* [External Evaluation blog post ↗](https://blog.cloudflare.com/access-external-validation-rules/)
+- [External Evaluation rules](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/external-evaluation/)
+- [SASE reference architecture](https://developers.cloudflare.com/reference-architecture/architectures/sase/)
+- [External Evaluation blog post ↗](https://blog.cloudflare.com/access-external-validation-rules/)
 
 Was this helpful?
 

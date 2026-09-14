@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers
 
-Last updated May 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/artifacts/get-started/workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/get-started/workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Create an Artifacts repo from a Worker and use a standard Git client to push and pull content.
 
@@ -23,46 +23,59 @@ Start by reading [Namespaces](https://developers.cloudflare.com/artifacts/concep
 ## Prerequisites
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
+
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
 
 You also need:
 
-* Wrangler installed. If you use local Wrangler commands in this guide, authenticate Wrangler first. For local OAuth authentication or CI setup, refer to [wrangler login](https://developers.cloudflare.com/workers/wrangler/commands/general/#login) and [Running Wrangler in CI/CD](https://developers.cloudflare.com/workers/ci-cd/).
-* Access to Artifacts in your Cloudflare account.
-* A namespace name, for example `default`.
-* A local `git` client.
-* `jq`, if you want to extract response fields automatically.
+- Wrangler installed. If you use local Wrangler commands in this guide, authenticate Wrangler first. For local OAuth authentication or CI setup, refer to [`wrangler login`](https://developers.cloudflare.com/workers/wrangler/commands/general/#login) and [Running Wrangler in CI/CD](https://developers.cloudflare.com/workers/ci-cd/).
+- Access to Artifacts in your Cloudflare account.
+- A namespace name, for example `default`.
+- A local `git` client.
+- `jq`, if you want to extract response fields automatically.
 
-## 1\. Create a Worker project
+## 1. Create a Worker project
 
-1. Create a new Worker project with C3:
-npmyarnpnpm
-```
-npm create cloudflare@latest -- artifacts-worker
-```
-```
-yarn create cloudflare artifacts-worker
-```
-```
-pnpm create cloudflare@latest artifacts-worker
-```
-For setup, select the following options:
+1. Create a new Worker project with C3:npmyarnpnpm
 
-  * For _What would you like to start with?_, choose `Hello World example`.
-  * For _Which template would you like to use?_, choose `Worker only`.
-  * For _Which language do you want to use?_, choose `TypeScript`.
-  * For _Do you want to use git for version control?_, choose `Yes`.
-  * For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+   ```
+   npm create cloudflare@latest -- artifacts-worker
+   ```
+
+   ```
+   yarn create cloudflare artifacts-worker
+   ```
+
+   ```
+   pnpm create cloudflare@latest artifacts-worker
+   ```
+
+   For setup, select the following options:
+   - For *What would you like to start with?*, choose `Hello World example`.
+   - For *Which template would you like to use?*, choose `Worker only`.
+   - For *Which language do you want to use?*, choose `TypeScript`.
+   - For *Do you want to use git for version control?*, choose `Yes`.
+   - For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 2. Move into the project directory:
-```sh
-cd artifacts-worker
-```
 
-## 2\. Add the Artifacts binding
+   ```sh
+   cd artifacts-worker
+   ```
+
+
+
+## 2. Add the Artifacts binding
 
 Open your Wrangler config file and add the Artifacts binding:
 
@@ -72,7 +85,7 @@ Open your Wrangler config file and add the Artifacts binding:
   "name": "artifacts-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-08-25",
+  "compatibility_date": "2026-09-14",
   "artifacts": [
     {
       "binding": "ARTIFACTS",
@@ -86,7 +99,7 @@ Open your Wrangler config file and add the Artifacts binding:
 name = "artifacts-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[artifacts]]
 binding = "ARTIFACTS"
@@ -114,9 +127,11 @@ pnpm wrangler types
 
 Wrangler adds an `Artifacts` type to your generated `worker-configuration.d.ts` file.
 
-## 3\. Write your Worker
+## 3. Write your Worker
 
 Replace `src/index.ts` with the following code:
+
+*src/index.jsjs*
 
 ```js
 export default {
@@ -146,6 +161,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 export default {
@@ -184,7 +201,7 @@ This example omits authentication so it can focus on the Artifacts flow. In prod
 
 For the demo, the Worker returns the initial write token. In production, mint short-lived read tokens for clone and pull flows, and mint write tokens only for operations that need push access.
 
-## 4\. Invoke your Worker to create a repo
+## 4. Invoke your Worker to create a repo
 
 Start local development:
 
@@ -222,9 +239,9 @@ Your Worker will call `env.ARTIFACTS.create()` and return three values you will 
 }
 ```
 
-* `name`: the repo name. Must be unique within the namespace.
-* `remote`: the Git remote URL for this repo. `<ACCOUNT_ID>` will be your actual Cloudflare account ID.
-* `token`: a short-lived credential for Git operations. The token encodes its expiry directly in the `?expires=` suffix as a Unix timestamp.
+- `name`: the repo name. Must be unique within the namespace.
+- `remote`: the Git remote URL for this repo. `<ACCOUNT_ID>` will be your actual Cloudflare account ID.
+- `token`: a short-lived credential for Git operations. The token encodes its expiry directly in the `?expires=` suffix as a Unix timestamp.
 
 Copy the `remote` and `token` values into local shell variables:
 
@@ -242,7 +259,7 @@ export ARTIFACTS_REMOTE=$(printf '%s' "$RESPONSE" | jq -r '.remote')
 export ARTIFACTS_TOKEN=$(printf '%s' "$RESPONSE" | jq -r '.token')
 ```
 
-## 5\. Push your first commit with git
+## 5. Push your first commit with git
 
 In the previous step, your Worker created an empty Artifacts repo. Now you will create a local Git repo, add a file, and push it to Artifacts — the same way you would push to any Git remote.
 
@@ -267,7 +284,7 @@ export ARTIFACTS_AUTH_REMOTE="https://x:${ARTIFACTS_TOKEN_SECRET}@${ARTIFACTS_RE
 git push "$ARTIFACTS_AUTH_REMOTE" HEAD:main
 ```
 
-## 6\. Pull the repo with a regular Git client
+## 6. Pull the repo with a regular Git client
 
 Clone the same repo into a second directory:
 
@@ -285,7 +302,7 @@ You can also clone with a self-contained remote URL for a short-lived command:
 git clone "$ARTIFACTS_AUTH_REMOTE" artifacts-clone
 ```
 
-## 7\. Deploy your Worker
+## 7. Deploy your Worker
 
 Switch back to your Worker project directory:
 
@@ -334,5 +351,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/get-started/workers/#page","headline":"Get started - Workers · Cloudflare Artifacts docs","description":"Create an Artifacts repo from a Worker.","url":"https://developers.cloudflare.com/artifacts/get-started/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/get-started/workers/#page","headline":"Get started - Workers · Cloudflare Artifacts docs","description":"Create an Artifacts repo from a Worker.","url":"https://developers.cloudflare.com/artifacts/get-started/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

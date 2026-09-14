@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Example of how to use Queues to handle rate limits of external APIs.
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/queues/tutorials/handle-rate-limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/tutorials/handle-rate-limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial explains how to use Queues to handle rate limits of external APIs by building an application that sends email notifications using [Resend ↗](https://www.resend.com/). However, you can use this pattern to handle rate limits of any external API.
 
@@ -23,14 +23,22 @@ Resend is a service that allows you to send emails from your application via an 
 ## Prerequisites
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
 
-1. Sign up for [Resend ↗](https://resend.com/) and generate an API key by following the guide on the [Resend documentation ↗](https://resend.com/docs/dashboard/api-keys/introduction).
-2. Additionally, you will need access to Cloudflare Queues.
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
+
+4. Sign up for [Resend ↗](https://resend.com/) and generate an API key by following the guide on the [Resend documentation ↗](https://resend.com/docs/dashboard/api-keys/introduction).
+5. Additionally, you will need access to Cloudflare Queues.
 
 Queues is included in the monthly subscription cost of your Workers Paid plan, and charges based on operations against your queues. A limited version of Queues is also available on the Workers Free plan. Refer to [Pricing](https://developers.cloudflare.com/queues/platform/pricing/) for more details.
 
@@ -38,13 +46,12 @@ Before you can use Queues, you must enable it via [the Cloudflare dashboard ↗]
 
 To enable Queues:
 
-1. In the Cloudflare dashboard, go to the **Queues** page.
-[Go to **Queues** ↗](https://dash.cloudflare.com/?to=/:account/workers/queues)
+1. In the Cloudflare dashboard, go to the **Queues** page. [Go to **Queues** ↗](https://dash.cloudflare.com/?to=/:account/workers/queues)
 2. Select **Enable Queues**.
 
-## 1\. Create a new Workers application
+## 1. Create a new Workers application
 
-To get started, create a Worker application using the [create-cloudflare CLI ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare). Open a terminal window and run the following command:
+To get started, create a Worker application using the [`create-cloudflare` CLI ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare). Open a terminal window and run the following command:
 
 npmyarnpnpm
 
@@ -62,11 +69,11 @@ pnpm create cloudflare@latest resend-rate-limit-queue
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `TypeScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `TypeScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 Then, go to your newly created directory:
 
@@ -74,9 +81,11 @@ Then, go to your newly created directory:
 cd resend-rate-limit-queue
 ```
 
-## 2\. Set up a Queue
+## 2. Set up a Queue
 
 You need to create a Queue and a binding to your Worker. Run the following command to create a Queue named `rate-limit-queue`:
+
+*Create a Queuesh*
 
 ```sh
 npx wrangler queues create rate-limit-queue
@@ -134,7 +143,7 @@ Your final Wrangler file should look similar to the example below.
 	"name": "resend-rate-limit-queue",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -162,7 +171,7 @@ Your final Wrangler file should look similar to the example below.
 name = "resend-rate-limit-queue"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[queues.producers]]
@@ -176,9 +185,11 @@ max_batch_timeout = 10
 max_retries = 3
 ```
 
-## 3\. Add bindings to environment
+## 3. Add bindings to environment
 
 Add the bindings to the environment interface in `worker-configuration.d.ts`, so TypeScript correctly types the bindings. The queue is typed as `Queue<Message>`, where `Message` is defined in the following step.
+
+*worker-configuration.d.tsts*
 
 ```ts
 interface Env {
@@ -186,9 +197,11 @@ interface Env {
 }
 ```
 
-## 4\. Send message to the queue
+## 4. Send message to the queue
 
 The application will send a message to the queue when the Worker receives a request. For simplicity, you will send the email address as a message to the queue. A new message will be sent to the queue with a delay of one second.
+
+*src/index.tsts*
 
 ```ts
 export default {
@@ -208,13 +221,15 @@ export default {
 
 This will accept requests to any subpath and forwards the request's body. It expects that the request body to contain only an email. In production, you should check that the request was a `POST` request. You should also avoid sending such sensitive information (email) directly to the queue. Instead, you can send a message to the queue that contains a unique identifier for the user. Then, your consumer queue can use the unique identifier to look up the email address in a database and use that to send the email.
 
-## 5\. Process the messages in the queue
+## 5. Process the messages in the queue
 
 After the message is sent to the queue, it will be processed by the consumer Worker. The consumer Worker will process the message and send the email.
 
 Since you have not configured Resend yet, you will log the message to the console. After you configure Resend, you will use it to send the email.
 
 Add the `queue()` handler as shown below:
+
+*src/index.tsts*
 
 ```ts
 interface Message {
@@ -252,11 +267,15 @@ The above `queue()` handler will log the email address to the console and send t
 
 To test the application, run the following command:
 
+*Start the development serversh*
+
 ```sh
 npm run dev
 ```
 
 Use the following cURL command to send a request to the application:
+
+*Test with a cURL requestsh*
 
 ```sh
 curl -X POST -d "test@example.com" http://localhost:8787/
@@ -272,9 +291,11 @@ QueueMessage {
 }
 ```
 
-## 6\. Set up Resend
+## 6. Set up Resend
 
 To call the Resend API, you need to configure the Resend API key. Create a `.dev.vars` file in the root of your project and add the following:
+
+*.dev.varstxt*
 
 ```txt
 RESEND_API_KEY='your-resend-api-key'
@@ -284,6 +305,8 @@ Replace `your-resend-api-key` with your actual Resend API key.
 
 Next, update the `Env` interface in `worker-configuration.d.ts` to include the `RESEND_API_KEY` variable.
 
+*worker-configuration.d.tsts*
+
 ```ts
 interface Env {
 	EMAIL_QUEUE: Queue<Message>;
@@ -291,7 +314,7 @@ interface Env {
 }
 ```
 
-Lastly, install the [resend package ↗](https://www.npmjs.com/package/resend) using the following command:
+Lastly, install the [`resend` package ↗](https://www.npmjs.com/package/resend) using the following command:
 
 npmyarnpnpmbun
 
@@ -313,9 +336,11 @@ bun add resend
 
 You can now use the `RESEND_API_KEY` variable in your code.
 
-## 7\. Send email with Resend
+## 7. Send email with Resend
 
 In your `src/index.ts` file, import the Resend package and update the `queue()` handler to send the email.
+
+*src/index.tsts*
 
 ```ts
 import { Resend } from "resend";
@@ -372,6 +397,8 @@ The `queue()` handler will now send the email using the Resend API. It also chec
 
 The final script is included below:
 
+*src/index.tsts*
+
 ```ts
 import { Resend } from "resend";
 
@@ -423,11 +450,15 @@ export default {
 
 To test the application, start the development server using the following command:
 
+*Start the development serversh*
+
 ```sh
 npm run dev
 ```
 
 Use the following cURL command to send a request to the application:
+
+*Test with a cURL requestsh*
 
 ```sh
 curl -X POST -d "delivered@resend.dev" http://localhost:8787/
@@ -435,15 +466,19 @@ curl -X POST -d "delivered@resend.dev" http://localhost:8787/
 
 On the Resend dashboard, you should see that the email was sent to the provided email address.
 
-## 8\. Deploy your Worker
+## 8. Deploy your Worker
 
 To deploy your Worker, run the following command:
+
+*Deploy your Workersh*
 
 ```sh
 npx wrangler deploy
 ```
 
 Lastly, add the Resend API key using the following command:
+
+*Add the Resend API keysh*
 
 ```sh
 npx wrangler secret put RESEND_API_KEY
@@ -455,6 +490,8 @@ You have successfully created a Worker which can send emails using the Resend AP
 
 To test your Worker, you could use the following cURL request. Replace `<YOUR_WORKER_URL>` with the URL of your deployed Worker.
 
+*Test with a cURL requestbash*
+
 ```bash
 curl -X POST -d "delivered@resend.dev" <YOUR_WORKER_URL>
 ```
@@ -463,9 +500,9 @@ Refer to the [GitHub repository ↗](https://github.com/harshil1712/queues-rate-
 
 ## Related resources
 
-* [How Queues works](https://developers.cloudflare.com/queues/reference/how-queues-works/)
-* [Queues Batching and Retries](https://developers.cloudflare.com/queues/configuration/batching-retries/)
-* [Resend ↗](https://resend.com/docs/)
+- [How Queues works](https://developers.cloudflare.com/queues/reference/how-queues-works/)
+- [Queues Batching and Retries](https://developers.cloudflare.com/queues/configuration/batching-retries/)
+- [Resend ↗](https://resend.com/docs/)
 
 Was this helpful?
 

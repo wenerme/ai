@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Anthropic
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5.1/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5.1/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `anthropic/claude-fable-5.1`
 
-* Third-party
+- Third-party
 
 Claude Fable 5.1 is Anthropic's next model in the Fable family, with improvements in agentic coding, long-running agentic workflows, knowledge work, front-end and visual code generation, and finance and analysis tasks. It supports adaptive thinking and a 1M token context window.
 
-| Model Info                                                                          |                                                                                                                              |
-| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens                                                                                                             |
-| Terms and License                                                                   | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                   |
-| More information                                                                    | [link ↗](https://platform.claude.com/docs/en/about-claude/models/overview)                                                   |
-| Request formats                                                                     | Anthropic Messages                                                                                                           |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-fable-5.1) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens |
+| Terms and License | [link ↗](https://www.anthropic.com/legal/commercial-terms) |
+| More information | [link ↗](https://platform.claude.com/docs/en/about-claude/models/overview) |
+| Request formats | Anthropic Messages |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-fable-5.1) |
 
 ## Usage
 
@@ -63,6 +63,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 Use the built-in `json` module:
 
 ```python
@@ -111,6 +112,7 @@ except json.JSONDecodeError as e:
 ```
 
 - To write JSON back out: `json.dump(data, f, indent=2)`.
+````
 
 ```json
 {
@@ -139,7 +141,11 @@ except json.JSONDecodeError as e:
 
 ## Examples
 
-**Multi-turn Conversation** — Continue a conversation with prior assistant context
+<details>
+
+<summary>**Multi-turn Conversation** — Continue a conversation with prior assistant context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -187,6 +193,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Great choice! Your stops depend on which route you take, so here are the two main options:
 
 **Highway 1 / Pacific Coast Highway (scenic, ~10-12 hours with stops, best over 2 days)**
@@ -222,6 +229,7 @@ Great choice! Your stops depend on which route you take, so here are the two mai
 - Fill up on gas before Big Sur; it's expensive and sparse there
 
 Would you like help building a day-by-day itinerary based on how much time you have?
+```
 
 ```json
 {
@@ -253,7 +261,13 @@ Would you like help building a day-by-day itinerary based on how much time you h
 }
 ```
 
-**Streaming Response** — Stream a response for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Stream a response for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -284,6 +298,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 **Recursion** is a technique where a function solves a problem by calling itself on a smaller version of that same problem, until it reaches a simple case it can answer directly.
 
 Every recursive function needs two parts:
@@ -328,6 +343,7 @@ Imagine you're in a long line and want to know your position. You ask the person
 - **Without a base case**, the function calls itself forever (in practice, until the program crashes with a stack overflow).
 - Each recursive call must make progress toward the base case.
 - Recursion is especially natural for problems with self-similar structure: traversing trees, exploring directories, parsing nested expressions, or algorithms like merge sort and binary search.
+````
 
 ```json
 [
@@ -498,9 +514,11 @@ Imagine you're in a long line and want to know your position. You ask the person
 ]
 ```
 
+</details>
+
 ## Parameters
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -532,7 +550,7 @@ role
 
 `string`const: assistant
 
-▶content\[\]
+▶content\[]
 
 `array`
 
@@ -550,9 +568,9 @@ stop\_reason
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5.1/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5.1/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5.1/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5.1/schema-output.json)
 
 Was this helpful?
 

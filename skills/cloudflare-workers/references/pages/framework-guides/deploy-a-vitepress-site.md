@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # VitePress
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-vitepress-site/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-vitepress-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[VitePress ↗](https://vitepress.dev/) is a [static site generator ↗](https://en.wikipedia.org/wiki/Static%5Fsite%5Fgenerator) (SSG) designed for building fast, content-centric websites. VitePress takes your source content written in [Markdown ↗](https://en.wikipedia.org/wiki/Markdown), applies a theme to it, and generates static HTML pages that can be easily deployed anywhere.
+[VitePress ↗](https://vitepress.dev/) is a [static site generator ↗](https://en.wikipedia.org/wiki/Static_site_generator) (SSG) designed for building fast, content-centric websites. VitePress takes your source content written in [Markdown ↗](https://en.wikipedia.org/wiki/Markdown), applies a theme to it, and generates static HTML pages that can be easily deployed anywhere.
 
 In this guide, you will create a new VitePress project and deploy it using Cloudflare Pages.
 
@@ -97,18 +97,18 @@ git push -u origin main
 
 To deploy your site to Pages:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**.
 3. Select the **Pages** tab.
 4. Select **Import an existing Git repository**.
 5. Select the new GitHub repository that you created and then select **Begin setup**.
-6. In the **Build settings** section, select _VitePress_ as your **Framework preset**. Your selection will provide the following information:
+6. In the **Build settings** section, select *VitePress* as your **Framework preset**. Your selection will provide the following information:
 
-| Configuration option | Value               | |  Production branch | main |
-| -------------------- | ------------------- | -------------------- | ---- |
-| Build command        | npx vitepress build |                      |      |
-| Build directory      | .vitepress/dist     |                      |      |
+Configuration option | Value
+| Production branch | `main` |
+| --- | --- |
+| Build command | `npx vitepress build` |
+| Build directory | `.vitepress/dist` |
 
 After configuring your site, you can begin your first deploy. Cloudflare Pages will install `vitepress`, your project dependencies, and build your site, before deploying it.
 

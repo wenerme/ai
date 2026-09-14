@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Device monitoring
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Monitor performance and network status for your organization's [fleet](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/#fleet-status) (all devices with the Cloudflare One Client installed and connected to your Zero Trust organization) or individual [user devices](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/#device-monitoring).
 
@@ -24,7 +24,7 @@ A fleet is a collection of user devices. All devices in a fleet have the Cloudfl
 
 To view fleet status:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Insights** \> **Digital experience**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Insights** > **Digital experience**.
 2. Review the information under **Live analytics**.
 
 ### View metrics
@@ -35,21 +35,21 @@ To view analytics on a per-device level, go to [Device monitoring](https://devel
 
 ### Available metrics
 
-* **Devices connected by colo**: Number of devices connected to a given [Cloudflare data center ↗](https://www.cloudflarestatus.com/).
-* **Connectivity status**: Percentage of devices in a given Cloudflare One Client state.
+- **Devices connected by colo**: Number of devices connected to a given [Cloudflare data center ↗](https://www.cloudflarestatus.com/).
+- **Connectivity status**: Percentage of devices in a given Cloudflare One Client state.
 
-| Status       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Connected    | The Cloudflare One Client has successfully established a connection to the Cloudflare global network.                                                                                                                                                                                                                                                                                                                                                                                 |
-| Disconnected | The Cloudflare One Client has been intentionally or unintentionally disconnected from the Cloudflare global network.                                                                                                                                                                                                                                                                                                                                                                  |
-| Paused       | A user or administrator has taken an explicit action to temporarily turn off WARP, for example by entering an [admin override code](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-admin-override-codes). Paused clients will [auto-connect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#auto-connect) after a timeout period. |
-| Connecting   | The Cloudflare One Client is pending connection, but is actively trying to establish a connection to the Cloudflare global network.                                                                                                                                                                                                                                                                                                                                                   |
-* **Mode**: [Client mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) deployed on the device.
-* **Colo**: Percentage of devices connected to a given Cloudflare data center.
-* **Platform**: Operating system of the device.
-* **Major Version**: Cloudflare One Client version installed on the device.
-* **Device Status Over Time**: Cloudflare One Client connection status over the selected time period.
-* **Connection Methods Over Time**: Client mode used by the device over the selected time period.
+  | Status | Description |
+  | --- | --- |
+  | Connected | The Cloudflare One Client has successfully established a connection to the Cloudflare global network. |
+  | Disconnected | The Cloudflare One Client has been intentionally or unintentionally disconnected from the Cloudflare global network. |
+  | Paused | A user or administrator has taken an explicit action to temporarily turn off WARP, for example by entering an [admin override code](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-admin-override-codes). Paused clients will [auto-connect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#auto-connect) after a timeout period. |
+  | Connecting | The Cloudflare One Client is pending connection, but is actively trying to establish a connection to the Cloudflare global network. |
+- **Mode**: [Client mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) deployed on the device.
+- **Colo**: Percentage of devices connected to a given Cloudflare data center.
+- **Platform**: Operating system of the device.
+- **Major Version**: Cloudflare One Client version installed on the device.
+- **Device Status Over Time**: Cloudflare One Client connection status over the selected time period.
+- **Connection Methods Over Time**: Client mode used by the device over the selected time period.
 
 ## Device monitoring
 
@@ -59,7 +59,7 @@ Review network and device performance for a device enrolled in your fleet.
 
 To view a device's network and device performance metrics:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Team & Resources** \> **Devices** \> **Your devices**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Team & Resources** > **Devices** > **Your devices**.
 2. Select a device > **View details**.
 3. Select the **DEX** tab.
 4. In **Device Monitoring**, scroll down to **Network performance** and **Device Performance**.
@@ -68,19 +68,19 @@ To view a device's network and device performance metrics:
 
 #### Network performance metrics
 
-* **Unique networks over time**: How many unique SSIDs (Wi-Fi network names) the device was connected to.
-* **Network I/O**: How much data the device transferred (uploads and downloads) over the primary network interface.
+- **Unique networks over time**: How many unique SSIDs (Wi-Fi network names) the device was connected to.
+- **Network I/O**: How much data the device transferred (uploads and downloads) over the primary network interface.
 
 #### Device performance metrics
 
-* **Battery percentage and cycles**: Displays battery percentage and [battery cycles ↗](https://support.apple.com/en-us/102888) over time. Use this metric to debug potential performance issues possibly related to battery health or power-saving measures that trigger at low-battery levels.
-* **CPU usage**: CPU utilization over time. Use this metric to debug slow system performance due to high CPU usage.
-* **Memory utilization**: Memory utilization over time. Use this metric to debug performance issues related to an overtaxed memory.
-* **Disk I/O**: Displays number of disk read/write operations over time. Use this metric to debug performance errors due to heavy disk operations.
+- **Battery percentage and cycles**: Displays battery percentage and [battery cycles ↗](https://support.apple.com/en-us/102888) over time. Use this metric to debug potential performance issues possibly related to battery health or power-saving measures that trigger at low-battery levels.
+- **CPU usage**: CPU utilization over time. Use this metric to debug slow system performance due to high CPU usage.
+- **Memory utilization**: Memory utilization over time. Use this metric to debug performance issues related to an overtaxed memory.
+- **Disk I/O**: Displays number of disk read/write operations over time. Use this metric to debug performance errors due to heavy disk operations.
 
 ## Export DEX device state event logs
 
-The log data for all [DEX device state events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/dex%5Fdevice%5Fstate%5Fevents/) can be exported to [R2](https://developers.cloudflare.com/r2/), a cloud bucket, or a SIEM via [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/).
+The log data for all [DEX device state events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/dex_device_state_events/) can be exported to [R2](https://developers.cloudflare.com/r2/), a cloud bucket, or a SIEM via [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/).
 
 Was this helpful?
 
@@ -91,5 +91,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/#page","headline":"Device monitoring · Cloudflare One docs","description":"Device monitoring in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/#page","headline":"Device monitoring · Cloudflare One docs","description":"Device monitoring in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

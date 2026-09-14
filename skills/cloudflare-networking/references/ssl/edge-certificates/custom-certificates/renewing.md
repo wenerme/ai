@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Renewal and expiration
 
-Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/renewing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/renewing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Renew custom certificates
 
@@ -28,7 +28,9 @@ If you are on an Enterprise plan and want to renew a custom (modern) certificate
 
 ## Expired certificates
 
-If a valid replacement - covering some or all of the SANs in the expiring custom certificate - is already available, Cloudflare will remove the expiring custom certificate in the 24 hours before expiration. There is no expected downtime due to certificate transition.
+If a valid replacement - covering some or all of the SANs
+
+ in the expiring custom certificate - is already available, Cloudflare will remove the expiring custom certificate in the 24 hours before expiration. There is no expected downtime due to certificate transition.
 
 If no valid replacement is available, Cloudflare will remove the custom certificate after it expires.
 
@@ -44,8 +46,7 @@ For example if you have a custom certificate made of an ECSDA and a RSA certific
 
 If you no longer want to use your custom certificate but still want your website or application to be covered with SSL/TLS, you can do the following:
 
-1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+1. In the Cloudflare dashboard, go to the **Edge Certificates** page. [Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. Make sure there is already an active [universal](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) or [advanced](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) certificate covering the same hostnames.
 3. Delete your custom certificate.
 

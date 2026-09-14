@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Access settings
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/)
-* [Session management](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/)
-* [Require Access protection](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/require-access-protection/)
-* [Independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/)
+- [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/)
+- [Session management](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/)
+- [Require Access protection](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/require-access-protection/)
+- [Independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/)
 
 Was this helpful?
 

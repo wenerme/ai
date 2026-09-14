@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # ip.src.lat
 
-`ip.src.lat` `String`
+`ip.src.lat``String`
 
 The latitude associated with the client IP address.
 
@@ -19,8 +19,8 @@ Example value:
 ```
 
 Categories:
-* Request
-* Geolocation
+- Request
+- Geolocation
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Require WARP
 
-Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-warp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-warp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -22,22 +22,22 @@ Cloudflare One enables you to restrict access to your applications to devices ru
 
 ## Prerequisites
 
-* Cloudflare One Client is [deployed](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/) on the device. For a list of supported modes and operating systems, refer to [Cloudflare One Client Checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/).
+- Cloudflare One Client is [deployed](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/) on the device. For a list of supported modes and operating systems, refer to [Cloudflare One Client Checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/).
 
-## 1\. Enable the WARP check
+## 1. Enable the WARP check
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
-2. Ensure that _Allow Secure Web Gateway to proxy traffic_\* is enabled.
-3. Go to **Reusable components** \> **Posture checks**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
+2. Ensure that *Allow Secure Web Gateway to proxy traffic*\* is enabled.
+3. Go to **Reusable components** > **Posture checks**.
 4. In **Cloudflare One Client checks**, select **Add a check**.
 5. Select **WARP**, then select **Save**.
 
-## 2\. Add the check to an Access policy
+## 2. Add the check to an Access policy
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Locate the application for which you want to require WARP. Select **Configure**.
 3. In the **Policies** tab, create a new Access policy or edit an existing policy.
-4. In the policy builder, add an Include or Require rule which uses the _WARP_ selector. Save the policy.
+4. In the policy builder, add an Include or Require rule which uses the *WARP* selector. Save the policy.
 5. Save the Access application.
 
 Before granting access to the application, the policy will check that the device is running the Cloudflare One Client.

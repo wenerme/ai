@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Select SDK(s)
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/sdk-selection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/sdk-selection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -22,7 +22,9 @@ If you have not already, we recommend trying out our [demo app ↗](https://exam
 
 RealtimeKit provides two ways to build real-time media applications:
 
-**UI Kit**: Recommended UI library of pre-built, customizable components for rapid development — sits on top of the Core SDK.
+**UI Kit**:
+
+Recommended UI library of pre-built, customizable components for rapid development — sits on top of the Core SDK.
 
 **Core SDK**: Client SDK built on top of Realtime SFU that provides a full set of APIs for managing video calls, from joining and leaving sessions to muting, unmuting, and toggling audio and video.
 
@@ -34,31 +36,31 @@ When you use our UI Kit, you also get access to the core SDK with it, which can 
 
 RealtimeKit support all the popular frameworks for web and mobile platforms. Please select the Platform and Framework that you are building on.
 
-| Framework/Library                  | Core SDK                                                                                                     | UI Kit                                                                                                                 |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-| Web-Components (HTML, Vue, Svelte) | [@cloudflare/realtimekit ↗](https://www.npmjs.com/package/@cloudflare/realtimekit)                           | [@cloudflare/realtimekit-ui ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-ui)                               |
-| React                              | [@cloudflare/realtimekit-react ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-react)               | [@cloudflare/realtimekit-react-ui ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-react-ui)                   |
-| Angular                            | [@cloudflare/realtimekit ↗](https://www.npmjs.com/package/@cloudflare/realtimekit)                           | [@cloudflare/realtimekit-angular-ui ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-angular-ui)               |
-| Android                            | [com.cloudflare.realtimekit:core ↗](https://central.sonatype.com/artifact/com.cloudflare.realtimekit/core)   | [com.cloudflare.realtimekit:ui-android ↗](https://central.sonatype.com/artifact/com.cloudflare.realtimekit/ui-android) |
-| iOS                                | [RealtimeKit ↗](https://github.com/dyte-in/RealtimeKitCoreiOS)                                               | [RealtimeKitUI ↗](https://github.com/dyte-in/RealtimeKitUI)                                                            |
-| React Native                       | [@cloudflare/realtimekit-react-native ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-react-native) | [@cloudflare/realtimekit-react-native-ui ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-react-native-ui)     |
+| Framework/Library | Core SDK | UI Kit |
+| --- | --- | --- |
+| Web-Components (HTML, Vue, Svelte) | [@cloudflare/realtimekit ↗](https://www.npmjs.com/package/@cloudflare/realtimekit) | [@cloudflare/realtimekit-ui ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-ui) |
+| React | [@cloudflare/realtimekit-react ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-react) | [@cloudflare/realtimekit-react-ui ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-react-ui) |
+| Angular | [@cloudflare/realtimekit ↗](https://www.npmjs.com/package/@cloudflare/realtimekit) | [@cloudflare/realtimekit-angular-ui ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-angular-ui) |
+| Android | [com.cloudflare.realtimekit:core ↗](https://central.sonatype.com/artifact/com.cloudflare.realtimekit/core) | [com.cloudflare.realtimekit:ui-android ↗](https://central.sonatype.com/artifact/com.cloudflare.realtimekit/ui-android) |
+| iOS | [RealtimeKit ↗](https://github.com/dyte-in/RealtimeKitCoreiOS) | [RealtimeKitUI ↗](https://github.com/dyte-in/RealtimeKitUI) |
+| React Native | [@cloudflare/realtimekit-react-native ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-react-native) | [@cloudflare/realtimekit-react-native-ui ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-react-native-ui) |
 
 ### Technical comparison
 
 Here is a comprehensive guide to help you choose the right option for your project. This comparison will help you understand the trade-offs between using the Core SDK alone versus combining it with the UI Kit.
 
-| Feature                | Core SDK only                                                          | UI Kit                                                                   |
-| ---------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| **What you get**       | Core APIs for managing media, host controls, chat, recording and more. | prebuilt UI components along with Core APIs.                             |
-| **Bundle size**        | Minimal (media/network only)                                           | Larger (includes Core SDK + UI components)                               |
-| **Time to ship**       | Longer (build UI from scratch). Typically 5-6 days.                    | Faster (UI Kit handles Core SDK calls). Can build an ship under 2 hours. |
-| **Customization**      | Complete control, manual implementation. Need to build you own UI      | High level of customization with plug and play component library.        |
-| **State management**   | Needs to be manually handled.                                          | Automatic, UI Kit takes care of state management.                        |
-| **UI flexibility**     | Unlimited (build anything)                                             | High (component library + add-ons)                                       |
-| **Learning curve**     | Steeper (learn Core SDK APIs directly)                                 | Gentler (declarative components wrap Core SDK)                           |
-| **Maintenance**        | More code to maintain. Larger project.                                 | Less code, component updates included                                    |
-| **Design system**      | Headless, integrates with any design system.                           | Allows you to provide your theme.                                        |
-| **Access to Core SDK** | Direct API access                                                      | Direct API access + UI components                                        |
+| Feature | Core SDK only | UI Kit |
+| --- | --- | --- |
+| **What you get** | Core APIs for managing media, host controls, chat, recording and more. | prebuilt UI components along with Core APIs. |
+| **Bundle size** | Minimal (media/network only) | Larger (includes Core SDK + UI components) |
+| **Time to ship** | Longer (build UI from scratch). Typically 5-6 days. | Faster (UI Kit handles Core SDK calls). Can build an ship under 2 hours. |
+| **Customization** | Complete control, manual implementation. Need to build you own UI | High level of customization with plug and play component library. |
+| **State management** | Needs to be manually handled. | Automatic, UI Kit takes care of state management. |
+| **UI flexibility** | Unlimited (build anything) | High (component library + add-ons) |
+| **Learning curve** | Steeper (learn Core SDK APIs directly) | Gentler (declarative components wrap Core SDK) |
+| **Maintenance** | More code to maintain. Larger project. | Less code, component updates included |
+| **Design system** | Headless, integrates with any design system. | Allows you to provide your theme. |
+| **Access to Core SDK** | Direct API access | Direct API access + UI components |
 
 Note
 

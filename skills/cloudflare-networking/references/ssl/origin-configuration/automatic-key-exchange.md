@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Automatic key exchange to origins
 
-Last updated Jul 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/automatic-key-exchange/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/automatic-key-exchange/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Automatic key exchange allows Cloudflare to establish faster connections to origin servers by predicting which key agreements origins support. When establishing a TLS 1.3 connection to the origin, Cloudflare sends a key share for the predicted key agreement in the initial ClientHello, which can remove one network round trip by avoiding a [HelloRetryRequest ↗](https://www.rfc-editor.org/rfc/rfc8446.html#section-4.1.4).
 
@@ -22,9 +22,9 @@ This feature is separate from your [SSL/TLS encryption mode](https://developers.
 
 Automatic key exchange applies when the connection meets these requirements:
 
-* Your zone uses **Full**, **Full (strict)**, or **Strict (SSL-Only Origin Pull)** mode.
-* Your origin negotiates TLS 1.3 with Cloudflare.
-* Your zone does not connect through Cloudflare Tunnel.
+- Your zone uses **Full**, **Full (strict)**, or **Strict (SSL-Only Origin Pull)** mode.
+- Your origin negotiates TLS 1.3 with Cloudflare.
+- Your zone does not connect through Cloudflare Tunnel.
 
 Automatic key exchange is available on all plans. It only affects new TLS connections. Requests that reuse an existing connection do not perform another key exchange.
 
@@ -55,8 +55,7 @@ Cloudflare uses standardized `X25519MLKEM768` for automatic post-quantum selecti
 
 To configure automatic key exchange in the dashboard:
 
-1. In the Cloudflare dashboard, go to the **SSL/TLS Overview** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
+1. In the Cloudflare dashboard, go to the **SSL/TLS Overview** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
 2. Under **Origin connection & post-quantum encryption**, turn **Automatic key exchange** on or off.
 3. Select any **Compliance requirements**. These requirements apply only to TLS 1.3 connections. Leave both options unselected to allow all supported key agreements.
 
@@ -68,10 +67,10 @@ Automatic key exchange is on for all existing zones and on by default for new zo
 
 The setting has these options:
 
-| Setting | Behavior                                                                                                             |
-| ------- | -------------------------------------------------------------------------------------------------------------------- |
-| On      | Cloudflare scans your origins and sends the zone's preferred key share.                                              |
-| Off     | Cloudflare does not scan or reorder key shares. It uses the default order for your selected compliance requirements. |
+| Setting | Behavior |
+| --- | --- |
+| On | Cloudflare scans your origins and sends the zone's preferred key share. |
+| Off | Cloudflare does not scan or reorder key shares. It uses the default order for your selected compliance requirements. |
 
 Turning off automatic key exchange does not change your compliance requirements.
 
@@ -81,18 +80,18 @@ Compliance requirements apply only to TLS 1.3 connections. They filter the key a
 
 The available selections are:
 
-| Selection                                       | API value         | Behavior                                                    |
-| ----------------------------------------------- | ----------------- | ----------------------------------------------------------- |
-| No selection                                    | \[\]              | Allows supported classical and post-quantum key agreements. |
-| Post-quantum hybrid                             | \["pqh"\]         | Allows only hybrid post-quantum key agreements.             |
-| Federal Information Processing Standards (FIPS) | \["fips"\]        | Allows only key agreements that meet FIPS requirements.     |
-| Post-quantum hybrid and FIPS                    | \["pqh", "fips"\] | Allows only key agreements that satisfy both requirements.  |
+| Selection | API value | Behavior |
+| --- | --- | --- |
+| No selection | `[]` | Allows supported classical and post-quantum key agreements. |
+| Post-quantum hybrid | `["pqh"]` | Allows only hybrid post-quantum key agreements. |
+| Federal Information Processing Standards (FIPS) | `["fips"]` | Allows only key agreements that meet FIPS requirements. |
+| Post-quantum hybrid and FIPS | `["pqh", "fips"]` | Allows only key agreements that satisfy both requirements. |
 
 Cloudflare rejects a combination if the selected requirements have no key agreement in common. Changing a compliance requirement stops any active rollout. A later scan selects from the new allowed set.
 
 ## Origin Post-Quantum Encryption API
 
-The [Origin Post-Quantum Encryption API](https://developers.cloudflare.com/api/resources/origin%5Fpost%5Fquantum%5Fencryption/methods/update/) remains available. Requests to this API are no-ops and do not change a zone's post-quantum key agreement behavior. Cloudflare plans to deprecate this API, but a deprecation date has not been established.
+The [Origin Post-Quantum Encryption API](https://developers.cloudflare.com/api/resources/origin_post_quantum_encryption/methods/update/) remains available. Requests to this API are no-ops and do not change a zone's post-quantum key agreement behavior. Cloudflare plans to deprecate this API, but a deprecation date has not been established.
 
 Use **Automatic key exchange** and **Compliance requirements** to configure post-quantum key agreement behavior.
 

@@ -12,14 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # aws-sdk-js
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You must [generate an Access Key](https://developers.cloudflare.com/r2/api/tokens/) before getting started. All examples will utilize `access_key_id` and `access_key_secret` variables which represent the **Access Key ID** and **Secret Access Key** values you generated.
 
 
+
 If you are interested in the newer version of the AWS JavaScript SDK visit this [dedicated aws-sdk-js-v3 example page](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js-v3/).
 
-JavaScript or TypeScript users may continue to use the [aws-sdk ↗](https://www.npmjs.com/package/aws-sdk) npm package as per normal. You must pass in the R2 configuration credentials when instantiating your `S3` service client:
+JavaScript or TypeScript users may continue to use the [`aws-sdk` ↗](https://www.npmjs.com/package/aws-sdk) npm package as per normal. You must pass in the R2 configuration credentials when instantiating your `S3` service client:
 
 ```ts
 import S3 from "aws-sdk/clients/s3.js";
@@ -142,8 +143,8 @@ const putUrl = await s3.getSignedUrlPromise("putObject", {
 
 When a client uses this presigned URL, they must:
 
-* Make the request from an allowed origin (enforced by CORS)
-* Include the `Content-Type: image/png` header (enforced by the signature)
+- Make the request from an allowed origin (enforced by CORS)
+- Include the `Content-Type: image/png` header (enforced by the signature)
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Build and deploy Artifacts repos
 
-Last updated Aug 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/artifacts/guides/build-and-deploy-on-push/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/guides/build-and-deploy-on-push/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Artifacts events can build and deploy projects stored in Artifacts repos. When a user or agent pushes a commit, the event triggers a [Workflow instance](https://developers.cloudflare.com/workflows/build/trigger-workflows/).
 
@@ -20,12 +20,12 @@ Within the Workflow, you define a continuous integration (CI) pipeline with the 
 
 This is useful when you need to:
 
-* Automatically build and deploy application code stored in Artifacts.
-* Run linting, type checking, tests, and other checks on every push.
-* Reuse dependencies when the lockfile (i.e. `pnpm-lock.yaml`) has not changed.
-* Stop deployment when a check or build fails.
-* Restrict API token access to the deployment step.
-* Deploy the output to a [Worker](https://developers.cloudflare.com/workers/) or a [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/) User Worker.
+- Automatically build and deploy application code stored in Artifacts.
+- Run linting, type checking, tests, and other checks on every push.
+- Reuse dependencies when the lockfile (i.e. `pnpm-lock.yaml`) has not changed.
+- Stop deployment when a check or build fails.
+- Restrict API token access to the deployment step.
+- Deploy the output to a [Worker](https://developers.cloudflare.com/workers/) or a [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/) User Worker.
 
 ## How it works
 
@@ -59,8 +59,9 @@ Deploy Worker
 
 Use the `@cloudflare/ci` SDK to define the CI steps. The SDK provides two tools to help you build the pipeline:
 
-* **Runners** — each `runner()` call spins up an isolated sandbox and executes a shell command. You use the same commands you already run locally or in another CI system. Each runner captures its own logs, status, and output files.
-* **Cache** — the `cache` option on a runner caches installed dependencies so that later runs do not reinstall them. Pass the files that determine the dependencies, such as `pnpm-lock.yaml`, to `cache.inputs`. When those files have not changed, the SDK restores the cached result instead of running the command again.
+- **Runners** — each `runner()` call spins up an isolated sandbox and executes a shell command. You use the same commands you already run locally or in another CI system. Each runner captures its own logs, status, and output files.
+- **Cache** — the `cache` option on a runner caches installed dependencies so that later runs do not reinstall them. Pass the files that determine the dependencies, such as `pnpm-lock.yaml`, to `cache.inputs`. When those files have not changed, the SDK restores the cached result instead of running the command again.
+
 ![Diagram showing three sequential commits: commit 1 has a cache miss so the install step runs and its sandbox snapshot is cached; commit 2 has an unchanged pnpm-lock.yaml so the cache key matches and the cached snapshot is served, skipping install; commit 3 has a changed pnpm-lock.yaml so the cache key misses and install runs again.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1500,height=620,format=svg/_astro/snapshot-cache-flow.DfA5jLQM.svg)
 
 A cached runner takes a [snapshot](https://developers.cloudflare.com/sandbox/api/backups/) of its sandbox, which later runners reuse. Multiple runners can branch from the same cached result — for example, lint, type-check, and test runners can all reuse one cached install.
@@ -88,6 +89,8 @@ Start build
 A failed runner retries according to its [step configuration](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/#retry-steps), where you can define the number of retry attempts, backoff schedule, and timeouts. Runners that depend on a previous step do not start until its retry succeeds. If the configured retry limit is reached, the Workflow terminates in an `Errored` state.
 
 Here is an example of how to set up your Workflow to use runners and cache to install dependencies, run checks, build the project, and deploy the Worker:
+
+*src/index.jsjs*
 
 ```js
 import { CIWorkflow } from "./src/pipeline";
@@ -118,6 +121,8 @@ export class CI extends CIWorkflow {
 	}
 }
 ```
+
+*src/index.tsts*
 
 ```ts
 import { CIWorkflow } from "./src/pipeline";
@@ -170,11 +175,11 @@ When a user or agent pushes a commit to an Artifacts repo, Artifacts emits an ev
 
 This guide defines those CI steps in a Workflow class named `CIWorkflow`. To start this Workflow automatically after each push, add an `cf.artifacts.repo.pushed` trigger to your Wrangler configuration. You should also include:
 
-* R2 binding: the bucket where your the snapshot of your cached dependencies will be stored
-* Container (and Durable Object) binding: create a binding to your container to access sandboxes during each `runner()` step
-* Workflows binding
-* Artifacts binding
-* Observability (optional): inspect your CI jobs as a Workflow instance with [Workers observability](https://developers.cloudflare.com/workers/observability/)
+- R2 binding: the bucket where your the snapshot of your cached dependencies will be stored
+- Container (and Durable Object) binding: create a binding to your container to access sandboxes during each `runner()` step
+- Workflows binding
+- Artifacts binding
+- Observability (optional): inspect your CI jobs as a Workflow instance with [Workers observability](https://developers.cloudflare.com/workers/observability/)
 
 ```jsonc
 {
@@ -309,7 +314,7 @@ If you are running CI for a User Worker, include `"dispatch_namespace": "<DISPAT
 
 The `[observability]` setting in your Wrangler configuration records the status and logs for each pipeline run. To identify which stage failed, inspect the instance in the Workflows dashboard:
 
-[Go to **Workflows** ↗](https://dash.cloudflare.com/?to=/:account/workers/workflows)
+[Go to **Workflows** ↗](https://dash.cloudflare.com/?to=/:account/workers/workflows)
 
 Each runner displays its own input, output, and status, so you can identify the command that failed. When a runner fails, the Workflow records its output and does not start stages that need its files.
 
@@ -351,7 +356,7 @@ deploy D
 
 deploy E
 
-deploy per repo
+*deploy per repo*
 
 To run the same Workflow for every repo in a namespace, drop `repoName` from the trigger `filter` and keep only the `namespace`:
 

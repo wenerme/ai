@@ -12,12 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Export to Axiom
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/axiom/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/axiom/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Axiom is a serverless log analytics platform that helps you store, search, and analyze massive amounts of data. By exporting your Cloudflare Workers application telemetry to Axiom, you can:
 
-* Store and query logs and traces at scale
-* Create dashboards and alerts to monitor your Workers
+- Store and query logs and traces at scale
+- Create dashboards and alerts to monitor your Workers
+
 ![Trace view with timing information displayed on a timeline](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3773,height=1235,format=webp/_astro/axiom-example.BRPbEoGh.png)
 
 This guide will walk you through exporting OpenTelemetry-compliant traces and logs to Axiom from your Cloudflare Worker application
@@ -26,9 +27,9 @@ This guide will walk you through exporting OpenTelemetry-compliant traces and lo
 
 Before you begin, ensure you have:
 
-* An active [Axiom account ↗](https://app.axiom.co/register) (free tier available)
-* A deployed Worker that you want to monitor
-* An Axiom dataset to send data to
+- An active [Axiom account ↗](https://app.axiom.co/register) (free tier available)
+- A deployed Worker that you want to monitor
+- An Axiom dataset to send data to
 
 ## Step 1: Create a dataset
 
@@ -46,9 +47,9 @@ If you don't already have a dataset to send data to:
 2. Click on **API Tokens**
 3. Click **Create API Token**
 4. Configure your API token:
-  * **Name**: Enter a descriptive name (e.g., `cloudflare-workers-otel`)
-  * **Permissions**: Select **Ingest** permission (required for sending telemetry data)
-  * **Datasets**: Choose which datasets this token can write to, or select **All Datasets**
+   - **Name**: Enter a descriptive name (e.g., `cloudflare-workers-otel`)
+   - **Permissions**: Select **Ingest** permission (required for sending telemetry data)
+   - **Datasets**: Choose which datasets this token can write to, or select **All Datasets**
 5. Click **Create**
 6. **Important**: Copy the API token immediately and store it securely - you won't be able to see it again
 
@@ -62,24 +63,24 @@ Now you'll create destinations in the Cloudflare dashboard that point to Axiom.
 
 Axiom provides separate OTLP endpoints for traces and logs:
 
-* **Traces**: `https://api.axiom.co/v1/traces`
-* **Logs**: `https://api.axiom.co/v1/logs`
+- **Traces**: `https://api.axiom.co/v1/traces`
+- **Logs**: `https://api.axiom.co/v1/logs`
 
 ### Configure trace or logs destination
 
 1. Navigate to your Cloudflare account's [Workers Observability ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability/pipelines) section
 2. Click **Add destination**
 3. Configure your trace destination:
-  * **Destination Name**: `axiom-traces` (or any descriptive name)
-  * **Destination Type**: Select **Traces**
-  * **OTLP Endpoint**: `https://api.axiom.co/v1/traces` (or `/v1/logs`)
-  * **Custom Headers**: Add two required headers:
-    * Authentication header
-      * Header name: `Authorization`
-      * Header value: `Bearer <your-api-token>`
-    * Dataset header:
-      * Header name: `X-Axiom-Dataset`
-      * Header value: Your dataset name (e.g., `cloudflare-workers-otel`)
+   - **Destination Name**: `axiom-traces` (or any descriptive name)
+   - **Destination Type**: Select **Traces**
+   - **OTLP Endpoint**: `https://api.axiom.co/v1/traces` (or `/v1/logs`)
+   - **Custom Headers**: Add two required headers:
+     - Authentication header
+       - Header name: `Authorization`
+       - Header value: `Bearer <your-api-token>`
+     - Dataset header:
+       - Header name: `X-Axiom-Dataset`
+       - Header value: Your dataset name (e.g., `cloudflare-workers-otel`)
 4. Click **Save**
 
 ## Step 3: Configure your Worker

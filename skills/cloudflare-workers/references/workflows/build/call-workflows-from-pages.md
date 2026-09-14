@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Call Workflows from Pages
 
-Last updated Apr 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workflows/build/call-workflows-from-pages/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/call-workflows-from-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use Static Assets
 
@@ -59,7 +59,9 @@ service = "workflows-starter"
 
 Your Worker can expose a specific method (or methods) that only other Workers or Pages Functions can call over the Service Binding.
 
-In the following example, we expose a specific `createInstance` method that accepts our `Payload` and returns the [InstanceStatus](https://developers.cloudflare.com/workflows/build/workers-api/#instancestatus) from the Workflows API:
+In the following example, we expose a specific `createInstance` method that accepts our `Payload` and returns the [`InstanceStatus`](https://developers.cloudflare.com/workflows/build/workers-api/#instancestatus) from the Workflows API:
+
+*index.jsjs*
 
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
@@ -82,6 +84,8 @@ export default class WorkflowsService extends WorkerEntrypoint {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 import { WorkerEntrypoint } from "cloudflare:workers";
@@ -115,6 +119,8 @@ export default class WorkflowsService extends WorkerEntrypoint<Env> {
 
 Your Pages Function would resemble the following:
 
+*functions/request.jsjs*
+
 ```js
 export const onRequest = async (context) => {
 	// This payload could be anything from within your app or from your frontend
@@ -122,6 +128,8 @@ export const onRequest = async (context) => {
 	return context.env.WORKFLOWS_SERVICE.createInstance(payload);
 };
 ```
+
+*functions/request.tsts*
 
 ```ts
 interface Env {
@@ -147,6 +155,8 @@ Service Bindings don't require you to expose a public endpoint from your Worker,
 
 An alternative to setting up a Service Binding is to call the Worker over HTTP by using the Workflows [Workers API](https://developers.cloudflare.com/workflows/build/workers-api/#workflow) to `create` a new Workflow instance for each incoming HTTP call to the Worker:
 
+*index.jsjs*
+
 ```js
 // This is in the same file as your Workflow definition
 export default {
@@ -161,6 +171,8 @@ export default {
 	},
 };
 ```
+
+*index.tsts*
 
 ```ts
 // This is in the same file as your Workflow definition
@@ -179,6 +191,8 @@ export default {
 
 Your [Pages Function](https://developers.cloudflare.com/pages/functions/get-started/) can then make a regular `fetch` call to the Worker:
 
+*functions/request.jsjs*
+
 ```js
 export const onRequest = async (context) => {
 	// Other code
@@ -191,6 +205,8 @@ export const onRequest = async (context) => {
 	return Response.json(instanceStatus);
 };
 ```
+
+*functions/request.tsts*
 
 ```ts
 export const onRequest: PagesFunction<Env> = async (context) => {
@@ -209,9 +225,9 @@ You can also choose to authenticate these requests by passing a shared secret in
 
 ### Next steps
 
-* Learn more about how to programmatically call and trigger Workflows from the [Workers API](https://developers.cloudflare.com/workflows/build/workers-api/)
-* Understand how to send [events and parameters](https://developers.cloudflare.com/workflows/build/events-and-parameters/) when triggering a Workflow
-* Review the [Rules of Workflows](https://developers.cloudflare.com/workflows/build/rules-of-workflows/) and best practices for writing Workflows
+- Learn more about how to programmatically call and trigger Workflows from the [Workers API](https://developers.cloudflare.com/workflows/build/workers-api/)
+- Understand how to send [events and parameters](https://developers.cloudflare.com/workflows/build/events-and-parameters/) when triggering a Workflow
+- Review the [Rules of Workflows](https://developers.cloudflare.com/workflows/build/rules-of-workflows/) and best practices for writing Workflows
 
 Was this helpful?
 

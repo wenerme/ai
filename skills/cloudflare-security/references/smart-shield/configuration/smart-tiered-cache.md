@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Smart Tiered Cache
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/smart-shield/configuration/smart-tiered-cache/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/smart-shield/configuration/smart-tiered-cache/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Availability
 

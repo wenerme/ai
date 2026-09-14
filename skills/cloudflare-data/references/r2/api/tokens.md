@@ -12,25 +12,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Authentication
 
-Last updated Aug 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/api/tokens/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/api/tokens/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can generate an API token to serve as the Access Key for usage with existing S3-compatible SDKs or XML APIs.
 
 Note
 
-This page contains instructions on generating API tokens _specifically_ for R2\. Note that this is different from generating API tokens for other services, as documented in [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
+This page contains instructions on generating API tokens *specifically* for R2. Note that this is different from generating API tokens for other services, as documented in [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
 
 You must purchase R2 before you can generate an API token.
 
 To create an API token:
 
-1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
+1. In the Cloudflare dashboard, go to the **R2 object storage** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Under the **Account Details** section, select **Manage** next to **API Tokens**.
 3. Choose to create either:
-
-  * **Create Account API token** \- These tokens are tied to the Cloudflare account itself and can be used by any authorized system or user. Only users with the Super Administrator role can view or create them. These tokens remain valid until manually revoked.
-  * **Create User API token** \- These tokens are tied to your individual Cloudflare user. They inherit your personal permissions and become inactive if your user is removed from the account.
+   - **Create Account API token** - These tokens are tied to the Cloudflare account itself and can be used by any authorized system or user. Only users with the Super Administrator role can view or create them. These tokens remain valid until manually revoked.
+   - **Create User API token** - These tokens are tied to your individual Cloudflare user. They inherit your personal permissions and become inactive if your user is removed from the account.
 4. Under **Permissions**, choose a permission types for your token. Refer to [Permissions](#permissions) for information about each option.
 5. (Optional) If you select the **Object Read and Write** or **Object Read** permissions, you can scope your token to a set of buckets.
 6. Select **Create Account API token** or **Create User API token**.
@@ -47,9 +45,9 @@ Find your [account ID in the Cloudflare dashboard](https://developers.cloudflare
 
 Buckets created with jurisdictions must be accessed via jurisdiction-specific endpoints:
 
-* European Union (EU): `https://<ACCOUNT_ID>.eu.r2.cloudflarestorage.com`
-* FedRAMP: `https://<ACCOUNT_ID>.fedramp.r2.cloudflarestorage.com`
-* United States (US): `https://<ACCOUNT_ID>.us.r2.cloudflarestorage.com`
+- European Union (EU): `https://<ACCOUNT_ID>.eu.r2.cloudflarestorage.com`
+- FedRAMP: `https://<ACCOUNT_ID>.fedramp.r2.cloudflarestorage.com`
+- United States (US): `https://<ACCOUNT_ID>.us.r2.cloudflarestorage.com`
 
 Caution
 
@@ -57,17 +55,17 @@ Jurisdictional buckets can only be accessed via the corresponding jurisdictional
 
 ## Permissions
 
-| Permission          | Description                                                                                                                                                                          |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Admin Read & Write  | Allows the ability to create, list, and delete buckets, edit bucket configuration, read, write, and list objects, and read and write to data catalog tables and associated metadata. |
-| Admin Read only     | Allows the ability to list buckets and view bucket configuration, read and list objects, and read from the data catalog tables and associated metadata.                              |
-| Object Read & Write | Allows the ability to read, write, and list objects in specific buckets.                                                                                                             |
-| Object Read only    | Allows the ability to read and list objects in specific buckets.                                                                                                                     |
+| Permission | Description |
+| --- | --- |
+| Admin Read & Write | Allows the ability to create, list, and delete buckets, edit bucket configuration, read, write, and list objects, and read and write to data catalog tables and associated metadata. |
+| Admin Read only | Allows the ability to list buckets and view bucket configuration, read and list objects, and read from the data catalog tables and associated metadata. |
+| Object Read & Write | Allows the ability to read, write, and list objects in specific buckets. |
+| Object Read only | Allows the ability to read and list objects in specific buckets. |
 
 Considerations
 
-* [R2 Data Catalog](https://developers.cloudflare.com/r2-data-catalog/) requires an **Admin Read & Write** or **Admin Read only** permission. Read-only catalog operations (such as listing namespaces, loading tables, and querying data) work with **Admin Read only**, while write operations (such as creating or dropping tables and committing transactions) require **Admin Read & Write**. For details, refer to [Authenticate your Iceberg engine](https://developers.cloudflare.com/r2-data-catalog/manage-catalogs/#authenticate-your-iceberg-engine).
-* The **Object Read & Write** and **Object Read only** permissions are only supported by the [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/), not the [Cloudflare REST API](https://developers.cloudflare.com/api/resources/r2/).
+- [R2 Data Catalog](https://developers.cloudflare.com/r2-data-catalog/) requires an **Admin Read & Write** or **Admin Read only** permission. Read-only catalog operations (such as listing namespaces, loading tables, and querying data) work with **Admin Read only**, while write operations (such as creating or dropping tables and committing transactions) require **Admin Read & Write**. For details, refer to [Authenticate your Iceberg engine](https://developers.cloudflare.com/r2-data-catalog/manage-catalogs/#authenticate-your-iceberg-engine).
+- The **Object Read & Write** and **Object Read only** permissions are only supported by the [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/), not the [Cloudflare REST API](https://developers.cloudflare.com/api/resources/r2/).
 
 ## Create API tokens via API
 
@@ -91,9 +89,9 @@ A specific bucket is represented as:
 "com.cloudflare.edge.r2.bucket.<ACCOUNT_ID>_<JURISDICTION>_<BUCKET_NAME>": "*"
 ```
 
-* `ACCOUNT_ID`: Refer to [Find zone and account IDs](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/#find-account-id-workers-and-pages).
-* `JURISDICTION`: The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#available-jurisdictions) where the R2 bucket lives. For buckets not created in a specific jurisdiction this value will be `default`.
-* `BUCKET_NAME`: The name of the bucket your Access Policy applies to.
+- `ACCOUNT_ID`: Refer to [Find zone and account IDs](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/#find-account-id-workers-and-pages).
+- `JURISDICTION`: The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#available-jurisdictions) where the R2 bucket lives. For buckets not created in a specific jurisdiction this value will be `default`.
+- `BUCKET_NAME`: The name of the bucket your Access Policy applies to.
 
 All buckets in an account are represented as:
 
@@ -103,19 +101,21 @@ All buckets in an account are represented as:
 }
 ```
 
-* `ACCOUNT_ID`: Refer to [Find zone and account IDs](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/#find-account-id-workers-and-pages).
+- `ACCOUNT_ID`: Refer to [Find zone and account IDs](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/#find-account-id-workers-and-pages).
 
 #### Permission groups
 
 Determine what [permission groups](https://developers.cloudflare.com/fundamentals/api/how-to/create-via-api/#permission-groups) should be applied.
 
-| Permission group                     | Resource | Description                                                                                                    | |  Workers R2 Storage Write | Account | Can create, delete, and list buckets, edit bucket configuration, and read, write, and list objects. |
-| ------------------------------------ | -------- | -------------------------------------------------------------------------------------------------------------- | --------------------------- | ------- | --------------------------------------------------------------------------------------------------- |
-| Workers R2 Storage Read              | Account  | Can list buckets and view bucket configuration, and read and list objects.                                     |                             |         |                                                                                                     |
-| Workers R2 Storage Bucket Item Write | Bucket   | Can read, write, and list objects in buckets.                                                                  |                             |         |                                                                                                     |
-| Workers R2 Storage Bucket Item Read  | Bucket   | Can read and list objects in buckets.                                                                          |                             |         |                                                                                                     |
-| Workers R2 Data Catalog Write        | Account  | Can read from and write to data catalogs. This permission allows access to the Iceberg REST catalog interface. |                             |         |                                                                                                     |
-| Workers R2 Data Catalog Read         | Account  | Can read from data catalogs. This permission allows read-only access to the Iceberg REST catalog interface.    |                             |         |                                                                                                     |
+Permission group | | | | | Resource | | | | | Description | | | |
+
+| `Workers R2 Storage Write` | | | | | Account | | | | | Can create, delete, and list buckets, edit bucket configuration, and read, write, and list objects. | | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `Workers R2 Storage Read` | | | | | Account | | | | | Can list buckets and view bucket configuration, and read and list objects. | | | | |
+| `Workers R2 Storage Bucket Item Write` | | | | | Bucket | | | | | Can read, write, and list objects in buckets. | | | | |
+| `Workers R2 Storage Bucket Item Read` | | | | | Bucket | | | | | Can read and list objects in buckets. | | | | |
+| `Workers R2 Data Catalog Write` | | | | | Account | | | | | Can read from and write to data catalogs. This permission allows access to the Iceberg REST catalog interface. | | | | |
+| `Workers R2 Data Catalog Read` | | | | | Account | | | | | Can read from data catalogs. This permission allows read-only access to the Iceberg REST catalog interface. | | | | |
 
 #### Example Access Policy
 
@@ -142,8 +142,8 @@ Determine what [permission groups](https://developers.cloudflare.com/fundamental
 
 You can get the Access Key ID and Secret Access Key values from the response of the [Create Token](https://developers.cloudflare.com/api/resources/user/subresources/tokens/methods/create/) API:
 
-* Access Key ID: The `id` of the API token.
-* Secret Access Key: The SHA-256 hash of the API token `value`.
+- Access Key ID: The `id` of the API token.
+- Secret Access Key: The SHA-256 hash of the API token `value`.
 
 Refer to [Authenticate against R2 API using auth tokens](https://developers.cloudflare.com/r2/examples/authenticate-r2-auth-tokens/) for a tutorial with JavaScript, Python, and Go examples.
 

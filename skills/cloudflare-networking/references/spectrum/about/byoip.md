@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # BYOIP
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/spectrum/about/byoip/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/about/byoip/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When creating a Spectrum application, Cloudflare normally assigns an arbitrary IP from Cloudflare’s IP pool to your application. If you want to be explicit in your network setup or use your own IP addresses, BYOIP with Spectrum allows you to do just that.
 
@@ -59,10 +59,21 @@ To use an IP, it must be assigned to a Spectrum app to create the appropriate A 
 
 In the example below, the application routes traffic through Cloudflare’s HTTP pipeline, including WAF, Workers and CDN functionality.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone Settings Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone Settings Write</code>
+
+</details>
+
+*Create Spectrum application using a name for the originbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \

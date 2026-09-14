@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Data collection
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/network-analytics/reference/data-collection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/network-analytics/reference/data-collection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 For the purposes of mitigating DDoS attacks and providing traffic visibility through the Network Analytics dashboard, Cloudflare collects data from different protocols such as IP, IPv6, TCP, UDP, ICMP, GRE, and DNS.
 

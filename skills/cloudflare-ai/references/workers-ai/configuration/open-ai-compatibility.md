@@ -12,9 +12,10 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # OpenAI compatible API endpoints
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers AI supports OpenAI compatible endpoints for [text generation](https://developers.cloudflare.com/workers-ai/models/) (`/v1/chat/completions`) and [text embedding models](https://developers.cloudflare.com/workers-ai/models/) (`/v1/embeddings`). This allows you to use the same code as you would for your OpenAI commands, but swap in Workers AI easily.
+
 
 
 ## Usage
@@ -24,6 +25,8 @@ Workers AI supports OpenAI compatible endpoints for [text generation](https://de
 Normally, Workers AI requires you to specify the model name in the cURL endpoint or within the `env.AI.run` function.
 
 With OpenAI compatible endpoints, you can leverage the [openai-node sdk ↗](https://github.com/openai/openai-node) to make calls to Workers AI. This allows you to use Workers AI by simply changing the base URL and the model name.
+
+*OpenAI SDK Examplejs*
 
 ```js
 import OpenAI from "openai";
@@ -50,6 +53,8 @@ const embeddings = await openai.embeddings.create({
 	input: "I love matcha",
 });
 ```
+
+*cURL examplebash*
 
 ```bash
 curl --request POST \

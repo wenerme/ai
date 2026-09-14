@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Supported resource types
 
-Last updated Apr 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/resource-tagging/reference/resource-types/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/resource-tagging/reference/resource-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Tagging API supports the following resource types across account-level and zone-level scopes.
 
@@ -20,51 +20,51 @@ The Tagging API supports the following resource types across account-level and z
 
 Use `/accounts/{account_id}/tags` endpoints for these resource types.
 
-| Resource type              | Required extra fields | Description                      |
-| -------------------------- | --------------------- | -------------------------------- |
-| account                    | None                  | The Cloudflare account itself    |
-| access\_application        | None                  | Access application               |
-| access\_group              | None                  | Access group                     |
-| account\_ruleset           | None                  | Account-level ruleset            |
-| ai\_gateway                | None                  | AI Gateway                       |
-| alerting\_policy           | None                  | Notification policy              |
-| alerting\_webhook          | None                  | Notification webhook destination |
-| cloudflared\_tunnel        | None                  | Cloudflare Tunnel                |
-| d1\_database               | None                  | D1 database                      |
-| durable\_object\_namespace | None                  | Durable Objects namespace        |
-| gateway\_list              | None                  | Gateway list                     |
-| gateway\_rule              | None                  | Gateway rule                     |
-| image                      | None                  | Cloudflare Image                 |
-| kv\_namespace              | None                  | Workers KV namespace             |
-| load\_balancer\_monitor    | None                  | Load Balancer monitor            |
-| load\_balancer\_pool       | None                  | Load Balancer pool               |
-| pages\_project             | None                  | Pages project                    |
-| queue                      | None                  | Queue                            |
-| r2\_bucket                 | None                  | R2 bucket                        |
-| resource\_share            | None                  | Resource share                   |
-| stream\_live\_input        | None                  | Stream live input                |
-| stream\_video              | None                  | Stream video                     |
-| vectorize\_index           | None                  | Vectorize index                  |
-| worker                     | None                  | Workers script                   |
-| worker\_version            | worker\_id            | Specific version of a Worker     |
+| Resource type | Required extra fields | Description |
+| --- | --- | --- |
+| `account` | None | The Cloudflare account itself |
+| `access_application` | None | Access application |
+| `access_group` | None | Access group |
+| `account_ruleset` | None | Account-level ruleset |
+| `ai_gateway` | None | AI Gateway |
+| `alerting_policy` | None | Notification policy |
+| `alerting_webhook` | None | Notification webhook destination |
+| `cloudflared_tunnel` | None | Cloudflare Tunnel |
+| `d1_database` | None | D1 database |
+| `durable_object_namespace` | None | Durable Objects namespace |
+| `gateway_list` | None | Gateway list |
+| `gateway_rule` | None | Gateway rule |
+| `image` | None | Cloudflare Image |
+| `kv_namespace` | None | Workers KV namespace |
+| `load_balancer_monitor` | None | Load Balancer monitor |
+| `load_balancer_pool` | None | Load Balancer pool |
+| `pages_project` | None | Pages project |
+| `queue` | None | Queue |
+| `r2_bucket` | None | R2 bucket |
+| `resource_share` | None | Resource share |
+| `stream_live_input` | None | Stream live input |
+| `stream_video` | None | Stream video |
+| `vectorize_index` | None | Vectorize index |
+| `worker` | None | Workers script |
+| `worker_version` | `worker_id` | Specific version of a Worker |
 
 ## Zone-level resources
 
 Use `/zones/{zone_id}/tags` endpoints for these resource types.
 
-| Resource type                | Required extra fields   | Description                       |
-| ---------------------------- | ----------------------- | --------------------------------- |
-| access\_application\_policy  | access\_application\_id | Access application policy         |
-| api\_gateway\_operation      | None                    | API Gateway operation             |
-| custom\_certificate          | None                    | Custom SSL certificate            |
-| custom\_hostname             | None                    | Custom hostname (SSL for SaaS)    |
-| dns\_record                  | None                    | DNS record                        |
-| healthcheck                  | None                    | Health check                      |
-| load\_balancer               | None                    | Load Balancer                     |
-| managed\_client\_certificate | None                    | Managed client certificate (mTLS) |
-| worker\_route                | None                    | Worker route                      |
-| zone                         | None                    | DNS zone                          |
-| zone\_ruleset                | None                    | Zone-level ruleset                |
+| Resource type | Required extra fields | Description |
+| --- | --- | --- |
+| `access_application_policy` | `access_application_id` | Access application policy |
+| `api_gateway_operation` | None | API Gateway operation |
+| `custom_certificate` | None | Custom SSL certificate |
+| `custom_hostname` | None | Custom hostname (SSL for SaaS) |
+| `dns_record` | None | DNS record |
+| `healthcheck` | None | Health check |
+| `load_balancer` | None | Load Balancer |
+| `managed_client_certificate` | None | Managed client certificate (mTLS) |
+| `worker_route` | None | Worker route |
+| `zone` | None | DNS zone |
+| `zone_ruleset` | None | Zone-level ruleset |
 
 ## Extra fields
 

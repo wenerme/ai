@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.llm.prompt.token\_count
 
-`cf.llm.prompt.token_count` `Number`
+`cf.llm.prompt.token_count``Number`
 
 An estimated token count for the LLM prompt in the request.
 
@@ -24,7 +24,7 @@ Example usage:
 ```
 
 Categories:
-* Request
+- Request
 
 Was this helpful?
 

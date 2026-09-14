@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Serve uploaded images
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/optimization/hosted-images/serve-uploaded-images/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/hosted-images/serve-uploaded-images/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To serve images uploaded to Cloudflare Images, you must have:
 
-* Your Images account hash
-* Image ID
-* Variant or flexible variant name
+- Your Images account hash
+- Image ID
+- Variant or flexible variant name
 
 Assuming you have at least one image uploaded to Images, you will find the basic URL format from the Images dashboard under Developer Resources.
 
@@ -34,9 +34,9 @@ You can select **Preview** next to the image you want to serve to preview the im
 
 In this example:
 
-* `ZWd9g1K7eljCn_KDTu_MWA` is the Images account hash.
-* `083eb7b2-5392-4565-b69e-aff66acddd00` is the image ID. You can also use Custom IDs instead of the generated ID.
-* `public` is the variant name.
+- `ZWd9g1K7eljCn_KDTu_MWA` is the Images account hash.
+- `083eb7b2-5392-4565-b69e-aff66acddd00` is the image ID. You can also use Custom IDs instead of the generated ID.
+- `public` is the variant name.
 
 When a user requests an image, Cloudflare Images chooses the optimal format, which is determined by client headers and the image type.
 

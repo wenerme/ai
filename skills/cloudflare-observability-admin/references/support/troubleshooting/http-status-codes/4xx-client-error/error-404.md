@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Error 404
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-404/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-404/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## 404 Not Found
 

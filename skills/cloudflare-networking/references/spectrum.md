@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Spectrum
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/spectrum/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Spectrum provides security and acceleration for any [TCP ↗](https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/) or [UDP ↗](https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp/) based application.
 
@@ -54,7 +54,9 @@ Get Cloudflare's security and performance while using your own IPs. With Bring Y
 
 [Load Balancing](https://developers.cloudflare.com/load-balancing/)
 
-Cloudflare Load Balancing distributes traffic across your endpoints, which reduces endpoint strain and latency and improves the experience for end users.
+Cloudflare Load Balancing distributes traffic across your endpoints
+
+, which reduces endpoint strain and latency and improves the experience for end users.
 
 [DNS](https://developers.cloudflare.com/dns/)
 

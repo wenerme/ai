@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Local Development
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/guides/local-dev/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/guides/local-dev/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-You can run both your container and your Worker locally by simply running [npx wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) (or `vite dev` for Vite projects using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/)) in your project's directory.
+You can run both your container and your Worker locally by simply running [`npx wrangler dev`](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) (or `vite dev` for Vite projects using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/)) in your project's directory.
 
 To develop Container-enabled Workers locally, you will need to first ensure that a Docker compatible CLI tool and Engine are installed. For instance, you could use [Docker Desktop ↗](https://docs.docker.com/desktop/) or [Colima ↗](https://github.com/abiosoft/colima).
 
@@ -62,7 +62,7 @@ You may prefer to set up your own code watchers and reloading mechanisms, or mou
 
 ### Exposing Ports
 
-In production, all of your container's ports will be accessible by your Worker, so you do not need to specifically expose ports using the [EXPOSE instruction ↗](https://docs.docker.com/reference/dockerfile/#expose) in your Dockerfile.
+In production, all of your container's ports will be accessible by your Worker, so you do not need to specifically expose ports using the [`EXPOSE` instruction ↗](https://docs.docker.com/reference/dockerfile/#expose) in your Dockerfile.
 
 But for local development you will need to declare any ports you need to access in your Dockerfile with the EXPOSE instruction; for example: `EXPOSE 4000`, if you will be accessing port 4000.
 
@@ -90,18 +90,23 @@ If you are running the Cloudflare One Client or a VPN that performs TLS inspecti
 
 To resolve this, you can either:
 
-* Disable the Cloudflare One Client or your VPN while running `wrangler dev` or `wrangler deploy`, then re-enable it afterwards.
-* Add the certificate to your Docker build context. The Cloudflare One Client exposes its certificate via the `NODE_EXTRA_CA_CERTS` and `SSL_CERT_FILE` environment variables on your host machine. You can pass the certificate into your Docker build as an environment variable, so that it is available during the build without being baked into the final image.
-```dockerfile
-RUN if [ -n "$SSL_CERT_FILE" ]; then \
-    cp "$SSL_CERT_FILE" /usr/local/share/ca-certificates/Custom_CA.crt && \
-    update-ca-certificates; \
-    fi
-```
-Note
-The above Dockerfile snippet is an example. Depending on your base image, the commands to install certificates may differ (for example, Alpine uses `apk add ca-certificates` and a different certificate path).
-This snippet will store the certificate into the image. Depending on whether your production environment needs the certificate, you may choose to do this only during development or use it in production too.
-Wrangler invokes Docker automatically when you run `wrangler dev` or `wrangler deploy`, so if you need to pass build secrets, you will need to build and push the image manually using `wrangler containers push`.
+- Disable the Cloudflare One Client or your VPN while running `wrangler dev` or `wrangler deploy`, then re-enable it afterwards.
+- Add the certificate to your Docker build context. The Cloudflare One Client exposes its certificate via the `NODE_EXTRA_CA_CERTS` and `SSL_CERT_FILE` environment variables on your host machine. You can pass the certificate into your Docker build as an environment variable, so that it is available during the build without being baked into the final image.
+
+  ```dockerfile
+  RUN if [ -n "$SSL_CERT_FILE" ]; then \
+      cp "$SSL_CERT_FILE" /usr/local/share/ca-certificates/Custom_CA.crt && \
+      update-ca-certificates; \
+      fi
+  ```
+
+  Note
+
+  The above Dockerfile snippet is an example. Depending on your base image, the commands to install certificates may differ (for example, Alpine uses `apk add ca-certificates` and a different certificate path).
+
+  This snippet will store the certificate into the image. Depending on whether your production environment needs the certificate, you may choose to do this only during development or use it in production too.
+
+  Wrangler invokes Docker automatically when you run `wrangler dev` or `wrangler deploy`, so if you need to pass build secrets, you will need to build and push the image manually using `wrangler containers push`.
 
 Was this helpful?
 

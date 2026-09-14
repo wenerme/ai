@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Media Transport Adapters
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/sfu/media-transport-adapters/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/media-transport-adapters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Media Transport Adapters bridge WebRTC and other transport protocols. Adapters handle protocol conversion, codec transcoding, and bidirectional media flow between WebRTC sessions and external endpoints.
 
@@ -20,10 +20,10 @@ Media Transport Adapters bridge WebRTC and other transport protocols. Adapters h
 
 Adapters extend Realtime beyond WebRTC-to-WebRTC communication:
 
-* Ingest audio/video from external sources into WebRTC sessions
-* Stream WebRTC media to external systems for processing or storage
-* Integrate with AI services for transcription, translation, or generation
-* Bridge WebRTC applications with legacy communication systems
+- Ingest audio/video from external sources into WebRTC sessions
+- Stream WebRTC media to external systems for processing or storage
+- Integrate with AI services for transcription, translation, or generation
+- Bridge WebRTC applications with legacy communication systems
 
 ## Available adapters
 
@@ -37,10 +37,13 @@ Stream audio and video between WebRTC tracks and WebSocket endpoints. Video is e
 
 Media Transport Adapters operate as intermediaries between Cloudflare Realtime SFU sessions and external endpoints:
 
+```
 graph LR
     A[WebRTC Client] <--> B[Realtime SFU Session]
     B <--> C[Media Transport Adapter]
     C <--> D[External Endpoint]
+
+```
 
 ### Key concepts
 
@@ -48,8 +51,8 @@ graph LR
 
 **Location types**:
 
-* `local` (Ingest): Receives media from external endpoints to create new WebRTC tracks
-* `remote` (Stream): Sends media from existing WebRTC tracks to external endpoints
+- `local` (Ingest): Receives media from external endpoints to create new WebRTC tracks
+- `remote` (Stream): Sends media from existing WebRTC tracks to external endpoints
 
 **Codec support**: Adapters convert between WebRTC and external system formats.
 
@@ -57,22 +60,22 @@ graph LR
 
 ### AI processing
 
-* Speech-to-text transcription
-* Text-to-speech generation
-* Real-time translation
-* Audio enhancement
+- Speech-to-text transcription
+- Text-to-speech generation
+- Real-time translation
+- Audio enhancement
 
 ### Media recording
 
-* Cloud recording
-* Content delivery networks
-* Media processing pipelines
+- Cloud recording
+- Content delivery networks
+- Media processing pipelines
 
 ### Legacy integration
 
-* Traditional telephony
-* Broadcasting infrastructure
-* Custom media servers
+- Traditional telephony
+- Broadcasting infrastructure
+- Custom media servers
 
 ## API overview
 
@@ -87,20 +90,20 @@ Each adapter type has specific configuration requirements and capabilities. Refe
 
 ## Best practices
 
-* Close adapter instances when no longer needed
-* Implement reconnection logic for network failures
-* Choose codecs based on bandwidth and quality requirements
-* Secure endpoints with authentication for sensitive media
+- Close adapter instances when no longer needed
+- Implement reconnection logic for network failures
+- Choose codecs based on bandwidth and quality requirements
+- Secure endpoints with authentication for sensitive media
 
 ## Limitations
 
-* Each adapter type has specific codec and format support
-* Network latency between Cloudflare edge and external endpoints affects real-time performance
-* Maximum message size and streaming modes vary by adapter type
+- Each adapter type has specific codec and format support
+- Network latency between Cloudflare edge and external endpoints affects real-time performance
+- Maximum message size and streaming modes vary by adapter type
 
 ## Get started
 
-[WebSocket adapter (beta)](https://developers.cloudflare.com/realtime/sfu/media-transport-adapters/websocket-adapter/) \- Stream audio and video between WebRTC and WebSocket endpoints (video egress to JPEG)
+[WebSocket adapter (beta)](https://developers.cloudflare.com/realtime/sfu/media-transport-adapters/websocket-adapter/) - Stream audio and video between WebRTC and WebSocket endpoints (video egress to JPEG)
 
 Was this helpful?
 

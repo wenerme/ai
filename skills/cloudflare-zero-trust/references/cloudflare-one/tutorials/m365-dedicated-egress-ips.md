@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Protect access to Microsoft 365 with dedicated egress IPs
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/m365-dedicated-egress-ips/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/m365-dedicated-egress-ips/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -26,35 +26,36 @@ You can map a named location in Microsoft Entra ID to a location associated with
 
 Make sure you have:
 
-* In Cloudflare, a Zero Trust Enterprise plan with [dedicated egress IPs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/)
-* In Microsoft 365, an organization managed with [Microsoft Entra ID ↗](https://learn.microsoft.com/en-us/entra/identity/)
+- In Cloudflare, a Zero Trust Enterprise plan with [dedicated egress IPs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/)
+- In Microsoft 365, an organization managed with [Microsoft Entra ID ↗](https://learn.microsoft.com/en-us/entra/identity/)
 
 ## Create an egress policy in Cloudflare Gateway
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Egress policies**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** > **Egress policies**.
 2. Select **Add a policy**.
 3. Name your policy, then add conditions to check users are configured in Microsoft Entra ID. For example, you can check for [identity conditions](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/):
 
-| Selector         | Operator | Value                                   |
-| ---------------- | -------- | --------------------------------------- |
-| User Group Names | in       | Sales and Marketing, Retail, U.S. Sales |
-Additionally, you can check for [device posture conditions](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/):
+   | Selector | Operator | Value |
+   | --- | --- | --- |
+   | User Group Names | in | `Sales and Marketing`, `Retail`, `U.S. Sales` |
 
-| Selector                    | Operator | Value                                           | Logic |
-| --------------------------- | -------- | ----------------------------------------------- | ----- |
-| Passed Device Posture Check | is       | CrowdStrike Overall ZTA score (Crowdstrike s2s) | And   |
-| Passed Device Posture Check | is       | AppCheckMac - Required Software (Application)   |       |
+   Additionally, you can check for [device posture conditions](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/):
+
+   | Selector | Operator | Value | Logic |
+   | --- | --- | --- | --- |
+   | Passed Device Posture Check | is | `CrowdStrike Overall ZTA score (Crowdstrike s2s)` | And |
+   | Passed Device Posture Check | is | `AppCheckMac - Required Software (Application)` |  |
 4. Enable **Use dedicated Cloudflare egress IPs**. Select your desired IPv4 and IPv6 addresses. For example:
 
-| Primary IPv4 address | IPv6 address  |
-| -------------------- | ------------- |
-| 203.0.113.0          | 2001:db8::/32 |
+   | Primary IPv4 address | IPv6 address |
+   | --- | --- |
+   | `203.0.113.0` | `2001:db8::/32` |
 
 ## Create a named IP range location in Microsoft Entra ID
 
 1. Log in to the [Microsoft Azure portal ↗](https://aka.ms/azureportal).
 2. In the sidebar, select **Microsoft Entra ID**.
-3. Go to **Security** \> **Named locations**.
+3. Go to **Security** > **Named locations**.
 4. Select **IP ranges location**.
 5. Name your location, then add the IP addresses used in your Cloudflare dedicated egress IP policy.
 6. Select **Upload**.
@@ -67,8 +68,8 @@ This named location corresponds with the locations of your dedicated egress IPs.
 2. Select **Create new policy**.
 3. Configure which Entra ID users you want to limit access for, and which traffic, applications, or actions you want to protect.
 4. In **Conditions**, select **Locations**. Enable **Configure**.
-5. In **Include**, select _Any location_. In **Exclude**, select the named location you created.
-6. In **Access controls**, go to **Grant**. Enable _Block access_.
+5. In **Include**, select *Any location*. In **Exclude**, select the named location you created.
+6. In **Access controls**, go to **Grant**. Enable *Block access*.
 
 Your policy will block access for your selected users from any location except those using your dedicated egress IPs.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Traffic steering
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/magic-transit/reference/traffic-steering/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/reference/traffic-steering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Magic Transit Virtual Network routing table
 
@@ -20,8 +20,8 @@ When traffic enters Cloudflare's network, it needs to reach the correct destinat
 
 The Magic Transit Virtual Network is a virtual network overlay, private to your account, that spans all Cloudflare data centers globally. This overlay network provides:
 
-* Magic Transit delivery for [Denial of Service (DoS)](https://developers.cloudflare.com/ddos-protection/) and [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) filtered Internet traffic, from the entry data center where the traffic ingressed, to your publicly addressed edge/border network.
-* Magic Transit packet transport between IPsec/GRE tunnels, interconnects, [Cloudflare Load Balancer](https://developers.cloudflare.com/load-balancing/), and [Zero Trust](https://developers.cloudflare.com/cloudflare-one/) connections such as [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/), [Remote Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/), [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/), and [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/).
+- Magic Transit delivery for [Denial of Service (DoS)](https://developers.cloudflare.com/ddos-protection/) and [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) filtered Internet traffic, from the entry data center where the traffic ingressed, to your publicly addressed edge/border network.
+- Magic Transit packet transport between IPsec/GRE tunnels, interconnects, [Cloudflare Load Balancer](https://developers.cloudflare.com/load-balancing/), and [Zero Trust](https://developers.cloudflare.com/cloudflare-one/) connections such as [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/), [Remote Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/), [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/), and [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/).
 
 The Magic Transit Virtual Network supports routing the Magic Transit traffic through anycast tunnels using [GRE and Internet Protocol Security (IPsec)](https://developers.cloudflare.com/magic-transit/reference/gre-ipsec-tunnels/) or [CNI with Dataplane v2](https://developers.cloudflare.com/network-interconnect/). You can add entries to the Magic Transit Virtual Network routing table through static route configuration or through routes learned through BGP peering (beta).
 
@@ -29,35 +29,35 @@ The Magic Transit Virtual Network supports routing the Magic Transit traffic thr
 
 The following IPv4 address ranges are allowed in the Magic Transit Virtual Network routing table:
 
-* [BYOIP](https://developers.cloudflare.com/byoip/) public address space which you have onboarded to Cloudflare Magic Transit.
-* Cloudflare [leased IPs](https://developers.cloudflare.com/magic-transit/cloudflare-ips/) assigned to your account.
+- [BYOIP](https://developers.cloudflare.com/byoip/) public address space which you have onboarded to Cloudflare Magic Transit.
+- Cloudflare [leased IPs](https://developers.cloudflare.com/magic-transit/cloudflare-ips/) assigned to your account.
 
 ### Default routing
 
 If traffic does not match any route you have configured in the virtual network, Cloudflare applies default behavior based on the destination address type:
 
-* **Public (Internet-routable) addresses**: Traffic exits to the Internet.
-* **Private addresses** ([RFC 1918 ↗](https://datatracker.ietf.org/doc/html/rfc1918) or [CGNAT/RFC 6598 ↗](https://datatracker.ietf.org/doc/html/rfc6598)): Traffic is dropped (null routed), because private addresses are not routable on the public Internet and Cloudflare has no path to deliver them without a matching route.
+- **Public (Internet-routable) addresses**: Traffic exits to the Internet.
+- **Private addresses** ([RFC 1918 ↗](https://datatracker.ietf.org/doc/html/rfc1918) or [CGNAT/RFC 6598 ↗](https://datatracker.ietf.org/doc/html/rfc6598)): Traffic is dropped (null routed), because private addresses are not routable on the public Internet and Cloudflare has no path to deliver them without a matching route.
 
 ### Route prioritization
 
 Magic Transit steers traffic along tunnel routes based on route entry priorities.
 
-* Lower values have greater priority.
-* When the priority values for prefix entries match, Cloudflare uses [equal-cost multi-path (ECMP)](#equal-cost-multi-path-routing) packet forwarding to route traffic. You can apply an optional weight value to static routes to [modify ECMP tunnel distribution](#set-priority-and-weights-for-static-routes).
-* Cloudflare routing applies longest-prefix match. A more specific static route (like `/30`) always takes precedence over a less specific one (like `/29`), regardless of tunnel priority — unless you remove the more specific route.
-* When BGP and static routes have the same prefix and priority, Cloudflare enforces priority by preferring static routes over BGP routes. This ensures that manually configured static routes take precedence unless you explicitly deprioritize them.
+- Lower values have greater priority.
+- When the priority values for prefix entries match, Cloudflare uses [equal-cost multi-path (ECMP)](#equal-cost-multi-path-routing) packet forwarding to route traffic. You can apply an optional weight value to static routes to [modify ECMP tunnel distribution](#set-priority-and-weights-for-static-routes).
+- Cloudflare routing applies longest-prefix match. A more specific static route (like `/30`) always takes precedence over a less specific one (like `/29`), regardless of tunnel priority — unless you remove the more specific route.
+- When BGP and static routes have the same prefix and priority, Cloudflare enforces priority by preferring static routes over BGP routes. This ensures that manually configured static routes take precedence unless you explicitly deprioritize them.
 
 ### Set priority and weights for static routes
 
 The priority value for static routes is directly configured as part of the route object in the Cloudflare [dashboard or through the API](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#create-a-static-route). For example:
 
-| Prefix          | NextHop        | Priority |
-| --------------- | -------------- | -------- |
-| 10.10.10.100/24 | TUNNEL\_1\_IAD | 200      |
-| 10.10.10.100/24 | TUNNEL\_2\_IAD | 200      |
-| 10.10.10.100/24 | TUNNEL\_3\_ATL | 100      |
-| 10.10.10.100/24 | TUNNEL\_4\_ATL | 100      |
+| Prefix | NextHop | Priority |
+| --- | --- | --- |
+| `10.10.10.100/24` | `TUNNEL_1_IAD` | `200` |
+| `10.10.10.100/24` | `TUNNEL_2_IAD` | `200` |
+| `10.10.10.100/24` | `TUNNEL_3_ATL` | `100` |
+| `10.10.10.100/24` | `TUNNEL_4_ATL` | `100` |
 
 In this example, tunnels with priority of `100` are preferred to tunnels with priority of `200` because lower numbers have greater priority.
 
@@ -65,12 +65,12 @@ Optionally, you can assign weights to distribute traffic more effectively among 
 
 In the following example, `TUNNEL_2_IAD` is likely to receive twice as much traffic as `TUNNEL_1_IAD`.
 
-| Prefix          | NextHop        | Priority | Weight |
-| --------------- | -------------- | -------- | ------ |
-| 10.10.10.100/24 | TUNNEL\_1\_IAD | 100      | 64     |
-| 10.10.10.100/24 | TUNNEL\_2\_IAD | 100      | 128    |
-| 10.10.10.100/24 | TUNNEL\_3\_ATL | 100      | 192    |
-| 10.10.10.100/24 | TUNNEL\_4\_ATL | 100      | 255    |
+| Prefix | NextHop | Priority | Weight |
+| --- | --- | --- | --- |
+| `10.10.10.100/24` | `TUNNEL_1_IAD` | `100` | `64` |
+| `10.10.10.100/24` | `TUNNEL_2_IAD` | `100` | `128` |
+| `10.10.10.100/24` | `TUNNEL_3_ATL` | `100` | `192` |
+| `10.10.10.100/24` | `TUNNEL_4_ATL` | `100` | `255` |
 
 Aside from priority, scoping static routes to specific geographic regions also impacts how traffic is steered. Refer to [Scoping routes to specific regions](#scoping-routes-to-specific-regions) for more details.
 
@@ -90,13 +90,13 @@ The default BGP route priority is `100`. This base priority can be adjusted usin
 
 The community values supported for setting base route priority are:
 
-* `13335:60010`: Set base route priority to `10`
-* `13335:60050`: Set base route priority to `50`
-* `UNSET`: Set base route priority to `100`
-* `13335:60150`: Set base route priority to `150`
-* `13335:60200`: Set base route priority to `200`
-* `13335:60901`: Set base route priority to `501000`
-* `13335:60902`: Set base route priority to `1001000`
+- `13335:60010`: Set base route priority to `10`
+- `13335:60050`: Set base route priority to `50`
+- `UNSET`: Set base route priority to `100`
+- `13335:60150`: Set base route priority to `150`
+- `13335:60200`: Set base route priority to `200`
+- `13335:60901`: Set base route priority to `501000`
+- `13335:60902`: Set base route priority to `1001000`
 
 Setting multiple base priority communities in the same prefix update message is a misconfiguration. In this situation, Cloudflare prefers the highest priority (lowest integer value).
 
@@ -127,8 +127,8 @@ The Unified Routing mode is the newer Cloudflare One data plane that uses a sing
 
 In the Magic Transit dashboard, routing mode appears where you manage routes:
 
-* **Routing mode: Unified** — your account is on the unified data plane and supports the new routing features.
-* **Routing mode: Legacy** — your account uses the previous data plane and does not support all unified routing features.
+- **Routing mode: Unified** — your account is on the unified data plane and supports the new routing features.
+- **Routing mode: Legacy** — your account uses the previous data plane and does not support all unified routing features.
 
 ### Why use Unified Routing
 
@@ -140,22 +140,22 @@ For Magic Transit customers, the primary reason to consider Unified Routing is t
 
 The following limitations apply to accounts using Unified Routing mode. This list will get shorter as Cloudflare adds support for additional features.
 
-| Current beta limitations                                                                                      | Details                                                                                                                                       |
-| ------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| Performance                                                                                                   | Typically around 150 Mbps for each onramp                                                                                                     |
-| Basic packet captures                                                                                         | Captures exclude Automatic Return Routing or BGP-over-tunnels traffic                                                                         |
-| Full packet captures                                                                                          | Not yet supported                                                                                                                             |
-| Cloudflare Advanced Network Firewall features: ASN Lists, Threat Intel Lists, Rate Limiting, Managed Rulesets | Not yet supported                                                                                                                             |
-| Gateway filtering rules                                                                                       | Not supported on traffic where both the onramp and offramp is IPsec/GRE/CNI                                                                   |
-| Load Balancer                                                                                                 | Public-to-private use case is supported to IPsec/GRE/CNI destinations. Private-to-private use case does not yet support Cloudflare Source IPs |
-| IPv6 Support                                                                                                  | IPv6 is supported for IPsec and GRE. Basic Network Firewall support for IPv6 is limited to src/dst IP filtering                               |
+| Current beta limitations | Details |
+| --- | --- |
+| Performance | Typically around 150 Mbps for each onramp |
+| Basic packet captures | Captures exclude Automatic Return Routing or BGP-over-tunnels traffic |
+| Full packet captures | Not yet supported |
+| Cloudflare Advanced Network Firewall features: ASN Lists, Threat Intel Lists, Rate Limiting, Managed Rulesets | Not yet supported |
+| Gateway filtering rules | Not supported on traffic where both the onramp and offramp is IPsec/GRE/CNI |
+| Load Balancer | Public-to-private use case is supported to IPsec/GRE/CNI destinations. Private-to-private use case does not yet support Cloudflare Source IPs |
+| IPv6 Support | IPv6 is supported for IPsec and GRE. Basic Network Firewall support for IPv6 is limited to src/dst IP filtering |
 
 ### Enroll in the Unified Routing beta
 
 Unified Routing is currently in closed beta. To sign up:
 
-* **Existing Cloudflare WAN or Magic Transit customers**: Cloudflare recommends you evaluate the new functionality with your use case in a non-production account. Contact your account team to enable Unified Routing.
-* **New customers**: Contact your account team to enable Unified Routing in a proof-of-concept for your use case.
+- **Existing Cloudflare WAN or Magic Transit customers**: Cloudflare recommends you evaluate the new functionality with your use case in a non-production account. Contact your account team to enable Unified Routing.
+- **New customers**: Contact your account team to enable Unified Routing in a proof-of-concept for your use case.
 
 ## Scoping routes to specific regions
 
@@ -171,14 +171,14 @@ When using region-scoped routes, ensure that all prefixes have routes covering a
 
 The following table exemplifies how to use geographic scoping for routes:
 
-| Prefix          | NextHop        | Priority | Region code |
-| --------------- | -------------- | -------- | ----------- |
-| 10.10.10.100/24 | TUNNEL\_1\_IAD | 100      | AFR         |
-| 10.10.10.100/24 | TUNNEL\_2\_IAD | 100      | EEUR        |
-| 10.10.10.100/24 | TUNNEL\_3\_ATL | 100      | ENAM        |
-| 10.10.10.100/24 | TUNNEL\_4\_ATL | 100      | ME          |
-| 10.10.10.100/24 | TUNNEL\_5\_ATL | 100      | WNAM        |
-| 10.10.10.100/24 | TUNNEL\_4\_ATL | 100      | ENAM        |
+| Prefix | NextHop | Priority | Region code |
+| --- | --- | --- | --- |
+| `10.10.10.100/24` | `TUNNEL_1_IAD` | `100` | `AFR` |
+| `10.10.10.100/24` | `TUNNEL_2_IAD` | `100` | `EEUR` |
+| `10.10.10.100/24` | `TUNNEL_3_ATL` | `100` | `ENAM` |
+| `10.10.10.100/24` | `TUNNEL_4_ATL` | `100` | `ME` |
+| `10.10.10.100/24` | `TUNNEL_5_ATL` | `100` | `WNAM` |
+| `10.10.10.100/24` | `TUNNEL_4_ATL` | `100` | `ENAM` |
 
 When there are multiple routes to the same prefix with equal priority, and those routes are assigned to different geographic regions (like WNAM and ENAM), traffic entering the network in a specific region — for example, WNAM — egresses through the route associated with that same region.
 
@@ -190,17 +190,17 @@ Cloudflare uses anycast to route traffic. Anycast is a network addressing and ro
 
 Cloudflare has nine geographic regions:
 
-| Region code | Region                |
-| ----------- | --------------------- |
-| AFR         | Africa                |
-| APAC        | Asia Pacific          |
-| EEUR        | Eastern Europe        |
-| ENAM        | Eastern North America |
-| ME          | Middle East           |
-| OC          | Oceania               |
-| SAM         | South America         |
-| WEUR        | Western Europe        |
-| WNAM        | Western North America |
+| Region code | Region |
+| --- | --- |
+| `AFR` | Africa |
+| `APAC` | Asia Pacific |
+| `EEUR` | Eastern Europe |
+| `ENAM` | Eastern North America |
+| `ME` | Middle East |
+| `OC` | Oceania |
+| `SAM` | South America |
+| `WEUR` | Western Europe |
+| `WNAM` | Western North America |
 
 Configure scoping for your traffic in the **Region code** section when adding or editing a static route. Refer to [Create a static route](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#create-a-static-route) and [Edit a static route](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#edit-a-static-route) for more information.
 
@@ -210,12 +210,12 @@ Configure scoping for your traffic in the **Region code** section when adding or
 
 You must provide your prefixes and the tunnels that should be mapped to for Cloudflare to route your traffic from our global network to your data centers through anycast tunnels. Use the following table as reference.
 
-| Prefix          | NextHop        |
-| --------------- | -------------- |
-| 103.21.244.0/29 | TUNNEL\_1\_IAD |
-| 103.21.244.8/29 | TUNNEL\_2\_ATL |
+| Prefix | NextHop |
+| --- | --- |
+| `103.21.244.0/29` | `TUNNEL_1_IAD` |
+| `103.21.244.8/29` | `TUNNEL_2_ATL` |
 
-The minimum advertising prefix is `/24`, but because Cloudflare uses anycast tunnels as an outer wrapper for your traffic, Cloudflare can route prefixes within that `/24` to different tunnel endpoints. For example, you can send `x.x.x.0/29` to Data Center 1 and `x.x.x.8/29` to Data Center 2\. This is helpful when you operate in an environment with constrained IP resources.
+The minimum advertising prefix is `/24`, but because Cloudflare uses anycast tunnels as an outer wrapper for your traffic, Cloudflare can route prefixes within that `/24` to different tunnel endpoints. For example, you can send `x.x.x.0/29` to Data Center 1 and `x.x.x.8/29` to Data Center 2. This is helpful when you operate in an environment with constrained IP resources.
 
 ### Map route prefixes bigger than onboarded prefixes
 
@@ -223,8 +223,8 @@ If you have multiple onboarded `/24` subnets that belong to a larger contiguous 
 
 For example, if you have two tunnels:
 
-* `192.0.2.0/24`
-* `192.0.3.0/24`
+- `192.0.2.0/24`
+- `192.0.3.0/24`
 
 You can summarize these into a single `192.0.2.0/23`.
 
@@ -240,9 +240,9 @@ Equal-cost multi-path routing uses hashes calculated from [packet ↗](https://w
 
 Using ECMP has a number of consequences:
 
-* Routing to equal-cost paths is probabilistic.
-* Packets in the same session with the same source and destination have the same hash. The packets also use the same next hop.
-* Routing changes in the number of equal-cost next hops can cause traffic to use different tunnels. For example, dynamic reprioritization triggered by health check events can cause traffic to use different tunnels.
+- Routing to equal-cost paths is probabilistic.
+- Packets in the same session with the same source and destination have the same hash. The packets also use the same next hop.
+- Routing changes in the number of equal-cost next hops can cause traffic to use different tunnels. For example, dynamic reprioritization triggered by health check events can cause traffic to use different tunnels.
 
 As a result, ECMP provides load balancing across tunnels with the same prefix and priority.
 
@@ -256,6 +256,7 @@ This diagram illustrates how ECMP distributes traffic equally across two paths w
 
 #### Normal traffic flow
 
+```
 flowchart LR
 accTitle: Tunnels diagram
 accDescr: This example has three tunnel routes, with traffic equally distributed across two paths.
@@ -273,12 +274,15 @@ E[Anycast IP] --> F[/"GRE Tunnel 1 / <br> priority 1 / <br> ~50% of flows"/] -->
 E[Anycast IP] --> G[/"GRE Tunnel 2 / <br> priority 1 / <br> ~50% of flows"/] --> J{{Customer <br> data center/ <br> network 2}}
 E[Anycast IP] --> H[/GRE Tunnel 3 / <br> priority 2 / <br> 0% of flows/] --o K{{Customer <br> data center/ <br> network 3}}
 
+```
+
 #### Failover traffic flow: Scenario 1
 
 **Customer router failure**
 
 When Magic Transit health checks determine that Tunnel 2 is unhealthy, Magic Transit dynamically de-prioritizes that route, leaving Tunnel 1 as the sole top-priority route. As a result, Magic Transit steers traffic away from Tunnel 2, and all traffic flows to Tunnel 1.
 
+```
 flowchart LR
 accTitle: Tunnels diagram
 accDescr: This example has Tunnel 2 unhealthy, and all traffic prioritized to Tunnel 1.
@@ -298,12 +302,15 @@ E[Anycast IP] --> H[/Tunnel 3 / <br> priority 2 / <br> 0% of flows/] --o K{{Cust
 classDef red fill:#EE4B2B,color: black
 classDef green fill:#00FF00,color: black
 
+```
+
 #### Failover traffic flow: Scenario 2
 
 **Intermediary Internet Service Provider (ISP) failure**
 
 When Magic Transit determines that Tunnel 1 is unhealthy as well, that route is also de-prioritized, leaving Tunnel 3 with the top priority route. In that case, all traffic flows to Tunnel 3.
 
+```
 flowchart LR
 accTitle: Tunnels diagram
 accDescr: This example has Tunnel 1 and 2 unhealthy, and all traffic prioritized to Tunnel 3.
@@ -322,6 +329,8 @@ E[Anycast IP]  -- Intermediary <br> network issue -->  G[/Tunnel 2 / <br> priori
 E[Anycast IP] -->  H[/Tunnel 3 / <br> priority 2 / <br> 100% of flows/]:::green --> K{{Customer <br> data center/ <br> network 3}}
 classDef red fill:#EE4B2B,color: black
 classDef green fill:#00FF00,color: black
+
+```
 
 When Magic Transit determines that Tunnels 1 and 2 are healthy again, it re-prioritizes those routes, and traffic flow returns to normal.
 
@@ -345,23 +354,23 @@ For more on Magic Transit tunnel weights, contact your Cloudflare customer servi
 
 Using BGP peering with your Cloudflare One or Magic Transit Virtual Network routing table allows you to:
 
-* Automate the process of adding or removing networks and subnets.
-* Take advantage of failure detection and session recovery features.
+- Automate the process of adding or removing networks and subnets.
+- Take advantage of failure detection and session recovery features.
 
 With this functionality, you can:
 
-* Establish an eBGP session between your devices and the Magic Transit service when connected through CNI, GRE or IPsec tunnels.
-* Secure the session by MD5 authentication to prevent misconfigurations.
-* Exchange routes dynamically between your devices and your Magic Transit Virtual Network routing table.
+- Establish an eBGP session between your devices and the Magic Transit service when connected through CNI, GRE or IPsec tunnels.
+- Secure the session by MD5 authentication to prevent misconfigurations.
+- Exchange routes dynamically between your devices and your Magic Transit Virtual Network routing table.
 
 ### Release status
 
 The following table outlines the current availability and recommended use cases for BGP across different connectivity methods.
 
-| Feature                        | Release stage | Recommended use                                            | Prerequisites                                                                               |
-| ------------------------------ | ------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| **BGP over CNI**               | Closed Beta   | Not available to new customers — contact your account team | Cloudflare Network Interconnect (CNI) v2                                                    |
-| **BGP over Anycast IPsec/GRE** | Open Beta     | Non-production workloads                                   | [Unified Routing (beta)](#unified-routing-mode-beta) \- contact your account team to enroll |
+| Feature | Release stage | Recommended use | Prerequisites |
+| --- | --- | --- | --- |
+| **BGP over CNI** | Closed Beta | Not available to new customers — contact your account team | Cloudflare Network Interconnect (CNI) v2 |
+| **BGP over Anycast IPsec/GRE** | Open Beta | Non-production workloads | [Unified Routing (beta)](#unified-routing-mode-beta) - contact your account team to enroll |
 
 ### BGP architecture
 
@@ -371,26 +380,26 @@ Magic Transit Virtual Network makes a one-pass, per-packet routing decision at t
 
 Your BGP session over IPsec, GRE, or CNI is established with the Cloudflare data center closest to your BGP peer device. Routes learned here must propagate to Cloudflare's global edge to govern how traffic is routed across the entire network.
 
-* **Convergence time**: Global route convergence typically completes within 20 seconds.
-* **Visibility**: You can monitor learned routes and their propagation status through the Cloudflare dashboard or API.
+- **Convergence time**: Global route convergence typically completes within 20 seconds.
+- **Visibility**: You can monitor learned routes and their propagation status through the Cloudflare dashboard or API.
 
 #### Centralized route propagation
 
 Magic Transit Virtual Network uses a centralized control plane for route propagation, functioning similarly to a BGP Route Reflector. This architecture decouples the physical BGP session from global route distribution:
 
-* **Session termination**: BGP peering sessions are terminated at the Cloudflare edge location closest to your router.
-* **SDN conversion**: Ingress BGP updates are converted into Software-Defined Networking (SDN) state and transmitted to a centralized relay function.
-* **Global dissemination**: The relay propagates these instructions to every Cloudflare data center globally, updating the local Forwarding Information Base (FIB) at each site.
+- **Session termination**: BGP peering sessions are terminated at the Cloudflare edge location closest to your router.
+- **SDN conversion**: Ingress BGP updates are converted into Software-Defined Networking (SDN) state and transmitted to a centralized relay function.
+- **Global dissemination**: The relay propagates these instructions to every Cloudflare data center globally, updating the local Forwarding Information Base (FIB) at each site.
 
 #### Edge Resiliency Mode (Non-Stop Forwarding)
 
 Cloudflare's data plane is designed for high availability. If the edge location loses communication with the centralized relay, the system enters Edge Resiliency Mode, mimicking Non-Stop Forwarding (NSF) behavior:
 
-* **Forwarding continuity**: Edge locations continue to route traffic using the last-known-good forwarding table (FIB). Data plane traffic remains uninterrupted.
-* **Stale path retention**: Because the FIB is frozen during this mode, forwarding decisions remain active even if the underlying BGP session with your router flaps or resets.
-* **Continuous health monitoring**: While BGP updates are frozen, tunnel health checks remain active. These are sent from all Cloudflare data centers, allowing the edge at any ingress node to detect if a physical connection to your router has failed. If a health check fails, the ingress node at the edge will deprioritize that specific path, preventing traffic from being sent into a black hole despite the frozen routing state.
-* **Update freeze**: During this state, the global control plane is frozen. New BGP updates received from your router will be held locally at the edge and will not propagate globally until connectivity to the centralized relay is restored.
-* **Magic Transit edge announcement**: During this frozen state, your BYOIP prefix(es) will continue to be announced at Cloudflare's global edge. You can manually change this announcement status through the API or dashboard.
+- **Forwarding continuity**: Edge locations continue to route traffic using the last-known-good forwarding table (FIB). Data plane traffic remains uninterrupted.
+- **Stale path retention**: Because the FIB is frozen during this mode, forwarding decisions remain active even if the underlying BGP session with your router flaps or resets.
+- **Continuous health monitoring**: While BGP updates are frozen, tunnel health checks remain active. These are sent from all Cloudflare data centers, allowing the edge at any ingress node to detect if a physical connection to your router has failed. If a health check fails, the ingress node at the edge will deprioritize that specific path, preventing traffic from being sent into a black hole despite the frozen routing state.
+- **Update freeze**: During this state, the global control plane is frozen. New BGP updates received from your router will be held locally at the edge and will not propagate globally until connectivity to the centralized relay is restored.
+- **Magic Transit edge announcement**: During this frozen state, your BYOIP prefix(es) will continue to be announced at Cloudflare's global edge. You can manually change this announcement status through the API or dashboard.
 
 Traffic persistence during BGP resets
 
@@ -424,15 +433,15 @@ BGP peering sessions can advertise reachable prefixes to a peer and withdraw pre
 
 Cloudflare uses the following timers, which are not configurable:
 
-| Setting              | Description                                                                                                                                                                                                                 |
-| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Hold timer**       | 240 seconds for CNI and 90 seconds for GRE and IPsec tunnels (_To establish a session, Cloudflare compares its hold timer and the peer's hold timer, and uses the smaller of the two values to establish the BGP session._) |
-| **Keepalive timer**  | One third of the hold timer.                                                                                                                                                                                                |
-| **Graceful restart** | 120 seconds (currently, only supported on CNI)                                                                                                                                                                              |
+| Setting | Description |
+| --- | --- |
+| **Hold timer** | 240 seconds for CNI and 90 seconds for GRE and IPsec tunnels<br> (*To establish a session, Cloudflare compares its hold timer and the peer's hold timer, and uses the smaller of the two values to establish the BGP session.*) |
+| **Keepalive timer** | One third of the hold timer. |
+| **Graceful restart** | 120 seconds (currently, only supported on CNI) |
 
-* **Hold timer**: Specifies the maximum amount of time that a BGP peer waits to receive a keepalive, update, or notification message before declaring the BGP session down. Cloudflare uses the smaller of this default hold timer and that received from the peer in the open message.
-* **Keepalive timer**: BGP systems exchange keepalive messages to determine whether the peer router is reachable. If keepalive messages are not received within the hold timer, the session is assumed to be down, indicating that the peer is no longer reachable at the BGP protocol level.
-* **Graceful restart timer**: Tracks how long a router waits for a peer to re-establish a BGP session after the peer initiates a graceful restart. If the peer does not reconnect within this time, the router declares the session down and removes stale routes.
+- **Hold timer**: Specifies the maximum amount of time that a BGP peer waits to receive a keepalive, update, or notification message before declaring the BGP session down. Cloudflare uses the smaller of this default hold timer and that received from the peer in the open message.
+- **Keepalive timer**: BGP systems exchange keepalive messages to determine whether the peer router is reachable. If keepalive messages are not received within the hold timer, the session is assumed to be down, indicating that the peer is no longer reachable at the BGP protocol level.
+- **Graceful restart timer**: Tracks how long a router waits for a peer to re-establish a BGP session after the peer initiates a graceful restart. If the peer does not reconnect within this time, the router declares the session down and removes stale routes.
 
 ### BGP capabilities and limitations
 
@@ -442,10 +451,10 @@ BGP Graceful Restart is supported in a passive (helper/aware) mode. Cloudflare m
 
 BGP support currently has the following limitations:
 
-* The Cloudflare account ASN and your device ASN must be different. Only eBGP is supported.
-* Cloudflare always injects routes with a priority of `100`.
-* Bidirectional Forwarding Detection (BFD) is not supported.
-* If you are using BGP with IPsec/CNI (beta), you must set the ASN on the Cloudflare side to `13335`. Private ASNs are not yet supported.
+- The Cloudflare account ASN and your device ASN must be different. Only eBGP is supported.
+- Cloudflare always injects routes with a priority of `100`.
+- Bidirectional Forwarding Detection (BFD) is not supported.
+- If you are using BGP with IPsec/CNI (beta), you must set the ASN on the Cloudflare side to `13335`. Private ASNs are not yet supported.
 
 For Magic Transit customers, BGP with the Magic Transit Virtual Network routing table is separated from the announcement of anycast prefixes at the Cloudflare edge. Anycast withdrawal must be controlled with existing methods documented in [Advertise prefixes](https://developers.cloudflare.com/magic-transit/how-to/advertise-prefixes/).
 

@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Event subscriptions
 
-Last updated May 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/artifacts/guides/event-subscriptions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/guides/event-subscriptions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Artifacts emits structured events for repository lifecycle changes — creates, deletes, forks, imports, pushes, clones, fetches, and token changes. By subscribing to these events through [event subscriptions](https://developers.cloudflare.com/queues/event-subscriptions/), you can consume them from a Worker to build commit-driven automation.
 
 For example:
 
-* Run custom workflows when a repository is created or imported
-* Kick off a build and deploy a change when an agent pushes to a repo
-* Trigger a review agent on every push
+- Run custom workflows when a repository is created or imported
+- Kick off a build and deploy a change when an agent pushes to a repo
+- Trigger a review agent on every push
 
 ## Available Artifacts events
 

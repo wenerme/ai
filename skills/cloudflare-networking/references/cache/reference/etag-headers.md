@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Using ETag Headers with Cloudflare
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/reference/etag-headers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/reference/etag-headers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-ETag headers identify whether the version of a resource cached in the browser is the same as the resource at the origin web server. A visitor's browser stores ETags. When a visitor revisits a site, the browser compares each ETag to the one it stored. Matching values cause a `304 Not-Modified HTTP` response that indicates the cached resource version is current. Cloudflare supports both strong and weak ETags configured at your origin web server.
+ETag headers identify whether the version of a resource cached in the browser is the same as the resource at the origin web server. A visitor's browser stores ETags. When a visitor revisits a site, the browser compares each ETag to the one it stored. Matching values cause a `304 Not-Modified HTTP` response that indicates the cached resource version is current. Cloudflare supports both strong and weak ETags configured at your origin web server.
 
 ## Weak ETags
 
@@ -34,22 +34,22 @@ When you enable **Respect Strong ETags** in a cache rule, Cloudflare will use st
 
 However, in some situations Cloudflare will convert strong ETags to weak ETags. For example, given the following conditions:
 
-* **Respect Strong ETags** is enabled
-* [Brotli compression](https://developers.cloudflare.com/speed/optimization/content/compression/) is enabled
-* The origin server's response includes an `etag: "foobar"` strong ETag header
+- **Respect Strong ETags** is enabled
+- [Brotli compression](https://developers.cloudflare.com/speed/optimization/content/compression/) is enabled
+- The origin server's response includes an `etag: "foobar"` strong ETag header
 
 The Cloudflare network will take the following actions, depending on the visitor's `accept-encoding` header and the compression used in the origin server's response:
 
-| accept-encodingheader from visitor | Compression used in origin server response | Cloudflare actions                                                                                     |
-| ---------------------------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| gzip, br                           | GZIP                                       | Return GZIP-compressed response to visitor with strong ETag header: etag: "foobar".                    |
-| gzip, br                           | Brotli                                     | Return Brotli-compressed response to visitor with strong ETag header: etag: "foobar".                  |
-| br                                 | GZIP                                       | Decompress GZIP and return uncompressed response to visitor with weak ETag header: etag: W/"foobar".   |
-| gzip                               | Brotli                                     | Decompress Brotli and return uncompressed response to visitor with weak ETag header: etag: W/"foobar". |
-| gzip                               | (none)                                     | Return uncompressed response to visitor with strong ETag header: etag: "foobar".                       |
-| gzip, br, zstd                     | Zstandard                                  | Return zstd-compressed response to visitor with strong ETag header: etag: "foobar".                    |
-| gzip, br                           | Zstandard                                  | Decompress zstd and return br response to visitor with weak ETag header: etag: W/"foobar".             |
-| zstd                               | Brotli/GZIP                                | Decompress zstd and return zstd response to visitor with weak ETag header: etag: W/"foobar".           |
+| `accept-encoding`<br>header from visitor | Compression used in origin server response | Cloudflare actions |
+| --- | --- | --- |
+| `gzip, br` | GZIP | Return GZIP-compressed response to visitor with strong ETag header: `etag: "foobar"`. |
+| `gzip, br` | Brotli | Return Brotli-compressed response to visitor with strong ETag header: `etag: "foobar"`. |
+| `br` | GZIP | Decompress GZIP and return uncompressed response to visitor with weak ETag header: `etag: W/"foobar"`. |
+| `gzip` | Brotli | Decompress Brotli and return uncompressed response to visitor with weak ETag header: `etag: W/"foobar"`. |
+| `gzip` | (none) | Return uncompressed response to visitor with strong ETag header: `etag: "foobar"`. |
+| `gzip, br, zstd` | Zstandard | Return zstd-compressed response to visitor with strong ETag header: `etag: "foobar"`. |
+| `gzip, br` | Zstandard | Decompress zstd and return br response to visitor with weak ETag header: `etag: W/"foobar"`. |
+| `zstd` | Brotli/GZIP | Decompress zstd and return zstd response to visitor with weak ETag header: `etag: W/"foobar"`. |
 
 Enabling **Respect Strong ETags** in Cloudflare automatically disables Rocket Loader, Email Obfuscation, and Automatic HTTPS Rewrites.
 
@@ -57,36 +57,36 @@ Enabling **Respect Strong ETags** in Cloudflare automatically disables Rocket Lo
 
 When **Respect Strong ETags** is disabled, Cloudflare will preserve strong ETag headers set by the origin web server if all the following conditions apply:
 
-* The origin server sends a response compressed using GZIP or Brotli, or an uncompressed response.
-* If the origin server sends a compressed response, the visitor accepts the same compression (GZIP, Brotli), according to the `accept-encoding` header.
-* [Rocket Loader](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/) and [Email Obfuscation](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/) features are disabled.
+- The origin server sends a response compressed using GZIP or Brotli, or an uncompressed response.
+- If the origin server sends a compressed response, the visitor accepts the same compression (GZIP, Brotli), according to the `accept-encoding` header.
+- [Rocket Loader](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/) and [Email Obfuscation](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/) features are disabled.
 
 In all other situations, Cloudflare will either convert strong ETag headers to weak ETag headers or remove the strong ETag. For example, given the following conditions:
 
-* **Respect Strong ETags** is disabled
-* [Brotli compression](https://developers.cloudflare.com/speed/optimization/content/compression/) is enabled
-* The origin server's response includes an `etag: "foobar"` strong ETag header
+- **Respect Strong ETags** is disabled
+- [Brotli compression](https://developers.cloudflare.com/speed/optimization/content/compression/) is enabled
+- The origin server's response includes an `etag: "foobar"` strong ETag header
 
 The Cloudflare network will take the following actions, depending on the visitor's `accept-encoding` header and the compression used in the origin server's response:
 
-| accept-encodingheader from visitor | Compression used in origin server response | Cloudflare actions                                                                                                                              |
-| ---------------------------------- | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| gzip, br                           | GZIP                                       | Decompress GZIP and return Brotli-compressed response to visitor (since Brotli compression is enabled) with weak ETag header: etag: W/"foobar". |
-| gzip, br                           | Brotli                                     | Return Brotli-compressed response to visitor with strong ETag header: etag: "foobar".                                                           |
-| br                                 | GZIP                                       | Decompress GZIP and return Brotli-compressed response to visitor with weak ETag header: etag: W/"foobar".                                       |
-| gzip                               | Brotli                                     | Decompress Brotli and return GZIP-compressed response to visitor with weak ETag header: etag: W/"foobar".                                       |
-| gzip                               | (none)                                     | Compress origin response using GZIP and return it to visitor with weak ETag header: etag: W/"foobar".                                           |
-| gzip, br, zstd                     | Zstandard                                  | Return zstd-compressed response to visitor with strong ETag header: etag: "foobar".                                                             |
-| gzip, br                           | Zstandard                                  | Decompress zstd and return uncompressed response to visitor with weak ETag header: etag: W/"foobar".                                            |
-| zstd                               | Brotli                                     | Decompress zstd and return uncompressed response to visitor with weak ETag header: etag: W/"foobar".                                            |
+| `accept-encoding`<br>header from visitor | Compression used in origin server response | Cloudflare actions |
+| --- | --- | --- |
+| `gzip, br` | GZIP | Decompress GZIP and return Brotli-compressed response to visitor (since Brotli compression is enabled) with weak ETag header: `etag: W/"foobar"`. |
+| `gzip, br` | Brotli | Return Brotli-compressed response to visitor with strong ETag header: `etag: "foobar"`. |
+| `br` | GZIP | Decompress GZIP and return Brotli-compressed response to visitor with weak ETag header: `etag: W/"foobar"`. |
+| `gzip` | Brotli | Decompress Brotli and return GZIP-compressed response to visitor with weak ETag header: `etag: W/"foobar"`. |
+| `gzip` | (none) | Compress origin response using GZIP and return it to visitor with weak ETag header: `etag: W/"foobar"`. |
+| `gzip, br, zstd` | Zstandard | Return zstd-compressed response to visitor with strong ETag header: `etag: "foobar"`. |
+| `gzip, br` | Zstandard | Decompress zstd and return uncompressed response to visitor with weak ETag header: `etag: W/"foobar"`. |
+| `zstd` | Brotli | Decompress zstd and return uncompressed response to visitor with weak ETag header: `etag: W/"foobar"`. |
 
 Refer to [Content compression](https://developers.cloudflare.com/speed/optimization/content/compression/) for more information.
 
 ## Important remarks
 
-* You must set the value in a strong ETag header using double quotes (for example, `etag: "foobar"`). If you use an incorrect format, Cloudflare will remove the ETag header instead of converting it to a weak ETag.
-* If a resource is cacheable and there is a cache miss, Cloudflare does not send ETag headers to the origin server. This is because Cloudflare requires the full response body to fill its cache.
-* If your origin (or R2) applies compression based on `accept-encoding`, the first compression type will be cached. Consider whether strong ETags fit your use case, or use cache key rules to handle different compression types.
+- You must set the value in a strong ETag header using double quotes (for example, `etag: "foobar"`). If you use an incorrect format, Cloudflare will remove the ETag header instead of converting it to a weak ETag. 
+- If a resource is cacheable and there is a cache miss, Cloudflare does not send ETag headers to the origin server. This is because Cloudflare requires the full response body to fill its cache.
+- If your origin (or R2) applies compression based on `accept-encoding`, the first compression type will be cached. Consider whether strong ETags fit your use case, or use cache key rules to handle different compression types.
 
 Was this helpful?
 

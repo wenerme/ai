@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Chat
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/chat/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/chat/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide explains how to send and receive chat messages in a meeting using Cloudflare RealtimeKit.
 
@@ -24,9 +24,9 @@ ReactWeb ComponentsAngular
 
 There are three types of messages that can be sent in chat:
 
-* Text messages
-* Images
-* Files
+- Text messages
+- Images
+- Files
 
 The meeting chat object is stored in `meeting.chat`, which has methods for sending and receiving messages.
 
@@ -42,9 +42,9 @@ console.log("All chat messages:", meeting.chat.messages);
 
 There are three types of messages that can be sent in chat:
 
-* Text messages
-* Images
-* Files
+- Text messages
+- Images
+- Files
 
 The meeting chat object is stored in `meeting.chat`, which has methods for sending and receiving messages.
 
@@ -60,9 +60,9 @@ meeting.chat.messages;
 
 There are three types of messages that can be sent in chat:
 
-* Text messages
-* Images
-* Files
+- Text messages
+- Images
+- Files
 
 The meeting chat object is stored in `meeting.chat`, which has methods for sending and receiving messages.
 
@@ -78,9 +78,9 @@ meeting.chat.messages
 
 There are three types of messages that can be sent in chat:
 
-* Text messages
-* Images
-* Files
+- Text messages
+- Images
+- Files
 
 The meeting chat object is stored in `meeting.chat`, which has methods for sending and receiving messages.
 
@@ -96,9 +96,9 @@ meeting.chat.messages
 
 There are three types of messages that can be sent in chat:
 
-* Text messages
-* Images
-* Files
+- Text messages
+- Images
+- Files
 
 The meeting chat object is stored in `meeting.chat`, which has methods for sending and receiving messages.
 
@@ -1129,12 +1129,12 @@ await meeting.chat.deleteMessage(messageId);
 
 You can programmatically retrieve all chat messages of a RealtimeKit session in the following ways:
 
-* Using the Chat Replay API
-* Setting up webhook for the `meeting.chatSynced` event
+- Using the Chat Replay API
+- Setting up webhook for the `meeting.chatSynced` event
 
 ### Get chat download URL
 
-To get the chat download URL, make an HTTP `GET` request to the [Chat Replay API endpoint](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/sessions/methods/get%5Fsession%5Fchat/). The API returns:
+To get the chat download URL, make an HTTP `GET` request to the [Chat Replay API endpoint](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/sessions/methods/get_session_chat/). The API returns:
 
 ```json
 {
@@ -1146,10 +1146,10 @@ To get the chat download URL, make an HTTP `GET` request to the [Chat Replay API
 }
 ```
 
-* **`chat_download_url`** \- A URL that allows you to download the entire chat dump of a session in CSV format from AWS S3
-* **`chat_download_url_expiry`** \- The expiry timestamp of the `chat_download_url`. If the URL expires, call this endpoint again to obtain a new download URL
+- **`chat_download_url`** - A URL that allows you to download the entire chat dump of a session in CSV format from AWS S3
+- **`chat_download_url_expiry`** - The expiry timestamp of the `chat_download_url`. If the URL expires, call this endpoint again to obtain a new download URL
 
-For details on the Chat Replay API endpoint, refer to the [Realtime Kit API documentation](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/sessions/methods/get%5Fsession%5Fchat/).
+For details on the Chat Replay API endpoint, refer to the [Realtime Kit API documentation](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/sessions/methods/get_session_chat/).
 
 ### Download the chat dump file
 
@@ -1178,16 +1178,16 @@ To download on the server using Node.js streams:
 
 The CSV file contains all chat messages along with participant information and metadata. It includes the following column headings:
 
-* **`id`** \- Unique chat message ID
-* **`participantId`** \- ID of the participant who sent the message
-* **`sessionId`** \- The session ID from which the chat message was sent
-* **`meetingId`** \- The ID of the meeting to which this session belongs
-* **`displayName`** \- Display name of the participant who sent this message
-* **`pinned`** \- A boolean that indicates if the current message was pinned
-* **`isEdited`** \- A boolean that indicates if the current message was edited
-* **`payloadType`** \- An ENUM that indicates the type of payload sent in the chat message. It can be one of `TEXT_MESSAGE`, `IMAGE_MESSAGE`, `FILE_MESSAGE`
-* **`payload`** \- The actual payload sent in the chat message
-* **`createdAt`** \- Timestamp when this chat message was sent
+- **`id`** - Unique chat message ID
+- **`participantId`** - ID of the participant who sent the message
+- **`sessionId`** - The session ID from which the chat message was sent
+- **`meetingId`** - The ID of the meeting to which this session belongs
+- **`displayName`** - Display name of the participant who sent this message
+- **`pinned`** - A boolean that indicates if the current message was pinned
+- **`isEdited`** - A boolean that indicates if the current message was edited
+- **`payloadType`** - An ENUM that indicates the type of payload sent in the chat message. It can be one of `TEXT_MESSAGE`, `IMAGE_MESSAGE`, `FILE_MESSAGE`
+- **`payload`** - The actual payload sent in the chat message
+- **`createdAt`** - Timestamp when this chat message was sent
 
 Was this helpful?
 

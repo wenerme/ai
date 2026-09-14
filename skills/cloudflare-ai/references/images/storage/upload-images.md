@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Upload images
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/storage/upload-images/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/storage/upload-images/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [Methods](https://developers.cloudflare.com/images/storage/upload-images/methods/)
-* [Upload via URL](https://developers.cloudflare.com/images/storage/upload-images/upload-url/)
-* [Upload via custom path](https://developers.cloudflare.com/images/storage/upload-images/upload-custom-path/)
-* [Accept user-uploaded images](https://developers.cloudflare.com/images/storage/upload-images/direct-creator-upload/)
-* [Upload via batch API](https://developers.cloudflare.com/images/storage/upload-images/images-batch/)
-* [Import from S3](https://developers.cloudflare.com/images/storage/upload-images/import-from-s3/)
-* [Upload via a Worker](https://developers.cloudflare.com/images/storage/upload-images/upload-file-worker/)
-* [Configure webhooks](https://developers.cloudflare.com/images/storage/upload-images/configure-webhooks/)
+- [Methods](https://developers.cloudflare.com/images/storage/upload-images/methods/)
+- [Upload via URL](https://developers.cloudflare.com/images/storage/upload-images/upload-url/)
+- [Upload via custom path](https://developers.cloudflare.com/images/storage/upload-images/upload-custom-path/)
+- [Accept user-uploaded images](https://developers.cloudflare.com/images/storage/upload-images/direct-creator-upload/)
+- [Upload via batch API](https://developers.cloudflare.com/images/storage/upload-images/images-batch/)
+- [Import from S3](https://developers.cloudflare.com/images/storage/upload-images/import-from-s3/)
+- [Upload via a Worker](https://developers.cloudflare.com/images/storage/upload-images/upload-file-worker/)
+- [Configure webhooks](https://developers.cloudflare.com/images/storage/upload-images/configure-webhooks/)
 
 Was this helpful?
 

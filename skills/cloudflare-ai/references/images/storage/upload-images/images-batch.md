@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Upload via batch API
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/storage/upload-images/images-batch/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/storage/upload-images/images-batch/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Images batch API lets you make several requests in sequence while bypassing Cloudflare’s global API rate limits.
 
@@ -38,19 +38,23 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1/batch
 
 After getting your token, use it to make requests for:
 
-* [Upload an image](https://developers.cloudflare.com/api/resources/images/subresources/v1/methods/create/) \- `POST /images/v1`
-* [Delete an image](https://developers.cloudflare.com/api/resources/images/subresources/v1/methods/delete/) \- `DELETE /images/v1/{identifier}`
-* [Image details](https://developers.cloudflare.com/api/resources/images/subresources/v1/methods/get/) \- `GET /images/v1/{identifier}`
-* [Update image](https://developers.cloudflare.com/api/resources/images/subresources/v1/methods/edit/) \- `PATCH /images/v1/{identifier}`
-* [List images V2](https://developers.cloudflare.com/api/resources/images/subresources/v2/methods/list/) \- `GET /images/v2`
-* [Direct upload V2](https://developers.cloudflare.com/api/resources/images/subresources/v2/subresources/direct%5Fuploads/methods/create/) \- `POST /images/v2/direct_upload`
+- [Upload an image](https://developers.cloudflare.com/api/resources/images/subresources/v1/methods/create/) - `POST /images/v1`
+- [Delete an image](https://developers.cloudflare.com/api/resources/images/subresources/v1/methods/delete/) - `DELETE /images/v1/{identifier}`
+- [Image details](https://developers.cloudflare.com/api/resources/images/subresources/v1/methods/get/) - `GET /images/v1/{identifier}`
+- [Update image](https://developers.cloudflare.com/api/resources/images/subresources/v1/methods/edit/) - `PATCH /images/v1/{identifier}`
+- [List images V2](https://developers.cloudflare.com/api/resources/images/subresources/v2/methods/list/) - `GET /images/v2`
+- [Direct upload V2](https://developers.cloudflare.com/api/resources/images/subresources/v2/subresources/direct_uploads/methods/create/) - `POST /images/v2/direct_upload`
 
 These options use a different host and a different path with the same method, request, and response bodies.
+
+*Request for list images V2 against api.cloudflare.combash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v2" \
 --header "Authorization: Bearer <API_TOKEN>"
 ```
+
+*Example request using a batch tokenbash*
 
 ```bash
 curl "https://batch.imagedelivery.net/images/v1" \

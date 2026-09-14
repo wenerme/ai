@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create new buckets
 
-Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/buckets/create-buckets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/buckets/create-buckets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can create a bucket from the Cloudflare dashboard or using Wrangler.
 
@@ -24,7 +24,7 @@ The R2 support in Wrangler allows you to manage buckets and perform basic operat
 
 ## Bucket-Level Operations
 
-Create a bucket with the [r2 bucket create](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-create) command:
+Create a bucket with the [`r2 bucket create`](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-create) command:
 
 ```sh
 wrangler r2 bucket create your-bucket-name
@@ -32,13 +32,13 @@ wrangler r2 bucket create your-bucket-name
 
 Note
 
-* Bucket names can only contain lowercase letters (a-z), numbers (0-9), and hyphens (-).
-* Bucket names cannot begin or end with a hyphen.
-* Bucket names can only be between 3-63 characters in length.
+- Bucket names can only contain lowercase letters (a-z), numbers (0-9), and hyphens (-).
+- Bucket names cannot begin or end with a hyphen.
+- Bucket names can only be between 3-63 characters in length.
 
 The placeholder text is only for the example.
 
-List buckets in the current account with the [r2 bucket list](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-list) command:
+List buckets in the current account with the [`r2 bucket list`](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-list) command:
 
 ```sh
 wrangler r2 bucket list
@@ -48,9 +48,9 @@ To delete a bucket, you must first empty it and then delete it. For detailed ins
 
 ## Notes
 
-* Bucket names and buckets are not public by default. To allow public access to a bucket, refer to [Public buckets](https://developers.cloudflare.com/r2/buckets/public-buckets/).
-* For information on controlling access to your R2 bucket with Cloudflare Access, refer to [Protect an R2 Bucket with Cloudflare Access](https://developers.cloudflare.com/r2/tutorials/cloudflare-access/).
-* Invalid (unauthorized) access attempts to private buckets do not incur R2 operations charges against that bucket. Refer to the [R2 pricing FAQ](https://developers.cloudflare.com/r2/pricing/#frequently-asked-questions) to understand what operations are billed vs. not billed.
+- Bucket names and buckets are not public by default. To allow public access to a bucket, refer to [Public buckets](https://developers.cloudflare.com/r2/buckets/public-buckets/).
+- For information on controlling access to your R2 bucket with Cloudflare Access, refer to [Protect an R2 Bucket with Cloudflare Access](https://developers.cloudflare.com/r2/tutorials/cloudflare-access/).
+- Invalid (unauthorized) access attempts to private buckets do not incur R2 operations charges against that bucket. Refer to the [R2 pricing FAQ](https://developers.cloudflare.com/r2/pricing/#frequently-asked-questions) to understand what operations are billed vs. not billed.
 
 Was this helpful?
 

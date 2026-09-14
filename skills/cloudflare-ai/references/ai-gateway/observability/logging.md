@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Logging
 
-Last updated Jun 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/observability/logging/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/observability/logging/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Logging is a fundamental building block for application development. Logs provide insights during the early stages of development and are often critical to understanding issues occurring in production.
 
@@ -28,8 +28,7 @@ Logs, which include metrics as well as request and response data, are enabled by
 
 To change the default log configuration in the dashboard:
 
-1. In the Cloudflare dashboard, go to the **AI Gateway** page.
-[Go to **AI Gateway** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
+1. In the Cloudflare dashboard, go to the **AI Gateway** page. [Go to **AI Gateway** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 2. Select **Settings**.
 3. Change the **Logs** setting to your preference.
 
@@ -67,10 +66,10 @@ The `cf-aig-collect-log-payload` header allows you to control whether the raw re
 
 This is useful when you want to maintain visibility into usage metrics and request metadata without persisting sensitive prompt or completion data.
 
-| Header value | Behavior                                                               |
-| ------------ | ---------------------------------------------------------------------- |
-| true         | Request and response payloads are stored.                              |
-| false        | Payload storage is skipped. Metadata-only log entries are still saved. |
+| Header value | Behavior |
+| --- | --- |
+| `true` | Request and response payloads are stored. |
+| `false` | Payload storage is skipped. Metadata-only log entries are still saved. |
 
 In the example below, we use `cf-aig-collect-log-payload` to skip storing the request and response bodies while keeping the metadata log.
 
@@ -100,22 +99,22 @@ If `cf-aig-collect-log` is set to `false`, the entire log entry (including metad
 
 When [Data Loss Prevention (DLP)](https://developers.cloudflare.com/ai-gateway/features/dlp/) policies are enabled on a gateway, log entries for requests that trigger a DLP policy match include additional fields:
 
-| Field                | Description                                                           |
-| -------------------- | --------------------------------------------------------------------- |
-| DLP Action           | The action taken by the DLP policy: FLAG or BLOCK                     |
-| DLP Policies Matched | The IDs of the DLP policies that matched                              |
+| Field | Description |
+| --- | --- |
+| DLP Action | The action taken by the DLP policy: `FLAG` or `BLOCK` |
+| DLP Policies Matched | The IDs of the DLP policies that matched |
 | DLP Profiles Matched | The IDs of the DLP profiles that triggered within each matched policy |
-| DLP Entries Matched  | The specific detection entry IDs that matched within each profile     |
-| DLP Check            | Whether the match occurred in the REQUEST, RESPONSE, or both          |
+| DLP Entries Matched | The specific detection entry IDs that matched within each profile |
+| DLP Check | Whether the match occurred in the `REQUEST`, `RESPONSE`, or both |
 
-These fields are available both in the dashboard log viewer and through the [Logs API](https://developers.cloudflare.com/api/resources/ai%5Fgateway/subresources/logs/methods/list/). You can filter logs by **DLP Action** in the dashboard to view only flagged or blocked requests. For more details on DLP monitoring, refer to [Monitor DLP events](https://developers.cloudflare.com/ai-gateway/features/dlp/set-up-dlp/#monitor-dlp-events).
+These fields are available both in the dashboard log viewer and through the [Logs API](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/logs/methods/list/). You can filter logs by **DLP Action** in the dashboard to view only flagged or blocked requests. For more details on DLP monitoring, refer to [Monitor DLP events](https://developers.cloudflare.com/ai-gateway/features/dlp/set-up-dlp/#monitor-dlp-events).
 
 ## Managing log storage
 
 To manage your log storage effectively, you can:
 
-* Set Storage Limits: Configure a limit on the number of logs stored per gateway in your gateway settings to ensure you only pay for what you need.
-* Enable Automatic Log Deletion: Activate the Automatic Log Deletion feature in your gateway settings to automatically delete the oldest logs once the storage limit for your account is reached. This ensures new logs are always saved without manual intervention.
+- Set Storage Limits: Configure a limit on the number of logs stored per gateway in your gateway settings to ensure you only pay for what you need.
+- Enable Automatic Log Deletion: Activate the Automatic Log Deletion feature in your gateway settings to automatically delete the oldest logs once the storage limit for your account is reached. This ensures new logs are always saved without manual intervention.
 
 ## How to delete logs
 
@@ -131,27 +130,27 @@ To manually delete logs through the dashboard, navigate to the Logs tab in the d
 
 See full list of available filters and their descriptions below:
 
-| Filter category | Filter options                                               | Filter by description                               |
-| --------------- | ------------------------------------------------------------ | --------------------------------------------------- |
-| Status          | error, status                                                | error type or status.                               |
-| Cache           | cached, not cached                                           | based on whether they were cached or not.           |
-| Provider        | specific providers                                           | the selected AI provider.                           |
-| AI Models       | specific models                                              | the selected AI model.                              |
-| Cost            | less than, greater than                                      | cost, specifying a threshold.                       |
-| Request type    | Workers AI Binding, WebSockets                               | the type of request.                                |
-| Tokens          | Total tokens, Tokens In, Tokens Out                          | token count (less than or greater than).            |
-| Duration        | less than, greater than                                      | request duration.                                   |
-| Feedback        | equals, does not equal (thumbs up, thumbs down, no feedback) | feedback type.                                      |
-| Metadata Key    | equals, does not equal                                       | specific metadata keys.                             |
-| Metadata Value  | equals, does not equal                                       | specific metadata values.                           |
-| Log ID          | equals, does not equal                                       | a specific Log ID.                                  |
-| Event ID        | equals, does not equal                                       | a specific Event ID.                                |
-| DLP Action      | FLAG, BLOCK                                                  | the DLP action taken on the request.                |
-| User Agent      | equals, does not equal, contains                             | the user agent of the client that made the request. |
+| Filter category | Filter options | Filter by description |
+| --- | --- | --- |
+| Status | error, status | error type or status. |
+| Cache | cached, not cached | based on whether they were cached or not. |
+| Provider | specific providers | the selected AI provider. |
+| AI Models | specific models | the selected AI model. |
+| Cost | less than, greater than | cost, specifying a threshold. |
+| Request type | Workers AI Binding, WebSockets | the type of request. |
+| Tokens | Total tokens, Tokens In, Tokens Out | token count (less than or greater than). |
+| Duration | less than, greater than | request duration. |
+| Feedback | equals, does not equal (thumbs up, thumbs down, no feedback) | feedback type. |
+| Metadata Key | equals, does not equal | specific metadata keys. |
+| Metadata Value | equals, does not equal | specific metadata values. |
+| Log ID | equals, does not equal | a specific Log ID. |
+| Event ID | equals, does not equal | a specific Event ID. |
+| DLP Action | FLAG, BLOCK | the DLP action taken on the request. |
+| User Agent | equals, does not equal, contains | the user agent of the client that made the request. |
 
 ### API deletion
 
-You can programmatically delete logs using the AI Gateway API. For more comprehensive information on the `DELETE` logs endpoint, check out the [Cloudflare API documentation](https://developers.cloudflare.com/api/resources/ai%5Fgateway/subresources/logs/methods/delete/).
+You can programmatically delete logs using the AI Gateway API. For more comprehensive information on the `DELETE` logs endpoint, check out the [Cloudflare API documentation](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/logs/methods/delete/).
 
 Was this helpful?
 

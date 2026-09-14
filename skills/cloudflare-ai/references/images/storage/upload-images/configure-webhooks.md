@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure webhooks
 
-Last updated Jun 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/storage/upload-images/configure-webhooks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/storage/upload-images/configure-webhooks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -24,12 +24,11 @@ Currently, webhooks are supported only for [direct creator uploads](https://deve
 
 To receive notifications for direct creator uploads:
 
-1. In the Cloudflare dashboard, go to the **Notifications** pages.
-[Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
+1. In the Cloudflare dashboard, go to the **Notifications** pages. [Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Select **Destinations**.
 3. From the Webhooks card, select **Create**.
 4. Enter information for your webhook and select **Save and Test**. The new webhook will appear in the **Webhooks** card and can be attached to notifications.
-5. Next, go to **Notifications** \> **All Notifications** and select **Add**.
+5. Next, go to **Notifications** > **All Notifications** and select **Add**.
 6. Under the list of products, locate **Images** and select **Select**.
 7. Give your notification a name and optional description.
 8. Under the **Webhooks** field, select the webhook that you recently created.

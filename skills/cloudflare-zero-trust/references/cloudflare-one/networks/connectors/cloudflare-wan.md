@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare WAN
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Connect and secure your entire corporate network through Cloudflare, replacing MPLS circuits and hub-and-spoke routing with cloud-native networking.
 
@@ -22,7 +22,9 @@ Cloudflare WAN (formerly Magic WAN) connects your data centers, offices, and clo
 
 Cloudflare WAN provides secure, performant [routing ↗](https://www.cloudflare.com/learning/network-layer/what-is-routing/) for your entire corporate network. [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) integrates with Cloudflare WAN, enabling you to enforce network firewall policies at Cloudflare's global network, across traffic from any entity within your network.
 
-You connect your sites to Cloudflare through on-ramps — tunnels or direct connections from your network to Cloudflare. Cloudflare WAN supports any device that uses anycast GRE or IPsec tunnels. Refer to [On-ramps](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/on-ramps/) for a full list of supported on-ramps.
+You connect your sites to Cloudflare through on-ramps
+
+ — tunnels or direct connections from your network to Cloudflare. Cloudflare WAN supports any device that uses anycast GRE or IPsec tunnels. Refer to [On-ramps](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/on-ramps/) for a full list of supported on-ramps.
 
 Refer to [WAN transformation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/wan-transformation/) to compare approaches and plan your migration, or go straight to [get started](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/get-started/).
 

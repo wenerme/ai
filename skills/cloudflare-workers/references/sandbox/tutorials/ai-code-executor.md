@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Build an AI code executor
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/ai-code-executor/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/ai-code-executor/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build an AI-powered code execution system using Sandbox SDK and Claude. Turn natural language questions into Python code, execute it securely, and return results.
 
@@ -25,18 +25,26 @@ An API that accepts questions like "What's the 100th Fibonacci number?", uses Cl
 ## Prerequisites
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
+
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
 
 You'll also need:
 
-* An [Anthropic API key ↗](https://console.anthropic.com/) for Claude
-* [Docker ↗](https://www.docker.com/) running locally
+- An [Anthropic API key ↗](https://console.anthropic.com/) for Claude
+- [Docker ↗](https://www.docker.com/) running locally
 
-## 1\. Create your project
+## 1. Create your project
 
 Create a new Sandbox SDK project:
 
@@ -58,7 +66,7 @@ pnpm create cloudflare@latest ai-code-executor --template=cloudflare/sandbox-sdk
 cd ai-code-executor
 ```
 
-## 2\. Install dependencies
+## 2. Install dependencies
 
 Install the Anthropic SDK:
 
@@ -80,7 +88,7 @@ pnpm add @anthropic-ai/sdk
 bun add @anthropic-ai/sdk
 ```
 
-## 3\. Build your code executor
+## 3. Build your code executor
 
 Replace the contents of `src/index.ts`:
 
@@ -171,7 +179,7 @@ Return ONLY the code, no explanations.`
 4. Executes with `sandbox.exec('python /tmp/code.py')`
 5. Returns both the code and execution results
 
-## 4\. Set up local environment variables
+## 4. Set up local environment variables
 
 Create a `.dev.vars` file in your project root for local development:
 
@@ -185,7 +193,7 @@ Note
 
 The `.dev.vars` file is automatically gitignored and only used during local development with `npm run dev`.
 
-## 5\. Test locally
+## 5. Test locally
 
 Start the development server:
 
@@ -217,7 +225,7 @@ Response:
 }
 ```
 
-## 6\. Deploy
+## 6. Deploy
 
 Deploy your Worker:
 
@@ -237,7 +245,7 @@ Caution
 
 After first deployment, wait 2-3 minutes for container provisioning. Check status with `npx wrangler containers list`.
 
-## 7\. Test your deployment
+## 7. Test your deployment
 
 Try different questions:
 
@@ -262,24 +270,24 @@ curl -X POST https://ai-code-executor.YOUR_SUBDOMAIN.workers.dev/execute \
 
 You created an AI code execution system that:
 
-* Accepts natural language questions
-* Generates Python code with Claude
-* Executes code securely in isolated sandboxes
-* Returns results with error handling
+- Accepts natural language questions
+- Generates Python code with Claude
+- Executes code securely in isolated sandboxes
+- Returns results with error handling
 
 ## Next steps
 
-* [Code interpreter with Workers AI](https://developers.cloudflare.com/sandbox/tutorials/workers-ai-code-interpreter/) \- Use Cloudflare's native AI models with official packages
-* [Analyze data with AI](https://developers.cloudflare.com/sandbox/tutorials/analyze-data-with-ai/) \- Add pandas and matplotlib for data analysis
-* [Code Interpreter API](https://developers.cloudflare.com/sandbox/api/interpreter/) \- Use the built-in code interpreter instead of exec
-* [Streaming output](https://developers.cloudflare.com/sandbox/guides/streaming-output/) \- Show real-time execution progress
-* [API reference](https://developers.cloudflare.com/sandbox/api/) \- Explore all available methods
+- [Code interpreter with Workers AI](https://developers.cloudflare.com/sandbox/tutorials/workers-ai-code-interpreter/) - Use Cloudflare's native AI models with official packages
+- [Analyze data with AI](https://developers.cloudflare.com/sandbox/tutorials/analyze-data-with-ai/) - Add pandas and matplotlib for data analysis
+- [Code Interpreter API](https://developers.cloudflare.com/sandbox/api/interpreter/) - Use the built-in code interpreter instead of exec
+- [Streaming output](https://developers.cloudflare.com/sandbox/guides/streaming-output/) - Show real-time execution progress
+- [API reference](https://developers.cloudflare.com/sandbox/api/) - Explore all available methods
 
 ## Related resources
 
-* [Anthropic Claude documentation ↗](https://docs.anthropic.com/)
-* [Workers AI](https://developers.cloudflare.com/workers-ai/) \- Use Cloudflare's built-in models
-* [workers-ai-provider package ↗](https://github.com/cloudflare/ai/tree/main/packages/workers-ai-provider) \- Official Workers AI integration
+- [Anthropic Claude documentation ↗](https://docs.anthropic.com/)
+- [Workers AI](https://developers.cloudflare.com/workers-ai/) - Use Cloudflare's built-in models
+- [workers-ai-provider package ↗](https://github.com/cloudflare/ai/tree/main/packages/workers-ai-provider) - Official Workers AI integration
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Tutorial - React SPA with an API
 
-Last updated Sep 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/tutorial/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/tutorial/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial takes you through the steps needed to adapt a Vite project to use the Cloudflare Vite plugin. Much of the content can also be applied to adapting existing Vite projects and to front-end frameworks other than React.
 
@@ -70,6 +70,8 @@ bun add -d @cloudflare/vite-plugin wrangler
 
 In your `vite.config.ts`, add the Cloudflare Vite plugin after your framework plugin:
 
+*vite.config.tsts*
+
 ```ts
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
@@ -91,7 +93,7 @@ Create a `wrangler.jsonc` file in the root of your project:
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "my-app",
   // Set this to today's date
-  "compatibility_date": "2026-09-05",
+  "compatibility_date": "2026-09-14",
   "assets": {
     "not_found_handling": "single-page-application"
   }
@@ -101,17 +103,17 @@ Create a `wrangler.jsonc` file in the root of your project:
 ```toml
 name = "my-app"
 # Set this to today's date
-compatibility_date = "2026-09-05"
+compatibility_date = "2026-09-14"
 
 [assets]
 not_found_handling = "single-page-application"
 ```
 
-The [not\_found\_handling](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/) value has been set to `single-page-application`. This means that all not-found requests will serve the `index.html` file, which is required for React Router and other client-side routing solutions.
+The [`not_found_handling`](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/) value has been set to `single-page-application`. This means that all not-found requests will serve the `index.html` file, which is required for React Router and other client-side routing solutions.
 
 With the Cloudflare plugin, the `assets` routing configuration is used in place of Vite's default behavior. This ensures that your application's [routing configuration](https://developers.cloudflare.com/workers/static-assets/routing/) works the same way while developing as it does when deployed to production.
 
-The [directory](https://developers.cloudflare.com/workers/static-assets/binding/#directory) field is not used when configuring assets with Vite. The `directory` in the output configuration will automatically point to the client build output. Refer to [Static Assets](https://developers.cloudflare.com/workers/vite-plugin/reference/static-assets/) for more information.
+The [`directory`](https://developers.cloudflare.com/workers/static-assets/binding/#directory) field is not used when configuring assets with Vite. The `directory` in the output configuration will automatically point to the client build output. Refer to [Static Assets](https://developers.cloudflare.com/workers/vite-plugin/reference/static-assets/) for more information.
 
 Note
 
@@ -120,6 +122,8 @@ When using the Cloudflare Vite plugin, the Worker config (for example, `wrangler
 ### Update the `.gitignore` file
 
 When developing Workers, additional files are used and/or generated that should not be stored in Git. Add the following lines to your `.gitignore` file:
+
+*.gitignoretxt*
 
 ```txt
 .wrangler
@@ -170,6 +174,8 @@ bun add -d @cloudflare/workers-types
 
 Create a `tsconfig.worker.json` that extends your Node TypeScript configuration and adds the Workers types:
 
+*tsconfig.worker.jsonjsonc*
+
 ```jsonc
 {
 	"extends": "./tsconfig.node.json",
@@ -182,6 +188,8 @@ Create a `tsconfig.worker.json` that extends your Node TypeScript configuration 
 ```
 
 Then add a reference to this new configuration in your root `tsconfig.json`:
+
+*tsconfig.jsonjsonc*
 
 ```jsonc
 {
@@ -203,7 +211,7 @@ Update your Wrangler configuration file to add a `main` field that points to you
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "my-app",
   // Set this to today's date
-  "compatibility_date": "2026-09-05",
+  "compatibility_date": "2026-09-14",
   "main": "./worker/index.ts",
   "assets": {
     "not_found_handling": "single-page-application"
@@ -214,7 +222,7 @@ Update your Wrangler configuration file to add a `main` field that points to you
 ```toml
 name = "my-app"
 # Set this to today's date
-compatibility_date = "2026-09-05"
+compatibility_date = "2026-09-14"
 main = "./worker/index.ts"
 
 [assets]
@@ -226,6 +234,8 @@ The `main` field specifies the entry file for your Worker code.
 ### Add your API Worker
 
 Create a `worker/index.ts` file with the following contents:
+
+*worker/index.tsts*
 
 ```ts
 export default {
@@ -249,14 +259,14 @@ Note
 
 For top-level navigation requests, browsers send a `Sec-Fetch-Mode: navigate` header. If this is present and the URL does not match a static asset, the `not_found_handling` behavior will be invoked rather than the Worker. This implicit routing is the default behavior.
 
-If you would instead like to define the routes that invoke your Worker explicitly, you can provide an array of route patterns to [run\_worker\_first](https://developers.cloudflare.com/workers/static-assets/binding/#run%5Fworker%5Ffirst). This opts out of interpreting the `Sec-Fetch-Mode` header.
+If you would instead like to define the routes that invoke your Worker explicitly, you can provide an array of route patterns to [`run_worker_first`](https://developers.cloudflare.com/workers/static-assets/binding/#run_worker_first). This opts out of interpreting the `Sec-Fetch-Mode` header.
 
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "cloudflare-vite-tutorial",
   // Set this to today's date
-  "compatibility_date": "2026-09-05",
+  "compatibility_date": "2026-09-14",
   "main": "./worker/index.ts",
   "assets": {
     "not_found_handling": "single-page-application",
@@ -270,7 +280,7 @@ If you would instead like to define the routes that invoke your Worker explicitl
 ```toml
 name = "cloudflare-vite-tutorial"
 # Set this to today's date
-compatibility_date = "2026-09-05"
+compatibility_date = "2026-09-14"
 main = "./worker/index.ts"
 
 [assets]
@@ -281,6 +291,8 @@ run_worker_first = ["/api/*"]
 ### Call the API from the client
 
 Edit `src/App.tsx` so that it includes an additional button that calls the API and sets some state:
+
+*src/App.tsxtsx*
 
 ```tsx
 import { useState } from "react";
@@ -411,9 +423,9 @@ In this tutorial, we created an SPA that could be deployed as a Worker with stat
 
 Possible next steps include:
 
-* Adding a binding to another Cloudflare service such as a [KV namespace](https://developers.cloudflare.com/kv/) or [D1 database](https://developers.cloudflare.com/d1/)
-* Expanding the API to include additional routes
-* Using a library, such as [Hono ↗](https://hono.dev/) or [tRPC ↗](https://trpc.io/), in your API Worker
+- Adding a binding to another Cloudflare service such as a [KV namespace](https://developers.cloudflare.com/kv/) or [D1 database](https://developers.cloudflare.com/d1/)
+- Expanding the API to include additional routes
+- Using a library, such as [Hono ↗](https://hono.dev/) or [tRPC ↗](https://trpc.io/), in your API Worker
 
 Was this helpful?
 

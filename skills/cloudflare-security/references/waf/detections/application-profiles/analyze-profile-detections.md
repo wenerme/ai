@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Analyze profile detections
 
-Last updated Aug 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/application-profiles/analyze-profile-detections/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/application-profiles/analyze-profile-detections/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use **Profile Analysis** in [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) to investigate profile detections.
 
@@ -20,14 +20,13 @@ Use **Profile Analysis** in [Security Analytics](https://developers.cloudflare.c
 
 Profile Analysis classifies requests with these statuses:
 
-* **Conforms:** The evaluated request matched its applicable profile.
-* **Violates:** The evaluated request did not match its applicable profile.
-* **Not evaluated:** No applicable profile is available, or the profile does not apply.
+- **Conforms:** The evaluated request matched its applicable profile.
+- **Violates:** The evaluated request did not match its applicable profile.
+- **Not evaluated:** No applicable profile is available, or the profile does not apply.
 
 ## Review detections
 
-1. In the Cloudflare dashboard, go to **Security** \> **Analytics**.
-[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+1. In the Cloudflare dashboard, go to **Security** > **Analytics**. [Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. Open **Profile Analysis** and select a profile.
 3. Review conformance trends over your selected time range.
 4. Inspect sampled violations for the request component and affected field.

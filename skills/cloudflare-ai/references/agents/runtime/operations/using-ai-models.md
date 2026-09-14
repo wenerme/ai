@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Using AI Models
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agents can call AI models from any provider. [Workers AI](https://developers.cloudflare.com/workers-ai/) is built in and requires no API keys. You can also use [OpenAI ↗](https://platform.openai.com/docs/quickstart?language=javascript), [Anthropic ↗](https://docs.anthropic.com/en/api/client-sdks#typescript), [Google Gemini ↗](https://ai.google.dev/gemini-api/docs/openai), or any service that exposes an OpenAI-compatible API.
 
@@ -20,13 +20,15 @@ The [AI SDK ↗](https://ai-sdk.dev/docs/introduction) provides a unified interf
 
 ## Calling AI Models
 
-You can call models from any method within an Agent, including from HTTP requests using the [onRequest](https://developers.cloudflare.com/agents/runtime/agents-api/) handler, when a [scheduled task](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) runs, when handling a WebSocket message in the [onMessage](https://developers.cloudflare.com/agents/runtime/communication/websockets/) handler, or from any of your own methods.
+You can call models from any method within an Agent, including from HTTP requests using the [`onRequest`](https://developers.cloudflare.com/agents/runtime/agents-api/) handler, when a [scheduled task](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) runs, when handling a WebSocket message in the [`onMessage`](https://developers.cloudflare.com/agents/runtime/communication/websockets/) handler, or from any of your own methods.
 
 Agents can call AI models on their own — autonomously — and can handle long-running responses that take minutes (or longer) to respond in full. If a client disconnects mid-stream, the Agent keeps running and can catch the client up when it reconnects.
 
 ### Streaming over WebSockets
 
-Modern reasoning models can take some time to both generate a response _and_ stream the response back to the client. Instead of buffering the entire response, you can stream it back over [WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/).
+Modern reasoning models can take some time to both generate a response *and* stream the response back to the client. Instead of buffering the entire response, you can stream it back over [WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/).
+
+*src/index.jsjs*
 
 ```js
 import { Agent } from "agents";
@@ -64,6 +66,8 @@ export class MyAgent extends Agent {
 	}
 }
 ```
+
+*src/index.tsts*
 
 ```ts
 import { Agent } from "agents";
@@ -114,6 +118,8 @@ You can use [any of the models available in Workers AI](https://developers.cloud
 
 Workers AI supports streaming responses by setting `stream: true`. Use streaming to avoid buffering and delaying responses, especially for larger models or reasoning models.
 
+*src/index.jsjs*
+
 ```js
 import { Agent } from "agents";
 
@@ -133,6 +139,8 @@ export class MyAgent extends Agent {
 	}
 }
 ```
+
+*src/index.tsts*
 
 ```ts
 import { Agent } from "agents";
@@ -175,7 +183,9 @@ binding = "AI"
 
 ### Model routing
 
-You can use [AI Gateway](https://developers.cloudflare.com/ai-gateway/) directly from an Agent by specifying a [gateway configuration](https://developers.cloudflare.com/ai-gateway/usage/providers/workersai/) when calling the AI binding. Model routing lets you route requests across providers based on availability, rate limits, or cost budgets.
+You can use [AI Gateway](https://developers.cloudflare.com/ai-gateway/) directly from an Agent by specifying a [`gateway` configuration](https://developers.cloudflare.com/ai-gateway/usage/providers/workersai/) when calling the AI binding. Model routing lets you route requests across providers based on availability, rate limits, or cost budgets.
+
+*src/index.jsjs*
 
 ```js
 import { Agent } from "agents";
@@ -200,6 +210,8 @@ export class MyAgent extends Agent {
 	}
 }
 ```
+
+*src/index.tsts*
 
 ```ts
 import { Agent } from "agents";
@@ -248,7 +260,7 @@ Visit the [AI Gateway documentation](https://developers.cloudflare.com/ai-gatewa
 
 ## AI SDK
 
-The [AI SDK ↗](https://ai-sdk.dev/docs/introduction) provides a unified API for text generation, tool calling, structured responses, and more. It works with any provider that has an AI SDK adapter, including Workers AI via [workers-ai-provider ↗](https://www.npmjs.com/package/workers-ai-provider).
+The [AI SDK ↗](https://ai-sdk.dev/docs/introduction) provides a unified API for text generation, tool calling, structured responses, and more. It works with any provider that has an AI SDK adapter, including Workers AI via [`workers-ai-provider` ↗](https://www.npmjs.com/package/workers-ai-provider).
 
 npmyarnpnpmbun
 
@@ -268,6 +280,8 @@ pnpm add ai workers-ai-provider
 bun add ai workers-ai-provider
 ```
 
+*src/index.jsjs*
+
 ```js
 import { Agent } from "agents";
 import { generateText } from "ai";
@@ -285,6 +299,8 @@ export class MyAgent extends Agent {
 	}
 }
 ```
+
+*src/index.tsts*
 
 ```ts
 import { Agent } from "agents";
@@ -328,6 +344,8 @@ pnpm add ai @ai-sdk/openai
 bun add ai @ai-sdk/openai
 ```
 
+*src/index.jsjs*
+
 ```js
 import { Agent } from "agents";
 import { generateText } from "ai";
@@ -344,6 +362,8 @@ export class MyAgent extends Agent {
 	}
 }
 ```
+
+*src/index.tsts*
 
 ```ts
 import { Agent } from "agents";
@@ -367,6 +387,8 @@ export class MyAgent extends Agent {
 Agents can call models across any service that supports the OpenAI API. For example, you can use the OpenAI SDK to call one of [Google's Gemini models ↗](https://ai.google.dev/gemini-api/docs/openai#node.js) directly from your Agent.
 
 Agents can stream responses back over HTTP using Server-Sent Events (SSE) from within an `onRequest` handler, or by using the native [WebSocket API](https://developers.cloudflare.com/agents/runtime/communication/websockets/) to stream responses back to a client.
+
+*src/index.jsjs*
 
 ```js
 import { Agent } from "agents";
@@ -406,6 +428,8 @@ export class MyAgent extends Agent {
 	}
 }
 ```
+
+*src/index.tsts*
 
 ```ts
 import { Agent } from "agents";

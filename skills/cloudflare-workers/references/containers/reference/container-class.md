@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Container Interface
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/reference/container-class/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/reference/container-class/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The [Container class ↗](https://github.com/cloudflare/containers) from [@cloudflare/containers ↗](https://www.npmjs.com/package/@cloudflare/containers) is the most common way to interact with container instances from a Worker.
+The [`Container` class ↗](https://github.com/cloudflare/containers) from [`@cloudflare/containers` ↗](https://www.npmjs.com/package/@cloudflare/containers) is the most common way to interact with container instances from a Worker.
 
-**`Container` extends [DurableObject](https://developers.cloudflare.com/durable-objects/api/base/).** The Durable Object manages routing, persistent state, and lifecycle hooks, while the container process runs your image inside a Linux VM. Because your subclass is a Durable Object, you have access to the full Durable Object API — including [this.ctx.storage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) for persistent SQLite-backed storage and [this.ctx.id](https://developers.cloudflare.com/durable-objects/api/id/) for the unique instance identifier. Use Durable Object storage to persist state that should survive container restarts, such as configuration, user data, or task results.
+**`Container` extends [`DurableObject`](https://developers.cloudflare.com/durable-objects/api/base/).** The Durable Object manages routing, persistent state, and lifecycle hooks, while the container process runs your image inside a Linux VM. Because your subclass is a Durable Object, you have access to the full Durable Object API — including [`this.ctx.storage`](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) for persistent SQLite-backed storage and [`this.ctx.id`](https://developers.cloudflare.com/durable-objects/api/id/) for the unique instance identifier. Use Durable Object storage to persist state that should survive container restarts, such as configuration, user data, or task results.
 
 npmyarnpnpmbun
 
@@ -130,13 +130,13 @@ Use `this.ctx.container.exec()` to start another process inside a running Contai
 
 Configure these as class fields on your subclass. They apply to every instance of the container.
 
-* **`defaultPort`** (`number`, optional) — the port your container process listens on. [fetch()](#fetch) and [containerFetch()](#containerfetch) forward requests here unless you specify a different port via [switchPort()](#switchport) or the `port` argument to [containerFetch()](#containerfetch). Most subclasses set this.
-* **`requiredPorts`** (`number[]`, optional) — ports that must be accepting connections before the container is considered ready. Used by [startAndWaitForPorts()](#startandwaitforports) when no `ports` argument is passed. Set this when your container runs multiple services that all need to be healthy before serving traffic.
-* **`sleepAfter`** (`string | number`, default: `"10m"`) — how long to keep the container alive without activity before shutting it down. Accepts a number of seconds or a duration string such as `"30s"`, `"5m"`, or `"1h"`. Activity resets the timer — see [renewActivityTimeout()](#renewactivitytimeout) for manual resets.
-* **`envVars`** (`Record<string, string>`, default: `{}`) — environment variables passed to the container on every start. For per-instance variables, pass `envVars` through [startAndWaitForPorts()](#startandwaitforports) instead.
-* **`entrypoint`** (`string[]`, optional) — overrides the image's default entrypoint. Useful when you want to run a different command without rebuilding the image, such as a dev server or a one-off task.
-* **`enableInternet`** (`boolean`, default: `true`) — controls whether the container can make outbound HTTP requests. Set to `false` for sandboxed environments where you want to intercept or block all outbound traffic. For more information, refer to [Handle outbound traffic](https://developers.cloudflare.com/containers/guides/outbound-traffic/).
-* **`pingEndpoint`** (`string`, default: `"ping"`) — the host and path the class uses to health-check the container during startup. Most users do not need to change this.
+- **`defaultPort`** ( `number`, optional) — the port your container process listens on. [`fetch()`](#fetch) and [`containerFetch()`](#containerfetch) forward requests here unless you specify a different port via [`switchPort()`](#switchport) or the `port` argument to [`containerFetch()`](#containerfetch). Most subclasses set this.
+- **`requiredPorts`** ( `number[]`, optional) — ports that must be accepting connections before the container is considered ready. Used by [`startAndWaitForPorts()`](#startandwaitforports) when no `ports` argument is passed. Set this when your container runs multiple services that all need to be healthy before serving traffic.
+- **`sleepAfter`** ( `string | number`, default: `"10m"`) — how long to keep the container alive without activity before shutting it down. Accepts a number of seconds or a duration string such as `"30s"`, `"5m"`, or `"1h"`. Activity resets the timer — see [`renewActivityTimeout()`](#renewactivitytimeout) for manual resets.
+- **`envVars`** ( `Record<string, string>`, default: `{}`) — environment variables passed to the container on every start. For per-instance variables, pass `envVars` through [`startAndWaitForPorts()`](#startandwaitforports) instead.
+- **`entrypoint`** ( `string[]`, optional) — overrides the image's default entrypoint. Useful when you want to run a different command without rebuilding the image, such as a dev server or a one-off task.
+- **`enableInternet`** ( `boolean`, default: `true`) — controls whether the container can make outbound HTTP requests. Set to `false` for sandboxed environments where you want to intercept or block all outbound traffic. For more information, refer to [Handle outbound traffic](https://developers.cloudflare.com/containers/guides/outbound-traffic/).
+- **`pingEndpoint`** ( `string`, default: `"ping"`) — the host and path the class uses to health-check the container during startup. Most users do not need to change this.
 
 ## Lifecycle hooks
 
@@ -152,7 +152,7 @@ onStart(): void | Promise<void>
 
 **Returns**: `void | Promise<void>`. Resolve after any startup logic finishes.
 
-Use this to log startup, seed data, or schedule recurring tasks with [schedule()](#schedule).
+Use this to log startup, seed data, or schedule recurring tasks with [`schedule()`](#schedule).
 
 ```js
 import { Container } from "@cloudflare/containers";
@@ -193,8 +193,8 @@ onStop(params: StopParams): void | Promise<void>
 
 **Parameters**:
 
-* `params.exitCode` \- Container process exit code.
-* `params.reason` \- Why the container stopped: `'exit'` when the process exited on its own, or `'runtime_signal'` when the runtime signalled it.
+- `params.exitCode` - Container process exit code.
+- `params.reason` - Why the container stopped: `'exit'` when the process exited on its own, or `'runtime_signal'` when the runtime signalled it.
 
 **Returns**: `void | Promise<void>`. Resolve after your shutdown logic finishes.
 
@@ -230,7 +230,7 @@ onError(error: unknown): any
 
 **Parameters**:
 
-* `error` \- The error thrown during startup or port checks.
+- `error` - The error thrown during startup or port checks.
 
 **Returns**: `any`. The default implementation logs the error and re-throws it.
 
@@ -260,7 +260,7 @@ export class MyContainer extends Container {
 
 ### `onActivityExpired`
 
-Run Worker code when the [sleepAfter](#sleepafter) timer expires.
+Run Worker code when the [`sleepAfter`](#sleepafter) timer expires.
 
 ```ts
 onActivityExpired(): Promise<void>
@@ -268,11 +268,11 @@ onActivityExpired(): Promise<void>
 
 **Returns**: `Promise<void>`. Resolve after your idle-time logic finishes.
 
-Called when the [sleepAfter](#sleepafter) timeout expires with no incoming requests. The default implementation calls [stop()](#stop).
+Called when the [`sleepAfter`](#sleepafter) timeout expires with no incoming requests. The default implementation calls [`stop()`](#stop).
 
 Caution
 
-If you override `onActivityExpired()`, call [await this.stop()](#stop) or [await this.destroy()](#destroy). Otherwise, the container does not go to sleep.
+If you override `onActivityExpired()`, call [`await this.stop()`](#stop) or [`await this.destroy()`](#destroy). Otherwise, the container does not go to sleep.
 
 If you override this method without stopping the container, the timer renews and the hook fires again on the next expiry.
 
@@ -319,13 +319,13 @@ fetch(request: Request): Promise<Response>
 
 **Parameters**:
 
-* `request` \- The incoming request to proxy to the container.
+- `request` - The incoming request to proxy to the container.
 
 **Returns**: `Promise<Response>` from the container or from your custom routing logic.
 
-By default, `fetch` forwards the request to the container process at [defaultPort](#defaultport). The container is started automatically if it is not already running.
+By default, `fetch` forwards the request to the container process at [`defaultPort`](#defaultport). The container is started automatically if it is not already running.
 
-Override `fetch` when you need routing logic, authentication, or other middleware before forwarding to the container. Inside the override, call [this.containerFetch()](#containerfetch) rather than `this.fetch()` to avoid infinite recursion:
+Override `fetch` when you need routing logic, authentication, or other middleware before forwarding to the container. Inside the override, call [`this.containerFetch()`](#containerfetch) rather than `this.fetch()` to avoid infinite recursion:
 
 ```js
 import { Container } from "@cloudflare/containers";
@@ -368,7 +368,7 @@ export class MyContainer extends Container {
 
 ### `containerFetch`
 
-Send an HTTP request directly to the container process. Generally, users should prefer to use [fetch](#fetch) unless it has been overridden.
+Send an HTTP request directly to the container process. Generally, users should prefer to use [`fetch`](#fetch) unless it has been overridden.
 
 ```ts
 containerFetch(request: Request, port?: number): Promise<Response>
@@ -377,16 +377,16 @@ containerFetch(url: string | URL, init?: RequestInit, port?: number): Promise<Re
 
 **Parameters**:
 
-* `request` \- Existing `Request` object to forward.
-* `url` \- URL to request when you are constructing a new request.
-* `init` \- Standard `RequestInit` options for the URL-based overload.
-* `port` \- Optional target port. If omitted, the class uses [defaultPort](#defaultport).
+- `request` - Existing `Request` object to forward.
+- `url` - URL to request when you are constructing a new request.
+- `init` - Standard `RequestInit` options for the URL-based overload.
+- `port` - Optional target port. If omitted, the class uses [`defaultPort`](#defaultport).
 
 **Returns**: `Promise<Response>` from the container.
 
-This is what the default [fetch()](#fetch) implementation calls internally, and it is what you should call from within an overridden [fetch()](#fetch) method to avoid infinite recursion. It also accepts a standard fetch-style signature with a URL string and `RequestInit`, which is useful when you are constructing a new request rather than forwarding an existing one.
+This is what the default [`fetch()`](#fetch) implementation calls internally, and it is what you should call from within an overridden [`fetch()`](#fetch) method to avoid infinite recursion. It also accepts a standard fetch-style signature with a URL string and `RequestInit`, which is useful when you are constructing a new request rather than forwarding an existing one.
 
-Does not support WebSockets. Use [fetch()](#fetch) with [switchPort()](#switchport) for those.
+Does not support WebSockets. Use [`fetch()`](#fetch) with [`switchPort()`](#switchport) for those.
 
 ```js
 import { Container } from "@cloudflare/containers";
@@ -443,7 +443,7 @@ export class MyContainer extends Container {
 
 ## Start and stop
 
-In most cases you do not need to call these methods directly. [fetch()](#fetch) and [containerFetch()](#containerfetch) start the container automatically. Call these explicitly when you need to pre-warm a container, run a task on a schedule, or control the lifecycle from within a lifecycle hook.
+In most cases you do not need to call these methods directly. [`fetch()`](#fetch) and [`containerFetch()`](#containerfetch) start the container automatically. Call these explicitly when you need to pre-warm a container, run a task on a schedule, or control the lifecycle from within a lifecycle hook.
 
 ### `startAndWaitForPorts`
 
@@ -460,17 +460,17 @@ startAndWaitForPorts(
 
 **Parameters**:
 
-* `args.ports` \- Port or ports to wait for. Port resolution order is explicit `ports`, then [requiredPorts](#requiredports), then [defaultPort](#defaultport).
-* `args.startOptions` \- Per-instance startup overrides.
-* `args.startOptions.envVars` \- Per-instance environment variables.
-* `args.startOptions.entrypoint` \- Entrypoint override for this start only.
-* `args.startOptions.enableInternet` \- Whether outbound internet access is allowed for this start.
-* `args.cancellationOptions.abort` \- Abort signal to cancel startup.
-* `args.cancellationOptions.instanceGetTimeoutMS` \- Maximum time to get a container instance and issue the start command. Default: `8000`.
-* `args.cancellationOptions.portReadyTimeoutMS` \- Maximum time to wait for all ports to become ready. Default: `20000`.
-* `args.cancellationOptions.waitInterval` \- Polling interval in milliseconds. Default: `300`.
+- `args.ports` - Port or ports to wait for. Port resolution order is explicit `ports`, then [`requiredPorts`](#requiredports), then [`defaultPort`](#defaultport).
+- `args.startOptions` - Per-instance startup overrides.
+- `args.startOptions.envVars` - Per-instance environment variables.
+- `args.startOptions.entrypoint` - Entrypoint override for this start only.
+- `args.startOptions.enableInternet` - Whether outbound internet access is allowed for this start.
+- `args.cancellationOptions.abort` - Abort signal to cancel startup.
+- `args.cancellationOptions.instanceGetTimeoutMS` - Maximum time to get a container instance and issue the start command. Default: `8000`.
+- `args.cancellationOptions.portReadyTimeoutMS` - Maximum time to wait for all ports to become ready. Default: `20000`.
+- `args.cancellationOptions.waitInterval` - Polling interval in milliseconds. Default: `300`.
 
-**Returns**: `Promise<void>`. Resolves after the target ports are ready and [onStart()](#onstart) has run.
+**Returns**: `Promise<void>`. Resolves after the target ports are ready and [`onStart()`](#onstart) has run.
 
 This is the safest way to explicitly start a container when you need to be certain it is ready before sending traffic.
 
@@ -535,18 +535,18 @@ start(startOptions?: ContainerStartConfigOptions, waitOptions?: WaitOptions): Pr
 
 **Parameters**:
 
-* `startOptions` \- Per-instance startup overrides.
-* `startOptions.envVars` \- Per-instance environment variables.
-* `startOptions.entrypoint` \- Entrypoint override for this start only.
-* `startOptions.enableInternet` \- Whether outbound internet access is allowed for this start.
-* `waitOptions.portToCheck` \- Port to probe while starting. If omitted, the class uses [defaultPort](#defaultport), the first [requiredPorts](#requiredports) entry, or a fallback port.
-* `waitOptions.signal` \- Abort signal to cancel startup.
-* `waitOptions.retries` \- Maximum number of start attempts before the method throws.
-* `waitOptions.waitInterval` \- Polling interval in milliseconds between retries.
+- `startOptions` - Per-instance startup overrides.
+- `startOptions.envVars` - Per-instance environment variables.
+- `startOptions.entrypoint` - Entrypoint override for this start only.
+- `startOptions.enableInternet` - Whether outbound internet access is allowed for this start.
+- `waitOptions.portToCheck` - Port to probe while starting. If omitted, the class uses [`defaultPort`](#defaultport), the first [`requiredPorts`](#requiredports) entry, or a fallback port.
+- `waitOptions.signal` - Abort signal to cancel startup.
+- `waitOptions.retries` - Maximum number of start attempts before the method throws.
+- `waitOptions.waitInterval` - Polling interval in milliseconds between retries.
 
-**Returns**: `Promise<void>`. Resolves after the start attempt succeeds and [onStart()](#onstart) has run.
+**Returns**: `Promise<void>`. Resolves after the start attempt succeeds and [`onStart()`](#onstart) has run.
 
-Use this when the container does not expose ports, such as a batch job or a cron task, or when you want to manage readiness yourself with [waitForPort()](#waitforport). If you need to wait for all ports to be ready, use [startAndWaitForPorts()](#startandwaitforports) instead.
+Use this when the container does not expose ports, such as a batch job or a cron task, or when you want to manage readiness yourself with [`waitForPort()`](#waitforport). If you need to wait for all ports to be ready, use [`startAndWaitForPorts()`](#startandwaitforports) instead.
 
 ```js
 import { getContainer } from "@cloudflare/containers";
@@ -597,14 +597,14 @@ waitForPort(waitOptions: WaitOptions): Promise<number>
 
 **Parameters**:
 
-* `waitOptions.portToCheck` \- Port number to check.
-* `waitOptions.signal` \- Abort signal to cancel waiting.
-* `waitOptions.retries` \- Maximum number of retries before the method throws.
-* `waitOptions.waitInterval` \- Polling interval in milliseconds.
+- `waitOptions.portToCheck` - Port number to check.
+- `waitOptions.signal` - Abort signal to cancel waiting.
+- `waitOptions.retries` - Maximum number of retries before the method throws.
+- `waitOptions.waitInterval` - Polling interval in milliseconds.
 
 **Returns**: `Promise<number>`. The numeric return value is mainly useful when you are coordinating custom readiness logic across multiple waits.
 
-Throws if the port does not become available within the retry limit. Use this after [start()](#start) when you need to check multiple ports independently or in a specific sequence.
+Throws if the port does not become available within the retry limit. Use this after [`start()`](#start) when you need to check multiple ports independently or in a specific sequence.
 
 ```js
 import { Container } from "@cloudflare/containers";
@@ -653,11 +653,11 @@ stop(signal?: 'SIGTERM' | 'SIGINT' | 'SIGKILL' | number): Promise<void>
 
 **Parameters**:
 
-* `signal` \- Signal to send. Defaults to `'SIGTERM'`.
+- `signal` - Signal to send. Defaults to `'SIGTERM'`.
 
 **Returns**: `Promise<void>`. Resolves after the signal is sent and pending stop handling has completed.
 
-Defaults to `SIGTERM`, which gives the process a chance to shut down gracefully. Triggers [onStop()](#onstop).
+Defaults to `SIGTERM`, which gives the process a chance to shut down gracefully. Triggers [`onStop()`](#onstop).
 
 ```js
 import { Container } from "@cloudflare/containers";
@@ -704,7 +704,7 @@ destroy(): Promise<void>
 
 **Returns**: `Promise<void>`. Resolves after the runtime has destroyed the container.
 
-This sends `SIGKILL`. Use it when you need the container gone immediately and cannot wait for a graceful shutdown. Triggers [onStop()](#onstop).
+This sends `SIGKILL`. Use it when you need the container gone immediately and cannot wait for a graceful shutdown. Triggers [`onStop()`](#onstop).
 
 ```js
 import { Container } from "@cloudflare/containers";
@@ -753,9 +753,9 @@ getState(): Promise<State>
 
 **Returns**: `Promise<State>` with:
 
-* `status` \- One of `'running'`, `'healthy'`, `'stopping'`, `'stopped'`, or `'stopped_with_code'`.
-* `lastChange` \- Unix timestamp in milliseconds for the last state change.
-* `exitCode` \- Optional exit code when `status` is `'stopped_with_code'`.
+- `status` - One of `'running'`, `'healthy'`, `'stopping'`, `'stopped'`, or `'stopped_with_code'`.
+- `lastChange` - Unix timestamp in milliseconds for the last state change.
+- `exitCode` - Optional exit code when `status` is `'stopped_with_code'`.
 
 `running` means the container is starting and has not yet passed its health check. `healthy` means it is up and accepting requests.
 
@@ -796,7 +796,7 @@ export class MyContainer extends Container {
 
 ### `renewActivityTimeout`
 
-Reset the [sleepAfter](#sleepafter) timer.
+Reset the [`sleepAfter`](#sleepafter) timer.
 
 ```ts
 renewActivityTimeout(): void
@@ -855,20 +855,20 @@ schedule<T>(when: Date | number, callback: string, payload?: T): Promise<Schedul
 
 **Parameters**:
 
-* `when` \- Either a `Date` for a specific time or a number of seconds to delay.
-* `callback` \- Name of the class method to call.
-* `payload` \- Optional data passed to the callback method.
+- `when` - Either a `Date` for a specific time or a number of seconds to delay.
+- `callback` - Name of the class method to call.
+- `payload` - Optional data passed to the callback method.
 
 **Returns**: `Promise<Schedule<T>>` with:
 
-* `taskId` \- Unique schedule ID.
-* `callback` \- Method name that will be called.
-* `payload` \- Payload that will be passed to the callback.
-* `type` \- `'scheduled'` for an absolute time or `'delayed'` for a relative delay.
-* `time` \- Unix timestamp in seconds when the task will run.
-* `delayInSeconds` \- Delay in seconds when `type` is `'delayed'`.
+- `taskId` - Unique schedule ID.
+- `callback` - Method name that will be called.
+- `payload` - Payload that will be passed to the callback.
+- `type` - `'scheduled'` for an absolute time or `'delayed'` for a relative delay.
+- `time` - Unix timestamp in seconds when the task will run.
+- `delayInSeconds` - Delay in seconds when `type` is `'delayed'`.
 
-Do not override [alarm() ↗](https://developers.cloudflare.com/durable-objects/api/alarms/) directly. The `Container` class uses the alarm handler to manage the container lifecycle, so use [schedule()](#schedule) instead.
+Do not override [`alarm()` ↗](https://developers.cloudflare.com/durable-objects/api/alarms/) directly. The `Container` class uses the alarm handler to manage the container lifecycle, so use [`schedule()`](#schedule) instead.
 
 The following example schedules a recurring health report starting at container startup:
 
@@ -994,8 +994,8 @@ getContainer<T>(binding: DurableObjectNamespace<T>, name?: string): DurableObjec
 
 **Parameters**:
 
-* `binding` \- Durable Object namespace binding for your container class.
-* `name` \- Stable instance name. Defaults to `cf-singleton-container`.
+- `binding` - Durable Object namespace binding for your container class.
+- `name` - Stable instance name. Defaults to `cf-singleton-container`.
 
 **Returns**: `DurableObjectStub<T>` for the named container instance.
 
@@ -1033,8 +1033,8 @@ getRandom<T>(binding: DurableObjectNamespace<T>, instances?: number): Promise<Du
 
 **Parameters**:
 
-* `binding` \- Durable Object namespace binding for your container class.
-* `instances` \- Total number of instances to choose from. Defaults to `3`.
+- `binding` - Durable Object namespace binding for your container class.
+- `instances` - Total number of instances to choose from. Defaults to `3`.
 
 **Returns**: `Promise<DurableObjectStub<T>>` for the randomly selected instance.
 
@@ -1074,12 +1074,12 @@ switchPort(request: Request, port: number): Request
 
 **Parameters**:
 
-* `request` \- Request to copy.
-* `port` \- Port to encode into the request headers.
+- `request` - Request to copy.
+- `port` - Port to encode into the request headers.
 
 **Returns**: `Request` copy with the target port set.
 
-Use this when you need to target a specific port and also need WebSocket support. If you do not need WebSockets, pass the port directly to [containerFetch()](#containerfetch) instead.
+Use this when you need to target a specific port and also need WebSocket support. If you do not need WebSockets, pass the port directly to [`containerFetch()`](#containerfetch) instead.
 
 ```js
 import { getContainer, switchPort } from "@cloudflare/containers";

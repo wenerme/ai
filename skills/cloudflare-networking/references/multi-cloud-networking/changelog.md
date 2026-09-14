@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Changelog
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/multi-cloud-networking/changelog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/multi-cloud-networking/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/multi-cloud-networking.xml)
 
@@ -27,8 +27,8 @@ You can now generate customized terraform files for building cloud network on-ra
 
 You might want to do this to:
 
-* Review the proposed configuration for an on-ramp before deploying it with Cloudflare.
-* Deploy the on-ramp using your own infrastructure-as-code pipeline instead of deploying it with Cloudflare.
+- Review the proposed configuration for an on-ramp before deploying it with Cloudflare.
+- Deploy the on-ramp using your own infrastructure-as-code pipeline instead of deploying it with Cloudflare.
 
 For more details, refer to [Set up with Terraform](https://developers.cloudflare.com/multi-cloud-networking/cloud-on-ramps/#set-up-with-terraform).
 

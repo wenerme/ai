@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Platform
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/artifacts/platform/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/platform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use these pages to understand platform constraints and track product updates for Artifacts.
 
-* [Pricing](https://developers.cloudflare.com/artifacts/platform/pricing/)
-* [Limits](https://developers.cloudflare.com/artifacts/platform/limits/)
-* [Changelog](https://developers.cloudflare.com/artifacts/platform/changelog/)
+- [Pricing](https://developers.cloudflare.com/artifacts/platform/pricing/)
+- [Limits](https://developers.cloudflare.com/artifacts/platform/limits/)
+- [Changelog](https://developers.cloudflare.com/artifacts/platform/changelog/)
 
 Was this helpful?
 

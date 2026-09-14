@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Routing traffic
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/concepts/routing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/concepts/routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Before, we covered how requests move from load balancers to pools and then from pools to individual servers.
 
-What we did not mention, however, was _how_ the load balancer and pools make those decisions.
+What we did not mention, however, was *how* the load balancer and pools make those decisions.
 
 This is a concept known as routing.
 
@@ -54,11 +54,10 @@ With enough unhealthy endpoints, the pool itself may be considered unhealthy as 
 
 When a pool reaches **Critical** health, your load balancer will begin diverting traffic according to its [Traffic steering policy](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/):
 
-* **Off**:
-
-  * If the active pool becomes unhealthy, traffic goes to the next pool in order.
-  * If an inactive pool becomes unhealthy, traffic continues to go to the active pool (but would skip over the unhealthy pool in the failover order).
-* **All other methods**: Traffic is distributed across all remaining pools according to the traffic steering policy.
+- **Off**:
+  - If the active pool becomes unhealthy, traffic goes to the next pool in order.
+  - If an inactive pool becomes unhealthy, traffic continues to go to the active pool (but would skip over the unhealthy pool in the failover order).
+- **All other methods**: Traffic is distributed across all remaining pools according to the traffic steering policy.
 
 #### Fallback pools
 
@@ -72,8 +71,8 @@ Fallback pools are important because traffic still might be coming to your load 
 
 Finally, specific settings can also affect the ways a load balancer distributes traffic, such as:
 
-* Routing based on [specific aspects](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/) of the request.
-* Sending all requests from a [specific end user](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/) to the same server, preserving information about their user session like items in a shopping cart.
+- Routing based on [specific aspects](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/) of the request.
+- Sending all requests from a [specific end user](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/) to the same server, preserving information about their user session like items in a shopping cart.
 
 Was this helpful?
 

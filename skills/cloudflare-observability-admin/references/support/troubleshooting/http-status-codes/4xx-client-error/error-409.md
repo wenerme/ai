@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Error 409
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-409/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-409/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## 409 Conflict
 
@@ -24,8 +24,8 @@ For more details, refer to [RFC 7231 ↗](https://tools.ietf.org/html/rfc7231).
 
 This error typically happens with a `PUT` request when multiple clients are attempting to edit the same resource. To solve this issue:
 
-* The server should generate a payload that includes enough information for the client to recognize the source of the conflict.
-* Clients should retry the request again after resolving the conflict.
+- The server should generate a payload that includes enough information for the client to recognize the source of the conflict.
+- Clients should retry the request again after resolving the conflict.
 
 ### Cloudflare-specific information
 

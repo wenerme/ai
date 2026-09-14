@@ -12,18 +12,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Security Events
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/analytics/security-events/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/analytics/security-events/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Security Events allows you to review mitigated requests and helps you tailor your security configurations. Use Security Events to investigate requests that Cloudflare security products acted on or flagged, identify false positives, and fine-tune your security rules.
+Security Events allows you to review mitigated requests
+
+ and helps you tailor your security configurations. Use Security Events to investigate requests that Cloudflare security products acted on or flagged, identify false positives, and fine-tune your security rules.
 
 If you want to analyze all incoming traffic, including requests that Cloudflare did not act on, refer to [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) instead.
 
 The main elements of the dashboard are the following:
 
-* [Events summary](#events-summary): Provides the number of security events on traffic during the selected time period, grouped according to the selected dimension (for example, Action, Host, Country).
-* [Events by service](#events-by-service): Lists the security-related activity per security feature (for example, WAF, API Shield).
-* [Top events by source](#top-events-by-source): Provides details of the traffic flagged or actioned by a Cloudflare security feature (for example, IP addresses, User Agents, Paths, Countries, Hosts, ASNs).
-* [Sampled logs](#sampled-logs): Summarizes security events by date to show the action taken and the applied Cloudflare security product.
+- [Events summary](#events-summary): Provides the number of security events on traffic during the selected time period, grouped according to the selected dimension (for example, Action, Host, Country).
+- [Events by service](#events-by-service): Lists the security-related activity per security feature (for example, WAF, API Shield).
+- [Top events by source](#top-events-by-source): Provides details of the traffic flagged or actioned by a Cloudflare security feature (for example, IP addresses, User Agents, Paths, Countries, Hosts, ASNs).
+- [Sampled logs](#sampled-logs): Summarizes security events by date to show the action taken and the applied Cloudflare security product.
 
 Security Events displays information about requests actioned or flagged by Cloudflare security products, including features such as [Browser Integrity Check](https://developers.cloudflare.com/waf/tools/browser-integrity-check/). A single HTTP request can generate one or more security events when it triggers security features. The Security Events dashboard shows these individual events, not the HTTP requests themselves.
 
@@ -31,27 +33,26 @@ Security Events displays information about requests actioned or flagged by Cloud
 
 Available features vary according to your Cloudflare plan:
 
-|                                  | Free                    | Pro                     | Business              | Enterprise             |
-| -------------------------------- | ----------------------- | ----------------------- | --------------------- | ---------------------- |
-| Availability                     | Yes                     | Yes                     | Yes                   | Yes                    |
-| Dashboard features               | Sampled logs only       | All                     | All                   | All                    |
-| Account-level dashboard          | No                      | No                      | No                    | Yes                    |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | Yes | Yes | Yes | Yes |
+| Dashboard features | Sampled logs only | All | All | All |
+| Account-level dashboard | No | No | No | Yes |
 | Historical time (data retention) | Up to the last 24 hours | Up to the last 24 hours | Up to the last 3 days | Up to the last 30 days |
-| Max query window                 | 24 hours                | 24 hours                | 3 days                | 31 days                |
-| Export report                    | No                      | No                      | Up to 500 events      | Up to 500 events       |
-| Print report                     | No                      | Yes                     | Yes                   | Yes                    |
+| Max query window | 24 hours | 24 hours | 3 days | 31 days |
+| Export report | No | No | Up to 500 events | Up to 500 events |
+| Print report | No | Yes | Yes | Yes |
 
 ## Location in the dashboard
 
 To open Security Events for a given zone:
 
-1. In the Cloudflare dashboard, go to the **Analytics** page.
-[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+1. In the Cloudflare dashboard, go to the **Analytics** page. [Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. Select the **Events** tab.
 
 Additionally, Enterprise customers have access to the account-level dashboard:
 
-[Go to **Security events** ↗](https://dash.cloudflare.com/?to=/:account/security-center/events)
+[Go to **Security events** ↗](https://dash.cloudflare.com/?to=/:account/security-center/events)
 
 ## Adjust displayed data
 
@@ -66,14 +67,14 @@ You can adjust the scope of analytics by manually entering filter conditions. Al
 To manually add a filter:
 
 1. Select **Add filter**.
-2. Select a field, an operator, and a value. For example, to filter events by IP address, select _IP_ for the field, select _equals_ for the operator, and enter the IP address.
+2. Select a field, an operator, and a value. For example, to filter events by IP address, select *IP* for the field, select *equals* for the operator, and enter the IP address.
 3. Select **Apply**.
 
 Take the following into account when entering filter values:
 
-* Do not add quotes around values.
-* Do not enter the `AS` prefix when entering ASN numbers. For example, enter `1423` instead of `AS1423`.
-* Wildcards are not supported.
+- Do not add quotes around values.
+- Do not enter the `AS` prefix when entering ASN numbers. For example, enter `1423` instead of `AS1423`.
+- Wildcards are not supported.
 
 ### Adjust report duration
 
@@ -131,12 +132,12 @@ For details on most actions that appear in **Sampled logs**, refer to [Actions](
 
 Besides the actions you can select when configuring rules in Cloudflare security products, you may also find events with the following associated actions:
 
-* _Connection Close_
-* _Force Connection Close_
+- *Connection Close*
+- *Force Connection Close*
 
 For details on these actions, refer to [HTTP DDoS Attack Protection parameters](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/override-parameters/#action).
 
-The [_Managed Challenge_](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/#managed-challenge) action that may appear in **Sampled logs** is available in the following security features and products: WAF custom rules, rate limiting rules, Bot Fight Mode, IP Access rules, User Agent Blocking rules, and firewall rules (deprecated).
+The [*Managed Challenge*](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/#managed-challenge) action that may appear in **Sampled logs** is available in the following security features and products: WAF custom rules, rate limiting rules, Bot Fight Mode, IP Access rules, User Agent Blocking rules, and firewall rules (deprecated).
 
 ### Export event log data
 
@@ -164,9 +165,9 @@ The generated report will reflect all applied filters.
 
 Security Events currently has these limitations:
 
-* Security Events may use sampled data to improve performance. Refer to [Sampling](#sampling) for more information.
-* The Cloudflare dashboard may show an inaccurate number of events per page. Data queries are highly optimized, but this means that pagination may not always work because the source data may have been sampled. The GraphQL Analytics API does not have this pagination issue.
-* Triggered [OWASP rules](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/) appear in the Security Events page under **Additional logs**, but they are not included in exported JSON files.
+- Security Events may use sampled data to improve performance. Refer to [Sampling](#sampling) for more information.
+- The Cloudflare dashboard may show an inaccurate number of events per page. Data queries are highly optimized, but this means that pagination may not always work because the source data may have been sampled. The GraphQL Analytics API does not have this pagination issue.
+- Triggered [OWASP rules](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/) appear in the Security Events page under **Additional logs**, but they are not included in exported JSON files.
 
 ## Sampling
 
@@ -184,15 +185,15 @@ The retention and query window for the `firewallEventsAdaptive` dataset differ f
 
 The following tables show the different limits per Cloudflare plan:
 
-| Data retention (historical time) for...   | Free     | Pro      | Business | Enterprise |
-| ----------------------------------------- | -------- | -------- | -------- | ---------- |
-| Security Events (firewallEventsAdaptive)  | 24 hours | 24 hours | 3 days   | 30 days    |
-| Security Analytics (httpRequestsAdaptive) | 7 days   | 7 days   | 31 days  | 90 days    |
+| Data retention (historical time) for... | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Security Events (`firewallEventsAdaptive`) | 24 hours | 24 hours | 3 days | 30 days |
+| Security Analytics (`httpRequestsAdaptive`) | 7 days | 7 days | 31 days | 90 days |
 
-| Maximum query window for...               | Free     | Pro      | Business | Enterprise |
-| ----------------------------------------- | -------- | -------- | -------- | ---------- |
-| Security Events (firewallEventsAdaptive)  | 24 hours | 24 hours | 3 days   | 31 days    |
-| Security Analytics (httpRequestsAdaptive) | 24 hours | 7 days   | 31 days  | 31 days    |
+| Maximum query window for... | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Security Events (`firewallEventsAdaptive`) | 24 hours | 24 hours | 3 days | 31 days |
+| Security Analytics (`httpRequestsAdaptive`) | 24 hours | 7 days | 31 days | 31 days |
 
 Was this helpful?
 

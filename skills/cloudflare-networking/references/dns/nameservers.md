@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Nameservers
 
-Last updated Apr 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/nameservers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/nameservers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Nameservers are DNS servers that answer DNS queries about the domains they are authoritative for. When a visitor types your domain into a browser, the [DNS resolution process ↗](https://www.cloudflare.com/learning/dns/what-is-dns/) passes through several server types and eventually reaches the authoritative nameservers for the final answer.
 

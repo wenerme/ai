@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This section will describe tools for troubleshooting and address common errors.
 
@@ -23,6 +23,8 @@ General [logging](https://developers.cloudflare.com/workers/observability/logs/)
 ### Function invocations
 
 The invocations of tools can be logged as in any Worker using `console.log()`:
+
+*Logging tool invocationsts*
 
 ```ts
 export default {
@@ -41,6 +43,8 @@ export default {
 ### Logging within `runWithTools`
 
 The `runWithTools` function has a `verbose` mode that emits helpful logs for debugging of function calls as well input and output statistics.
+
+*Enabled verbose modets*
 
 ```ts
 const response = await runWithTools(
@@ -65,9 +69,11 @@ To respond to a LLM prompt with embedded function, potentially multiple AI infer
 
 Consider the following to improve performance:
 
-* Shorten prompts (to reduce time for input processing)
-* Reduce number of tools provided
-* Stream the final response to the end user (to minimize the time to interaction). See example below:
+- Shorten prompts (to reduce time for input processing)
+- Reduce number of tools provided
+- Stream the final response to the end user (to minimize the time to interaction). See example below:
+
+*Streamed response examplets*
 
 ```ts
 async fetch(request, env, ctx) {

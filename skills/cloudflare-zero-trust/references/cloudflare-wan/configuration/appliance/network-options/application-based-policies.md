@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Application-aware policies
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Standard traffic policies match on network-layer attributes like IP addresses and port ranges. Application-aware policies go further — they identify traffic by the application generating it, so you can make routing and security decisions based on what the traffic is, not just where it is going.
 
@@ -22,13 +22,13 @@ For the full list of recognized applications and categories, refer to [Applicati
 
 With application-aware policies, you can:
 
-* **Break out traffic directly to the Internet** — route specific applications directly to the Internet from the Appliance, bypassing Cloudflare's security filtering.
-* **Prioritize traffic** — assign higher priority to specific applications so the Appliance processes them first when the network is congested.
+- **Break out traffic directly to the Internet** — route specific applications directly to the Internet from the Appliance, bypassing Cloudflare's security filtering.
+- **Prioritize traffic** — assign higher priority to specific applications so the Appliance processes them first when the network is congested.
 
 For details, refer to the following pages:
 
-* [Breakout traffic](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/breakout-traffic/)
-* [Prioritized traffic](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/prioritized-traffic/)
+- [Breakout traffic](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/breakout-traffic/)
+- [Prioritized traffic](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/prioritized-traffic/)
 
 Was this helpful?
 

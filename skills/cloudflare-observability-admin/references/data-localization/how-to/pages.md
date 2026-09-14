@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pages
 
-Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/data-localization/how-to/pages/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/how-to/pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following sections describe how to configure Cloudflare Pages with Regional Services and Customer Metadata Boundary to control where your Pages project is processed and where logs are stored.
 
@@ -20,8 +20,7 @@ The following sections describe how to configure Cloudflare Pages with Regional 
 
 To configure Regional Services for hostnames [proxied](https://developers.cloudflare.com/dns/proxy-status/) (meaning traffic routes through Cloudflare) through Cloudflare and ensure that processing of a Pages project occurs only in-region, follow these steps for the dashboard or API configuration:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Follow these steps to [create a Custom Domain](https://developers.cloudflare.com/pages/configuration/custom-domains/).
 4. Go to the **DNS** of the zone you configured the Custom Domain for.
@@ -37,7 +36,7 @@ Regional Services only applies to the Custom Domain configured for a Pages proje
 
 ## Customer Metadata Boundary
 
-Customer Metadata Boundary applies to the Custom Domain configured, as well as the [\*.pages.dev](https://developers.cloudflare.com/pages/configuration/preview-deployments/) subdomain. You also have the option to disable access to the [.dev domain](https://developers.cloudflare.com/pages/configuration/custom-domains/#disable-access-to-pagesdev-subdomain).
+Customer Metadata Boundary applies to the Custom Domain configured, as well as the [\*.pages.dev](https://developers.cloudflare.com/pages/configuration/preview-deployments/) subdomain. You also have the option to disable access to the [`.dev` domain](https://developers.cloudflare.com/pages/configuration/custom-domains/#disable-access-to-pagesdev-subdomain).
 
 For information on available Analytics and Metrics, review the [Cloudflare product compatibility](https://developers.cloudflare.com/data-localization/compatibility/) page.
 

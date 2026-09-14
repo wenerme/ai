@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Deploy a managed ruleset with ruleset, tag, and rule overrides
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/override-ruleset-tag-rule/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/override-ruleset-tag-rule/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Customize the execution of managed rulesets with a combination of ruleset overrides, tag overrides, and rule overrides in your phase entry point ruleset.
 
@@ -25,41 +25,52 @@ Customize the execution of managed rulesets with a combination of ruleset overri
 
 This example uses the [Update a zone entry point ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update/) operation to execute the following in a single `PUT` request:
 
-* Add a rule to the `http_request_firewall_managed` phase entry point ruleset that executes a managed ruleset.
-* Use category overrides to enable rules with `wordpress` and `drupal` tags and set their actions to `log`.
-* Add a rule override that enables a single rule.
+- Add a rule to the `http_request_firewall_managed` phase entry point ruleset that executes a managed ruleset.
+- Use category overrides to enable rules with `wordpress` and `drupal` tags and set their actions to `log`.
+- Add a rule override that enables a single rule.
 
 In this example:
 
-* `"id": "<MANAGED_RULESET_ID>"` defines the managed ruleset to execute for requests addressed to a zone (`$ZONE_ID`).
-* `"enabled": false` defines an override at the ruleset level to disable all rules in the managed ruleset.
-* `"categories": [{"category": "wordpress", "action": "log", "enabled": true}, {"category": "drupal", "action": "log", "enabled": true}]` defines an override at the tag level to enable rules tagged with `wordpress` or `drupal` and sets their action to `log`.
-* `"rules": [{"id": "<RULE_ID>", "action": "block", "enabled": true}]` defines an override at the rule level that enables one individual rule and sets the action to `block`.
+- `"id": "<MANAGED_RULESET_ID>"` defines the managed ruleset to execute for requests addressed to a zone ( `$ZONE_ID`).
+- `"enabled": false` defines an override at the ruleset level to disable all rules in the managed ruleset.
+- `"categories": [{"category": "wordpress", "action": "log", "enabled": true}, {"category": "drupal", "action": "log", "enabled": true}]` defines an override at the tag level to enable rules tagged with `wordpress` or `drupal` and sets their action to `log`.
+- `"rules": [{"id": "<RULE_ID>", "action": "block", "enabled": true}]` defines an override at the rule level that enables one individual rule and sets the action to `block`.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Response Compression Write`
-* `Config Settings Write`
-* `Dynamic URL Redirects Write`
-* `Cache Settings Write`
-* `Custom Errors Write`
-* `Origin Write`
-* `Managed headers Write`
-* `Zone Transform Rules Write`
-* `Mass URL Redirects Write`
-* `Magic Firewall Write`
-* `L4 DDoS Managed Ruleset Write`
-* `HTTP DDoS Managed Ruleset Write`
-* `Sanitize Write`
-* `Transform Rules Write`
-* `Select Configuration Write`
-* `Bot Management Write`
-* `Zone WAF Write`
-* `Account WAF Write`
-* `Account Rulesets Write`
-* `Logs Write`
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Response Compression Write</code>
+- <code>Config Settings Write</code>
+- <code>Dynamic URL Redirects Write</code>
+- <code>Cache Settings Write</code>
+- <code>Custom Errors Write</code>
+- <code>Origin Write</code>
+- <code>Managed headers Write</code>
+- <code>Zone Transform Rules Write</code>
+- <code>Mass URL Redirects Write</code>
+- <code>Magic Firewall Write</code>
+- <code>L4 DDoS Managed Ruleset Write</code>
+- <code>HTTP DDoS Managed Ruleset Write</code>
+- <code>Sanitize Write</code>
+- <code>Transform Rules Write</code>
+- <code>Select Configuration Write</code>
+- <code>Bot Management Write</code>
+- <code>Zone WAF Write</code>
+- <code>Account WAF Write</code>
+- <code>Account Rulesets Write</code>
+- <code>Logs Write</code>
+- <code>Logs Write</code>
+
+</details>
+
+*Update a zone entry point rulesetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
@@ -104,32 +115,43 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 
 This example uses the [Update an account entry point ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update/) operation to execute the following in a single `PUT` request:
 
-* Add a rule to the `http_request_firewall_managed` phase entry point ruleset that executes a managed ruleset for the zone `example.com`.
-* Use category overrides to enable rules with `wordpress` and `drupal` tags and set their actions to `log`.
-* Add a rule override that enables a single rule.
+- Add a rule to the `http_request_firewall_managed` phase entry point ruleset that executes a managed ruleset for the zone `example.com`.
+- Use category overrides to enable rules with `wordpress` and `drupal` tags and set their actions to `log`.
+- Add a rule override that enables a single rule.
 
 In this example:
 
-* `"id": "<MANAGED_RULESET_ID>"` defines the managed ruleset to execute for requests addressed to `example.com`.
-* `"enabled": false` defines an override at the ruleset level to disable all rules in the managed ruleset.
-* `"categories": [{"category": "wordpress", "action": "log", "enabled": true}, {"category": "drupal", "action": "log", "enabled": true}]` defines an override at the tag level to enable rules tagged with `wordpress` or `drupal` and sets their action to `log`.
-* `"rules": [{"id": "<RULE_ID>", "action": "block", "enabled": true}]` defines an override at the rule level that enables one individual rule and sets the action to `block`.
+- `"id": "<MANAGED_RULESET_ID>"` defines the managed ruleset to execute for requests addressed to `example.com`.
+- `"enabled": false` defines an override at the ruleset level to disable all rules in the managed ruleset.
+- `"categories": [{"category": "wordpress", "action": "log", "enabled": true}, {"category": "drupal", "action": "log", "enabled": true}]` defines an override at the tag level to enable rules tagged with `wordpress` or `drupal` and sets their action to `log`.
+- `"rules": [{"id": "<RULE_ID>", "action": "block", "enabled": true}]` defines an override at the rule level that enables one individual rule and sets the action to `block`.
 
 Note
 
 At the account level, the rule expression of an `execute` rule must end with `and cf.zone.plan eq "ENT"` so that it only applies to zones on an Enterprise plan.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Mass URL Redirects Write`
-* `Magic Firewall Write`
-* `L4 DDoS Managed Ruleset Write`
-* `Transform Rules Write`
-* `Select Configuration Write`
-* `Account WAF Write`
-* `Account Rulesets Write`
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Mass URL Redirects Write</code>
+- <code>Magic Firewall Write</code>
+- <code>L4 DDoS Managed Ruleset Write</code>
+- <code>Transform Rules Write</code>
+- <code>Select Configuration Write</code>
+- <code>Account WAF Write</code>
+- <code>Account Rulesets Write</code>
+- <code>Logs Write</code>
+
+</details>
+
+*Update an account entry point rulesetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \

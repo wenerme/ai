@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Serverless ETL pipelines
 
-Last updated Oct 13, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-etl/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-etl/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -32,7 +32,7 @@ Cloudflare allows for the deployment of fully serverless ETL pipelines, which ca
 
 ![Figure 1: Serverless: HTTP-based ingest](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=380,format=svg/_astro/serverless-etl-http-based.DtreS_ZH.svg "Figure 1: ETL pipeline with HTTP-based ingest")
 
-Figure 1: ETL pipeline with HTTP-based ingest
+*Figure 1: ETL pipeline with HTTP-based ingest*
 
 This architecture shows a fully serverless ETL pipeline with an API endpoint as ingest. Clients send data via HTTP request to be processed. Common examples include click-stream data or analytics.
 
@@ -47,7 +47,7 @@ This architecture shows a fully serverless ETL pipeline with an API endpoint as 
 
 ![Figure 2: Serverless: Object storage ingest](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=380,format=svg/_astro/serverless-etl-object-storage.B0XqHlLa.svg "Figure 2: ETL pipeline with object storage ingest")
 
-Figure 2: ETL pipeline with object storage ingest
+*Figure 2: ETL pipeline with object storage ingest*
 
 This architecture shows a fully serverless ETL pipeline with object storage as ingest. Common examples include log and unstructured document processing.
 
@@ -60,9 +60,9 @@ This architecture shows a fully serverless ETL pipeline with object storage as i
 
 ## Related resources
 
-* [Workers: Get started](https://developers.cloudflare.com/workers/get-started/guide/)
-* [Queues: Get started](https://developers.cloudflare.com/queues/get-started/)
-* [R2: Get started](https://developers.cloudflare.com/r2/get-started/)
+- [Workers: Get started](https://developers.cloudflare.com/workers/get-started/guide/)
+- [Queues: Get started](https://developers.cloudflare.com/queues/get-started/)
+- [R2: Get started](https://developers.cloudflare.com/r2/get-started/)
 
 Was this helpful?
 

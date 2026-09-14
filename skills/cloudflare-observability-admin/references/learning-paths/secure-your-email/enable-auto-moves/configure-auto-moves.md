@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure auto-moves
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/secure-your-email/enable-auto-moves/configure-auto-moves/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-your-email/enable-auto-moves/configure-auto-moves/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To configure auto-move events:
 
@@ -22,11 +22,11 @@ To configure auto-move events:
 4. Select **Moves**.
 5. Under **Auto-moves**, select **Configure**.
 6. Assign actions based on malicious, spoof, suspicious, spam, and bulk dispositions. Select among:
-  * **Soft delete - user recoverable**: Moves the message to the user's **Recoverable Items - Deleted** folder. Messages can be recovered by the user.
-  * **Hard delete - admin recoverable**: Completely deletes messages from a user's inbox.
-  * **Move to trash**: Moves messages to the trash or deleted items email folder.
-  * **Move to junk**: Moves the message to the junk or spam folder.
-  * **No action**: Messages stay in the origin folder.
+   - **Soft delete - user recoverable**: Moves the message to the user's **Recoverable Items - Deleted** folder. Messages can be recovered by the user.
+   - **Hard delete - admin recoverable**: Completely deletes messages from a user's inbox.
+   - **Move to trash**: Moves messages to the trash or deleted items email folder.
+   - **Move to junk**: Moves the message to the junk or spam folder.
+   - **No action**: Messages stay in the origin folder.
 7. Select **Save**.
 
 Was this helpful?

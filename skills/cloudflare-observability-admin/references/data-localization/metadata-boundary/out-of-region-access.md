@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Out of region access
 
-Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/data-localization/metadata-boundary/out-of-region-access/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/metadata-boundary/out-of-region-access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With the default configuration for Customer Metadata Boundary, users who are physically located outside the configured storage region will not have access to view analytics on the dashboard or retrieve data through the standard API endpoint. When **Allow out-of-region access** is enabled, Customer Logs will still be stored exclusively within the configured region but will be made available to authorized users on your account regardless of their physical location.
 

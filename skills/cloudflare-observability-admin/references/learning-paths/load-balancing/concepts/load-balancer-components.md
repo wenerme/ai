@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Components of a load balancer
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/concepts/load-balancer-components/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/concepts/load-balancer-components/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 At it's most basic, load balancing is made up of three components:
 
-* **Pools**: Which contain one or more endpoints.
-* **Endpoints**: Which respond to individual requests.
-* **A load balancer**: Which decides which traffic goes to each pool.
+- **Pools**: Which contain one or more endpoints.
+- **Endpoints**: Which respond to individual requests.
+- **A load balancer**: Which decides which traffic goes to each pool.
 
 ## How it works
 
@@ -26,6 +26,7 @@ Normally, requests to your application would go to individual servers directly.
 
 With a load balancer, requests first go through the load balancer. Your load balancer then routes requests to specific pools.
 
+```
     flowchart LR
       accTitle: Load balancing flow
       accDescr: Load balancing involves a load balancer, pools, endpoints, monitors, and health monitors.
@@ -48,9 +49,13 @@ With a load balancer, requests first go through the load balancer. Your load bal
       Endpoint6((Endpoint 6))
       end
 
+```
+
+
 
 Within each pool, requests then go to individual endpoints. And that endpoint is what responds to the request.
 
+```
     flowchart LR
       accTitle: Pool traffic flow
       accDescr: When an incoming request reaches a pool, it then goes to an endpoint within the pool.
@@ -59,6 +64,9 @@ Within each pool, requests then go to individual endpoints. And that endpoint is
         Endpoint1((Endpoint 1))
         Endpoint2((Endpoint 2))
       end
+
+```
+
 
 
 This progression of load balancer --> pool --> endpoint is the core part of how a load balancer works.

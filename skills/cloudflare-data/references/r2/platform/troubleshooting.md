@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated Jun 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/platform/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/platform/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Troubleshooting 403 / CORS issues with R2
 
@@ -27,8 +27,9 @@ If you do have a CORS issue, refer to [Resolving CORS issues](#if-it-is-actually
 1. Open developer tools on your browser.
 2. Go to the **Network** tab and find the failing request. You may need to reload the page, as requests are only logged after developer tools have been opened.
 3. Check the response headers for the following two headers:
-* `cf-cache-status`
-* `cf-mitigated`
+
+- `cf-cache-status`
+- `cf-mitigated`
 
 #### If you have a `cf-mitigated` header
 
@@ -50,23 +51,23 @@ Refer to the working S3 signing examples on the [Examples](https://developers.cl
 
 Here are some common issues with CORS configurations:
 
-* `ExposeHeaders` is missing headers like `ETag`
-* `AllowedHeaders` is missing headers like `Authorization` or `Content-Type`
-* `AllowedMethods` is missing methods like `POST`/`PUT`
+- `ExposeHeaders` is missing headers like `ETag`
+- `AllowedHeaders` is missing headers like `Authorization` or `Content-Type`
+- `AllowedMethods` is missing methods like `POST`/ `PUT`
 
 ## Object-level API tokens fail against the REST API
 
 If you use an R2 API token created with the **Object Read & Write** or **Object Read only** permissions against the [Cloudflare REST API](https://developers.cloudflare.com/api/resources/r2/) (`api.cloudflare.com`), object requests fail to authenticate and return one of the following:
 
-* When the token applies to all buckets: `{"code":10002,"message":"Unauthorized"}` (HTTP 401).
-* When the token is scoped to specific buckets: `{"code":10000,"message":"Authentication error"}` (HTTP 403).
+- When the token applies to all buckets: `{"code":10002,"message":"Unauthorized"}` (HTTP 401).
+- When the token is scoped to specific buckets: `{"code":10000,"message":"Authentication error"}` (HTTP 403).
 
 Object-level tokens are only supported by the [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/), which authenticates with AWS Signature Version 4 (SigV4).
 
 To resolve this:
 
-* To keep using an Object-level token, make object requests through the [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/) instead of the REST API. The S3-compatible API is also better suited for object operations: the REST API is [rate limited](https://developers.cloudflare.com/r2/platform/limits/#cloudflare-rest-api).
-* To use the REST API, authenticate with an **Admin Read & Write** or **Admin Read only** token. Admin tokens grant account-wide access rather than bucket-scoped access.
+- To keep using an Object-level token, make object requests through the [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/) instead of the REST API. The S3-compatible API is also better suited for object operations: the REST API is [rate limited](https://developers.cloudflare.com/r2/platform/limits/#cloudflare-rest-api).
+- To use the REST API, authenticate with an **Admin Read & Write** or **Admin Read only** token. Admin tokens grant account-wide access rather than bucket-scoped access.
 
 ## HTTP 5XX Errors and capacity limitations of Cloudflare R2
 
@@ -92,15 +93,15 @@ In the Cloudflare dashboard, you can choose to view objects with `/` in the name
 
 For example, an object named `example/object` will be displayed as below.
 
-* example
-  * object
+- example
+  - object
 
 Object names which end with `/` will cause the Cloudflare dashboard to render the object as a folder with an unnamed object inside.
 
 For example, uploading an object named `example/` into an R2 bucket will be displayed as below.
 
-* example
-  * `This object is unnamed`
+- example
+  - `This object is unnamed`
 
 Was this helpful?
 

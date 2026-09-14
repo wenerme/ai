@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshoot integrations
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/troubleshooting/troubleshoot-integrations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/troubleshooting/troubleshoot-integrations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare CASB detects when integrations are unhealthy or outdated.
 
@@ -20,7 +20,7 @@ Common integration issues include changes to SaaS app or cloud environment confi
 
 ## Identify unhealthy or outdated integrations
 
-To identify unhealthy CASB integrations, go to **Integrations** \> **Cloud & SaaS integrations**. If an integration is unhealthy, CASB will set its status to **Broken**. If an integration is outdated, CASB will set its status to **Upgrade**.
+To identify unhealthy CASB integrations, go to **Integrations** > **Cloud & SaaS integrations**. If an integration is unhealthy, CASB will set its status to **Broken**. If an integration is outdated, CASB will set its status to **Upgrade**.
 
 ## Repair an unhealthy integration
 
@@ -30,7 +30,7 @@ If CASB does not support self-service repairs for an integration, you will need 
 
 You can repair unhealthy CASB integrations through your list of integrations or findings.
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Integrations** \> **Cloud & SaaS integrations**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Integrations** > **Cloud & SaaS integrations**.
 2. Choose your unhealthy integration.
 3. Select **Reauthorize**.
 4. In your SaaS app or cloud environment, reauthorize your account.
@@ -39,7 +39,7 @@ You can repair unhealthy CASB integrations through your list of integrations or 
 
 Upgrading an outdated integration will allow the integration to access new features and permissions.
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Integrations** \> **Cloud & SaaS integrations**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Integrations** > **Cloud & SaaS integrations**.
 2. Choose your outdated integration.
 3. Select **Upgrade integration**.
 4. In your SaaS app or cloud environment, upgrade your app and reauthorize your account.

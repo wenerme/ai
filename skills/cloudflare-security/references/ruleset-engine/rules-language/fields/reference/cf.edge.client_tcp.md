@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.edge.client\_tcp
 
-`cf.edge.client_tcp` `Boolean`
+`cf.edge.client_tcp``Boolean`
 
 Indicates if the request was made over TCP.
 
@@ -19,7 +19,7 @@ true
 ```
 
 Categories:
-* Request
+- Request
 
 Was this helpful?
 

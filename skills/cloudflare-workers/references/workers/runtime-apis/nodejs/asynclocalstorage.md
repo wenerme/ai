@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # AsyncLocalStorage
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/nodejs/asynclocalstorage/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/nodejs/asynclocalstorage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -20,7 +20,7 @@ Note
 
 For compatibility dates of `2026-08-04` or later, Workers enables both `nodejs_compat` and `nodejs_compat_v2` by default. These flags are not used for these compatibility dates. Existing projects do not need to remove them when updating their compatibility date. For earlier dates, add `nodejs_compat` to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to opt in. For instructions to turn off Node.js compatibility, refer to the [Node.js compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
 
-Cloudflare Workers provides an implementation of a subset of the Node.js [AsyncLocalStorage ↗](https://nodejs.org/dist/latest-v18.x/docs/api/async%5Fcontext.html#class-asynclocalstorage) API for creating in-memory stores that remain coherent through asynchronous operations.
+Cloudflare Workers provides an implementation of a subset of the Node.js [`AsyncLocalStorage` ↗](https://nodejs.org/dist/latest-v18.x/docs/api/async_context.html#class-asynclocalstorage) API for creating in-memory stores that remain coherent through asynchronous operations.
 
 ## Constructor
 
@@ -30,29 +30,24 @@ import { AsyncLocalStorage } from "node:async_hooks";
 const asyncLocalStorage = new AsyncLocalStorage();
 ```
 
-* `new AsyncLocalStorage()` : AsyncLocalStorage
-  * Returns a new `AsyncLocalStorage` instance.
+- `new AsyncLocalStorage()` : AsyncLocalStorage
+  - Returns a new `AsyncLocalStorage` instance.
 
 ## Methods
 
-* `getStore()` : any
-
-  * Returns the current store. If called outside of an asynchronous context initialized by calling `asyncLocalStorage.run()`, it returns `undefined`.
-* `run(storeany, callbackfunction, ...argsarguments)` : any
-
-  * Runs a function synchronously within a context and returns its return value. The store is not accessible outside of the callback function. The store is accessible to any asynchronous operations created within the callback. The optional `args` are passed to the callback function. If the callback function throws an error, the error is thrown by `run()` also.
-* `exit(callbackfunction, ...argsarguments)` : any
-
-  * Runs a function synchronously outside of a context and returns its return value. This method is equivalent to calling `run()` with the `store` value set to `undefined`.
+- `getStore()` : any
+  - Returns the current store. If called outside of an asynchronous context initialized by calling `asyncLocalStorage.run()`, it returns `undefined`.
+- `run(storeany, callbackfunction, ...argsarguments)` : any
+  - Runs a function synchronously within a context and returns its return value. The store is not accessible outside of the callback function. The store is accessible to any asynchronous operations created within the callback. The optional `args` are passed to the callback function. If the callback function throws an error, the error is thrown by `run()` also.
+- `exit(callbackfunction, ...argsarguments)` : any
+  - Runs a function synchronously outside of a context and returns its return value. This method is equivalent to calling `run()` with the `store` value set to `undefined`.
 
 ## Static Methods
 
-* `AsyncLocalStorage.bind(fn)` : function
-
-  * Captures the asynchronous context that is current when `bind()` is called and returns a function that enters that context before calling the passed in function.
-* `AsyncLocalStorage.snapshot()` : function
-
-  * Captures the asynchronous context that is current when `snapshot()` is called and returns a function that enters that context before calling a given function.
+- `AsyncLocalStorage.bind(fn)` : function
+  - Captures the asynchronous context that is current when `bind()` is called and returns a function that enters that context before calling the passed in function.
+- `AsyncLocalStorage.snapshot()` : function
+  - Captures the asynchronous context that is current when `snapshot()` is called and returns a function that enters that context before calling a given function.
 
 ## Examples
 
@@ -165,7 +160,7 @@ console.log(myResource.doSomething()); // prints 123
 
 ## `AsyncResource`
 
-The [AsyncResource ↗](https://nodejs.org/dist/latest-v18.x/docs/api/async%5Fcontext.html#class-asyncresource) class is a component of Node.js' async context tracking API that allows users to create their own async contexts. Objects that extend from `AsyncResource` are capable of propagating the async context in much the same way as promises.
+The [`AsyncResource` ↗](https://nodejs.org/dist/latest-v18.x/docs/api/async_context.html#class-asyncresource) class is a component of Node.js' async context tracking API that allows users to create their own async contexts. Objects that extend from `AsyncResource` are capable of propagating the async context in much the same way as promises.
 
 Note that `AsyncLocalStorage.snapshot()` and `AsyncLocalStorage.bind()` provide a better approach. `AsyncResource` is provided solely for backwards compatibility with Node.js.
 
@@ -193,25 +188,24 @@ const myResource = als.run(123, () => new MyResource());
 console.log(myResource.doSomething()); // prints 123
 ```
 
-* `new AsyncResource(typestring, optionsAsyncResourceOptions)` : AsyncResource
-
-  * Returns a new `AsyncResource`. Importantly, while the constructor arguments are required in Node.js' implementation of `AsyncResource`, they are not used in Workers.
-* `AsyncResource.bind(fnfunction, typestring, thisArgany)`
-  * Binds the given function to the current async context.
+- `new AsyncResource(typestring, optionsAsyncResourceOptions)` : AsyncResource
+  - Returns a new `AsyncResource`. Importantly, while the constructor arguments are required in Node.js' implementation of `AsyncResource`, they are not used in Workers.
+- `AsyncResource.bind(fnfunction, typestring, thisArgany)`
+  - Binds the given function to the current async context.
 
 ### Methods
 
-* `asyncResource.bind(fnfunction, thisArgany)`
-  * Binds the given function to the async context associated with this `AsyncResource`.
-* `asyncResource.runInAsyncScope(fnfunction, thisArgany, ...argsarguments)`
-  * Call the provided function with the given arguments in the async context associated with this `AsyncResource`.
+- `asyncResource.bind(fnfunction, thisArgany)`
+  - Binds the given function to the async context associated with this `AsyncResource`.
+- `asyncResource.runInAsyncScope(fnfunction, thisArgany, ...argsarguments)`
+  - Call the provided function with the given arguments in the async context associated with this `AsyncResource`.
 
 ## Caveats
 
-* The `AsyncLocalStorage` implementation provided by Workers intentionally omits support for the [asyncLocalStorage.enterWith() ↗](https://nodejs.org/dist/latest-v18.x/docs/api/async%5Fcontext.html#asynclocalstorageenterwithstore) and [asyncLocalStorage.disable() ↗](https://nodejs.org/dist/latest-v18.x/docs/api/async%5Fcontext.html#asynclocalstoragedisable) methods.
-* Workers does not implement the full [async\_hooks ↗](https://nodejs.org/dist/latest-v18.x/docs/api/async%5Fhooks.html) API upon which Node.js' implementation of `AsyncLocalStorage` is built.
-* Workers does not implement the ability to create an `AsyncResource` with an explicitly identified trigger context as allowed by Node.js. This means that a new `AsyncResource` will always be bound to the async context in which it was created.
-* Thenables (non-Promise objects that expose a `then()` method) are not fully supported when using `AsyncLocalStorage`. When working with thenables, instead use [AsyncLocalStorage.snapshot() ↗](https://nodejs.org/api/async%5Fcontext.html#static-method-asynclocalstoragesnapshot) to capture a snapshot of the current context.
+- The `AsyncLocalStorage` implementation provided by Workers intentionally omits support for the [`asyncLocalStorage.enterWith()` ↗](https://nodejs.org/dist/latest-v18.x/docs/api/async_context.html#asynclocalstorageenterwithstore) and [`asyncLocalStorage.disable()` ↗](https://nodejs.org/dist/latest-v18.x/docs/api/async_context.html#asynclocalstoragedisable) methods.
+- Workers does not implement the full [`async_hooks` ↗](https://nodejs.org/dist/latest-v18.x/docs/api/async_hooks.html) API upon which Node.js' implementation of `AsyncLocalStorage` is built.
+- Workers does not implement the ability to create an `AsyncResource` with an explicitly identified trigger context as allowed by Node.js. This means that a new `AsyncResource` will always be bound to the async context in which it was created.
+- Thenables (non-Promise objects that expose a `then()` method) are not fully supported when using `AsyncLocalStorage`. When working with thenables, instead use [`AsyncLocalStorage.snapshot()` ↗](https://nodejs.org/api/async_context.html#static-method-asynclocalstoragesnapshot) to capture a snapshot of the current context.
 
 Was this helpful?
 

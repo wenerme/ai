@@ -12,15 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # GitHub SMS notifications using Twilio
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/tutorials/github-sms-notifications-using-twilio/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/github-sms-notifications-using-twilio/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn to build an SMS notification system on Workers to receive updates on a GitHub repository. Your Worker will send you a text update using Twilio when there is new activity on your repository.
 
 You will learn how to:
 
-* Build webhooks using Workers.
-* Integrate Workers with GitHub and Twilio.
-* Use Worker secrets with Wrangler.
+- Build webhooks using Workers.
+- Integrate Workers with GitHub and Twilio.
+- Use Worker secrets with Wrangler.
+
 ![Animated gif of receiving a text message on your phone after pushing changes to a repository](https://developers.cloudflare.com/images/workers/tutorials/github-sms/video-of-receiving-a-text-after-pushing-to-a-repo.gif)
 
 ---
@@ -49,11 +50,11 @@ pnpm create cloudflare@latest github-twilio-notifications
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `JavaScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `JavaScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 Make note of the URL that your application was deployed to. You will be using it when you configure your GitHub webhook.
 
@@ -75,12 +76,13 @@ You can reference the finished code at this [GitHub repository ↗](https://gith
 
 To start, configure a GitHub webhook to post to your Worker when there is an update to the repository:
 
-1. Go to your GitHub repository's **Settings** \> **Webhooks** \> **Add webhook**.
+1. Go to your GitHub repository's **Settings** > **Webhooks** > **Add webhook**.
 2. Set the Payload URL to the `/webhook` path on the Worker URL that you made note of when your application was first deployed.
-3. In the **Content type** dropdown, select _application/json_.
+3. In the **Content type** dropdown, select *application/json*.
 4. In the **Secret** field, input a secret key of your choice.
 5. In **Which events would you like to trigger this webhook?**, select **Let me select individual events**. Select the events you want to get notifications for (such as **Pull requests**, **Pushes**, and **Branch or tag creation**).
 6. Select **Add webhook** to finish configuration.
+
 ![Following instructions to set up your webhook in the GitHub webhooks settings dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1259,height=1064,format=webp/_astro/github-config-screenshot.BR7flpMR.png)
 
 ---
@@ -99,7 +101,7 @@ export default {
 };
 ```
 
-Use the `request.method` property of [Request](https://developers.cloudflare.com/workers/runtime-apis/request/) to check if the request coming to your application is a `POST` request, and send an error response if the request is not a `POST` request.
+Use the `request.method` property of [`Request`](https://developers.cloudflare.com/workers/runtime-apis/request/) to check if the request coming to your application is a `POST` request, and send an error response if the request is not a `POST` request.
 
 ```js
 export default {
@@ -152,7 +154,7 @@ function checkSignature(text, headers, githubSecretToken) {
 }
 ```
 
-To make this work, you need to use [wrangler secret put](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret-put) to set your `GITHUB_SECRET_TOKEN`. This token is the secret you picked earlier when configuring you GitHub webhook:
+To make this work, you need to use [`wrangler secret put`](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret-put) to set your `GITHUB_SECRET_TOKEN`. This token is the secret you picked earlier when configuring you GitHub webhook:
 
 ```sh
 npx wrangler secret put GITHUB_SECRET_TOKEN
@@ -210,7 +212,7 @@ async function sendText(accountSid, authToken, message) {
 }
 ```
 
-To make this work, you need to set some secrets to hide your `ACCOUNT_SID` and `AUTH_TOKEN` from the source code. You can set secrets with [wrangler secret put](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret-put) in your command line.
+To make this work, you need to set some secrets to hide your `ACCOUNT_SID` and `AUTH_TOKEN` from the source code. You can set secrets with [`wrangler secret put`](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret-put) in your command line.
 
 ```sh
 npx wrangler secret put TWILIO_ACCOUNT_SID
@@ -262,8 +264,8 @@ By completing this tutorial, you have learned how to build webhooks using Worker
 
 ## Related resources
 
-* [Build a JAMStack app](https://developers.cloudflare.com/workers/tutorials/build-a-jamstack-app/)
-* [Build a QR code generator](https://developers.cloudflare.com/workers/tutorials/build-a-qr-code-generator/)
+- [Build a JAMStack app](https://developers.cloudflare.com/workers/tutorials/build-a-jamstack-app/)
+- [Build a QR code generator](https://developers.cloudflare.com/workers/tutorials/build-a-qr-code-generator/)
 
 Was this helpful?
 
@@ -274,5 +276,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/github-sms-notifications-using-twilio/#page","headline":"GitHub SMS notifications using Twilio · Cloudflare Workers docs","description":"This tutorial shows you how to build an SMS notification system on Workers to receive updates on a GitHub repository. Your Worker will send you a text update using Twilio when there is new activity on your repository.","url":"https://developers.cloudflare.com/workers/tutorials/github-sms-notifications-using-twilio/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/github-sms-notifications-using-twilio/#page","headline":"GitHub SMS notifications using Twilio · Cloudflare Workers docs","description":"This tutorial shows you how to build an SMS notification system on Workers to receive updates on a GitHub repository. Your Worker will send you a text update using Twilio when there is new activity on your repository.","url":"https://developers.cloudflare.com/workers/tutorials/github-sms-notifications-using-twilio/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
 ```

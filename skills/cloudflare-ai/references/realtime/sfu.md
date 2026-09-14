@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Realtime SFU
 
-Last updated Aug 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/sfu/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Compose real-time audio, video, and data applications from WebRTC primitives.
 
@@ -46,7 +46,7 @@ Realtime SFU forwards the selected media or data. It does not define rooms, part
 
 ## Explore examples
 
-Use the [Realtime Examples repository ↗](https://github.com/cloudflare/realtime-examples)to choose a starting point for what you want to build. Each example identifies its status, credential boundary, and known limitations.
+Use the [Realtime Examples repository ↗](https://github.com/cloudflare/realtime-examples) to choose a starting point for what you want to build. Each example identifies its status, credential boundary, and known limitations.
 
 [Browse Realtime examples](https://github.com/cloudflare/realtime-examples) [Create an SFU application](https://developers.cloudflare.com/realtime/sfu/get-started/) [Realtime dashboard](https://dash.cloudflare.com/?to=/:account/calls)
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # iOS
 
-Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/warp-client/get-started/ios/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/warp-client/get-started/ios/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Looking for Zero Trust?
 
@@ -36,7 +36,7 @@ After installing 1.1.1.1: Faster Internet, you may want to only encrypt your DNS
 1. Open 1.1.1.1: Faster Internet.
 2. Toggle the WARP button and choose **Switch to DNS only mode**.
 3. If the WARP toggle is disconnected, tap the **menu** button.
-4. You will see two options: 1.1.1.1 and WARP. Select **1.1.1.1** \> **Done**.
+4. You will see two options: 1.1.1.1 and WARP. Select **1.1.1.1** > **Done**.
 
 You are now using encryption only for your DNS queries.
 
@@ -44,8 +44,8 @@ You are now using encryption only for your DNS queries.
 
 1. Open 1.1.1.1: Faster Internet.
 2. Tap the **menu button**.
-3. Select **Advanced** \> **Connection options**.
-4. In **DNS settings** \> **1.1.1.1 for Families**, select the option you want to use.
+3. Select **Advanced** > **Connection options**.
+4. In **DNS settings** > **1.1.1.1 for Families**, select the option you want to use.
 
 ## How to remove the application
 

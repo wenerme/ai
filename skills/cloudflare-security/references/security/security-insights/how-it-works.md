@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # How it works
 
-Last updated Aug 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/security/security-insights/how-it-works/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security/security-insights/how-it-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare runs regular security scans on your account. These scans check your Cloudflare account settings, DNS record configurations, and product configurations — such as SSL/TLS, WAF, and Access — across all domains in your account.
 
@@ -28,10 +28,10 @@ Security Insights also checks [non-proxied (DNS-only) hostnames](https://develop
 
 Each insight has the following properties:
 
-* **Severity**: The security risk of the insight. The severity values are: _Low_, _Moderate_, and _Critical_. The higher the severity level, the higher the risk of threat to your environment.
-* **Insight**: The insight description detailing the current configuration that is causing the risk or vulnerability.
-* **Risk**: A description of the risk associated with not addressing the issue.
-* **Type**: The insight category.
+- **Severity**: The security risk of the insight. The severity values are: *Low*, *Moderate*, and *Critical*. The higher the severity level, the higher the risk of threat to your environment.
+- **Insight**: The insight description detailing the current configuration that is causing the risk or vulnerability.
+- **Risk**: A description of the risk associated with not addressing the issue.
+- **Type**: The insight category.
 
 For a full list of insight types and their descriptions, refer to [Security Insights](https://developers.cloudflare.com/security/security-insights/).
 
@@ -39,19 +39,19 @@ For a full list of insight types and their descriptions, refer to [Security Insi
 
 Cloudflare performs scans automatically for all accounts and zones by default. On-demand scans are available on all plans:
 
-| Plan             | Scan Frequency | On-Demand |
-| ---------------- | -------------- | --------- |
-| Free             | Every 7 days   | Yes       |
-| Pro and Business | Every 3 days   | Yes       |
-| Enterprise       | Daily          | Yes       |
+| Plan | Scan Frequency | On-Demand |
+| --- | --- | --- |
+| Free | Every 7 days | Yes |
+| Pro and Business | Every 3 days | Yes |
+| Enterprise | Daily | Yes |
 
 Caution
 
-Automated scans for Free accounts may be paused due to account inactivity. To ensure scans continue to run, regularly review Security Insights in the Cloudflare dashboard or through the [API](https://developers.cloudflare.com/api/resources/security%5Fcenter/).
+Automated scans for Free accounts may be paused due to account inactivity. To ensure scans continue to run, regularly review Security Insights in the Cloudflare dashboard or through the [API](https://developers.cloudflare.com/api/resources/security_center/).
 
 All accounts can also manually start a scan from the **Security Insights** page in the Cloudflare dashboard.
 
-[Go to **Security insights** ↗](https://dash.cloudflare.com/?to=/:account/security-center)
+[Go to **Security insights** ↗](https://dash.cloudflare.com/?to=/:account/security-center)
 
 Was this helpful?
 

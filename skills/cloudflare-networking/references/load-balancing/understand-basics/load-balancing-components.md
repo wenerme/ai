@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Load Balancing components
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-components/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-components/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page provides a simplified overview of the three main components of the Cloudflare Load Balancing solution and how they relate to one another.
 
@@ -28,6 +28,7 @@ Note
 
 Private load balancers are not automatically associated with a hostname. Private load balancers are created with either a CGNAT IP address or a custom RFC-1918 IP address.
 
+```
     flowchart LR
       accTitle: Load balancing flow
       accDescr: Load balancing involves a load balancer, pools, endpoints, monitors, and health monitors.
@@ -49,6 +50,8 @@ Private load balancers are not automatically associated with a hostname. Private
       Endpoint5((Endpoint 5))
       Endpoint6((Endpoint 6))
       end
+
+```
 
 ## Pools
 
@@ -74,6 +77,7 @@ Finally, monitors are the component you can use to guarantee only [healthy pools
 
 When you configure a monitor and attach it to endpoints, the monitor will issue health monitor requests to your endpoints at regular intervals. This process makes it possible for your load balancer to intelligently handle traffic, considering which endpoints are actually available.
 
+```
     flowchart RL
       accTitle: Load balancing monitor flow
       accDescr: Monitors issue health monitor requests, which validate the current status of servers within each pool.
@@ -83,6 +87,8 @@ When you configure a monitor and attach it to endpoints, the monitor will issue 
       Endpoint1((Endpoint 1))
       Endpoint2((Endpoint 2))
       end
+
+```
 
 Note
 

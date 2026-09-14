@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # CNAME setup (Partial)
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/partial-setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/partial-setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A CNAME setup (also known as partial setup) allows you to use [Cloudflare's reverse proxy](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/) while maintaining your primary and authoritative DNS provider.
 
@@ -26,22 +26,24 @@ Once you are on a CNAME setup (partial), the actual resolution of your records t
 
 ## How to
 
-* [Set up a partial zone (CNAME setup)](https://developers.cloudflare.com/dns/zone-setups/partial-setup/setup/)
-* [Convert a CNAME setup (partial) to a primary setup (full)](https://developers.cloudflare.com/dns/zone-setups/conversions/convert-partial-to-full/)
-* [Convert a CNAME setup (partial) to a secondary setup](https://developers.cloudflare.com/dns/zone-setups/conversions/convert-partial-to-secondary/)
-* [Create DNS records of other types](https://developers.cloudflare.com/dns/zone-setups/partial-setup/setup/#other-record-types)
+- [Set up a partial zone (CNAME setup)](https://developers.cloudflare.com/dns/zone-setups/partial-setup/setup/)
+- [Convert a CNAME setup (partial) to a primary setup (full)](https://developers.cloudflare.com/dns/zone-setups/conversions/convert-partial-to-full/)
+- [Convert a CNAME setup (partial) to a secondary setup](https://developers.cloudflare.com/dns/zone-setups/conversions/convert-partial-to-secondary/)
+- [Create DNS records of other types](https://developers.cloudflare.com/dns/zone-setups/partial-setup/setup/#other-record-types)
 
 ## Availability
 
-|              | Free | Pro | Business | Enterprise |
-| ------------ | ---- | --- | -------- | ---------- |
-| Availability | No   | No  | Yes      | Yes        |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | No | No | Yes | Yes |
 
 ## Reference
 
 ### DNS resolution
 
-When you have a partial zone ([CNAME setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)), Cloudflare resolves [DNS records differently](https://developers.cloudflare.com/dns/zone-setups/partial-setup/dns-resolution/) than for primary zones (full setup).
+When you have a partial zone ([CNAME setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)
+
+), Cloudflare resolves [DNS records differently](https://developers.cloudflare.com/dns/zone-setups/partial-setup/dns-resolution/) than for primary zones (full setup).
 
 ### CNAME flattening
 

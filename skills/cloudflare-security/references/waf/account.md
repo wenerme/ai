@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Account-level WAF configuration
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/account/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/account/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -24,9 +24,9 @@ For example, you can deploy a single ruleset that applies to `/admin/*` URI path
 
 At the account level, WAF rules are grouped into rulesets. You can perform the following operations:
 
-* Create and deploy [custom rulesets](https://developers.cloudflare.com/waf/account/custom-rulesets/)
-* Create and deploy [rate limiting rulesets](https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/)
-* Deploy [managed rulesets](https://developers.cloudflare.com/waf/account/managed-rulesets/)
+- Create and deploy [custom rulesets](https://developers.cloudflare.com/waf/account/custom-rulesets/)
+- Create and deploy [rate limiting rulesets](https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/)
+- Deploy [managed rulesets](https://developers.cloudflare.com/waf/account/managed-rulesets/)
 
 Was this helpful?
 

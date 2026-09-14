@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Remix
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-remix-site/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-remix-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Remix ↗](https://remix.run/) is a framework that focused on web standard. The framework is no longer recommended for new projects by the authors and its successor React Router should be used instead.
 

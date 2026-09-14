@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Limits
 
-Last updated Aug 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/vectorize/platform/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/vectorize/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following limits apply to accounts, indexes, and vectors:
 
@@ -20,39 +20,47 @@ Need a higher limit?
 
 To request an adjustment to a limit, complete the [Limit Increase Request Form ↗](https://forms.gle/nyamy2SM9zwWTXKE6). If the limit can be increased, Cloudflare will contact you with next steps.
 
-| Feature                                                     | Current Limit                       |
-| ----------------------------------------------------------- | ----------------------------------- |
-| Indexes per account                                         | 50,000 (Workers Paid) / 100 (Free)  |
-| Maximum dimensions per vector                               | 1536 dimensions, 32 bits precision  |
-| Precision per vector dimension                              | 32 bits (float32)                   |
-| Maximum vector ID length                                    | 64 bytes                            |
-| Metadata per vector                                         | 10KiB                               |
-| Maximum returned results (topK) with values or metadata     | 50                                  |
-| Maximum returned results (topK) without values and metadata | 100                                 |
-| Maximum upsert batch size (per batch)                       | 1000 (Workers) / 5000 (HTTP API)    |
-| Maximum vectors in a list-vectors page                      | 1000                                |
-| Maximum index name length                                   | 64 bytes                            |
-| Maximum vectors per index                                   | 20,000,000                          |
-| Maximum namespaces per index                                | 50,000 (Workers Paid) / 1000 (Free) |
-| Maximum namespace name length                               | 64 bytes                            |
-| Maximum vectors upload size                                 | 100 MB                              |
-| Maximum metadata indexes per Vectorize index                | 10                                  |
-| Maximum indexed data per metadata index per vector          | 64 bytes                            |
+| Feature | Current Limit |
+| --- | --- |
+| Indexes per account | 50,000 (Workers Paid) / 100 (Free) |
+| Maximum dimensions per vector | 1536 dimensions, 32 bits precision |
+| Precision per vector dimension | 32 bits (float32) |
+| Maximum vector ID length | 64 bytes |
+| Metadata per vector | 10KiB |
+| Maximum returned results (`topK`) with values or metadata | 50 |
+| Maximum returned results (`topK`) without values and metadata | 100 |
+| Maximum upsert batch size (per batch) | 1000 (Workers) / 5000 (HTTP API) |
+| Maximum vectors in a list-vectors page | 1000 |
+| Maximum index name length | 64 bytes |
+| Maximum vectors per index | 20,000,000 |
+| Maximum namespaces per index | 50,000 (Workers Paid) / 1000 (Free) |
+| Maximum namespace name length | 64 bytes |
+| Maximum vectors upload size | 100 MB |
+| Maximum metadata indexes per Vectorize index | 10 |
+| Maximum indexed data per metadata index per vector | 64 bytes |
+
+<details>
+
+<summary>
 
 Limits for V1 indexes (deprecated)
 
-| Feature                               | Limit                            |
-| ------------------------------------- | -------------------------------- |
-| Indexes per account                   | 100 indexes                      |
-| Maximum dimensions per vector         | 1536 dimensions                  |
-| Maximum vector ID length              | 64 bytes                         |
-| Metadata per vector                   | 10 KiB                           |
-| Maximum returned results (topK)       | 20                               |
+</summary>
+
+| Feature | Limit |
+| --- | --- |
+| Indexes per account | 100 indexes |
+| Maximum dimensions per vector | 1536 dimensions |
+| Maximum vector ID length | 64 bytes |
+| Metadata per vector | 10 KiB |
+| Maximum returned results (<code>topK</code>) | 20 |
 | Maximum upsert batch size (per batch) | 1000 (Workers) / 5000 (HTTP API) |
-| Maximum index name length             | 63 bytes                         |
-| Maximum vectors per index             | 200,000                          |
-| Maximum namespaces per index          | 1000 namespaces                  |
-| Maximum namespace name length         | 63 bytes                         |
+| Maximum index name length | 63 bytes |
+| Maximum vectors per index | 200,000 |
+| Maximum namespaces per index | 1000 namespaces |
+| Maximum namespace name length | 63 bytes |
+
+</details>
 
 Was this helpful?
 

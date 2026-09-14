@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DNS over Tor
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/1.1.1.1/additional-options/dns-over-tor/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/additional-options/dns-over-tor/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Caution
 
@@ -62,7 +62,7 @@ alt-svc: h2="dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion:443"
 
 ## Setting up a local DNS proxy using socat
 
-Not all DNS clients support connecting to the Tor network directly. The [socat ↗](http://www.dest-unreach.org/socat/) utility bridges this gap by forwarding local ports through the Tor proxy, so any DNS-speaking software can reach the hidden resolver.
+Not all DNS clients support connecting to the Tor network directly. The [`socat` ↗](http://www.dest-unreach.org/socat/) utility bridges this gap by forwarding local ports through the Tor proxy, so any DNS-speaking software can reach the hidden resolver.
 
 ### DNS over TCP, TLS, and HTTPS
 
@@ -85,7 +85,7 @@ From here, you can follow the regular guide for [setting up 1.1.1.1](https://dev
 socat TCP4-LISTEN:443,reuseaddr,fork SOCKS4A:127.0.0.1:dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion:443,socksport=9150
 ```
 
-1. Instruct your machine to treat the `.onion` address as localhost:
+3. Instruct your machine to treat the `.onion` address as localhost:
 
 ```bash
 cat << EOF >> /etc/hosts
@@ -95,7 +95,7 @@ EOF
 
 If you run this command more than once, remove duplicate entries from `/etc/hosts` to avoid conflicts.
 
-1. Finally, start a local DNS over UDP daemon:
+4. Finally, start a local DNS over UDP daemon:
 
 ```sh
 cloudflared proxy-dns --upstream "https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion/dns-query"

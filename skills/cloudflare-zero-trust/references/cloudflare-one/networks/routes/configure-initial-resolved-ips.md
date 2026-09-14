@@ -12,14 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure initial resolved IPs
 
-Last updated Aug 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/routes/configure-initial-resolved-ips/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/routes/configure-initial-resolved-ips/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Initial resolved IPs (also called token IPs) are ephemeral addresses that Gateway assigns to DNS queries so it can associate hostname-based traffic with the correct policy or tunnel at the network layer, where hostname information is not usually available. Refer to [Gateway initial resolved IPs](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#gateway-initial-resolved-ips) for a list of features that depend on this range.
+Initial resolved IPs
+
+ (also called token IPs) are ephemeral addresses that Gateway assigns to DNS queries so it can associate hostname-based traffic with the correct policy or tunnel at the network layer, where hostname information is not usually available. Refer to [Gateway initial resolved IPs](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#gateway-initial-resolved-ips) for a list of features that depend on this range.
 
 By default, initial resolved IPs are assigned from:
 
-* **IPv4**: `172.64.128.0/20`
-* **IPv6**: `2606:4700:0cf1:4000::/64`
+- **IPv4**: `172.64.128.0/20`
+- **IPv6**: `2606:4700:0cf1:4000::/64`
 
 This is the default range. You can [configure a custom initial resolved IP range](https://developers.cloudflare.com/cloudflare-one/networks/routes/configure-initial-resolved-ips/) for IPv4 if it conflicts with your existing network.
 
@@ -31,16 +33,15 @@ If you configure a custom IPv4 range within Carrier-Grade NAT (CGNAT) address sp
 
 ## Prerequisites
 
-* You have the [Cloudflare One Networks Write](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) permission (for API access), or dashboard access to **Networking** \> **IP addresses** \> **Address space** \> **Custom IPs**.
-* Your new range does not conflict with existing routes or other reserved [Cloudflare One subnets](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/) in your account.
+- You have the [Cloudflare One Networks Write](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) permission (for API access), or dashboard access to **Networking** > **IP addresses** > **Address space** > **Custom IPs**.
+- Your new range does not conflict with existing routes or other reserved [Cloudflare One subnets](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/) in your account.
 
 ## Check your current range
 
-1. Go to **Networking** \> **IP addresses** \> **Address space** \> **Custom IPs**.
-[Go to **Custom IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space/custom-ips)
+1. Go to **Networking** > **IP addresses** > **Address space** > **Custom IPs**. [Go to **Custom IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space/custom-ips)
 2. Find the row where **Assign to** is **Initial Resolved IP** to see your account's current IPv4 range in the **Prefix** column.
 
-Send a `GET` request to the [Get Initial Resolved IP Subnet](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/subnets/subresources/initial%5Fresolved%5Fip/methods/get/) endpoint for the address family you want to check:
+Send a `GET` request to the [Get Initial Resolved IP Subnet](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/subnets/subresources/initial_resolved_ip/methods/get/) endpoint for the address family you want to check:
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/zerotrust/subnets/initial_resolved_ip/$ADDRESS_FAMILY" \
@@ -50,13 +51,12 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/zerotrust/subnet
 
 ## Update your range
 
-1. Go to **Networking** \> **IP addresses** \> **Address space** \> **Custom IPs**.
-[Go to **Custom IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space/custom-ips)
+1. Go to **Networking** > **IP addresses** > **Address space** > **Custom IPs**. [Go to **Custom IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space/custom-ips)
 2. Find the row where **Assign to** is **Initial Resolved IP**, select the three dots menu, and select **Edit**.
 3. Enter your new IPv4 range in **IP address**.
 4. Select **Save**.
 
-Send a `PUT` request to the [Update Initial Resolved IP Subnet](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/subnets/subresources/initial%5Fresolved%5Fip/methods/update/) endpoint with your desired network range:
+Send a `PUT` request to the [Update Initial Resolved IP Subnet](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/subnets/subresources/initial_resolved_ip/methods/update/) endpoint with your desired network range:
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/zerotrust/subnets/initial_resolved_ip/$ADDRESS_FAMILY" \

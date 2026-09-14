@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Workers KV
 
-Last updated Jul 31, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/kv/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 31, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Create a global, low-latency, key-value data storage.
 
@@ -22,9 +22,9 @@ Workers KV is a data storage that allows you to store and retrieve data globally
 
 For example, you can use Workers KV for:
 
-* Caching API responses.
-* Storing user configurations / preferences.
-* Storing user authentication details.
+- Caching API responses.
+- Storing user configurations / preferences.
+- Storing user authentication details.
 
 Access your Workers KV namespace from Cloudflare Workers using [Workers Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) or from your external application using the REST API:
 
@@ -170,19 +170,19 @@ Built on SQLite, D1 is Cloudflare’s first queryable relational database. Creat
 
 ### [Limits](https://developers.cloudflare.com/kv/platform/limits/)
 
- Learn about KV limits.
+Learn about KV limits.
 
 ### [Pricing](https://developers.cloudflare.com/kv/platform/pricing/)
 
- Learn about KV pricing.
+Learn about KV pricing.
 
 ### [Discord](https://discord.com/channels/595317990191398933/893253103695065128)
 
- Ask questions, show off what you are building, and discuss the platform with other developers.
+Ask questions, show off what you are building, and discuss the platform with other developers.
 
 ### [Twitter](https://x.com/cloudflaredev)
 
- Learn about product announcements, new tutorials, and what is new in Cloudflare Developer Platform.
+Learn about product announcements, new tutorials, and what is new in Cloudflare Developer Platform.
 
 Was this helpful?
 

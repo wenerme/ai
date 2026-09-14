@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Preview Local Projects with Cloudflare Tunnel
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/how-to/preview-with-cloudflare-tunnel/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/how-to/preview-with-cloudflare-tunnel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) runs a lightweight daemon (`cloudflared`) in your infrastructure that establishes outbound connections (Tunnels) between your origin web server and the Cloudflare global network. In practical terms, you can use Cloudflare Tunnel to allow remote access to services running on your local machine. It is an alternative to popular tools like [Ngrok ↗](https://ngrok.com), and provides free, long-running tunnels via the [TryCloudflare](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/trycloudflare/) service.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Secure against attacks
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/surge-readiness/security/secure-against-attacks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/surge-readiness/security/secure-against-attacks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Review the different actions you can take to secure your website against attacks.
 

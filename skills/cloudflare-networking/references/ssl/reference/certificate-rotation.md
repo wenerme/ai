@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Rotate ACM certificate packs
 
-Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/reference/certificate-rotation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/reference/certificate-rotation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Advanced Certificate Manager (ACM) certificate packs cannot be updated in place. To replace an existing pack - for example, to change the certificate authority, add hostnames, or change validation method - you create a new pack, wait for it to reach **Active** status, and then delete the old one.
 
@@ -22,19 +22,18 @@ The key principle is to ensure the new certificate pack reaches **Active** befor
 
 ## Recommended rotation process
 
-### 1\. Create the new certificate pack
+### 1. Create the new certificate pack
 
-1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+1. In the Cloudflare dashboard, go to the **Edge Certificates** page. [Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. Select **Order Advanced Certificate**.
 3. Configure the new certificate pack with the desired hostnames, certificate authority, and validation method.
 4. Select **Save**.
 
-Use the [Order Certificate Pack](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate%5Fpacks/methods/create/) endpoint to create the new pack.
+Use the [Order Certificate Pack](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate_packs/methods/create/) endpoint to create the new pack.
 
 Add a new `cloudflare_certificate_pack` resource to your Terraform configuration and apply it. Refer to the [Terraform-specific notes](#terraform) below before proceeding.
 
-### 2\. Wait for Active status
+### 2. Wait for Active status
 
 After ordering, the new certificate pack moves through several intermediate states before it is ready to serve traffic:
 
@@ -46,24 +45,23 @@ After ordering, the new certificate pack moves through several intermediate stat
 
 Do not delete the old certificate pack until the new one reaches **Active**. Refer to [Certificate statuses](https://developers.cloudflare.com/ssl/reference/certificate-statuses/) for a description of each stage.
 
-Monitor progress on the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page in the dashboard, or poll the [Get Certificate Pack](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate%5Fpacks/methods/get/) API endpoint.
+Monitor progress on the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page in the dashboard, or poll the [Get Certificate Pack](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate_packs/methods/get/) API endpoint.
 
 For zones using Cloudflare as authoritative DNS (full setup), most validations complete within minutes. For [partial (CNAME) setups](https://developers.cloudflare.com/dns/zone-setups/partial-setup/), you will need to place DCV tokens manually - refer to [DCV methods](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/) for details. DCV tokens expire if not satisfied within their validity window (7 days for Let's Encrypt, 14 days for Google Trust Services and SSL.com).
 
-### 3\. Delete the old certificate pack
+### 3. Delete the old certificate pack
 
 Once the new pack is **Active**, it is safe to delete the old one.
 
-1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+1. In the Cloudflare dashboard, go to the **Edge Certificates** page. [Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. Select the old certificate pack.
 3. Select **Delete Certificate**.
 
-Use the [Delete Certificate Pack](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate%5Fpacks/methods/delete/) endpoint.
+Use the [Delete Certificate Pack](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate_packs/methods/delete/) endpoint.
 
 Remove the old `cloudflare_certificate_pack` resource from your Terraform configuration and apply. Refer to the [Terraform-specific notes](#terraform) below.
 
-### 4\. Expect a brief Pending Deployment state
+### 4. Expect a brief Pending Deployment state
 
 After the old pack is deleted, the remaining certificate may briefly show **Pending Deployment** before returning to **Active**. This reflects a normal edge re-evaluation cycle as the global network reconciles the change, and typically resolves within a few minutes with no traffic impact.
 
@@ -88,9 +86,9 @@ Set `wait_for_active_status = true` on the new resource to have Terraform block 
 1. Add the new `cloudflare_certificate_pack` resource with `wait_for_active_status = true` and run `terraform apply`. The apply will not complete until the pack is Active.
 2. Remove the old resource from your configuration and run `terraform apply` to delete it.
 
-For zero-downtime rotation of a single resource (where you cannot have both old and new in state simultaneously), use Terraform's [create\_before\_destroy ↗](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#create%5Fbefore%5Fdestroy) lifecycle meta-argument.
+For zero-downtime rotation of a single resource (where you cannot have both old and new in state simultaneously), use Terraform's [`create_before_destroy` ↗](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#create_before_destroy) lifecycle meta-argument.
 
-Refer to the [cloudflare\_certificate\_pack provider documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/certificate%5Fpack) for the full resource schema.
+Refer to the [`cloudflare_certificate_pack` provider documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/certificate_pack) for the full resource schema.
 
 ---
 

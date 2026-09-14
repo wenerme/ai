@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Example of video playback with Cloudflare Stream and Shaka Player
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/examples/shaka-player/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/examples/shaka-player/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 First, create a video element, using the poster attribute to set a preview thumbnail image. Refer to [Display thumbnails](https://developers.cloudflare.com/stream/viewing-videos/displaying-thumbnails/) for instructions on how to generate a thumbnail image using Cloudflare Stream.
 

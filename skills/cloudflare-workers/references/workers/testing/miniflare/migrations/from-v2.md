@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Migrating from Version 2
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/migrations/from-v2/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/migrations/from-v2/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Miniflare v3 now uses [workerd ↗](https://github.com/cloudflare/workerd), the open-source Cloudflare Workers runtime. This is the same runtime that's deployed on Cloudflare's network, giving bug-for-bug compatibility and practically eliminating behavior mismatches. Refer to the [Miniflare v3 ↗](https://blog.cloudflare.com/miniflare-and-workerd/) and [Wrangler v3 announcements ↗](https://blog.cloudflare.com/wrangler3/) for more information.
+Miniflare v3 now uses [`workerd` ↗](https://github.com/cloudflare/workerd), the open-source Cloudflare Workers runtime. This is the same runtime that's deployed on Cloudflare's network, giving bug-for-bug compatibility and practically eliminating behavior mismatches. Refer to the [Miniflare v3 ↗](https://blog.cloudflare.com/miniflare-and-workerd/) and [Wrangler v3 announcements ↗](https://blog.cloudflare.com/wrangler3/) for more information.
 
 ## CLI Changes
 
@@ -32,154 +32,147 @@ We have tried to keep Miniflare v3's API close to Miniflare v2 where possible, b
 
 ### Updated Options
 
-* `kvNamespaces/r2Buckets/d1Databases`
+- `kvNamespaces/r2Buckets/d1Databases`
+  - In addition to `string[]`s, these options now accept `Record<string, string>`s, mapping binding names to namespace IDs/bucket names/database IDs. This means multiple Workers can bind to the same namespace/bucket/database under different names.
+- `queueBindings`
+  - Renamed to `queueProducers`. This either accepts a `Record<string, string>` mapping binding names to queue names, or a `string[]` of binding names to queues of the same name.
+- `queueConsumers`
+  - Either accepts a `Record<string, QueueConsumerOptions>` mapping queue names to consumer options, or a `string[]` of queue names to consume with default options. `QueueConsumerOptions` has the following type:
 
-  * In addition to `string[]`s, these options now accept `Record<string, string>`s, mapping binding names to namespace IDs/bucket names/database IDs. This means multiple Workers can bind to the same namespace/bucket/database under different names.
-* `queueBindings`
+    ```ts
+    interface QueueConsumerOptions {
+    	// /queues/platform/configuration/#consumer
+    	maxBatchSize?: number; // default: 5
+    	maxBatchTimeout?: number /* seconds */; // default: 1
+    	maxRetries?: number; // default: 2
+    	deadLetterQueue?: string; // default: none
+    }
+    ```
 
-  * Renamed to `queueProducers`. This either accepts a `Record<string, string>`mapping binding names to queue names, or a `string[]` of binding names to queues of the same name.
-* `queueConsumers`
 
-  * Either accepts a `Record<string, QueueConsumerOptions>` mapping queue names to consumer options, or a `string[]` of queue names to consume with default options. `QueueConsumerOptions` has the following type:
-  ```ts
-  interface QueueConsumerOptions {
-  	// /queues/platform/configuration/#consumer
-  	maxBatchSize?: number; // default: 5
-  	maxBatchTimeout?: number /* seconds */; // default: 1
-  	maxRetries?: number; // default: 2
-  	deadLetterQueue?: string; // default: none
-  }
-  ```
-* `cfFetch`
-
-  * Renamed to `cf`. Either accepts a `boolean`, `string` (as before), or an object to use a the `cf` object for incoming requests.
+- `cfFetch`
+  - Renamed to `cf`. Either accepts a `boolean`, `string` (as before), or an object to use a the `cf` object for incoming requests.
 
 ### Removed Options
 
-* `wranglerConfigPath/wranglerConfigEnv`
+- `wranglerConfigPath/wranglerConfigEnv`
+  - Miniflare no longer handles Wrangler's configuration. To programmatically start up a Worker based on Wrangler configuration, use the [`unstable_dev()`](https://developers.cloudflare.com/workers/wrangler/api/#unstable_dev) API.
+- `packagePath`
+  - Miniflare no longer loads script paths from `package.json` files. Use the `scriptPath` option to specify your script instead.
+- `watch`
+  - Miniflare's API is primarily intended for testing use cases, where file watching isn't usually required. This option was here to enable Miniflare's CLI which has now been removed. If you need to watch files, consider using a separate file watcher like [`fs.watch()` ↗](https://nodejs.org/api/fs.html#fswatchfilename-options-listener) or [`chokidar` ↗](https://github.com/paulmillr/chokidar), and calling `setOptions()` with your original configuration on change.
+- `logUnhandledRejections`
+  - Unhandled rejections can be handled in Workers with [`addEventListener("unhandledrejection")` ↗](https://community.cloudflare.com/t/2021-10-21-workers-runtime-release-notes/318571).
+- `globals`
+  - Injecting arbitrary globals is not supported by [`workerd` ↗](https://github.com/cloudflare/workerd). If you're using a service worker, `bindings` will be injected as globals, but these must be JSON-serialisable.
+- `https/httpsKey(Path)/httpsCert(Path)/httpsPfx(Path)/httpsPassphrase`
+  - Miniflare does not support starting HTTPS servers yet. These options may be added back in a future release.
+- `crons`
+  - [`workerd` ↗](https://github.com/cloudflare/workerd) does not support triggering scheduled events yet. This option may be added back in a future release.
+- `mounts`
+  - Miniflare no longer has the concept of parent and child Workers. Instead, all Workers can be defined at the same level, using the new `workers` option. Here's an example that uses a service binding to increment a value in a shared KV namespace:
 
-  * Miniflare no longer handles Wrangler's configuration. To programmatically start up a Worker based on Wrangler configuration, use the [unstable\_dev()](https://developers.cloudflare.com/workers/wrangler/api/#unstable%5Fdev)API.
-* `packagePath`
+    ```ts
+    import { Miniflare, Response } from "miniflare";
 
-  * Miniflare no longer loads script paths from `package.json` files. Use the `scriptPath` option to specify your script instead.
-* `watch`
+    const message = "The count is ";
+    const mf = new Miniflare({
+    	// Options shared between Workers such as HTTP and persistence configuration
+    	// should always be defined at the top level.
+    	host: "0.0.0.0",
+    	port: 8787,
+    	kvPersist: true,
 
-  * Miniflare's API is primarily intended for testing use cases, where file watching isn't usually required. This option was here to enable Miniflare's CLI which has now been removed. If you need to watch files, consider using a separate file watcher like [fs.watch() ↗](https://nodejs.org/api/fs.html#fswatchfilename-options-listener)or [chokidar ↗](https://github.com/paulmillr/chokidar), and calling `setOptions()` with your original configuration on change.
-* `logUnhandledRejections`
+    	workers: [
+    		{
+    			name: "worker",
+    			kvNamespaces: { COUNTS: "counts" },
+    			serviceBindings: {
+    				INCREMENTER: "incrementer",
+    				// Service bindings can also be defined as custom functions, with access
+    				// to anything defined outside Miniflare.
+    				async CUSTOM(request) {
+    					// `request` is the incoming `Request` object.
+    					return new Response(message);
+    				},
+    			},
+    			modules: true,
+    			script: `export default {
+            async fetch(request, env, ctx) {
+              // Get the message defined outside
+              const response = await env.CUSTOM.fetch("http://host/");
+              const message = await response.text();
 
-  * Unhandled rejections can be handled in Workers with [addEventListener("unhandledrejection") ↗](https://community.cloudflare.com/t/2021-10-21-workers-runtime-release-notes/318571).
-* `globals`
+              // Increment the count 3 times
+              await env.INCREMENTER.fetch("http://host/");
+              await env.INCREMENTER.fetch("http://host/");
+              await env.INCREMENTER.fetch("http://host/");
+              const count = await env.COUNTS.get("count");
 
-  * Injecting arbitrary globals is not supported by [workerd ↗](https://github.com/cloudflare/workerd). If you're using a service worker, `bindings` will be injected as globals, but these must be JSON-serialisable.
-* `https/httpsKey(Path)/httpsCert(Path)/httpsPfx(Path)/httpsPassphrase`
+              return new Response(message + count);
+            }
+          }`,
+    		},
+    		{
+    			name: "incrementer",
+    			// Note we're using the same `COUNTS` namespace as before, but binding it
+    			// to `NUMBERS` instead.
+    			kvNamespaces: { NUMBERS: "counts" },
+    			// Worker formats can be mixed-and-matched
+    			script: `addEventListener("fetch", (event) => {
+            event.respondWith(handleRequest());
+          })
+          async function handleRequest() {
+            const count = parseInt((await NUMBERS.get("count")) ?? "0") + 1;
+            await NUMBERS.put("count", count.toString());
+            return new Response(count.toString());
+          }`,
+    		},
+    	],
+    });
+    const res = await mf.dispatchFetch("http://localhost");
+    console.log(await res.text()); // "The count is 3"
+    await mf.dispose();
+    ```
 
-  * Miniflare does not support starting HTTPS servers yet. These options may be added back in a future release.
-* `crons`
 
-  * [workerd ↗](https://github.com/cloudflare/workerd) does not support triggering scheduled events yet. This option may be added back in a future release.
-* `mounts`
-
-  * Miniflare no longer has the concept of parent and child Workers. Instead, all Workers can be defined at the same level, using the new `workers`option. Here's an example that uses a service binding to increment a value in a shared KV namespace:
-  ```ts
-  import { Miniflare, Response } from "miniflare";
-  const message = "The count is ";
-  const mf = new Miniflare({
-  	// Options shared between Workers such as HTTP and persistence configuration
-  	// should always be defined at the top level.
-  	host: "0.0.0.0",
-  	port: 8787,
-  	kvPersist: true,
-  	workers: [
-  		{
-  			name: "worker",
-  			kvNamespaces: { COUNTS: "counts" },
-  			serviceBindings: {
-  				INCREMENTER: "incrementer",
-  				// Service bindings can also be defined as custom functions, with access
-  				// to anything defined outside Miniflare.
-  				async CUSTOM(request) {
-  					// `request` is the incoming `Request` object.
-  					return new Response(message);
-  				},
-  			},
-  			modules: true,
-  			script: `export default {
-          async fetch(request, env, ctx) {
-            // Get the message defined outside
-            const response = await env.CUSTOM.fetch("http://host/");
-            const message = await response.text();
-            // Increment the count 3 times
-            await env.INCREMENTER.fetch("http://host/");
-            await env.INCREMENTER.fetch("http://host/");
-            await env.INCREMENTER.fetch("http://host/");
-            const count = await env.COUNTS.get("count");
-            return new Response(message + count);
-          }
-        }`,
-  		},
-  		{
-  			name: "incrementer",
-  			// Note we're using the same `COUNTS` namespace as before, but binding it
-  			// to `NUMBERS` instead.
-  			kvNamespaces: { NUMBERS: "counts" },
-  			// Worker formats can be mixed-and-matched
-  			script: `addEventListener("fetch", (event) => {
-          event.respondWith(handleRequest());
-        })
-        async function handleRequest() {
-          const count = parseInt((await NUMBERS.get("count")) ?? "0") + 1;
-          await NUMBERS.put("count", count.toString());
-          return new Response(count.toString());
-        }`,
-  		},
-  	],
-  });
-  const res = await mf.dispatchFetch("http://localhost");
-  console.log(await res.text()); // "The count is 3"
-  await mf.dispose();
-  ```
-* `metaProvider`
-
-  * The `cf` object and `X-Forwarded-Proto`/`X-Real-IP` headers can be specified when calling `dispatchFetch()` instead. A default `cf` object can be specified using the new `cf` option too.
-* `durableObjectAlarms`
-
-  * Miniflare now always enables Durable Object alarms.
-* `globalAsyncIO/globalTimers/globalRandom`
-
-  * [workerd ↗](https://github.com/cloudflare/workerd) cannot support these options without fundamental changes.
-* `actualTime`
-
-  * Miniflare now always returns the current time.
-* `inaccurateCpu`
-
-  * Set the `inspectorPort: 9229` option to enable the V8 inspector. Visit `chrome://inspect` in Google Chrome to open DevTools and perform CPU profiling.
+- `metaProvider`
+  - The `cf` object and `X-Forwarded-Proto`/ `X-Real-IP` headers can be specified when calling `dispatchFetch()` instead. A default `cf` object can be specified using the new `cf` option too.
+- `durableObjectAlarms`
+  - Miniflare now always enables Durable Object alarms.
+- `globalAsyncIO/globalTimers/globalRandom`
+  - [`workerd` ↗](https://github.com/cloudflare/workerd) cannot support these options without fundamental changes.
+- `actualTime`
+  - Miniflare now always returns the current time.
+- `inaccurateCpu`
+  - Set the `inspectorPort: 9229` option to enable the V8 inspector. Visit `chrome://inspect` in Google Chrome to open DevTools and perform CPU profiling.
 
 ### Updated Methods
 
-* `setOptions()`
-  * Miniflare v3 now requires a full configuration object to be passed, instead of a partial patch.
+- `setOptions()`
+  - Miniflare v3 now requires a full configuration object to be passed, instead of a partial patch.
 
 ### Removed Methods
 
-* `reload()`
-  * Call `setOptions()` with the original configuration object to reload Miniflare.
-* `createServer()/startServer()`
-  * Miniflare now always starts a [workerd ↗](https://github.com/cloudflare/workerd) server listening on the configured `host` and `port`, so these methods are redundant.
-* `dispatchScheduled()/startScheduled()`
-  * The functionality of `dispatchScheduled` can now be done via `getWorker()`. For more information read the [scheduled events documentation](https://developers.cloudflare.com/workers/testing/miniflare/core/scheduled#dispatching-events).
-* `dispatchQueue()`
-  * Use the `queue()` method on [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings)or [queue producer bindings](https://developers.cloudflare.com/queues/configuration/configure-queues/#producer-worker-configuration)instead.
-* `getGlobalScope()/getBindings()/getModuleExports()`
-  * These methods returned objects from inside the Workers sandbox. Since Miniflare now uses [workerd ↗](https://github.com/cloudflare/workerd), which runs in a different process, these methods can no longer be supported.
-* `addEventListener()`/`removeEventListener()`
-  * Miniflare no longer emits `reload` events. As Miniflare no longer watches files, reloads are only triggered by initialisation or `setOptions()` calls. In these cases, it's possible to wait for the reload with either `await mf.ready` or `await mf.setOptions()` respectively.
-* `Response#waitUntil()`
-  * [workerd ↗](https://github.com/cloudflare/workerd) does not support waiting for all `waitUntil()`ed promises yet.
+- `reload()`
+  - Call `setOptions()` with the original configuration object to reload Miniflare.
+- `createServer()/startServer()`
+  - Miniflare now always starts a [`workerd` ↗](https://github.com/cloudflare/workerd) server listening on the configured `host` and `port`, so these methods are redundant.
+- `dispatchScheduled()/startScheduled()`
+  - The functionality of `dispatchScheduled` can now be done via `getWorker()`. For more information read the [scheduled events documentation](https://developers.cloudflare.com/workers/testing/miniflare/core/scheduled#dispatching-events).
+- `dispatchQueue()`
+  - Use the `queue()` method on [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings) or [queue producer bindings](https://developers.cloudflare.com/queues/configuration/configure-queues/#producer-worker-configuration) instead.
+- `getGlobalScope()/getBindings()/getModuleExports()`
+  - These methods returned objects from inside the Workers sandbox. Since Miniflare now uses [`workerd` ↗](https://github.com/cloudflare/workerd), which runs in a different process, these methods can no longer be supported.
+- `addEventListener()`/ `removeEventListener()`
+  - Miniflare no longer emits `reload` events. As Miniflare no longer watches files, reloads are only triggered by initialisation or `setOptions()` calls. In these cases, it's possible to wait for the reload with either `await mf.ready` or `await mf.setOptions()` respectively.
+- `Response#waitUntil()`
+  - [`workerd` ↗](https://github.com/cloudflare/workerd) does not support waiting for all `waitUntil()`ed promises yet.
 
 ### Removed Packages
 
-* `@miniflare/*`
-  * Miniflare is now contained within a single `miniflare` package.
+- `@miniflare/*`
+  - Miniflare is now contained within a single `miniflare` package.
 
 Was this helpful?
 

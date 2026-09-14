@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Email agent
 
-Last updated Aug 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/examples/email-agent/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/examples/email-agent/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agents can send and receive email with Cloudflare [Email Service](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/). This guide shows how to send outbound email with the Workers binding, route inbound mail into Agents, and handle follow-up replies securely.
 
@@ -28,7 +28,7 @@ Before using email with Agents, you need:
 ### Domain setup
 
 1. Log in to the [Cloudflare Dashboard ↗](https://dash.cloudflare.com).
-2. Go to **Compute & AI** \> **Email Service**.
+2. Go to **Compute & AI** > **Email Service**.
 3. Select **Onboard Domain** and choose your domain.
 4. Add the DNS records (SPF and DKIM) to authorize sending.
 
@@ -214,11 +214,11 @@ const resolver = createAddressBasedEmailResolver("EmailAgent");
 
 **Routing logic:**
 
-| Recipient Address                     | Agent Name           | Agent ID |
-| ------------------------------------- | -------------------- | -------- |
-| support@example.com                   | EmailAgent (default) | support  |
-| sales@example.com                     | EmailAgent (default) | sales    |
-| NotificationAgent+user123@example.com | NotificationAgent    | user123  |
+| Recipient Address | Agent Name | Agent ID |
+| --- | --- | --- |
+| `support@example.com` | `EmailAgent` (default) | `support` |
+| `sales@example.com` | `EmailAgent` (default) | `sales` |
+| `NotificationAgent+user123@example.com` | `NotificationAgent` | `user123` |
 
 The sub-address format (`agent+id@domain`) allows routing to different agent namespaces and instances from a single email domain.
 
@@ -678,16 +678,16 @@ class MyAgent extends Agent {
 
 ### Common error codes
 
-| Error Code                 | Description                        | Solution                             |
-| -------------------------- | ---------------------------------- | ------------------------------------ |
-| E\_SENDER\_NOT\_VERIFIED   | Sender domain/address not verified | Verify in Cloudflare dashboard       |
-| E\_RATE\_LIMIT\_EXCEEDED   | Sending rate limit reached         | Implement exponential backoff        |
-| E\_DAILY\_LIMIT\_EXCEEDED  | Daily quota exceeded               | Wait for quota reset or upgrade plan |
-| E\_CONTENT\_TOO\_LARGE     | Email exceeds size limit           | Reduce attachments or content        |
-| E\_RECIPIENT\_NOT\_ALLOWED | Recipient not in allowed list      | Check allowed destination addresses  |
-| E\_RECIPIENT\_SUPPRESSED   | Recipient is on suppression list   | Remove from suppression list         |
-| E\_VALIDATION\_ERROR       | Invalid email format               | Check email addresses                |
-| E\_TOO\_MANY\_RECIPIENTS   | More than 50 recipients            | Split into multiple sends            |
+| Error Code | Description | Solution |
+| --- | --- | --- |
+| `E_SENDER_NOT_VERIFIED` | Sender domain/address not verified | Verify in Cloudflare dashboard |
+| `E_RATE_LIMIT_EXCEEDED` | Sending rate limit reached | Implement exponential backoff |
+| `E_DAILY_LIMIT_EXCEEDED` | Daily quota exceeded | Wait for quota reset or upgrade plan |
+| `E_CONTENT_TOO_LARGE` | Email exceeds size limit | Reduce attachments or content |
+| `E_RECIPIENT_NOT_ALLOWED` | Recipient not in allowed list | Check allowed destination addresses |
+| `E_RECIPIENT_SUPPRESSED` | Recipient is on suppression list | Remove from suppression list |
+| `E_VALIDATION_ERROR` | Invalid email format | Check email addresses |
+| `E_TOO_MANY_RECIPIENTS` | More than 50 recipients | Split into multiple sends |
 
 ## Secure reply routing
 
@@ -695,91 +695,105 @@ When your agent sends emails and expects replies, use secure reply routing to pr
 
 ### How it works
 
-1. **Outbound:** When you call `replyToEmail()` or `sendEmail()` with a `secret`, the agent signs the routing headers (`X-Agent-Name`, `X-Agent-ID`) using HMAC-SHA256.
+1. **Outbound:** When you call `replyToEmail()` or `sendEmail()` with a `secret`, the agent signs the routing headers ( `X-Agent-Name`, `X-Agent-ID`) using HMAC-SHA256.
 2. **Inbound:** `createSecureReplyEmailResolver` verifies the signature before routing.
 3. **Enforcement:** If an email was routed via the secure resolver, `replyToEmail()` requires a secret (or explicit `null` to opt-out).
 
 ### Setup
 
-1. Store the signing key as a Wrangler secret. Do not put it in `vars` or commit it to source control:
-npmyarnpnpm
-```
-npx wrangler secret put EMAIL_SECRET
-```
-```
-yarn wrangler secret put EMAIL_SECRET
-```
-```
-pnpm wrangler secret put EMAIL_SECRET
-```
+1. Store the signing key as a Wrangler secret. Do not put it in `vars` or commit it to source control:npmyarnpnpm
+
+   ```
+   npx wrangler secret put EMAIL_SECRET
+   ```
+
+   ```
+   yarn wrangler secret put EMAIL_SECRET
+   ```
+
+   ```
+   pnpm wrangler secret put EMAIL_SECRET
+   ```
+
+
 2. Use the combined resolver pattern:
-```js
-export default {
-	async email(message, env) {
-		const secureReplyResolver = createSecureReplyEmailResolver(
-			env.EMAIL_SECRET,
-		);
-		const addressResolver = createAddressBasedEmailResolver("EmailAgent");
-		await routeAgentEmail(message, env, {
-			resolver: async (email, env) => {
-				const replyRouting = await secureReplyResolver(email, env);
-				if (replyRouting) return replyRouting;
-				return addressResolver(email, env);
-			},
-		});
-	},
-};
-```
-```ts
-export default {
- async email(message, env) {
-  const secureReplyResolver = createSecureReplyEmailResolver(
-   env.EMAIL_SECRET,
-  );
-  const addressResolver = createAddressBasedEmailResolver("EmailAgent");
-  await routeAgentEmail(message, env, {
-   resolver: async (email, env) => {
-    const replyRouting = await secureReplyResolver(email, env);
-    if (replyRouting) return replyRouting;
-    return addressResolver(email, env);
-   },
-  });
- },
-} satisfies ExportedHandler<Env>;
-```
+
+   ```js
+   export default {
+   	async email(message, env) {
+   		const secureReplyResolver = createSecureReplyEmailResolver(
+   			env.EMAIL_SECRET,
+   		);
+   		const addressResolver = createAddressBasedEmailResolver("EmailAgent");
+
+   		await routeAgentEmail(message, env, {
+   			resolver: async (email, env) => {
+   				const replyRouting = await secureReplyResolver(email, env);
+   				if (replyRouting) return replyRouting;
+   				return addressResolver(email, env);
+   			},
+   		});
+   	},
+   };
+   ```
+
+   ```ts
+   export default {
+    async email(message, env) {
+     const secureReplyResolver = createSecureReplyEmailResolver(
+      env.EMAIL_SECRET,
+     );
+     const addressResolver = createAddressBasedEmailResolver("EmailAgent");
+
+     await routeAgentEmail(message, env, {
+      resolver: async (email, env) => {
+       const replyRouting = await secureReplyResolver(email, env);
+       if (replyRouting) return replyRouting;
+       return addressResolver(email, env);
+      },
+     });
+    },
+   } satisfies ExportedHandler<Env>;
+   ```
+
+
 3. Sign outbound emails:
-```js
-class MyAgent extends Agent {
-	async onEmail(email) {
-		await this.replyToEmail(email, {
-			fromName: "My Agent",
-			body: "Thanks for your email!",
-			secret: this.env.EMAIL_SECRET, // Signs the routing headers
-		});
-	}
-}
-```
-```ts
-class MyAgent extends Agent {
- async onEmail(email: AgentEmail) {
-  await this.replyToEmail(email, {
-   fromName: "My Agent",
-   body: "Thanks for your email!",
-   secret: this.env.EMAIL_SECRET, // Signs the routing headers
-  });
- }
-}
-```
+
+   ```js
+   class MyAgent extends Agent {
+   	async onEmail(email) {
+   		await this.replyToEmail(email, {
+   			fromName: "My Agent",
+   			body: "Thanks for your email!",
+   			secret: this.env.EMAIL_SECRET, // Signs the routing headers
+   		});
+   	}
+   }
+   ```
+
+   ```ts
+   class MyAgent extends Agent {
+    async onEmail(email: AgentEmail) {
+     await this.replyToEmail(email, {
+      fromName: "My Agent",
+      body: "Thanks for your email!",
+      secret: this.env.EMAIL_SECRET, // Signs the routing headers
+     });
+    }
+   }
+   ```
+
+
 
 ### Enforcement behavior
 
 When an email is routed via `createSecureReplyEmailResolver`, the `replyToEmail()` method enforces signing:
 
-| secret value        | Behavior                                                     |
-| ------------------- | ------------------------------------------------------------ |
-| "my-secret"         | Signs headers (secure)                                       |
-| undefined (omitted) | **Throws error** \- must provide secret or explicit opt-out  |
-| null                | Allowed but not recommended - explicitly opts out of signing |
+| `secret` value | Behavior |
+| --- | --- |
+| `"my-secret"` | Signs headers (secure) |
+| `undefined` (omitted) | **Throws error** - must provide secret or explicit opt-out |
+| `null` | Allowed but not recommended - explicitly opts out of signing |
 
 ## Complete example
 
@@ -966,20 +980,20 @@ async sendEmail(options: {
 
 Send an outbound email through the Email Service binding. Automatically injects `X-Agent-Name` and `X-Agent-ID` headers. When `secret` is provided, signs headers with HMAC-SHA256 for secure reply routing.
 
-| Option    | Description                                                               |
-| --------- | ------------------------------------------------------------------------- |
-| binding   | The send\_email binding (for example, this.env.EMAIL). Required.          |
-| to        | Recipient address, array of addresses, or EmailAddress object(s)          |
-| from      | Sender address or EmailAddress object                                     |
-| subject   | Email subject line                                                        |
-| text      | Plain text body (at least one of text/html required)                      |
-| html      | HTML body (at least one of text/html required)                            |
-| replyTo   | Reply-to address or EmailAddress object                                   |
-| cc        | CC recipient address, array of addresses, or EmailAddress object(s)       |
-| bcc       | BCC recipient address, array of addresses, or EmailAddress object(s)      |
-| inReplyTo | Message-ID for threading (sets the In-Reply-To header)                    |
-| headers   | Additional custom headers (agent headers take precedence if they collide) |
-| secret    | Secret for HMAC signing of agent routing headers                          |
+| Option | Description |
+| --- | --- |
+| `binding` | The `send_email` binding (for example, `this.env.EMAIL`). Required. |
+| `to` | Recipient address, array of addresses, or `EmailAddress` object(s) |
+| `from` | Sender address or `EmailAddress` object |
+| `subject` | Email subject line |
+| `text` | Plain text body (at least one of `text`/`html` required) |
+| `html` | HTML body (at least one of `text`/`html` required) |
+| `replyTo` | Reply-to address or `EmailAddress` object |
+| `cc` | CC recipient address, array of addresses, or `EmailAddress` object(s) |
+| `bcc` | BCC recipient address, array of addresses, or `EmailAddress` object(s) |
+| `inReplyTo` | Message-ID for threading (sets the `In-Reply-To` header) |
+| `headers` | Additional custom headers (agent headers take precedence if they collide) |
+| `secret` | Secret for HMAC signing of agent routing headers |
 
 ### `routeAgentEmail`
 
@@ -996,10 +1010,10 @@ function routeAgentEmail<Env>(
 
 Routes an incoming email to the appropriate Agent based on the resolver's decision.
 
-| Option    | Description                                                                                                                                                                             |
-| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| resolver  | Function that determines which agent to route the email to                                                                                                                              |
-| onNoRoute | Optional callback invoked when no routing information is found. Use this to reject the email or perform custom handling. If not provided, a warning is logged and the email is dropped. |
+| Option | Description |
+| --- | --- |
+| `resolver` | Function that determines which agent to route the email to |
+| `onNoRoute` | Optional callback invoked when no routing information is found. Use this to reject the email or perform custom handling. If not provided, a warning is logged and the email is dropped. |
 
 ### `createSecureReplyEmailResolver`
 
@@ -1024,11 +1038,11 @@ type SignatureFailureReason =
 
 Creates a resolver for routing email replies with signature verification.
 
-| Option             | Description                                                              |
-| ------------------ | ------------------------------------------------------------------------ |
-| secret             | Secret key for HMAC verification (must match the key used to sign)       |
-| maxAge             | Maximum age of signature in seconds (default: 30 days / 2592000 seconds) |
-| onInvalidSignature | Optional callback for logging when signature verification fails          |
+| Option | Description |
+| --- | --- |
+| `secret` | Secret key for HMAC verification (must match the key used to sign) |
+| `maxAge` | Maximum age of signature in seconds (default: 30 days / 2592000 seconds) |
+| `onInvalidSignature` | Optional callback for logging when signature verification fails |
 
 ### `signAgentHeaders`
 

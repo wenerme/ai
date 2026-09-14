@@ -12,11 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # About
 
-Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/dns-firewall/random-prefix-attacks/about/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/dns-firewall/random-prefix-attacks/about/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Random prefix attacks are when someone sends a lot of traffic to subdomains that are highly unlikely to exist (`12345.example.com`, `abcdefg.example.com`), but are still associated with your main domain (`example.com`).
 
 Usually, a DNS query to each random subdomain (or prefix) is not repeated, so it cannot be cached by resolvers or any other proxies and always reaches the authoritative nameservers. Rate limiting or blocking queries based on source IP can introduce a high amount of false positives, since random prefix attacks commonly are conducted via public resolvers. This makes these attacks particularly effective and hard to mitigate.
+
 
 
 ## Attack characteristics
@@ -25,6 +26,7 @@ Usually, a DNS query to each random subdomain (or prefix) is not repeated, so it
 
 If the request only involved nonexistent domains, the `NXDOMAIN` errors would only be served by the top-level domain (TLD) nameservers for `com.`. This means that the queries never reach the authoritative nameservers.
 
+```
     flowchart TD
       accTitle: Random prefix attacks diagram
       A[End user query to <code>example.com</code>] --"1)"--> B[<code>1.1.1.1 resolver</code>]
@@ -33,11 +35,15 @@ If the request only involved nonexistent domains, the `NXDOMAIN` errors would on
       B --"4)" <code>NXDOMAIN error</code>--> A
       D[Authoritative NS]
 
+```
+
+
 
 ### Queries for nonexistent subdomains
 
 These attacks are successful because they target subdomains, which require a response from a domain's authoritative nameservers.
 
+```
     flowchart TD
       accTitle: Random prefix attacks diagram
       A[End user query to <code>random.example.com</code>] --"1)"--> B[<code>1.1.1.1 resolver</code>]
@@ -46,6 +52,9 @@ These attacks are successful because they target subdomains, which require a res
       B -- "4)" --> D[Authoritative NS]
       D --"5)" <code>NXDOMAIN error</code>--> B
       B --"6)" <code>NXDOMAIN error</code>--> A
+
+```
+
 
 
 With an attack against a subdomain of an existing domain, the resolver is forced to fully resolve it against the authoritative nameservers since these random subdomains are likely not cached by the resolver or any other proxy. If an attacker sends enough of these queries, and the authoritative nameservers cannot handle the query load, it will become unresponsive or even fall over, taking all zones it is hosting down, not just the attacked zone.

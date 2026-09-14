@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # What is Email security?
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/concepts/what-is-email-security/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/concepts/what-is-email-security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Despite email's importance as a communication method, security and privacy were not built into the [The Simple Mail Transfer Protocol (SMTP) protocol ↗](https://www.cloudflare.com/learning/email-security/what-is-smtp/). As a result, email is a major attack vector.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Cookies
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare uses various cookies to maximize network resources, manage traffic, and protect our customers’ sites from malicious traffic.
 
@@ -50,7 +50,7 @@ Note
 
 Bot Management is available to Enterprise customers as an add-on service. Contact your Cloudflare account team to enable Bot Management for your site. Non-Enterprise customers can enable [Bot Fight Mode or Super Bot Fight Mode](https://developers.cloudflare.com/bots/).
 
-You can disable the `__cf_bm` cookie using the `bm_cookie_enabled` field [via the API](https://developers.cloudflare.com/api/resources/bot%5Fmanagement/methods/update/).
+You can disable the `__cf_bm` cookie using the `bm_cookie_enabled` field [via the API](https://developers.cloudflare.com/api/resources/bot_management/methods/update/).
 
 ### \_\_cfseq cookie for Cloudflare bot products
 
@@ -60,17 +60,17 @@ You can disable the `__cf_bm` cookie using the `bm_cookie_enabled` field [via th
 
 The `cf_clearance` cookie is required for [JavaScript detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/). JavaScript detections are stored in the `cf_clearance` cookie.
 
-The `cf_clearance` cookie is set with `SameSite=None; Secure; Partitioned` so that challenge state is preserved across cross-site requests while complying with [CHIPS ↗ ↗](https://developers.google.com/privacy-sandbox/cookies/chips). When the cookie is issued inside a third-party context, it is stored in a partition keyed to the top-level site and is not shared across embedding sites. For details, refer to [Partitioned cookies (CHIPS) and cf\_clearance](https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/#partitioned-cookies-chips-and-cf%5Fclearance).
+The `cf_clearance` cookie is set with `SameSite=None; Secure; Partitioned` so that challenge state is preserved across cross-site requests while complying with [CHIPS ↗ ↗](https://developers.google.com/privacy-sandbox/cookies/chips). When the cookie is issued inside a third-party context, it is stored in a partition keyed to the top-level site and is not shared across embedding sites. For details, refer to [Partitioned cookies (CHIPS) and `cf_clearance`](https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/#partitioned-cookies-chips-and-cf_clearance).
 
 ### cf\_ob\_info and cf\_use\_ob cookie for Cloudflare Always Online
 
 The `cf_ob_info` cookie provides information on:
 
-* The HTTP Status Code returned by the origin web server
-* The Ray ID of the original failed request
-* The data center serving the traffic
+- The HTTP Status Code returned by the origin web server
+- The Ray ID of the original failed request
+- The data center serving the traffic
 
-The `cf_use_ob` cookie informs Cloudflare to fetch the requested resource from the Always Online cache on the designated port. Applicable values are: 0, 80, and 443\. The `cf_ob_info` and `cf_use_ob` cookies are persistent cookies that expire after 30 seconds.
+The `cf_use_ob` cookie informs Cloudflare to fetch the requested resource from the Always Online cache on the designated port. Applicable values are: 0, 80, and 443. The `cf_ob_info` and `cf_use_ob` cookies are persistent cookies that expire after 30 seconds.
 
 ### \_\_cfwaitingroom for Cloudflare Waiting Room
 
@@ -92,14 +92,14 @@ The `_cfuvid` cookie is only set when a site uses this option in a Rate Limiting
 
 The table below shows additional cookies used by the Challenge Platform.
 
-| Cookie Name                                     | Description                                                                                                                                            |
-| ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| cf\_clearance                                   | Clearance Cookie stores the proof of challenge passed. It is used to no longer issue a challenge if present. It is required to reach an origin server. |
-| cf\_chl\_rc\_i; cf\_chl\_rc\_ni; cf\_chl\_rc\_m | These cookies are for internal use which allows Cloudflare to identify production issues on clients.                                                   |
+| Cookie Name | Description |
+| --- | --- |
+| `cf_clearance` | Clearance Cookie stores the proof of challenge passed. It is used to no longer issue a challenge if present. It is required to reach an origin server. |
+| `cf_chl_rc_i`; `cf_chl_rc_ni`; `cf_chl_rc_m` | These cookies are for internal use which allows Cloudflare to identify production issues on clients. |
 
 Caution
 
-If your website is not [using HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/encrypt-visitor-traffic/), you may experience issues with the [cf\_clearance cookie](https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/#known-issues-with-samesite-and-cf%5Fclearance-cookies).
+If your website is not [using HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/encrypt-visitor-traffic/), you may experience issues with the [`cf_clearance` cookie](https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/#known-issues-with-samesite-and-cf_clearance-cookies).
 
 ### Cloudflare Access cookies
 

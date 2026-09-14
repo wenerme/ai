@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Digital experience
 
-Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/dex/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/dex/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Digital Experience Monitoring (DEX) provides visibility into device, network, and application performance across your Zero Trust organization.
 
@@ -28,17 +28,17 @@ Refer to [Insights overview](https://developers.cloudflare.com/cloudflare-one/in
 
 If a user notifies that “the connection is not working” or “performance is slow,” DEX allows you to:
 
-* Use [device monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/) to check device health and endpoint connectivity.
-* Optionally, test network health and application responsiveness with [synthetic tests](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/) that run periodically from user devices.
-* Identify whether problems originate from the device (such as [issues with the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/troubleshooting-guide/)), the network, or Cloudflare.
+- Use [device monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/) to check device health and endpoint connectivity.
+- Optionally, test network health and application responsiveness with [synthetic tests](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/) that run periodically from user devices.
+- Identify whether problems originate from the device (such as [issues with the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/troubleshooting-guide/)), the network, or Cloudflare.
 
 ## Troubleshooting other Cloudflare One features
 
 Use DEX to troubleshoot other Cloudflare One features:
 
-* Test connectivity to a [SaaS application secured with Access](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/).
-* Verify that a website routed through [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) is reachable from user devices.
-* Confirm that users can successfully reach internal resources after configuring a [Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/).
+- Test connectivity to a [SaaS application secured with Access](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/).
+- Verify that a website routed through [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) is reachable from user devices.
+- Confirm that users can successfully reach internal resources after configuring a [Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/).
 
 ### Get started
 
@@ -59,15 +59,15 @@ For help resolving common issues with Digital Experience Monitoring, refer to [T
 
 Review all available documentation for DEX capabilities.
 
-* [Device monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/)
-* [Synthetic tests](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/)
-* [Rules](https://developers.cloudflare.com/cloudflare-one/insights/dex/rules/)
-* [Diagnostics](https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/)
-* [Notifications](https://developers.cloudflare.com/cloudflare-one/insights/dex/notifications/)
-* [IP visibility](https://developers.cloudflare.com/cloudflare-one/insights/dex/ip-visibility/)
-* [DEX MCP server](https://developers.cloudflare.com/cloudflare-one/insights/dex/dex-mcp-server/)
-* [Troubleshoot Digital Experience Monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/troubleshooting/)
-* [MCP server](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/dex-analysis)
+- [Device monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/)
+- [Synthetic tests](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/)
+- [Rules](https://developers.cloudflare.com/cloudflare-one/insights/dex/rules/)
+- [Diagnostics](https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/)
+- [Notifications](https://developers.cloudflare.com/cloudflare-one/insights/dex/notifications/)
+- [IP visibility](https://developers.cloudflare.com/cloudflare-one/insights/dex/ip-visibility/)
+- [DEX MCP server](https://developers.cloudflare.com/cloudflare-one/insights/dex/dex-mcp-server/)
+- [Troubleshoot Digital Experience Monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/troubleshooting/)
+- [MCP server](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/dex-analysis)
 
 Was this helpful?
 

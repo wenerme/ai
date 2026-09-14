@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage internal DNS records
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/internal-dns/internal-zones/internal-dns-records/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/internal-dns/internal-zones/internal-dns-records/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Internal zones can contain the same [DNS record types](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/) that Cloudflare supports for public zones.
 
@@ -26,11 +26,18 @@ With [CNAME flattening](https://developers.cloudflare.com/dns/cname-flattening/)
 
 Cloudflare will try to flatten the CNAME record considering both the specified [DNS view](https://developers.cloudflare.com/dns/internal-dns/dns-views/) and any existing [reference zones](https://developers.cloudflare.com/dns/internal-dns/internal-zones/reference-zones/). If the reference zone then has another CNAME, the record will again be considered from the perspective of the original view.
 
+<details>
+
+<summary>
+
 Example
 
-* Query for the `A` record on `abc.example.local` with view ID 111.
-* Zone 600 references zone 700, which is not linked to any view.
+</summary>
 
+- Query for the <code>A</code> record on <code>abc.example.local</code> with view ID 111.
+- Zone 600 references zone 700, which is not linked to any view.
+
+```
 flowchart LR
 accTitle: Internal DNS zones and CNAME flattening example
 accDescr: Diagram exemplifying Internal DNS zones and containing CNAME and A records
@@ -50,16 +57,20 @@ end
 end
 end
 
-After finding the CNAME record that points to `xyz.net`, Cloudflare cannot resolve it within zone 600\. However, since this zone is referencing zone 700, this will be considered in the resolution.
+```
 
-The record in zone 700 points to `def.example.local`, which Cloudflare will then try to resolve in the original view. As an `A` record can be found for `def.example.local`, Cloudflare will return the corresponding IP address - in this example, `192.0.2.9`.
+After finding the CNAME record that points to <code>xyz.net</code>, Cloudflare cannot resolve it within zone 600. However, since this zone is referencing zone 700, this will be considered in the resolution.
+
+The record in zone 700 points to <code>def.example.local</code>, which Cloudflare will then try to resolve in the original view. As an <code>A</code> record can be found for <code>def.example.local</code>, Cloudflare will return the corresponding IP address - in this example, <code>192.0.2.9</code>.
+
+</details>
 
 If it is not possible to flatten the CNAME record, the following will happen:
 
 1. The CNAME record is returned to [Gateway resolver](https://developers.cloudflare.com/dns/internal-dns/#architecture-overview) as-is.
 2. Gateway resolver will process the returned record, depending on the **Fallback through public DNS** configuration:
-  * On: Gateway will try to resolve the query by sending it to Cloudflare's public DNS resolver ([1.1.1.1](https://developers.cloudflare.com/1.1.1.1/)).
-  * Off: Gateway will return the response as-is to the client.
+   - On: Gateway will try to resolve the query by sending it to Cloudflare's public DNS resolver ([1.1.1.1](https://developers.cloudflare.com/1.1.1.1/)).
+   - Off: Gateway will return the response as-is to the client.
 
 Was this helpful?
 

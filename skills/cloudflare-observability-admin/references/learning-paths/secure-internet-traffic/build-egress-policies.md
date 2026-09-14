@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Control traffic egress with source IP anchoring and allowlisting
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-egress-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-egress-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Now that you have created firewall policies to secure your organization, you can begin creating egress policies to control what IP address your users egress to the Internet with.
 
@@ -26,9 +26,9 @@ For more information on egress policies, contact your account team.
 
 By the end of this module, you will be able to:
 
-* Understand when your organization may need source IP anchoring.
-* Create egress policies to make use of dedicated egress IPs.
-* Follow best practices for deploying egress IPs.
+- Understand when your organization may need source IP anchoring.
+- Create egress policies to make use of dedicated egress IPs.
+- Follow best practices for deploying egress IPs.
 
 Was this helpful?
 

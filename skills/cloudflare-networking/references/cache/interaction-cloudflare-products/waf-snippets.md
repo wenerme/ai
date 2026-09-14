@@ -12,15 +12,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Control cache access with WAF and Snippets
 
-Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/interaction-cloudflare-products/waf-snippets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/interaction-cloudflare-products/waf-snippets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you make an R2 bucket publicly accessible for caching (via a [Custom Domain](https://developers.cloudflare.com/r2/buckets/public-buckets/#custom-domains)), anyone who knows the URL can access the content. To restrict access, you can use Cloudflare's [WAF](https://developers.cloudflare.com/waf/custom-rules/use-cases/configure-token-authentication/) to validate requests before they reach the cache or your bucket.
 
-The following diagram illustrates the flow of a request through WAF, Cache, and R2\. WAF custom rules run before cache rules in the [request pipeline](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/), so invalid requests are blocked before consuming cache resources.
+The following diagram illustrates the flow of a request through WAF, Cache, and R2. WAF custom rules run before cache rules in the [request pipeline](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/), so invalid requests are blocked before consuming cache resources.
 
+```
 flowchart LR
 accTitle: Connections with Cloudflare
 A[User's request] --> B[WAF] --> C[Cache] --> D[R2]
+
+```
+
 
 
 ## Presigned URLs
@@ -31,10 +35,10 @@ You can presign URLs similar to [S3 ↗](https://docs.aws.amazon.com/AmazonS3/la
 
 For optimal performance, we recommend separating the creation and validation processes:
 
-* [Snippets](https://developers.cloudflare.com/rules/snippets/examples/signing-requests/) for HMAC creation (signing the URL)
-* [WAF custom rules](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#hmac-validation) for HMAC validation (verifying the token on each request)
+- [Snippets](https://developers.cloudflare.com/rules/snippets/examples/signing-requests/) for HMAC creation (signing the URL)
+- [WAF custom rules](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#hmac-validation) for HMAC validation (verifying the token on each request)
 
-In the Workers documentation, the [Signing requests](https://developers.cloudflare.com/workers/examples/signing-requests/) example shows how to both generate and verify signed requests using HMAC. The Workers implementation is compatible with the WAF's [is\_timed\_hmac\_valid\_v0() validation function](https://developers.cloudflare.com/waf/custom-rules/use-cases/configure-token-authentication/), so you can sign with Workers and validate with WAF custom rules, or handle both in Workers.
+In the Workers documentation, the [Signing requests](https://developers.cloudflare.com/workers/examples/signing-requests/) example shows how to both generate and verify signed requests using HMAC. The Workers implementation is compatible with the WAF's [`is_timed_hmac_valid_v0()` validation function](https://developers.cloudflare.com/waf/custom-rules/use-cases/configure-token-authentication/), so you can sign with Workers and validate with WAF custom rules, or handle both in Workers.
 
 Was this helpful?
 

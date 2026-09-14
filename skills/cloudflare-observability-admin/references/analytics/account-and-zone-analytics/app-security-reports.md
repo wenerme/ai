@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Security reports
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/account-and-zone-analytics/app-security-reports/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/account-and-zone-analytics/app-security-reports/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Application Security reports provide cyber attack insights and trends for all of the Enterprise zones in your Cloudflare account.
 
@@ -20,11 +20,11 @@ The reports are automatically generated on a monthly basis.
 
 You can access reports by going to the **Security reports** page or via the [API](#api). You can access reports from previous months by selecting the month from the dropdown.
 
-[Go to **Security reports** ↗](https://dash.cloudflare.com/?to=/:account/security-center/reports)
+[Go to **Security reports** ↗](https://dash.cloudflare.com/?to=/:account/security-center/reports)
 
 To download the report, select **Print report**.
 
-Reports from before April 2025 can be accessed through **Security reports** \> **Legacy reports**. Due to limitations in the legacy reports, some customers may not have reports for every month prior to April 2025.
+Reports from before April 2025 can be accessed through **Security reports** > **Legacy reports**. Due to limitations in the legacy reports, some customers may not have reports for every month prior to April 2025.
 
 The current reports are curated by Cloudflare and will be expanded to include more insights. The option to create custom reports, filter by various fields, and schedule reports will be added in upcoming improvements.
 
@@ -42,12 +42,12 @@ Reports for Application Performance, [Cloudflare One](https://developers.cloudfl
 
 Each report includes the following sections:
 
-* Executive summary
-* Distribution of allowed and mitigated requests
-* [Industry benchmarks](#industry-benchmarks) that show how you compare to your peers by selecting your industry
-* Top five source countries of allowed traffic and mitigated traffic including a map visualization
-* Top five most targeted hostnames
-* Top five most effective mitigation rules
+- Executive summary
+- Distribution of allowed and mitigated requests
+- [Industry benchmarks](#industry-benchmarks) that show how you compare to your peers by selecting your industry
+- Top five source countries of allowed traffic and mitigated traffic including a map visualization
+- Top five most targeted hostnames
+- Top five most effective mitigation rules
 
 To view more details, apply filters, analyze the data, and generate ad-hoc reports, use the [Security Analytics dashboard](https://developers.cloudflare.com/waf/analytics/security-analytics/) or [Log Explorer](https://developers.cloudflare.com/log-explorer/).
 
@@ -59,7 +59,7 @@ Beyond providing context, benchmarks can also help demonstrate value to stakehol
 
 To ensure fairness and accuracy, Cloudflare normalizes your data before comparison. For each month, we calculate the percentage of mitigated requests relative to the total requests across your account and eligible zones. This normalization ensures that benchmarks are based on relative attack intensity rather than total traffic volume so larger or smaller organizations can be compared meaningfully.
 
-The result helps you interpret your mitigated traffic data in context. For example, you may see a statement such as "_You are in the top 25% most attacked companies in the Cosmetics industry._" This insight enables you to better understand your threat exposure, communicate results to stakeholders, and understand value of the protection Cloudflare provides.
+The result helps you interpret your mitigated traffic data in context. For example, you may see a statement such as "*You are in the top 25% most attacked companies in the Cosmetics industry.*" This insight enables you to better understand your threat exposure, communicate results to stakeholders, and understand value of the protection Cloudflare provides.
 
 If your account is not assigned an industry or if the shown industry is incorrect, use the link within the report to select the correct industry.
 
@@ -79,33 +79,49 @@ If you do not have any Enterprise zones, a report will not be generated. If you 
 
 A Cloudflare user must have one of the following [roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/) to download Application Security reports:
 
-* Super Administrator
-* Administrator
+- Super Administrator
+- Administrator
 
 ---
 
 ## API
 
+*List all report policies for a specific accountsh*
+
 ```sh
 GET /accounts/{account_id}/reporting/policies
 ```
+
+*Retrieve the details of a single, specific report policysh*
 
 ```sh
 GET /accounts/{account_id}/reporting/policies/{policy_id}
 ```
 
+*List all generated reports for a specific accountsh*
+
 ```sh
 GET /accounts/{account_id}/reporting/reports
 ```
+
+*Retrieve a single, specific report, including its data and findingssh*
 
 ```sh
 GET /accounts/{account_id}/reporting/reports/{report_id}
 ```
 
+<details>
+
+<summary>
+
 Data returned by the API
 
-* Account ID - Account Name - Account Industry - Time range - Total zones - Total zones analyzed - Industry percentile (nullable float) - Total requests (count, percentage) - Total mitigated requests (count, percentage) - Total served requests (count, percentage) - Top 5 hostnames by mitigated requests (hostname, count) - Top 5 source countries by served requests (country, count)
-* Top 5 source countries by mitigated requests (country, count) - Top 5 rules by mitigated requests (rule name, rule type, count)
+</summary>
+
+- Account ID - Account Name - Account Industry - Time range - Total zones - Total zones analyzed - Industry percentile (nullable float) - Total requests (count, percentage) - Total mitigated requests (count, percentage) - Total served requests (count, percentage) - Top 5 hostnames by mitigated requests (hostname, count) - Top 5 source countries by served requests (country, count)
+- Top 5 source countries by mitigated requests (country, count) - Top 5 rules by mitigated requests (rule name, rule type, count)
+
+</details>
 
 Note
 

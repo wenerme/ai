@@ -16,19 +16,19 @@ k
 
 Text-to-Image • krea
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/krea/krea-2-medium-turbo/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/krea/krea-2-medium-turbo/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `krea/krea-2-medium-turbo`
 
-* Third-party
+- Third-party
 
 The fastest Krea 2 model, built for low-cost iteration on expressive illustrations, style-driven concepts, and rapid visual exploration. Keeps the Krea 2 style system and expressive visual range but uses a distilled sampling schedule so you can move through ideas much faster. Especially useful for expressive illustration, graphic styles, typography experiments, and quick campaign or concept directions.
 
-| Model Info        |                                                                                                                            |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://www.krea.ai/terms)                                                                                        |
-| More information  | [link ↗](https://docs.krea.ai/api-reference/krea/krea-2-medium-turbo)                                                      |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/krea/krea-2-medium-turbo) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://www.krea.ai/terms) |
+| More information | [link ↗](https://docs.krea.ai/api-reference/krea/krea-2-medium-turbo) |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/krea/krea-2-medium-turbo) |
 
 ## Usage
 
@@ -90,11 +90,11 @@ seed
 
 `number | null`Random seed for reproducible generations. Pass null or omit for a random seed.
 
-▶styles\[\]
+▶styles\[]
 
 `array`Styles (typically LoRAs) to apply to the generation.
 
-▶image\_style\_references\[\]
+▶image\_style\_references\[]
 
 `array`maxItems: 10Reference images to drive the visual style (up to 10).
 
@@ -104,17 +104,17 @@ creativity
 
 intensity
 
-`integer`default: 0minimum: \-100maximum: 100K2 Intensity slider (-100 to 100). 0 disables the slider LoRA.
+`integer`default: 0minimum: -100maximum: 100K2 Intensity slider (-100 to 100). 0 disables the slider LoRA.
 
 complexity
 
-`integer`default: 0minimum: \-100maximum: 100K2 Complexity slider (-100 to 100). 0 disables the slider LoRA.
+`integer`default: 0minimum: -100maximum: 100K2 Complexity slider (-100 to 100). 0 disables the slider LoRA.
 
 movement
 
-`integer`default: 0minimum: \-100maximum: 100K2 Movement slider (-100 to 100). 0 disables the slider LoRA.
+`integer`default: 0minimum: -100maximum: 100K2 Movement slider (-100 to 100). 0 disables the slider LoRA.
 
-▶moodboards\[\]
+▶moodboards\[]
 
 `array`maxItems: 1Moodboard references (currently limited to one).
 
@@ -124,9 +124,9 @@ image
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/krea/krea-2-medium-turbo/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/krea/krea-2-medium-turbo/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/krea/krea-2-medium-turbo/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/krea/krea-2-medium-turbo/schema-output.json)
 
 Was this helpful?
 

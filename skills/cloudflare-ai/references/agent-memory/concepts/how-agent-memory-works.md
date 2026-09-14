@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # How Agent Memory works
 
-Last updated Jun 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agent-memory/concepts/how-agent-memory-works/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agent-memory/concepts/how-agent-memory-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agent Memory is a managed service that gives your applications persistent, AI-powered memory. It automatically turns raw conversations into structured knowledge and retrieves the right context when you need it.
 
@@ -20,10 +20,10 @@ Agent Memory is a managed service that gives your applications persistent, AI-po
 
 Agent Memory classifies every extracted memory into one of four types:
 
-* **Facts** — Stable knowledge about a person, project, or tool. Preferences, identities, relationships, and goals. Facts evolve over time through supersession: when a newer fact replaces an older one on the same topic, the old version is preserved but the latest surfaces in recall results.
-* **Events** — Completed actions anchored to a point in time. Deployments, decisions, milestones, and observations. Events accumulate and do not conflict with each other.
-* **Instructions** — Reusable procedures, workflows, and conventions. Like facts, instructions support supersession when updated.
-* **Tasks** — Short-lived, session-scoped items such as active investigations and follow-ups. Tasks are deprioritized after the session ends.
+- **Facts** — Stable knowledge about a person, project, or tool. Preferences, identities, relationships, and goals. Facts evolve over time through supersession: when a newer fact replaces an older one on the same topic, the old version is preserved but the latest surfaces in recall results.
+- **Events** — Completed actions anchored to a point in time. Deployments, decisions, milestones, and observations. Events accumulate and do not conflict with each other.
+- **Instructions** — Reusable procedures, workflows, and conventions. Like facts, instructions support supersession when updated.
+- **Tasks** — Short-lived, session-scoped items such as active investigations and follow-ups. Tasks are deprioritized after the session ends.
 
 ## How ingestion works
 
@@ -51,9 +51,9 @@ If no memories match the query, `recall()` returns an empty answer rather than h
 
 Agent Memory is designed for safe re-ingestion:
 
-* **Messages are content-addressed.** Each message gets a deterministic ID derived from its content and session. Sending the same message twice does not create a duplicate.
-* **Sessions are deterministic.** If you do not provide a `sessionId`, one is derived from the message content. The same conversation always maps to the same session.
-* **Facts and instructions evolve.** When a new memory shares a topic key with an existing one (for example, "editor preference"), the old memory is marked as superseded. The latest version surfaces in recall results, but the full history is preserved.
+- **Messages are content-addressed.** Each message gets a deterministic ID derived from its content and session. Sending the same message twice does not create a duplicate.
+- **Sessions are deterministic.** If you do not provide a `sessionId`, one is derived from the message content. The same conversation always maps to the same session.
+- **Facts and instructions evolve.** When a new memory shares a topic key with an existing one (for example, "editor preference"), the old memory is marked as superseded. The latest version surfaces in recall results, but the full history is preserved.
 
 ## Related resources
 

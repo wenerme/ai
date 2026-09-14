@@ -12,10 +12,10 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated Jul 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [API error codes](https://developers.cloudflare.com/ai-search/troubleshooting/api-error-codes/)
-* [Indexing error codes](https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/)
+- [API error codes](https://developers.cloudflare.com/ai-search/troubleshooting/api-error-codes/)
+- [Indexing error codes](https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/)
 
 Was this helpful?
 

@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Zero Trust
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/implementation-guides/zero-trust/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/implementation-guides/zero-trust/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Zero Trust implementation guides walk you through the steps to deploy a Zero Trust solution with Cloudflare.
 
 ## Zero Trust
 
-* [Secure your Internet traffic and SaaS apps](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/concepts/)
-* [Replace your VPN](https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/)
-* [Deploy Zero Trust Web Access](https://developers.cloudflare.com/learning-paths/clientless-access/concepts/)
-* [Secure your email with Email security](https://developers.cloudflare.com/learning-paths/secure-your-email/concepts/)
+- [Secure your Internet traffic and SaaS apps](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/concepts/)
+- [Replace your VPN](https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/)
+- [Deploy Zero Trust Web Access](https://developers.cloudflare.com/learning-paths/clientless-access/concepts/)
+- [Secure your email with Email security](https://developers.cloudflare.com/learning-paths/secure-your-email/concepts/)
 
 Was this helpful?
 

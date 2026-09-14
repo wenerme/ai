@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Migrate from Vitest 3 to Vitest 4
 
-Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-vitest-3-to-vitest-4/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-vitest-3-to-vitest-4/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cloudflare/vitest-pool-workers` v0.13.0 adds support for [Vitest 4 ↗](https://vitest.dev/blog/vitest-4). v0.12.x is the last version to support Vitest 3.x. It continues to work if you are not ready to migrate.
 
@@ -22,12 +22,12 @@ This guide applies to `@cloudflare/vitest-pool-workers` version 0.x. To migrate 
 
 Version 0.13.0 rearchitects the integration around a Vite plugin model. This change breaks the configuration API, but it also resolves a number of issues that were not fixable under the previous architecture:
 
-* Library imports that previously required SSR optimizer workarounds, such as Stripe, now resolve without extra configuration.
-* Bare Node.js specifiers such as `node:url` now resolve in test files.
-* `nodejs_compat_v2` and Node.js module flags are enabled automatically during tests, matching production behavior.
-* The `provide` data channel is no longer limited to \~8 KB. It now uses WebSocket messages.
-* Storage is isolated per test file instead of per test, consistent with standard Vitest behavior.
-* The Vitest UI works correctly with Workers tests.
+- Library imports that previously required SSR optimizer workarounds, such as Stripe, now resolve without extra configuration.
+- Bare Node.js specifiers such as `node:url` now resolve in test files.
+- `nodejs_compat_v2` and Node.js module flags are enabled automatically during tests, matching production behavior.
+- The `provide` data channel is no longer limited to \~8 KB. It now uses WebSocket messages.
+- Storage is isolated per test file instead of per test, consistent with standard Vitest behavior.
+- The Vitest UI works correctly with Workers tests.
 
 This guide covers migrating an existing project from v0.12.x to v0.13.x.
 
@@ -101,6 +101,8 @@ The codemod migrates configurations that use `defineWorkersProject`. If your con
 
 Before:
 
+*vitest.config.tsts*
+
 ```ts
 import { defineWorkersProject } from "@cloudflare/vitest-pool-workers/config";
 
@@ -116,6 +118,8 @@ export default defineWorkersProject({
 ```
 
 After:
+
+*vitest.config.tsts*
 
 ```ts
 import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
@@ -140,7 +144,7 @@ The following changes must be made manually to your test files.
 
 ### Update deprecated `cloudflare:test` imports
 
-The `env` and `SELF` exports from `cloudflare:test` are deprecated in favor of `cloudflare:workers`. Replace `import { env, SELF } from "cloudflare:test"` with `import { env, exports } from "cloudflare:workers"`. `exports.default.fetch()` behaves the same as `SELF.fetch()`, except that it does not expose Assets. To test Assets, use the `env.ASSETS` binding or write an integration test using [startDevWorker()](https://developers.cloudflare.com/workers/testing/unstable%5Fstartworker/). The deprecated exports still work, so this change is recommended rather than required.
+The `env` and `SELF` exports from `cloudflare:test` are deprecated in favor of `cloudflare:workers`. Replace `import { env, SELF } from "cloudflare:test"` with `import { env, exports } from "cloudflare:workers"`. `exports.default.fetch()` behaves the same as `SELF.fetch()`, except that it does not expose Assets. To test Assets, use the `env.ASSETS` binding or write an integration test using [`startDevWorker()`](https://developers.cloudflare.com/workers/testing/unstable_startworker/). The deprecated exports still work, so this change is recommended rather than required.
 
 ```diff
 - import { env, SELF } from "cloudflare:test";
@@ -160,6 +164,8 @@ The `import { fetchMock } from "cloudflare:test"` import has been removed. Mock 
 
 To handle the test file changes automatically, give the following prompt to a coding agent:
 
+*Prompt for your coding agenttxt*
+
 ```txt
 Migrate my @cloudflare/vitest-pool-workers tests from v0.12.x to v0.13.x (Vitest 4).
 
@@ -176,8 +182,8 @@ For breaking changes in Vitest 4 itself that may affect your tests, refer to the
 
 ## Related resources
 
-* [Write your first test](https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/) \- Write unit and integration tests for Workers.
-* [Configuration](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/) \- Reference for the `cloudflareTest()` plugin options.
+- [Write your first test](https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/) - Write unit and integration tests for Workers.
+- [Configuration](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/) - Reference for the `cloudflareTest()` plugin options.
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Postmaster
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/reference/postmaster/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/reference/postmaster/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page provides technical information about Email Service to professionals who administer email systems, and other email providers.
 
@@ -32,7 +32,7 @@ Email Service supports [Authenticated Received Chain (ARC) ↗](https://arc-spec
 
 ### DKIM signature
 
-[DKIM (DomainKeys Identified Mail) ↗](https://en.wikipedia.org/wiki/DomainKeys%5FIdentified%5FMail) ensures that email messages are not altered in transit between the sender and the recipient's SMTP servers through public-key cryptography.
+[DKIM (DomainKeys Identified Mail) ↗](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail) ensures that email messages are not altered in transit between the sender and the recipient's SMTP servers through public-key cryptography.
 
 Through this standard, the sender publishes its public key to a domain's DNS once, and then signs the body of each message before it leaves the server. The recipient server reads the message, gets the domain public key from the domain's DNS, and validates the signature to ensure the message was not altered in transit.
 
@@ -119,9 +119,9 @@ dig TXT _spf.mx.cloudflare.net +short
 
 Email Service will use the following outbound domains for the `HELO/EHLO` command:
 
-* `cloudflare-email.net`
-* `cloudflare-email.org`
-* `cloudflare-email.com`
+- `cloudflare-email.net`
+- `cloudflare-email.org`
+- `cloudflare-email.com`
 
 PTR records (reverse DNS) ensure that each hostname has a corresponding IP. For example:
 
@@ -143,7 +143,7 @@ a-h.cloudflare-email.net.
 
 ### Sender rewriting
 
-For forwarded emails, Email Routing uses the [Sender Rewriting Scheme ↗](https://en.wikipedia.org/wiki/Sender%5FRewriting%5FScheme) to rewrite the envelope sender (the SMTP `MAIL FROM` address) to a Cloudflare-controlled forwarding domain. This rewriting allows SPF to pass at the destination server even though the message is being relayed. The `From:` header of the message is not modified.
+For forwarded emails, Email Routing uses the [Sender Rewriting Scheme ↗](https://en.wikipedia.org/wiki/Sender_Rewriting_Scheme) to rewrite the envelope sender (the SMTP `MAIL FROM` address) to a Cloudflare-controlled forwarding domain. This rewriting allows SPF to pass at the destination server even though the message is being relayed. The `From:` header of the message is not modified.
 
 ### SMTP errors
 
@@ -183,10 +183,10 @@ The `~all` mechanism is a SoftFail. Receiving servers should treat mail from IPs
 
 For full configuration details, refer to:
 
-* [Domain configuration](https://developers.cloudflare.com/email-service/configuration/domains/) — DNS records, sending and routing setup
-* [Limits](https://developers.cloudflare.com/email-service/platform/limits/) — rate limits, sending quotas, and message size limits
-* [Deliverability](https://developers.cloudflare.com/email-service/concepts/deliverability/) — bounce handling and reputation management
-* [Suppression lists](https://developers.cloudflare.com/email-service/concepts/suppressions/) — automatic and manual suppression management
+- [Domain configuration](https://developers.cloudflare.com/email-service/configuration/domains/) — DNS records, sending and routing setup
+- [Limits](https://developers.cloudflare.com/email-service/platform/limits/) — rate limits, sending quotas, and message size limits
+- [Deliverability](https://developers.cloudflare.com/email-service/concepts/deliverability/) — bounce handling and reputation management
+- [Suppression lists](https://developers.cloudflare.com/email-service/concepts/suppressions/) — automatic and manual suppression management
 
 ---
 
@@ -196,12 +196,12 @@ Below, you will find information regarding known limitations for Email Service, 
 
 ### Email address internationalization (EAI)
 
-Email Routing does not support [internationalized email addresses ↗](https://en.wikipedia.org/wiki/International%5Femail). Email Routing only supports [internationalized domain names ↗](https://en.wikipedia.org/wiki/Internationalized%5Fdomain%5Fname).
+Email Routing does not support [internationalized email addresses ↗](https://en.wikipedia.org/wiki/International_email). Email Routing only supports [internationalized domain names ↗](https://en.wikipedia.org/wiki/Internationalized_domain_name).
 
 This means that you can have email addresses with an internationalized domain, but not an internationalized local-part (the first part of your email address, before the @ symbol). Refer to the following examples:
 
-* `info@piñata.es` \- **Supported**
-* `piñata@piñata.es` \- **Not supported**
+- `info@piñata.es` - **Supported**
+- `piñata@piñata.es` - **Not supported**
 
 ### Non-delivery reports (NDRs)
 

@@ -12,22 +12,30 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Whisper-large-v3-turbo with Cloudflare Workers AI
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-workers-ai-whisper-with-chunking/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-workers-ai-whisper-with-chunking/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial you will learn how to:
 
-* **Transcribe large audio files:** Use the [Whisper-large-v3-turbo](https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo/) model from Cloudflare Workers AI to perform automatic speech recognition (ASR) or translation.
-* **Handle large files:** Split large audio files into smaller chunks for processing, which helps overcome memory and execution time limitations.
-* **Deploy using Cloudflare Workers:** Create a scalable, low‑latency transcription pipeline in a serverless environment.
+- **Transcribe large audio files:** Use the [Whisper-large-v3-turbo](https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo/) model from Cloudflare Workers AI to perform automatic speech recognition (ASR) or translation.
+- **Handle large files:** Split large audio files into smaller chunks for processing, which helps overcome memory and execution time limitations.
+- **Deploy using Cloudflare Workers:** Create a scalable, low‑latency transcription pipeline in a serverless environment.
 
 ## 1: Create a new Cloudflare Worker project
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
+
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
 
 You will create a new Worker project using the `create-cloudflare` CLI (C3). [C3 ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) is a command-line tool designed to help you set up and deploy new applications to Cloudflare.
 
@@ -47,20 +55,20 @@ yarn create cloudflare whisper-tutorial
 pnpm create cloudflare@latest whisper-tutorial
 ```
 
-Running `npm create cloudflare@latest` will prompt you to install the [create-cloudflare package ↗](https://www.npmjs.com/package/create-cloudflare), and lead you through setup. C3 will also install [Wrangler](https://developers.cloudflare.com/workers/wrangler/), the Cloudflare Developer Platform CLI.
+Running `npm create cloudflare@latest` will prompt you to install the [`create-cloudflare` package ↗](https://www.npmjs.com/package/create-cloudflare), and lead you through setup. C3 will also install [Wrangler](https://developers.cloudflare.com/workers/wrangler/), the Cloudflare Developer Platform CLI.
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `TypeScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `TypeScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 This will create a new `whisper-tutorial` directory. Your new `whisper-tutorial` directory will include:
 
-* A `"Hello World"` [Worker](https://developers.cloudflare.com/workers/get-started/guide/#3-write-code) at `src/index.ts`.
-* A [wrangler.jsonc](https://developers.cloudflare.com/workers/wrangler/configuration/) configuration file.
+- A `"Hello World"` [Worker](https://developers.cloudflare.com/workers/get-started/guide/#3-write-code) at `src/index.ts`.
+- A [`wrangler.jsonc`](https://developers.cloudflare.com/workers/wrangler/configuration/) configuration file.
 
 Go to your application directory:
 
@@ -68,7 +76,7 @@ Go to your application directory:
 cd whisper-tutorial
 ```
 
-## 2\. Connect your Worker to Workers AI
+## 2. Connect your Worker to Workers AI
 
 You must create an AI binding for your Worker to connect to Workers AI. [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) allow your Workers to interact with resources, like Workers AI, on the Cloudflare Developer Platform.
 
@@ -87,9 +95,9 @@ To bind Workers AI to your Worker, add the following to the end of your Wrangler
 binding = "AI"
 ```
 
-Your binding is [available in your Worker code](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/#bindings-in-es-modules-format) on [env.AI](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/).
+Your binding is [available in your Worker code](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/#bindings-in-es-modules-format) on [`env.AI`](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/).
 
-## 3\. Configure Wrangler
+## 3. Configure Wrangler
 
 In your wrangler file, add or update the following settings to enable Node.js APIs and polyfills (with a compatibility date of 2024‑09‑23 or later):
 
@@ -99,17 +107,17 @@ In your wrangler file, add or update the following settings to enable Node.js AP
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-08-25"
+	"compatibility_date": "2026-09-14"
 }
 ```
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 ```
 
-## 4\. Handle large audio files with chunking
+## 4. Handle large audio files with chunking
 
 Replace the contents of your `src/index.ts` file with the following integrated code. This sample demonstrates how to:
 
@@ -222,10 +230,11 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
-## 5\. Deploy your Worker
+## 5. Deploy your Worker
 
 1. **Run the Worker locally:**
-Use wrangler's development mode to test your Worker locally:
+
+   Use wrangler's development mode to test your Worker locally:
 
 ```sh
 npx wrangler dev
@@ -239,15 +248,17 @@ curl "http://localhost:8787?url=https://raw.githubusercontent.com/your-username/
 
 Replace the URL query parameter with the direct link to your audio file. (For GitHub-hosted files, ensure you use the raw file URL.)
 
-1. **Deploy the Worker:**
-Once testing is complete, deploy your Worker with:
+2. **Deploy the Worker:**
+
+   Once testing is complete, deploy your Worker with:
 
 ```sh
 npx wrangler deploy
 ```
 
-1. **Test the deployed Worker:**
-After deployment, test your Worker by passing the audio URL as a query parameter:
+3. **Test the deployed Worker:**
+
+   After deployment, test your Worker by passing the audio URL as a query parameter:
 
 ```sh
 curl "https://<your-worker-subdomain>.workers.dev?url=https://raw.githubusercontent.com/your-username/your-repo/main/your-audio-file.mp3"
@@ -270,5 +281,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-workers-ai-whisper-with-chunking/#page","headline":"Whisper-large-v3-turbo with Cloudflare Workers AI · Cloudflare Workers AI docs","description":"Learn how to transcribe large audio files using Workers AI.","url":"https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-workers-ai-whisper-with-chunking/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-workers-ai-whisper-with-chunking/#page","headline":"Whisper-large-v3-turbo with Cloudflare Workers AI · Cloudflare Workers AI docs","description":"Learn how to transcribe large audio files using Workers AI.","url":"https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-workers-ai-whisper-with-chunking/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

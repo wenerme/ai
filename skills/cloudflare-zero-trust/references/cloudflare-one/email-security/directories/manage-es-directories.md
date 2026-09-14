@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage Email security directories
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/directories/manage-es-directories/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/directories/manage-es-directories/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can manage your Email security directory by editing and deleting added users.
 
@@ -22,19 +22,21 @@ The Email security directory contains registered users only. A registered user i
 
 To modify or delete users in the Email security directory:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Email security** \> **Directories**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Email security** > **Directories**.
 2. Select **Email security Directory**.
 
 ## Add a user
 
 To manually add a user to the Email security directory:
 
-1. On the sidebar, go to **Settings** \> **Impersonation registry** \> **View**.
+1. On the sidebar, go to **Settings** > **Impersonation registry** > **View**.
 2. Select **Add a user**:
-* Choose **Manual input** as the **Input method**.
-* Under **User info**, enter the **Display name**.
-* Under **User email**, enter the **Email addresses**.
-1. Select **Save**.
+
+- Choose **Manual input** as the **Input method**.
+- Under **User info**, enter the **Display name**.
+- Under **User email**, enter the **Email addresses**.
+
+3. Select **Save**.
 
 To view users you manually added:
 

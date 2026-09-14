@@ -16,18 +16,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Video • ByteDance
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `bytedance/seedance-2.0-fast`
 
-* Third-party
+- Third-party
 
 Faster variant of ByteDance's Seedance 2.0 video model. Trades some quality for speed while sharing the same multimodal architecture. Supports text-to-video, image-to-video, native audio generation, multimodal references (images, videos, audio), video editing, and video extension.
 
-| Model Info       |                                                                                                                               |
-| ---------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| More information | [link ↗](https://seed.bytedance.com/en/seedance)                                                                              |
-| Pricing          | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/bytedance/seedance-2.0-fast) |
+| Model Info | |
+| --- | --- |
+| More information | [link ↗](https://seed.bytedance.com/en/seedance) |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/bytedance/seedance-2.0-fast) |
 
 ## Usage
 
@@ -73,7 +73,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Portrait Video** — Vertical video for social media
+<details>
+
+<summary>**Portrait Video** — Vertical video for social media</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -115,7 +119,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Virtual Avatar Reference** — Use a virtual character avatar from the trusted asset library
+</details>
+
+<details>
+
+<summary>**Virtual Avatar Reference** — Use a virtual character avatar from the trusted asset library</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -163,6 +173,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 prompt
@@ -181,7 +193,7 @@ last\_frame\_image
 
 `string`Reference image (HTTP(S) URL or base64 data URI) for last-frame guidance. Only works if an image start frame is also given.
 
-▶reference\_images\[\]
+▶reference\_images\[]
 
 `array`maxItems: 4Reference images (1-4, HTTP(S) URLs or base64 data URIs) to guide video generation for characters, avatars, clothing, or environments. Cannot be used with first/last frame images.
 
@@ -215,7 +227,7 @@ watermark
 
 seed
 
-`integer`minimum: \-9007199254740991maximum: 9007199254740991Random seed for reproducible generation
+`integer`minimum: -9007199254740991maximum: 9007199254740991Random seed for reproducible generation
 
 use\_virtual\_avatar
 
@@ -227,9 +239,9 @@ video
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/schema-output.json)
 
 Was this helpful?
 

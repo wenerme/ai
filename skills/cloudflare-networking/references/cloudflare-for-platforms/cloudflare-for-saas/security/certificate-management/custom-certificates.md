@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Custom certificates
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/custom-certificates/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/custom-certificates/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If your customers need to provide their own key material, you may want to [upload a custom certificate](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/custom-certificates/uploading-certificates/). Cloudflare will automatically bundle the certificate with a certificate chain [optimized for maximum browser compatibility](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/bundling-methodologies/#compatible).
 
@@ -32,9 +32,9 @@ If you use custom certificates, you are responsible for the entire certificate l
 
 Cloudflare also only accepts publicly trusted certificates of these types:
 
-* `SHA256WithRSA`
-* `SHA1WithRSA`
-* `ECDSAWithSHA256`
+- `SHA256WithRSA`
+- `SHA1WithRSA`
+- `ECDSAWithSHA256`
 
 If you attempt to upload another type of certificate or a certificate that has been self-signed, it will be rejected.
 

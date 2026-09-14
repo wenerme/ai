@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Chat agent
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/examples/chat-agent/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/examples/chat-agent/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build a chat agent that streams AI responses, calls server-side tools, executes client-side tools in the browser, and asks for user approval before sensitive actions.
 
@@ -24,10 +24,10 @@ This tutorial starts from a minimal Hello World Worker so you can see each movin
 
 **Prerequisites:**
 
-* Node.js 18+
-* A Cloudflare account (free tier works)
+- Node.js 18+
+- A Cloudflare account (free tier works)
 
-## 1\. Create the project
+## 1. Create the project
 
 ```sh
 npm create cloudflare@latest chat-agent
@@ -40,7 +40,7 @@ cd chat-agent
 npm install agents @cloudflare/ai-chat ai workers-ai-provider zod
 ```
 
-## 2\. Configure Wrangler
+## 2. Configure Wrangler
 
 Replace your `wrangler.jsonc` with:
 
@@ -49,7 +49,7 @@ Replace your `wrangler.jsonc` with:
 	"name": "chat-agent",
 	"main": "src/server.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"compatibility_flags": ["nodejs_compat"],
 	"ai": { "binding": "AI" },
 	"durable_objects": {
@@ -63,7 +63,7 @@ Replace your `wrangler.jsonc` with:
 name = "chat-agent"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 compatibility_flags = [ "nodejs_compat" ]
 
 [ai]
@@ -80,11 +80,11 @@ new_sqlite_classes = [ "ChatAgent" ]
 
 Key settings:
 
-* `ai` binds Workers AI — no API key needed
-* `durable_objects` registers your chat agent class
-* `new_sqlite_classes` enables SQLite storage for message persistence
+- `ai` binds Workers AI — no API key needed
+- `durable_objects` registers your chat agent class
+- `new_sqlite_classes` enables SQLite storage for message persistence
 
-## 3\. Write the server
+## 3. Write the server
 
 Create `src/server.ts`. This is where your agent lives:
 
@@ -292,13 +292,13 @@ export default {
 
 ### What each tool type does
 
-| Tool            | execute? | needsApproval?      | Behavior                                        |
-| --------------- | -------- | ------------------- | ----------------------------------------------- |
-| getWeather      | Yes      | No                  | Runs on the server automatically                |
-| getUserTimezone | No       | No                  | Sent to the client; browser provides the result |
-| calculate       | Yes      | Yes (large numbers) | Pauses for user approval, then runs on server   |
+| Tool | `execute`? | `needsApproval`? | Behavior |
+| --- | --- | --- | --- |
+| `getWeather` | Yes | No | Runs on the server automatically |
+| `getUserTimezone` | No | No | Sent to the client; browser provides the result |
+| `calculate` | Yes | Yes (large numbers) | Pauses for user approval, then runs on server |
 
-## 4\. Write the client
+## 4. Write the client
 
 Create `src/client.tsx`:
 
@@ -529,13 +529,13 @@ export default function App() {
 
 ### Key client concepts
 
-* **`useAgent`** connects to your `ChatAgent` over WebSocket
-* **`useAgentChat`** manages the chat lifecycle (messages, streaming, tools)
-* **`onToolCall`** handles client-side tools — when the LLM calls `getUserTimezone`, the browser provides the result and the conversation auto-continues
-* **`addToolApprovalResponse`** approves or rejects tools that have `needsApproval`
-* Messages, streaming, and resumption are all handled automatically
+- **`useAgent`** connects to your `ChatAgent` over WebSocket
+- **`useAgentChat`** manages the chat lifecycle (messages, streaming, tools)
+- **`onToolCall`** handles client-side tools — when the LLM calls `getUserTimezone`, the browser provides the result and the conversation auto-continues
+- **`addToolApprovalResponse`** approves or rejects tools that have `needsApproval`
+- Messages, streaming, and resumption are all handled automatically
 
-## 5\. Run locally
+## 5. Run locally
 
 Generate types and start the dev server:
 
@@ -546,11 +546,11 @@ npm run dev
 
 Try these prompts:
 
-* **"What is the weather in Tokyo?"** — calls the server-side `getWeather` tool
-* **"What timezone am I in?"** — calls the client-side `getUserTimezone` tool (the browser provides the answer)
-* **"What is 5000 times 3?"** — triggers the approval UI before executing (numbers over 1000)
+- **"What is the weather in Tokyo?"** — calls the server-side `getWeather` tool
+- **"What timezone am I in?"** — calls the client-side `getUserTimezone` tool (the browser provides the answer)
+- **"What is 5000 times 3?"** — triggers the approval UI before executing (numbers over 1000)
 
-## 6\. Deploy
+## 6. Deploy
 
 ```sh
 npx wrangler deploy
@@ -562,12 +562,12 @@ Your agent is now live on Cloudflare's global network. Messages persist in SQLit
 
 Your chat agent has:
 
-* **Streaming AI responses** via Workers AI (no API keys)
-* **Message persistence** in SQLite — conversations survive restarts
-* **Server-side tools** that execute automatically
-* **Client-side tools** that run in the browser and feed results back to the LLM
-* **Human-in-the-loop approval** for sensitive operations
-* **Resumable streaming** — if a client disconnects mid-stream, it picks up where it left off
+- **Streaming AI responses** via Workers AI (no API keys)
+- **Message persistence** in SQLite — conversations survive restarts
+- **Server-side tools** that execute automatically
+- **Client-side tools** that run in the browser and feed results back to the LLM
+- **Human-in-the-loop approval** for sensitive operations
+- **Resumable streaming** — if a client disconnects mid-stream, it picks up where it left off
 
 ## Next steps
 

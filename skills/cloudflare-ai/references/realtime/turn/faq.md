@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # FAQ
 
-Last updated Jul 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/turn/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/turn/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## General
 
@@ -28,6 +28,7 @@ There is a free tier of 1,000 GB before any charges start. Cloudflare Realtime b
 
 Traffic between Cloudflare Realtime TURN and Cloudflare Realtime SFU or Cloudflare Stream (WHIP/WHEP) does not incur any charges.
 
+```
 ---
 title: Cloudflare Realtime TURN pricing
 ---
@@ -40,6 +41,8 @@ flowchart LR
 
     Server <-->|Not part of billing| PeerA[Peer A]
 
+```
+
 ### Is Realtime TURN HIPAA/GDPR/FedRAMP compliant?
 
 Please view Cloudflare's [certifications and compliance resources ↗](https://www.cloudflare.com/trust-hub/compliance-resources/) and contact your Cloudflare enterprise account manager for more information.
@@ -50,7 +53,7 @@ Cloudflare Realtime TURN supports FIPS 140-3 when encryption is used, such as TU
 
 ### What regions does Cloudflare Realtime TURN operate at?
 
-Cloudflare Realtime TURN server runs on [Cloudflare's global network ↗](https://www.cloudflare.com/network) \- a growing global network of thousands of machines distributed across hundreds of locations, with the notable exception of the Cloudflare's [China Network](https://developers.cloudflare.com/china-network/).
+Cloudflare Realtime TURN server runs on [Cloudflare's global network ↗](https://www.cloudflare.com/network) - a growing global network of thousands of machines distributed across hundreds of locations, with the notable exception of the Cloudflare's [China Network](https://developers.cloudflare.com/china-network/).
 
 ### What is the difference between Cloudflare Realtime TURN with a enterprise plan vs self-serve (pay with your credit card) plans?
 
@@ -98,8 +101,8 @@ No. Cloudflare Realtime TURN and SFU run on the same fleet of machines on Cloudf
 
 The decision should be driven by topology, not performance:
 
-* Use TURN for point-to-point relay.
-* Use SFU when you need fan-out, group calls, or selective forwarding of tracks.
+- Use TURN for point-to-point relay.
+- Use SFU when you need fan-out, group calls, or selective forwarding of tracks.
 
 ### If only one peer connects through TURN, will latency be the same as when both peers relay through TURN?
 
@@ -123,10 +126,10 @@ Cloudflare Realtime TURN is easy to use by IT administrators who have strict fir
 
 Please allowlist the following IP addresses:
 
-* `2a06:98c1:3200::1/128`
-* `2606:4700:48::1/128`
-* `141.101.90.1/32`
-* `162.159.207.1/32`
+- `2a06:98c1:3200::1/128`
+- `2606:4700:48::1/128`
+- `141.101.90.1/32`
+- `162.159.207.1/32`
 
 Watch for IP changes
 
@@ -152,9 +155,9 @@ The Cloudflare Realtime credential generation function returns a JSON structure 
 
 Packet loss is normal in UDP and can happen occasionally even on reliable connections. However, if you observe systematic packet loss, consider the following:
 
-* Are you sending or receiving data at a high rate (>50-100Mbps) from a single TURN client? Realtime TURN might be dropping packets to signal you to slow down.
-* Are you sending or receiving large amounts of data with very small packet sizes (high packet rate > 5-10kpps) from a single TURN client? Cloudflare Realtime might be dropping packets.
-* Are you sending packets to new unique addresses at a high rate resembling to [port scanning ↗](https://en.wikipedia.org/wiki/Port%5Fscanner) behavior?
+- Are you sending or receiving data at a high rate (>50-100Mbps) from a single TURN client? Realtime TURN might be dropping packets to signal you to slow down.
+- Are you sending or receiving large amounts of data with very small packet sizes (high packet rate > 5-10kpps) from a single TURN client? Cloudflare Realtime might be dropping packets.
+- Are you sending packets to new unique addresses at a high rate resembling to [port scanning ↗](https://en.wikipedia.org/wiki/Port_scanner) behavior?
 
 ### I plan to use Realtime TURN at scale. What is the rate at which I can issue credentials?
 

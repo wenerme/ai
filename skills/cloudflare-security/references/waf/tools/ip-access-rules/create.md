@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create an IP access rule
 
-Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/tools/ip-access-rules/create/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/tools/ip-access-rules/create/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Recommendation: Use custom rules instead
 
@@ -26,18 +26,16 @@ Note
 
 The **IP access rules** option appears only if you have configured at least one IP access rule.
 
-1. In the Cloudflare dashboard, go to the **Security rules** page.
-[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
-2. Select **Create rule** \> **IP access rules**.
+1. In the Cloudflare dashboard, go to the **Security rules** page. [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+2. Select **Create rule** > **IP access rules**.
 3. Enter the following rule details:
-
-  1. For **IP, IP range, country name, or ASN**, enter an IP address, IP range, country code/name, or Autonomous System Number (ASN). For details, refer to [IP Access rules parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/).
-  2. For **Action**, select an [action](https://developers.cloudflare.com/waf/tools/ip-access-rules/actions/).
-  3. For **Zone**, select whether the rule applies to the current website only or to all websites in the account.
-  4. (Optional) Enter a note for the rule (for example, `Payment Gateway`).
+   1. For **IP, IP range, country name, or ASN**, enter an IP address, IP range, country code/name, or Autonomous System Number (ASN). For details, refer to [IP Access rules parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/).
+   2. For **Action**, select an [action](https://developers.cloudflare.com/waf/tools/ip-access-rules/actions/).
+   3. For **Zone**, select whether the rule applies to the current website only or to all websites in the account.
+   4. (Optional) Enter a note for the rule (for example, `Payment Gateway`).
 4. Select **Create**.
 
-Use the Cloudflare API to programmatically create IP access rules. For more information, refer to [Create an IP Access Rule](https://developers.cloudflare.com/api/resources/firewall/subresources/access%5Frules/methods/create/).
+Use the Cloudflare API to programmatically create IP access rules. For more information, refer to [Create an IP Access Rule](https://developers.cloudflare.com/api/resources/firewall/subresources/access_rules/methods/create/).
 
 Was this helpful?
 

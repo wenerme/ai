@@ -12,9 +12,10 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # TXT
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/txt/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/txt/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 TXT record validation requires the creation of a TXT record in the hostname's authoritative DNS.
+
 
 
 ---
@@ -39,9 +40,11 @@ Once you [create a new certificate](https://developers.cloudflare.com/ssl/edge-c
 
 These tokens can be fetched through the API or the dashboard when the certificates are in a [pending validation](https://developers.cloudflare.com/ssl/reference/certificate-statuses/#new-certificates) state during custom hostname creation or during certificate renewals.
 
-You can access these tokens using the API with the [GET request](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate%5Fpacks/methods/get/) and including `status=pending_validation` as a request parameter.
+You can access these tokens using the API with the [`GET` request](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate_packs/methods/get/) and including `status=pending_validation` as a request parameter.
 
 For example, here are two tokens highlighted in the API response for a wildcard certificate.
+
+*Responsejson*
 
 ```json
 {
@@ -74,8 +77,7 @@ For example, here are two tokens highlighted in the API response for a wildcard 
 }
 ```
 
-1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+1. In the Cloudflare dashboard, go to the **Edge Certificates** page. [Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. Select a certificate.
 3. Copy the values for **Certificate validation TXT name** and **Certificate validation TXT value**.
 
@@ -105,9 +107,9 @@ Even if you manually handle DCV when issuing certificates in a [partial DNS setu
 
 If all of the following conditions are confirmed at the first attempt, the renewal happens automatically via [HTTP](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/http/).
 
-* Hostnames are proxied.
-* Hostnames on the certificate resolve to the IPs assigned to the zone.
-* The certificate does not contain wildcards.
+- Hostnames are proxied.
+- Hostnames on the certificate resolve to the IPs assigned to the zone.
+- The certificate does not contain wildcards.
 
 Note
 

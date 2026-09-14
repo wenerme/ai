@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Expressions
 
-Last updated Jun 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Rules language supports two kinds of expressions: simple and compound.
 
@@ -32,9 +32,9 @@ Simple expressions have the following syntax:
 
 Where:
 
-* [Fields](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/) specify properties associated with an HTTP request.
-* [Comparison operators](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#comparison-operators) define how values must relate to actual request data for an expression to return `true`.
-* [Values](https://developers.cloudflare.com/ruleset-engine/rules-language/values/) represent the data associated with fields. When evaluating a rule, Cloudflare compares these values with the actual data obtained from the request.
+- [Fields](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/) specify properties associated with an HTTP request.
+- [Comparison operators](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#comparison-operators) define how values must relate to actual request data for an expression to return `true`.
+- [Values](https://developers.cloudflare.com/ruleset-engine/rules-language/values/) represent the data associated with fields. When evaluating a rule, Cloudflare compares these values with the actual data obtained from the request.
 
 ## Compound expressions
 
@@ -70,8 +70,8 @@ Rules that exceed this limit cannot be created or updated. Existing rules above 
 
 You can also use the following Rules language features in your expressions:
 
-* [Grouping symbols](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#grouping-symbols) allow you to explicitly group expressions that should be evaluated together.
-* [Functions](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/) allow you to manipulate and validate values in expressions.
+- [Grouping symbols](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#grouping-symbols) allow you to explicitly group expressions that should be evaluated together.
+- [Functions](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/) allow you to manipulate and validate values in expressions.
 
 Was this helpful?
 

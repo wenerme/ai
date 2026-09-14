@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Brand Protection
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/application-security/security-center/brand-protection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/application-security/security-center/brand-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Brand Protection allows you to proactively identify and mitigate domain impersonation and phishing attacks. By monitoring newly registered domains and visual assets across the Internet, Cloudflare helps protect your brand's reputation and prevents your customers or employees from submitting sensitive information to fraudulent sites.
 
 Common threats include:
 
-* [Typosquatting ↗](https://en.wikipedia.org/wiki/Typosquatting): For example, typing `cloudfalre.com` instead of `cloudflare.com`.
-* Concatenation of services (`cloudflare-service.com`) often registered by attackers to trick unsuspecting victims into submitting private information such as passwords.
-* [Homoglyph attacks ↗](https://en.wikipedia.org/wiki/IDN%5Fhomograph%5Fattack) that use lookalike characters to trick unsuspecting victims.
+- [Typosquatting ↗](https://en.wikipedia.org/wiki/Typosquatting): For example, typing `cloudfalre.com` instead of `cloudflare.com`.
+- Concatenation of services ( `cloudflare-service.com`) often registered by attackers to trick unsuspecting victims into submitting private information such as passwords.
+- [Homoglyph attacks ↗](https://en.wikipedia.org/wiki/IDN_homograph_attack) that use lookalike characters to trick unsuspecting victims.
 
 ## Types of queries
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Certificate statuses
 
-Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/reference/certificate-statuses/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/reference/certificate-statuses/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Certificates statuses show which stage of the issuance process each certificate is in.
 
@@ -48,19 +48,19 @@ If your zone is already active when you upload a custom certificate, you will no
 
 When you create certificates in your [staging environment](https://developers.cloudflare.com/ssl/edge-certificates/staging-environment/), those staging certificates have their own set of statuses:
 
-* **Staging deployment**: Similar to **Pending Deployment**, but for staging certificates.
-* **Staging active**: Similar to **Active**, but for staging certificates.
-* **Deactivating**: Your staging certificate is in the process of becoming **Inactive**.
-* **Inactive**: Your staging certificate is not at the edge, but you can deploy it if needed.
+- **Staging deployment**: Similar to **Pending Deployment**, but for staging certificates.
+- **Staging active**: Similar to **Active**, but for staging certificates.
+- **Deactivating**: Your staging certificate is in the process of becoming **Inactive**.
+- **Inactive**: Your staging certificate is not at the edge, but you can deploy it if needed.
 
 ## Client certificates
 
 When you use [client certificates](https://developers.cloudflare.com/ssl/client-certificates/), those client certificates have their own set of statuses:
 
-* **Active**: The client certificate is active.
-* **Revoked**: The client certificate is revoked.
-* **Pending Reactivation**: The client certificate was revoked, but it is being restored.
-* **Pending Revocation**: The client certificate was active, but it is being revoked.
+- **Active**: The client certificate is active.
+- **Revoked**: The client certificate is revoked.
+- **Pending Reactivation**: The client certificate was revoked, but it is being restored.
+- **Pending Revocation**: The client certificate was active, but it is being revoked.
 
 ---
 
@@ -68,13 +68,13 @@ When you use [client certificates](https://developers.cloudflare.com/ssl/client-
 
 ### SSL/TLS
 
-Monitor a certificate's status on the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page or by using the [Get Certificate Pack endpoint](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate%5Fpacks/methods/get/).
+Monitor a certificate's status on the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page or by using the [Get Certificate Pack endpoint](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate_packs/methods/get/).
 
 For more details on certificate validation, refer to [Domain Control Validation](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/).
 
 ### SSL for SaaS
 
-Monitor a certificate's status on the [**Custom Hostnames** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames) page or by using the [Custom Hostname Details endpoint](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/get/).
+Monitor a certificate's status on the [**Custom Hostnames** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames) page or by using the [Custom Hostname Details endpoint](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/get/).
 
 The Custom Hostname Details endpoint returns separate status fields for hostname activation and certificate status. Use the top-level `status` field to monitor hostname activation. Use the nested `ssl.status` field to monitor certificate issuance and deployment.
 

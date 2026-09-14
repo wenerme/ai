@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tenant/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tenant/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Having access to Cloudflare’s provisioning capabilities allows you to more easily create and manage Cloudflare accounts. The following steps will get you started on making API calls to provision accounts, users, and services.
 
@@ -39,7 +39,7 @@ When you create an account with the Tenant API, your Cloudflare user owns that a
 To create an account under your tenant using the dashboard:
 
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
-2. Go to **Tenants** \> **Managed Accounts**.
+2. Go to **Tenants** > **Managed Accounts**.
 3. Select **Create Account**.
 4. Enter the **Account Name**, **Account Description**, and **Tenant Unit**.
 5. Choose the appropriate account subscription.
@@ -47,38 +47,31 @@ To create an account under your tenant using the dashboard:
 
 To create an account using the API, make a `POST` request to the `/accounts` endpoint and include the following values:
 
-* `name` string
-
-  * The name of the account that is displayed in the Cloudflare dashboard.
-* `type` enum
-
-  * Valid values are `standard` (default) and `enterprise`. For self-serve customers, use `standard`. For enterprise customers, use `enterprise`.
-* `unit` object
-
-  * Information related to the tenant unit.
-  * `id` string
-
-    * (optional) ID of the unit to create this account on. Needs to be specified if user administers multiple tenants. Unit ID is the `unit_tag` from your [tenant details](https://developers.cloudflare.com/tenant/how-to/get-tenant-details/).
+- `name` string
+  - The name of the account that is displayed in the Cloudflare dashboard.
+- `type` enum
+  - Valid values are `standard` (default) and `enterprise`. For self-serve customers, use `standard`. For enterprise customers, use `enterprise`.
+- `unit` object
+  - Information related to the tenant unit.
+  - `id` string
+    - (optional) ID of the unit to create this account on. Needs to be specified if user administers multiple tenants. Unit ID is the `unit_tag` from your [tenant details](https://developers.cloudflare.com/tenant/how-to/get-tenant-details/).
 
 ### Know-Your-Customer (optional)
 
 All KYC parameters are text fields, have a 120 character limit, and are optional unless enforced by the Tenant.
 
-* `business_name` string
+- `business_name` string
+  - (optional) The name of the business associated with this account.
+- `business_address` string
+  - (optional) The address of the business associated with this account.
+- `business_email` string
+  - (optional) The email of the business associated with this account.
+- `business_phone` string
+  - (optional) The phone number of the business associated with this account.
+- `external_metadata` string
+  - (optional) External metadata for this account.
 
-  * (optional) The name of the business associated with this account.
-* `business_address` string
-
-  * (optional) The address of the business associated with this account.
-* `business_email` string
-
-  * (optional) The email of the business associated with this account.
-* `business_phone` string
-
-  * (optional) The phone number of the business associated with this account.
-* `external_metadata` string
-
-  * (optional) External metadata for this account.
+*Requestbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts" \
@@ -92,6 +85,8 @@ curl "https://api.cloudflare.com/client/v4/accounts" \
 ```
 
 A successful request will return an HTTP status of `200` and the following response body:
+
+*Responsejson*
 
 ```json
 {
@@ -111,6 +106,8 @@ A successful request will return an HTTP status of `200` and the following respo
 
 A request with a unit ID:
 
+*Requestbash*
+
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts" \
 --header "X-Auth-Email: <EMAIL>" \
@@ -126,6 +123,8 @@ curl "https://api.cloudflare.com/client/v4/accounts" \
 ```
 
 A request with a unit ID and KYC:
+
+*Requestbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts" \
@@ -164,6 +163,8 @@ If you want to give customers access to their individual accounts, it is the sam
 
 You can also grant access to the Cloudflare dashboard by using the API.
 
+*Requestbash*
+
 ```bash
 curl 'https://api.cloudflare.com/client/v4/accounts/<CUSTOMER_ACCOUNT_ID>/members' \
 --header "X-Auth-Email: <EMAIL>" \
@@ -177,7 +178,7 @@ curl 'https://api.cloudflare.com/client/v4/accounts/<CUSTOMER_ACCOUNT_ID>/member
 
 In most cases, you will want to create new users with a role of `Administrator` which always has the ID `05784afa30c1afe1440e79d9351c7430`.
 
-If your customer is on an Enterprise plan, they have access to a broader set of user roles. To get a full list of available roles, send a [GET](https://developers.cloudflare.com/api/resources/accounts/subresources/roles/methods/list/) request to the API.
+If your customer is on an Enterprise plan, they have access to a broader set of user roles. To get a full list of available roles, send a [`GET`](https://developers.cloudflare.com/api/resources/accounts/subresources/roles/methods/list/) request to the API.
 
 ### Option 2 - Access via an interface
 
@@ -191,6 +192,8 @@ This capability is not enabled by default. If you need this functionality, conta
 
 To grant access via an interface, you need to create a service user, as no one will log in to the dashboard with them. If you are planning to use this method, Cloudflare will enable you to see the API key in order to make API calls as this user.
 
+*Requestbash*
+
 ```bash
 curl "https://api.cloudflare.com/client/v4/users" \
 --header "X-Auth-Email: <EMAIL>" \
@@ -200,6 +203,8 @@ curl "https://api.cloudflare.com/client/v4/users" \
   "email": "<ID@example.com>"
 }'
 ```
+
+*Responsejson*
 
 ```json
 {
@@ -229,7 +234,9 @@ curl "https://api.cloudflare.com/client/v4/users" \
 
 Now that you have a customer account and customer users (or service users), you need to create a zone.
 
-To do this, send a [POST](https://developers.cloudflare.com/api/resources/zones/methods/create/) request to the `/zones` endpoint (including the customer account ID you received in [Step 1](#step-1---create-an-account)).
+To do this, send a [`POST`](https://developers.cloudflare.com/api/resources/zones/methods/create/) request to the `/zones` endpoint (including the customer account ID you received in [Step 1](#step-1---create-an-account)).
+
+*Requestbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones" \
@@ -250,15 +257,14 @@ Now that you have a zone provisioned for the customer, you can add the appropria
 
 To create a zone subscription, typically used to upgrade a zone's plan from `PARTNERS_FREE` to a paid [Zone plan](https://developers.cloudflare.com/tenant/reference/subscriptions/#zone-plans), send a [POST](https://developers.cloudflare.com/api/resources/zones/subresources/subscriptions/methods/create/) request to the `/zones/{zone_id}/subscription` endpoint and include the following values:
 
-* `rate_plan` object
+- `rate_plan` object
+  - Contains the zone plan corresponding to what customers would order in the dashboard. For a list of available values, refer to [Zone subscriptions](https://developers.cloudflare.com/tenant/reference/subscriptions/#zone-plans).
+- `component_values` array
+  - Additional services depending on your reseller agreement, such as additional `page_rules`.
+- `frequency` string
+  - How often the subscription is renewed automatically (defaults to `"monthly"`).
 
-  * Contains the zone plan corresponding to what customers would order in the dashboard. For a list of available values, refer to [Zone subscriptions](https://developers.cloudflare.com/tenant/reference/subscriptions/#zone-plans).
-* `component_values` array
-
-  * Additional services depending on your reseller agreement, such as additional `page_rules`.
-* `frequency` string
-
-  * How often the subscription is renewed automatically (defaults to `"monthly"`).
+*Request (without \`component\_values\`)bash*
 
 ```bash
 curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/subscription' \
@@ -271,6 +277,8 @@ curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/subscription' \
   "frequency": "annual"
 }'
 ```
+
+*Request (with \`component\_values\`)bash*
 
 ```bash
 curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/subscription' \
@@ -295,15 +303,14 @@ Depending on your agreement, you may be allowed to resell other add-on services.
 
 To create an account subscription, send a [POST](https://developers.cloudflare.com/api/resources/accounts/subresources/subscriptions/methods/create/) request to the `/accounts/{account_id}/subscriptions` endpoint and include the following values:
 
-* `rate_plan` object
+- `rate_plan` object
+  - Contains the account subscription corresponding to a specific add-on service. For a list of available values, refer to [Available subscriptions](https://developers.cloudflare.com/tenant/reference/subscriptions/).
+- `component_values` array
+  - Additional services depending on your reseller agreement, such as additional endpoints for load balancing or additional seats for Cloudflare Zero Trust. If not included, the subscription includes the default values associated with each purchase.
+- `frequency` string
+  - How often the subscription is renewed automatically (defaults to `"monthly"`).
 
-  * Contains the account subscription corresponding to a specific add-on service. For a list of available values, refer to [Available subscriptions](https://developers.cloudflare.com/tenant/reference/subscriptions/).
-* `component_values` array
-
-  * Additional services depending on your reseller agreement, such as additional endpoints for load balancing or additional seats for Cloudflare Zero Trust. If not included, the subscription includes the default values associated with each purchase.
-* `frequency` string
-
-  * How often the subscription is renewed automatically (defaults to `"monthly"`).
+*Requestbash*
 
 ```bash
 curl 'https://api.cloudflare.com/client/v4/accounts/{account_id}/subscriptions' \

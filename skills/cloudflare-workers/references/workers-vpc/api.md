@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers Binding API
 
-Last updated Jun 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-vpc/api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 VPC bindings provide APIs for accessing private services from your Worker. Both [VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) and [VPC Networks](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/) expose a `fetch()` method for HTTP traffic. VPC Networks also expose a `connect()` method for raw TCP connections. The difference between binding types is in routing scope, not in API surface.
 
@@ -26,8 +26,8 @@ Workers VPC is currently in beta. Features and APIs may change before general av
 
 A VPC Service binding routes requests to a specific pre-registered host and port. The [VPC Service configuration](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/#vpc-service-configuration) always determines the connection target, even if a different URL or host is present in the `fetch()` call.
 
-* The **host** provided in `fetch()` does not control routing. It only populates the `Host` header and, when using `https`, the Server Name Indication (SNI) value.
-* The **port** provided in `fetch()` is ignored — the port specified in the VPC Service configuration is always used.
+- The **host** provided in `fetch()` does not control routing. It only populates the `Host` header and, when using `https`, the Server Name Indication (SNI) value.
+- The **port** provided in `fetch()` is ignored — the port specified in the VPC Service configuration is always used.
 
 ### VPC Network
 
@@ -43,12 +43,12 @@ const response = await env.MY_BINDING.fetch(resource, options);
 
 ### Parameters
 
-* `resource` (string | URL | Request) — The URL to fetch. Must be an absolute URL including protocol, host, and path (for example, `http://internal-api/api/users`).
-* `options` (optional RequestInit) — Standard fetch options including:
-  * `method` — HTTP method (GET, POST, PUT, DELETE, etc.)
-  * `headers` — Request headers
-  * `body` — Request body
-  * `signal` — AbortSignal for request cancellation
+- `resource` (string | URL | Request) — The URL to fetch. Must be an absolute URL including protocol, host, and path (for example, `http://internal-api/api/users`).
+- `options` (optional RequestInit) — Standard fetch options including:
+  - `method` — HTTP method (GET, POST, PUT, DELETE, etc.)
+  - `headers` — Request headers
+  - `body` — Request body
+  - `signal` — AbortSignal for request cancellation
 
 Absolute URLs required
 
@@ -137,11 +137,11 @@ const socket = await env.MY_BINDING.connect(address);
 
 ### Parameters
 
-* `address` (string | SocketAddress) — The destination to connect to. Pass a string in `"host:port"` format (for example, `"10.0.1.50:6379"`) or a [SocketAddress](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#socketaddress/) object with `hostname` and `port`.
+- `address` (string | SocketAddress) — The destination to connect to. Pass a string in `"host:port"` format (for example, `"10.0.1.50:6379"`) or a [`SocketAddress`](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#socketaddress/) object with `hostname` and `port`.
 
 ### Return value
 
-Returns a `Promise<Socket>` that resolves to a [Socket](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#socket/) with `readable` and `writable` streams. If `connect()` cannot establish the connection, it throws an exception.
+Returns a `Promise<Socket>` that resolves to a [`Socket`](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#socket/) with `readable` and `writable` streams. If `connect()` cannot establish the connection, it throws an exception.
 
 Note
 
@@ -190,9 +190,9 @@ To bind a VPC Service or VPC Network in a Worker, your user needs `Connectivity 
 
 ## Next steps
 
-* Configure [VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/)
-* Configure [VPC Networks](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/)
-* Refer to [usage examples](https://developers.cloudflare.com/workers-vpc/examples/)
+- Configure [VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/)
+- Configure [VPC Networks](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/)
+- Refer to [usage examples](https://developers.cloudflare.com/workers-vpc/examples/)
 
 Was this helpful?
 

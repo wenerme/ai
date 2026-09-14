@@ -12,24 +12,24 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # FAQ
 
-Last updated Sep 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Stream
 
 ### Can I download original video files from Stream?
 
-You cannot download the _exact_ input file that you uploaded. However, depending on your use case, you can use the [Downloadable Videos](https://developers.cloudflare.com/stream/viewing-videos/download-videos/) feature to get encoded MP4s for use cases like offline viewing.
+You cannot download the *exact* input file that you uploaded. However, depending on your use case, you can use the [Downloadable Videos](https://developers.cloudflare.com/stream/viewing-videos/download-videos/) feature to get encoded MP4s for use cases like offline viewing.
 
 ### Is there a limit to the amount of videos I can upload?
 
-* By default, a video upload can be at most 30 GB.
-* By default, you can have up to 120 videos queued or being encoded simultaneously. Videos in the `ready` status are playable but may still be encoding certain quality levels until the `pctComplete` reaches 100\. Videos in the `error`, `ready`, or `pendingupload` state do not count toward this limit. If you need the concurrency limit raised, [contact Cloudflare support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) explaining your use case and why you would like the limit raised.
+- By default, a video upload can be at most 30 GB.
+- By default, you can have up to 120 videos queued or being encoded simultaneously. Videos in the `ready` status are playable but may still be encoding certain quality levels until the `pctComplete` reaches 100. Videos in the `error`, `ready`, or `pendingupload` state do not count toward this limit. If you need the concurrency limit raised, [contact Cloudflare support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) explaining your use case and why you would like the limit raised.
 
 Note
 
 The limit to the number of videos only applies to videos being uploaded to Cloudflare Stream. This limit is not related to the number of end users streaming videos.
 
-* An account cannot upload videos if the total video duration exceeds the video storage capacity purchased.
+- An account cannot upload videos if the total video duration exceeds the video storage capacity purchased.
 
 Limits apply to Direct Creator Uploads at the time of upload URL creation.
 
@@ -47,22 +47,22 @@ When HDR videos are uploaded to Stream, they are re-encoded and delivered in SDR
 
 If you are producing a brand new file for Cloudflare Stream, we recommend you use the following settings:
 
-* MP4 containers, AAC audio codec, H264 video codec, 30 or below frames per second
-* moov atom should be at the front of the file (Fast Start)
-* H264 progressive scan (no interlacing)
-* H264 high profile
-* Closed GOP
-* Content should be encoded and uploaded in the same frame rate it was recorded
-* Mono or Stereo audio (Stream will mix audio tracks with more than 2 channels down to stereo)
+- MP4 containers, AAC audio codec, H264 video codec, 30 or below frames per second
+- moov atom should be at the front of the file (Fast Start)
+- H264 progressive scan (no interlacing)
+- H264 high profile
+- Closed GOP
+- Content should be encoded and uploaded in the same frame rate it was recorded
+- Mono or Stereo audio (Stream will mix audio tracks with more than 2 channels down to stereo)
 
 Below are bitrate recommendations for encoding new videos for Stream:
 
 | Resolution | Recommended bitrate |
-| ---------- | ------------------- |
-| 1080p      | 8 Mbps              |
-| 720p       | 4.8 Mbps            |
-| 480p       | 2.4 Mbps            |
-| 360p       | 1 Mbps              |
+| --- | --- |
+| 1080p | 8 Mbps |
+| 720p | 4.8 Mbps |
+| 480p | 2.4 Mbps |
+| 360p | 1 Mbps |
 
 ### If I cancel my stream subscription, are the videos deleted?
 
@@ -70,7 +70,9 @@ Videos are removed if the subscription is not renewed within 30 days.
 
 ### I use Content Security Policy (CSP) on my website. What domains do I need to add to which directives?
 
-If your website uses [Content Security Policy (CSP)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy) directives, depending on your configuration, you may need to add Cloudflare Stream's domains to particular directives, in order to allow videos to be viewed or uploaded by your users.
+If your website uses [Content Security Policy (CSP)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy)
+
+ directives, depending on your configuration, you may need to add Cloudflare Stream's domains to particular directives, in order to allow videos to be viewed or uploaded by your users.
 
 If you use the provided [Stream Player](https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/), `videodelivery.net` and `*.cloudflarestream.com` must be included in the `frame-src` or `default-src` directive to allow the player's `<iframe>` element to load.
 
@@ -92,7 +94,7 @@ Content-Security-Policy: connect-src 'self' *.videodelivery.net *.cloudflarestre
 
 To ensure **only** videos from **your** Cloudflare Stream account can be played on your website, replace `*` in `*.cloudflarestream.com` and `*.videodelivery.net` in the examples above with `customer-<CODE>`, replacing `<CODE>` with your unique customer code. To find your unique customer code in the Cloudflare dashboard, go to the **Stream** page.
 
-[Go to **Videos** ↗](https://dash.cloudflare.com/?to=/:account/stream/videos)
+[Go to **Videos** ↗](https://dash.cloudflare.com/?to=/:account/stream/videos)
 
 This code is unique to your Cloudflare Account.
 

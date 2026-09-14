@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manually add domains
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/journaling-setup/manual-add/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/journaling-setup/manual-add/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page will teach you how to manually add domains via BCC/Journaling on the Cloudflare dashboard.
 
@@ -22,14 +22,14 @@ This setup is ideal if your email provider is not Microsoft 365 or Google Worksp
 
 To use Email security, you will need to have:
 
-* A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up)
-* A [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/setup/#2-create-a-zero-trust-organization)
-* A domain to protect
+- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up)
+- A [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/setup/#2-create-a-zero-trust-organization)
+- A domain to protect
 
 ## Manually add domains
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/) \> **Email security**.
-2. Select **Overview**. If you have not purchased Email security, select **Contact Sales**. Otherwise, select **Set up** \> **BCC/Journaling**.
+1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/) > **Email security**.
+2. Select **Overview**. If you have not purchased Email security, select **Contact Sales**. Otherwise, select **Set up** > **BCC/Journaling**.
 3. Select **Manual add**.
 
 ## Users with domains on Cloudflare
@@ -46,8 +46,8 @@ On the **Set up Email security** page:
 
 If you do not have domains with Cloudflare, the Cloudflare dashboard will display two options:
 
-* Add a domain to Cloudflare.
-* Enter domain manually.
+- Add a domain to Cloudflare.
+- Enter domain manually.
 
 ### Add a domain to Cloudflare
 
@@ -69,8 +69,8 @@ To enable auto-move events, you will have to associate an integration.
 
 To associate an integration:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/) \> **Email security**.
-2. Go to **Settings** \> **Domain management** \> **Domains** \> Select **View**.
+1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/) > **Email security**.
+2. Go to **Settings** > **Domain management** > **Domains** > Select **View**.
 3. On the **Domain management** page, locate your domain, select the three dots, then select **Associate an integration**.
 4. Select **Connect an integration**. Follow the steps to [enable the Microsoft 365 integration](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/api/m365-api/#enable-microsoft-integration).
 5. Select the three dots, then select **Associate an integration**. Select the integration, then select **Associate**.

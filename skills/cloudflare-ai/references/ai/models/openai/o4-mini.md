@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • OpenAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/o4-mini/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/openai/o4-mini/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `openai/o4-mini`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 OpenAI's fast, lightweight reasoning model optimized for multi-step problem solving at lower cost.
 
-| Model Info                                                                          |                                                                                                                  |
-| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 200,000 tokens                                                                                                   |
-| Terms and License                                                                   | [link ↗](https://openai.com/policies/)                                                                           |
-| More information                                                                    | [link ↗](https://openai.com/)                                                                                    |
-| Zero data retention                                                                 | Yes                                                                                                              |
-| Request formats                                                                     | Responses, Chat Completions                                                                                      |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/o4-mini) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 200,000 tokens |
+| Terms and License | [link ↗](https://openai.com/policies/) |
+| More information | [link ↗](https://openai.com/) |
+| Zero data retention | Yes |
+| Request formats | Responses, Chat Completions |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/o4-mini) |
 
 ## Usage
 
@@ -59,6 +59,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Here are the three (classical) laws of thermodynamics:
 
 1. First Law (Conservation of Energy)
@@ -77,6 +78,7 @@ Here are the three (classical) laws of thermodynamics:
 3. Third Law (Unattainability of Absolute Zero)
      – Statement: As the temperature of a perfect crystalline substance approaches absolute zero (0 K), its entropy approaches a constant minimum (often taken as zero).
      – Consequence: It is impossible to reach absolute zero in a finite number of steps.
+```
 
 ```json
 {
@@ -121,7 +123,11 @@ Here are the three (classical) laws of thermodynamics:
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -155,6 +161,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 Here’s the most common way, using Python’s built-in json module:
 
 ```python
@@ -214,6 +221,7 @@ data = json.loads(text)
 ```
 
 That’s all you need to read JSON files in Python!
+````
 
 ```json
 {
@@ -256,7 +264,13 @@ That’s all you need to read JSON files in Python!
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -304,6 +318,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Here are two popular ways to make the trip—with suggested stops—so you can pick the one that best fits your interests and schedule.
 
 1. Coastal Highway (CA-1 / Pacific Coast Highway)
@@ -380,6 +395,7 @@ Tips:
 • Allow extra time for traffic, especially near Malibu, Santa Barbara, and LA.
 
 Enjoy your trip! Let me know if you need more detail on any stop or lodging suggestions.
+```
 
 ```json
 {
@@ -422,7 +438,13 @@ Enjoy your trip! Let me know if you need more detail on any stop or lodging sugg
 }
 ```
 
-**Creative Writing** — Longer completion for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Longer completion for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -456,9 +478,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Detective Mara Ellington crouched in the alley’s muted glow, rain dripping from her brimmed hat. The city’s midnight hush was deafening, broken only by distant sirens and the scurry of rats. She’d come to inspect the scene of a daring daylight burglary at the old Currier estate, expecting shattered glass and empty safes. Instead, on the damp cobblestones, she found a single porcelain doll’s head—its cheek chipped, one glass eye staring blankly at the moon.
 
 Heat prickled her neck. No burglar would leave such a thing behind. She reached for it, careful of the spider-web crack snaking from its temple. The doll’s painted lips were twisted into an unnatural grin, and tucked beneath its chin was a scrap of yellowed paper, edges singed. Mara unfolded it, breath catching as she read the single word scrawled in crimson ink: “Found.”
+```
 
 ```json
 {
@@ -501,7 +525,13 @@ Heat prickled her neck. No burglar would leave such a thing behind. She reached 
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -534,6 +564,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 Recursion is a technique where a function (or routine) calls itself in order to break a problem down into smaller, more manageable pieces. Every recursive solution has two essential parts:
 
 1. Base Case
@@ -581,6 +612,7 @@ Key points to remember:
 - Always define a clear base case, or the recursion will never stop.
 - Each recursive call should make progress toward that base case (e.g. decreasing n by 1).
 - Recursion is especially handy for problems that naturally split into similar subproblems (tree traversals, divide-and-conquer algorithms, combinatorial searches, etc.).
+````
 
 ```json
 [
@@ -9580,7 +9612,13 @@ Key points to remember:
 ]
 ```
 
-**Web Search** — Letting the model use OpenAI's built-in web search tool to answer with current information
+</details>
+
+<details>
+
+<summary>**Web Search** — Letting the model use OpenAI's built-in web search tool to answer with current information</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -9610,11 +9648,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 - On June 18, Cloudflare unveiled a new “Cloudflare One Design Partner” designation within its PowerUP Partner Program and introduced an AI-powered toolkit to streamline migrations to its Cloudflare One platform, helping organizations modernize legacy security architectures and accelerate adoption of secure access service edge (SASE) solutions; the initial cohort includes partners such as Arctiq, Consortium, CMT, Presidio, and The Missing Link ([itpro.com](https://www.itpro.com/technology/artificial-intelligence/cloudflare-launches-new-partner-initiative-to-support-ai-and-sase-adoption?utm_source=openai))
 
 - On June 17, Cloudflare strengthened its AI agent ecosystem by open-sourcing Flue 1.0 Beta—an extensible framework for deploying production-grade AI agents—and expanding its Agents SDK with durable execution primitives, making it easier for developers to build, run, and maintain long-running AI-driven workflows on the edge ([spyingbee.com](https://spyingbee.com/updates/cloudflare/2026-06))
 
 - Between June 16 and June 22, Cloudflare investigated and resolved a dashboard bug that caused paid invoices to appear as unpaid for customers; the issue, which affected payments made since June 11, was fully remediated by June 22 following identification of the root cause and deployment of a fix ([cloudflarestatus.com](https://www.cloudflarestatus.com/))
+```
 
 ```json
 {
@@ -9841,6 +9881,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }
 ```
 
+</details>
+
 ## Parameters
 
 Schema variant
@@ -9871,13 +9913,11 @@ stream
 
 `boolean`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
-
-``
 
 ▶text{}
 
@@ -9887,7 +9927,7 @@ tool\_choice
 
 `object`
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -9909,11 +9949,11 @@ top\_p
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 stream
 
@@ -9923,19 +9963,15 @@ stream
 
 `object`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
 
-``
-
 response\_format
 
-``
-
-▶modalities\[\]
+▶modalities\[]
 
 `array`
 
@@ -9959,7 +9995,7 @@ model
 
 `string`
 
-▶output\[\]
+▶output\[]
 
 `array`
 
@@ -9991,7 +10027,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -10001,9 +10037,9 @@ model
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/openai/o4-mini/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/openai/o4-mini/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/openai/o4-mini/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/openai/o4-mini/schema-output.json)
 
 Was this helpful?
 

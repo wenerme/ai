@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Preview URLs
 
-Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/concepts/preview-urls/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/concepts/preview-urls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 # Quick deployment
 
@@ -30,13 +30,13 @@ const req = await fetch(`${tunnel.url}/api/users`); // => GET http://localhost:8
 
 Cloudflare Tunnel support currently has the following limitations:
 
-* No control over generated URL.
-* No authentication mechanism beyond randomly generated URL.
-* Each URL uses an additional `cloudflared` process on the sandbox.
+- No control over generated URL.
+- No authentication mechanism beyond randomly generated URL.
+- Each URL uses an additional `cloudflared` process on the sandbox.
 
 Production requires custom domain
 
-We are working on production deployments, custom hostnames and authentication for Cloudflare Tunnel support. In the mean time we recommend using `exposePort()` and `proxyToSandbox()` documented below under [Production usage, stable URLs and custom domains](#).
+We are working on production deployments, custom hostnames and authentication for Cloudflare Tunnel support. In the mean time we recommend using `exposePort()` and `proxyToSandbox()` documented below under Production usage, stable URLs and custom domains.
 
 See the [tunnels API reference](https://developers.cloudflare.com/sandbox/api/tunnels/) for the full API and feature set.
 
@@ -66,8 +66,8 @@ console.log(exposed.url);
 
 **Production**: `https://{port}-{sandbox-id}-{token}.yourdomain.com`
 
-* With auto-generated token: `https://8080-abc123-random16chars12.yourdomain.com`
-* With custom token: `https://8080-abc123-my_api_v1.yourdomain.com`
+- With auto-generated token: `https://8080-abc123-random16chars12.yourdomain.com`
+- With custom token: `https://8080-abc123-my_api_v1.yourdomain.com`
 
 **Local development**: `http://{port}-{sandbox-id}-{token}.localhost:{dev-server-port}`
 
@@ -99,16 +99,16 @@ const stable = await sandbox.exposePort(8000, {
 
 **Token requirements:**
 
-* 1-16 characters long
-* Lowercase letters (a-z), numbers (0-9), and underscores (\_) only
-* Must be unique within each sandbox
+- 1-16 characters long
+- Lowercase letters (a-z), numbers (0-9), and underscores (\_) only
+- Must be unique within each sandbox
 
 **Use cases for custom tokens:**
 
-* Production APIs with stable endpoints
-* Sharing demo URLs with external users
-* Documentation with consistent examples
-* Integration testing with predictable URLs
+- Production APIs with stable endpoints
+- Sharing demo URLs with external users
+- Documentation with consistent examples
+- Integration testing with predictable URLs
 
 ## ID Case Sensitivity
 
@@ -184,18 +184,18 @@ const admin = await sandbox.exposePort(3001, { hostname, name: "admin" });
 
 ## What Works
 
-* HTTP/HTTPS requests
-* WebSocket connections
-* Server-Sent Events
-* All HTTP methods (GET, POST, PUT, DELETE, etc.)
-* Request and response headers
+- HTTP/HTTPS requests
+- WebSocket connections
+- Server-Sent Events
+- All HTTP methods (GET, POST, PUT, DELETE, etc.)
+- Request and response headers
 
 ## What Does Not Work
 
-* Raw TCP/UDP connections
-* Custom protocols (must wrap in HTTP)
-* Ports outside range 1024-65535
-* Port 3000 (used internally by the SDK)
+- Raw TCP/UDP connections
+- Custom protocols (must wrap in HTTP)
+- Ports outside range 1024-65535
+- Port 3000 (used internally by the SDK)
 
 ## WebSocket Support
 
@@ -231,10 +231,10 @@ Preview URLs are publicly accessible by default, but require a valid access toke
 
 **Built-in security**:
 
-* **Token-based access** \- Each exposed port gets a unique token in the URL (for example, `https://8080-sandbox-abc123token456.yourdomain.com`)
-* **HTTPS in production** \- All traffic is encrypted with TLS. Certificates are provisioned automatically for first-level wildcards (`*.yourdomain.com`). If your Worker runs on a subdomain, refer to the [TLS note for custom domains](https://developers.cloudflare.com/sandbox/guides/preview-urls-custom-domain/#subdomain-depth-matters-for-tls).
-* **Unpredictable URLs** \- Auto-generated tokens are randomly generated and difficult to guess
-* **Token collision prevention** \- Custom tokens are validated to ensure uniqueness within each sandbox
+- **Token-based access** - Each exposed port gets a unique token in the URL (for example, `https://8080-sandbox-abc123token456.yourdomain.com`)
+- **HTTPS in production** - All traffic is encrypted with TLS. Certificates are provisioned automatically for first-level wildcards ( `*.yourdomain.com`). If your Worker runs on a subdomain, refer to the [TLS note for custom domains](https://developers.cloudflare.com/sandbox/guides/preview-urls-custom-domain/#subdomain-depth-matters-for-tls).
+- **Unpredictable URLs** - Auto-generated tokens are randomly generated and difficult to guess
+- **Token collision prevention** - Custom tokens are validated to ensure uniqueness within each sandbox
 
 **Add application-level authentication**:
 
@@ -301,12 +301,12 @@ This is **only required for local development**. In production, all container po
 
 ## Related Resources
 
-* [Configure preview URLs on a custom domain](https://developers.cloudflare.com/sandbox/guides/preview-urls-custom-domain/) \- Wildcard DNS and TLS for `exposePort()`
-* [Deploy a Sandbox application](https://developers.cloudflare.com/sandbox/guides/deploy/) \- Worker and container image deploys
-* [Expose Services](https://developers.cloudflare.com/sandbox/guides/expose-services/) \- Practical patterns for exposing ports
-* [Ports API](https://developers.cloudflare.com/sandbox/api/ports/) \- Complete API reference
-* [Tunnels API](https://developers.cloudflare.com/sandbox/api/tunnels/) \- Zero-config `*.trycloudflare.com` URLs as an alternative for development
-* [Security Model](https://developers.cloudflare.com/sandbox/concepts/security/) \- Security best practices
+- [Configure preview URLs on a custom domain](https://developers.cloudflare.com/sandbox/guides/preview-urls-custom-domain/) - Wildcard DNS and TLS for `exposePort()`
+- [Deploy a Sandbox application](https://developers.cloudflare.com/sandbox/guides/deploy/) - Worker and container image deploys
+- [Expose Services](https://developers.cloudflare.com/sandbox/guides/expose-services/) - Practical patterns for exposing ports
+- [Ports API](https://developers.cloudflare.com/sandbox/api/ports/) - Complete API reference
+- [Tunnels API](https://developers.cloudflare.com/sandbox/api/tunnels/) - Zero-config `*.trycloudflare.com` URLs as an alternative for development
+- [Security Model](https://developers.cloudflare.com/sandbox/concepts/security/) - Security best practices
 
 Was this helpful?
 

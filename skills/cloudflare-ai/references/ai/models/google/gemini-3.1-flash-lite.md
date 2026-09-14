@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Google
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-lite/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-lite/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `google/gemini-3.1-flash-lite`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 Google's lightest and most cost-efficient Gemini model for high-throughput tasks.
 
-| Model Info                                                                          |                                                                                                                                |
-| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens                                                                                                               |
-| Terms and License                                                                   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                               |
-| More information                                                                    | [link ↗](https://deepmind.google/technologies/gemini/)                                                                         |
-| Zero data retention                                                                 | Yes                                                                                                                            |
-| Request formats                                                                     | Chat Completions                                                                                                               |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.1-flash-lite) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens |
+| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms) |
+| More information | [link ↗](https://deepmind.google/technologies/gemini/) |
+| Zero data retention | Yes |
+| Request formats | Chat Completions |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.1-flash-lite) |
 
 ## Usage
 
@@ -65,6 +65,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 The three laws of thermodynamics (along with the "zeroth" law, which is foundational) describe how energy moves, transforms, and behaves in physical systems.
 
 Here is a breakdown of the laws:
@@ -99,6 +100,7 @@ Before the first three were established, scientists realized there needed to be 
 *   **First Law:** You can't win (you can't create energy).
 *   **Second Law:** You can't break even (you always lose some energy to entropy).
 *   **Third Law:** You can't get out of the game (you can't reach absolute zero).
+```
 
 ```json
 {
@@ -145,7 +147,11 @@ Before the first three were established, scientists realized there needed to be 
 
 ## Examples
 
-**With System Instruction** — Using a system instruction to set context
+<details>
+
+<summary>**With System Instruction** — Using a system instruction to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -192,6 +198,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+````
 To read a JSON file in Python, you use the built-in `json` module.
 
 Here is the standard way to do it:
@@ -247,6 +254,7 @@ print(data["name"]) # Output: Alice
 ### Summary: Which one to use?
 *   Use **`json.load(file_object)`** when reading from an actual **file** on your disk.
 *   Use **`json.loads(string)`** when reading from a **string** variable.
+````
 
 ```json
 {
@@ -291,7 +299,13 @@ print(data["name"]) # Output: Alice
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -358,6 +372,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 To give you the best recommendations, it helps to know which route you plan to take. There are two primary ways to drive from San Francisco to LA:
 
 ### 1. The Scenic Route: Highway 1 (Pacific Coast Highway)
@@ -393,6 +408,7 @@ If you want some scenery without committing to the full winding coastal road, do
 *   **Direction:** Driving North-to-South (SF to LA) is actually better for the scenic route because you are in the lane closest to the ocean, making it easier to pull over into lookout points.
 
 **Do you have a specific number of days in mind for the trip, or are you looking for a particular vibe (e.g., foodie spots, nature, or shopping)?**
+```
 
 ```json
 {
@@ -437,7 +453,13 @@ If you want some scenery without committing to the full winding coastal road, do
 }
 ```
 
-**Creative Writing** — Higher temperature for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Higher temperature for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -480,6 +502,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 The rain hammered against the window of the brownstone, a frantic, rhythmic drumming that did little to drown out the silence of the crime scene. Detective Elias Thorne knelt on the hardwood floor, his knees popping in the quiet room.
 
 The victim, a reclusive clockmaker, lay sprawled near his workbench, but Thorne’s eyes weren't on the body. They were fixed on the center of the Persian rug, where a single, pristine object sat undisturbed by the violence that had clearly unfolded here.
@@ -491,6 +514,7 @@ Thorne reached out with a gloved hand, careful not to disturb the delicate china
 He clicked his flashlight on, the beam cutting through the gloom. As the light hit the feather, the sand didn't just glitter—it began to flow, like a slow-motion whirlpool, spiraling toward the base of the cup without ever spilling over the rim.
 
 "Well," Thorne whispered to the empty room, his breath hitching in his chest. "That’s not how physics works."
+```
 
 ```json
 {
@@ -535,13 +559,15 @@ He clicked his flashlight on, the beam cutting through the gloom. As the light h
 }
 ```
 
+</details>
+
 ## Parameters
 
 Schema variant
 
 Generate ContentChat Completions
 
-▶contents\[\]
+▶contents\[]
 
 `array`required
 
@@ -553,19 +579,17 @@ Generate ContentChat Completions
 
 `object`
 
-▶safetySettings\[\]
+▶safetySettings\[]
 
 `array`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 toolConfig
 
-``
-
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -587,11 +611,11 @@ top\_p
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 stream
 
@@ -601,19 +625,15 @@ stream
 
 `object`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
 
-``
-
 response\_format
 
-``
-
-▶modalities\[\]
+▶modalities\[]
 
 `array`
 
@@ -621,7 +641,7 @@ response\_format
 
 `object`
 
-▶candidates\[\]
+▶candidates\[]
 
 `array`
 
@@ -649,7 +669,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -659,9 +679,9 @@ model
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-lite/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-lite/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-lite/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-lite/schema-output.json)
 
 Was this helpful?
 

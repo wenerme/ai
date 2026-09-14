@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • xAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-0309/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-0309/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `xai/grok-4.20-multi-agent-0309`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 xAI's Grok 4.20 multi-agent model with a 2M-token context window. Multiple agents collaborate in parallel to perform deep research tasks, with function calling, structured outputs, and reasoning capabilities.
 
-| Model Info                                                                          |                                                                                                                                  |
-| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 2,000,000 tokens                                                                                                                 |
-| Terms and License                                                                   | [link ↗](https://x.ai/legal/terms-of-service)                                                                                    |
-| More information                                                                    | [link ↗](https://x.ai/)                                                                                                          |
-| Zero data retention                                                                 | Yes                                                                                                                              |
-| Request formats                                                                     | Responses                                                                                                                        |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.20-multi-agent-0309) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 2,000,000 tokens |
+| Terms and License | [link ↗](https://x.ai/legal/terms-of-service) |
+| More information | [link ↗](https://x.ai/) |
+| Zero data retention | Yes |
+| Request formats | Responses |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.20-multi-agent-0309) |
 
 ## Usage
 
@@ -54,6 +54,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 **The three laws of thermodynamics** (often referred to as the first, second, and third) are fundamental principles in physics that govern energy, heat, work, and entropy in physical systems. There is also a foundational "zeroth law" that is logically prior but was formalized later, which is why it is numbered zero.
 
 Here is a clear summary of each:
@@ -75,6 +76,7 @@ As the temperature of a system approaches absolute zero (0 Kelvin or -273.15°C)
 This law implies that absolute zero is theoretically unreachable in a finite number of steps and has important consequences for the behavior of matter at extremely low temperatures.
 
 These laws form the foundation of classical thermodynamics, with wide applications in physics, chemistry, engineering, and biology. They are empirical laws derived from centuries of observation and experimentation.
+```
 
 ```json
 {
@@ -155,7 +157,11 @@ These laws form the foundation of classical thermodynamics, with wide applicatio
 
 ## Examples
 
-**With Instructions** — Using instructions to set the agent persona
+<details>
+
+<summary>**With Instructions** — Using instructions to set the agent persona</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -180,7 +186,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The Moon appears larger near the horizon because of a perceptual illusion (not an optical one): the brain interprets the horizon as farther away than the zenith due to distance cues from terrain and the flattened-dome appearance of the sky, so it scales up the Moon's perceived size to match its unchanged angular diameter. High in the sky with no such references, the Moon looks comparatively smaller.
+```
 
 ```json
 {
@@ -259,7 +267,13 @@ The Moon appears larger near the horizon because of a perceptual illusion (not a
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation by passing typed input items
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation by passing typed input items</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -304,9 +318,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 **Day 1:** Begin your Tokyo food journey by savoring fresh Edomae-style nigiri sushi at Tsukiji Outer Market, where skilled chefs pair perfectly seasoned rice with the day's freshest seafood straight from the market.
 **Day 2:** Dive into a rich bowl of tonkotsu ramen in a bustling Shinjuku shop, featuring silky pork-bone broth, springy noodles, chashu pork, and a marinated egg for ultimate comfort.
 **Day 3:** Conclude the weekend by grilling premium A5 Wagyu yakiniku tableside in Roppongi, savoring melt-in-your-mouth slices of marbled Japanese beef alongside vegetables and savory dipping sauces.
+```
 
 ```json
 {
@@ -385,7 +401,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }
 ```
 
-**Web Search** — Letting the agent use xAI built-in web search to answer with current info
+</details>
+
+<details>
+
+<summary>**Web Search** — Letting the agent use xAI built-in web search to answer with current info</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -415,6 +437,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 **Top xAI news stories this week (late April to early May 2026):**[[1]](https://techcrunch.com/2026/04/30/elon-musk-testifies-that-xai-trained-grok-on-openai-models/)[[2]](https://x.ai/news)
 
 - **Elon Musk testified in his lawsuit against OpenAI**, admitting that xAI had “partly” used OpenAI models (via distillation techniques) to train Grok. The multi-day testimony framed Musk as an AI safety advocate contrasting with OpenAI’s for-profit shift; it occurred as xAI operates under its recent acquisition by SpaceX.[[1]](https://techcrunch.com/2026/04/30/elon-musk-testifies-that-xai-trained-grok-on-openai-models/)[[3]](https://www.theverge.com/ai-artificial-intelligence/921546/elon-musk-xai-openai-trial-model-distillation)
@@ -424,6 +447,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 - **Grok 4.3 launched with strong benchmarks and aggressive pricing**, scoring 53 on the Artificial Analysis Intelligence Index (improved agentic/tool-use performance, ~4 points ahead of its predecessor), alongside ~40–60% price cuts; this ties into broader product momentum and the post-acquisition context, though some reports noted employee departures and prior coding lags.[[4]](https://venturebeat.com/technology/xai-launches-grok-4-3-at-an-aggressively-low-price-and-a-new-fast-powerful-voice-cloning-suite)
 
 These reflect xAI’s rapid product iteration in voice/agent capabilities and model performance while navigating legal, integration, and operational developments following the SpaceX deal.
+```
 
 ```json
 {
@@ -637,7 +661,13 @@ These reflect xAI’s rapid product iteration in voice/agent capabilities and mo
 }
 ```
 
-**With Reasoning** — Asking the agent to think harder before responding
+</details>
+
+<details>
+
+<summary>**With Reasoning** — Asking the agent to think harder before responding</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -666,6 +696,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The two trains are moving toward each other, so the distance between them closes at a combined rate of 60 + 80 = 140 mph.
 
 Time to meet = total distance / combined speed = 900 / 140.
@@ -677,6 +708,7 @@ To verify, in that time the first train travels 60 * (45/7) = 2700/7 ≈ 385.71 
 **Final Answer**
 
 45/7 hours
+```
 
 ```json
 {
@@ -754,6 +786,8 @@ To verify, in that time the first train travels 60 * (45/7) = 2700/7 ≈ 385.71 
   "user": null
 }
 ```
+
+</details>
 
 ## Parameters
 
@@ -865,7 +899,7 @@ status
 
 `string`enum: in\_progress, completed, incomplete, failed
 
-▶output\[\]
+▶output\[]
 
 `array`
 
@@ -879,17 +913,11 @@ previous\_response\_id
 
 reasoning
 
-``
-
 text
-
-``
 
 tool\_choice
 
-``
-
-▶tools\[\]
+▶tools\[]
 
 `array`
 
@@ -907,11 +935,7 @@ instructions
 
 incomplete\_details
 
-``
-
 metadata
-
-``
 
 store
 
@@ -923,17 +947,15 @@ user
 
 error
 
-``
-
 ▶usage{}
 
 `object`
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-0309/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-0309/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-0309/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-0309/schema-output.json)
 
 Was this helpful?
 

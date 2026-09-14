@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Quick start
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/getting-started/quick-start/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/getting-started/quick-start/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build AI agents that persist, think, and act. Agents run on Cloudflare's global network, maintain state across requests, and connect to clients in real-time via WebSockets.
 
@@ -46,11 +46,11 @@ npm run dev
 
 This creates a project with:
 
-* `src/server.ts` — Your agent code
-* `src/client.tsx` — React frontend
-* `wrangler.jsonc` — Cloudflare configuration
-* `tsconfig.json` — Extends `agents/tsconfig` for correct decorator and module settings
-* `vite.config.ts` — Includes the `agents/vite` plugin for decorator support
+- `src/server.ts` — Your agent code
+- `src/client.tsx` — React frontend
+- `wrangler.jsonc` — Cloudflare configuration
+- `tsconfig.json` — Extends `agents/tsconfig` for correct decorator and module settings
+- `vite.config.ts` — Includes the `agents/vite` plugin for decorator support
 
 The starter template includes two important SDK integrations. If you are setting up a project manually, add both:
 
@@ -121,6 +121,8 @@ export default {
 };
 ```
 
+*src/server.tsts*
+
 ```ts
 import { Agent, routeAgentRequest, callable } from "agents";
 
@@ -171,7 +173,7 @@ Update `wrangler.jsonc` to register the agent:
 	"name": "my-agent",
 	"main": "src/server.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"compatibility_flags": ["nodejs_compat"],
 	"durable_objects": {
 		"bindings": [
@@ -194,7 +196,7 @@ Update `wrangler.jsonc` to register the agent:
 name = "my-agent"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[durable_objects.bindings]]
@@ -208,14 +210,16 @@ new_sqlite_classes = [ "CounterAgent" ]
 
 **Key points:**
 
-* `name` in bindings becomes the property on `env` (for example, `env.CounterAgent`)
-* `class_name` must exactly match your exported class name
-* `new_sqlite_classes` enables SQLite storage for state persistence
-* `nodejs_compat` flag is required for the agents package
+- `name` in bindings becomes the property on `env` (for example, `env.CounterAgent`)
+- `class_name` must exactly match your exported class name
+- `new_sqlite_classes` enables SQLite storage for state persistence
+- `nodejs_compat` flag is required for the agents package
 
 ## Connect from React
 
 Replace `src/client.tsx`:
+
+*src/client.tsxtsx*
 
 ```tsx
 import "./styles.css";
@@ -252,9 +256,9 @@ root.render(<App />);
 
 Key points:
 
-* `useAgent` connects to your agent via WebSocket
-* `onStateUpdate` fires whenever the agent's state changes
-* `agent.stub.methodName()` calls methods marked with `@callable()` on your agent
+- `useAgent` connects to your agent via WebSocket
+- `onStateUpdate` fires whenever the agent's state changes
+- `agent.stub.methodName()` calls methods marked with `@callable()` on your agent
 
 ## How it works
 
@@ -266,18 +270,21 @@ When you clicked the button:
 4. **Broadcast** sent to all connected clients
 5. **React** updated via `onStateUpdate`
 
+```
 flowchart LR
     A["Browser<br/>(React)"] <-->|WebSocket| B["Agent<br/>(Counter)"]
     B --> C["SQLite<br/>(State)"]
 
+```
+
 ### Key concepts
 
-| Concept              | What it means                                                                                     |
-| -------------------- | ------------------------------------------------------------------------------------------------- |
-| **Agent instance**   | Each unique name gets its own agent. CounterAgent:user-123 is separate from CounterAgent:user-456 |
-| **Persistent state** | State survives restarts, deploys, and hibernation. It is stored in SQLite                         |
-| **Real-time sync**   | All clients connected to the same agent receive state updates instantly                           |
-| **Hibernation**      | When no clients are connected, the agent hibernates (no cost). It wakes on the next request       |
+| Concept | What it means |
+| --- | --- |
+| **Agent instance** | Each unique name gets its own agent. `CounterAgent:user-123` is separate from `CounterAgent:user-456` |
+| **Persistent state** | State survives restarts, deploys, and hibernation. It is stored in SQLite |
+| **Real-time sync** | All clients connected to the same agent receive state updates instantly |
+| **Hibernation** | When no clients are connected, the agent hibernates (no cost). It wakes on the next request |
 
 ## Connect from vanilla JavaScript
 
@@ -523,9 +530,9 @@ export { Scheduler } from "./agents/scheduler";
 
 ### Agent not found, or 404 errors
 
-1. **Check the export** \- Agent class must be exported from your main entry point.
-2. **Check the binding** \- `class_name` in the Wrangler configuration file must exactly match the exported class name.
-3. **Check the route** \- Default route is `/agents/{'{agent-name}'}/{'{instance-name}'}`. Agent name in client matches the class name (case-insensitive).
+1. **Check the export** - Agent class must be exported from your main entry point.
+2. **Check the binding** - `class_name` in the Wrangler configuration file must exactly match the exported class name.
+3. **Check the route** - Default route is `/agents/{'{agent-name}'}/{'{instance-name}'}`. Agent name in client matches the class name (case-insensitive).
 
 ### No such Durable Object class error
 
@@ -662,13 +669,13 @@ Now that you have a working agent, explore these topics:
 
 ### Common next steps
 
-| Learn how to             | Refer to                                                                                        |
-| ------------------------ | ----------------------------------------------------------------------------------------------- |
-| Add AI/LLM capabilities  | [Using AI models](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/) |
-| Expose tools via MCP     | [MCP servers](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/)  |
-| Run background tasks     | [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)    |
-| Handle emails            | [Email routing](https://developers.cloudflare.com/agents/communication-channels/email/)         |
-| Use Cloudflare Workflows | [Run Workflows](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/)      |
+| Learn how to | Refer to |
+| --- | --- |
+| Add AI/LLM capabilities | [Using AI models](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/) |
+| Expose tools via MCP | [MCP servers](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/) |
+| Run background tasks | [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) |
+| Handle emails | [Email routing](https://developers.cloudflare.com/agents/communication-channels/email/) |
+| Use Cloudflare Workflows | [Run Workflows](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/) |
 
 ### Explore more
 

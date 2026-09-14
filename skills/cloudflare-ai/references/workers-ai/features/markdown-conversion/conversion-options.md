@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Conversion Options
 
-Last updated Jul 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/conversion-options/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/conversion-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, the `toMarkdown` service extracts text content from your files. To further extend the capabilities of the conversion process, you can pass options to the service to control how specific file types are converted.
 
@@ -30,9 +30,9 @@ Options are organized by file type and are all optional.
 }
 ```
 
-* `format`: controls the format of the converted content. Defaults to `markdown`. Set to `text` to receive plain text with Markdown syntax removed.
+- `format`: controls the format of the converted content. Defaults to `markdown`. Set to `text` to receive plain text with Markdown syntax removed.
 
-When `format` is `text`, the `format` field of the [ConversionResult](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/usage/binding/#conversionresult-definition) is also set to `text`.
+When `format` is `text`, the `format` field of the [`ConversionResult`](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/usage/binding/#conversionresult-definition) is also set to `text`.
 
 ### Images
 
@@ -44,11 +44,11 @@ When `format` is `text`, the `format` field of the [ConversionResult](https://de
 }
 ```
 
-* `descriptionLanguage`: controls the language of the AI-generated image descriptions.
+- `descriptionLanguage`: controls the language of the AI-generated image descriptions.
 
 Caution
 
-This option works on a _best-effort_ basis: it is not guaranteed that the resulting text will be in the desired language.
+This option works on a *best-effort* basis: it is not guaranteed that the resulting text will be in the desired language.
 
 ### HTML
 
@@ -61,8 +61,8 @@ This option works on a _best-effort_ basis: it is not guaranteed that the result
 }
 ```
 
-* `hostname`: string to use as a host when resolving relative links inside the HTML.
-* `cssSelector`: string containing a CSS selector pattern to pick specific elements from your HTML. Refer to [how HTML is processed](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/how-it-works/#html) for more details.
+- `hostname`: string to use as a host when resolving relative links inside the HTML.
+- `cssSelector`: string containing a CSS selector pattern to pick specific elements from your HTML. Refer to [how HTML is processed](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/how-it-works/#html) for more details.
 
 ### PDF
 
@@ -74,7 +74,7 @@ This option works on a _best-effort_ basis: it is not guaranteed that the result
 }
 ```
 
-* `metadata`: Previously, all converted PDF files always included metadata information when converted. This option allows you to opt-out of this behavior.
+- `metadata`: Previously, all converted PDF files always included metadata information when converted. This option allows you to opt-out of this behavior.
 
 ## Examples
 

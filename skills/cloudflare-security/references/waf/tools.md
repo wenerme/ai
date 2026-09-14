@@ -12,21 +12,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Additional tools
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/tools/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/tools/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare WAF offers the following additional tools:
 
-* [Lists](https://developers.cloudflare.com/waf/tools/lists/)
-* [IP Access rules](https://developers.cloudflare.com/waf/tools/ip-access-rules/)
-* [Scrape Shield](https://developers.cloudflare.com/waf/tools/scrape-shield/)
-* [User Agent Blocking](https://developers.cloudflare.com/waf/tools/user-agent-blocking/)
-* [Zone Lockdown](https://developers.cloudflare.com/waf/tools/zone-lockdown/)
-* [Browser Integrity Check](https://developers.cloudflare.com/waf/tools/browser-integrity-check/)
-* [Enable security.txt](https://developers.cloudflare.com/security-center/infrastructure/security-file/)
-* [Privacy Pass](https://developers.cloudflare.com/waf/tools/privacy-pass/)
-* [Replace insecure JS libraries](https://developers.cloudflare.com/waf/tools/replace-insecure-js-libraries/)
-* [Security Level](https://developers.cloudflare.com/waf/tools/security-level/)
-* [Validation checks](https://developers.cloudflare.com/waf/tools/validation-checks/)
+- [Lists](https://developers.cloudflare.com/waf/tools/lists/)
+- [IP Access rules](https://developers.cloudflare.com/waf/tools/ip-access-rules/)
+- [Scrape Shield](https://developers.cloudflare.com/waf/tools/scrape-shield/)
+- [User Agent Blocking](https://developers.cloudflare.com/waf/tools/user-agent-blocking/)
+- [Zone Lockdown](https://developers.cloudflare.com/waf/tools/zone-lockdown/)
+- [Browser Integrity Check](https://developers.cloudflare.com/waf/tools/browser-integrity-check/)
+- [Enable security.txt](https://developers.cloudflare.com/security-center/infrastructure/security-file/)
+- [Privacy Pass](https://developers.cloudflare.com/waf/tools/privacy-pass/)
+- [Replace insecure JS libraries](https://developers.cloudflare.com/waf/tools/replace-insecure-js-libraries/)
+- [Security Level](https://developers.cloudflare.com/waf/tools/security-level/)
+- [Validation checks](https://developers.cloudflare.com/waf/tools/validation-checks/)
 
 Was this helpful?
 

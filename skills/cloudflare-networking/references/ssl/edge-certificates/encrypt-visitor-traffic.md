@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Enforce HTTPS connections
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/encrypt-visitor-traffic/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/encrypt-visitor-traffic/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Even with an active SSL/TLS certificate, visitors can still access resources over unsecured HTTP connections.
 
@@ -24,7 +24,7 @@ Before trying to enforce HTTPS connections, make sure that your application has 
 
 Also, make sure that your [SSL encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/) is not set to **Off**. Otherwise, Cloudflare will redirect all visitor connections automatically to HTTP.
 
-## 1\. Evaluate existing redirects
+## 1. Evaluate existing redirects
 
 To make sure that your visitors do not get stuck in a [redirect loop](https://developers.cloudflare.com/ssl/troubleshooting/too-many-redirects/), evaluate existing redirects at your origin server and within the Cloudflare dashboard.
 
@@ -32,13 +32,13 @@ You should generally avoid redirects at your origin server. Not only are you lik
 
 Make sure that your redirects within Cloudflare are not forwarding traffic to URLs starting with `http`.
 
-## 2\. Rewrite HTTP URLs
+## 2. Rewrite HTTP URLs
 
 If your application contains links or references to HTTP URLs, your visitors might see [mixed content errors](https://developers.cloudflare.com/ssl/troubleshooting/mixed-content-errors/) when accessing an HTTPS page.
 
 To avoid these issues, enable [Automatic HTTPS Rewrites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/automatic-https-rewrites/) and pay attention to which HTTP requests are still reaching your origin server.
 
-## 3\. Redirect traffic to HTTPS
+## 3. Redirect traffic to HTTPS
 
 If your entire application can support HTTPS traffic, enable [Always Use HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/#encrypt-all-visitor-traffic).
 

@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # GraphQL Analytics
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network-flow/tutorials/graphql-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-flow/tutorials/graphql-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Use the GraphQL Analytics API to retrieve Network Flow (formerly Magic Network Monitoring) flow data.
+Use the GraphQL Analytics API to retrieve Network Flow (formerly Magic Network Monitoring) flow data
+
+.
 
 Before you begin, you must have an [API token](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/). For additional help getting started with GraphQL Analytics, refer to [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/).
 
@@ -23,8 +25,10 @@ Before you begin, you must have an [API token](https://developers.cloudflare.com
 To query Network Flow data via GraphQL, you need your Cloudflare Account ID.
 
 1. Log in to the Cloudflare dashboard, and select your account.
-[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
-1. The URL in your browser's address bar should show `https://dash.cloudflare.com/` followed by a hex string. The hex string is your Cloudflare Account ID.
+
+[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
+
+2. The URL in your browser's address bar should show `https://dash.cloudflare.com/` followed by a hex string. The hex string is your Cloudflare Account ID.
 
 ## Explore GraphQL schema with Network Flow example
 

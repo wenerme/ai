@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Prefetch URLs
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/speed/optimization/content/prefetch-urls/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/optimization/content/prefetch-urls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 URL prefetching means that Cloudflare pre-populates the cache with content a visitor is likely to request next. This setting — when combined with [additional setup](#setup) — leads to a higher cache hit rate and thus a faster experience for the user.
 
@@ -20,9 +20,9 @@ URL prefetching means that Cloudflare pre-populates the cache with content a vis
 
 ## Availability
 
-|              | Free | Pro | Business | Enterprise |
-| ------------ | ---- | --- | -------- | ---------- |
-| Availability | No   | No  | No       | Yes        |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | No | No | No | Yes |
 
 ---
 
@@ -34,12 +34,11 @@ For Cloudflare to start prefetching URLs, you will need to [enable the feature](
 
 To enable **Prefetch URLs** in the dashboard:
 
-1. In the Cloudflare dashboard, go to the **Speed** \> **Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
+1. In the Cloudflare dashboard, go to the **Speed** > **Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
 2. Go to **Content Optimization**.
-3. For **Prefetch URLs**, switch the toggle to **On**.
+3. For **Prefetch URLs**, switch the toggle to **On**.
 
-To enable or disable **Prefetch URLs** with the API, send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `prefetch_preload` as the setting name in the URI path, and the `value` parameter set to your desired setting (`"on"` or `"off"`).
+To enable or disable **Prefetch URLs** with the API, send a [`PATCH`](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `prefetch_preload` as the setting name in the URI path, and the `value` parameter set to your desired setting (`"on"` or `"off"`).
 
 ### Choose URLs to prefetch
 
@@ -68,14 +67,14 @@ The IP address used to make the prefetch request to the manifest file is logged 
 
 The prefetch files limits are the following:
 
-* The maximum number of manifest files is 16.
-* The maximum number of files per manifest file is 100.
-* A manifest file has a size limit of 1 MB.
+- The maximum number of manifest files is 16.
+- The maximum number of files per manifest file is 100.
+- A manifest file has a size limit of 1 MB.
 
 ## Limitations
 
-* Cloudflare will only prefetch files listed in the manifest file if the resources are those [cached by default](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#default-cached-file-extensions).
-* Prefetch is not compatible with the custom cache key configuration. For more information, refer to [Cache Key limitations](https://developers.cloudflare.com/cache/how-to/cache-keys/#limitations).
+- Cloudflare will only prefetch files listed in the manifest file if the resources are those [cached by default](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#default-cached-file-extensions).
+- Prefetch is not compatible with the custom cache key configuration. For more information, refer to [Cache Key limitations](https://developers.cloudflare.com/cache/how-to/cache-keys/#limitations).
 
 Was this helpful?
 

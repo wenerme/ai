@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure an Analytics API token
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/api-token-auth/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/api-token-auth/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare recommends API tokens as the preferred authentication method with Cloudflare APIs. This article walks through creating API tokens for authentication to the GraphQL Analytics API.
 
@@ -20,16 +20,16 @@ For more details on API tokens and the full range of supported options, refer to
 
 To create an API token for authentication to the GraphQL Analytics API, use this workflow:
 
-* [Access the Create API Token page](#access-the-create-api-token-page)
-* [Configure a custom API token](#configure-a-custom-api-token)
-* [Review and create your API token](#review-and-create-your-api-token)
-* [Copy and test your API token](#copy-and-test-your-api-token)
+- [Access the Create API Token page](#access-the-create-api-token-page)
+- [Configure a custom API token](#configure-a-custom-api-token)
+- [Review and create your API token](#review-and-create-your-api-token)
+- [Copy and test your API token](#copy-and-test-your-api-token)
 
 ## Access the Create API Token page
 
-1. In the Cloudflare dashboard, go to the **Account API tokens** page.
-[Go to **Account API tokens** ↗](https://dash.cloudflare.com/?to=/:account/api-tokens)
+1. In the Cloudflare dashboard, go to the **Account API tokens** page. [Go to **Account API tokens** ↗](https://dash.cloudflare.com/?to=/:account/api-tokens)
 2. Select **Create Token**.
+
 ![API Tokens tab](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=752,height=592,format=webp/_astro/user-profile-api-tokens-tab.Cfjm5UAa.png)
 
 The **Create API Token** page displays.
@@ -43,25 +43,34 @@ The next section of this walkthrough shows you how to configure a custom token f
 To configure a custom token, follow these steps:
 
 1. Select **Get started** in the **Custom token** section of the **Create API Token** page:
+
 ![Clicking Get started in the Create API Token page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=701,height=147,format=webp/_astro/create-api-token-get-started.BaVcSeWC.png)
 
 The **Create Custom Token** page displays:
 
 ![Create Custom Token page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=944,height=1022,format=webp/_astro/create-custom-api-token.CFX0TYIj.png)
-1. Enter a descriptive name for your token in the **Token name** text input field.
-2. To configure access to the GraphQL Analytics API, use the **Permissions** drop-down lists.
-3. To set permissions for the GraphQL Analytics API, select _Account_ in the first drop-down list, _Account Analytics_ from the second drop-down list, and _Read_ from the third.
+
+2. Enter a descriptive name for your token in the **Token name** text input field.
+3. To configure access to the GraphQL Analytics API, use the **Permissions** drop-down lists.
+4. To set permissions for the GraphQL Analytics API, select *Account* in the first drop-down list, *Account Analytics* from the second drop-down list, and *Read* from the third.
 
 This example scopes account-level permissions for read access to the Analytics API:
 
 ![Permissions configuration page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1226,height=200,format=webp/_astro/create-custom-token-permissions.C95JIEHR.png)
-1. To configure the specific zones to which the token grants access, use the **Zone Resources** drop-down lists. In this example, the token is set to grant access to all zones:
+
+5. To configure the specific zones to which the token grants access, use the **Zone Resources** drop-down lists. In this example, the token is set to grant access to all zones:
+
 ![Resources configuration page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=603,height=100,format=webp/_astro/create-custom-token-zone-resources.CfSpKkcP.png)
-1. To restrict the API token to specific IP addresses, use the **Client IP Address Filtering** controls.
+
+6. To restrict the API token to specific IP addresses, use the **Client IP Address Filtering** controls.
+
 ![IP Address Filtering configuration page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1218,height=262,format=webp/_astro/create-custom-token-ip-address-filtering.X4iaKSyi.png)
-1. To define how long the token is valid, select the **TTL** (time-to-live) start/end date.
+
+7. To define how long the token is valid, select the **TTL** (time-to-live) start/end date.
+
 ![TTL configuration page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=734,height=104,format=webp/_astro/create-custom-token-ttl.Bo81ViQe.png)
-1. Select **Continue to summary**.
+
+8. Select **Continue to summary**.
 
 The next section of this walkthrough covers how to review and test your API token.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Vector search
 
-Last updated Jun 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/configuration/indexing/vector-search/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/indexing/vector-search/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Vector search converts your query into a vector embedding and finds chunks with similar meaning. It is enabled by default on all AI Search instances. For an overview of search modes, refer to [Search modes](https://developers.cloudflare.com/ai-search/concepts/search-modes/).
 
@@ -59,10 +59,10 @@ const results = await instance.search({
 
 When using vector search, each chunk includes a `scoring_details` object:
 
-| Field         | Type   | Description                       |
-| ------------- | ------ | --------------------------------- |
-| vector\_score | number | Vector similarity score (0 to 1). |
-| vector\_rank  | number | Rank position in the result set.  |
+| Field | Type | Description |
+| --- | --- | --- |
+| `vector_score` | number | Vector similarity score (0 to 1). |
+| `vector_rank` | number | Rank position in the result set. |
 
 ## Limits
 

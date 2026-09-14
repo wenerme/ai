@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare One Multi-Cloud Networking (beta)
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/multi-cloud-networking/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/multi-cloud-networking/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Automate resource discovery and simplify connectivity when connecting to your public cloud.
 

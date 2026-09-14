@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Custom metadata
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/custom-metadata/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/custom-metadata/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You may wish to configure per-hostname (customer) settings beyond the scale of Rules or Rate Limiting.
 
 To do this, you will first need to reach out to your account team to enable access to Custom Metadata. After configuring custom metadata, you can use it in the following ways:
 
-* Read the metadata JSON from [Cloudflare Workers](https://developers.cloudflare.com/workers/) (requires access to Workers) to define per-hostname behavior.
-* Use custom metadata values in [rule expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/) of different Cloudflare security products to define the rule scope.
+- Read the metadata JSON from [Cloudflare Workers](https://developers.cloudflare.com/workers/) (requires access to Workers) to define per-hostname behavior.
+- Use custom metadata values in [rule expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/) of different Cloudflare security products to define the rule scope.
 
 Note
 
@@ -29,20 +29,31 @@ Only certain customers have access to this feature. For more details, see the [P
 
 ## Examples
 
-* Per-customer URL rewriting — for example, customers 1-10,000 fetch assets from server A, 10,001-20,000 from server B, etc.
-* Adding custom headers — for example, `X-Customer-ID: $number` based on the metadata you provided
-* Setting HTTP Strict Transport Security (“HSTS”) headers on a per-customer basis
+- Per-customer URL rewriting — for example, customers 1-10,000 fetch assets from server A, 10,001-20,000 from server B, etc.
+- Adding custom headers — for example, `X-Customer-ID: $number` based on the metadata you provided
+- Setting HTTP Strict Transport Security (“HSTS”) headers on a per-customer basis
 
 Please speak with your Solutions Engineer to discuss additional logic and requirements.
 
 ## Submitting custom metadata
 
-You may add custom metadata to Cloudflare via the Custom Hostnames API. This data can be added via a [PATCH request](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/) to the specific hostname ID to set metadata for that hostname, for example:
+You may add custom metadata to Cloudflare via the Custom Hostnames API. This data can be added via a [`PATCH` request](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/) to the specific hostname ID to set metadata for that hostname, for example:
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `SSL and Certificates Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>SSL and Certificates Write</code>
+
+</details>
+
+*Edit Custom Hostnamebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \
@@ -113,7 +124,7 @@ export default {
 
 ## Accessing custom metadata in a rule expression
 
-Use the [cf.hostname.metadata](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.hostname.metadata/) field to access the metadata object in rule expressions. To obtain the different values from the JSON object, use the [lookup\_json\_string](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lookup%5Fjson%5Fstring) function.
+Use the [`cf.hostname.metadata`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.hostname.metadata/) field to access the metadata object in rule expressions. To obtain the different values from the JSON object, use the [`lookup_json_string`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lookup_json_string) function.
 
 The following rule expression defines that there will be a rule match if the `security_tag` value in custom metadata contains the value `low`:
 
@@ -125,13 +136,13 @@ lookup_json_string(cf.hostname.metadata, "security_tag") eq "low"
 
 ## Best practices
 
-* Ensure that the JSON schema used is fixed: changes to the schema without corresponding Cloudflare Workers changes will potentially break websites, or fall back to any defined “default” behavior
-* Prefer a flat JSON structure
-* Use string keys in snake\_case (rather than camelCase or PascalCase)
-* Use proper booleans (true/false rather than `true` or `1` or `0`)
-* Use numbers to represent integers instead of strings (`1` or `2` instead of `"1"` or `"2"`)
-* Define fallback behaviour in the non-presence of metadata
-* Define fallback behaviour if a key or value in the metadata are unknown
+- Ensure that the JSON schema used is fixed: changes to the schema without corresponding Cloudflare Workers changes will potentially break websites, or fall back to any defined “default” behavior
+- Prefer a flat JSON structure
+- Use string keys in snake\_case (rather than camelCase or PascalCase)
+- Use proper booleans (true/false rather than `true` or `1` or `0`)
+- Use numbers to represent integers instead of strings ( `1` or `2` instead of `"1"` or `"2"`)
+- Define fallback behaviour in the non-presence of metadata
+- Define fallback behaviour if a key or value in the metadata are unknown
 
 General guidance is to follow [Google's JSON Style guide ↗](https://google.github.io/styleguide/jsoncstyleguide.xml) where appropriate.
 
@@ -141,10 +152,10 @@ General guidance is to follow [Google's JSON Style guide ↗](https://google.git
 
 There are some limitations to the metadata that can be provided to Cloudflare:
 
-* It must be valid JSON.
-* Any origin resolution — for example, directing requests for a given hostname to a specific backend — must be provided as a hostname that exists within Cloudflare's DNS (even for non-authoritative setups). Providing an IP address directly will cause requests to error.
-* The total payload must not exceed 4 KB.
-* It requires a Cloudflare Worker that knows how to process the schema and trigger logic based on the contents.
+- It must be valid JSON.
+- Any origin resolution — for example, directing requests for a given hostname to a specific backend — must be provided as a hostname that exists within Cloudflare's DNS (even for non-authoritative setups). Providing an IP address directly will cause requests to error.
+- The total payload must not exceed 4 KB.
+- It requires a Cloudflare Worker that knows how to process the schema and trigger logic based on the contents.
 
 Note
 

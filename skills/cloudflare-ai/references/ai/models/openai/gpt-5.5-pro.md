@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • OpenAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-5.5-pro/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-5.5-pro/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `openai/gpt-5.5-pro`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 GPT-5.5 pro uses OpenAI's Responses API with built-in tools, improved reasoning, and stateful context management.
 
-| Model Info                                                                          |                                                                                                                      |
-| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens                                                                                                     |
-| Terms and License                                                                   | [link ↗](https://openai.com/policies/)                                                                               |
-| More information                                                                    | [link ↗](https://openai.com/)                                                                                        |
-| Zero data retention                                                                 | Yes                                                                                                                  |
-| Request formats                                                                     | Responses                                                                                                            |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.5-pro) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens |
+| Terms and License | [link ↗](https://openai.com/policies/) |
+| More information | [link ↗](https://openai.com/) |
+| Zero data retention | Yes |
+| Request formats | Responses |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.5-pro) |
 
 ## Usage
 
@@ -54,6 +54,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The **three laws of thermodynamics** are:
 
 1. **First Law — Conservation of Energy**
@@ -72,6 +73,7 @@ The **three laws of thermodynamics** are:
    It also implies that absolute zero cannot be reached by any finite physical process.
 
 There is also a **Zeroth Law**, often stated separately: if two systems are each in thermal equilibrium with a third system, they are in thermal equilibrium with each other. This is what makes temperature well-defined.
+```
 
 ```json
 {
@@ -159,7 +161,11 @@ There is also a **Zeroth Law**, often stated separately: if two systems are each
 
 ## Examples
 
-**With Instructions** — Using instructions to set context
+<details>
+
+<summary>**With Instructions** — Using instructions to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -183,6 +189,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 Use Python’s built-in `json` module:
 
 ```python
@@ -229,6 +236,7 @@ except json.JSONDecodeError:
 ```
 
 Use `json.load(file)` for reading from a file, and `json.loads(string)` for parsing a JSON string.
+````
 
 ```json
 {
@@ -314,7 +322,13 @@ Use `json.load(file)` for reading from a file, and `json.loads(string)` for pars
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with message array
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with message array</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -362,9 +376,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 - Monterey/Carmel is great for beaches, seafood, and a quick scenic stroll.
 - Big Sur offers dramatic ocean views, Bixby Bridge, and McWay Falls.
 - Santa Barbara is perfect for lunch, State Street, and Stearns Wharf.
+```
 
 ```json
 {
@@ -450,7 +466,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }
 ```
 
-**Temperature Control** — Using temperature for creative responses
+</details>
+
+<details>
+
+<summary>**Temperature Control** — Using temperature for creative responses</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -471,9 +493,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Silent circuits dream
 Learning patterns in starlight
 Dawn hums through the code
+```
 
 ```json
 {
@@ -559,7 +583,13 @@ Dawn hums through the code
 }
 ```
 
-**With Reasoning** — Using reasoning effort for complex problems
+</details>
+
+<details>
+
+<summary>**With Reasoning** — Using reasoning effort for complex problems</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -586,6 +616,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Assuming both trains leave at the same time:
 
 1. Train from Chicago speed: **60 mph**
@@ -619,6 +650,7 @@ So they meet after about:
 \]
 
 More exactly, they meet after **6 hours, 25 minutes, and 43 seconds**.
+```
 
 ```json
 {
@@ -704,7 +736,13 @@ More exactly, they meet after **6 hours, 25 minutes, and 43 seconds**.
 }
 ```
 
-**Web Search** — Letting the model use OpenAI's built-in web search tool to answer with current information
+</details>
+
+<details>
+
+<summary>**Web Search** — Letting the model use OpenAI's built-in web search tool to answer with current information</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -734,11 +772,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Assuming **“this week” = Jun 16–22, 2026**:
 
 - **Cloudflare service incident:** Cloudflare reported increased error rates/latency from 13:35 UTC today, affecting Analytics, CDN/Cache and Durable Objects; it later pointed to a fiber cut in Eastern North America and said traffic engineering had mitigated most congestion/packet loss. ([cloudflarestatus.com](https://www.cloudflarestatus.com/incidents/v3yl7jqmqj51))
 - **New anti-bot/privacy protocol:** Cloudflare announced work with Mozilla Firefox, Google Chrome, Microsoft Edge and Shopify on **Private Access Control Tokens (PACT)**, meant to verify legitimate humans/agents without CAPTCHAs or invasive tracking. ([cloudflare.com](https://www.cloudflare.com/press/press-releases/2026/cloudflare-collaborates-with-leading-browsers-to-develop-a-privacy-first-protocol-for-the-global-internet/))
 - **AI + SASE partner push:** Cloudflare launched a **Cloudflare One Design Partner** program and **Cloudflare One Stack**, giving select partners AI-powered workflows to help customers deploy and manage Zero Trust/SASE migrations. ([cloudflare.com](https://www.cloudflare.com/press/press-releases/2026/cloudflare-launches-design-partner-designation-to-accelerate-secure-ai-and-seamless-sase-adoption/))
+```
 
 ```json
 {
@@ -1064,6 +1104,8 @@ Assuming **“this week” = Jun 16–22, 2026**:
 }
 ```
 
+</details>
+
 ## Parameters
 
 ▶input
@@ -1090,13 +1132,11 @@ stream
 
 `boolean`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
-
-``
 
 ▶text{}
 
@@ -1122,7 +1162,7 @@ model
 
 `string`
 
-▶output\[\]
+▶output\[]
 
 `array`
 
@@ -1140,9 +1180,9 @@ status
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/openai/gpt-5.5-pro/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-5.5-pro/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/openai/gpt-5.5-pro/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-5.5-pro/schema-output.json)
 
 Was this helpful?
 

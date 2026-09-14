@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Session management
 
-Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A user session determines how long a user can access an Access application without re-authenticating.
 
@@ -20,10 +20,10 @@ A user session determines how long a user can access an Access application witho
 
 When a user logs in to an application protected by Access, Access validates their identity against your Access policies and generates two signed JSON Web Tokens (JWTs):
 
-| Token                                                                                                                                                | Description                                                                                                          | Expiration                                                                                                                               | Storage                                          |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| Global session token                                                                                                                                 | Stores the user's identity from the IdP and provides single sign-on (SSO) functionality for all Access applications. | [Global session duration](#global-session-duration)                                                                                      | Your Cloudflare team domain                      |
-| [Application token](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/) | Allows the user to access a specific Access application.                                                             | [Policy session duration](#policy-session-duration), which defaults to the [application session duration](#application-session-duration) | The hostname protected by the Access application |
+| Token | Description | Expiration | Storage |
+| --- | --- | --- | --- |
+| Global session token | Stores the user's identity from the IdP and provides single sign-on (SSO) functionality for all Access applications. | [Global session duration](#global-session-duration) | Your Cloudflare team domain |
+| [Application token](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/) | Allows the user to access a specific Access application. | [Policy session duration](#policy-session-duration), which defaults to the [application session duration](#application-session-duration) | The hostname protected by the Access application |
 
 The user can access the application for the entire duration of the application token's lifecycle. When the application token expires, Cloudflare will automatically issue a new application token if the global token is still valid (and the user's identity still passes your Access policies). If the global token has also expired, the user will be prompted to re-authenticate with the IdP.
 
@@ -48,7 +48,7 @@ The global session duration determines how often Cloudflare Access prompts the u
 
 To set the global session duration:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Access settings**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Access settings**.
 2. Under **Set your global session duration**, select **Edit**,
 3. Select the desired timeout duration from the dropdown menu.
 4. Select **Save**.
@@ -63,7 +63,7 @@ By default, the policy session duration is equal to the [application session dur
 
 To set the policy session duration:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Policies**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies**.
 2. Choose a policy and select **Configure**.
 3. Select a **Session Duration** from the dropdown menu.
 4. Save the policy.
@@ -76,12 +76,12 @@ The application session duration is the default [policy session duration](#polic
 
 To set the application session duration:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Choose an application and select **Configure**.
 3. Select a **Session Duration** from the dropdown menu.
 4. Save the application.
 
-Users who match a policy configured with a _Same as application session timeout_ duration will be issued an application token with this expiration time.
+Users who match a policy configured with a *Same as application session timeout* duration will be issued an application token with this expiration time.
 
 #### SaaS applications
 
@@ -101,30 +101,31 @@ By default, failed Cloudflare One Client authentication requests return a `302` 
 
 To enable this behavior:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Access settings**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Access settings**.
 2. Under **Cloudflare One Client authentication**, ensure that **Enable authentication using the Cloudflare One Client session** is turned on.
 3. Turn on **Return 401 response for non-browser traffic**.
 
-You can also set `warp_auth_non_browser_401` to `true` using the [Update your Zero Trust organization](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/organizations/methods/update/) API.
+You can also set `warp_auth_non_browser_401` to `true` using the [Update your Zero Trust organization](https://developers.cloudflare.com/api/resources/zero_trust/subresources/organizations/methods/update/) API.
 
 This account setting only applies to failed Cloudflare One Client authentication. It is separate from `service_auth_401_redirect`, which controls Service Auth behavior for an individual Access application.
 
 ### MFA session duration
 
-If you use [independent multi-factor authentication (MFA)](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/), the MFA session duration determines how long a user can log in to Cloudflare Access without being prompted for MFA. The MFA session is independent of the global, policy, and application session durations. When logging in to an Access app with [MFA enabled](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#configure-independent-mfa-for-an-application), users must complete an MFA challenge if their last MFA authentication falls outside the configured session duration. After authenticating with their identity provider, users are prompted for MFA. The [CF\_Device cookie](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/#cf%5Fdevice) ensures both authentication steps occur on the same device. MFA session durations do not affect how long a user has access to the application (that is controlled by the [application token](#session-durations)).
+If you use [independent multi-factor authentication (MFA)](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/), the MFA session duration determines how long a user can log in to Cloudflare Access without being prompted for MFA. The MFA session is independent of the global, policy, and application session durations. When logging in to an Access app with [MFA enabled](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#configure-independent-mfa-for-an-application), users must complete an MFA challenge if their last MFA authentication falls outside the configured session duration. After authenticating with their identity provider, users are prompted for MFA. The [`CF_Device` cookie](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/#cf_device) ensures both authentication steps occur on the same device. MFA session durations do not affect how long a user has access to the application (that is controlled by the [application token](#session-durations)).
 
 ### Order of enforcement
 
 The following flowchart illustrates how Access enforces user sessions for a self-hosted application.
 
-| Flowchart setting                       | Dashboard location                                                                                                                                    |
-| --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Authenticate with Cloudflare One Client | **Access controls** \> **Applications** \> select an application > **Configure** \> **Authentication** \> **Authenticate with Cloudflare One Client** |
-| Cloudflare One Client session duration  | **Access controls** \> **Access settings** \> **Cloudflare One Client authentication** \> **Session duration**                                        |
-| Policy session duration                 | **Access controls** \> **Policies** \> select a policy > **Configure** \> **Session duration**                                                        |
-| Application session duration            | **Access controls** \> **Applications** \> select an application > **Configure** \> **Overview** \> **Session Duration**                              |
-| Global session duration                 | **Access controls** \> **Access settings** \> **Set your global session duration**                                                                    |
+| Flowchart setting | Dashboard location |
+| --- | --- |
+| Authenticate with Cloudflare One Client | **Access controls** > **Applications** > select an application > **Configure** > **Authentication** > **Authenticate with Cloudflare One Client** |
+| Cloudflare One Client session duration | **Access controls** > **Access settings** > **Cloudflare One Client authentication** > **Session duration** |
+| Policy session duration | **Access controls** > **Policies** > select a policy > **Configure** > **Session duration** |
+| Application session duration | **Access controls** > **Applications** > select an application > **Configure** > **Overview** > **Session Duration** |
+| Global session duration | **Access controls** > **Access settings** > **Set your global session duration** |
 
+```
 flowchart TB
     %% Accessibility
     accTitle: Access session durations
@@ -147,6 +148,9 @@ flowchart TB
 		idp-->refreshtoken
 
 
+
+```
+
 ## Revoke user sessions
 
 Access provides two options for revoking user sessions: per-application and per-user.
@@ -155,7 +159,7 @@ Access provides two options for revoking user sessions: per-application and per-
 
 To immediately terminate all active sessions for a specific application:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Locate the application for which you would like to revoke active sessions and select **Configure**.
 3. Select **Revoke existing tokens**.
 
@@ -168,9 +172,9 @@ Access can immediately revoke a single user session across all applications in y
 If you want to permanently revoke a user's access:
 
 1. Disable their account in your identity provider so that they cannot authenticate.
-2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Users**.
+2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Users**.
 3. Select the checkbox next to the user you want to revoke.
-4. Select **Action** \> **Revoke**.
+4. Select **Action** > **Revoke**.
 
 The user will no longer be able to log in to any application protected by Access. The user will still count towards your seat subscription until you [remove the user](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/seat-management) from your account.
 
@@ -182,8 +186,8 @@ When administrators revoke a user's Cloudflare Access token, that user will not 
 
 To log out of Access, the end user can visit either of the following URLs:
 
-* `<your-application-domain>/cdn-cgi/access/logout`
-* `<your-team-name>.cloudflareaccess.com/cdn-cgi/access/logout`
+- `<your-application-domain>/cdn-cgi/access/logout`
+- `<your-team-name>.cloudflareaccess.com/cdn-cgi/access/logout`
 
 This action [revokes the user's session](#per-user) across all applications. Access will immediately clear the authorization cookie from the user's browser, and all previously issued tokens will stop being accepted in 20-30 seconds. The only difference between these two URLs is which domain the authorization cookie is deleted from. For example, going to `<your-application-domain>/cdn-cgi/access/logout` will remove the application cookie and make the logout action feel more instantaneous.
 

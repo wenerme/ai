@@ -12,17 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Error codes
 
-Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/error-codes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you [validate a custom hostname](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/), you might encounter the following error codes.
 
-| Error                                                                                                                   | Cause                                                                                                                                                                                                                                    |
-| ----------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Zone does not have a fallback origin set.                                                                               | Fallback is not active.                                                                                                                                                                                                                  |
-| Fallback origin is in a status of initializing, pending\_deployment, pending\_deletion, or deleted.                     | Fallback is not active.                                                                                                                                                                                                                  |
-| Custom hostname does not CNAME to this zone.                                                                            | Zone does not have [apex proxying entitlement](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/) and custom hostname does not CNAME to zone.                        |
-| None of the A or AAAA records are owned by this account and the pre-generated ownership validation token was not found. | Account has [apex proxying enabled](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/) but the custom hostname failed the hostname validation check on the A record. |
-| This account and the pre-generated ownership validation token was not found.                                            | Hostname does not CNAME to zone or none of the A/AAAA records match reserved IPs for zone.                                                                                                                                               |
+| Error | Cause |
+| --- | --- |
+| Zone does not have a fallback origin set. | Fallback is not active. |
+| Fallback origin is in a status of `initializing`, `pending_deployment`, `pending_deletion`, or `deleted`. | Fallback is not active. |
+| Custom hostname does not `CNAME` to this zone. | Zone does not have [apex proxying entitlement](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/) and custom hostname does not CNAME to zone. |
+| None of the `A` or `AAAA` records are owned by this account and the pre-generated ownership validation token was not found. | Account has [apex proxying enabled](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/) but the custom hostname failed the hostname validation check on the `A` record. |
+| This account and the pre-generated ownership validation token was not found. | Hostname does not `CNAME` to zone or none of the `A`/`AAAA` records match reserved IPs for zone. |
 
 Was this helpful?
 

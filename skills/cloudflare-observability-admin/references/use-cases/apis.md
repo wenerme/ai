@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # APIs and microservices
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/apis/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/apis/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build, secure, and manage Application Programming Interfaces (APIs) with rate limiting, authentication, and observability. Cloudflare Workers deploys API handlers globally with automatic scaling. API Shield validates requests against your OpenAPI specification. Rate Limiting prevents abuse. mTLS authenticates machine-to-machine communication. Cloudflare Tunnel and Access secure internal microservices. Logpush and Workers Analytics Engine provide monitoring.
 
-* [Deploy APIs at the edge](https://developers.cloudflare.com/use-cases/apis/deploy-apis/)
-* [Protect your APIs](https://developers.cloudflare.com/use-cases/apis/protect-apis/)
-* [Connect your internal network services](https://developers.cloudflare.com/use-cases/apis/internal-services/)
-* [Monitor your APIs](https://developers.cloudflare.com/use-cases/apis/monitor-apis/)
+- [Deploy APIs at the edge](https://developers.cloudflare.com/use-cases/apis/deploy-apis/)
+- [Protect your APIs](https://developers.cloudflare.com/use-cases/apis/protect-apis/)
+- [Connect your internal network services](https://developers.cloudflare.com/use-cases/apis/internal-services/)
+- [Monitor your APIs](https://developers.cloudflare.com/use-cases/apis/monitor-apis/)
 
 ## Architecture patterns
 
@@ -27,26 +27,26 @@ Build, secure, and manage Application Programming Interfaces (APIs) with rate li
 
 Protect your APIs with defense in depth:
 
-* **API Shield** validates requests against your OpenAPI schema
-* **Security rules** managed rulesets block SQL injection, XSS, and OWASP Top 10 vulnerabilities
-* **Rate Limiting** prevents abuse and Distributed Denial of Service (DDoS) attacks
-* **mTLS** (mutual TLS) authenticates known clients with certificates
+- **API Shield** validates requests against your OpenAPI schema
+- **Security rules** managed rulesets block SQL injection, XSS, and OWASP Top 10 vulnerabilities
+- **Rate Limiting** prevents abuse and Distributed Denial of Service (DDoS) attacks
+- **mTLS** (mutual TLS) authenticates known clients with certificates
 
 ### Edge-native APIs
 
 Build APIs that run entirely on Cloudflare:
 
-* **Workers** handles request routing and business logic
-* **D1** or **KV** stores application data
-* **Queues** handles async processing and webhooks
+- **Workers** handles request routing and business logic
+- **D1** or **KV** stores application data
+- **Queues** handles async processing and webhooks
 
 ### Microservices mesh
 
 Connect and secure internal services:
 
-* **Cloudflare Tunnel** exposes services without public IPs
-* **Access** enforces identity-based policies between services
-* **Workers** acts as an API gateway for external consumers
+- **Cloudflare Tunnel** exposes services without public IPs
+- **Access** enforces identity-based policies between services
+- **Workers** acts as an API gateway for external consumers
 
 ---
 
@@ -54,15 +54,15 @@ Connect and secure internal services:
 
 ### Create a new application
 
-* A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up).
-* [Node.js ↗](https://nodejs.org/) (version 16.17.0 or later) installed on your machine.
-* [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) installed.
+- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up).
+- [Node.js ↗](https://nodejs.org/) (version 16.17.0 or later) installed on your machine.
+- [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) installed.
 
 ### Use an existing application
 
-* A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up).
-* A domain [added to Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) with DNS records proxied through Cloudflare. This is required for API Shield, rate limiting, and application security.
-* For securing internal services with Cloudflare Tunnel and Access: a [Cloudflare One organization](https://developers.cloudflare.com/cloudflare-one/setup/) created in the Cloudflare dashboard.
+- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up).
+- A domain [added to Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) with DNS records proxied through Cloudflare. This is required for API Shield, rate limiting, and application security.
+- For securing internal services with Cloudflare Tunnel and Access: a [Cloudflare One organization](https://developers.cloudflare.com/cloudflare-one/setup/) created in the Cloudflare dashboard.
 
 ---
 

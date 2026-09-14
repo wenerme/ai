@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Connect your AI Search to an MCP client
 
-Last updated Aug 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/how-to/connect-mcp-client/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/how-to/connect-mcp-client/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Every AI Search instance can expose a built-in [Model Context Protocol (MCP) ↗](https://modelcontextprotocol.io/) endpoint. The endpoint provides a `search` tool over your indexed content, so any MCP client or agent, such as an AI assistant or IDE, can search your knowledge base without any code.
 
@@ -21,15 +21,23 @@ This guide creates an AI Search instance that indexes a documentation site, then
 ## Prerequisites
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
+
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
 
 To index a website, you also need a domain [onboarded to your Cloudflare account](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/). Otherwise, you can upload your own files to [built-in storage](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/).
 
-## 1\. Create an AI Search instance
+## 1. Create an AI Search instance
 
 If you already have an instance with indexed content, skip to [step 2](#2-enable-the-mcp-endpoint).
 
@@ -49,23 +57,25 @@ npx wrangler ai-search stats docs-search
 
 Once indexing completes, your instance has content to expose over MCP.
 
-## 2\. Enable the MCP endpoint
+## 2. Enable the MCP endpoint
 
 Your instance's public endpoint serves the MCP endpoint.
 
-1. Go to **AI Search** in the Cloudflare dashboard.
-[Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
+1. Go to **AI Search** in the Cloudflare dashboard. [Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
 2. Select your `docs-search` instance.
-3. Go to **Settings** \> **Public Endpoint**.
+3. Go to **Settings** > **Public Endpoint**.
 4. Turn on **Enable Public Endpoint**, then turn on the **MCP** endpoint.
 5. Copy the endpoint host. Your MCP URL is that host followed by `/mcp`:
-```txt
-https://<PUBLIC_ENDPOINT_ID>.search.ai.cloudflare.com/mcp
-```
 
-## 3\. Describe your search tool
+   ```txt
+   https://<PUBLIC_ENDPOINT_ID>.search.ai.cloudflare.com/mcp
+   ```
 
-An MCP client reads a tool's description to decide when to call it. Under **Settings** \> **Public Endpoint**, set the **Tool Description** to explain what your content covers and the questions it answers. For example:
+
+
+## 3. Describe your search tool
+
+An MCP client reads a tool's description to decide when to call it. Under **Settings** > **Public Endpoint**, set the **Tool Description** to explain what your content covers and the questions it answers. For example:
 
 ```txt
 Search the Cloudflare Developer Documentation for product concepts,
@@ -75,7 +85,7 @@ or configure Cloudflare products.
 
 A specific description helps agents call your search tool at the right time. Refer to [Public endpoint settings](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/) for the full configuration.
 
-## 4\. Connect your MCP client
+## 4. Connect your MCP client
 
 Add the MCP URL to your client as a remote MCP server. Many clients use an `mcpServers` configuration like the following:
 
@@ -101,9 +111,9 @@ To require authentication, add a [custom domain](https://developers.cloudflare.c
 
 If you keep the endpoint open:
 
-* Only index content that is safe to expose publicly.
-* Enable rate limiting under **Settings** \> **Public Endpoint**.
-* Restrict allowed origins under **Authorized hosts**. This only affects browser clients.
+- Only index content that is safe to expose publicly.
+- Enable rate limiting under **Settings** > **Public Endpoint**.
+- Restrict allowed origins under **Authorized hosts**. This only affects browser clients.
 
 Refer to [Public endpoint settings](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/) for details.
 

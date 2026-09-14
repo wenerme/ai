@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Schedule tasks
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Schedule tasks to run in the future — whether that is seconds from now, at a specific date/time, or on a recurring cron schedule. Scheduled tasks survive agent restarts and are persisted to SQLite.
 
@@ -22,12 +22,12 @@ Scheduled tasks can do anything a request or message from a user can: make reque
 
 The scheduling system supports four modes:
 
-| Mode          | Syntax                             | Use case                  |
-| ------------- | ---------------------------------- | ------------------------- |
-| **Delayed**   | this.schedule(60, ...)             | Run in 60 seconds         |
-| **Scheduled** | this.schedule(new Date(...), ...)  | Run at specific time      |
-| **Cron**      | this.schedule("0 8 \* \* \*", ...) | Run on recurring schedule |
-| **Interval**  | this.scheduleEvery(30, ...)        | Run every 30 seconds      |
+| Mode | Syntax | Use case |
+| --- | --- | --- |
+| **Delayed** | `this.schedule(60, ...)` | Run in 60 seconds |
+| **Scheduled** | `this.schedule(new Date(...), ...)` | Run at specific time |
+| **Cron** | `this.schedule("0 8 * * *", ...)` | Run on recurring schedule |
+| **Interval** | `this.scheduleEvery(30, ...)` | Run every 30 seconds |
 
 Under the hood, scheduling uses [Durable Object alarms](https://developers.cloudflare.com/durable-objects/api/alarms/) to wake the agent at the right time. Tasks are stored in a SQLite table and executed in order.
 
@@ -137,10 +137,10 @@ await this.schedule(3600, "checkStatus", { orderId: "abc" });
 
 **Use cases:**
 
-* Debouncing rapid events
-* Delayed notifications ("You left items in your cart")
-* Retry with backoff
-* Rate limiting
+- Debouncing rapid events
+- Delayed notifications ("You left items in your cart")
+- Retry with backoff
+- Rate limiting
 
 ### Scheduled execution
 
@@ -182,10 +182,10 @@ await this.schedule(twoHoursFromNow, "checkIn", {});
 
 **Use cases:**
 
-* Appointment reminders
-* Deadline notifications
-* Scheduled content publishing
-* Time-based triggers
+- Appointment reminders
+- Deadline notifications
+- Scheduled content publishing
+- Time-based triggers
 
 ### Recurring (cron)
 
@@ -227,13 +227,13 @@ await this.schedule("0 0 1 * *", "monthlyCleanup", {});
 
 **Cron syntax:** `minute hour day month weekday`
 
-| Field        | Values         | Special characters |
-| ------------ | -------------- | ------------------ |
-| Minute       | 0-59           | \* , \- /          |
-| Hour         | 0-23           | \* , \- /          |
-| Day of Month | 1-31           | \* , \- /          |
-| Month        | 1-12           | \* , \- /          |
-| Day of Week  | 0-6 (0=Sunday) | \* , \- /          |
+| Field | Values | Special characters |
+| --- | --- | --- |
+| Minute | 0-59 | `*` `,` `-` `/` |
+| Hour | 0-23 | `*` `,` `-` `/` |
+| Day of Month | 1-31 | `*` `,` `-` `/` |
+| Month | 1-12 | `*` `,` `-` `/` |
+| Day of Week | 0-6 (0=Sunday) | `*` `,` `-` `/` |
 
 **Common patterns:**
 
@@ -259,11 +259,11 @@ await this.schedule("0 0 1 * *", "monthlyCleanup", {});
 
 **Use cases:**
 
-* Daily/weekly reports
-* Periodic cleanup jobs
-* Polling external services
-* Health checks
-* Subscription renewals
+- Daily/weekly reports
+- Periodic cleanup jobs
+- Polling external services
+- Health checks
+- Subscription renewals
 
 Cron schedules are idempotent by default — calling `schedule()` with the same cron expression, callback, and payload multiple times returns the existing schedule instead of creating a duplicate. This makes cron schedules safe to set up in `onStart()`.
 
@@ -295,12 +295,12 @@ await this.scheduleEvery(90, "syncData", { destination: "warehouse" });
 
 **Key differences from cron:**
 
-| Feature             | Cron                                  | Interval               |
-| ------------------- | ------------------------------------- | ---------------------- |
-| Minimum granularity | 1 minute                              | 1 second               |
-| Arbitrary intervals | No (must fit cron pattern)            | Yes                    |
-| Fixed schedule      | Yes (for example, "every day at 8am") | No (relative to start) |
-| Overlap prevention  | No                                    | Yes (built-in)         |
+| Feature | Cron | Interval |
+| --- | --- | --- |
+| Minimum granularity | 1 minute | 1 second |
+| Arbitrary intervals | No (must fit cron pattern) | Yes |
+| Fixed schedule | Yes (for example, "every day at 8am") | No (relative to start) |
+| Overlap prevention | No | Yes (built-in) |
 
 **Idempotency:**
 
@@ -392,10 +392,10 @@ class SyncAgent extends Agent {
 
 **Use cases:**
 
-* Sub-minute polling (every 10, 30, 45 seconds)
-* Intervals that do not map to cron (every 90 seconds, every 7 minutes)
-* Rate-limited API polling with precise control
-* Real-time data synchronization
+- Sub-minute polling (every 10, 30, 45 seconds)
+- Intervals that do not map to cron (every 90 seconds, every 7 minutes)
+- Rate-limited API polling with precise control
+- Real-time data synchronization
 
 ## Managing scheduled tasks
 
@@ -965,34 +965,34 @@ Dates are returned as ISO 8601 strings (not `Date` objects) for compatibility wi
 
 ## Scheduling vs Queue vs Workflows
 
-| Feature            | Queue              | Scheduling        | Workflows           |
-| ------------------ | ------------------ | ----------------- | ------------------- |
-| **When**           | Immediately (FIFO) | Future time       | Future time         |
-| **Execution**      | Sequential         | At scheduled time | Multi-step          |
-| **Retries**        | Built-in           | Built-in          | Automatic           |
-| **Persistence**    | SQLite             | SQLite            | Workflow engine     |
-| **Recurring**      | No                 | Yes (cron)        | No (use scheduling) |
-| **Complex logic**  | No                 | No                | Yes                 |
-| **Human approval** | No                 | No                | Yes                 |
+| Feature | Queue | Scheduling | Workflows |
+| --- | --- | --- | --- |
+| **When** | Immediately (FIFO) | Future time | Future time |
+| **Execution** | Sequential | At scheduled time | Multi-step |
+| **Retries** | Built-in | Built-in | Automatic |
+| **Persistence** | SQLite | SQLite | Workflow engine |
+| **Recurring** | No | Yes (cron) | No (use scheduling) |
+| **Complex logic** | No | No | Yes |
+| **Human approval** | No | No | Yes |
 
 Use Queue when:
 
-* You need background processing without blocking the response
-* Tasks should run ASAP but do not need to block
-* Order matters (FIFO)
+- You need background processing without blocking the response
+- Tasks should run ASAP but do not need to block
+- Order matters (FIFO)
 
 Use Scheduling when:
 
-* Tasks need to run at a specific time
-* You need recurring jobs (cron)
-* Delayed execution (debouncing, retries)
+- Tasks need to run at a specific time
+- You need recurring jobs (cron)
+- Delayed execution (debouncing, retries)
 
 Use Workflows when:
 
-* Multi-step processes with dependencies
-* Automatic retries with backoff
-* Human-in-the-loop approvals
-* Long-running tasks (minutes to hours)
+- Multi-step processes with dependencies
+- Automatic retries with backoff
+- Human-in-the-loop approvals
+- Long-running tasks (minutes to hours)
 
 ## API reference
 
@@ -1011,11 +1011,11 @@ Schedule a task for future execution.
 
 **Parameters:**
 
-* `when` \- When to execute: `number` (seconds delay), `Date` (specific time), or `string` (cron expression)
-* `callback` \- Name of the method to call
-* `payload` \- Data to pass to the callback (must be JSON-serializable)
-* `options.retry` \- Optional retry configuration. Refer to [Retries](https://developers.cloudflare.com/agents/runtime/execution/retries/) for details
-* `options.idempotent` \- Deduplicate by callback + payload. Defaults to `true` for cron schedules, `false` for delayed and Date-based schedules
+- `when` - When to execute: `number` (seconds delay), `Date` (specific time), or `string` (cron expression)
+- `callback` - Name of the method to call
+- `payload` - Data to pass to the callback (must be JSON-serializable)
+- `options.retry` - Optional retry configuration. Refer to [Retries](https://developers.cloudflare.com/agents/runtime/execution/retries/) for details
+- `options.idempotent` - Deduplicate by callback + payload. Defaults to `true` for cron schedules, `false` for delayed and Date-based schedules
 
 **Returns:** A `Schedule` object with the task details
 
@@ -1062,19 +1062,19 @@ Schedule a task to run repeatedly at a fixed interval.
 
 **Parameters:**
 
-* `intervalSeconds` \- Number of seconds between executions (must be greater than 0)
-* `callback` \- Name of the method to call
-* `payload` \- Data to pass to the callback (must be JSON-serializable)
-* `options.retry` \- Optional retry configuration. Refer to [Retries](https://developers.cloudflare.com/agents/runtime/execution/retries/) for details.
+- `intervalSeconds` - Number of seconds between executions (must be greater than 0)
+- `callback` - Name of the method to call
+- `payload` - Data to pass to the callback (must be JSON-serializable)
+- `options.retry` - Optional retry configuration. Refer to [Retries](https://developers.cloudflare.com/agents/runtime/execution/retries/) for details.
 
 **Returns:** A `Schedule` object with `type: "interval"`
 
 **Behavior:**
 
-* First execution occurs after `intervalSeconds` (not immediately)
-* If callback is still running when next execution is due, it is skipped (overlap prevention)
-* If callback throws an error, the interval continues
-* Cancel with `cancelSchedule(id)` to stop the entire interval
+- First execution occurs after `intervalSeconds` (not immediately)
+- If callback is still running when next execution is due, it is skipped (overlap prevention)
+- If callback throws an error, the interval continues
+- Cancel with `cancelSchedule(id)` to stop the entire interval
 
 ### `getScheduleById()`
 
@@ -1186,10 +1186,10 @@ Durable Objects are evicted after a period of inactivity (typically 70-140 secon
 
 `keepAlive()` prevents this by holding an in-memory heartbeat reference and using the Durable Object alarm system directly. The alarm firing itself resets the inactivity timer.
 
-* The heartbeat does not conflict with your own schedules because the alarm system multiplexes through a single alarm slot.
-* No schedule rows are created, and the heartbeat is invisible to `listSchedules()`.
-* Multiple concurrent `keepAlive()` calls use a reference count, so one disposer does not release another caller's heartbeat.
-* Inside sub-agents, `keepAlive()` delegates that heartbeat reference to the top-level parent because facets do not have independent alarm slots.
+- The heartbeat does not conflict with your own schedules because the alarm system multiplexes through a single alarm slot.
+- No schedule rows are created, and the heartbeat is invisible to `listSchedules()`.
+- Multiple concurrent `keepAlive()` calls use a reference count, so one disposer does not release another caller's heartbeat.
+- Inside sub-agents, `keepAlive()` delegates that heartbeat reference to the top-level parent because facets do not have independent alarm slots.
 
 ### Multiple concurrent callers
 
@@ -1223,24 +1223,24 @@ dispose2(); // Now the agent can go idle
 
 ### When to use keepAlive
 
-| Scenario                                    | Use keepAlive?                         |
-| ------------------------------------------- | -------------------------------------- |
-| Streaming LLM responses via AIChatAgent     | No — already built in                  |
-| Long-running computation in a custom Agent  | Yes                                    |
-| Waiting on a slow external API call         | Yes                                    |
-| Multi-step tool execution                   | Yes                                    |
-| Short request-response handlers             | No — not needed                        |
+| Scenario | Use keepAlive? |
+| --- | --- |
+| Streaming LLM responses via `AIChatAgent` | No — already built in |
+| Long-running computation in a custom Agent | Yes |
+| Waiting on a slow external API call | Yes |
+| Multi-step tool execution | Yes |
+| Short request-response handlers | No — not needed |
 | Background work via scheduling or workflows | No — alarms already keep the DO active |
 
 ## Limits
 
-* **Maximum tasks:** Limited by SQLite storage (each task is a row). Practical limit is tens of thousands per agent.
-* **Task size:** Each task (including payload) can be up to 2MB.
-* **Minimum delay:** 0 seconds (runs on next alarm tick)
-* **Cron precision:** Minute-level (not seconds)
-* **Interval precision:** Second-level
-* **Cron jobs:** After execution, automatically rescheduled for the next occurrence
-* **Interval jobs:** After execution, rescheduled for `now + intervalSeconds`; skipped if still running
+- **Maximum tasks:** Limited by SQLite storage (each task is a row). Practical limit is tens of thousands per agent.
+- **Task size:** Each task (including payload) can be up to 2MB.
+- **Minimum delay:** 0 seconds (runs on next alarm tick)
+- **Cron precision:** Minute-level (not seconds)
+- **Interval precision:** Second-level
+- **Cron jobs:** After execution, automatically rescheduled for the next occurrence
+- **Interval jobs:** After execution, rescheduled for `now + intervalSeconds`; skipped if still running
 
 ## Next steps
 

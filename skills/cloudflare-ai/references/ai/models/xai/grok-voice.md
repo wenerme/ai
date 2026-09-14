@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 websocket • xAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-voice/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-voice/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `xai/grok-voice`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 xAI's real-time voice conversation model with low-latency audio input and output streaming.
 
-| Model Info          |                                                                                                                  |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://x.ai/legal/terms-of-service)                                                                    |
-| More information    | [link ↗](https://docs.x.ai/developers/rest-api-reference/inference/voice)                                        |
-| Zero data retention | Yes                                                                                                              |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-voice) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://x.ai/legal/terms-of-service) |
+| More information | [link ↗](https://docs.x.ai/developers/rest-api-reference/inference/voice) |
+| Zero data retention | Yes |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-voice) |
 
 ## Usage
 
@@ -102,9 +102,9 @@ url
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/xai/grok-voice/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/xai/grok-voice/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/xai/grok-voice/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/xai/grok-voice/schema-output.json)
 
 Was this helpful?
 

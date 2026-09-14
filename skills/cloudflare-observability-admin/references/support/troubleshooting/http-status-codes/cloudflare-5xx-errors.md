@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare 5xx errors
 
-Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When troubleshooting most `5XX` errors, the correct course of action is to first contact your hosting provider or site administrator to troubleshoot and gather data. The following sections outline:
 
-* The [information](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/#required-error-details-for-hosting-provider) to provide your hosting provider to help resolve the errors
-* The steps to access [error analytics](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/#error-analytics) in the Cloudflare dashboard.
+- The [information](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/#required-error-details-for-hosting-provider) to provide your hosting provider to help resolve the errors
+- The steps to access [error analytics](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/#error-analytics) in the Cloudflare dashboard.
 
 Note
 
@@ -27,9 +27,9 @@ Cloudflare Support only assists the domain owner to resolve issues. If you are a
 
 When contacting your hosting provider, share the following information:
 
-* The specific `5XX` error code and message.
-* The time and timezone when the `5XX` error occurred.
-* The URL that resulted in the HTTP `5XX` error (for example, `https://www.example.com/images/icons/image1.png`).
+- The specific `5XX` error code and message.
+- The time and timezone when the `5XX` error occurred.
+- The URL that resulted in the HTTP `5XX` error (for example, `https://www.example.com/images/icons/image1.png`).
 
 The cause of the error is not always found in the origin server's error logs. Be sure to check the logs of any load balancers, caches, proxies, or firewalls between Cloudflare and the origin web server.
 
@@ -41,8 +41,7 @@ Error analytics per domain are available within [Zone Analytics](https://develop
 
 To view Error Analytics:
 
-1. In the Cloudflare dashboard, go to the **HTTP Traffic** page.
-[Go to **HTTP Traffic** ↗](https://dash.cloudflare.com/?to=/:account/:zone/analytics/traffic)
+1. In the Cloudflare dashboard, go to the **HTTP Traffic** page. [Go to **HTTP Traffic** ↗](https://dash.cloudflare.com/?to=/:account/:zone/analytics/traffic)
 2. Select **Add filter**, select **Edge status code** or **Origin status code** and choose any `5xx` error code that you want to diagnose.
 
 ### Log Explorer

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pre-clearance configuration
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/turnstile/additional-configuration/hostname-management/pre-clearance/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/additional-configuration/hostname-management/pre-clearance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Pre-clearance](https://developers.cloudflare.com/cloudflare-challenges/concepts/clearance/#pre-clearance-support-in-turnstile) allows Turnstile to issue clearance cookies that can be used across your Cloudflare-protected domains. This feature requires specific hostname configuration for proper functionality.
 
@@ -21,10 +21,13 @@ Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.
 For pre-clearance to work correctly, you must:
 
 1. Use a registered Cloudflare zone.
-The hostname must be a zone registered in your Cloudflare account. When configuring your widget via the dashboard, you can select from existing zones.
+
+   The hostname must be a zone registered in your Cloudflare account. When configuring your widget via the dashboard, you can select from existing zones.
 2. Select the registered Cloudflare zone with intended WAF rule to set pre-clearance.
-The zone you select must contain the WAF rule you wish to set pre-clearance through Turnstile.
-For example, if you have `example.com` and `app.example.com` as registered zones and you want to have Turnstile issue pre-clearance for `app.example.com`, you must select `app.example.com`.
+
+   The zone you select must contain the WAF rule you wish to set pre-clearance through Turnstile.
+
+   For example, if you have `example.com` and `app.example.com` as registered zones and you want to have Turnstile issue pre-clearance for `app.example.com`, you must select `app.example.com`.
 
 ## Validation
 

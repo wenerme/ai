@@ -8,21 +8,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # http.request.headers.values
 
-`http.request.headers.values` `Array<String>`
+`http.request.headers.values``Array<String>`
 
 The values of the headers in the HTTP request.
 
 The values are not pre-processed and retain the original case used in the request.
 
-The order of header values is not guaranteed but will match [http.request.headers.names](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.headers.names/).
+The order of header values is not guaranteed but will match [`http.request.headers.names`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.headers.names/).
 
 Duplicate headers are listed multiple times.
 
-* **Decoding**: No decoding performed
-* **Whitespace**: Preserved
-* **Non-ASCII**: Preserved
+- **Decoding**: No decoding performed
+- **Whitespace**: Preserved
+- **Non-ASCII**: Preserved
 
-When the HTTP request contains too many headers, this field may not contain the values of all of the headers sent in the HTTP request. In this situation, the [http.request.headers.truncated](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.headers.truncated/) field will be set to `true`.
+When the HTTP request contains too many headers, this field may not contain the values of all of the headers sent in the HTTP request. In this situation, the [`http.request.headers.truncated`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.headers.truncated/) field will be set to `true`.
 
 **Note**: In HTTP/2, the names of HTTP headers are always in lowercase. Recent versions of the `curl` tool [enable HTTP/2 by default](https://curl.se/docs/manpage.html#--http2) for HTTPS connections.
 
@@ -44,8 +44,8 @@ any(len(http.request.headers.values[*])[*] gt 10)
 ```
 
 Categories:
-* Request
-* Headers
+- Request
+- Headers
 
 Was this helpful?
 

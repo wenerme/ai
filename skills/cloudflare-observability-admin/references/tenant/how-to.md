@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # How to
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tenant/how-to/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tenant/how-to/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [Manage accounts](https://developers.cloudflare.com/tenant/how-to/manage-accounts/)
-* [Manage subscriptions](https://developers.cloudflare.com/tenant/how-to/manage-subscriptions/)
-* [Get account details](https://developers.cloudflare.com/tenant/how-to/get-account-details/)
-* [Get tenant details](https://developers.cloudflare.com/tenant/how-to/get-tenant-details/)
+- [Manage accounts](https://developers.cloudflare.com/tenant/how-to/manage-accounts/)
+- [Manage subscriptions](https://developers.cloudflare.com/tenant/how-to/manage-subscriptions/)
+- [Get account details](https://developers.cloudflare.com/tenant/how-to/get-account-details/)
+- [Get tenant details](https://developers.cloudflare.com/tenant/how-to/get-tenant-details/)
 
 Was this helpful?
 

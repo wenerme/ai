@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # User submissions
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/submissions/user-submissions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/submissions/user-submissions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 User submissions are the emails your users submitted for submission. User submissions help enhance our detection model, but can be escalated for human review.
 
@@ -27,16 +27,16 @@ Note
 To view user submissions:
 
 1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/).
-2. Select **Email security** \> **Submissions**.
+2. Select **Email security** > **Submissions**.
 3. Select **User submissions**.
 
 ## Filter user submissions
 
 Select among the following filters:
 
-* **Date Range**: Select a date range from the last 7, last 30, and last 90 days.
-* **Original disposition**: Select among the [available values](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/#available-values).
-* **Submitted as**: Select among the [available values](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/#available-values).
+- **Date Range**: Select a date range from the last 7, last 30, and last 90 days.
+- **Original disposition**: Select among the [available values](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/#available-values).
+- **Submitted as**: Select among the [available values](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/#available-values).
 
 Once you have selected all the filters, select **Apply filters**.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare One Client lifecycle and support policy
 
-Last updated Aug 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/support-lifecycle/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/support-lifecycle/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page details the technical support policies for the Cloudflare One Client (formerly WARP), which operating systems and their versions are supported and for how long, and the process by which Cloudflare One Client features will be deprecated.
 
@@ -26,10 +26,11 @@ Both the Cloudflare One Client and the OS it is installed on must be in support 
 
 Cloudflare One Client releases for Windows, macOS, and Linux come in two forms: beta and stable. Occasionally, a stable release will be declared a Long-Term Support release (LTS).
 
-* [Beta releases](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/) allow for early testing of new features before the features ship in the next stable release. Beta releases are not guaranteed to get security fixes and are not recommended for production environments.
-* [Stable releases](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/), including those labeled as LTS releases, are production-ready and will include the latest features as well as functional and security bug fixes. Functional and security bugs found in non-LTS stable releases will be fixed in later stable releases; they are not backported to previous versions. Therefore, Cloudflare recommends regularly deploying the latest stable release.
-* [LTS releases](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/lts-releases/) receive security bug fixes for a guaranteed minimum of 12 months. When Cloudflare publishes a new LTS release, the previous LTS release continues to receive security fixes for an additional 90 days — giving you a migration window. If the gap between two LTS releases is longer than 12 months, the migration window extends the total support period beyond 12 months. For example, if 15 months pass between two LTS releases, the earlier release receives security fixes for 18 months total (15 months until the next LTS release, plus the 90-day migration window). Cloudflare will announce an upcoming LTS release in advance so you can plan the migration.
-To ensure timely security fixes with less frequent [version testing](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/update/#test-before-updates), customers may choose to deploy only LTS releases and skip the stable releases in between. This approach is recommended for large or risk-averse organizations where stability is more important than rapid adoption of the latest features.
+- [Beta releases](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/) allow for early testing of new features before the features ship in the next stable release. Beta releases are not guaranteed to get security fixes and are not recommended for production environments.
+- [Stable releases](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/), including those labeled as LTS releases, are production-ready and will include the latest features as well as functional and security bug fixes. Functional and security bugs found in non-LTS stable releases will be fixed in later stable releases; they are not backported to previous versions. Therefore, Cloudflare recommends regularly deploying the latest stable release.
+- [LTS releases](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/lts-releases/) receive security bug fixes for a guaranteed minimum of 12 months. When Cloudflare publishes a new LTS release, the previous LTS release continues to receive security fixes for an additional 90 days — giving you a migration window. If the gap between two LTS releases is longer than 12 months, the migration window extends the total support period beyond 12 months. For example, if 15 months pass between two LTS releases, the earlier release receives security fixes for 18 months total (15 months until the next LTS release, plus the 90-day migration window). Cloudflare will announce an upcoming LTS release in advance so you can plan the migration.
+
+  To ensure timely security fixes with less frequent [version testing](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/update/#test-before-updates), customers may choose to deploy only LTS releases and skip the stable releases in between. This approach is recommended for large or risk-averse organizations where stability is more important than rapid adoption of the latest features.
 
 ### Mobile platforms
 
@@ -53,8 +54,8 @@ The Cloudflare One Client is guaranteed to support operating systems for the pri
 
 The Cloudflare One Client support policy for Windows follows [Microsoft's Lifecycle Policy ↗](https://learn.microsoft.com/en-us/lifecycle/).
 
-* **Windows 10 and 11**: The Cloudflare One Client supports [Windows client versions ↗](https://learn.microsoft.com/en-us/windows/release-health/supported-versions-windows-client) as long as they remain in active servicing under Microsoft's Modern Lifecycle Policy. Enterprise LTSC editions must remain under Mainstream Support.
-* **Windows Server**: Cloudflare One Client support for Windows Server is pending. Once testing is complete, our policy will be to support [Windows Server LTSC releases ↗](https://learn.microsoft.com/en-us/windows/release-health/windows-server-release-info) within their Mainstream Support window. Annual Channel releases of Windows Server will not be supported.
+- **Windows 10 and 11**: The Cloudflare One Client supports [Windows client versions ↗](https://learn.microsoft.com/en-us/windows/release-health/supported-versions-windows-client) as long as they remain in active servicing under Microsoft's Modern Lifecycle Policy. Enterprise LTSC editions must remain under Mainstream Support.
+- **Windows Server**: Cloudflare One Client support for Windows Server is pending. Once testing is complete, our policy will be to support [Windows Server LTSC releases ↗](https://learn.microsoft.com/en-us/windows/release-health/windows-server-release-info) within their Mainstream Support window. Annual Channel releases of Windows Server will not be supported.
 
 Note
 
@@ -62,15 +63,15 @@ There is only one version of Windows 10 still supported by the Cloudflare One Cl
 
 As of December 2025, the following versions of Windows are supported:
 
-| Windows version          | Supported until                                                                                                                            |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Windows 10 21H2 LTSC     | January 2027                                                                                                                               |
-| Windows 11 24H2 LTSC     | October 2029                                                                                                                               |
-| Windows 11 25H2          | October 2027                                                                                                                               |
-| Windows 11 24H2          | October 2026                                                                                                                               |
-| Windows Server 2025 LTSC | Pending full testing. Once complete, will be supported until November 2029.                                                                |
-| Windows Server 2022 LTSC | Pending full testing. Once complete, will be supported until October 2026.                                                                 |
-| Windows Server 2019 LTSC | [To be determined](#older-versions-of-windows-server) as it is currently out of mainstream Microsoft support. Usage is highly discouraged. |
+| Windows version | Supported until |
+| --- | --- |
+| Windows 10 21H2 LTSC | January 2027 |
+| Windows 11 24H2 LTSC | October 2029 |
+| Windows 11 25H2 | October 2027 |
+| Windows 11 24H2 | October 2026 |
+| Windows Server 2025 LTSC | Pending full testing. Once complete, will be supported until November 2029. |
+| Windows Server 2022 LTSC | Pending full testing. Once complete, will be supported until October 2026. |
+| Windows Server 2019 LTSC | [To be determined](#older-versions-of-windows-server) as it is currently out of mainstream Microsoft support. Usage is highly discouraged. |
 
 #### Older versions of Windows Server
 
@@ -86,11 +87,11 @@ The Cloudflare One Client supports the current major version of macOS and the tw
 
 As of December 2025, the following major versions of macOS are supported:
 
-| macOS version      | Supported until               |
-| ------------------ | ----------------------------- |
-| macOS 26 (Tahoe)   | Release of 2028 major version |
-| macOS 15 (Sequoia) | Release of 2027 major version |
-| macOS 14 (Sonoma)  | Release of 2026 major version |
+| macOS version | Supported until |
+| --- | --- |
+| macOS 26 (Tahoe) | Release of 2028 major version |
+| macOS 15 (Sequoia) | Release of 2027 major version |
+| macOS 14 (Sonoma) | Release of 2026 major version |
 
 ### Debian
 
@@ -98,10 +99,10 @@ The Cloudflare One Client supports all Debian releases within their [standard EO
 
 As of December 2025, the following versions of Debian are supported:
 
-| Debian version       | Supported until |
-| -------------------- | --------------- |
-| Debian 13 (Trixie)   | June 2030       |
-| Debian 12 (Bookworm) | June 2028       |
+| Debian version | Supported until |
+| --- | --- |
+| Debian 13 (Trixie) | June 2030 |
+| Debian 12 (Bookworm) | June 2028 |
 
 ### Ubuntu
 
@@ -109,13 +110,13 @@ The Cloudflare One Client supports all Ubuntu releases within their [Standard Se
 
 As of December 2025, the following versions of Ubuntu are supported:
 
-| Ubuntu version                      | Supported until |
-| ----------------------------------- | --------------- |
-| Ubuntu 26.04 (Resolute Raccoon)     | April 2031      |
-| Ubuntu 25.10 (Questing Quokka)      | July 2026       |
-| Ubuntu 25.04 (Plucky Puffin)        | January 2026    |
-| Ubuntu 24.04 LTSC (Noble Numbat)    | April 2029      |
-| Ubuntu 22.04 LTSC (Jammy Jellyfish) | April 2027      |
+| Ubuntu version | Supported until |
+| --- | --- |
+| Ubuntu 26.04 (Resolute Raccoon) | April 2031 |
+| Ubuntu 25.10 (Questing Quokka) | July 2026 |
+| Ubuntu 25.04 (Plucky Puffin) | January 2026 |
+| Ubuntu 24.04 LTSC (Noble Numbat) | April 2029 |
+| Ubuntu 22.04 LTSC (Jammy Jellyfish) | April 2027 |
 
 ### Red Hat Enterprise Linux (RHEL)
 
@@ -125,10 +126,10 @@ As of April 2026, only RHEL 8 has completed full compatibility testing, which is
 
 This section will be updated as we add RHEL support to match Red Hat's support lifecycle.
 
-| RHEL version | Supported until                                                     |
-| ------------ | ------------------------------------------------------------------- |
-| RHEL 10      | Pending full testing. Supported for Cloudflare Mesh until May 2030. |
-| RHEL 9       | Pending full testing. Supported for Cloudflare Mesh until May 2027. |
+| RHEL version | Supported until |
+| --- | --- |
+| RHEL 10 | Pending full testing. Supported for Cloudflare Mesh until May 2030. |
+| RHEL 9 | Pending full testing. Supported for Cloudflare Mesh until May 2027. |
 
 ### iOS and iPadOS
 
@@ -136,11 +137,11 @@ The Cloudflare One Client supports the current major version of iOS and iPadOS a
 
 As of December 2025, the following versions of iOS and iPadOS are supported:
 
-| iOS or iPadOS version | Supported until               |
-| --------------------- | ----------------------------- |
-| iOS and iPadOS 26     | Release of 2028 major version |
-| iOS and iPadOS 18     | Release of 2027 major version |
-| iOS and iPadOS 17     | Release of 2026 major version |
+| iOS or iPadOS version | Supported until |
+| --- | --- |
+| iOS and iPadOS 26 | Release of 2028 major version |
+| iOS and iPadOS 18 | Release of 2027 major version |
+| iOS and iPadOS 17 | Release of 2026 major version |
 
 ### Android
 
@@ -152,13 +153,13 @@ The Cloudflare One Client is regularly tested on much older versions of Android 
 
 As of December 2025, the following versions of Android are supported:
 
-| Android version | Supported until                                           |
-| --------------- | --------------------------------------------------------- |
-| Android 16      | Release of 2029 major version                             |
-| Android 15      | Release of 2028 major version                             |
-| Android 14      | Release of 2027 major version                             |
-| Android 13      | Release of 2026 major version                             |
-| Android 9-12    | Not officially supported, but expected to generally work. |
+| Android version | Supported until |
+| --- | --- |
+| Android 16 | Release of 2029 major version |
+| Android 15 | Release of 2028 major version |
+| Android 14 | Release of 2027 major version |
+| Android 13 | Release of 2026 major version |
+| Android 9-12 | Not officially supported, but expected to generally work. |
 
 ### ChromeOS
 

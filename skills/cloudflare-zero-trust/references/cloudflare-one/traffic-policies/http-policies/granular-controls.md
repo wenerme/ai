@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Application Granular Controls
 
-Last updated Apr 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/granular-controls/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/granular-controls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With Application Granular Controls, you can create [Gateway HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) to control specific user actions within supported SaaS applications. This allows you to give users access to an application while restricting the actions that they can take within the application.
 
@@ -20,29 +20,31 @@ With Application Granular Controls, you can create [Gateway HTTP policies](https
 
 To use Application Granular Controls, you must:
 
-* Install a [Cloudflare certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/) or a [custom certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/custom-certificate/) on your users' devices.
-* Turn on [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/).
-* Turn on the [Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/#turn-on-the-gateway-proxy).
-* (Optional) If an application uses HTTP/3, turn on the [Gateway proxy for UDP traffic](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/http3/#enable-http3-inspection).
-* (Optional) To turn on [AI prompt logging](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#log-generative-ai-prompt-content), create a [DLP payload encryption public key](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#set-a-dlp-payload-encryption-public-key).
+- Install a [Cloudflare certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/) or a [custom certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/custom-certificate/) on your users' devices.
+- Turn on [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/).
+- Turn on the [Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/#turn-on-the-gateway-proxy).
+- (Optional) If an application uses HTTP/3, turn on the [Gateway proxy for UDP traffic](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/http3/#enable-http3-inspection).
+- (Optional) To turn on [AI prompt logging](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#log-generative-ai-prompt-content), create a [DLP payload encryption public key](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#set-a-dlp-payload-encryption-public-key).
 
 ## Create a policy with Application Granular Controls
 
 To create a Gateway HTTP policy with Application Granular Controls:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **HTTP**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies** > **HTTP**.
 2. Select **Add a policy**.
 3. Name the policy.
-4. Under **Traffic**, build a logical expression that defines the traffic you want to allow or block. Because granular controls are specific to each application, you must use the _Application_ selector with the _is_ operator.
+4. Under **Traffic**, build a logical expression that defines the traffic you want to allow or block. Because granular controls are specific to each application, you must use the *Application* selector with the *is* operator.
 5. In **Value**, select your desired application.
 6. In **Controls**, choose one or more Application Controls or individual Operations. For example, you can create a policy to block file uploads to ChatGPT:
 
-| Selector    | Operator | Value     | Controls | Action |
-| ----------- | -------- | --------- | -------- | ------ |
-| Application | is       | _ChatGPT_ | _Upload_ | Block  |
+   | Selector | Operator | Value | Controls | Action |
+   | --- | --- | --- | --- | --- |
+   | Application | is | *ChatGPT* | *Upload* | Block |
 7. Select **Create policy**.
 
-Use the [Create a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/rules/methods/create/) endpoint to create a policy. For example, you can create a policy to block file uploads to ChatGPT:
+Use the [Create a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/rules/methods/create/) endpoint to create a policy. For example, you can create a policy to block file uploads to ChatGPT:
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -90,8 +92,8 @@ You can use Application Granular Controls with [Data Loss Prevention (DLP)](http
 
 SaaS applications typically provide multiple APIs to interact with. For each application, Application Granular Controls may support the following API types:
 
-* Web Application API: These APIs are consumed by the web application that users interact with through their browser.
-* Platform API: These APIs are exposed to users to allow for programmatic interaction with the SaaS application. These are typically used by automations, scripts, or other applications.
+- Web Application API: These APIs are consumed by the web application that users interact with through their browser.
+- Platform API: These APIs are exposed to users to allow for programmatic interaction with the SaaS application. These are typically used by automations, scripts, or other applications.
 
 [Application Controls](#application-controls) include Operations of both API types. If both API types are available when creating HTTP policies using [Operations](#operations), you should select the Operations that align to the API being used, or include both for wider coverage.
 
@@ -99,22 +101,38 @@ SaaS applications typically provide multiple APIs to interact with. For each app
 
 Application Granular Controls supports the following applications:
 
+<details>
+
+<summary>
+
 Artificial Intelligence
 
-* ChatGPT
-* Google Gemini
-* Perplexity
-* Claude
+</summary>
+
+- ChatGPT
+- Google Gemini
+- Perplexity
+- Claude
+
+</details>
+
+<details>
+
+<summary>
 
 File Sharing
 
-* Box
-* Dropbox
-* Google Drive
-* WeTransfer
-* Hightail
-* ShareFile
-* Smash
+</summary>
+
+- Box
+- Dropbox
+- Google Drive
+- WeTransfer
+- Hightail
+- ShareFile
+- Smash
+
+</details>
 
 Was this helpful?
 

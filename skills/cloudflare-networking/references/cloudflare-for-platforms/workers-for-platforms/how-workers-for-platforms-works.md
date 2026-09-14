@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # How Workers for Platforms works
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Architecture
 
@@ -24,9 +24,9 @@ If you are familiar with [Workers](https://developers.cloudflare.com/workers/), 
 
 A dispatch namespace is a container that holds all of your customers' Workers. Your platform takes the code your customers write, and then makes an API request to deploy that code as a user Worker to a namespace — for example `staging` or `production`. Compared to [Workers](https://developers.cloudflare.com/workers/), this provides:
 
-* **Unlimited number of Workers** \- No per-account script limits apply to Workers in a namespace
-* **Isolation by default** \- Each user Worker in a namespace runs in [untrusted mode](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/worker-isolation/) — user Workers never share a cache even when running on the same Cloudflare zone, and cannot access the `request.cf` object
-* **Dynamic invocation** \- Your dynamic dispatch Worker can call any Worker in the namespace using `env.DISPATCHER.get("worker-name")`
+- **Unlimited number of Workers** - No per-account script limits apply to Workers in a namespace
+- **Isolation by default** - Each user Worker in a namespace runs in [untrusted mode](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/worker-isolation/) — user Workers never share a cache even when running on the same Cloudflare zone, and cannot access the `request.cf` object
+- **Dynamic invocation** - Your dynamic dispatch Worker can call any Worker in the namespace using `env.DISPATCHER.get("worker-name")`
 
 Best practice
 
@@ -38,10 +38,10 @@ If you need to test changes safely, create a separate `staging` namespace.
 
 A dynamic dispatch Worker is the entry point for all requests to your platform. Your dynamic dispatch Worker:
 
-* **Routes requests** \- Determines which customer Worker should handle each request based on hostname, path, headers, or any other criteria
-* **Runs platform logic** \- Executes authentication, rate limiting, or request validation before customer code runs
-* **Sets per-customer limits** \- Enforces [custom limits](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/custom-limits/) on CPU time and subrequests based on plan type
-* **Sanitizes responses** \- Modifies or filters responses from customer Workers
+- **Routes requests** - Determines which customer Worker should handle each request based on hostname, path, headers, or any other criteria
+- **Runs platform logic** - Executes authentication, rate limiting, or request validation before customer code runs
+- **Sets per-customer limits** - Enforces [custom limits](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/custom-limits/) on CPU time and subrequests based on plan type
+- **Sanitizes responses** - Modifies or filters responses from customer Workers
 
 The dynamic dispatch Worker uses a [dispatch namespace binding](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch/) to invoke user Workers:
 
@@ -66,11 +66,12 @@ User Workers contain code written by your customers. Your customer sends their c
 
 ### Outbound Worker (optional)
 
-An [outbound Worker](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/) intercepts [fetch()](https://developers.cloudflare.com/workers/runtime-apis/fetch/) requests made by user Workers. Use it to:
+An [outbound Worker](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/) intercepts [`fetch()`](https://developers.cloudflare.com/workers/runtime-apis/fetch/) requests made by user Workers. Use it to:
 
-* **Control egress** \- Block or allow external API calls from customer code
-* **Log requests** \- Track what external services customers are calling
-* **Modify requests** \- Add authentication headers or transform requests before they leave your platform
+- **Control egress** - Block or allow external API calls from customer code
+- **Log requests** - Track what external services customers are calling
+- **Modify requests** - Add authentication headers or transform requests before they leave your platform
+
 ![Outbound Worker egress control pattern](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=594,format=svg/_astro/programmable-platforms-3.C-LkeZtS.svg)
 
 ### Request lifecycle

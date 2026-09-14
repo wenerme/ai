@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Query JSON
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/sql-api/query-json/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/sql-api/query-json/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 D1 has built-in support for querying and parsing JSON data stored within a database. This enables you to:
 
-* [Query paths](#extract-values) within a stored JSON object - for example, extracting the value of named key or array index directly, which is especially useful with larger JSON objects.
-* Insert and/or replace values within an object or array.
-* [Expand the contents of a JSON object](#expand-arrays-for-in-queries) or array into multiple rows - for example, for use as part of a `WHERE ... IN` predicate.
-* Create [generated columns](https://developers.cloudflare.com/d1/reference/generated-columns/) that are automatically populated with values from JSON objects you insert.
+- [Query paths](#extract-values) within a stored JSON object - for example, extracting the value of named key or array index directly, which is especially useful with larger JSON objects.
+- Insert and/or replace values within an object or array.
+- [Expand the contents of a JSON object](#expand-arrays-for-in-queries) or array into multiple rows - for example, for use as part of a `WHERE ... IN` predicate.
+- Create [generated columns](https://developers.cloudflare.com/d1/reference/generated-columns/) that are automatically populated with values from JSON objects you insert.
 
 One of the biggest benefits to parsing JSON within D1 directly is that it can directly reduce the number of round-trips (queries) to your database. It reduces the cases where you have to read a JSON object into your application (1), parse it, and then write it back (2).
 
@@ -27,41 +27,41 @@ This allows you to more precisely query over data and reduce the result set your
 
 ## Types
 
-JSON data is stored as a `TEXT` column in D1\. JSON types follow the same [type conversion rules](https://developers.cloudflare.com/d1/worker-api/#type-conversion) as D1 in general, including:
+JSON data is stored as a `TEXT` column in D1. JSON types follow the same [type conversion rules](https://developers.cloudflare.com/d1/worker-api/#type-conversion) as D1 in general, including:
 
-* A JSON null is treated as a D1 `NULL`.
-* A JSON number is treated as an `INTEGER` or `REAL`.
-* Booleans are treated as `INTEGER` values: `true` as `1` and `false` as `0`.
-* Object and array values as `TEXT`.
+- A JSON null is treated as a D1 `NULL`.
+- A JSON number is treated as an `INTEGER` or `REAL`.
+- Booleans are treated as `INTEGER` values: `true` as `1` and `false` as `0`.
+- Object and array values as `TEXT`.
 
 ## Supported functions
 
 The following table outlines the JSON functions built into D1 and example usage.
 
-* The `json` argument placeholder can be a JSON object, array, string, number or a null value.
-* The `value` argument accepts string literals (only) and treats input as a string, even if it is well-formed JSON. The exception to this rule is when nesting `json_*` functions: the outer (wrapping) function will interpret the inner (wrapped) functions return value as JSON.
-* The `path` argument accepts path-style traversal syntax - for example, `$` to refer to the top-level object/array, `$.key1.key2` to refer to a nested object, and `$.key[2]` to index into an array.
+- The `json` argument placeholder can be a JSON object, array, string, number or a null value.
+- The `value` argument accepts string literals (only) and treats input as a string, even if it is well-formed JSON. The exception to this rule is when nesting `json_*` functions: the outer (wrapping) function will interpret the inner (wrapped) functions return value as JSON.
+- The `path` argument accepts path-style traversal syntax - for example, `$` to refer to the top-level object/array, `$.key1.key2` to refer to a nested object, and `$.key[2]` to index into an array.
 
-| Function                                                     | Description                                                                                                                                    | Example                                                                                    |
-| ------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| json(json)                                                   | Validates the provided string is JSON and returns a minified version of that JSON object.                                                      | json('{"hello":\["world" ,"there"\] }') returns {"hello":\["world","there"\]}              |
-| json\_array(value1, value2, value3, ...)                     | Return a JSON array from the values.                                                                                                           | json\_array(1, 2, 3) returns \[1, 2, 3\]                                                   |
-| json\_array\_length(json) \- json\_array\_length(json, path) | Return the length of the JSON array                                                                                                            | json\_array\_length('{"data":\["x", "y", "z"\]}', '$.data') returns 3                      |
-| json\_extract(json, path)                                    | Extract the value(s) at the given path using $.path.to.value syntax.                                                                           | json\_extract('{"temp":"78.3", "sunset":"20:44"}', '$.temp') returns "78.3"                |
-| json -> path                                                 | Extract the value(s) at the given path using path syntax and return it as JSON.                                                                |                                                                                            |
-| json ->> path                                                | Extract the value(s) at the given path using path syntax and return it as a SQL type.                                                          |                                                                                            |
-| json\_insert(json, path, value)                              | Insert a value at the given path. Does not overwrite an existing value.                                                                        |                                                                                            |
-| json\_object(label1, value1, ...)                            | Accepts pairs of (keys, values) and returns a JSON object.                                                                                     | json\_object('temp', 45, 'wind\_speed\_mph', 13) returns {"temp":45,"wind\_speed\_mph":13} |
-| json\_patch(target, patch)                                   | Uses a JSON [MergePatch ↗](https://tools.ietf.org/html/rfc7396) approach to merge the provided patch into the target JSON object.              |                                                                                            |
-| json\_remove(json, path, ...)                                | Remove the key and value at the specified path.                                                                                                | json\_remove('\[60,70,80,90\]', '$\[0\]') returns 70,80,90\]                               |
-| json\_replace(json, path, value)                             | Insert a value at the given path. Overwrites an existing value, but does not create a new key if it doesn't exist.                             |                                                                                            |
-| json\_set(json, path, value)                                 | Insert a value at the given path. Overwrites an existing value.                                                                                |                                                                                            |
-| json\_type(json) \- json\_type(json, path)                   | Return the type of the provided value or value at the specified path. Returns one of null, true, false, integer, real, text, array, or object. | json\_type('{"temperatures":\[73.6, 77.8, 80.2\]}', '$.temperatures') returns array        |
-| json\_valid(json)                                            | Returns 0 (false) for invalid JSON, and 1 (true) for valid JSON.                                                                               | json\_valid({invalid:json})returns0\\                                                      |
-| json\_quote(value)                                           | Converts the provided SQL value into its JSON representation.                                                                                  | json\_quote('\[1, 2, 3\]') returns \[1,2,3\]                                               |
-| json\_group\_array(value)                                    | Returns the provided value(s) as a JSON array.                                                                                                 |                                                                                            |
-| json\_each(value) \- json\_each(value, path)                 | Returns each element within the object as an individual row. It will only traverse the top-level object.                                       |                                                                                            |
-| json\_tree(value) \- json\_tree(value, path)                 | Returns each element within the object as an individual row. It traverses the full object.                                                     |                                                                                            |
+| Function | Description | Example |
+| --- | --- | --- |
+| `json(json)` | Validates the provided string is JSON and returns a minified version of that JSON object. | `json('{"hello":["world" ,"there"] }')` returns `{"hello":["world","there"]}` |
+| `json_array(value1, value2, value3, ...)` | Return a JSON array from the values. | `json_array(1, 2, 3)` returns `[1, 2, 3]` |
+| `json_array_length(json)` - `json_array_length(json, path)` | Return the length of the JSON array | `json_array_length('{"data":["x", "y", "z"]}', '$.data')` returns `3` |
+| `json_extract(json, path)` | Extract the value(s) at the given path using `$.path.to.value` syntax. | `json_extract('{"temp":"78.3", "sunset":"20:44"}', '$.temp')` returns `"78.3"` |
+| `json -> path` | Extract the value(s) at the given path using path syntax and return it as JSON. | |
+| `json ->> path` | Extract the value(s) at the given path using path syntax and return it as a SQL type. | |
+| `json_insert(json, path, value)` | Insert a value at the given path. Does not overwrite an existing value. | |
+| `json_object(label1, value1, ...)` | Accepts pairs of (keys, values) and returns a JSON object. | `json_object('temp', 45, 'wind_speed_mph', 13)` returns `{"temp":45,"wind_speed_mph":13}` |
+| `json_patch(target, patch)` | Uses a JSON [MergePatch ↗](https://tools.ietf.org/html/rfc7396) approach to merge the provided patch into the target JSON object. | |
+| `json_remove(json, path, ...)` | Remove the key and value at the specified path. | `json_remove('[60,70,80,90]', '$[0]')` returns `70,80,90]` |
+| `json_replace(json, path, value)` | Insert a value at the given path. Overwrites an existing value, but does not create a new key if it doesn't exist. | |
+| `json_set(json, path, value)` | Insert a value at the given path. Overwrites an existing value. | |
+| `json_type(json)` - `json_type(json, path)` | Return the type of the provided value or value at the specified path. Returns one of `null`, `true`, `false`, `integer`, `real`, `text`, `array`, or `object`. | `json_type('{"temperatures":[73.6, 77.8, 80.2]}', '$.temperatures')` returns `array` |
+| `json_valid(json)` | Returns 0 (false) for invalid JSON, and 1 (true) for valid JSON. | `json_valid({invalid:json})`returns`0\` |
+| `json_quote(value)` | Converts the provided SQL value into its JSON representation. | `json_quote('[1, 2, 3]')` returns `[1,2,3]` |
+| `json_group_array(value)` | Returns the provided value(s) as a JSON array. | |
+| `json_each(value)` - `json_each(value, path)` | Returns each element within the object as an individual row. It will only traverse the top-level object. | |
+| `json_tree(value)` - `json_tree(value, path)` | Returns each element within the object as an individual row. It traverses the full object. | |
 
 The SQLite [JSON extension ↗](https://www.sqlite.org/json1.html), on which D1 builds on, has additional usage examples.
 
@@ -106,9 +106,9 @@ Refer to [Generated columns](https://developers.cloudflare.com/d1/reference/gene
 
 There are three ways to extract a value from a JSON object in D1:
 
-* The `json_extract()` function - for example, `json_extract(text_column_containing_json, '$.path.to.value)`.
-* The `->` operator, which returns a JSON representation of the value.
-* The `->>` operator, which returns an SQL representation of the value.
+- The `json_extract()` function - for example, `json_extract(text_column_containing_json, '$.path.to.value)`.
+- The `->` operator, which returns a JSON representation of the value.
+- The `->>` operator, which returns an SQL representation of the value.
 
 The `->` and `->>` operators functions both operate similarly to the same operators in PostgreSQL and MySQL/MariaDB.
 
@@ -201,11 +201,11 @@ This would extract only the `value` column from the table returned by `json_each
 
 `json_each` effectively returns a table with multiple columns, with the most relevant being:
 
-* `key` \- the key (or index).
-* `value` \- the literal value of each element parsed by `json_each`.
-* `type` \- the type of the value: one of `null`, `true`, `false`, `integer`, `real`, `text`, `array`, or `object`.
-* `fullkey` \- the full path to the element: e.g. `$[1]` for the second element in an array, or `$.path.to.key` for a nested object.
-* `path` \- the top-level path - `$` as the path for an element with a `fullkey` of `$[0]`.
+- `key` - the key (or index).
+- `value` - the literal value of each element parsed by `json_each`.
+- `type` - the type of the value: one of `null`, `true`, `false`, `integer`, `real`, `text`, `array`, or `object`.
+- `fullkey` - the full path to the element: e.g. `$[1]` for the second element in an array, or `$.path.to.key` for a nested object.
+- `path` - the top-level path - `$` as the path for an element with a `fullkey` of `$[0]`.
 
 In this example, `SELECT * FROM json_each('[183183, 13913, 94944]')` would return a table resembling the below:
 

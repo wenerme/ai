@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated Aug 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/flagship/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this guide, you will create a feature flag in Flagship and evaluate it inside a Cloudflare Worker.
 
@@ -21,7 +21,7 @@ In this guide, you will create a feature flag in Flagship and evaluate it inside
 In this example, you will create a boolean flag called `new-checkout` that controls whether users see a new checkout experience.
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
-2. Go to **Compute** \> **Flagship**.
+2. Go to **Compute** > **Flagship**.
 3. Select **Create app**. Give the app a name that matches your project or service (for example, `checkout-service`).
 4. Inside the app, select **Create flag**.
 5. Create a boolean flag with the key `new-checkout`. Optionally, add [targeting rules](https://developers.cloudflare.com/flagship/targeting/) to control who sees the flag.
@@ -118,7 +118,7 @@ Change the flag value or targeting rules in the dashboard and observe the update
 
 ## (Optional) Use the OpenFeature SDK
 
-If you prefer the [OpenFeature ↗](https://openfeature.dev/) standard interface, or if you are running outside of a Cloudflare Worker, you can use the [@cloudflare/flagship ↗](https://www.npmjs.com/package/@cloudflare/flagship) SDK instead of the binding.
+If you prefer the [OpenFeature ↗](https://openfeature.dev/) standard interface, or if you are running outside of a Cloudflare Worker, you can use the [`@cloudflare/flagship` ↗](https://www.npmjs.com/package/@cloudflare/flagship) SDK instead of the binding.
 
 Install the SDK:
 
@@ -238,12 +238,12 @@ Refer to the [SDK documentation](https://developers.cloudflare.com/flagship/sdk/
 
 ## Next steps
 
-* Manage flags from the command line with the [wrangler flagship commands](https://developers.cloudflare.com/flagship/reference/wrangler-commands/).
-* Learn about [targeting rules](https://developers.cloudflare.com/flagship/targeting/) to serve different values based on user attributes.
-* Explore the full [binding API reference](https://developers.cloudflare.com/flagship/binding/) for all evaluation methods.
-* Read about [percentage rollouts](https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/) for gradual feature releases.
-* Create an [API token](https://developers.cloudflare.com/flagship/api-tokens/) to evaluate flags from a server-side environment.
-* Refer to the [Flagship API reference](https://developers.cloudflare.com/flagship/reference/api-reference/) to manage Flagship programmatically.
+- Manage flags from the command line with the [`wrangler flagship` commands](https://developers.cloudflare.com/flagship/reference/wrangler-commands/).
+- Learn about [targeting rules](https://developers.cloudflare.com/flagship/targeting/) to serve different values based on user attributes.
+- Explore the full [binding API reference](https://developers.cloudflare.com/flagship/binding/) for all evaluation methods.
+- Read about [percentage rollouts](https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/) for gradual feature releases.
+- Create an [API token](https://developers.cloudflare.com/flagship/api-tokens/) to evaluate flags from a server-side environment.
+- Refer to the [Flagship API reference](https://developers.cloudflare.com/flagship/reference/api-reference/) to manage Flagship programmatically.
 
 Was this helpful?
 

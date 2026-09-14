@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Browser
 
-Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/tools/browser/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/browser/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agents can use [Browser Run](https://developers.cloudflare.com/browser-run/) to inspect and interact with web pages through the [Chrome DevTools Protocol (CDP)](https://developers.cloudflare.com/browser-run/cdp/). Beta Browser tools are useful when an agent needs to understand rendered pages, capture screenshots, debug frontend behavior, or extract information that is only available after JavaScript runs.
 
@@ -20,11 +20,11 @@ Instead of a fixed set of browser actions (click, screenshot, navigate), the mod
 
 Use browser tools when you want an agent to:
 
-* Open and inspect live web pages.
-* Capture screenshots or page state.
-* Scrape rendered content that is not present in static HTML.
-* Debug frontend issues using CDP commands.
-* Combine page inspection with other tools, such as RAG or Sandbox.
+- Open and inspect live web pages.
+- Capture screenshots or page state.
+- Scrape rendered content that is not present in static HTML.
+- Debug frontend issues using CDP commands.
+- Combine page inspection with other tools, such as RAG or Sandbox.
 
 ## How it works
 
@@ -94,15 +94,15 @@ export class BrowserAgent extends AIChatAgent<Env> {
 
 Browser tools must be created from inside a Durable Object (such as an Agent) — the durable runtime facet and the session store live on its `ctx`. The helper exposes one durable CDP tool plus stateless Quick Action tools when a `browser` binding is present:
 
-| Tool              | Description                                                                                                   |
-| ----------------- | ------------------------------------------------------------------------------------------------------------- |
-| browser\_execute  | Run sandboxed code against a live browser over CDP — screenshots, DOM reads, JavaScript evaluation, and more. |
-| browser\_markdown | Read a page or raw HTML as Markdown.                                                                          |
-| browser\_extract  | Extract structured data from a page with AI.                                                                  |
-| browser\_links    | List links on a page.                                                                                         |
-| browser\_scrape   | Scrape specific elements by CSS selector.                                                                     |
+| Tool | Description |
+| --- | --- |
+| `browser_execute` | Run sandboxed code against a live browser over CDP — screenshots, DOM reads, JavaScript evaluation, and more. |
+| `browser_markdown` | Read a page or raw HTML as Markdown. |
+| `browser_extract` | Extract structured data from a page with AI. |
+| `browser_links` | List links on a page. |
+| `browser_scrape` | Scrape specific elements by CSS selector. |
 
-To discover protocol surface, the model calls `cdp.spec()` (the live, normalized CDP protocol description) or the runtime's built-in [codemode.search() and codemode.describe()](https://developers.cloudflare.com/agents/tools/codemode/api-reference/#sandbox-codemode-api).
+To discover protocol surface, the model calls `cdp.spec()` (the live, normalized CDP protocol description) or the runtime's built-in [`codemode.search()` and `codemode.describe()`](https://developers.cloudflare.com/agents/tools/codemode/api-reference/#sandbox-codemode-api).
 
 ## Configuration
 
@@ -166,9 +166,9 @@ createBrowserTools({
 });
 ```
 
-* **`one-shot`** (default) — fresh session per execution; deterministic cleanup when the execution reaches a terminal status.
-* **`reuse`** — a named shared session that persists across executions until explicitly closed or swept.
-* **`dynamic`** — starts one-shot; the model can promote the session with `cdp.startSession()` (for example, after logging in to a page) so later executions continue in the same browser.
+- **`one-shot`** (default) — fresh session per execution; deterministic cleanup when the execution reaches a terminal status.
+- **`reuse`** — a named shared session that persists across executions until explicitly closed or swept.
+- **`dynamic`** — starts one-shot; the model can promote the session with `cdp.startSession()` (for example, after logging in to a page) so later executions continue in the same browser.
 
 In `reuse` and `dynamic` modes the sandbox additionally gets `cdp.startSession()`, `cdp.sessionInfo()`, `cdp.closeSession()`, and `cdp.resetSession()`.
 
@@ -321,18 +321,18 @@ Recordings are retained for 30 days and capped at two hours per session. Be deli
 
 Inside `browser_execute`, the `cdp` namespace provides the following methods. All methods take a single object argument:
 
-| Method                                                | Description                                                                     |
-| ----------------------------------------------------- | ------------------------------------------------------------------------------- |
-| cdp.send({ method, params?, sessionId?, timeoutMs? }) | Send a CDP command and wait for the response.                                   |
-| cdp.attachToTarget({ targetId, timeoutMs? })          | Attach to a target; returns { sessionId } for page-scoped send calls.           |
-| cdp.spec()                                            | The searchable, normalized CDP protocol spec.                                   |
-| cdp.getDebugLog({ limit? })                           | Recent CDP traffic (sends, receives, warnings) for this execution's connection. |
-| cdp.clearDebugLog()                                   | Clear the debug log buffer.                                                     |
-| cdp.getLiveViewUrl({ targetId?, mode? })              | Create a Live View URL for a tab.                                               |
-| cdp.startSession() _(reuse/dynamic)_                  | Promote or ensure the shared session; returns its info.                         |
-| cdp.sessionInfo() _(reuse/dynamic)_                   | Shared session info, or null.                                                   |
-| cdp.closeSession() _(reuse/dynamic)_                  | Close the shared session.                                                       |
-| cdp.resetSession() _(reuse/dynamic)_                  | Close and replace the shared session.                                           |
+| Method | Description |
+| --- | --- |
+| `cdp.send({ method, params?, sessionId?, timeoutMs? })` | Send a CDP command and wait for the response. |
+| `cdp.attachToTarget({ targetId, timeoutMs? })` | Attach to a target; returns `{ sessionId }` for page-scoped `send` calls. |
+| `cdp.spec()` | The searchable, normalized CDP protocol spec. |
+| `cdp.getDebugLog({ limit? })` | Recent CDP traffic (sends, receives, warnings) for this execution's connection. |
+| `cdp.clearDebugLog()` | Clear the debug log buffer. |
+| `cdp.getLiveViewUrl({ targetId?, mode? })` | Create a Live View URL for a tab. |
+| `cdp.startSession()` *(reuse/dynamic)* | Promote or ensure the shared session; returns its info. |
+| `cdp.sessionInfo()` *(reuse/dynamic)* | Shared session info, or `null`. |
+| `cdp.closeSession()` *(reuse/dynamic)* | Close the shared session. |
+| `cdp.resetSession()` *(reuse/dynamic)* | Close and replace the shared session. |
 
 Every `cdp.*` call is recorded in the runtime's durable log. If a run pauses (for approval) or the sandbox aborts, resuming replays the log and continues — so connector calls must be sequential and deterministic. Model code must not `Promise.all` CDP calls (the tool instructions enforce this), and the returned `sessionId` is a stable session handle that stays valid across pause/resume reconnects.
 

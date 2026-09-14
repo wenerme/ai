@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Fal AI
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/fal/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/fal/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Fal AI ↗](https://fal.ai/) provides access to 600+ production-ready generative media models through a single, unified API. The service offers the world's largest collection of open image, video, voice, and audio generation models, all accessible with one line of code.
 
@@ -30,10 +30,10 @@ When making requests to Fal AI, replace `https://fal.run` in the URL you're curr
 
 When making requests to Fal AI, ensure you have the following:
 
-* Your AI Gateway Account ID.
-* Your AI Gateway gateway name.
-* An active Fal AI API token.
-* The name of the Fal AI model you want to use.
+- Your AI Gateway Account ID.
+- Your AI Gateway gateway name.
+- An active Fal AI API token.
+- The name of the Fal AI model you want to use.
 
 ## Default synchronous API
 

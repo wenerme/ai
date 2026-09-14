@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Enhance Transform Rules
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/jwt-validation/transform-rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/jwt-validation/transform-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can forward information from a [JSON Web Token (JWT)](https://developers.cloudflare.com/api-shield/security/jwt-validation/) to the origin in a header by creating [Transform Rules](https://developers.cloudflare.com/rules/transform/) using claims that Cloudflare has verified via the JSON Web Token.
 
@@ -30,17 +30,18 @@ Refer to [Configure JWT validation](https://developers.cloudflare.com/api-shield
 
 As an example, to send the `x-send-jwt-claim-user` request header to the origin, you must create a Transform Rule:
 
-1. In the Cloudflare dashboard, go to the **Rules overview** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
-2. Select **Create rule** \> **Request Header Transform Rules**.
+1. In the Cloudflare dashboard, go to the **Rules overview** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
+2. Select **Create rule** > **Request Header Transform Rules**.
 3. Enter a rule name and a filter expression, if applicable.
 4. Choose **Set dynamic**.
 5. Set the header name to `x-send-jwt-claim-user`.
 6. Set the value to:
-```txt
-lookup_json_string(http.request.jwt.claims["<TOKEN_CONFIGURATION_ID>"][0], "claim_name")
-```
-`<TOKEN_CONFIGURATION_ID>` is your token configuration ID found in JWT validation and `claim_name` is the JWT claim you want to add to the header.
+
+   ```txt
+   lookup_json_string(http.request.jwt.claims["<TOKEN_CONFIGURATION_ID>"][0], "claim_name")
+   ```
+
+   `<TOKEN_CONFIGURATION_ID>` is your token configuration ID found in JWT validation and `claim_name` is the JWT claim you want to add to the header.
 
 Was this helpful?
 

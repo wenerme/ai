@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Anthropic
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-4.5/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-4.5/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `anthropic/claude-haiku-4.5`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 Claude Haiku 4.5 delivers similar levels of coding performance at one-third the cost and more than twice the speed of larger models.
 
-| Model Info                                                                          |                                                                                                                              |
-| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 200,000 tokens                                                                                                               |
-| Terms and License                                                                   | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                   |
-| More information                                                                    | [link ↗](https://www.anthropic.com/claude/haiku)                                                                             |
-| Zero data retention                                                                 | Yes                                                                                                                          |
-| Request formats                                                                     | Anthropic Messages                                                                                                           |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-haiku-4.5) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 200,000 tokens |
+| Terms and License | [link ↗](https://www.anthropic.com/legal/commercial-terms) |
+| More information | [link ↗](https://www.anthropic.com/claude/haiku) |
+| Zero data retention | Yes |
+| Request formats | Anthropic Messages |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-haiku-4.5) |
 
 ## Usage
 
@@ -63,6 +63,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 # The Three Laws of Thermodynamics
 
 ## First Law (Conservation of Energy)
@@ -77,6 +78,7 @@ As temperature approaches absolute zero (0 Kelvin or -273.15°C), the entropy of
 ---
 
 These laws form the foundation of thermodynamics and explain why perpetual motion machines are impossible and why certain processes naturally occur while others don't.
+```
 
 ```json
 {
@@ -105,7 +107,11 @@ These laws form the foundation of thermodynamics and explain why perpetual motio
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -138,6 +144,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 # Reading a JSON File in Python
 
 Here are the most common methods:
@@ -212,6 +219,7 @@ with open('file.json', 'r') as file:
 ```
 
 The `with` statement is recommended because it automatically closes the file when done.
+````
 
 ```json
 {
@@ -238,7 +246,13 @@ The `with` statement is recommended because it automatically closes the file whe
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -286,6 +300,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 # Good Stops on the SF to LA Route
 
 **Halfway/Central Coast Options:**
@@ -308,6 +323,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 - Consider stopping overnight if you want a more relaxed trip
 
 What's your timeline? Are you interested in nature, wine, food, or something else? That would help me narrow down recommendations.
+```
 
 ```json
 {
@@ -334,7 +350,13 @@ What's your timeline? Are you interested in nature, wine, food, or something els
 }
 ```
 
-**Creative Writing** — Higher temperature for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Higher temperature for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -370,6 +392,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 # The Photograph
 
 Detective Sarah Chen stood in the victim's apartment, her latex gloves snapping softly as she examined the bookshelf for the third time. The case had gone cold within hours—no signs of forced entry, no witnesses, no motive that made sense.
@@ -389,6 +412,7 @@ She'd been a detective for twelve years. She'd learned that most mysteries had o
 This photograph wasn't evidence of a crime.
 
 It was a warning.
+```
 
 ```json
 {
@@ -415,7 +439,13 @@ It was a warning.
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -446,6 +476,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 # Recursion Explained
 
 **Recursion** is when a function calls itself to solve smaller instances of the same problem until it reaches a simple base case.
@@ -500,6 +531,7 @@ It's like opening Russian nesting dolls:
 ⚠️ **Caution**: Can be slow and cause stack overflow if not careful
 
 Recursion is elegant but always ensure you have a clear base case!
+````
 
 ```json
 [
@@ -691,7 +723,13 @@ Recursion is elegant but always ensure you have a clear base case!
 ]
 ```
 
-**Web Search** — Letting Claude use Anthropic's server-side web search tool to answer with current information
+</details>
+
+<details>
+
+<summary>**Web Search** — Letting Claude use Anthropic's server-side web search tool to answer with current information</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -734,7 +772,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Let me search for more recent news from this week specifically.
+```
 
 ```json
 {
@@ -990,9 +1030,11 @@ Let me search for more recent news from this week specifically.
 }
 ```
 
+</details>
+
 ## Parameters
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -1036,7 +1078,7 @@ role
 
 `string`const: assistant
 
-▶content\[\]
+▶content\[]
 
 `array`
 
@@ -1054,9 +1096,9 @@ stop\_reason
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-4.5/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-4.5/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-4.5/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-4.5/schema-output.json)
 
 Was this helpful?
 

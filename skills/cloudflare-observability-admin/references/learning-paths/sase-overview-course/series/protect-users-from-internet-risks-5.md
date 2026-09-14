@@ -12,39 +12,35 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Protect your users from Internet risks
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/sase-overview-course/series/protect-users-from-internet-risks-5/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/sase-overview-course/series/protect-users-from-internet-risks-5/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Internet has become part of your corporate network, however browsing the web comes with hidden risks including malware, phishing attacks, and malicious websites. In this video, we will explore how Cloudflare's Secure Web Gateway (SWG) helps keep users safe by filtering and inspecting Internet traffic in real time. Whether you are protecting a remote workforce or securing an entire organization, Cloudflare ensures that users can access the web securely — without sacrificing speed or productivity.
 
+<details>
+
+<summary>
+
 Chapters
 
-* ![Introduction to Cloudflare's SASE and the Importance of Secure Corporate Networking](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=0s)
+</summary>
 
-**Introduction to Cloudflare's SASE and the Importance of Secure Corporate Networking**0s
-* ![Using Secure Web Gateway to Inspect and Control Internet Traffic](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=66s)
+- ![Introduction to Cloudflare's SASE and the Importance of Secure Corporate Networking](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=0s)**Introduction to Cloudflare's SASE and the Importance of Secure Corporate Networking**0s
+- ![Using Secure Web Gateway to Inspect and Control Internet Traffic](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=66s)**Using Secure Web Gateway to Inspect and Control Internet Traffic**1m6s
+- ![Protecting Users with DNS Filtering and Threat Intelligence](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=124s)**Protecting Users with DNS Filtering and Threat Intelligence**2m4s
+- ![Implementing Network-Level Security Policies for Private and Public Traffic](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=217s)**Implementing Network-Level Security Policies for Private and Public Traffic**3m37s
+- ![Advanced HTTP Filtering and Data Loss Prevention with Cloudflare](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=263s)**Advanced HTTP Filtering and Data Loss Prevention with Cloudflare**4m23s
+- ![Isolating Risky Websites and Preventing Data Leaks with Browser Isolation](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=348s)**Isolating Risky Websites and Preventing Data Leaks with Browser Isolation**5m48s
 
-**Using Secure Web Gateway to Inspect and Control Internet Traffic**1m6s
-* ![Protecting Users with DNS Filtering and Threat Intelligence](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=124s)
-
-**Protecting Users with DNS Filtering and Threat Intelligence**2m4s
-* ![Implementing Network-Level Security Policies for Private and Public Traffic](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=217s)
-
-**Implementing Network-Level Security Policies for Private and Public Traffic**3m37s
-* ![Advanced HTTP Filtering and Data Loss Prevention with Cloudflare](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=263s)
-
-**Advanced HTTP Filtering and Data Loss Prevention with Cloudflare**4m23s
-* ![Isolating Risky Websites and Preventing Data Leaks with Browser Isolation](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=348s)
-
-**Isolating Risky Websites and Preventing Data Leaks with Browser Isolation**5m48s
+</details>
 
 **Related content**
 
 If you want to dive into detail about modernizing your corporate network with Cloudflare, refer to the following pages:
 
-* [Evolving to a SASE architecture with Cloudflare](https://developers.cloudflare.com/reference-architecture/architectures/sase/)
-* [Network-focused migration from VPN concentrators to Zero Trust Network Access](https://developers.cloudflare.com/reference-architecture/design-guides/network-vpn-migration/)
-* [Using a Zero Trust framework to secure SaaS applications](https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-saas/)
-* [Building Zero Trust architecture into your startup](https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-startups/)
+- [Evolving to a SASE architecture with Cloudflare](https://developers.cloudflare.com/reference-architecture/architectures/sase/)
+- [Network-focused migration from VPN concentrators to Zero Trust Network Access](https://developers.cloudflare.com/reference-architecture/design-guides/network-vpn-migration/)
+- [Using a Zero Trust framework to secure SaaS applications](https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-saas/)
+- [Building Zero Trust architecture into your startup](https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-startups/)
 
 ### [Watch Episode 1: The evolution of corporate networks](https://developers.cloudflare.com/learning-paths/sase-overview-course/series/evolution-corporate-networks-1/)
 

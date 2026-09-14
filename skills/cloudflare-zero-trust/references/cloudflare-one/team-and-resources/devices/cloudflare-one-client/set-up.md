@@ -12,42 +12,44 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # First-time setup
 
-Last updated Jun 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/set-up/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/set-up/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide walks you through setting up the Cloudflare One Client (formerly WARP) for your organization for the first time. After completing these steps, your devices will route traffic through Cloudflare's network, where you can apply security policies.
 
 Choose a setup mode based on your needs:
 
-* [**Traffic and DNS mode** (default)](#traffic-and-dns-mode-default) — Enables the full suite of security features, including HTTP inspection, identity-based policies, and device posture checks.
-* [**DNS-only mode**](#dns-only-mode) — Filters only DNS queries. Does not inspect HTTP traffic or enforce device posture checks.
+- [**Traffic and DNS mode** (default)](#traffic-and-dns-mode-default) — Enables the full suite of security features, including HTTP inspection, identity-based policies, and device posture checks.
+- [**DNS-only mode**](#dns-only-mode) — Filters only DNS queries. Does not inspect HTTP traffic or enforce device posture checks.
 
 ## Traffic and DNS mode (default)
 
 This mode enables the complete suite of [device security features](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/).
 
-### 1\. Create a Cloudflare Zero Trust account.
+### 1. Create a Cloudflare Zero Trust account.
 
 The [Cloudflare One dashboard ↗](https://dash.cloudflare.com/one/) will be your go-to place to check device connectivity data, as well as create Secure Web Gateway and Zero Trust policies for your organization.
 
-As you complete the [Cloudflare Zero Trust onboarding](https://developers.cloudflare.com/cloudflare-one/setup/), you will be asked to create a team name for your organization. You will need the team name when you deploy the Cloudflare One Client on your devices; it will allow your users to connect to your organization's Cloudflare Zero Trust instance.
+As you complete the [Cloudflare Zero Trust onboarding](https://developers.cloudflare.com/cloudflare-one/setup/), you will be asked to create a team name
 
-### 2\. Set up a login method.
+ for your organization. You will need the team name when you deploy the Cloudflare One Client on your devices; it will allow your users to connect to your organization's Cloudflare Zero Trust instance.
+
+### 2. Set up a login method.
 
 Configure [One-time PIN](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/) or connect a [third-party identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) in Zero Trust. This is the login method your users will utilize when authenticating to add a new device to your Cloudflare Zero Trust setup.
 
-### 3\. Define device enrollment permissions.
+### 3. Define device enrollment permissions.
 
 Create [device enrollment rules](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/) to define which users in your organization should be able to connect devices to your organization's Cloudflare Zero Trust setup. As you create your rule, you will be asked to select which login method you would like users to authenticate with.
 
-### 4\. Install the Cloudflare root certificate on your devices.
+### 4. Install the Cloudflare root certificate on your devices.
 
 Advanced security features including HTTP traffic inspection require users to install and trust the [Cloudflare root certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/) on their machine or device. If you are installing certificates manually on all your devices, these steps will need to be performed on each new device that is to be subject to HTTP filtering.
 
-### 5\. Download and deploy the Cloudflare One Client to your devices.
+### 5. Download and deploy the Cloudflare One Client to your devices.
 
 Choose one of the [different ways](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/) to deploy the Cloudflare One Client, depending on what works best for your organization.
 
-### 6\. Log in to your organization's Cloudflare Zero Trust instance from your devices.
+### 6. Log in to your organization's Cloudflare Zero Trust instance from your devices.
 
 Once the Cloudflare One Client is installed on the device, [log in to your Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/). The user is prompted to authenticate with one of your configured login methods. New organizations include the [Cloudflare identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/cloudflare/) as the default, so users can sign in with their Cloudflare account credentials. You can also connect a [third-party identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) or enable a [one-time PIN](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/).
 
@@ -57,25 +59,25 @@ Next, build [Secure Web Gateway policies](https://developers.cloudflare.com/clou
 
 This mode is best suited for organizations that only want to apply DNS filtering to outbound traffic from their company devices. It does not enable advanced HTTP filtering features such as HTTP policies, identity-based policies, device posture checks, or Browser Isolation.
 
-### 1\. Create a Cloudflare Zero Trust account.
+### 1. Create a Cloudflare Zero Trust account.
 
 Zero Trust will be your go-to place to check device connectivity data, as well as create Secure Web Gateway and Zero Trust policies for your organization.
 
 As you complete the [Cloudflare Zero Trust onboarding](https://developers.cloudflare.com/cloudflare-one/setup/), you will be asked to create a team name for your organization. You will need the team name when you deploy the Cloudflare One Client on your devices; it will allow your users to connect to your organization's Cloudflare Zero Trust instance.
 
-### 2\. Set up a login method.
+### 2. Set up a login method.
 
 Configure [One-time PIN](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/) or connect a [third-party identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) in Zero Trust. This is the login method your users will utilize when authenticating to add a new device to your Cloudflare Zero Trust setup.
 
-### 3\. Define device enrollment permissions.
+### 3. Define device enrollment permissions.
 
 Create [device enrollment rules](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/) to define which users in your organization should be able to connect devices to your organization's Cloudflare Zero Trust setup. As you create your rule, you will be asked to select which login method you would like users to authenticate with.
 
-### 4\. (Optional) Add a DNS location to Gateway.
+### 4. (Optional) Add a DNS location to Gateway.
 
 By default, the Cloudflare One Client sends DNS queries to Cloudflare using an encrypted protocol called DNS-over-HTTPS (DoH). If you need to apply different DNS policies to different offices or network locations, [add a DNS location](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/) to Gateway. Gateway will assign a unique DoH subdomain to each location, which you provide as a parameter when deploying the Cloudflare One Client to your devices.
 
-### 5\. Download and deploy the Cloudflare One Client to your devices.
+### 5. Download and deploy the Cloudflare One Client to your devices.
 
 Choose one of the [different ways](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/) to deploy the Cloudflare One Client, depending on what works best for your organization.
 

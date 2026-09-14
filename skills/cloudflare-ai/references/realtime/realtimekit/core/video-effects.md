@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Video Effects
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/video-effects/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/video-effects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Add video background effects and blur to participant video feeds in your RealtimeKit meetings using the Core SDK.
 
@@ -46,7 +46,7 @@ bun add @cloudflare/realtimekit-virtual-background
 
 ## Usage
 
-### 1\. Disable default per frame rendering
+### 1. Disable default per frame rendering
 
 Disable the default per frame rendering of video middleware to improve speed and quality by letting this middleware control it on its own:
 
@@ -56,7 +56,7 @@ await meeting.self.setVideoMiddlewareGlobalConfig({
 });
 ```
 
-### 2\. Initialize the transformer
+### 2. Initialize the transformer
 
 Create a video background transformer object:
 
@@ -69,7 +69,7 @@ const videoBackgroundTransformer =
 	});
 ```
 
-### 3\. Apply background effects
+### 3. Apply background effects
 
 The `videoBackgroundTransformer` exposes two types of middlewares:
 
@@ -423,9 +423,9 @@ You can also create your own custom filters to apply effects, filters, or analyt
 
 We provide three types of video processors:
 
-* **NoDropVideoProcessor**: Allows custom video processing without dropping frames.
-* **ChainVideoProcessor**: Chains multiple frame processors together, useful for applying multiple effects or filters to a video stream.
-* **FilterVideoProcessor**: Simpler and more efficient way to apply a single effect or filter to a video stream.
+- **NoDropVideoProcessor**: Allows custom video processing without dropping frames.
+- **ChainVideoProcessor**: Chains multiple frame processors together, useful for applying multiple effects or filters to a video stream.
+- **FilterVideoProcessor**: Simpler and more efficient way to apply a single effect or filter to a video stream.
 
 Nonetheless, you can also create your own custom video processors by implementing the `VideoProcessor` interface directly:
 

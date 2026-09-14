@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Reference
 
-Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/reference/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Refer to the following pages for more information about Cloudflare DDoS protection:
 
-* [Analytics](https://developers.cloudflare.com/ddos-protection/reference/analytics/)
-* [Reports](https://developers.cloudflare.com/ddos-protection/reference/reports/)
-* [Alerts](https://developers.cloudflare.com/ddos-protection/reference/alerts/)
-* [Logs](https://developers.cloudflare.com/ddos-protection/reference/logs/)
-* [Simulating test DDoS attacks](https://developers.cloudflare.com/ddos-protection/reference/simulate-ddos-attack/)
+- [Analytics](https://developers.cloudflare.com/ddos-protection/reference/analytics/)
+- [Reports](https://developers.cloudflare.com/ddos-protection/reference/reports/)
+- [Alerts](https://developers.cloudflare.com/ddos-protection/reference/alerts/)
+- [Logs](https://developers.cloudflare.com/ddos-protection/reference/logs/)
+- [Simulating test DDoS attacks](https://developers.cloudflare.com/ddos-protection/reference/simulate-ddos-attack/)
 
 Was this helpful?
 

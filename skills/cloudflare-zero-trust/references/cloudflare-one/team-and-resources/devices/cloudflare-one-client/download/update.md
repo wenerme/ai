@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Update the Cloudflare One Client
 
-Last updated Jun 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/update/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/update/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide covers best practices for updating the Cloudflare One Client (formerly WARP).
 
@@ -20,8 +20,8 @@ This guide covers best practices for updating the Cloudflare One Client (formerl
 
 There are two update strategies:
 
-* **Always deploy the latest stable release** (recommended) — You get the newest bug fixes, performance improvements, and features.
-* **Deploy only LTS releases** — If your organization has limited update cycles due to change management, QA testing, or other constraints, you can skip intermediate stable releases and deploy only the latest [LTS (Long-Term Support) release](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/lts-releases/). This strategy reduces deployment churn while still addressing security bug fixes in a timely manner.
+- **Always deploy the latest stable release** (recommended) — You get the newest bug fixes, performance improvements, and features.
+- **Deploy only LTS releases** — If your organization has limited update cycles due to change management, QA testing, or other constraints, you can skip intermediate stable releases and deploy only the latest [LTS (Long-Term Support) release](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/lts-releases/). This strategy reduces deployment churn while still addressing security bug fixes in a timely manner.
 
 If you run into issues that require troubleshooting or support tickets, one of the first requested actions by our support team will be to update your clients to the latest version.
 

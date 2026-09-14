@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Monitor AI usage at your organization
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/holistic-ai-security/monitor-ai-use/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/holistic-ai-security/monitor-ai-use/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Monitoring AI usage is one of the first steps in assessing holistic risk. Cloudflare provides a number of ways to understand both sanctioned and unsanctioned use of AI and chat applications within your Zero Trust deployment. Reviewing your detected usage should give you a sense of which AI apps are used in your organization as well as what type of policies you need to create based on what should be supported versus restricted.
 

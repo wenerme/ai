@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Account security
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/application-security/account-security/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/application-security/account-security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Make sure your account's security basics are configured properly.
 
@@ -20,9 +20,9 @@ Make sure your account's security basics are configured properly.
 
 By the end of this module, you will be able to:
 
-* Secure your account
-* Understand and configure the most common settings for Cloudflare's Application Security Products
-* Explore advanced security products such as Bot Management and API Protection
+- Secure your account
+- Understand and configure the most common settings for Cloudflare's Application Security Products
+- Explore advanced security products such as Bot Management and API Protection
 
 Was this helpful?
 

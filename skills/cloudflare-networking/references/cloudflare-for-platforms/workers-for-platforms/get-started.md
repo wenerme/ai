@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Get started with Workers for Platforms by deploying a starter kit to your account.
 
@@ -76,12 +76,12 @@ In the template, user Workers are deployed programmatically through the API. In 
 
 Now that you understand how the components work together, customize the template for your use case:
 
-* [Dynamic dispatch](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch/) — Route requests by subdomain or hostname
-* [Hostname routing](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/hostname-routing/) — Let customers use [custom domains](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/) with their applications
-* [Bindings](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/bindings/) — Give each customer access to their own [database](https://developers.cloudflare.com/d1/), [key-value store](https://developers.cloudflare.com/kv/), or [object storage](https://developers.cloudflare.com/r2/)
-* [Outbound Workers](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/) — Configure egress policies on outgoing requests from customer code
-* [Custom limits](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/custom-limits/) — Set CPU time and subrequest limits per customer
-* [API examples](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/platform-examples/) — Examples for deploying and managing customer code programmatically
+- [Dynamic dispatch](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch/) — Route requests by subdomain or hostname
+- [Hostname routing](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/hostname-routing/) — Let customers use [custom domains](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/) with their applications
+- [Bindings](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/bindings/) — Give each customer access to their own [database](https://developers.cloudflare.com/d1/), [key-value store](https://developers.cloudflare.com/kv/), or [object storage](https://developers.cloudflare.com/r2/)
+- [Outbound Workers](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/) — Configure egress policies on outgoing requests from customer code
+- [Custom limits](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/custom-limits/) — Set CPU time and subrequest limits per customer
+- [API examples](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/platform-examples/) — Examples for deploying and managing customer code programmatically
 
 ## Build an AI vibe coding platform
 

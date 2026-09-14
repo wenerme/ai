@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Use the dashboard to fetch and acknowledge the messages currently in a queue.
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/queues/examples/list-messages-from-dash/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/examples/list-messages-from-dash/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## List messages from the dashboard
 
@@ -22,8 +22,7 @@ Listing messages from the dashboard allows you to debug Queues or queue producer
 
 To list messages in the dashboard:
 
-1. In the Cloudflare dashboard, go to the **Queues** page.
-[Go to **Queues** ↗](https://dash.cloudflare.com/?to=/:account/workers/queues)
+1. In the Cloudflare dashboard, go to the **Queues** page. [Go to **Queues** ↗](https://dash.cloudflare.com/?to=/:account/workers/queues)
 2. Select the queue to preview messages from.
 3. Select the **Messages** tab.
 4. Select **List**.

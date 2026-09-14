@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Migration guides
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/reference/migration-guides/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/reference/migration-guides/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 These guides walk you through the migration processes associated with various changes in Cloudflare's SSL/TLS infrastructure.
 
-* [Entrust distrust by major browsers](https://developers.cloudflare.com/ssl/reference/migration-guides/entrust-distrust/)
-* [DigiCert Legacy Root (G1) distrust by major browsers](https://developers.cloudflare.com/ssl/reference/migration-guides/digicert-g1-distrust/)
+- [Entrust distrust by major browsers](https://developers.cloudflare.com/ssl/reference/migration-guides/entrust-distrust/)
+- [DigiCert Legacy Root (G1) distrust by major browsers](https://developers.cloudflare.com/ssl/reference/migration-guides/digicert-g1-distrust/)
 
 Was this helpful?
 

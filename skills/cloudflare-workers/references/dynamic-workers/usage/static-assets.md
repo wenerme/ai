@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Static assets
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dynamic-workers/usage/static-assets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/usage/static-assets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Dynamic Workers can serve static assets like HTML pages, JavaScript bundles, images, and other files alongside your Worker code. This is useful when you need a Dynamic Worker to serve a full-stack application.
 
@@ -122,8 +122,8 @@ The class takes a `projectId` prop so it knows which project's assets to look up
 
 Instead of writing your own logic to match request paths to files, detect content types, and set cache headers, use the `@cloudflare/worker-bundler` package to handle static asset serving. In your `fetch()` method, pass `handleAssetRequest()` two things:
 
-* A **manifest**, the path-to-content-type mapping you stored in KV during upload, built with `buildAssetManifest()`. This tells `handleAssetRequest()` which files exist and what their content types are.
-* A **storage object**, tells `handleAssetRequest()` how to read files from your KV namespace. It has one method, `get(pathname)`, which reads and returns the content for a given file path.
+- A **manifest**, the path-to-content-type mapping you stored in KV during upload, built with `buildAssetManifest()`. This tells `handleAssetRequest()` which files exist and what their content types are.
+- A **storage object**, tells `handleAssetRequest()` how to read files from your KV namespace. It has one method, `get(pathname)`, which reads and returns the content for a given file path.
 
 `handleAssetRequest()` serves the file if it finds a match in the manifest, with the correct headers for content type and caching.
 
@@ -220,7 +220,7 @@ export default {
 				modules: {
 					"index.js": { js: serverCode },
 				},
-				compatibilityDate: "2026-08-25",
+				compatibilityDate: "2026-09-14",
 				env: {
 					ASSETS: ctx.exports.AssetBinding({
 						props: { projectId },

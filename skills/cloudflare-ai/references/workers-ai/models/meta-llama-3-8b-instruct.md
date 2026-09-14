@@ -1,5 +1,5 @@
 ---
-description: Generation over generation, Meta Llama 3 demonstrates state-of-the-art performance on a wide range of industry benchmarks and offers new capabilities, including improved reasoning.
+description: "Generation over generation, Meta Llama 3 demonstrates state-of-the-art performance on a wide range of industry benchmarks and offers new capabilities, including improved reasoning.\t"
 title: meta-llama-3-8b-instruct
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -16,19 +16,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Meta
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/meta-llama-3-8b-instruct/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/meta-llama-3-8b-instruct/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@hf/meta-llama/meta-llama-3-8b-instruct`
 
-* Cloudflare-hosted
-* Deprecated
+- Cloudflare-hosted
+- Deprecated
 
 Generation over generation, Meta Llama 3 demonstrates state-of-the-art performance on a wide range of industry benchmarks and offers new capabilities, including improved reasoning.
 
-| Model Info                                                                          |              |
-| ----------------------------------------------------------------------------------- | ------------ |
-| Deprecated                                                                          | 5/30/2026    |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 8,192 tokens |
+| Model Info | |
+| --- | --- |
+| Deprecated | 5/30/2026 |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 8,192 tokens |
 
 ## Playground
 
@@ -39,7 +39,6 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 ## Usage
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -68,7 +67,6 @@ export default {
 ```
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -91,7 +89,6 @@ export default {
 ```
 
 ```py
-
 import os
 import requests
 
@@ -114,7 +111,6 @@ print(result)
 ```
 
 ```sh
-
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@hf/meta-llama/meta-llama-3-8b-instruct \
   -X POST \
   -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
@@ -175,47 +171,59 @@ repetition\_penalty
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2Decreases the likelihood of the model repeating the same lines verbatim.
+`number`minimum: -2maximum: 2Decreases the likelihood of the model repeating the same lines verbatim.
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2Increases the likelihood of the model introducing new topics.
+`number`minimum: -2maximum: 2Increases the likelihood of the model introducing new topics.
 
 ### Output
 
-Synchronous — Send a request and receive a complete response
+<details>
+
+<summary>Synchronous — Send a request and receive a complete response</summary>
+
+
 
 response
 
-`string`The generated text response from the model
+<code>string</code>The generated text response from the model
 
 ▶usage{}
 
-`object`Usage statistics for the inference request
+<code>object</code>Usage statistics for the inference request
 
-▶tool\_calls\[\]
+▶tool\_calls\[]
 
-`array`An array of tool calls requests made during the response generation
+<code>array</code>An array of tool calls requests made during the response generation
 
-Streaming — Send a request with \`stream: true\` and receive server-sent events
+</details>
+
+<details>
+
+<summary>Streaming — Send a request with `stream: true` and receive server-sent events</summary>
+
+
 
 type
 
-`string`
+<code>string</code>
 
 format
 
-`binary`
+<code>binary</code>
+
+</details>
 
 ## API Schemas (Raw)
 
-SynchronousInput
+SynchronousInput [Open](https://developers.cloudflare.com/workers-ai/models/meta-llama-3-8b-instruct/sync-input.json) [Download](https://developers.cloudflare.com/workers-ai/models/meta-llama-3-8b-instruct/sync-input.json)
 
-SynchronousOutput
+SynchronousOutput [Open](https://developers.cloudflare.com/workers-ai/models/meta-llama-3-8b-instruct/sync-output.json) [Download](https://developers.cloudflare.com/workers-ai/models/meta-llama-3-8b-instruct/sync-output.json)
 
-StreamingInput
+StreamingInput [Open](https://developers.cloudflare.com/workers-ai/models/meta-llama-3-8b-instruct/streaming-input.json) [Download](https://developers.cloudflare.com/workers-ai/models/meta-llama-3-8b-instruct/streaming-input.json)
 
-StreamingOutput
+StreamingOutput [Open](https://developers.cloudflare.com/workers-ai/models/meta-llama-3-8b-instruct/streaming-output.json) [Download](https://developers.cloudflare.com/workers-ai/models/meta-llama-3-8b-instruct/streaming-output.json)
 
 Was this helpful?
 

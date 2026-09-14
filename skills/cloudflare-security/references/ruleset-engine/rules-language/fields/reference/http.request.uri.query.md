@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # http.request.uri.query
 
-`http.request.uri.query` `String`
+`http.request.uri.query``String`
 
 The entire query string, without the `?` delimiter.
 
@@ -19,8 +19,8 @@ Example value:
 ```
 
 Categories:
-* Request
-* URI
+- Request
+- URI
 
 Was this helpful?
 

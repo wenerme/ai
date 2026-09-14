@@ -12,20 +12,28 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Deploy a Browser Run Worker with Durable Objects
 
-Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By following this guide, you will create a Worker that uses the Browser Run API along with [Durable Objects](https://developers.cloudflare.com/durable-objects/) to take screenshots from web pages and store them in [R2](https://developers.cloudflare.com/r2/).
 
 Using Durable Objects to persist browser sessions improves performance by eliminating the time that it takes to spin up a new browser session. Since Durable Objects re-uses sessions, it reduces the number of concurrent sessions needed.
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
 
-## 1\. Create a Worker project
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
+
+## 1. Create a Worker project
 
 [Cloudflare Workers](https://developers.cloudflare.com/workers/) provides a serverless execution environment that allows you to create new applications or augment existing ones without configuring or maintaining infrastructure. Your Worker application is a container to interact with a headless browser to do actions, such as taking screenshots.
 
@@ -45,7 +53,7 @@ yarn create cloudflare browser-worker
 pnpm create cloudflare@latest browser-worker
 ```
 
-## 2\. Install Puppeteer
+## 2. Install Puppeteer
 
 In your `browser-worker` directory, install Cloudflare’s [fork of Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/):
 
@@ -67,7 +75,7 @@ pnpm add -D @cloudflare/puppeteer
 bun add -d @cloudflare/puppeteer
 ```
 
-## 3\. Create a R2 bucket
+## 3. Create a R2 bucket
 
 Create two R2 buckets, one for production, and one for development.
 
@@ -86,7 +94,7 @@ wrangler r2 bucket list
 
 After running the `list` command, you will see all bucket names, including the ones you have just created.
 
-## 4\. Configure your Wrangler configuration file
+## 4. Configure your Wrangler configuration file
 
 Configure your `browser-worker` project's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) by adding a browser [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) and a [Node.js compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag). Browser bindings allow for communication between a Worker and a headless browser which allows you to do actions such as taking a screenshot, generating a PDF and more.
 
@@ -102,7 +110,7 @@ Your Worker configuration must include the `nodejs_compat` compatibility flag an
 	"name": "rendering-api-demo",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-09-12",
+	"compatibility_date": "2026-09-14",
 	"compatibility_flags": ["nodejs_compat"],
 	"account_id": "<ACCOUNT_ID>",
 	// Browser Run API binding
@@ -143,7 +151,7 @@ Your Worker configuration must include the `nodejs_compat` compatibility flag an
 name = "rendering-api-demo"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-09-12"
+compatibility_date = "2026-09-14"
 compatibility_flags = [ "nodejs_compat" ]
 account_id = "<ACCOUNT_ID>"
 
@@ -164,7 +172,7 @@ tag = "v1"
 new_sqlite_classes = [ "Browser" ]
 ```
 
-## 5\. Code
+## 5. Code
 
 The code below uses Durable Object to instantiate a browser using Puppeteer. It then opens a series of web pages with different resolutions, takes a screenshot of each, and uploads it to R2.
 
@@ -283,7 +291,7 @@ export class Browser extends DurableObject {
 }
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBmAJyiArBIDsADmGDpwgFwsWbYBzhcafASPFS5CpQFgAUAGF0VCAFNb2ACJQAzjHSuo0G8pIa8AmISKjhgOwYAIigaOwAPADoAK1dI0lQoMAcwiOjYxJTIi2tbBwhsABU6GDs-OBgYMD4CKBtkJLgANzhXXgRYCABqYHRccDsLCyhgDyQSAG8SJxAEODIsgHkyJLteCBIAX38EdGASSN4wSlxUMERagHdMAGs7BFSic2nZ-YAqEh6JBgIAadnsb2Op3OAAFLtdbvdkMDQeCEGlzOZ4j8SLg7Kg4OB9vNzABIHp0Ki8fxg3gACwAFAg7ABHEB2VwQAA0JAcnQAlAtSSTeDYOSR0NsSAweVROgkAEIAJQ2AHUAMoAUUVCQA5mD5XQAHI5emRMgnB6uN6RPmfIXIZAkNUOXAAkhM1ns-YQdAkCC0uxLFZrLIkLY7Pbc-0OAEPODeEjeVzu9keKhWoUi9P7JnuKWx+P7CVJBKoGkMj1sjm2jEkklMiArKgp9yfEkHTnmA52rNigDSGo1AAUAPpK1WaxUjgCCABkAJIANQ1I-nhpHmssG0NTjV+YAbII7VjMPtLj1k-KLVaEDy4vYaMnlqt1nZw7siaTzehLW8268YAgacmk6Ox5yoZ0s1wZNpSPUkOUwOA9TtYVRQgBAQD2TB6Q5Ag7G5XkBWJOtXBBN4cMIewCNlGs639NwEgQ1Y9XzXD7EYn1mLsNsDlrclKWpCA6UZFkqwgIj7UdNU+jsGNc3QMAQB8dM-V9ewxUoCBMzQkgHigXB-XzABtABGUQACZBG5EzhH3fdrIkWzuVsqySAAFhMtyAF021Q7MSADKAdVpfZpVMwRZFc6R91kblZH3NzuQS1zZFEfcfNrEkHRIABVK0-QDEheBWJlbBxPCARoP1pkDH0iqZCq4H8BTcVvDkML2FZAzYEhFXM7T-KoH8nAq6UqDsB4ljw+laL8sURTxVB8xMwRVpIf5D3WkgJF83sc0oWJcBG+x83GybjrsekhRJABZAhaQSE5uHpIaHgu3UwQqGqZpIR0FtQVABX+f7UE7Os+QSH01XQmIdRm3adIwMBWvzJ7Dve9wmggU0SAAcRuiobSMwQMskkh5yW6MmUTZMmu-X82vZLwbHFGoqG5JkuHy7whSgJb6QAQno1wEnpm8SAAHwlkghdpBixbeBI3BKca9jsXAZokus5oUuwEiuOGAAMrx-cWnA2PxocQaAqB1EIJsTbM4EpOxDdmkl0LoQVtY9uWRYV29pTgOME2RGpUX1glKQZYWEl5BIboATXHdUtXdo5eAIOkSHpOwte13tdf19A4euutjevCFzb8axwFdIb9lwuYA8d3CXYSEgNQQE4ED8AASeY7AOQ2we19OhV4snFXZMESAAoCQMDOBUHsW87DgbPM7AMBVIKwNzaFWP5+AqBQPAyCbGg-M4LJywA14Z5EyWlv4jcCBkzIPFMEDdA2dhoEkJ2F5vzWW8tK4ID5NdBsTZ7aTWnu4UUl1IgmwZiQO41Bs74kyOrSI3JFhsRAK4PwEg1oHBrANMU8AWJBxDt6P2otwEJDOkOQB8NMrZQqHAV4JBehMgcK4Wk6B37iiWuvbOvDZLNi8AALyAXWHq9Isj7CgNfUgKiAA8ul9L+n1g4HU-o1GDEGPnMktCAF6kYmCRcUAJo-HpIsPSBlaR+Ecf6IyUAvLckCsFCAfhvEhXcV5Q47tg6FnMXrHUQj0CmhChAGARCHRPAQK8d4CQ4QgBuHcJkaTTjIBtL5Oa+wMhZGNOEfMhsJH8MERAEcA9XG0kCQcOIA9-EQEaYbApe0eFUhoWEqhetKnpmqWw66oSEyx3jvKHKlgBwVASMCbGhsB5I1agcZAyzsGlKHskGAOoR7dNmpPOs2VLBXHyoQMgukAzNipoGNwIRfQjGpkkx+dVP44hsD-G5hV+lCjGfsfpaSzmXXIccx08DZ7H0XgCFeEIagIA0P-QgrhnjJjqtGJYGxD70KhafMCEFdiXxgiQG+YKnSzwxRkd4+w4BZLOHVV4dgYCYoBIvChZ4SplGAogM4vTxn0KYoAj6C8eVsLrHzHOxVu5crpVKMa4AwAmMLlkYuRsUFmwtjwsENs7a0p5W7TpOkKganXJubcu5lqCC2itVaBT-kFQYoKixVoRVYHpO9V6P1BgkGNaajUW4dxqkOZlaBCBmxnV6qmRBppSK8F4EzfJpIjn8SpHqt1+cj5MoXni8+hLHwkEGNKFaKEsqOg1PeF05BwEsqaGWYBOdM2ARPmfAlUFkyaIHMOMcypU5TjnEuFca4Nz+vNUG72dZlV6wNldH2FdTZV01bSQEn8Yzz1ZXi5qt4B6NuzS2i+j4jhWjbR3ctD4eC2zQXzVMzsEgj2uiEsxscnUDLBNyt1HqfxepICta1q1BDu2yonSgRVnYylItTDFloio2FVspGmc8s3rtAuQL2lYvT-1cKcMEctbbXWypgEgSRCH7CUYmM8wKARKVOC0LeYAvYPGuXvam9yhq6ReLvd5uBPl4cdD1eIYRGj4RIIbe1scA4JFAu8VoVAZqGwnjyMA+ViITtFEXadZc52oOrneeN6t1aXrLCIkgA9O2jhTpOGcC5lyrj9QG3cBwRZ3rHgUiV9IxPgJMTrFV07DanM8P-cTBqy6ifoeJuEVoxV1l4lFpNXZzAWDUMwDQWgdA8H4EIMQkgZDyEUMIYoNgHzlBcAgrwyk-ABC0KQUI4QojhEIFoNI-hsHVdyOsCURQrAFbKJUaotQAQNCaJnZS7RMNUEmOYeYkRgDxioCOEYYwsiRGUHkXEBRUgHAS4l5LQRUt6Ay4YbLJhhDMAsEAA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBOACwAmAGyTBARkEBmAOwAOAFwsWbYBzhcafASInS5i1QFgAUAGF0VCAFMH2ACJQAzjHQeo0e2ok2ngExCRUcMCODABEUDSOAB4AdABWHjGkqFBgzpHRcQkp6THWdg7OENgAKnQwjoFwMDBgfARQ9sipcABucB68CLAQANTA6LjgjtbWUMDeSCQA3iSuIAhwZLkA8mSpjrwQJAC+QQjowCQxvGCUuKhgiA0A7pgA1o4IGURWcwtHACoSP0SDAQM1HE5PmcLlcAAI3O4PJ7IMEQqEITJWKxJf4kXCOVBwcBHJZWACQ-ToVF4QUhvAAFgAKBCOACOIEcHggABoSM4egBKZYU8m8ezckjoPYkBj8qg9ZIAIQAStsAOoAZQAoirkgBzSFKugAOXyTJiZHOzw8nxigp+ouQyBImucuGBJFZHK5Rwg6BIEAZjlW602uRIu32hz5QecwOecD8JD8Hi9XO8VFtovFWaOrK8soTSaO0tSyVQ9OZ3s53Id2PJ5NZEHWVHTXh+5OOPKsx0duclAGltdqAAoAfVVGp1KvHAEEADIASQAatrx0uTeOdTZtibXJqizJHbjMEcbv000rrbaEPzEk4aGm1hsto4owdSRSregbZ9Ox8MAQHOrQ9I4S5UG6ua4GmcqCJ23KYHAhqOmKEoQAgICHJgTLcgQjh8gKwpko2Hjgp8uGEE4hEKvWjZBp4ySIRshpFnhThMf6LGOJ2xwNlSNJ0hAjIsuytYQMRToupqgyOPGBboGAID+FmgYBk4kqUBAOboSQzxQLgQZFgA2rIwjiIIfKyAo0hWQArDZfI2ZZJCiLIogALqdmheYkMGUD6gyRxyqZggqC5SiSCofIqJIoh8nFLkqMIkheQ25LOiQACqtqBsGJC8OsrIOPi+HAjQgZzCG-oFayZVwEEikEne3KYYc6whmwJAquIOm+VQv6uGVcpUI4zyrPhTJ0T5krioSqBFvIgiCCQQIyKtJB2d5A75pQCS4ENThFqN42HY4TKiuSACyBAMsk5zcEyA3PGdBqQtUVVTSQLpzagqDCkCv2oD2jaCsk-qahh8T6lN226RgYDNUWD37a9XitBAFokAA4ld1T2sZghpVJJBLgtcasimaYNT+f4tVyvj2FK9RUHyrJcLlfiilAC1MgAhAxHjJLTt4kAAPmLJACwyjEi58ySeOUo2HI4uBTZJjYzYpjjJLcMMAAbXr+ouuNsgSQ4g0BUPq4RjSmeZwDSjj69N5IYXQIqa27MtC3Ld5ynAibJmi9QYrrxI0sygvJAKyRXQAmlOWq6q7py8AQjIkEyjga5rA7a7r6Aw5djaGze0Km4EdjgB6A1HHhix+-beFO8kJDagg5wIIEAAkSyOMc+sg5rqeinxJMqlykIkIBwGgSGcCoE4d6OHAmfp2AYBqXlIam6K0ezyBUBgRBUH2DBRbwelmU2MGvBvCmC1N0kngQGmZCEpgIboCz0Ogshjhua82lrLcuCBBSXWbK2W241J5eAlOdGIRs6YkEeNQTORIciqxiHyFY7EQAeECHZZaJx6x9UlPAViAcg5+h9sLMByQTqjgAbDa+LpqhwA+CQAYrJnAeAZOgN+UoFqr0zjwuSbZfAAC9AGNi6kyXIRwoCX1IMogAPHpAyQZdbOH1EGVRIwRi50pDQ-+homKQhXFAMa-wmQrH0oZBkgQHFBmMlADyfJ-KBQgIELxQU3EeVId5ExJYzE631II9AFogoQBgIQ50rwEAfC+MkREIB7iPFZKki4yB7TBJ2kELBZoohFn1uIvhAiIDjj7i4hkATjiJD7n4iA9T9b5N0gMIsgdQmUJ1uUrMlTWGXW6cmaOsclRZRsMOaoyQwSY31n3BGzVjjIEWUU-Ixw0gwH1EPbhvBprj0bDfW4uVCBkD0sGNsFMQyeHCAGcYlNEkPxqh-fE9hv5XPyr00UIyji9NSSc86ZCjkujgdPQ+89gRL2hPUBA2g-6EA8G8NMNU4yrG2PvOhELj7gUggcc+sESBXxJm6WhnUoBfCOHATJlwaofEcDAdFwJ57kPPEVSoIFECXGoaE6OzEAFvTnly1hjYeZZ0Kp3DlNLZQjXAGAYx+dciFwNsgk2ZtuGQitjbalXKXbtN8tUbUW4dx7gPItFaQIlpX01r8vKjF+XmNtEKrATJXrPS+iMEghrjXal3PuTUBz0pQIQG2E63UMwIItGRXgvAGZ5IpIcgStIdUutzgfBlc8cWn3xU+EgIw5TyFQhlF02oHzunIGAplrRKxAKzumoCR8T54ugmmDRw4xyTjVMnWci5Vzrk3NuX1pqA2e0bIqnWesLpezLsbCu6qGQgg-vGWezKcWNTvH3etmam1nyfKcW0La26lsfDwa2qCeYZkdskIel1Xa2r5VxAVTrOUurdb+D1JB5AbSta7TK8dKAFUdvKMilM0U2gKvYZWKkqYzwzausC5APY1l9H-DwFxIQy2tpdTKmASCpAIUcRRKZzyAuBMpC47QN5gA9s8S5O9Ka3IGnpd429Xm4Hedhl0XUkiRBaAREg+t710L9skMCXwOhUCmvrMe-IwC5RImOiUBdJ0lxnSgyu95Y2q1VueyswiSB93bROJOM55zLjXBuH1fqDzHCFjekewSxVMmjn7YxWslWTv1jYE5f8RN6pLkJ0Bs6EAAp8EC4JfFGyRb4nxawmhmDaF0PoHg-AhBiCkDIeQygVBlHsI+Ko7h4G+BUoEYIuhSARCiLEKIhBdCZEKbkSrBQtjSlKLYPLlQah1AaMCZorR04qS6GhqgMwrBLBiMAJMVBxzjEmLkGIahCgEmKBkY4cX4uJdCMlwwaWTCZfMCoZg1ggA)
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -404,7 +412,7 @@ export class Browser extends DurableObject<Env> {
 }
 ```
 
-## 6\. Test
+## 6. Test
 
 Run `npx wrangler dev` to test your Worker locally.
 
@@ -412,15 +420,15 @@ Use real headless browser during local development
 
 To interact with a real headless browser during local development, set `"remote" : true` in the Browser binding configuration. Learn more in our [remote bindings documentation](https://developers.cloudflare.com/workers/local-development/#remote-bindings).
 
-## 7\. Deploy
+## 7. Deploy
 
-Run [npx wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy) to deploy your Worker to the Cloudflare global network.
+Run [`npx wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy) to deploy your Worker to the Cloudflare global network.
 
 ## Related resources
 
-* Other [Puppeteer examples ↗](https://github.com/cloudflare/puppeteer/tree/main/examples)
-* Get started with [Durable Objects](https://developers.cloudflare.com/durable-objects/get-started/)
-* [Using R2 from Workers](https://developers.cloudflare.com/r2/api/workers/workers-api-usage/)
+- Other [Puppeteer examples ↗](https://github.com/cloudflare/puppeteer/tree/main/examples)
+- Get started with [Durable Objects](https://developers.cloudflare.com/durable-objects/get-started/)
+- [Using R2 from Workers](https://developers.cloudflare.com/r2/api/workers/workers-api-usage/)
 
 Was this helpful?
 

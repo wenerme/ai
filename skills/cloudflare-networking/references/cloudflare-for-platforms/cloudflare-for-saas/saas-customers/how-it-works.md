@@ -12,18 +12,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # How it works
 
-Last updated Jun 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/how-it-works/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/how-it-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 O2O is a specific traffic routing configuration where traffic routes through two Cloudflare zones: the first Cloudflare zone is owned by customer 1 and the second Cloudflare zone is owned by customer 2, who is considered a SaaS provider.
 
-If one or more hostnames are onboarded to a SaaS Provider that uses Cloudflare products as part of their platform - specifically the [Cloudflare for SaaS product](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/) \- those hostnames will be created as [custom hostnames](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/) in the SaaS Provider's zone.
+If one or more hostnames are onboarded to a SaaS Provider that uses Cloudflare products as part of their platform - specifically the [Cloudflare for SaaS product](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/) - those hostnames will be created as [custom hostnames](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/) in the SaaS Provider's zone.
 
 To give the SaaS provider permission to route traffic through their zone, any custom hostname must be activated by you (the SaaS customer) by placing a [CNAME record](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/#3-have-customer-create-cname-record) on your authoritative DNS. If your authoritative DNS is Cloudflare, you have the option to [proxy](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/#application-services) your CNAME record, achieving an O2O setup.
 
 ## Prerequisites
 
-* O2O only applies when the two zones are part of different Cloudflare accounts.
-* Since O2O is based on CNAME, it does not apply when an A record is used to point to the SaaS provider's ([apex proxying](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/)).
+- O2O only applies when the two zones are part of different Cloudflare accounts.
+- Since O2O is based on CNAME, it does not apply when an A record is used to point to the SaaS provider's ([apex proxying](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/)).
 
 ## With O2O
 
@@ -31,12 +31,13 @@ If you have your own Cloudflare zone (`example.com`) and your zone contains a [p
 
 DNS management for **example.com**
 
-| **Type** | **Name** | **Target**                 | **Proxy status** |
-| -------- | -------- | -------------------------- | ---------------- |
-| CNAME    | mystore  | customers.saasprovider.com | Proxied          |
+| **Type** | **Name** | **Target** | **Proxy status** |
+| --- | --- | --- | --- |
+| `CNAME` | `mystore` | `customers.saasprovider.com` | Proxied |
 
 With O2O enabled, the settings configured in your Cloudflare zone will be applied to the traffic first, and then the settings configured in the SaaS provider's zone will be applied to the traffic second. In the SaaS provider-owned zone, a HTTP header will be set to `cf-connecting-o2o: 1`.
 
+```
 flowchart TD
 accTitle: O2O-enabled traffic flow diagram
 
@@ -53,6 +54,8 @@ A --> B
 B --> C
 C --> D
 
+```
+
 ## Detect O2O traffic
 
 When traffic flows through an O2O configuration, Cloudflare sets the HTTP header `cf-connecting-o2o: 1` on requests entering the SaaS provider's zone. There is no API field or zone setting that indicates whether O2O is active — it is a per-request routing behavior determined by the customer's DNS configuration.
@@ -65,6 +68,7 @@ If you do not have your own Cloudflare zone and have only onboarded one or more 
 
 Without O2O enabled, the settings configured in the SaaS Provider's zone will be applied to the traffic.
 
+```
 flowchart TD
 accTitle: Your zone using a SaaS provider, but without O2O
 
@@ -78,6 +82,8 @@ C[SaaS Provider Origin]
 
 A --> B
 B --> C
+
+```
 
 Was this helpful?
 

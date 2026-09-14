@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Protect ISP and telecommunications networks from DDoS attacks
 
-Last updated Feb 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/network/protecting-sp-networks-from-ddos/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Feb 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/network/protecting-sp-networks-from-ddos/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -28,7 +28,7 @@ There are two main steps to deploying this solution. Firstly, setting up Cloudfl
 
 ![Figure 1: Overall solution of user access controls to, and the discovery of, sensitive data.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1546,height=714,format=svg/_astro/protecting-sp-networks-from-ddos-fig1.BXZ5xvR3.svg)
 
-_Note: Labels in this image may reflect a previous product name._
+*Note: Labels in this image may reflect a previous product name.*
 
 The first step is to gain visibility into the attacks taking place against the service provider network. The above diagram shows:
 
@@ -36,9 +36,10 @@ The first step is to gain visibility into the attacks taking place against the s
 2. Service provider network devices send all traffic flow data (Netflow, IPFIX or sFlow) to the [Network Flow](https://developers.cloudflare.com/network-flow/) (formerly Magic Network Monitoring) service. Cloudflare analyses this flow data to detect DDoS attacks.
 3. Cloudflare recommends, when possible, to connect to the Cloudflare network by setting up redundant [Cloudflare Network Interconnect](https://developers.cloudflare.com/network-interconnect/) (CNI) at our [Interconnection facilities ↗](https://www.peeringdb.com/net/4224), this allows adherence to the 1500 Bytes maximum transmission unit (MTU) for routed user traffic. Alternatively you can connect to the Cloudflare network using [Generic Routing Encapsulation (GRE) tunnels](https://developers.cloudflare.com/magic-transit/reference/gre-ipsec-tunnels/) over the Internet.
 4. In peacetime, traffic flows as usual between the ISP network and their upstream transit and peer networks, bypassing the Cloudflare network.
+
 ![Figure 1: Overall solution of user access controls to, and the discovery of, sensitive data.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1582,height=714,format=svg/_astro/protecting-sp-networks-from-ddos-fig2.mhCca2XR.svg)
 
-_Note: Labels in this image may reflect a previous product name._
+*Note: Labels in this image may reflect a previous product name.*
 
 The above diagram shows how Cloudflare monitors service provider traffic and, upon detecting a possible volumetric DDoS attack, automatically advertises the most specific protected prefix from the Cloudflare global network to the Internet. This ensures that all traffic to this protected prefix is rerouted through the Cloudflare network, where malicious traffic is mitigated.
 
@@ -50,9 +51,9 @@ The above diagram shows how Cloudflare monitors service provider traffic and, up
 
 ## Related resources
 
-* [Magic Transit Reference Architecture](https://developers.cloudflare.com/reference-architecture/architectures/magic-transit/)
-* [Cloudflare Network Interconnect](https://developers.cloudflare.com/reference-architecture/architectures/magic-transit/)
-* [Flow-based monitoring for Magic Transit ↗](https://blog.cloudflare.com/flow-based-monitoring-for-magic-transit)
+- [Magic Transit Reference Architecture](https://developers.cloudflare.com/reference-architecture/architectures/magic-transit/)
+- [Cloudflare Network Interconnect](https://developers.cloudflare.com/reference-architecture/architectures/magic-transit/)
+- [Flow-based monitoring for Magic Transit ↗](https://blog.cloudflare.com/flow-based-monitoring-for-magic-transit)
 
 Was this helpful?
 

@@ -12,13 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # REST API
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/features/batch-api/rest-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/batch-api/rest-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you prefer to work directly with the REST API instead of a [Cloudflare Worker](https://developers.cloudflare.com/workers-ai/features/batch-api/workers-binding/), below are the steps on how to do it:
 
-## 1\. Sending a Batch Request
+## 1. Sending a Batch Request
 
 Make a POST request using the following pattern. You can pass `external_reference` as a unique ID per-request that will be returned in the response.
+
+*Sending a batch requestbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai/run/@cf/baai/bge-m3?queueRequest=true" \
@@ -58,9 +60,11 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai/run/@cf/baai/
 }
 ```
 
-## 2\. Retrieving the Batch Response
+## 2. Retrieving the Batch Response
 
 After receiving a `request_id` from your initial POST, you can poll for or retrieve the results with another POST request:
+
+*Retrieving a responsebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai/run/@cf/baai/bge-m3?queueRequest=true" \

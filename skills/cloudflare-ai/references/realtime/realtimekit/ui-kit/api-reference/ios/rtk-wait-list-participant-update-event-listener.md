@@ -12,32 +12,32 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RtkWaitListParticipantUpdateEventListener
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/ios/rtk-wait-list-participant-update-event-listener/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/ios/rtk-wait-list-participant-update-event-listener/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A helper class for listening to waitlist participant events. Provides callbacks for join, remove, accept, and reject events, and methods for managing waitlist requests.
 
 ## Initializer parameters
 
-| Parameter | Type              | Required | Default | Description                     |
-| --------- | ----------------- | -------- | ------- | ------------------------------- |
-| rtkClient | RealtimeKitClient | ✅        | \-      | The RealtimeKit client instance |
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `rtkClient` | `RealtimeKitClient` | ✅ | - | The RealtimeKit client instance |
 
 ## Callback properties
 
-| Property                             | Type          | Required | Default | Description                                            |
-| ------------------------------------ | ------------- | -------- | ------- | ------------------------------------------------------ |
-| participantJoinedCompletion          | (() -> Void)? | ❌        | nil     | Called when a participant joins the waitlist           |
-| participantRemovedCompletion         | (() -> Void)? | ❌        | nil     | Called when a participant is removed from the waitlist |
-| participantRequestAcceptedCompletion | (() -> Void)? | ❌        | nil     | Called when a waitlist request is accepted             |
-| participantRequestRejectCompletion   | (() -> Void)? | ❌        | nil     | Called when a waitlist request is rejected             |
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `participantJoinedCompletion` | `(() -> Void)?` | ❌ | `nil` | Called when a participant joins the waitlist |
+| `participantRemovedCompletion` | `(() -> Void)?` | ❌ | `nil` | Called when a participant is removed from the waitlist |
+| `participantRequestAcceptedCompletion` | `(() -> Void)?` | ❌ | `nil` | Called when a waitlist request is accepted |
+| `participantRequestRejectCompletion` | `(() -> Void)?` | ❌ | `nil` | Called when a waitlist request is rejected |
 
 ## Methods
 
-| Method                             | Return Type | Description                                              |
-| ---------------------------------- | ----------- | -------------------------------------------------------- |
-| acceptWaitingRequest(participant:) | Void        | Accepts a participant's waitlist request                 |
-| rejectWaitingRequest(participant:) | Void        | Rejects a participant's waitlist request                 |
-| clean()                            | Void        | Removes all registered listeners and cleans up resources |
+| Method | Return Type | Description |
+| --- | --- | --- |
+| `acceptWaitingRequest(participant:)` | `Void` | Accepts a participant's waitlist request |
+| `rejectWaitingRequest(participant:)` | `Void` | Rejects a participant's waitlist request |
+| `clean()` | `Void` | Removes all registered listeners and cleans up resources |
 
 ## Usage Examples
 

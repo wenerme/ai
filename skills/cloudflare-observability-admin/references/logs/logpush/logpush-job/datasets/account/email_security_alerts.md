@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Email Security Alerts
 
-Last updated Jun 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/email%5Fsecurity%5Falerts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/email_security_alerts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The descriptions below detail the fields available for `email_security_alerts`.
 
@@ -32,19 +32,19 @@ Human-readable list of findings which contributed to this message's final dispos
 
 Type: `array[object]`
 
-List of objects containing metadata of attachments contained in this message (for example, \[{"Md5": "91f073bd208689ddbd248e8989ecae90", "Sha1": "62b77e14e2c43049c45b5725018e78d0f9986930", "Sha256": "3b57505305e7162141fd898ed87d08f92fc42579b5047495859e56b3275a6c06", "Ssdeep": "McAQ8tPlH25e85Q2OiYpD08NvHmjJ97UfPMO47sekO:uN9M553OiiN/OJ9MM+e3", "Name": "attachment.gif", "ContentTypeProvided": "image/gif", "ContentTypeComputed": "application/x-msi", "Encrypted": true, "Decrypted": true}, ...\]).
+List of objects containing metadata of attachments contained in this message (for example, \[{"Md5": "91f073bd208689ddbd248e8989ecae90", "Sha1": "62b77e14e2c43049c45b5725018e78d0f9986930", "Sha256": "3b57505305e7162141fd898ed87d08f92fc42579b5047495859e56b3275a6c06", "Ssdeep": "McAQ8tPlH25e85Q2OiYpD08NvHmjJ97UfPMO47sekO:uN9M553OiiN/OJ9MM+e3", "Name": "attachment.gif", "ContentTypeProvided": "image/gif", "ContentTypeComputed": "application/x-msi", "Encrypted": true, "Decrypted": true}, ...]).
 
 ## BCC
 
 Type: `array[string]`
 
-Email address portions of the BCC header provided by the sender, if present (for example, '[firstlast@cloudflare.com](mailto:firstlast@cloudflare.com)').
+Email address portions of the BCC header provided by the sender, if present (for example, ' [firstlast@cloudflare.com](mailto:firstlast@cloudflare.com)').
 
 ## CC
 
 Type: `array[string]`
 
-Email address portions of the CC header provided by the sender (for example, '[firstlast@cloudflare.com](mailto:firstlast@cloudflare.com)').
+Email address portions of the CC header provided by the sender (for example, ' [firstlast@cloudflare.com](mailto:firstlast@cloudflare.com)').
 
 ## CCName
 
@@ -57,34 +57,34 @@ Email address portions of the CC header provided by the sender (for example, 'Fi
 Type: `string`
 
 Summary of the DKIM authentication result for the message.
-Possible values are _pass_ | _neutral_ | _fail_ | _error_ | _permerror_ | _temperror_ | _none_.
+Possible values are *pass* | *neutral* | *fail* | *error* | *permerror* | *temperror* | *none*.
 
 ## DMARCPolicy
 
 Type: `string`
 
 Effective DMARC policy for the sending domain.
-Possible values are _none_ | _quarantine_ | _reject_ | _undefined_.
+Possible values are *none* | *quarantine* | *reject* | *undefined*.
 
 ## DMARCResult
 
 Type: `string`
 
 Overall DMARC authentication result for the message.
-Possible values are _pass_ | _fail_ | _none_.
+Possible values are *pass* | *fail* | *none*.
 
 ## FinalDisposition
 
 Type: `string`
 
 Final disposition attributed to the message.
-Possible values are _unset_ | _malicious_ | _suspicious_ | _spoof_ | _spam_ | _bulk_.
+Possible values are *unset* | *malicious* | *suspicious* | *spoof* | *spam* | *bulk*.
 
 ## From
 
 Type: `string`
 
-Email address portion of the From header provided by the sender (for example, '[firstlast@cloudflare.com](mailto:firstlast@cloudflare.com)').
+Email address portion of the From header provided by the sender (for example, ' [firstlast@cloudflare.com](mailto:firstlast@cloudflare.com)').
 
 ## FromName
 
@@ -103,7 +103,7 @@ List of links detected in this message, benign or otherwise; limited to 100 in t
 Type: `string`
 
 The message's mode of transport to Email Security.
-Possible values are _unset_ | _api_ | _direct_ | _bcc_ | _journal_ | _retroScan_.
+Possible values are *unset* | *api* | *direct* | *bcc* | *journal* | *retroScan*.
 
 ## MessageID
 
@@ -116,19 +116,19 @@ Value of the Message-ID header provided by the sender.
 Type: `string`
 
 The origin of the message.
-Possible values are _unset_ | _internal_ | _external_ | _secondPartyInternal_ | _thirdPartyInternal_ | _outbound_.
+Possible values are *unset* | *internal* | *external* | *secondPartyInternal* | *thirdPartyInternal* | *outbound*.
 
 ## OriginalSender
 
 Type: `string`
 
-The original sender address as determined by Email Security mail processing (for example, '[firstlast@cloudflare.com](mailto:firstlast@cloudflare.com)').
+The original sender address as determined by Email Security mail processing (for example, ' [firstlast@cloudflare.com](mailto:firstlast@cloudflare.com)').
 
 ## ReplyTo
 
 Type: `string`
 
-Email address portion of the Reply-To header provided by the sender (for example, '[firstlast@cloudflare.com](mailto:firstlast@cloudflare.com)').
+Email address portion of the Reply-To header provided by the sender (for example, ' [firstlast@cloudflare.com](mailto:firstlast@cloudflare.com)').
 
 ## ReplyToName
 
@@ -183,7 +183,7 @@ Hostname provided by the SMTP HELO server.
 Type: `string`
 
 Summary of the SPF authentication result for the message.
-Possible values are _pass_ | _neutral_ | _fail_ | _softfail_ | _permerror_ | _temperror_ | _none_.
+Possible values are *pass* | *neutral* | *fail* | *softfail* | *permerror* | *temperror* | *none*.
 
 ## Subject
 
@@ -207,7 +207,7 @@ Start time of message processing (for example, '2024-08-28T15:32:35Z'). To speci
 
 Type: `array[string]`
 
-Email address portions of the To header provided by the sender (for example, '[firstlast@cloudflare.com](mailto:firstlast@cloudflare.com)').
+Email address portions of the To header provided by the sender (for example, ' [firstlast@cloudflare.com](mailto:firstlast@cloudflare.com)').
 
 ## ToName
 
@@ -224,5 +224,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/email_security_alerts/#page","headline":"Email Security Alerts · Cloudflare Logs docs","description":"The descriptions below detail the fields available for email_security_alerts.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/email_security_alerts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/email_security_alerts/#page","headline":"Email Security Alerts · Cloudflare Logs docs","description":"The descriptions below detail the fields available for email_security_alerts.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/email_security_alerts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

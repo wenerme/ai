@@ -12,24 +12,24 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Streams
 
-Last updated Jun 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/streams/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/streams/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The [Streams API ↗](https://developer.mozilla.org/en-US/docs/Web/API/Streams%5FAPI) is a web standard API that allows JavaScript to programmatically access and process streams of data.
+The [Streams API ↗](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) is a web standard API that allows JavaScript to programmatically access and process streams of data.
 
-* [ReadableStream](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/)
-* [ReadableStream BYOBReader](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestreambyobreader/)
-* [ReadableStream DefaultReader](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestreamdefaultreader/)
-* [TransformStream](https://developers.cloudflare.com/workers/runtime-apis/streams/transformstream/)
-* [WritableStream](https://developers.cloudflare.com/workers/runtime-apis/streams/writablestream/)
-* [WritableStream DefaultWriter](https://developers.cloudflare.com/workers/runtime-apis/streams/writablestreamdefaultwriter/)
+- [ReadableStream](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/)
+- [ReadableStream BYOBReader](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestreambyobreader/)
+- [ReadableStream DefaultReader](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestreamdefaultreader/)
+- [TransformStream](https://developers.cloudflare.com/workers/runtime-apis/streams/transformstream/)
+- [WritableStream](https://developers.cloudflare.com/workers/runtime-apis/streams/writablestream/)
+- [WritableStream DefaultWriter](https://developers.cloudflare.com/workers/runtime-apis/streams/writablestreamdefaultwriter/)
 
 Use the Streams API to avoid buffering large requests or responses in memory. This enables you to parse extremely large request or response bodies within a Worker's 128 MB memory limit. This is faster than buffering the entire payload into memory, as your Worker can start processing data incrementally, and allows your Worker to handle multi-gigabyte payloads or files within its memory limits.
 
-Workers do not need to prepare an entire response body before returning a `Response`. You can use a [ReadableStream](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/) to stream a response body after sending the response status line and headers.
+Workers do not need to prepare an entire response body before returning a `Response`. You can use a [`ReadableStream`](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/) to stream a response body after sending the response status line and headers.
 
 Note
 
-By default, Cloudflare Workers is capable of streaming responses using the [Streams APIs ↗](https://developer.mozilla.org/en-US/docs/Web/API/Streams%5FAPI). To maintain the streaming behavior, you should only modify the response body using the methods in the Streams APIs.
+By default, Cloudflare Workers is capable of streaming responses using the [Streams APIs ↗](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API). To maintain the streaming behavior, you should only modify the response body using the methods in the Streams APIs.
 
 If your Worker only forwards subrequest responses to the client verbatim without reading their body text, then its body handling is already optimal and you do not have to use these APIs.
 
@@ -77,7 +77,7 @@ class Default(WorkerEntrypoint):
         return Response(response.body, headers=response.headers)
 ```
 
-A [TransformStream](https://developers.cloudflare.com/workers/runtime-apis/streams/transformstream/) and the [ReadableStream.pipeTo()](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/#methods) method can be used to modify the response body as it is being streamed:
+A [`TransformStream`](https://developers.cloudflare.com/workers/runtime-apis/streams/transformstream/) and the [`ReadableStream.pipeTo()`](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/#methods) method can be used to modify the response body as it is being streamed:
 
 ```js
 export default {
@@ -165,10 +165,10 @@ The Streams API is only available inside of the [Request context](https://develo
 
 ## Related resources
 
-* [Stream large JSON](https://developers.cloudflare.com/workers/examples/streaming-json/) \- Parse and transform large JSON request and response bodies
-* [MDN's Streams API documentation ↗](https://developer.mozilla.org/en-US/docs/Web/API/Streams%5FAPI)
-* [Streams API spec ↗](https://streams.spec.whatwg.org/)
-* Write your Worker code in [ES modules syntax](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) for an optimized experience.
+- [Stream large JSON](https://developers.cloudflare.com/workers/examples/streaming-json/) - Parse and transform large JSON request and response bodies
+- [MDN's Streams API documentation ↗](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)
+- [Streams API spec ↗](https://streams.spec.whatwg.org/)
+- Write your Worker code in [ES modules syntax](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) for an optimized experience.
 
 Was this helpful?
 

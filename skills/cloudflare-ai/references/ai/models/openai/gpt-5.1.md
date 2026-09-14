@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • OpenAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-5.1/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-5.1/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `openai/gpt-5.1`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 GPT-5.1 is OpenAI’s incremental improvement over GPT-5, with stronger coding, reasoning, and writing.
 
-| Model Info                                                                          |                                                                                                                  |
-| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 128,000 tokens                                                                                                   |
-| Terms and License                                                                   | [link ↗](https://openai.com/policies/)                                                                           |
-| More information                                                                    | [link ↗](https://openai.com/)                                                                                    |
-| Zero data retention                                                                 | Yes                                                                                                              |
-| Request formats                                                                     | Responses, Chat Completions                                                                                      |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.1) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 128,000 tokens |
+| Terms and License | [link ↗](https://openai.com/policies/) |
+| More information | [link ↗](https://openai.com/) |
+| Zero data retention | Yes |
+| Request formats | Responses, Chat Completions |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.1) |
 
 ## Usage
 
@@ -59,6 +59,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The three classical laws of thermodynamics (often listed as 0th–3rd, but you asked for three) are:
 
 **First Law (Conservation of Energy)**
@@ -78,6 +79,7 @@ This implies:
 **Third Law (Absolute Zero and Entropy)**
 As the temperature of a perfect crystalline substance approaches absolute zero (0 K), its entropy approaches a minimum value (often taken as zero).
 Consequence: It is impossible, by any finite number of steps, to cool a system all the way to absolute zero.
+```
 
 ```json
 {
@@ -122,7 +124,11 @@ Consequence: It is impossible, by any finite number of steps, to cool a system a
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -156,6 +162,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 To read a JSON file in Python, use the built-in `json` module.
 
 ### Basic example
@@ -186,6 +193,7 @@ data = json.loads(json_str)  # note the "s" at the end
 ```
 
 If you show me a sample of your JSON file, I can suggest the exact code to access its fields.
+````
 
 ```json
 {
@@ -228,7 +236,13 @@ If you show me a sample of your JSON file, I can suggest the exact code to acces
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -276,6 +290,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Here are two main route options with good stops between San Francisco and Los Angeles. You can mix and match depending on your time.
 
 ---
@@ -371,6 +386,7 @@ If you tell me:
 - whether you care more about food, hikes, beaches, or towns,
 
 I can turn this into a specific, timed itinerary with suggested departure times and where to stay.
+```
 
 ```json
 {
@@ -413,7 +429,13 @@ I can turn this into a specific, timed itinerary with suggested departure times 
 }
 ```
 
-**Creative Writing** — Longer completion for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Longer completion for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -447,6 +469,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The rain had turned Ashford Lane into a smear of reflections—red tail-lights, yellow windows, blue police strobes bleeding into the black river of asphalt. Detective Mara Leland hunched her shoulders against the weather and ducked under the sagging strip of crime-scene tape, the plastic snapping against her coat like impatient fingers.
 
 The alley smelled of wet cardboard and old grease. Uniforms stood around in the practiced way of people trying not to look curious: hands tucked, mouths tight, eyes everywhere. The body lay where it had dropped beside the overflowing dumpster, face turned toward the brick wall as if listening to it.
@@ -478,6 +501,7 @@ Mara shook her head slowly. “No.”
 The card was ten years expired.
 
 And it had her own name on it.
+```
 
 ```json
 {
@@ -520,7 +544,13 @@ And it had her own name on it.
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -553,6 +583,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 Recursion is when a function solves a problem by calling **itself**, each time working on a **smaller or simpler** version of the original problem, until it reaches a **base case** where it stops.
 
 Two key ideas:
@@ -598,6 +629,7 @@ Now substitute back:
 - `factorial(3) = 3 * 2 = 6`
 
 That chain of a function calling itself with smaller inputs is recursion.
+````
 
 ```json
 [
@@ -7963,7 +7995,13 @@ That chain of a function calling itself with smaller inputs is recursion.
 ]
 ```
 
-**Web Search** — Letting the model use OpenAI's built-in web search tool to answer with current information
+</details>
+
+<details>
+
+<summary>**Web Search** — Letting the model use OpenAI's built-in web search tool to answer with current information</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -7993,6 +8031,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Here are the three main Cloudflare storylines that dominated coverage over roughly the past week (June 16–22, 2026):
 
 - **Ongoing reaction to the VoidZero acquisition (June 4):** Analysts and developers are still digesting Cloudflare’s purchase of AI security startup VoidZero, with coverage focusing on how the deal strengthens Cloudflare’s AI-native security and edge platform strategy and its competition with hyperscalers in AI infrastructure. ([cloudflare.com](https://www.cloudflare.com/press/?utm_source=openai))
@@ -8000,6 +8039,7 @@ Here are the three main Cloudflare storylines that dominated coverage over rough
 - **Cloudflare’s role in recent/ongoing Internet reliability discussions:** In light of major Cloudflare outages over the last year, technical blogs and communities continue to scrutinize Cloudflare’s status communications and resilience; a fresh Reddit discussion this week debated timestamp handling and transparency on Cloudflare’s status page during a recent network-impacting incident linked to a major US fiber cut. ([reddit.com](https://www.reddit.com/r/sysadmin/comments/1ucmhpy/cloudflares_outage_and_the_ethics_of_fudging/?utm_source=openai))
 
 - **Continued build‑out of Cloudflare’s AI/agent platform stack:** Coverage from developer press highlights Cloudflare’s recent completion of a six‑layer “agent infrastructure” stack—especially the rebuilt Browser Run service on its Containers platform—framing Cloudflare as a key infrastructure provider for AI agents and automation workloads. ([infoq.com](https://www.infoq.com/news/2026/05/cloudflare-agent-platform-stack/?utm_source=openai))
+```
 
 ```json
 {
@@ -8129,6 +8169,8 @@ Here are the three main Cloudflare storylines that dominated coverage over rough
 }
 ```
 
+</details>
+
 ## Parameters
 
 Schema variant
@@ -8159,13 +8201,11 @@ stream
 
 `boolean`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
-
-``
 
 ▶text{}
 
@@ -8175,7 +8215,7 @@ tool\_choice
 
 `object`
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -8197,11 +8237,11 @@ top\_p
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 stream
 
@@ -8211,19 +8251,15 @@ stream
 
 `object`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
 
-``
-
 response\_format
 
-``
-
-▶modalities\[\]
+▶modalities\[]
 
 `array`
 
@@ -8247,7 +8283,7 @@ model
 
 `string`
 
-▶output\[\]
+▶output\[]
 
 `array`
 
@@ -8279,7 +8315,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -8289,9 +8325,9 @@ model
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/openai/gpt-5.1/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-5.1/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/openai/gpt-5.1/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-5.1/schema-output.json)
 
 Was this helpful?
 

@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Dispositions and attributes
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Email security uses a variety of factors to determine whether a given email message, domain, URL, or packet is part of a phishing campaign. These small pattern assessments are dynamic in nature and — in many cases — no single pattern will determine the final verdict.
+Email security uses a variety of factors to determine whether a given email message, domain, URL, or packet is part of a phishing
+
+ campaign. These small pattern assessments are dynamic in nature and — in many cases — no single pattern will determine the final verdict.
 
 Detection vs. disposition
 
@@ -30,16 +32,16 @@ You can use disposition values when [setting up auto-moves](https://developers.c
 
 The following disposition values follow an order of maliciousness:
 
-* **Malicious**: Traffic associated with active threat campaigns. Malicious messages invoked multiple phishing verdict triggers and met thresholds for bad behavior.
-  * **Recommendation**: Block.
-* **Spam**: Traffic associated with non-malicious, commercial campaigns.
-  * **Recommendation**: Route to existing Spam quarantine folder.
-* **Bulk**: Traffic often associated with newsletters or marketing campaigns. Refer to [Graymail ↗](https://en.wikipedia.org/wiki/Graymail%5F%28email%29) for more details.
-  * **Recommendation**: Monitor or tag.
-* **Suspicious**: Traffic associated with phishing campaigns (and is under further analysis by our automated systems).
-  * **Recommendation**: Research these messages internally to evaluate legitimacy.
-* **Spoof**: Traffic associated with phishing campaigns that is either non-compliant with your email authentication policies ([SPF ↗](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-spf-record/), [DKIM ↗](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dkim-record/), [DMARC ↗](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dmarc-record/)) or has mismatching `Envelope From` and `Header From` values.
-  * **Recommendation**: Block after investigating (can be triggered by third-party mail services).
+- **Malicious**: Traffic associated with active threat campaigns. Malicious messages invoked multiple phishing verdict triggers and met thresholds for bad behavior.
+  - **Recommendation**: Block.
+- **Spam**: Traffic associated with non-malicious, commercial campaigns.
+  - **Recommendation**: Route to existing Spam quarantine folder.
+- **Bulk**: Traffic often associated with newsletters or marketing campaigns. Refer to [Graymail ↗](https://en.wikipedia.org/wiki/Graymail_%28email%29) for more details.
+  - **Recommendation**: Monitor or tag.
+- **Suspicious**: Traffic associated with phishing campaigns (and is under further analysis by our automated systems).
+  - **Recommendation**: Research these messages internally to evaluate legitimacy.
+- **Spoof**: Traffic associated with phishing campaigns that is either non-compliant with your email authentication policies ([SPF ↗](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-spf-record/), [DKIM ↗](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dkim-record/), [DMARC ↗](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dmarc-record/)) or has mismatching `Envelope From` and `Header From` values.
+  - **Recommendation**: Block after investigating (can be triggered by third-party mail services).
 
 ### Header structure
 
@@ -61,14 +63,14 @@ Traffic that flows through Email security can also receive one or more Attribute
 
 ### Available values
 
-| Attribute                                | Notes                                                                                                                                                                                                                                                      |
-| ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| CUSTOM\_BLOCK\_LIST                      | This message matches a value you have defined in your custom block list.                                                                                                                                                                                   |
-| NEW\_DOMAIN\_SENDER=<REGISTRATION\_DATE> | Alerts to mail from a newly registered domain. Formatted as yyyy-MM-dd HH:mm:ss ZZZ.                                                                                                                                                                       |
-| NEW\_DOMAIN\_LINK=<REGISTRATION\_DATE>   | Alerts to mail with links pointing out to a newly registered domain. Formatted as yyyy-MM-dd HH:mm:ss ZZZ.                                                                                                                                                 |
-| ENCRYPTED                                | Email message is encrypted.                                                                                                                                                                                                                                |
-| EXECUTABLE                               | Email message contains an executable file.                                                                                                                                                                                                                 |
-| BEC                                      | Indicates that an email address was contained in your [impersonation registry](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/) list. Associated with MALICIOUS or SPOOF dispositions. |
+| Attribute | Notes |
+| --- | --- |
+| `CUSTOM_BLOCK_LIST` | This message matches a value you have defined in your custom block list. |
+| `NEW_DOMAIN_SENDER=<REGISTRATION_DATE>` | Alerts to mail from a newly registered domain. Formatted as yyyy-MM-dd HH:mm:ss ZZZ. |
+| `NEW_DOMAIN_LINK=<REGISTRATION_DATE>` | Alerts to mail with links pointing out to a newly registered domain. Formatted as yyyy-MM-dd HH:mm:ss ZZZ. |
+| `ENCRYPTED` | Email message is encrypted. |
+| `EXECUTABLE` | Email message contains an executable file. |
+| `BEC` | Indicates that an email address was contained in your [impersonation registry](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/) list. Associated with `MALICIOUS` or `SPOOF` dispositions. |
 
 ### Header structure
 

@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Automatic HTTPS Rewrites
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/automatic-https-rewrites/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/automatic-https-rewrites/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Automatic HTTPS Rewrites prevents end users from seeing "mixed content" errors by rewriting URLs from `http` to `https` for resources or links on your web site that can be served with HTTPS.
 
 ## Availability
 
-|              | Free | Pro | Business | Enterprise |
-| ------------ | ---- | --- | -------- | ---------- |
-| Availability | Yes  | Yes | Yes      | Yes        |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | Yes | Yes | Yes | Yes |
 
 ## Additional details
 
@@ -36,11 +36,10 @@ For security reasons, this feature will run on URLs pointing to `localhost` if t
 
 To enable **Automatic HTTPS Rewrites** in the dashboard:
 
-1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+1. In the Cloudflare dashboard, go to the **Edge Certificates** page. [Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. For **Automatic HTTPS Rewrites**, switch the toggle to **On**.
 
-To enable or disable **Automatic HTTPS Rewrites** with the API, send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `automatic_https_rewrites` as the setting name in the URI path, and the `value` parameter set to your desired setting (`"on"` or `"off"`).
+To enable or disable **Automatic HTTPS Rewrites** with the API, send a [`PATCH`](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `automatic_https_rewrites` as the setting name in the URI path, and the `value` parameter set to your desired setting (`"on"` or `"off"`).
 
 Note
 

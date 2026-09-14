@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Client tools
 
-Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/client-tools/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/client-tools/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Think supports tools that execute in the browser. The client sends serializable tool schemas in the chat request body, Think merges them with server tools, and when the LLM calls a client tool, the call is routed to the client for execution.
 
@@ -106,19 +106,19 @@ await child.chat(message, callback, {
 });
 ```
 
-* `clientTools` registers the tool schemas for the turn, exactly like the WebSocket `clientTools` field.
-* `onClientToolCall` executes a client-tool call and returns its output. The model can call a client tool, receive the result, and continue — all within the single `chat()` call.
+- `clientTools` registers the tool schemas for the turn, exactly like the WebSocket `clientTools` field.
+- `onClientToolCall` executes a client-tool call and returns its output. The model can call a client tool, receive the result, and continue — all within the single `chat()` call.
 
 If you omit `onClientToolCall`, the tools are registered but have no result: the model's call is surfaced through the stream callback and the turn ends with a dangling tool call (the RPC stream callback has no inbound result channel of its own). Supply `onClientToolCall` whenever you want the round trip to complete.
 
 ### Behavior notes
 
-* **Recovery:** the schemas and `onClientToolCall` executor are per-turn only and are never persisted (the executor is a live RPC reference that dies with the isolate, and unlike the WebSocket path there is no client to replay a `tool-result` after an eviction). If an eviction interrupts the turn while a client-tool call is mid-flight, chat recovery errors the orphaned call (treating it like a server tool) and the model proceeds. To re-run cleanly, the parent re-invokes `chat()` with the `clientTools` and `onClientToolCall` again.
-* **Errors:** if `onClientToolCall` throws, the failure is surfaced to the model as a tool error (`output-error`) and the turn continues — it does not crash the turn.
-* **Serialization:** the value returned from `onClientToolCall` becomes the tool output, so it must be JSON-serializable (it travels back over RPC and into the model context).
-* **No approval gate:** RPC client tools execute immediately through `onClientToolCall`. The WebSocket approval flow (`needsApproval`) does not apply on this path — gate execution inside your executor if you need it.
-* **Name precedence:** client tools are merged after server tools, so a client tool that shares a name with a server tool (for example a workspace tool) overrides it for that turn — the same as the WebSocket path.
-* **Abort:** aborting the turn via `signal` stops the loop, but an in-flight `onClientToolCall` is not itself cancelled; the turn ends after the current call resolves.
+- **Recovery:** the schemas and `onClientToolCall` executor are per-turn only and are never persisted (the executor is a live RPC reference that dies with the isolate, and unlike the WebSocket path there is no client to replay a `tool-result` after an eviction). If an eviction interrupts the turn while a client-tool call is mid-flight, chat recovery errors the orphaned call (treating it like a server tool) and the model proceeds. To re-run cleanly, the parent re-invokes `chat()` with the `clientTools` and `onClientToolCall` again.
+- **Errors:** if `onClientToolCall` throws, the failure is surfaced to the model as a tool error ( `output-error`) and the turn continues — it does not crash the turn.
+- **Serialization:** the value returned from `onClientToolCall` becomes the tool output, so it must be JSON-serializable (it travels back over RPC and into the model context).
+- **No approval gate:** RPC client tools execute immediately through `onClientToolCall`. The WebSocket approval flow ( `needsApproval`) does not apply on this path — gate execution inside your executor if you need it.
+- **Name precedence:** client tools are merged after server tools, so a client tool that shares a name with a server tool (for example a workspace tool) overrides it for that turn — the same as the WebSocket path.
+- **Abort:** aborting the turn via `signal` stops the loop, but an in-flight `onClientToolCall` is not itself cancelled; the turn ends after the current call resolves.
 
 ## Approval flow
 
@@ -162,7 +162,7 @@ When a turn produces several client tool calls at once, Think waits for **all** 
 
 ## Survive restarts while waiting for a human
 
-A Durable Object can be evicted at any time, including while a turn is paused on an approval prompt or a client-side tool call. [Think durable recovery](https://developers.cloudflare.com/agents/harnesses/think/recovery/) is always on. The SDK treats such a turn as waiting on the human, not stuck. It parks the turn instead of failing it. The user's eventual approval or tool result resumes the conversation.
+A Durable Object can be evicted at any time, including while a turn is paused on an approval prompt or a client-side tool call. [`Think` durable recovery](https://developers.cloudflare.com/agents/harnesses/think/recovery/) is always on. The SDK treats such a turn as waiting on the human, not stuck. It parks the turn instead of failing it. The user's eventual approval or tool result resumes the conversation.
 
 For which interactions are exempt from recovery budgets, refer to [Turns waiting on a human are not sealed](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#turns-waiting-on-a-human-are-not-sealed).
 
@@ -170,13 +170,13 @@ For which interactions are exempt from recovery budgets, refer to [Turns waiting
 
 The `messageConcurrency` property controls how overlapping user submits behave when a chat turn is already active.
 
-| Strategy                                      | Behavior                                                                                                                            |
-| --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| "queue"                                       | Queue every submit and process them in order. Default.                                                                              |
-| "latest"                                      | Keep only the latest overlapping submission; superseded submissions still persist their user messages but do not start a model turn |
-| "merge"                                       | Queue overlapping submissions, then collapse their trailing user messages into one combined turn before the latest queued turn runs |
-| "drop"                                        | Ignore overlapping submits entirely. Messages are not persisted.                                                                    |
-| { strategy: "debounce", debounceMs?: number } | Trailing-edge latest with a quiet window (default 750ms).                                                                           |
+| Strategy | Behavior |
+| --- | --- |
+| `"queue"` | Queue every submit and process them in order. Default. |
+| `"latest"` | Keep only the latest overlapping submission; superseded submissions still persist their user messages but do not start a model turn |
+| `"merge"` | Queue overlapping submissions, then collapse their trailing user messages into one combined turn before the latest queued turn runs |
+| `"drop"` | Ignore overlapping submits entirely. Messages are not persisted. |
+| `{ strategy: "debounce", debounceMs?: number }` | Trailing-edge latest with a quiet window (default 750ms). |
 
 ```js
 import { Think } from "@cloudflare/think";

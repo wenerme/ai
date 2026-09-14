@@ -11,7 +11,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RTKPlugin
 
-Last updated Jul 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkplugin/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkplugin/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The RTKPlugin module represents a single plugin in the meeting. A plugin can be obtained from one of the plugin arrays in `meeting.plugins`. For example,
 
@@ -20,38 +20,38 @@ const plugin1 = meeting.plugins.active.get(pluginId);
 const plugin2 = meeting.plugins.all.get(pluginId);
 ```
 
-* [RTKPlugin](#module%5FRTKPlugin)
-  * [.component](#module%5FRTKPlugin+component)
-  * [.activateForSelf()](#module%5FRTKPlugin+activateForSelf)
-  * [.deactivateForSelf()](#module%5FRTKPlugin+deactivateForSelf)
-  * [.activate()](#module%5FRTKPlugin+activate)
-  * [.deactivate()](#module%5FRTKPlugin+deactivate)
+- [RTKPlugin](#module_RTKPlugin)
+  - [.component](#module_RTKPlugin+component)
+  - [.activateForSelf()](#module_RTKPlugin+activateForSelf)
+  - [.deactivateForSelf()](#module_RTKPlugin+deactivateForSelf)
+  - [.activate()](#module_RTKPlugin+activate)
+  - [.deactivate()](#module_RTKPlugin+deactivate)
 
 ### plugin.component
 
 The component for this plugin, as provided in the plugin config.
 
-**Kind**: instance property of [RTKPlugin](#module%5FRTKPlugin)
+**Kind**: instance property of [`RTKPlugin`](#module_RTKPlugin)
 
 ### plugin.activateForSelf()
 
-**Kind**: instance method of [RTKPlugin](#module%5FRTKPlugin)
+**Kind**: instance method of [`RTKPlugin`](#module_RTKPlugin)
 
 ### plugin.deactivateForSelf()
 
-**Kind**: instance method of [RTKPlugin](#module%5FRTKPlugin)
+**Kind**: instance method of [`RTKPlugin`](#module_RTKPlugin)
 
 ### plugin.activate()
 
 Activate this plugin for all participants.
 
-**Kind**: instance method of [RTKPlugin](#module%5FRTKPlugin)
+**Kind**: instance method of [`RTKPlugin`](#module_RTKPlugin)
 
 ### plugin.deactivate()
 
 Deactivate this plugin for all participants.
 
-**Kind**: instance method of [RTKPlugin](#module%5FRTKPlugin)
+**Kind**: instance method of [`RTKPlugin`](#module_RTKPlugin)
 
 Was this helpful?
 

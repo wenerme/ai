@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare DMARC Management
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dmarc-management/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dmarc-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Stop brand impersonation.
 
@@ -20,9 +20,9 @@ Available on all plans
 
 When someone receives an email that claims to be from your domain, email servers check whether that message is authentic. Three DNS-based mechanisms handle this verification:
 
-* **[SPF (Sender Policy Framework) ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record/)** confirms the email was sent from an IP address or domain your domain authorizes.
-* **[DKIM (DomainKeys Identified Mail) ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record/)** authenticates the sender's domain and verifies the email content was not altered in transit, using a cryptographic signature.
-* **[DMARC (Domain-based Message Authentication Reporting and Conformance) ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-dmarc-record/)** ties SPF and DKIM together and tells receiving servers what to do when a check fails (for example, reject the email, quarantine it, or take no action).
+- **[SPF (Sender Policy Framework) ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record/)** confirms the email was sent from an IP address or domain your domain authorizes.
+- **[DKIM (DomainKeys Identified Mail) ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record/)** authenticates the sender's domain and verifies the email content was not altered in transit, using a cryptographic signature.
+- **[DMARC (Domain-based Message Authentication Reporting and Conformance) ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-dmarc-record/)** ties SPF and DKIM together and tells receiving servers what to do when a check fails (for example, reject the email, quarantine it, or take no action).
 
 Cloudflare DMARC Management helps you track every source that is sending emails from your domain and review DMARC reports for each source. These reports show whether messages sent from your domain are passing SPF, DKIM, and DMARC checks — so you can identify unauthorized senders and protect your domain from being used in phishing or spoofing attacks.
 

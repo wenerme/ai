@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Call sequence
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/firewall/api/call-sequence/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/firewall/api/call-sequence/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The API call examples in this site illustrate the **recommended sequence** of calling the two APIs (the [Cloudflare Filters API](https://developers.cloudflare.com/firewall/api/cf-filters/) and the [Firewall Rules API](https://developers.cloudflare.com/firewall/api/cf-firewall-rules/)).
 
@@ -36,6 +36,8 @@ In this sequence, a single `POST` request to the `/firewall/rules` endpoint take
 
 Below is an example call and response using this method:
 
+*Requestbash*
+
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules" \
 --header "X-Auth-Email: <EMAIL>" \
@@ -50,6 +52,8 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules" \
   }
 ]'
 ```
+
+*Responsejson*
 
 ```json
 {
@@ -74,8 +78,8 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules" \
 
 However, this approach has some disadvantages:
 
-* The firewall rules client has to implement error and exception handling for every potential failure occurring in both the firewall rules and the filters APIs.
-* To protect against accidentally modifying or deleting filters used by other Cloudflare features, the `PUT` or `DELETE` operations are not allowed.
+- The firewall rules client has to implement error and exception handling for every potential failure occurring in both the firewall rules and the filters APIs.
+- To protect against accidentally modifying or deleting filters used by other Cloudflare features, the `PUT` or `DELETE` operations are not allowed.
 
 By default, if either the filter or rule is invalid, neither will be created.
 

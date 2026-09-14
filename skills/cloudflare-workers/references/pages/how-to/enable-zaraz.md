@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Enable Zaraz
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/how-to/enable-zaraz/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/how-to/enable-zaraz/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Zaraz gives you complete control over third-party tools and services for your website, and allows you to offload them to Cloudflare's edge, improving the speed and security of your website. With Cloudflare Zaraz you can load tools such as analytics tools, advertising pixels and scripts, chatbots, marketing automation tools, and more, in the most optimized way.
 

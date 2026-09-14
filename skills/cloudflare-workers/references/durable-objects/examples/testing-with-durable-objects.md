@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Write tests for Durable Objects using the Workers Vitest integration.
 
-Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/examples/testing-with-durable-objects/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/examples/testing-with-durable-objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Use the [@cloudflare/vitest-plugin ↗](https://www.npmjs.com/package/@cloudflare/vitest-plugin) package to write tests for your Durable Objects. This integration runs your tests inside the Workers runtime, giving you direct access to Durable Object bindings and APIs.
+Use the [`@cloudflare/vitest-plugin` ↗](https://www.npmjs.com/package/@cloudflare/vitest-plugin) package to write tests for your Durable Objects. This integration runs your tests inside the Workers runtime, giving you direct access to Durable Object bindings and APIs.
 
 ## Prerequisites
 
@@ -37,6 +37,8 @@ yarn add -D vitest@^4.1.0 @cloudflare/vitest-plugin
 ## Example Durable Object
 
 This example tests a simple counter Durable Object with SQLite storage:
+
+*src/index.jsjs*
 
 ```js
 import { DurableObject } from "cloudflare:workers";
@@ -110,6 +112,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -192,6 +196,8 @@ export default {
 
 Create a `vitest.config.ts` file that uses the `cloudflareTest()` plugin:
 
+*vitest.config.tsts*
+
 ```ts
 import { cloudflareTest } from "@cloudflare/vitest-plugin";
 import { defineConfig } from "vitest/config";
@@ -212,7 +218,7 @@ Make sure your Wrangler configuration includes the Durable Object binding and SQ
   "name": "counter-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-08-25",
+  "compatibility_date": "2026-09-14",
   "durable_objects": {
     "bindings": [
       { "name": "COUNTER", "class_name": "Counter" }
@@ -228,7 +234,7 @@ Make sure your Wrangler configuration includes the Durable Object binding and SQ
 name = "counter-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[durable_objects.bindings]]
 name = "COUNTER"
@@ -243,6 +249,8 @@ new_sqlite_classes = [ "Counter" ]
 
 Create a `test/tsconfig.json` to configure TypeScript for your tests:
 
+*test/tsconfig.jsonjsonc*
+
 ```jsonc
 {
 	"extends": "../tsconfig.json",
@@ -256,6 +264,8 @@ Create a `test/tsconfig.json` to configure TypeScript for your tests:
 
 Create an `env.d.ts` file to type the test environment:
 
+*test/env.d.tsts*
+
 ```ts
 declare module "cloudflare:workers" {
 	interface ProvidedEnv extends Env {}
@@ -267,6 +277,8 @@ declare module "cloudflare:workers" {
 ### Unit tests with direct Durable Object access
 
 You can get a stub to a Durable Object directly from the `env` object provided by `cloudflare:workers`:
+
+*test/counter.test.jsjs*
 
 ```js
 import { env } from "cloudflare:workers";
@@ -324,6 +336,8 @@ describe("Counter Durable Object", () => {
 	});
 });
 ```
+
+*test/counter.test.tsts*
 
 ```ts
 import { env } from "cloudflare:workers";
@@ -385,6 +399,8 @@ describe("Counter Durable Object", () => {
 ### Integration tests with `exports`
 
 Use `exports.default.fetch()` to test your Worker's HTTP handler, which routes requests to Durable Objects:
+
+*test/integration.test.jsjs*
 
 ```js
 import { exports } from "cloudflare:workers";
@@ -448,6 +464,8 @@ describe("Counter Worker integration", () => {
 });
 ```
 
+*test/integration.test.tsts*
+
 ```ts
 import { exports } from "cloudflare:workers";
 import { describe, it, expect } from "vitest";
@@ -495,6 +513,8 @@ describe("Counter Worker integration", () => {
 
 Use `runInDurableObject()` to access instance properties and storage directly. This is useful for verifying internal state or testing private methods:
 
+*test/direct-access.test.jsjs*
+
 ```js
 import { env } from "cloudflare:workers";
 import { runInDurableObject, listDurableObjectIds } from "cloudflare:test";
@@ -539,6 +559,8 @@ describe("Direct Durable Object access", () => {
 	});
 });
 ```
+
+*test/direct-access.test.tsts*
 
 ```ts
 import { env } from "cloudflare:workers";
@@ -595,6 +617,8 @@ describe("Direct Durable Object access", () => {
 
 SQLite-backed Durable Objects work seamlessly in tests. The SQL API is available when your Durable Object class is configured with `new_sqlite_classes` in your Wrangler configuration:
 
+*test/sqlite.test.jsjs*
+
 ```js
 import { env } from "cloudflare:workers";
 import { runInDurableObject } from "cloudflare:test";
@@ -628,6 +652,8 @@ describe("SQLite in Durable Objects", () => {
 	});
 });
 ```
+
+*test/sqlite.test.tsts*
 
 ```ts
 import { env } from "cloudflare:workers";
@@ -667,6 +693,8 @@ describe("SQLite in Durable Objects", () => {
 
 Use `runDurableObjectAlarm()` to immediately trigger a scheduled alarm without waiting for the timer. This allows you to test alarm handlers synchronously:
 
+*test/alarm.test.jsjs*
+
 ```js
 import { env } from "cloudflare:workers";
 import { runInDurableObject, runDurableObjectAlarm } from "cloudflare:test";
@@ -702,6 +730,8 @@ describe("Durable Object alarms", () => {
 	});
 });
 ```
+
+*test/alarm.test.tsts*
 
 ```ts
 import { env } from "cloudflare:workers";
@@ -744,6 +774,8 @@ describe("Durable Object alarms", () => {
 
 To test alarms, add an `alarm()` method to your Durable Object:
 
+*src/index.jsjs*
+
 ```js
 import { DurableObject } from "cloudflare:workers";
 
@@ -761,6 +793,8 @@ export class Counter extends DurableObject {
 	}
 }
 ```
+
+*src/index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -787,6 +821,8 @@ Use `evictDurableObject()` to evict a Durable Object instance during tests. Evic
 By default, hibernatable WebSockets are hibernated rather than closed, and eviction waits up to 30 seconds for in-flight requests to drain before tearing down the instance.
 
 The following test sets both in-memory state (`cachedHits`) and durable storage (the counter value), evicts the Durable Object, and verifies that the in-memory state is wiped while the stored count survives:
+
+*test/eviction.test.jsjs*
 
 ```js
 import { env } from "cloudflare:workers";
@@ -820,6 +856,8 @@ describe("Durable Object eviction", () => {
 	});
 });
 ```
+
+*test/eviction.test.tsts*
 
 ```ts
 import { env } from "cloudflare:workers";
@@ -858,10 +896,12 @@ describe("Durable Object eviction", () => {
 
 You can control what happens to hibernatable WebSockets when a Durable Object is evicted by passing the `options` parameter:
 
-* `{ webSockets: "hibernate" }` (the default) hibernates WebSockets so they can resume after eviction.
-* `{ webSockets: "close" }` closes WebSockets during eviction.
+- `{ webSockets: "hibernate" }` (the default) hibernates WebSockets so they can resume after eviction.
+- `{ webSockets: "close" }` closes WebSockets during eviction.
 
 The following example uses a Durable Object that accepts WebSocket connections with the [hibernatable WebSockets API](https://developers.cloudflare.com/durable-objects/best-practices/websockets/):
+
+*src/websocket-server.jsjs*
 
 ```js
 import { DurableObject } from "cloudflare:workers";
@@ -886,6 +926,8 @@ export class WebSocketServer extends DurableObject {
 	}
 }
 ```
+
+*src/websocket-server.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -937,6 +979,8 @@ new_sqlite_classes = [ "WebSocketServer" ]
 ```
 
 With the default options, hibernatable WebSockets remain open across eviction, so messages still round-trip afterwards. Passing `{ webSockets: "close" }` closes them instead:
+
+*test/eviction-websockets.test.jsjs*
 
 ```js
 import { env } from "cloudflare:workers";
@@ -990,6 +1034,8 @@ describe("WebSocket eviction behavior", () => {
 	});
 });
 ```
+
+*test/eviction-websockets.test.tsts*
 
 ```ts
 import { env } from "cloudflare:workers";
@@ -1077,9 +1123,9 @@ Or add a script to your `package.json`:
 
 ## Related resources
 
-* [Workers Vitest integration](https://developers.cloudflare.com/workers/testing/vitest-integration/) \- Full documentation for the Vitest integration
-* [Durable Objects testing recipe ↗](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-plugin-examples/durable-objects) \- Example from the Workers SDK
-* [RPC testing recipe ↗](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-plugin-examples/rpc) \- Testing JSRPC with Durable Objects
+- [Workers Vitest integration](https://developers.cloudflare.com/workers/testing/vitest-integration/) - Full documentation for the Vitest integration
+- [Durable Objects testing recipe ↗](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-plugin-examples/durable-objects) - Example from the Workers SDK
+- [RPC testing recipe ↗](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-plugin-examples/rpc) - Testing JSRPC with Durable Objects
 
 Was this helpful?
 

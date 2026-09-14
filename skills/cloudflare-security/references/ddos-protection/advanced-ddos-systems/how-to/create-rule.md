@@ -12,17 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create a rule
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/how-to/create-rule/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/how-to/create-rule/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Create an Advanced DNS Protection rule
 
-1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page.
-[Go to **DDoS Managed Rules** ↗](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
-2. Go to **Advanced Protection** \> **Advanced DNS Protection**.
+1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page. [Go to **DDoS Managed Rules** ↗](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
+2. Go to **Advanced Protection** > **Advanced DNS Protection**.
 3. Select **Create Advanced DNS Protection rule**.
 4. In **Mode**, select a [mode](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#mode) for the rule.
 5. Under **Set scope**, select a [scope](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#scope) to determine the range of packets that will be affected by the rule.
-6. Under **Sensitivity**, define the [burst sensitivity](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#burst-sensitivity), [rate sensitivity](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#rate-sensitivity), and [profile sensitivity](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#profile-sensitivity) to determine when to initiate mitigation. 9\. Select **Deploy**.
+6. Under **Sensitivity**, define the [burst sensitivity](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#burst-sensitivity), [rate sensitivity](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#rate-sensitivity), and [profile sensitivity](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#profile-sensitivity) to determine when to initiate mitigation. 9. Select **Deploy**.
 
 ---
 
@@ -30,16 +29,14 @@ Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 To create a [SYN flood rule](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection/#syn-flood-protection) or an [out-of-state TCP](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection/#out-of-state-tcp-protection) rule:
 
-1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page.
-[Go to **DDoS Managed Rules** ↗](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
-2. Go to **Advanced Protection** \> **Advanced TCP Protection**.
+1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page. [Go to **DDoS Managed Rules** ↗](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
+2. Go to **Advanced Protection** > **Advanced TCP Protection**.
 3. Depending on the rule you are creating, do one of the following:
-
-  * Under **SYN Flood Protection**, select **Create SYN flood rule**.
-  * Under **Out-of-state TCP Protection**, select **Create out-of-state TCP rule**.
+   - Under **SYN Flood Protection**, select **Create SYN flood rule**.
+   - Under **Out-of-state TCP Protection**, select **Create out-of-state TCP rule**.
 4. In **Mode**, select a [mode](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#mode) for the rule.
 5. Under **Set scope**, select a [scope](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#scope) for the rule. If you choose to apply the rule to a subset of incoming packets, select a region or a data center.
-6. Under **Sensitivity**, define the [burst sensitivity](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#burst-sensitivity) and [rate sensitivity](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#rate-sensitivity) of the rule (by default, _Medium_). The sensitivity levels are based on the initially configured thresholds for your specific case.
+6. Under **Sensitivity**, define the [burst sensitivity](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#burst-sensitivity) and [rate sensitivity](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#rate-sensitivity) of the rule (by default, *Medium*). The sensitivity levels are based on the initially configured thresholds for your specific case.
 7. Select **Deploy**.
 
 Note
@@ -52,9 +49,8 @@ Filters take precedence over rules. For details on how the execution mode is det
 
 To create a [Programmable Flow Protection rule](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection):
 
-1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page.
-[Go to **DDoS Managed Rules** ↗](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
-2. Go to **Advanced Protection** \> **Programmable Flow Protection**.
+1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page. [Go to **DDoS Managed Rules** ↗](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
+2. Go to **Advanced Protection** > **Programmable Flow Protection**.
 3. In **General Settings**, select a program. The chosen program must have a status of `success`, indicating it has successfully compiled and passed verification. This field is required.
 4. In **General Settings**, select a [mode](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#mode) for the rule. This field is required.
 5. Under **Set scope**, optionally select a [scope](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#scope) for the rule. If you choose to apply the rule to a subset of incoming packets, select a region or a data center. The default scope setting is global.

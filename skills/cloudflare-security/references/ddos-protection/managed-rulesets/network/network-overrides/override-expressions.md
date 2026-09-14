@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Override expressions
 
-Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/override-expressions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/override-expressions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Set an override expression for the Network-layer DDoS Attack Protection managed ruleset to define a specific scope for [sensitivity level](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/override-parameters/#sensitivity-level) or [action](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/override-parameters/#action) adjustments.
 
@@ -26,25 +26,25 @@ The following fields are made available for use in override expressions.
 
 The list of fields we recommend using in expressions:
 
-* `ip.dst`
-* `ip.proto.num`
-* `tcp.dstport`
-* `tcp.flags`
-* `tcp.flags.ack`
-* `tcp.flags.fin`
-* `tcp.flags.push`
-* `tcp.flags.reset`
-* `tcp.flags.syn`
-* `tcp.flags.urg`
-* `udp.dstport`
+- `ip.dst`
+- `ip.proto.num`
+- `tcp.dstport`
+- `tcp.flags`
+- `tcp.flags.ack`
+- `tcp.flags.fin`
+- `tcp.flags.push`
+- `tcp.flags.reset`
+- `tcp.flags.syn`
+- `tcp.flags.urg`
+- `udp.dstport`
 
 The list of fields we do not recommend to be used in expressions:
 
-* `ip.src`
-* `ip.len`
-* `ip.ttl`
-* `tcp.srcport`
-* `udp.srcport`
+- `ip.src`
+- `ip.len`
+- `ip.ttl`
+- `tcp.srcport`
+- `udp.srcport`
 
 Refer to the [Fields reference](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/) in the Rules language documentation for more information.
 

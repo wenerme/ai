@@ -12,17 +12,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Examples
 
-Last updated Apr 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workflows/examples/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Explore the following examples for Workflows.
+Explore the following examples
 
-[**Human-in-the-Loop Image Tagging with waitForEvent**Human-in-the-loop Workflow with waitForEvent API](https://developers.cloudflare.com/workflows/examples/wait-for-event/)
+ for Workflows.
 
-[**Export and save D1 database**Send invoice when shopping cart is checked out and paid for](https://developers.cloudflare.com/workflows/examples/backup-d1/)
+[**Human-in-the-Loop Image Tagging with waitForEvent** Human-in-the-loop Workflow with waitForEvent API](https://developers.cloudflare.com/workflows/examples/wait-for-event/)
 
-[**Integrate Workflows with Twilio**Integrate Workflows with Twilio. Learn how to receive and send text messages and phone calls via APIs and Webhooks.](https://developers.cloudflare.com/workflows/examples/twilio/)
+[**Export and save D1 database** Send invoice when shopping cart is checked out and paid for](https://developers.cloudflare.com/workflows/examples/backup-d1/)
 
-[**Pay cart and send invoice**Send invoice when shopping cart is checked out and paid for](https://developers.cloudflare.com/workflows/examples/send-invoices/)
+[**Integrate Workflows with Twilio** Integrate Workflows with Twilio. Learn how to receive and send text messages and phone calls via APIs and Webhooks.](https://developers.cloudflare.com/workflows/examples/twilio/)
+
+[**Pay cart and send invoice** Send invoice when shopping cart is checked out and paid for](https://developers.cloudflare.com/workflows/examples/send-invoices/)
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Migration
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/turnstile/migration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/migration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you are using alternative CAPTCHA services, you can switch to Cloudflare Turnstile using the guides below to assist with the upgrade process.
 
@@ -20,8 +20,8 @@ If you are using alternative CAPTCHA services, you can switch to Cloudflare Turn
 
 ## Guides
 
-* [reCAPTCHA](https://developers.cloudflare.com/turnstile/migration/recaptcha/)
-* [hCAPTCHA](https://developers.cloudflare.com/turnstile/migration/hcaptcha/)
+- [reCAPTCHA](https://developers.cloudflare.com/turnstile/migration/recaptcha/)
+- [hCAPTCHA](https://developers.cloudflare.com/turnstile/migration/hcaptcha/)
 
 Was this helpful?
 

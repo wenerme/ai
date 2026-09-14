@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Zone-level
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you enable zone-level Authenticated Origin Pulls (AOP), all proxied traffic to your zone is authenticated at the origin web server using a certificate that you upload. Unlike [global AOP](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/global/), which uses a Cloudflare-provided certificate shared across all accounts, zone-level AOP uses your own certificate for stricter security.
 
@@ -28,7 +28,13 @@ Zone-level AOP certificates are also applied to [custom hostnames](https://devel
 
 Zone-level AOP requires you to upload your own certificate. Refer to the steps below for an example of how to generate a custom certificate using OpenSSL. The CA root certificate that you use to issue the custom certificate should be the same CA that you will [upload to your origin](#3-configure-origin-to-accept-client-certificates).
 
+<details>
+
+<summary>
+
 OpenSSL example
+
+</summary>
 
 1. Run the following command to generate a 4096-bit RSA private key, using AES-256 encryption. Enter a passphrase when prompted.
 
@@ -36,112 +42,152 @@ OpenSSL example
 openssl genrsa -aes256 -out rootca.key 4096
 ```
 
-1. Create the CA root certificate. When prompted, fill in the information to be included in the certificate. For the `Common Name` field, use the domain name as value, not the hostname.
+2. Create the CA root certificate. When prompted, fill in the information to be included in the certificate. For the <code>Common Name</code> field, use the domain name as value, not the hostname.
 
 ```bash
 openssl req -x509 -new -nodes -key rootca.key -sha256 -days 1826 -out rootca.crt
 ```
 
-1. Create a Certificate Signing Request (CSR). When prompted, fill in the information to be included in the request. For the `Common Name` field, use the hostname as value.
+3. Create a Certificate Signing Request (CSR). When prompted, fill in the information to be included in the request. For the <code>Common Name</code> field, use the hostname as value.
 
 ```bash
 openssl req -new -nodes -out cert.csr -newkey rsa:4096 -keyout cert.key
 ```
 
-1. Sign the certificate using the `rootca.key` and `rootca.crt` created in previous steps.
+4. Sign the certificate using the <code>rootca.key</code> and <code>rootca.crt</code> created in previous steps.
 
 ```bash
 openssl x509 -req -in cert.csr -CA rootca.crt -CAkey rootca.key -CAcreateserial -out cert.crt -days 730 -sha256 -extfile ./cert.v3.ext
 ```
 
-1. Make sure the certificate extensions file `cert.v3.ext` specifies the following:
+5. Make sure the certificate extensions file <code>cert.v3.ext</code> specifies the following:
 
 ```plaintext
 basicConstraints=CA:FALSE
 ```
 
-## 1\. Upload your certificate to Cloudflare
+</details>
 
-1. Go to the **Origin Server** page.
-[Go to **Origin Server** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
+## 1. Upload your certificate to Cloudflare
+
+1. Go to the **Origin Server** page. [Go to **Origin Server** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
 2. Select the **Authenticated Origin Pulls** tab.
 3. In the **Zone-level** section, select **Upload certificate**.
 4. Paste the certificate and private key, then select **Continue**.
-Note
-You must upload a [leaf certificate](https://developers.cloudflare.com/ssl/concepts/#chain-of-trust). If you upload a root CA instead, the upload will fail.
+
+   Note
+
+   You must upload a [leaf certificate](https://developers.cloudflare.com/ssl/concepts/#chain-of-trust). If you upload a root CA instead, the upload will fail.
 5. Review your certificate details, save the certificate ID for future reference, and select **Done**.
 
-Use the [Upload a zone-level client certificate](https://developers.cloudflare.com/api/resources/origin%5Ftls%5Fclient%5Fauth/subresources/zone%5Fcertificates/methods/create/) endpoint to upload your certificate.
+Use the [Upload a zone-level client certificate](https://developers.cloudflare.com/api/resources/origin_tls_client_auth/subresources/zone_certificates/methods/create/) endpoint to upload your certificate.
 
 Note
 
 You must upload a [leaf certificate](https://developers.cloudflare.com/ssl/concepts/#chain-of-trust). If you upload a root CA instead, the API will return a `missing leaf certificate` error.
 
-## 2\. Upload the CA certificate to your origin
+## 2. Upload the CA certificate to your origin
 
 Upload the CA root certificate used to sign your client certificate to your origin server. Your origin will use this CA certificate to verify the client certificate presented by Cloudflare.
 
-## 3\. Configure origin to accept client certificates
+## 3. Configure origin to accept client certificates
 
 With the certificate installed, set up your origin web server to accept client certificates.
 
-Check the examples below for Apache and NGINX or refer to your origin web server documentation - for example, [HAProxy ↗](https://www.haproxy.com/documentation/hapee/latest/security/authentication/client-certificate-authentication/), [Traefik ↗](https://doc.traefik.io/traefik/https/tls/#client-authentication-mtls), [Caddy ↗](https://caddyserver.com/docs/json/apps/http/servers/tls%5Fconnection%5Fpolicies/client%5Fauthentication/mode/).
+Check the examples below for Apache and NGINX or refer to your origin web server documentation - for example, [HAProxy ↗](https://www.haproxy.com/documentation/hapee/latest/security/authentication/client-certificate-authentication/), [Traefik ↗](https://doc.traefik.io/traefik/https/tls/#client-authentication-mtls), [Caddy ↗](https://caddyserver.com/docs/json/apps/http/servers/tls_connection_policies/client_authentication/mode/).
+
+<details>
+
+<summary>
 
 Apache example
+
+</summary>
 
 ```txt
 SSLCACertificateFile /path/to/origin-pull-ca.pem
 ```
 
-For this example, you would have saved your certificate to `/path/to/origin-pull-ca.pem`.
+For this example, you would have saved your certificate to <code>/path/to/origin-pull-ca.pem</code>.
+
+</details>
+
+<details>
+
+<summary>
 
 NGINX example
+
+</summary>
 
 ```txt
 ssl_verify_client optional;
 ssl_client_certificate /etc/nginx/certs/cloudflare.crt;
 ```
 
-For this example, you would have saved your certificate to `/etc/nginx/certs/cloudflare.crt`.
+For this example, you would have saved your certificate to <code>/etc/nginx/certs/cloudflare.crt</code>.
+
+</details>
 
 At this point, you may also want to enable logging on your origin so that you can verify the configuration is working.
 
-## 4\. Enable zone-level Authenticated Origin Pulls
+## 4. Enable zone-level Authenticated Origin Pulls
 
-1. Go to the **Origin Server** page.
-[Go to **Origin Server** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
+1. Go to the **Origin Server** page. [Go to **Origin Server** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
 2. Select the **Authenticated Origin Pulls** tab.
 3. In the **Zone-level** section, switch the toggle to **On**.
 
-Use the [Set Enablement for Zone](https://developers.cloudflare.com/api/resources/origin%5Ftls%5Fclient%5Fauth/subresources/settings/methods/update/) endpoint to enable zone-level Authenticated Origin Pulls.
+Use the [Set Enablement for Zone](https://developers.cloudflare.com/api/resources/origin_tls_client_auth/subresources/settings/methods/update/) endpoint to enable zone-level Authenticated Origin Pulls.
 
 Caution
 
 This endpoint is separate from the [global AOP toggle](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/global/), which uses the zone settings `tls_client_auth` setting. Make sure you use the correct endpoint for the configuration you intend.
 
-## 5\. Enforce validation check on your origin
+## 5. Enforce validation check on your origin
 
 Once you can confirm everything is working as expected for your specific origin setup, configure your origin to enforce the authentication.
 
+<details>
+
+<summary>
+
 Apache example
+
+</summary>
 
 ```txt
 SSLVerifyClient require
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 NGINX example
+
+</summary>
 
 ```txt
 ssl_verify_client on;
 ```
 
+</details>
+
 After completing the process, you can use `curl` to send requests directly to your origin IPs, verifying that the requests fail due to certificate validation being enforced.
 
-## 6\. (Optional) Set up expiration alerts
+## 6. (Optional) Set up expiration alerts
 
 You can configure alerts to receive notifications before your AOP certificates expire.
 
+<details>
+
+<summary>
+
 Zone-level Authenticated Origin Pulls Certificate Expiration Alert
+
+</summary>
 
 **Who is it for?**
 
@@ -157,7 +203,9 @@ Authenticated Origin Pull.
 
 **What should you do if you receive one?**
 
-Upload a renewed certificate to use for [zone-level AOP](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/).
+Upload a renewed certificate to use for <a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/">zone-level AOP</a>.
+
+</details>
 
 Refer to [Cloudflare Notifications](https://developers.cloudflare.com/notifications/get-started/) for more information on how to set up an alert.
 

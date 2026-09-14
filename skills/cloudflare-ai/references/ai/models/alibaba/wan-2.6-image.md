@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Image • Alibaba
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/alibaba/wan-2.6-image/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/alibaba/wan-2.6-image/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `alibaba/wan-2.6-image`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 Alibaba's Wan 2.6 text-to-image model generating images from text prompts with optional negative prompts and customizable dimensions.
 
-| Model Info          |                                                                                                                         |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                                    |
-| More information    | [link ↗](https://wan.video/)                                                                                            |
-| Zero data retention | Yes                                                                                                                     |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/wan-2.6-image) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal) |
+| More information | [link ↗](https://wan.video/) |
+| Zero data retention | Yes |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/wan-2.6-image) |
 
 ## Usage
 
@@ -70,7 +70,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Custom Dimensions** — Specify image size in WxH format
+<details>
+
+<summary>**Custom Dimensions** — Specify image size in WxH format</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -111,7 +115,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Square Format** — Square image for social media or product photos
+</details>
+
+<details>
+
+<summary>**Square Format** — Square image for social media or product photos</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -152,7 +162,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Negative Prompt** — Guide generation away from unwanted elements
+</details>
+
+<details>
+
+<summary>**Negative Prompt** — Guide generation away from unwanted elements</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -192,7 +208,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Portrait Format** — Tall vertical image for portraits
+</details>
+
+<details>
+
+<summary>**Portrait Format** — Tall vertical image for portraits</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -232,6 +254,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 prompt
@@ -252,9 +276,9 @@ image
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/alibaba/wan-2.6-image/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/alibaba/wan-2.6-image/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/alibaba/wan-2.6-image/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/alibaba/wan-2.6-image/schema-output.json)
 
 Was this helpful?
 

@@ -12,25 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Namespaces
 
-Last updated Aug 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/concepts/namespaces/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/concepts/namespaces/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Every AI Search instance belongs to a **namespace**. A namespace is a logical grouping of instances within your account.
 
-[Tenant A](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)[Tenant B](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)[Tenant C](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)
+[Tenant A](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/) [Tenant B](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/) [Tenant C](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)
 
 [env.AI\_SEARCH.get(id)Worker](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)
 
 namespace: tenants
 
-[AI Search instancetenant-a](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)[AI Search instancetenant-b](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)[AI Search instancetenant-c](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)
+[AI Search instancetenant-a](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/) [AI Search instancetenant-b](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/) [AI Search instancetenant-c](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)
 
 ## Why use namespaces
 
 Common reasons to use namespaces include:
 
-* **Domain separation**: Separate instances by product area, for example `blog`, `support`, and `docs`.
-* **Tenant isolation**: Assign each tenant their own namespace so that instance names do not collide across tenants.
-* **Agent isolation**: Give each agent its own namespace for independent context management.
+- **Domain separation**: Separate instances by product area, for example `blog`, `support`, and `docs`.
+- **Tenant isolation**: Assign each tenant their own namespace so that instance names do not collide across tenants.
+- **Agent isolation**: Give each agent its own namespace for independent context management.
 
 For a step-by-step guide to isolating search per tenant, see [Multitenancy](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/).
 
@@ -38,10 +38,10 @@ For a step-by-step guide to isolating search per tenant, see [Multitenancy](http
 
 The namespace binding requires the following minimum package versions for TypeScript types and local development support.
 
-| Package                   | Minimum version |
-| ------------------------- | --------------- |
-| @cloudflare/workers-types | 4.20260304.0    |
-| wrangler                  | 4.68.1          |
+| Package | Minimum version |
+| --- | --- |
+| `@cloudflare/workers-types` | `4.20260304.0` |
+| `wrangler` | `4.68.1` |
 
 ## How namespaces work
 

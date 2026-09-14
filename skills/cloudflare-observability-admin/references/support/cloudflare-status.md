@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Status
 
-Last updated Aug 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/cloudflare-status/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/cloudflare-status/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare provides updates on the status of our services and network on the [Cloudflare Status page â†—](https://www.cloudflarestatus.com/), which you should check if you notice unexpected behavior with Cloudflare.
 
@@ -46,16 +46,16 @@ Cloudflare also provides status information through the [Cloudflare Status API â
 
 Incidents and maintenance are published as separate feeds, each available in RSS and Atom:
 
-| Feed        | RSS                                                     | Atom                                                     |
-| ----------- | ------------------------------------------------------- | -------------------------------------------------------- |
-| Incidents   | https://www.cloudflarestatus.com/api/v3/incidents.rss   | https://www.cloudflarestatus.com/api/v3/incidents.atom   |
-| Maintenance | https://www.cloudflarestatus.com/api/v3/maintenance.rss | https://www.cloudflarestatus.com/api/v3/maintenance.atom |
+| Feed | RSS | Atom |
+| --- | --- | --- |
+| Incidents | `https://www.cloudflarestatus.com/api/v3/incidents.rss` | `https://www.cloudflarestatus.com/api/v3/incidents.atom` |
+| Maintenance | `https://www.cloudflarestatus.com/api/v3/maintenance.rss` | `https://www.cloudflarestatus.com/api/v3/maintenance.atom` |
 
 ## Related resources
 
-* [Available RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) (for the [Cloudflare changelog](https://developers.cloudflare.com/changelog/))
-* [API deprecations](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/)
-* [Planned maintenance windows](https://developers.cloudflare.com/support/disruptive-maintenance/)
+- [Available RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) (for the [Cloudflare changelog](https://developers.cloudflare.com/changelog/))
+- [API deprecations](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/)
+- [Planned maintenance windows](https://developers.cloudflare.com/support/disruptive-maintenance/)
 
 Was this helpful?
 

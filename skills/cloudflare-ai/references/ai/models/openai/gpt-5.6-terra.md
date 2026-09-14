@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • OpenAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-terra/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-terra/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `openai/gpt-5.6-terra`
 
-* Third-party
+- Third-party
 
 GPT-5.6 Terra is an OpenAI GPT-5.6 model that balances intelligence and cost, using the Responses API for reasoning and stateful context management.
 
-| Model Info                                                                          |                                                                                                                        |
-| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,050,000 tokens                                                                                                       |
-| Terms and License                                                                   | [link ↗](https://openai.com/policies/)                                                                                 |
-| More information                                                                    | [link ↗](https://openai.com/)                                                                                          |
-| Request formats                                                                     | Responses                                                                                                              |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.6-terra) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,050,000 tokens |
+| Terms and License | [link ↗](https://openai.com/policies/) |
+| More information | [link ↗](https://openai.com/) |
+| Request formats | Responses |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.6-terra) |
 
 ## Usage
 
@@ -58,9 +58,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Blue-green deployments run two identical production environments: one active (“blue”) and one idle (“green”). A new version is deployed and tested on green, then traffic is switched over all at once. This makes rollback very fast—switch traffic back to blue—but requires maintaining duplicate infrastructure and handling database/schema compatibility carefully. For a small team, blue-green is often appealing when releases are infrequent, the system is simple enough to duplicate cheaply, and a clear cutover/rollback procedure matters more than gradual validation.
 
 Canary deployments release the new version to a small percentage of users or requests first, then progressively increase traffic while monitoring errors, latency, and business metrics. They reduce the blast radius of defects and provide real-production validation, but require traffic splitting, strong observability, automated rollout controls, and usually feature-flag or version-compatibility discipline. For a small team, canaries are best when the platform already supports them or when the cost of a faulty release is high; otherwise, blue-green generally offers a simpler operational model.
+```
 
 ```json
 {
@@ -161,7 +163,11 @@ Canary deployments release the new version to a small percentage of users or req
 
 ## Examples
 
-**Customer Incident Update** — Using instructions to tune the model's response style
+<details>
+
+<summary>**Customer Incident Update** — Using instructions to tune the model's response style</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -187,10 +193,12 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 **Incident Update:**
 Earlier today, some customers experienced elevated API latency. Our team identified the issue and applied mitigation steps, and API performance has returned to normal.
 
 We’ll continue monitoring closely and will share a follow-up with additional details if needed. We apologize for the disruption and appreciate your patience.
+```
 
 ```json
 {
@@ -289,6 +297,8 @@ We’ll continue monitoring closely and will share a follow-up with additional d
 }
 ```
 
+</details>
+
 ## Parameters
 
 ▶input
@@ -315,13 +325,11 @@ stream
 
 `boolean`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
-
-``
 
 ▶text{}
 
@@ -347,7 +355,7 @@ model
 
 `string`
 
-▶output\[\]
+▶output\[]
 
 `array`
 
@@ -365,9 +373,9 @@ status
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-terra/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-terra/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-terra/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-terra/schema-output.json)
 
 Was this helpful?
 

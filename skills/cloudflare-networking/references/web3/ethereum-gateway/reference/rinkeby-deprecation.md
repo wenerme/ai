@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Rinkeby deprecation
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web3/ethereum-gateway/reference/rinkeby-deprecation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/ethereum-gateway/reference/rinkeby-deprecation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Though Cloudflare's Ethereum Gateway launched with support for the Rinkeby testnet, Rinkeby did not run through [The Merge ↗](https://ethereum.org/en/upgrades/merge/) and - as a result - will no longer be a reliable staging environment for mainnet.
 
@@ -26,6 +26,8 @@ To migrate, you should update the endpoints you use when [reading from or writin
 
 For example, you might have been using the previous endpoints to interact with your Ethereum Gateway.
 
+*Previous curlbash*
+
 ```bash
 curl https://web3-trial.cloudflare-eth.com/v1/rinkeby \
 --header 'Content-Type: application/json' \
@@ -36,6 +38,8 @@ curl https://web3-trial.cloudflare-eth.com/v1/rinkeby \
   "id": 1
 }'
 ```
+
+*Previous JS Fetch APIjs*
 
 ```js
 await fetch(
@@ -58,6 +62,8 @@ await fetch(
 
 To migrate away from Rinkeby, change the end of your endpoint to use another testnet.
 
+*New curlbash*
+
 ```bash
 curl https://web3-trial.cloudflare-eth.com/v1/sepolia \
 --header 'Content-Type: application/json' \
@@ -68,6 +74,8 @@ curl https://web3-trial.cloudflare-eth.com/v1/sepolia \
   "id": 1
 }'
 ```
+
+*New JS Fetch APIjs*
 
 ```js
 await fetch(

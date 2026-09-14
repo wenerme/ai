@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # How Hyperdrive works
 
-Last updated Jul 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Connecting to traditional centralized databases from Cloudflare's global network which consists of over [300 data center locations ↗](https://www.cloudflare.com/network/) presents a few challenges as queries can originate from any of these locations.
 
@@ -26,29 +26,29 @@ Hyperdrive solves these challenges by managing the number of global connections 
 
 Hyperdrive accelerates database queries by:
 
-* Performing the connection setup for new database connections near your Workers
-* Pooling existing connections near your database
-* Caching query results
+- Performing the connection setup for new database connections near your Workers
+- Pooling existing connections near your database
+- Caching query results
 
 This ensures you have optimal performance when connecting to your database from Workers (whether your queries are cached or not).
 
 ![Hyperdrive connection](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1234,height=696,format=svg/_astro/hyperdrive-comparison.BMT25nFH.svg)
 
-### 1\. Edge connection setup
+### 1. Edge connection setup
 
 When a database driver connects to a database from a Cloudflare Worker **directly**, it will first go through the connection setup. This may require multiple round trips to the database in order to verify and establish a secure connection. This can incur additional network latency due to the distance between your Cloudflare Worker and your database.
 
-**With Hyperdrive**, this connection setup occurs between your Cloudflare Worker and Hyperdrive on the edge, as close to your Worker as possible (see diagram, label _1\. Connection setup_). This incurs significantly less latency, since the connection setup is completed within the same location.
+**With Hyperdrive**, this connection setup occurs between your Cloudflare Worker and Hyperdrive on the edge, as close to your Worker as possible (see diagram, label *1. Connection setup*). This incurs significantly less latency, since the connection setup is completed within the same location.
 
 Learn more about how connections work between Workers and Hyperdrive in [Connection lifecycle](https://developers.cloudflare.com/hyperdrive/concepts/connection-lifecycle/).
 
-### 2\. Connection Pooling
+### 2. Connection Pooling
 
 Hyperdrive creates a pool of connections to your database that can be reused as your application executes queries against your database.
 
 The pool of database connections is placed in one or more regions closest to your origin database. This minimizes the latency incurred by roundtrips between your Cloudflare Workers and database to establish new connections. This also ensures that as little network latency is incurred for uncached queries.
 
-If the connection pool has pre-existing connections, the connection pool will try and reuse that connection (see diagram, label _2\. Existing warm connection_). If the connection pool does not have pre-existing connections, it will establish a new connection to your database and use that to route your query. This aims at reusing and creating the least number of connections possible as required to operate your application.
+If the connection pool has pre-existing connections, the connection pool will try and reuse that connection (see diagram, label *2. Existing warm connection*). If the connection pool does not have pre-existing connections, it will establish a new connection to your database and use that to route your query. This aims at reusing and creating the least number of connections possible as required to operate your application.
 
 Note
 
@@ -62,6 +62,8 @@ If your Worker makes **multiple sequential queries** per request, use [Placement
 
 If your Worker makes only one query per request, placement does not improve end-to-end latency. The total round-trip time is the same whether it happens near the user or near the database.
 
+*wrangler.jsoncjsonc*
+
 ```jsonc
 {
 	"placement": {
@@ -70,7 +72,7 @@ If your Worker makes only one query per request, placement does not improve end-
 }
 ```
 
-### 3\. Query Caching
+### 3. Query Caching
 
 Hyperdrive supports caching of non-mutating (read) queries to your database.
 
@@ -88,7 +90,7 @@ Learn more about query caching behavior and configuration in [Query caching](htt
 
 The Hyperdrive connection pooler operates in transaction mode, where the client that executes the query communicates through a single connection for the duration of a transaction. When that transaction has completed, the connection is returned to the pool.
 
-Hyperdrive supports [SET statements ↗](https://www.postgresql.org/docs/current/sql-set.html) for the duration of a transaction or a query. For instance, if you manually create a transaction with `BEGIN`/`COMMIT`, `SET` statements within the transaction will take effect. Moreover, a query that includes a `SET` command (`SET X; SELECT foo FROM bar;`) will also apply the `SET` command. When a connection is returned to the pool, the connection is `RESET` such that the `SET` commands will not take effect on subsequent queries.
+Hyperdrive supports [`SET` statements ↗](https://www.postgresql.org/docs/current/sql-set.html) for the duration of a transaction or a query. For instance, if you manually create a transaction with `BEGIN`/`COMMIT`, `SET` statements within the transaction will take effect. Moreover, a query that includes a `SET` command (`SET X; SELECT foo FROM bar;`) will also apply the `SET` command. When a connection is returned to the pool, the connection is `RESET` such that the `SET` commands will not take effect on subsequent queries.
 
 This implies that a single Worker invocation may obtain multiple connections to perform its database operations and may need to `SET` any configurations for every query or transaction. It is not recommended to wrap multiple database operations with a single transaction to maintain the `SET` state. Doing so will affect the performance and scaling of Hyperdrive, as the connection cannot be reused by other Worker isolates for the duration of the transaction.
 
@@ -96,9 +98,9 @@ Hyperdrive supports named prepared statements as implemented in the `postgres.js
 
 ## Related resources
 
-* [Connection lifecycle](https://developers.cloudflare.com/hyperdrive/concepts/connection-lifecycle/)
-* [Query caching](https://developers.cloudflare.com/hyperdrive/concepts/query-caching/)
-* [Connection pooling](https://developers.cloudflare.com/hyperdrive/concepts/connection-pooling/)
+- [Connection lifecycle](https://developers.cloudflare.com/hyperdrive/concepts/connection-lifecycle/)
+- [Query caching](https://developers.cloudflare.com/hyperdrive/concepts/query-caching/)
+- [Connection pooling](https://developers.cloudflare.com/hyperdrive/concepts/connection-pooling/)
 
 Was this helpful?
 

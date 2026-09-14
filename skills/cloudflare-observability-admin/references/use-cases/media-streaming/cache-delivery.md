@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cache and accelerate media delivery
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/media-streaming/cache-delivery/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/media-streaming/cache-delivery/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Streaming video and serving images to a global audience requires low-latency delivery from locations close to each viewer. Cloudflare Cache serves media globally, and Argo Smart Routing ensures cache misses take the fastest path back to your origin.
 
@@ -22,15 +22,15 @@ Streaming video and serving images to a global audience requires low-latency del
 
 Cache content at Cloudflare's global network of edge locations. [Learn more about Cache](https://developers.cloudflare.com/cache/).
 
-* **Global edge caching** \- Media content served from 300+ edge locations to reduce latency for global audiences
-* **Origin offload** \- Cached content is served directly from the edge, reducing origin bandwidth and compute costs
-* **Tiered caching** \- Regional cache tiers absorb repeated requests before they reach the origin, further reducing load
+- **Global edge caching** - Media content served from 300+ edge locations to reduce latency for global audiences
+- **Origin offload** - Cached content is served directly from the edge, reducing origin bandwidth and compute costs
+- **Tiered caching** - Regional cache tiers absorb repeated requests before they reach the origin, further reducing load
 
 ### Argo Smart Routing
 
 Route traffic through the fastest paths across Cloudflare's network. [Learn more about Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/).
 
-* **Smart routing** \- Requests that miss cache are routed through the fastest available network paths to origin
+- **Smart routing** - Requests that miss cache are routed through the fastest available network paths to origin
 
 ## Get started
 

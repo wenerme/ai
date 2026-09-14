@@ -1,5 +1,5 @@
 ---
-description: Variables and secrets are bound as follows:
+description: "Variables and secrets are bound as follows:"
 title: Variables and Secrets
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Variables and Secrets
 
-Last updated Jan 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/core/variables-secrets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jan 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/core/variables-secrets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Bindings
 

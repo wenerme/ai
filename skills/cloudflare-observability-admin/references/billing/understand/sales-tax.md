@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Sales tax
 
-Last updated May 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/billing/understand/sales-tax/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/understand/sales-tax/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To adhere to tax laws in specific geographies, Cloudflare collects sales tax on sales of our services based on your billing address.
 
@@ -30,10 +30,10 @@ In the US, sales tax requirements are computed based on the 9-digit postal code 
 
 Cloudflare is required by law to maintain documentation of tax-exempt sales. If you or your company are exempt from paying sales tax, email [exemptioncertificates@cloudflare.com](mailto:exemptioncertificates@cloudflare.com) from an email address associated with your Cloudflare account and provide one of the following forms of tax-exempt documentation:
 
-* Resale certificate
-* Multi-state tax exemption certificate
-* State sales tax exemption certificate
-* Partial sales tax exemption certificate
+- Resale certificate
+- Multi-state tax exemption certificate
+- State sales tax exemption certificate
+- Partial sales tax exemption certificate
 
 After your exemption is validated, tax-exempt status is added to your Cloudflare account information. Cloudflare invoices do not contain sales tax for the duration your exemption is valid.
 
@@ -59,7 +59,7 @@ Cloudflare collects VAT on all Pay-as-you-go customers in Taiwan. The eGUI Invoi
 
 ## Japan (CT)
 
-Cloudflare Inc. is currently registered in Japan as of October 1st, 2023\. Due to some constraints, Cloudflare will be only able to start collecting tax from Pay-as-you-go customers on April 1st, 2024.
+Cloudflare Inc. is currently registered in Japan as of October 1st, 2023. Due to some constraints, Cloudflare will be only able to start collecting tax from Pay-as-you-go customers on April 1st, 2024.
 
 ## Canada
 
@@ -95,13 +95,13 @@ Cloudflare will issue tax invoices and add VAT at the 16% standard rate on top o
 
 You may update your VAT registration number in your account profile.
 
-Reach out to Cloudflare via email [indirect\_tax@cloudflare.com](mailto:indirect%5Ftax@cloudflare.com) if you have any tax related concerns or questions.
+Reach out to Cloudflare via email [indirect\_tax@cloudflare.com](mailto:indirect_tax@cloudflare.com) if you have any tax related concerns or questions.
 
 ## Related resources
 
-* [Update billing information](https://developers.cloudflare.com/billing/get-started/update-billing-info/) — Change your billing address or VAT number
-* [Invoices](https://developers.cloudflare.com/billing/manage/invoices/) — View tax details on your invoices
-* [Billing policy](https://developers.cloudflare.com/billing/understand/billing-policy/) — General billing terms
+- [Update billing information](https://developers.cloudflare.com/billing/get-started/update-billing-info/) — Change your billing address or VAT number
+- [Invoices](https://developers.cloudflare.com/billing/manage/invoices/) — View tax details on your invoices
+- [Billing policy](https://developers.cloudflare.com/billing/understand/billing-policy/) — General billing terms
 
 Was this helpful?
 

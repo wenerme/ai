@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Postgres.js
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/postgres-js/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/postgres-js/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Postgres.js ↗](https://github.com/porsager/postgres) is a modern, fully-featured PostgreSQL driver for Node.js. This example demonstrates how to use Postgres.js with Cloudflare Hyperdrive in a Workers application.
 
@@ -53,7 +53,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -66,7 +66,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

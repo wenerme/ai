@@ -12,23 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Prompt injection detection
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/prompt-injection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/prompt-injection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-AI Security for Apps (formerly Firewall for AI) detects prompt injection attacks — prompts intentionally designed to subvert the intended behavior of your LLM as specified by the developer.
+AI Security for Apps (formerly Firewall for AI) detects prompt injection
+
+ attacks — prompts intentionally designed to subvert the intended behavior of your LLM as specified by the developer.
 
 When a prompt injection attempt is detected, AI Security for Apps assigns a score that you can use in [custom rules](https://developers.cloudflare.com/waf/custom-rules/) or [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) to take action.
 
 ## Scoring system
 
-Prompt injection detection uses a score-based system rather than a binary detected/not-detected result. The score is written to the **LLM Injection score** ([cf.llm.prompt.injection\_score](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.injection%5Fscore/)) field.
+Prompt injection detection uses a score-based system rather than a binary detected/not-detected result. The score is written to the **LLM Injection score** ([`cf.llm.prompt.injection_score`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.injection_score/)) field.
 
 The score ranges from 1 to 99:
 
-| Score range | Meaning                                                                                       |
-| ----------- | --------------------------------------------------------------------------------------------- |
-| 1–19        | High likelihood of prompt injection — the prompt strongly resembles known injection patterns. |
-| 20–49       | Moderate likelihood — the prompt has some characteristics of an injection attempt.            |
-| 50–99       | Low likelihood — the prompt appears to be normal, non-malicious input.                        |
+| Score range | Meaning |
+| --- | --- |
+| 1–19 | High likelihood of prompt injection — the prompt strongly resembles known injection patterns. |
+| 20–49 | Moderate likelihood — the prompt has some characteristics of an injection attempt. |
+| 50–99 | Low likelihood — the prompt appears to be normal, non-malicious input. |
 
 Lower scores indicate higher risk
 
@@ -40,65 +42,75 @@ Prompt injection exists on a spectrum. Some prompts are clearly malicious ("igno
 
 The score gives you flexibility to set thresholds that match your risk tolerance:
 
-* **Strict threshold** (for example, less than `50`): blocks more potential attacks but may also block some legitimate prompts (higher false positive rate).
-* **Moderate threshold** (for example, less than `30`): good balance for most applications.
-* **Conservative threshold** (for example, less than `20`): blocks only high-confidence injection attempts (lower false positive rate, but may miss subtler attacks).
+- **Strict threshold** (for example, less than `50`): blocks more potential attacks but may also block some legitimate prompts (higher false positive rate).
+- **Moderate threshold** (for example, less than `30`): good balance for most applications.
+- **Conservative threshold** (for example, less than `20`): blocks only high-confidence injection attempts (lower false positive rate, but may miss subtler attacks).
 
 ## Example rules
 
 ### Block high-confidence prompt injection attempts
 
-* **When incoming requests match**:
+- **When incoming requests match**:
 
-| Field               | Operator  | Value |
-| ------------------- | --------- | ----- |
-| LLM Injection score | less than | 20    |
-Expression when using the editor:
-`(cf.llm.prompt.injection_score lt 20)`
-* **Action**: _Block_
+  | Field | Operator | Value |
+  | --- | --- | --- |
+  | LLM Injection score | less than | `20` |
+
+  Expression when using the editor:
+  `(cf.llm.prompt.injection_score lt 20)`
+- **Action**: *Block*
 
 ### Challenge moderate-risk prompts instead of blocking
 
-* **When incoming requests match**:
+- **When incoming requests match**:
 
-| Field               | Operator  | Value |
-| ------------------- | --------- | ----- |
-| LLM Injection score | less than | 40    |
-Expression when using the editor:
-`(cf.llm.prompt.injection_score lt 40)`
-* **Action**: _Managed Challenge_
+  | Field | Operator | Value |
+  | --- | --- | --- |
+  | LLM Injection score | less than | `40` |
+
+  Expression when using the editor:
+  `(cf.llm.prompt.injection_score lt 40)`
+- **Action**: *Managed Challenge*
 
 The challenge action adds friction without hard-blocking.
 
+<details>
+
+<summary>
+
 Combine with other signals
+
+</summary>
 
 Combining the injection score with other fields reduces false positives:
 
 **Block injection attempts from likely bots:**
 
-`(cf.llm.prompt.injection_score lt 30 and cf.bot_management.score lt 20)`
+<code>(cf.llm.prompt.injection_score lt 30 and cf.bot_management.score lt 20)</code>
 
 This targets prompt injection attempts that also come from automated sources, which is a strong signal of an actual attack.
 
 **Block injection attempts that also contain PII:**
 
-`(cf.llm.prompt.injection_score lt 40 and cf.llm.prompt.pii_detected)`
+<code>(cf.llm.prompt.injection_score lt 40 and cf.llm.prompt.pii_detected)</code>
 
 This targets prompts that look like injection attempts and are also trying to extract personal data — a common attack pattern.
 
 **Block injection attempts on a specific endpoint:**
 
-`(cf.llm.prompt.injection_score lt 20 and http.request.uri.path eq "/api/chat")`
+<code>(cf.llm.prompt.injection_score lt 20 and http.request.uri.path eq "/api/chat")</code>
+
+</details>
 
 ## Threshold tuning
 
 To find the right threshold for your traffic:
 
-1. Start with a _Log_ action at a moderate threshold (for example, less than `40`).
+1. Start with a *Log* action at a moderate threshold (for example, less than `40`).
 2. Review the logged events in [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) — examine the prompts that triggered the rule and their scores.
 3. If you find false positives (legitimate prompts being flagged), lower the threshold (for example, less than `25`).
 4. If you find attacks getting through, raise the threshold (for example, less than `50`).
-5. Once confident, change the action to _Block_.
+5. Once confident, change the action to *Block*.
 
 You can also use [log mode](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/log-mode-vs-production-mode/#log-mode) with payload logging during this tuning phase to see the actual prompt content alongside scores.
 

@@ -12,11 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Tools based on OpenAPI Spec
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/examples/openapi/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/examples/openapi/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Oftentimes APIs are defined and documented via [OpenAPI specification ↗](https://swagger.io/specification/). The Cloudflare `ai-utils` package's `createToolsFromOpenAPISpec` function creates tools from the OpenAPI spec, which the LLM can then leverage to fulfill the prompt.
 
 In this example the LLM will describe the a Github user, based Github's API and its OpenAPI spec.
+
+*Embedded function calling example from OpenAPI Spects*
 
 ```ts
 import { createToolsFromOpenAPISpec, runWithTools } from '@cloudflare/ai-utils';

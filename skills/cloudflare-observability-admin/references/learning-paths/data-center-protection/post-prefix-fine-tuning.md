@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Post prefix advertisement monitoring and fine tuning
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/data-center-protection/post-prefix-fine-tuning/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/data-center-protection/post-prefix-fine-tuning/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 On this page, you can find suggestions to monitor your prefix advertisements and fine-tune them.
 
@@ -42,15 +42,15 @@ Refer to Cloudflare Network Firewall's [best practices](https://developers.cloud
 
 ## Alerts for Magic Tunnel health checks and DDoS
 
-* Ensure all teams/members needing to receive these are getting the alerts.
-* Check the Tunnel Health Check Alert configuration for Sensitivity and Alert interval and tunnels in-scope.
-* Refer to [Set up tunnel health alerts](https://developers.cloudflare.com/learning-paths/data-center-protection/enable-notifications/#set-up-tunnel-health-alerts) and [DDoS alerts](https://developers.cloudflare.com/ddos-protection/reference/alerts/) for more details.
+- Ensure all teams/members needing to receive these are getting the alerts.
+- Check the Tunnel Health Check Alert configuration for Sensitivity and Alert interval and tunnels in-scope.
+- Refer to [Set up tunnel health alerts](https://developers.cloudflare.com/learning-paths/data-center-protection/enable-notifications/#set-up-tunnel-health-alerts) and [DDoS alerts](https://developers.cloudflare.com/ddos-protection/reference/alerts/) for more details.
 
 ## Optional
 
-* Enable [Logpush](https://developers.cloudflare.com/logs/logpush/) to your Security Information and Event Management (SIEM).
-* Enable Cloudflare Network Firewall's [Intrusion Detection System (IDS)](https://developers.cloudflare.com/cloudflare-network-firewall/about/ids/). Requires Logpush and is only available for accounts with [Cloudflare Advanced Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/plans/#advanced-features).
-* Use [Network Flow](https://developers.cloudflare.com/network-flow/) (formerly Magic Network Monitoring) for visibility into traffic on your non-Magic Transit prefixes, using NetFlow or sFlow from your CPEs.
+- Enable [Logpush](https://developers.cloudflare.com/logs/logpush/) to your Security Information and Event Management (SIEM).
+- Enable Cloudflare Network Firewall's [Intrusion Detection System (IDS)](https://developers.cloudflare.com/cloudflare-network-firewall/about/ids/). Requires Logpush and is only available for accounts with [Cloudflare Advanced Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/plans/#advanced-features).
+- Use [Network Flow](https://developers.cloudflare.com/network-flow/) (formerly Magic Network Monitoring) for visibility into traffic on your non-Magic Transit prefixes, using NetFlow or sFlow from your CPEs.
 
 Was this helpful?
 

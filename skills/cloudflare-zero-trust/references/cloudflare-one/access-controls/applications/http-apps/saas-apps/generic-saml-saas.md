@@ -12,32 +12,32 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Generic SAML application
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/generic-saml-saas/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/generic-saml-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page provides generic instructions for setting up a SaaS application in Cloudflare Access using the SAML authentication protocol.
 
 ## Prerequisites
 
-* An [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) configured in Cloudflare One
-* Admin access to the account of the SaaS application
+- An [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) configured in Cloudflare One
+- Admin access to the account of the SaaS application
 
-## 1\. Get SaaS application URLs
+## 1. Get SaaS application URLs
 
 Obtain the following URLs from your SaaS application account:
 
-* **Entity ID**: A unique URL issued for your SaaS application, for example `https://<your-domain>.my.salesforce.com`.
-* **Assertion Consumer Service URL**: The service provider's endpoint for receiving and parsing SAML assertions.
+- **Entity ID**: A unique URL issued for your SaaS application, for example `https://<your-domain>.my.salesforce.com`.
+- **Assertion Consumer Service URL**: The service provider's endpoint for receiving and parsing SAML assertions.
 
-## 2\. Add your application to Access
+## 2. Add your application to Access
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Create new application**.
 3. Select **SaaS application**.
 4. Select your **Application** from the drop-down menu. If your application is not listed, enter a custom name in the **Application** field and select the textbox that appears below.
 5. Select **SAML**.
 6. Select **Add application**.
 7. Enter the **Entity ID** and **Assertion Consumer Service URL** obtained from your SaaS application account.
-8. Select the **Name ID Format** expected by your SaaS application (usually _Email_).
+8. Select the **Name ID Format** expected by your SaaS application (usually *Email*).
 9. (Optional) Configure any additional [SAML attribute statements](#saml-attributes) required by your SaaS application.
 10. Copy the **SSO endpoint**, **Access Entity ID or Issuer**, and **Public key**.
 
@@ -45,29 +45,26 @@ IdP groups
 
 If you are using Okta, Microsoft Entra ID (formerly Azure AD), Google Workspace, or GitHub as your IdP, Access will automatically send a SAML attribute titled `groups` with all of the user's associated groups as attribute values.
 
-1. Under **Access policies**, add an existing policy or [create a new policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/) to control who can connect to your application. All Access applications are deny by default -- a user must match an Allow policy before they are granted access.
-2. Configure how users will authenticate:
+11. Under **Access policies**, add an existing policy or [create a new policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/) to control who can connect to your application. All Access applications are deny by default -- a user must match an Allow policy before they are granted access.
+12. Configure how users will authenticate:
+    1. Select the [identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) you want to enable for your application.
+    2. (Recommended) If you plan to only allow access via a single IdP, turn on **Apply instant authentication**. End users will not be shown the [Cloudflare Access login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/). Instead, Cloudflare will redirect users directly to your SSO login event.
+    3. (Optional) Turn on **Authenticate with Cloudflare One Client** to allow users to authenticate to the application using their [Cloudflare One Client session identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/).
+13. (Optional) Go to **Additional settings** to customize the application experience:
+    - **App Launcher customization**: Configure how this application appears to users in the [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/).
+    - **Custom block pages**: Choose what users will see when they are denied access to the application.
+      - **Cloudflare default**: Reload the [login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/) and display a block message below the Cloudflare Access logo. The default message is `That account does not have access`, or you can enter a custom message.
+      - **Redirect URL**: Redirect to the specified website.
+      - **Custom page template**: Display a [custom block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-block-page/) hosted in Cloudflare One.
+14. Select **Create**.
 
-  1. Select the [identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) you want to enable for your application.
-  2. (Recommended) If you plan to only allow access via a single IdP, turn on **Apply instant authentication**. End users will not be shown the [Cloudflare Access login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/). Instead, Cloudflare will redirect users directly to your SSO login event.
-  3. (Optional) Turn on **Authenticate with Cloudflare One Client** to allow users to authenticate to the application using their [ Cloudflare One Client session identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/).
-3. (Optional) Go to **Additional settings** to customize the application experience:
-
-  * **App Launcher customization**: Configure how this application appears to users in the [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/).
-  * **Custom block pages**: Choose what users will see when they are denied access to the application.
-
-    * **Cloudflare default**: Reload the [login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/) and display a block message below the Cloudflare Access logo. The default message is `That account does not have access`, or you can enter a custom message.
-    * **Redirect URL**: Redirect to the specified website.
-    * **Custom page template**: Display a [custom block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-block-page/) hosted in Cloudflare One.
-4. Select **Create**.
-
-## 3\. Configure SSO in your SaaS application
+## 3. Configure SSO in your SaaS application
 
 Next, configure your SaaS application to require users to log in through Cloudflare Access. Refer to your SaaS application documentation for instructions on how to configure a third-party SAML SSO provider. You will need the following values from the Cloudflare One:
 
-* **SSO endpoint**
-* **Access Entity ID or Issuer**
-* **Public key**
+- **SSO endpoint**
+- **Access Entity ID or Issuer**
+- **Public key**
 
 You can either manually enter this data into your SaaS application or upload a metadata XML file. The metadata is available at the URL: `<SSO endpoint>/saml-metadata`.
 
@@ -75,7 +72,7 @@ You can either manually enter this data into your SaaS application or upload a m
 
 When acting as a SAML identity provider, Cloudflare will sign both the SAML Response and the SAML Assertion using the SHA-256 algorithm. The SaaS application can validate this signature using the **Public key** that you upload to the SaaS application.
 
-## 4\. Test the integration
+## 4. Test the integration
 
 Open an incognito browser window and go to the SaaS application's login URL. You will be redirected to the Cloudflare Access login screen and prompted to sign in with your identity provider.
 
@@ -83,10 +80,10 @@ Open an incognito browser window and go to the SaaS application's login URL. You
 
 [SAML attributes](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/#saml-headers-and-attributes) refer to the user identity characteristics that Cloudflare Access shares with your SAML SaaS application upon successful authentication. By default, Cloudflare Access passes the following attributes (if available) to the SaaS application:
 
-* `id` \- UUID of the user's Access identity
-* `name` \- Full name of the user (for example, `John Doe`)
-* `email` \- User's email address
-* `groups` \- Identity provider group membership
+- `id` - UUID of the user's Access identity
+- `name` - Full name of the user (for example, `John Doe`)
+- `email` - User's email address
+- `groups` - Identity provider group membership
 
 In Access for SaaS, you can add additional SAML attributes or customize the SAML statement sent to the SaaS application. This allows you to integrate SaaS applications which have specific SAML attribute requirements.
 
@@ -94,21 +91,21 @@ In Access for SaaS, you can add additional SAML attributes or customize the SAML
 
 To send additional SAML attributes to your SaaS application, configure the following fields for each attribute:
 
-* **Name**: SAML attribute name
-* **SAML friendly name**: (Optional) A human readable name for the SAML attribute
-* **Name format**: Specify the **Name** format expected by the SaaS application:
-  * `Unspecified`: (default) No specific format required.
-  * `URI`: Name is in a format such as `urn:ietf:params:scim:schemas:core:2.0:User:userName` or `urn:oid:2.5.4.42`.
-  * `Basic`: Name is a normal string such as `userName`.
-* **IdP claim**: The identity provider value that should map to this SAML attribute. You can select any [SAML attribute](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/#saml-headers-and-attributes) or [OIDC claim](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/#custom-oidc-claims) that was configured in a Cloudflare One IdP integration.
-* **Required**: If an attribute is marked as required but is not provided by an IdP, Cloudflare will fail the authentication request and show an error page.
-* **Add per IdP claim**: (Optional) If you turned on multiple identity providers for the SaaS application, you can choose different attribute mappings for each IdP. These values will override the parent **IdP claim**.
+- **Name**: SAML attribute name
+- **SAML friendly name**: (Optional) A human readable name for the SAML attribute
+- **Name format**: Specify the **Name** format expected by the SaaS application:
+  - `Unspecified`: (default) No specific format required.
+  - `URI`: Name is in a format such as `urn:ietf:params:scim:schemas:core:2.0:User:userName` or `urn:oid:2.5.4.42`.
+  - `Basic`: Name is a normal string such as `userName`.
+- **IdP claim**: The identity provider value that should map to this SAML attribute. You can select any [SAML attribute](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/#saml-headers-and-attributes) or [OIDC claim](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/#custom-oidc-claims) that was configured in a Cloudflare One IdP integration.
+- **Required**: If an attribute is marked as required but is not provided by an IdP, Cloudflare will fail the authentication request and show an error page.
+- **Add per IdP claim**: (Optional) If you turned on multiple identity providers for the SaaS application, you can choose different attribute mappings for each IdP. These values will override the parent **IdP claim**.
 
 ### JSONata attribute transforms
 
-In **Advanced settings** \> **Transformation**, you can enter a [JSONata ↗](https://jsonata.org/) script that modifies a copy of the [User Registry identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/users/). This is useful for setting default values, excluding email addresses, or ensuring usernames meet arbitrary criteria. Access will send the modified user identity to the SaaS application as SAML attributes.
+In **Advanced settings** > **Transformation**, you can enter a [JSONata ↗](https://jsonata.org/) script that modifies a copy of the [User Registry identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/users/). This is useful for setting default values, excluding email addresses, or ensuring usernames meet arbitrary criteria. Access will send the modified user identity to the SaaS application as SAML attributes.
 
-This corresponds to the `saml_attribute_transform_jsonata` field in the [Access applications API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/applications/methods/create/).
+This corresponds to the `saml_attribute_transform_jsonata` field in the [Access applications API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/create/).
 
 Note
 
@@ -216,9 +213,17 @@ Result after applying the example JSONata script:
 
 For more JSONata transform use cases, refer to the following examples.
 
+<details>
+
+<summary>
+
 Remove groups attribute
 
-The following JSONata script removes the `groups` SAML attribute. This can be useful if your SaaS application does not need to receive user group information.
+</summary>
+
+The following JSONata script removes the <code>groups</code> SAML attribute. This can be useful if your SaaS application does not need to receive user group information.
+
+*JSONata expressiontxt*
 
 ```txt
 $ ~> |$|{}, ['groups']|
@@ -261,9 +266,19 @@ Result after applying the JSONata transform:
 }
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Rename groups field and remove group ID
 
-The following JSONata script changes the `groups.name` field from `name` to `group_name` and removes the `groups.id` field:
+</summary>
+
+The following JSONata script changes the <code>groups.name</code> field from <code>name</code> to <code>group_name</code> and removes the <code>groups.id</code> field:
+
+*JSONata expressiontxt*
 
 ```txt
 {
@@ -333,9 +348,19 @@ Result after applying the JSONata transform:
 }
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Filter groups by name
 
+</summary>
+
 The following JSONata script filters groups to those that match a regular expression.
+
+*JSONata expressiontxt*
 
 ```txt
 $merge([$, { "groups": $filter(groups, function($v) { $contains($v.name, /Administrator/) }) }])
@@ -388,17 +413,21 @@ Result after applying the JSONata transform:
 }
 ```
 
+</details>
+
 ### NameID transform
 
 By default, Access sends the user's email address as the SAML `NameID`. Some SaaS applications require a different value, such as an employee ID, a modified email address, or a username from a legacy system.
 
-You can customize the `NameID` by setting the `name_id_transform_jsonata` field on the SaaS application via the [Access applications API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/applications/methods/create/). This field accepts a [JSONata ↗](https://jsonata.org/) expression that evaluates against the user's identity and must return a single string value. The result replaces the default `NameID` in the SAML assertion.
+You can customize the `NameID` by setting the `name_id_transform_jsonata` field on the SaaS application via the [Access applications API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/create/). This field accepts a [JSONata ↗](https://jsonata.org/) expression that evaluates against the user's identity and must return a single string value. The result replaces the default `NameID` in the SAML assertion.
 
 Note
 
 The NameID transform is only available through the API. To configure it, update the `saas_app.name_id_transform_jsonata` field on your Access application.
 
 For example, to modify the user's email so that it includes a `+sandbox` suffix (useful when connecting multiple instances of the same SaaS app):
+
+*Set a NameID transform via the APIbash*
 
 ```bash
 curl --request PUT \
@@ -415,9 +444,17 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/access/apps/{app_id} 
 
 Given a user with the email `jdoe@company.com`, this expression produces a `NameID` of `jdoe+sandbox@company.com`.
 
+<details>
+
+<summary>
+
 Use employee ID as NameID
 
+</summary>
+
 To send a non-email attribute such as an employee ID, reference the attribute name directly in the JSONata expression. The attribute must be available in the user's identity from the IdP.
+
+*Set employee\_id as NameIDbash*
 
 ```bash
 curl --request PUT \
@@ -432,11 +469,21 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/access/apps/{app_id} 
 }'
 ```
 
-Given a user identity that contains `"employee_id": "efgh5678"`, the `NameID` sent in the SAML assertion will be `efgh5678`.
+Given a user identity that contains <code>"employee_id": "efgh5678"</code>, the <code>NameID</code> sent in the SAML assertion will be <code>efgh5678</code>.
+
+</details>
+
+<details>
+
+<summary>
 
 Remove NameID transform
 
-To revert to the default behavior (sending the user's email as the `NameID`), set the field to an empty string:
+</summary>
+
+To revert to the default behavior (sending the user's email as the <code>NameID</code>), set the field to an empty string:
+
+*Remove NameID transformbash*
 
 ```bash
 curl --request PUT \
@@ -450,6 +497,8 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/access/apps/{app_id} 
   }
 }'
 ```
+
+</details>
 
 Was this helpful?
 

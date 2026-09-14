@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Enable Google BigQuery
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/bigquery/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/bigquery/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Logpush supports pushing logs directly to Google BigQuery (using Legacy Streaming API) via the Cloudflare dashboard or via API.
 
@@ -23,14 +23,14 @@ Cloudflare uses Google Application Credentials provided in Logpush job `destinat
 To enable Logpush to BigQuery:
 
 1. Go to Google Cloud Console for your account.
-2. Go to **IAM & Admin** \> **Service Accounts**, and create a new service account.
+2. Go to **IAM & Admin** > **Service Accounts**, and create a new service account.
 3. Add **BigQuery Data Editor** role under Permissions. At minimum, it requires `bigquery.tables.updateData` permission.
 4. Add a key under Keys.
-  1. Click **Add key**.
-  2. Click **Create new key**.
-  3. Select Key type **JSON**.
-  4. Click **Create**.
-  5. Save the Application Credentials JSON file. You will need to use this when setting up a new Logpush job.
+   1. Click **Add key**.
+   2. Click **Create new key**.
+   3. Select Key type **JSON**.
+   4. Click **Create**.
+   5. Save the Application Credentials JSON file. You will need to use this when setting up a new Logpush job.
 5. In BigQuery, create a dataset and table. Refer to [instructions from BigQuery ↗](https://cloud.google.com/bigquery/docs/tables). For example, using `schema.json` and `bq` command:
 
 ```bash
@@ -46,32 +46,32 @@ bq mk --table "${PROJECT_ID}:${DATASET_ID}.${TABLE_ID}" schema.json
 ## Manage via the Cloudflare dashboard
 
 1. In the Cloudflare dashboard, go to the **Logpush** page at the account or or domain (also known as zone) level.
-For account: [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/logs)
-For domain (also known as zone): [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
+
+   For account: [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/logs)
+
+   For domain (also known as zone): [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
 2. Depending on your choice, you have access to [account-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/) and [zone-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/), respectively.
 3. Select **Create a Logpush job**.
-1. In **Select a destination**, choose **Google BigQuery**.
-2. Enter the following destination details:
 
-  * **Project ID** \- your Google Cloud project ID
-  * **Dataset ID** \- the BigQuery dataset containing your table
-  * **Table ID** \- the BigQuery table to push logs to
-  * **Service Account Credentials** \- paste your Google service account key JSON. This credential is stored encrypted and will not be displayed again.
+4. In **Select a destination**, choose **Google BigQuery**.
+5. Enter the following destination details:
+   - **Project ID** - your Google Cloud project ID
+   - **Dataset ID** - the BigQuery dataset containing your table
+   - **Table ID** - the BigQuery table to push logs to
+   - **Service Account Credentials** - paste your Google service account key JSON. This credential is stored encrypted and will not be displayed again.
 
 When you are done entering the destination details, select **Continue**.
 
-1. Select the dataset to push to the storage service.
-2. In the next step, you need to configure your logpush job:
-
-  * Enter the **Job name**.
-  * Under **If logs match**, you can select the events to include and/or remove from your logs. Refer to [Filters](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/) for more information. Not all datasets have this option available.
-  * In **Send the following fields**, you can choose to either push all logs to your storage destination or selectively choose which logs you want to push.
-3. In **Advanced Options**, you can:
-
-  * Choose the format of timestamp fields in your logs (`RFC3339` (default), `Unix`, or `UnixNano`).
-  * Select a [sampling rate](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/#sampling-rate) for your logs or push a randomly-sampled percentage of logs.
-  * Enable redaction for `CVE-2021-44228`. This option will replace every occurrence of `${` with `x{`.
-4. Select **Submit** once you are done configuring your logpush job.
+6. Select the dataset to push to the storage service.
+7. In the next step, you need to configure your logpush job:
+   - Enter the **Job name**.
+   - Under **If logs match**, you can select the events to include and/or remove from your logs. Refer to [Filters](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/) for more information. Not all datasets have this option available.
+   - In **Send the following fields**, you can choose to either push all logs to your storage destination or selectively choose which logs you want to push.
+8. In **Advanced Options**, you can:
+   - Choose the format of timestamp fields in your logs ( `RFC3339` (default), `Unix`, or `UnixNano`).
+   - Select a [sampling rate](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/#sampling-rate) for your logs or push a randomly-sampled percentage of logs.
+   - Enable redaction for `CVE-2021-44228`. This option will replace every occurrence of `${` with `x{`.
+9. Select **Submit** once you are done configuring your logpush job.
 
 ## Manage via API
 
@@ -86,29 +86,40 @@ Unlike configuring Logpush jobs for AWS S3, GCS, or Azure, there is no ownership
 
 Ensure **Log Share** permissions are enabled, before attempting to read or configure a Logpush job. For more information refer to the [Roles section](https://developers.cloudflare.com/logs/logpush/permissions/#roles).
 
-### 1\. Create a job
+### 1. Create a job
 
 To create a job, make a `POST` request to the Logpush jobs endpoint with the following fields:
 
-* **name** (optional) - Use your domain name as the job name.
-* **destination\_conf** \- A log destination consisting of a reference to BigQuery table and credentials in the string format below.
-  * **<PROJECT\_ID>**, **<DATASET\_ID>**, **<TABLE\_ID>**: Project ID, Dataset ID, and table ID of the designated BigQuery table.
-  * **<ENCODED\_VALUE>**: The encoded value of Application Credentials JSON as `credentials`, either base64-encoded with `base64:` prefix, or URL-encoded with `url:` prefix.
+- **name** (optional) - Use your domain name as the job name.
+- **destination\_conf** - A log destination consisting of a reference to BigQuery table and credentials in the string format below.
+  - **\<PROJECT\_ID>**, **\<DATASET\_ID>**, **\<TABLE\_ID>**: Project ID, Dataset ID, and table ID of the designated BigQuery table.
+  - **\<ENCODED\_VALUE>**: The encoded value of Application Credentials JSON as `credentials`, either base64-encoded with `base64:` prefix, or URL-encoded with `url:` prefix.
 
 ```bash
 "bq://projects/<PROJECT_ID>/datasets/<DATASET_ID>/tables/<TABLE_ID>?credentials=<ENCODED_VALUE>"
 ```
 
-* **dataset** \- The category of logs you want to receive. Refer to [Datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/) for the full list of supported datasets.
-* **output\_options** (optional) - To configure fields, sample rate, and timestamp format, refer to [Log Output Options](https://developers.cloudflare.com/logs/logpush/logpush-job/log-output-options/). For timestamp, Cloudflare recommends using `timestamps=rfc3339`.
-  * When including custom formatting options, such as `output_type`, or any prefix / suffix / delimiter / template options, make sure to set `stringify_object` true, too, otherwise fields with `object` type may not be serialized in the format compatible to BigQuery Legacy Streaming API.
+- **dataset** - The category of logs you want to receive. Refer to [Datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/) for the full list of supported datasets.
+- **output\_options** (optional) - To configure fields, sample rate, and timestamp format, refer to [Log Output Options](https://developers.cloudflare.com/logs/logpush/logpush-job/log-output-options/). For timestamp, Cloudflare recommends using `timestamps=rfc3339`.
+  - When including custom formatting options, such as `output_type`, or any prefix / suffix / delimiter / template options, make sure to set `stringify_object` true, too, otherwise fields with `object` type may not be serialized in the format compatible to BigQuery Legacy Streaming API.
 
 Example request using cURL:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*Create Logpush jobbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
@@ -171,13 +182,13 @@ Refer to [Manage Logpush with cURL](https://developers.cloudflare.com/logs/logpu
 
 ## Limitations
 
-Note the following default quota and limits, as described in the [BigQuery documentation ↗](https://docs.cloud.google.com/bigquery/quotas#streaming%5Finserts).
+Note the following default quota and limits, as described in the [BigQuery documentation ↗](https://docs.cloud.google.com/bigquery/quotas#streaming_inserts).
 
 The following limits apply to BigQuery streaming inserts:
 
-* Maximum HTTP request size (uncompressed, may include headers): 10 MB
-* Maximum row size: 10 MB
-* Maximum rows per request size: 50,000 rows.
+- Maximum HTTP request size (uncompressed, may include headers): 10 MB
+- Maximum row size: 10 MB
+- Maximum rows per request size: 50,000 rows.
 
 These are default quota / limit, and you should adjust the Logpush jobs to match the limit, and/or request Google to increase them when needed.
 

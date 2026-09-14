@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Extensions
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/extensions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/extensions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Browser Isolation supports running native Chromium Web Extensions in the remote browser.
 

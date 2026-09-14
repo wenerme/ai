@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Hugo
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-hugo-site/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-hugo-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Hugo ↗](https://gohugo.io/) is a tool for generating static sites, written in Go. It is incredibly fast and has great high-level, flexible primitives for managing your content using different [content formats ↗](https://gohugo.io/content-management/formats/).
 
@@ -105,20 +105,20 @@ git push -u origin main
 
 To deploy your site to Pages:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**.
 3. Select the **Pages** tab.
 4. Select **Import an existing Git repository**.
 5. Select the new GitHub repository that you created and then select **Begin setup**.
 6. In the **Set up builds and deployments** section, provide the following information:
 
-| Configuration option | Value  | |  Production branch | main |
-| -------------------- | ------ | -------------------- | ---- |
-| Build command        | hugo   |                      |      |
-| Build directory      | public |                      |      |
+Configuration option | Value
+| Production branch | `main` |
+| --- | --- |
+| Build command | `hugo` |
+| Build directory | `public` |
 
-While `public` is the default build directory for Hugo sites, this setting can be configured with the [publishDir setting ↗](https://gohugo.io/configuration/all/#publishdir).
+While `public` is the default build directory for Hugo sites, this setting can be configured with the [`publishDir` setting ↗](https://gohugo.io/configuration/all/#publishdir).
 
 Base URL configuration
 
@@ -140,7 +140,7 @@ After deploying your site, you will receive a unique subdomain for your project 
 
 ## Use a specific or newer Hugo version
 
-To use a [specific or newer version of Hugo ↗](https://github.com/gohugoio/hugo/releases), create the `HUGO_VERSION` environment variable in your Pages project > **Settings** \> **Environment variables**. Set the value as the Hugo version you want to specify (see the [Prerequisites ↗](https://gohugo.io/getting-started/quick-start/#prerequisites) for the minimum recommended version).
+To use a [specific or newer version of Hugo ↗](https://github.com/gohugoio/hugo/releases), create the `HUGO_VERSION` environment variable in your Pages project > **Settings** > **Environment variables**. Set the value as the Hugo version you want to specify (see the [Prerequisites ↗](https://gohugo.io/getting-started/quick-start/#prerequisites) for the minimum recommended version).
 
 For example, `HUGO_VERSION`: `0.128.0`.
 

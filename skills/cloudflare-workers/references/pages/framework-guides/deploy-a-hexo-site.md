@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Hexo
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-hexo-site/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-hexo-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Hexo ↗](https://hexo.io/) is a tool for generating static websites, powered by Node.js. Hexo's benefits include speed, simplicity, and flexibility, allowing it to render Markdown files into static web pages via Node.js.
 
@@ -80,19 +80,18 @@ git push -u origin main
 
 To deploy your site to Pages:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**.
 3. Select the **Pages** tab.
 4. Select **Import an existing Git repository**.
 5. Select the new GitHub repository that you created and then select **Begin setup**.
 6. In the **Set up builds and deployments** section, provide the following information:
 
-| Configuration option | Value         |
-| -------------------- | ------------- |
-| Production branch    | main          |
-| Build command        | npm run build |
-| Build directory      | public        |
+| Configuration option | Value |
+| --- | --- |
+| Production branch | `main` |
+| Build command | `npm run build` |
+| Build directory | `public` |
 
 After completing configuration, click the **Save and Deploy** button. You should see Cloudflare Pages installing `hexo` and your project dependencies, and building your site, before deploying it.
 
@@ -107,8 +106,9 @@ After deploying your site, you will receive a unique subdomain for your project 
 Some Hexo themes or plugins have additional requirements for different Node.js versions. To use a specific Node.js version for Hexo:
 
 1. Go to your Pages project.
-2. Go to **Settings** \> **Environment variables**.
+2. Go to **Settings** > **Environment variables**.
 3. Set the environment variable `NODE_VERSION` and a value of your required Node.js version (for example, `14.3`).
+
 ![Follow the instructions above to set up an environment variable in the Pages dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2121,height=948,format=webp/_astro/node-version-pages.19kURO88.png)
 
 ## Learn more

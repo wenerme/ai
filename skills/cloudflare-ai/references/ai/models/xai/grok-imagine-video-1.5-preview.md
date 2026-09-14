@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Image-to-Video • xAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video-1.5-preview/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video-1.5-preview/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `xai/grok-imagine-video-1.5-preview`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 xAI's next-generation video generation model. Generates, edits, and extends videos from text and image inputs. Supports multiple aspect ratios and resolutions with improved quality over the previous generation.
 
-| Model Info          |                                                                                                                                      |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| Terms and License   | [link ↗](https://x.ai/legal/terms-of-service)                                                                                        |
-| More information    | [link ↗](https://docs.x.ai/developers/models/grok-imagine-video)                                                                     |
-| Zero data retention | Yes                                                                                                                                  |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-imagine-video-1.5-preview) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://x.ai/legal/terms-of-service) |
+| More information | [link ↗](https://docs.x.ai/developers/models/grok-imagine-video) |
+| Zero data retention | Yes |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-imagine-video-1.5-preview) |
 
 ## Usage
 
@@ -108,7 +108,7 @@ size
 
 `object`
 
-▶reference\_images\[\]
+▶reference\_images\[]
 
 `array`maxItems: 10
 
@@ -126,9 +126,9 @@ video
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video-1.5-preview/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video-1.5-preview/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video-1.5-preview/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video-1.5-preview/schema-output.json)
 
 Was this helpful?
 

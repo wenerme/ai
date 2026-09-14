@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Dynamic dispatch Worker
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A [dynamic dispatch Worker](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#dynamic-dispatch-worker) is a specialized routing Worker that directs incoming requests to the appropriate user Workers in your dispatch namespace. Instead of using [Workers Routes](https://developers.cloudflare.com/workers/configuration/routing/routes/), dispatch Workers let you programmatically control request routing through code.
 
@@ -20,20 +20,20 @@ A [dynamic dispatch Worker](https://developers.cloudflare.com/cloudflare-for-pla
 
 Note
 
-You can also create a dispatch Worker from the Cloudflare dashboard. Go to **Workers for Platforms**, select your namespace, and click **Create** \> **Dispatch Worker**. The dashboard provides templates for path-based and subdomain-based routing.
+You can also create a dispatch Worker from the Cloudflare dashboard. Go to **Workers for Platforms**, select your namespace, and click **Create** > **Dispatch Worker**. The dashboard provides templates for path-based and subdomain-based routing.
 
 #### Why use a dynamic dispatch Worker?
 
-* **Scale**: Route requests to millions of hostnames to different Workers, without defining [Workers Routes](https://developers.cloudflare.com/workers/configuration/routing/routes/) configuration for each one
-* **Custom routing logic**: Write code to determine exactly how requests should be routed. For example:
-  * Store hostname-to-Worker mappings in [Workers KV](https://developers.cloudflare.com/kv/) and look them up dynamically
-  * Route requests based on subdomain, path, headers, or other request properties
-  * Use [custom metadata](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/custom-metadata/) attached to [custom hostnames](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/) for routing decisions
-* **Add platform functionality**: Build additional features at the routing layer:
-  * Run authentication checks before requests reach user Workers
-  * Remove or add headers or metadata from incoming requests
-  * Attach useful context like user IDs or account information
-  * Transform requests or responses as needed
+- **Scale**: Route requests to millions of hostnames to different Workers, without defining [Workers Routes](https://developers.cloudflare.com/workers/configuration/routing/routes/) configuration for each one
+- **Custom routing logic**: Write code to determine exactly how requests should be routed. For example:
+  - Store hostname-to-Worker mappings in [Workers KV](https://developers.cloudflare.com/kv/) and look them up dynamically
+  - Route requests based on subdomain, path, headers, or other request properties
+  - Use [custom metadata](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/custom-metadata/) attached to [custom hostnames](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/) for routing decisions
+- **Add platform functionality**: Build additional features at the routing layer:
+  - Run authentication checks before requests reach user Workers
+  - Remove or add headers or metadata from incoming requests
+  - Attach useful context like user IDs or account information
+  - Transform requests or responses as needed
 
 ### Configure the dispatch namespace binding
 

@@ -40,6 +40,7 @@ df
 - [`npm`](npm.md)
 - [`pip`](pip.md)
 - [`pipenv`](pipenv.md)
+- [`pnpm`](pnpm.md)
 - [`poetry`](poetry.md)
 - [`twine`](twine.md)
 - [`uv`](uv.md)

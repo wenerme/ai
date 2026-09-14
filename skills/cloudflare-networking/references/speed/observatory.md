@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Observatory (beta)
 
-Last updated Aug 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/speed/observatory/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/observatory/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Observatory uses synthetic tests and real user data from browsers to assess the performance of your website. These data sources produce metrics that provide different types of insights into your website’s performance. Cloudflare then uses the analysis run by Observatory to recommend optimizations with the tools that best suit your performance issues.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Best practices for Artifacts
 
-Last updated Apr 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/artifacts/concepts/best-practices/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/concepts/best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Artifacts works best when you isolate work, scope access narrowly, keep metadata separate, and partition storage deliberately.
 
@@ -28,9 +28,9 @@ This keeps each agent's changes, failures, and cleanup lifecycle separate. It al
 
 Use this pattern when you need to:
 
-* isolate one agent's work from another agent's work
-* hand off a repo to a single session or user application
-* review, merge, archive, or delete work independently
+- isolate one agent's work from another agent's work
+- hand off a repo to a single session or user application
+- review, merge, archive, or delete work independently
 
 Use branches only when collaborators share the same lifecycle and need to work on the same repository. Do not use one shared repo as a queue for many autonomous agents.
 
@@ -42,6 +42,8 @@ Include stable identifiers in the repo name, such as the agent name, session ID,
 
 This example creates a unique repo name before creating the repo.
 
+*src/index.jsjs*
+
 ```js
 async function createRepoCopy(env, agentName, sessionId, repoName) {
 	const uniqueRepoName = `${agentName}-${sessionId}-${repoName}`;
@@ -49,6 +51,8 @@ async function createRepoCopy(env, agentName, sessionId, repoName) {
 	return env.ARTIFACTS.create(uniqueRepoName);
 }
 ```
+
+*src/index.tsts*
 
 ```ts
 interface Env {
@@ -75,6 +79,8 @@ This keeps your starting point consistent and makes downstream diffs easier to r
 
 This example forks a reviewed baseline repo into a session-specific repo.
 
+*src/index.jsjs*
+
 ```js
 async function forkFromBaseline(env, sessionId) {
 	const baseline = await env.ARTIFACTS.get("starter-repo");
@@ -90,6 +96,8 @@ async function forkFromBaseline(env, sessionId) {
 	};
 }
 ```
+
+*src/index.tsts*
 
 ```ts
 interface Env {
@@ -123,6 +131,8 @@ This example uses the [Workers binding](https://developers.cloudflare.com/artifa
 
 Assume the caller is already authenticated and authorized before this route returns a token.
 
+*src/index.jsjs*
+
 ```js
 export default {
 	async fetch(request, env) {
@@ -141,6 +151,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 interface Env {
@@ -195,11 +207,11 @@ Use namespaces to separate operating boundaries. Repo separation isolates units 
 
 Do not keep every repo in one default namespace once usage grows. Split namespaces when you need clearer ownership or more room to scale within the [request rate limits](https://developers.cloudflare.com/artifacts/platform/limits/) for each namespace.
 
-| Use case          | Example namespaces            | Why                                                                 |
-| ----------------- | ----------------------------- | ------------------------------------------------------------------- |
-| Environments      | staging, prod                 | Keep test traffic and production traffic separate.                  |
-| Team boundaries   | sales, finance, devtools      | Keep ownership, access, and cleanup policies distinct.              |
-| Traffic isolation | agents-batch, agents-realtime | Prevent one workload from consuming the limits of another workload. |
+| Use case | Example namespaces | Why |
+| --- | --- | --- |
+| Environments | `staging`, `prod` | Keep test traffic and production traffic separate. |
+| Team boundaries | `sales`, `finance`, `devtools` | Keep ownership, access, and cleanup policies distinct. |
+| Traffic isolation | `agents-batch`, `agents-realtime` | Prevent one workload from consuming the limits of another workload. |
 
 When one namespace becomes hot, shard new repos into additional namespaces instead of continuing to grow a single shared namespace.
 

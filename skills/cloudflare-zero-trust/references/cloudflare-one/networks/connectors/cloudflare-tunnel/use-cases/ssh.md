@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # SSH
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Secure Shell Protocol (SSH) enables users to remotely access devices through the command line. With Cloudflare One, you can make your SSH server available over the Internet without the risk of opening inbound ports on the server.
 

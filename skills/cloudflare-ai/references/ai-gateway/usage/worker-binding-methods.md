@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers Bindings
 
-Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The AI binding (`env.AI`) lets you call AI models and access AI Gateway features directly from your Worker.
 
@@ -37,7 +37,7 @@ binding = "AI"
 
 The binding is accessible in your Worker code as `env.AI`.
 
-If you're using TypeScript, run [wrangler types](https://developers.cloudflare.com/workers/wrangler/commands/general/#types) whenever you modify your Wrangler configuration file. This generates types for the `env` object based on your bindings, as well as [runtime types](https://developers.cloudflare.com/workers/languages/typescript/).
+If you're using TypeScript, run [`wrangler types`](https://developers.cloudflare.com/workers/wrangler/commands/general/#types) whenever you modify your Wrangler configuration file. This generates types for the `env` object based on your bindings, as well as [runtime types](https://developers.cloudflare.com/workers/languages/typescript/).
 
 ## `env.AI.run()`
 
@@ -117,14 +117,14 @@ Browse available models in the [model catalog](https://developers.cloudflare.com
 
 The third argument to `env.AI.run()` accepts a `gateway` object with the following parameters:
 
-| Parameter  | Type    | Default    | Description                                                                                                                                                                                                                                                                                                                                               |
-| ---------- | ------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| id         | string  | _required_ | Name of your [AI Gateway](https://developers.cloudflare.com/ai-gateway/get-started/). Must be in the same account as your Worker. Use "default" to automatically create a gateway on the first authenticated request. Refer to [Default gateway](https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/#default-gateway) for details. |
-| skipCache  | boolean | false      | Skip the [cache](https://developers.cloudflare.com/ai-gateway/features/caching/) for this request.                                                                                                                                                                                                                                                        |
-| cacheTtl   | number  | —          | [Cache TTL](https://developers.cloudflare.com/ai-gateway/features/caching/) in seconds.                                                                                                                                                                                                                                                                   |
-| cacheKey   | string  | —          | Custom [cache key](https://developers.cloudflare.com/ai-gateway/features/caching/) for this request.                                                                                                                                                                                                                                                      |
-| collectLog | boolean | —          | Whether to [collect logs](https://developers.cloudflare.com/ai-gateway/observability/logging/) for this request.                                                                                                                                                                                                                                          |
-| metadata   | object  | —          | [Custom metadata](https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/) to attach to the log entry.                                                                                                                                                                                                                                |
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | *required* | Name of your [AI Gateway](https://developers.cloudflare.com/ai-gateway/get-started/). Must be in the same account as your Worker. Use `"default"` to automatically create a gateway on the first authenticated request. Refer to [Default gateway](https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/#default-gateway) for details. |
+| `skipCache` | `boolean` | `false` | Skip the [cache](https://developers.cloudflare.com/ai-gateway/features/caching/) for this request. |
+| `cacheTtl` | `number` | — | [Cache TTL](https://developers.cloudflare.com/ai-gateway/features/caching/) in seconds. |
+| `cacheKey` | `string` | — | Custom [cache key](https://developers.cloudflare.com/ai-gateway/features/caching/) for this request. |
+| `collectLog` | `boolean` | — | Whether to [collect logs](https://developers.cloudflare.com/ai-gateway/observability/logging/) for this request. |
+| `metadata` | `object` | — | [Custom metadata](https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/) to attach to the log entry. |
 
 ## `env.AI.aiGatewayLogId`
 
@@ -162,7 +162,7 @@ await gateway.patchLog("my-log-id", {
 
 ### `getLog()`
 
-Retrieves details of a specific log entry. If the `AiGatewayLog` type is missing, run [wrangler types](https://developers.cloudflare.com/workers/languages/typescript/#generate-types).
+Retrieves details of a specific log entry. If the `AiGatewayLog` type is missing, run [`wrangler types`](https://developers.cloudflare.com/workers/languages/typescript/#generate-types).
 
 ```typescript
 const log = await gateway.getLog("my-log-id");

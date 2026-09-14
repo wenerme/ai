@@ -1,6 +1,5 @@
 ---
-description: Cloudflare Workflows provide a powerful way to manage asynchronous, durable processes. The ability to explicitly schedule tasks using scheduled handlers and pause execution with `step.sleep` allows developers to build sophisticated, time-aware applications.
-
+description: "Cloudflare Workflows provide a powerful way to manage asynchronous, durable processes. The ability to explicitly schedule tasks using scheduled handlers and pause execution with `step.sleep` allows developers to build sophisticated, time-aware applications.\n"
 title: Use cron triggers to develop time-aware applications
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -13,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Use cron triggers to develop time-aware applications
 
-Last updated Jun 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-3/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-3/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Workflows provide a powerful way to manage asynchronous, durable processes. The ability to explicitly schedule tasks using scheduled handlers and pause execution with `step.sleep` allows developers to build sophisticated, time-aware applications.
 
@@ -21,9 +20,9 @@ Cloudflare Workflows provide a powerful way to manage asynchronous, durable proc
 
 If you want to dive into detail, refer to the following pages:
 
-* [Source code for the Punderful repository ↗](https://github.com/craigsdennis/punderful-workflows)
-* [Cloudflare Workflows](https://developers.cloudflare.com/workflows/)
-* [Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/)
+- [Source code for the Punderful repository ↗](https://github.com/craigsdennis/punderful-workflows)
+- [Cloudflare Workflows](https://developers.cloudflare.com/workflows/)
+- [Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/)
 
 Workflows allow you to kick off asynchronous processes without blocking the user. This is demonstrated in the `addInteraction` function, which creates a new instance of the `INTERACTION` workflow.
 

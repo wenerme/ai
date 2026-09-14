@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DNS in Google Sheets
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/1.1.1.1/additional-options/dns-in-google-sheets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/additional-options/dns-in-google-sheets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Create a function
 
@@ -126,28 +126,36 @@ The full function signature is:
 
 `=NSLookup(type, domain, useCache, minCacheTTL)`
 
-| Parameter   | Required | Default | Description                                                                                                                     |
-| ----------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| type        | Yes      | —       | DNS record type to query (for example, A, AAAA, MX).                                                                            |
-| domain      | Yes      | —       | The domain name to look up.                                                                                                     |
-| useCache    | No       | false   | Set to true to cache results using Google Apps Script's CacheService, which reduces repeated DNS lookups in large spreadsheets. |
-| minCacheTTL | No       | 30      | Minimum cache duration in seconds. The actual TTL is the higher of this value or the TTL returned by the DNS response.          |
+| Parameter | Required | Default | Description |
+| --- | --- | --- | --- |
+| `type` | Yes | — | DNS record type to query (for example, `A`, `AAAA`, `MX`). |
+| `domain` | Yes | — | The domain name to look up. |
+| `useCache` | No | `false` | Set to `true` to cache results using Google Apps Script's CacheService, which reduces repeated DNS lookups in large spreadsheets. |
+| `minCacheTTL` | No | `30` | Minimum cache duration in seconds. The actual TTL is the higher of this value or the TTL returned by the DNS response. |
+
+<details>
+
+<summary>
 
 Supported DNS record types
 
-* `A`
-* `AAAA`
-* `CAA`
-* `CNAME`
-* `DS`
-* `DNSKEY`
-* `MX`
-* `NS`
-* `NSEC`
-* `NSEC3`
-* `RRSIG`
-* `SOA`
-* `TXT`
+</summary>
+
+- <code>A</code>
+- <code>AAAA</code>
+- <code>CAA</code>
+- <code>CNAME</code>
+- <code>DS</code>
+- <code>DNSKEY</code>
+- <code>MX</code>
+- <code>NS</code>
+- <code>NSEC</code>
+- <code>NSEC3</code>
+- <code>RRSIG</code>
+- <code>SOA</code>
+- <code>TXT</code>
+
+</details>
 
 For example, if cell `B1` contains `A` (the record type) and `B2` contains `example.com` (the domain), typing the following formula in another cell:
 
@@ -162,6 +170,7 @@ Depending on your regional settings, you may need to use a semicolon as the argu
 ```
 
 ![Google Sheets cell containing the NSLookup formula](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=534,height=424,format=webp/_astro/google-sheet-function.B_K9dB4i.png)
+
 
 
 Returns the `A` record for that domain:

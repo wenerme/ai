@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Make API requests to 1.1.1.1
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/make-api-requests/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/make-api-requests/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare offers a DNS over HTTPS resolver at:
 
@@ -56,12 +56,12 @@ Cloudflare's DNS over HTTPS resolver supports TLS 1.2 and TLS 1.3.
 
 ## Return codes
 
-| HTTP Status | Meaning                                                    |
-| ----------- | ---------------------------------------------------------- |
-| 400         | DNS query not specified or too small.                      |
-| 413         | DNS query is larger than maximum allowed DNS message size. |
-| 415         | Unsupported content type.                                  |
-| 504         | Resolver timeout while waiting for the query response.     |
+| HTTP Status | Meaning |
+| --- | --- |
+| `400` | DNS query not specified or too small. |
+| `413` | DNS query is larger than maximum allowed DNS message size. |
+| `415` | Unsupported content type. |
+| `504` | Resolver timeout while waiting for the query response. |
 
 Was this helpful?
 

@@ -12,35 +12,43 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Managed networks
 
-Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/managed-networks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/managed-networks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+<details>
+
+<summary>
 
 Feature availability
 
-| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| All modes                                                                                                                          | All plans                                                       |
+</summary>
 
-| System   | Availability | Minimum client version |
-| -------- | ------------ | ---------------------- |
-| Windows  | ✅            | 2025.1.861.0           |
-| macOS    | ✅            | 2025.1.861.0           |
-| Linux    | ✅            | 2025.1.861.0           |
-| iOS      | ✅            | 1.0                    |
-| Android  | ✅            | 1.0                    |
-| ChromeOS | ✅            | 1.0                    |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- |
+| All modes | All plans |
+
+| System | Availability | Minimum client version |
+| --- | --- | --- |
+| Windows | ✅ | 2025.1.861.0 |
+| macOS | ✅ | 2025.1.861.0 |
+| Linux | ✅ | 2025.1.861.0 |
+| iOS | ✅ | 1.0 |
+| Android | ✅ | 1.0 |
+| ChromeOS | ✅ | 1.0 |
+
+</details>
 
 The Cloudflare One Client (formerly WARP) allows you to selectively apply specific [device profiles](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) and device client settings when a device connects to a known network location, such as an office. To detect which network a device is on, the Cloudflare One Client connects to a TLS endpoint that you host on that network and validates its certificate. If the certificate matches, the device is on your managed network and receives the corresponding [device profile](#4-configure-device-profile) (if one has been configured for that network).
 
 On this page, you will learn how to:
 
-* Create a TLS endpoint on your trusted network.
-* Configure the TLS endpoint in Zero Trust to set up a managed network.
-* Apply the appropriate device profile to a device when the Cloudflare One Client detects it is on your managed network.
+- Create a TLS endpoint on your trusted network.
+- Configure the TLS endpoint in Zero Trust to set up a managed network.
+- Apply the appropriate device profile to a device when the Cloudflare One Client detects it is on your managed network.
 
 ## Requirements
 
-* The Cloudflare One Client scans for managed networks when the operating system's default route changes, the SSID of the active Wi-Fi connection changes, or the DNS servers of the default interface change. To minimize performance impact, reuse the same TLS endpoint across multiple locations unless you require distinct settings profiles for each location.
-* Ensure that the device can only reach one managed network at any given time. If multiple managed networks are configured and reachable, there is no way to determine which settings profile the device will receive.
+- The Cloudflare One Client scans for managed networks when the operating system's default route changes, the SSID of the active Wi-Fi connection changes, or the DNS servers of the default interface change. To minimize performance impact, reuse the same TLS endpoint across multiple locations unless you require distinct settings profiles for each location.
+- Ensure that the device can only reach one managed network at any given time. If multiple managed networks are configured and reachable, there is no way to determine which settings profile the device will receive.
 
 ## Managed network detection logic
 
@@ -50,7 +58,7 @@ The time it takes to apply the correct device profile depends on how quickly the
 
 If the TLS endpoint times out after 5 seconds, the Cloudflare One Client will determine that the device is not on a managed network and will apply the default device profile. The Cloudflare One Client only retries detection if a non-timeout error occurs. A timeout triggers fallback to the default device profile without further retries.
 
-## 1\. Choose a TLS endpoint
+## 1. Choose a TLS endpoint
 
 A TLS endpoint is a host on your network that serves a TLS certificate. The TLS endpoint acts like a network location beacon — when a device connects to a network, the Cloudflare One Client on the device detects the TLS endpoint and validates the TLS certificate against the SHA-256 fingerprint (if specified) or against the local certificate store to check that it is signed by a public certificate authority.
 
@@ -61,98 +69,140 @@ The TLS certificate can be hosted by any device on your network. However, the en
 If you do not already have a TLS endpoint on your network, you can set one up as follows:
 
 1. Generate a TLS certificate:
-```sh
-openssl req -x509 -newkey rsa:4096 -sha256 -days 3650 -nodes -keyout key.pem -out cert.pem -subj "/CN=example.com" -addext "subjectAltName=DNS:example.com"
-```
-The command will output a certificate in PEM format and its private key. Store these files in a secure place.
-Note
-The Cloudflare One Client requires certificates to include `CN` and `subjectAltName` metadata. You can use `example.com` or any other domain.
+
+   ```sh
+   openssl req -x509 -newkey rsa:4096 -sha256 -days 3650 -nodes -keyout key.pem -out cert.pem -subj "/CN=example.com" -addext "subjectAltName=DNS:example.com"
+   ```
+
+   The command will output a certificate in PEM format and its private key. Store these files in a secure place.
+
+   Note
+
+   The Cloudflare One Client requires certificates to include `CN` and `subjectAltName` metadata. You can use `example.com` or any other domain.
 2. Configure an HTTPS server on your network to use this certificate and key. The example below demonstrates how to serve the TLS certificate from an nginx container in Docker:
-a. Create an nginx configuration file called `nginx.conf`:
-```txt
-events {
-worker_connections  1024;
-}
-http {
-		server {
-			listen              443 ssl;
-			ssl_certificate     /certs/cert.pem;
-			ssl_certificate_key /certs/key.pem;
-			location / {
-						return 200;
-			}
-		}
-}
-```
-If needed, replace `/certs/cert.pem` and `/certs/key.pem` with the locations of your certificate and key.
-b. Add the nginx image to your Docker compose file:
-```yml
-services:
-	nginx:
-		image: nginx:latest
-		ports:
-			- 3333:443
-		volumes:
-			- ./nginx.conf:/etc/nginx/nginx.conf:ro
-			- ./certs:/certs:ro
-```
-If needed, replace `./nginx.conf` and `./certs` with the locations of your nginx configuration file and certificate.
-c. Start the server:
-```sh
-docker compose up -d
-```
+
+   a. Create an nginx configuration file called `nginx.conf`:
+
+   *nginx.conftxt*
+
+
+
+   ```txt
+   events {
+   worker_connections  1024;
+   }
+
+   http {
+   		server {
+   			listen              443 ssl;
+   			ssl_certificate     /certs/cert.pem;
+   			ssl_certificate_key /certs/key.pem;
+   			location / {
+   						return 200;
+   			}
+   		}
+   }
+   ```
+
+   If needed, replace `/certs/cert.pem` and `/certs/key.pem` with the locations of your certificate and key.
+
+   b. Add the nginx image to your Docker compose file:
+
+   *docker-compose.ymlyml*
+
+
+
+   ```yml
+   services:
+   	nginx:
+   		image: nginx:latest
+   		ports:
+   			- 3333:443
+   		volumes:
+   			- ./nginx.conf:/etc/nginx/nginx.conf:ro
+   			- ./certs:/certs:ro
+   ```
+
+   If needed, replace `./nginx.conf` and `./certs` with the locations of your nginx configuration file and certificate.
+
+   c. Start the server:
+
+   ```sh
+   docker compose up -d
+   ```
+
+
 3. To test that the TLS server is working, run a curl command from the end user's device:
-```sh
-curl --verbose --insecure https://<private-server-IP>:3333/
-```
-You need to pass the `--insecure` option because we are using a self-signed certificate. If the device is connected to the network, the request should return a `200` status code.
+
+   ```sh
+   curl --verbose --insecure https://<private-server-IP>:3333/
+   ```
+
+   You need to pass the `--insecure` option because we are using a self-signed certificate. If the device is connected to the network, the request should return a `200` status code.
+
+<details>
+
+<summary>
 
 Windows IIS
+
+</summary>
 
 To create a TLS endpoint using Windows Internet Information Services (IIS) Manager:
 
 1. Run Powershell as administrator.
 2. Generate a self-signed certificate:
-```powershell
-New-SelfSignedCertificate -CertStoreLocation Cert:\LocalMachine\My -DnsName "office-name.example.internal" -FriendlyName "Cloudflare Managed Network Certificate" -NotAfter (Get-Date).AddYears(10)
-```
-```powershell
-	PSParentPath: Microsoft.PowerShell.Security\Certificate::LocalMachine\My
-Thumbprint                                Subject
-----------                                -------
-0660C4FCD15F69C49BD080FEEA4136B3D302B41B  CN=office-name.example.internal
-```
+
+   ```powershell
+   New-SelfSignedCertificate -CertStoreLocation Cert:\LocalMachine\My -DnsName "office-name.example.internal" -FriendlyName "Cloudflare Managed Network Certificate" -NotAfter (Get-Date).AddYears(10)
+   ```
+
+   ```powershell
+   	PSParentPath: Microsoft.PowerShell.Security\Certificate::LocalMachine\My
+
+   Thumbprint                                Subject
+   ----------                                -------
+   0660C4FCD15F69C49BD080FEEA4136B3D302B41B  CN=office-name.example.internal
+   ```
+
+
 3. Extract the certificate's SHA-256 fingerprint:
-```powershell
-[System.BitConverter]::ToString([System.Security.Cryptography.SHA256]::Create().ComputeHash((Get-ChildItem Cert:\LocalMachine\My | Where-Object { $_.FriendlyName -eq "Cloudflare Managed Network Certificate" }).RawData)) -replace "-", ""
-```
-```powershell
-DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8662
-```
-You will need the SHA-256 fingerprint to [configure the managed network in Zero Trust](#3-add-managed-network-to-zero-trust). Do not use the default SHA-1 thumbprint generated by the `New-SelfSignedCertificate` command.
+
+   ```powershell
+   [System.BitConverter]::ToString([System.Security.Cryptography.SHA256]::Create().ComputeHash((Get-ChildItem Cert:\LocalMachine\My | Where-Object { $_.FriendlyName -eq "Cloudflare Managed Network Certificate" }).RawData)) -replace "-", ""
+   ```
+
+   ```powershell
+   DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8662
+   ```
+
+   You will need the SHA-256 fingerprint to <a href="#3-add-managed-network-to-zero-trust">configure the managed network in Zero Trust</a>. Do not use the default SHA-1 thumbprint generated by the <code>New-SelfSignedCertificate</code> command.
 4. Open IIS Manager.
 5. In the **Connections** pane, right-click the **Sites** node and select **Add Website**.
-6. In **Site name**, enter any name for the TLS server (for example, `Managed Network Server`).
-7. In **Physical path**, enter any directory that contains a `.htm` or `html` file, such as `C:\inetpub\wwwroot`. Cloudflare does not validate the content within the directory.
+6. In **Site name**, enter any name for the TLS server (for example, <code>Managed Network Server</code>).
+7. In **Physical path**, enter any directory that contains a <code>.htm</code> or <code>html</code> file, such as <code>C:\inetpub\wwwroot</code>. Cloudflare does not validate the content within the directory.
 8. Under **Binding**, configure the following fields:
-
-  * **Type**: _https_
-  * **IP address**: _All Unassigned_
-  * **Port**: `443`
-  * **Host name**: Enter the certificate's Common Name (CN). The CN of our example certificate is `office-name.example.internal`.
-  * **Require Server Name Indication**: Enabled
-  * **SSL certificate**: Select the name of your TLS certificate. Our example certificate is called `Cloudflare Managed Network Certificate`.
+   - **Type**: *https*
+   - **IP address**: *All Unassigned*
+   - **Port**: <code>443</code>
+   - **Host name**: Enter the certificate's Common Name (CN). The CN of our example certificate is <code>office-name.example.internal</code>.
+   - **Require Server Name Indication**: Enabled
+   - **SSL certificate**: Select the name of your TLS certificate. Our example certificate is called <code>Cloudflare Managed Network Certificate</code>.
 9. To test that the TLS server is working, run a curl command from the end user's device:
-```sh
-curl --verbose --insecure --resolve office-name.example.internal:443:<private-server-IP> https://office-name.example.internal
-```
-You need to pass the `--insecure` option because we are using a self-signed certificate. The `--resolve` option allows you to connect to the server's private IP but also pass the hostname to the server for SNI and certificate validation. If the device is connected to the network, the request should return your directory's default homepage (`C:\inetpub\wwwroot\iisstart.htm`).
+
+   ```sh
+   curl --verbose --insecure --resolve office-name.example.internal:443:<private-server-IP> https://office-name.example.internal
+   ```
+
+   You need to pass the <code>--insecure</code> option because we are using a self-signed certificate. The <code>--resolve</code> option allows you to connect to the server's private IP but also pass the hostname to the server for SNI and certificate validation. If the device is connected to the network, the request should return your directory's default homepage (<code>C:\inetpub\wwwroot\iisstart.htm</code>).
+
+</details>
 
 ### Supported cipher suites
 
 The Cloudflare One Client establishes a TLS connection using [Rustls ↗](https://github.com/rustls/rustls). Make sure your TLS endpoint accepts one of the [cipher suites supported by Rustls ↗](https://docs.rs/rustls/0.21.10/src/rustls/suites.rs.html#125-143).
 
-## 2\. Extract the SHA-256 fingerprint
+## 2. Extract the SHA-256 fingerprint
 
 The SHA-256 fingerprint is only required if your TLS endpoint uses a self-signed certificate.
 
@@ -180,32 +230,36 @@ The output will look something like:
 SHA256 Fingerprint=DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8662
 ```
 
-## 3\. Add managed network to Cloudflare One
+## 3. Add managed network to Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles**.
 2. Select **Managed networks** and select **Add new managed network**.
 3. Name your network location.
 4. In **Host and Port**, enter the private IP address and port number of your [TLS endpoint](#create-a-new-tls-endpoint) (for example, `192.168.185.198:3333`).
-Note
-We recommend using the private IP of your managed network endpoint and not a hostname to prevent issues related to DNS lookups resolving the incorrect IP.
+
+   Note
+
+   We recommend using the private IP of your managed network endpoint and not a hostname to prevent issues related to DNS lookups resolving the incorrect IP.
 5. (Optional) In **TLS Cert SHA-256**, enter the [SHA-256 fingerprint](#2-extract-the-sha-256-fingerprint) of the TLS certificate. This field is only needed for self-signed certificates. If a TLS fingerprint is not supplied, the Cloudflare One Client validates the certificate against the local certificate store and checks that it is signed by a public certificate authority.
 6. Select **Save**.
 
-1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
+1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+   - `Zero Trust Write`
+2. Add a managed network using the [`cloudflare_zero_trust_device_managed_network` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_managed_network) resource:
 
-  * `Zero Trust Write`
-2. Add a managed network using the [cloudflare\_zero\_trust\_device\_managed\_network ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fmanaged%5Fnetwork) resource:
-```tf
-resource "cloudflare_zero_trust_device_managed_networks" "office" {
-	account_id = var.cloudflare_account_id
-	name       = "Office managed network"
-	type       = "tls"
-	config = {
-		tls_sockaddr = "192.168.185.198:3333"
-		sha256       = "DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8662"
-	}
-}
-```
+   ```tf
+   resource "cloudflare_zero_trust_device_managed_networks" "office" {
+   	account_id = var.cloudflare_account_id
+   	name       = "Office managed network"
+   	type       = "tls"
+   	config = {
+   		tls_sockaddr = "192.168.185.198:3333"
+   		sha256       = "DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8662"
+   	}
+   }
+   ```
+
+
 
 The Cloudflare One Client will automatically exclude the TLS endpoint from all device profiles if it is specified as a private IP address. This exclusion prevents remote users from accessing the endpoint through the WARP tunnel on any port. If the TLS endpoint is specified as a hostname instead of a private IP, the Cloudflare One Client will not automatically exclude it.
 
@@ -213,18 +267,18 @@ Split Tunnels in Include mode
 
 If a device profile uses [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) in **Include** mode, ensure that your Split Tunnel entries do not contain the TLS endpoint IP address; otherwise the Cloudflare One Client will exclude the entire Split Tunnel entry from the tunnel. For example, if you are currently including `10.0.0.0/8` but your TLS endpoint is on `10.0.0.1`, use our [IP subtraction calculator](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#add-a-route) to remove `10.0.0.1` from `10.0.0.0/8`.
 
-## 4\. Configure device profile
+## 4. Configure device profile
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
 2. Create a [new profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) or edit an existing profile.
 3. To apply this profile whenever a device connects to your network, add the following rule:
 
-| Selector        | Operator | Value          |
-| --------------- | -------- | -------------- |
-| Managed network | is       | <NETWORK-NAME> |
+   | Selector | Operator | Value |
+   | --- | --- | --- |
+   | Managed network | is | `<NETWORK-NAME>` |
 4. Save the profile.
 
-In [cloudflare\_zero\_trust\_device\_custom\_profile ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fcustom%5Fprofile), configure a `match` expression using the `network` selector. For example, the following device profile will match all devices connected a specific managed network:
+In [`cloudflare_zero_trust_device_custom_profile` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_custom_profile), configure a `match` expression using the `network` selector. For example, the following device profile will match all devices connected a specific managed network:
 
 ```tf
 resource "cloudflare_zero_trust_device_custom_profile" "office" {
@@ -243,7 +297,7 @@ resource "cloudflare_zero_trust_device_custom_profile" "office" {
 
 Managed networks are now enabled. Every time a device in your organization connects to a network (for example, when waking up the device or changing Wi-Fi networks), the Cloudflare One Client will determine its network location and apply the corresponding settings profile.
 
-## 5\. Verify managed network
+## 5. Verify managed network
 
 To check if the Cloudflare One Client detects the network location:
 
@@ -253,9 +307,9 @@ To check if the Cloudflare One Client detects the network location:
 
 ## Related resources
 
-* [Device profiles](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) \- How to create and manage the device profiles you apply via managed networks.
-* [Device client settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/) \- Defines how the Cloudflare One Client behaves and what users can do.
-* [Cloudflare One Client troubleshooting guide](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/troubleshooting-guide/) \- Troubleshoot common Cloudflare One Client issues.
+- [Device profiles](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) - How to create and manage the device profiles you apply via managed networks.
+- [Device client settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/) - Defines how the Cloudflare One Client behaves and what users can do.
+- [Cloudflare One Client troubleshooting guide](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/troubleshooting-guide/) - Troubleshoot common Cloudflare One Client issues.
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Logs
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/changelog/logs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/changelog/logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/logs.xml)
 
@@ -21,17 +21,17 @@ Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Azure Functions-based Microsoft Sentinel connector deprecation**
 
-Cloudflare Enterprise customers using the [Azure Functions-based Microsoft Sentinel connector ↗](https://marketplace.microsoft.com/en-us/product/cloudflare.cloudflare%5Fsentinel?tab=Overview) must migrate to the [Cloudflare for Microsoft Sentinel Codeless Connector Framework (CCF) connector ↗](https://marketplace.microsoft.com/en-us/product/cloudflare.azure-sentinel-solution-cloudflare-ccf?tab=Overview) by 2026-09-14.
+Cloudflare Enterprise customers using the [Azure Functions-based Microsoft Sentinel connector ↗](https://marketplace.microsoft.com/en-us/product/cloudflare.cloudflare_sentinel?tab=Overview) must migrate to the [Cloudflare for Microsoft Sentinel Codeless Connector Framework (CCF) connector ↗](https://marketplace.microsoft.com/en-us/product/cloudflare.azure-sentinel-solution-cloudflare-ccf?tab=Overview) by 2026-09-14.
 
-Microsoft is deprecating the Azure Monitor HTTP Data Collector API. Support for the API ends on 2026-09-14\. As a result, Cloudflare will no longer maintain the Azure Functions-based connector after that date.
+Microsoft is deprecating the Azure Monitor HTTP Data Collector API. Support for the API ends on 2026-09-14. As a result, Cloudflare will no longer maintain the Azure Functions-based connector after that date.
 
 To migrate, follow the [Microsoft Sentinel integration setup guide](https://developers.cloudflare.com/analytics/analytics-integrations/sentinel/).
 
 #### Additional resources
 
-* [Download Cloudflare's CCF Sentinel Solution ↗](https://marketplace.microsoft.com/en-us/product/azure-application/cloudflare.azure-sentinel-solution-cloudflare-ccf?tab=Overview)
-* [Microsoft Sentinel data lake overview ↗](https://learn.microsoft.com/en-us/azure/sentinel/datalake/sentinel-lake-overview)
-* [About the CCF platform ↗](https://learn.microsoft.com/en-us/azure/sentinel/create-codeless-connector)
+- [Download Cloudflare's CCF Sentinel Solution ↗](https://marketplace.microsoft.com/en-us/product/azure-application/cloudflare.azure-sentinel-solution-cloudflare-ccf?tab=Overview)
+- [Microsoft Sentinel data lake overview ↗](https://learn.microsoft.com/en-us/azure/sentinel/datalake/sentinel-lake-overview)
+- [About the CCF platform ↗](https://learn.microsoft.com/en-us/azure/sentinel/create-codeless-connector)
 
 For more information, refer to Microsoft's [Azure Monitor HTTP Data Collector API deprecation notice ↗](https://learn.microsoft.com/en-us/previous-versions/azure/azure-monitor/logs/data-collector-api?tabs=powershell).
 
@@ -44,14 +44,14 @@ Cloudflare has updated [Logpush datasets](https://developers.cloudflare.com/logs
 
 #### New datasets
 
-* **Account Abuse Protection Events**: A new dataset with fields including `AuthenticationIdentityProvider`, `AuthenticationMethod`, `AuthenticationStatus`, `BotScore`, `ClientASN`, `ClientCity`, `ClientCountry`, `ClientIP`, `Email`, `EphemeralID`, `EventSource`, `EventType`, `FraudEmailRisk`, `Host`, `JA4`, `RayID`, `Timestamp`, `UserAgent`, and `UserID`.
-* **Magic BGP Logs**: A new dataset with fields including `Direction`, `EventData`, `EventKind`, `EventTimestamp`, `TunnelID`, and `TunnelName`.
+- **Account Abuse Protection Events**: A new dataset with fields including `AuthenticationIdentityProvider`, `AuthenticationMethod`, `AuthenticationStatus`, `BotScore`, `ClientASN`, `ClientCity`, `ClientCountry`, `ClientIP`, `Email`, `EphemeralID`, `EventSource`, `EventType`, `FraudEmailRisk`, `Host`, `JA4`, `RayID`, `Timestamp`, `UserAgent`, and `UserID`.
+- **Magic BGP Logs**: A new dataset with fields including `Direction`, `EventData`, `EventKind`, `EventTimestamp`, `TunnelID`, and `TunnelName`.
 
 #### Updated fields in existing datasets
 
-* **Firewall events** (added): `AISecurityCustomTopicCategories`, `WAFRequestSignatureCategories`, and `WAFRequestSignatureRefs`.
-* **Gateway HTTP** (added): `ExperimentalFeatures` and `PackageInfo`.
-* **HTTP requests** (added): `AISecurityCustomTopicCategories`, `ClientTLSKeyExchangeGroup`, `WAFRequestSignatureCategories`, and `WAFRequestSignatureRefs`.
+- **Firewall events** (added): `AISecurityCustomTopicCategories`, `WAFRequestSignatureCategories`, and `WAFRequestSignatureRefs`.
+- **Gateway HTTP** (added): `ExperimentalFeatures` and `PackageInfo`.
+- **HTTP requests** (added): `AISecurityCustomTopicCategories`, `ClientTLSKeyExchangeGroup`, `WAFRequestSignatureCategories`, and `WAFRequestSignatureRefs`.
 
 For the complete field definitions for each dataset, refer to [Logpush datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/).
 
@@ -60,7 +60,7 @@ For the complete field definitions for each dataset, refer to [Logpush datasets]
 
 **Per-zone post-quantum visibility in Logpush and Log Explorer**
 
-[Cloudflare Radar ↗](https://radar.cloudflare.com/post-quantum) publishes global statistics on post-quantum key agreement adoption across all Cloudflare traffic, but until now customers had no way to see the same measurement scoped to their own zones. This is now possible because the [http\_requests](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http%5Frequests/) Logpush dataset — also queryable in [Log Explorer](https://developers.cloudflare.com/log-explorer/) — includes a new `ClientTLSKeyExchangeGroup` field.
+[Cloudflare Radar ↗](https://radar.cloudflare.com/post-quantum) publishes global statistics on post-quantum key agreement adoption across all Cloudflare traffic, but until now customers had no way to see the same measurement scoped to their own zones. This is now possible because the [`http_requests`](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/) Logpush dataset — also queryable in [Log Explorer](https://developers.cloudflare.com/log-explorer/) — includes a new `ClientTLSKeyExchangeGroup` field.
 
 The field reports the TLS key exchange group negotiated on the client-to-Cloudflare connection, by group name. Post-quantum connections appear as `X25519MLKEM768`, and classical connections appear as `X25519`, `P-256`, or another named group. A value of `UNK` means the group could not be determined, and `NONE` means TLS was not used.
 
@@ -75,16 +75,16 @@ Enterprise customers can now push per-connection WebSocket analytics to any [Log
 
 Key fields include:
 
-* **`ConnectionCloseReason`** — why the connection ended: `peerReset`, `peerNoError`, `timedOut`, `upstreamReset`, `protocolViolation`, `unspecifiedError`, or `none`.
-* **`ConnectionCloseSource`** — which side initiated the close: `upstream`, `downstream`, `me`, or `both`.
-* **`ConnectionTransportCloseCode`** — the TLS alert code or TCP-level close code for additional precision.
-* **`RayID`** — correlate WebSocket connection events with your existing HTTP Request logs.
+- **`ConnectionCloseReason`** — why the connection ended: `peerReset`, `peerNoError`, `timedOut`, `upstreamReset`, `protocolViolation`, `unspecifiedError`, or `none`.
+- **`ConnectionCloseSource`** — which side initiated the close: `upstream`, `downstream`, `me`, or `both`.
+- **`ConnectionTransportCloseCode`** — the TLS alert code or TCP-level close code for additional precision.
+- **`RayID`** — correlate WebSocket connection events with your existing HTTP Request logs.
 
 The dataset also includes directional byte counts (`BytesSentClient`, `BytesReceivedClient`, `BytesSentOrigin`, `BytesReceivedOrigin`), connection timestamps, client IP, colo code, and request metadata from the original WebSocket upgrade.
 
 This data lets you build alerts on connection close patterns — for example, detecting spikes in TCP resets (`ConnectionCloseReason == "peerReset"`) grouped by host and data center — directly in your existing log analysis tools.
 
-For the full list of available fields, refer to [WebSocket Analytics](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/websocket%5Fanalytics/).
+For the full list of available fields, refer to [WebSocket Analytics](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/websocket_analytics/).
 
 ## 2026-07-02
 
@@ -95,9 +95,9 @@ Cloudflare has updated [Logpush datasets](https://developers.cloudflare.com/logs
 
 #### Updated fields in existing datasets
 
-* **Gateway DNS** (added): `AppliedMaxTTL` and `UpstreamRecordTTLs`.
-* **Gateway HTTP** (added): `Warnings`.
-* **HTTP requests** (added): `CacheLockWaitedMs`.
+- **Gateway DNS** (added): `AppliedMaxTTL` and `UpstreamRecordTTLs`.
+- **Gateway HTTP** (added): `Warnings`.
+- **HTTP requests** (added): `CacheLockWaitedMs`.
 
 For the complete field definitions for each dataset, refer to [Logpush datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/).
 
@@ -106,15 +106,15 @@ For the complete field definitions for each dataset, refer to [Logpush datasets]
 
 **Account-scoped firewall events dataset in Logpush**
 
-Cloudflare Logpush now supports [firewall events as an account-scoped dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/firewall%5Fevents/). Configure a single Logpush job at the account level to receive firewall events for every zone in the account, instead of creating and maintaining a separate job per zone.
+Cloudflare Logpush now supports [firewall events as an account-scoped dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/firewall_events/). Configure a single Logpush job at the account level to receive firewall events for every zone in the account, instead of creating and maintaining a separate job per zone.
 
-The dataset includes a new [ZoneName](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/firewall%5Fevents/#zonename) field so you can identify which zone each event came from when consuming logs in your downstream pipeline.
+The dataset includes a new [`ZoneName`](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/firewall_events/#zonename) field so you can identify which zone each event came from when consuming logs in your downstream pipeline.
 
 #### What's available
 
-* A new account-scoped `firewall_events` dataset, configurable via the [Logpush API](https://developers.cloudflare.com/api/resources/logpush/subresources/jobs/) or the Cloudflare dashboard.
-* The same fields and filter expressions supported by the existing [zone-scoped firewall events dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/firewall%5Fevents/), plus the new `ZoneName` field.
-* Support for all existing Logpush destinations.
+- A new account-scoped `firewall_events` dataset, configurable via the [Logpush API](https://developers.cloudflare.com/api/resources/logpush/subresources/jobs/) or the Cloudflare dashboard.
+- The same fields and filter expressions supported by the existing [zone-scoped firewall events dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/firewall_events/), plus the new `ZoneName` field.
+- Support for all existing Logpush destinations.
 
 ## 2026-06-24
 
@@ -125,12 +125,12 @@ Cloudflare has updated [Logpush datasets](https://developers.cloudflare.com/logs
 
 #### New datasets
 
-* **WebSocket Analytics**: A new dataset with fields including `BytesReceivedClient`, `BytesReceivedOrigin`, `BytesSentClient`, `BytesSentOrigin`, `ClientASN`, `ClientIP`, `ClientRequestHost`, `ClientRequestPath`, `ClientRequestUserAgent`, `ColoCode`, `ConnectionCloseReason`, `ConnectionCloseSource`, `ConnectionID`, `ConnectionTransportCloseCode`, `EdgeEndTimestamp`, `EdgeStartTimestamp`, and `RayID`.
+- **WebSocket Analytics**: A new dataset with fields including `BytesReceivedClient`, `BytesReceivedOrigin`, `BytesSentClient`, `BytesSentOrigin`, `ClientASN`, `ClientIP`, `ClientRequestHost`, `ClientRequestPath`, `ClientRequestUserAgent`, `ColoCode`, `ConnectionCloseReason`, `ConnectionCloseSource`, `ConnectionID`, `ConnectionTransportCloseCode`, `EdgeEndTimestamp`, `EdgeStartTimestamp`, and `RayID`.
 
 #### Updated fields in existing datasets
 
-* **Firewall events** (added): `ZoneName`. The Firewall events dataset is now also available for [account-scope Logpush](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/firewall%5Fevents/), in addition to the existing zone scope.
-* **Email Security Alerts** (added): `BCC`, `DKIMResult`, `DMARCPolicy`, `DMARCResult`, and `SPFResult`.
+- **Firewall events** (added): `ZoneName`. The Firewall events dataset is now also available for [account-scope Logpush](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/firewall_events/), in addition to the existing zone scope.
+- **Email Security Alerts** (added): `BCC`, `DKIMResult`, `DMARCPolicy`, `DMARCResult`, and `SPFResult`.
 
 For the complete field definitions for each dataset, refer to [Logpush datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/).
 
@@ -143,7 +143,7 @@ Cloudflare has updated [Logpush datasets](https://developers.cloudflare.com/logs
 
 #### New datasets
 
-* **Turnstile Events**: A new dataset with fields including `ASN`, `Action`, `BrowserMajor`, `BrowserName`, `ClientIP`, `CountryCode`, `EventType`, `Hostname`, `OSMajor`, `OSName`, `Sitekey`, `Timestamp`, and `UserAgent`.
+- **Turnstile Events**: A new dataset with fields including `ASN`, `Action`, `BrowserMajor`, `BrowserName`, `ClientIP`, `CountryCode`, `EventType`, `Hostname`, `OSMajor`, `OSName`, `Sitekey`, `Timestamp`, and `UserAgent`.
 
 For the complete field definitions for each dataset, refer to [Logpush datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/).
 
@@ -156,9 +156,9 @@ Cloudflare has updated [Logpush datasets](https://developers.cloudflare.com/logs
 
 #### Updated fields in existing datasets
 
-* **DEX Device State Events** (added): `DeviceRegistrationProfileID`.
-* **Gateway HTTP** (added): `AddedHeaders`, `DeletedHeaders`, and `SetHeaders`.
-* **HTTP requests** (added): `MatchedRules`.
+- **DEX Device State Events** (added): `DeviceRegistrationProfileID`.
+- **Gateway HTTP** (added): `AddedHeaders`, `DeletedHeaders`, and `SetHeaders`.
+- **HTTP requests** (added): `MatchedRules`.
 
 For the complete field definitions for each dataset, refer to [Logpush datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/).
 
@@ -171,13 +171,13 @@ Cloudflare has updated [Logpush datasets](https://developers.cloudflare.com/logs
 
 #### New datasets
 
-* **Email Security Post-Delivery Events**: A new dataset with fields including `AlertID`, `CompletedAt`, `Destination`, `FinalDisposition`, `Folder`, `From`, `FromName`, `MessageID`, `MessageTimestamp`, `MicrosoftTenantID`, `Operation`, `PostfixID`, `Reasons`, `Recipient`, `RequestedAt`, `RequestedBy`, `RequestedDisposition`, `Status`, `Subject`, `Success`, and `To`.
-* **Magic Network Monitoring Flow Logs**: A new dataset with fields including `AWSVPCFlowJSON`, `Bits`, `DestinationAS`, `DestinationAddress`, `DestinationPort`, `DeviceID`, `EgressBits`, `EgressPackets`, `Ethertype`, `FlowProtocol`, `FlowTimestamp`, `NumFlows`, `PacketID`, `Packets`, `Protocol`, `RuleIDs`, `SampleRate`, `SampleRateType`, `SamplerAddress`, `SourceAS`, `SourceAddress`, `SourcePort`, `TcpFlags`, and `Timestamp`.
+- **Email Security Post-Delivery Events**: A new dataset with fields including `AlertID`, `CompletedAt`, `Destination`, `FinalDisposition`, `Folder`, `From`, `FromName`, `MessageID`, `MessageTimestamp`, `MicrosoftTenantID`, `Operation`, `PostfixID`, `Reasons`, `Recipient`, `RequestedAt`, `RequestedBy`, `RequestedDisposition`, `Status`, `Subject`, `Success`, and `To`.
+- **Magic Network Monitoring Flow Logs**: A new dataset with fields including `AWSVPCFlowJSON`, `Bits`, `DestinationAS`, `DestinationAddress`, `DestinationPort`, `DeviceID`, `EgressBits`, `EgressPackets`, `Ethertype`, `FlowProtocol`, `FlowTimestamp`, `NumFlows`, `PacketID`, `Packets`, `Protocol`, `RuleIDs`, `SampleRate`, `SampleRateType`, `SamplerAddress`, `SourceAS`, `SourceAddress`, `SourcePort`, `TcpFlags`, and `Timestamp`.
 
 #### Updated fields in existing datasets
 
-* **Firewall events** (added): `AISecurityInjectionScore`, `AISecurityPIICategories`, `AISecurityTokenCount`, and `AISecurityUnsafeTopicCategories`.
-* **HTTP requests** (added): `AISecurityInjectionScore`, `AISecurityPIICategories`, `AISecurityTokenCount`, `AISecurityUnsafeTopicCategories`, and `Subrequests`.
+- **Firewall events** (added): `AISecurityInjectionScore`, `AISecurityPIICategories`, `AISecurityTokenCount`, and `AISecurityUnsafeTopicCategories`.
+- **HTTP requests** (added): `AISecurityInjectionScore`, `AISecurityPIICategories`, `AISecurityTokenCount`, `AISecurityUnsafeTopicCategories`, and `Subrequests`.
 
 For the complete field definitions for each dataset, refer to [Logpush datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/).
 
@@ -190,17 +190,17 @@ When a Cloudflare Worker intercepts a visitor request, it can dispatch additiona
 
 #### What's new
 
-* New subrequest\_merging field on Logpush jobs — Set "merge\_subrequests": true when creating or updating an http\_requests Logpush job to enable the feature.
-* New Subrequests log field — When subrequest merging is enabled, a Subrequests field (`array\<object\>`) is added to each parent request log record. Each element in the array contains the standard http\_requests fields for that subrequest.
+- New subrequest\_merging field on Logpush jobs — Set "merge\_subrequests": true when creating or updating an http\_requests Logpush job to enable the feature.
+- New Subrequests log field — When subrequest merging is enabled, a Subrequests field ( `array\<object\>`) is added to each parent request log record. Each element in the array contains the standard http\_requests fields for that subrequest.
 
 #### Limitations
 
-* Applies to the http\_requests (zone-scoped) dataset only.
-* A maximum of 50 subrequests are merged per parent request. Subrequests beyond this limit are passed through unmodified as individual log entries.
-* Subrequests must complete within 5 minutes of the visitor request. Subrequests that exceed this window are passed through unmodified.
-* Subrequests that do not qualify appear as separate log entries — no data is lost.
-* Subrequest merging is being gradually rolled out and is not yet available on all zones. Contact your account team for concerns or to ensure it is enabled for your zone.
-* For more information, refer to [Subrequests](https://developers.cloudflare.com/logs/logpush/logpush-job/subrequests/).
+- Applies to the http\_requests (zone-scoped) dataset only.
+- A maximum of 50 subrequests are merged per parent request. Subrequests beyond this limit are passed through unmodified as individual log entries.
+- Subrequests must complete within 5 minutes of the visitor request. Subrequests that exceed this window are passed through unmodified.
+- Subrequests that do not qualify appear as separate log entries — no data is lost.
+- Subrequest merging is being gradually rolled out and is not yet available on all zones. Contact your account team for concerns or to ensure it is enabled for your zone.
+- For more information, refer to [Subrequests](https://developers.cloudflare.com/logs/logpush/logpush-job/subrequests/).
 
 ## 2026-04-20
 
@@ -244,27 +244,25 @@ Cloudflare has added new fields to multiple [Logpush datasets](https://developer
 
 The following Gateway and Zero Trust datasets now include a `TenantID` field:
 
-* **[Gateway DNS](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway%5Fdns/#tenantid)**: Identifies the tenant ID of the DNS request, if it exists.
-* **[Gateway HTTP](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway%5Fhttp/#tenantid)**: Identifies the tenant ID of the HTTP request, if it exists.
-* **[Gateway Network](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway%5Fnetwork/#tenantid)**: Identifies the tenant ID of the network session, if it exists.
-* **[Zero Trust Network Sessions](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero%5Ftrust%5Fnetwork%5Fsessions/#tenantid)**: Identifies the tenant ID of the network session, if it exists.
+- **[Gateway DNS](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_dns/#tenantid)**: Identifies the tenant ID of the DNS request, if it exists.
+- **[Gateway HTTP](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_http/#tenantid)**: Identifies the tenant ID of the HTTP request, if it exists.
+- **[Gateway Network](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_network/#tenantid)**: Identifies the tenant ID of the network session, if it exists.
+- **[Zero Trust Network Sessions](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/#tenantid)**: Identifies the tenant ID of the network session, if it exists.
 
 #### Firewall for AI fields
 
 The following datasets now include [Firewall for AI](https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/#firewall-for-ai) fields:
 
-* **[Firewall Events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/firewall%5Fevents/)**:
-
-  * `FirewallForAIInjectionScore`: The score indicating the likelihood of a prompt injection attack in the request.
-  * `FirewallForAIPIICategories`: List of PII categories detected in the request.
-  * `FirewallForAITokenCount`: The number of tokens in the request.
-  * `FirewallForAIUnsafeTopicCategories`: List of unsafe topic categories detected in the request.
-* **[HTTP Requests](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http%5Frequests/)**:
-
-  * `FirewallForAIInjectionScore`: The score indicating the likelihood of a prompt injection attack in the request.
-  * `FirewallForAIPIICategories`: List of PII categories detected in the request.
-  * `FirewallForAITokenCount`: The number of tokens in the request.
-  * `FirewallForAIUnsafeTopicCategories`: List of unsafe topic categories detected in the request.
+- **[Firewall Events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/firewall_events/)**:
+  - `FirewallForAIInjectionScore`: The score indicating the likelihood of a prompt injection attack in the request.
+  - `FirewallForAIPIICategories`: List of PII categories detected in the request.
+  - `FirewallForAITokenCount`: The number of tokens in the request.
+  - `FirewallForAIUnsafeTopicCategories`: List of unsafe topic categories detected in the request.
+- **[HTTP Requests](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/)**:
+  - `FirewallForAIInjectionScore`: The score indicating the likelihood of a prompt injection attack in the request.
+  - `FirewallForAIPIICategories`: List of PII categories detected in the request.
+  - `FirewallForAITokenCount`: The number of tokens in the request.
+  - `FirewallForAIUnsafeTopicCategories`: List of unsafe topic categories detected in the request.
 
 For the complete field definitions for each dataset, refer to [Logpush datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/).
 
@@ -284,11 +282,11 @@ For more information, refer to [Enable Logpush to Google BigQuery](https://devel
 
 **New ResponseTimeMs field in Gateway DNS Logpush dataset**
 
-Cloudflare has added a new field to the [Gateway DNS](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway%5Fdns/#responsetimems) Logpush dataset:
+Cloudflare has added a new field to the [Gateway DNS](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_dns/#responsetimems) Logpush dataset:
 
-* **ResponseTimeMs**: Total response time of the DNS request in milliseconds.
+- **ResponseTimeMs**: Total response time of the DNS request in milliseconds.
 
-For the complete field definitions, refer to [Gateway DNS dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway%5Fdns/).
+For the complete field definitions, refer to [Gateway DNS dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_dns/).
 
 ## 2026-04-02
 
@@ -310,8 +308,8 @@ Logpush now supports higher-precision timestamp formats for log output. You can 
 
 To use the new formats, set `timestamp_format` in your Logpush job's `output_options`:
 
-* `rfc3339ms` — `2024-02-17T23:52:01.123Z`
-* `rfc3339ns` — `2024-02-17T23:52:01.123456789Z`
+- `rfc3339ms` — `2024-02-17T23:52:01.123Z`
+- `rfc3339ns` — `2024-02-17T23:52:01.123456789Z`
 
 Default timestamp formats apply unless explicitly set. The dashboard defaults to `rfc3339` and the API defaults to `unixnano`.
 
@@ -326,20 +324,20 @@ Cloudflare has added new fields across multiple [Logpush datasets](https://devel
 
 #### New dataset
 
-* **MCP Portal Logs**: A new dataset with fields including `ClientCountry`, `ClientIP`, `ColoCode`, `Datetime`, `Error`, `Method`, `PortalAUD`, `PortalID`, `PromptGetName`, `ResourceReadURI`, `ServerAUD`, `ServerID`, `ServerResponseDurationMs`, `ServerURL`, `SessionID`, `Success`, `ToolCallName`, `UserEmail`, and `UserID`.
+- **MCP Portal Logs**: A new dataset with fields including `ClientCountry`, `ClientIP`, `ColoCode`, `Datetime`, `Error`, `Method`, `PortalAUD`, `PortalID`, `PromptGetName`, `ResourceReadURI`, `ServerAUD`, `ServerID`, `ServerResponseDurationMs`, `ServerURL`, `SessionID`, `Success`, `ToolCallName`, `UserEmail`, and `UserID`.
 
 #### New fields in existing datasets
 
-* **DEX Application Tests**: `HTTPRedirectEndMs`, `HTTPRedirectStartMs`, `HTTPResponseBody`, and `HTTPResponseHeaders`.
-* **DEX Device State Events**: `ExperimentalExtra`.
-* **Firewall Events**: `FraudUserID`.
-* **Gateway HTTP**: `AppControlInfo` and `ApplicationStatuses`.
-* **Gateway DNS**: `InternalDNSDurationMs`.
-* **HTTP Requests**: `FraudEmailRisk`, `FraudUserID`, and `PayPerCrawlStatus`.
-* **Network Analytics Logs**: `DNSQueryName`, `DNSQueryType`, and `PFPCustomTag`.
-* **WARP Toggle Changes**: `UserEmail`.
-* **WARP Config Changes**: `UserEmail`.
-* **Zero Trust Network Session Logs**: `SNI`.
+- **DEX Application Tests**: `HTTPRedirectEndMs`, `HTTPRedirectStartMs`, `HTTPResponseBody`, and `HTTPResponseHeaders`.
+- **DEX Device State Events**: `ExperimentalExtra`.
+- **Firewall Events**: `FraudUserID`.
+- **Gateway HTTP**: `AppControlInfo` and `ApplicationStatuses`.
+- **Gateway DNS**: `InternalDNSDurationMs`.
+- **HTTP Requests**: `FraudEmailRisk`, `FraudUserID`, and `PayPerCrawlStatus`.
+- **Network Analytics Logs**: `DNSQueryName`, `DNSQueryType`, and `PFPCustomTag`.
+- **WARP Toggle Changes**: `UserEmail`.
+- **WARP Config Changes**: `UserEmail`.
+- **Zero Trust Network Session Logs**: `SNI`.
 
 For the complete field definitions for each dataset, refer to [Logpush datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/).
 
@@ -361,8 +359,9 @@ For more information, refer to the [Destination Configuration](https://developer
 
 We’re excited to introduce **Logpush Health Dashboards**, giving customers real-time visibility into the status, reliability, and performance of their [Logpush](https://developers.cloudflare.com/logs/logpush/) jobs. Health dashboards make it easier to detect delivery issues, monitor job stability, and track performance across destinations. The dashboards are divided into two sections:
 
-* **Upload Health**: See how much data was successfully uploaded, where drops occurred, and how your jobs are performing overall. This includes data completeness, success rate, and upload volume.
-* **Upload Reliability** – Diagnose issues impacting stability, retries, or latency, and monitor key metrics such as retry counts, upload duration, and destination availability.
+- **Upload Health**: See how much data was successfully uploaded, where drops occurred, and how your jobs are performing overall. This includes data completeness, success rate, and upload volume.
+- **Upload Reliability** – Diagnose issues impacting stability, retries, or latency, and monitor key metrics such as retry counts, upload duration, and destination availability.
+
 ![Health Dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1333,height=334,format=webp/_astro/Health-Dashboard.CP0mV0IW.gif)
 
 Health Dashboards can be accessed from the Logpush page in the Cloudflare dashboard at the account or zone level, under the Health tab. For more details, refer to our [**Logpush Health Dashboards**](https://developers.cloudflare.com/logs/logpush/logpush-health) documentation, which includes a comprehensive troubleshooting guide to help interpret and resolve common issues.
@@ -376,8 +375,8 @@ Health Dashboards can be accessed from the Logpush page in the Cloudflare dashbo
 
 To view, create, update, or delete Logpush jobs for Zero Trust datasets, users must now have both of the following permissions:
 
-* Logs Edit
-* Zero Trust: PII Read
+- Logs Edit
+- Zero Trust: PII Read
 
 Note
 
@@ -392,10 +391,10 @@ Logpush now supports integration with [Microsoft Sentinel ↗](https://www.micro
 
 This upgrade significantly streamlines log ingestion, improves security, and provides greater control:
 
-* Simplified Implementation: Easier for engineering teams to set up and maintain.
-* Cost Control: New support for Data Collection Rules (DCRs) allows you to filter and transform logs at ingestion time, offering potential cost savings.
-* Enhanced Security: CCF provides a higher level of security compared to the older Azure Functions connector.
-* Data Lake Integration: Includes native integration with Data Lake.
+- Simplified Implementation: Easier for engineering teams to set up and maintain.
+- Cost Control: New support for Data Collection Rules (DCRs) allows you to filter and transform logs at ingestion time, offering potential cost savings.
+- Enhanced Security: CCF provides a higher level of security compared to the older Azure Functions connector.
+- Data Lake Integration: Includes native integration with Data Lake.
 
 Find the new solution [here ↗](https://marketplace.microsoft.com/en-us/product/azure-application/cloudflare.azure-sentinel-solution-cloudflare-ccf?tab=Overview) and refer to the [Cloudflare's developer documentation ↗](https://developers.cloudflare.com/analytics/analytics-integrations/sentinel/#supported-logs:~:text=WorkBook%20fields,-Analytic%20rules)for more information on the connector, including setup steps, supported logs and Microsoft's resources.
 
@@ -408,9 +407,9 @@ Cloudflare Logpush can now deliver logs from using fixed, dedicated egress IPs. 
 
 Highlights:
 
-* Fixed egress IPs ensure your destination only accepts traffic from known addresses.
-* Works with any supported Logpush destination.
-* Recommended to use a dedicated zone as a proxy for easier management.
+- Fixed egress IPs ensure your destination only accepts traffic from known addresses.
+- Works with any supported Logpush destination.
+- Recommended to use a dedicated zone as a proxy for easier management.
 
 To get started, work with your Cloudflare account team to provision Aegis IPs, then configure your Logpush job to deliver logs through the proxy zone. For full setup instructions, refer to the [Logpush documentation](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/egress-ip/).
 
@@ -436,8 +435,8 @@ These fields are configured per zone and apply to all Logpush jobs in that zone 
 
 By default:
 
-* Request headers are logged as raw values
-* Response headers are logged as transformed values
+- Request headers are logged as raw values
+- Response headers are logged as transformed values
 
 These defaults can be overridden to suit your logging needs.
 
@@ -467,8 +466,8 @@ For more details refer to our [Logs](https://developers.cloudflare.com/logs/logp
 
 Cloudflare has introduced new fields to two Gateway-related datasets in Cloudflare Logs:
 
-* **Gateway HTTP**: `ApplicationIDs`, `ApplicationNames`, `CategoryIDs`, `CategoryNames`, `DestinationIPContinentCode`, `DestinationIPCountryCode`, `ProxyEndpoint`, `SourceIPContinentCode`, `SourceIPCountryCode`, `VirtualNetworkID`, and `VirtualNetworkName`.
-* **Gateway Network**: `ApplicationIDs`, `ApplicationNames`, `DestinationIPContinentCode`, `DestinationIPCountryCode`, `ProxyEndpoint`, `SourceIPContinentCode`, `SourceIPCountryCode`, `TransportProtocol`, `VirtualNetworkID`, and `VirtualNetworkName`.
+- **Gateway HTTP**: `ApplicationIDs`, `ApplicationNames`, `CategoryIDs`, `CategoryNames`, `DestinationIPContinentCode`, `DestinationIPCountryCode`, `ProxyEndpoint`, `SourceIPContinentCode`, `SourceIPCountryCode`, `VirtualNetworkID`, and `VirtualNetworkName`.
+- **Gateway Network**: `ApplicationIDs`, `ApplicationNames`, `DestinationIPContinentCode`, `DestinationIPCountryCode`, `ProxyEndpoint`, `SourceIPContinentCode`, `SourceIPCountryCode`, `TransportProtocol`, `VirtualNetworkID`, and `VirtualNetworkName`.
 
 Was this helpful?
 

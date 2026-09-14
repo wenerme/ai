@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.tls\_client\_auth.cert\_not\_after
 
-`cf.tls_client_auth.cert_not_after` `String`
+`cf.tls_client_auth.cert_not_after``String`
 
 The mTLS client certificate is not valid after this date.
 
@@ -21,8 +21,8 @@ Example value:
 ```
 
 Categories:
-* Request
-* mTLS
+- Request
+- mTLS
 
 Was this helpful?
 

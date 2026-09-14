@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Common error codes
 
-Last updated Sep 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/troubleshooting/common-error-codes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/troubleshooting/common-error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare Load Balancing API adds global health to each pool and endpoint. It also gives you a view into what our network sees at a wider level. Cloudflare uses a quorum system to determine pool and endpoint health status. The quorum is taken from PoPs responsible for running health monitor requests in a region, and the majority result is used.
 
@@ -160,8 +160,8 @@ If you're using the **Cloudflare API**, you will receive an error message.
 
 ### Solution
 
-* Enterprise customers who need to create more objects (load balancers, pools, endpoints, or monitors) should reach out to their account team to discuss this issue.
-* Self-service customers can upgrade their Load Balancing subscription with more endpoints to increase load balancing capacity.
+- Enterprise customers who need to create more objects (load balancers, pools, endpoints, or monitors) should reach out to their account team to discuss this issue.
+- Self-service customers can upgrade their Load Balancing subscription with more endpoints to increase load balancing capacity.
 
 ---
 

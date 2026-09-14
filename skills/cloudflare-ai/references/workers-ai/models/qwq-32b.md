@@ -16,22 +16,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Qwen
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/qwq-32b/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/qwq-32b/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/qwen/qwq-32b`
 
-* Cloudflare-hosted
-* LoRA
-* Reasoning
+- Cloudflare-hosted
+- LoRA
+- Reasoning
 
 QwQ is the reasoning model of the Qwen series. Compared with conventional instruction-tuned models, QwQ, which is capable of thinking and reasoning, can achieve significantly enhanced performance in downstream tasks, especially hard problems. QwQ-32B is the medium-sized reasoning model, which is capable of achieving competitive performance against state-of-the-art reasoning models, e.g., DeepSeek-R1, o1-mini.
 
-| Model Info                                                                          |                                                     |
-| ----------------------------------------------------------------------------------- | --------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 24,000 tokens                                       |
-| Reasoning                                                                           | Yes                                                 |
-| LoRA                                                                                | Yes                                                 |
-| Unit Pricing                                                                        | $0.66 per M input tokens, $1.00 per M output tokens |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 24,000 tokens |
+| Reasoning | Yes |
+| LoRA | Yes |
+| Unit Pricing | $0.66 per M input tokens, $1.00 per M output tokens |
 
 ## Playground
 
@@ -42,7 +42,6 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 ## Usage
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -71,7 +70,6 @@ export default {
 ```
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -94,7 +92,6 @@ export default {
 ```
 
 ```py
-
 import os
 import requests
 
@@ -117,7 +114,6 @@ print(result)
 ```
 
 ```sh
-
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/qwen/qwq-32b \
   -X POST \
   -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
@@ -182,43 +178,55 @@ presence\_penalty
 
 ### Output
 
-Synchronous — Send a request and receive a complete response
+<details>
+
+<summary>Synchronous — Send a request and receive a complete response</summary>
+
+
 
 response
 
-`string`The generated text response from the model
+<code>string</code>The generated text response from the model
 
 ▶usage{}
 
-`object`Usage statistics for the inference request
+<code>object</code>Usage statistics for the inference request
 
-▶tool\_calls\[\]
+▶tool\_calls\[]
 
-`array`An array of tool calls requests made during the response generation
+<code>array</code>An array of tool calls requests made during the response generation
 
-Streaming — Send a request with \`stream: true\` and receive server-sent events
+</details>
+
+<details>
+
+<summary>Streaming — Send a request with `stream: true` and receive server-sent events</summary>
+
+
 
 type
 
-`string`
+<code>string</code>
 
 contentType
 
-`text/event-stream`
+<code>text/event-stream</code>
 
 format
 
-`binary`
+<code>binary</code>
+
+</details>
 
 ## API Schemas (Raw)
 
-SynchronousInput
+SynchronousInput [Open](https://developers.cloudflare.com/workers-ai/models/qwq-32b/sync-input.json) [Download](https://developers.cloudflare.com/workers-ai/models/qwq-32b/sync-input.json)
 
-SynchronousOutput
+SynchronousOutput [Open](https://developers.cloudflare.com/workers-ai/models/qwq-32b/sync-output.json) [Download](https://developers.cloudflare.com/workers-ai/models/qwq-32b/sync-output.json)
 
-StreamingInput
+StreamingInput [Open](https://developers.cloudflare.com/workers-ai/models/qwq-32b/streaming-input.json) [Download](https://developers.cloudflare.com/workers-ai/models/qwq-32b/streaming-input.json)
 
-StreamingOutput
+StreamingOutput [Open](https://developers.cloudflare.com/workers-ai/models/qwq-32b/streaming-output.json) [Download](https://developers.cloudflare.com/workers-ai/models/qwq-32b/streaming-output.json)
 
 Was this helpful?
 

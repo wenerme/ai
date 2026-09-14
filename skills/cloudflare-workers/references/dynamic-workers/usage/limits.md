@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Custom resource limits
 
-Last updated Aug 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dynamic-workers/usage/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/usage/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, each Dynamic Worker invocation uses your Workers plan [limits](https://developers.cloudflare.com/workers/platform/limits/#account-plan-limits) for CPU time and subrequests. Custom limits allow you to programmatically enforce lower limits on the Dynamic Worker's resource usage.
 

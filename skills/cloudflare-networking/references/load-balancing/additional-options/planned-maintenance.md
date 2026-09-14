@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Perform planned maintenance
 
-Last updated Jul 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/planned-maintenance/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/planned-maintenance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you change application settings or add new assets, you will likely want to make these changes on one endpoint at a time. Going endpoint by endpoint reduces the risk of changes and ensures a more consistent user experience.
 
@@ -62,11 +62,11 @@ To remove an endpoint from rotation while still preserving session continuity, s
 To direct traffic away from an endpoint immediately:
 
 1. Do one of the following actions:
-  * On the endpoint's [monitor](https://developers.cloudflare.com/load-balancing/monitors/), update the monitor settings so the endpoint will fail health monitor requests, such as putting an incorrect value for the **Response Body** or **Response Code**.
-  * On the pool, disable the endpoint.
-  * On the pool, set the [endpoint weight](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/origin-level-steering/#weights) to `0` (though traffic may still reach the endpoint if it is included in multiple pools).
+   - On the endpoint's [monitor](https://developers.cloudflare.com/load-balancing/monitors/), update the monitor settings so the endpoint will fail health monitor requests, such as putting an incorrect value for the **Response Body** or **Response Code**.
+   - On the pool, disable the endpoint.
+   - On the pool, set the [endpoint weight](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/origin-level-steering/#weights) to `0` (though traffic may still reach the endpoint if it is included in multiple pools).
 2. Monitor [Load Balancing Analytics](https://developers.cloudflare.com/load-balancing/reference/load-balancing-analytics/) to make sure no requests are reaching the pool.
-  * If you are using [DNS-only load balancing (gray-clouded)](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/), changes may be delayed due to DNS resolver caching.
+   - If you are using [DNS-only load balancing (gray-clouded)](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/), changes may be delayed due to DNS resolver caching.
 3. Perform your required maintenance or upgrades.
 4. Undo the changes you made in **Step 1**.
 

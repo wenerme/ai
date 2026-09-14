@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Getting started
 
-Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build your first application with Sandbox SDK - a secure code execution environment. In this guide, you'll create a Worker that can execute Python code and work with files in isolated containers.
 
@@ -20,7 +20,7 @@ Coming soon: Sandbox SDK 1.0
 
 This guide uses today's stable `@cloudflare/sandbox` package.
 
-For **new projects**, we recommend the [1.0 preview](https://developers.cloudflare.com/sandbox/1-0-preview/) on `@cloudflare/sandbox@next` so you start on the APIs that become Sandbox SDK 1.0\. Refer to [Get started with the 1.0 preview](https://developers.cloudflare.com/sandbox/1-0-preview/get-started/).
+For **new projects**, we recommend the [1.0 preview](https://developers.cloudflare.com/sandbox/1-0-preview/) on `@cloudflare/sandbox@next` so you start on the APIs that become Sandbox SDK 1.0. Refer to [Get started with the 1.0 preview](https://developers.cloudflare.com/sandbox/1-0-preview/get-started/).
 
 Coding agents: install [Cloudflare Skills ↗](https://github.com/cloudflare/skills) ([Agent setup](https://developers.cloudflare.com/agent-setup/)). Use **`sandbox-stable`** with this guide; use **`sandbox-next`** for `@next`; use **`sandbox-migrate-to-next`** when porting.
 
@@ -31,11 +31,19 @@ A simple API that can safely execute Python code and perform file operations in 
 ## Prerequisites
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
+
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
 
 ### Ensure Docker is running locally
 
@@ -45,7 +53,7 @@ You must have Docker running locally when you run `wrangler deploy`. For most pe
 
 You can check that Docker is running properly by running the `docker info` command in your terminal. If Docker is running, the command will succeed. If Docker is not running, the `docker info` command will hang or return an error including the message "Cannot connect to the Docker daemon".
 
-## 1\. Create a new project
+## 1. Create a new project
 
 Create a new Sandbox SDK project:
 
@@ -65,15 +73,15 @@ pnpm create cloudflare@latest my-sandbox --template=cloudflare/sandbox-sdk/examp
 
 This creates a `my-sandbox` directory with everything you need:
 
-* `src/index.ts` \- Worker with sandbox integration
-* `wrangler.jsonc` \- Configuration for Workers and Containers
-* `Dockerfile` \- Container environment definition
+- `src/index.ts` - Worker with sandbox integration
+- `wrangler.jsonc` - Configuration for Workers and Containers
+- `Dockerfile` - Container environment definition
 
 ```sh
 cd my-sandbox
 ```
 
-## 2\. Explore the template
+## 2. Explore the template
 
 The template provides a minimal Worker that demonstrates core sandbox capabilities:
 
@@ -121,11 +129,11 @@ export default {
 
 **Key concepts**:
 
-* `getSandbox()` \- Gets or creates a sandbox instance by ID. Use a stable ID to reconnect to the same sandbox. In user-facing apps, scope IDs to a single user.
-* `sandbox.exec()` \- Execute shell commands in the sandbox and capture stdout, stderr, and exit codes.
-* `sandbox.writeFile()` / `readFile()` \- Write and read files in the sandbox filesystem.
+- `getSandbox()` - Gets or creates a sandbox instance by ID. Use a stable ID to reconnect to the same sandbox. In user-facing apps, scope IDs to a single user.
+- `sandbox.exec()` - Execute shell commands in the sandbox and capture stdout, stderr, and exit codes.
+- `sandbox.writeFile()` / `readFile()` - Write and read files in the sandbox filesystem.
 
-## 3\. Test locally
+## 3. Test locally
 
 Start the development server:
 
@@ -150,7 +158,7 @@ curl http://localhost:8787/file
 
 You should see JSON responses with the command output and file contents.
 
-## 4\. Deploy to production
+## 4. Deploy to production
 
 Deploy your Worker and container:
 
@@ -174,7 +182,7 @@ Check deployment status:
 npx wrangler containers list
 ```
 
-## 5\. Test your deployment
+## 5. Test your deployment
 
 Visit your Worker URL (shown in deploy output):
 
@@ -232,9 +240,9 @@ new_sqlite_classes = [ "Sandbox" ]
 tag = "v1"
 ```
 
-* **containers** \- Defines the [container image, instance type, and resource limits](https://developers.cloudflare.com/workers/wrangler/configuration/#containers) for your sandbox environment. If you expect to have multiple sandbox instances, you can increase `max_instances`.
-* **durable\_objects** \- You need not be familiar with [Durable Objects](https://developers.cloudflare.com/durable-objects) to use Sandbox SDK, but if you'd like, you can [learn more about Cloudflare Containers and Durable Objects](https://developers.cloudflare.com/containers/get-started/#each-container-is-backed-by-its-own-durable-object). This configuration creates a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings#what-is-a-binding) that makes the `Sandbox` Durable Object accessible in your Worker code.
-* **migrations** \- Registers the `Sandbox` class, implemented by the Sandbox SDK, with [SQLite storage backend](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage) (required once)
+- **containers** - Defines the [container image, instance type, and resource limits](https://developers.cloudflare.com/workers/wrangler/configuration/#containers) for your sandbox environment. If you expect to have multiple sandbox instances, you can increase `max_instances`.
+- **durable\_objects** - You need not be familiar with [Durable Objects](https://developers.cloudflare.com/durable-objects) to use Sandbox SDK, but if you'd like, you can [learn more about Cloudflare Containers and Durable Objects](https://developers.cloudflare.com/containers/get-started/#each-container-is-backed-by-its-own-durable-object). This configuration creates a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings#what-is-a-binding) that makes the `Sandbox` Durable Object accessible in your Worker code.
+- **migrations** - Registers the `Sandbox` class, implemented by the Sandbox SDK, with [SQLite storage backend](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage) (required once)
 
 For detailed configuration options including environment variables, secrets, and custom images, see the [Wrangler configuration reference](https://developers.cloudflare.com/sandbox/configuration/wrangler/).
 
@@ -242,14 +250,14 @@ For detailed configuration options including environment variables, secrets, and
 
 Now that you have a working sandbox, explore more capabilities:
 
-* [Code interpreter with Workers AI](https://developers.cloudflare.com/sandbox/tutorials/workers-ai-code-interpreter/) \- Build an AI-powered code execution system
-* [Execute commands](https://developers.cloudflare.com/sandbox/guides/execute-commands/) \- Run shell commands and stream output
-* [Manage files](https://developers.cloudflare.com/sandbox/guides/manage-files/) \- Work with files and directories
-* [Deploy a Sandbox application](https://developers.cloudflare.com/sandbox/guides/deploy/) \- Deploy and keep package and image aligned
-* [Expose services](https://developers.cloudflare.com/sandbox/guides/expose-services/) \- Get public URLs for services running in your sandbox
-* [Quick tunnels](https://developers.cloudflare.com/sandbox/api/tunnels/) \- Zero-config `*.trycloudflare.com` URLs for development and `.workers.dev` deployments
-* [Configure preview URLs on a custom domain](https://developers.cloudflare.com/sandbox/guides/preview-urls-custom-domain/) \- Wildcard DNS and TLS for `exposePort()`
-* [API reference](https://developers.cloudflare.com/sandbox/api/) \- Complete API documentation
+- [Code interpreter with Workers AI](https://developers.cloudflare.com/sandbox/tutorials/workers-ai-code-interpreter/) - Build an AI-powered code execution system
+- [Execute commands](https://developers.cloudflare.com/sandbox/guides/execute-commands/) - Run shell commands and stream output
+- [Manage files](https://developers.cloudflare.com/sandbox/guides/manage-files/) - Work with files and directories
+- [Deploy a Sandbox application](https://developers.cloudflare.com/sandbox/guides/deploy/) - Deploy and keep package and image aligned
+- [Expose services](https://developers.cloudflare.com/sandbox/guides/expose-services/) - Get public URLs for services running in your sandbox
+- [Quick tunnels](https://developers.cloudflare.com/sandbox/api/tunnels/) - Zero-config `*.trycloudflare.com` URLs for development and `.workers.dev` deployments
+- [Configure preview URLs on a custom domain](https://developers.cloudflare.com/sandbox/guides/preview-urls-custom-domain/) - Wildcard DNS and TLS for `exposePort()`
+- [API reference](https://developers.cloudflare.com/sandbox/api/) - Complete API documentation
 
 Was this helpful?
 

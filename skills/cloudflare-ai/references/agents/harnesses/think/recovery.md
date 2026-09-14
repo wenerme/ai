@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Durable recovery
 
-Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/recovery/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/recovery/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Think always wraps chat turns in recoverable [fibers](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/). If the Durable Object is evicted mid-stream, Think reconstructs any buffered chunks. It persists partial output and schedules a continuation or retry.
 
@@ -105,28 +105,28 @@ export class MyAgent extends Think<Env> {
 
 ### ChatRecoveryContext
 
-| Field           | Type                     | Description                                                                              |
-| --------------- | ------------------------ | ---------------------------------------------------------------------------------------- |
-| incidentId      | string                   | Stable ID for this recovery incident                                                     |
-| attempt         | number                   | Current attempt number for this incident, starting at 1                                  |
-| maxAttempts     | number                   | Configured attempt cap before terminal exhaustion                                        |
-| recoveryKind    | "retry" \| "continue"    | Whether recovery will retry an unanswered user turn or continue a partial assistant turn |
-| streamId        | string                   | The stream ID of the interrupted turn                                                    |
-| requestId       | string                   | The request ID of the interrupted turn                                                   |
-| partialText     | string                   | Text generated before the interruption                                                   |
-| partialParts    | MessagePart\[\]          | Parts accumulated before the interruption                                                |
-| recoveryData    | unknown \| null          | Data from this.stash() during the turn                                                   |
-| messages        | UIMessage\[\]            | Current conversation history                                                             |
-| lastBody        | Record<string, unknown>? | Body from the interrupted turn                                                           |
-| lastClientTools | ClientToolSchema\[\]?    | Client tools from the interrupted turn                                                   |
-| createdAt       | number                   | Epoch milliseconds when the turn started                                                 |
+| Field | Type | Description |
+| --- | --- | --- |
+| `incidentId` | `string` | Stable ID for this recovery incident |
+| `attempt` | `number` | Current attempt number for this incident, starting at 1 |
+| `maxAttempts` | `number` | Configured attempt cap before terminal exhaustion |
+| `recoveryKind` | `"retry" \| "continue"` | Whether recovery will retry an unanswered user turn or continue a partial assistant turn |
+| `streamId` | `string` | The stream ID of the interrupted turn |
+| `requestId` | `string` | The request ID of the interrupted turn |
+| `partialText` | `string` | Text generated before the interruption |
+| `partialParts` | `MessagePart[]` | Parts accumulated before the interruption |
+| `recoveryData` | `unknown \| null` | Data from `this.stash()` during the turn |
+| `messages` | `UIMessage[]` | Current conversation history |
+| `lastBody` | `Record<string, unknown>?` | Body from the interrupted turn |
+| `lastClientTools` | `ClientToolSchema[]?` | Client tools from the interrupted turn |
+| `createdAt` | `number` | Epoch milliseconds when the turn started |
 
 ### ChatRecoveryOptions
 
-| Field    | Type     | Description                                                     |
-| -------- | -------- | --------------------------------------------------------------- |
-| persist  | boolean? | Whether to persist the partial assistant message                |
-| continue | boolean? | Whether to auto-continue with a new turn via continueLastTurn() |
+| Field | Type | Description |
+| --- | --- | --- |
+| `persist` | `boolean?` | Whether to persist the partial assistant message |
+| `continue` | `boolean?` | Whether to auto-continue with a new turn via `continueLastTurn()` |
 
 With `persist: true`, the partial message is saved. With `continue: true`, Think calls `continueLastTurn()` after the agent reaches a stable state.
 
@@ -191,16 +191,16 @@ export class MyAgent extends Think<Env> {
 }
 ```
 
-| Field                | Default          | Description                                                                                                                                                                     |
-| -------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| maxAttempts          | 10               | Attempt cap. Resets on forward progress, so it catches a tight no-progress alarm loop, not a healthy long turn.                                                                 |
-| stableTimeoutMs      | 10\_000          | How long an attempt waits for the isolate to reach stable state before rescheduling.                                                                                            |
-| noProgressTimeoutMs  | 300\_000 (5 min) | Primary stuck-turn bound: max time without forward progress before sealing. **Resets on every progress-bearing attempt.**                                                       |
-| maxRecoveryWork      | 1,000            | Runaway-loop guard: maximum produced content/tool units before a still-progressing turn is sealed. Set a higher value or Infinity for a long agentic turn.                      |
-| maxOomRetries        | 3                | Retry budget for Durable Object memory-limit resets. Set 0 to stop after the first memory-limit reset.                                                                          |
-| shouldKeepRecovering | —                | Caller policy consulted from the second attempt onward. Return false to stop recovery. The hook point for a token/cost budget (ctx.work is a coarse segment count, not tokens). |
-| terminalMessage      | generic message  | Message shown to the user when recovery is given up on.                                                                                                                         |
-| onExhausted          | —                | Called once when recovery is given up on. Inspect ctx.reason.                                                                                                                   |
+| Field | Default | Description |
+| --- | --- | --- |
+| `maxAttempts` | `10` | Attempt cap. Resets on forward progress, so it catches a tight no-progress alarm loop, not a healthy long turn. |
+| `stableTimeoutMs` | `10_000` | How long an attempt waits for the isolate to reach stable state before rescheduling. |
+| `noProgressTimeoutMs` | `300_000` (5 min) | Primary stuck-turn bound: max time without forward progress before sealing. **Resets on every progress-bearing attempt.** |
+| `maxRecoveryWork` | `1,000` | Runaway-loop guard: maximum produced content/tool units before a still-progressing turn is sealed. Set a higher value or `Infinity` for a long agentic turn. |
+| `maxOomRetries` | `3` | Retry budget for Durable Object memory-limit resets. Set `0` to stop after the first memory-limit reset. |
+| `shouldKeepRecovering` | — | Caller policy consulted from the second attempt onward. Return `false` to stop recovery. The hook point for a token/cost budget (`ctx.work` is a coarse segment count, not tokens). |
+| `terminalMessage` | generic message | Message shown to the user when recovery is given up on. |
+| `onExhausted` | — | Called once when recovery is given up on. Inspect `ctx.reason`. |
 
 `ctx.reason` on the exhausted hook is one of: `no_progress_timeout` (stuck), `max_attempts_exceeded` (no-progress alarm loop), `work_budget_exceeded` (runaway), `recovery_aborted` (your `shouldKeepRecovering` returned `false`), `out_of_memory` (memory-limit retry budget), or `stable_timeout` (extreme churn). Refer to [Stream recovery](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#stream-recovery) for the full shared reference. Think and `@cloudflare/ai-chat` use the same recovery configuration.
 
@@ -250,9 +250,9 @@ This runs during transcript repair — before the repaired transcript is persist
 
 [Compaction](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/#compaction) is checked **between turns** — `compactAfter()` runs after each `appendMessage()`. But a single long, tool-heavy turn grows the prompt step by step inside one `streamText` loop and can exceed the model context window **mid-turn**, before the next pre-turn check. The provider then rejects the request (`"prompt is too long"`, `context_length_exceeded`), and the turn would otherwise die terminally.
 
-Think recovers from this with two opt-in, provider-agnostic layers, both configured through the `contextOverflow` property. Both are off by default, so existing behavior is unchanged. Both reuse your session's compaction function, so they require a `configureSession()` with `onCompaction()` configured. Both require [classifyChatError](https://developers.cloudflare.com/agents/harnesses/think/lifecycle-hooks/#classifychaterror) to tell Think which errors are overflows — Think ships no provider-specific matching in core.
+Think recovers from this with two opt-in, provider-agnostic layers, both configured through the `contextOverflow` property. Both are off by default, so existing behavior is unchanged. Both reuse your session's compaction function, so they require a `configureSession()` with `onCompaction()` configured. Both require [`classifyChatError`](https://developers.cloudflare.com/agents/harnesses/think/lifecycle-hooks/#classifychaterror) to tell Think which errors are overflows — Think ships no provider-specific matching in core.
 
-**1\. Reactive backstop — `contextOverflow.reactive`.** When a turn fails with an error you classify as `"context_overflow"`, Think discards the truncated partial, runs `session.compact()`, and re-runs the turn from the compacted history. The partial is not persisted: the turn restarts from scratch, so keeping the cut-off assistant message would orphan it beside the recovered answer. It is bounded by `contextOverflow.maxRetries` (default `1`); if compaction cannot shorten history or the budget is spent, the overflow surfaces terminally through `onChatError` with `classification: "context_overflow"` — it never loops or ends silently.
+**1. Reactive backstop — `contextOverflow.reactive`.** When a turn fails with an error you classify as `"context_overflow"`, Think discards the truncated partial, runs `session.compact()`, and re-runs the turn from the compacted history. The partial is not persisted: the turn restarts from scratch, so keeping the cut-off assistant message would orphan it beside the recovered answer. It is bounded by `contextOverflow.maxRetries` (default `1`); if compaction cannot shorten history or the budget is spent, the overflow surfaces terminally through `onChatError` with `classification: "context_overflow"` — it never loops or ends silently.
 
 ```js
 import { Think, defaultContextOverflowClassifier } from "@cloudflare/think";
@@ -278,7 +278,7 @@ export class MyAgent extends Think<Env> {
 }
 ```
 
-**2\. Proactive guard — `contextOverflow.proactive`.** Heads off the provider error before it happens. Before each step, Think reads the previous step's model-reported `usage.inputTokens` (provider-agnostic) and, if it crosses `maxInputTokens * (headroom ?? 0.9)`, compacts in place and feeds the recompacted history into the upcoming step. If a provider omits `inputTokens`, it falls back to `usage.totalTokens` (a safe over-approximation — it compacts slightly early rather than missing the threshold). It compacts at most `proactive.maxCompactions` times per turn (default `1`) — independent of the reactive `maxRetries` budget — so a history that cannot shorten does not compact on every step.
+**2. Proactive guard — `contextOverflow.proactive`.** Heads off the provider error before it happens. Before each step, Think reads the previous step's model-reported `usage.inputTokens` (provider-agnostic) and, if it crosses `maxInputTokens * (headroom ?? 0.9)`, compacts in place and feeds the recompacted history into the upcoming step. If a provider omits `inputTokens`, it falls back to `usage.totalTokens` (a safe over-approximation — it compacts slightly early rather than missing the threshold). It compacts at most `proactive.maxCompactions` times per turn (default `1`) — independent of the reactive `maxRetries` budget — so a history that cannot shorten does not compact on every step.
 
 ```js
 import { Think, defaultContextOverflowClassifier } from "@cloudflare/think";
@@ -314,7 +314,7 @@ Note
 
 A no-op compaction cannot rescue an over-budget turn, so recovery is only as effective as your compaction configuration. For tool-heavy histories, configure a `tokenCounter` on `compactAfter()` (refer to [Sessions](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/#auto-compaction)).
 
-For a runnable demo against a real Workers AI model, refer to the [context-overflow-recovery example ↗](https://github.com/cloudflare/agents/tree/main/examples/context-overflow-recovery).
+For a runnable demo against a real Workers AI model, refer to the [`context-overflow-recovery` example ↗](https://github.com/cloudflare/agents/tree/main/examples/context-overflow-recovery).
 
 ## Stability detection
 

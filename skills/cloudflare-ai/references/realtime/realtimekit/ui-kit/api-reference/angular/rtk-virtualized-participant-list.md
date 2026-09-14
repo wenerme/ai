@@ -12,17 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # rtk-virtualized-participant-list
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/angular/rtk-virtualized-participant-list/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/angular/rtk-virtualized-participant-list/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Properties
 
-| Property           | Type                         | Required | Default | Description                                              |
-| ------------------ | ---------------------------- | -------- | ------- | -------------------------------------------------------- |
-| bufferedItemsCount | number                       | ✅        | \-      | Buffer items to render before and after the visible area |
-| emptyListElement   | HTMLElement                  | ✅        | \-      | Element to render if list is empty                       |
-| itemHeight         | number                       | ✅        | \-      | Height of each item in pixels (assumed fixed)            |
-| items              | Peer1\[\]                    | ✅        | \-      | Items to be virtualized                                  |
-| renderItem         | (item: Peer1, index: number) | ✅        | \-      | Function to render each item                             |
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `bufferedItemsCount` | `number` | ✅ | - | Buffer items to render before and after the visible area |
+| `emptyListElement` | `HTMLElement` | ✅ | - | Element to render if list is empty |
+| `itemHeight` | `number` | ✅ | - | Height of each item in pixels (assumed fixed) |
+| `items` | `Peer1[]` | ✅ | - | Items to be virtualized |
+| `renderItem` | `(item: Peer1, index: number)` | ✅ | - | Function to render each item |
 
 ## Usage Examples
 

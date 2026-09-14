@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Packet filtering (Cloudflare Network Firewall) fields
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/packet-filtering-fields/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/packet-filtering-fields/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -50,7 +50,7 @@ The raw ICMP packet as a list of bytes. It should be used in conjunction with th
 
 `icmp.type` `Number`
 
-The [ICMP type ↗](https://en.wikipedia.org/wiki/Internet%5FControl%5FMessage%5FProtocol#header%5Ftype). Only applies to ICMP packets.
+The [ICMP type ↗](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#header_type). Only applies to ICMP packets.
 
 Example value: `8`
 
@@ -60,7 +60,7 @@ Example value: `8`
 
 `icmp.code` `Number`
 
-The [ICMP code ↗](https://en.wikipedia.org/wiki/Internet%5FControl%5FMessage%5FProtocol#header%5Fcode). Only applies to ICMP packets.
+The [ICMP code ↗](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#header_code). Only applies to ICMP packets.
 
 Example value: `2`
 
@@ -92,7 +92,7 @@ Represents the 2-letter country code associated with the server IP address in [I
 
 Example value: `GB`
 
-For more information on the ISO 3166-1 Alpha 2 format, refer to [ISO 3166-1 Alpha 2 ↗](https://en.wikipedia.org/wiki/ISO%5F3166-1%5Falpha-2) on Wikipedia.
+For more information on the ISO 3166-1 Alpha 2 format, refer to [ISO 3166-1 Alpha 2 ↗](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) on Wikipedia.
 
 ---
 
@@ -104,7 +104,7 @@ Represents the 2-letter country code associated with the client IP address in [I
 
 Example value: `GB`
 
-For more information on the ISO 3166-1 Alpha 2 format, refer to [ISO 3166-1 Alpha 2 ↗](https://en.wikipedia.org/wiki/ISO%5F3166-1%5Falpha-2) on Wikipedia.
+For more information on the ISO 3166-1 Alpha 2 format, refer to [ISO 3166-1 Alpha 2 ↗](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) on Wikipedia.
 
 For Cloudflare Network Firewall, the `ip.geoip.country` field (which is deprecated) will match on either source or destination address. The `ip.geoip.country` field is still available for new and existing rules, but you should use the `ip.src.country` and/or `ip.dst.country` fields instead.
 
@@ -166,7 +166,7 @@ Represents the 2-letter country code associated with the client IP address in [I
 
 Example value: `GB`
 
-For more information on the ISO 3166-1 Alpha 2 format, refer to [ISO 3166-1 Alpha 2 ↗](https://en.wikipedia.org/wiki/ISO%5F3166-1%5Falpha-2) on Wikipedia.
+For more information on the ISO 3166-1 Alpha 2 format, refer to [ISO 3166-1 Alpha 2 ↗](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) on Wikipedia.
 
 ---
 
@@ -312,7 +312,7 @@ Source port number of the IP packet. Only applies to UDP packets.
 
 ---
 
-_GeoIP is the registered trademark of MaxMind, Inc._
+*GeoIP is the registered trademark of MaxMind, Inc.*
 
 Was this helpful?
 

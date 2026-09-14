@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # ip.src.timezone.name
 
-`ip.src.timezone.name` `String`
+`ip.src.timezone.name``String`
 
 The name of the timezone associated with the incoming request.
 
@@ -21,8 +21,8 @@ Example value:
 ```
 
 Categories:
-* Request
-* Geolocation
+- Request
+- Geolocation
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Migrating from Vercel to Pages
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/migrations/migrating-from-vercel/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/migrations/migrating-from-vercel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn how to deploy your Vercel application to Cloudflare Pages.
 
@@ -56,17 +56,17 @@ If you want to take a different approach, read more about [custom domains](https
 
 To add a custom domain:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project > **Custom domains**.
 3. Select **Set up a domain**.
 4. Provide the domain that you would like to serve your Cloudflare Pages site on and select **Continue**.
+
 ![Adding a custom domain for your Pages project through the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1401,height=410,format=webp/_astro/domains.zq4iMU_J.png)
 
 The next steps vary based on if you [added your domain to Cloudflare](#change-domain-nameservers):
 
-* **Added to Cloudflare**: Cloudflare will set everything up for you automatically and your domain will move to an `Active` status.
-* **Not added to Cloudflare**: You need to [update some DNS records](https://developers.cloudflare.com/pages/configuration/custom-domains/#add-a-custom-subdomain) at your DNS provider to finish your setup.
+- **Added to Cloudflare**: Cloudflare will set everything up for you automatically and your domain will move to an `Active` status.
+- **Not added to Cloudflare**: You need to [update some DNS records](https://developers.cloudflare.com/pages/configuration/custom-domains/#add-a-custom-subdomain) at your DNS provider to finish your setup.
 
 ## Delete your Vercel app
 

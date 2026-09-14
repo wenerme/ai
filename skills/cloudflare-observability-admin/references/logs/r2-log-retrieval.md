@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Logs Engine
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/r2-log-retrieval/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/r2-log-retrieval/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Logs Engine gives you the ability to store your logs in R2 and query them directly.
 
@@ -22,12 +22,12 @@ Logs Engine is going to be replaced by Log Explorer. For further details, consul
 
 ## Store logs in R2
 
-* Set up a [Logpush to R2](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/r2/) job.
-* Create an [R2 access key](https://developers.cloudflare.com/r2/api/tokens/) with at least R2 read permissions.
-* Ensure that you have Logshare read permissions.
-* Alternatively, create a Cloudflare API token with the following permissions:
-  * Account scope
-  * Logs read permissions
+- Set up a [Logpush to R2](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/r2/) job.
+- Create an [R2 access key](https://developers.cloudflare.com/r2/api/tokens/) with at least R2 read permissions.
+- Ensure that you have Logshare read permissions.
+- Alternatively, create a Cloudflare API token with the following permissions:
+  - Account scope
+  - Logs read permissions
 
 ## Query logs
 
@@ -37,19 +37,19 @@ You can use the API to query and download your logs by time range or [RayID](htt
 
 The following headers are required for all API calls:
 
-* `X-Auth-Email` \- the Cloudflare account email address associated with the domain
-* `X-Auth-Key` \- the Cloudflare API key
+- `X-Auth-Email` - the Cloudflare account email address associated with the domain
+- `X-Auth-Key` - the Cloudflare API key
 
 Alternatively, API tokens with Logs edit permissions can also be used for authentication:
 
-* `Authorization: Bearer <API_TOKEN>`
+- `Authorization: Bearer <API_TOKEN>`
 
 ### Required headers
 
 In addition to the required authentication headers mentioned, the following headers are required for the API to access logs stored in your R2 bucket.
 
-* `R2-access-key-id` (required) - [R2 Access Key Id](https://developers.cloudflare.com/r2/api/tokens/)
-* `R2-secret-access-key` (required) - [R2 Secret Access Key](https://developers.cloudflare.com/r2/api/tokens/)
+- `R2-access-key-id` (required) - [R2 Access Key Id](https://developers.cloudflare.com/r2/api/tokens/)
+- `R2-secret-access-key` (required) - [R2 Secret Access Key](https://developers.cloudflare.com/r2/api/tokens/)
 
 ## List files
 
@@ -57,11 +57,11 @@ List relevant R2 objects containing logs matching the provided query parameters,
 
 ### Query parameters
 
-* `start` (required) string (TimestampRFC3339) - Start time in RFC 3339 format, for example `start=2022-06-06T16:00:00Z`.
-* `end` (required) string (TimestampRFC3339) - End time in RFC 3339 format, for example `end=2022-06-06T16:00:00Z`.
-* `bucket` (required) string (Bucket) - R2 bucket name, for example `bucket=cloudflare-logs`.
-* `prefix` string (Prefix) - R2 bucket prefix logs are stored under, for example `prefix=http_requests/example.com/{DATE}`.
-* `limit` number (Limit) - Maximum number of results to return, for example `limit=100`.
+- `start` (required) string (TimestampRFC3339) - Start time in RFC 3339 format, for example `start=2022-06-06T16:00:00Z`.
+- `end` (required) string (TimestampRFC3339) - End time in RFC 3339 format, for example `end=2022-06-06T16:00:00Z`.
+- `bucket` (required) string (Bucket) - R2 bucket name, for example `bucket=cloudflare-logs`.
+- `prefix` string (Prefix) - R2 bucket prefix logs are stored under, for example `prefix=http_requests/example.com/{DATE}`.
+- `limit` number (Limit) - Maximum number of results to return, for example `limit=100`.
 
 ## Retrieve logs by time range
 
@@ -69,10 +69,10 @@ Stream logs stored in R2 that match the provided query parameters, using the end
 
 ### Query parameters
 
-* `start` (required) string (TimestampRFC3339) - Start time in RFC 3339 format, for example `start=2022-06-06T16:00:00Z`
-* `end` (required) string (TimestampRFC3339) - End time in RFC 3339 format, for example `end=2022-06-06T16:00:00Z`
-* `bucket` (required) string (Bucket) - R2 bucket name, for example `bucket=cloudflare-logs`
-* `prefix` string (Prefix) - R2 bucket prefix logs are stored under, for example `prefix=http_requests/example.com/{DATE}`
+- `start` (required) string (TimestampRFC3339) - Start time in RFC 3339 format, for example `start=2022-06-06T16:00:00Z`
+- `end` (required) string (TimestampRFC3339) - End time in RFC 3339 format, for example `end=2022-06-06T16:00:00Z`
+- `bucket` (required) string (Bucket) - R2 bucket name, for example `bucket=cloudflare-logs`
+- `prefix` string (Prefix) - R2 bucket prefix logs are stored under, for example `prefix=http_requests/example.com/{DATE}`
 
 ### Example API request
 
@@ -131,35 +131,75 @@ curl --globoff "https://api.cloudflare.com/client/v4/accounts/{account_id}/logs/
 
 ## Troubleshooting
 
+<details>
+
+<summary>
+
 I am getting an error when accessing the API
 
-* **Error**: Time range returned too many results. Try reducing the time range and try again.
+</summary>
 
-HTTP status code `422` will be returned if the time range between the start and end parameters is too wide. Try querying a shorter time range if you are running into this limit.
+- **Error**: Time range returned too many results. Try reducing the time range and try again.
 
-* **Error**: Provided token does not have the required features enabled.
+HTTP status code <code>422</code> will be returned if the time range between the start and end parameters is too wide. Try querying a shorter time range if you are running into this limit.
+
+- **Error**: Provided token does not have the required features enabled.
 
 Contact your account representative to have the beta Logpull RayID Lookup subscription added to your account.
 
-* **Error**: Time range returned too many results. Try reducing the time range and try again.
+- **Error**: Time range returned too many results. Try reducing the time range and try again.
 
-High volume zones can produce many log files in R2\. Try reducing your start and end time range until you find a duration that works best for your log volume.
+High volume zones can produce many log files in R2. Try reducing your start and end time range until you find a duration that works best for your log volume.
+
+</details>
+
+<details>
+
+<summary>
 
 How do I know what time range to index?
 
+</summary>
+
 Currently, there is no process to index logs as they arrive. If you have the RayID and know the time the request was made, try indexing the next 5-10 minutes of logs after the request was completed.
+
+</details>
+
+<details>
+
+<summary>
 
 What is the time delay between when an event happens and when I can query for it?
 
+</summary>
+
 Logpush delivers logs in batches as soon as possible, generally in less than one minute. After this, logs can be accessed using Logs Engine.
+
+</details>
+
+<details>
+
+<summary>
 
 Does R2 have retention controls?
 
+</summary>
+
 R2 does not currently have retention controls in place. You can query back as far as when you created the Logpush job.
+
+</details>
+
+<details>
+
+<summary>
 
 Which datasets is Logs Engine compatible with?
 
-The retrieval API is compatible with all the datasets we support. The full list is available on the [Datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/) section.
+</summary>
+
+The retrieval API is compatible with all the datasets we support. The full list is available on the <a href="https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/">Datasets</a> section.
+
+</details>
 
 Was this helpful?
 

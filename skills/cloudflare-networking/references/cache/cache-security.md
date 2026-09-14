@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cache security
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/cache-security/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/cache-security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Review the following content to learn more about cache security.
 
-* [Avoid web cache poisoning](https://developers.cloudflare.com/cache/cache-security/avoid-web-poisoning/)
-* [Cache Deception Armor](https://developers.cloudflare.com/cache/cache-security/cache-deception-armor/)
-* [Cross-Origin Resource Sharing (CORS)](https://developers.cloudflare.com/cache/cache-security/cors/)
+- [Avoid web cache poisoning](https://developers.cloudflare.com/cache/cache-security/avoid-web-poisoning/)
+- [Cache Deception Armor](https://developers.cloudflare.com/cache/cache-security/cache-deception-armor/)
+- [Cross-Origin Resource Sharing (CORS)](https://developers.cloudflare.com/cache/cache-security/cors/)
 
 Was this helpful?
 

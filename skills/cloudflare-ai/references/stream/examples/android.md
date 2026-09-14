@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Example of video playback on Android using ExoPlayer
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/examples/android/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/examples/android/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 

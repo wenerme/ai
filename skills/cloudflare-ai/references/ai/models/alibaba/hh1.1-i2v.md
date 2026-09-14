@@ -16,19 +16,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Image-to-Video • Alibaba
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/alibaba/hh1.1-i2v/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/alibaba/hh1.1-i2v/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `alibaba/hh1.1-i2v`
 
-* Third-party
+- Third-party
 
-Alibaba's HappyHorse 1.1 image-to-video model. Animates a reference image with an optional text prompt, with smoother motion, natural skin textures, and improved close-up quality over 1.0\. Supports 720P and 1080P output with durations from 3 to 15 seconds.
+Alibaba's HappyHorse 1.1 image-to-video model. Animates a reference image with an optional text prompt, with smoother motion, natural skin textures, and improved close-up quality over 1.0. Supports 720P and 1080P output with durations from 3 to 15 seconds.
 
-| Model Info        |                                                                                                                     |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                                |
-| More information  | [link ↗](https://modelstudio.console.alibabacloud.com/)                                                             |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/hh1.1-i2v) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal) |
+| More information | [link ↗](https://modelstudio.console.alibabacloud.com/) |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/hh1.1-i2v) |
 
 ## Usage
 
@@ -105,9 +105,9 @@ video
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/alibaba/hh1.1-i2v/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/alibaba/hh1.1-i2v/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/alibaba/hh1.1-i2v/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/alibaba/hh1.1-i2v/schema-output.json)
 
 Was this helpful?
 

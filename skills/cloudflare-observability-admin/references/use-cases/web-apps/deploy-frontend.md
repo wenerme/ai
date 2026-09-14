@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Deploy frontend applications
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/web-apps/deploy-frontend/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/web-apps/deploy-frontend/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Deploying a frontend application with React, Vue, Astro, or any other framework requires a platform that handles builds, previews, and global distribution. Cloudflare Workers deploys your frontend to 300+ edge locations with automatic builds triggered on push to GitHub or GitLab.
 
@@ -22,10 +22,10 @@ Deploying a frontend application with React, Vue, Astro, or any other framework 
 
 Build and deploy serverless applications on Cloudflare's global network. [Learn more about Workers](https://developers.cloudflare.com/workers/).
 
-* **Git integration** \- Automatic deployments triggered on push to GitHub or GitLab
-* **Preview deployments** \- Every pull request gets a unique URL for review before merging
-* **Global distribution** \- Static assets and server-side logic served from 300+ edge locations
-* **Full-stack support** \- Serve frontend assets and handle Application Programming Interface (API) routes from a single deployment
+- **Git integration** - Automatic deployments triggered on push to GitHub or GitLab
+- **Preview deployments** - Every pull request gets a unique URL for review before merging
+- **Global distribution** - Static assets and server-side logic served from 300+ edge locations
+- **Full-stack support** - Serve frontend assets and handle Application Programming Interface (API) routes from a single deployment
 
 ## Get started
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # HTTP Requests by Colo Groups to HTTP Requests by Adaptive Groups
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/migration-guides/graphql-api-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/migration-guides/graphql-api-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide shares considerations when migrating from the deprecated `httpRequests1mByColoGroups` and `httpRequests1dByColoGroups` GraphQL API nodes to the `httpRequestsAdaptiveGroups` GraphQL API node.
 
@@ -40,7 +40,13 @@ For example, if you wanted to see which five data centers had the most number of
 }
 ```
 
+<details>
+
+<summary>
+
 Response
+
+</summary>
 
 ```json
 {
@@ -103,6 +109,8 @@ Response
 }
 ```
 
+</details>
+
 ## `httpRequestsAdaptiveGroups` GraphQL API node
 
 With the deprecation of the `httpRequests1mByColoGroups` and `httpRequests1dByColoGroups` GraphQL API nodes, use the `httpRequestsAdaptiveGroups` GraphQL API node to access the same data (`count`, `sum(edgeResponseBytes)`, and `visits`).
@@ -139,7 +147,13 @@ query MigrationSample($zoneTag: string, $start: Time, $end: Time) {
 }
 ```
 
+<details>
+
+<summary>
+
 Response
+
+</summary>
 
 ```json
 {
@@ -222,17 +236,19 @@ Response
 }
 ```
 
+</details>
+
 This query says:
 
-* Given the indicated `zones`, `limit`, and `time range`.
-* Fetch the total number of requests (as `count`), the total amount of data transfer (as `edgeResponseBytes` of `sum` object), and the total number of `visits` per data center.
+- Given the indicated `zones`, `limit`, and `time range`.
+- Fetch the total number of requests (as `count`), the total amount of data transfer (as `edgeResponseBytes` of `sum` object), and the total number of `visits` per data center.
 
 A few points to note:
 
-* Adding the `requestSource` filter for `eyeball` returns request, data transfer, and visit data about only the end users of your website.
-* Instead of `requests`, the `httpRequestsAdaptiveGroups` node reports `count`, which indicates the number of requests per data center.
-* To measure data transfer, use `sum(edgeResponseBytes)`. Note that in the old API this was called `bandwidth` even though it actually measured data transfer.
-* `unique visitors per colocation` is not supported in `httpRequestsAdaptiveGroups`, but the `httpRequestsAdaptiveGroups` API does support `visits`. A visit is defined as a page view that originated from a different website or direct link. Cloudflare checks where the HTTP referer does not match the hostname. One visit can consist of multiple page views.
+- Adding the `requestSource` filter for `eyeball` returns request, data transfer, and visit data about only the end users of your website.
+- Instead of `requests`, the `httpRequestsAdaptiveGroups` node reports `count`, which indicates the number of requests per data center.
+- To measure data transfer, use `sum(edgeResponseBytes)`. Note that in the old API this was called `bandwidth` even though it actually measured data transfer.
+- `unique visitors per colocation` is not supported in `httpRequestsAdaptiveGroups`, but the `httpRequestsAdaptiveGroups` API does support `visits`. A visit is defined as a page view that originated from a different website or direct link. Cloudflare checks where the HTTP referer does not match the hostname. One visit can consist of multiple page views.
 
 Was this helpful?
 

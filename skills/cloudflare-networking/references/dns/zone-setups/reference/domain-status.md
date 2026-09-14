@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Zone status
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Review information on the different statuses that your [zone](https://developers.cloudflare.com/dns/concepts/#zone) can have after you [add your website or application](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) to Cloudflare.
 
@@ -22,6 +22,7 @@ If your zone status changes, you will receive an email at the address associated
 
 The following diagram gives you an overview of the different statuses applicable and how your zone may transition from one status to the other. For zones with an active paid subscription, the time to automatic deletion or purge may not correspond to this diagram. Refer to the sections below for details.
 
+```
 flowchart LR
 accTitle: Zone status flow
 accDescr: Diagram of the different statuses applicable to Cloudflare zones and the transitions from one status to the other.
@@ -41,6 +42,8 @@ F[Purged]
 
  B-- Pending for <br />28 days --> E
  A-- Initializing for 28 days --> E
+
+```
 
 Note
 
@@ -66,19 +69,19 @@ Cloudflare responds to DNS queries for pending zones on the assigned Cloudflare 
 
 ### Causes
 
-* [Primary setup (Full)](https://developers.cloudflare.com/dns/zone-setups/full-setup/): You have either not [changed your authoritative nameservers](https://developers.cloudflare.com/dns/nameservers/update-nameservers/) or your change has not yet been authenticated by Cloudflare.
-* [CNAME setup (Partial)](https://developers.cloudflare.com/dns/zone-setups/partial-setup/): You have either not added the verification TXT record to your authoritative DNS provider or the record has not yet been authenticated by Cloudflare.
-* [Cloudflare as Secondary DNS provider](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/): When you have either not [changed your authoritative nameservers](https://developers.cloudflare.com/dns/nameservers/update-nameservers/) to include the Cloudflare Secondary nameservers or your change has not yet been authenticated by Cloudflare.
+- [Primary setup (Full)](https://developers.cloudflare.com/dns/zone-setups/full-setup/): You have either not [changed your authoritative nameservers](https://developers.cloudflare.com/dns/nameservers/update-nameservers/) or your change has not yet been authenticated by Cloudflare.
+- [CNAME setup (Partial)](https://developers.cloudflare.com/dns/zone-setups/partial-setup/): You have either not added the verification TXT record to your authoritative DNS provider or the record has not yet been authenticated by Cloudflare.
+- [Cloudflare as Secondary DNS provider](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/): When you have either not [changed your authoritative nameservers](https://developers.cloudflare.com/dns/nameservers/update-nameservers/) to include the Cloudflare Secondary nameservers or your change has not yet been authenticated by Cloudflare.
 
-After you add your domain, Cloudflare performs checks on a schedule to confirm you have updated your nameservers. The first check occurs after 60 seconds and the following attempts happen at gradually increased intervals. You can re-trigger the check [via API](https://developers.cloudflare.com/api/resources/zones/subresources/activation%5Fcheck/methods/trigger/) or on the Dashboard, in the respective domain [Overview page ↗](https://dash.cloudflare.com/?to=/:account/:zone/).
+After you add your domain, Cloudflare performs checks on a schedule to confirm you have updated your nameservers. The first check occurs after 60 seconds and the following attempts happen at gradually increased intervals. You can re-trigger the check [via API](https://developers.cloudflare.com/api/resources/zones/subresources/activation_check/methods/trigger/) or on the Dashboard, in the respective domain [Overview page ↗](https://dash.cloudflare.com/?to=/:account/:zone/).
 
 The activation check behavior depends on your zone setup:
 
-| Zone setup                                                                                                                                                                                                                                                                                                                         | Activation requirement                                                                                                                              |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Primary setup (full)](https://developers.cloudflare.com/dns/zone-setups/full-setup/) without [multi-provider DNS](https://developers.cloudflare.com/dns/nameservers/nameserver-options/#multi-provider-dns)                                                                                                                       | At the registrar (or parent zone), only the assigned Cloudflare nameservers must be listed. Any nameservers from other DNS providers cause failure. |
-| [Primary setup (full)](https://developers.cloudflare.com/dns/zone-setups/full-setup/) with [multi-provider DNS](https://developers.cloudflare.com/dns/nameservers/nameserver-options/#multi-provider-dns) enabled, or [secondary setup](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/) | At the registrar (or parent zone), the assigned Cloudflare nameservers must be present. Nameservers from other DNS providers are allowed.           |
-| [CNAME setup (partial)](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)                                                                                                                                                                                                                                          | The verification TXT record must be present on your authoritative DNS provider. Nameservers at the registrar are not changed.                       |
+| Zone setup | Activation requirement |
+| --- | --- |
+| [Primary setup (full)](https://developers.cloudflare.com/dns/zone-setups/full-setup/) without [multi-provider DNS](https://developers.cloudflare.com/dns/nameservers/nameserver-options/#multi-provider-dns) | At the registrar (or parent zone), only the assigned Cloudflare nameservers must be listed. Any nameservers from other DNS providers cause failure. |
+| [Primary setup (full)](https://developers.cloudflare.com/dns/zone-setups/full-setup/) with [multi-provider DNS](https://developers.cloudflare.com/dns/nameservers/nameserver-options/#multi-provider-dns) enabled, or [secondary setup](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/) | At the registrar (or parent zone), the assigned Cloudflare nameservers must be present. Nameservers from other DNS providers are allowed. |
+| [CNAME setup (partial)](https://developers.cloudflare.com/dns/zone-setups/partial-setup/) | The verification TXT record must be present on your authoritative DNS provider. Nameservers at the registrar are not changed. |
 
 ### Expected behavior for different plans
 
@@ -90,7 +93,7 @@ Do not use pending zones in production
 
 Make sure not to use pending zones for production traffic. Cloudflare responds to DNS queries for pending zones on the assigned Cloudflare nameserver IPs but there are associated risks, especially if you do not use [zone holds](https://developers.cloudflare.com/fundamentals/account/account-security/zone-holds/).
 
-For Enterprise zones, if you want to adjust settings before zone activation, Logpush for [DNS logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/dns%5Flogs/) and [DNS Zone Transfer](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/) configuration work as expected in pending state.
+For Enterprise zones, if you want to adjust settings before zone activation, Logpush for [DNS logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/dns_logs/) and [DNS Zone Transfer](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/) configuration work as expected in pending state.
 
 ## Active
 
@@ -106,8 +109,8 @@ If your domain is on the Free plan, it will be automatically deleted 7 days afte
 
 For moved zones with a paid plan (Pro, Business, Enterprise), deletion will occur after 7 days if any of the following is observed:
 
-* The paid plan is removed.
-* The domain is activated in another Cloudflare account.
+- The paid plan is removed.
+- The domain is activated in another Cloudflare account.
 
 You can also [manually remove](https://developers.cloudflare.com/fundamentals/manage-domains/remove-domain/) your domain from Cloudflare.
 

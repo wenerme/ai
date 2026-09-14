@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Purge cache key resources
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-cache-key/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-cache-key/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Instantly purge resources that use Cache Keys via the [Cloudflare API](https://developers.cloudflare.com/api/resources/cache/methods/purge/). If you use [Cloudflare's Purge by URL](https://developers.cloudflare.com/api/resources/cache/methods/purge/#purge-cached-content-by-url), include the headers and query strings that are in your custom Cache Key.
 
@@ -26,10 +26,21 @@ For a Cache Key based on device type, purge the asset by passing the `CF-Device-
 
 Refer to the example API request below to instantly purge all mobile assets on the root webpage.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Cache Purge`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Cache Purge</code>
+
+</details>
+
+*Purge Cached Contentbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache" \
@@ -51,10 +62,21 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache" \
 
 Instantly purge resources for a location-based Cache Key by specifying the two-letter country code. Spain is used in the example below.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Cache Purge`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Cache Purge</code>
+
+</details>
+
+*Purge Cached Contentbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache" \
@@ -76,10 +98,21 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache" \
 
 For a Cache Key based on language, purge the asset by passing the `accept-language` header. Refer to the example API request below to instantly purge all assets in Chinese (PRC).
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Cache Purge`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Cache Purge</code>
+
+</details>
+
+*Purge Cached Contentbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache" \

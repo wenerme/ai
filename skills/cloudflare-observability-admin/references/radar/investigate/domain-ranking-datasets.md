@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Domains ranking
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/radar/investigate/domain-ranking-datasets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/investigate/domain-ranking-datasets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare regularly generates a domain ranking based on DNS queries to [1.1.1.1](https://developers.cloudflare.com/1.1.1.1/), Cloudflare's public DNS resolver. Refer to the [blog post ↗](https://blog.cloudflare.com/radar-domain-rankings/) for a deep dive. In short, Cloudflare generates two types of listings:
 
-* An ordered list of the top 100 most popular domains globally and per country. This includes the last 24 hours and is updated daily.
-* An unordered global most popular domains dataset, divided into buckets of the following number of domains: 200, 500, 1,000, 2,000, 5,000, 10,000, 20,000, 50,000, 100,000, 200,000, 500,000, 1,000,000\. It includes the last seven days and is updated weekly.
+- An ordered list of the top 100 most popular domains globally and per country. This includes the last 24 hours and is updated daily.
+- An unordered global most popular domains dataset, divided into buckets of the following number of domains: 200, 500, 1,000, 2,000, 5,000, 10,000, 20,000, 50,000, 100,000, 200,000, 500,000, 1,000,000. It includes the last seven days and is updated weekly.
 
 ## List of endpoints
 
@@ -103,7 +103,7 @@ curl "https://api.cloudflare.com/client/v4/radar/datasets?limit=10&datasetType=R
 }
 ```
 
-If you are interested in a specific top (like the top one million), go through the `meta.top` property. After finding the top you are looking for, get its `id` to fetch the dataset using the [GET dataset download url](https://developers.cloudflare.com/api/resources/radar/subresources/datasets/methods/download/) endpoint.
+If you are interested in a specific top (like the top one million), go through the `meta.top` property. After finding the top you are looking for, get its `id` to fetch the dataset using the [`GET dataset download url`](https://developers.cloudflare.com/api/resources/radar/subresources/datasets/methods/download/) endpoint.
 
 Then you can request a download url:
 

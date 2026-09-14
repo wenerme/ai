@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create subdomain records
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Most subdomains serve a specific purpose within the overall context of your website. For example, `blog.example.com` might be your blog, `support.example.com` could be your customer help portal, and `store.example.com` would be your e-commerce site.
 
@@ -25,17 +25,15 @@ To host content on a subdomain of your domain, first ensure that your [hosting p
 Then, you would create a corresponding [IP address resolution record](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#ip-address-resolution) (`A`, `AAAA`, or `CNAME`), specifying the label for your subdomain (`blog`, `www`, or `store`, for example) as the record **Name**.
 
 | Type | Name | IPv4 address | Proxy status |
-| ---- | ---- | ------------ | ------------ |
-| A    | blog | 192.0.2.1    | Proxied      |
+| --- | --- | --- | --- |
+| A | `blog` | `192.0.2.1` | Proxied |
 
-1. In the Cloudflare dashboard, go to the **DNS Records** page.
-[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+1. In the Cloudflare dashboard, go to the **DNS Records** page. [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Select **Add record**.
 3. Select `A`, `AAAA`, or `CNAME` as the record **Type**, according to your needs:
-
-  * To point to an IPv4 address, select `A`, use your subdomain (`blog`) for the record **Name**, and insert the IPv4 address in the respective field.
-  * To point to an IPv6 address, select `AAAA`, use your subdomain (`blog`) for the record **Name**, and insert the IPv6 address in the respective field.
-  * To point to a [fully qualified domain name (FQDN) ↗](https://en.wikipedia.org/wiki/Fully%5Fqualified%5Fdomain%5Fname) (such as `your-site.host.example.com`), select `CNAME`, use your subdomain (`blog`) for the record **Name**, and insert the fully qualified domain name in the **Target** field.
+   - To point to an IPv4 address, select `A`, use your subdomain ( `blog`) for the record **Name**, and insert the IPv4 address in the respective field.
+   - To point to an IPv6 address, select `AAAA`, use your subdomain ( `blog`) for the record **Name**, and insert the IPv6 address in the respective field.
+   - To point to a [fully qualified domain name (FQDN) ↗](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (such as `your-site.host.example.com`), select `CNAME`, use your subdomain ( `blog`) for the record **Name**, and insert the fully qualified domain name in the **Target** field.
 4. Specify the [**Proxy status**](https://developers.cloudflare.com/dns/proxy-status/) and [**TTL**](https://developers.cloudflare.com/dns/manage-dns-records/reference/ttl/) according to your needs.
 5. Select **Save** to confirm.
 
@@ -43,9 +41,9 @@ Use the [Create DNS Record API endpoint](https://developers.cloudflare.com/api/r
 
 For field definitions, refer to the [API documentation](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/create/) (visible once you select the record type under the request body specification).
 
-* To point to an IPv4 address, select **A Record**, use your subdomain (`blog`) for the field `name`, and use the IPv4 address for the field `content`.
-* To point to an IPv6 address, select **AAAA Record**, use your subdomain (`blog`) for the field `name`, and use the IPv6 address for the field `content`.
-* To point to a [fully qualified domain name (FQDN) ↗](https://en.wikipedia.org/wiki/Fully%5Fqualified%5Fdomain%5Fname) (such as `your-site.host.example.com`), select **CNAME Record**, use your subdomain (`blog`) for the field `name`, and use the fully qualified domain name for the field `content`.
+- To point to an IPv4 address, select **A Record**, use your subdomain ( `blog`) for the field `name`, and use the IPv4 address for the field `content`.
+- To point to an IPv6 address, select **AAAA Record**, use your subdomain ( `blog`) for the field `name`, and use the IPv6 address for the field `content`.
+- To point to a [fully qualified domain name (FQDN) ↗](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (such as `your-site.host.example.com`), select **CNAME Record**, use your subdomain ( `blog`) for the field `name`, and use the fully qualified domain name for the field `content`.
 
 ## Subdomain redirects
 

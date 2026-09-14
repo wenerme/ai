@@ -12,29 +12,29 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Threat intelligence
 
-Last updated Sep 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/threat-intelligence/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/threat-intelligence/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The threat intelligence detection matches incoming requests against indicators in the [Cloudforce One](https://developers.cloudflare.com/security-center/cloudforce-one/) threat intelligence database. The detection matches on client IP address. If the IP was involved in threat activity in the past seven days, Cloudflare populates [threat intelligence fields](https://developers.cloudflare.com/waf/detections/threat-intelligence/fields/) you can use in WAF rule expressions.
 
 You can use these fields in [custom rules](https://developers.cloudflare.com/waf/custom-rules/) and [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) to match on:
 
-* Known threat actor names (`cf.intel.ip.attacker_names`)
-* Industries the IP address has targeted (`cf.intel.ip.target_industries`)
-* Source and target countries of threat activity (`cf.intel.ip.attacker_countries`, `cf.intel.ip.target_countries`)
-* The dataset that flagged the IP address (`cf.intel.ip.datasets` — values: `ddos`, `waf`)
+- Known threat actor names ( `cf.intel.ip.attacker_names`)
+- Industries the IP address has targeted ( `cf.intel.ip.target_industries`)
+- Source and target countries of threat activity ( `cf.intel.ip.attacker_countries`, `cf.intel.ip.target_countries`)
+- The dataset that flagged the IP address ( `cf.intel.ip.datasets` — values: `ddos`, `waf`)
 
 You can review matches in [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) to see which threat actors and campaigns are reaching your application.
 
 Caution
 
-IP addresses are often shared through NAT, proxies, and cloud providers. Test rules with the _Log_ action first and combine threat intelligence with other signals — such as [attack score](https://developers.cloudflare.com/waf/detections/attack-score/) — before you block.
+IP addresses are often shared through NAT, proxies, and cloud providers. Test rules with the *Log* action first and combine threat intelligence with other signals — such as [attack score](https://developers.cloudflare.com/waf/detections/attack-score/) — before you block.
 
 ## Data freshness
 
 The threat intelligence database reflects a rolling seven-day window:
 
-* An IP address flagged earlier in the window still matches, even if the threat is no longer active.
-* An IP address ages out seven days after the last observed activity. Rules that matched it stop matching with no notification.
+- An IP address flagged earlier in the window still matches, even if the threat is no longer active.
+- An IP address ages out seven days after the last observed activity. Rules that matched it stop matching with no notification.
 
 ## Availability
 
@@ -44,9 +44,9 @@ The WAF must be enabled on your zone before threat intelligence fields can be us
 
 ## More resources
 
-* [Threat intelligence fields](https://developers.cloudflare.com/waf/detections/threat-intelligence/fields/) — Available fields and matching behavior.
-* [Get started](https://developers.cloudflare.com/waf/detections/threat-intelligence/get-started/) — Create your first threat intelligence rule.
-* [Threat Events](https://developers.cloudflare.com/security-center/cloudforce-one/) — Investigate threats in the Cloudforce One dashboard.
+- [Threat intelligence fields](https://developers.cloudflare.com/waf/detections/threat-intelligence/fields/) — Available fields and matching behavior.
+- [Get started](https://developers.cloudflare.com/waf/detections/threat-intelligence/get-started/) — Create your first threat intelligence rule.
+- [Threat Events](https://developers.cloudflare.com/security-center/cloudforce-one/) — Investigate threats in the Cloudforce One dashboard.
 
 Was this helpful?
 

@@ -16,402 +16,408 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Image-Text-to-Text • Qwen
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/qwen/qwen3.8-27b/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/qwen/qwen3.8-27b/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/qwen/qwen3.8-27b`
 
-* Cloudflare-hosted
-* Function calling
-* Reasoning
-* Vision
+- Cloudflare-hosted
+- Function calling
+- Reasoning
+- Vision
 
 Qwen 3.8 27B is a 27-billion-parameter instruction-tuned language model from Alibaba's Qwen family, designed for vision, efficient general-purpose text generation and agentic workloads.
 
-| Model Info                                                                            |                                                     |
-| ------------------------------------------------------------------------------------- | --------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/)   | 262,144 tokens                                      |
-| Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes                                                 |
-| Reasoning                                                                             | Yes                                                 |
-| Vision                                                                                | Yes                                                 |
-| Unit Pricing                                                                          | $0.45 per M input tokens, $3.20 per M output tokens |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 262,144 tokens |
+| Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
+| Reasoning | Yes |
+| Vision | Yes |
+| Unit Pricing | $0.45 per M input tokens, $3.20 per M output tokens |
 
 ## Parameters
 
-Synchronous — Send a request and receive a complete response
+<details>
+
+<summary>Synchronous — Send a request and receive a complete response</summary>
+
+
 
 Input format
 
-Prompt
-
-Simple text input for single-turn interactions
-
-Messages
-
-Structured conversation format with roles (user, assistant, system)
+Prompt Simple text input for single-turn interactionsMessages Structured conversation format with roles (user, assistant, system)
 
 prompt
 
-`string`requiredminLength: 1The input text prompt for the model to generate a response.
+<code>string</code>requiredminLength: 1The input text prompt for the model to generate a response.
 
 model
 
-`string`ID of the model to use (e.g. '@cf/zai-org/glm-4.7-flash, etc').
+<code>string</code>ID of the model to use (e.g. '@cf/zai-org/glm-4.7-flash, etc').
 
 ▶audio{}
 
-`object`Parameters for audio output. Required when modalities includes 'audio'.
+<code>object</code>Parameters for audio output. Required when modalities includes 'audio'.
 
 frequency\_penalty
 
-`number | null`Penalizes new tokens based on their existing frequency in the text so far.
+<code>number | null</code>Penalizes new tokens based on their existing frequency in the text so far.
 
 logit\_bias
 
-`object | null`Modify the likelihood of specified tokens appearing in the completion. Maps token IDs to bias values from -100 to 100.
+<code>object | null</code>Modify the likelihood of specified tokens appearing in the completion. Maps token IDs to bias values from -100 to 100.
 
 logprobs
 
-`boolean | null`Whether to return log probabilities of the output tokens.
+<code>boolean | null</code>Whether to return log probabilities of the output tokens.
 
 top\_logprobs
 
-`integer | null`How many top log probabilities to return at each token position (0-20). Requires logprobs=true.
+<code>integer | null</code>How many top log probabilities to return at each token position (0-20). Requires logprobs=true.
 
 max\_tokens
 
-`integer | null`Deprecated in favor of max\_completion\_tokens. The maximum number of tokens to generate.
+<code>integer | null</code>Deprecated in favor of max_completion_tokens. The maximum number of tokens to generate.
 
 max\_completion\_tokens
 
-`integer | null`An upper bound for the number of tokens that can be generated for a completion.
+<code>integer | null</code>An upper bound for the number of tokens that can be generated for a completion.
 
 metadata
 
-`object | null`Set of 16 key-value pairs that can be attached to the object.
+<code>object | null</code>Set of 16 key-value pairs that can be attached to the object.
 
 modalities
 
-`array | null`Output types requested from the model (e.g. \['text'\] or \['text', 'audio'\]).
+<code>array | null</code>Output types requested from the model (e.g. ['text'] or ['text', 'audio']).
 
 n
 
-`integer | null`How many chat completion choices to generate for each input message.
+<code>integer | null</code>How many chat completion choices to generate for each input message.
 
 parallel\_tool\_calls
 
-`boolean`default: trueWhether to enable parallel function calling during tool use.
+<code>boolean</code>default: trueWhether to enable parallel function calling during tool use.
 
 ▶prediction{}
 
-`object`
+<code>object</code>
 
 presence\_penalty
 
-`number | null`Penalizes new tokens based on whether they appear in the text so far.
+<code>number | null</code>Penalizes new tokens based on whether they appear in the text so far.
 
 reasoning\_effort
 
-`string | null`enum: low, medium, highConstrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
+<code>string | null</code>enum: low, medium, highConstrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
 
 ▶chat\_template\_kwargs{}
 
-`object`
+<code>object</code>
 
 ▶response\_format
 
-`one of`Specifies the format the model must output.
+<code>one of</code>Specifies the format the model must output.
 
 seed
 
-`integer | null`If specified, the system will make a best effort to sample deterministically.
+<code>integer | null</code>If specified, the system will make a best effort to sample deterministically.
 
 service\_tier
 
-`string | null`enum: auto, default, flex, scale, prioritySpecifies the processing type used for serving the request.
+<code>string | null</code>enum: auto, default, flex, scale, prioritySpecifies the processing type used for serving the request.
 
 ▶stop
 
-`one of`
+<code>one of</code>
 
 store
 
-`boolean | null`Whether to store the output for model distillation / evals.
+<code>boolean | null</code>Whether to store the output for model distillation / evals.
 
 stream
 
-`boolean | null`If true, partial message deltas will be sent as server-sent events.
+<code>boolean | null</code>If true, partial message deltas will be sent as server-sent events.
 
 ▶stream\_options{}
 
-`object`
+<code>object</code>
 
 temperature
 
-`number | null`Sampling temperature between 0 and 2.
+<code>number | null</code>Sampling temperature between 0 and 2.
 
 ▶tool\_choice
 
-`one of`Controls which (if any) tool is called by the model. 'none' = no tools, 'auto' = model decides, 'required' = must call a tool.
+<code>one of</code>Controls which (if any) tool is called by the model. 'none' = no tools, 'auto' = model decides, 'required' = must call a tool.
 
-▶tools\[\]
+▶tools\[]
 
-`array`A list of tools the model may call.
+<code>array</code>A list of tools the model may call.
 
 top\_p
 
-`number | null`Nucleus sampling: considers the results of the tokens with top\_p probability mass.
+<code>number | null</code>Nucleus sampling: considers the results of the tokens with top_p probability mass.
 
 user
 
-`string`A unique identifier representing your end-user, for abuse monitoring.
+<code>string</code>A unique identifier representing your end-user, for abuse monitoring.
 
 ▶web\_search\_options{}
 
-`object`Options for the web search tool (when using built-in web search).
+<code>object</code>Options for the web search tool (when using built-in web search).
 
 ▶function\_call
 
-`one of`
+<code>one of</code>
 
-▶functions\[\]
+▶functions\[]
 
-`array`minItems: 1maxItems: 128
+<code>array</code>minItems: 1maxItems: 128
 
 id
 
-`string`A unique identifier for the chat completion.
+<code>string</code>A unique identifier for the chat completion.
 
 object
 
-`string`
+<code>string</code>
 
 created
 
-`integer`Unix timestamp (seconds) of when the completion was created.
+<code>integer</code>Unix timestamp (seconds) of when the completion was created.
 
 model
 
-`string`The model used for the chat completion.
+<code>string</code>The model used for the chat completion.
 
-▶choices\[\]
+▶choices\[]
 
-`array`minItems: 1
+<code>array</code>minItems: 1
 
 ▶usage{}
 
-`object`
+<code>object</code>
 
 system\_fingerprint
 
-`string | null`
+<code>string | null</code>
 
 service\_tier
 
-`string | null`enum: auto, default, flex, scale, priority
+<code>string | null</code>enum: auto, default, flex, scale, priority
 
-Streaming — Send a request with \`stream: true\` and receive server-sent events
+</details>
+
+<details>
+
+<summary>Streaming — Send a request with `stream: true` and receive server-sent events</summary>
+
+
 
 Input format
 
-Prompt
-
-Simple text input for single-turn interactions
-
-Messages
-
-Structured conversation format with roles (user, assistant, system)
+Prompt Simple text input for single-turn interactionsMessages Structured conversation format with roles (user, assistant, system)
 
 prompt
 
-`string`requiredminLength: 1The input text prompt for the model to generate a response.
+<code>string</code>requiredminLength: 1The input text prompt for the model to generate a response.
 
 model
 
-`string`ID of the model to use (e.g. '@cf/zai-org/glm-4.7-flash, etc').
+<code>string</code>ID of the model to use (e.g. '@cf/zai-org/glm-4.7-flash, etc').
 
 ▶audio{}
 
-`object`Parameters for audio output. Required when modalities includes 'audio'.
+<code>object</code>Parameters for audio output. Required when modalities includes 'audio'.
 
 frequency\_penalty
 
-`number | null`Penalizes new tokens based on their existing frequency in the text so far.
+<code>number | null</code>Penalizes new tokens based on their existing frequency in the text so far.
 
 logit\_bias
 
-`object | null`Modify the likelihood of specified tokens appearing in the completion. Maps token IDs to bias values from -100 to 100.
+<code>object | null</code>Modify the likelihood of specified tokens appearing in the completion. Maps token IDs to bias values from -100 to 100.
 
 logprobs
 
-`boolean | null`Whether to return log probabilities of the output tokens.
+<code>boolean | null</code>Whether to return log probabilities of the output tokens.
 
 top\_logprobs
 
-`integer | null`How many top log probabilities to return at each token position (0-20). Requires logprobs=true.
+<code>integer | null</code>How many top log probabilities to return at each token position (0-20). Requires logprobs=true.
 
 max\_tokens
 
-`integer | null`Deprecated in favor of max\_completion\_tokens. The maximum number of tokens to generate.
+<code>integer | null</code>Deprecated in favor of max_completion_tokens. The maximum number of tokens to generate.
 
 max\_completion\_tokens
 
-`integer | null`An upper bound for the number of tokens that can be generated for a completion.
+<code>integer | null</code>An upper bound for the number of tokens that can be generated for a completion.
 
 metadata
 
-`object | null`Set of 16 key-value pairs that can be attached to the object.
+<code>object | null</code>Set of 16 key-value pairs that can be attached to the object.
 
 modalities
 
-`array | null`Output types requested from the model (e.g. \['text'\] or \['text', 'audio'\]).
+<code>array | null</code>Output types requested from the model (e.g. ['text'] or ['text', 'audio']).
 
 n
 
-`integer | null`How many chat completion choices to generate for each input message.
+<code>integer | null</code>How many chat completion choices to generate for each input message.
 
 parallel\_tool\_calls
 
-`boolean`default: trueWhether to enable parallel function calling during tool use.
+<code>boolean</code>default: trueWhether to enable parallel function calling during tool use.
 
 ▶prediction{}
 
-`object`
+<code>object</code>
 
 presence\_penalty
 
-`number | null`Penalizes new tokens based on whether they appear in the text so far.
+<code>number | null</code>Penalizes new tokens based on whether they appear in the text so far.
 
 reasoning\_effort
 
-`string | null`enum: low, medium, highConstrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
+<code>string | null</code>enum: low, medium, highConstrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
 
 ▶chat\_template\_kwargs{}
 
-`object`
+<code>object</code>
 
 ▶response\_format
 
-`one of`Specifies the format the model must output.
+<code>one of</code>Specifies the format the model must output.
 
 seed
 
-`integer | null`If specified, the system will make a best effort to sample deterministically.
+<code>integer | null</code>If specified, the system will make a best effort to sample deterministically.
 
 service\_tier
 
-`string | null`enum: auto, default, flex, scale, prioritySpecifies the processing type used for serving the request.
+<code>string | null</code>enum: auto, default, flex, scale, prioritySpecifies the processing type used for serving the request.
 
 ▶stop
 
-`one of`
+<code>one of</code>
 
 store
 
-`boolean | null`Whether to store the output for model distillation / evals.
+<code>boolean | null</code>Whether to store the output for model distillation / evals.
 
 stream
 
-`boolean | null`If true, partial message deltas will be sent as server-sent events.
+<code>boolean | null</code>If true, partial message deltas will be sent as server-sent events.
 
 ▶stream\_options{}
 
-`object`
+<code>object</code>
 
 temperature
 
-`number | null`Sampling temperature between 0 and 2.
+<code>number | null</code>Sampling temperature between 0 and 2.
 
 ▶tool\_choice
 
-`one of`Controls which (if any) tool is called by the model. 'none' = no tools, 'auto' = model decides, 'required' = must call a tool.
+<code>one of</code>Controls which (if any) tool is called by the model. 'none' = no tools, 'auto' = model decides, 'required' = must call a tool.
 
-▶tools\[\]
+▶tools\[]
 
-`array`A list of tools the model may call.
+<code>array</code>A list of tools the model may call.
 
 top\_p
 
-`number | null`Nucleus sampling: considers the results of the tokens with top\_p probability mass.
+<code>number | null</code>Nucleus sampling: considers the results of the tokens with top_p probability mass.
 
 user
 
-`string`A unique identifier representing your end-user, for abuse monitoring.
+<code>string</code>A unique identifier representing your end-user, for abuse monitoring.
 
 ▶web\_search\_options{}
 
-`object`Options for the web search tool (when using built-in web search).
+<code>object</code>Options for the web search tool (when using built-in web search).
 
 ▶function\_call
 
-`one of`
+<code>one of</code>
 
-▶functions\[\]
+▶functions\[]
 
-`array`minItems: 1maxItems: 128
+<code>array</code>minItems: 1maxItems: 128
 
 type
 
-`string`
+<code>string</code>
 
 contentType
 
-`text/event-stream`
+<code>text/event-stream</code>
 
 format
 
-`binary`
+<code>binary</code>
 
-Batch — Send multiple requests in a single API call
+</details>
 
-▶requests\[\]
+<details>
 
-`array`
+<summary>Batch — Send multiple requests in a single API call</summary>
+
+
+
+▶requests\[]
+
+<code>array</code>
 
 id
 
-`string`A unique identifier for the chat completion.
+<code>string</code>A unique identifier for the chat completion.
 
 object
 
-`string`
+<code>string</code>
 
 created
 
-`integer`Unix timestamp (seconds) of when the completion was created.
+<code>integer</code>Unix timestamp (seconds) of when the completion was created.
 
 model
 
-`string`The model used for the chat completion.
+<code>string</code>The model used for the chat completion.
 
-▶choices\[\]
+▶choices\[]
 
-`array`minItems: 1
+<code>array</code>minItems: 1
 
 ▶usage{}
 
-`object`
+<code>object</code>
 
 system\_fingerprint
 
-`string | null`
+<code>string | null</code>
 
 service\_tier
 
-`string | null`enum: auto, default, flex, scale, priority
+<code>string | null</code>enum: auto, default, flex, scale, priority
+
+</details>
 
 ## API Schemas (Raw)
 
-SynchronousInput
+SynchronousInput [Open](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen3.8-27b/sync-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen3.8-27b/sync-input.json)
 
-SynchronousOutput
+SynchronousOutput [Open](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen3.8-27b/sync-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen3.8-27b/sync-output.json)
 
-StreamingInput
+StreamingInput [Open](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen3.8-27b/streaming-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen3.8-27b/streaming-input.json)
 
-StreamingOutput
+StreamingOutput [Open](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen3.8-27b/streaming-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen3.8-27b/streaming-output.json)
 
-BatchInput
+BatchInput [Open](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen3.8-27b/batch-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen3.8-27b/batch-input.json)
 
-BatchOutput
+BatchOutput [Open](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen3.8-27b/batch-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen3.8-27b/batch-output.json)
 
 Was this helpful?
 

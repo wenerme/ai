@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # FAQ
 
-Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/frequently-asked-questions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/frequently-asked-questions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## What is a DDoS attack event?
 
@@ -21,8 +21,10 @@ When Cloudflare's DDoS systems detect and mitigate attacks, they drop, rate-limi
 There are three main DDoS mitigation systems:
 
 1. [DDoS managed rulesets](https://developers.cloudflare.com/ddos-protection/managed-rulesets/)
-a. [Network-layer DDoS managed ruleset](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/)
-b. [HTTP DDoS managed ruleset](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/)
+
+   a. [Network-layer DDoS managed ruleset](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/)
+
+   b. [HTTP DDoS managed ruleset](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/)
 2. [Advanced TCP Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection/)
 3. [Advanced DNS Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-dns-protection/)
 
@@ -32,12 +34,12 @@ The start time of the attack is when the mitigation rule is installed. The attac
 
 A DDoS attack has a start time, end time, and additional attack metadata such as:
 
-* Attack ID
-* Attack vector
-* Mitigating rule
-* Total bytes and packets
-* Attack target
-* Mitigation action
+- Attack ID
+- Attack vector
+- Mitigating rule
+- Total bytes and packets
+- Attack target
+- Mitigation action
 
 This information is used to populate the [Executive Summary](https://developers.cloudflare.com/analytics/network-analytics/understand/main-dashboard/#executive-summary) section in the [Network Analytics](https://developers.cloudflare.com/analytics/network-analytics/) dashboard.
 
@@ -169,9 +171,9 @@ For Layer 7 (application-level) attacks, Cloudflare can challenge or rate-limit 
 
 DDoS managed rules and Advanced DDoS Protection are autonomous and run on every single server independently, while also coordinating locally and globally, contributing to the resilience of each server and PoP. These systems run close to the network edge in every PoP, meaning detection and mitigation happen rapidly, often before any noticeable impact. If traffic exceeds the capacity of one PoP, mitigation rules are replicated to other PoPs to help absorb overflow.
 
-* **DDoS managed rules**: Detects and mitigates DDoS attacks in real-time. When it detects an attack, it deploys rules within seconds to mitigate the malicious traffic.
-* **Advanced TCP Protection**: Identifies and drops abnormal TCP/IP behavior before it hits application servers.
-* **Advanced DNS Protection**: Identifies and drops abnormal DNS queries behavior before it hits DNS servers.
+- **DDoS managed rules**: Detects and mitigates DDoS attacks in real-time. When it detects an attack, it deploys rules within seconds to mitigate the malicious traffic.
+- **Advanced TCP Protection**: Identifies and drops abnormal TCP/IP behavior before it hits application servers.
+- **Advanced DNS Protection**: Identifies and drops abnormal DNS queries behavior before it hits DNS servers.
 
 ---
 
@@ -189,7 +191,7 @@ Cloudflare's flow inference functionality, also known as Protected Learning, is 
 
 No. Cloudflare DDoS Protection safeguards web and network infrastructure against DDoS attacks at layers 3, 4, and 7 of the OSI model. This includes TCP, UDP, DNS, and HTTP/S traffic.
 
-DDoS Protection does not inspect or mitigate threats delivered over email protocols such as SMTP, IMAP, or POP3\. To protect against email-borne threats such as phishing, business email compromise (BEC), spoofing, and malware delivered via email, use [Cloudflare Email Security](https://developers.cloudflare.com/email-security/).
+DDoS Protection does not inspect or mitigate threats delivered over email protocols such as SMTP, IMAP, or POP3. To protect against email-borne threats such as phishing, business email compromise (BEC), spoofing, and malware delivered via email, use [Cloudflare Email Security](https://developers.cloudflare.com/email-security/).
 
 Was this helpful?
 

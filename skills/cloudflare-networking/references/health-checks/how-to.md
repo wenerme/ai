@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # How to
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/health-checks/how-to/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/health-checks/how-to/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 See the following pages for more information about standalone Health Checks:
 
-* [Zone Lockdown](https://developers.cloudflare.com/health-checks/how-to/zone-lockdown/)
-* [Health Checks notifications](https://developers.cloudflare.com/health-checks/how-to/health-checks-notifications/)
+- [Zone Lockdown](https://developers.cloudflare.com/health-checks/how-to/zone-lockdown/)
+- [Health Checks notifications](https://developers.cloudflare.com/health-checks/how-to/health-checks-notifications/)
 
 Was this helpful?
 

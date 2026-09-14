@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.waf.score.class
 
-`cf.waf.score.class` `String`
+`cf.waf.score.class``String`
 
 The attack score class of the current request, based on the WAF attack score.
 
@@ -17,7 +17,7 @@ Can have one of the following values: `attack`, `likely_attack`, `likely_clean`,
 Requires a Cloudflare Business plan or above. You must also enable [attack score detection](https://developers.cloudflare.com/waf/detections/attack-score/).
 
 Categories:
-* Request
+- Request
 
 Was this helpful?
 

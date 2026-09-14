@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Common API calls
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/malicious-uploads/api-calls/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/malicious-uploads/api-calls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following examples address common scenarios of using the Cloudflare API to manage and configure WAF content scanning.
 
@@ -26,11 +26,22 @@ The following API examples cover basic operations such as enabling and disabling
 
 To enable content scanning, use a `POST` request similar to the following:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone WAF Write`
-* `Account WAF Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone WAF Write</code>
+- <code>Account WAF Write</code>
+
+</details>
+
+*Enable Content Scanning for a zone.bash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/content-upload-scan/enable" \
@@ -42,11 +53,22 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/content-upload-scan/en
 
 To disable content scanning, use a `POST` request similar to the following:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone WAF Write`
-* `Account WAF Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone WAF Write</code>
+- <code>Account WAF Write</code>
+
+</details>
+
+*Disable Content Scanning for a zone.bash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/content-upload-scan/disable" \
@@ -58,13 +80,24 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/content-upload-scan/di
 
 To obtain the current status of the content scanning feature, use a `GET` request similar to the following:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone WAF Write`
-* `Zone WAF Read`
-* `Account WAF Write`
-* `Account WAF Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone WAF Write</code>
+- <code>Zone WAF Read</code>
+- <code>Account WAF Write</code>
+- <code>Account WAF Read</code>
+
+</details>
+
+*Get the Content Scanning status for a zone.bash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/content-upload-scan/settings" \
@@ -80,13 +113,24 @@ The following API examples cover operations on custom scan expressions for conte
 
 To get a list of existing custom scan expressions, use a `GET` request similar to the following:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone WAF Write`
-* `Zone WAF Read`
-* `Account WAF Write`
-* `Account WAF Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone WAF Write</code>
+- <code>Zone WAF Read</code>
+- <code>Account WAF Write</code>
+- <code>Account WAF Read</code>
+
+</details>
+
+*List the Content Scanning custom expressions of a zone.bash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/content-upload-scan/payloads" \
@@ -112,11 +156,22 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/content-upload-scan/pa
 
 Use a `POST` request similar to the following:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone WAF Write`
-* `Account WAF Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone WAF Write</code>
+- <code>Account WAF Write</code>
+
+</details>
+
+*Create Content Scanning custom expressions for a zone.bash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/content-upload-scan/payloads" \
@@ -133,11 +188,22 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/content-upload-scan/pa
 
 Use a `DELETE` request similar to the following:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone WAF Write`
-* `Account WAF Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone WAF Write</code>
+- <code>Account WAF Write</code>
+
+</details>
+
+*Delete a Content Scanning custom expression from a zone.bash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/content-upload-scan/payloads/$EXPRESSION_ID" \

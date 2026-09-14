@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Nested Structures
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/features/nested-structures/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/features/nested-structures/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Two kinds of nested structures that are supported: **arrays** and **maps**. Fields of either of these types are arrays; when they are part of a query result, which is already an array of objects, they become nested arrays.
 
@@ -20,8 +20,8 @@ Two kinds of nested structures that are supported: **arrays** and **maps**. Fiel
 
 The GraphQL API supports two different sorts of arrays:
 
-* Some arrays contain scalar types (for example, `[String]`) and function like ordinary fields that [can be filtered](https://developers.cloudflare.com/analytics/graphql-api/features/filtering/)
-* Some arrays contain more complex types (for example, `[Subrequest]`.) The following section describes their behaviour.
+- Some arrays contain scalar types (for example, `[String]`) and function like ordinary fields that [can be filtered](https://developers.cloudflare.com/analytics/graphql-api/features/filtering/)
+- Some arrays contain more complex types (for example, `[Subrequest]`.) The following section describes their behaviour.
 
 Arrays of non-scalar types behave as a single value. There is no way to paginate through, filter, filter by, group, or group by the array.
 

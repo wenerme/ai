@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # How to
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [Configure tunnel endpoints](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/)
-* [Configure routes](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/)
-* [Configure Cloudflare source IPs (beta)](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/)
-* [Run traceroute](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/traceroute/)
+- [Configure tunnel endpoints](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/)
+- [Configure routes](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/)
+- [Configure Cloudflare source IPs (beta)](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/)
+- [Run traceroute](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/traceroute/)
 
 Was this helpful?
 

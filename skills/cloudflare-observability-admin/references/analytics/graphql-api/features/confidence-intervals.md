@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Confidence Intervals
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/features/confidence-intervals/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/features/confidence-intervals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Confidence intervals help assess accuracy and quantify uncertainty in results from sampled datasets. When querying sum or count fields on adaptive datasets, you can request a confidence interval to understand the possible range around an estimate. For example, specifying a confidence level of `0.95` returns the estimate, along with the range of values that likely contains the true value 95% of the time.
 
 ## Availability
 
-* **Supported datasets**: Adaptive (sampled) datasets only.
-* **Supported fields**: All `sum` and `count` fields.
-* **Usage**: Confidence `level` must be provided as a decimal between 0 and 1 (for example,`0.90`, `0.95`, `0.99`).
-* **Default**: If no confidence level is specified, intervals are not returned.
+- **Supported datasets**: Adaptive (sampled) datasets only.
+- **Supported fields**: All `sum` and `count` fields.
+- **Usage**: Confidence `level` must be provided as a decimal between 0 and 1 (for example, `0.90`, `0.95`, `0.99`).
+- **Default**: If no confidence level is specified, intervals are not returned.
 
 ## Usage example
 
@@ -30,6 +30,8 @@ The following example shows how to query a confidence interval and interpret the
 ### Request
 
 To request a confidence interval, use the `confidence(level: X)` argument in your query.
+
+*A GraphQL querygraphql*
 
 ```graphql
 query SingleDatasetWithConfidence($zoneTag: string, $start: Time, $end: Time) {
@@ -61,10 +63,10 @@ query SingleDatasetWithConfidence($zoneTag: string, $start: Time, $end: Time) {
 
 The response includes the following values:
 
-* `estimate`: The estimated value, based on sampled data.
-* `lower`: The lower bound of the confidence interval.
-* `sampleSize`: The number of sampled data points used to calculate the estimate.
-* `upper`: The upper bound of the confidence interval.
+- `estimate`: The estimated value, based on sampled data.
+- `lower`: The lower bound of the confidence interval.
+- `sampleSize`: The number of sampled data points used to calculate the estimate.
+- `upper`: The upper bound of the confidence interval.
 
 In this example, the interpretation of the response is that, based on a sample of 40,054, the estimated number of events is 42,939, with 95% confidence that the true value lies between 42,673 and 43,204.
 

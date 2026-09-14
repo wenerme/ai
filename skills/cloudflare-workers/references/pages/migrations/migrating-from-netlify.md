@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Migrating from Netlify to Pages
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/migrations/migrating-from-netlify/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/migrations/migrating-from-netlify/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn how to migrate your Netlify application to Cloudflare Pages.
 
@@ -95,7 +95,7 @@ If you choose to use a custom domain for your Pages, you can set it to the same 
 
 In the Cloudflare dashboard, go to the **DNS Records** page.
 
-[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 
 Review that you have updated the CNAME record for your domain from Netlify to Cloudflare Pages. With your DNS record updated, requests will go to your Pages application.
 

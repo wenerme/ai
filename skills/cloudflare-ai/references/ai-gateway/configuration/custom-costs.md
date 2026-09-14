@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Custom costs
 
-Last updated Sep 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/custom-costs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/custom-costs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Gateway allows you to set custom costs at the request level. Custom costs can reflect your negotiated input, output, cache-read, and cache-write rates. They override the default or public model costs.
 
@@ -24,10 +24,10 @@ Custom costs will only apply to requests that pass tokens in their response. Req
 
 To add custom costs to your API requests, use the `cf-aig-custom-cost` header. This header supports the following properties:
 
-* `per_token_in`: Cost per input token.
-* `per_token_out`: Cost per output token.
-* `per_cache_read_token`: Cost per cache-read token.
-* `per_cache_write_token`: Cost per cache-write token.
+- `per_token_in`: Cost per input token.
+- `per_token_out`: Cost per output token.
+- `per_cache_read_token`: Cost per cache-read token.
+- `per_cache_write_token`: Cost per cache-write token.
 
 There is no limit to the number of decimal places you can include, ensuring precise cost calculations, regardless of how small the values are.
 
@@ -41,16 +41,18 @@ AI Gateway automatically accounts for how each provider and model reports cache 
 
 For example, an inclusive response reports the following usage:
 
-* 1,000 input tokens
-* 600 cache-read tokens
-* 200 cache-write tokens
-* 100 output tokens
+- 1,000 input tokens
+- 600 cache-read tokens
+- 200 cache-write tokens
+- 100 output tokens
 
 AI Gateway calculates 200 fresh input tokens: `1,000 - 600 - 200`. It then applies each custom rate to its corresponding token count.
 
 Custom costs will appear in the logs with an underline, making it easy to identify when custom pricing has been applied.
 
 In this example, the negotiated prices are $1 per million input tokens, $2 per million output tokens, $0.10 per million cache-read tokens, and $0.50 per million cache-write tokens.
+
+*Request with custom costbash*
 
 ```bash
 curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \

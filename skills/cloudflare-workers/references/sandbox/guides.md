@@ -12,50 +12,50 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # How-to guides
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/guides/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/guides/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 These guides show you how to solve specific problems and implement features with the Sandbox SDK. Each guide focuses on a particular task and provides practical, production-ready solutions.
 
-[**2026 deprecation migration guide**Migrate away from deprecated Sandbox SDK features on the current stable package.](https://developers.cloudflare.com/sandbox/guides/2026-deprecation/)
+[**2026 deprecation migration guide** Migrate away from deprecated Sandbox SDK features on the current stable package.](https://developers.cloudflare.com/sandbox/guides/2026-deprecation/)
 
-[**Run background processes**Start and manage long-running services and applications.](https://developers.cloudflare.com/sandbox/guides/background-processes/)
+[**Run background processes** Start and manage long-running services and applications.](https://developers.cloudflare.com/sandbox/guides/background-processes/)
 
-[**Backup and restore**Snapshot a sandbox directory to R2 and restore it later.](https://developers.cloudflare.com/sandbox/guides/backup-restore/)
+[**Backup and restore** Snapshot a sandbox directory to R2 and restore it later.](https://developers.cloudflare.com/sandbox/guides/backup-restore/)
 
-[**Browser terminals**Connect browser-based terminals to sandbox shells using xterm.js or raw WebSockets.](https://developers.cloudflare.com/sandbox/guides/browser-terminals/)
+[**Browser terminals** Connect browser-based terminals to sandbox shells using xterm.js or raw WebSockets.](https://developers.cloudflare.com/sandbox/guides/browser-terminals/)
 
-[**Use code interpreter**Execute Python and JavaScript code with rich outputs.](https://developers.cloudflare.com/sandbox/guides/code-execution/)
+[**Use code interpreter** Execute Python and JavaScript code with rich outputs.](https://developers.cloudflare.com/sandbox/guides/code-execution/)
 
-[**Deploy a Sandbox application**Deploy a Sandbox Worker and keep the npm package and container image on the same release line.](https://developers.cloudflare.com/sandbox/guides/deploy/)
+[**Deploy a Sandbox application** Deploy a Sandbox Worker and keep the npm package and container image on the same release line.](https://developers.cloudflare.com/sandbox/guides/deploy/)
 
-[**Run Docker-in-Docker**Run Docker commands inside a sandbox container.](https://developers.cloudflare.com/sandbox/guides/docker-in-docker/)
+[**Run Docker-in-Docker** Run Docker commands inside a sandbox container.](https://developers.cloudflare.com/sandbox/guides/docker-in-docker/)
 
-[**Execute commands**Run commands with streaming output, error handling, and shell access.](https://developers.cloudflare.com/sandbox/guides/execute-commands/)
+[**Execute commands** Run commands with streaming output, error handling, and shell access.](https://developers.cloudflare.com/sandbox/guides/execute-commands/)
 
-[**Expose services**Create preview URLs and expose ports for web services.](https://developers.cloudflare.com/sandbox/guides/expose-services/)
+[**Expose services** Create preview URLs and expose ports for web services.](https://developers.cloudflare.com/sandbox/guides/expose-services/)
 
-[**Watch filesystem changes**Monitor files and directories in real-time to build responsive development tools and automation workflows.](https://developers.cloudflare.com/sandbox/guides/file-watching/)
+[**Watch filesystem changes** Monitor files and directories in real-time to build responsive development tools and automation workflows.](https://developers.cloudflare.com/sandbox/guides/file-watching/)
 
-[**Work with Git**Clone repositories, manage branches, and automate Git operations.](https://developers.cloudflare.com/sandbox/guides/git-workflows/)
+[**Work with Git** Clone repositories, manage branches, and automate Git operations.](https://developers.cloudflare.com/sandbox/guides/git-workflows/)
 
-[**Manage files**Read, write, organize, and synchronize files in the sandbox.](https://developers.cloudflare.com/sandbox/guides/manage-files/)
+[**Manage files** Read, write, organize, and synchronize files in the sandbox.](https://developers.cloudflare.com/sandbox/guides/manage-files/)
 
-[**Mount buckets**Mount S3-compatible object storage as local filesystems for persistent data storage.](https://developers.cloudflare.com/sandbox/guides/mount-buckets/)
+[**Mount buckets** Mount S3-compatible object storage as local filesystems for persistent data storage.](https://developers.cloudflare.com/sandbox/guides/mount-buckets/)
 
-[**Handle outbound traffic**Intercept and handle outbound HTTP from sandboxes using Workers.](https://developers.cloudflare.com/sandbox/guides/outbound-traffic/)
+[**Handle outbound traffic** Intercept and handle outbound HTTP from sandboxes using Workers.](https://developers.cloudflare.com/sandbox/guides/outbound-traffic/)
 
-[**Configure preview URLs on a custom domain**Set up wildcard DNS, routes, and TLS so exposePort preview URLs work on your domain.](https://developers.cloudflare.com/sandbox/guides/preview-urls-custom-domain/)
+[**Configure preview URLs on a custom domain** Set up wildcard DNS, routes, and TLS so exposePort preview URLs work on your domain.](https://developers.cloudflare.com/sandbox/guides/preview-urls-custom-domain/)
 
-[**Stream output**Handle real-time output from commands and processes.](https://developers.cloudflare.com/sandbox/guides/streaming-output/)
+[**Stream output** Handle real-time output from commands and processes.](https://developers.cloudflare.com/sandbox/guides/streaming-output/)
 
-[**WebSocket connections**Connect to WebSocket servers running in sandboxes.](https://developers.cloudflare.com/sandbox/guides/websocket-connections/)
+[**WebSocket connections** Connect to WebSocket servers running in sandboxes.](https://developers.cloudflare.com/sandbox/guides/websocket-connections/)
 
-[**Connect to Workers bindings**Access KV, R2, Durable Objects, and other bindings from a sandbox.](https://developers.cloudflare.com/sandbox/guides/workers-connections/)
+[**Connect to Workers bindings** Access KV, R2, Durable Objects, and other bindings from a sandbox.](https://developers.cloudflare.com/sandbox/guides/workers-connections/)
 
 ## Related resources
 
-* [Tutorials](https://developers.cloudflare.com/sandbox/tutorials/) \- Step-by-step learning paths
-* [API reference](https://developers.cloudflare.com/sandbox/api/) \- Complete method documentation
+- [Tutorials](https://developers.cloudflare.com/sandbox/tutorials/) - Step-by-step learning paths
+- [API reference](https://developers.cloudflare.com/sandbox/api/) - Complete method documentation
 
 Was this helpful?
 

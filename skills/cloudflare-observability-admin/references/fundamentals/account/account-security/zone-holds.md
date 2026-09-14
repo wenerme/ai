@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Zone holds
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/zone-holds/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/zone-holds/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Zone holds prevent other teams in your organization from adding zones that are already active in another account.
 
@@ -24,15 +24,15 @@ Zone holds are enabled by default for all Enterprise zones.
 
 ## Availability
 
-|              | Free | Pro | Business | Enterprise |
-| ------------ | ---- | --- | -------- | ---------- |
-| Availability | No   | No  | No       | Yes        |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | No | No | No | Yes |
 
 ## Enable zone holds
 
 When you enable a zone hold, no one else can [add your zone](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) to their Cloudflare account. If they attempt to, they will receive the following message:
 
-_The zone name provided is subject to a hold which disallows the creation of this zone. Please contact the domain owner to have this hold removed._
+*The zone name provided is subject to a hold which disallows the creation of this zone. Please contact the domain owner to have this hold removed.*
 
 To enable a zone hold:
 

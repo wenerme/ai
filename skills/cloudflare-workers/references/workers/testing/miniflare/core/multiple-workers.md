@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Multiple Workers
 
-Last updated Jan 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/core/multiple-workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jan 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/core/multiple-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Miniflare allows you to run multiple workers in the same instance. All Workers can be defined at the same level, using the `workers` option.
 
@@ -119,7 +119,7 @@ const res = await mf.dispatchFetch("http://api.mf/todos/update/1", { ... });
 
 ## Durable Objects
 
-Miniflare supports the `script_name` option for accessing Durable Objects exported by other scripts. See [📌 Durable Objects](https://developers.cloudflare.com/workers/testing/miniflare/storage/durable-objects#using-a-class-exported-by-another-script)for more details.
+Miniflare supports the `script_name` option for accessing Durable Objects exported by other scripts. See [📌 Durable Objects](https://developers.cloudflare.com/workers/testing/miniflare/storage/durable-objects#using-a-class-exported-by-another-script) for more details.
 
 Was this helpful?
 

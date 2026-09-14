@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # File watching
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/api/file-watching/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/api/file-watching/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Coming soon: Sandbox SDK 1.0
 
@@ -34,12 +34,12 @@ const stream = await sandbox.watch(path: string, options?: WatchOptions): Promis
 
 **Parameters**:
 
-* `path` \- Absolute path or relative to `/workspace` (for example, `/app/src` or `src`)
-* `options` (optional):
-  * `recursive` \- Watch subdirectories recursively (default: `true`)
-  * `include` \- Glob patterns to include (for example, `['*.ts', '*.js']`). Cannot be used together with `exclude`.
-  * `exclude` \- Glob patterns to exclude (default: `['.git', 'node_modules', '.DS_Store']`). Cannot be used together with `include`.
-  * `sessionId` \- Session to run the watch in (if omittied, will use the default session unless `enableDefaultSession` is set to false)
+- `path` - Absolute path or relative to `/workspace` (for example, `/app/src` or `src`)
+- `options` (optional):
+  - `recursive` - Watch subdirectories recursively (default: `true`)
+  - `include` - Glob patterns to include (for example, `['*.ts', '*.js']`). Cannot be used together with `exclude`.
+  - `exclude` - Glob patterns to exclude (default: `['.git', 'node_modules', '.DS_Store']`). Cannot be used together with `include`.
+  - `sessionId` - Session to run the watch in (if omittied, will use the default session unless `enableDefaultSession` is set to false)
 
 **Returns**: `Promise<ReadableStream<Uint8Array>>` — an SSE stream of `FileWatchSSEEvent` objects
 
@@ -140,10 +140,10 @@ type FileWatchSSEEvent =
 	| { type: "stopped"; reason: string };
 ```
 
-* **`watching`** — Emitted once when the watch is established. Contains the `watchId` and the `path` being watched.
-* **`event`** — Emitted for each filesystem change. Contains the `eventType`, the `path` that changed, and whether it `isDirectory`.
-* **`error`** — Emitted when the watch encounters an error.
-* **`stopped`** — Emitted when the watch is stopped, with a `reason`.
+- **`watching`** — Emitted once when the watch is established. Contains the `watchId` and the `path` being watched.
+- **`event`** — Emitted for each filesystem change. Contains the `eventType`, the `path` that changed, and whether it `isDirectory`.
+- **`error`** — Emitted when the watch encounters an error.
+- **`stopped`** — Emitted when the watch is stopped, with a `reason`.
 
 ### `FileWatchEventType`
 
@@ -159,12 +159,12 @@ type FileWatchEventType =
 	| "attrib";
 ```
 
-* **`create`** — File or directory was created
-* **`modify`** — File content changed
-* **`delete`** — File or directory was deleted
-* **`move_from`** — File or directory was moved away (source of a rename/move)
-* **`move_to`** — File or directory was moved here (destination of a rename/move)
-* **`attrib`** — File or directory attributes changed (permissions, timestamps)
+- **`create`** — File or directory was created
+- **`modify`** — File content changed
+- **`delete`** — File or directory was deleted
+- **`move_from`** — File or directory was moved away (source of a rename/move)
+- **`move_to`** — File or directory was moved here (destination of a rename/move)
+- **`attrib`** — File or directory attributes changed (permissions, timestamps)
 
 ### `WatchOptions`
 
@@ -200,8 +200,8 @@ function parseSSEStream<T>(
 
 **Parameters**:
 
-* `stream` — The SSE stream returned by `watch()`
-* `signal` (optional) — An `AbortSignal` to cancel the stream. When aborted, the reader is cancelled which propagates cleanup to the server.
+- `stream` — The SSE stream returned by `watch()`
+- `signal` (optional) — An `AbortSignal` to cancel the stream. When aborted, the reader is cancelled which propagates cleanup to the server.
 
 Aborting the signal is the recommended way to stop a watch from outside the consuming loop:
 
@@ -223,11 +223,11 @@ for await (const event of parseSSEStream<FileWatchSSEEvent>(
 
 The `include` and `exclude` options accept a limited set of glob tokens for predictable matching:
 
-| Token | Meaning                                    | Example                |
-| ----- | ------------------------------------------ | ---------------------- |
-| \*    | Match any characters within a path segment | \*.ts matches index.ts |
-| \*\*  | Match across directory boundaries          | \*\*/\*.test.ts        |
-| ?     | Match a single character                   | ?.js matches a.js      |
+| Token | Meaning | Example |
+| --- | --- | --- |
+| `*` | Match any characters within a path segment | `*.ts` matches `index.ts` |
+| `**` | Match across directory boundaries | `**/*.test.ts` |
+| `?` | Match a single character | `?.js` matches `a.js` |
 
 Character classes (`[abc]`), brace expansion (`{a,b}`), and backslash escapes are not supported. Patterns containing these tokens are rejected with a validation error.
 
@@ -247,8 +247,8 @@ All paths must exist when starting a watch. Watching non-existent paths returns 
 
 ## Related resources
 
-* [Watch filesystem changes guide](https://developers.cloudflare.com/sandbox/guides/file-watching/) — Patterns, best practices, and real-world examples
-* [Manage files guide](https://developers.cloudflare.com/sandbox/guides/manage-files/) — File operations
+- [Watch filesystem changes guide](https://developers.cloudflare.com/sandbox/guides/file-watching/) — Patterns, best practices, and real-world examples
+- [Manage files guide](https://developers.cloudflare.com/sandbox/guides/manage-files/) — File operations
 
 Was this helpful?
 

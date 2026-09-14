@@ -12,27 +12,27 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Send Emails With Postmark
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/tutorials/send-emails-with-postmark/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/send-emails-with-postmark/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn how to send transactional emails from Workers using [Postmark ↗](https://postmarkapp.com/). At the end of this tutorial, you’ll be able to:
 
-* Create a Worker to send emails.
-* Sign up and add a Cloudflare domain to Postmark.
-* Send emails from your Worker using Postmark.
-* Store API keys securely with secrets.
+- Create a Worker to send emails.
+- Sign up and add a Cloudflare domain to Postmark.
+- Send emails from your Worker using Postmark.
+- Store API keys securely with secrets.
 
 ## Prerequisites
 
 To continue with this tutorial, you’ll need:
 
-* A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages), if you don’t already have one.
-* A [registered](https://developers.cloudflare.com/registrar/get-started/register-domain/) domain.
-* Installed [npm ↗](https://docs.npmjs.com/getting-started).
-* A [Postmark account ↗](https://account.postmarkapp.com/sign%5Fup).
+- A  [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages), if you don’t already have one.
+- A [registered](https://developers.cloudflare.com/registrar/get-started/register-domain/) domain.
+- Installed [npm ↗](https://docs.npmjs.com/getting-started).
+- A [Postmark account ↗](https://account.postmarkapp.com/sign_up).
 
 ## Create a Worker project
 
-Start by using [C3](https://developers.cloudflare.com/pages/get-started/c3/) to create a Worker project in the command line, then, answer the prompts:
+Start by using  [C3](https://developers.cloudflare.com/pages/get-started/c3/) to create a Worker project in the command line, then, answer the prompts:
 
 ```sh
 npm create cloudflare@latest
@@ -56,11 +56,11 @@ export default {
 
 ## Add your domain to Postmark
 
-If you don’t already have a Postmark account, you can sign up for a [free account here ↗](https://account.postmarkapp.com/sign%5Fup). After signing up, check your inbox for a link to confirm your sender signature. This verifies and enables you to send emails from your registered email address.
+If you don’t already have a Postmark account, you can sign up for a [free account here ↗](https://account.postmarkapp.com/sign_up). After signing up, check your inbox for a link to confirm your sender signature. This verifies and enables you to send emails from your registered email address.
 
-To enable email sending from other addresses on your domain, navigate to `Sender Signatures` on the Postmark dashboard, `Add Domain or Signature` \> `Add Domain`, then type in your domain and click on `Verify Domain`.
+To enable email sending from other addresses on your domain, navigate to `Sender Signatures` on the Postmark dashboard, `Add Domain or Signature` > `Add Domain`, then type in your domain and click on `Verify Domain`.
 
-Next, you’re presented with a list of DNS records to add to your Cloudflare domain. On your Cloudflare dashboard, select the domain you entered earlier and navigate to `DNS` \> `Records`. Copy/paste the DNS records (DKIM, and Return-Path) from Postmark to your Cloudflare domain.
+Next, you’re presented with a list of DNS records to add to your Cloudflare domain. On your Cloudflare dashboard, select the domain you entered earlier and navigate to `DNS` > `Records`. Copy/paste the DNS records (DKIM, and Return-Path) from Postmark to your Cloudflare domain.
 
 ![Image of adding DNS records to a Cloudflare domain](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1922,height=790,format=webp/_astro/add_dns_records.CuwqhmEV.png)
 
@@ -72,7 +72,7 @@ When that’s done, head back to Postmark and click on the `Verify` buttons. If 
 
 ![Image of domain verification on the Postmark dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2338,height=1222,format=webp/_astro/verified_domain.CSwUI8xQ.png)
 
-To grab your API token, navigate to the `Servers` tab, then `My First Server` \> `API Tokens`, then copy your API key to a safe place.
+To grab your API token, navigate to the `Servers` tab, then `My First Server` > `API Tokens`, then copy your API key to a safe place.
 
 ## Send emails from your Worker
 
@@ -122,6 +122,8 @@ POSTMARK_API_TOKEN=your_postmark_api_token_here
 
 Also ensure the secret is added to your deployed worker by running:
 
+*Add secret to deployed Workersh*
+
 ```sh
 npx wrangler secret put POSTMARK_API_TOKEN
 ```
@@ -152,9 +154,9 @@ And finally, deploy this update with `npm run deploy`.
 
 ## Related resources
 
-* [Storing API keys and tokens with Secrets](https://developers.cloudflare.com/workers/configuration/secrets/).
-* [Transferring your domain to Cloudflare](https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/).
-* [Send emails from Workers](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/)
+- [Storing API keys and tokens with Secrets](https://developers.cloudflare.com/workers/configuration/secrets/).
+- [Transferring your domain to Cloudflare](https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/).
+- [Send emails from Workers](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/)
 
 Was this helpful?
 

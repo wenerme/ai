@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Hotlink Protection
 
-Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/tools/scrape-shield/hotlink-protection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/tools/scrape-shield/hotlink-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Hotlink Protection prevents your images from being used by other sites, which can reduce the bandwidth consumed by your [origin server ↗](https://www.cloudflare.com/learning/cdn/glossary/origin-server/).
 
@@ -30,12 +30,11 @@ Hotlink protection has no impact on crawling, but it will prevent the images fro
 
 To enable **Hotlink Protection** in the dashboard:
 
-1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+1. In the Cloudflare dashboard, go to the Security **Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. (Optional) Filter by **Client-side abuse**.
 3. For **Hotlink Protection**, switch the toggle to **On**.
 
-To enable **Hotlink Protection** with the API, send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `hotlink_protection` as the setting name in the URI path, and the `value` parameter set to `"on"`.
+To enable **Hotlink Protection** with the API, send a [`PATCH`](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `hotlink_protection` as the setting name in the URI path, and the `value` parameter set to `"on"`.
 
 Note
 
@@ -63,10 +62,10 @@ To allow another website to use `logo.png` from `example.com`, put `logo.png` in
 
 Some examples of URLs that will not be checked for hotlinking:
 
-* `http://example.com/hotlink-ok/pic.jpg`
-* `http://example.com/images/hotlink-ok/pic.jpg`
-* `http://example.com/hotlink-ok/images/pic.jpg`
-* `http://example.com/images/main-site/hotlink-ok/pic.jpg`
+- `http://example.com/hotlink-ok/pic.jpg`
+- `http://example.com/images/hotlink-ok/pic.jpg`
+- `http://example.com/hotlink-ok/images/pic.jpg`
+- `http://example.com/images/main-site/hotlink-ok/pic.jpg`
 
 Was this helpful?
 

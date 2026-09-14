@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Epochs
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/key-transparency/api/epochs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/key-transparency/api/epochs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Get an epoch
 
@@ -49,11 +49,11 @@ curl 'https://plexi.key-transparency.cloudflare.com/namespaces/{namespace}/audit
 
 ### Constraints
 
-* If `root` is defined for the namespace, the first epoch must match it (number and digest).
-* Epochs must be increasing. Second epoch is 2, third is 3, etc.
-* Epochs must have a unique digest or it will be rejected.
-* Epochs cannot be republished.
-* Digest must be a 32 byte string hex encoded (length 64).
+- If `root` is defined for the namespace, the first epoch must match it (number and digest).
+- Epochs must be increasing. Second epoch is 2, third is 3, etc.
+- Epochs must have a unique digest or it will be rejected.
+- Epochs cannot be republished.
+- Digest must be a 32 byte string hex encoded (length 64).
 
 If a namespace is disabled, you receive the following error:
 

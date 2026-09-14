@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Concepts
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/concepts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Review the concepts behind clientless access.
 
@@ -20,7 +20,7 @@ Review the concepts behind clientless access.
 
 By the end of this module, you will be able to:
 
-* Understand the purpose and benefits of clientless access.
+- Understand the purpose and benefits of clientless access.
 
 Was this helpful?
 

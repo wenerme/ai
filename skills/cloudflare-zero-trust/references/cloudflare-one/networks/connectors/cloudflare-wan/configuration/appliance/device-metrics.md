@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Device metrics
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/device-metrics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/device-metrics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare customers can inspect metrics for a specific Cloudflare One Appliance (formerly Magic WAN Connector) in the Cloudflare dashboard. These metrics help you troubleshoot potential issues with your Cloudflare One Appliance. For details, refer to [Troubleshooting](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/troubleshooting/).
 
@@ -82,7 +82,7 @@ query telemetry(
 
 ### Average CPU load explained
 
-The metric `average CPU load` is unique and distinctly different from `CPU utilization` which is another common CPU metric. The Cloudflare One Appliance uses a [Unix-style CPU load calculation ↗](https://en.wikipedia.org/wiki/Load%5F%28computing%29).
+The metric `average CPU load` is unique and distinctly different from `CPU utilization` which is another common CPU metric. The Cloudflare One Appliance uses a [Unix-style CPU load calculation ↗](<https://en.wikipedia.org/wiki/Load_(computing)>).
 
 CPU load is a measure of the number of processes that are currently running and that are waiting to be run on the CPU. Cloudflare collects the one minute load average from the device and converts that into a percentage based on the total number of cores in the CPU. If the Cloudflare One Appliance CPU has eight cores, and a one minute load average of two, then the average CPU load is 25%. If the average CPU load is above 100%, then there are processes in the queue that are waiting to be executed on the CPU.
 

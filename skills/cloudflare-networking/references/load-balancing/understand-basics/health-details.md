@@ -12,18 +12,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # How endpoints and pools become unhealthy
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When we talk about dynamic load balancing, that means your load balancer only directs requests to endpoints that can handle the traffic.
 
-But how does your load balancer _know_ which endpoints can handle the traffic? We determine that through a system of monitors, health monitors, and pools.
+But how does your load balancer *know* which endpoints can handle the traffic? We determine that through a system of monitors, health monitors, and pools.
 
 ---
 
 ## Dynamic load balancing
 
-Dynamic load balancing happens through a combination of [pools](https://developers.cloudflare.com/load-balancing/pools/), [monitors](https://developers.cloudflare.com/load-balancing/monitors/), and health checks.
+Dynamic load balancing happens through a combination of [pools](https://developers.cloudflare.com/load-balancing/pools/)
 
+, [monitors](https://developers.cloudflare.com/load-balancing/monitors/), and health checks.
+
+```
     flowchart RL
       accTitle: Load balancing monitor flow
       accDescr: Monitors issue health monitor requests, which validate the current status of servers within each pool.
@@ -33,6 +36,8 @@ Dynamic load balancing happens through a combination of [pools](https://develope
       Endpoint1((Endpoint 1))
       Endpoint2((Endpoint 2))
       end
+
+```
 
 ---
 
@@ -59,7 +64,7 @@ If **Health Monitor Regions** for a pool is set to **All Data Centers (Enterpris
 
 Load balancing analytics and logs will only show global health changes.
 
-For greater accuracy and consistency when changing endpoint health status, you can also set the `consecutive_up` and `consecutive_down` parameters via the [Create Monitor API endpoint](https://developers.cloudflare.com/api/resources/load%5Fbalancers/subresources/monitors/methods/create/). To change from healthy to unhealthy, an endpoint will have to be marked healthy a consecutive number of times (specified by `consecutive_down`). The same applies — from unhealthy to healthy — for `consecutive_up`.
+For greater accuracy and consistency when changing endpoint health status, you can also set the `consecutive_up` and `consecutive_down` parameters via the [Create Monitor API endpoint](https://developers.cloudflare.com/api/resources/load_balancers/subresources/monitors/methods/create/). To change from healthy to unhealthy, an endpoint will have to be marked healthy a consecutive number of times (specified by `consecutive_down`). The same applies — from unhealthy to healthy — for `consecutive_up`.
 
 ---
 
@@ -67,11 +72,11 @@ For greater accuracy and consistency when changing endpoint health status, you c
 
 When an [individual endpoint becomes unhealthy](#how-an-endpoint-becomes-unhealthy), that may affect the health status of any associated pools (visible in the dashboard):
 
-* **Healthy**: All endpoints are healthy.
-* **Degraded**: At least one endpoint is unhealthy, but the pool is still considered healthy and could be receiving traffic.
-* **Critical**: The pool has fallen below the number of available endpoints specified in its **Health Threshold** and will not receive traffic from your load balancer (unless other pools are also unhealthy and this pool is marked as the [**Fallback Pool**](#fallback-pools)).
-* **Health unknown**: There are either no monitors attached to pool endpoints or the monitors have not yet determined endpoint health.
-* **No health**: Reserved for your load balancer's [**Fallback Pool**](#fallback-pools).
+- **Healthy**: All endpoints are healthy.
+- **Degraded**: At least one endpoint is unhealthy, but the pool is still considered healthy and could be receiving traffic.
+- **Critical**: The pool has fallen below the number of available endpoints specified in its **Health Threshold** and will not receive traffic from your load balancer (unless other pools are also unhealthy and this pool is marked as the [**Fallback Pool**](#fallback-pools)).
+- **Health unknown**: There are either no monitors attached to pool endpoints or the monitors have not yet determined endpoint health.
+- **No health**: Reserved for your load balancer's [**Fallback Pool**](#fallback-pools).
 
 Note
 
@@ -83,11 +88,10 @@ Note
 
 When a pool reaches **Critical** health, your load balancer will begin diverting traffic according to its [Traffic steering policy](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/):
 
-* **Off**:
-
-  * If the active pool becomes unhealthy, traffic goes to the next pool in order.
-  * If an inactive pool becomes unhealthy, traffic continues to go to the active pool (but would skip over the unhealthy pool in the failover order).
-* **All other methods**: Traffic is distributed across all remaining pools according to the traffic steering policy.
+- **Off**:
+  - If the active pool becomes unhealthy, traffic goes to the next pool in order.
+  - If an inactive pool becomes unhealthy, traffic continues to go to the active pool (but would skip over the unhealthy pool in the failover order).
+- **All other methods**: Traffic is distributed across all remaining pools according to the traffic steering policy.
 
 ### Fallback pools
 
@@ -101,14 +105,14 @@ Fallback pools are important because traffic still might be coming to your load 
 
 When one or more pools become unhealthy, your load balancer might also show a different status in the dashboard:
 
-* **Healthy**: All pools are healthy.
-* **Degraded**: At least one pool is unhealthy, but traffic is not yet going to the [Fallback Pool](#fallback-pools).
-* **Critical**: All pools are unhealthy and traffic is going to the [Fallback Pool](#fallback-pools).
+- **Healthy**: All pools are healthy.
+- **Degraded**: At least one pool is unhealthy, but traffic is not yet going to the [Fallback Pool](#fallback-pools).
+- **Critical**: All pools are unhealthy and traffic is going to the [Fallback Pool](#fallback-pools).
 
 If a load balancer reaches **Critical** health and the pool serving as your fallback pool is also disabled:
 
-* If Cloudflare proxies your hostname, you will see a 530 HTTP/1016 Origin DNS failure.
-* If Cloudflare does not proxy your hostname, you will see the SOA record.
+- If Cloudflare proxies your hostname, you will see a 530 HTTP/1016 Origin DNS failure.
+- If Cloudflare does not proxy your hostname, you will see the SOA record.
 
 Was this helpful?
 

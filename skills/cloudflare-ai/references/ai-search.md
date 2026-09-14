@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Overview
 
-Last updated Jul 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The search primitive for your applications and agents.
 
@@ -24,17 +24,17 @@ AI Search lets you add search to any application or agent without having to buil
 
 AI Search
 
-[Storage](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/)[AI models](https://developers.cloudflare.com/ai-search/configuration/models/)[Index](https://developers.cloudflare.com/ai-search/configuration/indexing/)
+[Storage](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/) [AI models](https://developers.cloudflare.com/ai-search/configuration/models/) [Index](https://developers.cloudflare.com/ai-search/configuration/indexing/)
 
 [Search](https://developers.cloudflare.com/ai-search/concepts/search-modes/)
 
 You can use AI Search for:
 
-* Documentation and knowledge base search
-* AI agents that perform research over your internal knowledge
-* Let each tenant or agent upload and search their own files
+- Documentation and knowledge base search
+- AI agents that perform research over your internal knowledge
+- Let each tenant or agent upload and search their own files
 
-[Get started](https://developers.cloudflare.com/ai-search/get-started/)[Watch AI Search demo](https://www.youtube.com/watch?v=JUFdbkiDN2U)
+[Get started](https://developers.cloudflare.com/ai-search/get-started/) [Watch AI Search demo](https://www.youtube.com/watch?v=JUFdbkiDN2U)
 
 ---
 

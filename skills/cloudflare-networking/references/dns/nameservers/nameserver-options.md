@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Nameserver options
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/nameservers/nameserver-options/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/nameservers/nameserver-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Refer to the following sections to learn about different Cloudflare nameserver options. The availability of these options depends on your plan. Also, if you acquired your domain from Cloudflare Registrar, your domain already uses and [must remain](https://developers.cloudflare.com/registrar/faq/#can-i-use-my-own-third-party-nameservers) on Cloudflare nameservers.
 
@@ -34,17 +34,17 @@ Once a zone is created, its assigned nameservers cannot be changed — not even 
 
 The level of consistency you can expect when adding new zones depends on the configured nameserver type.
 
-* For [standard nameservers](https://developers.cloudflare.com/dns/nameservers/#standard-nameservers), since a conflict can be caused by anyone adding the same zone to any other Cloudflare account, the likelihood of your new zone being assigned different nameserver names than your previously existing zones is higher.
-* If you use [account custom nameservers](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/account-custom-nameservers/), the only conflict would be between a parent and a child zone, which makes consistent assignment across new zones more likely.
-* With [tenant custom nameservers](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/tenant-custom-nameservers/) or [Foundation DNS advanced nameservers](https://developers.cloudflare.com/dns/foundation-dns/advanced-nameservers/#nameservers-hosting-and-assignment), there can still be conflicts caused by two zones with the same name being added to different accounts, but, since access to these features is more restricted, the likelihood of your new zone being assigned different nameserver names than your previously existing zones is lower.
+- For [standard nameservers](https://developers.cloudflare.com/dns/nameservers/#standard-nameservers), since a conflict can be caused by anyone adding the same zone to any other Cloudflare account, the likelihood of your new zone being assigned different nameserver names than your previously existing zones is higher.
+- If you use [account custom nameservers](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/account-custom-nameservers/), the only conflict would be between a parent and a child zone, which makes consistent assignment across new zones more likely.
+- With [tenant custom nameservers](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/tenant-custom-nameservers/) or [Foundation DNS advanced nameservers](https://developers.cloudflare.com/dns/foundation-dns/advanced-nameservers/#nameservers-hosting-and-assignment), there can still be conflicts caused by two zones with the same name being added to different accounts, but, since access to these features is more restricted, the likelihood of your new zone being assigned different nameserver names than your previously existing zones is lower.
 
 ### DNS zone defaults
 
 If you have an Enterprise account, you also have the option to [configure your own DNS zone defaults](https://developers.cloudflare.com/dns/additional-options/dns-zone-defaults/) and change how Cloudflare handles nameserver assignment when you add a new zone to your account:
 
-* **Standard nameservers randomized**: instead of attempting consistency, Cloudflare assigns random pairs of nameserver names every time you add a new domain to your account.
-* **Advanced nameservers**: Cloudflare uses the same method as the default - trying to keep nameserver names consistent for different zones within an account - but uses the specific [Foundation DNS nameservers](https://developers.cloudflare.com/dns/foundation-dns/advanced-nameservers/).
-* **Account custom nameservers**: Cloudflare automatically assigns a set of [account custom nameservers](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/account-custom-nameservers/) that you have previously configured for your account. In this method, **Set 1** will be attempted first and, in case of any conflicts, Cloudflare will cycle through the other nameserver sets, in ascending order.
+- **Standard nameservers randomized**: instead of attempting consistency, Cloudflare assigns random pairs of nameserver names every time you add a new domain to your account.
+- **Advanced nameservers**: Cloudflare uses the same method as the default - trying to keep nameserver names consistent for different zones within an account - but uses the specific [Foundation DNS nameservers](https://developers.cloudflare.com/dns/foundation-dns/advanced-nameservers/).
+- **Account custom nameservers**: Cloudflare automatically assigns a set of [account custom nameservers](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/account-custom-nameservers/) that you have previously configured for your account. In this method, **Set 1** will be attempted first and, in case of any conflicts, Cloudflare will cycle through the other nameserver sets, in ascending order.
 
 Caution
 
@@ -58,15 +58,15 @@ Multi-provider DNS is an optional setting for zones using [primary setup (full)]
 
 When you enable multi-provider DNS on a primary zone:
 
-* Cloudflare will no longer ignore `NS` records created on the zone apex, as in the example below.
+- Cloudflare will no longer ignore `NS` records created on the zone apex, as in the example below.
 
-| Type | Name | Nameserver       |
-| ---- | ---- | ---------------- |
-| NS   | @    | ns1.external.com |
+  | Type | Name | Nameserver |
+  | --- | --- | --- |
+  | `NS` | `@` | `ns1.external.com` |
 
 This means that responses to DNS queries made to the zone apex and requesting `NS` records will contain both Cloudflare's and your other DNS providers' nameservers.
 
-* Cloudflare will activate a primary zone (full setup) even if its [nameservers listed at the registrar](https://developers.cloudflare.com/dns/nameservers/update-nameservers/) include nameservers from other DNS providers.
+- Cloudflare will activate a primary zone (full setup) even if its [nameservers listed at the registrar](https://developers.cloudflare.com/dns/nameservers/update-nameservers/) include nameservers from other DNS providers.
 
 Caution
 

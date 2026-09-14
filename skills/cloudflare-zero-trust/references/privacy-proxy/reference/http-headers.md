@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # HTTP headers
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/privacy-proxy/reference/http-headers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/privacy-proxy/reference/http-headers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page documents the HTTP headers used by Privacy Proxy for authentication, geolocation, and observability. For full observability details, refer to [GraphQL Analytics API](https://developers.cloudflare.com/privacy-proxy/reference/metrics/graphql/) and [OpenTelemetry](https://developers.cloudflare.com/privacy-proxy/reference/metrics/opentelemetry/).
 
@@ -36,10 +36,10 @@ Privacy Pass token format:
 Proxy-Authorization: PrivateToken token=<base64-encoded-token>
 ```
 
-| Parameter              | Description                               |
-| ---------------------- | ----------------------------------------- |
-| <key>                  | The pre-shared key provided by Cloudflare |
-| <base64-encoded-token> | A base64-encoded Privacy Pass token       |
+| Parameter | Description |
+| --- | --- |
+| `<key>` | The pre-shared key provided by Cloudflare |
+| `<base64-encoded-token>` | A base64-encoded Privacy Pass token |
 
 ### GraphQL Analytics API request headers
 
@@ -53,10 +53,12 @@ Specifies the client's geographic location for egress IP selection. Optional but
 sec-ch-geohash: <geohash>-<country_code>
 ```
 
-| Parameter       | Description                                                                            |
-| --------------- | -------------------------------------------------------------------------------------- |
-| <geohash>       | A [geohash ↗](https://en.wikipedia.org/wiki/Geohash) string (typically 4-8 characters) |
-| <country\_code> | ISO 3166-1 alpha-2 country code                                                        |
+| Parameter | Description |
+| --- | --- |
+| `<geohash>` | A [geohash ↗](https://en.wikipedia.org/wiki/Geohash) string (typically 4-8 characters) |
+| `<country_code>` | ISO 3166-1 alpha-2 country code |
+
+*Examplehttp*
 
 ```http
 sec-ch-geohash: u4pruydqqvj-GB
@@ -78,9 +80,11 @@ Provides timing information about proxy processing. This is part of the [OpenTel
 Server-Timing: proxy;dur=<milliseconds>
 ```
 
-| Parameter      | Description                                             |
-| -------------- | ------------------------------------------------------- |
-| <milliseconds> | Processing time in milliseconds introduced by the proxy |
+| Parameter | Description |
+| --- | --- |
+| `<milliseconds>` | Processing time in milliseconds introduced by the proxy |
+
+*Examplehttp*
 
 ```http
 Server-Timing: proxy;dur=8.2
@@ -105,12 +109,12 @@ sec-ch-geohash: 9q8yy-US
 
 The proxy responds with a status code indicating success or failure:
 
-| Status                  | Meaning                          |
-| ----------------------- | -------------------------------- |
-| 200 OK                  | Tunnel established successfully  |
-| 403 Forbidden           | Authentication failed            |
-| 502 Bad Gateway         | Could not connect to destination |
-| 503 Service Unavailable | Proxy temporarily unavailable    |
+| Status | Meaning |
+| --- | --- |
+| `200 OK` | Tunnel established successfully |
+| `403 Forbidden` | Authentication failed |
+| `502 Bad Gateway` | Could not connect to destination |
+| `503 Service Unavailable` | Proxy temporarily unavailable |
 
 Was this helpful?
 

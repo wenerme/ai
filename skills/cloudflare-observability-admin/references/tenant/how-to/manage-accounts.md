@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage accounts
 
-Last updated Jun 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tenant/how-to/manage-accounts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tenant/how-to/manage-accounts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Each customer or team that uses Cloudflare should have their own account. This ensures proper security and access of resources. Each account acts as a container of zones and other resources. Depending on your needs, you may even provision multiple accounts for a single customer or team.
 
@@ -27,7 +27,7 @@ When you create an account with the Tenant API, your Cloudflare user owns that a
 To create an account under your tenant using the dashboard:
 
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
-2. Go to **Tenants** \> **Managed Accounts**.
+2. Go to **Tenants** > **Managed Accounts**.
 3. Select **Create Account**.
 4. Enter the **Account Name**, **Account Description**, and **Tenant Unit**.
 5. Choose the appropriate account subscription.
@@ -35,38 +35,31 @@ To create an account under your tenant using the dashboard:
 
 To create an account using the API, make a `POST` request to the `/accounts` endpoint and include the following values:
 
-* `name` string
-
-  * The name of the account that is displayed in the Cloudflare dashboard.
-* `type` enum
-
-  * Valid values are `standard` (default) and `enterprise`. For self-serve customers, use `standard`. For enterprise customers, use `enterprise`.
-* `unit` object
-
-  * Information related to the tenant unit.
-  * `id` string
-
-    * (optional) ID of the unit to create this account on. Needs to be specified if user administers multiple tenants. Unit ID is the `unit_tag` from your [tenant details](https://developers.cloudflare.com/tenant/how-to/get-tenant-details/).
+- `name` string
+  - The name of the account that is displayed in the Cloudflare dashboard.
+- `type` enum
+  - Valid values are `standard` (default) and `enterprise`. For self-serve customers, use `standard`. For enterprise customers, use `enterprise`.
+- `unit` object
+  - Information related to the tenant unit.
+  - `id` string
+    - (optional) ID of the unit to create this account on. Needs to be specified if user administers multiple tenants. Unit ID is the `unit_tag` from your [tenant details](https://developers.cloudflare.com/tenant/how-to/get-tenant-details/).
 
 ### Know-Your-Customer (optional)
 
 All KYC parameters are text fields, have a 120 character limit, and are optional unless enforced by the Tenant.
 
-* `business_name` string
+- `business_name` string
+  - (optional) The name of the business associated with this account.
+- `business_address` string
+  - (optional) The address of the business associated with this account.
+- `business_email` string
+  - (optional) The email of the business associated with this account.
+- `business_phone` string
+  - (optional) The phone number of the business associated with this account.
+- `external_metadata` string
+  - (optional) External metadata for this account.
 
-  * (optional) The name of the business associated with this account.
-* `business_address` string
-
-  * (optional) The address of the business associated with this account.
-* `business_email` string
-
-  * (optional) The email of the business associated with this account.
-* `business_phone` string
-
-  * (optional) The phone number of the business associated with this account.
-* `external_metadata` string
-
-  * (optional) External metadata for this account.
+*Requestbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts" \
@@ -80,6 +73,8 @@ curl "https://api.cloudflare.com/client/v4/accounts" \
 ```
 
 A successful request will return an HTTP status of `200` and the following response body:
+
+*Responsejson*
 
 ```json
 {
@@ -99,6 +94,8 @@ A successful request will return an HTTP status of `200` and the following respo
 
 A request with a unit ID:
 
+*Requestbash*
+
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts" \
 --header "X-Auth-Email: <EMAIL>" \
@@ -114,6 +111,8 @@ curl "https://api.cloudflare.com/client/v4/accounts" \
 ```
 
 A request with a unit ID and KYC:
+
+*Requestbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts" \
@@ -141,17 +140,21 @@ When you create an account with the Tenant API, your Cloudflare user owns that a
 To view any accounts owned by your tenant using the dashboard:
 
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
-2. Go to **Tenants** \> **Managed Accounts**.
+2. Go to **Tenants** > **Managed Accounts**.
 
-To fetch any accounts owned by your tenant using the API, send a [GET](https://developers.cloudflare.com/api/resources/accounts/methods/list/) request to the `/accounts` endpoint.
+To fetch any accounts owned by your tenant using the API, send a [`GET`](https://developers.cloudflare.com/api/resources/accounts/methods/list/) request to the `/accounts` endpoint.
 
 You will get back a list of all the accounts you have created plus any accounts your user already had access to.
+
+*Requestbash*
 
 ```bash
 curl https://api.cloudflare.com/client/v4/accounts \
 --header "X-Auth-Email: <EMAIL>" \
 --header "X-Auth-Key: <API_KEY>"
 ```
+
+*Responsejson*
 
 ```json
 {
@@ -186,7 +189,7 @@ curl https://api.cloudflare.com/client/v4/accounts \
 
 ## Update account
 
-To update an account, send a [PUT](https://developers.cloudflare.com/api/resources/accounts/methods/update/) request to the `/accounts/{account_id}` endpoint.
+To update an account, send a [`PUT`](https://developers.cloudflare.com/api/resources/accounts/methods/update/) request to the `/accounts/{account_id}` endpoint.
 
 ## Delete account
 
@@ -198,26 +201,34 @@ Some resources require manual deletion
 
 The following resources are **not** automatically deleted when you delete an account and must be removed manually beforehand:
 
-* **Logpush jobs**: Will continue delivering logs after account deletion.
-* **Zero Trust Gateway configurations**: May continue resolving DNS queries after account deletion.
+- **Logpush jobs**: Will continue delivering logs after account deletion.
+- **Zero Trust Gateway configurations**: May continue resolving DNS queries after account deletion.
 
 To ensure complete cleanup, delete these resources before deleting the account by calling the following endpoints in sequence:
 
 1. Delete Zero Trust Gateway configuration:
-```bash
-curl --request DELETE \
-https://api.cloudflare.com/client/v4/accounts/{account_id}/gateway \
---header "X-Auth-Email: <EMAIL>" \
---header "X-Auth-Key: <API_KEY>"
-```
+
+   ```bash
+   curl --request DELETE \
+   https://api.cloudflare.com/client/v4/accounts/{account_id}/gateway \
+   --header "X-Auth-Email: <EMAIL>" \
+   --header "X-Auth-Key: <API_KEY>"
+   ```
+
+
 2. Delete Access organization:
-```bash
-curl --request DELETE \
-https://api.cloudflare.com/client/v4/accounts/{account_id}/access/organizations \
---header "X-Auth-Email: <EMAIL>" \
---header "X-Auth-Key: <API_KEY>"
-```
+
+   ```bash
+   curl --request DELETE \
+   https://api.cloudflare.com/client/v4/accounts/{account_id}/access/organizations \
+   --header "X-Auth-Email: <EMAIL>" \
+   --header "X-Auth-Key: <API_KEY>"
+   ```
+
+
 3. Then delete the account (see below).
+
+*Requestbash*
 
 ```bash
 curl --request DELETE \
@@ -227,6 +238,8 @@ https://api.cloudflare.com/client/v4/accounts/{account_id} \
 ```
 
 A successful request will return the id to confirm the operation:
+
+*Responsejson*
 
 ```json
 {

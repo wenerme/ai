@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # What is Cloudflare?
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/what-is-cloudflare/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/what-is-cloudflare/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare is one of the world's largest [connectivity cloud networks ↗](https://blog.cloudflare.com/welcome-to-connectivity-cloud). Today, anyone with an Internet presence can have faster and more secure websites and applications thanks to Cloudflare. This includes bloggers, businesses, and even non-profits.
 

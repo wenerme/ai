@@ -1,5 +1,5 @@
 ---
-description: OpenAI's next-generation image model that creates and edits images from text prompts, with support for multiple quality levels, sizes, and output formats. Note: transparent backgrounds are not supported — use openai/gpt-image-1.5 for transparent PNGs.
+description: "OpenAI's next-generation image model that creates and edits images from text prompts, with support for multiple quality levels, sizes, and output formats. Note: transparent backgrounds are not supported — use openai/gpt-image-1.5 for transparent PNGs."
 title: GPT Image 2
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Image • OpenAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-image-2/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-image-2/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `openai/gpt-image-2`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 OpenAI's next-generation image model that creates and edits images from text prompts, with support for multiple quality levels, sizes, and output formats. Note: transparent backgrounds are not supported — use openai/gpt-image-1.5 for transparent PNGs.
 
-| Model Info          |                                                                                                                      |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://openai.com/policies/)                                                                               |
-| More information    | [link ↗](https://openai.com/)                                                                                        |
-| Zero data retention | Yes                                                                                                                  |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-image-2) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://openai.com/policies/) |
+| More information | [link ↗](https://openai.com/) |
+| Zero data retention | Yes |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-image-2) |
 
 ## Usage
 
@@ -70,7 +70,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**High Quality** — Generate a high-quality detailed image
+<details>
+
+<summary>**High Quality** — Generate a high-quality detailed image</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -111,7 +115,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Custom Size** — Generate a portrait-oriented image
+</details>
+
+<details>
+
+<summary>**Custom Size** — Generate a portrait-oriented image</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -151,7 +161,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**WebP Output** — Generate an image in WebP format for smaller file size
+</details>
+
+<details>
+
+<summary>**WebP Output** — Generate an image in WebP format for smaller file size</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -194,7 +210,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Image Edit** — Edit an existing image by providing it in the images array as base64 (a raw string or a data:image/{png|jpeg|webp};base64,... URI). This routes the call to OpenAI's /v1/images/edits endpoint. The example uses a tiny 32x32 smiley-face PNG - real inputs are the full base64 encoding of your source image.
+</details>
+
+<details>
+
+<summary>**Image Edit** — Edit an existing image by providing it in the images array as base64 (a raw string or a data:image/{png|jpeg|webp};base64,... URI). This routes the call to OpenAI's /v1/images/edits endpoint. The example uses a tiny 32x32 smiley-face PNG - real inputs are the full base64 encoding of your source image.</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -239,7 +261,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Multi-Image Edit** — Compose multiple input images by passing up to 16 base64 strings in the images array. The model blends the references; useful for combining subjects, styles, or reference shots. The example pairs a smiley-face PNG with a red ball PNG.
+</details>
+
+<details>
+
+<summary>**Multi-Image Edit** — Compose multiple input images by passing up to 16 base64 strings in the images array. The model blends the references; useful for combining subjects, styles, or reference shots. The example pairs a smiley-face PNG with a red ball PNG.</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -286,13 +314,15 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 prompt
 
 `string`requiredText prompt describing the image to generate or edit
 
-▶images\[\]
+▶images\[]
 
 `array`maxItems: 16Input images for image editing, 1-16 entries. Each entry is base64-encoded (raw string or data:image/{png|jpeg|webp};base64,... URI).
 
@@ -318,9 +348,9 @@ image
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/openai/gpt-image-2/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-image-2/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/openai/gpt-image-2/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-image-2/schema-output.json)
 
 Was this helpful?
 

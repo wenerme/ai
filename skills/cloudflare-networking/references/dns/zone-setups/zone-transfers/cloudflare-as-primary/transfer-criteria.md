@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Records transfer
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-primary/transfer-criteria/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-primary/transfer-criteria/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Consider the sections below to understand the expected behaviors, depending on DNS record type and proxied status.
 
@@ -28,8 +28,8 @@ As explained in [DNS record types](https://developers.cloudflare.com/dns/manage-
 
 Depending on the [settings](https://developers.cloudflare.com/dns/cname-flattening/set-up-cname-flattening/) you have, when you use DNS-only CNAME records with outgoing zone transfers, you can expect the following:
 
-* For DNS-only CNAME records on the zone apex, Cloudflare will always transfer out the flattened IP addresses.
-* For DNS-only CNAME records on subdomains, Cloudflare will only transfer out flattened IP addresses if the setting [**CNAME flattening for all CNAME records**](https://developers.cloudflare.com/dns/cname-flattening/set-up-cname-flattening/#for-all-cname-records) is enabled.
+- For DNS-only CNAME records on the zone apex, Cloudflare will always transfer out the flattened IP addresses.
+- For DNS-only CNAME records on subdomains, Cloudflare will only transfer out flattened IP addresses if the setting [**CNAME flattening for all CNAME records**](https://developers.cloudflare.com/dns/cname-flattening/set-up-cname-flattening/#for-all-cname-records) is enabled.
 
 Per-record CNAME flattening
 
@@ -39,9 +39,9 @@ For records using [per-record CNAME flattening](https://developers.cloudflare.co
 
 The following records are not transferred out when you use Cloudflare as primary:
 
-* [CAA records](https://developers.cloudflare.com/ssl/edge-certificates/caa-records/)
-* TXT records used for TLS certificate validation
-* DNS-only [Load Balancing](https://developers.cloudflare.com/load-balancing/load-balancers/dns-records/) records
+- [CAA records](https://developers.cloudflare.com/ssl/edge-certificates/caa-records/)
+- TXT records used for TLS certificate validation
+- DNS-only [Load Balancing](https://developers.cloudflare.com/load-balancing/load-balancers/dns-records/) records
 
 Note
 

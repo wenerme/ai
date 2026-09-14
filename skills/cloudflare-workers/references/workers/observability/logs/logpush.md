@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers Logpush
 
-Last updated Jul 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/logs/logpush/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/logs/logpush/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Cloudflare Logpush](https://developers.cloudflare.com/logs/logpush/) supports the ability to send [Workers Trace Event Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/workers%5Ftrace%5Fevents/) to a [supported destination](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/). Workers Trace Events Logpush includes metadata about requests and responses, unstructured `console.log()` messages and any uncaught exceptions. This product is available on the Workers Paid plan. For pricing information, refer to [Pricing](https://developers.cloudflare.com/workers/platform/pricing/#workers-trace-events-logpush).
+[Cloudflare Logpush](https://developers.cloudflare.com/logs/logpush/) supports the ability to send [Workers Trace Event Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/workers_trace_events/) to a [supported destination](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/). Workers Trace Events Logpush includes metadata about requests and responses, unstructured `console.log()` messages and any uncaught exceptions. This product is available on the Workers Paid plan. For pricing information, refer to [Pricing](https://developers.cloudflare.com/workers/platform/pricing/#workers-trace-events-logpush).
 
 Prefer OpenTelemetry export
 
@@ -28,12 +28,11 @@ Workers Trace Events Logpush is not available for zones on the [Cloudflare China
 
 Wrangler version
 
-Minimum required Wrangler version: 2.2.0\. Check your version by running `wrangler --version`. To update Wrangler, refer to [Install/Update Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
+Minimum required Wrangler version: 2.2.0. Check your version by running `wrangler --version`. To update Wrangler, refer to [Install/Update Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
 
 To configure a Logpush job, verify that your Cloudflare account role can use Logpush. To check your role:
 
-1. In the Cloudflare dashboard, go to the **Members** page.
-[Go to **Members** ↗](https://dash.cloudflare.com/?to=/:account/members)
+1. In the Cloudflare dashboard, go to the **Members** page. [Go to **Members** ↗](https://dash.cloudflare.com/?to=/:account/members)
 2. Check your account permissions. Roles with Logpush configuration access are different than Workers permissions. Super Administrators, Administrators, and the Log Share roles have full access to Logpush.
 
 Alternatively, create a new [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) scoped at the Account level with Logs Edit permissions.
@@ -44,8 +43,7 @@ Alternatively, create a new [API token](https://developers.cloudflare.com/fundam
 
 To create a Logpush job in the Cloudflare dashboard:
 
-1. In the Cloudflare dashboard, go to the **Logpush** page.
-[Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/logs)
+1. In the Cloudflare dashboard, go to the **Logpush** page. [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/logs)
 2. Select **Create a Logpush job**.
 3. Select a destination and configure it, if needed.
 4. Select **Workers trace events** as the data set > **Next**.
@@ -54,7 +52,7 @@ To create a Logpush job in the Cloudflare dashboard:
 
 ### Via cURL
 
-The following example sends Workers logs to R2\. For more configuration options, refer to [Enable destinations](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/) and [API configuration](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/) in the Logs documentation.
+The following example sends Workers logs to R2. For more configuration options, refer to [Enable destinations](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/) and [API configuration](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/) in the Logs documentation.
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/logpush/jobs" \
@@ -89,7 +87,7 @@ Enable logging on your Worker by adding a new property, `logpush = true`, to you
 	"name": "my-worker",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-09-12",
+	"compatibility_date": "2026-09-14",
 	"workers_dev": false,
 	"logpush": true,
 	"route": {
@@ -104,7 +102,7 @@ Enable logging on your Worker by adding a new property, `logpush = true`, to you
 name = "my-worker"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-09-12"
+compatibility_date = "2026-09-14"
 workers_dev = false
 logpush = true
 
@@ -127,10 +125,9 @@ curl --request PUT \
 
 To enable Logpush logging via the dashboard:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Worker.
-3. Go to **Settings** \> **Observability**.
+3. Go to **Settings** > **Observability**.
 4. For **Logpush**, select **Enable** (this is only available if you have already [created a logpush job](https://developers.cloudflare.com/workers/observability/logs/logpush/#create-a-logpush-job)).
 
 ## Limits
@@ -144,12 +141,12 @@ Once that character limit is reached all fields will be truncated with `"<<<Logp
 To illustrate this, suppose our Logpush event looks like the JSON below and the limit is 50 characters (rather than the actual limit of 16,384). The algorithm will:
 
 1. Count the characters in `exception.names`:
-  1. `"SampleError"` and `"AuthError"` as 20 characters.
+   1. `"SampleError"` and `"AuthError"` as 20 characters.
 2. Count the characters in `exception.message`:
-  1. `"something went wrong"` counted as 20 characters leaving 10 characters remaining.
-  2. The first 10 characters of `"unable to process request authentication from client"` will be taken and counted before being truncated to `"unable to <<<Logpush: exception messages truncated>>>"`.
+   1. `"something went wrong"` counted as 20 characters leaving 10 characters remaining.
+   2. The first 10 characters of `"unable to process request authentication from client"` will be taken and counted before being truncated to `"unable to <<<Logpush: exception messages truncated>>>"`.
 3. Count the characters in `log.message`:
-  1. We've already begun truncation, so `"Hello "` will be replaced with `"<<<Logpush: messages truncated>>>"` and `"World!"` will be dropped.
+   1. We've already begun truncation, so `"Hello "` will be replaced with `"<<<Logpush: messages truncated>>>"` and `"World!"` will be dropped.
 
 #### Sample Input
 

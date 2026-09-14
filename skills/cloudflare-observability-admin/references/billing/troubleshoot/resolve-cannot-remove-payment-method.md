@@ -12,18 +12,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Resolve "cannot remove payment method"
 
-Last updated May 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/billing/troubleshoot/resolve-cannot-remove-payment-method/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/troubleshoot/resolve-cannot-remove-payment-method/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When attempting to remove a payment method, you may see one of the following error messages:
 
-* "You can't remove this payment method while it's linked to active subscriptions. Go to Billing to manage subscriptions."
-* "You can't remove a payment method while there are transactions in progress. Make sure all transactions are completed and all subscriptions are cancelled."
+- "You can't remove this payment method while it's linked to active subscriptions. Go to Billing to manage subscriptions."
+- "You can't remove a payment method while there are transactions in progress. Make sure all transactions are completed and all subscriptions are cancelled."
 
 ## Causes
 
-* You still have active paid subscriptions.
-* You have canceled your paid subscriptions, but a usage-based charge is still scheduled.
-* You have an upcoming Registrar domain registration renewal within the next 24 hours.
+- You still have active paid subscriptions.
+- You have canceled your paid subscriptions, but a usage-based charge is still scheduled.
+- You have an upcoming Registrar domain registration renewal within the next 24 hours.
 
 ## Solutions
 
@@ -32,8 +32,7 @@ When attempting to remove a payment method, you may see one of the following err
 You can only remove a payment method after all paid subscriptions are canceled and outstanding charges are settled.
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
-2. Go to **Manage Account** \> **Billing**.
-[Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
+2. Go to **Manage Account** > **Billing**. [Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
 3. Select **Subscriptions**.
 4. Check **Service status** for any subscriptions marked **Active**.
 5. Select **Cancel** for each active paid subscription.
@@ -44,21 +43,21 @@ Repeat this for all active paid subscriptions before attempting to remove the pa
 
 If you have canceled all paid subscriptions, any usage-based products canceled within the last 30 days may still generate charges. Your payment method must remain on file until those charges are processed. If you recently canceled any of the following products, wait 30 days before removing your payment method:
 
-| Product                                                                                        | Billable metric                       | Free tier or included usage                                      | Pricing details                                                                                   |
-| ---------------------------------------------------------------------------------------------- | ------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| [Workers](https://developers.cloudflare.com/workers/platform/pricing/)                         | Requests and CPU time                 | 10M requests and 30M CPU-ms                                      | [Workers pricing](https://developers.cloudflare.com/workers/platform/pricing/)                    |
-| [R2](https://developers.cloudflare.com/r2/pricing/)                                            | Storage and operations                | 10 GB storage, 1M Class A operations, and 10M Class B operations | [R2 pricing](https://developers.cloudflare.com/r2/pricing/)                                       |
-| [Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/)                    | Data transfer                         | First 1 GB                                                       | [Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/)                       |
-| [Cache Reserve](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/) | Reads, writes, and storage            | None                                                             | [Cache Reserve](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/)    |
-| [Load Balancing](https://developers.cloudflare.com/load-balancing/)                            | DNS queries                           | First 500K queries                                               | [Load Balancing](https://developers.cloudflare.com/load-balancing/)                               |
-| [Stream](https://developers.cloudflare.com/stream/pricing/)                                    | Minutes stored and minutes viewed     | Varies by plan                                                   | [Stream pricing](https://developers.cloudflare.com/stream/pricing/)                               |
-| [Images](https://developers.cloudflare.com/images/pricing/)                                    | Transformations and storage           | Varies by plan                                                   | [Images pricing](https://developers.cloudflare.com/images/pricing/)                               |
-| [Spectrum](https://developers.cloudflare.com/spectrum/)                                        | Data transfer                         | None                                                             | [Spectrum](https://developers.cloudflare.com/spectrum/)                                           |
-| [Rate Limiting](https://developers.cloudflare.com/waf/rate-limiting-rules/)                    | Rule requests                         | Varies by plan                                                   | [Rate Limiting](https://developers.cloudflare.com/waf/rate-limiting-rules/)                       |
-| [Log Explorer](https://developers.cloudflare.com/log-explorer/pricing/)                        | Log storage and queries               | Varies by plan                                                   | [Log Explorer pricing](https://developers.cloudflare.com/log-explorer/pricing/)                   |
-| [Zero Trust](https://developers.cloudflare.com/cloudflare-one/)                                | Seats and usage-based services        | Varies by plan                                                   | [Zero Trust](https://developers.cloudflare.com/cloudflare-one/)                                   |
-| [Vectorize](https://developers.cloudflare.com/vectorize/platform/pricing/)                     | Stored dimensions and queried vectors | Varies by plan                                                   | [Vectorize pricing](https://developers.cloudflare.com/vectorize/platform/pricing/)                |
-| [Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/pricing/)      | Data points read and written          | Varies by plan                                                   | [Analytics Engine pricing](https://developers.cloudflare.com/analytics/analytics-engine/pricing/) |
+| Product | Billable metric | Free tier or included usage | Pricing details |
+| --- | --- | --- | --- |
+| [Workers](https://developers.cloudflare.com/workers/platform/pricing/) | Requests and CPU time | 10M requests and 30M CPU-ms | [Workers pricing](https://developers.cloudflare.com/workers/platform/pricing/) |
+| [R2](https://developers.cloudflare.com/r2/pricing/) | Storage and operations | 10 GB storage, 1M Class A operations, and 10M Class B operations | [R2 pricing](https://developers.cloudflare.com/r2/pricing/) |
+| [Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/) | Data transfer | First 1 GB | [Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/) |
+| [Cache Reserve](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/) | Reads, writes, and storage | None | [Cache Reserve](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/) |
+| [Load Balancing](https://developers.cloudflare.com/load-balancing/) | DNS queries | First 500K queries | [Load Balancing](https://developers.cloudflare.com/load-balancing/) |
+| [Stream](https://developers.cloudflare.com/stream/pricing/) | Minutes stored and minutes viewed | Varies by plan | [Stream pricing](https://developers.cloudflare.com/stream/pricing/) |
+| [Images](https://developers.cloudflare.com/images/pricing/) | Transformations and storage | Varies by plan | [Images pricing](https://developers.cloudflare.com/images/pricing/) |
+| [Spectrum](https://developers.cloudflare.com/spectrum/) | Data transfer | None | [Spectrum](https://developers.cloudflare.com/spectrum/) |
+| [Rate Limiting](https://developers.cloudflare.com/waf/rate-limiting-rules/) | Rule requests | Varies by plan | [Rate Limiting](https://developers.cloudflare.com/waf/rate-limiting-rules/) |
+| [Log Explorer](https://developers.cloudflare.com/log-explorer/pricing/) | Log storage and queries | Varies by plan | [Log Explorer pricing](https://developers.cloudflare.com/log-explorer/pricing/) |
+| [Zero Trust](https://developers.cloudflare.com/cloudflare-one/) | Seats and usage-based services | Varies by plan | [Zero Trust](https://developers.cloudflare.com/cloudflare-one/) |
+| [Vectorize](https://developers.cloudflare.com/vectorize/platform/pricing/) | Stored dimensions and queried vectors | Varies by plan | [Vectorize pricing](https://developers.cloudflare.com/vectorize/platform/pricing/) |
+| [Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/pricing/) | Data points read and written | Varies by plan | [Analytics Engine pricing](https://developers.cloudflare.com/analytics/analytics-engine/pricing/) |
 
 After the next monthly invoice is generated, you can remove the payment method.
 
@@ -69,14 +68,14 @@ For Registrar domains scheduled for auto-renewal, we will attempt to renew appro
 To check if any of your domains are in the renewal process:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
-2. Go to **Domain Registration** \> **Manage Domains**.
+2. Go to **Domain Registration** > **Manage Domains**.
 3. Under **Expires**, look for domains expiring within the next 31 days that have auto-renewal turned on.
 
 If you have any domains with auto-renewal turned on that are expiring in 31 days or less, wait for them to renew before you remove your payment method. To understand more about this process, refer to [Renew domains](https://developers.cloudflare.com/registrar/account-options/renew-domains/).
 
 ## Verify the fix
 
-After you clear active subscriptions, pending usage-based charges, and upcoming Registrar renewals, return to **Payment** \> **Payment methods** and try to remove the payment method again.
+After you clear active subscriptions, pending usage-based charges, and upcoming Registrar renewals, return to **Payment** > **Payment methods** and try to remove the payment method again.
 
 ## If none of the above apply
 
@@ -84,9 +83,9 @@ If none of the above apply and you still receive an error, [contact Cloudflare s
 
 ## Related resources
 
-* [Update billing information](https://developers.cloudflare.com/billing/get-started/update-billing-info/) — Add a replacement payment method
-* [Cancel subscriptions](https://developers.cloudflare.com/billing/manage/cancel-subscription/) — Cancel subscriptions before removing a payment method
-* [Error reference](https://developers.cloudflare.com/billing/troubleshoot/error-reference/) — Look up other billing error messages
+- [Update billing information](https://developers.cloudflare.com/billing/get-started/update-billing-info/) — Add a replacement payment method
+- [Cancel subscriptions](https://developers.cloudflare.com/billing/manage/cancel-subscription/) — Cancel subscriptions before removing a payment method
+- [Error reference](https://developers.cloudflare.com/billing/troubleshoot/error-reference/) — Look up other billing error messages
 
 Was this helpful?
 

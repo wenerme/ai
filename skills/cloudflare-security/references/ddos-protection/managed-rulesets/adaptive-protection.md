@@ -12,35 +12,36 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Adaptive DDoS Protection
 
-Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Adaptive DDoS Protection learns your unique traffic patterns and adapts to them to provide better protection against sophisticated DDoS attacks on layer 7 and layers 3/4, depending on your subscribed Cloudflare services.
 
 Adaptive DDoS Protection provides the following types of protection:
 
-* **Adaptive DDoS Protection for Origins**: Detects and mitigates traffic that deviates from your site's origin errors profile.
-* **Adaptive DDoS Protection for User-Agents**: Detects and mitigates traffic that deviates from the top User Agents seen by Cloudflare on the network. The User Agent profile is built from the entire Cloudflare network and not only from the customer's zone.
-* **Adaptive DDoS Protection for Locations**: Detects and mitigates traffic that deviates from your site's geo-distribution profile. The profile is calculated from the rate for every client country and region, using the rates from the past seven days.
-* **Adaptive DDoS Protection for Protocols**: Detects and mitigates traffic that deviates from your traffic's IP protocol profile. The profile is calculated as a global rate for each of your prefixes.
+- **Adaptive DDoS Protection for Origins**: Detects and mitigates traffic that deviates from your site's origin errors profile.
+- **Adaptive DDoS Protection for User-Agents**: Detects and mitigates traffic that deviates from the top User Agents seen by Cloudflare on the network. The User Agent profile is built from the entire Cloudflare network and not only from the customer's zone.
+- **Adaptive DDoS Protection for Locations**: Detects and mitigates traffic that deviates from your site's geo-distribution profile. The profile is calculated from the rate for every client country and region, using the rates from the past seven days.
+- **Adaptive DDoS Protection for Protocols**: Detects and mitigates traffic that deviates from your traffic's IP protocol profile. The profile is calculated as a global rate for each of your prefixes.
 
 ## Availability
 
 Cloudflare Adaptive DDoS Protection is available to Enterprise customers according to the following table:
 
-| Feature                           | Profiling dimension                   | WAF/CDN1 | Magic Transit /Spectrum BYOIP2 |
-| --------------------------------- | ------------------------------------- | -------- | ------------------------------ |
-| **HTTP Adaptive DDoS Protection** |                                       |          |                                |
-| For Origins                       | Origin errors                         | Yes      | —                              |
-| For User-Agents                   | User Agent(entire Cloudflare network) | Yes      | —                              |
-| For Locations                     | Client IP country and region          | Yes      | —                              |
-| **L3/4 Adaptive DDoS Protection** |                                       |          |                                |
-| For Protocols                     | IP protocol                           | —        | Yes                            |
-| For Protocols                     | Client IP country and Region for UDP  | —        | Yes                            |
+| Feature | Profiling dimension | WAF/CDN<sup>1</sup> | Magic Transit /<br>Spectrum BYOIP<sup>2</sup> |
+| --- | --- | --- | --- |
+| **HTTP Adaptive DDoS Protection** |  |  | |
+| For Origins | Origin errors | Yes | — |
+| For User-Agents | User Agent<br>(entire Cloudflare network) | Yes | — |
+| For Locations | Client IP country and region | Yes | — |
+| **L3/4 Adaptive DDoS Protection** |  |  | |
+| For Protocols | IP protocol | — | Yes |
+| For Protocols | Client IP country and Region for UDP | — | Yes |
 
-1 _WAF/CDN customers on the Enterprise plan with the Advanced DDoS Protection subscription._
+<sup>1</sup> *WAF/CDN customers on the Enterprise plan with the Advanced DDoS Protection subscription.*
 
 
-2 _Magic Transit and Spectrum BYOIP customers on an Enterprise plan._
+
+<sup>2</sup> *Magic Transit and Spectrum BYOIP customers on an Enterprise plan.*
 
 ## How it works
 
@@ -60,49 +61,47 @@ HTTP Adaptive DDoS Protection rules calculate the traffic profile at the zone-le
 
 To view traffic flagged by HTTP Adaptive DDoS Protection rules:
 
-1. In the Cloudflare dashboard, go to the **Security Analytics** page.
-[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+1. In the Cloudflare dashboard, go to the **Security Analytics** page. [Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. Go to **Events**.
 3. Filter by `Service equals HTTP DDoS` and by rule ID.
 
 To view traffic flagged by L3/4 Adaptive DDoS Protection rules:
 
-1. In the Cloudflare dashboard, go to the **Security Analytics** page.
-[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+1. In the Cloudflare dashboard, go to the **Security Analytics** page. [Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. Go to **Events**.
 3. Filter by rule ID.
 
 You may also obtain information about flagged traffic through [Logpush](https://developers.cloudflare.com/logs/logpush/) or the [GraphQL API](https://developers.cloudflare.com/analytics/graphql-api/).
 
-To determine if an adaptive rule fits your traffic in a way that will only mitigate attack traffic and will not cause false positives, review the traffic that is _Logged_ by the adaptive rules.
+To determine if an adaptive rule fits your traffic in a way that will only mitigate attack traffic and will not cause false positives, review the traffic that is *Logged* by the adaptive rules.
 
 Note
 
-You may not see any traffic matching the adaptive rules. This can be because there was no deviation from your traffic profile, so you may want to increase the time range and look for any _Logged_ traffic. Another reason why you may not see _Logged_ traffic by the adaptive rules is that there was not sufficient traffic volume to generate a traffic profile for your zone.
+You may not see any traffic matching the adaptive rules. This can be because there was no deviation from your traffic profile, so you may want to increase the time range and look for any *Logged* traffic. Another reason why you may not see *Logged* traffic by the adaptive rules is that there was not sufficient traffic volume to generate a traffic profile for your zone.
 
-If you do see traffic that was _Logged_ by the adaptive rules, use the dashboard to determine if the traffic matches the characteristics of legitimate users or that of attack traffic. As each Internet property is unique, understanding if the traffic is legitimate requires your understanding of how your legitimate traffic looks. For example, the user agent, source country, headers, query string for HTTP requests, and protocols and ports for L3/4 traffic.
+If you do see traffic that was *Logged* by the adaptive rules, use the dashboard to determine if the traffic matches the characteristics of legitimate users or that of attack traffic. As each Internet property is unique, understanding if the traffic is legitimate requires your understanding of how your legitimate traffic looks. For example, the user agent, source country, headers, query string for HTTP requests, and protocols and ports for L3/4 traffic.
 
-* In cases where you are certain that the rule is only flagging attack traffic, you should consider creating an override and enabling that rule with a [Managed Challenge](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/#managed-challenge) or `Block` action.
-* In cases where you see legitimate traffic being flagged, you should lower the sensitivity level of the rule and observe the flagged traffic. You can continue reducing the sensitivity level until you reach a point where legitimate traffic is not flagged. Then, you should create an override to enable the rule with a mitigation action.
-* If the rule is still flagging legitimate traffic you can consider using the expression filters to condition the rules to exclude certain types of traffic.
+- In cases where you are certain that the rule is only flagging attack traffic, you should consider creating an override and enabling that rule with a [Managed Challenge](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/#managed-challenge) or `Block` action.
+- In cases where you see legitimate traffic being flagged, you should lower the sensitivity level of the rule and observe the flagged traffic. You can continue reducing the sensitivity level until you reach a point where legitimate traffic is not flagged. Then, you should create an override to enable the rule with a mitigation action.
+- If the rule is still flagging legitimate traffic you can consider using the expression filters to condition the rules to exclude certain types of traffic.
 
 The default rule action for `log` with a sensitivity set to `high` will only show packets or requests with suspected attack traffic over internal `high` thresholds in your logs. For instance, if you set the threshold to `medium` or `low`, then only packets over those thresholds will be logged.
 
 ## Configure the rules
 
-You can adjust the action and sensitivity of the Adaptive DDoS Protection rules. The default action is _Log_. Use this action to first observe what traffic is flagged before deciding on a mitigation action.
+You can adjust the action and sensitivity of the Adaptive DDoS Protection rules. The default action is *Log*. Use this action to first observe what traffic is flagged before deciding on a mitigation action.
 
 To configure a rule, refer to the instructions in the following pages:
 
-* [Configure HTTP DDoS Attack Protection in the dashboard](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/configure-dashboard/) (for L7 rules)
-* [Configure Network-layer DDoS Attack Protection in the dashboard](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/configure-dashboard/) (for L3/4 rules)
+- [Configure HTTP DDoS Attack Protection in the dashboard](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/configure-dashboard/) (for L7 rules)
+- [Configure Network-layer DDoS Attack Protection in the dashboard](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/configure-dashboard/) (for L3/4 rules)
 
 For more information on the available configuration parameters, refer to the following pages:
 
-* For the (L7) DDoS protection rules for Origins, User-Agents, and Locations:
-[HTTP DDoS Attack Protection parameters](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/override-parameters/)
-* For the (L3/4) DDoS protection rules for Protocols:
-[Network-layer DDoS Attack Protection parameters](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/override-parameters/)
+- For the (L7) DDoS protection rules for Origins, User-Agents, and Locations:
+  [HTTP DDoS Attack Protection parameters](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/override-parameters/)
+- For the (L3/4) DDoS protection rules for Protocols:
+  [Network-layer DDoS Attack Protection parameters](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/override-parameters/)
 
 Was this helpful?
 

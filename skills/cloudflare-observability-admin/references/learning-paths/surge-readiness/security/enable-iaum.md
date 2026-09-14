@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # What to do when under attack
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/surge-readiness/security/enable-iaum/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/surge-readiness/security/enable-iaum/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Enable "I'm Under Attack" mode (IAUM)
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Use IP lists
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/use-rules-list/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/use-rules-list/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [IP lists](https://developers.cloudflare.com/waf/tools/lists/custom-lists/#ip-lists) are a part of Cloudflare's custom lists. Custom lists contain one or more items of the same type — IP addresses, hostnames or ASNs — that you can reference in rule expressions.
 
@@ -20,7 +20,7 @@ IP lists are defined at the account level and can be used to match against `ip.s
 
 To use this feature:
 
-## 1\. Create a [new IP list](https://developers.cloudflare.com/api/resources/rules/subresources/lists/methods/create/).
+## 1. Create a [new IP list](https://developers.cloudflare.com/api/resources/rules/subresources/lists/methods/create/).
 
 For example:
 
@@ -36,7 +36,7 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rules/lists \
 }'
 ```
 
-## 2\. Add IPs to the list
+## 2. Add IPs to the list
 
 Next, [create list items](https://developers.cloudflare.com/api/resources/rules/subresources/lists/subresources/items/methods/create/). This will add elements to the current list.
 
@@ -51,7 +51,7 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rules/lists/{lis
 ]'
 ```
 
-## 3\. Use the list in a rule
+## 3. Use the list in a rule
 
 Finally, add a Network Firewall rule referencing the list into an existing ruleset:
 
@@ -78,13 +78,13 @@ Available for customers with a Cloudflare Network Firewall Advanced plan.
 
 You can create rules with managed lists. Managed IP Lists are [lists of IP addresses](https://developers.cloudflare.com/waf/tools/lists/managed-lists/#managed-ip-lists) maintained by Cloudflare and updated frequently.
 
-You can access these managed lists when you create rules with either _IP destination address_ or _IP source address_ in the **Field** dropdown, and _is in list_ or _is not in list_ in the **Operator** dropdown.
+You can access these managed lists when you create rules with either *IP destination address* or *IP source address* in the **Field** dropdown, and *is in list* or *is not in list* in the **Operator** dropdown.
 
 For example:
 
-| Field                    | Operator     | Value         |
-| ------------------------ | ------------ | ------------- |
-| _IP destination address_ | _is in list_ | _Anonymizers_ |
+| Field | Operator | Value |
+| --- | --- | --- |
+| *IP destination address* | *is in list* | *Anonymizers* |
 
 Was this helpful?
 

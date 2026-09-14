@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Session affinity
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/planning/session-affinity/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/planning/session-affinity/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you enable session affinity, your load balancer directs all requests from a particular end user to a specific endpoint. This continuity preserves information about the user session — such as items in their shopping cart — that might otherwise be lost if requests were spread out among multiple servers.
 
@@ -30,6 +30,7 @@ Session affinity automatically directs requests from the same client to the same
 2. Subsequent requests by the same client are forwarded to that endpoint for the duration of the cookie and as long as the endpoint remains healthy.
 3. If the cookie expires or the endpoint becomes unhealthy, Cloudflare sets a new cookie tracking the new failover endpoint.
 
+```
     flowchart LR
       accTitle: Session affinity process
       accDescr: Session affinity directs requests from the same client to the same server.
@@ -44,8 +45,11 @@ Session affinity automatically directs requests from the same client to the same
         O2[Endpoint 2]
      end
 
+```
 
-All cookie-based sessions default to 23 hours unless you set a custom session _Time to live_ (TTL).
+
+
+All cookie-based sessions default to 23 hours unless you set a custom session *Time to live* (TTL).
 
 The session cookie is secure when [Always Use HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/) is enabled. Additionally, HttpOnly is always enabled for the cookie to prevent cross-site scripting attacks.
 

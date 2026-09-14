@@ -12,16 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Architecture
 
-Last updated Aug 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/concepts/architecture/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/concepts/architecture/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Sandbox SDK lets you execute untrusted code safely from your Workers. It combines three Cloudflare technologies to provide secure, stateful, and isolated execution:
 
-* **Workers** \- Your application logic that calls the Sandbox SDK
-* **Durable Objects** \- Persistent sandbox instances with unique identities
-* **Containers** \- Isolated Linux environments where code actually runs
+- **Workers** - Your application logic that calls the Sandbox SDK
+- **Durable Objects** - Persistent sandbox instances with unique identities
+- **Containers** - Isolated Linux environments where code actually runs
 
 ## Architecture overview
 
+```
 flowchart TB
     accTitle: Sandbox SDK Architecture
     accDescr: Three-layer architecture showing how Cloudflare Sandbox SDK combines Workers, Durable Objects, and Containers for secure code execution
@@ -44,6 +45,8 @@ flowchart TB
     style Worker fill:#ffe8d1,stroke:#f6821f,stroke-width:2px
     style DO fill:#dce9f7,stroke:#1d8cf8,stroke-width:2px
     style Container fill:#d4f4e2,stroke:#17b26a,stroke-width:2px
+
+```
 
 ### Layer 1: Client SDK
 
@@ -74,10 +77,10 @@ export class Sandbox extends DurableObject<Env> {
 
 **Why Durable Objects**:
 
-* **Persistent identity** \- Same sandbox ID always routes to same instance
-* **Container management** \- Durable Object owns and manages the container lifecycle
-* **Geographic distribution** \- Sandboxes run close to users
-* **Automatic scaling** \- Cloudflare manages provisioning
+- **Persistent identity** - Same sandbox ID always routes to same instance
+- **Container management** - Durable Object owns and manages the container lifecycle
+- **Geographic distribution** - Sandboxes run close to users
+- **Automatic scaling** - Cloudflare manages provisioning
 
 ### Layer 3: Container Runtime
 
@@ -87,8 +90,8 @@ Executes code in isolation with full Linux capabilities.
 
 **Why containers**:
 
-* **VM-based isolation** \- Each sandbox runs in its own VM
-* **Full environment** \- Ubuntu Linux with Python, Node.js, Git, etc.
+- **VM-based isolation** - Each sandbox runs in its own VM
+- **Full environment** - Ubuntu Linux with Python, Node.js, Git, etc.
 
 ## Communication transports
 
@@ -155,10 +158,10 @@ The Durable Object establishes the persistent connection to the container on fir
 
 ## Related resources
 
-* [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) \- How sandboxes are created and managed
-* [Container runtime](https://developers.cloudflare.com/sandbox/concepts/containers/) \- Inside the execution environment
-* [Security model](https://developers.cloudflare.com/sandbox/concepts/security/) \- How isolation and validation work
-* [Session management](https://developers.cloudflare.com/sandbox/concepts/sessions/) \- Advanced state management
+- [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) - How sandboxes are created and managed
+- [Container runtime](https://developers.cloudflare.com/sandbox/concepts/containers/) - Inside the execution environment
+- [Security model](https://developers.cloudflare.com/sandbox/concepts/security/) - How isolation and validation work
+- [Session management](https://developers.cloudflare.com/sandbox/concepts/sessions/) - Advanced state management
 
 Was this helpful?
 

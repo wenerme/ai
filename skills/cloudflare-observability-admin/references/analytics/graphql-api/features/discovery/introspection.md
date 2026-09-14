@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Introspection
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/features/discovery/introspection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/features/discovery/introspection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare GraphQL API has a dynamic schema and exposes more than 70 datasets across zone and account scopes. We constantly expand the list and replace existing ones with more capable alternatives.
 
@@ -39,6 +39,8 @@ Some of the nodes might only be available to query for some users. Please refer 
 The most convenient way to introspect the schema is to use a documentation [explorer](https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/) that usually is a part of a GraphQL client (like GraphiQL, Altair, etc).
 
 Alternatively, you can also do it manually by using `__schema` node with the needed directives.
+
+*A typical introspection querygraphql*
 
 ```graphql
 {

@@ -12,13 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Store decrypted matched payloads in logs
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/managed-rules/payload-logging/decrypt-in-logs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/managed-rules/payload-logging/decrypt-in-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-You can include the encrypted matched payload in your [Logpush](https://developers.cloudflare.com/logs/logpush/) jobs by adding the **General** \> [**Metadata**](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/firewall%5Fevents/#metadata) field from the Firewall Events dataset to your job.
+You can include the encrypted matched payload in your [Logpush](https://developers.cloudflare.com/logs/logpush/) jobs by adding the **General** > [**Metadata**](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/firewall_events/#metadata) field from the Firewall Events dataset to your job.
 
-The payload, in its encrypted form, is available in the [encrypted\_matched\_data property](#structure-of-encrypted%5Fmatched%5Fdata-property-in-logpush) of the `Metadata` field.
+The payload, in its encrypted form, is available in the [`encrypted_matched_data` property](#structure-of-encrypted_matched_data-property-in-logpush) of the `Metadata` field.
 
-However, you may want to decrypt the matched payload before storing the logs in your SIEM system of choice. Cloudflare provides a [sample Worker project ↗](https://github.com/cloudflare/matched-data-worker) on GitHub that does the following:
+However, you may want to decrypt the matched payload before storing the logs in your SIEM system
+
+ of choice. Cloudflare provides a [sample Worker project ↗](https://github.com/cloudflare/matched-data-worker) on GitHub that does the following:
 
 1. Behaves as an S3-compatible storage to receive logs from Logpush. These logs will contain encrypted matched payload data.
 2. Decrypts matched payload data using your private key.
@@ -62,6 +64,8 @@ The `before` and `after` properties are optional (there may be no content before
 
 Below are a few examples of payload matches:
 
+*URI matchjson*
+
 ```json
 {
 	"http.request.uri": {
@@ -72,6 +76,8 @@ Below are a few examples of payload matches:
 }
 ```
 
+*Header value matchjson*
+
 ```json
 {
 	"http.request.headers.values[3]": [
@@ -79,6 +85,8 @@ Below are a few examples of payload matches:
 	]
 }
 ```
+
+*Raw body content matchjson*
 
 ```json
 {

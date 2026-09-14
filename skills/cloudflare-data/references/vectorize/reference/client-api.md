@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Vectorize API
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/vectorize/reference/client-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/vectorize/reference/client-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page covers the Vectorize API available within [Cloudflare Workers](https://developers.cloudflare.com/workers/), including usage examples.
 
@@ -60,9 +60,9 @@ let matches = await env.YOUR_INDEX.query(queryVector);
 
 Query an index with the provided vector, returning the score(s) of the closest vectors based on the configured distance metric.
 
-* Configure the number of returned matches by setting `topK` (default: 5)
-* Return vector values by setting `returnValues: true` (default: false)
-* Return vector metadata by setting `returnMetadata: 'indexed'` or `returnMetadata: 'all'` (default: 'none')
+- Configure the number of returned matches by setting `topK` (default: 5)
+- Return vector values by setting `returnValues: true` (default: false)
+- Return vector metadata by setting `returnMetadata: 'indexed'` or `returnMetadata: 'all'` (default: 'none')
 
 ```ts
 let matches = await env.YOUR_INDEX.query(queryVector, {
@@ -136,7 +136,7 @@ Retrieves the configuration of a given index directly, including its configured 
 
 Python SDK availability
 
-The `client.vectorize.indexes.list_vectors()` method is not yet available in the current release of the [Cloudflare Python SDK ↗](https://pypi.org/project/cloudflare/). While the method appears in the [API reference](https://developers.cloudflare.com/api/python/resources/vectorize/subresources/indexes/methods/list%5Fvectors/), it has not been included in a published SDK version as of v4.3.1\. In the meantime, you can use the [REST API](https://developers.cloudflare.com/api/resources/vectorize/subresources/indexes/methods/list%5Fvectors/) or the Wrangler CLI to list vectors.
+The `client.vectorize.indexes.list_vectors()` method is not yet available in the current release of the [Cloudflare Python SDK ↗](https://pypi.org/project/cloudflare/). While the method appears in the [API reference](https://developers.cloudflare.com/api/python/resources/vectorize/subresources/indexes/methods/list_vectors/), it has not been included in a published SDK version as of v4.3.1. In the meantime, you can use the [REST API](https://developers.cloudflare.com/api/resources/vectorize/subresources/indexes/methods/list_vectors/) or the Wrangler CLI to list vectors.
 
 List all vector identifiers in an index using paginated requests, returning up to 1000 vector identifiers per page.
 
@@ -146,9 +146,9 @@ wrangler vectorize list-vectors <index-name> [--count=<number>] [--cursor=<curso
 
 **Parameters:**
 
-* `<index-name>` \- The name of your Vectorize index
-* `--count` (optional) - Number of vector IDs to return per page. Must be between 1 and 1000 (default: 100)
-* `--cursor` (optional) - Pagination cursor from the previous response to continue listing from that position
+- `<index-name>` - The name of your Vectorize index
+- `--count` (optional) - Number of vector IDs to return per page. Must be between 1 and 1000 (default: 100)
+- `--cursor` (optional) - Pagination cursor from the previous response to continue listing from that position
 
 For detailed guidance on pagination behavior and best practices, refer to [List vectors best practices](https://developers.cloudflare.com/vectorize/best-practices/list-vectors/).
 
@@ -212,10 +212,10 @@ wrangler vectorize info <index-name>
 
 A vector represents the vector embedding output from a machine learning model.
 
-* `id` \- a unique `string` identifying the vector in the index. This should map back to the ID of the document, object or database identifier that the vector values were generated from.
-* `namespace` \- an optional partition key within a index. Operations are performed per-namespace, so this can be used to create isolated segments within a larger index.
-* `values` \- an array of `number`, `Float32Array`, or `Float64Array` as the vector embedding itself. This must be a dense array, and the length of this array must match the `dimensions` configured on the index.
-* `metadata` \- an optional set of key-value pairs that can be used to store additional metadata alongside a vector.
+- `id` - a unique `string` identifying the vector in the index. This should map back to the ID of the document, object or database identifier that the vector values were generated from.
+- `namespace` - an optional partition key within a index. Operations are performed per-namespace, so this can be used to create isolated segments within a larger index.
+- `values` - an array of `number`, `Float32Array`, or `Float64Array` as the vector embedding itself. This must be a dense array, and the length of this array must match the `dimensions` configured on the index.
+- `metadata` - an optional set of key-value pairs that can be used to store additional metadata alongside a vector.
 
 ```ts
 let vectorExample = {
@@ -258,7 +258,7 @@ Refer to the [bindings documentation](https://developers.cloudflare.com/workers/
 
 ## TypeScript Types
 
-If you're using TypeScript, run [wrangler types](https://developers.cloudflare.com/workers/wrangler/commands/general/#types) whenever you modify your Wrangler configuration file. This generates types for the `env` object based on your bindings, as well as [runtime types](https://developers.cloudflare.com/workers/languages/typescript/).
+If you're using TypeScript, run [`wrangler types`](https://developers.cloudflare.com/workers/wrangler/commands/general/#types) whenever you modify your Wrangler configuration file. This generates types for the `env` object based on your bindings, as well as [runtime types](https://developers.cloudflare.com/workers/languages/typescript/).
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Node types
 
-Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web3/ethereum-gateway/concepts/node-types/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/ethereum-gateway/concepts/node-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Ethereum nodes are the computers that store blockchain data and process queries. There are three types, each with different trade-offs between storage requirements and query capabilities.
 
@@ -32,13 +32,13 @@ Archive nodes are full nodes that also store every historical state of the block
 
 Cloudflare's Ethereum Gateway provides access to full and archive nodes.
 
-The archive nodes serve requests for the following [RPC state methods ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#state%5Fmethods) when the block number parameter is before the most recent 128 blocks or the default block parameter is set to `earliest`:
+The archive nodes serve requests for the following [RPC state methods ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#state_methods) when the block number parameter is before the most recent 128 blocks or the default block parameter is set to `earliest`:
 
-* [eth\_getBalance ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fgetbalance)
-* [eth\_getCode ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fgetcode)
-* [eth\_getTransactionCount ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fgettransactioncount)
-* [eth\_getStorageAt ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fgetstorageat)
-* [eth\_call ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fcall)
+- [eth\_getBalance ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getbalance)
+- [eth\_getCode ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getcode)
+- [eth\_getTransactionCount ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_gettransactioncount)
+- [eth\_getStorageAt ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getstorageat)
+- [eth\_call ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_call)
 
 Was this helpful?
 

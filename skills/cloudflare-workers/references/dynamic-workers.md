@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Dynamic Workers
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dynamic-workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Spin up Workers at runtime to execute code on-demand in a secure, sandboxed environment.
 
@@ -30,21 +30,21 @@ Deploy the [Dynamic Workers Playground ↗](https://github.com/cloudflare/agents
 
 Use this pattern when code needs to run quickly in a secure, isolated environment.
 
-* **AI Agent "Code Mode"**: LLMs are trained to write code. Instead of supplying an agent with tool calls to perform tasks, give it an API and let it write and execute code. Save up to 80% in inference tokens and cost by allowing the agent to programmatically process data instead of sending it all through the LLM.
-* **AI-generated applications / "Vibe Code"**: Run generated code for prototypes, projects, and automations in a secure, isolated sandboxed environment.
-* **Fast development and previews**: Load prototypes, previews, and playgrounds in milliseconds.
-* **Custom automations**: Create custom tools on the fly that execute a task, call an integration, or automate a workflow.
-* **Platforms**: Run applications uploaded by your users.
+- **AI Agent "Code Mode"**: LLMs are trained to write code. Instead of supplying an agent with tool calls to perform tasks, give it an API and let it write and execute code. Save up to 80% in inference tokens and cost by allowing the agent to programmatically process data instead of sending it all through the LLM.
+- **AI-generated applications / "Vibe Code"**: Run generated code for prototypes, projects, and automations in a secure, isolated sandboxed environment.
+- **Fast development and previews**: Load prototypes, previews, and playgrounds in milliseconds.
+- **Custom automations**: Create custom tools on the fly that execute a task, call an integration, or automate a workflow.
+- **Platforms**: Run applications uploaded by your users.
 
 ## Features
 
 Because you compose the Worker that runs the code at runtime, you control how that Worker is configured and what it can access.
 
-* **[Bindings](https://developers.cloudflare.com/dynamic-workers/usage/bindings/)**: Decide which bindings and structured data the dynamic Worker receives.
-* **[Observability](https://developers.cloudflare.com/dynamic-workers/usage/observability/)**: Attach Tail Workers and capture logs for each run.
-* **[Network access](https://developers.cloudflare.com/dynamic-workers/usage/egress-control/)**: Intercept or block Internet access for outbound requests.
-* **[Limits](https://developers.cloudflare.com/dynamic-workers/usage/limits/)**: Enforce custom limits on the dynamic Worker's resource usage.
-* **[Durable Object Facets](https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets/)**: Run dynamically-loaded code as a Durable Object with its own isolated SQLite storage.
+- **[Bindings](https://developers.cloudflare.com/dynamic-workers/usage/bindings/)**: Decide which bindings and structured data the dynamic Worker receives.
+- **[Observability](https://developers.cloudflare.com/dynamic-workers/usage/observability/)**: Attach Tail Workers and capture logs for each run.
+- **[Network access](https://developers.cloudflare.com/dynamic-workers/usage/egress-control/)**: Intercept or block Internet access for outbound requests.
+- **[Limits](https://developers.cloudflare.com/dynamic-workers/usage/limits/)**: Enforce custom limits on the dynamic Worker's resource usage.
+- **[Durable Object Facets](https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets/)**: Run dynamically-loaded code as a Durable Object with its own isolated SQLite storage.
 
 Was this helpful?
 

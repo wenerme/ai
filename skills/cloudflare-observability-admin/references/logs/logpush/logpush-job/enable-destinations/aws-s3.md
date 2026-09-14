@@ -12,43 +12,43 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Enable Amazon S3
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/aws-s3/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/aws-s3/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Logpush supports pushing logs directly to Amazon S3 via the Cloudflare dashboard or via API. Customers that use AWS GovCloud locations should use our **S3-compatible endpoint** and not the **Amazon S3 endpoint**.
 
 ## Manage via the Cloudflare dashboard
 
 1. In the Cloudflare dashboard, go to the **Logpush** page at the account or or domain (also known as zone) level.
-For account: [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/logs)
-For domain (also known as zone): [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
+
+   For account: [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/logs)
+
+   For domain (also known as zone): [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
 2. Depending on your choice, you have access to [account-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/) and [zone-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/), respectively.
 3. Select **Create a Logpush job**.
-1. In **Select a destination**, choose **Amazon S3**.
-2. Enter or select the following destination information:
 
-  * **Bucket** \- S3 bucket name
-  * **Path** \- bucket location within the storage container
-  * **Organize logs into daily subfolders** (recommended)
-  * **Bucket region**
-  * If your policy requires [AWS SSE-S3 AES256 Server Side Encryption ↗](https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html).
-  * For **Grant Cloudflare access to upload files to your bucket**, make sure your bucket has a [policy ↗](https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-policies-s3.html#iam-policy-ex0) (if you did not add it already):
-    * Copy the JSON policy, then go to your bucket in the Amazon S3 console and paste the policy in **Permissions** \> **Bucket Policy** and select **Save**.
+4. In **Select a destination**, choose **Amazon S3**.
+5. Enter or select the following destination information:
+   - **Bucket** - S3 bucket name
+   - **Path** - bucket location within the storage container
+   - **Organize logs into daily subfolders** (recommended)
+   - **Bucket region**
+   - If your policy requires [AWS SSE-S3 AES256 Server Side Encryption ↗](https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html).
+   - For **Grant Cloudflare access to upload files to your bucket**, make sure your bucket has a [policy ↗](https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-policies-s3.html#iam-policy-ex0) (if you did not add it already):
+     - Copy the JSON policy, then go to your bucket in the Amazon S3 console and paste the policy in **Permissions** > **Bucket Policy** and select **Save**.
 
 When you are done entering the destination details, select **Continue**.
 
-1. To prove ownership, Cloudflare will send a file to your designated destination. To find the token, select the **Open** button in the **Overview** tab of the ownership challenge file, then paste it into the Cloudflare dashboard to verify your access to the bucket. Enter the **Ownership Token** and select **Continue**.
-2. Select the dataset to push to the storage service.
-3. In the next step, you need to configure your logpush job:
-
-  * Enter the **Job name**.
-  * Under **If logs match**, you can select the events to include and/or remove from your logs. Refer to [Filters](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/) for more information. Not all datasets have this option available.
-  * In **Send the following fields**, you can choose to either push all logs to your storage destination or selectively choose which logs you want to push.
-4. In **Advanced Options**, you can:
-
-  * Choose the format of timestamp fields in your logs (`RFC3339` (default), `Unix`, or `UnixNano`).
-  * Select a [sampling rate](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/#sampling-rate) for your logs or push a randomly-sampled percentage of logs.
-  * Enable redaction for `CVE-2021-44228`. This option will replace every occurrence of `${` with `x{`.
-5. Select **Submit** once you are done configuring your logpush job.
+6. To prove ownership, Cloudflare will send a file to your designated destination. To find the token, select the **Open** button in the **Overview** tab of the ownership challenge file, then paste it into the Cloudflare dashboard to verify your access to the bucket. Enter the **Ownership Token** and select **Continue**.
+7. Select the dataset to push to the storage service.
+8. In the next step, you need to configure your logpush job:
+   - Enter the **Job name**.
+   - Under **If logs match**, you can select the events to include and/or remove from your logs. Refer to [Filters](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/) for more information. Not all datasets have this option available.
+   - In **Send the following fields**, you can choose to either push all logs to your storage destination or selectively choose which logs you want to push.
+9. In **Advanced Options**, you can:
+   - Choose the format of timestamp fields in your logs ( `RFC3339` (default), `Unix`, or `UnixNano`).
+   - Select a [sampling rate](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/#sampling-rate) for your logs or push a randomly-sampled percentage of logs.
+   - Enable redaction for `CVE-2021-44228`. This option will replace every occurrence of `${` with `x{`.
+10. Select **Submit** once you are done configuring your logpush job.
 
 ## Create and get access to an S3 bucket
 
@@ -61,12 +61,15 @@ For illustrative purposes, imagine that you want to store logs in the bucket `bu
 Ensure **Log Share** permissions are enabled, before attempting to read or configure a Logpush job. For more information refer to the [Roles section](https://developers.cloudflare.com/logs/logpush/permissions/#roles).
 
 
+
 To enable Logpush to Amazon S3:
 
 1. Create an S3 bucket. Refer to [instructions from Amazon ↗](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
-Note
-Buckets in China regions (`cn-north-1`, `cn-northwest-1`) are currently not supported.
-2. Edit and paste the policy below into **S3** \> **Bucket** \> **Permissions** \> **Bucket Policy**, replacing the `Resource` value with your own bucket path. The `AWS` `Principal` is owned by Cloudflare and should not be changed.
+
+   Note
+
+   Buckets in China regions ( `cn-north-1`, `cn-northwest-1`) are currently not supported.
+2. Edit and paste the policy below into **S3** > **Bucket** > **Permissions** > **Bucket Policy**, replacing the `Resource` value with your own bucket path. The `AWS` `Principal` is owned by Cloudflare and should not be changed.
 
 ```json
 {
@@ -88,7 +91,7 @@ Buckets in China regions (`cn-north-1`, `cn-northwest-1`) are currently not supp
 
 Note
 
-Logpush uses multipart upload for S3\. Aborted uploads will result in incomplete files remaining in your bucket. To minimize your storage costs, Amazon recommends configuring a lifecycle rule using the `AbortIncompleteMultipartUpload` action. Refer to [Uploading and copying objects using multipart upload ↗](https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config).
+Logpush uses multipart upload for S3. Aborted uploads will result in incomplete files remaining in your bucket. To minimize your storage costs, Amazon recommends configuring a lifecycle rule using the `AbortIncompleteMultipartUpload` action. Refer to [Uploading and copying objects using multipart upload ↗](https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config).
 
 Was this helpful?
 

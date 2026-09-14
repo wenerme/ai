@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Automatic captioning for video uploads
 
-Last updated Oct 13, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-video-caption/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-video-caption/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -24,7 +24,7 @@ The process begins with capturing the audio from the video source, which is then
 
 ![Figure 1: Automatic captioning on upload](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=600,format=svg/_astro/ai-auto-caption-architecture-diagram.CyBpgQKS.svg "Figure 1:  Automatic captioning on upload")
 
-Figure 1: Automatic captioning on upload
+*Figure 1: Automatic captioning on upload*
 
 1. **Client upload**: Send POST request with both video and audio to API endpoint.
 2. **Audio transcription**: Generate timestamped transcriptions by calling [Workers AI](https://developers.cloudflare.com/workers-ai/) [automatic speech recognition (ARS) model](https://developers.cloudflare.com/workers-ai/models/) with audio as input. Use [Workers](https://developers.cloudflare.com/workers/) to convert the output to a supported subtitled format.
@@ -35,9 +35,9 @@ Figure 1: Automatic captioning on upload
 
 ## Related resources
 
-* [Community project: automatic captioning demo ↗](https://auto-caption.pages.dev/)
-* [Workers AI: Automatic speech recognition (ARS) model](https://developers.cloudflare.com/workers-ai/models/)
-* [R2: Object storage for all your data](https://developers.cloudflare.com/r2/)
+- [Community project: automatic captioning demo ↗](https://auto-caption.pages.dev/)
+- [Workers AI: Automatic speech recognition (ARS) model](https://developers.cloudflare.com/workers-ai/models/)
+- [R2: Object storage for all your data](https://developers.cloudflare.com/r2/)
 
 Was this helpful?
 

@@ -12,29 +12,27 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # REST API
 
-Last updated Jul 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/get-started/api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/get-started/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide walks you through creating an AI Search instance using the REST API.
 
-## 1\. Create an API token
+## 1. Create an API token
 
 You need an API token with **AI Search:Edit** and **AI Search:Run** permissions.
 
-1. In the Cloudflare dashboard, go to **My Profile** \> **API Tokens**.
-[Go to **API Tokens** ↗](https://dash.cloudflare.com/profile/api-tokens)
+1. In the Cloudflare dashboard, go to **My Profile** > **API Tokens**. [Go to **API Tokens** ↗](https://dash.cloudflare.com/profile/api-tokens)
 2. Select **Create Token**.
 3. Select **Create Custom Token**.
 4. Enter a **Token name**, for example `AI Search Manager`.
 5. Under **Permissions**, add two permissions:
-
-  * **Account** \> **AI Search:Edit**
-  * **Account** \> **AI Search:Run**
+   - **Account** > **AI Search:Edit**
+   - **Account** > **AI Search:Run**
 6. Select **Continue to summary**, then select **Create Token**.
 7. Copy and save the token value. This is your `API_TOKEN`.
 
-## 2\. Create an AI Search instance
+## 2. Create an AI Search instance
 
-Use the [Create instance API](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/methods/create/) to create an instance. Replace `<ACCOUNT_ID>` with your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
+Use the [Create instance API](https://developers.cloudflare.com/api/resources/ai_search/subresources/instances/methods/create/) to create an instance. Replace `<ACCOUNT_ID>` with your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
 
 ```bash
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances" \
@@ -80,9 +78,9 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-sear
   }'
 ```
 
-## 3\. Add content
+## 3. Add content
 
-If you did not create an instance that is connected to a data source, upload files using the [Items API](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/namespaces/subresources/instances/subresources/items/methods/upload/). You can skip this step if you connected a website or R2 bucket.
+If you did not create an instance that is connected to a data source, upload files using the [Items API](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/subresources/items/methods/upload/). You can skip this step if you connected a website or R2 bucket.
 
 ```bash
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/my-instance/items" \
@@ -92,7 +90,7 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-sear
 
 AI Search indexes uploaded files automatically.
 
-## 4\. Check indexing status
+## 4. Check indexing status
 
 Check if your content has finished indexing.
 

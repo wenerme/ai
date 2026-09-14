@@ -14,15 +14,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Query D1 from the Hono web framework
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/examples/d1-and-hono/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/examples/d1-and-hono/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Hono is a fast web framework for building API-first applications, and it includes first-class support for both [Workers](https://developers.cloudflare.com/workers/) and [Pages](https://developers.cloudflare.com/pages/).
 
 When using Workers:
 
-* Ensure you have configured your [Wrangler configuration file](https://developers.cloudflare.com/d1/get-started/#3-bind-your-worker-to-your-d1-database) to bind your D1 database to your Worker.
-* You can access your D1 databases via Hono's [Context ↗](https://hono.dev/api/context) parameter: [bindings ↗](https://hono.dev/getting-started/cloudflare-workers#bindings) are exposed on `context.env`. If you configured a [binding](https://developers.cloudflare.com/pages/functions/bindings/#d1-databases) named `DB`, then you would access [D1 Workers Binding API](https://developers.cloudflare.com/d1/worker-api/prepared-statements/) methods via `c.env.DB`.
-* Refer to the Hono documentation for [Cloudflare Workers ↗](https://hono.dev/getting-started/cloudflare-workers).
+- Ensure you have configured your [Wrangler configuration file](https://developers.cloudflare.com/d1/get-started/#3-bind-your-worker-to-your-d1-database) to bind your D1 database to your Worker.
+- You can access your D1 databases via Hono's [`Context` ↗](https://hono.dev/api/context) parameter: [bindings ↗](https://hono.dev/getting-started/cloudflare-workers#bindings) are exposed on `context.env`. If you configured a [binding](https://developers.cloudflare.com/pages/functions/bindings/#d1-databases) named `DB`, then you would access [D1 Workers Binding API](https://developers.cloudflare.com/d1/worker-api/prepared-statements/) methods via `c.env.DB`.
+- Refer to the Hono documentation for [Cloudflare Workers ↗](https://hono.dev/getting-started/cloudflare-workers).
 
 If you are using [Pages Functions](https://developers.cloudflare.com/pages/functions/):
 

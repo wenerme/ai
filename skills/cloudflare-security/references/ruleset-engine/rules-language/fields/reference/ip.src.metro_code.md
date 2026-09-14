@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # ip.src.metro\_code
 
-`ip.src.metro_code` `String`
+`ip.src.metro_code``String`
 
 The metro code or Designated Market Area (DMA) code associated with the incoming request.
 
@@ -19,8 +19,8 @@ Example value:
 ```
 
 Categories:
-* Request
-* Geolocation
+- Request
+- Geolocation
 
 Was this helpful?
 

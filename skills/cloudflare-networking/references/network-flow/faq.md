@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # FAQ
 
-Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network-flow/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-flow/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you cannot find your answer here, refer to the [community page ↗](https://community.cloudflare.com/) for more resources.
 
@@ -49,10 +49,10 @@ No. Auto-advertisement only works with API-controlled advertisement, not BGP-con
 
 ## In the API, Network Flow rules have a `bandwidth_threshold` data field. Does the value for this field refer to bytes transferred or current throughput?
 
-A [Network Flow rule](https://developers.cloudflare.com/api/resources/magic%5Fnetwork%5Fmonitoring/subresources/rules/methods/list/) threshold has two values:
+A [Network Flow rule](https://developers.cloudflare.com/api/resources/magic_network_monitoring/subresources/rules/methods/list/) threshold has two values:
 
-* `bandwidth_threshold` — the total ingress throughput on your network at any given moment, measured in bits per second.
-* `duration` — how long `bandwidth_threshold` must be exceeded before you receive an alert.
+- `bandwidth_threshold` — the total ingress throughput on your network at any given moment, measured in bits per second.
+- `duration` — how long `bandwidth_threshold` must be exceeded before you receive an alert.
 
 For example, you create a Network Flow rule with the following parameters:
 

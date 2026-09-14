@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Email Address Obfuscation
 
-Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By enabling Cloudflare Email Address Obfuscation, email addresses on your web page will be hidden from bots, while keeping them visible to humans. In fact, there are no visible changes to your website for visitors.
 
@@ -34,12 +34,11 @@ Cloudflare enables email address obfuscation automatically when you sign up.
 
 To disable **Email Address Obfuscation** in the dashboard:
 
-1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+1. In the Cloudflare dashboard, go to the Security **Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. (Optional) Filter by **Client-side abuse**.
 3. For **Email Address Obfuscation**, switch the toggle to **Off**.
 
-To disable **Email Address Obfuscation** with the API, send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `email_obfuscation` as the setting name in the URI path, and the `value` parameter set to `"off"`.
+To disable **Email Address Obfuscation** with the API, send a [`PATCH`](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `email_obfuscation` as the setting name in the URI path, and the `value` parameter set to `"off"`.
 
 Note
 
@@ -49,12 +48,15 @@ To use this feature on specific hostnames - instead of across your entire zone -
 
 To prevent Cloudflare from obfuscating specific email addresses, you can:
 
-* Add the following comment in the page HTML code:
-```html
-<!--email_off-->contact@example.com<!--/email_off-->
-```
-* Return email addresses in JSON format for AJAX calls, making sure your web server returns a content type of `application/json`.
-* Disable the Email Obfuscation feature by creating a [configuration rule](https://developers.cloudflare.com/rules/configuration-rules/) to be applied on a specific endpoint.
+- Add the following comment in the page HTML code:
+
+  ```html
+  <!--email_off-->contact@example.com<!--/email_off-->
+  ```
+
+
+- Return email addresses in JSON format for AJAX calls, making sure your web server returns a content type of `application/json`.
+- Disable the Email Obfuscation feature by creating a [configuration rule](https://developers.cloudflare.com/rules/configuration-rules/) to be applied on a specific endpoint.
 
 ---
 
@@ -62,21 +64,21 @@ To prevent Cloudflare from obfuscating specific email addresses, you can:
 
 To prevent unexpected website behavior, email addresses are not obfuscated when they appear in:
 
-* Any HTML tag attribute, except for the `href` attribute of the `a` tag.
-* Other HTML tags:
-  * `<script></script>`
-  * `<noscript></noscript>`
-  * `<textarea></textarea>`
-  * `<xmp></xmp>`
-  * `<head></head>`
-* Any page that does not have a MIME type of `text/html` or `application/xhtml+xml`.
+- Any HTML tag attribute, except for the `href` attribute of the `a` tag.
+- Other HTML tags:
+  - `<script></script>`
+  - `<noscript></noscript>`
+  - `<textarea></textarea>`
+  - `<xmp></xmp>`
+  - `<head></head>`
+- Any page that does not have a MIME type of `text/html` or `application/xhtml+xml`.
 
 Notes
 
-* Email Obfuscation will not apply in the following cases:
-  * You are using the `Cache-Control: no-transform` header.
-  * The HTML/JavaScript code is specifically added by a [Worker](https://developers.cloudflare.com/workers/).
-* Email Obfuscation might not work as expected when the HTML page includes `<template></template>` tags.
+- Email Obfuscation will not apply in the following cases:
+  - You are using the `Cache-Control: no-transform` header.
+  - The HTML/JavaScript code is specifically added by a [Worker](https://developers.cloudflare.com/workers/).
+- Email Obfuscation might not work as expected when the HTML page includes `<template></template>` tags.
 
 Was this helpful?
 

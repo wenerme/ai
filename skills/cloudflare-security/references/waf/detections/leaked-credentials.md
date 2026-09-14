@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Leaked credentials detection
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/leaked-credentials/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/leaked-credentials/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The leaked credentials [traffic detection](https://developers.cloudflare.com/waf/detections/) scans incoming requests for credentials (usernames and passwords) previously leaked from [data breaches ↗](https://www.cloudflare.com/learning/security/what-is-a-data-breach/).
 
@@ -26,14 +26,14 @@ When you turn on leaked credentials detection, Cloudflare scans incoming HTTP re
 
 Detected credentials are compared against a database of known leaked credentials. This database consists of:
 
-* The [Have I Been Pwned (HIBP) ↗](https://haveibeenpwned.com) matched passwords dataset (passwords only)
-* Cloudflare-collected credentials (usernames)
-* Leaked credentials pairs (username and password)
+- The [Have I Been Pwned (HIBP) ↗](https://haveibeenpwned.com) matched passwords dataset (passwords only)
+- Cloudflare-collected credentials (usernames)
+- Leaked credentials pairs (username and password)
 
 Based on the results, Cloudflare populates [leaked credentials fields](#leaked-credentials-fields) for scanned requests. You can use these fields in two ways:
 
-* **Analyze traffic**: Review detection results in the [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) dashboard to understand how often leaked credentials appear in your traffic.
-* **Create rules**: Use the fields in [custom rules](https://developers.cloudflare.com/waf/custom-rules/) or [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) to challenge or block requests that contain compromised credentials.
+- **Analyze traffic**: Review detection results in the [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) dashboard to understand how often leaked credentials appear in your traffic.
+- **Create rules**: Use the fields in [custom rules](https://developers.cloudflare.com/waf/custom-rules/) or [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) to challenge or block requests that contain compromised credentials.
 
 Leaked credentials can appear in your traffic for different reasons. An attacker may be performing a [credential stuffing ↗](https://www.cloudflare.com/learning/bots/what-is-credential-stuffing/) attack, or a legitimate user may be reusing a previously leaked password.
 
@@ -55,13 +55,13 @@ For details on available features per plan, refer to [Availability](https://deve
 
 Leaked credentials detection includes rules for identifying credentials in HTTP requests for the following well-known web applications:
 
-* Drupal
-* Joomla
-* Ghost
-* Magento
-* Plone
-* WordPress
-* Microsoft Exchange OWA
+- Drupal
+- Joomla
+- Ghost
+- Magento
+- Plone
+- WordPress
+- Microsoft Exchange OWA
 
 Additionally, the scan includes generic rules for other common web authentication patterns.
 
@@ -83,33 +83,33 @@ For example, if the JSON body of an HTTP request authenticating a user looks lik
 
 You could configure a custom detection location with the following settings:
 
-* Custom location for username:
-`lookup_json_string(http.request.body.raw, "user")`
-* Custom location for password:
-`lookup_json_string(http.request.body.raw, "secret")`
+- Custom location for username:
+  `lookup_json_string(http.request.body.raw, "user")`
+- Custom location for password:
+  `lookup_json_string(http.request.body.raw, "secret")`
 
 When specifying a custom detection location, only the location of the username field is required.
 
 The following table includes example detection locations for different request types:
 
-| Request type     | Username location / Password location                                                                            |
-| ---------------- | ---------------------------------------------------------------------------------------------------------------- |
-| JSON body        | lookup\_json\_string(http.request.body.raw, "user")lookup\_json\_string(http.request.body.raw, "secret")         |
-| URL-encoded form | url\_decode(http.request.body.form\["user"\]\[0\])url\_decode(http.request.body.form\["secret"\]\[0\])           |
-| Multipart form   | url\_decode(http.request.body.multipart\["user"\]\[0\])url\_decode(http.request.body.multipart\["secret"\]\[0\]) |
+| Request type | Username location / Password location |
+| --- | --- |
+| JSON body | `lookup_json_string(http.request.body.raw, "user")`<br>`lookup_json_string(http.request.body.raw, "secret")` |
+| URL-encoded form | `url_decode(http.request.body.form["user"][0])`<br>`url_decode(http.request.body.form["secret"][0])` |
+| Multipart form | `url_decode(http.request.body.multipart["user"][0])`<br>`url_decode(http.request.body.multipart["secret"][0])` |
 
 Expressions used to specify custom detection locations can include the following fields and functions:
 
-* Fields:
-  * [http.request.body.form](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.form/)
-  * [http.request.body.multipart](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.multipart/)
-  * [http.request.body.raw](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.raw/)
-  * [http.request.headers](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.headers/)
-  * [http.request.uri.args](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.uri.args/)
-  * [http.request.uri.query](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.uri.query/)
-* Functions:
-  * [lookup\_json\_string()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lookup%5Fjson%5Fstring)
-  * [url\_decode()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#url%5Fdecode)
+- Fields:
+  - [`http.request.body.form`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.form/)
+  - [`http.request.body.multipart`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.multipart/)
+  - [`http.request.body.raw`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.raw/)
+  - [`http.request.headers`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.headers/)
+  - [`http.request.uri.args`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.uri.args/)
+  - [`http.request.uri.query`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.uri.query/)
+- Functions:
+  - [`lookup_json_string()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lookup_json_string)
+  - [`url_decode()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#url_decode)
 
 For instructions on configuring a custom detection location, refer to [Get started](https://developers.cloudflare.com/waf/detections/leaked-credentials/get-started/#4-optional-configure-a-custom-detection-location).
 
@@ -117,13 +117,13 @@ For instructions on configuring a custom detection location, refer to [Get start
 
 The following fields indicate the type of leaked credential match Cloudflare detected. Use these fields in [custom rules](https://developers.cloudflare.com/waf/custom-rules/) or [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) to act on requests containing compromised credentials.
 
-| Field                                                                                                                                                                                                                                       | Description                                                                                                                                                |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Password Leaked [cf.waf.credential\_check.password\_leaked](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential%5Fcheck.password%5Fleaked/) Boolean                                          | Indicates whether the password detected in the request was previously leaked.  Available on all plans.                                                     |
-| User and Password Leaked [cf.waf.credential\_check.username\_and\_password\_leaked](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential%5Fcheck.username%5Fand%5Fpassword%5Fleaked/) Boolean | Indicates whether the username-password pair detected in the request were previously leaked.  Requires a Pro plan or above.                                |
-| Username Leaked [cf.waf.credential\_check.username\_leaked](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential%5Fcheck.username%5Fleaked/) Boolean                                          | Indicates whether the username detected in the request was previously leaked.  Requires an Enterprise plan.                                                |
-| Similar Password Leaked [cf.waf.credential\_check.username\_password\_similar](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential%5Fcheck.username%5Fpassword%5Fsimilar/) Boolean           | Indicates whether a similar version of the username and password credentials detected in the request were previously leaked.  Requires an Enterprise plan. |
-| Authentication detected [cf.waf.auth\_detected](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.auth%5Fdetected/) Boolean                                                                           | Indicates whether Cloudflare detected authentication credentials in the request.  Requires an Enterprise plan.                                             |
+| Field | Description |
+| --- | --- |
+| Password Leaked <br> [`cf.waf.credential_check.password_leaked`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential_check.password_leaked/) <br> `Boolean` | Indicates whether the password detected in the request was previously leaked. <br> Available on all plans. |
+| User and Password Leaked <br> [`cf.waf.credential_check.username_and_password_leaked`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential_check.username_and_password_leaked/) <br> `Boolean` | Indicates whether the username-password pair detected in the request were previously leaked. <br> Requires a Pro plan or above. |
+| Username Leaked <br> [`cf.waf.credential_check.username_leaked`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential_check.username_leaked/) <br> `Boolean` | Indicates whether the username detected in the request was previously leaked. <br> Requires an Enterprise plan. |
+| Similar Password Leaked <br> [`cf.waf.credential_check.username_password_similar`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential_check.username_password_similar/) <br> `Boolean` | Indicates whether a similar version of the username and password credentials detected in the request were previously leaked. <br> Requires an Enterprise plan. |
+| Authentication detected <br> [`cf.waf.auth_detected`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.auth_detected/) <br> `Boolean` | Indicates whether Cloudflare detected authentication credentials in the request. <br> Requires an Enterprise plan. |
 
 Was this helpful?
 
@@ -134,5 +134,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/leaked-credentials/#page","headline":"Leaked credentials detection · Cloudflare Web Application Firewall (WAF) docs","description":"Scan incoming requests for usernames and passwords exposed in known data breaches.","url":"https://developers.cloudflare.com/waf/detections/leaked-credentials/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication","Account takeover"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/leaked-credentials/#page","headline":"Leaked credentials detection · Cloudflare Web Application Firewall (WAF) docs","description":"Scan incoming requests for usernames and passwords exposed in known data breaches.","url":"https://developers.cloudflare.com/waf/detections/leaked-credentials/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication","Account takeover"]}
 ```

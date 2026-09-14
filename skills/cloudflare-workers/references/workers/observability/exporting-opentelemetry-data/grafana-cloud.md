@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Export to Grafana Cloud
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/grafana-cloud/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/grafana-cloud/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Grafana Cloud is a fully managed observability platform that provides visualization, alerting, and analytics for your telemetry data. By exporting your Cloudflare Workers telemetry to Grafana Cloud, you can:
 
-* Visualize distributed traces in **Grafana Tempo** to understand request flows and performance bottlenecks
-* Query and analyze logs in **Grafana Loki** alongside your traces
+- Visualize distributed traces in **Grafana Tempo** to understand request flows and performance bottlenecks
+- Query and analyze logs in **Grafana Loki** alongside your traces
 
 This guide will walk you through configuring Cloudflare Workers to export OpenTelemetry-compliant traces and logs to your Grafana Cloud stack.
 
@@ -27,8 +27,8 @@ This guide will walk you through configuring Cloudflare Workers to export OpenTe
 
 Before you begin, ensure you have:
 
-* An active [Grafana Cloud account ↗](https://grafana.com/auth/sign-up/create-user) (free tier available)
-* A deployed Worker that you want to monitor
+- An active [Grafana Cloud account ↗](https://grafana.com/auth/sign-up/create-user) (free tier available)
+- A deployed Worker that you want to monitor
 
 ## Step 1: Access the OpenTelemetry setup guide
 
@@ -46,10 +46,11 @@ Before you begin, ensure you have:
 1. Navigate to your Cloudflare account's [Workers Observability ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability/pipelines) section
 2. Click **Add destination** and configure a destination name (e.g. `grafana-tracing`)
 3. From Grafana, copy your Otel endpoint, auth header, and auth value
-* Your OTEL endpoint will look like `https://otlp-gateway-prod-us-east-2.grafana.net/otlp` (append `/v1/traces` for traces and `/v1/logs` for logs)
-* Your custom header should include:
-  * Your auth header name `Authorization`
-  * Your auth header value `Basic MTMxxx...`
+
+- Your OTEL endpoint will look like `https://otlp-gateway-prod-us-east-2.grafana.net/otlp` (append `/v1/traces` for traces and `/v1/logs` for logs)
+- Your custom header should include:
+  - Your auth header name `Authorization`
+  - Your auth header value `Basic MTMxxx...`
 
 ## Step 3: Configure your Worker
 

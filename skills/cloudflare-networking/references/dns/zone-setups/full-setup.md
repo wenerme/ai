@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Primary setup (Full)
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/full-setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/full-setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare DNS offers a few different [setup options](https://developers.cloudflare.com/dns/zone-setups/). A primary setup (also known as full) is the most common and the only one available for Free or Pro plans.
 
@@ -22,9 +22,9 @@ For this to work, you must go through a few steps that involve not only Cloudfla
 
 ## Availability
 
-|              | Free | Pro | Business | Enterprise |
-| ------------ | ---- | --- | -------- | ---------- |
-| Availability | Yes  | Yes | Yes      | Yes        |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | Yes | Yes | Yes | Yes |
 
 Was this helpful?
 

@@ -16,19 +16,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Video • Black Forest Labs
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-3-video/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-3-video/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `black-forest-labs/flux-3-video`
 
-* Third-party
+- Third-party
 
 FLUX 3 Video is Black Forest Labs' video generation model. It generates video from a text prompt (t2v), animates one or more reference images (i2v), or continues an existing clip (v2v), with synchronized audio, up to fhd resolution, and 5-20 second durations.
 
-| Model Info        |                                                                                                                                  |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://blackforestlabs.ai/terms-of-service/)                                                                           |
-| More information  | [link ↗](https://blackforestlabs.ai/)                                                                                            |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/black-forest-labs/flux-3-video) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://blackforestlabs.ai/terms-of-service/) |
+| More information | [link ↗](https://blackforestlabs.ai/) |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/black-forest-labs/flux-3-video) |
 
 ## Usage
 
@@ -107,7 +107,7 @@ generate\_audio
 
 safety\_tolerance
 
-`integer`minimum: 0maximum: 4Tolerance for input/output harm moderation, 0 (strictest) to 4\. Defaults to 2\. Sexual content is capped at level 3 and hate content at level 2 regardless of the requested tolerance; requests with conditioning media are capped at level 2.
+`integer`minimum: 0maximum: 4Tolerance for input/output harm moderation, 0 (strictest) to 4. Defaults to 2. Sexual content is capped at level 3 and hate content at level 2 regardless of the requested tolerance; requests with conditioning media are capped at level 2.
 
 draft
 
@@ -143,7 +143,7 @@ generate\_audio
 
 safety\_tolerance
 
-`integer`minimum: 0maximum: 4Tolerance for input/output harm moderation, 0 (strictest) to 4\. Defaults to 2\. Sexual content is capped at level 3 and hate content at level 2 regardless of the requested tolerance; requests with conditioning media are capped at level 2.
+`integer`minimum: 0maximum: 4Tolerance for input/output harm moderation, 0 (strictest) to 4. Defaults to 2. Sexual content is capped at level 3 and hate content at level 2 regardless of the requested tolerance; requests with conditioning media are capped at level 2.
 
 draft
 
@@ -179,7 +179,7 @@ generate\_audio
 
 safety\_tolerance
 
-`integer`minimum: 0maximum: 4Tolerance for input/output harm moderation, 0 (strictest) to 4\. Defaults to 2\. Sexual content is capped at level 3 and hate content at level 2 regardless of the requested tolerance; requests with conditioning media are capped at level 2.
+`integer`minimum: 0maximum: 4Tolerance for input/output harm moderation, 0 (strictest) to 4. Defaults to 2. Sexual content is capped at level 3 and hate content at level 2 regardless of the requested tolerance; requests with conditioning media are capped at level 2.
 
 draft
 
@@ -211,9 +211,9 @@ draft\_cache
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-3-video/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-3-video/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-3-video/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-3-video/schema-output.json)
 
 Was this helpful?
 

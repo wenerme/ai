@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # How Workers works
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/reference/how-workers-works/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/reference/how-workers-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Though Cloudflare Workers behave similarly to [JavaScript ↗](https://www.cloudflare.com/learning/serverless/serverless-javascript/) in the browser or in Node.js, there are a few differences in how you have to think about your code. Under the hood, the Workers runtime uses the [V8 engine ↗](https://www.cloudflare.com/learning/serverless/glossary/what-is-chrome-v8/) — the same engine used by Chromium and Node.js. The Workers runtime also implements many of the standard [APIs](https://developers.cloudflare.com/workers/runtime-apis/) available in most modern browsers.
 
-The differences between JavaScript written for the browser or Node.js happen at runtime. Rather than running on an individual's machine (for example, [a browser application or on a centralized server ↗](https://www.cloudflare.com/learning/serverless/glossary/client-side-vs-server-side/)), Workers functions run on [Cloudflare's global network ↗](https://www.cloudflare.com/network) \- a growing global network of thousands of machines distributed across hundreds of locations.
+The differences between JavaScript written for the browser or Node.js happen at runtime. Rather than running on an individual's machine (for example, [a browser application or on a centralized server ↗](https://www.cloudflare.com/learning/serverless/glossary/client-side-vs-server-side/)), Workers functions run on [Cloudflare's global network ↗](https://www.cloudflare.com/network) - a growing global network of thousands of machines distributed across hundreds of locations.
 
 Each of these machines hosts an instance of the Workers runtime, and each of those runtimes is capable of running thousands of user-defined applications. This guide will review some of those differences.
 
@@ -42,9 +42,9 @@ Process overhead
 
 A given isolate has its own scope, but isolates are not necessarily long-lived. An isolate may be spun down and evicted for a number of reasons:
 
-* Resource limitations on the machine.
-* A suspicious script - anything seen as trying to break out of the isolate sandbox.
-* Individual [resource limits](https://developers.cloudflare.com/workers/platform/limits/).
+- Resource limitations on the machine.
+- A suspicious script - anything seen as trying to break out of the isolate sandbox.
+- Individual [resource limits](https://developers.cloudflare.com/workers/platform/limits/).
 
 Because of this, it is generally advised that you not store mutable state in your global scope unless you have accounted for this contingency.
 
@@ -70,7 +70,7 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
-For Workers written in [ES modules syntax](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/), when a request to your `*.workers.dev` subdomain or to your Cloudflare-managed domain is received by any of Cloudflare's data centers, the request invokes the [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) defined in your Worker code with the given request. You can respond to the request by returning a [Response](https://developers.cloudflare.com/workers/runtime-apis/response/) object.
+For Workers written in [ES modules syntax](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/), when a request to your `*.workers.dev` subdomain or to your Cloudflare-managed domain is received by any of Cloudflare's data centers, the request invokes the [`fetch()` handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) defined in your Worker code with the given request. You can respond to the request by returning a [`Response`](https://developers.cloudflare.com/workers/runtime-apis/response/) object.
 
 ## Distributed execution
 
@@ -80,9 +80,9 @@ Like all other JavaScript platforms, a single Workers instance may handle multip
 
 ## Related resources
 
-* [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) \- Review how incoming HTTP requests to a Worker are passed to the `fetch()` handler.
-* [Request](https://developers.cloudflare.com/workers/runtime-apis/request/) \- Learn how incoming HTTP requests are passed to the `fetch()` handler.
-* [Workers limits](https://developers.cloudflare.com/workers/platform/limits/) \- Learn about Workers limits including Worker size, startup time, and more.
+- [`fetch()` handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) - Review how incoming HTTP requests to a Worker are passed to the `fetch()` handler.
+- [Request](https://developers.cloudflare.com/workers/runtime-apis/request/) - Learn how incoming HTTP requests are passed to the `fetch()` handler.
+- [Workers limits](https://developers.cloudflare.com/workers/platform/limits/) - Learn about Workers limits including Worker size, startup time, and more.
 
 Was this helpful?
 

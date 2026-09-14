@@ -12,24 +12,32 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Block internet access until user authenticates
 
-Last updated Jul 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-no-auth-no-internet/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-no-auth-no-internet/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Availability Beta
 
+<details>
+
+<summary>
+
 Feature availability
 
-| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| All modes                                                                                                                          | All plans                                                       |
+</summary>
 
-| System   | Availability | Minimum WARP version |
-| -------- | ------------ | -------------------- |
-| Windows  | ✅            | 2026.5.0             |
-| macOS    | ❌            |                      |
-| Linux    | ❌            |                      |
-| iOS      | ❌            |                      |
-| Android  | ❌            |                      |
-| ChromeOS | ❌            |                      |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- |
+| All modes | All plans |
+
+| System | Availability | Minimum WARP version |
+| --- | --- | --- |
+| Windows | ✅ | 2026.5.0 |
+| macOS | ❌ | |
+| Linux | ❌ | |
+| iOS | ❌ | |
+| Android | ❌ | |
+| ChromeOS | ❌ | |
+
+</details>
 
 When **no-auth-no-internet** is enabled, the Cloudflare One Client locks down general internet traffic on the device whenever the device is in an unauthenticated state (i.e., without a valid device registration). During this lockdown, the client allows only the traffic required for the device to remain on the network and for the user to complete IdP authentication. Once the user signs in, normal connectivity resumes and your configured Gateway, Access, RBI, and DLP policies take effect.
 
@@ -39,8 +47,8 @@ The lockdown re-engages automatically any time the device transitions back to an
 
 ## Prerequisites
 
-* The Cloudflare One Client must be [deployed via MDM](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/#windows).
-* The device must have [WebView2](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/#authenticate-in-embedded-browser) available. By default, the WebView2 runtime should be present on all Windows versions that Cloudflare One Client supports.
+- The Cloudflare One Client must be [deployed via MDM](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/#windows).
+- The device must have [WebView2](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/#authenticate-in-embedded-browser) available. By default, the WebView2 runtime should be present on all Windows versions that Cloudflare One Client supports.
 
 ## Enable no-auth-no-internet
 
@@ -90,9 +98,9 @@ To block RFC 1918 traffic during lockdown, set `no_auth_no_internet_block_rfc_19
 
 ## Limitations
 
-* The lockdown is enforced only when there is an active interactive user session (for example, a user is logged in and the device is not locked).
-* Since authentication now occurs in an embedded WebView2 window, IdP flows that depend on the user's default browser (for example, browser-specific extensions or password managers) may not work.
-* Some Windows applications, including Copilot and Teams (personal), may retain internet access while the Cloudflare One Client authentication window is open.
+- The lockdown is enforced only when there is an active interactive user session (for example, a user is logged in and the device is not locked).
+- Since authentication now occurs in an embedded WebView2 window, IdP flows that depend on the user's default browser (for example, browser-specific extensions or password managers) may not work.
+- Some Windows applications, including Copilot and Teams (personal), may retain internet access while the Cloudflare One Client authentication window is open.
 
 Was this helpful?
 

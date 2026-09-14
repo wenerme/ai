@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Risk score
 
-Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -28,9 +28,9 @@ Cloudflare One assigns a risk score of Low, Medium, or High based on detections 
 
 To view a user's risk score:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Teams & Resources**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Teams & Resources**.
 2. Select **Users**.
-3. Select **Risk score** \> **Risk scoring**.
+3. Select **Risk score** > **Risk scoring**.
 4. Select a user's name to view their instances of risk behaviors, if any. You can select an instance of a risk behavior to view the log associated with the detection.
 
 Users that have had their risk score [cleared](#clear-a-users-risk-score) will not appear in the table unless they trigger another risk behavior.
@@ -39,8 +39,8 @@ Users that have had their risk score [cleared](#clear-a-users-risk-score) will n
 
 If required, you can reset risk scores for specific users. Once reset, users will not appear in the associated risk table until they trigger another risk behavior.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Teams & Resources**.
-2. Select **Risk score** \> **Risk scoring**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Teams & Resources**.
+2. Select **Risk score** > **Risk scoring**.
 3. Select the user you want to clear the risk score for.
 4. In **User risk overview**, select **Reset user risk**.
 5. Select **Confirm**.
@@ -52,7 +52,7 @@ In addition to controls in Cloudflare One, Okta users can send risk scores to Ok
 First, configure Cloudflare One to send user risk scores to Okta.
 
 1. Set up the [Okta SSO integration](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/okta/).
-2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
+2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 3. In **Your identity providers**, locate your Okta integration and select **Edit**.
 4. Turn on **Send risk score to Okta**.
 5. Select **Save**.
@@ -60,9 +60,9 @@ First, configure Cloudflare One to send user risk scores to Okta.
 
 Next, configure Okta to receive your risk scores.
 
-1. On your Okta admin dashboard, go to **Security** \> **Device Integrations**.
+1. On your Okta admin dashboard, go to **Security** > **Device Integrations**.
 2. Go to **Receive shared signals**, then select **Create stream**.
-3. Name your integration. In **Set up integration with**, choose _Well-known URL_.
+3. Name your integration. In **Set up integration with**, choose *Well-known URL*.
 4. In **Well-known URL**, enter the well-known URL value provided by Cloudflare One.
 5. Select **Create**.
 
@@ -74,20 +74,20 @@ While the Okta integration is turned on, Cloudflare One will send any user risk 
 
 By default, all predefined behaviors are disabled. When a behavior is enabled, Cloudflare One will continuously evaluate all users within the organization for the behavior. You can [change the risk level](#change-risk-behavior-risk-levels) for predefined behaviors if the default assignment does not suit your environment.
 
-| Risk behavior                          | Requirements                                                                                                                                                                                                                                      | Description                                                                                                                                                                                                                                                                                                                                         | Evaluation timing                                                                                                                                     |
-| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Impossible travel                      | [A configured Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/)                                                                                                                       | User has a successful login from two different locations that they could not have traveled between in that period of time. Matches will appear in your [Access authentication logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/access-authentication-logs/).                                                     | Evaluated at each authentication and session-refresh event.                                                                                           |
-| High number of DLP policies triggered  | [A configured DLP profile](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/)                                                                                                                                   | User has created a high number of DLP policy matches within a narrow frame of time. Matches will appear in your [Gateway activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/).                                                                                                               | Evaluated per-request in milliseconds.                                                                                                                |
-| SentinelOne threat detected on machine | [SentinelOne service provider integration](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/sentinelone/)                                                                                                          | SentinelOne returns one or more configured [device posture attributes](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/sentinelone/#device-posture-attributes) for a user.                                                                                                                                          | Ingested via service-to-service API. Frequency is administrator-configurable during device posture setup to align with SentinelOne's API rate limits. |
-| CrowdStrike Low ZTA security score     | [CrowdStrike integration](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/crowdstrike/)                                                                                                                           | A user's device reports a score between 0-50 for any CrowdStrike Zero Trust Assessment attribute (OS Score, Overall Score, or Sensor Config score). Refer to [CrowdStrike device posture attributes](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/crowdstrike/#device-posture-attributes) for more information.  | Ingested via service-to-service API. Frequency is administrator-configurable during device posture setup to align with CrowdStrike's API rate limits. |
-| CrowdStrike Medium ZTA security score  | [CrowdStrike integration](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/crowdstrike/)                                                                                                                           | A user's device reports a score between 50-79 for any CrowdStrike Zero Trust Assessment attribute (OS Score, Overall Score, or Sensor Config score). Refer to [CrowdStrike device posture attributes](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/crowdstrike/#device-posture-attributes) for more information. | Ingested via service-to-service API. Frequency is administrator-configurable during device posture setup to align with CrowdStrike's API rate limits. |
-| Interaction with Malicious File        | [Gateway AV scanning](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/antivirus-scanning/) or [File sandboxing](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/file-sandboxing/) | User uploads or downloads a file flagged as malicious by Gateway's AV scanner or file sandboxing. Risk is elevated even if the file is blocked.                                                                                                                                                                                                     | Evaluated per-request in milliseconds.                                                                                                                |
-| Suspicious Security Domain Visited     | [Gateway DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/)                                                                                                                                           | User visits a domain categorized as a security risk or security threat. Refer to [domain categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/) for the full list. Risk is elevated even if the traffic is blocked.                                                                                      | Evaluated per-request in milliseconds.                                                                                                                |
-| High Risk Domain Visited               | [Gateway DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/)                                                                                                                                           | User visits a domain categorized as questionable content, violence, or CIPA. Refer to [domain categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/) for the full list. Risk is elevated even if the traffic is blocked.                                                                                 | Evaluated per-request in milliseconds.                                                                                                                |
+| Risk behavior | Requirements | Description | Evaluation timing |
+| --- | --- | --- | --- |
+| Impossible travel | [A configured Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/) | User has a successful login from two different locations that they could not have traveled between in that period of time. Matches will appear in your [Access authentication logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/access-authentication-logs/). | Evaluated at each authentication and session-refresh event. |
+| High number of DLP policies triggered | [A configured DLP profile](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/) | User has created a high number of DLP policy matches within a narrow frame of time. Matches will appear in your [Gateway activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/). | Evaluated per-request in milliseconds. |
+| SentinelOne threat detected on machine | [SentinelOne service provider integration](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/sentinelone/) | SentinelOne returns one or more configured [device posture attributes](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/sentinelone/#device-posture-attributes) for a user. | Ingested via service-to-service API. Frequency is administrator-configurable during device posture setup to align with SentinelOne's API rate limits. |
+| CrowdStrike Low ZTA security score | [CrowdStrike integration](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/crowdstrike/) | A user's device reports a score between 0-50 for any CrowdStrike Zero Trust Assessment attribute (OS Score, Overall Score, or Sensor Config score). Refer to [CrowdStrike device posture attributes](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/crowdstrike/#device-posture-attributes) for more information. | Ingested via service-to-service API. Frequency is administrator-configurable during device posture setup to align with CrowdStrike's API rate limits. |
+| CrowdStrike Medium ZTA security score | [CrowdStrike integration](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/crowdstrike/) | A user's device reports a score between 50-79 for any CrowdStrike Zero Trust Assessment attribute (OS Score, Overall Score, or Sensor Config score). Refer to [CrowdStrike device posture attributes](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/crowdstrike/#device-posture-attributes) for more information. | Ingested via service-to-service API. Frequency is administrator-configurable during device posture setup to align with CrowdStrike's API rate limits. |
+| Interaction with Malicious File | [Gateway AV scanning](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/antivirus-scanning/) or [File sandboxing](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/file-sandboxing/) | User uploads or downloads a file flagged as malicious by Gateway's AV scanner or file sandboxing. Risk is elevated even if the file is blocked. | Evaluated per-request in milliseconds. |
+| Suspicious Security Domain Visited | [Gateway DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/) | User visits a domain categorized as a security risk or security threat. Refer to [domain categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/) for the full list. Risk is elevated even if the traffic is blocked. | Evaluated per-request in milliseconds. |
+| High Risk Domain Visited | [Gateway DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/) | User visits a domain categorized as questionable content, violence, or CIPA. Refer to [domain categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/) for the full list. Risk is elevated even if the traffic is blocked. | Evaluated per-request in milliseconds. |
 
 ## Manage risk behaviors
 
-To toggle risk behaviors, go to **Risk score** \> **Risk behaviors**.
+To toggle risk behaviors, go to **Risk score** > **Risk behaviors**.
 
 ### Enable risk behaviors
 
@@ -103,9 +103,9 @@ When a risk behavior is disabled, monitoring for future activity will cease. Pre
 
 You can change the risk level for a behavior at any time.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Teams & Resources**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Teams & Resources**.
 2. Go to **Users**.
-3. Select **Risk score** \> **Risk behaviors**.
+3. Select **Risk score** > **Risk behaviors**.
 4. Select the risk behavior you want to modify.
 5. In the drop-down menu, choose your desired risk level.
 6. Select **Save**.
@@ -116,9 +116,9 @@ You can use risk scores to control access to applications protected by [Cloudfla
 
 To add a risk score requirement to an Access policy:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Policies**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies**.
 2. Create a new policy or select an existing policy to edit.
-3. Add a rule with the _User Risk Score_ selector.
+3. Add a rule with the *User Risk Score* selector.
 4. For **Value**, select one or more risk levels (Low, Medium, High, or Unscored). The rule matches a user only when their current risk level is one of the selected values.
 5. Save the policy.
 
@@ -126,10 +126,10 @@ To add a risk score requirement to an Access policy:
 
 To prevent users with elevated risk scores from accessing sensitive applications, create a policy with the following configuration:
 
-| Action | Rule type | Selector         | Value        |
-| ------ | --------- | ---------------- | ------------ |
-| Allow  | Include   | Emails ending in | @example.com |
-|        | Exclude   | User risk score  | _High_       |
+| Action | Rule type | Selector | Value |
+| --- | --- | --- | --- |
+| Allow | Include | Emails ending in | `@example.com` |
+|  | Exclude | User risk score | *High* |
 
 Users with a High risk score will be blocked, while users with Low or Medium scores can access the application.
 

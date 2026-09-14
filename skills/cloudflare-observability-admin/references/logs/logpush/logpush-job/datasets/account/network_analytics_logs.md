@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Network Analytics Logs
 
-Last updated Mar 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/network%5Fanalytics%5Flogs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/network_analytics_logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The descriptions below detail the fields available for `network_analytics_logs`.
 
@@ -117,7 +117,7 @@ Value of the Destination Port header field in the TCP or UDP packet.
 Type: `string`
 
 The direction in relation to customer network.
-Possible values are _ingress_ | _egress_.
+Possible values are *ingress* | *egress*.
 
 ## GREChecksum
 
@@ -322,28 +322,28 @@ Value of the Identification extension header field in the IPv6 packet.
 Type: `string`
 
 Reason for applying a mitigation to the packet, if any.
-Possible values are _BLOCKED_ | _RATE\_LIMITED_ |_UNEXPECTED_ | _CHALLENGE\_NEEDED_ | _CHALLENGE\_PASSED_ | _NOT\_FOUND_ | _OUT\_OF\_SEQUENCE_ | _ALREADY\_CLOSED_.
+Possible values are *BLOCKED* | *RATE\_LIMITED* |*UNEXPECTED* | *CHALLENGE\_NEEDED* | *CHALLENGE\_PASSED* | *NOT\_FOUND* | *OUT\_OF\_SEQUENCE* | *ALREADY\_CLOSED*.
 
 ## MitigationScope
 
 Type: `string`
 
 Whether the packet matched a local or global mitigation, if any.
-Possible values are _local_ | _global_.
+Possible values are *local* | *global*.
 
 ## MitigationSystem
 
 Type: `string`
 
 Which Cloudflare system sampled the packet.
-Possible values are _dosd_ | _flowtrackd_ | _magic-firewall_.
+Possible values are *dosd* | *flowtrackd* | *magic-firewall*.
 
 ## Outcome
 
 Type: `string`
 
 The action that Cloudflare systems took on the packet.
-Possible values are _pass_ | _drop_.
+Possible values are *pass* | *drop*.
 
 ## PFPCustomTag
 
@@ -356,7 +356,7 @@ The custom network analytics tag set by Programmable Flow Protection program, if
 Type: `string`
 
 State of the packet in the context of the protocol, if any.
-Possible values are _OPEN_ | _NEW_ | _CLOSING_ | _CLOSED_.
+Possible values are *OPEN* | *NEW* | *CLOSING* | *CLOSED*.
 
 ## RuleID
 
@@ -375,7 +375,7 @@ Human-readable name of the rule contained within the Cloudflare L3/4 managed rul
 Type: `string`
 
 Unique identifier of the Cloudflare L3/4 managed ruleset containing the rule that this packet matched, if any.
-Possible values are _3b64149bfa6e4220bbbc2bd6db589552_.
+Possible values are *3b64149bfa6e4220bbbc2bd6db589552*.
 
 ## RulesetOverrideID
 
@@ -526,7 +526,7 @@ Value of the Payload Length header field in the UDP packet.
 Type: `string`
 
 The action that Cloudflare systems think should be taken on the packet.
-Possible values are _pass_ | _drop_.
+Possible values are *pass* | *drop*.
 
 Was this helpful?
 
@@ -537,5 +537,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/network_analytics_logs/#page","headline":"Network Analytics Logs · Cloudflare Logs docs","description":"The descriptions below detail the fields available for network_analytics_logs.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/network_analytics_logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/network_analytics_logs/#page","headline":"Network Analytics Logs · Cloudflare Logs docs","description":"The descriptions below detail the fields available for network_analytics_logs.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/network_analytics_logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -8,28 +8,30 @@ image: https://developers.cloudflare.com/og-docs.png
 
 The Internet has become part of your corporate network; however, browsing the web comes with hidden risks including malware, phishing attacks, and malicious websites. In this video, we will explore how Cloudflare's Secure Web Gateway (SWG) helps keep users safe by filtering and inspecting Internet traffic in real time. Whether you are protecting a remote workforce or securing an entire organization, Cloudflare ensures that users can access the web securely — without sacrificing speed or productivity.
 
+<details>
+
+<summary>
+
 Chapters
 
-* ![Introduction to Cloudflare's SASE and the Importance of Secure Corporate Networking](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=1s)
+</summary>
 
-**Introduction to Cloudflare's SASE and the Importance of Secure Corporate Networking**1s
-* ![Using Secure Web Gateway to Inspect and Control Internet Traffic](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=66s)
+- ![Introduction to Cloudflare's SASE and the Importance of Secure Corporate Networking](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=1s)**Introduction to Cloudflare's SASE and the Importance of Secure Corporate Networking**1s
+- ![Using Secure Web Gateway to Inspect and Control Internet Traffic](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=66s)**Using Secure Web Gateway to Inspect and Control Internet Traffic**01m06s
+- ![Protecting Users with DNS Filtering and Threat Intelligence](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=124s)**Protecting Users with DNS Filtering and Threat Intelligence**02m04s
+- ![Implementing Network-Level Security Policies for Private and Public Traffic](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=217s)**Implementing Network-Level Security Policies for Private and Public Traffic**03m37s
+- ![Advanced HTTP Filtering and Data Loss Prevention with Cloudflare](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=263s)**Advanced HTTP Filtering and Data Loss Prevention with Cloudflare**04m23s
+- ![Isolating Risky Websites and Preventing Data Leaks with Browser Isolation](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=348s)**Isolating Risky Websites and Preventing Data Leaks with Browser Isolation**05m48s
 
-**Using Secure Web Gateway to Inspect and Control Internet Traffic**01m06s
-* ![Protecting Users with DNS Filtering and Threat Intelligence](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=124s)
+</details>
 
-**Protecting Users with DNS Filtering and Threat Intelligence**02m04s
-* ![Implementing Network-Level Security Policies for Private and Public Traffic](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=217s)
+<details>
 
-**Implementing Network-Level Security Policies for Private and Public Traffic**03m37s
-* ![Advanced HTTP Filtering and Data Loss Prevention with Cloudflare](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=263s)
-
-**Advanced HTTP Filtering and Data Loss Prevention with Cloudflare**04m23s
-* ![Isolating Risky Websites and Preventing Data Leaks with Browser Isolation](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=348s)
-
-**Isolating Risky Websites and Preventing Data Leaks with Browser Isolation**05m48s
+<summary>
 
 Transcript
+
+</summary>
 
 Cloudflare's Connectivity Cloud hosts acomplete Secure Access Service Edge,
 
@@ -268,6 +270,8 @@ We also cover a wide variety of topicsincluding application security,
 corporate networking,and all the developer content the Internet
 
 can hold. Follow us online and thanks forwatching!
+
+</details>
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/sase-5-protect-users/#page","headline":"SASE - Protect your users from Internet risks | Cloudflare Docs","description":"The Internet has become part of your corporate network; however, browsing the web comes with hidden risks including malware, phishing attacks, and malicious websites. In this video, we will explore how Cloudflare's Secure Web Gateway (SWG) helps keep users safe by filtering and inspecting Internet traffic in real time. Whether you are protecting a remote workforce or securing an entire organization, Cloudflare ensures that users can access the web securely — without sacrificing speed or productivity.","url":"https://developers.cloudflare.com/videos/sase-5-protect-users/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

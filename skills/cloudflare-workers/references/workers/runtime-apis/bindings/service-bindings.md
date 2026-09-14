@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Service bindings
 
-Last updated Aug 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## About Service bindings
 
@@ -20,16 +20,17 @@ Service bindings allow one Worker to call into another, without going through a 
 
 Service bindings provide the separation of concerns that microservice or service-oriented architectures provide, without configuration pain, performance overhead or need to learn RPC protocols.
 
-* **Service bindings are fast.** When you use Service Bindings, there is zero overhead or added latency. By default, both Workers run on the same thread of the same Cloudflare server. And when you enable [Smart Placement](https://developers.cloudflare.com/workers/configuration/placement/), each Worker runs in the optimal location for overall performance.
-* **Service bindings are not just HTTP.** Worker A can expose methods that can be directly called by Worker B. Communicating between services only requires writing JavaScript methods and classes.
-* **Service bindings don't increase costs.** You can split apart functionality into multiple Workers, without incurring additional costs. Learn more about [pricing for Service Bindings](https://developers.cloudflare.com/workers/platform/pricing/#service-bindings).
+- **Service bindings are fast.** When you use Service Bindings, there is zero overhead or added latency. By default, both Workers run on the same thread of the same Cloudflare server. And when you enable [Smart Placement](https://developers.cloudflare.com/workers/configuration/placement/), each Worker runs in the optimal location for overall performance.
+- **Service bindings are not just HTTP.** Worker A can expose methods that can be directly called by Worker B. Communicating between services only requires writing JavaScript methods and classes.
+- **Service bindings don't increase costs.** You can split apart functionality into multiple Workers, without incurring additional costs. Learn more about [pricing for Service Bindings](https://developers.cloudflare.com/workers/platform/pricing/#service-bindings).
+
 ![Service bindings are a zero-cost abstraction](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1532,height=578,format=webp/_astro/service-bindings-comparison.CeB5uD1k.png)
 
 Service bindings are commonly used to:
 
-* **Provide a shared internal service to multiple Workers.** For example, you can deploy an authentication service as its own Worker, and then have any number of separate Workers communicate with it via Service bindings.
-* **Isolate services from the public Internet.** You can deploy a Worker that is not reachable via the public Internet, and can only be reached via an explicit Service binding that another Worker declares.
-* **Allow teams to deploy code independently.** Team A can deploy their Worker on their own release schedule, and Team B can deploy their Worker separately.
+- **Provide a shared internal service to multiple Workers.** For example, you can deploy an authentication service as its own Worker, and then have any number of separate Workers communicate with it via Service bindings.
+- **Isolate services from the public Internet.** You can deploy a Worker that is not reachable via the public Internet, and can only be reached via an explicit Service binding that another Worker declares.
+- **Allow teams to deploy code independently.** Team A can deploy their Worker on their own release schedule, and Team B can deploy their Worker separately.
 
 ## Configuration
 
@@ -54,23 +55,23 @@ binding = "<BINDING_NAME>"
 service = "<WORKER_NAME>"
 ```
 
-* `binding`: The name of the key you want to expose on the `env` object.
-* `service`: The name of the target Worker you would like to communicate with. This Worker must be on your Cloudflare account.
+- `binding`: The name of the key you want to expose on the `env` object.
+- `service`: The name of the target Worker you would like to communicate with. This Worker must be on your Cloudflare account.
 
 ## Interfaces
 
 Worker A that declares a Service binding to Worker B can call Worker B in two different ways:
 
 1. [RPC](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc) lets you communicate between Workers using function calls that you define. For example, `await env.BINDING_NAME.myMethod(arg1)`. This is recommended for most use cases, and allows you to create your own internal APIs that your Worker makes available to other Workers.
-2. [HTTP](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/http) lets you communicate between Workers by calling the [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch) from other Workers, sending `Request` objects and receiving `Response` objects back. For example, `env.BINDING_NAME.fetch(request)`.
+2. [HTTP](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/http) lets you communicate between Workers by calling the [`fetch()` handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch) from other Workers, sending `Request` objects and receiving `Response` objects back. For example, `env.BINDING_NAME.fetch(request)`.
 
 Cloudflare Access context
 
-Cloudflare Access does not propagate `ctx.access` from Worker A to Worker B. This applies to HTTP requests and RPC invocations. Do not treat the downstream invocation as authenticated by the caller's Access context. For more information, refer to [ctx.access limitations](https://developers.cloudflare.com/workers/configuration/cloudflare-access/#ctxaccess-limitations).
+Cloudflare Access does not propagate `ctx.access` from Worker A to Worker B. This applies to HTTP requests and RPC invocations. Do not treat the downstream invocation as authenticated by the caller's Access context. For more information, refer to [`ctx.access` limitations](https://developers.cloudflare.com/workers/configuration/cloudflare-access/#ctxaccess-limitations).
 
 ## Example — build your first Service binding using RPC
 
-This example [extends the WorkerEntrypoint class](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#the-workerentrypoint-class) to support RPC-based Service bindings. First, create the Worker that you want to communicate with. Let's call this "Worker B". Worker B exposes the public method, `add(a, b)`:
+This example [extends the `WorkerEntrypoint` class](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#the-workerentrypoint-class) to support RPC-based Service bindings. First, create the Worker that you want to communicate with. Let's call this "Worker B". Worker B exposes the public method, `add(a, b)`:
 
 ```jsonc
 {
@@ -136,19 +137,19 @@ export default {
 };
 ```
 
-To run both Worker A and Worker B in local development, you must run two instances of [Wrangler](https://developers.cloudflare.com/workers/wrangler) in your terminal. For each Worker, open a new terminal and run [npx wrangler@latest dev](https://developers.cloudflare.com/workers/wrangler/commands#dev).
+To run both Worker A and Worker B in local development, you must run two instances of [Wrangler](https://developers.cloudflare.com/workers/wrangler) in your terminal. For each Worker, open a new terminal and run [`npx wrangler@latest dev`](https://developers.cloudflare.com/workers/wrangler/commands#dev).
 
 Each Worker is deployed separately.
 
 ## Lifecycle
 
-The Service bindings API is asynchronous — you must `await` any method you call. If Worker A invokes Worker B via a Service binding, and Worker A does not await the completion of Worker B, Worker B will be terminated early.
+The Service bindings API is asynchronous — you must `await` any method you call. If Worker A invokes Worker B via a Service binding, and Worker A does not await the completion of Worker B, Worker B will be terminated early.
 
 For more about the lifecycle of calling a Worker over a Service Binding via RPC, refer to the [RPC Lifecycle](https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle) docs.
 
 ## Local development
 
-Local development is supported for Service bindings. For each Worker, open a new terminal and use [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) in the relevant directory. When running `wrangler dev`, service bindings will show as `connected`/`not connected` depending on whether Wrangler can find a running `wrangler dev` session for that Worker. For example:
+Local development is supported for Service bindings. For each Worker, open a new terminal and use [`wrangler dev`](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) in the relevant directory. When running `wrangler dev`, service bindings will show as `connected`/`not connected` depending on whether Wrangler can find a running `wrangler dev` session for that Worker. For example:
 
 ```sh
 $ wrangler dev
@@ -159,7 +160,7 @@ Your worker has access to the following bindings:
   - ANOTHER_WORKER: another-worker [not connected]
 ```
 
-Wrangler also supports running multiple Workers at once with one command. To try it out, pass multiple `-c` flags to Wrangler, like this: `wrangler dev -c wrangler.json -c ../other-worker/wrangler.json`. The first config will be treated as the _primary_ worker, which will be exposed over HTTP as usual at `http://localhost:8787`. The remaining config files will be treated as _secondary_ and will only be accessible via a service binding from the primary worker.
+Wrangler also supports running multiple Workers at once with one command. To try it out, pass multiple `-c` flags to Wrangler, like this: `wrangler dev -c wrangler.json -c ../other-worker/wrangler.json`. The first config will be treated as the *primary* worker, which will be exposed over HTTP as usual at `http://localhost:8787`. The remaining config files will be treated as *secondary* and will only be accessible via a service binding from the primary worker.
 
 Caution
 
@@ -173,9 +174,9 @@ When getting started and deploying for the first time, this means that the targe
 
 When making changes to existing Workers, in most cases you should:
 
-* Deploy changes to Worker B first, in a way that is compatible with the existing Worker A. For example, add a new method to Worker B.
-* Next, deploy changes to Worker A. For example, call the new method on Worker B, from Worker A.
-* Finally, remove any unused code. For example, delete the previously used method on Worker B.
+- Deploy changes to Worker B first, in a way that is compatible with the existing Worker A. For example, add a new method to Worker B.
+- Next, deploy changes to Worker A. For example, call the new method on Worker B, from Worker A.
+- Finally, remove any unused code. For example, delete the previously used method on Worker B.
 
 ## Smart Placement
 
@@ -191,9 +192,9 @@ Refer to the [docs on Smart Placement](https://developers.cloudflare.com/workers
 
 Service bindings have the following limits:
 
-* Each request to a Worker via a Service binding counts toward your [subrequest limit](https://developers.cloudflare.com/workers/platform/limits/#subrequests).
-* A single request has a maximum of 32 Worker invocations, and each call to a Service binding counts towards this limit. Subsequent calls will throw an exception.
-* Calling a service binding does not count towards [simultaneous open connection limits](https://developers.cloudflare.com/workers/platform/limits/#simultaneous-open-connections)
+- Each request to a Worker via a Service binding counts toward your [subrequest limit](https://developers.cloudflare.com/workers/platform/limits/#subrequests).
+- A single request has a maximum of 32 Worker invocations, and each call to a Service binding counts towards this limit. Subsequent calls will throw an exception.
+- Calling a service binding does not count towards [simultaneous open connection limits](https://developers.cloudflare.com/workers/platform/limits/#simultaneous-open-connections)
 
 Was this helpful?
 

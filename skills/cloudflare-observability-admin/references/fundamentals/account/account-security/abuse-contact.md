@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Add abuse contact
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/abuse-contact/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/abuse-contact/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Enter an abuse contact email address to ensure you are receiving communications regarding potential abuse on your websites.
 
 To update your abuse contact email address:
 
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
-2. Go to **Manage Account** \> **Configurations**.
+2. Go to **Manage Account** > **Configurations**.
 3. For **Abuse report contact email address**, select **Change email address**.
 4. Enter and confirm your new email and select **Save**.
 

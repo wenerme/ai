@@ -12,23 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Architectures
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/demos/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/demos/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Learn how you can use AI Gateway within your existing architecture.
 
 ## Reference architectures
 
-Explore the following reference architectures that use AI Gateway:
+Explore the following reference architectures
 
-[**Fullstack applications**A practical example of how these services come together in a real fullstack application architecture.](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/fullstack-application/)
+ that use AI Gateway:
 
-[**Multi-vendor AI observability and control**By shifting features such as rate limiting, caching, and error handling to the proxy layer, organizations can apply unified configurations across services and inference service providers.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-multivendor-observability-control/)
+[**Fullstack applications** A practical example of how these services come together in a real fullstack application architecture.](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/fullstack-application/)
 
-[**AI Vibe Coding Platform**Cloudflare's low-latency, fully serverless compute platform, Workers offers powerful capabilities to enable A/B testing using a server-side implementation.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/)
+[**Multi-vendor AI observability and control** By shifting features such as rate limiting, caching, and error handling to the proxy layer, organizations can apply unified configurations across services and inference service providers.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-multivendor-observability-control/)
 
-[**Enterprise AI agent workspace**Reference architecture for building governed, stateful enterprise AI agent workspaces on Cloudflare.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-agent-workspace/)
+[**AI Vibe Coding Platform** Cloudflare's low-latency, fully serverless compute platform, Workers offers powerful capabilities to enable A/B testing using a server-side implementation.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/)
 
-[**Enterprise AI Vibe Coding Platform**Reference architecture for building a governed enterprise AI vibe coding platform on Cloudflare.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-vibe-coding-platform/)
+[**Enterprise AI agent workspace** Reference architecture for building governed, stateful enterprise AI agent workspaces on Cloudflare.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-agent-workspace/)
+
+[**Enterprise AI Vibe Coding Platform** Reference architecture for building a governed enterprise AI vibe coding platform on Cloudflare.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-vibe-coding-platform/)
 
 Was this helpful?
 

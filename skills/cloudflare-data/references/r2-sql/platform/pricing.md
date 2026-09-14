@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pricing
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2-sql/platform/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2-sql/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 R2 SQL charges based on a single dimension:
 
-* **Data scanned**: The volume of compressed data read from R2 to execute your query.
+- **Data scanned**: The volume of compressed data read from R2 to execute your query.
 
 R2 SQL pricing is additive to standard [R2 storage and operations](https://developers.cloudflare.com/r2/pricing/) and [R2 Data Catalog](https://developers.cloudflare.com/r2-data-catalog/platform/pricing/) charges. When the query engine reads files, those requests count as R2 Class B (read) operations. R2 does not charge for egress, so there is no additional data transfer cost.
 
@@ -24,18 +24,18 @@ All included usage is on a monthly basis.
 
 ## R2 SQL pricing
 
-|              | Pricing                   |
-| ------------ | ------------------------- |
-| Included     | 10 GB / month             |
+|  | Pricing |
+| --- | --- |
+| Included | 10 GB / month |
 | Data scanned | $0.0025 / GB ($2.50 / TB) |
 
 ### What counts as data scanned
 
 Data scanned is the compressed bytes read from R2 object storage to answer your query. This matches what you see in your R2 bucket — if a Parquet file is 100 MB on disk, scanning that file bills for 100 MB.
 
-* **Minimum per query**: 10 MB. If a query scans less than 10 MB, you are billed for 10 MB.
-* **Failed queries**: Queries that fail due to a system error or syntax error caught before execution are not charged. Queries that fail mid-execution due to a runtime error are also not charged.
-* **Metadata-only operations**: Operations such as `EXPLAIN`, `SHOW`, and `DESCRIBE` do not scan data and are free. Standard R2 and R2 Data Catalog request charges still apply.
+- **Minimum per query**: 10 MB. If a query scans less than 10 MB, you are billed for 10 MB.
+- **Failed queries**: Queries that fail due to a system error or syntax error caught before execution are not charged. Queries that fail mid-execution due to a runtime error are also not charged.
+- **Metadata-only operations**: Operations such as `EXPLAIN`, `SHOW`, and `DESCRIBE` do not scan data and are free. Standard R2 and R2 Data Catalog request charges still apply.
 
 ## Billing examples
 
@@ -43,23 +43,23 @@ Data scanned is the compressed bytes read from R2 object storage to answer your 
 
 A user stores 500 GB of Parquet data in R2 Data Catalog and runs queries that scan a total of 50 GB of compressed data during the month.
 
-| Dimension             | Usage        | Included    | Billable     | Cost      |
-| --------------------- | ------------ | ----------- | ------------ | --------- |
-| R2 storage            | 500 GB-month | 10 GB-month | 490 GB-month | $7.35     |
-| R2 SQL (data scanned) | 50 GB        | 10 GB       | 40 GB        | $0.10     |
-| **Total**             |              |             |              | **$7.45** |
+| Dimension | Usage | Included | Billable | Cost |
+| --- | --- | --- | --- | --- |
+| R2 storage | 500 GB-month | 10 GB-month | 490 GB-month | $7.35 |
+| R2 SQL (data scanned) | 50 GB | 10 GB | 40 GB | $0.10 |
+| **Total** |  |  |  | **$7.45** |
 
 ### Example 2: Heavy query workload on 10 TB dataset
 
 A data team stores 10 TB of compressed Parquet/Iceberg data and scans 50 TB of data per month across their queries. The team also makes 2 million catalog operations with compaction processing 500 GB.
 
-| Dimension                         | Usage           | Included    | Billable       | Cost        |
-| --------------------------------- | --------------- | ----------- | -------------- | ----------- |
-| R2 storage                        | 10,000 GB-month | 10 GB-month | 9,990 GB-month | $149.85     |
-| R2 SQL (data scanned)             | 50,000 GB       | 10 GB       | 49,990 GB      | $124.98     |
-| R2 Data Catalog operations        | 2,000,000       | 1,000,000   | 1,000,000      | $9.00       |
-| R2 Data Catalog compaction (data) | 500 GB          | 10 GB       | 490 GB         | $2.45       |
-| **Total**                         |                 |             |                | **$286.28** |
+| Dimension | Usage | Included | Billable | Cost |
+| --- | --- | --- | --- | --- |
+| R2 storage | 10,000 GB-month | 10 GB-month | 9,990 GB-month | $149.85 |
+| R2 SQL (data scanned) | 50,000 GB | 10 GB | 49,990 GB | $124.98 |
+| R2 Data Catalog operations | 2,000,000 | 1,000,000 | 1,000,000 | $9.00 |
+| R2 Data Catalog compaction (data) | 500 GB | 10 GB | 490 GB | $2.45 |
+| **Total** |  |  |  | **$286.28** |
 
 ## Frequently asked questions
 

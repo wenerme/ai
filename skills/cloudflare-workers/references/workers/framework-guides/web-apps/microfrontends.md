@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Microfrontends
 
-Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/microfrontends/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/microfrontends/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Microfrontends let you split a single application into smaller, independently deployable units that render as one cohesive application. Different teams using different technologies can develop, test, and deploy each microfrontend.
 
 Use microfrontends when you want to:
 
-* Enable many teams to deploy independently without coordinating releases
-* Gradually migrate from a monolith to a distributed architecture
-* Build multi-framework applications (for example, Astro, Remix, and Next.js in one app)
+- Enable many teams to deploy independently without coordinating releases
+- Gradually migrate from a monolith to a distributed architecture
+- Build multi-framework applications (for example, Astro, Remix, and Next.js in one app)
 
 ## Get started
 
@@ -32,11 +32,14 @@ This template automatically creates a router worker with pre-configured routing 
 
 ## How it works
 
+```
 graph LR
     A[Browser Request] --> B[Router Worker]
     B -->|Service Binding| C[Microfrontend A]
     B -->|Service Binding| D[Microfrontend B]
     B -->|Service Binding| E[Microfrontend C]
+
+```
 
 The router worker:
 
@@ -48,9 +51,9 @@ The router worker:
 
 Each microfrontend can be:
 
-* A full-framework application (Next.js, SvelteKit, Astro, etc.)
-* A static site with [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/)
-* Built with different frameworks and technologies
+- A full-framework application (Next.js, SvelteKit, Astro, etc.)
+- A static site with [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/)
+- Built with different frameworks and technologies
 
 ## Routing logic
 
@@ -71,9 +74,9 @@ Example `ROUTES` configuration:
 
 Each route requires:
 
-* `path`: The mount path for the microfrontend (must be distinct from other routes)
-* `binding`: The name of the service binding in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/)
-* `preload` (optional): Whether to prefetch this microfrontend for faster navigation
+- `path`: The mount path for the microfrontend (must be distinct from other routes)
+- `binding`: The name of the service binding in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/)
+- `preload` (optional): Whether to prefetch this microfrontend for faster navigation
 
 When a request comes in for `/app-a/dashboard`, the router:
 
@@ -119,9 +122,9 @@ The router rewrites it to:
 
 The rewriter handles these attributes across all HTML elements:
 
-* `href`, `src`, `poster`, `action`, `srcset`
-* `data-*` attributes like `data-src`, `data-href`, `data-background`
-* Framework-specific attributes like `astro-component-url`
+- `href`, `src`, `poster`, `action`, `srcset`
+- `data-*` attributes like `data-src`, `data-href`, `data-background`
+- Framework-specific attributes like `astro-component-url`
 
 The router only rewrites paths that start with configured asset prefixes to avoid breaking external URLs:
 
@@ -170,8 +173,8 @@ The router rewrites it to:
 
 The router also handles:
 
-* **Redirect headers**: Rewrites `Location` headers to include the mount path
-* **Cookie paths**: Updates `Set-Cookie` headers to scope cookies to the mount path
+- **Redirect headers**: Rewrites `Location` headers to include the mount path
+- **Cookie paths**: Updates `Set-Cookie` headers to scope cookies to the mount path
 
 ## Route Preloading
 
@@ -179,14 +182,14 @@ When `preload: true` is set on a static mount route, the router automatically pr
 
 ### Chromium Browsers (Chrome, Edge, Opera, Brave)
 
-For Chromium-based browsers, the router uses the **Speculation Rules API** \- a modern, browser-native prefetching mechanism:
+For Chromium-based browsers, the router uses the **Speculation Rules API** - a modern, browser-native prefetching mechanism:
 
-* Injects `<script type="speculationrules">` into the `<head>` element
-* Browser handles prefetching automatically with optimal priority management
-* Respects user preferences (battery saver, data saver modes)
-* Uses per-document in-memory cache for faster access
-* Not blocked by Cache-Control headers
-* More efficient than JavaScript-based fetching
+- Injects `<script type="speculationrules">` into the `<head>` element
+- Browser handles prefetching automatically with optimal priority management
+- Respects user preferences (battery saver, data saver modes)
+- Uses per-document in-memory cache for faster access
+- Not blocked by Cache-Control headers
+- More efficient than JavaScript-based fetching
 
 **Example injected speculation rules:**
 
@@ -202,7 +205,7 @@ For Chromium-based browsers, the router uses the **Speculation Rules API** \- a 
 
 ## Smooth transitions
 
-You can enable smooth page transitions between microfrontends using the [View Transitions API ↗](https://developer.mozilla.org/en-US/docs/Web/API/View%5FTransitions%5FAPI).
+You can enable smooth page transitions between microfrontends using the [View Transitions API ↗](https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API).
 
 To enable smooth transitions, set `"smoothTransitions": true` in your `ROUTES` configuration:
 
@@ -241,40 +244,52 @@ This feature only works in browsers that support the View Transitions API. Brows
 To add a new microfrontend to your application after initial setup:
 
 1. **Create and deploy the new microfrontend worker**
-Deploy your new microfrontend as a separate Worker. This can be a [framework application](https://developers.cloudflare.com/workers/framework-guides/) (Next.js, Astro, etc.) or a static site with [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/).
+
+   Deploy your new microfrontend as a separate Worker. This can be a [framework application](https://developers.cloudflare.com/workers/framework-guides/) (Next.js, Astro, etc.) or a static site with [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/).
 2. **Add a [service binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) in your router's Wrangler configuration file**
-```jsonc
-{
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "services": [
-    {
-      "binding": "MICROFRONTEND_C",
-      "service": "my-new-microfrontend"
-    }
-  ]
-}
-```
-```toml
-[[services]]
-binding = "MICROFRONTEND_C"
-service = "my-new-microfrontend"
-```
+
+   ```jsonc
+   {
+     "$schema": "./node_modules/wrangler/config-schema.json",
+     "services": [
+       {
+         "binding": "MICROFRONTEND_C",
+         "service": "my-new-microfrontend"
+       }
+     ]
+   }
+   ```
+
+   ```toml
+   [[services]]
+   binding = "MICROFRONTEND_C"
+   service = "my-new-microfrontend"
+   ```
+
+
 3. **Update the `ROUTES` environment variable**
-Add your new route to the `ROUTES` configuration:
-```json
-{
-	"routes": [
-		{ "path": "/app-a", "binding": "MICROFRONTEND_A", "preload": true },
-		{ "path": "/app-b", "binding": "MICROFRONTEND_B", "preload": true },
-		{ "path": "/app-c", "binding": "MICROFRONTEND_C", "preload": true },
-		{ "path": "/", "binding": "MICROFRONTEND_HOME" }
-	]
-}
-```
+
+   Add your new route to the `ROUTES` configuration:
+
+   ```json
+   {
+   	"routes": [
+   		{ "path": "/app-a", "binding": "MICROFRONTEND_A", "preload": true },
+   		{ "path": "/app-b", "binding": "MICROFRONTEND_B", "preload": true },
+   		{ "path": "/app-c", "binding": "MICROFRONTEND_C", "preload": true },
+   		{ "path": "/", "binding": "MICROFRONTEND_HOME" }
+   	]
+   }
+   ```
+
+
 4. **Redeploy the router worker**
-```sh
-npx wrangler deploy
-```
+
+   ```sh
+   npx wrangler deploy
+   ```
+
+
 
 Your new microfrontend is now accessible at the configured path (for example, `/app-c`).
 
@@ -309,9 +324,9 @@ remote = true
 
 Each microfrontend can be deployed independently without redeploying the router or other microfrontends. This enables teams to:
 
-* Deploy updates on their own schedule
-* Roll back individual microfrontends without affecting others
-* Test and release features independently
+- Deploy updates on their own schedule
+- Roll back individual microfrontends without affecting others
+- Test and release features independently
 
 When you deploy a microfrontend worker, the router automatically routes requests to the latest version via the service binding. No router changes are required unless you are adding new routes or updating the `ROUTES` configuration.
 

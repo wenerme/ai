@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Allow or deny a request based on a known pre-shared key in a header. This is not meant to replace the WebCrypto API.
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/examples/auth-with-headers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/examples/auth-with-headers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Caution when using in production
 

@@ -12,26 +12,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Set up encrypted connections for your domain by choosing a certificate, selecting an encryption mode, and enforcing HTTPS.
 
 ## Before you begin
 
-* [Create an account and register an application](https://developers.cloudflare.com/fundamentals/account/)
+- [Create an account and register an application](https://developers.cloudflare.com/fundamentals/account/)
 
 ## Choose an edge certificate
 
 [Edge certificates](https://developers.cloudflare.com/ssl/concepts/#edge-certificate) are the SSL/TLS certificates that Cloudflare presents to visitors connecting to your domain. Cloudflare offers several types:
 
-* [**Universal certificates**](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/):
-By default, Cloudflare issues — and [renews](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/#universal-ssl) — free, unshared, publicly trusted SSL certificates to all domains [added to](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) and [activated on](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/) Cloudflare.
-* [**Advanced certificates**](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/):
-Use advanced certificates when you want something more customizable than [Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) but still want the convenience of SSL certificate issuance and renewal.
-* [**Custom certificates**](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/):
-Custom certificates are meant for Business and Enterprise customers who want to use their own SSL certificates.
-* [**Keyless certificates**](https://developers.cloudflare.com/ssl/keyless-ssl/) (Enterprise only):
-Keyless SSL allows security-conscious clients to upload their own custom certificates and benefit from Cloudflare, but without exposing their TLS private keys.
+- [**Universal certificates**](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/): By default, Cloudflare issues — and [renews](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/#universal-ssl) — free, unshared, publicly trusted SSL certificates to all domains [added to](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) and [activated on](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/) Cloudflare.
+- [**Advanced certificates**](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/): Use advanced certificates when you want something more customizable than [Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) but still want the convenience of SSL certificate issuance and renewal.
+- [**Custom certificates**](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/): Custom certificates are meant for Business and Enterprise customers who want to use their own SSL certificates.
+- [**Keyless certificates**](https://developers.cloudflare.com/ssl/keyless-ssl/) (Enterprise only): Keyless SSL allows security-conscious clients to upload their own custom certificates and benefit from Cloudflare, but without exposing their TLS private keys.
 
 For help deciding which certificate type fits your use case, refer to [Edge certificates](https://developers.cloudflare.com/ssl/edge-certificates/).
 
@@ -63,9 +59,9 @@ Using HTTPS can improve user trust and may be used as a ranking signal by search
 
 After you have chosen your encryption mode and enforced HTTPS connections, evaluate the following settings:
 
-* [Edge certificates](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/): Customize different aspects of your edge certificates, from enabling **Opportunistic Encryption** to specifying a **Minimum TLS Version**.
-* [Authenticated origin pull](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/): Ensure all requests to your origin server originate from the Cloudflare network.
-* [Notifications](https://developers.cloudflare.com/notifications/notification-available/): Set up alerts related to certificate validation status, issuance, renewal, and expiration.
+- [Edge certificates](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/): Customize different aspects of your edge certificates, from enabling **Opportunistic Encryption** to specifying a **Minimum TLS Version**.
+- [Authenticated origin pull](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/): Ensure all requests to your origin server originate from the Cloudflare network.
+- [Notifications](https://developers.cloudflare.com/notifications/notification-available/): Set up alerts related to certificate validation status, issuance, renewal, and expiration.
 
 Was this helpful?
 

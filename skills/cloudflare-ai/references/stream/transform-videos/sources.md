@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Define source origin
 
-Last updated Sep 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/transform-videos/sources/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/transform-videos/sources/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When optimizing remote videos, you can specify which origins can be used as the source for transformed videos. By default, Cloudflare accepts only source videos from the zone where your transformations are served.
 
@@ -28,7 +28,7 @@ If you use a Worker to optimize remote videos via a `fetch()` subrequest, then t
 
 To get started, you must have [transformations enabled on your zone](https://developers.cloudflare.com/stream/transform-videos/#getting-started).
 
-In the Cloudflare dashboard, go to **Stream** \> **Transformations** and select the zone where you want to serve transformations.
+In the Cloudflare dashboard, go to **Stream** > **Transformations** and select the zone where you want to serve transformations.
 
 In **Sources**, you can configure the origins for transformations on your zone.
 
@@ -46,6 +46,7 @@ To define a new origin:
 
 1. From **Sources**, select **Add origin**.
 2. Under **Domain**, specify the domain for the source video. Only valid web URLs will be accepted.
+
 ![Add the origin for source videos in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2142,height=1104,format=webp/_astro/add-origin.BtfOyoOS.png)
 
 When you add a root domain, subdomains are not accepted. In other words, if you add `b.com`, then source videos from `media.b.com` will be rejected.
@@ -54,14 +55,14 @@ To support individual subdomains, define an additional origin such as `media.b.c
 
 To support all subdomains, use the `*` wildcard at the beginning of the root domain. For example, `*.b.com` will accept source videos from the root domain (like `b.com/video.mp4`) as well as from subdomains (like `media.b.com/video.mp4` or `cdn.b.com/video.mp4`).
 
-1. Optionally, you can specify the **Path** for the source video. If no path is specified, then source videos from all paths on this domain are accepted.
+3. Optionally, you can specify the **Path** for the source video. If no path is specified, then source videos from all paths on this domain are accepted.
 
 Cloudflare checks whether the defined path is at the beginning of the source path. If the defined path is not present at the beginning of the path, then the source video will be rejected.
 
 For example, if you define an origin with domain `b.com` and path `/themes`, then `b.com/themes/video.mp4` will be accepted but `b.com/media/themes/video.mp4` will be rejected.
 
-1. Select **Add**. Your origin will now appear in your list of allowed origins.
-2. Select **Save**. These changes will take effect immediately.
+4. Select **Add**. Your origin will now appear in your list of allowed origins.
+5. Select **Save**. These changes will take effect immediately.
 
 When you configure **allowed origins**, only the initial URL of the source video is checked. Any redirects, including URLs that leave your zone, will be followed, and the resulting video will be transformed.
 

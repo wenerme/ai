@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Web Search
 
-Last updated Jun 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/web-search/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/web-search/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Gateway proxies native web search tools from supported providers so models can answer questions about events after their training cutoff. Search runs on the upstream provider; AI Gateway applies its standard features — logging, caching, rate limiting, and guardrails — to the request.
 
@@ -20,18 +20,18 @@ How you enable web search depends on the provider. Activation is either a tool e
 
 ## Supported providers
 
-| Provider  | Endpoint                     | Activation                                                                            |
-| --------- | ---------------------------- | ------------------------------------------------------------------------------------- |
-| Anthropic | POST /ai/v1/messages         | tools: \[{ "type": "web\_search\_20250305", "name": "web\_search", "max\_uses": N }\] |
-| OpenAI    | POST /ai/v1/responses        | tools: \[{ "type": "web\_search\_preview" }\]                                         |
-| xAI       | POST /ai/v1/responses        | tools: \[{ "type": "web\_search" }\]                                                  |
-| Alibaba   | POST /ai/v1/chat/completions | top-level "enable\_search": true                                                      |
+| Provider | Endpoint | Activation |
+| --- | --- | --- |
+| Anthropic | `POST /ai/v1/messages` | `tools: [{ "type": "web_search_20250305", "name": "web_search", "max_uses": N }]` |
+| OpenAI | `POST /ai/v1/responses` | `tools: [{ "type": "web_search_preview" }]` |
+| xAI | `POST /ai/v1/responses` | `tools: [{ "type": "web_search" }]` |
+| Alibaba | `POST /ai/v1/chat/completions` | top-level `"enable_search": true` |
 
 For providers whose product is search itself — Perplexity and Parallel — refer to [Search-first providers](#search-first-providers).
 
 ## Anthropic web search
 
-Anthropic models expose web search through their native [web\_search\_20250305 tool ↗](https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool). Add it to the `tools` array on a `POST /ai/v1/messages` request.
+Anthropic models expose web search through their native [`web_search_20250305` tool ↗](https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool). Add it to the `tools` array on a `POST /ai/v1/messages` request.
 
 Supported models — `anthropic/claude-haiku-4.5`, `anthropic/claude-opus-4.5`, `anthropic/claude-opus-4.6`, `anthropic/claude-opus-4.7`, `anthropic/claude-opus-4.8`, `anthropic/claude-sonnet-4.5`, `anthropic/claude-sonnet-4.6`.
 
@@ -110,7 +110,7 @@ Search invocations and results appear in the response as `server_tool_use` and `
 
 ## OpenAI web search
 
-OpenAI models expose web search through the [web\_search\_preview tool ↗](https://developers.openai.com/api/docs/guides/tools-web-search) on the Responses API. Use the `POST /ai/v1/responses` endpoint and add the tool to the `tools` array.
+OpenAI models expose web search through the [`web_search_preview` tool ↗](https://developers.openai.com/api/docs/guides/tools-web-search) on the Responses API. Use the `POST /ai/v1/responses` endpoint and add the tool to the `tools` array.
 
 Supported models — `openai/gpt-4.1`, `openai/gpt-4.1-mini`, `openai/gpt-4o`, `openai/gpt-4o-mini`, `openai/gpt-5`, `openai/gpt-5-mini`, `openai/gpt-5-nano`, `openai/gpt-5.1`, `openai/gpt-5.4`, `openai/gpt-5.4-mini`, `openai/gpt-5.4-nano`, `openai/gpt-5.4-pro`, `openai/gpt-5.5`, `openai/gpt-5.5-pro`, `openai/o3`, `openai/o4-mini`.
 
@@ -172,7 +172,7 @@ Both `{ "type": "web_search_preview" }` and `{ "type": "web_search" }` are accep
 
 ## xAI web search
 
-xAI's multi-agent Grok model exposes web search through the [web\_search tool ↗](https://docs.x.ai/developers/tools/web-search) on the Responses API. Add `{ "type": "web_search" }` to the `tools` array on a `POST /ai/v1/responses` request.
+xAI's multi-agent Grok model exposes web search through the [`web_search` tool ↗](https://docs.x.ai/developers/tools/web-search) on the Responses API. Add `{ "type": "web_search" }` to the `tools` array on a `POST /ai/v1/responses` request.
 
 Supported models — `xai/grok-4.20-multi-agent-0309`.
 
@@ -232,7 +232,7 @@ const resp = await env.AI.run(
 
 ## Alibaba (Qwen) web search
 
-Alibaba DashScope Qwen models enable web search through a top-level [enable\_search ↗](https://www.alibabacloud.com/help/en/model-studio/qwen-search) flag on a chat completions request. Unlike Anthropic, OpenAI, and xAI, there is no `tools` entry — web search is activated by the flag alone.
+Alibaba DashScope Qwen models enable web search through a top-level [`enable_search` ↗](https://www.alibabacloud.com/help/en/model-studio/qwen-search) flag on a chat completions request. Unlike Anthropic, OpenAI, and xAI, there is no `tools` entry — web search is activated by the flag alone.
 
 Supported models — `alibaba/qwen3-max`, `alibaba/qwen3.5-397b-a17b`.
 
@@ -344,12 +344,12 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/parallel/v1b
 
 The following models do not accept web search through AI Gateway:
 
-* **Google Gemini** — not available through the unified `web_search` tool, because Vertex's OpenAI-compatible surface does not translate it into Gemini's native `googleSearch` tool. To use Gemini grounding, pass the native `google_search` tool to the [provider-specific Vertex endpoint](https://developers.cloudflare.com/ai-gateway/usage/providers/vertex/#using-provider-specific-endpoint).
-* **Grok chat-completions models** — `xai/grok-4.20-0309-non-reasoning`, `xai/grok-4.20-0309-reasoning`, and `xai/grok-4.3` use the chat-completions endpoint, which does not accept the `web_search` tool. For Grok web search, refer to [xAI web search](#xai-web-search).
-* **DeepSeek `deepseek-v4-flash`, `deepseek-v4-pro`** — these models accept function tools only.
-* **MiniMax `m2.7`, `m3`** — these models accept `{ "type": "function" }` tools only.
-* **OpenAI `gpt-4.1-nano`, `o1-pro`, `o3-mini`** — the upstream returns `invalid_request_error` for `web_search_preview` on these models.
-* **OpenAI `gpt-4o-search-preview`, `gpt-4o-mini-search-preview`** — these preview models are deprecated upstream.
+- **Google Gemini** — not available through the unified `web_search` tool, because Vertex's OpenAI-compatible surface does not translate it into Gemini's native `googleSearch` tool. To use Gemini grounding, pass the native `google_search` tool to the [provider-specific Vertex endpoint](https://developers.cloudflare.com/ai-gateway/usage/providers/vertex/#using-provider-specific-endpoint).
+- **Grok chat-completions models** — `xai/grok-4.20-0309-non-reasoning`, `xai/grok-4.20-0309-reasoning`, and `xai/grok-4.3` use the chat-completions endpoint, which does not accept the `web_search` tool. For Grok web search, refer to [xAI web search](#xai-web-search).
+- **DeepSeek `deepseek-v4-flash`, `deepseek-v4-pro`** — these models accept function tools only.
+- **MiniMax `m2.7`, `m3`** — these models accept `{ "type": "function" }` tools only.
+- **OpenAI `gpt-4.1-nano`, `o1-pro`, `o3-mini`** — the upstream returns `invalid_request_error` for `web_search_preview` on these models.
+- **OpenAI `gpt-4o-search-preview`, `gpt-4o-mini-search-preview`** — these preview models are deprecated upstream.
 
 ## Pricing and logging
 
@@ -359,14 +359,14 @@ Web search tool calls and their results are visible in AI Gateway [logs](https:/
 
 ## Related resources
 
-* [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/) — the four endpoints these examples target
-* [Workers Bindings](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/) — `env.AI.run` reference
-* [Anthropic provider](https://developers.cloudflare.com/ai-gateway/usage/providers/anthropic/)
-* [OpenAI provider](https://developers.cloudflare.com/ai-gateway/usage/providers/openai/)
-* [Grok (xAI) provider](https://developers.cloudflare.com/ai-gateway/usage/providers/grok/)
-* [Perplexity provider](https://developers.cloudflare.com/ai-gateway/usage/providers/perplexity/)
-* [Parallel provider](https://developers.cloudflare.com/ai-gateway/usage/providers/parallel/)
-* [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/)
+- [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/) — the four endpoints these examples target
+- [Workers Bindings](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/) — `env.AI.run` reference
+- [Anthropic provider](https://developers.cloudflare.com/ai-gateway/usage/providers/anthropic/)
+- [OpenAI provider](https://developers.cloudflare.com/ai-gateway/usage/providers/openai/)
+- [Grok (xAI) provider](https://developers.cloudflare.com/ai-gateway/usage/providers/grok/)
+- [Perplexity provider](https://developers.cloudflare.com/ai-gateway/usage/providers/perplexity/)
+- [Parallel provider](https://developers.cloudflare.com/ai-gateway/usage/providers/parallel/)
+- [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/)
 
 Was this helpful?
 

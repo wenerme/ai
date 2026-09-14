@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers
 
-Last updated Jul 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/data-localization/how-to/workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/how-to/workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To ensure that your Cloudflare Workers code runs only within a specific geographic region, configure Regional Services on the Workers custom domain. This restricts where TLS termination (traffic decryption) and code execution occur.
 
@@ -20,8 +20,7 @@ To ensure that your Cloudflare Workers code runs only within a specific geograph
 
 To configure Regional Services for hostnames [proxied](https://developers.cloudflare.com/dns/proxy-status/) (meaning traffic routes through Cloudflare rather than directly to your origin server) through Cloudflare and ensure that processing of a Workers project occurs only in-region, follow these steps:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Workers project.
 3. Follow the steps to [create a custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/).
 4. Run the [API POST](https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/#configure-regional-services-via-api) command on the configured Workers Custom Domain to create a `regional_hostnames` with a specific region.
@@ -38,11 +37,11 @@ Regional Services does not apply to other Worker triggers, like [Queues](https:/
 
 ## Customer Metadata Boundary
 
-Customer Metadata Boundary applies to the custom domain configured, as well as the [\*.workers.dev](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/) subdomain.
+Customer Metadata Boundary applies to the custom domain configured, as well as the [`*.workers.dev`](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/) subdomain.
 
 Workers [Metrics and Analytics](https://developers.cloudflare.com/workers/observability/metrics-and-analytics/) are not available outside the US region when using Customer Metadata Boundary.
 
-With Customer Metadata Boundary set to `EU`, **Workers & Pages** \> **Workers** \> **Metrics** tab the zone dashboard will not be populated.
+With Customer Metadata Boundary set to `EU`, **Workers & Pages** > **Workers** > **Metrics** tab the zone dashboard will not be populated.
 
 Note
 

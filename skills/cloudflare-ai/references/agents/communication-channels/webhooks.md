@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Webhooks
 
-Last updated Aug 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/communication-channels/webhooks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/communication-channels/webhooks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Receive webhook events from external services and route them to dedicated agent instances. Each webhook source (repository, customer, device) can have its own agent with isolated state, persistent storage, and real-time client connections.
 
@@ -226,42 +226,42 @@ Webhooks combined with agents enable patterns where each external entity gets it
 
 ### Developer tools
 
-| Use case                 | Description                                                                |
-| ------------------------ | -------------------------------------------------------------------------- |
-| **GitHub Repo Monitor**  | One agent per repository tracking commits, PRs, issues, and stars          |
+| Use case | Description |
+| --- | --- |
+| **GitHub Repo Monitor** | One agent per repository tracking commits, PRs, issues, and stars |
 | **CI/CD Pipeline Agent** | React to build/deploy events, notify on failures, track deployment history |
-| **Linear/Jira Tracker**  | Auto-triage issues, assign based on content, track resolution times        |
+| **Linear/Jira Tracker** | Auto-triage issues, assign based on content, track resolution times |
 
 ### E-commerce and payments
 
-| Use case                   | Description                                                           |
-| -------------------------- | --------------------------------------------------------------------- |
-| **Stripe Customer Agent**  | One agent per customer tracking payments, subscriptions, and disputes |
-| **Shopify Order Agent**    | Order lifecycle from creation to fulfillment with inventory sync      |
-| **Payment Reconciliation** | Match webhook events to internal records, flag discrepancies          |
+| Use case | Description |
+| --- | --- |
+| **Stripe Customer Agent** | One agent per customer tracking payments, subscriptions, and disputes |
+| **Shopify Order Agent** | Order lifecycle from creation to fulfillment with inventory sync |
+| **Payment Reconciliation** | Match webhook events to internal records, flag discrepancies |
 
 ### Communication and notifications
 
-| Use case             | Description                                                             |
-| -------------------- | ----------------------------------------------------------------------- |
-| **Twilio SMS/Voice** | Conversational agents triggered by inbound messages or calls            |
-| **Slack Bot**        | Respond to slash commands, button clicks, and interactive messages      |
-| **Email Tracking**   | SendGrid/Mailgun delivery events, bounce handling, engagement analytics |
+| Use case | Description |
+| --- | --- |
+| **Twilio SMS/Voice** | Conversational agents triggered by inbound messages or calls |
+| **Slack Bot** | Respond to slash commands, button clicks, and interactive messages |
+| **Email Tracking** | SendGrid/Mailgun delivery events, bounce handling, engagement analytics |
 
 ### IoT and infrastructure
 
-| Use case              | Description                                                  |
-| --------------------- | ------------------------------------------------------------ |
-| **Device Telemetry**  | One agent per device processing sensor data streams          |
+| Use case | Description |
+| --- | --- |
+| **Device Telemetry** | One agent per device processing sensor data streams |
 | **Alert Aggregation** | Collect alerts from PagerDuty, Datadog, or custom monitoring |
-| **Home Automation**   | React to IFTTT/Zapier triggers with persistent state         |
+| **Home Automation** | React to IFTTT/Zapier triggers with persistent state |
 
 ### SaaS integrations
 
-| Use case             | Description                                                     |
-| -------------------- | --------------------------------------------------------------- |
-| **CRM Sync**         | Salesforce/HubSpot contact and deal updates                     |
-| **Calendar Agent**   | Google Calendar event notifications and scheduling              |
+| Use case | Description |
+| --- | --- |
+| **CRM Sync** | Salesforce/HubSpot contact and deal updates |
+| **Calendar Agent** | Google Calendar event notifications and scheduling |
 | **Form Submissions** | Typeform, Tally, or custom form webhooks with follow-up actions |
 
 ## Routing webhooks to agents
@@ -360,13 +360,13 @@ The quick start's `verifyGitHubWebhook()` helper verifies GitHub's `sha256=<hex>
 
 ### Provider-specific headers
 
-| Provider | Signature Header      | Algorithm                    |
-| -------- | --------------------- | ---------------------------- |
-| GitHub   | X-Hub-Signature-256   | HMAC-SHA256                  |
-| Stripe   | Stripe-Signature      | HMAC-SHA256 (with timestamp) |
-| Twilio   | X-Twilio-Signature    | HMAC-SHA1                    |
-| Slack    | X-Slack-Signature     | HMAC-SHA256 (with timestamp) |
-| Shopify  | X-Shopify-Hmac-Sha256 | HMAC-SHA256 (base64)         |
+| Provider | Signature Header | Algorithm |
+| --- | --- | --- |
+| GitHub | `X-Hub-Signature-256` | HMAC-SHA256 |
+| Stripe | `Stripe-Signature` | HMAC-SHA256 (with timestamp) |
+| Twilio | `X-Twilio-Signature` | HMAC-SHA1 |
+| Slack | `X-Slack-Signature` | HMAC-SHA256 (with timestamp) |
+| Shopify | `X-Shopify-Hmac-Sha256` | HMAC-SHA256 (base64) |
 
 ## Processing webhooks
 
@@ -798,7 +798,7 @@ return Response.json(
 );
 ```
 
-If the webhook owns application side effects around a turn, such as restoring a provider thread and posting a visible reply, use [startFiber()](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/#startfiber) around that job. Managed fibers retain status, dedupe provider retries, and let `onFiberRecovered()` or `resolveFiber()` record the app-level recovery outcome.
+If the webhook owns application side effects around a turn, such as restoring a provider thread and posting a visible reply, use [`startFiber()`](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/#startfiber) around that job. Managed fibers retain status, dedupe provider retries, and let `onFiberRecovered()` or `resolveFiber()` record the app-level recovery outcome.
 
 ### Multi-provider routing
 
@@ -948,12 +948,12 @@ export class NotificationAgent extends Agent {
 
 ## Security best practices
 
-1. **Always verify signatures** \- Never trust unverified webhooks.
-2. **Use environment secrets** \- Store secrets with `wrangler secret put`, not in code.
-3. **Respond quickly** \- Return 200/202 within seconds to avoid retries.
-4. **Validate payloads** \- Check required fields before processing.
-5. **Log rejections** \- Track invalid signatures for security monitoring.
-6. **Use HTTPS** \- Webhook URLs should always use TLS.
+1. **Always verify signatures** - Never trust unverified webhooks.
+2. **Use environment secrets** - Store secrets with `wrangler secret put`, not in code.
+3. **Respond quickly** - Return 200/202 within seconds to avoid retries.
+4. **Validate payloads** - Check required fields before processing.
+5. **Log rejections** - Track invalid signatures for security monitoring.
+6. **Use HTTPS** - Webhook URLs should always use TLS.
 
 ```js
 // Store secrets securely
@@ -973,15 +973,15 @@ const secret = this.env.GITHUB_WEBHOOK_SECRET;
 
 ## Common webhook providers
 
-| Provider | Documentation                                                                                                  |
-| -------- | -------------------------------------------------------------------------------------------------------------- |
-| GitHub   | [Webhook events and payloads ↗](https://docs.github.com/en/webhooks)                                           |
-| Stripe   | [Webhook signatures ↗](https://stripe.com/docs/webhooks/signatures)                                            |
-| Twilio   | [Validate webhook requests ↗](https://www.twilio.com/docs/usage/webhooks/webhooks-security)                    |
-| Slack    | [Verifying requests ↗](https://api.slack.com/authentication/verifying-requests-from-slack)                     |
-| Shopify  | [Webhook verification ↗](https://shopify.dev/docs/apps/webhooks/configuration/https#step-5-verify-the-webhook) |
-| SendGrid | [Event webhook ↗](https://docs.sendgrid.com/for-developers/tracking-events/getting-started-event-webhook)      |
-| Linear   | [Webhooks ↗](https://developers.linear.app/docs/graphql/webhooks)                                              |
+| Provider | Documentation |
+| --- | --- |
+| GitHub | [Webhook events and payloads ↗](https://docs.github.com/en/webhooks) |
+| Stripe | [Webhook signatures ↗](https://stripe.com/docs/webhooks/signatures) |
+| Twilio | [Validate webhook requests ↗](https://www.twilio.com/docs/usage/webhooks/webhooks-security) |
+| Slack | [Verifying requests ↗](https://api.slack.com/authentication/verifying-requests-from-slack) |
+| Shopify | [Webhook verification ↗](https://shopify.dev/docs/apps/webhooks/configuration/https#step-5-verify-the-webhook) |
+| SendGrid | [Event webhook ↗](https://docs.sendgrid.com/for-developers/tracking-events/getting-started-event-webhook) |
+| Linear | [Webhooks ↗](https://developers.linear.app/docs/graphql/webhooks) |
 
 ## Next steps
 

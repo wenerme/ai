@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Monitor Groups
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/monitors/monitor-groups/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/monitors/monitor-groups/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Group multiple health monitors together to create sophisticated health checks for your applications, ensuring more intelligent and resilient traffic steering.
 
@@ -24,7 +24,7 @@ Grouping multiple health monitors enables more intelligent and resilient failove
 
 Monitor Groups are only available to customers on an Enterprise plan with the Load Balancing subscription.
 
-Configuration is available via the [API](https://developers.cloudflare.com/api/resources/load%5Fbalancers/subresources/monitor%5Fgroups/methods/create/) only.
+Configuration is available via the [API](https://developers.cloudflare.com/api/resources/load_balancers/subresources/monitor_groups/methods/create/) only.
 
 Note
 
@@ -44,9 +44,9 @@ A Monitor Group determines an endpoint's health using a combination of critical 
 
 **Quorum-Based Health**: In the absence of a failure from a `must_be_healthy` monitor, an endpoint's health is determined by a quorum of all other active monitors.
 
-* An endpoint is considered unhealthy only if more than 50% of its assigned monitors report it as unhealthy.
-* Monitors marked as `"monitoring_only": true` are excluded from the quorum calculation. They will still run and can trigger notifications, but they do not vote on the endpoint's health status.
-* Monitors marked as `disabled` will not send monitoring requests to any associated pool. They are also excluded from the quorum calculation.
+- An endpoint is considered unhealthy only if more than 50% of its assigned monitors report it as unhealthy.
+- Monitors marked as `"monitoring_only": true` are excluded from the quorum calculation. They will still run and can trigger notifications, but they do not vote on the endpoint's health status.
+- Monitors marked as `disabled` will not send monitoring requests to any associated pool. They are also excluded from the quorum calculation.
 
 This quorum system prevents an endpoint from being prematurely marked as unhealthy due to a transient failure from a single, non-critical monitor.
 

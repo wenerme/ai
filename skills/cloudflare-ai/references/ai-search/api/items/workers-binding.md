@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers binding
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/api/items/workers-binding/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/items/workers-binding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Workers](https://developers.cloudflare.com/workers/) provides a serverless execution environment that allows you to create new applications or augment existing ones. Use a [Workers binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) to upload, list, and manage documents in your AI Search instances from a Cloudflare Worker. Access the Items API through the `items` property on an instance handle.
 
@@ -24,8 +24,8 @@ The Items API uploads files to an instance's built-in storage. For more details,
 
 To use AI Search with Workers, you must create an AI Search binding. You create bindings by updating your [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/). AI Search provides two types of bindings:
 
-* Namespace binding: `ai_search_namespaces`
-* Instance binding: `ai_search`
+- Namespace binding: `ai_search_namespaces`
+- Instance binding: `ai_search`
 
 ### Namespace binding
 
@@ -52,11 +52,11 @@ binding = "AI_SEARCH"
 namespace = "my-namespace"
 ```
 
-| Field     | Type    | Required | Description                                                                                                                                                                                                                   |
-| --------- | ------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| binding   | string  | Yes      | The variable name available on env. For example, "AI\_SEARCH" makes it accessible as env.AI\_SEARCH.                                                                                                                          |
-| namespace | string  | Yes      | The [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/) to bind to. A default namespace is created automatically for every account. If the namespace does not exist, Wrangler creates it on deploy. |
-| remote    | boolean | No       | Set to true for local development with wrangler dev.                                                                                                                                                                          |
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `binding` | string | Yes | The variable name available on `env`. For example, `"AI_SEARCH"` makes it accessible as `env.AI_SEARCH`. |
+| `namespace` | string | Yes | The [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/) to bind to. A `default` namespace is created automatically for every account. If the namespace does not exist, Wrangler creates it on deploy. |
+| `remote` | boolean | No | Set to `true` for local development with `wrangler dev`. |
 
 ### Instance binding
 
@@ -83,11 +83,11 @@ binding = "MY_SEARCH"
 instance_name = "my-instance"
 ```
 
-| Field          | Type    | Required | Description                                                                                          |
-| -------------- | ------- | -------- | ---------------------------------------------------------------------------------------------------- |
-| binding        | string  | Yes      | The variable name available on env. For example, "MY\_SEARCH" makes it accessible as env.MY\_SEARCH. |
-| instance\_name | string  | Yes      | The name of the AI Search instance. Must exist in the default namespace at deploy time.              |
-| remote         | boolean | No       | Set to true for local development with wrangler dev.                                                 |
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `binding` | string | Yes | The variable name available on `env`. For example, `"MY_SEARCH"` makes it accessible as `env.MY_SEARCH`. |
+| `instance_name` | string | Yes | The name of the AI Search instance. Must exist in the default namespace at deploy time. |
+| `remote` | boolean | No | Set to `true` for local development with `wrangler dev`. |
 
 ## Methods
 
@@ -135,18 +135,18 @@ await instance.items.upload("guide.pdf", pdfBuffer, {
 
 #### Parameters
 
-| Parameter        | Type                                   | Required | Description                                                                                                                                                            |
-| ---------------- | -------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| name             | string                                 | Yes      | The filename for the uploaded document. Used as the item key.                                                                                                          |
-| content          | ReadableStream, ArrayBuffer, or string | Yes      | The document content. Maximum file size is 4 MB. Pass a string for plain text or markdown, an ArrayBuffer for binary files, or a ReadableStream for streaming uploads. |
-| options.metadata | Record<string, string>                 | No       | Custom metadata key-value pairs to attach to the item. Use for filtering in search queries. Maximum 5 fields per instance.                                             |
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `name` | string | Yes | The filename for the uploaded document. Used as the item key. |
+| `content` | ReadableStream, ArrayBuffer, or string | Yes | The document content. Maximum file size is 4 MB. Pass a string for plain text or markdown, an `ArrayBuffer` for binary files, or a `ReadableStream` for streaming uploads. |
+| `options.metadata` | Record\<string, string> | No | Custom metadata key-value pairs to attach to the item. Use for filtering in search queries. Maximum 5 fields per instance. |
 
 #### Response
 
-| Field | Type   | Description                      |
-| ----- | ------ | -------------------------------- |
-| id    | string | The unique item identifier.      |
-| key   | string | The filename or key of the item. |
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | string | The unique item identifier. |
+| `key` | string | The filename or key of the item. |
 
 ### `items.uploadAndPoll()`
 
@@ -168,28 +168,28 @@ const results = await instance.search({
 
 #### Parameters
 
-Same as [items.upload()](#parameters), with additional polling options:
+Same as [`items.upload()`](#parameters), with additional polling options:
 
-| Parameter              | Type   | Required | Description                                                                          |
-| ---------------------- | ------ | -------- | ------------------------------------------------------------------------------------ |
-| options.pollIntervalMs | number | No       | How often to check the item status, in milliseconds. Defaults to 1000.               |
-| options.timeoutMs      | number | No       | Maximum time to wait for processing to complete, in milliseconds. Defaults to 30000. |
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `options.pollIntervalMs` | number | No | How often to check the item status, in milliseconds. Defaults to `1000`. |
+| `options.timeoutMs` | number | No | Maximum time to wait for processing to complete, in milliseconds. Defaults to `30000`. |
 
 #### Response
 
 Returns the full item object after polling completes:
 
-| Field          | Type   | Description                                                                  |
-| -------------- | ------ | ---------------------------------------------------------------------------- |
-| id             | string | The unique item identifier.                                                  |
-| key            | string | The filename or key of the item.                                             |
-| status         | string | The processing status: queued, running, completed, error, skipped, outdated. |
-| chunks\_count  | number | Number of chunks created from the document.                                  |
-| file\_size     | number | Size of the uploaded file in bytes.                                          |
-| metadata       | object | Item metadata including filename, folder, and timestamp.                     |
-| source\_id     | string | The source identifier (for example, builtin for uploaded files).             |
-| created\_at    | string | Timestamp of when the item was created.                                      |
-| last\_seen\_at | string | Timestamp of when the item was last seen during indexing.                    |
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | string | The unique item identifier. |
+| `key` | string | The filename or key of the item. |
+| `status` | string | The processing status: `queued`, `running`, `completed`, `error`, `skipped`, `outdated`. |
+| `chunks_count` | number | Number of chunks created from the document. |
+| `file_size` | number | Size of the uploaded file in bytes. |
+| `metadata` | object | Item metadata including `filename`, `folder`, and `timestamp`. |
+| `source_id` | string | The source identifier (for example, `builtin` for uploaded files). |
+| `created_at` | string | Timestamp of when the item was created. |
+| `last_seen_at` | string | Timestamp of when the item was last seen during indexing. |
 
 ### `items.list()`
 
@@ -206,34 +206,34 @@ for (const item of result) {
 
 #### Parameters
 
-| Parameter | Type   | Required | Description                                                                           |
-| --------- | ------ | -------- | ------------------------------------------------------------------------------------- |
-| page      | number | No       | The page number to return. Defaults to 1.                                             |
-| per\_page | number | No       | The number of items per page. Defaults to 20. Maximum 50.                             |
-| status    | string | No       | Filter by processing status: queued, running, completed, error, skipped, or outdated. |
-| sort\_by  | string | No       | Sort order for items: status (default) or modified\_at.                               |
-| search    | string | No       | Search items by text content.                                                         |
-| source    | string | No       | Filter by source identifier (for example, builtin for uploaded files).                |
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `page` | number | No | The page number to return. Defaults to `1`. |
+| `per_page` | number | No | The number of items per page. Defaults to `20`. Maximum `50`. |
+| `status` | string | No | Filter by processing status: `queued`, `running`, `completed`, `error`, `skipped`, or `outdated`. |
+| `sort_by` | string | No | Sort order for items: `status` (default) or `modified_at`. |
+| `search` | string | No | Search items by text content. |
+| `source` | string | No | Filter by source identifier (for example, `builtin` for uploaded files). |
 
 #### Response
 
-| Field                     | Type   | Description                                                                  |
-| ------------------------- | ------ | ---------------------------------------------------------------------------- |
-| result                    | array  | Array of item objects.                                                       |
-| result\[\].id             | string | The unique item identifier.                                                  |
-| result\[\].key            | string | The filename or key of the item.                                             |
-| result\[\].status         | string | The processing status: queued, running, completed, error, skipped, outdated. |
-| result\[\].chunks\_count  | number | Number of chunks created from the document.                                  |
-| result\[\].file\_size     | number | Size of the uploaded file in bytes.                                          |
-| result\[\].metadata       | object | Item metadata including filename, folder, and timestamp.                     |
-| result\[\].source\_id     | string | The source identifier (for example, builtin for uploaded files).             |
-| result\[\].created\_at    | string | Timestamp of when the item was created.                                      |
-| result\[\].last\_seen\_at | string | Timestamp of when the item was last seen during indexing.                    |
-| result\_info              | object | Pagination metadata.                                                         |
-| result\_info.count        | number | Number of items in the current page.                                         |
-| result\_info.total\_count | number | Total number of items in the instance.                                       |
-| result\_info.page         | number | The current page number.                                                     |
-| result\_info.per\_page    | number | Items per page.                                                              |
+| Field | Type | Description |
+| --- | --- | --- |
+| `result` | array | Array of item objects. |
+| `result[].id` | string | The unique item identifier. |
+| `result[].key` | string | The filename or key of the item. |
+| `result[].status` | string | The processing status: `queued`, `running`, `completed`, `error`, `skipped`, `outdated`. |
+| `result[].chunks_count` | number | Number of chunks created from the document. |
+| `result[].file_size` | number | Size of the uploaded file in bytes. |
+| `result[].metadata` | object | Item metadata including `filename`, `folder`, and `timestamp`. |
+| `result[].source_id` | string | The source identifier (for example, `builtin` for uploaded files). |
+| `result[].created_at` | string | Timestamp of when the item was created. |
+| `result[].last_seen_at` | string | Timestamp of when the item was last seen during indexing. |
+| `result_info` | object | Pagination metadata. |
+| `result_info.count` | number | Number of items in the current page. |
+| `result_info.total_count` | number | Total number of items in the instance. |
+| `result_info.page` | number | The current page number. |
+| `result_info.per_page` | number | Items per page. |
 
 ### `items.delete()`
 
@@ -245,9 +245,9 @@ await instance.items.delete("item-id-123");
 
 #### Parameters
 
-| Parameter | Type   | Required | Description                                  |
-| --------- | ------ | -------- | -------------------------------------------- |
-| itemId    | string | Yes      | The unique identifier of the item to delete. |
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `itemId` | string | Yes | The unique identifier of the item to delete. |
 
 #### Response
 
@@ -267,23 +267,23 @@ const itemInfo = await instance.items.get("item-id-123").info();
 
 ##### Parameters
 
-| Parameter | Type   | Required | Description                        |
-| --------- | ------ | -------- | ---------------------------------- |
-| itemId    | string | Yes      | The unique identifier of the item. |
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `itemId` | string | Yes | The unique identifier of the item. |
 
 ##### Response
 
-| Field          | Type   | Description                                                                  |
-| -------------- | ------ | ---------------------------------------------------------------------------- |
-| id             | string | The unique item identifier.                                                  |
-| key            | string | The filename or key of the item.                                             |
-| status         | string | The processing status: queued, running, completed, error, skipped, outdated. |
-| chunks\_count  | number | Number of chunks created from the document.                                  |
-| file\_size     | number | Size of the uploaded file in bytes.                                          |
-| metadata       | object | Item metadata including filename, folder, and timestamp.                     |
-| source\_id     | string | The source identifier (for example, builtin for uploaded files).             |
-| created\_at    | string | Timestamp of when the item was created.                                      |
-| last\_seen\_at | string | Timestamp of when the item was last seen during indexing.                    |
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | string | The unique item identifier. |
+| `key` | string | The filename or key of the item. |
+| `status` | string | The processing status: `queued`, `running`, `completed`, `error`, `skipped`, `outdated`. |
+| `chunks_count` | number | Number of chunks created from the document. |
+| `file_size` | number | Size of the uploaded file in bytes. |
+| `metadata` | object | Item metadata including `filename`, `folder`, and `timestamp`. |
+| `source_id` | string | The source identifier (for example, `builtin` for uploaded files). |
+| `created_at` | string | Timestamp of when the item was created. |
+| `last_seen_at` | string | Timestamp of when the item was last seen during indexing. |
 
 #### `items.get().download()`
 
@@ -296,18 +296,18 @@ const file = await instance.items.get("item-id-123").download();
 
 ##### Parameters
 
-| Parameter | Type   | Required | Description                        |
-| --------- | ------ | -------- | ---------------------------------- |
-| itemId    | string | Yes      | The unique identifier of the item. |
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `itemId` | string | Yes | The unique identifier of the item. |
 
 ##### Response
 
-| Field       | Type           | Description                                               |
-| ----------- | -------------- | --------------------------------------------------------- |
-| filename    | string         | The original filename.                                    |
-| contentType | string         | The MIME type of the file (for example, application/pdf). |
-| size        | number         | The file size in bytes.                                   |
-| body        | ReadableStream | A readable stream of the file contents.                   |
+| Field | Type | Description |
+| --- | --- | --- |
+| `filename` | string | The original filename. |
+| `contentType` | string | The MIME type of the file (for example, `application/pdf`). |
+| `size` | number | The file size in bytes. |
+| `body` | ReadableStream | A readable stream of the file contents. |
 
 Was this helpful?
 

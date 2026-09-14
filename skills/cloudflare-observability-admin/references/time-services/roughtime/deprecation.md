@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Server Deprecation
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/time-services/roughtime/deprecation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/time-services/roughtime/deprecation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Once their deprecation date has passed, both the port and public key associated to a server will become unavailable.
 
-| Server                        | Public Key                                   | Deprecation date |
-| ----------------------------- | -------------------------------------------- | ---------------- |
-| roughtime.cloudflare.com:2002 | gD63hSj3ScS+wuOeGrubXlq35N1c5Lby/S+T7MNTjxo= | 2024-06-30       |
+| Server | Public Key | Deprecation date |
+| --- | --- | --- |
+| `roughtime.cloudflare.com:2002` | `gD63hSj3ScS+wuOeGrubXlq35N1c5Lby/S+T7MNTjxo=` | 2024-06-30 |
 
 Available servers are [listed in our tutorial](https://developers.cloudflare.com/time-services/roughtime/usage/), and you can follow it on how to configure your Roughtime server.
 

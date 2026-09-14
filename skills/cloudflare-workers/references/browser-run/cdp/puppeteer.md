@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Using with Puppeteer (CDP)
 
-Last updated May 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/cdp/puppeteer/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/cdp/puppeteer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can use [Puppeteer ↗](https://pptr.dev/) to connect to Browser Run sessions from any Node.js environment and automate browser tasks programmatically via CDP. This is useful for scripts running on your local machine, CI/CD pipelines, or external servers.
 
@@ -20,9 +20,9 @@ Before you begin, [create a custom API Token](https://developers.cloudflare.com/
 
 ## Prerequisites
 
-* Node.js installed on your machine
-* A Cloudflare account with Browser Run enabled
-* A Browser Run API token with `Browser Rendering - Edit` permissions
+- Node.js installed on your machine
+- A Cloudflare account with Browser Run enabled
+- A Browser Run API token with `Browser Rendering - Edit` permissions
 
 ## Install Puppeteer
 
@@ -101,10 +101,10 @@ You should see the page title printed to the console and a screenshot saved as `
 
 The script connects directly to Browser Run via WebSocket using the CDP protocol:
 
-1. **WebSocket endpoint** \- The `browserWSEndpoint` URL acquires a new browser session and connects to it via WebSocket
-2. **Authentication** \- The `Authorization` header with your API token authenticates the request
-3. **Keep-alive** \- The `keep_alive` parameter (in milliseconds) specifies how long the session stays active
-4. **Puppeteer API** \- Once connected, you use the standard Puppeteer API to control the browser
+1. **WebSocket endpoint** - The `browserWSEndpoint` URL acquires a new browser session and connects to it via WebSocket
+2. **Authentication** - The `Authorization` header with your API token authenticates the request
+3. **Keep-alive** - The `keep_alive` parameter (in milliseconds) specifies how long the session stays active
+4. **Puppeteer API** - Once connected, you use the standard Puppeteer API to control the browser
 
 ## Troubleshooting
 

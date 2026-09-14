@@ -12,24 +12,32 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Install certificate using the Cloudflare One Client
 
-Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/automated-deployment/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/automated-deployment/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+<details>
+
+<summary>
 
 Feature availability
 
-| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| All modes                                                                                                                          | All plans                                                       |
+</summary>
 
-| System   | Availability | Minimum client version |
-| -------- | ------------ | ---------------------- |
-| Windows  | ✅            | 2024.12.554.0          |
-| macOS    | ✅            | 2024.12.554.0          |
-| Linux \* | ✅            | 2024.12.554.0          |
-| iOS      | ❌            |                        |
-| Android  | ❌            |                        |
-| ChromeOS | ❌            |                        |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- |
+| All modes | All plans |
 
-\* Only supported on Debian-based systems.
+| System | Availability | Minimum client version |
+| --- | --- | --- |
+| Windows | ✅ | 2024.12.554.0 |
+| macOS | ✅ | 2024.12.554.0 |
+| Linux <sup>\*</sup> | ✅ | 2024.12.554.0 |
+| iOS | ❌ | |
+| Android | ❌ | |
+| ChromeOS | ❌ | |
+
+<sup>*</sup> Only supported on Debian-based systems.
+
+</details>
 
 The [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) can automatically install a Cloudflare certificate or [custom root certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/custom-certificate/) on Windows, macOS, and Debian/Ubuntu Linux devices. On mobile devices and Red Hat-based systems, you will need to [install the certificate manually](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/manual-deployment/).
 
@@ -40,7 +48,7 @@ The certificate is required if you want to [apply HTTP policies to encrypted web
 To configure the Cloudflare One Client to install a root certificate on your organization's devices:
 
 1. (Optional) [Upload](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/custom-certificate/) a custom root certificate to Cloudflare.
-2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Management**.
+2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Management**.
 3. Under **Global Cloudflare One Client settings**, turn on [**Install CA to system certificate store**](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#install-ca-to-system-certificate-store).
 4. [Install](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) the Cloudflare One Client on the device.
 5. [Enroll the device](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/) in your Zero Trust organization.
@@ -63,7 +71,7 @@ After installing the certificate using the Cloudflare One Client, you can verify
 To access the installed certificate in macOS:
 
 1. Open Keychain Access.
-2. In **System Keychains**, go to **System** \> **Certificates**.
+2. In **System Keychains**, go to **System** > **Certificates**.
 3. Open your certificate. The default Cloudflare certificate name is **Gateway CA - Cloudflare Managed G1**.
 4. If the certificate is trusted by all users, Keychain Access will display **This certificate is marked as trusted for all users**.
 
@@ -75,7 +83,7 @@ macOS Big Sur and newer do not allow the Cloudflare One Client to automatically 
 
 1. In Keychain Access, [find and open the certificate](#macos).
 2. Open **Trust**.
-3. Set **When using this certificate** to _Always Trust_.
+3. Set **When using this certificate** to *Always Trust*.
 4. (Optional) Restart the device to reset connections to Zero Trust.
 
 Alternatively, you can configure your mobile device management (MDM) to automatically trust the certificate on all of your organization's devices.
@@ -86,7 +94,7 @@ To access the installed certificate in Windows:
 
 1. Open the Start menu and select **Run**.
 2. Enter `certlm.msc`.
-3. Go to **Trusted Root Certification Authority** \> **Certificates**. The default Cloudflare certificate name is **Gateway CA - Cloudflare Managed G1**.
+3. Go to **Trusted Root Certification Authority** > **Certificates**. The default Cloudflare certificate name is **Gateway CA - Cloudflare Managed G1**.
 
 The Cloudflare One Client will also place the certificate in `%PROGRAMDATA%\Cloudflare\installed_cert.pem` for reference by scripts or tools.
 
@@ -95,21 +103,31 @@ The Cloudflare One Client will also place the certificate in `%PROGRAMDATA%\Clou
 On Debian-based Linux distributions, the certificate is stored in `/usr/local/share/ca-certificates`. The default installed Cloudflare certificate name is `managed-warp.pem`. The Cloudflare One Client will create a symbolic link named `managed-warp.crt` to use as its root certificate. If your system is not using `managed-warp.crt`, run the following commands to update the system store:
 
 1. Update your list of custom CA certificates.
-```sh
-sudo update-ca-certificates
-```
+
+   ```sh
+   sudo update-ca-certificates
+   ```
+
+
 2. Go to the system certificate store.
-```sh
-cd /usr/local/share/ca-certificates
-```
+
+   ```sh
+   cd /usr/local/share/ca-certificates
+   ```
+
+
 3. Verify your system has both the `managed-warp.pem` file and the `managed-warp.crt` symbolic link. For example:
-```sh
-ls -l
-```
-```sh
-lrwxrwxrwx 1 root root   49 Jan  3 21:46 managed-warp.crt -> /usr/local/share/ca-certificates/managed-warp.pem
--rw-r--r-- 1 root root 1139 Jan  3 21:46 managed-warp.pem
-```
+
+   ```sh
+   ls -l
+   ```
+
+   ```sh
+   lrwxrwxrwx 1 root root   49 Jan  3 21:46 managed-warp.crt -> /usr/local/share/ca-certificates/managed-warp.pem
+   -rw-r--r-- 1 root root 1139 Jan  3 21:46 managed-warp.pem
+   ```
+
+
 
 The Cloudflare One Client will also place the certificate in `/var/lib/cloudflare-warp/installed_cert.pem` for reference by scripts or tools.
 

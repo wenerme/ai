@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Key server metrics
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/reference/metrics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/reference/metrics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The gokeyless key server exposes a [Prometheus ↗](https://prometheus.io/) metrics endpoint that you can use to monitor signing performance, error rates, connection health, and certificate expiry. This endpoint can also be scraped by the OpenTelemetry Collector Prometheus receiver, making the metrics available to any OpenTelemetry-compatible backend.
 
@@ -34,24 +34,24 @@ The endpoint serves only `/metrics`. There are no additional HTTP endpoints such
 
 All histogram metrics share the same bucket configuration: 15 exponential buckets starting at 100 microseconds, doubling each step up to approximately 1.64 seconds, plus a final `+Inf` bucket.
 
-| Bucket | Upper bound             |
-| ------ | ----------------------- |
-| 1      | 100 µs                  |
-| 2      | 200 µs                  |
-| 3      | 400 µs                  |
-| 4      | 800 µs                  |
-| 5      | 1.6 ms                  |
-| 6      | 3.2 ms                  |
-| 7      | 6.4 ms                  |
-| 8      | 12.8 ms                 |
-| 9      | 25.6 ms                 |
-| 10     | 51.2 ms                 |
-| 11     | 102 ms                  |
-| 12     | 205 ms                  |
-| 13     | 410 ms                  |
-| 14     | 819 ms                  |
-| 15     | \~1.64 s                |
-| +Inf   | Anything above \~1.64 s |
+| Bucket | Upper bound |
+| --- | --- |
+| 1 | 100 µs |
+| 2 | 200 µs |
+| 3 | 400 µs |
+| 4 | 800 µs |
+| 5 | 1.6 ms |
+| 6 | 3.2 ms |
+| 7 | 6.4 ms |
+| 8 | 12.8 ms |
+| 9 | 25.6 ms |
+| 10 | 51.2 ms |
+| 11 | 102 ms |
+| 12 | 205 ms |
+| 13 | 410 ms |
+| 14 | 819 ms |
+| 15 | \~1.64 s |
+| +Inf | Anything above \~1.64 s |
 
 Note
 
@@ -72,45 +72,45 @@ The `opcode` label uses the full constant name from the gokeyless protocol.
 
 #### RSA operations
 
-| opcode label       | Wire value | Description                                                                   |
-| ------------------ | ---------- | ----------------------------------------------------------------------------- |
-| OpRSADecrypt       | 0x01       | RSA raw decryption — used in TLS RSA key exchange (deprecated in TLS 1.3)     |
-| OpRSASignMD5SHA1   | 0x02       | RSA PKCS#1 v1.5 signature over MD5+SHA1 combined hash — TLS 1.0/1.1 handshake |
-| OpRSASignSHA1      | 0x03       | RSA PKCS#1 v1.5 signature over SHA1                                           |
-| OpRSASignSHA224    | 0x04       | RSA PKCS#1 v1.5 signature over SHA224                                         |
-| OpRSASignSHA256    | 0x05       | RSA PKCS#1 v1.5 signature over SHA256                                         |
-| OpRSASignSHA384    | 0x06       | RSA PKCS#1 v1.5 signature over SHA384                                         |
-| OpRSASignSHA512    | 0x07       | RSA PKCS#1 v1.5 signature over SHA512                                         |
-| OpRSAPSSSignSHA256 | 0x35       | RSASSA-PSS signature over SHA256 — primary RSA operation in TLS 1.3           |
-| OpRSAPSSSignSHA384 | 0x36       | RSASSA-PSS signature over SHA384                                              |
-| OpRSAPSSSignSHA512 | 0x37       | RSASSA-PSS signature over SHA512                                              |
+| `opcode` label | Wire value | Description |
+| --- | --- | --- |
+| `OpRSADecrypt` | `0x01` | RSA raw decryption — used in TLS RSA key exchange (deprecated in TLS 1.3) |
+| `OpRSASignMD5SHA1` | `0x02` | RSA PKCS#1 v1.5 signature over MD5+SHA1 combined hash — TLS 1.0/1.1 handshake |
+| `OpRSASignSHA1` | `0x03` | RSA PKCS#1 v1.5 signature over SHA1 |
+| `OpRSASignSHA224` | `0x04` | RSA PKCS#1 v1.5 signature over SHA224 |
+| `OpRSASignSHA256` | `0x05` | RSA PKCS#1 v1.5 signature over SHA256 |
+| `OpRSASignSHA384` | `0x06` | RSA PKCS#1 v1.5 signature over SHA384 |
+| `OpRSASignSHA512` | `0x07` | RSA PKCS#1 v1.5 signature over SHA512 |
+| `OpRSAPSSSignSHA256` | `0x35` | RSASSA-PSS signature over SHA256 — primary RSA operation in TLS 1.3 |
+| `OpRSAPSSSignSHA384` | `0x36` | RSASSA-PSS signature over SHA384 |
+| `OpRSAPSSSignSHA512` | `0x37` | RSASSA-PSS signature over SHA512 |
 
 #### ECDSA operations
 
-| opcode label       | Wire value | Description                                                      |
-| ------------------ | ---------- | ---------------------------------------------------------------- |
-| OpECDSASignMD5SHA1 | 0x12       | ECDSA signature over MD5+SHA1 combined hash                      |
-| OpECDSASignSHA1    | 0x13       | ECDSA signature over SHA1                                        |
-| OpECDSASignSHA224  | 0x14       | ECDSA signature over SHA224                                      |
-| OpECDSASignSHA256  | 0x15       | ECDSA signature over SHA256 — most common in TLS 1.2 and TLS 1.3 |
-| OpECDSASignSHA384  | 0x16       | ECDSA signature over SHA384                                      |
-| OpECDSASignSHA512  | 0x17       | ECDSA signature over SHA512                                      |
+| `opcode` label | Wire value | Description |
+| --- | --- | --- |
+| `OpECDSASignMD5SHA1` | `0x12` | ECDSA signature over MD5+SHA1 combined hash |
+| `OpECDSASignSHA1` | `0x13` | ECDSA signature over SHA1 |
+| `OpECDSASignSHA224` | `0x14` | ECDSA signature over SHA224 |
+| `OpECDSASignSHA256` | `0x15` | ECDSA signature over SHA256 — most common in TLS 1.2 and TLS 1.3 |
+| `OpECDSASignSHA384` | `0x16` | ECDSA signature over SHA384 |
+| `OpECDSASignSHA512` | `0x17` | ECDSA signature over SHA512 |
 
 #### Other signing
 
-| opcode label  | Wire value | Description                                                                  |
-| ------------- | ---------- | ---------------------------------------------------------------------------- |
-| OpEd25519Sign | 0x18       | Ed25519 signature over an arbitrary-length payload (not a pre-hashed digest) |
+| `opcode` label | Wire value | Description |
+| --- | --- | --- |
+| `OpEd25519Sign` | `0x18` | Ed25519 signature over an arbitrary-length payload (not a pre-hashed digest) |
 
 #### Sealing and infrastructure operations
 
-| opcode label | Wire value | Description                                                                                           |
-| ------------ | ---------- | ----------------------------------------------------------------------------------------------------- |
-| OpSeal       | 0x21       | Encrypt a blob using the server's sealing key — used for TLS session tickets                          |
-| OpUnseal     | 0x22       | Decrypt a blob previously encrypted by OpSeal. Returns ErrExpired if the sealing key has rotated      |
-| OpRPC        | 0x23       | Execute a named function registered on the server. Available to all connection types                  |
-| OpCustom     | 0x24       | Execute a custom function set in the server configuration. Available to unrestricted connections only |
-| OpPing       | 0xF1       | Health check — the server echoes the payload back as OpPong with no HSM or key lookup involved        |
+| `opcode` label | Wire value | Description |
+| --- | --- | --- |
+| `OpSeal` | `0x21` | Encrypt a blob using the server's sealing key — used for TLS session tickets |
+| `OpUnseal` | `0x22` | Decrypt a blob previously encrypted by `OpSeal`. Returns `ErrExpired` if the sealing key has rotated |
+| `OpRPC` | `0x23` | Execute a named function registered on the server. Available to all connection types |
+| `OpCustom` | `0x24` | Execute a custom function set in the server configuration. Available to unrestricted connections only |
+| `OpPing` | `0xF1` | Health check — the server echoes the payload back as `OpPong` with no HSM or key lookup involved |
 
 ---
 
@@ -121,21 +121,21 @@ The `opcode` label uses the full constant name from the gokeyless protocol.
 
 Measures the time to execute a single operation, from when processing begins to when a response is produced. For operations backed by a PKCS#11 HSM, this includes the full time waiting for a session from the pool plus the HSM cryptographic operation time.
 
-This metric does not include time a request spends waiting for a connection semaphore slot. That is captured by [keyless\_request\_total\_duration\_per\_opcode](#keyless%5Frequest%5Ftotal%5Fduration%5Fper%5Fopcode).
+This metric does not include time a request spends waiting for a connection semaphore slot. That is captured by [`keyless_request_total_duration_per_opcode`](#keyless_request_total_duration_per_opcode).
 
 #### `type` label
 
 Opcodes are grouped into coarser categories for this label:
 
-| type label | Opcodes included                                      |
-| ---------- | ----------------------------------------------------- |
-| rsa        | OpRSADecrypt, all OpRSASign\*, all OpRSAPSSSign\*     |
-| ecdsa      | All OpECDSASign\*                                     |
-| ed25519    | OpEd25519Sign                                         |
-| rpc        | OpRPC                                                 |
-| custom     | OpCustom                                              |
-| other      | OpSeal, OpUnseal, OpPing, OpPong, OpResponse, OpError |
-| unknown    | Any unrecognised opcode byte                          |
+| `type` label | Opcodes included |
+| --- | --- |
+| `rsa` | `OpRSADecrypt`, all `OpRSASign*`, all `OpRSAPSSSign*` |
+| `ecdsa` | All `OpECDSASign*` |
+| `ed25519` | `OpEd25519Sign` |
+| `rpc` | `OpRPC` |
+| `custom` | `OpCustom` |
+| `other` | `OpSeal`, `OpUnseal`, `OpPing`, `OpPong`, `OpResponse`, `OpError` |
+| `unknown` | Any unrecognised opcode byte |
 
 Note
 
@@ -145,27 +145,27 @@ Note
 
 For successful requests the value is `no error`. All other values indicate a failed operation.
 
-| error label                                       | Description                             | Common cause                                                                                        |
-| ------------------------------------------------- | --------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| no error                                          | Operation completed successfully        | —                                                                                                   |
-| cryptography error                                | HSM or signing operation failed         | PKCS#11 session pool exhaustion (resource pool timed out), HSM returned an error, key type mismatch |
-| key not found due to no matching SKI/SNI/ServerIP | Key lookup returned no result           | Key not loaded in keystore, incorrect SKI in request                                                |
-| read failure                                      | I/O read error during the operation     | Disk error reading key file                                                                         |
-| version mismatch                                  | Protocol version not supported          | Client and server version skew                                                                      |
-| bad opcode                                        | Unknown opcode received                 | OpCustom sent with no custom handler configured                                                     |
-| unexpected opcode                                 | A response opcode was used as a request | Client sent OpPong, OpResponse, or OpError as a request                                             |
-| malformed message                                 | TLV parse failure                       | Corrupt or truncated packet                                                                         |
-| internal error                                    | Non-cryptographic server-side failure   | Sealer is nil, RPC dispatch error                                                                   |
-| certificate not found                             | Certificate lookup failed               | Certificate not loaded                                                                              |
-| sealing key expired                               | OpUnseal blob is too old to decrypt     | TLS session ticket key rotation — blob sealed with a key that has since been retired                |
-| remote configuration error                        | Remote key server is misconfigured      | Key points to an unreachable or misconfigured remote key server                                     |
+| `error` label | Description | Common cause |
+| --- | --- | --- |
+| `no error` | Operation completed successfully | — |
+| `cryptography error` | HSM or signing operation failed | PKCS#11 session pool exhaustion (`resource pool timed out`), HSM returned an error, key type mismatch |
+| `key not found due to no matching SKI/SNI/ServerIP` | Key lookup returned no result | Key not loaded in keystore, incorrect SKI in request |
+| `read failure` | I/O read error during the operation | Disk error reading key file |
+| `version mismatch` | Protocol version not supported | Client and server version skew |
+| `bad opcode` | Unknown opcode received | `OpCustom` sent with no custom handler configured |
+| `unexpected opcode` | A response opcode was used as a request | Client sent `OpPong`, `OpResponse`, or `OpError` as a request |
+| `malformed message` | TLV parse failure | Corrupt or truncated packet |
+| `internal error` | Non-cryptographic server-side failure | Sealer is nil, RPC dispatch error |
+| `certificate not found` | Certificate lookup failed | Certificate not loaded |
+| `sealing key expired` | `OpUnseal` blob is too old to decrypt | TLS session ticket key rotation — blob sealed with a key that has since been retired |
+| `remote configuration error` | Remote key server is misconfigured | Key points to an unreachable or misconfigured remote key server |
 
 ---
 
 ### `keyless_request_total_duration_per_opcode`
 
 **Type:** Histogram
-**Labels:** `type`, `error` (same values as [keyless\_request\_exec\_duration\_per\_opcode](#keyless%5Frequest%5Fexec%5Fduration%5Fper%5Fopcode))
+**Labels:** `type`, `error` (same values as [`keyless_request_exec_duration_per_opcode`](#keyless_request_exec_duration_per_opcode))
 
 Measures the total time to satisfy a request, from when the request packet is read off the wire to when the response bytes are written back to the client.
 
@@ -184,8 +184,8 @@ Both timestamps are captured after the connection semaphore is already held, so 
 
 Measures the time taken by the keystore to locate and return the private key for each request, keyed by SKI, SNI, and server IP.
 
-* For file-backed keystores, this is a map lookup and is typically sub-millisecond.
-* For PKCS#11 or HSM keystores, this may include a network round-trip to the HSM if key references are not cached in memory.
+- For file-backed keystores, this is a map lookup and is typically sub-millisecond.
+- For PKCS#11 or HSM keystores, this may include a network round-trip to the HSM if key references are not cached in memory.
 
 This metric is recorded for all signing and decryption operations: `OpRSADecrypt`, all `OpRSASign*`, all `OpRSAPSSSign*`, all `OpECDSASign*`, and `OpEd25519Sign`.
 
@@ -200,16 +200,16 @@ It is **not** recorded for `OpPing`, `OpSeal`, `OpUnseal`, `OpRPC`, or `OpCustom
 
 Counts connection-level transport failures. This metric reflects problems at the network or TLS layer — it does not count signing errors or key lookup failures, which are reported in the `error` label of the duration histograms.
 
-| Scenario                                             | Counted? |
-| ---------------------------------------------------- | -------- |
-| TLS handshake failure                                | No       |
-| Client disconnected before TLS handshake (EOF)       | No       |
-| Failure determining connection trust level after TLS | Yes      |
-| Non-EOF read error on an established connection      | Yes      |
-| Write error when delivering a response               | Yes      |
-| Read timeout — graceful connection drain             | No       |
-| Signing error, including PKCS#11 pool timeout        | No       |
-| Key not found                                        | No       |
+| Scenario | Counted? |
+| --- | --- |
+| TLS handshake failure | No |
+| Client disconnected before TLS handshake (EOF) | No |
+| Failure determining connection trust level after TLS | Yes |
+| Non-EOF read error on an established connection | Yes |
+| Write error when delivering a response | Yes |
+| Read timeout — graceful connection drain | No |
+| Signing error, including PKCS#11 pool timeout | No |
+| Key not found | No |
 
 ---
 
@@ -222,18 +222,18 @@ Reports the expiration time (`NotAfter`) of each certificate loaded by the key s
 
 This metric is updated:
 
-* At startup, for the server authentication certificate (`auth_cert`) and the Cloudflare CA certificate (`cloudflare_ca_cert`).
-* On each successful inbound TLS connection, for the peer certificates presented by the connecting client.
+- At startup, for the server authentication certificate ( `auth_cert`) and the Cloudflare CA certificate ( `cloudflare_ca_cert`).
+- On each successful inbound TLS connection, for the peer certificates presented by the connecting client.
 
-| Label      | Description                                                                            |
-| ---------- | -------------------------------------------------------------------------------------- |
-| source     | File path for startup certs; listener: <addr> for peer certs from incoming connections |
-| serial\_no | Certificate serial number                                                              |
-| cn         | Subject Common Name                                                                    |
-| hostnames  | Sorted, comma-separated list of DNS Subject Alternative Names                          |
-| ca         | 1 if the certificate is a CA certificate, 0 otherwise                                  |
-| server     | 1 if the certificate includes ExtKeyUsageServerAuth, 0 otherwise                       |
-| client     | 1 if the certificate includes ExtKeyUsageClientAuth, 0 otherwise                       |
+| Label | Description |
+| --- | --- |
+| `source` | File path for startup certs; `listener: <addr>` for peer certs from incoming connections |
+| `serial_no` | Certificate serial number |
+| `cn` | Subject Common Name |
+| `hostnames` | Sorted, comma-separated list of DNS Subject Alternative Names |
+| `ca` | `1` if the certificate is a CA certificate, `0` otherwise |
+| `server` | `1` if the certificate includes `ExtKeyUsageServerAuth`, `0` otherwise |
+| `client` | `1` if the certificate includes `ExtKeyUsageClientAuth`, `0` otherwise |
 
 Note
 

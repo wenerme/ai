@@ -12,9 +12,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Access
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/changelog/access/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/changelog/access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/access.xml)
+
+## 2026-09-14
+
+
+**Require fresh authentication for SAML identity providers**
+
+Cloudflare Access can now request fresh authentication from a SAML identity provider for every login. Turn on **Require reauthentication** in the Cloudflare dashboard, or set `force_authn` to `true` through the API. Access will then set `ForceAuthn` to `true` in signed and unsigned SAML authentication requests.
+
+This option is useful when an application requires users to reauthenticate at the identity provider instead of relying on an existing identity provider session. The default value is `false`.
+
+For configuration details, refer to [Require fresh authentication at the identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/#require-fresh-authentication-at-the-identity-provider).
 
 ## 2026-08-26
 
@@ -112,7 +123,7 @@ You can view and manage all of your Access policies in the **Access** tab of the
 
 **See who is accessing your Worker**
 
-When Access is enabled on your Worker, every authenticated request includes `ctx.access`. Call [ctx.access.getIdentity()](https://developers.cloudflare.com/workers/runtime-apis/context/#access) to get the user's email, name, and groups — no manual JWT validation required.
+When Access is enabled on your Worker, every authenticated request includes `ctx.access`. Call [`ctx.access.getIdentity()`](https://developers.cloudflare.com/workers/runtime-apis/context/#access) to get the user's email, name, and groups — no manual JWT validation required.
 
 ```js
 export default {
@@ -166,8 +177,8 @@ For setup instructions, refer to [Enroll a FIDO2 key for infrastructure apps](ht
 
 AI Gateway now integrates with Cloudflare Access, giving you two new capabilities:
 
-* **Protect your gateway endpoint.** Put your AI Gateway behind Access so you can set policies that control who is allowed to call a specific gateway's endpoint.
-* **Identity-aware controls.** When traffic reaches AI Gateway through an Access-protected custom domain, AI Gateway can use the authenticated user's Access identity in logs, analytics, routing, and spend controls.
+- **Protect your gateway endpoint.** Put your AI Gateway behind Access so you can set policies that control who is allowed to call a specific gateway's endpoint.
+- **Identity-aware controls.** When traffic reaches AI Gateway through an Access-protected custom domain, AI Gateway can use the authenticated user's Access identity in logs, analytics, routing, and spend controls.
 
 With identity-aware controls, you can set spend limits by authenticated user, control which gateways different users can access, filter logs by user, and build policies without passing user IDs from the client application. AI Gateway adds the verified Access user ID to request metadata as `cf.user_id`.
 
@@ -206,11 +217,11 @@ For setup instructions, refer to [Configure manual OAuth credentials](https://de
 
 **Admins can turn on Code Mode by default for MCP portal users**
 
-[MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) now support four Code Mode policies: _Off_, _Opt-in_, _On by default_, and _Enforced_. Admins can choose whether Code Mode is unavailable, optional, enabled by default, or required for every session.
+[MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) now support four Code Mode policies: *Off*, *Opt-in*, *On by default*, and *Enforced*. Admins can choose whether Code Mode is unavailable, optional, enabled by default, or required for every session.
 
-Existing portals retain their current behavior. Portals that previously allowed Code Mode use _Opt-in_, while portals that did not allow Code Mode use _Off_. New portals also use _Opt-in_ by default.
+Existing portals retain their current behavior. Portals that previously allowed Code Mode use *Opt-in*, while portals that did not allow Code Mode use *Off*. New portals also use *Opt-in* by default.
 
-Clients turn on Code Mode for an _Opt-in_ portal with `?codemode=search_and_execute`. The _On by default_ policy lets clients opt out with `?codemode=off`, which avoids nested code execution when a client runs its own Code Mode implementation. The _Off_ and _Enforced_ policies ignore client overrides.
+Clients turn on Code Mode for an *Opt-in* portal with `?codemode=search_and_execute`. The *On by default* policy lets clients opt out with `?codemode=off`, which avoids nested code execution when a client runs its own Code Mode implementation. The *Off* and *Enforced* policies ignore client overrides.
 
 The Cloudflare API exposes these policies through the `code_mode` field:
 
@@ -263,10 +274,10 @@ This feature is useful for organizations that support bring-your-own-device (BYO
 
 File transfer controls are configured per policy within your Access application, alongside existing [text clipboard controls](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/#connection-settings). For each policy, you can select one of the following options:
 
-* **Client to remote RDP session allowed** — Users can upload files from their local machine into the browser-based RDP session.
-* **Remote RDP session to client allowed** — Users can download files from the browser-based RDP session to their local machine.
-* **Both directions allowed** — Users can upload and download files between their local machine and the browser-based RDP session.
-* **Disable copying/pasting** — Users are not allowed to transfer files between their local machine and the browser-based RDP session.
+- **Client to remote RDP session allowed** — Users can upload files from their local machine into the browser-based RDP session.
+- **Remote RDP session to client allowed** — Users can download files from the browser-based RDP session to their local machine.
+- **Both directions allowed** — Users can upload and download files between their local machine and the browser-based RDP session.
+- **Disable copying/pasting** — Users are not allowed to transfer files between their local machine and the browser-based RDP session.
 
 By default, file transfer is denied for new policies. For existing Access applications created before this feature was available, file transfer remains denied.
 
@@ -315,9 +326,9 @@ You can now connect autonomous agents and bots to an [MCP server portal](https:/
 
 To set this up:
 
-* Add a [Service Auth policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth) that matches your service token to the portal's Access application.
-* Add a Service Auth policy that matches the same token to each linked MCP server's Access application.
-* Turn **Require user auth** off (`on_behalf: false`) for each linked server so the portal uses the admin credential instead of a per-user OAuth grant.
+- Add a [Service Auth policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth) that matches your service token to the portal's Access application.
+- Add a Service Auth policy that matches the same token to each linked MCP server's Access application.
+- Turn **Require user auth** off ( `on_behalf: false`) for each linked server so the portal uses the admin credential instead of a per-user OAuth grant.
 
 The bot connects with `CF-Access-Client-Id` and `CF-Access-Client-Secret` headers and sees the tools from every linked server it is authorized for. Servers that still require per-user OAuth are excluded from service token sessions because a service token cannot complete a per-user OAuth grant.
 
@@ -345,9 +356,9 @@ Instead of configuring the same IdP (for example, Okta or Entra ID) separately i
 
 Key capabilities:
 
-* **One IdP, many accounts** — Configure your IdP once and share it with all accounts in your organization.
-* **Lifecycle management** — As accounts join or leave your Cloudflare organization, their IdP connections are provisioned and removed automatically — no manual cleanup required.
-* **Immutable recipient connections** — IdP connections in recipient accounts cannot be accidentally modified or deleted.
+- **One IdP, many accounts** — Configure your IdP once and share it with all accounts in your organization.
+- **Lifecycle management** — As accounts join or leave your Cloudflare organization, their IdP connections are provisioned and removed automatically — no manual cleanup required.
+- **Immutable recipient connections** — IdP connections in recipient accounts cannot be accidentally modified or deleted.
 
 To get started, refer to [IdP federation](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/idp-federation/).
 
@@ -364,9 +375,9 @@ Without encryption, SAML assertions are transmitted in plaintext and could be vi
 
 SAML encryption includes built-in certificate lifecycle management:
 
-* **Automatic certificate generation**: Access generates an encryption certificate when you turn on SAML encryption for an identity provider.
-* **Certificate rotation**: Rotate certificates without downtime. The previous certificate remains valid until expiration, giving you time to update your IdP.
-* **PEM export**: Copy the certificate in PEM format for manual upload to your IdP, or point your IdP to the SAML metadata endpoint for automatic retrieval.
+- **Automatic certificate generation**: Access generates an encryption certificate when you turn on SAML encryption for an identity provider.
+- **Certificate rotation**: Rotate certificates without downtime. The previous certificate remains valid until expiration, giving you time to update your IdP.
+- **PEM export**: Copy the certificate in PEM format for manual upload to your IdP, or point your IdP to the SAML metadata endpoint for automatic retrieval.
 
 To get started, refer to [Encrypt SAML assertions](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/#encrypt-saml-assertions).
 
@@ -387,8 +398,8 @@ Modified tools display a **Modified** label in the tools list so administrators 
 
 Aliases override the metadata that MCP clients receive. You can set them at two levels:
 
-* **Per portal**: Applies only within a specific portal. Takes precedence over server-level aliases.
-* **Per server**: Applies across all portals that use the server.
+- **Per portal**: Applies only within a specific portal. Takes precedence over server-level aliases.
+- **Per server**: Applies across all portals that use the server.
 
 You can reset an alias at any time to restore the original upstream name.
 
@@ -405,8 +416,8 @@ Cloudflare is now the **default identity provider for all newly created Zero Tru
 
 This also enables two new capabilities:
 
-* **Cloudflare Account Member selector** — A new [policy selector](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#cloudflare-access-selectors) that matches users based on their membership in a Cloudflare account. You can target the current account or specify a different account ID for cross-account access scenarios.
-* **Restrict to account members** — An identity provider configuration option that limits authentication to users who are members of your Cloudflare account.
+- **Cloudflare Account Member selector** — A new [policy selector](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#cloudflare-access-selectors) that matches users based on their membership in a Cloudflare account. You can target the current account or specify a different account ID for cross-account access scenarios.
+- **Restrict to account members** — An identity provider configuration option that limits authentication to users who are members of your Cloudflare account.
 
 To get started, add Cloudflare as an [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/cloudflare/) in your Zero Trust settings.
 
@@ -427,10 +438,10 @@ The [Access login page](https://developers.cloudflare.com/cloudflare-one/reusabl
 
 The updated login experience includes:
 
-* **Unified authentication card** \- All sign-in options (identity provider buttons, email input, OTP) now appear in a single card with consistent styling, replacing the previous multi-section layout.
-* **Consistent button styling** \- Identity provider buttons use a uniform size and layout for easier scanning and selection.
-* **Better mobile experience** \- Responsive layout improvements ensure the login page renders correctly on phones and tablets.
-* **Dark mode support** \- The login page now supports dark mode.
+- **Unified authentication card** - All sign-in options (identity provider buttons, email input, OTP) now appear in a single card with consistent styling, replacing the previous multi-section layout.
+- **Consistent button styling** - Identity provider buttons use a uniform size and layout for easier scanning and selection.
+- **Better mobile experience** - Responsive layout improvements ensure the login page renders correctly on phones and tablets.
+- **Dark mode support** - The login page now supports dark mode.
 
 ## 2026-04-23
 
@@ -439,8 +450,8 @@ The updated login experience includes:
 
 [Independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/) in Cloudflare Access now supports two additional organization-level controls:
 
-* **[Restrict authenticators by AAGUID](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#restrict-authenticators-by-aaguid)** — Limit enrollment to a specific set of WebAuthn authenticators using their [AAGUID ↗](https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-registry-v2.0-id-20180227.html#authenticator-attestation-guid). This is useful for organizations that require FIPS-validated security keys or company-issued hardware. AAGUIDs are managed through a new [List](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/) type.
-* **[AMR matching](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#use-identity-provider-mfa)** — Skip the independent MFA prompt when the identity provider has already performed an equivalent MFA. Access reads the `amr` claim defined in [RFC 8176 ↗](https://datatracker.ietf.org/doc/html/rfc8176) and matches supported values such as `hwk`, `otp`, and `fpt` to the authenticator types allowed on the application or policy. This prevents users from having to complete MFA twice when their identity provider already enforces it.
+- **[Restrict authenticators by AAGUID](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#restrict-authenticators-by-aaguid)** — Limit enrollment to a specific set of WebAuthn authenticators using their [AAGUID ↗](https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-registry-v2.0-id-20180227.html#authenticator-attestation-guid). This is useful for organizations that require FIPS-validated security keys or company-issued hardware. AAGUIDs are managed through a new [List](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/) type.
+- **[AMR matching](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#use-identity-provider-mfa)** — Skip the independent MFA prompt when the identity provider has already performed an equivalent MFA. Access reads the `amr` claim defined in [RFC 8176 ↗](https://datatracker.ietf.org/doc/html/rfc8176) and matches supported values such as `hwk`, `otp`, and `fpt` to the authenticator types allowed on the application or policy. This prevents users from having to complete MFA twice when their identity provider already enforces it.
 
 To get started, refer to [Independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/).
 
@@ -455,9 +466,9 @@ To get started, refer to [Independent MFA](https://developers.cloudflare.com/clo
 
 The homepage shows:
 
-* The portal name and organization branding
-* The MCP endpoint URL with a copy button
-* Per-client connection instructions for Claude Desktop, Workers AI Playground, OpenCode, Windsurf, and other MCP clients
+- The portal name and organization branding
+- The MCP endpoint URL with a copy button
+- Per-client connection instructions for Claude Desktop, Workers AI Playground, OpenCode, Windsurf, and other MCP clients
 
 Authenticated users see their email address and a **Sign out** button. Selecting **Sign out** revokes all portal-level OAuth grants, deletes upstream server OAuth states, and redirects through Cloudflare Access logout. A confirmation page shows a summary of the revoked sessions.
 
@@ -474,9 +485,9 @@ This feature also addresses common gaps in IdP-based MFA, such as inconsistent M
 
 Independent MFA supports the following authenticator types:
 
-* **Authenticator application** — Time-based one-time passwords (TOTP) using apps like Google Authenticator, Microsoft Authenticator, or Authy.
-* **Security key** — Hardware security keys such as YubiKeys.
-* **Biometrics** — Built-in device authenticators including Apple Touch ID, Apple Face ID, and Windows Hello.
+- **Authenticator application** — Time-based one-time passwords (TOTP) using apps like Google Authenticator, Microsoft Authenticator, or Authy.
+- **Security key** — Hardware security keys such as YubiKeys.
+- **Biometrics** — Built-in device authenticators including Apple Touch ID, Apple Face ID, and Windows Hello.
 
 Note
 
@@ -486,11 +497,11 @@ Infrastructure applications do not yet support independent MFA.
 
 You can configure MFA requirements at three levels:
 
-| Level            | Description                                                    |
-| ---------------- | -------------------------------------------------------------- |
-| **Organization** | Enforce MFA by default for all applications in your account.   |
-| **Application**  | Require or turn off MFA for a specific application.            |
-| **Policy**       | Require or turn off MFA for users who match a specific policy. |
+| Level | Description |
+| --- | --- |
+| **Organization** | Enforce MFA by default for all applications in your account. |
+| **Application** | Require or turn off MFA for a specific application. |
+| **Policy** | Require or turn off MFA for users who match a specific policy. |
 
 Settings at lower levels (policy) override settings at higher levels (organization), giving you granular control over MFA enforcement.
 
@@ -515,8 +526,8 @@ https://<subdomain>.<domain>/authorize?elicitationId=<ELICITATION_ID>
 
 From the server selection page you can:
 
-* **Enable or disable servers** — Toggle individual upstream MCP servers on or off. Disabling a server removes its tools from the active session, which reduces context window usage.
-* **Log out and reauthenticate** — Log out of a server and log back in to change which data the server has access to, or to reauthenticate with different permissions.
+- **Enable or disable servers** — Toggle individual upstream MCP servers on or off. Disabling a server removes its tools from the active session, which reduces context window usage.
+- **Log out and reauthenticate** — Log out of a server and log back in to change which data the server has access to, or to reauthenticate with different permissions.
 
 Users can also enable or disable a server inline by asking their AI agent directly, for example "enable the wiki server" or "disable my Jira server."
 
@@ -535,10 +546,10 @@ Access authentication logs and Gateway activity logs (DNS, Network, and HTTP) no
 
 The updated UI includes:
 
-* **Filter by field** \- Select any field value to add it as a filter and narrow down your results.
-* **Customizable fields** \- Choose which fields to display in the log table. Querying for fewer fields improves log loading performance.
-* **View details** \- Select a timestamp to view the full details of a log entry.
-* **Switch to classic view** \- Return to the previous log viewer interface if needed.
+- **Filter by field** - Select any field value to add it as a filter and narrow down your results.
+- **Customizable fields** - Choose which fields to display in the log table. Querying for fewer fields improves log loading performance.
+- **View details** - Select a timestamp to view the full details of a log entry.
+- **Switch to classic view** - Return to the previous log viewer interface if needed.
 
 For more information, refer to [Access authentication logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/access-authentication-logs/) and [Gateway activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/).
 
@@ -549,7 +560,7 @@ For more information, refer to [Access authentication logs](https://developers.c
 
 [MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) support [Code Mode MCP server patterns](https://developers.cloudflare.com/agents/model-context-protocol/codemode/), a technique that reduces context window usage by replacing individual tool definitions with a single code execution tool. Code Mode is turned on by default on all portals.
 
-To turn it off, edit the portal in **Access controls** \> **AI controls** and turn off **Code Mode** under **Basic information**.
+To turn it off, edit the portal in **Access controls** > **AI controls** and turn off **Code Mode** under **Basic information**.
 
 When Code Mode is active, the portal exposes a single `code` tool instead of listing every tool from every upstream MCP server. The connected AI agent writes JavaScript that calls typed `codemode.*` methods for each upstream tool. The generated code runs in an isolated [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) environment, keeping authentication credentials and environment variables out of the model context.
 
@@ -605,9 +616,9 @@ Note
 
 For MCP server portals, managed OAuth is enabled by default on new portals. It remains opt-in for self-hosted applications.
 
-To enable managed OAuth, go to **Zero Trust** \> **Access controls** \> **Applications**, edit the application, and turn on **Managed OAuth** under **Advanced settings**.
+To enable managed OAuth, go to **Zero Trust** > **Access controls** > **Applications**, edit the application, and turn on **Managed OAuth** under **Advanced settings**.
 
-You can also enable it via the API by setting `oauth_configuration.enabled` to `true` on the [Access applications endpoint](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/applications/methods/update/).
+You can also enable it via the API by setting `oauth_configuration.enabled` to `true` on the [Access applications endpoint](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/update/).
 
 ![Managed OAuth settings in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2914,height=1042,format=webp/_astro/managed-oauth.BirLnBpy.png)
 
@@ -626,7 +637,7 @@ Note
 
 DLP [AI prompt profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/#ai-prompt) do not apply to MCP server portal traffic.
 
-To enable Gateway routing, go to **Access controls** \> **AI controls**, edit the portal, and turn on **Route traffic through Cloudflare Gateway** under **Basic information**.
+To enable Gateway routing, go to **Access controls** > **AI controls**, edit the portal, and turn on **Route traffic through Cloudflare Gateway** under **Basic information**.
 
 ![Route MCP server portal traffic through Cloudflare Gateway](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1568,height=158,format=webp/_astro/portal-route-through-gateway.0KMUAXBm.png)
 
@@ -656,8 +667,8 @@ This feature is useful for organizations that support bring-your-own-device (BYO
 
 Clipboard controls are configured per policy within your Access application. For each policy, you can independently allow or deny:
 
-* **Copy from local client to remote RDP session** — Users can copy/paste text from their local machine into the browser-based RDP session.
-* **Copy from remote RDP session to local client** — Users can copy/paste text from the browser-based RDP session to their local machine.
+- **Copy from local client to remote RDP session** — Users can copy/paste text from their local machine into the browser-based RDP session.
+- **Copy from remote RDP session to local client** — Users can copy/paste text from the browser-based RDP session to their local machine.
 
 By default, both directions are denied for new policies. For existing Access applications created before this feature was available, clipboard access remains enabled to preserve backwards compatibility.
 
@@ -680,16 +691,16 @@ Only available on Enterprise plans.
 
 The MCP server portal logs dataset includes fields such as:
 
-* `Datetime` — Timestamp of the request
-* `PortalID` / `PortalAUD` — Portal identifiers
-* `ServerID` / `ServerURL` — Upstream MCP server details
-* `Method` — JSON-RPC method (for example, `tools/call`, `prompts/get`, `resources/read`)
-* `ToolCallName` / `PromptGetName` / `ResourceReadURI` — Method-specific identifiers
-* `UserID` / `UserEmail` — Authenticated user information
-* `Success` / `Error` — Request outcome
-* `ServerResponseDurationMs` — Response time from upstream server
+- `Datetime` — Timestamp of the request
+- `PortalID` / `PortalAUD` — Portal identifiers
+- `ServerID` / `ServerURL` — Upstream MCP server details
+- `Method` — JSON-RPC method (for example, `tools/call`, `prompts/get`, `resources/read`)
+- `ToolCallName` / `PromptGetName` / `ResourceReadURI` — Method-specific identifiers
+- `UserID` / `UserEmail` — Authenticated user information
+- `Success` / `Error` — Request outcome
+- `ServerResponseDurationMs` — Response time from upstream server
 
-For the complete field reference, refer to [MCP portal logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/mcp%5Fportal%5Flogs/).
+For the complete field reference, refer to [MCP portal logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/mcp_portal_logs/).
 
 #### Set up Logpush
 
@@ -721,8 +732,8 @@ You can now assign [Access policies](https://developers.cloudflare.com/cloudflar
 
 Previously, bookmark applications were visible to all users in your organization. With policy support, you can now:
 
-* **Tailor the App Launcher to each user** — Users only see the applications they have access to, reducing clutter and preventing accidental clicks on irrelevant resources.
-* **Restrict visibility of sensitive bookmarks** — Limit who can view bookmarks to internal tools or partner resources based on group membership, identity provider, or device posture.
+- **Tailor the App Launcher to each user** — Users only see the applications they have access to, reducing clutter and preventing accidental clicks on irrelevant resources.
+- **Restrict visibility of sensitive bookmarks** — Limit who can view bookmarks to internal tools or partner resources based on group membership, identity provider, or device posture.
 
 Bookmarks support all [Access policy configurations](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) except purpose justification, temporary authentication, and application isolation. If no policy is assigned, the bookmark remains visible to all users (maintaining backwards compatibility).
 
@@ -737,15 +748,15 @@ Fine-grained permissions for **Access policies** and **Access service tokens** a
 
 #### New roles
 
-* **Cloudflare Access policy admin**: Can edit a specific [Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) in an account.
-* **Cloudflare Access service token admin**: Can edit a specific [Access service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) in an account.
+- **Cloudflare Access policy admin**: Can edit a specific [Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) in an account.
+- **Cloudflare Access service token admin**: Can edit a specific [Access service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) in an account.
 
 These roles complement the existing resource-scoped roles for Access applications, identity providers, and infrastructure targets.
 
 For more information:
 
-* [Resource-scoped roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/#resource-scoped-roles)
-* [Role scopes](https://developers.cloudflare.com/fundamentals/manage-members/scope/)
+- [Resource-scoped roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/#resource-scoped-roles)
+- [Role scopes](https://developers.cloudflare.com/fundamentals/manage-members/scope/)
 
 Note
 
@@ -764,9 +775,9 @@ This deny-by-default approach prevents accidental exposure of internal resources
 
 #### How it works
 
-* **Blocked by default**: Traffic to all hostnames in the account is blocked unless an Access application exists for that hostname.
-* **Explicit access required**: To allow traffic, create an Access application with an Allow or Bypass policy.
-* **Hostname exemptions**: You can exempt specific hostnames from this requirement.
+- **Blocked by default**: Traffic to all hostnames in the account is blocked unless an Access application exists for that hostname.
+- **Explicit access required**: To allow traffic, create an Access application with an Allow or Bypass policy.
+- **Hostname exemptions**: You can exempt specific hostnames from this requirement.
 
 To turn on this feature, refer to [Require Access protection](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/require-access-protection/).
 
@@ -777,9 +788,9 @@ To turn on this feature, refer to [Require Access protection](https://developers
 
 Three new API token permissions are available for Cloudflare Access, giving you finer-grained control when building automations and integrations:
 
-* **Access: Organizations Revoke** — Grants the ability to [revoke user sessions](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#revoke-user-sessions) in a Zero Trust organization. Use this permission when you need a token that can terminate active sessions without broader write access to organization settings.
-* **Access: Population Read** — Grants read access to the [SCIM users and groups](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/) synced from an identity provider to Cloudflare Access. Use this permission for tokens that only need to read synced user and group data.
-* **Access: Population Write** — Grants write access to the [SCIM users and groups](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/) synced from an identity provider to Cloudflare Access. Use this permission for tokens that need to create or modify synced user and group data.
+- **Access: Organizations Revoke** — Grants the ability to [revoke user sessions](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#revoke-user-sessions) in a Zero Trust organization. Use this permission when you need a token that can terminate active sessions without broader write access to organization settings.
+- **Access: Population Read** — Grants read access to the [SCIM users and groups](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/) synced from an identity provider to Cloudflare Access. Use this permission for tokens that only need to read synced user and group data.
+- **Access: Population Write** — Grants write access to the [SCIM users and groups](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/) synced from an identity provider to Cloudflare Access. Use this permission for tokens that need to create or modify synced user and group data.
 
 These permissions are scoped at the account level and can be combined with existing Access permissions.
 
@@ -801,7 +812,7 @@ These logs can be viewed from the [Cloudflare One dashboard ↗](https://one.das
 
 SSH with [Cloudflare Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/) allows you to use short-lived SSH certificates to eliminate SSH key management and reduce security risks associated with lost or stolen keys.
 
-Previously, users had to generate this certificate by using the [Cloudflare API ↗](https://developers.cloudflare.com/api/) directly. With this update, you can now create and manage this certificate in the [Cloudflare One dashboard ↗](https://one.dash.cloudflare.com) from the **Access controls** \> **Service credentials** page.
+Previously, users had to generate this certificate by using the [Cloudflare API ↗](https://developers.cloudflare.com/api/) directly. With this update, you can now create and manage this certificate in the [Cloudflare One dashboard ↗](https://one.dash.cloudflare.com) from the **Access controls** > **Service credentials** page.
 
 ![Navigate to Access controls and then Service credentials to see where you can generate an SSH CA](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2710,height=1180,format=webp/_astro/SSH-CA-generation.DYa9RnX1.png)
 
@@ -833,22 +844,23 @@ Fine-grained permissions for **Access Applications, Identity Providers (IdPs), a
 
 #### What's New
 
-* **[Access Applications ↗](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/)**: Grant admin permissions to specific Access Applications.
-* **[Identity Providers ↗](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/)**: Grant admin permissions to individual Identity Providers.
-* **[Targets ↗](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/#1-add-a-target)**: Grant admin rights to specific Targets
+- **[Access Applications ↗](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/)**: Grant admin permissions to specific Access Applications.
+- **[Identity Providers ↗](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/)**: Grant admin permissions to individual Identity Providers.
+- **[Targets ↗](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/#1-add-a-target)**: Grant admin rights to specific Targets
+
 ![Updated Permissions Policy UX](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3004,height=1410,format=webp/_astro/2025-10-01-fine-grained-permissioning-ux.BWVmQsVF.png)
 
 Note
 
 During the public beta, members must also be assigned an account-scoped, read only role to view resources in the dashboard. This restriction will be lifted in a future release.
 
-* **Account Read Only** plus a fine-grained permission for a specific App, IdP, or Target
-* **Cloudflare Zero Trust Read Only** plus fine-grained permission for a specific App, IdP, or Target
+- **Account Read Only** plus a fine-grained permission for a specific App, IdP, or Target
+- **Cloudflare Zero Trust Read Only** plus fine-grained permission for a specific App, IdP, or Target
 
 For more info:
 
-* [Get started with Cloudflare Permissioning](https://developers.cloudflare.com/fundamentals/manage-members/roles/)
-* [Manage Member Permissioning via the UI & API](https://developers.cloudflare.com/fundamentals/manage-members/manage)
+- [Get started with Cloudflare Permissioning](https://developers.cloudflare.com/fundamentals/manage-members/roles/)
+- [Manage Member Permissioning via the UI & API](https://developers.cloudflare.com/fundamentals/manage-members/manage)
 
 ## 2025-09-22
 
@@ -859,18 +871,19 @@ For more info:
 
 Since we announced our [open beta](https://developers.cloudflare.com/changelog/access/#2025-06-30), we've made a few improvements:
 
-* Support for targets with IPv6.
-* Support for [Magic WAN](https://developers.cloudflare.com/cloudflare-wan/) and [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) as on-ramps.
-* More robust error messaging on the login page to help you if you encounter an issue.
-* Worldwide keyboard support. Whether your day-to-day is in Portuguese, Chinese, or something in between, your browser-based RDP experience will look and feel exactly like you are using a desktop RDP client.
-* Cleaned up some other miscellaneous issues, including but not limited to enhanced support for Entra ID accounts and support for usernames with spaces, quotes, and special characters.
+- Support for targets with IPv6.
+- Support for [Magic WAN](https://developers.cloudflare.com/cloudflare-wan/) and [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) as on-ramps.
+- More robust error messaging on the login page to help you if you encounter an issue.
+- Worldwide keyboard support. Whether your day-to-day is in Portuguese, Chinese, or something in between, your browser-based RDP experience will look and feel exactly like you are using a desktop RDP client.
+- Cleaned up some other miscellaneous issues, including but not limited to enhanced support for Entra ID accounts and support for usernames with spaces, quotes, and special characters.
 
 As a refresher, here are some benefits browser-based RDP provides:
 
-* **Control how users authenticate to internal RDP resources** with single sign-on (SSO), multi-factor authentication (MFA), and granular access policies.
-* **Record who is accessing which servers and when** to support regulatory compliance requirements and to gain greater visibility in the event of a security event.
-* **Eliminate the need to install and manage software on user devices**. You will only need a web browser.
-* **Reduce your attack surface** by keeping your RDP servers off the public Internet and protecting them from common threats like credential stuffing or brute-force attacks.
+- **Control how users authenticate to internal RDP resources** with single sign-on (SSO), multi-factor authentication (MFA), and granular access policies.
+- **Record who is accessing which servers and when** to support regulatory compliance requirements and to gain greater visibility in the event of a security event.
+- **Eliminate the need to install and manage software on user devices**. You will only need a web browser.
+- **Reduce your attack surface** by keeping your RDP servers off the public Internet and protecting them from common threats like credential stuffing or brute-force attacks.
+
 ![Example of a browser-based RDP Access application](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2132,height=1814,format=webp/_astro/browser-based-rdp-access-app.BNXce1JL.png)
 
 To get started, refer to [Connect to RDP in a browser](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/).
@@ -894,9 +907,9 @@ For example, if you have an MCP server designed for internal use within your org
 
 An [MCP server portal](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) centralizes multiple Model Context Protocol (MCP) servers onto a single HTTP endpoint. Key benefits include:
 
-* **Streamlined access to multiple MCP servers**: MCP server portals support both unauthenticated MCP servers as well as MCP servers secured using any third-party or custom OAuth provider. Users log in to the portal URL through Cloudflare Access and are prompted to authenticate separately to each server that requires OAuth.
-* **Customized tools per portal**: Admins can tailor an MCP portal to a particular use case by choosing the specific tools and prompt templates that they want to make available to users through the portal. This allows users to access a curated set of tools and prompts — the less external context exposed to the AI model, the better the AI responses tend to be.
-* **Observability**: Once the user's AI agent is connected to the portal, Cloudflare Access logs the individual requests made using the tools in the portal.
+- **Streamlined access to multiple MCP servers**: MCP server portals support both unauthenticated MCP servers as well as MCP servers secured using any third-party or custom OAuth provider. Users log in to the portal URL through Cloudflare Access and are prompted to authenticate separately to each server that requires OAuth.
+- **Customized tools per portal**: Admins can tailor an MCP portal to a particular use case by choosing the specific tools and prompt templates that they want to make available to users through the portal. This allows users to access a curated set of tools and prompts — the less external context exposed to the AI model, the better the AI responses tend to be.
+- **Observability**: Once the user's AI agent is connected to the portal, Cloudflare Access logs the individual requests made using the tools in the portal.
 
 This is available in an open beta for all customers across all plans! For more information check out our [blog ↗](https://blog.cloudflare.com/zero-trust-mcp-server-portals/) for this release.
 
@@ -927,10 +940,11 @@ For EU CMB customers, the logs will not be stored by Access and will appear as e
 
 With browser-based RDP, you can:
 
-* **Control how users authenticate to internal RDP resources** with single sign-on (SSO), multi-factor authentication (MFA), and granular access policies.
-* **Record who is accessing which servers and when** to support regulatory compliance requirements and to gain greater visibility in the event of a security event.
-* **Eliminate the need to install and manage software on user devices**. You will only need a web browser.
-* **Reduce your attack surface** by keeping your RDP servers off the public Internet and protecting them from common threats like credential stuffing or brute-force attacks.
+- **Control how users authenticate to internal RDP resources** with single sign-on (SSO), multi-factor authentication (MFA), and granular access policies.
+- **Record who is accessing which servers and when** to support regulatory compliance requirements and to gain greater visibility in the event of a security event.
+- **Eliminate the need to install and manage software on user devices**. You will only need a web browser.
+- **Reduce your attack surface** by keeping your RDP servers off the public Internet and protecting them from common threats like credential stuffing or brute-force attacks.
+
 ![Example of a browsed-based RDP Access application](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2132,height=1814,format=webp/_astro/browser-based-rdp-access-app.BNXce1JL.png)
 
 To get started, see [Connect to RDP in a browser](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/).
@@ -942,7 +956,7 @@ To get started, see [Connect to RDP in a browser](https://developers.cloudflare.
 
 Cloudflare One now offers powerful new analytics dashboards to help customers easily discover available insights into their application access and network activity. These dashboards provide a centralized, intuitive view for understanding user behavior, application usage, and security posture.
 
-!\[Cloudflare One Analytics Dashboards\](\~/assets/images/changelog/cloudflare-one/Analytics Dashboards.png)
+!\[Cloudflare One Analytics Dashboards](\~/assets/images/changelog/cloudflare-one/Analytics Dashboards.png)
 
 Additionally, a new exportable access report is available, allowing customers to quickly view high-level metrics and trends in their application access. A **preview** of the report is shown below, with more to be found in the report:
 
@@ -957,14 +971,15 @@ Both features are accessible in the Cloudflare [Zero Trust dashboard ↗](https:
 
 A new Access Analytics dashboard is now available to all Cloudflare One customers. Customers can apply and combine multiple filters to dive into specific slices of their Access metrics. These filters include:
 
-* Logins granted and denied
-* Access events by type (SSO, Login, Logout)
-* Application name (Salesforce, Jira, Slack, etc.)
-* Identity provider (Okta, Google, Microsoft, onetimepin, etc.)
-* Users (`chris@cloudflare.com`, `sally@cloudflare.com`, `rachel@cloudflare.com`, etc.)
-* Countries (US, CA, UK, FR, BR, CN, etc.)
-* Source IP address
-* App type (self-hosted, Infrastructure, RDP, etc.)
+- Logins granted and denied
+- Access events by type (SSO, Login, Logout)
+- Application name (Salesforce, Jira, Slack, etc.)
+- Identity provider (Okta, Google, Microsoft, onetimepin, etc.)
+- Users ( `chris@cloudflare.com`, `sally@cloudflare.com`, `rachel@cloudflare.com`, etc.)
+- Countries (US, CA, UK, FR, BR, CN, etc.)
+- Source IP address
+- App type (self-hosted, Infrastructure, RDP, etc.)
+
 ![Access Analytics](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2030,height=1720,format=webp/_astro/accessanalytics.DYXgwZCl.png)
 
 To access the new overview, log in to your Cloudflare [Zero Trust dashboard ↗](https://one.dash.cloudflare.com/) and find Analytics in the side navigation bar.
@@ -985,7 +1000,7 @@ The [Access bulk policy tester](https://developers.cloudflare.com/cloudflare-one
 
 [Cloudflare Zero Trust SCIM provisioning](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim) now has a full audit log of all create, update and delete event from any SCIM Enabled IdP. The [SCIM logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/scim-logs/) support filtering by IdP, Event type, Result and many more fields. This will help with debugging user and group update issues and questions.
 
-SCIM logs can be found on the Zero Trust Dashboard under **Logs** \-> **SCIM provisioning**.
+SCIM logs can be found on the Zero Trust Dashboard under **Logs** -> **SCIM provisioning**.
 
 ![Example SCIM Logs](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2318,height=1060,format=webp/_astro/example-scim-log.Bv5Zqckh.png)
 
@@ -1000,10 +1015,11 @@ SCIM logs can be found on the Zero Trust Dashboard under **Logs** \-> **SCIM pro
 
 OIDC apps now include:
 
-* Group Filtering via RegEx
-* OIDC Claim mapping from an IdP
-* OIDC token lifetime control
-* Advanced OIDC auth flows including hybrid and implicit flows
+- Group Filtering via RegEx
+- OIDC Claim mapping from an IdP
+- OIDC token lifetime control
+- Advanced OIDC auth flows including hybrid and implicit flows
+
 ![OIDC field additions](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1021,height=192,format=webp/_astro/oidc-claims.2di8l9Lv.png)
 
 SAML apps now include improved SAML attribute mapping from an IdP.
@@ -1025,7 +1041,7 @@ Availability
 
 Only available on Enterprise plans.
 
-Cloudflare now allows you to send SSH command logs to storage destinations configured in [Logpush](https://developers.cloudflare.com/logs/logpush/), including third-party destinations. Once exported, analyze and audit the data as best fits your organization! For a list of available data fields, refer to the [SSH logs dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/ssh%5Flogs/).
+Cloudflare now allows you to send SSH command logs to storage destinations configured in [Logpush](https://developers.cloudflare.com/logs/logpush/), including third-party destinations. Once exported, analyze and audit the data as best fits your organization! For a list of available data fields, refer to the [SSH logs dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/ssh_logs/).
 
 To set up a Logpush job, refer to [Logpush integration](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/).
 
@@ -1040,9 +1056,10 @@ SSH with [Access for Infrastructure](https://developers.cloudflare.com/cloudflar
 
 SSH with Access for Infrastructure enables you to:
 
-* **Author fine-grained policy** to control who may access your SSH servers, including specific ports, protocols, and SSH users.
-* **Monitor infrastructure access** with Access and SSH command logs, supporting regulatory compliance and providing visibility in case of security breach.
-* **Preserve your end users' workflows.** SSH with Access for Infrastructure supports native SSH clients and does not require any modifications to users’ SSH configs.
+- **Author fine-grained policy** to control who may access your SSH servers, including specific ports, protocols, and SSH users.
+- **Monitor infrastructure access** with Access and SSH command logs, supporting regulatory compliance and providing visibility in case of security breach.
+- **Preserve your end users' workflows.** SSH with Access for Infrastructure supports native SSH clients and does not require any modifications to users’ SSH configs.
+
 ![Example of an infrastructure Access application](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1916,height=1714,format=webp/_astro/infrastructure-app.BhpJOgxs.png)
 
 To get started, refer to [SSH with Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/).

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DNS records
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/dns/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/dns/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you create a tunnel, Cloudflare generates a subdomain at `<UUID>.cfargotunnel.com`. You point a CNAME record at this subdomain to route traffic from your hostname to the tunnel.
 
@@ -22,15 +22,14 @@ The `cfargotunnel.com` subdomain only proxies traffic for DNS records in the sam
 
 To create a DNS record for a Cloudflare Tunnel:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **DNS Records** for your domain.
-[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **DNS Records** for your domain. [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Select **Add record**.
 3. Enter the following values:
-
-  * **Type**: _CNAME_
-  * **Name**: Subdomain of your application
-  * **Target**: `<UUID>.cfargotunnel.com`
+   - **Type**: *CNAME*
+   - **Name**: Subdomain of your application
+   - **Target**: `<UUID>.cfargotunnel.com`
 4. Select **Save**.
+
 ![Example of fields completed to create a new CNAME record.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2544,height=830,format=webp/_astro/dns-record.B25etJTI.png)
 
 For locally-managed tunnels, run the following command to create a CNAME record pointing to your tunnel subdomain:
@@ -43,7 +42,7 @@ This creates a CNAME record but does not proxy traffic unless the tunnel is runn
 
 Note
 
-To create DNS records using `cloudflared`, the [cert.pem](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/local-tunnel-terms/#certpem) file must be installed on your system.
+To create DNS records using `cloudflared`, the [`cert.pem`](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/local-tunnel-terms/#certpem) file must be installed on your system.
 
 The DNS record and the tunnel are independent. You can create DNS records that point to a tunnel that is not running. If a tunnel stops, the DNS record is not deleted — visitors will see a `1016` error.
 

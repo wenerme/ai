@@ -16,11 +16,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • OpenAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-sol/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-sol/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `openai/gpt-5.6-sol`
 
-* Third-party
+- Third-party
 
 GPT-5.6 Sol is OpenAI's frontier GPT-5.6 model for complex professional work, using the Responses API for reasoning and stateful context management.
 
@@ -28,13 +28,13 @@ Tip
 
 GPT-5.6 Sol is 50% off through Sept 18
 
-| Model Info                                                                          |                                                                                                                      |
-| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,050,000 tokens                                                                                                     |
-| Terms and License                                                                   | [link ↗](https://openai.com/policies/)                                                                               |
-| More information                                                                    | [link ↗](https://openai.com/)                                                                                        |
-| Request formats                                                                     | Responses                                                                                                            |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.6-sol) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,050,000 tokens |
+| Terms and License | [link ↗](https://openai.com/policies/) |
+| More information | [link ↗](https://openai.com/) |
+| Request formats | Responses |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.6-sol) |
 
 ## Usage
 
@@ -62,11 +62,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 - **Validate readiness:** Confirm capacity, quotas, security controls, certificates, secrets, dependencies, and compliance requirements in the new region.
 - **Protect data:** Take verified backups; validate replication consistency, encryption, retention, and restore procedures before cutover.
 - **Test end to end:** Run load, latency, failover, integration, and smoke tests using production-like traffic and data.
 - **Control cutover:** Lower DNS TTLs, deploy gradually with canary traffic, freeze risky changes, and monitor errors, latency, saturation, and data integrity.
 - **Prepare rollback:** Define go/no-go thresholds, owners, communication channels, and a rehearsed rollback plan; retain the old region until stability is confirmed.
+```
 
 ```json
 {
@@ -173,7 +175,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ## Examples
 
-**Operational Reasoning** — Using reasoning effort for a multi-step operational decision
+<details>
+
+<summary>**Operational Reasoning** — Using reasoning effort for a multi-step operational decision</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -202,11 +208,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 - Total minutes in 30 days: \(30 \times 24 \times 60 = 43{,}200\)
 - Error budget at 99.9% availability: \(43{,}200 \times 0.001 = 43.2\) minutes
 - Downtime used: 31 minutes
 
 **No**, it has not exceeded the monthly error budget. It has **12.2 minutes remaining**.
+```
 
 ```json
 {
@@ -311,6 +319,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }
 ```
 
+</details>
+
 ## Parameters
 
 ▶input
@@ -337,13 +347,11 @@ stream
 
 `boolean`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
-
-``
 
 ▶text{}
 
@@ -369,7 +377,7 @@ model
 
 `string`
 
-▶output\[\]
+▶output\[]
 
 `array`
 
@@ -387,9 +395,9 @@ status
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-sol/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-sol/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-sol/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-sol/schema-output.json)
 
 Was this helpful?
 

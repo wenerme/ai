@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Migration guides
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/reference/migration-guides/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/migration-guides/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [SCIM v1 to v2 Migration](https://developers.cloudflare.com/fundamentals/reference/migration-guides/scim-virtual-groups-migration/)
+- [SCIM v1 to v2 Migration](https://developers.cloudflare.com/fundamentals/reference/migration-guides/scim-virtual-groups-migration/)
 
 Was this helpful?
 

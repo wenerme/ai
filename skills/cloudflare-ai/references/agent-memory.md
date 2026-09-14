@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Agent Memory
 
-Last updated Jun 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agent-memory/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agent-memory/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Persistent, scoped memory for agents that need to remember users, organizations, and domain-specific context across conversations.
 
@@ -26,11 +26,12 @@ Use Agent Memory to remember user preferences, company operating rules, support 
 
 **Agent Memory gives you:**
 
-* Isolated profiles for users, agents, tenants, teams, or application entities
-* Namespaces for separating applications, environments, or memory layers
-* Automatic extraction of facts, events, instructions, and tasks from conversations
-* APIs to add, list, recall, and delete memories
-* Profile summaries for observing what Agent Memory remembers
+- Isolated profiles for users, agents, tenants, teams, or application entities
+- Namespaces for separating applications, environments, or memory layers
+- Automatic extraction of facts, events, instructions, and tasks from conversations
+- APIs to add, list, recall, and delete memories
+- Profile summaries for observing what Agent Memory remembers
+
 [Get started](https://developers.cloudflare.com/agent-memory/get-started/) [Learn how it works](https://developers.cloudflare.com/agent-memory/concepts/how-agent-memory-works/)
 
 ---

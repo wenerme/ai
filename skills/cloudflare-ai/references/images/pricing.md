@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pricing
 
-Last updated Jul 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, all users are on the Images Free plan. The Free plan includes access to the transformations feature, which lets you optimize images stored outside of Images, like in [R2](https://developers.cloudflare.com/r2/).
 
@@ -20,10 +20,10 @@ The Paid plan allows transformations, as well as access to storage in Images.
 
 Pricing is dependent on which features you use. The table below shows which metrics are used for each use case.
 
-| Use case                                             | Metrics                         | Availability        |
-| ---------------------------------------------------- | ------------------------------- | ------------------- |
-| Optimize images stored outside of Images             | Images Transformed              | Free and Paid plans |
-| Optimize images that are stored in Cloudflare Images | Images Stored, Images Delivered | Only Paid plans     |
+| Use case | Metrics | Availability |
+| --- | --- | --- |
+| Optimize images stored outside of Images | Images Transformed | Free and Paid plans |
+| Optimize images that are stored in Cloudflare Images | Images Stored, Images Delivered | Only Paid plans |
 
 ## Images Free
 
@@ -31,9 +31,9 @@ On the Free plan, you can request up to 5,000 unique transformations each month 
 
 Once you exceed 5,000 unique transformations:
 
-* Existing transformations in cache will continue to be served as expected.
-* New transformations will return a `9422` error. If your source image is from the same domain where the transformation is served, then you can use the [onerror parameter](https://developers.cloudflare.com/images/optimization/features/#onerror) to redirect to the original image.
-* You will not be charged for exceeding the limits in the Free plan.
+- Existing transformations in cache will continue to be served as expected.
+- New transformations will return a `9422` error. If your source image is from the same domain where the transformation is served, then you can use the [`onerror` parameter](https://developers.cloudflare.com/images/optimization/features/#onerror) to redirect to the original image.
+- You will not be charged for exceeding the limits in the Free plan.
 
 To request more than 5,000 unique transformations each month, you can purchase an Images Paid plan.
 
@@ -41,11 +41,11 @@ To request more than 5,000 unique transformations each month, you can purchase a
 
 When you purchase an Images Paid plan, you can choose your own storage or add storage in Images.
 
-| Metric             | Pricing                                                                                    |
-| ------------------ | ------------------------------------------------------------------------------------------ |
+| Metric | Pricing |
+| --- | --- |
 | Images Transformed | First 5,000 unique transformations included + $0.50 / 1,000 unique transformations / month |
-| Images Stored      | $5 / 100,000 images stored / month                                                         |
-| Images Delivered   | $1 / 100,000 images delivered / month                                                      |
+| Images Stored | $5 / 100,000 images stored / month |
+| Images Delivered | $1 / 100,000 images delivered / month |
 
 If you optimize an image stored outside of Images, then you will be billed only for Images Transformed.
 
@@ -59,7 +59,7 @@ A unique transformation is a request to transform an original image based on a s
 
 For example, if you transform `thumbnail.jpg` as 100x100, then this counts as one unique transformation. If you transform the same `thumbnail.jpg` as 200x200, then this counts as a separate unique transformation.
 
-You are billed on the number of unique transformations that are requested within each calendar month. Repeat requests for the same transformation within the same month are counted only once for that month. Calls to the Images binding's [.info()](https://developers.cloudflare.com/images/optimization/binding/#infostream) method are not billed.
+You are billed on the number of unique transformations that are requested within each calendar month. Repeat requests for the same transformation within the same month are counted only once for that month. Calls to the Images binding's [`.info()`](https://developers.cloudflare.com/images/optimization/binding/#infostream) method are not billed.
 
 The `format` parameter counts as only one billable transformation, even if multiple copies of an image are served. In other words, if `width=100,format=auto/thumbnail.jpg` is served to some users as AVIF and to others as WebP, then this counts as one unique transformation instead of two.
 
@@ -67,9 +67,9 @@ The `format` parameter counts as only one billable transformation, even if multi
 
 If you serve 2,000 remote images in five different sizes each month, then this results in 10,000 unique transformations. Your estimated cost for the month would be:
 
-|                 | Usage                                                 | Included | Billable quantity | Price                         |
-| --------------- | ----------------------------------------------------- | -------- | ----------------- | ----------------------------- |
-| Transformations | 10,000 unique transformations [1](#user-content-fn-5) | 5,000    | 5,000             | $2.50 [2](#user-content-fn-6) |
+|  | Usage | Included | Billable quantity | Price |
+| --- | --- | --- | --- | --- |
+| Transformations | 10,000 unique transformations <sup>[1](#user-content-fn-5)</sup> | 5,000 | 5,000 | $2.50 <sup>[2](#user-content-fn-6)</sup> |
 
 #### Example #2
 
@@ -77,13 +77,13 @@ If you use [R2](https://developers.cloudflare.com/r2/) for storage then your est
 
 For example, if you upload 5,000 images to R2 with an average size of 5 MB, and serve 2,000 of those images in five different sizes, then your estimated cost for the month would be:
 
-|                    | Usage                                                 | Included   | Billable quantity | Price                           |
-| ------------------ | ----------------------------------------------------- | ---------- | ----------------- | ------------------------------- |
-| Storage            | 25 GB [3](#user-content-fn-1)                         | 10 GB      | 15 GB             | $0.22 [4](#user-content-fn-7)   |
-| Class A operations | 5,000 writes [5](#user-content-fn-2)                  | 1 million  | 0                 | $0.00 [6](#user-content-fn-8)   |
-| Class B operations | 10,000 reads [7](#user-content-fn-3)                  | 10 million | 0                 | $0.00 [8](#user-content-fn-9)   |
-| Transformations    | 10,000 unique transformations [9](#user-content-fn-4) | 5,000      | 5,000             | $2.50 [10](#user-content-fn-10) |
-| **Total**          |                                                       |            |                   | **$2.72**                       |
+|  | Usage | Included | Billable quantity | Price |
+| --- | --- | --- | --- | --- |
+| Storage | 25 GB <sup>[3](#user-content-fn-1)</sup> | 10 GB | 15 GB | $0.22 <sup>[4](#user-content-fn-7)</sup> |
+| Class A operations | 5,000 writes <sup>[5](#user-content-fn-2)</sup> | 1 million | 0 | $0.00 <sup>[6](#user-content-fn-8)</sup> |
+| Class B operations | 10,000 reads <sup>[7](#user-content-fn-3)</sup> | 10 million | 0 | $0.00 <sup>[8](#user-content-fn-9)</sup> |
+| Transformations | 10,000 unique transformations <sup>[9](#user-content-fn-4)</sup> | 5,000 | 5,000 | $2.50 <sup>[10](#user-content-fn-10)</sup> |
+| **Total** |  |  |  | **$2.72** |
 
 ### Images Stored
 

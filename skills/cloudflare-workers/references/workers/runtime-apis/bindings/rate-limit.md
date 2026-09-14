@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Rate Limiting
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Rate Limiting API lets you define rate limits and write code around them in your Worker.
 
 You can use it to enforce:
 
-* Rate limits that are applied after your Worker starts, only once a specific part of your code is reached
-* Different rate limits for different types of customers or users (ex: free vs. paid)
-* Resource-specific or path-specific limits (ex: limit per API route)
-* Any combination of the above
+- Rate limits that are applied after your Worker starts, only once a specific part of your code is reached
+- Different rate limits for different types of customers or users (ex: free vs. paid)
+- Resource-specific or path-specific limits (ex: limit per API route)
+- Any combination of the above
 
 The Rate Limiting API is backed by the same infrastructure that serves [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/).
 
@@ -104,8 +104,8 @@ export default {
 
 The `limit()` API accepts a single argument — a configuration object with the `key` field.
 
-* The key you provide can be any `string` value.
-* A common pattern is to define your key by combining a string that uniquely identifies the actor initiating the request (ex: a user ID or customer ID) and a string that identifies a specific resource (ex: a particular API route).
+- The key you provide can be any `string` value.
+- A common pattern is to define your key by combining a string that uniquely identifies the actor initiating the request (ex: a user ID or customer ID) and a string that identifies a specific resource (ex: a particular API route).
 
 You can define and configure multiple rate limiting configurations per Worker, which allows you to define different limits against incoming request and/or user parameters as needed to protect your application or upstream APIs.
 
@@ -161,12 +161,12 @@ namespace_id = "1002"
 
 A rate limiting binding has the following settings:
 
-| Setting       | Type   | Description                                                                                                                                                                                                                                   |
-| ------------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| namespace\_id | string | A string containing a positive integer that uniquely defines this rate limiting namespace within your Cloudflare account (for example, "1001"). Although the value must be a valid integer, it is specified as a string. This is intentional. |
-| simple        | object | The rate limit configuration. simple is the only supported type.                                                                                                                                                                              |
-| simple.limit  | number | The number of allowed requests (or calls to limit()) within the given period.                                                                                                                                                                 |
-| simple.period | number | The duration of the rate limit window, in seconds. Must be either 10 or 60.                                                                                                                                                                   |
+| Setting | Type | Description |
+| --- | --- | --- |
+| `namespace_id` | `string` | A string containing a positive integer that uniquely defines this rate limiting namespace within your Cloudflare account (for example, `"1001"`). Although the value must be a valid integer, it is specified as a string. This is intentional. |
+| `simple` | `object` | The rate limit configuration. `simple` is the only supported type. |
+| `simple.limit` | `number` | The number of allowed requests (or calls to `limit()`) within the given `period`. |
+| `simple.period` | `number` | The duration of the rate limit window, in seconds. Must be either `10` or `60`. |
 
 Note
 
@@ -206,8 +206,8 @@ namespace_id = "1001"
 
 The `key` passed to the `limit` function, that determines what to rate limit on, should represent a unique characteristic of a user or class of user that you wish to rate limit.
 
-* Good choices include API keys in `Authorization` HTTP headers, URL paths or routes, specific query parameters used by your application, and/or user IDs and tenant IDs. These are all stable identifiers and are unlikely to change from request-to-request.
-* It is not recommended to use IP addresses or locations (regions or countries), since these can be shared by many users in many valid cases. You may find yourself unintentionally rate limiting a wider group of users than you intended by rate limiting on these keys.
+- Good choices include API keys in `Authorization` HTTP headers, URL paths or routes, specific query parameters used by your application, and/or user IDs and tenant IDs. These are all stable identifiers and are unlikely to change from request-to-request.
+- It is not recommended to use IP addresses or locations (regions or countries), since these can be shared by many users in many valid cases. You may find yourself unintentionally rate limiting a wider group of users than you intended by rate limiting on these keys.
 
 ```ts
 // Recommended: use a key that represents a specific user or class of user
@@ -251,14 +251,14 @@ For example, if many requests come in to your Worker in a single Cloudflare loca
 
 Rate limiting bindings are not currently visible in the Cloudflare dashboard. To monitor rate-limited requests from your Worker:
 
-* **[Workers Observability](https://developers.cloudflare.com/workers/observability/)** — Use [Workers Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/) and [Traces](https://developers.cloudflare.com/workers/observability/traces/) to observe HTTP 429 responses returned by your Worker when rate limits are exceeded.
-* **[Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/)** — Add an Analytics Engine binding to your Worker and emit custom data points (for example, a `rate_limited` event) when `limit()` returns `{ success: false }`. This lets you build dashboards and query rate limiting metrics over time.
+- **[Workers Observability](https://developers.cloudflare.com/workers/observability/)** — Use [Workers Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/) and [Traces](https://developers.cloudflare.com/workers/observability/traces/) to observe HTTP 429 responses returned by your Worker when rate limits are exceeded.
+- **[Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/)** — Add an Analytics Engine binding to your Worker and emit custom data points (for example, a `rate_limited` event) when `limit()` returns `{ success: false }`. This lets you build dashboards and query rate limiting metrics over time.
 
 ## Examples
 
-* [@elithrar/workers-hono-rate-limit ↗](https://github.com/elithrar/workers-hono-rate-limit) — Middleware that lets you easily add rate limits to routes in your [Hono ↗](https://hono.dev/) application.
-* [@hono-rate-limiter/cloudflare ↗](https://github.com/rhinobase/hono-rate-limiter) — Middleware that lets you easily add rate limits to routes in your [Hono ↗](https://hono.dev/) application, with multiple data stores to choose from.
-* [hono-cf-rate-limit ↗](https://github.com/bytaesu/hono-cf-rate-limit) — Middleware for Hono applications that applies rate limiting in Cloudflare Workers, powered by Wrangler’s built-in features.
+- [`@elithrar/workers-hono-rate-limit` ↗](https://github.com/elithrar/workers-hono-rate-limit) — Middleware that lets you easily add rate limits to routes in your [Hono ↗](https://hono.dev/) application.
+- [`@hono-rate-limiter/cloudflare` ↗](https://github.com/rhinobase/hono-rate-limiter) — Middleware that lets you easily add rate limits to routes in your [Hono ↗](https://hono.dev/) application, with multiple data stores to choose from.
+- [`hono-cf-rate-limit` ↗](https://github.com/bytaesu/hono-cf-rate-limit) — Middleware for Hono applications that applies rate limiting in Cloudflare Workers, powered by Wrangler’s built-in features.
 
 Was this helpful?
 

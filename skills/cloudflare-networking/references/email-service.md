@@ -12,16 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Email Service
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Send transactional emails and route incoming emails to Workers or email addresses
 
 Cloudflare Email Service provides powerful email capabilities:
 
-* **Email Sending** Beta for outbound transactional emails
-Available on Workers Paid plan
-* **Email Routing** for handling incoming emails with Workers or routing to email addresses
-Available on Free and Paid plans
+- **Email Sending** Beta for outbound transactional emails Available on Workers Paid plan
+- **Email Routing** for handling incoming emails with Workers or routing to email addresses Available on Free and Paid plans
 
 Note
 
@@ -29,11 +27,11 @@ Sending to [verified destination addresses](https://developers.cloudflare.com/em
 
 Together, these two features make it possible for you to send and receive emails from your applications. For example, you can use Email Service for:
 
-* Transactional emails (welcome messages, password resets, order confirmations)
-* Authentication flows (magic links, email verification, two-factor authentication)
-* Notifications and alerts
-* Custom email addresses (support@, contact@, orders@)
-* Emails as a mode of interaction for agents, such as send an email to create an issue in ticket tracking
+- Transactional emails (welcome messages, password resets, order confirmations)
+- Authentication flows (magic links, email verification, two-factor authentication)
+- Notifications and alerts
+- Custom email addresses (support@, contact@, orders@)
+- Emails as a mode of interaction for agents, such as send an email to create an issue in ticket tracking
 
 Access Email Service directly from Cloudflare Workers using [bindings](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/), from any platform using the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/), or over [authenticated SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/):
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Model Context Protocol (MCP)
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can build and deploy [Model Context Protocol (MCP) ↗](https://modelcontextprotocol.io/) servers on Cloudflare.
 
@@ -22,23 +22,23 @@ You can build and deploy [Model Context Protocol (MCP) ↗](https://modelcontext
 
 ### MCP Terminology
 
-* **MCP Hosts**: AI assistants (like [Claude ↗](https://claude.ai) or [Cursor ↗](https://cursor.com)), AI agents, or applications that need to access external capabilities.
-* **MCP Clients**: Clients embedded within the MCP hosts that connect to MCP servers and invoke tools. Each MCP client instance has a single connection to an MCP server.
-* **MCP Servers**: Applications that expose [tools](https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/), [prompts ↗](https://modelcontextprotocol.io/docs/concepts/prompts), and [resources ↗](https://modelcontextprotocol.io/docs/concepts/resources) that MCP clients can use.
+- **MCP Hosts**: AI assistants (like [Claude ↗](https://claude.ai) or [Cursor ↗](https://cursor.com)), AI agents, or applications that need to access external capabilities.
+- **MCP Clients**: Clients embedded within the MCP hosts that connect to MCP servers and invoke tools. Each MCP client instance has a single connection to an MCP server.
+- **MCP Servers**: Applications that expose [tools](https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/), [prompts ↗](https://modelcontextprotocol.io/docs/concepts/prompts), and [resources ↗](https://modelcontextprotocol.io/docs/concepts/resources) that MCP clients can use.
 
 ### Remote vs. local MCP connections
 
 The MCP standard supports two modes of operation:
 
-* **Remote MCP connections**: MCP clients connect to MCP servers over the Internet, establishing a connection using [Streamable HTTP](https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/), and authorizing the MCP client access to resources on the user's account using [OAuth](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/).
-* **Local MCP connections**: MCP clients connect to MCP servers on the same machine, using [stdio ↗](https://modelcontextprotocol.io/specification/2025-06-18/basic/transports#stdio) as a local transport method.
+- **Remote MCP connections**: MCP clients connect to MCP servers over the Internet, establishing a connection using [Streamable HTTP](https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/), and authorizing the MCP client access to resources on the user's account using [OAuth](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/).
+- **Local MCP connections**: MCP clients connect to MCP servers on the same machine, using [stdio ↗](https://modelcontextprotocol.io/specification/2025-06-18/basic/transports#stdio) as a local transport method.
 
 ### Best Practices
 
-* **Tool design**: Do not treat your MCP server as a wrapper around your full API schema. Instead, build tools that are optimized for specific user goals and reliable outcomes. Fewer, well-designed tools often outperform many granular ones, especially for agents with small context windows or tight latency budgets.
-* **Scoped permissions**: Deploying several focused MCP servers, each with narrowly scoped permissions, reduces the risk of over-privileged access and makes it easier to manage and audit what each server is allowed to do.
-* **Tool descriptions**: Detailed parameter descriptions help agents understand how to use your tools correctly — including what values are expected, how they affect behavior, and any important constraints. This reduces errors and improves reliability.
-* **Evaluation tests**: Use evaluation tests ('evals') to measure the agent’s ability to use your tools correctly. Run these after any updates to your server or tool descriptions to catch regressions early and track improvements over time.
+- **Tool design**: Do not treat your MCP server as a wrapper around your full API schema. Instead, build tools that are optimized for specific user goals and reliable outcomes. Fewer, well-designed tools often outperform many granular ones, especially for agents with small context windows or tight latency budgets.
+- **Scoped permissions**: Deploying several focused MCP servers, each with narrowly scoped permissions, reduces the risk of over-privileged access and makes it easier to manage and audit what each server is allowed to do.
+- **Tool descriptions**: Detailed parameter descriptions help agents understand how to use your tools correctly — including what values are expected, how they affect behavior, and any important constraints. This reduces errors and improves reliability.
+- **Evaluation tests**: Use evaluation tests ('evals') to measure the agent’s ability to use your tools correctly. Run these after any updates to your server or tool descriptions to catch regressions early and track improvements over time.
 
 ### Get Started
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Notifications
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/notifications/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/notifications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Available on all plans
 
@@ -20,9 +20,9 @@ Cloudflare Notifications help you stay up to date with your Cloudflare account. 
 
 The available Notification features vary according to your plan:
 
-* Free plans can set up email-based Notifications.
-* Business and higher plans can also [access PagerDuty](https://developers.cloudflare.com/notifications/get-started/configure-pagerduty/).
-* Professional and higher plans can also [use webhooks](https://developers.cloudflare.com/notifications/get-started/configure-webhooks/).
+- Free plans can set up email-based Notifications.
+- Business and higher plans can also [access PagerDuty](https://developers.cloudflare.com/notifications/get-started/configure-pagerduty/).
+- Professional and higher plans can also [use webhooks](https://developers.cloudflare.com/notifications/get-started/configure-webhooks/).
 
 The notification service only works on the [proxied](https://developers.cloudflare.com/dns/proxy-status/) domains because Cloudflare needs enough information necessary to decide if we need to trigger a notification or not.
 
@@ -30,8 +30,8 @@ Note
 
 The availability of delivery methods like PagerDuty and webhooks in Free or Professional zones depends on the highest zone plan in your Cloudflare account:
 
-* PagerDuty is available in zones on a Free/Professional plan if your Cloudflare account has at least one zone in a Business plan (or higher).
-* Webhooks are available in zones on a Free plan if your Cloudflare account has at least one zone in a Professional plan (or higher).
+- PagerDuty is available in zones on a Free/Professional plan if your Cloudflare account has at least one zone in a Business plan (or higher).
+- Webhooks are available in zones on a Free plan if your Cloudflare account has at least one zone in a Professional plan (or higher).
 
 Was this helpful?
 

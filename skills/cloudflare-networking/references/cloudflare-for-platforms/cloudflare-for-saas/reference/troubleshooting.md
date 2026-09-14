@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated Sep 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Rate limits
 
@@ -52,14 +52,14 @@ When switching SaaS providers, an older configuration can take precedence if the
 
 In this case there are two ways forward:
 
-* (Recommended) Ask the new SaaS provider to provision a specific custom hostname for you instead of the wildcard - `mystore.example.com` instead of `*.example.com`.
-* Ask the Super Administrator of your account to contact [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) to request an update of the SaaS configuration.
+- (Recommended) Ask the new SaaS provider to provision a specific custom hostname for you instead of the wildcard - `mystore.example.com` instead of `*.example.com`.
+- Ask the Super Administrator of your account to contact [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) to request an update of the SaaS configuration.
 
 ---
 
 ## Custom hostname in Moved status
 
-To move a custom hostname back to an Active status, send a [PATCH request](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/) to restart the hostname validation. A Custom Hostname in a Moved status is deleted after 7 days.
+To move a custom hostname back to an Active status, send a [PATCH request](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/) to restart the hostname validation. A Custom Hostname in a Moved status is deleted after 7 days.
 
 In some circumstances, custom hostnames can also enter a **Moved** state if your customer changes their DNS records pointing to your SaaS service. For more details, refer to [Remove custom hostnames](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/remove-custom-hostnames/).
 
@@ -102,30 +102,35 @@ As Let's Encrypt - one of the [certificate authorities (CAs)](https://developers
 
 Consider the following solutions:
 
-* Use the [Edit Custom Hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/) endpoint to set the `certificate_authority` parameter to an empty string (`""`): this sets the custom hostname certificate to "default CA", leaving the choice up to Cloudflare. Cloudflare will always attempt to issue the certificate from a more compatible CA, such as [Google Trust Services](https://developers.cloudflare.com/ssl/reference/certificate-authorities/#google-trust-services), and will only fall back to using Let’s Encrypt if there is a [CAA record](https://developers.cloudflare.com/ssl/edge-certificates/caa-records/) in place that blocks Google from issuing a certificate.
-Example API call
-```sh
-curl --request PATCH \
-"https://api.cloudflare.com/client/v4/zones/{zone_id}/custom_hostnames/{custom_hostname_id}" \
---header "X-Auth-Email: <EMAIL>" \
---header "X-Auth-Key: <API_KEY>" \
---header "Content-Type: application/json" \
---data '{
-  "ssl": {
-      "method": "txt",
-      "type": "dv",
-      "certificate_authority": ""
-  }
-}'
-```
-* Use the [Edit Custom Hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/) endpoint to set the `certificate_authority` parameter to `google`: this sets Google Trust Services as the CA for your custom hostnames. In your API call, make sure to also include `method` and `type` in the `ssl` object.
-* If you are using a custom certificate for your custom hostname, refer to the [custom certificates troubleshooting](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/troubleshooting/#lets-encrypt-chain-update).
+- Use the [Edit Custom Hostname](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/) endpoint to set the `certificate_authority` parameter to an empty string ( `""`): this sets the custom hostname certificate to "default CA", leaving the choice up to Cloudflare. Cloudflare will always attempt to issue the certificate from a more compatible CA, such as [Google Trust Services](https://developers.cloudflare.com/ssl/reference/certificate-authorities/#google-trust-services), and will only fall back to using Let’s Encrypt if there is a [CAA record](https://developers.cloudflare.com/ssl/edge-certificates/caa-records/) in place that blocks Google from issuing a certificate.<details><summary>
+
+  Example API call</summary>
+
+  ```sh
+  curl --request PATCH \
+  "https://api.cloudflare.com/client/v4/zones/{zone_id}/custom_hostnames/{custom_hostname_id}" \
+  --header "X-Auth-Email: <EMAIL>" \
+  --header "X-Auth-Key: <API_KEY>" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "ssl": {
+        "method": "txt",
+        "type": "dv",
+        "certificate_authority": ""
+    }
+  }'
+  ```
+
+  </details>
+
+- Use the [Edit Custom Hostname](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/) endpoint to set the `certificate_authority` parameter to `google`: this sets Google Trust Services as the CA for your custom hostnames. In your API call, make sure to also include `method` and `type` in the `ssl` object.
+- If you are using a custom certificate for your custom hostname, refer to the [custom certificates troubleshooting](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/troubleshooting/#lets-encrypt-chain-update).
 
 ## Custom hostname fails to verify because the zone is held
 
 The [zone hold feature](https://developers.cloudflare.com/fundamentals/account/account-security/zone-holds/) is a toggle that will prevent their zone from being activated on other Cloudflare account. When enabled, Cloudflare is not able to issue an SSL/TLS certificate on behalf of that domain name for either a zone or custom hostname. When the option `Also prevent subdomains` is enabled, this prevents the verification of custom hostnames for this domain. The custom hostname will remain in the `Blocked` status, with the following error message: `The hostname is associated with a held zone. Please contact the owner of this domain to have the hold removed.` In this case, the owner of the zone needs to [release the hold](https://developers.cloudflare.com/fundamentals/account/account-security/zone-holds/#release-zone-holds) before the custom hostname can become activated.
 
-The `Blocked` status is terminal — the custom hostname will not retry validation automatically. After the zone hold is released, select **Refresh** on the custom hostname in the Cloudflare dashboard, or send a [PATCH request](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/) to the custom hostname, to restart the validation process. After the hostname has been validated, the zone hold can be enabled again.
+The `Blocked` status is terminal — the custom hostname will not retry validation automatically. After the zone hold is released, select **Refresh** on the custom hostname in the Cloudflare dashboard, or send a [PATCH request](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/) to the custom hostname, to restart the validation process. After the hostname has been validated, the zone hold can be enabled again.
 
 ## Hostnames over 64 characters
 

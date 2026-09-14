@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure JWT validation via the API
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/jwt-validation/api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/jwt-validation/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the Cloudflare API to configure [JWT validation](https://developers.cloudflare.com/api-shield/security/jwt-validation/). A token configuration defines how Cloudflare finds and validates JWTs. You then use a WAF custom rule or a token validation rule to [act on the results](#act-on-validation-results).
 
@@ -26,13 +26,13 @@ A zone may have up to four token configurations.
 
 Token configurations require the following information:
 
-| Field name     | Description                                                                                                                                                 | Example                                                                                           | Notes                                             |
-| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
-| title          | A human-readable name for the configuration that allows you to quickly identify the purpose of the configuration.                                           | Production JWT configuration                                                                      | Limited to 50 characters.                         |
-| description    | A human-readable description that gives more details than title which serves as a means to allow customers to better document the use of the configuration. | This configuration checks the JWT in the authorization header.                                    | Limited to 500 characters.                        |
-| token\_sources | A list of possible locations where then JWT can be found on the request.                                                                                    | http.request.headers\[\\"authorization\\"\]\[0\] http.request.cookies\[\\"Authorization\\"\]\[0\] | Refer to the [information](#token-sources) below. |
-| token\_type    | This specifies the type of token to validate.                                                                                                               | jwt                                                                                               | Only jwt is currently supported.                  |
-| credentials    | This describes the cryptographic keys that should be used to validate JWTs. Each key must be a JSON Web Key (JWK).                                          | Refer to the example below.                                                                       | Refer to the [information](#credentials) below.   |
+| Field name | Description | Example | Notes |
+| --- | --- | --- | --- |
+| `title` | A human-readable name for the configuration that allows you to quickly identify the purpose of the configuration. | Production JWT configuration | Limited to 50 characters. |
+| `description` | A human-readable description that gives more details than `title` which serves as a means to allow customers to better document the use of the configuration. | This configuration checks the JWT in the authorization header. | Limited to 500 characters. |
+| `token_sources` | A list of possible locations where then JWT can be found on the request. | `http.request.headers[\"authorization\"][0]` <br> `http.request.cookies[\"Authorization\"][0]` | Refer to the [information](#token-sources) below. |
+| `token_type` | This specifies the type of token to validate. | `jwt` | Only `jwt` is currently supported. |
+| `credentials` | This describes the cryptographic keys that should be used to validate JWTs. Each key must be a JSON Web Key (JWK). | Refer to the example below. | Refer to the [information](#credentials) below. |
 
 ### Token sources
 
@@ -40,7 +40,7 @@ Each item must be a Ruleset Engine expression that resolves to a string.
 
 Currently supported fields are `http.request.headers` and `http.request.cookies`.
 
-You can set up to four token sources. If a request has more than one of these fields set, only one will be used. Leading `Bearer: ` strings in request tokens are automatically ignored.
+You can set up to four token sources. If a request has more than one of these fields set, only one will be used. Leading `Bearer:` strings in request tokens are automatically ignored.
 
 Refer to the [Ruleset Engine documentation](https://developers.cloudflare.com/ruleset-engine/rules-language/fields) for details on working with Ruleset Engine fields.
 
@@ -48,11 +48,11 @@ Refer to the [Ruleset Engine documentation](https://developers.cloudflare.com/ru
 
 API Shield supports asymmetric RSA and elliptic curve keys and symmetric hash-based message authentication code (HMAC) keys:
 
-| Key type | Supported algorithms                         | Requirements                                                          |
-| -------- | -------------------------------------------- | --------------------------------------------------------------------- |
-| RSA      | RS256, RS384, RS512, PS256, PS384, and PS512 | RSA keys must be at least 2,048 bits.                                 |
-| EC       | ES256 and ES384                              | Use curve P-256 with ES256 and curve P-384 with ES384.                |
-| HMAC     | HS256, HS384, and HS512                      | Use a symmetric secret of at least 32, 48, or 64 bytes, respectively. |
+| Key type | Supported algorithms | Requirements |
+| --- | --- | --- |
+| RSA | `RS256`, `RS384`, `RS512`, `PS256`, `PS384`, and `PS512` | RSA keys must be at least 2,048 bits. |
+| EC | `ES256` and `ES384` | Use curve `P-256` with `ES256` and curve `P-384` with `ES384`. |
+| HMAC | `HS256`, `HS384`, and `HS512` | Use a symmetric secret of at least 32, 48, or 64 bytes, respectively. |
 
 Each JWK must have an `alg` and a `kid`. The JWT header must contain matching `alg` and `kid` values so API Shield can select the correct key.
 
@@ -73,6 +73,8 @@ It is highly recommended to validate the output of the API call to check that th
 ## Token configuration JSON object
 
 The example below shows a JSON object with all of the information necessary to create a token configuration using the Cloudflare API. If you would like to create JWKs for testing, refer to [mkjwk JSON Web Key Generator ↗](https://mkjwk.org/).
+
+*Examplejson*
 
 ```json
 {
@@ -103,6 +105,8 @@ The example below shows a JSON object with all of the information necessary to c
 
 The following example configures JWT validation with an `HS256` symmetric key. Replace `<BASE64URL_ENCODED_SECRET>` with an unpadded Base64url-encoded credential containing at least 32 decoded bytes.
 
+*HS256 token configurationjson*
+
 ```json
 {
 	"title": "Production HMAC JWT configuration",
@@ -124,6 +128,8 @@ The following example configures JWT validation with an `HS256` symmetric key. R
 
 The response includes `kty`, `alg`, and `kid`, but does not include `k`:
 
+*Symmetric key responsejson*
+
 ```json
 {
 	"credentials": {
@@ -141,6 +147,8 @@ The response includes `kty`, `alg`, and `kid`, but does not include `k`:
 ## Create a token configuration using the Cloudflare API
 
 Use cURL or any other API client tool to send the new configuration to Cloudflare’s API to enable JWT validation. Make sure to replace `{zone_id}` with the relevant zone ID and add your [authentication credentials](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) header.
+
+*Example using cURLbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/config" \
@@ -170,6 +178,8 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/conf
 ```
 
 The response will be in a Cloudflare `v4` response envelope and the result contains the created configuration. Note the returned ID. You can use it to reference the token configuration in JWT claim fields or token validation rules.
+
+*Example responsejson*
 
 ```json
 {
@@ -205,6 +215,8 @@ The response will be in a Cloudflare `v4` response envelope and the result conta
 
 If API Shield defaults an omitted algorithm, the response includes the effective algorithm in `result`. The `messages` array also contains one message for each defaulted key:
 
+*Example message for a defaulted algorithmjson*
+
 ```json
 {
 	"code": 110003,
@@ -220,10 +232,10 @@ After you create a token configuration, Cloudflare checks every request in the z
 
 For new security policies, Cloudflare generally recommends using WAF custom rules.
 
-* **[WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/)** — use these for zone-wide policies based on verified JWT claims. Custom rules can combine claims with other signals, such as [attack score](https://developers.cloudflare.com/waf/detections/attack-score/). Endpoints do not need to be in Endpoint Management.
-* **Token validation rules** — use these when enforcement must apply only to specific operations in Endpoint Management. These rules support the `is_jwt_valid()` and `is_jwt_present()` functions, which are not available in custom rules.
+- **[WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/)** — use these for zone-wide policies based on verified JWT claims. Custom rules can combine claims with other signals, such as [attack score](https://developers.cloudflare.com/waf/detections/attack-score/). Endpoints do not need to be in Endpoint Management.
+- **Token validation rules** — use these when enforcement must apply only to specific operations in Endpoint Management. These rules support the `is_jwt_valid()` and `is_jwt_present()` functions, which are not available in custom rules.
 
-To reference a custom claim in a rule expression, you can use `lookup_json_*` functions like [lookup\_json\_string()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lookup%5Fjson%5Fstring) with your token configuration ID and the claim name. For a complete example, refer to [Issue challenge for admin user in JWT claim based on attack score](https://developers.cloudflare.com/waf/custom-rules/use-cases/check-jwt-claim-to-protect-admin-user/). For all available fields and standard claims, refer to the [JWT validation fields](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/?field-category=JWT+validation) reference.
+To reference a custom claim in a rule expression, you can use `lookup_json_*` functions like [`lookup_json_string()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lookup_json_string) with your token configuration ID and the claim name. For a complete example, refer to [Issue challenge for admin user in JWT claim based on attack score](https://developers.cloudflare.com/waf/custom-rules/use-cases/check-jwt-claim-to-protect-admin-user/). For all available fields and standard claims, refer to the [JWT validation fields](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/?field-category=JWT+validation) reference.
 
 ## Token validation rules
 
@@ -231,14 +243,14 @@ Token validation rules enforce a security policy using existing token configurat
 
 Token validation rules can be configured using the Cloudflare API or [dashboard](https://developers.cloudflare.com/api-shield/security/jwt-validation/#add-a-jwt-validation-rule).
 
-| Field name  | Description                                                                               | Example                                                 | Notes                                                                                                                                               |
-| ----------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| title       | A human-readable name allowing you to quickly identify it.                                | JWT validation on v1 and v2.example.com                 | Limited to 50 characters.                                                                                                                           |
-| description | A human-readable description that gives more details than title and helps to document it. | Log requests without a valid authorization header.      | Limited to 500 characters.                                                                                                                          |
-| action      | The Firewall Action taken on requests that do not meet expression.                        | log                                                     | Possible: log or block                                                                                                                              |
-| enabled     | Enable or disable the rule.                                                               | true                                                    | Possible: true or false                                                                                                                             |
-| expression  | The rule's security policy.                                                               | is\_jwt\_valid ("00170473-ec24-410e-968a-9905cf0a7d03") | Make sure to escape any quotes when creating rules using the Cloudflare API.  Refer to [Define a security policy](#define-a-security-policy) below. |
-| selector    | Configure what operations are covered by this rule.                                       |                                                         | Refer to [Applying a rule to operations](#apply-a-rule-to-operations) below.                                                                        |
+| Field name | Description | Example | Notes |
+| --- | --- | --- | --- |
+| `title` | A human-readable name allowing you to quickly identify it. | JWT validation on `v1` and `v2.example.com` | Limited to 50 characters. |
+| `description` | A human-readable description that gives more details than `title` and helps to document it. | Log requests without a valid `authorization` header. | Limited to 500 characters. |
+| `action` | The Firewall Action taken on requests that do not meet `expression`. | `log` | Possible: `log` or `block` |
+| `enabled` | Enable or disable the rule. | `true` | Possible: `true` or `false` |
+| `expression` | The rule's security policy. | `is_jwt_valid ("00170473-ec24-410e-968a-9905cf0a7d03")` | Make sure to escape any quotes when creating rules using the Cloudflare API. <br> Refer to [Define a security policy](#define-a-security-policy) below. |
+| `selector` | Configure what operations are covered by this rule. |  | Refer to [Applying a rule to operations](#apply-a-rule-to-operations) below. |
 
 ### Selectors
 
@@ -248,7 +260,7 @@ If you only need enforcement on specific hostnames or subdomains of your apex do
 
 If you need to exclude endpoints from enforcement, use the endpoint's operation ID in a selector. For example, you can exclude an endpoint that issues or refreshes JWTs.
 
-To find the operation ID, refer to [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/) or use the [Cloudflare API](https://developers.cloudflare.com/api/resources/api%5Fgateway/subresources/operations/methods/list/).
+To find the operation ID, refer to [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/) or use the [Cloudflare API](https://developers.cloudflare.com/api/resources/api_gateway/subresources/operations/methods/list/).
 
 ## Define a security policy
 
@@ -264,15 +276,15 @@ For example, the expression `is_jwt_valid("51231d16-01f1-48e3-93f8-91c99e81288e"
 
 These expressions are similar to [expressions used in Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/rules-language/), with a few key differences:
 
-* The token validation rule actions trigger if the expression evaluates `false`, as opposed to Ruleset expressions.
-* The token validation rules can use dedicated functions that reference token configurations.
+- The token validation rule actions trigger if the expression evaluates `false`, as opposed to Ruleset expressions.
+- The token validation rules can use dedicated functions that reference token configurations.
 
 Operators such as `or`, `and`, `eq`, and more are usable in expressions in the same way as in expressions used in Ruleset Engine.
 
 The following functions can be used to interact with JWT Tokens on a request:
 
-* [is\_jwt\_valid(token\_configuration\_id)](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#is%5Fjwt%5Fvalid) — Returns true if the request has a valid token according to the token configuration with the ID `token_configuration_id`.
-* [is\_jwt\_present(token\_configuration\_id)](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#is%5Fjwt%5Fpresent) — Returns true if the request has a token as configured in the token configuration with the ID `token_configuration_id`.
+- [`is_jwt_valid(token_configuration_id)`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#is_jwt_valid) — Returns true if the request has a valid token according to the token configuration with the ID `token_configuration_id`.
+- [`is_jwt_present(token_configuration_id)`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#is_jwt_present) — Returns true if the request has a token as configured in the token configuration with the ID `token_configuration_id`.
 
 These functions are only available in token validation rules. They are not available in WAF custom rules.
 
@@ -314,6 +326,8 @@ Selectors will also apply to new operations. New operations that match an existi
 
 For example, the following selector will apply a rule to all operations in `v1.example.com` and `v2.example.com`, except for two operations on these hosts:
 
+*Selector examplejson*
+
 ```json
 {
 	"include": [
@@ -335,6 +349,8 @@ For example, the following selector will apply a rule to all operations in `v1.e
 Operations can be included at a host level and ignored on a per-operation basis.
 
 You can use the `POST /zones/{zone_id}/token_validation/rules/preview` endpoint to see the operations covered by this rule:
+
+*Example using cURLbash*
 
 ```bash
 curl --request PUT \
@@ -363,6 +379,8 @@ curl --request PUT \
 The response will include all operations on a zone with an additional `state` field.
 
 The `state` field can be `ignored`, `excluded`, or `included`. Included operations will match the hostname selectors you specified. Excluded operations will match the operation IDs you specified in the selector. Ignored operations are those that do not match anything specified in the selector.
+
+*Resultjson*
 
 ```json
 {
@@ -453,6 +471,8 @@ Operations with a `included` state will be covered by the token validation rule.
 
 You can also send an empty object in the request body:
 
+*Example using cURLbash*
+
 ```bash
 curl --request PUT \
 'https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/rules/preview' \
@@ -467,6 +487,8 @@ The response will show all zone operations and all possible hosts, which you can
 The example below shows a JSON object with all the necessary information to create a token validation rule using the Cloudflare API.
 
 Replace any token configurations IDs and operation IDs with the IDs that exist in your zone.
+
+*Token Validation Rule JSON examplejson*
 
 ```json
 [
@@ -503,6 +525,8 @@ Replace any token configurations IDs and operation IDs with the IDs that exist i
 
 A single request can create multiple rules. To do so, pass multiple rule objects in the JSON array of the request body.
 
+*Example using cURLbash*
+
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/rules/bulk" \
 --header 'Content-Type: application/json' \
@@ -536,6 +560,8 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/rule
 ```
 
 The response will be in a Cloudflare `v4` response envelope and the result contains the created rules. Note the returned ID for each rule, which can be used to edit or delete an existing rule.
+
+*Resultjson*
 
 ```json
 {
@@ -585,11 +611,15 @@ Note
 
 Cloudflare will remove any fields that are unnecessary from each key and will drop keys that we do not support.
 
-It is highly recommended to validate the output of the API call to check that the resulting keys appear as intended.
+It is highly recommended to validate the output of the API call
+
+ to check that the resulting keys appear as intended.
 
 Credential updates use the same algorithm compatibility behavior as configuration creation. The response includes normalized credentials and a message for each defaulted algorithm.
 
 Use `PUT` to replace the complete key set. Every symmetric key in a `PUT` request must include `k`. Keys omitted from the request are removed.
+
+*Example using cURLbash*
 
 ```bash
 curl --request PUT \
@@ -623,13 +653,15 @@ Make sure to replace `{zone_id}` with the relevant zone ID and add your [authent
 
 Use `PATCH` to update the complete key set without resubmitting stored symmetric credentials. Cloudflare matches an existing key using its `alg` and `kid` values.
 
-* Omit `k` for a matching symmetric key to preserve its credential.
-* Include a new `k` value to rotate the credential.
-* Include `k` when adding a symmetric key that does not already exist.
-* Omit a key from `keys` to remove it from the configuration.
-* Do not set `k` to `null`.
+- Omit `k` for a matching symmetric key to preserve its credential.
+- Include a new `k` value to rotate the credential.
+- Include `k` when adding a symmetric key that does not already exist.
+- Omit a key from `keys` to remove it from the configuration.
+- Do not set `k` to `null`.
 
 This example preserves the credential for `production-hmac-key` while adding an EC key:
+
+*Preserve a symmetric credentialbash*
 
 ```bash
 curl --request PATCH \
@@ -656,6 +688,8 @@ curl --request PATCH \
 
 This example rotates the credential for the existing HMAC key:
 
+*Rotate a symmetric credentialbash*
+
 ```bash
 curl --request PATCH \
 'https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/config/{config_id}/credentials' \
@@ -680,6 +714,8 @@ A `PATCH` request is specified as a JSON array in the request body. Each item in
 
 The following example updates one rule and disables another:
 
+*Example using cURLbash*
+
 ```bash
 curl --request PATCH \
 "https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/rules/bulk"  \
@@ -701,6 +737,8 @@ Rules can be reordered by setting a position field in the `PATCH` body.
 
 This example places rule `714d3dd0-cc59-4911-862f-8a27e22353cc` after rule `7124f9bc-d6b5-430d-b488-b6bc2892f2fb`:
 
+*Example using cURLbash*
+
 ```bash
 curl --request PATCH \
 "https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/rules/bulk" \
@@ -716,6 +754,8 @@ curl --request PATCH \
 ```
 
 This example places rule `714d3dd0-cc59-4911-862f-8a27e22353cc` before rule `7124f9bc-d6b5-430d-b488-b6bc2892f2fb`:
+
+*Example using cURLbash*
 
 ```bash
 curl --request PATCH \
@@ -743,21 +783,21 @@ Note
 
 The absence of matching keys directly marks the JWT as invalid.
 
-1. We validate the authenticity of the JWT by checking the signature using the selected key.
-2. Should the JWT contain an EXP claim (expiration time), we validate that the JWT is not expired.
+4. We validate the authenticity of the JWT by checking the signature using the selected key.
+5. Should the JWT contain an EXP claim (expiration time), we validate that the JWT is not expired.
 
 Note
 
 We allow a mismatch of up to 60 seconds to account for clock drifts between the Cloudflare network and the JWT issuer. A token may still be regarded as valid one minute after it was supposed to expire when both clocks are perfectly in sync.
 
-1. Should the JWT contain a NBF claim (not before time), we validate that the JWT is already valid.
+6. Should the JWT contain a NBF claim (not before time), we validate that the JWT is already valid.
 
 Note
 
 The same accuracy applies as for EXP claims. As such, a token may be already regarded as valid one minute before its NBF claim in case of perfect synchronization between issuer and validator.
 
-1. Cloudflare makes verified claims available as `http.request.jwt.claims` fields. WAF custom rules can act on these claims. Token validation rules can act on token presence and validity.
-2. Security Analytics events in the Cloudflare dashboard for the `API Shield - Token Validation` service will explain violation reasons in the `Token validation violations` section of the event.
+7. Cloudflare makes verified claims available as `http.request.jwt.claims` fields. WAF custom rules can act on these claims. Token validation rules can act on token presence and validity.
+8. Security Analytics events in the Cloudflare dashboard for the `API Shield - Token Validation` service will explain violation reasons in the `Token validation violations` section of the event.
 
 Was this helpful?
 

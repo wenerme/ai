@@ -8,27 +8,27 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.llm.prompt.pii\_categories
 
-`cf.llm.prompt.pii_categories` `Array<String>`
+`cf.llm.prompt.pii_categories``Array<String>`
 
 Array of string values with the personally identifiable information (PII) categories found in the LLM prompt included in the request.
 
 The possible values are the following:
 
-| Category        | Description                                                               |
-| --------------- | ------------------------------------------------------------------------- |
-| BANK\_ACCOUNT   | Bank account number                                                       |
-| CREDIT\_CARD    | Credit card number                                                        |
-| DATE\_TIME      | Date or time expression                                                   |
-| DRIVER\_LICENSE | Driver license number                                                     |
-| EMAIL\_ADDRESS  | Email address                                                             |
-| IP\_ADDRESS     | Internet Protocol (IPv4) address                                          |
-| LOCATION        | Physical location or address                                              |
-| PASSPORT        | Passport number                                                           |
-| PERSON          | Full or partial name of an individual                                     |
-| PHONE\_NUMBER   | Telephone number                                                          |
-| TAX\_ID         | Tax identification number                                                 |
-| US\_SSN         | US Social Security Number (SSN)                                           |
-| URL             | Uniform Resource Locator (URL), used to locate a resource on the Internet |
+| Category | Description |
+| --- | --- |
+| `BANK_ACCOUNT` | Bank account number |
+| `CREDIT_CARD` | Credit card number |
+| `DATE_TIME` | Date or time expression |
+| `DRIVER_LICENSE` | Driver license number |
+| `EMAIL_ADDRESS` | Email address |
+| `IP_ADDRESS` | Internet Protocol (IPv4) address |
+| `LOCATION` | Physical location or address |
+| `PASSPORT` | Passport number |
+| `PERSON` | Full or partial name of an individual |
+| `PHONE_NUMBER` | Telephone number |
+| `TAX_ID` | Tax identification number |
+| `US_SSN` | US Social Security Number (SSN) |
+| `URL` | Uniform Resource Locator (URL), used to locate a resource on the Internet |
 
 The categories are detected by an AI-based Named Entity Recognition (NER) model.
 
@@ -42,7 +42,7 @@ Example usage:
 ```
 
 Categories:
-* Request
+- Request
 
 Was this helpful?
 

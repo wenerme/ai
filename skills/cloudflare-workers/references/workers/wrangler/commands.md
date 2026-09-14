@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Commands
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Wrangler](https://developers.cloudflare.com/workers/wrangler/) offers a number of commands to manage your Cloudflare Workers.
 
@@ -22,26 +22,26 @@ The core Wrangler commands for creating, developing, and deploying Workers are o
 
 ## All commands
 
-* [Workers](https://developers.cloudflare.com/workers/wrangler/commands/workers/)
-* [General commands](https://developers.cloudflare.com/workers/wrangler/commands/general/)
-* [Artifacts](https://developers.cloudflare.com/workers/wrangler/commands/artifacts/)
-* [Browser](https://developers.cloudflare.com/workers/wrangler/commands/browser/)
-* [Certificates](https://developers.cloudflare.com/workers/wrangler/commands/certificates/)
-* [Containers](https://developers.cloudflare.com/workers/wrangler/commands/containers/)
-* [D1](https://developers.cloudflare.com/workers/wrangler/commands/d1/)
-* [Flagship](https://developers.cloudflare.com/workers/wrangler/commands/flagship/)
-* [Hyperdrive](https://developers.cloudflare.com/workers/wrangler/commands/hyperdrive/)
-* [KV](https://developers.cloudflare.com/workers/wrangler/commands/kv/)
-* [Pages](https://developers.cloudflare.com/workers/wrangler/commands/pages/)
-* [Pipelines](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/)
-* [Queues](https://developers.cloudflare.com/workers/wrangler/commands/queues/)
-* [R2](https://developers.cloudflare.com/workers/wrangler/commands/r2/)
-* [Secrets Store](https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/)
-* [Tunnel](https://developers.cloudflare.com/workers/wrangler/commands/tunnel/)
-* [Vectorize](https://developers.cloudflare.com/workers/wrangler/commands/vectorize/)
-* [VPC](https://developers.cloudflare.com/workers/wrangler/commands/vpc/)
-* [Workers for Platforms](https://developers.cloudflare.com/workers/wrangler/commands/workers-for-platforms/)
-* [Workflows](https://developers.cloudflare.com/workers/wrangler/commands/workflows/)
+- [Workers](https://developers.cloudflare.com/workers/wrangler/commands/workers/)
+- [General commands](https://developers.cloudflare.com/workers/wrangler/commands/general/)
+- [Artifacts](https://developers.cloudflare.com/workers/wrangler/commands/artifacts/)
+- [Browser](https://developers.cloudflare.com/workers/wrangler/commands/browser/)
+- [Certificates](https://developers.cloudflare.com/workers/wrangler/commands/certificates/)
+- [Containers](https://developers.cloudflare.com/workers/wrangler/commands/containers/)
+- [D1](https://developers.cloudflare.com/workers/wrangler/commands/d1/)
+- [Flagship](https://developers.cloudflare.com/workers/wrangler/commands/flagship/)
+- [Hyperdrive](https://developers.cloudflare.com/workers/wrangler/commands/hyperdrive/)
+- [KV](https://developers.cloudflare.com/workers/wrangler/commands/kv/)
+- [Pages](https://developers.cloudflare.com/workers/wrangler/commands/pages/)
+- [Pipelines](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/)
+- [Queues](https://developers.cloudflare.com/workers/wrangler/commands/queues/)
+- [R2](https://developers.cloudflare.com/workers/wrangler/commands/r2/)
+- [Secrets Store](https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/)
+- [Tunnel](https://developers.cloudflare.com/workers/wrangler/commands/tunnel/)
+- [Vectorize](https://developers.cloudflare.com/workers/wrangler/commands/vectorize/)
+- [VPC](https://developers.cloudflare.com/workers/wrangler/commands/vpc/)
+- [Workers for Platforms](https://developers.cloudflare.com/workers/wrangler/commands/workers-for-platforms/)
+- [Workflows](https://developers.cloudflare.com/workers/wrangler/commands/workflows/)
 
 ## How to run Wrangler commands
 

@@ -82,7 +82,13 @@ tags:
     name: Rerank
   - description: OpenAI-compatible Responses API endpoints
     name: Responses
-  - description: SCIM endpoints
+  - description: >-
+      Management endpoints for SCIM group-to-workspace mappings, authenticated
+      with a management key. These are not the SCIM 2.0 connector endpoints for
+      your identity provider. In your identity provider, enter the SCIM endpoint
+      URL shown when you enable provisioning under Settings > Members > SCIM
+      Mappings. See
+      https://openrouter.ai/docs/guides/features/scim-mappings#set-up-provisioning.
     name: SCIM
   - description: Speech-to-text endpoints
     name: STT
@@ -593,6 +599,16 @@ components:
               - allOf:
                   - $ref: '#/components/schemas/FunctionTool'
                   - properties:
+                      async:
+                        description: >-
+                          Lets the model keep working after calling this tool
+                          instead of waiting for its output. The tool is still
+                          executed by the client; return the result in a later
+                          request as a `function_call_output` with the original
+                          `call_id`. Only honored by providers whose Responses
+                          API supports async tools; ignored elsewhere.
+                        example: true
+                        type: boolean
                       defer_loading:
                         description: >-
                           Withhold this tool from the model until
@@ -1454,7 +1470,7 @@ components:
       example:
         analysis_models:
           - ~anthropic/claude-opus-latest
-          - ~openai/gpt-latest
+          - ~openai/gpt-sol-latest
           - ~google/gemini-pro-latest
         enabled: true
         id: fusion
@@ -1468,11 +1484,11 @@ components:
             same user prompt with web_search + web_fetch enabled. Capped at 8
             models to bound cost amplification. When omitted, defaults to the
             Quality preset from the /labs/fusion UI
-            (~anthropic/claude-opus-latest, ~openai/gpt-latest,
+            (~anthropic/claude-opus-latest, ~openai/gpt-sol-latest,
             ~google/gemini-pro-latest).
           example:
             - ~anthropic/claude-opus-latest
-            - ~openai/gpt-latest
+            - ~openai/gpt-sol-latest
             - ~google/gemini-pro-latest
           items:
             type: string
@@ -2624,6 +2640,15 @@ components:
         name: my_tool
         type: custom
       properties:
+        async:
+          description: >-
+            Lets the model keep working after calling this tool instead of
+            waiting for its output. The tool is still executed by the client;
+            return the result in a later request as a `function_call_output`
+            with the original `call_id`. Only honored by providers whose
+            Responses API supports async tools; ignored elsewhere.
+          example: true
+          type: boolean
         description:
           type: string
         format:
@@ -2779,7 +2804,7 @@ components:
         parameters:
           analysis_models:
             - ~anthropic/claude-opus-latest
-            - ~openai/gpt-latest
+            - ~openai/gpt-sol-latest
         type: openrouter:fusion
       properties:
         parameters:
@@ -3113,6 +3138,16 @@ components:
               - allOf:
                   - $ref: '#/components/schemas/FunctionTool'
                   - properties:
+                      async:
+                        description: >-
+                          Lets the model keep working after calling this tool
+                          instead of waiting for its output. The tool is still
+                          executed by the client; return the result in a later
+                          request as a `function_call_output` with the original
+                          `call_id`. Only honored by providers whose Responses
+                          API supports async tools; ignored elsewhere.
+                        example: true
+                        type: boolean
                       defer_loading:
                         description: >-
                           Withhold this tool from the model until
@@ -4343,6 +4378,14 @@ components:
         status: completed
         type: custom_tool_call
       properties:
+        async:
+          description: >-
+            True when the model called a tool declared with `async: true` and
+            may continue its turn before the output is returned. Return the
+            result in a later request as a `function_call_output` with this
+            `call_id`.
+          example: true
+          type: boolean
         call_id:
           type: string
         id:
@@ -5815,6 +5858,16 @@ components:
               - allOf:
                   - $ref: '#/components/schemas/FunctionTool'
                   - properties:
+                      async:
+                        description: >-
+                          Lets the model keep working after calling this tool
+                          instead of waiting for its output. The tool is still
+                          executed by the client; return the result in a later
+                          request as a `function_call_output` with the original
+                          `call_id`. Only honored by providers whose Responses
+                          API supports async tools; ignored elsewhere.
+                        example: true
+                        type: boolean
                       defer_loading:
                         description: >-
                           Withhold this tool from the model until
@@ -6531,6 +6584,15 @@ components:
           type:
             - array
             - 'null'
+        async:
+          description: >-
+            Lets the model keep working after calling this tool instead of
+            waiting for its output. The tool is still executed by the client;
+            return the result in a later request as a `function_call_output`
+            with the original `call_id`. Only honored by providers whose
+            Responses API supports async tools; ignored elsewhere.
+          example: true
+          type: boolean
         defer_loading:
           type: boolean
         description:
@@ -6740,7 +6802,7 @@ components:
       example:
         analysis_models:
           - ~anthropic/claude-opus-latest
-          - ~openai/gpt-latest
+          - ~openai/gpt-sol-latest
           - ~google/gemini-pro-latest
       properties:
         analysis_models:
@@ -6753,7 +6815,7 @@ components:
             /labs/fusion.
           example:
             - ~anthropic/claude-opus-latest
-            - ~openai/gpt-latest
+            - ~openai/gpt-sol-latest
             - ~google/gemini-pro-latest
           items:
             type: string
@@ -7057,6 +7119,7 @@ components:
             - failed_to_download_image
             - image_file_not_found
             - bio_policy
+            - cyber_policy
             - misalignment_policy_violation
             - data_residency_mismatch
           type: string
@@ -7269,6 +7332,14 @@ components:
         status: completed
         type: custom_tool_call
       properties:
+        async:
+          description: >-
+            True when the model called a tool declared with `async: true` and
+            may continue its turn before the output is returned. Return the
+            result in a later request as a `function_call_output` with this
+            `call_id`.
+          example: true
+          type: boolean
         call_id:
           type: string
         id:
@@ -7335,6 +7406,14 @@ components:
       properties:
         arguments:
           type: string
+        async:
+          description: >-
+            True when the model called a tool declared with `async: true` and
+            may continue its turn before the output is returned. Return the
+            result in a later request as a `function_call_output` with this
+            `call_id`.
+          example: true
+          type: boolean
         call_id:
           type: string
         id:
@@ -9034,6 +9113,14 @@ components:
       properties:
         arguments:
           type: string
+        async:
+          description: >-
+            True when the model called a tool declared with `async: true` and
+            may continue its turn before the output is returned. Return the
+            result in a later request as a `function_call_output` with this
+            `call_id`.
+          example: true
+          type: boolean
         call_id:
           type: string
         id:
@@ -9370,6 +9457,14 @@ components:
         name: apply_patch
         type: custom_tool_call
       properties:
+        async:
+          description: >-
+            True when the model called a tool declared with `async: true` and
+            may continue its turn before the output is returned. Return the
+            result in a later request as a `function_call_output` with this
+            `call_id`.
+          example: true
+          type: boolean
         call_id:
           type: string
         id:

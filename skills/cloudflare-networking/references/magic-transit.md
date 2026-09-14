@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Magic Transit
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/magic-transit/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Secure your network and improve performance at Cloudflare scale.
 
@@ -20,8 +20,8 @@ Enterprise-only
 
 Magic Transit is a network security and performance solution that offers Distributed Denial of Service (DDoS) protection, traffic acceleration, and more for on-premises, cloud-hosted, and hybrid networks.
 
-* **DDoS mitigation and protection**: Instead of relying on local infrastructure that large DDoS attacks can overwhelm, Magic Transit uses the [global Cloudflare Network ↗](https://www.cloudflare.com/network/) to ingest and mitigate attacks close to their source.
-* **Traffic acceleration**: Magic Transit takes advantage of the Cloudflare global network to reduce latency and ensure that requests always have a data center nearby.
+- **DDoS mitigation and protection**: Instead of relying on local infrastructure that large DDoS attacks can overwhelm, Magic Transit uses the [global Cloudflare Network ↗](https://www.cloudflare.com/network/) to ingest and mitigate attacks close to their source.
+- **Traffic acceleration**: Magic Transit takes advantage of the Cloudflare global network to reduce latency and ensure that requests always have a data center nearby.
 
 Learn more [about how Magic Transit works](https://developers.cloudflare.com/magic-transit/about/) and how to [get started](https://developers.cloudflare.com/magic-transit/get-started/).
 

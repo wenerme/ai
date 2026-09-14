@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Available Notifications
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/notifications/notification-available/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/notifications/notification-available/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Available Notifications depend on your Cloudflare plan. Cloudflare offers a variety of Notifications for our products and services, such as [Billing](https://developers.cloudflare.com/billing/), [Denial of Service protection](https://developers.cloudflare.com/ddos-protection/), [Magic Transit](https://developers.cloudflare.com/magic-transit/), and [SSL/TLS](https://developers.cloudflare.com/ssl/).
 
@@ -26,7 +26,13 @@ Refer to information below to understand what each Notification does and what to
 
 ## Billing
 
+<details>
+
+<summary>
+
 Usage Based Billing
+
+</summary>
 
 **Who is it for?**
 
@@ -38,8 +44,9 @@ You can choose the product that you want to be notified about and the threshold 
 
 For example:
 
-* Argo Smart Routing has **Notify when total bytes of traffic exceeds** as a threshold.
-* Load Balancing has **Notify when total number of DNS Queries exceeds** as a threshold.
+- Argo Smart Routing has **Notify when total bytes of traffic exceeds** as a threshold.
+- Load Balancing has **Notify when total number of DNS Queries exceeds** as a threshold.
+
 **Included with**
 
 Professional plans or higher.
@@ -50,9 +57,17 @@ Professional plans or higher.
 
 Review your product usage and adjust the configuration and/or increase the alerting threshold.
 
+</details>
+
 ## Bots
 
+<details>
+
+<summary>
+
 Bot Detection Alert
+
+</summary>
 
 **Who is it for?**
 
@@ -68,13 +83,21 @@ Accounts with at least one Enterprise zone.
 
 **What should you do if you receive one?**
 
-Select the [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) link enclosed in the alert message. Contact support if additional advice is needed on how to investigate the attack further.
+Select the <a href="https://developers.cloudflare.com/waf/analytics/security-analytics/">Security Analytics</a> link enclosed in the alert message. Contact support if additional advice is needed on how to investigate the attack further.
 
 **Additional information**
 
 After an alert is created on the dashboard, it may take up to 30 minutes before sufficient data is available to begin detecting traffic anomalies. Verified bot traffic is excluded from bot alerts.
 
+</details>
+
+<details>
+
+<summary>
+
 Custom Bot Detection Alert
+
+</summary>
 
 **Who is it for?**
 
@@ -82,7 +105,7 @@ Enterprise customers who want to be notified when Cloudflare detects a spike in 
 
 **Other options / filters**
 
-Refer to the [alert logic](https://developers.cloudflare.com/bots/reference/alerts/#alert-logic) for more information on additional filters or groupings.
+Refer to the <a href="https://developers.cloudflare.com/bots/reference/alerts/#alert-logic">alert logic</a> for more information on additional filters or groupings.
 
 **Included with**
 
@@ -90,7 +113,7 @@ Accounts with at least one Enterprise zone.
 
 **What should you do if you receive one?**
 
-Select the [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) link enclosed in the alert message. Contact support if additional advice is needed on how to investigate the attack further.
+Select the <a href="https://developers.cloudflare.com/waf/analytics/security-analytics/">Security Analytics</a> link enclosed in the alert message. Contact support if additional advice is needed on how to investigate the attack further.
 
 **Additional information**
 
@@ -98,13 +121,21 @@ After an alert is created on the dashboard, it may take up to 30 minutes before 
 
 Alerts with grouping could cause potential noise if you set them up for a high-traffic zone. Grouping alerts function as if you set up separate policies with a filter for each value. Alerts may trigger multiple values in the same group as long as the traffic for each value reaches the threshold of 200.
 
+</details>
+
 ## Client-side security
+
+<details>
+
+<summary>
 
 Client-side security New Code Change Detection Alert
 
+</summary>
+
 **Who is it for?**
 
-[Client-side security](https://developers.cloudflare.com/client-side-security/) customers who want to receive a notification when JavaScript dependencies change in the pages of their domain.
+<a href="https://developers.cloudflare.com/client-side-security/">Client-side security</a> customers who want to receive a notification when JavaScript dependencies change in the pages of their domain.
 
 **Other options / filters**
 
@@ -122,11 +153,19 @@ Investigate to confirm that it is an expected change.
 
 Triggered daily. If configured with a zone filter, the alert is triggered immediately.
 
+</details>
+
+<details>
+
+<summary>
+
 Client-side security New Domain Alert
+
+</summary>
 
 **Who is it for?**
 
-[Client-side security](https://developers.cloudflare.com/client-side-security/) customers who want to receive a notification when resources from new host domains appear in their domain.
+<a href="https://developers.cloudflare.com/client-side-security/">Client-side security</a> customers who want to receive a notification when resources from new host domains appear in their domain.
 
 **Other options / filters**
 
@@ -144,11 +183,19 @@ Investigate to confirm that it is an expected change.
 
 Triggered hourly. If configured with a zone filter, the alert is triggered immediately.
 
+</details>
+
+<details>
+
+<summary>
+
 Client-side security New Malicious Domain Alert
+
+</summary>
 
 **Who is it for?**
 
-[Client-side security](https://developers.cloudflare.com/client-side-security/) customers who want to receive a notification when resources from a known malicious domain appear in their domain. For more information, refer to [Malicious script and connection detection](https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/).
+<a href="https://developers.cloudflare.com/client-side-security/">Client-side security</a> customers who want to receive a notification when resources from a known malicious domain appear in their domain. For more information, refer to <a href="https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/">Malicious script and connection detection</a>.
 
 **Other options / filters**
 
@@ -162,13 +209,21 @@ Customers with Client-Side Security Advanced.
 
 Review the information in the client-side security dashboard about the detected malicious resources, then update the pages where those resources were detected.
 
-For more information, refer to [Review scripts and connections considered malicious](https://developers.cloudflare.com/client-side-security/detection/review-malicious-scripts/).
+For more information, refer to <a href="https://developers.cloudflare.com/client-side-security/detection/review-malicious-scripts/">Review scripts and connections considered malicious</a>.
+
+</details>
+
+<details>
+
+<summary>
 
 Client-side security New Malicious Script Alert
 
+</summary>
+
 **Who is it for?**
 
-[Client-side security](https://developers.cloudflare.com/client-side-security/) customers who want to receive a notification when Cloudflare classifies JavaScript dependencies in their domain as malicious. For more information, refer to [Malicious script and connection detection](https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/).
+<a href="https://developers.cloudflare.com/client-side-security/">Client-side security</a> customers who want to receive a notification when Cloudflare classifies JavaScript dependencies in their domain as malicious. For more information, refer to <a href="https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/">Malicious script and connection detection</a>.
 
 **Other options / filters**
 
@@ -182,13 +237,21 @@ Customers with Client-Side Security Advanced.
 
 Review the information in the client-side security dashboard about the detected malicious resources, then update the pages where those resources were detected.
 
-For more information, refer to [Review scripts and connections considered malicious](https://developers.cloudflare.com/client-side-security/detection/review-malicious-scripts/).
+For more information, refer to <a href="https://developers.cloudflare.com/client-side-security/detection/review-malicious-scripts/">Review scripts and connections considered malicious</a>.
+
+</details>
+
+<details>
+
+<summary>
 
 Client-side security New Malicious URL Alert
 
+</summary>
+
 **Who is it for?**
 
-[Client-side security](https://developers.cloudflare.com/client-side-security/) customers who want to receive a notification when resources from a known malicious URL appear in their domain. For more information, refer to [Malicious script and connection detection](https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/).
+<a href="https://developers.cloudflare.com/client-side-security/">Client-side security</a> customers who want to receive a notification when resources from a known malicious URL appear in their domain. For more information, refer to <a href="https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/">Malicious script and connection detection</a>.
 
 **Other options / filters**
 
@@ -202,13 +265,21 @@ Customers with Client-Side Security Advanced.
 
 Review the information in the client-side security dashboard about the detected malicious resources, then update the pages where those resources were detected.
 
-For more information, refer to [Review scripts and connections considered malicious](https://developers.cloudflare.com/client-side-security/detection/review-malicious-scripts/).
+For more information, refer to <a href="https://developers.cloudflare.com/client-side-security/detection/review-malicious-scripts/">Review scripts and connections considered malicious</a>.
+
+</details>
+
+<details>
+
+<summary>
 
 Client-side security New Resources Alert
 
+</summary>
+
 **Who is it for?**
 
-[Client-side security](https://developers.cloudflare.com/client-side-security/) customers who want to receive a notification when new resources appear in their domain.
+<a href="https://developers.cloudflare.com/client-side-security/">Client-side security</a> customers who want to receive a notification when new resources appear in their domain.
 
 **Other options / filters**
 
@@ -226,11 +297,19 @@ Investigate to confirm that it is an expected change.
 
 Triggered daily. If configured with a zone filter, the alert is triggered immediately.
 
+</details>
+
+<details>
+
+<summary>
+
 Client-side security New Resource Exceeds Max URL Length Alert
+
+</summary>
 
 **Who is it for?**
 
-[Client-side security](https://developers.cloudflare.com/client-side-security/) customers who want to receive a notification when a resource's URL exceeds the maximum allowed length.
+<a href="https://developers.cloudflare.com/client-side-security/">Client-side security</a> customers who want to receive a notification when a resource's URL exceeds the maximum allowed length.
 
 **Other options / filters**
 
@@ -244,13 +323,21 @@ Business plans or higher.
 
 Manually check the resource.
 
+</details>
+
 ## Cloudflare Access
+
+<details>
+
+<summary>
 
 Expiring Access Service Token Alert
 
+</summary>
+
 **Who is it for?**
 
-[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) customers who want to receive a notification when their service token is about to expire.
+<a href="https://developers.cloudflare.com/cloudflare-one/access-controls/policies/">Access</a> customers who want to receive a notification when their service token is about to expire.
 
 **Other options / filters**
 
@@ -262,15 +349,23 @@ Purchase of Access
 
 **What should you do if you receive one?**
 
-Extend the expiration date of the service token. For more details, refer to [Renew your service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#renew-service-tokens).
+Extend the expiration date of the service token. For more details, refer to <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#renew-service-tokens">Renew your service token</a>.
+
+</details>
 
 ## Cloudflare Images
 
+<details>
+
+<summary>
+
 Image Notifications
+
+</summary>
 
 **Who is it for?**
 
-Customers using [Direct creator uploads](https://developers.cloudflare.com/images/upload-images/direct-creator-upload/) to upload images.
+Customers using <a href="https://developers.cloudflare.com/images/upload-images/direct-creator-upload/">Direct creator uploads</a> to upload images.
 
 **Other options / filters**
 
@@ -284,7 +379,15 @@ Cloudflare images subscription.
 
 No action is needed.
 
+</details>
+
+<details>
+
+<summary>
+
 Image Transformation Notifications
+
+</summary>
 
 **Who is it for?**
 
@@ -302,13 +405,21 @@ All Cloudflare plans.
 
 No action is needed.
 
+</details>
+
 ## Cloudflare Status
+
+<details>
+
+<summary>
 
 Maintenance Notification
 
+</summary>
+
 **Who is it for?**
 
-Customers interested in knowing about planned [Cloudflare maintenance](https://developers.cloudflare.com/support/troubleshooting/disruptive-maintenance/) for specific data centers. The notification lets you know when maintenance has been scheduled, changed, or canceled on an entire point of presence.
+Customers interested in knowing about planned <a href="https://developers.cloudflare.com/support/troubleshooting/disruptive-maintenance/">Cloudflare maintenance</a> for specific data centers. The notification lets you know when maintenance has been scheduled, changed, or canceled on an entire point of presence.
 
 **Other options / filters**
 
@@ -322,7 +433,15 @@ All Cloudflare plans.
 
 If the notification is announcing new scheduled maintenance, you may want to add the maintenance to your calendar. During these maintenance windows, you may experience a slight increase in latency to the edge location which is under maintenance.
 
+</details>
+
+<details>
+
+<summary>
+
 Incident Alerts
+
+</summary>
 
 **Who is it for?**
 
@@ -342,15 +461,23 @@ All Cloudflare plans.
 
 **What should you do if you receive one?**
 
-Review your [analytics](https://developers.cloudflare.com/analytics/) page to see if your domain is impacted.
+Review your <a href="https://developers.cloudflare.com/analytics/">analytics</a> page to see if your domain is impacted.
+
+</details>
 
 ## DDoS Protection
 
+<details>
+
+<summary>
+
 HTTP DDoS Attack Alert
+
+</summary>
 
 **Who is it for?**
 
-[WAF](https://developers.cloudflare.com/waf/) or [CDN](https://developers.cloudflare.com/cache/) customers who want to receive a notification when Cloudflare has mitigated HTTP attacks that generate more than 100 requests per second.
+<a href="https://developers.cloudflare.com/waf/">WAF</a> or <a href="https://developers.cloudflare.com/cache/">CDN</a> customers who want to receive a notification when Cloudflare has mitigated HTTP attacks that generate more than 100 requests per second.
 
 **Other options / filters**
 
@@ -362,13 +489,21 @@ All Cloudflare plans.
 
 **What should you do if you receive one?**
 
-No action needed. Refer to [DDoS alerts](https://developers.cloudflare.com/ddos-protection/reference/alerts/) for more information.
+No action needed. Refer to <a href="https://developers.cloudflare.com/ddos-protection/reference/alerts/">DDoS alerts</a> for more information.
+
+</details>
+
+<details>
+
+<summary>
 
 Layer 3/4 DDoS Attack Alert
 
+</summary>
+
 **Who is it for?**
 
-[BYOIP](https://developers.cloudflare.com/byoip/) and [Spectrum](https://developers.cloudflare.com/spectrum/) customers with [Network Analytics](https://developers.cloudflare.com/analytics/network-analytics/) who want to receive a notification when Cloudflare has mitigated attacks that generate an average of at least 12,000 packets per second over a five-second period, with a duration of one minute or more.
+<a href="https://developers.cloudflare.com/byoip/">BYOIP</a> and <a href="https://developers.cloudflare.com/spectrum/">Spectrum</a> customers with <a href="https://developers.cloudflare.com/analytics/network-analytics/">Network Analytics</a> who want to receive a notification when Cloudflare has mitigated attacks that generate an average of at least 12,000 packets per second over a five-second period, with a duration of one minute or more.
 
 **Other options / filters**
 
@@ -380,13 +515,21 @@ Purchase of Magic Transit and/or BYOIP.
 
 **What should you do if you receive one?**
 
-No action needed. Refer to [DDoS alerts](https://developers.cloudflare.com/ddos-protection/reference/alerts/) for more information.
+No action needed. Refer to <a href="https://developers.cloudflare.com/ddos-protection/reference/alerts/">DDoS alerts</a> for more information.
+
+</details>
+
+<details>
+
+<summary>
 
 Advanced HTTP DDoS Attack Alert
 
+</summary>
+
 **Who is it for?**
 
-[WAF](https://developers.cloudflare.com/waf/) or [CDN](https://developers.cloudflare.com/cache/) customers with the [Advanced DDoS Protection](https://developers.cloudflare.com/ddos-protection/) subscription who want to receive a notification when Cloudflare has mitigated attacks that generate more than the configured number of requests per second (100 rps by default).
+<a href="https://developers.cloudflare.com/waf/">WAF</a> or <a href="https://developers.cloudflare.com/cache/">CDN</a> customers with the <a href="https://developers.cloudflare.com/ddos-protection/">Advanced DDoS Protection</a> subscription who want to receive a notification when Cloudflare has mitigated attacks that generate more than the configured number of requests per second (100 rps by default).
 
 **Other options / filters**
 
@@ -394,22 +537,31 @@ You can choose when to trigger a notification.
 
 Available filters include:
 
-* The zones in the account for which you wish to receive notifications.
-* The specific hostnames for which you wish to receive notifications.
-* The minimum requests-per-second rate that will trigger the alert (100 rps by default).
+- The zones in the account for which you wish to receive notifications.
+- The specific hostnames for which you wish to receive notifications.
+- The minimum requests-per-second rate that will trigger the alert (100 rps by default).
+
 **Included with**
 
 Enterprise plans with the Advanced DDoS Protection add-on.
 
 **What should you do if you receive one?**
 
-No action needed. Refer to [DDoS alerts](https://developers.cloudflare.com/ddos-protection/reference/alerts/) for more information.
+No action needed. Refer to <a href="https://developers.cloudflare.com/ddos-protection/reference/alerts/">DDoS alerts</a> for more information.
+
+</details>
+
+<details>
+
+<summary>
 
 Advanced Layer 3/4 DDoS Attack Alert
 
+</summary>
+
 **Who is it for?**
 
-[BYOIP](https://developers.cloudflare.com/byoip/) and [Magic Transit](https://developers.cloudflare.com/magic-transit/) customers with [Network Analytics](https://developers.cloudflare.com/analytics/network-analytics/) who want to receive a notification when Cloudflare has mitigated attacks that generate more than the configured number of packets per second (12,000 pps by default).
+<a href="https://developers.cloudflare.com/byoip/">BYOIP</a> and <a href="https://developers.cloudflare.com/magic-transit/">Magic Transit</a> customers with <a href="https://developers.cloudflare.com/analytics/network-analytics/">Network Analytics</a> who want to receive a notification when Cloudflare has mitigated attacks that generate more than the configured number of packets per second (12,000 pps by default).
 
 **Other options / filters**
 
@@ -417,13 +569,13 @@ You can choose when to trigger a notification.
 
 Available filters include:
 
-* The IP prefixes for which you wish to receive notifications.
-* The specific IP addresses for which you wish to receive notifications.
-* The minimum packets-per-second rate that will trigger the alert (12,000 pps by default).
-* The minimum megabits-per-second rate that will trigger the alert.
-* The protocols for which you wish to receive notifications (all protocols by default).
+- The IP prefixes for which you wish to receive notifications.
+- The specific IP addresses for which you wish to receive notifications.
+- The minimum packets-per-second rate that will trigger the alert (12,000 pps by default).
+- The minimum megabits-per-second rate that will trigger the alert.
+- The protocols for which you wish to receive notifications (all protocols by default).
 
-If you specify multiple filters, Cloudflare applies an `AND` logic. This means the alert will only trigger if all filters you set are true. Keep this in mind when setting up this alert with more than one filter.
+If you specify multiple filters, Cloudflare applies an <code>AND</code> logic. This means the alert will only trigger if all filters you set are true. Keep this in mind when setting up this alert with more than one filter.
 
 **Included with**
 
@@ -431,11 +583,19 @@ Purchase of Magic Transit and/or BYOIP (Enterprise plans).
 
 **What should you do if you receive one?**
 
-No action needed. Refer to [DDoS alerts](https://developers.cloudflare.com/ddos-protection/reference/alerts/) for more information.
+No action needed. Refer to <a href="https://developers.cloudflare.com/ddos-protection/reference/alerts/">DDoS alerts</a> for more information.
+
+</details>
 
 ## DEX
 
+<details>
+
+<summary>
+
 Device connectivity anomaly
+
+</summary>
 
 **Who is it for?**
 
@@ -443,12 +603,12 @@ Zero Trust customers who want to be notified when Cloudflare detects a spike or 
 
 **Other options / filters**
 
-* **Alert configuration**: Choose when to trigger a notification. Available options are _Connectivity spike_, _Connectivity drop_, and _Connectivity spike or drop_.
-* Filters:
-  * **Colo**: Cloudflare data center that the device is connected to.
-  * **Platform**: Operating system of the device.
-  * **Version**: WARP client version (for example, `2024.3.409.0`).
-  * **Mode**: [WARP mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) deployed on the device.
+- **Alert configuration**: Choose when to trigger a notification. Available options are *Connectivity spike*, *Connectivity drop*, and *Connectivity spike or drop*.
+- Filters:
+  - **Colo**: Cloudflare data center that the device is connected to.
+  - **Platform**: Operating system of the device.
+  - **Version**: WARP client version (for example, <code>2024.3.409.0</code>).
+  - **Mode**: <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">WARP mode</a> deployed on the device.
 
 **Included with**
 
@@ -456,26 +616,34 @@ All Cloudflare Zero Trust plans.
 
 **What should you do if you receive one?**
 
-Review your [fleet status](https://developers.cloudflare.com/cloudflare-one/insights/dex/fleet-status/) to investigate why the spike or drop occurred and which devices are impacted.
+Review your <a href="https://developers.cloudflare.com/cloudflare-one/insights/dex/fleet-status/">fleet status</a> to investigate why the spike or drop occurred and which devices are impacted.
 
 **Additional information**
 
-To learn more about the alert logic, refer to [Z-score](https://developers.cloudflare.com/cloudflare-one/insights/dex/notifications/#z-score).
+To learn more about the alert logic, refer to <a href="https://developers.cloudflare.com/cloudflare-one/insights/dex/notifications/#z-score">Z-score</a>.
+
+</details>
+
+<details>
+
+<summary>
 
 DEX test latency
 
+</summary>
+
 **Who is it for?**
 
-Zero Trust customers who wish to receive alerts when there is a spike or drop in application latency, as measured by the HTTP test [Resource Fetch time](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/http/#test-results) or Traceroute test [Round trip time](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/traceroute/#test-results). Requires setting up a [DEX test](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/).
+Zero Trust customers who wish to receive alerts when there is a spike or drop in application latency, as measured by the HTTP test <a href="https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/http/#test-results">Resource Fetch time</a> or Traceroute test <a href="https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/traceroute/#test-results">Round trip time</a>. Requires setting up a <a href="https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/">DEX test</a>.
 
 **Other options / filters**
 
-* **Alert configuration**: Choose when to trigger a notification. Available options are _Latency spike_, _Latency drop_, and _Latency spike or drop_.
-* Filters:
-  * **Colo**: Cloudflare data center that the device is connected to.
-  * **Platform**: Operating system of the device.
-  * **Version**: WARP client version (for example, `2024.3.409.0`).
-  * **Test name**: Choose which DEX test the alert should monitor. You will receive individual notifications for each test.
+- **Alert configuration**: Choose when to trigger a notification. Available options are *Latency spike*, *Latency drop*, and *Latency spike or drop*.
+- Filters:
+  - **Colo**: Cloudflare data center that the device is connected to.
+  - **Platform**: Operating system of the device.
+  - **Version**: WARP client version (for example, <code>2024.3.409.0</code>).
+  - **Test name**: Choose which DEX test the alert should monitor. You will receive individual notifications for each test.
 
 **Included with**
 
@@ -483,26 +651,34 @@ All Cloudflare Zero Trust plans.
 
 **What should you do if you receive one?**
 
-View your [test results](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/view-results/) to investigate why the spike occurred.
+View your <a href="https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/view-results/">test results</a> to investigate why the spike occurred.
 
 **Additional information**
 
-To learn more about the alert logic, refer to [Z-score](https://developers.cloudflare.com/cloudflare-one/insights/dex/notifications/#z-score).
+To learn more about the alert logic, refer to <a href="https://developers.cloudflare.com/cloudflare-one/insights/dex/notifications/#z-score">Z-score</a>.
+
+</details>
+
+<details>
+
+<summary>
 
 DEX test low availability
 
+</summary>
+
 **Who is it for?**
 
-Zero Trust customers who wish to receive alerts when the percentage of successful HTTP or traceroute requests to an application drops below the selected service-level objective (SLO). Requires setting up a [DEX test](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/).
+Zero Trust customers who wish to receive alerts when the percentage of successful HTTP or traceroute requests to an application drops below the selected service-level objective (SLO). Requires setting up a <a href="https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/">DEX test</a>.
 
 **Other options / filters**
 
-* **Service Level Objective (SLO)**: Specify the availability threshold that will trigger an alert. Enter a percentage in `xx.x` format (for example, `98.0`).
-* Filters:
-  * **Colo**: Cloudflare data center that the device is connected to.
-  * **Platform**: Operating system of the device.
-  * **Version**: WARP client version (for example, `2024.3.409.0`).
-  * **Test name**: Choose which DEX test the alert should monitor. You will receive individual notifications for each test.
+- **Service Level Objective (SLO)**: Specify the availability threshold that will trigger an alert. Enter a percentage in <code>xx.x</code> format (for example, <code>98.0</code>).
+- Filters:
+  - **Colo**: Cloudflare data center that the device is connected to.
+  - **Platform**: Operating system of the device.
+  - **Version**: WARP client version (for example, <code>2024.3.409.0</code>).
+  - **Test name**: Choose which DEX test the alert should monitor. You will receive individual notifications for each test.
 
 **Included with**
 
@@ -510,15 +686,23 @@ All Cloudflare Zero Trust plans.
 
 **What should you do if you receive one?**
 
-View your [test results](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/view-results/) to investigate why the degradation occurred.
+View your <a href="https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/view-results/">test results</a> to investigate why the degradation occurred.
 
 **Additional information**
 
-To learn more about the alert logic, refer to [SLO](https://developers.cloudflare.com/cloudflare-one/insights/dex/notifications/#slo).
+To learn more about the alert logic, refer to <a href="https://developers.cloudflare.com/cloudflare-one/insights/dex/notifications/#slo">SLO</a>.
+
+</details>
 
 ## DNS
 
+<details>
+
+<summary>
+
 Secondary DNS all Primaries Failing
+
+</summary>
 
 **Who is it for?**
 
@@ -535,10 +719,18 @@ Purchase of Secondary DNS
 **What should you do if you receive one?**
 
 1. Confirm that your primary nameservers are up and running.
-2. Confirm that the [Access Control Lists (ACLs)](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/access-control-lists/cloudflare-ip-addresses/) on your primary nameservers are configured correctly.
+2. Confirm that the <a href="https://developers.cloudflare.com/dns/zone-setups/zone-transfers/access-control-lists/cloudflare-ip-addresses/">Access Control Lists (ACLs)</a> on your primary nameservers are configured correctly.
 3. Confirm that your primary nameservers are configured correctly in your Cloudflare account (correct IP, port, TSIG).
 
+</details>
+
+<details>
+
+<summary>
+
 Secondary DNS Primaries Failing
+
+</summary>
 
 **Who is it for?**
 
@@ -555,10 +747,18 @@ Purchase of Secondary DNS.
 **What should you do if you receive one?**
 
 1. Confirm that your primary nameservers are up and running.
-2. Confirm that the [Access Control Lists (ACLs)](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/access-control-lists/cloudflare-ip-addresses/) on your primary nameservers are configured correctly.
+2. Confirm that the <a href="https://developers.cloudflare.com/dns/zone-setups/zone-transfers/access-control-lists/cloudflare-ip-addresses/">Access Control Lists (ACLs)</a> on your primary nameservers are configured correctly.
 3. Confirm that your primary nameservers are configured correctly in your Cloudflare account (correct IP, port, TSIG).
 
+</details>
+
+<details>
+
+<summary>
+
 Secondary DNS Successfully Updated
+
+</summary>
 
 **Who is it for?**
 
@@ -576,7 +776,15 @@ Purchase of Secondary DNS.
 
 No action needed. Everything is working correctly.
 
+</details>
+
+<details>
+
+<summary>
+
 Secondary DNS Warning
+
+</summary>
 
 **Who is it for?**
 
@@ -594,31 +802,48 @@ Enterprise plans.
 
 Actions for failure notifications will depend on the type of failure.
 
+</details>
+
 ## Health Checks
+
+<details>
+
+<summary>
 
 Health Checks status notification
 
+</summary>
+
 **Who is it for?**
 
-Customers who want to be warned about changes to server health as determined by [health checks](https://developers.cloudflare.com/health-checks/).
+Customers who want to be warned about changes to server health as determined by <a href="https://developers.cloudflare.com/health-checks/">health checks</a>.
 
 **Other options / filters**
 
 Available filters include:
 
-* You can search for and add health checks from your list of health checks.
-* You can choose a trigger to fire the notification when your server becomes **unhealthy**, **healthy**, or **either healthy or unhealthy**.
+- You can search for and add health checks from your list of health checks.
+- You can choose a trigger to fire the notification when your server becomes **unhealthy**, **healthy**, or **either healthy or unhealthy**.
+
 **Included with**
 
 Professional plans or higher.
 
 **What should you do if you receive one?**
 
-Review your [health check analytics](https://developers.cloudflare.com/health-checks/health-checks-analytics/#common-error-codes).
+Review your <a href="https://developers.cloudflare.com/health-checks/health-checks-analytics/#common-error-codes">health check analytics</a>.
+
+</details>
 
 ## Load Balancing
 
+<details>
+
+<summary>
+
 Pool Enablement
+
+</summary>
 
 **Who is it for?**
 
@@ -628,50 +853,68 @@ Customers who want to be warned about status changes (enabled/disabled) in their
 
 Available filters include:
 
-* You can search for and add pools from your list of pools. If no pools are selected, the alert will apply to all pools in the account.
-* You can also choose the trigger that fires the notification when the Load Balancing pool is **enabled**, **disabled**, and **either enabled or disabled**.
+- You can search for and add pools from your list of pools. If no pools are selected, the alert will apply to all pools in the account.
+- You can also choose the trigger that fires the notification when the Load Balancing pool is **enabled**, **disabled**, and **either enabled or disabled**.
+
 **Included with**
 
-Purchase of [Load Balancing](https://developers.cloudflare.com/load-balancing/get-started/enable-load-balancing/).
+Purchase of <a href="https://developers.cloudflare.com/load-balancing/get-started/enable-load-balancing/">Load Balancing</a>.
 
 **What should you do if you receive one?**
 
 No action is needed.
 
+</details>
+
+<details>
+
+<summary>
+
 Load Balancing Health Alert
+
+</summary>
 
 **Who is it for?**
 
-Customers who want to be warned about [changes in health status](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/) in their pools or origins.
+Customers who want to be warned about <a href="https://developers.cloudflare.com/load-balancing/understand-basics/health-details/">changes in health status</a> in their pools or origins.
 
 **Other options / filters**
 
 Available filters include:
 
-* You can search for and add pools from your list of pools, as well as **Include future pools** (if all pools are selected).
-* You can choose the trigger that fires the notification when the health status becomes **unhealthy**, **healthy**, or **either unhealthy or healthy**
-* You can choose the trigger that fires the notification when the event source health status changes in **pool**, **origin**, or **either pool or origin**.
+- You can search for and add pools from your list of pools, as well as **Include future pools** (if all pools are selected).
+- You can choose the trigger that fires the notification when the health status becomes **unhealthy**, **healthy**, or **either unhealthy or healthy**
+- You can choose the trigger that fires the notification when the event source health status changes in **pool**, **origin**, or **either pool or origin**.
+
 **Included with**
 
-Purchase of [Load Balancing](https://developers.cloudflare.com/load-balancing/get-started/enable-load-balancing/).
+Purchase of <a href="https://developers.cloudflare.com/load-balancing/get-started/enable-load-balancing/">Load Balancing</a>.
 
 **What should you do if you receive one?**
 
-Evaluate [load balancing analytics](https://developers.cloudflare.com/load-balancing/reference/load-balancing-analytics/) to review changes in health status over time.
+Evaluate <a href="https://developers.cloudflare.com/load-balancing/reference/load-balancing-analytics/">load balancing analytics</a> to review changes in health status over time.
+
+</details>
 
 ## Logpush
 
+<details>
+
+<summary>
+
 Failing Logpush Job Disabled
+
+</summary>
 
 **Who is it for?**
 
-Enterprise customers who use [Logpush](https://developers.cloudflare.com/logs/) and want to monitor their job health.
+Enterprise customers who use <a href="https://developers.cloudflare.com/logs/">Logpush</a> and want to monitor their job health.
 
 **Other options / filters**
 
-* Notification Name: A custom name for the notification.
-* Description (optional): A custom description for the notification.
-* Notification Email (can be multiple emails): The email address of the recipient for the notification.
+- Notification Name: A custom name for the notification.
+- Description (optional): A custom description for the notification.
+- Notification Email (can be multiple emails): The email address of the recipient for the notification.
 
 **Included with**
 
@@ -679,15 +922,23 @@ Enterprise plans.
 
 **What should you do if you receive one?**
 
-In the email for the notification, you can find the destination name for the failing Logpush job. With this destination name, you should be able to figure out which zone this relates to. There can be multiple reasons why a job fails, but it is best to test that the destination endpoint is healthy, and that necessary credentials are still working. You can also check that the destination has allowlisted [Cloudflare IPs](https://www.cloudflare.com/ips/).
+In the email for the notification, you can find the destination name for the failing Logpush job. With this destination name, you should be able to figure out which zone this relates to. There can be multiple reasons why a job fails, but it is best to test that the destination endpoint is healthy, and that necessary credentials are still working. You can also check that the destination has allowlisted <a href="https://www.cloudflare.com/ips/">Cloudflare IPs</a>.
+
+</details>
 
 ## Magic Transit
 
+<details>
+
+<summary>
+
 Network Flow - Auto Advertisement
+
+</summary>
 
 **Who is it for?**
 
-[Magic Transit on-demand](https://developers.cloudflare.com/magic-transit/on-demand/) customers who use Flow-Based Monitoring and want alerts when Magic Transit is automatically enabled.
+<a href="https://developers.cloudflare.com/magic-transit/on-demand/">Magic Transit on-demand</a> customers who use Flow-Based Monitoring and want alerts when Magic Transit is automatically enabled.
 
 **Other options / filters**
 
@@ -699,13 +950,21 @@ Purchase of Magic Transit.
 
 **What should you do if you receive one?**
 
-No action is needed. You can go to the [Cloudflare dashboard](https://dash.cloudflare.com/?to=/:account/magic-transit) to review the health and status of your tunnels.
+No action is needed. You can go to the <a href="https://dash.cloudflare.com/?to=/:account/magic-transit">Cloudflare dashboard</a> to review the health and status of your tunnels.
+
+</details>
+
+<details>
+
+<summary>
 
 Network Flow - DDoS Attack
 
+</summary>
+
 **Who is it for?**
 
-[BYOIP](https://developers.cloudflare.com/byoip/) and [Spectrum](https://developers.cloudflare.com/spectrum/) customers with [Network Analytics](https://developers.cloudflare.com/analytics/network-analytics/) who want to receive a notification when Cloudflare has mitigated attacks that generate an average of at least 12,000 packets per second over a five-second period, with a duration of one minute or more.
+<a href="https://developers.cloudflare.com/byoip/">BYOIP</a> and <a href="https://developers.cloudflare.com/spectrum/">Spectrum</a> customers with <a href="https://developers.cloudflare.com/analytics/network-analytics/">Network Analytics</a> who want to receive a notification when Cloudflare has mitigated attacks that generate an average of at least 12,000 packets per second over a five-second period, with a duration of one minute or more.
 
 **Other options / filters**
 
@@ -717,13 +976,21 @@ Purchase of Magic Transit and/or BYOIP.
 
 **What should you do if you receive one?**
 
-No action needed. Refer to [DDoS alerts](https://developers.cloudflare.com/ddos-protection/reference/alerts/) for more information.
+No action needed. Refer to <a href="https://developers.cloudflare.com/ddos-protection/reference/alerts/">DDoS alerts</a> for more information.
+
+</details>
+
+<details>
+
+<summary>
 
 Network Flow - Volumetric Attack
 
+</summary>
+
 **Who is it for?**
 
-[Magic Transit on-demand](https://developers.cloudflare.com/magic-transit/on-demand/) customers who are using Flow-Based Monitoring to detect attacks when Magic Transit is disabled.
+<a href="https://developers.cloudflare.com/magic-transit/on-demand/">Magic Transit on-demand</a> customers who are using Flow-Based Monitoring to detect attacks when Magic Transit is disabled.
 
 **Other options / filters**
 
@@ -735,9 +1002,17 @@ Purchase of Magic Transit.
 
 **What should you do if you receive one?**
 
-If you do not have auto advertisement enabled, you need to advertise your IP prefixes to enable Magic Transit. For more information, refer to [Dynamic advertisement](https://developers.cloudflare.com/byoip/concepts/dynamic-advertisement/).
+If you do not have auto advertisement enabled, you need to advertise your IP prefixes to enable Magic Transit. For more information, refer to <a href="https://developers.cloudflare.com/byoip/concepts/dynamic-advertisement/">Dynamic advertisement</a>.
+
+</details>
+
+<details>
+
+<summary>
 
 Magic Tunnel Health Check Alert
+
+</summary>
 
 **Who is it for?**
 
@@ -745,12 +1020,12 @@ Magic Transit and Cloudflare WAN customers who wish to receive alerts when the p
 
 **Other options / filters**
 
-* Notification Name: A custom name for the notification.
-* Description (optional): A custom description for the notification.
-* Notification Email (can be multiple emails): The email address of recipient for the notification.
-* Webhooks
-* Tunnels: Choose one or more tunnels to monitor.
-* SLO: Define SLO threshold for Magic Tunnel health alerts. Available options are _High_, _Medium_, and _Low_.
+- Notification Name: A custom name for the notification.
+- Description (optional): A custom description for the notification.
+- Notification Email (can be multiple emails): The email address of recipient for the notification.
+- Webhooks
+- Tunnels: Choose one or more tunnels to monitor.
+- SLO: Define SLO threshold for Magic Tunnel health alerts. Available options are *High*, *Medium*, and *Low*.
 
 **Included with**
 
@@ -758,15 +1033,23 @@ Purchase of Magic Transit and Cloudflare WAN.
 
 **What should you do if you receive one?**
 
-Refer to the [Magic Transit tunnel health](https://developers.cloudflare.com/magic-transit/network-health/check-tunnel-health-dashboard/) or [Cloudflare WAN IPsec/GRE tunnel health](https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/check-tunnel-health-dashboard/) for more information on what the issue might be.
+Refer to the <a href="https://developers.cloudflare.com/magic-transit/network-health/check-tunnel-health-dashboard/">Magic Transit tunnel health</a> or <a href="https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/check-tunnel-health-dashboard/">Cloudflare WAN IPsec/GRE tunnel health</a> for more information on what the issue might be.
+
+</details>
 
 ## Network Interconnect
 
+<details>
+
+<summary>
+
 Connection Maintenance Alert
+
+</summary>
 
 **Who is it for?**
 
-[Classic CNI](https://developers.cloudflare.com/network-interconnect/classic-cni/) customers who want to be alerted to maintenance events that might affect Classic CNI.
+<a href="https://developers.cloudflare.com/network-interconnect/classic-cni/">Classic CNI</a> customers who want to be alerted to maintenance events that might affect Classic CNI.
 
 **Other options / filters**
 
@@ -780,32 +1063,49 @@ Purchase of Cloudflare Network Interconnect (CNI).
 
 No action is needed.
 
+</details>
+
 ## Pages
+
+<details>
+
+<summary>
 
 Project updates
 
+</summary>
+
 **Who is it for?**
 
-Customers who want to receive notifications about project-level events in [Cloudflare Pages](https://developers.cloudflare.com/pages/).
+Customers who want to receive notifications about project-level events in <a href="https://developers.cloudflare.com/pages/">Cloudflare Pages</a>.
 
 **Other options / filters**
 
 Available filters include:
 
-* Pages projects
-* Environments
-* Different events: **Deployment started**, **Deployment failed**, or **Deployment success**
+- Pages projects
+- Environments
+- Different events: **Deployment started**, **Deployment failed**, or **Deployment success**
+
 **Included with**
 
 All Cloudflare plans.
 
 **What should you do if you receive one?**
 
-For failed deployments, review our [debugging guide](https://developers.cloudflare.com/pages/configuration/debugging-pages/#check-your-build-log).
+For failed deployments, review our <a href="https://developers.cloudflare.com/pages/configuration/debugging-pages/#check-your-build-log">debugging guide</a>.
+
+</details>
 
 ## Radar
 
+<details>
+
+<summary>
+
 Radar Alerts
+
+</summary>
 
 **Who is it for?**
 
@@ -815,9 +1115,9 @@ Customers who want to receive a notification when traffic anomalies, outages, ro
 
 Filters include:
 
-* Notification type (anomaly, outage, route hijack, route leak)
-* Location (country or region)
-* Autonomous systems (ASNs)
+- Notification type (anomaly, outage, route hijack, route leak)
+- Location (country or region)
+- Autonomous systems (ASNs)
 
 You have the option to send the notification via email, webhook, or PagerDuty.
 
@@ -827,15 +1127,23 @@ All Cloudflare plans.
 
 **What should you do if you receive one?**
 
-Further action will depend on your role. Refer to the [Radar documentation](https://developers.cloudflare.com/radar/) for more information.
+Further action will depend on your role. Refer to the <a href="https://developers.cloudflare.com/radar/">Radar documentation</a> for more information.
+
+</details>
 
 ## Route Leak Detection
 
+<details>
+
+<summary>
+
 Route Leak Detection Alert
+
+</summary>
 
 **Who is it for?**
 
-[BYOIP customers](https://developers.cloudflare.com/byoip/) who want to receive a notification when their prefixes are advertised in places they should not be.
+<a href="https://developers.cloudflare.com/byoip/">BYOIP customers</a> who want to receive a notification when their prefixes are advertised in places they should not be.
 
 **Other options / filters**
 
@@ -849,13 +1157,21 @@ Purchase of BYOIP.
 
 Confirm your traffic is healthy. Reach out to your transit providers to ensure you are behaving as expected and ask them to follow up with any providers accepting the unauthorized routes.
 
+</details>
+
 ## SSL/TLS
+
+<details>
+
+<summary>
 
 Access mTLS Certificate Expiration Alert
 
+</summary>
+
 **Who is it for?**
 
-[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) customers that use client certificates for mutual TLS authentication. This notification will be sent 30 and 14 days before the expiration of the certificate.
+<a href="https://developers.cloudflare.com/cloudflare-one/access-controls/policies/">Access</a> customers that use client certificates for mutual TLS authentication. This notification will be sent 30 and 14 days before the expiration of the certificate.
 
 **Other options / filters**
 
@@ -863,17 +1179,25 @@ None.
 
 **Included with**
 
-Purchase of [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/) and/or [Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/).
+Purchase of <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/">Access</a> and/or <a href="https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/">Cloudflare for SaaS</a>.
 
 **What should you do if you receive one?**
 
-Upload a [renewed certificate](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#add-mtls-authentication-to-your-access-configuration).
+Upload a <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#add-mtls-authentication-to-your-access-configuration">renewed certificate</a>.
+
+</details>
+
+<details>
+
+<summary>
 
 Advanced Certificate Alert
 
+</summary>
+
 **Who is it for?**
 
-Customers with [advanced certificates](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) that want to be alerted on validation, issuance, renewal, and expiration of certificates.
+Customers with <a href="https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/">advanced certificates</a> that want to be alerted on validation, issuance, renewal, and expiration of certificates.
 
 **Other options / filters**
 
@@ -885,9 +1209,17 @@ When an advanced certificate is validated, issued, renewed, or expired.
 
 **What should you do if you receive one?**
 
-Action only needed if notification is about a certificate that failed to be issued. Refer to [SSL expired or SSL mismatch errors](https://developers.cloudflare.com/ssl/troubleshooting/version-cipher-mismatch/) for more information.
+Action only needed if notification is about a certificate that failed to be issued. Refer to <a href="https://developers.cloudflare.com/ssl/troubleshooting/version-cipher-mismatch/">SSL expired or SSL mismatch errors</a> for more information.
+
+</details>
+
+<details>
+
+<summary>
 
 Hostname-level Authenticated Origin Pulls Certificate Expiration Alert
+
+</summary>
 
 **Who is it for?**
 
@@ -903,13 +1235,21 @@ Authenticated Origin Pull.
 
 **What should you do if you receive one?**
 
-Upload a renewed certificate to use for [hostname-level AOP](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/).
+Upload a renewed certificate to use for <a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/">hostname-level AOP</a>.
+
+</details>
+
+<details>
+
+<summary>
 
 SSL for SaaS Custom Hostnames Alert
 
+</summary>
+
 **Who is it for?**
 
-Customers with custom hostname certificates who want to receive a notification on validation, issuance, renewal, and expiration of certificates. For more details around data formatting for webhooks, refer to the [Cloudflare for SaaS docs](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/webhook-definitions/).
+Customers with custom hostname certificates who want to receive a notification on validation, issuance, renewal, and expiration of certificates. For more details around data formatting for webhooks, refer to the <a href="https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/webhook-definitions/">Cloudflare for SaaS docs</a>.
 
 **Other options / filters**
 
@@ -917,13 +1257,21 @@ None.
 
 **Included with**
 
-Purchase of [Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/).
+Purchase of <a href="https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/">Cloudflare for SaaS</a>.
 
 **What should you do if you receive one?**
 
-You only need to take action if you are notified that you have a certificate that failed. You can find the reasons why a certificate is not being issued in [Troubleshooting SSL errors](https://developers.cloudflare.com/ssl/troubleshooting/general-ssl-errors/).
+You only need to take action if you are notified that you have a certificate that failed. You can find the reasons why a certificate is not being issued in <a href="https://developers.cloudflare.com/ssl/troubleshooting/general-ssl-errors/">Troubleshooting SSL errors</a>.
+
+</details>
+
+<details>
+
+<summary>
 
 Universal SSL Alert
+
+</summary>
 
 **Who is it for?**
 
@@ -939,9 +1287,17 @@ All Cloudflare plans.
 
 **What should you do if you receive one?**
 
-You only need to take action if you are notified that you have a certificate that failed. You can find the reasons why a certificate is not being issued in [Troubleshooting SSL errors](https://developers.cloudflare.com/ssl/troubleshooting/general-ssl-errors/).
+You only need to take action if you are notified that you have a certificate that failed. You can find the reasons why a certificate is not being issued in <a href="https://developers.cloudflare.com/ssl/troubleshooting/general-ssl-errors/">Troubleshooting SSL errors</a>.
+
+</details>
+
+<details>
+
+<summary>
 
 Zone-level Authenticated Origin Pulls Certificate Expiration Alert
+
+</summary>
 
 **Who is it for?**
 
@@ -957,13 +1313,21 @@ Authenticated Origin Pull.
 
 **What should you do if you receive one?**
 
-Upload a renewed certificate to use for [zone-level AOP](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/).
+Upload a renewed certificate to use for <a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/">zone-level AOP</a>.
+
+</details>
+
+<details>
+
+<summary>
 
 mTLS Certificate Store Certificate Expiration Alert
 
+</summary>
+
 **Who is it for?**
 
-Customers that upload their own client certificates for mTLS via [bring your own CA](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/).
+Customers that upload their own client certificates for mTLS via <a href="https://developers.cloudflare.com/ssl/client-certificates/byo-ca/">bring your own CA</a>.
 
 This notification will be sent 30 and 14 days before the expiration of the certificate.
 
@@ -973,25 +1337,33 @@ None.
 
 **Included with**
 
-[Bring your own CA](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/).
+<a href="https://developers.cloudflare.com/ssl/client-certificates/byo-ca/">Bring your own CA</a>.
 
-The mTLS Certificate Store refers to customer uploaded certificates and does not include client certificates generated with the [Cloudflare CA](https://developers.cloudflare.com/ssl/client-certificates/#how-it-works).
+The mTLS Certificate Store refers to customer uploaded certificates and does not include client certificates generated with the <a href="https://developers.cloudflare.com/ssl/client-certificates/#how-it-works">Cloudflare CA</a>.
 
 **What should you do if you receive one?**
 
 Upload a renewed certificate.
 
+</details>
+
 ## Security Center
+
+<details>
+
+<summary>
 
 Brand Protection Alerts
 
+</summary>
+
 **Who is it for?**
 
-Customers who want a summary of activity related to [Brand Protection](https://developers.cloudflare.com/security-center/brand-protection/).
+Customers who want a summary of activity related to <a href="https://developers.cloudflare.com/security-center/brand-protection/">Brand Protection</a>.
 
 **Other options / filters**
 
-You can set up Brand Protection Alerts on individual monitored queries. For more details, refer to [Brand Protection Alerts](https://developers.cloudflare.com/security-center/brand-protection/#brand-protection-alerts).
+You can set up Brand Protection Alerts on individual monitored queries. For more details, refer to <a href="https://developers.cloudflare.com/security-center/brand-protection/#brand-protection-alerts">Brand Protection Alerts</a>.
 
 **Included with**
 
@@ -1000,16 +1372,24 @@ Professional plans or higher.
 **What should you do if you receive one?**
 
 Investigate and potentially block any suspicious domains that may be trying to impersonate your brand.
+
+</details>
+
+<details>
+
+<summary>
 
 Brand Protection Digest
 
+</summary>
+
 **Who is it for?**
 
-Customers who want a summary of activity related to [Brand Protection](https://developers.cloudflare.com/security-center/brand-protection/).
+Customers who want a summary of activity related to <a href="https://developers.cloudflare.com/security-center/brand-protection/">Brand Protection</a>.
 
 **Other options / filters**
 
-You can set up Brand Protection Digest on individual monitored queries. For more details, refer to [Brand Protection Alerts](https://developers.cloudflare.com/security-center/brand-protection/#brand-protection-alerts).
+You can set up Brand Protection Digest on individual monitored queries. For more details, refer to <a href="https://developers.cloudflare.com/security-center/brand-protection/#brand-protection-alerts">Brand Protection Alerts</a>.
 
 **Included with**
 
@@ -1019,11 +1399,19 @@ Professional plans or higher.
 
 Investigate and potentially block any suspicious domains that may be trying to impersonate your brand.
 
+</details>
+
+<details>
+
+<summary>
+
 Logo Match Alerts
+
+</summary>
 
 **Who is it for?**
 
-Customers who want to receive a notification when the [Brand Protection](https://developers.cloudflare.com/security-center/brand-protection/) system detects a new domain which is using the uploaded logo and might be infringing copyright.
+Customers who want to receive a notification when the <a href="https://developers.cloudflare.com/security-center/brand-protection/">Brand Protection</a> system detects a new domain which is using the uploaded logo and might be infringing copyright.
 
 **Other options / filters**
 
@@ -1037,7 +1425,15 @@ Enterprise plans.
 
 Review the domains and URLs that are potentially impersonating your brand.
 
+</details>
+
+<details>
+
+<summary>
+
 Security Insights
+
+</summary>
 
 **Who is it for?**
 
@@ -1055,7 +1451,15 @@ All Cloudflare plans.
 
 Review the insight and decide whether you want to resolve it, archive it, or export it.
 
+</details>
+
+<details>
+
+<summary>
+
 Abuse report
+
+</summary>
 
 **Who is it for?**
 
@@ -1071,15 +1475,23 @@ All Cloudflare plans.
 
 **What should you do if you receive one?**
 
-View our guidance on [customer abuse report obligations](https://developers.cloudflare.com/fundamentals/reference/report-abuse/abuse-report-obligations/) and more information on how to [view and submit abuse reports](https://developers.cloudflare.com/fundamentals/reference/report-abuse/submit-report/).
+View our guidance on <a href="https://developers.cloudflare.com/fundamentals/reference/report-abuse/abuse-report-obligations/">customer abuse report obligations</a> and more information on how to <a href="https://developers.cloudflare.com/fundamentals/reference/report-abuse/submit-report/">view and submit abuse reports</a>.
+
+</details>
 
 ## Stream
 
+<details>
+
+<summary>
+
 Stream Live Notifications
+
+</summary>
 
 **Who is it for?**
 
-Customers who are using [Stream](https://developers.cloudflare.com/stream/) and want to receive webhooks with the status of their videos.
+Customers who are using <a href="https://developers.cloudflare.com/stream/">Stream</a> and want to receive webhooks with the status of their videos.
 
 **Other options / filters**
 
@@ -1087,8 +1499,9 @@ You can input Stream Live IDs to receive notifications only about those inputs. 
 
 The following input states will fire notifications. You can toggle them on or off:
 
-* `live_input.connected`
-* `live_input.disconnected`
+- <code>live_input.connected</code>
+- <code>live_input.disconnected</code>
+
 **Included with**
 
 Stream subscription.
@@ -1097,21 +1510,29 @@ Stream subscription.
 
 Stream notifications are entirely customizable by the customer. Action will depend on the customizations enabled.
 
+</details>
+
 ## Traffic Monitoring
+
+<details>
+
+<summary>
 
 Advanced Error Rate Alert
 
+</summary>
+
 **Who is it for?**
 
-Enterprise customers who want to receive a notification when Cloudflare detects edge and/or origin errors. Refer to [HTTP Traffic Alerts](https://developers.cloudflare.com/notifications/reference/traffic-alerts/) for more information.
+Enterprise customers who want to receive a notification when Cloudflare detects edge and/or origin errors. Refer to <a href="https://developers.cloudflare.com/notifications/reference/traffic-alerts/">HTTP Traffic Alerts</a> for more information.
 
 **Other options / filters**
 
 Available filters include:
 
-* You can search and add domains from your list of domains.
-* You can filter alerts by **edge status code**, **origin status code**, and the **IP Address**.
-* You can also choose the trigger that fires the notification. Available triggers are **low sensitivity**, **medium sensitivity**, **high sensitivity**, or **very high sensitivity**.
+- You can search and add domains from your list of domains.
+- You can filter alerts by **edge status code**, **origin status code**, and the **IP Address**.
+- You can also choose the trigger that fires the notification. Available triggers are **low sensitivity**, **medium sensitivity**, **high sensitivity**, or **very high sensitivity**.
 
 You can also toggle Alert Grouping to receive separate alerts for your domain, edge status code, and/or origin status code.
 
@@ -1122,7 +1543,7 @@ Enterprise plans.
 **What should you do if you receive one?**
 
 1. Use the link in the notification you received to see which error codes Cloudflare is seeing.
-2. Depending on the statuses you are alerting on, refer to [Troubleshooting Cloudflare 5XX errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/).
+2. Depending on the statuses you are alerting on, refer to <a href="https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/">Troubleshooting Cloudflare 5XX errors</a>.
 
 **Limitations**
 
@@ -1130,18 +1551,27 @@ Traffic Monitoring alerts are not sent for each individual events, but only when
 
 These thresholds cannot be configured. Service level objectives (SLOs) are used to determine the threshold.
 
+</details>
+
+<details>
+
+<summary>
+
 Origin Error Rate Alert
+
+</summary>
 
 **Who is it for?**
 
-Enterprise customers who want to receive a notification when Cloudflare is unable to access their origin server. Refer to [HTTP Traffic Alerts](https://developers.cloudflare.com/notifications/reference/traffic-alerts/) for more information.
+Enterprise customers who want to receive a notification when Cloudflare is unable to access their origin server. Refer to <a href="https://developers.cloudflare.com/notifications/reference/traffic-alerts/">HTTP Traffic Alerts</a> for more information.
 
 **Other options / filters**
 
 Multiple filters available:
 
-* You can search and add domains from your list of domains.
-* You can also choose the trigger that fires the notification. Available triggers are **low sensitivity**, **medium sensitivity**, **high sensitivity**, or **very high sensitivity**.
+- You can search and add domains from your list of domains.
+- You can also choose the trigger that fires the notification. Available triggers are **low sensitivity**, **medium sensitivity**, **high sensitivity**, or **very high sensitivity**.
+
 **Included with**
 
 Enterprise plans.
@@ -1149,7 +1579,7 @@ Enterprise plans.
 **What should you do if you receive one?**
 
 1. Use the link in the Notification you received to see which error codes Cloudflare is seeing from your origin.
-2. Refer to [Troubleshooting Cloudflare 5XX errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/) to learn how to troubleshoot these errors.
+2. Refer to <a href="https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/">Troubleshooting Cloudflare 5XX errors</a> to learn how to troubleshoot these errors.
 
 **Limitations**
 
@@ -1157,19 +1587,28 @@ Traffic Monitoring alerts are not sent for each individual events, but only when
 
 These thresholds cannot be configured. Service level objectives (SLOs) are used to determine the threshold.
 
+</details>
+
+<details>
+
+<summary>
+
 Traffic Anomalies Alert
+
+</summary>
 
 **Who is it for?**
 
-Enterprise customers who want to receive a notification when one zone is experiencing an unexpected spike or drop in traffic. Refer to [HTTP Traffic Alerts](https://developers.cloudflare.com/notifications/reference/traffic-alerts/) for more information.
+Enterprise customers who want to receive a notification when one zone is experiencing an unexpected spike or drop in traffic. Refer to <a href="https://developers.cloudflare.com/notifications/reference/traffic-alerts/">HTTP Traffic Alerts</a> for more information.
 
 **Other options / filters**
 
 Multiple filters available:
 
-* You can search and add domains from your list of domains.
-* You can include or exclude traffic mitigated by the [Web Application Firewall (WAF)](https://developers.cloudflare.com/waf/).
-* You can choose whether to be notified of either spikes or drops in traffic.
+- You can search and add domains from your list of domains.
+- You can include or exclude traffic mitigated by the <a href="https://developers.cloudflare.com/waf/">Web Application Firewall (WAF)</a>.
+- You can choose whether to be notified of either spikes or drops in traffic.
+
 **Included with**
 
 Enterprise plans.
@@ -1184,13 +1623,21 @@ Traffic Monitoring alerts are not sent for each individual events, but only when
 
 These thresholds cannot be configured. Z-score is used to determine the threshold.
 
+</details>
+
 ## Trust and Safety Blocks
+
+<details>
+
+<summary>
 
 Block Review Rejection
 
+</summary>
+
 **Who is it for?**
 
-Customers who want to be notified when Cloudflare Trust & Safety rejects a request for block removal.
+Customers who want to be notified when Cloudflare Trust &amp; Safety rejects a request for block removal.
 
 **Other options / filters**
 
@@ -1202,13 +1649,21 @@ All Cloudflare plans.
 
 **What should you do if you receive one?**
 
-Take care of any abuse on your website. Then, go to the [Cloudflare dashboard](https://dash.cloudflare.com/) and request a review.
+Take care of any abuse on your website. Then, go to the <a href="https://dash.cloudflare.com/">Cloudflare dashboard</a> and request a review.
+
+</details>
+
+<details>
+
+<summary>
 
 New Blocks
 
+</summary>
+
 **Who is it for?**
 
-Customers who want to be notified when Cloudflare Trust & Safety places a block on their website.
+Customers who want to be notified when Cloudflare Trust &amp; Safety places a block on their website.
 
 **Other options / filters**
 
@@ -1220,13 +1675,21 @@ All Cloudflare plans.
 
 **What should you do if you receive one?**
 
-Take care of any abuse on your website. Then, go to the [Cloudflare dashboard](https://dash.cloudflare.com/) and request a review.
+Take care of any abuse on your website. Then, go to the <a href="https://dash.cloudflare.com/">Cloudflare dashboard</a> and request a review.
+
+</details>
+
+<details>
+
+<summary>
 
 Removed Blocks
 
+</summary>
+
 **Who is it for?**
 
-Customers who want to be notified when Cloudflare Trust & Safety removes a block from their website.
+Customers who want to be notified when Cloudflare Trust &amp; Safety removes a block from their website.
 
 **Other options / filters**
 
@@ -1240,9 +1703,17 @@ All Cloudflare plans.
 
 This is informational follow up.
 
+</details>
+
 ## Tunnel
 
+<details>
+
+<summary>
+
 Tunnel Creation or Deletion Event
+
+</summary>
 
 **Who is it for?**
 
@@ -1260,7 +1731,15 @@ All Cloudflare Zero Trust plans.
 
 No action is needed.
 
+</details>
+
+<details>
+
+<summary>
+
 Tunnel Health Alert
+
+</summary>
 
 **Who is it for?**
 
@@ -1276,19 +1755,27 @@ All Cloudflare Zero Trust plans.
 
 **What should you do if you receive one?**
 
-Monitor tunnel health over time and consider deploying [cloudflared replicas or load balancers](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/).
+Monitor tunnel health over time and consider deploying <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/"><code>cloudflared</code> replicas or load balancers</a>.
 
 **Additional information**
 
-Refer to [Tunnel status](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/common-errors/#tunnel-status) to review the list of possible tunnel statuses (`Healthy`, `Inactive`, `Down` and `Degraded`).
+Refer to <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/common-errors/#tunnel-status">Tunnel status</a> to review the list of possible tunnel statuses (<code>Healthy</code>, <code>Inactive</code>, <code>Down</code> and <code>Degraded</code>).
+
+</details>
 
 ## Web Analytics
 
+<details>
+
+<summary>
+
 Weekly summary
+
+</summary>
 
 **Who is it for?**
 
-Customers using [Web Analytics](https://developers.cloudflare.com/web-analytics/) to monitor their website's performance.
+Customers using <a href="https://developers.cloudflare.com/web-analytics/">Web Analytics</a> to monitor their website's performance.
 
 **Other options / filters**
 
@@ -1300,30 +1787,39 @@ All Cloudflare plans.
 
 **What should you do if you receive one?**
 
-No action is needed. This notification is a weekly summary with reports from your Web Analytics account. Refer to [Notifications](https://dash.cloudflare.com/?to=/:account/notifications) in the Cloudflare dashboard to refine your notifications settings.
+No action is needed. This notification is a weekly summary with reports from your Web Analytics account. Refer to <a href="https://dash.cloudflare.com/?to=/:account/notifications">Notifications</a> in the Cloudflare dashboard to refine your notifications settings.
+
+</details>
 
 ## Web Application Firewall (WAF)
 
+<details>
+
+<summary>
+
 Advanced Security Events Alert
+
+</summary>
 
 **Who is it for?**
 
-Enterprise customers who want to receive alerts about spikes in specific services that generate log entries in [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/). For more information, refer to [WAF alerts](https://developers.cloudflare.com/waf/reference/alerts/).
+Enterprise customers who want to receive alerts about spikes in specific services that generate log entries in <a href="https://developers.cloudflare.com/waf/analytics/security-events/">Security Events</a>. For more information, refer to <a href="https://developers.cloudflare.com/waf/reference/alerts/">WAF alerts</a>.
 
 **Other options / filters**
 
-A mandatory [filters](https://developers.cloudflare.com/api/resources/alerting/subresources/policies/methods/create/) selection is needed when you create a notification policy which includes the list of services and zones that you want to be alerted on.
+A mandatory <a href="https://developers.cloudflare.com/api/resources/alerting/subresources/policies/methods/create/"><code>filters</code></a> selection is needed when you create a notification policy which includes the list of services and zones that you want to be alerted on.
 
-* You can search for and add domains from your list of Enterprise zones.
-* You can choose which services the alert should monitor (Managed Firewall, Rate Limiting, etc.).
-* You can filter events by a targeted action.
+- You can search for and add domains from your list of Enterprise zones.
+- You can choose which services the alert should monitor (Managed Firewall, Rate Limiting, etc.).
+- You can filter events by a targeted action.
+
 **Included with**
 
 Enterprise plans.
 
 **What should you do if you receive one?**
 
-Review the information in [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/) to identify any possible attack or misconfiguration.
+Review the information in <a href="https://developers.cloudflare.com/waf/analytics/security-events/">Security Events</a> to identify any possible attack or misconfiguration.
 
 **Additional information**
 
@@ -1337,25 +1833,34 @@ Security Events (WAF) alerts are not sent for each individual events, but only w
 
 These thresholds cannot be configured. Z-score is used to determine the threshold.
 
+</details>
+
+<details>
+
+<summary>
+
 Security Events Alert
+
+</summary>
 
 **Who is it for?**
 
-Business and Enterprise customers who want to receive alerts about spikes across all services that generate log entries in [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/). For more information, refer to [WAF alerts](https://developers.cloudflare.com/waf/reference/alerts/).
+Business and Enterprise customers who want to receive alerts about spikes across all services that generate log entries in <a href="https://developers.cloudflare.com/waf/analytics/security-events/">Security Events</a>. For more information, refer to <a href="https://developers.cloudflare.com/waf/reference/alerts/">WAF alerts</a>.
 
 **Other options / filters**
 
-A mandatory [filters](https://developers.cloudflare.com/api/resources/alerting/subresources/policies/methods/create/) selection is needed when you create a notification policy which includes the list of zones that you want to be alerted on.
+A mandatory <a href="https://developers.cloudflare.com/api/resources/alerting/subresources/policies/methods/create/"><code>filters</code></a> selection is needed when you create a notification policy which includes the list of zones that you want to be alerted on.
 
-* You can also search for and add domains from your list of business or enterprise zones. The notification will be sent for the domains chosen.
-* You can filter events by a targeted action.
+- You can also search for and add domains from your list of business or enterprise zones. The notification will be sent for the domains chosen.
+- You can filter events by a targeted action.
+
 **Included with**
 
 Business and Enterprise plans.
 
 **What should you do if you receive one?**
 
-Review the information in [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/) to identify any possible attack or misconfiguration.
+Review the information in <a href="https://developers.cloudflare.com/waf/analytics/security-events/">Security Events</a> to identify any possible attack or misconfiguration.
 
 **Additional information**
 
@@ -1368,6 +1873,8 @@ When setting up this alert, you can select the services that will be monitored. 
 Security Events (WAF) alerts are not sent for each individual events, but only when a spike in traffic reaches the threshold for an alert to be sent.
 
 These thresholds cannot be configured. Z-score is used to determine the threshold.
+
+</details>
 
 Was this helpful?
 

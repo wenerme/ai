@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Verify DDoS protection
 
-Last updated May 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/magic-transit/how-to/verify-ddos-protection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/how-to/verify-ddos-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 After onboarding your IP prefixes to Magic Transit, verify that your DDoS protection layers are active and correctly configured. Magic Transit includes multiple mitigation systems that work together. For a description of each layer and the execution order, refer to [DDoS protection](https://developers.cloudflare.com/magic-transit/ddos/).
 
@@ -20,8 +20,8 @@ After onboarding your IP prefixes to Magic Transit, verify that your DDoS protec
 
 Before you start, make sure you have completed the following:
 
-* [Onboarded your IP prefixes](https://developers.cloudflare.com/magic-transit/get-started/) to Magic Transit.
-* [Advertised your prefixes](https://developers.cloudflare.com/magic-transit/how-to/advertise-prefixes/) to Cloudflare.
+- [Onboarded your IP prefixes](https://developers.cloudflare.com/magic-transit/get-started/) to Magic Transit.
+- [Advertised your prefixes](https://developers.cloudflare.com/magic-transit/how-to/advertise-prefixes/) to Cloudflare.
 
 ## Verify DDoS managed rulesets
 
@@ -29,8 +29,7 @@ The [network-layer DDoS managed ruleset](https://developers.cloudflare.com/ddos-
 
 To review your current configuration:
 
-1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page.
-[Go to **DDoS Managed Rules** ↗](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
+1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page. [Go to **DDoS Managed Rules** ↗](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
 2. Select the **Network-layer DDoS Protection** tab.
 
 If you have not deployed any overrides, the managed ruleset runs with default settings (High sensitivity, DDoS Dynamic action). This is the recommended configuration for most deployments.
@@ -45,15 +44,14 @@ Advanced TCP Protection and Advanced DNS Protection are automatically enabled in
 
 To check the status of Advanced DDoS systems:
 
-1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page.
-[Go to **DDoS Managed Rules** ↗](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
-2. Go to **Advanced Protection** \> **General settings**.
+1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page. [Go to **DDoS Managed Rules** ↗](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
+2. Go to **Advanced Protection** > **General settings**.
 3. Verify that the system is turned on and that your prefixes are listed.
 
 To review individual protection rules:
 
-* For Advanced TCP Protection, go to **Advanced Protection** \> **Advanced TCP Protection**. Check that SYN Flood Protection and Out-of-state TCP Protection rules exist and are set to the expected mode.
-* For Advanced DNS Protection, go to **Advanced Protection** \> **Advanced DNS Protection**. Check that a DNS Protection rule exists.
+- For Advanced TCP Protection, go to **Advanced Protection** > **Advanced TCP Protection**. Check that SYN Flood Protection and Out-of-state TCP Protection rules exist and are set to the expected mode.
+- For Advanced DNS Protection, go to **Advanced Protection** > **Advanced DNS Protection**. Check that a DNS Protection rule exists.
 
 ### Switch from monitoring to mitigation mode
 
@@ -73,8 +71,7 @@ Customer visibility into the calculated thresholds is not available. If you are 
 
 Configure DDoS alerts so you are notified when attacks are detected and mitigated:
 
-1. In the Cloudflare dashboard, go to the **Notifications** page.
-[Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
+1. In the Cloudflare dashboard, go to the **Notifications** page. [Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Select **Add**.
 3. Select **Layer 3/4 DDoS Attack Alert**. Enterprise accounts can select **Advanced Layer 3/4 DDoS Attack Alert** for additional filtering support.
 4. Configure your delivery method (email, webhook, or PagerDuty).
@@ -91,8 +88,7 @@ Magic Transit and Spectrum BYOIP customers automatically receive a weekly DDoS s
 
 To review DDoS activity:
 
-1. In the Cloudflare dashboard, go to the **Network analytics** page.
-[Go to **Network analytics** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
+1. In the Cloudflare dashboard, go to the **Network analytics** page. [Go to **Network analytics** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
 2. Filter by mitigations applied to isolate traffic blocked by DDoS managed rulesets or Network Firewall rules.
 
 You can also query DDoS analytics programmatically using the [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/).

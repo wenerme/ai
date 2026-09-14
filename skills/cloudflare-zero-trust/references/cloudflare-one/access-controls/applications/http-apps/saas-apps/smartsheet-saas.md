@@ -12,38 +12,38 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Smartsheet
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/smartsheet-saas/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/smartsheet-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide covers how to configure [Smartsheet ↗](https://help.smartsheet.com/articles/2483123-domain-level-saml-configuration) as a SAML application in Cloudflare One.
 
 ## Prerequisites
 
-* An [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) configured in Cloudflare One
-* Admin access to a Smartsheet Enterprise account
-* A [domain ↗](https://help.smartsheet.com/articles/2483051-domain-management) verified in Smartsheet
+- An [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) configured in Cloudflare One
+- Admin access to a Smartsheet Enterprise account
+- A [domain ↗](https://help.smartsheet.com/articles/2483051-domain-management) verified in Smartsheet
 
 Note
 
 In Smartsheet, SSO is configured for a domain. If you have multiple plans using the same domain, the SSO configuration will apply to all Smartsheet users in that domain, regardless of their plan type.
 
-## 1\. Add a SaaS application to Cloudflare One
+## 1. Add a SaaS application to Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
-2. Select **Create new application** \> **SaaS application**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+2. Select **Create new application** > **SaaS application**.
 3. For **Application**, enter `Smartsheet` and select the corresponding textbox that appears.
 4. For the authentication protocol, select **SAML**.
 5. Select **Add application**.
 6. Fill in the following fields:
-  * **Entity ID**: `urn:amazon:cognito:sp:us-east-1_xww1cbP43`
-  * **Assertion Consumer Service URL**: `https://saml.authn.smartsheet.com/saml2/idpresponse`
-  * **Name ID format**: _Unique ID_
+   - **Entity ID**: `urn:amazon:cognito:sp:us-east-1_xww1cbP43`
+   - **Assertion Consumer Service URL**: `https://saml.authn.smartsheet.com/saml2/idpresponse`
+   - **Name ID format**: *Unique ID*
 7. Copy the **SAML Metadata endpoint**.
 8. Configure [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) for the application.
 9. Save the application.
 
-## 2\. Create and test a SAML SSO provider in Smartsheet
+## 2. Create and test a SAML SSO provider in Smartsheet
 
-1. In your Smartsheet Admin Center, go to **Settings** \> **Authentication** \> **Add a SAML IdP**.
+1. In your Smartsheet Admin Center, go to **Settings** > **Authentication** > **Add a SAML IdP**.
 2. In **Other IdP (Customize)**, select **Configure**.
 3. Select **Next**.
 4. Under **XML URL**, paste the SAML Metadata endpoint from application configuration in Cloudflare One.

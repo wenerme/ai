@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # High availability
 
-Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 For production deployments, you can run multiple replicas of a Mesh node in active-passive mode. All replicas share the same node identity and advertise the same [routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/). If the active replica goes down, Cloudflare automatically promotes a standby replica.
 
@@ -30,11 +30,12 @@ This means HA is useful for nodes that have routes configured — nodes acting a
 
 When you create a Mesh node with high availability enabled, Cloudflare generates a single token for that node. You install the Cloudflare One Client on multiple Linux hosts using this token. Each host registers as a replica of the same node.
 
-* All replicas advertise the same CIDR routes.
-* One replica is active at a time. The others are passive standby.
-* If the active replica disconnects, Cloudflare automatically promotes a passive replica.
-* Failover is handled by Cloudflare's network.
+- All replicas advertise the same CIDR routes.
+- One replica is active at a time. The others are passive standby.
+- If the active replica disconnects, Cloudflare automatically promotes a passive replica.
+- Failover is handled by Cloudflare's network.
 
+```
 flowchart LR
   subgraph replicas["Mesh node: web-server"]
     R1["Replica 1 <br> (active)"]
@@ -46,12 +47,13 @@ flowchart LR
   CF -. failover .-> R3
   client["Client device"] <--> CF
 
+```
+
 ## Create a node with high availability
 
 When you create a Mesh node through the dashboard, high availability is enabled by default. To create a new node:
 
-1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.
-[Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
+1. In the Cloudflare dashboard, go to **Networking** > **Mesh**. [Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
 2. Select **Add a node**.
 3. Follow the setup wizard. The node is created with HA enabled automatically.
 4. Copy the install commands and run them on your Linux host.
@@ -74,16 +76,21 @@ The response includes a `token` field. Use this token to register replicas.
 
 To add a replica to an existing high-availability node, install the Cloudflare One Client on a new Linux host and register it using the same node token.
 
-1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.
-[Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
+1. In the Cloudflare dashboard, go to **Networking** > **Mesh**. [Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
 2. Select your Mesh node.
 3. Select **Add a replica**.
 4. A dialog shows the install commands and the node's token.
 5. On a new Linux host, run the install commands shown in the dialog.
 
+<details>
+
+<summary>
+
 Installation commands
 
-IP forwarding is not required to reach the node by its Mesh IP. If the node will advertise [CIDR routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/), enable persistent forwarding before connecting it:
+</summary>
+
+IP forwarding is not required to reach the node by its Mesh IP. If the node will advertise <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/">CIDR routes</a>, enable persistent forwarding before connecting it:
 
 ```sh
 printf 'net.ipv4.ip_forward = 1\nnet.ipv6.conf.all.forwarding = 1\nnet.ipv6.conf.all.accept_ra = 2\n' | sudo tee /etc/sysctl.d/99-zzz-cloudflare-warp-connector.conf &&
@@ -100,7 +107,7 @@ sudo apt-get update -qq && sudo apt-get install -y -qq cloudflare-warp
 sudo warp-cli --accept-tos connector new <TOKEN> && sudo warp-cli --accept-tos connect
 ```
 
-On RHEL 9 and later, enable the Extra Packages for Enterprise Linux (EPEL) repository before installing `cloudflare-warp`. EPEL provides dependencies required by the Cloudflare One Client UI:
+On RHEL 9 and later, enable the Extra Packages for Enterprise Linux (EPEL) repository before installing <code>cloudflare-warp</code>. EPEL provides dependencies required by the Cloudflare One Client UI:
 
 ```sh
 sudo dnf install -y epel-release
@@ -116,55 +123,68 @@ sudo yum install -y cloudflare-warp
 ```sh
 sudo warp-cli --accept-tos connector new <TOKEN> && sudo warp-cli --accept-tos connect
 ```
+
+</details>
 
 1. Retrieve the node's token:
-```sh
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/warp_connector/{node_id}/token" \
-	-H "Authorization: Bearer {api_token}"
-```
-The response contains the token string.
+
+   ```sh
+   curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/warp_connector/{node_id}/token" \
+   	-H "Authorization: Bearer {api_token}"
+   ```
+
+   The response contains the token string.
 2. Install the client and register on a new Linux host:
-IP forwarding is not required to reach the node by its Mesh IP. If the node will advertise [CIDR routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/), enable persistent forwarding before connecting it:
-```sh
-printf 'net.ipv4.ip_forward = 1\nnet.ipv6.conf.all.forwarding = 1\nnet.ipv6.conf.all.accept_ra = 2\n' | sudo tee /etc/sysctl.d/99-zzz-cloudflare-warp-connector.conf &&
-sudo sysctl --system
-```
-```sh
-curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg &&
-echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(. /etc/os-release && echo $VERSION_CODENAME) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list &&
-sudo apt-get update -qq && sudo apt-get install -y -qq cloudflare-warp
-```
-```sh
-sudo warp-cli --accept-tos connector new <TOKEN> && sudo warp-cli --accept-tos connect
-```
-On RHEL 9 and later, enable the Extra Packages for Enterprise Linux (EPEL) repository before installing `cloudflare-warp`. EPEL provides dependencies required by the Cloudflare One Client UI:
-```sh
-sudo dnf install -y epel-release
-```
-Then install the package:
-```sh
-curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo &&
-sudo yum install -y cloudflare-warp
-```
-```sh
-sudo warp-cli --accept-tos connector new <TOKEN> && sudo warp-cli --accept-tos connect
-```
+
+   IP forwarding is not required to reach the node by its Mesh IP. If the node will advertise [CIDR routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/), enable persistent forwarding before connecting it:
+
+   ```sh
+   printf 'net.ipv4.ip_forward = 1\nnet.ipv6.conf.all.forwarding = 1\nnet.ipv6.conf.all.accept_ra = 2\n' | sudo tee /etc/sysctl.d/99-zzz-cloudflare-warp-connector.conf &&
+   sudo sysctl --system
+   ```
+
+   ```sh
+   curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg &&
+   echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(. /etc/os-release && echo $VERSION_CODENAME) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list &&
+   sudo apt-get update -qq && sudo apt-get install -y -qq cloudflare-warp
+   ```
+
+   ```sh
+   sudo warp-cli --accept-tos connector new <TOKEN> && sudo warp-cli --accept-tos connect
+   ```
+
+   On RHEL 9 and later, enable the Extra Packages for Enterprise Linux (EPEL) repository before installing `cloudflare-warp`. EPEL provides dependencies required by the Cloudflare One Client UI:
+
+   ```sh
+   sudo dnf install -y epel-release
+   ```
+
+   Then install the package:
+
+   ```sh
+   curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo &&
+   sudo yum install -y cloudflare-warp
+   ```
+
+   ```sh
+   sudo warp-cli --accept-tos connector new <TOKEN> && sudo warp-cli --accept-tos connect
+   ```
+
+
 
 The new replica will be in standby mode until the active replica disconnects.
 
 ## View replicas
 
-1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.
-[Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
+1. In the Cloudflare dashboard, go to **Networking** > **Mesh**. [Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
 2. Select an HA-enabled node. HA nodes display an **HA** badge in the overview table.
 3. The node detail page shows a tab for each replica. Each tab displays:
-
-  * **Active** or **Passive** badge
-  * Mesh IP (IPv4 and IPv6)
-  * Edge data center
-  * Origin IP
-  * Platform, version, and device name
-  * Connected since timestamp
+   - **Active** or **Passive** badge
+   - Mesh IP (IPv4 and IPv6)
+   - Edge data center
+   - Origin IP
+   - Platform, version, and device name
+   - Connected since timestamp
 
 To view all replicas and their HA status, query the connections API endpoint:
 
@@ -211,8 +231,7 @@ The response includes each replica with its `ha_status` (`active` or `passive`),
 
 In addition to automatic failover when the active replica disconnects, you can manually promote a passive replica to active.
 
-1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.
-[Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
+1. In the Cloudflare dashboard, go to **Networking** > **Mesh**. [Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
 2. Select an HA-enabled node.
 3. Select the tab for the passive replica you want to promote.
 4. Select **Promote to active**.
@@ -237,20 +256,20 @@ Get the `client_id` from the [connections endpoint](#view-replicas). Use the `id
 
 ### Setup requirements
 
-* High availability is set at node creation time and cannot be changed afterward.
-* You must install the client on at least two hosts for failover to work. A single replica means no redundancy.
-* High availability requires that the Mesh node's [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) is configured to use [MASQUE](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol), the default protocol for the Cloudflare One Client. It does not work if the device profile uses WireGuard instead.
+- High availability is set at node creation time and cannot be changed afterward.
+- You must install the client on at least two hosts for failover to work. A single replica means no redundancy.
+- High availability requires that the Mesh node's [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) is configured to use [MASQUE](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol), the default protocol for the Cloudflare One Client. It does not work if the device profile uses WireGuard instead.
 
 ### Network configuration
 
-* All replicas must be on the same subnet and have the same network routing configuration (Split Tunnels, static routes).
-* HA provides resilience for CIDR route prefixes. Nodes without routes do not benefit from HA failover.
+- All replicas must be on the same subnet and have the same network routing configuration (Split Tunnels, static routes).
+- HA provides resilience for CIDR route prefixes. Nodes without routes do not benefit from HA failover.
 
 ### Failover behavior
 
-* Failover time depends on how quickly Cloudflare detects the active replica has disconnected (typically seconds).
-* Inbound traffic (from Mesh clients to the subnet) fails over automatically on Cloudflare's network. Cloudflare routes traffic to the newly promoted active replica.
-* Outbound traffic (from devices on the subnet through the Mesh node) does not fail over automatically. Your environment must detect that a different replica has been promoted to active and update routing tables to send traffic through the now-active host. There is no client-side failover for on-ramp traffic at this time.
+- Failover time depends on how quickly Cloudflare detects the active replica has disconnected (typically seconds).
+- Inbound traffic (from Mesh clients to the subnet) fails over automatically on Cloudflare's network. Cloudflare routes traffic to the newly promoted active replica.
+- Outbound traffic (from devices on the subnet through the Mesh node) does not fail over automatically. Your environment must detect that a different replica has been promoted to active and update routing tables to send traffic through the now-active host. There is no client-side failover for on-ramp traffic at this time.
 
 Was this helpful?
 

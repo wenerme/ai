@@ -12,11 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DVR for Live
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/stream-live/dvr-for-live/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/stream-live/dvr-for-live/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Stream Live supports "DVR mode" on an opt-in basis to allow viewers to rewind, resume, and fast-forward a live broadcast. To enable DVR mode, add the `dvrEnabled=true` query parameter to the Stream Player embed source or the HLS manifest URL.
 
 ## Stream Player
+
+*Stream Player embed formathtml*
 
 ```html
 <div style="position: relative; padding-top: 56.25%;">
@@ -31,11 +33,13 @@ Stream Live supports "DVR mode" on an opt-in basis to allow viewers to rewind, r
 
 When DVR mode is enabled the Stream Player will:
 
-* Show a timeline the viewer can scrub/seek, similar to watching an on-demand video. The timeline will automatically scale to show the growing duration of the broadcast while it is live.
-* The "LIVE" indicator will show grey if the viewer is behind the live edge or red if they are watching the latest content. Clicking that indicator will jump forward to the live edge.
-* If the viewer pauses the player, it will resume playback from that time instead of jumping forward to the live edge.
+- Show a timeline the viewer can scrub/seek, similar to watching an on-demand video. The timeline will automatically scale to show the growing duration of the broadcast while it is live.
+- The "LIVE" indicator will show grey if the viewer is behind the live edge or red if they are watching the latest content. Clicking that indicator will jump forward to the live edge.
+- If the viewer pauses the player, it will resume playback from that time instead of jumping forward to the live edge.
 
 ## HLS manifest for custom players
+
+*HLS manifest URL formattext*
 
 ```text
 https://customer-<CODE>.cloudflarestream.com/<INPUT_ID|VIDEO_ID>/manifest/video.m3u8?dvrEnabled=true
@@ -49,19 +53,19 @@ Stream Live allows loading the Player or HLS manifest by Video ID or Live Input 
 
 **Recommended:** Use DVR Mode on a Video ID URL:
 
-* When the player loads, it will start playing the active broadcast if it is still live or play the recording if the broadcast has concluded.
+- When the player loads, it will start playing the active broadcast if it is still live or play the recording if the broadcast has concluded.
 
 DVR Mode on a Live Input ID URL:
 
-* When the player loads, it will start playing the currently live broadcast if there is one (refer to [Live Input Status](https://developers.cloudflare.com/stream/stream-live/watch-live-stream/#live-input-status)).
-* If the viewer is still watching _after the broadcast ends,_ they can continue to watch. However, if the player or manifest is then reloaded, it will show the latest broadcast or "Stream has not yet started" (`HTTP 204`). Past broadcasts are not available by Live Input ID.
+- When the player loads, it will start playing the currently live broadcast if there is one (refer to [Live Input Status](https://developers.cloudflare.com/stream/stream-live/watch-live-stream/#live-input-status)).
+- If the viewer is still watching *after the broadcast ends,* they can continue to watch. However, if the player or manifest is then reloaded, it will show the latest broadcast or "Stream has not yet started" ( `HTTP 204`). Past broadcasts are not available by Live Input ID.
 
 ## Known Limitations
 
-* When using DVR Mode and a player/manifest created using a Live Input ID, the player may stall when trying to switch quality levels if a viewer is still watching after a broadcast has concluded.
-* Performance may be degraded for DVR-enabled broadcasts longer than three hours. Manifests are limited to a maximum of 7,200 segments. Segment length is determined by the keyframe interval, also called GOP size.
-* DVR Mode relies on Version 8 of the HLS manifest specification. Stream uses HLS Version 6 in all other contexts. HLS v8 offers extremely broad compatibility but may not work with certain old player libraries or older devices.
-* DVR Mode is not available for DASH manifests.
+- When using DVR Mode and a player/manifest created using a Live Input ID, the player may stall when trying to switch quality levels if a viewer is still watching after a broadcast has concluded.
+- Performance may be degraded for DVR-enabled broadcasts longer than three hours. Manifests are limited to a maximum of 7,200 segments. Segment length is determined by the keyframe interval, also called GOP size.
+- DVR Mode relies on Version 8 of the HLS manifest specification. Stream uses HLS Version 6 in all other contexts. HLS v8 offers extremely broad compatibility but may not work with certain old player libraries or older devices.
+- DVR Mode is not available for DASH manifests.
 
 Was this helpful?
 

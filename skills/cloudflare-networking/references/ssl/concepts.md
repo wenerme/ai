@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Concepts
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/concepts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page defines and articulates key concepts that are relevant to Cloudflare SSL/TLS and are used in this documentation. For more concepts and broader descriptions, check out the [Cloudflare Learning Center ↗](https://www.cloudflare.com/learning/ssl/what-is-ssl/).
 
@@ -51,6 +51,7 @@ SSL/TLS certificates vary in terms of the level to which a CA has validated them
 Certificates issued through Cloudflare - [Universal](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/), [Advanced](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/), and [Custom Hostname](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/) certificates - are Domain Validated (DV). You can [upload a custom certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/) if your organization needs OV or EV certificates.
 
 
+
 ## Origin pull
 
 When visitors request content from your website or application, Cloudflare first attempts to [serve content from the cache ↗](https://www.cloudflare.com/learning/cdn/what-is-caching/). If this attempt fails, Cloudflare sends a request back to your origin web server to get the content. This request between Cloudflare and your origin web server is called origin pull.
@@ -65,7 +66,7 @@ For the purpose of this documentation, keep in mind that [cipher suites supporte
 
 ## Trust store
 
-The list of [certificate authority (CA)](#certificate-authority-ca) and intermediate certificates that are trusted by operating systems, web browsers or other software that interacts with SSL/TLS certificates is called trust store. Cloudflare maintains its trust store on a public [GitHub repository ↗](https://github.com/cloudflare/cfssl%5Ftrust).
+The list of [certificate authority (CA)](#certificate-authority-ca) and intermediate certificates that are trusted by operating systems, web browsers or other software that interacts with SSL/TLS certificates is called trust store. Cloudflare maintains its trust store on a public [GitHub repository ↗](https://github.com/cloudflare/cfssl_trust).
 
 While for most cases you do not have to worry about this list or how it is used when a client checks your SSL/TLS certificate, some features such as [Custom Origin Trust Store](https://developers.cloudflare.com/ssl/origin-configuration/custom-origin-trust-store/), and processes such as [bundle methodologies](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/bundling-methodologies/), are directly related to it.
 
@@ -73,7 +74,7 @@ While for most cases you do not have to worry about this list or how it is used 
 
 Depending on your organization requirements, or if you have to troubleshoot an issue with your certificates, for example, you might come across the terms root certificate, intermediate certificate and leaf certificate.
 
-These terms refer to the way in which the certificate presented to a client - the leaf certificate - has to be traceable back to a trusted certificate authority (CA) certificate - the [root certificate ↗](https://en.wikipedia.org/wiki/Root%5Fcertificate). This process is structured around a [chain of trust ↗](https://en.wikipedia.org/wiki/Chain%5Fof%5Ftrust).
+These terms refer to the way in which the certificate presented to a client - the leaf certificate - has to be traceable back to a trusted certificate authority (CA) certificate - the [root certificate ↗](https://en.wikipedia.org/wiki/Root_certificate). This process is structured around a [chain of trust ↗](https://en.wikipedia.org/wiki/Chain_of_trust).
 
 Was this helpful?
 

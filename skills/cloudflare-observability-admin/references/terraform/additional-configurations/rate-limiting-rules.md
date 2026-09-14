@@ -12,18 +12,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Rate limiting rules configuration using Terraform
 
-Last updated Apr 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/terraform/additional-configurations/rate-limiting-rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/additional-configurations/rate-limiting-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page provides examples of creating [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) in a zone or account using Terraform.
 
 If you are using the Cloudflare API, refer to the following resources:
 
-* [Create a rate limiting rule via API](https://developers.cloudflare.com/waf/rate-limiting-rules/create-api/)
-* [Create a rate limiting ruleset via API](https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/create-api/)
+- [Create a rate limiting rule via API](https://developers.cloudflare.com/waf/rate-limiting-rules/create-api/)
+- [Create a rate limiting ruleset via API](https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/create-api/)
 
 Note
 
-For more information on configuring the previous version of rate limiting rules in Terraform, refer to the [cloudflare\_rate\_limit resource ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/rate%5Flimit) in the Terraform documentation.
+For more information on configuring the previous version of rate limiting rules in Terraform, refer to the [`cloudflare_rate_limit` resource ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/rate_limit) in the Terraform documentation.
 
 ## Before you start
 
@@ -31,15 +31,15 @@ For more information on configuring the previous version of rate limiting rules 
 
 The Terraform configurations provided in this page need the zone ID (or account ID) of the zone/account where you will deploy rulesets.
 
-* To retrieve the list of accounts you have access to, including their IDs, use the [List accounts](https://developers.cloudflare.com/api/resources/accounts/methods/list/) operation.
-* To retrieve the list of zones you have access to, including their IDs, use the [List zones](https://developers.cloudflare.com/api/resources/zones/methods/list/) operation.
+- To retrieve the list of accounts you have access to, including their IDs, use the [List accounts](https://developers.cloudflare.com/api/resources/accounts/methods/list/) operation.
+- To retrieve the list of zones you have access to, including their IDs, use the [List zones](https://developers.cloudflare.com/api/resources/zones/methods/list/) operation.
 
 ### Import or delete existing rulesets
 
 Terraform assumes that it has complete control over account and zone rulesets. If you already have rulesets configured in your account or zone, do one of the following:
 
-* [Import existing rulesets to Terraform](https://developers.cloudflare.com/terraform/advanced-topics/import-cloudflare-resources/) using the `cf-terraforming` tool. Recent versions of the tool can generate resource definitions for existing rulesets and import their configuration to Terraform state.
-* Start from scratch by [deleting existing rulesets](https://developers.cloudflare.com/ruleset-engine/rulesets-api/delete/#delete-ruleset) (account and zone rulesets with `"kind": "root"` and `"kind": "zone"`, respectively) and then defining your rulesets configuration in Terraform.
+- [Import existing rulesets to Terraform](https://developers.cloudflare.com/terraform/advanced-topics/import-cloudflare-resources/) using the `cf-terraforming` tool. Recent versions of the tool can generate resource definitions for existing rulesets and import their configuration to Terraform state.
+- Start from scratch by [deleting existing rulesets](https://developers.cloudflare.com/ruleset-engine/rulesets-api/delete/#delete-ruleset) (account and zone rulesets with `"kind": "root"` and `"kind": "zone"`, respectively) and then defining your rulesets configuration in Terraform.
 
 ---
 
@@ -47,13 +47,21 @@ Terraform assumes that it has complete control over account and zone rulesets. I
 
 This example creates a rate limiting rule in zone with ID `<ZONE_ID>` blocking traffic that exceeds the configured rate:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
+</summary>
 
-* `Zone WAF Write`
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
 
-Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+- <code>Zone WAF Write</code>
+
+</details>
+
+Configure the [`cloudflare_ruleset` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```tf
 resource "cloudflare_ruleset" "zone_rl" {
@@ -104,6 +112,7 @@ resource "cloudflare_ruleset" "zone_rl" {
 To create another rate limiting rule, add a new `rules` object to the same `cloudflare_ruleset` resource.
 
 
+
 Use a single ruleset resource per phase
 
 Each zone supports one [entry point ruleset](https://developers.cloudflare.com/ruleset-engine/about/rulesets/#entry-point-ruleset) per phase. Define all your rate limiting rules for a given zone within a single `cloudflare_ruleset` resource with `kind = "zone"` and `phase = "http_ratelimit"`.
@@ -112,19 +121,27 @@ Each zone supports one [entry point ruleset](https://developers.cloudflare.com/r
 
 Notes
 
-* [Account-level rate limiting configuration](https://developers.cloudflare.com/waf/account/) requires an Enterprise plan with a paid add-on.
-* Custom rulesets deployed at the account level will only apply to incoming traffic of zones on an Enterprise plan. The expression of your `execute` rule must end with `and cf.zone.plan eq "ENT"`.
+- [Account-level rate limiting configuration](https://developers.cloudflare.com/waf/account/) requires an Enterprise plan with a paid add-on.
+- Custom rulesets deployed at the account level will only apply to incoming traffic of zones on an Enterprise plan. The expression of your `execute` rule must end with `and cf.zone.plan eq "ENT"`.
 
 This example defines a [custom ruleset](https://developers.cloudflare.com/ruleset-engine/custom-rulesets/) with a single rate limiting rule in account with ID `<ACCOUNT_ID>` that blocks traffic for the `/api/` path exceeding the configured rate. The second `cloudflare_ruleset` resource defines an `execute` rule that deploys the custom ruleset for traffic addressed at `example.com`.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-All of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) are required:
+</summary>
 
-* `Account WAF Write`
-* `Account Rulesets Write`
+All of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> are required:
 
-Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+- <code>Account WAF Write</code>
+- <code>Account Rulesets Write</code>
+
+</details>
+
+Configure the [`cloudflare_ruleset` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```tf
 resource "cloudflare_ruleset" "account_rl" {
@@ -219,20 +236,29 @@ resource "cloudflare_ruleset" "account_rl_entrypoint" {
 To create another rate limiting rule, add a new `rules` object to the same `cloudflare_ruleset` resource.
 
 
+
 ## Create an advanced rate limiting rule
 
 This example creates a rate limiting rule in zone with ID `<ZONE_ID>` with:
 
-* A custom counting expression that includes a response field (`http.response.code`).
-* A custom JSON response for rate limited requests.
+- A custom counting expression that includes a response field ( `http.response.code`).
+- A custom JSON response for rate limited requests.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
+</summary>
 
-* `Zone WAF Write`
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
 
-Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+- <code>Zone WAF Write</code>
+
+</details>
+
+Configure the [`cloudflare_ruleset` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```tf
 resource "cloudflare_ruleset" "zone_rl_custom_response" {
@@ -297,6 +323,7 @@ resource "cloudflare_ruleset" "zone_rl_custom_response" {
 ```
 
 To create another rate limiting rule, add a new `rules` object to the same `cloudflare_ruleset` resource.
+
 
 
 Was this helpful?

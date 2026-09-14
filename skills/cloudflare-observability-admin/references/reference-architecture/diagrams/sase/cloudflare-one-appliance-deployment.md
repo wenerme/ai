@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare One Appliance deployment options
 
-Last updated Mar 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/sase/cloudflare-one-appliance-deployment/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Mar 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/sase/cloudflare-one-appliance-deployment/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
 Cloudflare helps organizations transform their networks by providing secure, high-performance connectivity for on-premises networks, virtual cloud networks and access to SaaS applications. As applications migrate to the cloud, [Cloudflare's SASE ↗](https://www.cloudflare.com/zero-trust/) platform enables businesses to replace traditional on-premise solutions, ensuring secure access, low latency, and automated scalability across distributed environments. This approach reduces reliance on legacy hardware, simplifies IT management, and improves user experience for cloud-based services.
 
-Cloudflare One Appliance (formerly Magic WAN Connector) is a physical, or virtual (deployed as a VM on a hypervisor) device which, using [Zero Touch Provisioning ↗](https://en.wikipedia.org/wiki/Zero-touch%5Fprovisioning), automatically on-ramps traffic for a local network to Cloudflare, and replaces existing, difficult to manage edge hardware.
+Cloudflare One Appliance (formerly Magic WAN Connector) is a physical, or virtual (deployed as a VM on a hypervisor) device which, using [Zero Touch Provisioning ↗](https://en.wikipedia.org/wiki/Zero-touch_provisioning), automatically on-ramps traffic for a local network to Cloudflare, and replaces existing, difficult to manage edge hardware.
 
 Every organization and network is different, and as such there is no one-size-fits-all when it comes to how a Cloudflare One Appliance can be deployed. Therefore, the purpose of this document is to provide a high-level explanation of the deployment options that would make sense to most environments, while also describing the support of a few advanced use cases.
 
@@ -26,27 +26,24 @@ Every organization and network is different, and as such there is no one-size-fi
 
 The first decision for a Cloudflare One Appliance deployment is its location in the network, and this relates to whether the organization wants to keep the existing Customer Premises Equipment (CPE, edge router or firewall at a site), and if so, for what reason. Experience shows that this decision usually leads to three different topologies:
 
-* **Connector replacing the CPE** (Figure 1a): When the link is an Internet connection and the organization does not have any real use of existing equipment since the Connector supports all the required networking features such as DHCP, DNS, NAT, Trunking (801.1Q), IP access lists, breakout traffic, etc. Examples could be:
+- **Connector replacing the CPE** (Figure 1a): When the link is an Internet connection and the organization does not have any real use of existing equipment since the Connector supports all the required networking features such as DHCP, DNS, NAT, Trunking (801.1Q), IP access lists, breakout traffic, etc. Examples could be:
+  - The transition from MPLS to Internet-based connectivity, where the MPLS router probably does not add any value in the deployment.
+  - An Internet-facing CPE reaching, or already having exceeded, its end of life.
+  - An Internet-facing CPE that is redundant with Cloudflare One Appliance and can be removed for simplicity's sake.
+- **Connector north of the CPE** (Figure 1b): This option might be preferred when the existing CPE is a firewall, and the organization wants to keep it for:
+  - Additional LAN protection as a result of a defense-in-depth approach.
+  - Advanced segmentation requirements, for example allowing/blocking traffic between segments based on various Layer 3 to Layer 7 rules, since Cloudflare One Appliance supports segmentation only on layers 3 and 4 of the OSI model.
+- **Connector south of the CPE** (Figure 1c): Reasons for installing Cloudflare One Appliance south of an existing Internet-facing CPE might be:
+  - CPE cannot be replaced because it connects to a broadband service with a presentation (for example RJ-11) or protocol (for example PPPoE) that Cloudflare One Appliance does not support.
+  - CPE cannot be replaced because it is part of a fiber service that only works with that specific hardware, such as an ISP-provided ONT (Optical Network Terminal).
+  - CPE cannot be replaced (yet) because it is part of an active managed service.
+  - CPE cannot be replaced because it is a firewall that the organization wants to keep in place for other reasons (technical or contractual).
 
-  * The transition from MPLS to Internet-based connectivity, where the MPLS router probably does not add any value in the deployment.
-  * An Internet-facing CPE reaching, or already having exceeded, its end of life.
-  * An Internet-facing CPE that is redundant with Cloudflare One Appliance and can be removed for simplicity's sake.
-* **Connector north of the CPE** (Figure 1b): This option might be preferred when the existing CPE is a firewall, and the organization wants to keep it for:
+![Figure 1: Connector location options: (a) replacing CPE, (b) north of CPE , (c) south of CPE.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=773,height=654,format=svg/_astro/figure01.Dcrrl27C.svg "Figure 1. Connector location options: (a) replacing CPE, (b) north of CPE , (c) south of CPE")
 
-  * Additional LAN protection as a result of a defense-in-depth approach.
-  * Advanced segmentation requirements, for example allowing/blocking traffic between segments based on various Layer 3 to Layer 7 rules, since Cloudflare One Appliance supports segmentation only on layers 3 and 4 of the OSI model.
-* **Connector south of the CPE** (Figure 1c): Reasons for installing Cloudflare One Appliance south of an existing Internet-facing CPE might be:
+*Figure 1. Connector location options: (a) replacing CPE, (b) north of CPE , (c) south of CPE*
 
-  * CPE cannot be replaced because it connects to a broadband service with a presentation (for example RJ-11) or protocol (for example PPPoE) that Cloudflare One Appliance does not support.
-  * CPE cannot be replaced because it is part of a fiber service that only works with that specific hardware, such as an ISP-provided ONT (Optical Network Terminal).
-  * CPE cannot be replaced (yet) because it is part of an active managed service.
-  * CPE cannot be replaced because it is a firewall that the organization wants to keep in place for other reasons (technical or contractual).
-
-![Figure 1: Connector location options: \(a\) replacing CPE, \(b\) north of CPE , \(c\) south of CPE.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=773,height=654,format=svg/_astro/figure01.Dcrrl27C.svg "Figure 1. Connector location options: (a) replacing CPE, (b) north of CPE , (c) south of CPE")
-
-Figure 1\. Connector location options: (a) replacing CPE, (b) north of CPE , (c) south of CPE
-
-_Note: Labels in this image may reflect a previous product name._
+*Note: Labels in this image may reflect a previous product name.*
 
 ## High availability
 
@@ -58,7 +55,7 @@ Cloudflare One Appliance can use two or more WAN ports for uplinks, and therefor
 
 ![Figure 2. Uplink high-availability deployment.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=408,height=647,format=svg/_astro/figure02.BGru8RdY.svg "Figure 2. Uplink high-availability deployment.")
 
-Figure 2\. Uplink high-availability deployment.
+*Figure 2. Uplink high-availability deployment.*
 
 ### Full HA
 
@@ -68,7 +65,7 @@ Figure 3 below illustrates the deployment topology where Cloudflare One Applianc
 
 ![Figure 3. Full HA with dual Connectors and dual uplinks.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=361,height=628,format=svg/_astro/figure03.CgaueUuZ.svg "Figure 3. Full HA with dual Connectors and dual uplinks.")
 
-Figure 3\. Full HA with dual Connectors and dual uplinks.
+*Figure 3. Full HA with dual Connectors and dual uplinks.*
 
 Each Cloudflare One Appliance connects to the same two ISPs using dual uplinks, and automatically creates one IPsec tunnel per WAN port. This requires each ISP to support multiple ports on their on-site Network Termination Unit (or their CPE, if there is one present). In this HA deployment there are four tunnels in total, two per Connector, while traffic can be load-balanced between the two tunnels on the active device. When either the active Connector, or its IPsec tunnels go down, the other Connector takes over and propagates traffic, holding the active role until it fails (preemption is not used to avoid unnecessary failover delays).
 
@@ -80,12 +77,12 @@ This section describes how the Cloudflare One Appliance can be deployed to suppo
 
 The main use case for this type of deployment is based on the fact that many organizations today require local Internet breakout to improve the performance of Cloud and SaaS applications, while they probably continue to use their private MPLS connectivity for self-hosted applications, or site-to-site connectivity, until they decide to further modernize their architectures at a later stage. Reasons behind such a decision might be:
 
-* MPLS service is still in contract, but it is planned to be replaced by Internet connectivity everywhere when the term ends
-* Self-hosted applications might require low latency with agreed SLAs, so a hybrid MPLS/Internet architecture might be required
+- MPLS service is still in contract, but it is planned to be replaced by Internet connectivity everywhere when the term ends
+- Self-hosted applications might require low latency with agreed SLAs, so a hybrid MPLS/Internet architecture might be required
 
 ![Figure 4. Hybrid MPLS/Internet use case.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=524,height=617,format=svg/_astro/figure04.B7yWVURB.svg "Figure 4. Hybrid MPLS/Internet use case.")
 
-Figure 4\. Hybrid MPLS/Internet use case.
+*Figure 4. Hybrid MPLS/Internet use case.*
 
 This type of hybrid architecture requires the MPLS Customer Edge router (CE) or some other L3 device in the LAN to route traffic via different interfaces depending on the destination. Traffic flows in this scenario as follows:
 
@@ -101,7 +98,7 @@ In some deployments, customers might want to protect only specific protocols usi
 
 ![Figure 5. 'Split Tunneling' use case.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=536,height=617,format=svg/_astro/figure05.BDoVf7qZ.svg "Figure 5. 'Split Tunneling' use case.")
 
-Figure 5\. 'Split Tunneling' use case.
+*Figure 5. 'Split Tunneling' use case.*
 
 In this example, the organization wants Cloudflare to protect all Internet web traffic (HTTP/HTTPS), while the rest of the traffic flows out via the existing firewall. The latter could be traffic towards existing VPNs, or non-web traffic exiting the site, but protected by the on-premises firewall. This method could take advantage of local device policy-based routing (PBR) capabilities, for example:
 
@@ -118,25 +115,25 @@ Another advanced group of use cases that Cloudflare One Appliance can support is
 
 ![Figure 6. Segmentation-related use cases.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=748,height=651,format=svg/_astro/figure06.NzTDAI8s.svg "Figure 6. Segmentation-related use cases.")
 
-Figure 6\. Segmentation-related use cases.
+*Figure 6. Segmentation-related use cases.*
 
 In this example, the Cloudflare One Appliance will create an IPsec tunnel to Cloudflare through the on premises firewall and local Internet connection. Subnet A and B are both connected to the Cloudflare One Appliance, but have no direct connection with each other. This will enable a couple of use cases:
 
-* **Internet security**: Segment 1 adheres to Cloudflare security policies, bypassing the local firewall policy.
-* **Site-to-site connectivity**: Segment 1 can connect to local segments in other locations (or entire sites, for example Site 2), depending on the organization's policy.
+- **Internet security**: Segment 1 adheres to Cloudflare security policies, bypassing the local firewall policy.
+- **Site-to-site connectivity**: Segment 1 can connect to local segments in other locations (or entire sites, for example Site 2), depending on the organization's policy.
 
 The example also shows how Cloudflare One Appliance can be used to provide two types of local network segmentation:
 
-* **Intra-segment**: Traffic between LAN ports on the same Connector is blocked by default, hence, Subnet A and Subnet B in Segment 1 cannot talk to each other. The administrator would have to explicitly allow this traffic flow by using configuration logic similar to IP access lists. This ability to hairpin local traffic via the Connector's LAN ports, avoids traffic tromboning via the Cloudflare platform (that is, travel out and back in via the IPsec/GRE tunnel), which could result in those segments losing connectivity to each other in the event of Internet circuit outage. Therefore, this capability allows local nodes that do not necessarily require Internet access to function, for example printers, file servers, network attached storage (NAS) nodes, and various Internet of Things (IoT) devices, to continue being accessible by local hosts in different segments during Internet outages.
-* **Inter-segment**: Cloudflare One Appliance does not allow any inbound traffic on its WAN ports. Therefore, Segments 1 and 2 cannot talk to each other.
+- **Intra-segment**: Traffic between LAN ports on the same Connector is blocked by default, hence, Subnet A and Subnet B in Segment 1 cannot talk to each other. The administrator would have to explicitly allow this traffic flow by using configuration logic similar to IP access lists. This ability to hairpin local traffic via the Connector's LAN ports, avoids traffic tromboning via the Cloudflare platform (that is, travel out and back in via the IPsec/GRE tunnel), which could result in those segments losing connectivity to each other in the event of Internet circuit outage. Therefore, this capability allows local nodes that do not necessarily require Internet access to function, for example printers, file servers, network attached storage (NAS) nodes, and various Internet of Things (IoT) devices, to continue being accessible by local hosts in different segments during Internet outages.
+- **Inter-segment**: Cloudflare One Appliance does not allow any inbound traffic on its WAN ports. Therefore, Segments 1 and 2 cannot talk to each other.
 
 To summarize, Cloudflare One Appliance is a Zero-Touch Provisioning (ZTP) device that organizations can use to connect to Cloudflare and consume advanced security and connectivity services, while keeping operational costs low.
 
 ## Related Resources
 
-* [Cloudflare WAN - Cloud-delivered enterprise networking ↗](https://www.cloudflare.com/en-gb/network-services/products/magic-wan/)
-* [Announcing the Cloudflare One Appliance: the easiest on-ramp to your next generation network ↗](https://blog.cloudflare.com/magic-wan-connector/)
-* [Configuring Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)
+- [Cloudflare WAN - Cloud-delivered enterprise networking ↗](https://www.cloudflare.com/en-gb/network-services/products/magic-wan/)
+- [Announcing the Cloudflare One Appliance: the easiest on-ramp to your next generation network ↗](https://blog.cloudflare.com/magic-wan-connector/)
+- [Configuring Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)
 
 Was this helpful?
 

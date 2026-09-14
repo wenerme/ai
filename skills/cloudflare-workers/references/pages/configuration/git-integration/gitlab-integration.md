@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # GitLab integration
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/configuration/git-integration/gitlab-integration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/configuration/git-integration/gitlab-integration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can connect each Cloudflare Pages project to a GitLab repository, and Cloudflare will automatically deploy your code every time you push a change to a branch.
 
@@ -22,9 +22,9 @@ Beyond automatic deployments, the Cloudflare GitLab integration lets you monitor
 
 ### Custom branches
 
-Pages will default to setting your [production environment](https://developers.cloudflare.com/pages/configuration/branch-build-controls/#production-branch-control) to the branch you first push. If a branch other than the default branch (e.g. `main`) represents your project's production branch, then go to **Settings** \> **Builds** \> **Branch control**, change the production branch by clicking the **Production branch** dropdown menu and choose any other branch.
+Pages will default to setting your [production environment](https://developers.cloudflare.com/pages/configuration/branch-build-controls/#production-branch-control) to the branch you first push. If a branch other than the default branch (e.g. `main`) represents your project's production branch, then go to **Settings** > **Builds** > **Branch control**, change the production branch by clicking the **Production branch** dropdown menu and choose any other branch.
 
-You can also use [preview deployments](https://developers.cloudflare.com/pages/configuration/preview-deployments/) to preview versions of your project before merging your production branch, and deploying to production. Pages allows you to configure which of your preview branches are automatically deployed using [branch build controls](https://developers.cloudflare.com/pages/configuration/branch-build-controls/). To configure, go to **Settings** \> **Builds** \> **Branch control** and select an option under **Preview branch**. Use [**Custom branches**](https://developers.cloudflare.com/pages/configuration/branch-build-controls/) to specify branches you wish to include or exclude from automatic preview deployments.
+You can also use [preview deployments](https://developers.cloudflare.com/pages/configuration/preview-deployments/) to preview versions of your project before merging your production branch, and deploying to production. Pages allows you to configure which of your preview branches are automatically deployed using [branch build controls](https://developers.cloudflare.com/pages/configuration/branch-build-controls/). To configure, go to **Settings** > **Builds** > **Branch control** and select an option under **Preview branch**. Use [**Custom branches**](https://developers.cloudflare.com/pages/configuration/branch-build-controls/) to specify branches you wish to include or exclude from automatic preview deployments.
 
 ### Skipping a specific build via a commit message
 
@@ -32,9 +32,9 @@ Without any configuration required, you can choose to skip a deployment on an ad
 
 ### Check runs and preview URLs
 
-If you have one or multiple projects connected to a repository (i.e. a [monorepo](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#monorepos)), you can check on the status of each build within GitLab via [GitLab commit status ↗](https://docs.gitlab.com/ee/user/project/merge%5Frequests/status%5Fchecks.html).
+If you have one or multiple projects connected to a repository (i.e. a [monorepo](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#monorepos)), you can check on the status of each build within GitLab via [GitLab commit status ↗](https://docs.gitlab.com/ee/user/project/merge_requests/status_checks.html).
 
-You can see the statuses by selecting the status icon next to a commit or by going to **Build** \> **Pipelines** within your GitLab repository. In the example below, you can select the green check mark to see the results of the check run.
+You can see the statuses by selecting the status icon next to a commit or by going to **Build** > **Pipelines** within your GitLab repository. In the example below, you can select the green check mark to see the results of the check run.
 
 ![GitLab Status](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2510,height=152,format=webp/_astro/gl-status-checks.B9jgSbf7.png)
 
@@ -66,8 +66,8 @@ When encountering Git integration related issues, one potential troubleshooting 
 
 1. Go to your application settings page on GitLab located here: [https://gitlab.com/-/profile/applications ↗](https://gitlab.com/-/profile/applications)
 2. Select the **Revoke** button on your Cloudflare Pages installation if it exists.
-3. Go back to the **Workers & Pages** overview page at `https://dash.cloudflare.com/[YOUR_ACCOUNT_ID]/workers-and-pages`. Select **Create application** \> **Pages** \> **Connect to Git**.
-4. Select the **GitLab** tab at the top, select the **\+ Add account** button, select the GitLab account you want to add, and then select **Authorize** on the modal titled "Authorize Cloudflare Pages to use your account?".
+3. Go back to the **Workers & Pages** overview page at `https://dash.cloudflare.com/[YOUR_ACCOUNT_ID]/workers-and-pages`. Select **Create application** > **Pages** > **Connect to Git**.
+4. Select the **GitLab** tab at the top, select the **+ Add account** button, select the GitLab account you want to add, and then select **Authorize** on the modal titled "Authorize Cloudflare Pages to use your account?".
 5. You will be redirected to the create project page with your GitLab account or organization in the account list.
 6. Attempt to make a new deployment with your project which was previously broken.
 

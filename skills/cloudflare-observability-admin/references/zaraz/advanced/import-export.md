@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configuration Import & Export
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/zaraz/advanced/import-export/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/advanced/import-export/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Exporting your Zaraz configuration can be useful if you want to create a local backup or if you need to import it to another website. Zaraz provides an easy way to export and import your configuration.
 
@@ -20,8 +20,7 @@ Exporting your Zaraz configuration can be useful if you want to create a local b
 
 To export your Zaraz configuration:
 
-1. In the Cloudflare dashboard, go to the **Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/tag-management/settings)
+1. In the Cloudflare dashboard, go to the **Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/tag-management/settings)
 2. Go to **Advanced**.
 3. Click "Export" to download your configuration.
 
@@ -33,8 +32,7 @@ Importing a Zaraz configuration replaces your existing configuration, meaning th
 
 To import a Zaraz configuration:
 
-1. In the Cloudflare dashboard, go to the **Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/tag-management/settings)
+1. In the Cloudflare dashboard, go to the **Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/tag-management/settings)
 2. Go to **Advanced**.
 3. Click **Browse** to select your configuration file, and **Import** to import it.
 

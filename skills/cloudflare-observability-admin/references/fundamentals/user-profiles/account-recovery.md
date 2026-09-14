@@ -12,12 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Account recovery
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/user-profiles/account-recovery/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/user-profiles/account-recovery/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you do not have access to your 2FA account or backup codes and cannot currently generate a 2FA code, use a verified device that you have logged in from before to request a temporary access code.
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login).
-[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
+1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login). [Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
 2. On the **Two-Factor Authentication** page, select **Try recovery** on **Lost all 2FA devices and backup codes?**.
 3. Select **Begin recovery**.
 4. An access code will be sent to the email address associated with your Cloudflare account.
@@ -28,11 +27,11 @@ If you see **Device verified**, you will receive an email within 3-5 days with i
 
 If you see **Device verification failed**, you may be able to try again considering the following:
 
-* If you clear your cookies often or are logging in from a different IP address, you have wiped Cloudflare's memory of your device and will need to use a different device to verify.
-* Your browser may be set to clear cookies on exit or after browser or OS upgrades. This interferes with the device verification process.
-* You may be using anti-malware or other software that automatically clears your browser cookies and makes your device unregognizable by Cloudflare's Dashboard.
+- If you clear your cookies often or are logging in from a different IP address, you have wiped Cloudflare's memory of your device and will need to use a different device to verify.
+- Your browser may be set to clear cookies on exit or after browser or OS upgrades. This interferes with the device verification process.
+- You may be using anti-malware or other software that automatically clears your browser cookies and makes your device unregognizable by Cloudflare's Dashboard.
 
-If you are still unable to verify your device, follow the instructions to _Request manual verification_ on the **Device verification failed** page.
+If you are still unable to verify your device, follow the instructions to *Request manual verification* on the **Device verification failed** page.
 
 Was this helpful?
 

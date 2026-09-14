@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Build a code review bot
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/code-review-bot/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/code-review-bot/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build a GitHub bot that responds to pull requests, clones the repository in a sandbox, uses Claude to analyze code changes, and posts review comments.
 
@@ -21,24 +21,32 @@ Build a GitHub bot that responds to pull requests, clones the repository in a sa
 ## Prerequisites
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
+
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
 
 You'll also need:
 
-* A [GitHub account ↗](https://github.com/) and [fine-grained personal access token ↗](https://github.com/settings/personal-access-tokens/new) with the following permissions:
-  * **Repository access**: Select the specific repository you want to test with
-  * **Permissions** \> **Repository permissions**:
-    * **Metadata**: Read-only (required)
-    * **Contents**: Read-only (required to clone the repository)
-    * **Pull requests**: Read and write (required to post review comments)
-* An [Anthropic API key ↗](https://console.anthropic.com/) for Claude
-* A GitHub repository for testing
+- A [GitHub account ↗](https://github.com/) and [fine-grained personal access token ↗](https://github.com/settings/personal-access-tokens/new) with the following permissions:
+  - **Repository access**: Select the specific repository you want to test with
+  - **Permissions** > **Repository permissions**:
+    - **Metadata**: Read-only (required)
+    - **Contents**: Read-only (required to clone the repository)
+    - **Pull requests**: Read and write (required to post review comments)
+- An [Anthropic API key ↗](https://console.anthropic.com/) for Claude
+- A GitHub repository for testing
 
-## 1\. Create your project
+## 1. Create your project
 
 npmyarnpnpm
 
@@ -58,7 +66,7 @@ pnpm create cloudflare@latest code-review-bot --template=cloudflare/sandbox-sdk/
 cd code-review-bot
 ```
 
-## 2\. Install dependencies
+## 2. Install dependencies
 
 npmyarnpnpmbun
 
@@ -78,7 +86,7 @@ pnpm add @anthropic-ai/sdk @octokit/rest
 bun add @anthropic-ai/sdk @octokit/rest
 ```
 
-## 3\. Build the webhook handler
+## 3. Build the webhook handler
 
 Replace `src/index.ts`:
 
@@ -276,7 +284,7 @@ Provide a brief code review focusing on bugs, security, and best practices.`,
 }
 ```
 
-## 4\. Set up local environment variables
+## 4. Set up local environment variables
 
 Create a `.dev.vars` file in your project root for local development:
 
@@ -290,15 +298,15 @@ EOF
 
 Replace the placeholder values with:
 
-* `GITHUB_TOKEN`: Your GitHub personal access token with repo permissions
-* `ANTHROPIC_API_KEY`: Your API key from the [Anthropic Console ↗](https://console.anthropic.com/)
-* `WEBHOOK_SECRET`: A random string (for example: `openssl rand -hex 32`)
+- `GITHUB_TOKEN`: Your GitHub personal access token with repo permissions
+- `ANTHROPIC_API_KEY`: Your API key from the [Anthropic Console ↗](https://console.anthropic.com/)
+- `WEBHOOK_SECRET`: A random string (for example: `openssl rand -hex 32`)
 
 Note
 
 The `.dev.vars` file is automatically gitignored and only used during local development with `npm run dev`.
 
-## 5\. Expose local server with Cloudflare Tunnel
+## 5. Expose local server with Cloudflare Tunnel
 
 To test with real GitHub webhooks locally, use [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) to expose your local development server.
 
@@ -320,21 +328,21 @@ Note
 
 If you do not have `cloudflared` installed, refer to [Downloads](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/).
 
-## 6\. Configure GitHub webhook for local testing
+## 6. Configure GitHub webhook for local testing
 
 Important
 
 Configure this webhook on a **specific GitHub repository** where you will create test pull requests. The bot will only review PRs in repositories where the webhook is configured.
 
 1. Navigate to your test repository on GitHub
-2. Go to **Settings** \> **Webhooks** \> **Add webhook**
+2. Go to **Settings** > **Webhooks** > **Add webhook**
 3. Set **Payload URL**: Your Cloudflare Tunnel URL from Step 5 with `/webhook` appended (for example, `https://example.trycloudflare.com/webhook`)
 4. Set **Content type**: `application/json`
 5. Set **Secret**: Same value you used for `WEBHOOK_SECRET` in your `.dev.vars` file
 6. Select **Let me select individual events** → Check **Pull requests**
 7. Click **Add webhook**
 
-## 7\. Test locally with a pull request
+## 7. Test locally with a pull request
 
 Create a test PR:
 
@@ -348,7 +356,7 @@ git push origin test-review
 
 Open the PR on GitHub. The bot should post a review comment within a few seconds.
 
-## 8\. Deploy to production
+## 8. Deploy to production
 
 Deploy your Worker:
 
@@ -369,9 +377,9 @@ npx wrangler secret put ANTHROPIC_API_KEY
 npx wrangler secret put WEBHOOK_SECRET
 ```
 
-## 9\. Update webhook for production
+## 9. Update webhook for production
 
-1. Go to your repository **Settings** \> **Webhooks**
+1. Go to your repository **Settings** > **Webhooks**
 2. Click on your existing webhook
 3. Update **Payload URL** to your deployed Worker URL: `https://code-review-bot.YOUR_SUBDOMAIN.workers.dev/webhook`
 4. Click **Update webhook**
@@ -382,16 +390,16 @@ Your bot is now running in production and will review all new pull requests auto
 
 A GitHub code review bot that:
 
-* Receives webhook events from GitHub
-* Clones repositories in isolated sandboxes
-* Uses Claude to analyze code changes
-* Posts review comments automatically
+- Receives webhook events from GitHub
+- Clones repositories in isolated sandboxes
+- Uses Claude to analyze code changes
+- Posts review comments automatically
 
 ## Next steps
 
-* [Git operations](https://developers.cloudflare.com/sandbox/api/files/#gitcheckout) \- Advanced repository handling
-* [Sessions API](https://developers.cloudflare.com/sandbox/api/sessions/) \- Manage long-running sandbox operations
-* [GitHub Apps ↗](https://docs.github.com/en/apps) \- Build a proper GitHub App
+- [Git operations](https://developers.cloudflare.com/sandbox/api/files/#gitcheckout) - Advanced repository handling
+- [Sessions API](https://developers.cloudflare.com/sandbox/api/sessions/) - Manage long-running sandbox operations
+- [GitHub Apps ↗](https://docs.github.com/en/apps) - Build a proper GitHub App
 
 Was this helpful?
 

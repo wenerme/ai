@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Gateway Network
 
-Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway%5Fnetwork/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_network/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The descriptions below detail the fields available for `gateway_network`.
 
@@ -176,7 +176,7 @@ Country code of the source IP of the network session (for example, 'US').
 
 Type: `string`
 
-Local LAN IP of the device. Only available when connected via a GRE/IPsec tunnel on-ramp.
+Internal IP of the device. For Cloudflare One Client (WARP) traffic, this is the WARP CGNAT address. For GRE/IPsec on-ramps, this is the source IP behind the tunnel.
 
 ## SourcePort
 
@@ -195,14 +195,14 @@ The tenant ID of the network session, if exists.
 Type: `string`
 
 Transport protocol used for this session.
-Possible values are _tcp_ | _quic_ | _udp_. Deprecated, please use TransportProtocol instead.
+Possible values are *tcp* | *quic* | *udp*. Deprecated, please use TransportProtocol instead.
 
 ## TransportProtocol
 
 Type: `string`
 
 Transport protocol used for this session.
-Possible values are _tcp_ | _quic_ | _udp_.
+Possible values are *tcp* | *quic* | *udp*.
 
 ## UserID
 
@@ -231,5 +231,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_network/#page","headline":"Gateway Network · Cloudflare Logs docs","description":"The descriptions below detail the fields available for gateway_network.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_network/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_network/#page","headline":"Gateway Network · Cloudflare Logs docs","description":"The descriptions below detail the fields available for gateway_network.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_network/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

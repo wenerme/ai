@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Set up tenant custom nameservers
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/tenant-custom-nameservers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/tenant-custom-nameservers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Tenant custom nameservers (TCNS) allow you to define tenant-level custom nameservers and use them for different accounts within a Cloudflare tenant.
 
@@ -28,8 +28,8 @@ Tenant custom nameservers, if created by the tenant owner, will be available to 
 
 For this configuration to be possible, a few conditions apply:
 
-* Tenant owners can create up to five different tenant custom nameserver sets. Each nameserver set must have between two and five different nameserver names (`ns_name`), and each name cannot belong to more than one set. For example, if `ns1.example.com` is part of `ns_set 1` it cannot be part of `ns_set 2` or vice versa.
-* [Subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/) or [reverse zones](https://developers.cloudflare.com/dns/additional-options/reverse-zones/) can use tenant custom nameservers as long as they use a different nameserver set (`ns_set`) than their parent, child, or any other zone in their direct hierarchy tree.
+- Tenant owners can create up to five different tenant custom nameserver sets. Each nameserver set must have between two and five different nameserver names ( `ns_name`), and each name cannot belong to more than one set. For example, if `ns1.example.com` is part of `ns_set 1` it cannot be part of `ns_set 2` or vice versa.
+- [Subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/) or [reverse zones](https://developers.cloudflare.com/dns/additional-options/reverse-zones/) can use tenant custom nameservers as long as they use a different nameserver set ( `ns_set`) than their parent, child, or any other zone in their direct hierarchy tree.
 
 Note
 
@@ -42,13 +42,16 @@ Tenant owners that want to [use their own IP prefix](https://developers.cloudfla
 If you are an account owner and your account is part of a tenant that has custom nameservers, do the following:
 
 1. Use the endpoint [Update DNS Settings for a Zone](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/zone/methods/edit/) and configure the `nameservers` object accordingly.
-```txt
-  "nameservers": {
-    "type": "custom.tenant"
-  }
-```
-Note
-If the parameter `ns_set` is omitted, the default set `1` will be assigned.
+
+   ```txt
+     "nameservers": {
+       "type": "custom.tenant"
+     }
+   ```
+
+   Note
+
+   If the parameter `ns_set` is omitted, the default set `1` will be assigned.
 2. If you are **not** using [Cloudflare Registrar](https://developers.cloudflare.com/registrar/), update the nameservers at your registrar to use the TCNS names. If you are using [Cloudflare Registrar](https://developers.cloudflare.com/registrar/), no further action is needed.
 
 To make these TCNS the default namerservers for all new zones added to your account from now on, use the endpoint [Update DNS Settings for an Account](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/account/methods/edit/). Within the `zone_defaults` object, set the following:
@@ -63,8 +66,8 @@ To make these TCNS the default namerservers for all new zones added to your acco
 
 ### Disable tenant custom nameservers on a zone
 
-* If you are using [Cloudflare Registrar](https://developers.cloudflare.com/registrar/), use the [Update DNS settings endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/zone/methods/edit/) to set the `type` parameter in the `nameservers` object to a different value. Then, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) to set your nameservers back to the nameservers you chose to use.
-* If you are not using Cloudflare Registrar, use the [Update DNS settings endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/zone/methods/edit/) to choose a different nameserver type, and also remove the TCNS at your domain's registrar.
+- If you are using [Cloudflare Registrar](https://developers.cloudflare.com/registrar/), use the [Update DNS settings endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/zone/methods/edit/) to set the `type` parameter in the `nameservers` object to a different value. Then, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) to set your nameservers back to the nameservers you chose to use.
+- If you are not using Cloudflare Registrar, use the [Update DNS settings endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/zone/methods/edit/) to choose a different nameserver type, and also remove the TCNS at your domain's registrar.
 
 ## For tenant owners
 
@@ -89,12 +92,12 @@ Note
 
 If the parameter `ns_set` is omitted, the default set `1` will be assigned.
 
-1. Add the account custom nameservers and IP addresses to your domain's registrar as glue (A and AAAA) records ([RFC 1912 ↗](https://www.rfc-editor.org/rfc/rfc1912.html)).
-2. If the domain or domains that are used for the tenant custom nameservers do not exist within the same account, you must create the `A/AAAA` records on the configured nameserver names (for example, `ns1.example.com`) at the authoritative DNS provider.
+2. Add the account custom nameservers and IP addresses to your domain's registrar as glue (A and AAAA) records ([RFC 1912 ↗](https://www.rfc-editor.org/rfc/rfc1912.html)).
+3. If the domain or domains that are used for the tenant custom nameservers do not exist within the same account, you must create the `A/AAAA` records on the configured nameserver names (for example, `ns1.example.com`) at the authoritative DNS provider.
 
-| Type | Name            | Content |
-| ---- | --------------- | ------- |
-| A    | ns1.example.com | <IPv4>  |
+| Type | Name | Content |
+| --- | --- | --- |
+| `A` | `ns1.example.com` | `<IPv4>` |
 
 ### Get a list of all TCNS names
 

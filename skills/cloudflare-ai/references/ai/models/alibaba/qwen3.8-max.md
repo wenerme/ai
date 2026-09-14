@@ -16,20 +16,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Alibaba
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/alibaba/qwen3.8-max/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/alibaba/qwen3.8-max/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `alibaba/qwen3.8-max`
 
-* Third-party
+- Third-party
 
 Alibaba's Qwen 3.8 Max is a 2.4-trillion-parameter MoE flagship built for professional-grade coding and long-horizon autonomous work, capable of delivering complete, production-grade projects spanning 10+ days across legal, financial, design, and other specialized domains. Native visual understanding of images and extended video runs through the full plan-execute-verify cycle, served via DashScope's OpenAI-compatible endpoint.
 
-| Model Info        |                                                                                                                       |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                                  |
-| More information  | [link ↗](https://www.qwencloud.com/models/qwen3.8-max)                                                                |
-| Request formats   | Chat Completions, Responses                                                                                           |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/qwen3.8-max) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal) |
+| More information | [link ↗](https://www.qwencloud.com/models/qwen3.8-max) |
+| Request formats | Chat Completions, Responses |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/qwen3.8-max) |
 
 ## Usage
 
@@ -56,6 +56,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The three main laws of thermodynamics are:
 
 1. **First Law — Conservation of Energy**
@@ -75,6 +76,7 @@ The three main laws of thermodynamics are:
    It is impossible to reach absolute zero in a finite number of steps.
 
 There is also a **Zeroth Law**, which says that if two systems are each in thermal equilibrium with a third system, they are in thermal equilibrium with each other. This law establishes the concept of temperature.
+```
 
 ```json
 {
@@ -111,7 +113,11 @@ There is also a **Zeroth Law**, which says that if two systems are each in therm
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -145,6 +151,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 Use Python’s built-in `json` module:
 
 ```python
@@ -165,6 +172,7 @@ import json
 
 data = json.loads('{"name": "Alice"}')
 ```
+````
 
 ```json
 {
@@ -199,7 +207,13 @@ data = json.loads('{"name": "Alice"}')
 }
 ```
 
-**Vision: Image Understanding** — Describing the contents of an image
+</details>
+
+<details>
+
+<summary>**Vision: Image Understanding** — Describing the contents of an image</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -250,6 +264,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The image shows a heartwarming beach scene at what appears to be sunset (golden hour). A young woman with long dark hair is sitting barefoot on the sand, wearing a black-and-white plaid flannel shirt and dark pants. She's smiling as she gives a "high five" to a yellow Labrador Retriever sitting opposite her—the dog has raised its paw to meet her open hand. In her other hand, she seems to be holding a small treat, suggesting a training or play moment.
 
 Other details include:
@@ -259,6 +274,7 @@ Other details include:
 - **The lighting** is soft and warm, with the sun creating a golden glow and slight lens flare on the right side, giving the scene a peaceful, affectionate mood.
 
 Overall, it depicts the bond between a person and her dog during a playful, tender moment by the sea.
+```
 
 ```json
 {
@@ -294,7 +310,13 @@ Overall, it depicts the bond between a person and her dog during a playful, tend
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -327,6 +349,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 Recursion is a way of solving a problem where a function calls itself to solve smaller versions of the same problem.
 
 A recursive function usually has two parts:
@@ -365,6 +388,7 @@ So:
 ```
 
 Recursion is useful when a problem can be broken into smaller repeated subproblems.
+````
 
 ```json
 [
@@ -1742,13 +1766,15 @@ Recursion is useful when a problem can be broken into smaller repeated subproble
 ]
 ```
 
+</details>
+
 ## Parameters
 
 Schema variant
 
 Chat CompletionsResponses
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -1770,11 +1796,11 @@ top\_p
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 stream
 
@@ -1784,19 +1810,15 @@ stream
 
 `object`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
 
-``
-
 response\_format
 
-``
-
-▶modalities\[\]
+▶modalities\[]
 
 `array`
 
@@ -1828,13 +1850,11 @@ stream
 
 `boolean`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
-
-``
 
 ▶text{}
 
@@ -1860,7 +1880,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -1884,7 +1904,7 @@ model
 
 `string`
 
-▶output\[\]
+▶output\[]
 
 `array`
 
@@ -1902,9 +1922,9 @@ status
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/alibaba/qwen3.8-max/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/alibaba/qwen3.8-max/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/alibaba/qwen3.8-max/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/alibaba/qwen3.8-max/schema-output.json)
 
 Was this helpful?
 

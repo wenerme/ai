@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Build image
 
-Last updated Jul 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/build-image/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/build-image/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers Builds uses a build image with support for a variety of languages and tools such as Node.js, Python, PHP, Ruby, and Go.
 
@@ -26,29 +26,29 @@ The default versions will be updated regularly to the latest minor version. No m
 
 ### Runtime
 
-| Tool        | Default version | Environment variable | File                         |
-| ----------- | --------------- | -------------------- | ---------------------------- |
-| **Go**      | 1.24.3          | GO\_VERSION          |                              |
-| **Node.js** | 24.18.0         | NODE\_VERSION        | .nvmrc, .node-version        |
-| **Python**  | 3.13.3          | PYTHON\_VERSION      | .python-version, runtime.txt |
-| **Ruby**    | 3.4.4           | RUBY\_VERSION        | .ruby-version                |
+| Tool | Default version | Environment variable | File |
+| --- | --- | --- | --- |
+| **Go** | 1.24.3 | `GO_VERSION` | |
+| **Node.js** | 24.18.0 | `NODE_VERSION` | .nvmrc, .node-version |
+| **Python** | 3.13.3 | `PYTHON_VERSION` | .python-version, runtime.txt |
+| **Ruby** | 3.4.4 | `RUBY_VERSION` | .ruby-version |
 
 The build image preinstalls Node.js 22.23.2 and 24.18.0.
 
 ### Tools and languages
 
-| Tool        | Default version   | Environment variable |
-| ----------- | ----------------- | -------------------- |
-| **Bun**     | 1.2.15            | BUN\_VERSION         |
-| **Hugo**    | extended\_0.147.7 | HUGO\_VERSION        |
-| **npm**     | 10.9.2            |                      |
-| **yarn**    | 4.9.1             | YARN\_VERSION        |
-| **pnpm**    | 10.11.1           | PNPM\_VERSION        |
-| **pip**     | 25.1.1            |                      |
-| **gem**     | 3.6.9             |                      |
-| **poetry**  | 2.1.3             |                      |
-| **pipx**    | 1.7.1             |                      |
-| **bundler** | 2.6.9             |                      |
+| Tool | Default version | Environment variable |
+| --- | --- | --- |
+| **Bun** | 1.2.15 | `BUN_VERSION` |
+| **Hugo** | extended\_0.147.7 | `HUGO_VERSION` |
+| **npm** | 10.9.2 | |
+| **yarn** | 4.9.1 | `YARN_VERSION` |
+| **pnpm** | 10.11.1 | `PNPM_VERSION` |
+| **pip** | 25.1.1 | |
+| **gem** | 3.6.9 | |
+| **poetry** | 2.1.3 | |
+| **pipx** | 1.7.1 | |
+| **bundler** | 2.6.9 | |
 
 ## Advanced Settings
 
@@ -59,7 +59,7 @@ If you need to override a [specific version](https://developers.cloudflare.com/w
 To set the version using a build environment variables, you can:
 
 1. Find the environment variable name for the language or tool and desired version (e.g. `NODE_VERSION = 22`)
-2. Add and save the environment variable on the dashboard by going to **Settings** \> **Build** \> **Build Variables and Secrets** in your Workers project
+2. Add and save the environment variable on the dashboard by going to **Settings** > **Build** > **Build Variables and Secrets** in your Workers project
 
 Or, to set the version by adding a file to your project, you can:
 
@@ -70,32 +70,32 @@ Or, to set the version by adding a file to your project, you can:
 
 You can add the following build variable to disable automatic dependency installation and run a custom install command instead.
 
-| Build variable            | Value     |
-| ------------------------- | --------- |
-| SKIP\_DEPENDENCY\_INSTALL | 1 or true |
+| Build variable | Value |
+| --- | --- |
+| `SKIP_DEPENDENCY_INSTALL` | `1` or `true` |
 
 ## Pre-installed Packages
 
 In the following table, review the pre-installed packages in the build image. The packages are installed with `apt`, a package manager for Linux distributions.
 
-| curl            | libbz2-dev      | libreadline-dev |
-| --------------- | --------------- | --------------- |
-| git             | libc++1         | libssl-dev      |
-| git-lfs         | libdb-dev       | libvips-dev     |
-| unzip           | libgdbm-dev     | libyaml-dev     |
-| autoconf        | libgdbm6        | tzdata          |
-| build-essential | libgbm1         | wget            |
-| bzip2           | libgmp-dev      | zlib1g-dev      |
-| gnupg           | liblzma-dev     | zstd            |
-| libffi-dev      | libncurses5-dev |                 |
+| `curl` | `libbz2-dev` | `libreadline-dev` |
+| --- | --- | --- |
+| `git` | `libc++1` | `libssl-dev` |
+| `git-lfs` | `libdb-dev` | `libvips-dev` |
+| `unzip` | `libgdbm-dev` | `libyaml-dev` |
+| `autoconf` | `libgdbm6` | `tzdata` |
+| `build-essential` | `libgbm1` | `wget` |
+| `bzip2` | `libgmp-dev` | `zlib1g-dev` |
+| `gnupg` | `liblzma-dev` | `zstd` |
+| `libffi-dev` | `libncurses5-dev` | |
 
 ## Build Environment
 
 Workers Builds are run in the following environment:
 
 | **Build Environment** | Ubuntu 24.04 |
-| --------------------- | ------------ |
-| **Architecture**      | x86\_64      |
+| --- | --- |
+| **Architecture** | x86\_64 |
 
 ## Build Image Policy
 
@@ -103,14 +103,14 @@ Workers Builds are run in the following environment:
 
 Preinstalled software (languages and tools) will be updated before reaching end-of-life (EOL). These updates apply only if you have not [overridden the default version](https://developers.cloudflare.com/workers/ci-cd/builds/build-image/#overriding-default-versions).
 
-* **Minor version updates**: May be updated to the latest available minor version without notice. For tools that do not follow semantic versioning (e.g., Bun or Hugo), updates that may contain breaking changes will receive 3 months’ notice.
-* **Major version updates**: Updated to the next stable long-term support (LTS) version with 3 months’ notice.
+- **Minor version updates**: May be updated to the latest available minor version without notice. For tools that do not follow semantic versioning (e.g., Bun or Hugo), updates that may contain breaking changes will receive 3 months’ notice.
+- **Major version updates**: Updated to the next stable long-term support (LTS) version with 3 months’ notice.
 
 **How you'll be notified (for changes requiring notice):**
 
-* [Cloudflare Changelog ↗](https://developers.cloudflare.com/changelog/)
-* Dashboard notifications for projects that will receive the update
-* Email notifications to project owners
+- [Cloudflare Changelog ↗](https://developers.cloudflare.com/changelog/)
+- Dashboard notifications for projects that will receive the update
+- Email notifications to project owners
 
 To maintain a specific version and avoid automatic updates, [override the default version](https://developers.cloudflare.com/workers/ci-cd/builds/build-image/#overriding-default-versions).
 
@@ -118,8 +118,8 @@ To maintain a specific version and avoid automatic updates, [override the defaul
 
 To avoid unexpected build failures:
 
-* **Monitor announcements** via the [Cloudflare Changelog ↗](https://developers.cloudflare.com/changelog/), dashboard notifications, and email
-* **Pin specific versions** of critical preinstalled software by [overriding default versions](https://developers.cloudflare.com/workers/ci-cd/builds/build-image/#overriding-default-versions)
+- **Monitor announcements** via the [Cloudflare Changelog ↗](https://developers.cloudflare.com/changelog/), dashboard notifications, and email
+- **Pin specific versions** of critical preinstalled software by [overriding default versions](https://developers.cloudflare.com/workers/ci-cd/builds/build-image/#overriding-default-versions)
 
 Was this helpful?
 

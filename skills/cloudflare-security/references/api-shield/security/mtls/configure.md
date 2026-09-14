@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure mTLS
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/mtls/configure/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/mtls/configure/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you specify API hosts in [mTLS authentication](https://developers.cloudflare.com/api-shield/security/mtls/), Cloudflare will block all requests that do not have a [client certificate](https://developers.cloudflare.com/ssl/client-certificates/) for mTLS authentication.
 
@@ -20,10 +20,10 @@ When you specify API hosts in [mTLS authentication](https://developers.cloudflar
 
 Before you can protect your API or web application with mTLS rules, you need to:
 
-* Check that the certificate installed on your origin server matches the hostname of the client certificate, for example `api.example.com`. Origin server wildcard certificates such as `*.example.com` are not supported.
-* [Create a client certificate](https://developers.cloudflare.com/ssl/client-certificates/create-a-client-certificate/).
-* [Configure your mobile app or IoT device](https://developers.cloudflare.com/ssl/client-certificates/configure-your-mobile-app-or-iot-device/) to use your Cloudflare-issued client certificate.
-* [Enable mutual Transport Layer Security (mTLS) for a host](https://developers.cloudflare.com/ssl/client-certificates/enable-mtls/) in your zone.
+- Check that the certificate installed on your origin server matches the hostname of the client certificate, for example `api.example.com`. Origin server wildcard certificates such as `*.example.com` are not supported.
+- [Create a client certificate](https://developers.cloudflare.com/ssl/client-certificates/create-a-client-certificate/).
+- [Configure your mobile app or IoT device](https://developers.cloudflare.com/ssl/client-certificates/configure-your-mobile-app-or-iot-device/) to use your Cloudflare-issued client certificate.
+- [Enable mutual Transport Layer Security (mTLS) for a host](https://developers.cloudflare.com/ssl/client-certificates/enable-mtls/) in your zone.
 
 Note
 
@@ -35,8 +35,7 @@ By default, API Shield mTLS uses client certificates issued by a Cloudflare-mana
 
 ## Create an mTLS rule via the Cloudflare dashboard
 
-1. In the Cloudflare dashboard, go to **Client Certificates** page.
-[Go to **Client Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)
+1. In the Cloudflare dashboard, go to **Client Certificates** page. [Go to **Client Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)
 2. Select **Create a mTLS rule**.
 3. In **Custom rules**, several rule parameters have already been filled in. Enter the URI path you want to protect in **Value**.
 4. (Optional) Add a `Hostname` field and enter the mTLS-enabled hostnames you wish to protect in **Value**.
@@ -55,7 +54,7 @@ The first expression — `not cf.tls_client_auth.cert_verified` — returns `tru
 
 The second expression uses the `http.request.uri.path` field, combined with the `in` operator, to capture the URI paths your mTLS rule applies to.
 
-Because the [action](https://developers.cloudflare.com/ruleset-engine/rules-language/actions/) for your rule is _Block_, only requests that present a valid client certificate can access the specified hosts.
+Because the [action](https://developers.cloudflare.com/ruleset-engine/rules-language/actions/) for your rule is *Block*, only requests that present a valid client certificate can access the specified hosts.
 
 Cloudflare recommends also validating the issuer Subject Key Identifier (SKI) hash. Without this check, any valid client certificate is accepted regardless of which certificate authority (CA) issued it. Adding the SKI hash restricts access to certificates from a specific CA.
 

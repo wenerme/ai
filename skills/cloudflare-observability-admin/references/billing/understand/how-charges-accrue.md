@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # How charges accrue
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/billing/understand/how-charges-accrue/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/understand/how-charges-accrue/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Every request to a Cloudflare-proxied domain can touch multiple products, each with its own billing dimension. This page walks through a realistic request lifecycle and shows which products generate charges at each stage.
 
@@ -26,89 +26,89 @@ Pricing can change. This page describes the billing dimensions and free-tier all
 
 Consider a visitor loading a page on a Pro domain that uses Workers, R2, Argo Smart Routing, and Cache Reserve. Here is what happens at each stage and which billable resources are involved.
 
-### 1\. DNS resolution
+### 1. DNS resolution
 
 The visitor's browser resolves the domain. This DNS query is handled by Cloudflare's authoritative DNS.
 
-| Resource    | Billing impact                                                                                                                                 |
-| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| Resource | Billing impact |
+| --- | --- |
 | DNS queries | Included in all plans at no extra charge. If you use Load Balancing, DNS queries to load-balanced hostnames are metered (first 500K included). |
 
-### 2\. Edge request and TLS
+### 2. Edge request and TLS
 
 The request arrives at the nearest Cloudflare data center. Cloudflare terminates TLS and processes the request.
 
-| Resource | Billing impact                                                                              |
-| -------- | ------------------------------------------------------------------------------------------- |
-| TLS/SSL  | Included in all plans. Advanced Certificate Manager and SSL for SaaS have separate pricing. |
+| Resource | Billing impact |
+| --- | --- |
+| TLS/SSL | Included in all plans. Advanced Certificate Manager and SSL for SaaS have separate pricing. |
 
-### 3\. Cache lookup
+### 3. Cache lookup
 
 Cloudflare checks whether a cached response exists for this request.
 
 **Cache hit** — the response is served directly from the edge. No origin fetch occurs. This is the cheapest path.
 
-| Resource            | Billing impact                                                                                                                                                                                                                       |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Bandwidth           | Included in all plans. Cloudflare does not charge for bandwidth.                                                                                                                                                                     |
+| Resource | Billing impact |
+| --- | --- |
+| Bandwidth | Included in all plans. Cloudflare does not charge for bandwidth. |
 | Cache Reserve reads | If Cache Reserve is enabled and the asset is served from tiered cache storage, reads are metered. Refer to [Cache Reserve pricing](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/) for current rates. |
 
 **Cache miss** — the request must be forwarded to the origin. Continue to step 4.
 
-### 4\. Argo Smart Routing (if enabled)
+### 4. Argo Smart Routing (if enabled)
 
 If Argo is enabled, Cloudflare routes the request through the fastest path across its network to your origin.
 
-| Resource           | Billing impact                                                                                                                                                                              |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Resource | Billing impact |
+| --- | --- |
 | Argo data transfer | Metered per GB transferred between Cloudflare and your origin. First 1 GB included. Refer to [Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/) for current rates. |
 
-### 5\. Workers execution (if configured)
+### 5. Workers execution (if configured)
 
 If a Worker is bound to the route, it executes before or instead of fetching from the origin.
 
-| Resource                | Billing impact                                                                                                                                                                     |
-| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Worker requests         | Metered per invocation. Workers Paid plan includes 10 million requests. Refer to [Workers pricing](https://developers.cloudflare.com/workers/platform/pricing/) for current rates. |
-| Worker CPU time         | Metered per millisecond of CPU time. 30 million CPU-ms included. Refer to [Workers pricing](https://developers.cloudflare.com/workers/platform/pricing/) for current rates.        |
-| Workers KV reads/writes | If the Worker reads from or writes to KV, each operation is metered separately. Refer to [KV pricing](https://developers.cloudflare.com/kv/platform/pricing/) for current rates.   |
+| Resource | Billing impact |
+| --- | --- |
+| Worker requests | Metered per invocation. Workers Paid plan includes 10 million requests. Refer to [Workers pricing](https://developers.cloudflare.com/workers/platform/pricing/) for current rates. |
+| Worker CPU time | Metered per millisecond of CPU time. 30 million CPU-ms included. Refer to [Workers pricing](https://developers.cloudflare.com/workers/platform/pricing/) for current rates. |
+| Workers KV reads/writes | If the Worker reads from or writes to KV, each operation is metered separately. Refer to [KV pricing](https://developers.cloudflare.com/kv/platform/pricing/) for current rates. |
 
-### 6\. Origin fetch and response
+### 6. Origin fetch and response
 
 If the Worker or cache miss triggers an origin fetch, Cloudflare retrieves the response from your origin server.
 
-| Resource  | Billing impact                                                                   |
-| --------- | -------------------------------------------------------------------------------- |
+| Resource | Billing impact |
+| --- | --- |
 | Bandwidth | No charge for data transfer between Cloudflare and your origin (no egress fees). |
 
-### 7\. R2 storage operations (if used)
+### 7. R2 storage operations (if used)
 
 If the Worker or origin logic reads from or writes to R2, each operation is metered.
 
-| Resource                       | Billing impact                                                                                                      |
-| ------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
-| R2 Class A operations (writes) | First 1 million included. Refer to [R2 pricing](https://developers.cloudflare.com/r2/pricing/) for current rates.   |
-| R2 Class B operations (reads)  | First 10 million included. Refer to [R2 pricing](https://developers.cloudflare.com/r2/pricing/) for current rates.  |
-| R2 storage                     | First 10 GB-month included. Refer to [R2 pricing](https://developers.cloudflare.com/r2/pricing/) for current rates. |
-| R2 data egress                 | Free. Cloudflare does not charge for R2 egress.                                                                     |
+| Resource | Billing impact |
+| --- | --- |
+| R2 Class A operations (writes) | First 1 million included. Refer to [R2 pricing](https://developers.cloudflare.com/r2/pricing/) for current rates. |
+| R2 Class B operations (reads) | First 10 million included. Refer to [R2 pricing](https://developers.cloudflare.com/r2/pricing/) for current rates. |
+| R2 storage | First 10 GB-month included. Refer to [R2 pricing](https://developers.cloudflare.com/r2/pricing/) for current rates. |
+| R2 data egress | Free. Cloudflare does not charge for R2 egress. |
 
-### 8\. Cache write (miss path)
+### 8. Cache write (miss path)
 
 After fetching from the origin, Cloudflare caches the response at the edge for future requests.
 
-| Resource             | Billing impact                                                                                                                                                                      |
-| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Resource | Billing impact |
+| --- | --- |
 | Cache Reserve writes | If Cache Reserve is enabled, writes are metered. Refer to [Cache Reserve pricing](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/) for current rates. |
 
-### 9\. Image Resizing (if configured)
+### 9. Image Resizing (if configured)
 
 If the request triggers Image Resizing (via URL parameters or a Worker), the transformation is metered.
 
-| Resource              | Billing impact                                                                                                                                                        |
-| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Resource | Billing impact |
+| --- | --- |
 | Image transformations | First 50,000 included on the Business plan, then metered per request. Refer to [Images pricing](https://developers.cloudflare.com/images/pricing/) for current rates. |
 
-### 10\. Response delivered
+### 10. Response delivered
 
 The final response is sent to the visitor. No additional charges apply at this stage.
 
@@ -120,22 +120,22 @@ The key takeaway: **cached responses are the cheapest path**. Every cache hit av
 
 ## Cost optimization strategies
 
-| Strategy                                                                                                            | Products affected               | Impact                                                            |
-| ------------------------------------------------------------------------------------------------------------------- | ------------------------------- | ----------------------------------------------------------------- |
-| Maximize cache hit ratio with appropriate Cache-Control headers                                                     | Argo, Workers, origin bandwidth | High — every cache hit eliminates origin-side costs               |
-| Use Cache Reserve for long-tail content                                                                             | Cache, origin                   | Medium — reduces origin fetches for infrequently accessed content |
-| Set appropriate TTLs to avoid unnecessary revalidation                                                              | Cache, Argo                     | Medium — reduces origin round-trips                               |
-| Use Workers Smart Placement to run Workers closer to your data                                                      | Workers CPU time                | Medium — reduces execution time for data-dependent Workers        |
-| Use R2 lifecycle rules to move infrequently accessed data to Infrequent Access tier                                 | R2 storage                      | Medium — reduces storage costs for archival data                  |
-| Monitor usage with the [billable usage dashboard](https://developers.cloudflare.com/billing/manage/billable-usage/) | All usage-based products        | High — visibility is the first step to optimization               |
-| Set up [budget alerts](https://developers.cloudflare.com/billing/manage/budget-alerts/) to catch unexpected spikes  | All usage-based products        | High — prevents surprise invoices                                 |
+| Strategy | Products affected | Impact |
+| --- | --- | --- |
+| Maximize cache hit ratio with appropriate Cache-Control headers | Argo, Workers, origin bandwidth | High — every cache hit eliminates origin-side costs |
+| Use Cache Reserve for long-tail content | Cache, origin | Medium — reduces origin fetches for infrequently accessed content |
+| Set appropriate TTLs to avoid unnecessary revalidation | Cache, Argo | Medium — reduces origin round-trips |
+| Use Workers Smart Placement to run Workers closer to your data | Workers CPU time | Medium — reduces execution time for data-dependent Workers |
+| Use R2 lifecycle rules to move infrequently accessed data to Infrequent Access tier | R2 storage | Medium — reduces storage costs for archival data |
+| Monitor usage with the [billable usage dashboard](https://developers.cloudflare.com/billing/manage/billable-usage/) | All usage-based products | High — visibility is the first step to optimization |
+| Set up [budget alerts](https://developers.cloudflare.com/billing/manage/budget-alerts/) to catch unexpected spikes | All usage-based products | High — prevents surprise invoices |
 
 ## Related resources
 
-* [How Cloudflare billing works](https://developers.cloudflare.com/billing/understand/how-billing-works/) — Billing lifecycle, charge types, and invoice structure
-* [Usage-based billing](https://developers.cloudflare.com/billing/understand/usage-based-billing/) — Which products use metered billing
-* [Monitor billable usage](https://developers.cloudflare.com/billing/manage/billable-usage/) — Track daily usage-based costs
-* [Budget alerts](https://developers.cloudflare.com/billing/manage/budget-alerts/) — Get notified when spend crosses a threshold
+- [How Cloudflare billing works](https://developers.cloudflare.com/billing/understand/how-billing-works/) — Billing lifecycle, charge types, and invoice structure
+- [Usage-based billing](https://developers.cloudflare.com/billing/understand/usage-based-billing/) — Which products use metered billing
+- [Monitor billable usage](https://developers.cloudflare.com/billing/manage/billable-usage/) — Track daily usage-based costs
+- [Budget alerts](https://developers.cloudflare.com/billing/manage/budget-alerts/) — Get notified when spend crosses a threshold
 
 Was this helpful?
 

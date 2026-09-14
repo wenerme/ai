@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure via API
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/configure-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/configure-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Configure the Cloudflare Network-layer DDoS Attack Protection managed ruleset by defining overrides at the account level using the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/).
 
@@ -28,19 +28,21 @@ When configuring the Network-layer DDoS Attack Protection managed ruleset, use o
 
 Important
 
-* The Network-layer DDoS Attack Protection managed ruleset is always enabled. You cannot disable its rules using an override with `"enabled": false`.
-* The managed ruleset includes some read-only rules that you cannot override.
-* You can only define overrides for the Network-layer DDoS Attack Protection managed ruleset at the account level.
+- The Network-layer DDoS Attack Protection managed ruleset is always enabled. You cannot disable its rules using an override with `"enabled": false`.
+- The managed ruleset includes some read-only rules that you cannot override.
+- You can only define overrides for the Network-layer DDoS Attack Protection managed ruleset at the account level.
 
 ## Example
 
 The following `PUT` example creates a new phase ruleset (or updates the existing one) for the `ddos_l4` phase at the account level. The request includes several overrides to adjust the default behavior of the Network-layer DDoS Attack Protection managed ruleset. These overrides are the following:
 
-* All rules of the Network-layer DDoS Attack Protection managed ruleset will have their sensitivity set to `medium`.
-* All rules tagged with `<TAG_NAME>` will have their sensitivity set to `low`.
-* The rule with ID `<MANAGED_RULESET_RULE_ID>` will use the `block` action.
+- All rules of the Network-layer DDoS Attack Protection managed ruleset will have their sensitivity set to `medium`.
+- All rules tagged with `<TAG_NAME>` will have their sensitivity set to `low`.
+- The rule with ID `<MANAGED_RULESET_RULE_ID>` will use the `block` action.
 
 The overrides apply to all packets matching the rule expression: `ip.dst in { 1.1.1.0/24 }`.
+
+*Requestbash*
 
 ```bash
 curl --request PUT \
@@ -78,7 +80,13 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets/phases/ddos_
 
 The response returns the created (or updated) phase entry point ruleset.
 
+<details>
+
+<summary>
+
 Response
+
+</summary>
 
 ```json
 {
@@ -123,6 +131,8 @@ Response
 	}
 }
 ```
+
+</details>
 
 For more information on defining overrides for managed rulesets using the Rulesets API, refer to [Override a managed ruleset](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/).
 

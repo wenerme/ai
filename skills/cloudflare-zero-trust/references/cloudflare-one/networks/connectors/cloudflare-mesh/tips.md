@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Tips and best practices
 
-Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/tips/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/tips/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Operational guidance for managing Cloudflare Mesh deployments — updating the client, configuring cloud providers, running alongside Cloudflare Tunnel, and common troubleshooting.
 
@@ -21,28 +21,42 @@ Operational guidance for managing Cloudflare Mesh deployments — updating the c
 Updating a Mesh node means updating the `cloudflare-warp` package on the Linux host. The node briefly disconnects during the update, which interrupts traffic routed through it. If you have [high availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) enabled, traffic fails over to a standby replica automatically.
 
 1. Check the current version:
-```sh
-warp-cli --version
-```
+
+   ```sh
+   warp-cli --version
+   ```
+
+
 2. Update the package:
-```sh
-sudo apt-get update && sudo apt-get install --only-upgrade cloudflare-warp
-```
+
+   ```sh
+   sudo apt-get update && sudo apt-get install --only-upgrade cloudflare-warp
+   ```
+
+
 
 1. Check the current version:
-```sh
-warp-cli --version
-```
-2. Update the package:
-```sh
-sudo yum update cloudflare-warp
-```
 
-1. Verify the node has reconnected:
-```sh
-warp-cli status
-```
-You should see `Status update: Connected` in the output.
+   ```sh
+   warp-cli --version
+   ```
+
+
+2. Update the package:
+
+   ```sh
+   sudo yum update cloudflare-warp
+   ```
+
+
+
+3. Verify the node has reconnected:
+
+   ```sh
+   warp-cli status
+   ```
+
+   You should see `Status update: Connected` in the output.
 
 ## Make IP forwarding persistent
 
@@ -72,13 +86,13 @@ When deploying Mesh nodes in a cloud VPC, you may need to configure additional p
 
 ### Amazon Web Services (AWS)
 
-* Disable [source/destination checking ↗](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html) on the EC2 instance.
-* In your [subnet route table ↗](https://docs.aws.amazon.com/vpc/latest/userguide/subnet-route-tables.html), add a route for Mesh traffic (for example, `100.96.0.0/12`) pointing to the EC2 instance.
+- Disable [source/destination checking ↗](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html) on the EC2 instance.
+- In your [subnet route table ↗](https://docs.aws.amazon.com/vpc/latest/userguide/subnet-route-tables.html), add a route for Mesh traffic (for example, `100.96.0.0/12`) pointing to the EC2 instance.
 
 ### Microsoft Azure
 
-* [Enable IP forwarding ↗](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface?tabs=azure-portal#enable-or-disable-ip-forwarding) on the network interface of the VM.
-* Add a [user-defined route ↗](https://learn.microsoft.com/en-us/azure/virtual-network/manage-route-table) for Mesh traffic pointing to the VM's private IP.
+- [Enable IP forwarding ↗](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface?tabs=azure-portal#enable-or-disable-ip-forwarding) on the network interface of the VM.
+- Add a [user-defined route ↗](https://learn.microsoft.com/en-us/azure/virtual-network/manage-route-table) for Mesh traffic pointing to the VM's private IP.
 
 ## Running Mesh on a DNS server
 
@@ -132,9 +146,9 @@ If source devices send packets near the maximum size (1,460 bytes or more), the 
 
 ### Recommendations
 
-* Set the MTU on source devices (servers, cameras, IoT devices) to **1,280 bytes** to ensure packets fit after encapsulation.
-* For TCP-only traffic, apply MSS clamping on your router with a value of **1,240 bytes** (1,280 MTU - 20 byte IP header - 20 byte TCP header).
-* Modern applications using [Path MTU Discovery (PMTUD) ↗](https://www.cloudflare.com/learning/network-layer/what-is-mtu/) typically handle this automatically.
+- Set the MTU on source devices (servers, cameras, IoT devices) to **1,280 bytes** to ensure packets fit after encapsulation.
+- For TCP-only traffic, apply MSS clamping on your router with a value of **1,240 bytes** (1,280 MTU - 20 byte IP header - 20 byte TCP header).
+- Modern applications using [Path MTU Discovery (PMTUD) ↗](https://www.cloudflare.com/learning/network-layer/what-is-mtu/) typically handle this automatically.
 
 Was this helpful?
 

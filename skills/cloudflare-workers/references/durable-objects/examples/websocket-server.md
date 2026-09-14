@@ -14,9 +14,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Build a WebSocket server using Durable Objects and Workers.
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/examples/websocket-server/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/examples/websocket-server/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This example shows how to build a WebSocket server using Durable Objects and Workers. The example exposes an endpoint to create a new WebSocket connection. This WebSocket connection echos any message while including the total number of WebSocket connections currently established. For more information, refer to [Use Durable Objects with WebSockets](https://developers.cloudflare.com/durable-objects/best-practices/websockets/).
+This example shows how to build a WebSocket server using Durable Objects
+
+ and Workers. The example exposes an endpoint to create a new WebSocket connection. This WebSocket connection echos any message while including the total number of WebSocket connections currently established. For more information, refer to [Use Durable Objects with WebSockets](https://developers.cloudflare.com/durable-objects/best-practices/websockets/).
 
 Caution
 
@@ -399,7 +401,7 @@ new_sqlite_classes = [ "WebSocketServer" ]
 
 ### Related resources
 
-* [Durable Objects: Edge Chat Demo ↗](https://github.com/cloudflare/workers-chat-demo).
+- [Durable Objects: Edge Chat Demo ↗](https://github.com/cloudflare/workers-chat-demo).
 
 Was this helpful?
 

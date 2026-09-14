@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Video • xAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `xai/grok-imagine-video`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 xAI's video generation model. Generates, edits, and extends videos from text and image inputs with native synchronized audio including dialogue, sound effects, and music. Supports multiple creative modes (normal, fun, custom).
 
-| Model Info          |                                                                                                                          |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| Terms and License   | [link ↗](https://x.ai/legal/terms-of-service)                                                                            |
-| More information    | [link ↗](https://docs.x.ai/developers/models/grok-imagine-video)                                                         |
-| Zero data retention | Yes                                                                                                                      |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-imagine-video) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://x.ai/legal/terms-of-service) |
+| More information | [link ↗](https://docs.x.ai/developers/models/grok-imagine-video) |
+| Zero data retention | Yes |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-imagine-video) |
 
 ## Usage
 
@@ -76,7 +76,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Portrait Video** — Vertical video for social media
+<details>
+
+<summary>**Portrait Video** — Vertical video for social media</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -118,7 +122,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Cinematic Landscape** — Widescreen cinematic shot at extended duration
+</details>
+
+<details>
+
+<summary>**Cinematic Landscape** — Widescreen cinematic shot at extended duration</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -161,6 +171,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 \_operation
@@ -195,7 +207,7 @@ size
 
 `object`
 
-▶reference\_images\[\]
+▶reference\_images\[]
 
 `array`maxItems: 10
 
@@ -213,9 +225,9 @@ video
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video/schema-output.json)
 
 Was this helpful?
 

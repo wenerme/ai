@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • xAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-4.20-0309-non-reasoning/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-4.20-0309-non-reasoning/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `xai/grok-4.20-0309-non-reasoning`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 xAI's Grok 4.20 non-reasoning model. Skips the thinking trace for fast, single-pass responses while keeping the same training as the reasoning variant.
 
-| Model Info                                                                          |                                                                                                                                    |
-| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 2,000,000 tokens                                                                                                                   |
-| Terms and License                                                                   | [link ↗](https://x.ai/legal/terms-of-service)                                                                                      |
-| More information                                                                    | [link ↗](https://x.ai/)                                                                                                            |
-| Zero data retention                                                                 | Yes                                                                                                                                |
-| Request formats                                                                     | Chat Completions                                                                                                                   |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.20-0309-non-reasoning) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 2,000,000 tokens |
+| Terms and License | [link ↗](https://x.ai/legal/terms-of-service) |
+| More information | [link ↗](https://x.ai/) |
+| Zero data retention | Yes |
+| Request formats | Chat Completions |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.20-0309-non-reasoning) |
 
 ## Usage
 
@@ -59,6 +59,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 **The Three Laws of Thermodynamics** (in their most common, concise form):
 
 ### **Zeroth Law of Thermodynamics** (often called the "zeroth" because it logically precedes the others)
@@ -98,6 +99,7 @@ This implies it's impossible to reach absolute zero in a finite number of steps.
 2. **First**: You can't win (energy is conserved).
 3. **Second**: You can't break even (entropy always increases).
 4. **Third**: You can't even quit the game (absolute zero is unreachable).
+```
 
 ```json
 {
@@ -144,7 +146,11 @@ This implies it's impossible to reach absolute zero in a finite number of steps.
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -178,6 +184,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 **Reading a JSON file in Python** is very straightforward using the built-in `json` module.
 
 ### 1. Basic Method (Recommended)
@@ -257,6 +264,7 @@ if data:
 - Always handle potential `JSONDecodeError` and `FileNotFoundError`
 
 Would you like to see how to also **write** JSON files or work with specific JSON structures (like configurations, lists of objects, etc.)?
+````
 
 ```json
 {
@@ -301,7 +309,13 @@ Would you like to see how to also **write** JSON files or work with specific JSO
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -349,6 +363,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Here are some excellent stops along (or just off) the main routes from San Francisco to Los Angeles. I’ve grouped them roughly in north-to-south order so you can slot them into your itinerary easily.
 
 ### Classic Coastal Route (Highway 1 / Pacific Coast Highway)
@@ -419,6 +434,7 @@ Would you like me to:
 - Include where to stay or current road conditions / permit info for Big Sur?
 
 Just let me know your preferences (how many days, budget level, must-see activities, etc.) and I’ll tailor it further!
+```
 
 ```json
 {
@@ -463,7 +479,13 @@ Just let me know your preferences (how many days, budget level, must-see activit
 }
 ```
 
-**Creative Writing** — Longer completion for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Longer completion for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -497,11 +519,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The rain-slicked alley behind the old theater smelled of rotting velvet and gunpowder. Detective Elias Crowe knelt beside the body, his flashlight beam cutting through the downpour, and paused.
 
 There, clutched in the dead man’s rigid fingers, was a single playing card: the Queen of Hearts. That wasn’t unusual in itself. What stopped Crowe cold was that the card was warm, almost hot, as though it had just come off a printing press. And when he turned it over, the back wasn’t patterned with the usual bicycles or fleurs-de-lis.
 
 It was a tiny, perfectly detailed photograph of the crime scene itself, taken from an angle that should have been impossible—directly above the body, as if the card had been watching the murder happen.
+```
 
 ```json
 {
@@ -546,7 +570,13 @@ It was a tiny, perfectly detailed photograph of the crime scene itself, taken fr
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -579,6 +609,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 **Recursion** is a programming concept where a function **calls itself** to solve a smaller version of the same problem.
 
 It's like solving a big problem by repeatedly breaking it down into smaller, identical problems until you reach a simple case that can be solved directly.
@@ -640,6 +671,7 @@ Each recursive call creates a new "layer" until it hits the base case, then it s
 ---
 
 Would you like me to also show a visual example using a stack or another common recursive example like counting down or summing numbers?
+````
 
 ```json
 [
@@ -7303,9 +7335,11 @@ Would you like me to also show a visual example using a stack or another common 
 ]
 ```
 
+</details>
+
 ## Parameters
 
-▶messages\[\]
+▶messages\[]
 
 `array`requiredminItems: 1maxItems: 500
 
@@ -7413,7 +7447,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -7435,9 +7469,9 @@ system\_fingerprint
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/xai/grok-4.20-0309-non-reasoning/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/xai/grok-4.20-0309-non-reasoning/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/xai/grok-4.20-0309-non-reasoning/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/xai/grok-4.20-0309-non-reasoning/schema-output.json)
 
 Was this helpful?
 

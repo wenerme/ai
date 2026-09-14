@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Example of how to add, change, or delete headers sent in a request or returned in a response.
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/examples/alter-headers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/examples/alter-headers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you want to get started quickly, click on the button below.
 
@@ -138,7 +138,7 @@ app.get('*', async (c) => {
 export default app;
 ```
 
-You can also use the [custom-headers-example template ↗](https://github.com/kristianfreeman/custom-headers-example) to deploy this code to your custom domain.
+You can also use the [`custom-headers-example` template ↗](https://github.com/kristianfreeman/custom-headers-example) to deploy this code to your custom domain.
 
 Was this helpful?
 

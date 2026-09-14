@@ -12,9 +12,10 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cipher suites
 
-Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cipher suites are a combination of ciphers used to negotiate security settings during the [SSL/TLS handshake ↗](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/) (and therefore separate from the [SSL/TLS protocol](https://developers.cloudflare.com/ssl/reference/protocols/)).
+
 
 
 This section covers cipher suites used in connections between visitors and the Cloudflare network. Cipher suites used between Cloudflare and your origin server are configured separately — refer to [Origin server > Cipher suites](https://developers.cloudflare.com/ssl/origin-configuration/cipher-suites/).
@@ -55,19 +56,19 @@ You cannot set specific TLS 1.3 ciphers. Instead, you can enable [TLS 1.3](https
 
 Cloudflare may return the following names for TLS 1.3 cipher suites. This is how they map to [RFC 8446 ↗](https://www.rfc-editor.org/rfc/rfc8446.html) names:
 
-| Cloudflare                    | RFC 8446                        |
-| ----------------------------- | ------------------------------- |
-| AEAD-AES128-GCM-SHA256        | TLS\_AES\_128\_GCM\_SHA256      |
-| AEAD-AES256-GCM-SHA384        | TLS\_AES\_256\_GCM\_SHA384      |
-| AEAD-CHACHA20-POLY1305-SHA256 | TLS\_CHACHA20\_POLY1305\_SHA256 |
+| Cloudflare | RFC 8446 |
+| --- | --- |
+| `AEAD-AES128-GCM-SHA256` | `TLS_AES_128_GCM_SHA256` |
+| `AEAD-AES256-GCM-SHA384` | `TLS_AES_256_GCM_SHA384` |
+| `AEAD-CHACHA20-POLY1305-SHA256` | `TLS_CHACHA20_POLY1305_SHA256` |
 
 ## Resources
 
-* [Customize cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/)
-* [Security levels](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/recommendations/)
-* [Compliance standards](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/compliance-status/)
-* [Supported cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/supported-cipher-suites/)
-* [Troubleshooting](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/troubleshooting/)
+- [Customize cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/)
+- [Security levels](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/recommendations/)
+- [Compliance standards](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/compliance-status/)
+- [Supported cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/supported-cipher-suites/)
+- [Troubleshooting](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/troubleshooting/)
 
 ## Limitations
 

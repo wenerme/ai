@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Connect to a private database using Tunnel
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Hyperdrive can securely connect to your private databases using [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) and [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/).
 
@@ -24,8 +24,8 @@ You can also connect Hyperdrive to a private database using [Workers VPC (Recomm
 
 When your database is isolated within a private network (such as a [virtual private cloud ↗](https://www.cloudflare.com/learning/cloud/what-is-a-virtual-private-cloud) or an on-premise network), you must enable a secure connection from your network to Cloudflare.
 
-* [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) is used to establish the secure tunnel connection.
-* [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) is used to restrict access to your tunnel such that only specific Hyperdrive configurations can access it.
+- [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) is used to establish the secure tunnel connection.
+- [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) is used to restrict access to your tunnel such that only specific Hyperdrive configurations can access it.
 
 A request from the Cloudflare Worker to the origin database goes through Hyperdrive, Cloudflare Access, and the Cloudflare Tunnel established by `cloudflared`. `cloudflared` must be running in the private network in which your database is accessible.
 
@@ -43,24 +43,23 @@ If your organization also uses [Super Bot Fight Mode](https://developers.cloudfl
 
 ## Prerequisites
 
-* A database in your private network, [configured to use TLS/SSL](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/).
-* A hostname on your Cloudflare account, which will be used to route requests to your database.
+- A database in your private network, [configured to use TLS/SSL](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/).
+- A hostname on your Cloudflare account, which will be used to route requests to your database.
 
-## 1\. Create a tunnel in your private network
+## 1. Create a tunnel in your private network
 
-### 1.1\. Create a tunnel
+### 1.1. Create a tunnel
 
 First, create a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) in your private network to establish a secure connection between your network and Cloudflare. Your network must be configured such that the tunnel has permissions to egress to the Cloudflare network and access the database within your network.
 
-1. Log in to the Cloudflare dashboard and go to **Networking** \> **Tunnels**.
-[Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
+1. Log in to the Cloudflare dashboard and go to **Networking** > **Tunnels**. [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Select **Create a tunnel**.
 3. Enter a name for your tunnel. We suggest choosing a name that reflects the type of resources you want to connect through this tunnel (for example, `enterprise-VPC-01`).
 4. Select **Create Tunnel**.
 5. Choose your operating system, then copy the installation command and run it in a terminal on your origin server.
 6. Wait for the tunnel to connect. Once the connection is established, select **Continue**.
 
-### 1.2\. Connect your database using a public hostname
+### 1.2. Connect your database using a public hostname
 
 Your tunnel must be configured to use a public hostname on Cloudflare so that Hyperdrive can route requests to it. If you don't have a hostname on Cloudflare yet, you will need to [register a new hostname](https://developers.cloudflare.com/registrar/get-started/register-domain/) or [add a zone](https://developers.cloudflare.com/dns/zone-setups/) to Cloudflare to proceed.
 
@@ -72,59 +71,83 @@ Note
 
 If you are setting up the tunnel through the CLI instead ([locally-managed tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/)), you will have to complete these steps manually. Follow the Cloudflare Zero Trust documentation to [add a public hostname to your tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/dns/) and [configure the public hostname to route to the address of your database](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/configuration-file/).
 
-## 2\. Create and configure Hyperdrive to connect to the Cloudflare Tunnel
+## 2. Create and configure Hyperdrive to connect to the Cloudflare Tunnel
 
 To restrict access to the Cloudflare Tunnel to Hyperdrive, a [Cloudflare Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/) must be configured with a [Policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) that requires requests to contain a valid [Service Auth token](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth).
 
 The Cloudflare dashboard can automatically create and configure the underlying [Cloudflare Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/), [Service Auth token](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth), and [Policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) on your behalf. Alternatively, you can manually create the Access application and configure the Policies.
 
+<details>
+
+<summary>
+
 Automatic creation
 
-### 2.1\. (Automatic) Create a Hyperdrive configuration in the Cloudflare dashboard
+</summary>
+
+### 2.1. (Automatic) Create a Hyperdrive configuration in the Cloudflare dashboard
+
+<a href="#21-automatic-create-a-hyperdrive-configuration-in-the-cloudflare-dashboard"></a>
 
 Create a Hyperdrive configuration in the Cloudflare dashboard to automatically configure Hyperdrive to connect to your Cloudflare Tunnel.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/hyperdrive), navigate to **Storage & Databases > Hyperdrive** and click **Create configuration**.
+1. In the <a href="https://dash.cloudflare.com/?to=/:account/workers/hyperdrive">Cloudflare dashboard ↗</a>, navigate to **Storage &amp; Databases &gt; Hyperdrive** and click **Create configuration**.
 2. Select **Private database**.
 3. In the **Networking details** section, select the tunnel you are connecting to.
-4. In the **Networking details** section, select the hostname associated to the tunnel. If there is no hostname for your database, return to step [1.2\. Connect your database using a public hostname](https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database/#12-connect-your-database-using-a-public-hostname).
+4. In the **Networking details** section, select the hostname associated to the tunnel. If there is no hostname for your database, return to step <a href="https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database/#12-connect-your-database-using-a-public-hostname">1.2. Connect your database using a public hostname</a>.
 5. In the **Access Service Authentication Token** section, select **Create new (automatic)**.
 6. In the **Access Application** section, select **Create new (automatic)**.
 7. In the **Database connection details** section, enter the database **name**, **user**, and **password**.
 
+</details>
+
+<details>
+
+<summary>
+
 Manual creation
 
-### 2.1\. (Manual) Create a service token
+</summary>
+
+### 2.1. (Manual) Create a service token
+
+<a href="#21-manual-create-a-service-token"></a>
 
 The service token will be used to restrict requests to the tunnel, and is needed for the next step.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **Service Tokens**.
+1. In the <a href="https://dash.cloudflare.com/">Cloudflare dashboard ↗</a>, go to **Zero Trust** &gt; **Access controls** &gt; **Service credentials** &gt; **Service Tokens**.
 2. Select **Create Service Token**.
 3. Name the service token. The name allows you to easily identify events related to the token in the logs and to revoke the token individually.
-4. Set a **Service Token Duration** of `Non-expiring`. This prevents the service token from expiring, ensuring it can be used throughout the life of the Hyperdrive configuration.
+4. Set a **Service Token Duration** of <code>Non-expiring</code>. This prevents the service token from expiring, ensuring it can be used throughout the life of the Hyperdrive configuration.
 5. Select **Generate token**. You will see the generated Client ID and Client Secret for the service token, as well as their respective request headers.
 6. Copy the Access Client ID and Access Client Secret. These will be used when creating the Hyperdrive configuration.
-Caution
-This is the only time Cloudflare Access will display the Client Secret. If you lose the Client Secret, you must regenerate the service token.
 
-### 2.2\. (Manual) Create an Access application to secure the tunnel
+   Caution
 
-[Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) will be used to verify that requests to the tunnel originate from Hyperdrive using the service token created above.
+   This is the only time Cloudflare Access will display the Client Secret. If you lose the Client Secret, you must regenerate the service token.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
+### 2.2. (Manual) Create an Access application to secure the tunnel
+
+<a href="#22-manual-create-an-access-application-to-secure-the-tunnel"></a>
+
+<a href="https://developers.cloudflare.com/cloudflare-one/access-controls/policies/">Cloudflare Access</a> will be used to verify that requests to the tunnel originate from Hyperdrive using the service token created above.
+
+1. In the <a href="https://dash.cloudflare.com/">Cloudflare dashboard ↗</a>, go to **Zero Trust** &gt; **Access controls** &gt; **Applications**.
 2. Select **Create new application**.
 3. Select **Self-hosted and private**.
 4. Select **Add public hostname** and enter the subdomain and domain that was previously set for the tunnel application.
 5. Select **Create new policy**.
-6. Enter a **Policy name** and set the **Action** to _Service Auth_.
-7. Create an **Include** rule. Specify a **Selector** of _Service Token_ and the **Value** of the service token you created in step [2\. Create a service token](#21-manual-create-a-service-token).
+6. Enter a **Policy name** and set the **Action** to *Service Auth*.
+7. Create an **Include** rule. Specify a **Selector** of *Service Token* and the **Value** of the service token you created in step <a href="#21-manual-create-a-service-token">2. Create a service token</a>.
 8. Save the policy.
-9. In **Identity providers**, turn off _Accept all available identity providers_ and clear all identity providers.
-10. In **Session Duration**, select `No duration, expires immediately`.
+9. In **Identity providers**, turn off *Accept all available identity providers* and clear all identity providers.
+10. In **Session Duration**, select <code>No duration, expires immediately</code>.
 11. (Optional) Go to **Additional settings**. Turn off **Show application in App Launcher**.
 12. Select **Create**.
 
-### 2.3\. (Manual) Create a Hyperdrive configuration
+### 2.3. (Manual) Create a Hyperdrive configuration
+
+<a href="#23-manual-create-a-hyperdrive-configuration"></a>
 
 To create a Hyperdrive configuration for your private database, you'll need to specify the Access application and Cloudflare Tunnel information upon creation.
 
@@ -158,13 +181,15 @@ In addition, it will also set the Access Client ID and the Access Client Secret 
 
 Note
 
-When creating the Hyperdrive configuration for the private database, you must enter the `access-client-id` and the `access-client-secret`, and omit the `port`. Hyperdrive will route database messages to the public hostname of the tunnel, and the tunnel will rely on its service configuration (as configured in [1.2\. Connect your database using a public hostname](#12-connect-your-database-using-a-public-hostname)) to route requests to the database within your private network.
+When creating the Hyperdrive configuration for the private database, you must enter the <code>access-client-id</code> and the <code>access-client-secret</code>, and omit the <code>port</code>. Hyperdrive will route database messages to the public hostname of the tunnel, and the tunnel will rely on its service configuration (as configured in <a href="#12-connect-your-database-using-a-public-hostname">1.2. Connect your database using a public hostname</a>) to route requests to the database within your private network.
 
-## 3\. Query your Hyperdrive configuration from a Worker (optional)
+</details>
+
+## 3. Query your Hyperdrive configuration from a Worker (optional)
 
 To test your Hyperdrive configuration to the database using Cloudflare Tunnel and Access, use the Hyperdrive configuration ID in your Worker and deploy it.
 
-### 3.1\. Create a Hyperdrive binding
+### 3.1. Create a Hyperdrive binding
 
 You must create a binding in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) for your Worker to connect to your Hyperdrive configuration. [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) allow your Workers to access resources, like Hyperdrive, on the Cloudflare developer platform.
 
@@ -189,9 +214,9 @@ id = "<YOUR_DATABASE_ID>"
 
 Specifically:
 
-* The value (string) you set for the `binding` (binding name) will be used to reference this database in your Worker. In this tutorial, name your binding `HYPERDRIVE`.
-* The binding must be [a valid JavaScript variable name ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar%5Fand%5Ftypes#variables). For example, `binding = "hyperdrive"` or `binding = "productionDB"` would both be valid names for the binding.
-* Your binding is available in your Worker at `env.<BINDING_NAME>`.
+- The value (string) you set for the `binding` (binding name) will be used to reference this database in your Worker. In this tutorial, name your binding `HYPERDRIVE`.
+- The binding must be [a valid JavaScript variable name ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#variables). For example, `binding = "hyperdrive"` or `binding = "productionDB"` would both be valid names for the binding.
+- Your binding is available in your Worker at `env.<BINDING_NAME>`.
 
 If you wish to use a local database during development, you can add a `localConnectionString` to your Hyperdrive configuration with the connection string of your database:
 
@@ -218,7 +243,7 @@ Note
 
 Learn more about setting up [Hyperdrive for local development](https://developers.cloudflare.com/hyperdrive/configuration/local-development/).
 
-### 3.2\. Query your database
+### 3.2. Query your database
 
 Validate that you can connect to your database from Workers and make queries.
 
@@ -277,7 +302,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -290,7 +315,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -378,7 +403,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -391,7 +416,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -452,7 +477,7 @@ If you successfully receive the list of tables from your database when you acces
 
 If you encounter issues when setting up your Hyperdrive configuration with tunnels to a private database, consider these common solutions, in addition to [general troubleshooting steps](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) for Hyperdrive:
 
-* Ensure your database is configured to use TLS (SSL). Hyperdrive requires TLS (SSL) to connect.
+- Ensure your database is configured to use TLS (SSL). Hyperdrive requires TLS (SSL) to connect.
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Reuse sessions
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/features/reuse-sessions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/features/reuse-sessions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, each Browser Sessions request launches a new browser instance. Reusing sessions eliminates cold-start time and improves performance by reconnecting to an existing browser instead of launching a new one.
 
@@ -20,10 +20,10 @@ This feature applies to Browser Sessions ([Puppeteer](https://developers.cloudfl
 
 There are two approaches to reusing sessions:
 
-* **Disconnect and reconnect** (covered in this page): Use `browser.disconnect()` instead of `browser.close()` to keep the browser alive, then reconnect to it on the next request. Best for stateless workloads where any available browser session will do.
-* **[Durable Objects](https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/)**: Persist a long-running browser inside a Durable Object for stateful session management. Best when you need to maintain state across requests or route specific users to specific browser instances.
+- **Disconnect and reconnect** (covered in this page): Use `browser.disconnect()` instead of `browser.close()` to keep the browser alive, then reconnect to it on the next request. Best for stateless workloads where any available browser session will do.
+- **[Durable Objects](https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/)**: Persist a long-running browser inside a Durable Object for stateful session management. Best when you need to maintain state across requests or route specific users to specific browser instances.
 
-## 1\. Create a Worker project
+## 1. Create a Worker project
 
 [Cloudflare Workers](https://developers.cloudflare.com/workers/) provides a serverless execution environment that allows you to create new applications or augment existing ones without configuring or maintaining infrastructure. Your Worker application is a container to interact with a headless browser to do actions, such as taking screenshots.
 
@@ -45,13 +45,13 @@ pnpm create cloudflare@latest browser-worker
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `TypeScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `TypeScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
-## 2\. Install Puppeteer
+## 2. Install Puppeteer
 
 In your `browser-worker` directory, install Cloudflare's [fork of Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/):
 
@@ -73,7 +73,7 @@ pnpm add -D @cloudflare/puppeteer
 bun add -d @cloudflare/puppeteer
 ```
 
-## 3\. Configure the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/)
+## 3. Configure the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/)
 
 Note
 
@@ -85,7 +85,7 @@ Your Worker configuration must include the `nodejs_compat` compatibility flag an
 	"name": "browser-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"compatibility_flags": ["nodejs_compat"],
 	"browser": {
 		"binding": "MYBROWSER",
@@ -98,14 +98,14 @@ Your Worker configuration must include the `nodejs_compat` compatibility flag an
 name = "browser-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 compatibility_flags = [ "nodejs_compat" ]
 
 [browser]
 binding = "MYBROWSER"
 ```
 
-## 4\. Code
+## 4. Code
 
 The script below starts by fetching the current running sessions. If there are any that do not already have a worker connection, it picks a random session ID and attempts to connect (`puppeteer.connect(..)`) to it. If that fails or there were no running sessions to start with, it launches a new browser session (`puppeteer.launch(..)`). Then, it goes to the website and fetches the dom. Once that is done, it disconnects (`browser.disconnect()`), making the connection available to other workers.
 
@@ -258,7 +258,7 @@ export default {
 
 Besides `puppeteer.sessions()`, we have added other methods to facilitate [Session Management](https://developers.cloudflare.com/browser-run/puppeteer/#session-management).
 
-## 5\. Test
+## 5. Test
 
 Run `npx wrangler dev` to test your Worker locally.
 
@@ -272,7 +272,7 @@ To test go to the following URL:
 <LOCAL_HOST_URL>/?url=https://example.com
 ```
 
-## 6\. Deploy
+## 6. Deploy
 
 Run `npx wrangler deploy` to deploy your Worker to the Cloudflare global network and then to go to the following URL:
 
@@ -289,5 +289,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/reuse-sessions/#page","headline":"Reuse sessions · Cloudflare Browser Run docs","description":"Improve Browser Run performance by reconnecting to existing browser sessions instead of launching new instances.","url":"https://developers.cloudflare.com/browser-run/features/reuse-sessions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/reuse-sessions/#page","headline":"Reuse sessions · Cloudflare Browser Run docs","description":"Improve Browser Run performance by reconnecting to existing browser sessions instead of launching new instances.","url":"https://developers.cloudflare.com/browser-run/features/reuse-sessions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

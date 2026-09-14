@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pay from the Agents SDK
 
-Last updated Aug 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/tools/payments/mpp/pay-from-agents-sdk/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/payments/mpp/pay-from-agents-sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the Cloudflare Agents SDK to pay MPP services. The `mppx` SDK handles payment retries for HTTP requests and Model Context Protocol (MCP) tool calls.
 
@@ -22,48 +22,73 @@ Create a [Cloudflare Agents project](https://developers.cloudflare.com/agents/ge
 
 ## Configure payments
 
-1. Install the Agents SDK, `mppx`, and `viem`:
-npmyarnpnpmbun
-```
-npm i agents mppx viem
-```
-```
-yarn add agents mppx viem
-```
-```
-pnpm add agents mppx viem
-```
-```
-bun add agents mppx viem
-```
-2. Store the payment private key as a [Worker secret](https://developers.cloudflare.com/workers/configuration/secrets/):
-npmyarnpnpm
-```
-npx wrangler secret put MPP_PRIVATE_KEY
-```
-```
-yarn wrangler secret put MPP_PRIVATE_KEY
-```
-```
-pnpm wrangler secret put MPP_PRIVATE_KEY
-```
+1. Install the Agents SDK, `mppx`, and `viem`:npmyarnpnpmbun
+
+   ```
+   npm i agents mppx viem
+   ```
+
+   ```
+   yarn add agents mppx viem
+   ```
+
+   ```
+   pnpm add agents mppx viem
+   ```
+
+   ```
+   bun add agents mppx viem
+   ```
+
+
+2. Store the payment private key as a [Worker secret](https://developers.cloudflare.com/workers/configuration/secrets/):npmyarnpnpm
+
+   ```
+   npx wrangler secret put MPP_PRIVATE_KEY
+   ```
+
+   ```
+   yarn wrangler secret put MPP_PRIVATE_KEY
+   ```
+
+   ```
+   pnpm wrangler secret put MPP_PRIVATE_KEY
+   ```
+
+
 3. Create the payment method once:
-```js
-import { tempo } from "mppx/client";
-import { privateKeyToAccount } from "viem/accounts";
-export function createPaymentMethods(privateKey) {
-	const account = privateKeyToAccount(privateKey);
-	return [tempo.charge({ account })];
-}
-```
-```ts
-import { tempo } from "mppx/client";
-import { privateKeyToAccount } from "viem/accounts";
-export function createPaymentMethods(privateKey: string) {
-  const account = privateKeyToAccount(privateKey as `0x${string}`);
-  return [tempo.charge({ account })] as const;
-}
-```
+
+   *src/payments.jsjs*
+
+
+
+   ```js
+   import { tempo } from "mppx/client";
+   import { privateKeyToAccount } from "viem/accounts";
+
+   export function createPaymentMethods(privateKey) {
+   	const account = privateKeyToAccount(privateKey);
+
+   	return [tempo.charge({ account })];
+   }
+   ```
+
+   *src/payments.tsts*
+
+
+
+   ```ts
+   import { tempo } from "mppx/client";
+   import { privateKeyToAccount } from "viem/accounts";
+
+   export function createPaymentMethods(privateKey: string) {
+     const account = privateKeyToAccount(privateKey as `0x${string}`);
+
+     return [tempo.charge({ account })] as const;
+   }
+   ```
+
+
 
 Note
 
@@ -72,6 +97,8 @@ For production Agents, use a scoped access key. Apply spending limits and recipi
 ## Pay an HTTP service
 
 Create a payment-aware client in `onStart()`. Restrict automatic payments to trusted origins:
+
+*src/agent.jsjs*
 
 ```js
 import { Agent } from "agents";
@@ -101,6 +128,8 @@ export class BuyerAgent extends Agent {
 	}
 }
 ```
+
+*src/agent.tsts*
 
 ```ts
 import { Agent } from "agents";
@@ -138,6 +167,8 @@ Free endpoints pass through unchanged. Paid endpoints trigger the payment retry 
 ## Pay an MCP tool
 
 Connect the Agent with `addMcpServer()`. Wait for the connection before wrapping its client:
+
+*src/agent.jsjs*
 
 ```js
 import { Agent } from "agents";
@@ -180,6 +211,8 @@ export class BuyerAgent extends Agent {
 	}
 }
 ```
+
+*src/agent.tsts*
 
 ```ts
 import { Agent } from "agents";

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # CDN-Cache-Control
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/concepts/cdn-cache-control/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/concepts/cdn-cache-control/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `CDN-Cache-Control` is a response header field set on the origin to separately control the behavior of CDN caches from other intermediaries that might handle a response. You can set the `CDN-Cache-Control` or `Cloudflare-CDN-Cache-Control` response header using the same directives used with the [Cache-Control](https://developers.cloudflare.com/cache/concepts/cache-control/).
 
@@ -24,9 +24,9 @@ If a [Cache Response Rule](https://developers.cloudflare.com/cache/how-to/cache-
 
 When no Cache Response Rule applies, an origin can:
 
-* Return the `CDN-Cache-Control` response header which Cloudflare evaluates to make caching decisions. `Cache-Control`, if also returned by the origin, is proxied as is and does not affect caching decisions made by Cloudflare. Additionally, `CDN-Cache-Control` is proxied downstream in case there are other CDNs between Cloudflare and the browser.
-* Return the `Cloudflare-CDN-Cache-Control` response header. This results in the same behavior as the origin returning `CDN-Cache-Control` except Cloudflare does not proxy `Cloudflare-CDN-Cache-Control` downstream because it’s a header only used to control Cloudflare. This option is beneficial if you want only Cloudflare to have a different caching behavior while all other downstream servers rely on `Cache-Control` or if you do not want Cloudflare to proxy the `CDN-Cache-Control` header downstream.
-* Return both `Cloudflare-CDN-Cache-Control` and `CDN-Cache-Control` response headers. In this case, Cloudflare only looks at `Cloudflare-CDN-Cache-Control` when making caching decisions because it is the most specific version of `CDN-Cache-Control` and proxies `CDN-Cache-Control` downstream. Only forwarding `CDN-Cache-Control` in this situation is beneficial if you want Cloudflare to have a different caching behavior than other CDNs downstream.
+- Return the `CDN-Cache-Control` response header which Cloudflare evaluates to make caching decisions. `Cache-Control`, if also returned by the origin, is proxied as is and does not affect caching decisions made by Cloudflare. Additionally, `CDN-Cache-Control` is proxied downstream in case there are other CDNs between Cloudflare and the browser.
+- Return the `Cloudflare-CDN-Cache-Control` response header. This results in the same behavior as the origin returning `CDN-Cache-Control` except Cloudflare does not proxy `Cloudflare-CDN-Cache-Control` downstream because it’s a header only used to control Cloudflare. This option is beneficial if you want only Cloudflare to have a different caching behavior while all other downstream servers rely on `Cache-Control` or if you do not want Cloudflare to proxy the `CDN-Cache-Control` header downstream.
+- Return both `Cloudflare-CDN-Cache-Control` and `CDN-Cache-Control` response headers. In this case, Cloudflare only looks at `Cloudflare-CDN-Cache-Control` when making caching decisions because it is the most specific version of `CDN-Cache-Control` and proxies `CDN-Cache-Control` downstream. Only forwarding `CDN-Cache-Control` in this situation is beneficial if you want Cloudflare to have a different caching behavior than other CDNs downstream.
 
 Additionally, surrogates will not honor `Cache-Control` headers in the response from an origin. For example, if the `Surrogate-Control` header is present within the response, Cloudflare ignores any `Cache-Control` directives, even if the `Surrogate-Control` header does not contain directives.
 
@@ -34,7 +34,7 @@ Additionally, surrogates will not honor `Cache-Control` headers in the response 
 
 ### Edge Cache TTL cache rule
 
-The [Edge Cache TTL cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#edge-ttl) overrides the amount of time an asset is cached on the edge (Cloudflare data centers). This cache rule overrides directives in `Cloudflare-CDN-Cache-Control/CDN-Cache-Control` which manage how long an asset is cached on the edge. You can create this rule in the dashboard in **Caching** \> **Cache Rules**.
+The [Edge Cache TTL cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#edge-ttl) overrides the amount of time an asset is cached on the edge (Cloudflare data centers). This cache rule overrides directives in `Cloudflare-CDN-Cache-Control/CDN-Cache-Control` which manage how long an asset is cached on the edge. You can create this rule in the dashboard in **Caching** > **Cache Rules**.
 
 ### Browser Cache TTL cache rule
 
@@ -56,18 +56,20 @@ Use `CDN-Cache-Control` when you want to manage cached asset’s TTLs separately
 
 Headers:
 
-* `Cache-Control: max-age=14400, s-maxage=84000`
-* `Cloudflare-CDN-Cache-Control: max-age=24400`
-* `CDN-Cache-Control: max-age=18000`
+- `Cache-Control: max-age=14400, s-maxage=84000`
+- `Cloudflare-CDN-Cache-Control: max-age=24400`
+- `CDN-Cache-Control: max-age=18000`
 
 Cache behavior:
 
-| Caches               | Cache TTL (seconds) | |  Origin Server Cache | 14400 |
-| -------------------- | ------------------- | ---------------------- | ----- |
-| Network Shared Cache | 84000               |                        |       |
-| Cloudflare Edge      | 24400               |                        |       |
-| Other CDNs           | 18000               |                        |       |
-| Browser Cache        | 14400               |                        |       |
+Caches | | | | | Cache TTL (seconds) | | | |
+
+| Origin Server Cache | | | | | 14400 | | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Network Shared Cache | | | | | 84000 | | | | |
+| Cloudflare Edge | | | | | 24400 | | | | |
+| Other CDNs | | | | | 18000 | | | | |
+| Browser Cache | | | | | 14400 | | | | |
 
 ### Specify when to serve stale content
 
@@ -75,16 +77,18 @@ Use `CDN-Cache-Control` headers in conjunction with `Cache-Control` headers to s
 
 Headers:
 
-* `Cache-Control: stale-if-error=400`
-* `Cloudflare-CDN-Cache-Control: stale-if-error=60`
-* `CDN-Cache-Control: stale-if-error=200`
+- `Cache-Control: stale-if-error=400`
+- `Cloudflare-CDN-Cache-Control: stale-if-error=60`
+- `CDN-Cache-Control: stale-if-error=200`
 
 Behavior in response to [5XX error](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/):
 
-| Caches          | Stale served (seconds) in response to error | |  Origin Cache Layer/Network Cache/Browser Cache | 400 (if it assumes the directive applies) |
-| --------------- | ------------------------------------------- | ------------------------------------------------- | ----------------------------------------- |
-| Cloudflare Edge | 60                                          |                                                   |                                           |
-| Other CDN       | 200                                         |                                                   |                                           |
+Caches | | | | | Stale served (seconds) in response to error | | | |
+
+| Origin Cache Layer/Network Cache/Browser Cache | | | | | 400 (if it assumes the directive applies) | | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Edge | | | | | 60 | | | | |
+| Other CDN | | | | | 200 | | | | |
 
 Was this helpful?
 

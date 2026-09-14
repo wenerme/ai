@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Transcription
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ai/transcription/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ai/transcription/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 RealtimeKit provides two transcription modes powered by [Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/):
 
-| Mode                                            | Model                                                                                                 | Processing time        | Use case                                                                                                             |
-| ----------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ---------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| [**Real-time**](#real-time-transcription)       | [Deepgram Nova-3](https://developers.cloudflare.com/workers-ai/models/nova-3/)                        | During the meeting     | Live captions for attendees                                                                                          |
+| Mode | Model | Processing time | Use case |
+| --- | --- | --- | --- |
+| [**Real-time**](#real-time-transcription) | [Deepgram Nova-3](https://developers.cloudflare.com/workers-ai/models/nova-3/) | During the meeting | Live captions for attendees |
 | [**Post-meeting**](#post-meeting-transcription) | [Whisper Large v3 Turbo](https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo/) | After the meeting ends | [Transcript files](#output-formats) and [webhooks](https://developers.cloudflare.com/realtime/realtimekit/webhooks/) |
 
 RealtimeKit processes each participant audio stream separately. This helps identify each speaker in the final transcript.
@@ -33,7 +33,7 @@ Real-time transcription streams participant audio to [Deepgram Nova-3](https://d
 
 You can turn on real-time transcription for participants by setting `permissions.transcription_enabled: true` in the participant's [preset](https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/). This lets you decide which participant audio is transcribed. For example, you can transcribe speaker audio without transcribing audience audio.
 
-To update an existing preset, use the [Update a preset API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/presets/methods/update/):
+To update an existing preset, use the [Update a preset API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/presets/methods/update/):
 
 ```bash
 curl -X PATCH "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/presets/$PRESET_ID" \
@@ -46,7 +46,7 @@ curl -X PATCH "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtim
   }'
 ```
 
-To create a preset, refer to the [Create a preset API reference](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/presets/methods/create/).
+To create a preset, refer to the [Create a preset API reference](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/presets/methods/create/).
 
 RealtimeKit transcribes audio only for participants who join with a preset that has `permissions.transcription_enabled: true`.
 
@@ -72,11 +72,11 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime
   }'
 ```
 
-| Option            | Type       | Default | Description                                |
-| ----------------- | ---------- | ------- | ------------------------------------------ |
-| language          | string     | en-US   | Language code for transcription            |
-| keywords          | string\[\] | \[\]    | Terms to boost recognition (names, jargon) |
-| profanity\_filter | boolean    | false   | Filter offensive language                  |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `language` | string | `en-US` | Language code for transcription |
+| `keywords` | string\[] | `[]` | Terms to boost recognition (names, jargon) |
+| `profanity_filter` | boolean | `false` | Filter offensive language |
 
 ### Real-time supported languages
 
@@ -84,18 +84,18 @@ Real-time transcription is powered by [Deepgram Nova-3](https://developers.cloud
 
 Nova-3 on Workers AI supports the following languages for transcription:
 
-| Language   | Code(s)                               |
-| ---------- | ------------------------------------- |
-| English    | en, en-US, en-AU, en-GB, en-IN, en-NZ |
-| Spanish    | es, es-419                            |
-| French     | fr, fr-CA                             |
-| German     | de, de-CH                             |
-| Hindi      | hi                                    |
-| Russian    | ru                                    |
-| Portuguese | pt, pt-BR, pt-PT                      |
-| Japanese   | ja                                    |
-| Italian    | it                                    |
-| Dutch      | nl                                    |
+| Language | Code(s) |
+| --- | --- |
+| English | `en`, `en-US`, `en-AU`, `en-GB`, `en-IN`, `en-NZ` |
+| Spanish | `es`, `es-419` |
+| French | `fr`, `fr-CA` |
+| German | `de`, `de-CH` |
+| Hindi | `hi` |
+| Russian | `ru` |
+| Portuguese | `pt`, `pt-BR`, `pt-PT` |
+| Japanese | `ja` |
+| Italian | `it` |
+| Dutch | `nl` |
 
 Use `multi` for automatic multilingual detection across all of the languages listed above.
 
@@ -137,16 +137,16 @@ meeting.ai.on("transcript", (transcript) => {
 }
 ```
 
-| Field               | Description                                                   |
-| ------------------- | ------------------------------------------------------------- |
-| id                  | Unique transcript entry ID                                    |
-| name                | Display name of the participant who spoke                     |
-| peerId              | Peer ID of the participant who spoke. Changes if they rejoin. |
-| userId              | Persistent participant ID                                     |
-| customParticipantId | Participant identifier set when the participant was added     |
-| transcript          | Transcribed text                                              |
-| isPartialTranscript | true for interim updates, false for final updates             |
-| timestamp           | Unix epoch timestamp in milliseconds                          |
+| Field | Description |
+| --- | --- |
+| `id` | Unique transcript entry ID |
+| `name` | Display name of the participant who spoke |
+| `peerId` | Peer ID of the participant who spoke. Changes if they rejoin. |
+| `userId` | Persistent participant ID |
+| `customParticipantId` | Participant identifier set when the participant was added |
+| `transcript` | Transcribed text |
+| `isPartialTranscript` | `true` for interim updates, `false` for final updates |
+| `timestamp` | Unix epoch timestamp in milliseconds |
 
 ---
 
@@ -182,115 +182,123 @@ Post-meeting transcription supports [Whisper Large v3 Turbo](https://developers.
 
 Common language codes include:
 
-| Language | Code | Language | Code | Language   | Code |
-| -------- | ---- | -------- | ---- | ---------- | ---- |
-| English  | en   | Spanish  | es   | French     | fr   |
-| German   | de   | Hindi    | hi   | Portuguese | pt   |
-| Japanese | ja   | Italian  | it   | Dutch      | nl   |
-| Russian  | ru   | Chinese  | zh   | Cantonese  | yue  |
+| Language | Code | Language | Code | Language | Code |
+| --- | --- | --- | --- | --- | --- |
+| English | `en` | Spanish | `es` | French | `fr` |
+| German | `de` | Hindi | `hi` | Portuguese | `pt` |
+| Japanese | `ja` | Italian | `it` | Dutch | `nl` |
+| Russian | `ru` | Chinese | `zh` | Cantonese | `yue` |
+
+<details>
+
+<summary>
 
 Additional post-meeting language codes
 
-| Language          | Code |
-| ----------------- | ---- |
-| Afrikaans         | af   |
-| Albanian          | sq   |
-| Amharic           | am   |
-| Arabic            | ar   |
-| Assamese          | as   |
-| Azerbaijani       | az   |
-| Bashkir           | ba   |
-| Basque            | eu   |
-| Belarusian        | be   |
-| Bengali           | bn   |
-| Bosnian           | bs   |
-| Breton            | br   |
-| Bulgarian         | bg   |
-| Catalan           | ca   |
-| Croatian          | hr   |
-| Czech             | cs   |
-| Danish            | da   |
-| Estonian          | et   |
-| Faroese           | fo   |
-| Finnish           | fi   |
-| Galician          | gl   |
-| Georgian          | ka   |
-| Greek             | el   |
-| Gujarati          | gu   |
-| Haitian Creole    | ht   |
-| Hausa             | ha   |
-| Hawaiian          | haw  |
-| Hebrew            | he   |
-| Hungarian         | hu   |
-| Icelandic         | is   |
-| Indonesian        | id   |
-| Javanese          | jw   |
-| Kannada           | kn   |
-| Kazakh            | kk   |
-| Khmer             | km   |
-| Korean            | ko   |
-| Lao               | lo   |
-| Latin             | la   |
-| Latvian           | lv   |
-| Lingala           | ln   |
-| Lithuanian        | lt   |
-| Luxembourgish     | lb   |
-| Macedonian        | mk   |
-| Malagasy          | mg   |
-| Malay             | ms   |
-| Malayalam         | ml   |
-| Maltese           | mt   |
-| Maori             | mi   |
-| Marathi           | mr   |
-| Mongolian         | mn   |
-| Myanmar           | my   |
-| Nepali            | ne   |
-| Norwegian         | no   |
-| Norwegian Nynorsk | nn   |
-| Occitan           | oc   |
-| Pashto            | ps   |
-| Persian           | fa   |
-| Polish            | pl   |
-| Punjabi           | pa   |
-| Romanian          | ro   |
-| Sanskrit          | sa   |
-| Serbian           | sr   |
-| Shona             | sn   |
-| Sindhi            | sd   |
-| Sinhala           | si   |
-| Slovak            | sk   |
-| Slovenian         | sl   |
-| Somali            | so   |
-| Sundanese         | su   |
-| Swahili           | sw   |
-| Swedish           | sv   |
-| Tagalog           | tl   |
-| Tajik             | tg   |
-| Tamil             | ta   |
-| Tatar             | tt   |
-| Telugu            | te   |
-| Thai              | th   |
-| Tibetan           | bo   |
-| Turkmen           | tk   |
-| Turkish           | tr   |
-| Ukrainian         | uk   |
-| Urdu              | ur   |
-| Uzbek             | uz   |
-| Vietnamese        | vi   |
-| Welsh             | cy   |
-| Yiddish           | yi   |
-| Yoruba            | yo   |
+</summary>
+
+| Language | Code |
+| --- | --- |
+| Afrikaans | <code>af</code> |
+| Albanian | <code>sq</code> |
+| Amharic | <code>am</code> |
+| Arabic | <code>ar</code> |
+| Assamese | <code>as</code> |
+| Azerbaijani | <code>az</code> |
+| Bashkir | <code>ba</code> |
+| Basque | <code>eu</code> |
+| Belarusian | <code>be</code> |
+| Bengali | <code>bn</code> |
+| Bosnian | <code>bs</code> |
+| Breton | <code>br</code> |
+| Bulgarian | <code>bg</code> |
+| Catalan | <code>ca</code> |
+| Croatian | <code>hr</code> |
+| Czech | <code>cs</code> |
+| Danish | <code>da</code> |
+| Estonian | <code>et</code> |
+| Faroese | <code>fo</code> |
+| Finnish | <code>fi</code> |
+| Galician | <code>gl</code> |
+| Georgian | <code>ka</code> |
+| Greek | <code>el</code> |
+| Gujarati | <code>gu</code> |
+| Haitian Creole | <code>ht</code> |
+| Hausa | <code>ha</code> |
+| Hawaiian | <code>haw</code> |
+| Hebrew | <code>he</code> |
+| Hungarian | <code>hu</code> |
+| Icelandic | <code>is</code> |
+| Indonesian | <code>id</code> |
+| Javanese | <code>jw</code> |
+| Kannada | <code>kn</code> |
+| Kazakh | <code>kk</code> |
+| Khmer | <code>km</code> |
+| Korean | <code>ko</code> |
+| Lao | <code>lo</code> |
+| Latin | <code>la</code> |
+| Latvian | <code>lv</code> |
+| Lingala | <code>ln</code> |
+| Lithuanian | <code>lt</code> |
+| Luxembourgish | <code>lb</code> |
+| Macedonian | <code>mk</code> |
+| Malagasy | <code>mg</code> |
+| Malay | <code>ms</code> |
+| Malayalam | <code>ml</code> |
+| Maltese | <code>mt</code> |
+| Maori | <code>mi</code> |
+| Marathi | <code>mr</code> |
+| Mongolian | <code>mn</code> |
+| Myanmar | <code>my</code> |
+| Nepali | <code>ne</code> |
+| Norwegian | <code>no</code> |
+| Norwegian Nynorsk | <code>nn</code> |
+| Occitan | <code>oc</code> |
+| Pashto | <code>ps</code> |
+| Persian | <code>fa</code> |
+| Polish | <code>pl</code> |
+| Punjabi | <code>pa</code> |
+| Romanian | <code>ro</code> |
+| Sanskrit | <code>sa</code> |
+| Serbian | <code>sr</code> |
+| Shona | <code>sn</code> |
+| Sindhi | <code>sd</code> |
+| Sinhala | <code>si</code> |
+| Slovak | <code>sk</code> |
+| Slovenian | <code>sl</code> |
+| Somali | <code>so</code> |
+| Sundanese | <code>su</code> |
+| Swahili | <code>sw</code> |
+| Swedish | <code>sv</code> |
+| Tagalog | <code>tl</code> |
+| Tajik | <code>tg</code> |
+| Tamil | <code>ta</code> |
+| Tatar | <code>tt</code> |
+| Telugu | <code>te</code> |
+| Thai | <code>th</code> |
+| Tibetan | <code>bo</code> |
+| Turkmen | <code>tk</code> |
+| Turkish | <code>tr</code> |
+| Ukrainian | <code>uk</code> |
+| Urdu | <code>ur</code> |
+| Uzbek | <code>uz</code> |
+| Vietnamese | <code>vi</code> |
+| Welsh | <code>cy</code> |
+| Yiddish | <code>yi</code> |
+| Yoruba | <code>yo</code> |
+
+</details>
 
 ### Output formats
 
 Post-meeting transcripts are available in multiple formats. Use CSV or JSON for application workflows, and use SRT or VTT when you need subtitle files.
 
-| Format   | Use case                             |
-| -------- | ------------------------------------ |
-| **CSV**  | Spreadsheets and data analysis       |
-| **JSON** | Programmatic access                  |
-| **SRT**  | Video subtitle files                 |
-| **VTT**  | Web video captions (<track> element) |
+| Format | Use case |
+| --- | --- |
+| **CSV** | Spreadsheets and data analysis |
+| **JSON** | Programmatic access |
+| **SRT** | Video subtitle files |
+| **VTT** | Web video captions (`<track>` element) |
 
 #### Examples
 
@@ -360,7 +368,7 @@ Configure the `meeting.transcript` event in [RealtimeKit webhooks](https://devel
 
 #### REST API
 
-Refer to [Fetch the complete transcript for a session](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/sessions/methods/get%5Fsession%5Ftranscripts/).
+Refer to [Fetch the complete transcript for a session](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/sessions/methods/get_session_transcripts/).
 
 ```bash
 curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/sessions/$SESSION_ID/transcript" \
@@ -381,10 +389,10 @@ You can upgrade to the Workers Paid plan in the Cloudflare dashboard under **Man
 
 RealtimeKit transcription uses these Workers AI audio model rates:
 
-| Transcription mode | Workers AI model                  | Neurons per audio minute |
-| ------------------ | --------------------------------- | ------------------------ |
-| Post-meeting       | @cf/openai/whisper-large-v3-turbo | 46.63                    |
-| Real-time          | @cf/deepgram/nova-3 WebSocket     | 836.36                   |
+| Transcription mode | Workers AI model | Neurons per audio minute |
+| --- | --- | --- |
+| Post-meeting | `@cf/openai/whisper-large-v3-turbo` | `46.63` |
+| Real-time | `@cf/deepgram/nova-3` WebSocket | `836.36` |
 
 ## Data processing and storage
 

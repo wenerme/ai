@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Use R2 from Workers
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/api/workers/workers-api-usage/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/api/workers/workers-api-usage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-## 1\. Create a new application with C3
+## 1. Create a new application with C3
 
 C3 (`create-cloudflare-cli`) is a command-line tool designed to help you set up and deploy Workers & Pages applications to Cloudflare as fast as possible.
 
@@ -36,11 +36,11 @@ pnpm create cloudflare@latest r2-worker
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `JavaScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `JavaScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 Then, move into your newly created directory:
 
@@ -48,7 +48,7 @@ Then, move into your newly created directory:
 cd r2-worker
 ```
 
-## 2\. Create your bucket
+## 2. Create your bucket
 
 Create your bucket by running:
 
@@ -64,7 +64,7 @@ npx wrangler r2 bucket list
 
 After running the `list` command, you will see all bucket names, including the one you have just created.
 
-## 3\. Bind your bucket to a Worker
+## 3. Bind your bucket to a Worker
 
 You will need to bind your bucket to a Worker.
 
@@ -95,7 +95,7 @@ bucket_name = "<YOUR_BUCKET_NAME>"
 
 For more detailed information on configuring your Worker (for example, if you are using [jurisdictions](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions)), refer to the [Wrangler Configuration documentation](https://developers.cloudflare.com/workers/wrangler/configuration/).
 
-## 4\. Access your R2 bucket from your Worker
+## 4. Access your R2 bucket from your Worker
 
 Within your Worker code, your bucket is now available under the `MY_BUCKET` variable and you can begin interacting with it.
 
@@ -260,7 +260,7 @@ The body of a [Request ↗](https://developer.mozilla.org/en-US/docs/Web/API/Req
 
 To avoid errors, create a clone of the Request object with `request.clone()` for each subsequent attempt to access a Request's body. Keep in mind that Workers have a [memory limit of 128 MB per Worker](https://developers.cloudflare.com/workers/platform/limits/#memory) and loading particularly large files into a Worker's memory multiple times may reach this limit. To ensure memory usage does not reach this limit, consider using [Streams](https://developers.cloudflare.com/workers/runtime-apis/streams/).
 
-## 5\. Bucket access and privacy
+## 5. Bucket access and privacy
 
 With the above code added to your Worker, every incoming request has the ability to interact with your bucket. This means your bucket is publicly exposed and its contents can be accessed and modified by undesired actors.
 
@@ -359,7 +359,7 @@ Enter the secret text you'd like assigned to the variable AUTH_KEY_SECRET on the
 
 This secret is now available as `AUTH_KEY_SECRET` on the `env` parameter in your Worker.
 
-## 6\. Deploy your Worker
+## 6. Deploy your Worker
 
 With your Worker and bucket set up, run the `npx wrangler deploy` [command](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) to deploy to Cloudflare's global network:
 
@@ -371,7 +371,7 @@ You can verify your authorization logic is working through the following command
 
 Caution
 
-When uploading files to R2 via `curl`, ensure you use **[\--data-binary ↗](https://everything.curl.dev/http/post/binary)** instead of `--data` or `-d`. Files will otherwise be truncated.
+When uploading files to R2 via `curl`, ensure you use **[`--data-binary` ↗](https://everything.curl.dev/http/post/binary)** instead of `--data` or `-d`. Files will otherwise be truncated.
 
 ```sh
 # Attempt to write an object without providing the "X-Custom-Auth-Key" header

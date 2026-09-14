@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage account secrets
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/secrets-store/manage-secrets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/secrets-store/manage-secrets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Secrets can be API tokens, public/private keys, authorization keys, passwords, or even code variables. The only limitation is that a secret must be a string that does not exceed 1024 bytes.
 
@@ -28,11 +28,11 @@ If you use [Wrangler](https://developers.cloudflare.com/secrets-store/manage-sec
 
 ## Resources
 
-* [Manage via Wrangler](https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/#secrets-store-secret)
-* [Create a secret](https://developers.cloudflare.com/secrets-store/manage-secrets/how-to/#create-a-secret)
-* [Duplicate a secret](https://developers.cloudflare.com/secrets-store/manage-secrets/how-to/#duplicate-a-secret)
-* [Edit a secret](https://developers.cloudflare.com/secrets-store/manage-secrets/how-to/#edit-a-secret)
-* [Delete a secret](https://developers.cloudflare.com/secrets-store/manage-secrets/how-to/#delete-a-secret)
+- [Manage via Wrangler](https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/#secrets-store-secret)
+- [Create a secret](https://developers.cloudflare.com/secrets-store/manage-secrets/how-to/#create-a-secret)
+- [Duplicate a secret](https://developers.cloudflare.com/secrets-store/manage-secrets/how-to/#duplicate-a-secret)
+- [Edit a secret](https://developers.cloudflare.com/secrets-store/manage-secrets/how-to/#edit-a-secret)
+- [Delete a secret](https://developers.cloudflare.com/secrets-store/manage-secrets/how-to/#delete-a-secret)
 
 Was this helpful?
 

@@ -12,20 +12,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Durable Object class exports
 
-Last updated Jul 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `exports` field in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) is the declarative way to manage [Durable Object class](https://developers.cloudflare.com/durable-objects/) lifecycle. You declare each Durable Object class your Worker exports — along with whether it is live, deleted, renamed, or transferred — and Cloudflare reconciles your declaration against the namespaces that have already been provisioned for your Worker.
 
 This page covers how to:
 
-* [Create](#define-a-durable-object-class) a new Durable Object class.
-* [Delete](#delete-a-durable-object-class) a Durable Object class and its data.
-* [Rename](#rename-a-durable-object-class) a Durable Object class.
-* [Transfer](#transfer-a-durable-object-class-between-workers) a Durable Object class between Workers.
+- [Create](#define-a-durable-object-class) a new Durable Object class.
+- [Delete](#delete-a-durable-object-class) a Durable Object class and its data.
+- [Rename](#rename-a-durable-object-class) a Durable Object class.
+- [Transfer](#transfer-a-durable-object-class-between-workers) a Durable Object class between Workers.
 
 Looking for the legacy \`migrations\` array?
 
-The `exports` field replaces the imperative [migrations array](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/) used by older Workers. Both flows are supported, but a Worker can only use one at a time. To move an existing Worker from `migrations` to `exports`, refer to [Migrate from the legacy migrations flow](#migrate-from-the-legacy-migrations-flow).
+The `exports` field replaces the imperative [`migrations` array](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/) used by older Workers. Both flows are supported, but a Worker can only use one at a time. To move an existing Worker from `migrations` to `exports`, refer to [Migrate from the legacy `migrations` flow](#migrate-from-the-legacy-migrations-flow).
 
 ## How `exports` works
 
@@ -70,15 +70,15 @@ storage = "sqlite"
 
 To declare a destructive operation — deleting, renaming, or transferring a class — you change the entry's `state` to a tombstone variant. The class name remains the same; the value tells Cloudflare what to do with the existing namespace.
 
-| Operation                              | state                  | Required fields         |
-| -------------------------------------- | ---------------------- | ----------------------- |
-| Define a new class (default)           | "created" (or omitted) | storage                 |
-| Delete a class                         | "deleted"              | _(none)_                |
-| Rename a class                         | "renamed"              | renamed\_to             |
-| Transfer a class to another Worker     | "transferred"          | transferred\_to         |
-| Receive a transfer from another Worker | "expecting-transfer"   | storage, transfer\_from |
+| Operation | `state` | Required fields |
+| --- | --- | --- |
+| Define a new class (default) | `"created"` (or omitted) | `storage` |
+| Delete a class | `"deleted"` | *(none)* |
+| Rename a class | `"renamed"` | `renamed_to` |
+| Transfer a class to another Worker | `"transferred"` | `transferred_to` |
+| Receive a transfer from another Worker | `"expecting-transfer"` | `storage`, `transfer_from` |
 
-The rest of this page describes each operation in detail and links to the [exports configuration reference](#exports-configuration-reference) for the full schema.
+The rest of this page describes each operation in detail and links to the [`exports` configuration reference](#exports-configuration-reference) for the full schema.
 
 ## Define a Durable Object class
 
@@ -93,43 +93,59 @@ Additionally, SQLite-backed Durable Objects allow you to store more types of dat
 Creating new namespaces with the [key-value storage backend](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#storage-backends) is no longer supported for accounts without an existing key-value-backed namespace. The key-value storage backend remains available for existing namespaces, and a migration path from the key-value storage backend to the SQLite storage backend will be available in the future.
 
 1. Add the class to your Worker code and export it:
-```ts
-import { DurableObject } from "cloudflare:workers";
-export class MyDurableObject extends DurableObject {
-  // ...
-}
-```
+
+   *src/index.tsts*
+
+
+
+   ```ts
+   import { DurableObject } from "cloudflare:workers";
+
+   export class MyDurableObject extends DurableObject {
+     // ...
+   }
+   ```
+
+
 2. Add a binding for the class (if your Worker needs to access it through `env`) and declare the class in `exports`:
-```jsonc
-{
-  "durable_objects": {
-    "bindings": [
-      {
-        "name": "MY_DURABLE_OBJECT",
-        "class_name": "MyDurableObject"
-      }
-    ]
-  },
-  "exports": {
-    "MyDurableObject": {
-      "type": "durable-object",
-      "storage": "sqlite"
-    }
-  }
-}
-```
-```toml
-[[durable_objects.bindings]]
-name = "MY_DURABLE_OBJECT"
-class_name = "MyDurableObject"
-[exports.MyDurableObject]
-type = "durable-object"
-storage = "sqlite"
-```
+
+   ```jsonc
+   {
+     "durable_objects": {
+       "bindings": [
+         {
+           "name": "MY_DURABLE_OBJECT",
+           "class_name": "MyDurableObject"
+         }
+       ]
+     },
+     "exports": {
+       "MyDurableObject": {
+         "type": "durable-object",
+         "storage": "sqlite"
+       }
+     }
+   }
+   ```
+
+   ```toml
+   [[durable_objects.bindings]]
+   name = "MY_DURABLE_OBJECT"
+   class_name = "MyDurableObject"
+
+   [exports.MyDurableObject]
+   type = "durable-object"
+   storage = "sqlite"
+   ```
+
+
 3. Deploy the Worker:
-```sh
-npx wrangler deploy
-```
+
+   ```sh
+   npx wrangler deploy
+   ```
+
+
 
 Cloudflare provisions a namespace for the class the first time you deploy. On subsequent deploys with the same entry, no namespace changes are made — the entry simply confirms that the class is still live.
 
@@ -144,25 +160,32 @@ Replace the live entry with a `deleted` tombstone to retire a Durable Object cla
 1. Remove the class from your Worker code.
 2. Remove the binding for the class from `durable_objects.bindings`.
 3. Change the `exports` entry for the class to a `deleted` tombstone:
-```jsonc
-{
-  "exports": {
-    "OldDurableObject": {
-      "type": "durable-object",
-      "state": "deleted"
-    }
-  }
-}
-```
-```toml
-[exports.OldDurableObject]
-type = "durable-object"
-state = "deleted"
-```
+
+   ```jsonc
+   {
+     "exports": {
+       "OldDurableObject": {
+         "type": "durable-object",
+         "state": "deleted"
+       }
+     }
+   }
+   ```
+
+   ```toml
+   [exports.OldDurableObject]
+   type = "durable-object"
+   state = "deleted"
+   ```
+
+
 4. Deploy the Worker:
-```sh
-npx wrangler deploy
-```
+
+   ```sh
+   npx wrangler deploy
+   ```
+
+
 
 Deleting a class destroys its data
 
@@ -170,8 +193,8 @@ There is no Trash for Durable Object namespaces deleted through `exports`. Copy 
 
 A `deleted` tombstone has two preconditions enforced at deploy time:
 
-* The class must not be present in your Worker code. Cloudflare will not delete a namespace whose class is still being shipped, because runtime bindings would resolve to a deleted namespace.
-* No other Worker in your account may bind to the namespace. If another Worker still binds to the class, the deploy is rejected with `tombstone_delete_blocked_by_external_bindings` and the list of referencing scripts is returned. Redeploy those Workers without the binding first, then re-run your deploy.
+- The class must not be present in your Worker code. Cloudflare will not delete a namespace whose class is still being shipped, because runtime bindings would resolve to a deleted namespace.
+- No other Worker in your account may bind to the namespace. If another Worker still binds to the class, the deploy is rejected with `tombstone_delete_blocked_by_external_bindings` and the list of referencing scripts is returned. Redeploy those Workers without the binding first, then re-run your deploy.
 
 Once the namespace has been deleted, the tombstone becomes stale. Cloudflare reports this in the [reconciliation output](#reading-the-reconciliation-output) and lists the entry in `removable_entries` so you can safely remove it from `exports`.
 
@@ -179,8 +202,8 @@ Once the namespace has been deleted, the tombstone becomes stale. Cloudflare rep
 
 Renaming a Durable Object class moves stored data from one class to another within the same Worker. Renaming requires:
 
-* A `renamed` tombstone keyed by the old class name, with `renamed_to` pointing at the new class name.
-* A live entry for the new class name in the same `exports` map (so the data has somewhere to land).
+- A `renamed` tombstone keyed by the old class name, with `renamed_to` pointing at the new class name.
+- A live entry for the new class name in the same `exports` map (so the data has somewhere to land).
 
 For a brand-new deploy where the old class is no longer in your code, a single deploy is enough:
 
@@ -218,54 +241,72 @@ After the rename applies, the namespace's class name is updated to `NewName` and
 A Durable Object class rename involves two updates that are not perfectly atomic at the runtime layer: the namespace's class pointer and the Worker code that exports the class. During a deploy rollout, one update may be visible before the other for a few seconds. To avoid runtime errors during this window, use a **three-deploy rename**:
 
 1. **Alias the new name to the old class.** Add the new class name to your code as the canonical class, and re-export it under the old name so existing instances keep resolving:
-```ts
-import { DurableObject } from "cloudflare:workers";
-export class NewName extends DurableObject {
-  // ...
-}
-export { NewName as OldName };
-```
-Leave `exports` unchanged. Deploy.
+
+   *src/index.tsts*
+
+
+
+   ```ts
+   import { DurableObject } from "cloudflare:workers";
+
+   export class NewName extends DurableObject {
+     // ...
+   }
+   export { NewName as OldName };
+   ```
+
+   Leave `exports` unchanged. Deploy.
 2. **Apply the rename while the alias is still in place.** Update `exports` to add the `renamed` tombstone and the new live entry:
-```jsonc
-{
-  "exports": {
-    "OldName": {
-      "type": "durable-object",
-      "state": "renamed",
-      "renamed_to": "NewName"
-    },
-    "NewName": {
-      "type": "durable-object",
-      "storage": "sqlite"
-    }
-  }
-}
-```
-```toml
-[exports.OldName]
-type = "durable-object"
-state = "renamed"
-renamed_to = "NewName"
-[exports.NewName]
-type = "durable-object"
-storage = "sqlite"
-```
-Deploy. Cloudflare applies the rename and surfaces a `tombstone_class_still_in_code` info notice — this is expected and confirms the safe rollout pattern.
+
+   ```jsonc
+   {
+     "exports": {
+       "OldName": {
+         "type": "durable-object",
+         "state": "renamed",
+         "renamed_to": "NewName"
+       },
+       "NewName": {
+         "type": "durable-object",
+         "storage": "sqlite"
+       }
+     }
+   }
+   ```
+
+   ```toml
+   [exports.OldName]
+   type = "durable-object"
+   state = "renamed"
+   renamed_to = "NewName"
+
+   [exports.NewName]
+   type = "durable-object"
+   storage = "sqlite"
+   ```
+
+   Deploy. Cloudflare applies the rename and surfaces a `tombstone_class_still_in_code` info notice — this is expected and confirms the safe rollout pattern.
 3. **Remove the alias.** Once the previous deploy has fully rolled out, remove the `OldName` alias from your code:
-```ts
-import { DurableObject } from "cloudflare:workers";
-export class NewName extends DurableObject {
-  // ...
-}
-```
-Leave `exports` unchanged. Deploy. The `OldName` tombstone is now stale and Cloudflare lists it in `removable_entries` — you can delete the entry from `exports` in your next config edit.
+
+   *src/index.tsts*
+
+
+
+   ```ts
+   import { DurableObject } from "cloudflare:workers";
+
+   export class NewName extends DurableObject {
+     // ...
+   }
+   ```
+
+   Leave `exports` unchanged. Deploy. The `OldName` tombstone is now stale and Cloudflare lists it in `removable_entries` — you can delete the entry from `exports` in your next config edit.
 
 The `renamed_to` target must:
 
-* Be a valid JavaScript identifier and differ from the source class name.
-* Appear as a live entry (`state: "created"` or omitted) in the same `exports` map. Cloudflare rejects a `renamed_to` value that names another tombstone or is missing entirely.
-* Not collide with an existing namespace under the same name on this Worker. If a namespace already exists under the target name, delete it via its own `deleted` tombstone in a prior deploy first.
+- Be a valid JavaScript identifier and differ from the source class name.
+- Appear as a live entry ( `state: "created"` or omitted) in the same `exports` map. Cloudflare rejects a `renamed_to` value that names another tombstone or is missing entirely.
+- Not collide with an existing namespace under the same name on this Worker. If a namespace already exists under the target name, delete it via its own `deleted` tombstone in a prior deploy first.
 
 ## Transfer a Durable Object class between Workers
 
@@ -276,103 +317,122 @@ The target Worker declares an `expecting-transfer` entry that names the source W
 The recommended sequence is four deploys:
 
 1. **Source Worker — initial state.** The source declares `MyDO` as a live class. Nothing else has changed yet.
-```jsonc
-{
-  "exports": {
-    "MyDO": { "type": "durable-object", "storage": "sqlite" }
-  }
-}
-```
-```toml
-[exports.MyDO]
-type = "durable-object"
-storage = "sqlite"
-```
+
+   ```jsonc
+   {
+     "exports": {
+       "MyDO": { "type": "durable-object", "storage": "sqlite" }
+     }
+   }
+   ```
+
+   ```toml
+   [exports.MyDO]
+   type = "durable-object"
+   storage = "sqlite"
+   ```
+
+
 2. **Target Worker — receive the transfer.** The target adds `MyDO` to its code and declares an `expecting-transfer` entry naming the source Worker. Do **not** add a `durable_objects.bindings` entry for `MyDO` on the target yet — Cloudflare does not route self-referencing bindings through the source's namespace during this phase.
-```jsonc
-{
-  "exports": {
-    "MyDO": {
-      "type": "durable-object",
-      "state": "expecting-transfer",
-      "storage": "sqlite",
-      "transfer_from": "source-worker"
-    }
-  }
-}
-```
-```toml
-[exports.MyDO]
-type = "durable-object"
-state = "expecting-transfer"
-storage = "sqlite"
-transfer_from = "source-worker"
-```
-Deploy the target. Cloudflare records a pending transfer and emits a `Transfer pending` notice in the [reconciliation output](#reading-the-reconciliation-output).
+
+   ```jsonc
+   {
+     "exports": {
+       "MyDO": {
+         "type": "durable-object",
+         "state": "expecting-transfer",
+         "storage": "sqlite",
+         "transfer_from": "source-worker"
+       }
+     }
+   }
+   ```
+
+   ```toml
+   [exports.MyDO]
+   type = "durable-object"
+   state = "expecting-transfer"
+   storage = "sqlite"
+   transfer_from = "source-worker"
+   ```
+
+   Deploy the target. Cloudflare records a pending transfer and emits a `Transfer pending` notice in the [reconciliation output](#reading-the-reconciliation-output).
 3. **Source Worker — commit the transfer.** Change the source's `MyDO` entry to a `transferred` tombstone naming the target Worker. Leave the class in the source code for now:
-```jsonc
-{
-  "exports": {
-    "MyDO": {
-      "type": "durable-object",
-      "state": "transferred",
-      "transferred_to": "target-worker"
-    }
-  }
-}
-```
-```toml
-[exports.MyDO]
-type = "durable-object"
-state = "transferred"
-transferred_to = "target-worker"
-```
-Deploy the source. Cloudflare matches the pending transfer and atomically reassigns the namespace to the target Worker. The reconciliation output reports `Transferred (committed): MyDO → target-worker`.
-If the source Worker still needs to access `MyDO` after the transfer commits, update its `durable_objects.bindings` entry to point at the target Worker with `script_name`:
-```jsonc
-{
-  "durable_objects": {
-    "bindings": [
-      {
-        "name": "MY_DURABLE_OBJECT",
-        "class_name": "MyDO",
-        "script_name": "target-worker"
-      }
-    ]
-  }
-}
-```
-```toml
-[[durable_objects.bindings]]
-name = "MY_DURABLE_OBJECT"
-class_name = "MyDO"
-script_name = "target-worker"
-```
-If the source Worker no longer needs to access `MyDO`, remove the binding when you remove `MyDO` from the source Worker's code.
+
+   ```jsonc
+   {
+     "exports": {
+       "MyDO": {
+         "type": "durable-object",
+         "state": "transferred",
+         "transferred_to": "target-worker"
+       }
+     }
+   }
+   ```
+
+   ```toml
+   [exports.MyDO]
+   type = "durable-object"
+   state = "transferred"
+   transferred_to = "target-worker"
+   ```
+
+   Deploy the source. Cloudflare matches the pending transfer and atomically reassigns the namespace to the target Worker. The reconciliation output reports `Transferred (committed): MyDO → target-worker`.
+
+   If the source Worker still needs to access `MyDO` after the transfer commits, update its `durable_objects.bindings` entry to point at the target Worker with `script_name`:
+
+   ```jsonc
+   {
+     "durable_objects": {
+       "bindings": [
+         {
+           "name": "MY_DURABLE_OBJECT",
+           "class_name": "MyDO",
+           "script_name": "target-worker"
+         }
+       ]
+     }
+   }
+   ```
+
+   ```toml
+   [[durable_objects.bindings]]
+   name = "MY_DURABLE_OBJECT"
+   class_name = "MyDO"
+   script_name = "target-worker"
+   ```
+
+   If the source Worker no longer needs to access `MyDO`, remove the binding when you remove `MyDO` from the source Worker's code.
 4. **Target Worker — bind the class.** Once the source's deploy has fully rolled out, redeploy the target with a `durable_objects.bindings` entry for `MyDO`. The binding now resolves to the namespace on the target Worker.
-```jsonc
-{
-  "durable_objects": {
-    "bindings": [
-      {
-        "name": "MY_DURABLE_OBJECT",
-        "class_name": "MyDO"
-      }
-    ]
-  },
-  "exports": {
-    "MyDO": { "type": "durable-object", "storage": "sqlite" }
-  }
-}
-```
-```toml
-[[durable_objects.bindings]]
-name = "MY_DURABLE_OBJECT"
-class_name = "MyDO"
-[exports.MyDO]
-type = "durable-object"
-storage = "sqlite"
-```
+
+   ```jsonc
+   {
+     "durable_objects": {
+       "bindings": [
+         {
+           "name": "MY_DURABLE_OBJECT",
+           "class_name": "MyDO"
+         }
+       ]
+     },
+     "exports": {
+       "MyDO": { "type": "durable-object", "storage": "sqlite" }
+     }
+   }
+   ```
+
+   ```toml
+   [[durable_objects.bindings]]
+   name = "MY_DURABLE_OBJECT"
+   class_name = "MyDO"
+
+   [exports.MyDO]
+   type = "durable-object"
+   storage = "sqlite"
+   ```
+
+
 
 After the handoff has rolled out everywhere, you can remove `MyDO` from the source Worker's code and delete the `transferred` tombstone from the source's `exports` map. While other Workers in the account still bind to `MyDO` on the source, the reconciliation output lists them in `referencing_scripts`; redeploy each of them with bindings re-pointed at the target before removing the source tombstone.
 
@@ -382,23 +442,23 @@ A pending transfer persists until the source Worker commits with a `transferred`
 
 ### Transfer constraints
 
-* Both Workers must live in the same Cloudflare account.
-* Cross-[dispatch-namespace](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/) transfers are not supported. The source and target Workers must both be in the same dispatch-namespace context (or both be outside any dispatch namespace).
-* A target Worker can hold only one pending phase-1 hint per class at a time. To redirect a pending transfer to a different source, cancel the current pending transfer first.
+- Both Workers must live in the same Cloudflare account.
+- Cross- [dispatch-namespace](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/) transfers are not supported. The source and target Workers must both be in the same dispatch-namespace context (or both be outside any dispatch namespace).
+- A target Worker can hold only one pending phase-1 hint per class at a time. To redirect a pending transfer to a different source, cancel the current pending transfer first.
 
 ## Storage backends
 
 Live entries (`state: "created"` and `state: "expecting-transfer"`) must declare a `storage` value:
 
-* `"sqlite"` selects the SQLite storage backend. This is the recommended and only path for new namespaces. SQLite-backed namespaces support [SQL](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/), [Point-in-Time Recovery](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#point-in-time-recovery-api), and a higher per-object storage limit.
-* `"legacy-kv"` selects the key-value storage backend. Cloudflare only accepts this value for namespaces that were already provisioned with key-value storage (typically Workers that started on the [legacy migrations array](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/) before SQLite was the default). You cannot create a **new** key-value-backed namespace through `exports`.
+- `"sqlite"` selects the SQLite storage backend. This is the recommended and only path for new namespaces. SQLite-backed namespaces support [SQL](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/), [Point-in-Time Recovery](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#point-in-time-recovery-api), and a higher per-object storage limit.
+- `"legacy-kv"` selects the key-value storage backend. Cloudflare only accepts this value for namespaces that were already provisioned with key-value storage (typically Workers that started on the [legacy `migrations` array](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/) before SQLite was the default). You cannot create a **new** key-value-backed namespace through `exports`.
 
 Note
 
 Durable Objects are available both on Workers Free and Workers Paid plans.
 
-* **Workers Free plan**: Only Durable Objects with [SQLite storage backend](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#create-sqlite-backed-durable-object-class) are available.
-* **Workers Paid plan**: Durable Objects with the SQLite storage backend are available. The [key-value storage backend](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#storage-backends) is only available to accounts that already have a key-value-backed namespace.
+- **Workers Free plan**: Only Durable Objects with [SQLite storage backend](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#create-sqlite-backed-durable-object-class) are available.
+- **Workers Paid plan**: Durable Objects with the SQLite storage backend are available. The [key-value storage backend](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#storage-backends) is only available to accounts that already have a key-value-backed namespace.
 
 If you wish to downgrade from a Workers Paid plan to a Workers Free plan, you must first ensure that you have deleted all Durable Object namespaces with the key-value storage backend.
 
@@ -426,10 +486,10 @@ Durable Object exports reconciliation:
 
 The block has four sections:
 
-* **Action lines** (`Created`, `Updated`, `Deleted`, `Renamed`, `Transferred`, `Transfer pending`) report the changes Cloudflare applied during this deploy.
-* **Warnings** (yellow) flag conditions that should be investigated but do not block the deploy. The set of warning scenarios is reserved for future use; current Cloudflare deploys do not emit them.
-* **Info** (dimmed) reports non-blocking notices: stale tombstones that no longer apply, and tombstones applied while the source class is still in code (the supported pattern for zero-downtime rollouts).
-* **Safe to remove from `exports`** lists tombstone entries that are stale and have no other Workers in the account binding to the source class. You can delete these entries from your `exports` map on your next config edit.
+- **Action lines** ( `Created`, `Updated`, `Deleted`, `Renamed`, `Transferred`, `Transfer pending`) report the changes Cloudflare applied during this deploy.
+- **Warnings** (yellow) flag conditions that should be investigated but do not block the deploy. The set of warning scenarios is reserved for future use; current Cloudflare deploys do not emit them.
+- **Info** (dimmed) reports non-blocking notices: stale tombstones that no longer apply, and tombstones applied while the source class is still in code (the supported pattern for zero-downtime rollouts).
+- **Safe to remove from `exports`** lists tombstone entries that are stale and have no other Workers in the account binding to the source class. You can delete these entries from your `exports` map on your next config edit.
 
 Info entries can include a `referencing_scripts` list — other Workers in the account whose bindings still resolve to the affected namespace. Redeploy those Workers with bindings re-pointed at the new class name before removing the tombstone, or you will orphan their bindings.
 
@@ -492,63 +552,57 @@ If `exports` is only declared at the top level, named environments inherit the s
 
 The `exports` field is a map keyed by Durable Object class name. Each value is an object whose fields depend on `state`:
 
-* `type` `string` required
-
-  * For Durable Object class entries, set this to `"durable-object"`.
-* `state` `string` optional
-
-  * The lifecycle state. One of `"created"` (the default, omit to use), `"deleted"`, `"renamed"`, `"transferred"`, or `"expecting-transfer"`.
-* `storage` `string` conditional
-
-  * Required when `state` is `"created"` or `"expecting-transfer"`. One of `"sqlite"` (recommended, the only valid value for new namespaces) or `"legacy-kv"` (only for existing key-value-backed namespaces). Forbidden on tombstone states.
-* `renamed_to` `string` conditional
-
-  * Required when `state` is `"renamed"`. The destination class name. Must be a valid JavaScript identifier, differ from the source class name, and appear as a live entry in the same `exports` map.
-* `transferred_to` `string` conditional
-
-  * Required when `state` is `"transferred"`. The name of the target Worker that will receive the namespace.
-* `transfer_from` `string` conditional
-
-  * Required when `state` is `"expecting-transfer"`. The name of the source Worker the namespace is being transferred from.
+- `type` `string` required
+  - For Durable Object class entries, set this to `"durable-object"`.
+- `state` `string` optional
+  - The lifecycle state. One of `"created"` (the default, omit to use), `"deleted"`, `"renamed"`, `"transferred"`, or `"expecting-transfer"`.
+- `storage` `string` conditional
+  - Required when `state` is `"created"` or `"expecting-transfer"`. One of `"sqlite"` (recommended, the only valid value for new namespaces) or `"legacy-kv"` (only for existing key-value-backed namespaces). Forbidden on tombstone states.
+- `renamed_to` `string` conditional
+  - Required when `state` is `"renamed"`. The destination class name. Must be a valid JavaScript identifier, differ from the source class name, and appear as a live entry in the same `exports` map.
+- `transferred_to` `string` conditional
+  - Required when `state` is `"transferred"`. The name of the target Worker that will receive the namespace.
+- `transfer_from` `string` conditional
+  - Required when `state` is `"expecting-transfer"`. The name of the source Worker the namespace is being transferred from.
 
 The following table lists the allowed and forbidden fields for each `state`:
 
-| state                | Required                | Forbidden                                             |
-| -------------------- | ----------------------- | ----------------------------------------------------- |
-| "created" (default)  | storage                 | renamed\_to, transferred\_to, transfer\_from          |
-| "deleted"            | _(none)_                | storage, renamed\_to, transferred\_to, transfer\_from |
-| "renamed"            | renamed\_to             | storage, transferred\_to, transfer\_from              |
-| "transferred"        | transferred\_to         | storage, renamed\_to, transfer\_from                  |
-| "expecting-transfer" | storage, transfer\_from | renamed\_to, transferred\_to                          |
+| `state` | Required | Forbidden |
+| --- | --- | --- |
+| `"created"` (default) | `storage` | `renamed_to`, `transferred_to`, `transfer_from` |
+| `"deleted"` | *(none)* | `storage`, `renamed_to`, `transferred_to`, `transfer_from` |
+| `"renamed"` | `renamed_to` | `storage`, `transferred_to`, `transfer_from` |
+| `"transferred"` | `transferred_to` | `storage`, `renamed_to`, `transfer_from` |
+| `"expecting-transfer"` | `storage`, `transfer_from` | `renamed_to`, `transferred_to` |
 
 ## Error reference
 
 When a deploy fails reconciliation, Cloudflare returns one error per class along with a structured `scenario` tag, a human-readable message, and where applicable a `suggestion` and `referencing_scripts` list:
 
-| Scenario                                              | Meaning                                                                                                                                                        | How to fix                                                                                                                                   |
-| ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| provisioned\_class\_missing\_from\_config             | A namespace exists for a class that the Worker code still exports, but exports has no entry for it.                                                            | Add a live entry (state: "created") to keep the namespace, or add a tombstone (deleted, renamed, or transferred) to retire it.               |
-| config\_export\_not\_in\_code                         | A live entry declares a class that the Worker code does not export.                                                                                            | Add the class to your code, or replace the entry with a tombstone.                                                                           |
-| config\_references\_nonexistent\_class                | A live entry declares a class that is neither in code nor provisioned.                                                                                         | Remove the entry, or add the class to your Worker code.                                                                                      |
-| orphaned\_provisioned\_namespace                      | A namespace exists for a class that is neither in code nor declared.                                                                                           | Add a tombstone for the class, or add the class back to code and exports.                                                                    |
-| invalid\_export                                       | An exports entry is structurally invalid — for example, requesting legacy-kv for a new namespace, or a class that maps to more than one provisioned namespace. | Correct the entry: use "storage": "sqlite" for new namespaces, or resolve the duplicate with a deleted or renamed tombstone.                 |
-| tombstone\_delete\_class\_still\_in\_code             | A deleted tombstone names a class that is still exported in code.                                                                                              | Remove the class from your code first, then deploy the tombstone.                                                                            |
-| tombstone\_delete\_blocked\_by\_external\_bindings    | Another Worker in the account binds to the namespace being deleted.                                                                                            | Redeploy the referencing Workers without the binding, then re-run your deploy.                                                               |
-| tombstone\_renamed\_to\_occupied                      | A renamed\_to target collides with an existing namespace under that name.                                                                                      | Delete the colliding namespace via its own deleted tombstone in a prior deploy.                                                              |
-| transferred\_pending\_not\_found                      | A transferred tombstone has no matching expecting-transfer entry on the target.                                                                                | Deploy the target Worker first with an expecting-transfer entry naming this Worker.                                                          |
-| transferred\_target\_missing                          | The target Worker named by transferred\_to no longer exists.                                                                                                   | Update transferred\_to to a valid target, or remove the tombstone.                                                                           |
-| transferred\_target\_mismatch                         | The transferred\_to value does not match the target recorded by the pending transfer.                                                                          | Set transferred\_to to the pending transfer's target, or have the target cancel its expecting-transfer entry before redirecting.             |
-| transferred\_source\_in\_dispatch\_namespace          | The source Worker declaring the transferred tombstone is in a dispatch namespace; cross-dispatch transfer is not supported.                                    | Perform the transfer within a single dispatch-namespace context.                                                                             |
-| transferred\_target\_in\_dispatch\_namespace          | The target of a transferred tombstone is in a dispatch namespace; cross-dispatch transfer is not supported.                                                    | Cancel the pending transfer by having the target redeploy without expecting-transfer, or keep both Workers in the same context.              |
-| phase\_one\_transfer\_after\_commit\_mismatch         | The target's namespace was transferred from a different source than the one declared.                                                                          | Remove the expecting-transfer entry — the transfer cannot be redirected after commit.                                                        |
-| phase\_one\_transfer\_target\_class\_provisioned      | The target Worker already owns a namespace for the class.                                                                                                      | Replace the expecting-transfer entry with a normal live entry, or delete the existing namespace first.                                       |
-| phase\_one\_transfer\_duplicate                       | Another expecting-transfer hint is already in flight for the same class.                                                                                       | Cancel the existing pending transfer first by removing or replacing its entry.                                                               |
-| phase\_one\_transfer\_source\_missing                 | The source Worker named by transfer\_from does not exist in the account.                                                                                       | Correct the source Worker name.                                                                                                              |
-| phase\_one\_transfer\_source\_namespace\_missing      | The source Worker has no namespace for the class.                                                                                                              | Make sure the source Worker has the class deployed before the target declares expecting-transfer.                                            |
-| phase\_one\_transfer\_source\_in\_dispatch\_namespace | The source Worker is in a dispatch namespace; cross-dispatch transfer is not supported.                                                                        | Move the transfer within a single dispatch-namespace context.                                                                                |
-| phase\_one\_transfer\_target\_in\_dispatch\_namespace | The target Worker is in a dispatch namespace; cross-dispatch transfer is not supported.                                                                        | Move the transfer within a single dispatch-namespace context.                                                                                |
-| storage\_type\_mismatch                               | The declared storage value does not match the provisioned namespace's storage backend.                                                                         | Storage backends cannot be changed in place. Delete the namespace and re-provision it under the new backend if you genuinely need to switch. |
-| free\_tier\_requires\_sqlite                          | The account's plan only supports SQLite-backed namespaces, but the entry requests legacy-kv.                                                                   | Use "storage": "sqlite".                                                                                                                     |
+| Scenario | Meaning | How to fix |
+| --- | --- | --- |
+| `provisioned_class_missing_from_config` | A namespace exists for a class that the Worker code still exports, but `exports` has no entry for it. | Add a live entry (`state: "created"`) to keep the namespace, or add a tombstone (`deleted`, `renamed`, or `transferred`) to retire it. |
+| `config_export_not_in_code` | A live entry declares a class that the Worker code does not export. | Add the class to your code, or replace the entry with a tombstone. |
+| `config_references_nonexistent_class` | A live entry declares a class that is neither in code nor provisioned. | Remove the entry, or add the class to your Worker code. |
+| `orphaned_provisioned_namespace` | A namespace exists for a class that is neither in code nor declared. | Add a tombstone for the class, or add the class back to code and `exports`. |
+| `invalid_export` | An `exports` entry is structurally invalid — for example, requesting `legacy-kv` for a new namespace, or a class that maps to more than one provisioned namespace. | Correct the entry: use `"storage": "sqlite"` for new namespaces, or resolve the duplicate with a `deleted` or `renamed` tombstone. |
+| `tombstone_delete_class_still_in_code` | A `deleted` tombstone names a class that is still exported in code. | Remove the class from your code first, then deploy the tombstone. |
+| `tombstone_delete_blocked_by_external_bindings` | Another Worker in the account binds to the namespace being deleted. | Redeploy the referencing Workers without the binding, then re-run your deploy. |
+| `tombstone_renamed_to_occupied` | A `renamed_to` target collides with an existing namespace under that name. | Delete the colliding namespace via its own `deleted` tombstone in a prior deploy. |
+| `transferred_pending_not_found` | A `transferred` tombstone has no matching `expecting-transfer` entry on the target. | Deploy the target Worker first with an `expecting-transfer` entry naming this Worker. |
+| `transferred_target_missing` | The target Worker named by `transferred_to` no longer exists. | Update `transferred_to` to a valid target, or remove the tombstone. |
+| `transferred_target_mismatch` | The `transferred_to` value does not match the target recorded by the pending transfer. | Set `transferred_to` to the pending transfer's target, or have the target cancel its `expecting-transfer` entry before redirecting. |
+| `transferred_source_in_dispatch_namespace` | The source Worker declaring the `transferred` tombstone is in a dispatch namespace; cross-dispatch transfer is not supported. | Perform the transfer within a single dispatch-namespace context. |
+| `transferred_target_in_dispatch_namespace` | The target of a `transferred` tombstone is in a dispatch namespace; cross-dispatch transfer is not supported. | Cancel the pending transfer by having the target redeploy without `expecting-transfer`, or keep both Workers in the same context. |
+| `phase_one_transfer_after_commit_mismatch` | The target's namespace was transferred from a different source than the one declared. | Remove the `expecting-transfer` entry — the transfer cannot be redirected after commit. |
+| `phase_one_transfer_target_class_provisioned` | The target Worker already owns a namespace for the class. | Replace the `expecting-transfer` entry with a normal live entry, or delete the existing namespace first. |
+| `phase_one_transfer_duplicate` | Another `expecting-transfer` hint is already in flight for the same class. | Cancel the existing pending transfer first by removing or replacing its entry. |
+| `phase_one_transfer_source_missing` | The source Worker named by `transfer_from` does not exist in the account. | Correct the source Worker name. |
+| `phase_one_transfer_source_namespace_missing` | The source Worker has no namespace for the class. | Make sure the source Worker has the class deployed before the target declares `expecting-transfer`. |
+| `phase_one_transfer_source_in_dispatch_namespace` | The source Worker is in a dispatch namespace; cross-dispatch transfer is not supported. | Move the transfer within a single dispatch-namespace context. |
+| `phase_one_transfer_target_in_dispatch_namespace` | The target Worker is in a dispatch namespace; cross-dispatch transfer is not supported. | Move the transfer within a single dispatch-namespace context. |
+| `storage_type_mismatch` | The declared `storage` value does not match the provisioned namespace's storage backend. | Storage backends cannot be changed in place. Delete the namespace and re-provision it under the new backend if you genuinely need to switch. |
+| `free_tier_requires_sqlite` | The account's plan only supports SQLite-backed namespaces, but the entry requests `legacy-kv`. | Use `"storage": "sqlite"`. |
 
 Note
 
@@ -556,15 +610,15 @@ The blocking error `tombstone_delete_class_still_in_code` (specific to `deleted`
 
 ## Constraints and limitations
 
-* **`exports` and `migrations` are mutually exclusive.** A Worker configuration that contains both fields is rejected at validation. Once a Worker has been deployed with `exports`, subsequent deploys must continue to use `exports` (or neither, which reconciles against an empty config and is usually a mistake).
-* **`wrangler versions upload` does not apply lifecycle changes.** Just like the legacy `migrations` array, Durable Object lifecycle changes can only be applied via `wrangler deploy`. If your Wrangler configuration contains `exports` entries, `wrangler versions upload` fails fast with an actionable error. Refer to [Deployment management - Durable Object migrations](https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/#durable-object-migrations).
-* **Gradual deployments are not supported with `exports`.** Lifecycle changes are atomic at the Cloudflare control plane and cannot be rolled out gradually. Refer to [Gradual deployments with Durable Objects - Durable Object class lifecycle changes](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/with-durable-objects/#durable-object-class-lifecycle-changes).
-* **Rollbacks cannot cross a lifecycle change.** You cannot roll back to a version deployed before an `exports`\-driven lifecycle change. Refer to [Rollbacks - Bindings](https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/#bindings).
-* **Storage backends are immutable once provisioned.** You cannot change a namespace's `storage` value in place; delete and re-provision instead.
+- **`exports` and `migrations` are mutually exclusive.** A Worker configuration that contains both fields is rejected at validation. Once a Worker has been deployed with `exports`, subsequent deploys must continue to use `exports` (or neither, which reconciles against an empty config and is usually a mistake).
+- **`wrangler versions upload` does not apply lifecycle changes.** Just like the legacy `migrations` array, Durable Object lifecycle changes can only be applied via `wrangler deploy`. If your Wrangler configuration contains `exports` entries, `wrangler versions upload` fails fast with an actionable error. Refer to [Deployment management - Durable Object migrations](https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/#durable-object-migrations).
+- **Gradual deployments are not supported with `exports`.** Lifecycle changes are atomic at the Cloudflare control plane and cannot be rolled out gradually. Refer to [Gradual deployments with Durable Objects - Durable Object class lifecycle changes](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/with-durable-objects/#durable-object-class-lifecycle-changes).
+- **Rollbacks cannot cross a lifecycle change.** You cannot roll back to a version deployed before an `exports`-driven lifecycle change. Refer to [Rollbacks - Bindings](https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/#bindings).
+- **Storage backends are immutable once provisioned.** You cannot change a namespace's `storage` value in place; delete and re-provision instead.
 
 ## Migrate from the legacy `migrations` flow
 
-Existing Workers using the [migrations array](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/) can move to `exports` without any data migration. The provisioned namespaces remain in place; only the configuration shape changes.
+Existing Workers using the [`migrations` array](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/) can move to `exports` without any data migration. The provisioned namespaces remain in place; only the configuration shape changes.
 
 To determine a class's existing storage backend, trace it to the migration that originally created it. Classes introduced through `new_sqlite_classes` use `sqlite`, while classes introduced through `new_classes` use `legacy-kv`.
 

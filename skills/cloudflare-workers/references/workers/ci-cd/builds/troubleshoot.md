@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting builds
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide explains how to identify and resolve build errors, as well as troubleshoot common issues in the Workers Builds deployment process.
 
@@ -40,7 +40,7 @@ For example, a Worker named `my-worker-staging` on the dashboard can be deployed
 
 `✘ [ERROR] Missing entry-point: The entry-point should be specified via the command line (e.g. wrangler deploy path/to/script) or the main config field.`
 
-If you see this error, a Wrangler configuration file is likely missing from the root directory. Navigate to **Settings** \> **Build** \> **Build Configuration** to update the root directory, or add a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to the specified directory.
+If you see this error, a Wrangler configuration file is likely missing from the root directory. Navigate to **Settings** > **Build** > **Build Configuration** to update the root directory, or add a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to the specified directory.
 
 ### Incorrect account\_id
 
@@ -50,7 +50,7 @@ If you see this error, the Wrangler configuration file likely has an `account_id
 
 ### Stale API token
 
-` Failed: The build token selected for this build has been deleted or rolled and cannot be used for this build. Please update your build token in the Worker Builds settings and retry the build.`
+`Failed: The build token selected for this build has been deleted or rolled and cannot be used for this build. Please update your build token in the Worker Builds settings and retry the build.`
 
 The API Token dropdown in Build Configuration settings may show stale tokens that were edited, deleted, or rolled. If you encounter an error due to a stale token, create a new API Token and select it for the build.
 

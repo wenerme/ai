@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Extract a JWT from the Authorization header, verify its HMAC-SHA256 signature using the WebCrypto API, and validate its claims.
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/snippets/examples/jwt-validation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/snippets/examples/jwt-validation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Caution when using in production
 

@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Sandbox lifecycle
 
-Last updated Sep 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/concepts/sandboxes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/concepts/sandboxes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A sandbox is an isolated execution environment where your code runs. Each sandbox:
 
-* Has a unique identifier (sandbox ID)
-* Contains an isolated filesystem
-* Runs in a dedicated Linux container
-* Maintains state while the container is active
-* Exists as a Cloudflare Durable Object
+- Has a unique identifier (sandbox ID)
+- Contains an isolated filesystem
+- Runs in a dedicated Linux container
+- Maintains state while the container is active
+- Exists as a Cloudflare Durable Object
 
 Coming soon: Sandbox SDK 1.0
 
@@ -45,9 +45,9 @@ The sandbox container is running and processing requests. All state remains avai
 
 ### Idle
 
-After a period of inactivity (10 minutes by default, configurable via [sleepAfter](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/)), the container stops to free resources. When the next request arrives, a fresh container starts. All previous state is lost and the environment resets to its initial state.
+After a period of inactivity (10 minutes by default, configurable via [`sleepAfter`](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/)), the container stops to free resources. When the next request arrives, a fresh container starts. All previous state is lost and the environment resets to its initial state.
 
-**Note**: Containers with [keepAlive: true](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/#keepalive) never enter the idle state. They automatically send heartbeat pings every 30 seconds to prevent eviction.
+**Note**: Containers with [`keepAlive: true`](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/#keepalive) never enter the idle state. They automatically send heartbeat pings every 30 seconds to prevent eviction.
 
 ### Destruction
 
@@ -64,17 +64,17 @@ Sandbox state exists only while the container is active. Understanding this is c
 
 **While the container is active** (typically minutes to hours of activity):
 
-* Files written to `/workspace`, `/tmp`, `/home` remain available
-* Background processes continue running
-* Shell sessions maintain their working directory and environment
-* Code interpreter contexts retain variables and imports
+- Files written to `/workspace`, `/tmp`, `/home` remain available
+- Background processes continue running
+- Shell sessions maintain their working directory and environment
+- Code interpreter contexts retain variables and imports
 
 **When the container stops** (due to inactivity or explicit destruction):
 
-* All files are deleted
-* All processes terminate
-* All shell state resets
-* All code interpreter contexts are cleared
+- All files are deleted
+- All processes terminate
+- All shell state resets
+- All code interpreter contexts are cleared
 
 The next request creates a fresh container with a clean environment.
 
@@ -113,8 +113,8 @@ The first request to a sandbox determines its geographic location. Subsequent re
 
 **For global apps**:
 
-* Option 1: Multiple sandboxes per user with region suffix (`user-123-us`, `user-123-eu`)
-* Option 2: Single sandbox per user (simpler, but some users see higher latency)
+- Option 1: Multiple sandboxes per user with region suffix ( `user-123-us`, `user-123-eu`)
+- Option 2: Single sandbox per user (simpler, but some users see higher latency)
 
 ## Lifecycle management
 
@@ -135,7 +135,7 @@ try {
 
 ### Managing keepAlive containers
 
-Containers with [keepAlive: true](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/#keepalive) require explicit management since they do not timeout automatically:
+Containers with [`keepAlive: true`](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/#keepalive) require explicit management since they do not timeout automatically:
 
 ```typescript
 const sandbox = getSandbox(env.Sandbox, 'persistent-task', {
@@ -169,13 +169,13 @@ The SDK automatically checks that your npm package version matches the Docker co
 
 **What happens**:
 
-* On sandbox startup, the SDK queries the container's version
-* If versions do not match, a warning is logged
-* Some features may not work correctly if versions are incompatible
+- On sandbox startup, the SDK queries the container's version
+- If versions do not match, a warning is logged
+- Some features may not work correctly if versions are incompatible
 
 **When you might see warnings**:
 
-* You updated the npm package (`npm install @cloudflare/sandbox@latest`) but forgot to update the `FROM` line in your Dockerfile
+- You updated the npm package ( `npm install @cloudflare/sandbox@latest`) but forgot to update the `FROM` line in your Dockerfile
 
 **How to fix**: Update your Dockerfile to match your npm package version. For example, if using `@cloudflare/sandbox@0.7.0`:
 
@@ -191,20 +191,20 @@ See [Dockerfile reference](https://developers.cloudflare.com/sandbox/configurati
 
 ## Best practices
 
-* **Name consistently** \- Use clear, predictable naming schemes
-* **Clean up temporary sandboxes** \- Always destroy when done
-* **Reuse user workspaces** \- One long-lived sandbox per user is often sufficient
-* **Batch operations** \- Combine commands: `npm install && npm test && npm build`
-* **Design for ephemeral state** \- Containers restart after inactivity, losing all state
+- **Name consistently** - Use clear, predictable naming schemes
+- **Clean up temporary sandboxes** - Always destroy when done
+- **Reuse user workspaces** - One long-lived sandbox per user is often sufficient
+- **Batch operations** - Combine commands: `npm install && npm test && npm build`
+- **Design for ephemeral state** - Containers restart after inactivity, losing all state
 
 ## Related resources
 
-* [Architecture](https://developers.cloudflare.com/sandbox/concepts/architecture/) \- How sandboxes fit in the system
-* [Container runtime](https://developers.cloudflare.com/sandbox/concepts/containers/) \- What runs inside sandboxes
-* [Session management](https://developers.cloudflare.com/sandbox/concepts/sessions/) \- Advanced state isolation
-* [Directory backups](https://developers.cloudflare.com/sandbox/concepts/backup-restore/) \- Why restored files do not survive sleep unless you restore again
-* [Lifecycle API](https://developers.cloudflare.com/sandbox/api/lifecycle/) \- Create and manage sandboxes
-* [Sessions API](https://developers.cloudflare.com/sandbox/api/sessions/) \- Create and manage execution sessions
+- [Architecture](https://developers.cloudflare.com/sandbox/concepts/architecture/) - How sandboxes fit in the system
+- [Container runtime](https://developers.cloudflare.com/sandbox/concepts/containers/) - What runs inside sandboxes
+- [Session management](https://developers.cloudflare.com/sandbox/concepts/sessions/) - Advanced state isolation
+- [Directory backups](https://developers.cloudflare.com/sandbox/concepts/backup-restore/) - Why restored files do not survive sleep unless you restore again
+- [Lifecycle API](https://developers.cloudflare.com/sandbox/api/lifecycle/) - Create and manage sandboxes
+- [Sessions API](https://developers.cloudflare.com/sandbox/api/sessions/) - Create and manage execution sessions
 
 Was this helpful?
 

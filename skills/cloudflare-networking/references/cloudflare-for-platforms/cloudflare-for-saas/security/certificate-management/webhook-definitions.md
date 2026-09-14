@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Webhook definitions
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/webhook-definitions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/webhook-definitions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you [create a webhook notification](https://developers.cloudflare.com/notifications/get-started/configure-webhooks/) for **SSL for SaaS Custom Hostnames**, you may want to automate responses to specific events (certificate issuance, failed validation, etc.).
 
@@ -523,11 +523,17 @@ This behavior is because each custom hostname can only have one certificate atta
 
 You can configure alerts to receive notifications for changes in your custom hostname certificates.
 
+<details>
+
+<summary>
+
 SSL for SaaS Custom Hostnames Alert
+
+</summary>
 
 **Who is it for?**
 
-Customers with custom hostname certificates who want to receive a notification on validation, issuance, renewal, and expiration of certificates. For more details around data formatting for webhooks, refer to the [Cloudflare for SaaS docs](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/webhook-definitions/).
+Customers with custom hostname certificates who want to receive a notification on validation, issuance, renewal, and expiration of certificates. For more details around data formatting for webhooks, refer to the <a href="https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/webhook-definitions/">Cloudflare for SaaS docs</a>.
 
 **Other options / filters**
 
@@ -535,11 +541,13 @@ None.
 
 **Included with**
 
-Purchase of [Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/).
+Purchase of <a href="https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/">Cloudflare for SaaS</a>.
 
 **What should you do if you receive one?**
 
-You only need to take action if you are notified that you have a certificate that failed. You can find the reasons why a certificate is not being issued in [Troubleshooting SSL errors](https://developers.cloudflare.com/ssl/troubleshooting/general-ssl-errors/).
+You only need to take action if you are notified that you have a certificate that failed. You can find the reasons why a certificate is not being issued in <a href="https://developers.cloudflare.com/ssl/troubleshooting/general-ssl-errors/">Troubleshooting SSL errors</a>.
+
+</details>
 
 Refer to [Cloudflare Notifications](https://developers.cloudflare.com/notifications/get-started/) for more information on how to set up an alert.
 

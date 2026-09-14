@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Custom fields
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/custom-fields/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/custom-fields/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The HTTP requests dataset includes most standard log information by default. However, if you need to capture additional request or response headers or cookies, you can use custom fields to tailor the logs to your specific needs
 
@@ -20,8 +20,8 @@ Custom fields are configured per zone and, once set up, are enabled for all Logp
 
 By default:
 
-* **Request headers** are logged as **raw values**.
-* **Response headers** are logged as **transformed values**.
+- **Request headers** are logged as **raw values**.
+- **Response headers** are logged as **transformed values**.
 
 This default behavior can be changed. You can configure either request or response headers to be logged as raw or transformed, depending on your needs - but not both for the same header.
 
@@ -29,7 +29,7 @@ Custom fields can be enabled via API or the Cloudflare dashboard.
 
 Note
 
-Custom fields are only available for the [HTTP requests dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http%5Frequests/).
+Custom fields are only available for the [HTTP requests dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/).
 
 Note
 
@@ -44,7 +44,7 @@ To configure custom fields:
 1. Create a rule to configure the list of custom fields.
 2. Include the `Cookies`, `RequestHeaders`, and/or `ResponseHeaders` fields in your Logpush job.
 
-### 1\. Create a rule to configure the list of custom fields
+### 1. Create a rule to configure the list of custom fields
 
 Create a rule configuring the list of custom fields in the `http_log_custom_fields` phase at the zone level. Set the rule action to `log_custom_field` and the rule expression to `true`.
 
@@ -74,138 +74,161 @@ The `action_parameters` object that you must include in the rule that configures
 
 Ensure that your rule definition complies with the following:
 
-* You must include at least one of the following arrays in the `action_parameters` object: `request_fields`, `transformed_request_fields`, `response_fields`, `raw_response_fields`, and `cookie_fields`.
-* You must enter HTTP request and response header names in lower case.
-* Cookie names are case sensitive — you must enter cookie names with the same capitalization they have in the HTTP request.
-* You must set the rule expression to `true`.
-* You can only log raw or transformed values for either request or response headers but not both for the same header.
+- You must include at least one of the following arrays in the `action_parameters` object: `request_fields`, `transformed_request_fields`, `response_fields`, `raw_response_fields`, and `cookie_fields`.
+- You must enter HTTP request and response header names in lower case.
+- Cookie names are case sensitive — you must enter cookie names with the same capitalization they have in the HTTP request.
+- You must set the rule expression to `true`.
+- You can only log raw or transformed values for either request or response headers but not both for the same header.
 
 Perform the following steps to create the rule:
 
 1. Use the [List zone rulesets](https://developers.cloudflare.com/ruleset-engine/rulesets-api/view/#list-existing-rulesets) operation to check if there is already an [entry point ruleset](https://developers.cloudflare.com/ruleset-engine/about/rulesets/#entry-point-ruleset) for the `http_log_custom_fields` phase at the zone level (you can only have one entry point ruleset per phase):
-```bash
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
-	--request GET \
-	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-```
-If there is an entry point ruleset for the `http_log_custom_fields` phase (that is, a ruleset with `"kind": "zone"` and `"phase": "http_log_custom_fields"`), take note of the ruleset ID.
+
+   *List zone rulesetsbash*
+
+
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
+   	--request GET \
+   	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+   ```
+
+   If there is an entry point ruleset for the `http_log_custom_fields` phase (that is, a ruleset with `"kind": "zone"` and `"phase": "http_log_custom_fields"`), take note of the ruleset ID.
 2. (Optional) If the response did not include a ruleset with `"kind": "zone"` and `"phase": "http_log_custom_fields"`, create the phase entry point ruleset using the [Create a zone ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/create/) operation:
-```bash
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
-	--request POST \
-	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-	--json '{
-		"name": "Zone-level phase entry point",
-		"kind": "zone",
-		"description": "This ruleset configures custom log fields.",
-		"phase": "http_log_custom_fields"
-	}'
-```
-Take note of the ruleset ID included in the response.
+
+   *Create a zone rulesetbash*
+
+
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
+   	--request POST \
+   	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+   	--json '{
+   		"name": "Zone-level phase entry point",
+   		"kind": "zone",
+   		"description": "This ruleset configures custom log fields.",
+   		"phase": "http_log_custom_fields"
+   	}'
+   ```
+
+   Take note of the ruleset ID included in the response.
 3. Use the [Update a zone ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update/) operation to define the rules of the entry point ruleset you found (or created in the previous step), adding a rule with the custom fields configuration. The rules you include in the request will replace all the rules in the ruleset.
-The following example configures custom fields with the names of the HTTP request headers, HTTP response headers, and cookies you wish to include in Logpush logs:
-```bash
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-	--request PUT \
-	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-	--json '{
-		"rules": [
-				{
-						"action": "log_custom_field",
-						"expression": "true",
-						"description": "Set Logpush custom fields for HTTP requests",
-						"action_parameters": {
-								"request_fields": [
-										{
-												"name": "content-type"
-										},
-										{
-												"name": "x-forwarded-for"
-										}
-								],
-								"transformed_request_fields": [
-										{
-												"name": "host"
-										}
-								],
-								"response_fields": [
-										{
-												"name": "server"
-										},
-										{
-												"name": "content-type"
-										}
-								],
-								"raw_response_fields": [
-										{
-												"name": "allow"
-										}
-								],
-								"cookie_fields": [
-										{
-												"name": "__ga"
-										},
-										{
-												"name": "accountNumber"
-										},
-										{
-												"name": "__cfruid"
-										}
-								]
-						}
-				}
-		]
-	}'
-```
-```json
-{
-	"result": {
-		"id": "<RULESET_ID>",
-		"name": "Zone-level phase entry point",
-		"description": "This ruleset configures custom log fields.",
-		"kind": "zone",
-		"version": "2",
-		"rules": [
-			{
-				"id": "<RULE_ID_1>",
-				"version": "1",
-				"action": "log_custom_field",
-				"action_parameters": {
-					"request_fields": [
-						{ "name": "content-type" },
-						{ "name": "x-forwarded-for" }
-					],
-					"transformed_request_fields": [{ "name": "host" }],
-					"response_fields": [
-						{ "name": "server" },
-						{ "name": "content-type" }
-					],
-					"raw_response_fields": [{ "name": "allow" }],
-					"cookie_fields": [
-						{ "name": "__ga" },
-						{ "name": "accountNumber" },
-						{ "name": "__cfruid" }
-					]
-				},
-				"expression": "true",
-				"description": "Set Logpush custom fields for HTTP requests",
-				"last_updated": "2021-11-21T11:02:08.769537Z",
-				"ref": "<RULE_REF_1>",
-				"enabled": true
-			}
-		],
-		"last_updated": "2021-11-21T11:02:08.769537Z",
-		"phase": "http_log_custom_fields"
-	},
-	"success": true,
-	"errors": [],
-	"messages": []
-}
-```
+
+   The following example configures custom fields with the names of the HTTP request headers, HTTP response headers, and cookies you wish to include in Logpush logs:
+
+   *Update a zone rulesetbash*
+
+
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
+   	--request PUT \
+   	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+   	--json '{
+   		"rules": [
+   				{
+   						"action": "log_custom_field",
+   						"expression": "true",
+   						"description": "Set Logpush custom fields for HTTP requests",
+   						"action_parameters": {
+   								"request_fields": [
+   										{
+   												"name": "content-type"
+   										},
+   										{
+   												"name": "x-forwarded-for"
+   										}
+   								],
+   								"transformed_request_fields": [
+   										{
+   												"name": "host"
+   										}
+   								],
+   								"response_fields": [
+   										{
+   												"name": "server"
+   										},
+   										{
+   												"name": "content-type"
+   										}
+   								],
+   								"raw_response_fields": [
+   										{
+   												"name": "allow"
+   										}
+   								],
+   								"cookie_fields": [
+   										{
+   												"name": "__ga"
+   										},
+   										{
+   												"name": "accountNumber"
+   										},
+   										{
+   												"name": "__cfruid"
+   										}
+   								]
+   						}
+   				}
+   		]
+   	}'
+   ```
+
+   ```json
+   {
+   	"result": {
+   		"id": "<RULESET_ID>",
+   		"name": "Zone-level phase entry point",
+   		"description": "This ruleset configures custom log fields.",
+   		"kind": "zone",
+   		"version": "2",
+   		"rules": [
+   			{
+   				"id": "<RULE_ID_1>",
+   				"version": "1",
+   				"action": "log_custom_field",
+   				"action_parameters": {
+   					"request_fields": [
+   						{ "name": "content-type" },
+   						{ "name": "x-forwarded-for" }
+   					],
+   					"transformed_request_fields": [{ "name": "host" }],
+   					"response_fields": [
+   						{ "name": "server" },
+   						{ "name": "content-type" }
+   					],
+   					"raw_response_fields": [{ "name": "allow" }],
+   					"cookie_fields": [
+   						{ "name": "__ga" },
+   						{ "name": "accountNumber" },
+   						{ "name": "__cfruid" }
+   					]
+   				},
+   				"expression": "true",
+   				"description": "Set Logpush custom fields for HTTP requests",
+   				"last_updated": "2021-11-21T11:02:08.769537Z",
+   				"ref": "<RULE_REF_1>",
+   				"enabled": true
+   			}
+   		],
+   		"last_updated": "2021-11-21T11:02:08.769537Z",
+   		"phase": "http_log_custom_fields"
+   	},
+   	"success": true,
+   	"errors": [],
+   	"messages": []
+   }
+   ```
+
+
 
 #### Record duplicate response header values
 
 Some headers sent from the origin — such as `set-cookie` — may have multiple values that you want to capture. You can use the Rulesets API to specify which headers should have all their values logged.
+
+*Update a zone rulesetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
@@ -245,16 +268,27 @@ In this example, all values of the `set-cookie` headers will be logged. They wil
 
 You can use a worker or custom logic at your logpush destination to extract these values.
 
-### 2\. Include the custom fields in your Logpush job
+### 2. Include the custom fields in your Logpush job
 
 Next, include `Cookies`, `RequestHeaders`, `ResponseHeaders`, and/or `ResponseFields`, depending on your custom field configuration, in the list of fields of the `output_options` job parameter when creating or updating a job. The logs will contain the configured custom fields and their values in the request/response.
 
 For example, consider the following request that creates a job that includes custom fields:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*Create Logpush jobbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
@@ -284,11 +318,10 @@ If you are a Cloudflare Access user, as of March 2022 you have to manually add t
 
 ## Enable custom fields via dashboard
 
-1. In the Cloudflare dashboard, go to the **Logpush** page.
-[Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
+1. In the Cloudflare dashboard, go to the **Logpush** page. [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
 2. In the **Custom log fields** section, select **Edit Custom Fields**.
 3. Select **Set new Custom Field**.
-4. From the **Field Type** dropdown, select _Request Header_, _Response Header_ or _Cookies_ and type the **Field Name**.
+4. From the **Field Type** dropdown, select *Request Header*, *Response Header* or *Cookies* and type the **Field Name**.
 5. When you are done, select **Save**.
 
 ## Use case: Logging mTLS certificate headers
@@ -305,9 +338,9 @@ For more information on configuring client certificates, refer to [mTLS authenti
 
 ## Limitations
 
-* Custom fields allow 100 headers per field type — this applies separately to `request_fields`, `transformed_request_fields`, `response_fields`, `raw_response_fields`, and `cookie_fields`.
-* The request header `Range` is currently not supported by Custom Fields.
-* Transformed and raw values for request and response headers are available only via the API and cannot be set through the UI.
+- Custom fields allow 100 headers per field type — this applies separately to `request_fields`, `transformed_request_fields`, `response_fields`, `raw_response_fields`, and `cookie_fields`.
+- The request header `Range` is currently not supported by Custom Fields.
+- Transformed and raw values for request and response headers are available only via the API and cannot be set through the UI.
 
 Was this helpful?
 

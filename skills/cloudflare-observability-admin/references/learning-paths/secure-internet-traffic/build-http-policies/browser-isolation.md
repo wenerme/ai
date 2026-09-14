@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure Browser Isolation
 
-Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/browser-isolation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/browser-isolation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Browser Isolation seamlessly executes active webpage content in a secure isolated browser to protect users from zero-day attacks, malware, and phishing.
 
@@ -30,20 +30,21 @@ As you have begun deploying Cloudflare Zero Trust, you may have started to visua
 
 You can control potential risk and shape user behavior without applying heavy-handed block policies by applying policies to isolate user traffic to applications that match your defined categories. You can then set additional parameters in the policy, such as the ability to restrict copy/paste and upload/download. Users can still access information in the tools -- if not use the tools to a lesser extent -- while you minimize the risk of data loss.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**.
 2. In the **HTTP** tab, select **Add a policy**.
 3. Name the policy.
 4. In **Traffic**, add the following expression:
 
-| Selector | Operator | Value       | Action  |
-| -------- | -------- | ----------- | ------- |
-| Host     | in list  | _Shadow IT_ | Isolate |
+   | Selector | Operator | Value | Action |
+   | --- | --- | --- | --- |
+   | Host | in list | *Shadow IT* | Isolate |
 5. In **Configure policy settings**, turn on the following options:
-
-  * _Disable copy / paste_
-  * _Disable file downloads_
-  * _Disable file uploads_
+   - *Disable copy / paste*
+   - *Disable file downloads*
+   - *Disable file uploads*
 6. Select **Create policy**.
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -83,27 +84,29 @@ A common method for using Browser Isolation to protect against unknown or zero-d
 
 You can accomplish this by creating the following policies:
 
-* Explicit allow policies for all of your known applications and trusted websites using either Cloudflare application definitions or a list
-* Explicit block policies for all security risks, known malicious traffic, and against-acceptable-use intentional denies
-* A policy to isolate all other traffic in this middle
+- Explicit allow policies for all of your known applications and trusted websites using either Cloudflare application definitions or a list
+- Explicit block policies for all security risks, known malicious traffic, and against-acceptable-use intentional denies
+- A policy to isolate all other traffic in this middle
 
 In this context, if some traffic is unknown to your organization, Cloudflare will isolate it by default. Cloudflare will also prevent any malicious code from being executed client side, with additional controls available.
 
-* Allow known applications and websites:
+- Allow known applications and websites:
 
-| Selector | Operator | Value           | Action |
-| -------- | -------- | --------------- | ------ |
-| Domain   | in list  | _Known Domains_ | Allow  |
-* Block security risks:
+  | Selector | Operator | Value | Action |
+  | --- | --- | --- | --- |
+  | Domain | in list | *Known Domains* | Allow |
+- Block security risks:
 
-| Selector            | Operator | Value                | Action |
-| ------------------- | -------- | -------------------- | ------ |
-| Security Categories | in       | _All Security Risks_ | Block  |
-* Isolate all other traffic:
+  | Selector | Operator | Value | Action |
+  | --- | --- | --- | --- |
+  | Security Categories | in | *All Security Risks* | Block |
+- Isolate all other traffic:
 
-| Selector | Operator      | Value | Action  |
-| -------- | ------------- | ----- | ------- |
-| Host     | matches regex | .\*   | Isolate |
+  | Selector | Operator | Value | Action |
+  | --- | --- | --- | --- |
+  | Host | matches regex | `.*` | Isolate |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -129,6 +132,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 	}'
 ```
 
+*Create a Zero Trust Gateway rulebash*
+
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 	--request POST \
@@ -152,6 +157,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 		}
 	}'
 ```
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -183,6 +190,7 @@ Many vendors that may exist within your security framework support URL manipulat
 
 For example, vendors like Zscaler and Proofpoint allow you to prepend links to URLs in a static or dynamic format. You can prepend the clientless isolation link generated for your Cloudflare account to derive additional security benefits for potentially risky clicks. This means that if you have traffic not sent through Cloudflare today (such as through another proxy), you can potentially prepend specific filtered requests with a link to automatically send the traffic to a Cloudflare isolated browser session without an endpoint agent installed.
 
+```
 flowchart TB
     %% Accessibility
     accTitle: Browser Isolation architecture
@@ -201,6 +209,8 @@ flowchart TB
     inline(["Isolated browser"])
     biso--"User's browser goes to </br>customer.cloudflareaccess.com/browser/risky.example.com"-->inline
     end
+
+```
 
 Was this helpful?
 

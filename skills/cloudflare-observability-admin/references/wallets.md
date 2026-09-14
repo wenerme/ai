@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Wallets
 
-Last updated Aug 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/wallets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/wallets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A programmable wallet that gives eligible Cloudflare accounts and AI agents a stable identity and a way to pay for APIs and content.
 
@@ -36,9 +36,9 @@ For the full description of what Cloudflare Wallets, Account Wallets, and Virtua
 
 You can reserve one wallet handle for each Cloudflare account at [cloudflare.pay ↗](https://cloudflare.pay/). A reserved handle:
 
-* Associates the name with your Cloudflare account
-* Publishes a page at `HANDLE.cloudflare.pay` showing only the handle
-* Registers your account to be notified when Cloudflare Wallets becomes available
+- Associates the name with your Cloudflare account
+- Publishes a page at `HANDLE.cloudflare.pay` showing only the handle
+- Registers your account to be notified when Cloudflare Wallets becomes available
 
 A reserved handle does not yet let you send, receive, or hold funds.
 

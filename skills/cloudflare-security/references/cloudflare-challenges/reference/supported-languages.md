@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Supported languages
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-challenges/reference/supported-languages/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-challenges/reference/supported-languages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Multi-language support
 
@@ -20,25 +20,25 @@ Cloudflare Challenges can detect multiple languages and display the localized ch
 
 For language support specific to Challenge Pages, refer to the table below.
 
-| Language                      | Language code(4 letters) | Language code(2 letters) |
-| ----------------------------- | ------------------------ | ------------------------ |
-| Arabic (Egypt)                | ar-eg                    | ar                       |
-| Chinese (Simplified, China)   | zh-cn                    | zh                       |
-| Chinese (Traditional, Taiwan) | zh-tw                    | \--                      |
-| Dutch (Netherlands)           | nl-nl                    | nl                       |
-| English (United States)       | en-us                    | en                       |
-| French (France)               | fr-fr                    | fr                       |
-| German (Germany)              | de-de                    | de                       |
-| Indonesian (Indonesia)        | id-id                    | id                       |
-| Italian (Italy)               | it-it                    | it                       |
-| Japanese (Japan)              | ja-jp                    | ja                       |
-| Korean (Korea)                | ko-kr                    | ko                       |
-| Persian                       | \--                      | fa                       |
-| Polish (Poland)               | pl-pl                    | pl                       |
-| Portuguese (Brazil)           | pt-br                    | pt                       |
-| Russian (Russia)              | ru-ru                    | ru                       |
-| Spanish (Spain)               | es-es                    | es                       |
-| Turkish (Turkey)              | tr-tr                    | tr                       |
+| Language | Language code<br>(4 letters) | Language code<br>(2 letters) |
+| --- | --- | --- |
+| Arabic (Egypt) | `ar-eg` | `ar` |
+| Chinese (Simplified, China) | `zh-cn` | `zh` |
+| Chinese (Traditional, Taiwan) | `zh-tw` | -- |
+| Dutch (Netherlands) | `nl-nl` | `nl` |
+| English (United States) | `en-us` | `en` |
+| French (France) | `fr-fr` | `fr` |
+| German (Germany) | `de-de` | `de` |
+| Indonesian (Indonesia) | `id-id` | `id` |
+| Italian (Italy) | `it-it` | `it` |
+| Japanese (Japan) | `ja-jp` | `ja` |
+| Korean (Korea) | `ko-kr` | `ko` |
+| Persian | -- | `fa` |
+| Polish (Poland) | `pl-pl` | `pl` |
+| Portuguese (Brazil) | `pt-br` | `pt` |
+| Russian (Russia) | `ru-ru` | `ru` |
+| Spanish (Spain) | `es-es` | `es` |
+| Turkish (Turkey) | `tr-tr` | `tr` |
 
 ### Turnstile language support
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configuration file
 
-Last updated Sep 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/configuration-file/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/configuration-file/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -84,7 +84,7 @@ ingress:
 
 You can use wildcards to match traffic to multiple subdomains. For example, if you set the `hostname` key to `*.example.com`, both `alpha.example.com` and `beta.example.com` will route traffic to your origin. `cloudflared` does not support wildcards in the middle of the hostname, such as `test.*.example.com`.
 
-You can also enter regular expressions for the `path` key. For example, if `hostname` is `static.example.com` and `path` is `\.(jpg|png|css|js)$`, matching URLs could include `https://static.example.com/data.js`, `http://static.example.com/images/photo.jpg`, and so on. Cloudflare parses the path regex using the [Go syntax package ↗](https://pkg.go.dev/regexp/syntax).
+You can also enter regular expressions for the `path` key. For example, if `hostname` is `static.example.com` and `path` is `\.(jpg|png|css|js)$`, matching URLs could include `https://static.example.com/data.js`, `http://static.example.com/images/photo.jpg`, and so on. Cloudflare parses the path regex using the [Go `syntax` package ↗](https://pkg.go.dev/regexp/syntax).
 
 Path forwarding
 
@@ -172,7 +172,7 @@ Matched rule #3
 
 ## Update a configuration file
 
-When making changes to the configuration file for a given tunnel, we suggest relying on [cloudflared replicas](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/) to propagate the new configuration with minimal downtime.
+When making changes to the configuration file for a given tunnel, we suggest relying on [`cloudflared` replicas](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/) to propagate the new configuration with minimal downtime.
 
 1. Have a `cloudflared` instance running with the original version of the configuration file.
 2. Start a `cloudflared` replica running with the updated version of the configuration file.

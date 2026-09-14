@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Error 1002
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1002/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1002/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Error 1002: DNS points to Prohibited IP
 
@@ -20,17 +20,16 @@ This error indicates that a Cloudflare DNS record points to a prohibited IP, pre
 
 ### Common causes
 
-* A DNS record in your Cloudflare DNS app points to one of [Cloudflare's IP addresses ↗](https://www.cloudflare.com/ips/).
-* An incorrect target is specified for a CNAME record in your Cloudflare DNS app.
-* Your domain is not on Cloudflare but has a CNAME that refers to a Cloudflare domain.
+- A DNS record in your Cloudflare DNS app points to one of [Cloudflare's IP addresses ↗](https://www.cloudflare.com/ips/).
+- An incorrect target is specified for a CNAME record in your Cloudflare DNS app.
+- Your domain is not on Cloudflare but has a CNAME that refers to a Cloudflare domain.
 
 ### Resolution
 
 Update your Cloudflare A or CNAME record to point to your origin IP address instead of a Cloudflare IP address:
 
 1. Contact your hosting provider to confirm your origin IP address or CNAME record target.
-2. In the Cloudflare dashboard, go to the **Records** page.
-[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+2. In the Cloudflare dashboard, go to the **Records** page. [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 3. Select the domain that generates error 1002.
 4. Select the **DNS** app.
 5. Select **Value** for the A record to update.
@@ -38,8 +37,8 @@ Update your Cloudflare A or CNAME record to point to your origin IP address inst
 
 To ensure your origin web server does not proxy its own requests through Cloudflare, configure your origin webserver to resolve your Cloudflare domain to:
 
-* The internal NAT'd IP address, or
-* The public IP address of the origin web server.
+- The internal NAT'd IP address, or
+- The public IP address of the origin web server.
 
 ## Error 1002: Restricted
 

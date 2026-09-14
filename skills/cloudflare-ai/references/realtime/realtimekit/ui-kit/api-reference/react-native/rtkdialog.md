@@ -12,24 +12,24 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RtkDialog
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react-native/rtkdialog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react-native/rtkdialog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A modal dialog overlay component with optional close button.
 
 ## Properties
 
-| Property         | Type              | Required | Default         | Description                      |    |              |
-| ---------------- | ----------------- | -------- | --------------- | -------------------------------- | -- | ------------ |
-| children         | ReactNode         | ✅        | \-              | Dialog content                   |    |              |
-| meeting          | RealtimeKitClient | ✅        | \-              | The RealtimeKit meeting instance |    |              |
-| onRtkDialogClose | any               | ✅        | \-              | Callback when dialog is closed   |    |              |
-| config           | UIConfig          | ❌        | defaultConfig   | UI configuration object          |    |              |
-| hideCloseButton  | boolean           | ❌        | false           | Hide the close button            |    |              |
-| open             | boolean           | ❌        | \-              | Whether the dialog is visible    |    |              |
-| size             | 'lg' \| 'md'      | 'sm'     | 'xl'            | ❌                                | \- | Size variant |
-| states           | States            | ❌        | \-              | UI state object                  |    |              |
-| iconPack         | IconPack          | ❌        | defaultIconPack | Custom icon pack                 |    |              |
-| t                | RtkI18n           | ❌        | \-              | i18n translation function        |    |              |
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `children` | `ReactNode` | ✅ | - | Dialog content |
+| `meeting` | `RealtimeKitClient` | ✅ | - | The RealtimeKit meeting instance |
+| `onRtkDialogClose` | `any` | ✅ | - | Callback when dialog is closed |
+| `config` | `UIConfig` | ❌ | `defaultConfig` | UI configuration object |
+| `hideCloseButton` | `boolean` | ❌ | `false` | Hide the close button |
+| `open` | `boolean` | ❌ | - | Whether the dialog is visible |
+| `size` | `'lg' \| 'md' \| 'sm' \| 'xl'` | ❌ | - | Size variant |
+| `states` | `States` | ❌ | - | UI state object |
+| `iconPack` | `IconPack` | ❌ | `defaultIconPack` | Custom icon pack |
+| `t` | `RtkI18n` | ❌ | - | i18n translation function |
 
 ## Usage Examples
 

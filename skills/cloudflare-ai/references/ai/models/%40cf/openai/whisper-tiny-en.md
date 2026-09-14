@@ -18,17 +18,17 @@ Beta
 
 Automatic Speech Recognition • OpenAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/openai/whisper-tiny-en/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/openai/whisper-tiny-en/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/openai/whisper-tiny-en`
 
-* Cloudflare-hosted
+- Cloudflare-hosted
 
 Whisper is a pre-trained model for automatic speech recognition (ASR) and speech translation. Trained on 680k hours of labelled data, Whisper models demonstrate a strong ability to generalize to many datasets and domains without the need for fine-tuning. This is the English-only version of the Whisper Tiny model which was trained on the task of speech recognition.
 
-| Model Info |     |
-| ---------- | --- |
-| Beta       | Yes |
+| Model Info | |
+| --- | --- |
+| Beta | Yes |
 
 ## Parameters
 
@@ -48,7 +48,7 @@ word\_count
 
 `number`
 
-▶words\[\]
+▶words\[]
 
 `array`
 
@@ -58,9 +58,9 @@ vtt
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/@cf/openai/whisper-tiny-en/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/openai/whisper-tiny-en/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/@cf/openai/whisper-tiny-en/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/openai/whisper-tiny-en/schema-output.json)
 
 Was this helpful?
 

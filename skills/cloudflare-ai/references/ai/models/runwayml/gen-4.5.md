@@ -16,19 +16,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Video • RunwayML
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/runwayml/gen-4.5/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/runwayml/gen-4.5/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `runwayml/gen-4.5`
 
-* Third-party
+- Third-party
 
 RunwayML's video generation model supporting both text-to-video and image-to-video with customizable duration, aspect ratio, and content moderation controls.
 
-| Model Info        |                                                                                                                    |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Terms and License | [link ↗](https://runwayml.com/terms-of-use)                                                                        |
-| More information  | [link ↗](https://runwayml.com/)                                                                                    |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/runwayml/gen-4.5) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://runwayml.com/terms-of-use) |
+| More information | [link ↗](https://runwayml.com/) |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/runwayml/gen-4.5) |
 
 ## Usage
 
@@ -72,7 +72,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Portrait Video** — Vertical video for social media
+<details>
+
+<summary>**Portrait Video** — Vertical video for social media</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -113,7 +117,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Nature Close-up** — Close-up wildlife shot in 16:9
+</details>
+
+<details>
+
+<summary>**Nature Close-up** — Close-up wildlife shot in 16:9</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -154,7 +164,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Cinematic Scene** — Longer duration cinematic video
+</details>
+
+<details>
+
+<summary>**Cinematic Scene** — Longer duration cinematic video</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -195,7 +211,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Image-to-Video** — Animate an existing image
+</details>
+
+<details>
+
+<summary>**Image-to-Video** — Animate an existing image</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -238,7 +260,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Reproducible Generation** — Use seed for consistent results
+</details>
+
+<details>
+
+<summary>**Reproducible Generation** — Use seed for consistent results</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -280,7 +308,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**With Content Moderation** — Adjust content moderation settings
+</details>
+
+<details>
+
+<summary>**With Content Moderation** — Adjust content moderation settings</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -324,6 +358,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 prompt
@@ -356,9 +392,9 @@ video
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/runwayml/gen-4.5/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/runwayml/gen-4.5/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/runwayml/gen-4.5/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/runwayml/gen-4.5/schema-output.json)
 
 Was this helpful?
 

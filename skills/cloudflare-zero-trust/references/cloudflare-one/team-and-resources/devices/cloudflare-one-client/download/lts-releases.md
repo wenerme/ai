@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Download Cloudflare One Client LTS releases
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/lts-releases/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/lts-releases/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Long-Term Support (LTS) releases are stable releases that are guaranteed to continue receiving security bug fixes for at least 12 months or 90 days after the next LTS release, whichever is greater.
 
@@ -24,14 +24,14 @@ No LTS releases are currently available, as Cloudflare is still rolling out our 
 
 ## Windows
 
-| **OS version**             | Windows 10 LTSC, Windows 11, Windows 365 Cloud PC running Windows 11 |
-| -------------------------- | -------------------------------------------------------------------- |
-| **Processor**              | AMD64 / x86-64 or ARM64 / AArch64                                    |
-| **.NET Framework version** | 4.7.2 or later                                                       |
-| **HD space**               | 184 MB                                                               |
-| **Memory**                 | 3 MB                                                                 |
-| **Network interface type** | Wi-Fi or LAN                                                         |
-| **MTU**                    | 1381 bytes recommended [1](#user-content-fn-1)                       |
+| **OS version** | Windows 10 LTSC, Windows 11, Windows 365 Cloud PC running Windows 11 |
+| --- | --- |
+| **Processor** | AMD64 / x86-64 or ARM64 / AArch64 |
+| **.NET Framework version** | 4.7.2 or later |
+| **HD space** | 184 MB |
+| **Memory** | 3 MB |
+| **Network interface type** | Wi-Fi or LAN |
+| **MTU** | 1381 bytes recommended <sup>[1](#user-content-fn-1)</sup> |
 
 ## Footnotes
 
@@ -39,13 +39,13 @@ No LTS releases are currently available, as Cloudflare is still rolling out our 
 
 ## macOS
 
-| **OS version**             | Sonoma 14.0+, Sequoia 15.1+ (15.0.x is not supported), Tahoe 26.0+ |
-| -------------------------- | ------------------------------------------------------------------ |
-| **Processor**              | Intel or M series                                                  |
-| **HD space**               | 75 MB                                                              |
-| **Memory**                 | 35 MB                                                              |
-| **Network interface type** | Wi-Fi or LAN                                                       |
-| **MTU**                    | 1381 bytes recommended [1](#user-content-fn-1)                     |
+| **OS version** | Sonoma 14.0+, Sequoia 15.1+ (15.0.x is not supported), Tahoe 26.0+ |
+| --- | --- |
+| **Processor** | Intel or M series |
+| **HD space** | 75 MB |
+| **Memory** | 35 MB |
+| **Network interface type** | Wi-Fi or LAN |
+| **MTU** | 1381 bytes recommended <sup>[1](#user-content-fn-1)</sup> |
 
 ## Footnotes
 
@@ -53,17 +53,17 @@ No LTS releases are currently available, as Cloudflare is still rolling out our 
 
 ## Linux
 
-| **OS version**             | RHEL 9 [1](#user-content-fn-1), RHEL 10, Debian 12, Debian 13, Fedora 43, Fedora 44, Ubuntu 22.04 LTS, Ubuntu 24.04 LTS, Ubuntu 26.04 LTS |
-| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **Processor**              | AMD64 / x86-64 or ARM64 / AArch64                                                                                                         |
-| **HD space**               | 75 MB                                                                                                                                     |
-| **Memory**                 | 35 MB                                                                                                                                     |
-| **Network interface type** | Wi-Fi or LAN                                                                                                                              |
-| **MTU**                    | 1381 bytes recommended [2](#user-content-fn-2)                                                                                            |
+| **OS version** | RHEL 9 <sup>[1](#user-content-fn-1)</sup>, RHEL 10, Debian 12, Debian 13, Fedora 43, Fedora 44, Ubuntu 22.04 LTS, Ubuntu 24.04 LTS, Ubuntu 26.04 LTS |
+| --- | --- |
+| **Processor** | AMD64 / x86-64 or ARM64 / AArch64 |
+| **HD space** | 75 MB |
+| **Memory** | 35 MB |
+| **Network interface type** | Wi-Fi or LAN |
+| **MTU** | 1381 bytes recommended <sup>[2](#user-content-fn-2)</sup> |
 
 ## Footnotes
 
-1. On RHEL 9 and later, enable the [Extra Packages for Enterprise Linux (EPEL) ↗](https://docs.fedoraproject.org/en-US/epel/) repository (`sudo dnf install epel-release`) before installing `cloudflare-warp`. EPEL provides dependencies required by the client UI. [↩](#user-content-fnref-1)
+1. On RHEL 9 and later, enable the [Extra Packages for Enterprise Linux (EPEL) ↗](https://docs.fedoraproject.org/en-US/epel/) repository ( `sudo dnf install epel-release`) before installing `cloudflare-warp`. EPEL provides dependencies required by the client UI. [↩](#user-content-fnref-1)
 2. Minimum 1281 bytes with [Path MTU Discovery](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/) [↩](#user-content-fnref-2)
 
 Was this helpful?

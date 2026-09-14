@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # OpenAI GPT function calling with JavaScript and Cloudflare Workers
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/tutorials/openai-function-calls-workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/openai-function-calls-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will build a project that leverages [OpenAI's function calling ↗](https://platform.openai.com/docs/guides/function-calling) feature, available in OpenAI's latest Chat Completions API models.
 
@@ -20,11 +20,11 @@ The function calling feature allows the AI model to intelligently decide when to
 
 ## What you will learn
 
-* How to use OpenAI's function calling feature.
-* Integrating OpenAI's API in a Cloudflare Worker.
-* Fetching and processing website content using Cheerio.
-* Handling API responses and function calls in JavaScript.
-* Storing API keys as secrets with Wrangler.
+- How to use OpenAI's function calling feature.
+- Integrating OpenAI's API in a Cloudflare Worker.
+- Fetching and processing website content using Cheerio.
+- Handling API responses and function calls in JavaScript.
+- Storing API keys as secrets with Wrangler.
 
 ---
 
@@ -32,7 +32,7 @@ The function calling feature allows the AI model to intelligently decide when to
 
 All of the tutorials assume you have already completed the [Get started guide](https://developers.cloudflare.com/workers/get-started/guide/), which gets you set up with a Cloudflare Workers account, [C3 ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare), and [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
 
-## 1\. Create a new Worker project
+## 1. Create a new Worker project
 
 Create a Worker project in the command line:
 
@@ -52,11 +52,11 @@ pnpm create cloudflare@latest openai-function-calling-workers
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `JavaScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `JavaScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 Go to your new `openai-function-calling-workers` Worker project:
 
@@ -68,7 +68,7 @@ Inside of your new `openai-function-calling-workers` directory, find the `src/in
 
 You will also need an OpenAI account and API key for this tutorial. If you do not have one, [create a new OpenAI account ↗](https://platform.openai.com/signup) and [create an API key ↗](https://platform.openai.com/account/api-keys) to continue with this tutorial. Make sure to store you API key somewhere safe so you can use it later.
 
-## 2\. Make a request to OpenAI
+## 2. Make a request to OpenAI
 
 With your Worker project created, make your first request to OpenAI. You will use the OpenAI node library to interact with the OpenAI API. In this project, you will also use the Cheerio library to handle processing the HTML content of websites
 
@@ -122,7 +122,7 @@ async fetch(request, env, ctx) {
 },
 ```
 
-Use [wrangler secret put](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret-put) to set `OPENAI_API_KEY`. This [secret's](https://developers.cloudflare.com/workers/configuration/secrets/) value is the API key you created earlier in the OpenAI dashboard:
+Use [`wrangler secret put`](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret-put) to set `OPENAI_API_KEY`. This [secret's](https://developers.cloudflare.com/workers/configuration/secrets/) value is the API key you created earlier in the OpenAI dashboard:
 
 ```sh
 npx wrangler secret put <OPENAI_API_KEY>
@@ -191,15 +191,15 @@ export default {
 
 Review the arguments you are passing to OpenAI:
 
-* **model**: This is the model you want OpenAI to use for your request. In this case, you are using `gpt-4o-mini`.
-* **messages**: This is an array containing all messages that are part of the conversation. Initially you provide a message from the user, and we later add the response from the model. The content of the user message is either the `message` query parameter from the request URL or the default "What's in the news today?".
-* **tools**: An array containing the actions available to the AI model. In this example you only have one tool, `read_website_content`, which reads the content on a given website.
-  * **name**: The name of your function. In this case, it is `read_website_content`.
-  * **description**: A short description that lets the model know the purpose of the function. This is optional but helps the model know when to select the tool.
-  * **parameters**: A JSON Schema object which describes the function. In this case we request a response containing an object with the required property `url`.
-* **tool\_choice**: This argument is technically optional as `auto` is the default. This argument indicates that either a function call or a normal message response can be returned by OpenAI.
+- **model**: This is the model you want OpenAI to use for your request. In this case, you are using `gpt-4o-mini`.
+- **messages**: This is an array containing all messages that are part of the conversation. Initially you provide a message from the user, and we later add the response from the model. The content of the user message is either the `message` query parameter from the request URL or the default "What's in the news today?".
+- **tools**: An array containing the actions available to the AI model. In this example you only have one tool, `read_website_content`, which reads the content on a given website.
+  - **name**: The name of your function. In this case, it is `read_website_content`.
+  - **description**: A short description that lets the model know the purpose of the function. This is optional but helps the model know when to select the tool.
+  - **parameters**: A JSON Schema object which describes the function. In this case we request a response containing an object with the required property `url`.
+- **tool\_choice**: This argument is technically optional as `auto` is the default. This argument indicates that either a function call or a normal message response can be returned by OpenAI.
 
-## 3\. Building your `read_website_content()` function
+## 3. Building your `read_website_content()` function
 
 You will now need to define the `read_website_content` function, which is referenced in the `tools` array. The `read_website_content` function fetches the content of a given URL and extracts the text from `<p>` tags using the `cheerio` library:
 
@@ -220,9 +220,9 @@ async function read_website_content(url) {
 }
 ```
 
-In this function, you take the URL that you received from OpenAI and use JavaScript's [Fetch API ↗](https://developer.mozilla.org/en-US/docs/Web/API/Fetch%5FAPI/Using%5FFetch) to pull the content of the website and extract the paragraph text. Now we need to determine when to call this function.
+In this function, you take the URL that you received from OpenAI and use JavaScript's [`Fetch API` ↗](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) to pull the content of the website and extract the paragraph text. Now we need to determine when to call this function.
 
-## 4\. Process the Assistant's Messages
+## 4. Process the Assistant's Messages
 
 Next, we need to process the response from the OpenAI API to check if it includes any function calls. If a function call is present, you should execute the corresponding function in your Worker. Note that the assistant may request multiple function calls.
 
@@ -263,7 +263,7 @@ The `secondChatCompletion` is needed to provide a response informed by the data 
 
 Test your code by running `npx wrangler dev` and open the provided url in your browser. This will now show you OpenAI’s response using real-time information from the retrieved web data.
 
-## 5\. Deploy your Worker application
+## 5. Deploy your Worker application
 
 To deploy your application, run the `npx wrangler deploy` command to deploy your Worker application:
 
@@ -273,7 +273,7 @@ npx wrangler deploy
 
 You can now preview your Worker at `<YOUR_WORKER>.<YOUR_SUBDOMAIN>.workers.dev`. Going to this URL will display the response from OpenAI. Optionally, add the `message` URL parameter to write a custom message: for example, `https://<YOUR_WORKER>.<YOUR_SUBDOMAIN>.workers.dev/?message=What is the weather in NYC today?`.
 
-## 6\. Next steps
+## 6. Next steps
 
 Reference the [finished code for this tutorial on GitHub ↗](https://github.com/LoganGrasby/Cloudflare-OpenAI-Functions-Demo/blob/main/src/worker.js).
 
@@ -290,5 +290,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/openai-function-calls-workers/#page","headline":"OpenAI GPT function calling with JavaScript and Cloudflare Workers · Cloudflare Workers docs","description":"Build a project that leverages OpenAI's function calling feature, available in OpenAI's latest Chat Completions API models.","url":"https://developers.cloudflare.com/workers/tutorials/openai-function-calls-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","JavaScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/openai-function-calls-workers/#page","headline":"OpenAI GPT function calling with JavaScript and Cloudflare Workers · Cloudflare Workers docs","description":"Build a project that leverages OpenAI's function calling feature, available in OpenAI's latest Chat Completions API models.","url":"https://developers.cloudflare.com/workers/tutorials/openai-function-calls-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","JavaScript"]}
 ```

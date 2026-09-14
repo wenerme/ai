@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Monitors and health checks
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/concepts/health-checks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/concepts/health-checks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 There's more to a load balancer than just distributing traffic, however.
 
@@ -20,6 +20,7 @@ After all, what good would it be if your load balancer and pools send a request 
 
 That's where another part of the load balancing equation comes in: monitors and health checks.
 
+```
     flowchart RL
       accTitle: Load balancing monitor flow
       accDescr: Monitors issue health monitor requests, which validate the current status of servers within each pool.
@@ -29,6 +30,8 @@ That's where another part of the load balancing equation comes in: monitors and 
       Endpoint1((Endpoint 1))
       Endpoint2((Endpoint 2))
       end
+
+```
 
 ## How it works
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Schema learning
 
-Last updated Aug 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -22,8 +22,7 @@ Schema Learning observes qualifying traffic for selected operations. It learns e
 
 ## Start profile learning
 
-1. In the Cloudflare dashboard, go to **Web Assets** \> **Operations**.
-[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+1. In the Cloudflare dashboard, go to **Web Assets** > **Operations**. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Open the operation overflow menu and select **Learn profile**.
 3. After the profile becomes available, select **View details**.
 4. Review the learned schema under **Security overview**.
@@ -46,8 +45,7 @@ For supported request components, constraints, and limitations, refer to [Schema
 
 Export creates a separate OpenAPI file from the current learned profile. It does not change the profile or its detection.
 
-1. In the Cloudflare dashboard, go to the **Web Assets** page.
-[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+1. In the Cloudflare dashboard, go to the **Web Assets** page. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Go to the **Operations** tab.
 3. Select **Export schema** and choose a hostname to export.
 4. Select whether to include learned parameters and rate limit recommendations.
@@ -63,9 +61,9 @@ Exported schemas include the listed hostname in the servers section. They also i
 
 For operations that receive sufficient traffic, exported schemas also include:
 
-* Detected path variables and formats
-* Detected query parameters and formats
-* Detected `POST`, `PUT`, and `PATCH` body variable names and formats for `application/json` content types
+- Detected path variables and formats
+- Detected query parameters and formats
+- Detected `POST`, `PUT`, and `PATCH` body variable names and formats for `application/json` content types
 
 Exported schemas can optionally include API Shield rate limit recommendations.
 

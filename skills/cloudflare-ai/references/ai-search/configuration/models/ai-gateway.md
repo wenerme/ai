@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # AI Gateway
 
-Last updated Jul 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/configuration/models/ai-gateway/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/models/ai-gateway/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Every AI Search instance is connected to a Cloudflare [AI Gateway](https://developers.cloudflare.com/ai-gateway/). The model calls that AI Search makes for embedding, query rewriting, reranking, and response generation run through this gateway. By configuring the connected gateway, you can observe and control those model calls.
 
@@ -22,8 +22,8 @@ To choose or change which gateway your instance uses, see [Models](https://devel
 
 AI Gateway records the model requests that run through it, so you can see what your instance is doing.
 
-* **[Analytics](https://developers.cloudflare.com/ai-gateway/observability/analytics/):** Track the number of requests, tokens used, cost, latency, and errors across your model calls.
-* **[Logs](https://developers.cloudflare.com/ai-gateway/observability/logging/):** Inspect individual requests and responses, including the effective [system prompt](https://developers.cloudflare.com/ai-search/configuration/retrieval/system-prompt/), rewritten queries, and generated answers.
+- **[Analytics](https://developers.cloudflare.com/ai-gateway/observability/analytics/):** Track the number of requests, tokens used, cost, latency, and errors across your model calls.
+- **[Logs](https://developers.cloudflare.com/ai-gateway/observability/logging/):** Inspect individual requests and responses, including the effective [system prompt](https://developers.cloudflare.com/ai-search/configuration/retrieval/system-prompt/), rewritten queries, and generated answers.
 
 ## Use models from other providers
 

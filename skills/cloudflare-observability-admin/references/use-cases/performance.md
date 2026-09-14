@@ -12,22 +12,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Performance
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/performance/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/performance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Accelerate websites and applications with Cloudflare CDN (Content Delivery Network) caching, image optimization, smart routing, load balancing, and web analytics.
 
-* [Cache content globally](https://developers.cloudflare.com/use-cases/performance/caching/)
-* [Optimize images](https://developers.cloudflare.com/use-cases/performance/image-optimization/)
-* [Accelerate connections](https://developers.cloudflare.com/use-cases/performance/connections/)
-* [Optimize web assets](https://developers.cloudflare.com/use-cases/performance/web-assets/)
-* [Balance traffic across origins](https://developers.cloudflare.com/use-cases/performance/load-balancing/)
-* [Monitor performance](https://developers.cloudflare.com/use-cases/performance/monitoring/)
+- [Cache content globally](https://developers.cloudflare.com/use-cases/performance/caching/)
+- [Optimize images](https://developers.cloudflare.com/use-cases/performance/image-optimization/)
+- [Accelerate connections](https://developers.cloudflare.com/use-cases/performance/connections/)
+- [Optimize web assets](https://developers.cloudflare.com/use-cases/performance/web-assets/)
+- [Balance traffic across origins](https://developers.cloudflare.com/use-cases/performance/load-balancing/)
+- [Monitor performance](https://developers.cloudflare.com/use-cases/performance/monitoring/)
 
 ## Prerequisites
 
-* A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up).
-* A domain [added to Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) with DNS records proxied through Cloudflare's network. Caching, image optimization, speed optimizations, Argo Smart Routing, and Load Balancing all operate at the edge and require traffic to pass through Cloudflare.
-* Web Analytics can be added to any site without a proxied domain by [adding the JavaScript snippet](https://developers.cloudflare.com/web-analytics/get-started/) to your pages directly.
+- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up).
+- A domain [added to Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) with DNS records proxied through Cloudflare's network. Caching, image optimization, speed optimizations, Argo Smart Routing, and Load Balancing all operate at the edge and require traffic to pass through Cloudflare.
+- Web Analytics can be added to any site without a proxied domain by [adding the JavaScript snippet](https://developers.cloudflare.com/web-analytics/get-started/) to your pages directly.
 
 ---
 

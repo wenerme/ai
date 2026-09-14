@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Serving tailored content with Cloudflare
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/advanced-configuration/serve-tailored-content/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/advanced-configuration/serve-tailored-content/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Content negotiation is the practice of serving different versions of a resource from a single URL, tailoring the experience to the end user. Common examples include delivering content in a specific language (`Accept-Language`), optimizing for a device (`User-Agent`), or serving modern image formats (`Accept`).
 
@@ -28,20 +28,17 @@ The [Transform Rule](https://developers.cloudflare.com/rules/transform/) method 
 
 In this example, you run an e-commerce site and want to display prices in the local currency based on the visitor's country.
 
-1. In the Cloudflare dashboard, go to the Rules **Overview** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
+1. In the Cloudflare dashboard, go to the Rules **Overview** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
 2. Select **Create rule** and select the option **URL Rewrite Rule**.
 3. Enter a descriptive name, such as `Vary by Country - Canada`.
 4. In **If incoming requests match...**, select **Custom filter expression**.
 5. Under **When incoming requests match...**, create the following expression:
-
-  * **Field:** `Country`
-  * **Operator:** `equals`
-  * **Value:** `Canada`
+   - **Field:** `Country`
+   - **Operator:** `equals`
+   - **Value:** `Canada`
 6. Under **Then...**
-
-  * for **Path**, select **Preserve**.
-  * for **Query**, select **Rewrite to**: **Dynamic** `loc=ca`
+   - for **Path**, select **Preserve**.
+   - for **Query**, select **Rewrite to**: **Dynamic** `loc=ca`
 7. Select **Save**.
 
 Now, requests from Canada to `/products/item` will be transformed to `/products/item?loc=ca` before reaching your origin or the cache, creating a distinct cache entry.
@@ -58,15 +55,26 @@ Free, Pro, Business, and Enterprise plans
 
 ### Enable Vary for Images
 
-To enable this feature, create a _variants rule_ using the API. This rule maps file extensions to the image formats your origin can serve.
+To enable this feature, create a *variants rule* using the API. This rule maps file extensions to the image formats your origin can serve.
 
 For example, the following API call tells Cloudflare that for `.jpeg` and `.jpg` files, your origin can serve `image/webp` and `image/avif` variants:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone Settings Write`
-* `Zone Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone Settings Write</code>
+- <code>Zone Write</code>
+
+</details>
+
+*Change variants settingbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \
@@ -100,8 +108,7 @@ Pro, Business, and Enterprise plans
 
 In this example, you run an A/B test controlled by a cookie named `ab-test` (with values `group-a` or `group-b`). You want to cache a different version of the page for each group.
 
-1. In the Cloudflare dashboard, go to the **Snippets** page.
-[Go to **Snippets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/snippets)
+1. In the Cloudflare dashboard, go to the **Snippets** page. [Go to **Snippets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/snippets)
 2. Select **Create new Snippet** and name it `ab-test-caching`.
 3. Paste the following code. It modifies the cache key based on the `ab-test` cookie and caches the response for 30 days.
 
@@ -132,8 +139,8 @@ export default {
 };
 ```
 
-1. Save and deploy the Snippet.
-2. From the Snippets dashboard, select **Attach to routes** to assign the Snippet.
+4. Save and deploy the Snippet.
+5. From the Snippets dashboard, select **Attach to routes** to assign the Snippet.
 
 Availability
 
@@ -145,27 +152,25 @@ If your account is on an Enterprise plan, the [Custom Cache Keys](https://develo
 
 Custom Cache Key options:
 
-* Cache by device type
-* Query string option `No query string parameters except`
-* Include headers and values
-* Include cookie names and values
-* User: Device type, Country, Language
+- Cache by device type
+- Query string option `No query string parameters except`
+- Include headers and values
+- Include cookie names and values
+- User: Device type, Country, Language
 
 ### Example: Same URL, different content
 
 If your origin serves different content types (for example, `application/json` vs. `text/html`) at the same URL based on the `Accept` header, use a custom cache key to cache them separately.
 
-1. In the Cloudflare dashboard, go to the **Cache Rules** page.
-[Go to **Cache Rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules)
+1. In the Cloudflare dashboard, go to the **Cache Rules** page. [Go to **Cache Rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules)
 2. Select **Create rule**.
 3. Enter rule name, such as `Vary by Accept Header`.
 4. Set the condition for the rule to apply (for example, a specific hostname or path).
 5. Under **Cache key**, select **Use custom key**.
 6. Select **Add new**.
-
-  * **Type**: `Header`
-  * **Name**: `Accept`
-  * **Value**: Add each `value`, or leave empty for all.
+   - **Type**: `Header`
+   - **Name**: `Accept`
+   - **Value**: Add each `value`, or leave empty for all.
 7. Select **Deploy**.
 
 This configuration creates separate cache entries based on the `Accept` header value, respecting your API's content negotiation.
@@ -256,18 +261,15 @@ A common challenge is caching content from frameworks like Next.js, which uses a
 
 The simplest solution is to create a [Transform Rule](https://developers.cloudflare.com/rules/transform/) that checks for the `RSC` header and adds a unique query parameter on the request, creating two distinct cacheable URLs: `/page` (for HTML) and `/page?_rsc=1` (for the RSC payload).
 
-1. In the Cloudflare dashboard, go to the Rules **Overview** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
+1. In the Cloudflare dashboard, go to the Rules **Overview** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
 2. Select **Create rule** and select the option **URL Rewrite Rule**.
 3. Enter a name, such as `Vary by RSC Header`.
 4. In **If incoming requests match**, select **Custom filter expression**.
 5. Under **When incoming requests match**, manually edit the expression so that it checks for the presence of the `RSC` header:
-
-  * `has_key(http.request.headers, "rsc")`
+   - `has_key(http.request.headers, "rsc")`
 6. Under **Then**:
-
-  * For **Path**, select **Preserve**.
-  * For **Query**, select **Rewrite to**, select **Static**: `_rsc=1`.
+   - For **Path**, select **Preserve**.
+   - For **Query**, select **Rewrite to**, select **Static**: `_rsc=1`.
 7. Select **Save**.
 
 ### Method 2: Snippets or Custom Cache Keys
@@ -276,8 +278,8 @@ Alternatively, use [Snippets](https://developers.cloudflare.com/rules/snippets/)
 
 Availability
 
-* Snippets: Pro, Business, Enterprise
-* Custom Cache Keys: Enterprise only
+- Snippets: Pro, Business, Enterprise
+- Custom Cache Keys: Enterprise only
 
 Was this helpful?
 

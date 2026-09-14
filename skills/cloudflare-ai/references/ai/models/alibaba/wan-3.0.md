@@ -16,19 +16,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Video • Alibaba
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/alibaba/wan-3.0/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/alibaba/wan-3.0/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `alibaba/wan-3.0`
 
-* Third-party
+- Third-party
 
 Alibaba's Wan 3.0 text-to-video model. Generates cinematic videos from text prompts with adaptive aspect ratio, 480P, 720P, or 1080P resolution, and configurable duration.
 
-| Model Info        |                                                                                                                   |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                              |
-| More information  | [link ↗](https://www.alibabacloud.com/help/en/model-studio/models)                                                |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/wan-3.0) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal) |
+| More information | [link ↗](https://www.alibabacloud.com/help/en/model-studio/models) |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/wan-3.0) |
 
 ## Usage
 
@@ -97,9 +97,9 @@ video
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/alibaba/wan-3.0/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/alibaba/wan-3.0/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/alibaba/wan-3.0/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/alibaba/wan-3.0/schema-output.json)
 
 Was this helpful?
 

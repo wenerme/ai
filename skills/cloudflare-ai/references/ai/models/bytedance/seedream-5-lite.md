@@ -16,18 +16,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Image • ByteDance
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/bytedance/seedream-5-lite/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/bytedance/seedream-5-lite/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `bytedance/seedream-5-lite`
 
-* Third-party
+- Third-party
 
 Seedream 5 Lite is a lighter, faster version of the Seedream 5 family with multi-reference and batch generation support.
 
-| Model Info       |                                                                                                                             |
-| ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| More information | [link ↗](https://seed.bytedance.com/en/seedream5%5F0%5Flite)                                                                |
-| Pricing          | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/bytedance/seedream-5-lite) |
+| Model Info | |
+| --- | --- |
+| More information | [link ↗](https://seed.bytedance.com/en/seedream5_0_lite) |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/bytedance/seedream-5-lite) |
 
 ## Usage
 
@@ -69,7 +69,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**High Resolution PNG** — 3K quality with PNG output
+<details>
+
+<summary>**High Resolution PNG** — 3K quality with PNG output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -116,7 +120,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Portrait Photo** — JPEG output for photographs
+</details>
+
+<details>
+
+<summary>**Portrait Photo** — JPEG output for photographs</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -163,7 +173,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Sequential Comic** — Generate sequential comic panels
+</details>
+
+<details>
+
+<summary>**Sequential Comic** — Generate sequential comic panels</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -210,7 +226,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Image Variation** — Create variation from reference
+</details>
+
+<details>
+
+<summary>**Image Variation** — Create variation from reference</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -260,13 +282,15 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 prompt
 
 `string`required
 
-▶image\_input\[\]
+▶image\_input\[]
 
 `array`maxItems: 14format: uri
 
@@ -290,15 +314,15 @@ output\_format
 
 `string`enum: png, jpeg
 
-▶images\[\]
+▶images\[]
 
 `array`minItems: 1format: uri
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/bytedance/seedream-5-lite/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/bytedance/seedream-5-lite/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/bytedance/seedream-5-lite/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/bytedance/seedream-5-lite/schema-output.json)
 
 Was this helpful?
 

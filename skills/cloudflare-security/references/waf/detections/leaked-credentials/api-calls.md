@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Common API calls
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/leaked-credentials/api-calls/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/leaked-credentials/api-calls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following examples address common scenarios of using the Cloudflare API to manage and configure leaked credentials detection.
 
@@ -26,11 +26,22 @@ The following API examples cover basic operations such as enabling and disabling
 
 To turn on leaked credentials detection, use a `POST` request similar to the following:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone WAF Write`
-* `Account WAF Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone WAF Write</code>
+- <code>Account WAF Write</code>
+
+</details>
+
+*Update the Leaked Credential Checks status for a zone.bash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks" \
@@ -45,11 +56,22 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-chec
 
 To turn off leaked credentials detection, use a `POST` request similar to the following:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone WAF Write`
-* `Account WAF Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone WAF Write</code>
+- <code>Account WAF Write</code>
+
+</details>
+
+*Update the Leaked Credential Checks status for a zone.bash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks" \
@@ -64,13 +86,24 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-chec
 
 To obtain the current status of the leaked credentials detection, use a `GET` request similar to the following:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone WAF Write`
-* `Zone WAF Read`
-* `Account WAF Write`
-* `Account WAF Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone WAF Write</code>
+- <code>Zone WAF Read</code>
+- <code>Account WAF Write</code>
+- <code>Account WAF Read</code>
+
+</details>
+
+*Get the Leaked Credential Checks status for a zone.bash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks" \
@@ -97,11 +130,22 @@ The following API examples cover operations on [custom detection locations](http
 
 To add a custom detection location, use a `POST` request similar to the following:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone WAF Write`
-* `Account WAF Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone WAF Write</code>
+- <code>Account WAF Write</code>
+
+</details>
+
+*Create a custom detection location for a zone.bash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks/detections" \
@@ -117,13 +161,24 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-chec
 
 To get a list of existing custom detection locations, use a `GET` request similar to the following:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone WAF Write`
-* `Zone WAF Read`
-* `Account WAF Write`
-* `Account WAF Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone WAF Write</code>
+- <code>Zone WAF Read</code>
+- <code>Account WAF Write</code>
+- <code>Account WAF Read</code>
+
+</details>
+
+*List the custom detection locations of a zone.bash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks/detections" \
@@ -151,11 +206,22 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-chec
 
 To delete a custom detection location, use a `DELETE` request similar to the following:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone WAF Write`
-* `Account WAF Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone WAF Write</code>
+- <code>Account WAF Write</code>
+
+</details>
+
+*Delete a custom detection location from a zone.bash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks/detections/$DETECTION_ID" \

@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.waf.signature.request.confidence
 
-`cf.waf.signature.request.confidence` `Array<String>`
+`cf.waf.signature.request.confidence``Array<String>`
 
 An array of confidence values associated with attack signatures that matched the request.
 
@@ -29,7 +29,7 @@ any(cf.waf.signature.request.confidence[*] eq "high")
 ```
 
 Categories:
-* Request
+- Request
 
 Was this helpful?
 

@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Reference
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/reference/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [Consistency model](https://developers.cloudflare.com/r2/reference/consistency/)
-* [Data location](https://developers.cloudflare.com/r2/reference/data-location/)
-* [Data security](https://developers.cloudflare.com/r2/reference/data-security/)
-* [Durability](https://developers.cloudflare.com/r2/reference/durability/)
-* [Unicode interoperability](https://developers.cloudflare.com/r2/reference/unicode-interoperability/)
-* [Wrangler commands](https://developers.cloudflare.com/r2/reference/wrangler-commands/)
-* [Partners](https://developers.cloudflare.com/r2/reference/partners/)
+- [Consistency model](https://developers.cloudflare.com/r2/reference/consistency/)
+- [Data location](https://developers.cloudflare.com/r2/reference/data-location/)
+- [Data security](https://developers.cloudflare.com/r2/reference/data-security/)
+- [Durability](https://developers.cloudflare.com/r2/reference/durability/)
+- [Unicode interoperability](https://developers.cloudflare.com/r2/reference/unicode-interoperability/)
+- [Wrangler commands](https://developers.cloudflare.com/r2/reference/wrangler-commands/)
+- [Partners](https://developers.cloudflare.com/r2/reference/partners/)
 
 Was this helpful?
 

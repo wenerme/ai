@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Agents as tools
 
-Last updated Jun 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agents as tools let one chat agent dispatch another chat-capable sub-agent as part of its work. The child is a real sub-agent with its own Durable Object storage, messages, tools, resumable stream, and drill-in URL. The parent keeps a small run registry so clients can render the child timeline, replay it after refresh, and clean it up later.
 
@@ -343,10 +343,10 @@ export class Importer extends Think<Env> {
 
 Key behaviors:
 
-* **Durable completion.** Delivery survives eviction and deploys: a warm fast path delivers with low latency while the isolate is alive, and a self-scheduling reconcile backbone finalizes anything the fast path missed. Delivery is exactly-once on the happy path; under a crash it is at-least-once, so `onFinish` handlers must be idempotent.
-* **Give-up vs. finish are independent.** A budget give-up is delivered as `status: "interrupted"`, `reason: "budget-exceeded"`. Because `interrupted` is soft, a child that completes after the give-up still re-fires `onFinish` with the real result — a premature give-up never hides a late completion.
-* **Bounded.** Every detached run has an absolute `maxBudgetMs` ceiling (per-run, or the `detachedMaxBudgetMs` static option; default 24h). On expiry the parent gives up watching and tears the child down so an abandoned run cannot hold a `maxConcurrentAgentTools` slot forever.
-* **No inherited signal.** A detached run must outlive the spawning turn, so it does **not** inherit `options.signal`. Cancel it explicitly:
+- **Durable completion.** Delivery survives eviction and deploys: a warm fast path delivers with low latency while the isolate is alive, and a self-scheduling reconcile backbone finalizes anything the fast path missed. Delivery is exactly-once on the happy path; under a crash it is at-least-once, so `onFinish` handlers must be idempotent.
+- **Give-up vs. finish are independent.** A budget give-up is delivered as `status: "interrupted"`, `reason: "budget-exceeded"`. Because `interrupted` is soft, a child that completes after the give-up still re-fires `onFinish` with the real result — a premature give-up never hides a late completion.
+- **Bounded.** Every detached run has an absolute `maxBudgetMs` ceiling (per-run, or the `detachedMaxBudgetMs` static option; default 24h). On expiry the parent gives up watching and tears the child down so an abandoned run cannot hold a `maxConcurrentAgentTools` slot forever.
+- **No inherited signal.** A detached run must outlive the spawning turn, so it does **not** inherit `options.signal`. Cancel it explicitly:
 
 ```js
 await this.cancelAgentTool(runId); // idempotent; delivers onFinish "aborted"
@@ -358,7 +358,7 @@ await this.cancelAgentTool(runId); // idempotent; delivers onFinish "aborted"
 
 ### Notify the chat on completion (Think / AIChatAgent)
 
-On a chat agent (`@cloudflare/think` or `AIChatAgent`) you usually want the model to _react_ to a finished background run. Instead of wiring `onFinish` by hand, pass `notify: true` — when the run finishes the agent injects a message into the chat (idempotent per run + status, so an exactly-once finish never duplicates) and the model takes its next turn with the result in context:
+On a chat agent (`@cloudflare/think` or `AIChatAgent`) you usually want the model to *react* to a finished background run. Instead of wiring `onFinish` by hand, pass `notify: true` — when the run finishes the agent injects a message into the chat (idempotent per run + status, so an exactly-once finish never duplicates) and the model takes its next turn with the result in context:
 
 ```js
 await this.runAgentTool(ResearchAgent, { input, detached: { notify: true } });
@@ -388,7 +388,7 @@ Override `formatDetachedCompletion(run, result)` to customize the injected text,
 
 ### The `inspectAgentToolRun` contract
 
-A child's `inspectAgentToolRun(runId)` returns the run's current status snapshot, or `null`. **`null` does not mean "failed"** — it means the child has no record of that run _yet_. This is normal immediately after dispatch (the child may still be persisting its first row) and is also what a freshly-rehydrated child returns before it has lazily reconciled a stale `running` row. Callers — and the framework's own reconcile backbone — treat `null` as "not terminal, keep watching within budget", never as a terminal failure. Only a non-`null` inspection with a terminal `status` (`completed` / `error` / `aborted`) finalizes a run.
+A child's `inspectAgentToolRun(runId)` returns the run's current status snapshot, or `null`. **`null` does not mean "failed"** — it means the child has no record of that run *yet*. This is normal immediately after dispatch (the child may still be persisting its first row) and is also what a freshly-rehydrated child returns before it has lazily reconciled a stale `running` row. Callers — and the framework's own reconcile backbone — treat `null` as "not terminal, keep watching within budget", never as a terminal failure. Only a non-`null` inspection with a terminal `status` (`completed` / `error` / `aborted`) finalizes a run.
 
 ## Report progress and milestones
 
@@ -506,7 +506,7 @@ A milestone is persisted as one row on the child with a monotonic per-run `seque
 
 ### Notify the chat on a milestone (Think / AIChatAgent)
 
-For a detached run on a chat agent, `detached: { onMilestones }` surfaces a chat message when a configured milestone lands, _before_ the run finishes. Each `(runId, name)` fires at most once — whether observed live or reconciled after eviction — so the deterministic ID collapses warm and cold delivery to at-most-once:
+For a detached run on a chat agent, `detached: { onMilestones }` surfaces a chat message when a configured milestone lands, *before* the run finishes. Each `(runId, name)` fires at most once — whether observed live or reconciled after eviction — so the deterministic ID collapses warm and cold delivery to at-most-once:
 
 ```js
 // "narrate" (default): inject a synthetic assistant status line — no model turn.
@@ -644,16 +644,16 @@ Agent-tool runs are retained in the parent. If the parent restarts (deploy or ev
 
 The re-attach wait is **progress-keyed**, not a fixed wall clock. Two static `options` tune it:
 
-| Option                               | Default        | Behavior                                                                                                                                                                                                      |
-| ------------------------------------ | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| agentToolReattachNoProgressTimeoutMs | 120000 (2 min) | How long the parent waits with **no** forward progress before giving up. Resets on every forwarded chunk, so a streaming child is followed through to terminal.                                               |
-| agentToolReattachMaxWindowMs         | Infinity       | Optional hard wall-clock ceiling on a single re-attach. Uncapped by default (mirrors chat recovery's maxRecoveryWork), so a healthy, long-running child is never cut off. Set a finite value to impose a cap. |
+| Option | Default | Behavior |
+| --- | --- | --- |
+| `agentToolReattachNoProgressTimeoutMs` | `120000` (2 min) | How long the parent waits with **no** forward progress before giving up. Resets on every forwarded chunk, so a streaming child is followed through to terminal. |
+| `agentToolReattachMaxWindowMs` | `Infinity` | Optional hard wall-clock ceiling on a single re-attach. Uncapped by default (mirrors chat recovery's `maxRecoveryWork`), so a healthy, long-running child is never cut off. Set a finite value to impose a cap. |
 
 Give-up outcomes map to the `AgentToolFailure` fields:
 
-* A child that goes silent for a full no-progress window is sealed `reason: "no-progress"`, `childStillRunning: true`. This seal is soft: the child is left running, so re-dispatching the same `runId` can re-attach and collect it if it self-heals.
-* If you set a finite `agentToolReattachMaxWindowMs` and it fires, the run is sealed `reason: "window-exceeded"`, `childStillRunning: false`, and the child is torn down (it has had its full window and is treated as exhausted).
-* A child that cannot be tailed or inspected, or that exceeds the overall recovery deadline, is sealed with the matching `reason` so the parent tool call returns a structured failure instead of hanging indefinitely.
+- A child that goes silent for a full no-progress window is sealed `reason: "no-progress"`, `childStillRunning: true`. This seal is soft: the child is left running, so re-dispatching the same `runId` can re-attach and collect it if it self-heals.
+- If you set a finite `agentToolReattachMaxWindowMs` and it fires, the run is sealed `reason: "window-exceeded"`, `childStillRunning: false`, and the child is torn down (it has had its full window and is treated as exhausted).
+- A child that cannot be tailed or inspected, or that exceeds the overall recovery deadline, is sealed with the matching `reason` so the parent tool call returns a structured failure instead of hanging indefinitely.
 
 A hung child can never block recovery forever. The no-progress budget bounds a silent child. A content runaway is bounded by the child's own `chatRecovery` (`maxRecoveryWork` and `shouldKeepRecovering`), not by a parent-only timer.
 

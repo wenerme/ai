@@ -12,21 +12,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RtkParticipants
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkparticipants/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkparticipants/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A component which lists all participants, with ability to run privileged actions on each participant according to your permissions.
 
 ## Properties
 
-| Property                 | Type              | Required | Default               | Description     |
-| ------------------------ | ----------------- | -------- | --------------------- | --------------- |
-| config                   | UIConfig          | ❌        | createDefaultConfig() | Config          |
-| defaultParticipantsTabId | ParticipantsTabId | ✅        | \-                    | Default section |
-| iconPack                 | IconPack          | ❌        | defaultIconPack       | Icon pack       |
-| meeting                  | Meeting           | ✅        | \-                    | Meeting object  |
-| size                     | Size              | ✅        | \-                    | Size            |
-| states                   | States            | ✅        | \-                    | States object   |
-| t                        | RtkI18n           | ❌        | useLanguage()         | Language        |
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `config` | `UIConfig` | ❌ | `createDefaultConfig()` | Config |
+| `defaultParticipantsTabId` | `ParticipantsTabId` | ✅ | - | Default section |
+| `iconPack` | `IconPack` | ❌ | `defaultIconPack` | Icon pack |
+| `meeting` | `Meeting` | ✅ | - | Meeting object |
+| `size` | `Size` | ✅ | - | Size |
+| `states` | `States` | ✅ | - | States object |
+| `t` | `RtkI18n` | ❌ | `useLanguage()` | Language |
 
 ## Usage Examples
 

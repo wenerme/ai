@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pricing
 
-Last updated Jul 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workflows/reference/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/reference/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -20,10 +20,10 @@ Workflows is included in both the Free and Paid [Workers plans](https://develope
 
 Workflows uses [Workers Standard pricing](https://developers.cloudflare.com/workers/platform/pricing/#workers) for CPU time and requests. Workflows are billed on four dimensions:
 
-* **CPU time**: the total amount of compute (measured in milliseconds) consumed by a given Workflow.
-* **Requests** (invocations): the number of Workflow invocations. [Subrequests](https://developers.cloudflare.com/workers/platform/limits/#subrequests) made from a Workflow do not incur additional request costs.
-* **Storage**: the total amount of storage (measured in GB) persisted by your Workflows.
-* **Steps**: the number of steps executed by your Workflows.
+- **CPU time**: the total amount of compute (measured in milliseconds) consumed by a given Workflow.
+- **Requests** (invocations): the number of Workflow invocations. [Subrequests](https://developers.cloudflare.com/workers/platform/limits/#subrequests) made from a Workflow do not incur additional request costs.
+- **Storage**: the total amount of storage (measured in GB) persisted by your Workflows.
+- **Steps**: the number of steps executed by your Workflows.
 
 A Workflow that is waiting on a response to an API call, paused as a result of calling `step.sleep`, or otherwise idle, does not incur CPU time.
 
@@ -33,27 +33,27 @@ Step count does not include rollback handlers or retries.
 
 ### Workflows pricing
 
-| Unit                | Workers Free                                                                                                          | Workers Paid                                                                                   |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| Requests (millions) | 100,000 per day ([shared with Workers requests](https://developers.cloudflare.com/workers/platform/pricing/#workers)) | 10 million included per month + $0.30 per additional million                                   |
-| CPU time (ms)       | 10 milliseconds of CPU time per invocation                                                                            | 30 million CPU milliseconds included per month + $0.02 per additional million CPU milliseconds |
-| Storage (GB-mo)     | 1 GB                                                                                                                  | 1 GB included per month + $0.20/ GB-month                                                      |
-| Steps               | 3,000 per day                                                                                                         | 500,000 included per month + $0.80/ additional 100,000 per month                               |
+| Unit | Workers Free | Workers Paid |
+| --- | --- | --- |
+| Requests (millions) | 100,000 per day ([shared with Workers requests](https://developers.cloudflare.com/workers/platform/pricing/#workers)) | 10 million included per month + $0.30 per additional million |
+| CPU time (ms) | 10 milliseconds of CPU time per invocation | 30 million CPU milliseconds included per month + $0.02 per additional million CPU milliseconds |
+| Storage (GB-mo) | 1 GB-month | 1 GB-month included + $0.20/ GB-month |
+| Steps | 3,000 per day | 500,000 included per month + $0.80/ additional 100,000 per month |
 
 Cloudflare will not bill step and storage usage before the start date announced in the [Workflows billing changelog](https://developers.cloudflare.com/changelog/post/2026-07-07-workflows-billing-updates/).
 
 CPU limits
 
-You can increase the CPU limit available to your Workflow instances up to 5 minutes per Workflow by [setting the limits.cpu\_ms property](https://developers.cloudflare.com/workers/wrangler/configuration/#limits) in your Wrangler configuration.
+You can increase the CPU limit available to your Workflow instances up to 5 minutes per Workflow by [setting the `limits.cpu_ms` property](https://developers.cloudflare.com/workers/wrangler/configuration/#limits) in your Wrangler configuration.
 
 ### Storage Usage
 
 Storage is billed using gigabyte-month (GB-month) as the billing metric, identical to [Durable Objects SQL storage](https://developers.cloudflare.com/durable-objects/platform/pricing/#sqlite-storage-backend). A GB-month is calculated by averaging the peak storage per day over a billing period (30 days).
 
-* Storage is calculated across all instances, and includes running, errored, sleeping, and completed instances.
-* By default, instance state is retained for [3 days on the Free plan](https://developers.cloudflare.com/workflows/reference/limits/) and [30 days on the Paid plan](https://developers.cloudflare.com/workflows/reference/limits/).
-* When creating a Workflow instance, you can set a shorter state retention period if you do not need to retain state for errored or completed Workflows. Refer to the [retention option in WorkflowInstanceCreateOptions](https://developers.cloudflare.com/workflows/build/workers-api/#workflowinstancecreateoptions) for more information.
-* Deleting instances via the [Workers API](https://developers.cloudflare.com/workflows/build/workers-api/), [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/commands/workflows/#workflows), REST API, or dashboard will free up storage. It may take a few minutes for storage limits to update.
+- Storage is calculated across all instances, and includes running, errored, sleeping, and completed instances.
+- By default, instance state is retained for [3 days on the Free plan](https://developers.cloudflare.com/workflows/reference/limits/) and [30 days on the Paid plan](https://developers.cloudflare.com/workflows/reference/limits/).
+- When creating a Workflow instance, you can set a shorter state retention period if you do not need to retain state for errored or completed Workflows. Refer to the [`retention` option in `WorkflowInstanceCreateOptions`](https://developers.cloudflare.com/workflows/build/workers-api/#workflowinstancecreateoptions) for more information.
+- Deleting instances via the [Workers API](https://developers.cloudflare.com/workflows/build/workers-api/), [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/commands/workflows/#workflows), REST API, or dashboard will free up storage. It may take a few minutes for storage limits to update.
 
 An instance that attempts to store state when you have reached the storage limit on the Free plan will throw an error.
 

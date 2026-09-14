@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • xAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-4.20-0309-reasoning/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-4.20-0309-reasoning/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `xai/grok-4.20-0309-reasoning`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 xAI's Grok 4.20 reasoning model. Uses extended thinking to work through complex problems, returning a reasoning trace alongside the final answer.
 
-| Model Info                                                                          |                                                                                                                                |
-| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 2,000,000 tokens                                                                                                               |
-| Terms and License                                                                   | [link ↗](https://x.ai/legal/terms-of-service)                                                                                  |
-| More information                                                                    | [link ↗](https://x.ai/)                                                                                                        |
-| Zero data retention                                                                 | Yes                                                                                                                            |
-| Request formats                                                                     | Chat Completions                                                                                                               |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.20-0309-reasoning) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 2,000,000 tokens |
+| Terms and License | [link ↗](https://x.ai/legal/terms-of-service) |
+| More information | [link ↗](https://x.ai/) |
+| Zero data retention | Yes |
+| Request formats | Chat Completions |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.20-0309-reasoning) |
 
 ## Usage
 
@@ -59,6 +59,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 **The Three Laws of Thermodynamics** (in plain language):
 
 ### 1. First Law (Conservation of Energy)
@@ -98,6 +99,7 @@ Although not one of the original three, it’s so fundamental it was named *afte
 This is what allows us to define temperature and use thermometers.
 
 Would you like a more technical/deep-dive version of any of these laws?
+```
 
 ```json
 {
@@ -145,7 +147,11 @@ Would you like a more technical/deep-dive version of any of these laws?
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -179,6 +185,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 **Best way to read a JSON file in Python:**
 
 ### Method 1: Using `json.load()` (Recommended)
@@ -266,6 +273,7 @@ Would you like me to also show how to:
 - Handle very large JSON files?
 - Write JSON files?
 - Use `pydantic` or `dataclasses` with JSON?
+````
 
 ```json
 {
@@ -311,7 +319,13 @@ Would you like me to also show how to:
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -359,6 +373,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 **Here are some excellent stops on the San Francisco to Los Angeles drive**, ordered from north to south. I’m assuming you’re taking the **scenic Pacific Coast Highway (Highway 1)** route, which is far more enjoyable than the fast I-5 inland route. The full coastal drive is roughly 450–500 miles and works best as a **2–3 day trip**.
 
 ### Top Recommended Stops (North to South)
@@ -423,6 +438,7 @@ Would you like me to:
 - Give you a Google Maps-ready list or estimated driving times?
 
 Just tell me how many days you have and what kind of vibe you’re going for!
+```
 
 ```json
 {
@@ -468,7 +484,13 @@ Just tell me how many days you have and what kind of vibe you’re going for!
 }
 ```
 
-**Creative Writing** — Longer completion for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Longer completion for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -502,6 +524,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 **The Bone Key**
 
 Detective Lena Voss had seen every kind of horror a city could offer, but the silence in apartment 4C unsettled her more than the blood. The victim, Dr. Elias Marrow, lay curled on the kitchen floor like a dropped marionette, throat opened with surgical precision. No defensive wounds. No signs of forced entry. Just the copper stink of blood and the faint smell of ozone, as if lightning had struck indoors.
@@ -521,6 +544,7 @@ A map.
 Lena’s pulse thudded in her ears. She had cleared the apartment herself twenty minutes ago. The key had not been in the victim’s hand then.
 
 Something behind her exhaled, soft as a secret.
+```
 
 ```json
 {
@@ -566,7 +590,13 @@ Something behind her exhaled, soft as a secret.
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -599,6 +629,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 **Recursion** is a problem-solving technique where a function **calls itself** to solve smaller versions of the same problem.
 
 It works like this:
@@ -653,6 +684,7 @@ Now it starts returning back up:
 Think of recursion like a **stack of Russian nesting dolls**. You keep opening smaller and smaller dolls until you reach the tiniest one (base case). Then you put them all back together, multiplying the results as you go back up.
 
 Recursion is elegant for problems that have a naturally recursive structure (tree traversals, directory/file searching, certain mathematical sequences), but it can be less efficient than loops for very large problems due to the memory cost of all those function calls.
+````
 
 ```json
 [
@@ -8126,9 +8158,11 @@ Recursion is elegant for problems that have a naturally recursive structure (tre
 ]
 ```
 
+</details>
+
 ## Parameters
 
-▶messages\[\]
+▶messages\[]
 
 `array`requiredminItems: 1maxItems: 500
 
@@ -8236,7 +8270,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -8258,9 +8292,9 @@ system\_fingerprint
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/xai/grok-4.20-0309-reasoning/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/xai/grok-4.20-0309-reasoning/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/xai/grok-4.20-0309-reasoning/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/xai/grok-4.20-0309-reasoning/schema-output.json)
 
 Was this helpful?
 

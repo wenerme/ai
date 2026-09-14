@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Predefined profiles
 
-Last updated Aug 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Zero Trust provides predefined DLP profiles for common types of sensitive data, such as credit card numbers, national identifiers, and credentials. Each predefined profile groups related [detection entries](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/) which can be turned on or off individually.
 
@@ -24,11 +24,11 @@ Most profiles match when any enabled detection entry matches. Some add validatio
 
 DLP provides AI prompt protection profiles that detect sensitive prompts submitted to generative AI tools such as ChatGPT, Google Gemini, Perplexity, and Claude. Each profile evaluates prompts for **Content** (sensitive data within the prompt) and **Intent** (what the user wants the model to do):
 
-* **AI Prompt: AI Security** — Prompts that attempt to circumvent AI security policies or request malicious code.
-* **AI Prompt: Customer** — Prompts that contain customer names, projects, business activities, or confidential customer contexts.
-* **AI Prompt: Financial Information** — Prompts that contain financial numbers or confidential business data.
-* **AI Prompt: PII** — Prompts that contain or request personal information such as names, SSNs, or email addresses.
-* **AI Prompt: Technical** — Prompts that contain source code, code snippets, proprietary algorithms, or credentials such as API keys and passwords.
+- **AI Prompt: AI Security** — Prompts that attempt to circumvent AI security policies or request malicious code.
+- **AI Prompt: Customer** — Prompts that contain customer names, projects, business activities, or confidential customer contexts.
+- **AI Prompt: Financial Information** — Prompts that contain financial numbers or confidential business data.
+- **AI Prompt: PII** — Prompts that contain or request personal information such as names, SSNs, or email addresses.
+- **AI Prompt: Technical** — Prompts that contain source code, code snippets, proprietary algorithms, or credentials such as API keys and passwords.
 
 For the full list of underlying topics, refer to [AI prompt topics](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#ai-prompt-topics).
 
@@ -36,18 +36,18 @@ For the full list of underlying topics, refer to [AI prompt topics](https://deve
 
 The following secrets are validated with regex.
 
-* Amazon Web Services (AWS) keys
-* Azure API keys
-* Google Cloud Platform keys
-* SSH keys
+- Amazon Web Services (AWS) keys
+- Azure API keys
+- Google Cloud Platform keys
+- SSH keys
 
 The following Cloudflare API credentials are validated algorithmically using a checksum. Only credentials generated after [Cloudflare's token format update](https://developers.cloudflare.com/fundamentals/api/get-started/token-formats/) will be matched by these entries.
 
-| Detection entry                    | Format                                                                        |
-| ---------------------------------- | ----------------------------------------------------------------------------- |
-| Cloudflare User API Key            | cfk\_ followed by 40 alphanumeric characters and an 8-character hex checksum  |
-| Cloudflare User API Token          | cfut\_ followed by 40 alphanumeric characters and an 8-character hex checksum |
-| Cloudflare Account Owned API Token | cfat\_ followed by 40 alphanumeric characters and an 8-character hex checksum |
+| Detection entry | Format |
+| --- | --- |
+| Cloudflare User API Key | `cfk_` followed by 40 alphanumeric characters and an 8-character hex checksum |
+| Cloudflare User API Token | `cfut_` followed by 40 alphanumeric characters and an 8-character hex checksum |
+| Cloudflare Account Owned API Token | `cfat_` followed by 40 alphanumeric characters and an 8-character hex checksum |
 
 ## Financial Information
 
@@ -57,38 +57,38 @@ This predefined profile is available on all Zero Trust plans.
 
 Credit card numbers begin with a six or eight-digit Issuer Identification Number (IIN) and are followed by up to 23 additional digits. Card verification values (CVVs) are not validated.
 
-In the table below, entries use one of three validation methods. [Luhn's algorithm ↗](https://en.wikipedia.org/wiki/Luhn%5Falgorithm) is a checksum formula used to verify credit card numbers. Entries validated "with checksum" use an arithmetic check specific to that number format. Entries validated "with regex" match a known text pattern without performing a mathematical check.
+In the table below, entries use one of three validation methods. [Luhn's algorithm ↗](https://en.wikipedia.org/wiki/Luhn_algorithm) is a checksum formula used to verify credit card numbers. Entries validated "with checksum" use an arithmetic check specific to that number format. Entries validated "with regex" match a known text pattern without performing a mathematical check.
 
-| Detection entry                  | Notes                                                                                 |
-| -------------------------------- | ------------------------------------------------------------------------------------- |
-| American Express Card Number     | Validated using [Luhn's algorithm ↗](https://en.wikipedia.org/wiki/Luhn%5Falgorithm). |
-| American Express Text            | Text matching amex or american express.                                               |
-| Diners Club Card Number          | Validated using Luhn's algorithm.                                                     |
-| CVV Card Number (labeled)        | Validated with regex.                                                                 |
-| Mastercard Card Number           | Validated using Luhn's algorithm.                                                     |
-| Mastercard Text                  | Text matching mastercard.                                                             |
-| Union Pay Card Number            | Validated using Luhn's algorithm.                                                     |
-| Union Pay Text                   | Text matching union pay.                                                              |
-| Visa Card Number                 | Validated using Luhn's algorithm.                                                     |
-| Visa Text                        | Text matching visa.                                                                   |
-| United States ABA Routing Number | Validated algorithmically with checksum.                                              |
-| IBAN                             | Validated with checksum.                                                              |
+| Detection entry | Notes |
+| --- | --- |
+| American Express Card Number | Validated using [Luhn's algorithm ↗](https://en.wikipedia.org/wiki/Luhn_algorithm). |
+| American Express Text | Text matching `amex` or `american express`. |
+| Diners Club Card Number | Validated using Luhn's algorithm. |
+| CVV Card Number (labeled) | Validated with regex. |
+| Mastercard Card Number | Validated using Luhn's algorithm. |
+| Mastercard Text | Text matching `mastercard`. |
+| Union Pay Card Number | Validated using Luhn's algorithm. |
+| Union Pay Text | Text matching `union pay`. |
+| Visa Card Number | Validated using Luhn's algorithm. |
+| Visa Text | Text matching `visa`. |
+| United States ABA Routing Number | Validated algorithmically with checksum. |
+| IBAN | Validated with checksum. |
 
 ## Health Information
 
 The following diagnosis and medication names are checked for surrounding ASCII characters to prevent false positives.
 
-* FDA active ingredients
-* FDA drug names
-* ICD-10 FY2023 short descriptions
-* ICD-11 short descriptions
+- FDA active ingredients
+- FDA drug names
+- ICD-10 FY2023 short descriptions
+- ICD-11 short descriptions
 
 ## HTTP Archive (HAR) files
 
 The **Unsanitized HAR** predefined profile detects HTTP Archive (HAR) files in traffic that have not been processed by Cloudflare's HAR sanitizer. HAR files frequently contain sensitive data such as session cookies, authorization headers, and other credentials.
 
-| Detection entry      | Notes                                                                                                                                                              |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Detection entry | Notes |
+| --- | --- |
 | Unsanitized HAR file | Detects HAR files that do not carry a Cloudflare sanitized marker. Files processed by the Cloudflare HAR sanitizer and unmodified since will not match this entry. |
 
 You can use this profile in a Gateway HTTP policy to block HAR file uploads or redirect users to `https://har-sanitizer.pages.dev/` to sanitize the file before uploading. For more information, refer to [common DLP policies](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/common-policies/).
@@ -101,20 +101,20 @@ This behavior helps reduce false positives from isolated matches.
 
 The profile includes the following detection entries:
 
-* Australia Passport Number
-* American Express Card Number
-* Diners Club Card Number
-* US Driver's License Number
-* Email Address
-* Full Name
-* US Mailing Address
-* Mastercard Card Number
-* US Individual Tax Identification Number (ITIN)
-* US Passport Number
-* US Phone Number
-* Union Pay Card Number
-* United States SSN Numeric Detection
-* Visa Card Number
+- Australia Passport Number
+- American Express Card Number
+- Diners Club Card Number
+- US Driver's License Number
+- Email Address
+- Full Name
+- US Mailing Address
+- Mastercard Card Number
+- US Individual Tax Identification Number (ITIN)
+- US Passport Number
+- US Phone Number
+- Union Pay Card Number
+- United States SSN Numeric Detection
+- Visa Card Number
 
 ## Social Security, Insurance, Tax, and Identifier Numbers
 
@@ -124,22 +124,22 @@ This predefined profile is available on all Zero Trust plans.
 
 The following national identifier detections are validated algorithmically when possible.
 
-| Detection entry                                      | Notes                                                                                                                                                                                                                           |
-| ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| United States SSN Numeric Detection                  | Matched values must include commonly used separators. For example, 000-00-0000 matches but 000000000 does not. Unlike credit card numbers, Social Security numbers have no built-in checksum, so DLP validates the format only. |
-| Social Security Number Text                          | Text matching ssn or social security.                                                                                                                                                                                           |
-| Australia Tax File Number                            | Validated with checksum.                                                                                                                                                                                                        |
-| Canada Social Insurance Number                       | Validated using Luhn's algorithm.                                                                                                                                                                                               |
-| France Social Security Number                        | Validated with regex.                                                                                                                                                                                                           |
-| Hong Kong Identity Card (HKIC) Number                | Validated with checksum.                                                                                                                                                                                                        |
-| Indonesia Identity Card Number                       | Validated with regex.                                                                                                                                                                                                           |
-| Malaysian National Identity Card Number              | Validated with regex.                                                                                                                                                                                                           |
-| Philippines Unified Multi-Purpose ID (UMID) Number   | Validated with regex.                                                                                                                                                                                                           |
-| Singapore National Registration Identity Card Number | Validated with checksum.                                                                                                                                                                                                        |
-| Taiwan National Identification Number                | Validated with checksum.                                                                                                                                                                                                        |
-| Thai Identity Card Number                            | Validated with checksum.                                                                                                                                                                                                        |
-| United Kingdom NHS Number                            | Validated with checksum.                                                                                                                                                                                                        |
-| United Kingdom National Insurance Number             | Validated with regex.                                                                                                                                                                                                           |
+| Detection entry | Notes |
+| --- | --- |
+| United States SSN Numeric Detection | Matched values must include commonly used separators. For example, `000-00-0000` matches but `000000000` does not. Unlike credit card numbers, Social Security numbers have no built-in checksum, so DLP validates the format only. |
+| Social Security Number Text | Text matching `ssn` or `social security`. |
+| Australia Tax File Number | Validated with checksum. |
+| Canada Social Insurance Number | Validated using Luhn's algorithm. |
+| France Social Security Number | Validated with regex. |
+| Hong Kong Identity Card (HKIC) Number | Validated with checksum. |
+| Indonesia Identity Card Number | Validated with regex. |
+| Malaysian National Identity Card Number | Validated with regex. |
+| Philippines Unified Multi-Purpose ID (UMID) Number | Validated with regex. |
+| Singapore National Registration Identity Card Number | Validated with checksum. |
+| Taiwan National Identification Number | Validated with checksum. |
+| Thai Identity Card Number | Validated with checksum. |
+| United Kingdom NHS Number | Validated with checksum. |
+| United Kingdom National Insurance Number | Validated with regex. |
 
 ## Source Code
 
@@ -147,18 +147,18 @@ The **Source Code** profile detects source code in common programming languages.
 
 The following programming languages are validated with natural language processing (NLP).
 
-* C
-* C++
-* C#
-* Go
-* Haskell
-* Java
-* JavaScript
-* Lua
-* Python
-* R
-* Rust
-* Swift
+- C
+- C++
+- C#
+- Go
+- Haskell
+- Java
+- JavaScript
+- Lua
+- Python
+- R
+- Rust
+- Swift
 
 Was this helpful?
 

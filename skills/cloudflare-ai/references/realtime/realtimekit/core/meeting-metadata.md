@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Meeting Metadata
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/meeting-metadata/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/meeting-metadata/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 All metadata pertaining to a meeting is stored in `meeting.meta`. This includes important information about the meeting state, type, and connections.
 
@@ -26,56 +26,56 @@ Select a framework based on the platform you are building for.
 
 The `meeting.meta` object contains the following properties:
 
-* **`viewType`** \- Indicates the type of the meeting. Possible values are `WEBINAR`, `GROUP_CALL`
-* **`roomType`** \- Indicates whether the meeting is a group-call or a webinar
-* **`meetingTitle`** \- The title of the meeting
-* **`meetingStartedTimestamp`** \- The timestamp when the meeting started
-* **`mediaState`** \- Media connection state
-* **`socketState`** \- Socket connection state
+- **`viewType`** - Indicates the type of the meeting. Possible values are `WEBINAR`, `GROUP_CALL`
+- **`roomType`** - Indicates whether the meeting is a group-call or a webinar
+- **`meetingTitle`** - The title of the meeting
+- **`meetingStartedTimestamp`** - The timestamp when the meeting started
+- **`mediaState`** - Media connection state
+- **`socketState`** - Socket connection state
 
 The `meeting.meta` object contains the following properties:
 
-* **`viewType`** \- Indicates the type of the meeting. Possible values are `WEBINAR`, `GROUP_CALL`
-* **`roomType`** \- Indicates whether the meeting is a group-call or a webinar
-* **`meetingTitle`** \- The title of the meeting
-* **`meetingStartedTimestamp`** \- The timestamp when the meeting started
-* **`mediaState`** \- Media connection state
-* **`socketState`** \- Socket connection state
+- **`viewType`** - Indicates the type of the meeting. Possible values are `WEBINAR`, `GROUP_CALL`
+- **`roomType`** - Indicates whether the meeting is a group-call or a webinar
+- **`meetingTitle`** - The title of the meeting
+- **`meetingStartedTimestamp`** - The timestamp when the meeting started
+- **`mediaState`** - Media connection state
+- **`socketState`** - Socket connection state
 
 The `meeting.meta` object contains the following properties:
 
-* **`meetingId`** \- The unique identifier of the meeting
-* **`meetingTitle`** \- The title of the meeting
-* **`meetingStartedTimestamp`** \- The timestamp when the meeting started
-* **`meetingType`** \- Indicates the meeting type, which can be one of `GROUP_CALL`, `WEBINAR`, `AUDIO_ROOM`, or `LIVESTREAM` from the `RtkMeetingType` enum
-* **`meetingConfig`** \- The configuration of the meeting containing audio and video settings
-* **`meetingState`** \- The state of the meeting of type `RtkMeetingState`
-* **`authToken`** \- User's authentication token for the meeting
-* **`selfActiveTab`** \- Information about the currently active tab for the local participant
-* **`mediaConnectionState`** \- The current state of the media connection
-* **`socketConnectionState`** \- The current state of the socket connection
+- **`meetingId`** - The unique identifier of the meeting
+- **`meetingTitle`** - The title of the meeting
+- **`meetingStartedTimestamp`** - The timestamp when the meeting started
+- **`meetingType`** - Indicates the meeting type, which can be one of `GROUP_CALL`, `WEBINAR`, `AUDIO_ROOM`, or `LIVESTREAM` from the `RtkMeetingType` enum
+- **`meetingConfig`** - The configuration of the meeting containing audio and video settings
+- **`meetingState`** - The state of the meeting of type `RtkMeetingState`
+- **`authToken`** - User's authentication token for the meeting
+- **`selfActiveTab`** - Information about the currently active tab for the local participant
+- **`mediaConnectionState`** - The current state of the media connection
+- **`socketConnectionState`** - The current state of the socket connection
 
 The `meeting.meta` object contains the following properties:
 
-* **`meetingId`** \- The unique identifier of the meeting
-* **`meetingTitle`** \- The title of the meeting
-* **`meetingStartedTimestamp`** \- The timestamp when the meeting started
-* **`meetingType`** \- Indicates the meeting type, which can be one of `.groupCall`, `.webinar`, `.audioRoom`, or `.livestream` from the `RtkMeetingType` enum
-* **`meetingConfig`** \- The configuration of the meeting containing audio and video settings
-* **`meetingState`** \- The state of the meeting of type `RtkMeetingState`
-* **`authToken`** \- User's authentication token for the meeting
-* **`selfActiveTab`** \- Information about the currently active tab for the local participant
-* **`mediaConnectionState`** \- The current state of the media connection
-* **`socketConnectionState`** \- The current state of the socket connection
+- **`meetingId`** - The unique identifier of the meeting
+- **`meetingTitle`** - The title of the meeting
+- **`meetingStartedTimestamp`** - The timestamp when the meeting started
+- **`meetingType`** - Indicates the meeting type, which can be one of `.groupCall`, `.webinar`, `.audioRoom`, or `.livestream` from the `RtkMeetingType` enum
+- **`meetingConfig`** - The configuration of the meeting containing audio and video settings
+- **`meetingState`** - The state of the meeting of type `RtkMeetingState`
+- **`authToken`** - User's authentication token for the meeting
+- **`selfActiveTab`** - Information about the currently active tab for the local participant
+- **`mediaConnectionState`** - The current state of the media connection
+- **`socketConnectionState`** - The current state of the socket connection
 
 The `meeting.meta` object contains the following properties:
 
-* **`viewType`** \- Indicates the type of the meeting. Possible values are `WEBINAR`, `GROUP_CALL`
-* **`roomType`** \- Indicates whether the meeting is a group-call or a webinar
-* **`meetingTitle`** \- The title of the meeting
-* **`meetingStartedTimestamp`** \- The timestamp when the meeting started
-* **`mediaState`** \- Media connection state
-* **`socketState`** \- Socket connection state
+- **`viewType`** - Indicates the type of the meeting. Possible values are `WEBINAR`, `GROUP_CALL`
+- **`roomType`** - Indicates whether the meeting is a group-call or a webinar
+- **`meetingTitle`** - The title of the meeting
+- **`meetingStartedTimestamp`** - The timestamp when the meeting started
+- **`mediaState`** - Media connection state
+- **`socketState`** - Socket connection state
 
 ## Access meeting metadata
 
@@ -159,8 +159,8 @@ meeting.meta.on("mediaConnectionUpdate", ({ transport, state }) => {
 
 The `mediaConnectionUpdate` event provides:
 
-* **`transport`** \- Either `'consuming'` (receiving media) or `'producing'` (sending media)
-* **`state`** \- Connection state: `'new'`, `'connecting'`, `'connected'`, `'disconnected'`, `'reconnecting'`, or `'failed'`
+- **`transport`** - Either `'consuming'` (receiving media) or `'producing'` (sending media)
+- **`state`** - Connection state: `'new'`, `'connecting'`, `'connected'`, `'disconnected'`, `'reconnecting'`, or `'failed'`
 
 Updates to the media connection (WebRTC connection used for the transfer of actual media) are sent via the `mediaConnectionUpdate` event.
 
@@ -194,8 +194,8 @@ function MediaConnectionMonitor() {
 
 The `mediaConnectionUpdate` event provides:
 
-* **`transport`** \- Either `'consuming'` (receiving media) or `'producing'` (sending media)
-* **`state`** \- Connection state: `'new'`, `'connecting'`, `'connected'`, `'disconnected'`, `'reconnecting'`, or `'failed'`
+- **`transport`** - Either `'consuming'` (receiving media) or `'producing'` (sending media)
+- **`state`** - Connection state: `'new'`, `'connecting'`, `'connected'`, `'disconnected'`, `'reconnecting'`, or `'failed'`
 
 You can access the current media connection state directly from the metadata.
 
@@ -222,8 +222,8 @@ meeting.meta.on("mediaConnectionUpdate", ({ transport, state }) => {
 
 The `mediaConnectionUpdate` event provides:
 
-* **`transport`** \- Either `'consuming'` (receiving media) or `'producing'` (sending media)
-* **`state`** \- Connection state: `'new'`, `'connecting'`, `'connected'`, `'disconnected'`, `'reconnecting'`, or `'failed'`
+- **`transport`** - Either `'consuming'` (receiving media) or `'producing'` (sending media)
+- **`state`** - Connection state: `'new'`, `'connecting'`, `'connected'`, `'disconnected'`, `'reconnecting'`, or `'failed'`
 
 ### Socket connection updates
 
@@ -250,9 +250,9 @@ meeting.meta.on(
 
 The `socketConnectionUpdate` event provides:
 
-* **`state`** \- Connection state: `'connected'`, `'disconnected'`, `'reconnecting'`, or `'failed'`
-* **`reconnectionAttempt`** \- The number of reconnection attempts made (if reconnecting)
-* **`reconnected`** \- Boolean indicating if the connection was successfully reestablished
+- **`state`** - Connection state: `'connected'`, `'disconnected'`, `'reconnecting'`, or `'failed'`
+- **`reconnectionAttempt`** - The number of reconnection attempts made (if reconnecting)
+- **`reconnected`** - Boolean indicating if the connection was successfully reestablished
 
 Updates to the WebSocket connection (used for chat, polls, and other basic signaling) are sent via the `socketConnectionUpdate` event.
 
@@ -297,9 +297,9 @@ function SocketConnectionMonitor() {
 
 The `socketConnectionUpdate` event provides:
 
-* **`state`** \- Connection state: `'connected'`, `'disconnected'`, `'reconnecting'`, or `'failed'`
-* **`reconnectionAttempt`** \- The number of reconnection attempts made (if reconnecting)
-* **`reconnected`** \- Boolean indicating if the connection was successfully reestablished
+- **`state`** - Connection state: `'connected'`, `'disconnected'`, `'reconnecting'`, or `'failed'`
+- **`reconnectionAttempt`** - The number of reconnection attempts made (if reconnecting)
+- **`reconnected`** - Boolean indicating if the connection was successfully reestablished
 
 You can access the current socket connection state directly from the metadata.
 
@@ -336,16 +336,16 @@ meeting.meta.on(
 
 The `socketConnectionUpdate` event provides:
 
-* **`state`** \- Connection state: `'connected'`, `'disconnected'`, `'reconnecting'`, or `'failed'`
-* **`reconnectionAttempt`** \- The number of reconnection attempts made (if reconnecting)
-* **`reconnected`** \- Boolean indicating if the connection was successfully reestablished
+- **`state`** - Connection state: `'connected'`, `'disconnected'`, `'reconnecting'`, or `'failed'`
+- **`reconnectionAttempt`** - The number of reconnection attempts made (if reconnecting)
+- **`reconnected`** - Boolean indicating if the connection was successfully reestablished
 
 ## Next steps
 
 Explore related topics:
 
-* [Meeting Object Explained](https://developers.cloudflare.com/realtime/realtimekit/core/meeting-object-explained/) \- Comprehensive meeting object reference
-* [Session Lifecycle](https://developers.cloudflare.com/realtime/realtimekit/concepts/session-lifecycle/) \- Understanding meeting states and transitions
+- [Meeting Object Explained](https://developers.cloudflare.com/realtime/realtimekit/core/meeting-object-explained/) - Comprehensive meeting object reference
+- [Session Lifecycle](https://developers.cloudflare.com/realtime/realtimekit/concepts/session-lifecycle/) - Understanding meeting states and transitions
 
 Was this helpful?
 

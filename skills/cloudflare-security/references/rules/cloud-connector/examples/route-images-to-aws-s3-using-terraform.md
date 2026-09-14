@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Route requests with a URI path starting with `/images` to a specific AWS S3 bucket with Cloud Connector using Terraform.
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/cloud-connector/examples/route-images-to-aws-s3-using-terraform/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/cloud-connector/examples/route-images-to-aws-s3-using-terraform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -41,8 +41,8 @@ resource "cloudflare_cloud_connector_rules" "serve_images_in_aws" {
 
 For additional guidance on using Terraform with Cloudflare, refer to the following resources:
 
-* [Terraform documentation](https://developers.cloudflare.com/terraform/)
-* [Cloudflare Provider for Terraform ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) (reference documentation)
+- [Terraform documentation](https://developers.cloudflare.com/terraform/)
+- [Cloudflare Provider for Terraform ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) (reference documentation)
 
 Was this helpful?
 

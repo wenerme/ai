@@ -16,19 +16,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Image • Alibaba
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/alibaba/qwen-image-3.0-pro/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/alibaba/qwen-image-3.0-pro/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `alibaba/qwen-image-3.0-pro`
 
-* Third-party
+- Third-party
 
 Alibaba's Qwen Image 3.0 Pro generates images from text prompts with a focus on complex layout generation, small-text precision, and multilingual font rendering. Supports up to 6 image variants per call, negative prompts, seed control, and optional prompt rewriting.
 
-| Model Info        |                                                                                                                              |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                                         |
-| More information  | [link ↗](https://www.alibabacloud.com/en/solutions/generative-ai/qwen)                                                       |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/qwen-image-3.0-pro) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal) |
+| More information | [link ↗](https://www.alibabacloud.com/en/solutions/generative-ai/qwen) |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/qwen-image-3.0-pro) |
 
 ## Usage
 
@@ -70,7 +70,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Multiple Variants** — Generate several image variants from a single call
+<details>
+
+<summary>**Multiple Variants** — Generate several image variants from a single call</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -112,7 +116,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Negative Prompt** — Guide generation away from unwanted elements
+</details>
+
+<details>
+
+<summary>**Negative Prompt** — Guide generation away from unwanted elements</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -154,6 +164,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 prompt
@@ -188,15 +200,15 @@ prompt\_extend\_mode
 
 `string`enum: direct, agent
 
-▶images\[\]
+▶images\[]
 
 `array`minItems: 1format: uri
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/alibaba/qwen-image-3.0-pro/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/alibaba/qwen-image-3.0-pro/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/alibaba/qwen-image-3.0-pro/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/alibaba/qwen-image-3.0-pro/schema-output.json)
 
 Was this helpful?
 

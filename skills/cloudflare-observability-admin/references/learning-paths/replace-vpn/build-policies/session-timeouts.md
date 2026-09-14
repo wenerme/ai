@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Session timeouts
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/session-timeouts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/session-timeouts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Most legacy VPNs have a global timeout setting that requires end users to log in every X hours or resets VPN profiles at a certain frequency. By doing continuous identity evaluation, a Zero Trust security model eliminates the need for most of the user-interrupting workflows triggered by session timeouts. However, there can still be valid reasons to want users to reauthenticate, either on a recurring basis or to access specific, highly-sensitive or regulated internal services.
 
@@ -22,7 +22,7 @@ When a user goes to a protected application or website, Cloudflare checks their 
 
 ![Cloudflare One Client prompts user to re-authenticate session.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=404,height=504,format=webp/_astro/warp-reauthenticate-session.BjGtdKWz.png)
 
-_Note: Labels in this image may reflect a previous product name._
+*Note: Labels in this image may reflect a previous product name.*
 
 A user's device client session duration resets to zero whenever they re-authenticate with the IdP, regardless of what triggered the authentication event.
 
@@ -34,36 +34,39 @@ Session timeouts have no impact on Gateway DNS policies. DNS policies remain act
 
 To configure a session timeout for a Gateway policy:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**. Choose either **Network** or **HTTP**.
-2. Add a policy and select the _Allow_ action. Alternatively, choose any existing _Allow_ policy.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**. Choose either **Network** or **HTTP**.
+2. Add a policy and select the *Allow* action. Alternatively, choose any existing *Allow* policy.
 3. Under **Step 4 - Configure policy settings**, select **Edit** next to **Enforce Cloudflare One Client session duration**.
 4. Enter a session expiration time in `1h30m0s` format and save.
 5. Save the policy.
 
-1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
+1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+   - `Zero Trust Write`
+2. Choose a Network ( `l4`) or HTTP ( `http`) policy with an Allow action.
+3. In the policy's [`rule_settings` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_gateway_policy), use the `check_session` argument to enable and configure a session timeout:
 
-  * `Zero Trust Write`
-2. Choose a Network (`l4`) or HTTP (`http`) policy with an Allow action.
-3. In the policy's [rule\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fpolicy), use the `check_session` argument to enable and configure a session timeout:
-```tf
-resource "cloudflare_zero_trust_gateway_policy" "network_allow_wiki_IPs" {
-	name        = "Company Wiki Network policy"
-	enabled     = true
-	account_id  = var.cloudflare_account_id
-	description = "Managed by Terraform - Allow employees to access company wiki IPs."
-	precedence  = 103
-	action      = "allow"
-	filters     = ["l4"]
-	traffic     = "net.dst.ip in ${"$"}${cloudflare_zero_trust_list.wiki_IPs.id}"
-	identity    = "identity.email matches \".*@example.com\""
-	rule_settings = {
-		check_session = {
-			enforce = true
-			duration = "1h30m0s"
-		}
-	}
-}
-```
+   ```tf
+   resource "cloudflare_zero_trust_gateway_policy" "network_allow_wiki_IPs" {
+   	name        = "Company Wiki Network policy"
+   	enabled     = true
+   	account_id  = var.cloudflare_account_id
+   	description = "Managed by Terraform - Allow employees to access company wiki IPs."
+   	precedence  = 103
+   	action      = "allow"
+   	filters     = ["l4"]
+   	traffic     = "net.dst.ip in ${"$"}${cloudflare_zero_trust_list.wiki_IPs.id}"
+   	identity    = "identity.email matches \".*@example.com\""
+
+   	rule_settings = {
+   		check_session = {
+   			enforce = true
+   			duration = "1h30m0s"
+   		}
+   	}
+   }
+   ```
+
+
 
 Session checks are now enabled for the application protected by this policy. Users can continue to reach applications outside of the policy definition.
 

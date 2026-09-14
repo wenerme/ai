@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Page Rules migration guide
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/reference/page-rules-migration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/reference/page-rules-migration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare is continuously improving its platform to deliver more powerful and scalable tools for managing your configurations. To help you take full advantage of these improvements, we recommend using [modern Rules features](https://developers.cloudflare.com/rules/) for new implementations. These products address the limitations of Page Rules while providing greater flexibility, scalability, and ease of use.
 
-For a quick start, explore the one-click templates available in the Cloudflare dashboard in **Rules** \> **Overview**. These templates simplify common configurations like redirects, rewrites and header modifications, making setup faster and easier.
+For a quick start, explore the one-click templates available in the Cloudflare dashboard in **Rules** > **Overview**. These templates simplify common configurations like redirects, rewrites and header modifications, making setup faster and easier.
 
 ## Page Rules migration
 
@@ -24,8 +24,8 @@ To make the transition seamless, Cloudflare will handle the migration of your ex
 
 If you wish to explore the benefits of modern Rules features sooner, you can begin adopting them today. Doing so allows you to:
 
-* Take advantage of modern features and capabilities sooner.
-* Customize and refine your rules to match your evolving needs.
+- Take advantage of modern features and capabilities sooner.
+- Customize and refine your rules to match your evolving needs.
 
 To assist with this process, we provide you with a comprehensive mapping between Page Rules settings and modern Rules products in this guide.
 
@@ -37,26 +37,26 @@ In 2022, we announced in our blog post [The future of Page Rules ↗](https://bl
 
 Improvements in modern Rules features include:
 
-* **New engine**: New Rules features are powered by the [Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/), which offers versatile configuration with a robust language that supports many HTTP request and response fields.
-* **Improved scalability**: Thanks to the improved scalability, Cloudflare plans now have increased quotas.
-* **Easier troubleshooting**: Rule execution is more predictable, since each rule operates independently, simplifying troubleshooting. Additionally, [Cloudflare Trace](https://developers.cloudflare.com/rules/trace-request/) helps understand rule interactions.
-* **Improved consistency**: New Rules features also ensure consistency, with common fields and capabilities shared across products, offering a seamless experience and predictable Terraform configurations.
+- **New engine**: New Rules features are powered by the [Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/), which offers versatile configuration with a robust language that supports many HTTP request and response fields.
+- **Improved scalability**: Thanks to the improved scalability, Cloudflare plans now have increased quotas.
+- **Easier troubleshooting**: Rule execution is more predictable, since each rule operates independently, simplifying troubleshooting. Additionally, [Cloudflare Trace](https://developers.cloudflare.com/rules/trace-request/) helps understand rule interactions.
+- **Improved consistency**: New Rules features also ensure consistency, with common fields and capabilities shared across products, offering a seamless experience and predictable Terraform configurations.
 
 ## Key differences
 
 The evaluation and execution order of Rules features is different from Page Rules:
 
-* **Rule matching logic**: Page Rules apply the first matching rule (first match wins). In contrast, modern Rules are stackable, meaning multiple matching rules can combine and apply to the same request (last match wins). For example, if multiple cache rules match the same URL, the features in those rules will all apply in order.
-* **Action separation**: A Page Rule may include multiple actions for different products that are applied in a sequence selected by the customer within the Page Rule itself. Modern Rules features are evaluated [in a fixed sequence](https://developers.cloudflare.com/rules/origin-rules/#execution-order), with customers defining the rule order within a product [phase](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/).
-* **Precedence**: Modern Rules features take precedence over Page Rules. For instance, if both define caching settings for the same path, Cache Rules will override Page Rules.
-* **Caching behavior**: In Cache Rules, selecting **Eligible for cache** automatically enables **Cache Everything** by default. To maintain the exact behavior of Page Rules, you may need to [adjust your configuration](https://developers.cloudflare.com/cache/how-to/cache-rules/page-rules-migration/).
-* **Interactions with Workers**: Requests handled by Workers will suppress Page Rules actions, but they will not suppress actions from modern Rules features.
+- **Rule matching logic**: Page Rules apply the first matching rule (first match wins). In contrast, modern Rules are stackable, meaning multiple matching rules can combine and apply to the same request (last match wins). For example, if multiple cache rules match the same URL, the features in those rules will all apply in order.
+- **Action separation**: A Page Rule may include multiple actions for different products that are applied in a sequence selected by the customer within the Page Rule itself. Modern Rules features are evaluated [in a fixed sequence](https://developers.cloudflare.com/rules/origin-rules/#execution-order), with customers defining the rule order within a product [phase](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/).
+- **Precedence**: Modern Rules features take precedence over Page Rules. For instance, if both define caching settings for the same path, Cache Rules will override Page Rules.
+- **Caching behavior**: In Cache Rules, selecting **Eligible for cache** automatically enables **Cache Everything** by default. To maintain the exact behavior of Page Rules, you may need to [adjust your configuration](https://developers.cloudflare.com/cache/how-to/cache-rules/page-rules-migration/).
+- **Interactions with Workers**: Requests handled by Workers will suppress Page Rules actions, but they will not suppress actions from modern Rules features.
 
 ## Convert Page Rules URLs to filter expressions
 
 Modern Rules use filter expressions instead of URL patterns. These expressions, built with the Rules language, allow greater precision by leveraging [fields](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/), [functions](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/), and [operators](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/).
 
-The following example demonstrates the use of the [http.request.full\_uri](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.full%5Furi/) field and the `wildcard` operator for [wildcard matching](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#wildcard-matching):
+The following example demonstrates the use of the [`http.request.full_uri`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.full_uri/) field and the `wildcard` operator for [wildcard matching](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#wildcard-matching):
 
 A **Page Rules URL** like:
 
@@ -70,50 +70,50 @@ becomes a **filter expression** such as:
 
 ### Important considerations
 
-* **Protocol scheme**: Page Rules URL matching does not include the URI scheme (for example, `http://` or `https://`) unless explicitly included in the rule. Filter expressions using `http.request.full_uri` field, however, require matching the full URI, including the protocol scheme. To make your filter expression scheme-agnostic, use `http*://` as a wildcard for both `http://` and `https://`.
-* **Query strings**: Page Rules ignore query strings unless they are part of the rule URL. Filter expressions include the query string automatically, as part of the `http.request.full_uri` field. To ensure query strings do not affect your matching, append a `*` wildcard at the end of your filter expression, such as `.txt*`.
+- **Protocol scheme**: Page Rules URL matching does not include the URI scheme (for example, `http://` or `https://`) unless explicitly included in the rule. Filter expressions using `http.request.full_uri` field, however, require matching the full URI, including the protocol scheme. To make your filter expression scheme-agnostic, use `http*://` as a wildcard for both `http://` and `https://`.
+- **Query strings**: Page Rules ignore query strings unless they are part of the rule URL. Filter expressions include the query string automatically, as part of the `http.request.full_uri` field. To ensure query strings do not affect your matching, append a `*` wildcard at the end of your filter expression, such as `.txt*`.
 
 ## Feature correspondence table
 
 To help you map existing Page Rules to modern Rules products, this table outlines how Page Rules settings translate to modern Rules and provides examples for common configurations.
 
-Also, to streamline common configurations, the Cloudflare dashboard now includes dozens of one-click templates, available in **Rules** \> **Overview**. These templates enable you to deploy commonly used features — such as redirects, rewrites, and header modifications — instantly, with pre-filled filter expressions and actions. Explore these templates in the dashboard for a faster setup.
+Also, to streamline common configurations, the Cloudflare dashboard now includes dozens of one-click templates, available in **Rules** > **Overview**. These templates enable you to deploy commonly used features — such as redirects, rewrites, and header modifications — instantly, with pre-filled filter expressions and actions. Explore these templates in the dashboard for a faster setup.
 
-| Page Rules setting          | New implementation uses...           | Migration/Replacement instructions                                          |
-| --------------------------- | ------------------------------------ | --------------------------------------------------------------------------- |
-| Always Use HTTPS            | Redirect Rules (Single Redirects)    | [Migrate Always Use HTTPS](#migrate-always-use-https)                       |
-| Browser Cache TTL           | Cache Rules                          | [Migrate Browser Cache TTL](#migrate-browser-cache-ttl)                     |
-| Browser Integrity Check     | Configuration Rules                  | [Migrate Browser Integrity Check](#migrate-browser-integrity-check)         |
-| Bypass Cache on Cookie      | Cache Rules                          | [Migrate Bypass Cache on Cookie](#migrate-bypass-cache-on-cookie)           |
-| Cache By Device Type        | Cache Rules                          | [Migrate Cache By Device Type](#migrate-cache-by-device-type)               |
-| Cache Deception Armor       | Cache Rules                          | [Migrate Cache Deception Armor](#migrate-cache-deception-armor)             |
-| Cache Level                 | Cache Rules                          | [Migrate Cache Level](#migrate-cache-level-cache-everything)                |
-| Cache on Cookie             | Cache Rules                          | [Migrate Cache on Cookie](#migrate-cache-on-cookie)                         |
-| Cache TTL by status code    | Cache Rules                          | [Migrate Cache TTL by status code](#migrate-cache-ttl-by-status-code)       |
-| Custom Cache Key            | Cache Rules                          | [Migrate Custom Cache Key](#migrate-custom-cache-key)                       |
-| Disable Apps                | Configuration Rules                  | [Migrate Disable Apps](#migrate-disable-apps)                               |
-| Disable Performance         | N/A (deprecated)                     | [Replace Disable Performance](#replace-disable-performance)                 |
-| Disable Railgun             | N/A (deprecated)                     | N/A                                                                         |
-| Disable Security            | N/A (deprecated)                     | [Replace Disable Security](#replace-disable-security)                       |
-| Disable Zaraz               | Configuration Rules                  | [Migrate Disable Zaraz](#migrate-disable-zaraz)                             |
-| Edge Cache TTL              | Cache Rules                          | [Migrate Edge Cache TTL](#migrate-edge-cache-ttl)                           |
-| Email Obfuscation           | Configuration Rules                  | [Migrate Email Obfuscation](#migrate-email-obfuscation)                     |
-| Forwarding URL              | Redirect Rules (Single Redirects)    | [Migrate Forwarding URL](#migrate-forwarding-url)                           |
-| Host Header Override        | Origin Rules                         | [Migrate Host Header Override](#migrate-host-header-override)               |
-| IP Geolocation Header       | Transform Rules (Managed Transforms) | [Migrate IP Geolocation Header](#migrate-ip-geolocation-header)             |
-| Opportunistic Encryption    | Configuration Rules                  | [Migrate Opportunistic Encryption](#migrate-opportunistic-encryption)       |
-| Origin Cache Control        | Cache Rules                          | [Migrate Origin Cache Control](#migrate-origin-cache-control)               |
-| Origin Error Page Pass-thru | Cache Rules                          | [Migrate Origin Error Page Pass-thru](#migrate-origin-error-page-pass-thru) |
-| Polish                      | Configuration Rules                  | [Migrate Polish](#migrate-polish)                                           |
-| Query String Sort           | Cache Rules                          | [Migrate Query String Sort](#migrate-query-string-sort)                     |
-| Resolve Override            | Origin Rules                         | [Migrate Resolve Override](#migrate-resolve-override)                       |
-| Respect Strong ETags        | Cache Rules                          | [Migrate Respect Strong ETags](#migrate-respect-strong-etags)               |
-| Response Buffering          | N/A (deprecated)                     | N/A                                                                         |
-| Rocket Loader               | Configuration Rules                  | [Migrate Rocket Loader](#migrate-rocket-loader)                             |
-| Security Level              | Configuration Rules                  | [Migrate Security Level](#migrate-security-level)                           |
-| True Client IP Header       | Transform Rules (Managed Transforms) | [Migrate True Client IP Header](#migrate-true-client-ip-header)             |
-| SSL                         | Configuration Rules                  | [Migrate SSL](#migrate-ssl)                                                 |
-| Web Application Firewall    | N/A (deprecated)                     | N/A                                                                         |
+| Page Rules setting | New implementation uses... | Migration/Replacement instructions |
+| --- | --- | --- |
+| Always Use HTTPS | Redirect Rules (Single Redirects) | [Migrate Always Use HTTPS](#migrate-always-use-https) |
+| Browser Cache TTL | Cache Rules | [Migrate Browser Cache TTL](#migrate-browser-cache-ttl) |
+| Browser Integrity Check | Configuration Rules | [Migrate Browser Integrity Check](#migrate-browser-integrity-check) |
+| Bypass Cache on Cookie | Cache Rules | [Migrate Bypass Cache on Cookie](#migrate-bypass-cache-on-cookie) |
+| Cache By Device Type | Cache Rules | [Migrate Cache By Device Type](#migrate-cache-by-device-type) |
+| Cache Deception Armor | Cache Rules | [Migrate Cache Deception Armor](#migrate-cache-deception-armor) |
+| Cache Level | Cache Rules | [Migrate Cache Level](#migrate-cache-level-cache-everything) |
+| Cache on Cookie | Cache Rules | [Migrate Cache on Cookie](#migrate-cache-on-cookie) |
+| Cache TTL by status code | Cache Rules | [Migrate Cache TTL by status code](#migrate-cache-ttl-by-status-code) |
+| Custom Cache Key | Cache Rules | [Migrate Custom Cache Key](#migrate-custom-cache-key) |
+| Disable Apps | Configuration Rules | [Migrate Disable Apps](#migrate-disable-apps) |
+| Disable Performance | N/A (deprecated) | [Replace Disable Performance](#replace-disable-performance) |
+| Disable Railgun | N/A (deprecated) | N/A |
+| Disable Security | N/A (deprecated) | [Replace Disable Security](#replace-disable-security) |
+| Disable Zaraz | Configuration Rules | [Migrate Disable Zaraz](#migrate-disable-zaraz) |
+| Edge Cache TTL | Cache Rules | [Migrate Edge Cache TTL](#migrate-edge-cache-ttl) |
+| Email Obfuscation | Configuration Rules | [Migrate Email Obfuscation](#migrate-email-obfuscation) |
+| Forwarding URL | Redirect Rules (Single Redirects) | [Migrate Forwarding URL](#migrate-forwarding-url) |
+| Host Header Override | Origin Rules | [Migrate Host Header Override](#migrate-host-header-override) |
+| IP Geolocation Header | Transform Rules (Managed Transforms) | [Migrate IP Geolocation Header](#migrate-ip-geolocation-header) |
+| Opportunistic Encryption | Configuration Rules | [Migrate Opportunistic Encryption](#migrate-opportunistic-encryption) |
+| Origin Cache Control | Cache Rules | [Migrate Origin Cache Control](#migrate-origin-cache-control) |
+| Origin Error Page Pass-thru | Cache Rules | [Migrate Origin Error Page Pass-thru](#migrate-origin-error-page-pass-thru) |
+| Polish | Configuration Rules | [Migrate Polish](#migrate-polish) |
+| Query String Sort | Cache Rules | [Migrate Query String Sort](#migrate-query-string-sort) |
+| Resolve Override | Origin Rules | [Migrate Resolve Override](#migrate-resolve-override) |
+| Respect Strong ETags | Cache Rules | [Migrate Respect Strong ETags](#migrate-respect-strong-etags) |
+| Response Buffering | N/A (deprecated) | N/A |
+| Rocket Loader | Configuration Rules | [Migrate Rocket Loader](#migrate-rocket-loader) |
+| Security Level | Configuration Rules | [Migrate Security Level](#migrate-security-level) |
+| True Client IP Header | Transform Rules (Managed Transforms) | [Migrate True Client IP Header](#migrate-true-client-ip-header) |
+| SSL | Configuration Rules | [Migrate SSL](#migrate-ssl) |
+| Web Application Firewall | N/A (deprecated) | N/A |
 
 ### Migrate Always Use HTTPS
 
@@ -121,24 +121,23 @@ Also, to streamline common configurations, the Cloudflare dashboard now includes
 
 You configured a Page Rule to perform an automatic redirect from HTTP to HTTPS for all subdomains of `example.com` and the `example.com` domain itself:
 
-* **URL** `*example.com/*`
-* **Setting**: _Always Use HTTPS_
+- **URL** `*example.com/*`
+- **Setting**: *Always Use HTTPS*
 
 **How to migrate**:
 
 1. [Create a single redirect](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-dashboard/) to always redirect HTTP requests to HTTPS. You can select the **Redirect from HTTP to HTTPS** rule template or enter the following rule configuration:
-
-  * **If incoming requests match**: Wildcard pattern
-    * **Request URL**: `http://*`
-  * **Then**:
-    * **Target URL**: `https://${1}`
-    * **Status code**: _301_
-    * **Preserve query string**: Enabled
+   - **If incoming requests match**: Wildcard pattern
+     - **Request URL**: `http://*`
+   - **Then**:
+     - **Target URL**: `https://${1}`
+     - **Status code**: *301*
+     - **Preserve query string**: Enabled
 2. Turn off your existing Page Rule and validate the behavior of the redirect you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                                                        | Migrate to a single redirect                                                                                                                                                                                                        |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Page Rules configuration | Migrate to a single redirect |
+| --- | --- |
 | ![Example Page Rule with 'Always Use HTTPS' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=650,height=588,format=webp/_astro/pr-always-use-https.CUl_pNfb.png) | ![Single redirect matching the 'Always Use HTTPS' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=791,height=1032,format=webp/_astro/pr-always-use-https-new.BOryxIv0.png) |
 
 ### Migrate Automatic HTTPS Rewrites
@@ -147,27 +146,26 @@ You configured a Page Rule to perform an automatic redirect from HTTP to HTTPS f
 
 You configured a Page Rule turning on Automatic HTTPS Rewrites for all subdomains of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: _Automatic HTTPS Rewrites_
-* **Value**: On
+- **URL**: `*example.com/*`
+- **Setting**: *Automatic HTTPS Rewrites*
+- **Value**: On
 
 **How to migrate**:
 
 1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to always rewrite HTTP links to HTTPS for any hostname containing `example.com`:
-
-  * **When incoming requests match**: Custom filter expression
-    * Using the Expression Builder:
-      `Hostname contains "example.com"`
-    * Using the Expression Editor:
-      `(http.host contains "example.com")`
-  * **Then the settings are**:
-    * **Setting**: Automatic HTTPS Rewrites
-    * **Value**: On
+   - **When incoming requests match**: Custom filter expression
+     - Using the Expression Builder:
+       `Hostname contains "example.com"`
+     - Using the Expression Editor:
+       `(http.host contains "example.com")`
+   - **Then the settings are**:
+     - **Setting**: Automatic HTTPS Rewrites
+     - **Value**: On
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                                                                        | Migrate to a configuration rule                                                                                                                                                                                                                       |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Page Rules configuration | Migrate to a configuration rule |
+| --- | --- |
 | ![Example Page Rule with 'Automatic HTTPS Rewrites' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=743,height=686,format=webp/_astro/pr-automatic-https-rewrites.CLJyVtYV.png) | ![Configuration rule matching the 'Automatic HTTPS Rewrites' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=852,height=906,format=webp/_astro/pr-automatic-https-rewrites-new.Bkd1FpXw.png) |
 
 ### Migrate Browser Cache TTL
@@ -176,30 +174,31 @@ You configured a Page Rule turning on Automatic HTTPS Rewrites for all subdomain
 
 You configured a Page Rule adjusting browser cache TTL to one day for all subdomains of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: _Browser Cache TTL_
-* **Enter Browser Cache TTL**: _a day_
+- **URL**: `*example.com/*`
+- **Setting**: *Browser Cache TTL*
+- **Enter Browser Cache TTL**: *a day*
 
 **How to migrate**:
 
 1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to adjust browser cache TTL for caching resources in the browser to one day for any hostname containing `example.com`:
+   - **When incoming requests match**: Custom filter expression
+     - Using the Expression Builder:
+       `Hostname contains "example.com"`
+     - Using the Expression Editor:
+       `(http.host contains "example.com")`
+   - **Then**:
+     - **Cache eligibility**: Eligible for cache
+     - **Browser TTL**: Override origin and use this TTL
+     - **Input time-to-live (TTL)**: *1 day*
 
-  * **When incoming requests match**: Custom filter expression
-    * Using the Expression Builder:
-      `Hostname contains "example.com"`
-    * Using the Expression Editor:
-      `(http.host contains "example.com")`
-  * **Then**:
-    * **Cache eligibility**: Eligible for cache
-    * **Browser TTL**: Override origin and use this TTL
-    * **Input time-to-live (TTL)**: _1 day_
-Caution
-The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
+   Caution
+
+   The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                                                          | Migrate to a cache rule                                                                                                                                                                                                           |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Page Rules configuration | Migrate to a cache rule |
+| --- | --- |
 | ![Example Page Rule with 'Browser Cache TTL' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=736,height=676,format=webp/_astro/pr-browser-cache-ttl.BsUhcEXO.png) | ![Cache rule matching the 'Browser Cache TTL' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1400,height=1354,format=webp/_astro/pr-browser-cache-ttl-new.CFYgSIfM.png) |
 
 ### Migrate Browser Integrity Check
@@ -208,27 +207,26 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 You configured a Page Rule turning on Browser Integrity Check for all subdomains of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: _Browser Integrity Check_
-* **Value**: On
+- **URL**: `*example.com/*`
+- **Setting**: *Browser Integrity Check*
+- **Value**: On
 
 **How to migrate**:
 
 1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to turn on Browser Integrity Check for protecting against bots and threats for any hostname containing `example.com`:
-
-  * **When incoming requests match**: Custom filter expression
-    * Using the Expression Builder:
-      `Hostname contains "example.com"`
-    * Using the Expression Editor:
-      `(http.host contains "example.com")`
-  * **Then the settings are**:
-    * **Setting**: Browser Integrity Check
-    * **Value**: On
+   - **When incoming requests match**: Custom filter expression
+     - Using the Expression Builder:
+       `Hostname contains "example.com"`
+     - Using the Expression Editor:
+       `(http.host contains "example.com")`
+   - **Then the settings are**:
+     - **Setting**: Browser Integrity Check
+     - **Value**: On
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                                                                      | Migrate to a configuration rule                                                                                                                                                                                                                       |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Page Rules configuration | Migrate to a configuration rule |
+| --- | --- |
 | ![Example Page Rule with 'Browser Integrity Check' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=750,height=720,format=webp/_astro/pr-browser-integrity-check.0TsdxTXD.png) | ![Configuration rule matching the 'Browser Integrity Check' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1237,height=1377,format=webp/_astro/pr-browser-integrity-check-new.DABehTnG.png) |
 
 ### Migrate Bypass Cache on Cookie
@@ -237,28 +235,29 @@ You configured a Page Rule turning on Browser Integrity Check for all subdomains
 
 You configured a Page Rule turning on Bypass Cache on Cookie for all subdomains of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: _Bypass Cache on Cookie_
-* **Enter value**: `test_cookie`
+- **URL**: `*example.com/*`
+- **Setting**: *Bypass Cache on Cookie*
+- **Enter value**: `test_cookie`
 
 **How to migrate**:
 
 1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to bypass cache for requests containing cookie `test_cookie` for any hostname containing `example.com`:
+   - **When incoming requests match**: Custom filter expression
+     - Using the Expression Builder:
+       `Hostname contains "example.com" AND Cookie contains "test-cookie"`
+     - Using the Expression Editor:
+       `(http.host contains "example.com" and http.cookie contains "test-cookie")`
+   - **Then**:
+     - **Cache eligibility**: Bypass cache
 
-  * **When incoming requests match**: Custom filter expression
-    * Using the Expression Builder:
-      `Hostname contains "example.com" AND Cookie contains "test-cookie"`
-    * Using the Expression Editor:
-      `(http.host contains "example.com" and http.cookie contains "test-cookie")`
-  * **Then**:
-    * **Cache eligibility**: Bypass cache
-Caution
-The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
+   Caution
+
+   The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                                                                    | Migrate to a cache rule                                                                                                                                                                                                                    |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Page Rules configuration | Migrate to a cache rule |
+| --- | --- |
 | ![Example Page Rule with 'Bypass Cache on Cookie' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=750,height=688,format=webp/_astro/pr-bypass-cache-on-cookie.h4Mq0pkO.png) | ![Cache rule matching the 'Bypass Cache on Cookie' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=793,format=webp/_astro/pr-bypass-cache-on-cookie-new.BeJb7-Bu.png) |
 
 ### Migrate Cache By Device Type
@@ -267,30 +266,31 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 You configured a Page Rule turning on Cache By Device Type for all subdomains of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: _Cache By Device Type_
-* **Value**: On
+- **URL**: `*example.com/*`
+- **Setting**: *Cache By Device Type*
+- **Value**: On
 
 **How to migrate**:
 
 1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to cache content based on user agent or device type for any hostname containing `example.com`:
+   - **When incoming requests match**: Custom filter expression
+     - Using the Expression Builder:
+       `Hostname contains "example.com"`
+     - Using the Expression Editor:
+       `(http.host contains "example.com")`
+   - **Then**:
+     - **Cache eligibility**: Eligible for cache
+     - **Setting**: Cache key
+       - **Cache by device type**: On
 
-  * **When incoming requests match**: Custom filter expression
-    * Using the Expression Builder:
-      `Hostname contains "example.com"`
-    * Using the Expression Editor:
-      `(http.host contains "example.com")`
-  * **Then**:
-    * **Cache eligibility**: Eligible for cache
-    * **Setting**: Cache key
-      * **Cache by device type**: On
-Caution
-The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
+   Caution
+
+   The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                                                                | Migrate to a cache rule                                                                                                                                                                                                                 |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Page Rules configuration | Migrate to a cache rule |
+| --- | --- |
 | ![Example Page Rule with 'Cache By Device Type' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=750,height=688,format=webp/_astro/pr-cache-by-device-type.D_TlBAdc.png) | ![Cache rule matching the 'Cache By Device Type' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=1329,format=webp/_astro/pr-cache-by-device-type-new.j6a5kEn_.png) |
 
 ### Migrate Cache Deception Armor
@@ -299,29 +299,30 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 You configured a Page Rule turning on Cache Deception Armor for all subdomains of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: Cache Deception Armor
+- **URL**: `*example.com/*`
+- **Setting**: Cache Deception Armor
 
 **How to migrate**:
 
 1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to protect against cache deception attacks for any hostname containing `example.com`:
+   - **When incoming requests match**: Custom filter expression
+     - Using the Expression Builder:
+       `Hostname contains "example.com"`
+     - Using the Expression Editor:
+       `(http.host contains "example.com")`
+   - **Then**:
+     - **Cache eligibility**: Eligible for cache
+     - **Setting**: Cache key
+       - **Cache deception armor**: On
 
-  * **When incoming requests match**: Custom filter expression
-    * Using the Expression Builder:
-      `Hostname contains "example.com"`
-    * Using the Expression Editor:
-      `(http.host contains "example.com")`
-  * **Then**:
-    * **Cache eligibility**: Eligible for cache
-    * **Setting**: Cache key
-      * **Cache deception armor**: On
-Caution
-The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
+   Caution
+
+   The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                                                                  | Migrate to a cache rule                                                                                                                                                                                                                   |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Page Rules configuration | Migrate to a cache rule |
+| --- | --- |
 | ![Example Page Rule with 'Cache Deception Armor' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=750,height=679,format=webp/_astro/pr-cache-deception-armor.CAh-wrs4.png) | ![Cache rule matching the 'Cache Deception Armor' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=1174,format=webp/_astro/pr-cache-deception-armor-new.BT9l5EUw.png) |
 
 ### Migrate Cache Level (Cache Everything)
@@ -330,28 +331,29 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 You configured a Page Rule turning on caching of all assets for all subdomains of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: _Cache Level_
-* **Select Cache Level**: _Cache Everything_
+- **URL**: `*example.com/*`
+- **Setting**: *Cache Level*
+- **Select Cache Level**: *Cache Everything*
 
 **How to migrate**:
 
 1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to adjust cache level for any hostname containing `example.com`:
+   - **When incoming requests match**: Custom filter expression
+     - Using the Expression Builder:
+       `Hostname contains "example.com"`
+     - Using the Expression Editor:
+       `(http.host contains "example.com")`
+   - **Then**:
+     - **Cache eligibility**: Eligible for cache
 
-  * **When incoming requests match**: Custom filter expression
-    * Using the Expression Builder:
-      `Hostname contains "example.com"`
-    * Using the Expression Editor:
-      `(http.host contains "example.com")`
-  * **Then**:
-    * **Cache eligibility**: Eligible for cache
-Caution
-The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
+   Caution
+
+   The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                                                                           | Migrate to a cache rule                                                                                                                                                                                                                           |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Page Rules configuration | Migrate to a cache rule |
+| --- | --- |
 | ![Example Page Rule with 'Cache Level' set to 'Cache Everything'](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=750,height=691,format=webp/_astro/pr-cache-level-everything.DdVHSP6R.png) | ![Cache rule matching the 'Cache Level: Cache Everything' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=696,format=webp/_astro/pr-cache-level-everything-new.CWHQUlgp.png) |
 
 ### Migrate Cache on Cookie
@@ -360,28 +362,29 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 You configured a Page Rule turning on caching for responses that contained cookie `test-cookie` for all subdomains of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: _Cache on Cookie_
-* **Enter value**: `test-cookie`
+- **URL**: `*example.com/*`
+- **Setting**: *Cache on Cookie*
+- **Enter value**: `test-cookie`
 
 **How to migrate**:
 
 1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to cache responses containing cookie `test_cookie` for any hostname containing `example.com`:
+   - **When incoming requests match**: Custom filter expression
+     - Using the Expression Builder:
+       `Hostname contains "example.com" AND Cookie contains "test-cookie"`
+     - Using the Expression Editor:
+       `(http.host contains "example.com" and http.cookie contains "test-cookie")`
+   - **Then**:
+     - **Cache eligibility**: Eligible for cache
 
-  * **When incoming requests match**: Custom filter expression
-    * Using the Expression Builder:
-      `Hostname contains "example.com" AND Cookie contains "test-cookie"`
-    * Using the Expression Editor:
-      `(http.host contains "example.com" and http.cookie contains "test-cookie")`
-  * **Then**:
-    * **Cache eligibility**: Eligible for cache
-Caution
-The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
+   Caution
+
+   The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                                                      | Migrate to a cache rule                                                                                                                                                                                                      |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Page Rules configuration | Migrate to a cache rule |
+| --- | --- |
 | ![Example Page Rule with 'Cache on Cookie' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=750,height=693,format=webp/_astro/pr-cache-on-cookie.ByvIqgIj.png) | ![Cache rule matching the 'Cache on Cookie' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=784,format=webp/_astro/pr-cache-on-cookie-new.PWLmyHmb.png) |
 
 ### Migrate Cache TTL by status code
@@ -390,36 +393,37 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 You configured a Page Rule turning on caching of every response with status code between `200` and `599` for one day, for all subdomains of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: _Cache TTL by status code_
-* **Status code or enter range**: `200-599`
-* **Select option**: _a day_
+- **URL**: `*example.com/*`
+- **Setting**: *Cache TTL by status code*
+- **Status code or enter range**: `200-599`
+- **Select option**: *a day*
 
 **How to migrate**:
 
 1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to cache responses with status code between `200` and `599` for one day for any hostname containing `example.com`:
+   - **When incoming requests match**: Custom filter expression
+     - Using the Expression Builder:
+       `Hostname contains "example.com"`
+     - Using the Expression Editor:
+       `(http.host contains "example.com")`
+     - **Then**:
+       - **Cache eligibility**: Eligible for cache
+       - **Setting**: Edge TTL
+         - Use cache-control header if present, use default Cloudflare caching behavior if not
+         - **Status code TTL**:
+           - **Scope**: *Range*
+           - **From**: *200*
+           - **To**: *599*
+           - **Duration**: *1 day*
 
-  * **When incoming requests match**: Custom filter expression
-    * Using the Expression Builder:
-      `Hostname contains "example.com"`
-    * Using the Expression Editor:
-      `(http.host contains "example.com")`
-    * **Then**:
-      * **Cache eligibility**: Eligible for cache
-      * **Setting**: Edge TTL
-        * Use cache-control header if present, use default Cloudflare caching behavior if not
-        * **Status code TTL**:
-          * **Scope**: _Range_
-          * **From**: _200_
-          * **To**: _599_
-          * **Duration**: _1 day_
-Caution
-The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
+   Caution
+
+   The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                                                                            | Migrate to a cache rule                                                                                                                                                                                                                         |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Page Rules configuration | Migrate to a cache rule |
+| --- | --- |
 | ![Example Page Rule with the 'Cache TTL by status code' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=750,height=862,format=webp/_astro/pr-cache-ttl-by-status-code.BEFPIQlk.png) | ![Cache rule matching the 'Cache TTL by status code' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1412,height=1376,format=webp/_astro/pr-cache-ttl-by-status-code-new.D7fRKD4K.png) |
 
 ### Migrate Custom Cache Key
@@ -428,30 +432,31 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 You configured a Page Rule setting a custom cache key for all query string parameters, for all subdomains of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: _Custom Cache Key_
-  * **Query String**: All query string parameters
+- **URL**: `*example.com/*`
+- **Setting**: *Custom Cache Key*
+  - **Query String**: All query string parameters
 
 **How to migrate**:
 
 1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to set a custom cache key for all query string parameters, for any hostname containing `example.com`:
+   - **When incoming requests match**: Custom filter expression
+     - Using the Expression Builder:
+       `Hostname contains "example.com"`
+     - Using the Expression Editor:
+       `(http.host contains "example.com")`
+   - **Then**:
+     - **Cache eligibility**: Eligible for cache
+     - **Setting**: Cache key
+       - **Query string**: All query string parameters
 
-  * **When incoming requests match**: Custom filter expression
-    * Using the Expression Builder:
-      `Hostname contains "example.com"`
-    * Using the Expression Editor:
-      `(http.host contains "example.com")`
-  * **Then**:
-    * **Cache eligibility**: Eligible for cache
-    * **Setting**: Cache key
-      * **Query string**: All query string parameters
-Caution
-The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
+   Caution
+
+   The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                                                             | Migrate to a cache rule                                                                                                                                                                                                         |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Page Rules configuration | Migrate to a cache rule |
+| --- | --- |
 | ![Example Page Rule with the 'Custom Cache Key' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=750,height=1130,format=webp/_astro/pr-custom-cache-key.B4mIYhPL.png) | ![Cache rule matching the 'Custom Cache Key' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1070,height=1520,format=webp/_astro/pr-custom-cache-key-new.Cgx92M0b.png) |
 
 ### Migrate Disable Apps
@@ -460,25 +465,24 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 You configured a Page Rule turning off Cloudflare Apps (deprecated) for all subdomains of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: _Disable Apps_
+- **URL**: `*example.com/*`
+- **Setting**: *Disable Apps*
 
 **How to migrate**:
 
 1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to disable Cloudflare Apps (deprecated) for any hostname containing `example.com`:
-
-  * **When incoming requests match**: Custom filter expression
-    * Using the Expression Builder:
-      `Hostname contains "example.com"`
-    * Using the Expression Editor:
-      `(http.host contains "example.com")`
-  * **Then the settings are**:
-    * **Setting**: Disable Apps
+   - **When incoming requests match**: Custom filter expression
+     - Using the Expression Builder:
+       `Hostname contains "example.com"`
+     - Using the Expression Editor:
+       `(http.host contains "example.com")`
+   - **Then the settings are**:
+     - **Setting**: Disable Apps
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                                                | Migrate to a configuration rule                                                                                                                                                                                                 |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Page Rules configuration | Migrate to a configuration rule |
+| --- | --- |
 | ![Example Page Rule with 'Disable Apps' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=750,height=689,format=webp/_astro/pr-disable-apps.DtWuKgu3.png) | ![Configuration rule matching the 'Disable Apps' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1064,height=1152,format=webp/_astro/pr-disable-apps-new.D0ZGFzGR.png) |
 
 ### Replace Disable Performance
@@ -493,26 +497,25 @@ This Page Rules setting turned off Polish and Rocket Loader. You can still turn 
 
 You configured a Page Rule with **Disable Performance** (deprecated) for all subdomains of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: _Disable Performance_
+- **URL**: `*example.com/*`
+- **Setting**: *Disable Performance*
 
 **How to replace**:
 
 1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to disable Polish and Rocket Loader for any hostname containing `example.com`:
-
-  * **When incoming requests match**: Custom filter expression
-    * Using the Expression Builder:
-      `Hostname contains "example.com"`
-    * Using the Expression Editor:
-      `(http.host contains "example.com")`
-  * **Then the settings are**:
-    * **Polish**: _Off_
-    * **Rocket Loader**: Off
+   - **When incoming requests match**: Custom filter expression
+     - Using the Expression Builder:
+       `Hostname contains "example.com"`
+     - Using the Expression Editor:
+       `(http.host contains "example.com")`
+   - **Then the settings are**:
+     - **Polish**: *Off*
+     - **Rocket Loader**: Off
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                                                              | Migrate to a configuration rule                                                                                                                                                                                                                        |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Page Rules configuration | Migrate to a configuration rule |
+| --- | --- |
 | ![Example Page Rule with 'Disable Performance' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=790,height=714,format=webp/_astro/pr-disable-performance.Q-fOmuUU.png) | ![Configuration rule partially matching the 'Disable Performance' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=702,height=1418,format=webp/_astro/pr-disable-performance-new.DL9beJ7_.png) |
 
 ### Replace Disable Security
@@ -527,17 +530,16 @@ This Page Rules setting turns off Email Obfuscation, Rate Limiting (previous ver
 
 You configured a Page Rule with **Disable Security** (deprecated) for all subdomains of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: _Disable Security_
+- **URL**: `*example.com/*`
+- **Setting**: *Disable Security*
 
 This setting turned off a subset of Cloudflare security features: Email Obfuscation, Rate Limiting (previous version), Scrape Shield, URL (Zone) Lockdown, and WAF managed rules (previous version).
 
 **How to replace**:
 
 1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to turn off one or more security features:
-
-  * [Email Obfuscation](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/)
-  * [Hotlink Protection](https://developers.cloudflare.com/waf/tools/scrape-shield/hotlink-protection/)
+   - [Email Obfuscation](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/)
+   - [Hotlink Protection](https://developers.cloudflare.com/waf/tools/scrape-shield/hotlink-protection/)
 2. If required, [create a WAF exception](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-dashboard/) to skip one or more rules of WAF managed rulesets for requests coming from IP addresses in an allowlist.
 3. Turn off your existing Page Rule and validate the behavior of the rules you created.
 4. If your tests succeed, delete the existing Page Rule.
@@ -552,25 +554,24 @@ If you are still using [WAF managed rules (previous version)](https://developers
 
 You configured a Page Rule turning off [Zaraz](https://developers.cloudflare.com/zaraz/) for all subdomains of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: _Disable Zaraz_
+- **URL**: `*example.com/*`
+- **Setting**: *Disable Zaraz*
 
 **How to migrate**:
 
 1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to turn off Zaraz for any hostname containing `example.com`:
-
-  * **When incoming requests match**: Custom filter expression
-    * Using the Expression Builder:
-      `Hostname contains "example.com"`
-    * Using the Expression Editor:
-      `(http.host contains "example.com")`
-  * **Then the settings are**:
-    * **Setting**: Disable Zaraz
+   - **When incoming requests match**: Custom filter expression
+     - Using the Expression Builder:
+       `Hostname contains "example.com"`
+     - Using the Expression Editor:
+       `(http.host contains "example.com")`
+   - **Then the settings are**:
+     - **Setting**: Disable Zaraz
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                                                  | Migrate to a configuration rule                                                                                                                                                                                                   |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Page Rules configuration | Migrate to a configuration rule |
+| --- | --- |
 | ![Example Page Rule with 'Disable Zaraz' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=750,height=670,format=webp/_astro/pr-disable-zaraz.BO7qA0TE.png) | ![Configuration rule matching the 'Disable Zaraz' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1049,height=1263,format=webp/_astro/pr-disable-zaraz-new.Cc92OsIN.png) |
 
 ### Migrate Edge Cache TTL
@@ -579,31 +580,32 @@ You configured a Page Rule turning off [Zaraz](https://developers.cloudflare.com
 
 You configured a Page Rule adjusting Edge Cache TTL for all subdomains of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: _Edge Cache TTL_
-* **Enter Edge Cache TTL**: _a day_
+- **URL**: `*example.com/*`
+- **Setting**: *Edge Cache TTL*
+- **Enter Edge Cache TTL**: *a day*
 
 **How to migrate**:
 
 1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to adjust edge cache TTL for caching resources on Cloudflare edge to one day, for any hostname containing `example.com`:
+   - **When incoming requests match**: Custom filter expression
+     - Using the Expression Builder:
+       `Hostname contains "example.com"`
+     - Using the Expression Editor:
+       `(http.host contains "example.com")`
+   - **Then**:
+     - **Cache eligibility**: Eligible for cache
+     - **Setting**: Edge TTL
+       - Ignore cache-control header and use this TTL
+       - **Input time-to-live (TTL)**: *1 day*
 
-  * **When incoming requests match**: Custom filter expression
-    * Using the Expression Builder:
-      `Hostname contains "example.com"`
-    * Using the Expression Editor:
-      `(http.host contains "example.com")`
-  * **Then**:
-    * **Cache eligibility**: Eligible for cache
-    * **Setting**: Edge TTL
-      * Ignore cache-control header and use this TTL
-      * **Input time-to-live (TTL)**: _1 day_
-Caution
-The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
+   Caution
+
+   The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                                                        | Migrate to a cache rule                                                                                                                                                                                                    |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Page Rules configuration | Migrate to a cache rule |
+| --- | --- |
 | ![Example Page Rule with the 'Edge Cache TTL' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=750,height=706,format=webp/_astro/pr-edge-cache-ttl.DdpuJjjM.png) | ![Cache rule matching the 'Edge Cache TTL' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1058,height=906,format=webp/_astro/pr-edge-cache-ttl-new.CASDurRT.png) |
 
 ### Migrate Email Obfuscation
@@ -612,27 +614,26 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 You configured a Page Rule turning off [Email Obfuscation](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/) for all subdomains of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: _Email Obfuscation_
-* **Value**: Off
+- **URL**: `*example.com/*`
+- **Setting**: *Email Obfuscation*
+- **Value**: Off
 
 **How to migrate**:
 
 1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to turn off Email Obfuscation for any hostname containing `example.com`:
-
-  * **When incoming requests match**: Custom filter expression
-    * Using the Expression Builder:
-      `Hostname contains "example.com"`
-    * Using the Expression Editor:
-      `(http.host contains "example.com")`
-  * **Then the settings are**:
-    * **Setting**: Email Obfuscation
-      * **Value**: Off
+   - **When incoming requests match**: Custom filter expression
+     - Using the Expression Builder:
+       `Hostname contains "example.com"`
+     - Using the Expression Editor:
+       `(http.host contains "example.com")`
+   - **Then the settings are**:
+     - **Setting**: Email Obfuscation
+       - **Value**: Off
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                                                          | Migrate to a configuration rule                                                                                                                                                                                                                 |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Page Rules configuration | Migrate to a configuration rule |
+| --- | --- |
 | ![Example Page Rule with 'Email Obfuscation' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=775,height=717,format=webp/_astro/pr-email-obfuscation.B5bsi7dl.png) | ![Configuration rule matching the 'Email Obfuscation > Off' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1060,height=1517,format=webp/_astro/pr-email-obfuscation-new.CV0JNmIj.png) |
 
 ### Migrate Forwarding URL
@@ -643,38 +644,45 @@ You configured a Page Rule turning off [Email Obfuscation](https://developers.cl
 
 You configured a Page Rule permanently redirecting `www.example.com` to `example.com` on all URI paths:
 
-* **URL**: `www.example.com/*`
-* **Setting**: _Forwarding URL_
-* **Select Status code**: _301 - Permanent Redirect_
-* **Destination URL**: `https://example.com/$1`
+- **URL**: `www.example.com/*`
+- **Setting**: *Forwarding URL*
+- **Select Status code**: *301 - Permanent Redirect*
+- **Destination URL**: `https://example.com/$1`
 
 **How to migrate**:
 
 1. [Create a single redirect](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-dashboard/) to permanently redirect requests from `https://www.example.com` to `https://example.com`. You can select the **Redirect from WWW to Root** rule template or enter the following rule configuration:
-
-  * **If incoming requests match**: Wildcard pattern
-    * **Request URL**: `https://www.example.com/*`
-  * **Then**:
-    * **Target URL**: `https://example.com/${1}`
-    * **Status code**: _301_
-    * **Preserve query string**: Enabled
+   - **If incoming requests match**: Wildcard pattern
+     - **Request URL**: `https://www.example.com/*`
+   - **Then**:
+     - **Target URL**: `https://example.com/${1}`
+     - **Status code**: *301*
+     - **Preserve query string**: Enabled
 2. Turn off your existing Page Rule and validate the behavior of the redirect you created.
 3. If your tests succeed, delete the existing Page Rule.
 
+<details>
+
+<summary>
+
 Notes about the rule equivalence
+
+</summary>
 
 The provided example using Single Redirects is not an exact match for the previously existing Page Rule in the same example.
 
-The exact equivalent would need to match both HTTP and HTTPS incoming requests, which you could achieve using a wildcard pattern like the following (notice the extra `*` after `http`):
+The exact equivalent would need to match both HTTP and HTTPS incoming requests, which you could achieve using a wildcard pattern like the following (notice the extra <code>*</code> after <code>http</code>):
 
-* **Request URL**: `http*://www.example.com/*`
+- **Request URL**: <code>http*://www.example.com/*</code>
 
-This would require you to also change the **Target URL** to use the second wildcard capture group instead of the first one (corresponding to the text captured by second `*` in the wildcard pattern above):
+This would require you to also change the **Target URL** to use the second wildcard capture group instead of the first one (corresponding to the text captured by second <code>*</code> in the wildcard pattern above):
 
-* **Target URL**: `https://example.com/${2}`
+- **Target URL**: <code>https://example.com/${2}</code>
 
-| Page Rules configuration                                                                                                                                                                       | Migrate to a single redirect                                                                                                                                                                                                       |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+</details>
+
+| Page Rules configuration | Migrate to a single redirect |
+| --- | --- |
 | ![Example Page Rule #1 with 'Forwarding URL' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=769,height=782,format=webp/_astro/pr-forwarding-url.DyV2zs8N.png) | ![Single redirect matching the 'Forwarding URL' setting of the example Page Rule #1](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=790,height=1031,format=webp/_astro/pr-forwarding-url-new.FfZIMpof.png) |
 
 **Example #2: Redirect all pages under old path to new path**
@@ -683,38 +691,45 @@ This would require you to also change the **Target URL** to use the second wildc
 
 You configured a Page Rule permanently redirecting `example.com/old-path` to `example.com/new-path`:
 
-* **URL**: `example.com/old-path/*`
-* **Setting**: _Forwarding URL_
-* **Select Status code**: _301 - Permanent Redirect_
-* **Destination URL**: `https://example.com/new-path/$1`
+- **URL**: `example.com/old-path/*`
+- **Setting**: *Forwarding URL*
+- **Select Status code**: *301 - Permanent Redirect*
+- **Destination URL**: `https://example.com/new-path/$1`
 
 **How to migrate**:
 
 1. [Create a single redirect](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-dashboard/) to permanently redirect requests for `example.com/old-path` to `example.com/new-path`:
-
-  * **If incoming requests match**: Wildcard pattern
-    * **Request URL**: `https://example.com/old-path/*`
-  * **Then**:
-    * **Target URL**: `https://example.com/new-path/${1}`
-    * **Status code**: _301_
-    * **Preserve query string**: Enabled
+   - **If incoming requests match**: Wildcard pattern
+     - **Request URL**: `https://example.com/old-path/*`
+   - **Then**:
+     - **Target URL**: `https://example.com/new-path/${1}`
+     - **Status code**: *301*
+     - **Preserve query string**: Enabled
 2. Turn off your existing Page Rule and validate the behavior of the redirect you created.
 3. If your tests succeed, delete the existing Page Rule.
 
+<details>
+
+<summary>
+
 Notes about the rule equivalence
+
+</summary>
 
 The provided example using Single Redirects is not an exact match for the previously existing Page Rule in the same example.
 
-The exact equivalent would need to match both HTTP and HTTPS incoming requests, which you could achieve using a wildcard pattern like the following (notice the extra `*` after `http`):
+The exact equivalent would need to match both HTTP and HTTPS incoming requests, which you could achieve using a wildcard pattern like the following (notice the extra <code>*</code> after <code>http</code>):
 
-* **Request URL**: `http*://example.com/old-path/*`
+- **Request URL**: <code>http*://example.com/old-path/*</code>
 
-This would require you to also change the **Target URL** to use the second wildcard capture group instead of the first one (corresponding to the text captured by second `*` in the wildcard pattern above):
+This would require you to also change the **Target URL** to use the second wildcard capture group instead of the first one (corresponding to the text captured by second <code>*</code> in the wildcard pattern above):
 
-* **Target URL**: `https://example.com/new-path/${2}`
+- **Target URL**: <code>https://example.com/new-path/${2}</code>
 
-| Page Rules configuration                                                                                                                                                                         | Migrate to a single redirect                                                                                                                                                                                                         |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+</details>
+
+| Page Rules configuration | Migrate to a single redirect |
+| --- | --- |
 | ![Example Page Rule #2 with 'Forwarding URL' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=920,height=921,format=webp/_astro/pr-forwarding-url-2.CNt6YZ_U.png) | ![Single redirect matching the 'Forwarding URL' setting of the example Page Rule #2](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=791,height=1032,format=webp/_astro/pr-forwarding-url-2-new.CP3zl46U.png) |
 
 ### Migrate Host Header Override
@@ -723,27 +738,26 @@ This would require you to also change the **Target URL** to use the second wildc
 
 You configured a Page Rule changing the `Host` HTTP header to `example.saas-provider.com`, for all requests addressed at any subdomain of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: _Host Header Override_
-* **Enter value**: `example.saas-provider.com`
+- **URL**: `*example.com/*`
+- **Setting**: *Host Header Override*
+- **Enter value**: `example.saas-provider.com`
 
 **How to migrate**:
 
 1. [Create an origin rule](https://developers.cloudflare.com/rules/origin-rules/create-dashboard/) changing the `Host` header to `example.saas-provider.com` for any hostname containing `example.com`:
-
-  * **When incoming requests match**: Custom filter expression
-    * Using the Expression Builder:
-      `Hostname contains "example.com"`
-    * Using the Expression Editor:
-      `(http.host contains "example.com")`
-  * **Then**:
-    * **Set origin parameters**:
-      * **Host Header** \> **Rewrite to**: `example.saas-provider.com`
+   - **When incoming requests match**: Custom filter expression
+     - Using the Expression Builder:
+       `Hostname contains "example.com"`
+     - Using the Expression Editor:
+       `(http.host contains "example.com")`
+   - **Then**:
+     - **Set origin parameters**:
+       - **Host Header** > **Rewrite to**: `example.saas-provider.com`
 2. Turn off your existing Page Rule and validate the behavior of the origin rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                                                                | Migrate to an origin rule                                                                                                                                                                                                                |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Page Rules configuration | Migrate to an origin rule |
+| --- | --- |
 | ![Example Page Rule with 'Host Header Override' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=772,height=711,format=webp/_astro/pr-host-header-override.BXq8XNIs.png) | ![Origin rule matching the 'Host Header Override' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1053,height=1440,format=webp/_astro/pr-host-header-override-new.DUASGBHN.png) |
 
 ### Migrate IP Geolocation Header
@@ -752,9 +766,9 @@ You configured a Page Rule changing the `Host` HTTP header to `example.saas-prov
 
 You configured a Page Rule adding a `CF-IPCountry` HTTP header, for all requests addressed at any subdomain of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: _IP Geolocation Header_
-* **Value**: On
+- **URL**: `*example.com/*`
+- **Setting**: *IP Geolocation Header*
+- **Value**: On
 
 **How to migrate**:
 
@@ -762,8 +776,8 @@ You configured a Page Rule adding a `CF-IPCountry` HTTP header, for all requests
 2. Turn off your existing Page Rule and validate the behavior of the Managed Transform.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                                                                  | Migrate to a Managed Transform                                                                                                                                                                                                                                                     |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Page Rules configuration | Migrate to a Managed Transform |
+| --- | --- |
 | ![Example Page Rule with 'IP Geolocation Header' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=750,height=687,format=webp/_astro/pr-ip-geolocation-header._es904nB.png) | ![The 'Add visitor location headers' Managed Transform matching the 'IP Geolocation Header' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=742,format=webp/_astro/pr-ip-geolocation-header-new.D3CE9V7z.png) |
 
 ### Migrate Opportunistic Encryption
@@ -772,27 +786,26 @@ You configured a Page Rule adding a `CF-IPCountry` HTTP header, for all requests
 
 You configured a Page Rule turning off Opportunistic Encryption for all subdomains of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: _Opportunistic Encryption_
-* **Value**: Off
+- **URL**: `*example.com/*`
+- **Setting**: *Opportunistic Encryption*
+- **Value**: Off
 
 **How to migrate**:
 
 1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to turn off Opportunistic Encryption for any hostname containing `example.com`:
-
-  * **When incoming requests match**: Custom filter expression
-    * Using the Expression Builder:
-      `Hostname contains "example.com"`
-    * Using the Expression Editor:
-      `(http.host contains "example.com")`
-  * **Then the settings are**:
-    * **Setting**: Opportunistic Encryption
-      * **Value**: Off
+   - **When incoming requests match**: Custom filter expression
+     - Using the Expression Builder:
+       `Hostname contains "example.com"`
+     - Using the Expression Editor:
+       `(http.host contains "example.com")`
+   - **Then the settings are**:
+     - **Setting**: Opportunistic Encryption
+       - **Value**: Off
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                                                                        | Migrate to a configuration rule                                                                                                                                                                                                                               |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Page Rules configuration | Migrate to a configuration rule |
+| --- | --- |
 | ![Example Page Rule with 'Opportunistic Encryption' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=775,height=717,format=webp/_astro/pr-opportunistic-encryption.BcbwaI0m.png) | ![Configuration rule matching the 'Opportunistic Encryption > Off' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1046,height=1737,format=webp/_astro/pr-opportunistic-encryption-new.LwpNCqst.png) |
 
 ### Migrate Origin Cache Control
@@ -801,30 +814,31 @@ You configured a Page Rule turning off Opportunistic Encryption for all subdomai
 
 You configured a Page Rule turning off Origin Cache Control for all subdomains of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: Origin Cache Control
-* **Value**: Off
+- **URL**: `*example.com/*`
+- **Setting**: Origin Cache Control
+- **Value**: Off
 
 **How to migrate**:
 
 1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to determine edge cache behavior for any hostname containing `example.com`:
+   - **When incoming requests match**: Custom filter expression
+     - Using the Expression Builder:
+       `Hostname contains "example.com"`
+     - Using the Expression Editor:
+       `(http.host contains "example.com")`
+   - **Then**:
+     - **Cache eligibility**: Eligible for cache
+     - **Setting**: Origin Cache Control
+       - **Enable Origin Cache Control**: Off
 
-  * **When incoming requests match**: Custom filter expression
-    * Using the Expression Builder:
-      `Hostname contains "example.com"`
-    * Using the Expression Editor:
-      `(http.host contains "example.com")`
-  * **Then**:
-    * **Cache eligibility**: Eligible for cache
-    * **Setting**: Origin Cache Control
-      * **Enable Origin Cache Control**: Off
-Caution
-The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
+   Caution
+
+   The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                                                                | Migrate to a cache rule                                                                                                                                                                                                                 |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Page Rules configuration | Migrate to a cache rule |
+| --- | --- |
 | ![Example Page Rule with 'Origin Cache Control' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=770,height=710,format=webp/_astro/pr-origin-cache-control.DCUWJE-U.png) | ![Cache rule matching the 'Origin Cache Control' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1072,height=1702,format=webp/_astro/pr-origin-cache-control-new.DqpXz-FD.png) |
 
 ### Migrate Origin Error Page Pass-thru
@@ -833,30 +847,31 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 You configured a Page Rule turning on Origin Error Page Pass-thru for all subdomains of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: _Origin Error Page Pass-thru_
-* **Value**: On
+- **URL**: `*example.com/*`
+- **Setting**: *Origin Error Page Pass-thru*
+- **Value**: On
 
 **How to migrate**:
 
 1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to determine edge cache behavior for any hostname containing `example.com`:
+   - **When incoming requests match**: Custom filter expression
+     - Using the Expression Builder:
+       `Hostname contains "example.com"`
+     - Using the Expression Editor:
+       `(http.host contains "example.com")`
+   - **Then**:
+     - **Cache eligibility**: Eligible for cache
+     - **Setting**: Origin error page pass-thru
+       - **Use Origin error page pass-thru**: On
 
-  * **When incoming requests match**: Custom filter expression
-    * Using the Expression Builder:
-      `Hostname contains "example.com"`
-    * Using the Expression Editor:
-      `(http.host contains "example.com")`
-  * **Then**:
-    * **Cache eligibility**: Eligible for cache
-    * **Setting**: Origin error page pass-thru
-      * **Use Origin error page pass-thru**: On
-Caution
-The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
+   Caution
+
+   The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                                                                              | Migrate to a cache rule                                                                                                                                                                                                                                    |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Page Rules configuration | Migrate to a cache rule |
+| --- | --- |
 | ![Example Page Rule with 'Origin Error Page Pass-thru' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=770,height=710,format=webp/_astro/pr-origin-error-page-pass-thru.CaO5dguv.png) | ![Cache rule matching the 'Origin Error Page Pass-thru > On' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1052,height=1612,format=webp/_astro/pr-origin-error-page-pass-thru-new.CEumhpfw.png) |
 
 ### Migrate Polish
@@ -865,27 +880,26 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 You configured a Page Rule turning off [Polish](https://developers.cloudflare.com/images/polish/) for all subdomains of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: Polish
-* **Value**: Off
+- **URL**: `*example.com/*`
+- **Setting**: Polish
+- **Value**: Off
 
 **How to migrate**:
 
 1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to turn off Polish for any hostname containing `example.com`:
-
-  * **When incoming requests match**: Custom filter expression
-    * Using the Expression Builder:
-      `Hostname contains "example.com"`
-    * Using the Expression Editor:
-      `(http.host contains "example.com")`
-  * **Then the settings are**:
-    * **Setting**: Polish
-      * **Select value**: _Off_
+   - **When incoming requests match**: Custom filter expression
+     - Using the Expression Builder:
+       `Hostname contains "example.com"`
+     - Using the Expression Editor:
+       `(http.host contains "example.com")`
+   - **Then the settings are**:
+     - **Setting**: Polish
+       - **Select value**: *Off*
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                                    | Migrate to a configuration rule                                                                                                                                                                                          |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Page Rules configuration | Migrate to a configuration rule |
+| --- | --- |
 | ![Example Page Rule with 'Polish' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=527,height=485,format=webp/_astro/pr-polish.BMjezHuI.png) | ![Configuration rule matching the 'Polish > Off' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=705,height=1272,format=webp/_astro/pr-polish-new.BPVnKGv2.png) |
 
 ### Migrate Query String Sort
@@ -894,30 +908,31 @@ You configured a Page Rule turning off [Polish](https://developers.cloudflare.co
 
 You configured a Page Rule turning on Query String Sort for all subdomains of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: _Query String Sort_
-* **Value**: On
+- **URL**: `*example.com/*`
+- **Setting**: *Query String Sort*
+- **Value**: On
 
 **How to migrate**:
 
 1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to sort query string parameters for caching purposes, for any hostname containing `example.com`:
+   - **When incoming requests match**: Custom filter expression
+     - Using the Expression Builder:
+       `Hostname contains "example.com"`
+     - Using the Expression Editor:
+       `(http.host contains "example.com")`
+   - **Then**:
+     - **Cache eligibility**: Eligible for cache
+     - **Setting**: Cache key
+       - **Sort query string**: On
 
-  * **When incoming requests match**: Custom filter expression
-    * Using the Expression Builder:
-      `Hostname contains "example.com"`
-    * Using the Expression Editor:
-      `(http.host contains "example.com")`
-  * **Then**:
-    * **Cache eligibility**: Eligible for cache
-    * **Setting**: Cache key
-      * **Sort query string**: On
-Caution
-The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
+   Caution
+
+   The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                                                          | Migrate to a cache rule                                                                                                                                                                                                              |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Page Rules configuration | Migrate to a cache rule |
+| --- | --- |
 | ![Example Page Rule with 'Query String Sort' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=513,height=481,format=webp/_astro/pr-query-string-sort.C01G9KtA.png) | ![Cache rule matching the 'Query String Sort > On' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=705,height=869,format=webp/_astro/pr-query-string-sort-new.DhEB-zV8.png) |
 
 ### Migrate Resolve Override
@@ -926,26 +941,25 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 You configured a Page Rule changing the origin to `example.saas-provider.com`, for all requests addressed at any subdomain of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: _Resolve Override_
-* **Enter value**: `example.saas-provider.com`
+- **URL**: `*example.com/*`
+- **Setting**: *Resolve Override*
+- **Enter value**: `example.saas-provider.com`
 
 **How to migrate**:
 
 1. [Create an origin rule](https://developers.cloudflare.com/rules/origin-rules/create-dashboard/) overriding the origin to `example.saas-provider.com` for any hostname containing `example.com`:
-
-  * **When incoming requests match**: Custom filter expression
-    * Using the Expression Builder:
-      `Hostname contains "example.com"`
-    * Using the Expression Editor:
-      `(http.host contains "example.com")`
-  * **Then**:
-    * **DNS Record** \> **Override to**: `example.saas-provider.com`
+   - **When incoming requests match**: Custom filter expression
+     - Using the Expression Builder:
+       `Hostname contains "example.com"`
+     - Using the Expression Editor:
+       `(http.host contains "example.com")`
+   - **Then**:
+     - **DNS Record** > **Override to**: `example.saas-provider.com`
 2. Turn off your existing Page Rule and validate the behavior of the origin rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                                                        | Migrate to an origin rule                                                                                                                                                                                                        |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Page Rules configuration | Migrate to an origin rule |
+| --- | --- |
 | ![Example Page Rule with 'Resolve Override' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=750,height=691,format=webp/_astro/pr-resolve-override.B4LoxPLL.png) | ![Origin rule matching the 'Resolve Override' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1052,height=1440,format=webp/_astro/pr-resolve-override-new.CqsoTaU3.png) |
 
 ### Migrate Respect Strong ETags
@@ -954,30 +968,31 @@ You configured a Page Rule changing the origin to `example.saas-provider.com`, f
 
 You configured a Page Rule turning on byte-for-byte equivalency checks for all subdomains of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: _Respect Strong ETags_
-* **Value**: On
+- **URL**: `*example.com/*`
+- **Setting**: *Respect Strong ETags*
+- **Value**: On
 
 **How to migrate**:
 
 1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to respect strong ETags for any hostname containing `example.com`:
+   - **When incoming requests match**: Custom filter expression
+     - Using the Expression Builder:
+       `Hostname contains "example.com"`
+     - Using the Expression Editor:
+       `(http.host contains "example.com")`
+   - **Then**:
+     - **Cache eligibility**: Eligible for cache
+     - **Setting**: Respect strong ETags
+       - **Use strong ETag headers**: On
 
-  * **When incoming requests match**: Custom filter expression
-    * Using the Expression Builder:
-      `Hostname contains "example.com"`
-    * Using the Expression Editor:
-      `(http.host contains "example.com")`
-  * **Then**:
-    * **Cache eligibility**: Eligible for cache
-    * **Setting**: Respect strong ETags
-      * **Use strong ETag headers**: On
-Caution
-The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
+   Caution
+
+   The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                                                                | Migrate to a cache rule                                                                                                                                                                                                                      |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Page Rules configuration | Migrate to a cache rule |
+| --- | --- |
 | ![Example Page Rule with 'Respect Strong ETags' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=769,height=718,format=webp/_astro/pr-respect-strong-etags.CUOv_EvP.png) | ![Cache rule matching the 'Respect Strong ETags > On' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1053,height=1524,format=webp/_astro/pr-respect-strong-etags-new.BnNZFkL6.png) |
 
 ### Migrate Rocket Loader
@@ -986,56 +1001,54 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 You configured a Page Rule turning off Rocket Loader for all subdomains of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: _Rocket Loader_
-* **Value**: Off
+- **URL**: `*example.com/*`
+- **Setting**: *Rocket Loader*
+- **Value**: Off
 
 **How to migrate**:
 
 1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to turn off Rocket Loader for any hostname containing `example.com`:
-
-  * **When incoming requests match**: Custom filter expression
-    * Using the Expression Builder:
-      `Hostname contains "example.com"`
-    * Using the Expression Editor:
-      `(http.host contains "example.com")`
-  * **Then the settings are**:
-    * **Setting**: Rocket Loader
-      * **Value**: Off
+   - **When incoming requests match**: Custom filter expression
+     - Using the Expression Builder:
+       `Hostname contains "example.com"`
+     - Using the Expression Editor:
+       `(http.host contains "example.com")`
+   - **Then the settings are**:
+     - **Setting**: Rocket Loader
+       - **Value**: Off
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                                                  | Migrate to a configuration rule                                                                                                                                                                                                        |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Page Rules configuration | Migrate to a configuration rule |
+| --- | --- |
 | ![Example Page Rule with 'Rocket Loader' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=523,height=487,format=webp/_astro/pr-rocket-loader.DOfWWA3Z.png) | ![Configuration rule matching the 'Rocket Loader > Off' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=699,height=1329,format=webp/_astro/pr-rocket-loader-new.CPlD3EdY.png) |
 
 ### Migrate Security Level
 
 **Context:**
 
-You configured a Page Rule setting Security Level to _I'm Under Attack_ for all subdomains of `example.com` and the `example.com` domain itself:
+You configured a Page Rule setting Security Level to *I'm Under Attack* for all subdomains of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: _Security Level_
-* **Select Security Level**: _I'm Under Attack_
+- **URL**: `*example.com/*`
+- **Setting**: *Security Level*
+- **Select Security Level**: *I'm Under Attack*
 
 **How to migrate**:
 
-1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to set Security Level to _I'm Under Attack_, for any hostname containing `example.com`:
-
-  * **When incoming requests match**: Custom filter expression
-    * Using the Expression Builder:
-      `Hostname contains "example.com"`
-    * Using the Expression Editor:
-      `(http.host contains "example.com")`
-  * **Then the settings are**:
-    * **Setting**: I'm Under Attack
-    * **Value**: On
+1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to set Security Level to *I'm Under Attack*, for any hostname containing `example.com`:
+   - **When incoming requests match**: Custom filter expression
+     - Using the Expression Builder:
+       `Hostname contains "example.com"`
+     - Using the Expression Editor:
+       `(http.host contains "example.com")`
+   - **Then the settings are**:
+     - **Setting**: I'm Under Attack
+     - **Value**: On
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                                                    | Migrate to a configuration rule                                                                                                                                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Page Rules configuration | Migrate to a configuration rule |
+| --- | --- |
 | ![Example Page Rule with 'Security Level' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=517,height=480,format=webp/_astro/pr-security-level.YzQR-68G.png) | ![Configuration rule matching the "Security Level > I'm Under Attack" setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1000,height=1627,format=webp/_astro/pr-security-level-new.DP1C5HJ8.png) |
 
 ### Migrate True Client IP Header
@@ -1044,9 +1057,9 @@ You configured a Page Rule setting Security Level to _I'm Under Attack_ for all 
 
 You configured a Page Rule adding a `True-Client-IP` HTTP header for all requests addressed at any subdomain of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: _True Client IP Header_
-* **Value**: On
+- **URL**: `*example.com/*`
+- **Setting**: *True Client IP Header*
+- **Value**: On
 
 **How to migrate**:
 
@@ -1054,48 +1067,47 @@ You configured a Page Rule adding a `True-Client-IP` HTTP header for all request
 2. Turn off your existing Page Rule and validate the behavior of the Managed Transform.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                                                                  | Migrate to a Managed Transform                                                                                                                                                                                                                                                    |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Page Rules configuration | Migrate to a Managed Transform |
+| --- | --- |
 | ![Example Page Rule with 'True Client IP Header' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=769,height=708,format=webp/_astro/pr-true-client-ip-header.h51QIhp7.png) | ![The 'Add "True-Client-IP" header' Managed Transform matching the 'True Client IP Header' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1034,height=653,format=webp/_astro/pr-true-client-ip-header-new.DKFw6CYO.png) |
 
 ### Migrate SSL
 
 **Context:**
 
-You configured a Page Rule setting SSL to _Strict_ for all subdomains of `example.com` and the `example.com` domain itself:
+You configured a Page Rule setting SSL to *Strict* for all subdomains of `example.com` and the `example.com` domain itself:
 
-* **URL**: `*example.com/*`
-* **Setting**: _SSL_
-* **Select SSL/TLS encryption mode**: _Strict_
+- **URL**: `*example.com/*`
+- **Setting**: *SSL*
+- **Select SSL/TLS encryption mode**: *Strict*
 
 **How to migrate**:
 
-1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to set SSL to _Strict_, for any hostname containing `example.com`:
-
-  * **When incoming requests match**: Custom filter expression
-    * Using the Expression Builder:
-      `Hostname contains "example.com"`
-    * Using the Expression Editor:
-      `(http.host contains "example.com")`
-  * **Then the settings are**:
-    * **Setting**: SSL
-      * **Select SSL/TLS encryption mode**: _Strict_
+1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to set SSL to *Strict*, for any hostname containing `example.com`:
+   - **When incoming requests match**: Custom filter expression
+     - Using the Expression Builder:
+       `Hostname contains "example.com"`
+     - Using the Expression Editor:
+       `(http.host contains "example.com")`
+   - **Then the settings are**:
+     - **Setting**: SSL
+       - **Select SSL/TLS encryption mode**: *Strict*
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                              | Migrate to a configuration rule                                                                                                                                                                              |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Page Rules configuration | Migrate to a configuration rule |
+| --- | --- |
 | ![Example Page Rule with 'SSL' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=772,height=711,format=webp/_astro/pr-ssl.pGEGjIS-.png) | ![Configuration rule matching the "SSL" setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=704,height=1592,format=webp/_astro/pr-ssl-new.DjFLYHwZ.png) |
 
 ## Settings that will not be migrated
 
 The following Page Rules settings will not be migrated to other types of rules:
 
-* **Disable Performance** (this setting is deprecated)
-* **Disable Railgun** (this setting is deprecated, since Railgun is no longer available)
-* **Disable Security** (this setting is deprecated)
-* **Response Buffering** (this setting is deprecated)
-* **Web Application Firewall** (this setting is deprecated, since the previous version of WAF managed rules is deprecated)
+- **Disable Performance** (this setting is deprecated)
+- **Disable Railgun** (this setting is deprecated, since Railgun is no longer available)
+- **Disable Security** (this setting is deprecated)
+- **Response Buffering** (this setting is deprecated)
+- **Web Application Firewall** (this setting is deprecated, since the previous version of WAF managed rules is deprecated)
 
 All other Page Rules settings will be migrated during 2025.
 

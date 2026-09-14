@@ -12,10 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Order of enforcement
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With Cloudflare Gateway, you can [enable and configure](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/) any combination of DNS, network, and HTTP policies.
 
+```
 flowchart TB
     %% Accessibility
     accTitle: Gateway order of enforcement
@@ -70,17 +71,27 @@ flowchart TB
     https@{ shape: hex}
     http0@{ shape: lean-r}
 
+```
+
 Order of enforcement change on 2025-07-14
 
 On 2025-07-14, Gateway began evaluating network-level policies before application-level policies and verify the network path to an origin server before accepting a connection. This only affects your policies if you are applying HTTP policies in your account. For example:
 
+<details>
+
+<summary>
+
 Comparison of old and new order of enforcement
 
-|                                                | Old order of enforcement                                                                                               | New order of enforcement                                                                                                                |
-| ---------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+</summary>
+
+|  | Old order of enforcement | New order of enforcement |
+| --- | --- | --- |
 | **Network Block policy and HTTP Block policy** | Gateway blocks traffic and displays the block page and/or follows the client notification settings on the HTTP policy. | Gateway blocks traffic. Gateway does not display the block page but will follow the client notification settings on the Network policy. |
-| **Network Allow policy and HTTP Block policy** | Gateway blocks traffic and displays the block page and follows the client notification settings on the HTTP policy.    | No change.                                                                                                                              |
-| **Network Block policy and HTTP Allow policy** | Gateway blocks traffic and follows the client notification settings on the Network policy.                             | No change.                                                                                                                              |
+| **Network Allow policy and HTTP Block policy** | Gateway blocks traffic and displays the block page and follows the client notification settings on the HTTP policy. | No change. |
+| **Network Block policy and HTTP Allow policy** | Gateway blocks traffic and follows the client notification settings on the Network policy. | No change. |
+
+</details>
 
 ## Connection establishment
 
@@ -88,6 +99,7 @@ When a user connects to a server with Gateway, Gateway first establishes a TCP c
 
 If the TCP connection to the destination server is successful, Gateway will apply policies. If Gateway policies allow the connection, Gateway will connect the user to the destination server. If Gateway policies block the connection, Gateway will end the connection and will not send any data between the user and the destination server. If the TCP connection to the destination server is unsuccessful, Gateway will not run any policies and retry TCP connections from the user to the server.
 
+```
 flowchart TD
     %% Accessibility
     accTitle: How Gateway proxy works
@@ -107,7 +119,9 @@ flowchart TD
     style G stroke:#00C853
     style H stroke:#D50000
 
-Connections to Zero Trust will always appear in your [Zero Trust network session logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero%5Ftrust%5Fnetwork%5Fsessions/) regardless of connection success. Because Gateway does not inspect failed connections, they will not appear in your [Gateway activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/).
+```
+
+Connections to Zero Trust will always appear in your [Zero Trust network session logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/) regardless of connection success. Because Gateway does not inspect failed connections, they will not appear in your [Gateway activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/).
 
 ### Filter TCP SYN packets with Cloudflare Network Firewall
 
@@ -119,7 +133,7 @@ Cloudflare Network Firewall is available to Enterprise users only.
 
 To block TCP SYN packets to a specific destination:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Firewall policies** \> **Custom policies**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Firewall policies** > **Custom policies**.
 2. Select **Add a policy**.
 3. Create a rule with the destination IP address or CIDR range you want to block. For example, to block all traffic to `10.0.0.0/8`, use the expression `ip.dst in {10.0.0.0/8}` with a **Block** action.
 4. Select **Add new policy**.
@@ -155,12 +169,12 @@ Gateway evaluates DNS policies first in order of DNS resolution, then in [order 
 
 When DNS queries are received, Gateway evaluates policies with pre-resolution selectors, resolves the DNS query, then evaluates policies with post-resolution selectors. This means policies with selectors evaluated before DNS resolution take precedence. For example, the following set of policies will block `example.com`:
 
-| Precedence | Selector                        | Operator | Value         | Action |
-| ---------- | ------------------------------- | -------- | ------------- | ------ |
-| 1          | Resolved Country IP Geolocation | is       | United States | Allow  |
-| 2          | Domain                          | is       | example.com   | Block  |
+| Precedence | Selector | Operator | Value | Action |
+| --- | --- | --- | --- | --- |
+| 1 | Resolved Country IP Geolocation | is | United States | Allow |
+| 2 | Domain | is | `example.com` | Block |
 
-Despite an explicit Allow policy ordered first, policy 2 takes precedence because the _Domain_ selector is evaluated before DNS resolution.
+Despite an explicit Allow policy ordered first, policy 2 takes precedence because the *Domain* selector is evaluated before DNS resolution.
 
 If a policy contains both pre-resolution and post-resolution selectors, Gateway will evaluate the entire policy after DNS resolution. For information on when each selector is evaluated, refer to the [list of DNS selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/#selectors).
 
@@ -197,11 +211,11 @@ When [resolver policies](https://developers.cloudflare.com/cloudflare-one/traffi
 
 If traffic does not match any explicit Allow or Block policy, Gateway applies the following defaults:
 
-| Policy type | Default action | Description                                                                                                                                                                                                                                         |
-| ----------- | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| DNS         | Allow          | DNS queries resolve normally through the configured resolver.                                                                                                                                                                                       |
-| Network     | Allow          | TCP and UDP connections are allowed through the Gateway proxy.                                                                                                                                                                                      |
-| HTTP        | Allow          | HTTP and HTTPS requests are allowed. However, if you have configured a default Block action in your [HTTP policy settings](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/), unmatched traffic is blocked instead. |
+| Policy type | Default action | Description |
+| --- | --- | --- |
+| DNS | Allow | DNS queries resolve normally through the configured resolver. |
+| Network | Allow | TCP and UDP connections are allowed through the Gateway proxy. |
+| HTTP | Allow | HTTP and HTTPS requests are allowed. However, if you have configured a default Block action in your [HTTP policy settings](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/), unmatched traffic is blocked instead. |
 
 Because the default is to allow unmatched traffic, Gateway follows a permissive model. To switch to a restrictive model (block by default, allow by exception), create a catch-all Block policy at the lowest precedence in the relevant policy builder and add specific Allow policies above it.
 
@@ -221,7 +235,7 @@ In the Cloudflare dashboard, policies are in order of precedence from top to bot
 
 #### Cloudflare API
 
-To update the precedence of a policy with the Cloudflare API, use the [Update a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/rules/methods/update/) endpoint to update the `precedence` field.
+To update the precedence of a policy with the Cloudflare API, use the [Update a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/rules/methods/update/) endpoint to update the `precedence` field.
 
 #### DLP policy precedence
 
@@ -233,7 +247,7 @@ If Gateway traffic is headed to a private IP address protected as an Access appl
 
 Terraform provider v4 precedence limitation
 
-To avoid conflicts, version 4 of the Terraform Cloudflare provider applies a hash calculation to policy precedence. For example, a precedence of `1000` may become `1000901`. This can cause errors when reordering policies. To avoid this issue, manually set the precedence of policies created with Terraform using the [Update a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/rules/methods/update/) endpoint.
+To avoid conflicts, version 4 of the Terraform Cloudflare provider applies a hash calculation to policy precedence. For example, a precedence of `1000` may become `1000901`. This can cause errors when reordering policies. To avoid this issue, manually set the precedence of policies created with Terraform using the [Update a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/rules/methods/update/) endpoint.
 
 To ensure your precedence is set correctly, Cloudflare recommends [upgrading your Terraform provider to version 5 ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/guides/version-5-upgrade).
 
@@ -241,43 +255,40 @@ To ensure your precedence is set correctly, Cloudflare recommends [upgrading you
 
 Suppose you have a list of policies arranged in the following order of precedence:
 
-* DNS policies:
+- DNS policies:
 
-| Precedence | Selector | Operator      | Value            | Action |
-| ---------- | -------- | ------------- | ---------------- | ------ |
-| 1          | Host     | is            | example.com      | Block  |
-| 2          | Host     | is            | test.example.com | Allow  |
-| 3          | Domain   | matches regex | .\\              | Block  |
-* HTTP policies:
+  | Precedence | Selector | Operator | Value | Action |
+  | --- | --- | --- | --- | --- |
+  | 1 | Host | is | `example.com` | Block |
+  | 2 | Host | is | `test.example.com` | Allow |
+  | 3 | Domain | matches regex | `.\` | Block |
+- HTTP policies:
 
-| Precedence | Selector | Operator | Value             | Action         |
-| ---------- | -------- | -------- | ----------------- | -------------- |
-| 1          | Host     | is       | example.com       | Block          |
-| 2          | Host     | is       | test2.example.com | Do Not Inspect |
-* Network policies:
+  | Precedence | Selector | Operator | Value | Action |
+  | --- | --- | --- | --- | --- |
+  | 1 | Host | is | `example.com` | Block |
+  | 2 | Host | is | `test2.example.com` | Do Not Inspect |
+- Network policies:
 
-| Precedence | Selector         | Operator | Value            | Action |
-| ---------- | ---------------- | -------- | ---------------- | ------ |
-| 1          | Destination Port | is       | 80               | Block  |
-| 2          | Destination port | is       | 443              | Allow  |
-| 3          | SNI Domain       | is       | test.example.com | Block  |
+  | Precedence | Selector | Operator | Value | Action |
+  | --- | --- | --- | --- | --- |
+  | 1 | Destination Port | is | `80` | Block |
+  | 2 | Destination port | is | `443` | Allow |
+  | 3 | SNI Domain | is | `test.example.com` | Block |
 
 When a user goes to `https://test.example.com`, Gateway performs the following operations:
 
 1. Evaluate DNS request against DNS policies:
-
-  1. Policy #1 does not match `test.example.com` — move on to check Policy #2.
-  2. Policy #2 matches, so DNS resolution is allowed.
-  3. Policy #3 is not evaluated because there has already been an explicit match.
+   1. Policy #1 does not match `test.example.com` — move on to check Policy #2.
+   2. Policy #2 matches, so DNS resolution is allowed.
+   3. Policy #3 is not evaluated because there has already been an explicit match.
 2. Evaluate HTTPS request against network policies:
-
-  1. Policy #1 does not match because port 80 is used for standard HTTP, not HTTPS.
-  2. Policy #2 matches, so the request is allowed and proxied to the upstream server.
-  3. Policy #3 is not evaluated because there has already been an explicit match.
+   1. Policy #1 does not match because port 80 is used for standard HTTP, not HTTPS.
+   2. Policy #2 matches, so the request is allowed and proxied to the upstream server.
+   3. Policy #3 is not evaluated because there has already been an explicit match.
 3. Evaluate HTTPS request against HTTP policies:
-
-  1. Policy #2 is evaluated first because Do Not Inspect [always takes precedence](#http-policies) over Allow and Block. Since there is no match, move on to check Policy #1.
-  2. Policy #1 does not match `test.example.com`. Since there are no matching Block policies, the request passes the HTTP filter.
+   1. Policy #2 is evaluated first because Do Not Inspect [always takes precedence](#http-policies) over Allow and Block. Since there is no match, move on to check Policy #1.
+   2. Policy #1 does not match `test.example.com`. Since there are no matching Block policies, the request passes the HTTP filter.
 
 Therefore, the user is able to connect to `https://test.example.com`.
 
@@ -285,7 +296,7 @@ Therefore, the user is able to connect to `https://test.example.com`.
 
 When arranging policies in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), Gateway automatically calculates the precedence for rearranged policies.
 
-When using the API to create a policy, unless the precedence is explicitly defined in the policy, Gateway will assign precedence to policies starting at `1000`. Every time a new policy is added to the bottom of the order, Gateway will calculate the current highest precedence in the account and add a random integer between 1 and 100 to `1000` so that it now claims the maximum precedence in the account. To manually update a policy's precedence, use the [Update a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/rules/methods/update/) endpoint. You can set a policy's precedence to any value that is not already in use.
+When using the API to create a policy, unless the precedence is explicitly defined in the policy, Gateway will assign precedence to policies starting at `1000`. Every time a new policy is added to the bottom of the order, Gateway will calculate the current highest precedence in the account and add a random integer between 1 and 100 to `1000` so that it now claims the maximum precedence in the account. To manually update a policy's precedence, use the [Update a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/rules/methods/update/) endpoint. You can set a policy's precedence to any value that is not already in use.
 
 Changing the order within the Cloudflare dashboard or API may result in configuration issues when using [Terraform](#manage-precedence-with-terraform).
 

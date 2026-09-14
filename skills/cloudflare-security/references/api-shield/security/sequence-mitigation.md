@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Sequence mitigation
 
-Last updated Jul 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Sequence mitigation allows you to enforce request patterns for authenticated clients communicating with your API.
 
@@ -20,12 +20,12 @@ You can use sequence rules to establish a set of known behavior for API clients 
 
 For example, you may expect that API requests made during a bank funds transfer could conform to the following order in time:
 
-| Order | Method | Path                                   | Description                                                                                                                                    |
-| ----- | ------ | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1     | GET    | /api/v1/users/{user\_id}/accounts      | user\_id is the active user.                                                                                                                   |
-| 2     | GET    | /api/v1/accounts/{account\_id}/balance | account\_id is one of the user’s accounts.                                                                                                     |
-| 3     | GET    | /api/v1/accounts/{account\_id}/balance | account\_id is a different account belonging to the user.                                                                                      |
-| 4     | POST   | /api/v1/transferFunds                  | This contains a request body detailing an account to transfer funds from, an account to transfer funds to, and an amount of money to transfer. |
+| Order | Method | Path | Description |
+| --- | --- | --- | --- |
+| 1 | `GET` | `/api/v1/users/{user_id}/accounts` | `user_id` is the active user. |
+| 2 | `GET` | `/api/v1/accounts/{account_id}/balance` | `account_id` is one of the user’s accounts. |
+| 3 | `GET` | `/api/v1/accounts/{account_id}/balance` | `account_id` is a different account belonging to the user. |
+| 4 | `POST` | `/api/v1/transferFunds` | This contains a request body detailing an account to transfer funds from, an account to transfer funds to, and an amount of money to transfer. |
 
 You may want to enforce that an API user requests `GET /api/v1/users/{user_id}/accounts` before `GET /api/v1/accounts/{account_id}/balance` and that you request `GET /api/v1/accounts/{account_id}/balance` before `POST /api/v1/transferFunds`.
 
@@ -59,7 +59,9 @@ For example, if there was an authorization bug that allowed users to iterate thr
 
 ### Endpoint Management
 
-To track requests to API endpoints, they must be added to [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/). Add your endpoints to endpoint management via [API Discovery](https://developers.cloudflare.com/api-shield/security/api-discovery/), [Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/), or [manually](https://developers.cloudflare.com/api-shield/management-and-monitoring/#add-endpoints-manually) through the Cloudflare dashboard.
+To track requests to API endpoints
+
+, they must be added to [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/). Add your endpoints to endpoint management via [API Discovery](https://developers.cloudflare.com/api-shield/security/api-discovery/), [Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/), or [manually](https://developers.cloudflare.com/api-shield/management-and-monitoring/#add-endpoints-manually) through the Cloudflare dashboard.
 
 ### Session Identifiers
 

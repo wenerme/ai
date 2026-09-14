@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Isolate self-hosted application
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/isolate-application/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/isolate-application/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -26,14 +26,15 @@ Your browser must [allow third-party cookies](https://developers.cloudflare.com/
 
 ## Enable Browser Isolation
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Browser isolation** \> **Browser isolation settings**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Browser isolation** > **Browser isolation settings**.
 2. Turn on **Allow users to open a remote browser without the device client**.
-1. Go to **Access controls** \> **Applications**.
-2. Choose a [self-hosted application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/) and select **Configure**.
-3. Go to **Policies**.
-4. Choose an [Allow policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) and select **Configure**.
-5. Under **Additional settings**, turn on **Isolate application**.
-6. Save the policy.
+
+3. Go to **Access controls** > **Applications**.
+4. Choose a [self-hosted application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/) and select **Configure**.
+5. Go to **Policies**.
+6. Choose an [Allow policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) and select **Configure**.
+7. Under **Additional settings**, turn on **Isolate application**.
+8. Save the policy.
 
 Browser Isolation is now enabled for users who match this policy. After the user logs into Access, the application will launch in a remote browser. To confirm that the application is isolated, refer to [Check if a web page is isolated](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/#3-check-if-a-web-page-is-isolated).
 
@@ -43,16 +44,16 @@ You can optionally add another Allow policy for users on managed devices who do 
 
 Traffic to the isolated Access application is filtered by your Gateway [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/). Useful policies include:
 
-* [Identity-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/) to allow or block requests based on user identity.
-* [Data Loss Prevention policies](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) to log or block transmission of sensitive data.
-* [Isolation policies](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/) to disable browser actions such as copy/paste, printing, or file downloads.
+- [Identity-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/) to allow or block requests based on user identity.
+- [Data Loss Prevention policies](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) to log or block transmission of sensitive data.
+- [Isolation policies](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/) to disable browser actions such as copy/paste, printing, or file downloads.
 
 For example, if your application is hosted on `internal.site.com`, the following policy blocks users from uploading and downloading credit card numbers within the remote browser:
 
-| Selector    | Operator | Value                 | Logic | Action |
-| ----------- | -------- | --------------------- | ----- | ------ |
-| Domain      | in       | internal.site.com     | And   | Block  |
-| DLP Profile | in       | Financial Information |       |        |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Domain | in | `internal.site.com` | And | Block |
+| DLP Profile | in | `Financial Information` |  | |
 
 ## Product compatibility
 

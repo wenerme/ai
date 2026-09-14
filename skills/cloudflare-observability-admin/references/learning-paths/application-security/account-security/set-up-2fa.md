@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Set-up 2FA
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/application-security/account-security/set-up-2fa/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/application-security/account-security/set-up-2fa/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Two-factor authentication (2FA) allows user account owners to add an additional layer of login security to Cloudflare accounts. This additional authentication step requires you to provide both something you know, such as a Cloudflare password, and something you have, such as an authentication code from a mobile device.
 
@@ -34,7 +34,7 @@ As the user account owner, you are automatically assigned the [Super Administrat
 
 ## Enable 2FA
 
-We recommend that all Cloudflare user account holders enable two-factor authentication (2FA) to keep your accounts secure.
+We recommend that all Cloudflare user account holders enable two-factor authentication (2FA) to keep your accounts secure. 
 
 2FA can only be enabled successfully on an account with a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/). If you do not verify your email address first, you may lock yourself out of your account.
 
@@ -46,7 +46,7 @@ To enable two-factor authentication for your Cloudflare login:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login).
 2. Under the **My Profile** dropdown, select **My Profile**.
-3. Select **Authentication**.
+3. Select **Authentication**. 
 4. Select **Add** next to [Mobile App Authentication](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/#configure-totp-mobile-application-authentication) or [Security Key Authentication](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/#configure-security-key-authentication-for-two-factor-cloudflare-login), or **Enable** next to [Email Authentication](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/#configure-email-two-factor-authentication).
 
 Note

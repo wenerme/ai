@@ -12,22 +12,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Limits and Instance Types
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/platform/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Instance Types
 
 The memory, vCPU, and disk space for Containers are set through instance types. You can use one of six predefined instance types or configure a [custom instance type](#custom-instance-types).
 
-| Instance Type | vCPU | Memory  | Disk  |
-| ------------- | ---- | ------- | ----- |
-| lite          | 1/16 | 256 MiB | 2 GB  |
-| basic         | 1/4  | 1 GiB   | 4 GB  |
-| standard-1    | 1/2  | 4 GiB   | 8 GB  |
-| standard-2    | 1    | 6 GiB   | 12 GB |
-| standard-3    | 2    | 8 GiB   | 16 GB |
-| standard-4    | 4    | 12 GiB  | 20 GB |
+| Instance Type | vCPU | Memory | Disk |
+| --- | --- | --- | --- |
+| lite | 1/16 | 256 MiB | 2 GB |
+| basic | 1/4 | 1 GiB | 4 GB |
+| standard-1 | 1/2 | 4 GiB | 8 GB |
+| standard-2 | 1 | 6 GiB | 12 GB |
+| standard-3 | 2 | 8 GiB | 16 GB |
+| standard-4 | 4 | 12 GiB | 20 GB |
 
-These are specified using the [instance\_type property](https://developers.cloudflare.com/workers/wrangler/configuration/#containers) in your Worker's Wrangler configuration file.
+These are specified using the [`instance_type` property](https://developers.cloudflare.com/workers/wrangler/configuration/#containers) in your Worker's Wrangler configuration file.
 
 Note
 
@@ -39,13 +39,13 @@ In addition to the predefined instance types, you can configure custom instance 
 
 Custom instance types have the following constraints:
 
-| Resource             | Limit                              |
-| -------------------- | ---------------------------------- |
-| Minimum vCPU         | 1                                  |
-| Maximum vCPU         | 4                                  |
-| Maximum Memory       | 12 GiB                             |
-| Maximum Disk         | 20 GB                              |
-| Memory to vCPU ratio | Minimum 3 GiB memory per vCPU      |
+| Resource | Limit |
+| --- | --- |
+| Minimum vCPU | 1 |
+| Maximum vCPU | 4 |
+| Maximum Memory | 12 GiB |
+| Maximum Disk | 20 GB |
+| Memory to vCPU ratio | Minimum 3 GiB memory per vCPU |
 | Disk to Memory ratio | Maximum 2 GB disk per 1 GiB memory |
 
 For workloads requiring less than 1 vCPU, use the predefined instance types such as `lite` or `basic`.
@@ -56,13 +56,13 @@ If you need larger instance sizes or higher account-level limits, contact your a
 
 The following limits apply per account:
 
-| Resource                        | Limit                                          |
-| ------------------------------- | ---------------------------------------------- |
-| Concurrent memory               | 6 TiB                                          |
-| Concurrent vCPU                 | 1,500                                          |
-| Concurrent disk                 | 30 TB                                          |
-| Image size                      | Same as [instance disk space](#instance-types) |
-| Total image storage per account | 50 GB [1](#user-content-fn-1)                  |
+| Resource | Limit |
+| --- | --- |
+| Concurrent memory | 6 TiB |
+| Concurrent vCPU | 1,500 |
+| Concurrent disk | 30 TB |
+| Image size | Same as [instance disk space](#instance-types) |
+| Total image storage per account | 50 GB <sup>[1](#user-content-fn-1)</sup> |
 
 ## Footnotes
 

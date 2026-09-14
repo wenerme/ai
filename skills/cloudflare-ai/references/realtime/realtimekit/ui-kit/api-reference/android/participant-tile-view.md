@@ -12,26 +12,26 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RtkParticipantTileView
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/android/participant-tile-view/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/android/participant-tile-view/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A component which plays a participant's video and allows for placement of components like name tag and avatar.
 
 ## Properties
 
-| Property                  | Type                        | Required | Default      | Description                  |
-| ------------------------- | --------------------------- | -------- | ------------ | ---------------------------- |
-| rtk\_ptv\_nameTagPosition | BOTTOM\_LEFT \| TOP\_CENTER | ❌        | BOTTOM\_LEFT | Position of the name tag     |
-| cardBackgroundColor       | color                       | ❌        | \-           | Background color of the tile |
-| cardCornerRadius          | dimension                   | ❌        | \-           | Corner radius of the tile    |
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `rtk_ptv_nameTagPosition` | `BOTTOM_LEFT \| TOP_CENTER` | ❌ | `BOTTOM_LEFT` | Position of the name tag |
+| `cardBackgroundColor` | `color` | ❌ | - | Background color of the tile |
+| `cardCornerRadius` | `dimension` | ❌ | - | Corner radius of the tile |
 
 ## Methods
 
-| Method                  | Parameters                         | Description                             |
-| ----------------------- | ---------------------------------- | --------------------------------------- |
-| activate                | participant: RtkMeetingParticipant | Bind the tile to a specific participant |
-| refreshParticipantName  | \-                                 | Refresh the name tag and avatar         |
-| refreshParticipantVideo | \-                                 | Refresh the video view state            |
-| applyDesignTokens       | designTokens: RtkDesignTokens      | Apply custom design tokens for theming  |
+| Method | Parameters | Description |
+| --- | --- | --- |
+| `activate` | `participant: RtkMeetingParticipant` | Bind the tile to a specific participant |
+| `refreshParticipantName` | - | Refresh the name tag and avatar |
+| `refreshParticipantVideo` | - | Refresh the video view state |
+| `applyDesignTokens` | `designTokens: RtkDesignTokens` | Apply custom design tokens for theming |
 
 ## Usage Examples
 

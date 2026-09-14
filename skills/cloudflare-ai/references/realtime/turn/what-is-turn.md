@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # What is TURN?
 
-Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/turn/what-is-turn/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/turn/what-is-turn/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## What is TURN?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Rollbacks
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/configuration/rollbacks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/configuration/rollbacks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Rollbacks allow you to instantly revert your project to a previous production deployment.
 
@@ -24,8 +24,8 @@ In order to perform a rollback, go to **Deployments** in your Pages project. Bro
 
 ## Related resources
 
-* [Preview Deployments](https://developers.cloudflare.com/pages/configuration/preview-deployments/)
-* [Branch deployment controls](https://developers.cloudflare.com/pages/configuration/branch-build-controls/)
+- [Preview Deployments](https://developers.cloudflare.com/pages/configuration/preview-deployments/)
+- [Branch deployment controls](https://developers.cloudflare.com/pages/configuration/branch-build-controls/)
 
 Was this helpful?
 

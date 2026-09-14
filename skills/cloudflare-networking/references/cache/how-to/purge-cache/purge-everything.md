@@ -12,14 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # ​Purge everything
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To maintain optimal site performance, Cloudflare strongly recommends using single-file (by URL) purging instead of a complete cache purge.
 
 Purging everything instantly clears all resources from your CDN cache in all Cloudflare data centers. Each new request for a purged resource returns to your origin server to validate the resource. If Cloudflare cannot validate the resource, Cloudflare fetches the latest version from the origin server and replaces the cached version. When a site with heavy traffic contains a lot of assets, requests to your origin server can increase substantially and result in slow site performance.
 
-1. In the Cloudflare dashboard, go to the **Configuration** page.
-[Go to **Configuration** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/configuration)
+1. In the Cloudflare dashboard, go to the **Configuration** page. [Go to **Configuration** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/configuration)
 2. Under **Purge Cache**, select **Purge Everything**. A warning window appears.
 3. If you agree, select **Purge Everything**.
 
@@ -31,7 +30,7 @@ For information on rate limits, refer to the [Availability and limits](https://d
 
 ## Resulting cache status
 
-Purge Everything invalidates the resource, resulting in the `CF-Cache-Status` header indicating [EXPIRED](https://developers.cloudflare.com/cache/concepts/cache-responses/#expired) for subsequent requests.
+Purge Everything invalidates the resource, resulting in the `CF-Cache-Status` header indicating [`EXPIRED`](https://developers.cloudflare.com/cache/concepts/cache-responses/#expired) for subsequent requests.
 
 Was this helpful?
 

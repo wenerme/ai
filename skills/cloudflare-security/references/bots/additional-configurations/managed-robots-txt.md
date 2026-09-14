@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # robots.txt setting
 
-Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI companies use crawlers to collect website content for training language models, generating search answers, and other purposes. A `robots.txt` file at the root of your domain tells these crawlers which content they should or should not access. When you turn on the managed `robots.txt` setting, Cloudflare generates and maintains a `robots.txt` file that instructs known AI crawlers to stay away from your content.
 
@@ -32,6 +32,8 @@ If your website already has a `robots.txt` file — verified by an HTTP `200` re
 
 For example, without this feature enabled, the `robots.txt` content of `crawlstop.com` would be:
 
+*Feature not enabledtxt*
+
 ```txt
 User-agent: *
 Disallow: /lp
@@ -42,6 +44,8 @@ Sitemap: https://www.crawlstop.com/sitemap.xml
 ```
 
 With the managed `robots.txt` enabled, Cloudflare will prepend our managed content before your original content, resulting in what you can view at [https://www.crawlstop.com/robots.txt ↗](https://www.crawlstop.com/robots.txt).
+
+*Feature enabledtxt*
 
 ```txt
 # As a condition of accessing this website, you agree to abide by the
@@ -116,8 +120,7 @@ If your website does not have a `robots.txt` file, Cloudflare creates a new file
 
 To implement a `robots.txt` file on your domain:
 
-1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+1. In the Cloudflare dashboard, go to the **Security Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Set your preference to block training in robots.txt**.
 4. Turn on **Set your preference to block training in robots.txt**.
@@ -129,6 +132,8 @@ Content Signals are a set of machine-readable directives in a `robots.txt` file 
 Domains on the Free plan that do not have their own `robots.txt` file and do not use the managed `robots.txt` feature will display the Content Signals Policy when a crawler requests the `robots.txt` file for your domain.
 
 The Content Signals Policy defines these categories but does not express any specific preferences about your content. To set preferences (for example, `ai-train=no`), turn on the managed `robots.txt` feature.
+
+*Content Signals Policytxt*
 
 ```txt
 # As a condition of accessing this website, you agree to abide by the
@@ -161,7 +166,7 @@ Cloudflare's Content Signals Policy is included by default in the `robots.txt` f
 
 If you would like to opt out of displaying the policy in your `robots.txt` file, you can uncheck **Display Content Signals Policy** under **Control AI Crawlers** in your zone's overview.
 
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/)
 
 Alternatively, you can use [Security Settings](#implementation).
 
@@ -173,13 +178,15 @@ Google Search Console may occasionally report `Syntax not understood` for Conten
 
 Cloudflare is testing `content-use`, an optional extension to [Content Signals ↗](https://contentsignals.org/) that lives in your `robots.txt`. It adds a fourth field alongside the existing `search`, `ai-input`, and `ai-train` signals to describe what a crawler may keep and reuse after accessing your content. The field takes one of three values, from least to most permissive:
 
-| Value         | Meaning                                |
-| ------------- | -------------------------------------- |
-| use=immediate | Interact, but store and reuse nothing. |
-| use=reference | Index, excerpt, and link back.         |
-| use=full      | Summarize and reproduce.               |
+| Value | Meaning |
+| --- | --- |
+| `use=immediate` | Interact, but store and reuse nothing. |
+| `use=reference` | Index, excerpt, and link back. |
+| `use=full` | Summarize and reproduce. |
 
 For customers who have turned on the managed `robots.txt` setting, Cloudflare adds `use=reference` to the managed content, in line with the existing default of `search=yes,ai-train=no`:
+
+*Managed robots.txt with the content-use signaltxt*
 
 ```txt
 User-Agent: *

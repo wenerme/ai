@@ -8,12 +8,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # ssl
 
-`ssl` `Boolean`
+`ssl``Boolean`
 
 Returns `true` when the HTTP connection to the client is encrypted.
 
 Categories:
-* Request
+- Request
 
 Was this helpful?
 

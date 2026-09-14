@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Zero Trust
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/data-localization/how-to/zero-trust/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/how-to/zero-trust/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following sections describe how to configure Zero Trust products with the Data Localization Suite, including which features support Regional Services and Customer Metadata Boundary.
 
@@ -52,12 +52,12 @@ By default, Cloudflare will store and deliver logs from data centers across our 
 
 Customers also have the option to reduce the logs that Cloudflare stores:
 
-* You can [exclude PII from logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/manage-pii/)
-* You can [disable logging, or only log blocked requests](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/#selective-logging).
+- You can [exclude PII from logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/manage-pii/)
+- You can [disable logging, or only log blocked requests](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/#selective-logging).
 
 #### Verify regional map application
 
-To verify that your regional map is being applied correctly, check the `IngressColoName` field in your [Zero Trust Network Session logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero%5Ftrust%5Fnetwork%5Fsessions/#ingresscoloname). This field shows the name of the Cloudflare data center where traffic ingressed. Since regionalization is applied upstream from Gateway, the ingress data center will be located within your configured regional map, confirming that traffic is being processed in the correct region.
+To verify that your regional map is being applied correctly, check the `IngressColoName` field in your [Zero Trust Network Session logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/#ingresscoloname). This field shows the name of the Cloudflare data center where traffic ingressed. Since regionalization is applied upstream from Gateway, the ingress data center will be located within your configured regional map, confirming that traffic is being processed in the correct region.
 
 ## Access
 
@@ -65,7 +65,7 @@ To ensure that all reverse proxy requests for applications protected by Cloudfla
 
 ## Cloudflare Tunnel
 
-The [\--region parameter](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#region) in `cloudflared` controls where the tunnel connector establishes its connection to Cloudflare. This setting is separate from Regional Services, which controls where user traffic is decrypted and processed.
+The [`--region` parameter](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#region) in `cloudflared` controls where the tunnel connector establishes its connection to Cloudflare. This setting is separate from Regional Services, which controls where user traffic is decrypted and processed.
 
 For public hostnames served through a tunnel, Regional Services is configured at the DNS record level. The tunnel connector region and the Regional Services region operate independently.
 

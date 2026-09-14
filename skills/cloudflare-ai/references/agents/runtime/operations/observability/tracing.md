@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Tracing
 
-Last updated Aug 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agent tracing helps you understand what an agent did at every turn, including its model calls, tool runs, and approval requests. Use traces to investigate unexpected behavior, find slow operations, and review token usage.
 
@@ -81,9 +81,9 @@ Approval spans represent lifecycle events within a Worker invocation. They do no
 
 Agent spans use three fields to identify the work shown in the dashboard:
 
-* **Agent name** identifies the logical agent implementation. Use a shared name such as `booking-agent`.
-* **Agent ID** identifies the stable agent instance or resource, such as `booking-agent-production`.
-* **Conversation ID** identifies the current conversation or session.
+- **Agent name** identifies the logical agent implementation. Use a shared name such as `booking-agent`.
+- **Agent ID** identifies the stable agent instance or resource, such as `booking-agent-production`.
+- **Conversation ID** identifies the current conversation or session.
 
 Do not derive the agent name from a request, conversation, or user identifier. This creates too many distinct agent names in the dashboard.
 
@@ -163,7 +163,7 @@ import { wrapAISDK } from "agents/observability/ai";
 const tracedAI = wrapAISDK(ai);
 ```
 
-`wrapAISDK()` supports AI SDK v6 and v7\. It instruments `generateText`, `streamText`, `generateObject`, and `streamObject`, creating the `invoke_agent` parent before model and tool work begins.
+`wrapAISDK()` supports AI SDK v6 and v7. It instruments `generateText`, `streamText`, `generateObject`, and `streamObject`, creating the `invoke_agent` parent before model and tool work begins.
 
 Unlike Think, a direct AI SDK call has no Agent instance from which to infer dashboard identity. Supply the [agent identity fields](https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/#agent-identity) on each call.
 
@@ -289,12 +289,12 @@ Workers does not yet support the [OpenTelemetry API ↗](https://opentelemetry.i
 
 Add these attributes to both the `invoke_agent` and `chat` spans so the Agents dashboard can associate the telemetry with the agent and conversation:
 
-| Attribute               | invoke\_agent span                              | chat span                                    |
-| ----------------------- | ----------------------------------------------- | -------------------------------------------- |
-| gen\_ai.operation.name  | invoke\_agent                                   | chat                                         |
-| gen\_ai.agent.name      | A shared agent name, such as booking-agent      | The same agent name                          |
-| gen\_ai.agent.id        | A stable identifier for the agent instance      | The same agent ID                            |
-| gen\_ai.conversation.id | The conversation, session, or thread identifier | The same conversation, session, or thread ID |
+| Attribute | `invoke_agent` span | `chat` span |
+| --- | --- | --- |
+| `gen_ai.operation.name` | `invoke_agent` | `chat` |
+| `gen_ai.agent.name` | A shared agent name, such as `booking-agent` | The same agent name |
+| `gen_ai.agent.id` | A stable identifier for the agent instance | The same agent ID |
+| `gen_ai.conversation.id` | The conversation, session, or thread identifier | The same conversation, session, or thread ID |
 
 #### Store payloads
 
@@ -312,16 +312,16 @@ The Agents view shows your agent's operations. The full Worker trace may include
 
 Every span counts as one observability event, including spans not shown in the Agents view. Tracing is free while in beta. Beginning October 1, 2026, tracing will be included in existing Workers Observability pricing:
 
-| Tier         | Included events                                     | Retention |
-| ------------ | --------------------------------------------------- | --------- |
-| Workers Free | 200,000 per day                                     | 3 days    |
-| Workers Paid | 20 million per month ($0.60 per additional million) | 7 days    |
+| Tier | Included events | Retention |
+| --- | --- | --- |
+| Workers Free | 200,000 per day | 3 days |
+| Workers Paid | 20 million per month ($0.60 per additional million) | 7 days |
 
 ## Limitations
 
-* Use agent traces for debugging and observability. Traces are not a complete or lossless record of a conversation.
-* Payload data is subject to span size limits. Long messages, reasoning, tool arguments, and results may be truncated. These limits may change.
-* Session replay does not display images.
+- Use agent traces for debugging and observability. Traces are not a complete or lossless record of a conversation.
+- Payload data is subject to span size limits. Long messages, reasoning, tool arguments, and results may be truncated. These limits may change.
+- Session replay does not display images.
 
 ## Next steps
 

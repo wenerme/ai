@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # FAQs
 
-Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/data-localization/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Are DLP and DLS the same?
 
@@ -22,7 +22,7 @@ No, they are not. DLP stands for [Data Loss Prevention](https://developers.cloud
 
 ## Are Cloudflare's services GDPR compliant?
 
-Yes, even without DLS, Cloudflare services are designed to satisfy the requirements of the GDPR (General Data Protection Regulation). Cloudflare services are also verified compliant with the EU Cloud Code of Conduct (EU Cloud CoC), Verification-ID: 2023LVL02SCOPE4316\. For further information, visit EU Cloud CoC [public register ↗](https://eucoc.cloud/en/public-register).
+Yes, even without DLS, Cloudflare services are designed to satisfy the requirements of the GDPR (General Data Protection Regulation). Cloudflare services are also verified compliant with the EU Cloud Code of Conduct (EU Cloud CoC), Verification-ID: 2023LVL02SCOPE4316. For further information, visit EU Cloud CoC [public register ↗](https://eucoc.cloud/en/public-register).
 
 ## How can I use DLS?
 
@@ -48,9 +48,9 @@ If you want users inside a region to benefit from local processing while still s
 
 ## Which Regional Services option works with Static IPs or BYOIP?
 
-* [Spectrum Static IPs](https://developers.cloudflare.com/spectrum/about/static-ip/) are supported only by Regionalized Spectrum Applications.
-* [BYOIP](https://developers.cloudflare.com/byoip/) is supported by both Regionalized Spectrum Applications and [Regionalized IP Bindings](https://developers.cloudflare.com/data-localization/regional-services/ip-bindings/).
-* Regional Hostnames use Cloudflare's shared anycast IP addresses and do not support Static IPs.
+- [Spectrum Static IPs](https://developers.cloudflare.com/spectrum/about/static-ip/) are supported only by Regionalized Spectrum Applications.
+- [BYOIP](https://developers.cloudflare.com/byoip/) is supported by both Regionalized Spectrum Applications and [Regionalized IP Bindings](https://developers.cloudflare.com/data-localization/regional-services/ip-bindings/).
+- Regional Hostnames use Cloudflare's shared anycast IP addresses and do not support Static IPs.
 
 For an overview of each option, refer to [Ways to use Regional Services](https://developers.cloudflare.com/data-localization/regional-services/#ways-to-use-regional-services).
 
@@ -62,9 +62,9 @@ In short, **managed regions** are predefined regions that Cloudflare maintains a
 
 Yes, you have these options available:
 
-* [Spectrum TCP/UDP Apps](https://developers.cloudflare.com/spectrum/) (without TLS termination)
-* [Magic Transit](https://developers.cloudflare.com/magic-transit/)
-* [Privacy Gateway](https://developers.cloudflare.com/privacy-gateway/)
+- [Spectrum TCP/UDP Apps](https://developers.cloudflare.com/spectrum/) (without TLS termination)
+- [Magic Transit](https://developers.cloudflare.com/magic-transit/)
+- [Privacy Gateway](https://developers.cloudflare.com/privacy-gateway/)
 
 These options only offer L3/L4 DDoS protection (network-layer and transport-layer protections). Using them means that no application-layer (L7) security or performance services can be applied, because Cloudflare does not decrypt the traffic.
 

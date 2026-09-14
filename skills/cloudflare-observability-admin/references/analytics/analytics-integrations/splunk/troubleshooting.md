@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated Sep 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/analytics-integrations/splunk/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-integrations/splunk/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use this guide to resolve common issues when analyzing [Cloudflare Logs ↗](https://www.cloudflare.com/products/cloudflare-logs/) through the [Cloudflare App for Splunk](https://developers.cloudflare.com/analytics/analytics-integrations/splunk/).
 
@@ -51,10 +51,10 @@ The `Cloudflare – Security (WAF)` dashboard in the Cloudflare App for Splunk l
 
 **Cause:** In older versions of the Cloudflare App for Splunk, the WAF dashboard SPL references Cloudflare log fields that were [removed from the HTTP Requests dataset](https://developers.cloudflare.com/logs/reference/change-notices/2023-02-01-security-fields-updates/#http-requests-dataset-changes):
 
-| Deprecated field         | Current field           |
-| ------------------------ | ----------------------- |
-| FirewallMatchesRuleIDs{} | SecurityRuleIDs         |
-| WAFRuleMessage           | SecurityRuleDescription |
+| Deprecated field | Current field |
+| --- | --- |
+| `FirewallMatchesRuleIDs{}` | `SecurityRuleIDs` |
+| `WAFRuleMessage` | `SecurityRuleDescription` |
 
 Splunk does not raise an error when a search references a field that is absent from all indexed events — it completes the search and returns zero results, leaving every dashboard panel empty.
 
@@ -68,10 +68,10 @@ If you maintain a customized fork of the app, replace all references to `Firewal
 
 If your issue is not covered here:
 
-* Consult the [Cloudflare App for Splunk page ↗](https://splunkbase.splunk.com/app/4501/) on Splunkbase for the latest version and release notes.
-* Review the [Cloudflare Logs change notices](https://developers.cloudflare.com/logs/reference/change-notices/) for recent schema changes that may affect your searches or dashboards.
-* [Contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) for issues involving Cloudflare-side log delivery.
-* Contact your Splunk representative or your integration partner for issues within your Splunk environment.
+- Consult the [Cloudflare App for Splunk page ↗](https://splunkbase.splunk.com/app/4501/) on Splunkbase for the latest version and release notes.
+- Review the [Cloudflare Logs change notices](https://developers.cloudflare.com/logs/reference/change-notices/) for recent schema changes that may affect your searches or dashboards.
+- [Contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) for issues involving Cloudflare-side log delivery.
+- Contact your Splunk representative or your integration partner for issues within your Splunk environment.
 
 Was this helpful?
 

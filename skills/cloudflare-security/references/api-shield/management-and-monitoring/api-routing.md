@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # API Routing
 
-Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/api-routing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/api-routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 API Shield Routing allows you to expose a single external API that routes requests to different back-end services, even when those services use different paths or hostnames than your zone.
 
@@ -26,8 +26,7 @@ You must add Source Endpoints to Endpoint Management through established methods
 
 To create a route, you will need the operation ID of the Source Endpoint. To find the operation ID in the dashboard:
 
-1. In the Cloudflare dashboard, go to the **Web Assets** page.
-[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+1. In the Cloudflare dashboard, go to the **Web Assets** page. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Filter the endpoints to find your **Source Endpoint**.
 3. Expand the row for your Source Endpoint and note the **operation ID** field.
 4. Select the copy icon to copy the operation ID to your clipboard.
@@ -36,8 +35,7 @@ Once your Source Endpoints are added to Endpoint Management, use the following s
 
 ### Create a route
 
-1. In the Cloudflare dashboard, go to the **Web Assets** page.
-[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+1. In the Cloudflare dashboard, go to the **Web Assets** page. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. In **Endpoints**, select an existing endpoint and expand its details.
 3. Under **Routing**, select **Create route**.
 4. Enter the target URL or IP address to route your endpoint to.

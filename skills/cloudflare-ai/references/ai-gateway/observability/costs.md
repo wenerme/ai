@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Costs
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/observability/costs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/observability/costs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cost metrics are only available for endpoints where the models return token data and the model name in their responses.
 
@@ -20,9 +20,9 @@ Cost metrics are only available for endpoints where the models return token data
 
 AI Gateway makes it easier to monitor and estimate token based costs across all your AI providers. This can help you:
 
-* Understand and compare usage costs between providers.
-* Monitor trends and estimate spend using consistent metrics.
-* Apply custom pricing logic to match negotiated rates.
+- Understand and compare usage costs between providers.
+- Monitor trends and estimate spend using consistent metrics.
+- Apply custom pricing logic to match negotiated rates.
 
 Note
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Scheduled Handler
 
-Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -63,16 +63,16 @@ class Default(WorkerEntrypoint):
 
 ### Properties
 
-* `controller.cron` string
-  * The value of the [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) that started the `ScheduledEvent`.
-* `controller.type` string
-  * The type of controller. This will always return `"scheduled"`.
-* `controller.scheduledTime` number
-  * The time the `ScheduledEvent` was scheduled to be executed in milliseconds since January 1, 1970, UTC. It can be parsed as `new Date(controller.scheduledTime)`.
-* `env` object
-  * An object containing the bindings associated with your Worker using ES modules format, such as KV namespaces and Durable Objects.
-* `ctx` object
-  * An object containing the context associated with your Worker using ES modules format. Currently, this object just contains the `waitUntil` function.
+- `controller.cron` string
+  - The value of the [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) that started the `ScheduledEvent`.
+- `controller.type` string
+  - The type of controller. This will always return `"scheduled"`.
+- `controller.scheduledTime` number
+  - The time the `ScheduledEvent` was scheduled to be executed in milliseconds since January 1, 1970, UTC. It can be parsed as `new Date(controller.scheduledTime)`.
+- `env` object
+  - An object containing the bindings associated with your Worker using ES modules format, such as KV namespaces and Durable Objects.
+- `ctx` object
+  - An object containing the context associated with your Worker using ES modules format. Currently, this object just contains the `waitUntil` function.
 
 ### Handle multiple cron triggers
 
@@ -143,7 +143,7 @@ The value of `controller.cron` is the exact cron expression string from your con
 
 When a Workers script is invoked by a [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/), the Workers runtime starts a `ScheduledEvent` which will be handled by the `scheduled` function in your Workers Module class. The `ctx` argument represents the context your function runs in, and contains the following methods to control what happens next:
 
-* `ctx.waitUntil(promise)` : void - Use this method to register asynchronous tasks (for example, logging, analytics to third-party services, streaming and caching) that should settle before the invocation completes. The first `ctx.waitUntil` to fail will be observed and recorded as the status in the [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) Past Events table. Otherwise, it will be reported as a success.
+- `ctx.waitUntil(promise)` : void - Use this method to register asynchronous tasks (for example, logging, analytics to third-party services, streaming and caching) that should settle before the invocation completes. The first `ctx.waitUntil` to fail will be observed and recorded as the status in the [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) Past Events table. Otherwise, it will be reported as a success.
 
 Note
 

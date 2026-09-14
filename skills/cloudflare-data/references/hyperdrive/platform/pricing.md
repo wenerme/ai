@@ -12,24 +12,32 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pricing
 
-Last updated Jun 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/platform/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Hyperdrive is included in both the Free and Paid [Workers plans](https://developers.cloudflare.com/workers/platform/pricing/).
 
-|                                         | Free plan[1](#user-content-fn-1) | Paid plan |
-| --------------------------------------- | -------------------------------- | --------- |
-| Database queries[2](#user-content-fn-2) | 100,000 / day                    | Unlimited |
+|  | Free plan<sup>[1](#user-content-fn-1)</sup> | Paid plan |
+| --- | --- | --- |
+| Database queries<sup>[2](#user-content-fn-2)</sup> | 100,000 / day | Unlimited |
+
+<details>
+
+<summary>
 
 Footnotes
 
+</summary>
+
 1: The Workers Free plan includes limited Hyperdrive usage. All limits reset daily at 00:00 UTC. If you exceed any one of these limits, further operations of that type will fail with an error.
 
-2: Database queries refers to any database statement made via Hyperdrive, whether a query (`SELECT`), a modification (`INSERT`,`UPDATE`, or `DELETE`) or a schema change (`CREATE`, `ALTER`, `DROP`).
+2: Database queries refers to any database statement made via Hyperdrive, whether a query (<code>SELECT</code>), a modification (<code>INSERT</code>,<code>UPDATE</code>, or <code>DELETE</code>) or a schema change (<code>CREATE</code>, <code>ALTER</code>, <code>DROP</code>).
+
+</details>
 
 ## Footnotes
 
 1. The Workers Free plan includes limited Hyperdrive usage. All limits reset daily at 00:00 UTC. If you exceed any one of these limits, further operations of that type will fail with an error. [↩](#user-content-fnref-1)
-2. Database queries refers to any database statement made via Hyperdrive, whether a query (`SELECT`), a modification (`INSERT`,`UPDATE`, or `DELETE`) or a schema change (`CREATE`, `ALTER`, `DROP`). [↩](#user-content-fnref-2)
+2. Database queries refers to any database statement made via Hyperdrive, whether a query ( `SELECT`), a modification ( `INSERT`, `UPDATE`, or `DELETE`) or a schema change ( `CREATE`, `ALTER`, `DROP`). [↩](#user-content-fnref-2)
 
 Hyperdrive limits are automatically adjusted when subscribed to a Workers Paid plan. Hyperdrive's [connection pooling and query caching](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/) are included in Workers Paid plan, so do not incur any additional charges.
 

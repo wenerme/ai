@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Super Bot Fight Mode
 
-Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Super Bot Fight Mode is included in your Pro, Business, or Enterprise subscription. Compared to [Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/), Super Bot Fight Mode adds configurable actions per bot category, bot analytics, and the ability to create exceptions using [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/). When enabled, the product:
 
-* Identifies traffic matching patterns of known bots
-* Can challenge or block bots
-* Offers protection for static resources
-* Provides limited analytics to help you understand bot traffic
+- Identifies traffic matching patterns of known bots
+- Can challenge or block bots
+- Offers protection for static resources
+- Provides limited analytics to help you understand bot traffic
 
 Accounts with an Enterprise subscription but not the [Bot Management add-on](https://developers.cloudflare.com/bots/get-started/bot-management/) will have Super Bot Fight Mode for Business.
 
@@ -27,8 +27,8 @@ Accounts with an Enterprise subscription but not the [Bot Management add-on](htt
 
 Bot Fight Mode and Super Bot Fight Mode use the same underlying technology that powers our [Bot Management ↗](https://www.cloudflare.com/products/bot-management/) product. Specifically, these products:
 
-* Protect entire domains without endpoint restrictions
-* Cannot be customized, adjusted, or reconfigured via WAF custom rules
+- Protect entire domains without endpoint restrictions
+- Cannot be customized, adjusted, or reconfigured via WAF custom rules
 
 Although these products are designed to fight malicious actors on the Internet, they may challenge API or mobile app traffic. For more granular control, upgrade to [Bot Management for Enterprise](https://developers.cloudflare.com/bots/plans/bm-subscription/).
 
@@ -38,33 +38,31 @@ If you are using several app security features like custom rules, Managed Rules,
 
 ### Configure exceptions to Super Bot Fight Mode
 
-[Custom rules](https://developers.cloudflare.com/waf/custom-rules/) are executed before Super Bot Fight Mode. To configure exceptions to Super Bot Fight Mode, create a custom rule with the [_Skip_ action](https://developers.cloudflare.com/waf/custom-rules/skip/). The _Skip_ action allows the request to bypass the Super Bot Fight Mode phase without terminating the request, enabling it to continue through the rest of the security stack.
+[Custom rules](https://developers.cloudflare.com/waf/custom-rules/) are executed before Super Bot Fight Mode. To configure exceptions to Super Bot Fight Mode, create a custom rule with the [*Skip* action](https://developers.cloudflare.com/waf/custom-rules/skip/). The *Skip* action allows the request to bypass the Super Bot Fight Mode phase without terminating the request, enabling it to continue through the rest of the security stack.
 
 ## Enable Super Bot Fight Mode
 
 Note
 
-If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, go to **Security** \> **Settings**, filter by **Bot traffic**, and turn **Bot fight mode** off.
+If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, go to **Security** > **Settings**, filter by **Bot traffic**, and turn **Bot fight mode** off.
 
 To start using Super Bot Fight Mode:
 
-1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+1. In the Cloudflare dashboard, go to the **Security Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Super Bot fight mode**.
 4. Turn **Super Bot fight mode** on.
 5. Choose how your domain should respond to various types of traffic by selecting the associated edit icon:
-
-  * For more details on verified bots, refer to [Verified Bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).
-  * For more details on supported file types, refer to [Static resource protection](https://developers.cloudflare.com/bots/additional-configurations/static-resources/).
-  * For more details on invisible code injection, refer to [JavaScript detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/).
-  * For more details on WordPress optimization, refer to [Super Bot Fight Mode for WordPress](https://developers.cloudflare.com/bots/troubleshooting/wordpress-loopback-issue/).
+   - For more details on verified bots, refer to [Verified Bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).
+   - For more details on supported file types, refer to [Static resource protection](https://developers.cloudflare.com/bots/additional-configurations/static-resources/).
+   - For more details on invisible code injection, refer to [JavaScript detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/).
+   - For more details on WordPress optimization, refer to [Super Bot Fight Mode for WordPress](https://developers.cloudflare.com/bots/troubleshooting/wordpress-loopback-issue/).
 
 Warning
 
 If your organization also uses [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), keep **Definitely Automated** set to **Allow**. Otherwise, Super Bot Fight Mode may block tunnel connections, causing failures with a `websocket: bad handshake` error.
 
-In parts of your site where you want bot traffic, you can use the [_Skip_ action](https://developers.cloudflare.com/waf/custom-rules/skip/) in [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/) to specify where Super Bot Fight Mode should not run.
+In parts of your site where you want bot traffic, you can use the [*Skip* action](https://developers.cloudflare.com/waf/custom-rules/skip/) in [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/) to specify where Super Bot Fight Mode should not run.
 
 You can use the [Rules language](https://developers.cloudflare.com/ruleset-engine/rules-language/) and its [operators](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/) and [fields](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/) in custom rules to configure a scoped rule for approved automated traffic in Super Bot Fight Mode.
 
@@ -76,14 +74,13 @@ If you find that **Super Bot Fight Mode** is causing problems with your applicat
 
 To disable Super Bot Fight Mode:
 
-1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+1. In the Cloudflare dashboard, go to the **Security Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Super Bot Fight Mode**.
 4. For all bot groupings (**Definitely automated traffic**, **Likely automated traffic**, and **Verified bots**), set the value to **Allow**.
 5. For all other options (**Static resource protection**, **JavaScript detections**, and **Optimize for WordPress**), select the edit icon and ensure they are off.
 
-In parts of your site where you want bot traffic, you can use the [_Skip_ action](https://developers.cloudflare.com/waf/custom-rules/skip/) in [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/) to specify where Super Bot Fight Mode should not run.
+In parts of your site where you want bot traffic, you can use the [*Skip* action](https://developers.cloudflare.com/waf/custom-rules/skip/) in [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/) to specify where Super Bot Fight Mode should not run.
 
 You can use the [Rules language](https://developers.cloudflare.com/ruleset-engine/rules-language/) and its [operators](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/) and [fields](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/) in custom rules to configure a scoped rule for approved automated traffic in Super Bot Fight Mode.
 
@@ -105,13 +102,13 @@ You can view blocked AI bot traffic via [Security Analytics](https://developers.
 
 Use the **Bot Report** to monitor bot traffic for the past 24 hours.
 
-To access the **Bot Report**, go to **Security** \> **Analytics** \> **Bot analysis**. If you see a double-digit percentage of automated traffic, you may want to upgrade to [Bot Management](https://developers.cloudflare.com/bots/plans/bm-subscription/) to save money on origin costs and protect your domain from large-scale attacks.
+To access the **Bot Report**, go to **Security** > **Analytics** > **Bot analysis**. If you see a double-digit percentage of automated traffic, you may want to upgrade to [Bot Management](https://developers.cloudflare.com/bots/plans/bm-subscription/) to save money on origin costs and protect your domain from large-scale attacks.
 
 ![Example traffic distribution as part of a bot report](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2062,height=550,format=webp/_astro/bot-report-pro.BU1S3xco.png)
 
 ### Security events
 
-You can see bot-related actions by going to **Security** \> **Analytics** and selecting the **Events** tab. Any requests challenged by this product will be labeled **Super Bot Fight Mode** in the **Service** field. This allows you to observe, analyze, and follow trends in your bot traffic over time.
+You can see bot-related actions by going to **Security** > **Analytics** and selecting the **Events** tab. Any requests challenged by this product will be labeled **Super Bot Fight Mode** in the **Service** field. This allows you to observe, analyze, and follow trends in your bot traffic over time.
 
 ---
 

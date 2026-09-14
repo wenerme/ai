@@ -12,17 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Gateway analytics (DNS, HTTP, network sessions)
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/analytics/gateway/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/analytics/gateway/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Gateway analytics include three separate dashboards:
 
-* HTTP request analytics.
-* DNS query analytics.
-* Network policy analytics.
+- HTTP request analytics.
+- DNS query analytics.
+- Network policy analytics.
 
 To review Gateway analytics:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights**.
 2. Go to **Dashboards**.
 3. Select your desired dashboard.
 
@@ -36,21 +36,21 @@ The HTTP request analytics dashboard helps you identify trends in how your HTTP 
 
 To review a detailed description of an HTTP request and its associated policy:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights**.
 2. Select **Logs**.
 3. Select **HTTP request logs**.
 4. Use the **Policy** filter to view HTTP requests that triggered a policy or other filters to narrow down your results.
 
 ### Provided analytics
 
-* HTTP Requests over time
-  * Time series view of HTTP requests
-* Top Actions
-* Top Countries
-* Top Blocked Users
-* Top Bandwidth Consumers
-* Top Devices
-* Top Source IPs
+- HTTP Requests over time
+  - Time series view of HTTP requests
+- Top Actions
+- Top Countries
+- Top Blocked Users
+- Top Bandwidth Consumers
+- Top Devices
+- Top Source IPs
 
 ## DNS query analytics
 
@@ -60,20 +60,20 @@ The DNS query analytics dashboard helps you identify trends in how your DNS poli
 
 To review a detailed description of a DNS query and its associated policy:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights**.
 2. Select **Logs**.
 3. Select **DNS query logs**.
 4. Use the **Policy** filter to view DNS queries that triggered a policy or other filters to narrow down your results.
 
 ### Provided analytics
 
-* DNS Queries over time
-  * Time series view of DNS queries
-* Top Actions
-* Top Countries
-* Top Blocked Users
-* Top Allowed Users
-* Top Blocked Devices
+- DNS Queries over time
+  - Time series view of DNS queries
+- Top Actions
+- Top Countries
+- Top Blocked Users
+- Top Allowed Users
+- Top Blocked Devices
 
 ## Network policy analytics
 
@@ -83,64 +83,67 @@ The Network policy analytics dashboard helps you identify trends in how your Gat
 
 To review a detailed description of a network session and its associated policy:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights**.
 2. Select **Logs**.
 3. Select **Network logs**.
 4. Use the **Policy** filter to view network sessions that triggered a policy or other filters to narrow down your results.
 
 ### Provided analytics
 
-* Network Sessions over time
-  * Time series view of network sessions
-* Top Actions
-* Top Countries
-* Top Blocked Users
-* Top Bandwidth Consumers
-* Top Devices
-* Top Source IPs
+- Network Sessions over time
+  - Time series view of network sessions
+- Top Actions
+- Top Countries
+- Top Blocked Users
+- Top Bandwidth Consumers
+- Top Devices
+- Top Source IPs
 
 ## GraphQL queries
 
 You can use the [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/) to query your Gateway Analytics data. Available [datasets](https://developers.cloudflare.com/analytics/graphql-api/features/data-sets/) for Gateway include:
 
-| Dataset                                                 | Description                                                                                                                                                               |
-| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| gatewayL4DownstreamSessionsAdaptiveGroups               | Metrics for Gateway network sessions from user devices to the Cloudflare global network.                                                                                  |
-| gatewayL4UpstreamSessionsAdaptiveGroups                 | Metrics for Gateway network sessions from the Cloudflare global network to user devices.                                                                                  |
-| gatewayL4SessionsAdaptiveGroups                         | Metrics for Gateway network sessions with adaptive sampling.                                                                                                              |
-| gatewayL7RequestsAdaptiveGroups                         | Metrics for Gateway HTTP requests with adaptive sampling.                                                                                                                 |
-| gatewayResolverQueriesAdaptiveGroups                    | Metrics for Gateway DNS queries with adaptive sampling.                                                                                                                   |
-| gatewayResolverByRuleExecutionPerformanceAdaptiveGroups | Time to execute Gateway DNS policies on the Cloudflare global network.                                                                                                    |
-| gatewayResolverByCustomResolverGroups                   | Metrics for Gateway DNS queries resolved using custom resolvers.                                                                                                          |
-| gatewayResolverByCategoryAdaptiveGroups                 | Metrics for Gateway DNS queries sorted by [domain category](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/) with adaptive sampling. |
+| Dataset | Description |
+| --- | --- |
+| `gatewayL4DownstreamSessionsAdaptiveGroups` | Metrics for Gateway network sessions from user devices to the Cloudflare global network. |
+| `gatewayL4UpstreamSessionsAdaptiveGroups` | Metrics for Gateway network sessions from the Cloudflare global network to user devices. |
+| `gatewayL4SessionsAdaptiveGroups` | Metrics for Gateway network sessions with adaptive sampling. |
+| `gatewayL7RequestsAdaptiveGroups` | Metrics for Gateway HTTP requests with adaptive sampling. |
+| `gatewayResolverQueriesAdaptiveGroups` | Metrics for Gateway DNS queries with adaptive sampling. |
+| `gatewayResolverByRuleExecutionPerformanceAdaptiveGroups` | Time to execute Gateway DNS policies on the Cloudflare global network. |
+| `gatewayResolverByCustomResolverGroups` | Metrics for Gateway DNS queries resolved using custom resolvers. |
+| `gatewayResolverByCategoryAdaptiveGroups` | Metrics for Gateway DNS queries sorted by [domain category](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/) with adaptive sampling. |
 
 To explore the schema, you can use a GraphQL client such as [GraphiQL ↗](https://github.com/graphql/graphiql/tree/main/packages/graphiql#readme) or [Altair ↗](https://altairgraphql.dev/).
 
 1. [Create an API token](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/api-token-auth/) with the following permissions:
 
-| Type    | Item              | Permission |
-| ------- | ----------------- | ---------- |
-| Account | Account Analytics | Read       |
+   | Type | Item | Permission |
+   | --- | --- | --- |
+   | Account | Account Analytics | Read |
 2. In your GraphQL client, [add your API token](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/graphql-client-headers/) as an Authorization header.
 3. Compose a query to access your Gateway Analytics datasets. For example, you can query the `gatewayResolverQueriesAdaptiveGroups` dataset to return the adaptive groups of DNS queries resolved by Gateway:
-```graphql
-query GatewaySampleQuery($accountTag: string!, $start: Time) {
-	viewer {
-		accounts(filter: { accountTag: $accountTag }) {
-			gatewayResolverQueriesAdaptiveGroups(
-				filter: { datetime_gt: $start }
-				limit: 10
-			) {
-				count
-				dimensions {
-					queryNameReversed
-					resolverDecision
-				}
-			}
-		}
-	}
-}
-```
+
+   ```graphql
+   query GatewaySampleQuery($accountTag: string!, $start: Time) {
+   	viewer {
+   		accounts(filter: { accountTag: $accountTag }) {
+   			gatewayResolverQueriesAdaptiveGroups(
+   				filter: { datetime_gt: $start }
+   				limit: 10
+   			) {
+   				count
+   				dimensions {
+   					queryNameReversed
+   					resolverDecision
+   				}
+   			}
+   		}
+   	}
+   }
+   ```
+
+
 
 For more information, refer to [Compose a query in GraphiQL](https://developers.cloudflare.com/analytics/graphql-api/getting-started/compose-graphql-query/).
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Transformers
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/transformers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/transformers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Beta
 
@@ -26,17 +26,17 @@ You write the logic as a single SQL query, attach it to a Logpush job, and Cloud
 
 ## Key features
 
-* **SQL-based transforms** \- a single-statement SQL query per Logpush job.
-* **Per-record execution** \- runs on each NDJSON record before Cloudflare delivers the batch.
-* **Advanced filtering and reshaping** \- drop, rename, redact, compute, or tag fields.
-* **Attach and detach without redeploying** \- manage transformers from the Cloudflare dashboard or the API.
-* **Version history** \- every save creates a new version; older versions remain viewable.
+- **SQL-based transforms** - a single-statement SQL query per Logpush job.
+- **Per-record execution** - runs on each NDJSON record before Cloudflare delivers the batch.
+- **Advanced filtering and reshaping** - drop, rename, redact, compute, or tag fields.
+- **Attach and detach without redeploying** - manage transformers from the Cloudflare dashboard or the API.
+- **Version history** - every save creates a new version; older versions remain viewable.
 
 Before you begin, you need:
 
-* A Logpush job that uses the `ndjson` output format. Transformers are only available for NDJSON jobs, and are supported for both account-scoped and zone-scoped datasets.
-* An API token with the `Logs Write` permission for the account.
-* Familiarity with the [dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/) whose records you plan to transform. Your SQL references its field names directly.
+- A Logpush job that uses the `ndjson` output format. Transformers are only available for NDJSON jobs, and are supported for both account-scoped and zone-scoped datasets.
+- An API token with the `Logs Write` permission for the account.
+- Familiarity with the [dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/) whose records you plan to transform. Your SQL references its field names directly.
 
 ## Access Transformers
 
@@ -46,32 +46,32 @@ You can create, preview, attach, and manage transformers through the Cloudflare 
 
 Transformer Studio is the workspace that includes a SQL editor where you write, preview, and manage Transformers. Open it from the Logpush page in the Cloudflare dashboard.
 
-[Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/logs)
+[Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/logs)
 
 From Studio you can:
 
-* Create a new transformer by writing a SQL query against a Logpush dataset.
-* Preview a transformer against a canned sample record for the target dataset before saving.
-* Attach a transformer to any eligible Logpush job on the account or zone. Only NDJSON jobs matching the transformer's dataset appear as available attach targets. CSV jobs are not shown.
-* Detach a transformer from a job.
-* Save a new version each time you edit and save the SQL. Older versions remain available to view.
-* Rename a transformer or update its description.
-* Delete a transformer. A transformer cannot be deleted while any Logpush job references it.
+- Create a new transformer by writing a SQL query against a Logpush dataset.
+- Preview a transformer against a canned sample record for the target dataset before saving.
+- Attach a transformer to any eligible Logpush job on the account or zone. Only NDJSON jobs matching the transformer's dataset appear as available attach targets. CSV jobs are not shown.
+- Detach a transformer from a job.
+- Save a new version each time you edit and save the SQL. Older versions remain available to view.
+- Rename a transformer or update its description.
+- Delete a transformer. A transformer cannot be deleted while any Logpush job references it.
 
 ### API
 
 Every transformer action is available through the Cloudflare API. To authenticate, use an [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the `Logs Write` permission.
 
-| Operation             | Method | Endpoint                                                |
-| --------------------- | ------ | ------------------------------------------------------- |
-| List transformers     | GET    | accounts/:account\_id/logpush/transformers              |
-| Create a transformer  | POST   | accounts/:account\_id/logpush/transformers              |
-| Preview a transformer | POST   | accounts/:account\_id/logpush/transformers/preview      |
-| Get a transformer     | GET    | accounts/:account\_id/logpush/transformers/:id          |
-| Download SQL          | GET    | accounts/:account\_id/logpush/transformers/:id/content  |
-| List versions         | GET    | accounts/:account\_id/logpush/transformers/:id/versions |
-| Update a transformer  | PUT    | accounts/:account\_id/logpush/transformers/:id          |
-| Delete a transformer  | DELETE | accounts/:account\_id/logpush/transformers/:id          |
+| Operation | Method | Endpoint |
+| --- | --- | --- |
+| List transformers | `GET` | `accounts/:account_id/logpush/transformers` |
+| Create a transformer | `POST` | `accounts/:account_id/logpush/transformers` |
+| Preview a transformer | `POST` | `accounts/:account_id/logpush/transformers/preview` |
+| Get a transformer | `GET` | `accounts/:account_id/logpush/transformers/:id` |
+| Download SQL | `GET` | `accounts/:account_id/logpush/transformers/:id/content` |
+| List versions | `GET` | `accounts/:account_id/logpush/transformers/:id/versions` |
+| Update a transformer | `PUT` | `accounts/:account_id/logpush/transformers/:id` |
+| Delete a transformer | `DELETE` | `accounts/:account_id/logpush/transformers/:id` |
 
 To attach or detach a transformer from a job, set `transformer_id` on the Logpush job. Refer to [Logpush job setup](https://developers.cloudflare.com/logs/logpush/logpush-job/) for job endpoints.
 
@@ -93,23 +93,23 @@ Records that do not match the `WHERE` clause are dropped from the output.
 
 Transformers use the same SQL dialect as [Cloudflare Pipelines](https://developers.cloudflare.com/pipelines/sql-reference/). The following operations are supported:
 
-* **Projection** \- `SELECT` specific fields, rename with `AS`, compute new fields with expressions.
-* **Filtering** \- `WHERE` clauses with the standard comparison, boolean, and null-check operators.
-* **CTEs** \- `WITH ... AS (...)` common table expressions.
-* **`UNNEST`** \- expand array or list fields into rows.
-* **JSON access** \- the `->` operator returns a JSON object; `->>` returns a string. For example, `RequestHeaders ->> 'Host'`.
-* **Nested output** \- `named_struct('key', value, ...)` builds a nested JSON object.
-* **Array output** \- `[value1, value2]` builds a JSON array.
-* **Scalar functions** \- standard SQL functions including `UPPER`, `LOWER`, `COALESCE`, `CAST`, `extract`, and `to_timestamp`.
+- **Projection** - `SELECT` specific fields, rename with `AS`, compute new fields with expressions.
+- **Filtering** - `WHERE` clauses with the standard comparison, boolean, and null-check operators.
+- **CTEs** - `WITH ... AS (...)` common table expressions.
+- **`UNNEST`** - expand array or list fields into rows.
+- **JSON access** - the `->` operator returns a JSON object; `->>` returns a string. For example, `RequestHeaders ->> 'Host'`.
+- **Nested output** - `named_struct('key', value, ...)` builds a nested JSON object.
+- **Array output** - `[value1, value2]` builds a JSON array.
+- **Scalar functions** - standard SQL functions including `UPPER`, `LOWER`, `COALESCE`, `CAST`, `extract`, and `to_timestamp`.
 
 ### Not supported
 
-* Joins
-* Subqueries
-* Aggregation (`GROUP BY`, `HAVING`, `COUNT`, `SUM`)
-* Window functions
-* `ORDER BY`
-* Multiple statements - one query per transformer
+- Joins
+- Subqueries
+- Aggregation ( `GROUP BY`, `HAVING`, `COUNT`, `SUM`)
+- Window functions
+- `ORDER BY`
+- Multiple statements - one query per transformer
 
 ### Validation
 
@@ -119,14 +119,14 @@ In the dashboard, validation errors appear inline in the editor with line and co
 
 ### Limits
 
-| Limit                          | Value       |
-| ------------------------------ | ----------- |
-| SQL query size                 | 10 KB       |
-| Transformer name length        | 255 bytes   |
+| Limit | Value |
+| --- | --- |
+| SQL query size | 10 KB |
+| Transformer name length | 255 bytes |
 | Transformer description length | 4,096 bytes |
-| Filesystem access from a query | None        |
-| Network access from a query    | None        |
-| Batch chunk size               | 1,000 rows  |
+| Filesystem access from a query | None |
+| Network access from a query | None |
+| Batch chunk size | 1,000 rows |
 
 ## Examples
 
@@ -136,16 +136,16 @@ The examples below apply every capability from [Key features](#key-features) in 
 
 This transformer keeps only `update` actions from the audit trail and reshapes the surviving records for downstream delivery. Specifically, it:
 
-* Excludes every record whose `ActionType` is not `update`.
-* Converts `ActionTimestamp` from RFC3339 into a Unix epoch integer, renamed `unix_ts`.
-* Uppercases `ActionType` and renames it `action_type`.
-* Adds a hardcoded `provider` field with the value `Cloudflare`.
-* Groups `ActorType`, `ActorEmail`, and `ActorIPAddress` into a nested `actor` object.
-* Derives a boolean `is_zone` flag from `ResourceType = 'zone'`.
-* Builds a `resource_meta` array from `ResourceType` and `ResourceID`.
-* Drops `ActorID`, `AccountID`, and `ActorContext` by omission from the `SELECT`.
+- Excludes every record whose `ActionType` is not `update`.
+- Converts `ActionTimestamp` from RFC3339 into a Unix epoch integer, renamed `unix_ts`.
+- Uppercases `ActionType` and renames it `action_type`.
+- Adds a hardcoded `provider` field with the value `Cloudflare`.
+- Groups `ActorType`, `ActorEmail`, and `ActorIPAddress` into a nested `actor` object.
+- Derives a boolean `is_zone` flag from `ResourceType = 'zone'`.
+- Builds a `resource_meta` array from `ResourceType` and `ResourceID`.
+- Drops `ActorID`, `AccountID`, and `ActorContext` by omission from the `SELECT`.
 
-Input record from the [audit\_logs\_v2](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/audit%5Flogs%5Fv2/) dataset:
+Input record from the [`audit_logs_v2`](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/audit_logs_v2/) dataset:
 
 ```json
 {
@@ -201,17 +201,17 @@ Delivered record:
 
 This transformer keeps all HTTP traffic **except** health checks, metrics scrapers, and internal-facing hostnames. This is a common pattern for teams that want the full log stream, minus predictable noise. Specifically, it:
 
-* Excludes every request to `internal.example.com` and `health.example.com`.
-* Excludes every request to paths starting with `/healthz` or `/metrics`.
-* Converts `EdgeStartTimestamp` from RFC3339 into a Unix epoch integer, renamed `unix_ts`.
-* Uppercases `ClientRequestMethod` and renames it `method`.
-* Adds a hardcoded `provider` field with the value `Cloudflare`.
-* Groups `ClientRequestHost`, `ClientRequestPath`, and `ClientRequestMethod` into a nested `request` object.
-* Derives a boolean `is_server_error` flag from `EdgeResponseStatus >= 500`.
-* Builds a `request_meta` array from `ClientRequestHost` and `ClientRequestPath`.
-* Drops `ClientIP`, `ClientRequestUserAgent`, `RayID`, `OriginResponseTime`, and `WAFAction` by omission from the `SELECT`.
+- Excludes every request to `internal.example.com` and `health.example.com`.
+- Excludes every request to paths starting with `/healthz` or `/metrics`.
+- Converts `EdgeStartTimestamp` from RFC3339 into a Unix epoch integer, renamed `unix_ts`.
+- Uppercases `ClientRequestMethod` and renames it `method`.
+- Adds a hardcoded `provider` field with the value `Cloudflare`.
+- Groups `ClientRequestHost`, `ClientRequestPath`, and `ClientRequestMethod` into a nested `request` object.
+- Derives a boolean `is_server_error` flag from `EdgeResponseStatus >= 500`.
+- Builds a `request_meta` array from `ClientRequestHost` and `ClientRequestPath`.
+- Drops `ClientIP`, `ClientRequestUserAgent`, `RayID`, `OriginResponseTime`, and `WAFAction` by omission from the `SELECT`.
 
-Input record from the [http\_requests](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http%5Frequests/) dataset:
+Input record from the [`http_requests`](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/) dataset:
 
 ```json
 {
@@ -271,15 +271,15 @@ Delivered record:
 
 ### API errors
 
-| HTTP | Message                                                  | Cause                                                                                                                     |
-| ---- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| 403  | transformer feature is not available for this account    | Your account does not have access to Transformers. Contact your Cloudflare Account Executive.                             |
-| 400  | missing required field: name                             | Add a name field to the request body.                                                                                     |
-| 400  | missing required field: code                             | Add a non-empty code field with your SQL query.                                                                           |
-| 400  | Schema validation error (unknown column, invalid syntax) | The SQL references a field that does not exist, uses unsupported syntax, or has a type mismatch. Fix the query and retry. |
-| 413  | (request entity too large)                               | The SQL query exceeds 10 KB. Shorten the query.                                                                           |
-| 400  | transformer N not found for this account                 | The transformer ID does not exist, or belongs to a different account.                                                     |
-| 400  | transformer N dataset "X" does not match job dataset "Y" | The transformer's FROM table does not match the job's dataset.                                                            |
+| HTTP | Message | Cause |
+| --- | --- | --- |
+| `403` | `transformer feature is not available for this account` | Your account does not have access to Transformers. Contact your Cloudflare Account Executive. |
+| `400` | `missing required field: name` | Add a `name` field to the request body. |
+| `400` | `missing required field: code` | Add a non-empty `code` field with your SQL query. |
+| `400` | Schema validation error (unknown column, invalid syntax) | The SQL references a field that does not exist, uses unsupported syntax, or has a type mismatch. Fix the query and retry. |
+| `413` | (request entity too large) | The SQL query exceeds 10 KB. Shorten the query. |
+| `400` | `transformer N not found for this account` | The transformer ID does not exist, or belongs to a different account. |
+| `400` | `transformer N dataset "X" does not match job dataset "Y"` | The transformer's `FROM` table does not match the job's dataset. |
 
 ### Runtime failures
 
@@ -289,17 +289,17 @@ If failures continue, records in the affected batches are eventually dropped and
 
 The last error appears on the job's `last_error` field. Common causes:
 
-* **The output exceeded the size limit.** Reduce output per record or drop more records with `WHERE`.
-* **An internal Cloudflare error occurred.** Contact Cloudflare Support with the job ID and timestamp.
+- **The output exceeded the size limit.** Reduce output per record or drop more records with `WHERE`.
+- **An internal Cloudflare error occurred.** Contact Cloudflare Support with the job ID and timestamp.
 
 To debug, open the transformer in [Transformer Studio](#transformer-studio-ui) and use the **Run** button to preview it against a sample record. Validation and execution logic are the same, so problems visible in production usually reproduce in preview.
 
 ## Related resources
 
-* [Logpush datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/) \- the fields your SQL queries reference
-* [Logpush job setup](https://developers.cloudflare.com/logs/logpush/logpush-job/) \- creating and managing Logpush jobs
-* [Log fields reference](https://developers.cloudflare.com/logs/reference/log-fields/) \- full field descriptions across datasets
-* [Filters](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/) \- simpler filtering without SQL
+- [Logpush datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/) - the fields your SQL queries reference
+- [Logpush job setup](https://developers.cloudflare.com/logs/logpush/logpush-job/) - creating and managing Logpush jobs
+- [Log fields reference](https://developers.cloudflare.com/logs/reference/log-fields/) - full field descriptions across datasets
+- [Filters](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/) - simpler filtering without SQL
 
 Was this helpful?
 

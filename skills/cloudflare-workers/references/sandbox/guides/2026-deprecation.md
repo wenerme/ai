@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # 2026 deprecation migration guide
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/guides/2026-deprecation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/guides/2026-deprecation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Two different migration paths
 
@@ -251,14 +251,14 @@ For more information, refer to [Commands](https://developers.cloudflare.com/sand
 
 Use this checklist before you depend on a Sandbox SDK release that has removed the deprecated APIs:
 
-* RPC transport is configured with `SANDBOX_TRANSPORT=rpc` or `transport: "rpc"`.
-* No `websocket` or `http` transport configuration remains.
-* No `exposePort()` usage remains in the migrated path.
-* `enableDefaultSession` is set to `false`.
-* Stateful command workflows use `sandbox.createSession()`.
-* One-off commands pass `cwd` and `env` directly.
-* Streaming file and command code uses the base APIs.
-* Your Worker has been deployed and smoke-tested.
+- RPC transport is configured with `SANDBOX_TRANSPORT=rpc` or `transport: "rpc"`.
+- No `websocket` or `http` transport configuration remains.
+- No `exposePort()` usage remains in the migrated path.
+- `enableDefaultSession` is set to `false`.
+- Stateful command workflows use `sandbox.createSession()`.
+- One-off commands pass `cwd` and `env` directly.
+- Streaming file and command code uses the base APIs.
+- Your Worker has been deployed and smoke-tested.
 
 ## Coding agents
 

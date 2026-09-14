@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Uninstall the Cloudflare One Client
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/uninstall/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/uninstall/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following procedures will uninstall the Cloudflare One Client (formerly WARP) from your device. If you used the Cloudflare One Client to deploy a root certificate, the certificate will also be removed.
 
@@ -34,7 +34,7 @@ cd /Applications/Cloudflare\ WARP.app/Contents/Resources
 ./uninstall.sh
 ```
 
-1. If prompted, enter your admin credentials to proceed with the uninstall.
+2. If prompted, enter your admin credentials to proceed with the uninstall.
 
 Note
 

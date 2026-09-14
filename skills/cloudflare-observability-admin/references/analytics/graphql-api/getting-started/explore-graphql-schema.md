@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Explore the GraphQL schema
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Many GraphQL clients support browsing the GraphQL schema by taking care of [introspection](https://developers.cloudflare.com/analytics/graphql-api/features/discovery/introspection/). In this page, we will cover GraphiQL and Altair clients.
 
@@ -52,7 +52,7 @@ In this example, `query` is the name of a root, and `Query` is the type definiti
 
 Click on the **type definition** of a node to view the fields that it provides. The **Documentation Explorer** also displays descriptions of the nodes.
 
-For example, select the **Query** type definition. The **Documentation Explorer**displays the fields that `Query` provides. In this example, the fields are `cost` and `viewer`:
+For example, select the **Query** type definition. The **Documentation Explorer** displays the fields that `Query` provides. In this example, the fields are `cost` and `viewer`:
 
 ![Documentation Explorer displaying cost and viewer fields](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=388,height=237,format=webp/_astro/graphiql-doc-explorer-view-cost.CT9nC44o.png)
 

@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # HTTP
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/http/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/http/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Worker A that declares a Service binding to Worker B can forward a [Request](https://developers.cloudflare.com/workers/runtime-apis/request/) object to Worker B, by calling the `fetch()` method that is exposed on the binding object.
+Worker A that declares a Service binding to Worker B can forward a [`Request`](https://developers.cloudflare.com/workers/runtime-apis/request/) object to Worker B, by calling the `fetch()` method that is exposed on the binding object.
 
-For example, consider the following Worker that implements a [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/):
+For example, consider the following Worker that implements a [`fetch()` handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/):
 
 ```jsonc
 {

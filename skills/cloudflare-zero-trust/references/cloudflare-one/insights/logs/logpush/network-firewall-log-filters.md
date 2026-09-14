@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Network Firewall log filters
 
-Last updated Apr 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/network-firewall-log-filters/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/network-firewall-log-filters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can apply [Log filters](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/) to your Logpush job to export only specific Cloudflare Network Firewall events. The examples below show common filter configurations using the Logpush API. Each filter uses a JSON structure with `where` clauses containing `key` (the log field to filter on), `operator` (the comparison, such as `eq` for equals or `!eq` for not equals), and `value` (the value to match).
 
 The filters in this guide use the following log fields:
 
-* `MitigationSystem` — Identifies which Cloudflare system sampled the packet. For Network Firewall events, this value is `magic-firewall`.
-* `RulesetID` — The unique identifier of the managed ruleset containing the rule that matched the packet, if any. An empty string indicates no managed ruleset matched.
-* `Outcome` — The action that Cloudflare systems took on the packet (`pass` or `drop`).
-* `Verdict` — The action that Cloudflare systems determined should be taken on the packet (`pass` or `drop`). For disabled rules, `Verdict` may differ from `Outcome` because the rule evaluated the packet but did not enforce its action.
+- `MitigationSystem` — Identifies which Cloudflare system sampled the packet. For Network Firewall events, this value is `magic-firewall`.
+- `RulesetID` — The unique identifier of the managed ruleset containing the rule that matched the packet, if any. An empty string indicates no managed ruleset matched.
+- `Outcome` — The action that Cloudflare systems took on the packet ( `pass` or `drop`).
+- `Verdict` — The action that Cloudflare systems determined should be taken on the packet ( `pass` or `drop`). For disabled rules, `Verdict` may differ from `Outcome` because the rule evaluated the packet but did not enforce its action.
 
 ## Filter by enabled or disabled rules
 
@@ -29,10 +29,21 @@ Use the filter examples below to filter your Cloudflare Network Firewall traffic
 
 The example below [creates a Logpush job](https://developers.cloudflare.com/api/resources/logpush/subresources/jobs/methods/create/) that only displays fields relevant to Cloudflare Network Firewall, and the filter only displays events for disabled rules.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*Create Logpush jobbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logpush/jobs" \
@@ -63,10 +74,21 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logpush/jobs" \
 
 The example below [creates a Logpush job](https://developers.cloudflare.com/api/resources/logpush/subresources/jobs/methods/create/) that only displays fields relevant to Cloudflare Network Firewall, and the filter only displays events for enabled rules.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*Create Logpush jobbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logpush/jobs" \
@@ -101,10 +123,21 @@ Use the filter examples below to filter your Cloudflare Network Firewall traffic
 
 The example below [creates a Logpush job](https://developers.cloudflare.com/api/resources/logpush/subresources/jobs/methods/create/) that only displays fields relevant to Cloudflare Network Firewall, and the filter only displays events where no explicit action was taken — that is, a packet passed through the firewall without matching any rule. By default, Cloudflare Network Firewall permits unmatched traffic. This is identified by an empty `RulesetID`.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*Create Logpush jobbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logpush/jobs" \
@@ -135,10 +168,21 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logpush/jobs" \
 
 The example below [creates a Logpush job](https://developers.cloudflare.com/api/resources/logpush/subresources/jobs/methods/create/) that only displays fields relevant to Cloudflare Network Firewall, and the filter only displays events where explicit action was taken. The example includes both enabled and disabled Cloudflare Network Firewall rules.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*Create Logpush jobbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logpush/jobs" \
@@ -171,10 +215,21 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logpush/jobs" \
 
 If your Logpush job includes events from multiple Cloudflare mitigation systems, use the filter below to include only Cloudflare Network Firewall events. The example below [creates a Logpush job](https://developers.cloudflare.com/api/resources/logpush/subresources/jobs/methods/create/) that filters on `MitigationSystem` to include only Network Firewall traffic.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*Create Logpush jobbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logpush/jobs" \

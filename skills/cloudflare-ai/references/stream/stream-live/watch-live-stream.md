@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Watch a live stream
 
-Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/stream-live/watch-live-stream/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/stream-live/watch-live-stream/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When a [Live Input](https://developers.cloudflare.com/stream/stream-live/start-stream-live/) begins receiving a broadcast, a new video is automatically created if the input's `mode` property is set to `automatic`.
 
@@ -28,7 +28,7 @@ Whether you use the Stream Player or a custom player with a manifest, you can re
 
 Use a Live Input ID in instances where a player should always show the active broadcast, if there is one, or a "Stream has not started" message if the input is idle. This option is best for cases where a page is dedicated to a creator, channel, or recurring program. The Live Input ID is provisioned for you when you create the input; it will not change.
 
-Use a Video ID in instances where a player should be used to display a single broadcast or its recording once the broadcast has concluded. This option is best for cases where a page is dedicated to a one-time event, specific episode/occurrence, or date. There is a _new_ Video ID generated for each broadcast _when it starts._
+Use a Video ID in instances where a player should be used to display a single broadcast or its recording once the broadcast has concluded. This option is best for cases where a page is dedicated to a one-time event, specific episode/occurrence, or date. There is a *new* Video ID generated for each broadcast *when it starts.*
 
 Using DVR mode, explained below, there are additional considerations.
 
@@ -54,8 +54,7 @@ You can also retrieve the embed code or manifest URLs from Dash or the API.
 
 To get the Stream built-in player embed code or HLS Manifest URL for a custom player:
 
-1. In the Cloudflare dashboard, go to the **Live inputs** page.
-[Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs)
+1. In the Cloudflare dashboard, go to the **Live inputs** page. [Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs)
 2. Select a live input from the list.
 3. Locate the **Embed** and **HLS Manifest URL** beneath the video.
 4. Determine which option to use and then select **Click to copy** beneath your choice.
@@ -65,6 +64,8 @@ The embed code or manifest URL retrieved in Dash will reference the Live Input I
 ## Use the API
 
 To retrieve the player code or manifest URLs via the API, fetch the Live Input's list of videos:
+
+*Requestbash*
 
 ```bash
 curl -X GET \
@@ -76,11 +77,13 @@ A live input will have multiple videos associated with it, one for each broadcas
 
 Each video in the response, including the active broadcast if there is one, contains the HLS and DASH URLs and a link to the Stream player. Noteworthy properties include:
 
-* `preview` \-- Link to the Stream player to watch
-* `playback`.`hls` \-- HLS Manifest
-* `playback`.`dash` \-- DASH Manifest
+- `preview` -- Link to the Stream player to watch
+- `playback`. `hls` -- HLS Manifest
+- `playback`. `dash` -- DASH Manifest
 
 In the example below, the state of the live video is `live-inprogress` and the state for previously recorded video is `ready`.
+
+*Responsejson*
 
 ```json
 {
@@ -173,8 +176,8 @@ When viewing a live stream via the live input ID, the `requireSignedURLs` and `a
 
 After a live stream ends, a recording is automatically generated and available within 60 seconds. To ensure successful video viewing and playback, keep the following in mind:
 
-* If a live stream ends while a viewer is watching, viewers using the Stream player should wait 60 seconds and then reload the player to view the recording of the live stream.
-* After a live stream ends, you can check the status of the recording via the API. When the video state is `ready`, you can use one of the manifest URLs to stream the recording.
+- If a live stream ends while a viewer is watching, viewers using the Stream player should wait 60 seconds and then reload the player to view the recording of the live stream.
+- After a live stream ends, you can check the status of the recording via the API. When the video state is `ready`, you can use one of the manifest URLs to stream the recording.
 
 While the recording of the live stream is generating, the video may report as `not-found` or `not-started`.
 

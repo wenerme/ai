@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # FAQs
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/automatic-platform-optimization/troubleshooting/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/automatic-platform-optimization/troubleshooting/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Do I still need to create "Edge Cache TTL" page rules with "Cache Level: Cache Everything"?
 

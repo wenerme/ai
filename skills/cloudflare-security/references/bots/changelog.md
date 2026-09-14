@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Changelog
 
-Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/changelog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/bots/changelog/index.xml)
 
@@ -56,7 +56,7 @@ Events detected by the [anomaly detection engine](https://developers.cloudflare.
 
 **Managed robots.txt is now available**
 
-Direct AI crawlers on what they can and cannot scrape from your website or application by [implementing a robots.txt file](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/) to your domain.
+Direct AI crawlers on what they can and cannot scrape from your website or application by [implementing a `robots.txt` file](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/) to your domain.
 
 ## 2025-04-24
 

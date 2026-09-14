@@ -16,31 +16,31 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Automatic Speech Recognition • Deepgram
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/deepgram/nova-3/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/deepgram/nova-3/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/deepgram/nova-3`
 
-* Cloudflare-hosted
-* Batch
-* Partner
-* Real-time
+- Cloudflare-hosted
+- Batch
+- Partner
+- Real-time
 
 Transcribe audio using Deepgram’s speech-to-text model
 
-| Model Info        |                                                                |
-| ----------------- | -------------------------------------------------------------- |
-| Terms and License | [link ↗](https://deepgram.com/terms)                           |
-| Batch             | Yes                                                            |
-| Partner           | Yes                                                            |
-| Real-time         | Yes                                                            |
-| Unit Pricing      | $0.0052 per audio minute, $0.0092 per audio minute (websocket) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://deepgram.com/terms) |
+| Batch | Yes |
+| Partner | Yes |
+| Real-time | Yes |
+| Unit Pricing | $0.0052 per audio minute, $0.0092 per audio minute (websocket) |
 
 Note
 
 The [pricing of this model](https://developers.cloudflare.com/workers-ai/platform/pricing) is different based on transport. Transport-based pricing does not apply to all models.
 
-* WebSocket: $0.0092 per audio minute output (836.36 neurons per audio minute output)
-* Regular HTTP: $0.0052 per audio minute output (472.73 neurons per audio minute output)
+- WebSocket: $0.0092 per audio minute output (836.36 neurons per audio minute output)
+- Regular HTTP: $0.0052 per audio minute output (472.73 neurons per audio minute output)
 
 ## Parameters
 
@@ -194,9 +194,9 @@ utterance\_end\_ms
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/@cf/deepgram/nova-3/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/deepgram/nova-3/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/@cf/deepgram/nova-3/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/deepgram/nova-3/schema-output.json)
 
 Was this helpful?
 

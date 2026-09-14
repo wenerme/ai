@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Control costs and improve quality
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/ai/control-costs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/ai/control-costs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI inference costs can grow unpredictably as your application scales, especially when using multiple providers. Cloudflare AI Gateway caches identical queries to avoid redundant inference calls, applies rate limits per user or API key, and provides unified analytics across all providers.
 
@@ -22,15 +22,15 @@ AI inference costs can grow unpredictably as your application scales, especially
 
 Cache responses, rate limit requests, and monitor usage across providers. [Learn more about AI Gateway](https://developers.cloudflare.com/ai-gateway/).
 
-* **Response caching** \- Cache identical queries so repeated prompts do not trigger a new inference call
-* **Rate limiting** \- Set request limits per user or Application Programming Interface (API) key to prevent abuse and control spending
-* **Unified analytics** \- Track usage, latency, and cost across all AI providers from one dashboard
+- **Response caching** - Cache identical queries so repeated prompts do not trigger a new inference call
+- **Rate limiting** - Set request limits per user or Application Programming Interface (API) key to prevent abuse and control spending
+- **Unified analytics** - Track usage, latency, and cost across all AI providers from one dashboard
 
 ### Workers Analytics Engine
 
 Store and query time-series analytics data from Workers. [Learn more about Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/).
 
-* **Custom metrics** \- Build AI-specific dashboards tracking tokens, latency distributions, and error rates
+- **Custom metrics** - Build AI-specific dashboards tracking tokens, latency distributions, and error rates
 
 ## Get started
 

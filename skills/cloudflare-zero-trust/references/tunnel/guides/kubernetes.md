@@ -12,11 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Kubernetes
 
-Last updated Sep 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/guides/kubernetes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/guides/kubernetes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Kubernetes ↗](https://kubernetes.io/) is a container orchestration tool that is used to deploy applications onto physical or virtual machines, scale the deployment to meet traffic demands, and push updates without downtime. The Kubernetes cluster, or environment, where the application instances are running is connected internally through a private network. You can install the `cloudflared` daemon inside of the Kubernetes cluster in order to connect applications inside of the cluster to Cloudflare.
 
-This guide will cover how to expose a Kubernetes service to the public Internet using a remotely-managed Cloudflare Tunnel. For the purposes of this example, we will deploy a basic web application alongside `cloudflared` in Google Kubernetes Engine (GKE). The same principles apply to any other Kubernetes environment (such as `minikube`, `kubeadm`, or a cloud-based Kubernetes service) where `cloudflared` can connect to Cloudflare's network.
+This guide will cover how to expose a Kubernetes service to the public Internet using a remotely-managed
+
+ Cloudflare Tunnel. For the purposes of this example, we will deploy a basic web application alongside `cloudflared` in Google Kubernetes Engine (GKE). The same principles apply to any other Kubernetes environment (such as `minikube`, `kubeadm`, or a cloud-based Kubernetes service) where `cloudflared` can connect to Cloudflare's network.
 
 Locally-managed tunnels
 
@@ -38,10 +40,10 @@ Once the cluster is connected to Cloudflare, you can configure Cloudflare Tunnel
 
 To complete the following procedure, you will need:
 
-* [A Google Cloud Project ↗](https://cloud.google.com/resource-manager/docs/creating-managing-projects#creating%5Fa%5Fproject)
-* [A zone on Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/)
+- [A Google Cloud Project ↗](https://cloud.google.com/resource-manager/docs/creating-managing-projects#creating_a_project)
+- [A zone on Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/)
 
-## 1\. Create a GKE cluster
+## 1. Create a GKE cluster
 
 To create a new Kubernetes cluster in Google Cloud:
 
@@ -51,219 +53,283 @@ To create a new Kubernetes cluster in Google Cloud:
 4. (Optional) Choose your desired region and other cluster specifications. For this example, we will use the default specifications.
 5. Select **Create**.
 6. To connect to the cluster:
-
-  1. Select the three-dot menu.
-  2. Select **Connect**.
-  3. Select **Run in Cloud Shell** to open a terminal in the browser.
-  4. Select **Authorize**.
-  5. Press `Enter` to run the pre-populated `gcloud` command.
-  6. (Recommended) In the Cloud Shell menu, select **Open Editor** to launch the built-in IDE.
+   1. Select the three-dot menu.
+   2. Select **Connect**.
+   3. Select **Run in Cloud Shell** to open a terminal in the browser.
+   4. Select **Authorize**.
+   5. Press `Enter` to run the pre-populated `gcloud` command.
+   6. (Recommended) In the Cloud Shell menu, select **Open Editor** to launch the built-in IDE.
 7. In the Cloud Shell terminal, run the following command to check the cluster status:
-```sh
-kubectl get all
-```
-```sh
-NAME                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
-service/kubernetes   ClusterIP   34.118.224.1   <none>        443/TCP   15m
-```
 
-## 2\. Create pods for the web app
+   ```sh
+   kubectl get all
+   ```
+
+   ```sh
+   NAME                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+   service/kubernetes   ClusterIP   34.118.224.1   <none>        443/TCP   15m
+   ```
+
+
+
+## 2. Create pods for the web app
 
 A pod represents an instance of a running process in the cluster. In this example, we will deploy the [httpbin ↗](https://httpbin.org/) application with two pods and make the pods accessible inside the cluster at `httpbin-service:80`.
 
 1. Create a folder for your Kubernetes manifest files:
-```sh
-mkdir tunnel-example
-```
-2. Change into the directory:
-```sh
-cd tunnel-example
-```
-3. In the `tunnel-example` directory, create a new file called `httpbin.yaml`. This file defines the Kubernetes deployment for the httpbin app.
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: httpbin-deployment
-  namespace: default
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: httpbin
-  template:
-    metadata:
-      labels:
-        app: httpbin
-    spec:
-      containers:
-        - name: httpbin
-          image: kennethreitz/httpbin:latest
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 80
-```
-4. Create a new `httpbinsvc.yaml` file. This file defines a Kubernetes service that allows other apps in the cluster (such as `cloudflared`) to access the set of httpbin pods.
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: httpbin-service
-  namespace: default
-spec:
-  type: LoadBalancer
-  selector:
-    app: httpbin
-  ports:
-    - port: 80
-      targetPort: 80
-```
-5. Use the following command to run the application inside the cluster:
-```sh
-kubectl create -f httpbin.yaml -f httpbinsvc.yaml
-```
-6. Check the status of your deployment:
-```sh
-kubectl get all
-```
-```sh
-NAME                                     READY   STATUS    RESTARTS   AGE
-pod/httpbin-deployment-bc6689c5d-b5ftk   1/1     Running   0          79s
-pod/httpbin-deployment-bc6689c5d-cbd9m   1/1     Running   0          79s
-NAME                      TYPE           CLUSTER-IP       EXTERNAL-IP    PORT(S)        AGE
-service/httpbin-service   LoadBalancer   34.118.225.147   34.75.201.60   80:31967/TCP   79s
-service/kubernetes        ClusterIP      34.118.224.1     <none>         443/TCP        24h
-NAME                                 READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/httpbin-deployment   2/2     2            2           79s
-NAME                                           DESIRED   CURRENT   READY   AGE
-replicaset.apps/httpbin-deployment-bc6689c5d   2         2         2       79s
-```
 
-## 3\. Create a tunnel
+   ```sh
+   mkdir tunnel-example
+   ```
+
+
+2. Change into the directory:
+
+   ```sh
+   cd tunnel-example
+   ```
+
+
+3. In the `tunnel-example` directory, create a new file called `httpbin.yaml`. This file defines the Kubernetes deployment for the httpbin app.
+
+   *httpbin.yamlyaml*
+
+
+
+   ```yaml
+   apiVersion: apps/v1
+   kind: Deployment
+   metadata:
+     name: httpbin-deployment
+     namespace: default
+   spec:
+     replicas: 2
+     selector:
+       matchLabels:
+         app: httpbin
+     template:
+       metadata:
+         labels:
+           app: httpbin
+       spec:
+         containers:
+           - name: httpbin
+             image: kennethreitz/httpbin:latest
+             imagePullPolicy: IfNotPresent
+             ports:
+               - containerPort: 80
+   ```
+
+
+4. Create a new `httpbinsvc.yaml` file. This file defines a Kubernetes service that allows other apps in the cluster (such as `cloudflared`) to access the set of httpbin pods.
+
+   *httpbinsvc.yamlyaml*
+
+
+
+   ```yaml
+   apiVersion: v1
+   kind: Service
+   metadata:
+     name: httpbin-service
+     namespace: default
+   spec:
+     type: LoadBalancer
+     selector:
+       app: httpbin
+     ports:
+       - port: 80
+         targetPort: 80
+   ```
+
+
+5. Use the following command to run the application inside the cluster:
+
+   ```sh
+   kubectl create -f httpbin.yaml -f httpbinsvc.yaml
+   ```
+
+
+6. Check the status of your deployment:
+
+   ```sh
+   kubectl get all
+   ```
+
+   ```sh
+   NAME                                     READY   STATUS    RESTARTS   AGE
+   pod/httpbin-deployment-bc6689c5d-b5ftk   1/1     Running   0          79s
+   pod/httpbin-deployment-bc6689c5d-cbd9m   1/1     Running   0          79s
+
+   NAME                      TYPE           CLUSTER-IP       EXTERNAL-IP    PORT(S)        AGE
+   service/httpbin-service   LoadBalancer   34.118.225.147   34.75.201.60   80:31967/TCP   79s
+   service/kubernetes        ClusterIP      34.118.224.1     <none>         443/TCP        24h
+
+   NAME                                 READY   UP-TO-DATE   AVAILABLE   AGE
+   deployment.apps/httpbin-deployment   2/2     2            2           79s
+
+   NAME                                           DESIRED   CURRENT   READY   AGE
+   replicaset.apps/httpbin-deployment-bc6689c5d   2         2         2       79s
+   ```
+
+
+
+## 3. Create a tunnel
 
 To create a Cloudflare Tunnel:
 
-1. In the [Cloudflare dashboard](https://dash.cloudflare.com/), go to **Networking** \> **Tunnels**.
+1. In the [Cloudflare dashboard](https://dash.cloudflare.com/), go to **Networking** > **Tunnels**.
 2. Select **Create a tunnel**.
 3. Enter a name for your tunnel (for example, `gke-tunnel`).
 4. Select **Create Tunnel**.
 5. Choose your operating system and select **Docker**.
-Applications must be packaged into a containerized image before you can run it in Kubernetes. Therefore, we will use the `cloudflared` Docker container image to deploy the tunnel in Kubernetes.
+
+   Applications must be packaged into a containerized image before you can run it in Kubernetes. Therefore, we will use the `cloudflared` Docker container image to deploy the tunnel in Kubernetes.
 6. Instead of running the installation command, copy just the token value rather than the whole command. The token value is of the form `eyJhIjoiNWFiNGU5Z...` You will need the token for the Kubernetes manifest file.
 
 Leave the Cloudflare Tunnel browser tab open while we focus on the Kubernetes deployment.
 
-## 4\. Store the tunnel token
+## 4. Store the tunnel token
 
 `cloudflared` uses a tunnel token to run a remotely-managed Cloudflare Tunnel. You can store the tunnel token in a [Kubernetes secret ↗](https://kubernetes.io/docs/concepts/configuration/secret/).
 
-1. In GKE Cloud Shell, create a `tunnel-token.yaml` file with the following content. Make sure to replace `<YOUR_TUNNEL_TOKEN>` with your tunnel token (`eyJhIjoiNWFiNGU5Z...`).
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: tunnel-token
-stringData:
-  token: <YOUR_TUNNEL_TOKEN>
-```
-2. Create the secret:
-```sh
-kubectl create -f tunnel-token.yaml
-```
-3. Check the newly created secret:
-```sh
-kubectl get secrets
-```
-```sh
-NAME        TYPE     DATA   AGE
-tunnel-token   Opaque   1      100s
-```
+1. In GKE Cloud Shell, create a `tunnel-token.yaml` file with the following content. Make sure to replace `<YOUR_TUNNEL_TOKEN>` with your tunnel token ( `eyJhIjoiNWFiNGU5Z...`).
 
-## 5\. Create pods for cloudflared
+   *tunnel-token.yamlyaml*
+
+
+
+   ```yaml
+   apiVersion: v1
+   kind: Secret
+   metadata:
+     name: tunnel-token
+   stringData:
+     token: <YOUR_TUNNEL_TOKEN>
+   ```
+
+
+2. Create the secret:
+
+   ```sh
+   kubectl create -f tunnel-token.yaml
+   ```
+
+
+3. Check the newly created secret:
+
+   ```sh
+   kubectl get secrets
+   ```
+
+   ```sh
+   NAME        TYPE     DATA   AGE
+   tunnel-token   Opaque   1      100s
+   ```
+
+
+
+## 5. Create pods for cloudflared
 
 To run the Cloudflare Tunnel in Kubernetes:
 
 1. Create a Kubernetes deployment for a remotely-managed Cloudflare Tunnel:
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: cloudflared-deployment
-  namespace: default
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      pod: cloudflared
-  template:
-    metadata:
-      labels:
-        pod: cloudflared
-    spec:
-      securityContext:
-        sysctls:
-          # Allows ICMP traffic (ping, traceroute) to resources behind cloudflared.
-          - name: net.ipv4.ping_group_range
-            value: "65532 65532"
-      containers:
-        - image: cloudflare/cloudflared:latest
-          name: cloudflared
-          env:
-            # Defines an environment variable for the tunnel token.
-            - name: TUNNEL_TOKEN
-              valueFrom:
-                secretKeyRef:
-                  name: tunnel-token
-                  key: token
-          command:
-            # Configures tunnel run parameters
-            - cloudflared
-            - tunnel
-            - --no-autoupdate
-            - --loglevel
-            - info
-            - --metrics
-            - 0.0.0.0:2000
-            - run
-          livenessProbe:
-            httpGet:
-              # Cloudflared has a /ready endpoint which returns 200 if and only if
-              # it has an active connection to Cloudflare's network.
-              path: /ready
-              port: 2000
-            failureThreshold: 1
-            initialDelaySeconds: 10
-            periodSeconds: 10
-```
+
+   *tunnel.yamlyaml*
+
+
+
+   ```yaml
+   apiVersion: apps/v1
+   kind: Deployment
+   metadata:
+     name: cloudflared-deployment
+     namespace: default
+   spec:
+     replicas: 2
+     selector:
+       matchLabels:
+         pod: cloudflared
+     template:
+       metadata:
+         labels:
+           pod: cloudflared
+       spec:
+         securityContext:
+           sysctls:
+             # Allows ICMP traffic (ping, traceroute) to resources behind cloudflared.
+             - name: net.ipv4.ping_group_range
+               value: "65532 65532"
+         containers:
+           - image: cloudflare/cloudflared:latest
+             name: cloudflared
+             env:
+               # Defines an environment variable for the tunnel token.
+               - name: TUNNEL_TOKEN
+                 valueFrom:
+                   secretKeyRef:
+                     name: tunnel-token
+                     key: token
+             command:
+               # Configures tunnel run parameters
+               - cloudflared
+               - tunnel
+               - --no-autoupdate
+               - --loglevel
+               - info
+               - --metrics
+               - 0.0.0.0:2000
+               - run
+             livenessProbe:
+               httpGet:
+                 # Cloudflared has a /ready endpoint which returns 200 if and only if
+                 # it has an active connection to Cloudflare's network.
+                 path: /ready
+                 port: 2000
+               failureThreshold: 1
+               initialDelaySeconds: 10
+               periodSeconds: 10
+   ```
+
+
 2. Deploy `cloudflared` to the cluster:
-```sh
-kubectl create -f tunnel.yaml
-```
-Kubernetes will install the `cloudflared` image on two pods and run the tunnel using the command `cloudflared tunnel --no-autoupdate --loglevel info --metrics 0.0.0.0:2000 run`. `cloudflared` will consume the tunnel token from the `TUNNEL_TOKEN` environment variable.
+
+   ```sh
+   kubectl create -f tunnel.yaml
+   ```
+
+   Kubernetes will install the `cloudflared` image on two pods and run the tunnel using the command `cloudflared tunnel --no-autoupdate --loglevel info --metrics 0.0.0.0:2000 run`. `cloudflared` will consume the tunnel token from the `TUNNEL_TOKEN` environment variable.
 3. Check the status of your cluster:
-```sh
-kubectl get all
-```
-```sh
-NAME                                          READY   STATUS    RESTARTS   AGE
-pod/cloudflared-deployment-6d5f9f9666-85l5w   1/1     Running   0          21s
-pod/cloudflared-deployment-6d5f9f9666-wb96x   1/1     Running   0          21s
-pod/httpbin-deployment-bc6689c5d-b5ftk        1/1     Running   0          3m36s
-pod/httpbin-deployment-bc6689c5d-cbd9m        1/1     Running   0          3m36s
-NAME                      TYPE           CLUSTER-IP       EXTERNAL-IP    PORT(S)        AGE
-service/httpbin-service   LoadBalancer   34.118.225.147   34.75.201.60   80:31967/TCP   3m36s
-service/kubernetes        ClusterIP      34.118.224.1     <none>         443/TCP        24h
-NAME                                     READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/cloudflared-deployment   2/2     2            2           22s
-deployment.apps/httpbin-deployment       2/2     2            2           3m37s
-NAME                                                DESIRED   CURRENT   READY   AGE
-replicaset.apps/cloudflared-deployment-6d5f9f9666   2         2         2       22s
-replicaset.apps/httpbin-deployment-bc6689c5d        2         2         2       3m37s
-```
+
+   ```sh
+   kubectl get all
+   ```
+
+   ```sh
+   NAME                                          READY   STATUS    RESTARTS   AGE
+   pod/cloudflared-deployment-6d5f9f9666-85l5w   1/1     Running   0          21s
+   pod/cloudflared-deployment-6d5f9f9666-wb96x   1/1     Running   0          21s
+   pod/httpbin-deployment-bc6689c5d-b5ftk        1/1     Running   0          3m36s
+   pod/httpbin-deployment-bc6689c5d-cbd9m        1/1     Running   0          3m36s
+
+   NAME                      TYPE           CLUSTER-IP       EXTERNAL-IP    PORT(S)        AGE
+   service/httpbin-service   LoadBalancer   34.118.225.147   34.75.201.60   80:31967/TCP   3m36s
+   service/kubernetes        ClusterIP      34.118.224.1     <none>         443/TCP        24h
+
+   NAME                                     READY   UP-TO-DATE   AVAILABLE   AGE
+   deployment.apps/cloudflared-deployment   2/2     2            2           22s
+   deployment.apps/httpbin-deployment       2/2     2            2           3m37s
+
+   NAME                                                DESIRED   CURRENT   READY   AGE
+   replicaset.apps/cloudflared-deployment-6d5f9f9666   2         2         2       22s
+   replicaset.apps/httpbin-deployment-bc6689c5d        2         2         2       3m37s
+   ```
+
+
 
 You should see two `cloudflared` pods and two `httpbin` pods with a `Running` status. If your `cloudflared` pods keep restarting, check the `command` syntax in `tunnel.yaml` and make sure that the [tunnel run parameters](https://developers.cloudflare.com/tunnel/configuration/#run-parameters) are in the correct order.
 
-## 6\. Verify tunnel status
+## 6. Verify tunnel status
 
 To print logs for a `cloudflared` instance:
 
@@ -282,17 +348,17 @@ kubectl logs pod/cloudflared-deployment-6d5f9f9666-85l5w
 ...
 ```
 
-## 7\. Add a tunnel route
+## 7. Add a tunnel route
 
 Now that the tunnel is up and running, we can route the httpbin service through the tunnel.
 
-1. In the [Cloudflare dashboard](https://dash.cloudflare.com/), go to **Networking** \> **Tunnels** and select your tunnel.
-2. On the **Routes** tab, select **Add route** \> **Published application**.
+1. In the [Cloudflare dashboard](https://dash.cloudflare.com/), go to **Networking** > **Tunnels** and select your tunnel.
+2. On the **Routes** tab, select **Add route** > **Published application**.
 3. Enter a hostname for the application (for example, `httpbin.<your-domain>.com`).
 4. Under **Service**, enter `http://httpbin-service`. `httpbin-service` is the name of the Kubernetes service defined in `httpbinsvc.yaml`.
 5. Select **Add route**.
 
-## 8\. Test the connection
+## 8. Test the connection
 
 To test, open a new browser tab and go to `httpbin.<your-domain>.com`. You should see the httpbin homepage.
 

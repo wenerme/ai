@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # URL normalization
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/normalization/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/normalization/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare provides a URL normalization feature to modify the URLs of incoming requests so that they conform to a consistent formatting standard. This is important because the same resource can be requested using different URL formats (for example, `/hello` and `/%68ello` refer to the same path), and without normalization, security rules and other features might not match all variations of a URL.
 
@@ -22,7 +22,9 @@ Caution
 
 When traffic is proxied through Cloudflare, certain baseline URL normalization steps are always applied, even if you turn off URL normalization for your zone. For example, Cloudflare always converts two or more adjacent slashes into a single slash (such as `//page` to `/page`). You cannot disable these baseline normalizations.
 
-URL normalization does not perform any redirects, and therefore it will not change the address displayed in the visitor's browser. The normalization operation, when enabled, occurs on the global network and affects Cloudflare features executed later and (optionally) the URL received at the origin server.
+URL normalization does not perform any redirects
+
+, and therefore it will not change the address displayed in the visitor's browser. The normalization operation, when enabled, occurs on the global network and affects Cloudflare features executed later and (optionally) the URL received at the origin server.
 
 Note
 

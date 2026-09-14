@@ -8,13 +8,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # http.request.accepted\_languages
 
-`http.request.accepted_languages` `Array<String>`
+`http.request.accepted_languages``Array<String>`
 
-List of language tags provided in the [Accept-Language](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Accept-Language) HTTP request header.
+List of language tags provided in the [`Accept-Language`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Accept-Language) HTTP request header.
 
 Language tags are sorted by weight (`;q=<weight>`, with a default weight of `1`) in descending order.
 
-If the HTTP header is not present in the request or is empty, `http.request.accepted_languages[0]` will return a "[missing value](https://developers.cloudflare.com/ruleset-engine/rules-language/values/#notes)", which the [concat()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#concat) function will handle as an empty string.
+If the HTTP header is not present in the request or is empty, `http.request.accepted_languages[0]` will return a " [missing value](https://developers.cloudflare.com/ruleset-engine/rules-language/values/#notes)", which the [`concat()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#concat) function will handle as an empty string.
 
 If the HTTP header includes the language tag `*` it will not be stored in the array.
 
@@ -34,8 +34,8 @@ concat("/", http.request.accepted_languages[0], http.request.uri.path) ==> "//my
 ```
 
 Categories:
-* Request
-* Headers
+- Request
+- Headers
 
 Was this helpful?
 

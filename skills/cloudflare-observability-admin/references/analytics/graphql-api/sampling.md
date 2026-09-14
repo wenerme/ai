@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Sampling
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/sampling/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/sampling/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 For a deep-dive on how sampling at Cloudflare works, see [Understanding sampling in Cloudflare Analytics](https://developers.cloudflare.com/analytics/sampling/).
 
@@ -40,10 +40,10 @@ Cloudflare almost always uses **adaptive sampling**, which means the sample rate
 
 The following data nodes are based on fixed sampling, where the sample rate does not vary:
 
-| Data set                                                                                       | Rate   | Notes                                                                                                                                                                                                |
-| ---------------------------------------------------------------------------------------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Firewall Rules Preview**Nodes:**firewallRulePreviewGroups                                      | 1%     | Use with caution. A 1% sample rate does not provide accurate estimates for datasets smaller than a certain threshold, a scenario the Cloudflare dashboard calls out explicitly but the API does not. |
-| Network Analytics**Nodes:**ipFlows1mGroupsipFlows1hGroupsipFlows1dGroupsipFlows1mAttacksGroups | 0.012% | Sampling rate is in terms of packet count (1 of every 8,192 packets).                                                                                                                                |
+| Data set | Rate | Notes |
+| --- | --- | --- |
+| Firewall Rules Preview<br>**Nodes:**<br>`firewallRulePreviewGroups` | 1% | Use with caution. A 1% sample rate does not provide accurate estimates for datasets smaller than a certain threshold, a scenario the Cloudflare dashboard calls out explicitly but the API does not. |
+| Network Analytics<br>**Nodes:**<br>`ipFlows1mGroups`<br>`ipFlows1hGroups`<br>`ipFlows1dGroups`<br>`ipFlows1mAttacksGroups` | 0.012% | Sampling rate is in terms of packet count (1 of every 8,192 packets). |
 
 ## Access to raw data
 

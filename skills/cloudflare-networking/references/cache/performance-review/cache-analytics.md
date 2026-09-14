@@ -12,29 +12,29 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cache Analytics
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/performance-review/cache-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/performance-review/cache-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cache Analytics shows how much of your site's traffic is served from Cloudflare's cache versus your origin server. When content is served from cache, visitors get faster page loads and your origin web server handles less traffic. Use Cache Analytics to identify resources that are [missing from cache](https://developers.cloudflare.com/cache/concepts/cache-responses/#miss), [expired](https://developers.cloudflare.com/cache/concepts/cache-responses/#expired) (cached copy is outdated), or [ineligible for caching](https://developers.cloudflare.com/cache/concepts/cache-responses/#noneunknown) (not eligible for caching). You can filter by hostname, review the top URLs that miss cache, and query up to three days of data.
 
 ## Availability
 
-|                  | Free | Pro    | Business | Enterprise |
-| ---------------- | ---- | ------ | -------- | ---------- |
-| Availability     | No   | Yes    | Yes      | Yes        |
-| Retention period | N/A  | 7 days | 30 days  | 30 days    |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | No | Yes | Yes | Yes |
+| Retention period | N/A | 7 days | 30 days | 30 days |
 
 ## Access Cache Analytics
 
 In the Cloudflare dashboard, go to the **Caching** page.
 
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching)
 
 ## Requests vs Data Transfer
 
 You can decide whether to focus on **Requests** or **Data Transfer**:
 
-* **Requests** (default view) helps assess performance. Each cache [MISS](https://developers.cloudflare.com/cache/concepts/cache-responses/#miss) means the request must go to your origin server instead of being served from Cloudflare's cache, which adds latency.
-* **Data Transfer** is useful for cost analysis, since most hosting providers charge for data sent from their servers (egress bandwidth).
+- **Requests** (default view) helps assess performance. Each cache [MISS](https://developers.cloudflare.com/cache/concepts/cache-responses/#miss) means the request must go to your origin server instead of being served from Cloudflare's cache, which adds latency.
+- **Data Transfer** is useful for cost analysis, since most hosting providers charge for data sent from their servers (egress bandwidth).
 
 You can switch between these views while keeping other analytics filters applied.
 

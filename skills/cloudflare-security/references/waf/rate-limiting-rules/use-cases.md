@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Rate limiting rule examples
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/rate-limiting-rules/use-cases/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/rate-limiting-rules/use-cases/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The examples below include sample rate limiting rule configurations.
 
@@ -22,19 +22,19 @@ The following [rate limiting rule](https://developers.cloudflare.com/waf/rate-li
 
 **When incoming requests match:**
 
-| Field             | Operator       | Value         |     |
-| ----------------- | -------------- | ------------- | --- |
-| URI Path          | equals         | /login        | And |
-| Country           | equals         | United States | And |
-| IP Source Address | does not equal | 192.0.0.1     |     |
+| Field | Operator | Value | |
+| --- | --- | --- | --- |
+| URI Path | equals | `/login` | And |
+| Country | equals | `United States` | And |
+| IP Source Address | does not equal | `192.0.0.1` | |
 
 If you are using the expression editor:
 `(http.request.uri.path eq "/login" and ip.src.country eq "US" and ip.src ne 192.0.0.1)`
 
 **With the same characteristics:**
 
-* _IP_
-* _Data center ID_ (included by default in the dashboard, but not shown)
+- *IP*
+- *Data center ID* (included by default in the dashboard, but not shown)
 
 ## Example 2
 
@@ -42,19 +42,19 @@ The following [rate limiting rule](https://developers.cloudflare.com/waf/rate-li
 
 **When incoming requests match:**
 
-| Field          | Operator | Value    |     |
-| -------------- | -------- | -------- | --- |
-| URI Path       | contains | /product | And |
-| Request Method | equals   | POST     |     |
+| Field | Operator | Value | |
+| --- | --- | --- | --- |
+| URI Path | contains | `/product` | And |
+| Request Method | equals | `POST` | |
 
 If you are using the expression editor:
 `(http.request.uri.path contains "/product" and http.request.method eq "POST")`
 
 **With the same characteristics:**
 
-* _IP_
-* _Header value of_ \> `x-api-key`
-* _Data center ID_ (included by default in the dashboard, but not shown)
+- *IP*
+- *Header value of* > `x-api-key`
+- *Data center ID* (included by default in the dashboard, but not shown)
 
 ## Example 3
 
@@ -66,9 +66,9 @@ The following [rate limiting rule](https://developers.cloudflare.com/waf/rate-li
 
 **With the same characteristics:**
 
-* _IP_
-* _Header value of_ \> `user-agent`
-* _Data center ID_ (included by default in the dashboard, but not shown)
+- *IP*
+- *Header value of* > `user-agent`
+- *Data center ID* (included by default in the dashboard, but not shown)
 
 ## Example 4
 
@@ -82,31 +82,31 @@ The counter with the total score is updated when there is a match for the rate l
 
 **When incoming requests match:**
 
-| Field    | Operator | Value       |
-| -------- | -------- | ----------- |
-| URI Path | wildcard | /graphql/\* |
+| Field | Operator | Value |
+| --- | --- | --- |
+| URI Path | wildcard | `/graphql/*` |
 
 If you are using the expression editor:
 `(http.request.uri.path wildcard "/graphql/*")`
 
 **With the same characteristics:**
 
-* _Header value of_ \> `x-api-key`
-* _Data center ID_ (included by default in the dashboard, but not shown)
+- *Header value of* > `x-api-key`
+- *Data center ID* (included by default in the dashboard, but not shown)
 
 When rate exceeds: **Complexity based**
 
-* Score per period: `400`
-* Period: _1 minute_
-* Response header name: `my-score`
+- Score per period: `400`
+- Period: *1 minute*
+- Response header name: `my-score`
 
 Then take action:
 
-* Choose action: _Block_
+- Choose action: *Block*
 
 With the following behavior: **Block for the selected duration**
 
-* Duration: _10 minutes_
+- Duration: *10 minutes*
 
 For an API example with this rule configuration, refer to [Create a rate limiting rule via API](https://developers.cloudflare.com/waf/rate-limiting-rules/create-api/#example-d---complexity-based-rate-limiting-rule).
 

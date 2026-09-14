@@ -16,18 +16,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Image • ByteDance
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `bytedance/seedream-4.0`
 
-* Third-party
+- Third-party
 
 Seedream 4.0 is ByteDance's image creation model that combines text-to-image generation and image editing into a single architecture, offering fast, high-resolution output up to 4K.
 
-| Model Info       |                                                                                                                          |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| More information | [link ↗](https://seed.bytedance.com/en/seedream4%5F0)                                                                    |
-| Pricing          | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/bytedance/seedream-4.0) |
+| Model Info | |
+| --- | --- |
+| More information | [link ↗](https://seed.bytedance.com/en/seedream4_0) |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/bytedance/seedream-4.0) |
 
 ## Usage
 
@@ -67,7 +67,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**High Resolution** — 4K quality image generation
+<details>
+
+<summary>**High Resolution** — 4K quality image generation</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -110,7 +114,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Widescreen Landscape** — Cinematic aspect ratio image
+</details>
+
+<details>
+
+<summary>**Widescreen Landscape** — Cinematic aspect ratio image</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -153,7 +163,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Portrait Format** — Vertical image for portraits
+</details>
+
+<details>
+
+<summary>**Portrait Format** — Vertical image for portraits</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -195,7 +211,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Detailed 4K** — High-resolution detailed botanical illustration
+</details>
+
+<details>
+
+<summary>**Detailed 4K** — High-resolution detailed botanical illustration</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -237,6 +259,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 prompt
@@ -269,9 +293,9 @@ image
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/schema-output.json)
 
 Was this helpful?
 

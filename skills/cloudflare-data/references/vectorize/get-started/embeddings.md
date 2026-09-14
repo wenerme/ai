@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Vectorize and Workers AI
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/vectorize/get-started/embeddings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/vectorize/get-started/embeddings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Vectorize is now Generally Available
 
@@ -26,20 +26,20 @@ If this is your first time using Vectorize or a vector database, start with the 
 
 This guide will instruct you through:
 
-* Creating a Vectorize index.
-* Connecting a [Cloudflare Worker](https://developers.cloudflare.com/workers/) to your index.
-* Using [Workers AI](https://developers.cloudflare.com/workers-ai/) to generate vector embeddings.
-* Using Vectorize to query those vector embeddings.
+- Creating a Vectorize index.
+- Connecting a [Cloudflare Worker](https://developers.cloudflare.com/workers/) to your index.
+- Using [Workers AI](https://developers.cloudflare.com/workers-ai/) to generate vector embeddings.
+- Using Vectorize to query those vector embeddings.
 
 ## Prerequisites
 
 To continue:
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages) if you have not already.
-2. Install [npm ↗](https://docs.npmjs.com/getting-started).
-3. Install [Node.js ↗](https://nodejs.org/en/). Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) requires a Node version of `16.17.0` or later.
+2. Install [`npm` ↗](https://docs.npmjs.com/getting-started).
+3. Install [`Node.js` ↗](https://nodejs.org/en/). Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) requires a Node version of `16.17.0` or later.
 
-## 1\. Create a Worker
+## 1. Create a Worker
 
 You will create a new project that will contain a Worker script, which will act as the client application for your Vectorize index.
 
@@ -61,16 +61,16 @@ pnpm create cloudflare@latest embeddings-tutorial
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `TypeScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `TypeScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 This will create a new `embeddings-tutorial` directory. Your new `embeddings-tutorial` directory will include:
 
-* A `"Hello World"` [Worker](https://developers.cloudflare.com/workers/get-started/guide/#3-write-code) at `src/index.ts`.
-* A [wrangler.jsonc](https://developers.cloudflare.com/workers/wrangler/configuration/) configuration file. `wrangler.jsonc` is how your `embeddings-tutorial` Worker will access your index.
+- A `"Hello World"` [Worker](https://developers.cloudflare.com/workers/get-started/guide/#3-write-code) at `src/index.ts`.
+- A [`wrangler.jsonc`](https://developers.cloudflare.com/workers/wrangler/configuration/) configuration file. `wrangler.jsonc` is how your `embeddings-tutorial` Worker will access your index.
 
 Note
 
@@ -78,7 +78,7 @@ If you are familiar with Cloudflare Workers, or initializing projects in a Conti
 
 For example: `CI=true npm create cloudflare@latest embeddings-tutorial --type=simple --git --ts --deploy=false` will create a basic "Hello World" project ready to build on.
 
-## 2\. Create an index
+## 2. Create an index
 
 A vector database is distinct from a traditional SQL or NoSQL database. A vector database is designed to store vector embeddings, which are representations of data, but not the original data itself.
 
@@ -98,9 +98,9 @@ Refer to the [legacy transition](https://developers.cloudflare.com/vectorize/ref
 
 To create an index, use the `wrangler vectorize create` command and provide a name for the index. A good index name is:
 
-* A combination of lowercase and/or numeric ASCII characters, shorter than 32 characters, starts with a letter, and uses dashes (-) instead of spaces.
-* Descriptive of the use-case and environment. For example, "production-doc-search" or "dev-recommendation-engine".
-* Only used for describing the index, and is not directly referenced in code.
+- A combination of lowercase and/or numeric ASCII characters, shorter than 32 characters, starts with a letter, and uses dashes (-) instead of spaces.
+- Descriptive of the use-case and environment. For example, "production-doc-search" or "dev-recommendation-engine".
+- Only used for describing the index, and is not directly referenced in code.
 
 In addition, define both the `dimensions` of the vectors you will store in the index, as well as the distance `metric` used to determine similar vectors when creating the index. **This configuration cannot be changed later**, as a vector database is configured for a fixed vector configuration.
 
@@ -124,7 +124,7 @@ index_name = "embeddings-index"
 
 This will create a new vector database, and output the [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) configuration needed in the next step.
 
-## 3\. Bind your Worker to your index
+## 3. Bind your Worker to your index
 
 You must create a binding for your Worker to connect to your Vectorize index. [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) allow your Workers to access resources, like Vectorize or R2, from Cloudflare Workers. You create bindings by updating your Wrangler file.
 
@@ -149,11 +149,11 @@ index_name = "embeddings-index"
 
 Specifically:
 
-* The value (string) you set for `<BINDING_NAME>` will be used to reference this database in your Worker. In this tutorial, name your binding `VECTORIZE`.
-* The binding must be [a valid JavaScript variable name ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar%5Fand%5Ftypes#variables). For example, `binding = "MY_INDEX"` or `binding = "PROD_SEARCH_INDEX"` would both be valid names for the binding.
-* Your binding is available in your Worker at `env.<BINDING_NAME>` and the Vectorize [client API](https://developers.cloudflare.com/vectorize/reference/client-api/) is exposed on this binding for use within your Workers application.
+- The value (string) you set for `<BINDING_NAME>` will be used to reference this database in your Worker. In this tutorial, name your binding `VECTORIZE`.
+- The binding must be [a valid JavaScript variable name ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#variables). For example, `binding = "MY_INDEX"` or `binding = "PROD_SEARCH_INDEX"` would both be valid names for the binding.
+- Your binding is available in your Worker at `env.<BINDING_NAME>` and the Vectorize [client API](https://developers.cloudflare.com/vectorize/reference/client-api/) is exposed on this binding for use within your Workers application.
 
-## 4\. Set up Workers AI
+## 4. Set up Workers AI
 
 Before you deploy your embedding example, ensure your Worker uses your model catalog, including the [text embedding model](https://developers.cloudflare.com/workers-ai/models/?tasks=Text+Embeddings) built-in.
 
@@ -184,7 +184,7 @@ binding = "AI"
 
 With Workers AI ready, you can write code in your Worker.
 
-## 5\. Write code in your Worker
+## 5. Write code in your Worker
 
 To write code in your Worker, go to your `embeddings-tutorial` Worker and open the `src/index.ts` file. The `index.ts` file is where you configure your Worker's interactions with your Vectorize index.
 
@@ -262,7 +262,7 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
-## 6\. Deploy your Worker
+## 6. Deploy your Worker
 
 Before deploying your Worker globally, log in with your Cloudflare account by running:
 
@@ -280,7 +280,7 @@ npx wrangler deploy
 
 Preview your Worker at `https://embeddings-tutorial.<YOUR_SUBDOMAIN>.workers.dev`.
 
-## 7\. Query your index
+## 7. Query your index
 
 You can now visit the URL for your newly created project to insert vectors and then query them.
 
@@ -307,17 +307,17 @@ This should return the following JSON:
 
 Extend this example by:
 
-* Adding more inputs and generating a larger set of vectors.
-* Accepting a custom query parameter passed in the URL, for example via `URL.searchParams`.
-* Creating a new index with a different [distance metric](https://developers.cloudflare.com/vectorize/best-practices/create-indexes/#distance-metrics) and observing how your scores change in response to your inputs.
+- Adding more inputs and generating a larger set of vectors.
+- Accepting a custom query parameter passed in the URL, for example via `URL.searchParams`.
+- Creating a new index with a different [distance metric](https://developers.cloudflare.com/vectorize/best-practices/create-indexes/#distance-metrics) and observing how your scores change in response to your inputs.
 
 By finishing this tutorial, you have successfully created a Vectorize index, used Workers AI to generate vector embeddings, and deployed your project globally.
 
 ## Next steps
 
-* Build a [generative AI chatbot](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-retrieval-augmented-generation-ai/) using Workers AI and Vectorize.
-* Learn more about [how vector databases work](https://developers.cloudflare.com/vectorize/reference/what-is-a-vector-database/).
-* Read [examples](https://developers.cloudflare.com/vectorize/reference/client-api/) on how to use the Vectorize API from Cloudflare Workers.
+- Build a [generative AI chatbot](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-retrieval-augmented-generation-ai/) using Workers AI and Vectorize.
+- Learn more about [how vector databases work](https://developers.cloudflare.com/vectorize/reference/what-is-a-vector-database/).
+- Read [examples](https://developers.cloudflare.com/vectorize/reference/client-api/) on how to use the Vectorize API from Cloudflare Workers.
 
 Was this helpful?
 
@@ -328,5 +328,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/get-started/embeddings/#page","headline":"Vectorize and Workers AI · Cloudflare Vectorize docs","description":"Generate vector embeddings with Workers AI and store them in a Vectorize index.","url":"https://developers.cloudflare.com/vectorize/get-started/embeddings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/get-started/embeddings/#page","headline":"Vectorize and Workers AI · Cloudflare Vectorize docs","description":"Generate vector embeddings with Workers AI and store them in a Vectorize index.","url":"https://developers.cloudflare.com/vectorize/get-started/embeddings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

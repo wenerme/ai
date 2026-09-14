@@ -12,34 +12,34 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Turnstile Spin
 
-Last updated Jul 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/turnstile/spin/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/spin/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Turnstile Spin is a setup flow for Cloudflare Turnstile. It creates the widget for you, then provides the sitekey, secret, and a curated prompt to embed the widget on the right forms and wire canonical server-side siteverify into your existing backend. The prompt does not contain the secret. Spin runs three ways:
 
-* **From the Cloudflare dashboard.** Enter your domains, select **Set up**, and Spin creates the widget server-side. You receive the sitekey, the secret, and a prompt for your AI coding agent.
-* **From the Wrangler CLI.** Run `wrangler turnstile widget create` to create the widget from your terminal. Wrangler prints the sitekey and secret; you wire the widget and siteverify by hand.
-* **From your AI coding agent.** Paste a single prompt into Claude Code, Cursor, Codex, OpenCode, or GitHub Copilot Chat. The agent uses the inlined Spin skill to create the widget, embed it, and wire siteverify in your codebase.
+- **From the Cloudflare dashboard.** Enter your domains, select **Set up**, and Spin creates the widget server-side. You receive the sitekey, the secret, and a prompt for your AI coding agent.
+- **From the Wrangler CLI.** Run `wrangler turnstile widget create` to create the widget from your terminal. Wrangler prints the sitekey and secret; you wire the widget and siteverify by hand.
+- **From your AI coding agent.** Paste a single prompt into Claude Code, Cursor, Codex, OpenCode, or GitHub Copilot Chat. The agent uses the inlined Spin skill to create the widget, embed it, and wire siteverify in your codebase.
 
 All three paths produce the same widget. The only difference is where the create call runs. None of them deploy infrastructure on your behalf. Spin uses Turnstile's canonical siteverify endpoint, called from the backend you already have.
 
 ## Set up from the dashboard
 
-1. Go to the Turnstile dashboard.
-[Go to **Turnstile** ↗](https://dash.cloudflare.com/?to=/:account/turnstile)
+1. Go to the Turnstile dashboard. [Go to **Turnstile** ↗](https://dash.cloudflare.com/?to=/:account/turnstile)
 2. Select **Set up with Spin** in the page header.
 3. Enter the domains your Turnstile widget should accept tokens from. The first chip is pre-filled from your account's first active Cloudflare zone. Add more domains, or remove the pre-filled one and type any domain (Turnstile does not require a Cloudflare-managed zone). `localhost` and `127.0.0.1` are added automatically for local development. Your backend must validate the deployment-specific hostname returned by Siteverify. Do not allow local hostnames in production.
 4. Select **Set up**. Spin creates the widget and returns to a success card.
 5. When setup completes, copy:
-
-  * The **sitekey** (use as `data-sitekey` on your Turnstile widget HTML).
-  * The **agent prompt** (paste into your AI coding agent to embed the widget and add the canonical siteverify call to your existing backend handler). The prompt contains the sitekey, but not the secret.
-  * The **secret** if you plan to wire the integration by hand (store it as `TURNSTILE_SECRET` in your backend environment or secret manager).
+   - The **sitekey** (use as `data-sitekey` on your Turnstile widget HTML).
+   - The **agent prompt** (paste into your AI coding agent to embed the widget and add the canonical siteverify call to your existing backend handler). The prompt contains the sitekey, but not the secret.
+   - The **secret** if you plan to wire the integration by hand (store it as `TURNSTILE_SECRET` in your backend environment or secret manager).
 
 If Spin fails before it finishes, the dialog shows the error and offers a fallback prompt your AI coding agent can use to drive the same setup from your editor. Select **Try again** to retry from the same dialog.
 
 ## Set up from the Wrangler CLI
 
 If you prefer to drive setup from your terminal without an AI coding agent, use [Wrangler](https://developers.cloudflare.com/workers/wrangler/):
+
+*Create a widget from Wranglersh*
 
 ```sh
 wrangler turnstile widget create "myproject" \
@@ -53,12 +53,12 @@ Wrangler prints the sitekey and the secret. Copy the sitekey into your widget HT
 
 Additional widget commands:
 
-| Command                                                 | Purpose                                                    |
-| ------------------------------------------------------- | ---------------------------------------------------------- |
-| wrangler turnstile widget list                          | List every Turnstile widget on your account.               |
-| wrangler turnstile widget get <sitekey>                 | Fetch a widget's configuration, including its secret.      |
-| wrangler turnstile widget update <sitekey> --domain <d> | Update the domains, mode, or name of a widget.             |
-| wrangler turnstile widget delete <sitekey>              | Delete a widget. Pass \-y to skip the confirmation prompt. |
+| Command | Purpose |
+| --- | --- |
+| `wrangler turnstile widget list` | List every Turnstile widget on your account. |
+| `wrangler turnstile widget get <sitekey>` | Fetch a widget's configuration, including its secret. |
+| `wrangler turnstile widget update <sitekey> --domain <d>` | Update the domains, mode, or name of a widget. |
+| `wrangler turnstile widget delete <sitekey>` | Delete a widget. Pass `-y` to skip the confirmation prompt. |
 
 All commands accept `--json` for machine-readable output. `--domain` accepts comma-separated values (`--domain a.com,b.com`) or repeated flags (`--domain a.com --domain b.com`).
 
@@ -70,17 +70,27 @@ If you do not see the **Set up with Spin** button in your dashboard, or you want
 
 1. **Open your AI coding agent** in your project (Claude Code, Cursor, Codex, OpenCode, GitHub Copilot Chat).
 2. **Paste this prompt into your agent:**
-```txt
-Set up Cloudflare Turnstile in this project end to end. Plan insertion points, create the widget, embed it on the right forms, wire canonical server-side siteverify in my existing backend, and validate the integration.
-The full Turnstile Spin skill is at https://developers.cloudflare.com/turnstile/spin/prompt.md. Fetch it now if you do not already have it loaded.
-Domains: <DOMAINS>
-Insertion preference: <every form | only specific form>
-```
-Replace `<DOMAINS>` with your site domains (comma-separated, no spaces; include `localhost,127.0.0.1` for local development). Replace `<insertion preference>` with the form(s) or route(s) you want to protect, for example `every form`, `only the signup form`, or `only /login and /signup`.
+
+   *Spin prompttxt*
+
+
+
+   ```txt
+   Set up Cloudflare Turnstile in this project end to end. Plan insertion points, create the widget, embed it on the right forms, wire canonical server-side siteverify in my existing backend, and validate the integration.
+
+   The full Turnstile Spin skill is at https://developers.cloudflare.com/turnstile/spin/prompt.md. Fetch it now if you do not already have it loaded.
+
+   Domains: <DOMAINS>
+   Insertion preference: <every form | only specific form>
+   ```
+
+   Replace `<DOMAINS>` with your site domains (comma-separated, no spaces; include `localhost,127.0.0.1` for local development). Replace `<insertion preference>` with the form(s) or route(s) you want to protect, for example `every form`, `only the signup form`, or `only /login and /signup`.
 3. **Confirm as the agent goes.** The agent checks authentication, proposes widget names, and asks you to confirm before any irreversible step.
 4. **Validate.** The agent passes the secret through standard input to a dummy-token siteverify check. It then exercises your protected backend with a fresh token and confirms that token replay is rejected.
 
 If you would rather install the skill locally first so the agent has it on disk:
+
+*One-line install per agentsh*
 
 ```sh
 # Claude Code
@@ -105,20 +115,20 @@ Then prompt your agent: `Use the turnstile-spin skill to add Turnstile to this p
 
 The agent does not run silently. It detects what it can, asks only when it has to, and confirms before every irreversible step. The flow is a twelve-step wizard with several confirmation points.
 
-| Step | What happens                                                            | Confirms with you?               |
-| ---- | ----------------------------------------------------------------------- | -------------------------------- |
-| 1    | Acknowledge (agent restates what it is about to do)                     | Yes                              |
-| 2    | CLI check (wrangler if present; otherwise falls through to curl)        | No                               |
-| 3    | Authentication (Account.Turnstile:Edit token)                           | If a token is needed             |
-| 4    | Account selection (if you have more than one)                           | If more than one                 |
-| 5    | Domain                                                                  | Yes                              |
-| 6    | Codebase scan (frontend framework + backend handler + existing CAPTCHA) | No                               |
-| 7    | Insertion plan                                                          | Yes                              |
-| 8    | Widget creation (calls the Cloudflare API to create the widget)         | No (after step 7 confirms scope) |
-| 9    | Embed the widget + add canonical siteverify in your existing backend    | Yes                              |
-| 10   | Validate (dummy-token siteverify + widget hostname check)               | No                               |
-| 11   | Persist the skill locally (so the agent can re-run on follow-up tasks)  | Yes                              |
-| 12   | Final report                                                            | No                               |
+| Step | What happens | Confirms with you? |
+| --- | --- | --- |
+| 1 | Acknowledge (agent restates what it is about to do) | Yes |
+| 2 | CLI check (wrangler if present; otherwise falls through to curl) | No |
+| 3 | Authentication (`Account.Turnstile:Edit` token) | If a token is needed |
+| 4 | Account selection (if you have more than one) | If more than one |
+| 5 | Domain | Yes |
+| 6 | Codebase scan (frontend framework + backend handler + existing CAPTCHA) | No |
+| 7 | Insertion plan | Yes |
+| 8 | Widget creation (calls the Cloudflare API to create the widget) | No (after step 7 confirms scope) |
+| 9 | Embed the widget + add canonical siteverify in your existing backend | Yes |
+| 10 | Validate (dummy-token siteverify + widget hostname check) | No |
+| 11 | Persist the skill locally (so the agent can re-run on follow-up tasks) | Yes |
+| 12 | Final report | No |
 
 If anything fails, the agent reports which step and what it tried. Most failures are recoverable by adjusting one input (token scope, domain list, insertion file) and asking the agent to resume.
 
@@ -127,6 +137,8 @@ If anything fails, the agent reports which step and what it tried. Most failures
 Whichever setup path you use, Spin gives you a sitekey and a secret. The dashboard displays them separately. Its agent prompt contains only the sitekey and the Spin skill URL. The Wrangler CLI prints both values for manual setup. The AI-agent setup edits your files directly.
 
 If you set up from the dashboard and want to wire it by hand, the minimal pattern is:
+
+*Turnstile widget on your formhtml*
 
 ```html
 <script
@@ -144,6 +156,8 @@ If you set up from the dashboard and want to wire it by hand, the minimal patter
 In your existing backend handler for `/api/subscribe`, call canonical siteverify and gate the rest of the handler on `success === true`.
 
 For a Node.js backend (Express-style `req`):
+
+*Canonical server-side siteverify (Node.js)js*
 
 ```js
 const token = req.body["cf-turnstile-response"];
@@ -195,6 +209,8 @@ if (
 ```
 
 Inside a Cloudflare Worker, read the token from the parsed form body, read the client IP from `CF-Connecting-IP`, and read the secret from the Worker's `env` binding:
+
+*Canonical server-side siteverify (Cloudflare Worker)js*
 
 ```js
 export default {
@@ -261,6 +277,8 @@ If you already have a Turnstile widget without server-side siteverify, recover i
 
 If you do not see the **Fix with Spin** banner in your dashboard, drive the same recovery from your AI coding agent directly. Paste this prompt:
 
+*Existing-widget prompttxt*
+
 ```txt
 The Turnstile widget is already created. Finish integrating it into this project.
 
@@ -278,10 +296,10 @@ Pre-clearance does not change this flow. It adds a `cf_clearance` cookie, but th
 
 Use the AI-agent setup for migrations. The agent detects reCAPTCHA or hCaptcha in your codebase and proposes a substitution. The substitution rules are:
 
-* Replace script tags with `https://challenges.cloudflare.com/turnstile/v0/api.js` (`async defer`).
-* Replace `class="g-recaptcha"` or `class="h-captcha"` divs with `class="cf-turnstile"`. Update `data-sitekey` to the new Turnstile site key. Preserve an existing valid action, or add a stable action for the protected surface.
-* Remove any manually-added `<input type="hidden" name="g-recaptcha-response">` or `name="h-captcha-response"` elements. Turnstile renders its own hidden input named `cf-turnstile-response` automatically.
-* Backend siteverify URL points at `https://challenges.cloudflare.com/turnstile/v0/siteverify`. Drop `RECAPTCHA_SECRET` or `HCAPTCHA_SECRET` env vars; add `TURNSTILE_SECRET`. Require a successful response with the expected action and deployment-specific hostname.
+- Replace script tags with `https://challenges.cloudflare.com/turnstile/v0/api.js` ( `async defer`).
+- Replace `class="g-recaptcha"` or `class="h-captcha"` divs with `class="cf-turnstile"`. Update `data-sitekey` to the new Turnstile site key. Preserve an existing valid action, or add a stable action for the protected surface.
+- Remove any manually-added `<input type="hidden" name="g-recaptcha-response">` or `name="h-captcha-response"` elements. Turnstile renders its own hidden input named `cf-turnstile-response` automatically.
+- Backend siteverify URL points at `https://challenges.cloudflare.com/turnstile/v0/siteverify`. Drop `RECAPTCHA_SECRET` or `HCAPTCHA_SECRET` env vars; add `TURNSTILE_SECRET`. Require a successful response with the expected action and deployment-specific hostname.
 
 Two edge cases to flag to the agent. First, reCAPTCHA v3 score thresholds do not translate: Turnstile has no score, so migrated code rejects on `success === false` rather than a numeric threshold. Second, do not auto-migrate reCAPTCHA Enterprise; refer to [the Cloudflare migration guide for reCAPTCHA](https://developers.cloudflare.com/turnstile/migration/recaptcha/) instead.
 
@@ -297,22 +315,22 @@ For Cloudflare Workers backends, the agent writes the canonical fetch call direc
 
 ### Widget configuration
 
-| Field   | Type   | Purpose                                                       |
-| ------- | ------ | ------------------------------------------------------------- |
-| sitekey | string | Public identifier. Embedded in the widget HTML on every page. |
-| secret  | string | Server-only. Stored as TURNSTILE\_SECRET in your backend env. |
-| domains | array  | The hostnames Turnstile accepts tokens from for this widget.  |
-| mode    | string | managed (default), non-interactive, or invisible.             |
+| Field | Type | Purpose |
+| --- | --- | --- |
+| `sitekey` | string | Public identifier. Embedded in the widget HTML on every page. |
+| `secret` | string | Server-only. Stored as `TURNSTILE_SECRET` in your backend env. |
+| `domains` | array | The hostnames Turnstile accepts tokens from for this widget. |
+| `mode` | string | `managed` (default), `non-interactive`, or `invisible`. |
 
 ### Related
 
-* [cloudflare/skills ↗](https://github.com/cloudflare/skills): skills bundle, includes `turnstile-spin/`
-* [Turnstile server-side validation](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/)
-* [Test site keys and secrets](https://developers.cloudflare.com/turnstile/troubleshooting/testing/)
-* [Pages Plugin for Turnstile](https://developers.cloudflare.com/pages/functions/plugins/turnstile/)
-* [Workers secrets](https://developers.cloudflare.com/workers/configuration/secrets/)
-* [Cloudflare Radar bot traffic ↗](https://radar.cloudflare.com/traffic/bot-classes)
-* [Cloudflare Docs for Agents](https://developers.cloudflare.com/docs-for-agents/)
+- [`cloudflare/skills` ↗](https://github.com/cloudflare/skills): skills bundle, includes `turnstile-spin/`
+- [Turnstile server-side validation](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/)
+- [Test site keys and secrets](https://developers.cloudflare.com/turnstile/troubleshooting/testing/)
+- [Pages Plugin for Turnstile](https://developers.cloudflare.com/pages/functions/plugins/turnstile/)
+- [Workers secrets](https://developers.cloudflare.com/workers/configuration/secrets/)
+- [Cloudflare Radar bot traffic ↗](https://radar.cloudflare.com/traffic/bot-classes)
+- [Cloudflare Docs for Agents](https://developers.cloudflare.com/docs-for-agents/)
 
 Was this helpful?
 

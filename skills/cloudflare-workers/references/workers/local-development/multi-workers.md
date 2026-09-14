@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Developing with multiple Workers
 
-Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/local-development/multi-workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/local-development/multi-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When building complex applications, you may want to run multiple Workers during development. This guide covers the different approaches for running multiple Workers locally and when to use each approach.
 
@@ -45,6 +45,8 @@ The first config (`./app/wrangler.jsonc`) is treated as the primary Worker, expo
 **Using the Vite plugin**
 
 Configure `auxiliaryWorkers` in your Vite configuration:
+
+*vite.config.jsjs*
 
 ```js
 import { defineConfig } from "vite";
@@ -82,9 +84,9 @@ pnpm vite dev
 
 **Use this approach when:**
 
-* You want the simplest setup for development
-* Workers are part of the same application or codebase
-* You need to access a Durable Object namespace or Workflow from another Worker using `script_name`, or set up Queues where the producer and consumer Workers are separated.
+- You want the simplest setup for development
+- Workers are part of the same application or codebase
+- You need to access a Durable Object namespace or Workflow from another Worker using `script_name`, or set up Queues where the producer and consumer Workers are separated.
 
 ## Multiple dev commands
 
@@ -132,9 +134,9 @@ You can also combine both approaches — for example, run a group of Workers tog
 
 **Use this approach when:**
 
-* You want each Worker to be accessible on its own local URL during development, since only the primary Worker is exposed when using a single dev command
-* Each Worker has its own build setup or tooling — for example, one uses Vite with custom plugins while another is a vanilla Wrangler project
-* You need the flexibility to run and develop Workers independently without restructuring your project or consolidating configs
+- You want each Worker to be accessible on its own local URL during development, since only the primary Worker is exposed when using a single dev command
+- Each Worker has its own build setup or tooling — for example, one uses Vite with custom plugins while another is a vanilla Wrangler project
+- You need the flexibility to run and develop Workers independently without restructuring your project or consolidating configs
 
 This setup is especially useful in larger projects where each team maintains a subset of Workers. Running everything in a single dev command might require significant restructuring or build integration that isn't always practical.
 

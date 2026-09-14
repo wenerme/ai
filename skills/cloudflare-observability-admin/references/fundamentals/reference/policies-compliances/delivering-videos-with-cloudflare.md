@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Delivering Videos with Cloudflare
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/delivering-videos-with-cloudflare/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/delivering-videos-with-cloudflare/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Using Cloudflare's Services
 
@@ -38,8 +38,8 @@ If you are on a Free, Pro, or Business Plan and your application appears to be s
 
 ## Options for web admins to remove redirects
 
-* **Serve redirected content from a grey-clouded sub-domain**
-* **Serve redirected content from a paid service as outlined below**
+- **Serve redirected content from a grey-clouded sub-domain**
+- **Serve redirected content from a paid service as outlined below**
 
 ## Delivering videos with Cloudflare using paid products
 
@@ -61,17 +61,18 @@ To get started with Stream, visit **Stream** from your Dashboard or [sign up ↗
 
 If you need more information about the content your zone is serving (for example, content type), you can use the following tools:
 
-* Cache Analytics users: Open the **Caching tab** on the Dashboard to filter by content type and identify the type of traffic you are transferring.
-* Users without Cache Analytics: Open the **Analytics tab** on the Dashboard and select the **Performance** section for information about the content you are serving.
+- Cache Analytics users: Open the **Caching tab** on the Dashboard to filter by content type and identify the type of traffic you are transferring.
+- Users without Cache Analytics: Open the **Analytics tab** on the Dashboard and select the **Performance** section for information about the content you are serving.
+
 ![Cache Analytics - Identify type of traffic being transferred](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1285,height=695,format=webp/_astro/traffic-types.DW2gSjnB.png)
 
 ## Still have questions? Contact support
 
 If you have additional questions about redirection (e.g. if you believe your content was redirected in error and have supporting evidence), file a [support ticket ↗](https://dash.cloudflare.com/redirect?account=support) and include the following information:
 
-* Name of your domain
-* Description of the problem
-* Description of the content you're serving through Cloudflare's network
+- Name of your domain
+- Description of the problem
+- Description of the content you're serving through Cloudflare's network
 
 Was this helpful?
 

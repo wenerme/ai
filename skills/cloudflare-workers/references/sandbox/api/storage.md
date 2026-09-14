@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Storage
 
-Last updated Jun 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/api/storage/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/api/storage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Mount S3-compatible storage buckets (R2, S3, GCS) into the sandbox filesystem for persistent data access. `mountBucket()` supports R2 binding mounts, local R2 binding sync during development, and remote S3-compatible endpoint mounts.
 
@@ -32,11 +32,11 @@ await sandbox.mountBucket(
 
 **Parameters**:
 
-* `bucket` \- Bucket identifier
-  * When `options.endpoint` is omitted, pass the Worker R2 binding name (for example, `"MY_BUCKET"`)
-  * When `options.endpoint` is provided, pass the remote bucket name (for example, `"my-r2-bucket"`)
-* `mountPath` \- Local filesystem path to mount at (e.g., `"/data"`)
-* `options` (optional) - Mount configuration (see [MountBucketOptions](#mountbucketoptions))
+- `bucket` - Bucket identifier
+  - When `options.endpoint` is omitted, pass the Worker R2 binding name (for example, `"MY_BUCKET"`)
+  - When `options.endpoint` is provided, pass the remote bucket name (for example, `"my-r2-bucket"`)
+- `mountPath` - Local filesystem path to mount at (e.g., `"/data"`)
+- `options` (optional) - Mount configuration (see [`MountBucketOptions`](#mountbucketoptions))
 
 ```js
 // Mount an R2 bucket by Worker binding name
@@ -98,8 +98,8 @@ await sandbox.mountBucket('MY_BUCKET', '/user-data', {
 
 **Throws**:
 
-* `InvalidMountPointError` \- Invalid mount path or conflicts with existing mounts
-* `BucketAccessError` \- Bucket does not exist or insufficient permissions
+- `InvalidMountPointError` - Invalid mount path or conflicts with existing mounts
+- `BucketAccessError` - Bucket does not exist or insufficient permissions
 
 Authentication
 
@@ -107,7 +107,7 @@ Authentication depends on the mount mode:
 
 1. Omit `endpoint` to mount an R2 bucket by Worker binding name in production
 2. Set `localBucket: true` to use the same R2 binding during local development
-3. Set `endpoint` to mount a remote S3-compatible bucket, then provide explicit `credentials` or rely on environment variables (`R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY` or `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY`)
+3. Set `endpoint` to mount a remote S3-compatible bucket, then provide explicit `credentials` or rely on environment variables ( `R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY` or `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY`)
 
 Endpoint-based mounts remain supported for explicit R2 endpoint configuration and for other S3-compatible providers.
 
@@ -123,7 +123,7 @@ await sandbox.unmountBucket(mountPath: string): Promise<void>
 
 **Parameters**:
 
-* `mountPath` \- Path where the bucket is mounted (e.g., `"/data"`)
+- `mountPath` - Path where the bucket is mounted (e.g., `"/data"`)
 
 ```js
 // Mount, process, unmount
@@ -183,56 +183,45 @@ type MountBucketOptions =
 
 `mountBucket()` supports these three modes:
 
-* **R2 binding mount** \- Omit `endpoint` to mount by Worker binding name in production
-
-  * Uses credential-less egress interception for R2
-  * Supports `prefix`, `readOnly`, and `s3fsOptions`
-* **Local R2 binding mount** \- Set `localBucket: true` during `wrangler dev`
-
-  * Uses the Worker R2 binding directly through local synchronization
-  * Supports `prefix` and `readOnly`
-* **Remote endpoint mount** \- Set `endpoint` to mount any S3-compatible provider
-
-  * Supports explicit `credentials` or environment variable auto-detection
-  * Set `credentialProxy: true` to keep credentials out of the container (egress interception)
-  * Supports `provider`, `prefix`, `readOnly`, and `s3fsOptions`
+- **R2 binding mount** - Omit `endpoint` to mount by Worker binding name in production
+  - Uses credential-less egress interception for R2
+  - Supports `prefix`, `readOnly`, and `s3fsOptions`
+- **Local R2 binding mount** - Set `localBucket: true` during `wrangler dev`
+  - Uses the Worker R2 binding directly through local synchronization
+  - Supports `prefix` and `readOnly`
+- **Remote endpoint mount** - Set `endpoint` to mount any S3-compatible provider
+  - Supports explicit `credentials` or environment variable auto-detection
+  - Set `credentialProxy: true` to keep credentials out of the container (egress interception)
+  - Supports `provider`, `prefix`, `readOnly`, and `s3fsOptions`
 
 **Field details**:
 
-* `endpoint` (remote endpoint mode only) - S3-compatible endpoint URL
-
-  * R2: `'https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com'`
-  * S3: `'https://s3.amazonaws.com'`
-  * GCS: `'https://storage.googleapis.com'`
-* `localBucket` (local development mode only) - Mount an R2 bucket using the Worker's R2 binding during local development with `wrangler dev`
-
-  * When `true`, the SDK syncs the R2 binding directly instead of using an S3 endpoint
-* `provider` (remote endpoint mode only) - Storage provider hint
-
-  * Enables provider-specific optimizations
-  * Values: `'r2'`, `'s3'`, `'gcs'`
-* `credentials` (remote endpoint mode only) - API credentials
-
-  * Contains `accessKeyId` and `secretAccessKey`
-  * If not provided, uses environment variables
-* `credentialProxy` (remote endpoint mode only) - Route S3 requests through the Durable Object for signing
-
-  * When `true`, credentials are never written to the container's disk. The Durable Object intercepts and re-signs all outbound S3 requests at the network layer before forwarding them upstream.
-  * Supports [AWS SigV4 ↗](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html) signing for S3-compatible endpoints (including R2) and HMAC signing for Google Cloud Storage
-  * Requires `ContainerProxy` to be exported from your Worker entrypoint
-  * Default: `false` (backwards compatibility — recommended to set to `true`; will become the default in a future version)
-* `readOnly` (optional) - Mount in read-only mode
-
-  * Default: `false`
-* `prefix` (optional) - Subdirectory within the bucket to mount
-
-  * When specified, only contents under this prefix are visible at the mount point
-  * Must start with `/` (for example, `/data/uploads` or `/data/uploads/`)
-  * Default: Mount entire bucket
-* `s3fsOptions` (R2 binding and remote endpoint modes only) - Advanced s3fs mount flags
-
-  * Type: `string[]`
-  * Example: `['use_cache=/tmp/cache', 'stat_cache_expire=1']`
+- `endpoint` (remote endpoint mode only) - S3-compatible endpoint URL
+  - R2: `'https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com'`
+  - S3: `'https://s3.amazonaws.com'`
+  - GCS: `'https://storage.googleapis.com'`
+- `localBucket` (local development mode only) - Mount an R2 bucket using the Worker's R2 binding during local development with `wrangler dev`
+  - When `true`, the SDK syncs the R2 binding directly instead of using an S3 endpoint
+- `provider` (remote endpoint mode only) - Storage provider hint
+  - Enables provider-specific optimizations
+  - Values: `'r2'`, `'s3'`, `'gcs'`
+- `credentials` (remote endpoint mode only) - API credentials
+  - Contains `accessKeyId` and `secretAccessKey`
+  - If not provided, uses environment variables
+- `credentialProxy` (remote endpoint mode only) - Route S3 requests through the Durable Object for signing
+  - When `true`, credentials are never written to the container's disk. The Durable Object intercepts and re-signs all outbound S3 requests at the network layer before forwarding them upstream.
+  - Supports [AWS SigV4 ↗](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html) signing for S3-compatible endpoints (including R2) and HMAC signing for Google Cloud Storage
+  - Requires `ContainerProxy` to be exported from your Worker entrypoint
+  - Default: `false` (backwards compatibility — recommended to set to `true`; will become the default in a future version)
+- `readOnly` (optional) - Mount in read-only mode
+  - Default: `false`
+- `prefix` (optional) - Subdirectory within the bucket to mount
+  - When specified, only contents under this prefix are visible at the mount point
+  - Must start with `/` (for example, `/data/uploads` or `/data/uploads/`)
+  - Default: Mount entire bucket
+- `s3fsOptions` (R2 binding and remote endpoint modes only) - Advanced s3fs mount flags
+  - Type: `string[]`
+  - Example: `['use_cache=/tmp/cache', 'stat_cache_expire=1']`
 
 ### `BucketProvider`
 
@@ -242,14 +231,14 @@ Storage provider hint for automatic s3fs flag optimization.
 type BucketProvider = "r2" | "s3" | "gcs";
 ```
 
-* `'r2'` \- Cloudflare R2 (recommended, applies `nomixupload` flag)
-* `'s3'` \- Amazon S3
-* `'gcs'` \- Google Cloud Storage
+- `'r2'` - Cloudflare R2 (recommended, applies `nomixupload` flag)
+- `'s3'` - Amazon S3
+- `'gcs'` - Google Cloud Storage
 
 ## Related resources
 
-* [Mount Buckets guide](https://developers.cloudflare.com/sandbox/guides/mount-buckets/) \- Complete bucket mounting walkthrough
-* [Files API](https://developers.cloudflare.com/sandbox/api/files/) \- Read and write files
+- [Mount Buckets guide](https://developers.cloudflare.com/sandbox/guides/mount-buckets/) - Complete bucket mounting walkthrough
+- [Files API](https://developers.cloudflare.com/sandbox/api/files/) - Read and write files
 
 Was this helpful?
 

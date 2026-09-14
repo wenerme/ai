@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Deploy a WAF managed ruleset in the dashboard (account)
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/account/managed-rulesets/deploy-dashboard/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/account/managed-rulesets/deploy-dashboard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -22,24 +22,23 @@ To deploy a managed ruleset for a single zone, refer to [Deploy a WAF managed ru
 
 ## Deploy a managed ruleset
 
-1. In the Cloudflare dashboard, go to the **WAF** page.
-[Go to **WAF** ↗](https://dash.cloudflare.com/?to=/:account/application-security/waf)
-2. Go to the **Managed rulesets** tab.
-![Example WAF Managed Rules configuration in the Managed rulesets tab.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=896,height=328,format=webp/_astro/managed-rulesets-dashboard.BxgYTxN0.png)
-3. Select **Deploy** \> **Deploy managed ruleset**.
+1. In the Cloudflare dashboard, go to the **WAF** page. [Go to **WAF** ↗](https://dash.cloudflare.com/?to=/:account/application-security/waf)
+2. Go to the **Managed rulesets** tab.![Example WAF Managed Rules configuration in the Managed rulesets tab.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=896,height=328,format=webp/_astro/managed-rulesets-dashboard.BxgYTxN0.png)
+3. Select **Deploy** > **Deploy managed ruleset**.
 4. Next to the managed ruleset you want to deploy, select **Select ruleset**.
 5. Give a name to the rule deploying the ruleset in **Execution name**.
 6. (Optional) To execute the managed ruleset for a subset of incoming requests, select **Edit scope** and [configure the expression](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/) that will determine the scope of the current rule deploying the managed ruleset.
-Caution
-Deployed rulesets will only apply to incoming traffic of Enterprise domains on your account. The Expression Builder will automatically include this filter. If you define a custom expression using the Expression Editor, use parentheses to enclose any custom conditions and end your expression with `and cf.zone.plan eq "ENT"` so that the rule only applies to domains on an Enterprise plan.
-7. (Optional) You can customize the behavior of the managed ruleset in the following ways:
 
-  * [Configure the entire ruleset](#configure-field-values-for-all-the-rules) (affects all the rules)
-  * [Configure several rules or rules with specific tags](#configure-rules-in-bulk-in-a-managed-ruleset)
-  * [Configure a single rule](#configure-a-single-rule-in-a-managed-ruleset)
+   Caution
+
+   Deployed rulesets will only apply to incoming traffic of Enterprise domains on your account. The Expression Builder will automatically include this filter. If you define a custom expression using the Expression Editor, use parentheses to enclose any custom conditions and end your expression with `and cf.zone.plan eq "ENT"` so that the rule only applies to domains on an Enterprise plan.
+7. (Optional) You can customize the behavior of the managed ruleset in the following ways:
+   - [Configure the entire ruleset](#configure-field-values-for-all-the-rules) (affects all the rules)
+   - [Configure several rules or rules with specific tags](#configure-rules-in-bulk-in-a-managed-ruleset)
+   - [Configure a single rule](#configure-a-single-rule-in-a-managed-ruleset)
 8. To deploy the managed ruleset immediately, select **Deploy**. If you are not ready to deploy, select **Save as Draft**.
 
-The **Deployed managed rulesets** list will show an _Execute_ rule for the managed ruleset you deployed.
+The **Deployed managed rulesets** list will show an *Execute* rule for the managed ruleset you deployed.
 
 ## Turn on or off a managed ruleset
 
@@ -49,7 +48,7 @@ Select the **Enabled** toggle next to a deployed managed ruleset to turn it on o
 
 Configure a managed ruleset to define specific field values for one or more rules (for example, configure a rule with an action different from the action configured by Cloudflare). You can also turn off specific rules.
 
-To skip one or more rules — or even entire WAF managed rulesets — for specific incoming requests, [add an exception](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/). Exceptions, also called skip rules, are shown as _Skip_ rules in the **Deployed managed rulesets** list.
+To skip one or more rules — or even entire WAF managed rulesets — for specific incoming requests, [add an exception](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/). Exceptions, also called skip rules, are shown as *Skip* rules in the **Deployed managed rulesets** list.
 
 Note
 
@@ -59,81 +58,71 @@ Some managed rulesets may not allow custom configuration, depending on your Clou
 
 To configure an entire managed ruleset:
 
-1. In the Cloudflare dashboard, go to the **WAF** page.
-[Go to **WAF** ↗](https://dash.cloudflare.com/?to=/:account/application-security/waf)
+1. In the Cloudflare dashboard, go to the **WAF** page. [Go to **WAF** ↗](https://dash.cloudflare.com/?to=/:account/application-security/waf)
 2. Go to the **Managed rulesets** tab.
-3. Select the rule description of the _Execute_ rule that deploys the managed ruleset you want to configure. Alternatively, select the three dots > **Edit**.
-If you have not deployed the managed ruleset yet, do the following:
+3. Select the rule description of the *Execute* rule that deploys the managed ruleset you want to configure. Alternatively, select the three dots > **Edit**.
 
-  1. Select **Deploy** \> **Deploy managed ruleset**.
-  2. Next to the managed ruleset you want to deploy and configure, select **Select ruleset**.
+   If you have not deployed the managed ruleset yet, do the following:
+   1. Select **Deploy** > **Deploy managed ruleset**.
+   2. Next to the managed ruleset you want to deploy and configure, select **Select ruleset**.
 4. In the ruleset configuration section, set one or more rule fields from the available values in the drop-down lists. The exact options vary according to the managed ruleset you are configuring.
-For example, select the action to perform for all the rules in the ruleset from the **Ruleset action** drop-down list.
-![The Configure deployment page displaying the available options to override all the rules in the ruleset. In the displayed managed ruleset you can override the ruleset action.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=931,height=793,format=webp/_astro/waf-configure-ruleset-account.YSsDcmI_.png)
+
+   For example, select the action to perform for all the rules in the ruleset from the **Ruleset action** drop-down list.![The Configure deployment page displaying the available options to override all the rules in the ruleset. In the displayed managed ruleset you can override the ruleset action.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=931,height=793,format=webp/_astro/waf-configure-ruleset-account.YSsDcmI_.png)
 5. If you are editing a deployed managed ruleset, select **Save**. If you have not deployed the managed ruleset yet, select **Deploy** to deploy the ruleset immediately, or **Save as Draft** to save your deployment settings for later.
 
 ### Configure rules in bulk in a managed ruleset
 
-1. In the Cloudflare dashboard, go to the **WAF** page.
-[Go to **WAF** ↗](https://dash.cloudflare.com/?to=/:account/application-security/waf)
+1. In the Cloudflare dashboard, go to the **WAF** page. [Go to **WAF** ↗](https://dash.cloudflare.com/?to=/:account/application-security/waf)
 2. Go to the **Managed rulesets** tab.
-3. If you have already deployed the managed ruleset you want to configure, find the rule deploying that managed ruleset and select the rule description. Alternatively, select the three dots > **Edit** next to an _Execute_ rule deploying the managed ruleset.
-If you have not deployed the managed ruleset:
+3. If you have already deployed the managed ruleset you want to configure, find the rule deploying that managed ruleset and select the rule description. Alternatively, select the three dots > **Edit** next to an *Execute* rule deploying the managed ruleset.
 
-  1. Select **Deploy** \> **Deploy managed ruleset**.
-  2. Next to the managed ruleset, select **Select ruleset**.
-4. Select **Browse rules**.
-![The Cloudflare dashboard displaying the list of rules in the Cloudflare Managed Ruleset](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1067,height=723,format=webp/_astro/waf-browse-rules.lrvrhCdB.png)
+   If you have not deployed the managed ruleset:
+   1. Select **Deploy** > **Deploy managed ruleset**.
+   2. Next to the managed ruleset, select **Select ruleset**.
+4. Select **Browse rules**.![The Cloudflare dashboard displaying the list of rules in the Cloudflare Managed Ruleset](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1067,height=723,format=webp/_astro/waf-browse-rules.lrvrhCdB.png)
 
-1. Select one or more tags under the search input to filter the rules with those tags, and then select the checkbox in the top left corner of the table to select all the rules shown in the current page.
-If not all the rules are displayed in the current page, extend your selection to all rules with the selected tags across all pages by selecting **Select all <NUMBER> rules**.
-![The Configure deployment page displaying selected rules with the 'sqli' tag in the Cloudflare Managed Ruleset.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1277,height=612,format=webp/_astro/tags-config-cloudflare-managed-ruleset.Db5oHcxi.png)
-2. Update one or more settings for the selected rules using the buttons displayed in the top right corner of the table (for example, **Set status**).
-3. Select **Next**.
-4. A dialog appears asking you if any new rules with the selected tags should be configured with the field values you selected.
-
-  * Select **Include new rules** if you want to apply your configurations to any new rules with the select tags.
-  * Select **Only selected rules** to apply your configurations to the selected rules only.
-5. Select **Save**.
+5. Select one or more tags under the search input to filter the rules with those tags, and then select the checkbox in the top left corner of the table to select all the rules shown in the current page.
+    If not all the rules are displayed in the current page, extend your selection to all rules with the selected tags across all pages by selecting **Select all \<NUMBER> rules**.![The Configure deployment page displaying selected rules with the 'sqli' tag in the Cloudflare Managed Ruleset.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1277,height=612,format=webp/_astro/tags-config-cloudflare-managed-ruleset.Db5oHcxi.png)
+6. Update one or more settings for the selected rules using the buttons displayed in the top right corner of the table (for example, **Set status**).
+7. Select **Next**.
+8. A dialog appears asking you if any new rules with the selected tags should be configured with the field values you selected.
+   - Select **Include new rules** if you want to apply your configurations to any new rules with the select tags.
+   - Select **Only selected rules** to apply your configurations to the selected rules only.
+9. Select **Save**.
 
 ### Configure a single rule in a managed ruleset
 
-1. In the Cloudflare dashboard, go to the **WAF** page.
-[Go to **WAF** ↗](https://dash.cloudflare.com/?to=/:account/application-security/waf)
+1. In the Cloudflare dashboard, go to the **WAF** page. [Go to **WAF** ↗](https://dash.cloudflare.com/?to=/:account/application-security/waf)
 2. Go to the **Managed rulesets** tab.
-3. If you have already deployed the managed ruleset you want to configure, find the rule deploying that managed ruleset and select the rule description. Alternatively, select the three dots > **Edit** next to an _Execute_ rule deploying the managed ruleset.
-If you have not deployed the managed ruleset:
+3. If you have already deployed the managed ruleset you want to configure, find the rule deploying that managed ruleset and select the rule description. Alternatively, select the three dots > **Edit** next to an *Execute* rule deploying the managed ruleset.
 
-  1. Select **Deploy** \> **Deploy managed ruleset**.
-  2. Next to the managed ruleset, select **Select ruleset**.
-4. Select **Browse rules**.
-![The Cloudflare dashboard displaying the list of rules in the Cloudflare Managed Ruleset](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1067,height=723,format=webp/_astro/waf-browse-rules.lrvrhCdB.png)
+   If you have not deployed the managed ruleset:
+   1. Select **Deploy** > **Deploy managed ruleset**.
+   2. Next to the managed ruleset, select **Select ruleset**.
+4. Select **Browse rules**.![The Cloudflare dashboard displaying the list of rules in the Cloudflare Managed Ruleset](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1067,height=723,format=webp/_astro/waf-browse-rules.lrvrhCdB.png)
 
-1. Search for rules using the available filters.
-2. In the results list, change the values for each rule as desired, using the displayed drop-down lists and toggles. For example, change the status of a rule using the **Status** toggle next to the rule.
-To configure multiple rules with the same value, select the checkboxes for all the rules you want to configure. If not all the rules are displayed in the current page, you can extend your selection to all rules across all pages by selecting **Select all <NUMBER> rules**. Then, use the buttons displayed in the top right corner of the table — for example, **Set status** — to update one or more fields for the selected rules.
-![The Configure deployment page displaying selected rules in the Cloudflare Managed Ruleset.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1277,height=612,format=webp/_astro/tags-config-cloudflare-managed-ruleset.Db5oHcxi.png)
-3. Select **Next**, and then select **Save**.
+5. Search for rules using the available filters.
+6. In the results list, change the values for each rule as desired, using the displayed drop-down lists and toggles. For example, change the status of a rule using the **Status** toggle next to the rule.
+
+   To configure multiple rules with the same value, select the checkboxes for all the rules you want to configure. If not all the rules are displayed in the current page, you can extend your selection to all rules across all pages by selecting **Select all \<NUMBER> rules**. Then, use the buttons displayed in the top right corner of the table — for example, **Set status** — to update one or more fields for the selected rules.![The Configure deployment page displaying selected rules in the Cloudflare Managed Ruleset.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1277,height=612,format=webp/_astro/tags-config-cloudflare-managed-ruleset.Db5oHcxi.png)
+7. Select **Next**, and then select **Save**.
 
 ### Browse the rules of a managed ruleset
 
 You can browse the available rules in a managed ruleset and search for individual rules or tags.
 
-1. In the Cloudflare dashboard, go to the **WAF** page.
-[Go to **WAF** ↗](https://dash.cloudflare.com/?to=/:account/application-security/waf)
+1. In the Cloudflare dashboard, go to the **WAF** page. [Go to **WAF** ↗](https://dash.cloudflare.com/?to=/:account/application-security/waf)
 2. Go to the **Managed rulesets** tab.
-3. Select the rule description of the _Execute_ rule that deploys the managed ruleset you want to configure. Alternatively, select the three dots > **Edit**.
-If you have not deployed the managed ruleset yet, do the following:
+3. Select the rule description of the *Execute* rule that deploys the managed ruleset you want to configure. Alternatively, select the three dots > **Edit**.
 
-  1. Select **Deploy** \> **Deploy managed ruleset**.
-  2. Next to the managed ruleset you want to browse, select **Select ruleset**.
-4. Select **Browse rules**.
-![The Browse rules page displaying the list of rules in the Cloudflare Managed Ruleset](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1067,height=723,format=webp/_astro/waf-browse-rules.lrvrhCdB.png)
+   If you have not deployed the managed ruleset yet, do the following:
+   1. Select **Deploy** > **Deploy managed ruleset**.
+   2. Next to the managed ruleset you want to browse, select **Select ruleset**.
+4. Select **Browse rules**.![The Browse rules page displaying the list of rules in the Cloudflare Managed Ruleset](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1067,height=723,format=webp/_astro/waf-browse-rules.lrvrhCdB.png)
 
 ### Delete a managed ruleset deployment rule or an exception
 
-1. In the Cloudflare dashboard, go to the **WAF** page.
-[Go to **WAF** ↗](https://dash.cloudflare.com/?to=/:account/application-security/waf)
+1. In the Cloudflare dashboard, go to the **WAF** page. [Go to **WAF** ↗](https://dash.cloudflare.com/?to=/:account/application-security/waf)
 2. Go to the **Managed rulesets** tab.
 3. Under **Deployed managed rulesets** and next to the rule you want to delete, select the three dots > **Delete** and confirm the operation.
 

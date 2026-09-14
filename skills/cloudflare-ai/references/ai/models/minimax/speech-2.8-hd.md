@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Speech • MiniMax
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/minimax/speech-2.8-hd/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/minimax/speech-2.8-hd/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `minimax/speech-2.8-hd`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 MiniMax Speech 2.8 HD focuses on studio-grade audio generation with emotion control, multilingual support (40+ languages), and voice cloning.
 
-| Model Info          |                                                                                                                         |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://www.minimaxi.com/terms)                                                                                |
-| More information    | [link ↗](https://www.minimaxi.com/)                                                                                     |
-| Zero data retention | Yes                                                                                                                     |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/speech-2.8-hd) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://www.minimaxi.com/terms) |
+| More information | [link ↗](https://www.minimaxi.com/) |
+| Zero data retention | Yes |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/speech-2.8-hd) |
 
 ## Usage
 
@@ -80,7 +80,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Custom Voice** — Use a specific voice and adjust speed
+<details>
+
+<summary>**Custom Voice** — Use a specific voice and adjust speed</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -126,7 +130,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**With Emotion** — Apply emotional tone to speech
+</details>
+
+<details>
+
+<summary>**With Emotion** — Apply emotional tone to speech</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -174,7 +184,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**High Sample Rate** — Studio quality at 44.1kHz sample rate
+</details>
+
+<details>
+
+<summary>**High Sample Rate** — Studio quality at 44.1kHz sample rate</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -222,6 +238,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 text
@@ -242,7 +260,7 @@ volume
 
 pitch
 
-`integer`requireddefault: 0minimum: \-12maximum: 12Pitch adjustment (-12 to 12)
+`integer`requireddefault: 0minimum: -12maximum: 12Pitch adjustment (-12 to 12)
 
 emotion
 
@@ -262,9 +280,9 @@ audio
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/minimax/speech-2.8-hd/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/minimax/speech-2.8-hd/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/minimax/speech-2.8-hd/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/minimax/speech-2.8-hd/schema-output.json)
 
 Was this helpful?
 

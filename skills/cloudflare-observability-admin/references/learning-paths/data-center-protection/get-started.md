@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/data-center-protection/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/data-center-protection/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Scope your configuration
 
@@ -24,24 +24,26 @@ To use Magic Transit, you need to own a publicly routable IP address block with 
 
 To protect your network with a Cloudflare IP address, contact your account manager. After you receive your IP address:
 
-* [Create a tunnel](https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-tunnels/).
-* [Set up static routes](https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-routes/#configure-static-routes) or [BGP peering (beta)](https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-routes/#configure-bgp-routes).
-* [Configure health checks](https://developers.cloudflare.com/magic-transit/network-health/run-endpoint-health-checks/).
-* Confirm you properly configured [tunnel](https://developers.cloudflare.com/magic-transit/network-health/update-tunnel-health-checks-frequency/) and endpoint health checks.
-* Update your infrastructure at your own pace to use the allocated Cloudflare IPs.
+- [Create a tunnel](https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-tunnels/).
+- [Set up static routes](https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-routes/#configure-static-routes) or [BGP peering (beta)](https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-routes/#configure-bgp-routes).
+- [Configure health checks](https://developers.cloudflare.com/magic-transit/network-health/run-endpoint-health-checks/).
+- Confirm you properly configured [tunnel](https://developers.cloudflare.com/magic-transit/network-health/update-tunnel-health-checks-frequency/) and endpoint health checks.
+- Update your infrastructure at your own pace to use the allocated Cloudflare IPs.
 
 When you use a Cloudflare-owned IP space, you do not need a Letter of Agency (LOA). When using Cloudflare-leased IPs, Cloudflare automatically enables [Magic Transit Egress](https://developers.cloudflare.com/magic-transit/reference/egress/), which routes your egress traffic to Cloudflare instead of the Internet. Set up policy-based routing on your end to ensure return traffic routes properly.
 
 ## Verify router compatibility
 
-Magic Transit relies on anycast tunnels to transmit packets from Cloudflare's global network to your origin network.
+Magic Transit relies on anycast
+
+ tunnels to transmit packets from Cloudflare's global network to your origin network.
 
 The routers at your tunnel endpoints must meet the following requirements for Magic Transit compatibility.
 
-* Support GRE tunnels (or IPsec if GRE is not available).
-* Support at least one tunnel per Internet service provider (ISP).
-* Support maximum segment size (MSS) clamping.
-* Support asymmetric traffic flow (for ingress-only Magic Transit).
+- Support GRE tunnels (or IPsec if GRE is not available).
+- Support at least one tunnel per Internet service provider (ISP).
+- Support maximum segment size (MSS) clamping.
+- Support asymmetric traffic flow (for ingress-only Magic Transit).
 
 ## Draft Letter of Agency
 
@@ -56,6 +58,8 @@ Note
 The LOA must be a PDF. Transit providers may reject the LOA if it is a JPG or PNG.
 
 ### Example of a Letter of Agency
+
+*Letter of Agency templatetxt*
 
 ```txt
 [COMPANY LETTERHEAD]
@@ -116,27 +120,23 @@ Before enabling Magic Transit, you must make sure that you set up the maximum se
 
 The MSS value depends on how your network is set up.
 
-* **Magic Transit ingress-only traffic (DSR):**
-
-  * **On your edge router transit ports**: Set a TCP MSS clamp to a maximum of 1,436 bytes.
-  * **On any IPsec/GRE tunnels with third parties on your Magic Transit prefix**: Apply the MSS clamp on the internal tunnel interface (most likely on a separate firewall behind the GRE-terminating router) to reduce the current value by 24 bytes.
-* **For Magic Transit ingress + egress traffic:**
-
-  * **On the Magic Transit GRE tunnel internal interface**: Meaning where the Magic Transit egress traffic will traverse. Your devices may do this automatically once the tunnel is configured, but it depends on your devices. Set the TCP MSS clamp to 1,436 bytes maximum.
-  * **On any IPsec/GRE tunnels with third parties on your Magic Transit prefix**: On the internal tunnel interface (most likely on a separate firewall behind the GRE-terminating router) to reduce its current value by 24 bytes.
+- **Magic Transit ingress-only traffic (DSR):**
+  - **On your edge router transit ports**: Set a TCP MSS clamp to a maximum of 1,436 bytes.
+  - **On any IPsec/GRE tunnels with third parties on your Magic Transit prefix**: Apply the MSS clamp on the internal tunnel interface (most likely on a separate firewall behind the GRE-terminating router) to reduce the current value by 24 bytes.
+- **For Magic Transit ingress + egress traffic:**
+  - **On the Magic Transit GRE tunnel internal interface**: Meaning where the Magic Transit egress traffic will traverse. Your devices may do this automatically once the tunnel is configured, but it depends on your devices. Set the TCP MSS clamp to 1,436 bytes maximum.
+  - **On any IPsec/GRE tunnels with third parties on your Magic Transit prefix**: On the internal tunnel interface (most likely on a separate firewall behind the GRE-terminating router) to reduce its current value by 24 bytes.
 
 #### IPsec tunnels
 
 For IPsec tunnels, the value you need to specify depends on how your network is set up. The MSS clamping value is lower than for GRE tunnels because the physical interface sees IPsec-encrypted [packets ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/), not TCP packets, and MSS clamping does not apply to those.
 
-* **Magic Transit ingress-only traffic (DSR):**
-
-  * **On your edge router transit ports**: Set the TCP MSS clamp to 1,436 bytes maximum.
-  * **On any IPsec/GRE tunnels with third parties on your Magic Transit prefix**: On the internal tunnel interface (most likely on a separate firewall behind the GRE-terminating router) to reduce its current value by 140 bytes.
-* **Magic Transit ingress + egress traffic:**
-
-  * **On your edge router**: Apply this on your Magic Transit IPsec tunnel internal interface (that is, where the Magic Transit egress traffic will traverse). Your devices may do this automatically once the tunnel is configured, but it depends on your devices. Set the TCP MSS clamp to 1,360 bytes maximum.
-  * **On any IPsec/GRE tunnels with third parties on your Magic Transit prefix**: On the internal tunnel interface (most likely on a separate firewall behind the IPsec-terminating device in your premises) to reduce its current value by 140 bytes.
+- **Magic Transit ingress-only traffic (DSR):**
+  - **On your edge router transit ports**: Set the TCP MSS clamp to 1,436 bytes maximum.
+  - **On any IPsec/GRE tunnels with third parties on your Magic Transit prefix**: On the internal tunnel interface (most likely on a separate firewall behind the GRE-terminating router) to reduce its current value by 140 bytes.
+- **Magic Transit ingress + egress traffic:**
+  - **On your edge router**: Apply this on your Magic Transit IPsec tunnel internal interface (that is, where the Magic Transit egress traffic will traverse). Your devices may do this automatically once the tunnel is configured, but it depends on your devices. Set the TCP MSS clamp to 1,360 bytes maximum.
+  - **On any IPsec/GRE tunnels with third parties on your Magic Transit prefix**: On the internal tunnel interface (most likely on a separate firewall behind the IPsec-terminating device in your premises) to reduce its current value by 140 bytes.
 
 Important
 
@@ -158,10 +158,10 @@ Instructions to adjust MSS by applying MSS clamps vary depending on the vendor o
 
 The following table lists several commonly used router vendors with links to MSS clamping instructions:
 
-| Router device | URL                                                                                                                                                                                                    |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Cisco         | [TCP IP Adjust MSS ↗](https://www.cisco.com/en/US/docs/ios-xml/ios/ipapp/command/ip%5Ftcp%5Fadjust-mss%5Fthrough%5Fip%5Fwccp%5Fweb-cache%5Faccelerated.html#GUID-68044D35-A53E-42C1-A7AB-9236333DA8C4) |
-| Juniper       | [TCP MSS - Edit System ↗](https://www.juniper.net/documentation/en%5FUS/junos/topics/reference/configuration-statement/tcp-mss-edit-system.html)                                                       |
+| Router device | URL |
+| --- | --- |
+| Cisco | [TCP IP Adjust MSS ↗](https://www.cisco.com/en/US/docs/ios-xml/ios/ipapp/command/ip_tcp_adjust-mss_through_ip_wccp_web-cache_accelerated.html#GUID-68044D35-A53E-42C1-A7AB-9236333DA8C4) |
+| Juniper | [TCP MSS - Edit System ↗](https://www.juniper.net/documentation/en_US/junos/topics/reference/configuration-statement/tcp-mss-edit-system.html) |
 
 ## BGP for Magic Transit prefix advertisement control (optional)
 

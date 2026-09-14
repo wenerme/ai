@@ -12,17 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Zone-scoped datasets
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [Account Abuse Protection Events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/account%5Fabuse%5Fprotection%5Fevents/)
-* [DNS logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/dns%5Flogs/)
-* [Firewall events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/firewall%5Fevents/)
-* [HTTP requests](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http%5Frequests/)
-* [NEL reports](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/nel%5Freports/)
-* [Page Shield events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/page%5Fshield%5Fevents/)
-* [Spectrum events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/spectrum%5Fevents/)
-* [WebSocket Analytics](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/websocket%5Fanalytics/)
-* [Zaraz Events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/zaraz%5Fevents/)
+- [Account Abuse Protection Events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/account_abuse_protection_events/)
+- [DNS logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/dns_logs/)
+- [Firewall events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/firewall_events/)
+- [HTTP requests](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/)
+- [NEL reports](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/nel_reports/)
+- [Page Shield events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/page_shield_events/)
+- [Spectrum events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/spectrum_events/)
+- [WebSocket Analytics](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/websocket_analytics/)
+- [Zaraz Events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/zaraz_events/)
 
 Was this helpful?
 

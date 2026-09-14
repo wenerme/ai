@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # http.cookie
 
-`http.cookie` `String`
+`http.cookie``String`
 
 The entire cookie as a string.
 
@@ -19,8 +19,8 @@ Example value:
 ```
 
 Categories:
-* Request
-* Headers
+- Request
+- Headers
 
 Was this helpful?
 

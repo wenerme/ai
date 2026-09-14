@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Securing data in transit
 
-Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-in-transit/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-in-transit/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
 Data in transit typically means when it's traveling over the network. Because the Internet is made up of many thousands of networks, it is important to ensure your data is secure as it moves from device to server and back. These days, most common activities that generate data in transit are related to:
 
-* Browsing online and uploading/download data to/from cloud applications
-* Sending texts, pictures and emails
-* Applications exposing and consuming data through APIs
+- Browsing online and uploading/download data to/from cloud applications
+- Sending texts, pictures and emails
+- Applications exposing and consuming data through APIs
 
 Data in transit is often considered vulnerable to interception or tampering during transmission, so it is important to secure it through encryption techniques such as [QUIC ↗](https://cloudflare-quic.com/), Transport Layer Security (TLS) or Secure Sockets Layer (SSL). This helps to ensure that the data remains confidential and protected from unauthorized access during its journey. There are other methods of inspecting data as it passes network boundaries to make decisions on if that data should continue to travel or not, Data Loss Prevention (DLP) technologies can be used to inspect the contents of network traffic and block sensitive data from going to a risky destination. This document outlines the methods Cloudflare has available to protect data in transit.
 
@@ -28,14 +28,14 @@ Data in transit is often considered vulnerable to interception or tampering duri
 
 Cloudflare is one of the leading providers of cloud network security services. There are two main use cases Cloudflare is used to secure network traffic.
 
-* Providing secure connectivity to public websites and APIs using SSL/TLS
-* Creating secure tunnels to private networks and applications which are hosted either in the cloud or on-premises
+- Providing secure connectivity to public websites and APIs using SSL/TLS
+- Creating secure tunnels to private networks and applications which are hosted either in the cloud or on-premises
 
 Cloudflare's [SSL services](https://developers.cloudflare.com/ssl/) are used by millions of websites and are easily implemented by making changes to DNS entries, so that all connections to public websites and APIs are terminated on Cloudflare's edge network. Connectivity from Cloudflare to the destination website or API can also be secured using the same SSL technologies. To ensure the strongest security, Cloudflare uses [post quantum cryptography ↗](https://blog.cloudflare.com/post-quantum-to-origins).
 
 ![Figure 1: Securing data from the user device, all the way to the website/API](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=734,height=215,format=svg/_astro/securing-data-in-transit-fig1.BeOrOaHa.svg "Figure 1: Securing data from the user device, all the way to the website/API")
 
-Figure 1: Securing data from the user device, all the way to the website/API
+*Figure 1: Securing data from the user device, all the way to the website/API*
 
 1. Connection between user browser and Cloudflare secured by TLS/SSL
 2. Connection from Cloudflare to destination server secured by TLS/SSL
@@ -44,9 +44,9 @@ Private resources, usually self hosted applications on private networks with no 
 
 ![Figure 2: Various methods of connecting and routing traffic to Cloudflare to secure private traffic.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1343,height=1022,format=svg/_astro/cf1-ref-arch-14.BMsYJBWD.svg "Figure 2: Various methods of connecting and routing traffic to Cloudflare to secure private traffic.")
 
-Figure 2: Various methods of connecting and routing traffic to Cloudflare to secure private traffic.
+*Figure 2: Various methods of connecting and routing traffic to Cloudflare to secure private traffic.*
 
-_Note: Labels in this image may reflect a previous product name._
+*Note: Labels in this image may reflect a previous product name.*
 
 Once private applications and networks have been connected to Cloudflare, devices can then be connected securely via our device agent such that data from a user device, all the way across the network to an application can be secured.
 
@@ -62,13 +62,13 @@ DLP profiles are then used in combination with other policy attributes to specif
 
 ![Figure 3: Example of a Cloudflare policy blocking confidential data uploaded to approved cloud storage.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=555,height=350,format=svg/_astro/cf1-ref-arch-29.BGL4hCeF.svg "Figure 3: Example of a Cloudflare policy blocking confidential data uploaded to approved cloud storage.")
 
-Figure 3: Example of a Cloudflare policy blocking confidential data uploaded to approved cloud storage.
+*Figure 3: Example of a Cloudflare policy blocking confidential data uploaded to approved cloud storage.*
 
 The following diagram shows a common flow for how Cloudflare inspects a request and enforces access based on a DLP based policy.
 
 ![Figure 4: Upload of file containing sensitive data blocked by Cloudflare DLP](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1189,height=382,format=svg/_astro/securing-data-in-transit-fig4.D-8KKTj8.svg "Figure 4: Upload of file containing sensitive data blocked by Cloudflare DLP")
 
-Figure 4: Upload of file containing sensitive data blocked by Cloudflare DLP
+*Figure 4: Upload of file containing sensitive data blocked by Cloudflare DLP*
 
 1. User attempts to upload a file to a SaaS application (via a secure tunnel to Cloudflare created by our [device agent](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/)). [Clientless](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/) options are supported as well.
 2. Cloudflare's [Secure Web Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) (SWG) will first verify that the user is permitted to use the requested SaaS application, and then scrutinize the file's payload for [malicious code](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/antivirus-scanning/) and [sensitive data](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/).
@@ -77,8 +77,8 @@ Figure 4: Upload of file containing sensitive data blocked by Cloudflare DLP
 
 ## Related resources
 
-* [Securing data in use](https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-in-use/)
-* [Securing data at rest](https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-at-rest/)
+- [Securing data in use](https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-in-use/)
+- [Securing data at rest](https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-at-rest/)
 
 Was this helpful?
 

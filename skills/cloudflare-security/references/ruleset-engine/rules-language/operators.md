@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Operators and grouping symbols
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare Rules language supports comparison and logical operators:
 
-* [Comparison operators](#comparison-operators) specify how values defined in an expression must relate to the actual HTTP request value for the expression to return `true`.
-* [Logical operators](#logical-operators) combine two expressions to form a compound expression and use order of precedence to determine how an expression is evaluated.
+- [Comparison operators](#comparison-operators) specify how values defined in an expression must relate to the actual HTTP request value for the expression to return `true`.
+- [Logical operators](#logical-operators) combine two expressions to form a compound expression and use order of precedence to determine how an expression is evaluated.
 
 [Grouping symbols](#grouping-symbols) allow you to organize expressions, enforce precedence, and nest expressions.
 
@@ -33,24 +33,24 @@ This is the general pattern for using comparison operators:
 
 The Rules language supports these comparison operators:
 
-| Name                                                  | Operator Notation | Supported Data Types |         |    |        |                                                                      |
-| ----------------------------------------------------- | ----------------- | -------------------- | ------- | -- | ------ | -------------------------------------------------------------------- |
-|                                                       | English           | C-like               | String1 | IP | Number | Example (operator in bold)                                           |
-| Equal                                                 | eq                | \==                  | ✅       | ✅  | ✅      | http.request.uri.path **eq** "/articles/2008/"                       |
-| Not equal                                             | ne                | !=                   | ✅       | ✅  | ✅      | ip.src **ne** 203.0.113.0                                            |
-| Less than                                             | lt                | <                    | ✅       | ❌  | ✅      | cf.waf.score **lt** 10                                               |
-| Less thanor equal                                     | le                | <=                   | ✅       | ❌  | ✅      | cf.waf.score **le** 20                                               |
-| Greater than                                          | gt                | \>                   | ✅       | ❌  | ✅      | cf.waf.score **gt** 25                                               |
-| Greater thanor equal                                  | ge                | \>=                  | ✅       | ❌  | ✅      | cf.waf.score **ge** 60                                               |
-| Contains                                              | contains          |                      | ✅       | ❌  | ❌      | http.request.uri.path **contains** "/articles/"                      |
-| [Wildcard](#wildcard-matching)(case-insensitive)      | wildcard          |                      | ✅       | ❌  | ❌      | http.request.uri.path **wildcard** "/articles/\*"                    |
-| [Strict wildcard](#wildcard-matching)(case-sensitive) | strict wildcard   |                      | ✅       | ❌  | ❌      | http.request.uri.path **strict wildcard** "/AdminTeam/\*"            |
-| [Matches regex](#regular-expression-matching)2        | matches           | \~                   | ✅       | ❌  | ❌      | http.request.uri.path **matches** "^/articles/200\[7-8\]/$"          |
-| Is in set of values / list3                           | in                |                      | ✅       | ✅  | ✅      | ip.src **in** { 203.0.113.0 203.0.113.1 }ip.src.asnum **in** $<LIST> |
+| Name | Operator Notation | | Supported Data Types | | | |
+| --- | --- | --- | --- | --- | --- | --- |
+|  | English | C-like | String<sup>1</sup> | IP | Number | Example (operator in bold) |
+| Equal | `eq` | `==` | ✅ | ✅ | ✅ | `http.request.uri.path **eq** "/articles/2008/"` |
+| Not equal | `ne` | `!=` | ✅ | ✅ | ✅ | `ip.src **ne** 203.0.113.0` |
+| Less than | `lt` | `<` | ✅ | ❌ | ✅ | `cf.waf.score **lt** 10` |
+| Less than<br>or equal | `le` | `<=` | ✅ | ❌ | ✅ | `cf.waf.score **le** 20` |
+| Greater than | `gt` | `>` | ✅ | ❌ | ✅ | `cf.waf.score **gt** 25` |
+| Greater than<br>or equal | `ge` | `>=` | ✅ | ❌ | ✅ | `cf.waf.score **ge** 60` |
+| Contains | `contains` |  | ✅ | ❌ | ❌ | `http.request.uri.path **contains** "/articles/"` |
+| [Wildcard](#wildcard-matching)<br>(case-insensitive) | `wildcard` |  | ✅ | ❌ | ❌ | `http.request.uri.path **wildcard** "/articles/*"` |
+| [Strict wildcard](#wildcard-matching)<br>(case-sensitive) | `strict wildcard` |  | ✅ | ❌ | ❌ | `http.request.uri.path **strict wildcard** "/AdminTeam/*"` |
+| [Matches<br>regex](#regular-expression-matching)<sup>2</sup> | `matches` | `~` | ✅ | ❌ | ❌ | `http.request.uri.path **matches** "^/articles/200[7-8]/$"` |
+| Is in set of values / list<sup>3</sup> | `in` |  | ✅ | ✅ | ✅ | `ip.src **in** { 203.0.113.0 203.0.113.1 }`<br>`ip.src.asnum **in** $<LIST>` |
 
-1 All string operators are case-sensitive unless explicitly stated as case-insensitive, such as the `wildcard` operator.
-2 Access to the `matches` operator requires a Cloudflare Business or Enterprise plan.
-3 Currently, not all Cloudflare products support lists in their expressions. For more information on lists, refer to [Inline lists](https://developers.cloudflare.com/ruleset-engine/rules-language/values/#inline-lists) and [Lists](https://developers.cloudflare.com/waf/tools/lists/).
+<sup>1</sup> All string operators are case-sensitive unless explicitly stated as case-insensitive, such as the `wildcard` operator.
+<sup>2</sup> Access to the `matches` operator requires a Cloudflare Business or Enterprise plan.
+<sup>3</sup> Currently, not all Cloudflare products support lists in their expressions. For more information on lists, refer to [Inline lists](https://developers.cloudflare.com/ruleset-engine/rules-language/values/#inline-lists) and [Lists](https://developers.cloudflare.com/waf/tools/lists/).
 
 Caution
 
@@ -60,10 +60,10 @@ Comparison operators entered using English notation (such as `eq`, `lt`, and `gt
 
 The Cloudflare dashboard may show the following additional operators, depending on the exact field and the type of rule:
 
-* _starts with_ (corresponding to the [starts\_with()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#starts%5Fwith) function): Returns `true` when a string starts with a given substring, and `false` otherwise.
-* _ends with_ (corresponding to the [ends\_with()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#ends%5Fwith) function): Returns `true` when a string ends with a given substring, and `false` otherwise.
-* _is in list_ (corresponding to `<FIELD> in $<LIST_NAME>`): Returns `true` when the field value is present in the specified [list](https://developers.cloudflare.com/waf/tools/lists/), and `false` otherwise. For more information, refer to [Use lists in expressions](https://developers.cloudflare.com/waf/tools/lists/use-in-expressions/).
-* _is not in list_ (corresponding to `not <FIELD> in $<LIST_NAME>`): Returns `true` when the field value is not present in the specified [list](https://developers.cloudflare.com/waf/tools/lists/), and `false` otherwise. For more information, refer to [Use lists in expressions](https://developers.cloudflare.com/waf/tools/lists/use-in-expressions/).
+- *starts with* (corresponding to the [`starts_with()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#starts_with) function): Returns `true` when a string starts with a given substring, and `false` otherwise.
+- *ends with* (corresponding to the [`ends_with()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#ends_with) function): Returns `true` when a string ends with a given substring, and `false` otherwise.
+- *is in list* (corresponding to `<FIELD> in $<LIST_NAME>`): Returns `true` when the field value is present in the specified [list](https://developers.cloudflare.com/waf/tools/lists/), and `false` otherwise. For more information, refer to [Use lists in expressions](https://developers.cloudflare.com/waf/tools/lists/use-in-expressions/).
+- *is not in list* (corresponding to `not <FIELD> in $<LIST_NAME>`): Returns `true` when the field value is not present in the specified [list](https://developers.cloudflare.com/waf/tools/lists/), and `false` otherwise. For more information, refer to [Use lists in expressions](https://developers.cloudflare.com/waf/tools/lists/use-in-expressions/).
 
 Note
 
@@ -79,7 +79,7 @@ http.request.uri.path ends_with ".html"
 
 ### Comparing string values
 
-String comparison in rule expressions is case-sensitive. To account for possible variations of string capitalization in an expression, you can use the [lower()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lower) function and compare the result with a lowercased string, like in the following example:
+String comparison in rule expressions is case-sensitive. To account for possible variations of string capitalization in an expression, you can use the [`lower()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lower) function and compare the result with a lowercased string, like in the following example:
 
 ```txt
 lower(http.request.uri.path) contains "/wp-login.php"
@@ -92,6 +92,8 @@ lower(http.request.uri.path) contains "/wp-login.php"
 The `wildcard` operator performs a case-insensitive match between a field value and a literal string containing zero or more `*` metacharacters. Each `*` metacharacter represents zero or more characters. The `strict wildcard` operator performs a similar match, but is case-sensitive.
 
 When using the `wildcard`/`strict wildcard` operator, the entire field value must match the literal string with wildcards (the literal after the operator).
+
+*Example Atxt*
 
 ```txt
 # The following expression:
@@ -109,7 +111,13 @@ http.request.full_uri wildcard "http*://example.com/a/*"
 # - https://sub.example.com/a/
 ```
 
+<details>
+
+<summary>
+
 Example B
+
+</summary>
 
 ```txt
 # The following expression:
@@ -126,9 +134,17 @@ http.request.full_uri wildcard "*.example.com/*/page.html"
 # - https://sub.example.com/a/                         ('page.html' is missing)
 ```
 
-Slashes (`/`) have no special meaning in wildcard matches. In this example, the second `*` metacharacter in the expression `http.request.full_uri wildcard "*.example.com/*/page.html"` matched `folder`, `team`, and `team/subteam`.
+Slashes (<code>/</code>) have no special meaning in wildcard matches. In this example, the second <code>*</code> metacharacter in the expression <code>http.request.full_uri wildcard "*.example.com/*/page.html"</code> matched <code>folder</code>, <code>team</code>, and <code>team/subteam</code>.
+
+</details>
+
+<details>
+
+<summary>
 
 Example C
+
+</summary>
 
 ```txt
 # The following expression:
@@ -139,6 +155,8 @@ http.request.full_uri wildcard "*.example.com/*" or http.request.full_uri wildca
 # - https://admin.example.com/folder/team/app1/
 # - https://admin.example.com/folder/team/app1/?s=foobar
 ```
+
+</details>
 
 The matching algorithm used by the `wildcard` operator is case-insensitive. To perform case-sensitive wildcard matching, use the `strict wildcard` operator.
 
@@ -168,12 +186,12 @@ Logical operators combine two or more expressions into a single compound express
 
 Each logical operator has an [order of precedence](#order-of-precedence). The order of precedence (along with [grouping symbols](#grouping-symbols)) determines the order in which Cloudflare evaluates logical operators in an expression. The `not` operator ranks first in order of precedence.
 
-| Name                      | EnglishNotation | C-likeNotation | Example                                                                        | Order of Precedence |
-| ------------------------- | --------------- | -------------- | ------------------------------------------------------------------------------ | ------------------- |
-| Logical NOT               | not             | !              | **not** ( http.host eq "www​.cloudflare​.com" and ip.src in {203.0.113.0/24} ) | 1                   |
-| Logical AND               | and             | &&             | http.host eq "www​.cloudflare​.com" **and** ip.src in {203.0.113.0/24}         | 2                   |
-| Logical XOR(exclusive OR) | xor             | ^^             | http.host eq "www​.cloudflare​.com" **xor** ip.src in {203.0.113.0/24}         | 3                   |
-| Logical OR                | or              | \||            | http.host eq "www​.cloudflare​.com" **or** ip.src in 203.0.113.0/24            | 4                   |
+| Name | English<br>Notation | C-like<br>Notation | Example | Order of Precedence |
+| --- | --- | --- | --- | --- |
+| Logical NOT | `not` | `!` | `**not** ( http.host eq "www​.cloudflare​.com" and ip.src in {203.0.113.0/24} )` | 1 |
+| Logical AND | `and` | `&&` | `http.host eq "www​.cloudflare​.com" **and** ip.src in {203.0.113.0/24}` | 2 |
+| Logical XOR<br>(exclusive OR) | `xor` | `^^` | `http.host eq "www​.cloudflare​.com" **xor** ip.src in {203.0.113.0/24}` | 3 |
+| Logical OR | `or` | `\|\|` | `http.host eq "www​.cloudflare​.com" **or** ip.src in 203.0.113.0/24` | 4 |
 
 Caution
 

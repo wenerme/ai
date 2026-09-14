@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # SQL API
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/sql-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/sql-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [SQL statements](https://developers.cloudflare.com/d1/sql-api/sql-statements/)
-* [Define foreign keys](https://developers.cloudflare.com/d1/sql-api/foreign-keys/)
-* [Query JSON](https://developers.cloudflare.com/d1/sql-api/query-json/)
+- [SQL statements](https://developers.cloudflare.com/d1/sql-api/sql-statements/)
+- [Define foreign keys](https://developers.cloudflare.com/d1/sql-api/foreign-keys/)
+- [Query JSON](https://developers.cloudflare.com/d1/sql-api/query-json/)
 
 Was this helpful?
 

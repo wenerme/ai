@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # HTTP policies
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -24,17 +24,17 @@ By default, Gateway inspects HTTP traffic on port `80` and, with [TLS decryption
 
 An HTTP policy consists of an **Action** and a logical expression that determines the scope of the policy. To build an expression, choose a **Selector** and an **Operator**, then enter a value or range of values in the **Value** field. You can use **And** and **Or** logical operators to evaluate multiple conditions.
 
-* [Actions](#actions)
-* [Selectors](#selectors)
-* [Comparison operators](#comparison-operators)
-* [Value](#value)
-* [Logical operators](#logical-operators)
+- [Actions](#actions)
+- [Selectors](#selectors)
+- [Comparison operators](#comparison-operators)
+- [Value](#value)
+- [Logical operators](#logical-operators)
 
-If a condition in an expression joins a query attribute (such as _Source IP_) and a response attribute (such as _Resolved IP_), then the condition will be evaluated when the response is received.
+If a condition in an expression joins a query attribute (such as *Source IP*) and a response attribute (such as *Resolved IP*), then the condition will be evaluated when the response is received.
 
 Terraform provider v4 precedence limitation
 
-To avoid conflicts, version 4 of the Terraform Cloudflare provider applies a hash calculation to policy precedence. For example, a precedence of `1000` may become `1000901`. This can cause errors when reordering policies. To avoid this issue, manually set the precedence of policies created with Terraform using the [Update a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/rules/methods/update/) endpoint.
+To avoid conflicts, version 4 of the Terraform Cloudflare provider applies a hash calculation to policy precedence. For example, a precedence of `1000` may become `1000901`. This can cause errors when reordering policies. To avoid this issue, manually set the precedence of policies created with Terraform using the [Update a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/rules/methods/update/) endpoint.
 
 To ensure your precedence is set correctly, Cloudflare recommends [upgrading your Terraform provider to version 5 ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/guides/version-5-upgrade).
 
@@ -46,73 +46,81 @@ Actions in HTTP policies allow you to choose what to do with a given set of elem
 
 API value: `allow`
 
+<details>
+
+<summary>
+
 Available selectors
+
+</summary>
 
 **Traffic**
 
-* [Access Infrastructure Target](#access-infrastructure-target)
-* [Access Private App](#access-private-app)
-* [Application](#application)
-* [Browser Isolation](#browser-isolation)
-* [Content Categories](#content-categories)
-* [Destination Continent IP Geolocation](#destination-continent)
-* [Destination Country IP Geolocation](#destination-country)
-* [Destination IP](#destination-ip)
-* [DLP Profile](#dlp-profile)
-* [Domain](#domain)
-* [Download File Types](#download-and-upload-file-types)
-* [Download Mime Type](#download-and-upload-mime-type)
-* [Is MCP](#is-mcp)
-* [Host](#host)
-* [HTTP Method](#http-method)
-* [HTTP Response](#http-response)
-* [Package Ecosystem](#package-ecosystem)
-* [Package Name](#package-name)
-* [Package Namespace](#package-namespace)
-* [Package URL (PURL)](#package-url-purl)
-* [Package Version](#package-version)
-* [Proxy Endpoint](#proxy-endpoint)
-* [Security Categories](#security-risks)
-* [Source Continent IP Geolocation](#source-continent)
-* [Source Country IP Geolocation](#source-country)
-* [Source Internal IP](#source-internal-ip)
-* [Source IP](#source-ip)
-* [Traffic Source](#traffic-source)
-* [Upload File Types](#download-and-upload-file-types)
-* [Upload Mime Type](#download-and-upload-mime-type)
-* [URL](#url)
-* [URL Path](#url-path)
-* [URL Path & Query](#url-path-and-query)
-* [URL Query](#url-query)
-* [Virtual Network](#virtual-network)
+- <a href="#access-infrastructure-target">Access Infrastructure Target</a>
+- <a href="#access-private-app">Access Private App</a>
+- <a href="#application">Application</a>
+- <a href="#browser-isolation">Browser Isolation</a>
+- <a href="#content-categories">Content Categories</a>
+- <a href="#destination-continent">Destination Continent IP Geolocation</a>
+- <a href="#destination-country">Destination Country IP Geolocation</a>
+- <a href="#destination-ip">Destination IP</a>
+- <a href="#dlp-profile">DLP Profile</a>
+- <a href="#domain">Domain</a>
+- <a href="#download-and-upload-file-types">Download File Types</a>
+- <a href="#download-and-upload-mime-type">Download Mime Type</a>
+- <a href="#is-mcp">Is MCP</a>
+- <a href="#host">Host</a>
+- <a href="#http-method">HTTP Method</a>
+- <a href="#http-response">HTTP Response</a>
+- <a href="#package-ecosystem">Package Ecosystem</a>
+- <a href="#package-name">Package Name</a>
+- <a href="#package-namespace">Package Namespace</a>
+- <a href="#package-url-purl">Package URL (PURL)</a>
+- <a href="#package-version">Package Version</a>
+- <a href="#proxy-endpoint">Proxy Endpoint</a>
+- <a href="#security-risks">Security Categories</a>
+- <a href="#source-continent">Source Continent IP Geolocation</a>
+- <a href="#source-country">Source Country IP Geolocation</a>
+- <a href="#source-internal-ip">Source Internal IP</a>
+- <a href="#source-ip">Source IP</a>
+- <a href="#traffic-source">Traffic Source</a>
+- <a href="#download-and-upload-file-types">Upload File Types</a>
+- <a href="#download-and-upload-mime-type">Upload Mime Type</a>
+- <a href="#url">URL</a>
+- <a href="#url-path">URL Path</a>
+- <a href="#url-path-and-query">URL Path &amp; Query</a>
+- <a href="#url-query">URL Query</a>
+- <a href="#virtual-network">Virtual Network</a>
 
 **Identity**
 
-* [SAML Attributes](#users)
-* [User Email](#users)
-* [User Group Emails](#users)
-* [User Group IDs](#users)
-* [User Group Names](#users)
-* [User Name](#users)
+- <a href="#users">SAML Attributes</a>
+- <a href="#users">User Email</a>
+- <a href="#users">User Group Emails</a>
+- <a href="#users">User Group IDs</a>
+- <a href="#users">User Group Names</a>
+- <a href="#users">User Name</a>
 
 **Device Posture**
 
-* [Passed Device Posture Checks](#device-posture)
+- <a href="#device-posture">Passed Device Posture Checks</a>
+
+</details>
 
 The Allow action allows outbound traffic to reach destinations you specify within the [Selectors](#selectors) and [Value](#value) fields. For example, the following configuration allows traffic to reach all websites we categorize as belonging to the Education content category:
 
-| Selector           | Operator | Value       | Action |
-| ------------------ | -------- | ----------- | ------ |
-| Content Categories | in       | _Education_ | Allow  |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Content Categories | in | *Education* | Allow |
 
 #### Untrusted certificates
 
 The **Untrusted certificate action** determines how to handle insecure requests.
 
-| Option       | Action                                                                                                                                                                                                                                                                                    |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Error        | Display Gateway error page. Matches the default behavior when no action is configured.                                                                                                                                                                                                    |
-| Block        | Display [block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/) as set in the Cloudflare dashboard.                                                                                                                           |
+| Option | Action |
+| --- | --- |
+| Error | Display Gateway error page. Matches the default behavior when no action is configured. |
+| Block | Display [block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/) as set in the Cloudflare dashboard. |
 | Pass through | Bypass insecure connection warnings and seamlessly connect to the upstream. For more information on what statuses are bypassed, refer to [Troubleshooting Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/troubleshooting/#error-526-invalid-ssl-certificate). |
 
 #### Custom headers
@@ -125,82 +133,98 @@ For more information, refer to [Custom headers](https://developers.cloudflare.co
 
 API value: `block`
 
+<details>
+
+<summary>
+
 Available selectors
+
+</summary>
 
 **Traffic**
 
-* [Access Infrastructure Target](#access-infrastructure-target)
-* [Access Private App](#access-private-app)
-* [Application](#application)
-* [Browser Isolation](#browser-isolation)
-* [Content Categories](#content-categories)
-* [Destination Continent IP Geolocation](#destination-continent)
-* [Destination Country IP Geolocation](#destination-country)
-* [Destination IP](#destination-ip)
-* [DLP Profile](#dlp-profile)
-* [Domain](#domain)
-* [Download File Types](#download-and-upload-file-types)
-* [Download Mime Type](#download-and-upload-mime-type)
-* [Is MCP](#is-mcp)
-* [Host](#host)
-* [HTTP Method](#http-method)
-* [HTTP Response](#http-response)
-* [Package Ecosystem](#package-ecosystem)
-* [Package Name](#package-name)
-* [Package Namespace](#package-namespace)
-* [Package URL (PURL)](#package-url-purl)
-* [Package Version](#package-version)
-* [Proxy Endpoint](#proxy-endpoint)
-* [Security Categories](#security-risks)
-* [Source Continent IP Geolocation](#source-continent)
-* [Source Country IP Geolocation](#source-country)
-* [Source Internal IP](#source-internal-ip)
-* [Source IP](#source-ip)
-* [Traffic Source](#traffic-source)
-* [Upload File Types](#download-and-upload-file-types)
-* [Upload Mime Type](#download-and-upload-mime-type)
-* [URL](#url)
-* [URL Path](#url-path)
-* [URL Path & Query](#url-path-and-query)
-* [URL Query](#url-query)
-* [Virtual Network](#virtual-network)
+- <a href="#access-infrastructure-target">Access Infrastructure Target</a>
+- <a href="#access-private-app">Access Private App</a>
+- <a href="#application">Application</a>
+- <a href="#browser-isolation">Browser Isolation</a>
+- <a href="#content-categories">Content Categories</a>
+- <a href="#destination-continent">Destination Continent IP Geolocation</a>
+- <a href="#destination-country">Destination Country IP Geolocation</a>
+- <a href="#destination-ip">Destination IP</a>
+- <a href="#dlp-profile">DLP Profile</a>
+- <a href="#domain">Domain</a>
+- <a href="#download-and-upload-file-types">Download File Types</a>
+- <a href="#download-and-upload-mime-type">Download Mime Type</a>
+- <a href="#is-mcp">Is MCP</a>
+- <a href="#host">Host</a>
+- <a href="#http-method">HTTP Method</a>
+- <a href="#http-response">HTTP Response</a>
+- <a href="#package-ecosystem">Package Ecosystem</a>
+- <a href="#package-name">Package Name</a>
+- <a href="#package-namespace">Package Namespace</a>
+- <a href="#package-url-purl">Package URL (PURL)</a>
+- <a href="#package-version">Package Version</a>
+- <a href="#proxy-endpoint">Proxy Endpoint</a>
+- <a href="#security-risks">Security Categories</a>
+- <a href="#source-continent">Source Continent IP Geolocation</a>
+- <a href="#source-country">Source Country IP Geolocation</a>
+- <a href="#source-internal-ip">Source Internal IP</a>
+- <a href="#source-ip">Source IP</a>
+- <a href="#traffic-source">Traffic Source</a>
+- <a href="#download-and-upload-file-types">Upload File Types</a>
+- <a href="#download-and-upload-mime-type">Upload Mime Type</a>
+- <a href="#url">URL</a>
+- <a href="#url-path">URL Path</a>
+- <a href="#url-path-and-query">URL Path &amp; Query</a>
+- <a href="#url-query">URL Query</a>
+- <a href="#virtual-network">Virtual Network</a>
 
 **Identity**
 
-* [SAML Attributes](#users)
-* [User Email](#users)
-* [User Group Emails](#users)
-* [User Group IDs](#users)
-* [User Group Names](#users)
-* [User Name](#users)
+- <a href="#users">SAML Attributes</a>
+- <a href="#users">User Email</a>
+- <a href="#users">User Group Emails</a>
+- <a href="#users">User Group IDs</a>
+- <a href="#users">User Group Names</a>
+- <a href="#users">User Name</a>
 
 **Device Posture**
 
-* [Passed Device Posture Checks](#device-posture)
+- <a href="#device-posture">Passed Device Posture Checks</a>
+
+</details>
 
 The Block action blocks outbound traffic from reaching destinations you specify within the [Selectors](#selectors) and [Value](#value) fields. For example, the following configuration blocks users from being able to upload any file type to Google Drive:
 
-| Selector         | Operator      | Value        | Logic | Action |
-| ---------------- | ------------- | ------------ | ----- | ------ |
-| Application      | in            | Google Drive | And   | Block  |
-| Upload Mime Type | matches regex | .\*          |       |        |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Application | in | `Google Drive` | And | Block |
+| Upload Mime Type | matches regex | `.*` |  | |
 
 #### Cloudflare One Client block notifications
 
+<details>
+
+<summary>
+
 Feature availability
 
-| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/plans/zero-trust-services/) |
-| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| Traffic and DNS mode Traffic only mode                                                                                             | Enterprise                                                                  |
+</summary>
 
-| System   | Availability | Minimum client version |
-| -------- | ------------ | ---------------------- |
-| Windows  | ✅            | 2024.1.159.0           |
-| macOS    | ✅            | 2024.1.160.0           |
-| Linux    | ❌            |                        |
-| iOS      | ✅            | 1.7                    |
-| Android  | ✅            | 1.4                    |
-| ChromeOS | ✅            | 1.4                    |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/plans/zero-trust-services/">Zero Trust plans ↗</a> |
+| --- | --- |
+| <ul><li>Traffic and DNS mode</li><li>Traffic only mode</li></ul> | Enterprise |
+
+| System | Availability | Minimum client version |
+| --- | --- | --- |
+| Windows | ✅ | 2024.1.159.0 |
+| macOS | ✅ | 2024.1.160.0 |
+| Linux | ❌ | |
+| iOS | ✅ | 1.7 |
+| Android | ✅ | 1.4 |
+| ChromeOS | ✅ | 1.4 |
+
+</details>
 
 Turn on **Display block notification for Cloudflare One Client** to display notifications for Gateway block events. Blocked users will receive an operating system notification from the Cloudflare One Client with a custom message you set. If you do not set a custom message, the Cloudflare One Client will display a default message. Custom messages must be 100 characters or less. The Cloudflare One Client will only display one notification per minute.
 
@@ -208,23 +232,31 @@ Upon selecting the notification, the Cloudflare One Client will direct your user
 
 When you turn on **Send policy context**, Gateway will append details of the matching request to the redirected URL as a query string. Not every context field will be included. Potential policy context fields include:
 
+<details>
+
+<summary>
+
 Policy context fields
 
-| Field                 | Definition                                                                                                                                       | Example                                                              |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
-| User email            | Email of the user that made the query.                                                                                                           | &cf\_user\_email=user@example.com                                    |
-| Site URL              | Full URL of the original HTTP request or domain name in DNS query.                                                                               | &cf\_site\_uri=https%3A%2F%2Fmalware.testcategory.com%2F             |
-| URL category          | [Domain categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/) of the URL to be redirected.           | &cf\_request\_categories=New%20Domains,Newly%20Seen%20Domains        |
-| Original HTTP referer | For HTTP traffic, the original HTTP referer header of the HTTP request.                                                                          | &cf\_referer=https%3A%2F%2Fexample.com%2F                            |
-| Rule ID               | ID of the Gateway policy that matched the request.                                                                                               | &cf\_rule\_id=6d48997c-a1ec-4b16-b42e-d43ab4d071d1                   |
-| Source IP             | Source IP address of the device that matched the policy.                                                                                         | &cf\_source\_ip=203.0.113.5                                          |
-| Device ID             | UUID of the device that matched the policy.                                                                                                      | &cf\_device\_id=6d48997c-a1ec-4b16-b42e-d43ab4d071d1                 |
-| Application names     | Name of the application the redirected domain corresponds to, if any.                                                                            | &cf\_application\_name=Salesforce                                    |
-| Filter                | The traffic type filter that triggered the block.                                                                                                | &cf\_filter=http, &cf\_filter=dns, &cf\_filter=av, or &cf\_filter=l4 |
-| Account ID            | [Cloudflare account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) of the associated Zero Trust account. | &cf\_account\_id=d57c3de47a013c03ca7e237dd3e61d7d                    |
-| Query ID              | ID of the DNS query for which the redirect took effect.                                                                                          | &cf\_query\_id=f8dc6fd3-a7a5-44dd-8b77-08430bb4fac3                  |
-| Connection ID         | ID of the proxy connection for which the redirect took effect.                                                                                   | &cf\_connection\_id=f8dc6fd3-a7a5-44dd-8b77-08430bb4fac3             |
-| Request ID            | ID of the HTTP request for which the redirect took effect.                                                                                       | &cf\_request\_id=f8dc6fd3-a7a5-44dd-8b77-08430bb4fac3                |
+</summary>
+
+| Field | Definition | Example |
+| --- | --- | --- |
+| User email | Email of the user that made the query. | <code>&amp;cf_user_email=user@example.com</code> |
+| Site URL | Full URL of the original HTTP request or domain name in DNS query. | <code>&amp;cf_site_uri=https%3A%2F%2Fmalware.testcategory.com%2F</code> |
+| URL category | <a href="https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/">Domain categories</a> of the URL to be redirected. | <code>&amp;cf_request_categories=New%20Domains,Newly%20Seen%20Domains</code> |
+| Original HTTP referer | For HTTP traffic, the original HTTP referer header of the HTTP request. | <code>&amp;cf_referer=https%3A%2F%2Fexample.com%2F</code> |
+| Rule ID | ID of the Gateway policy that matched the request. | <code>&amp;cf_rule_id=6d48997c-a1ec-4b16-b42e-d43ab4d071d1</code> |
+| Source IP | Source IP address of the device that matched the policy. | <code>&amp;cf_source_ip=203.0.113.5</code> |
+| Device ID | UUID of the device that matched the policy. | <code>&amp;cf_device_id=6d48997c-a1ec-4b16-b42e-d43ab4d071d1</code> |
+| Application names | Name of the application the redirected domain corresponds to, if any. | <code>&amp;cf_application_name=Salesforce</code> |
+| Filter | The traffic type filter that triggered the block. | <code>&amp;cf_filter=http</code>, <code>&amp;cf_filter=dns</code>, <code>&amp;cf_filter=av</code>, or <code>&amp;cf_filter=l4</code> |
+| Account ID | <a href="https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/">Cloudflare account ID</a> of the associated Zero Trust account. | <code>&amp;cf_account_id=d57c3de47a013c03ca7e237dd3e61d7d</code> |
+| Query ID | ID of the DNS query for which the redirect took effect. | <code>&amp;cf_query_id=f8dc6fd3-a7a5-44dd-8b77-08430bb4fac3</code> |
+| Connection ID | ID of the proxy connection for which the redirect took effect. | <code>&amp;cf_connection_id=f8dc6fd3-a7a5-44dd-8b77-08430bb4fac3</code> |
+| Request ID | ID of the HTTP request for which the redirect took effect. | <code>&amp;cf_request_id=f8dc6fd3-a7a5-44dd-8b77-08430bb4fac3</code> |
+
+</details>
 
 Ensure that your operating system allows notifications for the Cloudflare One Client. Your device may not display notifications if focus, do not disturb, or screen sharing settings are turned on. To turn on client notifications on macOS devices running DisplayLink software, you may have to allow system notifications when mirroring your display. For more information, refer to the [macOS documentation ↗](https://support.apple.com/guide/mac-help/change-notifications-settings-mh40583/mac).
 
@@ -232,43 +264,51 @@ Ensure that your operating system allows notifications for the Cloudflare One Cl
 
 API value: `redirect`
 
+<details>
+
+<summary>
+
 Available selectors
+
+</summary>
 
 **Traffic**
 
-* [Access Infrastructure Target](#access-infrastructure-target)
-* [Application](#application)
-* [Content Categories](#content-categories)
-* [Destination Continent IP Geolocation](#destination-continent)
-* [Destination Country IP Geolocation](#destination-country)
-* [Destination IP](#destination-ip)
-* [Domain](#domain)
-* [Host](#host)
-* [HTTP Method](#http-method)
-* [Proxy Endpoint](#proxy-endpoint)
-* [Security Risks](#security-risks)
-* [Source Continent IP Geolocation](#source-continent)
-* [Source Country IP Geolocation](#source-country)
-* [Source Internal IP](#source-internal-ip)
-* [Source IP](#source-ip)
-* [URL](#url)
-* [URL Path](#url-path)
-* [URL Path & Query](#url-path-and-query)
-* [URL Query](#url-query)
-* [Virtual Network](#virtual-network)
+- <a href="#access-infrastructure-target">Access Infrastructure Target</a>
+- <a href="#application">Application</a>
+- <a href="#content-categories">Content Categories</a>
+- <a href="#destination-continent">Destination Continent IP Geolocation</a>
+- <a href="#destination-country">Destination Country IP Geolocation</a>
+- <a href="#destination-ip">Destination IP</a>
+- <a href="#domain">Domain</a>
+- <a href="#host">Host</a>
+- <a href="#http-method">HTTP Method</a>
+- <a href="#proxy-endpoint">Proxy Endpoint</a>
+- <a href="#security-risks">Security Risks</a>
+- <a href="#source-continent">Source Continent IP Geolocation</a>
+- <a href="#source-country">Source Country IP Geolocation</a>
+- <a href="#source-internal-ip">Source Internal IP</a>
+- <a href="#source-ip">Source IP</a>
+- <a href="#url">URL</a>
+- <a href="#url-path">URL Path</a>
+- <a href="#url-path-and-query">URL Path &amp; Query</a>
+- <a href="#url-query">URL Query</a>
+- <a href="#virtual-network">Virtual Network</a>
 
 **Identity**
 
-* [SAML Attributes](#users)
-* [User Email](#users)
-* [User Group Emails](#users)
-* [User Group IDs](#users)
-* [User Group Names](#users)
-* [User Name](#users)
+- <a href="#users">SAML Attributes</a>
+- <a href="#users">User Email</a>
+- <a href="#users">User Group Emails</a>
+- <a href="#users">User Group IDs</a>
+- <a href="#users">User Group Names</a>
+- <a href="#users">User Name</a>
 
 **Device Posture**
 
-* [Passed Device Posture Checks](#device-posture)
+- <a href="#device-posture">Passed Device Posture Checks</a>
+
+</details>
 
 The Redirect action allows you to redirect matched HTTP requests to a different URL you specify. For example, if your users browse to the public web page of a SaaS app, you can redirect them to your own self-hosted instance, a single sign-on page, or an internal policy page.
 
@@ -280,23 +320,31 @@ In **Policy URL redirect**, you can define what URL to redirect matched requests
 
 When you turn on **Send policy context**, Gateway will append details of the matching request to the redirected URL as a query string. Not every context field will be included. Potential policy context fields include:
 
+<details>
+
+<summary>
+
 Policy context fields
 
-| Field                 | Definition                                                                                                                                       | Example                                                              |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
-| User email            | Email of the user that made the query.                                                                                                           | &cf\_user\_email=user@example.com                                    |
-| Site URL              | Full URL of the original HTTP request or domain name in DNS query.                                                                               | &cf\_site\_uri=https%3A%2F%2Fmalware.testcategory.com%2F             |
-| URL category          | [Domain categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/) of the URL to be redirected.           | &cf\_request\_categories=New%20Domains,Newly%20Seen%20Domains        |
-| Original HTTP referer | For HTTP traffic, the original HTTP referer header of the HTTP request.                                                                          | &cf\_referer=https%3A%2F%2Fexample.com%2F                            |
-| Rule ID               | ID of the Gateway policy that matched the request.                                                                                               | &cf\_rule\_id=6d48997c-a1ec-4b16-b42e-d43ab4d071d1                   |
-| Source IP             | Source IP address of the device that matched the policy.                                                                                         | &cf\_source\_ip=203.0.113.5                                          |
-| Device ID             | UUID of the device that matched the policy.                                                                                                      | &cf\_device\_id=6d48997c-a1ec-4b16-b42e-d43ab4d071d1                 |
-| Application names     | Name of the application the redirected domain corresponds to, if any.                                                                            | &cf\_application\_name=Salesforce                                    |
-| Filter                | The traffic type filter that triggered the block.                                                                                                | &cf\_filter=http, &cf\_filter=dns, &cf\_filter=av, or &cf\_filter=l4 |
-| Account ID            | [Cloudflare account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) of the associated Zero Trust account. | &cf\_account\_id=d57c3de47a013c03ca7e237dd3e61d7d                    |
-| Query ID              | ID of the DNS query for which the redirect took effect.                                                                                          | &cf\_query\_id=f8dc6fd3-a7a5-44dd-8b77-08430bb4fac3                  |
-| Connection ID         | ID of the proxy connection for which the redirect took effect.                                                                                   | &cf\_connection\_id=f8dc6fd3-a7a5-44dd-8b77-08430bb4fac3             |
-| Request ID            | ID of the HTTP request for which the redirect took effect.                                                                                       | &cf\_request\_id=f8dc6fd3-a7a5-44dd-8b77-08430bb4fac3                |
+</summary>
+
+| Field | Definition | Example |
+| --- | --- | --- |
+| User email | Email of the user that made the query. | <code>&amp;cf_user_email=user@example.com</code> |
+| Site URL | Full URL of the original HTTP request or domain name in DNS query. | <code>&amp;cf_site_uri=https%3A%2F%2Fmalware.testcategory.com%2F</code> |
+| URL category | <a href="https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/">Domain categories</a> of the URL to be redirected. | <code>&amp;cf_request_categories=New%20Domains,Newly%20Seen%20Domains</code> |
+| Original HTTP referer | For HTTP traffic, the original HTTP referer header of the HTTP request. | <code>&amp;cf_referer=https%3A%2F%2Fexample.com%2F</code> |
+| Rule ID | ID of the Gateway policy that matched the request. | <code>&amp;cf_rule_id=6d48997c-a1ec-4b16-b42e-d43ab4d071d1</code> |
+| Source IP | Source IP address of the device that matched the policy. | <code>&amp;cf_source_ip=203.0.113.5</code> |
+| Device ID | UUID of the device that matched the policy. | <code>&amp;cf_device_id=6d48997c-a1ec-4b16-b42e-d43ab4d071d1</code> |
+| Application names | Name of the application the redirected domain corresponds to, if any. | <code>&amp;cf_application_name=Salesforce</code> |
+| Filter | The traffic type filter that triggered the block. | <code>&amp;cf_filter=http</code>, <code>&amp;cf_filter=dns</code>, <code>&amp;cf_filter=av</code>, or <code>&amp;cf_filter=l4</code> |
+| Account ID | <a href="https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/">Cloudflare account ID</a> of the associated Zero Trust account. | <code>&amp;cf_account_id=d57c3de47a013c03ca7e237dd3e61d7d</code> |
+| Query ID | ID of the DNS query for which the redirect took effect. | <code>&amp;cf_query_id=f8dc6fd3-a7a5-44dd-8b77-08430bb4fac3</code> |
+| Connection ID | ID of the proxy connection for which the redirect took effect. | <code>&amp;cf_connection_id=f8dc6fd3-a7a5-44dd-8b77-08430bb4fac3</code> |
+| Request ID | ID of the HTTP request for which the redirect took effect. | <code>&amp;cf_request_id=f8dc6fd3-a7a5-44dd-8b77-08430bb4fac3</code> |
+
+</details>
 
 When you turn on **Preserve original path and query string**, Gateway will append the original path and query string to the redirected URL. Paths and queries in the redirect URL take precedence over the original URL. For example, if the original URL is `example.com/path/to/page?querystring=X` and the redirect URL is `cloudflare.com/redirect-path?querystring=Y`, Gateway will redirect requests to:
 
@@ -314,35 +362,43 @@ cloudflare.com/redirect-path/path/to/page?querystring=Y&k=1&cf_user_email=user@e
 
 API value: `isolate`
 
+<details>
+
+<summary>
+
 Available selectors
+
+</summary>
 
 **Traffic**
 
-* [Application](#application)
-* [Content Categories](#content-categories)
-* [Domain](#domain)
-* [Host](#host)
-* [HTTP Method](#http-method)
-* [Security Risks](#security-risks)
-* [Source Continent IP Geolocation](#source-continent)
-* [Source Country IP Geolocation](#source-country)
-* [URL](#url)
-* [URL Path](#url-path)
-* [URL Path & Query](#url-path-and-query)
-* [URL Query](#url-query)
+- <a href="#application">Application</a>
+- <a href="#content-categories">Content Categories</a>
+- <a href="#domain">Domain</a>
+- <a href="#host">Host</a>
+- <a href="#http-method">HTTP Method</a>
+- <a href="#security-risks">Security Risks</a>
+- <a href="#source-continent">Source Continent IP Geolocation</a>
+- <a href="#source-country">Source Country IP Geolocation</a>
+- <a href="#url">URL</a>
+- <a href="#url-path">URL Path</a>
+- <a href="#url-path-and-query">URL Path &amp; Query</a>
+- <a href="#url-query">URL Query</a>
 
 **Identity**
 
-* [SAML Attributes](#users)
-* [User Email](#users)
-* [User Group Emails](#users)
-* [User Group IDs](#users)
-* [User Group Names](#users)
-* [User Name](#users)
+- <a href="#users">SAML Attributes</a>
+- <a href="#users">User Email</a>
+- <a href="#users">User Group Emails</a>
+- <a href="#users">User Group IDs</a>
+- <a href="#users">User Group Names</a>
+- <a href="#users">User Name</a>
 
 **Device Posture**
 
-* [Passed Device Posture Checks](#device-posture)
+- <a href="#device-posture">Passed Device Posture Checks</a>
+
+</details>
 
 The Isolate action serves matched traffic to users via [Cloudflare Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/). For more information on this action, refer to [Isolation policies](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#isolate).
 
@@ -350,37 +406,45 @@ The Isolate action serves matched traffic to users via [Cloudflare Browser Isola
 
 API value: `off`
 
+<details>
+
+<summary>
+
 Available selectors
+
+</summary>
 
 **Traffic**
 
-* [Application](#application)
-* [Content Categories](#content-categories)
-* [Destination Continent IP Geolocation](#destination-continent)
-* [Destination Country IP Geolocation](#destination-country)
-* [Destination IP](#destination-ip)
-* [Domain](#domain)
-* [Host](#host)
-* [Proxy Endpoint](#proxy-endpoint)
-* [Security Risks](#security-risks)
-* [Source Continent IP Geolocation](#source-continent)
-* [Source Country IP Geolocation](#source-country)
-* [Source Internal IP](#source-internal-ip)
-* [Source IP](#source-ip)
-* [Virtual Network](#virtual-network)
+- <a href="#application">Application</a>
+- <a href="#content-categories">Content Categories</a>
+- <a href="#destination-continent">Destination Continent IP Geolocation</a>
+- <a href="#destination-country">Destination Country IP Geolocation</a>
+- <a href="#destination-ip">Destination IP</a>
+- <a href="#domain">Domain</a>
+- <a href="#host">Host</a>
+- <a href="#proxy-endpoint">Proxy Endpoint</a>
+- <a href="#security-risks">Security Risks</a>
+- <a href="#source-continent">Source Continent IP Geolocation</a>
+- <a href="#source-country">Source Country IP Geolocation</a>
+- <a href="#source-internal-ip">Source Internal IP</a>
+- <a href="#source-ip">Source IP</a>
+- <a href="#virtual-network">Virtual Network</a>
 
 **Identity**
 
-* [SAML Attributes](#users)
-* [User Email](#users)
-* [User Group Emails](#users)
-* [User Group IDs](#users)
-* [User Group Names](#users)
-* [User Name](#users)
+- <a href="#users">SAML Attributes</a>
+- <a href="#users">User Email</a>
+- <a href="#users">User Group Emails</a>
+- <a href="#users">User Group IDs</a>
+- <a href="#users">User Group Names</a>
+- <a href="#users">User Name</a>
 
 **Device Posture**
 
-* [Passed Device Posture Checks](#device-posture)
+- <a href="#device-posture">Passed Device Posture Checks</a>
+
+</details>
 
 Visibility limitation
 
@@ -398,35 +462,43 @@ All Do Not Inspect policies are evaluated before any Allow or Block policies, re
 
 API value: `noisolate`
 
+<details>
+
+<summary>
+
 Available selectors
+
+</summary>
 
 **Traffic**
 
-* [Application](#application)
-* [Content Categories](#content-categories)
-* [Domain](#domain)
-* [Host](#host)
-* [HTTP Method](#http-method)
-* [Security Risks](#security-risks)
-* [Source Continent IP Geolocation](#source-continent)
-* [Source Country IP Geolocation](#source-country)
-* [URL](#url)
-* [URL Path](#url-path)
-* [URL Path & Query](#url-path-and-query)
-* [URL Query](#url-query)
+- <a href="#application">Application</a>
+- <a href="#content-categories">Content Categories</a>
+- <a href="#domain">Domain</a>
+- <a href="#host">Host</a>
+- <a href="#http-method">HTTP Method</a>
+- <a href="#security-risks">Security Risks</a>
+- <a href="#source-continent">Source Continent IP Geolocation</a>
+- <a href="#source-country">Source Country IP Geolocation</a>
+- <a href="#url">URL</a>
+- <a href="#url-path">URL Path</a>
+- <a href="#url-path-and-query">URL Path &amp; Query</a>
+- <a href="#url-query">URL Query</a>
 
 **Identity**
 
-* [SAML Attributes](#users)
-* [User Email](#users)
-* [User Group Emails](#users)
-* [User Group IDs](#users)
-* [User Group Names](#users)
-* [User Name](#users)
+- <a href="#users">SAML Attributes</a>
+- <a href="#users">User Email</a>
+- <a href="#users">User Group Emails</a>
+- <a href="#users">User Group IDs</a>
+- <a href="#users">User Group Names</a>
+- <a href="#users">User Name</a>
 
 **Device Posture**
 
-* [Passed Device Posture Checks](#device-posture)
+- <a href="#device-posture">Passed Device Posture Checks</a>
+
+</details>
 
 The Do Not Isolate action turns off browser isolation for matched traffic. For more information on this action, refer to [Isolation policies](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#do-not-isolate).
 
@@ -434,48 +506,56 @@ The Do Not Isolate action turns off browser isolation for matched traffic. For m
 
 API value: `noscan`
 
+<details>
+
+<summary>
+
 Available selectors
+
+</summary>
 
 **Traffic**
 
-* [Application](#application)
-* [Content Categories](#content-categories)
-* [Destination Continent IP Geolocation](#destination-continent)
-* [Destination Country IP Geolocation](#destination-country)
-* [Destination IP](#destination-ip)
-* [Domain](#domain)
-* [Host](#host)
-* [HTTP Method](#http-method)
-* [Proxy Endpoint](#proxy-endpoint)
-* [Security Risks](#security-risks)
-* [Source Continent IP Geolocation](#source-continent)
-* [Source Country IP Geolocation](#source-country)
-* [Source Internal IP](#source-internal-ip)
-* [Source IP](#source-ip)
-* [URL](#url)
-* [URL Path](#url-path)
-* [URL Path & Query](#url-path-and-query)
-* [URL Query](#url-query)
-* [Virtual Network](#virtual-network)
+- <a href="#application">Application</a>
+- <a href="#content-categories">Content Categories</a>
+- <a href="#destination-continent">Destination Continent IP Geolocation</a>
+- <a href="#destination-country">Destination Country IP Geolocation</a>
+- <a href="#destination-ip">Destination IP</a>
+- <a href="#domain">Domain</a>
+- <a href="#host">Host</a>
+- <a href="#http-method">HTTP Method</a>
+- <a href="#proxy-endpoint">Proxy Endpoint</a>
+- <a href="#security-risks">Security Risks</a>
+- <a href="#source-continent">Source Continent IP Geolocation</a>
+- <a href="#source-country">Source Country IP Geolocation</a>
+- <a href="#source-internal-ip">Source Internal IP</a>
+- <a href="#source-ip">Source IP</a>
+- <a href="#url">URL</a>
+- <a href="#url-path">URL Path</a>
+- <a href="#url-path-and-query">URL Path &amp; Query</a>
+- <a href="#url-query">URL Query</a>
+- <a href="#virtual-network">Virtual Network</a>
 
 **Identity**
 
-* [SAML Attributes](#users)
-* [User Email](#users)
-* [User Group Emails](#users)
-* [User Group IDs](#users)
-* [User Group Names](#users)
-* [User Name](#users)
+- <a href="#users">SAML Attributes</a>
+- <a href="#users">User Email</a>
+- <a href="#users">User Group Emails</a>
+- <a href="#users">User Group IDs</a>
+- <a href="#users">User Group Names</a>
+- <a href="#users">User Name</a>
 
 **Device Posture**
 
-* [Passed Device Posture Checks](#device-posture)
+- <a href="#device-posture">Passed Device Posture Checks</a>
+
+</details>
 
 When an admin enables AV scanning for uploads and/or downloads, Gateway will scan every supported file. Admins can selectively choose to disable scanning by leveraging the HTTP rules. For example, to prevent AV scanning of files uploaded to or downloaded from `example.com`, an admin would configure the following rule:
 
-| Selector | Operator      | Value          | Action      |
-| -------- | ------------- | -------------- | ----------- |
-| Hostname | matches regex | .\*example.com | Do Not Scan |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Hostname | matches regex | `.*example.com` | Do Not Scan |
 
 When a Do Not Scan rule matches, nothing is scanned, regardless of file size or whether the file type is supported or not.
 
@@ -483,42 +563,50 @@ When a Do Not Scan rule matches, nothing is scanned, regardless of file size or 
 
 API value: `quarantine`
 
+<details>
+
+<summary>
+
 Available selectors
+
+</summary>
 
 **Traffic**
 
-* [Application](#application)
-* [Content Categories](#content-categories)
-* [Destination Continent IP Geolocation](#destination-continent)
-* [Destination Country IP Geolocation](#destination-country)
-* [Destination IP](#destination-ip)
-* [Domain](#domain)
-* [Host](#host)
-* [HTTP Method](#http-method)
-* [Proxy Endpoint](#proxy-endpoint)
-* [Security Risks](#security-risks)
-* [Source Continent IP Geolocation](#source-continent)
-* [Source Country IP Geolocation](#source-country)
-* [Source Internal IP](#source-internal-ip)
-* [Source IP](#source-ip)
-* [URL](#url)
-* [URL Path](#url-path)
-* [URL Path & Query](#url-path-and-query)
-* [URL Query](#url-query)
-* [Virtual Network](#virtual-network)
+- <a href="#application">Application</a>
+- <a href="#content-categories">Content Categories</a>
+- <a href="#destination-continent">Destination Continent IP Geolocation</a>
+- <a href="#destination-country">Destination Country IP Geolocation</a>
+- <a href="#destination-ip">Destination IP</a>
+- <a href="#domain">Domain</a>
+- <a href="#host">Host</a>
+- <a href="#http-method">HTTP Method</a>
+- <a href="#proxy-endpoint">Proxy Endpoint</a>
+- <a href="#security-risks">Security Risks</a>
+- <a href="#source-continent">Source Continent IP Geolocation</a>
+- <a href="#source-country">Source Country IP Geolocation</a>
+- <a href="#source-internal-ip">Source Internal IP</a>
+- <a href="#source-ip">Source IP</a>
+- <a href="#url">URL</a>
+- <a href="#url-path">URL Path</a>
+- <a href="#url-path-and-query">URL Path &amp; Query</a>
+- <a href="#url-query">URL Query</a>
+- <a href="#virtual-network">Virtual Network</a>
 
 **Identity**
 
-* [SAML Attributes](#users)
-* [User Email](#users)
-* [User Group Emails](#users)
-* [User Group IDs](#users)
-* [User Group Names](#users)
-* [User Name](#users)
+- <a href="#users">SAML Attributes</a>
+- <a href="#users">User Email</a>
+- <a href="#users">User Group Emails</a>
+- <a href="#users">User Group IDs</a>
+- <a href="#users">User Group Names</a>
+- <a href="#users">User Name</a>
 
 **Device Posture**
 
-* [Passed Device Posture Checks](#device-posture)
+- <a href="#device-posture">Passed Device Posture Checks</a>
+
+</details>
 
 The Quarantine action sends files in matching requests to a file sandbox to scan for malware. Gateway will only quarantine files not previously seen in the file sandbox. For more information on this action, refer to [File sandboxing](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/file-sandboxing/).
 
@@ -528,21 +616,29 @@ In **Sandbox file types**, you can select which file types to quarantine with yo
 
 File sandboxing supports scanning the following file types:
 
+<details>
+
+<summary>
+
 Supported sandboxing file types
 
-* `.exe`
-* `.pdf`
-* `.doc`
-* `.docm`
-* `.docx`
-* `.rtf`
-* `.ppt`
-* `.pptx`
-* `.xls`
-* `.xlsm`
-* `.xlsx`
-* `.zip`
-* `.rar`
+</summary>
+
+- <code>.exe</code>
+- <code>.pdf</code>
+- <code>.doc</code>
+- <code>.docm</code>
+- <code>.docx</code>
+- <code>.rtf</code>
+- <code>.ppt</code>
+- <code>.pptx</code>
+- <code>.xls</code>
+- <code>.xlsm</code>
+- <code>.xlsx</code>
+- <code>.zip</code>
+- <code>.rar</code>
+
+</details>
 
 ## Selectors
 
@@ -556,33 +652,33 @@ Gateway matches HTTP traffic against the following selectors, or criteria:
 
 All [targets](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/#1-add-a-target) secured by an [Access infrastructure application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/).
 
-| UI name                      | API example   |
-| ---------------------------- | ------------- |
-| Access Infrastructure Target | access.target |
+| UI name | API example |
+| --- | --- |
+| Access Infrastructure Target | `access.target` |
 
 ### Access Private App
 
 All destination IPs and hostnames secured by an [Access self-hosted private application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/).
 
-| UI name                                     | API example         |
-| ------------------------------------------- | ------------------- |
-| Self-hosted Access App with Private Address | access.private\_app |
+| UI name | API example |
+| --- | --- |
+| Self-hosted Access App with Private Address | `access.private_app` |
 
 ### Application Approval Status
 
 The review approval status of an application from [Shadow IT Discovery](https://developers.cloudflare.com/cloudflare-one/insights/analytics/shadow-it-discovery/) or the [Application Library](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/). For more information, refer to [Review applications](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/#review-applications).
 
-| UI name            | API example                           |
-| ------------------ | ------------------------------------- |
-| Application Status | any(app.statuses\[\*\] == "approved") |
+| UI name | API example |
+| --- | --- |
+| Application Status | `any(app.statuses[*] == "approved")` |
 
 ### Application
 
 You can apply HTTP policies to a growing list of popular web applications. Refer to [Application and app types](https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/) for more information.
 
-| UI name     | API example                 |
-| ----------- | --------------------------- |
-| Application | any(app.ids\[\*\] in {505}) |
+| UI name | API example |
+| --- | --- |
+| Application | `any(app.ids[*] in {505})` |
 
 Multiple API selectors required for Terraform
 
@@ -590,11 +686,11 @@ When using Terraform to create a policy with the [Do Not Inspect](#do-not-inspec
 
 #### Granular controls
 
-When using the _is_ operator with the _Application_ selector, you can use Application Granular Controls to choose specific actions and operations to match application traffic. For example, you can block file uploads to ChatGPT without blocking all ChatGPT traffic:
+When using the *is* operator with the *Application* selector, you can use Application Granular Controls to choose specific actions and operations to match application traffic. For example, you can block file uploads to ChatGPT without blocking all ChatGPT traffic:
 
-| Selector    | Operator | Value     | Controls | Action |
-| ----------- | -------- | --------- | -------- | ------ |
-| Application | is       | _ChatGPT_ | _Upload_ | Block  |
+| Selector | Operator | Value | Controls | Action |
+| --- | --- | --- | --- | --- |
+| Application | is | *ChatGPT* | *Upload* | Block |
 
 You can match traffic based on **Application Controls**, which group multiple user actions together, or **Operations**, which allow for granular control of supported API-level actions for an application.
 
@@ -604,9 +700,9 @@ For more information, refer to [Application Granular Controls](https://developer
 
 The phase of an HTTP request. You can use this selector to specify whether to scan either the data sent in an HTTP request to your user's device or from your user's device to a destination. Policies without this selector will scan both the HTTP request and response bodies.
 
-| UI name    | API example                        |
-| ---------- | ---------------------------------- |
-| Body Phase | http.body\_phase == \\"download\\" |
+| UI name | API example |
+| --- | --- |
+| Body Phase | `http.body_phase == \"download\"` |
 
 Body phase mismatch
 
@@ -616,17 +712,17 @@ When combining this selector with the [Download and Upload File Types selectors]
 
 Whether the current session is running inside [Remote Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/). Use this selector to apply different policy behavior to isolated and non-isolated traffic.
 
-| UI name           | API example              |
-| ----------------- | ------------------------ |
-| Browser Isolation | net.is\_isolated == true |
+| UI name | API example |
+| --- | --- |
+| Browser Isolation | `net.is_isolated == true` |
 
 ### Content Categories
 
 Applications within a specific [security category](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#content-categories) as categorized by [Cloudflare Radar](https://developers.cloudflare.com/radar/glossary/#content-categories).
 
-| UI name            | API example                                          |
-| ------------------ | ---------------------------------------------------- |
-| Content Categories | any(http.request.uri.content\_category\[\*\] in {1}) |
+| UI name | API example |
+| --- | --- |
+| Content Categories | `any(http.request.uri.content_category[*] in {1})` |
 
 ### Destination Continent
 
@@ -636,19 +732,19 @@ Only applies to traffic sent through the [Cloudflare One Client](https://develop
 
 The continent where the request is destined. Geolocation is determined from the target IP address. To specify a continent, enter its two-letter code into the **Value** field:
 
-| Continent     | Code |
-| ------------- | ---- |
-| Africa        | AF   |
-| Antarctica    | AN   |
-| Asia          | AS   |
-| Europe        | EU   |
-| North America | NA   |
-| Oceania       | OC   |
-| South America | SA   |
+| Continent | Code |
+| --- | --- |
+| Africa | `AF` |
+| Antarctica | `AN` |
+| Asia | `AS` |
+| Europe | `EU` |
+| North America | `NA` |
+| Oceania | `OC` |
+| South America | `SA` |
 
-| UI name                              | API example                        |
-| ------------------------------------ | ---------------------------------- |
-| Destination Continent IP Geolocation | http.dst\_ip.geo.continent == "EU" |
+| UI name | API example |
+| --- | --- |
+| Destination Continent IP Geolocation | `http.dst_ip.geo.continent == "EU"` |
 
 ### Destination Country
 
@@ -658,9 +754,9 @@ Only applies to traffic sent through the [Cloudflare One Client](https://develop
 
 The country that the request is destined for. Geolocation is determined from the target IP address. To specify a country, enter its [ISO 3166-1 Alpha 2 code ↗](https://www.iso.org/obp/ui/#search/code/) in the **Value** field.
 
-| UI name                            | API example                      |
-| ---------------------------------- | -------------------------------- |
-| Destination Country IP Geolocation | http.dst\_ip.geo.country == "RU" |
+| UI name | API example |
+| --- | --- |
+| Destination Country IP Geolocation | `http.dst_ip.geo.country == "RU"` |
 
 ### Destination IP
 
@@ -670,9 +766,9 @@ Only applies to traffic sent through the [Cloudflare One Client](https://develop
 
 The IP address of the request's target.
 
-| UI name        | API example                                  |
-| -------------- | -------------------------------------------- |
-| Destination IP | any(http.conn.dst\_ip\[\*\] in {10.0.0.0/8}) |
+| UI name | API example |
+| --- | --- |
+| Destination IP | `any(http.conn.dst_ip[*] in {10.0.0.0/8})` |
 
 ### Device Posture
 
@@ -680,17 +776,17 @@ With the Device Posture selector, admins can use signals from end-user devices t
 
 For more information on device posture checks, refer to [Device posture](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/).
 
-| UI name                      | API example                                                                                                                                                                 |
-| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Passed Device Posture Checks | any(device\_posture.checks.failed\[\*\] in {"1308749e-fcfb-4ebc-b051-fe022b632644"}), any(device\_posture.checks.passed\[\*\] in {"1308749e-fcfb-4ebc-b051-fe022b632644"})" |
+| UI name | API example |
+| --- | --- |
+| Passed Device Posture Checks | `any(device_posture.checks.failed[*] in {"1308749e-fcfb-4ebc-b051-fe022b632644"})`, `any(device_posture.checks.passed[*] in {"1308749e-fcfb-4ebc-b051-fe022b632644"})"` |
 
 ### Domain
 
 Use this selector to match against a domain and all subdomains. For example, you can match `example.com` and its subdomains, such as `www.example.com`.
 
-| UI name | API example                                      |
-| ------- | ------------------------------------------------ |
-| Domain  | any(http.request.domains\[\*\] == "example.com") |
+| UI name | API example |
+| --- | --- |
+| Domain | `any(http.request.domains[*] == "example.com")` |
 
 Gateway policies do not support domains with non-Latin characters directly. To use a domain with non-Latin characters, add it to a [list](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/).
 
@@ -698,132 +794,188 @@ Gateway policies do not support domains with non-Latin characters directly. To u
 
 Use these selectors to limit the file size of upload or download transactions. File sizes are measured in mebibytes (MiB).
 
-| UI name                  | API example                   |
-| ------------------------ | ----------------------------- |
-| Download File Size (MiB) | http.download.file.size >= 10 |
+| UI name | API example |
+| --- | --- |
+| Download File Size (MiB) | `http.download.file.size >= 10` |
 
-| UI name                | API example                |
-| ---------------------- | -------------------------- |
-| Upload File Size (MiB) | http.upload.file.size < 10 |
+| UI name | API example |
+| --- | --- |
+| Upload File Size (MiB) | `http.upload.file.size < 10` |
 
 ### Download and Upload File Types
 
 Deprecated selectors
 
-The _Download File Types_ and _Upload File Types_ selectors supersede the _Download File Type_ and _Upload File Type_ selectors. Gateway will still evaluate policies with the previous selectors. However, Cloudflare recommends migrating any policies with deprecated selectors to the new corresponding selectors.
+The *Download File Types* and *Upload File Types* selectors supersede the *Download File Type* and *Upload File Type* selectors. Gateway will still evaluate policies with the previous selectors. However, Cloudflare recommends migrating any policies with deprecated selectors to the new corresponding selectors.
 
 These selectors will scan file signatures in the HTTP body. You can select from file categories or [specific file types](#supported-file-types), such as executables, archives and compressed files, unscannable files, Microsoft 365/Office documents, and Adobe files.
 
-| UI name             | API example                                          |
-| ------------------- | ---------------------------------------------------- |
-| Download File Types | any(http.download.file.types\[\*\] in {"docx" "7z"}) |
+| UI name | API example |
+| --- | --- |
+| Download File Types | `any(http.download.file.types[*] in {"docx" "7z"})` |
 
-| UI name           | API example                                         |
-| ----------------- | --------------------------------------------------- |
-| Upload File Types | any(http.upload.file.types\[\*\] in {"compressed"}) |
+| UI name | API example |
+| --- | --- |
+| Upload File Types | `any(http.upload.file.types[*] in {"compressed"})` |
 
 #### Supported file types
 
-Gateway supports the following file types for use with the _Download File Types_ and _Upload File Types_ selectors:
+Gateway supports the following file types for use with the *Download File Types* and *Upload File Types* selectors:
+
+<details>
+
+<summary>
 
 Compressed
 
-* 7-Zip archive (`.7z`)
-* `bzip2` archive (`.bz2`)
-* GNU Gzip archive (`.gz`)
-* Microsoft Cabinet file (`.cab`)
-* Microsoft Compiled HTML Help file (`.chm`)
-* RAR archive (`.rar`)
-* `xz` archive (`.xz`)
-* ZIP archive (`.zip`)
+</summary>
+
+- 7-Zip archive (<code>.7z</code>)
+- <code>bzip2</code> archive (<code>.bz2</code>)
+- GNU Gzip archive (<code>.gz</code>)
+- Microsoft Cabinet file (<code>.cab</code>)
+- Microsoft Compiled HTML Help file (<code>.chm</code>)
+- RAR archive (<code>.rar</code>)
+- <code>xz</code> archive (<code>.xz</code>)
+- ZIP archive (<code>.zip</code>)
+
+</details>
+
+<details>
+
+<summary>
 
 Documents
 
-* Microsoft Office/365 files
-  * Word document (`.doc`, `.docx`, `.docm`)
-  * Excel spreadsheet (`.xls`, `.xlsx`, `.xlsm`)
-  * PowerPoint presentation (`.ppt`, `.pptx`, `.pptm`)
-* PDF document (`.pdf`)
+</summary>
+
+- Microsoft Office/365 files
+  - Word document (<code>.doc</code>, <code>.docx</code>, <code>.docm</code>)
+  - Excel spreadsheet (<code>.xls</code>, <code>.xlsx</code>, <code>.xlsm</code>)
+  - PowerPoint presentation (<code>.ppt</code>, <code>.pptx</code>, <code>.pptm</code>)
+- PDF document (<code>.pdf</code>)
+
+</details>
+
+<details>
+
+<summary>
 
 Executable
 
-* Apple Software Package (`.pkg`)
-* Dynamic-link library (DLL) file (`.dll`)
-* Executable and Linkable Format (ELF) file (`.elf`)
-* Java archive (JAR) package (`.jar`)
-* Java class file (`.class`)
-* Mach object (Mach-O) file (`.macho`)
-* Microsoft Windows installer (`.msi`)
-* Microsoft Software Installer (`.msix`, `.appx`)
-* Microsoft Windows executable (`.exe`)
+</summary>
+
+- Apple Software Package (<code>.pkg</code>)
+- Dynamic-link library (DLL) file (<code>.dll</code>)
+- Executable and Linkable Format (ELF) file (<code>.elf</code>)
+- Java archive (JAR) package (<code>.jar</code>)
+- Java class file (<code>.class</code>)
+- Mach object (Mach-O) file (<code>.macho</code>)
+- Microsoft Windows installer (<code>.msi</code>)
+- Microsoft Software Installer (<code>.msix</code>, <code>.appx</code>)
+- Microsoft Windows executable (<code>.exe</code>)
+
+</details>
+
+<details>
+
+<summary>
 
 Image
 
-* Adobe Photoshop document (`.psd`)
-* Bitmap image (`.bmp`)
-* GIF image (`.gif`)
-* Icon file (`.ico`)
-* JPEG image (`.jpg`, `.jpeg`)
-* PNG image (`.png`)
-* WebP image (`.webp`)
+</summary>
+
+- Adobe Photoshop document (<code>.psd</code>)
+- Bitmap image (<code>.bmp</code>)
+- GIF image (<code>.gif</code>)
+- Icon file (<code>.ico</code>)
+- JPEG image (<code>.jpg</code>, <code>.jpeg</code>)
+- PNG image (<code>.png</code>)
+- WebP image (<code>.webp</code>)
+
+</details>
+
+<details>
+
+<summary>
 
 Other
 
-* BitTorrent file (`.torrent`)
+</summary>
+
+- BitTorrent file (<code>.torrent</code>)
+
+</details>
+
+<details>
+
+<summary>
 
 System
 
-* Apple Disk Image (`.dmg`)
+</summary>
+
+- Apple Disk Image (<code>.dmg</code>)
+
+</details>
+
+<details>
+
+<summary>
 
 Unscannable
 
-* Password-protected Microsoft Office document
-* Password-protected PDF
-* Password-protected ZIP archive
-* Unscannable ZIP archive
+</summary>
+
+- Password-protected Microsoft Office document
+- Password-protected PDF
+- Password-protected ZIP archive
+- Unscannable ZIP archive
+
+</details>
 
 ### Download and Upload Mime Type
 
 These selectors depend on the `Content-Type` header being present in the request (for uploads) or response (for downloads). The MIME type value must match the format used in the `Content-Type` header (for example, `image/png`, `application/pdf`).
 
-| UI name            | API example                       |
-| ------------------ | --------------------------------- |
-| Download Mime Type | http.download.mime == "image/png" |
+| UI name | API example |
+| --- | --- |
+| Download Mime Type | `http.download.mime == "image/png"` |
 
-| UI name          | API example                     |
-| ---------------- | ------------------------------- |
-| Upload Mime Type | http.upload.mime == "image/png" |
+| UI name | API example |
+| --- | --- |
+| Upload Mime Type | `http.upload.mime == "image/png"` |
 
 ### DLP Profile
 
 Use [Cloudflare Data Loss Prevention (DLP)](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) to scan HTTP traffic for the presence of sensitive data such as personally identifiable information (PII) or source code. You must configure a [DLP profile](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/) before you can use this selector in a policy.
 
-| UI name     | API example                                                             |
-| ----------- | ----------------------------------------------------------------------- |
-| DLP Profile | any(dlp.profiles\[\*\] in {\\"a0cabf16-7491-4c9a-ac02-f64cabc66394\\"}) |
+| UI name | API example |
+| --- | --- |
+| DLP Profile | `any(dlp.profiles[*] in {\"a0cabf16-7491-4c9a-ac02-f64cabc66394\"})` |
 
 ### Is MCP Beta
 
 Whether the HTTP request was identified as [Model Context Protocol (MCP) ↗](https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) traffic. Gateway detects MCP traffic by inspecting protocol-specific headers and payload characteristics. Use this selector to build policies that allow, block, or isolate MCP traffic across your network.
 
-| UI name | API example                  |
-| ------- | ---------------------------- |
-| Is MCP  | experimental.is\_mcp == true |
+| UI name | API example |
+| --- | --- |
+| Is MCP | `experimental.is_mcp == true` |
 
 For example, the following policy blocks MCP traffic that does not arrive through an [MCP portal](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/):
 
-| Selector       | Operator | Value        | Logic | Action |
-| -------------- | -------- | ------------ | ----- | ------ |
-| Is MCP         | is       | _True_       | And   | Block  |
-| Traffic Source | is not   | _MCP portal_ |       |        |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Is MCP | is | *True* | And | Block |
+| Traffic Source | is not | *MCP portal* |  | |
 
 ### Host
 
 Use this selector to match against only the hostname specified. For example, you can match `test.example.com` but not `example.com` or `www.test.example.com`.
 
-| UI name | API example                        |
-| ------- | ---------------------------------- |
-| Host    | http.request.host == "example.com" |
+| UI name | API example |
+| --- | --- |
+| Host | `http.request.host == "example.com"` |
 
 Gateway policies do not support hostnames with non-Latin characters directly. To use a hostname with non-Latin characters, add it to a [list](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/).
 
@@ -835,73 +987,73 @@ Some hostnames (`example.com`) will invisibly redirect to the www subdomain (`ww
 
 The HTTP request method used in the traffic.
 
-| UI name     | API example                  |
-| ----------- | ---------------------------- |
-| HTTP Method | http.request.method == "GET" |
+| UI name | API example |
+| --- | --- |
+| HTTP Method | `http.request.method == "GET"` |
 
 ### HTTP Response
 
 The HTTP response status code received by the traffic.
 
-| UI name | API example                         |
-| ------- | ----------------------------------- |
-| URL     | http.response.status\_code == "200" |
+| UI name | API example |
+| --- | --- |
+| URL | `http.response.status_code == "200"` |
 
 ### Package Ecosystem
 
 The package registry ecosystem detected from the HTTP request URL. For more information, refer to [Package registry security](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/package-registry-security/).
 
-| UI name           | API example            |
-| ----------------- | ---------------------- |
-| Package Ecosystem | pkg.ecosystem == "npm" |
+| UI name | API example |
+| --- | --- |
+| Package Ecosystem | `pkg.ecosystem == "npm"` |
 
 ### Package Name
 
 The name of the package detected from the HTTP request URL.
 
-| UI name      | API example          |
-| ------------ | -------------------- |
-| Package Name | pkg.name == "lodash" |
+| UI name | API example |
+| --- | --- |
+| Package Name | `pkg.name == "lodash"` |
 
 ### Package Namespace
 
 The namespace of the package, when the ecosystem supports one. For npm, this is the scope. For Maven, this is the group ID. For Go, this is the module path.
 
-| UI name           | API example               |
-| ----------------- | ------------------------- |
-| Package Namespace | pkg.namespace == "@babel" |
+| UI name | API example |
+| --- | --- |
+| Package Namespace | `pkg.namespace == "@babel"` |
 
 ### Package URL (PURL)
 
 The [Package URL ↗](https://github.com/package-url/purl-spec) derived from the detected package coordinates.
 
-| UI name     | API example                          |
-| ----------- | ------------------------------------ |
-| Package URL | pkg.purl == "pkg:npm/lodash@4.17.21" |
+| UI name | API example |
+| --- | --- |
+| Package URL | `pkg.purl == "pkg:npm/lodash@4.17.21"` |
 
 ### Package Version
 
 The version of the package detected from the HTTP request URL. Supports exact match and ecosystem-aware version comparison operators. For more information on version comparison semantics, refer to [Package registry security](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/package-registry-security/#version-comparison-operators).
 
-| UI name         | API example              |
-| --------------- | ------------------------ |
-| Package Version | pkg.version == "4.17.21" |
+| UI name | API example |
+| --- | --- |
+| Package Version | `pkg.version == "4.17.21"` |
 
 ### Proxy Endpoint
 
 The [proxy server](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) where your browser forwards HTTP traffic.
 
-| UI name        | API example                                                 |
-| -------------- | ----------------------------------------------------------- |
-| Proxy Endpoint | proxy.endpoint == "3ele0ss56t.proxy.cloudflare-gateway.com" |
+| UI name | API example |
+| --- | --- |
+| Proxy Endpoint | `proxy.endpoint == "3ele0ss56t.proxy.cloudflare-gateway.com"` |
 
 ### Security Risks
 
 Applications within a specific [security category](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-categories) as categorized by [Cloudflare Radar](https://developers.cloudflare.com/radar/glossary/#content-categories).
 
-| UI name             | API example                                           |
-| ------------------- | ----------------------------------------------------- |
-| Security Categories | any(http.request.uri.security\_category\[\*\] in {1}) |
+| UI name | API example |
+| --- | --- |
+| Security Categories | `any(http.request.uri.security_category[*] in {1})` |
 
 ### Source Continent
 
@@ -909,19 +1061,19 @@ The continent of the user making the request.
 
 Geolocation is determined from the device's public IP address (typically assigned by the user's ISP). To specify a continent, enter its two-letter code into the **Value** field:
 
-| Continent     | Code |
-| ------------- | ---- |
-| Africa        | AF   |
-| Antarctica    | AN   |
-| Asia          | AS   |
-| Europe        | EU   |
-| North America | NA   |
-| Oceania       | OC   |
-| South America | SA   |
+| Continent | Code |
+| --- | --- |
+| Africa | `AF` |
+| Antarctica | `AN` |
+| Asia | `AS` |
+| Europe | `EU` |
+| North America | `NA` |
+| Oceania | `OC` |
+| South America | `SA` |
 
-| UI name                         | API example                                   |
-| ------------------------------- | --------------------------------------------- |
-| Source Continent IP Geolocation | http.src\_ip.geo.continent == "North America" |
+| UI name | API example |
+| --- | --- |
+| Source Continent IP Geolocation | `http.src_ip.geo.continent == "North America"` |
 
 ### Source Country
 
@@ -929,33 +1081,33 @@ The country of the user making the request.
 
 Geolocation is determined from the device's public IP address (typically assigned by the user's ISP). To specify a country, enter its [ISO 3166-1 Alpha-2 code ↗](https://www.iso.org/obp/ui/#search/code/) in the **Value** field.
 
-| UI name                       | API example                      |
-| ----------------------------- | -------------------------------- |
-| Source Country IP Geolocation | http.src\_ip.geo.country == "RU" |
+| UI name | API example |
+| --- | --- |
+| Source Country IP Geolocation | `http.src_ip.geo.country == "RU"` |
 
 ### Source Internal IP
 
 Use this selector to apply HTTP policies to a private IP address, assigned by a user's local network, that requests arrive to Gateway from.
 
-| UI name            | API example                                      |
-| ------------------ | ------------------------------------------------ |
-| Source Internal IP | http.conn.internal\_src\_ip == "192.168.86.0/27" |
+| UI name | API example |
+| --- | --- |
+| Source Internal IP | `http.conn.internal_src_ip == "192.168.86.0/27"` |
 
 ### Source IP
 
 The originating IP address or addresses of a device proxied by Gateway.
 
-| UI name   | API example                             |
-| --------- | --------------------------------------- |
-| Source IP | http.conn.src\_ip\[\*\] in {10.0.0.0/8} |
+| UI name | API example |
+| --- | --- |
+| Source IP | `http.conn.src_ip[*] in {10.0.0.0/8}` |
 
 ### Traffic Source Beta
 
 The method used to on-ramp traffic to Cloudflare. Use this selector to apply policies based on how traffic reaches Gateway.
 
-| UI name        | API example                         |
-| -------------- | ----------------------------------- |
-| Traffic Source | net.onramp.type == "device\_client" |
+| UI name | API example |
+| --- | --- |
+| Traffic Source | `net.onramp.type == "device_client"` |
 
 Available values: `device_client` (Device client), `mesh` (Mesh), `cloudflare_wan` (Cloudflare WAN), `clientless_rdp` (Clientless RDP), `proxy_endpoint` (Proxy endpoint), `agentless_biso` (Clientless Browser Isolation), `mcp_portal` (MCP portal).
 
@@ -963,77 +1115,77 @@ Available values: `device_client` (Device client), `mesh` (Mesh), `cloudflare_wa
 
 Gateway ignores trailing forward slashes (`/`) in URLs. For example, `https://example.com` and `https://example.com/` will count as the same URL and may return a duplicate error.
 
-| UI name | API example                          |
-| ------- | ------------------------------------ |
-| URL     | http.request.uri matches "/r/gaming" |
+| UI name | API example |
+| --- | --- |
+| URL | `http.request.uri matches "/r/gaming"` |
 
 ### URL Path
 
 The pathname of a webpage's URL.
 
-| UI name  | API example                             |
-| -------- | --------------------------------------- |
-| URL Path | http.request.uri.path == \\"/foo/bar\\" |
+| UI name | API example |
+| --- | --- |
+| URL Path | `http.request.uri.path == \"/foo/bar\"` |
 
 ### URL Path and Query
 
 The pathname and query of a webpage's URL.
 
-| UI name            | API example                                                       |
-| ------------------ | ----------------------------------------------------------------- |
-| URL Path and Query | http.request.uri.path\_and\_query == \\"/foo/bar?ab%242=%2A342\\" |
+| UI name | API example |
+| --- | --- |
+| URL Path and Query | `http.request.uri.path_and_query == \"/foo/bar?ab%242=%2A342\"` |
 
 ### URL Query
 
 The query of a webpage's URL.
 
-| UI name   | API example                               |
-| --------- | ----------------------------------------- |
-| URL Query | http.request.uri.query == "ab%242=%2A342" |
+| UI name | API example |
+| --- | --- |
+| URL Query | `http.request.uri.query == "ab%242=%2A342"` |
 
 ### Users
 
 Use these selectors to match against identity attributes.
 
-| UI name           | API example                                                                                                     |
-| ----------------- | --------------------------------------------------------------------------------------------------------------- |
-| User Email        | identity.email == "user@example.com"                                                                            |
-| User Name         | identity.name == "Test User"                                                                                    |
-| User Group IDs    | any(identity.groups\[\*\].id in {"group\_id"})                                                                  |
-| User Group Names  | any(identity.groups\[\*\].name in {"group\_name"})                                                              |
-| User Group Emails | any(identity.groups\[\*\].email in {"group@example.com"})                                                       |
-| SAML Attributes   | any(identity.saml\_attributes\["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"\] in {"Test User"}) |
+| UI name | API example |
+| --- | --- |
+| User Email | `identity.email == "user@example.com"` |
+| User Name | `identity.name == "Test User"` |
+| User Group IDs | `any(identity.groups[*].id in {"group_id"})` |
+| User Group Names | `any(identity.groups[*].name in {"group_name"})` |
+| User Group Emails | `any(identity.groups[*].email in {"group@example.com"})` |
+| SAML Attributes | `any(identity.saml_attributes["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"] in {"Test User"})` |
 
 ### Virtual Network
 
 Use this selector to match all traffic routed through a specific [Virtual Network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) via the Cloudflare One Client.
 
-| UI name         | API example                                                  |
-| --------------- | ------------------------------------------------------------ |
-| Virtual Network | http.conn.vnet\_id == "957fc748-591a-e96s-a15d-1j90204a7923" |
+| UI name | API example |
+| --- | --- |
+| Virtual Network | `http.conn.vnet_id == "957fc748-591a-e96s-a15d-1j90204a7923"` |
 
 ## Comparison operators
 
 Comparison operators are the way Gateway matches traffic to a selector. When you choose a **Selector** in the dashboard policy builder, the **Operator** dropdown menu will display the available options for that selector.
 
-| Operator                 | Meaning                                                                                                            |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| is                       | equals the defined value                                                                                           |
-| is not                   | does not equal the defined value                                                                                   |
-| in                       | matches at least one of the defined values                                                                         |
-| not in                   | does not match any of the defined values                                                                           |
-| in list                  | in a pre-defined [list](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/) of values     |
-| not in list              | not in a pre-defined [list](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/) of values |
-| matches regex            | regex evaluates to true                                                                                            |
-| does not match regex     | regex evaluates to false                                                                                           |
-| greater than             | exceeds the defined number                                                                                         |
-| greater than or equal to | exceeds or equals the defined number                                                                               |
-| less than                | below the defined number                                                                                           |
-| less than or equal to    | below or equals the defined number                                                                                 |
+| Operator | Meaning |
+| --- | --- |
+| is | equals the defined value |
+| is not | does not equal the defined value |
+| in | matches at least one of the defined values |
+| not in | does not match any of the defined values |
+| in list | in a pre-defined [list](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/) of values |
+| not in list | not in a pre-defined [list](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/) of values |
+| matches regex | regex evaluates to true |
+| does not match regex | regex evaluates to false |
+| greater than | exceeds the defined number |
+| greater than or equal to | exceeds or equals the defined number |
+| less than | below the defined number |
+| less than or equal to | below or equals the defined number |
 
 ## Value
 
-In the **Value** field, you can input a single value when using an equality comparison operator (such as _is_) or multiple values when using a containment comparison operator (such as _in_). Additionally, you can use [regular expressions](#regular-expressions) (or regex) to specify a range of values for supported selectors.
+In the **Value** field, you can input a single value when using an equality comparison operator (such as *is*) or multiple values when using a containment comparison operator (such as *in*). Additionally, you can use [regular expressions](#regular-expressions) (or regex) to specify a range of values for supported selectors.
 
 ### Regular expressions
 
@@ -1041,9 +1193,9 @@ Regular expressions are evaluated using Rust. The Rust implementation is slightl
 
 If you want to match multiple values, you can use the pipe symbol (`|`) as an OR operator. You do not need to use an escape character (`\`) before the pipe symbol. For example, the following expression evaluates to true when the hostname matches either `.*whispersystems.org` or `.*signal.org`:
 
-| Selector | Operator      | Value                                |
-| -------- | ------------- | ------------------------------------ |
-| Host     | matches regex | .\*whispersystems.org\|.\*signal.org |
+| Selector | Operator | Value |
+| --- | --- | --- |
+| Host | matches regex | `.*whispersystems.org\|.*signal.org` |
 
 In addition to regular expressions, you can use [logical operators](#logical-operators) to match multiple values.
 
@@ -1051,14 +1203,14 @@ In addition to regular expressions, you can use [logical operators](#logical-ope
 
 To evaluate multiple conditions in an expression, select the **And** logical operator. These expressions can be compared further with the **Or** logical operator.
 
-| Operator | Meaning                                       |
-| -------- | --------------------------------------------- |
-| And      | match all of the conditions in the expression |
-| Or       | match any of the conditions in the expression |
+| Operator | Meaning |
+| --- | --- |
+| And | match all of the conditions in the expression |
+| Or | match any of the conditions in the expression |
 
 The **Or** operator will only work with conditions in the same expression group. For example, you cannot compare conditions in **Traffic** with conditions in **Identity** or **Device Posture**.
 
-If a condition in an expression joins a request attribute (such as _Source IP_) and a response attribute (such as _a DLP Profile_), then the condition will be evaluated when the response is received.
+If a condition in an expression joins a request attribute (such as *Source IP*) and a response attribute (such as *a DLP Profile*), then the condition will be evaluated when the response is received.
 
 Was this helpful?
 

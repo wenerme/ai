@@ -8,11 +8,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # http.request.timestamp.msec
 
-`http.request.timestamp.msec` `Integer`
+`http.request.timestamp.msec``Integer`
 
 The millisecond when Cloudflare received the request, between 0–999.
 
-To obtain the complete timestamp, use both [http.request.timestamp.sec](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.timestamp.sec/) and [http.request.timestamp.msec](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.timestamp.msec/) fields.
+To obtain the complete timestamp, use both [`http.request.timestamp.sec`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.timestamp.sec/) and [`http.request.timestamp.msec`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.timestamp.msec/) fields.
 
 Example value:
 
@@ -21,7 +21,7 @@ Example value:
 ```
 
 Categories:
-* Request
+- Request
 
 Was this helpful?
 

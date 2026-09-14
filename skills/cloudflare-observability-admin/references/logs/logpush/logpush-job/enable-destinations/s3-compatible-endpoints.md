@@ -12,53 +12,53 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Enable S3-compatible endpoints
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/s3-compatible-endpoints/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/s3-compatible-endpoints/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Logpush supports pushing logs to S3-compatible destinations via the Cloudflare dashboard or via API, including:
 
-* [Alibaba Cloud OSS ↗](https://www.alibabacloud.com/help/doc-detail/64919.htm#title-37m-7gl-xy2)
-* [Backblaze B2 ↗](https://www.backblaze.com/b2/docs/s3%5Fcompatible%5Fapi.html)
-* [DigitalOcean Spaces ↗](https://www.digitalocean.com/docs/spaces/)
-* [IBM Cloud Object Storage ↗](https://cloud.ibm.com/apidocs/cos/cos-compatibility)
-* [JD Cloud Object Storage Service ↗](https://docs.jdcloud.com/en/object-storage-service/introduction-2)
-* [Linode Object Storage ↗](https://www.linode.com/products/object-storage/)
-* [Oracle Cloud Object Storage ↗](https://docs.cloud.oracle.com/en-us/iaas/Content/Object/Tasks/s3compatibleapi.htm)
-* On-premise [Ceph Object Gateway ↗](https://docs.ceph.com/en/latest/radosgw/s3/)
+- [Alibaba Cloud OSS ↗](https://www.alibabacloud.com/help/doc-detail/64919.htm#title-37m-7gl-xy2)
+- [Backblaze B2 ↗](https://www.backblaze.com/b2/docs/s3_compatible_api.html)
+- [DigitalOcean Spaces ↗](https://www.digitalocean.com/docs/spaces/)
+- [IBM Cloud Object Storage ↗](https://cloud.ibm.com/apidocs/cos/cos-compatibility)
+- [JD Cloud Object Storage Service ↗](https://docs.jdcloud.com/en/object-storage-service/introduction-2)
+- [Linode Object Storage ↗](https://www.linode.com/products/object-storage/)
+- [Oracle Cloud Object Storage ↗](https://docs.cloud.oracle.com/en-us/iaas/Content/Object/Tasks/s3compatibleapi.htm)
+- On-premise [Ceph Object Gateway ↗](https://docs.ceph.com/en/latest/radosgw/s3/)
 
 For more information about Logpush and the current production APIs, refer to [Cloudflare Logpush](https://developers.cloudflare.com/logs/logpush/) documentation.
 
 ## Manage via the Cloudflare dashboard
 
 1. In the Cloudflare dashboard, go to the **Logpush** page at the account or or domain (also known as zone) level.
-For account: [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/logs)
-For domain (also known as zone): [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
+
+   For account: [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/logs)
+
+   For domain (also known as zone): [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
 2. Depending on your choice, you have access to [account-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/) and [zone-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/), respectively.
 3. Select **Create a Logpush job**.
-1. In **Select a destination**, choose **S3-Compatible**.
-2. Enter or select the following destination information:
 
-  * **Bucket** \- S3 Compatible bucket name
-  * **Path** \- bucket location within the storage container
-  * **Organize logs into daily subfolders** (recommended)
-  * **Endpoint URL** \- The URL without the bucket name or path. Example, `sfo2.digitaloceanspaces.com`.
-  * **Bucket region**
-  * **Access Key ID**
-  * **Secret Access Key**
+4. In **Select a destination**, choose **S3-Compatible**.
+5. Enter or select the following destination information:
+   - **Bucket** - S3 Compatible bucket name
+   - **Path** - bucket location within the storage container
+   - **Organize logs into daily subfolders** (recommended)
+   - **Endpoint URL** - The URL without the bucket name or path. Example, `sfo2.digitaloceanspaces.com`.
+   - **Bucket region**
+   - **Access Key ID**
+   - **Secret Access Key**
 
 When you are done entering the destination details, select **Continue**.
 
-1. Select the dataset to push to the storage service.
-2. In the next step, you need to configure your logpush job:
-
-  * Enter the **Job name**.
-  * Under **If logs match**, you can select the events to include and/or remove from your logs. Refer to [Filters](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/) for more information. Not all datasets have this option available.
-  * In **Send the following fields**, you can choose to either push all logs to your storage destination or selectively choose which logs you want to push.
-3. In **Advanced Options**, you can:
-
-  * Choose the format of timestamp fields in your logs (`RFC3339` (default), `Unix`, or `UnixNano`).
-  * Select a [sampling rate](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/#sampling-rate) for your logs or push a randomly-sampled percentage of logs.
-  * Enable redaction for `CVE-2021-44228`. This option will replace every occurrence of `${` with `x{`.
-4. Select **Submit** once you are done configuring your logpush job.
+6. Select the dataset to push to the storage service.
+7. In the next step, you need to configure your logpush job:
+   - Enter the **Job name**.
+   - Under **If logs match**, you can select the events to include and/or remove from your logs. Refer to [Filters](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/) for more information. Not all datasets have this option available.
+   - In **Send the following fields**, you can choose to either push all logs to your storage destination or selectively choose which logs you want to push.
+8. In **Advanced Options**, you can:
+   - Choose the format of timestamp fields in your logs ( `RFC3339` (default), `Unix`, or `UnixNano`).
+   - Select a [sampling rate](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/#sampling-rate) for your logs or push a randomly-sampled percentage of logs.
+   - Enable redaction for `CVE-2021-44228`. This option will replace every occurrence of `${` with `x{`.
+9. Select **Submit** once you are done configuring your logpush job.
 
 ## Manage via API
 
@@ -73,12 +73,12 @@ Unlike Logpush jobs to Amazon S3, there is no ownership challenge with S3-compat
 
 Ensure **Log Share** permissions are enabled, before attempting to read or configure a Logpush job. For more information refer to the [Roles section](https://developers.cloudflare.com/logs/logpush/permissions/#roles).
 
-### 1\. Create a job
+### 1. Create a job
 
 To create a job, make a `POST` request to the Logpush jobs endpoint with the following fields:
 
-* **name** (optional) - Use your domain name as the job name.
-* **destination\_conf** \- A log destination consisting of an endpoint name, bucket name, bucket path, region, access-key-id, and secret-access-key in the following string format:
+- **name** (optional) - Use your domain name as the job name.
+- **destination\_conf** - A log destination consisting of an endpoint name, bucket name, bucket path, region, access-key-id, and secret-access-key in the following string format:
 
 ```bash
 "s3://<BUCKET_NAME>/<BUCKET_PATH>?region=<REGION>&access-key-id=<ACCESS_KEY_ID>&secret-access-key=<SECRET_ACCESS_KEY>&endpoint=<ENDPOINT_URL>"
@@ -88,15 +88,26 @@ Note
 
 `<ENDPOINT_URL>` is the URL without the bucket name or path. For example: `endpoint=sfo2.digitaloceanspaces.com`.
 
-* **dataset** \- The category of logs you want to receive. Refer to [Datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/) for the full list of supported datasets.
-* **output\_options** (optional) - To configure fields, sample rate, and timestamp format, refer to [Log Output Options](https://developers.cloudflare.com/logs/logpush/logpush-job/log-output-options/).
+- **dataset** - The category of logs you want to receive. Refer to [Datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/) for the full list of supported datasets.
+- **output\_options** (optional) - To configure fields, sample rate, and timestamp format, refer to [Log Output Options](https://developers.cloudflare.com/logs/logpush/logpush-job/log-output-options/).
 
 Example request using cURL:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*Create Logpush jobbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \

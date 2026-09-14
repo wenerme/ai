@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Sessions
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/api/sessions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/api/sessions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Create shell sessions within a sandbox. Each session maintains its own shell state, environment variables, and working directory, while sharing the sandbox filesystem and process space. For more information, refer to [Session management](https://developers.cloudflare.com/sandbox/concepts/sessions/).
 
@@ -38,11 +38,11 @@ const session = await sandbox.createSession(options?: SessionOptions): Promise<E
 
 **Parameters**:
 
-* `options` (optional):
-  * `id` \- Custom session ID (auto-generated if not provided)
-  * `env` \- Environment variables for this session: `Record<string, string | undefined>`
-  * `cwd` \- Working directory (default: `"/workspace"`)
-  * `commandTimeoutMs` \- Maximum time in milliseconds that any command in this session can run before timing out. Individual commands can override this with the `timeout` option on `exec()`.
+- `options` (optional):
+  - `id` - Custom session ID (auto-generated if not provided)
+  - `env` - Environment variables for this session: `Record<string, string | undefined>`
+  - `cwd` - Working directory (default: `"/workspace"`)
+  - `commandTimeoutMs` - Maximum time in milliseconds that any command in this session can run before timing out. Individual commands can override this with the `timeout` option on `exec()`.
 
 **Returns**: `Promise<ExecutionSession>` with all sandbox methods bound to this session
 
@@ -126,7 +126,7 @@ const session = await sandbox.getSession(sessionId: string): Promise<ExecutionSe
 
 **Parameters**:
 
-* `sessionId` \- ID of an existing session
+- `sessionId` - ID of an existing session
 
 **Returns**: `Promise<ExecutionSession>` bound to the specified session
 
@@ -164,13 +164,13 @@ const result = await sandbox.deleteSession(sessionId: string): Promise<SessionDe
 
 **Parameters**:
 
-* `sessionId` \- ID of the session to delete (cannot be `"default"`)
+- `sessionId` - ID of the session to delete (cannot be `"default"`)
 
 **Returns**: `Promise<SessionDeleteResult>` containing:
 
-* `success` \- Whether deletion succeeded
-* `sessionId` \- ID of the deleted session
-* `timestamp` \- Deletion timestamp
+- `success` - Whether deletion succeeded
+- `sessionId` - ID of the deleted session
+- `timestamp` - Deletion timestamp
 
 ```js
 // Create a temporary session for a specific task
@@ -212,9 +212,9 @@ await sandbox.setEnvVars(envVars: Record<string, string | undefined>): Promise<v
 
 **Parameters**:
 
-* `envVars` \- Key-value pairs of environment variables to set or unset
-  * `string` values: Set the environment variable
-  * `undefined` or `null` values: Unset the environment variable
+- `envVars` - Key-value pairs of environment variables to set or unset
+  - `string` values: Set the environment variable
+  - `undefined` or `null` values: Unset the environment variable
 
 Caution
 
@@ -256,19 +256,19 @@ await sandbox.exec('python script.py');
 
 The `ExecutionSession` object has all sandbox methods bound to the specific session:
 
-| Category             | Methods                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Commands**         | [exec()](https://developers.cloudflare.com/sandbox/api/commands/#exec), [execStream()](https://developers.cloudflare.com/sandbox/api/commands/#execstream)                                                                                                                                                                                                                                                                                                                                                                                                           |
-| **Processes**        | [startProcess()](https://developers.cloudflare.com/sandbox/api/commands/#startprocess), [listProcesses()](https://developers.cloudflare.com/sandbox/api/commands/#listprocesses), [killProcess()](https://developers.cloudflare.com/sandbox/api/commands/#killprocess), [killAllProcesses()](https://developers.cloudflare.com/sandbox/api/commands/#killallprocesses), [getProcessLogs()](https://developers.cloudflare.com/sandbox/api/commands/#getprocesslogs), [streamProcessLogs()](https://developers.cloudflare.com/sandbox/api/commands/#streamprocesslogs) |
-| **Files**            | [writeFile()](https://developers.cloudflare.com/sandbox/api/files/#writefile), [readFile()](https://developers.cloudflare.com/sandbox/api/files/#readfile), [mkdir()](https://developers.cloudflare.com/sandbox/api/files/#mkdir), [deleteFile()](https://developers.cloudflare.com/sandbox/api/files/#deletefile), [renameFile()](https://developers.cloudflare.com/sandbox/api/files/#renamefile), [moveFile()](https://developers.cloudflare.com/sandbox/api/files/#movefile), [gitCheckout()](https://developers.cloudflare.com/sandbox/api/files/#gitcheckout)  |
-| **Environment**      | [setEnvVars()](https://developers.cloudflare.com/sandbox/api/sessions/#setenvvars)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| **Terminal**         | [terminal()](https://developers.cloudflare.com/sandbox/api/terminal/#terminal)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| **Code Interpreter** | [createCodeContext()](https://developers.cloudflare.com/sandbox/api/interpreter/#createcodecontext), [runCode()](https://developers.cloudflare.com/sandbox/api/interpreter/#runcode), [listCodeContexts()](https://developers.cloudflare.com/sandbox/api/interpreter/#listcodecontexts), [deleteCodeContext()](https://developers.cloudflare.com/sandbox/api/interpreter/#deletecodecontext)                                                                                                                                                                         |
+| Category | Methods |
+| --- | --- |
+| **Commands** | [`exec()`](https://developers.cloudflare.com/sandbox/api/commands/#exec), [`execStream()`](https://developers.cloudflare.com/sandbox/api/commands/#execstream) |
+| **Processes** | [`startProcess()`](https://developers.cloudflare.com/sandbox/api/commands/#startprocess), [`listProcesses()`](https://developers.cloudflare.com/sandbox/api/commands/#listprocesses), [`killProcess()`](https://developers.cloudflare.com/sandbox/api/commands/#killprocess), [`killAllProcesses()`](https://developers.cloudflare.com/sandbox/api/commands/#killallprocesses), [`getProcessLogs()`](https://developers.cloudflare.com/sandbox/api/commands/#getprocesslogs), [`streamProcessLogs()`](https://developers.cloudflare.com/sandbox/api/commands/#streamprocesslogs) |
+| **Files** | [`writeFile()`](https://developers.cloudflare.com/sandbox/api/files/#writefile), [`readFile()`](https://developers.cloudflare.com/sandbox/api/files/#readfile), [`mkdir()`](https://developers.cloudflare.com/sandbox/api/files/#mkdir), [`deleteFile()`](https://developers.cloudflare.com/sandbox/api/files/#deletefile), [`renameFile()`](https://developers.cloudflare.com/sandbox/api/files/#renamefile), [`moveFile()`](https://developers.cloudflare.com/sandbox/api/files/#movefile), [`gitCheckout()`](https://developers.cloudflare.com/sandbox/api/files/#gitcheckout) |
+| **Environment** | [`setEnvVars()`](https://developers.cloudflare.com/sandbox/api/sessions/#setenvvars) |
+| **Terminal** | [`terminal()`](https://developers.cloudflare.com/sandbox/api/terminal/#terminal) |
+| **Code Interpreter** | [`createCodeContext()`](https://developers.cloudflare.com/sandbox/api/interpreter/#createcodecontext), [`runCode()`](https://developers.cloudflare.com/sandbox/api/interpreter/#runcode), [`listCodeContexts()`](https://developers.cloudflare.com/sandbox/api/interpreter/#listcodecontexts), [`deleteCodeContext()`](https://developers.cloudflare.com/sandbox/api/interpreter/#deletecodecontext) |
 
 ## Related resources
 
-* [Session management concept](https://developers.cloudflare.com/sandbox/concepts/sessions/) \- How sessions work
-* [Commands API](https://developers.cloudflare.com/sandbox/api/commands/) \- Execute commands
+- [Session management concept](https://developers.cloudflare.com/sandbox/concepts/sessions/) - How sessions work
+- [Commands API](https://developers.cloudflare.com/sandbox/api/commands/) - Execute commands
 
 Was this helpful?
 

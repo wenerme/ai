@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Terraform configuration examples
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/leaked-credentials/terraform-examples/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/leaked-credentials/terraform-examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following Terraform configuration examples address common scenarios for managing, configuring, and using leaked credentials detection.
 
@@ -49,15 +49,23 @@ You only need to provide an expression for the username in custom detection loca
 
 This example adds a [custom rule](https://developers.cloudflare.com/waf/custom-rules/) that challenges requests with leaked credentials by using one of the [leaked credentials fields](https://developers.cloudflare.com/waf/detections/leaked-credentials/#leaked-credentials-fields) in the rule expression.
 
-To use the [cf.waf.credential\_check.username\_and\_password\_leaked](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential%5Fcheck.username%5Fand%5Fpassword%5Fleaked/) field you must [enable leaked credentials detection](#enable-leaked-credentials-detection).
+To use the [`cf.waf.credential_check.username_and_password_leaked`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential_check.username_and_password_leaked/) field you must [enable leaked credentials detection](#enable-leaked-credentials-detection).
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
+</summary>
 
-* `Zone WAF Write`
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
 
-Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+- <code>Zone WAF Write</code>
+
+</details>
+
+Configure the [`cloudflare_ruleset` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```tf
 resource "cloudflare_ruleset" "zone_custom_firewall_leaked_creds" {

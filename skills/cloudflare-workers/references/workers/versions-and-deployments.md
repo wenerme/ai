@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Versions & deployments
 
-Last updated Jul 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Every time you change your Worker's code or configuration, Workers creates a **version**. A **deployment** determines which version(s) are actively serving traffic.
 
@@ -36,7 +36,7 @@ Each deployment tracks who created it, when, and which version(s) it includes.
 
 ## Default behavior
 
-By default, these two concepts are coupled together - when you run [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy), Workers creates a new version and immediately deploys it to 100% of traffic in a single step.
+By default, these two concepts are coupled together - when you run [`wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy), Workers creates a new version and immediately deploys it to 100% of traffic in a single step.
 
 You can decouple them so that uploading a version and deploying it are independent actions. This gives you control over when new code goes live, and lets you use strategies like [gradual deployments](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/) or manual promotion. Refer to [Deployment management](https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/) for details.
 
@@ -44,22 +44,21 @@ You can decouple them so that uploading a version and deploying it are independe
 
 ### Via Wrangler
 
-Wrangler allows you to view the 100 most recent versions and deployments. Refer to the [versions list](https://developers.cloudflare.com/workers/wrangler/commands/workers/#versions-list) and [deployments list](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deployments-list) documentation for the commands.
+Wrangler allows you to view the 100 most recent versions and deployments. Refer to the [`versions list`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#versions-list) and [`deployments list`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deployments-list) documentation for the commands.
 
 ### Via the Cloudflare dashboard
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Worker > **Deployments**.
 
 ## Next steps
 
-* [Deployment management](https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/) \- Upload versions without deploying them and control when they go live
-* [Preview URLs](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/) \- Test new versions before deploying them to production
-* [Gradual deployments](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/) \- Split traffic between two versions using percentage-based routing
-* [Version affinity](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/version-affinity/) \- Consistently route users to the same version across page loads during a gradual deployment
-* [Version overrides](https://developers.cloudflare.com/workers/versions-and-deployments/version-overrides/) \- Send a request to a specific version by ID for smoke testing and pinning between Workers
-* [Rollbacks](https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/) \- Revert to a previously deployed version
+- [Deployment management](https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/) - Upload versions without deploying them and control when they go live
+- [Preview URLs](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/) - Test new versions before deploying them to production
+- [Gradual deployments](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/) - Split traffic between two versions using percentage-based routing
+- [Version affinity](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/version-affinity/) - Consistently route users to the same version across page loads during a gradual deployment
+- [Version overrides](https://developers.cloudflare.com/workers/versions-and-deployments/version-overrides/) - Send a request to a specific version by ID for smoke testing and pinning between Workers
+- [Rollbacks](https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/) - Revert to a previously deployed version
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Limits
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/platform/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Since the Sandbox SDK is built on top of the [Containers](https://developers.cloudflare.com/containers/) platform, it shares the same underlying platform characteristics. Refer to these pages to understand how pricing and limits work for your sandbox deployments.
 
@@ -22,9 +22,9 @@ Sandbox also inherits current Containers lifecycle, placement, and routing behav
 
 Refer to [Containers limits](https://developers.cloudflare.com/containers/platform/limits/) for complete details on:
 
-* Memory, vCPU, and disk limits for concurrent container instances
-* Instance types and their resource allocations
-* Image size and storage limits
+- Memory, vCPU, and disk limits for concurrent container instances
+- Instance types and their resource allocations
+- Image size and storage limits
 
 ## Workers and Durable Objects limits
 
@@ -32,8 +32,8 @@ When using the Sandbox SDK from Workers or Durable Objects, you are subject to [
 
 ### Subrequest limits
 
-* **Workers Free**: 50 subrequests per request
-* **Workers Paid**: 1,000 subrequests per request
+- **Workers Free**: 50 subrequests per request
+- **Workers Paid**: 1,000 subrequests per request
 
 ### Avoid subrequest limits with RPC transport
 
@@ -54,9 +54,9 @@ SANDBOX_TRANSPORT = "rpc"
 
 With RPC transport enabled:
 
-* The persistent connection counts as one subrequest
-* All subsequent SDK operations use the existing connection (no additional subrequests)
-* Ideal for workflows with many SDK operations per request
+- The persistent connection counts as one subrequest
+- All subsequent SDK operations use the existing connection (no additional subrequests)
+- Ideal for workflows with many SDK operations per request
 
 See [Transport modes](https://developers.cloudflare.com/sandbox/configuration/transport/) for a complete guide.
 
@@ -64,10 +64,10 @@ See [Transport modes](https://developers.cloudflare.com/sandbox/configuration/tr
 
 To work within these limits:
 
-* **Right-size your instances** \- Choose the appropriate [instance type](https://developers.cloudflare.com/containers/platform/limits/#instance-types) based on your workload requirements
-* **Clean up unused sandboxes** \- Terminate sandbox sessions when they are no longer needed to free up resources
-* **Optimize images** \- Keep your [custom Dockerfiles](https://developers.cloudflare.com/sandbox/configuration/dockerfile/) lean to reduce image size
-* **Use RPC transport for high-frequency operations** \- Enable `SANDBOX_TRANSPORT=rpc` to avoid subrequest limits when making many SDK calls per request
+- **Right-size your instances** - Choose the appropriate [instance type](https://developers.cloudflare.com/containers/platform/limits/#instance-types) based on your workload requirements
+- **Clean up unused sandboxes** - Terminate sandbox sessions when they are no longer needed to free up resources
+- **Optimize images** - Keep your [custom Dockerfiles](https://developers.cloudflare.com/sandbox/configuration/dockerfile/) lean to reduce image size
+- **Use RPC transport for high-frequency operations** - Enable `SANDBOX_TRANSPORT=rpc` to avoid subrequest limits when making many SDK calls per request
 
 Was this helpful?
 

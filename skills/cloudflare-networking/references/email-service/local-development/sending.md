@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Test email sending Workers locally using wrangler dev with simulated email delivery
 
-Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/local-development/sending/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/local-development/sending/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Test email sending functionality locally using `wrangler dev` to simulate email delivery and verify your sending logic before deploying.
 
@@ -25,11 +25,19 @@ If you are using the [REST API](https://developers.cloudflare.com/email-service/
 ## Prerequisites
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
+
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
 
 ## Configuration
 
@@ -39,7 +47,7 @@ Configure your Wrangler file with the email binding:
 {
 	"name": "email-sending-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"send_email": [{ "name": "EMAIL" }],
 }
 ```
@@ -47,7 +55,7 @@ Configure your Wrangler file with the email binding:
 ```toml
 name = "email-sending-worker"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[send_email]]
 name = "EMAIL"
@@ -63,7 +71,7 @@ Set `remote: true` on the email binding in your Wrangler configuration:
 {
 	"name": "email-sending-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"send_email": [
 		{
 			"name": "EMAIL",
@@ -76,7 +84,7 @@ Set `remote: true` on the email binding in your Wrangler configuration:
 ```toml
 name = "email-sending-worker"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[send_email]]
 name = "EMAIL"
@@ -189,8 +197,8 @@ This limitation only affects local development — `ArrayBuffer` content works c
 
 ## Next steps
 
-* Deploy your sending worker: [Send emails get started](https://developers.cloudflare.com/email-service/get-started/send-emails/)
-* See advanced patterns: [Email sending examples](https://developers.cloudflare.com/email-service/examples/email-sending/)
+- Deploy your sending worker: [Send emails get started](https://developers.cloudflare.com/email-service/get-started/send-emails/)
+- See advanced patterns: [Email sending examples](https://developers.cloudflare.com/email-service/examples/email-sending/)
 
 Was this helpful?
 

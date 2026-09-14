@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Turnstile
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/turnstile/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare's smart CAPTCHA alternative.
 
@@ -40,9 +40,9 @@ For detailed information on Turnstile's data privacy practices, refer to the [Tu
 
 Turnstile [widget types](https://developers.cloudflare.com/turnstile/concepts/widget/) include:
 
-* **Managed** (recommended): Automatically decides whether to show a checkbox based on visitor risk level.
-* **Non-interactive**: Visitors never need to interact with the widget.
-* **Invisible**: The widget is completely hidden from the visitor.
+- **Managed** (recommended): Automatically decides whether to show a checkbox based on visitor risk level.
+- **Non-interactive**: Visitors never need to interact with the widget.
+- **Invisible**: The widget is completely hidden from the visitor.
 
 ---
 

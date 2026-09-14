@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.bot\_management.corporate\_proxy
 
-`cf.bot_management.corporate_proxy` `Boolean`
+`cf.bot_management.corporate_proxy``Boolean`
 
 Indicates whether the incoming request comes from an identified Enterprise-only cloud-based corporate proxy or secure web gateway.
 
@@ -24,8 +24,8 @@ and cf.bot_management.score lt 30
 ```
 
 Categories:
-* Request
-* Bots
+- Request
+- Bots
 
 Was this helpful?
 

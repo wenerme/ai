@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Lifecycle
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/api/lifecycle/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/api/lifecycle/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Create and manage sandbox containers. Get sandbox instances, configure options, and clean up resources.
 
@@ -38,14 +38,14 @@ const sandbox = getSandbox(
 
 **Parameters**:
 
-* `binding` \- The Durable Object namespace binding from your Worker environment
-* `sandboxId` \- Unique identifier for this sandbox. The same ID always returns the same sandbox instance. In user-facing apps, scope IDs to a single user.
-* `options` (optional) - See [SandboxOptions](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/) for all available options:
-  * `enableDefaultSession` \- Use the default session for operations without an explicit `sessionId`. Set to `false` to evaluate each call in isolation (default: `true`)
-  * `sleepAfter` \- Duration of inactivity before automatic sleep (default: `"10m"`)
-  * `keepAlive` \- Prevent automatic sleep entirely. Persists across hibernation (default: `false`)
-  * `containerTimeouts` \- Configure container startup timeouts
-  * `normalizeId` \- Lowercase sandbox IDs for preview URL compatibility (default: `false`)
+- `binding` - The Durable Object namespace binding from your Worker environment
+- `sandboxId` - Unique identifier for this sandbox. The same ID always returns the same sandbox instance. In user-facing apps, scope IDs to a single user.
+- `options` (optional) - See [SandboxOptions](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/) for all available options:
+  - `enableDefaultSession` - Use the default session for operations without an explicit `sessionId`. Set to `false` to evaluate each call in isolation (default: `true`)
+  - `sleepAfter` - Duration of inactivity before automatic sleep (default: `"10m"`)
+  - `keepAlive` - Prevent automatic sleep entirely. Persists across hibernation (default: `false`)
+  - `containerTimeouts` - Configure container startup timeouts
+  - `normalizeId` - Lowercase sandbox IDs for preview URL compatibility (default: `false`)
 
 **Returns**: `Sandbox` instance
 
@@ -97,7 +97,7 @@ await sandbox.setKeepAlive(keepAlive: boolean): Promise<void>
 
 **Parameters**:
 
-* `keepAlive` \- `true` to prevent automatic sleep, `false` to allow normal sleep behavior
+- `keepAlive` - `true` to prevent automatic sleep, `false` to allow normal sleep behavior
 
 When enabled, the sandbox automatically sends heartbeat pings every 30 seconds to prevent container eviction. When disabled, the sandbox returns to normal sleep behavior based on the `sleepAfter` configuration.
 
@@ -143,10 +143,10 @@ await sandbox.destroy(): Promise<void>
 
 Immediately terminates the container and permanently deletes all state:
 
-* All files in `/workspace`, `/tmp`, and `/home`
-* All running processes
-* All sessions (including the default session)
-* Network connections and exposed ports
+- All files in `/workspace`, `/tmp`, and `/home`
+- All running processes
+- All sessions (including the default session)
+- Network connections and exposed ports
 
 ```js
 async function executeCode(code) {
@@ -184,9 +184,9 @@ Containers automatically sleep after 10 minutes of inactivity but still count to
 
 ## Related resources
 
-* [Sandbox lifecycle concept](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) \- Understanding container lifecycle and state
-* [Sandbox options configuration](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/) \- Configure `keepAlive` and other options
-* [Sessions API](https://developers.cloudflare.com/sandbox/api/sessions/) \- Create execution contexts within a sandbox
+- [Sandbox lifecycle concept](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) - Understanding container lifecycle and state
+- [Sandbox options configuration](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/) - Configure `keepAlive` and other options
+- [Sessions API](https://developers.cloudflare.com/sandbox/api/sessions/) - Create execution contexts within a sandbox
 
 Was this helpful?
 

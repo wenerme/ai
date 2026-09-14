@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Git integration
 
-Last updated May 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare supports connecting your [GitHub](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/) and [GitLab](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/gitlab-integration/) repository to your Cloudflare Worker, and will automatically deploy your code every time you push a change.
 
@@ -26,7 +26,7 @@ If you are using a different Git provider (e.g. Bitbucket), you can use an [exte
 
 ## Add a Git Integration
 
-Workers Builds provides direct integration with GitHub and GitLab accounts, including both individual and organization accounts, that are _not_ self-hosted.
+Workers Builds provides direct integration with GitHub and GitLab accounts, including both individual and organization accounts, that are *not* self-hosted.
 
 If you do not have a Git account linked to your Cloudflare account, you will be prompted to set up an installation to GitHub or GitLab when [connecting a repository](https://developers.cloudflare.com/workers/ci-cd/builds/#get-started) for the first time, or when adding a new Git account. Follow the prompts and authorize the Cloudflare Git integration.
 
@@ -34,8 +34,8 @@ If you do not have a Git account linked to your Cloudflare account, you will be 
 
 You can check the following pages to see if your Git integration has been installed:
 
-* [GitHub Applications page ↗](https://github.com/settings/installations) (if you are in an organization, select **Switch settings context** to access your GitHub organization settings)
-* [GitLab Authorized Applications page ↗](https://gitlab.com/-/profile/applications)
+- [GitHub Applications page ↗](https://github.com/settings/installations) (if you are in an organization, select **Switch settings context** to access your GitHub organization settings)
+- [GitLab Authorized Applications page ↗](https://gitlab.com/-/profile/applications)
 
 For details on providing access to organization accounts, see [GitHub organizational access](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/#organizational-access) and [GitLab organizational access](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/gitlab-integration/#organizational-access).
 
@@ -43,10 +43,9 @@ For details on providing access to organization accounts, see [GitHub organizati
 
 To manage your Git installation:
 
-1. Go to the **Workers & Pages** page in the Cloudflare dashboard.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. Go to the **Workers & Pages** page in the Cloudflare dashboard. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Worker.
-3. Go to **Settings** \> **Builds**.
+3. Go to **Settings** > **Builds**.
 4. Under **Git Repository**, select **Manage**.
 
 This can be useful for managing repository access or troubleshooting installation issues by reinstalling. For more details, see the [GitHub](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration) and [GitLab](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/gitlab-integration) guides for how to manage your installation.

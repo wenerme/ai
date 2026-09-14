@@ -12,17 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Rate limiting best practices
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following sections cover typical rate limiting configurations for common use cases. You can combine the provided example rules and adjust them to your own scenario.
 
 The main use cases for rate limiting are the following:
 
-* [Enforce granular access control](https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/#enforcing-granular-access-control) to resources. Includes access control based on criteria such as user agent, IP address, referrer, host, country, and world region.
-* [Protect against credential stuffing](https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/#protecting-against-credential-stuffing) and account takeover attacks.
-* [Limit the number of operations](https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/#limiting-the-number-of-operations) performed by individual clients. Includes preventing scraping by bots, accessing sensitive data, bulk creation of new accounts, and programmatic buying in ecommerce platforms.
-* [Protect REST APIs](https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/#protecting-rest-apis) from resource exhaustion (targeted DDoS attacks) and resources from abuse in general.
-* [Protect GraphQL APIs](https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/#protecting-graphql-apis) by preventing server overload and limiting the number of operations.
+- [Enforce granular access control](https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/#enforcing-granular-access-control) to resources. Includes access control based on criteria such as user agent, IP address, referrer, host, country, and world region.
+- [Protect against credential stuffing](https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/#protecting-against-credential-stuffing) and account takeover attacks.
+- [Limit the number of operations](https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/#limiting-the-number-of-operations) performed by individual clients. Includes preventing scraping by bots, accessing sensitive data, bulk creation of new accounts, and programmatic buying in ecommerce platforms.
+- [Protect REST APIs](https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/#protecting-rest-apis) from resource exhaustion (targeted DDoS attacks) and resources from abuse in general.
+- [Protect GraphQL APIs](https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/#protecting-graphql-apis) by preventing server overload and limiting the number of operations.
 
 ## Enforcing granular access control
 
@@ -30,13 +30,13 @@ The main use cases for rate limiting are the following:
 
 A common use case is to limit the rate of requests performed by individual user agents. The following example rule allows a mobile app to perform a maximum of 100 requests in 10 minutes. You could also create a separate rule limiting the rate for desktop browsers.
 
-| Setting                  | Value                           |
-| ------------------------ | ------------------------------- |
-| Matching criteria        | User Agent equals MobileApp     |
-| Expression               | http.user\_agent eq "MobileApp" |
-| Counting characteristics | IP                              |
-| Rate (Requests / Period) | 100 requests / 10 minutes       |
-| Action                   | Managed Challenge               |
+| Setting | Value |
+| --- | --- |
+| Matching criteria | User Agent equals `MobileApp` |
+| Expression | `http.user_agent eq "MobileApp"` |
+| Counting characteristics | IP |
+| Rate (Requests / Period) | 100 requests / 10 minutes |
+| Action | Managed Challenge |
 
 ### Limit reuse of a single `cf_clearance` cookie
 
@@ -44,13 +44,13 @@ After a visitor successfully passes a Managed Challenge, Cloudflare issues a `cf
 
 This rate limiting rule helps mitigate such abuse by restricting how many requests can be made with the same `cf_clearance` value within a defined period. Legitimate human users will remain unaffected, while automated or replayed requests using a single clearance token will be blocked once the threshold is exceeded.
 
-| Setting                  | Value                                |
-| ------------------------ | ------------------------------------ |
-| Matching criteria        | URI Path equals /checkout            |
-| Expression               | http.request.uri.path eq "/checkout" |
-| Counting characteristics | Cookie (cf\_clearance)               |
-| Rate (Requests / Period) | 100 requests / 10 minutes            |
-| Action                   | Block                                |
+| Setting | Value |
+| --- | --- |
+| Matching criteria | URI Path equals `/checkout` |
+| Expression | `http.request.uri.path eq "/checkout"` |
+| Counting characteristics | Cookie (`cf_clearance`) |
+| Rate (Requests / Period) | 100 requests / 10 minutes |
+| Action | Block |
 
 ### Allow specific IP addresses or ASNs
 
@@ -58,27 +58,27 @@ Another use case when controlling access to resources is to exclude or include I
 
 The following example rule allows up to 10 requests per minute from the same IP address doing a `GET` request for `/status`, as long as the visitor's IP address is not included in the `partner_ips` [IP list](https://developers.cloudflare.com/waf/tools/lists/custom-lists/#ip-lists).
 
-| Setting                  | Value                                                                                                   |
-| ------------------------ | ------------------------------------------------------------------------------------------------------- |
-| Matching criteria        | URI Path equals /status and Request Method equals GET and IP Source Address is not in list partner\_ips |
-| Expression               | http.request.uri.path eq "/status" and http.request.method eq "GET" and not ip.src in $partner\_ips     |
-| Counting characteristics | IP                                                                                                      |
-| Rate (Requests / Period) | 10 requests / 1 minute                                                                                  |
-| Action                   | Managed Challenge                                                                                       |
+| Setting | Value |
+| --- | --- |
+| Matching criteria | URI Path equals `/status` and Request Method equals `GET` and IP Source Address is not in list `partner_ips` |
+| Expression | `http.request.uri.path eq "/status" and http.request.method eq "GET" and not ip.src in $partner_ips` |
+| Counting characteristics | IP |
+| Rate (Requests / Period) | 10 requests / 1 minute |
+| Action | Managed Challenge |
 
 ### Limit by referrer
 
 Some applications receive requests originated by other sources (for example, used by advertisements linking to third-party pages). You may wish to limit the number of requests generated by individual referrer pages to manage quotas or avoid indirect DDoS attacks.
 
-| Setting                  | Value                                                               |
-| ------------------------ | ------------------------------------------------------------------- |
-| Matching criteria        | URI Path equals /status and Request Method equals GET               |
-| Expression               | http.request.uri.path eq "/status" and http.request.method eq "GET" |
-| Counting characteristics | Header (Referer) [1](#user-content-fn-1)                            |
-| Rate (Requests / Period) | 100 requests / 10 minutes                                           |
-| Action                   | Block                                                               |
+| Setting | Value |
+| --- | --- |
+| Matching criteria | URI Path equals `/status` and Request Method equals `GET` |
+| Expression | `http.request.uri.path eq "/status" and http.request.method eq "GET"` |
+| Counting characteristics | Header (`Referer`) <sup>[1](#user-content-fn-1)</sup> |
+| Rate (Requests / Period) | 100 requests / 10 minutes |
+| Action | Block |
 
-_This example rule requires Advanced Rate Limiting._
+*This example rule requires Advanced Rate Limiting.*
 
 ### Limit by destination host
 
@@ -86,15 +86,15 @@ SaaS applications or customers using [Cloudflare SSL for SaaS](https://developer
 
 The following example rule will track the rate of requests to the `/login` endpoint for each host:
 
-| Setting                  | Value                                                              |
-| ------------------------ | ------------------------------------------------------------------ |
-| Matching criteria        | URI Path equals /login and Request Method equals GET               |
-| Expression               | http.request.uri.path eq "/login" and http.request.method eq "GET" |
-| Counting characteristics | IP and Host                                                        |
-| Rate (Requests / Period) | 10 requests / 10 minutes                                           |
-| Action                   | Block                                                              |
+| Setting | Value |
+| --- | --- |
+| Matching criteria | URI Path equals `/login` and Request Method equals `GET` |
+| Expression | `http.request.uri.path eq "/login" and http.request.method eq "GET"` |
+| Counting characteristics | IP and Host |
+| Rate (Requests / Period) | 10 requests / 10 minutes |
+| Action | Block |
 
-_This example rule requires Advanced Rate Limiting._
+*This example rule requires Advanced Rate Limiting.*
 
 ## Protecting against credential stuffing
 
@@ -102,41 +102,41 @@ A typical use case of rate limiting is to protect a login endpoint against attac
 
 **Rule #1**
 
-| Setting                  | Value                                                                                                   |
-| ------------------------ | ------------------------------------------------------------------------------------------------------- |
-| Matching criteria        | Hostname equals example.com and URI Path equals /login and Request Method equals POST                   |
-| Expression               | http.host eq "example.com" and http.request.uri.path eq "/login" and http.request.method eq "POST"      |
-| Counting characteristics | IP                                                                                                      |
-| Increment counter when   | URI Path equals /login and Method equals POST and Response code is in (401, 403)                        |
-| Counting expression      | http.request.uri.path eq "/login" and http.request.method eq "POST" and http.response.code in {401 403} |
-| Rate (Requests / Period) | 4 requests / 1 minute                                                                                   |
-| Action                   | Managed Challenge                                                                                       |
+| Setting | Value |
+| --- | --- |
+| Matching criteria | Hostname equals `example.com` and URI Path equals `/login` and Request Method equals `POST` |
+| Expression | `http.host eq "example.com" and http.request.uri.path eq "/login" and http.request.method eq "POST"` |
+| Counting characteristics | IP |
+| Increment counter when | URI Path equals `/login` and Method equals `POST` and Response code is in (401, 403) |
+| Counting expression | `http.request.uri.path eq "/login" and http.request.method eq "POST" and http.response.code in {401 403}` |
+| Rate (Requests / Period) | 4 requests / 1 minute |
+| Action | Managed Challenge |
 
 **Rule #2**
 
-| Setting                  | Value                                                                                                   |
-| ------------------------ | ------------------------------------------------------------------------------------------------------- |
-| Matching criteria        | Hostname equals example.com and URI Path equals /login and Request Method equals POST                   |
-| Expression               | http.host eq "example.com" and http.request.uri.path eq "/login" and http.request.method eq "POST"      |
-| Counting characteristics | IP                                                                                                      |
-| Increment counter when   | URI Path equals /login and Request Method equals POST and Response Status Code is in (401, 403)         |
-| Counting expression      | http.request.uri.path eq "/login" and http.request.method eq "POST" and http.response.code in {401 403} |
-| Rate (Requests / Period) | 10 requests / 10 minutes                                                                                |
-| Action                   | Managed Challenge                                                                                       |
+| Setting | Value |
+| --- | --- |
+| Matching criteria | Hostname equals `example.com` and URI Path equals `/login` and Request Method equals `POST` |
+| Expression | `http.host eq "example.com" and http.request.uri.path eq "/login" and http.request.method eq "POST"` |
+| Counting characteristics | IP |
+| Increment counter when | URI Path equals `/login` and Request Method equals `POST` and Response Status Code is in (401, 403) |
+| Counting expression | `http.request.uri.path eq "/login" and http.request.method eq "POST" and http.response.code in {401 403}` |
+| Rate (Requests / Period) | 10 requests / 10 minutes |
+| Action | Managed Challenge |
 
 **Rule #3**
 
-| Setting                  | Value                                                                                                   |
-| ------------------------ | ------------------------------------------------------------------------------------------------------- |
-| Matching criteria        | Host equals example.com                                                                                 |
-| Expression               | http.host eq "example.com"                                                                              |
-| Counting characteristics | IP                                                                                                      |
-| Increment counter when   | URI Path equals /login and Request Method equals POST and Response Status Code is in (401, 403)         |
-| Counting expression      | http.request.uri.path eq "/login" and http.request.method eq "POST" and http.response.code in {401 403} |
-| Rate (Requests / Period) | 20 requests / 1 hour                                                                                    |
-| Action                   | Block for 1 day                                                                                         |
+| Setting | Value |
+| --- | --- |
+| Matching criteria | Host equals `example.com` |
+| Expression | `http.host eq "example.com"` |
+| Counting characteristics | IP |
+| Increment counter when | URI Path equals `/login` and Request Method equals `POST` and Response Status Code is in (401, 403) |
+| Counting expression | `http.request.uri.path eq "/login" and http.request.method eq "POST" and http.response.code in {401 403}` |
+| Rate (Requests / Period) | 20 requests / 1 hour |
+| Action | Block for 1 day |
 
-_These example rules require a Business plan or above._
+*These example rules require a Business plan or above.*
 
 Rule #1 allows up to four requests per minute, after which a Managed Challenge is triggered. This configuration allows legitimate customers a few attempts to remember their password. If an automated actor makes several requests, that client will likely be blocked by an unsolved Managed Challenge. On the other hand, if a human gets and passes the challenge when reaching rule #1's rate limit, rule #2 will provide the next level of protection, allowing for up to 10 requests over the next 10 minutes. For clients exceeding this second threshold, rule #3 (the most severe) will apply, blocking the client for one day.
 
@@ -159,33 +159,33 @@ One-time password (OTP) and verification endpoints (such as `/api/otp/validate` 
 
 When configuring rate limiting for these endpoints, follow these guidelines:
 
-* **Match the exact URI path**: The rule expression must match the path that receives attack traffic. Verify the path in analytics before creating the rule. A rule targeting `/validate/otp` will not match requests to `/api/otp/validate`.
-* **Use response-based counting**: Count only requests that return error responses (such as `401` or `403`) to avoid rate limiting legitimate users who submit valid codes.
-* **Scope geographic restrictions appropriately**: If you restrict by country, verify that attack traffic originates from all the countries you observe in analytics, not just one.
+- **Match the exact URI path**: The rule expression must match the path that receives attack traffic. Verify the path in analytics before creating the rule. A rule targeting `/validate/otp` will not match requests to `/api/otp/validate`.
+- **Use response-based counting**: Count only requests that return error responses (such as `401` or `403`) to avoid rate limiting legitimate users who submit valid codes.
+- **Scope geographic restrictions appropriately**: If you restrict by country, verify that attack traffic originates from all the countries you observe in analytics, not just one.
 
 The following example rule protects an OTP validation endpoint by counting only failed attempts:
 
-| Setting                  | Value                                                                                                              |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| Matching criteria        | URI Path equals /api/otp/validate and Request Method equals POST                                                   |
-| Expression               | http.request.uri.path eq "/api/otp/validate" and http.request.method eq "POST"                                     |
-| Counting characteristics | IP                                                                                                                 |
-| Increment counter when   | URI Path equals /api/otp/validate and Request Method equals POST and Response Status Code is in (401, 403)         |
-| Counting expression      | http.request.uri.path eq "/api/otp/validate" and http.request.method eq "POST" and http.response.code in {401 403} |
-| Rate (Requests / Period) | 5 requests / 1 minute                                                                                              |
-| Action                   | Block for 10 minutes                                                                                               |
+| Setting | Value |
+| --- | --- |
+| Matching criteria | URI Path equals `/api/otp/validate` and Request Method equals `POST` |
+| Expression | `http.request.uri.path eq "/api/otp/validate" and http.request.method eq "POST"` |
+| Counting characteristics | IP |
+| Increment counter when | URI Path equals `/api/otp/validate` and Request Method equals `POST` and Response Status Code is in (401, 403) |
+| Counting expression | `http.request.uri.path eq "/api/otp/validate" and http.request.method eq "POST" and http.response.code in {401 403}` |
+| Rate (Requests / Period) | 5 requests / 1 minute |
+| Action | Block for 10 minutes |
 
-_The above example rule requires a Business plan or higher._
+*The above example rule requires a Business plan or higher.*
 
 If your OTP endpoint returns `200` for both valid and invalid codes (with the result in the response body), use request-based counting with a lower threshold instead:
 
-| Setting                  | Value                                                                          |
-| ------------------------ | ------------------------------------------------------------------------------ |
-| Matching criteria        | URI Path equals /api/otp/validate and Request Method equals POST               |
-| Expression               | http.request.uri.path eq "/api/otp/validate" and http.request.method eq "POST" |
-| Counting characteristics | IP                                                                             |
-| Rate (Requests / Period) | 10 requests / 1 minute                                                         |
-| Action                   | Managed Challenge                                                              |
+| Setting | Value |
+| --- | --- |
+| Matching criteria | URI Path equals `/api/otp/validate` and Request Method equals `POST` |
+| Expression | `http.request.uri.path eq "/api/otp/validate" and http.request.method eq "POST"` |
+| Counting characteristics | IP |
+| Rate (Requests / Period) | 10 requests / 1 minute |
+| Action | Managed Challenge |
 
 ## Limiting the number of operations
 
@@ -204,37 +204,37 @@ Your security team might want to consider setting up a limit on the number of ti
 
 **Rule #1**
 
-| Setting                  | Value                                                                                           |
-| ------------------------ | ----------------------------------------------------------------------------------------------- |
-| Matching criteria        | URI Path equals /merchant and URI Query String contains action=lookup\_price                    |
-| Expression               | http.request.uri.path eq "/merchant" and http.request.uri.query contains "action=lookup\_price" |
-| Counting characteristics | IP                                                                                              |
-| Rate (Requests / Period) | 10 requests / 2 minutes                                                                         |
-| Action                   | Managed Challenge                                                                               |
+| Setting | Value |
+| --- | --- |
+| Matching criteria | URI Path equals `/merchant` and URI Query String contains `action=lookup_price` |
+| Expression | `http.request.uri.path eq "/merchant" and http.request.uri.query contains "action=lookup_price"` |
+| Counting characteristics | IP |
+| Rate (Requests / Period) | 10 requests / 2 minutes |
+| Action | Managed Challenge |
 
 **Rule #2**
 
-| Setting                  | Value                                                                                           |
-| ------------------------ | ----------------------------------------------------------------------------------------------- |
-| Matching criteria        | URI Path equals /merchant and URI Query String contains action=lookup\_price                    |
-| Expression               | http.request.uri.path eq "/merchant" and http.request.uri.query contains "action=lookup\_price" |
-| Counting characteristics | IP                                                                                              |
-| Rate (Requests / Period) | 20 requests / 5 minute                                                                          |
-| Action                   | Block                                                                                           |
+| Setting | Value |
+| --- | --- |
+| Matching criteria | URI Path equals `/merchant` and URI Query String contains `action=lookup_price` |
+| Expression | `http.request.uri.path eq "/merchant" and http.request.uri.query contains "action=lookup_price"` |
+| Counting characteristics | IP |
+| Rate (Requests / Period) | 20 requests / 5 minute |
+| Action | Block |
 
-These two rate limiting rules match requests performing a selected action (look up price, in this example) and use `IP` as the counting characteristic. Similarly to the [previous /login example](#protecting-against-credential-stuffing), the two rules will help reduce false positives in case of persistent (but legitimate) visitors.
+These two rate limiting rules match requests performing a selected action (look up price, in this example) and use `IP` as the counting characteristic. Similarly to the [previous `/login` example](#protecting-against-credential-stuffing), the two rules will help reduce false positives in case of persistent (but legitimate) visitors.
 
 To limit the lookup of a specific `product_id` via query string parameter, you could add that specific query parameter as a counting characteristic, so that the rate is calculated based on all the requests, regardless of the client. The following example rule limits the number of lookups for each `product_id` to 50 requests in 10 seconds.
 
-| Setting                  | Value                                |
-| ------------------------ | ------------------------------------ |
-| Matching criteria        | URI Path equals /merchant            |
-| Expression               | http.request.uri.path eq "/merchant" |
-| Counting characteristics | Query (product\_id)                  |
-| Rate (Requests / Period) | 50 requests / 10 seconds             |
-| Action                   | Block                                |
+| Setting | Value |
+| --- | --- |
+| Matching criteria | URI Path equals `/merchant` |
+| Expression | `http.request.uri.path eq "/merchant"` |
+| Counting characteristics | Query (`product_id`) |
+| Rate (Requests / Period) | 50 requests / 10 seconds |
+| Action | Block |
 
-_This example rule requires Advanced Rate Limiting._
+*This example rule requires Advanced Rate Limiting.*
 
 You could follow the same pattern of rate limiting rules to protect applications handling reservations and bookings.
 
@@ -255,31 +255,31 @@ Body:
 
 In this scenario, you could write a rule to limit the number of actions from individual sessions:
 
-| Setting                  | Value                                                                                                             |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------- |
-| Matching criteria        | URI Path equals /merchant and JSON String action equals lookup\_price                                             |
-| Expression               | http.request.uri.path eq "/merchant" and lookup\_json\_string(http.request.body.raw, "action") eq "lookup\_price" |
-| Counting characteristics | Cookie (session\_id)                                                                                              |
-| Rate (Requests / Period) | 10 requests / 2 minutes                                                                                           |
-| Action                   | Managed Challenge                                                                                                 |
+| Setting | Value |
+| --- | --- |
+| Matching criteria | URI Path equals `/merchant` and JSON String `action` equals `lookup_price` |
+| Expression | `http.request.uri.path eq "/merchant" and lookup_json_string(http.request.body.raw, "action") eq "lookup_price"` |
+| Counting characteristics | Cookie (`session_id`) |
+| Rate (Requests / Period) | 10 requests / 2 minutes |
+| Action | Managed Challenge |
 
-_This example rule requires Advanced Rate Limiting and payload inspection._
+*This example rule requires Advanced Rate Limiting and payload inspection.*
 
 You could also limit the number of lookups of each `product_id` regardless of the client making the requests by deploying a rule like the following:
 
-| Setting                  | Value                                                                                                             |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------- |
-| Matching criteria        | URI Path equals /merchant and JSON field action equals lookup\_price                                              |
-| Expression               | http.request.uri.path eq "/merchant" and lookup\_json\_string(http.request.body.raw, "action") eq "lookup\_price" |
-| Counting characteristics | JSON field (product\_id)                                                                                          |
-| Rate (Requests / Period) | 50 requests / 10 seconds                                                                                          |
-| Action                   | Block                                                                                                             |
+| Setting | Value |
+| --- | --- |
+| Matching criteria | URI Path equals `/merchant` and JSON field `action` equals `lookup_price` |
+| Expression | `http.request.uri.path eq "/merchant" and lookup_json_string(http.request.body.raw, "action") eq "lookup_price"` |
+| Counting characteristics | JSON field (`product_id`) |
+| Rate (Requests / Period) | 50 requests / 10 seconds |
+| Action | Block |
 
-_This example rule requires Advanced Rate Limiting and payload inspection._
+*This example rule requires Advanced Rate Limiting and payload inspection.*
 
 Note
 
-If the request body is not JSON, you can use the [http.request.body.raw](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.raw/) field and regular expressions (along with the [matches operator](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#comparison-operators)) to achieve the same goal.
+If the request body is not JSON, you can use the [`http.request.body.raw`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.raw/) field and regular expressions (along with the [`matches` operator](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#comparison-operators)) to achieve the same goal.
 
 ### Limit requests from bots
 
@@ -287,17 +287,17 @@ A general approach to identify traffic from bots is to rate limit requests that 
 
 In this situation, you could configure a rule similar to the following:
 
-| Setting                  | Value                                 |
-| ------------------------ | ------------------------------------- |
-| Matching criteria        | Hostname equals example.com           |
-| Expression               | http.host eq "example.com"            |
-| Counting characteristics | IP                                    |
-| Increment counter when   | Response Status Code is in (403, 404) |
-| Counting expression      | http.response.code in {403 404}       |
-| Rate (Requests / Period) | 5 requests / 3 minutes                |
-| Action                   | Managed Challenge                     |
+| Setting | Value |
+| --- | --- |
+| Matching criteria | Hostname equals `example.com` |
+| Expression | `http.host eq "example.com"` |
+| Counting characteristics | IP |
+| Increment counter when | Response Status Code is in (403, 404) |
+| Counting expression | `http.response.code in {403 404}` |
+| Rate (Requests / Period) | 5 requests / 3 minutes |
+| Action | Managed Challenge |
 
-_This example rule requires a Business plan or above._
+*This example rule requires a Business plan or above.*
 
 To control the rate of actions performed by automated sources, consider use rate limiting rules together with [Bot Management](https://developers.cloudflare.com/bots/get-started/bot-management/). With Bot Management, you can use the [bot score](https://developers.cloudflare.com/bots/concepts/bot-score/) as part of the matching criteria to apply the rule only to automated or likely automated traffic. For example, you can use a maximum score (or threshold) of `30` for likely automated traffic and `10` for automated traffic.
 
@@ -305,37 +305,37 @@ If your application tracks sessions using a cookie, you can use the cookie to se
 
 **Rule #1**
 
-| Setting                  | Value                                                                              |
-| ------------------------ | ---------------------------------------------------------------------------------- |
-| Matching criteria        | Bot Score less than 30 and URI Query String contains action=delete                 |
-| Expression               | cf.bot\_management.score lt 30 and http.request.uri.query contains "action=delete" |
-| Counting characteristics | Cookie (session\_id)                                                               |
-| Rate (Requests / Period) | 10 requests / 1 minute                                                             |
-| Action                   | Managed Challenge                                                                  |
+| Setting | Value |
+| --- | --- |
+| Matching criteria | Bot Score less than 30 and URI Query String contains `action=delete` |
+| Expression | `cf.bot_management.score lt 30 and http.request.uri.query contains "action=delete"` |
+| Counting characteristics | Cookie (`session_id`) |
+| Rate (Requests / Period) | 10 requests / 1 minute |
+| Action | Managed Challenge |
 
 **Rule #2**
 
-| Setting                  | Value                                                                              |
-| ------------------------ | ---------------------------------------------------------------------------------- |
-| Matching criteria        | Bot Score less than 10 and URI Query String contains action=delete                 |
-| Expression               | cf.bot\_management.score lt 10 and http.request.uri.query contains "action=delete" |
-| Counting characteristics | Cookie (session\_id)                                                               |
-| Rate (Requests / Period) | 20 requests / 5 minute                                                             |
-| Action                   | Block                                                                              |
+| Setting | Value |
+| --- | --- |
+| Matching criteria | Bot Score less than 10 and URI Query String contains `action=delete` |
+| Expression | `cf.bot_management.score lt 10 and http.request.uri.query contains "action=delete"` |
+| Counting characteristics | Cookie (`session_id`) |
+| Rate (Requests / Period) | 20 requests / 5 minute |
+| Action | Block |
 
-_These example rules require Advanced Rate Limiting and Bot Management._
+*These example rules require Advanced Rate Limiting and Bot Management.*
 
 If the application does not use a session cookie, you can use [JA3 fingerprints](https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/) to identify individual clients. A JA3 fingerprint is a unique identifier, available to customers with [Bot Management](https://developers.cloudflare.com/bots/get-started/bot-management/), that allows Cloudflare to identify requests coming from the same client. All clients have an associated fingerprint, whether they are automated or not.
 
-| Setting                  | Value                                                                   |
-| ------------------------ | ----------------------------------------------------------------------- |
-| Matching criteria        | URI Path equals /merchant and Bot Score less than 10                    |
-| Expression               | http.request.uri.path eq "/merchant" and cf.bot\_management.score lt 10 |
-| Counting characteristics | JA3 Fingerprint                                                         |
-| Rate (Requests / Period) | 10 requests / 1 minute                                                  |
-| Action                   | Managed Challenge                                                       |
+| Setting | Value |
+| --- | --- |
+| Matching criteria | URI Path equals `/merchant` and Bot Score less than 10 |
+| Expression | `http.request.uri.path eq "/merchant" and cf.bot_management.score lt 10` |
+| Counting characteristics | JA3 Fingerprint |
+| Rate (Requests / Period) | 10 requests / 1 minute |
+| Action | Managed Challenge |
 
-_This example rule requires Advanced Rate Limiting and Bot Management._
+*This example rule requires Advanced Rate Limiting and Bot Management.*
 
 ## Protecting REST APIs
 
@@ -347,20 +347,20 @@ Advanced Rate Limiting can mitigate many types of volumetric attacks, like DDoS 
 
 A common concern is to limit `POST` actions. For authenticated traffic, you can use [API Discovery](https://developers.cloudflare.com/api-shield/security/api-discovery/) to identify a suitable rate of request per endpoint, and then create a rate limiting rule like the following:
 
-| Setting                  | Value                                                                   |
-| ------------------------ | ----------------------------------------------------------------------- |
-| Matching criteria        | URI Path equals /endpoint1 and Request Method equals POST               |
-| Expression               | http.request.uri.path eq "/endpoint1" and http.request.method eq "POST" |
-| Counting characteristics | Header (x-api-key)                                                      |
-| Rate (Requests / Period) | As suggested by API Discovery or assessed by analyzing past traffic.    |
-| Action                   | Block                                                                   |
+| Setting | Value |
+| --- | --- |
+| Matching criteria | URI Path equals `/endpoint1` and Request Method equals `POST` |
+| Expression | `http.request.uri.path eq "/endpoint1" and http.request.method eq "POST"` |
+| Counting characteristics | Header (`x-api-key`) |
+| Rate (Requests / Period) | As suggested by API Discovery or assessed by analyzing past traffic. |
+| Action | Block |
 
-_This example rule requires Advanced Rate Limiting. API Discovery requires an additional license._
+*This example rule requires Advanced Rate Limiting. API Discovery requires an additional license.*
 
 The counting characteristic can be any header, key, token, cookie, query parameter, or even JSON body field, since some APIs include a session ID or user ID as part of the JSON body. Refer to the following sections for additional information:
 
-* If your unique identifier is in the URI path, refer to [Protect resources](#protect-resources).
-* If your unique identifier is in the JSON body, refer to [Prevent content scraping (via body)](#prevent-content-scraping-via-body).
+- If your unique identifier is in the URI path, refer to [Protect resources](#protect-resources).
+- If your unique identifier is in the JSON body, refer to [Prevent content scraping (via body)](#prevent-content-scraping-via-body).
 
 ### Protect resources
 
@@ -373,29 +373,29 @@ Header: x-api-key=9375
 
 You probably wish to limit the number of downloads to avoid abuse, but you do not want to write individual rules for each file, given the size of the data storage. In this case, you could write a rule such as the following:
 
-| Setting                  | Value                                                                |
-| ------------------------ | -------------------------------------------------------------------- |
-| Matching criteria        | Hostname equals api.example.com and Request Method equals GET        |
-| Expression               | http.host eq "api.example.com" and http.request.method eq "GET"      |
-| Counting characteristics | Path                                                                 |
+| Setting | Value |
+| --- | --- |
+| Matching criteria | Hostname equals `api.example.com` and Request Method equals `GET` |
+| Expression | `http.host eq "api.example.com" and http.request.method eq "GET"` |
+| Counting characteristics | Path |
 | Rate (Requests / Period) | As suggested by API Discovery or assessed by analyzing past traffic. |
-| Action                   | Block                                                                |
+| Action | Block |
 
-_This example rule requires Advanced Rate Limiting._
+*This example rule requires Advanced Rate Limiting.*
 
 The rule defines a limit of 10 downloads in 10 minutes for every file under `https://api.store.com/files/*`. By using Path as the rule characteristic, you avoid having to write a new rule every time there is a new uploaded file with a different `<FILE_ID>`. With this rule, the rate is computed on every request, regardless of their source IP or session identifier.
 
 You could also combine Path with the `x-api-key` header (or IP, if you do not have a key or token) to set the maximum number of downloads that a specific client, as identified by `x-api-key`, can make of a given file:
 
-| Setting                  | Value                                                                |
-| ------------------------ | -------------------------------------------------------------------- |
-| Matching criteria        | Hostname equals api.store.com and Request Method equals GET          |
-| Expression               | http.host eq "api.example.com" and http.request.method eq "GET"      |
-| Counting characteristics | Path and Header (x-api-key)                                          |
+| Setting | Value |
+| --- | --- |
+| Matching criteria | Hostname equals `api.store.com` and Request Method equals `GET` |
+| Expression | `http.host eq "api.example.com" and http.request.method eq "GET"` |
+| Counting characteristics | Path and Header (`x-api-key`) |
 | Rate (Requests / Period) | As suggested by API Discovery or assessed by analyzing past traffic. |
-| Action                   | Block                                                                |
+| Action | Block |
 
-_This example rule requires Advanced Rate Limiting._
+*This example rule requires Advanced Rate Limiting.*
 
 ## Protecting GraphQL APIs
 
@@ -430,15 +430,15 @@ Body:
 
 To limit the rate of actions, you could use the following rule:
 
-| Setting                  | Value                                                                                 |
-| ------------------------ | ------------------------------------------------------------------------------------- |
-| Matching criteria        | URI Path equals /graphql and Body contains createReview                               |
-| Expression               | http.request.uri.path eq "/graphql" and http.request.body.raw contains "createReview" |
-| Counting characteristics | Cookie (session\_id)                                                                  |
-| Rate (Requests / Period) | 5 requests / 1 hour                                                                   |
-| Action                   | Block                                                                                 |
+| Setting | Value |
+| --- | --- |
+| Matching criteria | URI Path equals `/graphql` and Body contains `createReview` |
+| Expression | `http.request.uri.path eq "/graphql" and http.request.body.raw contains "createReview"` |
+| Counting characteristics | Cookie (`session_id`) |
+| Rate (Requests / Period) | 5 requests / 1 hour |
+| Action | Block |
 
-_This example rule requires Advanced Rate Limiting and payload inspection._
+*This example rule requires Advanced Rate Limiting and payload inspection.*
 
 ### Limit the total amount of query complexity
 
@@ -450,17 +450,17 @@ This type of rate limiting requires that the server scores every served request 
 
 For example, the following rule defines a total complexity budget of 1,000 per hour:
 
-| Setting                  | Value                               |
-| ------------------------ | ----------------------------------- |
-| Matching criteria        | URI Path contains /graphql          |
-| Expression               | http.request.uri.path eq "/graphql" |
-| Counting characteristics | Cookie (session\_id)                |
-| Score per period         | 1,000                               |
-| Period                   | 1 hour                              |
-| Response header name     | score                               |
-| Action                   | Block                               |
+| Setting | Value |
+| --- | --- |
+| Matching criteria | URI Path contains `/graphql` |
+| Expression | `http.request.uri.path eq "/graphql"` |
+| Counting characteristics | Cookie (`session_id`) |
+| Score per period | 1,000 |
+| Period | 1 hour |
+| Response header name | `score` |
+| Action | Block |
 
-_This example rule requires Advanced Rate Limiting and payload inspection._
+*This example rule requires Advanced Rate Limiting and payload inspection.*
 
 When the origin server processes a request, it adds a `score` HTTP header to the response with a value representing how much work the origin has performed to handle it — for example, `100`. In the next hour, the same client can perform requests up to an additional budget of `900`. As soon as this budget is exceeded, later requests will be blocked until the timeout expires.
 

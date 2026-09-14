@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Connect to a MySQL database with Cloudflare Workers
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/tutorials/mysql/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/mysql/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn how to create a Cloudflare Workers application and connect it to a MySQL database using [TCP Sockets](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/) and [Hyperdrive](https://developers.cloudflare.com/hyperdrive/). The Workers application you create in this tutorial will interact with a product database inside of MySQL.
 
@@ -27,13 +27,13 @@ When connecting directly to your MySQL database (without Hyperdrive), the MySQL 
 To continue:
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages) if you have not already.
-2. Install [npm ↗](https://docs.npmjs.com/getting-started).
-3. Install [Node.js ↗](https://nodejs.org/en/). Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) requires a Node version of `16.17.0` or later.
+2. Install [`npm` ↗](https://docs.npmjs.com/getting-started).
+3. Install [`Node.js` ↗](https://nodejs.org/en/). Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) requires a Node version of `16.17.0` or later.
 4. Make sure you have access to a MySQL database.
 
-## 1\. Create a Worker application
+## 1. Create a Worker application
 
-First, use the [create-cloudflare CLI ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) to create a new Worker application. To do this, open a terminal window and run the following command:
+First, use the [`create-cloudflare` CLI ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) to create a new Worker application. To do this, open a terminal window and run the following command:
 
 npmyarnpnpm
 
@@ -49,15 +49,15 @@ yarn create cloudflare mysql-tutorial
 pnpm create cloudflare@latest mysql-tutorial
 ```
 
-This will prompt you to install the [create-cloudflare ↗](https://www.npmjs.com/package/create-cloudflare) package and lead you through a setup wizard.
+This will prompt you to install the [`create-cloudflare` ↗](https://www.npmjs.com/package/create-cloudflare) package and lead you through a setup wizard.
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `TypeScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `TypeScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 If you choose to deploy, you will be asked to authenticate (if not logged in already), and your project will be deployed. If you deploy, you can still modify your Worker code and deploy again at the end of this tutorial.
 
@@ -67,13 +67,13 @@ Now, move into the newly created directory:
 cd mysql-tutorial
 ```
 
-## 2\. Enable Node.js compatibility
+## 2. Enable Node.js compatibility
 
 [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is required for database drivers, including mysql2, and needs to be configured for your Workers project.
 
 For compatibility dates of `2026-08-04` or later, Workers and Pages projects enable both `nodejs_compat` and `nodejs_compat_v2` by default. Built-in runtime APIs and polyfills are available without additional configuration. These flags are not used for these compatibility dates. Existing projects do not need to remove them when updating their compatibility date.
 
-If your compatibility date is before `2026-08-04`, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to opt in:
+If your compatibility date is before `2026-08-04`, add the [`nodejs_compat`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to opt in:
 
 ```jsonc
 {
@@ -89,7 +89,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 To turn off [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) completely for a compatibility date of `2026-08-04` or later, remove the positive flags if present. Then add both `no_nodejs_compat` and `no_nodejs_compat_v2`. For configuration examples, refer to the [Node.js compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
 
-## 3\. Create a Hyperdrive configuration
+## 3. Create a Hyperdrive configuration
 
 Create a Hyperdrive configuration using the connection string for your MySQL database.
 
@@ -105,7 +105,7 @@ This command outputs the Hyperdrive configuration `id` that will be used for you
 	"name": "hyperdrive-example",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -124,7 +124,7 @@ This command outputs the Hyperdrive configuration `id` that will be used for you
 name = "hyperdrive-example"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[hyperdrive]]
@@ -132,7 +132,7 @@ binding = "HYPERDRIVE"
 id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
 ```
 
-## 4\. Query your database from your Worker
+## 4. Query your database from your Worker
 
 Install the [mysql2 ↗](https://github.com/sidorares/node-mysql2) driver:
 
@@ -167,7 +167,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -180,7 +180,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -229,7 +229,7 @@ Note
 
 The minimum version of `mysql2` required for Hyperdrive is `3.13.0`.
 
-## 5\. Deploy your Worker
+## 5. Deploy your Worker
 
 Run the following command to deploy your Worker:
 

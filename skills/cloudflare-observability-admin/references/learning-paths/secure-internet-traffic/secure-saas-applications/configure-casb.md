@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Scan SaaS applications with Cloudflare CASB
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/secure-saas-applications/configure-casb/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/secure-saas-applications/configure-casb/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -34,7 +34,7 @@ Before you can integrate a SaaS application or cloud environment with CASB, your
 
 ### Add an integration
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Cloud & SaaS findings** \> **Integrations**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Cloud & SaaS findings** > **Integrations**.
 2. Select **Connect an integration** or **Add integration**.
 3. Browse the available integrations and select the application you would like to add.
 4. Follow the step-by-step integration instructions in the UI.
@@ -46,7 +46,7 @@ Once CASB detects at least one finding, you can [view and manage your findings](
 
 ### Pause an integration
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Cloud & SaaS findings** \> **Integrations**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Cloud & SaaS findings** > **Integrations**.
 2. Find the integration you would like to pause and select **Configure**.
 3. To stop scanning the application, turn off **Scan for findings**.
 4. Select **Save integration**.
@@ -59,7 +59,7 @@ Caution
 
 When you delete an integration, all keys and OAuth data will be deleted. This means you cannot restore a deleted integration or its scanned data.
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Cloud & SaaS findings** \> **Integrations**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Cloud & SaaS findings** > **Integrations**.
 2. Find the integration you would like to delete and select **Configure**.
 3. Select **Disenroll**.
 
@@ -69,16 +69,16 @@ To resume scanning the integration for findings, you will need to [add the integ
 
 If you use both Cloudflare CASB and Cloudflare Data Loss Prevention (DLP), you can use DLP to discover if files stored in your SaaS application contain sensitive data. CASB integrations supported by DLP include:
 
-* [Amazon Web Services (AWS) S3](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/aws-s3/)
-* [Box](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/box/)
-* [Dropbox](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/dropbox/)
-* [Google Cloud Platform (GCP) Cloud Storage](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/gcp-cloud-storage)
-* [Google Drive](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/google-drive/)
-* [Microsoft OneDrive](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/onedrive/)
-* [Microsoft SharePoint](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/sharepoint/)
-* [Microsoft 365 Copilot](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/m365-copilot/)
-* [OpenAI](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/openai/)
-* [Anthropic](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/anthropic/)
+- [Amazon Web Services (AWS) S3](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/aws-s3/)
+- [Box](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/box/)
+- [Dropbox](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/dropbox/)
+- [Google Cloud Platform (GCP) Cloud Storage](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/gcp-cloud-storage)
+- [Google Drive](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/google-drive/)
+- [Microsoft OneDrive](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/onedrive/)
+- [Microsoft SharePoint](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/sharepoint/)
+- [Microsoft 365 Copilot](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/m365-copilot/)
+- [OpenAI](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/openai/)
+- [Anthropic](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/anthropic/)
 
 For more information, refer to [Scan SaaS applications with DLP](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/casb-dlp/).
 

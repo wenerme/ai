@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • OpenAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-4o-mini/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-4o-mini/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `openai/gpt-4o-mini`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 GPT-4o Mini is the lightweight, low-cost variant of GPT-4o, well suited to high-volume tasks with multimodal inputs.
 
-| Model Info                                                                          |                                                                                                                      |
-| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 128,000 tokens                                                                                                       |
-| Terms and License                                                                   | [link ↗](https://openai.com/policies/)                                                                               |
-| More information                                                                    | [link ↗](https://openai.com/)                                                                                        |
-| Zero data retention                                                                 | Yes                                                                                                                  |
-| Request formats                                                                     | Responses, Chat Completions                                                                                          |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-4o-mini) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 128,000 tokens |
+| Terms and License | [link ↗](https://openai.com/policies/) |
+| More information | [link ↗](https://openai.com/) |
+| Zero data retention | Yes |
+| Request formats | Responses, Chat Completions |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-4o-mini) |
 
 ## Usage
 
@@ -59,6 +59,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The three laws of thermodynamics are fundamental principles that describe the behavior of energy and matter in physical systems. Here’s a brief overview of each:
 
 1. **Zeroth Law of Thermodynamics**: Though it was formulated after the first three laws, it's often referred to as the "zeroth" law. It states that if two systems are each in thermal equilibrium with a third system, then they are in thermal equilibrium with each other. This law forms the basis for the concept of temperature.
@@ -74,6 +75,7 @@ The three laws of thermodynamics are fundamental principles that describe the be
 4. **Third Law of Thermodynamics**: This law states that as the temperature of a system approaches absolute zero, the entropy of a perfect crystal approaches zero. It helps define the absolute temperature scale and indicates that it is impossible to reach absolute zero in a finite number of steps.
 
 These laws are foundational to the study of physics and chemistry, affecting various fields, including engineering, biology, and materials science.
+```
 
 ```json
 {
@@ -119,7 +121,11 @@ These laws are foundational to the study of physics and chemistry, affecting var
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -153,6 +159,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 To read a JSON file in Python, you can use the built-in `json` module, which provides methods for parsing JSON data. Here’s a step-by-step guide on how to do this:
 
 1. **Import the `json` module**: This module allows you to work with JSON data easily.
@@ -200,6 +207,7 @@ print(data['city'])  # Outputs: New York
 - Handle exceptions using `try-except` blocks if you want to manage errors, such as when a file does not exist or contains invalid JSON.
 
 This method is simple and efficient for reading JSON data in Python.
+````
 
 ```json
 {
@@ -243,7 +251,13 @@ This method is simple and efficient for reading JSON data in Python.
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -291,6 +305,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Here are some great stops you can consider on your road trip from San Francisco to Los Angeles, highlighting both scenic spots and interesting attractions:
 
 ### 1. **Half Moon Bay**
@@ -340,6 +355,7 @@ Here are some great stops you can consider on your road trip from San Francisco 
 - **Overnight Stay:** If you want to break it into two days, consider staying in Monterey or Santa Barbara for a more relaxed pace.
 
 Hope this helps you plan an amazing road trip! Let me know if you need more information or specific recommendations.
+```
 
 ```json
 {
@@ -383,7 +399,13 @@ Hope this helps you plan an amazing road trip! Let me know if you need more info
 }
 ```
 
-**Creative Writing** — Longer completion for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Longer completion for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -417,6 +439,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Detective Iris Kline stood in the dimly lit study of the late Vincent Hawthorne, an eccentric author known for his best-selling thrillers and reclusive nature. The smell of old books and the faint hint of cigar smoke lingered in the air, wrapping around her like a shroud as she scanned the cluttered room for anything that might shed light on the enigmatic man's death. The police had ruled it a heart attack, but Iris wasn’t convinced. A writer whose life revolved around crafting intricate plots wouldn't simply drop dead without a shred of foreshadowing.
 
 She crouched beside a mahogany desk strewn with yellowed manuscripts and coffee-stained pages, her fingers brushing against the surface. That’s when she spotted it—a glint of silver poking out from beneath a loose floorboard. Curious, she pried it open, her nails scraping against the wood until she could retrieve the object: a small, intricately designed key.
@@ -424,6 +447,7 @@ She crouched beside a mahogany desk strewn with yellowed manuscripts and coffee-
 Flipping it over in her palm, she noticed a curious engraving on its barrel—a compass rose, with eight tiny arrows radiating from the center. It was both beautiful and unsettling, like something straight out of one of Hawthorne's novels. But it was the cryptic inscription beneath it that gave her pause, a single word: “NAVIGATOR.”
 
 Iris felt the weight of the key shift in her hand, a sense of urgency rising within her. Whatever this key unlocked, it was clear it held secrets far beyond the reclusive author’s final chapter. She slid the key into her pocket, the quiet thrill of an unraveling mystery beginning to take root in her mind. What could Vincent Hawthorne have been hiding? And where would this unusual clue lead her next?
+```
 
 ```json
 {
@@ -467,7 +491,13 @@ Iris felt the weight of the key shift in her hand, a sense of urgency rising wit
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -500,6 +530,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 Recursion is a programming concept where a function calls itself in order to solve a problem. It typically involves a base case that stops the recursion and a recursive case that breaks the problem down into smaller subproblems.
 
 ### Example: Factorial
@@ -545,6 +576,7 @@ print(result)  # Output: 120
    - `factorial(5)` returns `5 * 24 = 120`
 
 Thus, the factorial of 5 is computed to be 120, demonstrating how recursion can break down a complex problem into simpler subproblems.
+````
 
 ```json
 [
@@ -10316,6 +10348,8 @@ Thus, the factorial of 5 is computed to be 120, demonstrating how recursion can 
 ]
 ```
 
+</details>
+
 ## Parameters
 
 Schema variant
@@ -10346,13 +10380,11 @@ stream
 
 `boolean`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
-
-``
 
 ▶text{}
 
@@ -10362,7 +10394,7 @@ tool\_choice
 
 `object`
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -10384,11 +10416,11 @@ top\_p
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 stream
 
@@ -10398,19 +10430,15 @@ stream
 
 `object`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
 
-``
-
 response\_format
 
-``
-
-▶modalities\[\]
+▶modalities\[]
 
 `array`
 
@@ -10434,7 +10462,7 @@ model
 
 `string`
 
-▶output\[\]
+▶output\[]
 
 `array`
 
@@ -10466,7 +10494,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -10476,9 +10504,9 @@ model
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/openai/gpt-4o-mini/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-4o-mini/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/openai/gpt-4o-mini/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-4o-mini/schema-output.json)
 
 Was this helpful?
 

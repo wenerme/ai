@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Protect against client-side threats
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/application-security/client-side/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/application-security/client-side/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Third-party scripts on your site can be compromised to exfiltrate data or inject malicious code. Cloudflare's client-side security (previously known as Page Shield) monitors every JavaScript resource loading on your pages, detects suspicious behavior, and helps you manage Content Security Policies (CSPs).
 
@@ -22,10 +22,10 @@ Third-party scripts on your site can be compromised to exfiltrate data or inject
 
 Monitor and control third-party scripts and outbound connections on your pages. [Learn more about client-side security](https://developers.cloudflare.com/client-side-security/).
 
-* **Script monitoring** \- Track every JavaScript resource loading on your pages, including third-party scripts
-* **Malicious script detection** \- Receive alerts when scripts exhibit suspicious behavior such as data exfiltration patterns
-* **Connection monitoring** \- See which external endpoints scripts are sending data to
-* **CSP management** \- Generate and manage Content Security Policies (CSPs) based on observed script behavior
+- **Script monitoring** - Track every JavaScript resource loading on your pages, including third-party scripts
+- **Malicious script detection** - Receive alerts when scripts exhibit suspicious behavior such as data exfiltration patterns
+- **Connection monitoring** - See which external endpoints scripts are sending data to
+- **CSP management** - Generate and manage Content Security Policies (CSPs) based on observed script behavior
 
 ## Get started
 

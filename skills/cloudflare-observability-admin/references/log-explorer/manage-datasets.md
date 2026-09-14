@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage datasets
 
-Last updated Sep 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/log-explorer/manage-datasets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/log-explorer/manage-datasets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Log Explorer allows you to enable, disable, or delete datasets available to query in Log Search.
 
@@ -26,33 +26,33 @@ Log Explorer currently supports the following datasets:
 
 ### Zone level
 
-* [HTTP Requests](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http%5Frequests/) (`http_requests`)
-* [Firewall Events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/firewall%5Fevents/) (`firewall_events`)
-* [DNS Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/dns%5Flogs/) (`dns_logs`)
-* [NEL Reports](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/nel%5Freports/) (`nel_reports`)
-* [Page Shield Events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/page%5Fshield%5Fevents/) (`page_shield_events`) (events for client-side security)
-* [Spectrum Events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/spectrum%5Fevents/) (`spectrum_events`)
-* [Zaraz Events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/zaraz%5Fevents/) (`zaraz_events`)
+- [HTTP Requests](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/) ( `http_requests`)
+- [Firewall Events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/firewall_events/) ( `firewall_events`)
+- [DNS Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/dns_logs/) ( `dns_logs`)
+- [NEL Reports](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/nel_reports/) ( `nel_reports`)
+- [Page Shield Events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/page_shield_events/) ( `page_shield_events`) (events for client-side security)
+- [Spectrum Events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/spectrum_events/) ( `spectrum_events`)
+- [Zaraz Events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/zaraz_events/) ( `zaraz_events`)
 
 ### Account level
 
-* [Access requests](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/access%5Frequests/) (`access_requests`)
-* [CASB findings](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/casb%5Ffindings/) (`casb_findings`)
-* [Device posture results](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/device%5Fposture%5Fresults/) (`device_posture_results`)
-* [Gateway DNS](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway%5Fdns/) (`gateway_dns`)
-* [Gateway HTTP](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway%5Fhttp/) (`gateway_http`)
-* [Gateway Network](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway%5Fnetwork/) (`gateway_network`)
-* [Zero Trust Network Session Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero%5Ftrust%5Fnetwork%5Fsessions/) (`zero_trust_network_sessions`)
-* [Audit Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/audit%5Flogs/) (`audit_logs`)
-* [Audit\_logs\_v2](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/audit%5Flogs%5Fv2/) (`audit_logs_v2`)
-* [Browser Isolation User Actions](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/biso%5Fuser%5Factions/) (`biso_user_actions`)
-* [DNS firewall logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/dns%5Ffirewall%5Flogs/) (`dns_firewall_logs`)
-* [Email security alerts](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/email%5Fsecurity%5Falerts/) (`email_security_alerts`)
-* [Magic BGP Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/magic%5Fbgp%5Flogs/) (`magic_bgp_logs`)
-* [Magic IDS Detections](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/magic%5Fids%5Fdetections/) (`magic_ids_detections`)
-* [Network Analytics](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/network%5Fanalytics%5Flogs/) (`network_analytics_logs`)
-* [Sinkhole HTTP Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/sinkhole%5Fhttp%5Flogs/) (`sinkhole_http_logs`)
-* [IP Sec Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/ipsec%5Flogs/) (`ipsec_logs`)
+- [Access requests](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/access_requests/) ( `access_requests`)
+- [CASB findings](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/casb_findings/) ( `casb_findings`)
+- [Device posture results](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/device_posture_results/) ( `device_posture_results`)
+- [Gateway DNS](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_dns/) ( `gateway_dns`)
+- [Gateway HTTP](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_http/) ( `gateway_http`)
+- [Gateway Network](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_network/) ( `gateway_network`)
+- [Zero Trust Network Session Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/) ( `zero_trust_network_sessions`)
+- [Audit Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/audit_logs/) ( `audit_logs`)
+- [Audit\_logs\_v2](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/audit_logs_v2/) ( `audit_logs_v2`)
+- [Browser Isolation User Actions](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/biso_user_actions/) ( `biso_user_actions`)
+- [DNS firewall logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/dns_firewall_logs/) ( `dns_firewall_logs`)
+- [Email security alerts](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/email_security_alerts/) ( `email_security_alerts`)
+- [Magic BGP Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/magic_bgp_logs/) ( `magic_bgp_logs`)
+- [Magic IDS Detections](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/magic_ids_detections/) ( `magic_ids_detections`)
+- [Network Analytics](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/network_analytics_logs/) ( `network_analytics_logs`)
+- [Sinkhole HTTP Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/sinkhole_http_logs/) ( `sinkhole_http_logs`)
+- [IP Sec Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/ipsec_logs/) ( `ipsec_logs`)
 
 ## Enable Log Explorer
 
@@ -60,8 +60,7 @@ To begin storing logs, enable the desired datasets through the dashboard or API.
 
 ### Dashboard
 
-1. In the Cloudflare dashboard, go to the **Log Explorer** \> **Manage datasets** page.
-[Go to **Manage datasets** ↗](https://dash.cloudflare.com/?to=/:account/log-explorer/manage-sources)
+1. In the Cloudflare dashboard, go to the **Log Explorer** > **Manage datasets** page. [Go to **Manage datasets** ↗](https://dash.cloudflare.com/?to=/:account/log-explorer/manage-sources)
 2. Select **Add dataset**.
 3. Choose a dataset and, for zone-level datasets, a zone.
 4. Under **Select fields**, choose the fields that Log Explorer should ingest.
@@ -80,7 +79,7 @@ Required fields remain selected and are marked **Required**. Fields that Cloudfl
 
 Use **Filter logs** to ingest **All events** or **Only events matching a filter**. A filter condition consists of a field, an operator, and a value. All conditions within a group must match. An event can match any filter group.
 
-To change the fields or filter for an enabled dataset, go to **Log Explorer** \> **Manage datasets**. Find the dataset, select **Actions** \> **Edit**, update the configuration, and select **Update**.
+To change the fields or filter for an enabled dataset, go to **Log Explorer** > **Manage datasets**. Find the dataset, select **Actions** > **Edit**, update the configuration, and select **Update**.
 
 ### API
 
@@ -132,14 +131,13 @@ Caution
 
 Dataset deletion is irreversible. Deleted data cannot be recovered.
 
-1. In the Cloudflare dashboard, go to **Log Explorer** \> **Manage datasets**.
-[Go to **Manage datasets** ↗](https://dash.cloudflare.com/?to=/:account/log-explorer/manage-sources)
-2. Find the dataset and select **Actions** \> **Delete**.
+1. In the Cloudflare dashboard, go to **Log Explorer** > **Manage datasets**. [Go to **Manage datasets** ↗](https://dash.cloudflare.com/?to=/:account/log-explorer/manage-sources)
+2. Find the dataset and select **Actions** > **Delete**.
 3. If deletion protection is enabled, disable it in the confirmation dialog.
 4. Enter the dataset name and select **Delete**.
 
-1. Set `deletion_protection` to `false` with the [Update an account or zone dataset](https://developers.cloudflare.com/api/resources/logs/subresources/log%5Fexplorer/subresources/datasets/methods/update/) method.
-2. Delete the dataset with the [Delete an account or zone dataset](https://developers.cloudflare.com/api/resources/logs/subresources/log%5Fexplorer/subresources/datasets/methods/delete/) method.
+1. Set `deletion_protection` to `false` with the [Update an account or zone dataset](https://developers.cloudflare.com/api/resources/logs/subresources/log_explorer/subresources/datasets/methods/update/) method.
+2. Delete the dataset with the [Delete an account or zone dataset](https://developers.cloudflare.com/api/resources/logs/subresources/log_explorer/subresources/datasets/methods/delete/) method.
 
 Was this helpful?
 

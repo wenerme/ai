@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cache content globally
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/performance/caching/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/performance/caching/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Every request that reaches your origin server adds latency and costs. Cloudflare Cache serves static and dynamic content globally, reducing round-trip times for visitors and offloading traffic from your origin.
 
@@ -22,11 +22,11 @@ Every request that reaches your origin server adds latency and costs. Cloudflare
 
 Cache content at Cloudflare's global network of edge locations. [Learn more about Cache](https://developers.cloudflare.com/cache/).
 
-* **Global distribution** \- Content cached in 300+ edge locations so visitors are served from the location nearest to them
-* **Reduced latency** \- Cache hits are served directly from the edge, eliminating round-trips to your origin
-* **Customizable cache rules** \- Create rules that change how Cloudflare caches content, or transforms requests
-* **Origin offload** \- Regional cache tiers intercept repeated requests before they reach your origin server
-* **Persistent caching** \- Long-tail content that would normally expire is kept in durable storage, reducing origin fetches for infrequently accessed assets
+- **Global distribution** - Content cached in 300+ edge locations so visitors are served from the location nearest to them
+- **Reduced latency** - Cache hits are served directly from the edge, eliminating round-trips to your origin
+- **Customizable cache rules** - Create rules that change how Cloudflare caches content, or transforms requests
+- **Origin offload** - Regional cache tiers intercept repeated requests before they reach your origin server
+- **Persistent caching** - Long-tail content that would normally expire is kept in durable storage, reducing origin fetches for infrequently accessed assets
 
 ## Get started
 

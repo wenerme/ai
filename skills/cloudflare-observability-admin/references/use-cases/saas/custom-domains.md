@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Customer domains with SSL for SaaS
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/saas/custom-domains/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/saas/custom-domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 SaaS customers expect to use their own domains (for example, `app.theirdomain.com`) instead of a subdomain on your platform. Cloudflare SSL for SaaS provisions and renews SSL certificates automatically for every custom hostname, with no manual steps or customer action required.
 
@@ -22,15 +22,15 @@ SaaS customers expect to use their own domains (for example, `app.theirdomain.co
 
 Extend Cloudflare's network and services to your customers. [Learn more about Cloudflare for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/).
 
-* **Custom domains** \- Customers bring their own domains and have them route to your platform with per-tenant configuration
+- **Custom domains** - Customers bring their own domains and have them route to your platform with per-tenant configuration
 
 ### SSL for SaaS
 
 Provision and manage SSL certificates for custom customer domains. [Learn more about SSL for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/).
 
-* **Automatic SSL** \- Certificates provisioned and renewed automatically for every customer domain with no manual steps
-* **No customer action required** \- Cloudflare can complete domain validation without requiring action from the customer
-* **Scale** \- Support thousands of custom hostnames per domain without additional per-hostname infrastructure
+- **Automatic SSL** - Certificates provisioned and renewed automatically for every customer domain with no manual steps
+- **No customer action required** - Cloudflare can complete domain validation without requiring action from the customer
+- **Scale** - Support thousands of custom hostnames per domain without additional per-hostname infrastructure
 
 ## Get started
 

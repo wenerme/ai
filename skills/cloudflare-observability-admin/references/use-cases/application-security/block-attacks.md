@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Block application attacks
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/application-security/block-attacks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/application-security/block-attacks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Web applications face constant threats from SQL injection, Cross-Site Scripting (XSS), and other Open Web Application Security Project (OWASP) Top 10 vulnerabilities. Cloudflare WAF managed rulesets block these attacks automatically, and rate limiting prevents brute force abuse.
 
@@ -22,15 +22,15 @@ Web applications face constant threats from SQL injection, Cross-Site Scripting 
 
 Get automatic protection from vulnerabilities and create your own custom rules. [Learn more about WAF](https://developers.cloudflare.com/waf/).
 
-* **Managed rulesets** \- Pre-configured rules covering OWASP Top 10 and emerging threats, updated by Cloudflare
-* **Zero-day protection** \- Rules are updated as new vulnerabilities are discovered, with no action required from you
-* **Custom rules** \- Block or challenge requests based on any request attribute including headers, cookies, and IP reputation
+- **Managed rulesets** - Pre-configured rules covering OWASP Top 10 and emerging threats, updated by Cloudflare
+- **Zero-day protection** - Rules are updated as new vulnerabilities are discovered, with no action required from you
+- **Custom rules** - Block or challenge requests based on any request attribute including headers, cookies, and IP reputation
 
 ### Rate limiting
 
 Limit request rates based on flexible matching criteria. [Learn more about rate limiting](https://developers.cloudflare.com/waf/rate-limiting-rules/).
 
-* **Rate limiting** \- Prevent brute force attacks and Application Programming Interface (API) abuse with flexible per-endpoint request limits
+- **Rate limiting** - Prevent brute force attacks and Application Programming Interface (API) abuse with flexible per-endpoint request limits
 
 ## Get started
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Parse Cloudflare Logs JSON data
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/parsing-json-log-data/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/parsing-json-log-data/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 After downloading your Cloudflare Logs data, you can use different tools to parse and analyze your logs.
 
@@ -22,7 +22,7 @@ Refer to [Download jq ↗](https://jqlang.github.io/jq/download/) for more infor
 
 Note
 
-`jq` is a powerful command line for parsing JSON data and performing certain types of analysis. To perform more detailed analysis, consider a full-fledged data analysis system, such as _Kibana_.
+`jq` is a powerful command line for parsing JSON data and performing certain types of analysis. To perform more detailed analysis, consider a full-fledged data analysis system, such as *Kibana*.
 
 ## Aggregate fields
 
@@ -75,7 +75,7 @@ jq -r .ClientRequestReferer logs.json | sort -n | uniq -c | sort -n | tail
 
 ## Filter fields
 
-Another common use case involves filtering data for a specific field value and then aggregating after that. This helps answer questions like _Which URLs saw the most 502 errors?_ For example:
+Another common use case involves filtering data for a specific field value and then aggregating after that. This helps answer questions like *Which URLs saw the most 502 errors?* For example:
 
 ```bash
 jq 'select(.OriginResponseStatus == 502) | .ClientRequestURI' logs.json | sort -n | uniq -c | sort -n | tail

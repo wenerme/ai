@@ -12,25 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Terminals
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/1-0-preview/terminals/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/1-0-preview/terminals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Path to Sandbox SDK 1.0
 
-This page documents terminals on `@cloudflare/sandbox@next`, the preview of Sandbox SDK 1.0\. For the current stable terminal helpers, refer to [Terminal connections](https://developers.cloudflare.com/sandbox/concepts/terminal/) and [Terminal API](https://developers.cloudflare.com/sandbox/api/terminal/).
+This page documents terminals on `@cloudflare/sandbox@next`, the preview of Sandbox SDK 1.0. For the current stable terminal helpers, refer to [Terminal connections](https://developers.cloudflare.com/sandbox/concepts/terminal/) and [Terminal API](https://developers.cloudflare.com/sandbox/api/terminal/).
 
 A **terminal** is an interactive PTY in the current container for a sandbox. Use it for full-duplex terminal I/O: a browser shell, resize, interrupt, and reconnect.
 
-Command execution uses [exec](https://developers.cloudflare.com/sandbox/1-0-preview/processes/) and process handles. Terminals are a separate resource type. API reference: [Terminals API](https://developers.cloudflare.com/sandbox/1-0-preview/api/terminals/).
+Command execution uses [`exec`](https://developers.cloudflare.com/sandbox/1-0-preview/processes/) and process handles. Terminals are a separate resource type. API reference: [Terminals API](https://developers.cloudflare.com/sandbox/1-0-preview/api/terminals/).
 
 ## Processes and terminals
 
-|        | Process (exec)                                               | Terminal                                   |
-| ------ | ------------------------------------------------------------ | ------------------------------------------ |
-| Role   | Supervised argv process                                      | Interactive PTY                            |
-| Input  | Launch-time argv (and whatever the program reads on its own) | PTY input via write() or browser connect() |
-| Output | logs(), output(), waits                                      | output(), snapshot, waitForExit()          |
-| Stop   | kill(signal?)                                                | interrupt() / terminate()                  |
-| Lookup | getProcess / listProcesses                                   | getTerminal / listTerminals                |
+|  | Process (`exec`) | Terminal |
+| --- | --- | --- |
+| Role | Supervised argv process | Interactive PTY |
+| Input | Launch-time argv (and whatever the program reads on its own) | PTY input via `write()` or browser `connect()` |
+| Output | `logs()`, `output()`, waits | `output()`, snapshot, `waitForExit()` |
+| Stop | `kill(signal?)` | `interrupt()` / `terminate()` |
+| Lookup | `getProcess` / `listProcesses` | `getTerminal` / `listTerminals` |
 
 Both kinds of resource live only in the current container for a sandbox ID. Lookup methods do not start a container. Refer to [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/1-0-preview/lifecycle/) and [How long a process lives](https://developers.cloudflare.com/sandbox/1-0-preview/processes/#how-long-a-process-lives).
 
@@ -74,10 +74,10 @@ await terminal.terminate();
 
 ## Lifetime
 
-* A terminal exists only in the **current container** for that sandbox ID.
-* `getTerminal` / `listTerminals` return `null` / `[]` when no container is running. They do not start one.
-* After the container stops or is replaced, old terminal IDs are invalid. Create a new terminal if you need one again.
-* An active terminal can keep the container alive across Worker requests, as an active process can.
+- A terminal exists only in the **current container** for that sandbox ID.
+- `getTerminal` / `listTerminals` return `null` / `[]` when no container is running. They do not start one.
+- After the container stops or is replaced, old terminal IDs are invalid. Create a new terminal if you need one again.
+- An active terminal can keep the container alive across Worker requests, as an active process can.
 
 Store `terminal.id` to resume the same PTY while that container is still up.
 
@@ -259,19 +259,19 @@ const terminalId = "term_...";
 sandboxAddon.connect({ sandboxId, terminalId });
 ```
 
-| Stable package            | Preview                                  |
-| ------------------------- | ---------------------------------------- |
-| sandbox.terminal(request) | createTerminal \+ getTerminal \+ connect |
-| xterm / URL sessionId     | terminalId (and optional cursor)         |
+| Stable package | Preview |
+| --- | --- |
+| `sandbox.terminal(request)` | `createTerminal` + `getTerminal` + `connect` |
+| xterm / URL `sessionId` | `terminalId` (and optional `cursor`) |
 
 ## Related
 
-* [Terminals API](https://developers.cloudflare.com/sandbox/1-0-preview/api/terminals/)
-* [Errors and recovery](https://developers.cloudflare.com/sandbox/1-0-preview/errors/)
-* [Errors API](https://developers.cloudflare.com/sandbox/1-0-preview/api/errors/)
-* [Process execution](https://developers.cloudflare.com/sandbox/1-0-preview/processes/)
-* [Processes API](https://developers.cloudflare.com/sandbox/1-0-preview/api/processes/)
-* [Migrate](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/)
+- [Terminals API](https://developers.cloudflare.com/sandbox/1-0-preview/api/terminals/)
+- [Errors and recovery](https://developers.cloudflare.com/sandbox/1-0-preview/errors/)
+- [Errors API](https://developers.cloudflare.com/sandbox/1-0-preview/api/errors/)
+- [Process execution](https://developers.cloudflare.com/sandbox/1-0-preview/processes/)
+- [Processes API](https://developers.cloudflare.com/sandbox/1-0-preview/api/processes/)
+- [Migrate](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/)
 
 Was this helpful?
 

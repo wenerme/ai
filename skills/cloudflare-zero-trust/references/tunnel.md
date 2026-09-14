@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Tunnel
 
-Last updated Sep 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Securely connect your origin servers, APIs, and services to Cloudflare with post-quantum encrypted tunnels — no public IPs required.
 
@@ -39,10 +39,10 @@ Each tunnel maintains four long-lived connections to two Cloudflare data centers
 
 ## Use cases
 
-* **Secure origin connectivity** — Eliminate public origin IPs. All traffic flows through Cloudflare with CDN, WAF, and DDoS protection applied.
-* **Public ingress routing** — Publish internal applications to the internet by mapping public hostnames to local services. Supports HTTP, HTTPS, TCP, SSH, RDP, and [more](https://developers.cloudflare.com/tunnel/concepts/routing/#supported-protocols).
-* **Workers VPC** — Enable [Cloudflare Workers](https://developers.cloudflare.com/workers-vpc/) to securely access private databases, APIs, and services through your tunnel.
-* **Load Balancing** — Use tunnels as origin endpoints in [Cloudflare Load Balancer](https://developers.cloudflare.com/load-balancing/) pools for high availability and intelligent traffic steering.
+- **Secure origin connectivity** — Eliminate public origin IPs. All traffic flows through Cloudflare with CDN, WAF, and DDoS protection applied.
+- **Public ingress routing** — Publish internal applications to the internet by mapping public hostnames to local services. Supports HTTP, HTTPS, TCP, SSH, RDP, and [more](https://developers.cloudflare.com/tunnel/concepts/routing/#supported-protocols).
+- **Workers VPC** — Enable [Cloudflare Workers](https://developers.cloudflare.com/workers-vpc/) to securely access private databases, APIs, and services through your tunnel.
+- **Load Balancing** — Use tunnels as origin endpoints in [Cloudflare Load Balancer](https://developers.cloudflare.com/load-balancing/) pools for high availability and intelligent traffic steering.
 
 ## Get started
 

@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Regex functions
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/regex/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/regex/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-_Cloudflare Pipelines scalar function implementations are based on [Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference._
+*Cloudflare Pipelines scalar function implementations are based on [Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference.*
 
-Cloudflare Pipelines uses a [PCRE-like ↗](https://en.wikibooks.org/wiki/Regular%5FExpressions/Perl-Compatible%5FRegular%5FExpressions)regular expression [syntax ↗](https://docs.rs/regex/latest/regex/#syntax) (minus support for several features including look-around and backreferences).
+Cloudflare Pipelines uses a [PCRE-like ↗](https://en.wikibooks.org/wiki/Regular_Expressions/Perl-Compatible_Regular_Expressions) regular expression [syntax ↗](https://docs.rs/regex/latest/regex/#syntax) (minus support for several features including look-around and backreferences).
 
 ## `regexp_like`
 
@@ -28,14 +28,14 @@ regexp_like(str, regexp[, flags])
 
 **Arguments**
 
-* **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
-* **regexp**: Regular expression to test against the string expression. Can be a constant, column, or function.
-* **flags**: Optional regular expression flags that control the behavior of the regular expression. The following flags are supported:
-  * **i**: case-insensitive: letters match both upper and lower case
-  * **m**: multi-line mode: ^ and $ match begin/end of line
-  * **s**: allow . to match \\n
-  * **R**: enables CRLF mode: when multi-line mode is enabled, \\r\\n is used
-  * **U**: swap the meaning of x\* and x\*?
+- **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+- **regexp**: Regular expression to test against the string expression. Can be a constant, column, or function.
+- **flags**: Optional regular expression flags that control the behavior of the regular expression. The following flags are supported:
+  - **i**: case-insensitive: letters match both upper and lower case
+  - **m**: multi-line mode: ^ and $ match begin/end of line
+  - **s**: allow . to match \\n
+  - **R**: enables CRLF mode: when multi-line mode is enabled, \\r\\n is used
+  - **U**: swap the meaning of x\* and x\*?
 
 **Example**
 
@@ -66,14 +66,14 @@ regexp_match(str, regexp[, flags])
 
 **Arguments**
 
-* **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
-* **regexp**: Regular expression to match against. Can be a constant, column, or function.
-* **flags**: Optional regular expression flags that control the behavior of the regular expression. The following flags are supported:
-  * **i**: case-insensitive: letters match both upper and lower case
-  * **m**: multi-line mode: ^ and $ match begin/end of line
-  * **s**: allow . to match \\n
-  * **R**: enables CRLF mode: when multi-line mode is enabled, \\r\\n is used
-  * **U**: swap the meaning of x\* and x\*?
+- **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+- **regexp**: Regular expression to match against. Can be a constant, column, or function.
+- **flags**: Optional regular expression flags that control the behavior of the regular expression. The following flags are supported:
+  - **i**: case-insensitive: letters match both upper and lower case
+  - **m**: multi-line mode: ^ and $ match begin/end of line
+  - **s**: allow . to match \\n
+  - **R**: enables CRLF mode: when multi-line mode is enabled, \\r\\n is used
+  - **U**: swap the meaning of x\* and x\*?
 
 **Example**
 
@@ -104,16 +104,16 @@ regexp_replace(str, regexp, replacement[, flags])
 
 **Arguments**
 
-* **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
-* **regexp**: Regular expression to match against. Can be a constant, column, or function.
-* **replacement**: Replacement string expression. Can be a constant, column, or function, and any combination of string operators.
-* **flags**: Optional regular expression flags that control the behavior of the regular expression. The following flags are supported:
-  * **g**: (global) Search globally and don't return after the first match
-  * **i**: case-insensitive: letters match both upper and lower case
-  * **m**: multi-line mode: ^ and $ match begin/end of line
-  * **s**: allow . to match \\n
-  * **R**: enables CRLF mode: when multi-line mode is enabled, \\r\\n is used
-  * **U**: swap the meaning of x\* and x\*?
+- **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+- **regexp**: Regular expression to match against. Can be a constant, column, or function.
+- **replacement**: Replacement string expression. Can be a constant, column, or function, and any combination of string operators.
+- **flags**: Optional regular expression flags that control the behavior of the regular expression. The following flags are supported:
+  - **g**: (global) Search globally and don't return after the first match
+  - **i**: case-insensitive: letters match both upper and lower case
+  - **m**: multi-line mode: ^ and $ match begin/end of line
+  - **s**: allow . to match \\n
+  - **R**: enables CRLF mode: when multi-line mode is enabled, \\r\\n is used
+  - **U**: swap the meaning of x\* and x\*?
 
 **Example**
 
@@ -144,8 +144,8 @@ position(substr in origstr)
 
 **Arguments**
 
-* **substr**: The pattern string.
-* **origstr**: The model string.
+- **substr**: The pattern string.
+- **origstr**: The model string.
 
 Was this helpful?
 

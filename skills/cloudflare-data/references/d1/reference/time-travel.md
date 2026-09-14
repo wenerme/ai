@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Time Travel and backups
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/reference/time-travel/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/reference/time-travel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Time Travel is D1's approach to backups and point-in-time-recovery, and allows you to restore a database to any minute within the last 30 days.
 
-* You do not need to enable Time Travel. It is always on.
-* Database history and restoring a database incur no additional costs.
-* Time Travel automatically creates [bookmarks](#bookmarks) on your behalf. You do not need to manually trigger or remember to initiate a backup.
+- You do not need to enable Time Travel. It is always on.
+- Database history and restoring a database incur no additional costs.
+- Time Travel automatically creates [bookmarks](#bookmarks) on your behalf. You do not need to manually trigger or remember to initiate a backup.
 
 By not having to rely on scheduled backups and/or manually initiated backups, you can go back in time and restore a database prior to a failed migration or schema change, a `DELETE` or `UPDATE` statement without a specific `WHERE` clause, and in the future, fork/copy a production database directly.
 
@@ -30,12 +30,14 @@ To understand which storage subsystem your database uses, run `wrangler d1 info 
 
 ## Bookmarks
 
-Time Travel leverages D1's concept of a  bookmark  to restore to a point in time.
+Time Travel leverages D1's concept of a bookmark
 
-* Bookmarks older than 30 days are invalid and cannot be used as a restore point.
-* Restoring a database to a specific bookmark does not remove or delete older bookmarks. For example, if you restore to a bookmark representing the state of your database 10 minutes ago, and determine that you needed to restore to an earlier point in time, you can still do so.
-* Bookmarks are lexicographically sortable. Sorting orders a list of bookmarks from oldest-to-newest.
-* Bookmarks can be derived from a [Unix timestamp ↗](https://en.wikipedia.org/wiki/Unix%5Ftime) (seconds since Jan 1st, 1970), and conversion between a specific timestamp and a bookmark is deterministic (stable).
+ to restore to a point in time.
+
+- Bookmarks older than 30 days are invalid and cannot be used as a restore point.
+- Restoring a database to a specific bookmark does not remove or delete older bookmarks. For example, if you restore to a bookmark representing the state of your database 10 minutes ago, and determine that you needed to restore to an earlier point in time, you can still do so.
+- Bookmarks are lexicographically sortable. Sorting orders a list of bookmarks from oldest-to-newest.
+- Bookmarks can be derived from a [Unix timestamp ↗](https://en.wikipedia.org/wiki/Unix_time) (seconds since Jan 1st, 1970), and conversion between a specific timestamp and a bookmark is deterministic (stable).
 
 Bookmarks are also leveraged by [Sessions API](https://developers.cloudflare.com/d1/best-practices/read-replication/#use-sessions-api) to ensure sequential consistency within a Session.
 
@@ -43,13 +45,13 @@ Bookmarks are also leveraged by [Sessions API](https://developers.cloudflare.com
 
 Time Travel supports two timestamp formats:
 
-* [Unix timestamps ↗](https://developer.mozilla.org/en-US/docs/Glossary/Unix%5Ftime), which correspond to seconds since January 1st, 1970 at midnight. This is always in UTC.
-* The [JavaScript date-time string format ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Date#date%5Ftime%5Fstring%5Fformat), which is a simplified version of the ISO-8601 timestamp format. An valid date-time string for the July 27, 2023 at 11:18AM in Americas/New\_York (EST) would look like `2023-07-27T11:18:53.000-04:00`.
+- [Unix timestamps ↗](https://developer.mozilla.org/en-US/docs/Glossary/Unix_time), which correspond to seconds since January 1st, 1970 at midnight. This is always in UTC.
+- The [JavaScript date-time string format ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format), which is a simplified version of the ISO-8601 timestamp format. An valid date-time string for the July 27, 2023 at 11:18AM in Americas/New\_York (EST) would look like `2023-07-27T11:18:53.000-04:00`.
 
 ## Requirements
 
-* [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) `v3.4.0` or later installed to use Time Travel commands.
-* A database on D1's production backend. You can check whether a database is using this backend via `wrangler d1 info DB_NAME` \- the output show `version: production`.
+- [`Wrangler`](https://developers.cloudflare.com/workers/wrangler/install-and-update/) `v3.4.0` or later installed to use Time Travel commands.
+- A database on D1's production backend. You can check whether a database is using this backend via `wrangler d1 info DB_NAME` - the output show `version: production`.
 
 ## Retrieve a bookmark
 
@@ -68,6 +70,8 @@ wrangler d1 time-travel info YOUR_DATABASE
 
 To retrieve the bookmark for a timestamp in the past, pass the `--timestamp` flag with a valid Unix or RFC3339 timestamp:
 
+*Using an RFC3339 timestamp, including the timezonesh*
+
 ```sh
 wrangler d1 time-travel info YOUR_DATABASE --timestamp="2023-07-09T17:31:11+00:00"
 ```
@@ -78,7 +82,7 @@ To restore a database to a specific point-in-time:
 
 Caution
 
-Restoring a database to a specific point-in-time is a _destructive_ operation, and overwrites the database in place. In the future, D1 will support branching & cloning databases using Time Travel.
+Restoring a database to a specific point-in-time is a *destructive* operation, and overwrites the database in place. In the future, D1 will support branching & cloning databases using Time Travel.
 
 ```sh
 wrangler d1 time-travel restore YOUR_DATABASE --timestamp=UNIX_TIMESTAMP
@@ -99,16 +103,16 @@ In-flight queries and transactions will be cancelled.
 
 Note that:
 
-* Timestamps are converted to a deterministic, stable bookmark. The same timestamp will always represent the same bookmark.
-* Queries in flight will be cancelled, and an error returned to the client.
-* The restore operation will return a [bookmark](#bookmarks) that allows you to [undo](#undo-a-restore) and revert the database.
+- Timestamps are converted to a deterministic, stable bookmark. The same timestamp will always represent the same bookmark.
+- Queries in flight will be cancelled, and an error returned to the client.
+- The restore operation will return a [bookmark](#bookmarks) that allows you to [undo](#undo-a-restore) and revert the database.
 
 ## Undo a restore
 
 You can undo a restore by:
 
-* Taking note of the previous bookmark returned as part of a `wrangler d1 time-travel restore` operation
-* Restoring directly to a bookmark in the past, prior to your last restore.
+- Taking note of the previous bookmark returned as part of a `wrangler d1 time-travel restore` operation
+- Restoring directly to a bookmark in the past, prior to your last restore.
 
 To fetch a bookmark from an earlier state:
 
@@ -131,9 +135,9 @@ Refer to the guide [Export and save D1 database](https://developers.cloudflare.c
 
 ## Notes
 
-* You can quickly get the Unix timestamp from the command-line in macOS and Windows via `date +%s`.
-* Time Travel does not yet allow you to clone or fork an existing database to a new copy. In the future, Time Travel will allow you to fork (clone) an existing database into a new database, or overwrite an existing database.
-* You can restore a database back to a point in time up to 30 days in the past (Workers Paid plan) or 7 days (Workers Free plan). Refer to [Limits](https://developers.cloudflare.com/d1/platform/limits/) for details on Time Travel's limits.
+- You can quickly get the Unix timestamp from the command-line in macOS and Windows via `date +%s`.
+- Time Travel does not yet allow you to clone or fork an existing database to a new copy. In the future, Time Travel will allow you to fork (clone) an existing database into a new database, or overwrite an existing database.
+- You can restore a database back to a point in time up to 30 days in the past (Workers Paid plan) or 7 days (Workers Free plan). Refer to [Limits](https://developers.cloudflare.com/d1/platform/limits/) for details on Time Travel's limits.
 
 Was this helpful?
 

@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Array functions
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/array/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/array/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-_Cloudflare Pipelines scalar function implementations are based on [Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference._
+*Cloudflare Pipelines scalar function implementations are based on [Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference.*
 
 ## `array_append`
 
@@ -26,8 +26,8 @@ array_append(array, element)
 
 **Arguments**
 
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
-* **element**: Element to append to the array.
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **element**: Element to append to the array.
 
 **Example**
 
@@ -42,9 +42,9 @@ array_append(array, element)
 
 **Aliases**
 
-* array\_push\_back
-* list\_append
-* list\_push\_back
+- array\_push\_back
+- list\_append
+- list\_push\_back
 
 ## `array_sort`
 
@@ -56,9 +56,9 @@ array_sort(array, desc, nulls_first)
 
 **Arguments**
 
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
-* **desc**: Whether to sort in descending order(`ASC` or `DESC`).
-* **nulls\_first**: Whether to sort nulls first(`NULLS FIRST` or `NULLS LAST`).
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **desc**: Whether to sort in descending order( `ASC` or `DESC`).
+- **nulls\_first**: Whether to sort nulls first( `NULLS FIRST` or `NULLS LAST`).
 
 **Example**
 
@@ -73,7 +73,7 @@ array_sort(array, desc, nulls_first)
 
 **Aliases**
 
-* list\_sort
+- list\_sort
 
 ## `array_resize`
 
@@ -85,9 +85,9 @@ array_resize(array, size, value)
 
 **Arguments**
 
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
-* **size**: New size of given array.
-* **value**: Defines new elements' value or empty if value is not set.
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **size**: New size of given array.
+- **value**: Defines new elements' value or empty if value is not set.
 
 **Example**
 
@@ -102,11 +102,11 @@ array_resize(array, size, value)
 
 **Aliases**
 
-* list\_resize
+- list\_resize
 
 ## `array_cat`
 
-_Alias of [array\_concat](#array%5Fconcat)._
+*Alias of [array\_concat](#array_concat).*
 
 ## `array_concat`
 
@@ -118,8 +118,8 @@ array_concat(array[, ..., array_n])
 
 **Arguments**
 
-* **array**: Array expression to concatenate. Can be a constant, column, or function, and any combination of array operators.
-* **array\_n**: Subsequent array column or literal array to concatenate.
+- **array**: Array expression to concatenate. Can be a constant, column, or function, and any combination of array operators.
+- **array\_n**: Subsequent array column or literal array to concatenate.
 
 **Example**
 
@@ -134,13 +134,13 @@ array_concat(array[, ..., array_n])
 
 **Aliases**
 
-* array\_cat
-* list\_cat
-* list\_concat
+- array\_cat
+- list\_cat
+- list\_concat
 
 ## `array_contains`
 
-_Alias of [array\_has](#array%5Fhas)._
+*Alias of [array\_has](#array_has).*
 
 ## `array_has`
 
@@ -152,12 +152,12 @@ array_has(array, element)
 
 **Arguments**
 
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
-* **element**: Scalar or Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **element**: Scalar or Array expression. Can be a constant, column, or function, and any combination of array operators.
 
 **Aliases**
 
-* list\_has
+- list\_has
 
 ## `array_has_all`
 
@@ -169,12 +169,12 @@ array_has_all(array, sub-array)
 
 **Arguments**
 
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
-* **sub-array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **sub-array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
 
 **Aliases**
 
-* list\_has\_all
+- list\_has\_all
 
 ## `array_has_any`
 
@@ -186,12 +186,12 @@ array_has_any(array, sub-array)
 
 **Arguments**
 
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
-* **sub-array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **sub-array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
 
 **Aliases**
 
-* list\_has\_any
+- list\_has\_any
 
 ## `array_dims`
 
@@ -203,7 +203,7 @@ array_dims(array)
 
 **Arguments**
 
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
 
 **Example**
 
@@ -218,7 +218,7 @@ array_dims(array)
 
 **Aliases**
 
-* list\_dims
+- list\_dims
 
 ## `array_distinct`
 
@@ -230,7 +230,7 @@ array_distinct(array)
 
 **Arguments**
 
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
 
 **Example**
 
@@ -245,7 +245,7 @@ array_distinct(array)
 
 **Aliases**
 
-* list\_distinct
+- list\_distinct
 
 ## `array_element`
 
@@ -257,8 +257,8 @@ array_element(array, index)
 
 **Arguments**
 
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
-* **index**: Index to extract the element from the array.
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **index**: Index to extract the element from the array.
 
 **Example**
 
@@ -273,13 +273,13 @@ array_element(array, index)
 
 **Aliases**
 
-* array\_extract
-* list\_element
-* list\_extract
+- array\_extract
+- list\_element
+- list\_extract
 
 ## `array_extract`
 
-_Alias of [array\_element](#array%5Felement)._
+*Alias of [array\_element](#array_element).*
 
 ## `array_fill`
 
@@ -293,21 +293,21 @@ array_fill(element, array)
 
 **Arguments**
 
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
-* **element**: Element to copy to the array.
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **element**: Element to copy to the array.
 
 ## `flatten`
 
 Converts an array of arrays to a flat array
 
-* Applies to any depth of nested arrays
-* Does not change arrays that are already flat
+- Applies to any depth of nested arrays
+- Does not change arrays that are already flat
 
 The flattened array contains all the elements from all source arrays.
 
 **Arguments**
 
-* **array**: Array expression Can be a constant, column, or function, and any combination of array operators.
+- **array**: Array expression Can be a constant, column, or function, and any combination of array operators.
 
 ```plaintext
 flatten(array)
@@ -315,7 +315,7 @@ flatten(array)
 
 ## `array_indexof`
 
-_Alias of [array\_position](#array%5Fposition)._
+*Alias of [array\_position](#array_position).*
 
 ## `array_intersect`
 
@@ -327,8 +327,8 @@ array_intersect(array1, array2)
 
 **Arguments**
 
-* **array1**: Array expression. Can be a constant, column, or function, and any combination of array operators.
-* **array2**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **array1**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **array2**: Array expression. Can be a constant, column, or function, and any combination of array operators.
 
 **Example**
 
@@ -351,11 +351,11 @@ array_intersect(array1, array2)
 
 **Aliases**
 
-* list\_intersect
+- list\_intersect
 
 ## `array_join`
 
-_Alias of [array\_to\_string](#array%5Fto%5Fstring)._
+*Alias of [array\_to\_string](#array_to_string).*
 
 ## `array_length`
 
@@ -367,8 +367,8 @@ array_length(array, dimension)
 
 **Arguments**
 
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
-* **dimension**: Array dimension.
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **dimension**: Array dimension.
 
 **Example**
 
@@ -383,7 +383,7 @@ array_length(array, dimension)
 
 **Aliases**
 
-* list\_length
+- list\_length
 
 ## `array_ndims`
 
@@ -395,7 +395,7 @@ array_ndims(array, element)
 
 **Arguments**
 
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
 
 **Example**
 
@@ -410,7 +410,7 @@ array_ndims(array, element)
 
 **Aliases**
 
-* list\_ndims
+- list\_ndims
 
 ## `array_prepend`
 
@@ -422,8 +422,8 @@ array_prepend(element, array)
 
 **Arguments**
 
-* **element**: Element to prepend to the array.
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **element**: Element to prepend to the array.
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
 
 **Example**
 
@@ -438,9 +438,9 @@ array_prepend(element, array)
 
 **Aliases**
 
-* array\_push\_front
-* list\_prepend
-* list\_push\_front
+- array\_push\_front
+- list\_prepend
+- list\_push\_front
 
 ## `array_pop_front`
 
@@ -452,7 +452,7 @@ array_pop_front(array)
 
 **Arguments**
 
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
 
 **Example**
 
@@ -467,7 +467,7 @@ array_pop_front(array)
 
 **Aliases**
 
-* list\_pop\_front
+- list\_pop\_front
 
 ## `array_pop_back`
 
@@ -479,7 +479,7 @@ array_pop_back(array)
 
 **Arguments**
 
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
 
 **Example**
 
@@ -494,7 +494,7 @@ array_pop_back(array)
 
 **Aliases**
 
-* list\_pop\_back
+- list\_pop\_back
 
 ## `array_position`
 
@@ -507,9 +507,9 @@ array_position(array, element, index)
 
 **Arguments**
 
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
-* **element**: Element to search for position in the array.
-* **index**: Index at which to start searching.
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **element**: Element to search for position in the array.
+- **index**: Index at which to start searching.
 
 **Example**
 
@@ -524,9 +524,9 @@ array_position(array, element, index)
 
 **Aliases**
 
-* array\_indexof
-* list\_indexof
-* list\_position
+- array\_indexof
+- list\_indexof
+- list\_position
 
 ## `array_positions`
 
@@ -538,8 +538,8 @@ array_positions(array, element)
 
 **Arguments**
 
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
-* **element**: Element to search for positions in the array.
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **element**: Element to search for positions in the array.
 
 **Example**
 
@@ -554,15 +554,15 @@ array_positions(array, element)
 
 **Aliases**
 
-* list\_positions
+- list\_positions
 
 ## `array_push_back`
 
-_Alias of [array\_append](#array%5Fappend)._
+*Alias of [array\_append](#array_append).*
 
 ## `array_push_front`
 
-_Alias of [array\_prepend](#array%5Fprepend)._
+*Alias of [array\_prepend](#array_prepend).*
 
 ## `array_repeat`
 
@@ -574,8 +574,8 @@ array_repeat(element, count)
 
 **Arguments**
 
-* **element**: Element expression. Can be a constant, column, or function, and any combination of array operators.
-* **count**: Value of how many times to repeat the element.
+- **element**: Element expression. Can be a constant, column, or function, and any combination of array operators.
+- **count**: Value of how many times to repeat the element.
 
 **Example**
 
@@ -599,7 +599,7 @@ array_repeat(element, count)
 
 **Aliases**
 
-* list\_repeat
+- list\_repeat
 
 ## `array_remove`
 
@@ -611,8 +611,8 @@ array_remove(array, element)
 
 **Arguments**
 
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
-* **element**: Element to be removed from the array.
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **element**: Element to be removed from the array.
 
 **Example**
 
@@ -627,7 +627,7 @@ array_remove(array, element)
 
 **Aliases**
 
-* list\_remove
+- list\_remove
 
 ## `array_remove_n`
 
@@ -639,9 +639,9 @@ array_remove_n(array, element, max)
 
 **Arguments**
 
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
-* **element**: Element to be removed from the array.
-* **max**: Number of first occurrences to remove.
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **element**: Element to be removed from the array.
+- **max**: Number of first occurrences to remove.
 
 **Example**
 
@@ -656,7 +656,7 @@ array_remove_n(array, element, max)
 
 **Aliases**
 
-* list\_remove\_n
+- list\_remove\_n
 
 ## `array_remove_all`
 
@@ -668,8 +668,8 @@ array_remove_all(array, element)
 
 **Arguments**
 
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
-* **element**: Element to be removed from the array.
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **element**: Element to be removed from the array.
 
 **Example**
 
@@ -684,7 +684,7 @@ array_remove_all(array, element)
 
 **Aliases**
 
-* list\_remove\_all
+- list\_remove\_all
 
 ## `array_replace`
 
@@ -696,9 +696,9 @@ array_replace(array, from, to)
 
 **Arguments**
 
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
-* **from**: Initial element.
-* **to**: Final element.
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **from**: Initial element.
+- **to**: Final element.
 
 **Example**
 
@@ -713,7 +713,7 @@ array_replace(array, from, to)
 
 **Aliases**
 
-* list\_replace
+- list\_replace
 
 ## `array_replace_n`
 
@@ -725,10 +725,10 @@ array_replace_n(array, from, to, max)
 
 **Arguments**
 
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
-* **from**: Initial element.
-* **to**: Final element.
-* **max**: Number of first occurrences to replace.
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **from**: Initial element.
+- **to**: Final element.
+- **max**: Number of first occurrences to replace.
 
 **Example**
 
@@ -743,7 +743,7 @@ array_replace_n(array, from, to, max)
 
 **Aliases**
 
-* list\_replace\_n
+- list\_replace\_n
 
 ## `array_replace_all`
 
@@ -755,9 +755,9 @@ array_replace_all(array, from, to)
 
 **Arguments**
 
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
-* **from**: Initial element.
-* **to**: Final element.
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **from**: Initial element.
+- **to**: Final element.
 
 **Example**
 
@@ -772,7 +772,7 @@ array_replace_all(array, from, to)
 
 **Aliases**
 
-* list\_replace\_all
+- list\_replace\_all
 
 ## `array_reverse`
 
@@ -784,7 +784,7 @@ array_reverse(array)
 
 **Arguments**
 
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
 
 **Example**
 
@@ -799,7 +799,7 @@ array_reverse(array)
 
 **Aliases**
 
-* list\_reverse
+- list\_reverse
 
 ## `array_slice`
 
@@ -811,10 +811,10 @@ array_slice(array, begin, end)
 
 **Arguments**
 
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
-* **begin**: Index of the first element. If negative, it counts backward from the end of the array.
-* **end**: Index of the last element. If negative, it counts backward from the end of the array.
-* **stride**: Stride of the array slice. The default is 1.
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **begin**: Index of the first element. If negative, it counts backward from the end of the array.
+- **end**: Index of the last element. If negative, it counts backward from the end of the array.
+- **stride**: Stride of the array slice. The default is 1.
 
 **Example**
 
@@ -829,7 +829,7 @@ array_slice(array, begin, end)
 
 **Aliases**
 
-* list\_slice
+- list\_slice
 
 ## `array_to_string`
 
@@ -841,8 +841,8 @@ array_to_string(array, delimiter)
 
 **Arguments**
 
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
-* **delimiter**: Array element separator.
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **delimiter**: Array element separator.
 
 **Example**
 
@@ -857,9 +857,9 @@ array_to_string(array, delimiter)
 
 **Aliases**
 
-* array\_join
-* list\_join
-* list\_to\_string
+- array\_join
+- list\_join
+- list\_to\_string
 
 ## `array_union`
 
@@ -871,8 +871,8 @@ array_union(array1, array2)
 
 **Arguments**
 
-* **array1**: Array expression. Can be a constant, column, or function, and any combination of array operators.
-* **array2**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **array1**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **array2**: Array expression. Can be a constant, column, or function, and any combination of array operators.
 
 **Example**
 
@@ -895,7 +895,7 @@ array_union(array1, array2)
 
 **Aliases**
 
-* list\_union
+- list\_union
 
 ## `array_except`
 
@@ -907,8 +907,8 @@ array_except(array1, array2)
 
 **Arguments**
 
-* **array1**: Array expression. Can be a constant, column, or function, and any combination of array operators.
-* **array2**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **array1**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **array2**: Array expression. Can be a constant, column, or function, and any combination of array operators.
 
 **Example**
 
@@ -931,7 +931,7 @@ array_except(array1, array2)
 
 **Aliases**
 
-* list\_except
+- list\_except
 
 ## `cardinality`
 
@@ -943,7 +943,7 @@ cardinality(array)
 
 **Arguments**
 
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
 
 **Example**
 
@@ -966,7 +966,7 @@ empty(array)
 
 **Arguments**
 
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
 
 **Example**
 
@@ -981,8 +981,8 @@ empty(array)
 
 **Aliases**
 
-* array\_empty,
-* list\_empty
+- array\_empty,
+- list\_empty
 
 ## `generate_series`
 
@@ -994,9 +994,9 @@ generate_series(start, stop, step)
 
 **Arguments**
 
-* **start**: start of the range
-* **end**: end of the range (included)
-* **step**: increase by step (can not be 0)
+- **start**: start of the range
+- **end**: end of the range (included)
+- **step**: increase by step (can not be 0)
 
 **Example**
 
@@ -1011,151 +1011,151 @@ generate_series(start, stop, step)
 
 ## `list_append`
 
-_Alias of [array\_append](#array%5Fappend)._
+*Alias of [array\_append](#array_append).*
 
 ## `list_cat`
 
-_Alias of [array\_concat](#array%5Fconcat)._
+*Alias of [array\_concat](#array_concat).*
 
 ## `list_concat`
 
-_Alias of [array\_concat](#array%5Fconcat)._
+*Alias of [array\_concat](#array_concat).*
 
 ## `list_dims`
 
-_Alias of [array\_dims](#array%5Fdims)._
+*Alias of [array\_dims](#array_dims).*
 
 ## `list_distinct`
 
-_Alias of [array\_dims](#array%5Fdistinct)._
+*Alias of [array\_dims](#array_distinct).*
 
 ## `list_element`
 
-_Alias of [array\_element](#array%5Felement)._
+*Alias of [array\_element](#array_element).*
 
 ## `list_empty`
 
-_Alias of [empty](#empty)._
+*Alias of [empty](#empty).*
 
 ## `list_except`
 
-_Alias of [array\_element](#array%5Fexcept)._
+*Alias of [array\_element](#array_except).*
 
 ## `list_extract`
 
-_Alias of [array\_element](#array%5Felement)._
+*Alias of [array\_element](#array_element).*
 
 ## `list_has`
 
-_Alias of [array\_has](#array%5Fhas)._
+*Alias of [array\_has](#array_has).*
 
 ## `list_has_all`
 
-_Alias of [array\_has\_all](#array%5Fhas%5Fall)._
+*Alias of [array\_has\_all](#array_has_all).*
 
 ## `list_has_any`
 
-_Alias of [array\_has\_any](#array%5Fhas%5Fany)._
+*Alias of [array\_has\_any](#array_has_any).*
 
 ## `list_indexof`
 
-_Alias of [array\_position](#array%5Fposition)._
+*Alias of [array\_position](#array_position).*
 
 ## `list_intersect`
 
-_Alias of [array\_position](#array%5Fintersect)._
+*Alias of [array\_position](#array_intersect).*
 
 ## `list_join`
 
-_Alias of [array\_to\_string](#array%5Fto%5Fstring)._
+*Alias of [array\_to\_string](#array_to_string).*
 
 ## `list_length`
 
-_Alias of [array\_length](#array%5Flength)._
+*Alias of [array\_length](#array_length).*
 
 ## `list_ndims`
 
-_Alias of [array\_ndims](#array%5Fndims)._
+*Alias of [array\_ndims](#array_ndims).*
 
 ## `list_prepend`
 
-_Alias of [array\_prepend](#array%5Fprepend)._
+*Alias of [array\_prepend](#array_prepend).*
 
 ## `list_pop_back`
 
-_Alias of [array\_pop\_back](#array%5Fpop%5Fback)._
+*Alias of [array\_pop\_back](#array_pop_back).*
 
 ## `list_pop_front`
 
-_Alias of [array\_pop\_front](#array%5Fpop%5Ffront)._
+*Alias of [array\_pop\_front](#array_pop_front).*
 
 ## `list_position`
 
-_Alias of [array\_position](#array%5Fposition)._
+*Alias of [array\_position](#array_position).*
 
 ## `list_positions`
 
-_Alias of [array\_positions](#array%5Fpositions)._
+*Alias of [array\_positions](#array_positions).*
 
 ## `list_push_back`
 
-_Alias of [array\_append](#array%5Fappend)._
+*Alias of [array\_append](#array_append).*
 
 ## `list_push_front`
 
-_Alias of [array\_prepend](#array%5Fprepend)._
+*Alias of [array\_prepend](#array_prepend).*
 
 ## `list_repeat`
 
-_Alias of [array\_repeat](#array%5Frepeat)._
+*Alias of [array\_repeat](#array_repeat).*
 
 ## `list_resize`
 
-_Alias of [array\_resize](#array%5Fresize)._
+*Alias of [array\_resize](#array_resize).*
 
 ## `list_remove`
 
-_Alias of [array\_remove](#array%5Fremove)._
+*Alias of [array\_remove](#array_remove).*
 
 ## `list_remove_n`
 
-_Alias of [array\_remove\_n](#array%5Fremove%5Fn)._
+*Alias of [array\_remove\_n](#array_remove_n).*
 
 ## `list_remove_all`
 
-_Alias of [array\_remove\_all](#array%5Fremove%5Fall)._
+*Alias of [array\_remove\_all](#array_remove_all).*
 
 ## `list_replace`
 
-_Alias of [array\_replace](#array%5Freplace)._
+*Alias of [array\_replace](#array_replace).*
 
 ## `list_replace_n`
 
-_Alias of [array\_replace\_n](#array%5Freplace%5Fn)._
+*Alias of [array\_replace\_n](#array_replace_n).*
 
 ## `list_replace_all`
 
-_Alias of [array\_replace\_all](#array%5Freplace%5Fall)._
+*Alias of [array\_replace\_all](#array_replace_all).*
 
 ## `list_reverse`
 
-_Alias of [array\_reverse](#array%5Freverse)._
+*Alias of [array\_reverse](#array_reverse).*
 
 ## `list_slice`
 
-_Alias of [array\_slice](#array%5Fslice)._
+*Alias of [array\_slice](#array_slice).*
 
 ## `list_sort`
 
-_Alias of [array\_sort](#array%5Fsort)._
+*Alias of [array\_sort](#array_sort).*
 
 ## `list_to_string`
 
-_Alias of [array\_to\_string](#array%5Fto%5Fstring)._
+*Alias of [array\_to\_string](#array_to_string).*
 
 ## `list_union`
 
-_Alias of [array\_union](#array%5Funion)._
+*Alias of [array\_union](#array_union).*
 
 ## `make_array`
 
@@ -1167,11 +1167,11 @@ make_array(expression1[, ..., expression_n])
 
 ## `array_empty`
 
-_Alias of [empty](#empty)._
+*Alias of [empty](#empty).*
 
 **Arguments**
 
-* **expression\_n**: Expression to include in the output array. Can be a constant, column, or function, and any combination of arithmetic or string operators.
+- **expression\_n**: Expression to include in the output array. Can be a constant, column, or function, and any combination of arithmetic or string operators.
 
 **Example**
 
@@ -1186,11 +1186,11 @@ _Alias of [empty](#empty)._
 
 **Aliases**
 
-* make\_list
+- make\_list
 
 ## `make_list`
 
-_Alias of [make\_array](#make%5Farray)._
+*Alias of [make\_array](#make_array).*
 
 ## `string_to_array`
 
@@ -1202,17 +1202,17 @@ starts_with(str, delimiter[, null_str])
 
 **Arguments**
 
-* **str**: String expression to split.
-* **delimiter**: Delimiter string to split on.
-* **null\_str**: Substring values to be replaced with `NULL`
+- **str**: String expression to split.
+- **delimiter**: Delimiter string to split on.
+- **null\_str**: Substring values to be replaced with `NULL`
 
 **Aliases**
 
-* string\_to\_list
+- string\_to\_list
 
 ## `string_to_list`
 
-_Alias of [string\_to\_array](#string%5Fto%5Farray)._
+*Alias of [string\_to\_array](#string_to_array).*
 
 ## `trim_array`
 
@@ -1226,8 +1226,8 @@ trim_array(array, n)
 
 **Arguments**
 
-* **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
-* **n**: Element to trim the array.
+- **array**: Array expression. Can be a constant, column, or function, and any combination of array operators.
+- **n**: Element to trim the array.
 
 ## `range`
 
@@ -1265,13 +1265,13 @@ are not allowed
 
 **Arguments**
 
-* **start**: start of the range
-* **end**: end of the range (not included)
-* **step**: increase by step (can not be 0)
+- **start**: start of the range
+- **end**: end of the range (not included)
+- **step**: increase by step (can not be 0)
 
 **Aliases**
 
-* generate\_series
+- generate\_series
 
 Was this helpful?
 

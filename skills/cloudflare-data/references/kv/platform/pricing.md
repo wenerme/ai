@@ -12,19 +12,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pricing
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/kv/platform/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers KV is included in both the Free and Paid [Workers plans](https://developers.cloudflare.com/workers/platform/pricing/).
 
-|               | Free plan1    | Paid plan                         |
-| ------------- | ------------- | --------------------------------- |
-| Keys read     | 100,000 / day | 10 million/month, + $0.50/million |
-| Keys written  | 1,000 / day   | 1 million/month, + $5.00/million  |
-| Keys deleted  | 1,000 / day   | 1 million/month, + $5.00/million  |
-| List requests | 1,000 / day   | 1 million/month, + $5.00/million  |
-| Stored data   | 1 GB          | 1 GB, + $0.50/ GB-month           |
+|  | Free plan<sup>1</sup> | Paid plan |
+| --- | --- | --- |
+| Keys read | 100,000 / day | 10 million/month, + $0.50/million |
+| Keys written | 1,000 / day | 1 million/month, + $5.00/million |
+| Keys deleted | 1,000 / day | 1 million/month, + $5.00/million |
+| List requests | 1,000 / day | 1 million/month, + $5.00/million |
+| Stored data | 1 GB | 1 GB, + $0.50/ GB-month |
 
-1 The Workers Free plan includes limited Workers KV usage. All limits reset daily at 00:00 UTC. If you exceed any one of these limits, further operations of that type will fail with an error.
+<sup>1</sup> The Workers Free plan includes limited Workers KV usage. All limits reset daily at 00:00 UTC. If you exceed any one of these limits, further operations of that type will fail with an error.
 
 Note
 
@@ -32,7 +32,7 @@ Workers KV pricing for read, write and delete operations is on a per-key basis. 
 
 ## Pricing FAQ
 
-#### When writing via KV's [REST API](https://developers.cloudflare.com/api/resources/kv/subresources/namespaces/subresources/keys/methods/bulk%5Fupdate/), how are writes charged?
+#### When writing via KV's [REST API](https://developers.cloudflare.com/api/resources/kv/subresources/namespaces/subresources/keys/methods/bulk_update/), how are writes charged?
 
 Each key-value pair in the `PUT` request is counted as a single write, identical to how each call to `PUT` in the Workers API counts as a write. Writing 5,000 keys via the REST API incurs the same write costs as making 5,000 `PUT` calls in a Worker.
 

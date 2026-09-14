@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # AI security
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/analytics/ai-security/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/analytics/ai-security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The AI security report dashboard summarizes your organization's AI usage and potential security risks.
 
 To view the AI security report dashboard:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights**.
 2. Go to **Dashboards**.
 3. Select **AI security report**.
 
@@ -28,41 +28,41 @@ Refer to [Insights overview](https://developers.cloudflare.com/cloudflare-one/in
 
 To populate the AI security report dashboard, you must have:
 
-* [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) enabled to inspect outbound HTTP and DNS traffic.
-* User traffic to SaaS AI applications (for example, ChatGPT or Gemini) sent through Cloudflare Gateway.
-* [Model Context Protocol (MCP) servers](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/) behind [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/) policies.
+- [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) enabled to inspect outbound HTTP and DNS traffic.
+- User traffic to SaaS AI applications (for example, ChatGPT or Gemini) sent through Cloudflare Gateway.
+- [Model Context Protocol (MCP) servers](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/) behind [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/) policies.
 
 ## Available insights
 
 The AI security report dashboard includes the following panels and metrics:
 
-* [Top 5 visited AI applications by user count](#top-5-visited-ai-applications-by-user-count)
-* [Statuses applied to AI applications by application count](#statuses-applied-to-ai-applications-by-application-count)
-* [Data uploaded to Artificial Intelligence applications by status](#data-uploaded-to-artificial-intelligence-applications-by-status)
-* [MCP servers behind Access over time](#mcp-servers-behind-access-over-time)
-* [Access login events to MCP servers](#access-login-events-to-mcp-servers)
+- [Top 5 visited AI applications by user count](#top-5-visited-ai-applications-by-user-count)
+- [Statuses applied to AI applications by application count](#statuses-applied-to-ai-applications-by-application-count)
+- [Data uploaded to Artificial Intelligence applications by status](#data-uploaded-to-artificial-intelligence-applications-by-status)
+- [MCP servers behind Access over time](#mcp-servers-behind-access-over-time)
+- [Access login events to MCP servers](#access-login-events-to-mcp-servers)
 
 ### Top 5 visited AI applications by user count
 
 Displays the most accessed AI tools in your organization and the number of users visiting each application in a time-series graph.
-Each bar represents user activity for a specific AI application (for example, ChatGPT or Gemini) over time.
+ Each bar represents user activity for a specific AI application (for example, ChatGPT or Gemini) over time.
 
 Use this chart to monitor adoption trends and detect new or unauthorized AI tools being accessed.
 
 ### Statuses applied to AI applications by application count
 
 Reports the total number of AI applications identified and their review statuses.
-Statuses include:
+ Statuses include:
 
-* Unreviewed — Applications not yet evaluated by administrators.
-* In Review — Applications currently under review for approval.
-* Unapproved — Applications that are restricted or blocked.
-* Approved — Applications explicitly permitted for organizational use.
+- Unreviewed — Applications not yet evaluated by administrators.
+- In Review — Applications currently under review for approval.
+- Unapproved — Applications that are restricted or blocked.
+- Approved — Applications explicitly permitted for organizational use.
 
 ### Data uploaded to Artificial Intelligence applications by status
 
 Reports the amount of data transferred to AI tools, broken down by review status (Unreviewed, In Review, Unapproved, Approved).
-Use this report to understand whether sensitive data is being sent to unapproved or unreviewed AI applications.
+ Use this report to understand whether sensitive data is being sent to unapproved or unreviewed AI applications.
 
 ### MCP servers behind Access over time
 

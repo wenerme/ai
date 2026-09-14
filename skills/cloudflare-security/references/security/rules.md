@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Security rules
 
-Last updated Sep 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/security/rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security/rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Security rules perform security-related actions on incoming requests that match specified filters. Rules are evaluated and executed in order, from first to last.
 
@@ -20,7 +20,7 @@ You can create Security Rules from reviewed [Attack Signature Detection](https:/
 
 To access security rules in the new security dashboard, go to the **Security rules** page.
 
-[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 
 ## Security rules
 
@@ -28,17 +28,15 @@ The **Security rules** tab includes a list of different types of rules configure
 
 To create a security rule:
 
-1. In the Cloudflare dashboard, go to the **Security rules** page.
-[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+1. In the Cloudflare dashboard, go to the **Security rules** page. [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. (Optional) Select **Templates**, and then select a template from the list. You can customize the default configuration of the template before deploying the new rule. Refer to the resources listed in the next step.
-3. Select **Create rule** \> select the type of rule you want to create. Refer to the following resources about each rule type:
-
-  * [Custom rules](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/#rule-form)
-  * [Rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/create-zone-dashboard/#rule-form)
-  * [API sequence rules](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/#rule-form)
-  * [API JWT validation rules](https://developers.cloudflare.com/api-shield/security/jwt-validation/#rule-form) (requires a [token configuration](https://developers.cloudflare.com/security/settings/#all-settings))
-  * [Managed rules exceptions](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-dashboard/#2-define-basic-exception-parameters)
-  * [Content security rules](https://developers.cloudflare.com/client-side-security/rules/create-dashboard/#rule-form) (previously known as policies)
+3. Select **Create rule** > select the type of rule you want to create. Refer to the following resources about each rule type:
+   - [Custom rules](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/#rule-form)
+   - [Rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/create-zone-dashboard/#rule-form)
+   - [API sequence rules](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/#rule-form)
+   - [API JWT validation rules](https://developers.cloudflare.com/api-shield/security/jwt-validation/#rule-form) (requires a [token configuration](https://developers.cloudflare.com/security/settings/#all-settings))
+   - [Managed rules exceptions](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-dashboard/#2-define-basic-exception-parameters)
+   - [Content security rules](https://developers.cloudflare.com/client-side-security/rules/create-dashboard/#rule-form) (previously known as policies)
 
 Notes
 
@@ -48,9 +46,9 @@ The **Security rules** tab includes functionality available in different product
 
 The tab may show additional rule types if you have configured at least one of the following:
 
-* [IP access rules](https://developers.cloudflare.com/waf/tools/ip-access-rules/)
-* [User agent blocking rules](https://developers.cloudflare.com/waf/tools/user-agent-blocking/)
-* [Zone lockdown rules](https://developers.cloudflare.com/waf/tools/zone-lockdown/)
+- [IP access rules](https://developers.cloudflare.com/waf/tools/ip-access-rules/)
+- [User agent blocking rules](https://developers.cloudflare.com/waf/tools/user-agent-blocking/)
+- [Zone lockdown rules](https://developers.cloudflare.com/waf/tools/zone-lockdown/)
 
 ## DDoS protection
 
@@ -58,8 +56,8 @@ The **DDoS protection** tab shows the multiple DDoS mitigation services provided
 
 To learn more about DDoS protection overrides, refer to the following resources:
 
-* [HTTP DDoS attack protection overrides](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/)
-* [Network-layer DDoS attack protection overrides](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/)
+- [HTTP DDoS attack protection overrides](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/)
+- [Network-layer DDoS attack protection overrides](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/)
 
 Note
 

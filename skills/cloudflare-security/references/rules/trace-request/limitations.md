@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Trace limitations
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/trace-request/limitations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/trace-request/limitations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Automatic rule bypasses
 
@@ -28,17 +28,17 @@ For more information, refer to [Why are some rules bypassed?](https://developers
 
 Trace currently does not support:
 
-* Hostnames using [Data Localization Suite](https://developers.cloudflare.com/data-localization/)
-* [Spectrum](https://developers.cloudflare.com/spectrum/) applications
+- Hostnames using [Data Localization Suite](https://developers.cloudflare.com/data-localization/)
+- [Spectrum](https://developers.cloudflare.com/spectrum/) applications
 
 Additionally, the following products will not appear in trace results:
 
-* [Firewall rules (deprecated)](https://developers.cloudflare.com/firewall/)
-* [Load Balancing](https://developers.cloudflare.com/load-balancing/) and [Load Balancer Custom Rules](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/)
-* [IP Access rules](https://developers.cloudflare.com/waf/tools/ip-access-rules/)
-* [Rate limiting rules (previous version)](https://developers.cloudflare.com/waf/reference/legacy/old-rate-limiting/)
-* [WAF managed rules (previous version)](https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/)
-* [Content security rules](https://developers.cloudflare.com/client-side-security/rules/)
+- [Firewall rules (deprecated)](https://developers.cloudflare.com/firewall/)
+- [Load Balancing](https://developers.cloudflare.com/load-balancing/) and [Load Balancer Custom Rules](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/)
+- [IP Access rules](https://developers.cloudflare.com/waf/tools/ip-access-rules/)
+- [Rate limiting rules (previous version)](https://developers.cloudflare.com/waf/reference/legacy/old-rate-limiting/)
+- [WAF managed rules (previous version)](https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/)
+- [Content security rules](https://developers.cloudflare.com/client-side-security/rules/)
 
 Was this helpful?
 

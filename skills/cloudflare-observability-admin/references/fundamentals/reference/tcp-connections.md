@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # TCP connections
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/reference/tcp-connections/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/tcp-connections/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following section explains how Cloudflare directs traffic efficiently with anycast routing and serves as an intermediary between users and origin servers. The second part covers TCP connections and keep-alives for performance optimization, and lastly, TCP Fast Open (TFO), a protocol extension that enhances the speed of TCP connections.
 
@@ -20,16 +20,20 @@ The following section explains how Cloudflare directs traffic efficiently with a
 
 Users connect to Cloudflare by sending requests from their devices to Cloudflare's global network. Cloudflare connects to the origin server by acting as an intermediary between the user and the origin.
 
+```
 flowchart LR
 accTitle: Connections with Cloudflare
 A[Visitor] <-- Connection --> B[Cloudflare global network] <-- Connection --> C[Origin server]
+
+```
+
 
 
 User traffic is routed to the nearest Cloudflare data center based on the shortest [Border Gateway Protocol ↗](https://www.cloudflare.com/learning/security/glossary/what-is-bgp/) (BGP) path, thanks to [anycast ↗](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/) routing. Cloudflare then processes the request. In case a request is not served from Cloudflare’s data centers, Cloudflare will open a connection to the origin server to forward the request.
 
 ## TCP connections and keep-alives
 
-HTTP (Hypertext Transfer Protocol) is a [Layer 7 ↗](https://en.wikipedia.org/wiki/OSI%5Fmodel) application protocol that operates over TCP. By default, HTTP opens a new TCP connection for each request-response cycle, which can lead to performance overhead due to the repeated connection establishment and teardown.
+HTTP (Hypertext Transfer Protocol) is a [Layer 7 ↗](https://en.wikipedia.org/wiki/OSI_model) application protocol that operates over TCP. By default, HTTP opens a new TCP connection for each request-response cycle, which can lead to performance overhead due to the repeated connection establishment and teardown.
 
 Keep-Alives are a mechanism that bridges TCP and HTTP, and allow a single TCP connection to remain open for multiple HTTP requests and responses. This minimizes the connection overhead and latency associated with establishing new TCP connections for each web resource. Keep-Alives improve the efficiency and responsiveness of web applications by facilitating the reuse of existing connections, reducing network traffic, and enhancing user experience.
 
@@ -47,7 +51,7 @@ TCP connection settings between the user and Cloudflare, and between Cloudflare 
 
 ## TCP Fast Open (TFO)
 
-[TCP Fast Open ↗](https://en.wikipedia.org/wiki/TCP%5FFast%5FOpen) (TFO) is a protocol extension that can significantly improve the speed of establishing TCP connections by allowing data to be sent in the initial SYN packet, rather than requiring a separate handshake before data transmission begins. TFO can reduce latency and improve website and application performance, particularly on high-latency networks. Cloudflare supports TFO on user connections.
+[TCP Fast Open ↗](https://en.wikipedia.org/wiki/TCP_Fast_Open) (TFO) is a protocol extension that can significantly improve the speed of establishing TCP connections by allowing data to be sent in the initial SYN packet, rather than requiring a separate handshake before data transmission begins. TFO can reduce latency and improve website and application performance, particularly on high-latency networks. Cloudflare supports TFO on user connections.
 
 When a client initiates a connection to a web server protected by Cloudflare, it sends a TCP SYN packet to request a connection. Cloudflare, acting as a reverse proxy, intercepts the SYN packet and responds with a SYN-ACK packet to establish the connection. With TFO enabled, Cloudflare can also send initial data (such as HTTP request data) in the SYN-ACK packet, eliminating the need for an additional round-trip for data transmission. The client receives the SYN-ACK packet with data and acknowledges it with an ACK packet. This fast tracks the connection setup.
 

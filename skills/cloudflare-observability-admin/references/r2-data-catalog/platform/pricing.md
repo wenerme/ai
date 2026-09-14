@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pricing
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2-data-catalog/platform/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2-data-catalog/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 R2 Data Catalog charges based on two dimensions in addition to standard [R2 storage and operations](https://developers.cloudflare.com/r2/pricing/):
 
@@ -23,17 +23,17 @@ All included usage is on a monthly basis.
 
 ## R2 Data Catalog pricing
 
-|                                                            | Pricing                      |
-| ---------------------------------------------------------- | ---------------------------- |
-| **Catalog operations**                                     |                              |
-| Included                                                   | 1 million operations / month |
-| Additional                                                 | $9.00 / million operations   |
-| **Data processed (Compaction)** [1](#user-content-fn-1)    |                              |
-| Included                                                   | 10 GB / month                |
-| Additional (data processed)                                | $0.005 / GB processed        |
-| **Objects processed (Compaction)** [1](#user-content-fn-1) |                              |
-| Included                                                   | 1 million objects / month    |
-| Additional                                                 | $2.00 / million objects      |
+|  | Pricing |
+| --- | --- |
+| **Catalog operations** | |
+| Included | 1 million operations / month |
+| Additional | $9.00 / million operations |
+| **Data processed (Compaction)** <sup>[1](#user-content-fn-1)</sup> | |
+| Included | 10 GB / month |
+| Additional (data processed) | $0.005 / GB processed |
+| **Objects processed (Compaction)** <sup>[1](#user-content-fn-1)</sup> | |
+| Included | 1 million objects / month |
+| Additional | $2.00 / million objects |
 
 ### Catalog operations
 
@@ -43,8 +43,8 @@ Catalog operations are metadata requests made to the Iceberg REST catalog, such 
 
 When you turn on [automatic compaction](https://developers.cloudflare.com/r2-data-catalog/table-maintenance/), R2 Data Catalog periodically rewrites small data files into larger, optimized files. This improves query performance and reduces the number of files in your table. Compaction is billed on two sub-dimensions:
 
-* **Data processed**: The total bytes read and rewritten during compaction.
-* **Objects processed**: The number of data files compacted.
+- **Data processed**: The total bytes read and rewritten during compaction.
+- **Objects processed**: The number of data files compacted.
 
 Compaction charges only apply when compaction is turned on for a table. If you have not turned on compaction, you will not incur any compaction charges.
 
@@ -62,12 +62,12 @@ When you turn on [automatic snapshot expiration](https://developers.cloudflare.c
 
 A user maintains a single Iceberg table with 50 GB of data. They make 500,000 catalog operations per month and have compaction turned on, which processes 20 GB across 200,000 files.
 
-| Dimension                   | Usage   | Included  | Billable | Cost      |
-| --------------------------- | ------- | --------- | -------- | --------- |
-| Catalog operations          | 500,000 | 1,000,000 | 0        | $0.00     |
-| Compaction (data processed) | 20 GB   | 10 GB     | 10 GB    | $0.05     |
-| Compaction (objects)        | 200,000 | 1,000,000 | 0        | $0.00     |
-| **Total (Data Catalog)**    |         |           |          | **$0.05** |
+| Dimension | Usage | Included | Billable | Cost |
+| --- | --- | --- | --- | --- |
+| Catalog operations | 500,000 | 1,000,000 | 0 | $0.00 |
+| Compaction (data processed) | 20 GB | 10 GB | 10 GB | $0.05 |
+| Compaction (objects) | 200,000 | 1,000,000 | 0 | $0.00 |
+| **Total (Data Catalog)** |  |  |  | **$0.05** |
 
 Standard R2 storage charges ($0.015 / GB-month) apply separately for the 50 GB of data stored.
 
@@ -75,13 +75,13 @@ Standard R2 storage charges ($0.015 / GB-month) apply separately for the 50 GB o
 
 A user streams data into an Iceberg table at 20 MB/s using [Pipelines](https://developers.cloudflare.com/pipelines/). Over a month (\~30 days) this produces approximately 50,625 GB (\~49 TB) of data, 347,000 catalog operations, and compaction processes roughly 50,625 GB across 43,200 files.
 
-| Dimension                   | Usage           | Included    | Billable        | Cost          |
-| --------------------------- | --------------- | ----------- | --------------- | ------------- |
-| R2 storage                  | 50,625 GB-month | 10 GB-month | 50,615 GB-month | $759.23       |
-| Catalog operations          | 347,000         | 1,000,000   | 0               | $0.00         |
-| Compaction (data processed) | 50,625 GB       | 10 GB       | 50,615 GB       | $253.08       |
-| Compaction (objects)        | 43,200          | 1,000,000   | 0               | $0.00         |
-| **Total**                   |                 |             |                 | **$1,012.31** |
+| Dimension | Usage | Included | Billable | Cost |
+| --- | --- | --- | --- | --- |
+| R2 storage | 50,625 GB-month | 10 GB-month | 50,615 GB-month | $759.23 |
+| Catalog operations | 347,000 | 1,000,000 | 0 | $0.00 |
+| Compaction (data processed) | 50,625 GB | 10 GB | 50,615 GB | $253.08 |
+| Compaction (objects) | 43,200 | 1,000,000 | 0 | $0.00 |
+| **Total** |  |  |  | **$1,012.31** |
 
 For large-scale use cases, storage costs are typically the largest component of the bill.
 
@@ -91,7 +91,7 @@ To learn more about how usage is billed, refer to [Cloudflare Billing Policy](ht
 
 ## Footnotes
 
-1. Only applies when compaction is enabled for a table. [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2)
+1. Only applies when compaction is enabled for a table. [↩](#user-content-fnref-1) [↩<sup>2</sup>](#user-content-fnref-1-2)
 
 Was this helpful?
 

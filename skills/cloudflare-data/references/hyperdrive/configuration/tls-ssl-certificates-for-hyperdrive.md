@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # SSL/TLS certificates
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/configuration/tls-ssl-certificates-for-hyperdrive/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/configuration/tls-ssl-certificates-for-hyperdrive/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Hyperdrive provides additional ways to secure connectivity to your database. Hyperdrive supports:
 
-1. **Server certificates** for TLS (SSL) modes such as `verify-ca`/`VERIFY_CA` and `verify-full`/`VERIFY_IDENTITY` for increased security. When configured, Hyperdrive will verify that the certificates have been signed by the expected certificate authority (CA) to avoid man-in-the-middle attacks.
+1. **Server certificates** for TLS (SSL) modes such as `verify-ca`/ `VERIFY_CA` and `verify-full`/ `VERIFY_IDENTITY` for increased security. When configured, Hyperdrive will verify that the certificates have been signed by the expected certificate authority (CA) to avoid man-in-the-middle attacks.
 2. **Client certificates** for Hyperdrive to authenticate itself to your database with credentials beyond username/password. To properly use client certificates, your database must be configured to verify the client certificates provided by a client, such as Hyperdrive, to allow access to the database.
 
 Hyperdrive can be configured to use only server certificates, only client certificates, or both depending on your security requirements and database configurations.
@@ -25,11 +25,11 @@ Hyperdrive can be configured to use only server certificates, only client certif
 
 Hyperdrive supports common encryption TLS/SSL modes to connect to your database. The mode names differ between PostgreSQL and MySQL:
 
-| PostgreSQL        | MySQL              | Description                                                                                                                                                                                                        |
-| ----------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| require (default) | REQUIRED (default) | TLS is required for encrypted connectivity and server certificates are validated (based on WebPKI).                                                                                                                |
-| verify-ca         | VERIFY\_CA         | Hyperdrive will verify that the database server is trustworthy by verifying that the certificates of the server have been signed by the expected root certificate authority or intermediate certificate authority. |
-| verify-full       | VERIFY\_IDENTITY   | In addition to verify-ca/VERIFY\_CA checks, Hyperdrive requires the database hostname to match a Subject Alternative Name (SAN) or Common Name (CN) on the certificate.                                            |
+| PostgreSQL | MySQL | Description |
+| --- | --- | --- |
+| `require` (default) | `REQUIRED` (default) | TLS is required for encrypted connectivity and server certificates are validated (based on WebPKI). |
+| `verify-ca` | `VERIFY_CA` | Hyperdrive will verify that the database server is trustworthy by verifying that the certificates of the server have been signed by the expected root certificate authority or intermediate certificate authority. |
+| `verify-full` | `VERIFY_IDENTITY` | In addition to `verify-ca`/`VERIFY_CA` checks, Hyperdrive requires the database hostname to match a Subject Alternative Name (SAN) or Common Name (CN) on the certificate. |
 
 By default, all Hyperdrive configurations are encrypted with SSL/TLS (`require`/`REQUIRED`). This requires your database to be configured to accept encrypted connections (with SSL/TLS).
 
@@ -73,8 +73,7 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
 
 From the dashboard, follow these steps to create a Hyperdrive configuration with server certificates:
 
-1. In the Cloudflare dashboard, go to the **Hyperdrive** page.
-[Go to **Hyperdrive** ↗](https://dash.cloudflare.com/?to=/:account/workers/hyperdrive)
+1. In the Cloudflare dashboard, go to the **Hyperdrive** page. [Go to **Hyperdrive** ↗](https://dash.cloudflare.com/?to=/:account/workers/hyperdrive)
 2. Select **Create configuration**.
 3. Select **Server certificates**.
 4. Specify a SSL mode of **Verify CA** or **Verify full**.
@@ -124,8 +123,7 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
 
 From the dashboard, follow these steps to create a Hyperdrive configuration with server certificates:
 
-1. In the Cloudflare dashboard, go to the **Hyperdrive** page.
-[Go to **Hyperdrive** ↗](https://dash.cloudflare.com/?to=/:account/workers/hyperdrive)
+1. In the Cloudflare dashboard, go to the **Hyperdrive** page. [Go to **Hyperdrive** ↗](https://dash.cloudflare.com/?to=/:account/workers/hyperdrive)
 2. Select **Create configuration**.
 3. Select **Client certificates**.
 4. Select the SSL client certificate and private key pair for Hyperdrive to use during the connection setup with your database server.

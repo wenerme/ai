@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Environments
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflare-environments/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflare-environments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A Worker config file may contain configuration for multiple [Cloudflare environments](https://developers.cloudflare.com/workers/wrangler/environments/). With the Cloudflare Vite plugin, you select a Cloudflare environment at dev or build time by providing the `CLOUDFLARE_ENV` environment variable. Consider the following example Worker config file:
 
@@ -21,7 +21,7 @@ A Worker config file may contain configuration for multiple [Cloudflare environm
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"main": "./src/index.ts",
 	"vars": {
 		"MY_VAR": "Top-level var"
@@ -45,7 +45,7 @@ A Worker config file may contain configuration for multiple [Cloudflare environm
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 main = "./src/index.ts"
 
 [vars]
@@ -91,13 +91,15 @@ Put secrets for use in local development in either a `.dev.vars` file or a `.env
 
 Note
 
-You can use the [secrets configuration property](https://developers.cloudflare.com/workers/wrangler/configuration/#secrets-configuration-property) to declare which secret names your Worker requires. When defined, only the keys listed in `secrets.required` are loaded from `.dev.vars` or `.env`. Additional keys are excluded and missing keys produce a warning.
+You can use the [`secrets` configuration property](https://developers.cloudflare.com/workers/wrangler/configuration/#secrets-configuration-property) to declare which secret names your Worker requires. When defined, only the keys listed in `secrets.required` are loaded from `.dev.vars` or `.env`. Additional keys are excluded and missing keys produce a warning.
 
 Note
 
 Choose to use either `.dev.vars` or `.env` but not both. If you define a `.dev.vars` file, then values in `.env` files will not be included in the `env` object during local development.
 
 These files should be formatted using the [dotenv ↗](https://hexdocs.pm/dotenvy/dotenv-file-format.html) syntax. For example:
+
+*.dev.vars / .envbash*
 
 ```bash
 SECRET_KEY="value"
@@ -112,19 +114,19 @@ To set different secrets for each Cloudflare environment, create files named `.d
 
 When you select a Cloudflare environment in your local development, the corresponding environment-specific file will be loaded ahead of the generic `.dev.vars` (or `.env`) file.
 
-* When using `.dev.vars.<environment-name>` files, all secrets must be defined per environment. If `.dev.vars.<environment-name>` exists then only this will be loaded; the `.dev.vars` file will not be loaded.
-* In contrast, all matching `.env` files are loaded and the values are merged. For each variable, the value from the most specific file is used, with the following precedence:
-  * `.env.<environment-name>.local` (most specific)
-  * `.env.local`
-  * `.env.<environment-name>`
-  * `.env` (least specific)
+- When using `.dev.vars.<environment-name>` files, all secrets must be defined per environment. If `.dev.vars.<environment-name>` exists then only this will be loaded; the `.dev.vars` file will not be loaded.
+- In contrast, all matching `.env` files are loaded and the values are merged. For each variable, the value from the most specific file is used, with the following precedence:
+  - `.env.<environment-name>.local` (most specific)
+  - `.env.local`
+  - `.env.<environment-name>`
+  - `.env` (least specific)
 
 Controlling \`.env\` handling
 
 It is possible to control how `.env` files are loaded in local development by setting environment variables on the process running the tools.
 
-* To disable loading local dev vars from `.env` files without providing a `.dev.vars` file, set the `CLOUDFLARE_LOAD_DEV_VARS_FROM_DOT_ENV` environment variable to `"false"`.
-* To include every environment variable defined in your system's process environment as a local development variable, ensure there is no `.dev.vars` and then set the `CLOUDFLARE_INCLUDE_PROCESS_ENV` environment variable to `"true"`. This is not needed when using the [secrets configuration property](https://developers.cloudflare.com/workers/wrangler/configuration/#secrets-configuration-property), which loads from `process.env` automatically.
+- To disable loading local dev vars from `.env` files without providing a `.dev.vars` file, set the `CLOUDFLARE_LOAD_DEV_VARS_FROM_DOT_ENV` environment variable to `"false"`.
+- To include every environment variable defined in your system's process environment as a local development variable, ensure there is no `.dev.vars` and then set the `CLOUDFLARE_INCLUDE_PROCESS_ENV` environment variable to `"true"`. This is not needed when using the [`secrets` configuration property](https://developers.cloudflare.com/workers/wrangler/configuration/#secrets-configuration-property), which loads from `process.env` automatically.
 
 ## Combining Cloudflare environments and Vite modes
 
@@ -135,7 +137,7 @@ You may wish to combine the concepts of [Cloudflare environments](https://develo
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"main": "./src/index.ts",
 	"vars": {
 		"MY_VAR": "Top-level var"
@@ -159,7 +161,7 @@ You may wish to combine the concepts of [Cloudflare environments](https://develo
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 main = "./src/index.ts"
 
 [vars]
@@ -174,9 +176,13 @@ MY_VAR = "Production var"
 
 Next, provide `.env.staging` and `.env.production` files:
 
+*.env.stagingsh*
+
 ```sh
 CLOUDFLARE_ENV=staging
 ```
+
+*.env.productionsh*
 
 ```sh
 CLOUDFLARE_ENV=production

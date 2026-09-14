@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Human-in-the-loop patterns
 
-Last updated Jul 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Human-in-the-loop (HITL) patterns add approval or input at different layers of an Agent. You can respond to an MCP server request, hold application work in a durable Workflow, or approve a connector call before model-generated code invokes a tool.
 
 ## Why human-in-the-loop?
 
-* **Compliance**: Regulatory requirements may mandate human approval for certain actions
-* **Safety**: High-stakes operations (payments, deletions, external communications) need oversight
-* **Quality**: Human review catches errors AI might miss
-* **Trust**: Users feel more confident when they can approve critical actions
+- **Compliance**: Regulatory requirements may mandate human approval for certain actions
+- **Safety**: High-stakes operations (payments, deletions, external communications) need oversight
+- **Quality**: Human review catches errors AI might miss
+- **Trust**: Users feel more confident when they can approve critical actions
 
 ### Common use cases
 
@@ -31,11 +31,11 @@ Common uses include financial approvals, content moderation, bulk data operation
 
 Choose the pattern based on who introduces the pause and where it occurs:
 
-| Pattern                | Approval layer                             | Initiated by                | Typical wait            | Key API                               |
-| ---------------------- | ------------------------------------------ | --------------------------- | ----------------------- | ------------------------------------- |
-| **MCP elicitation**    | MCP request handled by your Agent client   | MCP server developer        | Minutes                 | configureElicitationHandlers()        |
-| **Workflow approval**  | Durable application task or tool operation | Agent application developer | Months or years         | waitForApproval()                     |
-| **Code Mode approval** | Connector call in model-generated code     | Code Mode Agent developer   | Until configured expiry | requiresApproval, approve(), reject() |
+| Pattern | Approval layer | Initiated by | Typical wait | Key API |
+| --- | --- | --- | --- | --- |
+| **MCP elicitation** | MCP request handled by your Agent client | MCP server developer | Minutes | `configureElicitationHandlers()` |
+| **Workflow approval** | Durable application task or tool operation | Agent application developer | Months or years | `waitForApproval()` |
+| **Code Mode approval** | Connector call in model-generated code | Code Mode Agent developer | Until configured expiry | `requiresApproval`, `approve()`, `reject()` |
 
 ## Workflow-based approval
 
@@ -476,7 +476,7 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
 	"name": "expense-approval",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"compatibility_flags": ["nodejs_compat"],
 	"durable_objects": {
 		"bindings": [{ "name": "EXPENSE_AGENT", "class_name": "ExpenseAgent" }],
@@ -496,7 +496,7 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
 name = "expense-approval"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[durable_objects.bindings]]

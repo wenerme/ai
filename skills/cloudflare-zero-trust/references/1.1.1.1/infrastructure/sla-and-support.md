@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # SLA and technical support
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/1.1.1.1/infrastructure/sla-and-support/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/infrastructure/sla-and-support/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 As you use 1.1.1.1 in your infrastructure or service, note that dedicated technical support is limited.
 

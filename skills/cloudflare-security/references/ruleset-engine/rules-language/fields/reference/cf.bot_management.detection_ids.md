@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.bot\_management.detection\_ids
 
-`cf.bot_management.detection_ids` `Array<Number>`
+`cf.bot_management.detection_ids``Array<Number>`
 
 List of IDs that correlate to the Bot Management heuristic detections made on a request.
 
@@ -23,8 +23,8 @@ any(cf.bot_management.detection_ids[*] eq 33554817)
 ```
 
 Categories:
-* Request
-* Bots
+- Request
+- Bots
 
 Was this helpful?
 

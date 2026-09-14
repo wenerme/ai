@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # getCurrentAgent()
 
-Last updated Jun 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `getCurrentAgent()` function allows you to access the current agent context from anywhere in your code, including external utility functions and libraries. This is useful when you need agent information in functions that do not have direct access to `this`.
 
@@ -130,9 +130,9 @@ export class MyAgent extends AIChatAgent {
 
 ### Built-in vs custom methods
 
-* **Built-in methods** (`onRequest`, `onEmail`, `onStateChanged`): Already have context.
-* **Custom methods** (your methods): Automatically wrapped during initialization.
-* **External functions**: Access context through `getCurrentAgent()`.
+- **Built-in methods** ( `onRequest`, `onEmail`, `onStateChanged`): Already have context.
+- **Custom methods** (your methods): Automatically wrapped during initialization.
+- **External functions**: Access context through `getCurrentAgent()`.
 
 ### The context flow
 
@@ -276,9 +276,9 @@ function logRequestInfo() {
 
 The agent context only propagates along the call tree of the original invocation. Code reached outside that call tree starts with an empty context, so `getCurrentAgent()` returns an object whose fields are `undefined`. Common cases include:
 
-* a host callback invoked through RPC from a Worker Loader child isolate, such as sandboxed Codemode execution;
-* a service binding or Durable Object RPC entrypoint;
-* a queue consumer or another entrypoint that retains an agent reference.
+- a host callback invoked through RPC from a Worker Loader child isolate, such as sandboxed Codemode execution;
+- a service binding or Durable Object RPC entrypoint;
+- a queue consumer or another entrypoint that retains an agent reference.
 
 Route the callback through a public method on the agent. Custom methods are wrapped automatically, so calling `agent.someMethod()` re-enters that agent's context:
 
@@ -361,12 +361,12 @@ function getCurrentAgent<T extends Agent>(): {
 
 #### Returns:
 
-| Property   | Type                    | Description                                                   |
-| ---------- | ----------------------- | ------------------------------------------------------------- |
-| agent      | T \| undefined          | The current agent instance                                    |
-| connection | Connection \| undefined | The WebSocket connection (if called from a WebSocket handler) |
-| request    | Request \| undefined    | The HTTP request (if called from a request handler)           |
-| email      | AgentEmail \| undefined | The email (if called from an email handler)                   |
+| Property | Type | Description |
+| --- | --- | --- |
+| `agent` | `T \| undefined` | The current agent instance |
+| `connection` | `Connection \| undefined` | The WebSocket connection (if called from a WebSocket handler) |
+| `request` | `Request \| undefined` | The HTTP request (if called from a request handler) |
+| `email` | `AgentEmail \| undefined` | The email (if called from an email handler) |
 
 #### Usage:
 
@@ -400,44 +400,52 @@ export class MyAgent extends AIChatAgent {
 
 The context available depends on how the method was invoked:
 
-| Invocation              | agent | connection | request | email   |
-| ----------------------- | ----- | ---------- | ------- | ------- |
-| onRequest()             | Yes   | No         | Yes     | No      |
-| onConnect()             | Yes   | Yes        | Yes     | No      |
-| onMessage()             | Yes   | Yes        | No      | No      |
-| onEmail()               | Yes   | No         | No      | Yes     |
-| Custom method (via RPC) | Yes   | Yes        | No      | No      |
-| Scheduled task          | Yes   | No         | No      | No      |
-| Queue callback          | Yes   | Depends    | Depends | Depends |
+| Invocation | `agent` | `connection` | `request` | `email` |
+| --- | --- | --- | --- | --- |
+| `onRequest()` | Yes | No | Yes | No |
+| `onConnect()` | Yes | Yes | Yes | No |
+| `onMessage()` | Yes | Yes | No | No |
+| `onEmail()` | Yes | No | No | Yes |
+| Custom method (via RPC) | Yes | Yes | No | No |
+| Scheduled task | Yes | No | No | No |
+| Queue callback | Yes | Depends | Depends | Depends |
 
 ## Best practices
 
 1. **Use `this` when possible**: Inside agent methods, prefer `this.name`, `this.state`, etc. over `getCurrentAgent()`.
 2. **Use `getCurrentAgent()` in external functions**: When you need agent context in utility functions or libraries that do not have access to `this`.
 3. **Check for undefined**: The returned values may be `undefined` if called outside an agent context.
-```js
-const { agent } = getCurrentAgent();
-if (agent) {
-	// Safe to use agent
-	console.log(agent.name);
-}
-```
-```ts
-const { agent } = getCurrentAgent();
-if (agent) {
-	// Safe to use agent
-	console.log(agent.name);
-}
-```
+
+   ```js
+   const { agent } = getCurrentAgent();
+   if (agent) {
+   	// Safe to use agent
+   	console.log(agent.name);
+   }
+   ```
+
+   ```ts
+   const { agent } = getCurrentAgent();
+   if (agent) {
+   	// Safe to use agent
+   	console.log(agent.name);
+   }
+   ```
+
+
 4. **Type the agent**: Pass your agent class as a type parameter for proper typing.
-```js
-const { agent } = getCurrentAgent();
-// agent is typed as MyAgent | undefined
-```
-```ts
-const { agent } = getCurrentAgent<MyAgent>();
-// agent is typed as MyAgent | undefined
-```
+
+   ```js
+   const { agent } = getCurrentAgent();
+   // agent is typed as MyAgent | undefined
+   ```
+
+   ```ts
+   const { agent } = getCurrentAgent<MyAgent>();
+   // agent is typed as MyAgent | undefined
+   ```
+
+
 
 ## Next steps
 

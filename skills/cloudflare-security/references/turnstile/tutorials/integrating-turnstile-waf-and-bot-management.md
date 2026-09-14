@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Integrate Turnstile, WAF, & Bot Management
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/turnstile/tutorials/integrating-turnstile-waf-and-bot-management/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/tutorials/integrating-turnstile-waf-and-bot-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial will guide you on how to integrate Cloudflare Turnstile, [Web Application Firewall (WAF)](https://developers.cloudflare.com/waf/), and [Bot Management](https://developers.cloudflare.com/bots/get-started/bot-management/) into an existing authentication system. This combination creates a robust defense against various threats, including automated attacks and malicious login attempts.
 
@@ -22,16 +22,16 @@ To use WAF and Bot Management, your site must have its DNS pointing through Clou
 
 WAF, Bot Management, and Turnstile work well together by operating on different layers of the application:
 
-* WAF filters malicious traffic based on network signals.
-* Bot Management analyzes requests to identify and mitigate automated threats.
-* Turnstile examines client-side and browser signals to distinguish between human users and bots.
+- WAF filters malicious traffic based on network signals.
+- Bot Management analyzes requests to identify and mitigate automated threats.
+- Turnstile examines client-side and browser signals to distinguish between human users and bots.
 
 By combining server-side (WAF and Bot Management) and client-side (Turnstile) security measures, you can combine multiple layers of defense to create a protection system that is difficult for attackers to circumvent.
 
 ## Before you begin
 
-* You must have a Cloudflare account with access to WAF and Bot Management (if using).
-* An existing JavaScript/TypeScript-based route handling authentication.
+- You must have a Cloudflare account with access to WAF and Bot Management (if using).
+- An existing JavaScript/TypeScript-based route handling authentication.
 
 This tutorial uses a simple login form written in plain HTML to demonstrate how to integrate Turnstile into your application. In the backend, a stubbed out authentication route, written in TypeScript, will handle the login request. You may replace this with the language of your choice. As long as your language or framework is able to make an external HTTP request to [Turnstile's API](https://developers.cloudflare.com/api/resources/turnstile/subresources/widgets/methods/create/), you can integrate Turnstile into your application.
 
@@ -41,14 +41,12 @@ If your site is on Cloudflare's network and subscribed to an Enterprise plan, yo
 
 ### Issue challenges for potential bot traffic
 
-1. In the Cloudflare dashboard, go to the **WAF** page.
-[Go to **WAF** ↗](https://dash.cloudflare.com/?to=/:account/application-security/waf)
+1. In the Cloudflare dashboard, go to the **WAF** page. [Go to **WAF** ↗](https://dash.cloudflare.com/?to=/:account/application-security/waf)
 2. Create a new custom WAF rule by selecting **Edit expression**:
-
-  * Field: "Bot Score"
-  * Operator: "less than or equal to"
-  * Value: "30"
-  * Action: "Managed Challenge"
+   - Field: "Bot Score"
+   - Operator: "less than or equal to"
+   - Value: "30"
+   - Action: "Managed Challenge"
 
 This configuration challenges requests with a low bot score, leveraging network signals to identify potential threats before they reach your application. You may customize the score threshold based on your specific use case.
 
@@ -56,8 +54,7 @@ This configuration challenges requests with a low bot score, leveraging network 
 
 Turnstile can be used on any site, regardless of whether it is on Cloudflare's network:
 
-1. In the Cloudflare dashboard, go to the **Turnstile** page.
-[Go to **Turnstile** ↗](https://dash.cloudflare.com/?to=/:account/turnstile)
+1. In the Cloudflare dashboard, go to the **Turnstile** page. [Go to **Turnstile** ↗](https://dash.cloudflare.com/?to=/:account/turnstile)
 2. Select **Add widget** and fill out the necessary information.
 3. Add your domain to the Turnstile configuration.
 4. Select **Create**.
@@ -181,9 +178,9 @@ By combining Turnstile with WAF and Bot Management, you can create a system that
 
 If you are interested in customizing Turnstile, refer to the resources below for more information:
 
-* [Client-side rendering](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/). Learn how to customize how and when Turnstile renders in your user interface, to better fit your application's needs and user experience.
-* [Server-side validation](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/). Learn how Turnstile's API works, including request parameters, as well as how to handle different types of responses, including error codes.
-* [Turnstile Analytics](https://developers.cloudflare.com/turnstile/turnstile-analytics/). Learn how to view Turnstile's analytics in the Cloudflare dashboard. This includes metrics on the number of challenges issued, as well as the [challenge solve rate (CSR)](https://developers.cloudflare.com/cloudflare-challenges/reference/challenge-solve-rate/).
+- [Client-side rendering](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/). Learn how to customize how and when Turnstile renders in your user interface, to better fit your application's needs and user experience.
+- [Server-side validation](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/). Learn how Turnstile's API works, including request parameters, as well as how to handle different types of responses, including error codes.
+- [Turnstile Analytics](https://developers.cloudflare.com/turnstile/turnstile-analytics/). Learn how to view Turnstile's analytics in the Cloudflare dashboard. This includes metrics on the number of challenges issued, as well as the [challenge solve rate (CSR)](https://developers.cloudflare.com/cloudflare-challenges/reference/challenge-solve-rate/).
 
 Was this helpful?
 

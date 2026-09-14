@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers Sites configuration
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/configuration/sites/configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/sites/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use Workers Static Assets Instead
 
@@ -24,15 +24,12 @@ Workers Sites require the latest version of [Wrangler ↗](https://github.com/cl
 
 There are a few specific configuration settings for Workers Sites in your Wrangler file:
 
-* `bucket` required
-
-  * The directory containing your static assets, path relative to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). Example: `bucket = "./public"`.
-* `include` optional
-
-  * A list of gitignore-style patterns for files or directories in `bucket` you exclusively want to upload. Example: `include = ["upload_dir"]`.
-* `exclude` optional
-
-  * A list of gitignore-style patterns for files or directories in `bucket` you want to exclude from uploads. Example: `exclude = ["ignore_dir"]`.
+- `bucket` required
+  - The directory containing your static assets, path relative to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). Example: `bucket = "./public"`.
+- `include` optional
+  - A list of gitignore-style patterns for files or directories in `bucket` you exclusively want to upload. Example: `include = ["upload_dir"]`.
+- `exclude` optional
+  - A list of gitignore-style patterns for files or directories in `bucket` you want to exclude from uploads. Example: `exclude = ["ignore_dir"]`.
 
 To learn more about the optional `include` and `exclude` fields, refer to [Ignoring subsets of static assets](#ignoring-subsets-of-static-assets).
 
@@ -84,7 +81,7 @@ For very exceptionally large pages, Workers Sites might not work for you. There 
 
 ## Ignoring subsets of static assets
 
-Workers Sites require [Wrangler ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler) \- make sure to use the [latest version](https://developers.cloudflare.com/workers/wrangler/install-and-update/#update-wrangler).
+Workers Sites require [Wrangler ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler) - make sure to use the [latest version](https://developers.cloudflare.com/workers/wrangler/install-and-update/#update-wrangler).
 
 There are cases where users may not want to upload certain static assets to their Workers Sites. In this case, Workers Sites can also be configured to ignore certain files or directories using logic similar to [Cargo's optional include and exclude fields ↗](https://doc.rust-lang.org/cargo/reference/manifest.html#the-exclude-and-include-fields-optional).
 
@@ -144,9 +141,9 @@ If you provide both `include` and `exclude` fields, the `include` field will be 
 
 Wrangler will always ignore:
 
-* `node_modules`
-* Hidden files and directories
-* Symlinks
+- `node_modules`
+- Hidden files and directories
+- Symlinks
 
 #### More about include/exclude patterns
 

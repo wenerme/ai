@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Breakpoints
 
-Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/dev-tools/breakpoints/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/dev-tools/breakpoints/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Debug via breakpoints
 
@@ -22,7 +22,7 @@ For more information on breakpoint debugging via Chrome's DevTools, refer to [Ch
 
 ### VSCode debug terminals
 
-Using VSCode's built-in [JavaScript Debug Terminals ↗](https://code.visualstudio.com/docs/nodejs/nodejs-debugging#%5Fjavascript-debug-terminal), all you have to do is open a JS debug terminal (`Cmd + Shift + P` and then type `javascript debug`) and run `wrangler dev` (or `vite dev`) from within the debug terminal. VSCode will automatically connect to your running Worker (even if you're running multiple Workers at once!) and start a debugging session.
+Using VSCode's built-in [JavaScript Debug Terminals ↗](https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_javascript-debug-terminal), all you have to do is open a JS debug terminal (`Cmd + Shift + P` and then type `javascript debug`) and run `wrangler dev` (or `vite dev`) from within the debug terminal. VSCode will automatically connect to your running Worker (even if you're running multiple Workers at once!) and start a debugging session.
 
 ### Setup VS Code to use breakpoints with `launch.json` files
 
@@ -49,10 +49,10 @@ To setup VS Code for breakpoint debugging in your Worker project:
 }
 ```
 
-1. Open your project in VS Code, open a new terminal window from VS Code, and run `npx wrangler dev` to start the local dev server.
-2. At the top of the **Run & Debug** panel, you should see an option to select a configuration. Choose **Wrangler**, and select the play icon. **Wrangler: Remote Process \[0\]** should show up in the Call Stack panel on the left.
-3. Go back to a `.js` or `.ts` file in your project and add at least one breakpoint.
-4. Open your browser and go to the Worker's local URL (default `http://127.0.0.1:8787`). The breakpoint should be hit, and you should be able to review details about your code at the specified line.
+3. Open your project in VS Code, open a new terminal window from VS Code, and run `npx wrangler dev` to start the local dev server.
+4. At the top of the **Run & Debug** panel, you should see an option to select a configuration. Choose **Wrangler**, and select the play icon. **Wrangler: Remote Process \[0]** should show up in the Call Stack panel on the left.
+5. Go back to a `.js` or `.ts` file in your project and add at least one breakpoint.
+6. Open your browser and go to the Worker's local URL (default `http://127.0.0.1:8787`). The breakpoint should be hit, and you should be able to review details about your code at the specified line.
 
 Caution
 
@@ -62,11 +62,11 @@ If you are debugging using `--remote`, you cannot use code minification as the d
 
 Note
 
-The `.vscode/launch.json` file only applies to a single workspace. If you prefer, you can add the above launch configuration to your User Settings (per the [official VS Code documentation ↗](https://code.visualstudio.com/docs/editor/debugging#%5Fglobal-launch-configuration)) to have it available for all your workspaces.
+The `.vscode/launch.json` file only applies to a single workspace. If you prefer, you can add the above launch configuration to your User Settings (per the [official VS Code documentation ↗](https://code.visualstudio.com/docs/editor/debugging#_global-launch-configuration)) to have it available for all your workspaces.
 
 ## Related resources
 
-* [Local Development](https://developers.cloudflare.com/workers/local-development/) \- Develop your Workers and connected resources locally via Wrangler and [workerd ↗](https://github.com/cloudflare/workerd), for a fast, accurate feedback loop.
+- [Local Development](https://developers.cloudflare.com/workers/local-development/) - Develop your Workers and connected resources locally via Wrangler and [`workerd` ↗](https://github.com/cloudflare/workerd), for a fast, accurate feedback loop.
 
 Was this helpful?
 

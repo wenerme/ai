@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Set up a webinar
 
-Last updated Sep 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/webinar/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/webinar/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In a RealtimeKit webinar, presenters publish audio and video from the [stage](https://developers.cloudflare.com/realtime/realtimekit/concepts/meeting/#stage). Viewers watch and can request to join the stage.
 
@@ -22,47 +22,55 @@ This guide sets up a webinar using the default webinar [presets](https://develop
 
 Every RealtimeKit app includes two default presets for webinars. Assign one of these presets to each participant, modify them, or create your own preset to fit your application.
 
-| Role      | Default preset     | Stage behavior                                 | Can accept stage requests |
-| --------- | ------------------ | ---------------------------------------------- | ------------------------- |
-| Presenter | webinar\_presenter | Can join the stage and publish audio and video | Yes                       |
-| Viewer    | webinar\_viewer    | Can request to join the stage                  | No                        |
+| Role | Default preset | Stage behavior | Can accept stage requests |
+| --- | --- | --- | --- |
+| Presenter | `webinar_presenter` | Can join the stage and publish audio and video | Yes |
+| Viewer | `webinar_viewer` | Can request to join the stage | No |
 
 ## Before you begin
 
 Before you set up a webinar, make sure that you have:
 
-* A [Cloudflare account ↗](https://dash.cloudflare.com) with a RealtimeKit app.
-* An API token with Realtime Admin permissions. Keep it server-side. Do not expose it in frontend code.
-* A backend that can call the RealtimeKit REST API to create meetings and add participants.
-* A frontend application ready to integrate [RealtimeKit UI Kit](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/).
+- A [Cloudflare account ↗](https://dash.cloudflare.com) with a RealtimeKit app.
+- An API token with Realtime Admin permissions. Keep it server-side. Do not expose it in frontend code.
+- A backend that can call the RealtimeKit REST API to create meetings and add participants.
+- A frontend application ready to integrate [RealtimeKit UI Kit](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/).
 
 If you have not completed these requirements, refer to [Quickstart](https://developers.cloudflare.com/realtime/realtimekit/quickstart/).
 
 ## Set up a webinar
 
-1. In the [RealtimeKit dashboard ↗](https://dash.cloudflare.com/?to=/:account/realtime/kit), go to **Presets** and review the default `webinar_presenter` and `webinar_viewer` presets. Both presets have **Meeting Type** set to **Video (WebRTC)** and **Manage Stage (Webinar)** turned on under **Configuration** \> **Stage & Media**.
-2. Create a meeting using the [Create Meeting API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/create/). Save the returned meeting `id` for the next step.
-3. Add each presenter and viewer to the meeting using the [Add Participant API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/add%5Fparticipant/). Assign `webinar_presenter` to presenters and `webinar_viewer` to viewers.
+1. In the [RealtimeKit dashboard ↗](https://dash.cloudflare.com/?to=/:account/realtime/kit), go to **Presets** and review the default `webinar_presenter` and `webinar_viewer` presets. Both presets have **Meeting Type** set to **Video (WebRTC)** and **Manage Stage (Webinar)** turned on under **Configuration** > **Stage & Media**.
+2. Create a meeting using the [Create Meeting API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/create/). Save the returned meeting `id` for the next step.
+3. Add each presenter and viewer to the meeting using the [Add Participant API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/add_participant/). Assign `webinar_presenter` to presenters and `webinar_viewer` to viewers.
 4. Deliver each participant's returned `authToken` only to the frontend session for that specific user.
 5. Initialize [RealtimeKit UI Kit](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/) with the participant's `authToken`. UI Kit renders the webinar interface, including stage controls, based on the participant's preset.
 
+<details>
+
+<summary>
+
 Configure presets with the API
 
-If you manage presets programmatically instead of through the dashboard, use the [Create Preset API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/presets/methods/create/) with the following fields:
+</summary>
 
-* `config.view_type` set to `WEBINAR`.
-* `permissions.stage_enabled` set to `true` for both presets.
-* `permissions.can_accept_production_requests` set to `true` for participants who moderate stage requests.
+If you manage presets programmatically instead of through the dashboard, use the <a href="https://developers.cloudflare.com/api/resources/realtime_kit/subresources/presets/methods/create/">Create Preset API</a> with the following fields:
 
-Set `permissions.stage_access`, `permissions.media.audio.can_produce`, `permissions.media.video.can_produce`, and `permissions.media.screenshare.can_produce` to the same value, based on the stage behavior you want:
+- <code>config.view_type</code> set to <code>WEBINAR</code>.
+- <code>permissions.stage_enabled</code> set to <code>true</code> for both presets.
+- <code>permissions.can_accept_production_requests</code> set to <code>true</code> for participants who moderate stage requests.
 
-| Stage behavior        | Applies to                                | Value        |
-| --------------------- | ----------------------------------------- | ------------ |
-| _Allowed to join_     | Presenters                                | ALLOWED      |
-| _Can request to join_ | Viewers who can request to join the stage | CAN\_REQUEST |
-| _Can only view_       | View-only viewers                         | NOT\_ALLOWED |
+Set <code>permissions.stage_access</code>, <code>permissions.media.audio.can_produce</code>, <code>permissions.media.video.can_produce</code>, and <code>permissions.media.screenshare.can_produce</code> to the same value, based on the stage behavior you want:
 
-For the complete request schema, refer to [Presets](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/presets/).
+| Stage behavior | Applies to | Value |
+| --- | --- | --- |
+| *Allowed to join* | Presenters | <code>ALLOWED</code> |
+| *Can request to join* | Viewers who can request to join the stage | <code>CAN_REQUEST</code> |
+| *Can only view* | View-only viewers | <code>NOT_ALLOWED</code> |
+
+For the complete request schema, refer to <a href="https://developers.cloudflare.com/api/resources/realtime_kit/subresources/presets/">Presets</a>.
+
+</details>
 
 ## Manage stage requests
 
@@ -83,10 +91,10 @@ Both presenters and viewers are billed as Audio/Video Participants. For detailed
 
 ## Next steps
 
-* Customize the webinar interface with a [custom control bar](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/custom-controlbar/) or [UI Kit addons](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/addons/).
-* Review [video and simulcast recommendations](https://developers.cloudflare.com/realtime/realtimekit/best-practices/video-and-simulcast/#webinar-audience-is-view-only) for presenter and viewer media quality.
-* [Record the webinar](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/) and store the recording in your own storage.
-* Use [webhooks](https://developers.cloudflare.com/realtime/realtimekit/webhooks/) to track webinar lifecycle events in your backend.
+- Customize the webinar interface with a [custom control bar](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/custom-controlbar/) or [UI Kit addons](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/addons/).
+- Review [video and simulcast recommendations](https://developers.cloudflare.com/realtime/realtimekit/best-practices/video-and-simulcast/#webinar-audience-is-view-only) for presenter and viewer media quality.
+- [Record the webinar](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/) and store the recording in your own storage.
+- Use [webhooks](https://developers.cloudflare.com/realtime/realtimekit/webhooks/) to track webinar lifecycle events in your backend.
 
 Was this helpful?
 

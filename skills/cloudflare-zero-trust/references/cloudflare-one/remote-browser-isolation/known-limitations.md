@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Known limitations
 
-Last updated Sep 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/known-limitations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/known-limitations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Below, you will find information regarding the current limitations for Browser Isolation.
 
@@ -20,21 +20,21 @@ Below, you will find information regarding the current limitations for Browser I
 
 Our Network Vector Rendering (NVR) technology sends drawing instructions to the user's browser instead of streaming video of the page. This allows us to deliver a secure remote computing experience without the bandwidth limitations of video streams. While we expect most websites to work perfectly, some browser features and web technologies are unsupported and will be implemented in the future:
 
-* Webcam and microphone support is unavailable.
-* Websites that use WebGL (a browser technology for rendering 3D graphics) may not function. To turn off WebGL in the browser, refer to [WebGL Rendering Error](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/troubleshooting/#webgl-rendering-error).
-* Netflix and Spotify Web Player are unavailable.
-* H.265/HEVC (a video compression format) is not a supported video format at this time.
+- Webcam and microphone support is unavailable.
+- Websites that use WebGL (a browser technology for rendering 3D graphics) may not function. To turn off WebGL in the browser, refer to [WebGL Rendering Error](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/troubleshooting/#webgl-rendering-error).
+- Netflix and Spotify Web Player are unavailable.
+- H.265/HEVC (a video compression format) is not a supported video format at this time.
 
 ## Browser compatibility
 
-| Browser                                      | Compatibility |
-| -------------------------------------------- | ------------- |
-| Google Chrome                                | ✅             |
-| Mozilla Firefox                              | ✅             |
-| Safari                                       | ✅             |
-| Microsoft Edge (Chromium-based)              | ✅             |
-| Other Chromium-based browsers (Opera, Brave) | ✅             |
-| Internet Explorer 11 and below               | ❌             |
+| Browser | Compatibility |
+| --- | --- |
+| Google Chrome | ✅ |
+| Mozilla Firefox | ✅ |
+| Safari | ✅ |
+| Microsoft Edge (Chromium-based) | ✅ |
+| Other Chromium-based browsers (Opera, Brave) | ✅ |
+| Internet Explorer 11 and below | ❌ |
 
 ### iOS
 
@@ -50,9 +50,9 @@ Browser Isolation uses [WebRTC](https://developers.cloudflare.com/cloudflare-one
 
 To ensure RBI loads correctly, go to `brave://settings/privacy` in your Brave browser window, find **WebRTC IP Handling Policy**, and change the setting from **Disable Non-Proxied UDP** to one of the following:
 
-* **Default**
-* **Default Public and Private Interfaces**
-* **Default Public Interface Only**
+- **Default**
+- **Default Public and Private Interfaces**
+- **Default Public Interface Only**
 
 ## Protocol support
 
@@ -66,9 +66,9 @@ Browser Isolation is not supported in virtualized environments (VMs).
 
 Certain selectors for Gateway HTTP policies bypass Browser Isolation, including:
 
-* [Destination Continent IP Geolocation](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#destination-continent)
-* [Destination Country IP Geolocation](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#destination-country)
-* [Destination IP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#destination-ip)
+- [Destination Continent IP Geolocation](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#destination-continent)
+- [Destination Country IP Geolocation](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#destination-country)
+- [Destination IP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#destination-ip)
 
 You cannot use these selectors to isolate traffic and isolation matches for these selectors will not appear in your Gateway logs. Additionally, you cannot apply other policies based on these selectors while in isolation. For example, if you have a Block policy that matches traffic based on destination IP, Gateway will not block the matching traffic if it is already isolated by an Isolate policy.
 

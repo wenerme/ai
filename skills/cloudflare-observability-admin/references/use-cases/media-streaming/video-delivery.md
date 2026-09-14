@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Upload, encode, and deliver videos
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/media-streaming/video-delivery/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/media-streaming/video-delivery/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Building a video platform requires upload handling, encoding to multiple resolutions, adaptive bitrate delivery, and global distribution. Cloudflare Stream handles all of this — upload, transcode, store, and deliver — with no video infrastructure to manage.
 
@@ -22,21 +22,21 @@ Building a video platform requires upload handling, encoding to multiple resolut
 
 Upload, encode, store, and deliver video with adaptive bitrate streaming. [Learn more about Stream](https://developers.cloudflare.com/stream/).
 
-* **Automatic encoding** \- Videos transcoded to multiple resolutions and formats on upload with no infrastructure to manage
-* **Adaptive bitrate** \- HTTP Live Streaming (HLS) and Dynamic Adaptive Streaming over HTTP (DASH) automatically adjusts quality to match viewer bandwidth
-* **Global delivery** \- Video served directly from Cloudflare's edge network without a separate Content Delivery Network (CDN)
+- **Automatic encoding** - Videos transcoded to multiple resolutions and formats on upload with no infrastructure to manage
+- **Adaptive bitrate** - HTTP Live Streaming (HLS) and Dynamic Adaptive Streaming over HTTP (DASH) automatically adjusts quality to match viewer bandwidth
+- **Global delivery** - Video served directly from Cloudflare's edge network without a separate Content Delivery Network (CDN)
 
 ### Stream Live
 
 Live streaming with automatic recording and instant playback. [Learn more about Stream Live](https://developers.cloudflare.com/stream/stream-live/).
 
-* **Live streaming** \- Low-latency live video with automatic recording and instant playback after the stream ends
+- **Live streaming** - Low-latency live video with automatic recording and instant playback after the stream ends
 
 ### RealtimeKit
 
 Add customizable live video and voice to web or mobile applications. [Learn more about RealtimeKit](https://developers.cloudflare.com/realtime/realtimekit/).
 
-* **Real-time communication** \- Add peer-to-peer video and audio directly to your application
+- **Real-time communication** - Add peer-to-peer video and audio directly to your application
 
 ## Get started
 

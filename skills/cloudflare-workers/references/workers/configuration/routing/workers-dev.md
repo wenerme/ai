@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # workers.dev
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Workers accounts come with a `workers.dev` subdomain that is configurable in the Cloudflare dashboard. Your `workers.dev` subdomain allows you getting started quickly by deploying Workers without first onboarding your custom domain to Cloudflare.
 
@@ -22,11 +22,10 @@ It's recommended to run production Workers on a [Workers route or custom domain]
 
 `workers.dev` subdomains take the format: `<YOUR_ACCOUNT_SUBDOMAIN>.workers.dev`. To change your `workers.dev` subdomain:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Change** next to **Your subdomain**.
 
-All Workers are assigned a `workers.dev` route when they are created or renamed following the syntax `<YOUR_WORKER_NAME>.<YOUR_SUBDOMAIN>.workers.dev`. The [name](https://developers.cloudflare.com/workers/wrangler/configuration/#inheritable-keys) field in your Worker configuration is used as the subdomain for the deployed Worker.
+All Workers are assigned a `workers.dev` route when they are created or renamed following the syntax `<YOUR_WORKER_NAME>.<YOUR_SUBDOMAIN>.workers.dev`. The [`name`](https://developers.cloudflare.com/workers/wrangler/configuration/#inheritable-keys) field in your Worker configuration is used as the subdomain for the deployed Worker.
 
 ## Manage access to `workers.dev`
 
@@ -34,7 +33,7 @@ When enabled, your `workers.dev` URL is available publicly. To require visitors 
 
 Access can protect one Worker's production `workers.dev` URL, preview URLs, or both. You can also protect all Workers or all Worker previews in an account.
 
-To use details about the signed-in user in your Worker, use [ctx.access](https://developers.cloudflare.com/workers/configuration/cloudflare-access/#read-authenticated-user-identity-with-ctxaccess). You can also read the [user's identity](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/#user-identity) from the validated JWT or the `/cdn-cgi/access/get-identity` endpoint.
+To use details about the signed-in user in your Worker, use [`ctx.access`](https://developers.cloudflare.com/workers/configuration/cloudflare-access/#read-authenticated-user-identity-with-ctxaccess). You can also read the [user's identity](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/#user-identity) from the validated JWT or the `/cdn-cgi/access/get-identity` endpoint.
 
 ## Disabling `workers.dev`
 
@@ -42,10 +41,9 @@ To use details about the signed-in user in your Worker, use [ctx.access](https:/
 
 To disable the `workers.dev` route for a Worker:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your Worker.
-3. Go to **Settings** \> **Domains & Routes**.
+3. Go to **Settings** > **Domains & Routes**.
 4. On `workers.dev` click "Disable".
 5. Confirm you want to disable.
 
@@ -65,7 +63,7 @@ workers_dev = false
 
 When you redeploy your Worker with this change, the `workers.dev` route will be disabled. Preview URLs default to matching your `workers_dev` setting unless explicitly configured. If you explicitly enabled Preview URLs, [disable them separately](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/#toggle-preview-urls-enable-or-disable).
 
-If you do not specify `workers_dev = false` but add a [routes component](https://developers.cloudflare.com/workers/wrangler/configuration/#routes) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), the value of `workers_dev` will be inferred as `false` on the next deploy.
+If you do not specify `workers_dev = false` but add a [`routes` component](https://developers.cloudflare.com/workers/wrangler/configuration/#routes) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), the value of `workers_dev` will be inferred as `false` on the next deploy.
 
 Caution
 
@@ -75,9 +73,9 @@ If you disable your `workers.dev` route in the Cloudflare dashboard but do not u
 
 When deploying a Worker with a `workers.dev` subdomain enabled, your Worker name must meet the following requirements:
 
-* Must be 63 characters or less
-* Must contain only alphanumeric characters (`a-z`, `A-Z`, `0-9`) and dashes (`-`)
-* Cannot start or end with a dash (`-`)
+- Must be 63 characters or less
+- Must contain only alphanumeric characters ( `a-z`, `A-Z`, `0-9`) and dashes ( `-`)
+- Cannot start or end with a dash ( `-`)
 
 These restrictions apply because the Worker name is used as a DNS label in your `workers.dev` URL. DNS labels have a maximum length of 63 characters and cannot begin or end with a dash.
 
@@ -87,8 +85,8 @@ Worker names can be up to 255 characters when not using a `workers.dev` subdomai
 
 ## Related resources
 
-* [Announcing workers.dev ↗](https://blog.cloudflare.com/announcing-workers-dev)
-* [Wrangler routes configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#types-of-routes)
+- [Announcing `workers.dev` ↗](https://blog.cloudflare.com/announcing-workers-dev)
+- [Wrangler routes configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#types-of-routes)
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Build a Retrieval Augmented Generation (RAG) AI
 
-Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-retrieval-augmented-generation-ai/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-retrieval-augmented-generation-ai/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide will instruct you through setting up and deploying your first application with Cloudflare AI. You will build a fully-featured AI-powered application, using tools like Workers AI, Vectorize, D1, and Cloudflare Workers.
 
@@ -23,15 +23,23 @@ Looking for a managed option?
 At the end of this tutorial, you will have built an AI tool that allows you to store information and query it using a Large Language Model. This pattern, known as Retrieval Augmented Generation, or RAG, is a useful project you can build by combining multiple aspects of Cloudflare's AI toolkit. You do not need to have experience working with AI tools to build this application.
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
+
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
 
 You will also need access to [Vectorize](https://developers.cloudflare.com/vectorize/platform/pricing/). During this tutorial, we will show how you can optionally integrate with [Anthropic Claude ↗](http://anthropic.com) as well. You will need an [Anthropic API key ↗](https://docs.anthropic.com/en/api/getting-started) to do so.
 
-## 1\. Create a new Worker project
+## 1. Create a new Worker project
 
 C3 (`create-cloudflare-cli`) is a command-line tool designed to help you setup and deploy Workers to Cloudflare as fast as possible.
 
@@ -53,21 +61,29 @@ pnpm create cloudflare@latest rag-ai-tutorial
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `JavaScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `JavaScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 In your project directory, C3 has generated several files.
 
+<details>
+
+<summary>
+
 What files did C3 create?
 
-1. `wrangler.jsonc`: Your [Wrangler](https://developers.cloudflare.com/workers/wrangler/configuration/#sample-wrangler-configuration) configuration file.
-2. `index.js` (in `/src`): A minimal `'Hello World!'` Worker written in [ES module](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) syntax.
-3. `package.json`: A minimal Node dependencies configuration file.
-4. `package-lock.json`: Refer to [npm documentation on package-lock.json ↗](https://docs.npmjs.com/cli/v9/configuring-npm/package-lock-json).
-5. `node_modules`: Refer to [npm documentation node\_modules ↗](https://docs.npmjs.com/cli/v7/configuring-npm/folders#node-modules).
+</summary>
+
+1. <code>wrangler.jsonc</code>: Your <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#sample-wrangler-configuration">Wrangler</a> configuration file.
+2. <code>index.js</code> (in <code>/src</code>): A minimal <code>'Hello World!'</code> Worker written in <a href="https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/">ES module</a> syntax.
+3. <code>package.json</code>: A minimal Node dependencies configuration file.
+4. <code>package-lock.json</code>: Refer to <a href="https://docs.npmjs.com/cli/v9/configuring-npm/package-lock-json"><code>npm</code> documentation on <code>package-lock.json</code> ↗</a>.
+5. <code>node_modules</code>: Refer to <a href="https://docs.npmjs.com/cli/v7/configuring-npm/folders#node-modules"><code>npm</code> documentation <code>node_modules</code> ↗</a>.
+
+</details>
 
 Now, move into your newly created directory:
 
@@ -75,11 +91,11 @@ Now, move into your newly created directory:
 cd rag-ai-tutorial
 ```
 
-## 2\. Develop with Wrangler CLI
+## 2. Develop with Wrangler CLI
 
 The Workers command-line interface, [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), allows you to [create](https://developers.cloudflare.com/workers/wrangler/commands/general/#init), [test](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev), and [deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) your Workers projects. C3 will install Wrangler in projects by default.
 
-After you have created your first Worker, run the [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) command in the project directory to start a local server for developing your Worker. This will allow you to test your Worker locally during development.
+After you have created your first Worker, run the [`wrangler dev`](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) command in the project directory to start a local server for developing your Worker. This will allow you to test your Worker locally during development.
 
 ```sh
 npx wrangler dev
@@ -87,7 +103,7 @@ npx wrangler dev
 
 You will now be able to go to [http://localhost:8787 ↗](http://localhost:8787) to see your Worker running. Any changes you make to your code will trigger a rebuild, and reloading the page will show you the up-to-date output of your Worker.
 
-## 3\. Adding the AI binding
+## 3. Adding the AI binding
 
 To begin using Cloudflare's AI products, you can add the `ai` block to the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) as a [remote binding](https://developers.cloudflare.com/workers/local-development/#remote-bindings). This will set up a binding to Cloudflare's AI models in your code that you can use to interact with the available AI models on the platform.
 
@@ -95,9 +111,9 @@ Note
 
 If you have not used Wrangler before, it will try to open your web browser to login with your Cloudflare account.
 
-If you have issues with this step or you do not have access to a browser interface, refer to the [wrangler login](https://developers.cloudflare.com/workers/wrangler/commands/general/#login) documentation for more information.
+If you have issues with this step or you do not have access to a browser interface, refer to the [`wrangler login`](https://developers.cloudflare.com/workers/wrangler/commands/general/#login) documentation for more information.
 
-This example features the [@cf/meta/llama-3-8b-instruct model](https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct/), which generates text.
+This example features the [`@cf/meta/llama-3-8b-instruct` model](https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct/), which generates text.
 
 ```jsonc
 {
@@ -128,7 +144,7 @@ export default {
 };
 ```
 
-By querying the LLM through the `AI` binding, we can interact directly with Cloudflare AI's large language models directly in our code. In this example, we are using the [@cf/meta/llama-3-8b-instruct model](https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct/), which generates text.
+By querying the LLM through the `AI` binding, we can interact directly with Cloudflare AI's large language models directly in our code. In this example, we are using the [`@cf/meta/llama-3-8b-instruct` model](https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct/), which generates text.
 
 Deploy your Worker using `wrangler`:
 
@@ -146,7 +162,7 @@ curl https://example.username.workers.dev
 {"response":"Answer: The square root of 9 is 3."}
 ```
 
-## 4\. Adding embeddings using Cloudflare D1 and Vectorize
+## 4. Adding embeddings using Cloudflare D1 and Vectorize
 
 Embeddings allow you to add additional capabilities to the language models you can use in your Cloudflare AI projects. This is done via **Vectorize**, Cloudflare's vector database.
 
@@ -220,7 +236,7 @@ Now, we can add a new note to our database using `wrangler d1 execute`:
 npx wrangler d1 execute database --remote --command "INSERT INTO notes (text) VALUES ('The best pizza topping is pepperoni')"
 ```
 
-## 5\. Creating a workflow
+## 5. Creating a workflow
 
 Before we begin creating notes, we will introduce a [Cloudflare Workflow](https://developers.cloudflare.com/workflows). This will allow us to define a durable workflow that can safely and robustly execute all the steps of the RAG process.
 
@@ -268,7 +284,7 @@ On its own, this workflow will not do anything. To execute the workflow, we will
 env.RAG_WORKFLOW.create({ params: { text } });
 ```
 
-## 6\. Creating notes and adding them to Vectorize
+## 6. Creating notes and adding them to Vectorize
 
 To expand on your Workers function in order to handle multiple routes, we will add `hono`, a routing library for Workers. This will allow us to create a new route for adding notes to our database. Install `hono` using `npm`:
 
@@ -311,7 +327,7 @@ This will establish a route at the root path `/` that is functionally equivalent
 
 Now, we can update our workflow to begin adding notes to our database, and generating the related embeddings for them.
 
-This example features the [@cf/baai/bge-base-en-v1.5 model](https://developers.cloudflare.com/workers-ai/models/bge-base-en-v1.5/), which can be used to create an embedding. Embeddings are stored and retrieved inside [Vectorize](https://developers.cloudflare.com/vectorize/), Cloudflare's vector database. The user query is also turned into an embedding so that it can be used for searching within Vectorize.
+This example features the [`@cf/baai/bge-base-en-v1.5` model](https://developers.cloudflare.com/workers-ai/models/bge-base-en-v1.5/), which can be used to create an embedding. Embeddings are stored and retrieved inside [Vectorize](https://developers.cloudflare.com/vectorize/), Cloudflare's vector database. The user query is also turned into an embedding so that it can be used for searching within Vectorize.
 
 ```js
 import { WorkflowEntrypoint } from "cloudflare:workers";
@@ -372,11 +388,11 @@ app.post("/notes", async (c) => {
 });
 ```
 
-## 7\. Querying Vectorize to retrieve notes
+## 7. Querying Vectorize to retrieve notes
 
 To complete your code, you can update the root path (`/`) to query Vectorize. You will convert the query into a vector, and then use the `vector-index` index to find the most similar vectors.
 
-The `topK` parameter limits the number of vectors returned by the function. For instance, providing a `topK` of 1 will only return the _most similar_ vector based on the query. Setting `topK` to 5 will return the 5 most similar vectors.
+The `topK` parameter limits the number of vectors returned by the function. For instance, providing a `topK` of 1 will only return the *most similar* vector based on the query. Setting `topK` to 5 will return the 5 most similar vectors.
 
 Given a list of similar vectors, you can retrieve the notes that match the record IDs stored alongside those vectors. In this case, we are only retrieving a single note - but you may customize this as needed.
 
@@ -445,7 +461,7 @@ app.onError((err, c) => {
 export default app;
 ```
 
-## 8\. Adding Anthropic Claude model (optional)
+## 8. Adding Anthropic Claude model (optional)
 
 If you are working with larger documents, you have the option to use Anthropic's [Claude models ↗](https://claude.ai/), which have large context windows and are well-suited to RAG workflows.
 
@@ -532,7 +548,7 @@ Finally, you'll need to set the `ANTHROPIC_API_KEY` environment variable in your
 $ npx wrangler secret put ANTHROPIC_API_KEY
 ```
 
-## 9\. Deleting notes and vectors
+## 9. Deleting notes and vectors
 
 If you no longer need a note, you can delete it from the database. Any time that you delete a note, you will also need to delete the corresponding vector from Vectorize. You can implement this by building a `DELETE /notes/:id` route in your `src/index.js` file:
 
@@ -549,7 +565,7 @@ app.delete("/notes/:id", async (c) => {
 });
 ```
 
-## 10\. Text splitting (optional)
+## 10. Text splitting (optional)
 
 For large pieces of text, it is recommended to split the text into smaller chunks. This allows LLMs to more effectively gather relevant context, without needing to retrieve large pieces of text.
 
@@ -649,7 +665,7 @@ export class RAGWorkflow extends WorkflowEntrypoint {
 
 Now, when large pieces of text are submitted to the `/notes` endpoint, they will be split into smaller chunks, and each chunk will be processed by the workflow.
 
-## 11\. Deploy your project
+## 11. Deploy your project
 
 If you did not deploy your Worker during [step 1](https://developers.cloudflare.com/workers/get-started/guide/#1-create-a-new-worker-project), deploy your Worker via Wrangler, to a `*.workers.dev` subdomain, or a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/), if you have one configured. If you have not configured any subdomain or domain, Wrangler will prompt you during the publish process to set one up.
 
@@ -661,7 +677,7 @@ Preview your Worker at `<YOUR_WORKER>.<YOUR_SUBDOMAIN>.workers.dev`.
 
 Note
 
-When pushing to your `*.workers.dev` subdomain for the first time, you may see [523 errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-523/) while DNS is propagating. These errors should resolve themselves after a minute or so.
+When pushing to your `*.workers.dev` subdomain for the first time, you may see [`523` errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-523/) while DNS is propagating. These errors should resolve themselves after a minute or so.
 
 ## Related resources
 
@@ -669,13 +685,13 @@ A full version of this codebase is available on GitHub. It includes a frontend U
 
 To do more:
 
-* Explore the reference diagram for a [Retrieval Augmented Generation (RAG) Architecture](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-rag/).
-* Review Cloudflare's [AI documentation](https://developers.cloudflare.com/workers-ai).
-* Review [Tutorials](https://developers.cloudflare.com/workers/tutorials/) to build projects on Workers.
-* Explore [Examples](https://developers.cloudflare.com/workers/examples/) to experiment with copy and paste Worker code.
-* Understand how Workers works in [Reference](https://developers.cloudflare.com/workers/reference/).
-* Learn about Workers features and functionality in [Platform](https://developers.cloudflare.com/workers/platform/).
-* Set up [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) to programmatically create, test, and deploy your Worker projects.
+- Explore the reference diagram for a [Retrieval Augmented Generation (RAG) Architecture](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-rag/).
+- Review Cloudflare's [AI documentation](https://developers.cloudflare.com/workers-ai).
+- Review [Tutorials](https://developers.cloudflare.com/workers/tutorials/) to build projects on Workers.
+- Explore [Examples](https://developers.cloudflare.com/workers/examples/) to experiment with copy and paste Worker code.
+- Understand how Workers works in [Reference](https://developers.cloudflare.com/workers/reference/).
+- Learn about Workers features and functionality in [Platform](https://developers.cloudflare.com/workers/platform/).
+- Set up [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) to programmatically create, test, and deploy your Worker projects.
 
 Was this helpful?
 
@@ -686,5 +702,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-retrieval-augmented-generation-ai/#page","headline":"Build a Retrieval Augmented Generation (RAG) AI · Cloudflare Workers AI docs","description":"Build your first AI app with Cloudflare AI. This guide uses Workers AI, Vectorize, D1, and Cloudflare Workers.","url":"https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-retrieval-augmented-generation-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Hono","JavaScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-retrieval-augmented-generation-ai/#page","headline":"Build a Retrieval Augmented Generation (RAG) AI · Cloudflare Workers AI docs","description":"Build your first AI app with Cloudflare AI. This guide uses Workers AI, Vectorize, D1, and Cloudflare Workers.","url":"https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-retrieval-augmented-generation-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Hono","JavaScript"]}
 ```

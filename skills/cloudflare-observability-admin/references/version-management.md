@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Version Management
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/version-management/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/version-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Safely test, deploy, and roll back changes to your zone configurations using Version Management.
 
@@ -22,15 +22,15 @@ Enterprise-only
 
 By using Version Management, you can:
 
-* Create independent versions to make changes with no risk of impacting live traffic.
-* Safely deploy changes to staging environments ahead of deploy to production.
-* Quickly roll back deployed changes when issues occur.
+- Create independent versions to make changes with no risk of impacting live traffic.
+- Safely deploy changes to staging environments ahead of deploy to production.
+- Quickly roll back deployed changes when issues occur.
 
 ## Availability
 
-|              | Free | Pro | Business | Enterprise |
-| ------------ | ---- | --- | -------- | ---------- |
-| Availability | No   | No  | No       | Yes        |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | No | No | No | Yes |
 
 For access, [enable](https://developers.cloudflare.com/version-management/how-to/enable/) Zone Versioning in the Cloudflare dashboard.
 
@@ -38,101 +38,237 @@ For access, [enable](https://developers.cloudflare.com/version-management/how-to
 
 Version Management does not currently support or have limited support for the following products or features:
 
+<details>
+
+<summary>
+
 API Shield
 
-* Some [API Shield](https://developers.cloudflare.com/api-shield/) configurations are not cloned when a new zone version is created.
-* Customers are allowed to opt-in to remove the UI block that prevents enabling Version Management.
+</summary>
+
+- Some <a href="https://developers.cloudflare.com/api-shield/">API Shield</a> configurations are not cloned when a new zone version is created.
+- Customers are allowed to opt-in to remove the UI block that prevents enabling Version Management.
+
+</details>
+
+<details>
+
+<summary>
 
 Authenticated Origin Pull
 
-* [Authenticated Origin Pull](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/) does not work with Zone Versioning.
-* Accessing your domain from an allowlisted IP returns a Cloudflare 520 error.
+</summary>
+
+- <a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/">Authenticated Origin Pull</a> does not work with Zone Versioning.
+- Accessing your domain from an allowlisted IP returns a Cloudflare 520 error.
+
+</details>
+
+<details>
+
+<summary>
 
 Cache
 
-* [Cache Reserve](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/) is intended for production use only.
-* Purging the production environment purges all environments.
+</summary>
+
+- <a href="https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/">Cache Reserve</a> is intended for production use only.
+- Purging the production environment purges all environments.
+
+</details>
+
+<details>
+
+<summary>
 
 Cache Rules when used with Cloudflare Images
 
-* [Image Resizing](https://developers.cloudflare.com/images/) does not work with the `additional_cacheable_ports` [Cache Rule](https://developers.cloudflare.com/cache/how-to/cache-rules/) setting and Zone Versioning.
-* If you use `additional_cacheable_ports` with Image Resizing, the image will be resized every time it is requested and will result in low performance.
+</summary>
+
+- <a href="https://developers.cloudflare.com/images/">Image Resizing</a> does not work with the <code>additional_cacheable_ports</code> <a href="https://developers.cloudflare.com/cache/how-to/cache-rules/">Cache Rule</a> setting and Zone Versioning.
+- If you use <code>additional_cacheable_ports</code> with Image Resizing, the image will be resized every time it is requested and will result in low performance.
+
+</details>
+
+<details>
+
+<summary>
 
 Workers Cache API
 
-* [Workers Cache API](https://developers.cloudflare.com/workers/runtime-apis/cache/) does not work with Version Management.
-* If you use the Workers Cache API with Zone Versioning, you might encounter unexpected caching behaviours.
+</summary>
+
+- <a href="https://developers.cloudflare.com/workers/runtime-apis/cache/">Workers Cache API</a> does not work with Version Management.
+- If you use the Workers Cache API with Zone Versioning, you might encounter unexpected caching behaviours.
+
+</details>
+
+<details>
+
+<summary>
 
 China Network
 
-* Regardless of the version deployed to production, traffic in China will always target the root zone.
-* Other incompatibility issues with Access and ICP licenses.
+</summary>
+
+- Regardless of the version deployed to production, traffic in China will always target the root zone.
+- Other incompatibility issues with Access and ICP licenses.
+
+</details>
+
+<details>
+
+<summary>
 
 Cloudflare API
 
-* Version Management environments — including their routing expressions and version assignments — can be managed through the public [Environments API](https://developers.cloudflare.com/api/resources/zones/subresources/environments/).
-* Creating, cloning, and editing zone versions (the configuration snapshots themselves) are currently only available through the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
+</summary>
+
+- Version Management environments — including their routing expressions and version assignments — can be managed through the public <a href="https://developers.cloudflare.com/api/resources/zones/subresources/environments/">Environments API</a>.
+- Creating, cloning, and editing zone versions (the configuration snapshots themselves) are currently only available through the <a href="https://dash.cloudflare.com/">Cloudflare dashboard ↗</a>.
+
+</details>
+
+<details>
+
+<summary>
 
 Domain-scoped Roles
 
-* [Domain-scoped Roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/#domain-scoped-roles) apply only to your root zone.
-* Once a new version is created, these roles do not copy over and they lose access to versions.
+</summary>
+
+- <a href="https://developers.cloudflare.com/fundamentals/manage-members/roles/#domain-scoped-roles">Domain-scoped Roles</a> apply only to your root zone.
+- Once a new version is created, these roles do not copy over and they lose access to versions.
+
+</details>
+
+<details>
+
+<summary>
 
 Image Transformations
 
-* Changes made to [Image Transformations](https://developers.cloudflare.com/images/optimization/transformations/overview/) are not cloned when a new zone version is created.
+</summary>
+
+- Changes made to <a href="https://developers.cloudflare.com/images/optimization/transformations/overview/">Image Transformations</a> are not cloned when a new zone version is created.
+
+</details>
+
+<details>
+
+<summary>
 
 Network Error Logging
 
-* [Network Error Logging](https://developers.cloudflare.com/network-error-logging/) configurations are not cloned when a new version is created.
+</summary>
+
+- <a href="https://developers.cloudflare.com/network-error-logging/">Network Error Logging</a> configurations are not cloned when a new version is created.
+
+</details>
+
+<details>
+
+<summary>
 
 Client-side security
 
-* [Client-side security](https://developers.cloudflare.com/client-side-security/) (formerly known as Page Shield) is not available for versioning and is only configurable under your Global Configuration.
+</summary>
+
+- <a href="https://developers.cloudflare.com/client-side-security/">Client-side security</a> (formerly known as Page Shield) is not available for versioning and is only configurable under your Global Configuration.
+
+</details>
+
+<details>
+
+<summary>
 
 Rules
 
-* Version Management does not currently support the following:
-  * [Snippets](https://developers.cloudflare.com/rules/snippets/)
-  * [Compression Rules](https://developers.cloudflare.com/rules/compression-rules/)
+</summary>
+
+- Version Management does not currently support the following:
+  - <a href="https://developers.cloudflare.com/rules/snippets/">Snippets</a>
+  - <a href="https://developers.cloudflare.com/rules/compression-rules/">Compression Rules</a>
+
+</details>
+
+<details>
+
+<summary>
 
 Security Insights
 
-* [Security Insights](https://developers.cloudflare.com/security/security-insights/) are not shown when Zone Versioning is enabled and the first version is deployed to production.
+</summary>
+
+- <a href="https://developers.cloudflare.com/security/security-insights/">Security Insights</a> are not shown when Zone Versioning is enabled and the first version is deployed to production.
+
+</details>
+
+<details>
+
+<summary>
 
 Terraform
 
-* Version Management does not currently support [Terraform](https://developers.cloudflare.com/terraform/).
-* Customers should either use Terraform or Version Management.
+</summary>
+
+- Version Management does not currently support <a href="https://developers.cloudflare.com/terraform/">Terraform</a>.
+- Customers should either use Terraform or Version Management.
+
+</details>
+
+<details>
+
+<summary>
 
 WAF Attack Score
 
-* [WAF Attack Score](https://developers.cloudflare.com/waf/detections/attack-score/) configurations are not cloned when a new zone version is created.
+</summary>
+
+- <a href="https://developers.cloudflare.com/waf/detections/attack-score/">WAF Attack Score</a> configurations are not cloned when a new zone version is created.
+
+</details>
+
+<details>
+
+<summary>
 
 Waiting Room
 
-* [Waiting Room](https://developers.cloudflare.com/waiting-room/) users active on the site may be placed back in the queue.
-* Waiting Room users in the queue may lose their place in line.
-* Traffic may exceed limits.
+</summary>
+
+- <a href="https://developers.cloudflare.com/waiting-room/">Waiting Room</a> users active on the site may be placed back in the queue.
+- Waiting Room users in the queue may lose their place in line.
+- Traffic may exceed limits.
+
+</details>
+
+<details>
+
+<summary>
 
 Wrangler
 
-* If a version has a Worker route, it might disappear when a Worker is deployed via [Wrangler](https://developers.cloudflare.com/workers/wrangler/).
-* If two versions have the same custom domains, the Worker might randomly choose between them.
+</summary>
+
+- If a version has a Worker route, it might disappear when a Worker is deployed via <a href="https://developers.cloudflare.com/workers/wrangler/">Wrangler</a>.
+- If two versions have the same custom domains, the Worker might randomly choose between them.
+
+</details>
 
 ## Requirements
 
 To use Version Management, the following must all be true:
 
-* Your zone is on an Enterprise plan.
-* Your zone is in an [active](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/) state.
-* Your zone uses [WAF managed rules](https://developers.cloudflare.com/waf/managed-rules/).
-* Your zone has migrated to use [custom rules](https://developers.cloudflare.com/waf/custom-rules/) instead of Firewall Rules (deprecated).
-* Your account uses the [new WAF ↗](https://blog.cloudflare.com/new-cloudflare-waf/) (if not, contact your account team).
-* Your user account must have a Super Administrator or Administrator [role](https://developers.cloudflare.com/fundamentals/manage-members/roles/). **Zone Versioning** roles cannot create new versions.
-* Your user account must have an API Key provisioned (if not, [view your API Key](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#view-your-global-api-key)).
-* Your user account must have API Access enabled. Refer to [control API Access](https://developers.cloudflare.com/fundamentals/api/how-to/control-api-access/) for more information.
-* You must use the dashboard to manage versioning.
+- Your zone is on an Enterprise plan.
+- Your zone is in an [active](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/) state.
+- Your zone uses [WAF managed rules](https://developers.cloudflare.com/waf/managed-rules/).
+- Your zone has migrated to use [custom rules](https://developers.cloudflare.com/waf/custom-rules/) instead of Firewall Rules (deprecated).
+- Your account uses the [new WAF ↗](https://blog.cloudflare.com/new-cloudflare-waf/) (if not, contact your account team).
+- Your user account must have a Super Administrator or Administrator [role](https://developers.cloudflare.com/fundamentals/manage-members/roles/). **Zone Versioning** roles cannot create new versions.
+- Your user account must have an API Key provisioned (if not, [view your API Key](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#view-your-global-api-key)).
+- Your user account must have API Access enabled. Refer to [control API Access](https://developers.cloudflare.com/fundamentals/api/how-to/control-api-access/) for more information.
+- You must use the dashboard to manage versioning.
 
 Was this helpful?
 

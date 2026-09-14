@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Changelog
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/log-explorer/changelog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/log-explorer/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/log-explorer.xml)
 
@@ -23,12 +23,12 @@ Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 Log Explorer has a refreshed dataset configuration experience in the Cloudflare dashboard. The new controls make it easier to choose which fields and events Log Explorer ingests.
 
-* **Grouped field selection** organizes fields by category and shows the number selected in each group.
-* **Field details** identify each field's data type and mark required or deprecated fields.
-* **Bulk controls** let you select all fields or reset the selection to the dataset defaults.
-* **Ingestion filters** let you ingest all events or only events that match your conditions.
+- **Grouped field selection** organizes fields by category and shows the number selected in each group.
+- **Field details** identify each field's data type and mark required or deprecated fields.
+- **Bulk controls** let you select all fields or reset the selection to the dataset defaults.
+- **Ingestion filters** let you ingest all events or only events that match your conditions.
 
-These controls are available when you add a dataset or select **Actions** \> **Edit** for an enabled dataset.
+These controls are available when you add a dataset or select **Actions** > **Edit** for an enabled dataset.
 
 For more information, refer to [Configure fields and filters](https://developers.cloudflare.com/log-explorer/manage-datasets/#configure-fields-and-filters).
 
@@ -41,7 +41,7 @@ Cloudflare Log Explorer customers can now permanently delete account and zone da
 
 Deletion protection is enabled by default to prevent accidental data loss. In the dashboard, go to [Manage datasets](https://developers.cloudflare.com/log-explorer/manage-datasets/), disable deletion protection for the dataset, select **Delete**, and enter the dataset name to confirm.
 
-To delete a dataset through the API, first set `deletion_protection` to `false` with the [Update an account or zone dataset](https://developers.cloudflare.com/api/resources/logs/subresources/log%5Fexplorer/subresources/datasets/methods/update/) method. Then use the [Delete an account or zone dataset](https://developers.cloudflare.com/api/resources/logs/subresources/log%5Fexplorer/subresources/datasets/methods/delete/) method.
+To delete a dataset through the API, first set `deletion_protection` to `false` with the [Update an account or zone dataset](https://developers.cloudflare.com/api/resources/logs/subresources/log_explorer/subresources/datasets/methods/update/) method. Then use the [Delete an account or zone dataset](https://developers.cloudflare.com/api/resources/logs/subresources/log_explorer/subresources/datasets/methods/delete/) method.
 
 Dataset deletion is irreversible and runs asynchronously. You cannot recreate the same dataset while deletion is in progress.
 
@@ -50,7 +50,7 @@ Dataset deletion is irreversible and runs asynchronously. You cannot recreate th
 
 **Per-zone post-quantum visibility in Logpush and Log Explorer**
 
-[Cloudflare Radar ↗](https://radar.cloudflare.com/post-quantum) publishes global statistics on post-quantum key agreement adoption across all Cloudflare traffic, but until now customers had no way to see the same measurement scoped to their own zones. This is now possible because the [http\_requests](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http%5Frequests/) Logpush dataset — also queryable in [Log Explorer](https://developers.cloudflare.com/log-explorer/) — includes a new `ClientTLSKeyExchangeGroup` field.
+[Cloudflare Radar ↗](https://radar.cloudflare.com/post-quantum) publishes global statistics on post-quantum key agreement adoption across all Cloudflare traffic, but until now customers had no way to see the same measurement scoped to their own zones. This is now possible because the [`http_requests`](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/) Logpush dataset — also queryable in [Log Explorer](https://developers.cloudflare.com/log-explorer/) — includes a new `ClientTLSKeyExchangeGroup` field.
 
 The field reports the TLS key exchange group negotiated on the client-to-Cloudflare connection, by group name. Post-quantum connections appear as `X25519MLKEM768`, and classical connections appear as `X25519`, `P-256`, or another named group. A value of `UNK` means the group could not be determined, and `NONE` means TLS was not used.
 
@@ -71,9 +71,10 @@ Log Explorer customers can select Log Explorer datasets to create charts from ra
 
 #### Key benefits
 
-* **Unified visibility**: Consolidate signals from different Cloudflare products (for example, HTTP Traffic and R2 Storage) into a single view.
-* **Flexible monitoring**: Create charts that focus on specific status codes, ASN regions, or security actions that matter to your business.
-* **Expanded limits**: Log Explorer customers can create up to **100 dashboards** (up from 25 for standard customers).
+- **Unified visibility**: Consolidate signals from different Cloudflare products (for example, HTTP Traffic and R2 Storage) into a single view.
+- **Flexible monitoring**: Create charts that focus on specific status codes, ASN regions, or security actions that matter to your business.
+- **Expanded limits**: Log Explorer customers can create up to **100 dashboards** (up from 25 for standard customers).
+
 ![Custom Dashboards home page showing dashboard list and chart previews](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1079,height=793,format=webp/_astro/customdashboardshome.BIpSvImM.jpg)
 
 To get started, refer to the [Custom Dashboards documentation](https://developers.cloudflare.com/analytics/custom-dashboards/).
@@ -89,10 +90,10 @@ Previously, ingesting logs often meant taking an "all or nothing" approach to da
 
 #### Key capabilities
 
-* **Granular control:** Select only the specific fields you need when enabling a new dataset.
-* **Dynamic updates:** Update fields for existing, already enabled logstreams at any time.
-* **Historical consistency:** Even if you disable a field later, you can still query and receive results for that field for the period it was captured.
-* **Data integrity:** Core fields, such as `Timestamp`, are automatically retained to ensure your logs remain searchable and chronologically accurate.
+- **Granular control:** Select only the specific fields you need when enabling a new dataset.
+- **Dynamic updates:** Update fields for existing, already enabled logstreams at any time.
+- **Historical consistency:** Even if you disable a field later, you can still query and receive results for that field for the period it was captured.
+- **Data integrity:** Core fields, such as `Timestamp`, are automatically retained to ensure your logs remain searchable and chronologically accurate.
 
 #### Example configuration
 
@@ -124,10 +125,10 @@ Log Explorer now supports multiple concurrent queries with the new Tabs feature.
 
 #### Key capabilities
 
-* **Multiple tabs:** Open and switch between multiple query tabs to compare results across different datasets.
-* **Quick filtering:** Select the filter button from query results to add a value as a filter to your current query.
-* **Pivot to new tab:** Use Cmd + click on the filter button to start a new query tab with that filter applied.
-* **Preserved progress:** Your query progress is preserved on each tab if you navigate away and return.
+- **Multiple tabs:** Open and switch between multiple query tabs to compare results across different datasets.
+- **Quick filtering:** Select the filter button from query results to add a value as a filter to your current query.
+- **Pivot to new tab:** Use Cmd + click on the filter button to start a new query tab with that filter applied.
+- **Preserved progress:** Your query progress is preserved on each tab if you navigate away and return.
 
 For more information, refer to the [Log Explorer documentation](https://developers.cloudflare.com/log-explorer/).
 
@@ -153,23 +154,23 @@ The newly supported datasets include:
 
 #### Zone Level
 
-* `Dns_logs`
-* `Nel_reports`
-* `Page_shield_events`
-* `Spectrum_events`
-* `Zaraz_events`
+- `Dns_logs`
+- `Nel_reports`
+- `Page_shield_events`
+- `Spectrum_events`
+- `Zaraz_events`
 
 #### Account Level
 
-* `Audit Logs`
-* `Audit_logs_v2`
-* `Biso_user_actions`
-* `DNS firewall logs`
-* `Email_security_alerts`
-* `Magic Firewall IDS`
-* `Network Analytics`
-* `Sinkhole HTTP`
-* `ipsec_logs`
+- `Audit Logs`
+- `Audit_logs_v2`
+- `Biso_user_actions`
+- `DNS firewall logs`
+- `Email_security_alerts`
+- `Magic Firewall IDS`
+- `Network Analytics`
+- `Sinkhole HTTP`
+- `ipsec_logs`
 
 Note
 
@@ -240,10 +241,11 @@ From the `gateway_http` dataset, click on a **policyid** to link directly to the
 
 The results table view of **Log Search** has been updated with additional functionality and a more streamlined user experience. Users can now easily:
 
-* Remove/add columns.
-* Resize columns.
-* Sort columns.
-* Copy values from any field.
+- Remove/add columns.
+- Resize columns.
+- Sort columns.
+- Copy values from any field.
+
 ![New results table view](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1786,height=342,format=webp/_astro/new-table.C2Q8mWJ9.png)
 
 ## 2025-09-03
@@ -251,7 +253,7 @@ The results table view of **Log Search** has been updated with additional functi
 
 **Logging headers and cookies using custom fields**
 
-[Log Explorer](https://developers.cloudflare.com/log-explorer/) now supports logging and filtering on header or cookie fields in the [http\_requests dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http%5Frequests/).
+[Log Explorer](https://developers.cloudflare.com/log-explorer/) now supports logging and filtering on header or cookie fields in the [`http_requests` dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/).
 
 Create a custom field to log desired header or cookie values into the `http_requests` dataset and Log Explorer will import these as searchable fields. Once configured, use the custom SQL editor in Log Explorer to view or filter on these requests.
 
@@ -290,10 +292,10 @@ Search and analyze your logs, natively in the Cloudflare dashboard. These logs a
 
 With Log Explorer, you can now:
 
-* **Monitor security and performance issues with custom dashboards** – use natural language to define charts for measuring response time, error rates, top statistics and more.
-* **Investigate and troubleshoot issues with Log Search** – use data type-aware search filters or custom sql to investigate detailed logs.
-* **Save time and collaborate with saved queries** – save Log Search queries for repeated use or sharing with other users in your account.
-* **Access Log Explorer at the account and zone level** – easily find Log Explorer at the account and zone level for querying any dataset.
+- **Monitor security and performance issues with custom dashboards** – use natural language to define charts for measuring response time, error rates, top statistics and more.
+- **Investigate and troubleshoot issues with Log Search** – use data type-aware search filters or custom sql to investigate detailed logs.
+- **Save time and collaborate with saved queries** – save Log Search queries for repeated use or sharing with other users in your account.
+- **Access Log Explorer at the account and zone level** – easily find Log Explorer at the account and zone level for querying any dataset.
 
 For help getting started, refer to [our documentation](https://developers.cloudflare.com/log-explorer/).
 

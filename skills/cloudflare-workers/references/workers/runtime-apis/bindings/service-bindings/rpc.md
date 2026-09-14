@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RPC (WorkerEntrypoint)
 
-Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings) allow one Worker to call into another, without going through a publicly-accessible URL.
 
@@ -160,11 +160,11 @@ class Default(WorkerEntrypoint):
         return a + b
 ```
 
-A new instance of the class is created every time the Worker is called. Note that even though the Worker is implemented as a class, it is still stateless — the class instance only lasts for the duration of the invocation. If you need to persist or coordinate state in Workers, you should use [Durable Objects](https://developers.cloudflare.com/durable-objects).
+A new instance of the class is created every time the Worker is called. Note that even though the Worker is implemented as a class, it is still stateless — the class instance only lasts for the duration of the invocation. If you need to persist or coordinate state in Workers, you should use [Durable Objects](https://developers.cloudflare.com/durable-objects).
 
 ### Bindings (`env`)
 
-The [env](https://developers.cloudflare.com/workers/runtime-apis/bindings) object is exposed as a class property of the `WorkerEntrypoint` class.
+The [`env`](https://developers.cloudflare.com/workers/runtime-apis/bindings) object is exposed as a class property of the `WorkerEntrypoint` class.
 
 For example, a Worker that declares a binding to the [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/) `GREETING`:
 
@@ -215,7 +215,7 @@ You can use any type of [binding](https://developers.cloudflare.com/workers/runt
 
 ### Lifecycle methods (`ctx`)
 
-The [ctx](https://developers.cloudflare.com/workers/runtime-apis/context) object is exposed as a class property of the `WorkerEntrypoint` class.
+The [`ctx`](https://developers.cloudflare.com/workers/runtime-apis/context) object is exposed as a class property of the `WorkerEntrypoint` class.
 
 For example, you can extend the lifetime of the invocation context by calling the `waitUntil()` method:
 
@@ -454,11 +454,11 @@ You can try out a complete example of this to do app, as well as a Discord bot b
 
 ## Further reading
 
-* [Lifecycle](https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle/)
-* [Reserved Methods](https://developers.cloudflare.com/workers/runtime-apis/rpc/reserved-methods/)
-* [Visibility and Security Model](https://developers.cloudflare.com/workers/runtime-apis/rpc/visibility/)
-* [TypeScript](https://developers.cloudflare.com/workers/runtime-apis/rpc/typescript/)
-* [Error handling](https://developers.cloudflare.com/workers/runtime-apis/rpc/error-handling/)
+- [Lifecycle](https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle/)
+- [Reserved Methods](https://developers.cloudflare.com/workers/runtime-apis/rpc/reserved-methods/)
+- [Visibility and Security Model](https://developers.cloudflare.com/workers/runtime-apis/rpc/visibility/)
+- [TypeScript](https://developers.cloudflare.com/workers/runtime-apis/rpc/typescript/)
+- [Error handling](https://developers.cloudflare.com/workers/runtime-apis/rpc/error-handling/)
 
 Was this helpful?
 

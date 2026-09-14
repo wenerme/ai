@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage sinks
 
-Last updated Jun 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/sinks/manage-sinks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pipelines/sinks/manage-sinks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Learn how to:
 
-* Create and configure sinks for data storage
-* View sink configuration
-* Delete sinks when no longer needed
+- Create and configure sinks for data storage
+- View sink configuration
+- Delete sinks when no longer needed
 
 ## Create a sink
 
@@ -26,14 +26,13 @@ Sinks are made available to pipelines as SQL tables using the sink name (e.g., `
 
 ### Dashboard
 
-1. In the Cloudflare dashboard, go to the **Pipelines** page.
-[Go to **Pipelines** ↗](https://dash.cloudflare.com/?to=/:account/pipelines/overview)
+1. In the Cloudflare dashboard, go to the **Pipelines** page. [Go to **Pipelines** ↗](https://dash.cloudflare.com/?to=/:account/pipelines/overview)
 2. Select **Create Pipeline** to launch the pipeline creation wizard.
 3. Complete the wizard to create your sink along with the associated stream and pipeline.
 
 ### Wrangler CLI
 
-To create a sink, run the [pipelines sinks create](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-sinks-create) command:
+To create a sink, run the [`pipelines sinks create`](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-sinks-create) command:
 
 ```bash
 npx wrangler pipelines sinks create <SINK_NAME> \
@@ -43,7 +42,7 @@ npx wrangler pipelines sinks create <SINK_NAME> \
 
 For sink-specific configuration options, refer to [Available sinks](https://developers.cloudflare.com/pipelines/sinks/available-sinks/).
 
-Alternatively, to use the interactive setup wizard that helps you configure a stream, sink, and pipeline, run the [pipelines setup](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-setup) command:
+Alternatively, to use the interactive setup wizard that helps you configure a stream, sink, and pipeline, run the [`pipelines setup`](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-setup) command:
 
 ```bash
 npx wrangler pipelines setup
@@ -53,18 +52,18 @@ npx wrangler pipelines setup
 
 ### Dashboard
 
-1. In the Cloudflare dashboard, go to **Pipelines** \> **Sinks**.
+1. In the Cloudflare dashboard, go to **Pipelines** > **Sinks**.
 2. Select a sink to view its configuration.
 
 ### Wrangler CLI
 
-To view a specific sink, run the [pipelines sinks get](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-sinks-get) command with either the sink ID or sink name:
+To view a specific sink, run the [`pipelines sinks get`](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-sinks-get) command with either the sink ID or sink name:
 
 ```bash
 npx wrangler pipelines sinks get <SINK_NAME_OR_ID>
 ```
 
-To list all sinks in your account, run the [pipelines sinks list](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-sinks-list) command:
+To list all sinks in your account, run the [`pipelines sinks list`](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-sinks-list) command:
 
 ```bash
 npx wrangler pipelines sinks list
@@ -74,13 +73,13 @@ npx wrangler pipelines sinks list
 
 ### Dashboard
 
-1. In the Cloudflare dashboard, go to **Pipelines** \> **Sinks**.
+1. In the Cloudflare dashboard, go to **Pipelines** > **Sinks**.
 2. Select the sink you want to delete.
 3. In the **Settings** tab, navigate to **General**, and select **Delete**.
 
 ### Wrangler CLI
 
-To delete a sink, run the [pipelines sinks delete](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-sinks-delete) command:
+To delete a sink, run the [`pipelines sinks delete`](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-sinks-delete) command:
 
 ```bash
 npx wrangler pipelines sinks delete <SINK_ID>
@@ -92,8 +91,8 @@ Deleting a sink stops all data writes to that destination.
 
 ## Limitations
 
-* Sinks cannot be modified after creation. To change sink configuration, you must delete and recreate the sink.
-* The R2 Data Catalog Sink does not currently support writing to R2 buckets into a different jurisdiction.
+- Sinks cannot be modified after creation. To change sink configuration, you must delete and recreate the sink.
+- The R2 Data Catalog Sink does not currently support writing to R2 buckets into a different jurisdiction.
 
 Was this helpful?
 

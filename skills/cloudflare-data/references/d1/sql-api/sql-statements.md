@@ -12,19 +12,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # SQL statements
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/sql-api/sql-statements/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/sql-api/sql-statements/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 D1 is compatible with most SQLite's SQL convention since it leverages SQLite's query engine. D1 supports a number of database-level statements that allow you to list tables, indexes, and inspect the schema for a given table or index.
 
-You can execute any of these statements via the D1 console in the Cloudflare dashboard, [wrangler d1 execute](https://developers.cloudflare.com/workers/wrangler/commands/d1/#d1-execute), or with the [D1 Worker Bindings API](https://developers.cloudflare.com/d1/worker-api/d1-database).
+You can execute any of these statements via the D1 console in the Cloudflare dashboard, [`wrangler d1 execute`](https://developers.cloudflare.com/workers/wrangler/commands/d1/#d1-execute), or with the [D1 Worker Bindings API](https://developers.cloudflare.com/d1/worker-api/d1-database).
 
 ## Supported SQLite extensions
 
 D1 supports a subset of SQLite extensions for added functionality, including:
 
-* [FTS5 module ↗](https://www.sqlite.org/fts5.html) for full-text search (including `fts5vocab`).
-* [JSON extension ↗](https://www.sqlite.org/json1.html) for JSON functions and operators.
-* [Math functions ↗](https://sqlite.org/lang%5Fmathfunc.html).
+- [FTS5 module ↗](https://www.sqlite.org/fts5.html) for full-text search (including `fts5vocab`).
+- [JSON extension ↗](https://www.sqlite.org/json1.html) for JSON functions and operators.
+- [Math functions ↗](https://sqlite.org/lang_mathfunc.html).
 
 Refer to the [source code ↗](https://github.com/cloudflare/workerd/blob/4c42a4a9d3390c88e9bd977091c9d3395a6cd665/src/workerd/util/sqlite.c%2B%2B#L269) for the full list of supported functions.
 
@@ -32,9 +32,9 @@ Refer to the [source code ↗](https://github.com/cloudflare/workerd/blob/4c42a4
 
 D1 supports some [SQLite PRAGMA ↗](https://www.sqlite.org/pragma.html) statements. The PRAGMA statement is an SQL extension for SQLite. PRAGMA commands can be used to:
 
-* Modify the behavior of certain SQLite operations.
-* Query the SQLite library for internal data about schemas or tables (but note that PRAGMA statements cannot query the contents of a table).
-* Control [environmental variables](https://developers.cloudflare.com/workers/configuration/environment-variables/).
+- Modify the behavior of certain SQLite operations.
+- Query the SQLite library for internal data about schemas or tables (but note that PRAGMA statements cannot query the contents of a table).
+- Control [environmental variables](https://developers.cloudflare.com/workers/configuration/environment-variables/).
 
 The PRAGMA statement examples on this page use the following SQL.
 
@@ -89,7 +89,13 @@ One row per each table. Each row contains:
 5. `wr`: `1` if the table is a WITHOUT ROWID table, `0` otherwise
 6. `strict`: `1` if the table is a STRICT table, `0` otherwise
 
-Example of `PRAGMA table_list`
+<details>
+
+<summary>
+
+Example of <code>PRAGMA table_list</code>
+
+</summary>
 
 ```sh
 npx wrangler d1 execute [DATABASE_NAME] --command='PRAGMA table_list'
@@ -138,6 +144,8 @@ npx wrangler d1 execute [DATABASE_NAME] --command='PRAGMA table_list'
 └────────┴──────────────────────┴───────┴──────┴────┴────────┘
 ```
 
+</details>
+
 ### `PRAGMA table_info("TABLE_NAME")`
 
 Shows the schema (columns, types, null, default values) for the given `TABLE_NAME`.
@@ -153,7 +161,13 @@ One row for each column in the specified table. Each row contains:
 5. `dflt_value`: the default value of the column
 6. `pk`: `1` if the column is a primary key, `0` otherwise
 
-Example of `PRAGMA table_info`
+<details>
+
+<summary>
+
+Example of <code>PRAGMA table_info</code>
+
+</summary>
 
 ```sh
 npx wrangler d1 execute [DATABASE_NAME] --command='PRAGMA table_info("Order")'
@@ -196,11 +210,19 @@ npx wrangler d1 execute [DATABASE_NAME] --command='PRAGMA table_info("Order")'
 └─────┴────────────────┴───────────────┴─────────┴────────────┴────┘
 ```
 
+</details>
+
 ### `PRAGMA table_xinfo("TABLE_NAME")`
 
 Similar to `PRAGMA table_info(TABLE_NAME)` but also includes [generated columns](https://developers.cloudflare.com/d1/reference/generated-columns/).
 
-Example of `PRAGMA table_xinfo`
+<details>
+
+<summary>
+
+Example of <code>PRAGMA table_xinfo</code>
+
+</summary>
 
 ```sh
 npx wrangler d1 execute [DATABASE_NAME] --command='PRAGMA table_xinfo("Order")'
@@ -243,6 +265,8 @@ npx wrangler d1 execute [DATABASE_NAME] --command='PRAGMA table_xinfo("Order")'
 └─────┴────────────────┴───────────────┴─────────┴────────────┴────┴────────┘
 ```
 
+</details>
+
 ### `PRAGMA index_list("TABLE_NAME")`
 
 Show the indexes for the given `TABLE_NAME`.
@@ -254,10 +278,16 @@ One row for each index associated with the specified table. Each row contains:
 1. `seq`: a sequence number for internal tracking
 2. `name`: the name of the index
 3. `unique`: `1` if the index is UNIQUE, `0` otherwise
-4. `origin`: the origin of the index (`c` if created by `CREATE INDEX` statement, `u` if created by UNIQUE constraint, `pk` if created by a PRIMARY KEY constraint)
+4. `origin`: the origin of the index ( `c` if created by `CREATE INDEX` statement, `u` if created by UNIQUE constraint, `pk` if created by a PRIMARY KEY constraint)
 5. `partial`: `1` if the index is a partial index, `0` otherwise
 
-Example of `PRAGMA index_list`
+<details>
+
+<summary>
+
+Example of <code>PRAGMA index_list</code>
+
+</summary>
 
 ```sh
 npx wrangler d1 execute [DATABASE_NAME] --command='PRAGMA index_list("Territory")'
@@ -274,6 +304,8 @@ npx wrangler d1 execute [DATABASE_NAME] --command='PRAGMA index_list("Territory"
 └─────┴──────────────────────────────┴────────┴────────┴─────────┘
 ```
 
+</details>
+
 ### `PRAGMA index_info(INDEX_NAME)`
 
 Show the indexed column(s) for the given `INDEX_NAME`.
@@ -286,7 +318,13 @@ One row for each key column in the specified index. Each row contains:
 2. `cid`: the rank of the column within the table being indexed
 3. `name`: the name of the column being indexed
 
-Example of `PRAGMA index_info`
+<details>
+
+<summary>
+
+Example of <code>PRAGMA index_info</code>
+
+</summary>
 
 ```sh
 npx wrangler d1 execute [DATABASE_NAME] --command='PRAGMA index_info("sqlite_autoindex_Territory_1")'
@@ -303,11 +341,19 @@ npx wrangler d1 execute [DATABASE_NAME] --command='PRAGMA index_info("sqlite_aut
 └───────┴─────┴──────┘
 ```
 
+</details>
+
 ### `PRAGMA index_xinfo("INDEX_NAME")`
 
 Similar to `PRAGMA index_info("TABLE_NAME")` but also includes hidden columns.
 
-Example of `PRAGMA index_xinfo`
+<details>
+
+<summary>
+
+Example of <code>PRAGMA index_xinfo</code>
+
+</summary>
 
 ```sh
 npx wrangler d1 execute [DATABASE_NAME] --command='PRAGMA index_xinfo("sqlite_autoindex_Territory_1")'
@@ -326,20 +372,28 @@ npx wrangler d1 execute [DATABASE_NAME] --command='PRAGMA index_xinfo("sqlite_au
 └───────┴─────┴──────┴──────┴────────┴─────┘
 ```
 
+</details>
+
 ### `PRAGMA quick_check`
 
 Checks the formatting and consistency of the table, including:
 
-* Incorrectly formatted records
-* Missing pages
-* Sections of the database which are used multiple times, or are not used at all.
+- Incorrectly formatted records
+- Missing pages
+- Sections of the database which are used multiple times, or are not used at all.
 
 #### Return values
 
-* **If there are no errors:** a single row with the value `OK`
-* **If there are errors:** a string which describes the issues flagged by the check
+- **If there are no errors:** a single row with the value `OK`
+- **If there are errors:** a string which describes the issues flagged by the check
 
-Example of `PRAGMA quick_check`
+<details>
+
+<summary>
+
+Example of <code>PRAGMA quick_check</code>
+
+</summary>
 
 ```sh
 npx wrangler d1 execute [DATABASE_NAME] --command='PRAGMA quick_check'
@@ -356,6 +410,8 @@ npx wrangler d1 execute [DATABASE_NAME] --command='PRAGMA quick_check'
 └─────────────┘
 ```
 
+</details>
+
 ### `PRAGMA foreign_key_check`
 
 Checks for invalid references of foreign keys in the selected table.
@@ -368,43 +424,43 @@ Lists the foreign key constraints in the selected table.
 
 Toggles case sensitivity for LIKE operators. When `PRAGMA case_sensitive_like` is set to:
 
-* `ON`: 'a' LIKE 'A' is false
-* `OFF`: 'a' LIKE 'A' is true (this is the default behavior of the LIKE operator)
+- `ON`: 'a' LIKE 'A' is false
+- `OFF`: 'a' LIKE 'A' is true (this is the default behavior of the LIKE operator)
 
 ### `PRAGMA ignore_check_constraints = (on|off)`
 
 Toggles the enforcement of CHECK constraints. When `PRAGMA ignore_check_constraints` is set to:
 
-* `ON`: check constraints are ignored
-* `OFF`: check constraints are enforced (this is the default behavior)
+- `ON`: check constraints are ignored
+- `OFF`: check constraints are enforced (this is the default behavior)
 
 ### `PRAGMA legacy_alter_table = (on|off)`
 
 Toggles the ALTER TABLE RENAME command behavior before/after the legacy version of SQLite (3.24.0). When `PRAGMA legacy_alter_table` is set to:
 
-* `ON`: ALTER TABLE RENAME only rewrites the initial occurrence of the table name in its CREATE TABLE statement and any associated CREATE INDEX and CREATE TRIGGER statements. All other occurrences are unmodified.
-* `OFF`: ALTER TABLE RENAME rewrites all references to the table name in the schema (this is the default behavior).
+- `ON`: ALTER TABLE RENAME only rewrites the initial occurrence of the table name in its CREATE TABLE statement and any associated CREATE INDEX and CREATE TRIGGER statements. All other occurrences are unmodified.
+- `OFF`: ALTER TABLE RENAME rewrites all references to the table name in the schema (this is the default behavior).
 
 ### `PRAGMA recursive_triggers = (on|off)`
 
 Toggles the recursive trigger capability. When `PRAGMA recursive_triggers` is set to:
 
-* `ON`: triggers which fire can activate other triggers (a single trigger can fire multiple times over the same row)
-* `OFF`: triggers which fire cannot activate other triggers
+- `ON`: triggers which fire can activate other triggers (a single trigger can fire multiple times over the same row)
+- `OFF`: triggers which fire cannot activate other triggers
 
 ### `PRAGMA reverse_unordered_selects = (on|off)`
 
 Toggles the order of the results of a SELECT statement without an ORDER BY clause. When `PRAGMA reverse_unordered_selects` is set to:
 
-* `ON`: reverses the order of results of a SELECT statement
-* `OFF`: returns the results of a SELECT statement in the usual order
+- `ON`: reverses the order of results of a SELECT statement
+- `OFF`: returns the results of a SELECT statement in the usual order
 
 ### `PRAGMA foreign_keys = (on|off)`
 
 Toggles the foreign key constraint enforcement. When `PRAGMA foreign_keys` is set to:
 
-* `ON`: stops operations which violate foreign key constraints
-* `OFF`: allows operations which violate foreign key constraints
+- `ON`: stops operations which violate foreign key constraints
+- `OFF`: allows operations which violate foreign key constraints
 
 ### `PRAGMA defer_foreign_keys = (on|off)`
 
@@ -431,7 +487,9 @@ Refer to the [foreign key documentation](https://developers.cloudflare.com/d1/sq
 
 ### `PRAGMA optimize`
 
-Attempts to optimize all schemas in a database by running the `ANALYZE` command for each table, if necessary. `ANALYZE` updates an internal table which contain statistics about tables and indices. These statistics helps the query planner to execute the input query more efficiently.
+Attempts to optimize all schemas in a database by running the `ANALYZE` command for each table, if necessary. `ANALYZE` updates an internal table which contain statistics about tables and indices. These statistics helps the query planner
+
+ to execute the input query more efficiently.
 
 When `PRAGMA optimize` runs `ANALYZE`, it sets a limit to ensure the command does not take too long to execute. Alternatively, `PRAGMA optimize` may deem it unnecessary to run `ANALYZE` (for example, if the schema has not changed significantly). In this scenario, no optimizations are made.
 
@@ -443,7 +501,7 @@ Currently, D1 does not support `PRAGMA optimize(-1)`.
 
 `PRAGMA optimize(-1)` is a command which displays all optimizations that would have been performed without actually executing them.
 
-Refer to [SQLite PRAGMA optimize documentation ↗](https://www.sqlite.org/pragma.html#pragma%5Foptimize) for more information on how `PRAGMA optimize` optimizes a database.
+Refer to [SQLite PRAGMA optimize documentation ↗](https://www.sqlite.org/pragma.html#pragma_optimize) for more information on how `PRAGMA optimize` optimizes a database.
 
 ## Query `sqlite_master`
 
@@ -491,9 +549,9 @@ results:  [...]
 
 ## Related resources
 
-* Learn [how to create indexes](https://developers.cloudflare.com/d1/best-practices/use-indexes/#list-indexes) in D1.
-* Use D1's [JSON functions](https://developers.cloudflare.com/d1/sql-api/query-json/) to query JSON data.
-* Use [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) to run your Worker and D1 locally and debug issues before deploying.
+- Learn [how to create indexes](https://developers.cloudflare.com/d1/best-practices/use-indexes/#list-indexes) in D1.
+- Use D1's [JSON functions](https://developers.cloudflare.com/d1/sql-api/query-json/) to query JSON data.
+- Use [`wrangler dev`](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) to run your Worker and D1 locally and debug issues before deploying.
 
 Was this helpful?
 

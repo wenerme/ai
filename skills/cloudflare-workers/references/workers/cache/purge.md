@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Purging the cache
 
-Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/cache/purge/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/purge/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Your Worker can invalidate its own cached responses at any time using the purge API. Purging is useful when data changes and the new value is more important than the performance benefit of continuing to serve the cached response — for example, after a content update, a user action, or a webhook from an upstream system.
 
@@ -22,10 +22,12 @@ Because Workers Caching is **your Worker's cache**, purging is scoped to the Wor
 
 There are two equivalent ways to trigger a purge from inside your Worker:
 
-* **`ctx.cache.purge(...)`** — available on the execution context passed to every handler. Use this when you already have `ctx` in scope.
-* **`cache.purge(...)`** — imported from `cloudflare:workers`. Use this when you want to call purge from code that does not receive `ctx` — for example, a utility module shared across multiple handlers, or a framework adapter that does not thread the execution context through its internals.
+- **`ctx.cache.purge(...)`** — available on the execution context passed to every handler. Use this when you already have `ctx` in scope.
+- **`cache.purge(...)`** — imported from `cloudflare:workers`. Use this when you want to call purge from code that does not receive `ctx` — for example, a utility module shared across multiple handlers, or a framework adapter that does not thread the execution context through its internals.
 
 Both forms call into the same API and behave identically. Pick whichever reads more cleanly for your code.
+
+*src/index.jsjs*
 
 ```js
 import { cache } from "cloudflare:workers";
@@ -42,6 +44,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 import { cache } from "cloudflare:workers";
@@ -65,11 +69,11 @@ The rest of this page uses `ctx.cache.purge(...)` in most examples because those
 
 `purge()` accepts either `purgeEverything: true` on its own, or one or both of `tags` and `pathPrefixes`:
 
-| Field           | Purges                                                                          | Scope          |
-| --------------- | ------------------------------------------------------------------------------- | -------------- |
-| tags            | Every cached response tagged with one of the given values via Cache-Tag.        | Per entrypoint |
-| pathPrefixes    | Every cached response whose request path starts with one of the given prefixes. | Per entrypoint |
-| purgeEverything | Every cached response for the entrypoint that called purge().                   | Per entrypoint |
+| Field | Purges | Scope |
+| --- | --- | --- |
+| `tags` | Every cached response tagged with one of the given values via `Cache-Tag`. | Per entrypoint |
+| `pathPrefixes` | Every cached response whose request path starts with one of the given prefixes. | Per entrypoint |
+| `purgeEverything` | Every cached response for the entrypoint that called `purge()`. | Per entrypoint |
 
 `purgeEverything` is exclusive — combine `tags` and `pathPrefixes` in a single call if you want, but do not pass either alongside `purgeEverything`.
 
@@ -78,6 +82,8 @@ All three modes are scoped to the [entrypoint](https://developers.cloudflare.com
 The returned promise resolves to a result object you can inspect to confirm success or handle failures — see [Return value](#return-value).
 
 Purge after a write by calling `ctx.cache.purge()` at the end of any handler that mutates data:
+
+*src/index.jsjs*
 
 ```js
 export default {
@@ -101,6 +107,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 export default {
@@ -127,6 +135,8 @@ export default {
 
 You can combine fields in a single call. For example, `purge({ tags: ["blog-posts"], pathPrefixes: ["/blog/"] })` purges everything that matches **either** tag or path-prefix — the fields are unioned, not intersected. Use this when one logical invalidation affects responses tagged by multiple schemes.
 
+*src/index.jsjs*
+
 ```js
 export default {
 	async fetch(request, env, ctx) {
@@ -141,6 +151,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 export default {
@@ -163,6 +175,8 @@ Tags are attached to responses via the `Cache-Tag` response header, and purged l
 
 ### Attach tags on write
 
+*src/index.jsjs*
+
 ```js
 export default {
 	async fetch(request) {
@@ -180,6 +194,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 export default {
@@ -205,6 +221,8 @@ Tag values must be **printable ASCII** (no spaces, no Unicode), each tag is at m
 
 ### Trigger the purge
 
+*src/admin.jsjs*
+
 ```js
 export default {
 	async fetch(request, env, ctx) {
@@ -217,6 +235,8 @@ export default {
 	},
 };
 ```
+
+*src/admin.tsts*
 
 ```ts
 export default {
@@ -238,6 +258,8 @@ Tags are scoped to the entrypoint that called `purge()`. A tag named `user-42` a
 ### Use hierarchical tags
 
 To invalidate groups of related responses in one call, tag each response with multiple tags representing every level of hierarchy it belongs to — sometimes called "soft tags":
+
+*src/index.jsjs*
 
 ```js
 export default {
@@ -264,6 +286,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 export default {
@@ -297,7 +321,7 @@ For limits on the number, length, and character set of tags, refer to [Cache tag
 
 ### Version-specific purging
 
-By default, Workers Caching [partitions the cache by Worker version](https://developers.cloudflare.com/workers/cache/cache-keys/#invalidating-cache-across-deployments), so each deployment already starts from a cold cache and version-specific purging is unnecessary. This section applies only when you have enabled [cache.cross\_version\_cache](https://developers.cloudflare.com/workers/cache/configuration/#cross-version-caching) to share cached responses across versions. In that case, a response written by version A may still be served after version B is deployed, and you may want to purge the entries a specific version wrote — for example, after a rollback. To do that, tag each response with the version that produced it and purge that tag later.
+By default, Workers Caching [partitions the cache by Worker version](https://developers.cloudflare.com/workers/cache/cache-keys/#invalidating-cache-across-deployments), so each deployment already starts from a cold cache and version-specific purging is unnecessary. This section applies only when you have enabled [`cache.cross_version_cache`](https://developers.cloudflare.com/workers/cache/configuration/#cross-version-caching) to share cached responses across versions. In that case, a response written by version A may still be served after version B is deployed, and you may want to purge the entries a specific version wrote — for example, after a rollback. To do that, tag each response with the version that produced it and purge that tag later.
 
 Add the [version metadata binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/) to your Wrangler configuration:
 
@@ -306,7 +330,7 @@ Add the [version metadata binding](https://developers.cloudflare.com/workers/run
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"cache": { "enabled": true, "cross_version_cache": true },
 	"version_metadata": { "binding": "CF_VERSION_METADATA" },
 }
@@ -316,7 +340,7 @@ Add the [version metadata binding](https://developers.cloudflare.com/workers/run
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [cache]
 enabled = true
@@ -327,6 +351,8 @@ binding = "CF_VERSION_METADATA"
 ```
 
 Then prepend the version ID to your tags:
+
+*src/index.jsjs*
 
 ```js
 export default {
@@ -345,6 +371,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 interface Env {
@@ -370,6 +398,8 @@ export default {
 
 When you want to invalidate everything a specific version wrote — for example, after a rollback — purge the version tag:
 
+*src/admin.jsjs*
+
 ```js
 export default {
 	async fetch(request, env, ctx) {
@@ -382,6 +412,8 @@ export default {
 	},
 };
 ```
+
+*src/admin.tsts*
 
 ```ts
 export default {
@@ -400,6 +432,8 @@ export default {
 
 `pathPrefixes` invalidates every cached response whose **request path** begins with one of the given prefixes:
 
+*src/index.jsjs*
+
 ```js
 export default {
 	async fetch(request, env, ctx) {
@@ -412,6 +446,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 export default {
@@ -434,6 +470,8 @@ Entries in `pathPrefixes` are **paths**, not full URLs. A prefix must not includ
 
 There is no dedicated "purge by URL" mode. To invalidate a single cached URL, pass its path as a single-element `pathPrefixes` array:
 
+*src/index.jsjs*
+
 ```js
 export default {
 	async fetch(request, env, ctx) {
@@ -446,6 +484,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 export default {
@@ -466,6 +506,8 @@ Because `pathPrefixes` matches on the start of the request path, passing the ful
 
 Invalidate every cached response stored by the calling entrypoint:
 
+*src/index.jsjs*
+
 ```js
 export default {
 	async fetch(request, env, ctx) {
@@ -475,6 +517,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 export default {
@@ -496,6 +540,8 @@ Purges triggered by `ctx.cache.purge()` use Cloudflare's [Instant Purge](https:/
 
 `purge()` resolves to a result object. Check `success` to confirm the purge was accepted, and inspect `errors` if it was not:
 
+*src/index.jsjs*
+
 ```js
 export default {
 	async fetch(request, env, ctx) {
@@ -510,6 +556,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 export default {

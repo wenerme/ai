@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Context (ctx)
 
-Last updated Sep 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/context/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/context/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Context API provides methods to manage the lifecycle of your Worker or Durable Object.
 
 Context is exposed via the following places:
 
-* As the third parameter in all [handlers](https://developers.cloudflare.com/workers/runtime-apis/handlers/), including the [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/). (`fetch(request, env, ctx)`)
-* As a class property of the [WorkerEntrypoint class](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc) (`this.ctx`)
+- As the third parameter in all [handlers](https://developers.cloudflare.com/workers/runtime-apis/handlers/), including the [`fetch()` handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/). ( `fetch(request, env, ctx)`)
+- As a class property of the [`WorkerEntrypoint` class](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc) ( `this.ctx`)
 
 Note that the Context API is available strictly in stateless contexts, that is, not [Durable Objects](https://developers.cloudflare.com/durable-objects/). However, Durable Objects have a different object, the [Durable Object State](https://developers.cloudflare.com/durable-objects/api/state/), which is available as `this.ctx` inside a Durable Object class, and provides some of the same functionality as the Context API.
 
@@ -59,13 +59,13 @@ entrypoint = "DocServiceApi"
   permissions = [ "read", "write" ]
 ```
 
-Now frontend-worker can make calls to doc-worker with code like `env.DOC_SERVICE.getDoc(id)`. This will make a [Remote Procedure Call](https://developers.cloudflare.com/workers/runtime-apis/rpc/) invoking the method `getDoc()` of the class `DocServiceApi`, a [WorkerEntrypoint class](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc) exported by doc-worker.
+Now frontend-worker can make calls to doc-worker with code like `env.DOC_SERVICE.getDoc(id)`. This will make a [Remote Procedure Call](https://developers.cloudflare.com/workers/runtime-apis/rpc/) invoking the method `getDoc()` of the class `DocServiceApi`, a [`WorkerEntrypoint` class](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc) exported by doc-worker.
 
 The configuration contains a `props` value. This in an arbitrary JSON value. When the `DOC_SERVICE` binding is used, the `DocServiceApi` instance receiving the call will be able to access this `props` value as `this.ctx.props`. Here, we've configured `props` to specify that the call comes from frontend-worker, and that it should be allowed to read and write documents. However, the contents of `props` can be anything you want.
 
 The Workers platform is designed to ensure that `ctx.props` can only be set by someone who has permission to edit and deploy the worker to which it is being delivered. This means that you can trust that the content of `ctx.props` is authentic. There is no need to use secret keys or cryptographic signatures in a `ctx.props` value.
 
-`ctx.props` can also be used to configure an RPC interface to represent a _specific_ resource, thus creating a "custom binding". For example, we could configure a Service Binding to our "doc-worker" which grants access only to a specific document:
+`ctx.props` can also be used to configure an RPC interface to represent a *specific* resource, thus creating a "custom binding". For example, we could configure a Service Binding to our "doc-worker" which grants access only to a specific document:
 
 ```jsonc
 {
@@ -103,12 +103,12 @@ Here, we've placed a `docId` property in `ctx.props`. The `DocumentApi` class co
 
 Compatibility flag required
 
-To use `ctx.exports`, you must use [the enable\_ctx\_exports compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags#enable-ctxexports).
+To use `ctx.exports`, you must use [the `enable_ctx_exports` compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags#enable-ctxexports).
 
 `ctx.exports` provides automatically-configured "loopback" bindings for all of your top-level exports.
 
-* For each top-level export that `extends WorkerEntrypoint` (or simply implements a fetch handler), `ctx.exports` automatically contains a [Service Binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings).
-* For each top-level export that `extends DurableObject` (and which has been configured with storage via a [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/)), `ctx.exports` automatically contains a [Durable Object namespace binding](https://developers.cloudflare.com/durable-objects/api/namespace/).
+- For each top-level export that `extends WorkerEntrypoint` (or simply implements a fetch handler), `ctx.exports` automatically contains a [Service Binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings).
+- For each top-level export that `extends DurableObject` (and which has been configured with storage via a [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/)), `ctx.exports` automatically contains a [Durable Object namespace binding](https://developers.cloudflare.com/durable-objects/api/namespace/).
 
 For example:
 
@@ -129,7 +129,7 @@ export default {
 };
 ```
 
-In this example, the default fetch handler calls the `Greeter` class over RPC, like how you'd use a Service Binding. However, there is no external configuration required. `ctx.exports` is populated _automatically_ from your top-level imports.
+In this example, the default fetch handler calls the `Greeter` class over RPC, like how you'd use a Service Binding. However, there is no external configuration required. `ctx.exports` is populated *automatically* from your top-level imports.
 
 ### Specifying `ctx.props` when using `ctx.exports`
 
@@ -185,11 +185,11 @@ export default {
 
 Specifying props dynamically is permitted in this case because the caller is the same Worker, and thus can be presumed to be trusted to specify any props. The ability to customize props is particularly useful when the resulting binding is to be passed to another Worker over RPC or used in the `env` of a [dynamically-loaded worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/).
 
-Note that `props` values specified in this way are allowed to contain any "persistently" serializable type. This includes all basic [structured cloneable data types ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FWorkers%5FAPI/Structured%5Fclone%5Falgorithm). It also includes Service Bindings themselves: you can place a Service Binding into the `props` of another Service Binding.
+Note that `props` values specified in this way are allowed to contain any "persistently" serializable type. This includes all basic [structured cloneable data types ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm). It also includes Service Bindings themselves: you can place a Service Binding into the `props` of another Service Binding.
 
 ### TypeScript types for `ctx.exports` and `ctx.props`
 
-If using TypeScript, you should use [the wrangler types command](https://developers.cloudflare.com/workers/wrangler/commands/general/#types) to auto-generate types for your project. The generated types will ensure `ctx.exports` is typed correctly.
+If using TypeScript, you should use [the `wrangler types` command](https://developers.cloudflare.com/workers/wrangler/commands/general/#types) to auto-generate types for your project. The generated types will ensure `ctx.exports` is typed correctly.
 
 When declaring an entrypoint class that accepts `props`, make sure to declare it as `extends WorkerEntrypoint<Env, Props>`, where `Props` is the type of `ctx.props`. See the example above.
 
@@ -225,8 +225,8 @@ Use `ctx.waitUntil()` for work that can run after the response is sent, such as 
 
 `waitUntil` is commonly used to:
 
-* Fire off events to external analytics providers. (note that when you use [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/), you do not need to use `waitUntil`)
-* Put items into cache using the [Cache API](https://developers.cloudflare.com/workers/runtime-apis/cache/)
+- Fire off events to external analytics providers. (note that when you use [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/), you do not need to use `waitUntil`)
+- Put items into cache using the [Cache API](https://developers.cloudflare.com/workers/runtime-apis/cache/)
 
 \`waitUntil\` has a 30-second time limit after invocation end
 
@@ -242,7 +242,7 @@ If you are using `waitUntil()` to emit logs or exceptions, we recommend using [T
 
 \`waitUntil\` in Durable Objects
 
-Do not use `waitUntil()` to keep a Durable Object alive during normal request or RPC handling. Durable Objects remain active while they are handling requests, RPC calls, response streams, WebSockets, or pending I/O. [DurableObjectState.waitUntil()](https://developers.cloudflare.com/durable-objects/api/state/#waituntil) exists for API compatibility and is not needed for this behavior.
+Do not use `waitUntil()` to keep a Durable Object alive during normal request or RPC handling. Durable Objects remain active while they are handling requests, RPC calls, response streams, WebSockets, or pending I/O. [`DurableObjectState.waitUntil()`](https://developers.cloudflare.com/durable-objects/api/state/#waituntil) exists for API compatibility and is not needed for this behavior.
 
 You can call `waitUntil()` multiple times. Similar to `Promise.allSettled`, even if a promise passed to one `waitUntil` call is rejected, promises passed to other `waitUntil()` calls will still continue to execute.
 

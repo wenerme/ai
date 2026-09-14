@@ -16,18 +16,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Image-to-Video • Pruna AI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/pruna/p-video-avatar/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/pruna/p-video-avatar/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `pruna/p-video-avatar`
 
-* Third-party
+- Third-party
 
 Pruna's P-Video-Avatar generates talking-head videos from a single portrait image driven by a text script or audio file, with multiple voices, languages, and output resolutions.
 
-| Model Info       |                                                                                                                        |
-| ---------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| More information | [link ↗](https://docs.api.pruna.ai/guides/quickstart)                                                                  |
-| Pricing          | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/pruna/p-video-avatar) |
+| Model Info | |
+| --- | --- |
+| More information | [link ↗](https://docs.api.pruna.ai/guides/quickstart) |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/pruna/p-video-avatar) |
 
 ## Usage
 
@@ -115,7 +115,7 @@ strength\_negative\_prompt
 
 seed
 
-`integer`minimum: \-9007199254740991maximum: 9007199254740991Random seed for reproducible generation.
+`integer`minimum: -9007199254740991maximum: 9007199254740991Random seed for reproducible generation.
 
 disable\_safety\_filter
 
@@ -131,9 +131,9 @@ video
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/pruna/p-video-avatar/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/pruna/p-video-avatar/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/pruna/p-video-avatar/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/pruna/p-video-avatar/schema-output.json)
 
 Was this helpful?
 

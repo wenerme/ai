@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # How Cloudflare DNS works
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To optimize your website or web application, Cloudflare provides [DNS ↗](https://www.cloudflare.com/learning/dns/what-is-dns/) and [CDN ↗](https://www.cloudflare.com/learning/cdn/what-is-a-cdn/) services, so we can [reverse proxy ↗](https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy/) the web traffic to and from your domain.
 
@@ -48,10 +48,10 @@ When DNS records in your DNS table have a `proxied` status, the record's HTTP/HT
 
 Using Cloudflare as a reverse proxy has several benefits, including:
 
-* **Load balancing** A reverse proxy can provide a load balancing solution which distributes incoming traffic evenly among different servers to prevent any single server from becoming overloaded. In the event that a server fails completely, other servers can step up to handle the traffic.
-* **Protection from attacks.** With a reverse proxy in place, a web site or service never needs to reveal the IP address of their origin servers, which makes it much harder for attackers to leverage a targeted attack against them, such as a DDoS attack. Instead the attackers will only be able to target the reverse proxy, such as Cloudflare's CDN, which will have tighter security and more resources to fend off a cyber attack.
-* **Caching.** A reverse proxy can also cache content, resulting in faster performance. For example, if a user in Paris visits a reverse-proxied website with web servers in Los Angeles, the user might actually connect to a local reverse proxy server in Paris, which will then have to communicate with an origin server in L.A. The proxy server can then cache (or temporarily save) the response data. Subsequent Parisian users who browse the site will then get the locally cached version from the Parisian reverse proxy server, resulting in much faster performance.
-* **SSL encryption.** SSL/TLS is essential. Without an SSL/TLS certificate, your visitors will find a warning on their browser stating your website or application is not secure. However, encrypting and decrypting SSL (or TLS) communications for each client can be computationally expensive for an origin server. A reverse proxy can be configured to decrypt all incoming requests and encrypt all outgoing responses, freeing up valuable resources on the origin server.
+- **Load balancing** A reverse proxy can provide a load balancing solution which distributes incoming traffic evenly among different servers to prevent any single server from becoming overloaded. In the event that a server fails completely, other servers can step up to handle the traffic.
+- **Protection from attacks.** With a reverse proxy in place, a web site or service never needs to reveal the IP address of their origin servers, which makes it much harder for attackers to leverage a targeted attack against them, such as a DDoS attack. Instead the attackers will only be able to target the reverse proxy, such as Cloudflare's CDN, which will have tighter security and more resources to fend off a cyber attack.
+- **Caching.** A reverse proxy can also cache content, resulting in faster performance. For example, if a user in Paris visits a reverse-proxied website with web servers in Los Angeles, the user might actually connect to a local reverse proxy server in Paris, which will then have to communicate with an origin server in L.A. The proxy server can then cache (or temporarily save) the response data. Subsequent Parisian users who browse the site will then get the locally cached version from the Parisian reverse proxy server, resulting in much faster performance.
+- **SSL encryption.** SSL/TLS is essential. Without an SSL/TLS certificate, your visitors will find a warning on their browser stating your website or application is not secure. However, encrypting and decrypting SSL (or TLS) communications for each client can be computationally expensive for an origin server. A reverse proxy can be configured to decrypt all incoming requests and encrypt all outgoing responses, freeing up valuable resources on the origin server.
 
 Was this helpful?
 

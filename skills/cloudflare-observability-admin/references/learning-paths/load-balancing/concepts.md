@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Concepts
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/concepts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Learn the concepts behind load balancing, whether you are using Cloudflare or another provider.
 
@@ -20,10 +20,10 @@ Learn the concepts behind load balancing, whether you are using Cloudflare or an
 
 By the end of this module, you will be able to:
 
-* Explain what load balancing is.
-* Describe the differences between load balancers, pools, and servers.
-* Explain what pool health is and how it affects load balancer traffic.
-* List the different ways your traffic can be routed.
+- Explain what load balancing is.
+- Describe the differences between load balancers, pools, and servers.
+- Explain what pool health is and how it affects load balancer traffic.
+- List the different ways your traffic can be routed.
 
 Was this helpful?
 

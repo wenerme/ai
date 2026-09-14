@@ -12,8 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage payouts
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/manage-payouts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/manage-payouts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
+```
 graph LR
 A[Enable in<br>account settings] --> B[Set a pay per <br/>crawl price ]
 B --> C[Select crawlers<br>to charge]
@@ -26,21 +27,21 @@ click B "/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owne
 click C "/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/select-crawlers-to-charge/"
 click D "/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/monitor-activity/"
 
+```
+
 When you're ready to receive payments for your accrued crawler activity, connect your Cloudflare account to Stripe. This step can be completed at any time after enabling pay per crawl.
 
 ## Create a new Stripe account
 
 A person with **Administrator** or **Super Administrator** access must set up the Stripe connection:
 
-1. In the Cloudflare dashboard, go to **Manage Account** \> **Settings**.
-[Go to **Configurations** ↗](https://dash.cloudflare.com/?to=/:account/configurations)
+1. In the Cloudflare dashboard, go to **Manage Account** > **Settings**. [Go to **Configurations** ↗](https://dash.cloudflare.com/?to=/:account/configurations)
 2. Select **Pay Per Crawl**.
 3. In the **Stripe account** section, select **Connect**.
 4. Select **Continue to Stripe**.
 5. Complete Stripe's onboarding process, including:
-
-  * Basic business information
-  * Bank account details for payouts
+   - Basic business information
+   - Bank account details for payouts
 
 Pay Per Crawl Stripe account required
 
@@ -57,8 +58,8 @@ Cloudflare manages the complete billing lifecycle:
 
 ### Limitations
 
-* Your accrued balance is not currently visible in the dashboard. You can request balance updates from your Cloudflare team.
-* Payouts are subject to settlement periods and minimum payout thresholds.
+- Your accrued balance is not currently visible in the dashboard. You can request balance updates from your Cloudflare team.
+- Payouts are subject to settlement periods and minimum payout thresholds.
 
 Was this helpful?
 

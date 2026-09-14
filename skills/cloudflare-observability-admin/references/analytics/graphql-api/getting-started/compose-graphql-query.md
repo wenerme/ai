@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Compose a query in GraphiQL
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/getting-started/compose-graphql-query/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/getting-started/compose-graphql-query/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Many clients might need help using [the semantics](https://developers.cloudflare.com/analytics/graphql-api/getting-started/querying-basics/) of GraphQL and exploring the possibilities of Cloudflare GraphQL API.
 
@@ -76,7 +76,7 @@ This example query returns the `action`, `datetime`, `clientRequestHTTPHost`, an
 
 ![Example query with return fields](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=592,height=388,format=webp/_astro/graphiql-query-return-field-values.D6RsP235.png)
 
-Once you have entered all the fields you want to query, select the **Play**button to submit the query. The response pane will contain the data fetched from the configured GraphQL API endpoint:
+Once you have entered all the fields you want to query, select the **Play** button to submit the query. The response pane will contain the data fetched from the configured GraphQL API endpoint:
 
 ![GraphiQL response pane](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=608,height=346,format=webp/_astro/create-query-fw-data-set-play.dQ7w2sGu.png)
 
@@ -86,7 +86,7 @@ The GraphiQL client allows you to use placeholders for value and supply them via
 
 Placeholder names should start with `$` character, and you do not need to wrap placeholders in quotes when you use them in the query.
 
-Values for placeholders should be provided in JSON format, in which placeholders are addressed without `$` character. As an example, for a placeholder `$zoneTag`GraphQL API will read a value from the `zoneTag` field of supplied variables object.
+Values for placeholders should be provided in JSON format, in which placeholders are addressed without `$` character. As an example, for a placeholder `$zoneTag` GraphQL API will read a value from the `zoneTag` field of supplied variables object.
 
 To supply a value for a placeholder, select the **Query Variables** pane and edit a JSON object that defines your variables.
 

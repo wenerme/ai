@@ -16,27 +16,26 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Embeddings • BAAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/baai/bge-small-en-v1.5`
 
-* Cloudflare-hosted
-* Batch
+- Cloudflare-hosted
+- Batch
 
 BAAI general embedding (Small) model that transforms any given text into a 384-dimensional vector
 
-| Model Info           |                                                         |
-| -------------------- | ------------------------------------------------------- |
-| More information     | [link ↗](https://huggingface.co/BAAI/bge-small-en-v1.5) |
-| Maximum Input Tokens | 512                                                     |
-| Output Dimensions    | 384                                                     |
-| Batch                | Yes                                                     |
-| Unit Pricing         | $0.02 per M input tokens                                |
+| Model Info | |
+| --- | --- |
+| More information | [link ↗](https://huggingface.co/BAAI/bge-small-en-v1.5) |
+| Maximum Input Tokens | 512 |
+| Output Dimensions | 384 |
+| Batch | Yes |
+| Unit Pricing | $0.02 per M input tokens |
 
 ## Usage
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -64,7 +63,6 @@ export default {
 ```
 
 ```py
-
 import os
 import requests
 
@@ -88,7 +86,6 @@ print(response.json())
 ```
 
 ```sh
-
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/baai/bge-small-en-v1.5  \
   -X POST  \
   -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
@@ -101,55 +98,67 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## Parameters
 
-Synchronous — Send a request and receive a complete response
+<details>
+
+<summary>Synchronous — Send a request and receive a complete response</summary>
+
+
 
 ▶text
 
-`one of`required
+<code>one of</code>required
 
 pooling
 
-`string`default: meanenum: mean, clsThe pooling method used in the embedding process. \`cls\` pooling will generate more accurate embeddings on larger inputs - however, embeddings created with cls pooling are not compatible with embeddings generated with mean pooling. The default pooling method is \`mean\` in order for this to not be a breaking change, but we highly suggest using the new \`cls\` pooling for better accuracy.
+<code>string</code>default: meanenum: mean, clsThe pooling method used in the embedding process. `cls` pooling will generate more accurate embeddings on larger inputs - however, embeddings created with cls pooling are not compatible with embeddings generated with mean pooling. The default pooling method is `mean` in order for this to not be a breaking change, but we highly suggest using the new `cls` pooling for better accuracy.
 
-▶shape\[\]
+▶shape\[]
 
-`array`
+<code>array</code>
 
-▶data\[\]
+▶data\[]
 
-`array`Embeddings of the requested text values
-
-pooling
-
-`string`enum: mean, clsThe pooling method used in the embedding process.
-
-Batch — Send multiple requests in a single API call
-
-▶requests\[\]
-
-`array`requiredBatch of the embeddings requests to run using async-queue
-
-▶shape\[\]
-
-`array`
-
-▶data\[\]
-
-`array`Embeddings of the requested text values
+<code>array</code>Embeddings of the requested text values
 
 pooling
 
-`string`enum: mean, clsThe pooling method used in the embedding process.
+<code>string</code>enum: mean, clsThe pooling method used in the embedding process.
+
+</details>
+
+<details>
+
+<summary>Batch — Send multiple requests in a single API call</summary>
+
+
+
+▶requests\[]
+
+<code>array</code>requiredBatch of the embeddings requests to run using async-queue
+
+▶shape\[]
+
+<code>array</code>
+
+▶data\[]
+
+<code>array</code>Embeddings of the requested text values
+
+pooling
+
+<code>string</code>enum: mean, clsThe pooling method used in the embedding process.
+
+</details>
 
 ## API Schemas (Raw)
 
-SynchronousInput
+SynchronousInput [Open](https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/sync-input.json) [Download](https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/sync-input.json)
 
-SynchronousOutput
+SynchronousOutput [Open](https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/sync-output.json) [Download](https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/sync-output.json)
 
-BatchInput
+BatchInput [Open](https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/batch-input.json) [Download](https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/batch-input.json)
 
-BatchOutput
+BatchOutput [Open](https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/batch-output.json) [Download](https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/batch-output.json)
 
 Was this helpful?
 

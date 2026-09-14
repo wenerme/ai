@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # WebSockets
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/communication/websockets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/communication/websockets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agents support WebSocket connections for real-time, bi-directional communication. This page covers server-side WebSocket handling. For client-side connection, refer to the [Client SDK](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/).
 
@@ -20,16 +20,16 @@ Agents support WebSocket connections for real-time, bi-directional communication
 
 Agents have several lifecycle hooks that fire at different points:
 
-| Hook                                        | When called                                                                                |
-| ------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| onStart(props?)                             | Once when the agent first starts (before any connections)                                  |
-| onRequest(request)                          | When an HTTP request is received (non-WebSocket)                                           |
-| onConnect(connection, ctx)                  | When a new WebSocket connection is established                                             |
-| onMessage(connection, message)              | When a WebSocket message is received                                                       |
-| onClose(connection, code, reason, wasClean) | When a WebSocket connection closes                                                         |
-| onError(connection, error)                  | When a WebSocket error occurs on a connection                                              |
-| onError(error)                              | When a server-level error occurs (not tied to a specific connection)                       |
-| shouldSendProtocolMessages(connection, ctx) | Whether to send protocol messages (identity, state, MCP) to this connection. Default: true |
+| Hook | When called |
+| --- | --- |
+| `onStart(props?)` | Once when the agent first starts (before any connections) |
+| `onRequest(request)` | When an HTTP request is received (non-WebSocket) |
+| `onConnect(connection, ctx)` | When a new WebSocket connection is established |
+| `onMessage(connection, message)` | When a WebSocket message is received |
+| `onClose(connection, code, reason, wasClean)` | When a WebSocket connection closes |
+| `onError(connection, error)` | When a WebSocket error occurs on a connection |
+| `onError(error)` | When a server-level error occurs (not tied to a specific connection) |
+| `shouldSendProtocolMessages(connection, ctx)` | Whether to send protocol messages (identity, state, MCP) to this connection. Default: `true` |
 
 ### `onStart`
 
@@ -139,16 +139,16 @@ export class ChatAgent extends Agent {
 
 Each connected client has a unique `Connection` object:
 
-| Property/Method       | Type                | Description                                                                             |
-| --------------------- | ------------------- | --------------------------------------------------------------------------------------- |
-| id                    | string              | Unique identifier for this connection                                                   |
-| uri                   | string \| null      | URL of the original WebSocket upgrade request. Persists across hibernation              |
-| state                 | State               | Per-connection state object                                                             |
-| setState(state)       | void                | Update connection state                                                                 |
-| send(message)         | void                | Send message to this client                                                             |
-| close(code?, reason?) | void                | Close the connection                                                                    |
-| tags                  | readonly string\[\] | Tags assigned via getConnectionTags. Always includes the connection ID as the first tag |
-| server                | string              | The agent instance name (same as this.name on the Agent)                                |
+| Property/Method | Type | Description |
+| --- | --- | --- |
+| `id` | `string` | Unique identifier for this connection |
+| `uri` | `string \| null` | URL of the original WebSocket upgrade request. Persists across hibernation |
+| `state` | `State` | Per-connection state object |
+| `setState(state)` | `void` | Update connection state |
+| `send(message)` | `void` | Send message to this client |
+| `close(code?, reason?)` | `void` | Close the connection |
+| `tags` | `readonly string[]` | Tags assigned via `getConnectionTags`. Always includes the connection ID as the first tag |
+| `server` | `string` | The agent instance name (same as `this.name` on the Agent) |
 
 ### Per-connection state
 
@@ -315,14 +315,14 @@ export class ChatAgent extends Agent {
 
 ### Connection management methods
 
-| Method                      | Signature                               | Description                                                                                                               |
-| --------------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| getConnections              | (tag?: string) => Iterable<Connection>  | Get all connections, optionally by tag                                                                                    |
-| getConnection               | (id: string) => Connection \| undefined | Get connection by ID                                                                                                      |
-| getConnectionTags           | (connection, ctx) => string\[\]         | Override to tag connections                                                                                               |
-| broadcast                   | (message, without?: string\[\]) => void | Send to all connections                                                                                                   |
-| isConnectionReadonly        | (connection) => boolean                 | Check if a connection is [readonly](https://developers.cloudflare.com/agents/runtime/communication/readonly-connections/) |
-| isConnectionProtocolEnabled | (connection) => boolean                 | Check if protocol messages are enabled for this connection                                                                |
+| Method | Signature | Description |
+| --- | --- | --- |
+| `getConnections` | `(tag?: string) => Iterable<Connection>` | Get all connections, optionally by tag |
+| `getConnection` | `(id: string) => Connection \| undefined` | Get connection by ID |
+| `getConnectionTags` | `(connection, ctx) => string[]` | Override to tag connections |
+| `broadcast` | `(message, without?: string[]) => void` | Send to all connections |
+| `isConnectionReadonly` | `(connection) => boolean` | Check if a connection is [readonly](https://developers.cloudflare.com/agents/runtime/communication/readonly-connections/) |
+| `isConnectionProtocolEnabled` | `(connection) => boolean` | Check if protocol messages are enabled for this connection |
 
 ## Handling binary data
 
@@ -368,7 +368,7 @@ export class FileAgent extends Agent {
 
 Note
 
-Agents automatically send JSON text frames (identity, state, MCP servers) to every connection. If your client only handles binary data and cannot process these frames, use [shouldSendProtocolMessages](https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/) to suppress them.
+Agents automatically send JSON text frames (identity, state, MCP servers) to every connection. If your client only handles binary data and cannot process these frames, use [`shouldSendProtocolMessages`](https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/) to suppress them.
 
 ## Error and close handling
 
@@ -440,11 +440,11 @@ The default `onError` implementation logs the error and rethrows it. Override it
 
 ## Message types
 
-| Type            | Description                     |
-| --------------- | ------------------------------- |
-| string          | Text message (typically JSON)   |
-| ArrayBuffer     | Binary data                     |
-| ArrayBufferView | Typed array view of binary data |
+| Type | Description |
+| --- | --- |
+| `string` | Text message (typically JSON) |
+| `ArrayBuffer` | Binary data |
+| `ArrayBufferView` | Typed array view of binary data |
 
 ## Hibernation
 
@@ -476,12 +476,12 @@ export class AlwaysOnAgent extends Agent {
 
 ### What persists across hibernation
 
-| Persists                 | Does not persist    |
-| ------------------------ | ------------------- |
-| this.state (agent state) | In-memory variables |
-| connection.state         | Timers/intervals    |
-| SQLite data (this.sql)   | Promises in flight  |
-| Connection metadata      | Local caches        |
+| Persists | Does not persist |
+| --- | --- |
+| `this.state` (agent state) | In-memory variables |
+| `connection.state` | Timers/intervals |
+| SQLite data (`this.sql`) | Promises in flight |
+| Connection metadata | Local caches |
 
 Store important data in `this.state` or SQLite, not in class properties:
 
@@ -797,21 +797,21 @@ Use `isConnectionProtocolEnabled(connection)` to check the status of any connect
 
 These properties are available on `this` inside any Agent method:
 
-| Property   | Type               | Description                                                               |
-| ---------- | ------------------ | ------------------------------------------------------------------------- |
-| this.name  | string             | The instance name of this agent                                           |
-| this.state | State              | The current agent state (lazy-loaded from SQLite)                         |
-| this.env   | Env                | Worker environment bindings                                               |
-| this.ctx   | DurableObjectState | Durable Object context (storage, alarms, etc.)                            |
-| this.sql   | template tag       | SQL template tag for executing queries against the agent's SQLite storage |
-| this.mcp   | MCPClientManager   | MCP client manager for connecting to external MCP servers                 |
+| Property | Type | Description |
+| --- | --- | --- |
+| `this.name` | `string` | The instance name of this agent |
+| `this.state` | `State` | The current agent state (lazy-loaded from SQLite) |
+| `this.env` | `Env` | Worker environment bindings |
+| `this.ctx` | `DurableObjectState` | Durable Object context (storage, alarms, etc.) |
+| `this.sql` | template tag | SQL template tag for executing queries against the agent's SQLite storage |
+| `this.mcp` | `MCPClientManager` | MCP client manager for connecting to external MCP servers |
 
 ## Connecting from clients
 
 For browser connections, use the Agents client SDK:
 
-* **Vanilla JS**: `AgentClient` from `agents/client`
-* **React**: `useAgent` hook from `agents/react`
+- **Vanilla JS**: `AgentClient` from `agents/client`
+- **React**: `useAgent` hook from `agents/react`
 
 Refer to [Client SDK](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/) for full documentation.
 

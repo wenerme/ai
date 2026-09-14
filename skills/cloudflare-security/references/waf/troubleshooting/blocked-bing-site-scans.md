@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Bing's Site Scan blocked by a managed rule
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/troubleshooting/blocked-bing-site-scans/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/troubleshooting/blocked-bing-site-scans/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Microsoft [Bing Webmaster Tools ↗](https://www.bing.com/webmaster/tools) provides a Site Scan feature that crawls your website searching for possible SEO improvements.
 
@@ -22,18 +22,18 @@ To allow Site Scan to run on your website, Cloudflare recommends that you tempor
 
 The rule you should temporarily skip is the following:
 
-|                     | Name                                             | ID          |
-| ------------------- | ------------------------------------------------ | ----------- |
-| **Managed Ruleset** | Cloudflare Managed Ruleset                       | ...376e9aee |
-| **Rule**            | Anomaly:Header:User-Agent - Fake Bing or MSN Bot | ...c12cf9c8 |
+|  | Name | ID |
+| --- | --- | --- |
+| **Managed Ruleset** | Cloudflare Managed Ruleset | ...376e9aee |
+| **Rule** | Anomaly:Header:User-Agent - Fake Bing or MSN Bot | ...c12cf9c8 |
 
 The exception, shown as a rule with a **Skip** action, must appear in the rules list before the rule executing the Cloudflare Managed Ruleset, or else nothing will be skipped.
 
 To check the rule order, use one of the following methods:
 
-* When using the old Cloudflare dashboard, the rules listed in **Security** \> **WAF** \> **Managed rules** run in order.
-* When using the new security dashboard, the rules listed in **Security** \> **Security rules** run in order.
-* When using the Cloudflare API, the rules in the `rules` object obtained using the [Get a zone entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/get/) operation (for your zone and for the `http_request_firewall_managed` phase) run in order.
+- When using the old Cloudflare dashboard, the rules listed in **Security** > **WAF** > **Managed rules** run in order.
+- When using the new security dashboard, the rules listed in **Security** > **Security rules** run in order.
+- When using the Cloudflare API, the rules in the `rules` object obtained using the [Get a zone entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/get/) operation (for your zone and for the `http_request_firewall_managed` phase) run in order.
 
 For more information on creating exceptions, refer to [Create exceptions](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/).
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Private Network Load Balancing
 
-Last updated Jul 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/private-network/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/private-network/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Private Network Load Balancing enables you to load balance traffic between servers within a data center ([endpoint steering](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/origin-level-steering/)) and between private applications. This helps you eliminate the need for hardware appliances and facilitates the migration of your infrastructure to the cloud, providing advantages such as elastic scalability and enhanced reliability.
 
@@ -64,10 +64,10 @@ When using [Spectrum](https://developers.cloudflare.com/spectrum/) as an on-ramp
 
 ## Use cases
 
-* **Requests originating from the public Internet and directed to a private/internal service**: You can route requests from the Internet to your internal services on internal IPs - such as accounting or production automation systems - using [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/).
-* **Intelligent traffic routing**: Benefit from failover for your private traffic and have the ability to monitor the health of these IP targets directly, rather than load balancing to a tunnel and only monitoring the health of the tunnel itself.
-* **Host applications on non-standard ports**: Easily specify and route traffic to applications hosted on private IP addresses using non-standard ports, allowing greater flexibility in service configuration without requiring changes to existing infrastructure.
-* **Public and Private Load Balancers**: Public LBs can direct Internet traffic to private IP addresses, supporting all L7 products like WAF and API Shield. Private LBs direct traffic originating from private networks to private IP addresses and require an on-ramp like the Cloudflare One Client or Cloudflare WAN.
+- **Requests originating from the public Internet and directed to a private/internal service**: You can route requests from the Internet to your internal services on internal IPs - such as accounting or production automation systems - using [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/).
+- **Intelligent traffic routing**: Benefit from failover for your private traffic and have the ability to monitor the health of these IP targets directly, rather than load balancing to a tunnel and only monitoring the health of the tunnel itself.
+- **Host applications on non-standard ports**: Easily specify and route traffic to applications hosted on private IP addresses using non-standard ports, allowing greater flexibility in service configuration without requiring changes to existing infrastructure.
+- **Public and Private Load Balancers**: Public LBs can direct Internet traffic to private IP addresses, supporting all L7 products like WAF and API Shield. Private LBs direct traffic originating from private networks to private IP addresses and require an on-ramp like the Cloudflare One Client or Cloudflare WAN.
 
 Was this helpful?
 

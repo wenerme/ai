@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cache
 
-Last updated Jul 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/data-localization/how-to/cache/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/how-to/cache/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following sections describe how to configure Cache with Regional Services and Customer Metadata Boundary to control where cached content is stored and served from.
 
@@ -20,8 +20,7 @@ The following sections describe how to configure Cache with Regional Services an
 
 To configure Regional Services for hostnames [proxied](https://developers.cloudflare.com/dns/proxy-status/) (meaning traffic routes through Cloudflare) through Cloudflare and ensure that [eligible assets](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/) are cached only in-region, follow these steps for the dashboard or API configuration:
 
-1. In the Cloudflare dashboard, go to the **Records** page.
-[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+1. In the Cloudflare dashboard, go to the **Records** page. [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Follow these steps to [create a DNS record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/).
 3. From the **Region** dropdown, select the region you would like to use on your domain.
 4. Select **Save**.
@@ -41,7 +40,7 @@ If you need guaranteed egress IP geolocation — for example, to allowlist Cloud
 
 ## Customer Metadata Boundary
 
-[Cache Analytics](https://developers.cloudflare.com/cache/performance-review/cache-analytics/), Generic Global Tiered Cache and Custom Tiered Cache are compatible with Customer Metadata Boundary. With Customer Metadata Boundary set to EU, the **Caching** \> **Tiered Cache** tab in the zone dashboard will not be populated.
+[Cache Analytics](https://developers.cloudflare.com/cache/performance-review/cache-analytics/), Generic Global Tiered Cache and Custom Tiered Cache are compatible with Customer Metadata Boundary. With Customer Metadata Boundary set to EU, the **Caching** > **Tiered Cache** tab in the zone dashboard will not be populated.
 
 For more information on CDN and caching, refer to the [Cache documentation](https://developers.cloudflare.com/cache/).
 

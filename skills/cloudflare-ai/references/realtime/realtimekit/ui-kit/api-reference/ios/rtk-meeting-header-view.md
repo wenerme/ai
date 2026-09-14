@@ -12,23 +12,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RtkMeetingHeaderView
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/ios/rtk-meeting-header-view/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/ios/rtk-meeting-header-view/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Meeting header view that displays the meeting title, participant count, elapsed time clock, recording indicator, and camera switch button.
 
 ## Initializer parameters
 
-| Parameter | Type              | Required | Default | Description                                            |
-| --------- | ----------------- | -------- | ------- | ------------------------------------------------------ |
-| meeting   | RealtimeKitClient | ✅        | \-      | The RealtimeKit client instance for the active meeting |
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `meeting` | `RealtimeKitClient` | ✅ | - | The RealtimeKit client instance for the active meeting |
 
 ## Methods
 
-| Method                                | Return Type | Description                                                   |
-| ------------------------------------- | ----------- | ------------------------------------------------------------- |
-| setContentTop(offset: CGFloat)        | Void        | Sets the top content offset for the header layout             |
-| refreshNextPreviousButtonState()      | Void        | Refreshes the enabled state of next and previous page buttons |
-| setClicks(nextButton:previousButton:) | Void        | Assigns tap handlers for the next and previous page buttons   |
+| Method | Return Type | Description |
+| --- | --- | --- |
+| `setContentTop(offset: CGFloat)` | `Void` | Sets the top content offset for the header layout |
+| `refreshNextPreviousButtonState()` | `Void` | Refreshes the enabled state of next and previous page buttons |
+| `setClicks(nextButton:previousButton:)` | `Void` | Assigns tap handlers for the next and previous page buttons |
 
 ## Usage Examples
 

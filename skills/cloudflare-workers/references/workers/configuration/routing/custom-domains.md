@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Custom Domains
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -45,10 +45,9 @@ You cannot create a Custom Domain on a hostname with an existing CNAME DNS recor
 
 To set up a Custom Domain in the dashboard:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your Worker.
-3. Go to **Settings** \> **Domains & Routes** \> **Add** \> **Custom Domain**.
+3. Go to **Settings** > **Domains & Routes** > **Add** > **Custom Domain**.
 4. Enter the domain you want to configure for your Worker.
 5. Select **Add Custom Domain**.
 
@@ -110,16 +109,18 @@ custom_domain = true
 
 ## Worker to Worker communication
 
-On the same zone, the only way for a Worker to communicate with another Worker running on a [route](https://developers.cloudflare.com/workers/configuration/routing/routes/#set-up-a-route), or on a [workers.dev](https://developers.cloudflare.com/workers/configuration/routing/routes/#%5Ftop) subdomain, is via [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/).
+On the same zone, the only way for a Worker to communicate with another Worker running on a [route](https://developers.cloudflare.com/workers/configuration/routing/routes/#set-up-a-route), or on a [`workers.dev`](https://developers.cloudflare.com/workers/configuration/routing/routes/#_top) subdomain, is via [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/).
 
 On the same zone, if a Worker is attempting to communicate with a target Worker running on a Custom Domain rather than a route, the limitation is removed. Fetch requests sent on the same zone from one Worker to another Worker running on a Custom Domain will succeed without a service binding.
 
 For example, consider the following scenario, where both Workers are running on the `example.com` Cloudflare zone:
 
-* `worker-a` running on the [route](https://developers.cloudflare.com/workers/configuration/routing/routes/#set-up-a-route) `auth.example.com/*`.
-* `worker-b` running on the [route](https://developers.cloudflare.com/workers/configuration/routing/routes/#set-up-a-route) `shop.example.com/*`.
+- `worker-a` running on the [route](https://developers.cloudflare.com/workers/configuration/routing/routes/#set-up-a-route) `auth.example.com/*`.
+- `worker-b` running on the [route](https://developers.cloudflare.com/workers/configuration/routing/routes/#set-up-a-route) `shop.example.com/*`.
 
 If `worker-a` sends a fetch request to `worker-b`, the request will fail, because of the limitation on same-zone fetch requests. `worker-a` must have a service binding to `worker-b` for this request to resolve.
+
+*worker-ajs*
 
 ```js
 export default {
@@ -149,6 +150,8 @@ For example, consider the following workflow:
 3. A request to `api.example.com/auth` will trigger your `auth-worker` Worker.
 4. Using `fetch(request)` within the `auth-worker` Worker will invoke the `api-worker` Worker, as if it was a normal application server.
 
+*auth-workerjs*
+
 ```js
 export default {
 	fetch(request) {
@@ -171,19 +174,19 @@ These certificates are generated with default settings. To override these settin
 
 Caution
 
-When you delete a Custom Domain, the associated Advanced Certificate is **not** automatically deleted. You must manually remove the certificate from the Cloudflare dashboard under **SSL/TLS** \> **Edge Certificates**, or via the [API](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate%5Fpacks/methods/delete/). Leaving unused certificates in place does not affect functionality but may cause confusion when auditing your certificate inventory.
+When you delete a Custom Domain, the associated Advanced Certificate is **not** automatically deleted. You must manually remove the certificate from the Cloudflare dashboard under **SSL/TLS** > **Edge Certificates**, or via the [API](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate_packs/methods/delete/). Leaving unused certificates in place does not affect functionality but may cause confusion when auditing your certificate inventory.
 
 ## Redirect between www and root domain
 
 Because Custom Domains require an exact hostname match, a Worker attached to `example.com` will not receive requests sent to `www.example.com`, and vice versa. To make both versions of your domain work, set up a redirect rule:
 
-* [Redirect from www to root](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-www-to-root/)
-* [Redirect from root to www](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-root-to-www/)
+- [Redirect from www to root](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-www-to-root/)
+- [Redirect from root to www](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-root-to-www/)
 
-You also need a [proxied DNS record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) for the hostname you are redirecting _from_, so that Cloudflare can apply the redirect rule.
+You also need a [proxied DNS record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) for the hostname you are redirecting *from*, so that Cloudflare can apply the redirect rule.
 
-* For www to root: Add a proxied DNS `A` record for `www` pointing to `192.0.2.0`, or a proxied `AAAA` record pointing to `100::`
-* For root to www: Add a proxied DNS `A` record for your root domain pointing to `192.0.2.0`, or a proxied `AAAA` record pointing to `100::`
+- For www to root: Add a proxied DNS `A` record for `www` pointing to `192.0.2.0`, or a proxied `AAAA` record pointing to `100::`
+- For root to www: Add a proxied DNS `A` record for your root domain pointing to `192.0.2.0`, or a proxied `AAAA` record pointing to `100::`
 
 Note
 
@@ -197,37 +200,39 @@ If you are currently invoking a Worker using a [route](https://developers.cloudf
 
 To migrate the route `example.com/*`:
 
-1. In the Cloudflare dashboard, go to the **DNS Records** page for your domain.
-[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+1. In the Cloudflare dashboard, go to the **DNS Records** page for your domain. [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Delete the CNAME record for `example.com`.
-3. Go to **Account Home** \> **Workers & Pages**.
-4. In **Overview**, select your Worker > **Settings** \> **Domains & Routes**.
-5. Select **Add** \> **Custom domain** and add `example.com`.
-6. Delete the route `example.com/*` located in your Worker > **Settings** \> **Domains & Routes**.
+3. Go to **Account Home** > **Workers & Pages**.
+4. In **Overview**, select your Worker > **Settings** > **Domains & Routes**.
+5. Select **Add** > **Custom domain** and add `example.com`.
+6. Delete the route `example.com/*` located in your Worker > **Settings** > **Domains & Routes**.
 
 ### Migrate from Routes via Wrangler
 
 To migrate the route `example.com/*` in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-1. In the Cloudflare dashboard, go to the **DNS Records** page for your domain.
-[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+1. In the Cloudflare dashboard, go to the **DNS Records** page for your domain. [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Delete the CNAME record for `example.com`.
 3. Add the following to your Wrangler file:
-```jsonc
-{
-  "routes": [
-    {
-      "pattern": "example.com",
-      "custom_domain": true
-    }
-  ]
-}
-```
-```toml
-[[routes]]
-pattern = "example.com"
-custom_domain = true
-```
+
+   ```jsonc
+   {
+     "routes": [
+       {
+         "pattern": "example.com",
+         "custom_domain": true
+       }
+     ]
+   }
+   ```
+
+   ```toml
+   [[routes]]
+   pattern = "example.com"
+   custom_domain = true
+   ```
+
+
 4. Run `npx wrangler deploy` to create the Custom Domain your Worker will run on.
 
 Was this helpful?

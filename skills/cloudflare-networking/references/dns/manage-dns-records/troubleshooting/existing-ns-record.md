@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # NS records already exist
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/existing-ns-record/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/existing-ns-record/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 As you try to create a new DNS record, Cloudflare displays the following error:
 
@@ -26,9 +26,9 @@ When a child domain (`blog.example.com`) of your domain (`example.com`) has been
 
 When you are managing DNS records for the parent zone (in this example, `example.com`), you cannot create IP address resolution records (`A`, `AAAA`, or `CNAME`) with a name that specifies the same subdomain that already exists as a separate subdomain zone.
 
-| Type | Name | Content   | TTL  |
-| ---- | ---- | --------- | ---- |
-| A    | blog | 192.0.2.0 | Auto |
+| Type | Name | Content | TTL |
+| --- | --- | --- | --- |
+| `A` | `blog` | `192.0.2.0` | `Auto` |
 
 ## Solution
 

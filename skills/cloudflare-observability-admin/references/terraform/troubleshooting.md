@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/terraform/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following pages are useful for troubleshooting Terraform issues.
 
-* [403 Authentication error when creating DNS records](https://developers.cloudflare.com/terraform/troubleshooting/authentication-error-dns-records/)
-* [Rule IDs change when I modify a ruleset](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/)
+- [403 Authentication error when creating DNS records](https://developers.cloudflare.com/terraform/troubleshooting/authentication-error-dns-records/)
+- [Rule IDs change when I modify a ruleset](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/)
 
 Was this helpful?
 

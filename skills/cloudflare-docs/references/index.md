@@ -24,7 +24,7 @@ Build and deploy serverless functions and full-stack apps on Cloudflare's global
 
 [Create your first Worker](https://developers.cloudflare.com/workers/get-started/guide/)
 
-[Workers](https://developers.cloudflare.com/workers/)·[Containers](https://developers.cloudflare.com/containers/)·[Durable Objects](https://developers.cloudflare.com/durable-objects/)·[Queues](https://developers.cloudflare.com/queues/)·[Flagship](https://developers.cloudflare.com/flagship/)
+[Workers](https://developers.cloudflare.com/workers/)· [Containers](https://developers.cloudflare.com/containers/)· [Durable Objects](https://developers.cloudflare.com/durable-objects/)· [Queues](https://developers.cloudflare.com/queues/)· [Flagship](https://developers.cloudflare.com/flagship/)
 
 ### The AI inference platform
 
@@ -34,7 +34,7 @@ Run AI inference globally with one API call, build agents, and search across you
 
 [Browse available models](https://developers.cloudflare.com/workers-ai/models/)
 
-[Workers AI](https://developers.cloudflare.com/workers-ai/)·[AI Gateway](https://developers.cloudflare.com/ai-gateway/)·[AI Search](https://developers.cloudflare.com/ai-search/)·[Agents](https://developers.cloudflare.com/agents/)·[Vectorize](https://developers.cloudflare.com/vectorize/)·[Browser Run](https://developers.cloudflare.com/browser-run/)
+[Workers AI](https://developers.cloudflare.com/workers-ai/)· [AI Gateway](https://developers.cloudflare.com/ai-gateway/)· [AI Search](https://developers.cloudflare.com/ai-search/)· [Agents](https://developers.cloudflare.com/agents/)· [Vectorize](https://developers.cloudflare.com/vectorize/)· [Browser Run](https://developers.cloudflare.com/browser-run/)
 
 ### Make your database feel instant, everywhere
 
@@ -44,7 +44,7 @@ Serverless SQL, globally distributed key-value, and global database acceleration
 
 [Get started with D1](https://developers.cloudflare.com/d1/get-started/)
 
-[R2](https://developers.cloudflare.com/r2/)·[Pipelines](https://developers.cloudflare.com/pipelines/)·[D1](https://developers.cloudflare.com/d1/)·[KV](https://developers.cloudflare.com/kv/)·[Hyperdrive](https://developers.cloudflare.com/hyperdrive/)
+[R2](https://developers.cloudflare.com/r2/)· [Pipelines](https://developers.cloudflare.com/pipelines/)· [D1](https://developers.cloudflare.com/d1/)· [KV](https://developers.cloudflare.com/kv/)· [Hyperdrive](https://developers.cloudflare.com/hyperdrive/)
 
 ### Build media pipelines without infrastructure headaches
 
@@ -54,7 +54,7 @@ Cloudflare Images helps teams build scalable, reliable media pipelines to store,
 
 [Get started with Images](https://developers.cloudflare.com/images/get-started/introduction/)
 
-[Images](https://developers.cloudflare.com/images/)·[Stream](https://developers.cloudflare.com/stream/)·[Realtime](https://developers.cloudflare.com/realtime/)
+[Images](https://developers.cloudflare.com/images/)· [Stream](https://developers.cloudflare.com/stream/)· [Realtime](https://developers.cloudflare.com/realtime/)
 
 ## Build with your favorite AI agent
 
@@ -72,7 +72,7 @@ The latest features and improvements shipping across Cloudflare.
 
 [View Changelog](https://developers.cloudflare.com/changelog/)
 
-[Sep 11, 2026AgentsInspect Voice Agent turn latency and outcomes@cloudflare/voice v0.4.0 adds per-turn metrics and browser diagnostics for Voice Agents.Read update](https://developers.cloudflare.com/changelog/post/2026-09-11-voice-diagnostics-turn-metrics/)[Sep 11AI SearchAI Search supports extensionless R2 objects with Content-Type metadataIndex extensionless R2 objects by setting supported Content-Type metadata.Read more](https://developers.cloudflare.com/changelog/post/2026-09-11-extensionless-r2-content-type/)[Sep 10WorkflowsDefault instance retention for new Workflows on Workers Paid is seven daysNew Workflows on Workers Paid retain instance state for seven days by default.Read more](https://developers.cloudflare.com/changelog/post/2026-09-10-paid-retention-default/)[Sep 10ContainersUse Cloudflare Containers with Codex via the OpenAI Agents APIRun Codex with Cloudflare Containers using the OpenAI Agents APIRead more](https://developers.cloudflare.com/changelog/post/2026-09-10-using-openai-agents-api-with-cloudflare-containers/)[Sep 10WAFWAF Release - 2026-09-10 - EmergencyCloudflare WAF managed rulesets 2026-09-10 emergency releaseRead more](https://developers.cloudflare.com/changelog/post/2026-09-10-emergency-waf-release/)[Sep 09Cloudflare One ClientCloudflare One Client for macOS (version 2026.8.1290.1)Cloudflare One Client for macOS (version 2026.8.1290.1)Read more](https://developers.cloudflare.com/changelog/post/2026-09-09-warp-macos-beta/)[Sep 09Cloudflare One ClientCloudflare One Client for Windows (version 2026.8.1290.1)Cloudflare One Client for Windows (version 2026.8.1290.1)Read more](https://developers.cloudflare.com/changelog/post/2026-09-09-warp-windows-beta/)[Sep 09AI GatewayAI Gateway custom costs support cache tokensSet custom cache-read and cache-write token rates for requests routed through AI Gateway.Read more](https://developers.cloudflare.com/changelog/post/2026-09-09-custom-cache-token-costs/)
+[Sep 14, 2026Access<h3>Require fresh authentication for SAML identity providers</h3>Configure Cloudflare Access to request fresh identity provider authentication for each SAML login.Read update](https://developers.cloudflare.com/changelog/post/2026-09-14-saml-force-authentication/) [Sep 14Browser Run<h3>Control which hostnames Browser Run sessions can access</h3>Browser Run guardrails restrict HTTP and HTTPS requests by hostname.Read more](https://developers.cloudflare.com/changelog/post/2026-09-14-guardrails/) [Sep 14Data Loss Prevention<h3>Discover where sensitive data goes before you create a Data Loss Prevention policy</h3>Learn from your Gateway traffic with Passive Detection. Explore sensitive data and its destinations to decide where a data protection policy can help.Read more](https://developers.cloudflare.com/changelog/post/2026-09-14-passive-detection/) [Sep 11Agents<h3>Inspect Voice Agent turn latency and outcomes</h3>@cloudflare/voice v0.4.0 adds per-turn metrics and browser diagnostics for Voice Agents.Read more](https://developers.cloudflare.com/changelog/post/2026-09-11-voice-diagnostics-turn-metrics/) [Sep 11AI Search<h3>AI Search supports extensionless R2 objects with Content-Type metadata</h3>Index extensionless R2 objects by setting supported Content-Type metadata.Read more](https://developers.cloudflare.com/changelog/post/2026-09-11-extensionless-r2-content-type/) [Sep 10Workflows<h3>Default instance retention for new Workflows on Workers Paid is seven days</h3>New Workflows on Workers Paid retain instance state for seven days by default.Read more](https://developers.cloudflare.com/changelog/post/2026-09-10-paid-retention-default/) [Sep 10Containers<h3>Use Cloudflare Containers with Codex via the OpenAI Agents API</h3>Run Codex with Cloudflare Containers using the OpenAI Agents APIRead more](https://developers.cloudflare.com/changelog/post/2026-09-10-using-openai-agents-api-with-cloudflare-containers/) [Sep 10WAF<h3>WAF Release - 2026-09-10 - Emergency</h3>Cloudflare WAF managed rulesets 2026-09-10 emergency releaseRead more](https://developers.cloudflare.com/changelog/post/2026-09-10-emergency-waf-release/)
 
 ## Security that scales
 
@@ -80,11 +80,11 @@ Everything you need to secure applications, APIs, and infrastructure.
 
 ### Public websites & apps
 
-[WAFProtect your applications without sacrificing performanceIdentify and block malicious payloads before they can compromise your application.Harden your app with WAF](https://developers.cloudflare.com/waf/)[SSL/TLSEncrypt your site in minutesStreamline TLS Certificate Management.Set up SSL/TLS](https://developers.cloudflare.com/ssl/)[TurnstileVerify visitors without CAPTCHAConfirm web visitors are real and block unwanted bots without slowing down web experiences for real users.Add Turnstile protection](https://developers.cloudflare.com/turnstile/)
+[WAF<h4>Protect your applications without sacrificing performance</h4>Identify and block malicious payloads before they can compromise your application.Harden your app with WAF](https://developers.cloudflare.com/waf/) [SSL/TLS<h4>Encrypt your site in minutes</h4>Streamline TLS Certificate Management.Set up SSL/TLS](https://developers.cloudflare.com/ssl/) [Turnstile<h4>Verify visitors without CAPTCHA</h4>Confirm web visitors are real and block unwanted bots without slowing down web experiences for real users.Add Turnstile protection](https://developers.cloudflare.com/turnstile/)
 
 ### Corporate and home networks
 
-[TunnelSecurely connect origins with post-quantum encrypted tunnelsOutbound-only encrypted tunnels, no open ports.Create a secure Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)[AccessSecure internal applications with Cloudflare AccessIdentity-first, quantum-safe access to private applications and infrastructure.Set up Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/)[GatewaySecure Internet browsing without disruptionsCloud-native Secure Web Gateway (SWG) that inspects browser traffic without disruption.Create Gateway policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Tunnel<h4>Securely connect origins with post-quantum encrypted tunnels</h4>Outbound-only encrypted tunnels, no open ports.Create a secure Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) [Access<h4>Secure internal applications with Cloudflare Access</h4>Identity-first, quantum-safe access to private applications and infrastructure.Set up Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/) [Gateway<h4>Secure Internet browsing without disruptions</h4>Cloud-native Secure Web Gateway (SWG) that inspects browser traffic without disruption.Create Gateway policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 ## Faster web performance
 
@@ -92,7 +92,7 @@ Accelerate websites and applications with Cloudflare CDN caching, image optimiza
 
 [Explore Directory](https://developers.cloudflare.com/directory/?product-group=Application+performance)
 
-[DNSFast, reliable and resilient DNS queriesWorld's fastest authoritative DNS, consistently ranked #1 by DNSPerf; free, fully API-managed, DNSSEC supported.Set up Authoritative DNS](https://developers.cloudflare.com/dns/)[Smart ShieldMinimize origin load and accelerate dynamic contentIntelligently manage traffic, optimize content delivery, and safeguard origin infrastructure.Enable Smart Shield](https://developers.cloudflare.com/smart-shield/)[CDNDefault caching for static assets, with cache rules for full controlCaches content in 330+ cities worldwide, with instant purging and granular Cache Rules.Set up Cache Rules](https://developers.cloudflare.com/cache/get-started/)[SpeedAssess your site speed and apply recommended optimizationsApplication delivery optimizations including minification, Brotli compression, Early Hints, and HTTP/3.Improve your site speed](https://developers.cloudflare.com/speed/)[ImagesTransform, optimize, and deliver images worldwideCloudflare Images handles format conversion, responsive sizing, and intelligent caching.Optimize image delivery](https://developers.cloudflare.com/images/)[Web AnalyticsUnderstand the performance of your web pagesCloudflare Web Analytics collects Core Web Vitals and performance data from 100% of page views without cookies or sampling.Track real user metrics](https://developers.cloudflare.com/web-analytics/)
+[DNS<h3>Fast, reliable and resilient DNS queries</h3>World's fastest authoritative DNS, consistently ranked #1 by DNSPerf; free, fully API-managed, DNSSEC supported.Set up Authoritative DNS](https://developers.cloudflare.com/dns/) [Smart Shield<h3>Minimize origin load and accelerate dynamic content</h3>Intelligently manage traffic, optimize content delivery, and safeguard origin infrastructure.Enable Smart Shield](https://developers.cloudflare.com/smart-shield/) [CDN<h3>Default caching for static assets, with cache rules for full control</h3>Caches content in 330+ cities worldwide, with instant purging and granular Cache Rules.Set up Cache Rules](https://developers.cloudflare.com/cache/get-started/) [Speed<h3>Assess your site speed and apply recommended optimizations</h3>Application delivery optimizations including minification, Brotli compression, Early Hints, and HTTP/3.Improve your site speed](https://developers.cloudflare.com/speed/) [Images<h3>Transform, optimize, and deliver images worldwide</h3>Cloudflare Images handles format conversion, responsive sizing, and intelligent caching.Optimize image delivery](https://developers.cloudflare.com/images/) [Web Analytics<h3>Understand the performance of your web pages</h3>Cloudflare Web Analytics collects Core Web Vitals and performance data from 100% of page views without cookies or sampling.Track real user metrics](https://developers.cloudflare.com/web-analytics/)
 
 ## Connect with Cloudflare
 
@@ -104,7 +104,7 @@ Community
 
 Share ideas, answers, and code with the Cloudflare community.
 
-[Discord](https://discord.cloudflare.com/)[X](https://x.com/cloudflare)[Forum](https://community.cloudflare.com/)
+[Discord](https://discord.cloudflare.com/) [X](https://x.com/cloudflare) [Forum](https://community.cloudflare.com/)
 
 Open Source
 
@@ -112,7 +112,7 @@ Open Source
 
 Cloudflare contributes to the open-source ecosystem in a variety of ways, including:
 
-[GitHub](https://github.com/cloudflare)[Sponsors](https://github.com/sponsors/cloudflare)[Style guide](https://developers.cloudflare.com/style-guide/)
+[GitHub](https://github.com/cloudflare) [Sponsors](https://github.com/sponsors/cloudflare) [Style guide](https://developers.cloudflare.com/style-guide/)
 
 Blog
 

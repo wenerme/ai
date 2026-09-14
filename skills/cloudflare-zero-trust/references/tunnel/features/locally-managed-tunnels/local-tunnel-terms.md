@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Useful terms
 
-Last updated Sep 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/local-tunnel-terms/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/local-tunnel-terms/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page contains terminology specific to locally-managed Cloudflare Tunnels. For general Tunnel terminology, refer to the [Get started section](https://developers.cloudflare.com/tunnel/get-started/).
 
@@ -20,14 +20,14 @@ This page contains terminology specific to locally-managed Cloudflare Tunnels. F
 
 `cloudflared` uses a default directory when storing credentials files for your tunnels, as well as the `cert.pem` file it generates when you run `cloudflared login`. The default directory is also where `cloudflared` will look for a [configuration file](#configuration-file) if no other file path is specified when running a tunnel.
 
-| OS                          | Path to default directory                                                         |
-| --------------------------- | --------------------------------------------------------------------------------- |
-| Windows                     | %USERPROFILE%\\.cloudflared                                                       |
-| macOS and Unix-like systems | \~/.cloudflared, /etc/cloudflared, and /usr/local/etc/cloudflared, in this order. |
+| OS | Path to default directory |
+| --- | --- |
+| Windows | `%USERPROFILE%\.cloudflared` |
+| macOS and Unix-like systems | `~/.cloudflared`, `/etc/cloudflared`, and `/usr/local/etc/cloudflared`, in this order. |
 
 ## Configuration file
 
-This is a YAML file that functions as the operating manual for `cloudflared`. `cloudflared` will automatically look for the configuration file in the [default cloudflared directory](#default-cloudflared-directory), but you can store your configuration file in any directory. It is recommended to always specify the file path for your configuration file whenever you reference it. By creating a configuration file, you can have fine-grained control over how their instance of `cloudflared` will operate. This includes operations like what you want `cloudflared` to do with traffic (for example, proxy websockets to port `xxxx` or SSH to port `yyyy`), where `cloudflared` should search for authorization (credentials file, tunnel token), and what mode it should run in (for example, [warp-routing](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/)). In the absence of a configuration file, cloudflared will proxy outbound traffic through port `8080`. For more information on how to create, store, and structure a configuration file, refer to the [dedicated instructions](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/configuration-file/).
+This is a YAML file that functions as the operating manual for `cloudflared`. `cloudflared` will automatically look for the configuration file in the [default `cloudflared` directory](#default-cloudflared-directory), but you can store your configuration file in any directory. It is recommended to always specify the file path for your configuration file whenever you reference it. By creating a configuration file, you can have fine-grained control over how their instance of `cloudflared` will operate. This includes operations like what you want `cloudflared` to do with traffic (for example, proxy websockets to port `xxxx` or SSH to port `yyyy`), where `cloudflared` should search for authorization (credentials file, tunnel token), and what mode it should run in (for example, [`warp-routing`](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/)). In the absence of a configuration file, cloudflared will proxy outbound traffic through port `8080`. For more information on how to create, store, and structure a configuration file, refer to the [dedicated instructions](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/configuration-file/).
 
 ## Cert.pem
 

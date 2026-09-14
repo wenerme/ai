@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Routes
 
-Last updated Aug 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, a Mesh node is reachable only by its own [Mesh IP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/#mesh-ips). To make other devices on the subnet behind the node reachable — servers, databases, printers, IoT devices that cannot run the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) — add a route to the node. A Mesh node supports two types of routes:
 
-* **CIDR routes** — forward traffic for an IP range — private (for example, `10.0.0.0/24`) or public — through the node.
-* **Hostname routes** — attract traffic for a hostname to the node instead of an IP. This works for a **private** hostname (for example, `wiki.internal.local`), which is useful when the application has an unknown or ephemeral IP, as well as a **public** hostname (for example, `www.example.com`), which routes that hostname's traffic through the node and egresses via the node's public IP.
+- **CIDR routes** — forward traffic for an IP range — private (for example, `10.0.0.0/24`) or public — through the node.
+- **Hostname routes** — attract traffic for a hostname to the node instead of an IP. This works for a **private** hostname (for example, `wiki.internal.local`), which is useful when the application has an unknown or ephemeral IP, as well as a **public** hostname (for example, `www.example.com`), which routes that hostname's traffic through the node and egresses via the node's public IP.
 
 When you add a route, the Mesh node acts as a gateway: traffic destined for the advertised CIDR or hostname is forwarded to the node, which delivers it to the appropriate host on the local network (or egresses it to the public Internet).
 
@@ -25,9 +25,10 @@ Both IPv4 and IPv6 CIDR routes are supported. IPv6 routes require that the Mesh 
 
 ## When to use routes
 
-* **Without routes** — Devices on your Mesh can only reach the node itself by its Mesh IP. Services running directly on the node are reachable this way.
-* **With routes** — Devices on your Mesh can reach any host on the subnet behind the node. Use this when you have infrastructure that cannot run the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/).
+- **Without routes** — Devices on your Mesh can only reach the node itself by its Mesh IP. Services running directly on the node are reachable this way.
+- **With routes** — Devices on your Mesh can reach any host on the subnet behind the node. Use this when you have infrastructure that cannot run the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/).
 
+```
 flowchart LR
   subgraph subnet["Subnet 10.0.0.0/24"]
     node["Mesh node <br> 10.0.0.1"]
@@ -38,14 +39,15 @@ flowchart LR
   node --> db
   node --> printer
 
+```
+
 ## Manage CIDR routes
 
 Use CIDR routes to forward traffic from your mesh node to devices on your local network.
 
 ### Add a route
 
-1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.
-[Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
+1. In the Cloudflare dashboard, go to **Networking** > **Mesh**. [Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
 2. Select your Mesh node.
 3. Go to the **Routes** tab.
 4. Select **Add route**.
@@ -53,11 +55,22 @@ Use CIDR routes to forward traffic from your mesh node to devices on your local 
 6. (Optionally) add a description for the route.
 7. Select **Add route**.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Cloudflare One Networks Write`
-* `Cloudflare Tunnel Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Cloudflare One Networks Write</code>
+- <code>Cloudflare Tunnel Write</code>
+
+</details>
+
+*Create a tunnel routebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes" \
@@ -72,16 +85,27 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes" 
 
 ### Edit a route
 
-1. Go to **Networking** \> **Mesh** \> select your node > **Routes** tab.
+1. Go to **Networking** > **Mesh** > select your node > **Routes** tab.
 2. Select the edit icon next to the route you want to modify.
 3. Update the CIDR or description.
 4. Select **Save**.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Cloudflare One Networks Write`
-* `Cloudflare Tunnel Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Cloudflare One Networks Write</code>
+- <code>Cloudflare Tunnel Write</code>
+
+</details>
+
+*Update a tunnel routebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes/$ROUTE_ID" \
@@ -95,15 +119,26 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes/$
 
 ### Delete a route
 
-1. Go to **Networking** \> **Mesh** \> select your node > **Routes** tab.
+1. Go to **Networking** > **Mesh** > select your node > **Routes** tab.
 2. Select the delete icon next to the route.
 3. Confirm deletion.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Cloudflare One Networks Write`
-* `Cloudflare Tunnel Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Cloudflare One Networks Write</code>
+- <code>Cloudflare Tunnel Write</code>
+
+</details>
+
+*Delete a tunnel routebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes/$ROUTE_ID" \
@@ -119,8 +154,8 @@ For traffic to reach your advertised CIDR, the range must route through Cloudfla
 
 In your Mesh node's device profile, ensure the advertised CIDR routes through Cloudflare:
 
-* **Include mode** (recommended for Mesh nodes): Add the CIDR to your include list.
-* **Exclude mode**: Remove the CIDR (or its parent range) from your exclude list.
+- **Include mode** (recommended for Mesh nodes): Add the CIDR to your include list.
+- **Exclude mode**: Remove the CIDR (or its parent range) from your exclude list.
 
 For example, if you are advertising `10.0.0.0/24` and your Split Tunnels exclude list contains `10.0.0.0/8`, you need to remove `10.0.0.0/8` and re-add the portions of the `10.0.0.0/8` range that you do not want to route through Cloudflare.
 
@@ -132,10 +167,13 @@ Repeat the same Split Tunnel configuration on the device profiles used by your c
 
 The Mesh node forwards inbound traffic from Cloudflare to devices on the subnet. However, for **return traffic** (responses from subnet devices back to Mesh clients), the subnet devices need a route back to the Mesh node.
 
+```
 flowchart LR
   client["Client device <br> 100.96.0.10"] -- request --> CF((Cloudflare)) -- request --> node["Mesh node <br> 10.0.0.1"]
   node --> db["Database <br> 10.0.0.50"]
   db -. "response: <br> needs route to node" .-> node -. response .-> CF -. response .-> client
+
+```
 
 How you configure this depends on where the Mesh node is installed:
 
@@ -147,8 +185,8 @@ If the Mesh node is the subnet's default gateway (or is installed on the router)
 
 If the Mesh node is a regular host on the subnet, configure the subnet's router to send Mesh traffic through the node. Add a static route:
 
-* **Destination**: `100.96.0.0/12` (Mesh IP range)
-* **Next hop**: The Mesh node's local subnet IP (for example, `10.0.0.1`)
+- **Destination**: `100.96.0.0/12` (Mesh IP range)
+- **Next hop**: The Mesh node's local subnet IP (for example, `10.0.0.1`)
 
 This ensures that responses to Mesh clients are forwarded to the Mesh node for delivery through Cloudflare.
 
@@ -156,6 +194,7 @@ This ensures that responses to Mesh clients are forwarded to the Mesh node for d
 
 When you have Mesh nodes at multiple sites, devices on one subnet can reach devices on another subnet through Cloudflare.
 
+```
 flowchart TD
   subgraph siteA["Site A — 10.0.0.0/24"]
     serverA["Server <br> 10.0.0.50"] --- nodeA["Mesh node <br> 10.0.0.1"]
@@ -166,6 +205,8 @@ flowchart TD
   nodeA <--> CF((Cloudflare))
   nodeB <--> CF
 
+```
+
 For this to work:
 
 1. Each Mesh node must advertise the local subnet as a [CIDR route](#add-a-route) so Cloudflare knows which node to forward traffic to.
@@ -174,13 +215,13 @@ For this to work:
 
 **Site A router:**
 
-* **Destination**: `192.168.1.0/24` → **Next hop**: `10.0.0.1` (local Mesh node)
-* **Destination**: `100.96.0.0/12` → **Next hop**: `10.0.0.1`
+- **Destination**: `192.168.1.0/24` → **Next hop**: `10.0.0.1` (local Mesh node)
+- **Destination**: `100.96.0.0/12` → **Next hop**: `10.0.0.1`
 
 **Site B router:**
 
-* **Destination**: `10.0.0.0/24` → **Next hop**: `192.168.1.1` (local Mesh node)
-* **Destination**: `100.96.0.0/12` → **Next hop**: `192.168.1.1`
+- **Destination**: `10.0.0.0/24` → **Next hop**: `192.168.1.1` (local Mesh node)
+- **Destination**: `100.96.0.0/12` → **Next hop**: `192.168.1.1`
 
 For production site-to-site deployments, consider enabling [high availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) on each node. HA provides failover for the CIDR routes advertised by a node — if the active replica goes down, Cloudflare promotes a standby so traffic to the subnet continues to flow.
 
@@ -189,103 +230,117 @@ For production site-to-site deployments, consider enabling [high availability](h
 To filter DNS queries from the subnet using [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/):
 
 1. **Configure DNS on your router**: Point your router's DNS to the Gateway resolver IPs:
-
-  * `172.64.36.1`
-  * `172.64.36.2`
+   - `172.64.36.1`
+   - `172.64.36.2`
 2. **Add IP routes to your router**: On your router, add static routes pointing the Gateway resolver IPs to your Mesh node's local IP. This allows DNS traffic to reach Cloudflare through the node.
-
-  * **Destination**: `172.64.36.1` → **Next hop**: `10.0.0.1` (local Mesh node)
-  * **Destination**: `172.64.36.2` → **Next hop**: `10.0.0.1`
+   - **Destination**: `172.64.36.1` → **Next hop**: `10.0.0.1` (local Mesh node)
+   - **Destination**: `172.64.36.2` → **Next hop**: `10.0.0.1`
 3. **Configure Split Tunnels**: Ensure the following IPs route through the Mesh node in your [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) configuration:
-
-  * The subnet's internal DNS resolver IP
-  * Gateway initial resolved IP range: `172.64.128.0/20` (IPv4) and `2606:4700:0cf1:4000::/64` (IPv6)
+   - The subnet's internal DNS resolver IP
+   - Gateway initial resolved IP range: `172.64.128.0/20` (IPv4) and `2606:4700:0cf1:4000::/64` (IPv6)
 
 Gateway logs DNS queries with the private source IP of the originating device. You can use this to create [resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) for internal DNS records.
 
 ## Hostname routes
 
-Instead of advertising an IP range, you can attract traffic for a specific hostname to a Mesh node. When a user requests the hostname, Cloudflare Gateway assigns an initial resolved IP and routes the traffic through the node.
+Instead of advertising an IP range, you can attract traffic for a specific hostname to a Mesh node. When a user requests the hostname, Cloudflare Gateway assigns an initial resolved IP
 
-* **Private hostname** (for example, `wiki.internal.local`) — the node delivers the traffic to the application's private IP on the local network. Useful when the application has an unknown or ephemeral IP.
-* **Public hostname** (for example, `www.example.com`) — the node egresses the traffic to the public Internet using its own public IP. This lets you use a Mesh node as a dedicated egress for that hostname.
+ and routes the traffic through the node.
+
+- **Private hostname** (for example, `wiki.internal.local`) — the node delivers the traffic to the application's private IP on the local network. Useful when the application has an unknown or ephemeral IP.
+- **Public hostname** (for example, `www.example.com`) — the node egresses the traffic to the public Internet using its own public IP. This lets you use a Mesh node as a dedicated egress for that hostname.
 
 Hostname routes replace [virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) as the way to reach resources: because a hostname is globally unique, **overlapping hostnames are not supported** and a hostname can only be routed to one node or tunnel at a time.
 
 1. [Client device](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
-Requests `wiki.internal.local`
+
+   Requests `wiki.internal.local`
 2. DNS query↓
 3. [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
-Returns a token IP, then rewrites the destination to the real private IP.
-`172.64.128.0/20`
+
+   Returns a token IP, then rewrites the destination to the real private IP. `172.64.128.0/20`
 4. [Hostname route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes)↓
 5. [Mesh node](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
-Forwards traffic to the host on the local network
+
+   Forwards traffic to the host on the local network
 6. ↓
 7. Private host
-`wiki.internal.local` · `10.0.0.50`
+
+   `wiki.internal.local` · `10.0.0.50`
 
 For a deeper look at the packet flow behind hostname routing, refer to the [announcement blog post ↗](https://blog.cloudflare.com/tunnel-hostname-routing/).
 
 ### Prerequisites
 
-* **Run a supported Mesh node version.** Hostname routing requires the Mesh node to run Linux Cloudflare One Client version `2026.6.822.0` or newer.
-* **Configure the Mesh node's [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) to use [MASQUE](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol).** Hostname routing does not work if the device profile uses WireGuard instead.
-* **Enable the Gateway proxy** with TCP, UDP, and ICMP:
-
-  1. Go to **Traffic policies** \> **Traffic settings**.
+- **Run a supported Mesh node version.** Hostname routing requires the Mesh node to run Linux Cloudflare One Client version `2026.6.822.0` or newer.
+- **Configure the Mesh node's [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) to use [MASQUE](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol).** Hostname routing does not work if the device profile uses WireGuard instead.
+- **Enable the Gateway proxy** with TCP, UDP, and ICMP:
+  1. Go to **Traffic policies** > **Traffic settings**.
   2. In **Proxy and inspection**, turn on **Allow Secure Web Gateway to proxy traffic**.
   3. Select **TCP**.
   4. Select **UDP** (required to proxy traffic to internal DNS resolvers).
   5. (Recommended) To proxy traffic for diagnostic tools such as `ping` and `traceroute`, select **ICMP**. You may also need to [update your system](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/#icmp) to allow ICMP traffic through `cloudflared`.
+  1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+     - `Zero Trust Write`
+  2. Turn on the TCP and/or UDP proxy using the [`cloudflare_zero_trust_device_settings` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_settings) resource:
 
-  1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
+     ```tf
+     resource "cloudflare_zero_trust_device_settings "global_warp_settings" {
+     	account_id            = var.cloudflare_account_id
+       gateway_proxy_enabled = true
+     	gateway_udp_proxy_enabled = true
+     }
+     ```
 
-    * `Zero Trust Write`
-  2. Turn on the TCP and/or UDP proxy using the [cloudflare\_zero\_trust\_device\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fsettings) resource:
-  ```tf
-  resource "cloudflare_zero_trust_device_settings "global_warp_settings" {
-  	account_id            = var.cloudflare_account_id
-    gateway_proxy_enabled = true
-  	gateway_udp_proxy_enabled = true
-  }
-  ```
-Cloudflare will now proxy traffic from enrolled devices, except for the traffic excluded in your [split tunnel settings](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/#3-route-private-network-ips-through-the-cloudflare-one-client). For more information on how Gateway forwards traffic, refer to [Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/).
-* **Route the following IPv4 ranges through Cloudflare** in the [Split Tunnel](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) configuration of **both** the Mesh node's device profile **and** your client device profiles. In Include mode, add each range. In Exclude mode, ensure none of them (or their parent ranges) are excluded.
+     Cloudflare will now proxy traffic from enrolled devices, except for the traffic excluded in your [split tunnel settings](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/#3-route-private-network-ips-through-the-cloudflare-one-client). For more information on how Gateway forwards traffic, refer to [Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/).
+- **Route the following IPv4 ranges through Cloudflare** in the [Split Tunnel](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) configuration of **both** the Mesh node's device profile **and** your client device profiles. In Include mode, add each range. In Exclude mode, ensure none of them (or their parent ranges) are excluded.
 
-| Purpose                    | IPv4          |
-| -------------------------- | ------------- |
-| Mesh device IP range       | 100.96.0.0/12 |
-| Cloudflare source IP range | 100.64.0.0/12 |
-The hostname routing (token IP) range (`172.64.128.0/20`) and all Cloudflare One IPv6 ranges are [automatically routed through Cloudflare](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#automatically-managed-ranges) and do not need to be added manually.
-* **Remove the hostname's top-level domain from [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/)** on client devices, so the DNS query is sent to Cloudflare Gateway for resolution.
+  | Purpose | IPv4 |
+  | --- | --- |
+  | Mesh device IP range | `100.96.0.0/12` |
+  | Cloudflare source IP range | `100.64.0.0/12` |
+
+  The hostname routing (token IP) range ( `172.64.128.0/20`) and all Cloudflare One IPv6 ranges are [automatically routed through Cloudflare](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#automatically-managed-ranges) and do not need to be added manually.
+- **Remove the hostname's top-level domain from [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/)** on client devices, so the DNS query is sent to Cloudflare Gateway for resolution.
 
 ### Add a hostname route
 
-1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.
-[Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
+1. In the Cloudflare dashboard, go to **Networking** > **Mesh**. [Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
 2. Select your Mesh node.
 3. Go to the **Routes** tab.
 4. Select **Add route**, then select **Private hostname**.
-5. Enter the fully qualified domain name (FQDN) you want to route through this node (for example, `wiki.internal.local`).
-Hostname format restrictions
+5. Enter the fully qualified domain name (FQDN) you want to route through this node (for example, `wiki.internal.local`).<details><summary>
 
-  * **Character limit:** Must be less than 255 characters.
-  * **Supported wildcards:** A single wildcard (`*`) is allowed, and it must represent a full DNS label. Example: `*.internal.local`
-  * **Unsupported wildcards:** The following wildcard formats are not supported:
-    * Partial wildcards such as `*-dev.internal.local` or `dev-*.internal.local`.
-    * Wildcards in the middle, such as `foo*bar.internal.local` or `foo.*.internal.local`.
-    * Multiple wildcards in the hostname, such as `*.*.internal.local`.
-  * **Wildcard trimming**: Leading wildcards (`*`) are trimmed off and an implicit dot (`.`) is assumed. For example, `*.internal.local` is saved as `internal.local` but will match all subdomains at the wildcard level (covers `foo.internal.local` but not `foo.bar.internal.local`).
-  * **Dot trimming:** Leading and ending dots (`.`) are allowed but trimmed off.
+   Hostname format restrictions</summary>
+
+   - **Character limit:** Must be less than 255 characters.
+   - **Supported wildcards:** A single wildcard (<code>*</code>) is allowed, and it must represent a full DNS label. Example: <code>*.internal.local</code>
+   - **Unsupported wildcards:** The following wildcard formats are not supported:
+     - Partial wildcards such as <code>*-dev.internal.local</code> or <code>dev-*.internal.local</code>.
+     - Wildcards in the middle, such as <code>foo*bar.internal.local</code> or <code>foo.*.internal.local</code>.
+     - Multiple wildcards in the hostname, such as <code>*.*.internal.local</code>.
+   - **Wildcard trimming**: Leading wildcards (<code>*</code>) are trimmed off and an implicit dot (<code>.</code>) is assumed. For example, <code>*.internal.local</code> is saved as <code>internal.local</code> but will match all subdomains at the wildcard level (covers <code>foo.internal.local</code> but not <code>foo.bar.internal.local</code>).
+   - **Dot trimming:** Leading and ending dots (<code>.</code>) are allowed but trimmed off.</details>
+
 6. (Optionally) add a description for the route.
 7. Select **Add hostname**.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Cloudflare One Networks Write`
-* `Cloudflare Tunnel Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Cloudflare One Networks Write</code>
+- <code>Cloudflare Tunnel Write</code>
+
+</details>
+
+*Create hostname routebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/zerotrust/routes/hostname" \
@@ -308,6 +363,8 @@ By default, the Mesh node resolves the hostname using the DNS resolver configure
 
 If the node cannot resolve the hostname on its own, the simplest option is to add an entry to the node's hosts file (for example, `/etc/hosts` on Linux) mapping the hostname to its private IP. Unlike a Cloudflare Tunnel, a Mesh node does **not** require you to run a dedicated DNS server:
 
+*/etc/hoststxt*
+
 ```txt
 10.0.0.50 wiki.internal.local
 ```
@@ -323,8 +380,8 @@ Where to run the DNS server
 
 If the DNS server is reached through a Mesh node, you cannot run it on the **same machine** as that node — the node's DNS interface binds port `53`. Host the DNS server on a separate machine in the same private network. In that case, configure return routes on the subnet so the DNS server's responses can reach the client:
 
-* **Mesh device IP range**: `100.96.0.0/12` → next hop is the Mesh node's local IP
-* **Initial resolved IP range**: `172.64.128.0/20` → next hop is the Mesh node's local IP
+- **Mesh device IP range**: `100.96.0.0/12` → next hop is the Mesh node's local IP
+- **Initial resolved IP range**: `172.64.128.0/20` → next hop is the Mesh node's local IP
 
 For a **public** hostname, the Mesh node handles resolution: Gateway sends the DNS query to the node, the node resolves it through its upstream DNS provider, and then routes the packet to the destination and egresses using its own public IP. No internal DNS server or resolver policy is required.
 
@@ -346,8 +403,8 @@ The workarounds below use Google Chrome Enterprise policies. If your organizatio
 
 If the affected request originates from within an iframe (for example, an application embedded in a third-party portal), the iframe must declare the `local-network-access` permission for the browser prompt to appear in the parent frame:
 
-* **Chrome 142-144**: Use the `allow="local-network-access"` attribute on the iframe element.
-* **Chrome 145+**: The permission was split into `allow="local-network"` and `allow="loopback-network"`.
+- **Chrome 142-144**: Use the `allow="local-network-access"` attribute on the iframe element.
+- **Chrome 145+**: The permission was split into `allow="local-network"` and `allow="loopback-network"`.
 
 If iframes are nested, every iframe in the chain must include the appropriate attribute. Since third-party applications control their own iframe attributes, this may not be configurable by the end user.
 
@@ -355,11 +412,11 @@ If iframes are nested, every iframe in the chain must include the appropriate at
 
 To avoid this issue, choose one of the following options:
 
-* **Override IP address space classification (Chrome 146+)**: Use the [LocalNetworkAccessIpAddressSpaceOverrides ↗](https://chromeenterprise.google/policies/#LocalNetworkAccessIpAddressSpaceOverrides) Chrome Enterprise policy to reclassify your CGNAT-space initial resolved IP range (for example, `100.80.0.0/16`) as public. This is the most targeted fix because it only changes the classification for the initial resolved IP range rather than disabling security checks entirely.
-* **Allow specific URLs (Chrome 140+)**: Use the [LocalNetworkAccessAllowedForUrls ↗](https://chromeenterprise.google/policies/#LocalNetworkAccessAllowedForUrls) Chrome Enterprise policy to exempt specific websites from Local Network Access checks. Note that `https://*` is a valid entry to disable checks for all URLs.
-* **Allow specific URLs (Chrome 146+)**: Use the [LocalNetworkAllowedForUrls ↗](https://chromeenterprise.google/policies/#LocalNetworkAllowedForUrls) Chrome Enterprise policy, which replaces `LocalNetworkAccessAllowedForUrls` starting in Chrome 146.
-* **Opt out of Local Network Access restrictions (Chrome 142-152)**: Use the [LocalNetworkAccessRestrictionsTemporaryOptOut ↗](https://chromeenterprise.google/policies/#LocalNetworkAccessRestrictionsTemporaryOptOut) Chrome Enterprise policy to completely opt out of Local Network Access restrictions. This is a temporary policy and will be removed after Chrome 152.
-* **Disable the Chrome feature flag**: Go to `chrome://flags` and set the **Local Network Access Checks** flag to _Disabled_. This approach is suitable for individual users but not for enterprise-wide deployment.
+- **Override IP address space classification (Chrome 146+)**: Use the [`LocalNetworkAccessIpAddressSpaceOverrides` ↗](https://chromeenterprise.google/policies/#LocalNetworkAccessIpAddressSpaceOverrides) Chrome Enterprise policy to reclassify your CGNAT-space initial resolved IP range (for example, `100.80.0.0/16`) as public. This is the most targeted fix because it only changes the classification for the initial resolved IP range rather than disabling security checks entirely.
+- **Allow specific URLs (Chrome 140+)**: Use the [`LocalNetworkAccessAllowedForUrls` ↗](https://chromeenterprise.google/policies/#LocalNetworkAccessAllowedForUrls) Chrome Enterprise policy to exempt specific websites from Local Network Access checks. Note that `https://*` is a valid entry to disable checks for all URLs.
+- **Allow specific URLs (Chrome 146+)**: Use the [`LocalNetworkAllowedForUrls` ↗](https://chromeenterprise.google/policies/#LocalNetworkAllowedForUrls) Chrome Enterprise policy, which replaces `LocalNetworkAccessAllowedForUrls` starting in Chrome 146.
+- **Opt out of Local Network Access restrictions (Chrome 142-152)**: Use the [`LocalNetworkAccessRestrictionsTemporaryOptOut` ↗](https://chromeenterprise.google/policies/#LocalNetworkAccessRestrictionsTemporaryOptOut) Chrome Enterprise policy to completely opt out of Local Network Access restrictions. This is a temporary policy and will be removed after Chrome 152.
+- **Disable the Chrome feature flag**: Go to `chrome://flags` and set the **Local Network Access Checks** flag to *Disabled*. This approach is suitable for individual users but not for enterprise-wide deployment.
 
 Was this helpful?
 

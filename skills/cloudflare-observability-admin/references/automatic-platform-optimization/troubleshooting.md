@@ -12,18 +12,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/automatic-platform-optimization/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/automatic-platform-optimization/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## WordPress plugin is undetected on Cloudflare dashboard
 
 The WordPress plugin may go undetected on your Cloudflare dashboard for a few reasons.
 
-* Versions older than 3.8.2 of the WordPress plugin are installed.
-  * **Solution:** Install version 4.4.0 of the WordPress plugin.
-* Version 3.8.2 of the plugin is installed but existing cache plugins return stale responses, for example, without `cf-edge-cache` header.
-  * **Solution:** Enable APO from the WordPress plugin and purge the cache in the existing cache plugins.
-* WordPress only runs on a subdomain, but WordPress and the WordPress plugin check against the apex domain.
-  * **Solution:** For additional information, see [Subdomains and subdirectories](https://developers.cloudflare.com/automatic-platform-optimization/reference/subdomain-subdirectories/)
+- Versions older than 3.8.2 of the WordPress plugin are installed.
+  - **Solution:** Install version 4.4.0 of the WordPress plugin.
+- Version 3.8.2 of the plugin is installed but existing cache plugins return stale responses, for example, without `cf-edge-cache` header.
+  - **Solution:** Enable APO from the WordPress plugin and purge the cache in the existing cache plugins.
+- WordPress only runs on a subdomain, but WordPress and the WordPress plugin check against the apex domain.
+  - **Solution:** For additional information, see [Subdomains and subdirectories](https://developers.cloudflare.com/automatic-platform-optimization/reference/subdomain-subdirectories/)
 
 If your Cloudflare dashboard cannot detect the WordPress plugin after trying the solutions above, ensure you completed all of the steps listed in [Activate the Cloudflare WordPress plugin](https://developers.cloudflare.com/automatic-platform-optimization/get-started/activate-cf-wp-plugin/).
 

@@ -12,12 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # TXT
 
-Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/txt/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/txt/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 TXT record validation requires the creation of a TXT record in the hostname's authoritative DNS.
 
 
-You choose one certificate validation method when you [create a custom hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/create/). The API accepts one `ssl.method` value: `http`, `txt`, or `email`.
+
+You choose one certificate validation method when you [create a custom hostname](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/create/). The API accepts one `ssl.method` value: `http`, `txt`, or `email`.
 
 ## When to use
 
@@ -45,15 +46,17 @@ This means that - if you choose to use wildcard custom hostnames - you will need
 
 ---
 
-### 1\. Get TXT tokens
+### 1. Get TXT tokens
 
 Once you [create a new hostname](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/issue-certificates/) and choose this validation method, your tokens will be ready after a few seconds.
 
 These tokens can be fetched through the API or the dashboard when the certificates are in a [pending validation](https://developers.cloudflare.com/ssl/reference/certificate-statuses/#new-certificates) state during custom hostname creation or during certificate renewals.
 
-You can access these tokens using the API with the [GET custom hostnames endpoint](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/list/).
+You can access these tokens using the API with the [`GET` custom hostnames endpoint](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/list/).
 
 For example, here are two tokens highlighted in the API response for a **wildcard** custom hostname.
+
+*Responsejson*
 
 ```json
 {
@@ -101,18 +104,17 @@ For example, here are two tokens highlighted in the API response for a **wildcar
 }
 ```
 
-1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.
-[Go to **Custom Hostnames** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
+1. In the Cloudflare dashboard, go to the **Custom Hostnames** page. [Go to **Custom Hostnames** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
 2. Select a hostname.
 3. Copy the values for **Certificate validation TXT name** and **Certificate validation TXT value**.
 
 If you had previously created a **wildcard** custom hostname, you would need to copy the values for two different validation TXT records.
 
-### 2\. Share with your customer
+### 2. Share with your customer
 
 You will then need to share these TXT tokens with your customers.
 
-### 3\. Add DNS records (customer)
+### 3. Add DNS records (customer)
 
 Your customers should place these at their authoritative DNS provider under the `"_acme-challenge"` DNS label. Once these TXT records are in place, validation and certificate issuance will automatically complete.
 
@@ -120,9 +122,9 @@ Note
 
 These tokens are different than the hostname validation tokens.
 
-If you would like to request an immediate recheck, [rather than wait for the next retry](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/validation-backoff-schedule/), send a [PATCH request](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/) with the same values as your initial `POST` request.
+If you would like to request an immediate recheck, [rather than wait for the next retry](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/validation-backoff-schedule/), send a [PATCH request](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/) with the same values as your initial `POST` request.
 
-### 4\. (Optional) Fetch new tokens
+### 4. (Optional) Fetch new tokens
 
 Your DCV tokens expire after a [certain amount of time](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/token-validity-periods/), depending on your certificate authority.
 

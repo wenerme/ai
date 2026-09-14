@@ -12,22 +12,30 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Multiple users on a Windows device
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-multiuser/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-multiuser/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+<details>
+
+<summary>
 
 Feature availability
 
-| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| All modes                                                                                                                          | All plans                                                       |
+</summary>
 
-| System   | Availability | Minimum WARP version |
-| -------- | ------------ | -------------------- |
-| Windows  | ✅            | 2025.6.1400.0        |
-| macOS    | ❌            |                      |
-| Linux    | ❌            |                      |
-| iOS      | ❌            |                      |
-| Android  | ❌            |                      |
-| ChromeOS | ❌            |                      |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- |
+| All modes | All plans |
+
+| System | Availability | Minimum WARP version |
+| --- | --- | --- |
+| Windows | ✅ | 2025.6.1400.0 |
+| macOS | ❌ | |
+| Linux | ❌ | |
+| iOS | ❌ | |
+| Android | ❌ | |
+| ChromeOS | ❌ | |
+
+</details>
 
 The Cloudflare One Client (formerly WARP) supports multiple users on a single Windows device. In multi-user mode, each user has their own [device registration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/device-registration/), and the Cloudflare One Client will automatically switch device registrations when a user logs in to their Windows account. All traffic to Cloudflare will be attributed to the currently active Windows user. This allows administrators to apply identity-based policies and device settings, audit user activity, and remove individual users from a shared workstation.
 
@@ -94,6 +102,7 @@ When enabling multi-user mode for the first time, users will need to re-register
 
 The following flowchart shows how Cloudflare One Client registration settings take effect as users log in and out:
 
+```
 flowchart TB
     start(["Enable multi-user mode"])-->reg["Active Windows user is prompted to register Cloudflare One Client"]
 		reg--"Log out of Windows"-->prelogin
@@ -110,6 +119,8 @@ flowchart TB
 		preloginbehavior--"Log in to Windows"---->regexists{{"Has the user already registered with Cloudflare One Client?"}}
 		regexists--"Yes"-->user["Switch to that user's registration"]
 		regexists-. "No" .->reg
+
+```
 
 ### Fast user switching
 

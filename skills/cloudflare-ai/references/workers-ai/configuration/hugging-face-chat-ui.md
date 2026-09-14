@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Hugging Face Chat UI
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/configuration/hugging-face-chat-ui/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/configuration/hugging-face-chat-ui/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use Workers AI with [Chat UI ↗](https://github.com/huggingface/chat-ui?tab=readme-ov-file#text-embedding-models), an open-source chat interface offered by Hugging Face.
 
@@ -20,9 +20,9 @@ Use Workers AI with [Chat UI ↗](https://github.com/huggingface/chat-ui?tab=rea
 
 You will need the following:
 
-* A [Cloudflare account ↗](https://dash.cloudflare.com)
-* Your [Account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/)
-* An [API token](https://developers.cloudflare.com/workers-ai/get-started/rest-api/#1-get-api-token-and-account-id) for Workers AI
+- A [Cloudflare account ↗](https://dash.cloudflare.com)
+- Your [Account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/)
+- An [API token](https://developers.cloudflare.com/workers-ai/get-started/rest-api/#1-get-api-token-and-account-id) for Workers AI
 
 ## Setup
 

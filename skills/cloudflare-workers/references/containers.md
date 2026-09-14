@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Containers
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Enhance your Workers with serverless containers
 
@@ -20,13 +20,13 @@ Available on Workers Paid plan
 
 Run code written in any programming language, built for any runtime, as part of apps built on [Workers](https://developers.cloudflare.com/workers).
 
-Deploy your container image to `Region:Earth` without worrying about managing infrastructure - just define your Worker and [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy).
+Deploy your container image to `Region:Earth` without worrying about managing infrastructure - just define your Worker and [`wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy).
 
 With Containers you can run:
 
-* Resource-intensive applications that require CPU cores running in parallel, large amounts of memory or disk space
-* Applications and libraries that require a full filesystem, specific runtime, or Linux-like environment
-* Existing applications and tools that have been distributed as container images
+- Resource-intensive applications that require CPU cores running in parallel, large amounts of memory or disk space
+- Applications and libraries that require a full filesystem, specific runtime, or Linux-like environment
+- Existing applications and tools that have been distributed as container images
 
 Container instances are spun up on-demand and controlled by code you write in your [Worker](https://developers.cloudflare.com/workers). Instead of chaining together API calls or writing Kubernetes operators, you just write JavaScript:
 
@@ -54,7 +54,7 @@ export default {
 	"name": "container-starter",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-08-28",
+	"compatibility_date": "2026-09-14",
 	"containers": [
 		{
 			"class_name": "MyContainer",
@@ -83,7 +83,7 @@ export default {
 name = "container-starter"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-08-28"
+compatibility_date = "2026-09-14"
 
 [[containers]]
 class_name = "MyContainer"
