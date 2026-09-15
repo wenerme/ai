@@ -43,7 +43,8 @@ Supported attributes:
 Example request:
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --header "Accept: application/json" \
      --url "https://gitlab.example.com/api/v4/groups/5/-/virtual_registries/packages/maven/registries"
 ```
@@ -118,7 +119,8 @@ Parameters:
 Example request:
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --header "Accept: application/json" \
      --url "https://gitlab.example.com/api/v4/virtual_registries/packages/maven/registries/1"
 ```
@@ -180,7 +182,8 @@ DELETE /virtual_registries/packages/maven/registries/:id
 Example request:
 
 ```shell
-curl --request DELETE --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request DELETE \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --header "Accept: application/json" \
      --url "https://gitlab.example.com/api/v4/virtual_registries/packages/maven/registries/1"
 ```
@@ -204,7 +207,8 @@ DELETE /virtual_registries/packages/maven/registries/:id/cache
 Example request:
 
 ```shell
-curl --request DELETE --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request DELETE \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --header "Accept: application/json" \
      --url "https://gitlab.example.com/api/v4/virtual_registries/packages/maven/registries/1/cache"
 ```
@@ -238,7 +242,8 @@ Supported attributes:
 Example request:
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --header "Accept: application/json" \
      --url "https://gitlab.example.com/api/v4/groups/5/-/virtual_registries/packages/maven/upstreams"
 ```
@@ -314,7 +319,8 @@ The `test` endpoint sends a HEAD request to the provided upstream URL using a te
 Example request:
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request POST \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --header "Content-Type: application/json" \
      --url "https://gitlab.example.com/api/v4/groups/5/-/virtual_registries/packages/maven/upstreams/test" \
      --data '{"url": "https://repo.maven.apache.org/maven2"}'
@@ -345,7 +351,8 @@ Supported attributes:
 Example request:
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --header "Accept: application/json" \
      --url "https://gitlab.example.com/api/v4/virtual_registries/packages/maven/registries/1/upstreams"
 ```
@@ -427,7 +434,8 @@ POST /virtual_registries/packages/maven/registries/:id/upstreams
 Example request:
 
 ```shell
-curl --request POST --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request POST \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --header "Content-Type: application/json" \
      --data '{"url": "https://repo.maven.apache.org/maven2", "name": "Maven Central", "description": "Maven Central repository", "username": <your_username>, "password": <your_password>, "cache_validity_hours": 48, "metadata_cache_validity_hours": 1}' \
      --url "https://gitlab.example.com/api/v4/virtual_registries/packages/maven/registries/1/upstreams"
@@ -483,7 +491,8 @@ packages in the target group or project.
 Example request:
 
 ```shell
-curl --request POST --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request POST \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --header "Content-Type: application/json" \
      --data '{"name": "Internal group", "local_group_id": 42, "cache_validity_hours": 24}' \
      --url "https://gitlab.example.com/api/v4/virtual_registries/packages/maven/registries/1/local/upstreams"
@@ -528,7 +537,8 @@ GET /virtual_registries/packages/maven/local/upstreams/:id
 Example request:
 
 ```shell
-curl --request GET --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --url "https://gitlab.example.com/api/v4/virtual_registries/packages/maven/local/upstreams/3"
 ```
 
@@ -574,7 +584,8 @@ You must set at least one optional attribute.
 Example request:
 
 ```shell
-curl --request PATCH --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request PATCH \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --header "Content-Type: application/json" \
      --data '{"name": "Renamed group", "cache_validity_hours": 48}' \
      --url "https://gitlab.example.com/api/v4/virtual_registries/packages/maven/local/upstreams/3"
@@ -597,7 +608,8 @@ DELETE /virtual_registries/packages/maven/local/upstreams/:id
 Example request:
 
 ```shell
-curl --request DELETE --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request DELETE \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --url "https://gitlab.example.com/api/v4/virtual_registries/packages/maven/local/upstreams/3"
 ```
 
@@ -620,7 +632,8 @@ Parameters:
 Example request:
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --header "Accept: application/json" \
      --url "https://gitlab.example.com/api/v4/virtual_registries/packages/maven/upstreams/1"
 ```
@@ -680,7 +693,8 @@ PATCH /virtual_registries/packages/maven/upstreams/:id
 Example request:
 
 ```shell
-curl --request PATCH --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request PATCH \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --header "Content-Type: application/json" \
      --data '{"cache_validity_hours": 72}' \
      --url "https://gitlab.example.com/api/v4/virtual_registries/packages/maven/upstreams/1"
@@ -704,7 +718,8 @@ PATCH /virtual_registries/packages/maven/registry_upstreams/:id
 Example request:
 
 ```shell
-curl --request PATCH --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request PATCH \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --header "Content-Type: application/json" \
      --data '{"position": 5}' \
      --url "https://gitlab.example.com/api/v4/virtual_registries/packages/maven/registry_upstreams/1"
@@ -727,7 +742,8 @@ DELETE /virtual_registries/packages/maven/upstreams/:id
 Example request:
 
 ```shell
-curl --request DELETE --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request DELETE \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --header "Accept: application/json" \
      --url "https://gitlab.example.com/api/v4/virtual_registries/packages/maven/upstreams/1"
 ```
@@ -819,7 +835,8 @@ DELETE /virtual_registries/packages/maven/upstreams/:id/cache
 Example request:
 
 ```shell
-curl --request DELETE --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request DELETE \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --header "Accept: application/json" \
      --url "https://gitlab.example.com/api/v4/virtual_registries/packages/maven/upstreams/1/cache"
 ```
@@ -855,7 +872,8 @@ The endpoint performs a HEAD request to the upstream URL using the test path to 
 Example request:
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --header "Accept: application/json" \
      --url "https://gitlab.example.com/api/v4/virtual_registries/packages/maven/upstreams/1/test"
 ```
@@ -987,7 +1005,8 @@ Supported attributes:
 Example request:
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --header "Accept: application/json" \
      --url "https://gitlab.example.com/api/v4/virtual_registries/packages/maven/upstreams/1/cache_entries?search=foo/bar"
 ```
@@ -1030,7 +1049,8 @@ DELETE /virtual_registries/packages/maven/cache_entries/*id
 Example request:
 
 ```shell
-curl --request DELETE --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request DELETE \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --header "Accept: application/json" \
      --url "https://gitlab.example.com/api/v4/virtual_registries/packages/maven/cache_entries/Zm9vL2Jhci9teXBrZy5wb20="
 ```
@@ -1066,7 +1086,8 @@ Supported attributes:
 Example request:
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --url "https://gitlab.example.com/api/v4/virtual_registries/packages/maven/1/foo/bar/mypkg/1.0-SNAPSHOT/mypkg-1.0-SNAPSHOT.jar" \
      --output mypkg-1.0-SNAPSHOT.jar
 ```

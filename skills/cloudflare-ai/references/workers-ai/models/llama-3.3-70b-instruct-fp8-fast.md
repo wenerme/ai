@@ -32,7 +32,7 @@ Llama 3.3 70B quantized to fp8 precision, optimized to be faster.
 | Terms and License | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3_3/LICENSE) |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
 | Batch | Yes |
-| Unit Pricing | $0.29 per M input tokens, $2.25 per M output tokens |
+| Unit Pricing | $0.293 per M input tokens, $2.253 per M output tokens |
 
 ## Playground
 

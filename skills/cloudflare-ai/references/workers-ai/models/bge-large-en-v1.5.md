@@ -31,7 +31,7 @@ BAAI general embedding (Large) model that transforms any given text into a 1024-
 | Maximum Input Tokens | 512 |
 | Output Dimensions | 1,024 |
 | Batch | Yes |
-| Unit Pricing | $0.20 per M input tokens |
+| Unit Pricing | $0.204 per M input tokens |
 
 ## Usage
 

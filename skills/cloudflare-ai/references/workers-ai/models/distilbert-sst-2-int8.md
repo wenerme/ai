@@ -27,7 +27,7 @@ Distilled BERT model that was finetuned on SST-2 for sentiment classification
 | Model Info | |
 | --- | --- |
 | More information | [link ↗](https://huggingface.co/Intel/distilbert-base-uncased-finetuned-sst-2-english-int8-static) |
-| Unit Pricing | $0.026 per M input tokens |
+| Unit Pricing | $0.0263 per M input tokens |
 
 ## Usage
 

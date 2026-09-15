@@ -62,83 +62,61 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 ```
 
 ```
-## The Three Laws (plus a "zeroth")
+The laws of thermodynamics describe how energy and heat behave in physical systems. Here are the three (plus a bonus fourth that was added later but numbered "zeroth").
 
 **First Law — Conservation of Energy**
+Energy cannot be created or destroyed, only transferred or converted between forms. For a closed system, the change in internal energy equals the heat added minus the work done by the system:
 
-Energy cannot be created or destroyed, only converted from one form to another or transferred between systems.
+ΔU = Q − W
 
-$$\Delta U = Q - W$$
-
-The change in a system's internal energy equals the heat added to it minus the work it does. Practically: you can't get more energy out of a system than you put in — no perpetual motion machine of the "first kind."
+Practical implication: there's no such thing as a perpetual motion machine that produces energy from nothing.
 
 **Second Law — Entropy Increases**
+The total entropy (disorder, or more precisely the number of accessible microscopic states) of an isolated system never decreases over time. Equivalent formulations:
 
-The total entropy of an isolated system never decreases; it increases in any irreversible process and stays constant only in idealized reversible ones.
+- Heat flows spontaneously from hot to cold, never the reverse
+- No heat engine can convert heat entirely into work — some is always lost to a cold reservoir
+- Processes have a preferred direction in time
 
-$$\Delta S_{\text{universe}} \geq 0$$
+This law is why engines have efficiency limits (the Carnot limit) and why it's often described as giving time its "arrow."
 
-Equivalent statements:
-- Heat flows spontaneously from hot to cold, never the reverse (Clausius)
-- No heat engine can convert heat entirely into work with no waste heat (Kelvin–Planck)
-
-This law gives time its direction and sets hard limits on engine efficiency (the Carnot limit, $1 - T_c/T_h$).
-
-**Third Law — Absolute Zero**
-
-As a system's temperature approaches absolute zero, its entropy approaches a constant minimum — zero for a perfect crystal.
-
-$$\lim_{T \to 0} S = 0$$
-
-A consequence: absolute zero (0 K, −273.15 °C) cannot be reached in a finite number of steps, since each cooling stage removes less and less heat.
+**Third Law — Absolute Zero is Unreachable**
+As a system's temperature approaches absolute zero (0 K, −273.15 °C), its entropy approaches a constant minimum — zero for a perfect crystal. A consequence is that no finite number of steps can cool something all the way to absolute zero; you can only get asymptotically closer.
 
 **Zeroth Law — Thermal Equilibrium**
+If system A is in thermal equilibrium with system C, and B is also in equilibrium with C, then A and B are in equilibrium with each other. This is what makes temperature a meaningful, measurable property — it's the basis for thermometers. It was formalized after the other three, hence the odd numbering.
 
-Added later but numbered "zeroth" because it's logically prior: if A is in thermal equilibrium with B, and B with C, then A is in equilibrium with C. This is what makes temperature a meaningful, measurable quantity — it's why thermometers work.
-
----
-
-A common informal summary, framed as a game you can't win:
-
-1. You can't win (best case, you break even on energy).
-2. You can't break even (entropy always takes a cut).
-3. You can't quit the game (you can't reach absolute zero).
+A common informal summary: *you can't win (1st), you can't break even (2nd), and you can't get out of the game (3rd).*
 ```
 
 ```json
 {
-  "model": "claude-opus-5",
-  "id": "msg_011CdMGDW2LrJq4cba8GUiPY",
+  "id": "msg_011CdMcWsWTt6YQBsVgBJKET",
   "type": "message",
   "role": "assistant",
   "content": [
     {
       "type": "thinking",
       "thinking": "",
-      "signature": "CAIS2QkKhwEIEBgCKkCGqpD8dichIGI5lLTLTWzD2GDKF+Gen+VeCqxOaNMRZqeYfoPp7HK0cVHWubFXJf9965IIfQf9nzzv65obd9QUMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ5ODY2MTIzNC03NmUwLTRlMGQtYTgyMS1iZThmOGMzNDc0ZDYSDJQqAt1B6hIXUNg92hoMn8f8ZlHzdjraBJ58IjCoPdmP+ZQgVQL5WQ0fxFWL3ypuvcKRaZyPWz3ZPRDaxGyyC/2U9eQ3wWYcVD9jfpkq/gfIcgr85vIMOp/wgzqFmC7S7m8v/Gu8FXVKd1TcBtdUrHnA50Aco+ze/xYQV8pVgllVgMW6om3v8kKDRBQ5FnC8h/5/HQ2sT4jaZnM74f1EgYD+hHF6MojpD7uKV0YUuZAfByYCvbzQvbjTrNtij7JfbfQuiYp11mbJdvf1qwOZYzNFfE6BkM8vt5wJCRF527i/+xS6gBf7NrN8nacvq7ZscjQ7NkZ4kE9i+npW7DGZ0/Bm8VxE7dsxdQJ4wHFL/iwR+EcqBk2OzwbKffji6PlFye/CYeFUC39ddwqkh4nasnv2qSJXZEB2n6SeQUrjnw2zBM8+2AhAqWyIAb4/RTkVRex4h/rLWEquKkbTl6eWjDYrOINMFl7fgdel6nH496BIkyK35r6SXA4Qzhnvhd9cPuVZvXjb3jzel1B1yNWvhbH0WxshRbQn+s8bs1ppX4jTRVy1YKKh1A1KT7rW74LQ/QgjY5OjScjv/Q181V/7VoFM7r/Bx+zZNTNFHbDFNjLyxIQyAjVi7AqiCJxjn9tIucRxSSkgix+gsgm81EER+ug5IxNuh84CbYDs/tldzXoE34zkeNFTn17GxdxiF4Q0DUc1Rq1m3ZigKUrnMhQUyE31S3lWS+ZdiXYAB8J9zGRhSsMDRjm7zbq5al0Rr3yEesOb5QtaaV1iguv8ybjUKvxPz/Y36ZV+91F8d5rWED3Nj2EEzd5jnS2759CoSXyOu6OQ7Z2DlWbYPgI8iP4To6WF2R3AIWp/3EbD7yqHIh5caA1MUog4AykTzlTyC+rM3ZTjSKAguveQwLriauP+xUe5iAbyRQsL2+QDqRbhmrOtegvq+32uM+Q7sOoqjwNuk4c9O/nrQ76Ht882YiejTyDTcU5uc7wTuxraK2r3QciQt9hB8xlP5sFGvFSdAAxLwTLQIUNy2UAMzeXez8Jrn86Dv8GiWnZDENTFq4yXn6NiaVxyEuc4Nl3HLeBD9pQcRcaIISjVtj7hlnXtJpVkPJvoHVSgQG2lLvqjU5JAaV3TZbPismWrfRrjKQ0kLhDu3Ta+b88kGWjxYooJX4zGHwnRQMloVwMgJoKNWvXAO+256IW7iyKvC36f8Xc+qoViVCf0+9fiEWn9+OPOfFmqJkkNaYNYV0IiIA17l4LjJ6G2jsqmElla9dZ0IQKl5rxPVYH1iEIONDxPAEjpgA4u3yV3n4TvhxF57CahHA0fWMFiY3FnX8k/SAHbwH8A4nYFRUHsQ3Zxwj8718DZRdg7uiTlPZAc/DpXIvjRUVn4crtT+cNatNaLIhVM7RK9VbPhai9bIZiIuZ6Tokc+TMcPrTsOHIDE/AX0q6MgGetLgJsZGB9o4WGp+FcqKimgaBgB"
+      "signature": "CAIS+wkKhwEIEBgCKkCQkqK6v16N37+5nxwsLhxrzfCzIPF8EtZFUMp15QDBKBAUGSIu2rqp+X6/Hi8Ul8I6R5cRA5sW1cubAR0uFsttMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ5ODY2MTIzNC03NmUwLTRlMGQtYTgyMS1iZThmOGMzNDc0ZDYSDBjGGGXscwelkjSVsRoM76EmL+Pl2dtvcTfkIjBy2Ayh9NZsLWod+geEtrv0CZx22kjdWmRHFED/zy3kvHn4eM1OJrP3lhPjNTckDU0qoAh+2jG1EqZNl6grp923Shc5W4S3srKv4zy7w4z6n150KajRAZSSpC/BYrGJb6lq6nVEsgjvnrOHIeF3mq1Y3/3rPJ346UB5iJRwP+rpm6lA4LkUVQZZGYeKqUhplIEMOdQdajx2iPjmTMTV0DjdiB0bHWA776a1SXuK5VjTpcnn77iwz8okVSbhqL6annDIiWET5Z9kHhjuqHhxdAXMeGkmYWbD2i0ttDdpaHgmrvW0FRYHDEDSQr/zUT6sXgke+AIG/jWwe5SmqZIIlHhOHufoW549PnXx/W6fkiiu/sNwYL85/3toWXePQkDKnD4GEFClcdCHVOEdOh45aC7XxtRwSMTBtRDz5DeAQvHwosoZoM/dJYru0s00EkG9pAq7I15ED7XTtJkUCE61wMdqifXkOSsAHbKxH6nJemHfSpS+14jaAZdWydahPq1j8wJVppQ1KC73HJZJ1wgKHT2ZCT1WlV9FuE+hmqp13NUirZRe+o7DEJiNSenND0L1GZ13FWFXiFFSXMQiAwDJTk4yWk8cLCGt45dFtAW/m8QoKKxcx+JctfpE21IMKnOG9mPJjvUdNsP3s5bk3ZkD2dcpbv4jfdJsZdz7DqNnR0tQS0TGFAc+hBuYM0ftPJlfyhKlwpi227CIVmhlxKKAUkODCMrdjevZhyJ/JZKbAJ2yzGQ2TaLxlmkbhM4XH0RBaQ+ALv5tg+oNZ0vA9OA5uKwbN9u9yKDq7hYBQeSatyPoJ+pGxEoeGeFOP4bZHvOplm/5V67E90HzDf0k/EVvjkj0P5nqVHsUb9N6IYNkMPdsNAAenNWBNk3Z8kW1xGxRw/JXZGKUr1Ql6nD5dUMw3DIDKG1c1+8QPaata4WzR/zMO8+btn3VObUDjekjC72bKMfsAjMMkX7dWYojE94Hg2rAFRQ20hmbjYDAwt8x/k8LD8bGBa/xw5WHY1Fa64r5YvJgK98sCtJbo68axk6/Tf8AgnzwVzjDugI+pQJ2oAoC22iqQQVzTwmsoLnqi9i3F/fe9wHqITf+jGytEfT0AG73R9dFD73mac0QVIbWXkm8Weld3twIvtzC3W0IPb2v1rhQkRCCJM/s6IBvRP2N0PIwCE2oexDeW+rw59vL8d/tsZ1Woogo1+76ldngoeLF4rEV4VjfP22rTN6ZLcfnerdYbF1lDXfQhTHgs+4LvMuHfYX8lMIq/wJssPyIpnXhXtmxgd9/ce2OInU3dUHXqISUHXIeiHeDxglxblzSK9B0rAzk1UaVJn4PMNGF3M1wguw6i9AAx8s+1AU5hLOinfZ166Az9HUYz/uHkQ6d0JYRx5L6xHXaWXF51ZifLRtfoeNqLdHGKxrfjSNQK8Ouuce7SzLMGi4YH5W2rED1XmpwI69xXnssHuQKHqt7ggSV5P26e5EYAQ=="
     },
     {
       "type": "text",
-      "text": "## The Three Laws (plus a \"zeroth\")\n\n**First Law — Conservation of Energy**\n\nEnergy cannot be created or destroyed, only converted from one form to another or transferred between systems.\n\n$$\\Delta U = Q - W$$\n\nThe change in a system's internal energy equals the heat added to it minus the work it does. Practically: you can't get more energy out of a system than you put in — no perpetual motion machine of the \"first kind.\"\n\n**Second Law — Entropy Increases**\n\nThe total entropy of an isolated system never decreases; it increases in any irreversible process and stays constant only in idealized reversible ones.\n\n$$\\Delta S_{\\text{universe}} \\geq 0$$\n\nEquivalent statements:\n- Heat flows spontaneously from hot to cold, never the reverse (Clausius)\n- No heat engine can convert heat entirely into work with no waste heat (Kelvin–Planck)\n\nThis law gives time its direction and sets hard limits on engine efficiency (the Carnot limit, $1 - T_c/T_h$).\n\n**Third Law — Absolute Zero**\n\nAs a system's temperature approaches absolute zero, its entropy approaches a constant minimum — zero for a perfect crystal.\n\n$$\\lim_{T \\to 0} S = 0$$\n\nA consequence: absolute zero (0 K, −273.15 °C) cannot be reached in a finite number of steps, since each cooling stage removes less and less heat.\n\n**Zeroth Law — Thermal Equilibrium**\n\nAdded later but numbered \"zeroth\" because it's logically prior: if A is in thermal equilibrium with B, and B with C, then A is in equilibrium with C. This is what makes temperature a meaningful, measurable quantity — it's why thermometers work.\n\n---\n\nA common informal summary, framed as a game you can't win:\n\n1. You can't win (best case, you break even on energy).\n2. You can't break even (entropy always takes a cut).\n3. You can't quit the game (you can't reach absolute zero)."
+      "text": "The laws of thermodynamics describe how energy and heat behave in physical systems. Here are the three (plus a bonus fourth that was added later but numbered \"zeroth\").\n\n**First Law — Conservation of Energy**\nEnergy cannot be created or destroyed, only transferred or converted between forms. For a closed system, the change in internal energy equals the heat added minus the work done by the system:\n\nΔU = Q − W\n\nPractical implication: there's no such thing as a perpetual motion machine that produces energy from nothing.\n\n**Second Law — Entropy Increases**\nThe total entropy (disorder, or more precisely the number of accessible microscopic states) of an isolated system never decreases over time. Equivalent formulations:\n\n- Heat flows spontaneously from hot to cold, never the reverse\n- No heat engine can convert heat entirely into work — some is always lost to a cold reservoir\n- Processes have a preferred direction in time\n\nThis law is why engines have efficiency limits (the Carnot limit) and why it's often described as giving time its \"arrow.\"\n\n**Third Law — Absolute Zero is Unreachable**\nAs a system's temperature approaches absolute zero (0 K, −273.15 °C), its entropy approaches a constant minimum — zero for a perfect crystal. A consequence is that no finite number of steps can cool something all the way to absolute zero; you can only get asymptotically closer.\n\n**Zeroth Law — Thermal Equilibrium**\nIf system A is in thermal equilibrium with system C, and B is also in equilibrium with C, then A and B are in equilibrium with each other. This is what makes temperature a meaningful, measurable property — it's the basis for thermometers. It was formalized after the other three, hence the odd numbering.\n\nA common informal summary: *you can't win (1st), you can't break even (2nd), and you can't get out of the game (3rd).*"
     }
   ],
+  "model": "claude-opus-5",
   "stop_reason": "end_turn",
-  "stop_sequence": null,
-  "stop_details": null,
   "usage": {
     "input_tokens": 20,
+    "output_tokens": 969,
     "cache_creation_input_tokens": 0,
-    "cache_read_input_tokens": 0,
-    "cache_creation": {
-      "ephemeral_5m_input_tokens": 0,
-      "ephemeral_1h_input_tokens": 0
-    },
-    "output_tokens": 999,
-    "output_tokens_details": {
-      "thinking_tokens": 342
-    },
-    "service_tier": "standard",
-    "inference_geo": "global"
+    "cache_read_input_tokens": 0
+  },
+  "stop_sequence": null,
+  "stop_details": null,
+  "gatewayMetadata": {
+    "keySource": "Unified"
   }
 }
 ```
@@ -155,7 +133,7 @@ A common informal summary, framed as a game you can't win:
 const response = await env.AI.run(
   'anthropic/claude-opus-5',
   {
-    max_tokens: 1024,
+    max_tokens: 2048,
     messages: [{ content: 'How do I read a JSON file in Python?', role: 'user' }],
     system: 'You are a helpful coding assistant specializing in Python.',
   },
@@ -169,7 +147,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   --header "Content-Type: application/json" \
   --data '{
   "model": "anthropic/claude-opus-5",
-  "max_tokens": 1024,
+  "max_tokens": 2048,
   "messages": [
     {
       "content": "How do I read a JSON file in Python?",
@@ -185,7 +163,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 Python's built-in `json` module handles this. The key function is `json.load()`.
 
-## Basic usage
+## The basic pattern
 
 ```python
 import json
@@ -196,25 +174,30 @@ with open("data.json", "r", encoding="utf-8") as f:
 print(data)
 ```
 
-That's it. `data` will be a Python object — usually a `dict` or `list`, depending on the JSON's top-level structure.
+That's it. `json.load()` reads from a file object; the `with` statement ensures the file gets closed even if something goes wrong.
 
 ## `load()` vs `loads()`
+
+This trips people up constantly:
 
 | Function | Input | Use when |
 |---|---|---|
 | `json.load(f)` | file object | reading from a file |
-| `json.loads(s)` | string | you already have JSON text (e.g., from an API response) |
+| `json.loads(s)` | string (or bytes) | you already have JSON text |
 
 ```python
 # From a string
-json_string = '{"name": "Ada", "age": 36}'
-data = json.loads(json_string)
-print(data["name"])  # Ada
+text = '{"name": "Ada", "age": 36}'
+data = json.loads(text)
+
+# Equivalent to the file version
+with open("data.json", encoding="utf-8") as f:
+    data = json.loads(f.read())   # works, but load(f) is cleaner
 ```
 
-## Type mapping
+## What you get back
 
-JSON values convert to Python like this:
+JSON types map to Python types like this:
 
 ```
 object  -> dict
@@ -226,9 +209,23 @@ false   -> False
 null    -> None
 ```
 
-## A more robust version
+So access it like any nested dict/list:
 
-Real files can be missing, malformed, or wrongly encoded. Handle those cases:
+```python
+# data.json: {"users": [{"name": "Ada", "roles": ["admin"]}]}
+data["users"][0]["name"]        # "Ada"
+data["users"][0]["roles"][0]    # "admin"
+```
+
+Use `.get()` for keys that might be missing:
+
+```python
+email = data["users"][0].get("email", "unknown")
+```
+
+## Handling errors properly
+
+Real-world files are messy. Catch the two things that actually go wrong:
 
 ```python
 import json
@@ -241,92 +238,86 @@ def read_json(path):
     except FileNotFoundError:
         print(f"No such file: {path}")
     except json.JSONDecodeError as e:
-        print(f"Invalid JSON in {path}: {e}")
+        print(f"Invalid JSON in {path} at line {e.lineno}, column {e.colno}: {e.msg}")
     return None
 
-config = read_json("config.json")
-if config is not None:
-    print(config.get("debug", False))
+data = read_json("data.json")
 ```
 
-`pathlib` offers a neat shortcut for small files:
+`JSONDecodeError` is a subclass of `ValueError`, and it carries `lineno`, `colno`, and `pos` — genuinely useful for pinpointing a bad comma.
+
+## Using `pathlib` (slightly tidier)
 
 ```python
-from pathlib import Path
 import json
+from pathlib import Path
 
 data = json.loads(Path("data.json").read_text(encoding="utf-8"))
 ```
 
-## Accessing nested data
+## Common gotchas
+
+**Always specify `encoding="utf-8"`.** Without it, Python uses the platform default, which on some Windows setups is cp1252 and will blow up on non-ASCII characters. JSON is UTF-8 by spec.
+
+**JSON Lines (`.jsonl`) is a different format.** One JSON object per line — `json.load()` will fail. Parse line by line:
 
 ```python
-# data.json:
-# {"users": [{"name": "Ada", "roles": ["admin", "dev"]}]}
-
-first_user = data["users"][0]
-print(first_user["name"])        # Ada
-print(first_user["roles"][0])    # admin
-
-# Safer, avoids KeyError:
-print(data.get("users", [{}])[0].get("email", "no email"))
+with open("data.jsonl", encoding="utf-8") as f:
+    records = [json.loads(line) for line in f if line.strip()]
 ```
 
-## Writing JSON back out
+**Trailing commas and comments aren't valid JSON.** `{"a": 1,}` or `// comment` will raise `JSONDecodeError`. If you're stuck with such files, use the `json5` or `commentjson` package.
+
+**Huge files:** `json.load()` builds the whole structure in memory. For files that don't fit, use a streaming parser like [`ijson`](https://pypi.org/project/ijson/):
 
 ```python
-with open("output.json", "w", encoding="utf-8") as f:
+import ijson
+
+with open("huge.json", "rb") as f:
+    for record in ijson.items(f, "users.item"):
+        process(record)
+```
+
+## Writing it back out
+
+For completeness:
+
+```python
+with open("out.json", "w", encoding="utf-8") as f:
     json.dump(data, f, indent=2, ensure_ascii=False)
 ```
 
-- `indent=2` — pretty-prints instead of one long line
-- `ensure_ascii=False` — keeps non-ASCII characters readable (é instead of `\u00e9`)
-
-## Gotcha: JSON Lines files
-
-If your file has **one JSON object per line** (`.jsonl` / `.ndjson`), `json.load()` will fail. Parse line by line instead:
-
-```python
-records = []
-with open("data.jsonl", "r", encoding="utf-8") as f:
-    for line in f:
-        line =
+`indent=2` makes it human-readable; `ensure_ascii=False` keeps non-ASCII characters as-is instead of escaping them to `\uXXXX`.
 ````
 
 ```json
 {
-  "model": "claude-opus-5",
-  "id": "msg_011CdMGERnNnjqoLKUi8f5e2",
+  "id": "msg_011CdMcXtLbe6orhyjErTMK4",
   "type": "message",
   "role": "assistant",
   "content": [
     {
       "type": "thinking",
       "thinking": "",
-      "signature": "CAISlwMKhwEIEBgCKkDnY3H/QvnY169K1yMmFcaHZdAHKQi7HwNFYKkIZp0wSRf/yL/nQsZDx/LLEQSY1FfhHojVKOfc/hmWW7FxVu0OMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ5ODY2MTIzNC03NmUwLTRlMGQtYTgyMS1iZThmOGMzNDc0ZDYSDDMdNrNt9b+XZzJ9ThoM6/mpYVgdtMKdiz9dIjCFQYQHXEtVYcE+CVPJAnA4WmnqBups2JzH7gDGnzRdULLA+WADSrZEZzJ8bjK6PEwqvAFnL+V+NxB/M2Epn970QINI1ZgU84/DZbdlTH6pxs6Lb2vsc3UngVrPq32NU30AzTvWc5QDERI04A2deMbM9A181rB9WPcKc2as+W52tkGFYw+AEi+16HCtFge22n6ih+qYNphSX6+F3m8PIjpCerhJSRWLE/ecUeTVhpTWBBsYtOiCjgw8BVCsa7pmHg97dlZphBOOCPhy6EGWefxHmF7rH7iv977nFRgcnBTzqIYUcLVdz3RXpjdT2VntWRgB"
+      "signature": "CAISlgMKhwEIEBgCKkAMw2x29hUCKlXqNB76pH+D/yqNHzKCZSWl13/1q5MvcRHqGBsMYVt5OPNJRBpoK96H4yBdLeYFynRrC3brOl8VMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ5ODY2MTIzNC03NmUwLTRlMGQtYTgyMS1iZThmOGMzNDc0ZDYSDPHl470mvTSS/VVloBoMjuO0rbloh1ffzl7/IjCQVDk88te+JO4ShyaKbxvx7tByViz6N6zO3AnWMoRShuVZmByIC9M123krmAR3d0squwH0oba6v809aPGBRis6zXZjjkxj9xUPeK9bIiAs2F4LqShktrO0enUaJGxlcocxt2tmwdkC5SF7XOy5lKpcBDf6XvOTeaV0bYyxgAQ6L2FkiOU9NtnSGiZZ0VmKz2v8RZ9nVisaD6kA15+UOqX8SO5ZYny+Ttrgue6Cx5DJ7MfBcRcE6SsSsuyLnrRFY1S7XNsCcd0lY1rv1CzkYOnItoxD6fDWab8uxQGGXWBhUnSy4XxtZ0+TR/2fRTuXGAE="
     },
     {
       "type": "text",
-      "text": "# Reading JSON Files in Python\n\nPython's built-in `json` module handles this. The key function is `json.load()`.\n\n## Basic usage\n\n```python\nimport json\n\nwith open(\"data.json\", \"r\", encoding=\"utf-8\") as f:\n    data = json.load(f)\n\nprint(data)\n```\n\nThat's it. `data` will be a Python object — usually a `dict` or `list`, depending on the JSON's top-level structure.\n\n## `load()` vs `loads()`\n\n| Function | Input | Use when |\n|---|---|---|\n| `json.load(f)` | file object | reading from a file |\n| `json.loads(s)` | string | you already have JSON text (e.g., from an API response) |\n\n```python\n# From a string\njson_string = '{\"name\": \"Ada\", \"age\": 36}'\ndata = json.loads(json_string)\nprint(data[\"name\"])  # Ada\n```\n\n## Type mapping\n\nJSON values convert to Python like this:\n\n```\nobject  -> dict\narray   -> list\nstring  -> str\nnumber  -> int / float\ntrue    -> True\nfalse   -> False\nnull    -> None\n```\n\n## A more robust version\n\nReal files can be missing, malformed, or wrongly encoded. Handle those cases:\n\n```python\nimport json\nfrom pathlib import Path\n\ndef read_json(path):\n    try:\n        with open(path, \"r\", encoding=\"utf-8\") as f:\n            return json.load(f)\n    except FileNotFoundError:\n        print(f\"No such file: {path}\")\n    except json.JSONDecodeError as e:\n        print(f\"Invalid JSON in {path}: {e}\")\n    return None\n\nconfig = read_json(\"config.json\")\nif config is not None:\n    print(config.get(\"debug\", False))\n```\n\n`pathlib` offers a neat shortcut for small files:\n\n```python\nfrom pathlib import Path\nimport json\n\ndata = json.loads(Path(\"data.json\").read_text(encoding=\"utf-8\"))\n```\n\n## Accessing nested data\n\n```python\n# data.json:\n# {\"users\": [{\"name\": \"Ada\", \"roles\": [\"admin\", \"dev\"]}]}\n\nfirst_user = data[\"users\"][0]\nprint(first_user[\"name\"])        # Ada\nprint(first_user[\"roles\"][0])    # admin\n\n# Safer, avoids KeyError:\nprint(data.get(\"users\", [{}])[0].get(\"email\", \"no email\"))\n```\n\n## Writing JSON back out\n\n```python\nwith open(\"output.json\", \"w\", encoding=\"utf-8\") as f:\n    json.dump(data, f, indent=2, ensure_ascii=False)\n```\n\n- `indent=2` — pretty-prints instead of one long line\n- `ensure_ascii=False` — keeps non-ASCII characters readable (é instead of `\\u00e9`)\n\n## Gotcha: JSON Lines files\n\nIf your file has **one JSON object per line** (`.jsonl` / `.ndjson`), `json.load()` will fail. Parse line by line instead:\n\n```python\nrecords = []\nwith open(\"data.jsonl\", \"r\", encoding=\"utf-8\") as f:\n    for line in f:\n        line ="
+      "text": "# Reading JSON Files in Python\n\nPython's built-in `json` module handles this. The key function is `json.load()`.\n\n## The basic pattern\n\n```python\nimport json\n\nwith open(\"data.json\", \"r\", encoding=\"utf-8\") as f:\n    data = json.load(f)\n\nprint(data)\n```\n\nThat's it. `json.load()` reads from a file object; the `with` statement ensures the file gets closed even if something goes wrong.\n\n## `load()` vs `loads()`\n\nThis trips people up constantly:\n\n| Function | Input | Use when |\n|---|---|---|\n| `json.load(f)` | file object | reading from a file |\n| `json.loads(s)` | string (or bytes) | you already have JSON text |\n\n```python\n# From a string\ntext = '{\"name\": \"Ada\", \"age\": 36}'\ndata = json.loads(text)\n\n# Equivalent to the file version\nwith open(\"data.json\", encoding=\"utf-8\") as f:\n    data = json.loads(f.read())   # works, but load(f) is cleaner\n```\n\n## What you get back\n\nJSON types map to Python types like this:\n\n```\nobject  -> dict\narray   -> list\nstring  -> str\nnumber  -> int / float\ntrue    -> True\nfalse   -> False\nnull    -> None\n```\n\nSo access it like any nested dict/list:\n\n```python\n# data.json: {\"users\": [{\"name\": \"Ada\", \"roles\": [\"admin\"]}]}\ndata[\"users\"][0][\"name\"]        # \"Ada\"\ndata[\"users\"][0][\"roles\"][0]    # \"admin\"\n```\n\nUse `.get()` for keys that might be missing:\n\n```python\nemail = data[\"users\"][0].get(\"email\", \"unknown\")\n```\n\n## Handling errors properly\n\nReal-world files are messy. Catch the two things that actually go wrong:\n\n```python\nimport json\nfrom pathlib import Path\n\ndef read_json(path):\n    try:\n        with open(path, \"r\", encoding=\"utf-8\") as f:\n            return json.load(f)\n    except FileNotFoundError:\n        print(f\"No such file: {path}\")\n    except json.JSONDecodeError as e:\n        print(f\"Invalid JSON in {path} at line {e.lineno}, column {e.colno}: {e.msg}\")\n    return None\n\ndata = read_json(\"data.json\")\n```\n\n`JSONDecodeError` is a subclass of `ValueError`, and it carries `lineno`, `colno`, and `pos` — genuinely useful for pinpointing a bad comma.\n\n## Using `pathlib` (slightly tidier)\n\n```python\nimport json\nfrom pathlib import Path\n\ndata = json.loads(Path(\"data.json\").read_text(encoding=\"utf-8\"))\n```\n\n## Common gotchas\n\n**Always specify `encoding=\"utf-8\"`.** Without it, Python uses the platform default, which on some Windows setups is cp1252 and will blow up on non-ASCII characters. JSON is UTF-8 by spec.\n\n**JSON Lines (`.jsonl`) is a different format.** One JSON object per line — `json.load()` will fail. Parse line by line:\n\n```python\nwith open(\"data.jsonl\", encoding=\"utf-8\") as f:\n    records = [json.loads(line) for line in f if line.strip()]\n```\n\n**Trailing commas and comments aren't valid JSON.** `{\"a\": 1,}` or `// comment` will raise `JSONDecodeError`. If you're stuck with such files, use the `json5` or `commentjson` package.\n\n**Huge files:** `json.load()` builds the whole structure in memory. For files that don't fit, use a streaming parser like [`ijson`](https://pypi.org/project/ijson/):\n\n```python\nimport ijson\n\nwith open(\"huge.json\", \"rb\") as f:\n    for record in ijson.items(f, \"users.item\"):\n        process(record)\n```\n\n## Writing it back out\n\nFor completeness:\n\n```python\nwith open(\"out.json\", \"w\", encoding=\"utf-8\") as f:\n    json.dump(data, f, indent=2, ensure_ascii=False)\n```\n\n`indent=2` makes it human-readable; `ensure_ascii=False` keeps non-ASCII characters as-is instead of escaping them to `\\uXXXX`."
     }
   ],
-  "stop_reason": "max_tokens",
-  "stop_sequence": null,
-  "stop_details": null,
+  "model": "claude-opus-5",
+  "stop_reason": "end_turn",
   "usage": {
     "input_tokens": 38,
+    "output_tokens": 1398,
     "cache_creation_input_tokens": 0,
-    "cache_read_input_tokens": 0,
-    "cache_creation": {
-      "ephemeral_5m_input_tokens": 0,
-      "ephemeral_1h_input_tokens": 0
-    },
-    "output_tokens": 1024,
-    "output_tokens_details": {
-      "thinking_tokens": 50
-    },
-    "service_tier": "standard",
-    "inference_geo": "global"
+    "cache_read_input_tokens": 0
+  },
+  "stop_sequence": null,
+  "stop_details": null,
+  "gatewayMetadata": {
+    "keySource": "Unified"
   }
 }
 ```
@@ -377,7 +368,7 @@ model
 
 stop\_reason
 
-`string | null`
+`string`
 
 ▶usage{}
 

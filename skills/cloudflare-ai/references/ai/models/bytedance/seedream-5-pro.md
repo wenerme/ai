@@ -186,6 +186,10 @@ size
 
 `string`
 
+watermark
+
+`boolean`requireddefault: falseWhether to add an AI-generated watermark to the output image
+
 ▶images\[]
 
 `array`minItems: 1format: uri

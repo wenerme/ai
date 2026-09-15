@@ -20,7 +20,7 @@ Check out the [unified AI model catalog](https://developers.cloudflare.com/ai/mo
 
 Task TypesCapabilitiesAuthorsNewest first
 
-We found 86 modelsClear filters
+We found 65 modelsClear filters
 
 ## Compare models
 
@@ -53,14 +53,6 @@ Compare
 [![Deepgram logo](https://developers.cloudflare.com/_astro/deepgram.BYzW8KfF.svg)<h3>aura-2-es</h3>
 
 DeepgramText-to-Speech Aura-2 is a context-aware text-to-speech (TTS) model that applies natural pacing, expressiveness, and fillers based on the context of the provided text. The quality of your text input directly impacts the naturalness of the audio output. - Cloudflare-hosted - Batch - Partner - Real-time](https://developers.cloudflare.com/workers-ai/models/aura-2-es/)
-
-- Pricing listed
-
-Compare
-
-[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>bart-large-cnn</h3>
-
-BetaMetaSummarization BART is a transformer encoder-encoder (seq2seq) model with a bidirectional (BERT-like) encoder and an autoregressive (GPT-like) decoder. You can use this model for text summarization. - Cloudflare-hosted - Deprecated](https://developers.cloudflare.com/workers-ai/models/bart-large-cnn/)
 
 - Pricing listed
 
@@ -119,7 +111,7 @@ Compare
 
 [![DeepSeek logo](https://developers.cloudflare.com/_astro/deepseek.CkzAgvN6.svg)<h3>deepseek-v4-flash-0731</h3>
 
-DeepSeekText Generation DeepSeek-V4-Flash-0731 is the official release of DeepSeek-V4-Flash, superseding the preview version, with substantially enhanced agentic capabilities. - Cloudflare-hosted - Function calling - Reasoning](https://developers.cloudflare.com/workers-ai/models/deepseek-v4-flash-0731/)
+DeepSeekText Generation DeepSeek-V4-Flash-0731 is the official release of DeepSeek-V4-Flash, superseding the preview version, with substantially enhanced agentic capabilities. - Cloudflare-hosted - Batch - Function calling - Reasoning](https://developers.cloudflare.com/workers-ai/models/deepseek-v4-flash-0731/)
 
 - Context: 1.3M tokens
 - Pricing listed
@@ -131,14 +123,6 @@ Compare
 DeepSeekText Generation DeepSeek V4 Pro is a high-capability reasoning model from DeepSeek with a one million token context window, built for long-horizon agentic workflows and complex, multi-step problem-solving - Cloudflare-hosted - Function calling - Reasoning](https://developers.cloudflare.com/workers-ai/models/deepseek-v4-pro-0813/)
 
 - Context: 1M tokens
-- Pricing listed
-
-Compare
-
-[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>detr-resnet-50</h3>
-
-BetaMetaObject Detection DEtection TRansformer (DETR) model trained end-to-end on COCO 2017 object detection (118k annotated images). - Cloudflare-hosted](https://developers.cloudflare.com/workers-ai/models/detr-resnet-50/)
-
 - Pricing listed
 
 Compare
@@ -159,7 +143,7 @@ Compare
 
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>embeddinggemma-300m</h3>
 
-GoogleText Embeddings EmbeddingGemma is a 300M parameter, state-of-the-art for its size, open embedding model from Google, built from Gemma 3 (with T5Gemma initialization) and the same research and technology used to create Gemini models. EmbeddingGemma produces vector representations of text, making it well-suited for search and retrieval tasks, including classification, clustering, and semantic similarity search. This model was trained with data in 100+ spoken languages. - Cloudflare-hosted](https://developers.cloudflare.com/workers-ai/models/embeddinggemma-300m/)
+BetaGoogleText Embeddings EmbeddingGemma is a 300M parameter, state-of-the-art for its size, open embedding model from Google, built from Gemma 3 (with T5Gemma initialization) and the same research and technology used to create Gemini models. EmbeddingGemma produces vector representations of text, making it well-suited for search and retrieval tasks, including classification, clustering, and semantic similarity search. This model was trained with data in 100+ spoken languages. - Cloudflare-hosted](https://developers.cloudflare.com/workers-ai/models/embeddinggemma-300m/)
 
 Compare
 
@@ -175,15 +159,11 @@ Compare
 
 Black Forest LabsText-to-Image FLUX.1 \[schnell\] is a 12 billion parameter rectified flow transformer capable of generating images from text descriptions. - Cloudflare-hosted](https://developers.cloudflare.com/workers-ai/models/flux-1-schnell/)
 
-- Pricing listed
-
 Compare
 
 [![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg)<h3>flux-2-dev</h3>
 
 Black Forest LabsText-to-Image FLUX.2 \[dev\] is an image model from Black Forest Labs where you can generate highly realistic and detailed images, with multi-reference support. - Cloudflare-hosted - Partner](https://developers.cloudflare.com/workers-ai/models/flux-2-dev/)
-
-- Pricing listed
 
 Compare
 
@@ -191,15 +171,11 @@ Compare
 
 Black Forest LabsText-to-Image FLUX.2 \[klein\] is an ultra-fast, distilled image model. It unifies image generation and editing in a single model, delivering state-of-the-art quality enabling interactive workflows, real-time previews, and latency-critical applications. - Cloudflare-hosted - Partner](https://developers.cloudflare.com/workers-ai/models/flux-2-klein-4b/)
 
-- Pricing listed
-
 Compare
 
 [![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg)<h3>flux-2-klein-9b</h3>
 
-Black Forest LabsText-to-Image FLUX.2 \[klein\] 9B is an ultra-fast, distilled image model with enhanced quality. It unifies image generation and editing in a single model, delivering state-of-the-art quality enabling interactive workflows, real-time previews, and latency-critical applications. - Cloudflare-hosted - Partner](https://developers.cloudflare.com/workers-ai/models/flux-2-klein-9b/)
-
-- Pricing listed
+Black Forest LabsText-to-Image FLUX.2 \[klein\] 9B is a 9 billion parameter model that can generate images from text descriptions and supports multi-reference editing capabilities. - Cloudflare-hosted - Partner](https://developers.cloudflare.com/workers-ai/models/flux-2-klein-9b/)
 
 Compare
 
@@ -211,29 +187,12 @@ BetaGoogleText Generation This is a Gemma-2B base model that Cloudflare dedicate
 
 Compare
 
-[![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemma-3-12b-it</h3>
-
-GoogleText Generation Gemma 3 models are well-suited for a variety of text generation and image understanding tasks, including question answering, summarization, and reasoning. Gemma 3 models are multimodal, handling text and image input and generating text output, with a large, 128K context window, multilingual support in over 140 languages, and is available in more sizes than previous versions. - Cloudflare-hosted - LoRA - Deprecated](https://developers.cloudflare.com/workers-ai/models/gemma-3-12b-it/)
-
-- Context: 80K tokens
-- Pricing listed
-
-Compare
-
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemma-4-26b-a4b-it</h3>
 
-GoogleText Generation Gemma 4 is Google's most intelligent family of open models, built from Gemini 3 research to maximize intelligence-per-parameter. - Cloudflare-hosted - Function calling - Reasoning - Vision](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/)
+GoogleText Generation Gemma 4 is Google's most intelligent family of open models, built from Gemini 3 research to maximize intelligence-per-parameter. - Cloudflare-hosted - Batch - Function calling - Reasoning - Vision](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/)
 
 - Context: 256K tokens
 - Pricing listed
-
-Compare
-
-[![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemma-7b-it</h3>
-
-BetaGoogleText Generation Gemma is a family of lightweight, state-of-the-art open models from Google, built from the same research and technology used to create the Gemini models. They are text-to-text, decoder-only large language models, available in English, with open weights, pre-trained variants, and instruction-tuned variants. - Cloudflare-hosted - LoRA - Deprecated](https://developers.cloudflare.com/workers-ai/models/gemma-7b-it/)
-
-- Context: 8.2K tokens
 
 Compare
 
@@ -254,7 +213,7 @@ aisingaporeText Generation SEA-LION stands for Southeast Asian Languages In One 
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-4.7-flash</h3>
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-4.7-flash</h3>
 
 Zhipu AIText Generation GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages. - Cloudflare-hosted - Function calling - Reasoning](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/)
 
@@ -263,7 +222,7 @@ Zhipu AIText Generation GLM-4.7-Flash is a fast and efficient multilingual text 
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.2</h3>
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.2</h3>
 
 Zhipu AIText Generation Z.ai's flagship agentic coding model - Cloudflare-hosted - Function calling - Reasoning](https://developers.cloudflare.com/workers-ai/models/glm-5.2/)
 
@@ -272,27 +231,27 @@ Zhipu AIText Generation Z.ai's flagship agentic coding model - Cloudflare-hosted
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3</h3>
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.3</h3>
 
 Zhipu AIText Generation GLM-5.3 is Z.ai's flagship agentic coding model, pairing a 1M-token context window with reasoning, function calling, and structured outputs to power multi-step, tool-driven development workflows. - Cloudflare-hosted - Function calling - Reasoning](https://developers.cloudflare.com/workers-ai/models/glm-5.3/)
 
-- Context: 1M tokens
+- Context: 1.3M tokens
 - Pricing listed
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>
 
 Zhipu AIText Generation The first natively multimodal model in the GLM-5 series. With 320B total parameters and just 18B active parameters, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks. - Cloudflare-hosted - Function calling - Reasoning - Vision](https://developers.cloudflare.com/workers-ai/models/glm-5.3-flash/)
 
-- Context: 1M tokens
+- Context: 1.3M tokens
 - Pricing listed
 
 Compare
 
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-oss-120b</h3>
 
-OpenAIText Generation OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-120b is for production, general purpose, high reasoning use-cases. - Cloudflare-hosted - Function calling - Reasoning](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/)
+OpenAIText Generation OpenAI’s open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-120b is for production, general purpose, high reasoning use-cases. - Cloudflare-hosted - Batch - Function calling - Reasoning](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/)
 
 - Context: 128K tokens
 - Pricing listed
@@ -301,7 +260,7 @@ Compare
 
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-oss-20b</h3>
 
-OpenAIText Generation OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-20b is for lower latency, and local or specialized use-cases. - Cloudflare-hosted - Function calling - Reasoning](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/)
+OpenAIText Generation OpenAI’s open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-20b is for lower latency, and local or specialized use-cases. - Cloudflare-hosted - Batch - Function calling - Reasoning](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/)
 
 - Context: 128K tokens
 - Pricing listed
@@ -317,14 +276,6 @@ IBMText Generation Granite 4.0 instruct models deliver strong performance across
 
 Compare
 
-[n<h3>hermes-2-pro-mistral-7b</h3>
-
-BetanousresearchText Generation Hermes 2 Pro on Mistral 7B is the new flagship 7B Hermes! Hermes 2 Pro is an upgraded, retrained version of Nous Hermes 2, consisting of an updated and cleaned version of the OpenHermes 2.5 Dataset, as well as a newly introduced Function Calling and JSON Mode dataset developed in-house. - Cloudflare-hosted - Function calling - Deprecated](https://developers.cloudflare.com/workers-ai/models/hermes-2-pro-mistral-7b/)
-
-- Context: 24K tokens
-
-Compare
-
 [a<h3>indictrans2-en-indic-1B</h3>
 
 ai4bharatTranslation IndicTrans2 is the first open-source transformer-based multilingual NMT model that supports high-quality translations across all the 22 scheduled Indic languages - Cloudflare-hosted](https://developers.cloudflare.com/workers-ai/models/indictrans2-en-indic-1B/)
@@ -333,18 +284,9 @@ ai4bharatTranslation IndicTrans2 is the first open-source transformer-based mult
 
 Compare
 
-[![Moonshot AI logo](https://developers.cloudflare.com/_astro/moonshotai.DjWMkXUS.svg)<h3>kimi-k2.5</h3>
-
-Moonshot AIText Generation Kimi K2.5 is a frontier-scale open-source model with a 256k context window, multi-turn tool calling, vision inputs, and structured outputs for agentic workloads. - Cloudflare-hosted - Function calling - Deprecated - Reasoning - Vision](https://developers.cloudflare.com/workers-ai/models/kimi-k2.5/)
-
-- Context: 256K tokens
-- Pricing listed
-
-Compare
-
 [![Moonshot AI logo](https://developers.cloudflare.com/_astro/moonshotai.DjWMkXUS.svg)<h3>kimi-k2.6</h3>
 
-Moonshot AIText Generation Kimi K2.6 is a frontier-scale open-source 1T parameter model with a 262.1k context window, multi-turn tool calling, vision inputs, and structured outputs for agentic workloads. - Cloudflare-hosted - Function calling - Reasoning - Vision](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/)
+Moonshot AIText Generation Kimi K2.6 is a frontier-scale open-source 1T parameter model with a 262.1k context window, multi-turn tool calling, vision inputs, and structured outputs for agentic workloads. - Cloudflare-hosted - Batch - Function calling - Reasoning - Vision](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/)
 
 - Context: 262.1K tokens
 - Pricing listed
@@ -360,80 +302,11 @@ Moonshot AIText Generation Kimi K2.7 is a frontier-scale open-source 1T paramete
 
 Compare
 
-[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>llama-2-7b-chat-fp16</h3>
-
-MetaText Generation Full precision (fp16) generative text model with 7 billion parameters from Meta - Cloudflare-hosted - Deprecated](https://developers.cloudflare.com/workers-ai/models/llama-2-7b-chat-fp16/)
-
-- Context: 4.1K tokens
-- Pricing listed
-
-Compare
-
 [![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>llama-2-7b-chat-hf-lora</h3>
 
 BetaMetaText Generation This is a Llama2 base model that Cloudflare dedicated for inference with LoRA adapters. Llama 2 is a collection of pretrained and fine-tuned generative text models ranging in scale from 7 billion to 70 billion parameters. This is the repository for the 7B fine-tuned model, optimized for dialogue use cases and converted for the Hugging Face Transformers format. - Cloudflare-hosted - LoRA](https://developers.cloudflare.com/workers-ai/models/llama-2-7b-chat-hf-lora/)
 
 - Context: 8.2K tokens
-
-Compare
-
-[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>llama-2-7b-chat-int8</h3>
-
-MetaText Generation Quantized (int8) generative text model with 7 billion parameters from Meta - Cloudflare-hosted - Deprecated](https://developers.cloudflare.com/workers-ai/models/llama-2-7b-chat-int8/)
-
-- Context: 8.2K tokens
-
-Compare
-
-[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>llama-3-8b-instruct</h3>
-
-MetaText Generation Generation over generation, Meta Llama 3 demonstrates state-of-the-art performance on a wide range of industry benchmarks and offers new capabilities, including improved reasoning. - Cloudflare-hosted - Deprecated](https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct/)
-
-- Context: 8K tokens
-- Pricing listed
-
-Compare
-
-[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>llama-3-8b-instruct-awq</h3>
-
-MetaText Generation Quantized (int4) generative text model with 8 billion parameters from Meta. - Cloudflare-hosted - Deprecated](https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct-awq/)
-
-- Context: 8.2K tokens
-- Pricing listed
-
-Compare
-
-[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>llama-3.1-70b-instruct</h3>
-
-MetaText Generation The Meta Llama 3.1 collection of multilingual large language models (LLMs) is a collection of pretrained and instruction tuned generative models. The Llama 3.1 instruction tuned text only models are optimized for multilingual dialogue use cases and outperform many of the available open source and closed chat models on common industry benchmarks. - Cloudflare-hosted - Deprecated](https://developers.cloudflare.com/workers-ai/models/llama-3.1-70b-instruct/)
-
-- Context: 24K tokens
-
-Compare
-
-[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>llama-3.1-8b-instruct</h3>
-
-MetaText Generation The Meta Llama 3.1 collection of multilingual large language models (LLMs) is a collection of pretrained and instruction tuned generative models. The Llama 3.1 instruction tuned text only models are optimized for multilingual dialogue use cases and outperform many of the available open source and closed chat models on common industry benchmarks. - Cloudflare-hosted - Deprecated](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct/)
-
-- Context: 8K tokens
-- Pricing listed
-
-Compare
-
-[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>llama-3.1-8b-instruct-awq</h3>
-
-MetaText Generation Quantized (int4) generative text model with 8 billion parameters from Meta. - Cloudflare-hosted - Deprecated](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-awq/)
-
-- Context: 8.2K tokens
-- Pricing listed
-
-Compare
-
-[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>llama-3.1-8b-instruct-fast</h3>
-
-MetaText Generation \[Fast version\] The Meta Llama 3.1 collection of multilingual large language models (LLMs) is a collection of pretrained and instruction tuned generative models. The Llama 3.1 instruction tuned text only models are optimized for multilingual dialogue use cases and outperform many of the available open source and closed chat models on common industry benchmarks. - Cloudflare-hosted](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fast/)
-
-- Context: 128K tokens
 
 Compare
 
@@ -466,7 +339,7 @@ Compare
 
 [![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>llama-3.2-3b-instruct</h3>
 
-MetaText Generation The Llama 3.2 instruction-tuned text only models are optimized for multilingual dialogue use cases, including agentic retrieval and summarization tasks. - Cloudflare-hosted](https://developers.cloudflare.com/workers-ai/models/llama-3.2-3b-instruct/)
+MetaText Generation The Llama 3.2 instruction-tuned text only models are optimized for multilingual dialogue use cases, including agentic retrieval and summarization tasks. - Cloudflare-hosted - LoRA](https://developers.cloudflare.com/workers-ai/models/llama-3.2-3b-instruct/)
 
 - Context: 80K tokens
 - Pricing listed
@@ -530,34 +403,9 @@ MyShellText-to-Speech MeloTTS is a high-quality multi-lingual text-to-speech lib
 
 Compare
 
-[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>meta-llama-3-8b-instruct</h3>
-
-MetaText Generation Generation over generation, Meta Llama 3 demonstrates state-of-the-art performance on a wide range of industry benchmarks and offers new capabilities, including improved reasoning. - Cloudflare-hosted - Deprecated](https://developers.cloudflare.com/workers-ai/models/meta-llama-3-8b-instruct/)
-
-- Context: 8.2K tokens
-
-Compare
-
-[![MistralAI logo](https://developers.cloudflare.com/_astro/mistralai.Bn9UMUMu.svg)<h3>mistral-7b-instruct-v0.1</h3>
-
-MistralAIText Generation Instruct fine-tuned version of the Mistral-7b generative text model with 7 billion parameters - Cloudflare-hosted - LoRA - Deprecated](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.1/)
-
-- Context: 2.8K tokens
-- Pricing listed
-
-Compare
-
-[![MistralAI logo](https://developers.cloudflare.com/_astro/mistralai.Bn9UMUMu.svg)<h3>mistral-7b-instruct-v0.2</h3>
-
-BetaMistralAIText Generation The Mistral-7B-Instruct-v0.2 Large Language Model (LLM) is an instruct fine-tuned version of the Mistral-7B-v0.2. Mistral-7B-v0.2 has the following changes compared to Mistral-7B-v0.1: 32k context window (vs 8k context in v0.1), rope-theta = 1e6, and no Sliding-Window Attention. - Cloudflare-hosted - LoRA - Deprecated](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2/)
-
-- Context: 3.1K tokens
-
-Compare
-
 [![MistralAI logo](https://developers.cloudflare.com/_astro/mistralai.Bn9UMUMu.svg)<h3>mistral-7b-instruct-v0.2-lora</h3>
 
-BetaMistralAIText Generation The Mistral-7B-Instruct-v0.2 Large Language Model (LLM) is an instruct fine-tuned version of the Mistral-7B-v0.2. - Cloudflare-hosted - LoRA](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2-lora/)
+MistralAIText Generation The Mistral-7B-Instruct-v0.2 Large Language Model (LLM) is an instruct fine-tuned version of the Mistral-7B-v0.2. - Cloudflare-hosted - LoRA](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2-lora/)
 
 - Context: 15K tokens
 
@@ -594,14 +442,6 @@ Compare
 DeepgramAutomatic Speech Recognition Transcribe audio using Deepgram’s speech-to-text model - Cloudflare-hosted - Batch - Partner - Real-time](https://developers.cloudflare.com/workers-ai/models/nova-3/)
 
 - Pricing listed
-
-Compare
-
-[![Microsoft logo](https://developers.cloudflare.com/_astro/microsoft.LujcDJ--.svg)<h3>phi-2</h3>
-
-BetaMicrosoftText Generation Phi-2 is a Transformer-based model with a next-word prediction objective, trained on 1.4T tokens from multiple passes on a mixture of Synthetic and Web datasets for NLP and coding. - Cloudflare-hosted - Deprecated](https://developers.cloudflare.com/workers-ai/models/phi-2/)
-
-- Context: 2K tokens
 
 Compare
 
@@ -650,7 +490,7 @@ Compare
 
 [![Qwen logo](https://developers.cloudflare.com/_astro/qwen.ByCZjtXU.svg)<h3>qwen3.8-27b</h3>
 
-QwenImage-Text-to-Text Qwen 3.8 27B is a 27-billion-parameter instruction-tuned language model from Alibaba's Qwen family, designed for vision, efficient general-purpose text generation and agentic workloads. - Cloudflare-hosted - Function calling - Reasoning - Vision](https://developers.cloudflare.com/workers-ai/models/qwen3.8-27b/)
+QwenText Generation Qwen 3.8 27B is a 27-billion-parameter instruction-tuned language model from Alibaba's Qwen family, designed for vision, efficient general-purpose text generation and agentic workloads. - Cloudflare-hosted - Batch - Function calling - Reasoning - Vision](https://developers.cloudflare.com/workers-ai/models/qwen3.8-27b/)
 
 - Context: 262.1K tokens
 - Pricing listed
@@ -676,23 +516,7 @@ Compare
 
 [![Pipecat logo](https://developers.cloudflare.com/_astro/pipecat.B-PNBdef.svg)<h3>smart-turn-v2</h3>
 
-PipecatVoice Activity Detection An open source, community-driven, native audio turn detection model in 2nd version - Cloudflare-hosted - Batch - Real-time](https://developers.cloudflare.com/workers-ai/models/smart-turn-v2/)
-
-- Pricing listed
-
-Compare
-
-[![Defog logo](https://developers.cloudflare.com/_astro/defog.C0vfV4et.svg)<h3>sqlcoder-7b-2</h3>
-
-BetaDefogText Generation This model is intended to be used by non-technical users to understand data inside their SQL databases. - Cloudflare-hosted - Deprecated](https://developers.cloudflare.com/workers-ai/models/sqlcoder-7b-2/)
-
-- Context: 10K tokens
-
-Compare
-
-[![RunwayML logo](https://developers.cloudflare.com/_astro/runway.Cq8Cjov4.svg)<h3>stable-diffusion-v1-5-img2img</h3>
-
-BetaRunwayMLText-to-Image Stable Diffusion is a latent text-to-image diffusion model capable of generating photo-realistic images. Img2img generate a new image from an input image with Stable Diffusion. - Cloudflare-hosted](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/)
+PipecatDumb Pipe An open source, community-driven, native audio turn detection model in 2nd version - Cloudflare-hosted - Batch - Real-time](https://developers.cloudflare.com/workers-ai/models/smart-turn-v2/)
 
 - Pricing listed
 
@@ -719,12 +543,6 @@ Compare
 BetaByteDanceText-to-Image SDXL-Lightning is a lightning-fast text-to-image generation model. It can generate high-quality 1024px images in a few steps. - Cloudflare-hosted](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-lightning/)
 
 - Pricing listed
-
-Compare
-
-[![Unum logo](https://developers.cloudflare.com/_astro/unum.CWYcwnUh.svg)<h3>uform-gen2-qwen-500m</h3>
-
-BetaUnumImage-to-Text UForm-Gen is a small generative vision-language model primarily designed for Image Captioning and Visual Question Answering. The model was pre-trained on the internal image captioning dataset and fine-tuned on public instructions datasets: SVIT, LVIS, VQAs datasets. - Cloudflare-hosted - Deprecated](https://developers.cloudflare.com/workers-ai/models/uform-gen2-qwen-500m/)
 
 Compare
 

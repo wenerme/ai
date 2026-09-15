@@ -379,8 +379,8 @@
   },
   "api/api-reference/images/generate-an-image.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/images/generate-an-image.md",
-    "size": 58211,
-    "updatedAt": "2026-09-14T16:28:18.783Z"
+    "size": 58252,
+    "updatedAt": "2026-09-15T04:43:50.044Z"
   },
   "api/api-reference/images/list-endpoints-for-an-image-model.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/images/list-endpoints-for-an-image-model.md",
@@ -732,8 +732,8 @@
   },
   "batch-quickstart.md": {
     "url": "https://openrouter.ai/docs/batch-quickstart.md",
-    "size": 19274,
-    "updatedAt": "2026-09-03T04:17:40.310Z"
+    "size": 21625,
+    "updatedAt": "2026-09-15T04:44:23.897Z"
   },
   "changelog.md": {
     "url": "https://openrouter.ai/docs/changelog.md",
@@ -899,8 +899,8 @@
   },
   "client-sdks/go/sdks/scim/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/scim/README.md",
-    "size": 21159,
-    "updatedAt": "2026-09-05T04:16:19.728Z"
+    "size": 21979,
+    "updatedAt": "2026-09-15T04:44:38.490Z"
   },
   "client-sdks/go/sdks/stt/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/stt/README.md",
@@ -1073,8 +1073,8 @@
   },
   "client-sdks/python/sdks/scim/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/sdks/scim/README.md",
-    "size": 30418,
-    "updatedAt": "2026-09-05T04:16:41.807Z"
+    "size": 31238,
+    "updatedAt": "2026-09-15T04:44:54.194Z"
   },
   "client-sdks/python/sdks/stt/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/sdks/stt/README.md",
@@ -1447,8 +1447,8 @@
   },
   "cookbook/evaluate-and-optimize/model-migrations/gpt-6-astra.md": {
     "url": "https://openrouter.ai/docs/cookbook/evaluate-and-optimize/model-migrations/gpt-6-astra.md",
-    "size": 8611,
-    "updatedAt": "2026-09-09T04:31:51.645Z"
+    "size": 19097,
+    "updatedAt": "2026-09-15T04:45:26.787Z"
   },
   "cookbook/evaluate-and-optimize/model-migrations/opus-5.md": {
     "url": "https://openrouter.ai/docs/cookbook/evaluate-and-optimize/model-migrations/opus-5.md",
@@ -2080,8 +2080,8 @@
   },
   "guides/overview/auth/oauth.md": {
     "url": "https://openrouter.ai/docs/guides/overview/auth/oauth.md",
-    "size": 8516,
-    "updatedAt": "2026-09-12T04:27:05.757Z"
+    "size": 10340,
+    "updatedAt": "2026-09-15T04:46:19.227Z"
   },
   "guides/overview/auth/workload-identity-federation.md": {
     "url": "https://openrouter.ai/docs/guides/overview/auth/workload-identity-federation.md",

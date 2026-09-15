@@ -27,7 +27,7 @@ Whisper is a general-purpose speech recognition model. It is trained on a large 
 | Model Info | |
 | --- | --- |
 | More information | [link ↗](https://openai.com/research/whisper) |
-| Unit Pricing | $0.00045 per audio minute |
+| Unit Pricing | $0.000453 per audio minute |
 
 ## Parameters
 

@@ -205,10 +205,6 @@ seed
 
 `integer | null`If specified, the system will make a best effort to sample deterministically.
 
-service\_tier
-
-`string | null`enum: auto, default, flex, scale, prioritySpecifies the processing type used for serving the request.
-
 ▶stop
 
 `one of`
@@ -292,10 +288,6 @@ model
 system\_fingerprint
 
 <code>string | null</code>
-
-service\_tier
-
-<code>string | null</code>enum: auto, default, flex, scale, priority
 
 </details>
 

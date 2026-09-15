@@ -112,7 +112,7 @@ To unarchive a custom field:
 1. In the top bar, select **Search or go to** and find your group.
    This group must be at the top level.
 1. In the left sidebar, select **Settings** > **Work items**.
-1. Select the **Archived** tab to list archived fields.
+1. Select **Archived** to list archived fields.
 1. Next to the field you want to unarchive, select **Unarchive `<field name>`** ().
 
 ## Set custom field values for a work item

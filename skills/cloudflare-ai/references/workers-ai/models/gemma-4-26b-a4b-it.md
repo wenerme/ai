@@ -21,6 +21,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 `@cf/google/gemma-4-26b-a4b-it`
 
 - Cloudflare-hosted
+- Batch
 - Function calling
 - Reasoning
 - Vision
@@ -34,6 +35,7 @@ Gemma 4 is Google's most intelligent family of open models, built from Gemini 3 
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
 | Reasoning | Yes |
 | Vision | Yes |
+| Batch | Yes |
 | Unit Pricing | $0.10 per M input tokens, $0.30 per M output tokens |
 
 ## Playground
@@ -219,10 +221,6 @@ seed
 
 <code>integer | null</code>If specified, the system will make a best effort to sample deterministically.
 
-service\_tier
-
-<code>string | null</code>enum: auto, default, flex, scale, prioritySpecifies the processing type used for serving the request.
-
 ▶stop
 
 <code>one of</code>
@@ -298,10 +296,6 @@ model
 system\_fingerprint
 
 <code>string | null</code>
-
-service\_tier
-
-<code>string | null</code>enum: auto, default, flex, scale, priority
 
 </details>
 
@@ -394,10 +388,6 @@ reasoning\_effort
 seed
 
 <code>integer | null</code>If specified, the system will make a best effort to sample deterministically.
-
-service\_tier
-
-<code>string | null</code>enum: auto, default, flex, scale, prioritySpecifies the processing type used for serving the request.
 
 ▶stop
 
@@ -498,10 +488,6 @@ model
 system\_fingerprint
 
 <code>string | null</code>
-
-service\_tier
-
-<code>string | null</code>enum: auto, default, flex, scale, priority
 
 </details>
 

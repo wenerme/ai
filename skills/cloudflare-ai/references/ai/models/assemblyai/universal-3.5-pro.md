@@ -802,15 +802,15 @@ utterances
 
 confidence
 
-`number | null`Overall confidence score for the transcription.
+`number`Overall confidence score for the transcription.
 
 language\_code
 
-`string | null`Detected or specified language code.
+`string`Detected or specified language code.
 
 language\_confidence
 
-`number | null`Confidence score for language detection.
+`number`Confidence score for language detection.
 
 ## API Schemas (Raw)
 

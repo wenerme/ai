@@ -10,7 +10,7 @@ image: https://developers.cloudflare.com/og-docs.png
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)
+![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)
 
 # glm-5.2
 
@@ -34,7 +34,7 @@ This model is not available through standard Workers Free billing. To use it, up
 | --- | --- |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 262,144 tokens |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
-| Reasoning | Off, High, Max |
+| Reasoning | Yes |
 | Unit Pricing | $1.40 per M input tokens, $4.40 per M output tokens, $0.26 per M cached input tokens |
 
 ## Reasoning effort
@@ -212,7 +212,7 @@ presence\_penalty
 
 reasoning\_effort
 
-<code>string | null</code>enum: none, high, maxConstrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
+<code>string | null</code>enum: low, medium, highConstrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
 
 ▶chat\_template\_kwargs{}
 
@@ -225,10 +225,6 @@ reasoning\_effort
 seed
 
 <code>integer | null</code>If specified, the system will make a best effort to sample deterministically.
-
-service\_tier
-
-<code>string | null</code>enum: auto, default, flex, scale, prioritySpecifies the processing type used for serving the request.
 
 ▶stop
 
@@ -306,10 +302,6 @@ system\_fingerprint
 
 <code>string | null</code>
 
-service\_tier
-
-<code>string | null</code>enum: auto, default, flex, scale, priority
-
 </details>
 
 <details>
@@ -384,7 +376,7 @@ presence\_penalty
 
 reasoning\_effort
 
-<code>string | null</code>enum: none, high, maxConstrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
+<code>string | null</code>enum: low, medium, highConstrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
 
 ▶chat\_template\_kwargs{}
 
@@ -397,10 +389,6 @@ reasoning\_effort
 seed
 
 <code>integer | null</code>If specified, the system will make a best effort to sample deterministically.
-
-service\_tier
-
-<code>string | null</code>enum: auto, default, flex, scale, prioritySpecifies the processing type used for serving the request.
 
 ▶stop
 
@@ -501,10 +489,6 @@ model
 system\_fingerprint
 
 <code>string | null</code>
-
-service\_tier
-
-<code>string | null</code>enum: auto, default, flex, scale, priority
 
 </details>
 

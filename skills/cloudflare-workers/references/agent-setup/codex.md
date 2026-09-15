@@ -58,7 +58,7 @@ TerminalStandaloneCloudExtensionOpen Source
    For example:
 
    ```txt
-   Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+   Build an image upload and transformation service using R2 and Cloudflare Images.
    ```
 
 
@@ -171,15 +171,15 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
 ```
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
@@ -187,7 +187,7 @@ Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ## Tips

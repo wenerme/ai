@@ -108,7 +108,7 @@ sign\_with\_c2pa
 
 audio
 
-`string`Base64-encoded data URI for the generated music file.
+`string`URL to the generated music file.
 
 ## API Schemas (Raw)
 

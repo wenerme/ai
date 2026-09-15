@@ -128,11 +128,11 @@ prompt
 
 input\_image
 
-`string | null`Optional base64 encoded image or URL to edit.
+`string`Optional base64 encoded image or URL to edit.
 
 aspect\_ratio
 
-`string | null`Output aspect ratio, from 3:7 to 7:3. Defaults to 1:1.
+`string`Output aspect ratio, from 3:7 to 7:3. Defaults to 1:1.
 
 seed
 

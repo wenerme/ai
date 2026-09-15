@@ -26,7 +26,7 @@ Different from embedding model, reranker uses question and document as input and
 
 | Model Info | |
 | --- | --- |
-| Unit Pricing | $0.0031 per M input tokens |
+| Unit Pricing | $0.00311 per M input tokens |
 
 ## Usage
 

@@ -7674,7 +7674,7 @@ So `factorial(5)` returns **120**.
 
 deferred
 
-`boolean | null`
+`boolean`
 
 frequency\_penalty
 
@@ -7682,7 +7682,7 @@ frequency\_penalty
 
 logprobs
 
-`boolean | null`
+`boolean`
 
 max\_completion\_tokens
 
@@ -7698,7 +7698,7 @@ n
 
 parallel\_tool\_calls
 
-`boolean | null`
+`boolean`
 
 presence\_penalty
 
@@ -7726,7 +7726,7 @@ stop
 
 stream
 
-`boolean | null`
+`boolean`
 
 ▶stream\_options{}
 
@@ -7754,7 +7754,7 @@ top\_p
 
 user
 
-`string | null`
+`string`
 
 ▶web\_search\_options{}
 
@@ -7790,7 +7790,7 @@ output\_files
 
 system\_fingerprint
 
-`string | null`
+`string`
 
 ▶usage{}
 

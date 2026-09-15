@@ -10,7 +10,7 @@ image: https://developers.cloudflare.com/og-docs.png
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)
+![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)
 
 # glm-4.7-flash
 
@@ -31,7 +31,7 @@ GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 131,072 tokens |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
 | Reasoning | Yes |
-| Unit Pricing | $0.06 per M input tokens, $0.40 per M output tokens |
+| Unit Pricing | $0.0605 per M input tokens, $0.40 per M output tokens |
 
 ## Playground
 
@@ -204,10 +204,6 @@ seed
 
 `integer | null`If specified, the system will make a best effort to sample deterministically.
 
-service\_tier
-
-`string | null`enum: auto, default, flex, scale, prioritySpecifies the processing type used for serving the request.
-
 ▶stop
 
 `one of`
@@ -291,10 +287,6 @@ model
 system\_fingerprint
 
 <code>string | null</code>
-
-service\_tier
-
-<code>string | null</code>enum: auto, default, flex, scale, priority
 
 </details>
 

@@ -29,7 +29,7 @@ Llama Guard 3 is a Llama-3.1-8B pretrained model, fine-tuned for content safety 
 | --- | --- |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 131,072 tokens |
 | LoRA | Yes |
-| Unit Pricing | $0.48 per M input tokens, $0.03 per M output tokens |
+| Unit Pricing | $0.484 per M input tokens, $0.03 per M output tokens |
 
 ## Playground
 

@@ -14,13 +14,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # qwen3.8-27b
 
-Image-Text-to-Text • Qwen
+Text Generation • Qwen
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/qwen3.8-27b/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/qwen/qwen3.8-27b`
 
 - Cloudflare-hosted
+- Batch
 - Function calling
 - Reasoning
 - Vision
@@ -33,7 +34,99 @@ Qwen 3.8 27B is a 27-billion-parameter instruction-tuned language model from Ali
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
 | Reasoning | Yes |
 | Vision | Yes |
-| Unit Pricing | $0.45 per M input tokens, $3.20 per M output tokens |
+| Batch | Yes |
+| Unit Pricing | $0.45 per M input tokens, $3.20 per M output tokens, $0.05 per M cached input tokens |
+
+## Playground
+
+Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and is an instant way to preview and test a model directly in the browser.
+
+[Launch the LLM Playground](https://playground.ai.cloudflare.com/?model=@cf/qwen/qwen3.8-27b)
+
+## Usage
+
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+export default {
+  async fetch(request, env): Promise<Response> {
+
+    const messages = [
+      { role: "system", content: "You are a friendly assistant" },
+      {
+        role: "user",
+        content: "What is the origin of the phrase Hello, World",
+      },
+    ];
+
+    const stream = await env.AI.run("@cf/qwen/qwen3.8-27b", {
+      messages,
+      stream: true,
+    });
+
+    return new Response(stream, {
+      headers: { "content-type": "text/event-stream" },
+    });
+  },
+} satisfies ExportedHandler<Env>;
+```
+
+```ts
+export interface Env {
+  AI: Ai;
+}
+
+export default {
+  async fetch(request, env): Promise<Response> {
+
+    const messages = [
+      { role: "system", content: "You are a friendly assistant" },
+      {
+        role: "user",
+        content: "What is the origin of the phrase Hello, World",
+      },
+    ];
+    const response = await env.AI.run("@cf/qwen/qwen3.8-27b", { messages });
+
+    return Response.json(response);
+  },
+} satisfies ExportedHandler<Env>;
+```
+
+```py
+import os
+import requests
+
+ACCOUNT_ID = "your-account-id"
+AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
+
+prompt = "Tell me all about PEP-8"
+response = requests.post(
+  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/qwen/qwen3.8-27b",
+    headers={"Authorization": f"Bearer {AUTH_TOKEN}"},
+    json={
+      "messages": [
+        {"role": "system", "content": "You are a friendly assistant"},
+        {"role": "user", "content": prompt}
+      ]
+    }
+)
+result = response.json()
+print(result)
+```
+
+```sh
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/qwen/qwen3.8-27b \
+  -X POST \
+  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
+  -d '{ "messages": [{ "role": "system", "content": "You are a friendly assistant" }, { "role": "user", "content": "Why is pizza so good" }]}'
+```
+
+OpenAI compatible endpoints
+
+Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
 
 ## Parameters
 
@@ -123,10 +216,6 @@ seed
 
 <code>integer | null</code>If specified, the system will make a best effort to sample deterministically.
 
-service\_tier
-
-<code>string | null</code>enum: auto, default, flex, scale, prioritySpecifies the processing type used for serving the request.
-
 ▶stop
 
 <code>one of</code>
@@ -202,10 +291,6 @@ model
 system\_fingerprint
 
 <code>string | null</code>
-
-service\_tier
-
-<code>string | null</code>enum: auto, default, flex, scale, priority
 
 </details>
 
@@ -294,10 +379,6 @@ reasoning\_effort
 seed
 
 <code>integer | null</code>If specified, the system will make a best effort to sample deterministically.
-
-service\_tier
-
-<code>string | null</code>enum: auto, default, flex, scale, prioritySpecifies the processing type used for serving the request.
 
 ▶stop
 
@@ -398,10 +479,6 @@ model
 system\_fingerprint
 
 <code>string | null</code>
-
-service\_tier
-
-<code>string | null</code>enum: auto, default, flex, scale, priority
 
 </details>
 

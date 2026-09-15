@@ -88,7 +88,7 @@ resolution
 
 seed
 
-`number | null`Random seed for reproducible generations. Pass null or omit for a random seed.
+`number`Random seed for reproducible generations. Pass null or omit for a random seed.
 
 ▶styles\[]
 

@@ -33,7 +33,7 @@ Qwen3 is the latest generation of large language models in Qwen series, offering
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
 | Reasoning | Yes |
 | Batch | Yes |
-| Unit Pricing | $0.051 per M input tokens, $0.34 per M output tokens |
+| Unit Pricing | $0.0509 per M input tokens, $0.335 per M output tokens |
 
 ## Playground
 

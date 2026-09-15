@@ -1190,7 +1190,7 @@ model
 
 stop\_reason
 
-`string | null`
+`string`
 
 ▶usage{}
 

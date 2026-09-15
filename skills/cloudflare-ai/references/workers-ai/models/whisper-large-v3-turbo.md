@@ -28,7 +28,7 @@ Whisper is a pre-trained model for automatic speech recognition (ASR) and speech
 | Model Info | |
 | --- | --- |
 | Batch | Yes |
-| Unit Pricing | $0.00051 per audio minute |
+| Unit Pricing | $0.000513 per audio minute |
 
 ## Parameters
 

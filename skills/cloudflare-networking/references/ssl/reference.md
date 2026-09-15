@@ -26,7 +26,7 @@ For more on Cloudflare SSL/TLS, refer to these articles:
 - [Certificate statuses](https://developers.cloudflare.com/ssl/reference/certificate-statuses/)
 - [Validity periods and renewal](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/)
 - [Cloudflare and CVE-2019-1559](https://developers.cloudflare.com/ssl/reference/cloudflare-and-cve-2019-1559/)
-- [PCI compliance and vulnerabilities mitigation](https://developers.cloudflare.com/ssl/reference/compliance-and-vulnerabilities/)
+- [PCI DSS compliance](https://developers.cloudflare.com/ssl/reference/compliance-and-vulnerabilities/)
 
 Was this helpful?
 

@@ -224,6 +224,46 @@
     "size": 17912,
     "updatedAt": "2026-09-10T04:31:33.041Z"
   },
+  "grafana-azure-data-explorer-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/alerting.md",
+    "size": 2818,
+    "updatedAt": "2026-09-15T04:47:58.802Z"
+  },
+  "grafana-azure-data-explorer-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/annotations.md",
+    "size": 2278,
+    "updatedAt": "2026-09-15T04:47:58.939Z"
+  },
+  "grafana-azure-data-explorer-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/configure.md",
+    "size": 24193,
+    "updatedAt": "2026-09-15T04:47:59.086Z"
+  },
+  "grafana-azure-data-explorer-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest.md",
+    "size": 5116,
+    "updatedAt": "2026-09-15T04:47:59.226Z"
+  },
+  "grafana-azure-data-explorer-datasource/install.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/install.md",
+    "size": 8022,
+    "updatedAt": "2026-09-15T04:47:59.373Z"
+  },
+  "grafana-azure-data-explorer-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/query-editor.md",
+    "size": 12072,
+    "updatedAt": "2026-09-15T04:47:59.512Z"
+  },
+  "grafana-azure-data-explorer-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/template-variables.md",
+    "size": 5648,
+    "updatedAt": "2026-09-15T04:47:59.660Z"
+  },
+  "grafana-azure-data-explorer-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/troubleshooting.md",
+    "size": 18280,
+    "updatedAt": "2026-09-15T04:47:59.817Z"
+  },
   "grafana-azurecosmosdb-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-azurecosmosdb-datasource/latest/alerting.md",
     "size": 4629,
@@ -331,8 +371,8 @@
   },
   "grafana-bigquery-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/alerting.md",
-    "size": 7681,
-    "updatedAt": "2026-06-25T05:41:41.134Z"
+    "size": 8387,
+    "updatedAt": "2026-09-15T04:48:03.122Z"
   },
   "grafana-bigquery-datasource/annotations.md": {
     "url": "https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/annotations.md",
@@ -341,28 +381,28 @@
   },
   "grafana-bigquery-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/configure.md",
-    "size": 25586,
-    "updatedAt": "2026-08-11T02:45:35.547Z"
+    "size": 29682,
+    "updatedAt": "2026-09-15T04:48:03.438Z"
   },
   "grafana-bigquery-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest.md",
-    "size": 4064,
-    "updatedAt": "2026-07-08T04:04:28.632Z"
+    "size": 4507,
+    "updatedAt": "2026-09-15T04:48:03.581Z"
   },
   "grafana-bigquery-datasource/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/query-editor.md",
-    "size": 11605,
-    "updatedAt": "2026-07-08T04:04:28.814Z"
+    "size": 14908,
+    "updatedAt": "2026-09-15T04:48:03.724Z"
   },
   "grafana-bigquery-datasource/template-variables.md": {
     "url": "https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/template-variables.md",
-    "size": 9634,
-    "updatedAt": "2026-06-25T05:41:42.984Z"
+    "size": 9633,
+    "updatedAt": "2026-09-15T04:48:03.865Z"
   },
   "grafana-bigquery-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/troubleshooting.md",
-    "size": 27052,
-    "updatedAt": "2026-08-11T02:45:36.341Z"
+    "size": 39018,
+    "updatedAt": "2026-09-15T04:48:04.017Z"
   },
   "grafana-catchpoint-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-catchpoint-datasource/latest/alerting.md",
@@ -2216,8 +2256,8 @@
   },
   "index.md": {
     "url": "https://grafana.com/docs/plugins.md",
-    "size": 9241,
-    "updatedAt": "2026-08-27T20:35:45.069Z"
+    "size": 9443,
+    "updatedAt": "2026-09-15T04:49:00.256Z"
   },
   "marcusolsson-calendar-panel/basic-config.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/basic-config.md",

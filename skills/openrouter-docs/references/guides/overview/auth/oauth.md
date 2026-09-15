@@ -88,6 +88,18 @@ After the user authorizes, the page displays the authorization code on screen in
 
 A `code_challenge` is **required** in this mode: because the code is displayed on screen, PKCE ensures it is useless to anyone without your app's `code_verifier`. The code is single-use and expires after 10 minutes.
 
+#### Optional Parameters
+
+| Parameter               | Effect                                                                                                                                                                                                                                                |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `key_label`             | Prefills the label of the API key that will be created.                                                                                                                                                                                               |
+| `workspace_id`          | Preselects the workspace (UUID) for the new API key. The user can still change the selection. If the workspace is not in the user's active account, nothing is preselected and the user must pick one.                                                |
+| `required_workspace_id` | Requires the new API key to be created in this workspace (UUID). The picker is locked to it. If the workspace is not in the user's active account, the page shows an error and the user cannot authorize until they switch to an account that has it. |
+
+If both are present, `required_workspace_id` takes precedence. Use `workspace_id` to suggest a workspace and `required_workspace_id` to enforce one (for example, an internal onboarding flow that must mint keys into a specific team workspace).
+
+Workspace IDs are validated server-side against the account the user authorizes with. A workspace the user cannot access is rejected, regardless of what the URL asked for.
+
 ### Step 2: Exchange the code for a user-controlled API key
 
 After the user logs in with OpenRouter, they are redirected back to your site with a `code` parameter in the URL:

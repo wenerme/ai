@@ -19824,7 +19824,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_8a91eaf1b58c"
+              "$ref": "#/components/schemas/RequestBody_ee3689187aa8"
   "/api/v4/service_accounts":
     post:
       operationId: postApiV4ServiceAccounts
@@ -37995,7 +37995,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesBasicProjectDetails"
+                "$ref": "#/components/schemas/APIEntitiesProjectScopeLink"
         '400':
           description: Bad Request
         '401':
@@ -38034,7 +38034,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesBasicProjectDetails"
+                "$ref": "#/components/schemas/APIEntitiesBasicGroupDetails"
         '401':
           description: Unauthorized
         '403':
@@ -38080,7 +38080,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesBasicGroupDetails"
+                "$ref": "#/components/schemas/APIEntitiesGroupScopeLink"
         '400':
           description: Bad Request
         '401':
@@ -90715,6 +90715,8 @@ components:
           type: string
         ci_partitions_in_seconds_limit_human_readable:
           type: string
+        code_dropdown_custom_clients:
+          type: string
         concurrent_github_import_jobs_limit:
           type: string
         concurrent_bitbucket_import_jobs_limit:
@@ -91090,6 +91092,12 @@ components:
         throttle_authenticated_git_http_period_in_seconds:
           type: string
         throttle_authenticated_git_http_requests_per_period:
+          type: string
+        throttle_authenticated_dependency_proxy_enabled:
+          type: string
+        throttle_authenticated_dependency_proxy_period_in_seconds:
+          type: string
+        throttle_authenticated_dependency_proxy_requests_per_period:
           type: string
         throttle_authenticated_git_lfs_enabled:
           type: string
@@ -95217,6 +95225,24 @@ components:
           type: boolean
         outbound_enabled:
           type: boolean
+    APIEntitiesProjectScopeLink:
+      type: object
+      properties:
+        source_project_id:
+          type: integer
+          format: int64
+        target_project_id:
+          type: integer
+          format: int64
+    APIEntitiesGroupScopeLink:
+      type: object
+      properties:
+        source_project_id:
+          type: integer
+          format: int64
+        target_group_id:
+          type: integer
+          format: int64
     APIEntitiesProjectImportFailedRelation:
       type: object
       properties:
@@ -106524,7 +106550,7 @@ components:
           description: Scopes available to the application. Separate multiple scopes
             with a space.
           nullable: true
-    RequestBody_8a91eaf1b58c:
+    RequestBody_ee3689187aa8:
       type: object
       properties:
         admin_mode:
@@ -107448,6 +107474,30 @@ components:
           type: object
           description: Definition for resource usage limits enforced in Sidekiq workers
           nullable: true
+        code_dropdown_custom_clients:
+          type: array
+          description: Custom "Open with" clients shown in the project Code dropdown
+            list
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Name shown to users in the Code dropdown list
+                nullable: true
+              ssh_url_template:
+                type: string
+                description: URL template opened for the SSH clone URL. Must contain
+                  {url} exactly once
+                nullable: true
+              http_url_template:
+                type: string
+                description: URL template opened for the HTTPS clone URL. Must contain
+                  {url} exactly once
+                nullable: true
+            required:
+            - name
+          nullable: true
         vscode_extension_marketplace:
           type: object
           description: Settings for VS Code Extension Marketplace
@@ -108167,6 +108217,21 @@ components:
           type: string
           description: 'Maximum requests per period per user. `throttle_authenticated_git_http_enabled`
             must be `true`. Default value: `3600`.'
+          nullable: true
+        throttle_authenticated_dependency_proxy_enabled:
+          type: string
+          description: 'If `true`, enforces the authenticated dependency proxy request
+            rate limit. Default value: `false`.'
+          nullable: true
+        throttle_authenticated_dependency_proxy_period_in_seconds:
+          type: string
+          description: 'Rate limit period in seconds. `throttle_authenticated_dependency_proxy_enabled`
+            must be `true`. Default value: `15`.'
+          nullable: true
+        throttle_authenticated_dependency_proxy_requests_per_period:
+          type: string
+          description: 'Maximum requests per period per user. `throttle_authenticated_dependency_proxy_enabled`
+            must be `true`. Default value: `1000`.'
           nullable: true
         throttle_authenticated_packages_api_enabled:
           type: string
