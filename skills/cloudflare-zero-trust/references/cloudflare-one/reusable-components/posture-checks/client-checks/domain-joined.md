@@ -27,9 +27,7 @@ The Domain Joined device posture attribute ensures that a user is a member of a 
 3. Select **Domain Joined**.
 4. Enter a descriptive name for the check.
 5. Select your operating system.
-6. Enter the domain you want to check for, such as `example.com`.
-
-   Note
+6. Enter the domain you want to check for, such as `example.com`. Note
 
    The **Domain** field is case-sensitive. If your domain is `example.com`, entering `Example.com` will fail the posture check.
 7. Select **Save**.

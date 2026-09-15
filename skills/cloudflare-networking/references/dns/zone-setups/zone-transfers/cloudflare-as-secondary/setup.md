@@ -110,20 +110,14 @@ To create a secondary zone using the dashboard:
 3. Enter your zone name and choose **Secondary DNS** (if this option is not available, contact your account team).
 4. Select **Continue**.
 5. Select your plan type.
-6. Choose a value for **Zone refresh**, which controls the number of seconds between zone updates from your primary DNS server.
-
-   Caution
+6. Choose a value for **Zone refresh**, which controls the number of seconds between zone updates from your primary DNS server. Caution
 
    Cloudflare will not use the REFRESH value inside the SOA record that is served by your primary provider. Instead the value of zone refresh configured for your secondary zone on Cloudflare will be used to determine the interval after which the SOA serial of the primary zone will be checked for changes.
-7. Select the peer server you [previously created](#2-create-peer-server). If needed, you can link more than one peer server to a zone.
-
-   Note
+7. Select the peer server you [previously created](#2-create-peer-server). If needed, you can link more than one peer server to a zone. Note
 
    The maximum number of linked peers per zone is 30.
 8. Select **Continue**.
-9. Review the list of transferred records and select **Continue**.
-
-   Note
+9. Review the list of transferred records and select **Continue**. Note
 
    If no records appear, you may have misconfigured the TSIG or the IP address of the peer server or the [Access Control List](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/access-control-lists/cloudflare-ip-addresses/#cloudflare-as-secondary) was improperly configured at your primary DNS provider.
 10. Select **Initiate zone transfer**.

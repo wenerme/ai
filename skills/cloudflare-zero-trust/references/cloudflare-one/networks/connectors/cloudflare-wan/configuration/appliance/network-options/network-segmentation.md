@@ -17,22 +17,22 @@ Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developer
 You can define policies in your Cloudflare One Appliance (formerly Magic WAN Connector) to either allow traffic to flow between your LANs without it leaving your local premises or to forward it via the Cloudflare network where you can add additional security features. The default behavior is to drop all LAN-to-LAN traffic. These policies can be created for specific subnets, and link two LANs.
 
 ```
-	flowchart LR
-	accTitle: LAN-to-LAN traffic flow
-	accDescr: In this example, the red path shows traffic that stays in the customer's premises (allowing direct communication between LAN 3 and LAN 4), and the orange path shows traffic that goes to Cloudflare before returning to the customer's premises (processing traffic between LAN 1 and LAN 2 in Cloudflare).
-			a(Cloudflare One Appliance) <---> b(Internet) <---> c(Cloudflare)
+  	flowchart LR
+  	accTitle: LAN-to-LAN traffic flow
+  	accDescr: In this example, the red path shows traffic that stays in the customer's premises (allowing direct communication between LAN 3 and LAN 4), and the orange path shows traffic that goes to Cloudflare before returning to the customer's premises (processing traffic between LAN 1 and LAN 2 in Cloudflare).
+  			a(Cloudflare One Appliance) <---> b(Internet) <---> c(Cloudflare)
 
-			subgraph Customer site
-			d[LAN 1] <---> a
-			e[LAN 2] <---> a
-			g[LAN 3] <---> a
-			h[LAN 4] <---> a
-			end
-			classDef orange fill:#f48120,color: black
-			class a,c orange
+  			subgraph Customer site
+  			d[LAN 1] <---> a
+  			e[LAN 2] <---> a
+  			g[LAN 3] <---> a
+  			h[LAN 4] <---> a
+  			end
+  			classDef orange fill:#f48120,color: black
+  			class a,c orange
 
-			linkStyle 0,1,2,3 stroke:#f48120,stroke-width:3px
-			linkStyle 4,5 stroke:red,stroke-width:3px
+  			linkStyle 0,1,2,3 stroke:#f48120,stroke-width:3px
+  			linkStyle 4,5 stroke:red,stroke-width:3px
 
 ```
 

@@ -201,9 +201,7 @@ The Cloudflare One Client checks the IP profiles from top to bottom as they appe
 To check the virtual IP addresses assigned to a specific device registration:
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices**.
-2. Select your device > **View details**.
-
-   Device filters
+2. Select your device > **View details**. Device filters
 
    The Cloudflare One dashboard defaults to showing devices that were last seen within the past year. You can select **Show filters** to change the date range or filter by the last active user.
 3. Scroll down to **Users**. You will see the registrations associated with this device along with their assigned IPv4 and IPv6 addresses.

@@ -235,9 +235,9 @@
   },
   "cross-session-messaging.md": {
     "url": "https://code.claude.com/docs/en/cross-session-messaging",
-    "lastModified": "Tue, 15 Sep 2026 04:36:05 GMT",
-    "size": 41344,
-    "updatedAt": "2026-09-15T04:36:05.323Z"
+    "lastModified": "Tue, 15 Sep 2026 14:52:52 GMT",
+    "size": 41366,
+    "updatedAt": "2026-09-15T14:52:52.785Z"
   },
   "data-usage.md": {
     "url": "https://code.claude.com/docs/en/data-usage",
@@ -541,15 +541,15 @@
   },
   "permission-modes.md": {
     "url": "https://code.claude.com/docs/en/permission-modes",
-    "lastModified": "Sat, 12 Sep 2026 04:17:14 GMT",
-    "size": 80251,
-    "updatedAt": "2026-09-12T04:17:14.587Z"
+    "lastModified": "Tue, 15 Sep 2026 14:53:18 GMT",
+    "size": 80914,
+    "updatedAt": "2026-09-15T14:53:18.807Z"
   },
   "permissions.md": {
     "url": "https://code.claude.com/docs/en/permissions",
-    "lastModified": "Tue, 15 Sep 2026 04:36:24 GMT",
-    "size": 82121,
-    "updatedAt": "2026-09-15T04:36:24.536Z"
+    "lastModified": "Tue, 15 Sep 2026 14:53:19 GMT",
+    "size": 83672,
+    "updatedAt": "2026-09-15T14:53:19.328Z"
   },
   "platforms.md": {
     "url": "https://code.claude.com/docs/en/platforms",
@@ -577,9 +577,9 @@
   },
   "plugin-marketplaces.md": {
     "url": "https://code.claude.com/docs/en/plugin-marketplaces",
-    "lastModified": "Tue, 15 Sep 2026 04:36:26 GMT",
-    "size": 118550,
-    "updatedAt": "2026-09-15T04:36:26.310Z"
+    "lastModified": "Tue, 15 Sep 2026 14:53:21 GMT",
+    "size": 120041,
+    "updatedAt": "2026-09-15T14:53:21.919Z"
   },
   "plugin-relevance.md": {
     "url": "https://code.claude.com/docs/en/plugin-relevance",
@@ -727,9 +727,9 @@
   },
   "settings-reference.md": {
     "url": "https://code.claude.com/docs/en/settings-reference",
-    "lastModified": "Tue, 15 Sep 2026 04:36:35 GMT",
-    "size": 436606,
-    "updatedAt": "2026-09-15T04:36:35.565Z"
+    "lastModified": "Tue, 15 Sep 2026 14:53:35 GMT",
+    "size": 436950,
+    "updatedAt": "2026-09-15T14:53:35.207Z"
   },
   "setup.md": {
     "url": "https://code.claude.com/docs/en/setup",

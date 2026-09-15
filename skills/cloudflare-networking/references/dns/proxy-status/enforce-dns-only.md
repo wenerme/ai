@@ -138,9 +138,7 @@ Enforce DNS-only does not affect the following records:
 - [Spectrum](https://developers.cloudflare.com/spectrum/) applications: DNS records managed by the Spectrum application.
 - [Tunnel](https://developers.cloudflare.com/tunnel/): CNAME records pointing to a tunnel subdomain. Refer to [Tunnel routing](https://developers.cloudflare.com/tunnel/concepts/routing/#create-a-dns-record) or [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/dns/) for details.
 - [Web3 gateways](https://developers.cloudflare.com/web3/): Read-only proxied records managed by the [Web3 gateway configuration](https://developers.cloudflare.com/web3/reference/gateway-dns-records/).
-- [Workers](https://developers.cloudflare.com/workers/) custom domains: Read-only proxied records added to the DNS records table when you set up Workers [custom domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/).
-
-  Custom domain or route match
+- [Workers](https://developers.cloudflare.com/workers/) custom domains: Read-only proxied records added to the DNS records table when you set up Workers [custom domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/). Custom domain or route match
 
   Proxied records that match a Worker [route](https://developers.cloudflare.com/workers/configuration/routing/routes/) are regular DNS records and will be [affected](#included) by the enforce DNS-only setting.
 

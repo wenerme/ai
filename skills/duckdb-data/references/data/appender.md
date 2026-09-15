@@ -66,7 +66,7 @@ err = appender.AppendRow(1, "hello")
 err = appender.Flush()
 ```
 
-For more information, see the [Go Appender API](https://duckdb.org/docs/current/clients/go.html#appender).
+For more information, see the [Go Appender API](https://duckdb.org/docs/current/clients/go/data_import.html#appender).
 
 ### Rust
 
@@ -130,7 +130,7 @@ In this case, the entire append operation fails and no rows are inserted.
 Each client's documentation covers its full Appender API, including constructors for non-default schemas and catalogs and any client-specific features:
 
 * [C](https://duckdb.org/docs/current/clients/c/appender.html)
-* [Go](https://duckdb.org/docs/current/clients/go.html#appender)
+* [Go](https://duckdb.org/docs/current/clients/go/data_import.html#appender)
 * [Java (JDBC)](https://duckdb.org/docs/current/clients/java/data_import.html#appender)
 * [Julia](https://duckdb.org/docs/current/clients/tertiary_clients/julia.html#appender-api)
 * [Rust](https://duckdb.org/docs/current/clients/rust/data_import.html#appender)

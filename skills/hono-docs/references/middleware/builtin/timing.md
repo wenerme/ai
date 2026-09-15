@@ -79,7 +79,7 @@ Show the total response time. The default is `true`.
 
 Whether timings should be added to the headers or not. The default is `true`.
 
-###  totalDescription: `boolean`
+###  totalDescription: `string`
 
 Description for the total response time. The default is `Total Response Time`.
 

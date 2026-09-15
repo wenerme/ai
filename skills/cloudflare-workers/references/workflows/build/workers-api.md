@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers API
 
-Last updated Aug 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/workers-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/workers-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide details the Workflows API within Cloudflare Workers, including methods, types, and usage examples.
 
@@ -110,7 +110,9 @@ In JavaScript Workflows, `ReadableStream<Uint8Array>` is a supported serializabl
 
 Return a new stream from the callback.
 
-:::caution Do not return a locked stream or a stream that has already been read. BYOB streams and BYOB readers are not supported.
+Caution
+
+Do not return a locked stream or a stream that has already been read. BYOB streams and BYOB readers are not supported.
 
 After a `ReadableStream<Uint8Array>` object has been persisted within a step, it should not be reused - rely on the new fresh stream that gets returned from step. The bytes are preserved from the original stream, but the implementation might differ.
 
@@ -392,7 +394,7 @@ For example, to bind to a Workflow called `workflows-starter` and to make it ava
 	"name": "workflows-starter",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-14",
+	"compatibility_date": "2026-09-15",
 	"workflows": [
 		{
 			// name of your workflow
@@ -411,7 +413,7 @@ For example, to bind to a Workflow called `workflows-starter` and to make it ava
 name = "workflows-starter"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-14"
+compatibility_date = "2026-09-15"
 
 [[workflows]]
 name = "workflows-starter"
@@ -437,7 +439,7 @@ For example, if your Workflow is defined in a Worker script named `billing-worke
 	"name": "web-api-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-14",
+	"compatibility_date": "2026-09-15",
 	"workflows": [
 		{
 			// name of your workflow
@@ -459,7 +461,7 @@ For example, if your Workflow is defined in a Worker script named `billing-worke
 name = "web-api-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-14"
+compatibility_date = "2026-09-15"
 
 [[workflows]]
 name = "billing-workflow"
@@ -679,6 +681,12 @@ declare abstract class WorkflowInstance {
 	 * Returns the current status of the instance.
 	 */
 	public status(): Promise<InstanceStatus>;
+	/**
+	 * Subscribe to events from this Workflow instance.
+	 */
+	public subscribe(
+		options?: WorkflowInstanceSubscribeOptions,
+	): Promise<WorkflowInstanceSubscription>;
 }
 ```
 
@@ -843,6 +851,66 @@ You can call `sendEvent` multiple times, setting the value of the `type` propert
 
 This allows you to wait for multiple events at once, or use `Promise.race` to wait for multiple events and allow the first event to progress the Workflow.
 
+### subscribe
+
+Subscribe to historical and live execution events from a Workflow instance.
+
+- `subscribe(options?: WorkflowInstanceSubscribeOptions): Promise<WorkflowInstanceSubscription>`
+  - `options` - optional properties that set the starting cursor and filter event types.
+
+The returned subscription provides a `next()` method. Each call returns the next matching `WorkflowInstanceEvent` or waits for one. The subscription ends when the instance completes, errors, or terminates.
+
+#### WorkflowInstanceSubscribeOptions
+
+```ts
+interface WorkflowInstanceSubscribeOptions {
+	/**
+	 * The event ID after which to start.
+	 */
+	cursor?: number;
+	/**
+	 * Emit only events with one of these types.
+	 */
+	filter?: WorkflowInstanceEventType[];
+}
+
+type WorkflowInstanceEventType = WorkflowInstanceEvent["type"];
+```
+
+Call `subscribe()` without options to receive all events. Use `cursor` and `filter` to control which events the subscription returns:
+
+```js
+const instance = await env.MY_WORKFLOW.get("abc-123");
+
+// Subscribe to all events.
+using allEvents = await instance.subscribe();
+
+// Subscribe to events after event ID 100.
+using eventsAfterCursor = await instance.subscribe({ cursor: 100 });
+
+// Subscribe to selected event types.
+using filteredEvents = await instance.subscribe({
+	filter: ["workflow_completed", "workflow_errored"],
+});
+```
+
+```ts
+const instance = await env.MY_WORKFLOW.get("abc-123");
+
+// Subscribe to all events.
+using allEvents = await instance.subscribe();
+
+// Subscribe to events after event ID 100.
+using eventsAfterCursor = await instance.subscribe({ cursor: 100 });
+
+// Subscribe to selected event types.
+using filteredEvents = await instance.subscribe({
+	filter: ["workflow_completed", "workflow_errored"],
+});
+```
+
+For event types, filtering behavior, and cursor usage, refer to [Subscribe to events](https://developers.cloudflare.com/workflows/build/subscribe-to-instance-events/).
+
 ### InstanceStatus
 
 Details the status of a Workflow instance.
@@ -889,5 +957,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/workers-api/#page","headline":"Workers API · Cloudflare Workflows docs","description":"Reference for the Workflows Workers API, including WorkflowEntrypoint, step methods, and instance management.","url":"https://developers.cloudflare.com/workflows/build/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/workers-api/#page","headline":"Workers API · Cloudflare Workflows docs","description":"Reference for the Workflows Workers API, including WorkflowEntrypoint, step methods, and instance management.","url":"https://developers.cloudflare.com/workflows/build/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

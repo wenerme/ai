@@ -36,9 +36,7 @@ Before you can [enforce independent MFA on applications and policies](https://de
 2. Under **Allow multi-factor authentication (MFA)**, select the [MFA methods](#supported-mfa-methods) you want to allow in your organization.
 3. Set an **Authentication duration**. This determines how long a user can log in to Access without being prompted for MFA again. If the user does not have an active MFA session for the required authenticator method, they must complete MFA in addition to IdP authentication.
 4. (Optional) To avoid double prompting a user for MFA, you can enable [**Use identity provider MFA**](#use-identity-provider-mfa). This will check the AMR value passed from the identity provider at the time of authentication, if that AMR value passes an allowed MFA method, the user will not be prompted for MFA for the duration configured.
-5. (Optional) To apply your MFA methods and authentication duration to all Access applications, select **Apply global MFA settings by default**. You can [override the global MFA settings](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#configure-independent-mfa-for-an-application) for individual applications and policies.
-
-   Note
+5. (Optional) To apply your MFA methods and authentication duration to all Access applications, select **Apply global MFA settings by default**. You can [override the global MFA settings](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#configure-independent-mfa-for-an-application) for individual applications and policies. Note
 
    The [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/) is exempt from the global MFA requirement. Users must be able to access the App Launcher without MFA to enroll their authenticators.
 6. Select **Save**.

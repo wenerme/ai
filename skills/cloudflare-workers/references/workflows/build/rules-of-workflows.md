@@ -1049,7 +1049,7 @@ In JavaScript Workflows, `ReadableStream<Uint8Array>` is a supported serializabl
 
   Only byte streams are supported - use `ReadableStream<Uint8Array>`.
 
-  BYOB streams and BYOB readers are not supported.
+BYOB streams and BYOB readers are not supported. :::
 
 Note that streamed outputs are still considered part of the Workflow instance storage limit.
 

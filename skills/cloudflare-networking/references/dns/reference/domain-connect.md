@@ -37,9 +37,7 @@ Domain Connect templates are published and maintained on a GitHub repository.
 
 1. Create a fork of the [templates repository ↗](https://github.com/Domain-Connect/Templates).
 2. Add your template. You can create a copy of one of the existing templates and edit it according to your needs.
-   - Refer to the [Domain Connect Specification ↗](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc) for details on the different available fields.
-
-     Note
+   - Refer to the [Domain Connect Specification ↗](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc) for details on the different available fields. Note
 
      Not all fields (properties) are supported by Cloudflare, and some will be mandatory for onboarding your template. Refer to the [properties support](#properties-support) section below for details.
    - If present, you must set the `syncBlock` field on your template to `false`. This means the template flow will be synchronous, which is the only option supported by Cloudflare.

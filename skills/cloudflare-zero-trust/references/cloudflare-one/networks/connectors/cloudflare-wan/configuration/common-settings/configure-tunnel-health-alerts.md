@@ -149,48 +149,49 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/alerting/v3/poli
 ```
 
 ```json
-	{
-		"result": [
-			{
-				"id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-				"name": "<POLICY_NAME>",
-				"description": "<POLICY_DESCRIPTION>",
-				"enabled": true,
-				"alert_type": "magic_wan_tunnel_health",
-				"mechanisms": {
-					"email": [
-						{
-							"id": "<YOUR_EMAIL>"
-						}
-					]
-				},
-				"created": "2024-09-11T14:13:29.585658Z",
-				"modified": "2024-09-11T14:13:29.585658Z",
-				"conditions": {
-					"and": [
-						{
-							"or": [
-								{
-									"<=": [
-										{
-											"var": "slo"
-										},
-										"99.9"
-									]
-								}
-							]
-						}
-					]
-				},
-				"filters": {
-					"slo": ["99.9"]
-				}
-			}
-		],
-		"success": true,
-		"errors": [],
-		"messages": []
-	}
+  	{
+  		"result": [
+  			{
+  				"id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+  				"name": "<POLICY_NAME>",
+  				"description": "<POLICY_DESCRIPTION>",
+  				"enabled": true,
+  				"alert_type": "magic_wan_tunnel_health",
+  				"mechanisms": {
+  					"email": [
+  						{
+  							"id": "<YOUR_EMAIL>"
+  						}
+  					]
+  				},
+  				"created": "2024-09-11T14:13:29.585658Z",
+  				"modified": "2024-09-11T14:13:29.585658Z",
+  				"conditions": {
+  					"and": [
+  						{
+  							"or": [
+  								{
+  									"<=": [
+  										{
+  											"var": "slo"
+  										},
+  										"99.9"
+  									]
+  								}
+  							]
+  						}
+  					]
+  				},
+  				"filters": {
+  					"slo": ["99.9"]
+  				}
+  			}
+  		],
+  		"success": true,
+  		"errors": [],
+  		"messages": []
+  	}
+
 ```
 
 ## Test SLOs

@@ -335,6 +335,9 @@ S3 (
 | largeint | | varchar |
 | | | string |
 | | | boolean |
+| | | uuid |
+
+For UUID columns, specify a schema such as `"csv_schema" = "id:int;u:uuid"`. Values accept canonical or compact hexadecimal UUID text; CSV/JSON schema inference does not identify UUID automatically. See the [UUID type](../sql-manual/basic-element/sql-data-types/uuid.md) for input rules.
 
 > **note**: - If the column type does not match (e.g., the file contains a string but `int` is specified), the column returns `null`
 - If the number of columns does not match (e.g., the file has 4 columns but 5 are specified), missing columns return `null`
