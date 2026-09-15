@@ -69,9 +69,7 @@ To add the registry key manually:
 1. Open Registry Editor as Administrator.
 2. Navigate to the policies folder for your browser:
    - Google Chrome: `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome`
-   - Microsoft Edge: `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge`
-
-     Note
+   - Microsoft Edge: `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge` Note
 
      You may need to create the `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome` folder if it does not already exist.
 3. Create a new string value:

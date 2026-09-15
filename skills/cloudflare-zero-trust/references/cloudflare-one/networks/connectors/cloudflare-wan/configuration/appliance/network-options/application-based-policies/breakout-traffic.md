@@ -21,15 +21,15 @@ Caution
 Breakout traffic will not work for applications that use DNS-over-HTTPS.
 
 ```
-flowchart LR
-accTitle: Breakout traffic flow
-accDescr: Applications 1 and 2 are configured to bypass Cloudflare's security filtering, and go straight to the Internet.
-a(Cloudflare One Appliance) --> b(Cloudflare) -->|Filtered traffic|c(Internet)
+  flowchart LR
+  accTitle: Breakout traffic flow
+  accDescr: Applications 1 and 2 are configured to bypass Cloudflare's security filtering, and go straight to the Internet.
+  a(Cloudflare One Appliance) --> b(Cloudflare) -->|Filtered traffic|c(Internet)
 
-a-- Breakout traffic ---d(Application1) & e(Application2) --> c
+  a-- Breakout traffic ---d(Application1) & e(Application2) --> c
 
-classDef orange fill:#f48120,color: black
-class a,b orange
+  classDef orange fill:#f48120,color: black
+  class a,b orange
 
 ```
 

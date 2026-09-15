@@ -23,9 +23,7 @@ With Cloudflare Access, you can require that users obtain approval before they c
 3. Choose an **Allow** policy and select **Configure**.
 4. Under **Additional settings**, turn on [**Purpose justification**](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/require-purpose-justification/).
 5. Turn on **Temporary authentication**.
-6. Enter the **Email addresses of the approvers**.
-
-   Note
+6. Enter the **Email addresses of the approvers**. Note
 
    Your approvers must be authenticated by Access. If they do not have an active session, Access will verify their identity against your [App Launcher Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/).
 7. Save the policy.

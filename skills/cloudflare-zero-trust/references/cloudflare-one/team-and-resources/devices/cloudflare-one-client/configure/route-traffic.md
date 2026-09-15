@@ -20,15 +20,11 @@ Cloudflare recommends Enterprise users configure [Gateway resolver policies](htt
 
 Additionally, there are three options you can configure to exclude traffic from the Cloudflare One Client:
 
-- [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/): Send DNS requests for specific domains to a resolver other than Cloudflare Gateway. Use this when you have private hostnames that do not resolve on the public Internet (for example, internal corporate domains).
-
-  Caution
+- [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/): Send DNS requests for specific domains to a resolver other than Cloudflare Gateway. Use this when you have private hostnames that do not resolve on the public Internet (for example, internal corporate domains). Caution
 
   Gateway will not encrypt, monitor, or apply DNS policies to DNS queries to domain names entered in Local Domain Fallback.
 - [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) Exclude mode: Exclude specific IP addresses or domains from the WARP tunnel. Excluded traffic bypasses the Cloudflare One Client and is handled by the local machine. Use this mode when you want most traffic to go through Gateway, but need to exclude certain routes for app compatibility or to run alongside a [third-party VPN](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/vpn/).
-- [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) Include mode: Only route traffic to specific IP addresses or domains through the WARP tunnel. All other traffic bypasses the Cloudflare One Client. Use this mode when you only want specific traffic processed by Gateway, such as traffic to resources behind [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/).
-
-  Caution
+- [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) Include mode: Only route traffic to specific IP addresses or domains through the WARP tunnel. All other traffic bypasses the Cloudflare One Client. Use this mode when you only want specific traffic processed by Gateway, such as traffic to resources behind [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/). Caution
 
   Gateway will not encrypt, manage, or monitor traffic excluded from the Cloudflare One Client by a Split Tunnel configuration.
 

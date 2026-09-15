@@ -135,9 +135,7 @@ In order for Cloudflare One Clients to connect to your load balancer, the load b
 2. Find the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to modify and select **Edit**.
 3. Under **Split Tunnels**, check whether your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) is set to **Exclude** or **Include**.
 4. Select **Manage**. Depending on the mode:
-   - **Exclude mode**: Delete the IP range that contains your load balancer IP. For example, if your load balancer has a Cloudflare-assigned CGNAT IP, delete `100.64.0.0/10`. We recommend [adding back the IPs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/#3-route-private-network-ips-through-the-cloudflare-one-client) that are not being used by your load balancer.
-
-     Note
+   - **Exclude mode**: Delete the IP range that contains your load balancer IP. For example, if your load balancer has a Cloudflare-assigned CGNAT IP, delete `100.64.0.0/10`. We recommend [adding back the IPs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/#3-route-private-network-ips-through-the-cloudflare-one-client) that are not being used by your load balancer. Note
 
      Some IPs in the `100.64.0.0/10` range may be reserved for other Zero Trust services such as WARP CGNAT IPs, or Gateway initial resolved IPs if your account uses a legacy or custom range within CGNAT space. These IPs should remain deleted from the Exclude list.
    - **Include mode**: Add your load balancer IP.

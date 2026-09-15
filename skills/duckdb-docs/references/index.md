@@ -10,7 +10,7 @@
 [C](https://duckdb.org/docs/current/clients/c/overview.html)
 [C++](https://duckdb.org/docs/current/clients/cpp.html)
 [CLI (command line interface)](https://duckdb.org/docs/current/clients/cli/overview.html)
-[Go](https://duckdb.org/docs/current/clients/go.html)
+[Go](https://duckdb.org/docs/current/clients/go/overview.html)
 [Java (JDBC)](https://duckdb.org/docs/current/clients/java/overview.html)
 [Node.js](https://duckdb.org/docs/current/clients/node_neo/overview.html)
 [ODBC](https://duckdb.org/docs/current/clients/odbc/overview.html)

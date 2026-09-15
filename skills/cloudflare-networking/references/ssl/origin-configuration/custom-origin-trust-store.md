@@ -56,9 +56,7 @@ With [Full (strict) encryption mode](https://developers.cloudflare.com/ssl/origi
 
 - API documentation: [Custom Origin Trust Store Details](https://developers.cloudflare.com/api/resources/acm/subresources/custom_trust_store/methods/get/)
 - Method: `GET`
-- Endpoint: `/zones/$ZONE_ID/acm/custom_trust_store/$CUSTOM_ORIGIN_TRUST_STORE_ID`
-
-  Note
+- Endpoint: `/zones/$ZONE_ID/acm/custom_trust_store/$CUSTOM_ORIGIN_TRUST_STORE_ID` Note
 
   The `$CUSTOM_ORIGIN_TRUST_STORE_ID` can be found via the [List command](#list-custom-origin-trust-store-details).
 
@@ -72,9 +70,7 @@ With [Full (strict) encryption mode](https://developers.cloudflare.com/ssl/origi
 
 - API documentation: [Delete Custom Origin Trust Store](https://developers.cloudflare.com/api/resources/acm/subresources/custom_trust_store/methods/delete/)
 - Method: `DELETE`
-- Endpoint: `/zones/$ZONE_ID/acm/custom_trust_store/$CUSTOM_ORIGIN_TRUST_STORE_ID`
-
-  Note
+- Endpoint: `/zones/$ZONE_ID/acm/custom_trust_store/$CUSTOM_ORIGIN_TRUST_STORE_ID` Note
 
   The `$CUSTOM_ORIGIN_TRUST_STORE_ID` can be found via the [List command](#list-custom-origin-trust-store-details).
 

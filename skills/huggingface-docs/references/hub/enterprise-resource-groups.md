@@ -6,8 +6,8 @@
 Resource Groups allow organizations to enforce fine-grained access control to their repositories.
 
 <div class="flex justify-center" style="max-width: 550px">
-  [screenshot of Hugging Face Resource Groups feature]
-  [screenshot of Hugging Face Resource Groups feature]
+  [The Overview tab of a resource group]
+  [The Overview tab of a resource group]
 </div>
 
 This feature allows organization administrators to:

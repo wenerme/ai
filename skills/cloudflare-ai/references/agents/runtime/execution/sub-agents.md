@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Sub-agents
 
-Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/execution/sub-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/execution/sub-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Spawn child agents as co-located Durable Objects with their own isolated SQLite storage. The parent gets a typed RPC stub for calling methods on the child — every public method on the child class is callable as a remote procedure call with Promise-wrapped return types.
 
@@ -66,7 +66,7 @@ Both classes must be exported from the worker entry point. No separate Durable O
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-09-14",
+  "compatibility_date": "2026-09-15",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -91,7 +91,7 @@ Both classes must be exported from the worker entry point. No separate Durable O
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-09-14"
+compatibility_date = "2026-09-15"
 compatibility_flags = ["nodejs_compat"]
 
 [[durable_objects.bindings]]
@@ -364,6 +364,84 @@ const chat = useAgent({
 
 The hook builds a URL like `/agents/inbox/user-123/sub/chat/chat-abc` and opens a direct WebSocket to the `Chat` child. Every other `useAgent` feature works as usual: state sync, `stub` calls, `@callable` RPC, and `useAgentChat` on top of the returned socket.
 
+### Direct HTTP and WebSocket URLs
+
+Use `buildAgentPath()` to create a canonical pathname for an Agent identity. The same pathname supports HTTP requests and WebSocket connections.
+
+```js
+import { buildAgentPath } from "agents";
+
+const path = buildAgentPath(
+	[
+		{ className: "Inbox", name: userId },
+		{ className: "Chat", name: chatId },
+	],
+	{ leafPath: "/callbacks/job" },
+);
+
+// /agents/inbox/{userId}/sub/chat/{chatId}/callbacks/job
+```
+
+```ts
+import { buildAgentPath } from "agents";
+
+const path = buildAgentPath(
+	[
+		{ className: "Inbox", name: userId },
+		{ className: "Chat", name: chatId },
+	],
+	{ leafPath: "/callbacks/job" },
+);
+
+// /agents/inbox/{userId}/sub/chat/{chatId}/callbacks/job
+```
+
+Inside an Agent, pass `this.selfPath` directly. If the root Durable Object binding name differs from its class name, also pass `rootBinding` in the options. Use `buildAgentUrl()` to add a public origin for callbacks, webhooks, approvals, or asynchronous job completion.
+
+```js
+import { buildAgentUrl } from "agents";
+
+export class Chat extends Agent {
+	callbackUrl() {
+		return buildAgentUrl(this.env.PUBLIC_ORIGIN, this.selfPath, {
+			leafPath: "/callbacks/job",
+		});
+	}
+
+	async onRequest(request) {
+		if (new URL(request.url).pathname === "/callbacks/job") {
+			return this.handleJobCallback(request);
+		}
+		return new Response("Not found", { status: 404 });
+	}
+}
+```
+
+```ts
+import { buildAgentUrl } from "agents";
+
+export class Chat extends Agent<Env> {
+	callbackUrl() {
+		return buildAgentUrl(this.env.PUBLIC_ORIGIN, this.selfPath, {
+			leafPath: "/callbacks/job",
+		});
+	}
+
+	override async onRequest(request: Request) {
+		if (new URL(request.url).pathname === "/callbacks/job") {
+			return this.handleJobCallback(request);
+		}
+		return new Response("Not found", { status: 404 });
+	}
+}
+```
+
+Pass the incoming request to `routeAgentRequest()`. Each ancestor runs `onBeforeSubAgent` before the destination receives the request. For a sub-agent destination, routing removes the nested `/sub/` segments, so its pathname is the `leafPath` suffix.
+
+`buildAgentUrl()` accepts an HTTP(S) or WS(S) origin. The origin cannot contain credentials, a pathname, a query, or a fragment. Add callback query parameters through the returned URL `searchParams` property.
+
+Root Agent names must already be valid pathname segments. The `sub` segment is reserved in routing prefixes, class and binding names, and root Agent names. The helper URL-encodes descendant names, including spaces, Unicode characters, `/`, and other URL-reserved characters.
+
 ### Custom HTTP routing
 
 For fetch handlers that do their own top-level URL parsing, use `routeSubAgentRequest()` to dispatch a request into a sub-agent from an already-resolved parent stub:
@@ -400,7 +478,7 @@ export default {
 };
 ```
 
-`fromPath` takes the sub-agent tail, such as `/sub/chat/chat-abc`. The helper parses it, runs the parent's `onBeforeSubAgent` hook, and forwards the request into the facet.
+`fromPath` takes any pathname that contains a sub-agent tail, such as `/sub/chat/chat-abc`. You can pass the result of `buildAgentPath()` directly. The helper parses it, runs the parent `onBeforeSubAgent` hook, and forwards the request into the facet.
 
 ### External typed RPC
 
@@ -710,5 +788,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/sub-agents/#page","headline":"Sub-agents · Cloudflare Agents docs","description":"Spawn child agents with isolated storage and typed RPC using subAgent(), abortSubAgent(), and deleteSubAgent().","url":"https://developers.cloudflare.com/agents/runtime/execution/sub-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/sub-agents/#page","headline":"Sub-agents · Cloudflare Agents docs","description":"Spawn child agents with isolated storage and typed RPC using subAgent(), abortSubAgent(), and deleteSubAgent().","url":"https://developers.cloudflare.com/agents/runtime/execution/sub-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

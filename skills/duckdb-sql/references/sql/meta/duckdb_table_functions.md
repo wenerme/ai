@@ -161,8 +161,9 @@ The `duckdb_functions()` function provides metadata about the functions (includi
 | `database_oid` | Internal identifier of the database containing the index. | `BIGINT` |
 | `schema_name` | The SQL name of the schema where the function resides. | `VARCHAR` |
 | `function_name` | The SQL name of the function. | `VARCHAR` |
+| `alias_of` | The name of the function this is an alias of, or `NULL` if this is not an alias. | `VARCHAR` |
 | `function_type` | The function kind. Value is one of: `table`, `scalar`, `aggregate`, `pragma`, `macro`, `table_macro` | `VARCHAR` |
-| `description` | Description of this function (always `NULL`)| `VARCHAR` |
+| `description` | Description of this function, or `NULL` if none is registered. | `VARCHAR` |
 | `comment` | A comment created by the [`COMMENT ON` statement](https://duckdb.org/docs/current/sql/statements/comment_on.html). | `VARCHAR` |
 | `tags` | A map of string key–value pairs. | `MAP(VARCHAR, VARCHAR)` |
 | `return_type` | The logical data type name of the returned value. Applicable for scalar and aggregate functions. | `VARCHAR` |

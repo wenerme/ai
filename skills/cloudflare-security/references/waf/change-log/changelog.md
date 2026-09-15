@@ -1,5 +1,5 @@
 ---
-description: This update provides immediate defense against a high-severity, actively exploited zero-day vulnerability targeting Adobe Commerce and Magento Open Source storefronts.
+description: This release introduces new threat detections to enhance protection against command injection attempts, Server-Side Request Forgery (SSRF) targeting cloud metadata, and information disclosure within version control history.
 title: Changelog
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -11,6 +11,19 @@ image: https://developers.cloudflare.com/og-docs.png
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/change-log/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/waf.xml)
+
+## 2026-09-15
+
+
+**WAF Release - 2026-09-15**
+
+This release introduces new threat detections to enhance protection against command injection attempts, Server-Side Request Forgery (SSRF) targeting cloud metadata, and information disclosure within version control history.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...ca453d31 | N/A | SSRF - Cloud - 3 | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...e540f17f | N/A | Version Control - Information Disclosure - Beta | Log | Block | This rule is merged into the original rule "Version Control - Information Disclosure" (ID: ...0550c529). |
+| Cloudflare Managed Ruleset | ...ba458b4b | N/A | Command Injection - Generic 10 | Log | Block | This is a new detection. |
 
 ## 2026-09-10
 
@@ -536,48 +549,8 @@ We strongly recommend upgrading to Next.js 15.5.16 or 16.2.5 (or later) immediat
 | --- | --- | --- | --- | --- | --- | --- |
 | Cloudflare Managed Ruleset | ...e77e4a53 | N/A | Next.js - Middleware Bypass via Invalid RSC Header - CVE:CVE-2026-44575 | N/A | Disabled | This is a new detection. |
 
-## 2026-05-04
-
-
-**WAF Release - 2026-05-04**
-
-This week's release focuses on new detections to expand coverage across command injection, SQL injection, PHP object injection, remote code execution, and XSS attack vectors.
-
-**Key Findings**
-
-- Existing rule enhancements have been deployed to improve detection resilience against broad classes of web attacks and strengthen behavioral coverage.
-
-**Continuous Rule Improvements**
-
-We are continuously refining our managed rules to provide more resilient protection and deeper insights into attack patterns. To ensure an optimal security posture, we recommend consistently monitoring the Security Events dashboard and adjusting rule actions as these enhancements are deployed.
-
-| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
-| --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Managed Ruleset | ...f0884a68 | N/A | XSS, HTML Injection - Object Tag - Body (beta) | Log | Block | This is a new detection. This rule is merged into the original rule "XSS, HTML Injection - Object Tag" (ID: ...0c14e284). |
-| Cloudflare Managed Ruleset | ...ff012303 | N/A | XSS, HTML Injection - Object Tag - Headers | Log | Block | This is a new detection. The rule previously known as "XSS, HTML Injection - Object Tag - Headers (beta)" is now renamed to "XSS, HTML Injection - Object Tag - Headers". |
-| Cloudflare Managed Ruleset | ...16f921d9 | N/A | XSS, HTML Injection - Object Tag - URI | Log | Block | This is a new detection. The rule previously known as "XSS, HTML Injection - Object Tag - URI (beta)" is now renamed to "XSS, HTML Injection - Object Tag - URI". |
-| Cloudflare Managed Ruleset | ...dc90d21a | N/A | Command Injection - Generic 9 - Body Vector - Beta | N/A | Disabled | This is a new detection. This rule is merged into the original rule "Command Injection - Generic 9 - Body Vector" (ID: ...0677175f) |
-| Cloudflare Managed Ruleset | ...f8960375 | N/A | Command Injection - Generic 9 - Header Vector - Beta | N/A | Disabled | This is a new detection. This rule is merged into the original rule "Command Injection - Generic 9 - Header Vector" (ID: ...1eb7a999) |
-| Cloudflare Managed Ruleset | ...ef47a800 | N/A | Command Injection - Generic 9 - URI Vector - Beta | N/A | Disabled | This is a new detection. This rule is merged into the original rule "Command Injection - Generic 9 - URI Vector" (ID: ...97321c6c) |
-| Cloudflare Managed Ruleset | ...beebf804 | N/A | Command Injection - Sleep - Body | N/A | Disabled | This is a new detection. The rule previously known as "Command Injection<ul><li>Sleep" is now renamed to "Command Injection - Sleep - Body".</li></ul> |
-| Cloudflare Managed Ruleset | ...0d257566 | N/A | Command Injection - Sleep - Headers | N/A | Disabled | This is a new detection. |
-| Cloudflare Managed Ruleset | ...1856fe86 | N/A | Command Injection - Sleep - URI | N/A | Disabled | This is a new detection. |
-| Cloudflare Managed Ruleset | ...e6e43c37 | N/A | Fortinet FortiSandbox - Command Injection - CVE:CVE-2026-39808 | Log | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...88118795 | N/A | Remote Code Execution - Common Bash Bypass - Headers | N/A | Disabled | This is a new detection. |
-| Cloudflare Managed Ruleset | ...9299d53b | N/A | Remote Code Execution - Common Bash Bypass - URI | N/A | Disabled | This is a new detection. |
-| Cloudflare Managed Ruleset | ...b0bf33f9 | N/A | Remote Code Execution - Common Bash Bypass - Body - Beta | N/A | Disabled | This is a new detection. This rule is merged into the original rule "Remote Code Execution - Common Bash Bypass Body" (ID: ...efb7e5b9). The rule previously known as "Remote Code Execution - Common Bash Bypass Beta" is now renamed to "Remote Code Execution - Common Bash Bypass Body". |
-| Cloudflare Managed Ruleset | ...33bfe8b9 | N/A | PHP Object Injection - 2 - Body - Beta | N/A | Disabled | This is a new detection. This rule is merged into the original rule "PHP Object Injection - 2" (ID: ...161aafdc) |
-| Cloudflare Managed Ruleset | ...29552387 | N/A | PHP Object Injection - 2 - Headers | N/A | Disabled | This is a new detection. |
-| Cloudflare Managed Ruleset | ...8104f4c5 | N/A | PHP Object Injection - 2 - URI | N/A | Disabled | This is a new detection. |
-| Cloudflare Managed Ruleset | ...6a46201e | N/A | SQLi - DROP - 2 - Beta | N/A | Disabled | This is a new detection. This rule is merged into the original rule "SQLi - DROP - 2" (ID: ...48ac2221) |
-| Cloudflare Managed Ruleset | ...8b7f85ee | N/A | SQLi - DROP - 2 - Headers | N/A | Disabled | This is a new detection. |
-| Cloudflare Managed Ruleset | ...1546b5f0 | N/A | SQLi - DROP - 2 - URI | N/A | Disabled | This is a new detection. |
-| Cloudflare Managed Ruleset | ...1e053dce | N/A | SmarterMail - Remote Code Execution - CVE:CVE-2026-24423 | Log | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...d0023a36 | N/A | SQLi - SELECT Expression - Body | Block | Disabled | Action changed |
-| Cloudflare Managed Ruleset | ...26cc211f | N/A | SQLi - String Concatenation - URI | Block | Disabled | Action changed |
-
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog · Cloudflare Web Application Firewall (WAF) docs","description":"This update provides immediate defense against a high-severity, actively exploited zero-day vulnerability targeting Adobe Commerce and Magento Open Source storefronts.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog · Cloudflare Web Application Firewall (WAF) docs","description":"This release introduces new threat detections to enhance protection against command injection attempts, Server-Side Request Forgery (SSRF) targeting cloud metadata, and information disclosure within version control history.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

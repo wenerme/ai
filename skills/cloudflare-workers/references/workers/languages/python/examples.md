@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Examples
 
-Last updated Jul 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/python/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/python/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare has a wide range of Python examples in the [Workers Example gallery](https://developers.cloudflare.com/workers/examples/?languages=Python).
 
@@ -245,6 +245,10 @@ class MyWorkflow(WorkflowEntrypoint):
 
 Refer to the [Python Workflows documentation](https://developers.cloudflare.com/workflows/python/) for more information.
 
+## Query PostgreSQL or MySQL with Hyperdrive
+
+Refer to the [Hyperdrive from Python Workers](https://developers.cloudflare.com/hyperdrive/examples/python-workers/) for supported drivers and examples.
+
 ## More Examples
 
 Or you can clone [the examples repository ↗](https://github.com/cloudflare/python-workers-examples) to explore even more examples:
@@ -262,5 +266,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/python/examples/#page","headline":"Python Worker Examples · Cloudflare Workers docs","description":"Python code examples demonstrating modules, bindings, and SDK usage in Workers.","url":"https://developers.cloudflare.com/workers/languages/python/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/python/examples/#page","headline":"Python Worker Examples · Cloudflare Workers docs","description":"Python code examples demonstrating modules, bindings, and SDK usage in Workers.","url":"https://developers.cloudflare.com/workers/languages/python/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -42,9 +42,7 @@ We strongly advise against credential-sharing which can jeopardize the trust and
 
 ## Additional items
 
-- Check when your [SSL Certificates expire (only custom and origin certificates)](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/renewing/)
-
-  Note
+- Check when your [SSL Certificates expire (only custom and origin certificates)](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/renewing/) Note
 
   Certificates managed by Cloudflare are auto-renewed.
 - Review your Operational and Disaster recovery preparedness

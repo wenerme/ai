@@ -52,9 +52,7 @@ Choose this option if you have a single VPC in your cloud to connect to Cloudfla
 6. From the drop-down menu, choose your cloud provider. You can choose between AWS, GCP, and Azure. Then, select **Continue**.
 7. Select the network that you want to connect to. This list comes from the [cloud integrations](https://developers.cloudflare.com/multi-cloud-networking/get-started/) you have already set up. When you are done, select **Continue**.
 8. **Configure route propagation** shows where Cloudflare will install the new routes. Installing these routes is required to correctly configure both Cloudflare WAN and your cloud provider, and ensure successful communication between them:
-   - **Add routes for your Cloudflare WAN address space to your cloud network**: Select this option to install routes for reaching Cloudflare WAN in your cloud network's route tables (refer to [Cloudflare WAN address space](#cloudflare-wan-address-space) to learn what routes are installed and how to customize them). If you prefer to do this manually, unselect this option.
-
-     Warning
+   - **Add routes for your Cloudflare WAN address space to your cloud network**: Select this option to install routes for reaching Cloudflare WAN in your cloud network's route tables (refer to [Cloudflare WAN address space](#cloudflare-wan-address-space) to learn what routes are installed and how to customize them). If you prefer to do this manually, unselect this option. Warning
 
      Cloudflare recommends that you leave this option selected. If you unselect **Add routes for your Cloudflare WAN address space to your cloud network**, you will need to manually create all the required configurations to allow Cloudflare WAN to connect to your cloud, such as routing tables, transit gateways, and VPNs. Refer to the [Cloudflare WAN How to](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/) section, or consult the documentation for your cloud provider for more information.
    - **Add routes for your cloud network to Cloudflare WAN**: Select this option to create routes for reaching your cloud network in Cloudflare WAN.
@@ -95,9 +93,7 @@ When you configure a hub on-ramp, Cloudflare always manages the VPN tunnel betwe
     2. Select the remote hubs you want Cloudflare to attach to this hub.
 11. Select **Continue**.
 12. **Configure route propagation** shows where Cloudflare will install the new routes. Installing these routes is required to correctly configure both Cloudflare WAN and your cloud provider, and ensure successful communication between them:
-    1. **Add routes for your Cloudflare WAN address space to your cloud network**: Select this option to install routes for reaching Cloudflare WAN in your cloud network's route tables (refer to [Cloudflare WAN address space](#cloudflare-wan-address-space) to learn what routes are installed and how to customize them). If you prefer to do this manually, unselect this option.
-
-       Warning
+    1. **Add routes for your Cloudflare WAN address space to your cloud network**: Select this option to install routes for reaching Cloudflare WAN in your cloud network's route tables (refer to [Cloudflare WAN address space](#cloudflare-wan-address-space) to learn what routes are installed and how to customize them). If you prefer to do this manually, unselect this option. Warning
 
        Cloudflare recommends that you leave this option selected. If you unselect **Add routes for your Cloudflare WAN address space to your cloud network**, you will need to manually create all the required configurations to allow Cloudflare WAN to connect to your cloud, such as routing tables, transit gateways, and VPNs. Refer to the [Cloudflare WAN How to](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/) section, or consult the documentation for your cloud provider for more information.
     2. **Add routes for your cloud network to Cloudflare WAN**: Select this option to create routes for reaching your cloud network in Cloudflare WAN.
@@ -127,9 +123,7 @@ You have successfully created your Cloudflare WAN on-ramp. However, on-ramp crea
    2. Select the remote hubs you want Cloudflare to attach to this hub.
 10. Select **Continue**.
 11. **Configure route propagation** shows where Cloudflare will install the new routes. Installing these routes is required to correctly configure both Cloudflare WAN and your cloud provider, and ensure successful communication between them:
-    1. **Add routes for your Cloudflare WAN address space to your cloud network**: Select this option to install routes for reaching Cloudflare WAN in your cloud network's route tables (refer to [Cloudflare WAN address space](#cloudflare-wan-address-space) to learn what routes are installed and how to customize them). If you prefer to do this manually, unselect this option.
-
-       Warning
+    1. **Add routes for your Cloudflare WAN address space to your cloud network**: Select this option to install routes for reaching Cloudflare WAN in your cloud network's route tables (refer to [Cloudflare WAN address space](#cloudflare-wan-address-space) to learn what routes are installed and how to customize them). If you prefer to do this manually, unselect this option. Warning
 
        Cloudflare recommends that you leave this option selected. If you unselect **Add routes for your Cloudflare WAN address space to your cloud network**, you will need to manually create all the required configurations to allow Cloudflare WAN to connect to your cloud, such as routing tables, transit gateways, and VPNs. Refer to the [Cloudflare WAN How to](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/) section, or consult the documentation for your cloud provider for more information.
     2. **Add routes for your cloud network to Cloudflare WAN**: Select this option to create routes for reaching your cloud network in Cloudflare WAN.
@@ -191,9 +185,7 @@ After setting up your on-ramps, you need to update your network security groups 
 5. In **Basic information**, you can change the name and description of your on-ramp. Select **Save** when you are finished.
 6. In **Configurations**, you can modify where the required routes are installed. Select **Continue**.
    1. Select **Save and review** after making changes.
-   2. Review your settings, and select **Approve changes**.
-
-      Caution
+   2. Review your settings, and select **Approve changes**. Caution
 
       If you uncheck any of the Propagation settings, you will have to manually configure Cloudflare WAN or your cloud provider to ensure successful communication between them. Refer to the [How to](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/) section of Cloudflare WAN, or consult the documentation for your cloud provider for more information.
 

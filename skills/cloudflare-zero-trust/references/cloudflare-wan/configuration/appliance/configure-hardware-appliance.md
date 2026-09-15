@@ -106,9 +106,7 @@ To create a profile:
 
 When you have more than one anycast IP configured in your account (set up during your Cloudflare WAN (formerly Magic WAN) onboarding), Cloudflare One Appliance will automatically create at most two tunnels per WAN port. This improves reliability and performance, and requires no additional configuration on your part.
 
-1. In **WAN configuration**, select **Create**. You can create one or more [wide area networks (WANs) ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-wan/). Configuring multiple WANs will create multiple IPsec tunnels (one IPsec tunnel per WAN port). This allows Cloudflare One Appliance to load balance traffic over WANs of equal priority. It also allows Cloudflare One Appliance to failover between circuits according to their [health](https://developers.cloudflare.com/cloudflare-wan/reference/tunnel-health-checks/). Refer to [WAN settings](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/reference/#wan-settings) for more details.
-
-   Note
+1. In **WAN configuration**, select **Create**. You can create one or more [wide area networks (WANs) ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-wan/). Configuring multiple WANs will create multiple IPsec tunnels (one IPsec tunnel per WAN port). This allows Cloudflare One Appliance to load balance traffic over WANs of equal priority. It also allows Cloudflare One Appliance to failover between circuits according to their [health](https://developers.cloudflare.com/cloudflare-wan/reference/tunnel-health-checks/). Refer to [WAN settings](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/reference/#wan-settings) for more details. Note
 
    This is not the same as a high availability (HA) configuration. HA configurations need two Cloudflare One Appliance devices to work. For details, refer to [About high availability configurations](#about-high-availability-configurations).
 2. In **Interface name**, enter a descriptive name for your WAN.
@@ -216,17 +214,17 @@ When Cloudflare One Appliance acts like the WAN router for your site, deployment
 
 ```
 flowchart LR
-accTitle: Appliance as WAN router
-accDescr: Cloudflare One Appliance set up as a DHCP server, and connecting to the Internet.
-a(Cloudflare One Appliance)--> b(Internet) --> c(Cloudflare)
+  accTitle: Appliance as WAN router
+  accDescr: Cloudflare One Appliance set up as a DHCP server, and connecting to the Internet.
+  a(Cloudflare One Appliance)--> b(Internet) --> c(Cloudflare)
 
-subgraph Customer site
-d[LAN 1] --> a
-e[LAN 2] --> a
-end
+  subgraph Customer site
+  d[LAN 1] --> a
+  e[LAN 2] --> a
+  end
 
-classDef orange fill:#f48120,color: black
-class a,c orange
+  classDef orange fill:#f48120,color: black
+  class a,c orange
 ```
 
 *Cloudflare One Appliance set up as a DHCP server, and connecting to the Internet.*
@@ -235,19 +233,19 @@ In the following example, the Cloudflare One Appliance device sits behind the WA
 
 ```
 flowchart LR
-accTitle: Appliance behind site router
-accDescr: Cloudflare One Appliance connects to the router in the site, and only some of the LANs connect to Appliance.
-a(Cloudflare One Appliance)--> b((Site's router)) --> c(Internet) --> i(Cloudflare)
+  accTitle: Appliance behind site router
+  accDescr: Cloudflare One Appliance connects to the router in the site, and only some of the LANs connect to Appliance.
+  a(Cloudflare One Appliance)--> b((Site's router)) --> c(Internet) --> i(Cloudflare)
 
-subgraph Customer site
-d[LAN 1] --> a
-e[LAN 2] --> a
-g(LAN 3) --> b
-h(LAN 4) --> b
-end
+  subgraph Customer site
+  d[LAN 1] --> a
+  e[LAN 2] --> a
+  g(LAN 3) --> b
+  h(LAN 4) --> b
+  end
 
-classDef orange fill:#f48120,color: black
-class a,i orange
+  classDef orange fill:#f48120,color: black
+  class a,i orange
 ```
 
 *Cloudflare One Appliance connects to the router in the site, and only some of the LANs connect to Appliance.*

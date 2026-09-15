@@ -16,16 +16,17 @@ Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/waf.xml)
 
-## 2026-09-08
+## 2026-09-15
 
 
-**WAF Release - Scheduled changes for 2026-09-15**
+**WAF Release - Scheduled changes for 2026-09-22**
 
 | Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID | Description | Comments |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026-09-08 | 2026-09-15 | Log | N/A | ...ca453d31 | SSRF - Cloud - 3 | This is a new detection. |
-| 2026-09-08 | 2026-09-15 | Log | N/A | ...e540f17f | Version Control - Information Disclosure - Beta | This rule will be merged into the original rule "Version Control - Information Disclosure" (ID: ...0550c529). |
-| 2026-09-08 | 2026-09-15 | Log | N/A | ...ba458b4b | Command Injection - Generic 10 | This is a new detection. |
+| 2026-09-15 | 2026-09-22 | Log | N/A | ...0f0313d6 | SSRF - Block jar HTTP loopback payload | This is a new detection. |
+| 2026-09-15 | 2026-09-22 | Log | N/A | ...5f21b651 | SSRF - Cloud,Link-Local non-standard IP notation | This is a new detection. |
+| 2026-09-15 | 2026-09-22 | Log | N/A | ...75cd912a | SSRF - Local non-standard IP notation | This is a new detection. |
+| 2026-09-15 | 2026-09-22 | Log | N/A | ...a1ba83f6 | SSTI - Jinja Dangerous Globals Chain | This is a new detection. |
 
 For other WAF updates, refer to the [changelog](https://developers.cloudflare.com/waf/change-log/changelog/).
 

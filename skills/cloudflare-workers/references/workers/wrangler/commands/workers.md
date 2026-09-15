@@ -96,9 +96,7 @@ None of the options for this command are required. Many of these options can be 
 - `--assets` `string` optional beta
   - Folder of static assets to be served. Replaces [Workers Sites](https://developers.cloudflare.com/workers/configuration/sites/). Visit [assets](https://developers.cloudflare.com/workers/static-assets/) for more information.
 - `--site` `string` optional deprecated, use \`--assets\`
-  - Folder of static assets for Workers Sites.
-
-    Caution
+  - Folder of static assets for Workers Sites. Caution
 
     Workers Sites is deprecated. Please use [Workers Assets](https://developers.cloudflare.com/workers/static-assets/) or [Pages](https://developers.cloudflare.com/pages/).
 - `--site-include` `string[]` optional deprecated
@@ -205,9 +203,7 @@ None of the options for this command are required. Also, many can be set in your
 - `--assets` `string` optional beta
   - Folder of static assets to be served. Replaces [Workers Sites](https://developers.cloudflare.com/workers/configuration/sites/). Visit [assets](https://developers.cloudflare.com/workers/static-assets/) for more information.
 - `--site` `string` optional deprecated, use \`--assets\`
-  - Folder of static assets for Workers Sites.
-
-    Caution
+  - Folder of static assets for Workers Sites. Caution
 
     Workers Sites is deprecated. Please use [Workers Assets](https://developers.cloudflare.com/workers/static-assets/) or [Pages](https://developers.cloudflare.com/pages/).
 - `--site-include` `string[]` optional deprecated

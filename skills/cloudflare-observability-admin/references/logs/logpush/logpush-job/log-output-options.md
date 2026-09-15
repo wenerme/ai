@@ -48,7 +48,7 @@ We have replaced this with **output\_options** as it is used for both Logpull an
 }
 ```
 
-:::caution\[Updates replace output\_options in full]
+Updates replace output\_options in full
 
 When you update a Logpush job via `PUT /accounts/{account_id}/logpush/jobs/{job_id}` or `PUT /zones/{zone_id}/logpush/jobs/{job_id}`, the **output\_options** object is replaced entirely. Any field that was previously set but omitted from the update payload is reset to its default value. For example, if the existing job sets `timestamp_format: "rfc3339"` and your update only includes `field_names`, the job will revert to the default `timestamp_format` (`unixnano` for API-created jobs). Always include the complete **output\_options** object you want applied when updating a job.
 

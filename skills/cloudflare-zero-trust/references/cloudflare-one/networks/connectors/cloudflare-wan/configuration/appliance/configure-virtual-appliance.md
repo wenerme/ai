@@ -249,9 +249,7 @@ To create a profile:
 
 When you have more than one anycast IP configured in your account (set up during your Cloudflare WAN (formerly Magic WAN) onboarding), Virtual Appliance will automatically create at most two tunnels per WAN port. This improves reliability and performance, and requires no additional configuration on your part.
 
-1. In **WAN configuration**, select **Create**. You can create one or more [wide area networks (WANs) ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-wan/). Configuring multiple WANs will create multiple IPsec tunnels (one IPsec tunnel per WAN port). This allows Virtual Appliance to load balance traffic over WANs of equal priority. It also allows Virtual Appliance to failover between circuits according to their [health](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/tunnel-health-checks/). Refer to [WAN settings](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/reference/#wan-settings) for more details.
-
-   Note
+1. In **WAN configuration**, select **Create**. You can create one or more [wide area networks (WANs) ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-wan/). Configuring multiple WANs will create multiple IPsec tunnels (one IPsec tunnel per WAN port). This allows Virtual Appliance to load balance traffic over WANs of equal priority. It also allows Virtual Appliance to failover between circuits according to their [health](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/tunnel-health-checks/). Refer to [WAN settings](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/reference/#wan-settings) for more details. Note
 
    This is not the same as a high availability (HA) configuration. HA configurations need two Virtual Appliance devices to work. For details, refer to [About high availability configurations](#about-high-availability-configurations).
 2. In **Interface name**, enter a descriptive name for your WAN.

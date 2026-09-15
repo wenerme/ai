@@ -16,6 +16,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 - [Connect to PostgreSQL](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/)
 - [Connect to MySQL](https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/)
+- [Python Workers](https://developers.cloudflare.com/hyperdrive/examples/python-workers/)
 
 Was this helpful?
 

@@ -56,7 +56,7 @@ You can troubleshoot these error codes using the following recommendations:
 7. Switch to a different network.
    - Your current network may have restrictions causing Turnstile challenges to fail. Try switching to another network, such as a mobile hotspot.
 
-:::caution\[Error code `401`]
+Error code \`401\`
 
 Turnstile may occasionally generate a `401` Unauthorized error in your browser console during a security check. This is not typically a problem with your implementation. This error often occurs when the widget attempts to request a [Private Access Token](https://developers.cloudflare.com/cloudflare-challenges/reference/private-access-tokens/) that your device or browser does not support yet.
 

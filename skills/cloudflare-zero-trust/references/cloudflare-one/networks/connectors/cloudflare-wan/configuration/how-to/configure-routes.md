@@ -44,9 +44,7 @@ For prefixes outside RFC 1918, contact your Cloudflare customer service manager.
 3. Enter a descriptive name for your route in **Description**.
 4. In **Prefix**, enter your range of IP addresses. For example, `10.10.10.100/24`.
 5. In **Tunnel/Next hop**, select a tunnel for your route from the tunnels you created in [Configure tunnel endpoints](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/).
-6. Choose the **Priority** for your route. Lower numbers have higher priorities.
-
-   Note
+6. Choose the **Priority** for your route. Lower numbers have higher priorities. Note
 
    Cloudflare routing applies longest-prefix match. A more specific static route (like `/30`) always takes precedence over a less specific one (like `/29`), regardless of tunnel priority — unless you remove the more specific route. Keep this in mind when configuring priorities for your routes. Refer to [Route prioritization](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#route-prioritization) for more information.
 7. (Optional) Choose a **Weight** for your route. Refer to [Set priority and weights for static routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#set-priority-and-weights-for-static-routes) for examples.

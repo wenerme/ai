@@ -17,21 +17,21 @@ Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developer
 DHCP Relay provides a way for DHCP clients to communicate with DHCP servers that are not available on the same local subnet/broadcast domain. When you enable DHCP Relay, Cloudflare One Appliance (formerly Magic WAN Connector) forwards DHCP discover messages to a predefined DHCP server, and routes the responses back to the original device that sent the discover message.
 
 ```
-	flowchart LR
-	accTitle: DHCP Relay diagram
-	accDescr: The graph shows Cloudflare One Appliance sending DHCP discover messages to a DHCP server offsite.
-			a(Cloudflare One Appliance) <--> b(Cloudflare/Cloudflare WAN) <--> c(DHCP server)
+  	flowchart LR
+  	accTitle: DHCP Relay diagram
+  	accDescr: The graph shows Cloudflare One Appliance sending DHCP discover messages to a DHCP server offsite.
+  			a(Cloudflare One Appliance) <--> b(Cloudflare/Cloudflare WAN) <--> c(DHCP server)
 
-			subgraph Site A
-			d[LAN 1] <--> a
-			e[LAN 2] <--> a
-			end
+  			subgraph Site A
+  			d[LAN 1] <--> a
+  			e[LAN 2] <--> a
+  			end
 
-			subgraph Site B
-			c
-			end
-			classDef orange fill:#f48120,color: black
-			class a,b,c orange
+  			subgraph Site B
+  			c
+  			end
+  			classDef orange fill:#f48120,color: black
+  			class a,b,c orange
 
 ```
 

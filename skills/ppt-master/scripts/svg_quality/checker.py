@@ -325,6 +325,7 @@ try:
         parse_optional_layout_slides as _parse_optional_layout_slides,
         parse_template_slide as _parse_template_structure_slide,
         parse_template_slides as _parse_template_structure_slides,
+        structured_layout_definition_files as _structured_layout_definition_files,
         _structure_subtree_signature as _structure_subtree_signature,
         template_lock_errors as _template_lock_errors,
         template_prototype_errors as _template_prototype_errors,
@@ -337,6 +338,7 @@ except ImportError:
     _parse_optional_layout_slides = None
     _parse_template_structure_slide = None
     _parse_template_structure_slides = None
+    _structured_layout_definition_files = None
     _structure_subtree_signature = None
     _template_lock_errors = None
     _template_prototype_errors = None
@@ -1458,6 +1460,8 @@ class SVGQualityChecker:
                     )
 
             # Determine pass/fail
+            if self.template_mode:
+                self._classify_preserved_mirror_geometry(svg_path, result)
             result['passed'] = len(result['errors']) == 0
 
         except Exception as e:
@@ -1465,6 +1469,57 @@ class SVGQualityChecker:
             result['passed'] = False
 
         return self._record_result(result)
+
+    def _classify_preserved_mirror_geometry(self, svg_path: Path, result: Dict) -> None:
+        """Report immutable source geometry as inherited, never exempt edits.
+
+        The materializer records the exact published SVG hash. Only its text
+        width estimates and source-object overlap qualify; XML, assets, native
+        payloads and reusable structure remain fully blocking.
+        """
+        manifest_path = svg_path.parent / 'template_execution_manifest.json'
+        try:
+            manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+        except (OSError, ValueError):
+            return
+        if (not isinstance(manifest, dict)
+                or manifest.get('schema') != 'ppt-master.template-execution-manifest.v1'
+                or manifest.get('replication_mode') != 'mirror'
+                or manifest.get('source_geometry_unchanged') is not True
+                or not re.fullmatch(r'[0-9a-f]{64}', str(manifest.get('source_package_sha256', '')))):
+            return
+        entries = manifest.get('templates')
+        if not isinstance(entries, list):
+            return
+        if not any(isinstance(entry, dict)
+                   and entry.get('prototype') == svg_path.name
+                   and entry.get('source_svg_sha256') == result.get('source_sha256')
+                   for entry in entries):
+            return
+        dependencies = manifest.get('source_files_sha256')
+        if not isinstance(dependencies, dict) or not dependencies:
+            return
+        try:
+            for relative, digest in dependencies.items():
+                path = (svg_path.parent / relative).resolve()
+                path.relative_to(svg_path.parent.parent.resolve())
+                if hashlib.sha256(path.read_bytes()).hexdigest() != digest:
+                    return
+        except (OSError, ValueError, TypeError):
+            return
+        result['info']['mirror_source_unchanged'] = True
+        source_import = manifest.get('source_import')
+        if isinstance(source_import, dict):
+            self._source_import_summary = source_import
+        for bucket in ('errors', 'warnings'):
+            for message in list(result[bucket]):
+                if (message.startswith('<text>') and ' exceeds ' in message) or (
+                    message.startswith('<g ') and ' data-pptx-bounds overlaps ' in message
+                ):
+                    result[bucket].remove(message)
+                    result['info'].setdefault('inherited', []).append({
+                        'kind': 'mirror-source-geometry', 'message': message,
+                    })
 
     def _record_result(self, result: Dict) -> Dict:
         """Append one file result and update aggregate counters."""
@@ -4466,10 +4521,15 @@ class SVGQualityChecker:
             if self._is_hidden_element(text_element, parent_by_id):
                 continue
             visible_text = ''.join(text_element.itertext())
-            if (
-                not visible_text.strip()
-                or ('{{' in visible_text and '}}' in visible_text)
-            ):
+            marker_text = '{{' in visible_text and '}}' in visible_text
+            slot = parent_by_id.get(id(text_element))
+            template_carrier = (
+                self.template_mode
+                and text_element.get('data-pptx-carrier') == 'true'
+                and slot is not None
+                and slot.get('data-pptx-placeholder') is not None
+            )
+            if not visible_text.strip() or (marker_text and not template_carrier):
                 continue
             estimated = self._estimated_text_bounds(
                 text_element,
@@ -4478,11 +4538,19 @@ class SVGQualityChecker:
                 letter_spacings,
                 include_headroom=True,
             )
+            if estimated is not None and marker_text:
+                # A token has no content-width contract, but its carrier still
+                # has the same baseline/line-box contract as a generated page.
+                resolved_slot = self._resolved_root_module_bounds(slot)
+                if resolved_slot is not None:
+                    boundary = resolved_slot[1]
+                    estimated = (boundary[0], estimated[1], boundary[2], estimated[3])
             if estimated is not None:
                 estimated_by_id[id(text_element)] = estimated
 
             if (
-                canvas is None
+                marker_text
+                or canvas is None
                 or self._has_zero_opacity(text_element, parent_by_id)
             ):
                 continue
@@ -6236,6 +6304,8 @@ class SVGQualityChecker:
             if local_name in definition_containers:
                 return
             if local_name == 'text':
+                if element.get('data-pptx-layer') in {'master', 'layout'}:
+                    return
                 counts.update(collect_text_object_sizes(element))
                 return
             for child in element:
@@ -7129,6 +7199,10 @@ class SVGQualityChecker:
                 return
             if specs is None:
                 return
+            self._structured_native_slots = sorted({
+                str(item.placeholder) for spec in specs for item in spec.placeholders
+                if item.placeholder in {'chart', 'table'}
+            })
             self._pptx_structure_issues.extend(
                 ('error', message)
                 for message in self._shared_fixed_layer_errors(specs)
@@ -7281,9 +7355,21 @@ class SVGQualityChecker:
             self._pptx_structure_issues.append(('error', str(exc)))
             return
 
+        dependency_specs = list(specs)
+        try:
+            # Use the exporter's registered dependencies, including explicitly
+            # retained prototypes which have no public page in this deck.
+            definition_files = _structured_layout_definition_files(specs, structure_lock)
+            dependency_specs.extend(
+                _parse_template_structure_slide(path, len(specs) + index)
+                for index, path in enumerate(definition_files, start=1)
+            )
+        except _TemplateStructureError as exc:
+            if complete_roster:
+                self._pptx_structure_issues.append(('error', str(exc)))
         self._structured_native_slots = sorted({
             str(item.placeholder)
-            for spec in specs
+            for spec in dependency_specs
             for item in spec.placeholders
             if item.placeholder in {'chart', 'table'}
         })
@@ -9375,6 +9461,10 @@ class SVGQualityChecker:
     def _print_provenance_category_summary(self):
         """Print compact JSON-equivalent counts for token-safe gate handling."""
         categories = self._provenance_categories()
+        unchanged_mirror = self.template_mode and self.results and all(
+            result.get('info', {}).get('mirror_source_unchanged')
+            for result in self.results
+        )
         rows = (
             (
                 'blocking',
@@ -9384,7 +9474,8 @@ class SVGQualityChecker:
             (
                 'introduced',
                 len(categories['introduced']),
-                'advisory; new or changed',
+                ('advisory; mirror: source-authored spellings, workspace unmodified'
+                 if unchanged_mirror else 'advisory; new or changed'),
             ),
             (
                 'inherited',

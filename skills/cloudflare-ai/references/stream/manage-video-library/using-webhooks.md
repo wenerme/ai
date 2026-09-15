@@ -102,9 +102,7 @@ When a video on your account finishes processing, you will receive a `POST` requ
 - `readytoStream` – Returns `true` when at least one quality level is encoded and ready to be streamed.
 - `status` – The processing status.
   - `state` – Returns `ready` when a video is done processing and all quality levels are encoded.
-  - `pctComplete` – The percentage of processing that is complete. When this reaches `100`, all quality levels are available.
-
-    Tip
+  - `pctComplete` – The percentage of processing that is complete. When this reaches `100`, all quality levels are available. Tip
 
     If you want to ensure the highest picture quality, enable video playback only when `state` is `ready` and `pctComplete` is `100`.
 - `meta` – Metadata associated with the uploaded file.

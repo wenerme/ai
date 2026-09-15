@@ -167,7 +167,9 @@ In addition to mTLS, customers can purchase [API Shield](https://developers.clou
 
 Cloudflare Workers can provide details around the Client Certificate, such as returning information via headers to the client or to the origin server. Learn more in the [mTLS with Workers section](https://developers.cloudflare.com/learning-paths/mtls/mtls-workers/) below.
 
-:::note Snippets do not support any [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) and do not work with mTLS. However, you can [validate JSON web tokens (JWT)](https://developers.cloudflare.com/rules/snippets/examples/jwt-validation/).
+Note
+
+Snippets do not support any [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) and do not work with mTLS. However, you can [validate JSON web tokens (JWT)](https://developers.cloudflare.com/rules/snippets/examples/jwt-validation/).
 
 Was this helpful?
 

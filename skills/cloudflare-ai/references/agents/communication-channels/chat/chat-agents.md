@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Chat agents
 
-Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build AI-powered chat interfaces with `AIChatAgent` and `useAgentChat`. Messages are automatically persisted to SQLite, streams resume on disconnect, and tool calls work across server and client.
 
@@ -1170,6 +1170,52 @@ function Chat() {
 
 Use `isToolContinuation` when your UI should distinguish a fresh user submit from a continuation after a tool result. For example, show a typing indicator only for `status === "submitted" && !isToolContinuation`, while keeping loading controls disabled whenever `isStreaming` is true.
 
+### Non-React clients
+
+`useAgentChat` is React-specific. For Vue, Svelte, or vanilla JavaScript, `agents/chat/transport` exports `WebSocketChatTransport`, which adapts an `AgentClient` WebSocket connection to the AI SDK transport interface. This entry point requires no React peer dependency.
+
+```js
+import { useChat } from "@ai-sdk/vue";
+import { AgentClient } from "agents/client";
+import { WebSocketChatTransport } from "agents/chat/transport";
+
+const agent = new AgentClient({
+	agent: "ChatAgent",
+	name: "user-123",
+	host: window.location.host,
+});
+
+const { messages, sendMessage, status } = useChat({
+	transport: new WebSocketChatTransport({
+		agent,
+		cancelOnClientAbort: true,
+	}),
+});
+```
+
+```ts
+import { useChat } from "@ai-sdk/vue";
+import { AgentClient } from "agents/client";
+import { WebSocketChatTransport } from "agents/chat/transport";
+
+const agent = new AgentClient({
+	agent: "ChatAgent",
+	name: "user-123",
+	host: window.location.host,
+});
+
+const { messages, sendMessage, status } = useChat({
+	transport: new WebSocketChatTransport({
+		agent,
+		cancelOnClientAbort: true,
+	}),
+});
+```
+
+The transport covers new turns, regenerated turns, and stream cancellation. It is a lower-level primitive than `useAgentChat`: loading persisted history, automatic stream resume after a reconnect, cross-tab transcript synchronization, and client-side tool continuations remain the React hook's responsibility. Implement whichever of those your client needs on top of the transport.
+
+The [`vue-chat` example ↗](https://github.com/cloudflare/agents/tree/main/examples/vue-chat) shows a minimal Vue client, and [`ai-chat` ↗](https://github.com/cloudflare/agents/tree/main/examples/ai-chat) shows the full React integration for comparison.
+
 ## Tools
 
 `AIChatAgent` supports three tool patterns, all using the AI SDK's `tool()` function:
@@ -2303,6 +2349,7 @@ The originating client receives the streaming response. All other clients receiv
 | `@cloudflare/ai-chat/react` | `useAgentChat`, `extractClientToolSchemas`, `getToolPartState`, `getToolCallId`, `getToolInput`, `getToolOutput`, `getToolApproval` |
 | `@cloudflare/ai-chat/types` | `MessageType`, `OutgoingMessage`, `IncomingMessage` |
 | `agents/chat` | Shared advanced chat primitives such as `SaveMessagesResult`, `SaveMessagesOptions`, `CHAT_MESSAGE_TYPES`, `ROW_MAX_BYTES`, and `isReplayChunk()` |
+| `agents/chat/transport` | `WebSocketChatTransport` and its `AgentConnection` connection types, for non-React clients |
 
 ### WebSocket protocol
 
@@ -2368,5 +2415,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#page","headline":"Chat agents · Cloudflare Agents docs","description":"Build AI chat interfaces with AIChatAgent and useAgentChat, including message persistence, streaming, and tool support.","url":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#page","headline":"Chat agents · Cloudflare Agents docs","description":"Build AI chat interfaces with AIChatAgent and useAgentChat, including message persistence, streaming, and tool support.","url":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
