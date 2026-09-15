@@ -27,7 +27,7 @@ Multi-Functionality, Multi-Linguality, and Multi-Granularity embeddings model.
 | Model Info | |
 | --- | --- |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 60,000 tokens |
-| Unit Pricing | $0.012 per M input tokens |
+| Unit Pricing | $0.0118 per M input tokens |
 
 ## Usage
 

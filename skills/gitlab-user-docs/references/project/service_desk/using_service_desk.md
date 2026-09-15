@@ -1,10 +1,12 @@
 # Use Service Desk
 
+Create a Service Desk ticket by email or in the GitLab UI, and respond to tickets from the ticket tracker.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed
 
 You can use Service Desk to [create a ticket](#as-an-end-user-ticket-creator) or [respond to one](#as-a-responder-to-the-ticket).
-In these tickets, you can also see our friendly neighborhood [Support Bot](configure.md#support-bot-user).
+In these tickets, you can also see the [Support Bot](configure.md#support-bot-user).
 
 ## View Service Desk email address
 
@@ -53,7 +55,7 @@ To create a Service Desk ticket from the UI:
 1. Optional. Add a comment on the ticket to send an initial Service Desk email to the external participant.
 
 <i class="fa-youtube-play" aria-hidden="true"></i>
-For an overview, see [create Service Desk tickets in the UI and API (GitLab 16.10)](https://www.youtube.com/watch?v=ibUGNc2wifQ).
+For an overview, see [create Service Desk tickets in the UI and API](https://www.youtube.com/watch?v=ibUGNc2wifQ).
 
 ## As a responder to the ticket
 
@@ -61,7 +63,7 @@ For responders to the ticket, everything works just like GitLab issues.
 GitLab displays a familiar-looking ticket tracker where responders can see
 tickets created through customer support requests and filter or interact with them.
 
-[Service Desk ticket tracker]
+[Service Desk ticket tracker.]
 
 Messages from the end user are shown as coming from the special
 [Support Bot user](../../../subscriptions/manage_seats.md#criteria-for-non-billable-users).
@@ -110,7 +112,7 @@ a dedicated email address.
 
 ##### Filter with the OR operator
 
-When [filtering with the OR operator](../issues/managing_issues.md#filter-the-list-of-issues) is enabled,
+When [filtering with the OR operator](../issues/managing_issues.md#filter-the-list-of-issues) is turned on,
 you can use **is one of: `||`**
 when you [filter the list of tickets](#filter-the-list-of-tickets) by:
 
@@ -124,7 +126,7 @@ when you [filter the list of tickets](#filter-the-list-of-tickets) by:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **Monitor** > **Service Desk**.
-1. In the **Search** box, type the ticket ID. For example, enter filter `#10` to return only ticket 10.
+1. In the **Search** text box, type the ticket ID. For example, enter filter `#10` to return only ticket 10.
 
 ## Email contents and formatting
 
@@ -177,7 +179,7 @@ displayed in the information note.
 You can move a Service Desk ticket the same way you
 [move a regular issue](../issues/managing_issues.md#move-an-issue) in GitLab.
 
-If a Service Desk ticket is moved to a different project with Service Desk enabled,
+If a Service Desk ticket is moved to a different project with Service Desk turned on,
 the customer who created the ticket continues to receive email notifications.
 Because a moved ticket is first closed, then copied, the customer is considered to be a participant
 in both tickets. They continue to receive any notifications in the old ticket and the new one.

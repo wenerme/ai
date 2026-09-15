@@ -16,7 +16,7 @@ Last updated Aug 12, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 235 modelsClear filters
+We found 220 modelsClear filters
 
 ## Compare models
 
@@ -34,11 +34,15 @@ Try a different search term, or broaden your search by removing filters.
 
 AlibabaImage-to-Video Alibaba's HappyHorse 1.0 image-to-video model. Animates a reference image with an optional text prompt. Supports 720P and 1080P output with durations from 3 to 15 seconds. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/alibaba/hh1-i2v/)
 
+- Pricing listed
+
 Compare
 
 [![Alibaba logo](https://developers.cloudflare.com/_astro/alibaba.BK31NAJz.svg)<h3>hh1-t2v</h3>
 
 AlibabaText-to-Video Alibaba's HappyHorse 1.0 text-to-video model. Generates videos from a text prompt with configurable resolution, aspect ratio, and duration (3-15s). - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/alibaba/hh1-t2v/)
+
+- Pricing listed
 
 Compare
 
@@ -46,11 +50,15 @@ Compare
 
 AlibabaImage-to-Video Alibaba's HappyHorse 1.1 image-to-video model. Animates a reference image with an optional text prompt, with smoother motion, natural skin textures, and improved close-up quality over 1.0. Supports 720P and 1080P output with durations from 3 to 15 seconds. - Third-party](https://developers.cloudflare.com/ai/models/alibaba/hh1.1-i2v/)
 
+- Pricing listed
+
 Compare
 
 [![Alibaba logo](https://developers.cloudflare.com/_astro/alibaba.BK31NAJz.svg)<h3>hh1.1-r2v</h3>
 
 AlibabaImage-to-Video Alibaba's HappyHorse 1.1 reference-to-video model. Takes 1-9 reference images (characters and scenes) and a prompt that choreographs them into a single video, keeping each subject's identity consistent. Supports 720P and 1080P output with durations from 3 to 15 seconds. - Third-party](https://developers.cloudflare.com/ai/models/alibaba/hh1.1-r2v/)
+
+- Pricing listed
 
 Compare
 
@@ -58,11 +66,15 @@ Compare
 
 AlibabaText-to-Video Alibaba's HappyHorse 1.1 text-to-video model. Generates videos from a text prompt with stronger dynamic expressiveness, better visual quality, and improved instruction following over 1.0. Configurable resolution, aspect ratio, and duration (3-15s). - Third-party](https://developers.cloudflare.com/ai/models/alibaba/hh1.1-t2v/)
 
+- Pricing listed
+
 Compare
 
 [![Alibaba logo](https://developers.cloudflare.com/_astro/alibaba.BK31NAJz.svg)<h3>qwen-image-3.0-pro</h3>
 
 AlibabaText-to-Image Alibaba's Qwen Image 3.0 Pro generates images from text prompts with a focus on complex layout generation, small-text precision, and multilingual font rendering. Supports up to 6 image variants per call, negative prompts, seed control, and optional prompt rewriting. - Third-party](https://developers.cloudflare.com/ai/models/alibaba/qwen-image-3.0-pro/)
+
+- Pricing listed
 
 Compare
 
@@ -70,11 +82,15 @@ Compare
 
 AlibabaText Generation Alibaba's Qwen 3 Max is a large language model with strong coding, reasoning, and multilingual capabilities, served via DashScope's OpenAI-compatible endpoint. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/alibaba/qwen3-max/)
 
+- Pricing listed
+
 Compare
 
 [![Alibaba logo](https://developers.cloudflare.com/_astro/alibaba.BK31NAJz.svg)<h3>qwen3.5-397b-a17b</h3>
 
 AlibabaText Generation Alibaba's Qwen 3.5 is a 397B-parameter mixture-of-experts model with 17B active parameters, offering strong reasoning capabilities with efficient inference. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/)
+
+- Pricing listed
 
 Compare
 
@@ -82,11 +98,15 @@ Compare
 
 AlibabaText Generation Alibaba's Qwen 3.7 Max is the largest and most capable model in the Qwen3.7 series, a next-generation flagship built for the agent-centric era with deep strengths in programming, office and productivity tasks, and long-term autonomous execution, served via DashScope's OpenAI-compatible endpoint. - Third-party](https://developers.cloudflare.com/ai/models/alibaba/qwen3.7-max/)
 
+- Pricing listed
+
 Compare
 
 [![Alibaba logo](https://developers.cloudflare.com/_astro/alibaba.BK31NAJz.svg)<h3>qwen3.7-plus</h3>
 
 AlibabaText Generation Alibaba's Qwen 3.7 Plus is the cost-effective member of the Qwen3.7 series, pairing strong text capabilities with image and video understanding and full-stack agent-level intelligence for coding, tool use, and GUI-based automation, served via DashScope's OpenAI-compatible endpoint. - Third-party](https://developers.cloudflare.com/ai/models/alibaba/qwen3.7-plus/)
+
+- Pricing listed
 
 Compare
 
@@ -94,11 +114,15 @@ Compare
 
 AlibabaText Generation Alibaba's Qwen 3.8 Max is a 2.4-trillion-parameter MoE flagship built for professional-grade coding and long-horizon autonomous work, capable of delivering complete, production-grade projects spanning 10+ days across legal, financial, design, and other specialized domains. Native visual understanding of images and extended video runs through the full plan-execute-verify cycle, served via DashScope's OpenAI-compatible endpoint. - Third-party](https://developers.cloudflare.com/ai/models/alibaba/qwen3.8-max/)
 
+- Pricing listed
+
 Compare
 
 [![Alibaba logo](https://developers.cloudflare.com/_astro/alibaba.BK31NAJz.svg)<h3>wan-2.6-image</h3>
 
 AlibabaText-to-Image Alibaba's Wan 2.6 text-to-image model generating images from text prompts with optional negative prompts and customizable dimensions. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/alibaba/wan-2.6-image/)
+
+- Pricing listed
 
 Compare
 
@@ -106,11 +130,23 @@ Compare
 
 AlibabaImage-to-Video Alibaba's Wan 2.7 image-to-video model that generates videos from a reference image with optional text prompts. Supports 720P and 1080P output with durations from 2 to 15 seconds. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/alibaba/wan-2.7-i2v/)
 
+- Pricing listed
+
 Compare
 
 [![Alibaba logo](https://developers.cloudflare.com/_astro/alibaba.BK31NAJz.svg)<h3>wan-3.0</h3>
 
 AlibabaText-to-Video Alibaba's Wan 3.0 text-to-video model. Generates cinematic videos from text prompts with adaptive aspect ratio, 480P, 720P, or 1080P resolution, and configurable duration. - Third-party](https://developers.cloudflare.com/ai/models/alibaba/wan-3.0/)
+
+- Pricing listed
+
+Compare
+
+[![Alibaba logo](https://developers.cloudflare.com/_astro/alibaba.BK31NAJz.svg)<h3>wan-3.0-prime</h3>
+
+AlibabaText-to-Video Alibaba's Wan 3.0 Prime text-to-video model. Generates cinematic videos from text prompts with adaptive aspect ratio, 480P, 720P, or 1080P resolution, and configurable duration. - Third-party](https://developers.cloudflare.com/ai/models/alibaba/wan-3.0-prime/)
+
+- Pricing listed
 
 Compare
 
@@ -120,6 +156,7 @@ AnthropicText Generation Claude Fable 5 is Anthropic's most capable widely relea
 
 - Context: 1M tokens
 - Maximum output: 128K tokens
+- Pricing listed
 
 Compare
 
@@ -129,6 +166,7 @@ AnthropicText Generation Claude Fable 5.1 is Anthropic's next model in the Fable
 
 - Context: 1M tokens
 - Maximum output: 128K tokens
+- Pricing listed
 
 Compare
 
@@ -138,6 +176,7 @@ AnthropicText Generation Claude Haiku 4.5 delivers similar levels of coding perf
 
 - Context: 200K tokens
 - Maximum output: 8.2K tokens
+- Pricing listed
 
 Compare
 
@@ -147,6 +186,7 @@ AnthropicText Generation Claude Opus 4.5 brings further reasoning, coding, and a
 
 - Context: 200K tokens
 - Maximum output: 32K tokens
+- Pricing listed
 
 Compare
 
@@ -156,6 +196,7 @@ AnthropicText Generation Claude Opus 4.6 is Anthropic's flagship language model 
 
 - Context: 1M tokens
 - Maximum output: 128K tokens
+- Pricing listed
 
 Compare
 
@@ -165,6 +206,7 @@ AnthropicText Generation Claude Opus 4.7 is Anthropic's most capable generally a
 
 - Context: 1M tokens
 - Maximum output: 128K tokens
+- Pricing listed
 
 Compare
 
@@ -174,6 +216,7 @@ AnthropicText Generation Claude Opus 4.8 is Anthropic's most capable generally a
 
 - Context: 1M tokens
 - Maximum output: 128K tokens
+- Pricing listed
 
 Compare
 
@@ -183,6 +226,7 @@ AnthropicText Generation Claude Opus 5 is Anthropic's model for complex agentic 
 
 - Context: 1M tokens
 - Maximum output: 128K tokens
+- Pricing listed
 
 Compare
 
@@ -192,6 +236,7 @@ AnthropicText Generation Claude Sonnet 4.5 is the best coding model to date, wit
 
 - Context: 200K tokens
 - Maximum output: 8.2K tokens
+- Pricing listed
 
 Compare
 
@@ -201,6 +246,7 @@ AnthropicText Generation Claude Sonnet 4.6 is Anthropic's latest balanced model 
 
 - Context: 200K tokens
 - Maximum output: 128K tokens
+- Pricing listed
 
 Compare
 
@@ -210,6 +256,7 @@ AnthropicText Generation Claude Sonnet 5 is Anthropic's most agentic Sonnet mode
 
 - Context: 1M tokens
 - Maximum output: 128K tokens
+- Pricing listed
 
 Compare
 
@@ -217,11 +264,15 @@ Compare
 
 AssemblyAIAutomatic Speech Recognition AssemblyAI's Universal 3 Pro speech recognition model for high-accuracy transcription. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/)
 
+- Pricing listed
+
 Compare
 
 [![AssemblyAI logo](https://developers.cloudflare.com/_astro/assemblyai.DKrad3Z3.svg)<h3>universal-3.5-pro</h3>
 
 AssemblyAIAutomatic Speech Recognition AssemblyAI's Universal-3.5 Pro speech recognition model for fast, high-accuracy transcription. - Third-party](https://developers.cloudflare.com/ai/models/assemblyai/universal-3.5-pro/)
+
+- Pricing listed
 
 Compare
 
@@ -229,11 +280,15 @@ Compare
 
 Black Forest LabsText-to-Image FLUX.1 Kontext \[max\] is Black Forest Labs' highest-quality Kontext model for text-to-image generation and context-aware image editing. - Third-party](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-1-kontext-max/)
 
+- Pricing listed
+
 Compare
 
 [![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg)<h3>flux-1-kontext-pro</h3>
 
 Black Forest LabsText-to-Image FLUX.1 Kontext \[pro\] creates and edits images from text prompts with strong character and style consistency. - Third-party](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-1-kontext-pro/)
+
+- Pricing listed
 
 Compare
 
@@ -241,11 +296,15 @@ Compare
 
 Black Forest LabsText-to-Image FLUX.2 \[flex\] is Black Forest Labs' fine-grained control variant of FLUX.2 — exposes tunable inference steps, guidance, and prompt upsampling for typography-heavy and production workflows. - Third-party](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-flex/)
 
+- Pricing listed
+
 Compare
 
 [![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg)<h3>flux-2-max</h3>
 
 Black Forest LabsText-to-Image FLUX.2 \[max\] is Black Forest Labs' highest-quality image model — top editing consistency, strongest prompt following, and grounding search for visualizations of real-time information. - Third-party](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-max/)
+
+- Pricing listed
 
 Compare
 
@@ -253,11 +312,15 @@ Compare
 
 Black Forest LabsText-to-Image FLUX.2 \[pro\] Preview is Black Forest Labs' recommended default for production image generation and editing — tracks the latest \[pro\] weights with strong multi-reference support. - Third-party](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-pro-preview/)
 
+- Pricing listed
+
 Compare
 
 [![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg)<h3>flux-3-video</h3>
 
 Black Forest LabsText-to-Video FLUX 3 Video is Black Forest Labs' video generation model. It generates video from a text prompt (t2v), animates one or more reference images (i2v), or continues an existing clip (v2v), with synchronized audio, up to fhd resolution, and 5-20 second durations. - Third-party](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-3-video/)
+
+- Pricing listed
 
 Compare
 
@@ -265,11 +328,15 @@ Compare
 
 Black Forest Labsvideo-to-video FLUX Video Upscale increases video resolution with a precise mode for source-faithful results and a creative mode for stronger detail enhancement. It accepts clips up to 20 seconds and preserves audio. - Third-party](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-video-upscale/)
 
+- Pricing listed
+
 Compare
 
 [![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)<h3>seedance-2.0</h3>
 
 ByteDanceText-to-Video ByteDance's next-generation video model with a unified multimodal architecture. Generates high-quality video with synchronized audio from text, images, video clips, and audio inputs. Supports multimodal references (up to 9 images, 3 videos, 3 audio files), native audio generation, video editing, video extension, intelligent duration, and adaptive aspect ratio. - Third-party](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0/)
+
+- Pricing listed
 
 Compare
 
@@ -277,11 +344,15 @@ Compare
 
 ByteDanceText-to-Video Faster variant of ByteDance's Seedance 2.0 video model. Trades some quality for speed while sharing the same multimodal architecture. Supports text-to-video, image-to-video, native audio generation, multimodal references (images, videos, audio), video editing, and video extension. - Third-party](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/)
 
+- Pricing listed
+
 Compare
 
 [![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)<h3>seedance-2.0-mini</h3>
 
 ByteDanceText-to-Video ByteDance's compact, cost-efficient video generation model from the Seedance 2.0 family. Supports text-to-video, image-to-video, reference video, and reference audio for background music. Ideal for high-volume workloads where speed and cost matter. - Third-party](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-mini/)
+
+- Pricing listed
 
 Compare
 
@@ -289,11 +360,15 @@ Compare
 
 ByteDanceText-to-Video ByteDance's next-generation video model with a unified multimodal reference-to-video architecture. Generates video from text, up to 30 reference images, 10 reference videos, and 10 reference audio clips — including audio-only input with no image or video required. Supports first/last-frame image-to-video, video editing, video extension, intelligent duration (including automatic selection), and adaptive aspect ratio. - Third-party](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.5/)
 
+- Pricing listed
+
 Compare
 
 [![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)<h3>seedream-4.0</h3>
 
 ByteDanceText-to-Image Seedream 4.0 is ByteDance's image creation model that combines text-to-image generation and image editing into a single architecture, offering fast, high-resolution output up to 4K. - Third-party](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/)
+
+- Pricing listed
 
 Compare
 
@@ -301,17 +376,23 @@ Compare
 
 ByteDanceText-to-Image Seedream 4.5 builds on 4.0 with multi-reference image support, batch generation, and sequential image generation. - Third-party](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.5/)
 
+- Pricing listed
+
 Compare
 
 [![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)<h3>seedream-5-lite</h3>
 
 ByteDanceText-to-Image Seedream 5 Lite is a lighter, faster version of the Seedream 5 family with multi-reference and batch generation support. - Third-party](https://developers.cloudflare.com/ai/models/bytedance/seedream-5-lite/)
 
+- Pricing listed
+
 Compare
 
 [![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)<h3>seedream-5-pro</h3>
 
 ByteDanceText-to-Image Seedream 5 Pro is ByteDance's high-quality image generation and editing model with text prompts, up to 10 reference images, and 1K, 2K, or explicit pixel-size output controls. - Third-party](https://developers.cloudflare.com/ai/models/bytedance/seedream-5-pro/)
+
+- Pricing listed
 
 Compare
 
@@ -320,6 +401,7 @@ Compare
 deepseekText Generation DeepSeek V4 Pro is a high-capability reasoning model from DeepSeek, served via Fireworks infrastructure for production-grade inference. - Third-party](https://developers.cloudflare.com/ai/models/deepseek/deepseek-v4-pro/)
 
 - Context: 131.1K tokens
+- Pricing listed
 
 Compare
 
@@ -327,11 +409,15 @@ Compare
 
 ElevenLabsText-to-Speech ElevenLabs' low-latency Flash v2.5 text-to-speech model for fast multilingual speech generation. - Third-party](https://developers.cloudflare.com/ai/models/elevenlabs/eleven-flash-v2-5/)
 
+- Pricing listed
+
 Compare
 
 [![ElevenLabs logo](https://developers.cloudflare.com/_astro/elevenlabs.0RXw7U95.svg)<h3>eleven-multilingual-v2</h3>
 
 ElevenLabsText-to-Speech ElevenLabs' multilingual text-to-speech model for generating natural speech across many languages with ElevenLabs voices. - Third-party](https://developers.cloudflare.com/ai/models/elevenlabs/eleven-multilingual-v2/)
+
+- Pricing listed
 
 Compare
 
@@ -339,17 +425,23 @@ Compare
 
 ElevenLabsText-to-Speech ElevenLabs' Turbo v2.5 text-to-speech model balancing high-quality voice generation with low latency across 32 languages. - Third-party](https://developers.cloudflare.com/ai/models/elevenlabs/eleven-turbo-v2-5/)
 
+- Pricing listed
+
 Compare
 
 [![ElevenLabs logo](https://developers.cloudflare.com/_astro/elevenlabs.0RXw7U95.svg)<h3>eleven-v3</h3>
 
 ElevenLabsText-to-Speech ElevenLabs' latest text-to-speech model for highly expressive, natural speech generation with advanced voice control. - Third-party](https://developers.cloudflare.com/ai/models/elevenlabs/eleven-v3/)
 
+- Pricing listed
+
 Compare
 
 [![ElevenLabs logo](https://developers.cloudflare.com/_astro/elevenlabs.0RXw7U95.svg)<h3>music-v2</h3>
 
 ElevenLabsMusic Generation ElevenLabs Music v2 composes songs and instrumental tracks from a prompt or detailed composition plan. - Third-party](https://developers.cloudflare.com/ai/models/elevenlabs/music-v2/)
+
+- Pricing listed
 
 Compare
 
@@ -359,6 +451,7 @@ GoogleText Generation Google's fast multimodal Gemini 2.5 model with strong reas
 
 - Context: 1M tokens
 - Maximum output: 8.2K tokens
+- Pricing listed
 
 Compare
 
@@ -368,6 +461,7 @@ GoogleText Generation Google's lightest and most cost-efficient Gemini 2.5 model
 
 - Context: 1M tokens
 - Maximum output: 8.2K tokens
+- Pricing listed
 
 Compare
 
@@ -377,6 +471,7 @@ GoogleText Generation Google's most capable Gemini 2.5 model with strong reasoni
 
 - Context: 1M tokens
 - Maximum output: 65.5K tokens
+- Pricing listed
 
 Compare
 
@@ -386,6 +481,7 @@ GoogleText Generation Gemini 3 Flash is Google's fast multimodal model with fron
 
 - Context: 1M tokens
 - Maximum output: 8.2K tokens
+- Pricing listed
 
 Compare
 
@@ -395,12 +491,15 @@ GoogleText Generation Google's lightest and most cost-efficient Gemini model for
 
 - Context: 1M tokens
 - Maximum output: 8.2K tokens
+- Pricing listed
 
 Compare
 
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemini-3.1-flash-tts</h3>
 
 GoogleText-to-Speech - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/)
+
+- Pricing listed
 
 Compare
 
@@ -410,6 +509,7 @@ GoogleText Generation Google's most intelligent Gemini model with improved reaso
 
 - Context: 1M tokens
 - Maximum output: 65.5K tokens
+- Pricing listed
 
 Compare
 
@@ -419,6 +519,7 @@ GoogleText Generation Gemini 3.5 Flash is Google's fast multimodal model with fr
 
 - Context: 1M tokens
 - Maximum output: 65.5K tokens
+- Pricing listed
 
 Compare
 
@@ -428,6 +529,7 @@ GoogleText Generation Gemini 3.5 Flash-Lite is a low-latency, cost-effective mul
 
 - Context: 1M tokens
 - Maximum output: 65.5K tokens
+- Pricing listed
 
 Compare
 
@@ -437,6 +539,7 @@ GoogleText Generation Gemini 3.6 Flash provides sustained frontier-level intelli
 
 - Context: 1M tokens
 - Maximum output: 65.5K tokens
+- Pricing listed
 
 Compare
 
@@ -446,6 +549,33 @@ GoogleText Generation Gemini 3.7 Flash is a highly capable, natively multimodal 
 
 - Context: 1M tokens
 - Maximum output: 65.5K tokens
+- Pricing listed
+
+Compare
+
+[![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemini-3.8-flash</h3>
+
+GoogleText Generation Our most intelligent Flash model, engineered for long-horizon software engineering, autonomous agents, and complex enterprise workflows. - Third-party](https://developers.cloudflare.com/ai/models/google/gemini-3.8-flash/)
+
+- Context: 1M tokens
+- Maximum output: 65.5K tokens
+- Pricing listed
+
+Compare
+
+[![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemini-omni-1.1-flash</h3>
+
+GoogleText-to-Video High-performance multimodal video generation and editing model with conversational controls and generated audio. - Third-party](https://developers.cloudflare.com/ai/models/google/gemini-omni-1.1-flash/)
+
+- Pricing listed
+
+Compare
+
+[![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemini-omni-flash</h3>
+
+GoogleText-to-Video Preview high-performance multimodal video generation and editing model with conversational controls and generated audio. - Third-party](https://developers.cloudflare.com/ai/models/google/gemini-omni-flash/)
+
+- Pricing listed
 
 Compare
 
@@ -453,11 +583,15 @@ Compare
 
 GoogleText-to-Image Google's fast image generation model producing high-quality images from text prompts. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/google/nano-banana/)
 
+- Pricing listed
+
 Compare
 
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>nano-banana-2</h3>
 
 GoogleText-to-Image Google's second-generation image generation model with improved quality and speed. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/google/nano-banana-2/)
+
+- Pricing listed
 
 Compare
 
@@ -466,6 +600,7 @@ Compare
 GoogleText-to-Image Google's fastest Gemini image generation model for rapid image creation and iteration. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/google/nano-banana-2-lite/)
 
 - Context: 65.5K tokens
+- Pricing listed
 
 Compare
 
@@ -473,11 +608,15 @@ Compare
 
 GoogleText-to-Image Google's higher-quality image generation model with improved detail and prompt adherence. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/google/nano-banana-pro/)
 
+- Pricing listed
+
 Compare
 
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>veo-3.1</h3>
 
 GoogleText-to-Video Google's latest video generation model with improved quality, motion, and audio generation. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/google/veo-3.1/)
+
+- Pricing listed
 
 Compare
 
@@ -485,11 +624,15 @@ Compare
 
 GoogleText-to-Video A faster version of Veo 3.1 optimized for lower latency while maintaining high-quality video and audio output. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/google/veo-3.1-fast/)
 
+- Pricing listed
+
 Compare
 
 [![Inworld logo](https://developers.cloudflare.com/_astro/inworld.BDwMAXI2.svg)<h3>tts-1.5-max</h3>
 
 InworldText-to-Speech Highest-quality text-to-speech with under 200ms latency, emotion control, and 15-language support. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/)
+
+- Pricing listed
 
 Compare
 
@@ -497,11 +640,15 @@ Compare
 
 InworldText-to-Speech Ultra-fast, cost-efficient text-to-speech with approximately 120ms latency and 15-language support. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-mini/)
 
+- Pricing listed
+
 Compare
 
 [![Inworld logo](https://developers.cloudflare.com/_astro/inworld.BDwMAXI2.svg)<h3>tts-2</h3>
 
 InworldText-to-Speech Inworld's most powerful and expressive text-to-speech model. Builds on TTS 1.5 with rich expressive speech, real-time latency, natural language steering (e.g. \[whisper\], \[say excitedly\]), and stronger multilingual support across 15 production languages plus 90+ experimental languages. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/inworld/tts-2/)
+
+- Pricing listed
 
 Compare
 
@@ -509,11 +656,15 @@ Compare
 
 kreaText-to-Image More than 2x the size of Medium, with softer post-training. Outputs are rawer, more textured, and more flexible — at its best, Large produces results Medium can't match. Strongest on photorealism, raw looks (motion blur, grain, low dynamic range), and expressive and artistic styles. - Third-party](https://developers.cloudflare.com/ai/models/krea/krea-2-large/)
 
+- Pricing listed
+
 Compare
 
 [k<h3>krea-2-medium</h3>
 
 kreaText-to-Image Smaller, faster, more cost-efficient. Extensive post-training makes outputs especially stable and consistent across generations. Strongest on illustration, anime, painting, and other expressive or artistic styles. - Third-party](https://developers.cloudflare.com/ai/models/krea/krea-2-medium/)
+
+- Pricing listed
 
 Compare
 
@@ -521,11 +672,15 @@ Compare
 
 kreaText-to-Image The fastest Krea 2 model, built for low-cost iteration on expressive illustrations, style-driven concepts, and rapid visual exploration. Keeps the Krea 2 style system and expressive visual range but uses a distilled sampling schedule so you can move through ideas much faster. Especially useful for expressive illustration, graphic styles, typography experiments, and quick campaign or concept directions. - Third-party](https://developers.cloudflare.com/ai/models/krea/krea-2-medium-turbo/)
 
+- Pricing listed
+
 Compare
 
 [l<h3>ltx-2-5-fast</h3>
 
 lightricksText-to-Video Lightricks LTX-2.5 Fast is a fast video generation model for text-to-video and image-to-video workflows, with synchronized audio, configurable duration, resolution, and frame rate. - Third-party](https://developers.cloudflare.com/ai/models/lightricks/ltx-2-5-fast/)
+
+- Pricing listed
 
 Compare
 
@@ -533,11 +688,15 @@ Compare
 
 MiniMaxText-to-Video A high-fidelity video generation model optimized for realistic human motion, cinematic VFX, expressive characters, and strong prompt and style adherence across text-to-video and image-to-video workflows. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3/)
 
+- Pricing listed
+
 Compare
 
 [![MiniMax logo](https://developers.cloudflare.com/_astro/minimax.B0Y99aoe.svg)<h3>hailuo-2.3-fast</h3>
 
 MiniMaxText-to-Video A lower-latency version of Hailuo 2.3 that preserves core motion quality, visual consistency, and stylization while enabling faster iteration. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/)
+
+- Pricing listed
 
 Compare
 
@@ -547,6 +706,7 @@ MiniMaxText Generation MiniMax's M2.7 language model with multilingual capabilit
 
 - Context: 128K tokens
 - Maximum output: 4.1K tokens
+- Pricing listed
 
 Compare
 
@@ -556,6 +716,7 @@ MiniMaxText Generation MiniMax's M3 language model with frontier coding and agen
 
 - Context: 1M tokens
 - Maximum output: 4.1K tokens
+- Pricing listed
 
 Compare
 
@@ -563,17 +724,23 @@ Compare
 
 MiniMaxMusic Generation MiniMax's music generation model that creates full-length songs with vocals from text prompts and lyrics, or instrumental tracks. Supports BPM/key control and auto-generated lyrics. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/minimax/music-2.6/)
 
+- Pricing listed
+
 Compare
 
 [![MiniMax logo](https://developers.cloudflare.com/_astro/minimax.B0Y99aoe.svg)<h3>speech-2.8-hd</h3>
 
 MiniMaxText-to-Speech MiniMax Speech 2.8 HD focuses on studio-grade audio generation with emotion control, multilingual support (40+ languages), and voice cloning. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/minimax/speech-2.8-hd/)
 
+- Pricing listed
+
 Compare
 
 [![MiniMax logo](https://developers.cloudflare.com/_astro/minimax.B0Y99aoe.svg)<h3>speech-2.8-turbo</h3>
 
 MiniMaxText-to-Speech MiniMax Speech 2.8 Turbo turns text into natural, expressive speech with voice cloning, emotion control, and 40+ language support at faster speeds. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/minimax/speech-2.8-turbo/)
+
+- Pricing listed
 
 Compare
 
@@ -583,6 +750,7 @@ Moonshot AIText Generation Kimi K3 is Moonshot's flagship 2.8 trillion-parameter
 
 - Context: 1M tokens
 - Maximum output: 1M tokens
+- Pricing listed
 
 Compare
 
@@ -592,6 +760,7 @@ OpenAIText Generation OpenAI's flagship GPT model for complex tasks with a milli
 
 - Context: 1M tokens
 - Maximum output: 32.8K tokens
+- Pricing listed
 
 Compare
 
@@ -601,6 +770,7 @@ OpenAIText Generation Fast, affordable version of GPT-4.1 with a million-token c
 
 - Context: 1M tokens
 - Maximum output: 32.8K tokens
+- Pricing listed
 
 Compare
 
@@ -610,6 +780,7 @@ OpenAIText Generation GPT-4.1 Nano is OpenAI’s smallest and cheapest GPT-4.1 v
 
 - Context: 1M tokens
 - Maximum output: 32.8K tokens
+- Pricing listed
 
 Compare
 
@@ -619,6 +790,7 @@ OpenAIText Generation GPT-4o is OpenAI’s multimodal flagship, accepting text a
 
 - Context: 128K tokens
 - Maximum output: 16.4K tokens
+- Pricing listed
 
 Compare
 
@@ -628,12 +800,15 @@ OpenAIText Generation GPT-4o Mini is the lightweight, low-cost variant of GPT-4o
 
 - Context: 128K tokens
 - Maximum output: 16.4K tokens
+- Pricing listed
 
 Compare
 
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-4o-transcribe</h3>
 
 OpenAIAutomatic Speech Recognition A speech-to-text model that uses GPT-4o to transcribe audio with improved word error rate and better language recognition compared to original Whisper models. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/openai/gpt-4o-transcribe/)
+
+- Pricing listed
 
 Compare
 
@@ -643,6 +818,7 @@ OpenAIText Generation OpenAI's model excelling at coding, writing, and reasoning
 
 - Context: 128K tokens
 - Maximum output: 16.4K tokens
+- Pricing listed
 
 Compare
 
@@ -652,6 +828,7 @@ OpenAIText Generation GPT-5 Mini is the lightweight, low-cost variant of GPT-5, 
 
 - Context: 128K tokens
 - Maximum output: 16.4K tokens
+- Pricing listed
 
 Compare
 
@@ -661,6 +838,7 @@ OpenAIText Generation GPT-5 Nano is OpenAI’s smallest GPT-5 variant, optimized
 
 - Context: 128K tokens
 - Maximum output: 16.4K tokens
+- Pricing listed
 
 Compare
 
@@ -670,6 +848,7 @@ OpenAIText Generation GPT-5.1 is OpenAI’s incremental improvement over GPT-5, 
 
 - Context: 128K tokens
 - Maximum output: 16.4K tokens
+- Pricing listed
 
 Compare
 
@@ -679,6 +858,7 @@ OpenAIText Generation GPT-5.4 is OpenAI's flagship model with strong coding, rea
 
 - Context: 1M tokens
 - Maximum output: 16.4K tokens
+- Pricing listed
 
 Compare
 
@@ -688,6 +868,7 @@ OpenAIText Generation GPT-5.4 mini is a smaller, faster, and more cost-efficient
 
 - Context: 128K tokens
 - Maximum output: 16.4K tokens
+- Pricing listed
 
 Compare
 
@@ -697,6 +878,7 @@ OpenAIText Generation GPT-5.4 nano is OpenAI's smallest and fastest model, optim
 
 - Context: 128K tokens
 - Maximum output: 16.4K tokens
+- Pricing listed
 
 Compare
 
@@ -706,6 +888,7 @@ OpenAIText Generation GPT-5.4 pro uses OpenAI's Responses API with built-in tool
 
 - Context: 1M tokens
 - Maximum output: 16.4K tokens
+- Pricing listed
 
 Compare
 
@@ -715,6 +898,7 @@ OpenAIText Generation GPT-5.5 is OpenAI's flagship model with strong coding, rea
 
 - Context: 1M tokens
 - Maximum output: 16.4K tokens
+- Pricing listed
 
 Compare
 
@@ -724,6 +908,7 @@ OpenAIText Generation GPT-5.5 pro uses OpenAI's Responses API with built-in tool
 
 - Context: 1M tokens
 - Maximum output: 16.4K tokens
+- Pricing listed
 
 Compare
 
@@ -733,6 +918,7 @@ OpenAIText Generation GPT-5.6 Luna is an OpenAI GPT-5.6 model optimized for cost
 
 - Context: 1.1M tokens
 - Maximum output: 128K tokens
+- Pricing listed
 
 Compare
 
@@ -742,6 +928,7 @@ OpenAIText Generation GPT-5.6 Sol is OpenAI's frontier GPT-5.6 model for complex
 
 - Context: 1.1M tokens
 - Maximum output: 128K tokens
+- Pricing listed
 
 Compare
 
@@ -751,6 +938,7 @@ OpenAIText Generation GPT-5.6 Terra is an OpenAI GPT-5.6 model that balances int
 
 - Context: 1.1M tokens
 - Maximum output: 128K tokens
+- Pricing listed
 
 Compare
 
@@ -758,11 +946,31 @@ Compare
 
 OpenAIText-to-Image OpenAI's image generation model that creates and edits images from text prompts, supporting multiple quality levels and output sizes. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/openai/gpt-image-1.5/)
 
+- Pricing listed
+
 Compare
 
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-image-2</h3>
 
 OpenAIText-to-Image OpenAI's next-generation image model that creates and edits images from text prompts, with support for multiple quality levels, sizes, and output formats. Note: transparent backgrounds are not supported — use openai/gpt-image-1.5 for transparent PNGs. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/openai/gpt-image-2/)
+
+- Pricing listed
+
+Compare
+
+[![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-image-2.5-flare</h3>
+
+OpenAIText-to-Image OpenAI's fastest high-quality everyday image generation model. It accepts text and image inputs and produces images with low, medium, high, xhigh, max, and auto quality settings. - Third-party](https://developers.cloudflare.com/ai/models/openai/gpt-image-2.5-flare/)
+
+- Pricing listed
+
+Compare
+
+[![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-image-2.5-sunburst</h3>
+
+OpenAIText-to-Image OpenAI's most capable image generation and editing model. It accepts text and image inputs and produces images with low, medium, high, xhigh, max, and auto quality settings. - Third-party](https://developers.cloudflare.com/ai/models/openai/gpt-image-2.5-sunburst/)
+
+- Pricing listed
 
 Compare
 
@@ -772,6 +980,7 @@ OpenAIText Generation o3 is OpenAI’s general-purpose reasoning model, balancin
 
 - Context: 200K tokens
 - Maximum output: 100K tokens
+- Pricing listed
 
 Compare
 
@@ -781,6 +990,7 @@ OpenAIText Generation o3-mini is the lightweight, low-cost reasoning variant of 
 
 - Context: 200K tokens
 - Maximum output: 100K tokens
+- Pricing listed
 
 Compare
 
@@ -790,6 +1000,7 @@ OpenAIText Generation OpenAI's fast, lightweight reasoning model optimized for m
 
 - Context: 200K tokens
 - Maximum output: 100K tokens
+- Pricing listed
 
 Compare
 
@@ -797,11 +1008,15 @@ Compare
 
 OpenAIText-to-Speech OpenAI's text-to-speech model optimized for real-time use with low latency. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/openai/tts-1/)
 
+- Pricing listed
+
 Compare
 
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>tts-1-hd</h3>
 
 OpenAIText-to-Speech OpenAI's high-definition text-to-speech model producing higher quality audio output. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/)
+
+- Pricing listed
 
 Compare
 
@@ -809,11 +1024,15 @@ Compare
 
 PixVerseText-to-Video Pixverse v5.6 is a video generation model supporting text-to-video and image-to-video with audio generation, customizable aspect ratios, and up to 1080p output. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/pixverse/v5.6/)
 
+- Pricing listed
+
 Compare
 
 [![PixVerse logo](https://developers.cloudflare.com/_astro/pixverse.DSyGEAYR.svg)<h3>v6</h3>
 
 PixVerseText-to-Video Pixverse v6 is the latest Pixverse video model with support for up to 15-second videos, customizable duration from 1 to 15 seconds, and audio generation. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/pixverse/v6/)
+
+- Pricing listed
 
 Compare
 
@@ -821,11 +1040,15 @@ Compare
 
 Pruna AIText-to-Image Pruna's P-Image is an ultra-fast text-to-image model with automatic prompt enhancement and 2-stage refinement, combining exceptional speed with high-quality output and flexible aspect ratios. - Third-party](https://developers.cloudflare.com/ai/models/pruna/p-image/)
 
+- Pricing listed
+
 Compare
 
 [![Pruna AI logo](https://developers.cloudflare.com/_astro/prunaai.Bv7D31UF.svg)<h3>p-image-edit</h3>
 
 Pruna AIImage-to-Image Pruna's P-Image-Edit edits and composes 1-5 reference images with text instructions. It supports complex compositions, style transfers, and targeted edits with flexible output aspect ratios. - Third-party](https://developers.cloudflare.com/ai/models/pruna/p-image-edit/)
+
+- Pricing listed
 
 Compare
 
@@ -833,11 +1056,15 @@ Compare
 
 Pruna AIImage-to-Image Pruna's P-Image Try-On virtually fits one or more garments onto a person's photo. Provide a photo of a person plus garment reference images and the model realistically dresses the person in the provided garments. - Third-party](https://developers.cloudflare.com/ai/models/pruna/p-image-try-on/)
 
+- Pricing listed
+
 Compare
 
 [![Pruna AI logo](https://developers.cloudflare.com/_astro/prunaai.Bv7D31UF.svg)<h3>p-image-upscale</h3>
 
 Pruna AIImage-to-Image Pruna's P-Image-Upscale increases image resolution using AI, targeting 1-128 megapixels with optional detail and realism enhancement for sharper, cleaner results. - Third-party](https://developers.cloudflare.com/ai/models/pruna/p-image-upscale/)
+
+- Pricing listed
 
 Compare
 
@@ -845,11 +1072,15 @@ Compare
 
 Pruna AIText-to-Video Pruna's P-Video is a premium video generation model supporting text-to-video, image-to-video, and audio-conditioned generation up to 1080p at 24 or 48 fps, with configurable duration up to 20 seconds. - Third-party](https://developers.cloudflare.com/ai/models/pruna/p-video/)
 
+- Pricing listed
+
 Compare
 
 [![Pruna AI logo](https://developers.cloudflare.com/_astro/prunaai.Bv7D31UF.svg)<h3>p-video-animate</h3>
 
 Pruna AIImage-to-Video Pruna's P-Video-Animate takes a source video and a subject reference image, then animates the referenced subject using the motion and audio from the source video. - Third-party](https://developers.cloudflare.com/ai/models/pruna/p-video-animate/)
+
+- Pricing listed
 
 Compare
 
@@ -857,11 +1088,15 @@ Compare
 
 Pruna AIImage-to-Video Pruna's P-Video-Avatar generates talking-head videos from a single portrait image driven by a text script or audio file, with multiple voices, languages, and output resolutions. - Third-party](https://developers.cloudflare.com/ai/models/pruna/p-video-avatar/)
 
+- Pricing listed
+
 Compare
 
 [![Pruna AI logo](https://developers.cloudflare.com/_astro/prunaai.Bv7D31UF.svg)<h3>p-video-replace</h3>
 
 Pruna AIImage-to-Video Pruna's P-Video-Replace takes a source video and one or more identity reference images, then places the referenced person or people into the video while preserving the source motion and audio. - Third-party](https://developers.cloudflare.com/ai/models/pruna/p-video-replace/)
+
+- Pricing listed
 
 Compare
 
@@ -869,11 +1104,15 @@ Compare
 
 RecraftText-to-Image Recraft V3 is the previous-generation text-to-image model from Recraft, well-suited to design-quality compositions, brand-aware imagery, and accurate text rendering. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/recraft/recraftv3/)
 
+- Pricing listed
+
 Compare
 
 [![Recraft logo](https://developers.cloudflare.com/_astro/recraft.BhhnJczi.svg)<h3>recraftv4</h3>
 
 RecraftText-to-Image Recraft V4 generates art-directed images with strong composition, accurate text rendering, and design taste built in. Fast and cost-efficient at standard resolution. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/recraft/recraftv4/)
+
+- Pricing listed
 
 Compare
 
@@ -881,11 +1120,15 @@ Compare
 
 RecraftText-to-Image Recraft V4.1 generates art-directed images tuned for high aesthetics, with strong composition, accurate text rendering, and refined design taste. Fast and cost-efficient at standard resolution. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1/)
 
+- Pricing listed
+
 Compare
 
 [![Recraft logo](https://developers.cloudflare.com/_astro/recraft.BhhnJczi.svg)<h3>recraftv4-1-pro</h3>
 
 RecraftText-to-Image Recraft V4.1 Pro generates high-resolution, art-directed images at 2048px+ tuned for high aesthetics, with strong composition, text rendering, and refined design taste. Built for print and production work. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-pro/)
+
+- Pricing listed
 
 Compare
 
@@ -893,11 +1136,15 @@ Compare
 
 RecraftText-to-Image Generate detailed, high-resolution SVG vector graphics from text prompts with high aesthetic quality, fine geometry, scalable to any size for print and design work. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-pro-vector/)
 
+- Pricing listed
+
 Compare
 
 [![Recraft logo](https://developers.cloudflare.com/_astro/recraft.BhhnJczi.svg)<h3>recraftv4-1-utility</h3>
 
 RecraftText-to-Image Recraft V4.1 Utility is a general-purpose text-to-image model balancing quality and flexibility for a wide range of everyday use cases at standard resolution. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility/)
+
+- Pricing listed
 
 Compare
 
@@ -905,11 +1152,15 @@ Compare
 
 RecraftText-to-Image Recraft V4.1 Utility Pro is a general-purpose text-to-image model producing high-resolution 2048px+ output for a wide range of production and print use cases. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility-pro/)
 
+- Pricing listed
+
 Compare
 
 [![Recraft logo](https://developers.cloudflare.com/_astro/recraft.BhhnJczi.svg)<h3>recraftv4-1-utility-pro-vector</h3>
 
 RecraftText-to-Image Generate detailed, high-resolution SVG vector graphics from text prompts with a general-purpose model, scalable to any size for print and large-scale design work. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility-pro-vector/)
+
+- Pricing listed
 
 Compare
 
@@ -917,11 +1168,15 @@ Compare
 
 RecraftText-to-Image Generate production-ready SVG vector graphics from text prompts with a general-purpose model suited for a wide range of design and illustration tasks. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility-vector/)
 
+- Pricing listed
+
 Compare
 
 [![Recraft logo](https://developers.cloudflare.com/_astro/recraft.BhhnJczi.svg)<h3>recraftv4-1-vector</h3>
 
 RecraftText-to-Image Generate production-ready SVG vector graphics from text prompts with high aesthetic quality, clean geometry, structured layers, and editable paths. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-vector/)
+
+- Pricing listed
 
 Compare
 
@@ -929,11 +1184,15 @@ Compare
 
 RecraftText-to-Image Recraft V4 Pro generates high-resolution, art-directed images at 2048px+ with strong composition, text rendering, and design taste. Built for print and production work. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/recraft/recraftv4-pro/)
 
+- Pricing listed
+
 Compare
 
 [![Recraft logo](https://developers.cloudflare.com/_astro/recraft.BhhnJczi.svg)<h3>recraftv4-pro-vector</h3>
 
 RecraftText-to-Image Generate detailed, production-ready SVG vector graphics from text prompts with fine geometry, scalable to any size for print and design work. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/recraft/recraftv4-pro-vector/)
+
+- Pricing listed
 
 Compare
 
@@ -941,17 +1200,23 @@ Compare
 
 RecraftText-to-Image Generate production-ready SVG vector graphics from text prompts with clean geometry, structured layers, and editable paths. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/recraft/recraftv4-vector/)
 
+- Pricing listed
+
 Compare
 
 [![RunwayML logo](https://developers.cloudflare.com/_astro/runway.Cq8Cjov4.svg)<h3>aleph-2</h3>
 
 RunwayMLText-to-Video RunwayML's video editing model. Edit one frame to update your whole video, make changes across multiple shots, and work with up to 30 seconds of video. Supports keyframe-guided editing for precise control over specific moments in the clip. - Third-party](https://developers.cloudflare.com/ai/models/runwayml/aleph-2/)
 
+- Pricing listed
+
 Compare
 
 [![RunwayML logo](https://developers.cloudflare.com/_astro/runway.Cq8Cjov4.svg)<h3>gen-4.5</h3>
 
 RunwayMLText-to-Video RunwayML's video generation model supporting both text-to-video and image-to-video with customizable duration, aspect ratio, and content moderation controls. - Third-party](https://developers.cloudflare.com/ai/models/runwayml/gen-4.5/)
+
+- Pricing listed
 
 Compare
 
@@ -960,6 +1225,7 @@ Compare
 thinkingmachinesText Generation Inkling is Thinking Machines' open-weights hybrid reasoning model, built on a mixture-of-experts architecture. It reasons by default, exposing its chain-of-thought as leading thinking content blocks, with reasoning effort tunable via a Tinker-specific output\_config.effort parameter. Available through Tinker's beta Anthropic Messages-compatible endpoint alongside tool use, streaming, and multi-turn conversations. Currently intended for low-traffic testing and internal use rather than high-throughput production deployments; prompt caching, citations, and audio input are not supported through this endpoint. - Third-party](https://developers.cloudflare.com/ai/models/thinkingmachines/inkling/)
 
 - Context: 64K tokens
+- Pricing listed
 
 Compare
 
@@ -968,6 +1234,7 @@ Compare
 thinkingmachinesText Generation The 256K-context variant of Inkling, Thinking Machines' open-weights hybrid reasoning MoE model. Same hybrid reasoning, tool-use, and streaming support as the base model, with an extended context window for longer conversations and documents. Currently intended for low-traffic testing and internal use rather than high-throughput production deployments. - Third-party](https://developers.cloudflare.com/ai/models/thinkingmachines/inkling-256k/)
 
 - Context: 262.1K tokens
+- Pricing listed
 
 Compare
 
@@ -975,11 +1242,15 @@ Compare
 
 ViduText-to-Video Vidu Q3 Pro is a high-quality video generation model supporting text-to-video, image-to-video, and start/end-frame-to-video workflows with audio and up to 16-second clips. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/vidu/q3-pro/)
 
+- Pricing listed
+
 Compare
 
 [![Vidu logo](https://developers.cloudflare.com/_astro/vidu.CcN5bM2x.svg)<h3>q3-turbo</h3>
 
 ViduText-to-Video Vidu Q3 Turbo is a faster version of Vidu Q3 optimized for lower latency video generation while maintaining audio support and up to 16-second clips. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/vidu/q3-turbo/)
+
+- Pricing listed
 
 Compare
 
@@ -988,6 +1259,7 @@ Compare
 xAIText Generation xAI's Grok 4.20 non-reasoning model. Skips the thinking trace for fast, single-pass responses while keeping the same training as the reasoning variant. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/xai/grok-4.20-0309-non-reasoning/)
 
 - Context: 2M tokens
+- Pricing listed
 
 Compare
 
@@ -996,6 +1268,7 @@ Compare
 xAIText Generation xAI's Grok 4.20 reasoning model. Uses extended thinking to work through complex problems, returning a reasoning trace alongside the final answer. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/xai/grok-4.20-0309-reasoning/)
 
 - Context: 2M tokens
+- Pricing listed
 
 Compare
 
@@ -1004,6 +1277,7 @@ Compare
 xAIText Generation xAI's Grok 4.20 multi-agent model with a 2M-token context window. Multiple agents collaborate in parallel to perform deep research tasks, with function calling, structured outputs, and reasoning capabilities. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-0309/)
 
 - Context: 2M tokens
+- Pricing listed
 
 Compare
 
@@ -1012,6 +1286,7 @@ Compare
 xAIText Generation xAI's Grok 4.3 model with a 1M-token context window and strong agentic tool calling with minimal hallucinations. Accepts text and image inputs, and supports function calling, structured outputs, and configurable reasoning effort (none, low, medium, high). - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/xai/grok-4.3/)
 
 - Context: 1M tokens
+- Pricing listed
 
 Compare
 
@@ -1020,6 +1295,7 @@ Compare
 xAIText Generation xAI's Grok 4.5, a frontier model built for coding, agentic tasks, and knowledge work. Accepts text and image inputs, and supports function calling, structured outputs, and configurable reasoning effort (low, medium, high). - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/xai/grok-4.5/)
 
 - Context: 500K tokens
+- Pricing listed
 
 Compare
 
@@ -1028,6 +1304,7 @@ Compare
 xAIText Generation xAI's Grok 4.6, a flagship reasoning model for coding, agentic tasks, and visual work. Accepts text and image inputs, and supports function calling and structured outputs. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/xai/grok-4.6/)
 
 - Context: 500K tokens
+- Pricing listed
 
 Compare
 
@@ -1035,11 +1312,15 @@ Compare
 
 xAIText-to-Image xAI's Grok Imagine image model. Generates and edits images from text and reference-image inputs with configurable aspect ratio and resolution. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image/)
 
+- Pricing listed
+
 Compare
 
 [![xAI logo](https://developers.cloudflare.com/_astro/xai.2Y8IhZGx.svg)<h3>grok-imagine-image-2.0</h3>
 
 xAIText-to-Image xAI's Grok Imagine Image 2.0 is a precise image generation and editing model for creative work, with strong instruction following, typography, layout, and reference-image preservation. - Third-party](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-2.0/)
+
+- Pricing listed
 
 Compare
 
@@ -1047,11 +1328,15 @@ Compare
 
 xAIText-to-Image xAI's higher-fidelity text-to-image model optimized for sharper details, more accurate compositions, and stronger text rendering. Supports image editing via reference images and masks. Trades speed for quality compared to grok-imagine-image. Default output at 2k resolution. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-quality/)
 
+- Pricing listed
+
 Compare
 
 [![xAI logo](https://developers.cloudflare.com/_astro/xai.2Y8IhZGx.svg)<h3>grok-imagine-video</h3>
 
 xAIText-to-Video xAI's video generation model. Generates, edits, and extends videos from text and image inputs with native synchronized audio including dialogue, sound effects, and music. Supports multiple creative modes (normal, fun, custom). - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video/)
+
+- Pricing listed
 
 Compare
 
@@ -1059,11 +1344,15 @@ Compare
 
 xAIImage-to-Video xAI's next-generation video generation model. Generates, edits, and extends videos from text and image inputs. Supports multiple aspect ratios and resolutions with improved quality over the previous generation. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video-1.5-preview/)
 
+- Pricing listed
+
 Compare
 
 [![xAI logo](https://developers.cloudflare.com/_astro/xai.2Y8IhZGx.svg)<h3>grok-stt</h3>
 
 xAIAutomatic Speech Recognition xAI's Grok speech-to-text model. Transcribes audio files into text across 25 languages with word-level timestamps, multichannel transcription, speaker diarization, and key-term biasing. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/xai/grok-stt/)
+
+- Pricing listed
 
 Compare
 
@@ -1071,11 +1360,15 @@ Compare
 
 xAIText-to-Speech xAI's Grok text-to-speech model. Generates high-fidelity spoken audio in 5 expressive voices (eve, ara, rex, sal, leo) with 20+ supported languages. Supports inline speech tags for laughter, whispers, and pauses. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/xai/grok-tts/)
 
+- Pricing listed
+
 Compare
 
 [![xAI logo](https://developers.cloudflare.com/_astro/xai.2Y8IhZGx.svg)<h3>grok-voice</h3>
 
 xAIwebsocket xAI's real-time voice conversation model with low-latency audio input and output streaming. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/xai/grok-voice/)
+
+- Pricing listed
 
 Compare
 
@@ -1098,14 +1391,6 @@ Compare
 [![Deepgram logo](https://developers.cloudflare.com/_astro/deepgram.BYzW8KfF.svg)<h3>aura-2-es</h3>
 
 DeepgramText-to-Speech Aura-2 is a context-aware text-to-speech (TTS) model that applies natural pacing, expressiveness, and fillers based on the context of the provided text. The quality of your text input directly impacts the naturalness of the audio output. - Cloudflare-hosted - Batch - Partner - Real-time](https://developers.cloudflare.com/ai/models/@cf/deepgram/aura-2-es/)
-
-- Pricing listed
-
-Compare
-
-[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>bart-large-cnn</h3>
-
-BetaMetaSummarization BART is a transformer encoder-encoder (seq2seq) model with a bidirectional (BERT-like) encoder and an autoregressive (GPT-like) decoder. You can use this model for text summarization. - Cloudflare-hosted - Deprecated](https://developers.cloudflare.com/ai/models/@cf/facebook/bart-large-cnn/)
 
 - Pricing listed
 
@@ -1164,7 +1449,7 @@ Compare
 
 [![DeepSeek logo](https://developers.cloudflare.com/_astro/deepseek.CkzAgvN6.svg)<h3>deepseek-v4-flash-0731</h3>
 
-DeepSeekText Generation DeepSeek-V4-Flash-0731 is the official release of DeepSeek-V4-Flash, superseding the preview version, with substantially enhanced agentic capabilities. - Cloudflare-hosted - Function calling - Reasoning](https://developers.cloudflare.com/ai/models/@cf/deepseek-ai/deepseek-v4-flash-0731/)
+DeepSeekText Generation DeepSeek-V4-Flash-0731 is the official release of DeepSeek-V4-Flash, superseding the preview version, with substantially enhanced agentic capabilities. - Cloudflare-hosted - Batch - Function calling - Reasoning](https://developers.cloudflare.com/ai/models/@cf/deepseek-ai/deepseek-v4-flash-0731/)
 
 - Context: 1.3M tokens
 - Pricing listed
@@ -1176,14 +1461,6 @@ Compare
 DeepSeekText Generation DeepSeek V4 Pro is a high-capability reasoning model from DeepSeek with a one million token context window, built for long-horizon agentic workflows and complex, multi-step problem-solving - Cloudflare-hosted - Function calling - Reasoning](https://developers.cloudflare.com/ai/models/@cf/deepseek-ai/deepseek-v4-pro-0813/)
 
 - Context: 1M tokens
-- Pricing listed
-
-Compare
-
-[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>detr-resnet-50</h3>
-
-BetaMetaObject Detection DEtection TRansformer (DETR) model trained end-to-end on COCO 2017 object detection (118k annotated images). - Cloudflare-hosted](https://developers.cloudflare.com/ai/models/@cf/facebook/detr-resnet-50/)
-
 - Pricing listed
 
 Compare
@@ -1204,7 +1481,7 @@ Compare
 
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>embeddinggemma-300m</h3>
 
-GoogleText Embeddings EmbeddingGemma is a 300M parameter, state-of-the-art for its size, open embedding model from Google, built from Gemma 3 (with T5Gemma initialization) and the same research and technology used to create Gemini models. EmbeddingGemma produces vector representations of text, making it well-suited for search and retrieval tasks, including classification, clustering, and semantic similarity search. This model was trained with data in 100+ spoken languages. - Cloudflare-hosted](https://developers.cloudflare.com/ai/models/@cf/google/embeddinggemma-300m/)
+BetaGoogleText Embeddings EmbeddingGemma is a 300M parameter, state-of-the-art for its size, open embedding model from Google, built from Gemma 3 (with T5Gemma initialization) and the same research and technology used to create Gemini models. EmbeddingGemma produces vector representations of text, making it well-suited for search and retrieval tasks, including classification, clustering, and semantic similarity search. This model was trained with data in 100+ spoken languages. - Cloudflare-hosted](https://developers.cloudflare.com/ai/models/@cf/google/embeddinggemma-300m/)
 
 Compare
 
@@ -1220,15 +1497,11 @@ Compare
 
 Black Forest LabsText-to-Image FLUX.1 \[schnell\] is a 12 billion parameter rectified flow transformer capable of generating images from text descriptions. - Cloudflare-hosted](https://developers.cloudflare.com/ai/models/@cf/black-forest-labs/flux-1-schnell/)
 
-- Pricing listed
-
 Compare
 
 [![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg)<h3>flux-2-dev</h3>
 
 Black Forest LabsText-to-Image FLUX.2 \[dev\] is an image model from Black Forest Labs where you can generate highly realistic and detailed images, with multi-reference support. - Cloudflare-hosted - Partner](https://developers.cloudflare.com/ai/models/@cf/black-forest-labs/flux-2-dev/)
-
-- Pricing listed
 
 Compare
 
@@ -1236,15 +1509,11 @@ Compare
 
 Black Forest LabsText-to-Image FLUX.2 \[klein\] is an ultra-fast, distilled image model. It unifies image generation and editing in a single model, delivering state-of-the-art quality enabling interactive workflows, real-time previews, and latency-critical applications. - Cloudflare-hosted - Partner](https://developers.cloudflare.com/ai/models/@cf/black-forest-labs/flux-2-klein-4b/)
 
-- Pricing listed
-
 Compare
 
 [![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg)<h3>flux-2-klein-9b</h3>
 
-Black Forest LabsText-to-Image FLUX.2 \[klein\] 9B is an ultra-fast, distilled image model with enhanced quality. It unifies image generation and editing in a single model, delivering state-of-the-art quality enabling interactive workflows, real-time previews, and latency-critical applications. - Cloudflare-hosted - Partner](https://developers.cloudflare.com/ai/models/@cf/black-forest-labs/flux-2-klein-9b/)
-
-- Pricing listed
+Black Forest LabsText-to-Image FLUX.2 \[klein\] 9B is a 9 billion parameter model that can generate images from text descriptions and supports multi-reference editing capabilities. - Cloudflare-hosted - Partner](https://developers.cloudflare.com/ai/models/@cf/black-forest-labs/flux-2-klein-9b/)
 
 Compare
 
@@ -1256,29 +1525,12 @@ BetaGoogleText Generation This is a Gemma-2B base model that Cloudflare dedicate
 
 Compare
 
-[![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemma-3-12b-it</h3>
-
-GoogleText Generation Gemma 3 models are well-suited for a variety of text generation and image understanding tasks, including question answering, summarization, and reasoning. Gemma 3 models are multimodal, handling text and image input and generating text output, with a large, 128K context window, multilingual support in over 140 languages, and is available in more sizes than previous versions. - Cloudflare-hosted - LoRA - Deprecated](https://developers.cloudflare.com/ai/models/@cf/google/gemma-3-12b-it/)
-
-- Context: 80K tokens
-- Pricing listed
-
-Compare
-
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemma-4-26b-a4b-it</h3>
 
-GoogleText Generation Gemma 4 is Google's most intelligent family of open models, built from Gemini 3 research to maximize intelligence-per-parameter. - Cloudflare-hosted - Function calling - Reasoning - Vision](https://developers.cloudflare.com/ai/models/@cf/google/gemma-4-26b-a4b-it/)
+GoogleText Generation Gemma 4 is Google's most intelligent family of open models, built from Gemini 3 research to maximize intelligence-per-parameter. - Cloudflare-hosted - Batch - Function calling - Reasoning - Vision](https://developers.cloudflare.com/ai/models/@cf/google/gemma-4-26b-a4b-it/)
 
 - Context: 256K tokens
 - Pricing listed
-
-Compare
-
-[![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemma-7b-it</h3>
-
-BetaGoogleText Generation Gemma is a family of lightweight, state-of-the-art open models from Google, built from the same research and technology used to create the Gemini models. They are text-to-text, decoder-only large language models, available in English, with open weights, pre-trained variants, and instruction-tuned variants. - Cloudflare-hosted - LoRA - Deprecated](https://developers.cloudflare.com/ai/models/@hf/google/gemma-7b-it/)
-
-- Context: 8.2K tokens
 
 Compare
 
@@ -1299,7 +1551,7 @@ aisingaporeText Generation SEA-LION stands for Southeast Asian Languages In One 
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-4.7-flash</h3>
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-4.7-flash</h3>
 
 Zhipu AIText Generation GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages. - Cloudflare-hosted - Function calling - Reasoning](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-4.7-flash/)
 
@@ -1308,7 +1560,7 @@ Zhipu AIText Generation GLM-4.7-Flash is a fast and efficient multilingual text 
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.2</h3>
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.2</h3>
 
 Zhipu AIText Generation Z.ai's flagship agentic coding model - Cloudflare-hosted - Function calling - Reasoning](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.2/)
 
@@ -1317,27 +1569,27 @@ Zhipu AIText Generation Z.ai's flagship agentic coding model - Cloudflare-hosted
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3</h3>
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.3</h3>
 
 Zhipu AIText Generation GLM-5.3 is Z.ai's flagship agentic coding model, pairing a 1M-token context window with reasoning, function calling, and structured outputs to power multi-step, tool-driven development workflows. - Cloudflare-hosted - Function calling - Reasoning](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3/)
 
-- Context: 1M tokens
+- Context: 1.3M tokens
 - Pricing listed
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>
 
 Zhipu AIText Generation The first natively multimodal model in the GLM-5 series. With 320B total parameters and just 18B active parameters, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks. - Cloudflare-hosted - Function calling - Reasoning - Vision](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3-flash/)
 
-- Context: 1M tokens
+- Context: 1.3M tokens
 - Pricing listed
 
 Compare
 
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-oss-120b</h3>
 
-OpenAIText Generation OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-120b is for production, general purpose, high reasoning use-cases. - Cloudflare-hosted - Function calling - Reasoning](https://developers.cloudflare.com/ai/models/@cf/openai/gpt-oss-120b/)
+OpenAIText Generation OpenAI’s open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-120b is for production, general purpose, high reasoning use-cases. - Cloudflare-hosted - Batch - Function calling - Reasoning](https://developers.cloudflare.com/ai/models/@cf/openai/gpt-oss-120b/)
 
 - Context: 128K tokens
 - Pricing listed
@@ -1346,7 +1598,7 @@ Compare
 
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-oss-20b</h3>
 
-OpenAIText Generation OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-20b is for lower latency, and local or specialized use-cases. - Cloudflare-hosted - Function calling - Reasoning](https://developers.cloudflare.com/ai/models/@cf/openai/gpt-oss-20b/)
+OpenAIText Generation OpenAI’s open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-20b is for lower latency, and local or specialized use-cases. - Cloudflare-hosted - Batch - Function calling - Reasoning](https://developers.cloudflare.com/ai/models/@cf/openai/gpt-oss-20b/)
 
 - Context: 128K tokens
 - Pricing listed
@@ -1362,14 +1614,6 @@ IBMText Generation Granite 4.0 instruct models deliver strong performance across
 
 Compare
 
-[n<h3>hermes-2-pro-mistral-7b</h3>
-
-BetanousresearchText Generation Hermes 2 Pro on Mistral 7B is the new flagship 7B Hermes! Hermes 2 Pro is an upgraded, retrained version of Nous Hermes 2, consisting of an updated and cleaned version of the OpenHermes 2.5 Dataset, as well as a newly introduced Function Calling and JSON Mode dataset developed in-house. - Cloudflare-hosted - Function calling - Deprecated](https://developers.cloudflare.com/ai/models/@hf/nousresearch/hermes-2-pro-mistral-7b/)
-
-- Context: 24K tokens
-
-Compare
-
 [a<h3>indictrans2-en-indic-1B</h3>
 
 ai4bharatTranslation IndicTrans2 is the first open-source transformer-based multilingual NMT model that supports high-quality translations across all the 22 scheduled Indic languages - Cloudflare-hosted](https://developers.cloudflare.com/ai/models/@cf/ai4bharat/indictrans2-en-indic-1B/)
@@ -1378,18 +1622,9 @@ ai4bharatTranslation IndicTrans2 is the first open-source transformer-based mult
 
 Compare
 
-[![Moonshot AI logo](https://developers.cloudflare.com/_astro/moonshotai.DjWMkXUS.svg)<h3>kimi-k2.5</h3>
-
-Moonshot AIText Generation Kimi K2.5 is a frontier-scale open-source model with a 256k context window, multi-turn tool calling, vision inputs, and structured outputs for agentic workloads. - Cloudflare-hosted - Function calling - Deprecated - Reasoning - Vision](https://developers.cloudflare.com/ai/models/@cf/moonshotai/kimi-k2.5/)
-
-- Context: 256K tokens
-- Pricing listed
-
-Compare
-
 [![Moonshot AI logo](https://developers.cloudflare.com/_astro/moonshotai.DjWMkXUS.svg)<h3>kimi-k2.6</h3>
 
-Moonshot AIText Generation Kimi K2.6 is a frontier-scale open-source 1T parameter model with a 262.1k context window, multi-turn tool calling, vision inputs, and structured outputs for agentic workloads. - Cloudflare-hosted - Function calling - Reasoning - Vision](https://developers.cloudflare.com/ai/models/@cf/moonshotai/kimi-k2.6/)
+Moonshot AIText Generation Kimi K2.6 is a frontier-scale open-source 1T parameter model with a 262.1k context window, multi-turn tool calling, vision inputs, and structured outputs for agentic workloads. - Cloudflare-hosted - Batch - Function calling - Reasoning - Vision](https://developers.cloudflare.com/ai/models/@cf/moonshotai/kimi-k2.6/)
 
 - Context: 262.1K tokens
 - Pricing listed
@@ -1405,80 +1640,11 @@ Moonshot AIText Generation Kimi K2.7 is a frontier-scale open-source 1T paramete
 
 Compare
 
-[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>llama-2-7b-chat-fp16</h3>
-
-MetaText Generation Full precision (fp16) generative text model with 7 billion parameters from Meta - Cloudflare-hosted - Deprecated](https://developers.cloudflare.com/ai/models/@cf/meta/llama-2-7b-chat-fp16/)
-
-- Context: 4.1K tokens
-- Pricing listed
-
-Compare
-
 [![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>llama-2-7b-chat-hf-lora</h3>
 
 BetaMetaText Generation This is a Llama2 base model that Cloudflare dedicated for inference with LoRA adapters. Llama 2 is a collection of pretrained and fine-tuned generative text models ranging in scale from 7 billion to 70 billion parameters. This is the repository for the 7B fine-tuned model, optimized for dialogue use cases and converted for the Hugging Face Transformers format. - Cloudflare-hosted - LoRA](https://developers.cloudflare.com/ai/models/@cf/meta-llama/llama-2-7b-chat-hf-lora/)
 
 - Context: 8.2K tokens
-
-Compare
-
-[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>llama-2-7b-chat-int8</h3>
-
-MetaText Generation Quantized (int8) generative text model with 7 billion parameters from Meta - Cloudflare-hosted - Deprecated](https://developers.cloudflare.com/ai/models/@cf/meta/llama-2-7b-chat-int8/)
-
-- Context: 8.2K tokens
-
-Compare
-
-[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>llama-3-8b-instruct</h3>
-
-MetaText Generation Generation over generation, Meta Llama 3 demonstrates state-of-the-art performance on a wide range of industry benchmarks and offers new capabilities, including improved reasoning. - Cloudflare-hosted - Deprecated](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3-8b-instruct/)
-
-- Context: 8K tokens
-- Pricing listed
-
-Compare
-
-[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>llama-3-8b-instruct-awq</h3>
-
-MetaText Generation Quantized (int4) generative text model with 8 billion parameters from Meta. - Cloudflare-hosted - Deprecated](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3-8b-instruct-awq/)
-
-- Context: 8.2K tokens
-- Pricing listed
-
-Compare
-
-[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>llama-3.1-70b-instruct</h3>
-
-MetaText Generation The Meta Llama 3.1 collection of multilingual large language models (LLMs) is a collection of pretrained and instruction tuned generative models. The Llama 3.1 instruction tuned text only models are optimized for multilingual dialogue use cases and outperform many of the available open source and closed chat models on common industry benchmarks. - Cloudflare-hosted - Deprecated](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.1-70b-instruct/)
-
-- Context: 24K tokens
-
-Compare
-
-[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>llama-3.1-8b-instruct</h3>
-
-MetaText Generation The Meta Llama 3.1 collection of multilingual large language models (LLMs) is a collection of pretrained and instruction tuned generative models. The Llama 3.1 instruction tuned text only models are optimized for multilingual dialogue use cases and outperform many of the available open source and closed chat models on common industry benchmarks. - Cloudflare-hosted - Deprecated](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.1-8b-instruct/)
-
-- Context: 8K tokens
-- Pricing listed
-
-Compare
-
-[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>llama-3.1-8b-instruct-awq</h3>
-
-MetaText Generation Quantized (int4) generative text model with 8 billion parameters from Meta. - Cloudflare-hosted - Deprecated](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.1-8b-instruct-awq/)
-
-- Context: 8.2K tokens
-- Pricing listed
-
-Compare
-
-[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>llama-3.1-8b-instruct-fast</h3>
-
-MetaText Generation \[Fast version\] The Meta Llama 3.1 collection of multilingual large language models (LLMs) is a collection of pretrained and instruction tuned generative models. The Llama 3.1 instruction tuned text only models are optimized for multilingual dialogue use cases and outperform many of the available open source and closed chat models on common industry benchmarks. - Cloudflare-hosted](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.1-8b-instruct-fast/)
-
-- Context: 128K tokens
 
 Compare
 
@@ -1511,7 +1677,7 @@ Compare
 
 [![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>llama-3.2-3b-instruct</h3>
 
-MetaText Generation The Llama 3.2 instruction-tuned text only models are optimized for multilingual dialogue use cases, including agentic retrieval and summarization tasks. - Cloudflare-hosted](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.2-3b-instruct/)
+MetaText Generation The Llama 3.2 instruction-tuned text only models are optimized for multilingual dialogue use cases, including agentic retrieval and summarization tasks. - Cloudflare-hosted - LoRA](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.2-3b-instruct/)
 
 - Context: 80K tokens
 - Pricing listed
@@ -1575,34 +1741,9 @@ MyShellText-to-Speech MeloTTS is a high-quality multi-lingual text-to-speech lib
 
 Compare
 
-[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>meta-llama-3-8b-instruct</h3>
-
-MetaText Generation Generation over generation, Meta Llama 3 demonstrates state-of-the-art performance on a wide range of industry benchmarks and offers new capabilities, including improved reasoning. - Cloudflare-hosted - Deprecated](https://developers.cloudflare.com/ai/models/@hf/meta-llama/meta-llama-3-8b-instruct/)
-
-- Context: 8.2K tokens
-
-Compare
-
-[![MistralAI logo](https://developers.cloudflare.com/_astro/mistralai.Bn9UMUMu.svg)<h3>mistral-7b-instruct-v0.1</h3>
-
-MistralAIText Generation Instruct fine-tuned version of the Mistral-7b generative text model with 7 billion parameters - Cloudflare-hosted - LoRA - Deprecated](https://developers.cloudflare.com/ai/models/@cf/mistral/mistral-7b-instruct-v0.1/)
-
-- Context: 2.8K tokens
-- Pricing listed
-
-Compare
-
-[![MistralAI logo](https://developers.cloudflare.com/_astro/mistralai.Bn9UMUMu.svg)<h3>mistral-7b-instruct-v0.2</h3>
-
-BetaMistralAIText Generation The Mistral-7B-Instruct-v0.2 Large Language Model (LLM) is an instruct fine-tuned version of the Mistral-7B-v0.2. Mistral-7B-v0.2 has the following changes compared to Mistral-7B-v0.1: 32k context window (vs 8k context in v0.1), rope-theta = 1e6, and no Sliding-Window Attention. - Cloudflare-hosted - LoRA - Deprecated](https://developers.cloudflare.com/ai/models/@hf/mistral/mistral-7b-instruct-v0.2/)
-
-- Context: 3.1K tokens
-
-Compare
-
 [![MistralAI logo](https://developers.cloudflare.com/_astro/mistralai.Bn9UMUMu.svg)<h3>mistral-7b-instruct-v0.2-lora</h3>
 
-BetaMistralAIText Generation The Mistral-7B-Instruct-v0.2 Large Language Model (LLM) is an instruct fine-tuned version of the Mistral-7B-v0.2. - Cloudflare-hosted - LoRA](https://developers.cloudflare.com/ai/models/@cf/mistral/mistral-7b-instruct-v0.2-lora/)
+MistralAIText Generation The Mistral-7B-Instruct-v0.2 Large Language Model (LLM) is an instruct fine-tuned version of the Mistral-7B-v0.2. - Cloudflare-hosted - LoRA](https://developers.cloudflare.com/ai/models/@cf/mistral/mistral-7b-instruct-v0.2-lora/)
 
 - Context: 15K tokens
 
@@ -1639,14 +1780,6 @@ Compare
 DeepgramAutomatic Speech Recognition Transcribe audio using Deepgram’s speech-to-text model - Cloudflare-hosted - Batch - Partner - Real-time](https://developers.cloudflare.com/ai/models/@cf/deepgram/nova-3/)
 
 - Pricing listed
-
-Compare
-
-[![Microsoft logo](https://developers.cloudflare.com/_astro/microsoft.LujcDJ--.svg)<h3>phi-2</h3>
-
-BetaMicrosoftText Generation Phi-2 is a Transformer-based model with a next-word prediction objective, trained on 1.4T tokens from multiple passes on a mixture of Synthetic and Web datasets for NLP and coding. - Cloudflare-hosted - Deprecated](https://developers.cloudflare.com/ai/models/@cf/microsoft/phi-2/)
-
-- Context: 2K tokens
 
 Compare
 
@@ -1695,7 +1828,7 @@ Compare
 
 [![Qwen logo](https://developers.cloudflare.com/_astro/qwen.ByCZjtXU.svg)<h3>qwen3.8-27b</h3>
 
-QwenImage-Text-to-Text Qwen 3.8 27B is a 27-billion-parameter instruction-tuned language model from Alibaba's Qwen family, designed for vision, efficient general-purpose text generation and agentic workloads. - Cloudflare-hosted - Function calling - Reasoning - Vision](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen3.8-27b/)
+QwenText Generation Qwen 3.8 27B is a 27-billion-parameter instruction-tuned language model from Alibaba's Qwen family, designed for vision, efficient general-purpose text generation and agentic workloads. - Cloudflare-hosted - Batch - Function calling - Reasoning - Vision](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen3.8-27b/)
 
 - Context: 262.1K tokens
 - Pricing listed
@@ -1721,23 +1854,7 @@ Compare
 
 [![Pipecat logo](https://developers.cloudflare.com/_astro/pipecat.B-PNBdef.svg)<h3>smart-turn-v2</h3>
 
-PipecatVoice Activity Detection An open source, community-driven, native audio turn detection model in 2nd version - Cloudflare-hosted - Batch - Real-time](https://developers.cloudflare.com/ai/models/@cf/pipecat-ai/smart-turn-v2/)
-
-- Pricing listed
-
-Compare
-
-[![Defog logo](https://developers.cloudflare.com/_astro/defog.C0vfV4et.svg)<h3>sqlcoder-7b-2</h3>
-
-BetaDefogText Generation This model is intended to be used by non-technical users to understand data inside their SQL databases. - Cloudflare-hosted - Deprecated](https://developers.cloudflare.com/ai/models/@cf/defog/sqlcoder-7b-2/)
-
-- Context: 10K tokens
-
-Compare
-
-[![RunwayML logo](https://developers.cloudflare.com/_astro/runway.Cq8Cjov4.svg)<h3>stable-diffusion-v1-5-img2img</h3>
-
-BetaRunwayMLText-to-Image Stable Diffusion is a latent text-to-image diffusion model capable of generating photo-realistic images. Img2img generate a new image from an input image with Stable Diffusion. - Cloudflare-hosted](https://developers.cloudflare.com/ai/models/@cf/runwayml/stable-diffusion-v1-5-img2img/)
+PipecatDumb Pipe An open source, community-driven, native audio turn detection model in 2nd version - Cloudflare-hosted - Batch - Real-time](https://developers.cloudflare.com/ai/models/@cf/pipecat-ai/smart-turn-v2/)
 
 - Pricing listed
 
@@ -1764,12 +1881,6 @@ Compare
 BetaByteDanceText-to-Image SDXL-Lightning is a lightning-fast text-to-image generation model. It can generate high-quality 1024px images in a few steps. - Cloudflare-hosted](https://developers.cloudflare.com/ai/models/@cf/bytedance/stable-diffusion-xl-lightning/)
 
 - Pricing listed
-
-Compare
-
-[![Unum logo](https://developers.cloudflare.com/_astro/unum.CWYcwnUh.svg)<h3>uform-gen2-qwen-500m</h3>
-
-BetaUnumImage-to-Text UForm-Gen is a small generative vision-language model primarily designed for Image Captioning and Visual Question Answering. The model was pre-trained on the internal image captioning dataset and fine-tuned on public instructions datasets: SVIT, LVIS, VQAs datasets. - Cloudflare-hosted - Deprecated](https://developers.cloudflare.com/ai/models/@cf/unum/uform-gen2-qwen-500m/)
 
 Compare
 

@@ -10006,11 +10006,11 @@ n
 
 parallel\_tool\_calls
 
-`boolean | null`
+`boolean`
 
 prompt\_cache\_key
 
-`string | null`
+`string`
 
 reasoning\_effort
 
@@ -10034,7 +10034,7 @@ service\_tier
 
 stream
 
-`boolean | null`
+`boolean`
 
 ▶stream\_options{}
 
@@ -10058,7 +10058,7 @@ top\_p
 
 user
 
-`string | null`
+`string`
 
 ▶web\_search\_options{}
 
@@ -10098,7 +10098,7 @@ service\_tier
 
 system\_fingerprint
 
-`string | null`
+`string`
 
 ▶usage{}
 

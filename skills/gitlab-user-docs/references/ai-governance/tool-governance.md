@@ -7,6 +7,7 @@ Configure tool-level approval policies for AI agents to gate sensitive actions w
 
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20466) in GitLab 19.1 as a [beta](../../policy/development_stages_support.md) with a [feature flag](../../administration/feature_flags/_index.md) named `gitlab_duo_governance_settings`. Enabled by default.
 - Enforcement for background flows, such as the Duo Developer foundational flow, added in GitLab 19.3 behind a [feature flag](../../administration/feature_flags/_index.md) named `duo_workflow_background_tool_governance`. Disabled by default.
+- Feature flag `gitlab_duo_governance_settings` removed in GitLab 19.4.
 
 > [!warning]
 > This feature is in [beta](../../policy/development_stages_support.md).
@@ -86,8 +87,8 @@ server exposes.
 
 Many capabilities exist as a GitLab Duo Agent Platform tool and an MCP server
 tool. One mode governs both, even when the two tools have different names. For
-example, setting a mode for `get_work_item_notes` also applies to the MCP
-server tool `get_workitem_notes`. Set the mode on the GitLab Duo Agent Platform
+example, setting a mode for `create_merge_request` also applies to the MCP
+server tool `save_merge_request`. Set the mode on the GitLab Duo Agent Platform
 tool. You don't need to find and set the MCP server tool separately.
 
 If you don't set a mode, behavior is unchanged. Read-only MCP tools remain

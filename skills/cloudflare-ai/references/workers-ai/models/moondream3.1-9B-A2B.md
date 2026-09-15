@@ -27,6 +27,7 @@ Moondream 3 is a fast, efficient 9B mixture-of-experts vision language model (2B
 
 | Model Info | |
 | --- | --- |
+| Terms and License | [link ↗](https://moondream.ai/licenses/model/1.0) |
 | Vision | Yes |
 | Unit Pricing | $0.30 per M input tokens, $1.00 per M output tokens |
 
@@ -74,7 +75,7 @@ max\_objects
 
 stream
 
-`boolean`default: trueReturn incremental tokens for \`query\` and \`caption\`. \`point\` and \`detect\` do not support streaming.
+`boolean`default: falseReturn incremental tokens for \`query\` and \`caption\`. \`point\` and \`detect\` do not support streaming.
 
 finish\_reason
 

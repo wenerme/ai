@@ -28,7 +28,7 @@ Llama 3.1 8B quantized to FP8 precision
 | --- | --- |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 32,000 tokens |
 | Terms and License | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/LICENSE) |
-| Unit Pricing | $0.15 per M input tokens, $0.29 per M output tokens |
+| Unit Pricing | $0.152 per M input tokens, $0.287 per M output tokens |
 
 ## Playground
 

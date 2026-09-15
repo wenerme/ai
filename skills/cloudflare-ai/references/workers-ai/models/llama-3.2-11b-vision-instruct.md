@@ -43,7 +43,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 | Terms and License | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/LICENSE) |
 | Vision | Yes |
 | LoRA | Yes |
-| Unit Pricing | $0.049 per M input tokens, $0.68 per M output tokens |
+| Unit Pricing | $0.0485 per M input tokens, $0.676 per M output tokens |
 
 ## Playground
 

@@ -26,7 +26,7 @@ IndicTrans2 is the first open-source transformer-based multilingual NMT model th
 
 | Model Info | |
 | --- | --- |
-| Unit Pricing | $0.34 per M input tokens, $0.34 per M output tokens |
+| Unit Pricing | $0.342 per M input tokens, $0.342 per M output tokens |
 
 ## Usage
 

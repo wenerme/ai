@@ -27,7 +27,7 @@ SEA-LION stands for Southeast Asian Languages In One Network, which is a collect
 | Model Info | |
 | --- | --- |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 128,000 tokens |
-| Unit Pricing | $0.35 per M input tokens, $0.56 per M output tokens |
+| Unit Pricing | $0.351 per M input tokens, $0.555 per M output tokens |
 
 ## Playground
 

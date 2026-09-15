@@ -5398,6 +5398,10 @@ response\_format
 
 `object`
 
+reasoning\_effort
+
+`string`Optional reasoning control; availability and accepted values are model-dependent.
+
 id
 
 `string`

@@ -30,7 +30,7 @@ DeepSeek-R1-Distill-Qwen-32B is a model distilled from DeepSeek-R1 based on Qwen
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 80,000 tokens |
 | Terms and License | [link ↗](https://github.com/deepseek-ai/DeepSeek-R1/blob/main/LICENSE) |
 | Reasoning | Yes |
-| Unit Pricing | $0.50 per M input tokens, $4.88 per M output tokens |
+| Unit Pricing | $0.497 per M input tokens, $4.881 per M output tokens |
 
 ## Playground
 

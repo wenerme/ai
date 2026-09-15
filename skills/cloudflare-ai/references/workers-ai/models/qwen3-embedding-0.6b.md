@@ -27,7 +27,7 @@ The Qwen3 Embedding model series is the latest proprietary model of the Qwen fam
 | Model Info | |
 | --- | --- |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 8,192 tokens |
-| Unit Pricing | $0.012 per M input tokens |
+| Unit Pricing | $0.0118 per M input tokens |
 
 ## Usage
 

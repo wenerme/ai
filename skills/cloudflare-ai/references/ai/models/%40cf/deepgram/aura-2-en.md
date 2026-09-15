@@ -51,7 +51,7 @@ container
 
 text
 
-`string`requiredThe text content to be converted to speech
+`string`The text content to be converted to speech
 
 sample\_rate
 

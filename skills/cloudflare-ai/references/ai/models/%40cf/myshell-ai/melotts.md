@@ -26,7 +26,7 @@ MeloTTS is a high-quality multi-lingual text-to-speech library by MyShell.ai.
 
 | Model Info | |
 | --- | --- |
-| Unit Pricing | $0.0002 per audio minute |
+| Unit Pricing | $0.000205 per audio minute |
 
 ## Parameters
 

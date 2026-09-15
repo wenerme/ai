@@ -633,6 +633,8 @@ const db = new Database();
 db.loadExtension("myext");
 ```
 
+Workers can repeat `setCustomSQLite()` with the exact same path. Bun rejects a different path after SQLite loads.
+
 ### `.fileControl(cmd: number, value: any)`
 
 To use the advanced `sqlite3_file_control` API, call `.fileControl(cmd, value)` on your `Database` instance. See [WAL sidecar file cleanup](#wal-sidecar-file-cleanup) for a practical example.

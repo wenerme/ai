@@ -1,5 +1,5 @@
 ---
-description: OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-120b is for production, general purpose, high reasoning use-cases.
+description: OpenAI’s open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-120b is for production, general purpose, high reasoning use-cases.
 title: gpt-oss-120b
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -21,16 +21,18 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 `@cf/openai/gpt-oss-120b`
 
 - Cloudflare-hosted
+- Batch
 - Function calling
 - Reasoning
 
-OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-120b is for production, general purpose, high reasoning use-cases.
+OpenAI’s open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-120b is for production, general purpose, high reasoning use-cases.
 
 | Model Info | |
 | --- | --- |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 128,000 tokens |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
 | Reasoning | Yes |
+| Batch | Yes |
 | Unit Pricing | $0.35 per M input tokens, $0.75 per M output tokens |
 
 ## Usage
@@ -182,17 +184,13 @@ presence\_penalty
 
 <code>number</code>minimum: -2maximum: 2Increases the likelihood of the model introducing new topics.
 
-response
+type
 
-<code>string</code>The generated text response from the model
+<code>object</code>
 
-▶usage{}
+contentType
 
-<code>object</code>Usage statistics for the inference request
-
-▶tool\_calls\[]
-
-<code>array</code>An array of tool calls requests made during the response generation
+<code>application/json</code>
 
 </details>
 
@@ -262,14 +260,6 @@ type
 
 <code>string</code>
 
-title
-
-<code>Stream_Output</code>
-
-description
-
-<code>Server-Sent Events stream when streaming is enabled</code>
-
 contentType
 
 <code>text/event-stream</code>
@@ -290,17 +280,13 @@ format
 
 <code>array</code>required
 
-response
+type
 
-<code>string</code>The generated text response from the model
+<code>object</code>
 
-▶usage{}
+contentType
 
-<code>object</code>Usage statistics for the inference request
-
-▶tool\_calls\[]
-
-<code>array</code>An array of tool calls requests made during the response generation
+<code>application/json</code>
 
 </details>
 
@@ -327,5 +313,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/#page","headline":"gpt-oss-120b (OpenAI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-120b is for production, general purpose, high reasoning use-cases.","url":"https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/#page","headline":"gpt-oss-120b (OpenAI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"OpenAI’s open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-120b is for production, general purpose, high reasoning use-cases.","url":"https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

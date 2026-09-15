@@ -29,7 +29,7 @@ The following Google APIs must be enabled in your GCP project:
 
 ## Get started
 
-The following documents help you get started with the Google BigQuery data source:
+Install the plugin from **Administration** &gt; **Plugins and data** &gt; **Plugins**, or from the [Grafana plugin catalog](/grafana/plugins/grafana-bigquery-datasource/). After the plugin is installed, the following documents help you get started:
 
 - [Configure the BigQuery data source](/docs/plugins/grafana-bigquery-datasource/latest/configure/) - Set up authentication and connect to BigQuery.
 - [BigQuery query editor](/docs/plugins/grafana-bigquery-datasource/latest/query-editor/) - Create and edit SQL and visual queries.
@@ -63,11 +63,11 @@ To import a pre-built dashboard:
 
 ## Plugin updates
 
-Ensure your plugin version is up-to-date so you have access to all current features and improvements. Navigate to **Plugins and data** &gt; **Plugins** to check for updates.
+Always ensure that your plugin version is up-to-date so you have access to all current features and improvements. Navigate to **Administration** &gt; **Plugins and data** &gt; **Plugins** to check for updates.
 
 > Note
 >
-> Plugins are automatically updated in Grafana Cloud.
+> On Grafana Cloud, the Google BigQuery plugin is managed by Grafana and updates automatically. On self-managed Grafana, you must update the plugin manually. Refer to [Version and upgrade guidance](/docs/plugins/grafana-bigquery-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
 
 ## Related resources
 

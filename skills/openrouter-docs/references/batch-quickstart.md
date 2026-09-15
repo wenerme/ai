@@ -369,6 +369,39 @@ A completed batch response looks like this:
 
 ***
 
+## Delete a batch
+
+Once a batch is terminal (`completed`, `failed`, `expired`, or `cancelled`) you can delete it. Deletion removes the batch from the API and purges every request and result artifact OpenRouter holds for it, without waiting for the 30-day retention window. It is not cancellation: an in-flight batch returns `409`.
+
+```text title="Endpoint" lines theme={null}
+DELETE https://openrouter.ai/api/beta/batches/:id
+```
+
+```shell title="Shell" lines theme={null}
+curl -X DELETE https://openrouter.ai/api/beta/batches/batch_123 \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY"
+```
+
+The response reports the outcome per deletion target. `deletion.openrouter` is always `deleted` on a `200`. `deletion.upstream` identifies the provider and its batch deletion status: `deleted` when native batch deletion is supported (Anthropic, Fireworks, Google AI Studio, Google Vertex, Mistral), `unsupported` otherwise, or `not_applicable` when no upstream batch was created. The `upstream` object is omitted if no provider was assigned. Independently of that batch-record outcome, OpenRouter deletes the batch's uploaded input and stored output/error files on OpenAI, Mistral, and Google AI Studio. This includes uploaded input left behind by a failed submission. Google Vertex output in OpenRouter-owned storage is also removed; files in your own GCP bucket remain under your control. Google AI Studio generated output is removed with its batch record; uploaded input is deleted separately.
+
+```json title="Response" lines theme={null}
+{
+  "id": "batch_123",
+  "object": "batch",
+  "deletion": {
+    "openrouter": "deleted",
+    "upstream": {
+      "provider": "Anthropic",
+      "status": "deleted"
+    }
+  }
+}
+```
+
+The response is synchronous: a `200` means every applicable cleanup operation, including provider file deletion, has completed, and a later `GET` or `DELETE` for the same id returns `404`. If cleanup fails part-way you receive a retryable `5xx`; repeating the request resumes where it left off. Billing, generation, and audit records are retained. Deleting a BYOK batch that needs upstream batch or file cleanup requires the provider key the batch was submitted with to still be enabled; otherwise an initial request returns `409` and leaves the batch untouched.
+
+***
+
 ## Reporting issues
 
 Each completed result's `response.body.id` is that request's OpenRouter generation ID (for example `gen-batch-...`). To flag a bad generation, copy that ID and submit it through [Report Feedback](/docs/guides/overview/report-feedback) using the **By generation ID** flow.
@@ -507,5 +540,5 @@ Poll for results the same way as any other batch (`GET https://openrouter.ai/api
 ```
 
 <Note>
-  OpenRouter stores batch inputs and results as JSONL artifacts in Google Cloud Storage and deletes them 30 days after creation, matching the upstream batch retention window. Download any results you need before the 30-day window elapses.
+  OpenRouter stores batch inputs and results as JSONL artifacts in Google Cloud Storage and deletes them 30 days after creation. Upstream retention varies by provider. Download any results you need before the 30-day window elapses, or [delete the batch](#delete-a-batch) sooner to purge them immediately.
 </Note>

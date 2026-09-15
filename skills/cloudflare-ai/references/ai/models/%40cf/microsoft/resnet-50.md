@@ -27,7 +27,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 | Model Info | |
 | --- | --- |
 | More information | [link ↗](https://www.microsoft.com/en-us/research/blog/microsoft-vision-model-resnet-50-combines-web-scale-data-and-multi-task-learning-to-achieve-state-of-the-art/) |
-| Unit Pricing | $0.0000025 per inference request |
+| Unit Pricing | $0.00000251 per inference request |
 
 ## Parameters
 

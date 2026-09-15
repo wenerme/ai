@@ -16,6 +16,33 @@ Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/cache.xml)
 
+## 2026-09-02
+
+
+**Configure Origin Range Requests with the Rulesets API**
+
+The Rulesets API now supports Origin Range Requests in Cache Rules. This setting lets Cloudflare fetch large files from your origin in cache-aligned byte ranges. Cloudflare may expand a client range and issue several single-range origin requests.
+
+Set `origin_range_requests.mode` to `on`, `off`, or `default` for any traffic matched by a Cache Rule.
+
+To override Cloudflare's default Origin Range Requests behavior, set the mode to `off`. The following rule turns off generated origin range requests for all traffic without changing cache eligibility:
+
+```json
+{
+  "expression": "true",
+  "action": "set_cache_settings",
+  "action_parameters": {
+    "origin_range_requests": {
+      "mode": "off"
+    }
+  }
+}
+```
+
+Origin Range Requests do not make otherwise ineligible content cacheable. If your origin ignores `Range` and returns a complete `200 OK`, Cloudflare can use the response but must download the complete file. Origins should honor `Accept-Encoding: identity` and return consistent, unencoded partial responses.
+
+For configuration details and mode behavior, refer to [Origin Range Requests in Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#origin-range-requests). For client responses and the complete origin contract, refer to [Range request behavior](https://developers.cloudflare.com/cache/reference/range-requests/).
+
 ## 2026-07-02
 
 

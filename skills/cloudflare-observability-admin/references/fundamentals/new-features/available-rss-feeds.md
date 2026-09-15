@@ -64,7 +64,6 @@ Included products
 
 - <a href="https://developers.cloudflare.com/api-shield/">API Shield</a><a href="https://developers.cloudflare.com/changelog/rss/api-shield.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/bots/">Bots</a><a href="https://developers.cloudflare.com/changelog/rss/bots.xml">Subscribe to RSS</a>
-- <a href="https://developers.cloudflare.com/cloudflare-challenges/">Challenges</a><a href="https://developers.cloudflare.com/changelog/rss/cloudflare-challenges.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/secrets-store/">Secrets Store</a><a href="https://developers.cloudflare.com/changelog/rss/secrets-store.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/security-center/">Security Center</a><a href="https://developers.cloudflare.com/changelog/rss/security-center.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/security/overview/">Security Overview</a><a href="https://developers.cloudflare.com/changelog/rss/security-overview.xml">Subscribe to RSS</a>

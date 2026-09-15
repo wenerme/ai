@@ -15,11 +15,11 @@ Before setting up alerts:
 
 - [Configure the Google BigQuery data source](/docs/plugins/grafana-bigquery-datasource/latest/configure/)
 - Understand [Grafana Alerting](/docs/grafana/latest/alerting/)
-- Ensure your BigQuery credentials are configured using a method that doesn’t require user interaction (service account key, GCE metadata, or service account impersonation)
+- Ensure your BigQuery credentials are configured using a method that doesn’t require user interaction (service account key, GCE default service account, or service account impersonation)
 
 > Note
 >
-> Alerting doesn’t work with **Forward OAuth Identity** authentication. Grafana alerting runs in the background and requires credentials that are always available, which isn’t the case with OAuth-based authentication.
+> Alerting doesn’t work with **Forward OAuth Identity** or **Workload Identity Federation**. Grafana alerting runs in the background and requires credentials that are always available. Those methods are tied to the signed-in user’s session, so they aren’t available when no user is present. If you rely on alerting, use a service account key (JWT), GCE Default Service Account, or service account impersonation.
 
 ## Create an alert rule
 
@@ -151,9 +151,10 @@ For BigQuery:
 
 BigQuery alerts run on a schedule, and each evaluation executes a query against BigQuery. Consider these factors:
 
-- **Query cost:** Each alert evaluation runs a query. Optimize queries to scan less data using filters and partitioned tables.
+- **Query cost:** Each alert evaluation runs a query. Optimize queries to scan less data using filters and partitioned tables. In the BigQuery Console, check bytes processed for the job.
 - **Evaluation interval:** Don’t set intervals shorter than necessary. A 1-minute interval runs 1,440 queries per day per alert rule.
-- **Query timeout:** Complex queries may timeout. Simplify queries or pre-aggregate data for alerting.
+- **Concurrent evaluations:** Rules in the same evaluation group run at the same time. A large group of BigQuery rules can hit the Grafana evaluation timeout (default 30 seconds) together. Split heavy rules into separate groups, or use a longer interval.
+- **Query timeout:** The BigQuery data source has no timeout setting. Alert evaluations use the Grafana `evaluation_timeout` setting (default 30 seconds). Simplify queries or pre-aggregate data; raising the timeout only helps after the query already scans a reasonable amount of data.
 - **Partition pruning:** Use `$__timeFilter` on partitioned columns to limit scanned data.
 
 ### Cost optimization example

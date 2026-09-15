@@ -29,7 +29,6 @@ FLUX.2 \[klein] is an ultra-fast, distilled image model. It unifies image genera
 | --- | --- |
 | Terms and License | [link ↗](https://bfl.ai/legal/terms-of-service) |
 | Partner | Yes |
-| Unit Pricing | $0.000059 per input 512x512 tile, $0.000287 per output 512x512 tile |
 
 ## Parameters
 

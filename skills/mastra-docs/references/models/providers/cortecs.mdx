@@ -5,7 +5,7 @@ description: "Browse Cortecs model IDs, capabilities, context windows, and prici
 
 # [Cortecs logo]Cortecs
 
-Access 106 Cortecs models through Mastra's model router. Authentication is handled automatically using the `CORTECS_API_KEY` environment variable.
+Access 107 Cortecs models through Mastra's model router. Authentication is handled automatically using the `CORTECS_API_KEY` environment variable.
 
 Learn more in the [Cortecs documentation](https://cortecs.ai).
 
@@ -180,8 +180,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 256000,
     "maxOutput": 256000,
-    "inputCost": 0.334,
-    "outputCost": 1.003
+    "inputCost": 0.368,
+    "outputCost": 1.103
   },
   {
     "model": "cortecs/deepseek-r1-0528",
@@ -242,6 +242,18 @@ for await (const chunk of stream) {
     "maxOutput": 64000,
     "inputCost": 2,
     "outputCost": 3.999
+  },
+  {
+    "model": "cortecs/deepseek-v4.1-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 64000,
+    "inputCost": 0.5,
+    "outputCost": 1.499
   },
   {
     "model": "cortecs/devstral-2512",
@@ -852,8 +864,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 256000,
     "maxOutput": 256000,
-    "inputCost": 0.223,
-    "outputCost": 0.223
+    "inputCost": 0.24,
+    "outputCost": 0.24
   },
   {
     "model": "cortecs/ministral-3b-2512",
@@ -864,8 +876,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 256000,
     "maxOutput": 256000,
-    "inputCost": 0.111,
-    "outputCost": 0.111
+    "inputCost": 0.123,
+    "outputCost": 0.123
   },
   {
     "model": "cortecs/ministral-8b-2512",
@@ -876,8 +888,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 256000,
     "maxOutput": 256000,
-    "inputCost": 0.167,
-    "outputCost": 0.167
+    "inputCost": 0.179,
+    "outputCost": 0.179
   },
   {
     "model": "cortecs/mistral-7b-instruct-v0.2",
@@ -924,8 +936,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 256000,
     "maxOutput": 256000,
-    "inputCost": 0.557,
-    "outputCost": 1.671
+    "inputCost": 0.613,
+    "outputCost": 1.838
   },
   {
     "model": "cortecs/mistral-medium-3.5",
@@ -936,8 +948,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 256000,
     "maxOutput": 256000,
-    "inputCost": 1.393,
-    "outputCost": 7.13
+    "inputCost": 1.532,
+    "outputCost": 7.843
   },
   {
     "model": "cortecs/mistral-nemo-instruct-2407",
@@ -972,8 +984,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 256000,
-    "inputCost": 0.143,
-    "outputCost": 0.568
+    "inputCost": 0.156,
+    "outputCost": 0.625
   },
   {
     "model": "cortecs/mistral-small-3.2-24b-instruct-2506",
@@ -1308,8 +1320,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 32000,
     "maxOutput": 32000,
-    "inputCost": 0.111,
-    "outputCost": 0.334
+    "inputCost": 0.123,
+    "outputCost": 0.368
   }
 ]}
 />

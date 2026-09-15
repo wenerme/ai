@@ -5,7 +5,7 @@ description: "Browse CoralBricks model IDs, capabilities, context windows, and p
 
 # [CoralBricks logo]CoralBricks
 
-Access 3 CoralBricks models through Mastra's model router. Authentication is handled automatically using the `CORAL_API_KEY` environment variable.
+Access 4 CoralBricks models through Mastra's model router. Authentication is handled automatically using the `CORAL_API_KEY` environment variable.
 
 Learn more in the [CoralBricks documentation](https://www.coralbricks.ai/docs).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "coralbricks/glm-5.3-fp4"
+  model: "coralbricks/glm-5.3-flash-fp4"
 });
 
 // Generate a response
@@ -39,6 +39,18 @@ for await (const chunk of stream) {
 
 <ProviderModelsTable
   models={[
+  {
+    "model": "coralbricks/glm-5.3-flash-fp4",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 0.15,
+    "outputCost": 0.5
+  },
   {
     "model": "coralbricks/glm-5.3-fp4",
     "imageInput": false,
@@ -90,7 +102,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://inference.coralbricks.ai/v1",
-    id: "coralbricks/glm-5.3-fp4",
+    id: "coralbricks/glm-5.3-flash-fp4",
     apiKey: process.env.CORAL_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -109,7 +121,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "coralbricks/kimi-k3"
-      : "coralbricks/glm-5.3-fp4";
+      : "coralbricks/glm-5.3-flash-fp4";
   }
 });
 ```

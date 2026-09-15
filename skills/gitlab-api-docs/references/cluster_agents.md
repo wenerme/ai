@@ -39,6 +39,7 @@ The response is a list of agents with the following fields:
 | `config_project.created_at`          | string   | ISO8601 datetime when the project was created        |
 | `created_at`                         | string   | ISO8601 datetime when the agent was created          |
 | `created_by_user_id`                 | integer  | ID of the user who created the agent                 |
+| `is_receptive`                       | boolean  | Whether the agent is a receptive agent               |
 
 Example request:
 
@@ -65,7 +66,8 @@ Example response:
       "created_at": "2022-03-20T20:42:40.221Z"
     },
     "created_at": "2022-04-20T20:42:40.221Z",
-    "created_by_user_id": 42
+    "created_by_user_id": 42,
+    "is_receptive": false
   },
   {
     "id": 2,
@@ -80,7 +82,8 @@ Example response:
       "created_at": "2022-03-20T20:42:40.221Z"
     },
     "created_at": "2022-04-20T20:42:40.221Z",
-    "created_by_user_id": 42
+    "created_by_user_id": 42,
+    "is_receptive": false
   }
 ]
 ```
@@ -120,6 +123,7 @@ The response is a single agent with the following fields:
 | `config_project.created_at`          | string  | ISO8601 datetime when the project was created        |
 | `created_at`                         | string  | ISO8601 datetime when the agent was created          |
 | `created_by_user_id`                 | integer | ID of the user who created the agent                 |
+| `is_receptive`                       | boolean | Whether the agent is a receptive agent               |
 
 Example request:
 
@@ -145,7 +149,8 @@ Example response:
     "created_at": "2022-03-20T20:42:40.221Z"
   },
   "created_at": "2022-04-20T20:42:40.221Z",
-  "created_by_user_id": 42
+  "created_by_user_id": 42,
+  "is_receptive": false
 }
 ```
 
@@ -184,6 +189,7 @@ The response is the new agent with the following fields:
 | `config_project.created_at`          | string  | ISO8601 datetime when the project was created        |
 | `created_at`                         | string  | ISO8601 datetime when the agent was created          |
 | `created_by_user_id`                 | integer | ID of the user who created the agent                 |
+| `is_receptive`                       | boolean | Whether the agent is a receptive agent               |
 
 Example request:
 
@@ -211,7 +217,8 @@ Example response:
     "created_at": "2022-03-20T20:42:40.221Z"
   },
   "created_at": "2022-04-20T20:42:40.221Z",
-  "created_by_user_id": 42
+  "created_by_user_id": 42,
+  "is_receptive": false
 }
 ```
 

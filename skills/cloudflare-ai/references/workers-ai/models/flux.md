@@ -37,11 +37,11 @@ Flux is the first conversational speech recognition model built specifically for
 
 encoding
 
-`string`requiredenum: linear16Encoding of the audio stream. Currently only supports raw signed little-endian 16-bit PCM.
+`string`enum: linear16Encoding of the audio stream. Currently only supports raw signed little-endian 16-bit PCM.
 
 sample\_rate
 
-`string`requiredpattern: ^\[0-9]+$Sample rate of the audio stream in Hz.
+`string`pattern: ^\[0-9]+$Sample rate of the audio stream in Hz.
 
 eager\_eot\_threshold
 

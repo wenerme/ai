@@ -14,7 +14,7 @@ control which types are available in your projects.
 A work item type configuration cascades to all
 projects.
 
-New types are available at the project level only.
+New types are available only for projects.
 Their widgets and hierarchy restrictions match those
 of issues. You can associate new types with
 [custom fields](custom_fields.md) and
@@ -29,7 +29,7 @@ including types provided by GitLab.
 Type names must be unique in a namespace or organization and no more than 48 characters.
 A type cannot share a name with another type, including archived and disabled types.
 Vulnerability, merge request, commit, pipeline, alert, review, diff, report,
-and sha are reserved names that cannot be used.
+and SHA are reserved names that cannot be used.
 
 When you rename a type (for example, rename `Feature` to `Enhancement`), the original name is
 available for a new type. You can rename a type back to its original name if that name has not been taken.
@@ -46,9 +46,9 @@ Each work item type has one of the following states:
 | Locked | The type is tied to a specific GitLab feature and cannot be renamed, disabled, or archived. For example, Ticket, Incident, Epic, and Task types are locked. |
 
 > [!note]
-> Epics appear as a work item type at the project level
-> but are disabled for projects because epics are
-> available only at the group level.
+> Epics appear as a work item type in projects,
+> but are disabled there because epics are
+> available only for groups.
 
 ## Create a work item type
 
@@ -76,8 +76,8 @@ To create a work item type:
    **New type**.
 1. Enter a name for the type.
 1. Select an icon.
-1. Optional. Select **Enable for new projects** to automatically
-   enable this type in any new projects created under the group.
+1. Optional. Select the **Enabled by default** checkbox to automatically
+   turn on this type in any new projects created under the group.
    Existing projects are not affected.
 1. Select **Save**.
 
@@ -144,9 +144,9 @@ To archive a work item type:
 1. Select **Archive**.
 1. In the confirmation dialog, select **Archive**.
 
-Archived types are visible only at the top-level group
-or organization level in the **Archived** tab. They are
-not visible at the subgroup or project level.
+Archived types are visible only in the top-level group
+or organization in the **Archived** tab. They are
+not visible in subgroups or projects.
 
 ## Unarchive a work item type
 
@@ -195,7 +195,7 @@ projects. Type availability has three layers:
 
 ### Allow type customization in projects
 
-Control the ability for projects to
+Control whether projects can
 customize which types are available.
 
 Prerequisites:

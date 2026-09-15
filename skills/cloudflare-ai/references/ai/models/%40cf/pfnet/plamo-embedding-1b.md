@@ -26,7 +26,7 @@ PLaMo-Embedding-1B is a Japanese text embedding model developed by Preferred Net
 
 | Model Info | |
 | --- | --- |
-| Unit Pricing | $0.019 per M input tokens |
+| Unit Pricing | $0.0186 per M input tokens |
 
 ## Usage
 

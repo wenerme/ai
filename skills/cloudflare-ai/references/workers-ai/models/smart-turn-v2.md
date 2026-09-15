@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # smart-turn-v2
 
-Voice Activity Detection • Pipecat
+Dumb Pipe • Pipecat
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/smart-turn-v2/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
@@ -30,7 +30,7 @@ An open source, community-driven, native audio turn detection model in 2nd versi
 | --- | --- |
 | Batch | Yes |
 | Real-time | Yes |
-| Unit Pricing | $0.00034 per audio minute |
+| Unit Pricing | $0.000338 per audio minute |
 
 ## Parameters
 

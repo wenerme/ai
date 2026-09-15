@@ -124,6 +124,10 @@ Create a new issue titled "Fix login bug" in project 123 with description
 ## `get_issue`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/201838) in GitLab 18.4.
+- [Unlisted](https://gitlab.com/gitlab-org/gitlab/-/work_items/628333) in GitLab 19.4. Superseded by [`get_work_item`](#get_work_item).
+
+Superseded by [`get_work_item`](#get_work_item), which covers issues and other work item
+types. This tool no longer appears in `tools/list` but remains callable while callers migrate.
 
 Retrieves detailed information about a specific GitLab issue.
 
@@ -1048,6 +1052,11 @@ Get issue 42 in project gitlab-org/gitlab with its related merge requests
 ## `get_workitem_notes`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/581892) in GitLab 18.7.
+- [Unlisted](https://gitlab.com/gitlab-org/gitlab/-/work_items/625128) in GitLab 19.4. Superseded by the `notes` facet of [`get_work_item`](#get_work_item).
+
+Superseded by [`get_work_item`](#get_work_item) with `include: ["notes"]`, which paginates
+notes in both directions. This tool no longer appears in `tools/list` but remains callable
+while callers migrate.
 
 Retrieves all notes (comments) for a specific GitLab work item.
 

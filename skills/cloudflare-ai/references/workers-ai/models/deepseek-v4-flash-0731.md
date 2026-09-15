@@ -21,6 +21,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 `@cf/deepseek-ai/deepseek-v4-flash-0731`
 
 - Cloudflare-hosted
+- Batch
 - Function calling
 - Reasoning
 
@@ -35,6 +36,7 @@ This model is not available through standard Workers Free billing. To use it, up
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,310,720 tokens |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
 | Reasoning | Yes |
+| Batch | Yes |
 | Unit Pricing | $0.44 per M input tokens, $1.32 per M output tokens, $0.014 per M cached input tokens |
 
 ## Playground
@@ -216,10 +218,6 @@ seed
 
 <code>integer | null</code>If specified, the system will make a best effort to sample deterministically.
 
-service\_tier
-
-<code>string | null</code>enum: auto, default, flex, scale, prioritySpecifies the processing type used for serving the request.
-
 ▶stop
 
 <code>one of</code>
@@ -295,10 +293,6 @@ model
 system\_fingerprint
 
 <code>string | null</code>
-
-service\_tier
-
-<code>string | null</code>enum: auto, default, flex, scale, priority
 
 </details>
 
@@ -387,10 +381,6 @@ reasoning\_effort
 seed
 
 <code>integer | null</code>If specified, the system will make a best effort to sample deterministically.
-
-service\_tier
-
-<code>string | null</code>enum: auto, default, flex, scale, prioritySpecifies the processing type used for serving the request.
 
 ▶stop
 
@@ -491,10 +481,6 @@ model
 system\_fingerprint
 
 <code>string | null</code>
-
-service\_tier
-
-<code>string | null</code>enum: auto, default, flex, scale, priority
 
 </details>
 

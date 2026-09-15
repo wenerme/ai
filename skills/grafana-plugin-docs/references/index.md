@@ -58,6 +58,7 @@ Documentation for data source and app plugins built and maintained by Grafana La
 - [Honeycomb data source](/docs/plugins/grafana-honeycomb-datasource/latest/ "Honeycomb data source")
 - [IBM Db2 data source plugin](/docs/plugins/grafana-ibmdb2-datasource/latest/ "IBM Db2 data source plugin")
 - [Infinity data source plugin for Grafana](/docs/plugins/yesoreyeram-infinity-datasource/latest/ "Infinity data source plugin for Grafana")
+- [Install and upgrade the Azure Data Explorer data source plugin](/docs/plugins/grafana-azure-data-explorer-datasource/latest/install/ "Install and upgrade the Azure Data Explorer data source plugin")
 - [Interactive learning](/docs/plugins/grafana-pathfinder-app/latest/ "Interactive learning")
 - [Investigations App](/docs/plugins/grafana-investigations-app/latest/ "Investigations App")
 - [Jenkins data source for Grafana](/docs/plugins/grafana-jenkins-datasource/latest/ "Jenkins data source for Grafana")

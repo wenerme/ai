@@ -797,7 +797,7 @@ To verify, in that time the first train travels 60 * (45/7) = 2700/7 ≈ 385.71 
 
 instructions
 
-`string | null`
+`string`
 
 max\_output\_tokens
 
@@ -809,15 +809,15 @@ max\_turns
 
 parallel\_tool\_calls
 
-`boolean | null`
+`boolean`
 
 previous\_response\_id
 
-`string | null`
+`string`
 
 prompt\_cache\_key
 
-`string | null`
+`string`
 
 ▶reasoning{}
 
@@ -829,11 +829,11 @@ prompt\_cache\_key
 
 store
 
-`boolean | null`
+`boolean`
 
 stream
 
-`boolean | null`
+`boolean`
 
 temperature
 
@@ -857,7 +857,7 @@ top\_logprobs
 
 logprobs
 
-`boolean | null`
+`boolean`
 
 top\_p
 
@@ -865,7 +865,7 @@ top\_p
 
 user
 
-`string | null`
+`string`
 
 context\_management
 
@@ -889,7 +889,7 @@ created\_at
 
 completed\_at
 
-`number | null`
+`number`
 
 model
 
@@ -909,7 +909,7 @@ parallel\_tool\_calls
 
 previous\_response\_id
 
-`string | null`
+`string`
 
 reasoning
 
@@ -923,15 +923,15 @@ tool\_choice
 
 top\_p
 
-`number | null`
+`number`
 
 temperature
 
-`number | null`
+`number`
 
 instructions
 
-`string | null`
+`string`
 
 incomplete\_details
 
@@ -943,7 +943,7 @@ store
 
 user
 
-`string | null`
+`string`
 
 error
 

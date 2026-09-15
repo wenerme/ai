@@ -29,7 +29,7 @@ Granite 4.0 instruct models deliver strong performance across benchmarks, achiev
 | --- | --- |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 131,000 tokens |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
-| Unit Pricing | $0.017 per M input tokens, $0.11 per M output tokens |
+| Unit Pricing | $0.017 per M input tokens, $0.112 per M output tokens |
 
 ## Playground
 

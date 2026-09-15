@@ -29,7 +29,7 @@ Lucid Origin from Leonardo.AI is their most adaptable and prompt-responsive mode
 | --- | --- |
 | Terms and License | [link ↗](https://leonardo.ai/terms-of-service/) |
 | Partner | Yes |
-| Unit Pricing | $0.007 per 512 by 512 tile, $0.00013 per step |
+| Unit Pricing | $0.007 per 512 by 512 tile, $0.000132 per step |
 
 ## Parameters
 

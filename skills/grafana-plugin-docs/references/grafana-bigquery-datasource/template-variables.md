@@ -185,7 +185,7 @@ Expand table
 
 > Warning
 >
-> Using `'$var'` with a multi-select variable causes double quoting: `''us-east1''` — which is invalid SQL.
+> Using `'$var'` with a multi-select variable causes double quoting: `''us-east1''`, which is invalid SQL.
 
 ### Pattern matching with LIKE
 

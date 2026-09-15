@@ -29,13 +29,12 @@ FLUX.2 \[dev] is an image model from Black Forest Labs where you can generate hi
 | --- | --- |
 | Terms and License | [link ↗](https://bfl.ai/legal/terms-of-service) |
 | Partner | Yes |
-| Unit Pricing | $0.00021 per input 512x512 tile, per step, $0.00041 per output 512x512 tile, per step |
 
 ## Parameters
 
 ▶multipart{}
 
-`object`
+`object`required
 
 image
 

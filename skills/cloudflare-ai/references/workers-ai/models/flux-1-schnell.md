@@ -27,7 +27,6 @@ FLUX.1 \[schnell] is a 12 billion parameter rectified flow transformer capable o
 | Model Info | |
 | --- | --- |
 | Terms and License | [link ↗](https://bfl.ai/legal/terms-of-service) |
-| Unit Pricing | $0.000053 per 512 by 512 tile, $0.00011 per step |
 
 ## Usage
 
@@ -88,7 +87,7 @@ prompt
 
 steps
 
-`integer`default: 4maximum: 8The number of diffusion steps; higher values can improve quality but take longer.
+`integer`maximum: 8The number of diffusion steps; higher values can improve quality but take longer. Default is 4
 
 image
 
