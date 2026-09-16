@@ -216,6 +216,29 @@ Example:
 Get merge request 15 in project gitlab-org/gitlab with its commits
 ```
 
+## `start_duo_session`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/607619) in GitLab 19.5.
+
+Starts a GitLab Duo Agent Platform session that runs a flow from the AI Catalog, and returns the
+session ID. Only catalog flows can be started this way, because only those sessions can later be
+answered with `send_duo_session_input`.
+
+The session runs in a CI job that can push commits and open merge requests. The response includes a
+suggested polling delay; use `get_duo_session` with the returned `workflow_id` to follow progress.
+
+| Parameter                     | Type    | Required | Description |
+|-------------------------------|---------|----------|-------------|
+| `project_id`                  | string  | Yes      | ID or URL-encoded path of the project the flow runs in. |
+| `ai_catalog_item_consumer_id` | integer | Yes      | ID of the AI Catalog item consumer that configures which flow to run. |
+| `goal`                        | string  | Yes      | What the agent should do. This is the prompt the flow starts from. |
+
+Example:
+
+```plaintext
+Run the Developer flow in project 42 to add tests for the parser
+```
+
 ## `list_duo_sessions`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/248587) in GitLab 19.3.
@@ -259,6 +282,30 @@ Example:
 
 ```plaintext
 Check the status of Duo session 42
+```
+
+## `send_duo_session_input`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/617171) in GitLab 19.5.
+
+Answers a GitLab Duo Agent Platform session that is waiting for input: approves or rejects a
+pending plan or tool call, or replies to a question the agent asked. Only sessions with status
+`input_required` whose last CI job has finished accept input. Sessions with status
+`plan_approval_required` or `tool_call_approval_required` cannot be answered over MCP yet.
+
+The session continues in a CI job. The response includes a suggested polling delay; use
+`get_duo_session` with the same `workflow_id` to follow progress.
+
+| Parameter        | Type    | Required | Description |
+|------------------|---------|----------|-------------|
+| `workflow_id`    | integer | Yes      | ID of the Duo session, as returned by `list_duo_sessions` or `get_duo_session`. |
+| `human_approval` | boolean | Yes      | `true` approves the pending plan or tool call, `false` rejects it. When the session asked a question, pass `true` with `human_message`. |
+| `human_message`  | string  | No       | Your reply or instructions for the agent, up to 2000 characters. Required when the session asked a question. |
+
+Example:
+
+```plaintext
+Approve the plan for Duo session 42 and tell it to also add tests
 ```
 
 ## `list_merge_requests`
@@ -820,14 +867,16 @@ List the most recent tags for the gitlab-org/gitlab project
 ## `get_pipeline`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605853) in GitLab 19.3.
+- `artifacts` facet [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/585022) in GitLab 19.5.
 
-Retrieves a pipeline, and optionally its jobs, downstream pipelines, or bridge (trigger) jobs.
+Retrieves a pipeline, and optionally its jobs, downstream pipelines, bridge (trigger) jobs, or the
+artifacts its jobs produced.
 
 | Parameter     | Type    | Required | Description |
 |---------------|---------|----------|-------------|
 | `id`          | string  | Yes      | ID or full path of the project. |
 | `pipeline_id` | integer | Yes      | ID of the pipeline. |
-| `include`     | array   | No       | Facet to include alongside the pipeline, one per call: `jobs`, `downstream_pipelines`, or `bridge_jobs`. |
+| `include`     | array   | No       | Facet to include alongside the pipeline, one per call: `jobs`, `downstream_pipelines`, `bridge_jobs`, or `artifacts`. |
 | `job_status`  | string  | No       | Filters the `jobs` facet by status (for example, `failed`). Only applies when `include` is `jobs`. |
 | `first`       | integer | No       | Number of items to return for the selected `include` facet. Default is `20`, maximum is `100`. |
 | `after`       | string  | No       | Cursor for forward pagination of the selected `include` facet. Use `page_info.end_cursor` from a previous response. |
@@ -837,6 +886,10 @@ triggered a downstream pipeline yet, and when you don't have access to that pipe
 
 Each downstream pipeline includes a `project_full_path`, because a downstream pipeline can belong to
 a different project. Use that value as the `id` of a follow-up call.
+
+The `artifacts` facet returns a flat list of artifacts. Each artifact carries its `name`, `size`,
+`file_type`, expiry information, and the `job_id` and `job_name` of the job that produced it.
+Pagination pages over the pipeline's jobs, not over the artifacts.
 
 Examples:
 
@@ -856,6 +909,12 @@ Examples:
 
   ```plaintext
   Show me the downstream pipelines triggered by pipeline 12345 in project gitlab-org/gitlab
+  ```
+
+- Get the artifacts a pipeline produced:
+
+  ```plaintext
+  List the artifacts of pipeline 12345 in project gitlab-org/gitlab
   ```
 
 ## `get_pipeline_jobs`
@@ -882,19 +941,23 @@ Show me all jobs in pipeline 12345 for project gitlab-org/gitlab
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605856) in GitLab 19.3.
 - [Renamed](https://gitlab.com/gitlab-org/gitlab/-/work_items/605856) from `get_job_log` in GitLab 19.3. `get_job_log` continues to work as an alias and always returns the `log` facet, capped at `byte_limit`.
+- `artifacts` facet [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/585022) in GitLab 19.5.
 
-Gets a CI/CD job's metadata, and optionally its trace/log.
+Gets a CI/CD job's metadata, and optionally its trace/log or the artifacts it produced.
 
 | Parameter     | Type    | Required | Description |
 |---------------|---------|----------|-------------|
 | `id`          | string  | Yes      | ID or full path of the project. |
 | `job_id`      | integer | Yes      | ID of the job. |
-| `include`     | array   | No       | Facet to include alongside the job, one per call: `log`. |
+| `include`     | array   | No       | Facet to include alongside the job, one per call: `log` or `artifacts`. |
 | `byte_offset` | integer | No       | Byte offset to start reading the job's log from. Only applies when `include` is `log`. Default is `0`. |
 | `byte_limit`  | integer | No       | Maximum number of bytes of the job's log to return. Only applies when `include` is `log`. Default and maximum is `512000`. |
 
 When the log is longer than `byte_limit`, the response reports the total size and tells you the
 `byte_offset` to use for the next window.
+
+The `artifacts` facet lists every artifact the job produced, with its `name`, `size`, `file_type`,
+and expiry information.
 
 Examples:
 
@@ -908,6 +971,49 @@ Examples:
 
   ```plaintext
   Show me the log output for job 88 in project gitlab-org/gitlab
+  ```
+
+- Get a job's artifacts:
+
+  ```plaintext
+  What artifacts did job 88 in project gitlab-org/gitlab produce?
+  ```
+
+## `get_artifact_file`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/585022) in GitLab 19.5.
+
+Reads a file from inside the artifacts archive of a CI/CD job as text. To discover what a job or
+pipeline produced, use the `get_job` or `get_pipeline` tool with `include: artifacts`.
+
+| Parameter       | Type    | Required | Description |
+|-----------------|---------|----------|-------------|
+| `url`           | string  | No       | URL of the job. Provide this, or `project_id` and `job_id`. |
+| `project_id`    | string  | No       | ID or full path of the project. Required if `url` is not provided. |
+| `job_id`        | integer | No       | ID of the job. Required if `url` is not provided. |
+| `artifact_path` | string  | Yes      | Path of the file inside the artifacts archive, for example `coverage/index.html`. |
+| `byte_offset`   | integer | No       | Byte offset to start reading the file from. Default is `0`. |
+| `byte_limit`    | integer | No       | Maximum number of bytes to return. Default and maximum is `1048576` (1 MB). |
+
+The tool reads from the archive artifact only. Report artifacts stored as separate files, such as
+`junit` or `dotenv` artifacts, are not part of the archive and cannot be read with this tool.
+
+When the file is longer than `byte_limit`, the response reports the total size and tells you the
+`byte_offset` to use for the next window. Binary files are not returned; the error names the file,
+its size and type, and where to view it in the browser.
+
+Examples:
+
+- Read a test report from a job's artifacts:
+
+  ```plaintext
+  Read coverage/index.html from the artifacts of job 88 in project gitlab-org/gitlab
+  ```
+
+- Investigate a failed end-to-end test:
+
+  ```plaintext
+  Find the JUnit report in the artifacts of job 88 in gitlab-org/gitlab and summarize the failures
   ```
 
 ## `list_pipelines`

@@ -195,52 +195,11 @@ Prerequisites:
 
 In the **Workplan** widget on the work item, the confidence level appears as
 **Low**, **Medium**, or **High**.
-The score appears whether or not the work item has a workplan.
+The confidence level appears only after GitLab Duo generates a workplan and
+calculates a score.
 
 To raise the score, add more detail to the work item description and to the workplan
 steps, such as requirements, acceptance criteria, and constraints.
-
-## Decision log
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/249268) in GitLab 19.3 [with a feature flag](../../administration/feature_flags/_index.md) named `decision_log`. Disabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
-> This feature is available for testing, but not ready for production use.
-
-The decision log is a record of the decisions made about a work item. It keeps the reason for
-each decision next to the work item, so the history is not lost in chat or in comment threads.
-
-The decision log is available on issues and tasks, and on custom work item types based on issues or tasks.
-A work item does not need a workplan to have a decision log.
-
-GitLab Duo adds a decision to the log when it settles an open question while it plans the work.
-You can also record a decision yourself at any time.
-
-Prerequisites:
-
-- You must have at least the Planner role for the project.
-
-To open the decision log:
-
-- On the work item, in the header, select **Decision log** ().
-
-The button shows a count of the decisions on the work item.
-
-### Record a decision manually
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254465) in GitLab 19.5 [with a feature flag](../../administration/feature_flags/_index.md) named `decision_log`. Disabled by default.
-
-To record a decision manually:
-
-1. On the work item, in the header, select **Decision log** ().
-1. In the panel, select **New decision**.
-1. Complete the fields. The required fields are **Decision**, **Decided by**, and **Context**.
-1. Optional. In **Why**, explain why you chose this option over other options.
-1. Optional. In **Source link**, add a link to where the discussion happened, such as Slack,
-   Google Docs, or GitLab.
-1. Select **Create decision**.
 
 ## Implement a workplan with GitLab Duo
 

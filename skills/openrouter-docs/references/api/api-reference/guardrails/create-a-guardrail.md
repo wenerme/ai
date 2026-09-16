@@ -206,7 +206,10 @@ paths:
                   message: Only management keys can perform this operation
               schema:
                 $ref: '#/components/schemas/ForbiddenResponse'
-          description: Forbidden - Authentication successful but insufficient permissions
+          description: >-
+            The workspace is not owned by this account, or the guardrail would
+            give a HIPAA-enabled workspace a person-name or address
+            sensitive-info filter, which is not available there.
         '500':
           content:
             application/json:

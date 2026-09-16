@@ -58,7 +58,7 @@ IDEStandalone
    Open Cascade and try a prompt — for example:
 
    ```txt
-   Set up WAF rules to block SQL injection and XSS attacks on my application.
+   Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
    ```
 
 
@@ -164,7 +164,15 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+Add a cron trigger to my Worker that processes a job queue every hour.
+```
+
+```txt
+Build an image upload and transformation service using R2 and Cloudflare Images.
+```
+
+```txt
+Create a Logpush job to stream Workers analytics to my data warehouse.
 ```
 
 ```txt
@@ -172,15 +180,7 @@ Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
-```
-
-```txt
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
-```
-
-```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
 ```
 
 ## Tips

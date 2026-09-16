@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Regionalized Spectrum Applications
 
-Last updated Jul 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/regional-services/spectrum-applications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/regional-services/spectrum-applications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -42,13 +42,11 @@ You create a Spectrum HTTP/S application for each hostname you want to regionali
 
    Spectrum hostname limits and workarounds</summary>
 
-By default, a zone is limited to **10 unique Spectrum hostnames** (each backed by a dedicated IPv4 address). If you need to regionalize more hostnames than this, you can:
-   - **Use <a href="https://developers.cloudflare.com/spectrum/about/byoip/">BYOIP</a>** — bring your own IP space so Spectrum applications are not constrained by the default shared-IPv4 allocation.
-   - **Use IPv6-only Spectrum applications** — IPv6 addresses are not subject to the same scarcity as IPv4, so IPv6-only applications do not count against the IPv4 hostname limit.
-   - **CNAME multiple subdomains to a single Spectrum application** — point several DNS-only (gray-clouded) <code>CNAME</code> records at one Spectrum app hostname. This works only when those hostnames share the same origin (one origin per application).
-   - **Use <a href="https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/">Cloudflare for SaaS</a>** — configure the Spectrum application as the target (fallback origin) for Custom Hostnames.
+By default, an account is limited to **10 unique Spectrum hostnames** using Cloudflare-managed IPv4 addresses, across all zones on the account. Each hostname is backed by a dedicated IPv4 address, and this quota is applied at the account level — not per zone.
 
-   These are Spectrum-wide limits, not specific to Regional Services. Contact your account team if you expect to exceed them.</details>
+   If you need to regionalize more hostnames than this, refer to the workarounds in <a href="https://developers.cloudflare.com/spectrum/reference/limitations/#ipv4-hostname-quota">Spectrum limitations: IPv4 hostname quota</a> (BYOIP, IPv6-only applications, CNAMEing subdomains to a single application, or Cloudflare for SaaS).
+
+   This quota is a Spectrum-wide limit, not specific to Regional Services. Contact your account team if you expect to exceed it.</details>
 
 3. **Configure the processing region.** The region is assigned by Cloudflare, so communicate and work with your account team to confirm which [region](https://developers.cloudflare.com/data-localization/region-support/) should apply to your zone and to verify it has been configured. You can use any [managed region](https://developers.cloudflare.com/data-localization/region-support/#region-types), or request a [custom region](#custom-regions) if your compliance requirements are not met by the managed regions.
 4. **Verify regionalization.** Confirm that traffic is processed in the expected region. Refer to [Verify the configuration](#verify-the-configuration).
@@ -90,5 +88,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/regional-services/spectrum-applications/#page","headline":"Regionalized Spectrum Applications · Cloudflare Data Localization Suite docs","description":"Regionalize Spectrum HTTP/S applications, with support for Static IPs and BYOIP.","url":"https://developers.cloudflare.com/data-localization/regional-services/spectrum-applications/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/regional-services/spectrum-applications/#page","headline":"Regionalized Spectrum Applications · Cloudflare Data Localization Suite docs","description":"Regionalize Spectrum HTTP/S applications, with support for Static IPs and BYOIP.","url":"https://developers.cloudflare.com/data-localization/regional-services/spectrum-applications/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

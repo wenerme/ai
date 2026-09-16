@@ -48,6 +48,7 @@ OpenRouter sends traces to LangSmith using the OpenTelemetry (OTEL) protocol wit
 
 * **GenAI semantic conventions**: Model name, token counts, costs, and request parameters
 * **LangSmith-specific attributes**: Trace name, span kind, user ID, and custom metadata
+* **Input and output**: Prompt and completion content on the run as `langsmith.span.input` / `langsmith.span.output` and `gen_ai.prompt` / `gen_ai.completion`. The root run no longer carries a duplicate copy under `langsmith.trace.input` / `langsmith.trace.output`.
 * **Error handling**: Exception events with error types and messages when requests fail
 
 <Tip>

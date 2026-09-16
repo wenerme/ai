@@ -5,7 +5,7 @@ description: "Browse Fireworks AI model IDs, capabilities, context windows, and 
 
 # [Fireworks AI logo]Fireworks AI
 
-Access 23 Fireworks AI models through Mastra's model router. Authentication is handled automatically using the `FIREWORKS_API_KEY` environment variable.
+Access 33 Fireworks AI models through Mastra's model router. Authentication is handled automatically using the `FIREWORKS_API_KEY` environment variable.
 
 Learn more in the [Fireworks AI documentation](https://fireworks.ai/docs/).
 
@@ -62,6 +62,18 @@ for await (const chunk of stream) {
     "maxOutput": 384000,
     "inputCost": 0.22,
     "outputCost": 0.66
+  },
+  {
+    "model": "fireworks-ai/accounts/fireworks/models/deepseek-v4-pro",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 384000,
+    "inputCost": null,
+    "outputCost": null
   },
   {
     "model": "fireworks-ai/accounts/fireworks/models/deepseek-v4-pro-0813",
@@ -184,6 +196,18 @@ for await (const chunk of stream) {
     "outputCost": 15
   },
   {
+    "model": "fireworks-ai/accounts/fireworks/models/minimax-m2p7",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 196608,
+    "maxOutput": 131072,
+    "inputCost": 0.3,
+    "outputCost": 1.2
+  },
+  {
     "model": "fireworks-ai/accounts/fireworks/models/minimax-m3",
     "imageInput": false,
     "audioInput": false,
@@ -280,6 +304,30 @@ for await (const chunk of stream) {
     "outputCost": 6
   },
   {
+    "model": "fireworks-ai/accounts/fireworks/routers/deepseek-flash-latest",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 384000,
+    "inputCost": 0.22,
+    "outputCost": 0.66
+  },
+  {
+    "model": "fireworks-ai/accounts/fireworks/routers/deepseek-pro-latest",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 384000,
+    "inputCost": 1.32,
+    "outputCost": 3.96
+  },
+  {
     "model": "fireworks-ai/accounts/fireworks/routers/glm-5p2-fast",
     "imageInput": false,
     "audioInput": false,
@@ -304,6 +352,54 @@ for await (const chunk of stream) {
     "outputCost": 6.6
   },
   {
+    "model": "fireworks-ai/accounts/fireworks/routers/glm-fast-latest",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048572,
+    "maxOutput": 262144,
+    "inputCost": 2.1,
+    "outputCost": 6.6
+  },
+  {
+    "model": "fireworks-ai/accounts/fireworks/routers/glm-flash-latest",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048573,
+    "maxOutput": 131072,
+    "inputCost": 0.15,
+    "outputCost": 0.5
+  },
+  {
+    "model": "fireworks-ai/accounts/fireworks/routers/glm-latest",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048573,
+    "maxOutput": 262144,
+    "inputCost": 1.4,
+    "outputCost": 4.4
+  },
+  {
+    "model": "fireworks-ai/accounts/fireworks/routers/kimi-fast-latest",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 4.5,
+    "outputCost": 22.5
+  },
+  {
     "model": "fireworks-ai/accounts/fireworks/routers/kimi-k3-fast",
     "imageInput": true,
     "audioInput": false,
@@ -314,6 +410,30 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 4.5,
     "outputCost": 22.5
+  },
+  {
+    "model": "fireworks-ai/accounts/fireworks/routers/kimi-latest",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 3,
+    "outputCost": 15
+  },
+  {
+    "model": "fireworks-ai/accounts/fireworks/routers/minimax-latest",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 512000,
+    "maxOutput": 512000,
+    "inputCost": 0.3,
+    "outputCost": 1.2
   }
 ]}
 />
@@ -348,7 +468,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "fireworks-ai/accounts/fireworks/routers/kimi-k3-fast"
+      ? "fireworks-ai/accounts/fireworks/routers/minimax-latest"
       : "fireworks-ai/accounts/fireworks/models/deepseek-v4-flash-0731";
   }
 });

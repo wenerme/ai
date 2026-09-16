@@ -254,6 +254,29 @@ performed.
 
 ^\*\*^ Can be tested in Google AI Studio.
 
+## Gemini 3.8 Live, Gemini 3.8 Live Extended Thinking, and Gemini 3.1 Flash Live Preview
+
+*[`gemini-3.8-live`](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-live), [`gemini-3.8-live-extended-thinking`](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-live-extended-thinking), and [`gemini-3.1-flash-live-preview`](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-live-preview)*
+
+
+[Try it in Google AI Studio](https://aistudio.google.com/live?model=gemini-3.8-live)
+
+Our low-latency, audio-to-audio models optimized for real-time voice agents and
+live dialogue, including background reasoning support with Extended Thinking.
+
+### Standard
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Free of charge | $0.75 (text) $3.00 or $0.005/min (audio) $1.00 or $0.002/min (image/video) |
+| Output price (including thinking tokens) | Free of charge | $4.50 (text) $12.00 or $0.018/min (audio) |
+| Grounding with Google Search^\*^ | Supported | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+^\*^ A customer-submitted request to Gemini may result in one or more
+queries to Google Search. You will be charged for each individual search query
+performed.
+
 ## Gemini 3.5 Live Translate
 
 *[`gemini-3.5-live-translate-preview`](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-live-translate-preview)*
@@ -539,27 +562,6 @@ queries to Google Search. You will be charged for each individual search query
 performed.
 
 ^\*\*^ Can be tested in Google AI Studio.
-
-## Gemini 3.1 Flash Live Preview
-
-*[`gemini-3.1-flash-live-preview`](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-live-preview)*
-
-
-[Try it in Google AI Studio](https://aistudio.google.com/prompts/new_chat?model=gemini-3.1-flash-live-preview)
-
-Our low-latency, audio-to-audio model optimized for real-time dialogue with
-acoustic nuance detection, numeric precision, and multimodal awareness.
-
-|   | Free Tier | Paid Tier, per 1M tokens in USD |
-|---|---|---|
-| Input price | Free of charge | $0.75 (text) $3.00 or $0.005/min (audio) $1.00 or $0.002/min (image/video) |
-| Output price (including thinking tokens) | Free of charge | $4.50 (text) $12.00 or $0.018/min (audio) |
-| Grounding with Google Search^\*^ | Supported | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
-| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
-
-^\*^ A customer-submitted request to Gemini may result in one or more
-queries to Google Search. You will be charged for each individual search query
-performed.
 
 ## Gemini 3.1 Flash Image (Nano Banana 2) 🍌
 

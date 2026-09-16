@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Add an infrastructure application
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 <details>
 
@@ -37,7 +37,9 @@ Feature availability
 
 </details>
 
-Access for Infrastructure allows you to have granular control over how users access individual servers, clusters, or databases. By adding an infrastructure application to Cloudflare Access, you can configure how users authenticate to the resource as well as control and authorize the ports, protocols, and usernames that they can connect with. Access and command logs ensure regulatory compliance and allow for auditing of user activity in case of a security breach.
+Access for Infrastructure gives you granular control over how users access individual servers, clusters, or databases. You can configure how users authenticate to the resource and control the ports, protocols, and usernames they can use.
+
+You can also organize targets with tags and define applications that match targets by hostname, tag, or both. Access logs and command logs help you audit access and support compliance workflows.
 
 Note
 
@@ -71,7 +73,8 @@ Note
 If the target IP does not appear in the dropdown, go to **Networking** > **Routes** and confirm that the IP routes through Cloudflare Tunnel.
 
 5. In the dropdown menu, select the IP address and [virtual network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) where the resource is located. This IP address and virtual network pairing is now assigned to this target and cannot be reused in another target by design.
-6. Select **Add target**.
+6. (Optional) In **Tags**, add key-value tags to organize your target. For example, use `environment`, `team`, or `region` to group targets and match them later in [target criteria](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/#target-criteria). Each tag key can only appear once on a target. For example, a single target can have `environment:production` or `environment:staging`, but not both.
+7. Select **Add target**.
 
 Make a `POST` request to the [Infrastructure Access Targets](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/infrastructure/subresources/targets/methods/create/) endpoint:
 
@@ -92,9 +95,15 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/infrastructure/t
 						"ip_addr": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
 						"virtual_network_id": "c77b744e-acc8-428f-9257-6878c046ed55"
 				}
+		},
+		"tags": {
+				"environment": "production",
+				"team": "platform"
 		}
 	}'
 ```
+
+The `tags` field is optional. Use [Resource Tagging](https://developers.cloudflare.com/resource-tagging/) to manage tags. Each key can only appear once per target.
 
 Provider versions
 
@@ -121,9 +130,43 @@ The following example requires Cloudflare provider version `>=4.45.0`.
    }
    ```
 
-
+   To manage tags with Terraform, use the [`cloudflare_resource_tag` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/resource_tag) resource.
 
 Next, create an Access application to secure the target.
+
+### Tag targets
+
+You can attach key-value [resource tags](https://developers.cloudflare.com/resource-tagging/) to infrastructure targets. Use them to organize targets by environment, team, region, or other metadata.
+
+You can then define infrastructure applications that automatically cover any target with matching values.
+
+You can manage tags inline when you create or edit a target or through the [Resource Tagging API](https://developers.cloudflare.com/resource-tagging/how-to/manage-tags/).
+
+Each tag key can only appear once on a target. For example, a target can have `environment:production` or `environment:staging`, but not both.
+
+### Filter and sort targets by tag
+
+You can filter and sort targets by tag values.
+
+In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Targets**. Use the filter and sort controls to narrow the list by tag key or value.
+
+To filter targets by tag, add one or more `tag` query parameters:
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/infrastructure/targets?tag=environment:production&tag=team:platform" \
+  -H "Authorization: Bearer $API_TOKEN"
+```
+
+Use `:` between the tag key and value in each filter. If you add multiple `tag` parameters, Cloudflare applies AND logic.
+
+To sort by tag key, use the `order` and `direction` parameters:
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/infrastructure/targets?order=tag:environment&direction=asc" \
+  -H "Authorization: Bearer $API_TOKEN"
+```
+
+The sort parameter also uses `:` in `order=tag:<key>` because it identifies the tag field to sort by.
 
 ## 2. Add an infrastructure application
 
@@ -131,9 +174,9 @@ Next, create an Access application to secure the target.
 2. Select **Create new application**.
 3. Select **Infrastructure**.
 4. Enter any name for the application.
-5. In **Target criteria**, select the target hostname(s) that you want to secure. This application definition will apply to all targets that share the selected hostname, including any targets added in the future. Similarly, if you later decide to change the hostname for a target, the renamed target will no longer be covered by this application.
+5. In **Target criteria**, choose which targets this application covers. Match targets by hostname, tag, or both. Use `include` to match any value. Use `require` to match all values. Use `exclude` to reject matching targets.
 6. Enter the **Protocol** and **Port** that will be used to connect to the server.
-7. (Optional) If a protocol runs on more than one port, select **Add new target criteria** and reconfigure the same target hostname and protocol with a different port number.
+7. (Optional) If a protocol runs on more than one port, select **Add new target criteria** and reconfigure the same target criteria and protocol with a different port number.
 
    Note
 
@@ -152,6 +195,8 @@ Next, create an Access application to secure the target.
 10. Select **Add application**.
 
 Make a `POST` request to the [Access applications](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/create/) endpoint:
+
+The following example uses the operator-based target criteria format with `include`, `require`, and `exclude`:
 
 <details>
 
@@ -178,13 +223,35 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \
 		"type": "infrastructure",
 		"target_criteria": [
 				{
-						"target_attributes": {
-								"hostname": [
-										"infra-access-target"
-								]
-						},
 						"port": 22,
-						"protocol": "SSH"
+						"protocol": "SSH",
+						"include": {
+								"target_attributes": {
+										"hostname": [
+												"infra-access-target"
+										]
+								},
+								"tags": {
+										"environment": [
+												"production",
+												"staging"
+										]
+								}
+						},
+						"require": {
+								"tags": {
+										"team": [
+												"platform"
+										]
+								}
+						},
+						"exclude": {
+								"tags": {
+										"lifecycle": [
+												"decommissioned"
+										]
+								}
+						}
 				}
 		],
 		"policies": [
@@ -211,6 +278,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \
 	}'
 ```
 
+For more information about target criteria formats, refer to [Target criteria](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/#target-criteria).
+
 Provider versions
 
 The following example requires Cloudflare provider version `>=4.45.0`.
@@ -236,7 +305,7 @@ The following example requires Cloudflare provider version `>=4.45.0`.
    }
    ```
 
-
+   To match targets by tag, define `include`, `require`, or `exclude` blocks with `tags` selectors.
 3. Use the [`cloudflare_zero_trust_access_policy` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/zero_trust_access_policy) resource to add an infrastructure policy to the application:
 
    ```tf
@@ -365,6 +434,28 @@ Infrastructure Access supports granular read permissions through [Cloudflare's r
 
 This is useful for organizations that want to give teams visibility into their own infrastructure targets without exposing the full target inventory.
 
+## Target criteria
+
+Use target criteria to define which targets an infrastructure application covers. Each target criteria entry includes a protocol, a port, and selectors that match targets by hostname, tag, or both.
+
+The `target_attributes` selector only supports `hostname` in both the legacy and operator-based formats. Cloudflare rejects any other `target_attributes` key.
+
+A target can only store one value for each tag key. This limit does not apply to target criteria. For example, an application can match both `environment:production` and `environment:staging` in `include`, `require`, or `exclude`.
+
+### Operators
+
+| Operator | Logic | Description |
+| --- | --- | --- |
+| `include` | OR | Target must match at least one included selector. |
+| `require` | AND | Target must match all required selectors. |
+| `exclude` | NOT(OR) | Target is rejected if it matches any excluded selector. |
+
+Combined evaluation: **(any include) AND (all requires) AND NOT (any excludes)**.
+
+### Legacy format
+
+You can continue to use the flat `target_attributes` format for existing hostname-only applications. This only matters if you manage applications through the API or Terraform. For each target criteria entry, choose one format: either flat `target_attributes` or operator-based `include`, `require`, and `exclude`.
+
 ## Infrastructure policy selectors
 
 The following [Access policy selectors](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#selectors) are available for securing infrastructure applications:
@@ -386,5 +477,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/#page","headline":"Add an infrastructure application · Cloudflare One docs","description":"Add an infrastructure application in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH","Authentication"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/#page","headline":"Add an infrastructure application · Cloudflare One docs","description":"Add an infrastructure application in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH","Authentication"]}
 ```

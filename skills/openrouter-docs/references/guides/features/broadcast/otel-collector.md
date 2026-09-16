@@ -119,6 +119,8 @@ Custom metadata keys are included as span attributes under the `trace.metadata.*
 
 Standard GenAI semantic conventions (`gen_ai.*`) are used for model, token usage, and cost attributes.
 
+Prompt and completion content is emitted once per generation, on the generation span, as `span.input` / `span.output` and `gen_ai.prompt` / `gen_ai.completion`. The root span no longer carries a duplicate copy under `trace.input` / `trace.output`; if your dashboards or processors read those keys, switch them to the generation-span attributes.
+
 ### Additional Context
 
 * The `user` field maps to `user.id` in span attributes

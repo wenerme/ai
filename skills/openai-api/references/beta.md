@@ -111671,6 +111671,38 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       The canonical name of the agent that produced this item.
 
+### Beta Response Compaction Compacting Event
+
+- `BetaResponseCompactionCompactingEvent object { item_id, output_index, sequence_number, 2 more }`
+
+  Emitted when new summary content is sampled for a compaction trigger. Contains no summary content.
+
+  - `item_id: string`
+
+    The ID of the compaction output item.
+
+  - `output_index: number`
+
+    The index of the compaction output item.
+
+  - `sequence_number: number`
+
+    The sequence number of the event that was emitted.
+
+  - `type: "response.compaction.compacting"`
+
+    The type of the event, always `response.compaction.compacting`.
+
+    - `"response.compaction.compacting"`
+
+  - `agent: optional object { agent_name }`
+
+    The agent that owns this multi-agent streaming event.
+
+    - `agent_name: string`
+
+      The canonical name of the agent that produced this item.
+
 ### Beta Response Completed Event
 
 - `BetaResponseCompletedEvent object { response, sequence_number, type, agent }`
@@ -209591,7 +209623,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
 ### Beta Response Stream Event
 
-- `BetaResponseStreamEvent = BetaResponseAudioDeltaEvent or BetaResponseAudioDoneEvent or BetaResponseAudioTranscriptDeltaEvent or 55 more`
+- `BetaResponseStreamEvent = BetaResponseAudioDeltaEvent or BetaResponseAudioDoneEvent or BetaResponseAudioTranscriptDeltaEvent or 56 more`
 
   Event emitted while a response is streamed.
 
@@ -209842,6 +209874,36 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `"response.code_interpreter_call.interpreting"`
 
     - `agent: optional object { agent_name }  or null`
+
+      The agent that owns this multi-agent streaming event.
+
+      - `agent_name: string`
+
+        The canonical name of the agent that produced this item.
+
+  - `BetaResponseCompactionCompactingEvent object { item_id, output_index, sequence_number, 2 more }`
+
+    Emitted when new summary content is sampled for a compaction trigger. Contains no summary content.
+
+    - `item_id: string`
+
+      The ID of the compaction output item.
+
+    - `output_index: number`
+
+      The index of the compaction output item.
+
+    - `sequence_number: number`
+
+      The sequence number of the event that was emitted.
+
+    - `type: "response.compaction.compacting"`
+
+      The type of the event, always `response.compaction.compacting`.
+
+      - `"response.compaction.compacting"`
+
+    - `agent: optional object { agent_name }`
 
       The agent that owns this multi-agent streaming event.
 
@@ -235017,7 +235079,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
 ### Beta Responses Server Event
 
-- `BetaResponsesServerEvent = BetaResponseAudioDeltaEvent or BetaResponseAudioDoneEvent or BetaResponseAudioTranscriptDeltaEvent or 60 more`
+- `BetaResponsesServerEvent = BetaResponseAudioDeltaEvent or BetaResponseAudioDoneEvent or BetaResponseAudioTranscriptDeltaEvent or 61 more`
 
   Server events emitted by the Responses WebSocket server.
 
@@ -235104,6 +235166,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
   - `BetaResponseCodeInterpreterCallWsInterpreting = BetaResponseCodeInterpreterCallInterpretingEvent`
 
     Emitted when the code interpreter is actively interpreting the code snippet.
+
+    - `stream_id: optional string`
+
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
+
+  - `BetaResponseCompactionWsCompacting = BetaResponseCompactionCompactingEvent`
+
+    Emitted when new summary content is sampled for a compaction trigger. Contains no summary content.
 
     - `stream_id: optional string`
 

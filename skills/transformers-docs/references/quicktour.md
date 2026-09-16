@@ -130,7 +130,7 @@ tokenizer.batch_decode(generated_ids)[0]
 ```
 
 > [!TIP]
-> Skip ahead to the [Trainer](#trainer-api) section to learn how to fine-tune a model.
+> Skip ahead to the [Trainer](#trainer) section to learn how to fine-tune a model.
 
 ## Pipeline
 

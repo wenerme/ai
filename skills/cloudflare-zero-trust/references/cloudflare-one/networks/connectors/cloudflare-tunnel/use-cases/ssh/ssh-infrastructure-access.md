@@ -84,7 +84,8 @@ Note
 If the target IP does not appear in the dropdown, go to **Networking** > **Routes** and confirm that the IP routes through Cloudflare Tunnel.
 
 5. In the dropdown menu, select the IP address and [virtual network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) where the resource is located. This IP address and virtual network pairing is now assigned to this target and cannot be reused in another target by design.
-6. Select **Add target**.
+6. (Optional) In **Tags**, add key-value tags to organize your target. For example, use `environment`, `team`, or `region` to group targets and match them later in [target criteria](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/#target-criteria). Each tag key can only appear once on a target. For example, a single target can have `environment:production` or `environment:staging`, but not both.
+7. Select **Add target**.
 
 Make a `POST` request to the [Infrastructure Access Targets](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/infrastructure/subresources/targets/methods/create/) endpoint:
 
@@ -105,9 +106,15 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/infrastructure/t
 						"ip_addr": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
 						"virtual_network_id": "c77b744e-acc8-428f-9257-6878c046ed55"
 				}
+		},
+		"tags": {
+				"environment": "production",
+				"team": "platform"
 		}
 	}'
 ```
+
+The `tags` field is optional. Use [Resource Tagging](https://developers.cloudflare.com/resource-tagging/) to manage tags. Each key can only appear once per target.
 
 Provider versions
 
@@ -134,7 +141,7 @@ The following example requires Cloudflare provider version `>=4.45.0`.
    }
    ```
 
-
+   To manage tags with Terraform, use the [`cloudflare_resource_tag` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/resource_tag) resource.
 
 Next, create an Access application to secure the target.
 
@@ -144,9 +151,9 @@ Next, create an Access application to secure the target.
 2. Select **Create new application**.
 3. Select **Infrastructure**.
 4. Enter any name for the application.
-5. In **Target criteria**, select the target hostname(s) that you want to secure. This application definition will apply to all targets that share the selected hostname, including any targets added in the future. Similarly, if you later decide to change the hostname for a target, the renamed target will no longer be covered by this application.
+5. In **Target criteria**, choose which targets this application covers. Match targets by hostname, tag, or both. Use `include` to match any value. Use `require` to match all values. Use `exclude` to reject matching targets.
 6. Enter the **Protocol** and **Port** that will be used to connect to the server.
-7. (Optional) If a protocol runs on more than one port, select **Add new target criteria** and reconfigure the same target hostname and protocol with a different port number.
+7. (Optional) If a protocol runs on more than one port, select **Add new target criteria** and reconfigure the same target criteria and protocol with a different port number.
 
    Note
 
@@ -165,6 +172,8 @@ Next, create an Access application to secure the target.
 10. Select **Add application**.
 
 Make a `POST` request to the [Access applications](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/create/) endpoint:
+
+The following example uses the operator-based target criteria format with `include`, `require`, and `exclude`:
 
 <details>
 
@@ -191,13 +200,35 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \
 		"type": "infrastructure",
 		"target_criteria": [
 				{
-						"target_attributes": {
-								"hostname": [
-										"infra-access-target"
-								]
-						},
 						"port": 22,
-						"protocol": "SSH"
+						"protocol": "SSH",
+						"include": {
+								"target_attributes": {
+										"hostname": [
+												"infra-access-target"
+										]
+								},
+								"tags": {
+										"environment": [
+												"production",
+												"staging"
+										]
+								}
+						},
+						"require": {
+								"tags": {
+										"team": [
+												"platform"
+										]
+								}
+						},
+						"exclude": {
+								"tags": {
+										"lifecycle": [
+												"decommissioned"
+										]
+								}
+						}
 				}
 		],
 		"policies": [
@@ -224,6 +255,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \
 	}'
 ```
 
+For more information about target criteria formats, refer to [Target criteria](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/#target-criteria).
+
 Provider versions
 
 The following example requires Cloudflare provider version `>=4.45.0`.
@@ -249,7 +282,7 @@ The following example requires Cloudflare provider version `>=4.45.0`.
    }
    ```
 
-
+   To match targets by tag, define `include`, `require`, or `exclude` blocks with `tags` selectors.
 3. Use the [`cloudflare_zero_trust_access_policy` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/zero_trust_access_policy) resource to add an infrastructure policy to the application:
 
    ```tf

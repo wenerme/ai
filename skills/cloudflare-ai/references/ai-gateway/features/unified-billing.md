@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Unified Billing
 
-Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/unified-billing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/unified-billing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Unified Billing allows users to call Workers AI and connect to various AI providers (such as OpenAI, Anthropic, and Google AI Studio) and receive a single Cloudflare bill. To use Unified Billing, you must purchase and load credits into your Cloudflare account in the Cloudflare dashboard, which you can then spend with AI Gateway.
 
@@ -62,6 +62,21 @@ Note
 On requests routed through Unified Billing endpoints (for example, `env.AI.run()` or `/ai/v1/chat/completions`), only the BYOK key stored under the `default` alias prevents fall-through to Unified Billing. Keys stored under other aliases are not consulted on this path — a request will fall through to Unified Billing even if you have a key stored under, for example, `production` or `testing`.
 
 The `cf-aig-byok-alias` header selects a non-default alias only on [direct provider-passthrough](https://developers.cloudflare.com/ai-gateway/usage/providers/) requests.
+
+## Prevent Unified Billing fallback for BYOK third-party providers
+
+Turn on **Require provider credentials** to prevent Unified Billing fallback for third-party providers. Third-party provider requests must use credentials supplied with the request or stored on the gateway. Requests without applicable credentials return an HTTP `400` response instead of using Cloudflare-managed credentials.
+
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **AI** > **AI Gateway**. [Go to **AI Gateway** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
+2. Select your gateway.
+3. Go to **Settings** and turn on **Require provider credentials**.
+4. Confirm the change.
+
+Send a [`PUT` request](https://developers.cloudflare.com/api/resources/ai_gateway/methods/update/) to update the gateway. Include `byok_only: true` in the request body.
+
+To require provider credentials for one third-party provider request, set the `cf-aig-no-wholesale` header to `true`. This header can prevent Unified Billing fallback but cannot relax the gateway setting. If **Require provider credentials** is on, setting the header to `false` has no effect.
+
+Workers AI requests do not use provider credentials. This setting does not block these requests or change the gateway's configured Workers AI billing mode.
 
 ## Use Unified Billing
 
@@ -189,5 +204,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/unified-billing/#page","headline":"Unified Billing · Cloudflare AI Gateway docs","description":"Use the Cloudflare billing to pay for and authenticate your inference requests.","url":"https://developers.cloudflare.com/ai-gateway/features/unified-billing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/unified-billing/#page","headline":"Unified Billing · Cloudflare AI Gateway docs","description":"Use the Cloudflare billing to pay for and authenticate your inference requests.","url":"https://developers.cloudflare.com/ai-gateway/features/unified-billing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

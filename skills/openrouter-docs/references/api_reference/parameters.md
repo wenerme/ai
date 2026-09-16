@@ -119,6 +119,8 @@ If specified, the inferencing will sample deterministically, such that repeated 
 
 This sets the upper limit for the number of tokens the model can generate in response. It won't produce more than this limit. The maximum value is the context length minus the prompt length.
 
+For reasoning models, this limit covers reasoning tokens and visible output together on most providers. A small `max_tokens` can be consumed entirely by reasoning, returning `finish_reason: "length"` with empty `content`. See [Reasoning tokens and max\_tokens](/docs/guides/best-practices/reasoning-tokens#reasoning-tokens-and-max_tokens) for details.
+
 ## Max Completion Tokens
 
 * Key: `max_completion_tokens`
@@ -126,6 +128,8 @@ This sets the upper limit for the number of tokens the model can generate in res
 * Optional, **integer**, 1 or above
 
 This sets the upper limit for the number of tokens the model can generate in response. It won't produce more than this limit. The maximum value is the context length minus the prompt length.
+
+This parameter shares `max_tokens` semantics, including the reasoning-token caveat above.
 
 ## Logit Bias
 
