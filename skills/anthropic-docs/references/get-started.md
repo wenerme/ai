@@ -7,7 +7,7 @@ description: Make your first API call to Claude and build a simple web search as
 ## Prerequisites
 
 * A [Claude Console account](https://platform.claude.com)
-* An [API key](https://platform.claude.com/settings/keys)
+* An [API key](https://platform.claude.com/docs/en/get-api-key)
 
 ## Call the API
 
@@ -436,7 +436,7 @@ description: Make your first API call to Claude and build a simple web search as
             }
 
             dependencies {
-                implementation("com.anthropic:anthropic-java:2.57.0")
+                implementation("com.anthropic:anthropic-java:2.60.0")
             }
 
             application {
@@ -462,7 +462,7 @@ description: Make your first API call to Claude and build a simple web search as
                 <dependency>
                   <groupId>com.anthropic</groupId>
                   <artifactId>anthropic-java</artifactId>
-                  <version>2.57.0</version>
+                  <version>2.60.0</version>
                 </dependency>
               </dependencies>
             </project>

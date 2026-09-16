@@ -55,6 +55,8 @@ For RKMPP to work:
 
 ## Setup
 
+<ComposeBuilder />
+
 #### Basic Setup
 
 1. If you do not already have it, download the latest [`hwaccel.transcoding.yml`][hw-file] file and ensure it's in the same folder as the `docker-compose.yml`.

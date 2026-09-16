@@ -151,9 +151,9 @@
   },
   "claude-directory.md": {
     "url": "https://code.claude.com/docs/en/claude-directory",
-    "lastModified": "Wed, 16 Sep 2026 04:33:03 GMT",
-    "size": 99580,
-    "updatedAt": "2026-09-16T04:33:03.138Z"
+    "lastModified": "Wed, 16 Sep 2026 14:49:47 GMT",
+    "size": 100600,
+    "updatedAt": "2026-09-16T14:49:47.676Z"
   },
   "claude-platform-on-aws.md": {
     "url": "https://code.claude.com/docs/en/claude-platform-on-aws",
@@ -397,9 +397,9 @@
   },
   "hooks.md": {
     "url": "https://code.claude.com/docs/en/hooks",
-    "lastModified": "Wed, 16 Sep 2026 04:33:22 GMT",
-    "size": 327571,
-    "updatedAt": "2026-09-16T04:33:22.537Z"
+    "lastModified": "Wed, 16 Sep 2026 14:50:07 GMT",
+    "size": 327666,
+    "updatedAt": "2026-09-16T14:50:07.958Z"
   },
   "hooks-guide.md": {
     "url": "https://code.claude.com/docs/en/hooks-guide",
@@ -577,9 +577,9 @@
   },
   "plugin-marketplaces.md": {
     "url": "https://code.claude.com/docs/en/plugin-marketplaces",
-    "lastModified": "Wed, 16 Sep 2026 04:33:36 GMT",
-    "size": 120147,
-    "updatedAt": "2026-09-16T04:33:36.655Z"
+    "lastModified": "Wed, 16 Sep 2026 14:50:24 GMT",
+    "size": 123290,
+    "updatedAt": "2026-09-16T14:50:24.689Z"
   },
   "plugin-relevance.md": {
     "url": "https://code.claude.com/docs/en/plugin-relevance",
@@ -589,15 +589,15 @@
   },
   "plugins.md": {
     "url": "https://code.claude.com/docs/en/plugins",
-    "lastModified": "Sat, 12 Sep 2026 04:17:17 GMT",
-    "size": 30753,
-    "updatedAt": "2026-09-12T04:17:17.676Z"
+    "lastModified": "Wed, 16 Sep 2026 14:50:25 GMT",
+    "size": 31286,
+    "updatedAt": "2026-09-16T14:50:25.610Z"
   },
   "plugins-reference.md": {
     "url": "https://code.claude.com/docs/en/plugins-reference",
-    "lastModified": "Wed, 16 Sep 2026 04:33:38 GMT",
-    "size": 135496,
-    "updatedAt": "2026-09-16T04:33:38.042Z"
+    "lastModified": "Wed, 16 Sep 2026 14:50:26 GMT",
+    "size": 138204,
+    "updatedAt": "2026-09-16T14:50:26.075Z"
   },
   "prompt-caching.md": {
     "url": "https://code.claude.com/docs/en/prompt-caching",

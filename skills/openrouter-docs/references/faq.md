@@ -115,18 +115,19 @@ export const BYOK_ENTERPRISE_MONTHLY_LIST_PRICE_THRESHOLD_USD = '$200,000';
   </Accordion>
 
   <Accordion title="What are model variants?">
-    Variants are suffixes that can be added to the model slug to change its behavior.
+    Variants are suffixes that can be added to the model slug to change its behavior. There are two kinds. See the [Model Variants overview](/docs/guides/routing/model-variants/overview) for the full reference and the rule for resolving a suffixed ID to its metadata.
 
-    Static variants can only be used with specific models and these are listed in our [models api](https://openrouter.ai/api/v1/models).
+    Catalog variants are separate entries in our [models api](https://openrouter.ai/api/v1/models) with their own pricing, context length, and endpoints. They only work on the models that list them.
 
-    1. `:free` - The model is always provided for free and has low rate limits. [Learn more](/docs/guides/routing/model-variants/free).
+    1. `:free` - A free version of the model with its own rate limits. [Learn more](/docs/guides/routing/model-variants/free).
+    2. `:batch` - The batch-priced version of the model used by the [Batch API](/docs/batch-quickstart).
 
-    Dynamic variants can be used on all models and they change the behavior of how the request is routed or used.
+    Routing variants work on every model and change how the request is routed. They are not listed in the models api, and the model's metadata is the base model's.
 
-    1. `:online` (deprecated) - All requests will run a query to extract web results that are attached to the prompt. Use the [`openrouter:web_search` server tool](/docs/guides/features/server-tools/web-search) instead. [Learn more](/docs/guides/routing/model-variants/online).
-    2. `:nitro` - Providers will be sorted by throughput rather than the default sort, optimizing for faster response times. [Learn more](/docs/guides/routing/provider-selection#nitro-shortcut).
-    3. `:floor` - Providers will be sorted by price rather than the default sort, prioritizing the most cost-effective options. [Learn more](/docs/guides/routing/provider-selection#floor-price-shortcut).
-    4. `:exacto` - Providers will be sorted using quality-first signals tuned for tool-calling reliability. [Learn more](/docs/guides/routing/model-variants/exacto).
+    1. `:nitro` - Providers will be sorted by throughput rather than the default sort, optimizing for faster response times. [Learn more](/docs/guides/routing/model-variants/nitro).
+    2. `:floor` - Providers will be sorted by price rather than the default sort, prioritizing the most cost-effective options. [Learn more](/docs/guides/routing/model-variants/floor).
+    3. `:exacto` - Providers will be sorted using quality-first signals tuned for tool-calling reliability. [Learn more](/docs/guides/routing/model-variants/exacto).
+    4. `:online` (deprecated) - All requests will run a query to extract web results that are attached to the prompt. Use the [`openrouter:web_search` server tool](/docs/guides/features/server-tools/web-search) instead. [Learn more](/docs/guides/routing/model-variants/online).
   </Accordion>
 
   <Accordion title="I am an inference provider, how can I get listed on OpenRouter?">

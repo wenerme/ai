@@ -31,6 +31,7 @@ from authoring_roundtrip import (  # noqa: E402
     RoundtripPage,
     is_flat_authoring_bundle,
     materialize_flat_authoring_roundtrip,
+    roundtrip_source_fingerprint,
 )
 from console_encoding import configure_utf8_stdio  # noqa: E402
 from language_tags import (  # noqa: E402
@@ -48,6 +49,7 @@ from pptx_animations import (  # noqa: E402
     animation_seconds_to_milliseconds,
     normalize_animation_effect,
     normalize_animation_trigger,
+    read_slide_click_dependencies,
 )
 from pptx_transitions import (  # noqa: E402
     DEFAULT_TRANSITION_DURATION,
@@ -68,6 +70,7 @@ from pptx_workspace import (  # noqa: E402
     source_pptx_path,
     workspace_resource_specs,
 )
+from slide_roster import discover_slide_svgs  # noqa: E402
 
 configure_utf8_stdio()
 
@@ -503,6 +506,7 @@ def _roundtrip_slide_patches(
     force_transition_replaced: bool,
     force_animation_changed: bool,
     force_notes_changed: bool,
+    force_advance_changed: bool = False,
 ) -> dict[int, RoundtripSlidePatch]:
     """Build strict source-overlay metadata for edited authoring slides."""
     if authoring_report is None:
@@ -539,10 +543,20 @@ def _roundtrip_slide_patches(
         animation_config,
         pages,
     )
-    animation_defaults = _as_dict(animation_config.get("defaults"))
-    default_transition_config = _as_dict(
-        animation_defaults.get("transition")
-    )
+    baseline = animation.get("baseline")
+    if not isinstance(baseline, dict):
+        # Older workspaces stored only a combined hash. Recover their import
+        # projection in memory from the immutable source, without publishing it.
+        from pptx_to_svg.converter import ConvertOptions, convert_pptx_to_svg
+
+        baseline = convert_pptx_to_svg(
+            source_pptx_path(project_path),
+            options=ConvertOptions(inheritance_mode="both", roundtrip=True),
+        ).animation_config
+    animation_defaults = _as_dict(_as_dict(animation_config.get("defaults")).get("animation"))
+    baseline_defaults = _as_dict(_as_dict(baseline.get("defaults")).get("animation"))
+    defaults_transition = _as_dict(_as_dict(animation_config.get("defaults")).get("transition"))
+    baseline_defaults_transition = _as_dict(_as_dict(baseline.get("defaults")).get("transition"))
 
     documents = authoring_report.get("documents")
     if not isinstance(documents, list):
@@ -574,45 +588,40 @@ def _roundtrip_slide_patches(
                 f"Round-trip manifest has no source slide {page.source_slide} "
                 "for authoring overlay"
             )
-        expected_animation = row.get("animationSha256")
-        if not isinstance(expected_animation, str):
-            raise RuntimeError(
-                f"Round-trip manifest slide {page.source_slide} lacks "
-                "animationSha256"
-            )
-        sidecar_changed = (
-            slide_animation_config_sha256(
-                animation_config,
-                page.svg_stem,
-            )
-            != expected_animation
-        )
         slide_config = _as_dict(
             _as_dict(animation_config.get("slides")).get(page.svg_stem)
         )
+        baseline_slide = _as_dict(
+            _as_dict(baseline.get("slides")).get(Path(page.source_svg_name).stem)
+        )
         slide_transition_config = _as_dict(slide_config.get("transition"))
-        effective_transition_config = resolve_slide_animation_config(
-            default_transition_config,
-            slide_transition_config,
-        )
-        sidecar_transition_applies = (
-            bool(default_transition_config)
-            or "transition" in slide_config
-        )
-        transition_changed = force_transition_changed or (
-            sidecar_changed and sidecar_transition_applies
-        )
-        transition_replaced = force_transition_replaced or (
-            sidecar_changed
-            and sidecar_transition_applies
-            and any(
-                key in effective_transition_config
-                for key in ("effect", "effect_options", "duration", "sound")
+        baseline_transition = _as_dict(baseline_slide.get("transition"))
+        def _transition_key_changed(key: str) -> bool:
+            # A slide row wins; otherwise a user-edited default (different from
+            # the import baseline default) is a deck-wide request.
+            if key in slide_transition_config:
+                return slide_transition_config[key] != baseline_transition.get(key)
+            return (
+                key in defaults_transition
+                and defaults_transition[key] != baseline_defaults_transition.get(key)
             )
+
+        transition_replaced = force_transition_replaced or any(
+            _transition_key_changed(key)
+            for key in ("effect", "effect_options", "duration", "sound")
         )
+        advance_changed = force_advance_changed or _transition_key_changed("auto_advance")
+        transition_changed = force_transition_changed or transition_replaced or advance_changed
         animation_changed = force_animation_changed or (
-            sidecar_changed
-            and any(key in slide_config for key in ("animation", "groups"))
+            (
+                ("animation" in slide_config or animation_defaults != baseline_defaults)
+                and resolve_slide_animation_config(animation_defaults, _as_dict(slide_config.get("animation")))
+                != resolve_slide_animation_config(baseline_defaults, _as_dict(baseline_slide.get("animation")))
+            )
+            or (
+                "groups" in slide_config
+                and _as_dict(slide_config.get("groups")) != _as_dict(baseline_slide.get("groups"))
+            )
         )
         motion_changed = (
             force_motion_changed
@@ -650,6 +659,7 @@ def _roundtrip_slide_patches(
             transition_changed=transition_changed,
             transition_replaced=transition_replaced,
             animation_changed=animation_changed,
+            advance_changed=advance_changed,
             notes_changed=(
                 force_notes_changed
                 or _roundtrip_note_changed(project_path, row, page)
@@ -1413,7 +1423,11 @@ def _write_postflight_report(
             f"{package['slides']} != {len(svg_files)}"
         )
     source_audit = _source_resource_audit(svg_files)
-    source_fingerprint = _svg_source_fingerprint(svg_files)
+    source_fingerprint = (
+        roundtrip_source_fingerprint(project_path)
+        if authoring_roundtrip is not None
+        else _svg_source_fingerprint(svg_files)
+    )
     quality = _quality_report_context(project_path, source_fingerprint)
     quality_gate, introduced_warning_count = _quality_gate_status(quality)
     unresolved_tokens = source_audit['unresolved_template_tokens']
@@ -1565,9 +1579,14 @@ def _load_deck_motion_handoff(
     if report.get('status') not in {'passed', 'passed-with-warnings'}:
         raise ValueError('deck-motion handoff report is not a successful export')
     source = _as_dict(report.get('source'))
-    if source.get('fingerprint') != _svg_source_fingerprint(svg_files):
+    current_fingerprint = (
+        roundtrip_source_fingerprint(project_path)
+        if source.get('authoring_roundtrip') is not None
+        else _svg_source_fingerprint(svg_files)
+    )
+    if source.get('fingerprint') != current_fingerprint:
         raise ValueError(
-            'deck-motion handoff does not match the current svg_output; '
+            'deck-motion handoff does not match the current source inputs; '
             'run the base export again'
         )
     motion = report.get('deck_motion')
@@ -1641,7 +1660,7 @@ def _svg_root_language(project_path: Path) -> str | None:
     Quick has no lock; its pages carry the deck language on the root
     ``<svg lang="...">`` instead.
     """
-    pages = sorted((project_path / 'svg_output').glob('*.svg'))
+    pages = discover_slide_svgs(project_path / 'svg_output')
     for page in pages[:1]:
         try:
             with open(str(page), 'rb') as page_file:
@@ -1829,13 +1848,39 @@ def _recorded_narration_on_click_slides(
     animation: str | None,
     animation_trigger: str,
     animation_cli_overrides: dict[str, bool],
+    *,
+    roundtrip_source: Path | None = None,
+    roundtrip_pages: tuple[RoundtripPage, ...] = (),
+    roundtrip_patches: dict[int, RoundtripSlidePatch] | None = None,
 ) -> list[str]:
     """Return slides whose effective recorded-video animation trigger is on-click."""
     if animation_cli_overrides.get('animation') and animation is None:
         return []
     slides_cfg = _as_dict(_as_dict(animation_config).get('slides'))
     blocked: list[str] = []
+    preserved: dict[str, tuple[int, tuple[int, ...]]] = {}
+    if roundtrip_source is not None:
+        from pptx_to_svg.ooxml_loader import OoxmlPackage
+
+        with OoxmlPackage(roundtrip_source) as package:
+            for page in roundtrip_pages:
+                slide_patch = (roundtrip_patches or {}).get(page.output_index)
+                if slide_patch is not None and slide_patch.animation_changed:
+                    continue
+                source = package.get_slide(page.source_slide)
+                preserved[page.svg_stem] = (
+                    page.source_slide,
+                    read_slide_click_dependencies(ET.tostring(source.part.xml)),
+                )
     for svg_path in ref_files:
+        if svg_path.stem in preserved:
+            source_index, shape_ids = preserved[svg_path.stem]
+            if shape_ids:
+                blocked.append(
+                    f"{svg_path.stem} (source slide {source_index}; shape id(s): "
+                    + ', '.join(str(shape_id) for shape_id in shape_ids) + ')'
+                )
+            continue
         slide_cfg = _as_dict(slides_cfg.get(svg_path.stem))
         anim_cfg = _as_dict(slide_cfg.get('animation'))
 
@@ -2924,6 +2969,12 @@ Recorded narration:
                 force_transition_replaced=roundtrip_transition_replaced,
                 force_animation_changed=roundtrip_animation_overridden,
                 force_notes_changed=args.no_notes,
+                force_advance_changed=any((
+                    args.auto_advance is not None,
+                    args.recorded_narration is not None,
+                    args.use_narration_timings,
+                    args.inherit_motion_from is not None,
+                )),
             )
         except RuntimeError as exc:
             print(f"Error: {exc}", file=sys.stderr)
@@ -3648,11 +3699,15 @@ Recorded narration:
             animation,
             animation_trigger,
             animation_cli_overrides,
+            roundtrip_source=source_pptx_path(project_path) if args.roundtrip else None,
+            roundtrip_pages=roundtrip_pages,
+            roundtrip_patches=roundtrip_slide_patches,
         )
         if on_click_slides:
             print(
                 "Error: --recorded-narration cannot be used with on-click object animations. "
-                "Use --animation-trigger after-previous or --animation-trigger with-previous.",
+                "Explicitly replace or clear the reported source animations, or use "
+                "after-previous / with-previous for authored animation rows.",
                 file=sys.stderr,
             )
             for slide in on_click_slides[:20]:

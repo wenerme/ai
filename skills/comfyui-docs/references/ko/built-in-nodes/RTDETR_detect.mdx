@@ -12,9 +12,9 @@ RT-DETR Detect 노드는 RT-DETR 모델을 사용하여 입력 이미지에서 �
 | --- | --- | --- | --- | --- |
 | `model` | 객체 감지에 사용되는 RT-DETR 모델입니다. | MODEL | 예 | N/A |
 | `image` | 객체를 감지할 입력 이미지입니다. 이 노드는 최대 32개씩 이미지를 배치로 처리합니다. | IMAGE | 예 | N/A |
-| `threshold` | 결과에 포함되기 위해 감지가 가져야 하는 최소 신뢰도 점수입니다(기본값: 0.5). | FLOAT | 아니요 | N/A |
-| `class_name` | 클래스별로 감지 결과를 필터링합니다. 필터링을 비활성화하려면 'all'로 설정합니다(기본값: "all"). | COMBO | 아니요 | `"all"``"person"``"bicycle"``"car"``"motorcycle"``"airplane"``"bus"``"train"``"truck"``"boat"``"traffic light"``"fire hydrant"``"stop sign"``"parking meter"``"bench"``"bird"``"cat"``"dog"``"horse"``"sheep"``"cow"``"elephant"``"bear"``"zebra"``"giraffe"``"backpack"``"umbrella"``"handbag"``"tie"``"suitcase"``"frisbee"``"skis"``"snowboard"``"sports ball"``"kite"``"baseball bat"``"baseball glove"``"skateboard"``"surfboard"``"tennis racket"``"bottle"``"wine glass"``"cup"``"fork"``"knife"``"spoon"``"bowl"``"banana"``"apple"``"sandwich"``"orange"``"broccoli"``"carrot"``"hot dog"``"pizza"``"donut"``"cake"``"chair"``"couch"``"potted plant"``"bed"``"dining table"``"toilet"``"tv"``"laptop"``"mouse"``"remote"``"keyboard"``"cell phone"``"microwave"``"oven"``"toaster"``"sink"``"refrigerator"``"book"``"clock"``"vase"``"scissors"``"teddy bear"``"hair drier"``"toothbrush"` |
-| `max_detections` | 이미지당 반환할 최대 감지 개수입니다. 신뢰도 점수가 높은 순서대로 반환됩니다(기본값: 100). | INT | 아니요 | N/A |
+| `threshold` | 결과에 포함되기 위해 감지가 가져야 하는 최소 신뢰도 점수입니다(기본값: 0.5). | FLOAT | 예 | N/A |
+| `class_name` | 클래스별로 감지 결과를 필터링합니다. 필터링을 비활성화하려면 'all'로 설정합니다(기본값: "all"). | COMBO | 예 | `"all"``"person"``"bicycle"``"car"``"motorcycle"``"airplane"``"bus"``"train"``"truck"``"boat"``"traffic light"``"fire hydrant"``"stop sign"``"parking meter"``"bench"``"bird"``"cat"``"dog"``"horse"``"sheep"``"cow"``"elephant"``"bear"``"zebra"``"giraffe"``"backpack"``"umbrella"``"handbag"``"tie"``"suitcase"``"frisbee"``"skis"``"snowboard"``"sports ball"``"kite"``"baseball bat"``"baseball glove"``"skateboard"``"surfboard"``"tennis racket"``"bottle"``"wine glass"``"cup"``"fork"``"knife"``"spoon"``"bowl"``"banana"``"apple"``"sandwich"``"orange"``"broccoli"``"carrot"``"hot dog"``"pizza"``"donut"``"cake"``"chair"``"couch"``"potted plant"``"bed"``"dining table"``"toilet"``"tv"``"laptop"``"mouse"``"remote"``"keyboard"``"cell phone"``"microwave"``"oven"``"toaster"``"sink"``"refrigerator"``"book"``"clock"``"vase"``"scissors"``"teddy bear"``"hair drier"``"toothbrush"` |
+| `max_detections` | 이미지당 반환할 최대 감지 개수입니다. 신뢰도 점수가 높은 순서대로 반환됩니다(기본값: 100). | INT | 예 | N/A |
 
 ## 출력
 

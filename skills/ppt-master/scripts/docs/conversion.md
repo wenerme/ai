@@ -280,7 +280,7 @@ remains strict rather than silently treating the raster preview as the
 template's canonical asset.
 
 Supported `a:hlinkClick` on shape/picture `p:cNvPr` and text `a:rPr` becomes
-the shared SVG `<a href>` form for absolute external URIs and final-roster
+the shared SVG `<a href>` form for absolute external URIs and source-roster
 `#slide-N` jumps. A source shape that also has linked inner runs uses the
 importer-only `data-pptx-shape-hyperlink` transport to avoid nested SVG anchors.
 Unsupported click actions produce a diagnostic; strict import stops.
@@ -646,7 +646,6 @@ On success, the converter uses the shared best-effort sidecar contract for
 `<stem>.conversion_profile.json` beside the Markdown output.
 `--emit-result` is for wrapper scripts that need the actual saved Markdown path
 when the converter derives a title-based filename.
-
 
 ## Image Orientation Review
 

@@ -80,15 +80,15 @@ IATA airport code of the data center that handled the connection.
 
 Type: `string`
 
-The reason the WebSocket connection ended.
+The edge proxy classification for why the WebSocket connection ended. *none* means the proxy observed no classified error or timeout.
 Possible values are *none* | *unspecifiedError* | *timedOut* | *peerReset* | *upstreamReset* | *protocolViolation* | *peerNoError*.
 
 ## ConnectionCloseSource
 
 Type: `string`
 
-Which side initiated the connection close.
-Possible values are *upstream* | *downstream* | *me* | *both*, or the raw internal value if unrecognized.
+The side where the edge proxy observed the connection close. This field does not necessarily identify which side initiated the close. *both* means the proxy observed closure in both directions and does not identify which direction closed first.
+Possible values are *upstream* | *downstream* | *me* | *both*. Unrecognized classifications can appear as raw internal values.
 
 ## ConnectionID
 
@@ -100,7 +100,7 @@ Unique identifier of the WebSocket connection, hex-encoded.
 
 Type: `int`
 
-The first transport-level close code observed. For TLS connections this is the TLS alert code; for plain TCP connections (no TLS) it is always 0. The most significant bit indicates the source: 0 = proxy-initiated, 1 = eyeball-initiated.
+A reportable transport-level close code observed. For Transport Layer Security (TLS) connections, the low byte contains the TLS alert description. A TLS `close_notify` alert is not reported. A value of 0 means no reportable code was observed or the connection used plain TCP. The most significant bit indicates the source: 0 = proxy-initiated, 1 = peer-initiated.
 
 ## EdgeEndTimestamp
 

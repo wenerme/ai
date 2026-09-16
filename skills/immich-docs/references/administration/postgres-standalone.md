@@ -24,6 +24,8 @@ The current accepted range for VectorChord is `>= 0.3, < 2.0`.
 
 ## Specifying the connection URL
 
+<ComposeBuilder query="database.external=true" />
+
 You can connect to your pre-existing Postgres server by setting the `DB_URL` environment variable in the `.env` file.
 
 ```

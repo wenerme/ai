@@ -3100,18 +3100,18 @@
   "openai-api/beta.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/index.md",
     "skill": "openai-api",
-    "etag": "W/\"f24f2505a2cbfff0f3ee1ef28637df59\"",
-    "lastModified": "Wed, 16 Sep 2026 04:39:55 GMT",
-    "size": 7750609,
-    "updatedAt": "2026-09-16T04:39:56.099Z"
+    "etag": "W/\"8e589510aed8b27755e8bcb1db403125\"",
+    "lastModified": "Wed, 16 Sep 2026 14:41:33 GMT",
+    "size": 7751708,
+    "updatedAt": "2026-09-16T14:56:37.300Z"
   },
   "openai-api/beta/agents.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/subresources/agents/index.md",
     "skill": "openai-api",
-    "etag": "W/\"31d37d17b14e6a85ce298d2c1c07dcd6\"",
-    "lastModified": "Fri, 11 Sep 2026 04:25:54 GMT",
-    "size": 731704,
-    "updatedAt": "2026-09-11T04:25:54.081Z"
+    "etag": "W/\"e2f38eb0ebe70472b5bb89ac46ea6312\"",
+    "lastModified": "Wed, 16 Sep 2026 14:41:34 GMT",
+    "size": 732803,
+    "updatedAt": "2026-09-16T14:56:37.523Z"
   },
   "openai-api/beta/agents/create.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/subresources/agents/methods/create/index.md",
@@ -3244,10 +3244,10 @@
   "openai-api/beta/agents/sessions.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/subresources/agents/subresources/sessions/index.md",
     "skill": "openai-api",
-    "etag": "W/\"2fbe8779e9a0dfc89151e92665dcf1d0\"",
-    "lastModified": "Fri, 11 Sep 2026 04:26:00 GMT",
-    "size": 240159,
-    "updatedAt": "2026-09-11T04:26:00.863Z"
+    "etag": "W/\"e9040cfe8f1e6addc7da2b3b43140e89\"",
+    "lastModified": "Wed, 16 Sep 2026 14:41:43 GMT",
+    "size": 241258,
+    "updatedAt": "2026-09-16T14:56:41.687Z"
   },
   "openai-api/beta/agents/sessions/create.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/subresources/agents/subresources/sessions/methods/create/index.md",
@@ -3284,10 +3284,10 @@
   "openai-api/beta/agents/sessions/update.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/subresources/agents/subresources/sessions/methods/update/index.md",
     "skill": "openai-api",
-    "etag": "W/\"a060afccae3f45551d6627b7a6e46fa3\"",
-    "lastModified": "Fri, 11 Sep 2026 04:26:02 GMT",
-    "size": 17004,
-    "updatedAt": "2026-09-11T04:26:02.606Z"
+    "etag": "W/\"7cf101da2d82663a42f3b31947116129\"",
+    "lastModified": "Wed, 16 Sep 2026 14:42:08 GMT",
+    "size": 18103,
+    "updatedAt": "2026-09-16T14:56:42.760Z"
   },
   "openai-api/beta/agents/sessions/artifacts.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/subresources/agents/subresources/sessions/subresources/artifacts/index.md",

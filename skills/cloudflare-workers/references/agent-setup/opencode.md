@@ -179,23 +179,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
+```
+
+```txt
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 ```txt
 Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
-```
-
-```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ## Tips

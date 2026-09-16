@@ -16,6 +16,17 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/index.xml)
 
+## 2026-09-16
+
+**RealtimeKit Android Core 3.2.0**
+
+**Enhancements**
+
+- **Connection and media reliability** — Improved recovery from connection interruptions and screen-share shutdown.
+- **Breakout rooms** — Admins can now join child rooms and reassign participants across rooms. Participant assignment and state handling are also improved.
+- **Polls** — Improved vote acknowledgements and validation for ambiguous options.
+- **API errors** — Improved reporting for authenticated API failures.
+
 ## 2026-07-17
 
 **RealtimeKit Android Core 3.1.0**

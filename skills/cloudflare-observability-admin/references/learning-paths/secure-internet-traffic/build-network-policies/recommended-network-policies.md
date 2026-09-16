@@ -157,9 +157,7 @@ resource "cloudflare_zero_trust_gateway_policy" "finance_users_net_https_finance
 
 ## All-NET-Internet-Blocklist
 
-Block traffic to destination IPs, SNIs
-
-, and SNI domains that are malicious or pose a threat to your organization.
+Block traffic to destination IPs, SNIs, and SNI domains that are malicious or pose a threat to your organization.
 
 You can implement this policy by either creating custom blocklists or by using blocklists provided by threat intelligence partners or regional Computer Emergency and Response Teams (CERTs). Ideally, your CERTs can update the blocklist with an [API automation](https://developers.cloudflare.com/security-center/intel-apis/) to provide real-time threat protection.
 

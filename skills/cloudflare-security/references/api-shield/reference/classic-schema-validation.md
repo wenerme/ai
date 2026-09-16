@@ -20,9 +20,7 @@ Classic Schema validation has been deprecated.
 
 Upload all new schemas to [Schema validation 2.0](https://developers.cloudflare.com/api-shield/security/schema-validation/).
 
-Use the **API Shield** interface to configure [API Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/), which validates requests according to the API schema
-
- you provide.
+Use the **API Shield** interface to configure [API Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/), which validates requests according to the API schema you provide.
 
 Before you can configure Schema validation for an API, you must obtain an API Schema file matching our [specifications](https://developers.cloudflare.com/api-shield/security/schema-validation/#specifications).
 

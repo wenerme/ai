@@ -159,8 +159,8 @@
   },
   "api/api-reference/api-keys/get-current-api-key.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/api-keys/get-current-api-key.md",
-    "size": 16795,
-    "updatedAt": "2026-09-14T16:27:49.528Z"
+    "size": 20010,
+    "updatedAt": "2026-09-16T14:58:08.601Z"
   },
   "api/api-reference/api-keys/list-api-keys.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/api-keys/list-api-keys.md",
@@ -661,9 +661,8 @@
   },
   "api_reference/limits.md": {
     "url": "https://openrouter.ai/docs/api_reference/limits.md",
-    "lastModified": "Sun, 09 Aug 2026 02:39:19 GMT",
-    "size": 15853,
-    "updatedAt": "2026-08-09T02:39:19.936Z"
+    "size": 16955,
+    "updatedAt": "2026-09-16T14:59:08.125Z"
   },
   "api_reference/overview.md": {
     "url": "https://openrouter.ai/docs/api_reference/overview.md",
@@ -1545,9 +1544,8 @@
   },
   "faq.md": {
     "url": "https://openrouter.ai/docs/faq.md",
-    "lastModified": "Wed, 26 Aug 2026 01:59:05 GMT",
-    "size": 17874,
-    "updatedAt": "2026-08-26T01:59:05.142Z"
+    "size": 18232,
+    "updatedAt": "2026-09-16T15:00:44.970Z"
   },
   "guides/best-practices/latency-and-performance.md": {
     "url": "https://openrouter.ai/docs/guides/best-practices/latency-and-performance.md",
@@ -1982,9 +1980,8 @@
   },
   "guides/features/service-tiers.md": {
     "url": "https://openrouter.ai/docs/guides/features/service-tiers.md",
-    "lastModified": "Tue, 01 Sep 2026 14:55:14 GMT",
-    "size": 17646,
-    "updatedAt": "2026-09-01T14:55:14.202Z"
+    "size": 17779,
+    "updatedAt": "2026-09-16T15:01:25.106Z"
   },
   "guides/features/sovereign-ai.md": {
     "url": "https://openrouter.ai/docs/guides/features/sovereign-ai.md",
@@ -2212,9 +2209,8 @@
   },
   "guides/routing/model-variants/free.md": {
     "url": "https://openrouter.ai/docs/guides/routing/model-variants/free.md",
-    "lastModified": "Fri, 14 Aug 2026 03:06:21 GMT",
-    "size": 789,
-    "updatedAt": "2026-08-14T03:06:21.288Z"
+    "size": 1084,
+    "updatedAt": "2026-09-16T15:01:44.751Z"
   },
   "guides/routing/model-variants/nitro.md": {
     "url": "https://openrouter.ai/docs/guides/routing/model-variants/nitro.md",
@@ -2246,8 +2242,8 @@
   },
   "guides/routing/provider-selection.md": {
     "url": "https://openrouter.ai/docs/guides/routing/provider-selection.md",
-    "size": 69926,
-    "updatedAt": "2026-09-10T04:30:06.617Z"
+    "size": 70268,
+    "updatedAt": "2026-09-16T15:01:47.419Z"
   },
   "guides/routing/routers/auto-router.md": {
     "url": "https://openrouter.ai/docs/guides/routing/routers/auto-router.md",

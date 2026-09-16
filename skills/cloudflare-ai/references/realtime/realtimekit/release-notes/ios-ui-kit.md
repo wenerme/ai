@@ -16,6 +16,14 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/realtime/realtimekit/release-notes/ios-ui-kit/index.xml)
 
+## 2026-09-16
+
+**RealtimeKit iOS UI Kit 3.2.0**
+
+**Enhancements**
+
+- Aligned the version with [RealtimeKit iOS Core v3.2.0](https://developers.cloudflare.com/realtime/realtimekit/release-notes/ios-core/#2026-09-16). This release has no breaking changes.
+
 ## 2026-07-17
 
 **RealtimeKit iOS UI Kit 3.1.0**

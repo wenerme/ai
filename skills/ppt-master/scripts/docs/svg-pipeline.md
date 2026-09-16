@@ -55,8 +55,9 @@ staging transaction, before the editable bundle first appears:
   move to `icons/imported/*.svg`; the asset, placeholder, and v2 inventory all
   declare the fixed `decoration` role. Any subtree containing semantic
   authoring content remains inline;
-- unsupported, text-free, schema-free source ornaments with no semantic marker
-  may become
+- unsupported graphic frames (including SmartArt and OLE) become atomic source
+  proxies, retaining their existing labelled preview. Large text-free,
+  schema-free source ornaments may also become
   `<image data-pptx-source-proxy="native-restore">` references whose hashed SVG
   previews live under `images/source-object-previews/`.
 
@@ -65,8 +66,8 @@ an imported vector asset only when editing that decoration. An unchanged asset
 restores its native source objects; editing the asset rebuilds every slide whose
 placeholder references that vector edit unit. A source proxy remains atomic: leave it unchanged
 to restore the original native PowerPoint object. A complete Slide-local proxy
-may be removed to delete that object; an inherited Master/Layout proxy must
-remain because one flat page cannot delete shared structure. Editing the proxy
+may be removed to delete that object. Every inherited Master/Layout source ref
+must remain unchanged because one flat page cannot edit shared structure. Editing the proxy
 or its preview asset fails round-trip export instead of silently rasterizing or
 flattening the object.
 
@@ -90,7 +91,13 @@ invalid. `svg_to_pptx.py --roundtrip` always reads `authoring-svg-flat/`,
 restores unchanged source refs from `analysis/roundtrip-svg/`, expands imported
 vector edit units from `icons/imported/`, and retains edits/deletions/new
 content without rewriting the bundle. Unchanged slides and resources pass
-through byte-for-byte. A page edit rebuilds that output page; a changed
+through byte-for-byte. Object comparison includes effective ancestor transforms,
+opacity, inherited styles, and enclosing links; changing a proxy's context also
+fails. When an edited shape's text and text context still match the baseline,
+the materializer restores its relationship-free source `txBody` through the
+existing fingerprint/relationship checks, preserving fields, numbering,
+autofit, language, and text effects. Edited text follows normal conversion.
+A page edit rebuilds that output page; a changed
 materialized or derived resource rebuilds every output page that references it.
 Changed materialized bytes must still match the source package part's extension
 and Content-Type. Resource hrefs resolve exactly relative to the page or
@@ -143,15 +150,29 @@ An unchanged planned page keeps the source slide XML and receives its own
 relationship graph. Repeated pages clone notes slides, charts, diagrams,
 embeddings, and other private structured parts under unique part names while
 ordinary media may remain shared. An edited copy overlays only its edited
-owners onto its cloned source page. Same-deck slide-jump links follow the
-page-plan contract: a target must map to exactly one output page. An
-omitted or repeated destination is an error; external links remain unchanged.
+owners onto its cloned source page. Inherited same-deck slide jumps retain
+source-page identity through text edits and adoption, then map to the output
+roster. New links and changed destinations use output-page `#slide-N` numbers.
+An inherited target must map to exactly one output page; omitted or repeated
+destinations fail, except that a source self-jump follows its own output copy.
+An adopted link still targets its source destination. Removed/replaced object
+links do not block the source-package preflight; surviving links still do.
+External links remain unchanged.
 Omitting a source slide deliberately drops its private video, audio, or opaque
 native payloads; a kept slide still fails if rebuilding it would discard such
 relationships.
 With a plan present, presentation-level `sectionLst` and custom-show rosters
-are dropped, output `p:sldId` values are renumbered, and the slide count in
-`docProps/app.xml` is updated.
+are dropped, show/range playback selections reset to all output slides, every Master and Layout part is retained, output
+`p:sldId` values are renumbered, and the slide count in `docProps/app.xml` is
+updated. A retained action targeting a removed custom show fails with its
+slide/part and show ID; delivery checking also verifies this semantic closure.
+
+After a slide edit, unused explicit payload relationships are removed before
+package reachability pruning. This removes replaced charts, their workbooks,
+and deleted diagram dependencies. Layout/notes and other implicit structural
+relationships stay. Legacy SmartArt drawing-cache references in live diagram
+data also stay. Delivery checking reports explicit Slide relationships with no
+remaining XML consumer under `relationships.problems`.
 
 Output-page sidecars are keyed by the authoring SVG stem. A repeated copy
 inherits its source row from `animations.json` unless that output stem has its
@@ -164,7 +185,7 @@ notes and an absent file keeps them. Deleting inherited source notes only on a
 copy is not supported in v1. The same output-stem rule applies to narration
 audio.
 
-When a round-trip recorded-narration export omits `--animation-config`, it uses the workspace `animations.json` when present and otherwise applies no sidecar while preserving source motion.
+When a round-trip recorded-narration export omits `--animation-config`, it reads the workspace `animations.json` the importer wrote; that sidecar is part of the workspace contract, so deleting it fails export rather than restoring source motion.
 
 Narration audio is keyed by the output SVG stem. A copied output page uses its
 own stem-keyed notes when present and otherwise inherits the declared source
@@ -189,7 +210,7 @@ while order, notes, or motion may change; `rebuilt` means visible authoring or
 one of its referenced resources changed.
 Without `-o`, round-trip export names the deck `<workspace-directory-name>_<timestamp>[<flavor-suffix>].pptx` under `exports/`.
 
-Before export, run `python3 scripts/svg_quality_checker.py <workspace> --roundtrip`
+Before export, run `python3 scripts/svg_quality_checker.py <workspace> --roundtrip --json`
 as the round-trip text-capacity gate. It resolves the output roster from
 `authoring-svg-flat/` and optional `page_plan.json`, then applies the shared
 font-family, font-size, text-width, and canvas metrics only to new text or
@@ -200,6 +221,24 @@ overflow against the nearest-rect-sibling fallback is advisory, while bounds
 leaving the page canvas remain blocking. Other advisories remain non-blocking.
 Unchanged source refs, source proxies, and generated-project-only spec,
 template, canonical-authoring, and resource-manifest checks are excluded.
+
+The checker also enforces the exporter's semantic shape text contract on
+converted content: a `data-pptx-semantic-object="shape"` group may contain at
+most one direct `<text>`, with `data-pptx-frame` on its owner. Multiple lines
+belong in that component's `<tspan>` paragraphs. Ordinary groups are unaffected;
+unchanged native source objects remain excluded. Generate checks the same
+contract.
+
+`--json` writes `validation/svg_quality_report.json`. Both tools fingerprint
+`authoring-svg-flat/*.svg` and the optional `page_plan.json`; changing either
+after validation makes the export receipt `quality_gate=stale`. A current
+report with no blocking errors yields `quality_gate=passed`. Without a report,
+export remains allowed and reports `quality_gate=not-provided`.
+
+`--roundtrip --no-notes` removes all speaker notes slide/master parts, their
+relationships, and Content-Type overrides, including on the identity export
+without a page plan. `pptx_delivery_check.py` reports unreferenced notes parts
+as an advisory.
 
 Regenerate the summary after direct edits that do not pass through one of the
 in-place normalization tools:
@@ -888,7 +927,7 @@ Behavior:
   - `--no-merge`: each dy-stacked line becomes an independent frame with its own placement.
   - Detection is conservative: mixed-layout `<text>` falls back to per-line frames. Use `--reflow-text` only for resizable body copy and `--no-merge` only for independent line objects or absolute line positions.
 - Native release export reads `svg_output/`; `-s <directory>` selects another project-relative SVG source. `-s final` remains an explicit diagnostic comparison against post-processed SVGs and does not change artifact ownership. `--enable-dangerous-nonconforming-svg-export` is a separate, explicitly requested flat compatibility path for either the default or selected source; it forces flat structure, restores no imported source object, and cannot combine with `--roundtrip` or `--quick-generate`.
-- `--roundtrip` accepts only `authoring-svg-flat/` and the source/contracts emitted by `pptx_to_svg.py --roundtrip`; predecessor root sidecars and alternate `-s` inputs fail. It restores unchanged refs from `analysis/roundtrip-svg/`, preserves unchanged Slide XML/relationships and source resources byte-for-byte, rebuilds a page whose authoring changed, and rebuilds every output page that references a changed resource. Closed unchanged chart packages recover exactly; editing their fallback disables stale replacement. Optional root `page_plan.json` uses the versioned deck-plan contract above; the no-plan path remains the identity export. Explicit `-t <effect>` without `--transition-duration` on a source without transitions uses the default duration.
+- `--roundtrip` accepts only `authoring-svg-flat/` and the source/contracts emitted by `pptx_to_svg.py --roundtrip`; predecessor root sidecars and alternate `-s` inputs fail. It restores unchanged refs from `analysis/roundtrip-svg/`, preserves unchanged Slide XML/relationships and source resources byte-for-byte, rebuilds a page whose authoring changed, and rebuilds every output page that references a changed resource. Closed unchanged chart packages recover exactly; editing their fallback disables stale replacement. Optional root `page_plan.json` uses the versioned deck-plan contract above; the no-plan path remains the identity export. Motion fields are compared independently with the import baseline: omitted slide `transition` preserves source motion even when importer defaults say `none`, while changed `defaults.animation` participates in animation replacement. Effect-only changes preserve source `advClick` / `advTm`; explicit advance settings or narration timings replace them. Explicit `-t <effect>` without `--transition-duration` on a source without transitions uses the default duration.
 - `svg_final/` may be opened directly or inserted into PowerPoint as an SVG picture. PowerPoint's manual Convert-to-Shape operation is outside the compatibility contract.
 - On every SVG-authoring route, each file in `svg_output/` is the complete visible
   page-design source. Templates and locks may guide authoring, but finalize/export
@@ -937,7 +976,7 @@ Behavior:
 - Per-element animation applies to ordinary top-level SVG `<g id="...">` groups; each group is a PowerPoint shape-target anchor, not necessarily one Animation Pane row. Use one group per logical Slide-local content unit rather than targeting a group count
 - For chrome defaults, static role/placeholder overrides, and structural exclusions, see [`animations.md`](../../references/animations.md) §5
 - Start mode is set globally by `--animation-trigger`, mirroring PowerPoint's Start dropdown: `after-previous` (default, cascade with `--animation-stagger` spacing on slide entry), `on-click` (presenter-paced), or `with-previous` (all together on slide entry). A sidecar row may override it with `trigger`; the slide value is only the inherited Start mode
-- `on-click` is for live presentations only; recorded narration rejects every row that resolves to it, including a row with `trigger_shape`, because the tool does not generate object-level click timings
+- `on-click` is for live presentations only; recorded narration rejects every row that resolves to it, including `trigger_shape` and preserved native click/interactive timing that could not be reconstructed into the sidecar. Diagnostics identify the output stem, source slide, and shape ids; the tool does not generate object-level click timings
 - Flat SVG roots without top-level groups fall back to at most 8 visible primitives; beyond that, animation is skipped on the slide
 - Per-element animation defaults to `none`. `auto` is opt-in (`-a auto`) and maps
   generic entrance effects from the group's SVG id: information-dense elements

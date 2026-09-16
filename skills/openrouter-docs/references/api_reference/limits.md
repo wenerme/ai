@@ -301,6 +301,12 @@ type Key = {
     byok_usage_monthly: number;
 
     is_free_tier: boolean; // Whether the user has paid for credits before
+
+    free_model_daily_requests: {
+      used: number; // Free-model requests recorded so far in the current UTC day
+      limit: number; // Free-model requests allowed per UTC day (see the free usage limits below)
+      remaining: number; // Free-model requests left in the current UTC day
+    };
     // rate_limit: { ... } // A deprecated object in the response, safe to ignore
   };
 };
@@ -331,6 +337,8 @@ Rate limits govern how many requests you can make. There are a few rate limits t
 | ---------------------------------------- | --------------------------- | ---------------------------- |
 | Less than {FREE_MODEL_CREDITS_THRESHOLD} | {FREE_MODEL_RATE_LIMIT_RPM} | {FREE_MODEL_NO_CREDITS_RPD}  |
 | At least {FREE_MODEL_CREDITS_THRESHOLD}  | {FREE_MODEL_RATE_LIMIT_RPM} | {FREE_MODEL_HAS_CREDITS_RPD} |
+
+The `free_model_daily_requests` field in the `GET /api/v1/key` response above reports the daily counter and ceiling that gate your free-model requests when these limits apply to your account. Accounts and endpoints exempt from free-model limits, and BYOK requests, are not gated by it, so `remaining` reflects the tier policy rather than an enforced ceiling for them. The per-minute limit is not reported there. The `limit` tier is selected by all-time credits purchased, independently of `is_free_tier`. To absorb rounding and top-up fees, the higher daily ceiling is granted starting one credit below the table's threshold (currently {FREE_MODEL_CREDITS_THRESHOLD - 1} credits); an account that has purchased fewer credits than that reports `is_free_tier: false` together with the lower daily ceiling.
 
 2. **DDoS protection**: Cloudflare's DDoS protection will block requests that dramatically exceed reasonable usage.
 

@@ -148,9 +148,7 @@ Subsequent requests can include a `cf_clearance` cookie if JavaScript ran succes
 
 ### If you have a Content Security Policy (CSP)
 
-If you have a Content Security Policy (CSP)
-
-, you need to take additional steps to implement JavaScript Detections:
+If you have a Content Security Policy (CSP), you need to take additional steps to implement JavaScript Detections:
 
 - Ensure that anything under `/cdn-cgi/challenge-platform/` is allowed. Your CSP should allow scripts served from your origin domain ( `script-src self`).
 - For `nonce` script tags:
