@@ -1322,10 +1322,10 @@
   "openai-docs/guides/token-counting.md": {
     "url": "https://developers.openai.com/api/docs/guides/token-counting.md",
     "skill": "openai-docs",
-    "etag": "W/\"d628b1c6b3db429969c60d79ff3d6476\"",
-    "lastModified": "Fri, 11 Sep 2026 04:24:54 GMT",
-    "size": 22660,
-    "updatedAt": "2026-09-11T04:24:54.183Z"
+    "etag": "W/\"9b57104e206f5eed003adab0ccea7a1a\"",
+    "lastModified": "Tue, 15 Sep 2026 22:47:55 GMT",
+    "size": 22662,
+    "updatedAt": "2026-09-16T04:39:00.933Z"
   },
   "openai-docs/guides/tools-apply-patch.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-apply-patch.md",
@@ -3100,10 +3100,10 @@
   "openai-api/beta.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/index.md",
     "skill": "openai-api",
-    "etag": "W/\"87f2f24c878d39475843637bac5cfba6\"",
-    "lastModified": "Fri, 11 Sep 2026 04:25:53 GMT",
-    "size": 7748590,
-    "updatedAt": "2026-09-11T04:25:53.671Z"
+    "etag": "W/\"f24f2505a2cbfff0f3ee1ef28637df59\"",
+    "lastModified": "Wed, 16 Sep 2026 04:39:55 GMT",
+    "size": 7750609,
+    "updatedAt": "2026-09-16T04:39:56.099Z"
   },
   "openai-api/beta/agents.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/subresources/agents/index.md",
@@ -3684,10 +3684,10 @@
   "openai-api/beta/responses.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/subresources/responses/index.md",
     "skill": "openai-api",
-    "etag": "W/\"a5b65dc4e4c200afc74e2e462f8c32ac\"",
-    "lastModified": "Fri, 11 Sep 2026 04:26:20 GMT",
-    "size": 6415866,
-    "updatedAt": "2026-09-11T04:26:20.914Z"
+    "etag": "W/\"eb999d2e82c7d7015e5fa4b386ef92d9\"",
+    "lastModified": "Tue, 15 Sep 2026 22:51:11 GMT",
+    "size": 6417885,
+    "updatedAt": "2026-09-16T04:40:14.102Z"
   },
   "openai-api/beta/responses/cancel.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/subresources/responses/methods/cancel/index.md",
@@ -4940,10 +4940,10 @@
   "openai-api/responses.md": {
     "url": "https://developers.openai.com/api/reference/resources/responses/index.md",
     "skill": "openai-api",
-    "etag": "W/\"49af2e46f5e2c54fadadd7ee0cf0e27b\"",
-    "lastModified": "Fri, 11 Sep 2026 04:27:06 GMT",
-    "size": 5087644,
-    "updatedAt": "2026-09-11T04:27:06.613Z"
+    "etag": "W/\"2f83f5fcdd392c5b09dc35baeec6cd6f\"",
+    "lastModified": "Tue, 15 Sep 2026 22:58:23 GMT",
+    "size": 5089238,
+    "updatedAt": "2026-09-16T04:40:57.020Z"
   },
   "openai-api/responses/cancel.md": {
     "url": "https://developers.openai.com/api/reference/resources/responses/methods/cancel/index.md",

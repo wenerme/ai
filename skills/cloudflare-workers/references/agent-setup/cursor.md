@@ -43,7 +43,7 @@ IDETerminalStandaloneCloud
    For example:
 
    ```txt
-   Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+   Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
    ```
 
 
@@ -149,7 +149,15 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+```
+
+```txt
+Create a Logpush job to stream Workers analytics to my data warehouse.
+```
+
+```txt
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
@@ -157,15 +165,7 @@ Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
-```
-
-```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
-```
-
-```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
 ```
 
 ## Tips

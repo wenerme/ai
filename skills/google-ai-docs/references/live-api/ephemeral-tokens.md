@@ -106,7 +106,7 @@ system instructions on the server side.
         config = {
         'uses': 1,
         'live_connect_constraints': {
-            'model': 'gemini-3.1-flash-live-preview',
+            'model': 'gemini-3.8-live',
             'config': {
                 'session_resumption':{},
                 'response_modalities':['AUDIO']
@@ -129,7 +129,7 @@ system instructions on the server side.
             uses: 1, // The default
             expireTime: expireTime,
             liveConnectConstraints: {
-                model: 'gemini-3.1-flash-live-preview',
+                model: 'gemini-3.8-live',
                 config: {
                     sessionResumption: {},
                     responseModalities: ['AUDIO']
@@ -149,7 +149,7 @@ system instructions on the server side.
         "uses": 1,
         "expireTime": "YYYY-MM-DDTHH:MM:SSZ",
         "liveConnectConstraints": {
-          "model": "models/gemini-3.1-flash-live-preview",
+          "model": "models/gemini-3.8-live",
           "config": {
             "sessionResumption": {},
             "responseModalities": ["AUDIO"]
@@ -177,7 +177,7 @@ that follow [client-to-server implementation](https://ai.google.dev/gemini-api/d
     const ai = new GoogleGenAI({
       apiKey: token.name
     });
-    const model = 'gemini-3.1-flash-live-preview';
+    const model = 'gemini-3.8-live';
     const config = { responseModalities: [Modality.AUDIO] };
 
     async function main() {

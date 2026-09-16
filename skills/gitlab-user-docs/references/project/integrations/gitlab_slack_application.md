@@ -84,7 +84,7 @@ Alternatively, you can [configure the integration](https://about.gitlab.com/solu
 
 ## GitLab Duo
 
-- Tier: Ultimate
+- Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 - Status: Experiment
 

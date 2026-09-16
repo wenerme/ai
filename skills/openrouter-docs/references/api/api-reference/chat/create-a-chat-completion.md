@@ -3051,6 +3051,7 @@ components:
         - Amazon Nova
         - Anthropic
         - Arcee AI
+        - AssemblyAI
         - AtlasCloud
         - Avian
         - Azure

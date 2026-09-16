@@ -52,7 +52,7 @@ export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 
 For models that support it, the OpenRouter API can return **Reasoning Tokens**, also known as thinking tokens. OpenRouter normalizes the different ways of customizing the amount of reasoning tokens that the model will use, providing a unified interface across different providers.
 
-Reasoning tokens provide a transparent look into the reasoning steps taken by a model. Reasoning tokens are considered output tokens and charged accordingly.
+Reasoning tokens provide a transparent look into the reasoning steps taken by a model. Reasoning tokens are considered output tokens and charged accordingly. On most providers they also count against the request's `max_tokens`; see [Reasoning tokens and max\_tokens](#reasoning-tokens-and-max_tokens).
 
 Reasoning tokens are included in the response by default if the model decides to output them. Reasoning tokens will appear in the `reasoning` field of each message, unless you decide to exclude them.
 
@@ -86,6 +86,24 @@ You can control reasoning tokens in your requests using the `reasoning` paramete
 ```
 
 The `reasoning` config object consolidates settings for controlling reasoning strength across different models. See the Note for each option below to see which models are supported and how other models will behave.
+
+### Reasoning tokens and max\_tokens
+
+<Warning>
+  **Reasoning tokens count against `max_tokens`**
+
+  On most providers, the request's `max_tokens` limit (or `max_completion_tokens`,
+  which shares the same budget) applies to reasoning and visible output combined.
+  If the limit is small enough that the model spends all of it reasoning, the
+  response returns `finish_reason: "length"` with an empty `content`, and the
+  reasoning tokens are still billed. With `reasoning.exclude: true` the
+  `reasoning` field is omitted as well, so the response carries no text at all
+  and the only signal left is `finish_reason` plus `usage`.
+</Warning>
+
+To detect this case, subtract `usage.completion_tokens_details.reasoning_tokens` from `usage.completion_tokens`. The difference is the number of visible output tokens, and it is 0 or near 0 when reasoning consumed the budget. For example, a request with `max_tokens: 300` that returns `completion_tokens: 302` and `reasoning_tokens: 301` produced a single visible token.
+
+To avoid it, set `max_tokens` well above the expected reasoning length, or cap reasoning with `reasoning.max_tokens` or a lower `reasoning.effort`. For Anthropic models, `max_tokens` must be strictly higher than the reasoning budget; see [Anthropic Models with Reasoning Tokens](#anthropic-models-with-reasoning-tokens).
 
 ### Discovering per-model reasoning options
 
@@ -163,7 +181,7 @@ For models that only support `reasoning.max_tokens`, the effort level will be se
 
 If you want the model to use reasoning internally but not include it in the response:
 
-* `"exclude": true` - The model will still use reasoning, but it won't be returned in the response
+* `"exclude": true` - The model will still use reasoning, but it won't be returned in the response. The tokens are still billed and [count against `max_tokens`](#reasoning-tokens-and-max_tokens).
 
 Reasoning tokens will appear in the `reasoning` field of each message.
 
@@ -841,7 +859,7 @@ Effort values are translated to the target model's vocabulary the same way as re
 </Note>
 
 <Note title="Provider Support">
-  Support is per model and OpenRouter enables it as providers roll it out; the first models to accept mid-conversation effort changes were Claude Fable 5.1 and OpenAI GPT-6 Astra. Requests that use an update are routed only to endpoints that accept it, and a request for a model that does not support it is rejected with a 400 instead of being sent with the update silently dropped.
+  Support is per model and OpenRouter enables it as providers roll it out; the first models to accept mid-conversation effort changes were Claude Fable 5.1 and OpenAI GPT-6 Astra, and Claude Opus 5 accepts them as well. Requests that use an update are routed only to endpoints that accept it, and a request for a model that does not support it is rejected with a 400 instead of being sent with the update silently dropped.
 </Note>
 
 <span id="responses-api-shape" />

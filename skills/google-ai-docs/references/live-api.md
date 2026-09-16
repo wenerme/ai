@@ -1,6 +1,3 @@
-> [!WARNING]
-> **Preview:** The Live API is in [Preview](https://cloud.google.com/products#product-launch-stages).
-
 The Live API enables low-latency, real-time voice and vision interactions with
 Gemini. It processes continuous streams of audio, images, and text to deliver
 immediate, human-like spoken responses, creating a natural conversational

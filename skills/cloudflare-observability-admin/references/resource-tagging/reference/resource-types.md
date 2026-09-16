@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Supported resource types
 
-Last updated Apr 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/resource-tagging/reference/resource-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/resource-tagging/reference/resource-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Tagging API supports the following resource types across account-level and zone-level scopes.
 
@@ -35,6 +35,7 @@ Use `/accounts/{account_id}/tags` endpoints for these resource types.
 | `gateway_list` | None | Gateway list |
 | `gateway_rule` | None | Gateway rule |
 | `image` | None | Cloudflare Image |
+| `infrastructure_target` | None | [Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/) target |
 | `kv_namespace` | None | Workers KV namespace |
 | `load_balancer_monitor` | None | Load Balancer monitor |
 | `load_balancer_pool` | None | Load Balancer pool |
@@ -127,5 +128,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/resource-tagging/reference/resource-types/#page","headline":"Supported resource types · Cloudflare Resource Tagging docs","description":"Resource types that support tagging and their required fields.","url":"https://developers.cloudflare.com/resource-tagging/reference/resource-types/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/resource-tagging/reference/resource-types/#page","headline":"Supported resource types · Cloudflare Resource Tagging docs","description":"Resource types that support tagging and their required fields.","url":"https://developers.cloudflare.com/resource-tagging/reference/resource-types/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

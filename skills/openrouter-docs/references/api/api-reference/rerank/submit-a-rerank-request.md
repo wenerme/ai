@@ -177,6 +177,16 @@ paths:
                   example: 3
                   minimum: 1
                   type: integer
+                trace:
+                  $ref: '#/components/schemas/TraceConfig'
+                user:
+                  description: >-
+                    A unique identifier representing your end-user. Forwarded to
+                    Broadcast and private logging as the end-user id; never sent
+                    to the provider.
+                  example: user-1234
+                  maxLength: 256
+                  type: string
               required:
                 - model
                 - query
@@ -568,6 +578,28 @@ components:
       type:
         - object
         - 'null'
+    TraceConfig:
+      additionalProperties: {}
+      description: >-
+        Metadata for observability and tracing. Known keys (trace_id,
+        trace_name, span_name, generation_name, parent_span_id) have special
+        handling. Additional keys are passed through as custom metadata to
+        configured broadcast destinations.
+      example:
+        trace_id: trace-abc123
+        trace_name: my-app-trace
+      properties:
+        generation_name:
+          type: string
+        parent_span_id:
+          type: string
+        span_name:
+          type: string
+        trace_id:
+          type: string
+        trace_name:
+          type: string
+      type: object
     BadRequestResponse:
       description: Bad Request - Invalid request parameters or malformed input
       example:
@@ -833,6 +865,7 @@ components:
         - Amazon Nova
         - Anthropic
         - Arcee AI
+        - AssemblyAI
         - AtlasCloud
         - Avian
         - Azure

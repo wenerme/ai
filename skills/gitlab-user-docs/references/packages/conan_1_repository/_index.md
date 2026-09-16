@@ -402,9 +402,6 @@ When you upload a Conan package, GitLab automatically extracts metadata from the
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/519741) in GitLab 18.1 [with a feature flag](../../../administration/feature_flags/_index.md) named `conan_package_revisions_support`. Disabled by default.
 - [Enabled on GitLab.com](https://gitlab.com/groups/gitlab-org/-/work_items/14896) in GitLab 18.3. Feature flag `conan_package_revisions_support` removed.
 
-> [!flag]
-> The availability of this feature is controlled by a feature flag. For more information, see the history.
-
 Conan 1 revisions provide package immutability in the package registry. When you make changes to a recipe or a package without changing its version, Conan calculates a unique identifier (revision) to track these changes.
 
 > [!note]

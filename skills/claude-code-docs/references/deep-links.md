@@ -23,7 +23,7 @@ This page covers how to [build a link](#build-a-link), [embed one in a runbook o
 
 The `claude-cli://` prefix is a custom URL scheme that Claude Code registers with your operating system, similar to how `mailto:` links open your email client. When you click a deep link:
 
-1. The browser or app hands the URL to your operating system.
+1. The browser or app passes the URL to your operating system.
 2. The operating system recognizes the `claude-cli://` prefix and starts Claude Code on your machine.
 3. A new terminal window opens with Claude Code running in the directory the link specified, and the link's prompt text already in the input box.
 4. You read the prompt, edit it if you want, and press Enter to send it.
@@ -53,7 +53,7 @@ Add parameters to control where the session starts and what the prompt box conta
 | Parameter | Description                                                                                                                                                                                                                                 |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `q`       | Text to pre-fill in the prompt box. [URL-encode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent) the value. Use `%0A` for line breaks in multi-line prompts. Maximum 5,000 characters. |
-| `cwd`     | Absolute path to use as the working directory. Network and UNC paths are rejected, and so are paths that contain invisible or bidirectional control characters.                                                                             |
+| `cwd`     | Absolute path to use as the working directory. Network and UNC paths are rejected, and so are paths that contain `..` segments or invisible or bidirectional control characters.                                                            |
 | `repo`    | A GitHub `owner/name` slug. Claude Code resolves it to a local clone it has seen before and starts there. If you have no matching clone, the session opens in your home directory instead.                                                  |
 
 `cwd` and `repo` are [two ways to set the working directory](#choose-between-cwd-and-repo). If you pass both, `cwd` takes precedence and `repo` is ignored, even if the `cwd` path does not exist.

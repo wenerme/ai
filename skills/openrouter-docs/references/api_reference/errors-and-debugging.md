@@ -266,6 +266,7 @@ Occasionally, the model may not generate any content. This typically occurs when
 
 * The model is warming up from a cold start
 * The system is scaling up to handle more requests
+* A reasoning model spent the whole `max_tokens` budget on reasoning. The response is a `200` with `finish_reason: "length"`, empty `content`, and `usage.completion_tokens_details.reasoning_tokens` close to `usage.completion_tokens`. Retrying does not help; raise `max_tokens` or cap reasoning instead. See [Reasoning tokens and max\_tokens](/docs/guides/best-practices/reasoning-tokens#reasoning-tokens-and-max_tokens).
 
 Warm-up times usually range from a few seconds to a few minutes, depending on the model and provider.
 

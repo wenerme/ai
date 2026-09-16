@@ -291,6 +291,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/ServiceUnavailableResponse'
           description: Service Unavailable - Service temporarily unavailable
+        '504':
+          content:
+            application/json:
+              example:
+                error:
+                  code: 504
+                  message: The operation was aborted due to timeout
+              schema:
+                $ref: '#/components/schemas/GatewayTimeoutResponse'
+          description: >-
+            Gateway Timeout - Provider did not respond before the upstream
+            deadline
         '524':
           content:
             application/json:
@@ -369,6 +381,16 @@ components:
           items:
             $ref: '#/components/schemas/STTTimestampGranularity'
           type: array
+        trace:
+          $ref: '#/components/schemas/TraceConfig'
+        user:
+          description: >-
+            A unique identifier representing your end-user. Forwarded to
+            Broadcast and private logging as the end-user id; never sent to the
+            provider.
+          example: user-1234
+          maxLength: 256
+          type: string
       required:
         - model
         - input_audio
@@ -636,6 +658,27 @@ components:
       required:
         - error
       type: object
+    GatewayTimeoutResponse:
+      description: Gateway Timeout - Provider did not respond before the upstream deadline
+      example:
+        error:
+          code: 504
+          message: The operation was aborted due to timeout
+      properties:
+        error:
+          $ref: '#/components/schemas/GatewayTimeoutResponseErrorData'
+        openrouter_metadata:
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      type: object
     EdgeNetworkTimeoutResponse:
       description: Infrastructure Timeout - Provider request timed out at edge network
       example:
@@ -743,6 +786,9 @@ components:
           additionalProperties: {}
           type: object
         arcee-ai:
+          additionalProperties: {}
+          type: object
+        assemblyai:
           additionalProperties: {}
           type: object
         atlas-cloud:
@@ -1134,6 +1180,28 @@ components:
         - segment
       example: word
       type: string
+    TraceConfig:
+      additionalProperties: {}
+      description: >-
+        Metadata for observability and tracing. Known keys (trace_id,
+        trace_name, span_name, generation_name, parent_span_id) have special
+        handling. Additional keys are passed through as custom metadata to
+        configured broadcast destinations.
+      example:
+        trace_id: trace-abc123
+        trace_name: my-app-trace
+      properties:
+        generation_name:
+          type: string
+        parent_span_id:
+          type: string
+        span_name:
+          type: string
+        trace_id:
+          type: string
+        trace_name:
+          type: string
+      type: object
     STTSegment:
       description: >-
         A timestamped transcript segment, returned when response_format is
@@ -1452,6 +1520,25 @@ components:
       example:
         code: 503
         message: Service temporarily unavailable
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
+      required:
+        - code
+        - message
+      type: object
+    GatewayTimeoutResponseErrorData:
+      description: Error data for GatewayTimeoutResponse
+      example:
+        code: 504
+        message: The operation was aborted due to timeout
       properties:
         code:
           type: integer

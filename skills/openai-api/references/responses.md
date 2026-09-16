@@ -60356,6 +60356,30 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     - `"response.code_interpreter_call.interpreting"`
 
+### Response Compaction Compacting Event
+
+- `ResponseCompactionCompactingEvent object { item_id, output_index, sequence_number, type }`
+
+  Emitted when new summary content is sampled for a compaction trigger. Contains no summary content.
+
+  - `item_id: string`
+
+    The ID of the compaction output item.
+
+  - `output_index: number`
+
+    The index of the compaction output item.
+
+  - `sequence_number: number`
+
+    The sequence number of the event that was emitted.
+
+  - `type: "response.compaction.compacting"`
+
+    The type of the event, always `response.compaction.compacting`.
+
+    - `"response.compaction.compacting"`
+
 ### Response Completed Event
 
 - `ResponseCompletedEvent object { response, sequence_number, type }`
@@ -134966,7 +134990,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
 ### Response Stream Event
 
-- `ResponseStreamEvent = ResponseAudioDeltaEvent or ResponseAudioDoneEvent or ResponseAudioTranscriptDeltaEvent or 55 more`
+- `ResponseStreamEvent = ResponseAudioDeltaEvent or ResponseAudioDoneEvent or ResponseAudioTranscriptDeltaEvent or 56 more`
 
   Event emitted while a response is streamed.
 
@@ -135151,6 +135175,28 @@ curl https://api.openai.com/v1/responses/resp_123 \
       The type of the event. Always `response.code_interpreter_call.interpreting`.
 
       - `"response.code_interpreter_call.interpreting"`
+
+  - `ResponseCompactionCompactingEvent object { item_id, output_index, sequence_number, type }`
+
+    Emitted when new summary content is sampled for a compaction trigger. Contains no summary content.
+
+    - `item_id: string`
+
+      The ID of the compaction output item.
+
+    - `output_index: number`
+
+      The index of the compaction output item.
+
+    - `sequence_number: number`
+
+      The sequence number of the event that was emitted.
+
+    - `type: "response.compaction.compacting"`
+
+      The type of the event, always `response.compaction.compacting`.
+
+      - `"response.compaction.compacting"`
 
   - `ResponseCompletedEvent object { response, sequence_number, type }`
 
@@ -152974,7 +153020,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
 ### Responses Server Event
 
-- `ResponsesServerEvent = ResponseAudioDeltaEvent or ResponseAudioDoneEvent or ResponseAudioTranscriptDeltaEvent or 58 more`
+- `ResponsesServerEvent = ResponseAudioDeltaEvent or ResponseAudioDoneEvent or ResponseAudioTranscriptDeltaEvent or 59 more`
 
   Server events emitted by the Responses WebSocket server.
 
@@ -153061,6 +153107,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
   - `ResponseCodeInterpreterCallWsInterpreting = ResponseCodeInterpreterCallInterpretingEvent`
 
     Emitted when the code interpreter is actively interpreting the code snippet.
+
+    - `stream_id: optional string`
+
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
+
+  - `ResponseCompactionWsCompacting = ResponseCompactionCompactingEvent`
+
+    Emitted when new summary content is sampled for a compaction trigger. Contains no summary content.
 
     - `stream_id: optional string`
 

@@ -433,7 +433,7 @@ A tier is a band, not a ceiling, so models cheaper than the band are excluded as
 
 ## Account Defaults
 
-Instead of sending these settings on every request, you can save them for your account on your workspace's [Routing page](https://openrouter.ai/settings/routing), where the Auto Router section stores allowed models and a cost preference. Saved values apply to every Auto Router request unless that request sets the same field, in which case the request wins — unless you enable the section's "prevent overrides" toggle, which makes your saved values final.
+Instead of sending these settings on every request, you can save them for your account on your workspace's [Routing page](https://openrouter.ai/settings/routing), where the Auto Router section stores allowed models, excluded models, and a cost preference. Saved exclusions use the same pattern syntax as the allow list and win over it: an excluded model is never selected even when it matches an allowed pattern. Saved values apply to every Auto Router request unless that request sets the same field, in which case the request wins — unless you enable the section's "prevent overrides" toggle, which makes your saved values final.
 
 Saved values apply to both `openrouter/auto` and `openrouter/auto-beta`.
 

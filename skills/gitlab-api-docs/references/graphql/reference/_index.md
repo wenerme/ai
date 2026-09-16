@@ -7533,6 +7533,29 @@ Fields:
 | <a id="mutation-createepic-epic"></a>`epic` | [`Epic`](#epic) | Created epic. |
 | <a id="mutation-createepic-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 
+### `Mutation.createFunctionalVerificationWorkflow`
+
+- Introduced in GitLab 19.5.
+- Status: Experiment.
+
+Input type: `CreateFunctionalVerificationWorkflowInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-createfunctionalverificationworkflow-checktype"></a>`checkType` | [`FunctionalVerificationCheckType!`](#functionalverificationchecktype) | Type of functional verification check to run. |
+| <a id="mutation-createfunctionalverificationworkflow-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-createfunctionalverificationworkflow-fullpath"></a>`fullPath` | [`ID!`](#id) | Full path of the namespace to run the verification check against. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-createfunctionalverificationworkflow-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-createfunctionalverificationworkflow-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-createfunctionalverificationworkflow-workflowid"></a>`workflowId` | [`AiDuoWorkflowsWorkflowID`](#aiduoworkflowsworkflowid) | Global ID of the workflow created for the run. |
+
 ### `Mutation.createImageDiffNote`
 
 Input type: `CreateImageDiffNoteInput`
@@ -20949,6 +20972,7 @@ Fields:
 | <a id="artifactregistryrepositoryconnection-edges"></a>`edges` | [`[ArtifactRegistryRepositoryEdge]`](#artifactregistryrepositoryedge) | A list of edges. |
 | <a id="artifactregistryrepositoryconnection-nodes"></a>`nodes` | [`[ArtifactRegistryRepository]`](#artifactregistryrepository) | A list of nodes. |
 | <a id="artifactregistryrepositoryconnection-pageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+| <a id="artifactregistryrepositoryconnection-userpermissions"></a>`userPermissions`  | [`ArtifactRegistryNamespacePermissions!`](#artifactregistrynamespacepermissions) | Introduced in GitLab 19.5. Status: Experiment. Permissions Artifact Registry grants the current user on the namespace the repositories belong to. Advisory, because Artifact Registry authorizes every request on its own. Every permission is `false` when Artifact Registry returned no verdicts. The parent field returns `null` when the `artifact_registry_ui` feature flag is disabled, so this block is not reached. |
 
 #### `ArtifactRegistryRepositoryEdge`
 
@@ -32553,7 +32577,7 @@ Fields:
 | <a id="agentplatformsessionsaggregationresponsedurationmetrics-max"></a>`max` | [`Int`](#int) | Maximum session duration in seconds. |
 | <a id="agentplatformsessionsaggregationresponsedurationmetrics-mean"></a>`mean` | [`Float`](#float) | Mean session duration in seconds. |
 | <a id="agentplatformsessionsaggregationresponsedurationmetrics-min"></a>`min` | [`Int`](#int) | Minimum session duration in seconds. |
-| <a id="agentplatformsessionsaggregationresponsedurationmetrics-sum"></a>`sum` | [`Int`](#int) | Sum of session duration in seconds. |
+| <a id="agentplatformsessionsaggregationresponsedurationmetrics-sum"></a>`sum` | [`Float`](#float) | Sum of session duration in seconds. |
 
 #### Fields with arguments
 
@@ -34478,6 +34502,22 @@ Fields:
 | <a id="artifactregistrymavenversionfile-sha512"></a>`sha512`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. SHA-512 checksum of the file. |
 | <a id="artifactregistrymavenversionfile-sizebytes"></a>`sizeBytes`  | [`BigInt!`](#bigint) | Introduced in GitLab 19.4. Status: Experiment. Stored size of the file in bytes. |
 
+### `ArtifactRegistryNamespacePermissions`
+
+Per-action permissions Artifact Registry reports for the current user on a namespace.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistrynamespacepermissions-createrepository"></a>`createRepository`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Indicates the user can create a repository in the namespace. |
+| <a id="artifactregistrynamespacepermissions-createrepositoryupstream"></a>`createRepositoryUpstream`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Indicates the user can add an upstream to the namespace's repositories. |
+| <a id="artifactregistrynamespacepermissions-deleterepository"></a>`deleteRepository`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Indicates the user can delete repositories of the namespace. |
+| <a id="artifactregistrynamespacepermissions-deleterepositoryupstream"></a>`deleteRepositoryUpstream`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Indicates the user can remove an upstream from the namespace's repositories. |
+| <a id="artifactregistrynamespacepermissions-readrepository"></a>`readRepository`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Indicates the user can read repositories of the namespace and their metadata. |
+| <a id="artifactregistrynamespacepermissions-updaterepository"></a>`updateRepository`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Indicates the user can change the settings of the namespace's repositories. |
+| <a id="artifactregistrynamespacepermissions-updaterepositoryupstream"></a>`updateRepositoryUpstream`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Indicates the user can change an upstream of the namespace's repositories. |
+
 ### `ArtifactRegistryNpmDistTag`
 
 npm dist-tag of a package in an Artifact Registry repository.
@@ -34638,6 +34678,7 @@ Fields:
 | <a id="artifactregistryrepositorydetails-settings"></a>`settings`  | [`ArtifactRegistryRemoteSettings`](#artifactregistryremotesettings) | Introduced in GitLab 19.3. Status: Experiment. Upstream configuration Artifact Registry returned for the repository. Null when it returned none, so null on a hosted or virtual repository. |
 | <a id="artifactregistryrepositorydetails-sizebytes"></a>`sizeBytes`  | [`BigInt!`](#bigint) | Introduced in GitLab 19.3. Status: Experiment. Storage the repository occupies, in bytes. Buffered, so it can lag. |
 | <a id="artifactregistryrepositorydetails-updatedby"></a>`updatedBy`  | [`UserCore`](#usercore) | Introduced in GitLab 19.4. Status: Experiment. User who last changed the repository. Null when the editor is unknown or no longer exists. |
+| <a id="artifactregistryrepositorydetails-upstreamrepositories"></a>`upstreamRepositories`  | [`[ArtifactRegistryUpstreamRepositoryAssociation!]`](#artifactregistryupstreamrepositoryassociation) | Introduced in GitLab 19.5. Status: Experiment. Upstream repositories a virtual repository resolves through, in resolution order. Can be selected once per operation. Returns `null` for a hosted or remote repository, for a repository that is gone, and when Artifact Registry rejects the read: silently for a 401, 403, or 404, and alongside a top-level error for a 429, a 5xx, or any other 4xx. |
 | <a id="artifactregistryrepositorydetails-userpermissions"></a>`userPermissions`  | [`ArtifactRegistryRepositoryPermissions!`](#artifactregistryrepositorypermissions) | Introduced in GitLab 19.5. Status: Experiment. Permissions Artifact Registry grants the current user on the repository. Advisory, because Artifact Registry authorizes every request on its own. Every permission is `false` when Artifact Registry returned no verdicts. The parent field returns `null` when the `artifact_registry_ui` feature flag is disabled, so this block is not reached. |
 | <a id="artifactregistryrepositorydetails-visibility"></a>`visibility`  | [`ArtifactRegistryRepositoryVisibility!`](#artifactregistryrepositoryvisibility) | Introduced in GitLab 19.3. Status: Experiment. Who can read the repository. |
 
@@ -34720,6 +34761,31 @@ Fields:
 | <a id="artifactregistryroleassignment-resourceid"></a>`resourceId` | [`String!`](#string) | UUID of the Artifact Registry resource the role is assigned on. |
 | <a id="artifactregistryroleassignment-role"></a>`role` | [`ArtifactRegistryRole`](#artifactregistryrole) | Assigned Artifact Registry role. |
 
+### `ArtifactRegistryUpstreamRepositoryAssociation`
+
+One upstream of a virtual Artifact Registry repository: its position and a summary of the repository it points at.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistryupstreamrepositoryassociation-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.5. Status: Experiment. ID of the upstream association in Artifact Registry. |
+| <a id="artifactregistryupstreamrepositoryassociation-position"></a>`position`  | [`Int!`](#int) | Introduced in GitLab 19.5. Status: Experiment. 1-based resolution position of the upstream, consulted in ascending order. |
+| <a id="artifactregistryupstreamrepositoryassociation-upstreamrepository"></a>`upstreamRepository`  | [`ArtifactRegistryUpstreamRepositorySummary!`](#artifactregistryupstreamrepositorysummary) | Introduced in GitLab 19.5. Status: Experiment. Summary of the repository the association points at. |
+
+### `ArtifactRegistryUpstreamRepositorySummary`
+
+Summary of a repository that is an upstream of a virtual Artifact Registry repository.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistryupstreamrepositorysummary-format"></a>`format`  | [`ArtifactRegistryRepositoryFormat!`](#artifactregistryrepositoryformat) | Introduced in GitLab 19.5. Status: Experiment. Package format the upstream repository holds. |
+| <a id="artifactregistryupstreamrepositorysummary-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.5. Status: Experiment. ID of the upstream repository in Artifact Registry. |
+| <a id="artifactregistryupstreamrepositorysummary-kind"></a>`kind`  | [`ArtifactRegistryUpstreamRepositoryKind`](#artifactregistryupstreamrepositorykind) | Introduced in GitLab 19.5. Status: Experiment. How the upstream repository sources its artifacts. Artifact Registry returns `hosted` or `remote` by contract; a value outside those resolves `null` alongside a top-level error rather than a badge. |
+| <a id="artifactregistryupstreamrepositorysummary-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 19.5. Status: Experiment. Name of the upstream repository. |
+
 ### `ArtifactRegistryVersion`
 
 Version of a package in an Artifact Registry repository (Maven and npm).
@@ -34755,7 +34821,18 @@ Fields:
 | <a id="artifactregistryversiondetails-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.4. Status: Experiment. ID of the version in Artifact Registry. |
 | <a id="artifactregistryversiondetails-project"></a>`project`  | [`Project`](#project) | Introduced in GitLab 19.4. Status: Experiment. Project the version was published from, resolved from the reference Artifact Registry stores. Null when it stored none, the project no longer exists, or the viewer cannot see the project. |
 | <a id="artifactregistryversiondetails-sizebytes"></a>`sizeBytes`  | [`BigInt`](#bigint) | Introduced in GitLab 19.4. Status: Experiment. Stored size of the version in bytes. Null for a Maven version until Artifact Registry serializes the column, and on a remote repository. |
+| <a id="artifactregistryversiondetails-statistics"></a>`statistics`  | [`ArtifactRegistryVersionStatistics`](#artifactregistryversionstatistics) | Introduced in GitLab 19.5. Status: Experiment. Read-time statistics for the version. Hosted repositories only, so `null` without a read on a virtual or remote repository and on a container repository. Can be selected once per operation. `null` when Artifact Registry does not serve the statistics route, and when it rejects the read: silently for a 401, 403, or 404, and alongside a top-level error for a 429, any other 5xx, or any other 4xx. |
 | <a id="artifactregistryversiondetails-version"></a>`version`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Version string of the package. |
+
+### `ArtifactRegistryVersionStatistics`
+
+Read-time statistics for a version in an Artifact Registry repository.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistryversionstatistics-filescount"></a>`filesCount`  | [`BigInt`](#bigint) | Introduced in GitLab 19.5. Status: Experiment. Number of files the version holds, computed at read time. |
 
 ### `AscpComponent`
 
@@ -38069,6 +38146,7 @@ Fields:
 | <a id="commitdata-authoravatar"></a>`authorAvatar` | [`String!`](#string) | Link to author avatar. |
 | <a id="commitdata-commitauthorlink"></a>`commitAuthorLink` | [`String!`](#string) | Link to the commit author. |
 | <a id="commitdata-commitlink"></a>`commitLink` | [`String!`](#string) | Link to the commit. |
+| <a id="commitdata-previousblamepath"></a>`previousBlamePath` | [`String`](#string) | Path to blame prior to the change. |
 | <a id="commitdata-projectblamelink"></a>`projectBlameLink` | [`String`](#string) | Link to blame prior to the change. |
 | <a id="commitdata-timeagotooltip"></a>`timeAgoTooltip` | [`String!`](#string) | Time of commit. |
 
@@ -39966,7 +40044,6 @@ Fields:
 | <a id="customizabledashboard-status"></a>`status`  | [`String`](#string) | Introduced in GitLab 17.0. Status: Experiment. Status of the dashboard. |
 | <a id="customizabledashboard-title"></a>`title` | [`String`](#string) | Title of the dashboard. |
 | <a id="customizabledashboard-userdefined"></a>`userDefined` | [`Boolean!`](#boolean) | Indicates whether the dashboard is user-defined or provided by GitLab. |
-| <a id="customizabledashboard-views"></a>`views`  | [`[CustomizableDashboardView!]`](#customizabledashboardview) | Introduced in GitLab 19.4. Status: Experiment. Views the user can switch between on the dashboard, each with its own panels. |
 
 ### `CustomizableDashboardPanel`
 
@@ -40005,17 +40082,6 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="customizabledashboardpanelview-text"></a>`text` | [`String`](#string) | Label shown in the segmented control for the view. |
 | <a id="customizabledashboardpanelview-visualization"></a>`visualization` | [`CustomizableDashboardVisualization`](#customizabledashboardvisualization) | Visualization rendered when the view is selected. |
-
-### `CustomizableDashboardView`
-
-Represents a view that can be selected within a customizable dashboard.
-
-Fields:
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| <a id="customizabledashboardview-panels"></a>`panels` | [`CustomizableDashboardPanelConnection`](#customizabledashboardpanelconnection) | Panels shown when the view is selected. (see [Connections](#connections)) |
-| <a id="customizabledashboardview-title"></a>`title` | [`String`](#string) | Title of the view. |
 
 ### `CustomizableDashboardVisualization`
 
@@ -40814,7 +40880,7 @@ Fields:
 | <a id="deploymentsaggregationresponsedurationmetrics-max"></a>`max` | [`Int`](#int) | Maximum deployment duration in seconds. |
 | <a id="deploymentsaggregationresponsedurationmetrics-mean"></a>`mean` | [`Float`](#float) | Mean deployment duration in seconds. |
 | <a id="deploymentsaggregationresponsedurationmetrics-min"></a>`min` | [`Int`](#int) | Minimum deployment duration in seconds. |
-| <a id="deploymentsaggregationresponsedurationmetrics-sum"></a>`sum` | [`Int`](#int) | Sum of deployment duration in seconds. |
+| <a id="deploymentsaggregationresponsedurationmetrics-sum"></a>`sum` | [`Float`](#float) | Sum of deployment duration in seconds. |
 
 #### Fields with arguments
 
@@ -41999,10 +42065,17 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="duoworkflowsaggregationresponse-churneduserscount"></a>`churnedUsersCount` | [`Int`](#int) | Number of unique users who ran a flow in the previous period but not in this one. |
+| <a id="duoworkflowsaggregationresponse-closedmrcount"></a>`closedMrCount` | [`DuoWorkflowsAggregationResponseClosedMrCountMetrics`](#duoworkflowsaggregationresponseclosedmrcountmetrics) | Aggregated `closed_mr_count` metrics. |
+| <a id="duoworkflowsaggregationresponse-createdmrcount"></a>`createdMrCount` | [`DuoWorkflowsAggregationResponseCreatedMrCountMetrics`](#duoworkflowsaggregationresponsecreatedmrcountmetrics) | Aggregated `created_mr_count` metrics. |
 | <a id="duoworkflowsaggregationresponse-creditsused"></a>`creditsUsed` | [`DuoWorkflowsAggregationResponseCreditsUsedMetrics`](#duoworkflowsaggregationresponsecreditsusedmetrics) | Aggregated `credits_used` metrics. |
 | <a id="duoworkflowsaggregationresponse-dimensions"></a>`dimensions` | [`DuoWorkflowsAggregationResponseDimensions`](#duoworkflowsaggregationresponsedimensions) | Aggregation dimensions. Every selected dimension will be used for aggregation. |
 | <a id="duoworkflowsaggregationresponse-flowtypescount"></a>`flowTypesCount` | [`Int`](#int) | Number of unique flow types. |
+| <a id="duoworkflowsaggregationresponse-joineduserscount"></a>`joinedUsersCount` | [`Int`](#int) | Number of unique users who ran a flow in this period but not in the previous one. |
+| <a id="duoworkflowsaggregationresponse-mergedmrcount"></a>`mergedMrCount` | [`DuoWorkflowsAggregationResponseMergedMrCountMetrics`](#duoworkflowsaggregationresponsemergedmrcountmetrics) | Aggregated `merged_mr_count` metrics. |
+| <a id="duoworkflowsaggregationresponse-previousperioduserscount"></a>`previousPeriodUsersCount` | [`Int`](#int) | Number of unique users in the previous period. |
 | <a id="duoworkflowsaggregationresponse-projectscount"></a>`projectsCount` | [`Int`](#int) | Number of unique projects. |
+| <a id="duoworkflowsaggregationresponse-returninguserscount"></a>`returningUsersCount` | [`Int`](#int) | Number of unique users who also ran a flow in the previous period. |
 | <a id="duoworkflowsaggregationresponse-userscount"></a>`usersCount` | [`Int`](#int) | Number of unique users. |
 
 #### Fields with arguments
@@ -42018,6 +42091,60 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="duoworkflowsaggregationresponse-totalcount-status"></a>`status` | [`[String!]`](#string) | Only count flows with the given statuses (created, running, finished, failed, ...). |
+
+### `DuoWorkflowsAggregationResponseClosedMrCountMetrics`
+
+Aggregated `closed_mr_count` metrics for `DuoWorkflows` aggregation engine.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflowsaggregationresponseclosedmrcountmetrics-max"></a>`max` | [`Int`](#int) | Maximum number of merge requests created by the flow that were later closed without merging. |
+| <a id="duoworkflowsaggregationresponseclosedmrcountmetrics-mean"></a>`mean` | [`Float`](#float) | Mean number of merge requests created by the flow that were later closed without merging. |
+| <a id="duoworkflowsaggregationresponseclosedmrcountmetrics-min"></a>`min` | [`Int`](#int) | Minimum number of merge requests created by the flow that were later closed without merging. |
+| <a id="duoworkflowsaggregationresponseclosedmrcountmetrics-sum"></a>`sum` | [`Float`](#float) | Sum of number of merge requests created by the flow that were later closed without merging. |
+
+#### Fields with arguments
+
+##### `DuoWorkflowsAggregationResponseClosedMrCountMetrics.quantile`
+
+Quantile of number of merge requests created by the flow that were later closed without merging.
+
+Returns [`Float`](#float).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflowsaggregationresponseclosedmrcountmetrics-quantile-quantile"></a>`quantile` | [`Float`](#float) |  |
+
+### `DuoWorkflowsAggregationResponseCreatedMrCountMetrics`
+
+Aggregated `created_mr_count` metrics for `DuoWorkflows` aggregation engine.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflowsaggregationresponsecreatedmrcountmetrics-max"></a>`max` | [`Int`](#int) | Maximum number of merge requests created by the flow. |
+| <a id="duoworkflowsaggregationresponsecreatedmrcountmetrics-mean"></a>`mean` | [`Float`](#float) | Mean number of merge requests created by the flow. |
+| <a id="duoworkflowsaggregationresponsecreatedmrcountmetrics-min"></a>`min` | [`Int`](#int) | Minimum number of merge requests created by the flow. |
+| <a id="duoworkflowsaggregationresponsecreatedmrcountmetrics-sum"></a>`sum` | [`Float`](#float) | Sum of number of merge requests created by the flow. |
+
+#### Fields with arguments
+
+##### `DuoWorkflowsAggregationResponseCreatedMrCountMetrics.quantile`
+
+Quantile of number of merge requests created by the flow.
+
+Returns [`Float`](#float).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflowsaggregationresponsecreatedmrcountmetrics-quantile-quantile"></a>`quantile` | [`Float`](#float) |  |
 
 ### `DuoWorkflowsAggregationResponseCreditsUsedMetrics`
 
@@ -42086,6 +42213,33 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="duoworkflowsaggregationresponsedimensions-usertier-thresholds"></a>`thresholds` | [`[Int!]`](#int) | Ascending tier boundaries. Values below the first threshold map to `tier_0`, values at or above the last threshold map to the highest tier. |
+
+### `DuoWorkflowsAggregationResponseMergedMrCountMetrics`
+
+Aggregated `merged_mr_count` metrics for `DuoWorkflows` aggregation engine.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflowsaggregationresponsemergedmrcountmetrics-max"></a>`max` | [`Int`](#int) | Maximum number of merge requests created by the flow that were later merged. |
+| <a id="duoworkflowsaggregationresponsemergedmrcountmetrics-mean"></a>`mean` | [`Float`](#float) | Mean number of merge requests created by the flow that were later merged. |
+| <a id="duoworkflowsaggregationresponsemergedmrcountmetrics-min"></a>`min` | [`Int`](#int) | Minimum number of merge requests created by the flow that were later merged. |
+| <a id="duoworkflowsaggregationresponsemergedmrcountmetrics-sum"></a>`sum` | [`Float`](#float) | Sum of number of merge requests created by the flow that were later merged. |
+
+#### Fields with arguments
+
+##### `DuoWorkflowsAggregationResponseMergedMrCountMetrics.quantile`
+
+Quantile of number of merge requests created by the flow that were later merged.
+
+Returns [`Float`](#float).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflowsaggregationresponsemergedmrcountmetrics-quantile-quantile"></a>`quantile` | [`Float`](#float) |  |
 
 ### `DuoWorkflowsAggregationScope`
 
@@ -51109,7 +51263,7 @@ Fields:
 | <a id="mergerequestsaggregationresponsetimetomergemetrics-max"></a>`max` | [`Int`](#int) | Maximum time to merge in seconds. |
 | <a id="mergerequestsaggregationresponsetimetomergemetrics-mean"></a>`mean` | [`Float`](#float) | Mean time to merge in seconds. |
 | <a id="mergerequestsaggregationresponsetimetomergemetrics-min"></a>`min` | [`Int`](#int) | Minimum time to merge in seconds. |
-| <a id="mergerequestsaggregationresponsetimetomergemetrics-sum"></a>`sum` | [`Int`](#int) | Sum of time to merge in seconds. |
+| <a id="mergerequestsaggregationresponsetimetomergemetrics-sum"></a>`sum` | [`Float`](#float) | Sum of time to merge in seconds. |
 
 #### Fields with arguments
 
@@ -54163,7 +54317,7 @@ Fields:
 | <a id="pipelinesaggregationresponsedurationmetrics-max"></a>`max` | [`Int`](#int) | Maximum pipeline duration in seconds. |
 | <a id="pipelinesaggregationresponsedurationmetrics-mean"></a>`mean` | [`Float`](#float) | Mean pipeline duration in seconds. |
 | <a id="pipelinesaggregationresponsedurationmetrics-min"></a>`min` | [`Int`](#int) | Minimum pipeline duration in seconds. |
-| <a id="pipelinesaggregationresponsedurationmetrics-sum"></a>`sum` | [`Int`](#int) | Sum of pipeline duration in seconds. |
+| <a id="pipelinesaggregationresponsedurationmetrics-sum"></a>`sum` | [`Float`](#float) | Sum of pipeline duration in seconds. |
 
 #### Fields with arguments
 
@@ -65705,6 +65859,15 @@ Artifact Registry role that can be assigned to a user.
 | <a id="artifactregistryrole-artifact_manager"></a>`ARTIFACT_MANAGER` | Manage artifacts and repository configuration. |
 | <a id="artifactregistryrole-artifact_viewer"></a>`ARTIFACT_VIEWER` | Consume artifacts and browse the registry. |
 
+### `ArtifactRegistryUpstreamRepositoryKind`
+
+How an upstream of a virtual Artifact Registry repository sources its artifacts. An upstream is never virtual.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="artifactregistryupstreamrepositorykind-hosted"></a>`HOSTED` | Stores artifacts published to GitLab. |
+| <a id="artifactregistryupstreamrepositorykind-remote"></a>`REMOTE` | Proxies and caches an upstream registry. |
+
 ### `ArtifactRegistryVersionSort`
 
 Values for sorting Artifact Registry package versions.
@@ -67468,6 +67631,14 @@ Values for Duo Agent Platform flow type sorting.
 | <a id="flowtypesort-sessions_count_desc"></a>`SESSIONS_COUNT_DESC` | Sort by sessions count in descending order. |
 | <a id="flowtypesort-users_count_asc"></a>`USERS_COUNT_ASC` | Sort by unique users count in ascending order. |
 | <a id="flowtypesort-users_count_desc"></a>`USERS_COUNT_DESC` | Sort by unique users count in descending order. |
+
+### `FunctionalVerificationCheckType`
+
+Type of functional verification check.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="functionalverificationchecktype-agentic_chat"></a>`AGENTIC_CHAT` | Agentic Chat check. |
 
 ### `GeoRegistriesBulkAction`
 
@@ -69323,8 +69494,12 @@ Lists the status of a virtual registry cleanup policy.
 | Value | Description |
 | ----- | ----------- |
 | <a id="policyviolationerrortype-artifacts_missing"></a>`ARTIFACTS_MISSING` | Represents error which occurs when pipeline is misconfigured and does not include necessary artifacts to evaluate a policy. |
+| <a id="policyviolationerrortype-evaluation_skipped"></a>`EVALUATION_SKIPPED` | Represents error which occurs when a policy could not be evaluated within the specified timeframe, so approvals are required for the policy. |
+| <a id="policyviolationerrortype-pipeline_failed"></a>`PIPELINE_FAILED` | Represents error which occurs when a policy could not be evaluated because the latest pipeline failed. |
 | <a id="policyviolationerrortype-scan_not_succeeded"></a>`SCAN_NOT_SUCCEEDED` | Represents error which occurs when a security scan job did not complete successfully (e.g., was canceled or failed), preventing policy evaluation. |
 | <a id="policyviolationerrortype-scan_removed"></a>`SCAN_REMOVED` | Represents mismatch between the scans of the source and target pipelines. |
+| <a id="policyviolationerrortype-target_pipeline_missing"></a>`TARGET_PIPELINE_MISSING` | Represents error which occurs when the SBOM reports required by a policy could not be found on the target branch. |
+| <a id="policyviolationerrortype-target_scan_missing"></a>`TARGET_SCAN_MISSING` | Represents error which occurs when the scans enforced by a policy could not be found in the target branch pipelines. |
 | <a id="policyviolationerrortype-unknown"></a>`UNKNOWN` | Represents unknown error. |
 
 ### `PolicyViolationStatus`
@@ -70337,7 +70512,6 @@ Name of the feature that the callout is for.
 | <a id="usercalloutfeaturenameenum-vulnerability_report_limited_experience"></a>`VULNERABILITY_REPORT_LIMITED_EXPERIENCE` | Callout feature name for vulnerability_report_limited_experience. |
 | <a id="usercalloutfeaturenameenum-web_ide_alert_dismissed"></a>`WEB_IDE_ALERT_DISMISSED` | Callout feature name for web_ide_alert_dismissed. |
 | <a id="usercalloutfeaturenameenum-web_ide_ci_environments_guidance"></a>`WEB_IDE_CI_ENVIRONMENTS_GUIDANCE` | Callout feature name for web_ide_ci_environments_guidance. |
-| <a id="usercalloutfeaturenameenum-work_item_decision_log_popover"></a>`WORK_ITEM_DECISION_LOG_POPOVER` | Callout feature name for work_item_decision_log_popover. |
 | <a id="usercalloutfeaturenameenum-work_item_epic_feedback"></a>`WORK_ITEM_EPIC_FEEDBACK` | Callout feature name for work_item_epic_feedback. |
 
 ### `UserEventFilter`

@@ -101,6 +101,7 @@ Document Processing Pipeline (trace)
 * The `user` field maps to Langfuse's User ID for user-level analytics
 * The `session_id` field maps to Langfuse's Session ID for grouping conversations
 * Any additional keys in `trace` are passed as trace metadata and can be used for filtering and analysis in Langfuse
+* Prompt and completion content is sent on the generation observation as `langfuse.observation.input` / `langfuse.observation.output` (plus `gen_ai.prompt` / `gen_ai.completion`). Langfuse derives the trace-level input and output from the root observation, so the deprecated `langfuse.trace.input` / `langfuse.trace.output` attributes are no longer emitted. Trace-level evaluators that read those attributes directly should read the root observation instead.
 
 ## Privacy Mode
 

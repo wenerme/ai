@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Header Glossary
 
-Last updated May 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/glossary/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/glossary/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Gateway supports a variety of headers to help you configure, customize, and manage your API requests. This page provides a complete list of all supported headers, along with a short description
 
@@ -29,6 +29,7 @@ AI Gateway supports a variety of headers to help you configure, customize, and m
 | cf-aig-log-id | The [cf-aig-log-id](https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-api/#3-retrieve-the-cf-aig-log-id) is a unique identifier for the specific log entry to which you want to add feedback. |
 | cf-aig-max-attempts | Header to customize the number of max attempts for [request retries](https://developers.cloudflare.com/ai-gateway/configuration/request-handling/#request-retries) of a request. |
 | cf-aig-metadata | [Custom metadata](https://developers.cloudflare.com/ai-gateway/configuration/custom-metadata/)allows you to tag requests with user IDs or other identifiers, enabling better tracking and analysis of your requests. |
+| cf-aig-no-wholesale | Prevents [Unified Billing fallback](https://developers.cloudflare.com/ai-gateway/features/unified-billing/#prevent-unified-billing-fallback-for-byok-third-party-providers) for a third-party provider request when set to `true`. The request must use provider credentials supplied with the request or stored on the gateway. |
 | cf-aig-request-timeout | Header to set a [request timeout](https://developers.cloudflare.com/ai-gateway/configuration/request-handling/#request-timeouts) (measured in milliseconds). If the provider does not respond within this time, the request returns an error. |
 | cf-aig-retry-delay | Header to customize the retry delay for [request retries](https://developers.cloudflare.com/ai-gateway/configuration/request-handling/#request-retries) of a request. |
 | cf-aig-skip-cache | Header to [bypass caching for a specific request](https://developers.cloudflare.com/ai-gateway/features/caching/#skip-cache-cf-aig-skip-cache). |
@@ -45,6 +46,8 @@ Settings in AI Gateway can be configured at two levels: **Request** and **Gatewa
 
 This hierarchy ensures consistent behavior, prioritizing the most specific configurations. Use request-level headers for fine-tuned control, and gateway settings for general defaults.
 
+Some restrictive settings are additive. The `cf-aig-no-wholesale` header can require provider credentials for a third-party provider request, but it cannot turn off **Require provider credentials** when that gateway setting is on.
+
 Was this helpful?
 
 YesNo
@@ -54,5 +57,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/glossary/#page","headline":"Header Glossary · Cloudflare AI Gateway docs","description":"Reference all supported AI Gateway headers for configuring, customizing, and managing API requests.","url":"https://developers.cloudflare.com/ai-gateway/glossary/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/glossary/#page","headline":"Header Glossary · Cloudflare AI Gateway docs","description":"Reference all supported AI Gateway headers for configuring, customizing, and managing API requests.","url":"https://developers.cloudflare.com/ai-gateway/glossary/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -16,6 +16,27 @@ Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/ai-gateway.xml)
 
+## 2026-09-14
+
+
+**Prevent Unified Billing fallback for BYOK third-party providers**
+
+AI Gateway can now require credentials for third-party provider requests. Credentials must accompany the request or be stored on the gateway. This setting prevents fallback to Unified Billing with Cloudflare-managed credentials.
+
+Turn on **Require provider credentials** in your gateway settings. To use the API, set `byok_only` to `true` in the request body of a [`PUT` request to update the gateway](https://developers.cloudflare.com/api/resources/ai_gateway/methods/update/):
+
+```json
+{
+	"byok_only": true
+}
+```
+
+To require provider credentials for one third-party request, set the `cf-aig-no-wholesale` header to `true`. This header cannot relax the gateway setting.
+
+Requests without applicable credentials then return an HTTP `400` response. Workers AI requests remain allowed, and the setting does not change their configured billing mode.
+
+For configuration details and request-level controls, refer to [Prevent Unified Billing fallback for BYOK third-party providers](https://developers.cloudflare.com/ai-gateway/features/unified-billing/#prevent-unified-billing-fallback-for-byok-third-party-providers).
+
 ## 2026-09-09
 
 
