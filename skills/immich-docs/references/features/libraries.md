@@ -86,6 +86,8 @@ First, we need to plan how we want to organize the libraries. The christmas trip
 
 ### Mount Docker Volumes
 
+<ComposeBuilder query="storage.externalLibraries.0.path=&storage.externalLibraries.0.readOnly=true" />
+
 The `immich-server` container will need access to the gallery. Modify your docker compose file as follows
 
 ```diff title="docker-compose.yml"

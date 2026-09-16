@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/concepts/widget/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-A Turnstile widget defines how Turnstile behaves on your webpage. Each widget has a mode, a label, a sitekey
-
-, and a secret key. You can create multiple widgets with different configurations.
+A Turnstile widget defines how Turnstile behaves on your webpage. Each widget has a mode, a label, a sitekey, and a secret key. You can create multiple widgets with different configurations.
 
 Turnstile is hosted under `challenges.cloudflare.com`. Your application will connect to this origin. If your site uses a [Content Security Policy](https://developers.cloudflare.com/turnstile/reference/content-security-policy/), you must allow connections to this domain.
 

@@ -50,7 +50,14 @@ export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 
 ## Service Tiers
 
-Many providers sell more than one grade of capacity for the same model: a discounted `flex` tier that trades latency and availability for a lower price, and a `priority` tier that costs more for faster, more reliable service. OpenRouter exposes each of these as its own endpoint, so you can reach them either by letting them compete for your traffic or by asking for one explicitly. Whichever way you route, the response reports the tier that actually served the request, and you are billed at that tier's rate.
+Many providers sell more than one grade of capacity for the same model:
+
+* **`flex`**: a discounted tier that trades latency and availability for a lower price.
+* **`priority`**: a tier that costs more for faster, more reliable service.
+
+OpenRouter exposes each of these as its own endpoint, so you can reach them either by letting them compete for your traffic or by asking for one explicitly.
+
+Whichever way you route, the response reports the tier that actually served the request, and you are billed at that tier's rate.
 
 ### The `:nitro` and `:floor` Variants
 
@@ -62,13 +69,23 @@ The simplest way to use service tiers is to append a variant to the model ID. `:
 }
 ```
 
-Because a tier endpoint has to win that sort like any other endpoint, you pay a priority rate only when the priority endpoint is genuinely the fastest option, and a flex endpoint serves only when it is genuinely the cheapest. Nothing else about the request changes, and fallbacks keep working: if the tier endpoint is unavailable, the next endpoint in the sorted pool serves the request at its own rate.
+Because a tier endpoint has to win that sort like any other endpoint, you pay a priority rate only when the priority endpoint is genuinely the fastest option, and a flex endpoint serves only when it is genuinely the cheapest.
 
-This is the recommended starting point for most traffic. Reach for the `service_tier` parameter below when you need a specific tier regardless of how it compares to the alternatives. See [Nitro](/docs/guides/routing/model-variants/nitro) and [Floor](/docs/guides/routing/model-variants/floor) for the variants in full.
+Nothing else about the request changes, and fallbacks keep working: if the tier endpoint is unavailable, the next endpoint in the sorted pool serves the request at its own rate.
+
+This is the recommended starting point for most traffic. Reach for the `service_tier` parameter below when you need a specific tier regardless of how it compares to the alternatives.
+
+See [Nitro](/docs/guides/routing/model-variants/nitro) and [Floor](/docs/guides/routing/model-variants/floor) for the variants in full.
 
 ### Using Service Tiers
 
-To pin a tier explicitly, pass `service_tier` as a top-level parameter in your request body. Supported values are `flex` (lower cost, higher latency) and `priority` (faster, higher cost). `fast` is also accepted as an alias for `priority` (see [Fast mode](#fast-mode) below). The example below requests the `flex` tier from OpenAI's `gpt-5` for a 50% discount in exchange for higher latency and lower availability.
+To pin a tier explicitly, pass `service_tier` as a top-level parameter in your request body. Supported values:
+
+* `flex`: lower cost, higher latency.
+* `priority`: faster, higher cost.
+* `fast`: an alias for `priority` (see [Fast mode](#fast-mode) below).
+
+The example below requests the `flex` tier from OpenAI's `gpt-5` for a 50% discount in exchange for higher latency and lower availability.
 
 <Template
   data={{
@@ -202,21 +219,51 @@ curl https://openrouter.ai/api/v1/messages \
 
 ### Fast mode
 
-`service_tier: "fast"` (OpenAI's [Fast mode](https://developers.openai.com/api/docs/guides/fast-mode) rename of priority processing), `service_tier: "priority"`, and Anthropic's native `speed: "fast"` parameter are fully interchangeable on all APIs and providers. Any of the three requests the priority tier, and the response always reports the tier as `priority`, never `fast` — the same echo behavior as OpenAI's own API, which returns `priority` even when the request spelled the tier `fast`. On Anthropic models, the reported tier is derived from the `speed` Anthropic returns: a fast-served request reports `service_tier: "priority"` (plus `usage.speed: "fast"` on the Messages API), even though Anthropic's own API would echo `service_tier: "standard"` for it. On Anthropic models that support fast mode, this routes to the model's `fast` service tier endpoint like any other provider's priority tier (see [Fast Mode](/docs/cookbook/coding-agents/claude-code-integration#fast-mode)). The dedicated `*-fast` models (e.g. [`anthropic/claude-opus-5-fast`](https://openrouter.ai/anthropic/claude-opus-5-fast)) are deprecated — they keep working and are served by the same fast tier capacity, but new integrations should target the regular model.
+Three spellings request the priority tier. They are fully interchangeable on all APIs and providers:
 
-If you set conflicting values explicitly (e.g. `speed: "standard"` with `service_tier: "priority"`), both are honored as written and neither is derived from the other.
+* `service_tier: "priority"`
+* `service_tier: "fast"` (OpenAI's [Fast mode](https://developers.openai.com/api/docs/guides/fast-mode) rename of priority processing)
+* `speed: "fast"` (Anthropic's native parameter)
 
-Anthropic itself has deprecated its priority tier. Per [Anthropic's service tiers documentation](https://platform.claude.com/docs/en/api/service-tiers): "Priority Tier capacity commitments are no longer available for purchase. Organizations with an existing commitment can continue to use Priority Tier through their contract end date."
+**Reported tier.** The response always reports the tier as `priority`, never `fast`. This matches OpenAI's own API, which returns `priority` even when the request spelled the tier `fast`.
+
+**Anthropic models.** The reported tier is derived from the `speed` Anthropic returns:
+
+* A fast-served request reports `service_tier: "priority"`, plus `usage.speed: "fast"` on the Messages API.
+* Anthropic's own API would echo `service_tier: "standard"` for the same request.
+* On models that support fast mode, the request routes to the model's `fast` service tier endpoint like any other provider's priority tier. See [Fast Mode](/docs/cookbook/coding-agents/claude-code-integration#fast-mode) in the Claude Code guide.
+
+**Conflicting values.** If you set conflicting values explicitly (e.g. `speed: "standard"` with `service_tier: "priority"`), both are honored as written and neither is derived from the other.
+
+**Deprecated `*-fast` models.** The dedicated `*-fast` models (e.g. [`anthropic/claude-opus-5-fast`](https://openrouter.ai/anthropic/claude-opus-5-fast)) are deprecated. They keep working and are served by the same fast tier capacity, but new integrations should target the regular model.
+
+<Note>
+  Anthropic itself has deprecated its priority tier. Per [Anthropic's service tiers documentation](https://platform.claude.com/docs/en/api/service-tiers): "Priority Tier capacity commitments are no longer available for purchase. Organizations with an existing commitment can continue to use Priority Tier through their contract end date."
+</Note>
 
 ### How Routing Works
 
-Non-default tier endpoints (`flex`, `priority`) are only considered when your request asks for them. There are three ways to do that:
+Non-default tier endpoints (`flex`, `priority`) are only considered when your request asks for them. There are three ways to do that.
 
-1. **The [`:nitro`](/docs/guides/routing/model-variants/nitro) and [`:floor`](/docs/guides/routing/model-variants/floor) model variants.** `:nitro` makes priority endpoints eligible and `:floor` makes flex endpoints eligible, but unlike the `service_tier` parameter, tier endpoints get no special treatment: the whole pool is sorted by the variant's metric (throughput for `:nitro`, price for `:floor`), so a tier endpoint is used only when it wins that sort. Because admission depends on that sort, setting `provider.order` (which replaces sorting with your explicit ordering) disables the variant's tier admission; name a tier endpoint slug in the order list to include it. An explicit `service_tier: "default"` also disables the variant's tier admission, so you can use `:nitro`/`:floor` purely for their sorting while pinning the standard tier.
+#### 1. The `:nitro` and `:floor` model variants
 
-2. **The `service_tier` parameter.** For `priority`, matching endpoints are tried first (sorted by throughput), with fallback to other endpoints if none succeed; billing always follows the endpoint actually used, so a priority request that falls back off-tier is charged at that endpoint's standard rate, not the tier rate. For `flex`, routing is restricted to flex endpoints (sorted by price). Flex never falls back to a default-tier endpoint, since that would cost more than the tier you requested, so a flex capacity error surfaces instead. If the pool contains no flex endpoints at all (for example, the model has no flex-capable provider), the request routes normally at standard rates. Combine with [`allow_fallbacks: false`](/docs/guides/routing/provider-selection#disabling-fallbacks) to route only to the top endpoint of that tier.
+* [`:nitro`](/docs/guides/routing/model-variants/nitro) makes priority endpoints eligible. [`:floor`](/docs/guides/routing/model-variants/floor) makes flex endpoints eligible.
+* Unlike the `service_tier` parameter, tier endpoints get no special treatment. The whole pool is sorted by the variant's metric (throughput for `:nitro`, price for `:floor`), so a tier endpoint is used only when it wins that sort.
+* Setting `provider.order` replaces sorting with your explicit ordering, which disables the variant's tier admission. Name a tier endpoint slug in the order list to include it.
+* An explicit `service_tier: "default"` also disables the variant's tier admission, so you can use `:nitro`/`:floor` purely for their sorting while pinning the standard tier.
 
-3. **Tier endpoint slugs in [`provider.order` or `provider.only`](/docs/guides/routing/provider-selection).** Each tier has its own endpoint slug, formed by appending the tier to the provider slug, e.g. `openai/fast` or `google-vertex/flex`. For example, `"provider": { "only": ["openai/fast"] }` restricts routing to OpenAI's Fast tier. The `fast` and `priority` slug suffixes are interchangeable, so `openai/priority` matches the same endpoint.
+#### 2. The `service_tier` parameter
+
+* **`priority`**: matching endpoints are tried first (sorted by throughput), with fallback to other endpoints if none succeed. Billing always follows the endpoint actually used, so a priority request that falls back off-tier is charged at that endpoint's standard rate, not the tier rate.
+* **`flex`**: routing is restricted to flex endpoints (sorted by price). Flex never falls back to a default-tier endpoint, since that would cost more than the tier you requested, so a flex capacity error surfaces instead.
+* If the pool contains no flex endpoints at all (for example, the model has no flex-capable provider), the request routes normally at standard rates.
+* Combine with [`allow_fallbacks: false`](/docs/guides/routing/provider-selection#disabling-fallbacks) to route only to the top endpoint of that tier.
+
+#### 3. Tier endpoint slugs in `provider.order` or `provider.only`
+
+* Each tier has its own endpoint slug, formed by appending the tier to the provider slug, e.g. `openai/fast` or `google-vertex/flex`.
+* `"provider": { "only": ["openai/fast"] }` restricts routing to OpenAI's Fast tier. See [Provider Selection](/docs/guides/routing/provider-selection) for `provider.order` and `provider.only` in full.
+* The `fast` and `priority` slug suffixes are interchangeable, so `openai/priority` matches the same endpoint.
 
 Requests that don't use any of these are never routed to a non-default service tier.
 
@@ -250,7 +297,14 @@ The following providers support `flex` and `priority` service tiers for select m
 * **Google AI Studio**
 * **SpaceXAI** (`priority` only)
 
-The response's `service_tier` field reports which tier was actually used. Possible response values are `default`, `flex`, `priority`, or `null` when no service tier is available from upstream. Note that OpenRouter normalizes provider-equivalent base tier labels, such as Google's `standard`, to `default`, except in the Anthropic Messages API, which preserves `standard` to match Anthropic's spec (see [API Response Differences](#api-response-differences) below).
+The response's `service_tier` field reports which tier was actually used. Possible values:
+
+* `default`
+* `flex`
+* `priority`
+* `null` when no service tier is available from upstream
+
+OpenRouter normalizes provider-equivalent base tier labels, such as Google's `standard`, to `default`. The exception is the Anthropic Messages API, which preserves `standard` to match Anthropic's spec (see [API Response Differences](#api-response-differences) below).
 
 Provider documentation:
 

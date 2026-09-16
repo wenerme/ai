@@ -28,9 +28,7 @@ If you are experiencing packet loss as a result of an upstream ISP implementing 
 
 ## Non-SNI support
 
-Currently, BYOIP cannot be used with [legacy custom certificates](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/) to support [non-SNI](https://developers.cloudflare.com/ssl/reference/browser-compatibility/#non-sni-support)
-
- requests.
+Currently, BYOIP cannot be used with [legacy custom certificates](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/) to support [non-SNI](https://developers.cloudflare.com/ssl/reference/browser-compatibility/#non-sni-support) requests.
 
 Instead, you can use Address Maps to set a default SNI for IPs on your account or zone. Refer to [Setup](https://developers.cloudflare.com/byoip/address-maps/setup/#non-sni-support) for further guidance.
 

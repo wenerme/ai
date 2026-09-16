@@ -119,12 +119,20 @@ paths:
             application/json:
               example:
                 data:
+                  allowed_data_regions:
+                    - global
+                    - europe
+                    - us
                   byok_usage: 17.38
                   byok_usage_daily: 17.38
                   byok_usage_monthly: 17.38
                   byok_usage_weekly: 17.38
                   creator_user_id: user_2dHFtVWx2n56w6HkM0000000000
                   expires_at: '2027-12-31T23:59:59Z'
+                  free_model_daily_requests:
+                    limit: 50
+                    remaining: 38
+                    used: 12
                   include_byok_in_limit: false
                   is_free_tier: false
                   is_management_key: false
@@ -144,12 +152,20 @@ paths:
               schema:
                 example:
                   data:
+                    allowed_data_regions:
+                      - global
+                      - europe
+                      - us
                     byok_usage: 17.38
                     byok_usage_daily: 17.38
                     byok_usage_monthly: 17.38
                     byok_usage_weekly: 17.38
                     creator_user_id: user_2dHFtVWx2n56w6HkM0000000000
                     expires_at: '2027-12-31T23:59:59Z'
+                    free_model_daily_requests:
+                      limit: 50
+                      remaining: 38
+                      used: 12
                     include_byok_in_limit: false
                     is_free_tier: false
                     is_management_key: false
@@ -170,12 +186,20 @@ paths:
                   data:
                     description: Current API key information
                     example:
+                      allowed_data_regions:
+                        - global
+                        - europe
+                        - us
                       byok_usage: 17.38
                       byok_usage_daily: 17.38
                       byok_usage_monthly: 17.38
                       byok_usage_weekly: 17.38
                       creator_user_id: user_2dHFtVWx2n56w6HkM0000000000
                       expires_at: '2027-12-31T23:59:59Z'
+                      free_model_daily_requests:
+                        limit: 50
+                        remaining: 38
+                        used: 12
                       include_byok_in_limit: false
                       is_free_tier: false
                       is_management_key: false
@@ -193,6 +217,25 @@ paths:
                       usage_monthly: 25.5
                       usage_weekly: 25.5
                     properties:
+                      allowed_data_regions:
+                        description: >-
+                          Data regions permitted for this API key by the
+                          guardrail policies on the key and the account
+                          regional-routing entitlement. Empty when no region is
+                          permitted. Reflects region policy only: other key
+                          restrictions, such as management keys being blocked
+                          from inference, still apply.
+                        example:
+                          - global
+                          - europe
+                          - us
+                        items:
+                          enum:
+                            - global
+                            - europe
+                            - us
+                          type: string
+                        type: array
                       byok_usage:
                         description: Total external BYOK usage (in USD) for the API key
                         example: 17.38
@@ -233,6 +276,8 @@ paths:
                         type:
                           - string
                           - 'null'
+                      free_model_daily_requests:
+                        $ref: '#/components/schemas/FreeModelDailyRequests'
                       include_byok_in_limit:
                         description: >-
                           Whether to include external BYOK usage in the credit
@@ -347,6 +392,8 @@ paths:
                       - limit_reset
                       - include_byok_in_limit
                       - creator_user_id
+                      - allowed_data_regions
+                      - free_model_daily_requests
                       - rate_limit
                     type: object
                 required:
@@ -375,6 +422,41 @@ paths:
           description: Internal Server Error - Unexpected server error
 components:
   schemas:
+    FreeModelDailyRequests:
+      description: >-
+        Free-model (`:free` variant) daily request quota for the account that
+        owns the key. Reports the same counter and tier limit that free-model
+        enforcement reads for accounts subject to the free-model limits; the
+        counter resets at UTC midnight. Accounts and endpoints exempt from
+        free-model limits, and BYOK requests, are not gated by it, so
+        `remaining` is the tier policy rather than an enforced ceiling for them.
+      example:
+        limit: 50
+        remaining: 38
+        used: 12
+      properties:
+        limit:
+          description: >-
+            Free-model requests the account may make per UTC day; the ceiling
+            depends on total credits purchased and is independent of
+            `is_free_tier`
+          example: 50
+          type: integer
+        remaining:
+          description: Free-model requests left in the current UTC day
+          example: 38
+          type: integer
+        used:
+          description: >-
+            Free-model requests recorded for the account so far in the current
+            UTC day
+          example: 12
+          type: integer
+      required:
+        - used
+        - limit
+        - remaining
+      type: object
     UnauthorizedResponse:
       description: Unauthorized - Authentication required or invalid credentials
       example:

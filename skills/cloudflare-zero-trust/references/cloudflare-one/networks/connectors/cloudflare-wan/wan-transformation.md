@@ -18,9 +18,7 @@ Traditional wide area networks (WANs) were designed for a world where applicatio
 
 As organizations adopt cloud services and support remote work, this model creates bottlenecks. Backhauling traffic to a central data center adds latency for cloud-bound traffic, and branch hardware requires ongoing maintenance and capital investment. WAN transformation replaces this architecture with cloud-native networking — routing traffic through a distributed global network instead of private circuits, and applying security inline rather than at a central chokepoint.
 
-With Cloudflare One, your corporate WAN runs over Cloudflare's global network. You connect sites through anycast
-
-IPsec or GRE tunnels, and Cloudflare handles routing, security inspection, and traffic optimization at the nearest point of presence.
+With Cloudflare One, your corporate WAN runs over Cloudflare's global network. You connect sites through anycast IPsec or GRE tunnels, and Cloudflare handles routing, security inspection, and traffic optimization at the nearest point of presence.
 
 ## Why transform your WAN
 

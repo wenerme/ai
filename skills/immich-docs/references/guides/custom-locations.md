@@ -2,6 +2,8 @@
 
 This guide explains how to store generated and raw files with docker's volume mount in different locations.
 
+<ComposeBuilder query="storage.customFolders=true" />
+
 > **caution**: Backup
 It is important to remember to update the backup settings after following the guide to back up the new backup paths if using automatic backup tools, especially `profile/`.
 

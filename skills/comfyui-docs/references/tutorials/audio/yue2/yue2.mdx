@@ -16,7 +16,8 @@ Generate a complete song from a music style description and your own lyrics. Wit
 [YuE2 text to music workflow preview]
 
   
-    Open in Comfy Cloud
+  
+  
   
   
     Download JSON or search &quot;YuE2: Text to Music&quot; in Template Library
@@ -86,7 +87,7 @@ Leaving the **abc** input empty disables planning and generates music directly f
 
 ### 6. Max Duration
 
-**Max Duration** sets the maximum length of the generated song in seconds. The song may finish earlier depending on the generated musical structure and lyrics.
+**Max Duration** sets the maximum length of the generated song in seconds, up to 900. The song may finish earlier depending on the generated musical structure and lyrics. For long prompts, ComfyUI automatically reduces the token budget so generation still fits the model's context.
 
 ## Music Cover {#audio_yue2_music_cover}
 
@@ -95,7 +96,8 @@ Create a new version of an existing song. This workflow uses SheetSage2 to trans
 [YuE2 music cover workflow preview]
 
   
-    Open in Comfy Cloud
+  
+  
   
   
     Download JSON or search &quot;YuE2: Music Cover&quot; in Template Library

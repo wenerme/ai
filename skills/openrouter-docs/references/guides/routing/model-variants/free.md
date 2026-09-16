@@ -10,7 +10,7 @@ The `:free` variant allows you to access free versions of models on OpenRouter.
 
 ## Usage
 
-Append `:free` to any model ID:
+Append `:free` to the ID of a model that has a free entry. `:free` is a [catalog variant](/docs/guides/routing/model-variants/overview), so the free version appears as its own entry in the [models API](/docs/guides/overview/models) with its own pricing, context length, and endpoints, and only models that list one support it:
 
 ```json lines theme={null}
 {

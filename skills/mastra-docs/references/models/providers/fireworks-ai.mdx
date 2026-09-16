@@ -5,7 +5,7 @@ description: "Browse Fireworks AI model IDs, capabilities, context windows, and 
 
 # [Fireworks AI logo]Fireworks AI
 
-Access 33 Fireworks AI models through Mastra's model router. Authentication is handled automatically using the `FIREWORKS_API_KEY` environment variable.
+Access 34 Fireworks AI models through Mastra's model router. Authentication is handled automatically using the `FIREWORKS_API_KEY` environment variable.
 
 Learn more in the [Fireworks AI documentation](https://fireworks.ai/docs/).
 
@@ -72,8 +72,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 384000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 1.2,
+    "outputCost": 1.2
   },
   {
     "model": "fireworks-ai/accounts/fireworks/models/deepseek-v4-pro-0813",
@@ -204,7 +204,7 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 196608,
     "maxOutput": 131072,
-    "inputCost": 0.3,
+    "inputCost": 1.2,
     "outputCost": 1.2
   },
   {
@@ -434,6 +434,18 @@ for await (const chunk of stream) {
     "maxOutput": 512000,
     "inputCost": 0.3,
     "outputCost": 1.2
+  },
+  {
+    "model": "fireworks-ai/accounts/fireworks/routers/qwen-max-latest",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 131072,
+    "inputCost": 2,
+    "outputCost": 6
   }
 ]}
 />
@@ -468,7 +480,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "fireworks-ai/accounts/fireworks/routers/minimax-latest"
+      ? "fireworks-ai/accounts/fireworks/routers/qwen-max-latest"
       : "fireworks-ai/accounts/fireworks/models/deepseek-v4-flash-0731";
   }
 });

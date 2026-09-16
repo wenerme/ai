@@ -175,7 +175,7 @@ To *always* prioritize low latency, and not apply any load balancing, set `sort`
 
 ## Nitro Shortcut
 
-You can append `:nitro` to any model slug as a shortcut to sort by throughput. In addition to the throughput sort, `:nitro` makes [priority service tier](/docs/guides/features/service-tiers) endpoints eligible for the request, so it is a superset of setting `provider.sort` to `"throughput"` (which only sorts). See the [Nitro variant docs](/docs/guides/routing/model-variants/nitro) for details.
+You can append `:nitro` to any model slug as a shortcut to sort by throughput. In addition to the throughput sort, `:nitro` makes [priority service tier](/docs/guides/features/service-tiers) endpoints eligible for the request, so it is a superset of setting `provider.sort` to `"throughput"` (which only sorts). `:nitro` is a [routing variant](/docs/guides/routing/model-variants/overview): it is not a separate entry in the models API, and the model's metadata is the base model's. See the [Nitro variant docs](/docs/guides/routing/model-variants/nitro) for details.
 
 <CodeGroup>
   ```typescript title="TypeScript SDK" lines theme={null}
@@ -229,7 +229,7 @@ You can append `:nitro` to any model slug as a shortcut to sort by throughput. I
 
 ## Floor Price Shortcut
 
-You can append `:floor` to any model slug as a shortcut to sort by price. In addition to the price sort, `:floor` makes [flex service tier](/docs/guides/features/service-tiers) endpoints eligible for the request, so it is a superset of setting `provider.sort` to `"price"` (which only sorts). See the [Floor variant docs](/docs/guides/routing/model-variants/floor) for details.
+You can append `:floor` to any model slug as a shortcut to sort by price. In addition to the price sort, `:floor` makes [flex service tier](/docs/guides/features/service-tiers) endpoints eligible for the request, so it is a superset of setting `provider.sort` to `"price"` (which only sorts). `:floor` is a [routing variant](/docs/guides/routing/model-variants/overview): it is not a separate entry in the models API, and the model's metadata is the base model's. See the [Floor variant docs](/docs/guides/routing/model-variants/floor) for details.
 
 <CodeGroup>
   ```typescript title="TypeScript SDK" lines theme={null}
