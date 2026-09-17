@@ -24,9 +24,9 @@ All customers can now manage AI crawlers by behavior — [Search, Agent, and Tra
 
 ## 2026-07-01
 
-**BotBase and Attribution Business Insights for Enterprise Bot Management**
+**BotBase and Business Insights for Enterprise Bot Management**
 
-Enterprise Bot Management customers can now use [BotBase](https://developers.cloudflare.com/bots/botbase/), a searchable directory of all tracked bots and agents with their behavior classification and detection IDs, and [Attribution Business Insights](https://developers.cloudflare.com/bots/attribution-business-insights/), a dashboard showing site-wide and per-operator crawl-to-referral ratios alongside bot traffic to your content.
+Enterprise Bot Management customers can now use [BotBase](https://developers.cloudflare.com/bots/botbase/), a searchable directory of all tracked bots and agents with their behavior classification and detection IDs, and [Business Insights](https://developers.cloudflare.com/bots/business-insights/), a dashboard showing site-wide and per-operator crawl-to-referral ratios alongside bot traffic to your content.
 
 ## 2025-07-02
 

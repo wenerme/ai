@@ -89,9 +89,7 @@ JSD is enabled by default but completely optional. To adjust your settings, open
 
 ### Cloudflare service
 
-**Cloudflare Service** is a special bot score
-
- source for Enterprise Zero Trust to avoid false positives.
+**Cloudflare Service** is a special bot score source for Enterprise Zero Trust to avoid false positives.
 
 ### Not computed
 

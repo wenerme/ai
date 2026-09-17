@@ -13,16 +13,20 @@ The GitLab data source allows you to visualize and monitor GitLab activity in Gr
 >
 > The GitLab data source is an Enterprise plugin. It’s available with a [Grafana Cloud Pro or Advanced plan](/pricing/) or with [Grafana Enterprise](/products/enterprise/). For installation instructions, refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 
+> Note
+>
+> The GitLab data source reads data from the GitLab API to build visualizations and dashboards. It doesn’t write to GitLab or sync Grafana dashboards to a Git repository. To version-control Grafana dashboards and folders in a GitLab repository, refer to [Git Sync](/docs/grafana/latest/observability-as-code/provision-resources/git-sync-setup/).
+
 ## Supported GitLab environments
 
 The GitLab data source works with:
 
 - **GitLab.com** (SaaS)
-- **Self-hosted GitLab** (Community Edition and Enterprise Edition)
+- **Self-managed GitLab** (Community Edition and Enterprise Edition)
 
 > Note
 >
-> Some features require specific GitLab tiers. For example, audit events require a GitLab Premium or Ultimate subscription, or a self-hosted instance with admin privileges.
+> Some features require specific GitLab tiers. For example, audit events require a GitLab Premium or Ultimate subscription, or a self-managed instance with admin privileges.
 
 ## Requirements
 

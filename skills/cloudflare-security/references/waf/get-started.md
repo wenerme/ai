@@ -22,9 +22,7 @@ Refer to [Concepts](https://developers.cloudflare.com/waf/concepts/) for more in
 
 Note
 
-This guide focuses on configuring WAF for individual domains, known as zones
-
-. The WAF configuration is also available at the account level for Enterprise customers with a paid add-on.
+This guide focuses on configuring WAF for individual domains, known as zones. The WAF configuration is also available at the account level for Enterprise customers with a paid add-on.
 
 ## Before you begin
 

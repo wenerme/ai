@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/collect-pcaps/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-After a packet
-
- capture is requested and the capture is collected, the output is contained within one or more files in PCAP file format. Before starting a `full` type packet capture, you must first follow instructions for [configuring a bucket](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/pcaps-bucket-setup/).
+After a packet capture is requested and the capture is collected, the output is contained within one or more files in PCAP file format. Before starting a `full` type packet capture, you must first follow instructions for [configuring a bucket](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/pcaps-bucket-setup/).
 
 Note
 

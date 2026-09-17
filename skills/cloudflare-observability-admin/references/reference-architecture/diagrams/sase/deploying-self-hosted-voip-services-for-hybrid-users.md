@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Deploy self-hosted VoIP services for hybrid users
 
-Last updated Apr 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/sase/deploying-self-hosted-voip-services-for-hybrid-users/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/sase/deploying-self-hosted-voip-services-for-hybrid-users/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -20,7 +20,7 @@ Traditional VPN solutions create several problems for VoIP deployments, primaril
 
 Cloudflare improves over traditional VPN solutions by leveraging its [global network ↗](https://www.cloudflare.com/network/) of data centers in over 330 cities to significantly reduce latency for remote users. When using our device agent, remote users are automatically connected to the nearest Cloudflare data center, thus reducing latency.
 
-This document explains how to architect access to a self-hosted VoIP service using Cloudflare. Note the solution below uses [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) (formerly WARP Connector), a small piece of software deployed on a server in the same subnet as the VoIP servers and creates bi-directional traffic flow through Cloudflare to users.
+This document explains how to architect access to a self-hosted VoIP service using Cloudflare. Note the solution below uses [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) (formerly WARP Connector), a small piece of software deployed on a server in the same subnet as the VoIP servers and creates bi-directional traffic flow through Cloudflare to users.
 
 ## Bi-directional VoIP traffic flow
 
@@ -28,9 +28,7 @@ This document explains how to architect access to a self-hosted VoIP service usi
 
 *Figure 1: Cloudflare facilitates secure connectivity from user devices to the network where the SIP server is running.*
 
-The diagram above shows Cloudflare Mesh and our device agent deployed to establish highly performant, reliable connectivity for private VoIP services. Note that Cloudflare will assign remote users an address from the CGNAT range
-
-, which is used for the private network created between device agents. Cloudflare Mesh ensures secure, bidirectional communication between remote users and the on-premise SIP server, without exposing the server to the public Internet. This shields the VoIP infrastructure from potential attacks while maintaining a seamless, encrypted connection for real-time communications.
+The diagram above shows Cloudflare Mesh and our device agent deployed to establish highly performant, reliable connectivity for private VoIP services. Note that Cloudflare will assign remote users an address from the CGNAT range, which is used for the private network created between device agents. Cloudflare Mesh ensures secure, bidirectional communication between remote users and the on-premise SIP server, without exposing the server to the public Internet. This shields the VoIP infrastructure from potential attacks while maintaining a seamless, encrypted connection for real-time communications.
 
 1. VoIP server resides on a private network with no public IP.
 2. Cloudflare Mesh creates a secure tunnel to Cloudflare and is configured as a virtual router in the private network.
@@ -92,7 +90,7 @@ With Cloudflare Mesh, remote users communicating with other remote users or on-p
 
 ## Related resources
 
-- [Set up Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
+- [Set up Cloudflare Mesh](https://developers.cloudflare.com/mesh/)
 - [Enable Mesh connectivity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-all-cloudflare-one-traffic-to-reach-enrolled-devices)
 - [About the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
@@ -105,5 +103,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/deploying-self-hosted-voip-services-for-hybrid-users/#page","headline":"Deploy self-hosted VoIP services for hybrid users · Cloudflare Reference Architecture docs","description":"Learn how Cloudflare improves over traditional VPN solutions by leveraging its global network.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/deploying-self-hosted-voip-services-for-hybrid-users/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/deploying-self-hosted-voip-services-for-hybrid-users/#page","headline":"Deploy self-hosted VoIP services for hybrid users · Cloudflare Reference Architecture docs","description":"Learn how Cloudflare improves over traditional VPN solutions by leveraging its global network.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/deploying-self-hosted-voip-services-for-hybrid-users/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

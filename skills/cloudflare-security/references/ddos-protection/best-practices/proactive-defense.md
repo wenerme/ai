@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/best-practices/proactive-defense/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare's network automatically mitigates large  [DDoS attacks](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/)
-
-, but these attacks can still affect your application.
+Cloudflare's network automatically mitigates large  [DDoS attacks](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/), but these attacks can still affect your application.
 
 ## All customers
 

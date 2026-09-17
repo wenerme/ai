@@ -93,9 +93,7 @@ Bot Fight Mode can still trigger if you have [IP Access rules](https://developer
 
 For Bot Fight Mode customers, [JavaScript Detections](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/) is automatically enabled and cannot be disabled.
 
-If you have a Content Security Policy (CSP)
-
-, you need to take additional steps to implement JavaScript Detections:
+If you have a Content Security Policy (CSP), you need to take additional steps to implement JavaScript Detections:
 
 - Ensure that anything under `/cdn-cgi/challenge-platform/` is allowed. Your CSP should allow scripts served from your origin domain ( `script-src self`).
 - For `nonce` script tags:

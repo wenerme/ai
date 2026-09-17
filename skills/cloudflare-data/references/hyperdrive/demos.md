@@ -18,9 +18,7 @@ Learn how you can use Hyperdrive within your existing application and architectu
 
 ## Reference architectures
 
-Explore the following reference architectures
-
- that use Hyperdrive:
+Explore the following reference architectures that use Hyperdrive:
 
 [**Serverless global APIs** An example architecture of a serverless API on Cloudflare and aims to illustrate how different compute and data products could interact with each other.](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-global-apis/)
 

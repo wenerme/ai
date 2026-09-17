@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/bcc-microsoft-exchange/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-For customers using Microsoft Exchange, setting up Email security via BCC is quick and easy. You need to configure an inbound rule to send emails to Email security via BCC for processing and detection of potential phishing
-
- attacks. The following email flow shows how this works:
+For customers using Microsoft Exchange, setting up Email security via BCC is quick and easy. You need to configure an inbound rule to send emails to Email security via BCC for processing and detection of potential phishing attacks. The following email flow shows how this works:
 
 ![Email flow when setting up a phishing assessment risk for Microsoft Exchange with Email security.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=744,height=417,format=webp/_astro/Microsoft_Exchange_365.fz8IIJ7m.png)
 

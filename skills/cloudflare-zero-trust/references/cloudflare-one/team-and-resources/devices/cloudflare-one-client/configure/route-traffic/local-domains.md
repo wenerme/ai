@@ -26,9 +26,7 @@ Because DNS requests subject to Local Domain Fallback bypass the Gateway resolve
 
 Local Domain Fallback or Gateway Resolver policies?
 
-If your DNS server can be configured to connect to a Cloudflare on-ramp
-
-, Cloudflare recommends using Gateway Resolver policies rather than Local Domain Fallback. Gateway Resolver policies provide more visibility by allowing you to log and review DNS traffic.
+If your DNS server can be configured to connect to a Cloudflare on-ramp, Cloudflare recommends using Gateway Resolver policies rather than Local Domain Fallback. Gateway Resolver policies provide more visibility by allowing you to log and review DNS traffic.
 
 ### AWS
 

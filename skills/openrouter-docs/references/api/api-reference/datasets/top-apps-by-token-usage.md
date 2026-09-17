@@ -90,6 +90,10 @@ tags:
     name: Guardrails
   - description: Images endpoints
     name: Images
+  - description: >-
+      Create, inspect, update, provision, suspend and delete OpenRouter interns
+      through an API key.
+    name: Interns
   - description: Model information endpoints
     name: Models
   - description: OAuth authentication endpoints
@@ -120,6 +124,11 @@ tags:
   - description: Text-to-speech endpoints
     name: TTS
     x-displayName: Speech
+  - description: >-
+      Store host-bound secrets for a workspace or for one intern. Scope is
+      selected by the API key. Responses return metadata only, never secret
+      values. See https://openrouter.ai/docs/guides/ori/vault.
+    name: Vault
   - description: Video Generation endpoints
     name: Video Generation
   - description: Workspaces endpoints

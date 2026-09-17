@@ -143,9 +143,7 @@ https://api.cloudflare.com/client/v4/graphql \
 
 ## Get rule violations via Logpush
 
-[Cloudflare Logpush](https://developers.cloudflare.com/logs/logpush/) supports pushing logs to storage services, SIEM systems
-
-, and log management providers.
+[Cloudflare Logpush](https://developers.cloudflare.com/logs/logpush/) supports pushing logs to storage services, SIEM systems, and log management providers.
 
 Information about rule violations is available in the [`page_shield_events` dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/page_shield_events/).
 

@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/settings/phish-submissions/phishnet-365/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-PhishNet is an add-in button that helps users to submit directly to Email security phish
-
- samples missed by Email security's detection.
+PhishNet is an add-in button that helps users to submit directly to Email security phish samples missed by Email security's detection.
 
 To set up PhishNet Microsoft 365:
 

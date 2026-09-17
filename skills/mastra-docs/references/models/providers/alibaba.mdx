@@ -5,7 +5,7 @@ description: "Browse Alibaba model IDs, capabilities, context windows, and prici
 
 # [Alibaba logo]Alibaba
 
-Access 55 Alibaba models through Mastra's model router. Authentication is handled automatically using the `DASHSCOPE_API_KEY` environment variable.
+Access 56 Alibaba models through Mastra's model router. Authentication is handled automatically using the `DASHSCOPE_API_KEY` environment variable.
 
 Learn more in the [Alibaba documentation](https://www.alibabacloud.com/help/en/model-studio/models).
 
@@ -62,6 +62,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 1.4,
     "outputCost": 4.4
+  },
+  {
+    "model": "alibaba/kimi-k3",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 1048576,
+    "inputCost": 3,
+    "outputCost": 15
   },
   {
     "model": "alibaba/qvq-max",

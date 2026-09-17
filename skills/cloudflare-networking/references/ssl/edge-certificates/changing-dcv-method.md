@@ -40,9 +40,7 @@ If your application is on a [partial DNS setup](https://developers.cloudflare.co
 
 ### Non-wildcard certificates
 
-If every hostname on a non-wildcard certificate is [proxying traffic](https://developers.cloudflare.com/dns/proxy-status/)
-
- through Cloudflare and the DCV method is [HTTP](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/http/), Cloudflare can automatically complete DCV on your behalf.
+If every hostname on a non-wildcard certificate is [proxying traffic](https://developers.cloudflare.com/dns/proxy-status/) through Cloudflare and the DCV method is [HTTP](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/http/), Cloudflare can automatically complete DCV on your behalf.
 
 This applies to customers using [Universal](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) or [Advanced certificates](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/).
 

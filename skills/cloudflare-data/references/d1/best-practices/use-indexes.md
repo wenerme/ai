@@ -73,9 +73,7 @@ In more complex cases, you can confirm whether an index was used by D1 by [analy
 
 After creating an index, run the `PRAGMA optimize` command to improve your database performance.
 
-`PRAGMA optimize` runs `ANALYZE` command on each table in the database, which collects statistics on the tables and indices. These statistics allows the query planner
-
- to generate the most efficient query plan when executing the user query.
+`PRAGMA optimize` runs `ANALYZE` command on each table in the database, which collects statistics on the tables and indices. These statistics allows the query planner to generate the most efficient query plan when executing the user query.
 
 For more information, refer to [`PRAGMA optimize`](https://developers.cloudflare.com/d1/sql-api/sql-statements/#pragma-optimize).
 

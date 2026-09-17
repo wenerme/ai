@@ -66,9 +66,7 @@ Different Cloudflare products and features are configurable at the zone level. R
 
 ### Zone apex
 
-The zone apex
-
- is the highest-level domain within a zone — the starting point from which all DNS records in that zone are managed.
+The zone apex is the highest-level domain within a zone — the starting point from which all DNS records in that zone are managed.
 
 In most cases, the zone apex is the same as the apex domain (for example, `example.com`). However, with [subdomain delegation](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/) (available on Enterprise plans), a subdomain like `sub.example.com` can be its own zone, making that subdomain the zone apex.
 

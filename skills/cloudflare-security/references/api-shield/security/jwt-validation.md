@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/jwt-validation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-JSON web tokens (JWT)
-
- are often used as part of an authentication component on many web applications. Since JWTs are crucial to identifying users and their access, ensuring the token's integrity is important.
+JSON web tokens (JWT) are often used as part of an authentication component on many web applications. Since JWTs are crucial to identifying users and their access, ensuring the token's integrity is important.
 
 API Shield's JWT validation cryptographically verifies incoming JWTs before they reach your API origin. It detects tokens that are expired, tampered with, or not yet valid. You then create a rule to act on the validation results.
 

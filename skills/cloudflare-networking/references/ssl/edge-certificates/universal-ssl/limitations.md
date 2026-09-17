@@ -37,9 +37,7 @@ On a [CNAME setup zone](https://developers.cloudflare.com/dns/zone-setups/partia
 
 ## Certificate authority
 
-For Universal SSL certificates, Cloudflare chooses the certificate authority (CA)
-
- used for your certificate.
+For Universal SSL certificates, Cloudflare chooses the certificate authority (CA) used for your certificate.
 
 Cloudflare can change the [certificate authority](https://developers.cloudflare.com/ssl/reference/certificate-authorities/) without prior notification, and will not send any notification as the change happens.
 

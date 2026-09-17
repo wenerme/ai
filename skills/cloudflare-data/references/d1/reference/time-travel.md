@@ -30,9 +30,7 @@ To understand which storage subsystem your database uses, run `wrangler d1 info 
 
 ## Bookmarks
 
-Time Travel leverages D1's concept of a bookmark
-
- to restore to a point in time.
+Time Travel leverages D1's concept of a bookmark to restore to a point in time.
 
 - Bookmarks older than 30 days are invalid and cannot be used as a restore point.
 - Restoring a database to a specific bookmark does not remove or delete older bookmarks. For example, if you restore to a bookmark representing the state of your database 10 minutes ago, and determine that you needed to restore to an earlier point in time, you can still do so.

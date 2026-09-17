@@ -214,9 +214,7 @@ If you have multiple servers and want to proactively prevent origin problems, [s
 
 ### Zero Downtime Failover
 
-If you have another `A` or `AAAA` record in your Cloudflare **DNS** or your Cloudflare **Load Balancer** provides another [endpoint](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-components/)
-
- in the same pool, **Zero-Downtime Failover** automatically retries requests to your origin even before a Load Balancing decision is made.
+If you have another `A` or `AAAA` record in your Cloudflare **DNS** or your Cloudflare **Load Balancer** provides another [endpoint](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-components/) in the same pool, **Zero-Downtime Failover** automatically retries requests to your origin even before a Load Balancing decision is made.
 
 Zero-downtime failover will trigger a single retry only if there is another healthy endpoint in the pool and a [521, 522, 523, 525 or 526 error code](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-521/) is occurring. No other error codes will trigger a zero-downtime failover operation.
 

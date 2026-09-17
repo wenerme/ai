@@ -95,9 +95,7 @@ You cannot add unapproved prefixes to Advanced DDoS Protection systems. Contact 
 
 Optionally, you can [add prefixes to the allowlist](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/how-to/add-prefix-allowlist/) if your traffic should bypass Advanced DDoS Protection rules.
 
-The allowlist
-
- only applies to source IPs — it does not apply to your own IPs or prefixes. You can also [exclude a subset of an onboarded prefix](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/how-to/exclude-prefix/) from Advanced TCP Protection.
+The allowlist only applies to source IPs — it does not apply to your own IPs or prefixes. You can also [exclude a subset of an onboarded prefix](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/how-to/exclude-prefix/) from Advanced TCP Protection.
 
 Refer to [Concepts](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/) for more information.
 

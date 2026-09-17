@@ -18,9 +18,7 @@ Note
 
 Only available to customers with Client-Side Security Advanced.
 
-Content security rules (previously known as policies) define which resources your application is allowed to load. They work through Content Security Policy (CSP)
-
- directives that Cloudflare adds to your HTTP responses. There are two types of content security rules:
+Content security rules (previously known as policies) define which resources your application is allowed to load. They work through Content Security Policy (CSP) directives that Cloudflare adds to your HTTP responses. There are two types of content security rules:
 
 - **Log rules** report resources that fall outside your allowlist without blocking them.
 - **Allow rules** block any resource not explicitly listed.

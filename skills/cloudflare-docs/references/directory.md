@@ -80,7 +80,7 @@ Try a different search term, or clear your filters.
 
 [**Cloudflare Images** Store, transform, optimize, and deliver images at scale](https://developers.cloudflare.com/images/)
 
-[C**Cloudflare Mesh** Connect services and devices with post-quantum encrypted mesh networking](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
+[C**Cloudflare Mesh** Connect services and devices with post-quantum encrypted mesh networking](https://developers.cloudflare.com/mesh/)
 
 [**Cloudflare Network Firewall** Protect your enterprise network with advanced firewall-as-a-service protection](https://developers.cloudflare.com/cloudflare-network-firewall/)
 

@@ -16,9 +16,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Description
 
-The `DurableObjectStub` interface is a client used to invoke methods on a remote Durable Object
-
-. The type of `DurableObjectStub` is generic to allow for RPC methods to be invoked on the stub.
+The `DurableObjectStub` interface is a client used to invoke methods on a remote Durable Object. The type of `DurableObjectStub` is generic to allow for RPC methods to be invoked on the stub.
 
 Durable Objects implement E-order semantics, a concept deriving from the [E distributed programming language ↗](<https://en.wikipedia.org/wiki/E_(programming_language)>). When you make multiple calls to the same Durable Object, it is guaranteed that the calls will be delivered to the remote Durable Object in the order in which you made them. E-order semantics makes many distributed programming problems easier. E-order is implemented by the [Cap'n Proto ↗](https://capnproto.org) distributed object-capability RPC protocol, which Cloudflare Workers uses for internal communications.
 

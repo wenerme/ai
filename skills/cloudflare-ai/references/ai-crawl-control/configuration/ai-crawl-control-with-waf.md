@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-crawl-control/configuration/ai-crawl-control-with-waf/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-AI Crawl Control works alongside other Cloudflare products, such as Cloudflare [Web Application Firewall (WAF)](https://developers.cloudflare.com/waf/). WAF checks incoming web and API requests, and filters undesired traffic based on rules. [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/) allow you to perform certain actions such as enforcing `robots.txt`
-
-.
+AI Crawl Control works alongside other Cloudflare products, such as Cloudflare [Web Application Firewall (WAF)](https://developers.cloudflare.com/waf/). WAF checks incoming web and API requests, and filters undesired traffic based on rules. [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/) allow you to perform certain actions such as enforcing `robots.txt`.
 
 ## Order of precedence
 

@@ -144,9 +144,7 @@ Users who have authenticated through Access have access to authorized URL paths 
 
 Enterprise customers have access to detailed logs of requests on their Cloudflare dashboard. Enterprise customers also have access to Cloudflare's Logpush service, which can be configured from the Cloudflare dashboard or API. For more information about Cloudflare HTTP and infrastructure logging, refer to [Cloudflare Logs](https://developers.cloudflare.com/logs/).
 
-Once a member of your team authenticates to reach an HTTP resource behind Access, Cloudflare generates a JSON Web Token (JWT)
-
- for that user that contains their SSO identity. Cloudflare signs this token using RS256 (RSA Signature with SHA-256), an asymmetric algorithm, and makes the public key available so that you can verify the token is authentic.
+Once a member of your team authenticates to reach an HTTP resource behind Access, Cloudflare generates a JSON Web Token (JWT) for that user that contains their SSO identity. Cloudflare signs this token using RS256 (RSA Signature with SHA-256), an asymmetric algorithm, and makes the public key available so that you can verify the token is authentic.
 
 When a user requests a URL, Access appends the user identity from that token as a request header, which Cloudflare logs as the request passes through the network. Your team can collect these logs in your preferred third-party Security information and event management (SIEM) software or storage destination by using [Cloudflare Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/). When enabled with the Access user identity field, the logs export to your systems as JSON similar to the example below.
 

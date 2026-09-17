@@ -24,9 +24,7 @@ This feature is available to customers on an Enterprise plan with a paid add-on.
 
 ## How it works
 
-Once you turn on this detection, Cloudflare inspects all incoming traffic and identifies [content objects](#what-is-a-content-object)
-
- automatically.
+Once you turn on this detection, Cloudflare inspects all incoming traffic and identifies [content objects](#what-is-a-content-object) automatically.
 
 When Cloudflare detects one or more content objects in a request, it sends them to an antivirus (AV) scanner for analysis. The AV scanner is the same one used in [Cloudflare Zero Trust](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/antivirus-scanning/).
 

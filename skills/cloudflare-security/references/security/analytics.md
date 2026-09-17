@@ -45,9 +45,7 @@ The **Traffic** tab includes functionality available in the [Security Analytics]
 
 ## Events
 
-Use the **Events** tab to review mitigated requests
-
- and to tailor your security configurations.
+Use the **Events** tab to review mitigated requests and to tailor your security configurations.
 
 The **Events** tab displays information about requests actioned or flagged by Cloudflare security products. Each incoming HTTP request might generate one or more security events. The tab only shows these events, not the HTTP requests themselves. To obtain information on all incoming HTTP requests, use the [Traffic](#traffic) tab.
 

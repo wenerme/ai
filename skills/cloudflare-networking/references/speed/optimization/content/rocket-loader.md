@@ -42,9 +42,7 @@ Some of Cloudflare's optional features, including Rocket Loader and Email Obfusc
 
 If you observe JavaScript or jQuery issues for your website, [disable Rocket Loader](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/enable/) and retest your website.
 
-If you have a Content Security Policy (CSP)
-
- in place for your domain, you will need to [update your headers](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/content-security-policies/#product-requirements) to support Rocket Loader.
+If you have a Content Security Policy (CSP) in place for your domain, you will need to [update your headers](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/content-security-policies/#product-requirements) to support Rocket Loader.
 
 
 

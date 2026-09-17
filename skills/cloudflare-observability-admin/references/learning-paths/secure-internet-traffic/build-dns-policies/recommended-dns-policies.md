@@ -61,9 +61,7 @@ resource "cloudflare_zero_trust_gateway_policy" "dns_whitelist_policy" {
 
 ## Quarantined-Users-DNS-Restricted-Access
 
-Restrict access for users included in an identity provider (IdP)
-
- user group for risky users. This policy ensures your security team can restrict traffic for users of whom malicious or suspicious activity was detected.
+Restrict access for users included in an identity provider (IdP) user group for risky users. This policy ensures your security team can restrict traffic for users of whom malicious or suspicious activity was detected.
 
 | Selector | Operator | Value | Logic | Action |
 | --- | --- | --- | --- | --- |

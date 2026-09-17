@@ -59,9 +59,7 @@ For example, if there was an authorization bug that allowed users to iterate thr
 
 ### Endpoint Management
 
-To track requests to API endpoints
-
-, they must be added to [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/). Add your endpoints to endpoint management via [API Discovery](https://developers.cloudflare.com/api-shield/security/api-discovery/), [Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/), or [manually](https://developers.cloudflare.com/api-shield/management-and-monitoring/#add-endpoints-manually) through the Cloudflare dashboard.
+To track requests to API endpoints, they must be added to [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/). Add your endpoints to endpoint management via [API Discovery](https://developers.cloudflare.com/api-shield/security/api-discovery/), [Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/), or [manually](https://developers.cloudflare.com/api-shield/management-and-monitoring/#add-endpoints-manually) through the Cloudflare dashboard.
 
 ### Session Identifiers
 

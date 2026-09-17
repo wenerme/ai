@@ -459,6 +459,7 @@ Example responses:
 - `audit_events_api_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/248055) in GitLab 19.4.
 - `block_jwt_for_reclaimed_paths` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/623356) in GitLab 19.4.
 - `project_audit_events_api_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253781) in GitLab 19.5.
+- `pg_ash_sampling_enabled` and `pg_ash_sample_interval_seconds` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250170) in GitLab 19.4.
 
 In general, all settings are optional. When enabling some settings, you might also need
 to configure other related settings. These requirements are in the `Required` column of the following table.
@@ -722,6 +723,8 @@ to configure other related settings. These requirements are in the `Required` co
 | `performance_bar_allowed_group_path`     | string           | no                                   | Path of the group that is allowed to toggle the performance bar. |
 | `performance_bar_enabled`                | boolean          | no                                   | (Deprecated: Pass `performance_bar_allowed_group_path: nil` instead) Allow enabling the performance bar. |
 | `personal_access_token_prefix`           | string           | no                                   | Prefix for all generated personal access tokens. |
+| `pg_ash_sample_interval_seconds`         | integer          | no                                   | Seconds between active session history samples. Must be between `1` and `60`. Default is `1`. |
+| `pg_ash_sampling_enabled`                | boolean          | no                                   | Whether to sample active session history. Has no effect until pg_ash is installed. Default is `false`. |
 | `pipeline_limit_per_project_user_sha`    | integer          | no                                   | Maximum number of pipeline creation requests per minute per user and commit. Disabled by default. |
 | `pipeline_limit_per_user`                | integer          | no                                   | Maximum number of pipeline creation requests per minute per user. |
 | `ci_lint_limit_per_user`                 | integer          | no                                   | Maximum number of CI Lint requests per minute per user. Disabled by default. |

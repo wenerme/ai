@@ -1,5 +1,5 @@
 ---
-description: Connect client devices in Zero Trust networking.
+description: Connect laptops, phones, and desktops to Cloudflare Mesh and verify private network connectivity.
 title: Connect client devices
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Connect client devices
 
-Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/client-devices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/guides/connect-client-devices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Client devices — laptops, phones, and desktops — join your Mesh network by installing the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) and enrolling. Each device receives a [Mesh IP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/#mesh-ips) and can immediately communicate with every other enrolled device and Mesh node.
+Client devices — laptops, phones, and desktops — join your Mesh network by installing the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) and enrolling. Each device receives a [Mesh IP](https://developers.cloudflare.com/mesh/concepts/#mesh-ips) and can immediately communicate with every other enrolled device and Mesh node.
 
 ## Prerequisites
 
-- [Device enrollment permissions](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/) are configured for your account. The Mesh [setup wizard](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/get-started/) handles this automatically.
+- [Device enrollment permissions](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/) are configured for your account. The Mesh [setup wizard](https://developers.cloudflare.com/mesh/get-started/) handles this automatically.
 
 ## 1. Enroll the Cloudflare One Client
 
@@ -103,7 +103,7 @@ Once connected, a client device can:
 
 - **Other client devices** — Reach any enrolled device by its Mesh IP. No Mesh nodes involved.
 - **Mesh nodes** — Reach any online node by its Mesh IP. SSH, database connections, API calls all work.
-- **Subnets behind nodes** — Access hosts on private networks that a node advertises via [CIDR routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/) (for example, printers, databases, or servers that cannot run the client).
+- **Subnets behind nodes** — Access hosts on private networks that a node advertises via [CIDR routes](https://developers.cloudflare.com/mesh/features/routes/) (for example, printers, databases, or servers that cannot run the client).
 
 All traffic is subject to your [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/), so you can control which users and devices can reach specific resources.
 
@@ -122,9 +122,9 @@ Depending on your Cloudflare networking configuration, you may need to remove ad
 In Include mode, add the following to your include list:
 
 - `100.96.0.0/12` — Mesh IPs (device IPs)
-- Any CIDR routes you have [configured for your Mesh nodes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/)
+- Any CIDR routes you have [configured for your Mesh nodes](https://developers.cloudflare.com/mesh/features/routes/)
 
-The IPv4 range used for [hostname routing](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes) (`172.64.128.0/20`; requires MASQUE) and all Cloudflare One IPv6 ranges are [automatically routed through Cloudflare](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#automatically-managed-ranges) and do not need to be added manually.
+The IPv4 range used for [hostname routing](https://developers.cloudflare.com/mesh/features/routes/#hostname-routes) (`172.64.128.0/20`; requires MASQUE) and all Cloudflare One IPv6 ranges are [automatically routed through Cloudflare](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#automatically-managed-ranges) and do not need to be added manually.
 
 ## Firewall considerations
 
@@ -142,5 +142,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/client-devices/#page","headline":"Connect client devices to Cloudflare Mesh · Cloudflare One docs","description":"Connect client devices in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/client-devices/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/guides/connect-client-devices/#page","headline":"Connect client devices to Cloudflare Mesh · Cloudflare One docs","description":"Connect laptops, phones, and desktops to Cloudflare Mesh and verify private network connectivity.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/guides/connect-client-devices/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 ```

@@ -18,9 +18,7 @@ Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 To route traffic between Cloudflare's global network and your origin network, Magic Transit wraps your original packets inside an outer packet — a process called encapsulation. The outer packet carries your traffic across the Internet to its destination, where it is unwrapped (decapsulated) and delivered.
 
-Magic Transit uses two encapsulation protocols: [Generic Routing Encapsulation (GRE)](https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling/)
-
- and [IPsec](https://www.cloudflare.com/learning/network-layer/what-is-ipsec/). GRE is stateless and simpler to configure but does not encrypt traffic. IPsec encrypts traffic and authenticates the source, providing stronger security. Both create tunnels — logical point-to-point connections between Cloudflare and your network. Cloudflare sets up tunnel endpoints on global network servers inside your network namespace, and you set up tunnel endpoints on routers at your data center.
+Magic Transit uses two encapsulation protocols: [Generic Routing Encapsulation (GRE)](https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling/) and [IPsec](https://www.cloudflare.com/learning/network-layer/what-is-ipsec/). GRE is stateless and simpler to configure but does not encrypt traffic. IPsec encrypts traffic and authenticates the source, providing stronger security. Both create tunnels — logical point-to-point connections between Cloudflare and your network. Cloudflare sets up tunnel endpoints on global network servers inside your network namespace, and you set up tunnel endpoints on routers at your data center.
 
 To accommodate additional header data introduced by encapsulation, you must adjust the maximum segment size (MSS) to comply with the standard Internet routable maximum transmission unit (MTU), which is 1500 bytes.
 

@@ -16,9 +16,7 @@ Implement a Time To Live (TTL) for Durable Object instances.
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/examples/durable-object-ttl/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-A common feature request for Durable Objects is a Time To Live (TTL) for Durable Object instances. Durable Objects give developers the tools to implement a custom TTL in only a few lines of code. This example demonstrates how to implement a TTL making use of `alarms`
-
-. While this TTL will be extended upon every new request to the Durable Object, this can be customized based on a particular use case.
+A common feature request for Durable Objects is a Time To Live (TTL) for Durable Object instances. Durable Objects give developers the tools to implement a custom TTL in only a few lines of code. This example demonstrates how to implement a TTL making use of `alarms`. While this TTL will be extended upon every new request to the Durable Object, this can be customized based on a particular use case.
 
 Be careful when calling \`setAlarm\` in the Durable Object class constructor
 

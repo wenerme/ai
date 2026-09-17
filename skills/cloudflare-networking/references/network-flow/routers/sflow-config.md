@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-flow/routers/sflow-config/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Configure your router to export sFlow
-
- data to Cloudflare's network for analysis in Network Flow (formerly Magic Network Monitoring). sFlow is a network monitoring protocol that samples network traffic to provide visibility into your network's performance and traffic patterns.
+Configure your router to export sFlow data to Cloudflare's network for analysis in Network Flow (formerly Magic Network Monitoring). sFlow is a network monitoring protocol that samples network traffic to provide visibility into your network's performance and traffic patterns.
 
 ## Before you begin
 

@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/configure-tunnel-health-alerts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-You can configure Tunnel Health Alerts (formerly Magic Tunnel health alerts) to receive email, webhook, and PagerDuty notifications when the percentage of successful health checks
-
- for an IPsec/GRE tunnel drops below the selected [service-level objective (SLO)](https://developers.cloudflare.com/cloudflare-wan/reference/how-cloudflare-calculates-tunnel-health-alerts/).
+You can configure Tunnel Health Alerts (formerly Magic Tunnel health alerts) to receive email, webhook, and PagerDuty notifications when the percentage of successful health checks for an IPsec/GRE tunnel drops below the selected [service-level objective (SLO)](https://developers.cloudflare.com/cloudflare-wan/reference/how-cloudflare-calculates-tunnel-health-alerts/).
 
 Tunnel health alerts monitor the health check success rate of each IPsec/GRE tunnel included in the alert that has actively transferred customer traffic (excluding health check traffic) over the past six hours. You can define an SLO threshold for the percentage of health checks that must be successful for each IPsec/GRE tunnel. If the number of successful health checks for the IPsec/GRE tunnel(s) included in the alert drops below the SLO threshold, an alert fires.
 

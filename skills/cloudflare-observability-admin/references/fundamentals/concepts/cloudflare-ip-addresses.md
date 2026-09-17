@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare IP addresses
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you add a domain to Cloudflare and [proxy its DNS records](https://developers.cloudflare.com/dns/proxy-status/), visitors who look up your domain receive a Cloudflare IP address instead of your origin server's real IP address. This hides your origin server's IP address and allows Cloudflare to optimize, cache, and protect all requests before forwarding them to you.
 
@@ -36,7 +36,7 @@ The guidance above applies to domains that use Cloudflare's HTTP proxy. [Magic T
 
 To avoid blocking Cloudflare IP addresses unintentionally, you also want to allow Cloudflare IP addresses at your origin web server.
 
-You can explicitly allow these IP addresses with a [.htaccess file ↗](https://httpd.apache.org/docs/trunk/mod/mod%5Fauthz%5Fcore.html#require) or by using [iptables ↗](https://www.linode.com/docs/security/firewalls/control-network-traffic-with-iptables/#block-or-allow-traffic-by-port-number-to-create-an-iptables-firewall).
+You can explicitly allow these IP addresses with a [.htaccess file ↗](https://httpd.apache.org/docs/trunk/mod/mod_authz_core.html#require) or by using [iptables ↗](https://www.linode.com/docs/security/firewalls/control-network-traffic-with-iptables/#block-or-allow-traffic-by-port-number-to-create-an-iptables-firewall).
 
 The following example demonstrates how you could use an iptables rule to allow a Cloudflare IP address range. Replace `$ip` below with one of the [Cloudflare IP address ranges ↗](https://www.cloudflare.com/ips). You will need to run this command once for each IP range listed on that page.
 
@@ -69,8 +69,8 @@ For more specific guidance, contact your hosting provider or website administrat
 
 To avoid blocking Cloudflare IP addresses unintentionally, review your external tools to check that:
 
-* Any security plugins — such as those for WordPress — allow Cloudflare IP addresses.
-* The [ModSecurity ↗](https://github.com/SpiderLabs/ModSecurity) plugin is up to date.
+- Any security plugins — such as those for WordPress — allow Cloudflare IP addresses.
+- The [ModSecurity ↗](https://github.com/SpiderLabs/ModSecurity) plugin is up to date.
 
 ### Further protection
 
@@ -80,8 +80,8 @@ For further recommendations on securing your origin server, refer to our guide o
 
 Enterprise customers who do not want to use Cloudflare IP addresses — which are shared by all proxied hostnames — have two potential alternatives:
 
-* [**Bring Your Own IP (BYOIP)**](https://developers.cloudflare.com/byoip/): Cloudflare announces your IPs (an IP address range you lease/own) in all of our [locations ↗](https://www.cloudflare.com/network/).
-* **Static IP addresses**: Cloudflare sets static IP addresses for your domain. For more details, contact your account team.
+- [**Bring Your Own IP (BYOIP)**](https://developers.cloudflare.com/byoip/): Cloudflare announces your IPs (an IP address range you lease/own) in all of our [locations ↗](https://www.cloudflare.com/network/).
+- **Static IP addresses**: Cloudflare sets static IP addresses for your domain. For more details, contact your account team.
 
 Business and Enterprise customers can also reduce the number of Cloudflare IPs that their domain shares with other Cloudflare customer domains by [uploading a Custom SSL certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/).
 

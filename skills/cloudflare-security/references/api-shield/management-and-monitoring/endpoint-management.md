@@ -16,9 +16,7 @@ Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Available on all plans
 
-Endpoint Management content uses the current [Web Assets](https://developers.cloudflare.com/security/web-assets/) dashboard. Go to **Web Assets** > **Operations** to manage API endpoints
-
-.
+Endpoint Management content uses the current [Web Assets](https://developers.cloudflare.com/security/web-assets/) dashboard. Go to **Web Assets** > **Operations** to manage API endpoints.
 
 An operation is Cloudflare's term for an endpoint identified by HTTP method, hostname pattern, and path pattern. Web Assets continuously discovers operations, and you can add them manually.
 

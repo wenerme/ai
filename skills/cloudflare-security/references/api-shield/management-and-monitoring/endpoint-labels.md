@@ -155,9 +155,7 @@ Replace `cf-log-in` with any [managed label](#managed-labels) or [risk label](#r
 
 ### Logpush
 
-You can export per-request Web Assets data to your storage or SIEM system
-
- of choice using [Logpush](https://developers.cloudflare.com/logs/logpush/). The `WebAssetsOperationID` and `WebAssetsLabelsManaged` fields are available in the [HTTP requests dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/#webassetslabelsmanaged).
+You can export per-request Web Assets data to your storage or SIEM system of choice using [Logpush](https://developers.cloudflare.com/logs/logpush/). The `WebAssetsOperationID` and `WebAssetsLabelsManaged` fields are available in the [HTTP requests dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/#webassetslabelsmanaged).
 
 ---
 

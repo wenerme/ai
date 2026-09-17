@@ -30,9 +30,7 @@ Schema Validation 2.0 is the current version. For previous-version reference, re
 
 ## Configure an uploaded schema
 
-Endpoints
-
- must exist as operations in **Web Assets** > **Operations**. Uploading through the dashboard adds schema operations automatically.
+Endpoints must exist as operations in **Web Assets** > **Operations**. Uploading through the dashboard adds schema operations automatically.
 
 When using the API or Terraform, add schema operations separately. For automation details, refer to [API configuration](https://developers.cloudflare.com/api-shield/security/schema-validation/api/) or [Terraform](https://developers.cloudflare.com/api-shield/reference/terraform/#manage-schema-validation).
 

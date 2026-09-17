@@ -205,14 +205,15 @@ For detailed setup instructions including `gcloud` commands, refer to [Service a
 
 **Solutions:**
 
-1. Confirm you’re on Grafana Cloud. Workload Identity Federation is available on Grafana Cloud only, because Grafana Cloud exchanges the signed-in user’s external OIDC token for a short-lived Google Cloud access token before the request reaches the plugin.
-2. Verify the **Workload Identity Pool Provider** resource path is correct and uses the format `projects/<project-number>/locations/global/workloadIdentityPools/<pool-id>/providers/<provider-id>`. Use the project **number** (a numeric ID such as `123456789`), not the project ID (such as `my-project`).
-3. Check the provider’s attribute mappings in Google Cloud. The `google.subject` attribute must map to the correct claim from your identity provider (for example, `assertion.sub`; the exact mapping depends on your provider’s claim format).
-4. Verify the BigQuery permissions are granted to the correct principal:
+1. Confirm you’re on Grafana Cloud. Workload Identity Federation is available on Grafana Cloud only, because Grafana Cloud exchanges the signed-in user’s OIDC ID token for a short-lived Google Cloud access token before the request reaches the plugin.
+2. Confirm Grafana Cloud SSO uses the same OIDC provider as the workload identity pool. WIF exchanges that user’s OIDC ID token. If users sign in with Google OAuth and you want to query BigQuery as that Google user, use [Forward OAuth Identity](/docs/plugins/grafana-bigquery-datasource/latest/configure/#forward-oauth-identity) instead.
+3. Verify the **Workload Identity Pool Provider** resource path is correct and uses the format `projects/<project-number>/locations/global/workloadIdentityPools/<pool-id>/providers/<provider-id>`. Use the project **number** (a numeric ID such as `123456789`), not the project ID (such as `my-project`).
+4. Check the provider’s attribute mappings in Google Cloud. The `google.subject` attribute must map to the correct claim from your identity provider (for example, `assertion.sub`; the exact mapping depends on your provider’s claim format).
+5. Verify the BigQuery permissions are granted to the correct principal:
 
    - **Without impersonation:** the WIF pool principal needs the **BigQuery Data Viewer** and **BigQuery Job User** roles, and the **Service account email** field must be left blank.
    - **With impersonation:** the impersonated service account needs the **BigQuery Data Viewer** and **BigQuery Job User** roles, the WIF pool principal needs the **Service Account Token Creator** role on that service account, and the impersonated service account’s full email must be entered in the **Service account email** field.
-5. Ensure your Grafana Cloud stack’s SSO integration is configured against the same OIDC provider that the workload identity pool trusts. If the signed-in user’s identity isn’t available, Grafana Cloud can’t exchange it for a Google Cloud access token.
+6. Ensure your Grafana Cloud stack’s SSO integration is configured against the same OIDC provider that the workload identity pool trusts. If the signed-in user’s identity isn’t available, Grafana Cloud can’t exchange it for a Google Cloud access token.
 
 > Note
 >

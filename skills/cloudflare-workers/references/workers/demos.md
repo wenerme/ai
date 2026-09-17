@@ -18,9 +18,7 @@ Learn how you can use Workers within your existing application and architecture.
 
 ## Reference architectures
 
-Explore the following reference architectures
-
- that use Workers:
+Explore the following reference architectures that use Workers:
 
 [**Fullstack applications** A practical example of how these services come together in a real fullstack application architecture.](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/fullstack-application/)
 

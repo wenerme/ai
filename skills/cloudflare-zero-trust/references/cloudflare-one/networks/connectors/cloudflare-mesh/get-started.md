@@ -1,5 +1,5 @@
 ---
-description: Get started in Zero Trust networking.
+description: Set up Cloudflare Mesh and connect your first server, laptop, or phone to your private network.
 title: Get started
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Set up Cloudflare Mesh so your devices and servers can reach each other by private IP.
 
@@ -37,9 +37,9 @@ Set up Cloudflare Mesh so your devices and servers can reach each other by priva
 
 Mesh nodes are optional
 
-  Client-to-client connectivity works without any Mesh nodes. Two enrolled laptops can reach each other directly by Mesh IP. Mesh nodes are for running the client in headless mode on a server — either to make that server reachable by its Mesh IP, or to [route traffic to a private subnet](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/) behind it. Configure the [required account settings](#required-account-settings) before connecting participants. You can use the dashboard wizard, APIs, or Terraform.
+  Client-to-client connectivity works without any Mesh nodes. Two enrolled laptops can reach each other directly by Mesh IP. Mesh nodes are for running the client in headless mode on a server — either to make that server reachable by its Mesh IP, or to [route traffic to a private subnet](https://developers.cloudflare.com/mesh/features/routes/) behind it. Configure the [required account settings](#required-account-settings) before connecting participants. You can use the dashboard wizard, APIs, or Terraform.
 
-Cloudflare Mesh requires that the Mesh node's [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) is configured to use [MASQUE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/#protocol-requirement). Hostname routes, IPv6 CIDR routes, and high availability do not work if the device profile uses WireGuard instead.
+Cloudflare Mesh requires that the Mesh node's [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) is configured to use [MASQUE](https://developers.cloudflare.com/mesh/concepts/#protocol-requirement). Hostname routes, IPv6 CIDR routes, and high availability do not work if the device profile uses WireGuard instead.
 
 ## Choose a participant type
 
@@ -48,7 +48,7 @@ Choose an enrollment method based on what you want to connect:
 | Goal | Participant type | Enrollment method | Browser required |
 | --- | --- | --- | --- |
 | Run a service or route a subnet from Linux | [Mesh node](#1-configure-mesh) | Connector token | No |
-| Connect an unattended Windows, macOS, or Linux device | [Headless client device](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/client-devices/#headless-windows-macos-and-linux-devices) | Service token and managed deployment parameters | No |
+| Connect an unattended Windows, macOS, or Linux device | [Headless client device](https://developers.cloudflare.com/mesh/guides/connect-client-devices/#headless-windows-macos-and-linux-devices) | Service token and managed deployment parameters | No |
 | Connect a user device with identity | [Client device](#2-connect-a-client-device) | Interactive identity provider enrollment | Yes |
 
 ## 1. Configure Mesh
@@ -65,7 +65,7 @@ The setup wizard [configures your account for Mesh networking](#required-account
 
    Installation commands</summary>
 
-IP forwarding is not required to reach the node by its Mesh IP. If the node will advertise <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/">CIDR routes</a>, enable persistent forwarding before connecting it:
+IP forwarding is not required to reach the node by its Mesh IP. If the node will advertise <a href="https://developers.cloudflare.com/mesh/features/routes/">CIDR routes</a>, enable persistent forwarding before connecting it:
 
    ```sh
    printf 'net.ipv4.ip_forward = 1\nnet.ipv6.conf.all.forwarding = 1\nnet.ipv6.conf.all.accept_ra = 2\n' | sudo tee /etc/sysctl.d/99-zzz-cloudflare-warp-connector.conf &&
@@ -180,7 +180,7 @@ The commands stop on an HTTP or API error. Do not continue until they return zer
 
 Install the node and replace `<TOKEN>` with the value of `MESH_NODE_TOKEN`:
 
-IP forwarding is not required to reach the node by its Mesh IP. If the node will advertise [CIDR routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/), enable persistent forwarding before connecting it:
+IP forwarding is not required to reach the node by its Mesh IP. If the node will advertise [CIDR routes](https://developers.cloudflare.com/mesh/features/routes/), enable persistent forwarding before connecting it:
 
 ```sh
 printf 'net.ipv4.ip_forward = 1\nnet.ipv6.conf.all.forwarding = 1\nnet.ipv6.conf.all.accept_ra = 2\n' | sudo tee /etc/sysctl.d/99-zzz-cloudflare-warp-connector.conf &&
@@ -324,18 +324,18 @@ If your account already has a Cloudflare One deployment, the setup wizard will n
   - Run `warp-cli connect`.
   - If your private network uses a firewall to restrict Internet traffic, ensure that it allows the [WARP ports and IPs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/).
   - Review your [WARP daemon logs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/) for information about why the connection is failing.
-- **Client device cannot reach Mesh IPs** — Verify that your Split Tunnel configuration routes the Mesh IP range ( `100.96.0.0/12`) through Cloudflare. For details, refer to [Connect client devices](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/client-devices/).
+- **Client device cannot reach Mesh IPs** — Verify that your Split Tunnel configuration routes the Mesh IP range ( `100.96.0.0/12`) through Cloudflare. For details, refer to [Connect client devices](https://developers.cloudflare.com/mesh/guides/connect-client-devices/).
 - **Windows firewall blocks Mesh traffic** — Windows Firewall blocks inbound traffic from `100.96.0.0/12` by default. Add a firewall rule that allows incoming requests from this range for your desired protocols and ports.
 
 For general client issues, refer to [Troubleshoot the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/).
 
 ## Next steps
 
-- [**Connect client devices**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/client-devices/) — Platform-specific installation details, Split Tunnel configuration, and firewall considerations.
-- [**Run in Docker / Kubernetes**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/containers/) — Deploy a Mesh node as a Docker container for Docker Compose, Kubernetes, and CI/CD pipelines.
-- [**Add routes**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/) — Make an entire subnet behind your node reachable (databases, printers, other servers).
-- [**Enable high availability**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) — Run multiple replicas for production resilience.
-- [**Tips and best practices**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/tips/) — Cloud VPC configuration, updating the client, running alongside cloudflared.
+- [**Connect client devices**](https://developers.cloudflare.com/mesh/guides/connect-client-devices/) — Platform-specific installation details, Split Tunnel configuration, and firewall considerations.
+- [**Run in Docker / Kubernetes**](https://developers.cloudflare.com/mesh/guides/run-mesh-in-containers/) — Deploy a Mesh node as a Docker container for Docker Compose, Kubernetes, and CI/CD pipelines.
+- [**Add routes**](https://developers.cloudflare.com/mesh/features/routes/) — Make an entire subnet behind your node reachable (databases, printers, other servers).
+- [**Enable high availability**](https://developers.cloudflare.com/mesh/features/high-availability/) — Run multiple replicas for production resilience.
+- [**Tips and best practices**](https://developers.cloudflare.com/mesh/best-practices/) — Cloud VPC configuration, updating the client, running alongside cloudflared.
 
 Was this helpful?
 
@@ -346,5 +346,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/get-started/#page","headline":"Get started with Cloudflare Mesh · Cloudflare One docs","description":"Get started in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/get-started/#page","headline":"Get started with Cloudflare Mesh · Cloudflare One docs","description":"Set up Cloudflare Mesh and connect your first server, laptop, or phone to your private network.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 ```

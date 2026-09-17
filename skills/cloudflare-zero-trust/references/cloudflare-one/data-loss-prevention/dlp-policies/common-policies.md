@@ -74,9 +74,7 @@ The following example blocks only contractors from uploading/downloading Financi
 
 ## Exclude Android applications
 
-Many Android applications (such as Google Drive) use [certificate pinning](https://developers.cloudflare.com/ssl/reference/certificate-pinning/)
-
-, which is incompatible with Gateway TLS decryption. These applications verify they are connecting directly to their own servers and will reject Gateway's inspection certificate. If needed, you can create a [Do Not Inspect policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect) so that the app can continue to function on Android:
+Many Android applications (such as Google Drive) use [certificate pinning](https://developers.cloudflare.com/ssl/reference/certificate-pinning/), which is incompatible with Gateway TLS decryption. These applications verify they are connecting directly to their own servers and will reject Gateway's inspection certificate. If needed, you can create a [Do Not Inspect policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect) so that the app can continue to function on Android:
 
 1. Set up an [OS version device posture check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/os-version/) that checks for the Android operating system.
 2. Create the following HTTP policy in Gateway:

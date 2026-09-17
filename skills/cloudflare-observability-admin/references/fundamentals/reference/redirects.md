@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/redirects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare offers a variety of ways to perform URL redirects
-
-, which tell a visitor's browser that the location of a page has been changed.
+Cloudflare offers a variety of ways to perform URL redirects, which tell a visitor's browser that the location of a page has been changed.
 
 Use the following table to determine when to use each option.
 

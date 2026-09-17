@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dmarc-management/enable/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-You need to enable DMARC Management to allow Cloudflare to process DMARC reports on your behalf. DMARC Management only works with apex domains
-
- (for example, `example.com`, not `blog.example.com`) and not domains in [subdomain setups](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/).
+You need to enable DMARC Management to allow Cloudflare to process DMARC reports on your behalf. DMARC Management only works with apex domains (for example, `example.com`, not `blog.example.com`) and not domains in [subdomain setups](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/).
 
 A warning on DMARC Management and SPF records
 

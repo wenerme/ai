@@ -21,9 +21,7 @@ Cloudflare Tunnel supports gRPC traffic via [private subnet routing](https://dev
 
 
 
-In this example, we will connect a gRPC server to Cloudflare using the `cloudflared` daemon
-
-, secure the server with Gateway policies, and open a gRPC channel to the server using the Cloudflare One Client.
+In this example, we will connect a gRPC server to Cloudflare using the `cloudflared` daemon, secure the server with Gateway policies, and open a gRPC channel to the server using the Cloudflare One Client.
 
 ## 1. Set up a gRPC server
 

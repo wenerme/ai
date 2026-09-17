@@ -58,7 +58,7 @@ TerminalStandaloneCloudExtensionOpen Source
    For example:
 
    ```txt
-   Build a serverless AI inference endpoint on Workers AI with streaming responses.
+   Set up rate limiting and WAF rules to block abuse on my public API.
    ```
 
 
@@ -171,7 +171,15 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+```
+
+```txt
+Create a Logpush job to stream Workers analytics to my data warehouse.
+```
+
+```txt
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ```txt
@@ -179,15 +187,7 @@ Set up a Waiting Room to handle flash sale traffic spikes without dropping reque
 ```
 
 ```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
-```
-
-```txt
-Configure Zero Trust access policies to protect my internal staging environment.
-```
-
-```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ## Tips

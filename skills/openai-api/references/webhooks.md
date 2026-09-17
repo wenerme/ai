@@ -1,10 +1,677 @@
 # Webhooks
 
+## Create Webhook Endpoint
+
+**post** `/webhook_endpoints`
+
+Creates a webhook endpoint for the authenticated project.
+
+### Body Parameters
+
+- `event_types: array of "batch.completed" or "batch.failed" or "batch.expired" or 15 more`
+
+  The event types that trigger deliveries to this endpoint.
+
+  - `"batch.completed"`
+
+  - `"batch.failed"`
+
+  - `"batch.expired"`
+
+  - `"batch.cancelled"`
+
+  - `"response.completed"`
+
+  - `"response.failed"`
+
+  - `"response.cancelled"`
+
+  - `"response.incomplete"`
+
+  - `"eval.run.succeeded"`
+
+  - `"eval.run.failed"`
+
+  - `"eval.run.canceled"`
+
+  - `"fine_tuning.job.succeeded"`
+
+  - `"fine_tuning.job.failed"`
+
+  - `"fine_tuning.job.cancelled"`
+
+  - `"realtime.call.incoming"`
+
+  - `"video.completed"`
+
+  - `"video.failed"`
+
+  - `"safety.alert.created"`
+
+- `name: string`
+
+  A human-readable name for the webhook endpoint.
+
+- `url: string`
+
+  The HTTPS URL that receives webhook deliveries.
+
+### Returns
+
+- `WebhookEndpointWithSecret object { id, created_at, event_types, 6 more }`
+
+  - `id: string`
+
+    The unique ID of the webhook endpoint.
+
+  - `created_at: number`
+
+    The Unix timestamp when the endpoint was created.
+
+  - `event_types: array of string`
+
+    The event types that trigger deliveries to this endpoint.
+
+  - `name: string`
+
+    The human-readable name of the endpoint.
+
+  - `object: "webhook_endpoint"`
+
+    The object type, which is always webhook_endpoint.
+
+    - `"webhook_endpoint"`
+
+  - `signing_secret: string`
+
+    The endpoint's signing secret. This is returned only when the endpoint is created or the secret is rotated.
+
+  - `signing_secret_hint: string or null`
+
+    A masked hint for the endpoint's signing secret.
+
+  - `url: string`
+
+    The HTTPS URL that receives webhook deliveries.
+
+  - `updated_at: optional number`
+
+    The Unix timestamp of the last endpoint configuration or signing-secret change. Initialized at creation; tests and unchanged updates do not advance it.
+
+### Example
+
+```http
+curl https://api.openai.com/v1/webhook_endpoints \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{
+          "event_types": [
+            "batch.completed"
+          ],
+          "name": "x",
+          "url": "https://"
+        }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "event_types": [
+    "string"
+  ],
+  "name": "name",
+  "object": "webhook_endpoint",
+  "signing_secret": "signing_secret",
+  "signing_secret_hint": "signing_secret_hint",
+  "url": "url",
+  "updated_at": 0
+}
+```
+
+## Delete Webhook Endpoint
+
+**delete** `/webhook_endpoints/{webhook_endpoint_id}`
+
+Deletes a webhook endpoint for the authenticated project.
+
+### Path Parameters
+
+- `webhook_endpoint_id: string`
+
+### Returns
+
+- `DeletedWebhookEndpoint object { id, deleted, object }`
+
+  - `id: string`
+
+    The ID of the deleted webhook endpoint.
+
+  - `deleted: boolean`
+
+    Whether the endpoint was deleted.
+
+  - `object: "webhook_endpoint.deleted"`
+
+    The object type, which is always webhook_endpoint.deleted.
+
+    - `"webhook_endpoint.deleted"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
+    -X DELETE \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "webhook_endpoint.deleted"
+}
+```
+
+## List Webhook Endpoints
+
+**get** `/webhook_endpoints`
+
+Returns webhook endpoints for the authenticated project in newest-first order.
+
+### Query Parameters
+
+- `after: optional string or null`
+
+  ID of the last webhook endpoint from the previous page.
+
+- `limit: optional number`
+
+  Maximum number of webhook endpoints to return. Defaults to 20.
+
+### Returns
+
+- `WebhookEndpointList object { data, first_id, has_more, 2 more }`
+
+  - `data: array of WebhookEndpoint`
+
+    The webhook endpoints in this page.
+
+    - `id: string`
+
+      The unique ID of the webhook endpoint.
+
+    - `created_at: number`
+
+      The Unix timestamp when the endpoint was created.
+
+    - `event_types: array of string`
+
+      The event types that trigger deliveries to this endpoint.
+
+    - `name: string`
+
+      The human-readable name of the endpoint.
+
+    - `object: "webhook_endpoint"`
+
+      The object type, which is always webhook_endpoint.
+
+      - `"webhook_endpoint"`
+
+    - `signing_secret_hint: string or null`
+
+      A masked hint for the endpoint's signing secret.
+
+    - `url: string`
+
+      The HTTPS URL that receives webhook deliveries.
+
+    - `updated_at: optional number`
+
+      The Unix timestamp of the last endpoint configuration or signing-secret change. Initialized at creation; tests and unchanged updates do not advance it.
+
+  - `first_id: string or null`
+
+    The ID of the first endpoint in this page.
+
+  - `has_more: boolean`
+
+    Whether more webhook endpoints are available.
+
+  - `last_id: string or null`
+
+    The ID of the last endpoint in this page.
+
+  - `object: "list"`
+
+    The object type, which is always list.
+
+    - `"list"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/webhook_endpoints \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "event_types": [
+        "string"
+      ],
+      "name": "name",
+      "object": "webhook_endpoint",
+      "signing_secret_hint": "signing_secret_hint",
+      "url": "url",
+      "updated_at": 0
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+## Retrieve Webhook Endpoint
+
+**get** `/webhook_endpoints/{webhook_endpoint_id}`
+
+Retrieves a webhook endpoint for the authenticated project.
+
+### Path Parameters
+
+- `webhook_endpoint_id: string`
+
+### Returns
+
+- `WebhookEndpoint object { id, created_at, event_types, 5 more }`
+
+  - `id: string`
+
+    The unique ID of the webhook endpoint.
+
+  - `created_at: number`
+
+    The Unix timestamp when the endpoint was created.
+
+  - `event_types: array of string`
+
+    The event types that trigger deliveries to this endpoint.
+
+  - `name: string`
+
+    The human-readable name of the endpoint.
+
+  - `object: "webhook_endpoint"`
+
+    The object type, which is always webhook_endpoint.
+
+    - `"webhook_endpoint"`
+
+  - `signing_secret_hint: string or null`
+
+    A masked hint for the endpoint's signing secret.
+
+  - `url: string`
+
+    The HTTPS URL that receives webhook deliveries.
+
+  - `updated_at: optional number`
+
+    The Unix timestamp of the last endpoint configuration or signing-secret change. Initialized at creation; tests and unchanged updates do not advance it.
+
+### Example
+
+```http
+curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "event_types": [
+    "string"
+  ],
+  "name": "name",
+  "object": "webhook_endpoint",
+  "signing_secret_hint": "signing_secret_hint",
+  "url": "url",
+  "updated_at": 0
+}
+```
+
+## Rotate Webhook Endpoint Signing Secret
+
+**post** `/webhook_endpoints/{webhook_endpoint_id}/rotate_secret`
+
+Rotates the signing secret for a webhook endpoint in the authenticated project.
+
+### Path Parameters
+
+- `webhook_endpoint_id: string`
+
+### Body Parameters
+
+- `keep_old_secret_active_for_24_hours: optional boolean`
+
+  Whether to keep the previous signing secret valid for 24 hours after rotation. Defaults to false, which invalidates the previous secret immediately.
+
+### Returns
+
+- `WebhookEndpointWithSecret object { id, created_at, event_types, 6 more }`
+
+  - `id: string`
+
+    The unique ID of the webhook endpoint.
+
+  - `created_at: number`
+
+    The Unix timestamp when the endpoint was created.
+
+  - `event_types: array of string`
+
+    The event types that trigger deliveries to this endpoint.
+
+  - `name: string`
+
+    The human-readable name of the endpoint.
+
+  - `object: "webhook_endpoint"`
+
+    The object type, which is always webhook_endpoint.
+
+    - `"webhook_endpoint"`
+
+  - `signing_secret: string`
+
+    The endpoint's signing secret. This is returned only when the endpoint is created or the secret is rotated.
+
+  - `signing_secret_hint: string or null`
+
+    A masked hint for the endpoint's signing secret.
+
+  - `url: string`
+
+    The HTTPS URL that receives webhook deliveries.
+
+  - `updated_at: optional number`
+
+    The Unix timestamp of the last endpoint configuration or signing-secret change. Initialized at creation; tests and unchanged updates do not advance it.
+
+### Example
+
+```http
+curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID/rotate_secret \
+    -X POST \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "event_types": [
+    "string"
+  ],
+  "name": "name",
+  "object": "webhook_endpoint",
+  "signing_secret": "signing_secret",
+  "signing_secret_hint": "signing_secret_hint",
+  "url": "url",
+  "updated_at": 0
+}
+```
+
+## Test Webhook Endpoint
+
+**post** `/webhook_endpoints/{webhook_endpoint_id}/test`
+
+Sends a sample event to a webhook endpoint for the authenticated project.
+
+### Path Parameters
+
+- `webhook_endpoint_id: string`
+
+### Body Parameters
+
+- `event_type: "batch.completed" or "batch.failed" or "batch.expired" or 15 more`
+
+  The event type to send as a sample delivery.
+
+  - `"batch.completed"`
+
+  - `"batch.failed"`
+
+  - `"batch.expired"`
+
+  - `"batch.cancelled"`
+
+  - `"response.completed"`
+
+  - `"response.failed"`
+
+  - `"response.cancelled"`
+
+  - `"response.incomplete"`
+
+  - `"eval.run.succeeded"`
+
+  - `"eval.run.failed"`
+
+  - `"eval.run.canceled"`
+
+  - `"fine_tuning.job.succeeded"`
+
+  - `"fine_tuning.job.failed"`
+
+  - `"fine_tuning.job.cancelled"`
+
+  - `"realtime.call.incoming"`
+
+  - `"video.completed"`
+
+  - `"video.failed"`
+
+  - `"safety.alert.created"`
+
+### Returns
+
+- `WebhookEndpointTestResult object { event_type, object, status_code, 2 more }`
+
+  - `event_type: string`
+
+    The event type sent in the test.
+
+  - `object: "webhook_endpoint.test"`
+
+    The object type, which is always webhook_endpoint.test.
+
+    - `"webhook_endpoint.test"`
+
+  - `status_code: number`
+
+    The HTTP status code returned by the endpoint.
+
+  - `success: true`
+
+    Whether the test request completed. Always true for returned results; use status_code to determine the endpoint response.
+
+    - `true`
+
+  - `webhook_endpoint_id: string`
+
+    The ID of the webhook endpoint that received the test.
+
+### Example
+
+```http
+curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID/test \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{
+          "event_type": "batch.completed"
+        }'
+```
+
+#### Response
+
+```json
+{
+  "event_type": "event_type",
+  "object": "webhook_endpoint.test",
+  "status_code": 0,
+  "success": true,
+  "webhook_endpoint_id": "webhook_endpoint_id"
+}
+```
+
 ## 
 
 **** ``
 
 Validates that the given payload was sent by OpenAI and parses the payload.
+
+## Update Webhook Endpoint
+
+**post** `/webhook_endpoints/{webhook_endpoint_id}`
+
+Updates a webhook endpoint for the authenticated project.
+
+### Path Parameters
+
+- `webhook_endpoint_id: string`
+
+### Body Parameters
+
+- `event_types: optional array of "batch.completed" or "batch.failed" or "batch.expired" or 15 more`
+
+  The complete set of event types that should trigger deliveries.
+
+  - `"batch.completed"`
+
+  - `"batch.failed"`
+
+  - `"batch.expired"`
+
+  - `"batch.cancelled"`
+
+  - `"response.completed"`
+
+  - `"response.failed"`
+
+  - `"response.cancelled"`
+
+  - `"response.incomplete"`
+
+  - `"eval.run.succeeded"`
+
+  - `"eval.run.failed"`
+
+  - `"eval.run.canceled"`
+
+  - `"fine_tuning.job.succeeded"`
+
+  - `"fine_tuning.job.failed"`
+
+  - `"fine_tuning.job.cancelled"`
+
+  - `"realtime.call.incoming"`
+
+  - `"video.completed"`
+
+  - `"video.failed"`
+
+  - `"safety.alert.created"`
+
+- `name: optional string`
+
+  A new human-readable name for the webhook endpoint.
+
+- `url: optional string`
+
+  A new HTTPS URL that receives webhook deliveries.
+
+### Returns
+
+- `WebhookEndpoint object { id, created_at, event_types, 5 more }`
+
+  - `id: string`
+
+    The unique ID of the webhook endpoint.
+
+  - `created_at: number`
+
+    The Unix timestamp when the endpoint was created.
+
+  - `event_types: array of string`
+
+    The event types that trigger deliveries to this endpoint.
+
+  - `name: string`
+
+    The human-readable name of the endpoint.
+
+  - `object: "webhook_endpoint"`
+
+    The object type, which is always webhook_endpoint.
+
+    - `"webhook_endpoint"`
+
+  - `signing_secret_hint: string or null`
+
+    A masked hint for the endpoint's signing secret.
+
+  - `url: string`
+
+    The HTTPS URL that receives webhook deliveries.
+
+  - `updated_at: optional number`
+
+    The Unix timestamp of the last endpoint configuration or signing-secret change. Initialized at creation; tests and unchanged updates do not advance it.
+
+### Example
+
+```http
+curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
+    -X POST \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "event_types": [
+    "string"
+  ],
+  "name": "name",
+  "object": "webhook_endpoint",
+  "signing_secret_hint": "signing_secret_hint",
+  "url": "url",
+  "updated_at": 0
+}
+```
 
 ## Domain Types
 
@@ -143,6 +810,24 @@ Validates that the given payload was sent by OpenAI and parses the payload.
     The object of the event. Always `event`.
 
     - `"event"`
+
+### Deleted Webhook Endpoint
+
+- `DeletedWebhookEndpoint object { id, deleted, object }`
+
+  - `id: string`
+
+    The ID of the deleted webhook endpoint.
+
+  - `deleted: boolean`
+
+    Whether the endpoint was deleted.
+
+  - `object: "webhook_endpoint.deleted"`
+
+    The object type, which is always webhook_endpoint.deleted.
+
+    - `"webhook_endpoint.deleted"`
 
 ### Eval Run Canceled Webhook Event
 
@@ -481,10 +1166,9 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
     - `call_id: string`
 
-      The Transceiver `rtc_...` ID of the pending SIP session. The paired
-      `live.transport.incoming` event derives its `session_id` by replacing the
-      `rtc_` prefix with `live_`. Use the ID returned by the event with the
-      corresponding Realtime or Live API.
+      The ID of the pending SIP call. Pass this value unchanged when
+      accepting or rejecting the call through the Realtime API. For the
+      Live API, use the `session_id` from `live.transport.incoming` instead.
 
     - `sip_headers: array of object { name, value }`
 
@@ -1165,10 +1849,9 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
       - `call_id: string`
 
-        The Transceiver `rtc_...` ID of the pending SIP session. The paired
-        `live.transport.incoming` event derives its `session_id` by replacing the
-        `rtc_` prefix with `live_`. Use the ID returned by the event with the
-        corresponding Realtime or Live API.
+        The ID of the pending SIP call. Pass this value unchanged when
+        accepting or rejecting the call through the Realtime API. For the
+        Live API, use the `session_id` from `live.transport.incoming` instead.
 
       - `sip_headers: array of object { name, value }`
 
@@ -1383,3 +2066,225 @@ Validates that the given payload was sent by OpenAI and parses the payload.
       Always `safety.org_alert.created`.
 
       - `"safety.org_alert.created"`
+
+### Webhook Endpoint
+
+- `WebhookEndpoint object { id, created_at, event_types, 5 more }`
+
+  - `id: string`
+
+    The unique ID of the webhook endpoint.
+
+  - `created_at: number`
+
+    The Unix timestamp when the endpoint was created.
+
+  - `event_types: array of string`
+
+    The event types that trigger deliveries to this endpoint.
+
+  - `name: string`
+
+    The human-readable name of the endpoint.
+
+  - `object: "webhook_endpoint"`
+
+    The object type, which is always webhook_endpoint.
+
+    - `"webhook_endpoint"`
+
+  - `signing_secret_hint: string or null`
+
+    A masked hint for the endpoint's signing secret.
+
+  - `url: string`
+
+    The HTTPS URL that receives webhook deliveries.
+
+  - `updated_at: optional number`
+
+    The Unix timestamp of the last endpoint configuration or signing-secret change. Initialized at creation; tests and unchanged updates do not advance it.
+
+### Webhook Endpoint List
+
+- `WebhookEndpointList object { data, first_id, has_more, 2 more }`
+
+  - `data: array of WebhookEndpoint`
+
+    The webhook endpoints in this page.
+
+    - `id: string`
+
+      The unique ID of the webhook endpoint.
+
+    - `created_at: number`
+
+      The Unix timestamp when the endpoint was created.
+
+    - `event_types: array of string`
+
+      The event types that trigger deliveries to this endpoint.
+
+    - `name: string`
+
+      The human-readable name of the endpoint.
+
+    - `object: "webhook_endpoint"`
+
+      The object type, which is always webhook_endpoint.
+
+      - `"webhook_endpoint"`
+
+    - `signing_secret_hint: string or null`
+
+      A masked hint for the endpoint's signing secret.
+
+    - `url: string`
+
+      The HTTPS URL that receives webhook deliveries.
+
+    - `updated_at: optional number`
+
+      The Unix timestamp of the last endpoint configuration or signing-secret change. Initialized at creation; tests and unchanged updates do not advance it.
+
+  - `first_id: string or null`
+
+    The ID of the first endpoint in this page.
+
+  - `has_more: boolean`
+
+    Whether more webhook endpoints are available.
+
+  - `last_id: string or null`
+
+    The ID of the last endpoint in this page.
+
+  - `object: "list"`
+
+    The object type, which is always list.
+
+    - `"list"`
+
+### Webhook Endpoint Test Result
+
+- `WebhookEndpointTestResult object { event_type, object, status_code, 2 more }`
+
+  - `event_type: string`
+
+    The event type sent in the test.
+
+  - `object: "webhook_endpoint.test"`
+
+    The object type, which is always webhook_endpoint.test.
+
+    - `"webhook_endpoint.test"`
+
+  - `status_code: number`
+
+    The HTTP status code returned by the endpoint.
+
+  - `success: true`
+
+    Whether the test request completed. Always true for returned results; use status_code to determine the endpoint response.
+
+    - `true`
+
+  - `webhook_endpoint_id: string`
+
+    The ID of the webhook endpoint that received the test.
+
+### Webhook Endpoint With Secret
+
+- `WebhookEndpointWithSecret object { id, created_at, event_types, 6 more }`
+
+  - `id: string`
+
+    The unique ID of the webhook endpoint.
+
+  - `created_at: number`
+
+    The Unix timestamp when the endpoint was created.
+
+  - `event_types: array of string`
+
+    The event types that trigger deliveries to this endpoint.
+
+  - `name: string`
+
+    The human-readable name of the endpoint.
+
+  - `object: "webhook_endpoint"`
+
+    The object type, which is always webhook_endpoint.
+
+    - `"webhook_endpoint"`
+
+  - `signing_secret: string`
+
+    The endpoint's signing secret. This is returned only when the endpoint is created or the secret is rotated.
+
+  - `signing_secret_hint: string or null`
+
+    A masked hint for the endpoint's signing secret.
+
+  - `url: string`
+
+    The HTTPS URL that receives webhook deliveries.
+
+  - `updated_at: optional number`
+
+    The Unix timestamp of the last endpoint configuration or signing-secret change. Initialized at creation; tests and unchanged updates do not advance it.
+
+### Webhook Event Type List
+
+- `WebhookEventTypeList object { data, object }`
+
+  - `data: array of string`
+
+    The webhook event types available to the authenticated project.
+
+  - `object: "list"`
+
+    The object type, which is always list.
+
+    - `"list"`
+
+# Event Types
+
+## List Webhook Event Types
+
+**get** `/webhook_event_types`
+
+Returns webhook event types visible to the authenticated project.
+
+### Returns
+
+- `WebhookEventTypeList object { data, object }`
+
+  - `data: array of string`
+
+    The webhook event types available to the authenticated project.
+
+  - `object: "list"`
+
+    The object type, which is always list.
+
+    - `"list"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/webhook_event_types \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    "string"
+  ],
+  "object": "list"
+}
+```

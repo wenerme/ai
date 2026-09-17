@@ -126,9 +126,7 @@ For additional examples, refer to [Example mitigation rules](https://developers.
 
 ### Handle detected leaked credentials at the origin server
 
-Additionally, you may want to handle leaked credentials detected by Cloudflare at your origin server
-
-:
+Additionally, you may want to handle leaked credentials detected by Cloudflare at your origin server:
 
 1. [Turn on](https://developers.cloudflare.com/rules/transform/managed-transforms/configure/) the **Add Leaked Credentials Checks Header** managed transform.
 2. For requests received at your origin server containing the `Exposed-Credential-Check` header, you could redirect your end users to your reset password page when detecting previously leaked credentials.

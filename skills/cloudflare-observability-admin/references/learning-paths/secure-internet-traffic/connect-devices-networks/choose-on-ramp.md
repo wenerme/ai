@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Choose an on-ramp
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/connect-devices-networks/choose-on-ramp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/connect-devices-networks/choose-on-ramp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Similar to the network onboarding practices in the [Replace your VPN](https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/) implementation guide, there are a number of ways to on-ramp your network traffic to the Cloudflare global network. This guide will quickly explore all of the options to on-ramp traffic to Cloudflare Gateway to inspect, apply policies, and filter.
 
@@ -62,11 +62,11 @@ For more information on how Cloudflare WAN integrates with Zero Trust, refer to 
 
 ### Cloudflare Mesh Beta
 
-[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) (formerly WARP Connector), a software agent similar to our device client, functions as a virtual device to establish a connection between your network and the Cloudflare global network. You can install Cloudflare Mesh on a dedicated Linux server or virtual machine.
+[Cloudflare Mesh](https://developers.cloudflare.com/mesh/) (formerly WARP Connector), a software agent similar to our device client, functions as a virtual device to establish a connection between your network and the Cloudflare global network. You can install Cloudflare Mesh on a dedicated Linux server or virtual machine.
 
 Cloudflare Mesh supports egressing traffic from your private network to the Internet as a gateway. This means it can allow traffic initiated from a network to be on-ramped to Cloudflare for either public or private destinations. You can use Cloudflare Mesh to establish a secure egress path for servers or users on a network which may not each be able to run the Cloudflare One Client and still apply Gateway network and HTTP inspection policies. This connection is most analogous to proxy server connectivity or site-to-site VPN.
 
-For more information on setting up Cloudflare Mesh, refer to [Set up Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/).
+For more information on setting up Cloudflare Mesh, refer to [Set up Cloudflare Mesh](https://developers.cloudflare.com/mesh/).
 
 ### DNS filtering locations
 
@@ -89,5 +89,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/connect-devices-networks/choose-on-ramp/#page","headline":"Choose an on-ramp · Cloudflare Learning Paths","description":"Select a device or network on-ramp.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/connect-devices-networks/choose-on-ramp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/connect-devices-networks/choose-on-ramp/#page","headline":"Choose an on-ramp · Cloudflare Learning Paths","description":"Select a device or network on-ramp.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/connect-devices-networks/choose-on-ramp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

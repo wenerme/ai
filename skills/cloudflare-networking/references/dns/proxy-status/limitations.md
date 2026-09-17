@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/proxy-status/limitations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This page describes expected limitations when proxying DNS records
-
-. For further information about proxying, refer to [How Cloudflare DNS works](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/).
+This page describes expected limitations when proxying DNS records. For further information about proxying, refer to [How Cloudflare DNS works](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/).
 
 For guidance on when to proxy records and when to use DNS only, refer to [Use cases](https://developers.cloudflare.com/dns/proxy-status/use-cases/).
 

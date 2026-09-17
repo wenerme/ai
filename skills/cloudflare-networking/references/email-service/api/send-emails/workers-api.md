@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers API
 
-Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Workers API provides native email sending capabilities directly from your Cloudflare Workers through bindings. If you are not using Workers, you can send emails using the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/) instead.
 
@@ -194,7 +194,7 @@ The following error codes may be returned when sending emails:
 | `E_TOO_MANY_ATTACHMENTS` | Too many attachments in `attachments` array | `attachments` array exceeds 32 entries |
 | `E_SENDER_NOT_VERIFIED` | Sender domain not verified | Attempting to send from unverified domain |
 | `E_RECIPIENT_NOT_ALLOWED` | Recipient not in allowed list | Recipient address not in `allowed_destination_addresses` |
-| `E_RECIPIENT_SUPPRESSED` | Recipient is on suppression list | Email address has bounced or reported your emails as spam |
+| `E_RECIPIENT_SUPPRESSED` | Suppressed recipient while dropping is off | At least one recipient is suppressed and **Drop suppressed recipients** is off |
 | `E_SENDER_DOMAIN_NOT_AVAILABLE` | Domain not available for sending | Domain not onboarded to Email Service |
 | `E_CONTENT_TOO_LARGE` | Email content exceeds size limit | Total message size exceeds the maximum |
 | `E_DELIVERY_FAILED` | Could not deliver the email | SMTP delivery failure, recipient server rejection |
@@ -208,6 +208,8 @@ The following error codes may be returned when sending emails:
 | `E_HEADER_NAME_INVALID` | Header name invalid | Invalid characters or exceeds 100 byte limit |
 | `E_HEADERS_TOO_LARGE` | Headers payload too large | Total custom headers exceed 16 KB limit |
 | `E_HEADERS_TOO_MANY` | Too many headers | More than 20 allowlisted (non-X) custom headers |
+
+**Drop suppressed recipients** is off by default. When you [turn on the setting](https://developers.cloudflare.com/email-service/configuration/domains/#drop-suppressed-recipients), Email Service removes suppressed recipients and processes the remaining recipients.
 
 ## Legacy `EmailMessage` API
 
@@ -259,5 +261,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/api/send-emails/workers-api/#page","headline":"Workers API · Cloudflare Email Service docs","description":"Send emails directly from Cloudflare Workers using the Email Service binding and send() method.","url":"https://developers.cloudflare.com/email-service/api/send-emails/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/api/send-emails/workers-api/#page","headline":"Workers API · Cloudflare Email Service docs","description":"Send emails directly from Cloudflare Workers using the Email Service binding and send() method.","url":"https://developers.cloudflare.com/email-service/api/send-emails/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

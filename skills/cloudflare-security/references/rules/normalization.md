@@ -22,9 +22,7 @@ Caution
 
 When traffic is proxied through Cloudflare, certain baseline URL normalization steps are always applied, even if you turn off URL normalization for your zone. For example, Cloudflare always converts two or more adjacent slashes into a single slash (such as `//page` to `/page`). You cannot disable these baseline normalizations.
 
-URL normalization does not perform any redirects
-
-, and therefore it will not change the address displayed in the visitor's browser. The normalization operation, when enabled, occurs on the global network and affects Cloudflare features executed later and (optionally) the URL received at the origin server.
+URL normalization does not perform any redirects, and therefore it will not change the address displayed in the visitor's browser. The normalization operation, when enabled, occurs on the global network and affects Cloudflare features executed later and (optionally) the URL received at the origin server.
 
 Note
 

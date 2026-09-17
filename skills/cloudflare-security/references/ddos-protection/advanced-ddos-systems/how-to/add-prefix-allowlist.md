@@ -26,9 +26,7 @@ Allowlists support approximately 200 IP addresses in a single expression for a r
 
 Important
 
-Prefixes in the allowlist will be vulnerable to IP spoofing
-
- attacks. If an attacker can guess the source IP addresses you have allowlisted, their packets will be allowlisted.
+Prefixes in the allowlist will be vulnerable to IP spoofing attacks. If an attacker can guess the source IP addresses you have allowlisted, their packets will be allowlisted.
 
 Was this helpful?
 

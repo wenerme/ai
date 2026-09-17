@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Connect a private hostname
 
-Last updated Aug 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Instead of managing static IP lists and routes, you can connect users to private HTTP and non-HTTP applications using their hostnames (for example, `wiki.internal.local`). Private hostname routes are especially useful when the application has an unknown or ephemeral IP, which often occurs when infrastructure is provisioned by a third-party cloud provider.
 
@@ -32,9 +32,7 @@ Instead of managing static IP lists and routes, you can connect users to private
 
    `wiki.internal.local` · `10.0.0.50`
 
-When a user requests a private hostname, Cloudflare Gateway assigns an initial resolved IP
-
- to route the traffic through your tunnel to the correct private IP address. By default, this IP is drawn from a Cloudflare-owned public IPv4 range (`172.64.128.0/20`) rather than Carrier-Grade NAT (CGNAT) space, so it does not trigger [Google Chrome's Local Network Access restrictions](#google-chrome-restricts-access-to-private-hostnames). You can also [configure a custom range](https://developers.cloudflare.com/cloudflare-one/networks/routes/configure-initial-resolved-ips/) if it conflicts with your existing network. For a deep dive into the architecture and packet flow, refer to our [announcement blog post ↗](https://blog.cloudflare.com/tunnel-hostname-routing/).
+When a user requests a private hostname, Cloudflare Gateway assigns an initial resolved IP to route the traffic through your tunnel to the correct private IP address. By default, this IP is drawn from a Cloudflare-owned public IPv4 range (`172.64.128.0/20`) rather than Carrier-Grade NAT (CGNAT) space, so it does not trigger [Google Chrome's Local Network Access restrictions](#google-chrome-restricts-access-to-private-hostnames). You can also [configure a custom range](https://developers.cloudflare.com/cloudflare-one/networks/routes/configure-initial-resolved-ips/) if it conflicts with your existing network. For a deep dive into the architecture and packet flow, refer to our [announcement blog post ↗](https://blog.cloudflare.com/tunnel-hostname-routing/).
 
 ## Supported on-ramps/off-ramps
 
@@ -53,7 +51,7 @@ End users can connect to private hostnames using the following traffic on-ramps:
 | [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) | ✅ |
 | [PAC files](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) | ✅ |
 | [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) | ✅ |
-| [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) | ✅ |
+| [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) | ✅ |
 | [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/) | 🚧<sup>[1](#user-content-fn-1)</sup> |
 
 <details>
@@ -91,7 +89,7 @@ Private hostname routing works with the off-ramps below. Other traffic off-ramps
 | Connector | Compatibility | Minimum version |
 | --- | --- | --- |
 | [cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/) | ✅ | 2025.7.0 |
-| [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes) | ✅ | 2026.6.822.0 (Linux) |
+| [Cloudflare Mesh](https://developers.cloudflare.com/mesh/features/routes/#hostname-routes) | ✅ | 2026.6.822.0 (Linux) |
 | [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/) | ❌ | |
 
 ## Connect a private hostname
@@ -158,7 +156,7 @@ Cloudflare Mesh
 
 </summary>
 
-To attract a hostname's traffic to a Mesh node instead of a <code>cloudflared</code> tunnel, add a <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes">hostname route</a> to the node. The initial resolved IP listed above must route through Cloudflare on both the Mesh node and client device profiles, and — for a private hostname — the node must be able to resolve the hostname (via its local hosts file or a Gateway resolver policy). Refer to <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes">Hostname routes</a>.
+To attract a hostname's traffic to a Mesh node instead of a <code>cloudflared</code> tunnel, add a <a href="https://developers.cloudflare.com/mesh/features/routes/#hostname-routes">hostname route</a> to the node. The initial resolved IP listed above must route through Cloudflare on both the Mesh node and client device profiles, and — for a private hostname — the node must be able to resolve the hostname (via its local hosts file or a Gateway resolver policy). Refer to <a href="https://developers.cloudflare.com/mesh/features/routes/#hostname-routes">Hostname routes</a>.
 
 </details>
 
@@ -372,5 +370,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/#page","headline":"Connect a private hostname · Cloudflare One docs","description":"Connect a private hostname in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/#page","headline":"Connect a private hostname · Cloudflare One docs","description":"Connect a private hostname in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 ```

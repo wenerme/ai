@@ -20,9 +20,7 @@ Exposed credentials check has been deprecated.
 
 Switch from exposed credentials check to [leaked credentials detection](https://developers.cloudflare.com/waf/detections/leaked-credentials/) for improved security. To upgrade your current configuration, refer to the [upgrade guide](https://developers.cloudflare.com/waf/managed-rules/check-for-exposed-credentials/upgrade-to-leaked-credentials-detection/).
 
-Many web applications have suffered [credential stuffing](https://www.cloudflare.com/learning/bots/what-is-credential-stuffing/)
-
- attacks in the recent past. In these attacks there is a massive number of login attempts using username/password pairs from databases of exposed credentials.
+Many web applications have suffered [credential stuffing](https://www.cloudflare.com/learning/bots/what-is-credential-stuffing/) attacks in the recent past. In these attacks there is a massive number of login attempts using username/password pairs from databases of exposed credentials.
 
 Cloudflare offers you automated checks for exposed credentials using Cloudflare Web Application Firewall (WAF).
 

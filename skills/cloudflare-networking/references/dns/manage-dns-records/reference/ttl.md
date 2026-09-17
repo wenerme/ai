@@ -20,9 +20,7 @@ Longer TTLs speed up [DNS lookups ↗](https://www.cloudflare.com/learning/dns/w
 
 ## Proxied records
 
-By default, all [proxied records](https://developers.cloudflare.com/dns/proxy-status/)
-
- have a TTL of **Auto**, which is set to 300 seconds. This value cannot be edited.
+By default, all [proxied records](https://developers.cloudflare.com/dns/proxy-status/) have a TTL of **Auto**, which is set to 300 seconds. This value cannot be edited.
 
 Since only [records used for IP address resolution](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#ip-address-resolution) can be proxied, this setting ensures that potential changes to the assigned [anycast IP address](https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/) will take effect quickly, as recursive resolvers will not cache them for longer than 300 seconds (five minutes).
 

@@ -66,6 +66,10 @@ tags:
     name: Guardrails
   - description: Images endpoints
     name: Images
+  - description: >-
+      Create, inspect, update, provision, suspend and delete OpenRouter interns
+      through an API key.
+    name: Interns
   - description: Model information endpoints
     name: Models
   - description: OAuth authentication endpoints
@@ -96,6 +100,11 @@ tags:
   - description: Text-to-speech endpoints
     name: TTS
     x-displayName: Speech
+  - description: >-
+      Store host-bound secrets for a workspace or for one intern. Scope is
+      selected by the API key. Responses return metadata only, never secret
+      values. See https://openrouter.ai/docs/guides/ori/vault.
+    name: Vault
   - description: Video Generation endpoints
     name: Video Generation
   - description: Workspaces endpoints
@@ -380,6 +389,16 @@ components:
             return the same result. Determinism is not guaranteed for all
             providers.
           type: integer
+        session_id:
+          description: >-
+            A unique identifier for grouping related requests (e.g., a
+            conversation or agent workflow). Used for observability grouping in
+            Broadcast and private logging; never sent to the provider. If
+            provided in both the request body and the x-session-id header, the
+            body value takes precedence. Maximum of 256 characters.
+          example: session-1234
+          maxLength: 256
+          type: string
         size:
           description: >-
             Optional. A convenience shorthand for output dimensions — pass a

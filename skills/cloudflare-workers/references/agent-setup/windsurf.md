@@ -58,7 +58,7 @@ IDEStandalone
    Open Cascade and try a prompt — for example:
 
    ```txt
-   Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+   Set up rate limiting and WAF rules to block abuse on my public API.
    ```
 
 
@@ -164,7 +164,11 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+Set up a KV namespace for edge-cached session storage in my Worker.
+```
+
+```txt
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
@@ -172,15 +176,11 @@ Build a multi-tenant SaaS backend where each customer gets an isolated D1 databa
 ```
 
 ```txt
+Set up WAF rules to block SQL injection and XSS attacks on my application.
+```
+
+```txt
 Add a D1 database to my Worker and create a users table with full CRUD endpoints.
-```
-
-```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
-```
-
-```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
 ```
 
 ## Tips

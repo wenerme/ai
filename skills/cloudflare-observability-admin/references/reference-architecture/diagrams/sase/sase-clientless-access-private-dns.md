@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Access to private apps without having to deploy client agents
 
-Last updated Apr 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/sase/sase-clientless-access-private-dns/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/sase/sase-clientless-access-private-dns/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
-Using Cloudflare to access private resources - such as applications, servers, and networks that are not exposed directly to the internet - usually involves deploying an ([agent](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)) to devices and then using a server-side agent ([cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/), [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)), to connect the private network or application to Cloudflare. This document describes an alternative approach which removes the need to deploy software to the user's device, making it easier for allowing third party access such as contractors and partners.
+Using Cloudflare to access private resources - such as applications, servers, and networks that are not exposed directly to the internet - usually involves deploying an ([agent](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)) to devices and then using a server-side agent ([cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/), [Cloudflare Mesh](https://developers.cloudflare.com/mesh/)), to connect the private network or application to Cloudflare. This document describes an alternative approach which removes the need to deploy software to the user's device, making it easier for allowing third party access such as contractors and partners.
 
 Typically, to provide access to internal resources, you use Cloudflare Zero Trust Network Access [ZTNA ↗](https://www.cloudflare.com/learning/access-management/what-is-ztna/) which supports two methods for how the user device accesses a private resource.
 
-* A CNAME in public DNS, that resolves to a hostname representing the Cloudflare tunnel which proxies the request to the internal application.
-* An IP address exposed by Cloudflare tunnel, that again, proxies traffic direct to that IP address.
+- A CNAME in public DNS, that resolves to a hostname representing the Cloudflare tunnel which proxies the request to the internal application.
+- An IP address exposed by Cloudflare tunnel, that again, proxies traffic direct to that IP address.
 
 ## Accessing private applications
 
@@ -33,9 +33,9 @@ Follow this [tutorial](https://developers.cloudflare.com/cloudflare-one/tutorial
 
 ![Figure 1: Remote Access Internal Hostname](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=746,height=1147,format=svg/_astro/diagram1.CgnmLabJ.svg "Figure 1: Remote browser connected to private web service using internal hostname")
 
-Figure 1: Remote browser connected to private web service using internal hostname
+*Figure 1: Remote browser connected to private web service using internal hostname*
 
-1. Users start their access by authenticating to the [Cloudflare Browser Isolation ↗](https://your%5Fteam%5Fdomain.cloudflareaccess.com/browser) service. Note this is a browser running on Cloudflare’s edge network, therefore all requests will by default be handled by Cloudflare. The contents are rendered back to the users’ browser via secure encrypted vector streams that use HTTPS and WebRTC channels.
+1. Users start their access by authenticating to the [Cloudflare Browser Isolation ↗](https://your_team_domain.cloudflareaccess.com/browser) service. Note this is a browser running on Cloudflare’s edge network, therefore all requests will by default be handled by Cloudflare. The contents are rendered back to the users’ browser via secure encrypted vector streams that use HTTPS and WebRTC channels.
 2. Once the user has authenticated to the remote browser, they make a request to an internal hostname which is a record in the internal DNS service. e.g. [https://app.company.internal ↗](https://app.company.internal)
 3. Cloudflare looks up the internal hostname using [resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/), and gets the private IP address from the internal DNS server. This DNS resolution takes place within the Cloudflare network and requires no DNS client changes on the user's device.
 4. Cloudflare evaluates the network firewall policies and verifies if the user has permission to reach the destination addresses.
@@ -43,7 +43,7 @@ Figure 1: Remote browser connected to private web service using internal hostnam
 
 ## Related resources
 
-* [Tutorial: Access a web application via its private hostname without the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/tutorials/clientless-access-private-dns/)
+- [Tutorial: Access a web application via its private hostname without the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/tutorials/clientless-access-private-dns/)
 
 Was this helpful?
 
@@ -54,5 +54,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/sase-clientless-access-private-dns/#page","headline":"Access to private apps without having to deploy client agents · Cloudflare Reference Architecture docs","description":"Learn how to provide access to private apps without having to deploy client agents.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/sase-clientless-access-private-dns/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/sase-clientless-access-private-dns/#page","headline":"Access to private apps without having to deploy client agents · Cloudflare Reference Architecture docs","description":"Learn how to provide access to private apps without having to deploy client agents.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/sase-clientless-access-private-dns/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

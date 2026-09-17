@@ -377,9 +377,7 @@ Users can now log in using their Cloudflare account email and password. If a use
 
 ## Change your Zero Trust team name
 
-Cloudflare does not allow you to change your team name
-
- while a SSO connector is created. To change your team name, you must disable and delete your SSO connector(s).
+Cloudflare does not allow you to change your team name while a SSO connector is created. To change your team name, you must disable and delete your SSO connector(s).
 
 1. Navigate to the **Members** page.
 

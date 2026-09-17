@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Connect Workers to Cloudflare Mesh
 
-Last updated Jun 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudflare-mesh/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudflare-mesh/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This example demonstrates how to use a VPC Network binding with [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) (formerly WARP Connector) to connect to any private service in your account from a Worker — without pre-registering individual hosts or specifying a Cloudflare Tunnel UUID.
+This example demonstrates how to use a VPC Network binding with [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) (formerly WARP Connector) to connect to any private service in your account from a Worker — without pre-registering individual hosts or specifying a Cloudflare Tunnel UUID.
 
-When you bind to [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) using `network_id: "cf1:network"`, your Worker can reach any Mesh node, client device, subnet or hostname route announced through Cloudflare Tunnel or Cloudflare Mesh, or destination connected through a [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramp (GRE, IPsec, or CNI).
+When you bind to [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) using `network_id: "cf1:network"`, your Worker can reach any Mesh node, client device, subnet or hostname route announced through Cloudflare Tunnel or Cloudflare Mesh, or destination connected through a [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramp (GRE, IPsec, or CNI).
 
 ## Prerequisites
 
-- A [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) node connected to your private network
+- A [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) node connected to your private network
 - Private services running behind your Mesh node (for example, an internal API, database, or web application)
 
 ## 1. Configure your Worker
@@ -33,7 +33,7 @@ Bind your Worker to Cloudflare Mesh using `network_id: "cf1:network"` in your Wr
 	"name": "mesh-gateway",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-09-14",
+	"compatibility_date": "2026-09-17",
 	"vpc_networks": [
 		{
 			"binding": "MESH",
@@ -49,7 +49,7 @@ Bind your Worker to Cloudflare Mesh using `network_id: "cf1:network"` in your Wr
 name = "mesh-gateway"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-09-14"
+compatibility_date = "2026-09-17"
 
 [[vpc_networks]]
 binding = "MESH"
@@ -138,7 +138,7 @@ curl https://mesh-gateway.workers.dev/api/metrics
 
 - Learn more about [VPC Networks](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/) configuration options
 - Refer to the [Workers Binding API](https://developers.cloudflare.com/workers-vpc/api/) reference
-- [Set up Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/get-started/) for your account
+- [Set up Cloudflare Mesh](https://developers.cloudflare.com/mesh/get-started/) for your account
 - Explore [other examples](https://developers.cloudflare.com/workers-vpc/examples/)
 
 Was this helpful?
@@ -150,5 +150,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudflare-mesh/#page","headline":"Connect Workers to Cloudflare Mesh · Cloudflare Workers VPC","description":"Use a VPC Network binding with Cloudflare Mesh to reach private services from a Worker.","url":"https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudflare-mesh/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudflare-mesh/#page","headline":"Connect Workers to Cloudflare Mesh · Cloudflare Workers VPC","description":"Use a VPC Network binding with Cloudflare Mesh to reach private services from a Worker.","url":"https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudflare-mesh/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

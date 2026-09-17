@@ -16,9 +16,7 @@ Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Using a third-party CDN in front of Cloudflare
 
-Some Cloudflare customers choose to use a Content Delivery Network (CDN)
-
- in front of Cloudflare to cache and serve their resources.
+Some Cloudflare customers choose to use a Content Delivery Network (CDN) in front of Cloudflare to cache and serve their resources.
 
 Cloudflare recommends that you **do not use a third-party CDN in front of Cloudflare**. Some CDN providers may introduce subtleties into HTTP requests that deviate from protocol standards and/or protocol best practices. Additionally, because traffic to Cloudflare will originate from a limited set of IP addresses of the third-party CDN, in rare occasions — such as when using the Akamai CDN in front of Cloudflare — it may appear as if the CDN is launching a DDoS attack against Cloudflare due to the amount of traffic from these limited IP addresses.
 

@@ -89,9 +89,7 @@ Cloudflare SSL/TLS certificates only apply for traffic [proxied through Cloudfla
 
 #### Partial DNS setup
 
-If your domain is on a [CNAME setup (partial)](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)
-
-, confirm whether you have CAA DNS records enabled at your current hosting provider. If so, ensure you  [specify the Certificate Authorities that Cloudflare uses](https://developers.cloudflare.com/ssl/edge-certificates/caa-records/) to provision certificates for your domain.
+If your domain is on a [CNAME setup (partial)](https://developers.cloudflare.com/dns/zone-setups/partial-setup/), confirm whether you have CAA DNS records enabled at your current hosting provider. If so, ensure you  [specify the Certificate Authorities that Cloudflare uses](https://developers.cloudflare.com/ssl/edge-certificates/caa-records/) to provision certificates for your domain.
 
 ---
 

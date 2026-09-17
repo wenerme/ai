@@ -28,9 +28,7 @@ If you are on an Enterprise plan and want to renew a custom (modern) certificate
 
 ## Expired certificates
 
-If a valid replacement - covering some or all of the SANs
-
- in the expiring custom certificate - is already available, Cloudflare will remove the expiring custom certificate in the 24 hours before expiration. There is no expected downtime due to certificate transition.
+If a valid replacement - covering some or all of the SANs in the expiring custom certificate - is already available, Cloudflare will remove the expiring custom certificate in the 24 hours before expiration. There is no expected downtime due to certificate transition.
 
 If no valid replacement is available, Cloudflare will remove the custom certificate after it expires.
 

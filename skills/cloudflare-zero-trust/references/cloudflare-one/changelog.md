@@ -213,12 +213,12 @@ For details, refer to [DHCP server options](https://developers.cloudflare.com/cl
 
 ## 2026-09-02
 
-[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) [Cloudflare Mesh](https://developers.cloudflare.com/mesh/)
 
 
 **Create multiple Cloudflare Tunnel and Cloudflare Mesh routes at once**
 
-You can now create multiple [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) and [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) routes from the Routes page in a single action, instead of submitting one route at a time.
+You can now create multiple [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) and [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) routes from the Routes page in a single action, instead of submitting one route at a time.
 
 ![Creating multiple Cloudflare Tunnel and Cloudflare Mesh routes at once from the Routes page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=1034,format=webp/_astro/2026-09-01-tunnel-mesh-bulk.zu4fOWN3.gif)
 
@@ -501,6 +501,19 @@ For members with the Cloudflare Access App Admin role, policy lists include poli
 
 For role definitions and assignment details, refer to [Resource-scoped roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/#resource-scoped-roles) and [Role scopes](https://developers.cloudflare.com/fundamentals/manage-members/scope/).
 
+## 2026-08-19
+
+[Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) [Magic Transit](https://developers.cloudflare.com/magic-transit/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+
+
+**Threat Intel Lists supported in Unified Routing**
+
+[Cloudflare Advanced Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) Threat Intel Lists are now supported for accounts using [Unified Routing](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta) mode. This feature requires a Cloudflare Advanced Network Firewall subscription.
+
+Support for additional features - Rate Limiting and Managed Rulesets - is planned.
+
+For the full list of current beta limitations, refer to [Traffic steering beta limitations](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#beta-limitations).
+
 ## 2026-08-18
 
 [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
@@ -745,7 +758,7 @@ Gateway [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies
 | UI name | API value | Description |
 | --- | --- | --- |
 | Device client | `device_client` | Traffic from the [Cloudflare One Client (WARP)](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) |
-| Mesh | `mesh` | Traffic from a [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) connector |
+| Mesh | `mesh` | Traffic from a [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) connector |
 | Cloudflare WAN | `cloudflare_wan` | Traffic from [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/) (Magic WAN) |
 | Clientless RDP | `clientless_rdp` | Traffic from a clientless RDP session |
 | Proxy endpoint | `proxy_endpoint` | Traffic from a [proxy endpoint](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) (PAC file) |
@@ -770,7 +783,7 @@ For more information, refer to [HTTP policies](https://developers.cloudflare.com
 
 ## 2026-08-11
 
-[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Hostname routing is now generally available, with a new public IP range for initial resolved IPs**
@@ -778,11 +791,9 @@ For more information, refer to [HTTP policies](https://developers.cloudflare.com
 [Hostname routing ↗](https://blog.cloudflare.com/tunnel-hostname-routing/) is now generally available. Instead of managing static IP lists and routes, you can route traffic by hostname across multiple Cloudflare One connectors:
 
 - **Cloudflare Tunnel**: route a [private hostname](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/) (for example, `wiki.internal.local`) to a private application behind your tunnel, or a [public hostname](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/egress-cloudflared/) (for example, `bank.example.com`) to egress through a specific tunnel and anchor traffic to a dedicated exit node.
-- **Cloudflare Mesh**: attract a [private or public hostname's traffic](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes) to a Mesh node.
+- **Cloudflare Mesh**: attract a [private or public hostname's traffic](https://developers.cloudflare.com/mesh/features/routes/#hostname-routes) to a Mesh node.
 
-Alongside GA, the default IPv4 range used for initial resolved IPs
-
- (also called token IPs) is changing from a Carrier-Grade NAT (CGNAT) range to a public Cloudflare-owned range:
+Alongside GA, the default IPv4 range used for initial resolved IPs (also called token IPs) is changing from a Carrier-Grade NAT (CGNAT) range to a public Cloudflare-owned range:
 
 - **IPv4**: `172.64.128.0/20`
 - **IPv6**: `2606:4700:0cf1:4000::/64`
@@ -794,7 +805,7 @@ This is the default range. You can [configure a custom initial resolved IP range
 **What is affected:** Initial resolved IPs are used by several features that associate a DNS query with the network connection that follows it:
 
 - [Private](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/) and [public](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/egress-cloudflared/) hostname routing for Cloudflare Tunnel
-- [Hostname routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes) for Cloudflare Mesh
+- [Hostname routes](https://developers.cloudflare.com/mesh/features/routes/#hostname-routes) for Cloudflare Mesh
 - [Access private applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/) on non-HTTPS ports
 - [Egress policy host selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/) (Domain, Host, Application, and Content Categories)
 
@@ -841,14 +852,14 @@ For more information, refer to [Tunnel observability](https://developers.cloudfl
 
 ## 2026-08-07
 
-[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare Mesh](https://developers.cloudflare.com/mesh/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Container image for Cloudflare Mesh**
 
-[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) nodes can now run as Docker containers. The [`cloudflare/mesh` ↗](https://hub.docker.com/r/cloudflare/mesh) image is available on Docker Hub for Docker Compose, Kubernetes, and any OCI-compatible runtime — no host-level package installation required.
+[Cloudflare Mesh](https://developers.cloudflare.com/mesh/) nodes can now run as Docker containers. The [`cloudflare/mesh` ↗](https://hub.docker.com/r/cloudflare/mesh) image is available on Docker Hub for Docker Compose, Kubernetes, and any OCI-compatible runtime — no host-level package installation required.
 
-The image supports `amd64` and `arm64` architectures and includes built-in [source NAT](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/containers/#source-nat) so return traffic routes correctly without VPC route table changes.
+The image supports `amd64` and `arm64` architectures and includes built-in [source NAT](https://developers.cloudflare.com/mesh/guides/run-mesh-in-containers/#source-nat) so return traffic routes correctly without VPC route table changes.
 
 #### Deployment patterns
 
@@ -857,11 +868,11 @@ The image supports `amd64` and `arm64` architectures and includes built-in [sour
 - **Kubernetes sidecar** — add the Mesh image as a sidecar container in a Pod to connect an application to Cloudflare without application changes.
 - **CI/CD** — pull the image in a pipeline step, join the Mesh, run integration tests against private infrastructure, and tear down. The node disappears when the container exits.
 
-For [high availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/), run multiple replicas with the same Mesh node token. Cloudflare operates replicas in active-passive mode with automatic failover.
+For [high availability](https://developers.cloudflare.com/mesh/features/high-availability/), run multiple replicas with the same Mesh node token. Cloudflare operates replicas in active-passive mode with automatic failover.
 
 [Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
 
-For setup steps, runtime configuration, and deployment examples, refer to [Run Mesh in Docker / Kubernetes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/containers/).
+For setup steps, runtime configuration, and deployment examples, refer to [Run Mesh in Docker / Kubernetes](https://developers.cloudflare.com/mesh/guides/run-mesh-in-containers/).
 
 ## 2026-08-05
 
@@ -1207,7 +1218,7 @@ To learn more, refer to the [DEX monitoring documentation](https://developers.cl
 
 ## 2026-07-09
 
-[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) [Cloudflare Mesh](https://developers.cloudflare.com/mesh/)
 
 
 **Zero Trust Networks route endpoints and Cloudflare Tunnel connections field retiring on October 5, 2026**
@@ -1216,7 +1227,7 @@ On **October 5, 2026**, two changes take effect across the [Zero Trust Networks 
 
 #### Route endpoints
 
-The CIDR-encoded route endpoints are deprecated in favor of the standard, `route_id`-based endpoints that already exist today. Both sets of endpoints route a private network through [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) or [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) (the API still refers to Mesh nodes as `warp_connector`) — only the request shape changes.
+The CIDR-encoded route endpoints are deprecated in favor of the standard, `route_id`-based endpoints that already exist today. Both sets of endpoints route a private network through [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) or [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) (the API still refers to Mesh nodes as `warp_connector`) — only the request shape changes.
 
 **Deprecated endpoints (removed October 5, 2026):**
 
@@ -1271,7 +1282,7 @@ curl -X DELETE https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet
 
 #### Cloudflare Tunnel and Cloudflare Mesh connections
 
-Starting the same day, the `connections` array is removed from list and get responses for [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) and [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) nodes (the `cfd_tunnel` and `warp_connector` API resources). Query the dedicated connections endpoint instead of reading the field off the tunnel or node object.
+Starting the same day, the `connections` array is removed from list and get responses for [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) and [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) nodes (the `cfd_tunnel` and `warp_connector` API resources). Query the dedicated connections endpoint instead of reading the field off the tunnel or node object.
 
 This affects:
 
@@ -1414,12 +1425,12 @@ For details, refer to [Configure a Cloudflare One Virtual Appliance](https://dev
 
 ## 2026-07-02
 
-[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare Mesh](https://developers.cloudflare.com/mesh/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Hostname routing for Cloudflare Mesh**
 
-You can now add [hostname routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes) to a Cloudflare Mesh node, in addition to CIDR routes.
+You can now add [hostname routes](https://developers.cloudflare.com/mesh/features/routes/#hostname-routes) to a Cloudflare Mesh node, in addition to CIDR routes.
 
 1. [Client device](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
@@ -1428,8 +1439,8 @@ You can now add [hostname routes](https://developers.cloudflare.com/cloudflare-o
 3. [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
    Returns a token IP, then rewrites the destination to the real private IP. `172.64.128.0/20`
-4. [Hostname route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes)↓
-5. [Mesh node](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
+4. [Hostname route](https://developers.cloudflare.com/mesh/features/routes/#hostname-routes)↓
+5. [Mesh node](https://developers.cloudflare.com/mesh/)
 
    Forwards traffic to the host on the local network
 6. ↓
@@ -1444,7 +1455,7 @@ Instead of managing IP ranges, you can attract traffic for a hostname to a Mesh 
 
 [Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
 
-For setup steps, prerequisites, and DNS options, refer to [Hostname routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes).
+For setup steps, prerequisites, and DNS options, refer to [Hostname routes](https://developers.cloudflare.com/mesh/features/routes/#hostname-routes).
 
 ## 2026-07-01
 
@@ -1651,8 +1662,8 @@ This release introduces multiple features from our previous beta release into st
 **Additional changes and improvements**
 
 - Starting with 2026.6.822.0, the client unifies all API requests under the `api.devices.cloudflare.com` SNI, where previously both `zero-trust-client.cloudflareclient.com` and `notifications.cloudflareclient.com` were used. Review [Cloudflare One Client with firewall](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/) to ensure systems that rely on SNI inspection do not block the API traffic. The behavior of previous client versions is unaffected.
-- [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) functionality using the Cloudflare One Client is now supported on RHEL 9 and 10.
-- Cloudflare Mesh now supports [hostname-based routing](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes).
+- [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) functionality using the Cloudflare One Client is now supported on RHEL 9 and 10.
+- Cloudflare Mesh now supports [hostname-based routing](https://developers.cloudflare.com/mesh/features/routes/#hostname-routes).
 - Client Certificate device-posture checks now support template variables (e.g. `${serial_number}`, `${device_uuid}`) in the Subject Alternative Name field. Previously only the Common Name field accepted variables, which broke posture rules that pinned identity to a SAN entry.
 - Improved accessibility by using high contrast colors and more defined color boundaries when high contrast is enabled in the system display settings.
 - Path MTU Discovery (PMTUD) is now enabled by default.
@@ -1744,12 +1755,12 @@ To get started, refer to [Regionalized IP Bindings](https://developers.cloudflar
 
 ## 2026-06-19
 
-[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare Mesh](https://developers.cloudflare.com/mesh/) [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Manage all your routes from one page in the dashboard**
 
-The **Routes** page in the Cloudflare dashboard now shows the routes across all of your connectors — [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) and [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) routes alongside [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) and [Magic Transit](https://developers.cloudflare.com/magic-transit/) static routes — in a single table, instead of a separate routes view per product.
+The **Routes** page in the Cloudflare dashboard now shows the routes across all of your connectors — [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) and [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) routes alongside [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) and [Magic Transit](https://developers.cloudflare.com/magic-transit/) static routes — in a single table, instead of a separate routes view per product.
 
 ![The unified Routes page in the Cloudflare dashboard, showing routes across connectors in a single table](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=948,format=webp/_astro/2026-06-19-unified-routes.B3igBY20.gif)
 
@@ -1809,7 +1820,7 @@ For more information, refer to [AI prompt topics](https://developers.cloudflare.
 
 ## 2026-06-05
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) [Workers VPC](https://developers.cloudflare.com/workers-vpc/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) [Workers VPC](https://developers.cloudflare.com/workers-vpc/)
 
 
 **Filter Workers' public Internet traffic using Gateway policies**
@@ -1820,7 +1831,7 @@ Workers using a [VPC Network](https://developers.cloudflare.com/workers-vpc/conf
 
    Calls `env.EGRESS.fetch()`
 2. [VPC binding](https://developers.cloudflare.com/workers-vpc/)↓
-3. [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
+3. [Cloudflare Mesh](https://developers.cloudflare.com/mesh/)
 
    Bind via [`cf1:network`](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/)
 4. ↓
@@ -2024,12 +2035,12 @@ For more information, refer to [Tool and prompt aliases](https://developers.clou
 
 ## 2026-05-28
 
-[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare Mesh](https://developers.cloudflare.com/mesh/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **High availability replica management for Cloudflare Mesh**
 
-The [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) dashboard now shows per-replica details for [high availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) nodes. You can see which replica is active, view each replica's Mesh IP and connection details, and manually trigger failover — all from the node detail page.
+The [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) dashboard now shows per-replica details for [high availability](https://developers.cloudflare.com/mesh/features/high-availability/) nodes. You can see which replica is active, view each replica's Mesh IP and connection details, and manually trigger failover — all from the node detail page.
 
 ![Mesh HA replica tabs showing active and passive replicas with per-replica Mesh IPs and a manual failover option](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=1155,format=webp/_astro/mesh-ha-replicas.Dvf1GMmQ.gif)
 
@@ -2050,7 +2061,7 @@ To manually promote a passive replica:
 3. Select the passive replica tab.
 4. Select **Promote to active** and confirm.
 
-Traffic reroutes to the promoted replica immediately. Refer to [High availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) for details on failover behavior.
+Traffic reroutes to the promoted replica immediately. Refer to [High availability](https://developers.cloudflare.com/mesh/features/high-availability/) for details on failover behavior.
 
 ## 2026-05-27
 
@@ -2183,16 +2194,16 @@ This release introduces the new Cloudflare One Client UI for Linux! You can expe
 
 ## 2026-05-21
 
-[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Mesh](https://developers.cloudflare.com/mesh/)
 
 
 **Granular permissions for Cloudflare Tunnel and Cloudflare Mesh**
 
-You can now scope Cloudflare permissions to individual [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) instances and [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) nodes. Administrators can delegate access to specific Tunnels or Mesh nodes without granting account-wide control over private networking.
+You can now scope Cloudflare permissions to individual [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) instances and [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) nodes. Administrators can delegate access to specific Tunnels or Mesh nodes without granting account-wide control over private networking.
 
 #### What is new
 
-When you [add a member](https://developers.cloudflare.com/fundamentals/manage-members/manage/) or create a [permission policy](https://developers.cloudflare.com/fundamentals/manage-members/policies/), the resource picker now lists [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) instances and [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) nodes as scopable resource types. You can:
+When you [add a member](https://developers.cloudflare.com/fundamentals/manage-members/manage/) or create a [permission policy](https://developers.cloudflare.com/fundamentals/manage-members/policies/), the resource picker now lists [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) instances and [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) nodes as scopable resource types. You can:
 
 - Grant a read-only role on a single Cloudflare Tunnel instance to a support operator for log streaming and diagnostics — without exposing other Tunnels or destructive actions.
 - Grant a write role on a specific Cloudflare Mesh node to an application team — without giving them access to the rest of your private network.
@@ -2497,11 +2508,11 @@ This feature is available for PhishNet with Office 365. Support for Gmail will b
 
 **IPv6 CIDR routes for Cloudflare Mesh**
 
-[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) nodes now support IPv6 CIDR routes. You can advertise both IPv4 and IPv6 subnets through your Mesh nodes, making IPv6-only or dual-stack private networks reachable from any enrolled device.
+[Cloudflare Mesh](https://developers.cloudflare.com/mesh/) nodes now support IPv6 CIDR routes. You can advertise both IPv4 and IPv6 subnets through your Mesh nodes, making IPv6-only or dual-stack private networks reachable from any enrolled device.
 
 ![IPv6 CIDR routes on a Mesh node in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2906,height=1352,format=webp/_astro/mesh-ipv6-routes.CC-jlZkw.png)
 
-To add an IPv6 route, follow the same steps as [adding an IPv4 route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#add-a-route) — enter the IPv6 CIDR (for example, `fd00::/64`) when configuring the route in the [dashboard ↗](https://dash.cloudflare.com/?to=/:account/mesh) or via the API.
+To add an IPv6 route, follow the same steps as [adding an IPv4 route](https://developers.cloudflare.com/mesh/features/routes/#add-a-route) — enter the IPv6 CIDR (for example, `fd00::/64`) when configuring the route in the [dashboard ↗](https://dash.cloudflare.com/?to=/:account/mesh) or via the API.
 
 ## 2026-04-30
 
@@ -2870,16 +2881,16 @@ For more details, refer to the [DLP settings documentation](https://developers.c
 
 **Introducing Cloudflare Mesh**
 
-[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) is now available ([blog post ↗](https://blog.cloudflare.com/mesh/)). Mesh connects your services and devices with post-quantum encrypted networking, allowing you to route traffic privately between servers, laptops, and phones over TCP, UDP, and ICMP.
+[Cloudflare Mesh](https://developers.cloudflare.com/mesh/) is now available ([blog post ↗](https://blog.cloudflare.com/mesh/)). Mesh connects your services and devices with post-quantum encrypted networking, allowing you to route traffic privately between servers, laptops, and phones over TCP, UDP, and ICMP.
 
 ![Cloudflare Mesh network map showing nodes and devices connected through Cloudflare](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2070,height=875,format=webp/_astro/mesh-network-map.CED6jNHK.gif)
 
 #### What Cloudflare Mesh does
 
-- Assigns a private [Mesh IP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/#mesh-ips) to every enrolled device and node.
+- Assigns a private [Mesh IP](https://developers.cloudflare.com/mesh/concepts/#mesh-ips) to every enrolled device and node.
 - Enables any participant to reach any other participant by IP — including client-to-client, without deploying any infrastructure.
-- Supports [CIDR routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/) for subnet routing through Mesh nodes.
-- Supports [high availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) with active-passive replicas for nodes with routes.
+- Supports [CIDR routes](https://developers.cloudflare.com/mesh/features/routes/) for subnet routing through Mesh nodes.
+- Supports [high availability](https://developers.cloudflare.com/mesh/features/high-availability/) with active-passive replicas for nodes with routes.
 - All traffic flows through Cloudflare, so [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/), [device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/), and access rules apply to every connection.
 
 #### What changed
@@ -2891,7 +2902,7 @@ For more details, refer to the [DLP settings documentation](https://developers.c
 
 #### Get started
 
-Refer to the [Cloudflare Mesh documentation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) to set up your first Mesh network.
+Refer to the [Cloudflare Mesh documentation](https://developers.cloudflare.com/mesh/) to set up your first Mesh network.
 
 ## 2026-04-14
 
@@ -4165,13 +4176,13 @@ These scores are derived from \[CrowdStrike device posture attributes] (/cloudfl
 
 **Verify WARP Connector connectivity with a simple ping**
 
-We have made it easier to validate connectivity when deploying [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) as part of your [software-defined private network](https://developers.cloudflare.com/reference-architecture/architectures/sase/#connecting-networks).
+We have made it easier to validate connectivity when deploying [WARP Connector](https://developers.cloudflare.com/mesh/) as part of your [software-defined private network](https://developers.cloudflare.com/reference-architecture/architectures/sase/#connecting-networks).
 
 You can now `ping` the WARP Connector host directly on its LAN IP address immediately after installation. This provides a fast, familiar way to confirm that the Connector is online and reachable within your network before testing access to downstream services.
 
 Starting with [version 2025.10.186.0](https://developers.cloudflare.com/changelog/2026-01-13-warp-linux-ga/), WARP Connector responds to traffic addressed to its own LAN IP, giving you immediate visibility into Connector reachability.
 
-Learn more about deploying [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) and building private network connectivity with [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/).
+Learn more about deploying [WARP Connector](https://developers.cloudflare.com/mesh/) and building private network connectivity with [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/).
 
 ## 2026-01-13
 
@@ -4591,9 +4602,9 @@ The preferred method for enabling DNS-over-HTTPS on user devices is the [Cloudfl
 
 #### Servers, routers, and IoT devices
 
-For scenarios where installing a client on every device is not possible (such as servers, routers, or IoT devices), we recommend using the [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/).
+For scenarios where installing a client on every device is not possible (such as servers, routers, or IoT devices), we recommend using the [WARP Connector](https://developers.cloudflare.com/mesh/).
 
-Instead of running `cloudflared proxy-dns` on a machine, you can install the WARP Connector on a single Linux host within your private network. This connector will act as a gateway, securely routing all DNS and network traffic from your [entire subnet](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/) to Cloudflare for [filtering and logging](https://developers.cloudflare.com/cloudflare-one/traffic-policies/).
+Instead of running `cloudflared proxy-dns` on a machine, you can install the WARP Connector on a single Linux host within your private network. This connector will act as a gateway, securely routing all DNS and network traffic from your [entire subnet](https://developers.cloudflare.com/mesh/features/routes/) to Cloudflare for [filtering and logging](https://developers.cloudflare.com/cloudflare-one/traffic-policies/).
 
 ## 2025-11-06
 
@@ -5176,7 +5187,7 @@ This feature is available across these Email security packages:
 Since we announced our [open beta](https://developers.cloudflare.com/changelog/access/#2025-06-30), we've made a few improvements:
 
 - Support for targets with IPv6.
-- Support for [Magic WAN](https://developers.cloudflare.com/cloudflare-wan/) and [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) as on-ramps.
+- Support for [Magic WAN](https://developers.cloudflare.com/cloudflare-wan/) and [WARP Connector](https://developers.cloudflare.com/mesh/) as on-ramps.
 - More robust error messaging on the login page to help you if you encounter an issue.
 - Worldwide keyboard support. Whether your day-to-day is in Portuguese, Chinese, or something in between, your browser-based RDP experience will look and feel exactly like you are using a desktop RDP client.
 - Cleaned up some other miscellaneous issues, including but not limited to enhanced support for Entra ID accounts and support for usernames with spaces, quotes, and special characters.
@@ -5279,7 +5290,7 @@ We’re expanding the list of processing locations to match our [Data Localizati
 
 **DNS filtering for private network onramps**
 
-[Magic WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/#dns-filtering) and [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#dns-filtering) users can now securely route their DNS traffic to the Gateway resolver without exposing traffic to the public Internet.
+[Magic WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/#dns-filtering) and [WARP Connector](https://developers.cloudflare.com/mesh/features/routes/#dns-filtering) users can now securely route their DNS traffic to the Gateway resolver without exposing traffic to the public Internet.
 
 Routing DNS traffic to the Gateway resolver allows DNS resolution and filtering for traffic coming from private networks while preserving source internal IP visibility. This ensures Magic WAN users have full integration with our Cloudflare One features, including [Internal DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#internal-dns) and [hostname-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#selector-prerequisites).
 
@@ -5326,7 +5337,7 @@ This change affects the following API endpoints:
 
 - List all tunnels: [`GET /accounts/{account_id}/tunnels`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/methods/list/)
 - List [Cloudflare Tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/): [`GET /accounts/{account_id}/cfd_tunnel`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/subresources/cloudflared/methods/list/)
-- List [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) tunnels: [`GET /accounts/{account_id}/warp_connector`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/subresources/warp_connector/methods/list/)
+- List [WARP Connector](https://developers.cloudflare.com/mesh/) tunnels: [`GET /accounts/{account_id}/warp_connector`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/subresources/warp_connector/methods/list/)
 - List tunnel routes: [`GET /accounts/{account_id}/teamnet/routes`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/routes/methods/list/)
 - List subnets: [`GET /accounts/{account_id}/zerotrust/subnets`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/subnets/methods/list/)
 - List virtual networks: [`GET /accounts/{account_id}/teamnet/virtual_networks`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/virtual_networks/methods/list/)

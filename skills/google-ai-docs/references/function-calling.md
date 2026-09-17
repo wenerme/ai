@@ -154,6 +154,82 @@ This example shows how to define a function that schedules a meeting with attend
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Define the function declaration for the model
+        scheduleMeetingFunc := &genai.FunctionDeclaration{
+            Name:        "schedule_meeting",
+            Description: "Schedules a meeting with specified attendees at a given time and date.",
+            Parameters: &genai.Schema{
+                Type: genai.TypeObject,
+                Properties: map[string]*genai.Schema{
+                    "attendees": {
+                        Type:        genai.TypeArray,
+                        Items:       &genai.Schema{Type: genai.TypeString},
+                        Description: "List of people attending the meeting.",
+                    },
+                    "date": {
+                        Type:        genai.TypeString,
+                        Description: "Date (e.g., '2024-07-29')",
+                    },
+                    "time": {
+                        Type:        genai.TypeString,
+                        Description: "Time (e.g., '15:00')",
+                    },
+                    "topic": {
+                        Type:        genai.TypeString,
+                        Description: "The meeting topic.",
+                    },
+                },
+                Required: []string{"attendees", "date", "time", "topic"},
+            },
+        }
+
+        config := &genai.GenerateContentConfig{
+            Tools: []*genai.Tool{
+                {FunctionDeclarations: []*genai.FunctionDeclaration{scheduleMeetingFunc}},
+            },
+        }
+
+        // Send request with function declarations
+        response, err := client.Models.GenerateContent(
+            ctx,
+            "gemini-3.8-flash",
+            genai.Text("Schedule a meeting with Bob and Alice for 03/14/2025 at 10:00 AM about Q3 planning."),
+            config,
+        )
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Check for a function call
+        if len(response.FunctionCalls()) > 0 {
+            functionCall := response.FunctionCalls()[0]
+            fmt.Printf("Function to call: %s\n", functionCall.Name)
+            fmt.Printf("Arguments: %v\n", functionCall.Args)
+        } else {
+            fmt.Println("No function call found in the response.")
+            fmt.Println(response.Text())
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -308,6 +384,69 @@ This example shows how to define a function that retrieves temperature data for 
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Define the function declaration for the model
+        weatherFunc := &genai.FunctionDeclaration{
+            Name:        "get_current_temperature",
+            Description: "Gets the current temperature for a given location.",
+            Parameters: &genai.Schema{
+                Type: genai.TypeObject,
+                Properties: map[string]*genai.Schema{
+                    "location": {
+                        Type:        genai.TypeString,
+                        Description: "The city name, e.g. San Francisco",
+                    },
+                },
+                Required: []string{"location"},
+            },
+        }
+
+        config := &genai.GenerateContentConfig{
+            Tools: []*genai.Tool{
+                {FunctionDeclarations: []*genai.FunctionDeclaration{weatherFunc}},
+            },
+        }
+
+        // Send request with function declarations
+        response, err := client.Models.GenerateContent(
+            ctx,
+            "gemini-3.8-flash",
+            genai.Text("What's the temperature in London?"),
+            config,
+        )
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Check for a function call
+        if len(response.FunctionCalls()) > 0 {
+            functionCall := response.FunctionCalls()[0]
+            fmt.Printf("Function to call: %s\n", functionCall.Name)
+            fmt.Printf("Arguments: %v\n", functionCall.Args)
+        } else {
+            fmt.Println("No function call found in the response.")
+            fmt.Println(response.Text())
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -453,6 +592,77 @@ This example shows how to define a function that generates a bar chart from stru
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Define the function declaration for the model
+        createChartFunc := &genai.FunctionDeclaration{
+            Name:        "create_bar_chart",
+            Description: "Creates a bar chart given a title, labels, and values.",
+            Parameters: &genai.Schema{
+                Type: genai.TypeObject,
+                Properties: map[string]*genai.Schema{
+                    "title": {
+                        Type:        genai.TypeString,
+                        Description: "The title for the chart.",
+                    },
+                    "labels": {
+                        Type:  genai.TypeArray,
+                        Items: &genai.Schema{Type: genai.TypeString},
+                    },
+                    "values": {
+                        Type:  genai.TypeArray,
+                        Items: &genai.Schema{Type: genai.TypeNumber},
+                    },
+                },
+                Required: []string{"title", "labels", "values"},
+            },
+        }
+
+        config := &genai.GenerateContentConfig{
+            Tools: []*genai.Tool{
+                {FunctionDeclarations: []*genai.FunctionDeclaration{createChartFunc}},
+            },
+        }
+
+        // Send request with function declarations
+        response, err := client.Models.GenerateContent(
+            ctx,
+            "gemini-3.8-flash",
+            genai.Text("Create a bar chart titled 'Quarterly Sales' with Q1: 50000, Q2: 75000, Q3: 60000."),
+            config,
+        )
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Check for a function call
+        if len(response.FunctionCalls()) > 0 {
+            functionCall := response.FunctionCalls()[0]
+            fmt.Printf("Function to call: %s\n", functionCall.Name)
+            fmt.Printf("Arguments: %v\n", functionCall.Args)
+        } else {
+            fmt.Println("No function call found in the response.")
+            fmt.Println(response.Text())
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -585,6 +795,36 @@ multiple functions in a single turn ([parallel function calling](https://ai.goog
       }
     }
 
+### Go
+
+    package main
+
+    import "google.golang.org/genai"
+
+    var setLightValuesDeclaration = &genai.FunctionDeclaration{
+        Name:        "set_light_values",
+        Description: "Sets the brightness and color temperature of a light.",
+        Parameters: &genai.Schema{
+            Type: genai.TypeObject,
+            Properties: map[string]*genai.Schema{
+                "brightness": {
+                    Type:        genai.TypeInteger,
+                    Description: "Light level from 0 to 100",
+                },
+                "color_temp": {
+                    Type:        genai.TypeString,
+                    Enum:        []string{"daylight", "cool", "warm"},
+                    Description: "Color temperature",
+                },
+            },
+            Required: []string{"brightness", "color_temp"},
+        },
+    }
+
+    func setLightValues(brightness int, colorTemp string) map[string]any {
+        return map[string]any{"brightness": brightness, "colorTemperature": colorTemp}
+    }
+
 ### Step 2: Call the model with function declarations
 
 ### Python
@@ -661,6 +901,31 @@ multiple functions in a single turn ([parallel function calling](https://ai.goog
       }
     }
 
+### Go
+
+    ctx := context.Background()
+    client, err := genai.NewClient(ctx, nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    config := &genai.GenerateContentConfig{
+        Tools: []*genai.Tool{
+            {FunctionDeclarations: []*genai.FunctionDeclaration{setLightValuesDeclaration}},
+        },
+    }
+
+    contents := []*genai.Content{
+        genai.NewContentFromText("Turn the lights down to a romantic level", genai.RoleUser),
+    }
+
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", contents, config)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    fmt.Println(response.FunctionCalls()[0])
+
 The model returns a `function_call` step with `type`, `name`, and `arguments`:
 
     type='function_call'
@@ -729,6 +994,18 @@ The model returns a `function_call` step with `type`, `name`, and `arguments`:
           System.out.println("Function: " + fc.name().orElse(""));
         }
       }
+    }
+
+### Go
+
+    toolCall := response.FunctionCalls()[0]
+
+    var result map[string]any
+    if toolCall.Name == "set_light_values" {
+        brightness := int(toolCall.Args["brightness"].(float64))
+        colorTemp := toolCall.Args["color_temp"].(string)
+        result = setLightValues(brightness, colorTemp)
+        fmt.Printf("Function execution result: %v\n", result)
     }
 
 ### Step 4: Send result back to model
@@ -810,6 +1087,29 @@ The model returns a `function_call` step with `type`, `name`, and `arguments`:
         }
       }
     }
+
+### Go
+
+    functionResponsePart := &genai.Part{
+        FunctionResponse: &genai.FunctionResponse{
+            ID:       toolCall.ID,
+            Name:     toolCall.Name,
+            Response: result,
+        },
+    }
+
+    contents = append(contents, response.Candidates[0].Content)
+    contents = append(contents, &genai.Content{
+        Role:  genai.RoleUser,
+        Parts: []*genai.Part{functionResponsePart},
+    })
+
+    finalResponse, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", contents, config)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    fmt.Println(finalResponse.Text())
 
 ### Stateless function calling
 
@@ -955,6 +1255,55 @@ In stateless mode, you must pass the full history of the conversation in the `in
         }
       }
     }
+
+### Go
+
+    ctx := context.Background()
+    client, err := genai.NewClient(ctx, nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    config := &genai.GenerateContentConfig{
+        Tools: []*genai.Tool{
+            {FunctionDeclarations: []*genai.FunctionDeclaration{setLightValuesDeclaration}},
+        },
+    }
+
+    history := []*genai.Content{
+        genai.NewContentFromText("Turn the lights down to a romantic level", genai.RoleUser),
+    }
+
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", history, config)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    toolCall := response.FunctionCalls()[0]
+    brightness := int(toolCall.Args["brightness"].(float64))
+    colorTemp := toolCall.Args["color_temp"].(string)
+    result := setLightValues(brightness, colorTemp)
+
+    history = append(history, response.Candidates[0].Content)
+    history = append(history, &genai.Content{
+        Role: genai.RoleUser,
+        Parts: []*genai.Part{
+            {
+                FunctionResponse: &genai.FunctionResponse{
+                    ID:       toolCall.ID,
+                    Name:     toolCall.Name,
+                    Response: result,
+                },
+            },
+        },
+    })
+
+    finalResponse, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", history, config)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    fmt.Println(finalResponse.Text())
 
 ### REST
 
@@ -1135,6 +1484,86 @@ Call multiple functions at once when they are independent:
           System.out.println("Function: " + fc.name().orElse(""));
         }
       }
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        powerDiscoBall := &genai.FunctionDeclaration{
+            Name:        "power_disco_ball",
+            Description: "Powers the disco ball.",
+            Parameters: &genai.Schema{
+                Type: genai.TypeObject,
+                Properties: map[string]*genai.Schema{
+                    "power": {Type: genai.TypeBoolean},
+                },
+                Required: []string{"power"},
+            },
+        }
+        startMusic := &genai.FunctionDeclaration{
+            Name:        "start_music",
+            Description: "Play music.",
+            Parameters: &genai.Schema{
+                Type: genai.TypeObject,
+                Properties: map[string]*genai.Schema{
+                    "energetic": {Type: genai.TypeBoolean},
+                    "loud":      {Type: genai.TypeBoolean},
+                },
+                Required: []string{"energetic", "loud"},
+            },
+        }
+        dimLights := &genai.FunctionDeclaration{
+            Name:        "dim_lights",
+            Description: "Dim the lights.",
+            Parameters: &genai.Schema{
+                Type: genai.TypeObject,
+                Properties: map[string]*genai.Schema{
+                    "brightness": {Type: genai.TypeNumber},
+                },
+                Required: []string{"brightness"},
+            },
+        }
+
+        config := &genai.GenerateContentConfig{
+            Tools: []*genai.Tool{
+                {FunctionDeclarations: []*genai.FunctionDeclaration{powerDiscoBall, startMusic, dimLights}},
+            },
+            ToolConfig: &genai.ToolConfig{
+                FunctionCallingConfig: &genai.FunctionCallingConfig{
+                    Mode: genai.FunctionCallingConfigModeAny,
+                },
+            },
+        }
+
+        response, err := client.Models.GenerateContent(
+            ctx,
+            "gemini-3.8-flash",
+            genai.Text("Turn this place into a party!"),
+            config,
+        )
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, fn := range response.FunctionCalls() {
+            fmt.Printf("%s(%v)\n", fn.Name, fn.Args)
+        }
     }
 
 ### REST
@@ -1343,6 +1772,71 @@ first, then get weather for that location).
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        getWeatherForecastDecl := &genai.FunctionDeclaration{
+            Name:        "get_weather_forecast",
+            Description: "Gets the current weather temperature for a given location.",
+            Parameters: &genai.Schema{
+                Type: genai.TypeObject,
+                Properties: map[string]*genai.Schema{
+                    "location": {Type: genai.TypeString, Description: "The location"},
+                },
+                Required: []string{"location"},
+            },
+        }
+
+        setThermostatTemperatureDecl := &genai.FunctionDeclaration{
+            Name:        "set_thermostat_temperature",
+            Description: "Sets the thermostat to a desired temperature.",
+            Parameters: &genai.Schema{
+                Type: genai.TypeObject,
+                Properties: map[string]*genai.Schema{
+                    "temperature": {Type: genai.TypeInteger, Description: "The temperature in Celsius"},
+                },
+                Required: []string{"temperature"},
+            },
+        }
+
+        config := &genai.GenerateContentConfig{
+            Tools: []*genai.Tool{
+                {FunctionDeclarations: []*genai.FunctionDeclaration{getWeatherForecastDecl, setThermostatTemperatureDecl}},
+            },
+        }
+
+        response, err := client.Models.GenerateContent(
+            ctx,
+            "gemini-3.8-flash",
+            genai.Text("If it's warmer than 20°C in London, set the thermostat to 20°C, otherwise 18°C."),
+            config,
+        )
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, fn := range response.FunctionCalls() {
+            fmt.Printf("Function to call: %s\n", fn.Name)
+            fmt.Printf("Arguments: %v\n", fn.Args)
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -1452,6 +1946,22 @@ Control how the model uses tools using `tool_choice` in `generation_config`:
           System.out.println("Function: " + fc.name().orElse(""));
         }
       }
+    }
+
+### Go
+
+    // Configure function calling mode
+    toolConfig := &genai.ToolConfig{
+        FunctionCallingConfig: &genai.FunctionCallingConfig{
+            Mode:                 genai.FunctionCallingConfigModeAny,
+            AllowedFunctionNames: []string{"get_current_temperature"},
+        },
+    }
+
+    // Create the generation config
+    config := &genai.GenerateContentConfig{
+        Tools:      tools, // not defined here.
+        ToolConfig: toolConfig,
     }
 
 ### REST
@@ -1642,6 +2152,83 @@ automatically circulates the built-in tool context.
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        getWeather := &genai.FunctionDeclaration{
+            Name:        "get_weather",
+            Description: "Gets the weather for a given location.",
+            Parameters: &genai.Schema{
+                Type: genai.TypeObject,
+                Properties: map[string]*genai.Schema{
+                    "location": {
+                        Type:        genai.TypeString,
+                        Description: "The city and state, e.g. San Francisco, CA",
+                    },
+                },
+                Required: []string{"location"},
+            },
+        }
+
+        tools := []*genai.Tool{
+            {GoogleSearch: &genai.GoogleSearch{}},
+            {FunctionDeclarations: []*genai.FunctionDeclaration{getWeather}},
+        }
+
+        config := &genai.GenerateContentConfig{
+            Tools: tools,
+        }
+
+        prompt := "What is the northernmost city in the United States? What's the weather like there today?"
+        response1, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", genai.Text(prompt), config)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        toolCall := response1.FunctionCalls()[0]
+        fmt.Printf("Function call: %s (ID: %s)\n", toolCall.Name, toolCall.ID)
+
+        history := []*genai.Content{
+            genai.NewContentFromText(prompt, genai.RoleUser),
+            response1.Candidates[0].Content,
+            {
+                Role: genai.RoleUser,
+                Parts: []*genai.Part{
+                    {
+                        FunctionResponse: &genai.FunctionResponse{
+                            ID:       toolCall.ID,
+                            Name:     toolCall.Name,
+                            Response: map[string]any{"response": "Very cold. 22 degrees Fahrenheit."},
+                        },
+                    },
+                },
+            },
+        }
+
+        response2, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", history, config)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fmt.Println(response2.Text())
+    }
+
 ### REST
 
     # Turn 1: Send request with built-in google_search tool and custom weather tool
@@ -1819,6 +2406,116 @@ The following example shows how to send a function response containing image dat
           System.out.println("Function: " + fc.name().orElse(""));
         }
       }
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "io"
+        "log"
+        "net/http"
+
+        "google.golang.org/genai"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // 1. Define the function tool
+        getImageDeclaration := &genai.FunctionDeclaration{
+            Name:        "get_image",
+            Description: "Retrieves the image file reference for a specific order item.",
+            Parameters: &genai.Schema{
+                Type: genai.TypeObject,
+                Properties: map[string]*genai.Schema{
+                    "item_name": {
+                        Type:        genai.TypeString,
+                        Description: "The name or description of the item ordered (e.g., 'instrument').",
+                    },
+                },
+                Required: []string{"item_name"},
+            },
+        }
+
+        tools := []*genai.Tool{
+            {FunctionDeclarations: []*genai.FunctionDeclaration{getImageDeclaration}},
+        }
+
+        // 2. Send a message that triggers the tool
+        prompt := "Show me the instrument I ordered last month."
+        response1, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", genai.Text(prompt), &genai.GenerateContentConfig{
+            Tools: tools,
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // 3. Handle the function call
+        functionCall := response1.FunctionCalls()[0]
+        requestedItem := functionCall.Args["item_name"]
+        fmt.Printf("Model wants to call: %s\n", functionCall.Name)
+        fmt.Printf("Calling external tool for: %v\n", requestedItem)
+
+        resp, err := http.Get("https://goo.gle/instrument-img")
+        if err != nil {
+            log.Fatal(err)
+        }
+        defer resp.Body.Close()
+        imageBytes, err := io.ReadAll(resp.Body)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        functionResponseData := map[string]any{
+            "image_ref": map[string]any{"$ref": "instrument.jpg"},
+        }
+
+        functionResponseMultimodalData := &genai.FunctionResponsePart{
+            InlineData: &genai.FunctionResponseBlob{
+                MIMEType:    "image/jpeg",
+                DisplayName: "instrument.jpg",
+                Data:        imageBytes,
+            },
+        }
+
+        // 4. Send the tool's result back
+        history := []*genai.Content{
+            genai.NewContentFromText(prompt, genai.RoleUser),
+            response1.Candidates[0].Content,
+            {
+                Role: genai.RoleUser,
+                Parts: []*genai.Part{
+                    {
+                        FunctionResponse: &genai.FunctionResponse{
+                            ID:       functionCall.ID,
+                            Name:     functionCall.Name,
+                            Response: functionResponseData,
+                            Parts:    []*genai.FunctionResponsePart{functionResponseMultimodalData},
+                        },
+                    },
+                },
+            },
+        }
+
+        response2, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", history, &genai.GenerateContentConfig{
+            Tools: tools,
+            ThinkingConfig: &genai.ThinkingConfig{
+                IncludeThoughts: true,
+            },
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fmt.Printf("\nFinal model response: %s\n", response2.Text())
     }
 
 ### REST
@@ -2151,6 +2848,62 @@ reconstruct the complete tool calls before executing them.
           System.out.println("Function: " + fc.name().orElse(""));
         }
       }
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        getWeather := &genai.FunctionDeclaration{
+            Name:        "get_weather",
+            Description: "Gets the weather for a given location.",
+            Parameters: &genai.Schema{
+                Type: genai.TypeObject,
+                Properties: map[string]*genai.Schema{
+                    "location": {
+                        Type:        genai.TypeString,
+                        Description: "The city and state",
+                    },
+                },
+                Required: []string{"location"},
+            },
+        }
+
+        config := &genai.GenerateContentConfig{
+            Tools: []*genai.Tool{
+                {FunctionDeclarations: []*genai.FunctionDeclaration{getWeather}},
+            },
+        }
+
+        for resp, err := range client.Models.GenerateContentStream(
+            ctx,
+            "gemini-3.8-flash",
+            genai.Text("What is the weather in Paris?"),
+            config,
+        ) {
+            if err != nil {
+                log.Fatal(err)
+            }
+            for _, fc := range resp.FunctionCalls() {
+                fmt.Printf("Function to call: %s\n", fc.Name)
+                fmt.Printf("Arguments: %v\n", fc.Args)
+            }
+        }
     }
 
 ### REST

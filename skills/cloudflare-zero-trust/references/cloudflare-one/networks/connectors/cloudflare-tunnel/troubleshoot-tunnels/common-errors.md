@@ -255,9 +255,7 @@ To ping an IP address behind Cloudflare Tunnel, your system must allow ICMP traf
 
 ## I see `Error: This route's network is inside an existing subnet's network at "100.96.0.0/12"`.
 
-This error occurs when you try to add a CIDR route that falls within the Cloudflare One Client's CGNAT IP range
-
-. The `100.96.0.0/12` range, which covers addresses from `100.96.0.1` to `100.111.255.254`, is reserved for internal WARP routing and cannot be added as a Cloudflare Tunnel route. To connect your private network, you will need to change its IP/CIDR so that it does not overlap with `100.96.0.0/12`.
+This error occurs when you try to add a CIDR route that falls within the Cloudflare One Client's CGNAT IP range. The `100.96.0.0/12` range, which covers addresses from `100.96.0.1` to `100.111.255.254`, is reserved for internal WARP routing and cannot be added as a Cloudflare Tunnel route. To connect your private network, you will need to change its IP/CIDR so that it does not overlap with `100.96.0.0/12`.
 
 ## I see `This site can't provide a secure connection.`
 

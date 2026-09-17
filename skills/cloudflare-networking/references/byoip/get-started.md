@@ -94,9 +94,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefi
 
 Letter of Agency (LOA)
 
-The process described on this page leverages automated [LOA](https://developers.cloudflare.com/byoip/concepts/loa/)
-
- generation. If you set `delegate_loa_creation` to `false`, you have to manually upload your LOA, make a [PATCH request](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/methods/edit/) once the prefix is approved, and contact your account team - which is more prone to error and increases the onboarding time.
+The process described on this page leverages automated [LOA](https://developers.cloudflare.com/byoip/concepts/loa/) generation. If you set `delegate_loa_creation` to `false`, you have to manually upload your LOA, make a [PATCH request](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/methods/edit/) once the prefix is approved, and contact your account team - which is more prone to error and increases the onboarding time.
 
 ### Validate prefix ownership
 

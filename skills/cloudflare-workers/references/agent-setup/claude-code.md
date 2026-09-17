@@ -59,7 +59,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Build an image upload and transformation service using R2 and Cloudflare Images.
+   Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
    ```
 
 
@@ -165,23 +165,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
-```
-
-```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
-```
-
-```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
-```
-
-```txt
 Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ```txt
 Build a serverless AI inference endpoint on Workers AI with streaming responses.
+```
+
+```txt
+Configure Zero Trust access policies to protect my internal staging environment.
+```
+
+```txt
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+```
+
+```txt
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ## Tips

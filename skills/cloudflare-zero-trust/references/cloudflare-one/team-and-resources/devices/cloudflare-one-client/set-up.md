@@ -29,9 +29,7 @@ This mode enables the complete suite of [device security features](https://devel
 
 The [Cloudflare One dashboard ↗](https://dash.cloudflare.com/one/) will be your go-to place to check device connectivity data, as well as create Secure Web Gateway and Zero Trust policies for your organization.
 
-As you complete the [Cloudflare Zero Trust onboarding](https://developers.cloudflare.com/cloudflare-one/setup/), you will be asked to create a team name
-
- for your organization. You will need the team name when you deploy the Cloudflare One Client on your devices; it will allow your users to connect to your organization's Cloudflare Zero Trust instance.
+As you complete the [Cloudflare Zero Trust onboarding](https://developers.cloudflare.com/cloudflare-one/setup/), you will be asked to create a team name for your organization. You will need the team name when you deploy the Cloudflare One Client on your devices; it will allow your users to connect to your organization's Cloudflare Zero Trust instance.
 
 ### 2. Set up a login method.
 

@@ -94,7 +94,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
         - `"enabled"`
 
-          Allows unrestricted network access, matching an omitted network policy.
+          Allows unrestricted network access.
 
         - `"disabled"`
 

@@ -18,9 +18,7 @@ Most development teams struggle to keep track of their APIs. Cloudflare API Disc
 
 ## Process
 
-Cloudflare produces a map of API endpoints
-
- by grouping similar request paths together (path normalization).
+Cloudflare produces a map of API endpoints by grouping similar request paths together (path normalization).
 
 For example, you might have thousands of APIs, but a lot of the calls look similar, such as:
 

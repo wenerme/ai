@@ -41,9 +41,7 @@ Once you are on a CNAME setup (partial), the actual resolution of your records t
 
 ### DNS resolution
 
-When you have a partial zone ([CNAME setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)
-
-), Cloudflare resolves [DNS records differently](https://developers.cloudflare.com/dns/zone-setups/partial-setup/dns-resolution/) than for primary zones (full setup).
+When you have a partial zone ([CNAME setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)), Cloudflare resolves [DNS records differently](https://developers.cloudflare.com/dns/zone-setups/partial-setup/dns-resolution/) than for primary zones (full setup).
 
 ### CNAME flattening
 

@@ -18,9 +18,7 @@ Maximize application performance and availability
 
 Add-on feature
 
-Cloudflare Load Balancing distributes traffic across your [endpoints](https://developers.cloudflare.com/glossary/?term=endpoint)
-
-, which reduces endpoint strain and latency and improves the experience for end users.
+Cloudflare Load Balancing distributes traffic across your [endpoints](https://developers.cloudflare.com/glossary/?term=endpoint), which reduces endpoint strain and latency and improves the experience for end users.
 
 Note
 

@@ -80,9 +80,7 @@ To send bot scores, verified bot status, or JA3/JA4 fingerprints to your origin 
 
 ## Execution order
 
-Custom rules execute before Super Bot Fight Mode managed rules. If a custom rule takes a terminating action
-
- (such as *Block* or *Managed Challenge*), the request does not reach bot settings.
+Custom rules execute before Super Bot Fight Mode managed rules. If a custom rule takes a terminating action (such as *Block* or *Managed Challenge*), the request does not reach bot settings.
 
 Refer to [Security features interoperability](https://developers.cloudflare.com/waf/feature-interoperability/) for more information.
 

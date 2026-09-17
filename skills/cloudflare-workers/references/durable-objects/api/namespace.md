@@ -16,9 +16,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Description
 
-A Durable Object namespace is a set of Durable Objects that are backed by the same Durable Object class
-
-. There is only one Durable Object namespace per class. A Durable Object namespace can contain any number of Durable Objects.
+A Durable Object namespace is a set of Durable Objects that are backed by the same Durable Object class. There is only one Durable Object namespace per class. A Durable Object namespace can contain any number of Durable Objects.
 
 The `DurableObjectNamespace` interface is used to obtain a reference to new or existing Durable Objects. The interface is accessible from the fetch handler on a Cloudflare Worker via the `env` parameter, which is the standard interface when referencing bindings declared in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
 

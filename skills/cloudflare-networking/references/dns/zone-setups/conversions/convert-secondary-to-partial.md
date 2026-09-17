@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/conversions/convert-secondary-to-partial/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-If you initially set up [incoming zone transfers (Cloudflare as secondary)](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/), you can later convert your zone to use a CNAME setup (partial)
-
-.
+If you initially set up [incoming zone transfers (Cloudflare as secondary)](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/), you can later convert your zone to use a CNAME setup (partial).
 
 Subdomain setup
 

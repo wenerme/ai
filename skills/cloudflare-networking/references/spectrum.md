@@ -54,9 +54,7 @@ Get Cloudflare's security and performance while using your own IPs. With Bring Y
 
 [Load Balancing](https://developers.cloudflare.com/load-balancing/)
 
-Cloudflare Load Balancing distributes traffic across your endpoints
-
-, which reduces endpoint strain and latency and improves the experience for end users.
+Cloudflare Load Balancing distributes traffic across your endpoints, which reduces endpoint strain and latency and improves the experience for end users.
 
 [DNS](https://developers.cloudflare.com/dns/)
 

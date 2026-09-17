@@ -22,9 +22,7 @@ To enable or disable **Rocket Loader** in the dashboard:
 2. Go to **Content Optimization**.
 3. For **Rocket Loader**, switch the toggle to **On**.
 
-If you have a Content Security Policy (CSP)
-
- in place for your domain, you will need to [update your headers](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/content-security-policies/#product-requirements) to support Rocket Loader.
+If you have a Content Security Policy (CSP) in place for your domain, you will need to [update your headers](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/content-security-policies/#product-requirements) to support Rocket Loader.
 
 To enable or disable **Rocket Loader** with the API, send a [`PATCH`](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `rocket_loader` as the setting name in the URI path, and the `value` parameter set to `"on"` or `"off"`.
 

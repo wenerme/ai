@@ -18,9 +18,7 @@ As opposed to the [normal process](https://developers.cloudflare.com/dns/dnssec/
 
 ## Requirements
 
-To use DNSSEC for a subdomain setup, DNSSEC must be enabled on the parent zone. After enabling DNSSEC on the parent zone, you should wait the minimum TTL
-
- value (specified in the [SOA record ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-soa-record/) of the parent zone) to ensure DNS resolvers provide the same DNS query responses.
+To use DNSSEC for a subdomain setup, DNSSEC must be enabled on the parent zone. After enabling DNSSEC on the parent zone, you should wait the minimum TTL value (specified in the [SOA record ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-soa-record/) of the parent zone) to ensure DNS resolvers provide the same DNS query responses.
 
 ## Setup
 

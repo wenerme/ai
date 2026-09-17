@@ -16,9 +16,7 @@ Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Description
 
-The `DurableObjectState` interface is accessible as an instance property on the Durable Object class
-
-. This interface encapsulates methods that modify the state of a Durable Object, for example which WebSockets are attached to a Durable Object or how the runtime should handle concurrent Durable Object requests.
+The `DurableObjectState` interface is accessible as an instance property on the Durable Object class. This interface encapsulates methods that modify the state of a Durable Object, for example which WebSockets are attached to a Durable Object or how the runtime should handle concurrent Durable Object requests.
 
 The `DurableObjectState` interface is different from the Storage API in that it does not have top-level methods which manipulate persistent application data. These methods are instead encapsulated in the [`DurableObjectStorage`](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) interface and accessed by [`DurableObjectState::storage`](https://developers.cloudflare.com/durable-objects/api/state/#storage).
 

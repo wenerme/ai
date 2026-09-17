@@ -18,9 +18,7 @@ Origin parameters determine how `cloudflared` sends requests to the origin serve
 
 ## Update origin parameters
 
-This section describes how to update origin parameters for a remotely-managed tunnel
-
-. If you are using a locally-managed tunnel, add these parameters to your [configuration file](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/configuration-file/).
+This section describes how to update origin parameters for a remotely-managed tunnel. If you are using a locally-managed tunnel, add these parameters to your [configuration file](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/configuration-file/).
 
 1. In the Cloudflare dashboard, go to **Networking** > **Tunnels** and select your tunnel. [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Go to the **Routes** tab.

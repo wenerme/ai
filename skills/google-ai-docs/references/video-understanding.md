@@ -373,18 +373,16 @@ You can pass YouTube URLs directly to Gemini API as part of your request as foll
     import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.interactions.VideoContent;
-    import com.google.genai.gaos.models.interactions.VideoContentMimeType;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import java.util.Arrays;
     import java.util.List;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Summarize the key events in this video.").build();
+    Content textContent = TextContent.builder().text("Please summarize the video in 3 sentences.").build();
     Content videoContent =
         VideoContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/video/pixel8.mp4")
-            .mimeType(VideoContentMimeType.VIDEO_MP4)
+            .uri("https://www.youtube.com/watch?v=9hE5-98ZeCg")
             .build();
 
     List<Content> contents = Arrays.asList(textContent, videoContent);
@@ -737,7 +735,7 @@ timestamps of the form `MM:SS`.
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Summarize the key events in this video.").build();
+    Content textContent = TextContent.builder().text("What are the examples given at 00:05 and 00:10 supposed to show us?").build();
     Content videoContent =
         VideoContent.builder()
             .uri("gs://cloud-samples-data/generative-ai/video/pixel8.mp4")
@@ -797,7 +795,7 @@ note that it may miss details in videos with rapid motion or quick scene changes
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Summarize the key events in this video.").build();
+    Content textContent = TextContent.builder().text("Describe the key events in this video, providing both audio and visual details. Include timestamps for salient moments.").build();
     Content videoContent =
         VideoContent.builder()
             .uri("gs://cloud-samples-data/generative-ai/video/pixel8.mp4")

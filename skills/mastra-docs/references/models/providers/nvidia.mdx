@@ -5,7 +5,7 @@ description: "Browse Nvidia model IDs, capabilities, context windows, and pricin
 
 # [Nvidia logo]Nvidia
 
-Access 104 Nvidia models through Mastra's model router. Authentication is handled automatically using the `NVIDIA_API_KEY` environment variable.
+Access 105 Nvidia models through Mastra's model router. Authentication is handled automatically using the `NVIDIA_API_KEY` environment variable.
 
 Learn more in the [Nvidia documentation](https://docs.api.nvidia.com/nim/).
 
@@ -1241,6 +1241,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "nvidia/z-ai/glm-5.2",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "nvidia/z-ai/glm-5.3",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,

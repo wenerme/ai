@@ -20,9 +20,7 @@ Microsoft recommends migrating your Active Directory Federation Service (AD FS) 
 
 To set up the Microsoft Entra ID IdP integration with Cloudflare One, refer to [Microsoft Entra ID](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/entra-id/).
 
-Active Directory is a directory service developed by Microsoft for Windows domain networks. It is included in most Windows Server operating systems as a set of processes and services. Active Directory integrates with Cloudflare Access using Security Assertion Markup Language (SAML
-
-).
+Active Directory is a directory service developed by Microsoft for Windows domain networks. It is included in most Windows Server operating systems as a set of processes and services. Active Directory integrates with Cloudflare Access using Security Assertion Markup Language (SAML).
 
 ## Before you start
 

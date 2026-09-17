@@ -30,13 +30,13 @@ If your server is behind a restrictive firewall, verify it can reach Cloudflare 
 
 To create a new Cloudflare Tunnel:
 
-2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** > **Tunnels**. [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** > **Tunnels**. [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
+2. Select **Create Tunnel**.
+3. Enter a name for your tunnel (for example, `production-web` or `staging-api`).
 4. Select **Create Tunnel**.
-6. Enter a name for your tunnel (for example, `production-web` or `staging-api`).
-8. Select **Create Tunnel**.
-10. Under **Setup Environment**, select the operating system and architecture of your server.
-12. Copy the install commands shown under **Install and Run** and run them in a terminal on your server.
-14. Once the tunnel connects, select **Continue**.
+5. Under **Setup Environment**, select the operating system and architecture of your server.
+6. Copy the install commands shown under **Install and Run** and run them in a terminal on your server.
+7. Once the tunnel connects, select **Continue**.
 
 Your tunnel should appear on the **Tunnels** page with a `Healthy` [status](https://developers.cloudflare.com/tunnel/observability/#tunnel-health).
 

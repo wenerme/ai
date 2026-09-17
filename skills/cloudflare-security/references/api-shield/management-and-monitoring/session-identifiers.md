@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/session-identifiers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-While not strictly required, it is recommended that you configure your session identifiers
-
- when getting started with API Shield. When Cloudflare inspects your API traffic for individual sessions, we can offer more tools for visibility, management, and control.
+While not strictly required, it is recommended that you configure your session identifiers when getting started with API Shield. When Cloudflare inspects your API traffic for individual sessions, we can offer more tools for visibility, management, and control.
 
 If you are unsure of the session identifiers that your API uses, consult with your development team.
 

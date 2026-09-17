@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Device client settings
 
-Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Device client settings (formerly WARP) allow you to customize the Cloudflare One Client modes and permissions available to end users.
 
@@ -133,7 +133,7 @@ Feature availability
 
 Overrides the default IP address of the Cloudflare One Client's [virtual network interface](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#ip-traffic) such that each device has its own unique local interface IP.
 
-This setting is primarily used as a prerequisite for [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) and [MASQUE](#device-tunnel-protocol). You can also use it when the default IP conflicts with other local services on your network.
+This setting is primarily used as a prerequisite for [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) and [MASQUE](#device-tunnel-protocol). You can also use it when the default IP conflicts with other local services on your network.
 
 **Value:**
 
@@ -158,13 +158,13 @@ Feature availability
 
 </details>
 
-Allows traffic on-ramped using [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) or [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/) to route to devices enrolled in your Zero Trust organization.
+Allows traffic on-ramped using [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) or [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/) to route to devices enrolled in your Zero Trust organization.
 
 Each device is assigned a virtual IP address in the CGNAT IP space (`100.96.0.0/12`) or a [custom device IP range](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/). With this setting `Enabled`, users on your private network will be able to connect to these device IPs and access [TCP, UDP, and/or ICMP-based services](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/) on your devices. You can create [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) to control which users and devices can access the device IPs.
 
 Note
 
-Ensure that traffic destined to your device IPs routes from your private network to Cloudflare Gateway. For example, if you are using [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) connectivity, you must configure your [Split Tunnel settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) so that traffic to your Mesh IPs routes through the tunnel.
+Ensure that traffic destined to your device IPs routes from your private network to Cloudflare Gateway. For example, if you are using [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) connectivity, you must configure your [Split Tunnel settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) so that traffic to your Mesh IPs routes through the tunnel.
 
 ## Global disconnection settings
 
@@ -197,7 +197,7 @@ Note
 
 Requires the [Super Administrator](https://developers.cloudflare.com/cloudflare-one/roles-permissions/) role.
 
-**Disconnect the Cloudflare One Client on all devices** allows administrators to fail open the Cloudflare One Client in case of an incident occurring in your environment, independent from incidents or outages affecting Cloudflare's services. When you turn on **Disconnect the Cloudflare One Client on all devices**, Cloudflare will disconnect all Windows, macOS, and Linux Cloudflare One Clients that are connected to your Zero Trust organization. This includes end user devices and [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) nodes. End users will receive a notification on their device and the Cloudflare One Client will display [`Admin directed disconnect`](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors/#admin-directed-disconnect).
+**Disconnect the Cloudflare One Client on all devices** allows administrators to fail open the Cloudflare One Client in case of an incident occurring in your environment, independent from incidents or outages affecting Cloudflare's services. When you turn on **Disconnect the Cloudflare One Client on all devices**, Cloudflare will disconnect all Windows, macOS, and Linux Cloudflare One Clients that are connected to your Zero Trust organization. This includes end user devices and [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) nodes. End users will receive a notification on their device and the Cloudflare One Client will display [`Admin directed disconnect`](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors/#admin-directed-disconnect).
 
 To resume normal operations, turn off **Disconnect the Cloudflare One Client on all devices**. The Cloudflare One Client will automatically reconnect.
 
@@ -866,5 +866,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#page","headline":"Device client settings · Cloudflare One docs","description":"Reference information for Device client settings in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Wireguard","MASQUE"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#page","headline":"Device client settings · Cloudflare One docs","description":"Reference information for Device client settings in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Wireguard","MASQUE"]}
 ```

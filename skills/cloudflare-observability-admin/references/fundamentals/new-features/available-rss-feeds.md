@@ -40,6 +40,7 @@ Included products
 
 </summary>
 
+- <a href="https://developers.cloudflare.com/automatic-platform-optimization/">Automatic Platform Optimization</a><a href="https://developers.cloudflare.com/changelog/rss/automatic-platform-optimization.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/cache/">Cache / CDN</a><a href="https://developers.cloudflare.com/changelog/rss/cache.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/">Cloudflare for SaaS</a><a href="https://developers.cloudflare.com/changelog/rss/cloudflare-for-saas.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/dns/">DNS</a><a href="https://developers.cloudflare.com/changelog/rss/dns.xml">Subscribe to RSS</a>
@@ -105,7 +106,7 @@ Included products
 - <a href="https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/">Data Loss Prevention</a><a href="https://developers.cloudflare.com/changelog/rss/dlp.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/cloudflare-one/email-security/">Email security</a><a href="https://developers.cloudflare.com/changelog/rss/email-security-cf1.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/cloudflare-one/traffic-policies/">Gateway</a><a href="https://developers.cloudflare.com/changelog/rss/gateway.xml">Subscribe to RSS</a>
-- <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/">Cloudflare Mesh</a><a href="https://developers.cloudflare.com/changelog/rss/mesh.xml">Subscribe to RSS</a>
+- <a href="https://developers.cloudflare.com/mesh/">Cloudflare Mesh</a><a href="https://developers.cloudflare.com/changelog/rss/mesh.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/multi-cloud-networking/">Multi-Cloud Networking</a><a href="https://developers.cloudflare.com/changelog/rss/multi-cloud-networking.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/">Risk Score</a><a href="https://developers.cloudflare.com/changelog/rss/risk-score.xml">Subscribe to RSS</a>
 

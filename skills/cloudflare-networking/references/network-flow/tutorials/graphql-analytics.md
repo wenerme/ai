@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-flow/tutorials/graphql-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Use the GraphQL Analytics API to retrieve Network Flow (formerly Magic Network Monitoring) flow data
-
-.
+Use the GraphQL Analytics API to retrieve Network Flow (formerly Magic Network Monitoring) flow data.
 
 Before you begin, you must have an [API token](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/). For additional help getting started with GraphQL Analytics, refer to [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/).
 

@@ -75,9 +75,7 @@ flowchart LR
 
 ```
 
-Internal DNS zones contain the [DNS records](https://developers.cloudflare.com/dns/internal-dns/internal-zones/internal-dns-records/)
-
- that should be used to resolve an internal DNS query. Also, if no internal record is found within a matching internal zone, Cloudflare will check if the matching internal zone is [referencing another internal zone](https://developers.cloudflare.com/dns/internal-dns/internal-zones/reference-zones/).
+Internal DNS zones contain the [DNS records](https://developers.cloudflare.com/dns/internal-dns/internal-zones/internal-dns-records/) that should be used to resolve an internal DNS query. Also, if no internal record is found within a matching internal zone, Cloudflare will check if the matching internal zone is [referencing another internal zone](https://developers.cloudflare.com/dns/internal-dns/internal-zones/reference-zones/).
 
 ```
 flowchart LR

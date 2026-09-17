@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # FAQs
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/automatic-platform-optimization/troubleshooting/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/automatic-platform-optimization/troubleshooting/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Do I still need to create "Edge Cache TTL" page rules with "Cache Level: Cache Everything"?
 
@@ -44,7 +44,13 @@ When Chrome DevTools is open, Chrome sends `Cache-Control: no-cache` by default.
 
 ## When I check `cf-cache-status` via cURL, `MISS` and `DYNAMIC` are always returned. In my browser, I see `HIT` but other tools return `DYNAMIC`. Is this expected behavior?
 
-Yes, this is expected behavior because the requests must contain `accept: "text/html"`.
+APO decides whether a request is eligible for HTML caching based on the request's `Accept` header and its URL path:
+
+- If the `Accept` header includes `text/html` (with a quality value greater than zero), the request is treated as an HTML request and is eligible for caching.
+- If the `Accept` header explicitly refuses HTML ( `Accept: text/html; q=0`), the request is not cached as HTML.
+- If the `Accept` header does not mention `text/html` — including `Accept: */*` or a missing `Accept` header — APO evaluates the URL path instead. Requests for non-static paths (such as a page or post) remain eligible for HTML caching, while requests for static file extensions do not.
+
+Some testing tools send no `Accept` header. For these requests, APO uses the URL path as described above, so the cache result depends on the requested path and the other eligibility criteria. To reliably reproduce a browser-like HTML request, include `-H 'accept: text/html'` in your cURL command.
 
 ## Are Google Fonts optimized when APO is activated?
 
@@ -79,5 +85,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/automatic-platform-optimization/troubleshooting/faq/#page","headline":"FAQs · Cloudflare Automatic Platform Optimization docs","description":"Answers to common questions about APO caching, Page Rules, and WordPress integration.","url":"https://developers.cloudflare.com/automatic-platform-optimization/troubleshooting/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WordPress","Headers","Security"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/automatic-platform-optimization/troubleshooting/faq/#page","headline":"FAQs · Cloudflare Automatic Platform Optimization docs","description":"Answers to common questions about APO caching, Page Rules, and WordPress integration.","url":"https://developers.cloudflare.com/automatic-platform-optimization/troubleshooting/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WordPress","Headers","Security"]}
 ```

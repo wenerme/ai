@@ -55,9 +55,7 @@ If the user fails to present the required MFA method, Cloudflare Access rejects 
 
 ### Authentication methods in the JWT
 
-When users authenticate with their identity provider, the IdP shares their username with Cloudflare Access. Access writes that value into the JSON Web Token (JWT)
-
- generated for the user.
+When users authenticate with their identity provider, the IdP shares their username with Cloudflare Access. Access writes that value into the JSON Web Token (JWT) generated for the user.
 
 Certain identity providers also share the MFA method presented by the user. Access can add these values into the JWT. For example, if the user authenticated with their password and a security key, the IdP can send a confirmation to Cloudflare Access. Access then stores that method in the JWT issued to the user.
 

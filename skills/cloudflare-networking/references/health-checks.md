@@ -46,9 +46,7 @@ Use Health Checks Analytics
 
 [Load Balancing](https://developers.cloudflare.com/load-balancing/)
 
-Cloudflare Load Balancing distributes traffic across your [endpoints](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-components/)
-
-, which reduces endpoint strain and latency and improves the experience for end users.
+Cloudflare Load Balancing distributes traffic across your [endpoints](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-components/), which reduces endpoint strain and latency and improves the experience for end users.
 
 ---
 

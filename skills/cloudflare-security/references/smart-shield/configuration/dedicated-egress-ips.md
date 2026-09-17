@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Enterprise customers can leverage dedicated egress<sup>[1](#user-content-fn-1)</sup> IPs for layer 7 [WAF](https://developers.cloudflare.com/waf/) and CDN
-
- services, as well as [Spectrum](https://developers.cloudflare.com/spectrum/). The egress IPs are reserved exclusively for your account so that you can increase your origin security by only allowing traffic from a small list of IP addresses.
+Enterprise customers can leverage dedicated egress<sup>[1](#user-content-fn-1)</sup> IPs for layer 7 [WAF](https://developers.cloudflare.com/waf/) and CDN services, as well as [Spectrum](https://developers.cloudflare.com/spectrum/). The egress IPs are reserved exclusively for your account so that you can increase your origin security by only allowing traffic from a small list of IP addresses.
 
 Note
 

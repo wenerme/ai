@@ -106,9 +106,7 @@ class Counter(DurableObject):
     return value
 ```
 
-JavaScript is a single-threaded and event-driven programming language. This means that JavaScript runtimes, by default, allow requests to interleave with each other which can lead to concurrency bugs. The Durable Objects runtime uses a combination of input gates
-
- and output gates to avoid this type of concurrency bug when performing storage operations. Learn more in our [blog post ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
+JavaScript is a single-threaded and event-driven programming language. This means that JavaScript runtimes, by default, allow requests to interleave with each other which can lead to concurrency bugs. The Durable Objects runtime uses a combination of input gates and output gates to avoid this type of concurrency bug when performing storage operations. Learn more in our [blog post ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
 
 ## Asynchronous KV API
 
