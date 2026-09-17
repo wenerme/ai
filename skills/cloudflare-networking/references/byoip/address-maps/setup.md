@@ -99,9 +99,7 @@ A zone membership will take priority over an account membership.
 
 ## Non-SNI support
 
-If your visitors use devices that have not been updated since 2011, they may not have Server Name Indication (SNI)
-
- support. For further context, refer to [browser compatibility](https://developers.cloudflare.com/ssl/reference/browser-compatibility/#non-sni-support).
+If your visitors use devices that have not been updated since 2011, they may not have Server Name Indication (SNI) support. For further context, refer to [browser compatibility](https://developers.cloudflare.com/ssl/reference/browser-compatibility/#non-sni-support).
 
 Use address maps to specify a hostname as default SNI. This will be used whenever Cloudflare receives a non-SNI TLS handshake.
 

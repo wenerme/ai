@@ -18,9 +18,7 @@ Learn how you can use Vectorize within your existing architecture.
 
 ## Reference architectures
 
-Explore the following reference architectures
-
- that use Vectorize:
+Explore the following reference architectures that use Vectorize:
 
 [**Fullstack applications** A practical example of how these services come together in a real fullstack application architecture.](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/fullstack-application/)
 

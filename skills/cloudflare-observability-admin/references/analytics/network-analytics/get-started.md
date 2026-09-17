@@ -34,9 +34,7 @@ Use the [GraphQL Analytics API](https://developers.cloudflare.com/analytics/grap
 
 ## Send Network Analytics logs to a third-party service
 
-[Create a Logpush job](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/) that sends Network analytics logs to your storage service, SIEM solution
-
-, or log management provider.
+[Create a Logpush job](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/) that sends Network analytics logs to your storage service, SIEM solution, or log management provider.
 
 ## Limitations
 

@@ -22,9 +22,7 @@ If your domain is added to Cloudflare by a hosting partner, manage your DNS reco
 
 ## Background
 
-`DNS_PROBE_FINISHED_NXDOMAIN` indicates that the DNS lookup completed and the result was that the domain does not exist. `DNS_PROBE_FINISHED` means that the DNS probe ran to completion and `NXDOMAIN` stands for non-existent domain. Together, these messages mean that the DNS resolver determined the requested domain has no associated [DNS records](https://developers.cloudflare.com/dns/manage-dns-records/)
-
-.
+`DNS_PROBE_FINISHED_NXDOMAIN` indicates that the DNS lookup completed and the result was that the domain does not exist. `DNS_PROBE_FINISHED` means that the DNS probe ran to completion and `NXDOMAIN` stands for non-existent domain. Together, these messages mean that the DNS resolver determined the requested domain has no associated [DNS records](https://developers.cloudflare.com/dns/manage-dns-records/).
 
 Though visitors sometimes encounter this error — or similarly worded messages from Safari, Edge, or Firefox — because of network or local DNS issues, it might point to an issue with your DNS records in Cloudflare.
 

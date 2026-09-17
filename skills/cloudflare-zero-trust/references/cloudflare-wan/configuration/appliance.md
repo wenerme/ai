@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare One Appliance is a lightweight appliance you can install in corporate network locations to automatically connect and steer
-
- any IP traffic through [secure IPsec tunnels](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/reference/#security-and-other-information). Cloudflare One Appliance is the easiest way to onboard your network locations to Cloudflare One. It is managed remotely through the Cloudflare dashboard, so you do not require an onsite IT team.
+Cloudflare One Appliance is a lightweight appliance you can install in corporate network locations to automatically connect and steer any IP traffic through [secure IPsec tunnels](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/reference/#security-and-other-information). Cloudflare One Appliance is the easiest way to onboard your network locations to Cloudflare One. It is managed remotely through the Cloudflare dashboard, so you do not require an onsite IT team.
 
 You can [purchase Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-hardware-appliance/) software pre-installed on a Cloudflare-certified device, or download and deploy [Cloudflare One Virtual Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/) in your own infrastructure.
 

@@ -47,9 +47,7 @@ Only enable Managed OAuth for MCP servers that validate the Access JWT sent by C
 
 Use this setup when a third-party provider hosts the MCP server and lets you configure a custom OAuth or OIDC identity provider. In this setup, the MCP server implements the OAuth authorization code flow against Cloudflare Access and receives an `access_token` that it can use to call downstream services.
 
-The following guide uses a remote MCP server
-
- on [Cloudflare Workers](https://developers.cloudflare.com/workers/) to show the Access for SaaS setup. For a SaaS-managed server, follow your provider's setup instructions and use the Access for SaaS values created in [Step 2](#2-create-an-access-for-saas-app). When users connect to the MCP server using an MCP client, they will be prompted to log in to your [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) and are only granted access if they pass your [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#selectors).
+The following guide uses a remote MCP server on [Cloudflare Workers](https://developers.cloudflare.com/workers/) to show the Access for SaaS setup. For a SaaS-managed server, follow your provider's setup instructions and use the Access for SaaS values created in [Step 2](#2-create-an-access-for-saas-app). When users connect to the MCP server using an MCP client, they will be prompted to log in to your [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) and are only granted access if they pass your [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#selectors).
 
 ### Prerequisites
 

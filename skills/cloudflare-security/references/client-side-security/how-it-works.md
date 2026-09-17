@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/client-side-security/how-it-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare's client-side security helps manage client-side resources
-
- (which include scripts and their connections) loaded by your website visitors, and provides visibility on the [cookies ↗](https://www.cloudflare.com/learning/privacy/what-are-cookies/) recently detected in HTTP traffic. Client-side security can trigger alert notifications when resources change or are considered malicious.
+Cloudflare's client-side security helps manage client-side resources (which include scripts and their connections) loaded by your website visitors, and provides visibility on the [cookies ↗](https://www.cloudflare.com/learning/privacy/what-are-cookies/) recently detected in HTTP traffic. Client-side security can trigger alert notifications when resources change or are considered malicious.
 
 Client-side security works by adding [Content Security Policy (CSP)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) HTTP headers to your site's responses. CSP is a browser-native mechanism that controls which resources a page is allowed to load and where to send reports when a resource violates the policy. Cloudflare uses two types of CSP headers for different purposes:
 

@@ -120,9 +120,7 @@ Now that you have completed the prerequisite steps, set up MX/Inline on the Clou
 
 ## 5. (Recommended) Secure Google Workspace from MX records bypass
 
-One method of a DNS attack is to search for old MX records and send phishing
-
- emails directly to the mail server. To secure the email flow, you should enforce an email flow where inbound messages are accepted by Google Workspace only when they originate from Email security. This can be done by adding a connector to only allow email from Email security with TLS encryption. This step is optional but recommended.
+One method of a DNS attack is to search for old MX records and send phishing emails directly to the mail server. To secure the email flow, you should enforce an email flow where inbound messages are accepted by Google Workspace only when they originate from Email security. This can be done by adding a connector to only allow email from Email security with TLS encryption. This step is optional but recommended.
 
 Important
 

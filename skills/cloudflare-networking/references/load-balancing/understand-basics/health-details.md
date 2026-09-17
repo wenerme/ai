@@ -22,9 +22,7 @@ But how does your load balancer *know* which endpoints can handle the traffic? W
 
 ## Dynamic load balancing
 
-Dynamic load balancing happens through a combination of [pools](https://developers.cloudflare.com/load-balancing/pools/)
-
-, [monitors](https://developers.cloudflare.com/load-balancing/monitors/), and health checks.
+Dynamic load balancing happens through a combination of [pools](https://developers.cloudflare.com/load-balancing/pools/), [monitors](https://developers.cloudflare.com/load-balancing/monitors/), and health checks.
 
 ```
     flowchart RL

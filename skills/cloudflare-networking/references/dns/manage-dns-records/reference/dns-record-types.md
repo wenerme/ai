@@ -139,9 +139,7 @@ These records include the following fields:
 
 #### Proxied CNAME records
 
-Observe the following aspects, especially before changing a CNAME record from [proxied](https://developers.cloudflare.com/dns/proxy-status/)
-
- to DNS-only or vice versa:
+Observe the following aspects, especially before changing a CNAME record from [proxied](https://developers.cloudflare.com/dns/proxy-status/) to DNS-only or vice versa:
 
 - If a hostname is meant to proxy traffic, you can use CNAME records to point to other CNAME records ( `www.example2.com` --> `www.example1.com` --> `www.example.com`), but the final record must point to a hostname with a valid IP address (and therefore a valid A or AAAA record). Also, queries for other record types on the same name are not supported.
 

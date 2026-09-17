@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # API token permissions
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/api/reference/permissions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/api/reference/permissions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Permissions are segmented into three categories based on resource:
 
@@ -140,8 +140,8 @@ The `AI Gateway Read`, `Run`, and `Edit` permissions are account-scoped only —
 | Cloudflare Images Edit | Grants write access to [Cloudflare Images](https://developers.cloudflare.com/images/). |
 | Cloudflare One Connector: cloudflared Read | Grants read access to [`cloudflared` connectors](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) |
 | Cloudflare One Connector: cloudflared Edit | Grants write access to [`cloudflared` connectors](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) |
-| Cloudflare One Connector: WARP Read | Grants read access to [Cloudflare Mesh nodes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) |
-| Cloudflare One Connector: WARP Edit | Grants write access to [Cloudflare Mesh nodes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) |
+| Cloudflare One Connector: WARP Read | Grants read access to [Cloudflare Mesh nodes](https://developers.cloudflare.com/mesh/) |
+| Cloudflare One Connector: WARP Edit | Grants write access to [Cloudflare Mesh nodes](https://developers.cloudflare.com/mesh/) |
 | Cloudflare One Connectors Read | Grants read access to Cloudflare One connectors |
 | Cloudflare One Connectors Edit | Grants write access to Cloudflare One connectors |
 | Cloudflare One Networks Read | Grants read access to Cloudflare One routes and virtual networks |
@@ -316,8 +316,8 @@ The `AI Gateway Read`, `Run`, and `Edit` permissions are account-scoped only —
 | Images Write | Grants write access to [Cloudflare Images](https://developers.cloudflare.com/images/). |
 | Cloudflare One Connector: cloudflared Read | Grants read access to [`cloudflared` connectors](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) |
 | Cloudflare One Connector: cloudflared Write | Grants write access to [`cloudflared` connectors](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) |
-| Cloudflare One Connector: WARP Read | Grants read access to [Cloudflare Mesh nodes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) |
-| Cloudflare One Connector: WARP Write | Grants write access to [Cloudflare Mesh nodes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) |
+| Cloudflare One Connector: WARP Read | Grants read access to [Cloudflare Mesh nodes](https://developers.cloudflare.com/mesh/) |
+| Cloudflare One Connector: WARP Write | Grants write access to [Cloudflare Mesh nodes](https://developers.cloudflare.com/mesh/) |
 | Cloudflare One Connectors Read | Grants read access to Cloudflare One connectors |
 | Cloudflare One Connectors Write | Grants write access to Cloudflare One connectors |
 | Cloudflare One Networks Read | Grants read access to Cloudflare One routes and virtual networks |
@@ -573,5 +573,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/reference/permissions/#page","headline":"API token permissions · Cloudflare Fundamentals docs","description":"Review available Cloudflare API token permissions for user, account, and zone resources.","url":"https://developers.cloudflare.com/fundamentals/api/reference/permissions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/reference/permissions/#page","headline":"API token permissions · Cloudflare Fundamentals docs","description":"Review available Cloudflare API token permissions for user, account, and zone resources.","url":"https://developers.cloudflare.com/fundamentals/api/reference/permissions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

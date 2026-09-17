@@ -2019,6 +2019,10 @@ the `background` parameter set to `true` can be cancelled.
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
               about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+              This field is deprecated for models released after September 1, 2026.
+              Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+              connect through a Secure MCP Tunnel.
+
               Currently supported `connector_id` values are:
 
               - Dropbox: `connector_dropbox`
@@ -3260,6 +3264,10 @@ the `background` parameter set to `true` can be cancelled.
               Identifier for service connectors, like those available in ChatGPT. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
               about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+              This field is deprecated for models released after September 1, 2026.
+              Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+              connect through a Secure MCP Tunnel.
 
               Currently supported `connector_id` values are:
 
@@ -5197,14 +5205,14 @@ the `background` parameter set to `true` can be cancelled.
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
 
-  - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 100 more or string`
+  - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more or string`
 
     Model ID used to generate the response, like `gpt-6-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/api/docs/models)
     to browse and compare available models.
 
-    - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 100 more`
+    - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
@@ -5250,8 +5258,6 @@ the `background` parameter set to `true` can be cancelled.
       - `"gpt-5.1-2025-11-13"`
 
       - `"gpt-5.1-codex"`
-
-      - `"gpt-5.1-mini"`
 
       - `"gpt-5.1-chat-latest"`
 
@@ -5312,6 +5318,10 @@ the `background` parameter set to `true` can be cancelled.
       - `"gpt-4o-2024-08-06"`
 
       - `"gpt-4o-2024-05-13"`
+
+      - `"gpt-audio-mini"`
+
+      - `"gpt-audio-mini-2025-12-15"`
 
       - `"gpt-4o-audio-preview"`
 
@@ -6762,6 +6772,10 @@ the `background` parameter set to `true` can be cancelled.
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
+
             Currently supported `connector_id` values are:
 
             - Dropbox: `connector_dropbox`
@@ -7849,6 +7863,10 @@ the `background` parameter set to `true` can be cancelled.
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
 
             Currently supported `connector_id` values are:
 
@@ -10127,6 +10145,10 @@ the `background` parameter set to `true` can be cancelled.
         `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
         about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+        This field is deprecated for models released after September 1, 2026.
+        Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+        connect through a Secure MCP Tunnel.
+
         Currently supported `connector_id` values are:
 
         - Dropbox: `connector_dropbox`
@@ -11659,11 +11681,11 @@ Learn when and how to compact long-running conversations in the [conversation st
 
 ### Body Parameters
 
-- `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 100 more or string or null`
+- `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more or string or null`
 
   Model ID used to generate the response, like `gpt-6-astra`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/api/docs/models) to browse and compare available models.
 
-  - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 100 more`
+  - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more`
 
     Model ID used to generate the response, like `gpt-6-astra`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/api/docs/models) to browse and compare available models.
 
@@ -11706,8 +11728,6 @@ Learn when and how to compact long-running conversations in the [conversation st
     - `"gpt-5.1-2025-11-13"`
 
     - `"gpt-5.1-codex"`
-
-    - `"gpt-5.1-mini"`
 
     - `"gpt-5.1-chat-latest"`
 
@@ -11768,6 +11788,10 @@ Learn when and how to compact long-running conversations in the [conversation st
     - `"gpt-4o-2024-08-06"`
 
     - `"gpt-4o-2024-05-13"`
+
+    - `"gpt-audio-mini"`
+
+    - `"gpt-audio-mini-2025-12-15"`
 
     - `"gpt-4o-audio-preview"`
 
@@ -13753,6 +13777,10 @@ Learn when and how to compact long-running conversations in the [conversation st
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
+
             Currently supported `connector_id` values are:
 
             - Dropbox: `connector_dropbox`
@@ -14994,6 +15022,10 @@ Learn when and how to compact long-running conversations in the [conversation st
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
 
             Currently supported `connector_id` values are:
 
@@ -18107,6 +18139,10 @@ Learn when and how to compact long-running conversations in the [conversation st
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
+
             Currently supported `connector_id` values are:
 
             - Dropbox: `connector_dropbox`
@@ -19344,6 +19380,10 @@ Learn when and how to compact long-running conversations in the [conversation st
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
 
             Currently supported `connector_id` values are:
 
@@ -24047,6 +24087,10 @@ as input for the model's response.
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
+
             Currently supported `connector_id` values are:
 
             - Dropbox: `connector_dropbox`
@@ -25288,6 +25332,10 @@ as input for the model's response.
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
 
             Currently supported `connector_id` values are:
 
@@ -27241,14 +27289,14 @@ as input for the model's response.
   Keys are strings with a maximum length of 64 characters. Values are strings
   with a maximum length of 512 characters.
 
-- `model: optional "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 100 more or string`
+- `model: optional "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more or string`
 
   Model ID used to generate the response, like `gpt-6-astra`. OpenAI
   offers a wide range of models with different capabilities, performance
   characteristics, and price points. Refer to the [model guide](/api/docs/models)
   to browse and compare available models.
 
-  - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 100 more`
+  - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more`
 
     Model ID used to generate the response, like `gpt-6-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
@@ -27294,8 +27342,6 @@ as input for the model's response.
     - `"gpt-5.1-2025-11-13"`
 
     - `"gpt-5.1-codex"`
-
-    - `"gpt-5.1-mini"`
 
     - `"gpt-5.1-chat-latest"`
 
@@ -27356,6 +27402,10 @@ as input for the model's response.
     - `"gpt-4o-2024-08-06"`
 
     - `"gpt-4o-2024-05-13"`
+
+    - `"gpt-audio-mini"`
+
+    - `"gpt-audio-mini-2025-12-15"`
 
     - `"gpt-4o-audio-preview"`
 
@@ -27555,7 +27605,7 @@ as input for the model's response.
 
   Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](/api/docs/guides/prompt-caching).
 
-- `prompt_cache_options: optional object { comparison_response_id, mode, ttl }`
+- `prompt_cache_options: optional object { comparison_response_id, mode, prewarm, ttl }`
 
   Options for prompt caching. Supported for `gpt-5.6` and later models. By default, OpenAI automatically chooses one implicit cache breakpoint. You can add explicit breakpoints to content blocks with `prompt_cache_breakpoint`. Each request can write up to four breakpoints. For cache matching, OpenAI considers up to the latest 80 breakpoints in the conversation, without a content-block lookback limit. Set `mode` to `explicit` to disable the implicit breakpoint. The `ttl` defaults to `30m`, which is currently the only supported value. See the [prompt caching guide](/api/docs/guides/prompt-caching) for current details.
 
@@ -27570,6 +27620,10 @@ as input for the model's response.
     - `"implicit"`
 
     - `"explicit"`
+
+  - `prewarm: optional boolean`
+
+    Prepares the prompt cache without generating output. Defaults to `false`. When set to `true`, overrides the `generate` field to `false`.
 
   - `ttl: optional "30m"`
 
@@ -28416,6 +28470,10 @@ as input for the model's response.
       Identifier for service connectors, like those available in ChatGPT. One of
       `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
       about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+      This field is deprecated for models released after September 1, 2026.
+      Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+      connect through a Secure MCP Tunnel.
 
       Currently supported `connector_id` values are:
 
@@ -31113,6 +31171,10 @@ as input for the model's response.
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
               about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+              This field is deprecated for models released after September 1, 2026.
+              Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+              connect through a Secure MCP Tunnel.
+
               Currently supported `connector_id` values are:
 
               - Dropbox: `connector_dropbox`
@@ -32354,6 +32416,10 @@ as input for the model's response.
               Identifier for service connectors, like those available in ChatGPT. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
               about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+              This field is deprecated for models released after September 1, 2026.
+              Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+              connect through a Secure MCP Tunnel.
 
               Currently supported `connector_id` values are:
 
@@ -34291,14 +34357,14 @@ as input for the model's response.
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
 
-  - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 100 more or string`
+  - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more or string`
 
     Model ID used to generate the response, like `gpt-6-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/api/docs/models)
     to browse and compare available models.
 
-    - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 100 more`
+    - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
@@ -34344,8 +34410,6 @@ as input for the model's response.
       - `"gpt-5.1-2025-11-13"`
 
       - `"gpt-5.1-codex"`
-
-      - `"gpt-5.1-mini"`
 
       - `"gpt-5.1-chat-latest"`
 
@@ -34406,6 +34470,10 @@ as input for the model's response.
       - `"gpt-4o-2024-08-06"`
 
       - `"gpt-4o-2024-05-13"`
+
+      - `"gpt-audio-mini"`
+
+      - `"gpt-audio-mini-2025-12-15"`
 
       - `"gpt-4o-audio-preview"`
 
@@ -35856,6 +35924,10 @@ as input for the model's response.
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
+
             Currently supported `connector_id` values are:
 
             - Dropbox: `connector_dropbox`
@@ -36943,6 +37015,10 @@ as input for the model's response.
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
 
             Currently supported `connector_id` values are:
 
@@ -39220,6 +39296,10 @@ as input for the model's response.
         Identifier for service connectors, like those available in ChatGPT. One of
         `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
         about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+        This field is deprecated for models released after September 1, 2026.
+        Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+        connect through a Secure MCP Tunnel.
 
         Currently supported `connector_id` values are:
 
@@ -43549,6 +43629,10 @@ Retrieves a model response with the given ID.
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
               about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+              This field is deprecated for models released after September 1, 2026.
+              Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+              connect through a Secure MCP Tunnel.
+
               Currently supported `connector_id` values are:
 
               - Dropbox: `connector_dropbox`
@@ -44790,6 +44874,10 @@ Retrieves a model response with the given ID.
               Identifier for service connectors, like those available in ChatGPT. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
               about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+              This field is deprecated for models released after September 1, 2026.
+              Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+              connect through a Secure MCP Tunnel.
 
               Currently supported `connector_id` values are:
 
@@ -46727,14 +46815,14 @@ Retrieves a model response with the given ID.
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
 
-  - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 100 more or string`
+  - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more or string`
 
     Model ID used to generate the response, like `gpt-6-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/api/docs/models)
     to browse and compare available models.
 
-    - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 100 more`
+    - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
@@ -46780,8 +46868,6 @@ Retrieves a model response with the given ID.
       - `"gpt-5.1-2025-11-13"`
 
       - `"gpt-5.1-codex"`
-
-      - `"gpt-5.1-mini"`
 
       - `"gpt-5.1-chat-latest"`
 
@@ -46842,6 +46928,10 @@ Retrieves a model response with the given ID.
       - `"gpt-4o-2024-08-06"`
 
       - `"gpt-4o-2024-05-13"`
+
+      - `"gpt-audio-mini"`
+
+      - `"gpt-audio-mini-2025-12-15"`
 
       - `"gpt-4o-audio-preview"`
 
@@ -48292,6 +48382,10 @@ Retrieves a model response with the given ID.
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
+
             Currently supported `connector_id` values are:
 
             - Dropbox: `connector_dropbox`
@@ -49379,6 +49473,10 @@ Retrieves a model response with the given ID.
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
 
             Currently supported `connector_id` values are:
 
@@ -51656,6 +51754,10 @@ Retrieves a model response with the given ID.
         Identifier for service connectors, like those available in ChatGPT. One of
         `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
         about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+        This field is deprecated for models released after September 1, 2026.
+        Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+        connect through a Secure MCP Tunnel.
 
         Currently supported `connector_id` values are:
 
@@ -54315,6 +54417,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
+
             Currently supported `connector_id` values are:
 
             - Dropbox: `connector_dropbox`
@@ -55552,6 +55658,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
 
             Currently supported `connector_id` values are:
 
@@ -61055,6 +61165,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
               about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+              This field is deprecated for models released after September 1, 2026.
+              Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+              connect through a Secure MCP Tunnel.
+
               Currently supported `connector_id` values are:
 
               - Dropbox: `connector_dropbox`
@@ -62296,6 +62410,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               Identifier for service connectors, like those available in ChatGPT. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
               about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+              This field is deprecated for models released after September 1, 2026.
+              Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+              connect through a Secure MCP Tunnel.
 
               Currently supported `connector_id` values are:
 
@@ -64233,14 +64351,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
 
-  - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 100 more or string`
+  - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more or string`
 
     Model ID used to generate the response, like `gpt-6-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/api/docs/models)
     to browse and compare available models.
 
-    - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 100 more`
+    - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
@@ -64286,8 +64404,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `"gpt-5.1-2025-11-13"`
 
       - `"gpt-5.1-codex"`
-
-      - `"gpt-5.1-mini"`
 
       - `"gpt-5.1-chat-latest"`
 
@@ -64348,6 +64464,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `"gpt-4o-2024-08-06"`
 
       - `"gpt-4o-2024-05-13"`
+
+      - `"gpt-audio-mini"`
+
+      - `"gpt-audio-mini-2025-12-15"`
 
       - `"gpt-4o-audio-preview"`
 
@@ -65798,6 +65918,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
+
             Currently supported `connector_id` values are:
 
             - Dropbox: `connector_dropbox`
@@ -66885,6 +67009,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
 
             Currently supported `connector_id` values are:
 
@@ -69162,6 +69290,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         Identifier for service connectors, like those available in ChatGPT. One of
         `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
         about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+        This field is deprecated for models released after September 1, 2026.
+        Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+        connect through a Secure MCP Tunnel.
 
         Currently supported `connector_id` values are:
 
@@ -72731,6 +72863,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
                 about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+                This field is deprecated for models released after September 1, 2026.
+                Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+                connect through a Secure MCP Tunnel.
+
                 Currently supported `connector_id` values are:
 
                 - Dropbox: `connector_dropbox`
@@ -73972,6 +74108,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 Identifier for service connectors, like those available in ChatGPT. One of
                 `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
                 about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+                This field is deprecated for models released after September 1, 2026.
+                Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+                connect through a Secure MCP Tunnel.
 
                 Currently supported `connector_id` values are:
 
@@ -75909,14 +76049,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 100 more or string`
+    - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more or string`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
 
-      - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 100 more`
+      - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more`
 
         Model ID used to generate the response, like `gpt-6-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -75962,8 +76102,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.1-2025-11-13"`
 
         - `"gpt-5.1-codex"`
-
-        - `"gpt-5.1-mini"`
 
         - `"gpt-5.1-chat-latest"`
 
@@ -76024,6 +76162,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-4o-2024-08-06"`
 
         - `"gpt-4o-2024-05-13"`
+
+        - `"gpt-audio-mini"`
+
+        - `"gpt-audio-mini-2025-12-15"`
 
         - `"gpt-4o-audio-preview"`
 
@@ -77474,6 +77616,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
               about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+              This field is deprecated for models released after September 1, 2026.
+              Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+              connect through a Secure MCP Tunnel.
+
               Currently supported `connector_id` values are:
 
               - Dropbox: `connector_dropbox`
@@ -78561,6 +78707,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               Identifier for service connectors, like those available in ChatGPT. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
               about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+              This field is deprecated for models released after September 1, 2026.
+              Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+              connect through a Secure MCP Tunnel.
 
               Currently supported `connector_id` values are:
 
@@ -80838,6 +80988,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           Identifier for service connectors, like those available in ChatGPT. One of
           `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
           about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+          This field is deprecated for models released after September 1, 2026.
+          Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+          connect through a Secure MCP Tunnel.
 
           Currently supported `connector_id` values are:
 
@@ -84836,6 +84990,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
                 about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+                This field is deprecated for models released after September 1, 2026.
+                Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+                connect through a Secure MCP Tunnel.
+
                 Currently supported `connector_id` values are:
 
                 - Dropbox: `connector_dropbox`
@@ -86077,6 +86235,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 Identifier for service connectors, like those available in ChatGPT. One of
                 `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
                 about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+                This field is deprecated for models released after September 1, 2026.
+                Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+                connect through a Secure MCP Tunnel.
 
                 Currently supported `connector_id` values are:
 
@@ -88014,14 +88176,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 100 more or string`
+    - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more or string`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
 
-      - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 100 more`
+      - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more`
 
         Model ID used to generate the response, like `gpt-6-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -88067,8 +88229,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.1-2025-11-13"`
 
         - `"gpt-5.1-codex"`
-
-        - `"gpt-5.1-mini"`
 
         - `"gpt-5.1-chat-latest"`
 
@@ -88129,6 +88289,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-4o-2024-08-06"`
 
         - `"gpt-4o-2024-05-13"`
+
+        - `"gpt-audio-mini"`
+
+        - `"gpt-audio-mini-2025-12-15"`
 
         - `"gpt-4o-audio-preview"`
 
@@ -89579,6 +89743,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
               about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+              This field is deprecated for models released after September 1, 2026.
+              Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+              connect through a Secure MCP Tunnel.
+
               Currently supported `connector_id` values are:
 
               - Dropbox: `connector_dropbox`
@@ -90666,6 +90834,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               Identifier for service connectors, like those available in ChatGPT. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
               about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+              This field is deprecated for models released after September 1, 2026.
+              Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+              connect through a Secure MCP Tunnel.
 
               Currently supported `connector_id` values are:
 
@@ -92943,6 +93115,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           Identifier for service connectors, like those available in ChatGPT. One of
           `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
           about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+          This field is deprecated for models released after September 1, 2026.
+          Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+          connect through a Secure MCP Tunnel.
 
           Currently supported `connector_id` values are:
 
@@ -96422,6 +96598,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
                 about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+                This field is deprecated for models released after September 1, 2026.
+                Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+                connect through a Secure MCP Tunnel.
+
                 Currently supported `connector_id` values are:
 
                 - Dropbox: `connector_dropbox`
@@ -97663,6 +97843,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 Identifier for service connectors, like those available in ChatGPT. One of
                 `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
                 about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+                This field is deprecated for models released after September 1, 2026.
+                Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+                connect through a Secure MCP Tunnel.
 
                 Currently supported `connector_id` values are:
 
@@ -99600,14 +99784,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 100 more or string`
+    - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more or string`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
 
-      - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 100 more`
+      - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more`
 
         Model ID used to generate the response, like `gpt-6-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -99653,8 +99837,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.1-2025-11-13"`
 
         - `"gpt-5.1-codex"`
-
-        - `"gpt-5.1-mini"`
 
         - `"gpt-5.1-chat-latest"`
 
@@ -99715,6 +99897,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-4o-2024-08-06"`
 
         - `"gpt-4o-2024-05-13"`
+
+        - `"gpt-audio-mini"`
+
+        - `"gpt-audio-mini-2025-12-15"`
 
         - `"gpt-4o-audio-preview"`
 
@@ -101165,6 +101351,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
               about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+              This field is deprecated for models released after September 1, 2026.
+              Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+              connect through a Secure MCP Tunnel.
+
               Currently supported `connector_id` values are:
 
               - Dropbox: `connector_dropbox`
@@ -102252,6 +102442,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               Identifier for service connectors, like those available in ChatGPT. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
               about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+              This field is deprecated for models released after September 1, 2026.
+              Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+              connect through a Secure MCP Tunnel.
 
               Currently supported `connector_id` values are:
 
@@ -104529,6 +104723,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           Identifier for service connectors, like those available in ChatGPT. One of
           `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
           about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+          This field is deprecated for models released after September 1, 2026.
+          Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+          connect through a Secure MCP Tunnel.
 
           Currently supported `connector_id` values are:
 
@@ -108283,6 +108481,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
                 about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+                This field is deprecated for models released after September 1, 2026.
+                Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+                connect through a Secure MCP Tunnel.
+
                 Currently supported `connector_id` values are:
 
                 - Dropbox: `connector_dropbox`
@@ -109524,6 +109726,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 Identifier for service connectors, like those available in ChatGPT. One of
                 `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
                 about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+                This field is deprecated for models released after September 1, 2026.
+                Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+                connect through a Secure MCP Tunnel.
 
                 Currently supported `connector_id` values are:
 
@@ -111461,14 +111667,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 100 more or string`
+    - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more or string`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
 
-      - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 100 more`
+      - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more`
 
         Model ID used to generate the response, like `gpt-6-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -111514,8 +111720,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.1-2025-11-13"`
 
         - `"gpt-5.1-codex"`
-
-        - `"gpt-5.1-mini"`
 
         - `"gpt-5.1-chat-latest"`
 
@@ -111576,6 +111780,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-4o-2024-08-06"`
 
         - `"gpt-4o-2024-05-13"`
+
+        - `"gpt-audio-mini"`
+
+        - `"gpt-audio-mini-2025-12-15"`
 
         - `"gpt-4o-audio-preview"`
 
@@ -113026,6 +113234,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
               about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+              This field is deprecated for models released after September 1, 2026.
+              Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+              connect through a Secure MCP Tunnel.
+
               Currently supported `connector_id` values are:
 
               - Dropbox: `connector_dropbox`
@@ -114113,6 +114325,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               Identifier for service connectors, like those available in ChatGPT. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
               about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+              This field is deprecated for models released after September 1, 2026.
+              Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+              connect through a Secure MCP Tunnel.
 
               Currently supported `connector_id` values are:
 
@@ -116390,6 +116606,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           Identifier for service connectors, like those available in ChatGPT. One of
           `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
           about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+          This field is deprecated for models released after September 1, 2026.
+          Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+          connect through a Secure MCP Tunnel.
 
           Currently supported `connector_id` values are:
 
@@ -119708,6 +119928,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
                 about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+                This field is deprecated for models released after September 1, 2026.
+                Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+                connect through a Secure MCP Tunnel.
+
                 Currently supported `connector_id` values are:
 
                 - Dropbox: `connector_dropbox`
@@ -120949,6 +121173,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 Identifier for service connectors, like those available in ChatGPT. One of
                 `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
                 about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+                This field is deprecated for models released after September 1, 2026.
+                Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+                connect through a Secure MCP Tunnel.
 
                 Currently supported `connector_id` values are:
 
@@ -122886,14 +123114,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 100 more or string`
+    - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more or string`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
 
-      - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 100 more`
+      - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more`
 
         Model ID used to generate the response, like `gpt-6-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -122939,8 +123167,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.1-2025-11-13"`
 
         - `"gpt-5.1-codex"`
-
-        - `"gpt-5.1-mini"`
 
         - `"gpt-5.1-chat-latest"`
 
@@ -123001,6 +123227,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-4o-2024-08-06"`
 
         - `"gpt-4o-2024-05-13"`
+
+        - `"gpt-audio-mini"`
+
+        - `"gpt-audio-mini-2025-12-15"`
 
         - `"gpt-4o-audio-preview"`
 
@@ -124451,6 +124681,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
               about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+              This field is deprecated for models released after September 1, 2026.
+              Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+              connect through a Secure MCP Tunnel.
+
               Currently supported `connector_id` values are:
 
               - Dropbox: `connector_dropbox`
@@ -125538,6 +125772,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               Identifier for service connectors, like those available in ChatGPT. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
               about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+              This field is deprecated for models released after September 1, 2026.
+              Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+              connect through a Secure MCP Tunnel.
 
               Currently supported `connector_id` values are:
 
@@ -127815,6 +128053,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           Identifier for service connectors, like those available in ChatGPT. One of
           `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
           about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+          This field is deprecated for models released after September 1, 2026.
+          Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+          connect through a Secure MCP Tunnel.
 
           Currently supported `connector_id` values are:
 
@@ -130995,6 +131237,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
+
             Currently supported `connector_id` values are:
 
             - Dropbox: `connector_dropbox`
@@ -132236,6 +132482,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
 
             Currently supported `connector_id` values are:
 
@@ -136068,6 +136318,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
+
             Currently supported `connector_id` values are:
 
             - Dropbox: `connector_dropbox`
@@ -137309,6 +137563,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
 
             Currently supported `connector_id` values are:
 
@@ -142067,6 +142325,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
           about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+          This field is deprecated for models released after September 1, 2026.
+          Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+          connect through a Secure MCP Tunnel.
+
           Currently supported `connector_id` values are:
 
           - Dropbox: `connector_dropbox`
@@ -143304,6 +143566,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           Identifier for service connectors, like those available in ChatGPT. One of
           `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
           about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+          This field is deprecated for models released after September 1, 2026.
+          Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+          connect through a Secure MCP Tunnel.
 
           Currently supported `connector_id` values are:
 
@@ -146902,6 +147168,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
+
             Currently supported `connector_id` values are:
 
             - Dropbox: `connector_dropbox`
@@ -148139,6 +148409,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
 
             Currently supported `connector_id` values are:
 
@@ -151756,6 +152030,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
+
             Currently supported `connector_id` values are:
 
             - Dropbox: `connector_dropbox`
@@ -152993,6 +153271,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
 
             Currently supported `connector_id` values are:
 
@@ -157368,6 +157650,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
                 about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+                This field is deprecated for models released after September 1, 2026.
+                Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+                connect through a Secure MCP Tunnel.
+
                 Currently supported `connector_id` values are:
 
                 - Dropbox: `connector_dropbox`
@@ -158609,6 +158895,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 Identifier for service connectors, like those available in ChatGPT. One of
                 `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
                 about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+                This field is deprecated for models released after September 1, 2026.
+                Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+                connect through a Secure MCP Tunnel.
 
                 Currently supported `connector_id` values are:
 
@@ -160546,14 +160836,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 100 more or string`
+    - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more or string`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
 
-      - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 100 more`
+      - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more`
 
         Model ID used to generate the response, like `gpt-6-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -160599,8 +160889,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.1-2025-11-13"`
 
         - `"gpt-5.1-codex"`
-
-        - `"gpt-5.1-mini"`
 
         - `"gpt-5.1-chat-latest"`
 
@@ -160661,6 +160949,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-4o-2024-08-06"`
 
         - `"gpt-4o-2024-05-13"`
+
+        - `"gpt-audio-mini"`
+
+        - `"gpt-audio-mini-2025-12-15"`
 
         - `"gpt-4o-audio-preview"`
 
@@ -162111,6 +162403,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
               about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+              This field is deprecated for models released after September 1, 2026.
+              Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+              connect through a Secure MCP Tunnel.
+
               Currently supported `connector_id` values are:
 
               - Dropbox: `connector_dropbox`
@@ -163198,6 +163494,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               Identifier for service connectors, like those available in ChatGPT. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
               about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+              This field is deprecated for models released after September 1, 2026.
+              Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+              connect through a Secure MCP Tunnel.
 
               Currently supported `connector_id` values are:
 
@@ -165475,6 +165775,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           Identifier for service connectors, like those available in ChatGPT. One of
           `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
           about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+          This field is deprecated for models released after September 1, 2026.
+          Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+          connect through a Secure MCP Tunnel.
 
           Currently supported `connector_id` values are:
 
@@ -170937,6 +171241,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
                   about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+                  This field is deprecated for models released after September 1, 2026.
+                  Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+                  connect through a Secure MCP Tunnel.
+
                   Currently supported `connector_id` values are:
 
                   - Dropbox: `connector_dropbox`
@@ -172178,6 +172486,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   Identifier for service connectors, like those available in ChatGPT. One of
                   `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
                   about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+                  This field is deprecated for models released after September 1, 2026.
+                  Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+                  connect through a Secure MCP Tunnel.
 
                   Currently supported `connector_id` values are:
 
@@ -174115,14 +174427,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
         Keys are strings with a maximum length of 64 characters. Values are strings
         with a maximum length of 512 characters.
 
-      - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 100 more or string`
+      - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more or string`
 
         Model ID used to generate the response, like `gpt-6-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
         characteristics, and price points. Refer to the [model guide](/api/docs/models)
         to browse and compare available models.
 
-        - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 100 more`
+        - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more`
 
           Model ID used to generate the response, like `gpt-6-astra`. OpenAI
           offers a wide range of models with different capabilities, performance
@@ -174168,8 +174480,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"gpt-5.1-2025-11-13"`
 
           - `"gpt-5.1-codex"`
-
-          - `"gpt-5.1-mini"`
 
           - `"gpt-5.1-chat-latest"`
 
@@ -174230,6 +174540,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"gpt-4o-2024-08-06"`
 
           - `"gpt-4o-2024-05-13"`
+
+          - `"gpt-audio-mini"`
+
+          - `"gpt-audio-mini-2025-12-15"`
 
           - `"gpt-4o-audio-preview"`
 
@@ -175680,6 +175994,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
                 about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+                This field is deprecated for models released after September 1, 2026.
+                Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+                connect through a Secure MCP Tunnel.
+
                 Currently supported `connector_id` values are:
 
                 - Dropbox: `connector_dropbox`
@@ -176767,6 +177085,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 Identifier for service connectors, like those available in ChatGPT. One of
                 `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
                 about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+                This field is deprecated for models released after September 1, 2026.
+                Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+                connect through a Secure MCP Tunnel.
 
                 Currently supported `connector_id` values are:
 
@@ -179044,6 +179366,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
 
             Currently supported `connector_id` values are:
 
@@ -184643,6 +184969,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
                 about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+                This field is deprecated for models released after September 1, 2026.
+                Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+                connect through a Secure MCP Tunnel.
+
                 Currently supported `connector_id` values are:
 
                 - Dropbox: `connector_dropbox`
@@ -185884,6 +186214,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 Identifier for service connectors, like those available in ChatGPT. One of
                 `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
                 about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+                This field is deprecated for models released after September 1, 2026.
+                Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+                connect through a Secure MCP Tunnel.
 
                 Currently supported `connector_id` values are:
 
@@ -187837,14 +188171,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: optional "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 100 more or string`
+    - `model: optional "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more or string`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
 
-      - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 100 more`
+      - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more`
 
         Model ID used to generate the response, like `gpt-6-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -187890,8 +188224,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.1-2025-11-13"`
 
         - `"gpt-5.1-codex"`
-
-        - `"gpt-5.1-mini"`
 
         - `"gpt-5.1-chat-latest"`
 
@@ -187952,6 +188284,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-4o-2024-08-06"`
 
         - `"gpt-4o-2024-05-13"`
+
+        - `"gpt-audio-mini"`
+
+        - `"gpt-audio-mini-2025-12-15"`
 
         - `"gpt-4o-audio-preview"`
 
@@ -188151,7 +188487,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](/api/docs/guides/prompt-caching).
 
-    - `prompt_cache_options: optional object { comparison_response_id, mode, ttl }`
+    - `prompt_cache_options: optional object { comparison_response_id, mode, prewarm, ttl }`
 
       Options for prompt caching. Supported for `gpt-5.6` and later models. By default, OpenAI automatically chooses one implicit cache breakpoint. You can add explicit breakpoints to content blocks with `prompt_cache_breakpoint`. Each request can write up to four breakpoints. For cache matching, OpenAI considers up to the latest 80 breakpoints in the conversation, without a content-block lookback limit. Set `mode` to `explicit` to disable the implicit breakpoint. The `ttl` defaults to `30m`, which is currently the only supported value. See the [prompt caching guide](/api/docs/guides/prompt-caching) for current details.
 
@@ -188166,6 +188502,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"implicit"`
 
         - `"explicit"`
+
+      - `prewarm: optional boolean`
+
+        Prepares the prompt cache without generating output. Defaults to `false`. When set to `true`, overrides the `generate` field to `false`.
 
       - `ttl: optional "30m"`
 
@@ -189022,6 +189362,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           Identifier for service connectors, like those available in ChatGPT. One of
           `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
           about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+          This field is deprecated for models released after September 1, 2026.
+          Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+          connect through a Secure MCP Tunnel.
 
           Currently supported `connector_id` values are:
 
@@ -191121,6 +191465,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
               about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+              This field is deprecated for models released after September 1, 2026.
+              Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+              connect through a Secure MCP Tunnel.
+
               Currently supported `connector_id` values are:
 
               - Dropbox: `connector_dropbox`
@@ -192212,6 +192560,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               Identifier for service connectors, like those available in ChatGPT. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
               about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+              This field is deprecated for models released after September 1, 2026.
+              Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+              connect through a Secure MCP Tunnel.
 
               Currently supported `connector_id` values are:
 
@@ -197144,6 +197496,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
               about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+              This field is deprecated for models released after September 1, 2026.
+              Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+              connect through a Secure MCP Tunnel.
+
               Currently supported `connector_id` values are:
 
               - Dropbox: `connector_dropbox`
@@ -198385,6 +198741,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               Identifier for service connectors, like those available in ChatGPT. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
               about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+              This field is deprecated for models released after September 1, 2026.
+              Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+              connect through a Secure MCP Tunnel.
 
               Currently supported `connector_id` values are:
 
@@ -202396,6 +202756,10 @@ Returns a list of input items for a given response.
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
+
             Currently supported `connector_id` values are:
 
             - Dropbox: `connector_dropbox`
@@ -203633,6 +203997,10 @@ Returns a list of input items for a given response.
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
 
             Currently supported `connector_id` values are:
 
@@ -207436,6 +207804,10 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
+
             Currently supported `connector_id` values are:
 
             - Dropbox: `connector_dropbox`
@@ -208673,6 +209045,10 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
 
             Currently supported `connector_id` values are:
 
@@ -212533,6 +212909,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
+
             Currently supported `connector_id` values are:
 
             - Dropbox: `connector_dropbox`
@@ -213774,6 +214154,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
             about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+            This field is deprecated for models released after September 1, 2026.
+            Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+            connect through a Secure MCP Tunnel.
 
             Currently supported `connector_id` values are:
 
@@ -216469,6 +216853,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       Identifier for service connectors, like those available in ChatGPT. One of
       `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
       about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
+
+      This field is deprecated for models released after September 1, 2026.
+      Use `server_url` to connect to a remote MCP server, or `tunnel_id` to
+      connect through a Secure MCP Tunnel.
 
       Currently supported `connector_id` values are:
 

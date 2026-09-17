@@ -68,9 +68,7 @@ To detect and inspect HTTP and HTTPS traffic on ports in addition to `80` and `4
 
 ### Incompatible certificates
 
-Applications that use certificate pinning and mTLS authentication do not trust Cloudflare certificates. For example, most mobile applications use [certificate pinning](https://developers.cloudflare.com/ssl/reference/certificate-pinning/)
-
-. Cloudflare does not trust applications that use self-signed certificates instead of certificates signed by a public CA.
+Applications that use certificate pinning and mTLS authentication do not trust Cloudflare certificates. For example, most mobile applications use [certificate pinning](https://developers.cloudflare.com/ssl/reference/certificate-pinning/). Cloudflare does not trust applications that use self-signed certificates instead of certificates signed by a public CA.
 
 If you try to perform TLS decryption on an application with an incompatible certificate configuration, the application may return an SSL or trust error and/or fail to load. To resolve this issue, you can:
 

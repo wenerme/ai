@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/concepts/feedback-loop/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The Bot Feedback Loop allows you to report requests that Bot Management [scored](https://developers.cloudflare.com/bots/concepts/bot-score/)
-
- incorrectly. When you submit a false negative or false positive report, Cloudflare analyzes the data and uses it to train the next machine learning model.
+The Bot Feedback Loop allows you to report requests that Bot Management [scored](https://developers.cloudflare.com/bots/concepts/bot-score/) incorrectly. When you submit a false negative or false positive report, Cloudflare analyzes the data and uses it to train the next machine learning model.
 
 ## Availability
 

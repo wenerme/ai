@@ -16,9 +16,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Invoking methods on a Durable Object
 
-All new projects and existing projects with a compatibility date greater than or equal to [`2024-04-03`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#durable-object-stubs-and-service-bindings-support-rpc) should prefer to invoke [Remote Procedure Call (RPC)](https://developers.cloudflare.com/workers/runtime-apis/rpc/) methods defined on a Durable Object class
-
-.
+All new projects and existing projects with a compatibility date greater than or equal to [`2024-04-03`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#durable-object-stubs-and-service-bindings-support-rpc) should prefer to invoke [Remote Procedure Call (RPC)](https://developers.cloudflare.com/workers/runtime-apis/rpc/) methods defined on a Durable Object class.
 
 Projects requiring HTTP request/response flows or legacy projects can continue to invoke the `fetch()` handler on the Durable Object class.
 

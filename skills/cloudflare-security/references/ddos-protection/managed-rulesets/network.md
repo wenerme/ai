@@ -37,9 +37,7 @@ To adjust rule behavior, use one of the following methods:
 
 You can only configure the behavior of the managed ruleset to set a stronger or weaker mitigation action (depending on the default action of a specific rule, you can change it to `Block` if the default action is `DDoS Dynamic` or `Log`.), or a lower default sensitivity for all rules. Refer to [Managed ruleset parameters](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/override-parameters/) for more information.
 
-Overrides can apply to all packets
-
- or to a subset of incoming packets, depending on the override expression. Refer to [Override expressions](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/override-expressions/) for more information.
+Overrides can apply to all packets or to a subset of incoming packets, depending on the override expression. Refer to [Override expressions](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/override-expressions/) for more information.
 
 ### Network Analytics rule display
 

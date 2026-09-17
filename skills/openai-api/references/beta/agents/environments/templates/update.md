@@ -72,7 +72,7 @@ Updates reusable environment configuration without returning confidential values
 
     - `"enabled"`
 
-      Allows unrestricted network access, matching an omitted network policy.
+      Allows unrestricted network access.
 
     - `"disabled"`
 

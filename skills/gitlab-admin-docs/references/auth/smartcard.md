@@ -102,10 +102,6 @@ attribute. As a prerequisite, you must use an LDAP server that:
 - `issuer_and_subject`, `reverse_issuer_and_subject`, and `subject` formats [updated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/208209) in GitLab 18.6 [with a feature flag](../feature_flags/_index.md) named `smartcard_ad_formats_v2`. Enabled by default. Disable this flag to revert these formats to the previous versions.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/577375) in GitLab 18.9. Feature flag `smartcard_ad_formats_v2` removed.
 
-> [!flag]
-> The functionality of this feature is controlled by a feature flag.
-> For more information, see the history.
-
 Active Directory does not support the `certificateExactMatch` rule or the `userCertificate` attribute. Most tools for certificate-based authentication such as smart cards use the `altSecurityIdentities` attribute, which can contain multiple certificates for each user. The data in the field must match [one of the formats Microsoft recommends](https://learn.microsoft.com/en-us/entra/identity/authentication/concept-certificate-based-authentication-certificateuserids#supported-patterns-for-certificate-user-ids).
 
 Use the following attributes to customize the field GitLab checks and the format for certificate data:

@@ -272,9 +272,7 @@ resource "cloudflare_zero_trust_gateway_policy" "all_http_domainhost_blocklist" 
 
 ## All-HTTP-Application-Blocklist
 
-Block unauthorized applications to limit your users' access to certain web-based tools and minimize the risk of [shadow IT](https://www.cloudflare.com/learning/access-management/what-is-shadow-it/)
-
-. For example, the following policy blocks known AI tools:
+Block unauthorized applications to limit your users' access to certain web-based tools and minimize the risk of [shadow IT](https://www.cloudflare.com/learning/access-management/what-is-shadow-it/). For example, the following policy blocks known AI tools:
 
 | Selector | Operator | Value | Action |
 | --- | --- | --- | --- |

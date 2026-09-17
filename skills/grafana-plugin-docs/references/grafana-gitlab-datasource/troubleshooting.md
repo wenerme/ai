@@ -9,6 +9,71 @@ description: "Troubleshooting guide for the GitLab data source plugin in Grafana
 
 This document provides solutions to common issues you may encounter when configuring or using the GitLab data source. For configuration instructions, refer to [Configure the GitLab data source](/docs/plugins/grafana-gitlab-datasource/latest/configure/).
 
+## License and entitlement errors
+
+The GitLab data source is a Grafana Enterprise plugin and requires an active plugin entitlement. If the entitlement is missing or expired, the plugin fails to load or the health check fails.
+
+### Plugin health check fails with a license error
+
+**Symptoms:**
+
+- **Save &amp; test** fails with a license or entitlement error
+- The plugin fails to load, or panels show a licensing error
+- The plugin isn’t listed under **Plugins and data** &gt; **Plugins**
+
+**Possible causes and solutions:**
+
+Expand table
+
+| Cause                                          | Solution                                                                                                                                                                                                                                                                                                                                 |
+|------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Plan or contract doesn’t include the plugin    | Enterprise plugins aren’t included in every plan or contract. Contact your account team to confirm the GitLab data source is part of your entitlement.                                                                                                                                                                                   |
+| Expired license or trial                       | Renew your Grafana Enterprise license or trial. Refer to [Grafana Enterprise](/products/enterprise/).                                                                                                                                                                                                                                    |
+| License not applied to the instance            | Verify your Grafana Enterprise license is installed and valid. For self-managed deployments, ensure the license file is available to Grafana. On Kubernetes, confirm the license secret is created and mounted into the Grafana Pod. Refer to [Grafana Enterprise licensing](/docs/grafana/latest/administration/enterprise-licensing/). |
+| Account not provisioned for Enterprise plugins | If you’re on Grafana Cloud and the plugin remains unavailable after confirming your plan, contact [Grafana Support](/profile/org#support).                                                                                                                                                                                               |
+
+## Connection and network errors
+
+These errors occur when Grafana can’t reach your GitLab instance.
+
+### Grafana Cloud can’t reach a private GitLab instance
+
+**Symptoms:**
+
+- Queries or **Save &amp; test** fail when connecting from Grafana Cloud to a GitLab instance on a private network
+- The GitLab instance is reachable from your own network but not from Grafana
+
+**Cause:**
+
+Grafana Cloud runs outside your network and can’t reach a GitLab instance that isn’t publicly accessible.
+
+**Solutions:**
+
+1. Enable **Secure Socks Proxy** in the data source configuration under **Additional Settings**. Refer to [Configure the GitLab data source](/docs/plugins/grafana-gitlab-datasource/latest/configure/).
+2. Set up [Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) to securely connect your Grafana Cloud stack to a GitLab instance on a private network.
+3. For self-managed Grafana, verify that network routing, firewall rules, and DNS resolution allow the Grafana server to reach the GitLab API.
+
+### 404 errors on queries
+
+**Symptoms:**
+
+- A query fails with a 404 error even though the access token is valid
+- **Save &amp; test** succeeds, but specific resource queries return 404
+
+**Possible causes and solutions:**
+
+Expand table
+
+| Cause                    | Solution                                                                                                                                        |
+|--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| URL missing the API path | Verify the **URL** ends with `/api/v4`, for example, `https://gitlab.example.com/api/v4`.                                                       |
+| Resource doesn’t exist   | Confirm the project, group, or merge request ID exists and is entered correctly.                                                                |
+| Insufficient access      | The token’s account must have access to the requested resource. GitLab can return a 404 instead of a 403 when the account can’t see a resource. |
+
+> Note
+>
+> A 404 error indicates a URL, path, or missing-resource problem, whereas a 401 or 403 error indicates an authentication or permission problem. For token and permission errors, refer to [Authentication errors](/docs/plugins/grafana-gitlab-datasource/latest/troubleshooting/#authentication-errors).
+
 ## Authentication errors
 
 These errors appear when you click **Save &amp; test** in the data source configuration.
@@ -37,12 +102,12 @@ These errors appear when you click **Save &amp; test** in the data source config
 
 Expand table
 
-| Cause                    | Solution                                                                                                 |
-|--------------------------|----------------------------------------------------------------------------------------------------------|
-| Expired token            | Generate a new personal access token in GitLab and update the data source configuration.                 |
-| Missing `read_api` scope | Create a new token with the `read_api` scope selected.                                                   |
-| Incorrect token value    | Verify the token was copied correctly, with no extra spaces or characters.                               |
-| SSL certificate failure  | For self-hosted GitLab instances, verify the SSL certificate is valid and trusted by the Grafana server. |
+| Cause                    | Solution                                                                                                  |
+|--------------------------|-----------------------------------------------------------------------------------------------------------|
+| Expired token            | Generate a new personal access token in GitLab and update the data source configuration.                  |
+| Missing `read_api` scope | Create a new token with the `read_api` scope selected.                                                    |
+| Incorrect token value    | Verify the token was copied correctly, with no extra spaces or characters.                                |
+| SSL certificate failure  | For self-managed GitLab instances, verify the SSL certificate is valid and trusted by the Grafana server. |
 
 ### “unsupported scheme. Only HTTP and HTTPS are supported”
 
@@ -68,11 +133,11 @@ Expand table
 
 Expand table
 
-| Cause                           | Solution                                                                                                                                                                    |
-|---------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Incorrect URL path              | Verify the URL points to the GitLab API endpoint. For GitLab.com, use `https://gitlab.com/api/v4`. For self-hosted instances, use `https://your-gitlab.example.com/api/v4`. |
-| GitLab instance unreachable     | Verify the GitLab instance is running and accessible from the Grafana server.                                                                                               |
-| Firewall or network restriction | Check firewall rules allow outbound HTTPS traffic from the Grafana server to the GitLab instance.                                                                           |
+| Cause                           | Solution                                                                                                                                                                     |
+|---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Incorrect URL path              | Verify the URL points to the GitLab API endpoint. For GitLab.com, use `https://gitlab.com/api/v4`. For self-managed instances, use `https://your-gitlab.example.com/api/v4`. |
+| GitLab instance unreachable     | Verify the GitLab instance is running and accessible from the Grafana server.                                                                                                |
+| Firewall or network restriction | Check firewall rules allow outbound HTTPS traffic from the Grafana server to the GitLab instance.                                                                            |
 
 ## Query errors
 
@@ -141,7 +206,7 @@ Expand table
 **Solutions:**
 
 1. Verify your GitLab subscription tier. Audit events require a GitLab Premium or Ultimate subscription for project and group queries.
-2. For instance-level audit events on self-hosted GitLab, the personal access token must belong to an admin account.
+2. For instance-level audit events on self-managed GitLab, the personal access token must belong to an admin account.
 3. Confirm the **Query Type** is set to **Project** or **Group** and the corresponding ID is provided.
 
 ### GitLab API rate limiting
@@ -155,7 +220,7 @@ Expand table
 
 1. Reduce the **Page limit** in the data source configuration to lower the number of API requests per query.
 2. Increase the dashboard auto-refresh interval to reduce request frequency.
-3. For self-hosted GitLab, review and adjust the [API rate limits](https://docs.gitlab.com/ee/security/rate_limits.html) on the GitLab server.
+3. For self-managed GitLab, review and adjust the [API rate limits](https://docs.gitlab.com/ee/security/rate_limits.html) on the GitLab server.
 
 ## Alerting errors
 

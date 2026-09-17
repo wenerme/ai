@@ -66,6 +66,10 @@ tags:
     name: Guardrails
   - description: Images endpoints
     name: Images
+  - description: >-
+      Create, inspect, update, provision, suspend and delete OpenRouter interns
+      through an API key.
+    name: Interns
   - description: Model information endpoints
     name: Models
   - description: OAuth authentication endpoints
@@ -96,6 +100,11 @@ tags:
   - description: Text-to-speech endpoints
     name: TTS
     x-displayName: Speech
+  - description: >-
+      Store host-bound secrets for a workspace or for one intern. Scope is
+      selected by the API key. Responses return metadata only, never secret
+      values. See https://openrouter.ai/docs/guides/ori/vault.
+    name: Vault
   - description: Video Generation endpoints
     name: Video Generation
   - description: Workspaces endpoints
@@ -3591,6 +3600,13 @@ components:
             `container_reference` in later requests. Present on every
             sandbox-executed call, even when no files changed.
           type: string
+        error:
+          description: >-
+            The error message when the sandbox call failed before producing a
+            result (for example, the per-user container limit was reached). Set
+            together with `status: 'failed'`; absent on a successful call. A
+            non-zero `exitCode` is a command failure, not a tool failure.
+          type: string
         exitCode:
           type: integer
         files:
@@ -3626,7 +3642,7 @@ components:
         id:
           type: string
         status:
-          $ref: '#/components/schemas/ToolCallStatus'
+          $ref: '#/components/schemas/FailableToolCallStatus'
         stderr:
           type: string
         stdout:
@@ -4145,6 +4161,13 @@ components:
             `container_reference` in later requests. Present on every
             sandbox-executed call, even when no files changed.
           type: string
+        error:
+          description: >-
+            The error message when the sandbox call failed before producing a
+            result (for example, the per-user container limit was reached). Set
+            together with `status: 'failed'`; absent on a successful call.
+            `output` is omitted when `error` is set.
+          type: string
         files:
           description: >-
             Citations for the files the sandbox command created or modified,
@@ -4182,7 +4205,7 @@ components:
             $ref: '#/components/schemas/ShellCallOutputContent'
           type: array
         status:
-          $ref: '#/components/schemas/ToolCallStatus'
+          $ref: '#/components/schemas/FailableToolCallStatus'
         type:
           enum:
             - openrouter:shell
@@ -4361,6 +4384,11 @@ components:
             `{container_id}` for the Container Files API, reusable as a
             `container_reference` in later requests. Present on every
             sandbox-executed call, even when no files changed.
+          type: string
+        error:
+          description: >-
+            The error message when the sandbox call failed before producing a
+            result, as echoed from a failed `shell_call_output` emission.
           type: string
         files:
           description: >-
@@ -6582,6 +6610,14 @@ components:
         - incomplete
       example: completed
       type: string
+    FailableToolCallStatus:
+      enum:
+        - in_progress
+        - completed
+        - incomplete
+        - failed
+      example: completed
+      type: string
     FusionAnalysisResult:
       description: Structured analysis produced by the fusion analyst model.
       example:
@@ -6685,14 +6721,6 @@ components:
         - url
         - title
       type: object
-    FailableToolCallStatus:
-      enum:
-        - in_progress
-        - completed
-        - incomplete
-        - failed
-      example: completed
-      type: string
     ShellCallOutputContent:
       additionalProperties: {}
       description: >-

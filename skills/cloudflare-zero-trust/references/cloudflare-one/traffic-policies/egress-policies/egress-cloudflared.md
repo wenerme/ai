@@ -71,7 +71,7 @@ User traffic must be on-ramped to Gateway using one of the following methods:
 | [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) | ✅ |
 | [PAC files](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) | ✅ |
 | [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) | ✅ |
-| [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) | ✅ |
+| [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) | ✅ |
 | [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/) | 🚧<sup>[1](#user-content-fn-1)</sup> |
 
 <details>
@@ -126,9 +126,7 @@ In your WARP [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/te
 
 ### Initial resolved IPs
 
-When users connect to a public hostname route, Gateway will assign an initial resolved IP
-
- to the DNS query from the following range:
+When users connect to a public hostname route, Gateway will assign an initial resolved IP to the DNS query from the following range:
 
 - **IPv4**: `172.64.128.0/20`
 - **IPv6**: `2606:4700:0cf1:4000::/64`

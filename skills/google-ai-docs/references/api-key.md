@@ -12,11 +12,11 @@ keys to improve security:
 - **Standard API keys**: Associate requests with a Google Cloud project for billing and quota purposes. Standard keys don't identify a caller, which limits the granularity of permissions and access control they can support.
 - **Authorization (auth) keys**: Bound directly to a Google Cloud service account. When you use an authorization key, your requests are processed under the identity of that bound service account, enabling granular access control. Authorization keys are restricted to the Generative Language API (Gemini API) by default and provide fast-acting leaked key enforcement that quickly stops the usage of leaked keys detected by our systems.
 
-To ensure secure usage, Gemini API will move from Standard keys to Auth keys:
+To ensure secure usage, Gemini API will move from standard keys to auth keys:
 
-- **Auth keys default**: All new API keys created in Google AI Studio are automatically created as auth keys.
+- **Auth keys default**: Starting May 28, 2026, all new API keys created in Google AI Studio are automatically created as auth keys.
 - **Unrestricted keys rejected** : The Gemini API rejects requests from **unrestricted standard keys**. Standard API keys that have explicit restrictions applied continue to work. This restriction prevents the unauthorized use of keys that might be shared publicly or linked to other services.
-- **On September 2026** : the Gemini API will reject requests from **Standard
+- **On September 2026** : the Gemini API will reject requests from **standard
   keys** . You must [migrate to auth keys](https://ai.google.dev/gemini-api/docs/api-key#migrate-to-auth-key) before this date to avoid service interruption. Make sure to migrate to auth keys before September 2026.
 
 > [!NOTE]
@@ -133,7 +133,7 @@ if you cannot use environment variables.
     client = genai.Client(api_key="YOUR_API_KEY")
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="Explain how AI works in a few words"
     )
     print(interaction.output_text)
@@ -146,7 +146,7 @@ if you cannot use environment variables.
 
     async function main() {
       const interaction = await ai.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: "Explain how AI works in a few words",
       });
       console.log(interaction.output_text);
@@ -167,7 +167,7 @@ if you cannot use environment variables.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("Explain how AI works in a few sentences."))
             .build();
 
@@ -183,7 +183,7 @@ if you cannot use environment variables.
       -H "x-goog-api-key: YOUR_API_KEY" \
       -X POST \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "Explain how AI works in a few words"
       }'
 

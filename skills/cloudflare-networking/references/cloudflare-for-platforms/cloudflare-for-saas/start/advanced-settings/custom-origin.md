@@ -49,9 +49,7 @@ Note
 
 Only certain customers have access to this feature. For more details, see the [Plans page](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/plans/).
 
-When Cloudflare establishes a connection to your default origin server, the `Host` header and SNI
-
- will both be the value of the original custom hostname.
+When Cloudflare establishes a connection to your default origin server, the `Host` header and SNI will both be the value of the original custom hostname.
 
 However, if you configure that custom hostname with a custom origin, the value of the SNI will be that of the custom origin and the `Host` header will be the original custom hostname. Since these values will not match, you will not be able to use the [Full (strict)](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/) on your origins.
 

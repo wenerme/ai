@@ -20,9 +20,7 @@ Location-based policies require that you send DNS requests to a [location-specif
 
 ## Filter DoH requests by location
 
-Location-based policies require that you send DNS queries to a unique DoH endpoint
-
- assigned to the location:
+Location-based policies require that you send DNS queries to a unique DoH endpoint assigned to the location:
 
 ```txt
 https://<YOUR_DOH_SUBDOMAIN>.cloudflare-gateway.com/dns-query

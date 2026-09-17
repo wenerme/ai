@@ -48,7 +48,7 @@ StandaloneCloud
    For example:
 
    ```txt
-   Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+   Set up rate limiting and WAF rules to block abuse on my public API.
    ```
 
 
@@ -154,7 +154,15 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Add mTLS authentication and schema validation to protect my API endpoints.
+```
+
+```txt
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+```
+
+```txt
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
 ```
 
 ```txt
@@ -162,15 +170,7 @@ Create a Logpush job to stream Workers analytics to my data warehouse.
 ```
 
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
-```
-
-```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
-```
-
-```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ## Tips

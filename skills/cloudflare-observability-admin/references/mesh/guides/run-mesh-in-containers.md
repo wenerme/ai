@@ -7,12 +7,12 @@ image: https://developers.cloudflare.com/og-docs.png
 [Skip to content](#main-content)
 
 > Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
+> Fetch the complete documentation index at: https://developers.cloudflare.com/mesh/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Run Mesh in Docker / Kubernetes
 
-Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/containers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/mesh/guides/run-mesh-in-containers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The [`cloudflare/mesh` ↗](https://hub.docker.com/r/cloudflare/mesh) Docker image packages a Cloudflare Mesh node for Linux containers. It runs the Cloudflare One Client's `warp-svc` daemon headlessly in a minimal [Wolfi ↗](https://wolfi.dev/)-based runtime.
 
@@ -73,7 +73,7 @@ Note
 
 Mesh nodes can also be managed with Terraform using the [`cloudflare_zero_trust_tunnel_warp_connector` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_tunnel_warp_connector) resource. To manage node configuration, use [`cloudflare_zero_trust_tunnel_warp_connector_config` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_tunnel_warp_connector_config).
 
-If this is your first Mesh node, configure the [required account settings](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/get-started/#required-account-settings). You can use the dashboard wizard, APIs, or Terraform.
+If this is your first Mesh node, configure the [required account settings](https://developers.cloudflare.com/mesh/get-started/#required-account-settings). You can use the dashboard wizard, APIs, or Terraform.
 
 Caution
 
@@ -370,7 +370,7 @@ Required capabilities and devices
 
 Source NAT (masquerading) is enabled by default (`SRCNAT_ENABLED=true`). When a Mesh node receives traffic from the Cloudflare edge and forwards it to a destination on the local network, it translates the source IP from the Mesh CGNAT address (`100.96.x.x`) to the node's own local interface IP. This ensures return traffic routes correctly without requiring static routes in your VPC or on-premise network.
 
-Set `SRCNAT_ENABLED=false` only if the attached networks already have return routes to the Mesh IP range (`100.96.0.0/12`). For more details on return traffic routing, refer to [Routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#return-traffic-routing).
+Set `SRCNAT_ENABLED=false` only if the attached networks already have return routes to the Mesh IP range (`100.96.0.0/12`). For more details on return traffic routing, refer to [Routes](https://developers.cloudflare.com/mesh/features/routes/#return-traffic-routing).
 
 ## High availability on Kubernetes
 
@@ -378,7 +378,7 @@ MASQUE required
 
 This feature requires that the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) of the Mesh node is configured to use [MASQUE](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol), the default protocol for the Cloudflare One Client. It does not work if the device profile uses WireGuard instead.
 
-For [high availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) with CIDR routes:
+For [high availability](https://developers.cloudflare.com/mesh/features/high-availability/) with CIDR routes:
 
 1. Use the same Mesh node token across multiple replicas.
 2. Give each Pod its own `PersistentVolumeClaim`.
@@ -387,7 +387,7 @@ Cloudflare operates replicas in active-passive mode. If the active replica goes 
 
 ## Hostname routes
 
-Containers support [hostname routing](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes). To resolve Kubernetes Services through a hostname route, make sure the hostname matches the cluster's actual DNS suffix. The default is `cluster.local`, producing Service names like `service.namespace.svc.cluster.local`.
+Containers support [hostname routing](https://developers.cloudflare.com/mesh/features/routes/#hostname-routes). To resolve Kubernetes Services through a hostname route, make sure the hostname matches the cluster's actual DNS suffix. The default is `cluster.local`, producing Service names like `service.namespace.svc.cluster.local`.
 
 MASQUE required
 
@@ -395,7 +395,7 @@ This feature requires that the [device profile](https://developers.cloudflare.co
 
 ## Site-to-site networking
 
-Deploy a separate Mesh node container at each site with a separate node token for each node identity. Each node should advertise its locally reachable subnet as a [CIDR route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/). Configure each site's router or workloads to send traffic for the remote subnet through the local Mesh node.
+Deploy a separate Mesh node container at each site with a separate node token for each node identity. Each node should advertise its locally reachable subnet as a [CIDR route](https://developers.cloudflare.com/mesh/features/routes/). Configure each site's router or workloads to send traffic for the remote subnet through the local Mesh node.
 
 With `SRCNAT_ENABLED=true`, destinations see the Mesh node's local address. With source NAT disabled, the attached networks require return routes through their Mesh nodes.
 
@@ -415,7 +415,7 @@ docker logs cloudflare-mesh
 
 ### A Kubernetes Service cannot be resolved
 
-Confirm that the [hostname route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes) matches the cluster's actual DNS suffix. The usual default is `cluster.local`, producing Service names such as `service.namespace.svc.cluster.local`.
+Confirm that the [hostname route](https://developers.cloudflare.com/mesh/features/routes/#hostname-routes) matches the cluster's actual DNS suffix. The usual default is `cluster.local`, producing Service names such as `service.namespace.svc.cluster.local`.
 
 ### A hostname request arrives but no response returns
 
@@ -433,10 +433,10 @@ kubectl exec cloudflare-mesh-0 -- warp-cli status
 
 ## Next steps
 
-- [**Add routes**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/) — Make subnets behind the containerized node reachable from any device on your Mesh.
-- [**Enable high availability**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) — Run multiple replicas for production resilience.
+- [**Add routes**](https://developers.cloudflare.com/mesh/features/routes/) — Make subnets behind the containerized node reachable from any device on your Mesh.
+- [**Enable high availability**](https://developers.cloudflare.com/mesh/features/high-availability/) — Run multiple replicas for production resilience.
 - [**Connect from Workers**](https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudflare-mesh/) — Use VPC Network bindings to reach private services from Cloudflare Workers.
-- [**Tips and best practices**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/tips/) — Cloud VPC configuration, MTU tuning, and running alongside Cloudflare Tunnel.
+- [**Tips and best practices**](https://developers.cloudflare.com/mesh/best-practices/) — Cloud VPC configuration, MTU tuning, and running alongside Cloudflare Tunnel.
 
 Was this helpful?
 
@@ -447,5 +447,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/containers/#page","headline":"Run Cloudflare Mesh in containers · Cloudflare One docs","description":"Run a Cloudflare Mesh node as a Docker container for Docker Compose, Kubernetes, and CI/CD environments.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/containers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks","Containers","Docker","Kubernetes"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/mesh/guides/run-mesh-in-containers/#page","headline":"Run Cloudflare Mesh in containers · Cloudflare Docs","description":"Run a Cloudflare Mesh node as a Docker container for Docker Compose, Kubernetes, and CI/CD environments.","url":"https://developers.cloudflare.com/mesh/guides/run-mesh-in-containers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks","Containers","Docker","Kubernetes"]}
 ```

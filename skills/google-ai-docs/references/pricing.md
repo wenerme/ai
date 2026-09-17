@@ -282,7 +282,7 @@ performed.
 *[`gemini-3.5-live-translate-preview`](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-live-translate-preview)*
 
 
-[Try it in Google AI Studio](https://aistudio.google.com/prompts/new_chat?model=gemini-3.5-live-translate-preview)
+[Try it in Google AI Studio](https://aistudio.google.com/live?model=gemini-3.5-live-translate-preview)
 
 Our low-latency, real-time speech to speech translation model that supports 70+ languages.
 

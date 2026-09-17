@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/snippets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare Snippets allow you to run short pieces of JavaScript code on Cloudflare's network to customize how requests and responses are handled for your website or application. With Snippets, you can modify HTTP response headers, implement JWT
-
- validation, perform complex redirects, and more.
+Cloudflare Snippets allow you to run short pieces of JavaScript code on Cloudflare's network to customize how requests and responses are handled for your website or application. With Snippets, you can modify HTTP response headers, implement JWT validation, perform complex redirects, and more.
 
 For code samples addressing common use cases, refer to the [Examples](https://developers.cloudflare.com/rules/snippets/examples/) section.
 

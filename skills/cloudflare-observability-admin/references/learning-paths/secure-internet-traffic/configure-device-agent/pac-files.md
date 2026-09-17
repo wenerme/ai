@@ -22,9 +22,7 @@ Learn how and when to use PAC files instead of (or complementary to) endpoint ag
 
 ## What are PAC files?
 
-A PAC file
-
-, or proxy auto-configuration file, is like a tiny map that guides your web browser to websites. Instead of going straight to a website, a PAC file can forward your traffic through a proxy server first, protecting your device and filtering unwanted URL access. Cloudflare users use PAC files to filter Internet traffic when they do not want to install agents on devices or where agent installations are not supported.
+A PAC file, or proxy auto-configuration file, is like a tiny map that guides your web browser to websites. Instead of going straight to a website, a PAC file can forward your traffic through a proxy server first, protecting your device and filtering unwanted URL access. Cloudflare users use PAC files to filter Internet traffic when they do not want to install agents on devices or where agent installations are not supported.
 
 Here is a quick overview of PAC files:
 

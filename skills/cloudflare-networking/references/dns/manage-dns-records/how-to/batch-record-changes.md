@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/how-to/batch-record-changes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare allows you to apply several changes to your zone records in just one action. You can [use the dashboard](#use-the-dashboard) to delete DNS records or update their proxy status
-
- in bulk, or [use the API](#use-the-api) to perform further batched operations.
+Cloudflare allows you to apply several changes to your zone records in just one action. You can [use the dashboard](#use-the-dashboard) to delete DNS records or update their proxy status in bulk, or [use the API](#use-the-api) to perform further batched operations.
 
 Propagation through the Cloudflare network
 

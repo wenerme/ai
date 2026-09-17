@@ -191,9 +191,7 @@ As described below, address maps and DNS records do not apply to Spectrum. To se
 
 #### Address maps
 
-Use [address maps](https://developers.cloudflare.com/byoip/address-maps/)
-
- to specify which IPs should be used by Cloudflare in DNS responses when a record is [proxied](https://developers.cloudflare.com/dns/proxy-status/).
+Use [address maps](https://developers.cloudflare.com/byoip/address-maps/) to specify which IPs should be used by Cloudflare in DNS responses when a record is [proxied](https://developers.cloudflare.com/dns/proxy-status/).
 
 You can choose between two different scopes:
 

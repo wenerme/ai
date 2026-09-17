@@ -58,9 +58,7 @@ Use Purge
 
 [Load Balancing](https://developers.cloudflare.com/load-balancing/)
 
-Cloudflare Load Balancing distributes traffic across your endpoints
-
-, reducing endpoint strain and latency and improving the end users experience.
+Cloudflare Load Balancing distributes traffic across your endpoints, reducing endpoint strain and latency and improving the end users experience.
 
 [Images](https://developers.cloudflare.com/images/)
 

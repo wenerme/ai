@@ -487,9 +487,7 @@ Refer to the [foreign key documentation](https://developers.cloudflare.com/d1/sq
 
 ### `PRAGMA optimize`
 
-Attempts to optimize all schemas in a database by running the `ANALYZE` command for each table, if necessary. `ANALYZE` updates an internal table which contain statistics about tables and indices. These statistics helps the query planner
-
- to execute the input query more efficiently.
+Attempts to optimize all schemas in a database by running the `ANALYZE` command for each table, if necessary. `ANALYZE` updates an internal table which contain statistics about tables and indices. These statistics helps the query planner to execute the input query more efficiently.
 
 When `PRAGMA optimize` runs `ANALYZE`, it sets a limit to ensure the command does not take too long to execute. Alternatively, `PRAGMA optimize` may deem it unnecessary to run `ANALYZE` (for example, if the schema has not changed significantly). In this scenario, no optimizations are made.
 

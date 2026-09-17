@@ -77,9 +77,7 @@ Before you commit to a specific deployment, Cloudflare suggests you review all o
 
 ### Inline
 
-With an Inline deployment, all emails destined for one or more domains are filtered through Cloudflare before they are delivered to the user's inbox. Cloudflare can be deployed anywhere in your email processing chain. When deployed as the first hop
-
-, you will need to update the domain's DNS MX records to point to Cloudflare. If you prefer Cloudflare to inspect messages after your existing SEG (Secure Email Gateway), Cloudflare can be inserted as a hop in the processing chain, and will then forward processed messages downstream to the next hop. Based on policies, messages are blocked and/or quarantined if they are marked as Spam, Malicious, Bulk, and more.
+With an Inline deployment, all emails destined for one or more domains are filtered through Cloudflare before they are delivered to the user's inbox. Cloudflare can be deployed anywhere in your email processing chain. When deployed as the first hop, you will need to update the domain's DNS MX records to point to Cloudflare. If you prefer Cloudflare to inspect messages after your existing SEG (Secure Email Gateway), Cloudflare can be inserted as a hop in the processing chain, and will then forward processed messages downstream to the next hop. Based on policies, messages are blocked and/or quarantined if they are marked as Spam, Malicious, Bulk, and more.
 
 ![Inline deployment](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2226,height=861,format=svg/_astro/Inline_MX.W7ooc9mD.svg)
 

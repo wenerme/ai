@@ -26,9 +26,7 @@ Global traffic steering policies decide how a load balancer routes traffic to at
 
 ## EDNS Client Subnet (ECS) support
 
-EDNS Client Subnet (ECS)
-
- support provides customers with more control over location-based steering during gray-clouded DNS resolutions and can be used for proximity or geo (country) steering.
+EDNS Client Subnet (ECS) support provides customers with more control over location-based steering during gray-clouded DNS resolutions and can be used for proximity or geo (country) steering.
 
 Customers can configure their load balancer using the `location_strategy` parameter, which includes the properties `prefer_ecs` and `mode`.
 

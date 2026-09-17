@@ -20,9 +20,7 @@ This error indicates a mismatch between the HTTP hostname and the TLS SNI hostna
 
 ### Common cause
 
-The hostname sent by the client or browser via Server Name Indication (SNI)
-
- does not match the request host header.
+The hostname sent by the client or browser via Server Name Indication (SNI) does not match the request host header.
 
 ### Resolution
 

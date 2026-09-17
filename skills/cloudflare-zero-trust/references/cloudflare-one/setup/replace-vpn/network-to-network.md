@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Network to network
 
-Last updated Apr 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/network-to-network/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/network-to-network/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Connect two separate private networks so devices on each network can send and receive traffic in both directions through Cloudflare. This is useful when you need to link office locations, data centers, or cloud environments. For example, employees in one office could access a file server, printer, or internal application in another office.
 
@@ -20,7 +20,7 @@ To explore other connection scenarios, refer to [Replace your VPN](https://devel
 
 ## How it works
 
-[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) (formerly WARP Connector) lets you deploy mesh nodes — lightweight network connectors that you install on a single Linux device in each network. That device handles traffic for the entire network: it sends outbound traffic to Cloudflare and receives inbound traffic back, then passes it to the right device on the network. Because of this, other devices on the network do not need to install any software.
+[Cloudflare Mesh](https://developers.cloudflare.com/mesh/) (formerly WARP Connector) lets you deploy mesh nodes — lightweight network connectors that you install on a single Linux device in each network. That device handles traffic for the entire network: it sends outbound traffic to Cloudflare and receives inbound traffic back, then passes it to the right device on the network. Because of this, other devices on the network do not need to install any software.
 
 ## Prerequisites
 
@@ -30,7 +30,7 @@ To explore other connection scenarios, refer to [Replace your VPN](https://devel
 
 Note
 
-Mesh nodes are currently Linux-only. For more details on requirements, refer to [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/).
+Mesh nodes are currently Linux-only. For more details on requirements, refer to [Cloudflare Mesh](https://developers.cloudflare.com/mesh/).
 
 ## Step 1: Create your first mesh node
 
@@ -63,7 +63,7 @@ If the mesh node is installed on your network's router (the device that serves a
 
 If the mesh node is installed on a different device, other devices on the network need a static route so they know to send cross-network traffic to the mesh node. Without this route, devices do not know where to send traffic destined for the other network.
 
-For details on routing options, refer to [Routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/).
+For details on routing options, refer to [Routes](https://developers.cloudflare.com/mesh/features/routes/).
 
 ## Step 6: Verify your connection
 
@@ -75,7 +75,7 @@ After verifying your connection, consider securing your connected networks with 
 
 - **Set up Gateway policies**: By default, all traffic between your network segments flows through Cloudflare without restriction. Gateway policies let you scan, filter, and log traffic between your networks. For more information, refer to [DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [Network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/), and [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/).
 - **Create an Access application**: Restrict access to specific services or hosts on your connected networks with identity-based rules. For more information, refer to [Secure a private IP or hostname](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/).
-- **Enable high availability**: Deploy multiple replicas of each mesh node for automatic failover. For more information, refer to [High availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/).
+- **Enable high availability**: Deploy multiple replicas of each mesh node for automatic failover. For more information, refer to [High availability](https://developers.cloudflare.com/mesh/features/high-availability/).
 
 For in-depth guidance on policy design and device posture checks, refer to the [Replace your VPN learning path](https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/).
 
@@ -83,7 +83,7 @@ For in-depth guidance on policy design and device posture checks, refer to the [
 
 If you have issues connecting, refer to these resources:
 
-- [Tips and best practices](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/tips/): review common Cloudflare Mesh configuration tips and troubleshooting strategies.
+- [Tips and best practices](https://developers.cloudflare.com/mesh/best-practices/): review common Cloudflare Mesh configuration tips and troubleshooting strategies.
 - [Troubleshoot tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/): diagnose tunnel connectivity and routing problems.
 
 Was this helpful?
@@ -95,5 +95,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/network-to-network/#page","headline":"Network to network · Cloudflare One docs","description":"Connect two private networks using Cloudflare Mesh nodes and Cloudflare's network.","url":"https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/network-to-network/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Linux","Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/network-to-network/#page","headline":"Network to network · Cloudflare One docs","description":"Connect two private networks using Cloudflare Mesh nodes and Cloudflare's network.","url":"https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/network-to-network/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Linux","Private networks"]}
 ```

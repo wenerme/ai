@@ -55,9 +55,7 @@ Cloudflare uses the following order to determine the certificate and settings us
 
 ## Hostname priority
 
-When multiple proxied DNS records
-
- exist for a hostname, in multiple zones — usually due to [Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/) — only one record will control the zone settings and associated origin server.
+When multiple proxied DNS records exist for a hostname, in multiple zones — usually due to [Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/) — only one record will control the zone settings and associated origin server.
 
 Cloudflare determines this priority in the following order, assuming each record exists and is proxied (orange-clouded):
 

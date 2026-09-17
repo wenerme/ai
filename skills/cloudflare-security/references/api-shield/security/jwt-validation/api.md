@@ -611,9 +611,7 @@ Note
 
 Cloudflare will remove any fields that are unnecessary from each key and will drop keys that we do not support.
 
-It is highly recommended to validate the output of the API call
-
- to check that the resulting keys appear as intended.
+It is highly recommended to validate the output of the API call to check that the resulting keys appear as intended.
 
 Credential updates use the same algorithm compatibility behavior as configuration creation. The response includes normalized credentials and a message for each defaulted algorithm.
 

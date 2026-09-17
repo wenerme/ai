@@ -60,9 +60,7 @@ For further context, refer to [How Cloudflare works](https://developers.cloudfla
 
 ## Proxied records
 
-The sections below describe specific behaviors and expected outcomes when you have DNS records set to proxied
-
-. There may also be some [limitations](https://developers.cloudflare.com/dns/proxy-status/limitations/) in specific scenarios.
+The sections below describe specific behaviors and expected outcomes when you have DNS records set to proxied. There may also be some [limitations](https://developers.cloudflare.com/dns/proxy-status/limitations/) in specific scenarios.
 
 ### Predefined time to live
 

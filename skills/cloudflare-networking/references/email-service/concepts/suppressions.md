@@ -1,5 +1,5 @@
 ---
-description: Manage Email Service suppression lists to prevent sending to invalid or complaining addresses.
+description: Understand suppression scope, triggers, expiration, and enforcement.
 title: Suppression lists
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -12,34 +12,95 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Suppression lists
 
-Manage email suppression lists to prevent emails from being sent to addresses that shouldn't receive them, protecting your sender reputation with automatic and manual suppression management.
+Suppression lists prevent Email Service from sending to recipients who should not receive mail. Cloudflare adds entries after eligible bounces and spam complaints. You can also add entries manually.
 
-Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/concepts/suppressions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/concepts/suppressions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Suppression lists prevent emails from being sent to addresses that should not receive them, protecting your sender reputation and ensuring compliance with anti-spam regulations.
+An Email Sending suppression list contains recipients that Email Service does not contact. Suppressions protect your sender reputation and help prevent sending unwanted mail.
 
-## Account suppression list
+Cloudflare creates suppressions after eligible delivery failures and spam complaints. You can also add entries for recipients who should not receive mail.
 
-Cloudflare automatically manages suppressions for your account to preserve your reputation as an email sender.
+To add or remove entries, refer to [Manage suppressions](https://developers.cloudflare.com/email-service/configuration/suppressions/). Suppressions only apply to Email Sending.
 
-Cloudflare will automatically add email addresses to your account suppression list for the following reasons:
+## Suppression scope
 
-- **Hard bounces**: Invalid or non-existent email addresses are immediately suppressed.
-- **Repeated soft bounces**: Addresses that repeatedly fail delivery are temporarily or permanently suppressed based on the frequency and pattern of failures.
-- **Spam complaints**: Recipients who marked emails as spam. Cloudflare integrates with Postmasters to receive spam complaints and automatically updates your account suppression list to prevent you from sending emails to this email address and preserve your email sending reputation.
+Suppressions are account-scoped. Once an email address is on the suppression list, Email Service suppresses sends to that address from every domain in your account.
 
-You may also manually add or remove email addresses from your suppression list as needed. The removal of email addresses that have been automatically added to your suppression list as a result of a spam complaint is limited to avoid abuse.
+If you need separate suppression lists for different use cases, consider using separate Cloudflare accounts.
+
+## Suppression rules
+
+The following table describes automatic and manual creation rules and expiration:
+
+| Reason | Created when | Expiration |
+| --- | --- | --- |
+| Manual (`manual`) | You add the recipient through the dashboard or API | The time you choose, or no expiration |
+| Spam complaint (`complaint`) | Cloudflare receives and validates a complaint from the recipient's email provider | No expiration |
+| Hard bounce (`hard_bounce`) | Any other eligible recipient-side permanent rejection occurs | 7 days |
+| Hard bounce (`hard_bounce`) | The recipient mailbox or domain does not exist, or a recipient-side issue persists across repeated delivery attempts | No expiration |
+| Soft bounce (`soft_bounce`) | An eligible recipient-side temporary failure occurs, such as a full mailbox or rate limit | 24 hours by default |
+
+The [account Email Sending suppression management REST API](https://developers.cloudflare.com/api/resources/email_sending/subresources/suppressions/) can return Cloudflare-managed entries with a `policy` reason. Clients must use `read_only` to determine mutability, not infer it from `reason`.
+
+You cannot update or delete an entry when `read_only` is `true`. To investigate one, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
+
+### Manual suppressions
+
+Manual suppressions allow you to add application-level decisions that Email Service cannot observe. For example, if a user manually unsubscribes from emails in your app, you can add their email to your Email Service suppression list.
+
+You select the expiration when creating the entry. An entry without an expiration remains active until you delete it.
+
+### Spam complaints
+
+Email providers send feedback reports when recipients mark messages as spam. Cloudflare validates these reports before creating complaint suppressions.
+
+Complaint suppressions are created without an expiration. You can change or delete one when `read_only` is `false`.
+
+We recommend changing or deleting one only after the recipient opts in again through your application.
+
+### Hard bounces
+
+A hard bounce is a permanent rejection of one delivery attempt. Some addresses become valid again after their owner fixes the mailbox or domain.
+
+Email Service creates a suppression without an expiration when the mailbox or domain does not exist. It also does this when a recipient-side issue persists across repeated delivery attempts without a successful delivery.
+
+Other eligible hard-bounce suppressions last seven days.
+
+### Soft bounces
+
+A soft bounce is a temporary recipient-side failure. Examples include a full mailbox, a temporarily unavailable server, or recipient-side rate limiting.
+
+Eligible soft-bounce suppressions last 24 hours by default. Email Service resumes sending after the suppression expires.
+
+Not every temporary delivery failure creates a suppression. For example, Email Service does not suppress a recipient for a sender-side authentication or reputation problem.
+
+## Enforcement by sending method
+
+Each sending domain has a [**Drop suppressed recipients** setting](https://developers.cloudflare.com/email-service/configuration/domains/#drop-suppressed-recipients). The setting is off by default.
+
+| Sending method | Setting off | Setting on |
+| --- | --- | --- |
+| [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/) | Returns `400` and rejects the request when any recipient is suppressed. | Removes suppressed recipients and processes the remaining recipients. |
+| [Workers binding](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) | Throws `E_RECIPIENT_SUPPRESSED` and rejects the `send()` call when any recipient is suppressed. | Removes suppressed recipients and processes the remaining recipients. |
+| [SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/) | Rejects the message when any recipient is suppressed. | Removes suppressed recipients and processes the remaining recipients. If none remain, SMTP may return `250 2.0.0 Ok` without a Message-ID and delivers nothing. |
+
+Suppressed recipients do not count toward your [monthly quota](https://developers.cloudflare.com/email-service/platform/pricing/) or daily sending limits. They appear as **Rejected** in [Email sending logs](https://developers.cloudflare.com/email-service/observability/logs/).
 
 ## Best practices
 
-### List hygiene
+- Add manual suppressions for unsubscribes.
+- Require recipients to opt in again through your application.
+- Verify addresses before deleting suppressions.
+- Investigate patterns across repeated bounces.
+- Let temporary suppressions expire automatically.
 
-Maintaining clean suppression lists is essential for optimal email delivery performance and sender reputation. Regular maintenance helps identify delivery issues early and ensures legitimate recipients can receive your emails.
+## Related resources
 
-- Review suppression lists monthly
-- Remove temporary suppressions that have expired
-- Identify patterns in suppressed addresses
-- Update email validation rules based on common issues
+- Use [Manage suppressions](https://developers.cloudflare.com/email-service/configuration/suppressions/) to manage entries through the dashboard or API.
+- Review [Email deliverability](https://developers.cloudflare.com/email-service/concepts/deliverability/) to understand bounce and complaint effects.
+- Follow [Email lifecycle](https://developers.cloudflare.com/email-service/concepts/email-lifecycle/) to locate suppression checks in the sending flow.
+- Review [Suppression list limits](https://developers.cloudflare.com/email-service/platform/limits/#suppression-list-limits) for API limits.
+- Use [Email sending logs](https://developers.cloudflare.com/email-service/observability/logs/) to investigate rejected sends.
 
 Was this helpful?
 
@@ -50,5 +111,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/concepts/suppressions/#page","headline":"Suppression lists · Cloudflare Email Service docs","description":"Manage Email Service suppression lists to prevent sending to invalid or complaining addresses.","url":"https://developers.cloudflare.com/email-service/concepts/suppressions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/concepts/suppressions/#page","headline":"Suppression lists · Cloudflare Email Service docs","description":"Understand suppression scope, triggers, expiration, and enforcement.","url":"https://developers.cloudflare.com/email-service/concepts/suppressions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -34,9 +34,7 @@ When you use a Cloudflare-owned IP space, you do not need a Letter of Agency (LO
 
 ## Verify router compatibility
 
-Magic Transit relies on anycast
-
- tunnels to transmit packets from Cloudflare's global network to your origin network.
+Magic Transit relies on anycast tunnels to transmit packets from Cloudflare's global network to your origin network.
 
 The routers at your tunnel endpoints must meet the following requirements for Magic Transit compatibility.
 

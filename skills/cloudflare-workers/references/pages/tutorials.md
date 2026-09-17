@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/tutorials/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-View tutorials
-
- to help you get started with Pages.
+View tutorials to help you get started with Pages.
 
 | Name | Last Updated | Difficulty |
 | --- | --- | --- |

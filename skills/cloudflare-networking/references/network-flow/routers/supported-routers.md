@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-flow/routers/supported-routers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The majority of enterprise-grade routers are capable of exporting NetFlow
-
- or sFlow, and popular router brands that support either NetFlow or sFlow are listed below.
+The majority of enterprise-grade routers are capable of exporting NetFlow or sFlow, and popular router brands that support either NetFlow or sFlow are listed below.
 
 Relatively few consumer grade routers are capable of exporting NetFlow or sFlow. If you are a network hobbyist, business, or other organization, and your router options are limited, you can view the list of open source and affordable options below.
 

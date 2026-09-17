@@ -54,7 +54,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 </details>
 
-*Get Script Tagsbash*
+*List Workers for Platforms Script Tagsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/namespaces/$DISPATCH_NAMESPACE/scripts/$SCRIPT_NAME/tags" \
@@ -80,7 +80,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 </details>
 
-*Put Script Tagsbash*
+*Replace Workers for Platforms Script Tagsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/namespaces/$DISPATCH_NAMESPACE/scripts/$SCRIPT_NAME/tags" \
@@ -106,7 +106,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 </details>
 
-*Put Script Tagbash*
+*Create Workers for Platforms Script Tagbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/namespaces/$DISPATCH_NAMESPACE/scripts/$SCRIPT_NAME/tags/$TAG" \
@@ -132,7 +132,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 </details>
 
-*Delete Script Tagbash*
+*Delete Workers for Platforms Script Tagbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/namespaces/$DISPATCH_NAMESPACE/scripts/$SCRIPT_NAME/tags/$TAG" \
@@ -160,7 +160,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 </details>
 
-*List Scripts in Namespacebash*
+*List Workers for Platforms Scriptsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/namespaces/$DISPATCH_NAMESPACE/scripts?tags=production%3Ayes" \
@@ -186,7 +186,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 </details>
 
-*Delete Scripts in Namespacebash*
+*Delete Workers for Platforms Scriptsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/namespaces/$DISPATCH_NAMESPACE/scripts?tags=customer-123%3Ayes" \

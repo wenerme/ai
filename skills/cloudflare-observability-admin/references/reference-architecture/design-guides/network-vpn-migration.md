@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Network-focused migration from VPN concentrators to Zero Trust Network Access
 
-Last updated Apr 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/design-guides/network-vpn-migration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/design-guides/network-vpn-migration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -71,7 +71,7 @@ A SASE platform replaces traditional VPN hardware by offering two key services. 
 
 Remote users authenticate and connect to a cloud hosted Zero Trust Network Access (ZTNA) service, which in turn has connectivity into the networks where the private applications reside. Cloudflare's [SASE reference architecture](https://developers.cloudflare.com/reference-architecture/architectures/sase/) describes three methods for connecting Cloudflare to your existing applications and networks:
 
-1. Software connectors ([`cloudflared`](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/) or [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/))
+1. Software connectors ([`cloudflared`](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/) or [Cloudflare Mesh](https://developers.cloudflare.com/mesh/))
 2. IPsec or GRE tunnels using [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
 3. Direct network connections using [Cloudflare Network Interconnect](https://developers.cloudflare.com/network-interconnect/)
 
@@ -145,7 +145,7 @@ Although this phase focuses on using the Cloudflare WAN service and IPsec tunnel
 Cloudflare offers two types of software connectors:
 
 - [`cloudflared`](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/)
-- [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) (formerly WARP Connector)
+- [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) (formerly WARP Connector)
 
 As discussed in the introduction, `cloudflared` is the preferred method for Zero Trust Network Access, but only supports inbound connectivity to your networks and application servers, any server initiated connection will not go via the tunnel and instead follow the server's default network path. Cloudflare Mesh is designed to create tunnels that facilitate both inbound and outbound connectivity, but it doesn't currently have the same level of failover support and ease of configuration. For this guide, we will be discussing using `cloudflared` as it supports the internal DNS use case described.
 
@@ -245,5 +245,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/design-guides/network-vpn-migration/#page","headline":"Network-focused migration from VPN concentrators to Zero Trust Network Access · Cloudflare Reference Architecture docs","description":"The traditional approach of installing and maintaining hardware for remote access to private company networks is no longer secure or cost effective. IT teams are recognizing the cost and effort to install and maintain their own hardware can be offset with more modern, and more secure cloud hosted services.","url":"https://developers.cloudflare.com/reference-architecture/design-guides/network-vpn-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/design-guides/network-vpn-migration/#page","headline":"Network-focused migration from VPN concentrators to Zero Trust Network Access · Cloudflare Reference Architecture docs","description":"The traditional approach of installing and maintaining hardware for remote access to private company networks is no longer secure or cost effective. IT teams are recognizing the cost and effort to install and maintain their own hardware can be offset with more modern, and more secure cloud hosted services.","url":"https://developers.cloudflare.com/reference-architecture/design-guides/network-vpn-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

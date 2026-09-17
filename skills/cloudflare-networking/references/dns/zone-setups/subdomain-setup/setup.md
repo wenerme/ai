@@ -18,9 +18,7 @@ Availability
 
 Subdomain setup is only available for Enterprise accounts. If you only want to create a subdomain for your site in Cloudflare, refer to [Create a subdomain record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/).
 
-[Subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/) relies on a process known as delegation. When, in a parent domain such as `example.com`, an [NS record ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-ns-record/) is created for a subdomain `blog.example.com`, this means that DNS management for the subdomain can be done separately, in its own [DNS zone](https://developers.cloudflare.com/dns/concepts/#zone)
-
-.
+[Subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/) relies on a process known as delegation. When, in a parent domain such as `example.com`, an [NS record ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-ns-record/) is created for a subdomain `blog.example.com`, this means that DNS management for the subdomain can be done separately, in its own [DNS zone](https://developers.cloudflare.com/dns/concepts/#zone).
 
 ```
     flowchart TD

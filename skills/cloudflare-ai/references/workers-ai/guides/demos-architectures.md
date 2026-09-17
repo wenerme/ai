@@ -18,9 +18,7 @@ Workers AI can be used to build dynamic and performant services. The following d
 
 ## Reference architectures
 
-Explore the following reference architectures
-
- that use Workers AI:
+Explore the following reference architectures that use Workers AI:
 
 [**Fullstack applications** A practical example of how these services come together in a real fullstack application architecture.](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/fullstack-application/)
 

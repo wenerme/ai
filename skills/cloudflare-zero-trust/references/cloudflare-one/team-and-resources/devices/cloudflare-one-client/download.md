@@ -1062,8 +1062,8 @@ This release introduces multiple features from our previous beta release into st
 **Additional changes and improvements**
 
 - Starting with 2026.6.822.0, the client unifies all API requests under the <code>api.devices.cloudflare.com</code> SNI, where previously both <code>zero-trust-client.cloudflareclient.com</code> and <code>notifications.cloudflareclient.com</code> were used. Review <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/">Cloudflare One Client with firewall</a> to ensure systems that rely on SNI inspection do not block the API traffic. The behavior of previous client versions is unaffected.
-- <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/">Cloudflare Mesh</a> functionality using the Cloudflare One Client is now supported on RHEL 9 and 10.
-- Cloudflare Mesh now supports <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes">hostname-based routing</a>.
+- <a href="https://developers.cloudflare.com/mesh/">Cloudflare Mesh</a> functionality using the Cloudflare One Client is now supported on RHEL 9 and 10.
+- Cloudflare Mesh now supports <a href="https://developers.cloudflare.com/mesh/features/routes/#hostname-routes">hostname-based routing</a>.
 - Client Certificate device-posture checks now support template variables (e.g. <code>${serial_number}</code>, <code>${device_uuid}</code>) in the Subject Alternative Name field. Previously only the Common Name field accepted variables, which broke posture rules that pinned identity to a SAN entry.
 - Improved accessibility by using high contrast colors and more defined color boundaries when high contrast is enabled in the system display settings.
 - Path MTU Discovery (PMTUD) is now enabled by default.

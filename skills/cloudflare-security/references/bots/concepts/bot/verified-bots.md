@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jul 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-A Verified bot
-
- is a bot or agent that Cloudflare has confirmed is **transparent about who it is and what it does**: it represents itself honestly and does not abuse the access that honesty earns. Examples include search engine crawlers, monitoring services, and user-driven agents.
+A Verified bot is a bot or agent that Cloudflare has confirmed is **transparent about who it is and what it does**: it represents itself honestly and does not abuse the access that honesty earns. Examples include search engine crawlers, monitoring services, and user-driven agents.
 
 Being Verified means a bot or agent meets two bars:
 

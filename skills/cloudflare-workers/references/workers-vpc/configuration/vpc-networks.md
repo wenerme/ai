@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # VPC Networks
 
-Last updated Jun 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-VPC Networks allow your Workers to access any service in your private network without pre-registering individual hosts or ports. You can bind to a specific [Cloudflare Tunnel](https://developers.cloudflare.com/workers-vpc/configuration/tunnel/) to reach any service behind that tunnel, or bind to [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) to reach any Mesh node, client device, subnet route or hostname route announced through Cloudflare Tunnel or Mesh, or destination reachable through a [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramp (GRE, IPsec, or CNI).
+VPC Networks allow your Workers to access any service in your private network without pre-registering individual hosts or ports. You can bind to a specific [Cloudflare Tunnel](https://developers.cloudflare.com/workers-vpc/configuration/tunnel/) to reach any service behind that tunnel, or bind to [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) to reach any Mesh node, client device, subnet route or hostname route announced through Cloudflare Tunnel or Mesh, or destination reachable through a [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramp (GRE, IPsec, or CNI).
 
 At runtime, the URL you pass to `fetch()` or the address you pass to `connect()` determines the destination — any hostname or IP address reachable through the bound Cloudflare Tunnel or through Cloudflare Mesh. Use `fetch()` for HTTP traffic, and [`connect()`](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/) for raw TCP connections (Redis, MQTT, custom protocols, and other non-HTTP services). This differs from [VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/), which require you to create a separate binding for each target host and port combination.
 
@@ -53,7 +53,7 @@ The `remote` flag must be set to `true` to enable remote bindings during local d
 
 ## Bind to Cloudflare Mesh
 
-[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) (formerly WARP Connector) connects your services, devices, and Workers through Cloudflare's global network. When you bind a Worker to Cloudflare Mesh using `network_id: "cf1:network"`, your Worker can reach:
+[Cloudflare Mesh](https://developers.cloudflare.com/mesh/) (formerly WARP Connector) connects your services, devices, and Workers through Cloudflare's global network. When you bind a Worker to Cloudflare Mesh using `network_id: "cf1:network"`, your Worker can reach:
 
 - Any Mesh node or client device in your account
 - Subnet routes and hostname routes announced through Cloudflare Tunnel or Cloudflare Mesh
@@ -71,7 +71,7 @@ Use `cf1:network` when:
 
 Note
 
-Your account must have at least one active [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) node, or [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramp that can reach the target services.
+Your account must have at least one active [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) node, or [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramp that can reach the target services.
 
 For destinations behind Cloudflare WAN on-ramps (GRE, IPsec, or CNI), your network must also route the [Cloudflare source IP range](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/) (`100.64.0.0/12` by default) back through the on-ramp so reply traffic returns to Cloudflare. This is part of standard Cloudflare WAN onboarding. If you have already configured this for Gateway, Load Balancing, or other Cloudflare services that reach your private network through Cloudflare WAN, no additional setup is required.
 
@@ -164,7 +164,7 @@ The following table summarizes the differences:
 ## Next steps
 
 - Set up [Cloudflare Tunnel](https://developers.cloudflare.com/workers-vpc/configuration/tunnel/)
-- [Set up Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/get-started/)
+- [Set up Cloudflare Mesh](https://developers.cloudflare.com/mesh/get-started/)
 - [Set up Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/get-started/)
 - Try the [Connect Workers to Cloudflare Mesh](https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudflare-mesh/) example
 - Learn about the [Workers Binding API](https://developers.cloudflare.com/workers-vpc/api/)
@@ -178,5 +178,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/#page","headline":"VPC Networks · Cloudflare Workers VPC","description":"Bind Workers to an entire Cloudflare Tunnel or Cloudflare Mesh without pre-registering hosts.","url":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/#page","headline":"VPC Networks · Cloudflare Workers VPC","description":"Bind Workers to an entire Cloudflare Tunnel or Cloudflare Mesh without pre-registering hosts.","url":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

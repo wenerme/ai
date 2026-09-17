@@ -24,9 +24,7 @@ Ensure that your Snippet code only calls `fetch(request)` once. This method is u
 
 ## Error 1202: Snippets exceeded subrequests limit
 
-This error occurs when the number of subrequests
-
- exceeds [the limit](https://developers.cloudflare.com/rules/snippets/#availability) for your Cloudflare plan.
+This error occurs when the number of subrequests exceeds [the limit](https://developers.cloudflare.com/rules/snippets/#availability) for your Cloudflare plan.
 
 ### Resolution
 

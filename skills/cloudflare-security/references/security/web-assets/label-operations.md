@@ -116,9 +116,7 @@ Replace `cf-llm` with another [managed label](#managed-labels). You can also use
 
 ### Logpush
 
-You can export per-request Web Assets data to your storage or SIEM system
-
- using [Logpush](https://developers.cloudflare.com/logs/logpush/). The `WebAssetsOperationID` and `WebAssetsLabelsManaged` fields are available in the [HTTP requests dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/#webassetslabelsmanaged/).
+You can export per-request Web Assets data to your storage or SIEM system using [Logpush](https://developers.cloudflare.com/logs/logpush/). The `WebAssetsOperationID` and `WebAssetsLabelsManaged` fields are available in the [HTTP requests dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/#webassetslabelsmanaged/).
 
 Was this helpful?
 

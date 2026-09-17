@@ -16,9 +16,7 @@ Last updated Jun 26, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Restrict Durable Objects to a jurisdiction
 
-Jurisdictions are used to create Durable Objects
-
- that only run and store data within a region to comply with local regulations such as the [GDPR ↗](https://gdpr-info.eu/) or [FedRAMP ↗](https://blog.cloudflare.com/cloudflare-achieves-fedramp-authorization/).
+Jurisdictions are used to create Durable Objects that only run and store data within a region to comply with local regulations such as the [GDPR ↗](https://gdpr-info.eu/) or [FedRAMP ↗](https://blog.cloudflare.com/cloudflare-achieves-fedramp-authorization/).
 
 Workers may still access Durable Objects constrained to a jurisdiction from anywhere in the world. The jurisdiction constraint only controls where the Durable Object itself runs and persists data. Consider using [Regional Services](https://developers.cloudflare.com/data-localization/regional-services/) to control the regions from which Cloudflare responds to requests.
 

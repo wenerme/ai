@@ -16,7 +16,7 @@ Last updated Aug 12, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 220 modelsClear filters
+We found 224 modelsClear filters
 
 ## Compare models
 
@@ -684,6 +684,22 @@ lightricksText-to-Video Lightricks LTX-2.5 Fast is a fast video generation model
 
 Compare
 
+[![MiniMax logo](https://developers.cloudflare.com/_astro/minimax.B0Y99aoe.svg)<h3>h3</h3>
+
+MiniMaxText-to-Video A multimodal video generation model supporting text-to-video, first and last frame image-to-video, and reference-to-video generation with 768P and 2K output. - Third-party](https://developers.cloudflare.com/ai/models/minimax/h3/)
+
+- Pricing listed
+
+Compare
+
+[![MiniMax logo](https://developers.cloudflare.com/_astro/minimax.B0Y99aoe.svg)<h3>h3-max</h3>
+
+MiniMaxText-to-Video A fast multimodal video generation model supporting text-to-video and image-to-video generation at 480P and 768P. - Third-party](https://developers.cloudflare.com/ai/models/minimax/h3-max/)
+
+- Pricing listed
+
+Compare
+
 [![MiniMax logo](https://developers.cloudflare.com/_astro/minimax.B0Y99aoe.svg)<h3>hailuo-2.3</h3>
 
 MiniMaxText-to-Video A high-fidelity video generation model optimized for realistic human motion, cinematic VFX, expressive characters, and strong prompt and style adherence across text-to-video and image-to-video workflows. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3/)
@@ -935,6 +951,16 @@ Compare
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-5.6-terra</h3>
 
 OpenAIText Generation GPT-5.6 Terra is an OpenAI GPT-5.6 model that balances intelligence and cost, using the Responses API for reasoning and stateful context management. - Third-party](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-terra/)
+
+- Context: 1.1M tokens
+- Maximum output: 128K tokens
+- Pricing listed
+
+Compare
+
+[![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-6-astra</h3>
+
+OpenAIText Generation GPT-6 Astra is OpenAI's most capable model, built for complex reasoning, coding, computer use, research, and document creation. - Third-party](https://developers.cloudflare.com/ai/models/openai/gpt-6-astra/)
 
 - Context: 1.1M tokens
 - Maximum output: 128K tokens
@@ -1215,6 +1241,14 @@ Compare
 [![RunwayML logo](https://developers.cloudflare.com/_astro/runway.Cq8Cjov4.svg)<h3>gen-4.5</h3>
 
 RunwayMLText-to-Video RunwayML's video generation model supporting both text-to-video and image-to-video with customizable duration, aspect ratio, and content moderation controls. - Third-party](https://developers.cloudflare.com/ai/models/runwayml/gen-4.5/)
+
+- Pricing listed
+
+Compare
+
+[s<h3>union-alpha</h3>
+
+stealthText Generation Union Alpha is a multimodal model designed for research, coding, and agentic workflows. It delivers frontier-level performance across diverse general-purpose tasks. - Third-party](https://developers.cloudflare.com/ai/models/stealth/union-alpha/)
 
 - Pricing listed
 
@@ -1551,7 +1585,7 @@ aisingaporeText Generation SEA-LION stands for Southeast Asian Languages In One 
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-4.7-flash</h3>
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-4.7-flash</h3>
 
 Zhipu AIText Generation GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages. - Cloudflare-hosted - Function calling - Reasoning](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-4.7-flash/)
 
@@ -1560,7 +1594,7 @@ Zhipu AIText Generation GLM-4.7-Flash is a fast and efficient multilingual text 
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.2</h3>
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.2</h3>
 
 Zhipu AIText Generation Z.ai's flagship agentic coding model - Cloudflare-hosted - Function calling - Reasoning](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.2/)
 
@@ -1569,7 +1603,7 @@ Zhipu AIText Generation Z.ai's flagship agentic coding model - Cloudflare-hosted
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3</h3>
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.3</h3>
 
 Zhipu AIText Generation GLM-5.3 is Z.ai's flagship agentic coding model, pairing a 1M-token context window with reasoning, function calling, and structured outputs to power multi-step, tool-driven development workflows. - Cloudflare-hosted - Function calling - Reasoning](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3/)
 
@@ -1578,7 +1612,7 @@ Zhipu AIText Generation GLM-5.3 is Z.ai's flagship agentic coding model, pairing
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>
 
 Zhipu AIText Generation The first natively multimodal model in the GLM-5 series. With 320B total parameters and just 18B active parameters, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks. - Cloudflare-hosted - Function calling - Reasoning - Vision](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3-flash/)
 

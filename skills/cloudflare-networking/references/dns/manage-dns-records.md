@@ -52,9 +52,7 @@ DNS management for **example.com**:
 
 In this example, an IP address resolution record of type <code>A</code> is indicating that the resources that correspond to the subdomain <code>blog.example.com</code> can be reached on the IPv4 address <code>192.0.2.1</code>.
 
-Also, as this record is <a href="https://developers.cloudflare.com/dns/proxy-status/">proxied</a>
-
-, Cloudflare automatically defines for how long this information should be cached by DNS resolvers.
+Also, as this record is <a href="https://developers.cloudflare.com/dns/proxy-status/">proxied</a>, Cloudflare automatically defines for how long this information should be cached by DNS resolvers.
 
 </details>
 

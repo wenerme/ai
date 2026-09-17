@@ -32,9 +32,7 @@ To create a custom rule for a zone, add a rule to the `http_request_firewall_cus
 
 This example request adds a rule to the `http_request_firewall_custom` phase entry point ruleset for the zone with ID `$ZONE_ID`. The entry point ruleset already exists, with ID `$RULESET_ID`.
 
-The new rule, which will be the last rule in the ruleset, will challenge requests from the United Kingdom or France with an attack score
-
- lower than `20`.
+The new rule, which will be the last rule in the ruleset, will challenge requests from the United Kingdom or France with an attack score lower than `20`.
 
 *Create a zone ruleset rulebash*
 

@@ -34,11 +34,11 @@ The query editor supports the following resource types. Select a resource type f
 
 ## Audit events
 
-Query audit events for a specific project, group, or (on self-hosted GitLab with admin privileges) the entire instance.
+Query audit events for a specific project, group, or (on self-managed GitLab with admin privileges) the entire instance.
 
 > Note
 >
-> Audit events require a GitLab Premium subscription for project and group queries, or a self-hosted instance with admin privileges for instance-level queries.
+> Audit events require a GitLab Premium subscription for project and group queries, or a self-managed instance with admin privileges for instance-level queries.
 
 Expand table
 
@@ -48,7 +48,7 @@ Expand table
 | **Project Id** | The numeric ID of the project. Displayed when **Query Type** is set to **Project**. |
 | **Group ID**   | The numeric ID of the group. Displayed when **Query Type** is set to **Group**.     |
 
-On self-hosted GitLab, if no project ID or group ID is set, the data source returns all audit events for the instance.
+On self-managed GitLab, if no project ID or group ID is set, the data source returns all audit events for the instance.
 
 ## Commits
 

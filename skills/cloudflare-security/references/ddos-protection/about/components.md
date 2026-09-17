@@ -18,9 +18,7 @@ Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Autonomous Edge
 
-The Cloudflare Autonomous Edge is powered by the denial-of-service daemon
-
- (`dosd`), which is a home-grown software-defined system. The flow tracking daemon, `flowtrackd`, is our stateful mitigation platform alongside `dosd`. A `dosd` instance runs in every single server in every one of [Cloudflare global network's data centers ↗](https://www.cloudflare.com/network/) around the world. These `dosd` instances can detect and mitigate DDoS attacks autonomously without requiring centralized consensus. Cloudflare users can configure this system through [DDoS Attack Protection managed rulesets](https://developers.cloudflare.com/ddos-protection/managed-rulesets/).
+The Cloudflare Autonomous Edge is powered by the denial-of-service daemon (`dosd`), which is a home-grown software-defined system. The flow tracking daemon, `flowtrackd`, is our stateful mitigation platform alongside `dosd`. A `dosd` instance runs in every single server in every one of [Cloudflare global network's data centers ↗](https://www.cloudflare.com/network/) around the world. These `dosd` instances can detect and mitigate DDoS attacks autonomously without requiring centralized consensus. Cloudflare users can configure this system through [DDoS Attack Protection managed rulesets](https://developers.cloudflare.com/ddos-protection/managed-rulesets/).
 
 Another component of Cloudflare's Autonomous Edge includes the [Advanced TCP Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection/) system. This is Cloudflare's TCP state tracking machine for detecting and mitigating the most randomized and sophisticated TCP-based DDoS attacks in unidirectional routing topologies — such as the case of [Magic Transit](https://developers.cloudflare.com/magic-transit/). Advanced TCP Protection is able to identify the state of a TCP connection and then drops, challenges, or rate-limits packets that do not belong to a legitimate connection.
 

@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Explore the following examples
-
- for Workflows.
+Explore the following examples for Workflows.
 
 [**Human-in-the-Loop Image Tagging with waitForEvent** Human-in-the-loop Workflow with waitForEvent API](https://developers.cloudflare.com/workflows/examples/wait-for-event/)
 

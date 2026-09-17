@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/tools/ip-access-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Use IP Access rules to allowlist
-
-, block, and challenge traffic based on the visitor's IP address, Autonomous System Number (ASN), or country.
+Use IP Access rules to allowlist, block, and challenge traffic based on the visitor's IP address, Autonomous System Number (ASN), or country.
 
 IP Access rules are commonly used to block or challenge suspected malicious traffic. Another common use of IP Access rules is to allow services that regularly access your site, such as APIs, crawlers, and payment providers.
 

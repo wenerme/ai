@@ -16,9 +16,7 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Magic Transit is a network security and performance solution that offers Distributed Denial of Service ([DDoS](https://developers.cloudflare.com/ddos-protection/)) protection, traffic acceleration, and more for on-premise, cloud-hosted, and hybrid networks.
 
-Magic Transit delivers its connectivity, security, and performance benefits by serving as the front door to your IP network. This means it accepts IP packets
-
- destined for your network, processes them, and then outputs them to your origin infrastructure.
+Magic Transit delivers its connectivity, security, and performance benefits by serving as the front door to your IP network. This means it accepts IP packets destined for your network, processes them, and then outputs them to your origin infrastructure.
 
 The Cloudflare network uses [Border Gateway Protocol (BGP) ↗](https://www.cloudflare.com/learning/security/glossary/what-is-bgp/) to announce your company's IP address space, extending your network presence globally, and [anycast](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/) to ingest your traffic. Today, Cloudflare's anycast global network spans [hundreds of cities worldwide ↗](https://www.cloudflare.com/network/).
 

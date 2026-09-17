@@ -54,9 +54,7 @@ DNSSEC (Domain Name System Security Extensions) lets domain owners cryptographic
 
 ## Does 1.1.1.1 send EDNS Client Subnet header?
 
-No. 1.1.1.1 is a privacy-focused resolver and does not include client IP information in its queries to authoritative servers. It does not send the EDNS Client Subnet (ECS)
-
- header. The only exception is the Akamai debug domain `whoami.ds.akahelp.net`, which is used for cross-provider debugging. Cloudflare does not send ECS to any of Akamai's production domains, such as `akamaihd.net`.
+No. 1.1.1.1 is a privacy-focused resolver and does not include client IP information in its queries to authoritative servers. It does not send the EDNS Client Subnet (ECS) header. The only exception is the Akamai debug domain `whoami.ds.akahelp.net`, which is used for cross-provider debugging. Cloudflare does not send ECS to any of Akamai's production domains, such as `akamaihd.net`.
 
 ## Does 1.1.1.1 support IPv6?
 

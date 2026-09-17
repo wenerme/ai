@@ -1,6 +1,6 @@
 ---
-description: Reference information for Tips and best practices in Zero Trust networking.
-title: Tips and best practices
+description: Recommended practices for reliable Cloudflare Mesh deployments.
+title: Best practices
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
@@ -10,15 +10,15 @@ image: https://developers.cloudflare.com/og-docs.png
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Tips and best practices
+# Best practices
 
-Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/tips/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Operational guidance for managing Cloudflare Mesh deployments — updating the client, configuring cloud providers, running alongside Cloudflare Tunnel, and common troubleshooting.
 
 ## Update a Mesh node
 
-Updating a Mesh node means updating the `cloudflare-warp` package on the Linux host. The node briefly disconnects during the update, which interrupts traffic routed through it. If you have [high availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) enabled, traffic fails over to a standby replica automatically.
+Updating a Mesh node means updating the `cloudflare-warp` package on the Linux host. The node briefly disconnects during the update, which interrupts traffic routed through it. If you have [high availability](https://developers.cloudflare.com/mesh/features/high-availability/) enabled, traffic fails over to a standby replica automatically.
 
 1. Check the current version:
 
@@ -60,7 +60,7 @@ Updating a Mesh node means updating the `cloudflare-warp` package on the Linux h
 
 ## Make IP forwarding persistent
 
-IP forwarding allows a Mesh node to act as a gateway, forwarding packets between its network interface and the Cloudflare network. This is only required if the node advertises [CIDR routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/) — if you are only reaching the node by its Mesh IP, forwarding is not needed.
+IP forwarding allows a Mesh node to act as a gateway, forwarding packets between its network interface and the Cloudflare network. This is only required if the node advertises [CIDR routes](https://developers.cloudflare.com/mesh/features/routes/) — if you are only reaching the node by its Mesh IP, forwarding is not needed.
 
 Older installations may have used `sysctl -w` for IP forwarding, which does not persist across reboots. If your node loses route connectivity after a server restart, run the following to make forwarding permanent:
 
@@ -98,7 +98,7 @@ When deploying Mesh nodes in a cloud VPC, you may need to configure additional p
 
 Mesh nodes run in [Traffic and DNS mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/), which redirects DNS queries on the host to Cloudflare Gateway. This will conflict with DNS services running on the same machine (for example, Active Directory DNS, Pi-hole, Unbound, BIND, or dnsmasq).
 
-If your server runs a DNS service, do not install the Mesh node on that host. Instead, install the node on a separate machine on the same subnet and use [CIDR routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/) to make the DNS server reachable.
+If your server runs a DNS service, do not install the Mesh node on that host. Instead, install the node on a separate machine on the same subnet and use [CIDR routes](https://developers.cloudflare.com/mesh/features/routes/) to make the DNS server reachable.
 
 ## Running Mesh alongside other VPN or mesh software
 
@@ -159,5 +159,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/tips/#page","headline":"Tips and best practices · Cloudflare One docs","description":"Reference information for Tips and best practices in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/tips/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/best-practices/#page","headline":"Best practices · Cloudflare One docs","description":"Recommended practices for reliable Cloudflare Mesh deployments.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 ```

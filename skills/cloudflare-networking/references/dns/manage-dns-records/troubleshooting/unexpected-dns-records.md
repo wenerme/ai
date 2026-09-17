@@ -40,9 +40,7 @@ You might notice TXT records like `_acme-challenge.<hostname>` are returned by y
 
 ### Cause
 
-These records are automatically created to allow Cloudflare edge certificates ([universal](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/), [advanced](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/), and [backup](https://developers.cloudflare.com/ssl/edge-certificates/backup-certificates/)) to be provisioned. `_acme-challenge` records are required by certificate authorities (CAs)
-
- so that they can verify your domain ownership before issuing the SSL/TLS certificate. For details, refer to [Domain control validation (DCV)](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/).
+These records are automatically created to allow Cloudflare edge certificates ([universal](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/), [advanced](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/), and [backup](https://developers.cloudflare.com/ssl/edge-certificates/backup-certificates/)) to be provisioned. `_acme-challenge` records are required by certificate authorities (CAs) so that they can verify your domain ownership before issuing the SSL/TLS certificate. For details, refer to [Domain control validation (DCV)](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/).
 
 ### Solution
 

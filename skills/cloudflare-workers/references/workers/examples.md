@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Explore the following examples
-
- for Workers.
+Explore the following examples for Workers.
 
 [**Single Page App (SPA) shell with bootstrap data** Use HTMLRewriter to inject prefetched bootstrap data into an SPA shell, eliminating client-side data fetching on initial load. Works with Workers Static Assets or an externally hosted SPA.](https://developers.cloudflare.com/workers/examples/spa-shell/)
 

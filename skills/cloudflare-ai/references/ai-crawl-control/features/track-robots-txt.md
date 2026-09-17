@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-crawl-control/features/track-robots-txt/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The **Directives** tab in AI Crawl Control provides insights into how AI crawlers interact with your `robots.txt`
-
- files across your hostnames. You can monitor request patterns, verify file availability, identify crawlers that violate your directives, and assess your site's readiness for AI agents.
+The **Directives** tab in AI Crawl Control provides insights into how AI crawlers interact with your `robots.txt` files across your hostnames. You can monitor request patterns, verify file availability, identify crawlers that violate your directives, and assess your site's readiness for AI agents.
 
 To access directives insights:
 

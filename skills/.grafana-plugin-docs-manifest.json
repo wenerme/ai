@@ -381,8 +381,8 @@
   },
   "grafana-bigquery-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/configure.md",
-    "size": 29682,
-    "updatedAt": "2026-09-15T04:48:03.438Z"
+    "size": 30202,
+    "updatedAt": "2026-09-17T04:49:40.744Z"
   },
   "grafana-bigquery-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest.md",
@@ -401,8 +401,8 @@
   },
   "grafana-bigquery-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/troubleshooting.md",
-    "size": 39018,
-    "updatedAt": "2026-09-15T04:48:04.017Z"
+    "size": 39350,
+    "updatedAt": "2026-09-17T04:49:41.314Z"
   },
   "grafana-catchpoint-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-catchpoint-datasource/latest/alerting.md",
@@ -881,18 +881,18 @@
   },
   "grafana-gitlab-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-gitlab-datasource/latest/configure.md",
-    "size": 4901,
-    "updatedAt": "2026-06-25T05:42:08.936Z"
+    "size": 6919,
+    "updatedAt": "2026-09-17T04:49:54.668Z"
   },
   "grafana-gitlab-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-gitlab-datasource/latest.md",
-    "size": 5597,
-    "updatedAt": "2026-06-25T05:42:09.301Z"
+    "size": 5955,
+    "updatedAt": "2026-09-17T04:49:54.802Z"
   },
   "grafana-gitlab-datasource/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-gitlab-datasource/latest/query-editor.md",
-    "size": 19433,
-    "updatedAt": "2026-06-25T05:42:09.680Z"
+    "size": 19436,
+    "updatedAt": "2026-09-17T04:49:54.942Z"
   },
   "grafana-gitlab-datasource/template-variables.md": {
     "url": "https://grafana.com/docs/plugins/grafana-gitlab-datasource/latest/template-variables.md",
@@ -901,8 +901,8 @@
   },
   "grafana-gitlab-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-gitlab-datasource/latest/troubleshooting.md",
-    "size": 15079,
-    "updatedAt": "2026-06-25T05:42:10.410Z"
+    "size": 20397,
+    "updatedAt": "2026-09-17T04:49:55.214Z"
   },
   "grafana-googlesheets-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-googlesheets-datasource/latest/alerting.md",

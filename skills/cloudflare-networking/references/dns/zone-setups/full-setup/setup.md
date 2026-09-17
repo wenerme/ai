@@ -73,9 +73,7 @@ DNS records quick scan
 
 </summary>
 
-Cloudflare can <a href="https://developers.cloudflare.com/dns/zone-setups/reference/dns-quick-scan/">automatically scan for your records</a> and add them to the <a href="https://developers.cloudflare.com/dns/concepts/#zone">DNS zone</a>
-
- for you, or you can add records manually. These records show up under your domain on the <a href="https://dash.cloudflare.com/?to=/:account/:zone/dns/records">**DNS Records** ↗</a> page of the dashboard.
+Cloudflare can <a href="https://developers.cloudflare.com/dns/zone-setups/reference/dns-quick-scan/">automatically scan for your records</a> and add them to the <a href="https://developers.cloudflare.com/dns/concepts/#zone">DNS zone</a> for you, or you can add records manually. These records show up under your domain on the <a href="https://dash.cloudflare.com/?to=/:account/:zone/dns/records">**DNS Records** ↗</a> page of the dashboard.
 
 Note
 

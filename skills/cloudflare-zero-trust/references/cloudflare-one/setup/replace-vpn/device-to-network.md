@@ -24,9 +24,7 @@ This guide follows the same steps as the **Get Started** onboarding wizard in th
 
 [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) is a network connector that creates an outbound-only connection between your private network and Cloudflare. No open inbound ports or firewall changes are required.
 
-The [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
-
- is an app that you install on each user's device. It routes traffic through Cloudflare and into the tunnel, so users can reach internal resources from anywhere.
+The [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) is an app that you install on each user's device. It routes traffic through Cloudflare and into the tunnel, so users can reach internal resources from anywhere.
 
 ## Prerequisites
 

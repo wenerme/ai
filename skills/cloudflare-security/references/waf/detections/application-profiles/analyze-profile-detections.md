@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Analyze profile detections
 
-Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/application-profiles/analyze-profile-detections/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/application-profiles/analyze-profile-detections/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use **Profile Analysis** in [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) to investigate profile detections.
 
@@ -23,6 +23,21 @@ Profile Analysis classifies requests with these statuses:
 - **Conforms:** The evaluated request matched its applicable profile.
 - **Violates:** The evaluated request did not match its applicable profile.
 - **Not evaluated:** No applicable profile is available, or the profile does not apply.
+
+## Understand violation details
+
+Sampled violations include structured details about the first detected validation failure:
+
+| Detail | Meaning | Example |
+| --- | --- | --- |
+| Location | The request component containing the violation. | `body` |
+| Error class | A stable, broad category for grouping similar violations. | `constraint_violation` |
+| Error detail | An optional, specific reason within the error class. | `number_not_in_range` |
+| Target | An optional parameter, header, cookie, or JSON body path associated with the violation. | `$.items[0].quantity` |
+
+The error detail or target can be empty when the other fields fully describe the violation. For example, a missing request body has the `missing_required` error class without a target.
+
+For all possible error classes and details, refer to [Fields](https://developers.cloudflare.com/waf/detections/application-profiles/fields/#violation-details).
 
 ## Review detections
 
@@ -50,5 +65,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/application-profiles/analyze-profile-detections/#page","headline":"Analyze profile detections · Cloudflare Web Application Firewall (WAF) docs","description":"Investigate profile conformance and sampled violation details.","url":"https://developers.cloudflare.com/waf/detections/application-profiles/analyze-profile-detections/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/application-profiles/analyze-profile-detections/#page","headline":"Analyze profile detections · Cloudflare Web Application Firewall (WAF) docs","description":"Investigate profile conformance and sampled violation details.","url":"https://developers.cloudflare.com/waf/detections/application-profiles/analyze-profile-detections/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

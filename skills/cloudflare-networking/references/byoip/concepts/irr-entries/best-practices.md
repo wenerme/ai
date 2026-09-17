@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/byoip/concepts/irr-entries/best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-You must keep your [Internet Routing Registry (IRR)](https://developers.cloudflare.com/byoip/concepts/irr-entries/)
-
- entries up to date so that it is public information that Cloudflare has permission to advertise your prefix or prefixes, and to ensure that your traffic can be properly routed on the Internet.
+You must keep your [Internet Routing Registry (IRR)](https://developers.cloudflare.com/byoip/concepts/irr-entries/) entries up to date so that it is public information that Cloudflare has permission to advertise your prefix or prefixes, and to ensure that your traffic can be properly routed on the Internet.
 
 ## Configure an IRR entry
 

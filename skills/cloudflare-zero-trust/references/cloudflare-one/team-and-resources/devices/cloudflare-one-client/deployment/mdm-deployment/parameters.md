@@ -30,9 +30,7 @@ Instructs the client to register the device with your organization. Registration
 
 **Value Type:** `string`
 
-**Value:** Your team name
-
-.
+**Value:** Your team name.
 
 ## Required for DNS-only policy enforcement
 

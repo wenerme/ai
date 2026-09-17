@@ -26,9 +26,7 @@ Also, [some behaviors are different](https://developers.cloudflare.com/dns/found
 
 ## Anycast network groups
 
-To increase resiliency, the advertisement of advanced nameserver IPs is organized into three anycast
-
- network groups.
+To increase resiliency, the advertisement of advanced nameserver IPs is organized into three anycast network groups.
 
 Two groups consist of IPs advertised from geographically distributed data centers, and a third group consists of IPs advertised from all data centers in the Cloudflare network.
 

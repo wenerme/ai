@@ -16202,7 +16202,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
         - `"enabled"`
 
-          Allows unrestricted network access, matching an omitted network policy.
+          Allows unrestricted network access.
 
         - `"disabled"`
 
@@ -18456,7 +18456,7 @@ Creates reusable environment configuration without returning confidential setup 
 
     - `"enabled"`
 
-      Allows unrestricted network access, matching an omitted network policy.
+      Allows unrestricted network access.
 
     - `"disabled"`
 
@@ -19463,7 +19463,7 @@ Updates reusable environment configuration without returning confidential values
 
     - `"enabled"`
 
-      Allows unrestricted network access, matching an omitted network policy.
+      Allows unrestricted network access.
 
     - `"disabled"`
 
@@ -20109,7 +20109,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
         - `"enabled"`
 
-          Allows unrestricted network access, matching an omitted network policy.
+          Allows unrestricted network access.
 
         - `"disabled"`
 

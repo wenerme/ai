@@ -16,9 +16,7 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 With the Access App Launcher, users can open all applications that they have access to from a single dashboard.
 
-The App Launcher is available at a team domain
-
- unique to your Cloudflare Zero Trust account, for example `mycompany.cloudflareaccess.com`.
+The App Launcher is available at a team domain unique to your Cloudflare Zero Trust account, for example `mycompany.cloudflareaccess.com`.
 
 Users log in using one of the identity providers configured for the account. Once Access authenticates the user, the App Launcher displays applications they are authorized to use, in the form of application tiles. Selecting an application tile launches the application's hostname, sending the user to that tool as part of their SSO flow.
 

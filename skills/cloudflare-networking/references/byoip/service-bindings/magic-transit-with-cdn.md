@@ -142,9 +142,7 @@ You can periodically check the service binding status using the [List Service Bi
 
 ## 3. Create address maps
 
-Once you have configured your IPs to have CDN service, you can use [address maps](https://developers.cloudflare.com/byoip/address-maps/)
-
- to specify which IPs should be used by Cloudflare in DNS responses when a record is [proxied](https://developers.cloudflare.com/dns/proxy-status/).
+Once you have configured your IPs to have CDN service, you can use [address maps](https://developers.cloudflare.com/byoip/address-maps/) to specify which IPs should be used by Cloudflare in DNS responses when a record is [proxied](https://developers.cloudflare.com/dns/proxy-status/).
 
 You can choose between two different scopes:
 

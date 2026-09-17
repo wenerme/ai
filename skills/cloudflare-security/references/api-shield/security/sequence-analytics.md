@@ -31,9 +31,7 @@ For example, a portion of a sequence made during a bank funds transfer could loo
 | 3 | `GET` | `/api/v1/accounts/{account_id}/balance` | `account_id` is a different account belonging to the user. |
 | 4 | `POST` | `/api/v1/transferFunds` | This contains a request body detailing an account to transfer funds from, an account to transfer funds to, and an amount of money to transfer. |
 
-API Shield uses your configured session identifier
-
- and operations in the `full` or `candidate` state to build a set of ordered API operations (HTTP host, method, and path) requested per session. API Shield may surface sequences in various lengths depending on how it scores the sequences.
+API Shield uses your configured session identifier and operations in the `full` or `candidate` state to build a set of ordered API operations (HTTP host, method, and path) requested per session. API Shield may surface sequences in various lengths depending on how it scores the sequences.
 
 ### Sequence scoring
 

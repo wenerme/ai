@@ -18,9 +18,7 @@ Cloudflare applies multiple security features to every incoming request. Each fe
 
 ## Execution order
 
-Cloudflare security features powered by the [Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/) run in a fixed sequence of phases. When a request arrives, it passes through each phase in order. If a rule takes a [terminating action](https://developers.cloudflare.com/ruleset-engine/rules-language/actions/)
-
- (for example, *Block* or *Managed Challenge*), the request stops and does not reach later phases.
+Cloudflare security features powered by the [Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/) run in a fixed sequence of phases. When a request arrives, it passes through each phase in order. If a rule takes a [terminating action](https://developers.cloudflare.com/ruleset-engine/rules-language/actions/) (for example, *Block* or *Managed Challenge*), the request stops and does not reach later phases.
 
 The security-related request phases, in execution order, are:
 

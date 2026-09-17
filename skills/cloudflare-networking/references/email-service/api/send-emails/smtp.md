@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # SMTP
 
-Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/api/send-emails/smtp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/api/send-emails/smtp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Email Service exposes an authenticated SMTP submission endpoint so you can send emails from any application, framework, or off-the-shelf mail client that speaks SMTP. Use SMTP when the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/) and the [Workers binding](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) are not a good fit — for example, when integrating an existing application that already speaks SMTP, or a language-native SMTP library (Nodemailer, `smtplib`, PHPMailer, JavaMail).
 
@@ -117,7 +117,9 @@ Thanks for signing up.
 221 mx.cloudflare.net Cloudflare Email ESMTP Service closing transmission channel
 ```
 
-The `250 2.0.0 Ok` response after the message body includes the assigned Message-ID. Use it to correlate the submission with delivery logs in the dashboard.
+A `250 2.0.0 Ok` response after the message body normally includes the assigned Message-ID. Use it to correlate the submission with delivery logs in the dashboard.
+
+When **Drop suppressed recipients** is on and all recipients are suppressed, SMTP may return `250 2.0.0 Ok` without a Message-ID and deliver nothing. Refer to [Suppressed recipients](#suppressed-recipients).
 
 ## Examples
 
@@ -156,6 +158,20 @@ Cloudflare's SMTP server returns standard [RFC 5321 ↗](https://datatracker.iet
 | `550 5.7.1` | Sender or relay denied — usually the `MAIL FROM` domain is not onboarded. |
 | `552 5.3.4` | Message exceeds the 5 MiB `SIZE` limit. |
 | `554` | Transaction failed — content rejected by policy. |
+
+## Suppressed recipients
+
+SMTP accepts a syntactically valid recipient with `250 2.1.5 Ok` during `RCPT TO`. Email Service checks the [suppression list](https://developers.cloudflare.com/email-service/concepts/suppressions/) for the account after receiving the message body.
+
+Behavior depends on the per-sending-domain [**Drop suppressed recipients** setting](https://developers.cloudflare.com/email-service/configuration/domains/#drop-suppressed-recipients). The setting is off by default.
+
+When the setting is off, any suppressed recipient causes SMTP to reject the entire message. When the setting is on, Email Service removes suppressed recipients and continues processing the remaining recipients.
+
+If all recipients are suppressed while dropping is on, SMTP may return `250 2.0.0 Ok` without a Message-ID. It delivers nothing in this case.
+
+Use [Email sending logs](https://developers.cloudflare.com/email-service/observability/logs/) to confirm delivery. Suppressed recipients appear with a **Rejected** result.
+
+Suppression produces a `message.rejected` event in [Email Sending event subscriptions](https://developers.cloudflare.com/email-service/platform/event-subscriptions/) with `rejection.reason` set to `suppressed`.
 
 ## Troubleshooting
 
@@ -201,5 +217,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/api/send-emails/smtp/#page","headline":"SMTP · Cloudflare Email Service docs","description":"Send emails from any SMTP-capable application or mail client using authenticated SMTP submission on smtp.mx.cloudflare.net.","url":"https://developers.cloudflare.com/email-service/api/send-emails/smtp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/api/send-emails/smtp/#page","headline":"SMTP · Cloudflare Email Service docs","description":"Send emails from any SMTP-capable application or mail client using authenticated SMTP submission on smtp.mx.cloudflare.net.","url":"https://developers.cloudflare.com/email-service/api/send-emails/smtp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

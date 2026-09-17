@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/pcaps-bucket-setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Before you can begin a full packet
-
- capture, you must first configure a bucket that Cloudflare can use to upload your files. Setting up a bucket is not required for sample packet captures.
+Before you can begin a full packet capture, you must first configure a bucket that Cloudflare can use to upload your files. Setting up a bucket is not required for sample packet captures.
 
 You can configure an Amazon S3 or Google Cloud Platform bucket to use as a target. You can also [use R2](#r2) as a target using the API.
 

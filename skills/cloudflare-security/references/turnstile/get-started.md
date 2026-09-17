@@ -28,9 +28,7 @@ Before you begin, you must have:
 
 ## Process
 
-A Turnstile widget is an instance of Turnstile embedded on your webpage. Each widget has a sitekey
-
- (a public identifier you place in your HTML) and a secret key (a private credential your server uses to validate tokens).
+A Turnstile widget is an instance of Turnstile embedded on your webpage. Each widget has a sitekey (a public identifier you place in your HTML) and a secret key (a private credential your server uses to validate tokens).
 
 Each widget gets its own unique sitekey and secret key pair, and options for configurations.
 

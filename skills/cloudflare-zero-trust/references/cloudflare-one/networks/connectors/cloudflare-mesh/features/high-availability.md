@@ -1,5 +1,5 @@
 ---
-description: High availability for Cloudflare Mesh nodes.
+description: Configure active-passive replicas to provide high availability for routed Cloudflare Mesh networks.
 title: High availability
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # High availability
 
-Last updated Aug 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/features/high-availability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-For production deployments, you can run multiple replicas of a Mesh node in active-passive mode. All replicas share the same node identity and advertise the same [routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/). If the active replica goes down, Cloudflare automatically promotes a standby replica.
+For production deployments, you can run multiple replicas of a Mesh node in active-passive mode. All replicas share the same node identity and advertise the same [routes](https://developers.cloudflare.com/mesh/features/routes/). If the active replica goes down, Cloudflare automatically promotes a standby replica.
 
 MASQUE required
 
@@ -90,7 +90,7 @@ Installation commands
 
 </summary>
 
-IP forwarding is not required to reach the node by its Mesh IP. If the node will advertise <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/">CIDR routes</a>, enable persistent forwarding before connecting it:
+IP forwarding is not required to reach the node by its Mesh IP. If the node will advertise <a href="https://developers.cloudflare.com/mesh/features/routes/">CIDR routes</a>, enable persistent forwarding before connecting it:
 
 ```sh
 printf 'net.ipv4.ip_forward = 1\nnet.ipv6.conf.all.forwarding = 1\nnet.ipv6.conf.all.accept_ra = 2\n' | sudo tee /etc/sysctl.d/99-zzz-cloudflare-warp-connector.conf &&
@@ -136,7 +136,7 @@ sudo warp-cli --accept-tos connector new <TOKEN> && sudo warp-cli --accept-tos c
    The response contains the token string.
 2. Install the client and register on a new Linux host:
 
-   IP forwarding is not required to reach the node by its Mesh IP. If the node will advertise [CIDR routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/), enable persistent forwarding before connecting it:
+   IP forwarding is not required to reach the node by its Mesh IP. If the node will advertise [CIDR routes](https://developers.cloudflare.com/mesh/features/routes/), enable persistent forwarding before connecting it:
 
    ```sh
    printf 'net.ipv4.ip_forward = 1\nnet.ipv6.conf.all.forwarding = 1\nnet.ipv6.conf.all.accept_ra = 2\n' | sudo tee /etc/sysctl.d/99-zzz-cloudflare-warp-connector.conf &&
@@ -280,5 +280,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/#page","headline":"High availability for Cloudflare Mesh nodes · Cloudflare One docs","description":"High availability for Cloudflare Mesh nodes.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/features/high-availability/#page","headline":"High availability for Cloudflare Mesh nodes · Cloudflare One docs","description":"Configure active-passive replicas to provide high availability for routed Cloudflare Mesh networks.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/features/high-availability/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 ```

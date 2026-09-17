@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Understand bounce handling and reputation management for optimal email delivery.
 
-Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/concepts/deliverability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/concepts/deliverability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you send an email, there is no guarantee it reaches the recipient's inbox. Inbox providers like Gmail, Yahoo, Outlook, and iCloud invest heavily in filtering out unwanted email. If you send poorly targeted emails, have high bounce rates, or trigger spam complaints, these providers may flag your domain as untrustworthy. Once that happens, even your legitimate emails can end up in spam or be blocked outright.
 
@@ -28,14 +28,15 @@ Bounces occur when emails cannot be delivered to recipients. There are two types
 
 Hard bounces are permanent delivery failures that occur when:
 
-- Email address doesn't exist ( `user@domain.com` → No such user)
-- Domain does not exist ( `user@nonexistentdomain.com`)
-- Recipient server permanently blocks your domain
-- Content rejected as spam by recipient filters
+- The recipient address does not exist.
+- The recipient domain does not exist.
+- The receiving server permanently rejects the recipient.
 
 **Hard bounces are never retried** because the failure is permanent. Emails that hard bounce will generate a bounce notification to the sender address and can be monitored through [analytics](https://developers.cloudflare.com/email-service/observability/metrics-analytics/).
 
-Hard bounced addresses are automatically added to your [suppression list](https://developers.cloudflare.com/email-service/concepts/suppressions/) to protect your sender reputation.
+Email Service adds eligible recipient-side hard bounces to your [suppression list](https://developers.cloudflare.com/email-service/concepts/suppressions/). Suppressions have no expiration when the mailbox or domain does not exist.
+
+They also have no expiration when the recipient remains unavailable across repeated delivery attempts. Other eligible hard-bounce suppressions last seven days.
 
 ### Soft bounces
 
@@ -45,7 +46,7 @@ Soft bounces are temporary failures that may succeed if retried:
 - Email server temporarily down
 - Rate limiting or greylisting
 
-Cloudflare automatically retries soft bounces with exponential backoff over an extended period.
+Cloudflare automatically retries soft bounces with exponential backoff. Eligible recipient-side failures create a 24-hour suppression.
 
 ## Reputation management
 
@@ -96,5 +97,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/concepts/deliverability/#page","headline":"Email deliverability · Cloudflare Email Service docs","description":"Understand bounce handling and reputation management for optimal email delivery with Email Service.","url":"https://developers.cloudflare.com/email-service/concepts/deliverability/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/concepts/deliverability/#page","headline":"Email deliverability · Cloudflare Email Service docs","description":"Understand bounce handling and reputation management for optimal email delivery with Email Service.","url":"https://developers.cloudflare.com/email-service/concepts/deliverability/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

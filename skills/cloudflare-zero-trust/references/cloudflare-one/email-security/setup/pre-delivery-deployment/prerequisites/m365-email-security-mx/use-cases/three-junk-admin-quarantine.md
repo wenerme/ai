@@ -18,9 +18,7 @@ In this tutorial, you will learn how to deliver `BULK` messages to the users's j
 
 ## Create quarantine policies
 
-To create quarantine policies
-
-:
+To create quarantine policies:
 
 1. Open the [Microsoft 365 Defender console ↗](https://security.microsoft.com/)
 2. Go to **Email & collaboration** > **Policies & rules**.

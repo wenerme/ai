@@ -16,9 +16,7 @@ Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 ## Reporting endpoint
 
-When enabled, client-side security's resource monitoring uses a Content Security Policy (CSP)
-
-[report-only HTTP header](https://developers.cloudflare.com/client-side-security/reference/csp-header/) to gather information about all the scripts running on your application.
+When enabled, client-side security's resource monitoring uses a Content Security Policy (CSP) [report-only HTTP header](https://developers.cloudflare.com/client-side-security/reference/csp-header/) to gather information about all the scripts running on your application.
 
 By default, reports are sent to a Cloudflare-owned endpoint:
 

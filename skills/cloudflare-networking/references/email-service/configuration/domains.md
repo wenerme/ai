@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Configure domains for Cloudflare Email Service, manage DNS records, and verify domain setup for both email sending and routing.
 
-Last updated Jul 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/configuration/domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/configuration/domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Configure your domains to work with Cloudflare Email Service. This includes DNS record management, domain verification, and advanced domain settings.
 
@@ -305,6 +305,20 @@ Disabling Email Routing on a domain stops processing incoming emails and removes
 2. DNS records are tied to the account, not to specific users.
 3. Use Cloudflare account-level permissions to manage access.
 
+## Drop suppressed recipients
+
+**Drop suppressed recipients** controls suppression handling for one sending domain. The setting is off by default.
+
+When the setting is off, a message containing any [suppressed recipient](https://developers.cloudflare.com/email-service/concepts/suppressions/) fails. The REST API returns `400`, the Workers binding throws `E_RECIPIENT_SUPPRESSED`, and SMTP rejects the message.
+
+When the setting is on, Email Service removes suppressed recipients and processes the remaining recipients.
+
+To turn on the setting:
+
+1. In the Cloudflare dashboard, go to **Compute** > **Email Service** > **Email Sending**. [Go to **Email Sending** ↗](https://dash.cloudflare.com/?to=/:account/email-service/sending)
+2. Select the sending domain, then open **Settings**.
+3. Turn on **Drop suppressed recipients**.
+
 ## Email preview
 
 Turn on **Email preview** to store sent messages so you can inspect their content in the [Activity log](https://developers.cloudflare.com/email-service/observability/logs/#message-preview). Previews cover messages sent while the setting is turned on and are retained for about seven days.
@@ -330,5 +344,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/configuration/domains/#page","headline":"Domain configuration · Cloudflare Email Service docs","description":"Configure and verify DNS records for Email Service sending and routing on your domain.","url":"https://developers.cloudflare.com/email-service/configuration/domains/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/configuration/domains/#page","headline":"Domain configuration · Cloudflare Email Service docs","description":"Configure and verify DNS records for Email Service sending and routing on your domain.","url":"https://developers.cloudflare.com/email-service/configuration/domains/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

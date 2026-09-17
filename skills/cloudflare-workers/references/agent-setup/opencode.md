@@ -73,7 +73,7 @@ TerminalStandaloneExtensionOpen Source
    For example:
 
    ```txt
-   Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+   Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
    ```
 
 
@@ -179,23 +179,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+```
+
+```txt
+Build an image upload and transformation service using R2 and Cloudflare Images.
+```
+
+```txt
 Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
 ```
 
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
-```
-
-```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
-```
-
-```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ## Tips

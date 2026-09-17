@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Workers VPC
 
-Last updated Jun 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Securely connect your private cloud to Cloudflare to build cross-cloud apps.
 
@@ -22,7 +22,7 @@ Workers VPC allows you to connect your Workers to your private APIs, services, a
 
 **[VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/)** let you bind to a specific host and port in your private network. Connect a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) to your infrastructure, register each target as a VPC Service, and use the [binding API](https://developers.cloudflare.com/workers-vpc/api/) from your Worker. VPC Services support HTTP and TCP (TCP databases through [Hyperdrive](https://developers.cloudflare.com/hyperdrive/)).
 
-**[VPC Networks](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/)** give Workers broader access — bind to an entire [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) network, or [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramp (GRE, IPsec, CNI) without pre-registering individual hosts. The URL or address you pass at runtime determines the destination. VPC Networks support HTTP via `fetch()` and raw TCP via [`connect()`](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/) for non-HTTP services like Redis, MQTT, and custom protocols. The same binding can also egress to public Internet destinations through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/), with your Zero Trust policies and logs applied.
+**[VPC Networks](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/)** give Workers broader access — bind to an entire [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) network, or [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramp (GRE, IPsec, CNI) without pre-registering individual hosts. The URL or address you pass at runtime determines the destination. VPC Networks support HTTP via `fetch()` and raw TCP via [`connect()`](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/) for non-HTTP services like Redis, MQTT, and custom protocols. The same binding can also egress to public Internet destinations through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/), with your Zero Trust policies and logs applied.
 
 [Worker](https://developers.cloudflare.com/workers/)
 
@@ -32,7 +32,7 @@ Bind via [`vpc_services`](https://developers.cloudflare.com/workers-vpc/configur
 
 Reach private applications or networks through `cloudflared`
 
-[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
+[Cloudflare Mesh](https://developers.cloudflare.com/mesh/)
 
 Reach the full account through `cf1:network`
 
@@ -111,6 +111,24 @@ Build employee-facing applications and MCP servers that aggregate data from mult
 
 Route public Internet traffic from your Workers through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) so existing DNS, HTTP, Network, and egress policies — and the corresponding logs — apply to programmatic compute the same way they apply to your workforce. Stop a Worker from reaching unwanted destinations without writing custom proxy logic.
 
+## Get started
+
+### [Set up Workers VPC](https://developers.cloudflare.com/workers-vpc/get-started/)
+
+Connect your first Worker to a service in your private network.
+
+### [Explore examples](https://developers.cloudflare.com/workers-vpc/examples/)
+
+Connect to private APIs, databases, S3 buckets, and Cloudflare Mesh.
+
+### [Configure Workers VPC](https://developers.cloudflare.com/workers-vpc/configuration/)
+
+Configure VPC Services, VPC Networks, and Cloudflare Tunnel.
+
+### [Review the API](https://developers.cloudflare.com/workers-vpc/api/)
+
+Use VPC Service and VPC Network bindings in your Worker.
+
 ## Related products
 
 [Workers](https://developers.cloudflare.com/workers/)
@@ -130,5 +148,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers-vpc/#page","headline":"Overview · Cloudflare Workers VPC","description":"Securely connect your private cloud to Cloudflare to build cross-cloud apps.","url":"https://developers.cloudflare.com/workers-vpc/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers-vpc/#page","headline":"Overview · Cloudflare Workers VPC","description":"Securely connect your private cloud to Cloudflare to build cross-cloud apps.","url":"https://developers.cloudflare.com/workers-vpc/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

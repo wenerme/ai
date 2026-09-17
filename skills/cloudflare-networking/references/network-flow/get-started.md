@@ -29,9 +29,7 @@ Enterprise customers that would like to use Network Flow and Magic Transit On De
 
 ### 1. Verify NetFlow or sFlow capabilities
 
-Verify your routers are capable of exporting NetFlow
-
- or sFlow to an IP address on Cloudflare's network. Network Flow supports NetFlow v5, NetFlow v9, IPFIX, and sFlow.
+Verify your routers are capable of exporting NetFlow or sFlow to an IP address on Cloudflare's network. Network Flow supports NetFlow v5, NetFlow v9, IPFIX, and sFlow.
 
 Refer to [Supported routers](https://developers.cloudflare.com/network-flow/routers/supported-routers) to view a list of supported routers. The list is not exhaustive.
 

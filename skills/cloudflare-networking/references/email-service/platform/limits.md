@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Email sending quotas, rate limits, and how to request higher limits for production use
 
-Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Email Service has the following limits to ensure optimal performance and prevent abuse. These limits apply to emails sent via the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/), the [Workers binding](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/), and [SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/) unless noted otherwise.
 
@@ -39,6 +39,20 @@ Sends to verified destination addresses are always free: they do not count towar
 | **Total message size** | 5 MiB | Including attachments |
 | **Total message size** | 25 MiB | For [verified destination addresses](https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/#destination-addresses) only |
 | **Header size** | 16 KB | All custom headers combined |
+
+## Suppression list limits
+
+The following limits apply to the Email Sending [suppression list](https://developers.cloudflare.com/email-service/concepts/suppressions/) API:
+
+| Limit | Value | Notes |
+| --- | --- | --- |
+| **Active entries** | 1 per address | Enforced independently for each account |
+| **Results per page** | 1,000 | Maximum `per_page` value with a default of 100 |
+| **Items per bulk import** | 1,000 | Split larger imports across several requests |
+| **Bulk import requests** | 10 per minute | Applies per account and returns `429` when exceeded |
+| **Note length** | 1,000 characters | The optional `note` field on an entry |
+
+The suppression list has no total-count field. Refer to the [list suppressions API reference](https://developers.cloudflare.com/api/resources/email_sending/subresources/suppressions/methods/list/) for pagination details.
 
 ## Zone limits
 
@@ -90,5 +104,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/platform/limits/#page","headline":"Limits · Cloudflare Email Service docs","description":"Email Service sending quotas, rate limits, message size limits, and compliance requirements.","url":"https://developers.cloudflare.com/email-service/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/platform/limits/#page","headline":"Limits · Cloudflare Email Service docs","description":"Email Service sending quotas, rate limits, message size limits, and compliance requirements.","url":"https://developers.cloudflare.com/email-service/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

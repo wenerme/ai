@@ -16,9 +16,7 @@ Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 ## Prefixes
 
-Advanced DDoS Protection protects the IP prefixes you select from sophisticated DDoS attacks. A prefix can be an IP address or an IP range in CIDR format. You must add prefixes to Advanced DDoS Protection so that Cloudflare can analyze incoming packets
-
- and offer protection against sophisticated TCP DDoS attacks.
+Advanced DDoS Protection protects the IP prefixes you select from sophisticated DDoS attacks. A prefix can be an IP address or an IP range in CIDR format. You must add prefixes to Advanced DDoS Protection so that Cloudflare can analyze incoming packets and offer protection against sophisticated TCP DDoS attacks.
 
 Prefixes added to Advanced DDoS Protection must be one of the following:
 

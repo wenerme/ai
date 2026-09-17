@@ -165,7 +165,9 @@ Use [Google Cloud Workload Identity Federation](https://cloud.google.com/iam/doc
 
 > Note
 >
-> This authentication method is available on **Grafana Cloud** only. Grafana Cloud exchanges the signed-in user’s external OIDC token for a short-lived Google Cloud access token before the request reaches the plugin.
+> This authentication method is available on **Grafana Cloud** only. Grafana Cloud exchanges the signed-in user’s OIDC ID token for a short-lived Google Cloud access token before the request reaches the plugin.
+>
+> Workload Identity Federation and [Forward OAuth Identity](/docs/plugins/grafana-bigquery-datasource/latest/configure/#forward-oauth-identity) are different authentication types. WIF exchanges an OIDC ID token from the identity provider Grafana uses for SSO. Forward OAuth Identity forwards a Google OAuth access token and queries BigQuery as that Google user. If Grafana users sign in with [Google OAuth](/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/google/), use Forward OAuth Identity.
 
 Configuring Workload Identity Federation involves three systems: Google Cloud, your Grafana Cloud stack, and the data source itself.
 

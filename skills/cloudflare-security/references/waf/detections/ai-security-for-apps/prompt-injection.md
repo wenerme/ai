@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/prompt-injection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-AI Security for Apps (formerly Firewall for AI) detects prompt injection
-
- attacks — prompts intentionally designed to subvert the intended behavior of your LLM as specified by the developer.
+AI Security for Apps (formerly Firewall for AI) detects prompt injection attacks — prompts intentionally designed to subvert the intended behavior of your LLM as specified by the developer.
 
 When a prompt injection attempt is detected, AI Security for Apps assigns a score that you can use in [custom rules](https://developers.cloudflare.com/waf/custom-rules/) or [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) to take action.
 

@@ -48,9 +48,7 @@ After setting up session identifiers and allowing some time for Cloudflare to le
 
 ## Create a Schema Profile
 
-[Application Profiles](https://developers.cloudflare.com/waf/detections/application-profiles/) provides one Schema Profile with two sources. Schema Learning derives a profile from traffic, while Schema Validation uses an uploaded OpenAPI schema
-
-.
+[Application Profiles](https://developers.cloudflare.com/waf/detections/application-profiles/) provides one Schema Profile with two sources. Schema Learning derives a profile from traffic, while Schema Validation uses an uploaded OpenAPI schema.
 
 Both sources provide an **always-on detection** after their profile becomes available. Mitigation requires a separate WAF Custom Rule.
 

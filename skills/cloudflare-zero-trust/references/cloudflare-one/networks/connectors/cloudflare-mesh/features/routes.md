@@ -1,5 +1,5 @@
 ---
-description: Routes in Zero Trust networking.
+description: Configure CIDR and hostname routes to send private network traffic through Cloudflare Mesh nodes.
 title: Routes
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Routes
 
-Last updated Aug 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/features/routes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-By default, a Mesh node is reachable only by its own [Mesh IP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/#mesh-ips). To make other devices on the subnet behind the node reachable — servers, databases, printers, IoT devices that cannot run the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) — add a route to the node. A Mesh node supports two types of routes:
+By default, a Mesh node is reachable only by its own [Mesh IP](https://developers.cloudflare.com/mesh/concepts/#mesh-ips). To make other devices on the subnet behind the node reachable — servers, databases, printers, IoT devices that cannot run the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) — add a route to the node. A Mesh node supports two types of routes:
 
 - **CIDR routes** — forward traffic for an IP range — private (for example, `10.0.0.0/24`) or public — through the node.
 - **Hostname routes** — attract traffic for a hostname to the node instead of an IP. This works for a **private** hostname (for example, `wiki.internal.local`), which is useful when the application has an unknown or ephemeral IP, as well as a **public** hostname (for example, `www.example.com`), which routes that hostname's traffic through the node and egresses via the node's public IP.
@@ -223,7 +223,7 @@ For this to work:
 - **Destination**: `10.0.0.0/24` → **Next hop**: `192.168.1.1` (local Mesh node)
 - **Destination**: `100.96.0.0/12` → **Next hop**: `192.168.1.1`
 
-For production site-to-site deployments, consider enabling [high availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) on each node. HA provides failover for the CIDR routes advertised by a node — if the active replica goes down, Cloudflare promotes a standby so traffic to the subnet continues to flow.
+For production site-to-site deployments, consider enabling [high availability](https://developers.cloudflare.com/mesh/features/high-availability/) on each node. HA provides failover for the CIDR routes advertised by a node — if the active replica goes down, Cloudflare promotes a standby so traffic to the subnet continues to flow.
 
 ## DNS filtering
 
@@ -243,9 +243,7 @@ Gateway logs DNS queries with the private source IP of the originating device. Y
 
 ## Hostname routes
 
-Instead of advertising an IP range, you can attract traffic for a specific hostname to a Mesh node. When a user requests the hostname, Cloudflare Gateway assigns an initial resolved IP
-
- and routes the traffic through the node.
+Instead of advertising an IP range, you can attract traffic for a specific hostname to a Mesh node. When a user requests the hostname, Cloudflare Gateway assigns an initial resolved IP and routes the traffic through the node.
 
 - **Private hostname** (for example, `wiki.internal.local`) — the node delivers the traffic to the application's private IP on the local network. Useful when the application has an unknown or ephemeral IP.
 - **Public hostname** (for example, `www.example.com`) — the node egresses the traffic to the public Internet using its own public IP. This lets you use a Mesh node as a dedicated egress for that hostname.
@@ -259,8 +257,8 @@ Hostname routes replace [virtual networks](https://developers.cloudflare.com/clo
 3. [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
    Returns a token IP, then rewrites the destination to the real private IP. `172.64.128.0/20`
-4. [Hostname route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes)↓
-5. [Mesh node](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
+4. [Hostname route](https://developers.cloudflare.com/mesh/features/routes/#hostname-routes)↓
+5. [Mesh node](https://developers.cloudflare.com/mesh/)
 
    Forwards traffic to the host on the local network
 6. ↓
@@ -427,5 +425,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#page","headline":"Configure routes for Cloudflare Mesh · Cloudflare One docs","description":"Routes in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/features/routes/#page","headline":"Configure routes for Cloudflare Mesh · Cloudflare One docs","description":"Configure CIDR and hostname routes to send private network traffic through Cloudflare Mesh nodes.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/features/routes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 ```

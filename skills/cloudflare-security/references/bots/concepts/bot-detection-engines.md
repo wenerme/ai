@@ -55,9 +55,7 @@ Cloudflare does not recommend AD for domains that use [Cloudflare for SaaS](http
 
 ## Notes on detection
 
-Cloudflare uses the `__cf_bm` cookie to smooth out the bot score
-
- and reduce false positives for actual user sessions.
+Cloudflare uses the `__cf_bm` cookie to smooth out the bot score and reduce false positives for actual user sessions.
 
 The Bot Management cookie measures a single user's request pattern and applies it to the machine learning data to generate a reliable bot score for all of that user's requests.
 

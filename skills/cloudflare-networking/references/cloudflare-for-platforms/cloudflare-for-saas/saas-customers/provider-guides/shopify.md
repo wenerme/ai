@@ -80,9 +80,7 @@ Cloudflare will consult Shopify if there are technical issues that Cloudflare ca
 
 ### DNS CAA records
 
-For details about CAA records
-
- refer to the [Shopify documentation ↗](https://help.shopify.com/manual/domains/add-a-domain/connecting-domains/considerations).
+For details about CAA records refer to the [Shopify documentation ↗](https://help.shopify.com/manual/domains/add-a-domain/connecting-domains/considerations).
 
 Was this helpful?
 

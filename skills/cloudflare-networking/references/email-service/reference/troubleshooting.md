@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/reference/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/reference/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Email authentication is critical for successful email delivery. This guide helps you troubleshoot common SPF, DKIM, and DMARC issues with Email Service.
 
@@ -196,6 +196,57 @@ To reduce bounce rates:
 3. Monitor feedback loops: Subscribe to ISP feedback loops
 4. Gradual warm-up: For new domains, start with small volumes
 
+### Suppressed recipient
+
+Each sending domain has a [**Drop suppressed recipients** setting](https://developers.cloudflare.com/email-service/configuration/domains/#drop-suppressed-recipients). The setting is off by default.
+
+When the setting is off, the REST API returns `400`, the Workers binding throws `E_RECIPIENT_SUPPRESSED`, and SMTP rejects the message. Any suppressed recipient causes the send to fail.
+
+When the setting is on, Email Service removes suppressed recipients and processes the remaining recipients. If none remain, SMTP may return `250 2.0.0 Ok` without a Message-ID and deliver nothing.
+
+To investigate a suppressed recipient:
+
+1. Query the exact recipient:
+
+   *List account Email Sending suppressionsbash*
+
+
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/email/sending/suppressions?email=recipient%40example.com" \
+   	--request GET \
+   	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+   ```
+
+
+2. Use the `reason`, `expires_at`, and `read_only` fields to choose an action. For the complete decision table, refer to [Suppression rules](https://developers.cloudflare.com/email-service/concepts/suppressions/#suppression-rules).
+3. If `result` is empty, confirm that you queried the correct account. Then check the sending logs.
+4. If the logs still report a suppression, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
+
+### Recipient blocked after expiration or deletion
+
+Expired entries stop appearing in the public list after their `expires_at` timestamp passes. Delivery enforcement can take additional time to stop.
+
+Updates and deletions also propagate asynchronously. The management list and delivery enforcement can briefly differ.
+
+To investigate delayed enforcement:
+
+1. Confirm that the entry no longer appears in the account list.
+2. Retry later because suppression updates propagate asynchronously.
+3. If the recipient remains blocked, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
+
+### Bounces before suppression enforcement
+
+Bounce suppressions are created through background delivery processing. Messages already in progress can bounce before a new suppression takes effect.
+
+### Complaint suppression does not appear
+
+Complaint suppressions appear after Cloudflare receives and validates the provider report. The provider determines when that report arrives.
+
+### Missing suppression after a bounce
+
+Not every failure results in a suppression. Email Service creates automatic entries only for eligible recipient-side failures. Sender authentication, sender reputation, and unrelated infrastructure failures do not suppress the recipient. Check [Email sending logs](https://developers.cloudflare.com/email-service/observability/logs/) for the specific failure.
+
 ### ISP-specific issues
 
 Different ISPs have specific requirements:
@@ -235,5 +286,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/reference/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Email Service docs","description":"Diagnose and fix delivery, authentication, and local development issues for Email Service.","url":"https://developers.cloudflare.com/email-service/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/reference/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Email Service docs","description":"Diagnose and fix delivery, authentication, and local development issues for Email Service.","url":"https://developers.cloudflare.com/email-service/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -16,9 +16,7 @@ Use the Durable Objects Alarms API to batch requests to a Durable Object.
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/examples/alarms-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This example implements an `alarm()`
-
- handler that allows batching of requests to a single Durable Object.
+This example implements an `alarm()` handler that allows batching of requests to a single Durable Object.
 
 When a request is received and no alarm is set, it sets an alarm for 10 seconds in the future. The `alarm()` handler processes all requests received within that 10-second window.
 

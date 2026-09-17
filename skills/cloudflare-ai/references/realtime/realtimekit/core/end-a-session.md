@@ -83,6 +83,8 @@ ReactWeb ComponentsAngular
    	// You can also show a message to explain why the action is not available.
    }
    ```
+
+
 2. End the session by removing all participants.
 
    If the participant does not have the required permission, `kickAll()` throws a ClientError with error code `1201`.

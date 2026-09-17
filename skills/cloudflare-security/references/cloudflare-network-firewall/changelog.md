@@ -16,6 +16,17 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/cloudflare-network-firewall.xml)
 
+## 2026-08-19
+
+
+**Threat Intel Lists supported in Unified Routing**
+
+[Cloudflare Advanced Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) Threat Intel Lists are now supported for accounts using [Unified Routing](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta) mode. This feature requires a Cloudflare Advanced Network Firewall subscription.
+
+Support for additional features - Rate Limiting and Managed Rulesets - is planned.
+
+For the full list of current beta limitations, refer to [Traffic steering beta limitations](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#beta-limitations).
+
 ## 2026-07-08
 
 

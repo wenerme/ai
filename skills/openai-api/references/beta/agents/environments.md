@@ -664,7 +664,7 @@ Creates reusable environment configuration without returning confidential setup 
 
     - `"enabled"`
 
-      Allows unrestricted network access, matching an omitted network policy.
+      Allows unrestricted network access.
 
     - `"disabled"`
 
@@ -1671,7 +1671,7 @@ Updates reusable environment configuration without returning confidential values
 
     - `"enabled"`
 
-      Allows unrestricted network access, matching an omitted network policy.
+      Allows unrestricted network access.
 
     - `"disabled"`
 

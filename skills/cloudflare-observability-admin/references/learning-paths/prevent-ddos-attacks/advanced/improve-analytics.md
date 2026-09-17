@@ -26,9 +26,7 @@ If needed, you can [restore the original visitor's IP address](https://developer
 
 ## Cloudflare Logs
 
-Enterprise customers can set up [Logpush](https://developers.cloudflare.com/logs/logpush/) jobs to regularly send Cloudflare logs to the SIEM system
-
- of their choice.
+Enterprise customers can set up [Logpush](https://developers.cloudflare.com/logs/logpush/) jobs to regularly send Cloudflare logs to the SIEM system of their choice.
 
 This data can help when looking at long-term DDoS attack trends or when you need custom visualizations.
 

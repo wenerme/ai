@@ -45,9 +45,7 @@ Note
 
 ## Referrer domains by operator
 
-When visitors arrive at your site from an AI platform, the referrer
-
- indicates which operator's service sent them.
+When visitors arrive at your site from an AI platform, the referrer indicates which operator's service sent them.
 
 | Operator | Domains |
 | --- | --- |

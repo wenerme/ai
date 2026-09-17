@@ -74,9 +74,7 @@ Currently, not all Cloudflare products support lists in their expressions. Refer
 
 You can search for list items in the dashboard or [via API](https://developers.cloudflare.com/api/resources/rules/subresources/lists/subresources/items/methods/list/).
 
-For IP lists, Cloudflare returns IP addresses or ranges that start with your search query. For example, searching `192.0.2` matches `192.0.2.1` and `192.0.2.0/24`, but searching for `192.0.2.100` does not match a CIDR range
-
- like `192.0.2.0/24` that contains that address.
+For IP lists, Cloudflare returns IP addresses or ranges that start with your search query. For example, searching `192.0.2` matches `192.0.2.1` and `192.0.2.0/24`, but searching for `192.0.2.100` does not match a CIDR range like `192.0.2.0/24` that contains that address.
 
 For Bulk Redirect Lists, Cloudflare returns entries where the source URL or target URL contains your search query.
 

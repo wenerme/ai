@@ -114,9 +114,7 @@ export default {
 
 ![D1 read replication concept](https://developers.cloudflare.com/images/d1/d1-read-replication-concept.png)
 
-When using D1 without read replication, D1 routes all queries (both read and write) to a specific database instance in [one location in the world](https://developers.cloudflare.com/d1/configuration/data-location/), known as the primary database instance
-
-. D1 request latency is dependent on the physical proximity of a user to the primary database instance. Users located further away from the primary database instance experience longer request latency due to [network round-trip time ↗](https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt/).
+When using D1 without read replication, D1 routes all queries (both read and write) to a specific database instance in [one location in the world](https://developers.cloudflare.com/d1/configuration/data-location/), known as the primary database instance . D1 request latency is dependent on the physical proximity of a user to the primary database instance. Users located further away from the primary database instance experience longer request latency due to [network round-trip time ↗](https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt/).
 
 When using read replication, D1 creates multiple asynchronously replicated copies of the primary database instance, which only serve read requests, called read replicas . D1 creates the read replicas in [multiple regions](https://developers.cloudflare.com/d1/best-practices/read-replication/#read-replica-locations) throughout the world across Cloudflare's network.
 

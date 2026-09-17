@@ -59,9 +59,7 @@ Default unsafe topic categories
 
 Custom topic detection lets you define your own topics and AI Security for Apps will score each prompt against them. You can then use these scores in [custom rules](https://developers.cloudflare.com/waf/custom-rules/) or [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) to block, challenge, or log requests based on a relevance score that you define.
 
-This capability uses a zero-shot classification model
-
- that evaluates prompts at runtime. No model training is required.
+This capability uses a zero-shot classification model that evaluates prompts at runtime. No model training is required.
 
 ### How custom topics work
 

@@ -132,9 +132,7 @@ Note
 
 After seven days, view your [Shadow IT SaaS Analytics](https://developers.cloudflare.com/cloudflare-one/insights/analytics/shadow-it-discovery/) and block additional applications based on what your users are accessing.
 
-To minimize the risk of [shadow IT](https://www.cloudflare.com/learning/access-management/what-is-shadow-it/)
-
-, some organizations choose to limit their users' access to certain web-based tools and applications. For example, the following policy blocks known AI tools:
+To minimize the risk of [shadow IT](https://www.cloudflare.com/learning/access-management/what-is-shadow-it/), some organizations choose to limit their users' access to certain web-based tools and applications. For example, the following policy blocks known AI tools:
 
 | Selector | Operator | Value | Action |
 | --- | --- | --- | --- |

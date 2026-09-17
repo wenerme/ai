@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jun 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/observability/metrics-and-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Durable Objects
-
- expose analytics for Durable Object namespace-level and request-level metrics.
+Durable Objects expose analytics for Durable Object namespace-level and request-level metrics.
 
 The metrics displayed in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) charts are queried from Cloudflare's [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/). You can access the metrics [programmatically via GraphQL](#query-via-the-graphql-api) or HTTP client.
 

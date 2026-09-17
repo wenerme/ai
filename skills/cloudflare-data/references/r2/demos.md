@@ -18,9 +18,7 @@ Learn how you can use R2 within your existing application and architecture.
 
 ## Reference architectures
 
-Explore the following reference architectures
-
- that use R2:
+Explore the following reference architectures that use R2:
 
 [**Designing a distributed web performance architecture** A prescriptive pattern for building a Cloudflare-based L7 performance architecture that reduces latency, raises cache efficiency, and improves Core Web Vitals.](https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/distributed-web-performance-architecture/)
 

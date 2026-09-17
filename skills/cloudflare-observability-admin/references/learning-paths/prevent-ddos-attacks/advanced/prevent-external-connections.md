@@ -182,9 +182,7 @@ Dedicated CDN Egress IPs
 
 </summary>
 
-<a href="https://developers.cloudflare.com/smart-shield/get-started/#packages-and-availability">Smart Shield Advanced</a> provides dedicated egress IPs (from Cloudflare to your origin) for your layer 7 <a href="https://developers.cloudflare.com/waf/">WAF</a> and CDN
-
- services, as well as <a href="https://developers.cloudflare.com/spectrum/">Spectrum</a>. The egress IPs are reserved exclusively for your account so that you can increase your origin security by only allowing a small list of IP addresses through your layer 3 firewall.
+<a href="https://developers.cloudflare.com/smart-shield/get-started/#packages-and-availability">Smart Shield Advanced</a> provides dedicated egress IPs (from Cloudflare to your origin) for your layer 7 <a href="https://developers.cloudflare.com/waf/">WAF</a> and CDN services, as well as <a href="https://developers.cloudflare.com/spectrum/">Spectrum</a>. The egress IPs are reserved exclusively for your account so that you can increase your origin security by only allowing a small list of IP addresses through your layer 3 firewall.
 
 - **Security**: Very secure.
 - **Availability**: Enterprise-only.

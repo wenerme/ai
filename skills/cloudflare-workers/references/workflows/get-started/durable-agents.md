@@ -21,9 +21,7 @@ In this guide, you will build an AI agent that researches GitHub repositories. G
 3. Analyze and compare them
 4. Return a recommendation
 
-Each LLM call and tool call becomes a step
-
- — a self-contained, individually retryable unit of work. If any step fails, Workflows retries it automatically. If the entire Workflow crashes mid-task, it resumes from the last successful step.
+Each LLM call and tool call becomes a step — a self-contained, individually retryable unit of work. If any step fails, Workflows retries it automatically. If the entire Workflow crashes mid-task, it resumes from the last successful step.
 
 | Challenge | Solution with Workflows |
 | --- | --- |
@@ -448,7 +446,7 @@ export class ResearchAgent extends Agent<Env, State> {
    	"name": "durable-ai-agent",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-09-14",
+   	"compatibility_date": "2026-09-17",
    	"observability": {
    		"enabled": true
    	},
@@ -481,7 +479,7 @@ export class ResearchAgent extends Agent<Env, State> {
    name = "durable-ai-agent"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-14"
+   compatibility_date = "2026-09-17"
 
    [observability]
    enabled = true

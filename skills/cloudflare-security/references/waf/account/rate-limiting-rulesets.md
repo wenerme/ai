@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) allow you to define a rate limit
-
- for requests matching an [expression](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/), and the action to perform when that rate limit is reached. You can configure rate limiting rules for a single zone or at the account level.
+[Rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) allow you to define a rate limit for requests matching an [expression](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/), and the action to perform when that rate limit is reached. You can configure rate limiting rules for a single zone or at the account level.
 
 Account-level rate limiting rulesets allow you to define rate limiting rules once and deploy them to multiple Enterprise zones. Instead of configuring the same rules in each zone, you create a ruleset at the account level and control which zones it applies to.
 

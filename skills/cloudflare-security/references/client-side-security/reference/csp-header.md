@@ -14,9 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/client-side-security/reference/csp-header/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The format of the Content Security Policy (CSP)
-
- report-only HTTP header added by Cloudflare is the following:
+The format of the Content Security Policy (CSP) report-only HTTP header added by Cloudflare is the following:
 
 ```txt
 content-security-policy-report-only: script-src 'unsafe-inline' 'unsafe-eval'; connect-src 'none'; report-uri https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report?<QUERY_STRING>

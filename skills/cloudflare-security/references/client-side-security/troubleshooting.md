@@ -34,9 +34,7 @@ But, if you see unexpected scripts on your resource monitoring dashboard, check 
 
 ## I get warnings in my browser's developer tools related to Content Security Policy (CSP)
 
-Cloudflare uses a Content Security Policy (CSP)
-
- report-only directive to gather a list of all scripts running on your application.
+Cloudflare uses a Content Security Policy (CSP) report-only directive to gather a list of all scripts running on your application.
 
 Some browsers display scripts being reported as warnings in the console pane of their developer tools. For example:
 
