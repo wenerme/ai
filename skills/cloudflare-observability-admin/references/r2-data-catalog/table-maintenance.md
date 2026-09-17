@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Table maintenance
 
-Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2-data-catalog/table-maintenance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2-data-catalog/table-maintenance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Table maintenance encompasses a set of operations that keep your Apache Iceberg tables performant and cost-efficient over time. As data is written, updated, and deleted, tables accumulate metadata and files that can degrade query performance over time.
 
@@ -28,6 +28,31 @@ Without regular maintenance, tables can suffer from:
 - **Metadata overhead**: Large metadata files slow down query planning and table operations
 
 By enabling automatic table maintenance, R2 Data Catalog ensures your tables remain optimized without having to manually run them yourself.
+
+## View and queue table maintenance
+
+The **Maintenance** tab for each table shows the compaction and snapshot expiration configuration, schedule, and next eligibility time. It also provides a paginated history of maintenance runs with their status and duration.
+
+1. In the Cloudflare dashboard, go to **R2 Data Catalog**. [Go to **R2 Data Catalog** ↗](https://dash.cloudflare.com/?to=/:account/data-catalog/overview)
+2. Select a catalog, then select the **Explorer** tab. The **Explorer** tab opens by default.
+3. Select a table.
+4. Select the **Maintenance** tab.
+
+![Maintenance tab for an R2 Data Catalog table showing schedules and recent runs](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1850,height=1544,format=webp/_astro/table-maintenance-view.C7KRSK-K.png)
+
+The **Recent runs** section displays five runs per page. Expand a run to view metrics for its manifest rewrite, compaction, and snapshot expiration operations. For manually queued runs, the expanded details include a searchable `request_id`.
+
+### Queue compaction manually
+
+Manual queueing requests compaction for the selected table. The request enters the same queue used by automatic maintenance and starts when the scheduler next polls for eligible work.
+
+1. From the table's **Maintenance** tab, select **Queue maintenance**.
+2. In the confirmation dialog, select **Queue maintenance**.
+
+The dashboard checks your permissions before accepting the request. Queueing can also return the following errors:
+
+- `40903`: A maintenance executor conflict prevents the request from being queued.
+- `42901`: The daily accepted-request limit has been reached.
 
 ## Why do I need compaction?
 
@@ -146,5 +171,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-data-catalog/table-maintenance/#page","headline":"Table maintenance · Cloudflare R2 Data Catalog docs","description":"Learn how R2 Data Catalog automates table maintenance","url":"https://developers.cloudflare.com/r2-data-catalog/table-maintenance/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-data-catalog/table-maintenance/#page","headline":"Table maintenance · Cloudflare R2 Data Catalog docs","description":"Learn how R2 Data Catalog automates table maintenance","url":"https://developers.cloudflare.com/r2-data-catalog/table-maintenance/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

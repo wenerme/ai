@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare One Client lifecycle and support policy
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/support-lifecycle/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/support-lifecycle/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page details the technical support policies for the Cloudflare One Client (formerly WARP), which operating systems and their versions are supported and for how long, and the process by which Cloudflare One Client features will be deprecated.
 
@@ -83,15 +83,15 @@ Windows Subsystem for Linux v2 (WSLv2) is supported by the Cloudflare One Client
 
 ### macOS
 
-The Cloudflare One Client supports the current major version of macOS and the two previous major versions. Devices on a previous major version must have the latest minor and patch updates installed (for example, `14.8.3`) to receive support. This policy aligns with Apple's standard security update cycle, as well as the comparatively rapid release of new macOS versions compared to other desktop operating systems.
+The Cloudflare One Client supports the current major version of macOS and the two previous major versions. Devices on a previous major version must have the latest minor and patch updates installed (for example, `26.6.1`) to receive support. This policy aligns with Apple's standard security update cycle, as well as the comparatively rapid release of new macOS versions compared to other desktop operating systems.
 
-As of December 2025, the following major versions of macOS are supported:
+As of September 2026, the following major versions of macOS are supported:
 
 | macOS version | Supported until |
 | --- | --- |
+| macOS 27 (Golden Gate) | Release of 2029 major version |
 | macOS 26 (Tahoe) | Release of 2028 major version |
 | macOS 15 (Sequoia) | Release of 2027 major version |
-| macOS 14 (Sonoma) | Release of 2026 major version |
 
 ### Debian
 
@@ -176,5 +176,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/support-lifecycle/#page","headline":"Cloudflare One Client lifecycle and support policy · Cloudflare One docs","description":"Reference information for Cloudflare One Client lifecycle and support policy in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/support-lifecycle/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/support-lifecycle/#page","headline":"Cloudflare One Client lifecycle and support policy · Cloudflare One docs","description":"Reference information for Cloudflare One Client lifecycle and support policy in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/support-lifecycle/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

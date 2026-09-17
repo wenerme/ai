@@ -1496,8 +1496,8 @@
   },
   "grafana-pathfinder-app/administrators-reference.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/administrators-reference.md",
-    "size": 10381,
-    "updatedAt": "2026-08-19T02:11:33.356Z"
+    "size": 10689,
+    "updatedAt": "2026-09-17T15:02:01.507Z"
   },
   "grafana-pathfinder-app/architecture.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/architecture.md",

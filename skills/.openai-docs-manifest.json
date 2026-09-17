@@ -298,10 +298,10 @@
   "openai-docs/guides/agents-api/overview.md": {
     "url": "https://developers.openai.com/api/docs/guides/agents-api/overview.md",
     "skill": "openai-docs",
-    "etag": "W/\"2a4b745b62b3cedd3f54831d5b8d441b\"",
-    "lastModified": "Fri, 11 Sep 2026 04:24:16 GMT",
-    "size": 14299,
-    "updatedAt": "2026-09-11T04:24:16.842Z"
+    "etag": "W/\"893a1f1f4f9343342a8b88b647fe0c25\"",
+    "lastModified": "Thu, 17 Sep 2026 14:35:55 GMT",
+    "size": 14436,
+    "updatedAt": "2026-09-17T14:57:09.372Z"
   },
   "openai-docs/guides/agents-api/quickstart.md": {
     "url": "https://developers.openai.com/api/docs/guides/agents-api/quickstart.md",

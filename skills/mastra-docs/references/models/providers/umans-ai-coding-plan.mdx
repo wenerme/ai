@@ -5,7 +5,7 @@ description: "Browse Umans AI Coding Plan model IDs, capabilities, and context w
 
 # [Umans AI Coding Plan logo]Umans AI Coding Plan
 
-Access 8 Umans AI Coding Plan models through Mastra's model router. Authentication is handled automatically using the `UMANS_AI_CODING_PLAN_API_KEY` environment variable.
+Access 7 Umans AI Coding Plan models through Mastra's model router. Authentication is handled automatically using the `UMANS_AI_CODING_PLAN_API_KEY` environment variable.
 
 Learn more in the [Umans AI Coding Plan documentation](https://app.umans.ai/offers/code/docs).
 
@@ -43,11 +43,11 @@ for await (const chunk of stream) {
     "model": "umans-ai-coding-plan/umans-coder",
     "imageInput": true,
     "audioInput": false,
-    "videoInput": false,
+    "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 262144,
+    "contextWindow": 1048576,
+    "maxOutput": 131071,
     "inputCost": null,
     "outputCost": null
   },
@@ -88,26 +88,14 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
-    "model": "umans-ai-coding-plan/umans-glm-5.2",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 405504,
-    "maxOutput": 131072,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "umans-ai-coding-plan/umans-kimi-k2.7",
+    "model": "umans-ai-coding-plan/umans-glm-5.3-flash",
     "imageInput": true,
     "audioInput": false,
     "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 262144,
+    "contextWindow": 1048576,
+    "maxOutput": 131071,
     "inputCost": null,
     "outputCost": null
   },

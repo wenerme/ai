@@ -39,7 +39,7 @@ No LTS releases are currently available, as Cloudflare is still rolling out our 
 
 ## macOS
 
-| **OS version** | Sonoma 14.0+, Sequoia 15.1+ (15.0.x is not supported), Tahoe 26.0+ |
+| **OS version** | Sequoia 15.1+ (15.0.x is not supported), Tahoe 26.0+, Golden Gate 27.0+ |
 | --- | --- |
 | **Processor** | Intel or M series |
 | **HD space** | 75 MB |

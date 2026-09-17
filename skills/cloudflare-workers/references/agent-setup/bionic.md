@@ -48,7 +48,7 @@ StandaloneCloud
    For example:
 
    ```txt
-   Set up rate limiting and WAF rules to block abuse on my public API.
+   Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
    ```
 
 
@@ -154,23 +154,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
-```
-
-```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
-```
-
-```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
-```
-
-```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
-```
-
-```txt
 Configure Zero Trust access policies to protect my internal staging environment.
+```
+
+```txt
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+```
+
+```txt
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+```
+
+```txt
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+```
+
+```txt
+Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ## Tips
