@@ -5,7 +5,7 @@ description: "Browse Cortecs model IDs, capabilities, context windows, and prici
 
 # [Cortecs logo]Cortecs
 
-Access 107 Cortecs models through Mastra's model router. Authentication is handled automatically using the `CORTECS_API_KEY` environment variable.
+Access 106 Cortecs models through Mastra's model router. Authentication is handled automatically using the `CORTECS_API_KEY` environment variable.
 
 Learn more in the [Cortecs documentation](https://cortecs.ai).
 
@@ -746,18 +746,6 @@ for await (const chunk of stream) {
     "maxOutput": 1048576,
     "inputCost": 3,
     "outputCost": 14.999
-  },
-  {
-    "model": "cortecs/llama-3.1-405b-instruct",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 128000,
-    "maxOutput": 128000,
-    "inputCost": 1.95,
-    "outputCost": 1.95
   },
   {
     "model": "cortecs/llama-3.1-8b-instruct",

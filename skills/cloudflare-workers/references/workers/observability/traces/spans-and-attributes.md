@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Spans and attributes
 
-Last updated Jun 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Workers provides automatic tracing instrumentation **out of the box** - no code changes or SDK are required.
 
@@ -151,7 +151,7 @@ Cloudflare Workers provides automatic tracing instrumentation **out of the box**
 
 #### [`RPC Handler`](https://developers.cloudflare.com/workers/runtime-apis/rpc/)
 
-- `cloudflare.jsrpc.method`
+- `jsrpc.method`
 
 #### [`Email Handler`](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/)
 
@@ -166,6 +166,33 @@ Cloudflare Workers provides automatic tracing instrumentation **out of the box**
 #### [`Alarm Handler`](https://developers.cloudflare.com/durable-objects/api/alarms/#alarm)
 
 - `cloudflare.scheduled_time`
+
+---
+
+### [RPC](https://developers.cloudflare.com/workers/runtime-apis/rpc/)
+
+Workers tracing emits these spans for RPC calls between Workers and from Workers to Durable Objects.
+
+#### RPC session
+
+A caller-side span that covers the lifetime of an RPC session. Calls that reuse the session appear under this span.
+
+This span has no additional RPC-specific attributes.
+
+#### RPC invocation
+
+A callee-side span that covers an RPC invocation in the target Worker or Durable Object.
+
+#### RPC call
+
+A caller-side or callee-side span for an individual method call or property access.
+
+Caller-side and callee-side spans use the execution color of the Worker or Durable Object where they run. The color change marks the execution boundary.
+
+- `jsrpc.method` - The method name or property path
+- `jsrpc.operation` - The operation type: `call` or `getProperty`
+- `jsrpc.target_kind` - The type of RPC target
+- `jsrpc.caller_span_id` - On callee-side spans, the corresponding caller-side `jsRpcCall` span ID
 
 ---
 
@@ -577,5 +604,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/#page","headline":"Spans and attributes · Cloudflare Workers docs","description":"Review the spans and attributes automatically captured by Workers tracing, including fetch calls, bindings, and handler invocations.","url":"https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/#page","headline":"Spans and attributes · Cloudflare Workers docs","description":"Review the spans and attributes automatically captured by Workers tracing, including fetch calls, bindings, and handler invocations.","url":"https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

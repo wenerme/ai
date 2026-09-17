@@ -60,7 +60,7 @@ TerminalCloudExtension
    Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:
 
    ```txt
-   Create a Logpush job to stream Workers analytics to my data warehouse.
+   Configure Zero Trust access policies to protect my internal staging environment.
    ```
 
 
@@ -170,11 +170,7 @@ Set up AI Gateway to route requests across OpenAI and Workers AI with automatic 
 ```
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
-```
-
-```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ```txt
@@ -183,6 +179,10 @@ Create a Logpush job to stream Workers analytics to my data warehouse.
 
 ```txt
 Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+```
+
+```txt
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 ## Tips
