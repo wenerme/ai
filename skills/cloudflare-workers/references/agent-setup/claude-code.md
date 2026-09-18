@@ -59,7 +59,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Check my Workers deployment logs for errors and suggest fixes.
+   Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
    ```
 
 
@@ -165,23 +165,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
+Add mTLS authentication and schema validation to protect my API endpoints.
+```
+
+```txt
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+```
+
+```txt
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+```
+
+```txt
+Set up WAF rules to block SQL injection and XSS attacks on my application.
+```
+
+```txt
 Set up rate limiting and WAF rules to block abuse on my public API.
-```
-
-```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
-```
-
-```txt
-Configure Zero Trust access policies to protect my internal staging environment.
-```
-
-```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
-```
-
-```txt
-Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ## Tips

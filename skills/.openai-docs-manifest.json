@@ -4804,10 +4804,10 @@
   "openai-api/realtime.md": {
     "url": "https://developers.openai.com/api/reference/resources/realtime/index.md",
     "skill": "openai-api",
-    "etag": "W/\"b858570fc3925c97f5d3442b1dacec9c\"",
-    "lastModified": "Thu, 17 Sep 2026 01:31:52 GMT",
-    "size": 972366,
-    "updatedAt": "2026-09-17T04:44:21.216Z"
+    "etag": "W/\"5c8a87a12339e5bb1000f98e227cfba5\"",
+    "lastModified": "Fri, 18 Sep 2026 12:11:09 GMT",
+    "size": 972486,
+    "updatedAt": "2026-09-18T14:28:36.019Z"
   },
   "openai-api/realtime/connect.md": {
     "url": "https://developers.openai.com/api/reference/resources/realtime/methods/connect/index.md",

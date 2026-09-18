@@ -37,10 +37,11 @@ __all__ = ["NODE_CLASS_MAPPINGS", "NODE_DISPLAY_NAME_MAPPINGS", "WEB_DIRECTORY"]
 
 完全で、単純で、かつ「厄介な」拡張は以下のようになります：
 ```Javascript
-
+import { app } from "../../scripts/app.js";
 app.registerExtension({ 
 	name: "a.unique.name.for.a.useless.extension",
 	async setup() { 
 		alert("Setup complete!")
 	},
 })
+```

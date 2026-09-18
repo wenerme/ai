@@ -69,7 +69,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Set up rate limiting and WAF rules to block abuse on my public API.
+   Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
    ```
 
 
@@ -175,23 +175,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
-```
-
-```txt
 Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
 ```
 
 ```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+Create a Logpush job to stream Workers analytics to my data warehouse.
 ```
 
 ```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+```
+
+```txt
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ## Tips

@@ -53,7 +53,7 @@ IDETerminalStandaloneExtensionOpen Source
    Open Copilot Chat (**Ctrl+Shift+I** / **Cmd+Shift+I**), switch to agent mode, and try a prompt — for example:
 
    ```txt
-   Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+   Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
    ```
 
 
@@ -161,23 +161,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ## Tips

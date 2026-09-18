@@ -48,7 +48,7 @@ StandaloneCloud
    For example:
 
    ```txt
-   Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+   Use Workers for Platforms to let my customers deploy their own code in isolated environments.
    ```
 
 
@@ -154,23 +154,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Check my Workers deployment logs for errors and suggest fixes.
-```
-
-```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
-```
-
-```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
-```
-
-```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
-```
-
-```txt
 Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+```
+
+```txt
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+```
+
+```txt
+Add bot protection and rate limiting to my login and checkout endpoints.
+```
+
+```txt
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+```
+
+```txt
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
 ```
 
 ## Tips

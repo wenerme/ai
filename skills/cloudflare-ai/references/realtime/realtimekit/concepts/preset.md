@@ -16,7 +16,7 @@ Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 A Preset is a **re-usable configuration** that defines a participant’s experience in a Meeting. It determines:
 
-- The meeting type they join (Video, Audio, Webinar, or LivestreamBeta)
+- The meeting type they join (Video, Audio, Webinar, or Livestream Beta)
 - Actions they can perform (permissions and controls)
 - The UI’s look and feel, including colors and themes, so the experience matches your application's branding.
 

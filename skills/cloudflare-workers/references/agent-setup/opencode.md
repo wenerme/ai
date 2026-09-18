@@ -73,7 +73,7 @@ TerminalStandaloneExtensionOpen Source
    For example:
 
    ```txt
-   Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+   Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
    ```
 
 
@@ -179,23 +179,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
 ```
 
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ## Tips

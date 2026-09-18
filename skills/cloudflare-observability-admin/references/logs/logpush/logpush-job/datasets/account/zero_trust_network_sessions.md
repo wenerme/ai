@@ -73,6 +73,12 @@ Type: `bool`
 
 Whether the TCP connection was reused for multiple HTTP requests.
 
+## DestinationReplicaID
+
+Type: `string`
+
+Identifier of the physical replica that served the session, such as a WARP device for Mesh or a cloudflared replica for Cloudflare Tunnel.
+
 ## DestinationTunnelID
 
 Type: `string`
@@ -150,7 +156,14 @@ The IP used to correlate existing FQDN matching policy between Gateway DNS and G
 Type: `string`
 
 The type of destination to which the network session was routed.
-Possible values are *INTERNET* | *MAGIC* | *CFD\_TUNNEL* | *WARP*.
+Possible values are *INTERNET* | *MAGIC* | *CFD\_TUNNEL* | *WARP* | *MESH*.
+
+## OnrampType
+
+Type: `string`
+
+The type of on-ramp through which the network session entered Cloudflare One.
+Possible values are *OTHER* | *CF1\_CLIENT* | *MESH* | *WORKERS\_VPC* | *MAGIC*.
 
 ## OriginIP
 
@@ -244,6 +257,12 @@ Type: `int or string`
 
 The network session start timestamp with nanosecond precision.
 
+## SourceID
+
+Type: `string`
+
+Stable identifier of the Worker or Durable Object that initiated the network session. Only available for Workers VPC sessions.
+
 ## SourceIP
 
 Type: `string`
@@ -255,6 +274,12 @@ Source IP of the network session.
 Type: `string`
 
 Internal IP of the device. For Cloudflare One Client (WARP) traffic, this is the WARP CGNAT address. For GRE/IPsec on-ramps, this is the source IP behind the tunnel.
+
+## SourceName
+
+Type: `string`
+
+Name of the Worker script that initiated the network session. Only available for Workers VPC sessions.
 
 ## SourcePort
 

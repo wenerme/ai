@@ -113,6 +113,8 @@ tags:
     name: Video Generation
   - description: Workspaces endpoints
     name: Workspaces
+  - description: Alpha feature endpoints for Decisions (questions and answers) requests
+    name: alpha.decisions
 externalDocs:
   description: OpenRouter Documentation
   url: https://openrouter.ai/docs
@@ -2374,6 +2376,7 @@ components:
         - Moonshot AI
         - Morph
         - VoyageAI by MongoDB
+        - TypeSafe
         - Near AI
         - Nebius
         - Nex AGI
@@ -2406,6 +2409,7 @@ components:
         - Tenstorrent
         - Thinking Machines
         - Together
+        - Unbiased
         - Upstage
         - Venice
         - Wafer

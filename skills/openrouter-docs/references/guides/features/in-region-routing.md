@@ -85,6 +85,18 @@ Two categories of endpoints are always excluded from regional routing even if th
 * **Global / cross-region deployments.** Provider deployments that can process requests in any region (for example, Bedrock `global.` cross-region inference profiles or Vertex `global` locations) do not guarantee residency and are not eligible.
 * **Multi-model routers.** Router-type models (such as the Auto Router) are excluded from regional model lists.
 
+### Regional Endpoints on the Global Domain
+
+Some providers bill a premium for serving a model from a specific region. On the global domain (`https://openrouter.ai`), default routing skips these regional-surcharge endpoints whenever the model also has a standard-priced endpoint. The model page lists them under **Not used in Standard routing**. That grouping describes shared routing without your BYOK keys, so an endpoint that only your own key unlocks still appears there.
+
+A regional-surcharge endpoint is used when:
+
+* The request arrives on a regional domain (`https://eu.openrouter.ai` or `https://us.openrouter.ai`), where in-region routing applies
+* The request pins that endpoint with its regional slug in `provider.only` or `provider.order`, for example `amazon-bedrock/eu-west-1`. A bare provider slug such as `amazon-bedrock` does not pin its regional endpoints
+* The request routes through your prioritized BYOK key for a provider whose only endpoints for the model are regional, billing the premium to your own provider account. See [BYOK and Regional Endpoints](/docs/guides/overview/auth/byok#byok-and-regional-endpoints)
+
+If every endpoint for a model is surcharge-priced, they all stay in default routing.
+
 ### Finding In-Region Models
 
 To see which models are available for in-region routing:
