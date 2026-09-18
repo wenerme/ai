@@ -67,14 +67,30 @@ HiDream-E1 は、HiDream-ai 社が公式にオープンソース化したイン�
 
 ## HiDream E1.1 の ComfyUI ネイティブ ワークフローの例
 
-E1.1 は 2025年7月16日にリリースされた更新版で、**動的な 1メガピクセル解像度** をサポートしています。ワークフローでは `Scale Image to Total Pixels` ノードを用いて、入力画像を自動的に 100万ピクセルにスケーリングします。
+### HiDream E1.1 画像編集 {#hidream_e1_1}
 
-テスト時の VRAM 使用量の参考値は以下の通りです：
-1. A100 40GB（VRAM 使用率 95％）：初回生成 211秒、2回目以降の生成 73秒  
+HiDream E1.1 で画像を編集します。HiDream-E1-Full と比較して、画像品質と編集精度に優れています。
 
-2. RTX 4090D 24GB（VRAM 使用率 98％）  
-　- Full バージョン：メモリ不足（Out of memory）  
-　- FP8_e4m3fn_fast（VRAM 使用率 98％）：初回生成 120秒、2回目以降の生成 91秒  
+[HiDream E1.1 の画像編集ワークフローのプレビュー]
+
+  
+    Comfy Cloud で開く
+  
+  
+    JSON をダウンロードするか、テンプレートライブラリで「HiDream E1.1」を検索してください
+  
+
+**入力素材**
+
+このファイルを対応する `LoadImage` ノードにアップロードしてください:
+
+  
+    `LoadImage` ノード 13 · `hidream_e1_1_input_image.jpg`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [hidream_e1_1_input_image.jpg]
+</div>
 
 ### 1. HiDream E1.1 ワークフローおよび関連素材
 
@@ -108,9 +124,37 @@ E1.1 は 2025年7月16日にリリースされた更新版で、**動的な 1メ
 
 ## HiDream E1 の ComfyUI ネイティブ ワークフローの例
 
-<a className="prose" target='_blank' href="https://cloud.comfy.org/?template=hidream_e1_full&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28a745', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
-    <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Comfy Cloud で実行</p>
-</a>
+### HiDream E1 画像編集 {#hidream_e1_full}
+
+HiDream E1 で画像を編集します。プロフェッショナル向けの自然言語による画像編集モデルです。
+
+[HiDream E1 の画像編集ワークフローのプレビュー]
+
+  
+    Comfy Cloud で開く
+  
+  
+    JSON をダウンロードするか、テンプレートライブラリで「HiDream E1 Full」を検索してください
+  
+
+**入力素材**
+
+このファイルを対応する `LoadImage` ノードにアップロードしてください:
+
+  
+    `LoadImage` ノード 13 · `hidream_e1_full_input_image.jpg`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [hidream_e1_full_input_image.jpg]
+</div>
+
+**出力例**
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [入力画像]
+  [HiDream E1 の出力例]
+</div>
 
 E1 は 2025年4月28日にリリースされたモデルで、**768×768 の固定解像度のみ** をサポートします。
 

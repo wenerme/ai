@@ -113,6 +113,8 @@ tags:
     name: Video Generation
   - description: Workspaces endpoints
     name: Workspaces
+  - description: Alpha feature endpoints for Decisions (questions and answers) requests
+    name: alpha.decisions
 externalDocs:
   description: OpenRouter Documentation
   url: https://openrouter.ai/docs
@@ -361,6 +363,7 @@ components:
         - audio
         - video
         - rerank
+        - decisions
         - speech
         - transcription
       example: image

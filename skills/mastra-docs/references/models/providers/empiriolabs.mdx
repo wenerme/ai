@@ -5,7 +5,7 @@ description: "Browse EmpirioLabs AI model IDs, capabilities, context windows, an
 
 # [EmpirioLabs AI logo]EmpirioLabs AI
 
-Access 61 EmpirioLabs AI models through Mastra's model router. Authentication is handled automatically using the `EMPIRIOLABS_API_KEY` environment variable.
+Access 62 EmpirioLabs AI models through Mastra's model router. Authentication is handled automatically using the `EMPIRIOLABS_API_KEY` environment variable.
 
 Learn more in the [EmpirioLabs AI documentation](https://docs.empiriolabs.ai).
 
@@ -662,6 +662,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 2,
     "outputCost": 6
+  },
+  {
+    "model": "empiriolabs/qwen3-8-omni-flash",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 0.3,
+    "outputCost": 0.94
   },
   {
     "model": "empiriolabs/qwen3-max",

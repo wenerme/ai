@@ -22,9 +22,7 @@ If you have not already, we recommend trying out our [demo app ↗](https://exam
 
 RealtimeKit provides two ways to build real-time media applications:
 
-**UI Kit**:
-
-Recommended UI library of pre-built, customizable components for rapid development — sits on top of the Core SDK.
+**UI Kit**: Recommended UI library of pre-built, customizable components for rapid development — sits on top of the Core SDK.
 
 **Core SDK**: Client SDK built on top of Realtime SFU that provides a full set of APIs for managing video calls, from joining and leaving sessions to muting, unmuting, and toggling audio and video.
 

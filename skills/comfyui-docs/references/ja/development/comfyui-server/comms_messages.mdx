@@ -89,3 +89,4 @@ from server import PromptServer
     def my_main_function(self, required_inputs, node_id):
         # 何か処理を行う
         PromptServer.instance.send_sync("my.custom.message", {"node": node_id, "other_things": etc})
+```

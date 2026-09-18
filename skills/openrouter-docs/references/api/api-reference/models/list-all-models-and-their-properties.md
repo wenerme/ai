@@ -111,6 +111,8 @@ tags:
     name: Video Generation
   - description: Workspaces endpoints
     name: Workspaces
+  - description: Alpha feature endpoints for Decisions (questions and answers) requests
+    name: alpha.decisions
 externalDocs:
   description: OpenRouter Documentation
   url: https://openrouter.ai/docs
@@ -184,8 +186,9 @@ paths:
             type: string
         - description: >-
             Filter models by output modality. Accepts a comma-separated list of
-            modalities (text, image, embeddings, audio, video, rerank, speech,
-            transcription) or "all" to include all models. Defaults to "text".
+            modalities (text, image, embeddings, audio, video, rerank,
+            decisions, speech, transcription) or "all" to include all models.
+            Defaults to "text".
           in: query
           name: output_modalities
           required: false
@@ -193,8 +196,8 @@ paths:
             description: >-
               Filter models by output modality. Accepts a comma-separated list
               of modalities (text, image, embeddings, audio, video, rerank,
-              speech, transcription) or "all" to include all models. Defaults to
-              "text".
+              decisions, speech, transcription) or "all" to include all models.
+              Defaults to "text".
             example: text
             type: string
         - description: >-
@@ -1389,6 +1392,7 @@ components:
         - audio
         - video
         - rerank
+        - decisions
         - speech
         - transcription
       example: text

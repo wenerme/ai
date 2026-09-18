@@ -1964,6 +1964,7 @@ def _resolve_animation_config_source(
 def main(argv: list[str] | None = None) -> int:
     """CLI entry point for the SVG to PPTX conversion tool."""
     require_skill_integrity()
+    roundtrip_summary_line: str | None = None
     transition_choices = [
         'none',
         *NATIVE_TRANSITION_KEYS,
@@ -2229,6 +2230,10 @@ Recorded narration:
                         help='Transition duration in seconds (default: 0.4)')
     parser.add_argument('--auto-advance', type=non_negative_float, default=None,
                         help='Auto-advance interval in seconds (default: manual advance)')
+    parser.add_argument('--kiosk', action='store_true',
+                        help='Export as a looping kiosk show: PowerPoint ignores click and '
+                             'keyboard advance, so only --auto-advance timings and hyperlinks '
+                             'move between slides')
 
     parser.add_argument('-a', '--animation', type=str, choices=animation_choices,
                         default=None,
@@ -3083,7 +3088,9 @@ Recorded narration:
                 file=sys.stderr,
             )
             return 1
-        print(
+        # Printed only after the package is written: a failed export must not
+        # leave a receipt that reads like a delivery.
+        roundtrip_summary_line = (
             "  Round-trip export summary: "
             f"output_pages={len(roundtrip_pages)} "
             f"passthrough={direct_passthrough_count} "
@@ -3264,7 +3271,8 @@ Recorded narration:
         # is predictable; an explicit -o keeps the caller's exact name untouched.
         native_tag = "_native_charts_tables" if args.native_objects else ""
         narrated_tag = "_narrated" if (args.recorded_narration or args.narration_audio_dir) else ""
-        native_path = exports_dir / f"{project_name}_{timestamp}{native_tag}{narrated_tag}.pptx"
+        kiosk_tag = "_kiosk" if args.kiosk else ""
+        native_path = exports_dir / f"{project_name}_{timestamp}{native_tag}{narrated_tag}{kiosk_tag}.pptx"
         # Preserve svg_output/ only when it is the actual source. A custom -s
         # directory remains the caller-owned source and is not copied under a
         # misleading svg_output backup name.
@@ -3750,6 +3758,7 @@ Recorded narration:
         transition_sound=transition_sound,
         transition_duration=transition_duration,
         auto_advance=auto_advance,
+        kiosk=args.kiosk,
         notes=notes,
         enable_notes=enable_notes,
         animation=animation,
@@ -3828,6 +3837,8 @@ Recorded narration:
     except (TemplateStructureError, ValueError) as exc:
         print(f"Error: {exc}", file=sys.stderr)
         return 1
+    if success and roundtrip_summary_line is not None:
+        print(roundtrip_summary_line)
 
     # Archive svg_output/ once per default-flow export. This preserves the
     # authored SVG sources under backup/<ts>/svg_output/ for inspection and

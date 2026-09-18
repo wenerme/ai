@@ -1,11 +1,11 @@
 ---
 title: "Comfy Router로 Google Gemini 사용하기"
 description: "Comfy Router를 통해 HTTP로 Google Gemini 텍스트 모델을 호출하는 Python, TypeScript, cURL 코드 조각과 요청 필드 및 결과 형태"
-translationSourceHash: 16dd2290
+translationSourceHash: baa6ee65
 translationFrom: development/comfy-router/models/google/gemini/code.mdx
 translationBlockHashes:
   "_intro": 9975ebcd
-  "Quick start": 0389b310
+  "Quick start": 46e5d7a1
   "Schema": 670b42f7
   "Examples": 4bb73c12
 ---
@@ -60,7 +60,7 @@ import { comfy } from "@comfyorg/sdk";
 // Reads COMFY_API_KEY from the environment.
 // The SDK automatically creates an idempotency key and reuses it for automatic retries.
 type Result = { candidates: { content: { parts: { text: string }[] } }[] };
-const { data } = await comfy.models.run<Result>("vertexai/gemini-3.1-pro-preview", {
+const result = await comfy.models.run<Result>("vertexai/gemini-3.1-pro-preview", {
   contents: [
     {
       role: "user",
@@ -76,8 +76,9 @@ const { data } = await comfy.models.run<Result>("vertexai/gemini-3.1-pro-preview
     maxOutputTokens: 256,
   },
 });
+if (result.kind !== "json") throw new Error("expected a JSON result");
 
-console.log("text:", data.candidates[0].content.parts[0].text);
+console.log("text:", result.data.candidates[0].content.parts[0].text);
 ```
 
 ```bash cURL
@@ -187,7 +188,6 @@ curl https://api.comfy.org/v2/models/vertexai/gemini-3.1-pro-preview/requests/$R
   
 
   
-
   
 **모델 ID:** `vertexai/gemini-3.5-flash`
 
@@ -230,7 +230,7 @@ import { comfy } from "@comfyorg/sdk";
 // Reads COMFY_API_KEY from the environment.
 // The SDK automatically creates an idempotency key and reuses it for automatic retries.
 type Result = { candidates: { content: { parts: { text: string }[] } }[] };
-const { data } = await comfy.models.run<Result>("vertexai/gemini-3.5-flash", {
+const result = await comfy.models.run<Result>("vertexai/gemini-3.5-flash", {
   contents: [
     {
       role: "user",
@@ -246,8 +246,9 @@ const { data } = await comfy.models.run<Result>("vertexai/gemini-3.5-flash", {
     maxOutputTokens: 256,
   },
 });
+if (result.kind !== "json") throw new Error("expected a JSON result");
 
-console.log("text:", data.candidates[0].content.parts[0].text);
+console.log("text:", result.data.candidates[0].content.parts[0].text);
 ```
 
 ```bash cURL
@@ -357,7 +358,6 @@ curl https://api.comfy.org/v2/models/vertexai/gemini-3.5-flash/requests/$REQUEST
   
 
   
-
   
 **모델 ID:** `vertexai/gemini-2.5-pro`
 
@@ -400,7 +400,7 @@ import { comfy } from "@comfyorg/sdk";
 // Reads COMFY_API_KEY from the environment.
 // The SDK automatically creates an idempotency key and reuses it for automatic retries.
 type Result = { candidates: { content: { parts: { text: string }[] } }[] };
-const { data } = await comfy.models.run<Result>("vertexai/gemini-2.5-pro", {
+const result = await comfy.models.run<Result>("vertexai/gemini-2.5-pro", {
   contents: [
     {
       role: "user",
@@ -416,8 +416,9 @@ const { data } = await comfy.models.run<Result>("vertexai/gemini-2.5-pro", {
     maxOutputTokens: 256,
   },
 });
+if (result.kind !== "json") throw new Error("expected a JSON result");
 
-console.log("text:", data.candidates[0].content.parts[0].text);
+console.log("text:", result.data.candidates[0].content.parts[0].text);
 ```
 
 ```bash cURL
@@ -527,7 +528,6 @@ curl https://api.comfy.org/v2/models/vertexai/gemini-2.5-pro/requests/$REQUEST_I
   
 
   
-
   
 **모델 ID:** `vertexai/gemini-2.5-flash`
 
@@ -570,7 +570,7 @@ import { comfy } from "@comfyorg/sdk";
 // Reads COMFY_API_KEY from the environment.
 // The SDK automatically creates an idempotency key and reuses it for automatic retries.
 type Result = { candidates: { content: { parts: { text: string }[] } }[] };
-const { data } = await comfy.models.run<Result>("vertexai/gemini-2.5-flash", {
+const result = await comfy.models.run<Result>("vertexai/gemini-2.5-flash", {
   contents: [
     {
       role: "user",
@@ -586,8 +586,9 @@ const { data } = await comfy.models.run<Result>("vertexai/gemini-2.5-flash", {
     maxOutputTokens: 256,
   },
 });
+if (result.kind !== "json") throw new Error("expected a JSON result");
 
-console.log("text:", data.candidates[0].content.parts[0].text);
+console.log("text:", result.data.candidates[0].content.parts[0].text);
 ```
 
 ```bash cURL

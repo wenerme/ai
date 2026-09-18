@@ -20,7 +20,11 @@ Our API authenticates requests using Bearer tokens. This allows you to use `curl
 
 ## Using an API key
 
-To use an API key, [first create your key](https://openrouter.ai/keys). Give it a name and you can optionally set a credit limit.
+To use an API key, [first create your key](https://openrouter.ai/keys). Give it a name and choose a credit limit (or no limit). Once a key has used its credit limit, requests with it are rejected until you raise the limit on the key's page, or, for a daily, weekly, or monthly limit, until the limit resets. Keys created for you during onboarding get a \$100 credit limit and expire after 180 days.
+
+<Warning>
+  We recommend setting a credit limit on every key. A key with no limit lets a leaked key or a runaway agent spend your entire balance, including any auto top-ups. If you need a key without a limit, keep it out of client-side code and rotate it promptly if you suspect it has been [exposed](#if-your-key-has-been-exposed).
+</Warning>
 
 If you're calling the OpenRouter API directly, set the `Authorization` header to a Bearer token with your API key.
 

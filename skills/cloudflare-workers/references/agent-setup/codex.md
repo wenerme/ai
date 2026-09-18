@@ -58,7 +58,7 @@ TerminalStandaloneCloudExtensionOpen Source
    For example:
 
    ```txt
-   Build an image upload and transformation service using R2 and Cloudflare Images.
+   Check my Workers deployment logs for errors and suggest fixes.
    ```
 
 
@@ -171,23 +171,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ## Tips

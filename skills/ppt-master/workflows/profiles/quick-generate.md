@@ -56,6 +56,8 @@ Artifact roles follow [`artifact-ownership.md`](../../references/artifact-owners
 | CSV / TSV | Read directly as a plain-text table |
 | Markdown or conversation text | Read directly |
 
+A book-length converted source is located by its heading index and searched phrases, then read only in the sections the deck draws on.
+
 **Orientation review**: apply [`conversion.md`](../../scripts/docs/conversion.md) § Image Orientation Review before import when correction is requested, converted text asks for rotated viewing, or an asset is visibly sideways (skip the legacy HTML tool).
 
 **Research scope**: after reading every source, research only the gaps where the requested outcome would otherwise require inventing, omitting, or leaving unsupported an externally verifiable claim. An Image to PPTX surface is a closed corpus whose unreadable regions become `manual_required`; a closed/source-only brief stays within its material.
@@ -86,7 +88,7 @@ A file taken from another project's tree is copied unless `--move` is explicit; 
 
 **URL authority**: the facts JSON is the sole URL authority; only after web-image search is exhausted may a webpage package be fetched under [`topic-research`](../stages/topic-research.md) § Hand-off and its accepted images copied in. Under Image to PPTX, the normalized frame roster is canonical input and the agent writes `analysis/reconstruction_inventory.json` before deciding layers.
 
-**Installed templates**: run `apply-template-workspace` against the preflighted roots only; the request is the selection authority, with no receipt or handoff, and every later read uses the installed state. Before P01 read each installed spec once and, for Layout/Deck, every SVG prototype. Apply Brand identity, Style direction, the structure owner's prototype geometry, and Deck context under the stage's §5 segment precedence: an owner's instruction on how a value dominates, recedes, or stays rare binds as strongly as the value, and a Style tendency never demotes a Brand's dominant color.
+**Installed templates**: run `apply-template-workspace` against the preflighted roots only; the request is the selection authority, with no receipt or handoff, and every later read uses the installed state — with no lock, the installed spec is the re-readable truth for its anchors. Before P01 read each installed spec once and, for Layout/Deck, every SVG prototype. Apply Brand identity, Style direction, the structure owner's prototype geometry, and Deck context under the stage's §5 segment precedence: an owner's instruction on how a value dominates, recedes, or stays rare binds as strongly as the value, and a Style tendency never demotes a Brand's dominant color.
 
 **Template Application paragraph**: freeze one in context — explicit user instructions first, otherwise the fit of the content to the complete roster, defaulting to reference-led use (redesign after full-roster study; other readings such as augment-only or replacement-only are examples, not a menu). It names which prototypes may be used, skipped, repeated, reordered, or adapted, what stays fixed, and any exception by exact SVG basename. When a detail is later uncertain, reread the installed SVG. When the structure owner records `replication_mode: mirror`, say explicitly whether pages reuse the prototypes literally (text values only, topology frozen) or redesign from them — Quick has no `template_reuse_scope`, so this sentence is the only record of that choice.
 

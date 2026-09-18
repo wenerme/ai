@@ -5,7 +5,7 @@ description: "Browse OpenCode Zen model IDs, capabilities, context windows, and 
 
 # [OpenCode Zen logo]OpenCode Zen
 
-Access 102 OpenCode Zen models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
+Access 103 OpenCode Zen models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
 
 Learn more in the [OpenCode Zen documentation](https://opencode.ai/docs/zen).
 
@@ -600,8 +600,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": 2,
-    "outputCost": 10
+    "inputCost": 4,
+    "outputCost": 20
   },
   {
     "model": "opencode/gpt-5.6-terra",
@@ -662,6 +662,18 @@ for await (const chunk of stream) {
     "maxOutput": 256000,
     "inputCost": 1,
     "outputCost": 2
+  },
+  {
+    "model": "opencode/jev-latest",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": 64000,
+    "maxOutput": null,
+    "inputCost": 0.042,
+    "outputCost": null
   },
   {
     "model": "opencode/kimi-k2.5",
