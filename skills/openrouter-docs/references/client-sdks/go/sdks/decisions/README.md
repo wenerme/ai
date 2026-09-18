@@ -1,0 +1,87 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Alpha.Decisions
+
+> Alpha feature endpoints for Decisions (questions and answers) requests
+
+## Overview
+
+Alpha feature endpoints for Decisions (questions and answers) requests
+
+### Available Operations
+
+* [Create](#create) - Submit a Decisions (questions and answers) request
+
+## Create
+
+Submits a Decisions request to the Decisions router
+
+### Example Usage
+
+```go theme={null}
+package main
+
+import(
+	"context"
+	"os"
+	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"github.com/OpenRouterTeam/go-sdk/models/components"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := openrouter.New(
+        openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
+    )
+
+    res, err := s.Alpha.Decisions.Create(ctx, components.DecisionsRequest{
+        Model: "Grand Cherokee",
+        Questions: map[string]components.Questions{
+
+        },
+        State: components.CreateStateStr(
+            "Maine",
+        ),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter | Type                                                                        | Required             | Description                                |
+| --------- | --------------------------------------------------------------------------- | -------------------- | ------------------------------------------ |
+| `ctx`     | [context.Context](https://pkg.go.dev/context#Context)                       | :heavy\_check\_mark: | The context to use for the request.        |
+| `request` | [components.DecisionsRequest](../../models/components/decisionsrequest.mdx) | :heavy\_check\_mark: | The request object to use for the request. |
+| `opts`    | \[][operations.Option](../../models/operations/option.mdx)                  | :heavy\_minus\_sign: | The options for this request.              |
+
+### Response
+
+**[\*components.DecisionsResponse](../../models/components/decisionsresponse.mdx), error**
+
+### Errors
+
+| Error Type                                | Status Code | Content Type     |
+| ----------------------------------------- | ----------- | ---------------- |
+| sdkerrors.BadRequestResponseError         | 400         | application/json |
+| sdkerrors.UnauthorizedResponseError       | 401         | application/json |
+| sdkerrors.PaymentRequiredResponseError    | 402         | application/json |
+| sdkerrors.ForbiddenResponseError          | 403         | application/json |
+| sdkerrors.NotFoundResponseError           | 404         | application/json |
+| sdkerrors.PayloadTooLargeResponseError    | 413         | application/json |
+| sdkerrors.TooManyRequestsResponseError    | 429         | application/json |
+| sdkerrors.InternalServerResponseError     | 500         | application/json |
+| sdkerrors.BadGatewayResponseError         | 502         | application/json |
+| sdkerrors.ServiceUnavailableResponseError | 503         | application/json |
+| sdkerrors.EdgeNetworkTimeoutResponseError | 524         | application/json |
+| sdkerrors.ProviderOverloadedResponseError | 529         | application/json |
+| sdkerrors.APIError                        | 4XX, 5XX    | \*/\*            |

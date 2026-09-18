@@ -59,7 +59,8 @@ GET /notification_settings
 Example request:
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/notification_settings"
 ```
 
@@ -90,7 +91,8 @@ PUT /notification_settings
 Example request:
 
 ```shell
-curl --request PUT --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request PUT \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/notification_settings?level=watch"
 ```
 
@@ -150,12 +152,14 @@ GET /projects/:id/notification_settings
 Example request:
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/groups/5/notification_settings"
 ```
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/projects/8/notification_settings"
 ```
 
@@ -230,12 +234,14 @@ PUT /projects/:id/notification_settings
 Example requests:
 
 ```shell
-curl --request PUT --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request PUT \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/groups/5/notification_settings?level=watch"
 ```
 
 ```shell
-curl --request PUT --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request PUT \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/projects/8/notification_settings?level=custom&new_note=true"
 ```
 

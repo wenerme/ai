@@ -4,7 +4,7 @@ This guide walks you through creating and using Managed Agents on the Gemini API
 
 A single call to the [Interactions API](https://ai.google.dev/gemini-api/docs) provisions a Linux sandbox, runs the agent loop, and returns the result. You'll define three parameters:
 
-- Pass in the `agent` as `"antigravity-preview-05-2026",` which is the current version of our predefined and general purpose managed agent.
+- Pass in the `agent` as `"antigravity-preview-09-2026",` which is the current version of our predefined and general purpose managed agent.
 - Define `environment="remote"`, to provision a new, fresh sandbox environment.
 - Create an input, defining what you want the agent to do.
 
@@ -15,7 +15,7 @@ A single call to the [Interactions API](https://ai.google.dev/gemini-api/docs) p
     client = genai.Client()
 
     interaction = client.interactions.create(
-        agent="antigravity-preview-05-2026",
+        agent="antigravity-preview-09-2026",
         input="Write a Python script that generates the first 20 Fibonacci numbers and saves them to fibonacci.txt. Then read the file and print its contents.",
         environment="remote",
     )
@@ -32,7 +32,7 @@ A single call to the [Interactions API](https://ai.google.dev/gemini-api/docs) p
     const client = new GoogleGenAI({});
 
     const interaction = await client.interactions.create({
-        agent: "antigravity-preview-05-2026",
+        agent: "antigravity-preview-09-2026",
         input: "Write a Python script that generates the first 20 Fibonacci numbers and saves them to fibonacci.txt. Then read the file and print its contents.",
         environment: "remote",
     });
@@ -45,26 +45,27 @@ A single call to the [Interactions API](https://ai.google.dev/gemini-api/docs) p
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.CreateModelInteractionEnvironment;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteractionEnvironment;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
 
     Client client = new Client();
 
-    CreateModelInteraction req =
-        CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Summarize the project structure."))
-            .environment(CreateModelInteractionEnvironment.of("remote"))
-            .build();
+    CreateAgentInteraction params = CreateAgentInteraction.builder()
+        .agent(AgentOption.of("antigravity-preview-09-2026"))
+        .input(InteractionsInput.of("Write a Python script that generates the first 20 Fibonacci numbers and saves them to fibonacci.txt. Then read the file and print its contents."))
+        .environment(CreateAgentInteractionEnvironment.of("remote"))
+        .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+    Interaction interaction = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    System.out.println(interaction.outputText().orElse(""));
+    // Print the agent's final output
+    System.out.println("Interaction ID: " + interaction.id().orElse(""));
+    System.out.println("Environment ID: " + interaction.environmentId().orElse(""));
+    System.out.println("Output: " + interaction.outputText().orElse(""));
 
 ### REST
 
@@ -72,7 +73,7 @@ A single call to the [Interactions API](https://ai.google.dev/gemini-api/docs) p
     -H "Content-Type: application/json" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -d '{
-        "agent": "antigravity-preview-05-2026",
+        "agent": "antigravity-preview-09-2026",
         "input": [{"type": "text", "text": "Write a Python script that generates the first 20 Fibonacci numbers and saves them to fibonacci.txt. Then read the file and print its contents."}],
         "environment": {"type": "remote"}
     }'
@@ -91,7 +92,7 @@ Pass both in their respective place to resume:
 ### Python
 
     interaction_2 = client.interactions.create(
-        agent="antigravity-preview-05-2026",
+        agent="antigravity-preview-09-2026",
         previous_interaction_id=interaction.id,
         environment=interaction.environment_id,
         input="Now plot the Fibonacci sequence as a line chart and save it as chart.png.",
@@ -102,7 +103,7 @@ Pass both in their respective place to resume:
 ### JavaScript
 
     const interaction2 = await client.interactions.create({
-        agent: "antigravity-preview-05-2026",
+        agent: "antigravity-preview-09-2026",
         previous_interaction_id: interaction.id,
         environment: interaction.environment_id,
         input: "Now plot the Fibonacci sequence as a line chart and save it as chart.png.",
@@ -113,26 +114,26 @@ Pass both in their respective place to resume:
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.CreateModelInteractionEnvironment;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteractionEnvironment;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
 
     Client client = new Client();
+    String interactionId = "INTERACTION_ID";
+    String environmentId = "ENVIRONMENT_ID";
 
-    CreateModelInteraction req =
-        CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Summarize the project structure."))
-            .environment(CreateModelInteractionEnvironment.of("remote"))
-            .build();
+    CreateAgentInteraction params = CreateAgentInteraction.builder()
+        .agent(AgentOption.of("antigravity-preview-09-2026"))
+        .previousInteractionId(interactionId)
+        .environment(CreateAgentInteractionEnvironment.of(environmentId))
+        .input(InteractionsInput.of("Now plot the Fibonacci sequence as a line chart and save it as chart.png."))
+        .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-
-    System.out.println(interaction.outputText().orElse(""));
+    Interaction interaction2 = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    System.out.println(interaction2.outputText().orElse(""));
 
 ### REST
 
@@ -140,7 +141,7 @@ Pass both in their respective place to resume:
     -H "Content-Type: application/json" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -d '{
-        "agent": "antigravity-preview-05-2026",
+        "agent": "antigravity-preview-09-2026",
         "previous_interaction_id": "interaction_id_from_step_1",
         "environment": "environment_id_from_step_1",
         "input": [{"type": "text", "text": "Now plot the Fibonacci sequence as a line chart and save it as chart.png."}]
@@ -168,7 +169,7 @@ For long-running tasks, you can stream the response to see the agent work in rea
     client = genai.Client()
 
     stream = client.interactions.create(
-        agent="antigravity-preview-05-2026",
+        agent="antigravity-preview-09-2026",
         input="Read Hacker News, summarize the top 5 stories, and save the results as a PDF.",
         environment="remote",
         stream=True,
@@ -186,7 +187,7 @@ For long-running tasks, you can stream the response to see the agent work in rea
     const client = new GoogleGenAI({});
 
     const stream = await client.interactions.create({
-        agent: "antigravity-preview-05-2026",
+        agent: "antigravity-preview-09-2026",
         input: "Read Hacker News, summarize the top 5 stories, and save the results as a PDF.",
         environment: "remote",
         stream: true,
@@ -202,26 +203,33 @@ For long-running tasks, you can stream the response to see the agent work in rea
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.CreateModelInteractionEnvironment;
-    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteractionEnvironment;
+    import com.google.genai.gaos.models.interactions.InteractionSSEStreamEvent;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.StepStop;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.utils.EventStream;
 
     Client client = new Client();
 
-    CreateModelInteraction req =
-        CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Summarize the project structure."))
-            .environment(CreateModelInteractionEnvironment.of("remote"))
-            .build();
+    CreateAgentInteraction params = CreateAgentInteraction.builder()
+        .agent(AgentOption.of("antigravity-preview-09-2026"))
+        .input(InteractionsInput.of("Read Hacker News, summarize the top 5 stories, and save the results as a PDF."))
+        .environment(CreateAgentInteractionEnvironment.of("remote"))
+        .stream(true)
+        .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-
-    System.out.println(interaction.outputText().orElse(""));
+    try (EventStream<InteractionSSEStreamEvent> stream =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).events()) {
+      for (InteractionSSEStreamEvent event : stream) {
+        System.out.println(event);
+        if (event.data().isPresent() && event.data().get() instanceof StepStop stepStop) {
+          stepStop.usage().ifPresent(System.out::println);
+        }
+      }
+    }
 
 ### REST
 
@@ -229,7 +237,7 @@ For long-running tasks, you can stream the response to see the agent work in rea
     -H "Content-Type: application/json" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -d '{
-        "agent": "antigravity-preview-05-2026",
+        "agent": "antigravity-preview-09-2026",
         "input": "Read Hacker News, summarize the top 5 stories, and save the results as a PDF.",
         "environment": "remote",
         "stream": true
@@ -296,27 +304,29 @@ When the agent creates files inside the sandbox. Download them using the Files A
 
 ### Java
 
-    import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.CreateModelInteractionEnvironment;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.net.URI;
+    import java.net.http.HttpClient;
+    import java.net.http.HttpRequest;
+    import java.net.http.HttpResponse;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
 
-    Client client = new Client();
+    String envId = "ENVIRONMENT_ID";
+    String apiKey = System.getenv("GEMINI_API_KEY");
 
-    CreateModelInteraction req =
-        CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Summarize the project structure."))
-            .environment(CreateModelInteractionEnvironment.of("remote"))
-            .build();
+    HttpClient httpClient = HttpClient.newBuilder()
+        .followRedirects(HttpClient.Redirect.NORMAL)
+        .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+    HttpRequest request = HttpRequest.newBuilder()
+        .uri(URI.create("https://generativelanguage.googleapis.com/v1beta/files/environment-" + envId + ":download?alt=media"))
+        .header("x-goog-api-key", apiKey)
+        .GET()
+        .build();
 
-    System.out.println(interaction.outputText().orElse(""));
+    HttpResponse<byte[]> response = httpClient.send(request, HttpResponse.BodyHandlers.ofByteArray());
+    Files.write(Paths.get("snapshot.tar"), response.body());
+    System.out.println("Saved snapshot to snapshot.tar");
 
 ### REST
 
@@ -333,7 +343,7 @@ When the agent creates files inside the sandbox. Download them using the Files A
 
 In the previous steps, we used the default Antigravity agent and customized it inline. Once you have iterated on your configuration (instructions, skills, model selection, and environment), you can save it as a reusable managed agent. This allows you to invoke it by ID without repeating the configuration.
 
-When you save an agent, notice the architectural symmetry with inline interactions: you specify `base_agent: "antigravity-preview-05-2026"` and can pass an `agent_config` with your chosen `model` just as you would on `interactions.create`. You also define a `base_environment` (either from sources or by forking an existing environment). The agent will use this environment and model configuration for every new interaction.
+When you save an agent, notice the architectural symmetry with inline interactions: you specify `base_agent: "antigravity-preview-09-2026"` and can pass an `agent_config` with your chosen `model` just as you would on `interactions.create`. You also define a `base_environment` (either from sources or by forking an existing environment). The agent will use this environment and model configuration for every new interaction.
 
 **From sources:** Define sources inline, or from other sources such as GitHub or Cloud Storage.
 
@@ -341,7 +351,7 @@ When you save an agent, notice the architectural symmetry with inline interactio
 
     agent = client.agents.create(
         id="fibonacci-analyst",
-        base_agent="antigravity-preview-05-2026",
+        base_agent="antigravity-preview-09-2026",
         agent_config={
             "type": "antigravity",
             "model": "gemini-3.8-flash",
@@ -370,7 +380,7 @@ When you save an agent, notice the architectural symmetry with inline interactio
 
     const agent = await client.agents.create({
         id: "fibonacci-analyst",
-        base_agent: "antigravity-preview-05-2026",
+        base_agent: "antigravity-preview-09-2026",
         agent_config: {
             type: "antigravity",
             model: "gemini-3.8-flash",
@@ -398,26 +408,46 @@ When you save an agent, notice the architectural symmetry with inline interactio
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.CreateModelInteractionEnvironment;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.agents.Agent;
+    import com.google.genai.gaos.models.agents.AgentConfig;
+    import com.google.genai.gaos.models.agents.BaseEnvironment;
+    import com.google.genai.gaos.models.interactions.AntigravityAgentConfig;
+    import com.google.genai.gaos.models.interactions.Environment;
+    import com.google.genai.gaos.models.interactions.Source;
+    import com.google.genai.gaos.models.interactions.SourceType;
+    import java.util.List;
 
     Client client = new Client();
 
-    CreateModelInteraction req =
-        CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Summarize the project structure."))
-            .environment(CreateModelInteractionEnvironment.of("remote"))
-            .build();
+    Environment env = Environment.builder()
+        .sources(List.of(
+            Source.builder()
+                .type(SourceType.INLINE)
+                .target(".agents/AGENTS.md")
+                .content("Always include a chart and a summary table in your reports.")
+                .build(),
+            Source.builder()
+                .type(SourceType.REPOSITORY)
+                .source("https://github.com/your-org/skills")
+                .target(".agents/skills")
+                .build()
+        ))
+        .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+    Agent agentParams = Agent.builder()
+        .id("fibonacci-analyst")
+        .baseAgent("antigravity-preview-09-2026")
+        .agentConfig(AgentConfig.of(
+            AntigravityAgentConfig.builder()
+                .model("gemini-3.8-flash")
+                .build()
+        ))
+        .systemInstruction("You are a math analysis agent. Generate sequences, visualize them, and export results as PDF reports.")
+        .baseEnvironment(BaseEnvironment.of(env))
+        .build();
 
-    System.out.println(interaction.outputText().orElse(""));
+    Agent agent = client.agents.create(agentParams).agent().get();
+    System.out.println("Saved agent: " + agent.id().orElse(""));
 
 ### REST
 
@@ -426,7 +456,7 @@ When you save an agent, notice the architectural symmetry with inline interactio
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -d '{
         "id": "fibonacci-analyst",
-        "base_agent": "antigravity-preview-05-2026",
+        "base_agent": "antigravity-preview-09-2026",
         "agent_config": {
             "type": "antigravity",
             "model": "gemini-3.8-flash"
@@ -478,26 +508,23 @@ Once you've saved a managed agent, you can invoke it by ID. Each invocation fork
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.CreateModelInteractionEnvironment;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteractionEnvironment;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
 
     Client client = new Client();
 
-    CreateModelInteraction req =
-        CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Summarize the project structure."))
-            .environment(CreateModelInteractionEnvironment.of("remote"))
-            .build();
+    CreateAgentInteraction params = CreateAgentInteraction.builder()
+        .agent(AgentOption.of("fibonacci-analyst"))
+        .input(InteractionsInput.of("Generate the first 50 prime numbers, plot their distribution, and save a PDF report."))
+        .environment(CreateAgentInteractionEnvironment.of("remote"))
+        .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-
-    System.out.println(interaction.outputText().orElse(""));
+    Interaction result = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    System.out.println(result.outputText().orElse(""));
 
 ### REST
 

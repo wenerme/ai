@@ -71,25 +71,43 @@ and poll for results.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AgentOption;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
     import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionStatus;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.operations.GetInteractionByIdRequest;
+    import java.util.Collections;
 
     Client client = new Client();
 
     CreateAgentInteraction params =
         CreateAgentInteraction.builder()
-            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
-            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .agent("deep-research-preview-04-2026")
+            .input(InteractionsInput.of("Research the history of Google TPUs."))
             .background(true)
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
+    System.out.println("Research started: " + interaction.id().orElse(""));
+
+    while (true) {
+      interaction =
+          client.interactions
+              .get(GetInteractionByIdRequest.builder().id(interaction.id().get()).build())
+              .interaction()
+              .get();
+      if (InteractionStatus.COMPLETED.equals(interaction.status().orElse(null))) {
+        System.out.println(interaction.outputText().orElse(""));
+        break;
+      } else if (InteractionStatus.FAILED.equals(interaction.status().orElse(null))) {
+        System.out.println("Research failed: " + interaction.errors().orElse(Collections.emptyList()));
+        break;
+      }
+      Thread.sleep(10000);
+    }
 
 ### REST
 
@@ -172,25 +190,47 @@ returns a research plan instead of a full report.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AgentOption;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.DeepResearchAgentConfig;
     import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionStatus;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.ThinkingSummaries;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.operations.GetInteractionByIdRequest;
 
     Client client = new Client();
 
+    // First interaction: request a research plan
     CreateAgentInteraction params =
         CreateAgentInteraction.builder()
-            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
-            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .agent("deep-research-preview-04-2026")
+            .input(InteractionsInput.of("Do some research on Google TPUs."))
+            .agentConfig(
+                DeepResearchAgentConfig.builder()
+                    .thinkingSummaries(ThinkingSummaries.AUTO)
+                    .collaborativePlanning(true)
+                    .build())
             .background(true)
             .build();
 
-    Interaction interaction =
+    Interaction planInteraction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
+    // Wait for and retrieve the plan
+    Interaction result;
+    while (true) {
+      result =
+          client.interactions
+              .get(GetInteractionByIdRequest.builder().id(planInteraction.id().get()).build())
+              .interaction()
+              .get();
+      if (InteractionStatus.COMPLETED.equals(result.status().orElse(null))) {
+        break;
+      }
+      Thread.sleep(5000);
+    }
+    System.out.println(result.outputText().orElse(""));
 
 ### REST
 
@@ -256,25 +296,50 @@ mode.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AgentOption;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.DeepResearchAgentConfig;
     import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionStatus;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.ThinkingSummaries;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.operations.GetInteractionByIdRequest;
 
     Client client = new Client();
+    String planInteractionId = "PLAN_INTERACTION_ID";
 
+    // Second interaction: refine the plan
     CreateAgentInteraction params =
         CreateAgentInteraction.builder()
-            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
-            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .agent("deep-research-preview-04-2026")
+            .input(
+                InteractionsInput.of(
+                    "Focus more on the differences between Google TPUs and competitor hardware, and less on the history."))
+            .agentConfig(
+                DeepResearchAgentConfig.builder()
+                    .thinkingSummaries(ThinkingSummaries.AUTO)
+                    .collaborativePlanning(true)
+                    .build())
+            .previousInteractionId(planInteractionId)
             .background(true)
             .build();
 
-    Interaction interaction =
+    Interaction refinedPlan =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
+    Interaction result;
+    while (true) {
+      result =
+          client.interactions
+              .get(GetInteractionByIdRequest.builder().id(refinedPlan.id().get()).build())
+              .interaction()
+              .get();
+      if (InteractionStatus.COMPLETED.equals(result.status().orElse(null))) {
+        break;
+      }
+      Thread.sleep(5000);
+    }
+    System.out.println(result.outputText().orElse(""));
 
 ### REST
 
@@ -340,25 +405,48 @@ start the research.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AgentOption;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.DeepResearchAgentConfig;
     import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionStatus;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.ThinkingSummaries;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.operations.GetInteractionByIdRequest;
 
     Client client = new Client();
+    String refinedPlanId = "REFINED_PLAN_ID";
 
+    // Third interaction: approve the plan and kick off research
     CreateAgentInteraction params =
         CreateAgentInteraction.builder()
-            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
-            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .agent("deep-research-preview-04-2026")
+            .input(InteractionsInput.of("Plan looks good!"))
+            .agentConfig(
+                DeepResearchAgentConfig.builder()
+                    .thinkingSummaries(ThinkingSummaries.AUTO)
+                    .collaborativePlanning(false)
+                    .build())
+            .previousInteractionId(refinedPlanId)
             .background(true)
             .build();
 
-    Interaction interaction =
+    Interaction finalReport =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
+    Interaction result;
+    while (true) {
+      result =
+          client.interactions
+              .get(GetInteractionByIdRequest.builder().id(finalReport.id().get()).build())
+              .interaction()
+              .get();
+      if (InteractionStatus.COMPLETED.equals(result.status().orElse(null))) {
+        break;
+      }
+      Thread.sleep(5000);
+    }
+    System.out.println(result.outputText().orElse(""));
 
 ### REST
 
@@ -459,25 +547,67 @@ when the prompt requests them.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.DeepResearchAgentConfig;
+    import com.google.genai.gaos.models.interactions.ImageContent;
     import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionStatus;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.interactions.Visualization;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.operations.GetInteractionByIdRequest;
+    import java.util.Base64;
+    import java.util.Collections;
 
     Client client = new Client();
 
     CreateAgentInteraction params =
         CreateAgentInteraction.builder()
-            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
-            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .agent("deep-research-preview-04-2026")
+            .input(
+                InteractionsInput.of(
+                    "Analyze global semiconductor market trends. Include graphics showing market share changes."))
+            .agentConfig(DeepResearchAgentConfig.builder().visualization(Visualization.AUTO).build())
             .background(true)
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
+    System.out.println("Research started: " + interaction.id().orElse(""));
+
+    Interaction result;
+    while (true) {
+      result =
+          client.interactions
+              .get(GetInteractionByIdRequest.builder().id(interaction.id().get()).build())
+              .interaction()
+              .get();
+      if (InteractionStatus.COMPLETED.equals(result.status().orElse(null))) {
+        break;
+      }
+      Thread.sleep(5000);
+    }
+
+    for (Step step : result.steps().orElse(Collections.emptyList())) {
+      if (step instanceof ModelOutputStep) {
+        for (Content contentItem : ((ModelOutputStep) step).content().orElse(Collections.emptyList())) {
+          if (contentItem instanceof TextContent) {
+            System.out.println(((TextContent) contentItem).text().orElse(""));
+          } else if (contentItem instanceof ImageContent) {
+            ImageContent img = (ImageContent) contentItem;
+            if (img.data().isPresent()) {
+              byte[] imageBytes = Base64.getDecoder().decode(img.data().get());
+              System.out.println("Received image: " + imageBytes.length + " bytes");
+            }
+          }
+        }
+      }
+    }
 
 ### REST
 
@@ -534,25 +664,25 @@ Explicitly enable Google Search as the only tool:
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AgentOption;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.GoogleSearch;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
 
     Client client = new Client();
 
     CreateAgentInteraction params =
         CreateAgentInteraction.builder()
-            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
-            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .agent("deep-research-preview-04-2026")
+            .input(InteractionsInput.of("What are the latest developments in quantum computing?"))
+            .tools(Arrays.asList(GoogleSearch.builder().build()))
             .background(true)
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
 
 ### REST
 
@@ -591,25 +721,25 @@ Give the agent the ability to read and summarize specific web pages:
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AgentOption;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.URLContext;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
 
     Client client = new Client();
 
     CreateAgentInteraction params =
         CreateAgentInteraction.builder()
-            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
-            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .agent("deep-research-preview-04-2026")
+            .input(InteractionsInput.of("Summarize the content of https://www.wikipedia.org/."))
+            .tools(Arrays.asList(URLContext.builder().build()))
             .background(true)
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
 
 ### REST
 
@@ -648,25 +778,25 @@ Allow the agent to execute code for calculations and data analysis:
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CodeExecution;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
 
     Client client = new Client();
 
     CreateAgentInteraction params =
         CreateAgentInteraction.builder()
-            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
-            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .agent("deep-research-preview-04-2026")
+            .input(InteractionsInput.of("Calculate the 50th Fibonacci number."))
+            .tools(Arrays.asList(CodeExecution.builder().build()))
             .background(true)
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
 
 ### REST
 
@@ -733,25 +863,32 @@ pass authentication credentials and restrict which tools the agent can call.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AgentOption;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.MCPServer;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.Collections;
 
     Client client = new Client();
 
     CreateAgentInteraction params =
         CreateAgentInteraction.builder()
-            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
-            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .agent("deep-research-preview-04-2026")
+            .input(InteractionsInput.of("Check the status of my last server deployment."))
+            .tools(
+                Arrays.asList(
+                    MCPServer.builder()
+                        .name("Deployment Tracker")
+                        .url("https://mcp.example.com/mcp")
+                        .headers(Collections.singletonMap("Authorization", "Bearer my-token"))
+                        .build()))
             .background(true)
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
 
 ### REST
 
@@ -809,25 +946,31 @@ Give the agent access to your own data by using the [File Search](https://ai.goo
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AgentOption;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.FileSearch;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
 
     Client client = new Client();
 
     CreateAgentInteraction params =
         CreateAgentInteraction.builder()
-            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
-            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .agent("deep-research-preview-04-2026")
+            .input(
+                InteractionsInput.of(
+                    "Compare our 2025 fiscal year report against current public web news."))
+            .tools(
+                Arrays.asList(
+                    FileSearch.builder()
+                        .fileSearchStoreNames(Arrays.asList("fileSearchStores/my-store-name"))
+                        .build()))
             .background(true)
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
 
 ### REST
 
@@ -889,7 +1032,6 @@ Define the desired output format explicitly in your input text.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AgentOption;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
@@ -897,17 +1039,22 @@ Define the desired output format explicitly in your input text.
 
     Client client = new Client();
 
+    String prompt =
+        "Research the competitive landscape of EV batteries.\n\n"
+            + "Format the output as a technical report with the following structure:\n"
+            + "1. Executive Summary\n"
+            + "2. Key Players (Must include a data table comparing capacity and chemistry)\n"
+            + "3. Supply Chain Risks";
+
     CreateAgentInteraction params =
         CreateAgentInteraction.builder()
-            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
-            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .agent("deep-research-preview-04-2026")
+            .input(InteractionsInput.of(prompt))
             .background(true)
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
 
 ### REST
 
@@ -1008,25 +1155,63 @@ contextualized by the provided inputs.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AgentOption;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
     import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionStatus;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.operations.GetInteractionByIdRequest;
+    import java.util.Arrays;
+    import java.util.Collections;
 
     Client client = new Client();
 
+    String prompt =
+        "Analyze the interspecies dynamics and behavioral risks present "
+            + "in the provided image of the African watering hole. Specifically, investigate "
+            + "the symbiotic relationship between the avian species and the pachyderms "
+            + "shown, and conduct a risk assessment for the reticulated giraffes based on "
+            + "their drinking posture relative to the specific predator visible in the "
+            + "foreground.";
+
     CreateAgentInteraction params =
         CreateAgentInteraction.builder()
-            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
-            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .agent("deep-research-preview-04-2026")
+            .input(
+                InteractionsInput.ofContent(
+                    Arrays.asList(
+                        TextContent.builder().text(prompt).build(),
+                        ImageContent.builder()
+                            .mimeType(ImageContentMimeType.IMAGE_JPEG)
+                            .uri(
+                                "https://storage.googleapis.com/generativeai-downloads/images/generated_elephants_giraffes_zebras_sunset.jpg")
+                            .build())))
             .background(true)
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
+    System.out.println("Research started: " + interaction.id().orElse(""));
+
+    while (true) {
+      interaction =
+          client.interactions
+              .get(GetInteractionByIdRequest.builder().id(interaction.id().get()).build())
+              .interaction()
+              .get();
+      if (InteractionStatus.COMPLETED.equals(interaction.status().orElse(null))) {
+        System.out.println(interaction.outputText().orElse(""));
+        break;
+      } else if (InteractionStatus.FAILED.equals(interaction.status().orElse(null))) {
+        System.out.println("Research failed: " + interaction.errors().orElse(Collections.emptyList()));
+        break;
+      }
+      Thread.sleep(10000);
+    }
 
 ### REST
 
@@ -1094,25 +1279,33 @@ provided documents and conducts research grounded in their content.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AgentOption;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.DocumentContent;
+    import com.google.genai.gaos.models.interactions.DocumentContentMimeType;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
 
     Client client = new Client();
 
     CreateAgentInteraction params =
         CreateAgentInteraction.builder()
-            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
-            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .agent("deep-research-preview-04-2026")
+            .input(
+                InteractionsInput.ofContent(
+                    Arrays.asList(
+                        TextContent.builder().text("What is this document about?").build(),
+                        DocumentContent.builder()
+                            .uri("https://arxiv.org/pdf/1706.03762")
+                            .mimeType(DocumentContentMimeType.APPLICATION_PDF)
+                            .build())))
             .background(true)
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
 
 ### REST
 
@@ -1261,25 +1454,104 @@ resume from where it left off.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.DeepResearchAgentConfig;
+    import com.google.genai.gaos.models.interactions.ErrorEvent;
     import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionCompletedEvent;
+    import com.google.genai.gaos.models.interactions.InteractionCreatedEvent;
+    import com.google.genai.gaos.models.interactions.InteractionSSEEvent;
+    import com.google.genai.gaos.models.interactions.InteractionSSEStreamEvent;
+    import com.google.genai.gaos.models.interactions.InteractionStatus;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.StepDelta;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.interactions.TextDelta;
+    import com.google.genai.gaos.models.interactions.ThinkingSummaries;
+    import com.google.genai.gaos.models.interactions.ThoughtSummaryDelta;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.operations.GetInteractionByIdRequest;
+    import com.google.genai.gaos.utils.EventStream;
+
+    class StreamProcessor {
+      String interactionId = null;
+      String lastEventId = null;
+      boolean isComplete = false;
+
+      void processStream(EventStream<InteractionSSEStreamEvent> stream) {
+        for (InteractionSSEStreamEvent streamEvent : stream) {
+          InteractionSSEEvent event = streamEvent.data().orElse(null);
+          if (event instanceof InteractionCreatedEvent) {
+            InteractionCreatedEvent created = (InteractionCreatedEvent) event;
+            interactionId = created.interaction().flatMap(i -> i.id()).orElse(null);
+            if (created.eventId().isPresent()) {
+              lastEventId = created.eventId().get();
+            }
+          } else if (event instanceof StepDelta) {
+            StepDelta stepDelta = (StepDelta) event;
+            if (stepDelta.eventId().isPresent()) {
+              lastEventId = stepDelta.eventId().get();
+            }
+            if (stepDelta.delta().isPresent()) {
+              if (stepDelta.delta().get() instanceof TextDelta) {
+                System.out.print(((TextDelta) stepDelta.delta().get()).text().orElse(""));
+                System.out.flush();
+              } else if (stepDelta.delta().get() instanceof ThoughtSummaryDelta) {
+                ThoughtSummaryDelta thought = (ThoughtSummaryDelta) stepDelta.delta().get();
+                Content content = thought.content().orElse(null);
+                if (content instanceof TextContent) {
+                  System.out.println("Thought: " + ((TextContent) content).text().orElse(""));
+                }
+              }
+            }
+          } else if (event instanceof InteractionCompletedEvent || event instanceof ErrorEvent) {
+            isComplete = true;
+          }
+        }
+      }
+    }
 
     Client client = new Client();
+    StreamProcessor processor = new StreamProcessor();
 
     CreateAgentInteraction params =
         CreateAgentInteraction.builder()
-            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
-            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .agent("deep-research-preview-04-2026")
+            .input(InteractionsInput.of("Research the history of Google TPUs."))
             .background(true)
+            .stream(true)
+            .agentConfig(
+                DeepResearchAgentConfig.builder().thinkingSummaries(ThinkingSummaries.AUTO).build())
             .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    try (EventStream<InteractionSSEStreamEvent> stream =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).events()) {
+      processor.processStream(stream);
+    }
 
-    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
+    // Reconnect if the connection drops
+    while (!processor.isComplete && processor.interactionId != null) {
+      Interaction status =
+          client.interactions
+              .get(GetInteractionByIdRequest.builder().id(processor.interactionId).build())
+              .interaction()
+              .get();
+      if (!InteractionStatus.IN_PROGRESS.equals(status.status().orElse(null))) {
+        break;
+      }
+      try (EventStream<InteractionSSEStreamEvent> stream =
+          client.interactions
+              .get(
+                  GetInteractionByIdRequest.builder()
+                      .id(processor.interactionId)
+                      .stream(true)
+                      .lastEventId(processor.lastEventId)
+                      .build())
+              .events()) {
+        processor.processStream(stream);
+      }
+    }
 
 ### REST
 
@@ -1337,25 +1609,24 @@ restarting the entire task.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AgentOption;
-    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
 
     Client client = new Client();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
-            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
-            .background(true)
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model("gemini-3.1-pro-preview")
+            .input(InteractionsInput.of("Can you elaborate on the second point in the report?"))
+            .previousInteractionId("COMPLETED_INTERACTION_ID")
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
+    System.out.println(interaction.outputText().orElse(""));
 
 ### REST
 
@@ -1425,25 +1696,33 @@ Pass it as a dictionary with the following fields:
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AgentOption;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.DeepResearchAgentConfig;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.ThinkingSummaries;
+    import com.google.genai.gaos.models.interactions.Visualization;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
 
     Client client = new Client();
 
+    DeepResearchAgentConfig agentConfig =
+        DeepResearchAgentConfig.builder()
+            .thinkingSummaries(ThinkingSummaries.AUTO)
+            .visualization(Visualization.AUTO)
+            .collaborativePlanning(false)
+            .build();
+
     CreateAgentInteraction params =
         CreateAgentInteraction.builder()
-            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
-            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .agent("deep-research-preview-04-2026")
+            .input(InteractionsInput.of("Research the competitive landscape of cloud GPUs."))
+            .agentConfig(agentConfig)
             .background(true)
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
 
 ### REST
 

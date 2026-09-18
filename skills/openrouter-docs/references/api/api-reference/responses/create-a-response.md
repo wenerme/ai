@@ -68,7 +68,11 @@ tags:
     name: Images
   - description: >-
       Create, inspect, update, provision, suspend and delete OpenRouter interns
-      through an API key.
+      through an API key, and talk to them: the chat route streams
+      OpenAI-compatible completions from one intern, pausing as an
+      `openrouter.provide_input` tool call when the intern needs your permission
+      or an answer. Available to interns programme members; other callers
+      receive 404. See https://openrouter.ai/docs/guides/ori/intern-chat.
     name: Interns
   - description: Model information endpoints
     name: Models
@@ -3980,7 +3984,10 @@ components:
                       - $ref: '#/components/schemas/InputImage'
                       - properties: {}
                         type: object
-                    description: Image input content item
+                    description: >-
+                      Image input content item. Provide either an image_url (a
+                      URL or a base64 data URL) or the file_id of an uploaded
+                      image.
                     example:
                       detail: auto
                       image_url: https://example.com/image.jpg
@@ -4046,7 +4053,9 @@ components:
                   - $ref: '#/components/schemas/InputImage'
                   - properties: {}
                     type: object
-                description: Image input content item
+                description: >-
+                  Image input content item. Provide either an image_url (a URL
+                  or a base64 data URL) or the file_id of an uploaded image.
                 example:
                   detail: auto
                   image_url: https://example.com/image.jpg
@@ -4106,7 +4115,10 @@ components:
                           - $ref: '#/components/schemas/InputImage'
                           - properties: {}
                             type: object
-                        description: Image input content item
+                        description: >-
+                          Image input content item. Provide either an image_url
+                          (a URL or a base64 data URL) or the file_id of an
+                          uploaded image.
                         example:
                           detail: auto
                           image_url: https://example.com/image.jpg
@@ -5775,7 +5787,10 @@ components:
                           - $ref: '#/components/schemas/InputImage'
                           - properties: {}
                             type: object
-                        description: Image input content item
+                        description: >-
+                          Image input content item. Provide either an image_url
+                          (a URL or a base64 data URL) or the file_id of an
+                          uploaded image.
                         example:
                           detail: auto
                           image_url: https://example.com/image.jpg
@@ -5998,7 +6013,9 @@ components:
                   - $ref: '#/components/schemas/InputImage'
                   - properties: {}
                     type: object
-                description: Image input content item
+                description: >-
+                  Image input content item. Provide either an image_url (a URL
+                  or a base64 data URL) or the file_id of an uploaded image.
                 example:
                   detail: auto
                   image_url: https://example.com/image.jpg
@@ -6152,7 +6169,9 @@ components:
         - text
       type: object
     InputImage:
-      description: Image input content item
+      description: >-
+        Image input content item. Provide either an image_url (a URL or a base64
+        data URL) or the file_id of an uploaded image.
       example:
         detail: auto
         image_url: https://example.com/image.jpg
@@ -6165,6 +6184,10 @@ components:
             - low
             - original
           type: string
+        file_id:
+          type:
+            - string
+            - 'null'
         image_url:
           type:
             - string

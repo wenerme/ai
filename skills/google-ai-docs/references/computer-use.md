@@ -55,9 +55,9 @@ Here's a minimal example of initializing the client and sending a prompt to the 
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.ComputerUse;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.EnvironmentEnum;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import java.util.Arrays;
 
@@ -65,15 +65,17 @@ Here's a minimal example of initializing the client and sending a prompt to the 
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Click the Submit button on the screen."))
-            .tools(Arrays.asList(new ComputerUse()))
+            .model("gemini-3.8-flash")
+            .input(InteractionsInput.of("Search for 'Gemini API' on Google."))
+            .tools(
+                Arrays.asList(
+                    ComputerUse.builder().environment(EnvironmentEnum.BROWSER).build()))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    System.out.println(interaction.outputText().orElse(""));
+    System.out.println(interaction);
 
 <br />
 
@@ -202,9 +204,9 @@ Use the `@google/genai` Node.js SDK to configure a request targeting the browser
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.ComputerUse;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.EnvironmentEnum;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import java.util.Arrays;
 
@@ -212,15 +214,22 @@ Use the `@google/genai` Node.js SDK to configure a request targeting the browser
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Click the Submit button on the screen."))
-            .tools(Arrays.asList(new ComputerUse()))
+            .model("gemini-3.8-flash")
+            .input(
+                InteractionsInput.of(
+                    "Find a flight from SF to Hawaii on Jun 30th, coming back on Jul 6th"))
+            .tools(
+                Arrays.asList(
+                    ComputerUse.builder()
+                        .environment(EnvironmentEnum.BROWSER)
+                        .enablePromptInjectionDetection(true)
+                        .build()))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    System.out.println(interaction.outputText().orElse(""));
+    System.out.println(interaction);
 
 ### REST
 
@@ -295,25 +304,34 @@ Use curl to send a request:
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.ComputerUse;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.EnvironmentEnum;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import java.util.Arrays;
+    import java.util.List;
 
     Client client = new Client();
 
+    // Specify predefined functions to exclude (optional)
+    List<String> excludedFunctions = Arrays.asList("drag_and_drop");
+
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Click the Submit button on the screen."))
-            .tools(Arrays.asList(new ComputerUse()))
+            .model("gemini-2.5-computer-use-preview-10-2025")
+            .input(InteractionsInput.of("Search for highly rated smart fridges on Google Shopping."))
+            .tools(
+                Arrays.asList(
+                    ComputerUse.builder()
+                        .environment(EnvironmentEnum.BROWSER)
+                        .excludedPredefinedFunctions(excludedFunctions)
+                        .build()))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    System.out.println(interaction.outputText().orElse(""));
+    System.out.println(interaction);
 
 ### 2. Receive the model response
 
@@ -530,28 +548,64 @@ The code below handles both legacy tool commands (`click_at`, `type_text_at`) an
 
 ### Java
 
-    import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.ComputerUse;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
     import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import java.util.Arrays;
+    import com.google.genai.gaos.models.interactions.Step;
+    import java.util.ArrayList;
+    import java.util.Collections;
+    import java.util.HashMap;
+    import java.util.List;
+    import java.util.Map;
 
-    Client client = new Client();
+    class ActionExecutor {
+      int denormalizeX(int x, int screenWidth) {
+        return (int) (x / 1000.0 * screenWidth);
+      }
 
-    CreateModelInteraction params =
-        CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Click the Submit button on the screen."))
-            .tools(Arrays.asList(new ComputerUse()))
-            .build();
+      int denormalizeY(int y, int screenHeight) {
+        return (int) (y / 1000.0 * screenHeight);
+      }
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+      List<Map<String, Object>> executeFunctionCalls(
+          Interaction interaction, int screenWidth, int screenHeight) {
+        List<Map<String, Object>> results = new ArrayList<>();
 
-    System.out.println(interaction.outputText().orElse(""));
+        for (Step step : interaction.steps().orElse(Collections.emptyList())) {
+          if (step instanceof FunctionCallStep) {
+            FunctionCallStep functionCall = (FunctionCallStep) step;
+            String fname = functionCall.name().orElse("");
+            Map<String, Object> args = functionCall.arguments().orElse(Collections.emptyMap());
+            Map<String, Object> actionResult = new HashMap<>();
+
+            System.out.println(
+                "  -> Executing: " + fname + " (Intent: " + args.getOrDefault("intent", "N/A") + ")");
+
+            try {
+              if (fname.equals("click") || fname.equals("click_at")) {
+                int actualX = denormalizeX(((Number) args.get("x")).intValue(), screenWidth);
+                int actualY = denormalizeY(((Number) args.get("y")).intValue(), screenHeight);
+                // Perform mouse click at (actualX, actualY) using your browser automation library
+              } else if (fname.equals("type") || fname.equals("type_text_at")) {
+                String text = (String) args.get("text");
+                // Type text into active element using your browser automation library
+              } else if (fname.equals("navigate")) {
+                String url = (String) args.get("url");
+                // Navigate browser to url
+              }
+            } catch (Exception e) {
+              actionResult.put("error", e.getMessage());
+            }
+
+            Map<String, Object> entry = new HashMap<>();
+            entry.put("name", fname);
+            entry.put("callId", functionCall.id().orElse(""));
+            entry.put("result", actionResult);
+            results.add(entry);
+          }
+        }
+        return results;
+      }
+    }
 
 ### 4. Capture the new environment state
 
@@ -619,28 +673,47 @@ multiple actions (parallel calls) were executed, you must send a
 
 ### Java
 
-    import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.ComputerUse;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.interactions.FunctionResultStep;
+    import com.google.genai.gaos.models.interactions.FunctionResultStepResultUnion;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import java.util.ArrayList;
     import java.util.Arrays;
+    import java.util.Base64;
+    import java.util.List;
+    import java.util.Map;
 
-    Client client = new Client();
+    class StateCapturer {
+      List<Step> getFunctionResponses(
+          byte[] screenshotBytes, String currentUrl, List<Map<String, Object>> results) {
+        List<Step> functionResponses = new ArrayList<>();
+        String base64Screenshot = Base64.getEncoder().encodeToString(screenshotBytes);
 
-    CreateModelInteraction params =
-        CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Click the Submit button on the screen."))
-            .tools(Arrays.asList(new ComputerUse()))
-            .build();
+        for (Map<String, Object> entry : results) {
+          String name = (String) entry.get("name");
+          String callId = (String) entry.get("callId");
+          String jsonResult = String.format("{\"url\": \"%s\"}", currentUrl);
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println(interaction.outputText().orElse(""));
+          FunctionResultStep responseStep =
+              FunctionResultStep.builder()
+                  .name(name)
+                  .callId(callId)
+                  .result(
+                      FunctionResultStepResultUnion.of(
+                          Arrays.asList(
+                              TextContent.builder().text(jsonResult).build(),
+                              ImageContent.builder()
+                                  .data(base64Screenshot)
+                                  .mimeType(ImageContentMimeType.IMAGE_PNG)
+                                  .build())))
+                  .build();
+          functionResponses.add(responseStep);
+        }
+        return functionResponses;
+      }
+    }
 
 Once you have defined how to capture and format the environment state, you can
 combine all these steps into a continuous execution loop.
@@ -843,26 +916,98 @@ model responses and your function responses to the history at each step.
 
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.ComputerUse;
+    import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.EnvironmentEnum;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.ArrayList;
     import java.util.Arrays;
+    import java.util.Base64;
+    import java.util.Collections;
+    import java.util.List;
 
     Client client = new Client();
 
-    CreateModelInteraction params =
+    // Constants for screen dimensions
+    int screenWidth = 1440;
+    int screenHeight = 900;
+
+    // Capture initial screenshot from browser driver (e.g. Playwright)
+    byte[] initialScreenshot = new byte[0];
+    String base64Screenshot = Base64.getEncoder().encodeToString(initialScreenshot);
+    String userPrompt = "Go to ai.google.dev/gemini-api/docs and search for pricing.";
+    System.out.println("Goal: " + userPrompt);
+
+    ComputerUse computerUseTool =
+        ComputerUse.builder()
+            .environment(EnvironmentEnum.BROWSER)
+            .enablePromptInjectionDetection(true)
+            .build();
+
+    CreateModelInteraction initialParams =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Click the Submit button on the screen."))
-            .tools(Arrays.asList(new ComputerUse()))
+            .model("gemini-3.8-flash")
+            .input(
+                InteractionsInput.ofContent(
+                    Arrays.asList(
+                        TextContent.builder().text(userPrompt).build(),
+                        ImageContent.builder()
+                            .data(base64Screenshot)
+                            .mimeType(ImageContentMimeType.IMAGE_PNG)
+                            .build())))
+            .tools(Arrays.asList(computerUseTool))
             .build();
 
     Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+        client.interactions.create(CreateInteractionRequestBody.of(initialParams)).interaction().get();
 
-    System.out.println(interaction.outputText().orElse(""));
+    int turnLimit = 5;
+    for (int i = 0; i < turnLimit; i++) {
+      System.out.println("\n--- Turn " + (i + 1) + " ---");
+
+      boolean hasFunctionCalls =
+          interaction.steps().orElse(Collections.emptyList()).stream()
+              .anyMatch(step -> step instanceof FunctionCallStep);
+
+      if (!hasFunctionCalls) {
+        StringBuilder textResponse = new StringBuilder();
+        for (Step step : interaction.steps().orElse(Collections.emptyList())) {
+          if (step instanceof ModelOutputStep) {
+            for (Content contentBlock :
+                ((ModelOutputStep) step).content().orElse(Collections.emptyList())) {
+              if (contentBlock instanceof TextContent) {
+                textResponse.append(((TextContent) contentBlock).text().orElse("")).append(" ");
+              }
+            }
+          }
+        }
+        System.out.println("Agent finished: " + textResponse.toString().trim());
+        break;
+      }
+
+      System.out.println("Executing actions and capturing state...");
+      // Execute function calls against browser driver and capture List<Step> functionResponses
+      List<Step> functionResponses = new ArrayList<>();
+
+      CreateModelInteraction nextParams =
+          CreateModelInteraction.builder()
+              .model("gemini-3.8-flash")
+              .previousInteractionId(interaction.id().get())
+              .input(InteractionsInput.ofStep(functionResponses))
+              .tools(Arrays.asList(computerUseTool))
+              .build();
+
+      interaction =
+          client.interactions.create(CreateInteractionRequestBody.of(nextParams)).interaction().get();
+    }
 
 ## Supported environments (Gemini 3.x)
 
@@ -1042,25 +1187,55 @@ Exclude standard predefined browser actions (such as `click`) and register a cus
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.ComputerUse;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.EnvironmentEnum;
+    import com.google.genai.gaos.models.interactions.Function;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import java.util.Arrays;
+    import java.util.Collections;
+    import java.util.HashMap;
+    import java.util.Map;
 
     Client client = new Client();
 
+    Map<String, Object> reasonProp = new HashMap<>();
+    reasonProp.put("type", "string");
+    reasonProp.put("description", "The reason why the agent is yielding control to the human.");
+
+    Map<String, Object> properties = new HashMap<>();
+    properties.put("reason", reasonProp);
+
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("type", "object");
+    parameters.put("properties", properties);
+    parameters.put("required", Collections.singletonList("reason"));
+
+    Function yieldToUserTool =
+        Function.builder()
+            .name("yield_to_user")
+            .description(
+                "Yields control back to the user for assistance or verification when an automated action is unsafe or ambiguous.")
+            .parameters(parameters)
+            .build();
+
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Click the Submit button on the screen."))
-            .tools(Arrays.asList(new ComputerUse()))
+            .model("gemini-3.8-flash")
+            .input(
+                InteractionsInput.of(
+                    "Click the submit button. If you need a second factor authentication code, ask me."))
+            .tools(
+                Arrays.asList(
+                    ComputerUse.builder()
+                        .environment(EnvironmentEnum.MOBILE)
+                        .excludedPredefinedFunctions(Arrays.asList("click"))
+                        .build(),
+                    yieldToUserTool))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println(interaction.outputText().orElse(""));
 
 #### Gemini 2.5 (Legacy) Custom Tooling
 
@@ -1143,25 +1318,53 @@ Exclude standard predefined browser actions (such as `click`) and register a cus
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.ComputerUse;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.EnvironmentEnum;
+    import com.google.genai.gaos.models.interactions.Function;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import java.util.Arrays;
+    import java.util.List;
 
     Client client = new Client();
 
+    // Define custom tools here
+    Function customFunction =
+        Function.builder()
+            .name("long_press_at")
+            .description("Long-press at specified coordinates.")
+            .build();
+
+    List<String> excludedFunctions =
+        Arrays.asList(
+            "open_web_browser",
+            "wait_5_seconds",
+            "go_back",
+            "go_forward",
+            "search",
+            "navigate",
+            "hover_at",
+            "scroll_document",
+            "key_combination",
+            "drag_and_drop");
+
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Click the Submit button on the screen."))
-            .tools(Arrays.asList(new ComputerUse()))
+            .model("gemini-2.5-computer-use-preview-10-2025")
+            .input(InteractionsInput.of("Open Chrome, then long-press at 200,400."))
+            .tools(
+                Arrays.asList(
+                    ComputerUse.builder()
+                        .environment(EnvironmentEnum.BROWSER)
+                        .excludedPredefinedFunctions(excludedFunctions)
+                        .build(),
+                    customFunction))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    System.out.println(interaction.outputText().orElse(""));
+    System.out.println(interaction);
 
 ## Managing thinking levels (Gemini 3.x)
 
@@ -1235,9 +1438,10 @@ You can override select policies by passing overrides:
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.ComputerUse;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.DisabledSafetyPolicy;
+    import com.google.genai.gaos.models.interactions.EnvironmentEnum;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import java.util.Arrays;
 
@@ -1245,15 +1449,19 @@ You can override select policies by passing overrides:
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Click the Submit button on the screen."))
-            .tools(Arrays.asList(new ComputerUse()))
+            .model("gemini-3.8-flash")
+            .input(InteractionsInput.of("Clean up the local folder by archiving old logs."))
+            .tools(
+                Arrays.asList(
+                    ComputerUse.builder()
+                        .environment(EnvironmentEnum.DESKTOP)
+                        .disabledSafetyPolicies(
+                            Arrays.asList(DisabledSafetyPolicy.DATA_MODIFICATION))
+                        .build()))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println(interaction.outputText().orElse(""));
 
 ### Prompt injection detection (Gemini 3.x)
 
@@ -1309,9 +1517,9 @@ in your Computer Use tool configuration:
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.ComputerUse;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.EnvironmentEnum;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import java.util.Arrays;
 
@@ -1319,15 +1527,18 @@ in your Computer Use tool configuration:
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Click the Submit button on the screen."))
-            .tools(Arrays.asList(new ComputerUse()))
+            .model("gemini-3.5-flash")
+            .input(InteractionsInput.of("Search for flight deals and summarize top results."))
+            .tools(
+                Arrays.asList(
+                    ComputerUse.builder()
+                        .environment(EnvironmentEnum.DESKTOP)
+                        .enablePromptInjectionDetection(true)
+                        .build()))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println(interaction.outputText().orElse(""));
 
 ### cURL
 
@@ -1604,29 +1815,39 @@ data and systems:
 
 ### Java
 
-`java
+``java
 import com.google.genai.Client;
 import com.google.genai.gaos.models.interactions.ComputerUse;
 import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+import com.google.genai.gaos.models.interactions.EnvironmentEnum;
 import com.google.genai.gaos.models.interactions.Interaction;
 import com.google.genai.gaos.models.interactions.InteractionsInput;
-import com.google.genai.gaos.models.interactions.Model;
 import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
 import java.util.Arrays;
 
 Client client = new Client();
 
+String systemInstruction =
+"## **RULE 1: Seek User Confirmation (USER_CONFIRMATION)**\n\n"
++ "This is your first and most important check. If the next required action falls "
++ "into any of the following categories, you MUST stop immediately, and seek the "
++ "user's explicit permission.\n\n"
++ "## **RULE 2: Default Behavior (ACTUATE)**\n\n"
++ "If an action does **NOT** fall under the conditions for `USER_CONFIRMATION`, "
++ "your default behavior is to **Actuate**.";
+
 CreateModelInteraction params =
 CreateModelInteraction.builder()
-.model(Model.of("gemini-3.8-flash"))
-.input(InteractionsInput.of("Click the Submit button on the screen."))
-.tools(Arrays.asList(new ComputerUse()))
+.model("gemini-3.8-flash")
+.systemInstruction(systemInstruction)
+.input(InteractionsInput.of("Prepare a draft but do not send."))
+.tools(
+Arrays.asList(
+ComputerUse.builder().environment(EnvironmentEnum.BROWSER).build()))
 .build();
 
 Interaction interaction =
-client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-System.out.println(interaction.outputText().orElse(""));`
+client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();``
 
 1. **Secure execution environment:** Run your agent in a secure, sandboxed environment to limit its potential impact. This can be a sandboxed virtual machine (VM), a container (e.g., Docker), or a dedicated browser profile with limited permissions. See the [GitHub reference implementation](https://github.com/google/computer-use-preview/) for sandbox setup guidance using Docker.
 2. **Input sanitization:** Sanitize all user-generated text in prompts to mitigate the risk of unintended instructions or prompt injection. This is a helpful layer of security, but not a replacement for a secure execution environment.

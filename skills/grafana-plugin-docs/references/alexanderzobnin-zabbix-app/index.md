@@ -12,7 +12,7 @@ The Zabbix data source connects Grafana to your Zabbix monitoring infrastructure
 ## Requirements
 
 - Grafana 11.6.0 or later.
-- The Zabbix plugin installed in your Grafana instance. You can install it from **Administration** &gt; **Plugins and data** &gt; **Plugins**, or refer to [Install Grafana plugins](/docs/grafana/latest/administration/plugin-management/) for other methods.
+- The Zabbix plugin installed and enabled in your Grafana instance. Zabbix is an app plugin, so after you install it you must also enable it on the plugin page before the data source becomes available. You can install it from **Administration** &gt; **Plugins and data** &gt; **Plugins**, or refer to [Install Grafana plugins](/docs/grafana/latest/administration/plugin-management/) for other methods. For step-by-step instructions, refer to [Install and enable the Zabbix plugin](/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/#install-and-enable-the-zabbix-plugin).
 - A running Zabbix server with API access enabled.
 - A Zabbix user account with read permissions for the host groups and hosts you want to query.
 
@@ -33,15 +33,15 @@ Expand table
 
 The following documents help you set up and use the Zabbix data source:
 
-- [Configure the Zabbix data source](./configure/)
-- [Zabbix query editor](./query-editor/)
-- [Functions reference](./functions/)
-- [Template variables](./template-variables/)
-- [Annotations](./annotations/)
-- [Alerting](./alerting/)
-- [Troubleshooting](./troubleshooting/)
+- [Configure the Zabbix data source](/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/)
+- [Zabbix query editor](/docs/plugins/alexanderzobnin-zabbix-app/latest/query-editor/)
+- [Functions reference](/docs/plugins/alexanderzobnin-zabbix-app/latest/functions/)
+- [Template variables](/docs/plugins/alexanderzobnin-zabbix-app/latest/template-variables/)
+- [Annotations](/docs/plugins/alexanderzobnin-zabbix-app/latest/annotations/)
+- [Alerting](/docs/plugins/alexanderzobnin-zabbix-app/latest/alerting/)
+- [Troubleshooting](/docs/plugins/alexanderzobnin-zabbix-app/latest/troubleshooting/)
 
-## Feature highlights
+## Additional features
 
 After configuring the data source, you can:
 

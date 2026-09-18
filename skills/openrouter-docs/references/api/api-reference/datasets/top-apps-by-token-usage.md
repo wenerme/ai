@@ -92,7 +92,11 @@ tags:
     name: Images
   - description: >-
       Create, inspect, update, provision, suspend and delete OpenRouter interns
-      through an API key.
+      through an API key, and talk to them: the chat route streams
+      OpenAI-compatible completions from one intern, pausing as an
+      `openrouter.provide_input` tool call when the intern needs your permission
+      or an answer. Available to interns programme members; other callers
+      receive 404. See https://openrouter.ai/docs/guides/ori/intern-chat.
     name: Interns
   - description: Model information endpoints
     name: Models

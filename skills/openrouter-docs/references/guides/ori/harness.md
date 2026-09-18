@@ -10,11 +10,23 @@ Ori Harness runs the agent CLI you already use on OpenRouter. You run one comman
 
 ## Install Ori
 
-```sh theme={null}
-curl -fsSL https://openrouter.ai/labs/ori/install.sh | bash
-```
+<Tabs>
+  <Tab title="macOS, Linux, WSL">
+    ```sh theme={null}
+    curl -fsSL https://openrouter.ai/labs/ori/install.sh | bash
+    ```
+  </Tab>
 
-That's the only install command you need. If you run an agent that isn't on your machine, Ori asks to install it, then starts it.
+  <Tab title="Windows PowerShell">
+    ```powershell theme={null}
+    irm https://openrouter.ai/labs/ori/install.ps1 | iex
+    ```
+
+    In Git Bash, MSYS, or Cygwin, use the `curl ... | bash` command from the macOS, Linux, WSL tab instead.
+  </Tab>
+</Tabs>
+
+That's the only install command you need. If you run an agent that isn't on your machine, Ori asks to install it, then starts it. Every `ori` command on this page works the same on all three platforms.
 
 ### Let your coding agent set it up
 

@@ -5,7 +5,7 @@ description: "Browse Kilo Gateway model IDs, capabilities, context windows, and 
 
 # [Kilo Gateway logo]Kilo Gateway
 
-Access 377 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
+Access 378 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
 
 Learn more in the [Kilo Gateway documentation](https://kilo.ai).
 
@@ -96,8 +96,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 943718,
-    "inputCost": 0.15,
-    "outputCost": 0.6
+    "inputCost": 0.135,
+    "outputCost": 0.54
   },
   {
     "model": "kilo/~deepseek/deepseek-pro-latest",
@@ -107,9 +107,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 384000,
-    "inputCost": 0.66,
-    "outputCost": 1.98
+    "maxOutput": 393216,
+    "inputCost": 0.57948,
+    "outputCost": 1.73844
   },
   {
     "model": "kilo/~deepseek/deepseek-v4-flash-latest",
@@ -120,8 +120,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 393216,
-    "inputCost": 0.03,
-    "outputCost": 0.13
+    "inputCost": 0.04,
+    "outputCost": 0.1
   },
   {
     "model": "kilo/~google/gemini-flash-latest",
@@ -742,10 +742,10 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 128000,
-    "maxOutput": 16000,
-    "inputCost": 0.2574,
-    "outputCost": 1.0287
+    "contextWindow": 163840,
+    "maxOutput": 16384,
+    "inputCost": 0.32,
+    "outputCost": 0.89
   },
   {
     "model": "kilo/deepseek/deepseek-chat-v3-0324",
@@ -899,7 +899,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 384000,
+    "maxOutput": 393216,
     "inputCost": 1.32,
     "outputCost": 3.96
   },
@@ -3820,6 +3820,18 @@ for await (const chunk of stream) {
     "outputCost": 2.55
   },
   {
+    "model": "kilo/qwen/qwen3.8-27b:free",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 235929,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
     "model": "kilo/qwen/qwen3.8-flash",
     "imageInput": true,
     "audioInput": false,
@@ -4036,18 +4048,6 @@ for await (const chunk of stream) {
     "outputCost": 1.5
   },
   {
-    "model": "kilo/stealth/union-alpha",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 262144,
-    "maxOutput": 131072,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
     "model": "kilo/stepfun/step-3.5-flash",
     "imageInput": false,
     "audioInput": false,
@@ -4140,8 +4140,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 128000,
-    "inputCost": 0.14,
-    "outputCost": 0.58
+    "inputCost": 0.0825,
+    "outputCost": 0.33
   },
   {
     "model": "kilo/tencent/hy3-preview",
@@ -4238,6 +4238,18 @@ for await (const chunk of stream) {
     "maxOutput": 262144,
     "inputCost": null,
     "outputCost": null
+  },
+  {
+    "model": "kilo/unbiased/pareto",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 262144,
+    "maxOutput": 131072,
+    "inputCost": 2.5,
+    "outputCost": 7.5
   },
   {
     "model": "kilo/undi95/remm-slerp-l2-13b",
@@ -4426,10 +4438,10 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 202752,
-    "maxOutput": 131072,
-    "inputCost": 0.5,
-    "outputCost": 2
+    "contextWindow": 198000,
+    "maxOutput": 16384,
+    "inputCost": 0.43,
+    "outputCost": 1.75
   },
   {
     "model": "kilo/z-ai/glm-4.6v",

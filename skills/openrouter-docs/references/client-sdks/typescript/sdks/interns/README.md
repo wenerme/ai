@@ -1,0 +1,710 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Interns
+
+> Create, inspect, update, provision, suspend and delete OpenRouter interns through an API key, and talk to them: the chat route streams OpenAI-compatible completions from one intern, pausing as an `openrouter.provide_input` tool call when the intern needs your permission or an answer. Available to interns programme members; other callers receive 404. See https://openrouter.ai/docs/guides/ori/intern-chat.
+
+## Overview
+
+Create, inspect, update, provision, suspend and delete OpenRouter interns through an API key, and talk to them: the chat route streams OpenAI-compatible completions from one intern, pausing as an `openrouter.provide_input` tool call when the intern needs your permission or an answer. Available to interns programme members; other callers receive 404. See [https://openrouter.ai/docs/guides/ori/intern-chat](https://openrouter.ai/docs/guides/ori/intern-chat).
+
+### Available Operations
+
+* [listInterns](#listinterns) - List interns
+* [createIntern](#createintern) - Create an intern
+* [deleteIntern](#deleteintern) - Delete an intern
+* [getIntern](#getintern) - Get an intern
+* [updateIntern](#updateintern) - Update an intern
+* [provisionIntern](#provisionintern) - Provision an intern
+* [suspendIntern](#suspendintern) - Suspend an intern
+* [chat](#chat) - Stream a chat completion with an intern
+
+## listInterns
+
+Lists interns visible to the authenticated key, newest first. Filter by workspace and one or more lifecycle statuses. The API key selects the caller, workspace and visible interns. There is no default workspace fallback. Requests on regional hostnames such as `eu.openrouter.ai` are refused. [API key](/docs/client-sdks/typescript/docs/api-reference/authentication) required.
+
+### Example Usage
+
+```typescript theme={null}
+import { OpenRouter } from "@openrouter/sdk";
+
+const openRouter = new OpenRouter({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
+  apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
+});
+
+async function run() {
+  const result = await openRouter.interns.listInterns();
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript theme={null}
+import { OpenRouterCore } from "@openrouter/sdk/core.js";
+import { internsListInterns } from "@openrouter/sdk/funcs/internsListInterns.js";
+
+// Use `OpenRouterCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const openRouter = new OpenRouterCore({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
+  apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
+});
+
+async function run() {
+  const res = await internsListInterns(openRouter);
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("internsListInterns failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter              | Type                                                                                    | Required             | Description                                                                                                                                                                    |
+| ---------------------- | --------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`              | [operations.ListInternsRequest](../../models/operations/listinternsrequest.mdx)         | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
+| `options`              | RequestOptions                                                                          | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options) | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`      | [RetryConfig](../../lib/utils/retryconfig.mdx)                                          | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.InternListResponse](../../models/internlistresponse.mdx)>**
+
+### Errors
+
+| Error Type                    | Status Code             | Content Type     |
+| ----------------------------- | ----------------------- | ---------------- |
+| errors.InternLifecycleError   | 400, 401, 403, 404, 408 | application/json |
+| errors.InternLifecycleError   | 500                     | application/json |
+| errors.OpenRouterDefaultError | 4XX, 5XX                | \*/\*            |
+
+## createIntern
+
+Creates an intern in an explicit workspace. The operation also creates its private vault. It can start provisioning immediately or wait for a later provision call. A retry with the same idempotency key and body resumes unfinished work. The request body is capped at 1048576 bytes and a larger body is refused with 413. The API key selects the caller, workspace and visible interns. There is no default workspace fallback. Requests on regional hostnames such as `eu.openrouter.ai` are refused. [API key](/docs/client-sdks/typescript/docs/api-reference/authentication) required.
+
+### Example Usage
+
+```typescript theme={null}
+import { OpenRouter } from "@openrouter/sdk";
+
+const openRouter = new OpenRouter({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
+  apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
+});
+
+async function run() {
+  const result = await openRouter.interns.createIntern({
+    createInternRequest: {
+      name: "research-assistant",
+      provision: true,
+      workspaceId: "89f9f5b2-3f89-4eaf-83ca-5ceae149e8bb",
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript theme={null}
+import { OpenRouterCore } from "@openrouter/sdk/core.js";
+import { internsCreateIntern } from "@openrouter/sdk/funcs/internsCreateIntern.js";
+
+// Use `OpenRouterCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const openRouter = new OpenRouterCore({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
+  apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
+});
+
+async function run() {
+  const res = await internsCreateIntern(openRouter, {
+    createInternRequest: {
+      name: "research-assistant",
+      provision: true,
+      workspaceId: "89f9f5b2-3f89-4eaf-83ca-5ceae149e8bb",
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("internsCreateIntern failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter              | Type                                                                                    | Required             | Description                                                                                                                                                                    |
+| ---------------------- | --------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`              | [operations.CreateInternRequest](../../models/operations/createinternrequest.mdx)       | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
+| `options`              | RequestOptions                                                                          | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options) | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`      | [RetryConfig](../../lib/utils/retryconfig.mdx)                                          | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.Intern](../../models/intern.mdx)>**
+
+### Errors
+
+| Error Type                    | Status Code                       | Content Type     |
+| ----------------------------- | --------------------------------- | ---------------- |
+| errors.InternLifecycleError   | 400, 401, 403, 404, 408, 409, 413 | application/json |
+| errors.InternLifecycleError   | 500, 502                          | application/json |
+| errors.OpenRouterDefaultError | 4XX, 5XX                          | \*/\*            |
+
+## deleteIntern
+
+Starts safe teardown of the intern, its runtime and its private vault. The API key selects the caller, workspace and visible interns. There is no default workspace fallback. Requests on regional hostnames such as `eu.openrouter.ai` are refused. [API key](/docs/client-sdks/typescript/docs/api-reference/authentication) required.
+
+### Example Usage
+
+```typescript theme={null}
+import { OpenRouter } from "@openrouter/sdk";
+
+const openRouter = new OpenRouter({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
+  apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
+});
+
+async function run() {
+  const result = await openRouter.interns.deleteIntern({
+    internId: "7c9e6679-7425-40de-944b-e07fc1f90ae7",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript theme={null}
+import { OpenRouterCore } from "@openrouter/sdk/core.js";
+import { internsDeleteIntern } from "@openrouter/sdk/funcs/internsDeleteIntern.js";
+
+// Use `OpenRouterCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const openRouter = new OpenRouterCore({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
+  apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
+});
+
+async function run() {
+  const res = await internsDeleteIntern(openRouter, {
+    internId: "7c9e6679-7425-40de-944b-e07fc1f90ae7",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("internsDeleteIntern failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter              | Type                                                                                    | Required             | Description                                                                                                                                                                    |
+| ---------------------- | --------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`              | [operations.DeleteInternRequest](../../models/operations/deleteinternrequest.mdx)       | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
+| `options`              | RequestOptions                                                                          | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options) | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`      | [RetryConfig](../../lib/utils/retryconfig.mdx)                                          | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.DeleteInternResponse](../../models/deleteinternresponse.mdx)>**
+
+### Errors
+
+| Error Type                    | Status Code             | Content Type     |
+| ----------------------------- | ----------------------- | ---------------- |
+| errors.InternLifecycleError   | 401, 403, 404, 408, 409 | application/json |
+| errors.InternLifecycleError   | 500, 502                | application/json |
+| errors.OpenRouterDefaultError | 4XX, 5XX                | \*/\*            |
+
+## getIntern
+
+Returns the public lifecycle state and settings for one visible intern. The API key selects the caller, workspace and visible interns. There is no default workspace fallback. Requests on regional hostnames such as `eu.openrouter.ai` are refused. [API key](/docs/client-sdks/typescript/docs/api-reference/authentication) required.
+
+### Example Usage
+
+```typescript theme={null}
+import { OpenRouter } from "@openrouter/sdk";
+
+const openRouter = new OpenRouter({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
+  apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
+});
+
+async function run() {
+  const result = await openRouter.interns.getIntern({
+    internId: "7c9e6679-7425-40de-944b-e07fc1f90ae7",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript theme={null}
+import { OpenRouterCore } from "@openrouter/sdk/core.js";
+import { internsGetIntern } from "@openrouter/sdk/funcs/internsGetIntern.js";
+
+// Use `OpenRouterCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const openRouter = new OpenRouterCore({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
+  apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
+});
+
+async function run() {
+  const res = await internsGetIntern(openRouter, {
+    internId: "7c9e6679-7425-40de-944b-e07fc1f90ae7",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("internsGetIntern failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter              | Type                                                                                    | Required             | Description                                                                                                                                                                    |
+| ---------------------- | --------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`              | [operations.GetInternRequest](../../models/operations/getinternrequest.mdx)             | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
+| `options`              | RequestOptions                                                                          | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options) | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`      | [RetryConfig](../../lib/utils/retryconfig.mdx)                                          | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.Intern](../../models/intern.mdx)>**
+
+### Errors
+
+| Error Type                    | Status Code        | Content Type     |
+| ----------------------------- | ------------------ | ---------------- |
+| errors.InternLifecycleError   | 401, 403, 404, 408 | application/json |
+| errors.InternLifecycleError   | 500                | application/json |
+| errors.OpenRouterDefaultError | 4XX, 5XX           | \*/\*            |
+
+## updateIntern
+
+Changes the intern name, description, instructions or model. Omitted fields stay unchanged. The request body is capped at 1048576 bytes and a larger body is refused with 413. The API key selects the caller, workspace and visible interns. There is no default workspace fallback. Requests on regional hostnames such as `eu.openrouter.ai` are refused. [API key](/docs/client-sdks/typescript/docs/api-reference/authentication) required.
+
+### Example Usage
+
+```typescript theme={null}
+import { OpenRouter } from "@openrouter/sdk";
+
+const openRouter = new OpenRouter({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
+  apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
+});
+
+async function run() {
+  const result = await openRouter.interns.updateIntern({
+    internId: "7c9e6679-7425-40de-944b-e07fc1f90ae7",
+    updateInternRequest: {
+      description: "Researches customer questions",
+      model: "openai/gpt-5.4",
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript theme={null}
+import { OpenRouterCore } from "@openrouter/sdk/core.js";
+import { internsUpdateIntern } from "@openrouter/sdk/funcs/internsUpdateIntern.js";
+
+// Use `OpenRouterCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const openRouter = new OpenRouterCore({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
+  apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
+});
+
+async function run() {
+  const res = await internsUpdateIntern(openRouter, {
+    internId: "7c9e6679-7425-40de-944b-e07fc1f90ae7",
+    updateInternRequest: {
+      description: "Researches customer questions",
+      model: "openai/gpt-5.4",
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("internsUpdateIntern failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter              | Type                                                                                    | Required             | Description                                                                                                                                                                    |
+| ---------------------- | --------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`              | [operations.UpdateInternRequest](../../models/operations/updateinternrequest.mdx)       | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
+| `options`              | RequestOptions                                                                          | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options) | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`      | [RetryConfig](../../lib/utils/retryconfig.mdx)                                          | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.Intern](../../models/intern.mdx)>**
+
+### Errors
+
+| Error Type                    | Status Code                  | Content Type     |
+| ----------------------------- | ---------------------------- | ---------------- |
+| errors.InternLifecycleError   | 400, 401, 403, 404, 408, 413 | application/json |
+| errors.InternLifecycleError   | 500                          | application/json |
+| errors.OpenRouterDefaultError | 4XX, 5XX                     | \*/\*            |
+
+## provisionIntern
+
+Starts the first boot, or resumes an intern after suspension. The API key selects the caller, workspace and visible interns. There is no default workspace fallback. Requests on regional hostnames such as `eu.openrouter.ai` are refused. [API key](/docs/client-sdks/typescript/docs/api-reference/authentication) required.
+
+### Example Usage
+
+```typescript theme={null}
+import { OpenRouter } from "@openrouter/sdk";
+
+const openRouter = new OpenRouter({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
+  apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
+});
+
+async function run() {
+  const result = await openRouter.interns.provisionIntern({
+    internId: "7c9e6679-7425-40de-944b-e07fc1f90ae7",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript theme={null}
+import { OpenRouterCore } from "@openrouter/sdk/core.js";
+import { internsProvisionIntern } from "@openrouter/sdk/funcs/internsProvisionIntern.js";
+
+// Use `OpenRouterCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const openRouter = new OpenRouterCore({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
+  apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
+});
+
+async function run() {
+  const res = await internsProvisionIntern(openRouter, {
+    internId: "7c9e6679-7425-40de-944b-e07fc1f90ae7",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("internsProvisionIntern failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter              | Type                                                                                    | Required             | Description                                                                                                                                                                    |
+| ---------------------- | --------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`              | [operations.ProvisionInternRequest](../../models/operations/provisioninternrequest.mdx) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
+| `options`              | RequestOptions                                                                          | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options) | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`      | [RetryConfig](../../lib/utils/retryconfig.mdx)                                          | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.ProvisionInternResponse](../../models/provisioninternresponse.mdx)>**
+
+### Errors
+
+| Error Type                    | Status Code             | Content Type     |
+| ----------------------------- | ----------------------- | ---------------- |
+| errors.InternLifecycleError   | 401, 403, 404, 408, 409 | application/json |
+| errors.InternLifecycleError   | 500, 502                | application/json |
+| errors.OpenRouterDefaultError | 4XX, 5XX                | \*/\*            |
+
+## suspendIntern
+
+Stops the intern runtime while keeping its disk and configuration for a later provision call. The API key selects the caller, workspace and visible interns. There is no default workspace fallback. Requests on regional hostnames such as `eu.openrouter.ai` are refused. [API key](/docs/client-sdks/typescript/docs/api-reference/authentication) required.
+
+### Example Usage
+
+```typescript theme={null}
+import { OpenRouter } from "@openrouter/sdk";
+
+const openRouter = new OpenRouter({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
+  apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
+});
+
+async function run() {
+  const result = await openRouter.interns.suspendIntern({
+    internId: "7c9e6679-7425-40de-944b-e07fc1f90ae7",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript theme={null}
+import { OpenRouterCore } from "@openrouter/sdk/core.js";
+import { internsSuspendIntern } from "@openrouter/sdk/funcs/internsSuspendIntern.js";
+
+// Use `OpenRouterCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const openRouter = new OpenRouterCore({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
+  apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
+});
+
+async function run() {
+  const res = await internsSuspendIntern(openRouter, {
+    internId: "7c9e6679-7425-40de-944b-e07fc1f90ae7",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("internsSuspendIntern failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter              | Type                                                                                    | Required             | Description                                                                                                                                                                    |
+| ---------------------- | --------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`              | [operations.SuspendInternRequest](../../models/operations/suspendinternrequest.mdx)     | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
+| `options`              | RequestOptions                                                                          | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options) | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`      | [RetryConfig](../../lib/utils/retryconfig.mdx)                                          | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.SuspendInternResponse](../../models/suspendinternresponse.mdx)>**
+
+### Errors
+
+| Error Type                    | Status Code             | Content Type     |
+| ----------------------------- | ----------------------- | ---------------- |
+| errors.InternLifecycleError   | 401, 403, 404, 408, 409 | application/json |
+| errors.InternLifecycleError   | 500, 502                | application/json |
+| errors.OpenRouterDefaultError | 4XX, 5XX                | \*/\*            |
+
+## chat
+
+Sends a prompt to one of your interns and streams the reply as OpenAI-compatible server-sent events ending with `[DONE]`. The run executes on the intern, which may pause to ask you something. It then streams one `openrouter.provide_input` tool call and finishes with `finish_reason: "tool_calls"`, and the run stays open on the intern.
+
+Every response, whether it ends with `stop`, `tool_calls` or `error`, is followed by a final chunk with empty `choices` that carries `session_id`, then `data: [DONE]`. That chunk carries the `usage` the intern reported for the run, after `stop` or `error`, and `null` when the intern reported none. After `tool_calls` its `usage` is `null` because the turn is not over. Read through `[DONE]`: the `session_id` you need to reply arrives after the `tool_calls` finish chunk.
+
+To answer, send a second request with the same `session_id`, the assistant message echoing that tool call, and a `tool` message whose `tool_call_id` is the tool call id and whose `content` is the answer. The answer is delivered to the run that asked and the stream continues from where it paused. A question stays open for its interaction deadline (5 minutes by default) and the run is cancelled when that passes. Rejected replies do not extend the deadline.
+
+Closing the connection after the `[DONE]` that follows `finish_reason: "tool_calls"` keeps the run alive. Disconnecting while a response is still streaming cancels the run. The disconnect is noticed when the intern next writes to the stream, which during a silent tool run can take more than one 30 second heartbeat interval.
+
+A run the intern ends while you are still connected, by cancellation or by a deadline, ends the stream with a `finish_reason: "error"` chunk carrying `410` and reason `run_ended`, then the final empty-`choices` chunk and `[DONE]`. That error reports only an ending the intern confirmed. A connection that breaks without that confirmation ends with reason `stream_severed`, and a client that has already disconnected is promised no final event.
+
+Set `approval_mode` to `manual` to have the intern ask before approval-bearing tools such as the shell. Omitted, the run self-drives and consents on your behalf. The mode belongs to the run started by that prompt and must be repeated on later prompts.
+
+Available to interns programme members. Callers outside the programme receive `404` for every path under `/api/v1/interns`.
+
+### Example Usage
+
+```typescript theme={null}
+import { OpenRouter } from "@openrouter/sdk";
+
+const openRouter = new OpenRouter({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
+  apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
+});
+
+async function run() {
+  const result = await openRouter.interns.chat({
+    internId: "a11e0000-0000-4000-8000-000000000005",
+    internChatCompletionRequest: {
+      approvalMode: "manual",
+      messages: [
+        {
+          content: "Summarize the open pull requests.",
+          role: "user",
+        },
+      ],
+      stream: true,
+    },
+  });
+
+  for await (const event of result) {
+    console.log(event);
+  }
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript theme={null}
+import { OpenRouterCore } from "@openrouter/sdk/core.js";
+import { internsChat } from "@openrouter/sdk/funcs/internsChat.js";
+
+// Use `OpenRouterCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const openRouter = new OpenRouterCore({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
+  apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
+});
+
+async function run() {
+  const res = await internsChat(openRouter, {
+    internId: "a11e0000-0000-4000-8000-000000000005",
+    internChatCompletionRequest: {
+      approvalMode: "manual",
+      messages: [
+        {
+          content: "Summarize the open pull requests.",
+          role: "user",
+        },
+      ],
+      stream: true,
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const event of result) {
+    console.log(event);
+  }
+  } else {
+    console.log("internsChat failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter              | Type                                                                                                          | Required             | Description                                                                                                                                                                    |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`              | [operations.CreateInternChatCompletionRequest](../../models/operations/createinternchatcompletionrequest.mdx) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
+| `options`              | RequestOptions                                                                                                | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                       | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`      | [RetryConfig](../../lib/utils/retryconfig.mdx)                                                                | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[EventStream\<models.InternChatStreamingResponse>](../../models/.mdx)>**
+
+### Errors
+
+| Error Type                     | Status Code                            | Content Type     |
+| ------------------------------ | -------------------------------------- | ---------------- |
+| errors.InternChatErrorResponse | 400, 401, 403, 404, 409, 410, 413, 429 | application/json |
+| errors.InternChatErrorResponse | 502, 503, 504                          | application/json |
+| errors.OpenRouterDefaultError  | 4XX, 5XX                               | \*/\*            |

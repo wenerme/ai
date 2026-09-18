@@ -6,6 +6,7 @@
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/21212) in GitLab 19.1.
 - [Changed](https://gitlab.com/gitlab-org/glql/-/merge_requests/416) to cover pipelines in all states, including in-progress pipelines, in GitLab 19.2.
 - Configurable `granularity` and `quantile` parameters [introduced](https://gitlab.com/gitlab-org/glql/-/issues/130) in GitLab 19.3.
+- `durationMin`, `durationMax`, `durationMean`, and `durationSum` metrics [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/507) in GitLab 19.5.
 
 Analytics mode returns aggregated metrics for pipelines in all states, including
 in-progress pipelines, with data typically available within ten minutes.
@@ -109,7 +110,11 @@ A pipeline is considered finished when it has completed processing and reached a
 | Metric            | Name               | Description                                            |
 | ----------------- | ------------------ | ------------------------------------------------------ |
 | Canceled rate     | `canceledRate`     | Ratio of canceled pipelines to finished pipelines.    |
+| Duration max      | `durationMax`      | Longest pipeline duration, in seconds.                |
+| Duration mean     | `durationMean`     | Average pipeline duration, in seconds.                |
+| Duration min      | `durationMin`      | Shortest pipeline duration, in seconds.               |
 | Duration quantile | `durationQuantile` | Pipeline duration quantile, in seconds. Accepts a [`quantile` parameter](../_index.md#field-parameters) between `0.01` and `0.99` (default: `0.95`). For example, `durationQuantile(0.5)`. |
+| Duration sum      | `durationSum`      | Total duration of all pipelines, in seconds.          |
 | Failure rate      | `failureRate`      | Ratio of failed pipelines to finished pipelines.      |
 | Skipped rate      | `skippedRate`      | Ratio of skipped pipelines to finished pipelines.     |
 | Success rate      | `successRate`      | Ratio of successful pipelines to finished pipelines.  |

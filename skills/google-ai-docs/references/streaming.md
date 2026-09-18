@@ -7,7 +7,7 @@ When creating an Interaction, you can set `stream: true` to incrementally stream
     client = genai.Client()
 
     stream = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="Count from 1 to 25.",
         stream=True,
     )
@@ -23,7 +23,7 @@ When creating an Interaction, you can set `stream: true` to incrementally stream
     const client = new GoogleGenAI({});
 
     const stream = await client.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: "Count from 1 to 25.",
         stream: true,
     });
@@ -54,7 +54,7 @@ When creating an Interaction, you can set `stream: true` to incrementally stream
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("Count from 1 to 25."))
             .stream(true)
             .build();
@@ -65,10 +65,10 @@ When creating an Interaction, you can set `stream: true` to incrementally stream
     try (EventStream<InteractionSSEStreamEvent> events = response.events()) {
       for (InteractionSSEStreamEvent streamEvent : events) {
         InteractionSSEEvent event = streamEvent.data().orElse(null);
-        if (event instanceof StepDelta) {
-          StepDeltaData data = ((StepDelta) event).delta().orElse(null);
-          if (data instanceof TextDelta) {
-            ((TextDelta) data).text().ifPresent(System.out::print);
+        if (event instanceof StepDelta stepDelta) {
+          StepDeltaData data = stepDelta.delta().orElse(null);
+          if (data instanceof TextDelta textDelta) {
+            textDelta.text().ifPresent(System.out::print);
           }
         }
       }
@@ -81,13 +81,13 @@ When creating an Interaction, you can set `stream: true` to incrementally stream
       -H "Content-Type: application/json" \
       --no-buffer \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "Count from 1 to 25.",
         "stream": true
       }'
 
     event: interaction.created
-    data: {"interaction":{"id":"v1_...","status":"in_progress","object":"interaction","model":"gemini-3.7-flash"},"event_type":"interaction.created"}
+    data: {"interaction":{"id":"v1_...","status":"in_progress","object":"interaction","model":"gemini-3.8-flash"},"event_type":"interaction.created"}
 
     event: interaction.status_update
     data: {"interaction_id":"v1_...","status":"in_progress","event_type":"interaction.status_update"}
@@ -116,7 +116,7 @@ When creating an Interaction, you can set `stream: true` to incrementally stream
     data: {"index":1,"event_type":"step.stop"}
 
     event: interaction.completed
-    data: {"interaction":{"id":"v1_...","status":"completed","usage":{"total_tokens":346,"total_input_tokens":11,"input_tokens_by_modality":[{"modality":"text","tokens":11}],"total_cached_tokens":0,"total_output_tokens":90,"total_tool_use_tokens":0,"total_thought_tokens":245},"created":"2026-05-12T18:44:51Z","updated":"2026-05-12T18:44:51Z","service_tier":"standard","object":"interaction","model":"gemini-3.7-flash"},"event_type":"interaction.completed"}
+    data: {"interaction":{"id":"v1_...","status":"completed","usage":{"total_tokens":346,"total_input_tokens":11,"input_tokens_by_modality":[{"modality":"text","tokens":11}],"total_cached_tokens":0,"total_output_tokens":90,"total_tool_use_tokens":0,"total_thought_tokens":245},"created":"2026-05-12T18:44:51Z","updated":"2026-05-12T18:44:51Z","service_tier":"standard","object":"interaction","model":"gemini-3.8-flash"},"event_type":"interaction.completed"}
 
     event: done
     data: [DONE]
@@ -141,7 +141,7 @@ When you set `stream: false`, the API returns a single `interaction` object with
 Sent when the interaction is first created. Contains the interaction ID, model, and initial status.
 
     event: interaction.created
-    data: {"interaction": {"id": "...", "model": "gemini-3.7-flash", "status": "in_progress", "object": "interaction"}, "event_type": "interaction.created"}
+    data: {"interaction": {"id": "...", "model": "gemini-3.8-flash", "status": "in_progress", "object": "interaction"}, "event_type": "interaction.created"}
 
 ### `interaction.status_update`
 
@@ -275,7 +275,7 @@ conversation:
 
     # Turn 1: Request function call
     stream = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         tools=[weather_tool],
         input="What is the weather in Paris right now?",
         stream=True,
@@ -306,7 +306,7 @@ conversation:
         }
 
         stream2 = client.interactions.create(
-            model="gemini-3.7-flash",
+            model="gemini-3.8-flash",
             previous_interaction_id=first_interaction_id,
             input=[{
                 "type": "function_result",
@@ -346,7 +346,7 @@ conversation:
 
     // Turn 1: Request function call
     const stream = await client.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         tools: [weatherTool],
         input: "What is the weather in Paris right now?",
         stream: true,
@@ -380,7 +380,7 @@ conversation:
         };
 
         const stream2 = await client.interactions.create({
-            model: "gemini-3.7-flash",
+            model: "gemini-3.8-flash",
             previous_interaction_id: firstInteractionId,
             input: [{
                 type: "function_result",
@@ -403,37 +403,120 @@ conversation:
 ### Java
 
     import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.ArgumentsDelta;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Function;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
+    import com.google.genai.gaos.models.interactions.FunctionResultStep;
+    import com.google.genai.gaos.models.interactions.FunctionResultStepResultUnion;
+    import com.google.genai.gaos.models.interactions.InteractionCreatedEvent;
     import com.google.genai.gaos.models.interactions.InteractionSSEEvent;
     import com.google.genai.gaos.models.interactions.InteractionSSEStreamEvent;
+    import com.google.genai.gaos.models.interactions.InteractionSseEventInteraction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
     import com.google.genai.gaos.models.interactions.StepDelta;
     import com.google.genai.gaos.models.interactions.StepDeltaData;
+    import com.google.genai.gaos.models.interactions.StepStart;
+    import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.interactions.TextDelta;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import com.google.genai.gaos.models.operations.CreateInteractionResponse;
     import com.google.genai.gaos.utils.EventStream;
+    import java.util.Arrays;
+    import java.util.HashMap;
+    import java.util.Map;
 
     Client client = new Client();
 
+    Map<String, Object> locationProp = new HashMap<>();
+    locationProp.put("type", "string");
+    locationProp.put("description", "The city and state, e.g. San Francisco, CA");
+
+    Map<String, Object> properties = new HashMap<>();
+    properties.put("location", locationProp);
+
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("type", "object");
+    parameters.put("properties", properties);
+    parameters.put("required", Arrays.asList("location"));
+
+    Function weatherTool =
+        Function.builder()
+            .name("get_weather")
+            .description("Get the current weather in a given location")
+            .parameters(parameters)
+            .build();
+
+    // Turn 1: Request function call
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
-            .input(InteractionsInput.of("Count from 1 to 25."))
+            .model(Model.of("gemini-3.8-flash"))
+            .tools(Arrays.asList(weatherTool))
+            .input(InteractionsInput.of("What is the weather in Paris right now?"))
             .stream(true)
             .build();
 
     CreateInteractionResponse response =
         client.interactions.create(CreateInteractionRequestBody.of(params));
 
-    try (EventStream<InteractionSSEStreamEvent> events = response.events()) {
-      for (InteractionSSEStreamEvent streamEvent : events) {
+    String firstInteractionId = null;
+    String funcCallId = null;
+    String funcCallName = null;
+    StringBuilder funcArgsAccumulated = new StringBuilder();
+
+    try (EventStream<InteractionSSEStreamEvent> stream = response.events()) {
+      for (InteractionSSEStreamEvent streamEvent : stream) {
         InteractionSSEEvent event = streamEvent.data().orElse(null);
-        if (event instanceof StepDelta) {
-          StepDeltaData data = ((StepDelta) event).delta().orElse(null);
-          if (data instanceof TextDelta) {
-            ((TextDelta) data).text().ifPresent(System.out::print);
+        if (event instanceof InteractionCreatedEvent createdEvent) {
+          firstInteractionId =
+              createdEvent.interaction().flatMap(InteractionSseEventInteraction::id).orElse(null);
+        } else if (event instanceof StepStart stepStart) {
+          Step step = stepStart.step().orElse(null);
+          if (step instanceof FunctionCallStep fcStep) {
+            funcCallId = fcStep.id().orElse(null);
+            funcCallName = fcStep.name().orElse(null);
+          }
+        } else if (event instanceof StepDelta stepDelta) {
+          StepDeltaData delta = stepDelta.delta().orElse(null);
+          if (delta instanceof ArgumentsDelta argsDelta) {
+            funcArgsAccumulated.append(argsDelta.arguments().orElse(""));
+          }
+        }
+      }
+    }
+
+    // Turn 2: Execute tool and send the result back to resume stream
+    if (funcCallId != null && firstInteractionId != null && funcCallName != null) {
+      FunctionResultStep resultStep =
+          FunctionResultStep.builder()
+              .name(funcCallName)
+              .callId(funcCallId)
+              .result(
+                  FunctionResultStepResultUnion.of(
+                      Arrays.asList(TextContent.builder().text("{\"weather\": \"Sunny and 22°C\"}").build())))
+              .build();
+
+      CreateModelInteraction params2 =
+          CreateModelInteraction.builder()
+              .model(Model.of("gemini-3.8-flash"))
+              .previousInteractionId(firstInteractionId)
+              .input(InteractionsInput.ofStep(Arrays.asList(resultStep)))
+              .stream(true)
+              .build();
+
+      CreateInteractionResponse response2 =
+          client.interactions.create(CreateInteractionRequestBody.of(params2));
+
+      try (EventStream<InteractionSSEStreamEvent> stream2 = response2.events()) {
+        for (InteractionSSEStreamEvent streamEvent : stream2) {
+          InteractionSSEEvent event = streamEvent.data().orElse(null);
+          if (event instanceof StepDelta stepDelta) {
+            StepDeltaData delta = stepDelta.delta().orElse(null);
+            if (delta instanceof TextDelta textDelta) {
+              textDelta.text().ifPresent(System.out::print);
+            }
           }
         }
       }
@@ -448,7 +531,7 @@ conversation:
       -H "Content-Type: application/json" \
       --no-buffer \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "What is the weather in Paris right now?",
         "stream": true,
         "tools": [
@@ -477,7 +560,7 @@ conversation:
       -H "Content-Type: application/json" \
       --no-buffer \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "previous_interaction_id": "v1_ChdGUVFJYXBXVUdLVEF4TjhQ...",
         "stream": true,
         "input": [
@@ -527,7 +610,7 @@ The following example uses both a `function` tool and `google_search` in one req
     ]
 
     stream = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         tools=tools,
         input="Search what is the largest mountain in Europe and what the weather is there right now?",
         stream=True,
@@ -581,7 +664,7 @@ The following example uses both a `function` tool and `google_search` in one req
     ];
 
     const stream = await client.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         tools: tools,
         input: "Search what is the largest mountain in Europe and what the weather is there right now?",
         stream: true,
@@ -617,38 +700,112 @@ The following example uses both a `function` tool and `google_search` in one req
 ### Java
 
     import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.ArgumentsDelta;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Function;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
+    import com.google.genai.gaos.models.interactions.GoogleSearch;
+    import com.google.genai.gaos.models.interactions.GoogleSearchCallDelta;
+    import com.google.genai.gaos.models.interactions.GoogleSearchCallStep;
+    import com.google.genai.gaos.models.interactions.GoogleSearchResultStep;
+    import com.google.genai.gaos.models.interactions.InteractionCompletedEvent;
     import com.google.genai.gaos.models.interactions.InteractionSSEEvent;
     import com.google.genai.gaos.models.interactions.InteractionSSEStreamEvent;
+    import com.google.genai.gaos.models.interactions.InteractionSseEventInteractionStatus;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
     import com.google.genai.gaos.models.interactions.StepDelta;
     import com.google.genai.gaos.models.interactions.StepDeltaData;
+    import com.google.genai.gaos.models.interactions.StepStart;
     import com.google.genai.gaos.models.interactions.TextDelta;
+    import com.google.genai.gaos.models.interactions.Tool;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import com.google.genai.gaos.models.operations.CreateInteractionResponse;
     import com.google.genai.gaos.utils.EventStream;
+    import java.util.Arrays;
+    import java.util.Collections;
+    import java.util.HashMap;
+    import java.util.List;
+    import java.util.Map;
 
     Client client = new Client();
 
+    Map<String, Object> locationProp = new HashMap<>();
+    locationProp.put("type", "string");
+    locationProp.put("description", "The city and state, e.g. San Francisco, CA");
+
+    Map<String, Object> properties = new HashMap<>();
+    properties.put("location", locationProp);
+
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("type", "object");
+    parameters.put("properties", properties);
+    parameters.put("required", Arrays.asList("location"));
+
+    List<Tool> tools =
+        Arrays.asList(
+            new GoogleSearch(),
+            Function.builder()
+                .name("get_weather")
+                .description("Get the current weather in a given location")
+                .parameters(parameters)
+                .build());
+
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
-            .input(InteractionsInput.of("Count from 1 to 25."))
+            .model(Model.of("gemini-3.8-flash"))
+            .tools(tools)
+            .input(
+                InteractionsInput.of(
+                    "Search what is the largest mountain in Europe and what the weather is there right now?"))
             .stream(true)
             .build();
 
     CreateInteractionResponse response =
         client.interactions.create(CreateInteractionRequestBody.of(params));
 
-    try (EventStream<InteractionSSEStreamEvent> events = response.events()) {
-      for (InteractionSSEStreamEvent streamEvent : events) {
+    try (EventStream<InteractionSSEStreamEvent> stream = response.events()) {
+      for (InteractionSSEStreamEvent streamEvent : stream) {
         InteractionSSEEvent event = streamEvent.data().orElse(null);
-        if (event instanceof StepDelta) {
-          StepDeltaData data = ((StepDelta) event).delta().orElse(null);
-          if (data instanceof TextDelta) {
-            ((TextDelta) data).text().ifPresent(System.out::print);
+        if (event instanceof StepStart stepStart) {
+          Step step = stepStart.step().orElse(null);
+          if (step != null) {
+            System.out.printf("%n--- Step %d: %s ---%n", stepStart.index().orElse(0), step.type());
+            if (step instanceof GoogleSearchCallStep searchCall) {
+              System.out.println("  Search ID: " + searchCall.id().orElse(""));
+            } else if (step instanceof GoogleSearchResultStep searchResult) {
+              System.out.println("  Result for: " + searchResult.callId().orElse(""));
+            } else if (step instanceof FunctionCallStep fcStep) {
+              System.out.printf(
+                  "  Function: %s(%s)%n",
+                  fcStep.name().orElse(""), fcStep.arguments().orElse(Collections.emptyMap()));
+            }
           }
+        } else if (event instanceof StepDelta stepDelta) {
+          StepDeltaData delta = stepDelta.delta().orElse(null);
+          if (delta instanceof TextDelta textDelta) {
+            textDelta.text().ifPresent(System.out::print);
+          } else if (delta instanceof GoogleSearchCallDelta searchDelta) {
+            System.out.println("  Queries: " + searchDelta.arguments().orElse(null));
+          } else if (delta instanceof ArgumentsDelta argsDelta) {
+            System.out.print("  Args chunk: " + argsDelta.arguments().orElse(""));
+          }
+        } else if (event instanceof InteractionCompletedEvent completedEvent) {
+          completedEvent
+              .interaction()
+              .ifPresent(
+                  interaction -> {
+                    String status =
+                        interaction
+                            .status()
+                            .map(InteractionSseEventInteractionStatus::value)
+                            .orElse("");
+                    System.out.println("\n\nStatus: " + status);
+                    if ("requires_action".equals(status)) {
+                      System.out.println("Action required: provide function call results to continue.");
+                    }
+                  });
         }
       }
     }
@@ -660,7 +817,7 @@ The following example uses both a `function` tool and `google_search` in one req
       -H "Content-Type: application/json" \
       --no-buffer \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "Search what is the largest mountain in Europe and what the weather is there right now?",
         "stream": true,
         "tools": [
@@ -684,7 +841,7 @@ The following example uses both a `function` tool and `google_search` in one req
       }'
 
     event: interaction.created
-    data: {"interaction":{"id":"v1_...","status":"in_progress","object":"interaction","model":"gemini-3.7-flash"},"event_type":"interaction.created"}
+    data: {"interaction":{"id":"v1_...","status":"in_progress","object":"interaction","model":"gemini-3.8-flash"},"event_type":"interaction.created"}
 
     event: interaction.status_update
     data: {"interaction_id":"v1_...","status":"in_progress","event_type":"interaction.status_update"}
@@ -726,7 +883,7 @@ The following example uses both a `function` tool and `google_search` in one req
     data: {"index":3,"event_type":"step.stop"}
 
     event: interaction.completed
-    data: {"interaction":{"id":"v1_...","status":"requires_action","usage":{"total_tokens":299,"total_input_tokens":138,"input_tokens_by_modality":[{"modality":"text","tokens":138}],"total_cached_tokens":0,"total_output_tokens":20,"total_tool_use_tokens":0,"total_thought_tokens":141},"created":"2026-05-12T17:24:26Z","updated":"2026-05-12T17:24:26Z","service_tier":"standard","object":"interaction","model":"gemini-3.7-flash"},"event_type":"interaction.completed"}
+    data: {"interaction":{"id":"v1_...","status":"requires_action","usage":{"total_tokens":299,"total_input_tokens":138,"input_tokens_by_modality":[{"modality":"text","tokens":138}],"total_cached_tokens":0,"total_output_tokens":20,"total_tool_use_tokens":0,"total_thought_tokens":141},"created":"2026-05-12T17:24:26Z","updated":"2026-05-12T17:24:26Z","service_tier":"standard","object":"interaction","model":"gemini-3.8-flash"},"event_type":"interaction.completed"}
 
     event: done
     data: [DONE]
@@ -742,7 +899,7 @@ When the model uses thinking, you'll receive `thought` steps with two distinct d
     client = genai.Client()
 
     stream = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="What is the greatest common divisor of 1071 and 462?",
         generation_config={
             "thinking_summaries": "auto"
@@ -766,7 +923,7 @@ When the model uses thinking, you'll receive `thought` steps with two distinct d
     const client = new GoogleGenAI({});
 
     const stream = await client.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: "What is the greatest common divisor of 1071 and 462?",
         generation_config: {
             thinking_summaries: "auto",
@@ -790,14 +947,21 @@ When the model uses thinking, you'll receive `thought` steps with two distinct d
 ### Java
 
     import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.GenerationConfig;
     import com.google.genai.gaos.models.interactions.InteractionSSEEvent;
     import com.google.genai.gaos.models.interactions.InteractionSSEStreamEvent;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
     import com.google.genai.gaos.models.interactions.StepDelta;
     import com.google.genai.gaos.models.interactions.StepDeltaData;
+    import com.google.genai.gaos.models.interactions.StepStart;
+    import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.interactions.TextDelta;
+    import com.google.genai.gaos.models.interactions.ThinkingSummaries;
+    import com.google.genai.gaos.models.interactions.ThoughtSummaryDelta;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import com.google.genai.gaos.models.operations.CreateInteractionResponse;
     import com.google.genai.gaos.utils.EventStream;
@@ -806,21 +970,33 @@ When the model uses thinking, you'll receive `thought` steps with two distinct d
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
-            .input(InteractionsInput.of("Count from 1 to 25."))
+            .model(Model.of("gemini-3.8-flash"))
+            .input(InteractionsInput.of("What is the greatest common divisor of 1071 and 462?"))
+            .generationConfig(
+                GenerationConfig.builder().thinkingSummaries(ThinkingSummaries.AUTO).build())
             .stream(true)
             .build();
 
     CreateInteractionResponse response =
         client.interactions.create(CreateInteractionRequestBody.of(params));
 
-    try (EventStream<InteractionSSEStreamEvent> events = response.events()) {
-      for (InteractionSSEStreamEvent streamEvent : events) {
+    try (EventStream<InteractionSSEStreamEvent> stream = response.events()) {
+      for (InteractionSSEStreamEvent streamEvent : stream) {
         InteractionSSEEvent event = streamEvent.data().orElse(null);
-        if (event instanceof StepDelta) {
-          StepDeltaData data = ((StepDelta) event).delta().orElse(null);
-          if (data instanceof TextDelta) {
-            ((TextDelta) data).text().ifPresent(System.out::print);
+        if (event instanceof StepStart stepStart) {
+          Step step = stepStart.step().orElse(null);
+          if (step != null) {
+            System.out.printf("%n--- Step: %s ---%n", step.type());
+          }
+        } else if (event instanceof StepDelta stepDelta) {
+          StepDeltaData delta = stepDelta.delta().orElse(null);
+          if (delta instanceof ThoughtSummaryDelta thoughtDelta) {
+            Content content = thoughtDelta.content().orElse(null);
+            if (content instanceof TextContent textContent) {
+              textContent.text().ifPresent(System.out::print);
+            }
+          } else if (delta instanceof TextDelta textDelta) {
+            textDelta.text().ifPresent(System.out::print);
           }
         }
       }
@@ -833,7 +1009,7 @@ When the model uses thinking, you'll receive `thought` steps with two distinct d
       -H "Content-Type: application/json" \
       --no-buffer \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "What is the greatest common divisor of 1071 and 462?",
         "stream": true,
         "generation_config": {
@@ -842,7 +1018,7 @@ When the model uses thinking, you'll receive `thought` steps with two distinct d
       }'
 
     event: interaction.created
-    data: {"interaction":{"id":"v1_...","status":"in_progress","object":"interaction","model":"gemini-3.7-flash"},"event_type":"interaction.created"}
+    data: {"interaction":{"id":"v1_...","status":"in_progress","object":"interaction","model":"gemini-3.8-flash"},"event_type":"interaction.created"}
 
     event: interaction.status_update
     data: {"interaction_id":"v1_...","status":"in_progress","event_type":"interaction.status_update"}
@@ -931,38 +1107,68 @@ The Interactions API supports agents like Deep Research. Agents use `background=
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Content;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.DeepResearchAgentConfig;
+    import com.google.genai.gaos.models.interactions.InteractionCompletedEvent;
     import com.google.genai.gaos.models.interactions.InteractionSSEEvent;
     import com.google.genai.gaos.models.interactions.InteractionSSEStreamEvent;
+    import com.google.genai.gaos.models.interactions.InteractionSseEventInteraction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
     import com.google.genai.gaos.models.interactions.StepDelta;
     import com.google.genai.gaos.models.interactions.StepDeltaData;
+    import com.google.genai.gaos.models.interactions.StepStart;
+    import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.interactions.TextDelta;
+    import com.google.genai.gaos.models.interactions.ThinkingSummaries;
+    import com.google.genai.gaos.models.interactions.ThoughtSummaryDelta;
+    import com.google.genai.gaos.models.interactions.Usage;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import com.google.genai.gaos.models.operations.CreateInteractionResponse;
     import com.google.genai.gaos.utils.EventStream;
 
     Client client = new Client();
 
-    CreateModelInteraction params =
-        CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
-            .input(InteractionsInput.of("Count from 1 to 25."))
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent("deep-research-preview-04-2026")
+            .input(InteractionsInput.of("Research the latest advances in quantum computing."))
             .stream(true)
+            .background(true)
+            .agentConfig(
+                DeepResearchAgentConfig.builder()
+                    .thinkingSummaries(ThinkingSummaries.AUTO)
+                    .build())
             .build();
 
     CreateInteractionResponse response =
         client.interactions.create(CreateInteractionRequestBody.of(params));
 
-    try (EventStream<InteractionSSEStreamEvent> events = response.events()) {
-      for (InteractionSSEStreamEvent streamEvent : events) {
+    try (EventStream<InteractionSSEStreamEvent> stream = response.events()) {
+      for (InteractionSSEStreamEvent streamEvent : stream) {
         InteractionSSEEvent event = streamEvent.data().orElse(null);
-        if (event instanceof StepDelta) {
-          StepDeltaData data = ((StepDelta) event).delta().orElse(null);
-          if (data instanceof TextDelta) {
-            ((TextDelta) data).text().ifPresent(System.out::print);
+        if (event instanceof StepStart stepStart) {
+          Step step = stepStart.step().orElse(null);
+          if (step != null) {
+            System.out.printf("%n--- Step: %s ---%n", step.type());
           }
+        } else if (event instanceof StepDelta stepDelta) {
+          StepDeltaData delta = stepDelta.delta().orElse(null);
+          if (delta instanceof TextDelta textDelta) {
+            textDelta.text().ifPresent(System.out::print);
+          } else if (delta instanceof ThoughtSummaryDelta thoughtDelta) {
+            Content content = thoughtDelta.content().orElse(null);
+            if (content instanceof TextContent textContent) {
+              textContent.text().ifPresent(System.out::print);
+            }
+          }
+        } else if (event instanceof InteractionCompletedEvent completedEvent) {
+          completedEvent
+              .interaction()
+              .flatMap(InteractionSseEventInteraction::usage)
+              .flatMap(Usage::totalTokens)
+              .ifPresent(tokens -> System.out.println("\n\nTotal Tokens: " + tokens));
         }
       }
     }
@@ -1077,36 +1283,63 @@ The following example uses `gemini-3.1-flash-image` (Nano Banana 2) to search fo
 
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionResponseFormat;
+    import com.google.genai.gaos.models.interactions.GoogleSearch;
+    import com.google.genai.gaos.models.interactions.GoogleSearchSearchType;
+    import com.google.genai.gaos.models.interactions.ImageDelta;
+    import com.google.genai.gaos.models.interactions.ImageResponseFormat;
     import com.google.genai.gaos.models.interactions.InteractionSSEEvent;
     import com.google.genai.gaos.models.interactions.InteractionSSEStreamEvent;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ResponseFormat;
     import com.google.genai.gaos.models.interactions.StepDelta;
     import com.google.genai.gaos.models.interactions.StepDeltaData;
     import com.google.genai.gaos.models.interactions.TextDelta;
+    import com.google.genai.gaos.models.interactions.TextResponseFormat;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import com.google.genai.gaos.models.operations.CreateInteractionResponse;
     import com.google.genai.gaos.utils.EventStream;
+    import java.util.Arrays;
 
     Client client = new Client();
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
-            .input(InteractionsInput.of("Count from 1 to 25."))
+            .model(Model.of("gemini-3.1-flash-image"))
+            .tools(
+                Arrays.asList(
+                    GoogleSearch.builder()
+                        .searchTypes(
+                            Arrays.asList(
+                                GoogleSearchSearchType.of("web_search"),
+                                GoogleSearchSearchType.of("image_search")))
+                        .build()))
+            .input(
+                InteractionsInput.of(
+                    "Search for the history of the Colosseum and write a short illustrated story about a gladiator named Marcus. Interleave text and generated images."))
+            .responseFormat(
+                CreateModelInteractionResponseFormat.of(
+                    Arrays.asList(
+                        ResponseFormat.of(TextResponseFormat.builder().build()),
+                        ResponseFormat.of(ImageResponseFormat.builder().build()))))
             .stream(true)
             .build();
 
     CreateInteractionResponse response =
         client.interactions.create(CreateInteractionRequestBody.of(params));
 
-    try (EventStream<InteractionSSEStreamEvent> events = response.events()) {
-      for (InteractionSSEStreamEvent streamEvent : events) {
+    try (EventStream<InteractionSSEStreamEvent> stream = response.events()) {
+      for (InteractionSSEStreamEvent streamEvent : stream) {
         InteractionSSEEvent event = streamEvent.data().orElse(null);
-        if (event instanceof StepDelta) {
-          StepDeltaData data = ((StepDelta) event).delta().orElse(null);
-          if (data instanceof TextDelta) {
-            ((TextDelta) data).text().ifPresent(System.out::print);
+        if (event instanceof StepDelta stepDelta) {
+          StepDeltaData delta = stepDelta.delta().orElse(null);
+          if (delta instanceof TextDelta textDelta) {
+            textDelta.text().ifPresent(System.out::print);
+          } else if (delta instanceof ImageDelta imageDelta) {
+            imageDelta
+                .data()
+                .ifPresent(data -> System.out.printf("%n[Image chunk: %d bytes]", data.length()));
           }
         }
       }

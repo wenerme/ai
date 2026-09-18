@@ -200,8 +200,8 @@ For the per-file run limit, see [limits](#limits).
 | Maximum tags per rule                  | 10                                                            | No   |
 | Maximum `rule.name` length             | 255 characters                                                | No   |
 | Maximum `shortDescription.text` length | 1,024 characters                                              | No   |
-| Maximum `fullDescription.text` length  | 1,024 characters, truncated to 255 when used as finding title | No   |
-| Maximum `message.text` length          | 1,024 characters, truncated to 255 when used as finding title | No   |
+| Maximum `fullDescription.text` length  | 2,048 characters, truncated to 255 when used as finding title | No   |
+| Maximum `message.text` length          | 2,048 characters, truncated to 255 when used as finding title | No   |
 | Maximum `helpUri` length               | 2,048 characters                                              | No   |
 | Supported SARIF versions               | 2.1.0 only                                                    | No   |
 

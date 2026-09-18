@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Breakpoints
 
-Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/dev-tools/breakpoints/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/dev-tools/breakpoints/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Debug via breakpoints
 
@@ -35,7 +35,7 @@ To setup VS Code for breakpoint debugging in your Worker project:
 {
 	"configurations": [
 		{
-			"name": "Wrangler",
+			"name": "Listen Wrangler",
 			"type": "node",
 			"request": "attach",
 			"port": 9229,
@@ -44,6 +44,14 @@ To setup VS Code for breakpoint debugging in your Worker project:
 			"attachExistingChildren": false,
 			"autoAttachChildProcesses": false,
 			"sourceMaps": true // works with or without this line
+		},
+		{
+			"name": "Launch Wrangler",
+			"command": "npm run dev",
+			"type": "node-terminal",
+			"request": "launch",
+			"console": "integratedTerminal",
+			"sourceMaps": true
 		}
 	]
 }
@@ -77,5 +85,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/dev-tools/breakpoints/#page","headline":"Breakpoints · Cloudflare Workers docs","description":"Debug your local and deployed Workers using breakpoints.","url":"https://developers.cloudflare.com/workers/observability/dev-tools/breakpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/dev-tools/breakpoints/#page","headline":"Breakpoints · Cloudflare Workers docs","description":"Debug your local and deployed Workers using breakpoints.","url":"https://developers.cloudflare.com/workers/observability/dev-tools/breakpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

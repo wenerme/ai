@@ -10,7 +10,7 @@ Gemini can analyze audio input and generate text responses.
     uploaded_file = client.files.upload(file="path/to/sample.mp3")
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {"type": "text", "text": "Describe this audio clip"},
             {
@@ -34,7 +34,7 @@ Gemini can analyze audio input and generate text responses.
     });
 
     const interaction = await client.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: [
             {type: "text", text: "Describe this audio clip"},
             {
@@ -58,23 +58,29 @@ Gemini can analyze audio input and generate text responses.
     import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.types.File;
+    import com.google.genai.types.UploadFileConfig;
     import java.util.Arrays;
     import java.util.List;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Provide a transcript and summary of this audio.").build();
+    File uploadedFile =
+        client.files.upload(
+            "path/to/sample.mp3", UploadFileConfig.builder().mimeType("audio/mp3").build());
+
+    Content textContent = TextContent.builder().text("Describe this audio clip").build();
     Content audioContent =
         AudioContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/audio/pixel.mp3")
-            .mimeType(AudioContentMimeType.AUDIO_MP3)
+            .uri(uploadedFile.uri().get())
+            .mimeType(AudioContentMimeType.of(uploadedFile.mimeType().get()))
             .build();
 
     List<Content> contents = Arrays.asList(textContent, audioContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -90,7 +96,7 @@ Gemini can analyze audio input and generate text responses.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": [
           {"type": "text", "text": "Describe this audio clip"},
           {
@@ -169,7 +175,7 @@ timestamps, speaker diarization, and emotion detection using
     }
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {"type": "video", "uri": YOUTUBE_URL, "mime_type": "video/mp4"},
             {"type": "text", "text": prompt}
@@ -225,7 +231,7 @@ timestamps, speaker diarization, and emotion detection using
     };
 
     const interaction = await client.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: [
             { type: "video", uri: YOUTUBE_URL, mime_type: "video/mp4" },
             { type: "text", text: prompt }
@@ -238,33 +244,83 @@ timestamps, speaker diarization, and emotion detection using
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AudioContent;
-    import com.google.genai.gaos.models.interactions.AudioContentMimeType;
     import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionResponseFormat;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ResponseFormat;
     import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.interactions.VideoContent;
+    import com.google.genai.gaos.models.interactions.VideoContentMimeType;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import java.util.Arrays;
     import java.util.List;
+    import java.util.HashMap;
+    import java.util.Map;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Provide a transcript and summary of this audio.").build();
-    Content audioContent =
-        AudioContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/audio/pixel.mp3")
-            .mimeType(AudioContentMimeType.AUDIO_MP3)
-            .build();
+    String youtubeUrl = "https://www.youtube.com/watch?v=ku-N-eS1lgM";
 
-    List<Content> contents = Arrays.asList(textContent, audioContent);
+    String prompt =
+        "Process the audio file and generate a detailed transcription.\n\n"
+            + "Requirements:\n"
+            + "1. Identify distinct speakers (e.g., Speaker 1, Speaker 2).\n"
+            + "2. Provide accurate timestamps for each segment (Format: MM:SS).\n"
+            + "3. Detect the primary language of each segment.\n"
+            + "4. If not English, provide the English translation.\n"
+            + "5. Identify the primary emotion: Happy, Sad, Angry, or Neutral.\n"
+            + "6. Provide a brief summary at the beginning.";
+
+    Map<String, Object> emotionProp = new HashMap<>();
+    emotionProp.put("type", "string");
+    emotionProp.put("enum", Arrays.asList("happy", "sad", "angry", "neutral"));
+
+    Map<String, Object> stringType = new HashMap<>();
+    stringType.put("type", "string");
+
+    Map<String, Object> segmentProps = new HashMap<>();
+    segmentProps.put("speaker", stringType);
+    segmentProps.put("timestamp", stringType);
+    segmentProps.put("content", stringType);
+    segmentProps.put("language", stringType);
+    segmentProps.put("emotion", emotionProp);
+
+    Map<String, Object> segmentItem = new HashMap<>();
+    segmentItem.put("type", "object");
+    segmentItem.put("properties", segmentProps);
+    segmentItem.put("required", Arrays.asList("speaker", "timestamp", "content", "emotion"));
+
+    Map<String, Object> segmentsProp = new HashMap<>();
+    segmentsProp.put("type", "array");
+    segmentsProp.put("items", segmentItem);
+
+    Map<String, Object> properties = new HashMap<>();
+    properties.put("summary", stringType);
+    properties.put("segments", segmentsProp);
+
+    Map<String, Object> responseSchema = new HashMap<>();
+    responseSchema.put("type", "object");
+    responseSchema.put("properties", properties);
+    responseSchema.put("required", Arrays.asList("summary", "segments"));
+
+    Content videoContent =
+        VideoContent.builder()
+            .uri(youtubeUrl)
+            .mimeType(VideoContentMimeType.VIDEO_MP4)
+            .build();
+    Content textContent = TextContent.builder().text(prompt).build();
+
+    List<Content> contents = Arrays.asList(videoContent, textContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
+            .responseFormat(
+                CreateModelInteractionResponseFormat.of(ResponseFormat.of(responseSchema)))
             .build();
 
     Interaction interaction =
@@ -278,7 +334,7 @@ timestamps, speaker diarization, and emotion detection using
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": [
           {
             "type": "video",
@@ -332,7 +388,7 @@ Use the [Files API](https://ai.google.dev/gemini-api/docs/files) for files large
     uploaded_file = client.files.upload(file="path/to/sample.mp3")
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {"type": "text", "text": "Describe this audio clip"},
             {
@@ -356,7 +412,7 @@ Use the [Files API](https://ai.google.dev/gemini-api/docs/files) for files large
     });
 
     const interaction = await client.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: [
             {type: "text", text: "Describe this audio clip"},
             {
@@ -370,6 +426,7 @@ Use the [Files API](https://ai.google.dev/gemini-api/docs/files) for files large
 
 ### Java
 
+    // Upload an audio file using the Files API (recommended for files > 20 MB)
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.AudioContent;
     import com.google.genai.gaos.models.interactions.AudioContentMimeType;
@@ -380,23 +437,29 @@ Use the [Files API](https://ai.google.dev/gemini-api/docs/files) for files large
     import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.types.File;
+    import com.google.genai.types.UploadFileConfig;
     import java.util.Arrays;
     import java.util.List;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Provide a transcript and summary of this audio.").build();
+    File uploadedFile =
+        client.files.upload(
+            "path/to/sample.mp3", UploadFileConfig.builder().mimeType("audio/mp3").build());
+
+    Content textContent = TextContent.builder().text("Describe this audio clip").build();
     Content audioContent =
         AudioContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/audio/pixel.mp3")
-            .mimeType(AudioContentMimeType.AUDIO_MP3)
+            .uri(uploadedFile.uri().get())
+            .mimeType(AudioContentMimeType.of(uploadedFile.mimeType().get()))
             .build();
 
     List<Content> contents = Arrays.asList(textContent, audioContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -412,7 +475,7 @@ Use the [Files API](https://ai.google.dev/gemini-api/docs/files) for files large
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": [
           {"type": "text", "text": "Describe this audio clip"},
           {
@@ -438,7 +501,7 @@ For small audio files under 20MB total request size:
         audio_bytes = f.read()
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {"type": "text", "text": "Describe this audio clip"},
             {
@@ -462,7 +525,7 @@ For small audio files under 20MB total request size:
     });
 
     const interaction = await client.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: [
             {type: "text", text: "Describe this audio clip"},
             {
@@ -486,15 +549,21 @@ For small audio files under 20MB total request size:
     import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
     import java.util.Arrays;
+    import java.util.Base64;
     import java.util.List;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Provide a transcript and summary of this audio.").build();
+    byte[] audioBytes = Files.readAllBytes(Paths.get("path/to/small-sample.mp3"));
+    String base64Audio = Base64.getEncoder().encodeToString(audioBytes);
+
+    Content textContent = TextContent.builder().text("Describe this audio clip").build();
     Content audioContent =
         AudioContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/audio/pixel.mp3")
+            .data(base64Audio)
             .mimeType(AudioContentMimeType.AUDIO_MP3)
             .build();
 
@@ -502,7 +571,7 @@ For small audio files under 20MB total request size:
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -525,7 +594,7 @@ For small audio files under 20MB total request size:
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": [
           {"type": "text", "text": "Describe this audio clip"},
           {
@@ -547,7 +616,7 @@ To get a transcript, ask for it in the prompt:
 ### Python
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {"type": "text", "text": "Generate a transcript of the speech."},
             {
@@ -562,7 +631,7 @@ To get a transcript, ask for it in the prompt:
 ### JavaScript
 
     const interaction = await client.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: [
             { type: "text", text: "Generate a transcript of the speech." },
             {
@@ -586,23 +655,29 @@ To get a transcript, ask for it in the prompt:
     import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.types.File;
+    import com.google.genai.types.UploadFileConfig;
     import java.util.Arrays;
     import java.util.List;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Provide a transcript and summary of this audio.").build();
+    File uploadedFile =
+        client.files.upload(
+            "path/to/sample.mp3", UploadFileConfig.builder().mimeType("audio/mp3").build());
+
+    Content textContent = TextContent.builder().text("Generate a transcript of the speech.").build();
     Content audioContent =
         AudioContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/audio/pixel.mp3")
-            .mimeType(AudioContentMimeType.AUDIO_MP3)
+            .uri(uploadedFile.uri().get())
+            .mimeType(AudioContentMimeType.of(uploadedFile.mimeType().get()))
             .build();
 
     List<Content> contents = Arrays.asList(textContent, audioContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -618,7 +693,7 @@ Use `MM:SS` format to reference specific sections:
 ### Python
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {"type": "text", "text": "Provide a transcript from 02:30 to 03:29."},
             {
@@ -632,7 +707,7 @@ Use `MM:SS` format to reference specific sections:
 ### JavaScript
 
     const interaction = await client.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: [
             { type: "text", text: "Provide a transcript from 02:30 to 03:29." },
             { type: "audio", uri: uploadedFile.uri, mime_type: "audio/mp3" }
@@ -651,23 +726,30 @@ Use `MM:SS` format to reference specific sections:
     import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.types.File;
+    import com.google.genai.types.UploadFileConfig;
     import java.util.Arrays;
     import java.util.List;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Provide a transcript and summary of this audio.").build();
+    File uploadedFile =
+        client.files.upload(
+            "path/to/sample.mp3", UploadFileConfig.builder().mimeType("audio/mp3").build());
+
+    Content textContent =
+        TextContent.builder().text("Provide a transcript from 02:30 to 03:29.").build();
     Content audioContent =
         AudioContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/audio/pixel.mp3")
-            .mimeType(AudioContentMimeType.AUDIO_MP3)
+            .uri(uploadedFile.uri().get())
+            .mimeType(AudioContentMimeType.of(uploadedFile.mimeType().get()))
             .build();
 
     List<Content> contents = Arrays.asList(textContent, audioContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -683,7 +765,7 @@ Count tokens in an audio file:
 ### Python
 
     response = client.models.count_tokens(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         contents=[uploaded_file]
     )
     print(response)
@@ -691,7 +773,7 @@ Count tokens in an audio file:
 ### JavaScript
 
     const response = await client.models.countTokens({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         contents: [
             { fileData: { fileUri: uploadedFile.uri, mimeType: uploadedFile.mimeType } }
         ]
@@ -701,39 +783,28 @@ Count tokens in an audio file:
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AudioContent;
-    import com.google.genai.gaos.models.interactions.AudioContentMimeType;
-    import com.google.genai.gaos.models.interactions.Content;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.interactions.TextContent;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.types.Content;
+    import com.google.genai.types.CountTokensResponse;
+    import com.google.genai.types.File;
+    import com.google.genai.types.Part;
+    import com.google.genai.types.UploadFileConfig;
     import java.util.Arrays;
-    import java.util.List;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Provide a transcript and summary of this audio.").build();
-    Content audioContent =
-        AudioContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/audio/pixel.mp3")
-            .mimeType(AudioContentMimeType.AUDIO_MP3)
-            .build();
+    File uploadedFile =
+        client.files.upload(
+            "path/to/sample.mp3", UploadFileConfig.builder().mimeType("audio/mp3").build());
 
-    List<Content> contents = Arrays.asList(textContent, audioContent);
+    CountTokensResponse response =
+        client.models.countTokens(
+            "gemini-3.8-flash",
+            Arrays.asList(
+                Content.fromParts(
+                    Part.fromUri(uploadedFile.uri().get(), uploadedFile.mimeType().get()))),
+            null);
 
-    CreateModelInteraction params =
-        CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
-            .input(InteractionsInput.ofContent(contents))
-            .build();
-
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println(interaction.outputText().orElse(""));
+    System.out.println(response);
 
 ## Supported audio formats
 

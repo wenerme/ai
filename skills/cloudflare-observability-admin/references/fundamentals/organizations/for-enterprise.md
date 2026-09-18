@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Organizations for Enterprise
 
-Last updated Aug 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -117,6 +117,20 @@ After creating an Organization, you can assign existing accounts to manage them 
 The assigned account now appears on the Organization overview page. From here, you can view the account, copy its ID, or rename it.
 
 To remove an account from your Organization, contact [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
+
+### Create new accounts
+
+Organization Super Administrators can create up to five Free accounts within an Enterprise Organization.
+
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Accounts**. [Go to **Accounts** ↗](https://dash.cloudflare.com/)
+2. Select **Create Account**.
+3. Enter an account name.
+4. For **Organization**, select the destination Organization.
+5. Select **Create Account**.
+
+The new account starts on the Free plan. It does not inherit payment methods, plans, subscriptions, or entitlements from the Organization.
+
+API tokens and OAuth access tokens cannot create accounts within an Organization.
 
 ## Manage members
 
@@ -234,10 +248,6 @@ To manage Organization resources through their full Terraform lifecycle, configu
 
 ## What you cannot do
 
-### Create new accounts
-
-Enterprise Organizations cannot self-serve create new accounts. To add a new account, contact [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) to create it, then assign it to your Organization.
-
 ### Create sub-organizations
 
 Enterprise Organizations use a flat structure. You cannot create sub-organizations or nested containers. Use **tags** to organize accounts by business unit, region, or environment.
@@ -257,5 +267,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/#page","headline":"Organizations for Enterprise · Cloudflare Fundamentals docs","description":"Set up and manage an Enterprise Organization to manage multiple Cloudflare accounts from a single dashboard.","url":"https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/#page","headline":"Organizations for Enterprise · Cloudflare Fundamentals docs","description":"Set up and manage an Enterprise Organization to manage multiple Cloudflare accounts from a single dashboard.","url":"https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

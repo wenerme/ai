@@ -79,7 +79,7 @@ Paris
     "prompt_tokens_details": {
       "cached_tokens": 28
     },
-    "cost": 0
+    "cost": 0.000036700000000000004
   },
   "gatewayMetadata": {
     "keySource": "Unified"
@@ -155,7 +155,7 @@ An API (Application Programming Interface) is a set of rules that lets different
     "prompt_tokens_details": {
       "cached_tokens": 0
     },
-    "cost": 0
+    "cost": 0.00031125
   },
   "gatewayMetadata": {
     "keySource": "Unified"
@@ -236,7 +236,7 @@ console.log(reverseString("hello")); // "olleh"
     "prompt_tokens_details": {
       "cached_tokens": 0
     },
-    "cost": 0
+    "cost": 0.00026125
   },
   "gatewayMetadata": {
     "keySource": "Unified"
@@ -324,7 +324,7 @@ Prioritize **location over amenities** for a short weekend—you’ll get more o
     "prompt_tokens_details": {
       "cached_tokens": 0
     },
-    "cost": 0
+    "cost": 0.00065375
   },
   "gatewayMetadata": {
     "keySource": "Unified"
@@ -398,7 +398,7 @@ Enough to lead me gently through the dark.
     "prompt_tokens_details": {
       "cached_tokens": 0
     },
-    "cost": 0
+    "cost": 0.00025875
   },
   "gatewayMetadata": {
     "keySource": "Unified"

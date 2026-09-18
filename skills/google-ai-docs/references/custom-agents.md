@@ -18,7 +18,7 @@ Here is an example of passing all three inline:
     client = genai.Client()
 
     interaction = client.interactions.create(
-        agent="antigravity-preview-05-2026",
+        agent="antigravity-preview-09-2026",
         input="Analyze the Q1 revenue data and create a slide deck.",
         system_instruction="You are a data analyst. Always include visualizations and export results as PDF.",
         environment={
@@ -47,7 +47,7 @@ Here is an example of passing all three inline:
     const client = new GoogleGenAI({});
 
     const interaction = await client.interactions.create({
-        agent: "antigravity-preview-05-2026",
+        agent: "antigravity-preview-09-2026",
         input: "Analyze the Q1 revenue data and create a slide deck.",
         system_instruction: "You are a data analyst. Always include visualizations and export results as PDF.",
         environment: {
@@ -74,21 +74,40 @@ Here is an example of passing all three inline:
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.AgentOption;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteractionEnvironment;
+    import com.google.genai.gaos.models.interactions.Environment;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Source;
+    import com.google.genai.gaos.models.interactions.SourceType;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.List;
 
     Client client = new Client();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
+    Environment env = Environment.builder()
+        .sources(List.of(
+            Source.builder()
+                .type(SourceType.INLINE)
+                .target(".agents/AGENTS.md")
+                .content("Always use matplotlib for charts. Include a summary table in every report.")
+                .build(),
+            Source.builder()
+                .type(SourceType.INLINE)
+                .target(".agents/skills/slide-maker/SKILL.md")
+                .content("---\nname: slide-maker\n---\n# Slide Maker\nCreate HTML slide decks from data analysis results.")
+                .build()
+        ))
+        .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    CreateAgentInteraction params = CreateAgentInteraction.builder()
+        .agent(AgentOption.of("antigravity-preview-09-2026"))
+        .input(InteractionsInput.of("Analyze the Q1 revenue data and create a slide deck."))
+        .systemInstruction("You are a data analyst. Always include visualizations and export results as PDF.")
+        .environment(CreateAgentInteractionEnvironment.of(env))
+        .build();
 
+    Interaction interaction = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
 
 ### REST
@@ -97,7 +116,7 @@ Here is an example of passing all three inline:
     -H "Content-Type: application/json" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -d '{
-        "agent": "antigravity-preview-05-2026",
+        "agent": "antigravity-preview-09-2026",
         "input": "Analyze the Q1 revenue data and create a slide deck.",
         "system_instruction": "You are a data analyst. Always include visualizations and export results as PDF.",
         "environment": {
@@ -159,7 +178,7 @@ Mount an `AGENTS.md` using an inline source:
     client = genai.Client()
 
     interaction = client.interactions.create(
-        agent="antigravity-preview-05-2026",
+        agent="antigravity-preview-09-2026",
         input="Analyze the Q1 revenue data and create a report.",
         system_instruction="You are a data analyst. Always include visualizations and export results as PDF.",
         environment={
@@ -183,7 +202,7 @@ Mount an `AGENTS.md` using an inline source:
     const client = new GoogleGenAI({});
 
     const interaction = await client.interactions.create({
-        agent: "antigravity-preview-05-2026",
+        agent: "antigravity-preview-09-2026",
         input: "Analyze the Q1 revenue data and create a report.",
         system_instruction: "You are a data analyst. Always include visualizations and export results as PDF.",
         environment: {
@@ -205,21 +224,35 @@ Mount an `AGENTS.md` using an inline source:
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.AgentOption;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteractionEnvironment;
+    import com.google.genai.gaos.models.interactions.Environment;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Source;
+    import com.google.genai.gaos.models.interactions.SourceType;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.List;
 
     Client client = new Client();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
+    Environment env = Environment.builder()
+        .sources(List.of(
+            Source.builder()
+                .type(SourceType.INLINE)
+                .target(".agents/AGENTS.md")
+                .content("Always use matplotlib for charts. Include a summary table in every report.")
+                .build()
+        ))
+        .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    CreateAgentInteraction params = CreateAgentInteraction.builder()
+        .agent(AgentOption.of("antigravity-preview-09-2026"))
+        .input(InteractionsInput.of("Analyze the Q1 revenue data and create a report."))
+        .systemInstruction("You are a data analyst. Always include visualizations and export results as PDF.")
+        .environment(CreateAgentInteractionEnvironment.of(env))
+        .build();
 
+    Interaction interaction = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
 
 ### REST
@@ -228,7 +261,7 @@ Mount an `AGENTS.md` using an inline source:
       -H "Content-Type: application/json" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -d '{
-          "agent": "antigravity-preview-05-2026",
+          "agent": "antigravity-preview-09-2026",
           "input": "Analyze the Q1 revenue data and create a report.",
           "system_instruction": "You are a data analyst. Always include visualizations and export results as PDF.",
           "environment": {
@@ -262,7 +295,7 @@ Mount a skill using an inline source:
     client = genai.Client()
 
     interaction = client.interactions.create(
-        agent="antigravity-preview-05-2026",
+        agent="antigravity-preview-09-2026",
         input="Create a presentation about our Q1 results.",
         system_instruction="You create presentations from data.",
         environment={
@@ -286,7 +319,7 @@ Mount a skill using an inline source:
     const client = new GoogleGenAI({});
 
     const interaction = await client.interactions.create({
-        agent: "antigravity-preview-05-2026",
+        agent: "antigravity-preview-09-2026",
         input: "Create a presentation about our Q1 results.",
         system_instruction: "You create presentations from data.",
         environment: {
@@ -308,21 +341,35 @@ Mount a skill using an inline source:
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.AgentOption;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteractionEnvironment;
+    import com.google.genai.gaos.models.interactions.Environment;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Source;
+    import com.google.genai.gaos.models.interactions.SourceType;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.List;
 
     Client client = new Client();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
+    Environment env = Environment.builder()
+        .sources(List.of(
+            Source.builder()
+                .type(SourceType.INLINE)
+                .target(".agents/skills/slide-maker/SKILL.md")
+                .content("---\nname: slide-maker\ndescription: Create HTML slide decks\n---\n# Slide Maker\n\nWhen asked to create a presentation:\n1. Analyze the input data\n2. Create an HTML slide deck with reveal.js\n3. Save to /workspace/output/slides.html")
+                .build()
+        ))
+        .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    CreateAgentInteraction params = CreateAgentInteraction.builder()
+        .agent(AgentOption.of("antigravity-preview-09-2026"))
+        .input(InteractionsInput.of("Create a presentation about our Q1 results."))
+        .systemInstruction("You create presentations from data.")
+        .environment(CreateAgentInteractionEnvironment.of(env))
+        .build();
 
+    Interaction interaction = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
 
 ### REST
@@ -331,7 +378,7 @@ Mount a skill using an inline source:
       -H "Content-Type: application/json" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -d '{
-          "agent": "antigravity-preview-05-2026",
+          "agent": "antigravity-preview-09-2026",
           "input": "Create a presentation about our Q1 results.",
           "system_instruction": "You create presentations from data.",
           "environment": {
@@ -366,7 +413,7 @@ Specify `base_agent`, `id`, `agent_config`, `system_instruction` and `base_envir
 
     agent = client.agents.create(
         id="data-analyst",
-        base_agent="antigravity-preview-05-2026",
+        base_agent="antigravity-preview-09-2026",
         agent_config={
             "type": "antigravity",
             "model": "gemini-3.8-flash",
@@ -404,7 +451,7 @@ Specify `base_agent`, `id`, `agent_config`, `system_instruction` and `base_envir
 
     const agent = await client.agents.create({
         id: "data-analyst",
-        base_agent: "antigravity-preview-05-2026",
+        base_agent: "antigravity-preview-09-2026",
         agent_config: {
             type: "antigravity",
             model: "gemini-3.8-flash",
@@ -437,24 +484,51 @@ Specify `base_agent`, `id`, `agent_config`, `system_instruction` and `base_envir
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AgentOption;
-    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.agents.Agent;
+    import com.google.genai.gaos.models.agents.AgentConfig;
+    import com.google.genai.gaos.models.agents.BaseEnvironment;
+    import com.google.genai.gaos.models.interactions.AntigravityAgentConfig;
+    import com.google.genai.gaos.models.interactions.Environment;
+    import com.google.genai.gaos.models.interactions.Source;
+    import com.google.genai.gaos.models.interactions.SourceType;
+    import java.util.List;
 
     Client client = new Client();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
+    Environment env = Environment.builder()
+        .sources(List.of(
+            Source.builder()
+                .type(SourceType.INLINE)
+                .target(".agents/AGENTS.md")
+                .content("Always use matplotlib for charts. Include a summary table in every report.")
+                .build(),
+            Source.builder()
+                .type(SourceType.INLINE)
+                .target(".agents/skills/slide-maker/SKILL.md")
+                .content("---\nname: slide-maker\n---\n# Slide Maker\nCreate HTML slide decks from data analysis results.")
+                .build(),
+            Source.builder()
+                .type(SourceType.REPOSITORY)
+                .source("https://github.com/my-org/analysis-templates")
+                .target("/workspace/templates")
+                .build()
+        ))
+        .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    Agent agentParams = Agent.builder()
+        .id("data-analyst")
+        .baseAgent("antigravity-preview-09-2026")
+        .agentConfig(AgentConfig.of(
+            AntigravityAgentConfig.builder()
+                .model("gemini-3.8-flash")
+                .build()
+        ))
+        .systemInstruction("You are a data analyst. Always include visualizations and export results as PDF.")
+        .baseEnvironment(BaseEnvironment.of(env))
+        .build();
 
-    System.out.println(interaction.outputText().orElse(""));
+    Agent agent = client.agents.create(agentParams).agent().get();
+    System.out.println("Created agent: " + agent.id().orElse(""));
 
 ### REST
 
@@ -463,7 +537,7 @@ Specify `base_agent`, `id`, `agent_config`, `system_instruction` and `base_envir
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -d '{
         "id": "data-analyst",
-        "base_agent": "antigravity-preview-05-2026",
+        "base_agent": "antigravity-preview-09-2026",
         "agent_config": {
             "type": "antigravity",
             "model": "gemini-3.8-flash"
@@ -503,7 +577,7 @@ Iterate with the base Antigravity agent until the environment is right (packages
 
     # Step 1: set up the environment interactively
     interaction = client.interactions.create(
-        agent="antigravity-preview-05-2026",
+        agent="antigravity-preview-09-2026",
         input="Install pandas, matplotlib, and seaborn. Create an analysis template at /workspace/template.py.",
         environment="remote",
     )
@@ -512,7 +586,7 @@ Iterate with the base Antigravity agent until the environment is right (packages
 
     agent = client.agents.create(
         id="my-data-analyst",
-        base_agent="antigravity-preview-05-2026",
+        base_agent="antigravity-preview-09-2026",
         system_instruction="You are a data analyst. Use the template at /workspace/template.py for all reports.",
         base_environment=interaction.environment_id,
     )
@@ -526,14 +600,14 @@ Iterate with the base Antigravity agent until the environment is right (packages
     const client = new GoogleGenAI({});
 
     const interaction = await client.interactions.create({
-        agent: "antigravity-preview-05-2026",
+        agent: "antigravity-preview-09-2026",
         input: "Install pandas, matplotlib, and seaborn. Create an analysis template at /workspace/template.py.",
         environment: "remote",
     }, { timeout: 300000 });
 
     const agent = await client.agents.create({
         id: "my-data-analyst",
-        base_agent: "antigravity-preview-05-2026",
+        base_agent: "antigravity-preview-09-2026",
         system_instruction: "You are a data analyst. Use the template at /workspace/template.py for all reports.",
         base_environment: interaction.environment_id,
     });
@@ -543,24 +617,36 @@ Iterate with the base Antigravity agent until the environment is right (packages
 ### Java
 
     import com.google.genai.Client;
+    import com.google.genai.gaos.models.agents.Agent;
+    import com.google.genai.gaos.models.agents.BaseEnvironment;
     import com.google.genai.gaos.models.interactions.AgentOption;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteractionEnvironment;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
 
     Client client = new Client();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
+    // Step 1: set up the environment interactively
+    CreateAgentInteraction params = CreateAgentInteraction.builder()
+        .agent(AgentOption.of("antigravity-preview-09-2026"))
+        .input(InteractionsInput.of("Install pandas, matplotlib, and seaborn. Create an analysis template at /workspace/template.py."))
+        .environment(CreateAgentInteractionEnvironment.of("remote"))
+        .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    Interaction interaction = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    System.out.println(interaction.outputText().orElse(""));
+    // Step 2: fork that environment into a managed agent
+    Agent agentParams = Agent.builder()
+        .id("my-data-analyst")
+        .baseAgent("antigravity-preview-09-2026")
+        .systemInstruction("You are a data analyst. Use the template at /workspace/template.py for all reports.")
+        .baseEnvironment(BaseEnvironment.of(interaction.environmentId().orElse("")))
+        .build();
+
+    Agent agent = client.agents.create(agentParams).agent().get();
+    System.out.println("Forked agent successfully: " + agent.id().orElse(""));
 
 ### REST
 
@@ -568,7 +654,7 @@ Iterate with the base Antigravity agent until the environment is right (packages
       -H "Content-Type: application/json" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -d '{
-          "agent": "antigravity-preview-05-2026",
+          "agent": "antigravity-preview-09-2026",
           "input": "Install pandas, matplotlib, and seaborn. Create an analysis template at /workspace/template.py.",
           "environment": "remote"
       }'
@@ -576,6 +662,8 @@ Iterate with the base Antigravity agent until the environment is right (packages
 ### With network rules
 
 You can lock down outbound access or inject credentials when saving a managed agent. For the full allowlist schema, credential patterns, and wildcards, see [Environments: Network configuration](https://ai.google.dev/gemini-api/docs/agent-environment#network-configuration).
+
+Reference a stored [credential](https://ai.google.dev/gemini-api/docs/agent-credentials) by ID on an allowlist rule (`"credential": "github-production"`) and the egress proxy injects the secret at request time, so it never lands in your agent definition. This example sets the header inline with `transform` instead. The proxy applies both forms the same way, a credential additionally lets you reuse the secret across agents and rotate it in one place.
 
 The following example creates an `issue-resolver` agent that can only access GitHub and PyPI, with credentials injected for GitHub:
 
@@ -587,7 +675,7 @@ The following example creates an `issue-resolver` agent that can only access Git
 
     agent = client.agents.create(
         id="issue-resolver",
-        base_agent="antigravity-preview-05-2026",
+        base_agent="antigravity-preview-09-2026",
         system_instruction="You resolve GitHub issues. Clone the repo, find the bug, write the fix, run the tests, and open a PR.",
         base_environment={
             "type": "remote",
@@ -622,7 +710,7 @@ The following example creates an `issue-resolver` agent that can only access Git
 
     const agent = await client.agents.create({
         id: "issue-resolver",
-        base_agent: "antigravity-preview-05-2026",
+        base_agent: "antigravity-preview-09-2026",
         system_instruction: "You resolve GitHub issues. Clone the repo, find the bug, write the fix, run the tests, and open a PR.",
         base_environment: {
             type: "remote",
@@ -652,24 +740,53 @@ The following example creates an `issue-resolver` agent that can only access Git
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AgentOption;
-    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.agents.Agent;
+    import com.google.genai.gaos.models.agents.BaseEnvironment;
+    import com.google.genai.gaos.models.interactions.Allowlist;
+    import com.google.genai.gaos.models.interactions.AllowlistEntry;
+    import com.google.genai.gaos.models.interactions.Environment;
+    import com.google.genai.gaos.models.interactions.EnvironmentNetworkEgressAllowlist;
+    import com.google.genai.gaos.models.interactions.Network;
+    import com.google.genai.gaos.models.interactions.Source;
+    import com.google.genai.gaos.models.interactions.SourceType;
+    import com.google.genai.gaos.models.interactions.Transform;
+    import java.util.List;
+    import java.util.Map;
 
     Client client = new Client();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
+    Environment env = Environment.builder()
+        .sources(List.of(
+            Source.builder()
+                .type(SourceType.REPOSITORY)
+                .source("https://github.com/my-org/backend")
+                .target("/workspace/repo")
+                .build()
+        ))
+        .network(Network.of(EnvironmentNetworkEgressAllowlist.of(
+            Allowlist.builder()
+                .allowlist(List.of(
+                    AllowlistEntry.builder()
+                        .domain("api.github.com")
+                        .transform(Transform.of(Map.of(
+                            "Authorization", "Basic YOUR_BASE64_TOKEN"
+                        )))
+                        .build(),
+                    AllowlistEntry.builder().domain("pypi.org").build()
+                ))
+                .build()
+        )))
+        .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    Agent agentParams = Agent.builder()
+        .id("issue-resolver")
+        .baseAgent("antigravity-preview-09-2026")
+        .systemInstruction("You resolve GitHub issues. Clone the repo, find the bug, write the fix, run the tests, and open a PR.")
+        .baseEnvironment(BaseEnvironment.of(env))
+        .build();
 
-    System.out.println(interaction.outputText().orElse(""));
+    Agent agent = client.agents.create(agentParams).agent().get();
+    System.out.println("Created issue-resolver agent successfully: " + agent.id().orElse(""));
 
 ### REST
 
@@ -678,7 +795,7 @@ The following example creates an `issue-resolver` agent that can only access Git
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -d '{
           "id": "issue-resolver",
-          "base_agent": "antigravity-preview-05-2026",
+          "base_agent": "antigravity-preview-09-2026",
           "system_instruction": "You resolve GitHub issues. Clone the repo, find the bug, write the fix, run the tests, and open a PR.",
           "base_environment": {
               "type": "remote",
@@ -732,22 +849,21 @@ Call your managed agent with your agent ID by creating a new interaction. Each i
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.AgentOption;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteractionEnvironment;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
 
     Client client = new Client();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
+    CreateAgentInteraction params = CreateAgentInteraction.builder()
+        .agent(AgentOption.of("data-analyst"))
+        .input(InteractionsInput.of("Analyze Q1 revenue data from /workspace/templates/sample.csv and create a slide deck."))
+        .environment(CreateAgentInteractionEnvironment.of("remote"))
+        .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println(interaction.outputText().orElse(""));
+    Interaction result = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    System.out.println(result.outputText().orElse(""));
 
 ### REST
 
@@ -800,23 +916,26 @@ specific run without changing the stored agent definition.
 
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CodeExecution;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteractionEnvironment;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.List;
 
     Client client = new Client();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
+    CreateAgentInteraction params = CreateAgentInteraction.builder()
+        .agent(AgentOption.of("data-analyst"))
+        .input(InteractionsInput.of("Analyze Q1 revenue data, but do not create a slide deck. Just output a summary table."))
+        .systemInstruction("You are a data analyst. Focus ONLY on summary tables. Ignore default instructions about slides.")
+        .tools(List.of(CodeExecution.builder().build())) // Override to only use code execution
+        .environment(CreateAgentInteractionEnvironment.of("remote"))
+        .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println(interaction.outputText().orElse(""));
+    Interaction result = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    System.out.println(result.outputText().orElse(""));
 
 ### REST
 
@@ -838,6 +957,11 @@ you can override them at invocation time to refresh expired tokens or rotate API
 keys. Pass an `environment` object with a new `network` configuration. The new
 network rules fully replace the previous ones for that interaction. The base
 environment's sources (files, repositories) are preserved.
+
+If the `base_environment` references a stored
+[credential](https://ai.google.dev/gemini-api/docs/agent-credentials) instead of an inline token, you
+don't need to override anything. Rotate the credential with a `PATCH` and every
+agent referencing it picks up the new secret on the next run.
 
 ### Python
 
@@ -891,23 +1015,47 @@ environment's sources (files, repositories) are preserved.
 
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.Allowlist;
+    import com.google.genai.gaos.models.interactions.AllowlistEntry;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteractionEnvironment;
+    import com.google.genai.gaos.models.interactions.Environment;
+    import com.google.genai.gaos.models.interactions.EnvironmentNetworkEgressAllowlist;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Network;
+    import com.google.genai.gaos.models.interactions.Transform;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.List;
+    import java.util.Map;
 
     Client client = new Client();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
+    // Invoke the agent with a fresh token, overriding the base_environment credentials
+    Environment env = Environment.builder()
+        .network(Network.of(EnvironmentNetworkEgressAllowlist.of(
+            Allowlist.builder()
+                .allowlist(List.of(
+                    AllowlistEntry.builder()
+                        .domain("api.github.com")
+                        .transform(Transform.of(Map.of(
+                            "Authorization", "Bearer ghp_REFRESHED_TOKEN"
+                        )))
+                        .build(),
+                    AllowlistEntry.builder().domain("pypi.org").build()
+                ))
+                .build()
+        )))
+        .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    CreateAgentInteraction params = CreateAgentInteraction.builder()
+        .agent(AgentOption.of("issue-resolver"))
+        .input(InteractionsInput.of("Fix issue #42 and open a PR."))
+        .environment(CreateAgentInteractionEnvironment.of(env))
+        .build();
 
-    System.out.println(interaction.outputText().orElse(""));
+    Interaction result = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    System.out.println(result.outputText().orElse(""));
 
 ### REST
 
@@ -957,24 +1105,15 @@ You can list, get, and delete agents.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AgentOption;
-    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.agents.Agent;
+    import java.util.List;
 
     Client client = new Client();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
-
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println(interaction.outputText().orElse(""));
+    List<Agent> agents = client.agents.listDirect().agentListResponse().get().agents().orElse(List.of());
+    for (Agent a : agents) {
+        System.out.println(a.id().orElse("") + ": " + a.description().orElse(""));
+    }
 
 ### REST
 
@@ -996,24 +1135,12 @@ You can list, get, and delete agents.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AgentOption;
-    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.agents.Agent;
 
     Client client = new Client();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
-
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println(interaction.outputText().orElse(""));
+    Agent agent = client.agents.get("data-analyst").agent().get();
+    System.out.println(agent);
 
 ### REST
 
@@ -1035,24 +1162,10 @@ Deleting removes the configuration. Existing environments and interactions creat
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AgentOption;
-    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
 
     Client client = new Client();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
-
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println(interaction.outputText().orElse(""));
+    client.agents.delete("data-analyst");
 
 ### REST
 
@@ -1065,7 +1178,7 @@ Deleting removes the configuration. Existing environments and interactions creat
 |---|---|---|---|
 | `id` | string | Yes | Unique agent identifier within the Google Cloud project. Used to invoke the agent. Must not use reserved prefixes. See [Agent ID restrictions](https://ai.google.dev/gemini-api/docs/custom-agents#agent-id-restrictions). |
 | `description` | string | No | Human-readable description of the agent. |
-| `base_agent` | string | Yes | Base agent ID (e.g., `antigravity-preview-05-2026`). |
+| `base_agent` | string | Yes | Base agent ID (e.g., `antigravity-preview-09-2026`). |
 | `agent_config` | object | No | Configuration for the base agent, including model selection (`{"type": "antigravity", "model": "gemini-3.8-flash"}`). Defaults to `gemini-3.8-flash` if omitted. Cannot be overridden at interaction time for named agents. |
 | `system_instruction` | string | No | System prompt defining behavior and persona. |
 | `tools` | array | No | Tools the agent can use. If omitted, defaults to `code_execution`, `google_search`, and `url_context`. Supported tools include `code_execution`, `google_search`, `url_context`, `mcp_server`, and custom `function` definitions. |
@@ -1104,7 +1217,7 @@ When creating a managed agent, the `id` you specify must follow these rules:
 ## Limitations
 
 - **Preview status**: Managed agents are in preview. Features and schemas may change.
-- **Base agent and models** : Only `antigravity-preview-05-2026` is supported as `base_agent`. Supported model options in `agent_config` are `gemini-3.8-flash` (default), `gemini-3.7-flash`, `gemini-3.6-flash`, `gemini-3.5-flash`, and `gemini-3.5-flash-lite`. For named agents, the model cannot be overridden at interaction time.
+- **Base agent and models** : Only `antigravity-preview-09-2026` is supported as `base_agent`. Supported model options in `agent_config` are `gemini-3.8-flash` (default), `gemini-3.7-flash`, `gemini-3.6-flash`, `gemini-3.5-flash`, and `gemini-3.5-flash-lite`. For named agents, the model cannot be overridden at interaction time.
 - **No versioning**: Agent versioning and rollback are not yet available.
 - **No subagent nesting**: Subagent delegation is not yet supported.
 - You can have up to 1000 managed agents.

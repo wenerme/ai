@@ -313,19 +313,20 @@ The STT endpoint returns a JSON response with the transcribed text:
 
 ### Response Fields
 
-| Field                 | Type   | Description                                                                                                                               |
-| --------------------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `text`                | string | The transcribed text                                                                                                                      |
-| `task`                | string | `transcribe`. Only with `verbose_json`, when the provider reports it                                                                      |
-| `language`            | string | Detected or requested language. Only with `verbose_json`                                                                                  |
-| `duration`            | number | Audio duration in seconds. Only with `verbose_json`                                                                                       |
-| `segments`            | array  | Timestamped segments with `start`, `end`, `text`, and optional `speaker`. Only with `verbose_json`                                        |
-| `words`               | array  | Timestamped words with `word`, `start`, `end`, and optional `speaker`. Only with `verbose_json` and `"word"` in `timestamp_granularities` |
-| `usage.seconds`       | number | Duration of the input audio in seconds                                                                                                    |
-| `usage.total_tokens`  | number | Total number of tokens used (input + output)                                                                                              |
-| `usage.input_tokens`  | number | Number of input tokens billed                                                                                                             |
-| `usage.output_tokens` | number | Number of output tokens generated                                                                                                         |
-| `usage.cost`          | number | Total cost of the request in USD                                                                                                          |
+| Field                 | Type   | Description                                                                                                                                                                                                       |
+| --------------------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `text`                | string | The transcribed text                                                                                                                                                                                              |
+| `task`                | string | `transcribe`. Only with `verbose_json`, when the provider reports it                                                                                                                                              |
+| `language`            | string | Detected or requested language. Only with `verbose_json`                                                                                                                                                          |
+| `duration`            | number | Audio duration in seconds. Only with `verbose_json`                                                                                                                                                               |
+| `confidence`          | number | Provider confidence for the whole transcript, 0 to 1. Only with `verbose_json` and only when the provider scores the full transcript                                                                              |
+| `segments`            | array  | Timestamped segments with `start`, `end`, `text`, and optional `speaker`. Only with `verbose_json`                                                                                                                |
+| `words`               | array  | Timestamped words with `word`, `start`, `end`, optional `speaker`, and optional `confidence` (0 to 1, present when the provider scores words). Only with `verbose_json` and `"word"` in `timestamp_granularities` |
+| `usage.seconds`       | number | Duration of the input audio in seconds                                                                                                                                                                            |
+| `usage.total_tokens`  | number | Total number of tokens used (input + output)                                                                                                                                                                      |
+| `usage.input_tokens`  | number | Number of input tokens billed                                                                                                                                                                                     |
+| `usage.output_tokens` | number | Number of output tokens generated                                                                                                                                                                                 |
+| `usage.cost`          | number | Total cost of the request in USD                                                                                                                                                                                  |
 
 ### Response Headers
 

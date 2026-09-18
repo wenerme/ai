@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Packages
 
-Last updated Sep 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/python/packages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/python/packages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Pywrangler ↗](https://github.com/cloudflare/workers-py?tab=readme-ov-file#pywrangler) is a CLI tool for managing packages and Python Workers. It is meant as a wrapper for wrangler that sets up a full environment for you, including bundling your packages into your worker bundle on deployment.
 
@@ -59,10 +59,6 @@ Python Workers support pure and [PyEmscripten ↗](https://peps.python.org/pep-0
 
 WebAssembly support for Python packages is still in early stages, and some packages may not yet be available as PyEmscripten wheels on PyPI. If a package you would like to use is not yet available, we encourage you to reach out to the package maintainers and request PyEmscripten wheels. You can also start a thread in the [Python Packages Discussions ↗](https://github.com/cloudflare/workerd/discussions/categories/python-packages) on the Cloudflare Workers Runtime GitHub repository — we would be happy to help you communicate with package maintainers.
 
-## HTTP Client Libraries
-
-Only HTTP libraries that are able to make requests asynchronously are supported. Currently, these include [`aiohttp` ↗](https://docs.aiohttp.org/en/stable/index.html) and [`httpx2` ↗](https://pydantic.dev/docs/httpx2/). You can also use the [`fetch()` API](https://developers.cloudflare.com/workers/runtime-apis/fetch/) from JavaScript, using Python Workers' [foreign function interface](https://developers.cloudflare.com/workers/languages/python/ffi) to make HTTP requests.
-
 Was this helpful?
 
 YesNo
@@ -72,5 +68,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/languages/python/packages/#page","headline":"Python packages supported in Cloudflare Workers · Cloudflare Workers docs","description":"Manage and use Python packages in Cloudflare Workers with Pywrangler.","url":"https://developers.cloudflare.com/workers/languages/python/packages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/languages/python/packages/#page","headline":"Python packages supported in Cloudflare Workers · Cloudflare Workers docs","description":"Manage and use Python packages in Cloudflare Workers with Pywrangler.","url":"https://developers.cloudflare.com/workers/languages/python/packages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -60,15 +60,17 @@ camera movement, lighting and mood for best results.
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-omni-1.1-flash"))
-            .input(InteractionsInput.of("A marble rolling fast on a chain reaction style track, continuous smooth shot."))
+            .input(
+                InteractionsInput.of(
+                    "A marble rolling fast on a chain reaction style track, continuous smooth shot."))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
     if (interaction.outputVideo().isPresent() && interaction.outputVideo().get().data().isPresent()) {
-        byte[] videoBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
-        Files.write(Paths.get("marble.mp4"), videoBytes);
+      byte[] videoBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
+      Files.write(Paths.get("marble.mp4"), videoBytes);
     }
 
 ### REST
@@ -178,7 +180,9 @@ is the default.
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-omni-1.1-flash"))
-            .input(InteractionsInput.of("A futuristic city with neon lights and flying cars, cyberpunk style"))
+            .input(
+                InteractionsInput.of(
+                    "A futuristic city with neon lights and flying cars, cyberpunk style"))
             .responseFormat(CreateModelInteractionResponseFormat.of(ResponseFormat.of(videoFormat)))
             .build();
 
@@ -186,8 +190,8 @@ is the default.
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
     if (interaction.outputVideo().isPresent() && interaction.outputVideo().get().data().isPresent()) {
-        byte[] videoBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
-        Files.write(Paths.get("example.mp4"), videoBytes);
+      byte[] videoBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
+      Files.write(Paths.get("example.mp4"), videoBytes);
     }
 
 ### REST
@@ -286,8 +290,8 @@ parameter in `response_format`. The default resolution is 720p.
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
     if (interaction.outputVideo().isPresent() && interaction.outputVideo().get().data().isPresent()) {
-        byte[] videoBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
-        Files.write(Paths.get("hires.mp4"), videoBytes);
+      byte[] videoBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
+      Files.write(Paths.get("hires.mp4"), videoBytes);
     }
 
 ### REST
@@ -377,18 +381,19 @@ To generate a realistic video of the drawing.
 
     Client client = new Client();
 
-    byte[] imageBytes = Files.readAllBytes(Paths.get("first_frame.png"));
+    byte[] imageBytes = Files.readAllBytes(Paths.get("drawing.jpg"));
     String base64Image = Base64.getEncoder().encodeToString(imageBytes);
 
     Content imageContent =
         ImageContent.builder()
             .data(base64Image)
-            .mimeType(ImageContentMimeType.IMAGE_PNG)
+            .mimeType(ImageContentMimeType.IMAGE_JPEG)
             .build();
 
     Content textContent =
         TextContent.builder()
-            .text("A mythical dragon perched on a craggy peak slowly unfolds its wings and lets out a roar.")
+            .text(
+                "turn this into realistic footage, using the drawing only as a guide for movement, do not show the drawing in the final video")
             .build();
 
     List<Content> contents = Arrays.asList(imageContent, textContent);
@@ -403,8 +408,8 @@ To generate a realistic video of the drawing.
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
     if (interaction.outputVideo().isPresent() && interaction.outputVideo().get().data().isPresent()) {
-        byte[] videoBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
-        Files.write(Paths.get("dragon.mp4"), videoBytes);
+      byte[] videoBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
+      Files.write(Paths.get("clownfish.mp4"), videoBytes);
     }
 
 ### REST
@@ -491,8 +496,10 @@ ending frame.
 
     Client client = new Client();
 
-    String firstFrameB64 = Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get("first_frame.jpg")));
-    String lastFrameB64 = Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get("last_frame.jpg")));
+    String firstFrameB64 =
+        Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get("first_frame.jpg")));
+    String lastFrameB64 =
+        Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get("last_frame.jpg")));
 
     Content firstFrame =
         ImageContent.builder()
@@ -508,7 +515,8 @@ ending frame.
 
     Content prompt =
         TextContent.builder()
-            .text("A smooth cinematic transition from a lush green forest at sunrise to a snowy forest under a starry night sky.")
+            .text(
+                "A smooth cinematic transition from a lush green forest at sunrise to a snowy forest under a starry night sky.")
             .build();
 
     List<Content> contents = Arrays.asList(firstFrame, lastFrame, prompt);
@@ -523,8 +531,8 @@ ending frame.
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
     if (interaction.outputVideo().isPresent() && interaction.outputVideo().get().data().isPresent()) {
-        byte[] videoBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
-        Files.write(Paths.get("interpolation.mp4"), videoBytes);
+      byte[] videoBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
+      Files.write(Paths.get("interpolation.mp4"), videoBytes);
     }
 
 ### REST
@@ -605,21 +613,27 @@ to generate a video of the cat playing with the yarn.
 
     Client client = new Client();
 
-    byte[] imageBytes = Files.readAllBytes(Paths.get("reference.png"));
-    String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+    String catB64 = Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get("cat.png")));
+    String yarnB64 = Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get("yarn.png")));
 
-    Content imageContent =
+    Content catImage =
         ImageContent.builder()
-            .data(base64Image)
+            .data(catB64)
+            .mimeType(ImageContentMimeType.IMAGE_PNG)
+            .build();
+
+    Content yarnImage =
+        ImageContent.builder()
+            .data(yarnB64)
             .mimeType(ImageContentMimeType.IMAGE_PNG)
             .build();
 
     Content textContent =
         TextContent.builder()
-            .text("A cute small creature like the one in <image_1> is running in a sunny park chasing a butterfly.")
+            .text("A cat playfully batting at a ball of yarn.")
             .build();
 
-    List<Content> contents = Arrays.asList(imageContent, textContent);
+    List<Content> contents = Arrays.asList(catImage, yarnImage, textContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
@@ -631,8 +645,8 @@ to generate a video of the cat playing with the yarn.
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
     if (interaction.outputVideo().isPresent() && interaction.outputVideo().get().data().isPresent()) {
-        byte[] videoBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
-        Files.write(Paths.get("creature.mp4"), videoBytes);
+      byte[] videoBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
+      Files.write(Paths.get("cat.mp4"), videoBytes);
     }
 
 ### REST
@@ -737,18 +751,19 @@ to video example.
 
     Client client = new Client();
 
-    byte[] imageBytes = Files.readAllBytes(Paths.get("reference.png"));
+    byte[] imageBytes = Files.readAllBytes(Paths.get("drawing.jpg"));
     String base64Image = Base64.getEncoder().encodeToString(imageBytes);
 
     Content imageContent =
         ImageContent.builder()
             .data(base64Image)
-            .mimeType(ImageContentMimeType.IMAGE_PNG)
+            .mimeType(ImageContentMimeType.IMAGE_JPEG)
             .build();
 
     Content textContent =
         TextContent.builder()
-            .text("A fast red sports car drives down an empty desert highway at dusk.")
+            .text(
+                "turn this into realistic footage, using the drawing only as a guide for movement, do not show the drawing in the final video")
             .build();
 
     List<Content> contents = Arrays.asList(imageContent, textContent);
@@ -769,8 +784,8 @@ to video example.
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
     if (interaction.outputVideo().isPresent() && interaction.outputVideo().get().data().isPresent()) {
-        byte[] videoBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
-        Files.write(Paths.get("task_output.mp4"), videoBytes);
+      byte[] videoBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
+      Files.write(Paths.get("example.mp4"), videoBytes);
     }
 
 ### REST
@@ -871,26 +886,26 @@ The following example demonstrates how to generate a first video then edit it:
     CreateModelInteraction turn1Params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-omni-1.1-flash"))
-            .input(InteractionsInput.of("A person in a red jacket standing in a snowy landscape."))
+            .input(InteractionsInput.of("A woman playing violin outdoors."))
             .build();
 
-    Interaction turn1 =
+    Interaction res1 =
         client.interactions.create(CreateInteractionRequestBody.of(turn1Params)).interaction().get();
 
-    // Turn 2: Edit the previous video using previousInteractionId
+    // Turn 2: Edit the previous video
     CreateModelInteraction turn2Params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-omni-1.1-flash"))
-            .input(InteractionsInput.of("Change the jacket to bright yellow."))
-            .previousInteractionId(turn1.id().get())
+            .previousInteractionId(res1.id().get())
+            .input(InteractionsInput.of("Make the violin invisible."))
             .build();
 
-    Interaction turn2 =
+    Interaction res2 =
         client.interactions.create(CreateInteractionRequestBody.of(turn2Params)).interaction().get();
 
-    if (turn2.outputVideo().isPresent() && turn2.outputVideo().get().data().isPresent()) {
-        byte[] videoBytes = Base64.getDecoder().decode(turn2.outputVideo().get().data().get());
-        Files.write(Paths.get("edited.mp4"), videoBytes);
+    if (res2.outputVideo().isPresent() && res2.outputVideo().get().data().isPresent()) {
+      byte[] videoBytes = Base64.getDecoder().decode(res2.outputVideo().get().data().get());
+      Files.write(Paths.get("example.mp4"), videoBytes);
     }
 
 ### REST
@@ -1003,8 +1018,10 @@ The following example shows how to edit the following original video:
     import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.interactions.VideoContent;
-    import com.google.genai.gaos.models.interactions.VideoContentMimeType;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.types.File;
+    import com.google.genai.types.FileState;
+    import com.google.genai.types.UploadFileConfig;
     import java.nio.file.Files;
     import java.nio.file.Paths;
     import java.util.Arrays;
@@ -1013,18 +1030,29 @@ The following example shows how to edit the following original video:
 
     Client client = new Client();
 
-    byte[] videoBytes = Files.readAllBytes(Paths.get("my_video.mp4"));
-    String base64Video = Base64.getEncoder().encodeToString(videoBytes);
+    // Upload video using the file API
+    File videoFile =
+        client.files.upload("Video.mp4", UploadFileConfig.builder().mimeType("video/mp4").build());
 
-    Content videoContent =
-        VideoContent.builder()
-            .data(base64Video)
-            .mimeType(VideoContentMimeType.VIDEO_MP4)
-            .build();
+    while (videoFile.state().isPresent()
+        && videoFile.state().get().knownEnum() == FileState.Known.PROCESSING) {
+      System.out.println("Waiting for video to be processed.");
+      Thread.sleep(10000);
+      videoFile = client.files.get(videoFile.name().get(), null);
+    }
 
+    if (videoFile.state().isPresent()
+        && videoFile.state().get().knownEnum() == FileState.Known.FAILED) {
+      throw new IllegalStateException("Video processing failed: " + videoFile.state().get());
+    }
+    System.out.println("Video processing complete: " + videoFile.uri().orElse(""));
+
+    // Edit your video
+    Content videoContent = VideoContent.builder().uri(videoFile.uri().get()).build();
     Content textContent =
         TextContent.builder()
-            .text("Make the violin completely invisible while keeping the musician playing normally in the air.")
+            .text(
+                "When the person touches the mirror, make the mirror ripple beautifully like liquid, and the person's arm turns into reflective mirror material")
             .build();
 
     List<Content> contents = Arrays.asList(videoContent, textContent);
@@ -1039,8 +1067,8 @@ The following example shows how to edit the following original video:
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
     if (interaction.outputVideo().isPresent() && interaction.outputVideo().get().data().isPresent()) {
-        byte[] editedBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
-        Files.write(Paths.get("edited_invisible_violin.mp4"), editedBytes);
+      byte[] videoBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
+      Files.write(Paths.get("example.mp4"), videoBytes);
     }
 
 ### REST
@@ -1159,9 +1187,12 @@ video is `ACTIVE` before downloading.
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.interactions.ResponseFormat;
+    import com.google.genai.gaos.models.interactions.VideoContent;
     import com.google.genai.gaos.models.interactions.VideoResponseFormat;
     import com.google.genai.gaos.models.interactions.VideoResponseFormatDelivery;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.types.File;
+    import com.google.genai.types.FileState;
 
     Client client = new Client();
 
@@ -1174,17 +1205,34 @@ video is `ACTIVE` before downloading.
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-omni-1.1-flash"))
-            .input(InteractionsInput.of("A camera flies over a misty redwood forest at sunrise."))
+            .input(InteractionsInput.of("A beautiful sunset."))
             .responseFormat(CreateModelInteractionResponseFormat.of(ResponseFormat.of(videoFormat)))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    // 2. Extract file URI
-    interaction.outputVideo().flatMap(v -> v.uri()).ifPresent(uri -> {
-        System.out.println("Video URI: " + uri);
-    });
+    // 2. Extract file name and poll for ACTIVE state
+    VideoContent videoOutput = interaction.outputVideo().get();
+    String uri = videoOutput.uri().get();
+    String[] parts = uri.split("/");
+    String fileName = parts[parts.length - 1];
+
+    System.out.println("Waiting for video processing...");
+    while (true) {
+      File fileInfo = client.files.get("files/" + fileName, null);
+      if (fileInfo.state().isPresent()
+          && fileInfo.state().get().knownEnum() == FileState.Known.ACTIVE) {
+        break;
+      } else if (fileInfo.state().isPresent()
+          && fileInfo.state().get().knownEnum() == FileState.Known.FAILED) {
+        throw new RuntimeException("Generation failed.");
+      }
+      Thread.sleep(5000);
+    }
+
+    // 3. Download the final video
+    client.files.download(uri, "output.mp4", null);
 
 ### REST
 
@@ -1330,8 +1378,9 @@ You can extend:
     import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.interactions.VideoContent;
-    import com.google.genai.gaos.models.interactions.VideoContentMimeType;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.types.File;
+    import com.google.genai.types.UploadFileConfig;
     import java.nio.file.Files;
     import java.nio.file.Paths;
     import java.util.Arrays;
@@ -1340,23 +1389,16 @@ You can extend:
 
     Client client = new Client();
 
-    // Load base video
-    byte[] videoBytes = Files.readAllBytes(Paths.get("my_video.mp4"));
-    String base64Video = Base64.getEncoder().encodeToString(videoBytes);
+    // Upload your video using the Files API
+    File videoFile =
+        client.files.upload(
+            "my_video.mp4", UploadFileConfig.builder().mimeType("video/mp4").build());
 
-    Content videoContent =
-        VideoContent.builder()
-            .data(base64Video)
-            .mimeType(VideoContentMimeType.VIDEO_MP4)
-            .build();
+    // Extend the video using prompt-based extension
+    Content videoContent = VideoContent.builder().uri(videoFile.uri().get()).build();
+    Content textContent = TextContent.builder().text("Continue the scene.").build();
 
-    // Prompt describing seamless continuation
-    Content promptContent =
-        TextContent.builder()
-            .text("Continue the scene.")
-            .build();
-
-    List<Content> contents = Arrays.asList(videoContent, promptContent);
+    List<Content> contents = Arrays.asList(videoContent, textContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
@@ -1368,8 +1410,8 @@ You can extend:
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
     if (interaction.outputVideo().isPresent() && interaction.outputVideo().get().data().isPresent()) {
-        byte[] extendedBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
-        Files.write(Paths.get("extended.mp4"), extendedBytes);
+      byte[] videoBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
+      Files.write(Paths.get("extended.mp4"), videoBytes);
     }
 
 ### REST
@@ -1448,14 +1490,14 @@ introduce new characters or elements into the extended video:
     import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
     import com.google.genai.gaos.models.interactions.ImageContent;
-    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.interactions.VideoContent;
-    import com.google.genai.gaos.models.interactions.VideoContentMimeType;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.types.File;
+    import com.google.genai.types.UploadFileConfig;
     import java.nio.file.Files;
     import java.nio.file.Paths;
     import java.util.Arrays;
@@ -1464,28 +1506,24 @@ introduce new characters or elements into the extended video:
 
     Client client = new Client();
 
-    // Load base video and reference character image
-    byte[] videoBytes = Files.readAllBytes(Paths.get("my_video.mp4"));
-    byte[] charBytes = Files.readAllBytes(Paths.get("character.png"));
+    // Upload base video and reference image using the Files API
+    File videoFile =
+        client.files.upload(
+            "my_video.mp4", UploadFileConfig.builder().mimeType("video/mp4").build());
+    File characterImg =
+        client.files.upload(
+            "character.png", UploadFileConfig.builder().mimeType("image/png").build());
 
-    Content baseVideo =
-        VideoContent.builder()
-            .data(Base64.getEncoder().encodeToString(videoBytes))
-            .mimeType(VideoContentMimeType.VIDEO_MP4)
-            .build();
-
-    Content characterImg =
-        ImageContent.builder()
-            .data(Base64.getEncoder().encodeToString(charBytes))
-            .mimeType(ImageContentMimeType.IMAGE_PNG)
-            .build();
-
-    Content prompt =
+    // Extend the video while introducing the reference character
+    Content videoContent = VideoContent.builder().uri(videoFile.uri().get()).build();
+    Content imageContent = ImageContent.builder().uri(characterImg.uri().get()).build();
+    Content textContent =
         TextContent.builder()
-            .text("Extend the video: the car stops, and the traveler from <image_1> steps out and waves at the sunset.")
+            .text(
+                "Extend this video: have the character shown in <IMAGE_REF_0> enter the scene and wave.")
             .build();
 
-    List<Content> contents = Arrays.asList(baseVideo, characterImg, prompt);
+    List<Content> contents = Arrays.asList(videoContent, imageContent, textContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
@@ -1497,8 +1535,8 @@ introduce new characters or elements into the extended video:
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
     if (interaction.outputVideo().isPresent() && interaction.outputVideo().get().data().isPresent()) {
-        byte[] extendedBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
-        Files.write(Paths.get("extended_with_character.mp4"), extendedBytes);
+      byte[] videoBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
+      Files.write(Paths.get("extended_with_character.mp4"), videoBytes);
     }
 
 ### REST

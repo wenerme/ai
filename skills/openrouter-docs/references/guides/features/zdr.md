@@ -141,6 +141,44 @@ Some endpoints/models provide implicit caching of prompts. This keeps repeated p
 
 OpenRouter has taken the stance that in-memory caching of prompts is *not* considered "retaining" data, and we therefore allow endpoints/models with implicit caching to be hit when a ZDR routing policy is in effect.
 
+## ZDR for Private Deployments
+
+A [private deployment](https://openrouter.ai/settings/private-deployments) is an endpoint that connects a catalog model to a deployment you operate in your own provider account, authenticated with your [BYOK](/docs/guides/overview/auth/byok) key. Only organizations granted private access can route to it. OpenRouter has no view into your agreement with that upstream, so the retention classification comes from a declaration you make when you create or edit the private deployment.
+
+### Declaration states
+
+| Declaration          | What it records                                                            | Routing when ZDR is required                                  |
+| -------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| **Not declared**     | No statement about the upstream's retention.                               | Treated as retaining. The private deployment is not eligible. |
+| **Declared ZDR**     | Your attestation that the upstream does not retain prompts or completions. | The private deployment stays in your ZDR routing pool.        |
+| **Declared non-ZDR** | Your attestation that the upstream retains data.                           | Treated as retaining. The private deployment is not eligible. |
+
+"ZDR is required" means any enforcement path described above: the account-level privacy setting, a model-group or guardrail ZDR setting, or `provider.zdr` on the request.
+
+### Not declared
+
+A private deployment does not inherit the data policy of any public endpoint or provider, even when it connects to the same upstream service. A new private deployment with no declaration uses the conservative unverified fallback described in [How OpenRouter Manages Data Policies](#how-openrouter-manages-data-policies): OpenRouter treats it as retaining, so it is not eligible for any request that requires ZDR.
+
+### Declared ZDR
+
+Declaring ZDR keeps the private deployment in your organization's ZDR routing pool. Every other routing constraint still applies: the requesting organization must hold private access to the endpoint, the endpoint must be available for the requested model, and provider preferences, guardrails, and other data-policy settings are evaluated as usual. The declaration only changes the retention classification. It does not add the private deployment to the ZDR routing pool of any organization without private access, and it does not affect the ZDR eligibility of the public endpoints for the same model.
+
+### Declared non-ZDR
+
+Declaring non-ZDR records an explicit attestation that the upstream retains data. Under a ZDR requirement it routes the same way as **Not declared** today. The difference is the fact preserved for your audit trail: **Declared non-ZDR** is known and attested, **Not declared** is unknown.
+
+### Existing private deployments
+
+Existing private deployments keep their current classification. Introducing this setting did not bulk-migrate them, so a private deployment created before the setting existed behaves exactly as it did. Editing its declaration applies the rules above, subject to the override precedence below.
+
+<Note>
+  **Overrides and attestations**
+
+  An explicit OpenRouter data-policy override set by our team remains authoritative over your declaration. If OpenRouter has assigned a specific data policy to your private deployment, that policy decides eligibility regardless of what you declared.
+
+  A declaration is your attestation about your agreement with the upstream. OpenRouter records it and routes on it. It is not independent verification by OpenRouter of the upstream's contractual behavior.
+</Note>
+
 ## OpenRouter's Retention Policy
 
 OpenRouter itself has a ZDR policy; your prompts are not retained unless you specifically opt in to prompt logging.

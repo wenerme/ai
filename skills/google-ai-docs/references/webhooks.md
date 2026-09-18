@@ -69,19 +69,28 @@ to verify signatures later. If you lose the signing secret, you'll have to
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.webhooks.Webhook;
+    import com.google.genai.gaos.models.webhooks.WebhookInput;
+    import com.google.genai.gaos.models.webhooks.WebhookSubscribedEvent;
+    import java.util.Arrays;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.7-flash"))
-        .input(InteractionsInput.of("Hello world"))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-    System.out.println(interaction.outputText().orElse(""));
+
+    WebhookInput input =
+        WebhookInput.builder()
+            .name("MyBatchWebhook")
+            .subscribedEvents(
+                Arrays.asList(
+                    WebhookSubscribedEvent.BATCH_SUCCEEDED, WebhookSubscribedEvent.BATCH_FAILED))
+            .uri("https://my-api.com/gemini-callback")
+            .build();
+
+    Webhook webhook = client.webhooks.create(input).webhook().get();
+
+    // Store webhook.newSigningSecret() securely
+    String webhookSecret = webhook.newSigningSecret().orElse("");
+    System.out.println(
+        "Created webhook: " + webhook.name().orElse("") + ", " + webhook.id().orElse(""));
 
 ### REST
 
@@ -133,19 +142,16 @@ Retrieve details about a specific webhook by its resource name.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.webhooks.Webhook;
+    import java.util.Collections;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.7-flash"))
-        .input(InteractionsInput.of("Hello world"))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-    System.out.println(interaction.outputText().orElse(""));
+
+    Webhook webhook = client.webhooks.get("<your_webhook_id>").webhook().get();
+
+    System.out.println("Webhook: " + webhook.name().orElse(""));
+    System.out.println("URI: " + webhook.uri().orElse(""));
+    System.out.println("Events: " + webhook.subscribedEvents().orElse(Collections.emptyList()));
 
 ### REST
 
@@ -187,19 +193,19 @@ List all configured webhooks for the current project, with optional pagination.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.webhooks.Webhook;
+    import com.google.genai.gaos.models.webhooks.WebhookListResponse;
+    import java.util.Collections;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.7-flash"))
-        .input(InteractionsInput.of("Hello world"))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-    System.out.println(interaction.outputText().orElse(""));
+
+    WebhookListResponse response =
+        client.webhooks.listDirect().webhookListResponse().orElse(new WebhookListResponse());
+
+    for (Webhook wh : response.webhooks().orElse(Collections.emptyList())) {
+      System.out.println(
+          wh.id().orElse("") + ": " + wh.name().orElse("") + " -> " + wh.uri().orElse(""));
+    }
 
 ### REST
 
@@ -247,19 +253,33 @@ subscribed events.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.webhooks.Webhook;
+    import com.google.genai.gaos.models.webhooks.WebhookUpdate;
+    import com.google.genai.gaos.models.webhooks.WebhookUpdateSubscribedEvent;
+    import java.util.Arrays;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.7-flash"))
-        .input(InteractionsInput.of("Hello world"))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-    System.out.println(interaction.outputText().orElse(""));
+
+    WebhookUpdate updateBody =
+        WebhookUpdate.builder()
+            .subscribedEvents(
+                Arrays.asList(
+                    WebhookUpdateSubscribedEvent.BATCH_SUCCEEDED,
+                    WebhookUpdateSubscribedEvent.BATCH_FAILED,
+                    WebhookUpdateSubscribedEvent.of("batch.cancelled")))
+            .build();
+
+    Webhook updatedWebhook =
+        client.webhooks
+            .update()
+            .id("<your_webhook_id>")
+            .updateMask("subscribed_events")
+            .body(updateBody)
+            .call()
+            .webhook()
+            .get();
+
+    System.out.println("Updated webhook: " + updatedWebhook.name().orElse(""));
 
 ### REST
 
@@ -303,19 +323,12 @@ to that endpoint.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.7-flash"))
-        .input(InteractionsInput.of("Hello world"))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-    System.out.println(interaction.outputText().orElse(""));
+
+    client.webhooks.delete("<your_webhook_id>");
+
+    System.out.println("Webhook deleted.");
 
 ### REST
 
@@ -369,19 +382,29 @@ time. Store it securely before updating your verification logic.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.webhooks.RevocationBehavior;
+    import com.google.genai.gaos.models.webhooks.RotateSigningSecretRequest;
+    import com.google.genai.gaos.models.webhooks.WebhookRotateSigningSecretResponse;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.7-flash"))
-        .input(InteractionsInput.of("Hello world"))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-    System.out.println(interaction.outputText().orElse(""));
+
+    RotateSigningSecretRequest requestBody =
+        RotateSigningSecretRequest.builder()
+            .revocationBehavior(RevocationBehavior.REVOKE_PREVIOUS_SECRETS_AFTER_H24)
+            .build();
+
+    WebhookRotateSigningSecretResponse response =
+        client.webhooks
+            .rotateSigningSecret()
+            .id("<your_webhook_id>")
+            .body(requestBody)
+            .call()
+            .webhookRotateSigningSecretResponse()
+            .get();
+
+    // Store response.secret() securely, then update your server's verification config
+    String newSecret = response.secret().orElse("");
+    System.out.println("New signing secret generated. Update your server configuration.");
 
 ### REST
 
@@ -495,20 +518,79 @@ Here is an example using Flask for the HTTP listener:
 
 ### Java
 
-    import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.sun.net.httpserver.HttpServer;
+    import java.io.OutputStream;
+    import java.net.InetSocketAddress;
+    import java.nio.charset.StandardCharsets;
+    import java.util.Base64;
+    import java.util.regex.Matcher;
+    import java.util.regex.Pattern;
+    import javax.crypto.Mac;
+    import javax.crypto.spec.SecretKeySpec;
 
-    Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.7-flash"))
-        .input(InteractionsInput.of("Hello world"))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-    System.out.println(interaction.outputText().orElse(""));
+    String signingSecret = System.getenv("WEBHOOK_SIGNING_SECRET");
+
+    HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
+    server.createContext(
+        "/gemini-callback",
+        exchange -> {
+          String payload =
+              new String(exchange.getRequestBody().readAllBytes(), StandardCharsets.UTF_8);
+          String msgId = exchange.getRequestHeaders().getFirst("webhook-id");
+          String msgTimestamp = exchange.getRequestHeaders().getFirst("webhook-timestamp");
+          String msgSignature = exchange.getRequestHeaders().getFirst("webhook-signature");
+
+          try {
+            String toSign = msgId + "." + msgTimestamp + "." + payload;
+            Mac mac = Mac.getInstance("HmacSHA256");
+            byte[] secretBytes =
+                Base64.getDecoder().decode(signingSecret.replaceFirst("^whsec_", ""));
+            mac.init(new SecretKeySpec(secretBytes, "HmacSHA256"));
+            String expectedSig =
+                "v1,"
+                    + Base64.getEncoder()
+                        .encodeToString(mac.doFinal(toSign.getBytes(StandardCharsets.UTF_8)));
+
+            if (msgSignature == null || !msgSignature.contains(expectedSig)) {
+              byte[] resp = "{\"error\": \"Signature invalid\"}".getBytes(StandardCharsets.UTF_8);
+              exchange.sendResponseHeaders(400, resp.length);
+              try (OutputStream os = exchange.getResponseBody()) {
+                os.write(resp);
+              }
+              return;
+            }
+
+            Matcher typeMatcher = Pattern.compile("\"type\"\\s*:\\s*\"([^\"]+)\"").matcher(payload);
+            String type = typeMatcher.find() ? typeMatcher.group(1) : "";
+
+            Matcher idMatcher = Pattern.compile("\"id\"\\s*:\\s*\"([^\"]+)\"").matcher(payload);
+            String id = idMatcher.find() ? idMatcher.group(1) : "";
+
+            Matcher uriMatcher =
+                Pattern.compile("\"output_file_uri\"\\s*:\\s*\"([^\"]+)\"").matcher(payload);
+            String outputFileUri = uriMatcher.find() ? uriMatcher.group(1) : "";
+
+            if ("batch.succeeded".equals(type)) {
+              System.out.println("Batch completed! ID: " + id);
+              if (!outputFileUri.isEmpty()) {
+                System.out.println("Batch file: " + outputFileUri);
+              }
+            } else if ("interaction.completed".equals(type)) {
+              System.out.println("Interaction completed! ID: " + id);
+            } else if ("video.generated".equals(type)) {
+              System.out.println("Video generated! URI: " + outputFileUri);
+            }
+
+            byte[] resp = "{\"status\": \"received\"}".getBytes(StandardCharsets.UTF_8);
+            exchange.sendResponseHeaders(200, resp.length);
+            try (OutputStream os = exchange.getResponseBody()) {
+              os.write(resp);
+            }
+          } catch (Exception e) {
+            exchange.sendResponseHeaders(400, -1);
+          }
+        });
+    server.start();
 
 ## Dynamic webhooks
 
@@ -529,7 +611,7 @@ Batch).
     client = genai.Client()
 
     response = client.interactions.create(
-        model='gemini-3.7-flash',
+        model='gemini-3.8-flash',
         input='Tell me a short joke about programming.',
         background=True, # Required when webhook_config is specified
         webhook_config={
@@ -550,7 +632,7 @@ Batch).
 
     async function createInteractionWithWebhook() {
       const response = await client.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: "Tell me a short joke about programming.",
         background: true, // Required when webhook_config is specified
         webhook_config: {
@@ -570,17 +652,40 @@ Batch).
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
     import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionStatus;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.WebhookConfig;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.HashMap;
+    import java.util.Map;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.7-flash"))
-        .input(InteractionsInput.of("Hello world"))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-    System.out.println(interaction.outputText().orElse(""));
+
+    Map<String, Object> userMetadata = new HashMap<>();
+    userMetadata.put("job_group", "nightly-eval");
+    userMetadata.put("priority", "high");
+
+    WebhookConfig webhookConfig =
+        WebhookConfig.builder()
+            .uris(Arrays.asList("https://my-api.com/gemini-webhook-dynamic"))
+            .userMetadata(userMetadata)
+            .build();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model("gemini-3.8-flash")
+            .input(InteractionsInput.of("Tell me a short joke about programming."))
+            .background(true) // Required when webhookConfig is specified
+            .webhookConfig(webhookConfig)
+            .build();
+
+    Interaction response =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println("Interaction created! ID: " + response.id().orElse(""));
+    System.out.println(
+        "Status: " + response.status().map(InteractionStatus::value).orElse(""));
 
 ### REST
 
@@ -590,7 +695,7 @@ Batch).
       -H "Content-Type: application/json" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "Tell me a short joke about programming.",
         "background": true,
         "webhook_config": {
@@ -702,20 +807,94 @@ endpoints](https://www.googleapis.com/oauth2/v3/certs).
 
 ### Java
 
-    import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.sun.net.httpserver.HttpServer;
+    import java.io.InputStream;
+    import java.io.OutputStream;
+    import java.math.BigInteger;
+    import java.net.InetSocketAddress;
+    import java.net.URI;
+    import java.nio.charset.StandardCharsets;
+    import java.security.KeyFactory;
+    import java.security.PublicKey;
+    import java.security.Signature;
+    import java.security.spec.RSAPublicKeySpec;
+    import java.util.Base64;
+    import java.util.regex.Matcher;
+    import java.util.regex.Pattern;
 
-    Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.7-flash"))
-        .input(InteractionsInput.of("Hello world"))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-    System.out.println(interaction.outputText().orElse(""));
+    String jwksUri = "https://generativelanguage.googleapis.com/.well-known/jwks.json";
+
+    HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
+    server.createContext(
+        "/gemini-webhook-dynamic",
+        exchange -> {
+          String token = exchange.getRequestHeaders().getFirst("Webhook-Signature");
+          if (token == null || token.split("\\.").length != 3) {
+            byte[] resp = "{\"error\": \"No signature header\"}".getBytes(StandardCharsets.UTF_8);
+            exchange.sendResponseHeaders(400, resp.length);
+            try (OutputStream os = exchange.getResponseBody()) {
+              os.write(resp);
+            }
+            return;
+          }
+
+          try {
+            String[] parts = token.split("\\.");
+            String headerJson =
+                new String(Base64.getUrlDecoder().decode(parts[0]), StandardCharsets.UTF_8);
+            Matcher kidMatcher = Pattern.compile("\"kid\"\\s*:\\s*\"([^\"]+)\"").matcher(headerJson);
+            String kid = kidMatcher.find() ? kidMatcher.group(1) : "";
+
+            PublicKey pubKey = null;
+            try (InputStream in = URI.create(jwksUri).toURL().openStream()) {
+              String jwksJson = new String(in.readAllBytes(), StandardCharsets.UTF_8);
+              Matcher keyBlockMatcher =
+                  Pattern.compile(
+                          "\\{[^}]*\"kid\"\\s*:\\s*\"" + Pattern.quote(kid) + "\"[^}]*\\}")
+                      .matcher(jwksJson);
+              if (keyBlockMatcher.find()) {
+                String keyBlock = keyBlockMatcher.group(0);
+                Matcher nMatcher = Pattern.compile("\"n\"\\s*:\\s*\"([^\"]+)\"").matcher(keyBlock);
+                Matcher eMatcher = Pattern.compile("\"e\"\\s*:\\s*\"([^\"]+)\"").matcher(keyBlock);
+                if (nMatcher.find() && eMatcher.find()) {
+                  BigInteger n =
+                      new BigInteger(1, Base64.getUrlDecoder().decode(nMatcher.group(1)));
+                  BigInteger e =
+                      new BigInteger(1, Base64.getUrlDecoder().decode(eMatcher.group(1)));
+                  pubKey =
+                      KeyFactory.getInstance("RSA").generatePublic(new RSAPublicKeySpec(n, e));
+                }
+              }
+            }
+
+            Signature sig = Signature.getInstance("SHA256withRSA");
+            sig.initVerify(pubKey);
+            sig.update((parts[0] + "." + parts[1]).getBytes(StandardCharsets.UTF_8));
+            boolean verified = sig.verify(Base64.getUrlDecoder().decode(parts[2]));
+
+            if (!verified) {
+              throw new SecurityException("Signature verification failed");
+            }
+
+            System.out.println("Verified Dynamic payload success.");
+            byte[] resp = "{\"status\": \"received\"}".getBytes(StandardCharsets.UTF_8);
+            exchange.sendResponseHeaders(200, resp.length);
+            try (OutputStream os = exchange.getResponseBody()) {
+              os.write(resp);
+            }
+          } catch (Exception e) {
+            byte[] resp =
+                ("{\"error\": \"Invalid Dynamic signature\", \"details\": \""
+                        + e.getMessage()
+                        + "\"}")
+                    .getBytes(StandardCharsets.UTF_8);
+            exchange.sendResponseHeaders(400, resp.length);
+            try (OutputStream os = exchange.getResponseBody()) {
+              os.write(resp);
+            }
+          }
+        });
+    server.start();
 
 ## Webhook envelope
 

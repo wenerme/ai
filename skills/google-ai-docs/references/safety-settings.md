@@ -142,7 +142,7 @@ per request](https://ai.google.dev/gemini-api/docs/safety-settings#safety-filter
     client = genai.Client()
 
     response = client.models.generate_content(
-        model="gemini-3.6-flash",
+        model="gemini-3.8-flash",
         contents="Some potentially unsafe prompt",
         config=types.GenerateContentConfig(
           safety_settings=[
@@ -185,7 +185,7 @@ per request](https://ai.google.dev/gemini-api/docs/safety-settings#safety-filter
 
         response, err := client.Models.GenerateContent(
             ctx,
-            "gemini-3.6-flash",
+            "gemini-3.8-flash",
             genai.Text("Some potentially unsafe prompt."),
             config,
         )
@@ -210,7 +210,7 @@ per request](https://ai.google.dev/gemini-api/docs/safety-settings#safety-filter
 
     async function main() {
       const response = await ai.models.generateContent({
-        model: "gemini-3.6-flash",
+        model: "gemini-3.8-flash",
         contents: "Some potentially unsafe prompt.",
         config: {
           safetySettings: safetySettings,
@@ -223,21 +223,36 @@ per request](https://ai.google.dev/gemini-api/docs/safety-settings#safety-filter
 
 ### Java
 
-    SafetySetting hateSpeechSafety = new SafetySetting(HarmCategory.HATE_SPEECH,
-        BlockThreshold.LOW_AND_ABOVE);
+    import com.google.genai.Client;
+    import com.google.genai.types.GenerateContentConfig;
+    import com.google.genai.types.GenerateContentResponse;
+    import com.google.genai.types.HarmBlockThreshold;
+    import com.google.genai.types.HarmCategory;
+    import com.google.genai.types.SafetySetting;
+    import java.util.Arrays;
 
-    GenerativeModel gm = new GenerativeModel(
-        "gemini-3.6-flash",
-        BuildConfig.apiKey,
-        null, // generation config is optional
-        Arrays.asList(hateSpeechSafety)
-    );
+    Client client = new Client();
 
-    GenerativeModelFutures model = GenerativeModelFutures.from(gm);
+    SafetySetting hateSpeechSafety =
+        SafetySetting.builder()
+            .category(HarmCategory.Known.HARM_CATEGORY_HATE_SPEECH)
+            .threshold(HarmBlockThreshold.Known.BLOCK_LOW_AND_ABOVE)
+            .build();
+
+    GenerateContentConfig config =
+        GenerateContentConfig.builder()
+            .safetySettings(Arrays.asList(hateSpeechSafety))
+            .build();
+
+    GenerateContentResponse response =
+        client.models.generateContent(
+            "gemini-3.8-flash", "Some potentially unsafe prompt.", config);
+
+    System.out.println(response.text());
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -X POST \

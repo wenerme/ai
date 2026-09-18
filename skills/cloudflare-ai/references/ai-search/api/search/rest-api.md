@@ -12,13 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # REST API
 
-Last updated Jun 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/search/rest-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/search/rest-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the AI Search REST API to query your AI Search instances over HTTP.
-
-Note
-
-The previous [AutoRAG API endpoints](https://developers.cloudflare.com/api/resources/autorag/) are no longer recommended for use. Refer to [Migrate from AutoRAG REST API](https://developers.cloudflare.com/ai-search/api/migration/rest-api/) for details.
 
 ## Authentication
 
@@ -49,21 +45,20 @@ AI Search provides two APIs for querying an instance. Both use an OpenAI-compati
 
 ### API paths
 
-AI Search APIs are available at two base paths:
+Search and chat APIs are scoped to a [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/):
 
 | Path | Description |
 | --- | --- |
-| `/accounts/{account_id}/ai-search/instances/{id}/` | Operates on a specific instance |
-| `/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/` | Operates on instances within a [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/) |
+| `/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/` | Operates on a specific instance within a namespace |
 
-The following operations are the same for both paths. For the namespace-scoped API, refer to the [Namespace API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/).
+Every account has a `default` namespace. Use `default` unless you created a custom namespace. For the full specification, refer to the [Namespace API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/).
 
 ### Search
 
-Search a specific instance. The search endpoint also accepts a `query` string parameter. For the full specification, refer to the [Search API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/instances/methods/search/).
+Search a specific instance. The search endpoint also accepts a `query` string parameter. For the full specification, refer to the [Search API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/methods/search/).
 
 ```bash
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/search" \
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/namespaces/default/instances/<INSTANCE_NAME>/search" \
   -H "Authorization: Bearer <API_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -78,10 +73,10 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-sear
 
 ### Chat completions
 
-Generate a response from a specific instance. For the full specification, refer to the [Chat completions API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/instances/methods/chat_completions/).
+Generate a response from a specific instance. For the full specification, refer to the [Chat completions API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/methods/chat_completions/).
 
 ```bash
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/chat/completions" \
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/namespaces/default/instances/<INSTANCE_NAME>/chat/completions" \
   -H "Authorization: Bearer <API_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -143,5 +138,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/search/rest-api/#page","headline":"REST API · Cloudflare AI Search docs","description":"Query AI Search instances over HTTP using the REST API for search and chat completions.","url":"https://developers.cloudflare.com/ai-search/api/search/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/search/rest-api/#page","headline":"REST API · Cloudflare AI Search docs","description":"Query AI Search instances over HTTP using the REST API for search and chat completions.","url":"https://developers.cloudflare.com/ai-search/api/search/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

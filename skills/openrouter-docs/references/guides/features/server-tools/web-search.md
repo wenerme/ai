@@ -218,7 +218,7 @@ You can check whether a specific model supports native search on its [model page
 The web search server tool supports multiple search engines:
 
 * **`auto`** (default): Uses native search if the provider supports it, otherwise falls back to Exa
-* **`native`**: Prefers the provider's built-in web search; falls back to Exa if the model doesn't support native search
+* **`native`**: Prefers the provider's built-in web search; falls back to Exa if the model doesn't support native search. When a workspace admin has set an engine list on the Server Tools page, the fallback is the first non-native engine in that list instead; a list of only `native` rejects the request with a 403 on models without native search
 * **`exa`**: Uses [Exa](https://exa.ai)'s search API, which combines keyword and embeddings-based search. Returns Exa [highlights](https://docs.exa.ai/reference/contents-retrieval-with-exa-api#highlights) (excerpts drawn from each page that are most relevant to the search query) rather than truncated page text. See the [Exa](#exa) section below.
 * **`firecrawl`**: Uses [Firecrawl](https://firecrawl.dev)'s search API (BYOK: bring your own key)
 * **`parallel`**: Uses [Parallel](https://parallel.ai)'s search API
@@ -437,6 +437,15 @@ MODEL: 'openai/gpt-5.2'
     ```
   </CodeGroup>
 </Template>
+
+## Workspace Settings
+
+Workspace admins can set an engine list, allowed domains, and excluded domains for `openrouter:web_search` on the workspace's Server Tools page. Each tool entry is either locked or a default:
+
+* **Locked** (the default when the entry is created): requests and presets in the workspace are limited to these settings. A request that names an engine outside the list, or whose domain list has no overlap with the workspace's, is rejected with a `403`. Because a search takes either an allowlist or an excluded list, a request `excluded_domains` under a workspace `allowed_domains` (or the reverse) narrows the allowlist: allowed domains that match an excluded domain are dropped, and only `allowed_domains` is sent to the engine. A `403` results if nothing remains, or if an excluded domain sits inside an allowed domain that remains (excluding `docs.example.com` under allowed `example.com`), since an allowlist cannot express that.
+* **Default** ("Prevent overrides" off): the settings fill in what a request leaves unset. A request that names its own engine keeps it, and a request that sets either domain list (an empty list counts) keeps its lists as sent; the workspace domain lists are used only when the request sets neither.
+
+In both modes a request with no `engine` (or `engine: "auto"`) runs the workspace's **Default engine**, and a `native` request on a model without native search runs its **Native fallback engine** (see the `native` row under [Engine Selection](#engine-selection)). Both are stored at the head of the engine list: the default first, then the fallback. Settings on the workspace's Plugins tab do not apply to server tools.
 
 ## Usage Tracking
 

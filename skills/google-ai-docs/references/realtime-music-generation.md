@@ -1,5 +1,5 @@
-> [!WARNING]
-> **Experimental:** Lyria RealTime is an [experimental model](https://ai.google.dev/gemini-api/docs/models#experimental).
+> [!NOTE]
+> **Note:** Lyria RealTime is an [experimental model](https://ai.google.dev/gemini-api/docs/models#experimental).
 
 The Gemini API, using
 [Lyria RealTime](https://deepmind.google/technologies/lyria/realtime/),
@@ -171,7 +171,7 @@ is usually a good starting point.
 
 ### JavaScript
 
-      await session.setMusicGenerationConfig({
+      await session.setWeightedPrompts({
         weightedPrompts: [
           { text: 'Harmonica', weight: 0.3 },
           { text: 'Afrobeat', weight: 0.7 }
@@ -218,41 +218,12 @@ transition. You don't need to do it for the other parameters.
       });
       await session.reset_context();
 
-## Prompt guide for Lyria RealTime
+## Prompting Lyria RealTime
 
-Here's a non-exhaustive list of prompts you can use to prompt Lyria RealTime:
-
-- Instruments: `303 Acid Bass, 808 Hip Hop Beat, Accordion, Alto Saxophone,
-  Bagpipes, Balalaika Ensemble, Banjo, Bass Clarinet, Bongos, Boomy Bass,
-  Bouzouki, Buchla Synths, Cello, Charango, Clavichord, Conga Drums,
-  Didgeridoo, Dirty Synths, Djembe, Drumline, Dulcimer, Fiddle, Flamenco
-  Guitar, Funk Drums, Glockenspiel, Guitar, Hang Drum, Harmonica, Harp,
-  Harpsichord, Hurdy-gurdy, Kalimba, Koto, Lyre, Mandolin, Maracas, Marimba,
-  Mbira, Mellotron, Metallic Twang, Moog Oscillations, Ocarina, Persian Tar,
-  Pipa, Precision Bass, Ragtime Piano, Rhodes Piano, Shamisen, Shredding
-  Guitar, Sitar, Slide Guitar, Smooth Pianos, Spacey Synths, Steel Drum, Synth
-  Pads, Tabla, TR-909 Drum Machine, Trumpet, Tuba, Vibraphone, Viola Ensemble,
-  Warm Acoustic Guitar, Woodwinds, ...`
-- Music Genre: `Acid Jazz, Afrobeat, Alternative Country, Baroque, Bengal Baul,
-  Bhangra, Bluegrass, Blues Rock, Bossa Nova, Breakbeat, Celtic Folk, Chillout,
-  Chiptune, Classic Rock, Contemporary R&B, Cumbia, Deep House, Disco Funk,
-  Drum & Bass, Dubstep, EDM, Electro Swing, Funk Metal, G-funk, Garage Rock,
-  Glitch Hop, Grime, Hyperpop, Indian Classical, Indie Electronic, Indie Folk,
-  Indie Pop, Irish Folk, Jam Band, Jamaican Dub, Jazz Fusion, Latin Jazz, Lo-Fi
-  Hip Hop, Marching Band, Merengue, New Jack Swing, Minimal Techno, Moombahton,
-  Neo-Soul, Orchestral Score, Piano Ballad, Polka, Post-Punk, 60s Psychedelic
-  Rock, Psytrance, R&B, Reggae, Reggaeton, Renaissance Music, Salsa, Shoegaze,
-  Ska, Surf Rock, Synthpop, Techno, Trance, Trap Beat, Trip Hop, Vaporwave,
-  Witch house, ...`
-- Mood/Description: `Acoustic Instruments, Ambient, Bright Tones, Chill,
-  Crunchy Distortion, Danceable, Dreamy, Echo, Emotional, Ethereal Ambience,
-  Experimental, Fat Beats, Funky, Glitchy Effects, Huge Drop, Live Performance,
-  Lo-fi, Ominous Drone, Psychedelic, Rich Orchestration, Saturated Tones,
-  Subdued Melody, Sustained Chords, Swirling Phasers, Tight Groove,
-  Unsettling, Upbeat, Virtuoso, Weird Noises, ...`
-
-These are just some examples, Lyria RealTime can do much more. Experiment
-with your own prompts!
+Lyria RealTime uses weighted prompts to blend musical genres,
+instruments, and moods dynamically. To explore prompt steering strategies,
+keyword tag vocabularies, and full prompt examples, see the
+[Lyria prompt guide](https://ai.google.dev/gemini-api/docs/lyria-prompt-guide#realtime-prompting).
 
 ## Best practices
 

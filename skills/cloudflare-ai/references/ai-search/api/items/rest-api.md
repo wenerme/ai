@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # REST API
 
-Last updated Jul 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/items/rest-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/items/rest-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the AI Search REST API to upload, list, and manage individual documents within an instance.
 
@@ -42,14 +42,13 @@ Authorization: Bearer <API_TOKEN>
 
 ## API paths
 
-AI Search APIs are available at two base paths:
+Item APIs are scoped to a [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/):
 
 | Path | Description |
 | --- | --- |
-| `/accounts/{account_id}/ai-search/instances/{id}/` | Operates on a specific instance |
-| `/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/` | Operates on instances within a [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/) |
+| `/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/` | Operates on instances within a namespace |
 
-The available operations are the same for both paths. For the namespace-scoped API, refer to the [Namespace API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/).
+Every account has a `default` namespace. Use `default` unless you created a custom namespace. For the full specification, refer to the [Namespace API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/).
 
 ## Items
 
@@ -68,7 +67,7 @@ Upload, list, get, delete, and download items within an instance. For the full s
 Upload a file to an instance:
 
 ```bash
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/items" \
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/namespaces/default/instances/<INSTANCE_NAME>/items" \
   -H "Authorization: Bearer <API_TOKEN>" \
   -F "file=@/path/to/your/file.pdf"
 ```
@@ -78,14 +77,14 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-sear
 List all items in an instance:
 
 ```bash
-curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/items" \
+curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/namespaces/default/instances/<INSTANCE_NAME>/items" \
   -H "Authorization: Bearer <API_TOKEN>"
 ```
 
 To find a single item by its exact object key, pass the `key` query parameter:
 
 ```bash
-curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/items?key=docs/readme.md" \
+curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/namespaces/default/instances/<INSTANCE_NAME>/items?key=docs/readme.md" \
   -H "Authorization: Bearer <API_TOKEN>"
 ```
 
@@ -100,5 +99,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/items/rest-api/#page","headline":"REST API · Cloudflare AI Search docs","description":"Upload, list, and manage documents in AI Search instances using the Items REST API.","url":"https://developers.cloudflare.com/ai-search/api/items/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/items/rest-api/#page","headline":"REST API · Cloudflare AI Search docs","description":"Upload, list, and manage documents in AI Search instances using the Items REST API.","url":"https://developers.cloudflare.com/ai-search/api/items/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

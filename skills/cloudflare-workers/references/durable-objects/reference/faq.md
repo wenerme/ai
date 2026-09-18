@@ -110,7 +110,7 @@ try {
 
 ### How can I identify which Durable Object instance generated a log entry?
 
-You can use `$workers.durableObjectId` to identify the specific Durable Object instance that generated the log entry.
+Durable Object request logs include the instance ID in `$workers.durableObjectId`. Filter on this field to isolate a specific instance for debugging.
 
 Was this helpful?
 

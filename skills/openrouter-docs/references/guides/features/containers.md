@@ -245,8 +245,11 @@ List the files in a container:
 ```
 
 * `GET /api/v1/containers/{container_id}/files` lists the files. The
-  `limit` parameter sets the page size, from 1 to 1000 (default 100). Use
-  the `after` parameter with a file id to get the next page.
+  `limit` parameter sets the page size, from 1 to 1000 (default 100). While
+  `has_more` is `true`, pass the response's `last_id` as the `after`
+  parameter to get the next page. `last_id` is a resume cursor, not always
+  the id of a listed file: a page can come back with an empty `data` array
+  and `has_more: true`, in which case keep paging with its `last_id`.
 * `GET /api/v1/containers/{container_id}/files/{file_id}` returns the
   metadata of one file.
 * `GET /api/v1/containers/{container_id}/files/{file_id}/content` streams

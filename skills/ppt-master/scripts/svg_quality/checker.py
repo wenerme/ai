@@ -51,12 +51,14 @@ try:
     from project_utils import (
         CANVAS_FORMATS,
         validate_communication_trace,
+        validate_outline_hyperlinks,
         validate_outline_roster,
     )
 except ImportError:
     print("Warning: Unable to import project_utils")
     CANVAS_FORMATS = {}
     validate_communication_trace = None
+    validate_outline_hyperlinks = None
     validate_outline_roster = None
 
 from svg_to_pptx.canvas_contract import (
@@ -76,6 +78,7 @@ except ImportError:
 
 try:
     from svg_to_pptx.animation_config import (
+        effective_top_level as _effective_top_level,
         load_animation_config as _load_animation_config,
         usable_animation_group_id as _usable_animation_group_id,
         validate_animation_config as _validate_animation_config,
@@ -83,6 +86,7 @@ try:
         validate_transition_config as _validate_transition_config,
     )
 except ImportError as exc:
+    _effective_top_level = None
     _load_animation_config = None
     _validate_animation_config = None
     _validate_animation_config_errors = None
@@ -5657,6 +5661,8 @@ class SVGQualityChecker:
         visual_index = 0
 
         for child in root:
+            if _effective_top_level is not None:
+                child = _effective_top_level(child)
             tag = _local_name(child)
             if tag in non_visual:
                 continue
@@ -5759,6 +5765,8 @@ class SVGQualityChecker:
         signatures: List[Tuple[object, ...]] = []
         visual_index = 0
         for child in root:
+            if _effective_top_level is not None:
+                child = _effective_top_level(child)
             tag = _local_name(child)
             if tag in non_visual:
                 continue
@@ -6953,19 +6961,27 @@ class SVGQualityChecker:
                 continue
 
             license_name = str(item.get('license_name') or '').upper()
-            license_token = 'CC BY-SA' if 'BY-SA' in license_name else 'CC BY'
+            # Only a Creative Commons licence has a token the credit must
+            # repeat; a publisher's own source-credit terms bind the credit to
+            # the author/source name alone.
+            if 'CC' in license_name or 'CREATIVE COMMONS' in license_name:
+                license_token = 'CC BY-SA' if 'BY-SA' in license_name else 'CC BY'
+            else:
+                license_token = None
             author = str(item.get('author') or '').strip()
             has_credit = bool(author) and any(
                 author.casefold() in block.casefold()
-                and license_token in block.upper()
+                and (license_token is None or license_token in block.upper())
                 for block in credit_blocks
             )
             if not has_credit:
+                expected = f"{author or 'unknown author'}"
+                if license_token:
+                    expected += f"; {license_token}"
                 result['errors'].append(
                     f"Missing image-specific inline attribution for sourced "
-                    f"image {filename} ({author or 'unknown author'}; "
-                    f"{license_token}). Add compact author + license credit per "
-                    f"references/image-searcher.md §7."
+                    f"image {filename} ({expected}). Add compact author + "
+                    f"license credit per references/image-searcher.md §7."
                 )
 
     @classmethod
@@ -7395,6 +7411,11 @@ class SVGQualityChecker:
                     self._communication_trace_issues.extend(
                         ('error', message)
                         for message in validate_outline_roster(project_path)
+                    )
+                if not self.partial_roster and validate_outline_hyperlinks is not None:
+                    self._communication_trace_issues.extend(
+                        ('error', message)
+                        for message in validate_outline_hyperlinks(project_path)
                     )
         return self.results
 

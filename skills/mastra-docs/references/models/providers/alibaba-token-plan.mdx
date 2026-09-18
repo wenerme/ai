@@ -5,7 +5,7 @@ description: "Browse Alibaba Token Plan model IDs, capabilities, and context win
 
 # [Alibaba Token Plan logo]Alibaba Token Plan
 
-Access 27 Alibaba Token Plan models through Mastra's model router. Authentication is handled automatically using the `ALIBABA_TOKEN_PLAN_API_KEY` environment variable.
+Access 28 Alibaba Token Plan models through Mastra's model router. Authentication is handled automatically using the `ALIBABA_TOKEN_PLAN_API_KEY` environment variable.
 
 Learn more in the [Alibaba Token Plan documentation](https://www.alibabacloud.com/help/en/model-studio/token-plan-overview).
 
@@ -137,6 +137,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "alibaba-token-plan/glm-5.2",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "alibaba-token-plan/glm-5.3",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,

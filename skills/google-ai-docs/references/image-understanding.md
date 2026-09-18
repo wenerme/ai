@@ -29,7 +29,7 @@ in the request:
     uploaded_file = client.files.upload(file="path/to/organ.jpg")
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {"type": "text", "text": "Caption this image."},
             {
@@ -53,7 +53,7 @@ in the request:
     });
 
     const interaction = await client.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: [
             {type: "text", text: "Caption this image."},
             {
@@ -77,23 +77,30 @@ in the request:
     import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.types.File;
+    import com.google.genai.types.UploadFileConfig;
     import java.util.Arrays;
     import java.util.List;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Analyze this image.").build();
+    File uploadedFile =
+        client.files.upload(
+            new java.io.File("path/to/organ.jpg"),
+            UploadFileConfig.builder().mimeType("image/jpeg").build());
+
+    Content textContent = TextContent.builder().text("Caption this image.").build();
     Content imageContent =
         ImageContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/image/scones.jpg")
-            .mimeType(ImageContentMimeType.IMAGE_JPEG)
+            .uri(uploadedFile.uri().orElse(""))
+            .mimeType(ImageContentMimeType.of(uploadedFile.mimeType().orElse("image/jpeg")))
             .build();
 
     List<Content> contents = Arrays.asList(textContent, imageContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -108,7 +115,7 @@ in the request:
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": [
           {"type": "text", "text": "Caption this image."},
           {
@@ -134,7 +141,7 @@ You can provide image data as base64-encoded strings:
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {"type": "text", "text": "Caption this image."},
             {
@@ -157,7 +164,7 @@ You can provide image data as base64-encoded strings:
     });
 
     const interaction = await client.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: [
             {type: "text", text: "Caption this image."},
             {
@@ -181,15 +188,21 @@ You can provide image data as base64-encoded strings:
     import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
     import java.util.Arrays;
+    import java.util.Base64;
     import java.util.List;
+
+    byte[] imageBytes = Files.readAllBytes(Paths.get("path/to/small-sample.jpg"));
+    String base64Image = Base64.getEncoder().encodeToString(imageBytes);
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Analyze this image.").build();
+    Content textContent = TextContent.builder().text("Caption this image.").build();
     Content imageContent =
         ImageContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/image/scones.jpg")
+            .data(base64Image)
             .mimeType(ImageContentMimeType.IMAGE_JPEG)
             .build();
 
@@ -197,7 +210,7 @@ You can provide image data as base64-encoded strings:
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -219,7 +232,7 @@ You can provide image data as base64-encoded strings:
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": [
           {"type": "text", "text": "Caption this image."},
           {
@@ -247,7 +260,7 @@ Files API. See the [Files API guide](https://ai.google.dev/gemini-api/docs/files
     my_file = client.files.upload(file="path/to/sample.jpg")
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {"type": "text", "text": "Caption this image."},
             {
@@ -271,7 +284,7 @@ Files API. See the [Files API guide](https://ai.google.dev/gemini-api/docs/files
     });
 
     const interaction = await client.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: [
             {type: "text", text: "Caption this image."},
             {
@@ -295,23 +308,30 @@ Files API. See the [Files API guide](https://ai.google.dev/gemini-api/docs/files
     import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.types.File;
+    import com.google.genai.types.UploadFileConfig;
     import java.util.Arrays;
     import java.util.List;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Analyze this image.").build();
+    File myFile =
+        client.files.upload(
+            new java.io.File("path/to/sample.jpg"),
+            UploadFileConfig.builder().mimeType("image/jpeg").build());
+
+    Content textContent = TextContent.builder().text("Caption this image.").build();
     Content imageContent =
         ImageContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/image/scones.jpg")
-            .mimeType(ImageContentMimeType.IMAGE_JPEG)
+            .uri(myFile.uri().orElse(""))
+            .mimeType(ImageContentMimeType.of(myFile.mimeType().orElse("image/jpeg")))
             .build();
 
     List<Content> contents = Arrays.asList(textContent, imageContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -328,7 +348,7 @@ Files API. See the [Files API guide](https://ai.google.dev/gemini-api/docs/files
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": [
           {"type": "text", "text": "Caption this image."},
           {
@@ -351,7 +371,7 @@ objects in the `input` array:
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {"type": "text", "text": "What is different between these two images?"},
             {
@@ -375,7 +395,7 @@ objects in the `input` array:
     const client = new GoogleGenAI({});
 
     const interaction = await client.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: [
             {type: "text", text: "What is different between these two images?"},
             {
@@ -409,18 +429,24 @@ objects in the `input` array:
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Analyze this image.").build();
-    Content imageContent =
+    Content textContent =
+        TextContent.builder().text("What is different between these two images?").build();
+    Content image1 =
         ImageContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/image/scones.jpg")
+            .uri("https://example.com/image1.jpg")
+            .mimeType(ImageContentMimeType.IMAGE_JPEG)
+            .build();
+    Content image2 =
+        ImageContent.builder()
+            .uri("https://example.com/image2.jpg")
             .mimeType(ImageContentMimeType.IMAGE_JPEG)
             .build();
 
-    List<Content> contents = Arrays.asList(textContent, imageContent);
+    List<Content> contents = Arrays.asList(textContent, image1, image2);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -434,7 +460,7 @@ objects in the `input` array:
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": [
           {"type": "text", "text": "What is different between these two images?"},
           {
@@ -479,7 +505,7 @@ your original image size.
         boxes: List[BoundingBox]
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {"type": "text", "text": prompt},
             {
@@ -515,7 +541,7 @@ your original image size.
     });
 
     const interaction = await client.interactions.create({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       input: [
         { type: "text", text: prompt },
         {
@@ -539,31 +565,72 @@ your original image size.
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionResponseFormat;
     import com.google.genai.gaos.models.interactions.ImageContent;
     import com.google.genai.gaos.models.interactions.ImageContentMimeType;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ResponseFormat;
     import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.interactions.TextResponseFormat;
+    import com.google.genai.gaos.models.interactions.TextResponseFormatMimeType;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import java.util.Arrays;
     import java.util.List;
+    import java.util.Map;
 
     Client client = new Client();
+    String prompt =
+        "Detect the all of the prominent items in the image. The box_2d should be [ymin, xmin, ymax, xmax] normalized to 0-1000.";
 
-    Content textContent = TextContent.builder().text("Analyze this image.").build();
+    Map<String, Object> boundingBoxSchema =
+        Map.of(
+            "type", "object",
+            "properties",
+                Map.of(
+                    "box_2d",
+                        Map.of(
+                            "type", "array",
+                            "items", Map.of("type", "integer"),
+                            "description",
+                                "The 2D bounding box of the item as [ymin, xmin, ymax, xmax] normalized to 0-1000."),
+                    "mask",
+                        Map.of(
+                            "type", "array",
+                            "items", Map.of("type", "array", "items", Map.of("type", "integer")),
+                            "description",
+                                "The segmentation mask of the item as a polygon of [x,y] coordinates, normalized to 0-1000."),
+                    "label",
+                        Map.of("type", "string", "description", "A descriptive label for the item.")),
+            "required", List.of("box_2d", "mask", "label"));
+
+    Map<String, Object> boundingBoxesSchema =
+        Map.of(
+            "type", "object",
+            "properties", Map.of("boxes", Map.of("type", "array", "items", boundingBoxSchema)),
+            "required", List.of("boxes"));
+
+    CreateModelInteractionResponseFormat format =
+        CreateModelInteractionResponseFormat.of(
+            ResponseFormat.of(
+                TextResponseFormat.builder()
+                    .mimeType(TextResponseFormatMimeType.APPLICATION_JSON)
+                    .schema(boundingBoxesSchema)
+                    .build()));
+
+    Content textContent = TextContent.builder().text(prompt).build();
     Content imageContent =
         ImageContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/image/scones.jpg")
-            .mimeType(ImageContentMimeType.IMAGE_JPEG)
+            .uri("https://example.com/image.png")
+            .mimeType(ImageContentMimeType.IMAGE_PNG)
             .build();
-
-    List<Content> contents = Arrays.asList(textContent, imageContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
-            .input(InteractionsInput.ofContent(contents))
+            .model(Model.of("gemini-3.8-flash"))
+            .input(InteractionsInput.ofContent(Arrays.asList(textContent, imageContent)))
+            .responseFormat(format)
             .build();
 
     Interaction interaction =
@@ -576,7 +643,7 @@ your original image size.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": [
           {"type": "text", "text": "Detect the all of the prominent items in the image. The box_2d should be [ymin, xmin, ymax, xmax] normalized to 0-1000."},
           {
@@ -648,7 +715,7 @@ The model predicts a JSON list, where each item represents a segmentation mask. 
         boxes: List[BoundingBox]
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {"type": "text", "text": prompt},
             {
@@ -692,7 +759,7 @@ The model predicts a JSON list, where each item represents a segmentation mask. 
     });
 
     const interaction = await client.interactions.create({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       input: [
         { type: "text", text: prompt },
         {
@@ -719,36 +786,84 @@ The model predicts a JSON list, where each item represents a segmentation mask. 
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionResponseFormat;
+    import com.google.genai.gaos.models.interactions.GenerationConfig;
     import com.google.genai.gaos.models.interactions.ImageContent;
     import com.google.genai.gaos.models.interactions.ImageContentMimeType;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ResponseFormat;
     import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.interactions.TextResponseFormat;
+    import com.google.genai.gaos.models.interactions.TextResponseFormatMimeType;
+    import com.google.genai.gaos.models.interactions.ThinkingLevel;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import java.util.Arrays;
     import java.util.List;
+    import java.util.Map;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Analyze this image.").build();
+    String prompt =
+        "Give the segmentation masks for the wooden and glass items.\n"
+            + "Output a JSON list of segmentation masks where each entry contains the 2D\n"
+            + "bounding box in the key \"box_2d\", the segmentation mask in key \"mask\", and\n"
+            + "the text label in the key \"label\". Use descriptive labels.";
+
+    Map<String, Object> boundingBoxSchema =
+        Map.of(
+            "type", "object",
+            "properties",
+                Map.of(
+                    "box_2d",
+                        Map.of(
+                            "type", "array",
+                            "items", Map.of("type", "integer"),
+                            "description",
+                                "The 2D bounding box of the item as [ymin, xmin, ymax, xmax] normalized to 0-1000."),
+                    "mask",
+                        Map.of(
+                            "type", "array",
+                            "items", Map.of("type", "array", "items", Map.of("type", "integer")),
+                            "description",
+                                "The segmentation mask of the item as a polygon of [x,y] coordinates, normalized to 0-1000."),
+                    "label",
+                        Map.of("type", "string", "description", "A descriptive label for the item.")),
+            "required", List.of("box_2d", "mask", "label"));
+
+    Map<String, Object> boundingBoxesSchema =
+        Map.of(
+            "type", "object",
+            "properties", Map.of("boxes", Map.of("type", "array", "items", boundingBoxSchema)),
+            "required", List.of("boxes"));
+
+    CreateModelInteractionResponseFormat format =
+        CreateModelInteractionResponseFormat.of(
+            ResponseFormat.of(
+                TextResponseFormat.builder()
+                    .mimeType(TextResponseFormatMimeType.APPLICATION_JSON)
+                    .schema(boundingBoxesSchema)
+                    .build()));
+
+    Content textContent = TextContent.builder().text(prompt).build();
     Content imageContent =
         ImageContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/image/scones.jpg")
-            .mimeType(ImageContentMimeType.IMAGE_JPEG)
+            .uri("https://example.com/image.png")
+            .mimeType(ImageContentMimeType.IMAGE_PNG)
             .build();
-
-    List<Content> contents = Arrays.asList(textContent, imageContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
-            .input(InteractionsInput.ofContent(contents))
+            .model(Model.of("gemini-3.8-flash"))
+            .input(InteractionsInput.ofContent(Arrays.asList(textContent, imageContent)))
+            .responseFormat(format)
+            .generationConfig(GenerationConfig.builder().thinkingLevel(ThinkingLevel.MINIMAL).build())
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-    System.out.println(interaction.outputText().orElse(""));
+    System.out.println("Segmentation results: " + interaction.outputText().orElse(""));
 
 ### REST
 
@@ -756,7 +871,7 @@ The model predicts a JSON list, where each item represents a segmentation mask. 
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": [
           {"type": "text", "text": "Give the segmentation masks for the wooden and glass items.\nOutput a JSON list of segmentation masks where each entry contains the 2D\nbounding box in the key \"box_2d\", the segmentation mask in key \"mask\", and\nthe text label in the key \"label\". Use descriptive labels."},
           {

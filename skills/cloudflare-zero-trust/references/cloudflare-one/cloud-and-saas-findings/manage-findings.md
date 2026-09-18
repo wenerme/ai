@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage findings
 
-Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Findings are security issues detected within SaaS and cloud applications that involve users, data at rest (files stored in your apps), and other configuration settings. With Cloudflare CASB, you can review a comprehensive list of findings in Cloudflare One and take action on the issues found.
 
@@ -154,6 +154,43 @@ To remediate a supported finding:
 
 CASB will begin remediating the instance.
 
+### Remediate inherited file permissions
+
+CASB can remove supported permissions applied directly to a Microsoft 365 or Google Workspace resource. If a file inherits access from a parent folder or Shared Drive, change the permission on that parent resource. Changing the file itself does not remove the inherited access.
+
+CASB does not automatically change permissions on parent resources. Changing a parent permission can affect every downstream file and folder that inherits it.
+
+#### Microsoft 365
+
+CASB may show a separate finding for the parent folder that gives the file its permission. The remediation details may include **Parent Folder Access** links. Open the linked finding to remediate the parent folder separately.
+
+When an inherited permission prevents remediation, CASB displays:
+
+> Resource has inherited permissions. Remediate permissions at the folder or organizational level.
+
+#### Google Workspace
+
+For Google Workspace, CASB does not identify the exact parent resource. Asset details may show the associated Shared Drive, but not the originating folder or permission.
+
+When an inherited permission prevents remediation, CASB displays:
+
+> Resource has inherited permissions from a parent resource. Direct remediation of the parent is not yet supported for Google Workspace.
+
+For example, a file inherits public access when its parent folder allows **Anyone with the link**. Change the parent folder's **General access** setting to remediate the finding.
+
+A file can also inherit external access from a Shared Drive member. Change the relevant parent permission or Shared Drive membership to remediate the finding.
+
+To remediate an inherited Google Workspace permission:
+
+1. In Google Drive, open the affected file and select **Share** or **Manage access**.
+2. Find the public or external access associated with the finding.
+3. If Google Drive identifies the parent, open that resource. Otherwise, inspect each parent folder until you find where the permission is configured directly.
+4. For Shared Drive content, also inspect the membership and sharing settings.
+5. Review the impact on downstream resources before changing the permission.
+6. Change the permission at its source.
+
+CASB updates the finding after it receives updated asset data. The failed child-resource remediation remains in the remediation history.
+
 ### Manage remediated findings
 
 Remediated findings will appear in **Cloud & SaaS findings** > **Posture Findings**. The status of the finding will change depending on what action CASB has taken:
@@ -166,6 +203,8 @@ Remediated findings will appear in **Cloud & SaaS findings** > **Posture Finding
 | Completed | CASB successfully remediated the finding and validated that the finding has been resolved. |
 | Failed | CASB unsuccessfully remediated the finding. |
 | Rejected | CASB does not have the correct permissions to remediate the finding. |
+
+CASB may take up to 48 hours to validate a remediation.
 
 If the status is **Completed**, remediation succeeded. If the status is **Failed** or **Rejected**, remediation failed, and you can select the finding to take action again. A **Rejected** status indicates that CASB does not have the correct permissions to remediate the finding.
 
@@ -182,5 +221,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/#page","headline":"Manage security findings · Cloudflare One docs","description":"Manage findings in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/#page","headline":"Manage security findings · Cloudflare One docs","description":"Manage findings in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
 ```

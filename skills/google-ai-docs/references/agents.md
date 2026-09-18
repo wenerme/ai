@@ -8,9 +8,9 @@ Make your first agent call, stream responses, and build a custom agent.](https:/
 Capabilities, tools, multimodal input, and pricing for the default agent.](https://ai.google.dev/gemini-api/docs/antigravity-agent) [Agents in AI Studio
 Visual playground for prototyping agents without writing code.](https://ai.google.dev/gemini-api/docs/aistudio-agents)
 
-## Available Managed agents
+## Available managed agents
 
-- **[Antigravity agent](https://ai.google.dev/gemini-api/docs/antigravity-agent)** : General-purpose managed agent powered by Gemini 3.7 Flash. Runs code, manages files, and searches the web inside a secure Linux sandbox hosted by Google. You can configure the underlying model (such as Gemini 3.7 Flash, Gemini 3.6 Flash, or Gemini 3.5 Flash) using `agent_config`, and extend it with your own instructions, skills, and data to [build a custom agent](https://ai.google.dev/gemini-api/docs/custom-agents).
+- **[Antigravity agent](https://ai.google.dev/gemini-api/docs/antigravity-agent)** : General-purpose managed agent built with Gemini 3.8 Flash. Runs code, manages files, and searches the web inside a secure Linux sandbox hosted by Google. You can configure the underlying model (such as Gemini 3.7 Flash, Gemini 3.6 Flash, or Gemini 3.5 Flash) using `agent_config`, and extend it with your own instructions, skills, and data to [build a custom agent](https://ai.google.dev/gemini-api/docs/custom-agents).
 - **[Deep Research](https://ai.google.dev/gemini-api/docs/deep-research)**: Autonomous research agent that plans, executes, and synthesizes multi-step research tasks for use cases like market analysis, due diligence, and literature reviews.
 
 ## Security and best practices
@@ -34,18 +34,21 @@ Studio) or [Network rules](https://ai.google.dev/gemini-api/docs/custom-agents#w
 ### External tools and APIs
 
 You can connect external tools and APIs to extend the agent. Only use tools
-from trusted sources and scope permissions to the minimum required. Credentials
-can be injected securely via egress proxy header transformations and are never
-exposed inside the sandbox. The agent may use any credential it has access to,
-so only provide credentials whose full scope you are willing to grant.
+from trusted sources and scope permissions to the minimum required. Store
+secrets as managed credentials and reference them by ID, so the egress proxy
+injects them at request time and they are never exposed inside the sandbox. The
+agent may use any credential it has access to, so only provide credentials whose
+full scope you are willing to grant.
 
 - Use least-privilege service accounts or API keys.
 - Prefer short-lived tokens over long-lived keys.
 - Only provide credentials whose full scope you are willing to grant.
 - Rotate credentials on a regular schedule.
 
-For details on configuring header transformations, see
-[Credentials](https://ai.google.dev/gemini-api/docs/agent-environment#credentials).
+For the credential types and management operations, see
+[Credentials](https://ai.google.dev/gemini-api/docs/agent-credentials). You can also set headers
+inline on an allowlist rule, see [Network
+configuration](https://ai.google.dev/gemini-api/docs/agent-environment#network-configuration).
 
 ### Human oversight
 

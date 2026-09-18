@@ -1,10 +1,10 @@
 <br />
 
 This page lists the known deprecation schedules for [stable (GA)](https://ai.google.dev/gemini-api/docs/models#stable) and [preview](https://ai.google.dev/gemini-api/docs/models#preview)
-models in the Gemini API. A "**deprecation** " is the announcement that we
-no longer provide support for a model, and that it will be "**shut down** " in
-the near future. Once a model is "**shutdown**", it is completely
-turned off, and the endpoint is no longer available.
+models and for managed agents in the Gemini API. A "**deprecation** " is the
+announcement that we no longer provide support for a model, and that it will be
+"**shut down** " in the near future. Once a model is "**shutdown**", it is
+completely turned off, and the endpoint is no longer available.
 
 Deprecation announcements are made on the
 [Release notes](https://ai.google.dev/gemini-api/docs/changelog) page, and the announced earliest
@@ -162,3 +162,11 @@ Already-shutdown models are indicated with gray backgrounds.
 | Preview models ||||
 | `gemini-robotics-er-1.6-preview` | April 14, 2026 | August 31, 2026 | gemini-robotics-er-2-preview |
 | `gemini-robotics-er-1.5-preview` | September 25, 2025 | April 30, 2026 | `gemini-robotics-er-1.6-preview` |
+
+## Managed agents
+
+| **Agent** | **Release date** | **Shutdown date** | **Recommended replacement** |
+|---|---|---|---|
+| Preview agents ||||
+| `antigravity-preview-09-2026` | September 17, 2026 | No shutdown date announced |   |
+| `antigravity-preview-05-2026` | May 19, 2026 | October 5, 2026 | `antigravity-preview-09-2026` |

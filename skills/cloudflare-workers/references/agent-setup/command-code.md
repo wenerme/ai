@@ -69,7 +69,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+   Set up rate limiting and WAF rules to block abuse on my public API.
    ```
 
 
@@ -175,7 +175,11 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+```
+
+```txt
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
@@ -183,15 +187,11 @@ Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ```txt
-Check my Workers deployment logs for errors and suggest fixes.
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
 ```
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
-```
-
-```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
 ```
 
 ## Tips

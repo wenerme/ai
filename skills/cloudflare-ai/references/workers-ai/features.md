@@ -20,6 +20,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 - [Fine-tunes](https://developers.cloudflare.com/workers-ai/features/fine-tunes/)
 - [Prompt caching](https://developers.cloudflare.com/workers-ai/features/prompt-caching/)
 - [Prompting](https://developers.cloudflare.com/workers-ai/features/prompting/)
+- [Reject busy requests](https://developers.cloudflare.com/workers-ai/features/reject-if-busy/)
 - [Markdown Conversion](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/)
 
 Was this helpful?

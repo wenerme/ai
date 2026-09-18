@@ -117,20 +117,29 @@ This example saves the output audio from the model in a wave file:
 ### Java
 
     import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AudioResponseFormat;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionResponseFormat;
     import com.google.genai.gaos.models.interactions.GenerationConfig;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.interactions.ResponseModality;
+    import com.google.genai.gaos.models.interactions.ResponseFormat;
     import com.google.genai.gaos.models.interactions.SpeechConfig;
     import com.google.genai.gaos.models.interactions.SpeechConfigUnion;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.io.ByteArrayInputStream;
+    import java.io.File;
     import java.util.Arrays;
+    import java.util.Base64;
+    import javax.sound.sampled.AudioFileFormat;
+    import javax.sound.sampled.AudioFormat;
+    import javax.sound.sampled.AudioInputStream;
+    import javax.sound.sampled.AudioSystem;
 
     Client client = new Client();
 
-    SpeechConfig speechConfig = SpeechConfig.builder().voice("achernar").language("en-US").build();
+    SpeechConfig speechConfig = SpeechConfig.builder().voice("Kore").build();
     GenerationConfig generationConfig =
         GenerationConfig.builder()
             .speechConfig(SpeechConfigUnion.of(Arrays.asList(speechConfig)))
@@ -139,14 +148,24 @@ This example saves the output audio from the model in a wave file:
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.1-flash-tts-preview"))
-            .responseModalities(Arrays.asList(ResponseModality.AUDIO))
-            .generationConfig(generationConfig)
             .input(InteractionsInput.of("Say cheerfully: Have a wonderful day!"))
+            .responseFormat(
+                CreateModelInteractionResponseFormat.of(
+                    ResponseFormat.of(AudioResponseFormat.builder().build())))
+            .generationConfig(generationConfig)
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-    System.out.println("Generated audio present: " + interaction.outputAudio().isPresent());
+
+    if (interaction.outputAudio().isPresent() && interaction.outputAudio().get().data().isPresent()) {
+      byte[] pcmBytes = Base64.getDecoder().decode(interaction.outputAudio().get().data().get());
+      AudioFormat format = new AudioFormat(24000, 16, 1, true, false);
+      AudioInputStream audioInputStream =
+          new AudioInputStream(
+              new ByteArrayInputStream(pcmBytes), format, pcmBytes.length / format.getFrameSize());
+      AudioSystem.write(audioInputStream, AudioFileFormat.Type.WAVE, new File("out.wav"));
+    }
 
 ### REST
 
@@ -267,36 +286,62 @@ You'll need to define each `speaker` with the same names used in the
 ### Java
 
     import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AudioResponseFormat;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionResponseFormat;
     import com.google.genai.gaos.models.interactions.GenerationConfig;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.interactions.ResponseModality;
+    import com.google.genai.gaos.models.interactions.ResponseFormat;
     import com.google.genai.gaos.models.interactions.SpeechConfig;
     import com.google.genai.gaos.models.interactions.SpeechConfigUnion;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.io.ByteArrayInputStream;
+    import java.io.File;
     import java.util.Arrays;
+    import java.util.Base64;
+    import javax.sound.sampled.AudioFileFormat;
+    import javax.sound.sampled.AudioFormat;
+    import javax.sound.sampled.AudioInputStream;
+    import javax.sound.sampled.AudioSystem;
 
     Client client = new Client();
 
-    SpeechConfig speechConfig = SpeechConfig.builder().voice("achernar").language("en-US").build();
+    String prompt =
+        "TTS the following conversation between Joe and Jane:\n"
+            + "Joe: How's it going today Jane?\n"
+            + "Jane: Not too bad, how about you?";
+
+    SpeechConfig joeConfig = SpeechConfig.builder().speaker("Joe").voice("Kore").build();
+    SpeechConfig janeConfig = SpeechConfig.builder().speaker("Jane").voice("Puck").build();
+
     GenerationConfig generationConfig =
         GenerationConfig.builder()
-            .speechConfig(SpeechConfigUnion.of(Arrays.asList(speechConfig)))
+            .speechConfig(SpeechConfigUnion.of(Arrays.asList(joeConfig, janeConfig)))
             .build();
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.1-flash-tts-preview"))
-            .responseModalities(Arrays.asList(ResponseModality.AUDIO))
+            .input(InteractionsInput.of(prompt))
+            .responseFormat(
+                CreateModelInteractionResponseFormat.of(
+                    ResponseFormat.of(AudioResponseFormat.builder().build())))
             .generationConfig(generationConfig)
-            .input(InteractionsInput.of("Say cheerfully: Have a wonderful day!"))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-    System.out.println("Generated audio present: " + interaction.outputAudio().isPresent());
+
+    if (interaction.outputAudio().isPresent() && interaction.outputAudio().get().data().isPresent()) {
+      byte[] pcmBytes = Base64.getDecoder().decode(interaction.outputAudio().get().data().get());
+      AudioFormat format = new AudioFormat(24000, 16, 1, true, false);
+      AudioInputStream audioInputStream =
+          new AudioInputStream(
+              new ByteArrayInputStream(pcmBytes), format, pcmBytes.length / format.getFrameSize());
+      AudioSystem.write(audioInputStream, AudioFileFormat.Type.WAVE, new File("out.wav"));
+    }
 
 ### REST
 
@@ -357,7 +402,7 @@ then pass that transcript to the TTS model to read aloud.
     client = genai.Client()
 
     transcript_interaction = client.interactions.create(
-       model="gemini-3.7-flash",
+       model="gemini-3.8-flash",
        input="""Generate a short transcript around 100 words that reads
                 like it was clipped from a podcast by excited herpetologists.
                 The hosts names are Dr. Anya and Liam."""
@@ -385,7 +430,7 @@ then pass that transcript to the TTS model to read aloud.
     async function main() {
 
     const transcriptInteraction = await client.interactions.create({
-       model: "gemini-3.7-flash",
+       model: "gemini-3.8-flash",
        input: "Generate a short transcript around 100 words that reads like it was clipped from a podcast by excited herpetologists. The hosts names are Dr. Anya and Liam.",
        })
 
@@ -407,12 +452,14 @@ then pass that transcript to the TTS model to read aloud.
 ### Java
 
     import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AudioResponseFormat;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionResponseFormat;
     import com.google.genai.gaos.models.interactions.GenerationConfig;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.interactions.ResponseModality;
+    import com.google.genai.gaos.models.interactions.ResponseFormat;
     import com.google.genai.gaos.models.interactions.SpeechConfig;
     import com.google.genai.gaos.models.interactions.SpeechConfigUnion;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
@@ -420,23 +467,45 @@ then pass that transcript to the TTS model to read aloud.
 
     Client client = new Client();
 
-    SpeechConfig speechConfig = SpeechConfig.builder().voice("achernar").language("en-US").build();
+    CreateModelInteraction transcriptParams =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.8-flash"))
+            .input(
+                InteractionsInput.of(
+                    "Generate a short transcript around 100 words that reads "
+                        + "like it was clipped from a podcast by excited herpetologists. "
+                        + "The hosts names are Dr. Anya and Liam."))
+            .build();
+
+    Interaction transcriptInteraction =
+        client
+            .interactions
+            .create(CreateInteractionRequestBody.of(transcriptParams))
+            .interaction()
+            .get();
+
+    String transcript = transcriptInteraction.outputText().orElse("");
+
+    SpeechConfig anyaConfig = SpeechConfig.builder().speaker("Dr. Anya").voice("Kore").build();
+    SpeechConfig liamConfig = SpeechConfig.builder().speaker("Liam").voice("Puck").build();
+
     GenerationConfig generationConfig =
         GenerationConfig.builder()
-            .speechConfig(SpeechConfigUnion.of(Arrays.asList(speechConfig)))
+            .speechConfig(SpeechConfigUnion.of(Arrays.asList(anyaConfig, liamConfig)))
             .build();
 
-    CreateModelInteraction params =
+    CreateModelInteraction ttsParams =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.1-flash-tts-preview"))
-            .responseModalities(Arrays.asList(ResponseModality.AUDIO))
+            .input(InteractionsInput.of(transcript))
+            .responseFormat(
+                CreateModelInteractionResponseFormat.of(
+                    ResponseFormat.of(AudioResponseFormat.builder().build())))
             .generationConfig(generationConfig)
-            .input(InteractionsInput.of("Say cheerfully: Have a wonderful day!"))
             .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-    System.out.println("Generated audio present: " + interaction.outputAudio().isPresent());
+    Interaction ttsInteraction =
+        client.interactions.create(CreateInteractionRequestBody.of(ttsParams)).interaction().get();
 
 ## Streaming speech generation
 
@@ -503,20 +572,29 @@ You can stream the generated audio as it is being generated by the model by sett
 ### Java
 
     import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AudioDelta;
+    import com.google.genai.gaos.models.interactions.AudioResponseFormat;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionResponseFormat;
     import com.google.genai.gaos.models.interactions.GenerationConfig;
-    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionSSEEvent;
+    import com.google.genai.gaos.models.interactions.InteractionSSEStreamEvent;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.interactions.ResponseModality;
+    import com.google.genai.gaos.models.interactions.ResponseFormat;
     import com.google.genai.gaos.models.interactions.SpeechConfig;
     import com.google.genai.gaos.models.interactions.SpeechConfigUnion;
+    import com.google.genai.gaos.models.interactions.StepDelta;
+    import com.google.genai.gaos.models.interactions.StepDeltaData;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.operations.CreateInteractionResponse;
+    import com.google.genai.gaos.utils.EventStream;
     import java.util.Arrays;
+    import java.util.Base64;
 
     Client client = new Client();
 
-    SpeechConfig speechConfig = SpeechConfig.builder().voice("achernar").language("en-US").build();
+    SpeechConfig speechConfig = SpeechConfig.builder().voice("Kore").build();
     GenerationConfig generationConfig =
         GenerationConfig.builder()
             .speechConfig(SpeechConfigUnion.of(Arrays.asList(speechConfig)))
@@ -525,14 +603,32 @@ You can stream the generated audio as it is being generated by the model by sett
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.1-flash-tts-preview"))
-            .responseModalities(Arrays.asList(ResponseModality.AUDIO))
-            .generationConfig(generationConfig)
             .input(InteractionsInput.of("Say cheerfully: Have a wonderful day!"))
+            .responseFormat(
+                CreateModelInteractionResponseFormat.of(
+                    ResponseFormat.of(AudioResponseFormat.builder().build())))
+            .generationConfig(generationConfig)
+            .stream(true)
             .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-    System.out.println("Generated audio present: " + interaction.outputAudio().isPresent());
+    CreateInteractionResponse response =
+        client.interactions.create(CreateInteractionRequestBody.of(params));
+
+    try (EventStream<InteractionSSEStreamEvent> events = response.events()) {
+      for (InteractionSSEStreamEvent streamEvent : events) {
+        InteractionSSEEvent event = streamEvent.data().orElse(null);
+        if (event instanceof StepDelta) {
+          StepDeltaData deltaData = ((StepDelta) event).delta().orElse(null);
+          if (deltaData instanceof AudioDelta) {
+            AudioDelta audioDelta = (AudioDelta) deltaData;
+            if (audioDelta.data().isPresent()) {
+              byte[] audioData = Base64.getDecoder().decode(audioDelta.data().get());
+              // Process the audio chunk (e.g. play it or write to a file)
+            }
+          }
+        }
+      }
+    }
 
 ### REST
 

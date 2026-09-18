@@ -4,7 +4,7 @@
 
 # List container files
 
-> Lists the files in a container, in lexicographic path order. The container id is the canonical id returned in bash/shell tool results; a restarted session is a separate container with its own id. Paginate with `limit` and `after` (pass the previous page’s `last_id`); `has_more: true` always means the next page is fetchable that way.
+> Lists the files in a container, in lexicographic path order. The container id is the canonical id returned in bash/shell tool results; a restarted session is a separate container with its own id. Paginate with `limit` and `after` (pass the previous page’s `last_id`); `has_more: true` always means the next page is fetchable that way. `last_id` is the resume cursor: it is the last listed file’s id, except when a page ends at the per-request scan bound on hidden bookkeeping objects, where it names the scan position instead and may not appear in `data` (which can then be empty).
 
 
 
@@ -68,7 +68,11 @@ tags:
     name: Images
   - description: >-
       Create, inspect, update, provision, suspend and delete OpenRouter interns
-      through an API key.
+      through an API key, and talk to them: the chat route streams
+      OpenAI-compatible completions from one intern, pausing as an
+      `openrouter.provide_input` tool call when the intern needs your permission
+      or an answer. Available to interns programme members; other callers
+      receive 404. See https://openrouter.ai/docs/guides/ori/intern-chat.
     name: Interns
   - description: Model information endpoints
     name: Models
@@ -123,7 +127,11 @@ paths:
         container id is the canonical id returned in bash/shell tool results; a
         restarted session is a separate container with its own id. Paginate with
         `limit` and `after` (pass the previous page’s `last_id`); `has_more:
-        true` always means the next page is fetchable that way.
+        true` always means the next page is fetchable that way. `last_id` is the
+        resume cursor: it is the last listed file’s id, except when a page ends
+        at the per-request scan bound on hidden bookkeeping objects, where it
+        names the scan position instead and may not appear in `data` (which can
+        then be empty).
       operationId: listContainerFiles
       parameters:
         - description: >-
@@ -158,15 +166,15 @@ paths:
             minimum: 1
             type: integer
         - description: >-
-            Forward cursor: a container file id from a previous page (typically
-            `last_id`); listing resumes strictly after that file.
+            Forward cursor: the previous page’s `last_id` (or any container file
+            id); listing resumes strictly after that path.
           in: query
           name: after
           required: false
           schema:
             description: >-
-              Forward cursor: a container file id from a previous page
-              (typically `last_id`); listing resumes strictly after that file.
+              Forward cursor: the previous page’s `last_id` (or any container
+              file id); listing resumes strictly after that path.
             example: cfile_b3V0L3JlcG9ydC5jc3Y
             type: string
       responses:
@@ -263,10 +271,18 @@ components:
             - string
             - 'null'
         has_more:
-          description: True when another page can be fetched by passing `after=last_id`.
+          description: >-
+            True when another page can be fetched by passing `after=last_id`;
+            `last_id` is non-null whenever this is true.
           example: false
           type: boolean
         last_id:
+          description: >-
+            Cursor for the next page (pass as `after`). The last entry’s id,
+            except when the page stopped at the per-request scan bound on hidden
+            bookkeeping objects: then it names the scan position and may not
+            appear in `data`. Null only when `has_more` is false and `data` is
+            empty.
           example: cfile_b3V0L3JlcG9ydC5jc3Y
           type:
             - string
