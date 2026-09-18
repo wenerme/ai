@@ -47,11 +47,9 @@ Initiating an interaction with a thinking model is similar to any other interact
 
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.GenerationConfig;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.interactions.ThinkingLevel;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
 
     Client client = new Client();
@@ -59,8 +57,9 @@ Initiating an interaction with a thinking model is similar to any other interact
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Explain the concept of Occam's Razor and provide a simple example."))
-            .generationConfig(GenerationConfig.builder().thinkingLevel(ThinkingLevel.HIGH).build())
+            .input(
+                InteractionsInput.of(
+                    "Explain the concept of Occam's Razor and provide a simple, everyday example."))
             .build();
 
     Interaction interaction =
@@ -148,27 +147,53 @@ with `thinking_summaries`:
 ### Java
 
     import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
     import com.google.genai.gaos.models.interactions.GenerationConfig;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.interactions.ThinkingLevel;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.interactions.ThinkingSummaries;
+    import com.google.genai.gaos.models.interactions.ThoughtStep;
+    import com.google.genai.gaos.models.interactions.ThoughtSummaryContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Collections;
 
     Client client = new Client();
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Explain the concept of Occam's Razor and provide a simple example."))
-            .generationConfig(GenerationConfig.builder().thinkingLevel(ThinkingLevel.HIGH).build())
+            .input(InteractionsInput.of("What is the sum of the first 50 prime numbers?"))
+            .generationConfig(
+                GenerationConfig.builder().thinkingSummaries(ThinkingSummaries.AUTO).build())
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    System.out.println(interaction.outputText().orElse(""));
+    for (Step step : interaction.steps().orElse(Collections.emptyList())) {
+      if (step instanceof ThoughtStep thoughtStep) {
+        System.out.println("Thought summary:");
+        for (ThoughtSummaryContent contentBlock : thoughtStep.summary().orElse(Collections.emptyList())) {
+          if (contentBlock instanceof TextContent textContent) {
+            System.out.println(textContent.text().orElse(""));
+          }
+        }
+        System.out.println();
+      } else if (step instanceof ModelOutputStep outputStep) {
+        for (Content contentBlock : outputStep.content().orElse(Collections.emptyList())) {
+          if (contentBlock instanceof TextContent textContent) {
+            System.out.println("Answer:");
+            System.out.println(textContent.text().orElse(""));
+            System.out.println();
+          }
+        }
+      }
+    }
 
 ### REST
 
@@ -284,27 +309,75 @@ delta types:
 ### Java
 
     import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
     import com.google.genai.gaos.models.interactions.GenerationConfig;
-    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionSSEEvent;
+    import com.google.genai.gaos.models.interactions.InteractionSSEStreamEvent;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.interactions.ThinkingLevel;
+    import com.google.genai.gaos.models.interactions.StepDelta;
+    import com.google.genai.gaos.models.interactions.StepDeltaData;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.interactions.TextDelta;
+    import com.google.genai.gaos.models.interactions.ThinkingSummaries;
+    import com.google.genai.gaos.models.interactions.ThoughtSummaryDelta;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.operations.CreateInteractionResponse;
+    import com.google.genai.gaos.utils.EventStream;
 
     Client client = new Client();
+
+    String prompt =
+        "Alice, Bob, and Carol each live in a different house on the same street: red, green, and blue.\n"
+            + "Alice does not live in the red house.\n"
+            + "Bob does not live in the green house.\n"
+            + "Carol does not live in the red or green house.\n"
+            + "Which house does each person live in?";
+
+    StringBuilder thoughts = new StringBuilder();
+    StringBuilder answer = new StringBuilder();
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Explain the concept of Occam's Razor and provide a simple example."))
-            .generationConfig(GenerationConfig.builder().thinkingLevel(ThinkingLevel.HIGH).build())
+            .input(InteractionsInput.of(prompt))
+            .generationConfig(
+                GenerationConfig.builder().thinkingSummaries(ThinkingSummaries.AUTO).build())
+            .stream(true)
             .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    CreateInteractionResponse response =
+        client.interactions.create(CreateInteractionRequestBody.of(params));
 
-    System.out.println(interaction.outputText().orElse(""));
+    try (EventStream<InteractionSSEStreamEvent> stream = response.events()) {
+      for (InteractionSSEStreamEvent streamEvent : stream) {
+        InteractionSSEEvent event = streamEvent.data().orElse(null);
+        if (event instanceof StepDelta stepDelta) {
+          StepDeltaData delta = stepDelta.delta().orElse(null);
+          if (delta instanceof ThoughtSummaryDelta thoughtDelta) {
+            Content content = thoughtDelta.content().orElse(null);
+            if (content instanceof TextContent textContent) {
+              if (thoughts.length() == 0) {
+                System.out.println("Thinking...");
+              }
+              String summaryText = textContent.text().orElse("");
+              System.out.print("[Thought] " + summaryText);
+              thoughts.append(summaryText);
+            }
+          } else if (delta instanceof TextDelta textDelta) {
+            String text = textDelta.text().orElse("");
+            if (!text.isEmpty()) {
+              if (answer.length() == 0) {
+                System.out.println("\nAnswer:");
+              }
+              System.out.print(text);
+              answer.append(text);
+            }
+          }
+        }
+      }
+    }
 
 ### REST
 
@@ -417,8 +490,10 @@ the amount of reasoning effort based on the complexity of the request. You can c
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Explain the concept of Occam's Razor and provide a simple example."))
-            .generationConfig(GenerationConfig.builder().thinkingLevel(ThinkingLevel.HIGH).build())
+            .input(
+                InteractionsInput.of(
+                    "Provide a list of 3 famous physicists and their key contributions"))
+            .generationConfig(GenerationConfig.builder().thinkingLevel(ThinkingLevel.LOW).build())
             .build();
 
     Interaction interaction =
@@ -496,11 +571,10 @@ tokens from the `total_thought_tokens` field.
 
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.GenerationConfig;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.interactions.ThinkingLevel;
+    import com.google.genai.gaos.models.interactions.Usage;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
 
     Client client = new Client();
@@ -508,14 +582,17 @@ tokens from the `total_thought_tokens` field.
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Explain the concept of Occam's Razor and provide a simple example."))
-            .generationConfig(GenerationConfig.builder().thinkingLevel(ThinkingLevel.HIGH).build())
+            .input(InteractionsInput.of("Explain the concept of Occam's Razor."))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    System.out.println(interaction.outputText().orElse(""));
+    if (interaction.usage().isPresent()) {
+      Usage usage = interaction.usage().get();
+      System.out.println("Thoughts tokens: " + usage.totalThoughtTokens().orElse(0));
+      System.out.println("Output tokens: " + usage.totalOutputTokens().orElse(0));
+    }
 
 Thinking models generate full thoughts to improve the quality of the final
 response, and then output [summaries](https://ai.google.dev/gemini-api/docs/thinking#summaries) to provide insight into the

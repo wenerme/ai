@@ -2,7 +2,7 @@
 
 **delete** `/agents/sessions/{session_id}`
 
-Removes a managed agent session from the public API and returns a deletion confirmation. Physical cleanup may continue asynchronously. See [managing sessions](/api/docs/guides/agents-api/sessions/manage).
+Removes a managed agent session from the public API and returns a deletion confirmation. If backend execution has ended, deletion can cancel a still-open public turn and abandon unpublished outputs. Running execution must be cancelled first. Physical cleanup may continue asynchronously. See [managing sessions](/api/docs/guides/agents-api/sessions/manage).
 
 ### Path Parameters
 

@@ -122,18 +122,18 @@ console.error(response.error?.message);
 
 ## Retry-After header
 
-On <code>{HTTPStatus.S429_Too_Many_Requests}</code> and <code>{HTTPStatus.S503_Service_Unavailable}</code> responses, OpenRouter may include a standard HTTP `Retry-After` response header indicating how many seconds to wait before retrying.
+On <code>{HTTPStatus.S429_Too_Many_Requests}</code> and <code>{HTTPStatus.S503_Service_Unavailable}</code> responses, and on <code>{HTTPStatus.S402_Payment_Required}</code> responses whose `error.metadata.limit_source` is `openrouter_in_flight_budget` (see [In-flight spending budget](/docs/api_reference/limits#in-flight-spending-budget)), OpenRouter may include a standard HTTP `Retry-After` response header indicating how many seconds to wait before retrying. A <code>{HTTPStatus.S402_Payment_Required}</code> without the header is not a wait-and-retry case; see [Handling 402 errors](/docs/api_reference/limits#handling-402-errors).
 
 ```http lines theme={null}
 HTTP/1.1 429 Too Many Requests
 Retry-After: 60
 ```
 
-The OpenAI SDK, Anthropic SDK, Vercel AI SDK, and OpenRouter SDK already respect this header for backoff. If you're using `fetch` directly, honor it before retrying:
+The OpenAI SDK, Anthropic SDK, Vercel AI SDK, and OpenRouter SDK already respect this header for backoff on the statuses each SDK retries automatically. None of them retries a <code>{HTTPStatus.S402_Payment_Required}</code> on its own, so for the in-flight budget case catch the error, read `Retry-After`, and retry explicitly. If you're using `fetch` directly, honor it before retrying:
 
 ```typescript lines theme={null}
 const res = await fetch('https://openrouter.ai/api/v1/chat/completions', { ... });
-if (res.status === 429 || res.status === 503) {
+if (res.status === 429 || res.status === 503 || res.status === 402) {
   const retryAfter = Number(res.headers.get('Retry-After'));
   if (Number.isFinite(retryAfter) && retryAfter > 0) {
     await new Promise((r) => setTimeout(r, retryAfter * 1000));

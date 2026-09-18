@@ -16,7 +16,7 @@ Last updated Aug 12, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 224 modelsClear filters
+We found 226 modelsClear filters
 
 ## Compare models
 
@@ -1272,6 +1272,23 @@ thinkingmachinesText Generation The 256K-context variant of Inkling, Thinking Ma
 
 Compare
 
+[t<h3>jev</h3>
+
+typesafeText Generation Jev is TypeSafe's structured evaluation model. It evaluates one state against typed Noul, Choice, and Score questions and returns calibrated answers with probabilities and confidence. - Third-party](https://developers.cloudflare.com/ai/models/typesafe/jev/)
+
+- Context: 32K tokens
+- Pricing listed
+
+Compare
+
+[u<h3>pareto</h3>
+
+unbiasedText Generation Pareto is Unbiased's blended AI model. It engages multiple language models in parallel for each request, synthesizes one answer, and supports text and vision inputs through a single API response. - Third-party](https://developers.cloudflare.com/ai/models/unbiased/pareto/)
+
+- Pricing listed
+
+Compare
+
 [![Vidu logo](https://developers.cloudflare.com/_astro/vidu.CcN5bM2x.svg)<h3>q3-pro</h3>
 
 ViduText-to-Video Vidu Q3 Pro is a high-quality video generation model supporting text-to-video, image-to-video, and start/end-frame-to-video workflows with audio and up to 16-second clips. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/vidu/q3-pro/)
@@ -1585,7 +1602,7 @@ aisingaporeText Generation SEA-LION stands for Southeast Asian Languages In One 
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-4.7-flash</h3>
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-4.7-flash</h3>
 
 Zhipu AIText Generation GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages. - Cloudflare-hosted - Function calling - Reasoning](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-4.7-flash/)
 
@@ -1594,7 +1611,7 @@ Zhipu AIText Generation GLM-4.7-Flash is a fast and efficient multilingual text 
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.2</h3>
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.2</h3>
 
 Zhipu AIText Generation Z.ai's flagship agentic coding model - Cloudflare-hosted - Function calling - Reasoning](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.2/)
 
@@ -1603,7 +1620,7 @@ Zhipu AIText Generation Z.ai's flagship agentic coding model - Cloudflare-hosted
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3</h3>
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.3</h3>
 
 Zhipu AIText Generation GLM-5.3 is Z.ai's flagship agentic coding model, pairing a 1M-token context window with reasoning, function calling, and structured outputs to power multi-step, tool-driven development workflows. - Cloudflare-hosted - Function calling - Reasoning](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3/)
 
@@ -1612,7 +1629,7 @@ Zhipu AIText Generation GLM-5.3 is Z.ai's flagship agentic coding model, pairing
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>
 
 Zhipu AIText Generation The first natively multimodal model in the GLM-5 series. With 320B total parameters and just 18B active parameters, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks. - Cloudflare-hosted - Function calling - Reasoning - Vision](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3-flash/)
 

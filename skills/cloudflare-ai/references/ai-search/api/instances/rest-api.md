@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # REST API
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/instances/rest-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/instances/rest-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the AI Search REST API to manage instances and sync jobs over HTTP.
 
@@ -38,34 +38,33 @@ Authorization: Bearer <API_TOKEN>
 
 ## API paths
 
-AI Search APIs are available at two base paths:
+AI Search scopes Instance APIs to a [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/):
 
 | Path | Description |
 | --- | --- |
-| `/accounts/{account_id}/ai-search/instances/{id}` | Operates on a specific instance |
-| `/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}` | Operates on instances within a [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/) |
+| `/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}` | Operates on instances within a namespace |
 
-The available operations are the same for both paths. For the namespace-scoped API, refer to the [Namespace API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/).
+Every account has a `default` namespace. Use `default` unless you created a custom namespace. For the full specification, refer to the [Namespace API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/).
 
 ## Instances
 
-Create, list, get, update, and delete AI Search instances. For the full specification, refer to the [Instances API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/instances/).
+Create, list, get, update, and delete AI Search instances. For the full specification, refer to the [Instances API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/).
 
 | Operation | Method | Description |
 | --- | --- | --- |
-| [Create](https://developers.cloudflare.com/api/resources/ai_search/subresources/instances/methods/create/) | `POST` | Create a new instance |
-| [List](https://developers.cloudflare.com/api/resources/ai_search/subresources/instances/methods/list/) | `GET` | List all instances |
-| [Get](https://developers.cloudflare.com/api/resources/ai_search/subresources/instances/methods/read/) | `GET` | Get an instance by ID |
-| [Update](https://developers.cloudflare.com/api/resources/ai_search/subresources/instances/methods/update/) | `PUT` | Update instance configuration |
-| [Delete](https://developers.cloudflare.com/api/resources/ai_search/subresources/instances/methods/delete/) | `DELETE` | Delete an instance |
-| [Stats](https://developers.cloudflare.com/api/resources/ai_search/subresources/instances/methods/stats/) | `GET` | Get indexing statistics |
+| [Create](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/methods/create/) | `POST` | Create a new instance |
+| [List](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/methods/list/) | `GET` | List all instances |
+| [Get](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/methods/read/) | `GET` | Get an instance by ID |
+| [Update](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/methods/update/) | `PUT` | Update instance configuration |
+| [Delete](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/methods/delete/) | `DELETE` | Delete an instance |
+| [Stats](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/methods/stats/) | `GET` | Get indexing statistics |
 
 ### Example: Create an instance
 
 Create an instance in the default namespace:
 
 ```bash
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances" \
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/namespaces/default/instances" \
   -H "Authorization: Bearer <API_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -75,21 +74,21 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-sear
 
 ## Jobs
 
-Trigger and monitor [sync jobs](https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/) that scan your data source and index new or updated content. For the full specification, refer to the [Jobs API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/instances/subresources/jobs/).
+Trigger and monitor [sync jobs](https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/) that scan your data source and index new or updated content. For the full specification, refer to the [Jobs API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/subresources/jobs/).
 
 | Operation | Method | Description |
 | --- | --- | --- |
-| [Create](https://developers.cloudflare.com/api/resources/ai_search/subresources/instances/subresources/jobs/methods/create/) | `POST` | Trigger a new sync job |
-| [List](https://developers.cloudflare.com/api/resources/ai_search/subresources/instances/subresources/jobs/methods/list/) | `GET` | List all jobs for an instance |
-| [Get](https://developers.cloudflare.com/api/resources/ai_search/subresources/instances/subresources/jobs/methods/read/) | `GET` | Get job details |
-| [Logs](https://developers.cloudflare.com/api/resources/ai_search/subresources/instances/subresources/jobs/methods/logs/) | `GET` | View job logs |
+| [Create](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/subresources/jobs/methods/create/) | `POST` | Trigger a new sync job |
+| [List](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/subresources/jobs/methods/list/) | `GET` | List all jobs for an instance |
+| [Get](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/subresources/jobs/methods/get/) | `GET` | Get job details |
+| [Logs](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/subresources/jobs/methods/logs/) | `GET` | View job logs |
 
 ### Example: Trigger a sync job
 
 Start a new sync job for an instance:
 
 ```bash
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/jobs" \
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/namespaces/default/instances/<INSTANCE_NAME>/jobs" \
   -H "Authorization: Bearer <API_TOKEN>"
 ```
 
@@ -102,5 +101,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/instances/rest-api/#page","headline":"REST API · Cloudflare AI Search docs","description":"Manage AI Search instances and sync jobs over HTTP using the Instances REST API.","url":"https://developers.cloudflare.com/ai-search/api/instances/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/instances/rest-api/#page","headline":"REST API · Cloudflare AI Search docs","description":"Manage AI Search instances and sync jobs over HTTP using the Instances REST API.","url":"https://developers.cloudflare.com/ai-search/api/instances/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

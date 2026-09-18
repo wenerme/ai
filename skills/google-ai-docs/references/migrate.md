@@ -81,7 +81,7 @@ objects.
     import google.generativeai as genai
 
     # Directly create and use model objects
-    model = genai.GenerativeModel('gemini-3.7-flash')
+    model = genai.GenerativeModel('gemini-3.8-flash')
     response = model.generate_content(...)
     chat = model.start_chat(...)
 
@@ -99,7 +99,7 @@ instantiating entirely separate client classes.
     const cacheManager = new GoogleAICacheManager("GEMINI_API_KEY");
 
     // Get a model instance, then call methods on it
-    const model = genAI.getGenerativeModel({ model: "gemini-3.7-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-3.8-flash" });
     const result = await model.generateContent(...);
     const chat = model.startChat(...);
 
@@ -109,25 +109,15 @@ instantiating entirely separate client classes.
 
 ### Java
 
+    import com.google.genai.Chat;
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import java.util.List;
-    import java.util.Map;
+    import com.google.genai.types.GenerateContentResponse;
 
-    public class Main {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
-        CreateModelInteraction req = CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.6-flash"))
-            .input(InteractionsInput.of("Hello"))
-            .build();
-        var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-        System.out.println(interaction.outputText().orElse(""));
-      }
-    }
+    // Previously, model operations were called on separate model instances
+    Client client = new Client();
+    GenerateContentResponse response =
+        client.models.generateContent("gemini-3.8-flash", "Tell me a story.", null);
+    Chat chat = client.chats.create("gemini-3.8-flash");
 
 ### Go
 
@@ -146,7 +136,7 @@ distinct packages or patterns.
     fileClient, err := fileman.NewClient(ctx, option.WithAPIKey("GEMINI_API_KEY"))
 
     // Get a model instance, then call methods on it
-    model := client.GenerativeModel("gemini-3.7-flash")
+    model := client.GenerativeModel("gemini-3.8-flash")
     resp, err := model.GenerateContent(...)
     cs := model.StartChat()
 
@@ -183,25 +173,23 @@ distinct packages or patterns.
 
 ### Java
 
+    import com.google.genai.Chat;
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import java.util.List;
-    import java.util.Map;
+    import com.google.genai.types.CachedContent;
+    import com.google.genai.types.CreateCachedContentConfig;
+    import com.google.genai.types.File;
+    import com.google.genai.types.GenerateContentResponse;
 
-    public class Main {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
-        CreateModelInteraction req = CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.6-flash"))
-            .input(InteractionsInput.of("Hello"))
-            .build();
-        var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-        System.out.println(interaction.outputText().orElse(""));
-      }
-    }
+    // Create a single client object
+    Client client = new Client();
+
+    // Access API methods through services on the client object
+    GenerateContentResponse response =
+        client.models.generateContent("gemini-3.8-flash", "Tell me a story.", null);
+    Chat chat = client.chats.create("gemini-3.8-flash");
+    File uploadedFile = client.files.upload("sample.txt", null);
+    CachedContent cache =
+        client.caches.create("gemini-3.8-flash", CreateCachedContentConfig.builder().build());
 
 ### Go
 
@@ -241,24 +229,9 @@ The old SDK handled the API client object implicitly.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import java.util.List;
-    import java.util.Map;
 
-    public class Main {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
-        CreateModelInteraction req = CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.6-flash"))
-            .input(InteractionsInput.of("Hello"))
-            .build();
-        var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-        System.out.println(interaction.outputText().orElse(""));
-      }
-    }
+    // Passing the API key explicitly to the client builder
+    Client client = Client.builder().apiKey("GEMINI_API_KEY").build();
 
 ### Go
 
@@ -299,24 +272,10 @@ variables, if you don't pass one to the client.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import java.util.List;
-    import java.util.Map;
 
-    public class Main {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
-        CreateModelInteraction req = CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.6-flash"))
-            .input(InteractionsInput.of("Hello"))
-            .build();
-        var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-        System.out.println(interaction.outputText().orElse(""));
-      }
-    }
+    // The client automatically picks up the GEMINI_API_KEY environment variable,
+    // or you can pass it explicitly via Client.builder().apiKey("GEMINI_API_KEY").build()
+    Client client = new Client();
 
 ### Go
 
@@ -343,7 +302,7 @@ Previously, there were no client objects, you accessed APIs directly through
 
     import google.generativeai as genai
 
-    model = genai.GenerativeModel('gemini-3.7-flash')
+    model = genai.GenerativeModel('gemini-3.8-flash')
     response = model.generate_content(
         'Tell me a story in 300 words'
     )
@@ -354,7 +313,7 @@ Previously, there were no client objects, you accessed APIs directly through
     import { GoogleGenerativeAI } from "@google/generative-ai";
 
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-3.7-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-3.8-flash" });
     const prompt = "Tell me a story in 300 words";
 
     const result = await model.generateContent(prompt);
@@ -363,24 +322,14 @@ Previously, there were no client objects, you accessed APIs directly through
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import java.util.List;
-    import java.util.Map;
+    import com.google.genai.types.GenerateContentResponse;
 
-    public class Main {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
-        CreateModelInteraction req = CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.6-flash"))
-            .input(InteractionsInput.of("Hello"))
-            .build();
-        var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-        System.out.println(interaction.outputText().orElse(""));
-      }
-    }
+    Client client = new Client();
+    String prompt = "Tell me a story in 300 words";
+
+    GenerateContentResponse response =
+        client.models.generateContent("gemini-3.8-flash", prompt, null);
+    System.out.println(response.text());
 
 ### Go
 
@@ -391,7 +340,7 @@ Previously, there were no client objects, you accessed APIs directly through
     }
     defer client.Close()
 
-    model := client.GenerativeModel("gemini-3.7-flash")
+    model := client.GenerativeModel("gemini-3.8-flash")
     resp, err := model.GenerateContent(ctx, genai.Text("Tell me a story in 300 words."))
     if err != nil {
         log.Fatal(err)
@@ -412,7 +361,7 @@ uniformity, objects returned are `pydantic` classes.
     client = genai.Client()
 
     response = client.models.generate_content(
-        model='gemini-3.7-flash',
+        model='gemini-3.8-flash',
         contents='Tell me a story in 300 words.'
     )
     print(response.text)
@@ -427,7 +376,7 @@ uniformity, objects returned are `pydantic` classes.
     const ai = new GoogleGenAI({ apiKey: "GEMINI_API_KEY" });
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       contents: "Tell me a story in 300 words.",
     });
     console.log(response.text);
@@ -435,24 +384,14 @@ uniformity, objects returned are `pydantic` classes.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import java.util.List;
-    import java.util.Map;
+    import com.google.genai.types.GenerateContentResponse;
 
-    public class Main {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
-        CreateModelInteraction req = CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.6-flash"))
-            .input(InteractionsInput.of("Tell me a story in 300 words."))
-            .build();
-        var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-        System.out.println(interaction.outputText().orElse(""));
-      }
-    }
+    Client client = new Client();
+
+    GenerateContentResponse response =
+        client.models.generateContent(
+            "gemini-3.8-flash", "Tell me a story in 300 words.", null);
+    System.out.println(response.text());
 
 ### Go
 
@@ -462,7 +401,7 @@ uniformity, objects returned are `pydantic` classes.
         log.Fatal(err)
     }
 
-    result, err := client.Models.GenerateContent(ctx, "gemini-3.7-flash", genai.Text("Tell me a story in 300 words."), nil)
+    result, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", genai.Text("Tell me a story in 300 words."), nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -476,7 +415,7 @@ uniformity, objects returned are `pydantic` classes.
 
     import google.generativeai as genai
 
-    model = genai.GenerativeModel('gemini-3.7-flash')
+    model = genai.GenerativeModel('gemini-3.8-flash')
     response = model.generate_content([
         'Tell me a story based on this image',
         Image.open(image_path)
@@ -488,7 +427,7 @@ uniformity, objects returned are `pydantic` classes.
     import { GoogleGenerativeAI } from "@google/generative-ai";
 
     const genAI = new GoogleGenerativeAI("GEMINI_API_KEY");
-    const model = genAI.getGenerativeModel({ model: "gemini-3.7-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-3.8-flash" });
 
     function fileToGenerativePart(path, mimeType) {
       return {
@@ -512,24 +451,23 @@ uniformity, objects returned are `pydantic` classes.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import java.util.List;
-    import java.util.Map;
+    import com.google.genai.types.Content;
+    import com.google.genai.types.GenerateContentResponse;
+    import com.google.genai.types.Part;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
 
-    public class Main {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
-        CreateModelInteraction req = CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.6-flash"))
-            .input(InteractionsInput.of("Hello"))
-            .build();
-        var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-        System.out.println(interaction.outputText().orElse(""));
-      }
-    }
+    Client client = new Client();
+
+    byte[] imageBytes = Files.readAllBytes(Paths.get("path/to/organ.jpg"));
+    Part imagePart = Part.fromBytes(imageBytes, "image/jpeg");
+
+    GenerateContentResponse response =
+        client.models.generateContent(
+            "gemini-3.8-flash",
+            Content.fromParts(Part.fromText("Tell me a story based on this image"), imagePart),
+            null);
+    System.out.println(response.text());
 
 ### Go
 
@@ -540,7 +478,7 @@ uniformity, objects returned are `pydantic` classes.
     }
     defer client.Close()
 
-    model := client.GenerativeModel("gemini-3.7-flash")
+    model := client.GenerativeModel("gemini-3.8-flash")
 
     imgData, err := os.ReadFile("path/to/organ.jpg")
     if err != nil {
@@ -569,7 +507,7 @@ example, `PIL.Image` objects are automatically converted.
     client = genai.Client()
 
     response = client.models.generate_content(
-        model='gemini-3.7-flash',
+        model='gemini-3.8-flash',
         contents=[
             'Tell me a story based on this image',
             Image.open(image_path)
@@ -588,7 +526,7 @@ example, `PIL.Image` objects are automatically converted.
     });
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       contents: [
         createUserContent([
           "Tell me a story based on this image",
@@ -601,24 +539,23 @@ example, `PIL.Image` objects are automatically converted.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import java.util.List;
-    import java.util.Map;
+    import com.google.genai.types.Content;
+    import com.google.genai.types.File;
+    import com.google.genai.types.GenerateContentResponse;
+    import com.google.genai.types.Part;
 
-    public class Main {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
-        CreateModelInteraction req = CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.6-flash"))
-            .input(InteractionsInput.of("Hello"))
-            .build();
-        var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-        System.out.println(interaction.outputText().orElse(""));
-      }
-    }
+    Client client = new Client();
+
+    File organ = client.files.upload("path/to/organ.jpg", null);
+
+    GenerateContentResponse response =
+        client.models.generateContent(
+            "gemini-3.8-flash",
+            Content.fromParts(
+                Part.fromText("Tell me a story based on this image"),
+                Part.fromUri(organ.uri().orElse(""), organ.mimeType().orElse("image/jpeg"))),
+            null);
+    System.out.println(response.text());
 
 ### Go
 
@@ -641,7 +578,7 @@ example, `PIL.Image` objects are automatically converted.
         {Parts: parts},
     }
 
-    result, err := client.Models.GenerateContent(ctx, "gemini-3.7-flash", contents, nil)
+    result, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", contents, nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -666,7 +603,7 @@ example, `PIL.Image` objects are automatically converted.
     import { GoogleGenerativeAI } from "@google/generative-ai";
 
     const genAI = new GoogleGenerativeAI("GEMINI_API_KEY");
-    const model = genAI.getGenerativeModel({ model: "gemini-3.7-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-3.8-flash" });
 
     const prompt = "Write a story about a magic backpack.";
 
@@ -681,22 +618,16 @@ example, `PIL.Image` objects are automatically converted.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import java.util.List;
-    import java.util.Map;
+    import com.google.genai.ResponseStream;
+    import com.google.genai.types.GenerateContentResponse;
 
-    public class Main {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
-        CreateModelInteraction req = CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.6-flash"))
-            .input(InteractionsInput.of("Hello"))
-            .build();
-        var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-        System.out.println(interaction.outputText().orElse(""));
+    Client client = new Client();
+    String prompt = "Write a story about a magic backpack.";
+
+    try (ResponseStream<GenerateContentResponse> stream =
+        client.models.generateContentStream("gemini-3.8-flash", prompt, null)) {
+      for (GenerateContentResponse chunk : stream) {
+        System.out.print(chunk.text());
       }
     }
 
@@ -709,7 +640,7 @@ example, `PIL.Image` objects are automatically converted.
     }
     defer client.Close()
 
-    model := client.GenerativeModel("gemini-3.7-flash")
+    model := client.GenerativeModel("gemini-3.8-flash")
     iter := model.GenerateContentStream(ctx, genai.Text("Write a story about a magic backpack."))
     for {
         resp, err := iter.Next()
@@ -731,7 +662,7 @@ example, `PIL.Image` objects are automatically converted.
     client = genai.Client()
 
     for chunk in client.models.generate_content_stream(
-      model='gemini-3.7-flash',
+      model='gemini-3.8-flash',
       contents='Tell me a story in 300 words.'
     ):
         print(chunk.text)
@@ -743,7 +674,7 @@ example, `PIL.Image` objects are automatically converted.
     const ai = new GoogleGenAI({ apiKey: "GEMINI_API_KEY" });
 
     const response = await ai.models.generateContentStream({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       contents: "Write a story about a magic backpack.",
     });
     let text = "";
@@ -755,22 +686,16 @@ example, `PIL.Image` objects are automatically converted.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import java.util.List;
-    import java.util.Map;
+    import com.google.genai.ResponseStream;
+    import com.google.genai.types.GenerateContentResponse;
 
-    public class Main {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
-        CreateModelInteraction req = CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.6-flash"))
-            .input(InteractionsInput.of("Write a story about a magic backpack."))
-            .build();
-        var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-        System.out.println(interaction.outputText().orElse(""));
+    Client client = new Client();
+
+    try (ResponseStream<GenerateContentResponse> response =
+        client.models.generateContentStream(
+            "gemini-3.8-flash", "Tell me a story in 300 words.", null)) {
+      for (GenerateContentResponse chunk : response) {
+        System.out.println(chunk.text());
       }
     }
 
@@ -784,7 +709,7 @@ example, `PIL.Image` objects are automatically converted.
 
     for result, err := range client.Models.GenerateContentStream(
         ctx,
-        "gemini-3.7-flash",
+        "gemini-3.8-flash",
         genai.Text("Write a story about a magic backpack."),
         nil,
     ) {
@@ -803,7 +728,7 @@ example, `PIL.Image` objects are automatically converted.
     import google.generativeai as genai
 
     model = genai.GenerativeModel(
-      'gemini-3.7-flash',
+      'gemini-3.8-flash',
         system_instruction='you are a story teller for kids under 5 years old',
         generation_config=genai.GenerationConfig(
           max_output_tokens=400,
@@ -822,7 +747,7 @@ example, `PIL.Image` objects are automatically converted.
 
     const genAI = new GoogleGenerativeAI("GEMINI_API_KEY");
     const model = genAI.getGenerativeModel({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       generationConfig: {
         candidateCount: 1,
         stopSequences: ["x"],
@@ -839,24 +764,29 @@ example, `PIL.Image` objects are automatically converted.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import java.util.List;
-    import java.util.Map;
+    import com.google.genai.types.Content;
+    import com.google.genai.types.GenerateContentConfig;
+    import com.google.genai.types.GenerateContentResponse;
+    import com.google.genai.types.Part;
+    import java.util.Arrays;
 
-    public class Main {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
-        CreateModelInteraction req = CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.6-flash"))
-            .input(InteractionsInput.of("Hello"))
+    Client client = new Client();
+
+    GenerateContentConfig config =
+        GenerateContentConfig.builder()
+            .systemInstruction(
+                Content.fromParts(Part.fromText("you are a story teller for kids under 5 years old")))
+            .maxOutputTokens(400)
+            .topK(2.0f)
+            .topP(0.5f)
+            .temperature(0.5f)
+            .responseMimeType("application/json")
+            .stopSequences(Arrays.asList("\n"))
             .build();
-        var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-        System.out.println(interaction.outputText().orElse(""));
-      }
-    }
+
+    GenerateContentResponse response =
+        client.models.generateContent("gemini-3.8-flash", "tell me a story in 100 words", config);
+    System.out.println(response.text());
 
 ### Go
 
@@ -867,7 +797,7 @@ example, `PIL.Image` objects are automatically converted.
     }
     defer client.Close()
 
-    model := client.GenerativeModel("gemini-3.7-flash")
+    model := client.GenerativeModel("gemini-3.8-flash")
     model.SetTemperature(0.5)
     model.SetTopP(0.5)
     model.SetTopK(2.0)
@@ -896,7 +826,7 @@ classes.
     client = genai.Client()
 
     response = client.models.generate_content(
-      model='gemini-3.7-flash',
+      model='gemini-3.8-flash',
       contents='Tell me a story in 100 words.',
       config=types.GenerateContentConfig(
           system_instruction='you are a story teller for kids under 5 years old',
@@ -917,7 +847,7 @@ classes.
     const ai = new GoogleGenAI({ apiKey: "GEMINI_API_KEY" });
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       contents: "Tell me a story about a magic backpack.",
       config: {
         candidateCount: 1,
@@ -932,24 +862,24 @@ classes.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import java.util.List;
-    import java.util.Map;
+    import com.google.genai.types.GenerateContentConfig;
+    import com.google.genai.types.GenerateContentResponse;
+    import java.util.Arrays;
 
-    public class Main {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
-        CreateModelInteraction req = CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.6-flash"))
-            .input(InteractionsInput.of("Tell me a story about a magic backpack."))
+    Client client = new Client();
+
+    GenerateContentConfig config =
+        GenerateContentConfig.builder()
+            .candidateCount(1)
+            .stopSequences(Arrays.asList("x"))
+            .maxOutputTokens(20)
+            .temperature(1.0f)
             .build();
-        var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-        System.out.println(interaction.outputText().orElse(""));
-      }
-    }
+
+    GenerateContentResponse response =
+        client.models.generateContent(
+            "gemini-3.8-flash", "Tell me a story about a magic backpack.", config);
+    System.out.println(response.text());
 
 ### Go
 
@@ -960,7 +890,7 @@ classes.
     }
 
     result, err := client.Models.GenerateContent(ctx,
-        "gemini-3.7-flash",
+        "gemini-3.8-flash",
         genai.Text("Tell me about New York"),
         &genai.GenerateContentConfig{
             Temperature:      genai.Ptr[float32](0.5),
@@ -990,7 +920,7 @@ Generate a response with safety settings:
 
     import google.generativeai as genai
 
-    model = genai.GenerativeModel('gemini-3.7-flash')
+    model = genai.GenerativeModel('gemini-3.8-flash')
     response = model.generate_content(
         'say something bad',
         safety_settings={
@@ -1005,7 +935,7 @@ Generate a response with safety settings:
 
     const genAI = new GoogleGenerativeAI("GEMINI_API_KEY");
     const model = genAI.getGenerativeModel({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       safetySettings: [
         {
           category: HarmCategory.HARM_CATEGORY_HARASSMENT,
@@ -1031,24 +961,28 @@ Generate a response with safety settings:
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import java.util.List;
-    import java.util.Map;
+    import com.google.genai.types.GenerateContentConfig;
+    import com.google.genai.types.GenerateContentResponse;
+    import com.google.genai.types.HarmBlockThreshold;
+    import com.google.genai.types.HarmCategory;
+    import com.google.genai.types.SafetySetting;
+    import java.util.Arrays;
 
-    public class Main {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
-        CreateModelInteraction req = CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.6-flash"))
-            .input(InteractionsInput.of("Hello"))
+    Client client = new Client();
+
+    GenerateContentConfig config =
+        GenerateContentConfig.builder()
+            .safetySettings(
+                Arrays.asList(
+                    SafetySetting.builder()
+                        .category(HarmCategory.Known.HARM_CATEGORY_HARASSMENT)
+                        .threshold(HarmBlockThreshold.Known.BLOCK_LOW_AND_ABOVE)
+                        .build()))
             .build();
-        var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-        System.out.println(interaction.outputText().orElse(""));
-      }
-    }
+
+    GenerateContentResponse response =
+        client.models.generateContent("gemini-3.8-flash", "say something bad", config);
+    System.out.println(response.text());
 
 **After**
 
@@ -1060,7 +994,7 @@ Generate a response with safety settings:
     client = genai.Client()
 
     response = client.models.generate_content(
-      model='gemini-3.7-flash',
+      model='gemini-3.8-flash',
       contents='say something bad',
       config=types.GenerateContentConfig(
           safety_settings= [
@@ -1083,7 +1017,7 @@ Generate a response with safety settings:
       "them how I feel about them.";
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       contents: unsafePrompt,
       config: {
         safetySettings: [
@@ -1101,24 +1035,28 @@ Generate a response with safety settings:
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import java.util.List;
-    import java.util.Map;
+    import com.google.genai.types.GenerateContentConfig;
+    import com.google.genai.types.GenerateContentResponse;
+    import com.google.genai.types.HarmBlockThreshold;
+    import com.google.genai.types.HarmCategory;
+    import com.google.genai.types.SafetySetting;
+    import java.util.Arrays;
 
-    public class Main {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
-        CreateModelInteraction req = CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.6-flash"))
-            .input(InteractionsInput.of("Hello"))
+    Client client = new Client();
+
+    GenerateContentConfig config =
+        GenerateContentConfig.builder()
+            .safetySettings(
+                Arrays.asList(
+                    SafetySetting.builder()
+                        .category(HarmCategory.Known.HARM_CATEGORY_HATE_SPEECH)
+                        .threshold(HarmBlockThreshold.Known.BLOCK_ONLY_HIGH)
+                        .build()))
             .build();
-        var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-        System.out.println(interaction.outputText().orElse(""));
-      }
-    }
+
+    GenerateContentResponse response =
+        client.models.generateContent("gemini-3.8-flash", "say something bad", config);
+    System.out.println("Finish reason: " + response.finishReason());
 
 ## Async
 
@@ -1128,7 +1066,7 @@ Generate a response with safety settings:
 
     import google.generativeai as genai
 
-    model = genai.GenerativeModel('gemini-3.7-flash')
+    model = genai.GenerativeModel('gemini-3.8-flash')
     response = model.generate_content_async(
         'tell me a story in 100 words'
     )
@@ -1145,7 +1083,7 @@ implementation of every method under `client.aio`.
     client = genai.Client()
 
     response = await client.aio.models.generate_content(
-        model='gemini-3.7-flash',
+        model='gemini-3.8-flash',
         contents='Tell me a story in 300 words.'
     )
 
@@ -1159,7 +1097,7 @@ Start a chat and send a message to the model:
 
     import google.generativeai as genai
 
-    model = genai.GenerativeModel('gemini-3.7-flash')
+    model = genai.GenerativeModel('gemini-3.8-flash')
     chat = model.start_chat()
 
     response = chat.send_message(
@@ -1172,7 +1110,7 @@ Start a chat and send a message to the model:
     import { GoogleGenerativeAI } from "@google/generative-ai";
 
     const genAI = new GoogleGenerativeAI("GEMINI_API_KEY");
-    const model = genAI.getGenerativeModel({ model: "gemini-3.7-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-3.8-flash" });
     const chat = model.startChat({
       history: [
         {
@@ -1192,25 +1130,18 @@ Start a chat and send a message to the model:
 
 ### Java
 
+    import com.google.genai.Chat;
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import java.util.List;
-    import java.util.Map;
+    import com.google.genai.types.GenerateContentResponse;
 
-    public class Main {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
-        CreateModelInteraction req = CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.6-flash"))
-            .input(InteractionsInput.of("Hello"))
-            .build();
-        var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-        System.out.println(interaction.outputText().orElse(""));
-      }
-    }
+    Client client = new Client();
+    Chat chat = client.chats.create("gemini-3.8-flash");
+
+    GenerateContentResponse response1 = chat.sendMessage("Tell me a story in 100 words");
+    System.out.println(response1.text());
+
+    GenerateContentResponse response2 = chat.sendMessage("What happened after that?");
+    System.out.println(response2.text());
 
 ### Go
 
@@ -1221,7 +1152,7 @@ Start a chat and send a message to the model:
     }
     defer client.Close()
 
-    model := client.GenerativeModel("gemini-3.7-flash")
+    model := client.GenerativeModel("gemini-3.8-flash")
     cs := model.StartChat()
 
     cs.History = []*genai.Content{
@@ -1253,7 +1184,7 @@ Start a chat and send a message to the model:
 
     client = genai.Client()
 
-    chat = client.chats.create(model='gemini-3.7-flash')
+    chat = client.chats.create(model='gemini-3.8-flash')
 
     response = chat.send_message(
         message='Tell me a story in 100 words')
@@ -1266,7 +1197,7 @@ Start a chat and send a message to the model:
 
     const ai = new GoogleGenAI({ apiKey: "GEMINI_API_KEY" });
     const chat = ai.chats.create({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       history: [
         {
           role: "user",
@@ -1291,25 +1222,18 @@ Start a chat and send a message to the model:
 
 ### Java
 
+    import com.google.genai.Chat;
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import java.util.List;
-    import java.util.Map;
+    import com.google.genai.types.GenerateContentResponse;
 
-    public class Main {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
-        CreateModelInteraction req = CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.6-flash"))
-            .input(InteractionsInput.of("Hello"))
-            .build();
-        var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-        System.out.println(interaction.outputText().orElse(""));
-      }
-    }
+    Client client = new Client();
+    Chat chat = client.chats.create("gemini-3.8-flash");
+
+    GenerateContentResponse response1 = chat.sendMessage("I have 2 dogs in my house.");
+    System.out.println("Chat response 1: " + response1.text());
+
+    GenerateContentResponse response2 = chat.sendMessage("How many paws are in my house?");
+    System.out.println("Chat response 2: " + response2.text());
 
 ### Go
 
@@ -1319,7 +1243,7 @@ Start a chat and send a message to the model:
         log.Fatal(err)
     }
 
-    chat, err := client.Chats.Create(ctx, "gemini-3.7-flash", nil, nil)
+    chat, err := client.Chats.Create(ctx, "gemini-3.8-flash", nil, nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -1356,7 +1280,7 @@ Start a chat and send a message to the model:
         return "23C"
 
     model = genai.GenerativeModel(
-        model_name="gemini-3.7-flash",
+        model_name="gemini-3.8-flash",
         tools=[get_current_weather]
     )
 
@@ -1386,7 +1310,7 @@ it.
         return "23C"
 
     response = client.models.generate_content(
-      model='gemini-3.7-flash',
+      model='gemini-3.8-flash',
       contents="What is the weather like in Boston?",
       config=types.GenerateContentConfig(
           tools=[get_current_weather],
@@ -1411,7 +1335,7 @@ this is the default behavior in `generate_content`.
         return "23C"
 
     model = genai.GenerativeModel(
-        model_name="gemini-3.7-flash",
+        model_name="gemini-3.8-flash",
         tools=[get_current_weather]
     )
 
@@ -1431,7 +1355,7 @@ this is the default behavior in `generate_content`.
         return "23C"
 
     response = client.models.generate_content(
-      model='gemini-3.7-flash',
+      model='gemini-3.8-flash',
       contents="What is the weather like in Boston?",
       config=types.GenerateContentConfig(
           tools=[get_current_weather]
@@ -1450,7 +1374,7 @@ and return the result.
     import google.generativeai as genai
 
     model = genai.GenerativeModel(
-        model_name="gemini-3.7-flash",
+        model_name="gemini-3.8-flash",
         tools="code_execution"
     )
 
@@ -1464,7 +1388,7 @@ and return the result.
 
     const genAI = new GoogleGenerativeAI("GEMINI_API_KEY");
     const model = genAI.getGenerativeModel({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       tools: [{ codeExecution: {} }],
     });
 
@@ -1479,24 +1403,28 @@ and return the result.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import java.util.List;
-    import java.util.Map;
+    import com.google.genai.types.GenerateContentConfig;
+    import com.google.genai.types.GenerateContentResponse;
+    import com.google.genai.types.Tool;
+    import com.google.genai.types.ToolCodeExecution;
+    import java.util.Arrays;
 
-    public class Main {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
-        CreateModelInteraction req = CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.6-flash"))
-            .input(InteractionsInput.of("Hello"))
+    Client client = new Client();
+
+    GenerateContentConfig config =
+        GenerateContentConfig.builder()
+            .tools(
+                Arrays.asList(
+                    Tool.builder().codeExecution(ToolCodeExecution.builder().build()).build()))
             .build();
-        var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-        System.out.println(interaction.outputText().orElse(""));
-      }
-    }
+
+    GenerateContentResponse response =
+        client.models.generateContent(
+            "gemini-3.8-flash",
+            "What is the sum of the first 50 prime numbers? Generate and run code for "
+                + "the calculation, and make sure you get all 50.",
+            config);
+    System.out.println(response.text());
 
 **After**
 
@@ -1508,7 +1436,7 @@ and return the result.
     client = genai.Client()
 
     response = client.models.generate_content(
-        model='gemini-3.7-flash',
+        model='gemini-3.8-flash',
         contents='What is the sum of the first 50 prime numbers? Generate and run '
                 'code for the calculation, and make sure you get all 50.',
         config=types.GenerateContentConfig(
@@ -1523,7 +1451,7 @@ and return the result.
     const ai = new GoogleGenAI({ apiKey: "GEMINI_API_KEY" });
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       contents: `Write and execute code that calculates the sum of the first 50 prime numbers.
                 Ensure that only the executable code and its resulting output are generated.`,
     });
@@ -1541,24 +1469,35 @@ and return the result.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import java.util.List;
-    import java.util.Map;
+    import com.google.genai.types.GenerateContentConfig;
+    import com.google.genai.types.GenerateContentResponse;
+    import com.google.genai.types.Part;
+    import com.google.genai.types.Tool;
+    import com.google.genai.types.ToolCodeExecution;
+    import java.util.Arrays;
 
-    public class Main {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
-        CreateModelInteraction req = CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.6-flash"))
-            .input(InteractionsInput.of("Write and execute code that calculates the sum of the first 50 prime numbers.\n                Ensure that only the executable code and its resulting output are generated."))
+    Client client = new Client();
+
+    GenerateContentConfig config =
+        GenerateContentConfig.builder()
+            .tools(
+                Arrays.asList(
+                    Tool.builder().codeExecution(ToolCodeExecution.builder().build()).build()))
             .build();
-        var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-        System.out.println(interaction.outputText().orElse(""));
+
+    GenerateContentResponse response =
+        client.models.generateContent(
+            "gemini-3.8-flash",
+            "Write and execute code that calculates the sum of the first 50 prime numbers. "
+                + "Ensure that only the executable code and its resulting output are generated.",
+            config);
+
+    if (response.parts() != null) {
+      for (Part part : response.parts()) {
+        System.out.println(part);
       }
     }
+    System.out.println(response.text());
 
 ## Search grounding
 
@@ -1572,7 +1511,7 @@ Google.
 
     import google.generativeai as genai
 
-    model = genai.GenerativeModel('gemini-3.7-flash')
+    model = genai.GenerativeModel('gemini-3.8-flash')
     response = model.generate_content(
         contents="what is the Google stock price?",
         tools='google_search_retrieval'
@@ -1588,7 +1527,7 @@ Google.
     client = genai.Client()
 
     response = client.models.generate_content(
-        model='gemini-3.7-flash',
+        model='gemini-3.8-flash',
         contents='What is the Google stock price?',
         config=types.GenerateContentConfig(
             tools=[
@@ -1624,7 +1563,7 @@ produce a `JSON` response following a given structure.
         official_language: str
         total_area_sq_mi: int
 
-    model = genai.GenerativeModel(model_name="gemini-3.7-flash")
+    model = genai.GenerativeModel(model_name="gemini-3.8-flash")
     result = model.generate_content(
         "Give me information of the United States",
         generation_config=genai.GenerationConfig(
@@ -1656,7 +1595,7 @@ produce a `JSON` response following a given structure.
     };
 
     const model = genAI.getGenerativeModel({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       generationConfig: {
         responseMimeType: "application/json",
         responseSchema: schema,
@@ -1671,24 +1610,43 @@ produce a `JSON` response following a given structure.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import java.util.List;
+    import com.google.genai.types.GenerateContentConfig;
+    import com.google.genai.types.GenerateContentResponse;
+    import com.google.genai.types.Schema;
+    import com.google.genai.types.Type;
+    import java.util.Arrays;
     import java.util.Map;
 
-    public class Main {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
-        CreateModelInteraction req = CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.6-flash"))
-            .input(InteractionsInput.of("Hello"))
+    Client client = new Client();
+
+    Schema schema =
+        Schema.builder()
+            .description("List of recipes")
+            .type(Type.Known.ARRAY)
+            .items(
+                Schema.builder()
+                    .type(Type.Known.OBJECT)
+                    .properties(
+                        Map.of(
+                            "recipeName",
+                            Schema.builder()
+                                .type(Type.Known.STRING)
+                                .description("Name of the recipe")
+                                .build()))
+                    .required(Arrays.asList("recipeName"))
+                    .build())
             .build();
-        var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-        System.out.println(interaction.outputText().orElse(""));
-      }
-    }
+
+    GenerateContentConfig config =
+        GenerateContentConfig.builder()
+            .responseMimeType("application/json")
+            .responseSchema(schema)
+            .build();
+
+    GenerateContentResponse response =
+        client.models.generateContent(
+            "gemini-3.8-flash", "List a few popular cookie recipes.", config);
+    System.out.println(response.text());
 
 **After**
 
@@ -1717,7 +1675,7 @@ to an instance of the class.
         total_area_sq_mi: int
 
     response = client.models.generate_content(
-        model='gemini-3.7-flash',
+        model='gemini-3.8-flash',
         contents='Give me information of the United States.',
         config={
             'response_mime_type': 'application/json',
@@ -1733,7 +1691,7 @@ to an instance of the class.
 
     const ai = new GoogleGenAI({ apiKey: "GEMINI_API_KEY" });
     const response = await ai.models.generateContent({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       contents: "List a few popular cookie recipes.",
       config: {
         responseMimeType: "application/json",
@@ -1755,24 +1713,43 @@ to an instance of the class.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import java.util.List;
+    import com.google.genai.types.GenerateContentConfig;
+    import com.google.genai.types.GenerateContentResponse;
+    import com.google.genai.types.Schema;
+    import com.google.genai.types.Type;
+    import java.util.Arrays;
     import java.util.Map;
 
-    public class Main {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
-        CreateModelInteraction req = CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.6-flash"))
-            .input(InteractionsInput.of("List a few popular cookie recipes."))
+    Client client = new Client();
+
+    Schema schema =
+        Schema.builder()
+            .type(Type.Known.ARRAY)
+            .items(
+                Schema.builder()
+                    .type(Type.Known.OBJECT)
+                    .properties(
+                        Map.of(
+                            "recipeName", Schema.builder().type(Type.Known.STRING).build(),
+                            "ingredients",
+                                Schema.builder()
+                                    .type(Type.Known.ARRAY)
+                                    .items(Schema.builder().type(Type.Known.STRING).build())
+                                    .build()))
+                    .required(Arrays.asList("recipeName", "ingredients"))
+                    .build())
             .build();
-        var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-        System.out.println(interaction.outputText().orElse(""));
-      }
-    }
+
+    GenerateContentConfig config =
+        GenerateContentConfig.builder()
+            .responseMimeType("application/json")
+            .responseSchema(schema)
+            .build();
+
+    GenerateContentResponse response =
+        client.models.generateContent(
+            "gemini-3.8-flash", "List a few popular cookie recipes.", config);
+    System.out.println(response.text());
 
 ## Files
 
@@ -1795,7 +1772,7 @@ Upload a file:
 
     file = genai.upload_file(path='a11.txt')
 
-    model = genai.GenerativeModel('gemini-3.7-flash')
+    model = genai.GenerativeModel('gemini-3.8-flash')
     response = model.generate_content([
         'Can you summarize this file:',
         my_file
@@ -1820,7 +1797,7 @@ Upload a file:
     my_file = client.files.upload(file='a11.txt')
 
     response = client.models.generate_content(
-        model='gemini-3.7-flash',
+        model='gemini-3.8-flash',
         contents=[
             'Can you summarize this file:',
             my_file
@@ -1910,7 +1887,7 @@ the cost.
 
     # Create cache
     apollo_cache = caching.CachedContent.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         system_instruction="You are an expert at analyzing transcripts.",
         contents=[document],
     )
@@ -1934,7 +1911,7 @@ the cost.
     });
 
     const cacheResult = await cacheManager.create({
-      model: "models/gemini-3.7-flash",
+      model: "models/gemini-3.8-flash",
       contents: [
         {
           role: "user",
@@ -1962,24 +1939,39 @@ the cost.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import java.util.List;
-    import java.util.Map;
+    import com.google.genai.types.CachedContent;
+    import com.google.genai.types.Content;
+    import com.google.genai.types.CreateCachedContentConfig;
+    import com.google.genai.types.File;
+    import com.google.genai.types.GenerateContentConfig;
+    import com.google.genai.types.GenerateContentResponse;
+    import com.google.genai.types.Part;
+    import java.util.Arrays;
 
-    public class Main {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
-        CreateModelInteraction req = CreateModelInteraction.builder()
-            .model(Model.of("models/gemini-3.6-flash"))
-            .input(InteractionsInput.of("Hello, Gemini!"))
-            .build();
-        var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-        System.out.println(interaction.outputText().orElse(""));
-      }
-    }
+    Client client = new Client();
+
+    File uploadResult = client.files.upload("path/to/a11.txt", null);
+
+    CachedContent cacheResult =
+        client.caches.create(
+            "gemini-3.8-flash",
+            CreateCachedContentConfig.builder()
+                .contents(
+                    Arrays.asList(
+                        Content.fromParts(
+                            Part.fromUri(
+                                uploadResult.uri().orElse(""),
+                                uploadResult.mimeType().orElse("text/plain")))))
+                .systemInstruction(
+                    Content.fromParts(Part.fromText("You are an expert at analyzing transcripts.")))
+                .build());
+
+    GenerateContentResponse response =
+        client.models.generateContent(
+            "gemini-3.8-flash",
+            "Please summarize this transcript.",
+            GenerateContentConfig.builder().cachedContent(cacheResult.name().orElse("")).build());
+    System.out.println(response.text());
 
 **After**
 
@@ -2008,7 +2000,7 @@ the cost.
     document = client.files.upload(file='a11.txt')
 
     # Create cache
-    model='gemini-3.7-flash'
+    model='gemini-3.8-flash'
     apollo_cache = client.caches.create(
           model=model,
           config={
@@ -2037,7 +2029,7 @@ the cost.
       config: { mimeType: "text/plain" },
     });
     console.log("Uploaded file name:", document.name);
-    const modelName = "gemini-3.7-flash";
+    const modelName = "gemini-3.8-flash";
 
     const contents = [
       createUserContent(createPartFromUri(document.uri, document.mimeType)),
@@ -2062,24 +2054,39 @@ the cost.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import java.util.List;
-    import java.util.Map;
+    import com.google.genai.types.CachedContent;
+    import com.google.genai.types.Content;
+    import com.google.genai.types.CreateCachedContentConfig;
+    import com.google.genai.types.File;
+    import com.google.genai.types.GenerateContentConfig;
+    import com.google.genai.types.GenerateContentResponse;
+    import com.google.genai.types.Part;
+    import java.util.Arrays;
 
-    public class Main {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
-        CreateModelInteraction req = CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.6-flash"))
-            .input(InteractionsInput.of("Please summarize this transcript"))
-            .build();
-        var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-        System.out.println(interaction.outputText().orElse(""));
-      }
-    }
+    Client client = new Client();
+
+    File document = client.files.upload("a11.txt", null);
+    String modelName = "gemini-3.8-flash";
+
+    CachedContent cache =
+        client.caches.create(
+            modelName,
+            CreateCachedContentConfig.builder()
+                .contents(
+                    Arrays.asList(
+                        Content.fromParts(
+                            Part.fromUri(
+                                document.uri().orElse(""), document.mimeType().orElse("text/plain")))))
+                .systemInstruction(
+                    Content.fromParts(Part.fromText("You are an expert analyzing transcripts.")))
+                .build());
+
+    GenerateContentResponse response =
+        client.models.generateContent(
+            modelName,
+            "Find a lighthearted moment from this transcript",
+            GenerateContentConfig.builder().cachedContent(cache.name().orElse("")).build());
+    System.out.println(response.text());
 
 ## Count tokens
 
@@ -2091,7 +2098,7 @@ Count the number of tokens in a request.
 
     import google.generativeai as genai
 
-    model = genai.GenerativeModel('gemini-3.7-flash')
+    model = genai.GenerativeModel('gemini-3.8-flash')
     response = model.count_tokens(
         'The quick brown fox jumps over the lazy dog.')
 
@@ -2101,7 +2108,7 @@ Count the number of tokens in a request.
 
      const genAI = new GoogleGenerativeAI("GEMINI_API_KEY");
      const model = genAI.getGenerativeModel({
-       model: "gemini-3.7-flash",
+       model: "gemini-3.8-flash",
      });
 
      // Count tokens in a prompt without calling text generation.
@@ -2126,24 +2133,18 @@ Count the number of tokens in a request.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import java.util.List;
-    import java.util.Map;
+    import com.google.genai.types.CountTokensResponse;
+    import com.google.genai.types.GenerateContentResponse;
 
-    public class Main {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
-        CreateModelInteraction req = CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.6-flash"))
-            .input(InteractionsInput.of("Hello"))
-            .build();
-        var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-        System.out.println(interaction.outputText().orElse(""));
-      }
-    }
+    Client client = new Client();
+    String prompt = "The quick brown fox jumps over the lazy dog.";
+
+    CountTokensResponse countResult = client.models.countTokens("gemini-3.8-flash", prompt, null);
+    System.out.println(countResult.totalTokens().orElse(0));
+
+    GenerateContentResponse generateResult =
+        client.models.generateContent("gemini-3.8-flash", prompt, null);
+    System.out.println(generateResult.usageMetadata());
 
 **After**
 
@@ -2154,7 +2155,7 @@ Count the number of tokens in a request.
     client = genai.Client()
 
     response = client.models.count_tokens(
-        model='gemini-3.7-flash',
+        model='gemini-3.8-flash',
         contents='The quick brown fox jumps over the lazy dog.',
     )
 
@@ -2165,13 +2166,13 @@ Count the number of tokens in a request.
     const ai = new GoogleGenAI({ apiKey: "GEMINI_API_KEY" });
     const prompt = "The quick brown fox jumps over the lazy dog.";
     const countTokensResponse = await ai.models.countTokens({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       contents: prompt,
     });
     console.log(countTokensResponse.totalTokens);
 
     const generateResponse = await ai.models.generateContent({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       contents: prompt,
     });
     console.log(generateResponse.usageMetadata);
@@ -2179,24 +2180,19 @@ Count the number of tokens in a request.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import java.util.List;
-    import java.util.Map;
+    import com.google.genai.types.CountTokensResponse;
+    import com.google.genai.types.GenerateContentResponse;
 
-    public class Main {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
-        CreateModelInteraction req = CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.6-flash"))
-            .input(InteractionsInput.of("Hello"))
-            .build();
-        var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-        System.out.println(interaction.outputText().orElse(""));
-      }
-    }
+    Client client = new Client();
+    String prompt = "The quick brown fox jumps over the lazy dog.";
+
+    CountTokensResponse countTokensResponse =
+        client.models.countTokens("gemini-3.8-flash", prompt, null);
+    System.out.println(countTokensResponse.totalTokens().orElse(0));
+
+    GenerateContentResponse generateResponse =
+        client.models.generateContent("gemini-3.8-flash", prompt, null);
+    System.out.println(generateResponse.usageMetadata());
 
 ## Generate images
 
@@ -2273,24 +2269,13 @@ Generate content embeddings.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import java.util.List;
-    import java.util.Map;
+    import com.google.genai.types.EmbedContentResponse;
 
-    public class Main {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
-        CreateModelInteraction req = CreateModelInteraction.builder()
-            .model(Model.of("gemini-embedding-001"))
-            .input(InteractionsInput.of("Hello"))
-            .build();
-        var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-        System.out.println(interaction.outputText().orElse(""));
-      }
-    }
+    Client client = new Client();
+
+    EmbedContentResponse response =
+        client.models.embedContent("gemini-embedding-001", "Hello world!", null);
+    System.out.println(response.embeddings());
 
 **After**
 
@@ -2321,21 +2306,15 @@ Generate content embeddings.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import java.util.List;
-    import java.util.Map;
+    import com.google.genai.types.EmbedContentConfig;
+    import com.google.genai.types.EmbedContentResponse;
 
-    public class Main {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
-        CreateModelInteraction req = CreateModelInteraction.builder()
-            .model(Model.of("gemini-embedding-001"))
-            .input(InteractionsInput.of("Hello"))
-            .build();
-        var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
-        System.out.println(interaction.outputText().orElse(""));
-      }
-    }
+    Client client = new Client();
+    String text = "Hello World!";
+
+    EmbedContentResponse result =
+        client.models.embedContent(
+            "gemini-embedding-001",
+            text,
+            EmbedContentConfig.builder().outputDimensionality(10).build());
+    System.out.println(result.embeddings());

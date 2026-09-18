@@ -68,7 +68,11 @@ tags:
     name: Images
   - description: >-
       Create, inspect, update, provision, suspend and delete OpenRouter interns
-      through an API key.
+      through an API key, and talk to them: the chat route streams
+      OpenAI-compatible completions from one intern, pausing as an
+      `openrouter.provide_input` tool call when the intern needs your permission
+      or an answer. Available to interns programme members; other callers
+      receive 404. See https://openrouter.ai/docs/guides/ori/intern-chat.
     name: Interns
   - description: Model information endpoints
     name: Models
@@ -296,6 +300,15 @@ components:
           type: array
         model:
           type: string
+        previous_job_id:
+          description: >-
+            ID of a completed video job to edit or extend, as returned by the
+            submit response. The new job runs on the same model and endpoint
+            that produced the previous one. Only models that support
+            continuation accept this field.
+          example: gen-vid-1789493115-a1B2c3D4e5F6g7H8i9J0
+          pattern: ^gen-vid-\d+-[0-9A-Za-z]{20}$
+          type: string
         prompt:
           description: >-
             Text prompt describing the video to generate. Optional for models
@@ -373,9 +386,9 @@ components:
       type: object
     VideoGenerationResponse:
       example:
-        generation_id: gen-xyz789
-        id: job-abc123
-        polling_url: /api/v1/videos/job-abc123
+        generation_id: gen-vid-1789480874-Ab3dEf9hIjKlMnOpQrSt
+        id: gen-vid-1789480874-Ab3dEf9hIjKlMnOpQrSt
+        polling_url: /api/v1/videos/gen-vid-1789480874-Ab3dEf9hIjKlMnOpQrSt
         status: pending
       properties:
         error:
@@ -386,6 +399,10 @@ components:
             Available once the job has been processed.
           type: string
         id:
+          description: >-
+            The video job ID, in the `gen-vid-<timestamp>-<20 alphanumerics>`
+            generation ID format. Pass it as `previous_job_id` to continue the
+            generation.
           type: string
         polling_url:
           type: string

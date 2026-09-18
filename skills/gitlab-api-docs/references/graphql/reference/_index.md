@@ -10318,10 +10318,12 @@ Arguments:
 | <a id="mutation-groupupdate-aiauditeventsstorageenabled"></a>`aiAuditEventsStorageEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 19.2. Status: Experiment. Indicates whether AI audit events are stored for the group. |
 | <a id="mutation-groupupdate-builtinprojecttemplatesenabled"></a>`builtInProjectTemplatesEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Indicates whether built-in project templates are available for new projects in the group. |
 | <a id="mutation-groupupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-groupupdate-duoautomodeenabled"></a>`duoAutoModeEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Indicates whether Duo Agent Platform auto mode is enabled for the group. |
 | <a id="mutation-groupupdate-duofeaturesenabled"></a>`duoFeaturesEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 16.10. Status: Experiment. Indicates whether GitLab Duo features are enabled for the group. |
 | <a id="mutation-groupupdate-fullpath"></a>`fullPath` | [`ID!`](#id) | Full path of the group that will be updated. |
 | <a id="mutation-groupupdate-lockaiauditeventsstorageenabled"></a>`lockAiAuditEventsStorageEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 19.2. Status: Experiment. Indicates whether AI audit events storage is enforced for all subgroups and projects. |
 | <a id="mutation-groupupdate-lockbuiltinprojecttemplatesenabled"></a>`lockBuiltInProjectTemplatesEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Indicates if the built-in project templates enabled setting is enforced for all subgroups. |
+| <a id="mutation-groupupdate-lockduoautomodeenabled"></a>`lockDuoAutoModeEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Indicates if the Duo Agent Platform auto mode setting is enforced for all subgroups. |
 | <a id="mutation-groupupdate-lockduofeaturesenabled"></a>`lockDuoFeaturesEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 16.10. Status: Experiment. Indicates if the GitLab Duo features enabled setting is enforced for all subgroups. |
 | <a id="mutation-groupupdate-lockmathrenderinglimitsenabled"></a>`lockMathRenderingLimitsEnabled` | [`Boolean`](#boolean) | Indicates if math rendering limits are locked for all descendant groups. |
 | <a id="mutation-groupupdate-locktoolapprovalforsessionenabled"></a>`lockToolApprovalForSessionEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 18.11. Status: Experiment. Indicates if the tool approval for session setting is enforced for all subgroups. |
@@ -14372,6 +14374,7 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="mutation-projectsettingsupdate-aiauditeventsstorageenabled"></a>`aiAuditEventsStorageEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 19.2. Status: Experiment. Indicates whether AI audit events are stored for the project. |
 | <a id="mutation-projectsettingsupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-projectsettingsupdate-duoautomodeenabled"></a>`duoAutoModeEnabled` | [`Boolean`](#boolean) | Indicates whether Duo Agent Platform auto mode is enabled for the project. |
 | <a id="mutation-projectsettingsupdate-duocontextexclusionsettings"></a>`duoContextExclusionSettings` | [`DuoContextExclusionSettingsInput`](#duocontextexclusionsettingsinput) | Settings for excluding files from Duo context. |
 | <a id="mutation-projectsettingsupdate-duofeaturesenabled"></a>`duoFeaturesEnabled` | [`Boolean`](#boolean) | Indicates whether GitLab Duo features are enabled for the project. |
 | <a id="mutation-projectsettingsupdate-duosastfpdetectionenabled"></a>`duoSastFpDetectionEnabled` | [`Boolean`](#boolean) | Indicates whether SAST False Positive Detection is enabled for the project. |
@@ -34150,6 +34153,7 @@ Arguments:
 | <a id="analytics-duousageevents-event"></a>`event` | [`[String!]`](#string) | Filter by one or many events. |
 | <a id="analytics-duousageevents-feature"></a>`feature` | [`[String!]`](#string) | Filter by one or many features. |
 | <a id="analytics-duousageevents-flowtype"></a>`flowType` | [`[String!]`](#string) | Filter by one or many Duo Agent Platform flow types. |
+| <a id="analytics-duousageevents-groupid"></a>`groupId` | [`[String!]`](#string) | Filter by one or many group Global IDs, including events from their descendants. |
 | <a id="analytics-duousageevents-timestampfrom"></a>`timestampFrom` | [`Time`](#time) | Filter by event timestamp. Start of the range. |
 | <a id="analytics-duousageevents-timestampto"></a>`timestampTo` | [`Time`](#time) | Filter by event timestamp. End of the range. |
 | <a id="analytics-duousageevents-userid"></a>`userId` | [`[String!]`](#string) | Filter by one or many user Global IDs. |
@@ -38384,6 +38388,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="complianceframeworkpolicysummary-hasactiveprojects"></a>`hasActiveProjects` | [`Boolean!`](#boolean) | Whether the policy has at least one non-archived assigned project. |
 | <a id="complianceframeworkpolicysummary-name"></a>`name` | [`String!`](#string) | Name of the security policy. |
 | <a id="complianceframeworkpolicysummary-source"></a>`source` | [`SecurityPolicySource`](#securitypolicysource) | Source of the security policy. |
 | <a id="complianceframeworkpolicysummary-type"></a>`type` | [`String`](#string) | Type of the security policy. |
@@ -41735,6 +41740,18 @@ Fields:
 
 #### Fields with arguments
 
+##### `DuoUsageEventsAggregationResponseDimensions.group`
+
+Group at the requested depth of the hierarchy. NULL for events tracked above that depth. Events tracked in a project at that depth bucket by project namespace ID, which also resolves to NULL.
+
+Returns [`Group`](#group).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duousageeventsaggregationresponsedimensions-group-depth"></a>`depth` | [`Int`](#int) | Depth in the group hierarchy, counted from the top-level group. Defaults to 1. |
+
 ##### `DuoUsageEventsAggregationResponseDimensions.timestamp`
 
 Event date.
@@ -44753,6 +44770,7 @@ Fields:
 | <a id="group-descriptionhtml"></a>`descriptionHtml` | [`String`](#string) | GitLab Flavored Markdown rendering of `description`. |
 | <a id="group-designatedascsp"></a>`designatedAsCsp`  | [`Boolean!`](#boolean) | Introduced in GitLab 18.1. Status: Experiment. Indicates whether the namespace is designated to centrally manage security policies. |
 | <a id="group-dora"></a>`dora` | [`GroupDora`](#groupdora) | Group's DORA metrics. |
+| <a id="group-duoautomodeenabled"></a>`duoAutoModeEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Indicates whether Duo Agent Platform auto mode is enabled for the group. |
 | <a id="group-duofeaturesenabled"></a>`duoFeaturesEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 16.10. Status: Experiment. Indicates whether GitLab Duo features are enabled for the group. |
 | <a id="group-duosettingspath"></a>`duoSettingsPath`  | [`String`](#string) | Introduced in GitLab 18.9. Status: Experiment. Path of the group Duo settings page. |
 | <a id="group-editpath"></a>`editPath` | [`String!`](#string) | Path for editing group. |
@@ -44782,6 +44800,7 @@ Fields:
 | <a id="group-linkpaths"></a>`linkPaths`  | [`NamespacesLinkPaths`](#namespaceslinkpaths) | Introduced in GitLab 18.1. Status: Experiment. Namespace relevant paths to create links on the UI. |
 | <a id="group-lockaiauditeventsstorageenabled"></a>`lockAiAuditEventsStorageEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 19.2. Status: Experiment. Indicates whether AI audit events storage is enforced for all subgroups and projects. |
 | <a id="group-lockbuiltinprojecttemplatesenabled"></a>`lockBuiltInProjectTemplatesEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Indicates if the built-in project templates enabled setting is enforced for all subgroups. |
+| <a id="group-lockduoautomodeenabled"></a>`lockDuoAutoModeEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Indicates if the Duo Agent Platform auto mode setting is enforced for all subgroups. |
 | <a id="group-lockduofeaturesenabled"></a>`lockDuoFeaturesEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 16.10. Status: Experiment. Indicates if the GitLab Duo features enabled setting is enforced for all subgroups. |
 | <a id="group-lockmathrenderinglimitsenabled"></a>`lockMathRenderingLimitsEnabled` | [`Boolean`](#boolean) | Indicates if math rendering limits are locked for all descendant groups. |
 | <a id="group-locktoolapprovalforsessionenabled"></a>`lockToolApprovalForSessionEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 18.11. Status: Experiment. Indicates if the tool approval for session setting is enforced for all subgroups. |
@@ -48847,7 +48866,7 @@ Fields:
 | <a id="mergeaccesslevel-accesslevel"></a>`accessLevel` | [`Int!`](#int) | GitLab::Access level. |
 | <a id="mergeaccesslevel-accessleveldescription"></a>`accessLevelDescription` | [`String!`](#string) | Human readable representation for the access level. |
 | <a id="mergeaccesslevel-group"></a>`group` | [`AccessLevelGroup`](#accesslevelgroup) | Group associated with the access level. |
-| <a id="mergeaccesslevel-memberrole"></a>`memberRole`  | [`MemberRole`](#memberrole) | Introduced in GitLab 19.2. Status: Experiment. Custom role associated with the access level. |
+| <a id="mergeaccesslevel-memberrole"></a>`memberRole` | [`MemberRole`](#memberrole) | Custom role associated with the access level. |
 | <a id="mergeaccesslevel-user"></a>`user` | [`AccessLevelUser`](#accessleveluser) | User associated with the access level. |
 
 ### `MergeRequest`
@@ -58178,6 +58197,7 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="projectsetting-aiauditeventsstorageenabled"></a>`aiAuditEventsStorageEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 19.2. Status: Experiment. Indicates whether AI audit events are stored for the project. |
+| <a id="projectsetting-duoautomodeenabled"></a>`duoAutoModeEnabled` | [`Boolean`](#boolean) | Indicates whether Duo Agent Platform auto mode is enabled for the project. |
 | <a id="projectsetting-duocontextexclusionsettings"></a>`duoContextExclusionSettings` | [`DuoContextExclusionSettings`](#duocontextexclusionsettings) | Settings for excluding files from Duo context. |
 | <a id="projectsetting-duofeaturesenabled"></a>`duoFeaturesEnabled` | [`Boolean`](#boolean) | Indicates whether GitLab Duo features are enabled for the project. |
 | <a id="projectsetting-project"></a>`project` | [`Project`](#project) | Project the settings belong to. |
@@ -58528,7 +58548,7 @@ Fields:
 | <a id="pushaccesslevel-accessleveldescription"></a>`accessLevelDescription` | [`String!`](#string) | Human readable representation for the access level. |
 | <a id="pushaccesslevel-deploykey"></a>`deployKey` | [`AccessLevelDeployKey`](#accessleveldeploykey) | Deploy key assigned to the access level. |
 | <a id="pushaccesslevel-group"></a>`group` | [`AccessLevelGroup`](#accesslevelgroup) | Group associated with the access level. |
-| <a id="pushaccesslevel-memberrole"></a>`memberRole`  | [`MemberRole`](#memberrole) | Introduced in GitLab 19.2. Status: Experiment. Custom role associated with the access level. |
+| <a id="pushaccesslevel-memberrole"></a>`memberRole` | [`MemberRole`](#memberrole) | Custom role associated with the access level. |
 | <a id="pushaccesslevel-user"></a>`user` | [`AccessLevelUser`](#accessleveluser) | User associated with the access level. |
 
 ### `PushEventCommit`
@@ -61043,7 +61063,7 @@ Fields:
 | <a id="unprotectaccesslevel-accesslevel"></a>`accessLevel` | [`Int!`](#int) | GitLab::Access level. |
 | <a id="unprotectaccesslevel-accessleveldescription"></a>`accessLevelDescription` | [`String!`](#string) | Human readable representation for the access level. |
 | <a id="unprotectaccesslevel-group"></a>`group` | [`AccessLevelGroup`](#accesslevelgroup) | Group associated with the access level. |
-| <a id="unprotectaccesslevel-memberrole"></a>`memberRole`  | [`MemberRole`](#memberrole) | Introduced in GitLab 19.2. Status: Experiment. Custom role associated with the access level. |
+| <a id="unprotectaccesslevel-memberrole"></a>`memberRole` | [`MemberRole`](#memberrole) | Custom role associated with the access level. |
 | <a id="unprotectaccesslevel-user"></a>`user` | [`AccessLevelUser`](#accessleveluser) | User associated with the access level. |
 
 ### `UploadRegistry`
@@ -68689,7 +68709,7 @@ Member role permission.
 | <a id="memberrolepermission-admin_protected_environments"></a>`ADMIN_PROTECTED_ENVIRONMENTS` | Create, read, update, and delete protected environments. |
 | <a id="memberrolepermission-admin_push_rules"></a>`ADMIN_PUSH_RULES` | Configure push rules for repositories at the group or project level. |
 | <a id="memberrolepermission-admin_runners"></a>`ADMIN_RUNNERS` | Create, view, edit, and delete group or project Runners. Includes configuring Runner settings. |
-| <a id="memberrolepermission-admin_security_attributes"></a>`ADMIN_SECURITY_ATTRIBUTES` | Manage the security categories and attributes belonging to a top-level group. Also requires the `read_security_attribute` permission. |
+| <a id="memberrolepermission-admin_security_attributes"></a>`ADMIN_SECURITY_ATTRIBUTES` | Manage the security categories and attributes. Also requires the `read_security_attribute` permission. |
 | <a id="memberrolepermission-admin_terraform_state"></a>`ADMIN_TERRAFORM_STATE` | Execute terraform commands, lock/unlock terraform state files, and remove file versions. |
 | <a id="memberrolepermission-admin_vulnerability"></a>`ADMIN_VULNERABILITY` | Edit the status, linked issue, and severity of a vulnerability object. Also requires the `read_vulnerability` permission. |
 | <a id="memberrolepermission-admin_web_hook"></a>`ADMIN_WEB_HOOK` | Manage webhooks. |
@@ -68715,7 +68735,7 @@ Member role permission.
 | <a id="memberrolepermission-read_crm_contact"></a>`READ_CRM_CONTACT` | Read CRM contact. |
 | <a id="memberrolepermission-read_dependency"></a>`READ_DEPENDENCY` | Allows read-only access to the dependencies and licenses. |
 | <a id="memberrolepermission-read_runners"></a>`READ_RUNNERS` | Allows read-only access to group or project runners, including the runner fleet dashboard. |
-| <a id="memberrolepermission-read_security_attribute"></a>`READ_SECURITY_ATTRIBUTE` | Allows read-only access to the security categories and attributes that belong to a top-level group. |
+| <a id="memberrolepermission-read_security_attribute"></a>`READ_SECURITY_ATTRIBUTE` | Allows read-only access to the security categories and attributes. |
 | <a id="memberrolepermission-read_security_scan_profiles"></a>`READ_SECURITY_SCAN_PROFILES` | Read security scan profiles. |
 | <a id="memberrolepermission-read_virtual_registry"></a>`READ_VIRTUAL_REGISTRY` | Allows read access to virtual registries at the group level. Enables users to resolve packages through the virtual registry without requiring broader group membership permissions. Only works on top level groups. |
 | <a id="memberrolepermission-read_vulnerability"></a>`READ_VULNERABILITY` | Read vulnerability reports and security dashboards. |
@@ -68741,7 +68761,7 @@ Member role standard permission.
 | <a id="memberrolestandardpermission-admin_protected_environments"></a>`ADMIN_PROTECTED_ENVIRONMENTS` | Create, read, update, and delete protected environments. |
 | <a id="memberrolestandardpermission-admin_push_rules"></a>`ADMIN_PUSH_RULES` | Configure push rules for repositories at the group or project level. |
 | <a id="memberrolestandardpermission-admin_runners"></a>`ADMIN_RUNNERS` | Create, view, edit, and delete group or project Runners. Includes configuring Runner settings. |
-| <a id="memberrolestandardpermission-admin_security_attributes"></a>`ADMIN_SECURITY_ATTRIBUTES` | Manage the security categories and attributes belonging to a top-level group. Also requires the `read_security_attribute` permission. |
+| <a id="memberrolestandardpermission-admin_security_attributes"></a>`ADMIN_SECURITY_ATTRIBUTES` | Manage the security categories and attributes. Also requires the `read_security_attribute` permission. |
 | <a id="memberrolestandardpermission-admin_terraform_state"></a>`ADMIN_TERRAFORM_STATE` | Execute terraform commands, lock/unlock terraform state files, and remove file versions. |
 | <a id="memberrolestandardpermission-admin_vulnerability"></a>`ADMIN_VULNERABILITY` | Edit the status, linked issue, and severity of a vulnerability object. Also requires the `read_vulnerability` permission. |
 | <a id="memberrolestandardpermission-admin_web_hook"></a>`ADMIN_WEB_HOOK` | Manage webhooks. |
@@ -68761,7 +68781,7 @@ Member role standard permission.
 | <a id="memberrolestandardpermission-read_crm_contact"></a>`READ_CRM_CONTACT` | Read CRM contact. |
 | <a id="memberrolestandardpermission-read_dependency"></a>`READ_DEPENDENCY` | Allows read-only access to the dependencies and licenses. |
 | <a id="memberrolestandardpermission-read_runners"></a>`READ_RUNNERS` | Allows read-only access to group or project runners, including the runner fleet dashboard. |
-| <a id="memberrolestandardpermission-read_security_attribute"></a>`READ_SECURITY_ATTRIBUTE` | Allows read-only access to the security categories and attributes that belong to a top-level group. |
+| <a id="memberrolestandardpermission-read_security_attribute"></a>`READ_SECURITY_ATTRIBUTE` | Allows read-only access to the security categories and attributes. |
 | <a id="memberrolestandardpermission-read_security_scan_profiles"></a>`READ_SECURITY_SCAN_PROFILES` | Read security scan profiles. |
 | <a id="memberrolestandardpermission-read_virtual_registry"></a>`READ_VIRTUAL_REGISTRY` | Allows read access to virtual registries at the group level. Enables users to resolve packages through the virtual registry without requiring broader group membership permissions. Only works on top level groups. |
 | <a id="memberrolestandardpermission-read_vulnerability"></a>`READ_VULNERABILITY` | Read vulnerability reports and security dashboards. |
@@ -76180,7 +76200,7 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="mergeaccesslevelinput-accesslevel"></a>`accessLevel` | [`Int`](#int) | Access level allowed to perform action. |
 | <a id="mergeaccesslevelinput-groupid"></a>`groupId` | [`GroupID`](#groupid) | Group associated with the access level. |
-| <a id="mergeaccesslevelinput-memberroleid"></a>`memberRoleId`  | [`MemberRoleID`](#memberroleid) | Introduced in GitLab 19.2. Status: Experiment. Custom member role associated with the access level. |
+| <a id="mergeaccesslevelinput-memberroleid"></a>`memberRoleId` | [`MemberRoleID`](#memberroleid) | Custom member role associated with the access level. |
 | <a id="mergeaccesslevelinput-userid"></a>`userId` | [`UserID`](#userid) | User associated with the access level. |
 
 ### `MergeRequestSavedViewFilterInput`
@@ -76481,7 +76501,7 @@ Arguments:
 | <a id="pushaccesslevelinput-accesslevel"></a>`accessLevel` | [`Int`](#int) | Access level allowed to perform action. |
 | <a id="pushaccesslevelinput-deploykeyid"></a>`deployKeyId` | [`DeployKeyID`](#deploykeyid) | Deploy key assigned to the access level. |
 | <a id="pushaccesslevelinput-groupid"></a>`groupId` | [`GroupID`](#groupid) | Group associated with the access level. |
-| <a id="pushaccesslevelinput-memberroleid"></a>`memberRoleId`  | [`MemberRoleID`](#memberroleid) | Introduced in GitLab 19.2. Status: Experiment. Custom member role associated with the access level. |
+| <a id="pushaccesslevelinput-memberroleid"></a>`memberRoleId` | [`MemberRoleID`](#memberroleid) | Custom member role associated with the access level. |
 | <a id="pushaccesslevelinput-userid"></a>`userId` | [`UserID`](#userid) | User associated with the access level. |
 
 ### `ReleaseAssetLinkInput`
@@ -77169,7 +77189,7 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="workitemwidgetdescriptioninput-description"></a>`description` | [`String`](#string) | Description of the work item. |
-| <a id="workitemwidgetdescriptioninput-tasklisttoggle"></a>`taskListToggle`  | [`TaskListToggleInput`](#tasklisttoggleinput) | Introduced in GitLab 19.2. Status: Experiment. Toggle a single task list item instead of replacing the full description. Only supported when updating a work item, and only when the `work_items_task_list_toggle` feature flag is enabled. |
+| <a id="workitemwidgetdescriptioninput-tasklisttoggle"></a>`taskListToggle` | [`TaskListToggleInput`](#tasklisttoggleinput) | Toggle a single task list item instead of replacing the full description. Only supported when updating a work item. |
 
 ### `WorkItemWidgetDevelopmentCreateInput`
 

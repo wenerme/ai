@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # LangChain
 
-Last updated Jul 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/agent-sdks/langchain/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/agent-sdks/langchain/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [LangChain ↗](https://python.langchain.com/) is a framework for building applications with large language models. The [`langchain-cloudflare` ↗](https://pypi.org/project/langchain-cloudflare/) package provides `CloudflareAISearchRetriever`, a standard LangChain retriever backed by AI Search.
 
@@ -71,7 +71,7 @@ from cloudflare import Cloudflare, NotFoundError
 ACCOUNT_ID = os.environ["CLOUDFLARE_ACCOUNT_ID"]
 API_TOKEN = os.environ["CLOUDFLARE_API_TOKEN"]
 NAMESPACE = "default"
-INSTANCE_ID = "knowledge-base"
+INSTANCE_NAME = "knowledge-base"
 
 # The SDK authenticates with this token; the account ID is passed on each call.
 client = Cloudflare(api_token=API_TOKEN)
@@ -80,18 +80,18 @@ client = Cloudflare(api_token=API_TOKEN)
 # first and only create it when read() raises NotFoundError.
 try:
     client.aisearch.namespaces.instances.read(
-        INSTANCE_ID, account_id=ACCOUNT_ID, name=NAMESPACE
+        INSTANCE_NAME, account_id=ACCOUNT_ID, name=NAMESPACE
     )
-    print(f"Instance '{INSTANCE_ID}' already exists.")
+    print(f"Instance '{INSTANCE_NAME}' already exists.")
 except NotFoundError:
     client.aisearch.namespaces.instances.create(
         name=NAMESPACE,
         account_id=ACCOUNT_ID,
-        id=INSTANCE_ID,
+        id=INSTANCE_NAME,
         # Index both vectors and keywords to enable hybrid search.
         index_method={"vector": True, "keyword": True},
     )
-    print(f"Created instance '{INSTANCE_ID}'.")
+    print(f"Created instance '{INSTANCE_NAME}'.")
 ```
 
 The first positional argument to `create()` is the namespace name. If you created a vector-only instance earlier, enable hybrid search on it with `client.aisearch.namespaces.instances.update(...)` instead.
@@ -104,7 +104,7 @@ Add the following to `main.py` to upload a document to built-in storage. Setting
 
 ```python
 item = client.aisearch.namespaces.instances.items.upload(
-    id=INSTANCE_ID,
+    id=INSTANCE_NAME,
     account_id=ACCOUNT_ID,
     name=NAMESPACE,
     file={
@@ -146,7 +146,7 @@ from langchain_cloudflare import CloudflareAISearchRetriever
 retriever = CloudflareAISearchRetriever(
     account_id=ACCOUNT_ID,
     api_token=API_TOKEN,
-    instance_name=INSTANCE_ID,
+    instance_name=INSTANCE_NAME,
     namespace=NAMESPACE,
     retrieval_type="hybrid",  # query both the vector and keyword indexes
     k=5,  # maximum number of results to return (capped at 50)
@@ -272,5 +272,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/agent-sdks/langchain/#page","headline":"LangChain · Cloudflare AI Search docs","description":"Use AI Search from LangChain to create an instance, index content, and search it with the CloudflareAISearchRetriever.","url":"https://developers.cloudflare.com/ai-search/agent-sdks/langchain/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/agent-sdks/langchain/#page","headline":"LangChain · Cloudflare AI Search docs","description":"Use AI Search from LangChain to create an instance, index content, and search it with the CloudflareAISearchRetriever.","url":"https://developers.cloudflare.com/ai-search/agent-sdks/langchain/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

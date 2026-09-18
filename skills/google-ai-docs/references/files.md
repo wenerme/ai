@@ -25,7 +25,7 @@ The following code uploads a file and then uses the file in a call to
     myfile = client.files.upload(file="path/to/sample.mp3")
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {"type": "text", "text": "Describe this audio clip"},
             {"type": "audio", "uri": myfile.uri, "mime_type": myfile.mime_type}
@@ -47,7 +47,7 @@ The following code uploads a file and then uses the file in a call to
       });
 
       const interaction = await client.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: [
           { type: "text", text: "Describe this audio clip" },
           { type: "audio", uri: myfile.uri, mime_type: myfile.mimeType }
@@ -61,17 +61,46 @@ The following code uploads a file and then uses the file in a call to
 ### Java
 
     import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AudioContent;
+    import com.google.genai.gaos.models.interactions.AudioContentMimeType;
+    import com.google.genai.gaos.models.interactions.Content;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import com.google.genai.types.File;
     import com.google.genai.types.UploadFileConfig;
+    import java.util.Arrays;
+    import java.util.List;
 
     Client client = new Client();
 
-    File file = client.files.upload(
-        new java.io.File("path/to/sample.txt"),
-        UploadFileConfig.builder().mimeType("text/plain").build()
-    );
+    File myFile =
+        client.files.upload(
+            new java.io.File("path/to/sample.mp3"),
+            UploadFileConfig.builder().mimeType("audio/mp3").build());
 
-    System.out.println("Uploaded file URI: " + file.uri().orElse(""));
+    Content textContent = TextContent.builder().text("Describe this audio clip").build();
+    Content audioContent =
+        AudioContent.builder()
+            .uri(myFile.uri().orElse(""))
+            .mimeType(AudioContentMimeType.of(myFile.mimeType().orElse("audio/mp3")))
+            .build();
+
+    List<Content> contents = Arrays.asList(textContent, audioContent);
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.8-flash"))
+            .input(InteractionsInput.ofContent(contents))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
 
 ### Go
 
@@ -81,7 +110,7 @@ The following code uploads a file and then uses the file in a call to
     }
     defer client.Files.Delete(ctx, file.Name)
 
-    interaction, err := client.Interactions.Create(ctx, "gemini-3.7-flash", &genai.InteractionRequest{
+    interaction, err := client.Interactions.Create(ctx, "gemini-3.8-flash", &genai.InteractionRequest{
         Input: []interface{}{
             genai.NewPartFromFile(*file),
             genai.NewPartFromText("Describe this audio clip"),
@@ -142,7 +171,7 @@ The following code uploads a file and then uses the file in a call to
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -d '{
-          "model": "gemini-3.7-flash",
+          "model": "gemini-3.8-flash",
           "input": [
             {"type": "text", "text": "Describe this audio clip"},
             {"type": "audio", "uri": '$file_uri', "mime_type": "'${MIME_TYPE}'"}
@@ -199,12 +228,14 @@ metadata by calling `files.get`.
 
     Client client = new Client();
 
-    File file = client.files.upload(
-        new java.io.File("path/to/sample.txt"),
-        UploadFileConfig.builder().mimeType("text/plain").build()
-    );
+    File myFile =
+        client.files.upload(
+            new java.io.File("path/to/sample.mp3"),
+            UploadFileConfig.builder().mimeType("audio/mp3").build());
 
-    System.out.println("Uploaded file URI: " + file.uri().orElse(""));
+    String fileName = myFile.name().orElse("");
+    File fileMetadata = client.files.get(fileName, null);
+    System.out.println(fileMetadata);
 
 ### Go
 
@@ -267,16 +298,13 @@ The following code gets a list of all the files uploaded:
 
     import com.google.genai.Client;
     import com.google.genai.types.File;
-    import com.google.genai.types.UploadFileConfig;
 
     Client client = new Client();
 
-    File file = client.files.upload(
-        new java.io.File("path/to/sample.txt"),
-        UploadFileConfig.builder().mimeType("text/plain").build()
-    );
-
-    System.out.println("Uploaded file URI: " + file.uri().orElse(""));
+    System.out.println("My files:");
+    for (File f : client.files.list(null)) {
+      System.out.println("  " + f.name().orElse(""));
+    }
 
 ### Go
 
@@ -336,12 +364,12 @@ uploaded file:
 
     Client client = new Client();
 
-    File file = client.files.upload(
-        new java.io.File("path/to/sample.txt"),
-        UploadFileConfig.builder().mimeType("text/plain").build()
-    );
+    File myFile =
+        client.files.upload(
+            new java.io.File("path/to/sample.mp3"),
+            UploadFileConfig.builder().mimeType("audio/mp3").build());
 
-    System.out.println("Uploaded file URI: " + file.uri().orElse(""));
+    client.files.delete(myFile.name().orElse(""), null);
 
 ### Go
 

@@ -101,19 +101,37 @@ summarize the video.
     import com.google.genai.gaos.models.interactions.VideoContent;
     import com.google.genai.gaos.models.interactions.VideoContentMimeType;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.types.File;
+    import com.google.genai.types.FileState;
+    import com.google.genai.types.UploadFileConfig;
     import java.util.Arrays;
     import java.util.List;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Summarize the key events in this video.").build();
+    File myfile =
+        client.files.upload(
+            "path/to/sample.mp4", UploadFileConfig.builder().mimeType("video/mp4").build());
+
+    while (!myfile.state().isPresent()
+        || myfile.state().get().knownEnum() != FileState.Known.ACTIVE) {
+      System.out.println("Processing video...");
+      Thread.sleep(5000);
+      myfile = client.files.get(myfile.name().get(), null);
+    }
+
     Content videoContent =
         VideoContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/video/pixel8.mp4")
-            .mimeType(VideoContentMimeType.VIDEO_MP4)
+            .uri(myfile.uri().get())
+            .mimeType(VideoContentMimeType.of(myfile.mimeType().get()))
+            .build();
+    Content textContent =
+        TextContent.builder()
+            .text(
+                "Summarize this video. Then create a quiz with an answer key based on the information in this video.")
             .build();
 
-    List<Content> contents = Arrays.asList(textContent, videoContent);
+    List<Content> contents = Arrays.asList(videoContent, textContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
@@ -268,15 +286,23 @@ Here's an example of providing inline video data:
     import com.google.genai.gaos.models.interactions.VideoContent;
     import com.google.genai.gaos.models.interactions.VideoContentMimeType;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
     import java.util.Arrays;
+    import java.util.Base64;
     import java.util.List;
+
+    String videoFileName = "/path/to/your/video.mp4";
+    byte[] videoBytes = Files.readAllBytes(Paths.get(videoFileName));
+    String base64Video = Base64.getEncoder().encodeToString(videoBytes);
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Summarize the key events in this video.").build();
+    Content textContent =
+        TextContent.builder().text("Please summarize the video in 3 sentences.").build();
     Content videoContent =
         VideoContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/video/pixel8.mp4")
+            .data(base64Video)
             .mimeType(VideoContentMimeType.VIDEO_MP4)
             .build();
 
@@ -379,7 +405,8 @@ You can pass YouTube URLs directly to Gemini API as part of your request as foll
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Please summarize the video in 3 sentences.").build();
+    Content textContent =
+        TextContent.builder().text("Please summarize the video in 3 sentences.").build();
     Content videoContent =
         VideoContent.builder()
             .uri("https://www.youtube.com/watch?v=9hE5-98ZeCg")
@@ -720,40 +747,7 @@ timestamps of the form `MM:SS`.
 
 ### Java
 
-    import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.Content;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.interactions.TextContent;
-    import com.google.genai.gaos.models.interactions.VideoContent;
-    import com.google.genai.gaos.models.interactions.VideoContentMimeType;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import java.util.Arrays;
-    import java.util.List;
-
-    Client client = new Client();
-
-    Content textContent = TextContent.builder().text("What are the examples given at 00:05 and 00:10 supposed to show us?").build();
-    Content videoContent =
-        VideoContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/video/pixel8.mp4")
-            .mimeType(VideoContentMimeType.VIDEO_MP4)
-            .build();
-
-    List<Content> contents = Arrays.asList(textContent, videoContent);
-
-    CreateModelInteraction params =
-        CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.ofContent(contents))
-            .build();
-
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println(interaction.outputText().orElse(""));
+    String prompt = "What are the examples given at 00:05 and 00:10 supposed to show us?";
 
 ### REST
 
@@ -780,40 +774,8 @@ note that it may miss details in videos with rapid motion or quick scene changes
 
 ### Java
 
-    import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.Content;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.interactions.TextContent;
-    import com.google.genai.gaos.models.interactions.VideoContent;
-    import com.google.genai.gaos.models.interactions.VideoContentMimeType;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import java.util.Arrays;
-    import java.util.List;
-
-    Client client = new Client();
-
-    Content textContent = TextContent.builder().text("Describe the key events in this video, providing both audio and visual details. Include timestamps for salient moments.").build();
-    Content videoContent =
-        VideoContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/video/pixel8.mp4")
-            .mimeType(VideoContentMimeType.VIDEO_MP4)
-            .build();
-
-    List<Content> contents = Arrays.asList(textContent, videoContent);
-
-    CreateModelInteraction params =
-        CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.ofContent(contents))
-            .build();
-
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println(interaction.outputText().orElse(""));
+    String prompt =
+        "Describe the key events in this video, providing both audio and visual details. Include timestamps for salient moments.";
 
 ### REST
 

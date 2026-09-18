@@ -11,7 +11,7 @@ Template variables let you create dynamic, reusable dashboards that switch betwe
 
 ## Before you begin
 
-- [Configure the Zabbix data source](./configure/).
+- [Configure the Zabbix data source](/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/).
 - Understand [Grafana template variables](/docs/grafana/latest/dashboards/variables/).
 
 ## Supported variable types
@@ -95,7 +95,36 @@ Variables work in most query editor fields, including:
 
 > Note
 >
-> When using multi-value variables, the plugin automatically formats the selected values as a regex pattern for Zabbix API queries.
+> When using multi-value variables, the plugin automatically formats the selected values as a regex pattern for Zabbix API queries. For example, selecting `web01` and `web02` is sent to Zabbix as `(web01|web02)`.
+
+## Built-in macros
+
+In addition to the template variables you define, the plugin automatically populates a set of read-only macros for each series returned by a **Metrics** query. Use them in alias functions (`setAlias`, `setAliasByRegex`, `replaceAlias`) to build readable series names. You don’t create these macros; the plugin sets them per item.
+
+Expand table
+
+| Macro                   | Value                                                                                                                                                                                                                                                        |
+|-------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `$__zbx_host`           | Host technical name (the `host` field in Zabbix).                                                                                                                                                                                                            |
+| `$__zbx_host_name`      | Host visible name (the `name` field in Zabbix).                                                                                                                                                                                                              |
+| `$__zbx_host_id`        | Host ID.                                                                                                                                                                                                                                                     |
+| `$__zbx_item`           | Item name.                                                                                                                                                                                                                                                   |
+| `$__zbx_item_name`      | Item name. Same value as `$__zbx_item`.                                                                                                                                                                                                                      |
+| `$__zbx_item_key`       | Item key, for example `system.cpu.load`.                                                                                                                                                                                                                     |
+| `$__zbx_item_interval`  | Item update interval.                                                                                                                                                                                                                                        |
+| `$__zbx_item_tag_<tag>` | Value of the item tag named `<tag>`. Non-alphanumeric characters in the tag name are replaced with underscores, so a tag named `App Name` becomes `$__zbx_item_tag_App_Name`. When an item has multiple values for the same tag, they’re joined with commas. |
+
+For example, to rename each series to `<visible host name> - <item name>`, add the following function to a Metrics query:
+
+[Copy code to clipboard] Copy
+
+```none
+setAlias($__zbx_host_name - $__zbx_item)
+```
+
+> Note
+>
+> `$__zbx_host` returns the host’s technical name, while `$__zbx_host_name` returns the visible name. These often differ. Use `$__zbx_host_name` when you want the human-readable name shown in the Zabbix frontend.
 
 ## Chain variables
 
@@ -107,7 +136,42 @@ You can reference one variable inside another variable’s query to create casca
 
 When you change the `group` selection, the `host` variable automatically updates to show only hosts in that group, and the `item` variable updates accordingly.
 
+## Examples
+
+### Build a host picker for a dashboard
+
+Let viewers switch the dashboard between hosts without editing panels.
+
+1. Create a variable named `host` with **Query Type** set to **Host** and **Group** set to the group you want (or `/.*/` for all hosts).
+2. In each Metrics query, set the **Host** field to `$host`.
+
+### Filter a query with a multi-value variable
+
+Show several hosts on one panel from a single drop-down.
+
+1. Create the `host` variable as in the previous example and enable **Multi-value**.
+2. Set the **Host** field of your query to `$host`.
+
+When you select `web01` and `web02`, the plugin sends `(web01|web02)` to Zabbix, so the query returns data for both hosts.
+
+### Repeat a panel for each selected host
+
+Render one copy of a panel per selected host.
+
+1. Create a multi-value `host` variable.
+2. In the panel’s **Repeat options**, set **Repeat by variable** to `host`.
+3. Set the query’s **Host** field to `$host`.
+
+Grafana renders a separate panel for each host you select.
+
+### Populate a drop-down with current item values
+
+Use the **Item values** query type to build a variable from the latest values of an item, which is useful for text panels or annotations.
+
+1. Create a variable with **Query Type** set to **Item values**.
+2. Set **Group**, **Host**, and **Item** to target the item you want.
+
 ## Next steps
 
-- [Build queries with the Zabbix query editor](./query-editor/)
-- [Apply functions to transform query results](./functions/)
+- [Build queries with the Zabbix query editor](/docs/plugins/alexanderzobnin-zabbix-app/latest/query-editor/)
+- [Apply functions to transform query results](/docs/plugins/alexanderzobnin-zabbix-app/latest/functions/)

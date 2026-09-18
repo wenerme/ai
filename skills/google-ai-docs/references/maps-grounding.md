@@ -87,11 +87,17 @@ the Gemini model to use Google Maps data.
 ### Java
 
     import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Annotation;
+    import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
     import com.google.genai.gaos.models.interactions.GoogleMaps;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.PlaceCitation;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import java.util.Arrays;
 
@@ -100,14 +106,44 @@ the Gemini model to use Google Maps data.
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Find the best coffee shops near Central Park."))
-            .tools(Arrays.asList(new GoogleMaps()))
+            .input(
+                InteractionsInput.of(
+                    "What are the best Italian restaurants within a 15-minute walk from here?"))
+            .tools(
+                Arrays.asList(
+                    GoogleMaps.builder().latitude(34.050481).longitude(-118.248526).build()))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    System.out.println(interaction.outputText().orElse(""));
+    // Print the model's text response and annotations
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof ModelOutputStep) {
+          ModelOutputStep outputStep = (ModelOutputStep) step;
+          if (outputStep.content().isPresent()) {
+            for (Content contentBlock : outputStep.content().get()) {
+              if (contentBlock instanceof TextContent) {
+                TextContent textContent = (TextContent) contentBlock;
+                System.out.println(textContent.text().orElse(""));
+                if (textContent.annotations().isPresent()
+                    && !textContent.annotations().get().isEmpty()) {
+                  System.out.println("\nSources:");
+                  for (Annotation annotation : textContent.annotations().get()) {
+                    if (annotation instanceof PlaceCitation) {
+                      PlaceCitation citation = (PlaceCitation) annotation;
+                      System.out.printf(
+                          "  - %s: %s%n", citation.name().orElse(""), citation.url().orElse(""));
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
 ### REST
 
@@ -238,11 +274,17 @@ user reviews and other Maps data.
 ### Java
 
     import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Annotation;
+    import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
     import com.google.genai.gaos.models.interactions.GoogleMaps;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.PlaceCitation;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import java.util.Arrays;
 
@@ -251,14 +293,43 @@ user reviews and other Maps data.
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Find the best coffee shops near Central Park."))
-            .tools(Arrays.asList(new GoogleMaps()))
+            .input(
+                InteractionsInput.of(
+                    "Is there a cafe near the corner of 1st and Main that has outdoor seating?"))
+            .tools(
+                Arrays.asList(
+                    GoogleMaps.builder().latitude(34.050481).longitude(-118.248526).build()))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    System.out.println(interaction.outputText().orElse(""));
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof ModelOutputStep) {
+          ModelOutputStep outputStep = (ModelOutputStep) step;
+          if (outputStep.content().isPresent()) {
+            for (Content contentBlock : outputStep.content().get()) {
+              if (contentBlock instanceof TextContent) {
+                TextContent textContent = (TextContent) contentBlock;
+                System.out.println(textContent.text().orElse(""));
+                if (textContent.annotations().isPresent()
+                    && !textContent.annotations().get().isEmpty()) {
+                  System.out.println("\nSources:");
+                  for (Annotation annotation : textContent.annotations().get()) {
+                    if (annotation instanceof PlaceCitation) {
+                      PlaceCitation citation = (PlaceCitation) annotation;
+                      System.out.printf(
+                          "  - %s: %s%n", citation.name().orElse(""), citation.url().orElse(""));
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
 ### Providing location-based personalization
 
@@ -335,11 +406,17 @@ area.
 ### Java
 
     import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Annotation;
+    import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
     import com.google.genai.gaos.models.interactions.GoogleMaps;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.PlaceCitation;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import java.util.Arrays;
 
@@ -348,14 +425,42 @@ area.
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Find the best coffee shops near Central Park."))
-            .tools(Arrays.asList(new GoogleMaps()))
+            .input(
+                InteractionsInput.of(
+                    "Which family-friendly restaurants near here have the best playground reviews?"))
+            .tools(
+                Arrays.asList(GoogleMaps.builder().latitude(30.2672).longitude(-97.7431).build()))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    System.out.println(interaction.outputText().orElse(""));
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof ModelOutputStep) {
+          ModelOutputStep outputStep = (ModelOutputStep) step;
+          if (outputStep.content().isPresent()) {
+            for (Content contentBlock : outputStep.content().get()) {
+              if (contentBlock instanceof TextContent) {
+                TextContent textContent = (TextContent) contentBlock;
+                System.out.println(textContent.text().orElse(""));
+                if (textContent.annotations().isPresent()
+                    && !textContent.annotations().get().isEmpty()) {
+                  System.out.println("\nSources:");
+                  for (Annotation annotation : textContent.annotations().get()) {
+                    if (annotation instanceof PlaceCitation) {
+                      PlaceCitation citation = (PlaceCitation) annotation;
+                      System.out.printf(
+                          "  - %s: %s%n", citation.name().orElse(""), citation.url().orElse(""));
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
 ### Assisting with itinerary planning
 
@@ -416,16 +521,21 @@ locations, perfect for travel applications.
 
     Client client = new Client();
 
+    String prompt =
+        "Plan a day in San Francisco for me. I want to see the Golden Gate Bridge, visit a museum, and have a nice dinner.";
+
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Find the best coffee shops near Central Park."))
-            .tools(Arrays.asList(new GoogleMaps()))
+            .input(InteractionsInput.of(prompt))
+            .tools(
+                Arrays.asList(GoogleMaps.builder().latitude(37.78193).longitude(-122.40476).build()))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
+    // ... code to process response
     System.out.println(interaction.outputText().orElse(""));
 
 ### REST

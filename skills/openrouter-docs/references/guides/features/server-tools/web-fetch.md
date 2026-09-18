@@ -183,7 +183,12 @@ The web fetch server tool supports multiple fetch engines:
 
 * **`auto`** (default): Uses native fetch if the provider supports it,
   otherwise falls back to Exa
-* **`native`**: Forces the provider's built-in web fetch
+* **`native`**: Prefers the provider's built-in web fetch; falls back to the
+  `openrouter` engine if the model doesn't support native fetch. When a
+  workspace admin has set an engine list on the Server Tools page, the
+  fallback is the first non-native engine in that list instead; a
+  list of only `native` rejects the request with a 403 on models without
+  native fetch
 * **`exa`**: Uses [Exa](https://exa.ai)'s Contents API to extract page content
   (supports BYOK)
 * **`openrouter`**: Uses direct HTTP fetch with content extraction
@@ -330,6 +335,15 @@ If the fetch fails, the response includes an error:
   "error": "HTTP 404: Page not found"
 }
 ```
+
+## Workspace Settings
+
+Workspace admins can set an engine list, allowed domains, and blocked domains for `openrouter:web_fetch` on the workspace's Server Tools page. Each tool entry is either locked or a default:
+
+* **Locked** (the default when the entry is created): requests and presets in the workspace are limited to these settings. A request that names an engine outside the list, or whose domain list has no overlap with the workspace's, is rejected with a `403`.
+* **Default** ("Prevent overrides" off): the settings fill in what a request leaves unset. A request that names its own engine keeps it, and a request that sets either domain list (an empty list counts) keeps its lists as sent; the workspace domain lists are used only when the request sets neither.
+
+In both modes a request with no `engine` (or `engine: "auto"`) runs the workspace's **Default engine**, and a `native` request on a model without native fetch runs its **Native fallback engine** (see the `native` row under [Engine Selection](#engine-selection)). Both are stored at the head of the engine list: the default first, then the fallback. Settings on the workspace's Plugins tab do not apply to server tools.
 
 ## Pricing
 

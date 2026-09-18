@@ -23,7 +23,7 @@ input types and limits.
 
     prompt = "Summarize this document"
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {"type": "text", "text": prompt},
             {"type": "document", "data": base64.b64encode(filepath.read_bytes()).decode('utf-8'), "mime_type": "application/pdf"}
@@ -43,7 +43,7 @@ input types and limits.
         const filePath = 'my_local_file.pdf';
 
         const interaction = await client.interactions.create({
-            model: "gemini-3.7-flash",
+            model: "gemini-3.8-flash",
             input: [
                 { type: "text", text: prompt },
                 {
@@ -70,15 +70,23 @@ input types and limits.
     import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
     import java.util.Arrays;
+    import java.util.Base64;
     import java.util.List;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Summarize this document.").build();
+    byte[] pdfBytes = Files.readAllBytes(Paths.get("my_local_file.pdf"));
+    String base64Pdf = Base64.getEncoder().encodeToString(pdfBytes);
+
+    String prompt = "Summarize this document";
+
+    Content textContent = TextContent.builder().text(prompt).build();
     Content docContent =
         DocumentContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
+            .data(base64Pdf)
             .mimeType(DocumentContentMimeType.APPLICATION_PDF)
             .build();
 
@@ -86,13 +94,12 @@ input types and limits.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
     System.out.println(interaction.outputText().orElse(""));
 
 ### REST
@@ -104,7 +111,7 @@ input types and limits.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": [
           {"type": "text", "text": "Summarize this document"},
           {
@@ -156,7 +163,7 @@ input.
     prompt = "Summarize this document"
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {"type": "document", "data": base64.b64encode(doc_data).decode('utf-8'), "mime_type": "application/pdf"},
             {"type": "text", "text": prompt}
@@ -177,7 +184,7 @@ input.
           .then((response) => response.arrayBuffer());
 
         const interaction = await client.interactions.create({
-            model: "gemini-3.7-flash",
+            model: "gemini-3.8-flash",
             input: [
                 { type: "text", text: prompt },
                 {
@@ -204,29 +211,41 @@ input.
     import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.net.URI;
+    import java.net.http.HttpClient;
+    import java.net.http.HttpRequest;
+    import java.net.http.HttpResponse;
     import java.util.Arrays;
+    import java.util.Base64;
     import java.util.List;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Summarize this document.").build();
+    String docUrl = "https://discovery.ucl.ac.uk/id/eprint/10089234/1/343019_3_art_0_py4t4l_convrt.pdf";
+    HttpClient httpClient = HttpClient.newHttpClient();
+    HttpRequest request = HttpRequest.newBuilder().uri(URI.create(docUrl)).build();
+    byte[] docData = httpClient.send(request, HttpResponse.BodyHandlers.ofByteArray()).body();
+    String base64Pdf = Base64.getEncoder().encodeToString(docData);
+
+    String prompt = "Summarize this document";
+
     Content docContent =
         DocumentContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
+            .data(base64Pdf)
             .mimeType(DocumentContentMimeType.APPLICATION_PDF)
             .build();
+    Content textContent = TextContent.builder().text(prompt).build();
 
-    List<Content> contents = Arrays.asList(textContent, docContent);
+    List<Content> contents = Arrays.asList(docContent, textContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
     System.out.println(interaction.outputText().orElse(""));
 
 ### REST
@@ -251,7 +270,7 @@ input.
     # Create JSON payload file
     cat <<EOF > payload.json
     {
-    "model": "gemini-3.7-flash",
+    "model": "gemini-3.8-flash",
     "input": [
     {"type": "document", "data": "${ENCODED_PDF}", "mime_type": "application/pdf"},
     {"type": "text", "text": "${PROMPT}"}
@@ -290,7 +309,7 @@ temporarily (48 hours) and processed for efficient retrieval by the model.
     prompt = "Summarize this document"
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {"type": "text", "text": prompt},
             {"type": "document", "uri": doc_file.uri, "mime_type": doc_file.mime_type}
@@ -314,7 +333,7 @@ temporarily (48 hours) and processed for efficient retrieval by the model.
       });
 
       const interaction = await client.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: [
             { type: "text", text: prompt },
             { type: "document", uri: myfile.uri, mime_type: myfile.mimeType }
@@ -337,29 +356,37 @@ temporarily (48 hours) and processed for efficient retrieval by the model.
     import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.types.File;
+    import com.google.genai.types.UploadFileConfig;
     import java.util.Arrays;
     import java.util.List;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Summarize this document.").build();
+    File docFile =
+        client.files.upload(
+            new java.io.File("path/to/your/sample.pdf"),
+            UploadFileConfig.builder().mimeType("application/pdf").build());
+
+    String prompt = "Summarize this document";
+
+    Content textContent = TextContent.builder().text(prompt).build();
     Content docContent =
         DocumentContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
-            .mimeType(DocumentContentMimeType.APPLICATION_PDF)
+            .uri(docFile.uri().orElse(""))
+            .mimeType(DocumentContentMimeType.of(docFile.mimeType().orElse("application/pdf")))
             .build();
 
     List<Content> contents = Arrays.asList(textContent, docContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
     System.out.println(interaction.outputText().orElse(""));
 
 ### REST
@@ -399,7 +426,7 @@ temporarily (48 hours) and processed for efficient retrieval by the model.
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -d '{
-          "model": "gemini-3.7-flash",
+          "model": "gemini-3.8-flash",
           "input": [
             {"type": "text", "text": "Summarize this document"},
             {"type": "document", "uri": '$file_uri', "mime_type": "'${MIME_TYPE}'"}
@@ -535,40 +562,21 @@ download and re-upload it. You can register it directly with the File API.
 ### Java
 
 `java
-import com.google.genai.Client;
-import com.google.genai.gaos.models.interactions.Content;
-import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-import com.google.genai.gaos.models.interactions.DocumentContent;
-import com.google.genai.gaos.models.interactions.DocumentContentMimeType;
-import com.google.genai.gaos.models.interactions.Interaction;
-import com.google.genai.gaos.models.interactions.InteractionsInput;
-import com.google.genai.gaos.models.interactions.Model;
-import com.google.genai.gaos.models.interactions.TextContent;
-import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+import com.google.auth.oauth2.GoogleCredentials;
+import java.io.FileInputStream;
 import java.util.Arrays;
 import java.util.List;
 
-Client client = new Client();
+List<String> gcsReadScopes =
+Arrays.asList(
+"https://www.googleapis.com/auth/devstorage.read_only",
+"https://www.googleapis.com/auth/cloud-platform");
 
-Content textContent = TextContent.builder().text("Summarize this document.").build();
-Content docContent =
-DocumentContent.builder()
-.uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
-.mimeType(DocumentContentMimeType.APPLICATION_PDF)
-.build();
+String serviceAccountFile = "service-account.json";
 
-List<Content> contents = Arrays.asList(textContent, docContent);
-
-CreateModelInteraction params =
-CreateModelInteraction.builder()
-.model(Model.of("gemini-3.7-flash"))
-.input(InteractionsInput.ofContent(contents))
-.build();
-
-Interaction interaction =
-client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-System.out.println(interaction.outputText().orElse(""));`
+GoogleCredentials credentials =
+GoogleCredentials.fromStream(new FileInputStream(serviceAccountFile))
+.createScoped(gcsReadScopes);`
 
 ### CLI
 
@@ -596,7 +604,7 @@ for an example.
        for f in registered_gcs_files.files:
          print(f.name)
          interaction = client.interactions.create(
-           model="gemini-3.7-flash",
+           model="gemini-3.8-flash",
            input=[
              {"type": "text", "text": prompt},
              {"type": "document", "uri": f.uri, "mime_type": f.mime_type}
@@ -620,7 +628,7 @@ for an example.
            for (const file of registeredGcsFiles.files) {
                console.log(file.name);
                const interaction = await ai.interactions.create({
-                   model: "gemini-3.7-flash",
+                   model: "gemini-3.8-flash",
                    input: [
                        { type: "text", text: prompt },
                        { type: "document", uri: file.uri, mime_type: file.mimeType }
@@ -635,6 +643,7 @@ for an example.
 
 ### Java
 
+    import com.google.auth.oauth2.GoogleCredentials;
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
@@ -645,30 +654,50 @@ for an example.
     import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.types.File;
+    import com.google.genai.types.RegisterFilesResponse;
+    import java.io.FileInputStream;
     import java.util.Arrays;
+    import java.util.Collections;
     import java.util.List;
 
-    Client client = new Client();
+    GoogleCredentials credentials =
+        GoogleCredentials.fromStream(new FileInputStream("service-account.json"))
+            .createScoped(
+                Arrays.asList(
+                    "https://www.googleapis.com/auth/devstorage.read_only",
+                    "https://www.googleapis.com/auth/cloud-platform"));
 
-    Content textContent = TextContent.builder().text("Summarize this document.").build();
-    Content docContent =
-        DocumentContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
-            .mimeType(DocumentContentMimeType.APPLICATION_PDF)
-            .build();
+    Client client = Client.builder().credentials(credentials).build();
 
-    List<Content> contents = Arrays.asList(textContent, docContent);
+    RegisterFilesResponse registeredGcsFiles =
+        client.files.registerFiles(
+            credentials,
+            Arrays.asList("gs://my_bucket/some_object.pdf", "gs://bucket2/object2.txt"),
+            null);
 
-    CreateModelInteraction params =
-        CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
-            .input(InteractionsInput.ofContent(contents))
-            .build();
+    String prompt = "Summarize this file.";
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    for (File f : registeredGcsFiles.files().orElse(Collections.emptyList())) {
+      System.out.println(f.name().orElse(""));
 
-    System.out.println(interaction.outputText().orElse(""));
+      Content textContent = TextContent.builder().text(prompt).build();
+      Content docContent =
+          DocumentContent.builder()
+              .uri(f.uri().orElse(""))
+              .mimeType(DocumentContentMimeType.of(f.mimeType().orElse("application/pdf")))
+              .build();
+
+      CreateModelInteraction params =
+          CreateModelInteraction.builder()
+              .model(Model.of("gemini-3.8-flash"))
+              .input(InteractionsInput.ofContent(Arrays.asList(textContent, docContent)))
+              .build();
+
+      Interaction interaction =
+          client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+      System.out.println(interaction.outputText().orElse(""));
+    }
 
 ### CLI
 
@@ -699,7 +728,7 @@ This is ideal for files up to 100MB that you don't want to re-upload.
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {"type": "document", "uri": uri, "mime_type": "application/pdf"},
             {"type": "text", "text": prompt}
@@ -717,7 +746,7 @@ This is ideal for files up to 100MB that you don't want to re-upload.
 
     async function main() {
       const interaction = await client.interactions.create({
-        model: 'gemini-3.7-flash',
+        model: 'gemini-3.8-flash',
         input: [
           { type: "document", uri: uri, mime_type: "application/pdf" },
           { type: "text", text: "summarize this file" }
@@ -735,7 +764,7 @@ This is ideal for files up to 100MB that you don't want to re-upload.
           -H 'x-goog-api-key: $GEMINI_API_KEY' \
           -H 'Content-Type: application/json' \
           -d '{
-              "model": "gemini-3.7-flash",
+              "model": "gemini-3.8-flash",
               "input": [
                 {"type": "text", "text": "Summarize this pdf"},
                 {

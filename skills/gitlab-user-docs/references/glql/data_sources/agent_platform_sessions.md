@@ -100,10 +100,7 @@ Sort by any dimension, or by one of these metrics:
 - `finishedCount`
 - `usersCount`
 - `completionRate`
-- `durationQuantile`.
-
-These metrics are not sortable:
-
+- `durationQuantile`
 - `durationMean`
 - `durationMin`
 - `durationMax`

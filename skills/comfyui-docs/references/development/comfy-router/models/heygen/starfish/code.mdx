@@ -24,7 +24,7 @@ with Comfy() as client:
     result = client.models.run(
         "heygen/starfish",
         {
-            "text": "This is a billing verification test for HeyGen speech generation.",
+            "text": "Hello from Comfy. This voice is generated with the HeyGen Starfish engine.",
             "voice_id": "d2f4f24783d04e22ab49ee8fdc3715e0",
         },
     )
@@ -38,7 +38,7 @@ import { comfy } from "@comfyorg/sdk";
 // Reads COMFY_API_KEY from the environment.
 // The SDK automatically creates an idempotency key and reuses it for automatic retries.
 const { data } = await comfy.models.run("heygen/starfish", {
-  text: "This is a billing verification test for HeyGen speech generation.",
+  text: "Hello from Comfy. This voice is generated with the HeyGen Starfish engine.",
   voice_id: "d2f4f24783d04e22ab49ee8fdc3715e0",
 });
 
@@ -50,7 +50,7 @@ curl https://api.comfy.org/v2/models/heygen/starfish \
   -H "X-API-Key: $COMFY_API_KEY" \
   -H "Idempotency-Key: $(uuidgen)" \
   -H "Content-Type: application/json" \
-  -d "{\"text\": \"This is a billing verification test for HeyGen speech generation.\", \"voice_id\": \"d2f4f24783d04e22ab49ee8fdc3715e0\"}"
+  -d "{\"text\": \"Hello from Comfy. This voice is generated with the HeyGen Starfish engine.\", \"voice_id\": \"d2f4f24783d04e22ab49ee8fdc3715e0\"}"
 ```
 
   
@@ -66,7 +66,7 @@ with Comfy() as client:
     handle = client.models.submit(
         "heygen/starfish",
         {
-            "text": "This is a billing verification test for HeyGen speech generation.",
+            "text": "Hello from Comfy. This voice is generated with the HeyGen Starfish engine.",
             "voice_id": "d2f4f24783d04e22ab49ee8fdc3715e0",
         },
     )
@@ -89,7 +89,7 @@ import { comfy } from "@comfyorg/sdk";
 // Reads COMFY_API_KEY from the environment.
 // Each submit() call mints its own Idempotency-Key and reuses it for automatic retries.
 const handle = await comfy.models.submit("heygen/starfish", {
-  text: "This is a billing verification test for HeyGen speech generation.",
+  text: "Hello from Comfy. This voice is generated with the HeyGen Starfish engine.",
   voice_id: "d2f4f24783d04e22ab49ee8fdc3715e0",
 });
 console.log("requestId:", handle.requestId); // with the model ID, all another process needs
@@ -111,7 +111,7 @@ curl https://api.comfy.org/v2/models/heygen/starfish/requests \
   -H "X-API-Key: $COMFY_API_KEY" \
   -H "Idempotency-Key: $(uuidgen)" \
   -H "Content-Type: application/json" \
-  -d "{\"text\": \"This is a billing verification test for HeyGen speech generation.\", \"voice_id\": \"d2f4f24783d04e22ab49ee8fdc3715e0\"}"
+  -d "{\"text\": \"Hello from Comfy. This voice is generated with the HeyGen Starfish engine.\", \"voice_id\": \"d2f4f24783d04e22ab49ee8fdc3715e0\"}"
 
 # 2. Poll until status is COMPLETED, waiting the Retry-After seconds each response names.
 REQUEST_ID="<request_id from the 201 body>"
@@ -205,7 +205,7 @@ Generated from the schema Router serves at `GET /v2/models/heygen/starfish/opena
 
 ```json
 {
-  "text": "This is a billing verification test for HeyGen speech generation.",
+  "text": "Hello from Comfy. This voice is generated with the HeyGen Starfish engine.",
   "voice_id": "d2f4f24783d04e22ab49ee8fdc3715e0"
 }
 ```

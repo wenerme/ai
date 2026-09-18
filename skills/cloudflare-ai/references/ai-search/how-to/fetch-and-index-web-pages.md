@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Fetch and index single web pages
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide builds a Worker that fetches a single web page's rendered HTML with the [Browser Run](https://developers.cloudflare.com/browser-run/) [`/content` endpoint](https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/) and uploads it to an [AI Search](https://developers.cloudflare.com/ai-search/) instance's [built-in storage](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/) using the [Items API](https://developers.cloudflare.com/ai-search/api/items/workers-binding/). AI Search then indexes the page so it is searchable, the same as any other uploaded document. The Worker also exposes a `/search` endpoint that queries the indexed pages, so one service both indexes and searches.
 
@@ -85,7 +85,7 @@ Add both bindings to your [Wrangler configuration file](https://developers.cloud
   "name": "fetch-and-index",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-09-14",
+  "compatibility_date": "2026-09-18",
   "browser": {
     "binding": "BROWSER",
     "remote": true
@@ -104,7 +104,7 @@ Add both bindings to your [Wrangler configuration file](https://developers.cloud
 name = "fetch-and-index"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-14"
+compatibility_date = "2026-09-18"
 
 [browser]
 binding = "BROWSER"
@@ -126,7 +126,7 @@ Update `src/index.ts`. This Worker has two routes: a request with a `?url=` para
 
 ```js
 // The instance that indexes the fetched page.
-const INSTANCE_ID = "my-instance";
+const INSTANCE_NAME = "my-instance";
 
 // Build a stable item key that ends in .html, so AI Search converts the HTML
 // to Markdown before indexing it.
@@ -147,7 +147,7 @@ export default {
 			if (!query) {
 				return new Response("Add a ?q= query parameter", { status: 400 });
 			}
-			const results = await env.AI_SEARCH.get(INSTANCE_ID).search({ query });
+			const results = await env.AI_SEARCH.get(INSTANCE_NAME).search({ query });
 			return Response.json({
 				query: results.search_query,
 				results: results.chunks.map((chunk) => ({
@@ -203,7 +203,7 @@ export default {
 
 		// Upload the rendered HTML to built-in storage. uploadAndPoll waits until
 		// the page is indexed and searchable.
-		const item = await env.AI_SEARCH.get(INSTANCE_ID).items.uploadAndPoll(
+		const item = await env.AI_SEARCH.get(INSTANCE_NAME).items.uploadAndPoll(
 			itemKey(pageUrl),
 			html,
 			{ timeoutMs: 60_000 },
@@ -223,7 +223,7 @@ export interface Env {
 }
 
 // The instance that indexes the fetched page.
-const INSTANCE_ID = "my-instance";
+const INSTANCE_NAME = "my-instance";
 
 // Build a stable item key that ends in .html, so AI Search converts the HTML
 // to Markdown before indexing it.
@@ -244,7 +244,7 @@ export default {
 			if (!query) {
 				return new Response("Add a ?q= query parameter", { status: 400 });
 			}
-			const results = await env.AI_SEARCH.get(INSTANCE_ID).search({ query });
+			const results = await env.AI_SEARCH.get(INSTANCE_NAME).search({ query });
 			return Response.json({
 				query: results.search_query,
 				results: results.chunks.map((chunk) => ({
@@ -303,7 +303,7 @@ export default {
 
 		// Upload the rendered HTML to built-in storage. uploadAndPoll waits until
 		// the page is indexed and searchable.
-		const item = await env.AI_SEARCH.get(INSTANCE_ID).items.uploadAndPoll(
+		const item = await env.AI_SEARCH.get(INSTANCE_NAME).items.uploadAndPoll(
 			itemKey(pageUrl),
 			html,
 			{ timeoutMs: 60_000 },
@@ -372,7 +372,7 @@ try {
 Then pass `metadata` in the upload options:
 
 ```ts
-const item = await env.AI_SEARCH.get(INSTANCE_ID).items.uploadAndPoll(
+const item = await env.AI_SEARCH.get(INSTANCE_NAME).items.uploadAndPoll(
 	itemKey(pageUrl),
 	html,
 	{ timeoutMs: 60_000, metadata },
@@ -450,5 +450,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/#page","headline":"Fetch and index single web pages · Cloudflare AI Search docs","description":"Use the Browser Run /content endpoint to fetch a single web page's rendered HTML, then upload it to an AI Search instance's built-in storage so AI Search indexes it for search.","url":"https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/#page","headline":"Fetch and index single web pages · Cloudflare AI Search docs","description":"Use the Browser Run /content endpoint to fetch a single web page's rendered HTML, then upload it to an AI Search instance's built-in storage so AI Search indexes it for search.","url":"https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

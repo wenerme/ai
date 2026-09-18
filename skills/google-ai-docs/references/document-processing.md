@@ -85,19 +85,25 @@ The following example shows you how to pass PDF data inline:
     import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
     import java.util.Arrays;
+    import java.util.Base64;
     import java.util.List;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Summarize this document.").build();
+    byte[] pdfBytes = Files.readAllBytes(Paths.get("path/to/document.pdf"));
+    String base64Pdf = Base64.getEncoder().encodeToString(pdfBytes);
+
     Content docContent =
         DocumentContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
+            .data(base64Pdf)
             .mimeType(DocumentContentMimeType.APPLICATION_PDF)
             .build();
+    Content textContent = TextContent.builder().text("Summarize this document").build();
 
-    List<Content> contents = Arrays.asList(textContent, docContent);
+    List<Content> contents = Arrays.asList(docContent, textContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
@@ -107,7 +113,6 @@ The following example shows you how to pass PDF data inline:
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
     System.out.println(interaction.outputText().orElse(""));
 
 ### REST
@@ -194,19 +199,26 @@ You can also upload a local PDF file for processing:
     import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.types.File;
+    import com.google.genai.types.UploadFileConfig;
     import java.util.Arrays;
     import java.util.List;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Summarize this document.").build();
+    File uploadedFile =
+        client.files.upload(
+            new java.io.File("file.pdf"),
+            UploadFileConfig.builder().mimeType("application/pdf").build());
+
     Content docContent =
         DocumentContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
-            .mimeType(DocumentContentMimeType.APPLICATION_PDF)
+            .uri(uploadedFile.uri().orElse(""))
+            .mimeType(DocumentContentMimeType.of(uploadedFile.mimeType().orElse("application/pdf")))
             .build();
+    Content textContent = TextContent.builder().text("Summarize this document").build();
 
-    List<Content> contents = Arrays.asList(textContent, docContent);
+    List<Content> contents = Arrays.asList(docContent, textContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
@@ -216,7 +228,6 @@ You can also upload a local PDF file for processing:
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
     System.out.println(interaction.outputText().orElse(""));
 
 ### REST
@@ -370,19 +381,36 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
     import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.types.File;
+    import com.google.genai.types.UploadFileConfig;
+    import java.net.URI;
+    import java.net.http.HttpClient;
+    import java.net.http.HttpRequest;
+    import java.net.http.HttpResponse;
     import java.util.Arrays;
     import java.util.List;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Summarize this document.").build();
+    String longContextPdfPath = "https://arxiv.org/pdf/2312.11805";
+    HttpClient httpClient = HttpClient.newHttpClient();
+    HttpRequest request = HttpRequest.newBuilder().uri(URI.create(longContextPdfPath)).build();
+    byte[] pdfBytes = httpClient.send(request, HttpResponse.BodyHandlers.ofByteArray()).body();
+
+    File sampleDoc =
+        client.files.upload(
+            pdfBytes, UploadFileConfig.builder().mimeType("application/pdf").build());
+
+    String prompt = "Summarize this document";
+
     Content docContent =
         DocumentContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
-            .mimeType(DocumentContentMimeType.APPLICATION_PDF)
+            .uri(sampleDoc.uri().orElse(""))
+            .mimeType(DocumentContentMimeType.of(sampleDoc.mimeType().orElse("application/pdf")))
             .build();
+    Content textContent = TextContent.builder().text(prompt).build();
 
-    List<Content> contents = Arrays.asList(textContent, docContent);
+    List<Content> contents = Arrays.asList(docContent, textContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
@@ -392,7 +420,6 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
     System.out.println(interaction.outputText().orElse(""));
 
 ### REST
@@ -540,19 +567,26 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
     import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.types.File;
+    import com.google.genai.types.UploadFileConfig;
     import java.util.Arrays;
     import java.util.List;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Summarize this document.").build();
+    File sampleFile =
+        client.files.upload(
+            new java.io.File("large_file.pdf"),
+            UploadFileConfig.builder().mimeType("application/pdf").build());
+
     Content docContent =
         DocumentContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
-            .mimeType(DocumentContentMimeType.APPLICATION_PDF)
+            .uri(sampleFile.uri().orElse(""))
+            .mimeType(DocumentContentMimeType.of(sampleFile.mimeType().orElse("application/pdf")))
             .build();
+    Content textContent = TextContent.builder().text("Summarize this document").build();
 
-    List<Content> contents = Arrays.asList(textContent, docContent);
+    List<Content> contents = Arrays.asList(docContent, textContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
@@ -562,7 +596,6 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
     System.out.println(interaction.outputText().orElse(""));
 
 ### REST
@@ -657,39 +690,24 @@ metadata by calling [`files.get`](https://ai.google.dev/api/rest/v1beta/files/ge
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.Content;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.DocumentContent;
-    import com.google.genai.gaos.models.interactions.DocumentContentMimeType;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.interactions.TextContent;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import java.util.Arrays;
-    import java.util.List;
+    import com.google.genai.types.File;
+    import com.google.genai.types.UploadFileConfig;
+    import java.nio.charset.StandardCharsets;
+    import java.nio.file.Files;
+    import java.nio.file.Path;
+    import java.nio.file.Paths;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Summarize this document.").build();
-    Content docContent =
-        DocumentContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
-            .mimeType(DocumentContentMimeType.APPLICATION_PDF)
-            .build();
+    Path fpath = Paths.get("example.pdf");
+    Files.write(fpath, "hello".getBytes(StandardCharsets.UTF_8));
 
-    List<Content> contents = Arrays.asList(textContent, docContent);
+    File file =
+        client.files.upload(
+            fpath.toFile(), UploadFileConfig.builder().mimeType("application/pdf").build());
 
-    CreateModelInteraction params =
-        CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.ofContent(contents))
-            .build();
-
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println(interaction.outputText().orElse(""));
+    File fileInfo = client.files.get(file.name().orElse(""), null);
+    System.out.println(fileInfo.toJson());
 
 ### REST
 
@@ -810,19 +828,53 @@ prompt stays within the model's context window.
     import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.types.File;
+    import com.google.genai.types.UploadFileConfig;
+    import java.net.URI;
+    import java.net.http.HttpClient;
+    import java.net.http.HttpRequest;
+    import java.net.http.HttpResponse;
     import java.util.Arrays;
     import java.util.List;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Summarize this document.").build();
-    Content docContent =
-        DocumentContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
-            .mimeType(DocumentContentMimeType.APPLICATION_PDF)
-            .build();
+    String docUrl1 = "https://arxiv.org/pdf/2312.11805";
+    String docUrl2 = "https://arxiv.org/pdf/2403.05530";
 
-    List<Content> contents = Arrays.asList(textContent, docContent);
+    HttpClient httpClient = HttpClient.newHttpClient();
+    byte[] docData1 =
+        httpClient
+            .send(HttpRequest.newBuilder().uri(URI.create(docUrl1)).build(), HttpResponse.BodyHandlers.ofByteArray())
+            .body();
+    byte[] docData2 =
+        httpClient
+            .send(HttpRequest.newBuilder().uri(URI.create(docUrl2)).build(), HttpResponse.BodyHandlers.ofByteArray())
+            .body();
+
+    File samplePdf1 =
+        client.files.upload(
+            docData1, UploadFileConfig.builder().mimeType("application/pdf").build());
+    File samplePdf2 =
+        client.files.upload(
+            docData2, UploadFileConfig.builder().mimeType("application/pdf").build());
+
+    String prompt =
+        "What is the difference between each of the main benchmarks between these two papers? Output these in a table.";
+
+    Content doc1Content =
+        DocumentContent.builder()
+            .uri(samplePdf1.uri().orElse(""))
+            .mimeType(DocumentContentMimeType.of(samplePdf1.mimeType().orElse("application/pdf")))
+            .build();
+    Content doc2Content =
+        DocumentContent.builder()
+            .uri(samplePdf2.uri().orElse(""))
+            .mimeType(DocumentContentMimeType.of(samplePdf2.mimeType().orElse("application/pdf")))
+            .build();
+    Content textContent = TextContent.builder().text(prompt).build();
+
+    List<Content> contents = Arrays.asList(doc1Content, doc2Content, textContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
@@ -832,7 +884,6 @@ prompt stays within the model's context window.
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
     System.out.println(interaction.outputText().orElse(""));
 
 ### REST

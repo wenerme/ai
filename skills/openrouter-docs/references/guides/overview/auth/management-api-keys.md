@@ -14,9 +14,23 @@ To use the key management API, you first need to create a Management API key:
 
 1. Go to the [Management API Keys page](https://openrouter.ai/settings/management-keys)
 2. Click "Create New Key"
-3. Complete the key creation process
+3. Enter a name and choose an expiration
+4. Copy the key when it is shown. You will not be able to see it again
 
 Management keys cannot be used to make API calls to OpenRouter's completion endpoints - they are exclusively for administrative operations.
+
+### Expiration
+
+We recommend setting an expiration date on every management key. A leaked management key could create, edit and delete the API keys in your account other than those provisioned by a Connect client, and one with no expiration stays valid until you delete it.
+
+* The expiration is fixed when the key is created and cannot be changed afterwards. To extend access, create a new key and delete the old one.
+* Once a key's expiration passes, every request that uses it fails with `401 Unauthorized` and the message `API key expired`. Expired keys still appear on the [Management API Keys page](https://openrouter.ai/settings/management-keys) until you delete them.
+
+<Warning>
+  Automations that call the key management API with an expiring management key must be given a new
+  key before the old one expires, or they will start receiving `401 API key expired` responses.
+  Schedule rotation ahead of the expiration date shown next to the key.
+</Warning>
 
 ## Use Cases
 

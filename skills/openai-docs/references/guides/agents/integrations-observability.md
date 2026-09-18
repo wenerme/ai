@@ -20,7 +20,7 @@ Use hosted MCP tools when the remote server should run through the model surface
 
 Attach a hosted MCP server
 
-```typescript
+```javascript
 import { Agent, hostedMcpTool } from "@openai/agents";
 
 const agent = new Agent({
@@ -59,7 +59,7 @@ Use local transports when your application should connect to the MCP server dire
 
 Connect a local MCP server
 
-```typescript
+```javascript
 import { Agent, MCPServerStdio, run } from "@openai/agents";
 
 const server = new MCPServerStdio({
@@ -122,7 +122,7 @@ The practical split is:
 - Use **hosted MCP** for public remote servers that fit the platform trust model.
 - Use **local or private MCP** when your runtime should own connectivity, filtering, or approvals.
 
-For the platform-wide concept, trust model, and product support story, keep [MCP and Connectors](https://developers.openai.com/api/docs/guides/tools-connectors-mcp) as the canonical reference.
+For the platform-wide concept, trust model, and product support story, keep [MCP servers](https://developers.openai.com/api/docs/guides/tools-connectors-mcp) as the canonical reference.
 
 ## Tracing
 
@@ -140,7 +140,7 @@ If you need less tracing, use the SDK-level or per-run tracing controls rather t
 
 Wrap multiple runs in one trace
 
-```typescript
+```javascript
 import { Agent, run, withTrace } from "@openai/agents";
 
 const agent = new Agent({

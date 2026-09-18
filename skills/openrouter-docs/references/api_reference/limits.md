@@ -229,10 +229,10 @@ export const Template = ({children, data}) => {
 
 OpenRouter enforces two kinds of limits:
 
-| Limit type                      | What it governs                                                              | Error on exceeding                                      | Where to check                                |
-| ------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------- | --------------------------------------------- |
-| [Credit limits](#credit-limits) | How much you can spend (account balance and per-key credit caps)             | <StatusCode code={HTTPStatus.S402_Payment_Required} />  | `GET /api/v1/key` → `limit_remaining`         |
-| [Rate limits](#rate-limits)     | How many requests you can make (free-model request caps and DDoS protection) | <StatusCode code={HTTPStatus.S429_Too_Many_Requests} /> | `X-RateLimit-*` headers on the error response |
+| Limit type                      | What it governs                                                                                  | Error on exceeding                                      | Where to check                                                                             |
+| ------------------------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| [Credit limits](#credit-limits) | How much you can spend (account balance, per-key credit caps, and the in-flight spending budget) | <StatusCode code={HTTPStatus.S402_Payment_Required} />  | `GET /api/v1/key` → `limit_remaining`; `error.metadata.limit_source` on the error response |
+| [Rate limits](#rate-limits)     | How many requests you can make (free-model request caps and DDoS protection)                     | <StatusCode code={HTTPStatus.S429_Too_Many_Requests} /> | `X-RateLimit-*` headers on the error response                                              |
 
 ## Checking your limits
 
@@ -314,17 +314,47 @@ type Key = {
 
 ## Credit limits
 
-Credit limits govern how much you can spend. They come from two places:
+Credit limits govern how much you can spend. They come from three places:
 
 1. **Account balance**, your available credits across the account. If your account has a negative credit balance, you may see <StatusCode code={HTTPStatus.S402_Payment_Required} /> errors, including for free models. Adding credits to put your balance above zero allows you to use those models again.
 2. **Per-key credit limits**, an optional spending cap configured on an individual API key. The `limit`, `limit_reset`, and `limit_remaining` fields in the `GET /api/v1/key` response above describe this cap and how much of it remains.
+3. **In-flight spending budget**, a cap on the estimated token cost of the paid requests you have running or recently completed, relative to your balance. See [In-flight spending budget](#in-flight-spending-budget) below.
+
+### In-flight spending budget
+
+OpenRouter charges a request when it finishes, so many requests running at the same time could commit more than your balance covers before any of them settles. To prevent that, OpenRouter estimates each paid request's token cost up front, at the endpoint's prices: the input tokens, plus the completion tokens allowed by `max_tokens` up to a fixed per-request cap (the cap is used when `max_tokens` is not set). Only token prices are estimated; per-request fees, plugin charges, and image pricing are not part of the estimate, so a request whose cost has no token component is not held. The estimate is held against your account while the request runs. When the request completes or fails, the hold is replaced by the request's actual cost for a short settlement window, and then released.
+
+The total that can be held at once is your in-flight spending budget: a fraction of your current credit balance, up to a fixed ceiling. A request whose estimated cost does not fit alongside your running and recently completed requests is rejected with <StatusCode code={HTTPStatus.S402_Payment_Required} /> before it reaches a provider, even though your balance is positive. The error's `metadata` says which case you hit:
+
+* `"reason": "in_flight_budget_exhausted"` with `"limit_source": "openrouter_in_flight_budget"`: your running and recently completed requests already fill the budget. This is transient and can occur with no request still running, while recent costs are settling. The response includes a `Retry-After` header; wait for it and retry.
+* `"reason": "weight_exceeds_budget"` with `"limit_source": "openrouter_credits"`: this single request's estimated cost is larger than your whole budget, so retrying will not help. Lower `max_tokens` or the prompt size, or add credits.
+
+Every <StatusCode code={HTTPStatus.S402_Payment_Required} /> whose `metadata` carries `limit_source` also carries `remedy_hint`, a one-line human-readable next step for that source. It is meant for people reading logs; branch on `limit_source`, not on the hint text.
+
+```json theme={null}
+{
+  "error": {
+    "code": 402,
+    "message": "This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests settle, or add credits.",
+    "metadata": {
+      "reason": "in_flight_budget_exhausted",
+      "limit_source": "openrouter_in_flight_budget",
+      "remedy_hint": "Retry after your in-flight requests settle (see the Retry-After header). Adding credits at https://openrouter.ai/settings/credits raises your in-flight budget, up to a capped ceiling."
+    }
+  }
+}
+```
+
+The budget applies to prepaid accounts spending their own credits, and only to a subset of them: accounts whose balance is below a threshold, and, while the mechanism is being rolled out, newer accounts without an established spending history. A larger balance raises the budget up to the ceiling, and a balance at or above the threshold is not subject to it at all. It does not apply to requests to free models, to requests served entirely with your own provider keys (see [BYOK](/docs/guides/overview/auth/byok)) that use no paid plugins, or to enterprise, paid-subscription, or invoice-billed accounts.
 
 ### Handling 402 errors
 
 To resolve <StatusCode code={HTTPStatus.S402_Payment_Required} /> errors:
 
-* **Add credits** to bring your account balance above zero.
+* **Check `error.metadata.limit_source`** in the response body. `openrouter_in_flight_budget` means your running and recently completed requests filled your [in-flight spending budget](#in-flight-spending-budget), not your balance: wait for the `Retry-After` header and retry. `openrouter_key_limit` means the API key's credit limit is exhausted. `openrouter_credits` means your balance cannot cover the request, or the single request is too expensive for your in-flight budget.
+* **Add credits** to bring your account balance above zero, or to raise your in-flight spending budget.
 * **Check per-key limits.** If `limit_remaining` on the key is exhausted, raise the key's credit limit or wait for it to reset (see `limit_reset`).
+* **Reduce the request size** (fewer input tokens or a lower `max_tokens`) so its estimated cost fits your balance and in-flight budget.
 * **Monitor proactively.** Call `GET /api/v1/key` as shown above to track `limit_remaining` and usage before requests start failing.
 
 ## Rate limits

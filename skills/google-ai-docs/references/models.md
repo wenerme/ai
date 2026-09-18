@@ -121,7 +121,7 @@ New](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
 | [Veo 3.1 Lite](https://ai.google.dev/gemini-api/docs/models/veo-3.1-lite-generate-preview) | High-efficiency, low-cost, developer-first video generation, editing, and cinematic control from the Veo 3.1 family. | ``` veo-3.1-lite-generate-preview ``` |
 | [Gemini Omni Flash](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash) | Fast video generation, editing, keyframe interpolation, and extension with native audio. | ``` gemini-omni-1.1-flash ``` |
 | [Nano Banana](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-image) | State-of-the-art native image generation and editing designed for fast, creative workflows. | ``` gemini-2.5-flash-image ``` |
-| [Imagen 4 (Deprecated)](https://ai.google.dev/gemini-api/docs/models/imagen) | Text-to-image model featuring fast and ultra-fast generation and exceptional clarity up to 2K resolution. | ``` imagen-4.0-generate ``` |
+| Imagen 4 (Shut down) | Text-to-image model featuring fast and ultra-fast generation (shut down). | ``` imagen-4.0-generate ``` |
 
 ## Music generation models
 

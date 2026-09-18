@@ -21413,7 +21413,7 @@ curl https://api.openai.com/v1/agents/sessions \
 
 **delete** `/agents/sessions/{session_id}`
 
-Removes a managed agent session from the public API and returns a deletion confirmation. Physical cleanup may continue asynchronously. See [managing sessions](/api/docs/guides/agents-api/sessions/manage).
+Removes a managed agent session from the public API and returns a deletion confirmation. If backend execution has ended, deletion can cancel a still-open public turn and abandon unpublished outputs. Running execution must be cancelled first. Physical cleanup may continue asynchronously. See [managing sessions](/api/docs/guides/agents-api/sessions/manage).
 
 ### Path Parameters
 
@@ -24146,7 +24146,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/artifacts/$ARTIFACT_I
 
 **post** `/agents/sessions/{session_id}/events`
 
-Submits message, cancellation, or tool-result events to a managed agent session. See [session events](/api/docs/guides/agents-api/sessions/events).
+Submits message, cancellation, or tool-result events to a managed agent session. Cancellation can recover a still-open turn whose backend execution has ended by marking it cancelled and abandoning unpublished outputs. Saved results, published files, and existing terminal outcomes are preserved. HTTP 202 confirms acceptance, not durable completion. See [session events](/api/docs/guides/agents-api/sessions/events).
 
 ### Header Parameters
 

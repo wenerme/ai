@@ -19,7 +19,7 @@ Containers endpoints
 
 ## list\_container\_files
 
-Lists the files in a container, in lexicographic path order. The container id is the canonical id returned in bash/shell tool results; a restarted session is a separate container with its own id. Paginate with `limit` and `after` (pass the previous page’s `last_id`); `has_more: true` always means the next page is fetchable that way.
+Lists the files in a container, in lexicographic path order. The container id is the canonical id returned in bash/shell tool results; a restarted session is a separate container with its own id. Paginate with `limit` and `after` (pass the previous page’s `last_id`); `has_more: true` always means the next page is fetchable that way. `last_id` is the resume cursor: it is the last listed file’s id, except when a page ends at the per-request scan bound on hidden bookkeeping objects, where it names the scan position instead and may not appear in `data` (which can then be empty).
 
 ### Example Usage
 
@@ -51,7 +51,7 @@ with OpenRouter(
 | `x_open_router_title`      | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                                                                                                                                    |                            |
 | `x_open_router_categories` | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                                                                                                                           |                            |
 | `limit`                    | *Optional\[int]*                                                    | :heavy\_minus\_sign: | Maximum number of files to return (1-1000). Defaults to 100 when absent.                                                                                                                                                                                              | 100                        |
-| `after`                    | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Forward cursor: a container file id from a previous page (typically `last_id`); listing resumes strictly after that file.                                                                                                                                             | cfile\_b3V0L3JlcG9ydC5jc3Y |
+| `after`                    | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Forward cursor: the previous page’s `last_id` (or any container file id); listing resumes strictly after that path.                                                                                                                                                   | cfile\_b3V0L3JlcG9ydC5jc3Y |
 | `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.mdx) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                                                                                                                                   |                            |
 
 ### Response

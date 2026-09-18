@@ -1,10 +1,10 @@
-# Back up and restore large reference architectures
+# Back up and restore large GitLab environments
 
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed
 
 GitLab backups preserve data consistency and enable disaster recovery for
-large-scale GitLab deployments. This process:
+large GitLab environments. This process:
 
 - Coordinates data backups across distributed storage components
 - Preserves PostgreSQL databases up to multiple terabytes in size
@@ -13,17 +13,10 @@ large-scale GitLab deployments. This process:
 - Creates recoverable copies of configuration and secret files
 - Enables restoration of system data with minimal downtime
 
-Follow these procedures for GitLab environments running reference architectures
-that support 3,000+ users, with special considerations for cloud-based
-databases and object storage.
-
-> [!note]
-> This document is intended for environments using:
->
-> - [Linux package (Omnibus) and cloud-native hybrid reference architectures 60 RPS / 3,000 users and up](../reference_architectures/_index.md)
-> - [Amazon RDS](https://aws.amazon.com/rds/) for PostgreSQL data
-> - [Amazon S3](https://aws.amazon.com/s3/) for object storage
-> - [Object storage](../object_storage.md) to store everything possible, including [blobs](backup_gitlab.md#blobs) and [container registry](backup_gitlab.md#container-registry)
+Use these procedures when the standard backup process is impractical because of database or
+repository size, or when your environment uses external databases, object storage, or distributed
+repository storage. This guidance applies to environments based on a reference architecture and
+other environments with these characteristics.
 
 ## Configure daily backups
 

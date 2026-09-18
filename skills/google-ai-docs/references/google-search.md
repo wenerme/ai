@@ -54,8 +54,8 @@ Grounding helps you build applications that can:
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("What is the current score of the Lakers game?"))
-            .tools(Arrays.asList(new GoogleSearch()))
+            .input(InteractionsInput.of("Who won the euro 2024?"))
+            .tools(Arrays.asList(GoogleSearch.builder().build()))
             .build();
 
     Interaction interaction =
@@ -224,8 +224,8 @@ of the text it cites. Here's how to extract and display them.
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("What happened in tech news today?"))
-            .tools(Arrays.asList(new GoogleSearch()))
+            .input(InteractionsInput.of("Who won the euro 2024?"))
+            .tools(Arrays.asList(GoogleSearch.builder().build()))
             .build();
 
     Interaction interaction =
@@ -236,15 +236,26 @@ of the text it cites. Here's how to extract and display them.
         if (step instanceof ModelOutputStep) {
           ModelOutputStep outputStep = (ModelOutputStep) step;
           if (outputStep.content().isPresent()) {
-            for (Content content : outputStep.content().get()) {
-              if (content instanceof TextContent) {
-                TextContent textContent = (TextContent) content;
-                System.out.println("Response: " + textContent.text().orElse(""));
-                if (textContent.annotations().isPresent()) {
+            for (Content contentBlock : outputStep.content().get()) {
+              if (contentBlock instanceof TextContent) {
+                TextContent textContent = (TextContent) contentBlock;
+                String text = textContent.text().orElse("");
+                System.out.println(text);
+                if (textContent.annotations().isPresent()
+                    && !textContent.annotations().get().isEmpty()) {
+                  System.out.println("\nCitations:");
                   for (Annotation annotation : textContent.annotations().get()) {
                     if (annotation instanceof URLCitation) {
                       URLCitation citation = (URLCitation) annotation;
-                      System.out.printf("  [%s](%s)\n", citation.title().orElse(""), citation.url().orElse(""));
+                      int start = citation.startIndex().orElse(0);
+                      int end = citation.endIndex().orElse(0);
+                      String citedText =
+                          (start >= 0 && end <= text.length() && start <= end)
+                              ? text.substring(start, end)
+                              : "";
+                      System.out.printf(
+                          "  [%s](%s)%n", citation.title().orElse(""), citation.url().orElse(""));
+                      System.out.printf("    Cited text: \"%s\"%n", citedText);
                     }
                   }
                 }

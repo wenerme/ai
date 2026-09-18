@@ -54,18 +54,18 @@ threads. Some quick actions might not be available to all subscription tiers.
 
 Add one or more items as child items.
 
-**Availability**:
+Availability:
 
 - Epic (add issues, tasks, objectives, or key results)
 - Issue (add tasks, objectives, or key results)
 - Objective (add objectives or key results)
 
-**Parameters**:
+Parameters:
 
 - `<item>`: The item to add as a child. The value should be in the format of `#item`, `group/project#item`, or a URL to the item.
   Multiple work items can be added as child items at the same time.
 
-**Examples**:
+Examples:
 
 - Add a single child item:
 
@@ -89,15 +89,15 @@ Add one or more items as child items.
 
 Add one or more active CRM contacts.
 
-**Availability**:
+Availability:
 
 - Issue
 
-**Parameters**:
+Parameters:
 
 - `[contact:email1@example.com]`: One or more contact emails in the format `contact:email@example.com`.
 
-**Examples**:
+Examples:
 
 - Add a single contact:
 
@@ -111,7 +111,7 @@ Add one or more active CRM contacts.
   /add_contacts [contact:alex@example.com] [contact:sam@example.com]
   ```
 
-**Additional details**:
+Additional details:
 
 - For more information, see [CRM contacts](../crm/_index.md).
 
@@ -121,16 +121,16 @@ Add one or more active CRM contacts.
 
 Add up to six email participants.
 
-**Availability**:
+Availability:
 
 - Incident
 - Issue
 
-**Parameters**:
+Parameters:
 
 - `email1 email2`: One or more email addresses, separated by spaces.
 
-**Examples**:
+Examples:
 
 - Add a single email participant:
 
@@ -144,7 +144,7 @@ Add up to six email participants.
   /add_email alex@example.com sam@example.com
   ```
 
-**Additional details**:
+Additional details:
 
 - Not supported in [issue templates](description_templates.md).
 - For more information, see [email participants](service_desk/external_participants.md).
@@ -153,11 +153,11 @@ Add up to six email participants.
 
 Approve the merge request.
 
-**Availability**:
+Availability:
 
 - Merge request
 
-**Examples**:
+Examples:
 
 - Approve a merge request:
 
@@ -165,7 +165,7 @@ Approve the merge request.
   /approve
   ```
 
-**Additional details**:
+Additional details:
 
 - To unapprove a merge request, use [`/unapprove`](#unapprove).
 
@@ -175,7 +175,7 @@ Approve the merge request.
 
 Assign one or more users to the work item.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
@@ -185,12 +185,12 @@ Assign one or more users to the work item.
 - Objective
 - Key Result
 
-**Parameters**:
+Parameters:
 
 - `@user1 @user2`: One or more usernames to assign. Usernames must be prefixed with `@`.
 - `me`: Assign yourself to the work item.
 
-**Examples**:
+Examples:
 
 - Assign a single user:
 
@@ -210,7 +210,7 @@ Assign one or more users to the work item.
   /assign me
   ```
 
-**Additional details**:
+Additional details:
 
 - On GitLab Premium and Ultimate, you can assign multiple users in a single
   command by separating usernames with spaces.
@@ -223,18 +223,18 @@ Assign one or more users to the work item.
 
 Assign one or more users as reviewers, or request a new review from existing reviewers.
 
-**Alias for [`/request_review`](#request_review)**.
+Alias for [`/request_review`](#request_review).
 
-**Availability**:
+Availability:
 
 - Merge request
 
-**Parameters**:
+Parameters:
 
 - `@user1 @user2`: One or more usernames to assign as reviewers. Usernames must be prefixed with `@`.
 - `me`: Assign yourself as a reviewer.
 
-**Examples**:
+Examples:
 
 - Assign a single reviewer:
 
@@ -254,7 +254,7 @@ Assign one or more users as reviewers, or request a new review from existing rev
   /assign_reviewer me
   ```
 
-**Additional details**:
+Additional details:
 
 - If the user is not already a reviewer, assigns them as a reviewer.
 - If the user is already a reviewer, requests a new review from them (resets their review state and sends notifications).
@@ -268,17 +268,17 @@ Assign one or more users as reviewers, or request a new review from existing rev
 
 Toggle an emoji reaction.
 
-**Availability**:
+Availability:
 
 - Task
 - Objective
 - Key Result
 
-**Parameters**:
+Parameters:
 
 - `:emoji:`: The emoji to toggle. Must be in the format `:emoji_name:`.
 
-**Examples**:
+Examples:
 
 - Toggle a thumbs up reaction:
 
@@ -292,7 +292,7 @@ Toggle an emoji reaction.
   /award :heart:
   ```
 
-**Additional details**:
+Additional details:
 
 - `/award` is an alias of `/react`.
 - For more information, see [emoji reactions](../emoji_reactions.md).
@@ -301,18 +301,18 @@ Toggle an emoji reaction.
 
 Mark the item as blocked by other items.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
 - Issue
 - Merge request
 
-**Parameters**:
+Parameters:
 
 - `<item1> <item2>`: One or more items that block this item. The value should be in the format of `#item`, `group/project#item`, or the full URL. For merge requests, use `!merge_request`, `group/project!merge_request`, or the merge request URL.
 
-**Examples**:
+Examples:
 
 - Mark as blocked by a single item:
 
@@ -338,7 +338,7 @@ Mark the item as blocked by other items.
   /blocked_by !456
   ```
 
-**Additional details**:
+Additional details:
 
 - To remove the blocking relationship, use [`/unlink`](#unlink).
 - To mark the items as related, none blocking the other, use [`/relate`](#relate).
@@ -347,18 +347,18 @@ Mark the item as blocked by other items.
 
 Mark the item as blocking other items.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
 - Issue
 - Merge request
 
-**Parameters**:
+Parameters:
 
 - `<item1> <item2>`: One or more items that this item blocks. The value should be in the format of `#item`, `group/project#item`, or the full URL. For merge requests, use `!merge_request`, `group/project!merge_request`, or the merge request URL.
 
-**Examples**:
+Examples:
 
 - Mark as blocking a single item:
 
@@ -384,7 +384,7 @@ Mark the item as blocking other items.
   /blocks !456
   ```
 
-**Additional details**:
+Additional details:
 
 - To remove the blocking relationship, use [`/unlink`](#unlink).
 - To mark the items as related, none blocking the other, use [`/relate`](#relate).
@@ -393,15 +393,15 @@ Mark the item as blocking other items.
 
 Move issue to a column on the board.
 
-**Availability**:
+Availability:
 
 - Issue
 
-**Parameters**:
+Parameters:
 
 - `~column`: The label name of the board column to move the issue to. Must be prefixed with `~`.
 
-**Examples**:
+Examples:
 
 - Move to a column:
 
@@ -409,7 +409,7 @@ Move issue to a column on the board.
   /board_move ~"In Progress"
   ```
 
-**Additional details**:
+Additional details:
 
 - The project must have only one issue board.
 
@@ -422,11 +422,11 @@ Schedule check-in reminders for objectives.
 > [!flag]
 > The availability of this feature is controlled by a feature flag. For more information, see the history.
 
-**Availability**:
+Availability:
 
 - Objective
 
-**Parameters**:
+Parameters:
 
 - `<cadence>`: The reminder cadence. Options are:
   - `weekly`
@@ -434,7 +434,7 @@ Schedule check-in reminders for objectives.
   - `monthly`
   - `never` (default)
 
-**Examples**:
+Examples:
 
 - Set weekly reminders:
 
@@ -448,7 +448,7 @@ Schedule check-in reminders for objectives.
   /checkin_reminder never
   ```
 
-**Additional details**:
+Additional details:
 
 - For more information, see [schedule OKR check-in reminders](../okrs.md#schedule-okr-check-in-reminders).
 
@@ -456,7 +456,7 @@ Schedule check-in reminders for objectives.
 
 Clear the health status.
 
-**Availability**:
+Availability:
 
 - Epic
 - Issue
@@ -464,7 +464,7 @@ Clear the health status.
 - Objective
 - Key Result
 
-**Examples**:
+Examples:
 
 - Clear health status:
 
@@ -472,7 +472,7 @@ Clear the health status.
   /clear_health_status
   ```
 
-**Additional details**:
+Additional details:
 
 - For more information, see [health status](issues/managing_issues.md#health-status).
 
@@ -480,12 +480,12 @@ Clear the health status.
 
 Clear the weight.
 
-**Availability**:
+Availability:
 
 - Issue
 - Task
 
-**Examples**:
+Examples:
 
 - Clear weight:
 
@@ -497,13 +497,13 @@ Clear the weight.
 
 Clone the work item to a given group or project.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
 - Issue
 
-**Parameters**:
+Parameters:
 
 - `<path/to/group_or_project>`: The path to the target group or project. If not provided, clones to the current project.
 - `--with_notes`: Optional flag to include comments and system notes in the clone.
@@ -512,7 +512,7 @@ Clone the work item to a given group or project.
   Multi-word type names (for example, `Key Result`) do not need quoting because
   `]` terminates the value.
 
-**Examples**:
+Examples:
 
 - Clone to another project:
 
@@ -544,7 +544,7 @@ Clone the work item to a given group or project.
   /clone group/project [type:Key Result]
   ```
 
-**Additional details**:
+Additional details:
 
 - Copies as much data as possible as long as the target contains equivalent objects like labels, milestones, or epics.
 - Does not copy comments or system notes unless `--with_notes` is provided as an argument.
@@ -569,7 +569,7 @@ Clone the work item to a given group or project.
 
 Close the work item.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
@@ -579,7 +579,7 @@ Close the work item.
 - Objective
 - Key Result
 
-**Examples**:
+Examples:
 
 - Close a work item:
 
@@ -587,7 +587,7 @@ Close the work item.
   /close
   ```
 
-**Additional details**:
+Additional details:
 
 - To reopen a work item, use [`/reopen`](#reopen).
 
@@ -595,7 +595,7 @@ Close the work item.
 
 Mark the work item as confidential.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
@@ -604,7 +604,7 @@ Mark the work item as confidential.
 - Objective
 - Key Result
 
-**Examples**:
+Examples:
 
 - Mark as confidential:
 
@@ -612,7 +612,7 @@ Mark the work item as confidential.
   /confidential
   ```
 
-**Additional details**:
+Additional details:
 
 - For more information, see [who can see confidential issues](issues/confidential_issues.md#who-can-see-confidential-issues),
   [OKRs](../okrs.md#who-can-see-confidential-okrs), or
@@ -623,16 +623,16 @@ Mark the work item as confidential.
 
 Convert an issue into a Service Desk ticket.
 
-**Availability**:
+Availability:
 
 - Incident
 - Issue
 
-**Parameters**:
+Parameters:
 
 - `<email address>`: The email address to associate with the ticket.
 
-**Examples**:
+Examples:
 
 - Convert to a ticket:
 
@@ -640,7 +640,7 @@ Convert an issue into a Service Desk ticket.
   /convert_to_ticket user@example.com
   ```
 
-**Additional details**:
+Additional details:
 
 - This quick action is available only when [Service Desk is set up](service_desk/configure.md)
   for the project.
@@ -654,7 +654,7 @@ Convert an issue into a Service Desk ticket.
 
 Copy labels and milestone from another item.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
@@ -664,11 +664,11 @@ Copy labels and milestone from another item.
 - Objective
 - Key Result
 
-**Parameters**:
+Parameters:
 
 - `<#item>`: The item to copy metadata from. For merge requests, use the format `!MR_IID`. For other items, use `#item` or a URL.
 
-**Examples**:
+Examples:
 
 - Copy metadata from an issue:
 
@@ -688,7 +688,7 @@ Copy labels and milestone from another item.
   /copy_metadata https://gitlab.com/group/project/-/work_items/123
   ```
 
-**Additional details**:
+Additional details:
 
 - The item you want to copy metadata from must be in the same namespace.
 
@@ -696,17 +696,17 @@ Copy labels and milestone from another item.
 
 Create a new merge request starting from the current issue.
 
-**Availability**:
+Availability:
 
 - Incident
 - Issue
 - Task
 
-**Parameters**:
+Parameters:
 
 - `<branch name>`: The name of the branch to create for the merge request.
 
-**Examples**:
+Examples:
 
 - Create a merge request:
 
@@ -718,7 +718,7 @@ Create a new merge request starting from the current issue.
 
 Mark a to-do item as done.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
@@ -728,7 +728,7 @@ Mark a to-do item as done.
 - Objective
 - Key Result
 
-**Examples**:
+Examples:
 
 - Mark to-do as done:
 
@@ -740,11 +740,11 @@ Mark a to-do item as done.
 
 Set the draft status of a merge request.
 
-**Availability**:
+Availability:
 
 - Merge request
 
-**Examples**:
+Examples:
 
 - Mark as draft:
 
@@ -752,7 +752,7 @@ Set the draft status of a merge request.
   /draft
   ```
 
-**Additional details**:
+Additional details:
 
 - For more information, see [draft status](merge_requests/drafts.md).
 
@@ -760,7 +760,7 @@ Set the draft status of a merge request.
 
 Set the due date.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
@@ -768,11 +768,11 @@ Set the due date.
 - Task
 - Key Result
 
-**Parameters**:
+Parameters:
 
 - `<date>`: The due date. Examples of valid dates include `in 2 days`, `this Friday`, and `December 31st`.
 
-**Examples**:
+Examples:
 
 - Set due date to a specific date:
 
@@ -792,7 +792,7 @@ Set the due date.
   /due this Friday
   ```
 
-**Additional details**:
+Additional details:
 
 - For more date format examples, see [Chronic examples](https://gitlab.com/gitlab-org/ruby/gems/gitlab-chronic#examples).
 - To remove the due date, use [`/remove_due_date`](#remove_due_date).
@@ -801,17 +801,17 @@ Set the due date.
 
 Close this item and mark as related to, and a duplicate of, another item.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
 - Issue
 
-**Parameters**:
+Parameters:
 
 - `<item>`: The item this is a duplicate of. The value should be in the format of `#item`, `group/project#item`, or a URL.
 
-**Examples**:
+Examples:
 
 - Mark as duplicate:
 
@@ -829,16 +829,16 @@ Close this item and mark as related to, and a duplicate of, another item.
 
 Add to an epic as a child item.
 
-**Availability**:
+Availability:
 
 - Epic
 - Issue
 
-**Parameters**:
+Parameters:
 
 - `<epic>`: The epic to add this item to. The value should be in the format of `&epic`, `#epic`, `group&epic`, `group#epic`, or a URL to an epic.
 
-**Examples**:
+Examples:
 
 - Add to an epic by reference:
 
@@ -858,7 +858,7 @@ Add to an epic as a child item.
   /epic https://gitlab.com/groups/group/-/epics/123
   ```
 
-**Additional details**:
+Additional details:
 
 - `/set_parent` behaves the same, but is available for more work item types.
 
@@ -866,18 +866,18 @@ Add to an epic as a child item.
 
 Set the time estimate.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
 - Issue
 - Merge request
 
-**Parameters**:
+Parameters:
 
 - `<time>`: The time estimate. For example, `1mo 2w 3d 4h 5m`.
 
-**Examples**:
+Examples:
 
 - Set time estimate:
 
@@ -891,7 +891,7 @@ Set the time estimate.
   /estimate 8h
   ```
 
-**Additional details**:
+Additional details:
 
 - `/estimate_time` is an alias for `/estimate`.
 - To remove an estimate, use [`/remove_estimate`](#remove_estimate).
@@ -901,7 +901,7 @@ Set the time estimate.
 
 Set the health status.
 
-**Availability**:
+Availability:
 
 - Epic
 - Issue
@@ -909,11 +909,11 @@ Set the health status.
 - Objective
 - Key Result
 
-**Parameters**:
+Parameters:
 
 - `<value>`: The health status value. Valid options are `on_track`, `needs_attention`, and `at_risk`.
 
-**Examples**:
+Examples:
 
 - Set health status to on track:
 
@@ -933,7 +933,7 @@ Set the health status.
   /health_status at_risk
   ```
 
-**Additional details**:
+Additional details:
 
 - For more information, see [health status](issues/managing_issues.md#health-status).
 
@@ -943,7 +943,7 @@ Set the health status.
 
 Make a comment an internal note.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
@@ -954,7 +954,7 @@ Make a comment an internal note.
 - Objective
 - Key Result
 
-**Examples**:
+Examples:
 
 - Make a comment an internal note:
 
@@ -963,7 +963,7 @@ Make a comment an internal note.
   /internal_note
   ```
 
-**Additional details**:
+Additional details:
 
 - You must have the Planner, Reporter, Developer, Maintainer, or Owner role.
 - You can't use `/internal_note` in a description, as a reply in a non-internal discussion, or when editing an existing comment.
@@ -974,18 +974,18 @@ Make a comment an internal note.
 
 Set the iteration.
 
-**Availability**:
+Availability:
 
 - Incident
 - Issue
 
-**Parameters**:
+Parameters:
 
 - `*iteration:<iteration ID> or <iteration name>`: Set to a specific iteration by ID or name.
 - `[cadence:<iteration cadence ID> or <iteration cadence name>] <--current or --next>`: Set to the current or next iteration of a specific cadence.
 - `--current` or `--next`: Set to the current or next iteration when a group has one iteration cadence.
 
-**Examples**:
+Examples:
 
 - Set to a specific iteration by name:
 
@@ -1005,7 +1005,7 @@ Set the iteration.
   /iteration --next
   ```
 
-**Additional details**:
+Additional details:
 
 - To remove the iteration, use [`/remove_iteration`](#remove_iteration).
 
@@ -1013,7 +1013,7 @@ Set the iteration.
 
 Add one or more labels.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
@@ -1023,12 +1023,12 @@ Add one or more labels.
 - Objective
 - Key Result
 
-**Parameters**:
+Parameters:
 
 - `~label1 ~label2`: One or more label names.
   Label names can also start without a tilde (`~`), but mixed syntax is not supported.
 
-**Examples**:
+Examples:
 
 - Add a single label:
 
@@ -1048,7 +1048,7 @@ Add one or more labels.
   /label bug "high priority"
   ```
 
-**Additional details**:
+Additional details:
 
 - Labels with a space in the name must be in double quotation marks.
 - `/labels` is an alias for `/label`.
@@ -1059,11 +1059,11 @@ Add one or more labels.
 
 Add a link and description to linked resources in an incident.
 
-**Availability**:
+Availability:
 
 - Incident
 
-**Examples**:
+Examples:
 
 - Add a linked resource:
 
@@ -1071,7 +1071,7 @@ Add a link and description to linked resources in an incident.
   /link
   ```
 
-**Additional details**:
+Additional details:
 
 - For more information, see [linked resources](../../operations/incident_management/linked_resources.md).
 
@@ -1079,14 +1079,14 @@ Add a link and description to linked resources in an incident.
 
 Lock the discussions.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
 - Issue
 - Merge request
 
-**Examples**:
+Examples:
 
 - Lock discussions:
 
@@ -1094,7 +1094,7 @@ Lock the discussions.
   /lock
   ```
 
-**Additional details**:
+Additional details:
 
 - To unlock the discussions, use [`/unlock`](#unlock).
 
@@ -1102,11 +1102,11 @@ Lock the discussions.
 
 Merge the changes.
 
-**Availability**:
+Availability:
 
 - Merge request
 
-**Examples**:
+Examples:
 
 - Merge the merge request:
 
@@ -1114,7 +1114,7 @@ Merge the changes.
   /merge
   ```
 
-**Additional details**:
+Additional details:
 
 - Depending on the project setting, this might be [when the pipeline succeeds](merge_requests/auto_merge.md), or adding to a [merge train](../../ci/pipelines/merge_trains.md).
 
@@ -1124,18 +1124,18 @@ Merge the changes.
 
 Set the milestone.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
 - Issue
 - Merge request
 
-**Parameters**:
+Parameters:
 
 - `%milestone`: The milestone name. Must be prefixed with `%`.
 
-**Examples**:
+Examples:
 
 - Set milestone:
 
@@ -1143,7 +1143,7 @@ Set the milestone.
   /milestone %"Sprint 1"
   ```
 
-**Additional details**:
+Additional details:
 
 - To remove the milestone, use [`/remove_milestone`](#remove_milestone).
 
@@ -1151,13 +1151,13 @@ Set the milestone.
 
 Move the work item to another group or project.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
 - Issue
 
-**Parameters**:
+Parameters:
 
 - `<path/to/group_or_project>`: The path to the target group or project.
 - `[type:<work item type>]` (optional): The work item type to use in the target
@@ -1165,7 +1165,7 @@ Move the work item to another group or project.
   Multi-word type names (for example, `Key Result`) do not need quoting because
   `]` terminates the value.
 
-**Examples**:
+Examples:
 
 - Move to another project:
 
@@ -1185,7 +1185,7 @@ Move the work item to another group or project.
   /move group/project [type:Key Result]
   ```
 
-**Additional details**:
+Additional details:
 
 - Be careful when moving a work item to a location with different access rules.
   Before moving the work item, make sure it does not contain sensitive data.
@@ -1210,15 +1210,15 @@ Move the work item to another group or project.
 
 Start escalations for the incident.
 
-**Availability**:
+Availability:
 
 - Incident
 
-**Parameters**:
+Parameters:
 
 - `<policy name>`: The escalation policy name.
 
-**Examples**:
+Examples:
 
 - Start escalations:
 
@@ -1230,13 +1230,13 @@ Start escalations for the incident.
 
 Promote a work item to a specified type.
 
-**Availability**:
+Availability:
 
 - Issue
 - Task
 - Key Result
 
-**Parameters**:
+Parameters:
 
 - `<type>`: The type to promote to. Available options:
   - `Epic` (for issues)
@@ -1244,7 +1244,7 @@ Promote a work item to a specified type.
   - `issue` (for tasks)
   - `objective` (for key results)
 
-**Examples**:
+Examples:
 
 - Promote issue to epic:
 
@@ -1264,7 +1264,7 @@ Promote a work item to a specified type.
   /promote_to objective
   ```
 
-**Additional details**:
+Additional details:
 
 - For issues, `/promote_to_incident` is a shortcut for `/promote_to Incident`.
 - To change the type of work items, also use [`/type`](#type).
@@ -1273,11 +1273,11 @@ Promote a work item to a specified type.
 
 Promote an issue to an incident.
 
-**Availability**:
+Availability:
 
 - Issue
 
-**Examples**:
+Examples:
 
 - Promote to incident:
 
@@ -1285,7 +1285,7 @@ Promote an issue to an incident.
   /promote_to_incident
   ```
 
-**Additional details**:
+Additional details:
 
 - You can also use this quick action when creating a new issue.
 
@@ -1293,11 +1293,11 @@ Promote an issue to an incident.
 
 Publish an issue to an associated Status Page.
 
-**Availability**:
+Availability:
 
 - Issue
 
-**Examples**:
+Examples:
 
 - Publish to status page:
 
@@ -1305,7 +1305,7 @@ Publish an issue to an associated Status Page.
   /publish
   ```
 
-**Additional details**:
+Additional details:
 
 - For more information, see [Status Page](../../operations/incident_management/status_page.md).
 
@@ -1313,18 +1313,18 @@ Publish an issue to an associated Status Page.
 
 Toggle an emoji reaction.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
 - Issue
 - Merge request
 
-**Parameters**:
+Parameters:
 
 - `:emoji:`: The emoji to toggle. Must be in the format `:emoji_name:`.
 
-**Examples**:
+Examples:
 
 - Toggle a thumbs up reaction:
 
@@ -1338,7 +1338,7 @@ Toggle an emoji reaction.
   /react :heart:
   ```
 
-**Additional details**:
+Additional details:
 
 - `/award` is an alias for `/react`.
 
@@ -1346,11 +1346,11 @@ Toggle an emoji reaction.
 
 Set the ready status of a merge request.
 
-**Availability**:
+Availability:
 
 - Merge request
 
-**Examples**:
+Examples:
 
 - Mark as ready:
 
@@ -1358,7 +1358,7 @@ Set the ready status of a merge request.
   /ready
   ```
 
-**Additional details**:
+Additional details:
 
 - For more information, see [mark merge requests as ready](merge_requests/drafts.md#mark-merge-requests-as-ready).
 
@@ -1368,7 +1368,7 @@ Set the ready status of a merge request.
 
 Replace current assignees with those specified.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
@@ -1378,11 +1378,11 @@ Replace current assignees with those specified.
 - Objective
 - Key Result
 
-**Parameters**:
+Parameters:
 
 - `@user1 @user2`: One or more usernames to assign. Usernames must be prefixed with `@`.
 
-**Examples**:
+Examples:
 
 - Reassign to a single user:
 
@@ -1396,7 +1396,7 @@ Replace current assignees with those specified.
   /reassign @alex @sam
   ```
 
-**Additional details**:
+Additional details:
 
 - To add assignees without replacing the previous ones, use [`/assign`](#assign).
 - To remove assignees, use [`/unassign`](#unassign).
@@ -1406,15 +1406,15 @@ Replace current assignees with those specified.
 
 Replace current reviewers with those specified.
 
-**Availability**:
+Availability:
 
 - Merge request
 
-**Parameters**:
+Parameters:
 
 - `@user1 @user2`: One or more usernames to assign as reviewers. Usernames must be prefixed with `@`.
 
-**Examples**:
+Examples:
 
 - Reassign to a single reviewer:
 
@@ -1428,7 +1428,7 @@ Replace current reviewers with those specified.
   /reassign_reviewer @alex @sam
   ```
 
-**Additional details**:
+Additional details:
 
 - To assign reviewers without replacing the previous ones, use [`/assign_reviewer`](#assign_reviewer).
 - To remove reviewers, use [`/unassign_reviewer`](#unassign_reviewer).
@@ -1437,11 +1437,11 @@ Replace current reviewers with those specified.
 
 Rebase the source branch on the latest commit of the target branch. If there are conflicts, nothing happens.
 
-**Availability**:
+Availability:
 
 - Merge request
 
-**Examples**:
+Examples:
 
 - Rebase the merge request:
 
@@ -1449,7 +1449,7 @@ Rebase the source branch on the latest commit of the target branch. If there are
   /rebase
   ```
 
-**Additional details**:
+Additional details:
 
 - For help, see [troubleshooting Git](../../topics/git/troubleshooting_git.md).
 
@@ -1457,7 +1457,7 @@ Rebase the source branch on the latest commit of the target branch. If there are
 
 Replace current labels with those specified.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
@@ -1467,11 +1467,11 @@ Replace current labels with those specified.
 - Objective
 - Key Result
 
-**Parameters**:
+Parameters:
 
 - `~label1 ~label2`: One or more label names. Label names can also start without a tilde (`~`), but mixed syntax is not supported.
 
-**Examples**:
+Examples:
 
 - Replace with a single label:
 
@@ -1485,7 +1485,7 @@ Replace current labels with those specified.
   /relabel ~bug ~"high priority"
   ```
 
-**Additional details**:
+Additional details:
 
 - Labels with a space in the name must be in double quotation marks.
 - To add labels without replacing the previous ones, use [`/label`](#label).
@@ -1495,17 +1495,17 @@ Replace current labels with those specified.
 
 Mark items as related.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
 - Issue
 
-**Parameters**:
+Parameters:
 
 - `<item1> <item2>`: One or more items to relate. The value should be in the format of `#item`, `group/project#item`, or the full URL.
 
-**Examples**:
+Examples:
 
 - Relate to a single item:
 
@@ -1519,7 +1519,7 @@ Mark items as related.
   /relate #123 group/project#456
   ```
 
-**Additional details**:
+Additional details:
 
 - To remove the relationship, use [`/unlink`](#unlink).
 - To mark the items as one blocking another, use [`/blocked_by`](#blocked_by) or [`/blocks`](#blocks).
@@ -1528,17 +1528,17 @@ Mark items as related.
 
 Remove an item as a child item.
 
-**Availability**:
+Availability:
 
 - Epic
 - Issue
 - Objective
 
-**Parameters**:
+Parameters:
 
 - `<item>`: The item to remove as a child. The value should be in the format of `#item`, `group/project#item`, or a URL to the item.
 
-**Examples**:
+Examples:
 
 - Remove a child item:
 
@@ -1556,15 +1556,15 @@ Remove an item as a child item.
 
 Remove one or more CRM contacts.
 
-**Availability**:
+Availability:
 
 - Issue
 
-**Parameters**:
+Parameters:
 
 - `[contact:email1@example.com]`: One or more contact emails in the format `contact:email@example.com`.
 
-**Examples**:
+Examples:
 
 - Remove a single contact:
 
@@ -1578,7 +1578,7 @@ Remove one or more CRM contacts.
   /remove_contacts [contact:alex@example.com] [contact:sam@example.com]
   ```
 
-**Additional details**:
+Additional details:
 
 - For more information, see [CRM contacts](../crm/_index.md).
 
@@ -1586,7 +1586,7 @@ Remove one or more CRM contacts.
 
 Remove the due date.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
@@ -1594,7 +1594,7 @@ Remove the due date.
 - Task
 - Key Result
 
-**Examples**:
+Examples:
 
 - Remove due date:
 
@@ -1602,7 +1602,7 @@ Remove the due date.
   /remove_due_date
   ```
 
-**Additional details**:
+Additional details:
 
 - To add or replace a due date, use [`/due`](#due).
 
@@ -1612,16 +1612,16 @@ Remove the due date.
 
 Remove up to six email participants.
 
-**Availability**:
+Availability:
 
 - Incident
 - Issue
 
-**Parameters**:
+Parameters:
 
 - `email1 email2`: One or more email addresses, separated by spaces.
 
-**Examples**:
+Examples:
 
 - Remove a single email participant:
 
@@ -1635,7 +1635,7 @@ Remove up to six email participants.
   /remove_email alex@example.com sam@example.com
   ```
 
-**Additional details**:
+Additional details:
 
 - Not supported in issue templates, merge requests, or epics.
 - For more information, see [email participants](service_desk/external_participants.md).
@@ -1644,14 +1644,14 @@ Remove up to six email participants.
 
 Remove the time estimate.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
 - Issue
 - Merge request
 
-**Examples**:
+Examples:
 
 - Remove time estimate:
 
@@ -1659,7 +1659,7 @@ Remove the time estimate.
   /remove_estimate
   ```
 
-**Additional details**:
+Additional details:
 
 - `/remove_time_estimate` is an alias for `/remove_estimate`.
 - To add or replace an estimate, use [`/estimate`](#estimate).
@@ -1668,12 +1668,12 @@ Remove the time estimate.
 
 Remove the iteration.
 
-**Availability**:
+Availability:
 
 - Incident
 - Issue
 
-**Examples**:
+Examples:
 
 - Remove iteration:
 
@@ -1681,7 +1681,7 @@ Remove the iteration.
   /remove_iteration
   ```
 
-**Additional details**:
+Additional details:
 
 - To set an iteration, use [`/iteration`](#iteration).
 
@@ -1691,14 +1691,14 @@ Remove the iteration.
 
 Remove the milestone.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
 - Issue
 - Merge request
 
-**Examples**:
+Examples:
 
 - Remove milestone:
 
@@ -1706,7 +1706,7 @@ Remove the milestone.
   /remove_milestone
   ```
 
-**Additional details**:
+Additional details:
 
 - To set the milestone, use [`/milestone`](#milestone).
 
@@ -1714,14 +1714,14 @@ Remove the milestone.
 
 Remove the parent from the item.
 
-**Availability**:
+Availability:
 
 - Epic
 - Issue
 - Task
 - Key Result
 
-**Examples**:
+Examples:
 
 - Remove parent:
 
@@ -1729,7 +1729,7 @@ Remove the parent from the item.
   /remove_parent
   ```
 
-**Additional details**:
+Additional details:
 
 - To set the parent item, use [`/set_parent`](#set_parent).
 
@@ -1737,14 +1737,14 @@ Remove the parent from the item.
 
 Remove time spent.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
 - Issue
 - Merge request
 
-**Examples**:
+Examples:
 
 - Remove time spent:
 
@@ -1752,7 +1752,7 @@ Remove time spent.
   /remove_time_spent
   ```
 
-**Additional details**:
+Additional details:
 
 - To add time spent, use [`/spend`](#spend).
 
@@ -1760,11 +1760,11 @@ Remove time spent.
 
 Remove a Zoom meeting from an issue.
 
-**Availability**:
+Availability:
 
 - Issue
 
-**Examples**:
+Examples:
 
 - Remove Zoom meeting:
 
@@ -1772,7 +1772,7 @@ Remove a Zoom meeting from an issue.
   /remove_zoom
   ```
 
-**Additional details**:
+Additional details:
 
 - To add a Zoom meeting, use [`/zoom`](#zoom).
 
@@ -1780,7 +1780,7 @@ Remove a Zoom meeting from an issue.
 
 Reopen the work item.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
@@ -1790,7 +1790,7 @@ Reopen the work item.
 - Objective
 - Key Result
 
-**Examples**:
+Examples:
 
 - Reopen a work item:
 
@@ -1798,7 +1798,7 @@ Reopen the work item.
   /reopen
   ```
 
-**Additional details**:
+Additional details:
 
 - To close a work item, use [`/close`](#close).
 
@@ -1806,16 +1806,16 @@ Reopen the work item.
 
 Assign a reviewer or request a new review from one or more users.
 
-**Availability**:
+Availability:
 
 - Merge request
 
-**Parameters**:
+Parameters:
 
 - `@user1 @user2`: One or more usernames to request a review from. Usernames must be prefixed with `@`.
 - `me`: Request a review from yourself.
 
-**Examples**:
+Examples:
 
 - Request review from a single user:
 
@@ -1835,7 +1835,7 @@ Assign a reviewer or request a new review from one or more users.
   /request_review me
   ```
 
-**Additional details**:
+Additional details:
 
 - Can also be invoked using [`/assign_reviewer`](#assign_reviewer) or `/reviewer`.
 - If the user is not already a reviewer, assigns them as a reviewer.
@@ -1848,11 +1848,11 @@ Assign a reviewer or request a new review from one or more users.
 
 Run a new pipeline for the merge request.
 
-**Availability**:
+Availability:
 
 - Merge request
 
-**Examples**:
+Examples:
 
 - Run a new pipeline:
 
@@ -1860,7 +1860,7 @@ Run a new pipeline for the merge request.
     /run_pipeline
   ```
 
-**Additional details**:
+Additional details:
 
 - The pipeline is triggered asynchronously and appears shortly after the command is executed.
 - You must have permission to create pipelines for the merge request.
@@ -1877,18 +1877,18 @@ Run a new pipeline for the merge request.
 
 Set the parent item.
 
-**Availability**:
+Availability:
 
 - Epic
 - Issue
 - Task
 - Key Result
 
-**Parameters**:
+Parameters:
 
 - `<item>`: The parent item. The value should be in the format of `#IID`, reference, or a URL to an item.
 
-**Examples**:
+Examples:
 
 - Set parent by reference:
 
@@ -1902,7 +1902,7 @@ Set the parent item.
   /set_parent https://gitlab.com/group/project/-/work_items/123
   ```
 
-**Additional details**:
+Additional details:
 
 - For issues, `/epic` is an alias for `/set_parent`.
 - To remove the parent item, use [`/remove_parent`](#remove_parent).
@@ -1911,11 +1911,11 @@ Set the parent item.
 
 Set the severity of an incident.
 
-**Availability**:
+Availability:
 
 - Incident
 
-**Parameters**:
+Parameters:
 
 - `<severity>`: The severity level. Available options:
   - `S1`
@@ -1928,7 +1928,7 @@ Set the severity of an incident.
   - `low`
   - `unknown`
 
-**Examples**:
+Examples:
 
 - Set severity to critical:
 
@@ -1946,7 +1946,7 @@ Set the severity of an incident.
 
 Add `¯\_(ツ)_/¯` to the comment.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
@@ -1956,7 +1956,7 @@ Add `¯\_(ツ)_/¯` to the comment.
 - Objective
 - Key Result
 
-**Examples**:
+Examples:
 
 - Add shrug:
 
@@ -1968,19 +1968,19 @@ Add `¯\_(ツ)_/¯` to the comment.
 
 Add or subtract spent time.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
 - Issue
 - Merge request
 
-**Parameters**:
+Parameters:
 
 - `<time>`: The time to add or subtract. For example, `1mo 2w 3d 4h 5m`. Use a negative value to subtract time.
 - `[<date>]`: Optional. The date that time was spent on.
 
-**Examples**:
+Examples:
 
 - Add spent time:
 
@@ -2000,7 +2000,7 @@ Add or subtract spent time.
   /spend 1mo 2w 3d 4h 5m 2018-08-26
   ```
 
-**Additional details**:
+Additional details:
 
 - `/spend_time` is an alias for `/spend`.
 - To remove time spent, use [`/remove_time_spent`](#remove_time_spent).
@@ -2010,16 +2010,16 @@ Add or subtract spent time.
 
 Set the status.
 
-**Availability**:
+Availability:
 
 - Issue
 - Task
 
-**Parameters**:
+Parameters:
 
 - `<value>`: The status value. Available options include status options set for the namespace.
 
-**Examples**:
+Examples:
 
 - Set status:
 
@@ -2027,7 +2027,7 @@ Set the status.
   /status "In Progress"
   ```
 
-**Additional details**:
+Additional details:
 
 - For more information, see [status](../work_items/status.md).
 
@@ -2035,11 +2035,11 @@ Set the status.
 
 Submit a pending [review](merge_requests/reviews/_index.md#submit-a-review).
 
-**Availability**:
+Availability:
 
 - Merge request
 
-**Examples**:
+Examples:
 
 - Submit review:
 
@@ -2067,7 +2067,7 @@ Submit a pending [review](merge_requests/reviews/_index.md#submit-a-review).
 
 Subscribe to notifications for a work item.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
@@ -2077,7 +2077,7 @@ Subscribe to notifications for a work item.
 - Objective
 - Key Result
 
-**Examples**:
+Examples:
 
 - Subscribe to notifications:
 
@@ -2085,7 +2085,7 @@ Subscribe to notifications for a work item.
   /subscribe
   ```
 
-**Additional details**:
+Additional details:
 
 - To unsubscribe from notifications, use [`/unsubscribe`](#unsubscribe).
 
@@ -2093,7 +2093,7 @@ Subscribe to notifications for a work item.
 
 Add `(╯°□°)╯︵ ┻━┻` to the comment.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
@@ -2103,7 +2103,7 @@ Add `(╯°□°)╯︵ ┻━┻` to the comment.
 - Objective
 - Key Result
 
-**Examples**:
+Examples:
 
 - Add tableflip:
 
@@ -2115,15 +2115,15 @@ Add `(╯°□°)╯︵ ┻━┻` to the comment.
 
 Set the target branch of a merge request.
 
-**Availability**:
+Availability:
 
 - Merge request
 
-**Parameters**:
+Parameters:
 
 - `<local branch name>`: The name of the target branch.
 
-**Examples**:
+Examples:
 
 - Set target branch:
 
@@ -2135,15 +2135,15 @@ Set the target branch of a merge request.
 
 Add a timeline event to an incident.
 
-**Availability**:
+Availability:
 
 - Incident
 
-**Parameters**:
+Parameters:
 
 - `<timeline comment> | <date(YYYY-MM-DD)> <time(HH:MM)>`: The timeline comment, date, and time, separated by `|`.
 
-**Examples**:
+Examples:
 
 - Add a timeline event:
 
@@ -2155,7 +2155,7 @@ Add a timeline event to an incident.
 
 Change the title.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
@@ -2165,11 +2165,11 @@ Change the title.
 - Objective
 - Key Result
 
-**Parameters**:
+Parameters:
 
 - `<new title>`: The new title for the work item.
 
-**Examples**:
+Examples:
 
 - Change title:
 
@@ -2181,7 +2181,7 @@ Change the title.
 
 Add a to-do item for yourself.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
@@ -2191,7 +2191,7 @@ Add a to-do item for yourself.
 - Objective
 - Key Result
 
-**Examples**:
+Examples:
 
 - Add to-do:
 
@@ -2203,14 +2203,14 @@ Add a to-do item for yourself.
 
 Convert a work item to a specified type.
 
-**Availability**:
+Availability:
 
 - Issue
 - Key Result
 - Objective
 - Task
 
-**Parameters**:
+Parameters:
 
 - `<type>`: The type to convert to. Available options:
   - `issue`
@@ -2218,7 +2218,7 @@ Convert a work item to a specified type.
   - `objective`
   - `key result`
 
-**Examples**:
+Examples:
 
 - Convert to issue:
 
@@ -2232,7 +2232,7 @@ Convert a work item to a specified type.
   /type task
   ```
 
-**Additional details**:
+Additional details:
 
 - To convert an issue to an epic or incident, use [`/promote_to`](#promote_to).
 - `/type Epic` also converts an issue to an epic, the same as `/promote_to Epic`.
@@ -2241,11 +2241,11 @@ Convert a work item to a specified type.
 
 Unapprove the merge request.
 
-**Availability**:
+Availability:
 
 - Merge request
 
-**Examples**:
+Examples:
 
 - Unapprove a merge request:
 
@@ -2253,7 +2253,7 @@ Unapprove the merge request.
   /unapprove
   ```
 
-**Additional details**:
+Additional details:
 
 - To approve a merge request, use [`/approve`](#approve).
 
@@ -2263,7 +2263,7 @@ Unapprove the merge request.
 
 Remove assignees.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
@@ -2273,12 +2273,12 @@ Remove assignees.
 - Objective
 - Key Result
 
-**Parameters**:
+Parameters:
 
 - `@user1 @user2`: Optional. One or more usernames to unassign.
   If not provided, removes all assignees.
 
-**Examples**:
+Examples:
 
 - Remove specific assignees:
 
@@ -2292,7 +2292,7 @@ Remove assignees.
   /unassign
   ```
 
-**Additional details**:
+Additional details:
 
 - To add assignees, use [`/assign`](#assign).
 - To replace assignees, use [`/reassign`](#reassign).
@@ -2301,16 +2301,16 @@ Remove assignees.
 
 Remove reviewers.
 
-**Availability**:
+Availability:
 
 - Merge request
 
-**Parameters**:
+Parameters:
 
 - `@user1 @user2`: Optional. One or more usernames to remove as reviewers. If not provided, removes all reviewers.
 - `me`: Remove yourself as a reviewer.
 
-**Examples**:
+Examples:
 
 - Remove specific reviewers:
 
@@ -2330,7 +2330,7 @@ Remove reviewers.
   /unassign_reviewer
   ```
 
-**Additional details**:
+Additional details:
 
 - `/remove_reviewer` is an alias for `/unassign_reviewer`.
 - To assign reviewers, use [`/assign_reviewer`](#assign_reviewer).
@@ -2340,7 +2340,7 @@ Remove reviewers.
 
 Remove labels.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
@@ -2350,11 +2350,11 @@ Remove labels.
 - Objective
 - Key Result
 
-**Parameters**:
+Parameters:
 
 - `~label1 ~label2`: Optional. One or more label names to remove. If not provided, removes all labels.
 
-**Examples**:
+Examples:
 
 - Remove specific labels:
 
@@ -2368,7 +2368,7 @@ Remove labels.
   /unlabel
   ```
 
-**Additional details**:
+Additional details:
 
 - Labels with a space in the name must be in double quotation marks.
 - `/remove_label` is an alias for `/unlabel`.
@@ -2381,7 +2381,7 @@ Remove labels.
 
 Remove a link to another item.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
@@ -2391,11 +2391,11 @@ Remove a link to another item.
 - Objective
 - Key Result
 
-**Parameters**:
+Parameters:
 
 - `<item>`: The item to unlink. The value should be in the format of `#item`, `group/project#item`, or the full URL. For merge requests, use `!merge_request`, `group/project!merge_request`, or the merge request URL.
 
-**Examples**:
+Examples:
 
 - Unlink an item:
 
@@ -2415,7 +2415,7 @@ Remove a link to another item.
   /unlink !456
   ```
 
-**Additional details**:
+Additional details:
 
 - To set relationships between items, use [`/relate`](#relate), [`/blocks`](#blocks), or [`/blocked_by`](#blocked_by).
 
@@ -2423,13 +2423,13 @@ Remove a link to another item.
 
 Unlock the discussions.
 
-**Availability**:
+Availability:
 
 - Epic
 - Issue
 - Merge request
 
-**Examples**:
+Examples:
 
 - Unlock discussions:
 
@@ -2437,7 +2437,7 @@ Unlock the discussions.
   /unlock
   ```
 
-**Additional details**:
+Additional details:
 
 - To lock the discussions, use [`/lock`](#lock).
 
@@ -2445,7 +2445,7 @@ Unlock the discussions.
 
 Unsubscribe from notifications for a work item.
 
-**Availability**:
+Availability:
 
 - Epic
 - Incident
@@ -2455,7 +2455,7 @@ Unsubscribe from notifications for a work item.
 - Objective
 - Key Result
 
-**Examples**:
+Examples:
 
 - Unsubscribe from notifications:
 
@@ -2463,7 +2463,7 @@ Unsubscribe from notifications for a work item.
   /unsubscribe
   ```
 
-**Additional details**:
+Additional details:
 
 - To subscribe to notifications, use [`/subscribe`](#subscribe).
 
@@ -2471,16 +2471,16 @@ Unsubscribe from notifications for a work item.
 
 Set the weight.
 
-**Availability**:
+Availability:
 
 - Issue
 - Task
 
-**Parameters**:
+Parameters:
 
 - `<value>`: The weight value. Valid values are integers like `0`, `1`, or `2`.
 
-**Examples**:
+Examples:
 
 - Set weight:
 
@@ -2492,16 +2492,16 @@ Set the weight.
 
 Add a Zoom meeting to an issue or incident.
 
-**Availability**:
+Availability:
 
 - Incident
 - Issue
 
-**Parameters**:
+Parameters:
 
 - `<Zoom URL>`: The URL of the Zoom meeting.
 
-**Examples**:
+Examples:
 
 - Add a Zoom meeting:
 
@@ -2509,7 +2509,7 @@ Add a Zoom meeting to an issue or incident.
   /zoom https://zoom.us/j/123456789
   ```
 
-**Additional details**:
+Additional details:
 
 - Users on GitLab Premium can add a short description when [adding a Zoom link to an incident](../../operations/incident_management/linked_resources.md#link-zoom-meetings-from-an-incident).
 - To remove the Zoom meeting, use [`/remove_zoom`](#remove_zoom).
@@ -2532,12 +2532,12 @@ The following quick actions are applicable for commit comments:
 
 Create a Git tag pointing to the commented commit.
 
-**Parameters**:
+Parameters:
 
 - `v1.2.3`: The tag name.
 - `<message>`: Optional. A message for the tag.
 
-**Examples**:
+Examples:
 
 - Create a tag with a message:
 
@@ -2549,7 +2549,7 @@ Create a Git tag pointing to the commented commit.
   This comment creates a Git tag named `v2.1.1` pointing to the commit, with the
   message "Security patch release".
 
-**Additional details**:
+Additional details:
 
 - Tag creation is rate limited for each project, with a default of 100 requests every 30 minutes.
   An administrator can change the limit with the `tags_create_limit` [application setting](../../api/settings.md#available-settings).

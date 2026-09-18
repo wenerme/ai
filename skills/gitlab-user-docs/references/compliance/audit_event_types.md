@@ -392,6 +392,7 @@ Audit event types belong to the following product categories.
 | [`duo_session_deleted`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/232456) | Duo session is deleted | Yes | GitLab [19.0](https://gitlab.com/gitlab-org/gitlab/-/work_items/593027) | Group, Project |
 | [`duo_session_failed`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/216689) | Duo session has failed | Yes | GitLab [18.8](https://gitlab.com/gitlab-org/gitlab/-/issues/581004) | Project |
 | [`duo_session_finished`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/216689) | Duo session is finished | Yes | GitLab [18.8](https://gitlab.com/gitlab-org/gitlab/-/issues/581004) | Project |
+| [`duo_session_restarted`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254586) | Duo session is restarted at the beginning of its process | Yes | GitLab [19.5](https://gitlab.com/gitlab-org/gitlab/-/work_items/598749) | Project |
 | [`duo_session_resumed`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/222303) | Duo session is resumed | Yes | GitLab [18.9](https://gitlab.com/gitlab-org/gitlab/-/issues/581004) | Project |
 | [`duo_session_started`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/216689) | Duo session is started | Yes | GitLab [18.8](https://gitlab.com/gitlab-org/gitlab/-/issues/581004) | Project |
 | [`duo_session_stopped`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/216689) | Duo session is stopped | Yes | GitLab [18.8](https://gitlab.com/gitlab-org/gitlab/-/issues/581004) | Project |

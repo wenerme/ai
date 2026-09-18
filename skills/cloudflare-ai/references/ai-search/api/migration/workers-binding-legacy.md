@@ -184,7 +184,7 @@ Per-request overrides for retrieval and model behavior. Supports the following n
 
 ---
 
-For the full list of optional parameters, refer to the [Search API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/instances/methods/search/).
+For the full list of optional parameters, refer to the [Search API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/methods/search/).
 
 #### Response
 

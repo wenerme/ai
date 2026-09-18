@@ -127,39 +127,85 @@ This example shows how to directly upload a file to the
 ### Java
 
     import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Annotation;
     import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.DocumentContent;
-    import com.google.genai.gaos.models.interactions.DocumentContentMimeType;
+    import com.google.genai.gaos.models.interactions.FileCitation;
+    import com.google.genai.gaos.models.interactions.FileSearch;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.Step;
     import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.types.CreateFileSearchStoreConfig;
+    import com.google.genai.types.FileSearchStore;
+    import com.google.genai.types.UploadToFileSearchStoreConfig;
+    import com.google.genai.types.UploadToFileSearchStoreOperation;
     import java.util.Arrays;
-    import java.util.List;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Summarize this document.").build();
-    Content docContent =
-        DocumentContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
-            .mimeType(DocumentContentMimeType.APPLICATION_PDF)
-            .build();
+    FileSearchStore fileSearchStore =
+        client.fileSearchStores.create(
+            CreateFileSearchStoreConfig.builder()
+                .displayName("your-fileSearchStore-name")
+                .embeddingModel("models/gemini-embedding-2")
+                .build());
 
-    List<Content> contents = Arrays.asList(textContent, docContent);
+    UploadToFileSearchStoreOperation operation =
+        client.fileSearchStores.uploadToFileSearchStore(
+            fileSearchStore.name().get(),
+            "sample.txt",
+            UploadToFileSearchStoreConfig.builder().displayName("display-file-name").build());
+
+    while (!operation.done().orElse(false)) {
+      Thread.sleep(5000);
+      operation = client.operations.get(operation, null);
+    }
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.ofContent(contents))
+            .input(InteractionsInput.of("Can you tell me about [insert question]"))
+            .tools(
+                Arrays.asList(
+                    FileSearch.builder()
+                        .fileSearchStoreNames(Arrays.asList(fileSearchStore.name().get()))
+                        .build()))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    System.out.println(interaction.outputText().orElse(""));
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof ModelOutputStep) {
+          ModelOutputStep outputStep = (ModelOutputStep) step;
+          if (outputStep.content().isPresent()) {
+            for (Content contentBlock : outputStep.content().get()) {
+              if (contentBlock instanceof TextContent) {
+                TextContent textContent = (TextContent) contentBlock;
+                System.out.println(textContent.text().orElse(""));
+                if (textContent.annotations().isPresent()
+                    && !textContent.annotations().get().isEmpty()) {
+                  System.out.println("\nSources:");
+                  for (Annotation annotation : textContent.annotations().get()) {
+                    if (annotation instanceof FileCitation) {
+                      FileCitation citation = (FileCitation) annotation;
+                      System.out.printf(
+                          "  - %s: %s%n",
+                          citation.fileName().orElse(""), citation.source().orElse(""));
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
 ### REST
 
@@ -311,37 +357,72 @@ Alternatively, you can upload an existing file and [import it to your file searc
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.DocumentContent;
-    import com.google.genai.gaos.models.interactions.DocumentContentMimeType;
+    import com.google.genai.gaos.models.interactions.FileSearch;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.Step;
     import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.types.CreateFileSearchStoreConfig;
+    import com.google.genai.types.File;
+    import com.google.genai.types.FileSearchStore;
+    import com.google.genai.types.ImportFileOperation;
+    import com.google.genai.types.UploadFileConfig;
     import java.util.Arrays;
-    import java.util.List;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Summarize this document.").build();
-    Content docContent =
-        DocumentContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
-            .mimeType(DocumentContentMimeType.APPLICATION_PDF)
-            .build();
+    File sampleFile =
+        client.files.upload(
+            "sample.txt", UploadFileConfig.builder().displayName("display_file_name").build());
 
-    List<Content> contents = Arrays.asList(textContent, docContent);
+    FileSearchStore fileSearchStore =
+        client.fileSearchStores.create(
+            CreateFileSearchStoreConfig.builder()
+                .displayName("your-fileSearchStore-name")
+                .embeddingModel("models/gemini-embedding-2")
+                .build());
+
+    ImportFileOperation operation =
+        client.fileSearchStores.importFile(
+            fileSearchStore.name().get(), sampleFile.name().get(), null);
+
+    while (!operation.done().orElse(false)) {
+      Thread.sleep(5000);
+      operation = client.operations.get(operation, null);
+    }
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.ofContent(contents))
+            .input(InteractionsInput.of("Can you tell me about [insert question]"))
+            .tools(
+                Arrays.asList(
+                    FileSearch.builder()
+                        .fileSearchStoreNames(Arrays.asList(fileSearchStore.name().get()))
+                        .build()))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    System.out.println(interaction.outputText().orElse(""));
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof ModelOutputStep) {
+          ModelOutputStep outputStep = (ModelOutputStep) step;
+          if (outputStep.content().isPresent()) {
+            for (Content contentBlock : outputStep.content().get()) {
+              if (contentBlock instanceof TextContent) {
+                TextContent textContent = (TextContent) contentBlock;
+                System.out.println(textContent.text().orElse(""));
+              }
+            }
+          }
+        }
+      }
+    }
 
 ### REST
 
@@ -462,39 +543,35 @@ tokens.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.Content;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.DocumentContent;
-    import com.google.genai.gaos.models.interactions.DocumentContentMimeType;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.interactions.TextContent;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import java.util.Arrays;
-    import java.util.List;
+    import com.google.genai.types.ChunkingConfig;
+    import com.google.genai.types.UploadToFileSearchStoreConfig;
+    import com.google.genai.types.UploadToFileSearchStoreOperation;
+    import com.google.genai.types.WhiteSpaceConfig;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Summarize this document.").build();
-    Content docContent =
-        DocumentContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
-            .mimeType(DocumentContentMimeType.APPLICATION_PDF)
-            .build();
+    UploadToFileSearchStoreOperation operation =
+        client.fileSearchStores.uploadToFileSearchStore(
+            "fileSearchStores/my-file-search-store",
+            "sample.txt",
+            UploadToFileSearchStoreConfig.builder()
+                .displayName("file-name")
+                .chunkingConfig(
+                    ChunkingConfig.builder()
+                        .whiteSpaceConfig(
+                            WhiteSpaceConfig.builder()
+                                .maxTokensPerChunk(200)
+                                .maxOverlapTokens(20)
+                                .build())
+                        .build())
+                .build());
 
-    List<Content> contents = Arrays.asList(textContent, docContent);
+    while (!operation.done().orElse(false)) {
+      Thread.sleep(5000);
+      operation = client.operations.get(operation, null);
+    }
 
-    CreateModelInteraction params =
-        CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.ofContent(contents))
-            .build();
-
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println(interaction.outputText().orElse(""));
+    System.out.println("Custom chunking complete.");
 
 ### REST
 
@@ -629,39 +706,28 @@ Here are some examples of how to manage your File Search stores:
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.Content;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.DocumentContent;
-    import com.google.genai.gaos.models.interactions.DocumentContentMimeType;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.interactions.TextContent;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import java.util.Arrays;
-    import java.util.List;
+    import com.google.genai.types.CreateFileSearchStoreConfig;
+    import com.google.genai.types.DeleteFileSearchStoreConfig;
+    import com.google.genai.types.FileSearchStore;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Summarize this document.").build();
-    Content docContent =
-        DocumentContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
-            .mimeType(DocumentContentMimeType.APPLICATION_PDF)
-            .build();
+    FileSearchStore fileSearchStore =
+        client.fileSearchStores.create(
+            CreateFileSearchStoreConfig.builder()
+                .displayName("myfilesearchstore123")
+                .embeddingModel("models/gemini-embedding-2")
+                .build());
 
-    List<Content> contents = Arrays.asList(textContent, docContent);
+    for (FileSearchStore store : client.fileSearchStores.list(null)) {
+      System.out.println(store);
+    }
 
-    CreateModelInteraction params =
-        CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.ofContent(contents))
-            .build();
+    FileSearchStore myFileSearchStore =
+        client.fileSearchStores.get(fileSearchStore.name().get(), null);
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println(interaction.outputText().orElse(""));
+    client.fileSearchStores.delete(
+        fileSearchStore.name().get(), DeleteFileSearchStoreConfig.builder().force(true).build());
 
 ### REST
 
@@ -713,39 +779,24 @@ document by name.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.Content;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.DocumentContent;
-    import com.google.genai.gaos.models.interactions.DocumentContentMimeType;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.interactions.TextContent;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import java.util.Arrays;
-    import java.util.List;
+    import com.google.genai.types.DeleteDocumentConfig;
+    import com.google.genai.types.Document;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Summarize this document.").build();
-    Content docContent =
-        DocumentContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
-            .mimeType(DocumentContentMimeType.APPLICATION_PDF)
-            .build();
+    for (Document documentInStore :
+        client.fileSearchStores.documents.list("fileSearchStores/myfilesearchstore123", null)) {
+      System.out.println(documentInStore);
+    }
 
-    List<Content> contents = Arrays.asList(textContent, docContent);
+    Document fileSearchDocument =
+        client.fileSearchStores.documents.get(
+            "fileSearchStores/myfilesearchstore123/documents/sampletxt123", null);
+    System.out.println(fileSearchDocument);
 
-    CreateModelInteraction params =
-        CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.ofContent(contents))
-            .build();
-
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println(interaction.outputText().orElse(""));
+    client.fileSearchStores.documents.delete(
+        "fileSearchStores/myfilesearchstore123/documents/sampletxt123",
+        DeleteDocumentConfig.builder().force(true).build());
 
 ### REST
 
@@ -789,39 +840,23 @@ additional context. Metadata is a set of key-value pairs.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.Content;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.DocumentContent;
-    import com.google.genai.gaos.models.interactions.DocumentContentMimeType;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.interactions.TextContent;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.types.CustomMetadata;
+    import com.google.genai.types.ImportFileConfig;
+    import com.google.genai.types.ImportFileOperation;
     import java.util.Arrays;
-    import java.util.List;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Summarize this document.").build();
-    Content docContent =
-        DocumentContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
-            .mimeType(DocumentContentMimeType.APPLICATION_PDF)
-            .build();
-
-    List<Content> contents = Arrays.asList(textContent, docContent);
-
-    CreateModelInteraction params =
-        CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.ofContent(contents))
-            .build();
-
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println(interaction.outputText().orElse(""));
+    ImportFileOperation op =
+        client.fileSearchStores.importFile(
+            "fileSearchStores/myfilesearchstore123",
+            "files/samplefile123",
+            ImportFileConfig.builder()
+                .customMetadata(
+                    Arrays.asList(
+                        CustomMetadata.builder().key("author").stringValue("Robert Graves").build(),
+                        CustomMetadata.builder().key("year").numericValue(1934f).build()))
+                .build());
 
 This is useful when you have multiple documents in a File Search store and want
 to search only a subset of them.
@@ -871,37 +906,48 @@ to search only a subset of them.
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.DocumentContent;
-    import com.google.genai.gaos.models.interactions.DocumentContentMimeType;
+    import com.google.genai.gaos.models.interactions.FileSearch;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.Step;
     import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import java.util.Arrays;
-    import java.util.List;
 
     Client client = new Client();
-
-    Content textContent = TextContent.builder().text("Summarize this document.").build();
-    Content docContent =
-        DocumentContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
-            .mimeType(DocumentContentMimeType.APPLICATION_PDF)
-            .build();
-
-    List<Content> contents = Arrays.asList(textContent, docContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.ofContent(contents))
+            .input(InteractionsInput.of("Tell me about the book 'I, Claudius'"))
+            .tools(
+                Arrays.asList(
+                    FileSearch.builder()
+                        .fileSearchStoreNames(Arrays.asList("fileSearchStores/myfilesearchstore123"))
+                        .metadataFilter("author=\"Robert Graves\"")
+                        .build()))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    System.out.println(interaction.outputText().orElse(""));
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof ModelOutputStep) {
+          ModelOutputStep outputStep = (ModelOutputStep) step;
+          if (outputStep.content().isPresent()) {
+            for (Content contentBlock : outputStep.content().get()) {
+              if (contentBlock instanceof TextContent) {
+                TextContent textContent = (TextContent) contentBlock;
+                System.out.println(textContent.text().orElse(""));
+              }
+            }
+          }
+        }
+      }
+    }
 
 ### REST
 
@@ -956,39 +1002,17 @@ process both text and images.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.Content;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.DocumentContent;
-    import com.google.genai.gaos.models.interactions.DocumentContentMimeType;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.interactions.TextContent;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import java.util.Arrays;
-    import java.util.List;
+    import com.google.genai.types.CreateFileSearchStoreConfig;
+    import com.google.genai.types.FileSearchStore;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Summarize this document.").build();
-    Content docContent =
-        DocumentContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
-            .mimeType(DocumentContentMimeType.APPLICATION_PDF)
-            .build();
-
-    List<Content> contents = Arrays.asList(textContent, docContent);
-
-    CreateModelInteraction params =
-        CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.ofContent(contents))
-            .build();
-
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println(interaction.outputText().orElse(""));
+    FileSearchStore store =
+        client.fileSearchStores.create(
+            CreateFileSearchStoreConfig.builder()
+                .displayName("Multimodal Catalog")
+                .embeddingModel("models/gemini-embedding-2")
+                .build());
 
 ### REST
 
@@ -1043,37 +1067,49 @@ You can access citation information through the `annotations` attribute inside t
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.DocumentContent;
-    import com.google.genai.gaos.models.interactions.DocumentContentMimeType;
+    import com.google.genai.gaos.models.interactions.FileSearch;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.Step;
     import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import java.util.Arrays;
-    import java.util.List;
 
     Client client = new Client();
-
-    Content textContent = TextContent.builder().text("Summarize this document.").build();
-    Content docContent =
-        DocumentContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
-            .mimeType(DocumentContentMimeType.APPLICATION_PDF)
-            .build();
-
-    List<Content> contents = Arrays.asList(textContent, docContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.ofContent(contents))
+            .input(InteractionsInput.of("Can you tell me about [insert question]"))
+            .tools(
+                Arrays.asList(
+                    FileSearch.builder()
+                        .fileSearchStoreNames(Arrays.asList("fileSearchStores/myfilesearchstore123"))
+                        .build()))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    System.out.println(interaction.outputText().orElse(""));
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof ModelOutputStep) {
+          ModelOutputStep outputStep = (ModelOutputStep) step;
+          if (outputStep.content().isPresent()) {
+            for (Content content : outputStep.content().get()) {
+              if (content instanceof TextContent) {
+                TextContent textContent = (TextContent) content;
+                if (textContent.annotations().isPresent()) {
+                  System.out.println(textContent.annotations().get());
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
 ### REST
 
@@ -1137,39 +1173,60 @@ You can access this information through the `page_number` attribute of a
 ### Java
 
     import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Annotation;
     import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.DocumentContent;
-    import com.google.genai.gaos.models.interactions.DocumentContentMimeType;
+    import com.google.genai.gaos.models.interactions.FileCitation;
+    import com.google.genai.gaos.models.interactions.FileSearch;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.Step;
     import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import java.util.Arrays;
-    import java.util.List;
 
     Client client = new Client();
-
-    Content textContent = TextContent.builder().text("Summarize this document.").build();
-    Content docContent =
-        DocumentContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
-            .mimeType(DocumentContentMimeType.APPLICATION_PDF)
-            .build();
-
-    List<Content> contents = Arrays.asList(textContent, docContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.ofContent(contents))
+            .input(InteractionsInput.of("Can you tell me about [insert question]"))
+            .tools(
+                Arrays.asList(
+                    FileSearch.builder()
+                        .fileSearchStoreNames(Arrays.asList("fileSearchStores/myfilesearchstore123"))
+                        .build()))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    System.out.println(interaction.outputText().orElse(""));
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof ModelOutputStep) {
+          ModelOutputStep outputStep = (ModelOutputStep) step;
+          if (outputStep.content().isPresent()) {
+            for (Content content : outputStep.content().get()) {
+              if (content instanceof TextContent) {
+                TextContent textContent = (TextContent) content;
+                if (textContent.annotations().isPresent()) {
+                  for (Annotation annotation : textContent.annotations().get()) {
+                    if (annotation instanceof FileCitation) {
+                      FileCitation citation = (FileCitation) annotation;
+                      if (citation.pageNumber().isPresent()) {
+                        System.out.println("Cited Page: " + citation.pageNumber().get());
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
 ### REST
 
@@ -1258,39 +1315,62 @@ download the media:
 ### Java
 
     import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Annotation;
     import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.DocumentContent;
-    import com.google.genai.gaos.models.interactions.DocumentContentMimeType;
+    import com.google.genai.gaos.models.interactions.FileCitation;
+    import com.google.genai.gaos.models.interactions.FileSearch;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.Step;
     import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import java.util.Arrays;
-    import java.util.List;
 
     Client client = new Client();
-
-    Content textContent = TextContent.builder().text("Summarize this document.").build();
-    Content docContent =
-        DocumentContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
-            .mimeType(DocumentContentMimeType.APPLICATION_PDF)
-            .build();
-
-    List<Content> contents = Arrays.asList(textContent, docContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.ofContent(contents))
+            .input(InteractionsInput.of("Can you tell me about [insert question]"))
+            .tools(
+                Arrays.asList(
+                    FileSearch.builder()
+                        .fileSearchStoreNames(Arrays.asList("fileSearchStores/myfilesearchstore123"))
+                        .build()))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    System.out.println(interaction.outputText().orElse(""));
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof ModelOutputStep) {
+          ModelOutputStep outputStep = (ModelOutputStep) step;
+          if (outputStep.content().isPresent()) {
+            for (Content content : outputStep.content().get()) {
+              if (content instanceof TextContent) {
+                TextContent textContent = (TextContent) content;
+                if (textContent.annotations().isPresent()) {
+                  for (Annotation annotation : textContent.annotations().get()) {
+                    if (annotation instanceof FileCitation) {
+                      FileCitation citation = (FileCitation) annotation;
+                      if (citation.mediaId().isPresent()) {
+                        System.out.println("Cited Media ID: " + citation.mediaId().get());
+                        byte[] blobContent =
+                            client.fileSearchStores.downloadMedia(citation.mediaId().get(), null);
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
 ### REST
 
@@ -1349,39 +1429,54 @@ contains this custom metadata.
 ### Java
 
     import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Annotation;
     import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.DocumentContent;
-    import com.google.genai.gaos.models.interactions.DocumentContentMimeType;
+    import com.google.genai.gaos.models.interactions.FileSearch;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.Step;
     import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import java.util.Arrays;
-    import java.util.List;
 
     Client client = new Client();
-
-    Content textContent = TextContent.builder().text("Summarize this document.").build();
-    Content docContent =
-        DocumentContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
-            .mimeType(DocumentContentMimeType.APPLICATION_PDF)
-            .build();
-
-    List<Content> contents = Arrays.asList(textContent, docContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.ofContent(contents))
+            .input(InteractionsInput.of("Tell me about [insert question]"))
+            .tools(
+                Arrays.asList(
+                    FileSearch.builder()
+                        .fileSearchStoreNames(Arrays.asList("fileSearchStores/myfilesearchstore123"))
+                        .build()))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    System.out.println(interaction.outputText().orElse(""));
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof ModelOutputStep) {
+          ModelOutputStep outputStep = (ModelOutputStep) step;
+          if (outputStep.content().isPresent()) {
+            for (Content contentBlock : outputStep.content().get()) {
+              if (contentBlock instanceof TextContent) {
+                TextContent textContent = (TextContent) contentBlock;
+                if (textContent.annotations().isPresent()) {
+                  for (Annotation annotation : textContent.annotations().get()) {
+                    System.out.println(annotation);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
 ### REST
 
@@ -1483,33 +1578,57 @@ Starting with Gemini 3 models, you can combine file search tool with
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.DocumentContent;
-    import com.google.genai.gaos.models.interactions.DocumentContentMimeType;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionResponseFormat;
+    import com.google.genai.gaos.models.interactions.FileSearch;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
-    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.interactions.ResponseFormat;
+    import com.google.genai.gaos.models.interactions.TextResponseFormat;
+    import com.google.genai.gaos.models.interactions.TextResponseFormatMimeType;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import java.util.Arrays;
-    import java.util.List;
+    import java.util.HashMap;
+    import java.util.Map;
 
     Client client = new Client();
 
-    Content textContent = TextContent.builder().text("Summarize this document.").build();
-    Content docContent =
-        DocumentContent.builder()
-            .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
-            .mimeType(DocumentContentMimeType.APPLICATION_PDF)
-            .build();
+    Map<String, Object> properties = new HashMap<>();
 
-    List<Content> contents = Arrays.asList(textContent, docContent);
+    Map<String, Object> amountProp = new HashMap<>();
+    amountProp.put("type", "string");
+    amountProp.put("description", "The numerical part of the amount.");
+    properties.put("amount", amountProp);
+
+    Map<String, Object> currencyProp = new HashMap<>();
+    currencyProp.put("type", "string");
+    currencyProp.put("description", "The currency of amount.");
+    properties.put("currency", currencyProp);
+
+    Map<String, Object> moneyJsonSchema = new HashMap<>();
+    moneyJsonSchema.put("type", "object");
+    moneyJsonSchema.put("properties", properties);
+    moneyJsonSchema.put("required", Arrays.asList("amount", "currency"));
+
+    CreateModelInteractionResponseFormat format =
+        CreateModelInteractionResponseFormat.of(
+            ResponseFormat.of(
+                TextResponseFormat.builder()
+                    .mimeType(TextResponseFormatMimeType.APPLICATION_JSON)
+                    .schema(moneyJsonSchema)
+                    .build()));
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.ofContent(contents))
+            .input(InteractionsInput.of("What is the minimum hourly wage in Tokyo right now?"))
+            .tools(
+                Arrays.asList(
+                    FileSearch.builder()
+                        .fileSearchStoreNames(Arrays.asList("fileSearchStores/myfilesearchstore123"))
+                        .build()))
+            .responseFormat(format)
             .build();
 
     Interaction interaction =

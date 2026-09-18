@@ -68,7 +68,11 @@ tags:
     name: Images
   - description: >-
       Create, inspect, update, provision, suspend and delete OpenRouter interns
-      through an API key.
+      through an API key, and talk to them: the chat route streams
+      OpenAI-compatible completions from one intern, pausing as an
+      `openrouter.provide_input` tool call when the intern needs your permission
+      or an answer. Available to interns programme members; other callers
+      receive 404. See https://openrouter.ai/docs/guides/ori/intern-chat.
     name: Interns
   - description: Model information endpoints
     name: Models
@@ -448,6 +452,14 @@ components:
           seconds: 9.2
           total_tokens: 113
       properties:
+        confidence:
+          description: >-
+            Provider confidence for the whole transcript from 0 to 1, present
+            when response_format is verbose_json and the provider scores the
+            full transcript
+          example: 0.94
+          format: double
+          type: number
         duration:
           description: >-
             Duration of the input audio in seconds, present when response_format
@@ -1356,11 +1368,19 @@ components:
         A timestamped word, returned when the provider includes word-level
         timestamps
       example:
+        confidence: 0.98
         end: 0.4
         speaker: 0
         start: 0
         word: Hello
       properties:
+        confidence:
+          description: >-
+            Provider confidence for the word from 0 to 1, present when the
+            provider returns per-word confidence
+          example: 0.98
+          format: double
+          type: number
         end:
           description: Word end time in seconds
           example: 0.4

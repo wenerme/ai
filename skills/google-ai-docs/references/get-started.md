@@ -89,7 +89,7 @@ Initialize the client and make a request:
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Explain how AI works in a few sentences."))
+            .input(InteractionsInput.of("Explain how AI works in a few words"))
             .build();
 
     Interaction interaction =
@@ -179,23 +179,30 @@ For more fluid interactions, stream the response as it's generated. Each `step.d
 
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionSSEStreamEvent;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.operations.CreateInteractionResponse;
+    import com.google.genai.gaos.utils.EventStream;
 
     Client client = new Client();
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Explain how AI works in a few sentences."))
+            .input(InteractionsInput.of("Explain how AI works"))
+            .stream(true)
             .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    CreateInteractionResponse response =
+        client.interactions.create(CreateInteractionRequestBody.of(params));
 
-    System.out.println(interaction.outputText().orElse(""));
+    try (EventStream<InteractionSSEStreamEvent> stream = response.events()) {
+      for (InteractionSSEStreamEvent event : stream) {
+        System.out.println(event);
+      }
+    }
 
 ### REST
 
@@ -304,16 +311,27 @@ Chain interactions by passing `previous_interaction_id`. The server manages the 
 
     Client client = new Client();
 
-    CreateModelInteraction params =
+    // Server-side state (recommended)
+    CreateModelInteraction params1 =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Explain how AI works in a few sentences."))
+            .input(InteractionsInput.of("I have 2 dogs in my house."))
             .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    Interaction interaction1 =
+        client.interactions.create(CreateInteractionRequestBody.of(params1)).interaction().get();
+    System.out.println("Response 1: " + interaction1.outputText().orElse(""));
 
-    System.out.println(interaction.outputText().orElse(""));
+    CreateModelInteraction params2 =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.8-flash"))
+            .input(InteractionsInput.of("How many paws are in my house?"))
+            .previousInteractionId(interaction1.id().orElse(""))
+            .build();
+
+    Interaction interaction2 =
+        client.interactions.create(CreateInteractionRequestBody.of(params2)).interaction().get();
+    System.out.println("Response 2: " + interaction2.outputText().orElse(""));
 
 ### REST
 
@@ -417,20 +435,50 @@ Set `store=false` and manage conversation history on the client side. You must p
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.interactions.UserInputStep;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.ArrayList;
+    import java.util.Arrays;
+    import java.util.List;
 
     Client client = new Client();
 
-    CreateModelInteraction params =
+    List<Step> history = new ArrayList<>();
+    history.add(
+        UserInputStep.builder()
+            .content(Arrays.asList(TextContent.builder().text("I have 2 dogs in my house.").build()))
+            .build());
+
+    CreateModelInteraction params1 =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Explain how AI works in a few sentences."))
+            .store(false)
+            .input(InteractionsInput.ofStep(history))
             .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    Interaction interaction1 =
+        client.interactions.create(CreateInteractionRequestBody.of(params1)).interaction().get();
+    System.out.println("Response 1: " + interaction1.outputText().orElse(""));
 
-    System.out.println(interaction.outputText().orElse(""));
+    interaction1.steps().ifPresent(history::addAll);
+
+    history.add(
+        UserInputStep.builder()
+            .content(Arrays.asList(TextContent.builder().text("How many paws are in my house?").build()))
+            .build());
+
+    CreateModelInteraction params2 =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.8-flash"))
+            .store(false)
+            .input(InteractionsInput.ofStep(history))
+            .build();
+
+    Interaction interaction2 =
+        client.interactions.create(CreateInteractionRequestBody.of(params2)).interaction().get();
+    System.out.println("Response 2: " + interaction2.outputText().orElse(""));
 
 ### REST
 
@@ -560,23 +608,48 @@ Gemini models understand images, audio, video, and documents natively. Pass medi
 ### Java
 
     import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AudioContent;
+    import com.google.genai.gaos.models.interactions.AudioContentMimeType;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Path;
+    import java.util.Arrays;
+    import java.util.Base64;
 
     Client client = new Client();
+
+    // Load a local image
+    byte[] imageBytes = Files.readAllBytes(Path.of("sample.jpg"));
+    String imageB64 = Base64.getEncoder().encodeToString(imageBytes);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Explain how AI works in a few sentences."))
+            .input(
+                InteractionsInput.ofContent(
+                    Arrays.asList(
+                        TextContent.builder()
+                            .text("Compare this local image and this remote audio file.")
+                            .build(),
+                        ImageContent.builder()
+                            .data(imageB64)
+                            .mimeType(ImageContentMimeType.IMAGE_JPEG)
+                            .build(),
+                        AudioContent.builder()
+                            .uri("https://storage.googleapis.com/generativeai-downloads/data/sample.mp3")
+                            .mimeType(AudioContentMimeType.AUDIO_MP3)
+                            .build())))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
     System.out.println(interaction.outputText().orElse(""));
 
 ### REST
@@ -674,23 +747,33 @@ Gemini can generate images natively using the [Nano Banana](https://ai.google.de
 
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Path;
+    import java.util.Base64;
 
     Client client = new Client();
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Explain how AI works in a few sentences."))
+            .model(Model.of("gemini-3.1-flash-image"))
+            .input(InteractionsInput.of("Generate an image of a futuristic city skyline at sunset"))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    System.out.println(interaction.outputText().orElse(""));
+    if (interaction.outputImage().isPresent()) {
+      ImageContent generatedImage = interaction.outputImage().get();
+      if (generatedImage.data().isPresent()) {
+        byte[] imageBytes = Base64.getDecoder().decode(generatedImage.data().get());
+        Files.write(Path.of("generated_image.png"), imageBytes);
+      }
+    }
 
 ### REST
 
@@ -803,22 +886,63 @@ Configure the model to return JSON that matches a schema you define. Structured 
 
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionResponseFormat;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ResponseFormat;
+    import com.google.genai.gaos.models.interactions.TextResponseFormat;
+    import com.google.genai.gaos.models.interactions.TextResponseFormatMimeType;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.HashMap;
+    import java.util.Map;
 
     Client client = new Client();
+
+    Map<String, Object> recipeNameProp = new HashMap<>();
+    recipeNameProp.put("type", "string");
+    recipeNameProp.put("description", "Name of the recipe.");
+
+    Map<String, Object> itemsProp = new HashMap<>();
+    itemsProp.put("type", "string");
+
+    Map<String, Object> ingredientsProp = new HashMap<>();
+    ingredientsProp.put("type", "array");
+    ingredientsProp.put("items", itemsProp);
+    ingredientsProp.put("description", "List of ingredients.");
+
+    Map<String, Object> prepTimeProp = new HashMap<>();
+    prepTimeProp.put("type", "integer");
+    prepTimeProp.put("description", "Prep time in minutes.");
+
+    Map<String, Object> properties = new HashMap<>();
+    properties.put("recipe_name", recipeNameProp);
+    properties.put("ingredients", ingredientsProp);
+    properties.put("prep_time_minutes", prepTimeProp);
+
+    Map<String, Object> recipeJsonSchema = new HashMap<>();
+    recipeJsonSchema.put("type", "object");
+    recipeJsonSchema.put("properties", properties);
+    recipeJsonSchema.put("required", Arrays.asList("recipe_name", "ingredients"));
+
+    CreateModelInteractionResponseFormat format =
+        CreateModelInteractionResponseFormat.of(
+            ResponseFormat.of(
+                TextResponseFormat.builder()
+                    .mimeType(TextResponseFormatMimeType.APPLICATION_JSON)
+                    .schema(recipeJsonSchema)
+                    .build()));
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Explain how AI works in a few sentences."))
+            .input(InteractionsInput.of("Give me a recipe for banana bread"))
+            .responseFormat(format)
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
     System.out.println(interaction.outputText().orElse(""));
 
 ### REST
@@ -934,24 +1058,50 @@ Ground the model's response in real-time information with Google Search. The API
 ### Java
 
     import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Annotation;
+    import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.GoogleSearch;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.interactions.URLCitation;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.Collections;
 
     Client client = new Client();
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Explain how AI works in a few sentences."))
+            .input(InteractionsInput.of("Who won the euro 2024?"))
+            .tools(Arrays.asList(new GoogleSearch()))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
     System.out.println(interaction.outputText().orElse(""));
+
+    // Print citations
+    for (Step step : interaction.steps().orElse(Collections.emptyList())) {
+      if (step instanceof ModelOutputStep outputStep) {
+        for (Content contentBlock : outputStep.content().orElse(Collections.emptyList())) {
+          if (contentBlock instanceof TextContent textContent && textContent.annotations().isPresent()) {
+            System.out.println("\nCitations:");
+            for (Annotation annotation : textContent.annotations().get()) {
+              if (annotation instanceof URLCitation citation) {
+                System.out.printf("  [%s](%s)%n", citation.title().orElse(""), citation.url().orElse(""));
+              }
+            }
+          }
+        }
+      }
+    }
 
 ### REST
 
@@ -1154,21 +1304,86 @@ Function calling lets you connect the model to your code. You declare a function
 
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Function;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
+    import com.google.genai.gaos.models.interactions.FunctionResultStep;
+    import com.google.genai.gaos.models.interactions.FunctionResultStepResultUnion;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.ArrayList;
+    import java.util.Arrays;
+    import java.util.Collections;
+    import java.util.HashMap;
+    import java.util.List;
+    import java.util.Map;
 
     Client client = new Client();
 
-    CreateModelInteraction params =
-        CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Explain how AI works in a few sentences."))
+    Map<String, Object> locationProp = new HashMap<>();
+    locationProp.put("type", "string");
+    locationProp.put("description", "The city name, e.g. San Francisco");
+
+    Map<String, Object> properties = new HashMap<>();
+    properties.put("location", locationProp);
+
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("type", "object");
+    parameters.put("properties", properties);
+    parameters.put("required", Arrays.asList("location"));
+
+    Function weatherTool =
+        Function.builder()
+            .name("get_current_temperature")
+            .description("Gets the current temperature for a given location.")
+            .parameters(parameters)
             .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    InteractionsInput userInput = InteractionsInput.of("What is the temperature in London?");
+    String previousId = null;
+    Interaction interaction = null;
+
+    while (true) {
+      CreateModelInteraction.Builder paramsBuilder =
+          CreateModelInteraction.builder()
+              .model(Model.of("gemini-3.8-flash"))
+              .input(userInput)
+              .tools(Arrays.asList(weatherTool));
+      if (previousId != null) {
+        paramsBuilder.previousInteractionId(previousId);
+      }
+
+      interaction =
+          client.interactions.create(CreateInteractionRequestBody.of(paramsBuilder.build())).interaction().get();
+
+      List<Step> functionResults = new ArrayList<>();
+      for (Step step : interaction.steps().orElse(Collections.emptyList())) {
+        if (step instanceof FunctionCallStep fcStep) {
+          String resultJson = "{\"location\": \"London\", \"temperature\": \"22\", \"unit\": \"celsius\"}";
+          System.out.printf(
+              "Called %s(%s) -> %s%n",
+              fcStep.name().orElse(""), fcStep.arguments().orElse(Collections.emptyMap()), resultJson);
+          functionResults.add(
+              FunctionResultStep.builder()
+                  .name(fcStep.name().orElse(""))
+                  .callId(fcStep.id().orElse(""))
+                  .result(
+                      FunctionResultStepResultUnion.of(
+                          Arrays.asList(TextContent.builder().text(resultJson).build())))
+                  .build());
+        }
+      }
+
+      if (functionResults.isEmpty()) {
+        break;
+      }
+
+      userInput = InteractionsInput.ofStep(functionResults);
+      previousId = interaction.id().orElse(null);
+    }
 
     System.out.println(interaction.outputText().orElse(""));
 
@@ -1370,21 +1585,90 @@ You can also use function calling in stateless mode by managing the conversation
 
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Function;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
+    import com.google.genai.gaos.models.interactions.FunctionResultStep;
+    import com.google.genai.gaos.models.interactions.FunctionResultStepResultUnion;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.interactions.UserInputStep;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.ArrayList;
+    import java.util.Arrays;
+    import java.util.Collections;
+    import java.util.HashMap;
+    import java.util.List;
+    import java.util.Map;
 
     Client client = new Client();
 
-    CreateModelInteraction params =
-        CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Explain how AI works in a few sentences."))
+    Map<String, Object> locationProp = new HashMap<>();
+    locationProp.put("type", "string");
+    locationProp.put("description", "The city name, e.g. San Francisco");
+
+    Map<String, Object> properties = new HashMap<>();
+    properties.put("location", locationProp);
+
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("type", "object");
+    parameters.put("properties", properties);
+    parameters.put("required", Arrays.asList("location"));
+
+    Function weatherTool =
+        Function.builder()
+            .name("get_current_temperature")
+            .description("Gets the current temperature for a given location.")
+            .parameters(parameters)
             .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    List<Step> history = new ArrayList<>();
+    history.add(
+        UserInputStep.builder()
+            .content(Arrays.asList(TextContent.builder().text("What is the temperature in London?").build()))
+            .build());
+
+    Interaction interaction = null;
+
+    while (true) {
+      CreateModelInteraction params =
+          CreateModelInteraction.builder()
+              .model(Model.of("gemini-3.8-flash"))
+              .store(false)
+              .input(InteractionsInput.ofStep(history))
+              .tools(Arrays.asList(weatherTool))
+              .build();
+
+      interaction =
+          client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+      List<Step> functionResults = new ArrayList<>();
+      for (Step step : interaction.steps().orElse(Collections.emptyList())) {
+        history.add(step);
+        if (step instanceof FunctionCallStep fcStep) {
+          String resultJson = "{\"location\": \"London\", \"temperature\": \"22\", \"unit\": \"celsius\"}";
+          System.out.printf(
+              "Called %s(%s) -> %s%n",
+              fcStep.name().orElse(""), fcStep.arguments().orElse(Collections.emptyMap()), resultJson);
+          FunctionResultStep fnResult =
+              FunctionResultStep.builder()
+                  .name(fcStep.name().orElse(""))
+                  .callId(fcStep.id().orElse(""))
+                  .result(
+                      FunctionResultStepResultUnion.of(
+                          Arrays.asList(TextContent.builder().text(resultJson).build())))
+                  .build();
+          functionResults.add(fnResult);
+          history.add(fnResult);
+        }
+      }
+
+      if (functionResults.isEmpty()) {
+        break;
+      }
+    }
 
     System.out.println(interaction.outputText().orElse(""));
 
@@ -1519,7 +1803,7 @@ Managed agents run in a remote sandbox with access to tools like code execution 
     client = genai.Client()
 
     interaction = client.interactions.create(
-        agent="antigravity-preview-05-2026",
+        agent="antigravity-preview-09-2026",
         input="Write a Python script that generates the first 20 Fibonacci numbers and saves them to fibonacci.txt. Then read the file and print its contents.",
         environment="remote",
     )
@@ -1533,7 +1817,7 @@ Managed agents run in a remote sandbox with access to tools like code execution 
     const ai = new GoogleGenAI({});
 
     const interaction = await ai.interactions.create({
-      agent: "antigravity-preview-05-2026",
+      agent: "antigravity-preview-09-2026",
       input: "Write a Python script that generates the first 20 Fibonacci numbers and saves them to fibonacci.txt. Then read the file and print its contents.",
       environment: "remote",
     });
@@ -1543,23 +1827,26 @@ Managed agents run in a remote sandbox with access to tools like code execution 
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteractionEnvironment;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
 
     Client client = new Client();
 
-    CreateModelInteraction params =
-        CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Explain how AI works in a few sentences."))
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent("antigravity-preview-09-2026")
+            .input(
+                InteractionsInput.of(
+                    "Write a Python script that generates the first 20 Fibonacci numbers and saves them to fibonacci.txt. Then read the file and print its contents."))
+            .environment(CreateAgentInteractionEnvironment.of("remote"))
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
+    System.out.println("Environment: " + interaction.environmentId().orElse(""));
     System.out.println(interaction.outputText().orElse(""));
 
 ### REST
@@ -1568,7 +1855,7 @@ Managed agents run in a remote sandbox with access to tools like code execution 
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "agent": "antigravity-preview-05-2026",
+        "agent": "antigravity-preview-09-2026",
         "input": "Write a Python script that generates the first 20 Fibonacci numbers and saves them to fibonacci.txt. Then read the file and print its contents.",
         "environment": "remote"
       }'
@@ -1643,22 +1930,44 @@ Set `background=True` to run long tasks asynchronously. Poll for results with `i
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
     import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionStatus;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.operations.GetInteractionByIdRequest;
 
     Client client = new Client();
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
             .model(Model.of("gemini-3.8-flash"))
-            .input(InteractionsInput.of("Explain how AI works in a few sentences."))
+            .input(
+                InteractionsInput.of(
+                    "Write a detailed analysis of the impact of artificial intelligence on modern healthcare."))
+            .background(true)
             .build();
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    String interactionId = interaction.id().orElse("");
+    System.out.println("Started background task: " + interactionId);
+    System.out.println("Status: " + interaction.status().map(InteractionStatus::value).orElse(""));
 
-    System.out.println(interaction.outputText().orElse(""));
+    // Poll for completion
+    while (true) {
+      Interaction result =
+          client.interactions.get(new GetInteractionByIdRequest(interactionId)).interaction().get();
+      String status = result.status().map(InteractionStatus::value).orElse("");
+      System.out.println("Status: " + status);
+      if ("completed".equals(status)) {
+        System.out.println("\nResult:\n" + result.outputText().orElse(""));
+        break;
+      } else if ("failed".equals(status)) {
+        System.out.println("Failed: " + result.errors().orElse(null));
+        break;
+      }
+      Thread.sleep(5000);
+    }
 
 ### REST
 

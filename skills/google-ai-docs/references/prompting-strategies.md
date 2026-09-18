@@ -1,5 +1,3 @@
-# Prompt design strategies
-
 *Prompt design* is the process of creating prompts, or natural language requests,
 that elicit accurate, high quality responses from a language model.
 
@@ -15,7 +13,7 @@ Looking for more specific prompt strategies? Check out our other prompting guide
 on:
 
 - [Prompting with media files](https://ai.google.dev/gemini-api/docs/files#prompt-guide)
-- Prompting for image generation with [Imagen](https://ai.google.dev/gemini-api/docs/imagen#imagen-prompt-guide) and [Gemini Native Image Generation](https://ai.google.dev/gemini-api/docs/image-generation#prompt-guide)
+- [Prompting for image generation](https://ai.google.dev/gemini-api/docs/image-generation#prompt-guide)
 - [Prompting for video generation](https://ai.google.dev/gemini-api/docs/video#prompt-guide)
 
 You can find other sample prompts in the [prompt gallery](https://ai.google.dev/gemini-api/prompts)
@@ -539,5 +537,5 @@ You can adapt this template to fit your specific use case constraints.
 
 - Now that you have a deeper understanding of prompt design, try writing your own prompts using [Google AI Studio](http://aistudio.google.com).
 - To learn about multimodal prompting, see [Prompting with media files](https://ai.google.dev/gemini-api/docs/files#prompt-guide).
-- To learn about image prompting, see the [Nano Banana](https://ai.google.dev/gemini-api/docs/image-generation#prompt-guide) and [Imagen](https://ai.google.dev/gemini-api/docs/imagen#imagen-prompt-guide) prompt guides.
+- To learn about image prompting, see the [Nano Banana](https://ai.google.dev/gemini-api/docs/image-generation#prompt-guide) prompt guide.
 - To learn about video prompting, see the [Veo prompt guide](https://ai.google.dev/gemini-api/docs/video#prompt-guide).

@@ -131,38 +131,28 @@ The following examples show how you can generate a video with [dialogue](https:/
 
     import com.google.genai.Client;
     import com.google.genai.types.GenerateVideosOperation;
-    import com.google.genai.types.Video;
-    import java.nio.file.Files;
-    import java.nio.file.Path;
-    import java.nio.file.Paths;
+    import com.google.genai.types.GeneratedVideo;
 
-    class GenerateVideoFromText {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
+    Client client = new Client();
 
-        String prompt = "A close up of two people staring at a cryptic drawing on a wall, torchlight flickering.\n" +
-    "A man murmurs, 'This must be it. That's the secret code.' The woman looks at him and whispering excitedly, 'What did you find?'";
+    String prompt =
+        "A close up of two people staring at a cryptic drawing on a wall, torchlight flickering.\n"
+            + "A man murmurs, 'This must be it. That's the secret code.' The woman looks at him and whispering excitedly, 'What did you find?'";
 
-        GenerateVideosOperation operation =
-            client.models.generateVideos("veo-3.1-generate-preview", prompt, null, null);
+    GenerateVideosOperation operation =
+        client.models.generateVideos("veo-3.1-generate-preview", prompt, null, null);
 
-        // Poll the operation status until the video is ready.
-        while (!operation.done().isPresent() || !operation.done().get()) {
-          System.out.println("Waiting for video generation to complete...");
-          Thread.sleep(10000);
-          operation = client.operations.getVideosOperation(operation, null);
-        }
-
-        // Download the generated video.
-        Video video = operation.response().get().generatedVideos().get().get(0).video().get();
-        Path path = Paths.get("dialogue_example.mp4");
-        client.files.download(video, path.toString(), null);
-        if (video.videoBytes().isPresent()) {
-          Files.write(path, video.videoBytes().get());
-          System.out.println("Generated video saved to dialogue_example.mp4");
-        }
-      }
+    // Poll the operation status until the video is ready.
+    while (!operation.done().orElse(false)) {
+      System.out.println("Waiting for video generation to complete...");
+      Thread.sleep(10000);
+      operation = client.operations.getVideosOperation(operation, null);
     }
+
+    // Download the generated video.
+    GeneratedVideo generatedVideo = operation.response().get().generatedVideos().get().get(0);
+    client.files.download(generatedVideo, "dialogue_example.mp4", null);
+    System.out.println("Generated video saved to dialogue_example.mp4");
 
 ### REST
 
@@ -314,38 +304,28 @@ The following examples show how you can generate a video with [dialogue](https:/
 
     import com.google.genai.Client;
     import com.google.genai.types.GenerateVideosOperation;
-    import com.google.genai.types.Video;
-    import java.nio.file.Files;
-    import java.nio.file.Path;
-    import java.nio.file.Paths;
+    import com.google.genai.types.GeneratedVideo;
 
-    class GenerateVideoFromText {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
+    Client client = new Client();
 
-        String prompt = "Drone shot following a classic red convertible driven by a man along a winding coastal road at sunset, waves crashing against the rocks below.\n" +
-    "The convertible accelerates fast and the engine roars loudly.";
+    String prompt =
+        "Drone shot following a classic red convertible driven by a man along a winding coastal road at sunset, waves crashing against the rocks below.\n"
+            + "The convertible accelerates fast and the engine roars loudly.";
 
-        GenerateVideosOperation operation =
-            client.models.generateVideos("veo-3.1-generate-preview", prompt, null, null);
+    GenerateVideosOperation operation =
+        client.models.generateVideos("veo-3.1-generate-preview", prompt, null, null);
 
-        // Poll the operation status until the video is ready.
-        while (!operation.done().isPresent() || !operation.done().get()) {
-          System.out.println("Waiting for video generation to complete...");
-          Thread.sleep(10000);
-          operation = client.operations.getVideosOperation(operation, null);
-        }
-
-        // Download the generated video.
-        Video video = operation.response().get().generatedVideos().get().get(0).video().get();
-        Path path = Paths.get("realism_example.mp4");
-        client.files.download(video, path.toString(), null);
-        if (video.videoBytes().isPresent()) {
-          Files.write(path, video.videoBytes().get());
-          System.out.println("Generated video saved to realism_example.mp4");
-        }
-      }
+    // Poll the operation status until the video is ready.
+    while (!operation.done().orElse(false)) {
+      System.out.println("Waiting for video generation to complete...");
+      Thread.sleep(10000);
+      operation = client.operations.getVideosOperation(operation, null);
     }
+
+    // Download the generated video.
+    GeneratedVideo generatedVideo = operation.response().get().generatedVideos().get().get(0);
+    client.files.download(generatedVideo, "realism_example.mp4", null);
+    System.out.println("Generated video saved to realism_example.mp4");
 
 ### REST
 
@@ -492,37 +472,27 @@ The following examples show how you can generate a video with [dialogue](https:/
 
     import com.google.genai.Client;
     import com.google.genai.types.GenerateVideosOperation;
-    import com.google.genai.types.Video;
-    import java.nio.file.Files;
-    import java.nio.file.Path;
-    import java.nio.file.Paths;
+    import com.google.genai.types.GeneratedVideo;
 
-    class GenerateVideoFromText {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
+    Client client = new Client();
 
-        String prompt = "A whimsical stop-motion animation of a tiny robot tending to a garden of glowing mushrooms on a miniature planet.";
+    String prompt =
+        "A whimsical stop-motion animation of a tiny robot tending to a garden of glowing mushrooms on a miniature planet.";
 
-        GenerateVideosOperation operation =
-            client.models.generateVideos("veo-3.1-generate-preview", prompt, null, null);
+    GenerateVideosOperation operation =
+        client.models.generateVideos("veo-3.1-generate-preview", prompt, null, null);
 
-        // Poll the operation status until the video is ready.
-        while (!operation.done().isPresent() || !operation.done().get()) {
-          System.out.println("Waiting for video generation to complete...");
-          Thread.sleep(10000);
-          operation = client.operations.getVideosOperation(operation, null);
-        }
-
-        // Download the generated video.
-        Video video = operation.response().get().generatedVideos().get().get(0).video().get();
-        Path path = Paths.get("style_example.mp4");
-        client.files.download(video, path.toString(), null);
-        if (video.videoBytes().isPresent()) {
-          Files.write(path, video.videoBytes().get());
-          System.out.println("Generated video saved to style_example.mp4");
-        }
-      }
+    // Poll the operation status until the video is ready.
+    while (!operation.done().orElse(false)) {
+      System.out.println("Waiting for video generation to complete...");
+      Thread.sleep(10000);
+      operation = client.operations.getVideosOperation(operation, null);
     }
+
+    // Download the generated video.
+    GeneratedVideo generatedVideo = operation.response().get().generatedVideos().get().get(0);
+    client.files.download(generatedVideo, "style_example.mp4", null);
+    System.out.println("Generated video saved to style_example.mp4");
 
 ### REST
 
@@ -1033,45 +1003,46 @@ starting frame for generating a video with Veo 3.1.
 ### Java
 
     import com.google.genai.Client;
+    import com.google.genai.types.Blob;
+    import com.google.genai.types.GenerateContentConfig;
+    import com.google.genai.types.GenerateContentResponse;
     import com.google.genai.types.GenerateVideosOperation;
+    import com.google.genai.types.GeneratedVideo;
     import com.google.genai.types.Image;
-    import com.google.genai.types.Video;
-    import java.nio.file.Files;
-    import java.nio.file.Path;
-    import java.nio.file.Paths;
 
-    class GenerateVideoFromImage {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
+    Client client = new Client();
 
-        String prompt = "Panning wide shot of a calico kitten sleeping in the sunshine";
+    String prompt = "Panning wide shot of a calico kitten sleeping in the sunshine";
 
-        // Step 1: Generate an image with Nano Banana 2:
-        // Assume 'image' contains the generated image,
-        // or is loaded from a file:
-        Image image = Image.fromFile("path/to/your/image.png");
+    // Step 1: Generate an image with Nano Banana 2.
+    GenerateContentResponse imageResponse =
+        client.models.generateContent(
+            "gemini-3.1-flash-image-preview",
+            prompt,
+            GenerateContentConfig.builder().responseModalities("IMAGE").build());
 
-        // Step 2: Generate video with Veo 3.1 using the image.
-        GenerateVideosOperation operation =
-            client.models.generateVideos("veo-3.1-generate-preview", prompt, image, null);
+    Blob inlineData = imageResponse.parts().get(0).inlineData().get();
+    Image image =
+        Image.builder()
+            .imageBytes(inlineData.data().get())
+            .mimeType(inlineData.mimeType().orElse("image/png"))
+            .build();
 
-        // Poll the operation status until the video is ready.
-        while (!operation.done().isPresent() || !operation.done().get()) {
-          System.out.println("Waiting for video generation to complete...");
-          Thread.sleep(10000);
-          operation = client.operations.getVideosOperation(operation, null);
-        }
+    // Step 2: Generate video with Veo 3.1 using the image.
+    GenerateVideosOperation operation =
+        client.models.generateVideos("veo-3.1-generate-preview", prompt, image, null);
 
-        // Download the video.
-        Video video = operation.response().get().generatedVideos().get().get(0).video().get();
-        Path path = Paths.get("veo3_with_image_input.mp4");
-        client.files.download(video, path.toString(), null);
-        if (video.videoBytes().isPresent()) {
-          Files.write(path, video.videoBytes().get());
-          System.out.println("Generated video saved to veo3_with_image_input.mp4");
-        }
-      }
+    // Poll the operation status until the video is ready.
+    while (!operation.done().orElse(false)) {
+      System.out.println("Waiting for video generation to complete...");
+      Thread.sleep(10000);
+      operation = client.operations.getVideosOperation(operation, null);
     }
+
+    // Download the video.
+    GeneratedVideo video = operation.response().get().generatedVideos().get().get(0);
+    client.files.download(video, "veo3_with_image_input.mp4", null);
+    System.out.println("Generated video saved to veo3_with_image_input.mp4");
 
 ### Using reference images
 
@@ -1786,41 +1757,29 @@ status.
 
     import com.google.genai.Client;
     import com.google.genai.types.GenerateVideosOperation;
-    import com.google.genai.types.Video;
-    import java.nio.file.Files;
-    import java.nio.file.Path;
-    import java.nio.file.Paths;
 
-    class HandleAsync {
-      public static void main(String[] args) throws Exception {
-        Client client = new Client();
+    Client client = new Client();
 
-        // After starting the job, you get an operation object.
-        GenerateVideosOperation operation =
-            client.models.generateVideos(
-                "veo-3.1-generate-preview",
-                "A cinematic shot of a majestic lion in the savannah.",
-                null,
-                null);
+    // After starting the job, you get an operation object.
+    GenerateVideosOperation operation =
+        client.models.generateVideos(
+            "veo-3.1-generate-preview",
+            "A cinematic shot of a majestic lion in the savannah.",
+            null,
+            null);
 
-        // This loop checks the job status every 10 seconds.
-        while (!operation.done().isPresent() || !operation.done().get()) {
-          Thread.sleep(10000);
-          // Refresh the operation object to get the latest status.
-          operation = client.operations.getVideosOperation(operation, null);
-        }
+    // Alternatively, you can use operation.name to construct the operation.
+    operation = GenerateVideosOperation.builder().name(operation.name().get()).build();
 
-        // Once done, the result is in operation.response.
-        // Download the generated video.
-        Video video = operation.response().get().generatedVideos().get().get(0).video().get();
-        Path path = Paths.get("async_example.mp4");
-        client.files.download(video, path.toString(), null);
-        if (video.videoBytes().isPresent()) {
-          Files.write(path, video.videoBytes().get());
-          System.out.println("Generated video saved to async_example.mp4");
-        }
-      }
+    // This loop checks the job status every 10 seconds.
+    while (!operation.done().orElse(false)) {
+      Thread.sleep(10000);
+      // Refresh the operation object to get the latest status.
+      operation = client.operations.getVideosOperation(operation, null);
     }
+
+    // Once done, the result is in operation.response().
+    // ... process and download your video ...
 
 ### REST
 

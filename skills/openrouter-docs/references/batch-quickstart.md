@@ -47,7 +47,7 @@ Google Vertex uses a bucket in your GCP project for provider input and output. T
 Submit a batch with:
 
 ```text title="Endpoint" lines theme={null}
-POST https://openrouter.ai/api/beta/batches
+POST https://openrouter.ai/api/v1/batches
 ```
 
 The request body has three required top-level fields:
@@ -72,7 +72,7 @@ On Google models, every request in a batch must ask for the same `response_forma
   import requests
 
   response = requests.post(
-    url="https://openrouter.ai/api/beta/batches",
+    url="https://openrouter.ai/api/v1/batches",
     headers={
       "Authorization": "Bearer <OPENROUTER_API_KEY>",
       "Content-Type": "application/json",
@@ -100,7 +100,7 @@ On Google models, every request in a batch must ask for the same `response_forma
   ```
 
   ```typescript title="TypeScript (fetch)" lines theme={null}
-  const response = await fetch('https://openrouter.ai/api/beta/batches', {
+  const response = await fetch('https://openrouter.ai/api/v1/batches', {
     method: 'POST',
     headers: {
       Authorization: 'Bearer <OPENROUTER_API_KEY>',
@@ -129,7 +129,7 @@ On Google models, every request in a batch must ask for the same `response_forma
   ```
 
   ```shell title="Shell" lines theme={null}
-  curl https://openrouter.ai/api/beta/batches \
+  curl https://openrouter.ai/api/v1/batches \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENROUTER_API_KEY" \
     -d '{
@@ -184,7 +184,7 @@ The only supported completion window is `24h`.
 List the batches in the workspace of the authenticating API key with:
 
 ```shell title="Shell" lines theme={null}
-curl 'https://openrouter.ai/api/beta/batches?limit=2&status=completed&status=failed' \
+curl 'https://openrouter.ai/api/v1/batches?limit=2&status=completed&status=failed' \
   -H "Authorization: Bearer $OPENROUTER_API_KEY"
 ```
 
@@ -228,14 +228,14 @@ All query parameters are optional:
 When `has_more` is `true`, request the next page with `after`. Pagination does not use offsets or a `before` parameter.
 
 ```shell title="Next page" lines theme={null}
-curl 'https://openrouter.ai/api/beta/batches?limit=2&after=batch_9f2c1e' \
+curl 'https://openrouter.ai/api/v1/batches?limit=2&after=batch_9f2c1e' \
   -H "Authorization: Bearer $OPENROUTER_API_KEY"
 ```
 
 For human-readable date filters, use an ISO-8601 value such as `2026-08-20` or `2026-08-20T00:00:00Z`. Unix seconds use the same unit as the integer timestamps returned in batch objects:
 
 ```shell title="Creation-time range" lines theme={null}
-curl 'https://openrouter.ai/api/beta/batches?created_after=1787184000&created_before=1787837000' \
+curl 'https://openrouter.ai/api/v1/batches?created_after=1787184000&created_before=1787837000' \
   -H "Authorization: Bearer $OPENROUTER_API_KEY"
 ```
 
@@ -252,13 +252,13 @@ curl 'https://openrouter.ai/api/beta/batches?created_after=1787184000&created_be
 Use the batch ID to retrieve the current status:
 
 ```text title="Endpoint" lines theme={null}
-GET https://openrouter.ai/api/beta/batches/:id
+GET https://openrouter.ai/api/v1/batches/:id
 ```
 
 For example:
 
 ```shell title="Shell" lines theme={null}
-curl https://openrouter.ai/api/beta/batches/batch_123 \
+curl https://openrouter.ai/api/v1/batches/batch_123 \
   -H "Authorization: Bearer $OPENROUTER_API_KEY"
 ```
 
@@ -374,11 +374,11 @@ A completed batch response looks like this:
 Once a batch is terminal (`completed`, `failed`, `expired`, or `cancelled`) you can delete it. Deletion removes the batch from the API and purges every request and result artifact OpenRouter holds for it, without waiting for the 30-day retention window. It is not cancellation: an in-flight batch returns `409`.
 
 ```text title="Endpoint" lines theme={null}
-DELETE https://openrouter.ai/api/beta/batches/:id
+DELETE https://openrouter.ai/api/v1/batches/:id
 ```
 
 ```shell title="Shell" lines theme={null}
-curl -X DELETE https://openrouter.ai/api/beta/batches/batch_123 \
+curl -X DELETE https://openrouter.ai/api/v1/batches/batch_123 \
   -H "Authorization: Bearer $OPENROUTER_API_KEY"
 ```
 
@@ -479,7 +479,7 @@ An `input` can be a single string or an array of strings. When it is an array, t
 }
 ```
 
-Poll for results the same way as any other batch (`GET https://openrouter.ai/api/beta/batches/:id`). These items are the entries of the completed batch object's `results` array (shown in full above); each carries the standard embeddings response in its `body`, and there is one result item per `custom_id`. A request whose `input` is an array of strings returns one embedding object per string in `data` (ordered by `index`); a single-string request returns exactly one:
+Poll for results the same way as any other batch (`GET https://openrouter.ai/api/v1/batches/:id`). These items are the entries of the completed batch object's `results` array (shown in full above); each carries the standard embeddings response in its `body`, and there is one result item per `custom_id`. A request whose `input` is an array of strings returns one embedding object per string in `data` (ordered by `index`); a single-string request returns exactly one:
 
 ```json title="Embeddings results" lines theme={null}
 [

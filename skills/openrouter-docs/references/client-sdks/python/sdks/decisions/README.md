@@ -1,0 +1,82 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Alpha.Decisions
+
+> Alpha feature endpoints for Decisions (questions and answers) requests
+
+## Overview
+
+Alpha feature endpoints for Decisions (questions and answers) requests
+
+### Available Operations
+
+* [create](#create) - Submit a Decisions (questions and answers) request
+
+## create
+
+Submits a Decisions request to the Decisions router
+
+### Example Usage
+
+```python theme={null}
+from openrouter import OpenRouter
+import os
+
+
+with OpenRouter(
+    http_referer="<value>",
+    x_open_router_title="<value>",
+    x_open_router_categories="<value>",
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.alpha.decisions.create(model="Grand Cherokee", questions={
+
+    }, state={
+        "key": "Massachusetts",
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                  | Type                                                                                           | Required             | Description                                                                                                                                                                                                                                                                                                             | Example                                                                        |
+| -------------------------- | ---------------------------------------------------------------------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| `model`                    | *str*                                                                                          | :heavy\_check\_mark: | N/A                                                                                                                                                                                                                                                                                                                     |                                                                                |
+| `questions`                | Dict\[str, [components.Questions](../../components/questions.mdx)]                             | :heavy\_check\_mark: | N/A                                                                                                                                                                                                                                                                                                                     |                                                                                |
+| `state`                    | [components.State](../../components/state.mdx)                                                 | :heavy\_check\_mark: | The content to evaluate: a plain string, or a JSON object or array of related context.                                                                                                                                                                                                                                  |                                                                                |
+| `http_referer`             | *Optional\[str]*                                                                               | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br />                                                                                                                                                             |                                                                                |
+| `x_open_router_title`      | *Optional\[str]*                                                                               | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                                                                                                                                                                                      |                                                                                |
+| `x_open_router_categories` | *Optional\[str]*                                                                               | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                                                                                                                                                                             |                                                                                |
+| `provider`                 | [OptionalNullable\[components.ProviderPreferences\]](../../components/providerpreferences.mdx) | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                                     | \{<br />"allow\_fallbacks": true<br />}                                        |
+| `session_id`               | *Optional\[str]*                                                                               | :heavy\_minus\_sign: | A unique identifier for grouping related requests (e.g., a conversation or agent workflow). Used for observability grouping in Broadcast and private logging; never sent to the provider. If provided in both the request body and the x-session-id header, the body value takes precedence. Maximum of 256 characters. | session-1234                                                                   |
+| `trace`                    | [Optional\[components.TraceConfig\]](../../components/traceconfig.mdx)                         | :heavy\_minus\_sign: | Metadata for observability and tracing. Known keys (trace\_id, trace\_name, span\_name, generation\_name, parent\_span\_id) have special handling. Additional keys are passed through as custom metadata to configured broadcast destinations.                                                                          | \{<br />"trace\_id": "trace-abc123",<br />"trace\_name": "my-app-trace"<br />} |
+| `user`                     | *Optional\[str]*                                                                               | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                                     |                                                                                |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.mdx)                            | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                                                                                                                                                                                     |                                                                                |
+
+### Response
+
+**[components.DecisionsResponse](../../components/decisionsresponse.mdx)**
+
+### Errors
+
+| Error Type                             | Status Code | Content Type     |
+| -------------------------------------- | ----------- | ---------------- |
+| errors.BadRequestResponseError         | 400         | application/json |
+| errors.UnauthorizedResponseError       | 401         | application/json |
+| errors.PaymentRequiredResponseError    | 402         | application/json |
+| errors.ForbiddenResponseError          | 403         | application/json |
+| errors.NotFoundResponseError           | 404         | application/json |
+| errors.PayloadTooLargeResponseError    | 413         | application/json |
+| errors.TooManyRequestsResponseError    | 429         | application/json |
+| errors.InternalServerResponseError     | 500         | application/json |
+| errors.BadGatewayResponseError         | 502         | application/json |
+| errors.ServiceUnavailableResponseError | 503         | application/json |
+| errors.EdgeNetworkTimeoutResponseError | 524         | application/json |
+| errors.ProviderOverloadedResponseError | 529         | application/json |
+| errors.OpenRouterDefaultError          | 4XX, 5XX    | \*/\*            |

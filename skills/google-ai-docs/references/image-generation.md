@@ -79,17 +79,34 @@ All generated images include a [SynthID watermark](https://ai.google.dev/respons
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Base64;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.1-flash-image"))
-        .input(InteractionsInput.of("base64"))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.1-flash-image"))
+            .input(
+                InteractionsInput.of(
+                    "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme"))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.outputImage().isPresent()
+        && interaction.outputImage().get().data().isPresent()) {
+      byte[] imageBytes =
+          Base64.getDecoder().decode(interaction.outputImage().get().data().get());
+      Files.write(Paths.get("generated_image.png"), imageBytes);
+    }
 
 ### REST
 
@@ -195,17 +212,53 @@ understanding](https://ai.google.dev/gemini-api/docs/image-understanding) page.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Arrays;
+    import java.util.Base64;
+    import java.util.List;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.1-flash-image"))
-        .input(InteractionsInput.of("Create a picture of my cat eating a nano-banana in a"))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    byte[] inputBytes = Files.readAllBytes(Paths.get("/path/to/cat_image.png"));
+    String base64Image = Base64.getEncoder().encodeToString(inputBytes);
+
+    Content textContent =
+        TextContent.builder()
+            .text("Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme")
+            .build();
+    Content imageContent =
+        ImageContent.builder()
+            .data(base64Image)
+            .mimeType(ImageContentMimeType.IMAGE_PNG)
+            .build();
+
+    List<Content> contents = Arrays.asList(textContent, imageContent);
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.1-flash-image"))
+            .input(InteractionsInput.ofContent(contents))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.outputImage().isPresent()
+        && interaction.outputImage().get().data().isPresent()) {
+      byte[] outputBytes =
+          Base64.getDecoder().decode(interaction.outputImage().get().data().get());
+      Files.write(Paths.get("generated_image.png"), outputBytes);
+    }
 
 ### REST
 
@@ -274,17 +327,37 @@ example shows a prompt to generate an infographic about photosynthesis.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.GoogleSearch;
+    import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Arrays;
+    import java.util.Base64;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.1-flash-image"))
-        .input(InteractionsInput.of("Create a vibrant infographic that explains photosynthesis as if it were a recipe for a plant"))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.1-flash-image"))
+            .input(
+                InteractionsInput.of(
+                    "Create a vibrant infographic that explains photosynthesis as if it were a recipe for a plant's favorite food. Show the \"ingredients\" (sunlight, water, CO2) and the \"finished dish\" (sugar/energy). The style should be like a page from a colorful kids' cookbook, suitable for a 4th grader."))
+            .tools(Arrays.asList(new GoogleSearch()))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.outputImage().isPresent()
+        && interaction.outputImage().get().data().isPresent()) {
+      byte[] imageBytes =
+          Base64.getDecoder().decode(interaction.outputImage().get().data().get());
+      Files.write(Paths.get("photosynthesis.png"), imageBytes);
+    }
 
 ### REST
 
@@ -346,17 +419,65 @@ You can then use the `previous_interaction_id` to change the language on the gra
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionResponseFormat;
+    import com.google.genai.gaos.models.interactions.GoogleSearch;
+    import com.google.genai.gaos.models.interactions.ImageResponseFormat;
+    import com.google.genai.gaos.models.interactions.ImageResponseFormatAspectRatio;
+    import com.google.genai.gaos.models.interactions.ImageResponseFormatImageSize;
+    import com.google.genai.gaos.models.interactions.ImageResponseFormatMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ResponseFormat;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Arrays;
+    import java.util.Base64;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.1-flash-image"))
-        .input(InteractionsInput.of("Update this infographic to be in Spanish. Do not change any other elements of the image."))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    CreateModelInteraction turn1Params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.1-flash-image"))
+            .input(
+                InteractionsInput.of(
+                    "Create a vibrant infographic that explains photosynthesis as if it were a recipe for a plant's favorite food."))
+            .tools(Arrays.asList(new GoogleSearch()))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(turn1Params)).interaction().get();
+
+    CreateModelInteractionResponseFormat format =
+        CreateModelInteractionResponseFormat.of(
+            ResponseFormat.of(
+                ImageResponseFormat.builder()
+                    .mimeType(ImageResponseFormatMimeType.IMAGE_JPEG)
+                    .aspectRatio(ImageResponseFormatAspectRatio.of("16:9"))
+                    .imageSize(ImageResponseFormatImageSize.TWO_K)
+                    .build()));
+
+    CreateModelInteraction turn2Params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.1-flash-image"))
+            .input(
+                InteractionsInput.of(
+                    "Update this infographic to be in Spanish. Do not change any other elements of the image."))
+            .previousInteractionId(interaction.id().orElse(""))
+            .responseFormat(format)
+            .build();
+
+    Interaction interaction2 =
+        client.interactions.create(CreateInteractionRequestBody.of(turn2Params)).interaction().get();
+
+    if (interaction2.outputImage().isPresent()
+        && interaction2.outputImage().get().data().isPresent()) {
+      byte[] imageBytes =
+          Base64.getDecoder().decode(interaction2.outputImage().get().data().get());
+      Files.write(Paths.get("photosynthesis_spanish.png"), imageBytes);
+    }
 
 ### REST
 
@@ -502,17 +623,73 @@ can include the following:
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionResponseFormat;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.ImageResponseFormat;
+    import com.google.genai.gaos.models.interactions.ImageResponseFormatAspectRatio;
+    import com.google.genai.gaos.models.interactions.ImageResponseFormatImageSize;
+    import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ResponseFormat;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Arrays;
+    import java.util.Base64;
+    import java.util.List;
+
+    String prompt = "An office group photo of these people, they are making funny faces.";
+
+    byte[] imageBytes = Files.readAllBytes(Paths.get("/path/to/person.png"));
+    String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+
+    Content textContent = TextContent.builder().text(prompt).build();
+    Content imageContent =
+        ImageContent.builder()
+            .data(base64Image)
+            .mimeType(ImageContentMimeType.IMAGE_PNG)
+            .build();
+
+    List<Content> contents =
+        Arrays.asList(
+            textContent,
+            imageContent,
+            imageContent,
+            imageContent,
+            imageContent,
+            imageContent);
+
+    CreateModelInteractionResponseFormat format =
+        CreateModelInteractionResponseFormat.of(
+            ResponseFormat.of(
+                ImageResponseFormat.builder()
+                    .aspectRatio(ImageResponseFormatAspectRatio.of("5:4"))
+                    .imageSize(ImageResponseFormatImageSize.TWO_K)
+                    .build()));
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.1-flash-image"))
-        .input(InteractionsInput.of("An office group photo of these people, they are making funny faces."))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.1-flash-image"))
+            .input(InteractionsInput.ofContent(contents))
+            .responseFormat(format)
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.outputImage().isPresent()
+        && interaction.outputImage().get().data().isPresent()) {
+      byte[] outBytes =
+          Base64.getDecoder().decode(interaction.outputImage().get().data().get());
+      Files.write(Paths.get("office.png"), outBytes);
+    }
 
 ### REST
 
@@ -602,17 +779,52 @@ excluded from the response (see [Grounding with Google Image Search](https://ai.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionResponseFormat;
+    import com.google.genai.gaos.models.interactions.GoogleSearch;
+    import com.google.genai.gaos.models.interactions.ImageResponseFormat;
+    import com.google.genai.gaos.models.interactions.ImageResponseFormatAspectRatio;
+    import com.google.genai.gaos.models.interactions.ImageResponseFormatMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ResponseFormat;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Arrays;
+    import java.util.Base64;
+
+    String prompt =
+        "Visualize the current weather forecast for the next 5 days in San Francisco as a clean, modern weather chart. Add a visual on what I should wear each day";
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.1-flash-image"))
-        .input(InteractionsInput.of("Visualize the current weather forecast for the next 5 days in San Francisco as a clean, modern weather chart. Add a visual on what I should wear each day"))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    CreateModelInteractionResponseFormat format =
+        CreateModelInteractionResponseFormat.of(
+            ResponseFormat.of(
+                ImageResponseFormat.builder()
+                    .mimeType(ImageResponseFormatMimeType.IMAGE_JPEG)
+                    .aspectRatio(ImageResponseFormatAspectRatio.of("16:9"))
+                    .build()));
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.1-flash-image"))
+            .input(InteractionsInput.of(prompt))
+            .tools(Arrays.asList(new GoogleSearch()))
+            .responseFormat(format)
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.outputImage().isPresent()
+        && interaction.outputImage().get().data().isPresent()) {
+      byte[] imageBytes =
+          Base64.getDecoder().decode(interaction.outputImage().get().data().get());
+      Files.write(Paths.get("weather.png"), imageBytes);
+    }
 
 ### REST
 
@@ -692,17 +904,35 @@ used independently or together with Web Search.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.GoogleSearch;
+    import com.google.genai.gaos.models.interactions.GoogleSearchSearchType;
+    import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.1-flash-image"))
-        .input(InteractionsInput.of("A detailed painting of a Timareta butterfly resting on a flower"))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    GoogleSearch searchTool =
+        GoogleSearch.builder()
+            .searchTypes(
+                Arrays.asList(
+                    GoogleSearchSearchType.WEB_SEARCH, GoogleSearchSearchType.IMAGE_SEARCH))
+            .build();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.1-flash-image"))
+            .input(
+                InteractionsInput.of(
+                    "A detailed painting of a Timareta butterfly resting on a flower"))
+            .tools(Arrays.asList(searchTool))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
 ### REST
 
@@ -826,17 +1056,80 @@ directly in your API request or upload local video files using the
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionResponseFormat;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageResponseFormat;
+    import com.google.genai.gaos.models.interactions.ImageResponseFormatAspectRatio;
+    import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.ResponseFormat;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.interactions.VideoContent;
+    import com.google.genai.gaos.models.interactions.VideoContentMimeType;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Arrays;
+    import java.util.Base64;
+    import java.util.List;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.1-flash-image"))
-        .input(InteractionsInput.of("Generate a poster image that captures the key themes of this video."))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    Content videoContent =
+        VideoContent.builder()
+            .uri("https://www.youtube.com/watch?v=UTdfxFyOQTI")
+            .mimeType(VideoContentMimeType.VIDEO_MP4)
+            .build();
+    Content textContent =
+        TextContent.builder()
+            .text("Generate a poster image that captures the key themes of this video.")
+            .build();
+
+    List<Content> contents = Arrays.asList(videoContent, textContent);
+
+    CreateModelInteractionResponseFormat format =
+        CreateModelInteractionResponseFormat.of(
+            ResponseFormat.of(
+                ImageResponseFormat.builder()
+                    .aspectRatio(ImageResponseFormatAspectRatio.of("16:9"))
+                    .build()));
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.1-flash-image"))
+            .input(InteractionsInput.ofContent(contents))
+            .responseFormat(format)
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof ModelOutputStep) {
+          ModelOutputStep outputStep = (ModelOutputStep) step;
+          if (outputStep.content().isPresent()) {
+            for (Content block : outputStep.content().get()) {
+              if (block instanceof TextContent) {
+                System.out.println(((TextContent) block).text().orElse(""));
+              } else if (block instanceof ImageContent) {
+                ImageContent img = (ImageContent) block;
+                if (img.data().isPresent()) {
+                  byte[] imgBytes = Base64.getDecoder().decode(img.data().get());
+                  Files.write(Paths.get("video_poster.png"), imgBytes);
+                  System.out.println("Image saved as video_poster.png");
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
 ### REST
 
@@ -934,17 +1227,53 @@ parameters (e.g., 1k) will be rejected.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionResponseFormat;
+    import com.google.genai.gaos.models.interactions.ImageResponseFormat;
+    import com.google.genai.gaos.models.interactions.ImageResponseFormatAspectRatio;
+    import com.google.genai.gaos.models.interactions.ImageResponseFormatImageSize;
+    import com.google.genai.gaos.models.interactions.ImageResponseFormatMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ResponseFormat;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Base64;
+
+    String prompt =
+        "Da Vinci style anatomical sketch of a dissected Monarch butterfly. Detailed drawings of the head, wings, and legs on textured parchment with notes in English.";
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.1-flash-image"))
-        .input(InteractionsInput.of("Da Vinci style anatomical sketch of a dissected Monarch butterfly. Detailed drawings of the head, wings, and legs on textured parchment with notes in English."))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    CreateModelInteractionResponseFormat format =
+        CreateModelInteractionResponseFormat.of(
+            ResponseFormat.of(
+                ImageResponseFormat.builder()
+                    .mimeType(ImageResponseFormatMimeType.IMAGE_JPEG)
+                    .aspectRatio(ImageResponseFormatAspectRatio.of("1:1"))
+                    .imageSize(ImageResponseFormatImageSize.ONE_K)
+                    .build()));
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.1-flash-image"))
+            .input(InteractionsInput.of(prompt))
+            .responseFormat(format)
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
+    if (interaction.outputImage().isPresent()
+        && interaction.outputImage().get().data().isPresent()) {
+      byte[] imageBytes =
+          Base64.getDecoder().decode(interaction.outputImage().get().data().get());
+      Files.write(Paths.get("butterfly.png"), imageBytes);
+    }
 
 ### REST
 
@@ -1007,17 +1336,53 @@ You can check the thoughts that lead to the final image being produced.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.interactions.ThoughtStep;
+    import com.google.genai.gaos.models.interactions.ThoughtSummaryContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Base64;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.8-flash"))
-        .input(InteractionsInput.of("Image operation"))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.1-flash-image"))
+            .input(
+                InteractionsInput.of(
+                    "A futuristic city built inside a giant glass bottle floating in space"))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof ThoughtStep) {
+          ThoughtStep thoughtStep = (ThoughtStep) step;
+          if (thoughtStep.summary().isPresent()) {
+            for (ThoughtSummaryContent contentBlock : thoughtStep.summary().get()) {
+              if (contentBlock instanceof TextContent) {
+                System.out.println(((TextContent) contentBlock).text().orElse(""));
+              } else if (contentBlock instanceof ImageContent) {
+                ImageContent img = (ImageContent) contentBlock;
+                if (img.data().isPresent()) {
+                  byte[] imgBytes = Base64.getDecoder().decode(img.data().get());
+                  Files.write(Paths.get("thought_image.png"), imgBytes);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
 #### Interleaved text and images
 
@@ -1077,17 +1442,57 @@ and save interleaved content, you must manually iterate over `steps`:
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Base64;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3-pro-image"))
-        .input(InteractionsInput.of("Write the story of the lifecycle of a monarch butterfly, interleave illustrations"))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3-pro-image"))
+            .input(
+                InteractionsInput.of(
+                    "Write the story of the lifecycle of a monarch butterfly, interleave illustrations"))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    int imageCounter = 1;
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof ModelOutputStep) {
+          ModelOutputStep outputStep = (ModelOutputStep) step;
+          if (outputStep.content().isPresent()) {
+            for (Content contentBlock : outputStep.content().get()) {
+              if (contentBlock instanceof TextContent) {
+                System.out.println(((TextContent) contentBlock).text().orElse(""));
+              } else if (contentBlock instanceof ImageContent) {
+                ImageContent img = (ImageContent) contentBlock;
+                if (img.data().isPresent()) {
+                  String filename = String.format("butterfly_lifecycle_%d.png", imageCounter);
+                  byte[] imgBytes = Base64.getDecoder().decode(img.data().get());
+                  Files.write(Paths.get(filename), imgBytes);
+                  System.out.printf("%n[Saved illustration: %s]%n", filename);
+                  imageCounter++;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
 #### Controlling thinking levels
 
@@ -1141,17 +1546,39 @@ amount of thinking the model uses to balance quality and latency. The default
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.GenerationConfig;
+    import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ThinkingLevel;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Base64;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.1-flash-image"))
-        .input(InteractionsInput.of("A futuristic city built inside a giant glass bottle floating in space"))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.1-flash-image"))
+            .input(
+                InteractionsInput.of(
+                    "A futuristic city built inside a giant glass bottle floating in space"))
+            .generationConfig(GenerationConfig.builder().thinkingLevel(ThinkingLevel.HIGH).build())
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
+    if (interaction.outputImage().isPresent()
+        && interaction.outputImage().get().data().isPresent()) {
+      byte[] imageBytes =
+          Base64.getDecoder().decode(interaction.outputImage().get().data().get());
+      Files.write(Paths.get("futuristic_city.png"), imageBytes);
+    }
 
 ### REST
 
@@ -1176,7 +1603,7 @@ the process or not.
 Although Nano Banana image generation models are recommended for most use cases,
 you can also explore dedicated image generation models:
 
-- **[Imagen](https://ai.google.dev/gemini-api/docs/imagen)**: Google's text-to-image models optimized for generating high-quality images.
+- **Imagen**: Google's legacy text-to-image models (shut down).
 - **[Veo](https://ai.google.dev/gemini-api/docs/video)**: Google's video generation model.
 
 ## Generate images in batch
@@ -1270,17 +1697,52 @@ have over the results.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionResponseFormat;
+    import com.google.genai.gaos.models.interactions.ImageResponseFormat;
+    import com.google.genai.gaos.models.interactions.ImageResponseFormatAspectRatio;
+    import com.google.genai.gaos.models.interactions.ImageResponseFormatMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ResponseFormat;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Arrays;
+    import java.util.Base64;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.1-flash-image"))
-        .input(InteractionsInput.of("A photorealistic wide-angle shot of a vibrant coral reef teeming with tropical fish. Crystal-clear turquoise water with sunbeams filtering down from the surface, illuminating a sea turtle gliding gracefully over the coral. Shot from a low perspective with a wide-angle lens. Aspect ratio 16:9."))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    CreateModelInteractionResponseFormat format =
+        CreateModelInteractionResponseFormat.of(
+            Arrays.asList(
+                ResponseFormat.of(
+                    ImageResponseFormat.builder()
+                        .mimeType(ImageResponseFormatMimeType.IMAGE_JPEG)
+                        .aspectRatio(ImageResponseFormatAspectRatio.of("16:9"))
+                        .build())));
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.1-flash-image"))
+            .input(
+                InteractionsInput.of(
+                    "A photorealistic wide-angle shot of a vibrant coral reef teeming with tropical fish. Crystal-clear turquoise water with sunbeams filtering down from the surface, illuminating a sea turtle gliding gracefully over the coral. Shot from a low perspective with a wide-angle lens. Aspect ratio 16:9."))
+            .responseFormat(format)
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
+    if (interaction.outputImage().isPresent()
+        && interaction.outputImage().get().data().isPresent()) {
+      byte[] imageBytes =
+          Base64.getDecoder().decode(interaction.outputImage().get().data().get());
+      Files.write(Paths.get("coral_reef.png"), imageBytes);
+    }
 
 ### REST
 
@@ -1365,17 +1827,53 @@ detail (bold lines, colors, etc.) for consistent results.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Base64;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.1-flash-image"))
-        .input(InteractionsInput.of("A kawaii-style sticker of a happy red panda wearing a tiny bamboo hat. It"))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.1-flash-image"))
+            .input(
+                InteractionsInput.of(
+                    "A kawaii-style sticker of a happy red panda wearing a tiny bamboo hat. It's munching on a green bamboo leaf. The design features bold, clean outlines, simple cel-shading, and a vibrant color palette. The background must be white."))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof ModelOutputStep) {
+          ModelOutputStep outputStep = (ModelOutputStep) step;
+          if (outputStep.content().isPresent()) {
+            for (Content contentBlock : outputStep.content().get()) {
+              if (contentBlock instanceof TextContent) {
+                System.out.println(((TextContent) contentBlock).text().orElse(""));
+              } else if (contentBlock instanceof ImageContent) {
+                ImageContent img = (ImageContent) contentBlock;
+                if (img.data().isPresent()) {
+                  byte[] imgBytes = Base64.getDecoder().decode(img.data().get());
+                  Files.write(Paths.get("red_panda_sticker.png"), imgBytes);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
 ### REST
 
@@ -1460,17 +1958,65 @@ professional asset production.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionResponseFormat;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageResponseFormat;
+    import com.google.genai.gaos.models.interactions.ImageResponseFormatAspectRatio;
+    import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.ResponseFormat;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Base64;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.1-flash-image"))
-        .input(InteractionsInput.of("Create a modern, minimalist logo for a coffee shop called "))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    CreateModelInteractionResponseFormat format =
+        CreateModelInteractionResponseFormat.of(
+            ResponseFormat.of(
+                ImageResponseFormat.builder()
+                    .aspectRatio(ImageResponseFormatAspectRatio.of("1:1"))
+                    .build()));
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.1-flash-image"))
+            .input(
+                InteractionsInput.of(
+                    "Create a modern, minimalist logo for a coffee shop called 'The Daily Grind'. The text should be in a clean, bold, sans-serif font. The color scheme is black and white. Put the logo in a circle. Use a coffee bean in a clever way."))
+            .responseFormat(format)
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof ModelOutputStep) {
+          ModelOutputStep outputStep = (ModelOutputStep) step;
+          if (outputStep.content().isPresent()) {
+            for (Content contentBlock : outputStep.content().get()) {
+              if (contentBlock instanceof TextContent) {
+                System.out.println(((TextContent) contentBlock).text().orElse(""));
+              } else if (contentBlock instanceof ImageContent) {
+                ImageContent img = (ImageContent) contentBlock;
+                if (img.data().isPresent()) {
+                  byte[] imgBytes = Base64.getDecoder().decode(img.data().get());
+                  Files.write(Paths.get("logo_example.jpg"), imgBytes);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
 ### REST
 
@@ -1563,17 +2109,53 @@ advertising, or branding.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Base64;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.1-flash-image"))
-        .input(InteractionsInput.of("A high-resolution, studio-lit product photograph of a minimalist ceramic coffee mug in matte black, presented on a polished concrete surface. The lighting is a three-point softbox setup designed to create soft, diffused highlights and eliminate harsh shadows. The camera angle is a slightly elevated 45-degree shot to showcase its clean lines. Ultra-realistic, with sharp focus on the steam rising from the coffee. Square image."))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.1-flash-image"))
+            .input(
+                InteractionsInput.of(
+                    "A high-resolution, studio-lit product photograph of a minimalist ceramic coffee mug in matte black, presented on a polished concrete surface. The lighting is a three-point softbox setup designed to create soft, diffused highlights and eliminate harsh shadows. The camera angle is a slightly elevated 45-degree shot to showcase its clean lines. Ultra-realistic, with sharp focus on the steam rising from the coffee. Square image."))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof ModelOutputStep) {
+          ModelOutputStep outputStep = (ModelOutputStep) step;
+          if (outputStep.content().isPresent()) {
+            for (Content contentBlock : outputStep.content().get()) {
+              if (contentBlock instanceof TextContent) {
+                System.out.println(((TextContent) contentBlock).text().orElse(""));
+              } else if (contentBlock instanceof ImageContent) {
+                ImageContent img = (ImageContent) contentBlock;
+                if (img.data().isPresent()) {
+                  byte[] imgBytes = Base64.getDecoder().decode(img.data().get());
+                  Files.write(Paths.get("product_mockup.png"), imgBytes);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
 ### REST
 
@@ -1659,17 +2241,53 @@ materials where text will be overlaid.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Base64;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.1-flash-image"))
-        .input(InteractionsInput.of("A minimalist composition featuring a single, delicate red maple leaf positioned in the bottom-right of the frame. The background is a vast, empty off-white canvas, creating significant negative space for text. Soft, diffused lighting from the top left. Square image."))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.1-flash-image"))
+            .input(
+                InteractionsInput.of(
+                    "A minimalist composition featuring a single, delicate red maple leaf positioned in the bottom-right of the frame. The background is a vast, empty off-white canvas, creating significant negative space for text. Soft, diffused lighting from the top left. Square image."))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof ModelOutputStep) {
+          ModelOutputStep outputStep = (ModelOutputStep) step;
+          if (outputStep.content().isPresent()) {
+            for (Content contentBlock : outputStep.content().get()) {
+              if (contentBlock instanceof TextContent) {
+                System.out.println(((TextContent) contentBlock).text().orElse(""));
+              } else if (contentBlock instanceof ImageContent) {
+                ImageContent img = (ImageContent) contentBlock;
+                if (img.data().isPresent()) {
+                  byte[] imgBytes = Base64.getDecoder().decode(img.data().get());
+                  Files.write(Paths.get("minimalist_design.png"), imgBytes);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
 ### REST
 
@@ -1775,17 +2393,68 @@ prompts work best with Gemini 3 Pro and Gemini 3.1 Flash Image.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Arrays;
+    import java.util.Base64;
+    import java.util.List;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.1-flash-image"))
-        .input(InteractionsInput.of("Make a 3 panel comic in a gritty, noir art style with high-contrast black and white inks. Put the character in a humurous scene."))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    byte[] imageBytes = Files.readAllBytes(Paths.get("/path/to/your/man_in_white_glasses.jpg"));
+    String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+    String textInput =
+        "Make a 3 panel comic in a gritty, noir art style with high-contrast black and white inks. Put the character in a humurous scene.";
+
+    Content textContent = TextContent.builder().text(textInput).build();
+    Content imageContent =
+        ImageContent.builder()
+            .data(base64Image)
+            .mimeType(ImageContentMimeType.IMAGE_JPEG)
+            .build();
+
+    List<Content> contents = Arrays.asList(textContent, imageContent);
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.1-flash-image"))
+            .input(InteractionsInput.ofContent(contents))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof ModelOutputStep) {
+          ModelOutputStep outputStep = (ModelOutputStep) step;
+          if (outputStep.content().isPresent()) {
+            for (Content contentBlock : outputStep.content().get()) {
+              if (contentBlock instanceof TextContent) {
+                System.out.println(((TextContent) contentBlock).text().orElse(""));
+              } else if (contentBlock instanceof ImageContent) {
+                ImageContent img = (ImageContent) contentBlock;
+                if (img.data().isPresent()) {
+                  byte[] outBytes = Base64.getDecoder().decode(img.data().get());
+                  Files.write(Paths.get("comic_panel.jpg"), outBytes);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
 ### REST
 
@@ -1872,17 +2541,68 @@ This is useful for news, weather, and other time-sensitive topics.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionResponseFormat;
+    import com.google.genai.gaos.models.interactions.GoogleSearch;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageResponseFormat;
+    import com.google.genai.gaos.models.interactions.ImageResponseFormatAspectRatio;
+    import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.ResponseFormat;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Arrays;
+    import java.util.Base64;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.1-flash-image"))
-        .input(InteractionsInput.of("Make a simple but stylish graphic of last night"))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    CreateModelInteractionResponseFormat format =
+        CreateModelInteractionResponseFormat.of(
+            ResponseFormat.of(
+                ImageResponseFormat.builder()
+                    .aspectRatio(ImageResponseFormatAspectRatio.of("16:9"))
+                    .build()));
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.1-flash-image"))
+            .input(
+                InteractionsInput.of(
+                    "Make a simple but stylish graphic of last night's Arsenal game in the Champion's League"))
+            .tools(Arrays.asList(new GoogleSearch()))
+            .responseFormat(format)
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof ModelOutputStep) {
+          ModelOutputStep outputStep = (ModelOutputStep) step;
+          if (outputStep.content().isPresent()) {
+            for (Content contentBlock : outputStep.content().get()) {
+              if (contentBlock instanceof TextContent) {
+                System.out.println(((TextContent) contentBlock).text().orElse(""));
+              } else if (contentBlock instanceof ImageContent) {
+                ImageContent img = (ImageContent) contentBlock;
+                if (img.data().isPresent()) {
+                  byte[] imgBytes = Base64.getDecoder().decode(img.data().get());
+                  Files.write(Paths.get("football-score.jpg"), imgBytes);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
 ### REST
 
@@ -2001,17 +2721,68 @@ image's style, lighting, and perspective.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Arrays;
+    import java.util.Base64;
+    import java.util.List;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.1-flash-image"))
-        .input(InteractionsInput.of("Using the provided image of my cat, please add a small, knitted wizard hat on its head. Make it look like it"))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    byte[] imageBytes = Files.readAllBytes(Paths.get("/path/to/your/cat_photo.png"));
+    String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+    String textInput =
+        "Using the provided image of my cat, please add a small, knitted wizard hat on its head. Make it look like it's sitting comfortably and not falling off.";
+
+    Content textContent = TextContent.builder().text(textInput).build();
+    Content imageContent =
+        ImageContent.builder()
+            .data(base64Image)
+            .mimeType(ImageContentMimeType.IMAGE_PNG)
+            .build();
+
+    List<Content> contents = Arrays.asList(textContent, imageContent);
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.1-flash-image"))
+            .input(InteractionsInput.ofContent(contents))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof ModelOutputStep) {
+          ModelOutputStep outputStep = (ModelOutputStep) step;
+          if (outputStep.content().isPresent()) {
+            for (Content contentBlock : outputStep.content().get()) {
+              if (contentBlock instanceof TextContent) {
+                System.out.println(((TextContent) contentBlock).text().orElse(""));
+              } else if (contentBlock instanceof ImageContent) {
+                ImageContent img = (ImageContent) contentBlock;
+                if (img.data().isPresent()) {
+                  byte[] outBytes = Base64.getDecoder().decode(img.data().get());
+                  Files.write(Paths.get("cat_with_hat.png"), outBytes);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
 ### REST
 
@@ -2125,17 +2896,68 @@ leaving the rest untouched.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Arrays;
+    import java.util.Base64;
+    import java.util.List;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.1-flash-image"))
-        .input(InteractionsInput.of("Using the provided image of a living room, change only the blue sofa to be a vintage, brown leather chesterfield sofa. Keep the rest of the room, including the pillows on the sofa and the lighting, unchanged."))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    byte[] imageBytes = Files.readAllBytes(Paths.get("/path/to/your/living_room.png"));
+    String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+    String textInput =
+        "Using the provided image of a living room, change only the blue sofa to be a vintage, brown leather chesterfield sofa. Keep the rest of the room, including the pillows on the sofa and the lighting, unchanged.";
+
+    Content imageContent =
+        ImageContent.builder()
+            .data(base64Image)
+            .mimeType(ImageContentMimeType.IMAGE_PNG)
+            .build();
+    Content textContent = TextContent.builder().text(textInput).build();
+
+    List<Content> contents = Arrays.asList(imageContent, textContent);
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.1-flash-image"))
+            .input(InteractionsInput.ofContent(contents))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof ModelOutputStep) {
+          ModelOutputStep outputStep = (ModelOutputStep) step;
+          if (outputStep.content().isPresent()) {
+            for (Content contentBlock : outputStep.content().get()) {
+              if (contentBlock instanceof TextContent) {
+                System.out.println(((TextContent) contentBlock).text().orElse(""));
+              } else if (contentBlock instanceof ImageContent) {
+                ImageContent img = (ImageContent) contentBlock;
+                if (img.data().isPresent()) {
+                  byte[] outBytes = Base64.getDecoder().decode(img.data().get());
+                  Files.write(Paths.get("living_room_edited.png"), outBytes);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
 ### REST
 
@@ -2241,17 +3063,68 @@ artistic style.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Arrays;
+    import java.util.Base64;
+    import java.util.List;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.1-flash-image"))
-        .input(InteractionsInput.of("Transform the provided photograph of a modern city street at night into the artistic style of Vincent van Gogh"))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    byte[] imageBytes = Files.readAllBytes(Paths.get("/path/to/your/city.png"));
+    String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+    String textInput =
+        "Transform the provided photograph of a modern city street at night into the artistic style of Vincent van Gogh's 'Starry Night'. Preserve the original composition of buildings and cars, but render all elements with swirling, impasto brushstrokes and a dramatic palette of deep blues and bright yellows.";
+
+    Content imageContent =
+        ImageContent.builder()
+            .data(base64Image)
+            .mimeType(ImageContentMimeType.IMAGE_PNG)
+            .build();
+    Content textContent = TextContent.builder().text(textInput).build();
+
+    List<Content> contents = Arrays.asList(imageContent, textContent);
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.1-flash-image"))
+            .input(InteractionsInput.ofContent(contents))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof ModelOutputStep) {
+          ModelOutputStep outputStep = (ModelOutputStep) step;
+          if (outputStep.content().isPresent()) {
+            for (Content contentBlock : outputStep.content().get()) {
+              if (contentBlock instanceof TextContent) {
+                System.out.println(((TextContent) contentBlock).text().orElse(""));
+              } else if (contentBlock instanceof ImageContent) {
+                ImageContent img = (ImageContent) contentBlock;
+                if (img.data().isPresent()) {
+                  byte[] outBytes = Base64.getDecoder().decode(img.data().get());
+                  Files.write(Paths.get("city_style_transfer.png"), outBytes);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
 ### REST
 
@@ -2381,17 +3254,73 @@ perfect for product mockups or creative collages.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Arrays;
+    import java.util.Base64;
+    import java.util.List;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.1-flash-image"))
-        .input(InteractionsInput.of("Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment."))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    byte[] dressBytes = Files.readAllBytes(Paths.get("/path/to/your/dress.png"));
+    byte[] modelBytes = Files.readAllBytes(Paths.get("/path/to/your/model.png"));
+    String textInput =
+        "Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment.";
+
+    Content dressContent =
+        ImageContent.builder()
+            .data(Base64.getEncoder().encodeToString(dressBytes))
+            .mimeType(ImageContentMimeType.IMAGE_PNG)
+            .build();
+    Content modelContent =
+        ImageContent.builder()
+            .data(Base64.getEncoder().encodeToString(modelBytes))
+            .mimeType(ImageContentMimeType.IMAGE_PNG)
+            .build();
+    Content textContent = TextContent.builder().text(textInput).build();
+
+    List<Content> contents = Arrays.asList(dressContent, modelContent, textContent);
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.1-flash-image"))
+            .input(InteractionsInput.ofContent(contents))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof ModelOutputStep) {
+          ModelOutputStep outputStep = (ModelOutputStep) step;
+          if (outputStep.content().isPresent()) {
+            for (Content contentBlock : outputStep.content().get()) {
+              if (contentBlock instanceof TextContent) {
+                System.out.println(((TextContent) contentBlock).text().orElse(""));
+              } else if (contentBlock instanceof ImageContent) {
+                ImageContent img = (ImageContent) contentBlock;
+                if (img.data().isPresent()) {
+                  byte[] outBytes = Base64.getDecoder().decode(img.data().get());
+                  Files.write(Paths.get("fashion_ecommerce_shot.png"), outBytes);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
 ### REST
 
@@ -2508,17 +3437,73 @@ describe them in great detail along with your edit request.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Arrays;
+    import java.util.Base64;
+    import java.util.List;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.1-flash-image"))
-        .input(InteractionsInput.of("model_output"))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    byte[] womanBytes = Files.readAllBytes(Paths.get("/path/to/your/woman.png"));
+    byte[] logoBytes = Files.readAllBytes(Paths.get("/path/to/your/logo.png"));
+    String textInput =
+        "Take the first image of the woman with brown hair, blue eyes, and a neutral expression. Add the logo from the second image onto her black t-shirt. Ensure the woman's face and features remain completely unchanged. The logo should look like it's naturally printed on the fabric, following the folds of the shirt.";
+
+    Content womanContent =
+        ImageContent.builder()
+            .data(Base64.getEncoder().encodeToString(womanBytes))
+            .mimeType(ImageContentMimeType.IMAGE_PNG)
+            .build();
+    Content logoContent =
+        ImageContent.builder()
+            .data(Base64.getEncoder().encodeToString(logoBytes))
+            .mimeType(ImageContentMimeType.IMAGE_PNG)
+            .build();
+    Content textContent = TextContent.builder().text(textInput).build();
+
+    List<Content> contents = Arrays.asList(womanContent, logoContent, textContent);
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.1-flash-image"))
+            .input(InteractionsInput.ofContent(contents))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof ModelOutputStep) {
+          ModelOutputStep outputStep = (ModelOutputStep) step;
+          if (outputStep.content().isPresent()) {
+            for (Content contentBlock : outputStep.content().get()) {
+              if (contentBlock instanceof TextContent) {
+                System.out.println(((TextContent) contentBlock).text().orElse(""));
+              } else if (contentBlock instanceof ImageContent) {
+                ImageContent img = (ImageContent) contentBlock;
+                if (img.data().isPresent()) {
+                  byte[] outBytes = Base64.getDecoder().decode(img.data().get());
+                  Files.write(Paths.get("woman_with_logo.png"), outBytes);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
 ### REST
 
@@ -2622,17 +3607,67 @@ finished image.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.interactions.Content;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Arrays;
+    import java.util.Base64;
+    import java.util.List;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.1-flash-image"))
-        .input(InteractionsInput.of("model_output"))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    byte[] sketchBytes = Files.readAllBytes(Paths.get("/path/to/your/car_sketch.png"));
+    String textInput =
+        "Turn this rough pencil sketch of a futuristic car into a polished photo of the finished concept car in a showroom. Keep the sleek lines and low profile from the sketch but add metallic blue paint and neon rim lighting.";
+
+    Content sketchContent =
+        ImageContent.builder()
+            .data(Base64.getEncoder().encodeToString(sketchBytes))
+            .mimeType(ImageContentMimeType.IMAGE_PNG)
+            .build();
+    Content textContent = TextContent.builder().text(textInput).build();
+
+    List<Content> contents = Arrays.asList(sketchContent, textContent);
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.1-flash-image"))
+            .input(InteractionsInput.ofContent(contents))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof ModelOutputStep) {
+          ModelOutputStep outputStep = (ModelOutputStep) step;
+          if (outputStep.content().isPresent()) {
+            for (Content contentBlock : outputStep.content().get()) {
+              if (contentBlock instanceof TextContent) {
+                System.out.println(((TextContent) contentBlock).text().orElse(""));
+              } else if (contentBlock instanceof ImageContent) {
+                ImageContent img = (ImageContent) contentBlock;
+                if (img.data().isPresent()) {
+                  byte[] outBytes = Base64.getDecoder().decode(img.data().get());
+                  Files.write(Paths.get("car_photo.png"), outBytes);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
 ### REST
 
@@ -2758,17 +3793,36 @@ To request multiple modalities (for example, both text and the generated image),
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionResponseFormat;
+    import com.google.genai.gaos.models.interactions.ImageResponseFormat;
+    import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ResponseFormat;
+    import com.google.genai.gaos.models.interactions.TextResponseFormat;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.1-flash-image"))
-        .input(InteractionsInput.of("Write a short poem about a starry night and generate an image of it."))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    CreateModelInteractionResponseFormat format =
+        CreateModelInteractionResponseFormat.of(
+            Arrays.asList(
+                ResponseFormat.of(TextResponseFormat.builder().build()),
+                ResponseFormat.of(ImageResponseFormat.builder().build())));
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.1-flash-image"))
+            .input(
+                InteractionsInput.of(
+                    "Write a short poem about a starry night and generate an image of it."))
+            .responseFormat(format)
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
 ### REST
 
@@ -2816,17 +3870,37 @@ By default, the model matches the output image size to that of your input image,
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionResponseFormat;
+    import com.google.genai.gaos.models.interactions.ImageResponseFormat;
+    import com.google.genai.gaos.models.interactions.ImageResponseFormatAspectRatio;
+    import com.google.genai.gaos.models.interactions.ImageResponseFormatImageSize;
+    import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ResponseFormat;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
 
     Client client = new Client();
-    CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.1-flash-image"))
-        .input(InteractionsInput.of("image"))
-        .build();
-    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+    String prompt = "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme";
+
+    CreateModelInteractionResponseFormat format =
+        CreateModelInteractionResponseFormat.of(
+            ResponseFormat.of(
+                ImageResponseFormat.builder()
+                    .aspectRatio(ImageResponseFormatAspectRatio.of("16:9"))
+                    .imageSize(ImageResponseFormatImageSize.TWO_K)
+                    .build()));
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.1-flash-image"))
+            .input(InteractionsInput.of(prompt))
+            .responseFormat(format)
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
 ### REST
 
@@ -2928,11 +4002,10 @@ Choose the model best suited for your specific use case.
 ### When to use Imagen
 
 > [!WARNING]
-> Imagen models are deprecated and will be shut down on August 17, 2026. We recommend using Nano Banana models for all image generation tasks.
+> Imagen models are shut down. Use Nano Banana models for all image generation tasks.
 
-In addition to using Gemini's built-in image generation capabilities, you can
-also access [Imagen](https://ai.google.dev/gemini-api/docs/imagen), our specialized image generation
-model, through the Gemini API. Plan to migrate before the shutdown date.
+Imagen is shut down and no longer available through the Gemini API.
+Use Nano Banana for image generation and editing.
 
 ## What's next
 

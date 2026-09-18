@@ -1,43 +1,43 @@
 {
   "alexanderzobnin-zabbix-app/alerting.md": {
     "url": "https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/alerting.md",
-    "size": 2457,
-    "updatedAt": "2026-06-25T05:40:49.464Z"
+    "size": 6262,
+    "updatedAt": "2026-09-18T04:37:19.573Z"
   },
   "alexanderzobnin-zabbix-app/annotations.md": {
     "url": "https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/annotations.md",
-    "size": 3496,
-    "updatedAt": "2026-06-25T05:40:49.828Z"
+    "size": 6024,
+    "updatedAt": "2026-09-18T04:37:19.778Z"
   },
   "alexanderzobnin-zabbix-app/configure.md": {
     "url": "https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/configure.md",
-    "size": 15072,
-    "updatedAt": "2026-06-25T05:40:50.200Z"
+    "size": 21062,
+    "updatedAt": "2026-09-18T04:37:19.983Z"
   },
   "alexanderzobnin-zabbix-app/functions.md": {
     "url": "https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/functions.md",
-    "size": 15512,
-    "updatedAt": "2026-07-15T03:47:20.320Z"
+    "size": 17129,
+    "updatedAt": "2026-09-18T04:37:20.193Z"
   },
   "alexanderzobnin-zabbix-app/index.md": {
     "url": "https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest.md",
-    "size": 4791,
-    "updatedAt": "2026-06-30T02:10:54.847Z"
+    "size": 5437,
+    "updatedAt": "2026-09-18T04:37:20.402Z"
   },
   "alexanderzobnin-zabbix-app/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/query-editor.md",
-    "size": 18831,
-    "updatedAt": "2026-06-30T02:10:55.000Z"
+    "size": 22815,
+    "updatedAt": "2026-09-18T04:37:20.600Z"
   },
   "alexanderzobnin-zabbix-app/template-variables.md": {
     "url": "https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/template-variables.md",
-    "size": 6201,
-    "updatedAt": "2026-06-25T05:41:27.302Z"
+    "size": 11380,
+    "updatedAt": "2026-09-18T04:37:20.811Z"
   },
   "alexanderzobnin-zabbix-app/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/troubleshooting.md",
-    "size": 14252,
-    "updatedAt": "2026-06-25T05:41:27.675Z"
+    "size": 33676,
+    "updatedAt": "2026-09-18T04:37:21.036Z"
   },
   "cloudwatch/aws-authentication.md": {
     "url": "https://grafana.com/docs/plugins/cloudwatch/latest/aws-authentication.md",

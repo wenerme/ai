@@ -9,7 +9,7 @@ It is built with Gemini 3.8 Flash and uses the same harness as the Antigravity I
     client = genai.Client()
 
     interaction = client.interactions.create(
-        agent="antigravity-preview-05-2026",
+        agent="antigravity-preview-09-2026",
         input="Read Hacker News, summarize the top 10 stories, and save the results as a PDF.",
         environment="remote",
     )
@@ -23,7 +23,7 @@ It is built with Gemini 3.8 Flash and uses the same harness as the Antigravity I
     const client = new GoogleGenAI({});
 
     const interaction = await client.interactions.create({
-        agent: "antigravity-preview-05-2026",
+        agent: "antigravity-preview-09-2026",
         input: "Read Hacker News, summarize the top 10 stories, and save the results as a PDF.",
         environment: "remote",
     }, { timeout: 300000 });
@@ -35,21 +35,20 @@ It is built with Gemini 3.8 Flash and uses the same harness as the Antigravity I
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.AgentOption;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteractionEnvironment;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
 
     Client client = new Client();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
+    CreateAgentInteraction params = CreateAgentInteraction.builder()
+        .agent(AgentOption.of("antigravity-preview-09-2026"))
+        .input(InteractionsInput.of("Read Hacker News, summarize the top 10 stories, and save the results as a PDF."))
+        .environment(CreateAgentInteractionEnvironment.of("remote"))
+        .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
+    Interaction interaction = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
 
 ### REST
@@ -58,7 +57,7 @@ It is built with Gemini 3.8 Flash and uses the same harness as the Antigravity I
     -H "Content-Type: application/json" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -d '{
-        "agent": "antigravity-preview-05-2026",
+        "agent": "antigravity-preview-09-2026",
         "input": "Read Hacker News, summarize the top 10 stories, and save the results as a PDF.",
         "environment": "remote"
     }'
@@ -98,7 +97,7 @@ To limit the agent to specific tools, pass only the ones you need:
     client = genai.Client()
 
     interaction = client.interactions.create(
-        agent="antigravity-preview-05-2026",
+        agent="antigravity-preview-09-2026",
         input="Search for the latest AI research papers on reasoning and summarize them.",
         environment="remote",
         tools=[
@@ -116,7 +115,7 @@ To limit the agent to specific tools, pass only the ones you need:
     const client = new GoogleGenAI({});
 
     const interaction = await client.interactions.create({
-        agent: "antigravity-preview-05-2026",
+        agent: "antigravity-preview-09-2026",
         input: "Search for the latest AI research papers on reasoning and summarize them.",
         environment: "remote",
         tools: [
@@ -132,21 +131,27 @@ To limit the agent to specific tools, pass only the ones you need:
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.AgentOption;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteractionEnvironment;
+    import com.google.genai.gaos.models.interactions.GoogleSearch;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.URLContext;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.List;
 
     Client client = new Client();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
+    CreateAgentInteraction params = CreateAgentInteraction.builder()
+        .agent(AgentOption.of("antigravity-preview-09-2026"))
+        .input(InteractionsInput.of("Search for the latest AI research papers on reasoning and summarize them."))
+        .environment(CreateAgentInteractionEnvironment.of("remote"))
+        .tools(List.of(
+            GoogleSearch.builder().build(),
+            URLContext.builder().build()
+        ))
+        .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
+    Interaction interaction = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
 
 ### REST
@@ -155,7 +160,7 @@ To limit the agent to specific tools, pass only the ones you need:
     -H "Content-Type: application/json" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -d '{
-        "agent": "antigravity-preview-05-2026",
+        "agent": "antigravity-preview-09-2026",
         "input": "Search for the latest AI research papers on reasoning and summarize them.",
         "environment": "remote",
         "tools": [
@@ -179,7 +184,7 @@ The Antigravity agent supports multimodal inputs. Currently, only `text` and `im
         image_bytes = f.read()
 
     interaction_inline = client.interactions.create(
-        agent="antigravity-preview-05-2026",
+        agent="antigravity-preview-09-2026",
         input=[
             {"type": "text", "text": "Analyze this chart and summarize the trends."},
             {
@@ -202,7 +207,7 @@ The Antigravity agent supports multimodal inputs. Currently, only `text` and `im
     const base64Image = fs.readFileSync("path/to/chart.png", { encoding: "base64" });
 
     const interactionInline = await client.interactions.create({
-        agent: "antigravity-preview-05-2026",
+        agent: "antigravity-preview-09-2026",
         input: [
             { type: "text", text: "Analyze this chart and summarize the trends." },
             {
@@ -219,22 +224,37 @@ The Antigravity agent supports multimodal inputs. Currently, only `text` and `im
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.AgentOption;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteractionEnvironment;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Base64;
+    import java.util.List;
 
     Client client = new Client();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
+    byte[] imageBytes = Files.readAllBytes(Paths.get("path/to/chart.png"));
+    String base64Image = Base64.getEncoder().encodeToString(imageBytes);
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    CreateAgentInteraction params = CreateAgentInteraction.builder()
+        .agent(AgentOption.of("antigravity-preview-09-2026"))
+        .input(InteractionsInput.ofContent(List.of(
+            TextContent.builder().text("Analyze this chart and summarize the trends.").build(),
+            ImageContent.builder()
+                .data(base64Image)
+                .mimeType(ImageContentMimeType.IMAGE_PNG)
+                .build()
+        )))
+        .environment(CreateAgentInteractionEnvironment.of("remote"))
+        .build();
 
-    System.out.println(interaction.outputText().orElse(""));
+    Interaction interactionInline = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    System.out.println(interactionInline.outputText().orElse(""));
 
 ### REST
 
@@ -244,7 +264,7 @@ The Antigravity agent supports multimodal inputs. Currently, only `text` and `im
     -H "Content-Type: application/json" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -d "{
-        \"agent\": \"antigravity-preview-05-2026\",
+        \"agent\": \"antigravity-preview-09-2026\",
         \"input\": [
             {\"type\": \"text\", \"text\": \"Analyze this chart and summarize the trends.\"},
             {
@@ -258,7 +278,7 @@ The Antigravity agent supports multimodal inputs. Currently, only `text` and `im
 
 ## Function calling
 
-Function calling allows you to connect the Antigravity agent to external APIs and databases by defining custom tools the agent can invoke. For general concepts, see [Function calling with the Gemini API](https://ai.google.dev/gemini-api/docs/interactions/function-calling).
+Function calling allows you to connect the Antigravity agent to external APIs and databases by defining custom tools the agent can invoke. For general concepts, see [Function calling with the Gemini API](https://ai.google.dev/gemini-api/docs/function-calling).
 
 The following example demonstrates a 2-turn interaction. The agent first requests a custom `get_weather` function call, and the client executes it and returns the result in the second turn.
 
@@ -287,7 +307,7 @@ The following example demonstrates a 2-turn interaction. The agent first request
 
     # 2. Call the agent with the custom tool (Turn 1)
     interaction = client.interactions.create(
-        agent="antigravity-preview-05-2026",
+        agent="antigravity-preview-09-2026",
         input="What is the weather in Tokyo?",
         environment="remote",
         tools=[
@@ -299,7 +319,7 @@ The following example demonstrates a 2-turn interaction. The agent first request
     # Check if the agent requested a function call
     if interaction.status == "requires_action":
         # Find function calls that do not have a matching function result.
-        # Filesystem tools (like write_file) are also represented as function calls
+        # Filesystem tools (like write_to_file) are also represented as function calls
         # but are executed automatically by the environment.
         executed_calls = {step.call_id for step in interaction.steps if step.type == "function_result"}
         pending_calls = [step for step in interaction.steps if step.type == "function_call" and step.id not in executed_calls]
@@ -316,7 +336,7 @@ The following example demonstrates a 2-turn interaction. The agent first request
             }
 
             final_interaction = client.interactions.create(
-                agent="antigravity-preview-05-2026",
+                agent="antigravity-preview-09-2026",
                 previous_interaction_id=interaction.id,  # Reference the interaction ID
                 environment=interaction.environment_id,
                 input=[
@@ -361,7 +381,7 @@ The following example demonstrates a 2-turn interaction. The agent first request
 
     // 2. Call the agent with the custom tool (Turn 1)
     const interaction = await client.interactions.create({
-      agent: "antigravity-preview-05-2026",
+      agent: "antigravity-preview-09-2026",
       input: "What is the weather in Tokyo?",
       environment: "remote",
       tools: [
@@ -372,7 +392,7 @@ The following example demonstrates a 2-turn interaction. The agent first request
 
     if (interaction.status === "requires_action") {
       // Find function calls that do not have a matching function result.
-      // Filesystem tools (like write_file) are also represented as function calls
+      // Filesystem tools (like write_to_file) are also represented as function calls
       // but are executed automatically by the environment.
       const executedCalls = new Set(
         interaction.steps
@@ -394,7 +414,7 @@ The following example demonstrates a 2-turn interaction. The agent first request
         };
 
         const finalInteraction = await client.interactions.create({
-          agent: "antigravity-preview-05-2026",
+          agent: "antigravity-preview-09-2026",
           previous_interaction_id: interaction.id, // Reference the interaction ID
           environment: interaction.environment_id,
           input: [
@@ -419,23 +439,97 @@ The following example demonstrates a 2-turn interaction. The agent first request
 
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CodeExecution;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteractionEnvironment;
+    import com.google.genai.gaos.models.interactions.Function;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
+    import com.google.genai.gaos.models.interactions.FunctionResultStep;
+    import com.google.genai.gaos.models.interactions.FunctionResultStepResultUnion;
     import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionStatus;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Step;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.List;
+    import java.util.Map;
+    import java.util.Set;
+    import java.util.stream.Collectors;
 
     Client client = new Client();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
+    // 1. Define the custom function
+    Function getWeatherTool = Function.builder()
+        .name("get_weather")
+        .description("Gets the current weather for a given location.")
+        .parameters(Map.of(
+            "type", "object",
+            "properties", Map.of(
+                "location", Map.of(
+                    "type", "string",
+                    "description", "The city and country, e.g. San Francisco, USA"
+                )
+            ),
+            "required", List.of("location")
+        ))
+        .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    // 2. Call the agent with the custom tool (Turn 1)
+    CreateAgentInteraction params = CreateAgentInteraction.builder()
+        .agent(AgentOption.of("antigravity-preview-09-2026"))
+        .input(InteractionsInput.of("What is the weather in Tokyo?"))
+        .environment(CreateAgentInteractionEnvironment.of("remote"))
+        .tools(List.of(
+            CodeExecution.builder().build(), // Enable default code execution
+            getWeatherTool                   // Add custom function
+        ))
+        .build();
 
-    System.out.println(interaction.outputText().orElse(""));
+    Interaction interaction = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    // Check if the agent requested a function call
+    if (interaction.status().orElse(null) == InteractionStatus.REQUIRES_ACTION) {
+        // Find function calls that do not have a matching function result.
+        List<Step> steps = interaction.steps().orElse(List.of());
+        Set<String> executedCalls = steps.stream()
+            .filter(step -> step instanceof FunctionResultStep)
+            .map(step -> ((FunctionResultStep) step).callId().orElse(""))
+            .collect(Collectors.toSet());
+
+        List<FunctionCallStep> pendingCalls = steps.stream()
+            .filter(step -> step instanceof FunctionCallStep)
+            .map(step -> (FunctionCallStep) step)
+            .filter(fc -> !executedCalls.contains(fc.id().orElse("")))
+            .collect(Collectors.toList());
+
+        if (!pendingCalls.isEmpty()) {
+            FunctionCallStep fcStep = pendingCalls.get(0);
+            System.out.println("Function to call: " + fcStep.name().orElse("") + " (ID: " + fcStep.id().orElse("") + ")");
+            System.out.println("Arguments: " + fcStep.arguments().orElse(Map.of()));
+
+            // 3. Execute the function locally (simulated get_weather()) and send the result back (Turn 2)
+            FunctionResultStep resultStep = FunctionResultStep.builder()
+                .name(fcStep.name().orElse(""))
+                .callId(fcStep.id().orElse(""))
+                .result(FunctionResultStepResultUnion.of("{\"temperature\": 23, \"unit\": \"celsius\"}"))
+                .build();
+
+            CreateAgentInteraction followupParams = CreateAgentInteraction.builder()
+                .agent(AgentOption.of("antigravity-preview-09-2026"))
+                .previousInteractionId(interaction.id().orElse(""))
+                .environment(CreateAgentInteractionEnvironment.of(interaction.environmentId().orElse("")))
+                .input(InteractionsInput.ofStep(List.of(resultStep)))
+                .build();
+
+            Interaction finalInteraction = client.interactions.create(CreateInteractionRequestBody.of(followupParams)).interaction().get();
+            System.out.println(finalInteraction.outputText().orElse(""));
+            // Output: The current weather in Tokyo, Japan is 23°C (Celsius).
+        } else {
+            System.out.println("No pending function calls.");
+        }
+    } else {
+        System.out.println("Interaction completed with status: " + interaction.status().orElse(null));
+    }
 
 ### REST
 
@@ -444,7 +538,7 @@ The following example demonstrates a 2-turn interaction. The agent first request
       -H "Content-Type: application/json" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -d '{
-          "agent": "antigravity-preview-05-2026",
+          "agent": "antigravity-preview-09-2026",
           "input": "What is the weather in Tokyo?",
           "environment": "remote",
           "tools": [
@@ -474,7 +568,7 @@ The following example demonstrates a 2-turn interaction. The agent first request
       -H "Content-Type: application/json" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -d "{
-          \"agent\": \"antigravity-preview-05-2026\",
+          \"agent\": \"antigravity-preview-09-2026\",
           \"previous_interaction_id\": \"$INTERACTION_ID\",
           \"environment\": \"$ENVIRONMENT_ID\",
           \"input\": [
@@ -512,7 +606,7 @@ When registering an MCP server, you must specify the following fields in the `to
 
     # Register a remote HTTP MCP server
     interaction = client.interactions.create(
-        agent="antigravity-preview-05-2026",
+        agent="antigravity-preview-09-2026",
         input="What is the weather in Tokyo?",
         environment="remote",
         tools=[{
@@ -531,7 +625,7 @@ When registering an MCP server, you must specify the following fields in the `to
     const client = new GoogleGenAI({});
 
     const interaction = await client.interactions.create({
-        agent: "antigravity-preview-05-2026",
+        agent: "antigravity-preview-09-2026",
         input: "What is the weather in Tokyo?",
         environment: "remote",
         tools: [{
@@ -548,21 +642,29 @@ When registering an MCP server, you must specify the following fields in the `to
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.AgentOption;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteractionEnvironment;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.MCPServer;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.List;
 
     Client client = new Client();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
+    // Register a remote HTTP MCP server
+    CreateAgentInteraction params = CreateAgentInteraction.builder()
+        .agent(AgentOption.of("antigravity-preview-09-2026"))
+        .input(InteractionsInput.of("What is the weather in Tokyo?"))
+        .environment(CreateAgentInteractionEnvironment.of("remote"))
+        .tools(List.of(
+            MCPServer.builder()
+                .name("weather") // Must be lowercase
+                .url("https://gemini-api-demos.uc.r.appspot.com/mcp")
+                .build()
+        ))
+        .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
+    Interaction interaction = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
 
 ### REST
@@ -571,7 +673,7 @@ When registering an MCP server, you must specify the following fields in the `to
       -H "Content-Type: application/json" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -d '{
-          "agent": "antigravity-preview-05-2026",
+          "agent": "antigravity-preview-09-2026",
           "input": "What is the weather in Tokyo?",
           "environment": "remote",
           "tools": [{
@@ -583,7 +685,7 @@ When registering an MCP server, you must specify the following fields in the `to
 
 ## Model selection
 
-For `antigravity-preview-05-2026`, the default model is **Gemini 3.8 Flash** (`gemini-3.8-flash`). If you omit `agent_config`, the agent defaults to `gemini-3.8-flash`.
+For `antigravity-preview-09-2026`, the default model is **Gemini 3.8 Flash** (`gemini-3.8-flash`). If you omit `agent_config`, the agent defaults to `gemini-3.8-flash`.
 
 You can configure the underlying Gemini model using `agent_config` to optimize for speed, cost, or reasoning capability.
 
@@ -594,7 +696,7 @@ You can configure the underlying Gemini model using `agent_config` to optimize f
     client = genai.Client()
 
     interaction = client.interactions.create(
-        agent="antigravity-preview-05-2026",
+        agent="antigravity-preview-09-2026",
         input="Summarize the key differences between functional and object-oriented programming.",
         environment="remote",
         agent_config={
@@ -612,7 +714,7 @@ You can configure the underlying Gemini model using `agent_config` to optimize f
     const client = new GoogleGenAI({});
 
     const interaction = await client.interactions.create({
-        agent: "antigravity-preview-05-2026",
+        agent: "antigravity-preview-09-2026",
         input: "Summarize the key differences between functional and object-oriented programming.",
         environment: "remote",
         agent_config: {
@@ -627,22 +729,27 @@ You can configure the underlying Gemini model using `agent_config` to optimize f
 
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.AntigravityAgentConfig;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteractionEnvironment;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
 
     Client client = new Client();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
+    CreateAgentInteraction params = CreateAgentInteraction.builder()
+        .agent(AgentOption.of("antigravity-preview-09-2026"))
+        .input(InteractionsInput.of("Summarize the key differences between functional and object-oriented programming."))
+        .environment(CreateAgentInteractionEnvironment.of("remote"))
+        .agentConfig(
+            AntigravityAgentConfig.builder()
+                .model("gemini-3.5-flash-lite")
+                .build()
+        )
+        .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
+    Interaction interaction = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
 
 ### REST
@@ -651,7 +758,7 @@ You can configure the underlying Gemini model using `agent_config` to optimize f
       -H "Content-Type: application/json" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -d '{
-          "agent": "antigravity-preview-05-2026",
+          "agent": "antigravity-preview-09-2026",
           "input": "Summarize the key differences between functional and object-oriented programming.",
           "environment": "remote",
           "agent_config": {
@@ -691,7 +798,7 @@ Agent tasks that involve multi-step reasoning, code execution, or file operation
 
     # 1. Start the interaction in the background
     interaction = client.interactions.create(
-        agent="antigravity-preview-05-2026",
+        agent="antigravity-preview-09-2026",
         input="Run a complex analysis on the repository.",
         environment="remote",
         background=True,
@@ -716,7 +823,7 @@ Agent tasks that involve multi-step reasoning, code execution, or file operation
     const client = new GoogleGenAI({});
 
     const interaction = await client.interactions.create({
-        agent: "antigravity-preview-05-2026",
+        agent: "antigravity-preview-09-2026",
         input: "Run a complex analysis on the repository.",
         environment: "remote",
         background: true,
@@ -741,22 +848,37 @@ Agent tasks that involve multi-step reasoning, code execution, or file operation
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.AgentOption;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteractionEnvironment;
     import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionStatus;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.operations.GetInteractionByIdRequest;
 
     Client client = new Client();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
+    // 1. Start the interaction in the background
+    CreateAgentInteraction params = CreateAgentInteraction.builder()
+        .agent(AgentOption.of("antigravity-preview-09-2026"))
+        .input(InteractionsInput.of("Run a complex analysis on the repository."))
+        .environment(CreateAgentInteractionEnvironment.of("remote"))
+        .background(true)
+        .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    Interaction interaction = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    System.out.println("Interaction started in background: " + interaction.id().orElse(""));
 
-    System.out.println(interaction.outputText().orElse(""));
+    // 2. Poll for completion
+    while (interaction.status().orElse(null) == InteractionStatus.IN_PROGRESS) {
+        Thread.sleep(5000);
+        interaction = client.interactions.get(new GetInteractionByIdRequest(interaction.id().orElse(""))).interaction().get();
+    }
+
+    if (interaction.status().orElse(null) == InteractionStatus.COMPLETED) {
+        System.out.println(interaction.outputText().orElse(""));
+    } else {
+        System.out.println("Finished with status: " + interaction.status().orElse(null));
+    }
 
 ### REST
 
@@ -766,7 +888,7 @@ Agent tasks that involve multi-step reasoning, code execution, or file operation
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Api-Revision: 2026-05-20" \
       -d '{
-          "agent": "antigravity-preview-05-2026",
+          "agent": "antigravity-preview-09-2026",
           "input": "Run a complex analysis on the repository.",
           "environment": "remote",
           "background": true
@@ -778,7 +900,7 @@ Agent tasks that involve multi-step reasoning, code execution, or file operation
     curl -s -X GET "https://generativelanguage.googleapis.com/v1beta/interactions/$INTERACTION_ID" \
       -H "x-goog-api-key: $GEMINI_API_KEY"
 
-Background execution requires `store=True`, which is the default. For real-time progress updates during background execution, see [Streaming background interactions](https://ai.google.dev/gemini-api/docs/interactions/streaming#streaming-background).
+Background execution requires `store=True`, which is the default. For real-time progress updates during background execution, see [Streaming background interactions](https://ai.google.dev/gemini-api/docs/background-execution#streaming-pattern).
 
 You can cancel a running background interaction using the `cancel` method.
 
@@ -793,24 +915,9 @@ You can cancel a running background interaction using the `cancel` method.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AgentOption;
-    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
 
     Client client = new Client();
-
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
-
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println(interaction.outputText().orElse(""));
+    client.interactions.cancel("INTERACTION_ID");
 
 ### REST
 
@@ -830,7 +937,7 @@ When a background interaction involves stateful tools (like code execution in a 
 
     # First turn: run a task in the background
     interaction = client.interactions.create(
-        agent="antigravity-preview-05-2026",
+        agent="antigravity-preview-09-2026",
         input="Clone https://github.com/google/generative-ai-python and run its tests.",
         environment="remote",
         background=True,
@@ -842,7 +949,7 @@ When a background interaction involves stateful tools (like code execution in a 
 
     # Second turn: continue in the same environment
     followup = client.interactions.create(
-        agent="antigravity-preview-05-2026",
+        agent="antigravity-preview-09-2026",
         input="Fix any failing tests and re-run them.",
         previous_interaction_id=interaction.id,
         environment=interaction.environment_id,
@@ -863,7 +970,7 @@ When a background interaction involves stateful tools (like code execution in a 
 
     // First turn: run a task in the background
     let interaction = await client.interactions.create({
-        agent: "antigravity-preview-05-2026",
+        agent: "antigravity-preview-09-2026",
         input: "Clone https://github.com/google/generative-ai-python and run its tests.",
         environment: "remote",
         background: true,
@@ -876,7 +983,7 @@ When a background interaction involves stateful tools (like code execution in a 
 
     // Second turn: continue in the same environment
     let followup = await client.interactions.create({
-        agent: "antigravity-preview-05-2026",
+        agent: "antigravity-preview-09-2026",
         input: "Fix any failing tests and re-run them.",
         previous_interaction_id: interaction.id,
         environment: interaction.environment_id,
@@ -895,22 +1002,47 @@ When a background interaction involves stateful tools (like code execution in a 
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.AgentOption;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteractionEnvironment;
     import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionStatus;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.operations.GetInteractionByIdRequest;
 
     Client client = new Client();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
+    // First turn: run a task in the background
+    CreateAgentInteraction params = CreateAgentInteraction.builder()
+        .agent(AgentOption.of("antigravity-preview-09-2026"))
+        .input(InteractionsInput.of("Clone https://github.com/google/generative-ai-python and run its tests."))
+        .environment(CreateAgentInteractionEnvironment.of("remote"))
+        .background(true)
+        .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    Interaction interaction = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    System.out.println(interaction.outputText().orElse(""));
+    while (interaction.status().orElse(null) == InteractionStatus.IN_PROGRESS) {
+        Thread.sleep(5000);
+        interaction = client.interactions.get(new GetInteractionByIdRequest(interaction.id().orElse(""))).interaction().get();
+    }
+
+    // Second turn: continue in the same environment
+    CreateAgentInteraction followupParams = CreateAgentInteraction.builder()
+        .agent(AgentOption.of("antigravity-preview-09-2026"))
+        .input(InteractionsInput.of("Fix any failing tests and re-run them."))
+        .previousInteractionId(interaction.id().orElse(""))
+        .environment(CreateAgentInteractionEnvironment.of(interaction.environmentId().orElse("")))
+        .background(true)
+        .build();
+
+    Interaction followup = client.interactions.create(CreateInteractionRequestBody.of(followupParams)).interaction().get();
+
+    while (followup.status().orElse(null) == InteractionStatus.IN_PROGRESS) {
+        Thread.sleep(5000);
+        followup = client.interactions.get(new GetInteractionByIdRequest(followup.id().orElse(""))).interaction().get();
+    }
+
+    System.out.println(followup.outputText().orElse(""));
 
 ### REST
 
@@ -920,7 +1052,7 @@ When a background interaction involves stateful tools (like code execution in a 
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Api-Revision: 2026-05-20" \
       -d '{
-          "agent": "antigravity-preview-05-2026",
+          "agent": "antigravity-preview-09-2026",
           "input": "Clone https://github.com/google/generative-ai-python and run its tests.",
           "environment": "remote",
           "background": true
@@ -940,7 +1072,7 @@ When a background interaction involves stateful tools (like code execution in a 
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Api-Revision: 2026-05-20" \
       -d "{
-          \"agent\": \"antigravity-preview-05-2026\",
+          \"agent\": \"antigravity-preview-09-2026\",
           \"input\": \"Fix any failing tests and re-run them.\",
           \"previous_interaction_id\": \"$INTERACTION_ID\",
           \"environment\": \"$ENVIRONMENT_ID\",
@@ -967,6 +1099,8 @@ Triggers let you schedule an agent to run automatically on a cron schedule. A tr
 
 Create a trigger by specifying a cron schedule, time zone, and the interaction configuration. The trigger starts in `active` status and will fire on the next matching cron time. Save the returned `id` to manage the trigger in subsequent calls.
 
+Because a trigger runs unattended on a schedule, reference a stored [credential](https://ai.google.dev/gemini-api/docs/agent-credentials) rather than an inline token. The egress proxy resolves it on every run, and you rotate the secret without touching the trigger. Inline `transform` rules work here too, they just need you to update the trigger whenever the value changes.
+
 ### Python
 
     from google import genai
@@ -978,7 +1112,7 @@ Create a trigger by specifying a cron schedule, time zone, and the interaction c
         time_zone="America/Argentina/Buenos_Aires",
         display_name="issue-solver",
         interaction={
-            "agent": "antigravity-preview-05-2026",
+            "agent": "antigravity-preview-09-2026",
             "input": "Review open PRs in my-org/my-app for new comments and address feedback. Close issues whose PRs were merged. Then check for new issues labeled 'accepted', skip any already tracked in /workspace/solved-issues/, fix the rest, and open a PR for each. Save reports to /workspace/solved-issues/.",
             "environment": {
                 "type": "remote",
@@ -986,9 +1120,7 @@ Create a trigger by specifying a cron schedule, time zone, and the interaction c
                     "allowlist": [
                         {
                             "domain": "api.github.com",
-                            "transform": {
-                                "Authorization": "Bearer ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-                            },
+                            "credential": "github-production",
                         },
                         {"domain": "github.com"},
                     ]
@@ -1011,7 +1143,7 @@ Create a trigger by specifying a cron schedule, time zone, and the interaction c
         time_zone: "America/Argentina/Buenos_Aires",
         display_name: "issue-solver",
         interaction: {
-            agent: "antigravity-preview-05-2026",
+            agent: "antigravity-preview-09-2026",
             input: [{
                 type: "text",
                 text: "Review open PRs in my-org/my-app for new comments and address feedback. Close issues whose PRs were merged. Then check for new issues labeled 'accepted', skip any already tracked in /workspace/solved-issues/, fix the rest, and open a PR for each. Save reports to /workspace/solved-issues/.",
@@ -1022,9 +1154,7 @@ Create a trigger by specifying a cron schedule, time zone, and the interaction c
                     allowlist: [
                         {
                             domain: "api.github.com",
-                            transform: {
-                                "Authorization": "Bearer ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-                            },
+                            credential: "github-production",
                         },
                         { domain: "github.com" },
                     ],
@@ -1038,25 +1168,62 @@ Create a trigger by specifying a cron schedule, time zone, and the interaction c
 
 ### Java
 
-    import com.google.genai.Client;
+    import com.google.genai.gaos.GenAI;
     import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.Allowlist;
+    import com.google.genai.gaos.models.interactions.AllowlistEntry;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
-    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteractionEnvironment;
+    import com.google.genai.gaos.models.interactions.Environment;
+    import com.google.genai.gaos.models.interactions.EnvironmentNetworkEgressAllowlist;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.interactions.Network;
+    import com.google.genai.gaos.models.interactions.Transform;
+    import com.google.genai.gaos.models.shared.Security;
+    import com.google.genai.gaos.models.triggers.Interaction;
+    import com.google.genai.gaos.models.triggers.Trigger;
+    import com.google.genai.gaos.models.triggers.TriggerCreateParams;
+    import java.util.List;
+    import java.util.Map;
 
-    Client client = new Client();
+    GenAI client = GenAI.builder()
+        .security(Security.builder().apiKey(System.getenv("GEMINI_API_KEY")).build())
+        .build();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
+    Environment env = Environment.builder()
+        .network(Network.of(EnvironmentNetworkEgressAllowlist.of(
+            Allowlist.builder()
+                .allowlist(List.of(
+                    AllowlistEntry.builder()
+                        .domain("api.github.com")
+                        .transform(Transform.of(Map.of(
+                            "Authorization", "Bearer ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+                        )))
+                        .build(),
+                    AllowlistEntry.builder()
+                        .domain("github.com")
+                        .build()
+                ))
+                .build()
+        )))
+        .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    CreateAgentInteraction interactionTemplate = CreateAgentInteraction.builder()
+        .agent(AgentOption.of("antigravity-preview-09-2026"))
+        .input(InteractionsInput.of("Review open PRs in my-org/my-app for new comments and address feedback. Close issues whose PRs were merged. Then check for new issues labeled 'accepted', skip any already tracked in /workspace/solved-issues/, fix the rest, and open a PR for each. Save reports to /workspace/solved-issues/."))
+        .environment(CreateAgentInteractionEnvironment.of(env))
+        .build();
 
-    System.out.println(interaction.outputText().orElse(""));
+    TriggerCreateParams params = TriggerCreateParams.builder()
+        .schedule("0 9 * * *")
+        .timeZone("America/Argentina/Buenos_Aires")
+        .displayName("issue-solver")
+        .interaction(Interaction.of(interactionTemplate))
+        .build();
+
+    Trigger trigger = client.triggers().create(params).trigger().get();
+    System.out.println("Trigger created: " + trigger.id().orElse(""));
+    System.out.println("Next run: " + trigger.nextRunTime().orElse(null));
 
 ### REST
 
@@ -1068,7 +1235,7 @@ Create a trigger by specifying a cron schedule, time zone, and the interaction c
           "time_zone": "America/Argentina/Buenos_Aires",
           "display_name": "issue-solver",
           "interaction": {
-              "agent": "antigravity-preview-05-2026",
+              "agent": "antigravity-preview-09-2026",
               "input": [{"type": "text", "text": "Review open PRs in my-org/my-app for new comments and address feedback. Close issues whose PRs were merged. Then check for new issues labeled accepted, skip any already tracked in /workspace/solved-issues/, fix the rest, and open a PR for each. Save reports to /workspace/solved-issues/."}],
               "environment": {
                   "type": "remote",
@@ -1076,9 +1243,7 @@ Create a trigger by specifying a cron schedule, time zone, and the interaction c
                       "allowlist": [
                           {
                               "domain": "api.github.com",
-                              "transform": {
-                                  "Authorization": "Bearer ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-                              }
+                              "credential": "github-production"
                           },
                           {"domain": "github.com"}
                       ]
@@ -1126,25 +1291,19 @@ Retrieve all triggers associated with your project.
 
 ### Java
 
-    import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AgentOption;
-    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.GenAI;
+    import com.google.genai.gaos.models.shared.Security;
+    import com.google.genai.gaos.models.triggers.Trigger;
+    import java.util.List;
 
-    Client client = new Client();
+    GenAI client = GenAI.builder()
+        .security(Security.builder().apiKey(System.getenv("GEMINI_API_KEY")).build())
+        .build();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
-
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println(interaction.outputText().orElse(""));
+    List<Trigger> triggers = client.triggers().listDirect().listTriggersResponse().get().triggers().orElse(List.of());
+    for (Trigger trigger : triggers) {
+        System.out.println(trigger.id().orElse("") + ": " + trigger.displayName().orElse("") + " (" + trigger.status().orElse(null) + ")");
+    }
 
 ### REST
 
@@ -1169,25 +1328,17 @@ Fetch the full configuration and current state of a single trigger.
 
 ### Java
 
-    import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AgentOption;
-    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.GenAI;
+    import com.google.genai.gaos.models.shared.Security;
+    import com.google.genai.gaos.models.triggers.Trigger;
 
-    Client client = new Client();
+    GenAI client = GenAI.builder()
+        .security(Security.builder().apiKey(System.getenv("GEMINI_API_KEY")).build())
+        .build();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
-
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println(interaction.outputText().orElse(""));
+    Trigger trigger = client.triggers().get("TRIGGER_ID").trigger().get();
+    System.out.println("Schedule: " + trigger.schedule().orElse(""));
+    System.out.println("Next run: " + trigger.nextRunTime().orElse(null));
 
 ### REST
 
@@ -1216,25 +1367,20 @@ You can pause a trigger to stop scheduled executions, and resume it to reactivat
 
 ### Java
 
-    import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AgentOption;
-    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.GenAI;
+    import com.google.genai.gaos.models.shared.Security;
+    import com.google.genai.gaos.models.triggers.TriggerUpdate;
+    import com.google.genai.gaos.models.triggers.TriggerUpdateStatus;
 
-    Client client = new Client();
+    GenAI client = GenAI.builder()
+        .security(Security.builder().apiKey(System.getenv("GEMINI_API_KEY")).build())
+        .build();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
+    // Pause
+    client.triggers().update("TRIGGER_ID", TriggerUpdate.builder().status(TriggerUpdateStatus.PAUSED).build());
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println(interaction.outputText().orElse(""));
+    // Resume
+    client.triggers().update("TRIGGER_ID", TriggerUpdate.builder().status(TriggerUpdateStatus.ACTIVE).build());
 
 ### REST
 
@@ -1264,25 +1410,14 @@ Permanently remove a trigger. Past execution history is not deleted.
 
 ### Java
 
-    import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AgentOption;
-    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.GenAI;
+    import com.google.genai.gaos.models.shared.Security;
 
-    Client client = new Client();
+    GenAI client = GenAI.builder()
+        .security(Security.builder().apiKey(System.getenv("GEMINI_API_KEY")).build())
+        .build();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
-
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println(interaction.outputText().orElse(""));
+    client.triggers().delete("TRIGGER_ID");
 
 ### REST
 
@@ -1303,25 +1438,14 @@ Fire a trigger on demand without waiting for the next scheduled time. This works
 
 ### Java
 
-    import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AgentOption;
-    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.GenAI;
+    import com.google.genai.gaos.models.shared.Security;
 
-    Client client = new Client();
+    GenAI client = GenAI.builder()
+        .security(Security.builder().apiKey(System.getenv("GEMINI_API_KEY")).build())
+        .build();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
-
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println(interaction.outputText().orElse(""));
+    client.triggers().run("TRIGGER_ID");
 
 ### REST
 
@@ -1355,25 +1479,31 @@ View the execution history for a trigger. Each execution includes a `status`, ti
 
 ### Java
 
-    import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.AgentOption;
-    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.GenAI;
     import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.operations.GetInteractionByIdRequest;
+    import com.google.genai.gaos.models.shared.Security;
+    import com.google.genai.gaos.models.triggers.TriggerExecution;
+    import java.util.List;
 
-    Client client = new Client();
+    GenAI client = GenAI.builder()
+        .security(Security.builder().apiKey(System.getenv("GEMINI_API_KEY")).build())
+        .build();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
+    List<TriggerExecution> executions = client.triggers().listExecutions("TRIGGER_ID")
+        .listTriggerExecutionsResponse().get()
+        .triggerExecutions().orElse(List.of());
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    for (TriggerExecution ex : executions) {
+        System.out.println(ex.id().orElse("") + ": " + ex.status().orElse(null)
+            + " (" + ex.startTime().orElse(null) + " - " + ex.endTime().orElse(null) + ")");
 
-    System.out.println(interaction.outputText().orElse(""));
+        // Fetch the full interaction for an execution
+        if (ex.interactionId().isPresent()) {
+            Interaction interaction = client.interactions().get(new GetInteractionByIdRequest(ex.interactionId().get())).interaction().get();
+            System.out.println(interaction.outputText().orElse(""));
+        }
+    }
 
 ### REST
 
@@ -1416,7 +1546,7 @@ Set the budget on the interaction request in `agent_config` alongside `agent` an
     client = genai.Client()
 
     interaction = client.interactions.create(
-        agent="antigravity-preview-05-2026",
+        agent="antigravity-preview-09-2026",
         input="Analyze the dataset in /workspace/data.csv and generate a summary report.",
         agent_config={
             "type": "antigravity",
@@ -1443,7 +1573,7 @@ Set the budget on the interaction request in `agent_config` alongside `agent` an
     const client = new GoogleGenAI({});
 
     const interaction = await client.interactions.create({
-        agent: "antigravity-preview-05-2026",
+        agent: "antigravity-preview-09-2026",
         input: "Analyze the dataset in /workspace/data.csv and generate a summary report.",
         agent_config: {
             type: "antigravity",
@@ -1467,23 +1597,43 @@ Set the budget on the interaction request in `agent_config` alongside `agent` an
 
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.AntigravityAgentConfig;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteractionEnvironment;
+    import com.google.genai.gaos.models.interactions.Environment;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Source;
+    import com.google.genai.gaos.models.interactions.SourceType;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.List;
 
     Client client = new Client();
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
+    Environment env = Environment.builder()
+        .sources(List.of(
+            Source.builder()
+                .type(SourceType.INLINE)
+                .target("/workspace/data.csv")
+                .content("id,name,value\n1,alpha,100\n2,beta,200\n")
+                .build()
+        ))
+        .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    CreateAgentInteraction params = CreateAgentInteraction.builder()
+        .agent(AgentOption.of("antigravity-preview-09-2026"))
+        .input(InteractionsInput.of("Analyze the dataset in /workspace/data.csv and generate a summary report."))
+        .agentConfig(
+            AntigravityAgentConfig.builder()
+                .maxTotalTokens("50000")
+                .build()
+        )
+        .environment(CreateAgentInteractionEnvironment.of(env))
+        .build();
 
-    System.out.println(interaction.outputText().orElse(""));
+    Interaction interaction = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    System.out.println("Status: " + interaction.status().orElse(null)); // "incomplete" if budget was hit
+    interaction.usage().ifPresent(usage -> System.out.println("Tokens used: " + usage.totalTokens().orElse(0)));
 
 ### REST
 
@@ -1491,7 +1641,7 @@ Set the budget on the interaction request in `agent_config` alongside `agent` an
       -H "Content-Type: application/json" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -d '{
-        "agent": "antigravity-preview-05-2026",
+        "agent": "antigravity-preview-09-2026",
         "input": "Analyze the dataset in /workspace/data.csv and generate a summary report.",
         "agent_config": {
           "type": "antigravity",
@@ -1520,7 +1670,7 @@ are preserved. Send a new interaction referencing the original interaction `id` 
 
     # Continue from where the agent stopped
     continuation = client.interactions.create(
-        agent="antigravity-preview-05-2026",
+        agent="antigravity-preview-09-2026",
         input="continue",
         previous_interaction_id=interaction.id,
         environment=interaction.environment_id,
@@ -1534,7 +1684,7 @@ are preserved. Send a new interaction referencing the original interaction `id` 
 ### JavaScript
 
     const continuation = await client.interactions.create({
-        agent: "antigravity-preview-05-2026",
+        agent: "antigravity-preview-09-2026",
         input: "continue",
         previous_interaction_id: interaction.id,
         environment: interaction.environment_id,
@@ -1549,23 +1699,32 @@ are preserved. Send a new interaction referencing the original interaction `id` 
 
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.AntigravityAgentConfig;
     import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteractionEnvironment;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
 
     Client client = new Client();
+    String interactionId = "INTERACTION_ID";
+    String environmentId = "ENVIRONMENT_ID";
 
-    CreateAgentInteraction params =
-        CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
-            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
-            .build();
+    // Continue from where the agent stopped
+    CreateAgentInteraction params = CreateAgentInteraction.builder()
+        .agent(AgentOption.of("antigravity-preview-09-2026"))
+        .input(InteractionsInput.of("continue"))
+        .previousInteractionId(interactionId)
+        .environment(CreateAgentInteractionEnvironment.of(environmentId))
+        .agentConfig(
+            AntigravityAgentConfig.builder()
+                .maxTotalTokens("50000")
+                .build()
+        )
+        .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println(interaction.outputText().orElse(""));
+    Interaction continuation = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    System.out.println("Status: " + continuation.status().orElse(null));
 
 ### REST
 
@@ -1573,7 +1732,7 @@ are preserved. Send a new interaction referencing the original interaction `id` 
       -H "Content-Type: application/json" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -d '{
-        "agent": "antigravity-preview-05-2026",
+        "agent": "antigravity-preview-09-2026",
         "input": "continue",
         "previous_interaction_id": "INTERACTION_ID",
         "environment": "ENVIRONMENT_ID",

@@ -6,7 +6,7 @@
 
 > Curated release notes for the Ori CLI, with version history and changes across releases.
 
-Curated release notes for the Ori CLI, newest version first. If you are new to Ori, start with [Ori Eval](/docs/guides/ori/eval), then [Ori Harness](/docs/guides/ori/harness), which also covers installing Ori and running your existing agent CLI. [Where Ori writes files](/docs/guides/ori/files) explains what Ori puts in your project.
+Curated release notes for the Ori CLI, newest version first. If you are new to Ori, start with [Ori Eval](/docs/guides/ori/eval), then [Ori Harness](/docs/guides/ori/harness), which also covers installing Ori and running your existing agent CLI. [File Writing](/docs/guides/ori/files) explains what Ori puts in your project.
 
 <Update label="0.10.1" description="August 24, 2026" tags={["Patch"]} rss={{ title: "Ori 0.10.1", description: "This release is chat TUI polish." }}>
   This release is chat TUI polish. The model picker resolves dynamic variants, prints readable prices, hides batch rows, and gains standard keyboard navigation. The composer and the slash menu line up with the transcript, and a theme file can now replace the built-in palettes. Tooling adds a lint rule for `undefined` checks and a CI disk fix.

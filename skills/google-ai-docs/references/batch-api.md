@@ -94,20 +94,45 @@ method with inline requests:
 
 ### Java
 
+    import java.util.Arrays;
     import com.google.genai.Client;
     import com.google.genai.types.BatchJob;
     import com.google.genai.types.BatchJobSource;
+    import com.google.genai.types.Content;
+    import com.google.genai.types.CreateBatchJobConfig;
+    import com.google.genai.types.InlinedRequest;
+    import com.google.genai.types.Part;
+    import java.util.List;
 
     Client client = new Client();
 
-    BatchJobSource batchJobSource =
-        BatchJobSource.builder()
-            .gcsUri("gs://unified-genai-tests/batches/input/generate_content_requests.jsonl")
-            .format("jsonl")
-            .build();
+    // A list of InlinedRequest objects
+    List<InlinedRequest> inlineRequests =
+        Arrays.asList(
+            InlinedRequest.builder()
+                .contents(
+                    Arrays.asList(
+                        Content.builder()
+                            .role("user")
+                            .parts(Arrays.asList(Part.fromText("Tell me a one-sentence joke.")))
+                            .build()))
+                .build(),
+            InlinedRequest.builder()
+                .contents(
+                    Arrays.asList(
+                        Content.builder()
+                            .role("user")
+                            .parts(Arrays.asList(Part.fromText("Why is the sky blue?")))
+                            .build()))
+                .build());
 
-    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
-    System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
+    BatchJobSource src = BatchJobSource.builder().inlinedRequests(inlineRequests).build();
+    CreateBatchJobConfig config =
+        CreateBatchJobConfig.builder().displayName("inlined-requests-job-1").build();
+
+    BatchJob inlineBatchJob = client.batches.create("gemini-3.8-flash", src, config);
+
+    System.out.println("Created batch job: " + inlineBatchJob.name().orElse(""));
 
 ### REST
 
@@ -249,20 +274,32 @@ within your JSONL file.
 
 ### Java
 
+    import java.util.Arrays;
     import com.google.genai.Client;
-    import com.google.genai.types.BatchJob;
-    import com.google.genai.types.BatchJobSource;
+    import com.google.genai.types.File;
+    import com.google.genai.types.UploadFileConfig;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.List;
 
     Client client = new Client();
 
-    BatchJobSource batchJobSource =
-        BatchJobSource.builder()
-            .gcsUri("gs://unified-genai-tests/batches/input/generate_content_requests.jsonl")
-            .format("jsonl")
-            .build();
+    // Create a sample JSONL file
+    List<String> requests =
+        Arrays.asList(
+            "{\"key\": \"request-1\", \"request\": {\"contents\": [{\"parts\": [{\"text\": \"Describe the process of photosynthesis.\"}]}]}}",
+            "{\"key\": \"request-2\", \"request\": {\"contents\": [{\"parts\": [{\"text\": \"What are the main ingredients in a Margherita pizza?\"}]}]}}");
+    Files.write(Paths.get("my-batch-requests.jsonl"), requests);
 
-    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
-    System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
+    // Upload the file to the File API
+    UploadFileConfig uploadConfig =
+        UploadFileConfig.builder()
+            .displayName("my-batch-requests")
+            .mimeType("jsonl")
+            .build();
+    File uploadedFile = client.files.upload("my-batch-requests.jsonl", uploadConfig);
+
+    System.out.println("Uploaded file: " + uploadedFile.name().orElse(""));
 
 ### REST
 
@@ -336,17 +373,20 @@ method with the input file uploaded using File API:
     import com.google.genai.Client;
     import com.google.genai.types.BatchJob;
     import com.google.genai.types.BatchJobSource;
+    import com.google.genai.types.CreateBatchJobConfig;
 
     Client client = new Client();
 
-    BatchJobSource batchJobSource =
-        BatchJobSource.builder()
-            .gcsUri("gs://unified-genai-tests/batches/input/generate_content_requests.jsonl")
-            .format("jsonl")
-            .build();
+    // Assumes `uploadedFileName` is the file name from the previous step
+    String uploadedFileName = "files/my-batch-requests-id";
 
-    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
-    System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
+    BatchJobSource src = BatchJobSource.builder().fileName(uploadedFileName).build();
+    CreateBatchJobConfig config =
+        CreateBatchJobConfig.builder().displayName("file-upload-job-1").build();
+
+    BatchJob fileBatchJob = client.batches.create("gemini-3.8-flash", src, config);
+
+    System.out.println("Created batch job: " + fileBatchJob.name().orElse(""));
 
 ### REST
 
@@ -426,20 +466,39 @@ specify the embeddings model.
 
 ### Java
 
+    import java.util.Arrays;
     import com.google.genai.Client;
     import com.google.genai.types.BatchJob;
-    import com.google.genai.types.BatchJobSource;
+    import com.google.genai.types.Content;
+    import com.google.genai.types.CreateEmbeddingsBatchJobConfig;
+    import com.google.genai.types.EmbedContentBatch;
+    import com.google.genai.types.EmbeddingsBatchJobSource;
+    import com.google.genai.types.Part;
+    import java.util.List;
 
     Client client = new Client();
 
-    BatchJobSource batchJobSource =
-        BatchJobSource.builder()
-            .gcsUri("gs://unified-genai-tests/batches/input/generate_content_requests.jsonl")
-            .format("jsonl")
-            .build();
+    String uploadedFileName = "files/my-embedding-requests-id";
 
-    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
-    System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
+    // Creating an embeddings batch job with an input file request:
+    BatchJob fileJob =
+        client.batches.createEmbeddings(
+            "gemini-embedding-2",
+            EmbeddingsBatchJobSource.builder().fileName(uploadedFileName).build(),
+            CreateEmbeddingsBatchJobConfig.builder().displayName("Input embeddings batch").build());
+    System.out.println("Created batch job: " + fileJob.name().orElse(""));
+
+    // Creating an embeddings batch job with an inline request:
+    EmbedContentBatch inlinedRequests =
+        EmbedContentBatch.builder()
+            .contents(Arrays.asList(Content.fromParts(Part.fromText("What is the meaning of life?"))))
+            .build();
+    BatchJob batchJob =
+        client.batches.createEmbeddings(
+            "gemini-embedding-2",
+            EmbeddingsBatchJobSource.builder().inlinedRequests(inlinedRequests).build(),
+            CreateEmbeddingsBatchJobConfig.builder().displayName("Inlined embeddings batch").build());
+    System.out.println("Created batch job: " + batchJob.name().orElse(""));
 
 Read the Embeddings section in the [Batch API cookbook](https://github.com/google-gemini/cookbook/blob/main/quickstarts/Batch_mode.ipynb)
 for more examples.
@@ -475,20 +534,26 @@ request that contains a system instruction for one of the requests:
 
 ### Java
 
-    import com.google.genai.Client;
-    import com.google.genai.types.BatchJob;
-    import com.google.genai.types.BatchJobSource;
+    import java.util.Arrays;
+    import com.google.genai.types.Content;
+    import com.google.genai.types.GenerateContentConfig;
+    import com.google.genai.types.InlinedRequest;
+    import com.google.genai.types.Part;
+    import java.util.List;
 
-    Client client = new Client();
-
-    BatchJobSource batchJobSource =
-        BatchJobSource.builder()
-            .gcsUri("gs://unified-genai-tests/batches/input/generate_content_requests.jsonl")
-            .format("jsonl")
-            .build();
-
-    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
-    System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
+    List<InlinedRequest> inlineRequestsList =
+        Arrays.asList(
+            InlinedRequest.builder()
+                .contents(Arrays.asList(Content.fromParts(Part.fromText("Write a short poem about a cloud."))))
+                .build(),
+            InlinedRequest.builder()
+                .contents(Arrays.asList(Content.fromParts(Part.fromText("Write a short poem about a cat."))))
+                .config(
+                    GenerateContentConfig.builder()
+                        .systemInstruction(
+                            Content.fromParts(Part.fromText("You are a cat. Your name is Neko.")))
+                        .build())
+                .build());
 
 Similarly can specify tools to use for a request. The following example
 shows a request that enables the [Google Search tool](https://ai.google.dev/gemini-api/docs/google-search):
@@ -510,20 +575,27 @@ shows a request that enables the [Google Search tool](https://ai.google.dev/gemi
 
 ### Java
 
-    import com.google.genai.Client;
-    import com.google.genai.types.BatchJob;
-    import com.google.genai.types.BatchJobSource;
+    import java.util.Arrays;
+    import com.google.genai.types.Content;
+    import com.google.genai.types.GenerateContentConfig;
+    import com.google.genai.types.GoogleSearch;
+    import com.google.genai.types.InlinedRequest;
+    import com.google.genai.types.Part;
+    import com.google.genai.types.Tool;
+    import java.util.List;
 
-    Client client = new Client();
-
-    BatchJobSource batchJobSource =
-        BatchJobSource.builder()
-            .gcsUri("gs://unified-genai-tests/batches/input/generate_content_requests.jsonl")
-            .format("jsonl")
-            .build();
-
-    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
-    System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
+    List<InlinedRequest> inlinedRequests =
+        Arrays.asList(
+            InlinedRequest.builder()
+                .contents(Arrays.asList(Content.fromParts(Part.fromText("Who won the euro 1998?"))))
+                .build(),
+            InlinedRequest.builder()
+                .contents(Arrays.asList(Content.fromParts(Part.fromText("Who won the euro 2025?"))))
+                .config(
+                    GenerateContentConfig.builder()
+                        .tools(Tool.builder().googleSearch(GoogleSearch.builder().build()).build())
+                        .build())
+                .build());
 
 You can specify [structured output](https://ai.google.dev/gemini-api/docs/structured-output) as well.
 The following example shows how to specify for your batch requests.
@@ -676,20 +748,118 @@ The following example shows how to specify for your batch requests.
 
 ### Java
 
+    import java.util.HashMap;
+    import java.util.HashSet;
+    import java.util.Arrays;
+    import java.util.Collections;
     import com.google.genai.Client;
     import com.google.genai.types.BatchJob;
     import com.google.genai.types.BatchJobSource;
+    import com.google.genai.types.Content;
+    import com.google.genai.types.CreateBatchJobConfig;
+    import com.google.genai.types.GenerateContentConfig;
+    import com.google.genai.types.InlinedRequest;
+    import com.google.genai.types.InlinedResponse;
+    import com.google.genai.types.JobState;
+    import com.google.genai.types.Part;
+    import com.google.genai.types.Schema;
+    import com.google.genai.types.Type;
+    import java.util.List;
+    import java.util.Map;
+    import java.util.Set;
 
     Client client = new Client();
 
-    BatchJobSource batchJobSource =
-        BatchJobSource.builder()
-            .gcsUri("gs://unified-genai-tests/batches/input/generate_content_requests.jsonl")
-            .format("jsonl")
+    Map<String, Schema> properties = new HashMap<>();
+    properties.put("recipeName", Schema.builder().type(Type.Known.STRING).build());
+    properties.put(
+        "ingredients",
+        Schema.builder()
+            .type(Type.Known.ARRAY)
+            .items(Schema.builder().type(Type.Known.STRING).build())
+            .build());
+
+    Schema recipeSchema =
+        Schema.builder()
+            .type(Type.Known.ARRAY)
+            .items(
+                Schema.builder()
+                    .type(Type.Known.OBJECT)
+                    .properties(
+    properties)
+                    .required("recipeName")
+                    .build())
             .build();
 
-    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
-    System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
+    GenerateContentConfig jsonConfig =
+        GenerateContentConfig.builder()
+            .responseMimeType("application/json")
+            .responseSchema(recipeSchema)
+            .build();
+
+    List<InlinedRequest> inlineRequests =
+        Arrays.asList(
+            InlinedRequest.builder()
+                .contents(
+                    Arrays.asList(
+                        Content.builder()
+                            .role("user")
+                            .parts(
+                                Arrays.asList(
+                                    Part.fromText(
+                                        "List a few popular cookie recipes, and include the amounts of ingredients.")))
+                            .build()))
+                .config(jsonConfig)
+                .build(),
+            InlinedRequest.builder()
+                .contents(
+                    Arrays.asList(
+                        Content.builder()
+                            .role("user")
+                            .parts(
+                                Arrays.asList(
+                                    Part.fromText(
+                                        "List a few popular gluten free cookie recipes, and include the amounts of ingredients.")))
+                            .build()))
+                .config(jsonConfig)
+                .build());
+
+    BatchJob inlineBatchJob =
+        client.batches.create(
+            "gemini-3.8-flash",
+            BatchJobSource.builder().inlinedRequests(inlineRequests).build(),
+            CreateBatchJobConfig.builder().displayName("structured-output-job-1").build());
+
+    // Wait for the job to finish
+    String jobName = inlineBatchJob.name().get();
+    System.out.println("Polling status for job: " + jobName);
+
+    Set<JobState.Known> completedStates =
+        new HashSet<>(Arrays.asList(
+            JobState.Known.JOB_STATE_SUCCEEDED,
+            JobState.Known.JOB_STATE_FAILED,
+            JobState.Known.JOB_STATE_CANCELLED,
+            JobState.Known.JOB_STATE_EXPIRED));
+
+    BatchJob batchJobInline = client.batches.get(jobName, null);
+    while (!completedStates.contains(batchJobInline.state().get().knownEnum())) {
+      System.out.println(
+          "Job not finished. Current state: " + batchJobInline.state().get() + ". Waiting 30 seconds...");
+      Thread.sleep(30000);
+      batchJobInline = client.batches.get(jobName, null);
+    }
+
+    System.out.println("Job finished with state: " + batchJobInline.state().get());
+
+    // Print the response
+    List<InlinedResponse> responses = batchJobInline.dest().get().inlinedResponses().orElse(Collections.emptyList());
+    for (int i = 0; i < responses.size(); i++) {
+      System.out.println("\n--- Response " + (i + 1) + " ---");
+      InlinedResponse inlineResponse = responses.get(i);
+      if (inlineResponse.response().isPresent()) {
+        System.out.println(inlineResponse.response().get().text());
+      }
+    }
 
 The following shows an example output of this job:
 
@@ -862,20 +1032,37 @@ You can poll the job status periodically to check for completion.
 
 ### Java
 
+    import java.util.HashSet;
+    import java.util.Arrays;
     import com.google.genai.Client;
     import com.google.genai.types.BatchJob;
-    import com.google.genai.types.BatchJobSource;
+    import com.google.genai.types.JobState;
+    import java.util.Set;
 
     Client client = new Client();
 
-    BatchJobSource batchJobSource =
-        BatchJobSource.builder()
-            .gcsUri("gs://unified-genai-tests/batches/input/generate_content_requests.jsonl")
-            .format("jsonl")
-            .build();
+    // Use the name of the job you want to check
+    String jobName = "batches/your-batch-id";
 
-    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
-    System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
+    Set<JobState.Known> completedStates =
+        new HashSet<>(Arrays.asList(
+            JobState.Known.JOB_STATE_SUCCEEDED,
+            JobState.Known.JOB_STATE_FAILED,
+            JobState.Known.JOB_STATE_CANCELLED,
+            JobState.Known.JOB_STATE_EXPIRED));
+
+    System.out.println("Polling status for job: " + jobName);
+    BatchJob batchJob = client.batches.get(jobName, null);
+    while (!completedStates.contains(batchJob.state().get().knownEnum())) {
+      System.out.println("Current state: " + batchJob.state().get());
+      Thread.sleep(30000); // Wait for 30 seconds before polling again
+      batchJob = client.batches.get(jobName, null);
+    }
+
+    System.out.println("Job finished with state: " + batchJob.state().get());
+    if (batchJob.state().get().knownEnum() == JobState.Known.JOB_STATE_FAILED) {
+      System.out.println("Error: " + batchJob.error().orElse(null));
+    }
 
 ### Polling and webhooks
 
@@ -920,20 +1107,27 @@ complete.
 
 ### Java
 
+    import java.util.Arrays;
     import com.google.genai.Client;
-    import com.google.genai.types.BatchJob;
-    import com.google.genai.types.BatchJobSource;
+    import com.google.genai.gaos.models.webhooks.Webhook;
+    import com.google.genai.gaos.models.webhooks.WebhookInput;
+    import com.google.genai.gaos.models.webhooks.WebhookSubscribedEvent;
+    import java.util.List;
 
     Client client = new Client();
 
-    BatchJobSource batchJobSource =
-        BatchJobSource.builder()
-            .gcsUri("gs://unified-genai-tests/batches/input/generate_content_requests.jsonl")
-            .format("jsonl")
+    WebhookInput input =
+        WebhookInput.builder()
+            .name("MyBatchWebhook")
+            .subscribedEvents(
+                Arrays.asList(
+                    WebhookSubscribedEvent.BATCH_SUCCEEDED,
+                    WebhookSubscribedEvent.BATCH_FAILED))
+            .uri("https://my-api.com/gemini-callback")
             .build();
 
-    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
-    System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
+    Webhook webhook = client.webhooks.create(input).webhook().get();
+    System.out.println("Created webhook: " + webhook.name().orElse(""));
 
 ### REST
 
@@ -1074,18 +1268,67 @@ before they are permanently deleted.
 
     import com.google.genai.Client;
     import com.google.genai.types.BatchJob;
-    import com.google.genai.types.BatchJobSource;
+    import com.google.genai.types.BatchJobDestination;
+    import com.google.genai.types.InlinedEmbedContentResponse;
+    import com.google.genai.types.InlinedResponse;
+    import com.google.genai.types.JobState;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.List;
 
     Client client = new Client();
 
-    BatchJobSource batchJobSource =
-        BatchJobSource.builder()
-            .gcsUri("gs://unified-genai-tests/batches/input/generate_content_requests.jsonl")
-            .format("jsonl")
-            .build();
+    // Use the name of the job you want to check
+    String jobName = "batches/your-batch-id";
+    BatchJob batchJob = client.batches.get(jobName, null);
 
-    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
-    System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
+    if (batchJob.state().get().knownEnum() == JobState.Known.JOB_STATE_SUCCEEDED) {
+      BatchJobDestination dest = batchJob.dest().orElse(null);
+
+      // If batch job was created with a file destination
+      if (dest != null && dest.fileName().isPresent()) {
+        String resultFileName = dest.fileName().get();
+        System.out.println("Results are in file: " + resultFileName);
+
+        System.out.println("Downloading result file content...");
+        client.files.download(resultFileName, "batch_results.jsonl", null);
+        String fileContent = Files.readString(Paths.get("batch_results.jsonl"));
+        System.out.println(fileContent);
+      }
+      // If batch job was created with inline requests
+      else if (dest != null && dest.inlinedResponses().isPresent()) {
+        System.out.println("Results are inline:");
+        List<InlinedResponse> responses = dest.inlinedResponses().get();
+        for (int i = 0; i < responses.size(); i++) {
+          System.out.println("Response " + (i + 1) + ":");
+          InlinedResponse inlineResponse = responses.get(i);
+          if (inlineResponse.response().isPresent()) {
+            System.out.println(inlineResponse.response().get().text());
+          } else if (inlineResponse.error().isPresent()) {
+            System.out.println("Error: " + inlineResponse.error().get());
+          }
+        }
+      }
+      // If batch job was an embedding batch with inline responses
+      else if (dest != null && dest.inlinedEmbedContentResponses().isPresent()) {
+        System.out.println("Embedding results found inline:");
+        List<InlinedEmbedContentResponse> responses = dest.inlinedEmbedContentResponses().get();
+        for (int i = 0; i < responses.size(); i++) {
+          System.out.println("Response " + (i + 1) + ":");
+          InlinedEmbedContentResponse inlineResponse = responses.get(i);
+          if (inlineResponse.response().isPresent()) {
+            System.out.println(inlineResponse.response().get());
+          } else if (inlineResponse.error().isPresent()) {
+            System.out.println("Error: " + inlineResponse.error().get());
+          }
+        }
+      } else {
+        System.out.println("No results found (neither file nor inline).");
+      }
+    } else {
+      System.out.println("Job did not succeed. Final state: " + batchJob.state().get());
+      batchJob.error().ifPresent(err -> System.out.println("Error: " + err));
+    }
 
 ### REST
 
@@ -1144,19 +1387,20 @@ You can list your recent batch jobs.
 ### Java
 
     import com.google.genai.Client;
+    import com.google.genai.Pager;
     import com.google.genai.types.BatchJob;
-    import com.google.genai.types.BatchJobSource;
+    import com.google.genai.types.ListBatchJobsConfig;
 
     Client client = new Client();
 
-    BatchJobSource batchJobSource =
-        BatchJobSource.builder()
-            .gcsUri("gs://unified-genai-tests/batches/input/generate_content_requests.jsonl")
-            .format("jsonl")
-            .build();
+    Pager<BatchJob> batchJobs = client.batches.list(null);
 
-    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
-    System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
+    // Optional query config:
+    // Pager<BatchJob> batchJobs = client.batches.list(ListBatchJobsConfig.builder().pageSize(5).build());
+
+    for (BatchJob batchJob : batchJobs) {
+      System.out.println(batchJob);
+    }
 
 ### REST
 
@@ -1179,19 +1423,11 @@ canceled, it stops processing new requests.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.types.BatchJob;
-    import com.google.genai.types.BatchJobSource;
 
     Client client = new Client();
 
-    BatchJobSource batchJobSource =
-        BatchJobSource.builder()
-            .gcsUri("gs://unified-genai-tests/batches/input/generate_content_requests.jsonl")
-            .format("jsonl")
-            .build();
-
-    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
-    System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
+    String batchJobToCancelName = "batches/your-batch-id";
+    client.batches.cancel(batchJobToCancelName, null);
 
 ### REST
 
@@ -1223,19 +1459,11 @@ batch jobs.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.types.BatchJob;
-    import com.google.genai.types.BatchJobSource;
 
     Client client = new Client();
 
-    BatchJobSource batchJobSource =
-        BatchJobSource.builder()
-            .gcsUri("gs://unified-genai-tests/batches/input/generate_content_requests.jsonl")
-            .format("jsonl")
-            .build();
-
-    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
-    System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
+    String batchJobToDeleteName = "batches/your-batch-id";
+    client.batches.delete(batchJobToDeleteName, null);
 
 ### REST
 
@@ -1409,20 +1637,102 @@ a [JSONL input file](https://ai.google.dev/gemini-api/docs/batch-api#input-file-
 
 ### Java
 
+    import java.util.HashSet;
+    import java.util.Arrays;
+    import java.util.Collections;
     import com.google.genai.Client;
     import com.google.genai.types.BatchJob;
     import com.google.genai.types.BatchJobSource;
+    import com.google.genai.types.Content;
+    import com.google.genai.types.CreateBatchJobConfig;
+    import com.google.genai.types.GenerateContentConfig;
+    import com.google.genai.types.InlinedRequest;
+    import com.google.genai.types.InlinedResponse;
+    import com.google.genai.types.JobState;
+    import com.google.genai.types.Part;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.List;
+    import java.util.Set;
 
     Client client = new Client();
 
-    BatchJobSource batchJobSource =
-        BatchJobSource.builder()
-            .gcsUri("gs://unified-genai-tests/batches/input/generate_content_requests.jsonl")
-            .format("jsonl")
-            .build();
+    // 1. Create batch job with inline requests
+    GenerateContentConfig imageConfig =
+        GenerateContentConfig.builder().responseModalities("TEXT", "IMAGE").build();
 
-    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
-    System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
+    List<InlinedRequest> inlineRequests =
+        Arrays.asList(
+            InlinedRequest.builder()
+                .contents(
+                    Arrays.asList(
+                        Content.fromParts(
+                            Part.fromText(
+                                "A big letter A surrounded by animals starting with the A letter"))))
+                .config(imageConfig)
+                .build(),
+            InlinedRequest.builder()
+                .contents(
+                    Arrays.asList(
+                        Content.fromParts(
+                            Part.fromText(
+                                "A big letter B surrounded by animals starting with the B letter"))))
+                .config(imageConfig)
+                .build());
+
+    BatchJob inlineBatchJob =
+        client.batches.create(
+            "gemini-3-pro-image-preview",
+            BatchJobSource.builder().inlinedRequests(inlineRequests).build(),
+            CreateBatchJobConfig.builder().displayName("inlined-image-requests-job-1").build());
+
+    System.out.println("Created batch job: " + inlineBatchJob.name().orElse(""));
+
+    // 2. Monitor job status
+    String jobName = inlineBatchJob.name().get();
+    System.out.println("Polling status for job: " + jobName);
+
+    Set<JobState.Known> completedStates =
+        new HashSet<>(Arrays.asList(
+            JobState.Known.JOB_STATE_SUCCEEDED,
+            JobState.Known.JOB_STATE_FAILED,
+            JobState.Known.JOB_STATE_CANCELLED,
+            JobState.Known.JOB_STATE_EXPIRED));
+
+    BatchJob batchJob = client.batches.get(jobName, null);
+    while (!completedStates.contains(batchJob.state().get().knownEnum())) {
+      System.out.println("Current state: " + batchJob.state().get());
+      Thread.sleep(10000); // Wait for 10 seconds before polling again
+      batchJob = client.batches.get(jobName, null);
+    }
+
+    System.out.println("Job finished with state: " + batchJob.state().get());
+
+    // 3. Retrieve results
+    if (batchJob.state().get().knownEnum() == JobState.Known.JOB_STATE_SUCCEEDED) {
+      System.out.println("Results are inline:");
+      List<InlinedResponse> responses = batchJob.dest().get().inlinedResponses().orElse(Collections.emptyList());
+      for (int i = 0; i < responses.size(); i++) {
+        System.out.println("Response " + (i + 1) + ":");
+        InlinedResponse inlineResponse = responses.get(i);
+        if (inlineResponse.response().isPresent()) {
+          for (Part part : inlineResponse.response().get().parts()) {
+            if (part.text().isPresent()) {
+              System.out.println(part.text().get());
+            } else if (part.inlineData().isPresent()) {
+              System.out.println("Image mime type: " + part.inlineData().get().mimeType().orElse(""));
+              Files.write(
+                  Paths.get("image_" + (i + 1) + ".png"),
+                  part.inlineData().get().data().get());
+            }
+          }
+        } else if (inlineResponse.error().isPresent()) {
+          System.out.println("Error: " + inlineResponse.error().get());
+        }
+      }
+    } else if (batchJob.state().get().knownEnum() == JobState.Known.JOB_STATE_FAILED) {
+      System.out.println("Error: " + batchJob.error().orElse(null));
+    }
 
 ### REST
 
@@ -1661,20 +1971,81 @@ a [JSONL input file](https://ai.google.dev/gemini-api/docs/batch-api#input-file-
 
 ### Java
 
+    import java.util.HashSet;
+    import java.util.Arrays;
     import com.google.genai.Client;
     import com.google.genai.types.BatchJob;
     import com.google.genai.types.BatchJobSource;
+    import com.google.genai.types.CreateBatchJobConfig;
+    import com.google.genai.types.File;
+    import com.google.genai.types.JobState;
+    import com.google.genai.types.UploadFileConfig;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.List;
+    import java.util.Set;
 
     Client client = new Client();
 
-    BatchJobSource batchJobSource =
-        BatchJobSource.builder()
-            .gcsUri("gs://unified-genai-tests/batches/input/generate_content_requests.jsonl")
-            .format("jsonl")
-            .build();
+    // 1. Create and upload file
+    String fileName = "my-batch-image-requests.jsonl";
+    List<String> requests =
+        Arrays.asList(
+            "{\"key\": \"request-1\", \"request\": {\"contents\": [{\"parts\": [{\"text\": \"A big letter A surrounded by animals starting with the A letter\"}]}], \"generation_config\": {\"responseModalities\": [\"TEXT\", \"IMAGE\"]}}}",
+            "{\"key\": \"request-2\", \"request\": {\"contents\": [{\"parts\": [{\"text\": \"A big letter B surrounded by animals starting with the B letter\"}]}], \"generation_config\": {\"responseModalities\": [\"TEXT\", \"IMAGE\"]}}}");
+    Files.write(Paths.get(fileName), requests);
 
-    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
-    System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
+    File uploadedFile =
+        client.files.upload(
+            fileName,
+            UploadFileConfig.builder()
+                .displayName("my-batch-image-requests")
+                .mimeType("jsonl")
+                .build());
+    System.out.println("Uploaded file: " + uploadedFile.name().orElse(""));
+
+    // 2. Create batch job
+    BatchJob fileBatchJob =
+        client.batches.create(
+            "gemini-3-pro-image-preview",
+            BatchJobSource.builder().fileName(uploadedFile.name().get()).build(),
+            CreateBatchJobConfig.builder().displayName("file-image-upload-job-1").build());
+    System.out.println("Created batch job: " + fileBatchJob.name().orElse(""));
+
+    // 3. Monitor job status
+    String jobName = fileBatchJob.name().get();
+    System.out.println("Polling status for job: " + jobName);
+
+    Set<JobState.Known> completedStates =
+        new HashSet<>(Arrays.asList(
+            JobState.Known.JOB_STATE_SUCCEEDED,
+            JobState.Known.JOB_STATE_FAILED,
+            JobState.Known.JOB_STATE_CANCELLED,
+            JobState.Known.JOB_STATE_EXPIRED));
+
+    BatchJob batchJob = client.batches.get(jobName, null);
+    while (!completedStates.contains(batchJob.state().get().knownEnum())) {
+      System.out.println("Current state: " + batchJob.state().get());
+      Thread.sleep(10000); // Wait for 10 seconds before polling again
+      batchJob = client.batches.get(jobName, null);
+    }
+
+    System.out.println("Job finished with state: " + batchJob.state().get());
+
+    // 4. Retrieve results
+    if (batchJob.state().get().knownEnum() == JobState.Known.JOB_STATE_SUCCEEDED) {
+      String resultFileName = batchJob.dest().get().fileName().get();
+      System.out.println("Results are in file: " + resultFileName);
+      System.out.println("Downloading result file content...");
+      client.files.download(resultFileName, "batch_image_results.jsonl", null);
+      for (String line : Files.readAllLines(Paths.get("batch_image_results.jsonl"))) {
+        if (!line.isEmpty()) {
+          System.out.println(line);
+        }
+      }
+    } else if (batchJob.state().get().knownEnum() == JobState.Known.JOB_STATE_FAILED) {
+      System.out.println("Error: " + batchJob.error().orElse(null));
+    }
 
 ### REST
 

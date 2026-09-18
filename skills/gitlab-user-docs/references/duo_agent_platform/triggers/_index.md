@@ -33,6 +33,7 @@ in a discussion, or when you assign them as a reviewer.
 - **Merge request ready** and **Merge request code conflict** event types [consolidated](https://gitlab.com/gitlab-org/gitlab/-/work_items/602777) into the **Merge request** event type as the **Marked ready** and **Merge conflict** actions in GitLab 19.2.
 - Trigger creation form [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/248807) to add conditions one at a time in GitLab 19.3.
 - **Merge request** trigger event type with the **Created** action [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/242698) in GitLab 19.4.
+- **Status** filter for the **Work item** trigger event type with the **Status changed** action [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/607577) in GitLab 19.4.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -75,7 +76,7 @@ The trigger now appears in **AI** > **Triggers**.
 | Assign reviewer | When the service account user is assigned as a reviewer to a merge request.           | None |
 | Pipeline events | When a pipeline changes state.                                                        | From the **Run when** dropdown list, select one or more of the following:- **Running**- **Passed**- **Failed**- **Canceled** |
 | Merge request   | When a selected merge request action occurs.                                          | From the **Run when** dropdown list, select one of the following:- **Approved**: When a merge request has all required approvals.- **Created**: When someone creates a merge request, draft or ready, and GitLab generates its diff. GitLab syncs code owner approval rules against that diff before the flow runs, unless the merge request joins a merge train or GitLab cannot reload the diff.- **Marked ready**: When a draft merge request is marked as ready for review.- **Merge conflict**: When a merge request can no longer be merged due to a code conflict. |
-| Work item       | When a selected work item action occurs.                                              | From the **Run when** dropdown list, select one of the following:- **Created**: When a work item is created- **Status changed**: When a work item's status changes |
+| Work item       | When a selected work item action occurs.                                              | From the **Run when** dropdown list, select one of the following:- **Created**: When a work item is created- **Status changed**: When a work item's status changes. When **Status changed** is the only selected action, you can select one or more statuses to run the flow only when the work item changes to one of them. |
 
 ## Edit a trigger
 
@@ -83,6 +84,8 @@ The trigger now appears in **AI** > **Triggers**.
 1. In the left sidebar, select **AI** > **Triggers**.
 1. For the trigger you want to change, select **Edit flow trigger** ().
 1. Make the changes and select **Save changes**.
+
+You can also edit a custom flow's trigger on its configuration page, under **Trigger conditions**.
 
 ## Turn a trigger on or off
 
@@ -95,12 +98,16 @@ it stops running automatically after its configured actions, and remains in the 
 1. In the left sidebar, select **AI** > **Triggers**.
 1. For the trigger you want to turn on or off, in the **Status** column, select the toggle.
 
+You can also turn a custom flow's trigger on or off on its configuration page, under **Trigger conditions**.
+
 ## Delete a trigger
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **AI** > **Triggers**.
 1. For the trigger you want to change, select **Delete flow trigger** ().
 1. On the confirmation dialog, select **OK**.
+
+You can also delete a custom flow's trigger on its configuration page, under **Trigger conditions**.
 
 ## Actions that don't initiate a trigger
 

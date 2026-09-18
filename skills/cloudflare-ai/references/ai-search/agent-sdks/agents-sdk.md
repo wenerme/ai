@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Agents SDK
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/agent-sdks/agents-sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/agent-sdks/agents-sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The [Cloudflare Agents SDK](https://developers.cloudflare.com/agents/) lets you build stateful AI agents that run on Workers. This guide builds a chat agent that provisions its own AI Search instance, indexes a document, and then searches that content with a tool before it answers.
 
@@ -101,7 +101,7 @@ Replace your [Wrangler configuration file](https://developers.cloudflare.com/wor
   "name": "ai-search-agent",
   "main": "src/server.ts",
   // Set this to today's date
-  "compatibility_date": "2026-09-14",
+  "compatibility_date": "2026-09-18",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -138,7 +138,7 @@ Replace your [Wrangler configuration file](https://developers.cloudflare.com/wor
 name = "ai-search-agent"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-09-14"
+compatibility_date = "2026-09-18"
 compatibility_flags = ["nodejs_compat"]
 
 [ai]
@@ -173,7 +173,7 @@ import { createWorkersAI } from "workers-ai-provider";
 import { streamText, convertToModelMessages, tool, stepCountIs } from "ai";
 import { z } from "zod";
 
-const INSTANCE_ID = "knowledge-base";
+const INSTANCE_NAME = "knowledge-base";
 
 const SEED_DOC = `# Getting started
 AI Search indexes your content so an agent can retrieve it at query time.`;
@@ -192,12 +192,12 @@ export class SearchAgent extends AIChatAgent {
 		try {
 			// index_method with both vector and keyword enables hybrid search.
 			await this.env.AI_SEARCH.create({
-				id: INSTANCE_ID,
+				id: INSTANCE_NAME,
 				index_method: { vector: true, keyword: true },
 			});
 			// upload() queues the file; indexing runs in the background. Poll the
 			// item status until it is searchable so the first query has content.
-			const instance = this.env.AI_SEARCH.get(INSTANCE_ID);
+			const instance = this.env.AI_SEARCH.get(INSTANCE_NAME);
 			const { id } = await instance.items.upload(
 				"getting-started.md",
 				SEED_DOC,
@@ -240,7 +240,7 @@ export class SearchAgent extends AIChatAgent {
 					// Hybrid search runs by default because the instance indexes
 					// both vectors and keywords.
 					execute: async ({ query }) => {
-						const instance = this.env.AI_SEARCH.get(INSTANCE_ID);
+						const instance = this.env.AI_SEARCH.get(INSTANCE_NAME);
 						return await instance.search({
 							query,
 							ai_search_options: { retrieval: { max_num_results: 5 } },
@@ -257,7 +257,7 @@ export class SearchAgent extends AIChatAgent {
 					// upload() returns as soon as the file is queued; indexing then
 					// finishes in the background.
 					execute: async ({ title, content }) => {
-						const instance = this.env.AI_SEARCH.get(INSTANCE_ID);
+						const instance = this.env.AI_SEARCH.get(INSTANCE_NAME);
 						const item = await instance.items.upload(`${title}.md`, content);
 						return { key: item.key, status: item.status };
 					},
@@ -292,7 +292,7 @@ import { createWorkersAI } from "workers-ai-provider";
 import { streamText, convertToModelMessages, tool, stepCountIs } from "ai";
 import { z } from "zod";
 
-const INSTANCE_ID = "knowledge-base";
+const INSTANCE_NAME = "knowledge-base";
 
 const SEED_DOC = `# Getting started
 AI Search indexes your content so an agent can retrieve it at query time.`;
@@ -311,12 +311,12 @@ export class SearchAgent extends AIChatAgent {
 		try {
 			// index_method with both vector and keyword enables hybrid search.
 			await this.env.AI_SEARCH.create({
-				id: INSTANCE_ID,
+				id: INSTANCE_NAME,
 				index_method: { vector: true, keyword: true },
 			});
 			// upload() queues the file; indexing runs in the background. Poll the
 			// item status until it is searchable so the first query has content.
-			const instance = this.env.AI_SEARCH.get(INSTANCE_ID);
+			const instance = this.env.AI_SEARCH.get(INSTANCE_NAME);
 			const { id } = await instance.items.upload(
 				"getting-started.md",
 				SEED_DOC,
@@ -359,7 +359,7 @@ export class SearchAgent extends AIChatAgent {
 					// Hybrid search runs by default because the instance indexes
 					// both vectors and keywords.
 					execute: async ({ query }) => {
-						const instance = this.env.AI_SEARCH.get(INSTANCE_ID);
+						const instance = this.env.AI_SEARCH.get(INSTANCE_NAME);
 						return await instance.search({
 							query,
 							ai_search_options: { retrieval: { max_num_results: 5 } },
@@ -376,7 +376,7 @@ export class SearchAgent extends AIChatAgent {
 					// upload() returns as soon as the file is queued; indexing then
 					// finishes in the background.
 					execute: async ({ title, content }) => {
-						const instance = this.env.AI_SEARCH.get(INSTANCE_ID);
+						const instance = this.env.AI_SEARCH.get(INSTANCE_NAME);
 						const item = await instance.items.upload(`${title}.md`, content);
 						return { key: item.key, status: item.status };
 					},
@@ -402,7 +402,7 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
-`this.env.AI_SEARCH.get(INSTANCE_ID)` is synchronous and resolves lazily. It does not create the instance, so `ensureInstance` creates it first. To search several instances in one call, use a namespace-level search with `ai_search_options.instance_ids`. Refer to [Namespaces](https://developers.cloudflare.com/ai-search/concepts/namespaces/).
+`this.env.AI_SEARCH.get(INSTANCE_NAME)` is synchronous and resolves lazily. It does not create the instance, so `ensureInstance` creates it first. To search several instances in one call, use a namespace-level search with `ai_search_options.instance_ids`. Refer to [Namespaces](https://developers.cloudflare.com/ai-search/concepts/namespaces/).
 
 ### How the tools work
 
@@ -469,5 +469,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/agent-sdks/agents-sdk/#page","headline":"Agents SDK · Cloudflare AI Search docs","description":"Build a Cloudflare Agent that provisions an AI Search instance, indexes content, and searches it with a tool.","url":"https://developers.cloudflare.com/ai-search/agent-sdks/agents-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/agent-sdks/agents-sdk/#page","headline":"Agents SDK · Cloudflare AI Search docs","description":"Build a Cloudflare Agent that provisions an AI Search instance, indexes content, and searches it with a tool.","url":"https://developers.cloudflare.com/ai-search/agent-sdks/agents-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

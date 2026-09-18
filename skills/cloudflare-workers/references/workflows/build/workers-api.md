@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers API
 
-Last updated Sep 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/workers-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/workers-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide details the Workflows API within Cloudflare Workers, including methods, types, and usage examples.
 
@@ -394,7 +394,7 @@ For example, to bind to a Workflow called `workflows-starter` and to make it ava
 	"name": "workflows-starter",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-15",
+	"compatibility_date": "2026-09-18",
 	"workflows": [
 		{
 			// name of your workflow
@@ -413,7 +413,7 @@ For example, to bind to a Workflow called `workflows-starter` and to make it ava
 name = "workflows-starter"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-15"
+compatibility_date = "2026-09-18"
 
 [[workflows]]
 name = "workflows-starter"
@@ -439,7 +439,7 @@ For example, if your Workflow is defined in a Worker script named `billing-worke
 	"name": "web-api-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-15",
+	"compatibility_date": "2026-09-18",
 	"workflows": [
 		{
 			// name of your workflow
@@ -461,7 +461,7 @@ For example, if your Workflow is defined in a Worker script named `billing-worke
 name = "web-api-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-15"
+compatibility_date = "2026-09-18"
 
 [[workflows]]
 name = "billing-workflow"
@@ -581,6 +581,47 @@ Returns an array of `WorkflowInstance`.
 
 Unlike [`create`](https://developers.cloudflare.com/workflows/build/workers-api/#create), this operation is idempotent and will not fail if an ID is already in use. If an existing instance with the same ID is still within its [retention limit](https://developers.cloudflare.com/workflows/reference/limits/), it will be skipped and excluded from the returned array.
 
+### deleteBatch
+
+Delete up to 100 Workflow instances and their stored state.
+
+`deleteBatch(instanceIds: string[])` returns a `Promise<WorkflowBatchDeleteResult>`. The `instanceIds` argument contains the IDs of the Workflow instances to delete.
+
+```js
+const result = await env.MY_WORKFLOW.deleteBatch([
+	"instance-abc",
+	"instance-def",
+]);
+```
+
+```ts
+const result = await env.MY_WORKFLOW.deleteBatch([
+	"instance-abc",
+	"instance-def",
+]);
+```
+
+The operation returns successes and per-instance failures:
+
+```js
+
+```
+
+```ts
+type WorkflowBatchDeleteResult = {
+	deleted: { id: string }[];
+	errors: {
+		id: string;
+		code: number;
+		message: string;
+	}[];
+};
+```
+
+`deleted` contains the IDs that were deleted successfully. `errors` contains failures identified by instance ID, with a stable error code and message.
+
+`deleteBatch()` accepts between 1 and 100 IDs. Duplicate IDs count toward the limit and are deleted once, with the result repeated for each input position. An ID whose instance does not exist is included in `errors`. If any ID is invalid, the call fails before deleting any instances. Deleting a running instance removes its stored state and stops its current execution without running rollback handlers.
+
 ### get
 
 Get a specific Workflow instance by ID.
@@ -677,6 +718,10 @@ declare abstract class WorkflowInstance {
 	 * Restart the instance from the beginning, or from a specific step.
 	 */
 	public restart(options?: WorkflowInstanceRestartOptions): Promise<void>;
+	/**
+	 * Delete the instance and its stored state.
+	 */
+	public delete(): Promise<void>;
 	/**
 	 * Returns the current status of the instance.
 	 */
@@ -796,6 +841,22 @@ interface WorkflowInstanceTerminateOptions {
 	rollback?: boolean;
 }
 ```
+
+### delete
+
+Delete a Workflow instance and its stored state with `delete(): Promise<void>`.
+
+```js
+const instance = await env.MY_WORKFLOW.get("instance-abc");
+await instance.delete();
+```
+
+```ts
+const instance = await env.MY_WORKFLOW.get("instance-abc");
+await instance.delete();
+```
+
+Deleting a running instance stops its current execution without running rollback handlers. If a Workflow deletes its own instance, execution stops during `await instance.delete()`, and code after the call does not run.
 
 ### sendEvent
 
@@ -957,5 +1018,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/workers-api/#page","headline":"Workers API · Cloudflare Workflows docs","description":"Reference for the Workflows Workers API, including WorkflowEntrypoint, step methods, and instance management.","url":"https://developers.cloudflare.com/workflows/build/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/workers-api/#page","headline":"Workers API · Cloudflare Workflows docs","description":"Reference for the Workflows Workers API, including WorkflowEntrypoint, step methods, and instance management.","url":"https://developers.cloudflare.com/workflows/build/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

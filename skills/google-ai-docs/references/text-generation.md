@@ -10,7 +10,7 @@ Here's a basic example:
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="How does AI work?"
     )
     print(interaction.output_text)
@@ -23,7 +23,7 @@ Here's a basic example:
 
     async function main() {
       const interaction = await ai.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: "How does AI work?",
       });
       console.log(interaction.output_text);
@@ -44,8 +44,8 @@ Here's a basic example:
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
-            .input(InteractionsInput.of("Explain quantum computing in simple terms."))
+            .model(Model.of("gemini-3.8-flash"))
+            .input(InteractionsInput.of("How does AI work?"))
             .build();
 
     Interaction interaction =
@@ -59,7 +59,7 @@ Here's a basic example:
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "How does AI work?"
       }'
 
@@ -92,7 +92,7 @@ over cost, latency, and intelligence. For more details, see the
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="How does AI work?",
         generation_config={
             "thinking_level": "low"
@@ -108,7 +108,7 @@ over cost, latency, and intelligence. For more details, see the
 
     async function main() {
       const interaction = await ai.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: "How does AI work?",
         generation_config: {
           thinking_level: "low",
@@ -123,17 +123,20 @@ over cost, latency, and intelligence. For more details, see the
 
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.GenerationConfig;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ThinkingLevel;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
 
     Client client = new Client();
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
-            .input(InteractionsInput.of("Explain quantum computing in simple terms."))
+            .model(Model.of("gemini-3.8-flash"))
+            .input(InteractionsInput.of("How does AI work?"))
+            .generationConfig(GenerationConfig.builder().thinkingLevel(ThinkingLevel.LOW).build())
             .build();
 
     Interaction interaction =
@@ -147,7 +150,7 @@ over cost, latency, and intelligence. For more details, see the
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "How does AI work?",
         "generation_config": {
           "thinking_level": "low"
@@ -166,7 +169,7 @@ a `system_instruction` parameter to configure the model's behavior.
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         system_instruction="You are a cat. Your name is Neko.",
         input="Hello there"
     )
@@ -181,7 +184,7 @@ a `system_instruction` parameter to configure the model's behavior.
 
     async function main() {
       const interaction = await ai.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: "Hello there",
         system_instruction: "You are a cat. Your name is Neko.",
       });
@@ -203,8 +206,9 @@ a `system_instruction` parameter to configure the model's behavior.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
-            .input(InteractionsInput.of("Explain quantum computing in simple terms."))
+            .model(Model.of("gemini-3.8-flash"))
+            .systemInstruction("You are a cat. Your name is Neko.")
+            .input(InteractionsInput.of("Hello there"))
             .build();
 
     Interaction interaction =
@@ -218,7 +222,7 @@ a `system_instruction` parameter to configure the model's behavior.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "system_instruction": "You are a cat. Your name is Neko.",
         "input": "Hello there"
       }'
@@ -233,7 +237,7 @@ temperature, using the `generation_config` parameter.
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="Explain how AI works",
         generation_config={
             "temperature": 1.0
@@ -249,7 +253,7 @@ temperature, using the `generation_config` parameter.
 
     async function main() {
       const interaction = await ai.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: "Explain how AI works",
         generation_config: {
           temperature: 1.0,
@@ -264,6 +268,7 @@ temperature, using the `generation_config` parameter.
 
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.GenerationConfig;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
@@ -273,8 +278,9 @@ temperature, using the `generation_config` parameter.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
-            .input(InteractionsInput.of("Explain quantum computing in simple terms."))
+            .model(Model.of("gemini-3.8-flash"))
+            .input(InteractionsInput.of("Explain how AI works"))
+            .generationConfig(GenerationConfig.builder().maxOutputTokens(500).build())
             .build();
 
     Interaction interaction =
@@ -288,7 +294,7 @@ temperature, using the `generation_config` parameter.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "Explain how AI works",
         "generation_config": {
           "temperature": 1.0
@@ -313,7 +319,7 @@ media files. The following example demonstrates providing an image:
     uploaded_file = client.files.upload(file="path/to/organ.jpg")
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {"type": "text", "text": "Tell me about this instrument"},
             {
@@ -338,7 +344,7 @@ media files. The following example demonstrates providing an image:
       });
 
       const interaction = await ai.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: [
           {type: "text", text: "Tell me about this instrument"},
           {
@@ -357,17 +363,36 @@ media files. The following example demonstrates providing an image:
 
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.TextContent;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.types.File;
+    import com.google.genai.types.UploadFileConfig;
+    import java.util.Arrays;
 
     Client client = new Client();
 
+    File uploadedFile =
+        client.files.upload(
+            new java.io.File("path/to/organ.jpg"),
+            UploadFileConfig.builder().mimeType("image/jpeg").build());
+
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
-            .input(InteractionsInput.of("Explain quantum computing in simple terms."))
+            .model(Model.of("gemini-3.8-flash"))
+            .input(
+                InteractionsInput.ofContent(
+                    Arrays.asList(
+                        TextContent.builder().text("Tell me about this instrument").build(),
+                        ImageContent.builder()
+                            .uri(uploadedFile.uri().orElse(""))
+                            .mimeType(
+                                ImageContentMimeType.of(uploadedFile.mimeType().orElse("image/jpeg")))
+                            .build())))
             .build();
 
     Interaction interaction =
@@ -382,7 +407,7 @@ media files. The following example demonstrates providing an image:
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": [
           {"type": "text", "text": "Tell me about this instrument"},
           {
@@ -416,7 +441,7 @@ guide.
     client = genai.Client()
 
     stream = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="Explain how AI works",
         stream=True
     )
@@ -433,7 +458,7 @@ guide.
 
     async function main() {
       const stream = await ai.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: "Explain how AI works",
         stream: true,
       });
@@ -468,21 +493,21 @@ guide.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
-            .input(InteractionsInput.of("Count from 1 to 25."))
+            .model(Model.of("gemini-3.8-flash"))
+            .input(InteractionsInput.of("Explain how AI works"))
             .stream(true)
             .build();
 
     CreateInteractionResponse response =
         client.interactions.create(CreateInteractionRequestBody.of(params));
 
-    try (EventStream<InteractionSSEStreamEvent> events = response.events()) {
-      for (InteractionSSEStreamEvent streamEvent : events) {
+    try (EventStream<InteractionSSEStreamEvent> stream = response.events()) {
+      for (InteractionSSEStreamEvent streamEvent : stream) {
         InteractionSSEEvent event = streamEvent.data().orElse(null);
-        if (event instanceof StepDelta) {
-          StepDeltaData data = ((StepDelta) event).delta().orElse(null);
-          if (data instanceof TextDelta) {
-            ((TextDelta) data).text().ifPresent(System.out::print);
+        if (event instanceof StepDelta stepDelta) {
+          StepDeltaData delta = stepDelta.delta().orElse(null);
+          if (delta instanceof TextDelta textDelta) {
+            System.out.print(textDelta.text().orElse(""));
           }
         }
       }
@@ -495,7 +520,7 @@ guide.
       -H 'Content-Type: application/json' \
       --no-buffer \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "Explain how AI works",
         "stream": true
       }'
@@ -516,13 +541,13 @@ and the API automatically manages conversation history.
     client = genai.Client()
 
     interaction1 = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="I have 2 dogs in my house.",
     )
     print(interaction1.output_text)
 
     interaction2 = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="How many paws are in my house?",
         previous_interaction_id=interaction1.id,
     )
@@ -536,13 +561,13 @@ and the API automatically manages conversation history.
 
     async function main() {
       const interaction1 = await ai.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: "I have 2 dogs in my house.",
       });
       console.log("Response 1:", interaction1.output_text);
 
       const interaction2 = await ai.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: "How many paws are in my house?",
         previous_interaction_id: interaction1.id,
       });
@@ -562,16 +587,26 @@ and the API automatically manages conversation history.
 
     Client client = new Client();
 
-    CreateModelInteraction params =
+    CreateModelInteraction params1 =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
-            .input(InteractionsInput.of("Explain quantum computing in simple terms."))
+            .model(Model.of("gemini-3.8-flash"))
+            .input(InteractionsInput.of("I have 2 dogs in my house."))
             .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    Interaction interaction1 =
+        client.interactions.create(CreateInteractionRequestBody.of(params1)).interaction().get();
+    System.out.println("Response 1: " + interaction1.outputText().orElse(""));
 
-    System.out.println(interaction.outputText().orElse(""));
+    CreateModelInteraction params2 =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.8-flash"))
+            .input(InteractionsInput.of("How many paws are in my house?"))
+            .previousInteractionId(interaction1.id().orElse(""))
+            .build();
+
+    Interaction interaction2 =
+        client.interactions.create(CreateInteractionRequestBody.of(params2)).interaction().get();
+    System.out.println("Response 2: " + interaction2.outputText().orElse(""));
 
 ### REST
 
@@ -579,7 +614,7 @@ and the API automatically manages conversation history.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "I have 2 dogs in my house."
       }')
 
@@ -589,7 +624,7 @@ and the API automatically manages conversation history.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "I have two dogs in my house. How many paws are in my house?",
         "previous_interaction_id": "'$INTERACTION_ID'"
       }'
@@ -604,13 +639,13 @@ Streaming can also be used for multi-turn conversations by combining
     client = genai.Client()
 
     interaction1 = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="I have 2 dogs in my house.",
     )
     print(interaction1.output_text)
 
     stream = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="How many paws are in my house?",
         previous_interaction_id=interaction1.id,
         stream=True
@@ -628,13 +663,13 @@ Streaming can also be used for multi-turn conversations by combining
 
     async function main() {
       const interaction1 = await ai.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: "I have 2 dogs in my house.",
       });
       console.log("Response 1:", interaction1.output_text);
 
       const stream = await ai.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: "How many paws are in my house?",
         previous_interaction_id: interaction1.id,
         stream: true,
@@ -654,6 +689,7 @@ Streaming can also be used for multi-turn conversations by combining
 
     import com.google.genai.Client;
     import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionSSEEvent;
     import com.google.genai.gaos.models.interactions.InteractionSSEStreamEvent;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
@@ -667,23 +703,34 @@ Streaming can also be used for multi-turn conversations by combining
 
     Client client = new Client();
 
-    CreateModelInteraction params =
+    CreateModelInteraction params1 =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
-            .input(InteractionsInput.of("Count from 1 to 25."))
+            .model(Model.of("gemini-3.8-flash"))
+            .input(InteractionsInput.of("I have 2 dogs in my house."))
+            .build();
+
+    Interaction interaction1 =
+        client.interactions.create(CreateInteractionRequestBody.of(params1)).interaction().get();
+    System.out.println("Response 1: " + interaction1.outputText().orElse(""));
+
+    CreateModelInteraction params2 =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.8-flash"))
+            .input(InteractionsInput.of("How many paws are in my house?"))
+            .previousInteractionId(interaction1.id().orElse(""))
             .stream(true)
             .build();
 
-    CreateInteractionResponse response =
-        client.interactions.create(CreateInteractionRequestBody.of(params));
+    CreateInteractionResponse response2 =
+        client.interactions.create(CreateInteractionRequestBody.of(params2));
 
-    try (EventStream<InteractionSSEStreamEvent> events = response.events()) {
-      for (InteractionSSEStreamEvent streamEvent : events) {
+    try (EventStream<InteractionSSEStreamEvent> stream = response2.events()) {
+      for (InteractionSSEStreamEvent streamEvent : stream) {
         InteractionSSEEvent event = streamEvent.data().orElse(null);
-        if (event instanceof StepDelta) {
-          StepDeltaData data = ((StepDelta) event).delta().orElse(null);
-          if (data instanceof TextDelta) {
-            ((TextDelta) data).text().ifPresent(System.out::print);
+        if (event instanceof StepDelta stepDelta) {
+          StepDeltaData delta = stepDelta.delta().orElse(null);
+          if (delta instanceof TextDelta textDelta) {
+            System.out.print(textDelta.text().orElse(""));
           }
         }
       }
@@ -695,7 +742,7 @@ Streaming can also be used for multi-turn conversations by combining
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "I have 2 dogs in my house."
       }')
     INTERACTION_ID=$(echo "$RESPONSE1" | jq -r '.id')
@@ -705,7 +752,7 @@ Streaming can also be used for multi-turn conversations by combining
       -H 'Content-Type: application/json' \
       --no-buffer \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "How many paws are in my house?",
         "previous_interaction_id": "'$INTERACTION_ID'",
         "stream": true
@@ -737,7 +784,7 @@ To use stateless mode:
     ]
 
     interaction1 = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         store=False,
         input=history
     )
@@ -752,7 +799,7 @@ To use stateless mode:
     })
 
     interaction2 = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         store=False,
         input=history
     )
@@ -773,7 +820,7 @@ To use stateless mode:
       ];
 
       const interaction1 = await ai.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         store: false,
         input: history
       });
@@ -787,7 +834,7 @@ To use stateless mode:
       });
 
       const interaction2 = await ai.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         store: false,
         input: history
       });
@@ -803,20 +850,50 @@ To use stateless mode:
     import com.google.genai.gaos.models.interactions.Interaction;
     import com.google.genai.gaos.models.interactions.InteractionsInput;
     import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.interactions.UserInputStep;
     import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.ArrayList;
+    import java.util.Arrays;
+    import java.util.List;
 
     Client client = new Client();
 
-    CreateModelInteraction params =
+    List<Step> history = new ArrayList<>();
+    history.add(
+        UserInputStep.builder()
+            .content(Arrays.asList(TextContent.builder().text("I have 2 dogs in my house.").build()))
+            .build());
+
+    CreateModelInteraction params1 =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
-            .input(InteractionsInput.of("Explain quantum computing in simple terms."))
+            .model(Model.of("gemini-3.8-flash"))
+            .store(false)
+            .input(InteractionsInput.ofStep(history))
             .build();
 
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+    Interaction interaction1 =
+        client.interactions.create(CreateInteractionRequestBody.of(params1)).interaction().get();
+    System.out.println("Response 1: " + interaction1.outputText().orElse(""));
 
-    System.out.println(interaction.outputText().orElse(""));
+    interaction1.steps().ifPresent(history::addAll);
+
+    history.add(
+        UserInputStep.builder()
+            .content(Arrays.asList(TextContent.builder().text("How many paws are in my house?").build()))
+            .build());
+
+    CreateModelInteraction params2 =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.8-flash"))
+            .store(false)
+            .input(InteractionsInput.ofStep(history))
+            .build();
+
+    Interaction interaction2 =
+        client.interactions.create(CreateInteractionRequestBody.of(params2)).interaction().get();
+    System.out.println("Response 2: " + interaction2.outputText().orElse(""));
 
 ### REST
 
@@ -825,7 +902,7 @@ To use stateless mode:
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "store": false,
         "input": [
           {
@@ -853,7 +930,7 @@ To use stateless mode:
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d "{
-        \"model\": \"gemini-3.7-flash\",
+        \"model\": \"gemini-3.8-flash\",
         \"store\": false,
         \"input\": $HISTORY
       }"
