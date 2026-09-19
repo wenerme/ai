@@ -37,7 +37,7 @@ You can try it out using [the online demo](https://demo.gitea.com).
 
 - **Security**
 
-  Gitea places a strong emphasis on security, offering features such as user permission management, access control lists, and more to ensure the security of code and data.
+  Gitea places a strong emphasis on security, offering features such as user permission management, access control lists, [audit logging](administration/audit-logging.md), and more to ensure the security of code and data.
 
 - **Code Review**
 

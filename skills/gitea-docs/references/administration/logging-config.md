@@ -14,6 +14,8 @@ The logging configuration of Gitea mainly consists of 3 types of components:
 
 There is a fully functional log output by default, so it is not necessary to define one.
 
+Security-relevant events (repository transfers, token changes, impersonation, and similar) are recorded separately. See [Audit Logging](audit-logging.md).
+
 ## Collecting Logs for Help
 
 To collect logs for help and issue report, see [Support Options](help/support.md).

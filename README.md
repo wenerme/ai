@@ -1396,7 +1396,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 125 skills, 49315 files, 538 MiB total
+> 125 skills, 49316 files, 538 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1423,7 +1423,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [bun-ffi-interop-pattern](./skills/bun-ffi-interop-pattern/SKILL.md) | 1 | 4.8 KiB |
 | [caddy-docs](./skills/caddy-docs/SKILL.md) | 82 | 667 KiB |
 | [chrome-devtools](./skills/chrome-devtools/SKILL.md) | 1 | 4.2 KiB |
-| [claude-code-docs](./skills/claude-code-docs/SKILL.md) | 143 | 7.9 MiB |
+| [claude-code-docs](./skills/claude-code-docs/SKILL.md) | 143 | 8.0 MiB |
 | [clickhouse-docs](./skills/clickhouse-docs/SKILL.md) | 1105 | 10 MiB |
 | [cloudflare-ai](./skills/cloudflare-ai/SKILL.md) | 1557 | 19 MiB |
 | [cloudflare-data](./skills/cloudflare-data/SKILL.md) | 383 | 3.1 MiB |
@@ -1451,7 +1451,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [gemini-cli-docs](./skills/gemini-cli-docs/SKILL.md) | 91 | 811 KiB |
 | [gemini-enterprise-agent-platform-docs](./skills/gemini-enterprise-agent-platform-docs/SKILL.md) | 427 | 5.9 MiB |
 | [ghostty-docs](./skills/ghostty-docs/SKILL.md) | 103 | 557 KiB |
-| [gitea-docs](./skills/gitea-docs/SKILL.md) | 98 | 691 KiB |
+| [gitea-docs](./skills/gitea-docs/SKILL.md) | 99 | 699 KiB |
 | [gitlab-admin-docs](./skills/gitlab-admin-docs/SKILL.md) | 367 | 4.6 MiB |
 | [gitlab-api-docs](./skills/gitlab-api-docs/SKILL.md) | 254 | 15 MiB |
 | [gitlab-ci-docs](./skills/gitlab-ci-docs/SKILL.md) | 175 | 2.0 MiB |
