@@ -36,7 +36,7 @@ Retrieves a turn belonging to this subagent. See [subagent workflows](/api/docs/
 
   - `error: SessionTurnError or null`
 
-    A customer-safe error describing why a session request failed.
+    A customer-safe error. Non-null only for a failed turn.
 
     - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 14 more`
 
@@ -162,7 +162,7 @@ Retrieves a turn belonging to this subagent. See [subagent workflows](/api/docs/
 
   - `usage: TokenUsage or null`
 
-    Recorded token usage for a session or turn. Usage is best effort and may change.
+    Best-effort token usage for the turn, or null if unknown. Recorded usage may change.
 
     - `input_tokens: number`
 

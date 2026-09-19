@@ -29,6 +29,7 @@ For more information, see
 
 ## Subcommands
 
+- [`get`](get.md)
 - [`install`](install.md)
 - [`list`](list.md)
 - [`update`](update.md)

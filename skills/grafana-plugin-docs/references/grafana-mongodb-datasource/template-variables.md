@@ -9,13 +9,18 @@ description: "This document describes MongoDB templates and variables for Grafan
 
 Instead of hard-coding details such as server, application, and sensor names in metric queries, you can use variables. Grafana lists these variables in drop-down select boxes at the top of the dashboard to help you change the data displayed in your dashboard. A **template** is any query that contains a variable.
 
+## Before you begin
+
+- [Configure the MongoDB data source](/docs/plugins/grafana-mongodb-datasource/latest/configure/).
+- Understand [Grafana template variables](/docs/grafana/latest/dashboards/variables/).
+
 For an introduction to templates and variables, refer to the following documents:
 
 - [Variables](/docs/grafana/latest/dashboards/variables/)
 - [Templates](/docs/grafana/latest/dashboards/variables/add-template-variables/)
-- [Variable syntax](/docs/grafana/latest/dashboards/variables/variable-syntax/)
+- [Variable syntax](/docs/grafana/latest/visualizations/dashboards/variables/variable-syntax/)
 
-To add a new MongoDB query variable, refer to [Add and manage variables](/docs/grafana/latest/variables/variable-types/add-query-variable/). Use MongoDB as your data source.
+To add a new MongoDB query variable, refer to [Add a query variable](/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable). Use MongoDB as your data source.
 
 The following sample query retrieves all movie titles after 1980:
 
@@ -61,11 +66,11 @@ Guidelines for working with compound variables:
    ```javascript
    sample_mflix.movies.find({"title": "$_movie", year: $_year})
    ```
-5. Use the variable in your MongoDB queries with the appropriate [variable syntax](/docs/grafana/latest/variables/syntax/).
+5. Use the variable in your MongoDB queries with the appropriate [variable syntax](/docs/grafana/latest/visualizations/dashboards/variables/variable-syntax/).
 
-## Use ad-hoc filters
+## Use ad hoc filters
 
-In addition to a standard ad-hoc filter variable (with any name), you must create a second helper variable. This helper variable should:
+In addition to a standard ad hoc filter variable (with any name), you must create a second helper variable. This helper variable should:
 
 - Be of `constant` type
 - Be named `mongo_adhoc_query`

@@ -24,7 +24,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
     - `effort: optional "none" or "minimal" or "low" or 4 more or null`
 
-      The amount of reasoning effort the model should use.
+      Omit to keep the current effort. Null selects the model's default effort.
 
       - `"none"`
 
@@ -42,7 +42,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
   - `service_tier: optional "auto" or "default" or "flex" or 2 more or null`
 
-    The service tier used for model requests.
+    Omit to keep the current tier. Null resets it to auto.
 
     - `"auto"`
 
@@ -116,7 +116,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
       - `effort: "none" or "minimal" or "low" or 4 more or null`
 
-        The amount of reasoning effort used by an agent.
+        The requested reasoning effort, or `null` when the model selects its own default.
 
         - `"none"`
 
@@ -134,7 +134,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
       - `summary: "concise" or "detailed" or "auto" or null`
 
-        The reasoning summary format requested from an agent.
+        The requested reasoning summary format, or `null` when summaries are disabled.
 
         - `"concise"`
 
@@ -350,7 +350,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
         - `location: object { city, country, region, timezone }  or null`
 
-          Approximate user location used to localize web search results.
+          Approximate location used to localize search results, if provided.
 
           - `city: string or null`
 
@@ -688,7 +688,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
   - `usage: TokenUsage or null`
 
-    Recorded token usage for a session or turn. Usage is best effort and may change.
+    Best-effort token usage for the session, or null if unknown. Recorded usage may change.
 
     - `input_tokens: number`
 

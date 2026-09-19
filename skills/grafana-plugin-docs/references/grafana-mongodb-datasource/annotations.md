@@ -13,7 +13,7 @@ Annotations allow you to overlay event data on your time series graphs, making i
 
 - Ensure you have [configured the MongoDB data source](/docs/plugins/grafana-mongodb-datasource/latest/configure/).
 - Your dashboard must already be saved before creating annotations.
-- Annotations display on time series, state timeline, and candlestick visualization types.
+- Annotations display on time-based visualizations, such as time series, state timeline, and candlestick.
 
 ## Annotation query format
 

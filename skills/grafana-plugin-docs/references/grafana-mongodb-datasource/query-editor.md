@@ -13,24 +13,21 @@ Grafana provides a query editor for MongoDB that supports the same syntax as the
 - Only `find` and `aggregate` read commands are supported.
 - Supported date constructors include `ISODate`, `new Date`, `Date`, and `Date.now()`.
 
-For an introduction to writing scripts for the MongoDB shell refer to [Write scripts](https://www.mongodb.com/docs/mongodb-shell/write-scripts/) in MongoDB documentation. You create a query in the Grafana query editor in the same way you would in the MongoDB shell.
+For an introduction to writing scripts for the MongoDB shell, refer to [Write scripts](https://www.mongodb.com/docs/mongodb-shell/write-scripts/) in MongoDB documentation. You create a query in the Grafana query editor in the same way you would in the MongoDB shell.
 
-Example:
+The following example returns movies released after 2000:
 
 JavaScript [Copy code to clipboard] Copy
 
 ```javascript
-sample_mflix.movies.aggregate([
-            {"$match": { "year": {"$gt" : 2000} }},
-            {"$group": { "_id": "$year", "count": { "$sum": 1 }}},
-            {"$project": { "_id": 0, "count": 1, "time": { "$dateFromParts": {"year": "$_id", "month": 2}}}}
-            ]
-          ).sort({"time": 1})
+sample_mflix.movies.find({ "year": { "$gt": 2000 } })
 ```
 
 ## Grafana Assistant
 
-Starting with plugin version 1.27.0, the query editor includes a **Grafana Assistant** button that provides AI-assisted help with writing MongoDB queries. Click the Assistant button in the query editor toolbar to get suggestions and help constructing your queries.
+Starting with plugin version 1.27.0, the query editor toolbar includes a **Grafana Assistant** button. Click the button to generate MongoDB queries from natural language prompts. This helps you get started quickly if you’re unfamiliar with MongoDB query syntax.
+
+For more information, refer to [Grafana Assistant](/docs/grafana/latest/ai/assistant/).
 
 ## Additional syntax
 
@@ -57,6 +54,54 @@ JavaScript [Copy code to clipboard] Copy
 ```javascript
 my_db.getCollection("my.collection").find({})
 ```
+
+## Find queries
+
+Use `find` to return documents that match a filter. You can chain `.sort()` and `.limit()` on `find` queries.
+
+### Limit results
+
+The following query returns the 10 most recent movies after 2000:
+
+JavaScript [Copy code to clipboard] Copy
+
+```javascript
+sample_mflix.movies.find({ "year": { "$gt": 2000 } }).sort({ "year": -1 }).limit(10)
+```
+
+### Return specific fields
+
+Pass a projection as the second argument to `find` to limit the fields returned. The following query returns only the `title` and `year` fields and excludes `_id`:
+
+JavaScript [Copy code to clipboard] Copy
+
+```javascript
+sample_mflix.movies.find({ "year": { "$gt": 2000 } }, { "_id": 0, "title": 1, "year": 1 })
+```
+
+### Query by ObjectId
+
+Use `ObjectId()` to filter on MongoDB document IDs:
+
+JavaScript [Copy code to clipboard] Copy
+
+```javascript
+sample_mflix.movies.find({ "_id": ObjectId("573a1390f29313caabcd4803") })
+```
+
+### Match with a regular expression
+
+The following query finds titles that contain `ace`, case-insensitive:
+
+JavaScript [Copy code to clipboard] Copy
+
+```javascript
+sample_mflix.movies.find({ "title": { $regex: "ace", $options: "i" } })
+```
+
+The regular expression flags `g` (global) and `s` (`dotAll`) are not supported. Use supported flags like `i` (case-insensitive) and `m` (`multiline`).
+
+For more examples, including `ObjectId`, regular expressions, and the supported date types, refer to [Supported query syntax](/docs/plugins/grafana-mongodb-datasource/latest/template-variables/#supported-query-syntax).
 
 ## Keyboard shortcuts
 
@@ -164,6 +209,20 @@ JavaScript [Copy code to clipboard] Copy
 ```javascript
 sample_mflix.movies.find({ "tomatoes.dvd": { $gte: $__timeFrom, $lt: $__timeTo } })
 ```
+
+## Aggregate options
+
+Pass options as a second argument to `aggregate`, after the pipeline array. Starting with plugin version 2.0.0, `maxTimeMS` is sent to MongoDB as a server-side limit and is also applied as a client-side deadline. A query that exceeds `maxTimeMS` fails instead of returning partial results.
+
+JavaScript [Copy code to clipboard] Copy
+
+```javascript
+my_db.my_collection.aggregate([
+  { $match: { "status": "active" } }
+], { maxTimeMS: 5000 })
+```
+
+For the full list of supported aggregate options, refer to [Supported aggregate options](/docs/plugins/grafana-mongodb-datasource/latest/troubleshooting/#supported-aggregate-options).
 
 ## Dynamic dates in queries
 

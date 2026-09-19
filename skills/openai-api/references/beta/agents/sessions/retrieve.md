@@ -56,7 +56,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
       - `effort: "none" or "minimal" or "low" or 4 more or null`
 
-        The amount of reasoning effort used by an agent.
+        The requested reasoning effort, or `null` when the model selects its own default.
 
         - `"none"`
 
@@ -74,7 +74,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
       - `summary: "concise" or "detailed" or "auto" or null`
 
-        The reasoning summary format requested from an agent.
+        The requested reasoning summary format, or `null` when summaries are disabled.
 
         - `"concise"`
 
@@ -290,7 +290,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
         - `location: object { city, country, region, timezone }  or null`
 
-          Approximate user location used to localize web search results.
+          Approximate location used to localize search results, if provided.
 
           - `city: string or null`
 
@@ -628,7 +628,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
   - `usage: TokenUsage or null`
 
-    Recorded token usage for a session or turn. Usage is best effort and may change.
+    Best-effort token usage for the session, or null if unknown. Recorded usage may change.
 
     - `input_tokens: number`
 

@@ -428,9 +428,9 @@ components:
           type: array
         model:
           description: >-
-            Echoed as `model` on the streamed chunks; the final chunk may carry
-            the model the intern reported instead. The intern chooses its own
-            model, so this value does not change what runs.
+            Accepted for OpenAI compatibility and ignored. Streamed chunks
+            report the model the intern actually used, or `openrouter/intern`
+            when it did not report one.
           example: openrouter/intern
           maxLength: 256
           minLength: 1

@@ -62,7 +62,7 @@ Creates reusable environment configuration without returning confidential setup 
 
 - `network: optional object { access, allowed_domains }  or null`
 
-  Network access for an OpenAI-hosted environment.
+  Network access policy for the environment. Defaults to disabled for GA requests and enabled for alpha/beta requests.
 
   - `access: "enabled" or "disabled" or "restricted"`
 
@@ -86,7 +86,7 @@ Creates reusable environment configuration without returning confidential setup 
 
 - `packages: optional object { npm, python, system }  or null`
 
-  Packages to install in an OpenAI-hosted environment.
+  Packages to install in the environment. Defaults to empty package lists.
 
   - `npm: optional array of string or null`
 
@@ -1069,7 +1069,7 @@ Updates reusable environment configuration without returning confidential values
 
 - `network: optional object { access, allowed_domains }  or null`
 
-  Network access for an OpenAI-hosted environment.
+  Network access available after setup completes. Omit to preserve the current policy, or pass `null` to reset to disabled for GA requests or enabled for alpha/beta requests.
 
   - `access: "enabled" or "disabled" or "restricted"`
 
@@ -1093,7 +1093,7 @@ Updates reusable environment configuration without returning confidential values
 
 - `packages: optional object { npm, python, system }  or null`
 
-  Packages to install in an OpenAI-hosted environment.
+  Packages installed before the runtime network policy applies.
 
   - `npm: optional array of string or null`
 

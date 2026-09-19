@@ -1104,10 +1104,35 @@
     "size": 14766,
     "updatedAt": "2026-08-21T02:24:24.397Z"
   },
+  "grafana-jenkins-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-jenkins-datasource/latest/configure.md",
+    "size": 4782,
+    "updatedAt": "2026-09-19T04:32:59.511Z"
+  },
   "grafana-jenkins-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-jenkins-datasource/latest.md",
-    "size": 7784,
-    "updatedAt": "2026-06-25T05:42:19.461Z"
+    "size": 5927,
+    "updatedAt": "2026-09-19T04:32:59.638Z"
+  },
+  "grafana-jenkins-datasource/install.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-jenkins-datasource/latest/install.md",
+    "size": 8018,
+    "updatedAt": "2026-09-19T04:32:59.772Z"
+  },
+  "grafana-jenkins-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-jenkins-datasource/latest/query-editor.md",
+    "size": 22989,
+    "updatedAt": "2026-09-19T04:32:59.915Z"
+  },
+  "grafana-jenkins-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-jenkins-datasource/latest/template-variables.md",
+    "size": 4529,
+    "updatedAt": "2026-09-19T04:33:00.052Z"
+  },
+  "grafana-jenkins-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-jenkins-datasource/latest/troubleshooting.md",
+    "size": 8967,
+    "updatedAt": "2026-09-19T04:33:00.188Z"
   },
   "grafana-jira-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-jira-datasource/latest/alerting.md",
@@ -1291,38 +1316,38 @@
   },
   "grafana-mongodb-datasource/annotations.md": {
     "url": "https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/annotations.md",
-    "size": 5398,
-    "updatedAt": "2026-07-03T04:15:28.769Z"
+    "size": 5413,
+    "updatedAt": "2026-09-19T04:33:05.337Z"
   },
   "grafana-mongodb-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/configure.md",
-    "size": 11427,
-    "updatedAt": "2026-07-03T04:15:28.928Z"
+    "size": 12413,
+    "updatedAt": "2026-09-19T04:33:05.476Z"
   },
   "grafana-mongodb-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest.md",
-    "size": 4760,
-    "updatedAt": "2026-07-03T04:15:29.085Z"
+    "size": 5285,
+    "updatedAt": "2026-09-19T04:33:05.620Z"
   },
   "grafana-mongodb-datasource/install.md": {
     "url": "https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/install.md",
-    "size": 11648,
-    "updatedAt": "2026-07-03T04:15:29.241Z"
+    "size": 12897,
+    "updatedAt": "2026-09-19T04:33:05.757Z"
   },
   "grafana-mongodb-datasource/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/query-editor.md",
-    "size": 7815,
-    "updatedAt": "2026-07-03T04:15:29.392Z"
+    "size": 9883,
+    "updatedAt": "2026-09-19T04:33:05.895Z"
   },
   "grafana-mongodb-datasource/template-variables.md": {
     "url": "https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/template-variables.md",
-    "size": 7594,
-    "updatedAt": "2026-07-03T04:15:29.540Z"
+    "size": 7869,
+    "updatedAt": "2026-09-19T04:33:06.029Z"
   },
   "grafana-mongodb-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/troubleshooting.md",
-    "size": 29584,
-    "updatedAt": "2026-08-05T03:44:10.597Z"
+    "size": 35426,
+    "updatedAt": "2026-09-19T04:33:06.189Z"
   },
   "grafana-mqtt-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-mqtt-datasource/latest/configure.md",

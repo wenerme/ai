@@ -84,7 +84,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     - `network: optional object { access, allowed_domains }  or null`
 
-      Network access for an OpenAI-hosted environment.
+      Network access policy for the environment. Defaults to disabled for GA requests and enabled for alpha/beta requests.
 
       - `access: "enabled" or "disabled" or "restricted"`
 
@@ -108,7 +108,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     - `packages: optional object { npm, python, system }  or null`
 
-      Packages to install in an OpenAI-hosted environment.
+      Packages to install in the environment. Defaults to empty package lists.
 
       - `npm: optional array of string or null`
 
@@ -250,7 +250,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
   - `multi_agent: optional MultiAgentConfigParam or null`
 
-    Explicit configuration for creating and coordinating subagents.
+    Configuration for creating and coordinating subagents.
 
     - `enabled: boolean`
 
@@ -262,11 +262,11 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
   - `reasoning: optional AgentReasoningParam or null`
 
-    Reasoning configuration for the agent.
+    Configuration for model reasoning. Omit to keep the current settings; pass `null` to reset to the model's default effort.
 
     - `effort: optional "none" or "minimal" or "low" or 4 more or null`
 
-      The amount of reasoning effort the model should use.
+      The amount of reasoning effort the model should use. Omission lets the model select it.
 
       - `"none"`
 
@@ -284,7 +284,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     - `summary: optional "concise" or "detailed" or "auto" or null`
 
-      The reasoning summary format requested from the model.
+      Controls whether the response includes a reasoning summary.
 
       - `"concise"`
 
@@ -328,7 +328,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     - `format: optional TextFormatParam or null`
 
-      The output format for generated text.
+      The output format. Omission uses ordinary text (`{"type": "text"}`).
 
       - `Text object { type }`
 
@@ -356,7 +356,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     - `verbosity: optional "low" or "medium" or "high" or null`
 
-      The amount of text the model should produce.
+      The amount of text the model should produce. Defaults to `medium`, matching Responses.
 
       - `"low"`
 
@@ -500,7 +500,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       - `connection_origin: optional "service" or "environment" or null`
 
-        Where outbound MCP HTTP connections originate.
+        Selects where outbound MCP HTTP connections originate. Omitted or `service` uses the Managed Agents service network; `environment` uses the session's selected environment.
 
         - `"service"`
 
@@ -538,7 +538,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       - `context_size: optional "low" or "medium" or "high" or null`
 
-        The amount of web search context made available to the model.
+        The amount of search context made available to the model. Defaults to `medium`.
 
         - `"low"`
 
@@ -548,7 +548,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       - `location: optional object { city, country, region, timezone }  or null`
 
-        Approximate user location used to localize web search results.
+        Approximate location used to localize search results.
 
         - `city: optional string or null`
 
@@ -568,7 +568,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       - `mode: optional "disabled" or "cached" or "live" or null`
 
-        The source used for web search results.
+        The source used for web search results. Defaults to `live`.
 
         - `"disabled"`
 
@@ -588,7 +588,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
 - `input: optional string or array of AgentSessionInputMessageParam or null`
 
-  Initial input submitted when creating a session.
+  Initial input to submit when the session is created. A string is shorthand for a single user message. Required when `environment.type` is `none`, or when `stream` is `true` for an environment that is not `self_hosted`; optional for self-hosted and non-streaming execution environments.
 
   - `string`
 
@@ -698,7 +698,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       - `effort: "none" or "minimal" or "low" or 4 more or null`
 
-        The amount of reasoning effort used by an agent.
+        The requested reasoning effort, or `null` when the model selects its own default.
 
         - `"none"`
 
@@ -716,7 +716,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       - `summary: "concise" or "detailed" or "auto" or null`
 
-        The reasoning summary format requested from an agent.
+        The requested reasoning summary format, or `null` when summaries are disabled.
 
         - `"concise"`
 
@@ -932,7 +932,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
         - `location: object { city, country, region, timezone }  or null`
 
-          Approximate user location used to localize web search results.
+          Approximate location used to localize search results, if provided.
 
           - `city: string or null`
 
@@ -1270,7 +1270,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
   - `usage: TokenUsage or null`
 
-    Recorded token usage for a session or turn. Usage is best effort and may change.
+    Best-effort token usage for the session, or null if unknown. Recorded usage may change.
 
     - `input_tokens: number`
 

@@ -86,7 +86,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     - `network: optional object { access, allowed_domains }  or null`
 
-      Network access for an OpenAI-hosted environment.
+      Network access policy for the environment. Defaults to disabled for GA requests and enabled for alpha/beta requests.
 
       - `access: "enabled" or "disabled" or "restricted"`
 
@@ -110,7 +110,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     - `packages: optional object { npm, python, system }  or null`
 
-      Packages to install in an OpenAI-hosted environment.
+      Packages to install in the environment. Defaults to empty package lists.
 
       - `npm: optional array of string or null`
 
@@ -252,7 +252,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
   - `multi_agent: optional MultiAgentConfigParam or null`
 
-    Explicit configuration for creating and coordinating subagents.
+    Configuration for creating and coordinating subagents.
 
     - `enabled: boolean`
 
@@ -264,11 +264,11 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
   - `reasoning: optional AgentReasoningParam or null`
 
-    Reasoning configuration for the agent.
+    Configuration for model reasoning. Omit to keep the current settings; pass `null` to reset to the model's default effort.
 
     - `effort: optional "none" or "minimal" or "low" or 4 more or null`
 
-      The amount of reasoning effort the model should use.
+      The amount of reasoning effort the model should use. Omission lets the model select it.
 
       - `"none"`
 
@@ -286,7 +286,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     - `summary: optional "concise" or "detailed" or "auto" or null`
 
-      The reasoning summary format requested from the model.
+      Controls whether the response includes a reasoning summary.
 
       - `"concise"`
 
@@ -330,7 +330,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     - `format: optional TextFormatParam or null`
 
-      The output format for generated text.
+      The output format. Omission uses ordinary text (`{"type": "text"}`).
 
       - `Text object { type }`
 
@@ -358,7 +358,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     - `verbosity: optional "low" or "medium" or "high" or null`
 
-      The amount of text the model should produce.
+      The amount of text the model should produce. Defaults to `medium`, matching Responses.
 
       - `"low"`
 
@@ -502,7 +502,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       - `connection_origin: optional "service" or "environment" or null`
 
-        Where outbound MCP HTTP connections originate.
+        Selects where outbound MCP HTTP connections originate. Omitted or `service` uses the Managed Agents service network; `environment` uses the session's selected environment.
 
         - `"service"`
 
@@ -540,7 +540,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       - `context_size: optional "low" or "medium" or "high" or null`
 
-        The amount of web search context made available to the model.
+        The amount of search context made available to the model. Defaults to `medium`.
 
         - `"low"`
 
@@ -550,7 +550,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       - `location: optional object { city, country, region, timezone }  or null`
 
-        Approximate user location used to localize web search results.
+        Approximate location used to localize search results.
 
         - `city: optional string or null`
 
@@ -570,7 +570,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       - `mode: optional "disabled" or "cached" or "live" or null`
 
-        The source used for web search results.
+        The source used for web search results. Defaults to `live`.
 
         - `"disabled"`
 
@@ -590,7 +590,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
 - `input: optional string or array of AgentSessionInputMessageParam or null`
 
-  Initial input submitted when creating a session.
+  Initial input to submit when the session is created. A string is shorthand for a single user message. Required when `environment.type` is `none`, or when `stream` is `true` for an environment that is not `self_hosted`; optional for self-hosted and non-streaming execution environments.
 
   - `string`
 
@@ -700,7 +700,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       - `effort: "none" or "minimal" or "low" or 4 more or null`
 
-        The amount of reasoning effort used by an agent.
+        The requested reasoning effort, or `null` when the model selects its own default.
 
         - `"none"`
 
@@ -718,7 +718,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       - `summary: "concise" or "detailed" or "auto" or null`
 
-        The reasoning summary format requested from an agent.
+        The requested reasoning summary format, or `null` when summaries are disabled.
 
         - `"concise"`
 
@@ -934,7 +934,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
         - `location: object { city, country, region, timezone }  or null`
 
-          Approximate user location used to localize web search results.
+          Approximate location used to localize search results, if provided.
 
           - `city: string or null`
 
@@ -1272,7 +1272,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
   - `usage: TokenUsage or null`
 
-    Recorded token usage for a session or turn. Usage is best effort and may change.
+    Best-effort token usage for the session, or null if unknown. Recorded usage may change.
 
     - `input_tokens: number`
 
@@ -1523,7 +1523,7 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
       - `effort: "none" or "minimal" or "low" or 4 more or null`
 
-        The amount of reasoning effort used by an agent.
+        The requested reasoning effort, or `null` when the model selects its own default.
 
         - `"none"`
 
@@ -1541,7 +1541,7 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
       - `summary: "concise" or "detailed" or "auto" or null`
 
-        The reasoning summary format requested from an agent.
+        The requested reasoning summary format, or `null` when summaries are disabled.
 
         - `"concise"`
 
@@ -1757,7 +1757,7 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
         - `location: object { city, country, region, timezone }  or null`
 
-          Approximate user location used to localize web search results.
+          Approximate location used to localize search results, if provided.
 
           - `city: string or null`
 
@@ -2095,7 +2095,7 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
   - `usage: TokenUsage or null`
 
-    Recorded token usage for a session or turn. Usage is best effort and may change.
+    Best-effort token usage for the session, or null if unknown. Recorded usage may change.
 
     - `input_tokens: number`
 
@@ -2295,7 +2295,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
       - `effort: "none" or "minimal" or "low" or 4 more or null`
 
-        The amount of reasoning effort used by an agent.
+        The requested reasoning effort, or `null` when the model selects its own default.
 
         - `"none"`
 
@@ -2313,7 +2313,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
       - `summary: "concise" or "detailed" or "auto" or null`
 
-        The reasoning summary format requested from an agent.
+        The requested reasoning summary format, or `null` when summaries are disabled.
 
         - `"concise"`
 
@@ -2529,7 +2529,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
         - `location: object { city, country, region, timezone }  or null`
 
-          Approximate user location used to localize web search results.
+          Approximate location used to localize search results, if provided.
 
           - `city: string or null`
 
@@ -2867,7 +2867,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
   - `usage: TokenUsage or null`
 
-    Recorded token usage for a session or turn. Usage is best effort and may change.
+    Best-effort token usage for the session, or null if unknown. Recorded usage may change.
 
     - `input_tokens: number`
 
@@ -3009,7 +3009,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
     - `effort: optional "none" or "minimal" or "low" or 4 more or null`
 
-      The amount of reasoning effort the model should use.
+      Omit to keep the current effort. Null selects the model's default effort.
 
       - `"none"`
 
@@ -3027,7 +3027,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
   - `service_tier: optional "auto" or "default" or "flex" or 2 more or null`
 
-    The service tier used for model requests.
+    Omit to keep the current tier. Null resets it to auto.
 
     - `"auto"`
 
@@ -3101,7 +3101,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
       - `effort: "none" or "minimal" or "low" or 4 more or null`
 
-        The amount of reasoning effort used by an agent.
+        The requested reasoning effort, or `null` when the model selects its own default.
 
         - `"none"`
 
@@ -3119,7 +3119,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
       - `summary: "concise" or "detailed" or "auto" or null`
 
-        The reasoning summary format requested from an agent.
+        The requested reasoning summary format, or `null` when summaries are disabled.
 
         - `"concise"`
 
@@ -3335,7 +3335,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
         - `location: object { city, country, region, timezone }  or null`
 
-          Approximate user location used to localize web search results.
+          Approximate location used to localize search results, if provided.
 
           - `city: string or null`
 
@@ -3673,7 +3673,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
   - `usage: TokenUsage or null`
 
-    Recorded token usage for a session or turn. Usage is best effort and may change.
+    Best-effort token usage for the session, or null if unknown. Recorded usage may change.
 
     - `input_tokens: number`
 
@@ -4243,7 +4243,7 @@ Submits message, cancellation, or tool-result events to a managed agent session.
 
     - `output: optional AgentFunctionCallOutputParam or null`
 
-      A function result represented as text or supported model-input content.
+      The function result when the call succeeded.
 
       - `string`
 
@@ -4296,7 +4296,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
 ### Returns
 
-- `AgentSessionEvent = AgentSessionErrorEvent or AgentSessionEnvironmentReadyEvent or AgentOutputCommandExecutionOutputDeltaEvent or 27 more`
+- `AgentSessionEvent = AgentSessionErrorEvent or AgentSessionEnvironmentReadyEvent or object { environment_id, event_id, reset_count, 3 more }  or 28 more`
 
   An event emitted by a Managed Agents session.
 
@@ -4352,7 +4352,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `error: object { code, message, type }  or null`
 
-        An error reported while preparing a session environment.
+        The error reported while preparing the environment, if any.
 
         - `code: string`
 
@@ -4411,6 +4411,36 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
       The type of the object. Always `agent.session.environment.ready`.
 
       - `"agent.session.environment.ready"`
+
+  - `AgentSessionEnvironmentReset object { environment_id, event_id, reset_count, 3 more }`
+
+    Emitted after a hosted sandbox is replaced. Conversation history survives; changes to the previous sandbox's files and processes do not.
+
+    - `environment_id: string`
+
+      The stable environment ID, retained across sandbox replacements.
+
+    - `event_id: string`
+
+      The unique ID of the event.
+
+    - `reset_count: number`
+
+      Monotonically increasing reset number. Repeated notifications share this number.
+
+    - `session_id: string`
+
+      The ID of the session associated with the event.
+
+    - `turn_id: string or null`
+
+      The associated turn, when applicable.
+
+    - `type: "agent.session.environment.reset"`
+
+      The type of the object. Always `agent.session.environment.reset`.
+
+      - `"agent.session.environment.reset"`
 
   - `AgentOutputCommandExecutionOutputDeltaEvent object { delta, event_id, item_id, 4 more }`
 
@@ -4500,7 +4530,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           - `effort: "none" or "minimal" or "low" or 4 more or null`
 
-            The amount of reasoning effort used by an agent.
+            The requested reasoning effort, or `null` when the model selects its own default.
 
             - `"none"`
 
@@ -4518,7 +4548,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           - `summary: "concise" or "detailed" or "auto" or null`
 
-            The reasoning summary format requested from an agent.
+            The requested reasoning summary format, or `null` when summaries are disabled.
 
             - `"concise"`
 
@@ -4734,7 +4764,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             - `location: object { city, country, region, timezone }  or null`
 
-              Approximate user location used to localize web search results.
+              Approximate location used to localize search results, if provided.
 
               - `city: string or null`
 
@@ -5072,7 +5102,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `usage: TokenUsage or null`
 
-        Recorded token usage for a session or turn. Usage is best effort and may change.
+        Best-effort token usage for the session, or null if unknown. Recorded usage may change.
 
         - `input_tokens: number`
 
@@ -5146,7 +5176,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `error: SessionTurnError or null`
 
-        A customer-safe error describing why a session request failed.
+        A customer-safe error. Non-null only for a failed turn.
 
         - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 14 more`
 
@@ -5272,7 +5302,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `usage: TokenUsage or null`
 
-        Recorded token usage for a session or turn. Usage is best effort and may change.
+        Best-effort token usage for the turn, or null if unknown. Recorded usage may change.
 
     - `turn_id: string`
 
@@ -5338,7 +5368,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
     - `usage: TokenUsage or null`
 
-      Recorded token usage for a session or turn. Usage is best effort and may change.
+      Token usage by the root agent during the turn, when available.
 
   - `AgentSessionTurnFailedEvent object { event_id, session_id, turn, 3 more }`
 
@@ -5368,7 +5398,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
     - `usage: TokenUsage or null`
 
-      Recorded token usage for a session or turn. Usage is best effort and may change.
+      Token usage by the root agent during the turn, when available.
 
   - `AgentSessionTurnCancelledEvent object { event_id, session_id, turn, 3 more }`
 
@@ -5398,7 +5428,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
     - `usage: TokenUsage or null`
 
-      Recorded token usage for a session or turn. Usage is best effort and may change.
+      Token usage by the root agent during the turn, when available.
 
   - `AgentSessionTurnItemAddedEvent object { event_id, item, output_index, 3 more }`
 
@@ -5468,7 +5498,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         - `phase: "commentary" or "final_answer" or null`
 
-          The phase of an assistant message.
+          The phase of an assistant message. Null for user messages.
 
           - `"commentary"`
 
@@ -5522,7 +5552,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         - `status: AgentOutputItemStatus or null`
 
-          The status of an agent output item.
+          The status of the reasoning item.
 
         - `summary: array of SummaryText`
 
@@ -5616,7 +5646,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         - `output: AgentFunctionCallOutput or null`
 
-          The text or model-input content supplied as a function result.
+          The function result, if the call succeeded.
 
           - `string`
 
@@ -5774,7 +5804,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         - `action: WebSearchAction or null`
 
-          An action performed by the web search tool.
+          The action performed by the web search tool.
 
           - `Search object { queries, query, type }`
 
@@ -6448,7 +6478,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         - `phase: "commentary" or "final_answer" or null`
 
-          The phase of an assistant message.
+          The phase of the assistant message.
 
           - `"commentary"`
 
@@ -6962,7 +6992,7 @@ Lists items produced by the session's root agent, including its interactions wit
 
     - `phase: "commentary" or "final_answer" or null`
 
-      The phase of an assistant message.
+      The phase of an assistant message. Null for user messages.
 
       - `"commentary"`
 
@@ -7016,7 +7046,7 @@ Lists items produced by the session's root agent, including its interactions wit
 
     - `status: AgentOutputItemStatus or null`
 
-      The status of an agent output item.
+      The status of the reasoning item.
 
     - `summary: array of SummaryText`
 
@@ -7110,7 +7140,7 @@ Lists items produced by the session's root agent, including its interactions wit
 
     - `output: AgentFunctionCallOutput or null`
 
-      The text or model-input content supplied as a function result.
+      The function result, if the call succeeded.
 
       - `string`
 
@@ -7268,7 +7298,7 @@ Lists items produced by the session's root agent, including its interactions wit
 
     - `action: WebSearchAction or null`
 
-      An action performed by the web search tool.
+      The action performed by the web search tool.
 
       - `Search object { queries, query, type }`
 
@@ -8047,7 +8077,7 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
     - `phase: "commentary" or "final_answer" or null`
 
-      The phase of an assistant message.
+      The phase of an assistant message. Null for user messages.
 
       - `"commentary"`
 
@@ -8101,7 +8131,7 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
     - `status: AgentOutputItemStatus or null`
 
-      The status of an agent output item.
+      The status of the reasoning item.
 
     - `summary: array of SummaryText`
 
@@ -8195,7 +8225,7 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
     - `output: AgentFunctionCallOutput or null`
 
-      The text or model-input content supplied as a function result.
+      The function result, if the call succeeded.
 
       - `string`
 
@@ -8353,7 +8383,7 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
     - `action: WebSearchAction or null`
 
-      An action performed by the web search tool.
+      The action performed by the web search tool.
 
       - `Search object { queries, query, type }`
 
@@ -8804,7 +8834,7 @@ Lists all turns of this subagent, including turns after a resume. See [subagent 
 
   - `error: SessionTurnError or null`
 
-    A customer-safe error describing why a session request failed.
+    A customer-safe error. Non-null only for a failed turn.
 
     - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 14 more`
 
@@ -8930,7 +8960,7 @@ Lists all turns of this subagent, including turns after a resume. See [subagent 
 
   - `usage: TokenUsage or null`
 
-    Recorded token usage for a session or turn. Usage is best effort and may change.
+    Best-effort token usage for the turn, or null if unknown. Recorded usage may change.
 
     - `input_tokens: number`
 
@@ -9063,7 +9093,7 @@ Retrieves a turn belonging to this subagent. See [subagent workflows](/api/docs/
 
   - `error: SessionTurnError or null`
 
-    A customer-safe error describing why a session request failed.
+    A customer-safe error. Non-null only for a failed turn.
 
     - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 14 more`
 
@@ -9189,7 +9219,7 @@ Retrieves a turn belonging to this subagent. See [subagent workflows](/api/docs/
 
   - `usage: TokenUsage or null`
 
-    Recorded token usage for a session or turn. Usage is best effort and may change.
+    Best-effort token usage for the turn, or null if unknown. Recorded usage may change.
 
     - `input_tokens: number`
 
@@ -9358,7 +9388,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
     - `phase: "commentary" or "final_answer" or null`
 
-      The phase of an assistant message.
+      The phase of an assistant message. Null for user messages.
 
       - `"commentary"`
 
@@ -9412,7 +9442,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
     - `status: AgentOutputItemStatus or null`
 
-      The status of an agent output item.
+      The status of the reasoning item.
 
     - `summary: array of SummaryText`
 
@@ -9506,7 +9536,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
     - `output: AgentFunctionCallOutput or null`
 
-      The text or model-input content supplied as a function result.
+      The function result, if the call succeeded.
 
       - `string`
 
@@ -9664,7 +9694,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
     - `action: WebSearchAction or null`
 
-      An action performed by the web search tool.
+      The action performed by the web search tool.
 
       - `Search object { queries, query, type }`
 
@@ -10113,7 +10143,7 @@ Lists turns by creation time and turn ID. The after cursor is exclusive in the s
 
   - `error: SessionTurnError or null`
 
-    A customer-safe error describing why a session request failed.
+    A customer-safe error. Non-null only for a failed turn.
 
     - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 14 more`
 
@@ -10239,7 +10269,7 @@ Lists turns by creation time and turn ID. The after cursor is exclusive in the s
 
   - `usage: TokenUsage or null`
 
-    Recorded token usage for a session or turn. Usage is best effort and may change.
+    Best-effort token usage for the turn, or null if unknown. Recorded usage may change.
 
     - `input_tokens: number`
 
@@ -10370,7 +10400,7 @@ Retrieves a turn's current status, timestamps, usage, and error. Returns 404 if 
 
   - `error: SessionTurnError or null`
 
-    A customer-safe error describing why a session request failed.
+    A customer-safe error. Non-null only for a failed turn.
 
     - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 14 more`
 
@@ -10496,7 +10526,7 @@ Retrieves a turn's current status, timestamps, usage, and error. Returns 404 if 
 
   - `usage: TokenUsage or null`
 
-    Recorded token usage for a session or turn. Usage is best effort and may change.
+    Best-effort token usage for the turn, or null if unknown. Recorded usage may change.
 
     - `input_tokens: number`
 
@@ -10591,7 +10621,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/turns/$TURN_ID \
 
   - `error: SessionTurnError or null`
 
-    A customer-safe error describing why a session request failed.
+    A customer-safe error. Non-null only for a failed turn.
 
     - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 14 more`
 
@@ -10717,7 +10747,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/turns/$TURN_ID \
 
   - `usage: TokenUsage or null`
 
-    Recorded token usage for a session or turn. Usage is best effort and may change.
+    Best-effort token usage for the turn, or null if unknown. Recorded usage may change.
 
     - `input_tokens: number`
 

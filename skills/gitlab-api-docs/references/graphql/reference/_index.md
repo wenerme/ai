@@ -2666,6 +2666,7 @@ Arguments:
 | <a id="query-vulnerabilities-reporttype"></a>`reportType` | [`[VulnerabilityReportType!]`](#vulnerabilityreporttype) | Filter vulnerabilities by report type. |
 | <a id="query-vulnerabilities-scanner"></a>`scanner` | [`[String!]`](#string) | Filter vulnerabilities by VulnerabilityScanner.externalId. |
 | <a id="query-vulnerabilities-scannerid"></a>`scannerId` | [`[VulnerabilitiesScannerID!]`](#vulnerabilitiesscannerid) | Filter vulnerabilities by scanner ID. |
+| <a id="query-vulnerabilities-securityattributesfilters"></a>`securityAttributesFilters`  | [`[AttributeFilterInput!]`](#attributefilterinput) | Introduced in GitLab 19.5. Status: Experiment. Filter vulnerabilities by the security attributes of their projects. Up to 20 filters. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Available on group queries only, when the `vulnerability_report_security_attributes_filter` feature flag is enabled. |
 | <a id="query-vulnerabilities-severity"></a>`severity` | [`[VulnerabilitySeverity!]`](#vulnerabilityseverity) | Filter vulnerabilities by severity. |
 | <a id="query-vulnerabilities-sort"></a>`sort` | [`VulnerabilitySort`](#vulnerabilitysort) | List vulnerabilities by sort order. |
 | <a id="query-vulnerabilities-state"></a>`state` | [`[VulnerabilityState!]`](#vulnerabilitystate) | Filter vulnerabilities by state. |
@@ -5883,9 +5884,6 @@ Fields:
 | <a id="mutation-bulkrunnerdelete-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 
 ### `Mutation.bulkSetVulnerabilityFindingsDueDates`
-
-- Introduced in GitLab 18.11.
-- Status: Experiment.
 
 Bulk set due dates for vulnerability findings using individual UUID entries.
 This operation is best-effort: valid updates are applied even if some fail.
@@ -34086,7 +34084,7 @@ Arguments:
 - Introduced in GitLab 19.0.
 - Status: Experiment.
 
-Aggregation engine for contribution analytics.
+Aggregation engine for contribution analytics. Requires Siphon replication to be enabled on the instance.
 
 Returns [`ContributionsAggregationScope`](#contributionsaggregationscope).
 
@@ -34104,7 +34102,7 @@ Arguments:
 - Introduced in GitLab 19.0.
 - Status: Experiment.
 
-Aggregation engine for deployment analytics.
+Aggregation engine for deployment analytics. Requires Siphon replication to be enabled on the instance.
 
 Returns [`DeploymentsAggregationScope`](#deploymentsaggregationscope).
 
@@ -34163,7 +34161,7 @@ Arguments:
 - Introduced in GitLab 19.4.
 - Status: Experiment.
 
-Aggregation engine for GitLab Duo Agent Platform flows.
+Aggregation engine for GitLab Duo Agent Platform flows. Requires Siphon replication to be enabled on the instance.
 
 Returns [`DuoWorkflowsAggregationScope`](#duoworkflowsaggregationscope).
 
@@ -34178,6 +34176,7 @@ Arguments:
 | <a id="analytics-duoworkflows-descendantsscope"></a>`descendantsScope` | [`AggregationScopeInput`](#aggregationscopeinput) | Child groups and projects to aggregate data for. Not supported at project level. |
 | <a id="analytics-duoworkflows-flowtypesusedfrom"></a>`flowTypesUsedFrom` | [`Int`](#int) | Filter by the number of distinct flow types the user ran in the selected period. Start of the range. |
 | <a id="analytics-duoworkflows-flowtypesusedto"></a>`flowTypesUsedTo` | [`Int`](#int) | Filter by the number of distinct flow types the user ran in the selected period. End of the range. |
+| <a id="analytics-duoworkflows-groupid"></a>`groupId` | [`[String!]`](#string) | Filter by one or many group Global IDs, including flows from their descendants. |
 | <a id="analytics-duoworkflows-projectid"></a>`projectId` | [`[String!]`](#string) | Filter by one or many project Global IDs. |
 | <a id="analytics-duoworkflows-status"></a>`status` | [`[String!]`](#string) | Filter by one or many flow statuses (created, running, finished, failed, ...). |
 | <a id="analytics-duoworkflows-userid"></a>`userId` | [`[String!]`](#string) | Filter by one or many user Global IDs. |
@@ -34188,7 +34187,7 @@ Arguments:
 - Introduced in GitLab 19.2.
 - Status: Experiment.
 
-Aggregation engine for merge request analytics.
+Aggregation engine for merge request analytics. Requires Siphon replication to be enabled on the instance.
 
 Returns [`MergeRequestsAggregationScope`](#mergerequestsaggregationscope).
 
@@ -34211,7 +34210,7 @@ Arguments:
 - Introduced in GitLab 19.2.
 - Status: Experiment.
 
-Aggregation engine for CI pipeline analytics.
+Aggregation engine for CI pipeline analytics. Requires Siphon replication to be enabled on the instance.
 
 Returns [`PipelinesAggregationScope`](#pipelinesaggregationscope).
 
@@ -39139,7 +39138,7 @@ Fields:
 | <a id="countablevulnerability-dismissalreason"></a>`dismissalReason` | [`VulnerabilityDismissalReason`](#vulnerabilitydismissalreason) | Reason for dismissal. Returns `null` for states other than `dismissed`. |
 | <a id="countablevulnerability-dismissedat"></a>`dismissedAt` | [`Time`](#time) | Timestamp of when the vulnerability state was changed to dismissed. |
 | <a id="countablevulnerability-dismissedby"></a>`dismissedBy` | [`UserCore`](#usercore) | User that dismissed the vulnerability. |
-| <a id="countablevulnerability-duedate"></a>`dueDate`  | [`ISO8601Date`](#iso8601date) | Introduced in GitLab 18.11. Status: Experiment. Vulnerability finding due date. |
+| <a id="countablevulnerability-duedate"></a>`dueDate` | [`ISO8601Date`](#iso8601date) | Vulnerability finding due date. |
 | <a id="countablevulnerability-duosastvrworkflowenabled"></a>`duoSastVrWorkflowEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 19.1. Status: Experiment. Indicates whether the SAST vulnerability review workflow is enabled for the project. |
 | <a id="countablevulnerability-externalissuelinks"></a>`externalIssueLinks` | [`VulnerabilityExternalIssueLinkConnection!`](#vulnerabilityexternalissuelinkconnection) | List of external issue links related to the vulnerability. (see [Connections](#connections)) |
 | <a id="countablevulnerability-falsepositive"></a>`falsePositive` | [`Boolean`](#boolean) | Indicates whether the vulnerability is a false positive. |
@@ -42283,6 +42282,18 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="duoworkflowsaggregationresponsedimensions-createdat-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, monthly, or a fixed number of days between 1d and 399d (for example 30d). |
 | <a id="duoworkflowsaggregationresponsedimensions-createdat-origin"></a>`origin` | [`Time`](#time) | Anchor for fixed-day granularities: buckets start at this timestamp and repeat every N days. Only valid with a fixed-day granularity. |
+
+##### `DuoWorkflowsAggregationResponseDimensions.group`
+
+Group at the requested depth of the hierarchy. NULL for flows tracked above that depth. Flows tracked in a project at that depth bucket by project namespace ID, which also resolves to NULL.
+
+Returns [`Group`](#group).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflowsaggregationresponsedimensions-group-depth"></a>`depth` | [`Int`](#int) | Depth in the group hierarchy, counted from the top-level group. Defaults to 1. |
 
 ##### `DuoWorkflowsAggregationResponseDimensions.userTier`
 
@@ -46643,6 +46654,7 @@ Arguments:
 | <a id="group-vulnerabilities-reporttype"></a>`reportType` | [`[VulnerabilityReportType!]`](#vulnerabilityreporttype) | Filter vulnerabilities by report type. |
 | <a id="group-vulnerabilities-scanner"></a>`scanner` | [`[String!]`](#string) | Filter vulnerabilities by VulnerabilityScanner.externalId. |
 | <a id="group-vulnerabilities-scannerid"></a>`scannerId` | [`[VulnerabilitiesScannerID!]`](#vulnerabilitiesscannerid) | Filter vulnerabilities by scanner ID. |
+| <a id="group-vulnerabilities-securityattributesfilters"></a>`securityAttributesFilters`  | [`[AttributeFilterInput!]`](#attributefilterinput) | Introduced in GitLab 19.5. Status: Experiment. Filter vulnerabilities by the security attributes of their projects. Up to 20 filters. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Available on group queries only, when the `vulnerability_report_security_attributes_filter` feature flag is enabled. |
 | <a id="group-vulnerabilities-severity"></a>`severity` | [`[VulnerabilitySeverity!]`](#vulnerabilityseverity) | Filter vulnerabilities by severity. |
 | <a id="group-vulnerabilities-sort"></a>`sort` | [`VulnerabilitySort`](#vulnerabilitysort) | List vulnerabilities by sort order. |
 | <a id="group-vulnerabilities-state"></a>`state` | [`[VulnerabilityState!]`](#vulnerabilitystate) | Filter vulnerabilities by state. |
@@ -46745,6 +46757,7 @@ Arguments:
 | <a id="group-vulnerabilityseveritiescount-reporttype"></a>`reportType` | [`[VulnerabilityReportType!]`](#vulnerabilityreporttype) | Filter vulnerabilities by report type. |
 | <a id="group-vulnerabilityseveritiescount-scanner"></a>`scanner` | [`[String!]`](#string) | Filter vulnerabilities by scanner. |
 | <a id="group-vulnerabilityseveritiescount-scannerid"></a>`scannerId` | [`[VulnerabilitiesScannerID!]`](#vulnerabilitiesscannerid) | Filter vulnerabilities by scanner ID. |
+| <a id="group-vulnerabilityseveritiescount-securityattributesfilters"></a>`securityAttributesFilters`  | [`[AttributeFilterInput!]`](#attributefilterinput) | Introduced in GitLab 19.5. Status: Experiment. Filter vulnerabilities by the security attributes of their projects. Up to 20 filters. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Available on group queries only, when the `vulnerability_report_security_attributes_filter` feature flag is enabled. |
 | <a id="group-vulnerabilityseveritiescount-severity"></a>`severity` | [`[VulnerabilitySeverity!]`](#vulnerabilityseverity) | Filter vulnerabilities by severity. |
 | <a id="group-vulnerabilityseveritiescount-state"></a>`state` | [`[VulnerabilityState!]`](#vulnerabilitystate) | Filter vulnerabilities by state. |
 | <a id="group-vulnerabilityseveritiescount-trackedrefids"></a>`trackedRefIds`  | [`[SecurityProjectTrackedContextID!]`](#securityprojecttrackedcontextid) | Introduced in GitLab 18.11. Status: Experiment. Filter vulnerabilities by tracked ref IDs. To use this argument, you must have advanced search configured, advanced vulnerability management set up and `vulnerabilities_across_contexts` feature flag enabled. |
@@ -47975,6 +47988,7 @@ Arguments:
 | <a id="instancesecuritydashboard-vulnerabilityseveritiescount-reporttype"></a>`reportType` | [`[VulnerabilityReportType!]`](#vulnerabilityreporttype) | Filter vulnerabilities by report type. |
 | <a id="instancesecuritydashboard-vulnerabilityseveritiescount-scanner"></a>`scanner` | [`[String!]`](#string) | Filter vulnerabilities by scanner. |
 | <a id="instancesecuritydashboard-vulnerabilityseveritiescount-scannerid"></a>`scannerId` | [`[VulnerabilitiesScannerID!]`](#vulnerabilitiesscannerid) | Filter vulnerabilities by scanner ID. |
+| <a id="instancesecuritydashboard-vulnerabilityseveritiescount-securityattributesfilters"></a>`securityAttributesFilters`  | [`[AttributeFilterInput!]`](#attributefilterinput) | Introduced in GitLab 19.5. Status: Experiment. Filter vulnerabilities by the security attributes of their projects. Up to 20 filters. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Available on group queries only, when the `vulnerability_report_security_attributes_filter` feature flag is enabled. |
 | <a id="instancesecuritydashboard-vulnerabilityseveritiescount-severity"></a>`severity` | [`[VulnerabilitySeverity!]`](#vulnerabilityseverity) | Filter vulnerabilities by severity. |
 | <a id="instancesecuritydashboard-vulnerabilityseveritiescount-state"></a>`state` | [`[VulnerabilityState!]`](#vulnerabilitystate) | Filter vulnerabilities by state. |
 | <a id="instancesecuritydashboard-vulnerabilityseveritiescount-trackedrefids"></a>`trackedRefIds`  | [`[SecurityProjectTrackedContextID!]`](#securityprojecttrackedcontextid) | Introduced in GitLab 18.11. Status: Experiment. Filter vulnerabilities by tracked ref IDs. To use this argument, you must have advanced search configured, advanced vulnerability management set up and `vulnerabilities_across_contexts` feature flag enabled. |
@@ -53829,7 +53843,7 @@ Fields:
 | <a id="pipeline-user"></a>`user` | [`UserCore`](#usercore) | Pipeline user. |
 | <a id="pipeline-userpermissions"></a>`userPermissions` | [`PipelinePermissions!`](#pipelinepermissions) | Permissions for the current user on the resource. |
 | <a id="pipeline-usesneeds"></a>`usesNeeds` | [`Boolean`](#boolean) | Indicates if the pipeline has jobs with `needs` dependencies. |
-| <a id="pipeline-warningmessages"></a>`warningMessages` | [`PipelineMessageConnection`](#pipelinemessageconnection) | Pipeline warning messages. (see [Connections](#connections)) |
+| <a id="pipeline-warningmessages"></a>`warningMessages` | [`PipelineMessageConnection`](#pipelinemessageconnection) | Pipeline warning messages. Always empty for pipelines created in 19.5 and later due to database concerns. (see [Connections](#connections)) |
 | <a id="pipeline-warnings"></a>`warnings` | [`Boolean!`](#boolean) | Indicates if a pipeline has warnings. |
 | <a id="pipeline-yamlerrormessages"></a>`yamlErrorMessages` | [`String`](#string) | Pipeline YAML errors. |
 | <a id="pipeline-yamlerrors"></a>`yamlErrors` | [`Boolean!`](#boolean) | If the pipeline has YAML errors. |
@@ -57358,6 +57372,7 @@ Arguments:
 | <a id="project-vulnerabilities-reporttype"></a>`reportType` | [`[VulnerabilityReportType!]`](#vulnerabilityreporttype) | Filter vulnerabilities by report type. |
 | <a id="project-vulnerabilities-scanner"></a>`scanner` | [`[String!]`](#string) | Filter vulnerabilities by VulnerabilityScanner.externalId. |
 | <a id="project-vulnerabilities-scannerid"></a>`scannerId` | [`[VulnerabilitiesScannerID!]`](#vulnerabilitiesscannerid) | Filter vulnerabilities by scanner ID. |
+| <a id="project-vulnerabilities-securityattributesfilters"></a>`securityAttributesFilters`  | [`[AttributeFilterInput!]`](#attributefilterinput) | Introduced in GitLab 19.5. Status: Experiment. Filter vulnerabilities by the security attributes of their projects. Up to 20 filters. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Available on group queries only, when the `vulnerability_report_security_attributes_filter` feature flag is enabled. |
 | <a id="project-vulnerabilities-severity"></a>`severity` | [`[VulnerabilitySeverity!]`](#vulnerabilityseverity) | Filter vulnerabilities by severity. |
 | <a id="project-vulnerabilities-sort"></a>`sort` | [`VulnerabilitySort`](#vulnerabilitysort) | List vulnerabilities by sort order. |
 | <a id="project-vulnerabilities-state"></a>`state` | [`[VulnerabilityState!]`](#vulnerabilitystate) | Filter vulnerabilities by state. |
@@ -57447,6 +57462,7 @@ Arguments:
 | <a id="project-vulnerabilityseveritiescount-reporttype"></a>`reportType` | [`[VulnerabilityReportType!]`](#vulnerabilityreporttype) | Filter vulnerabilities by report type. |
 | <a id="project-vulnerabilityseveritiescount-scanner"></a>`scanner` | [`[String!]`](#string) | Filter vulnerabilities by scanner. |
 | <a id="project-vulnerabilityseveritiescount-scannerid"></a>`scannerId` | [`[VulnerabilitiesScannerID!]`](#vulnerabilitiesscannerid) | Filter vulnerabilities by scanner ID. |
+| <a id="project-vulnerabilityseveritiescount-securityattributesfilters"></a>`securityAttributesFilters`  | [`[AttributeFilterInput!]`](#attributefilterinput) | Introduced in GitLab 19.5. Status: Experiment. Filter vulnerabilities by the security attributes of their projects. Up to 20 filters. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Available on group queries only, when the `vulnerability_report_security_attributes_filter` feature flag is enabled. |
 | <a id="project-vulnerabilityseveritiescount-severity"></a>`severity` | [`[VulnerabilitySeverity!]`](#vulnerabilityseverity) | Filter vulnerabilities by severity. |
 | <a id="project-vulnerabilityseveritiescount-state"></a>`state` | [`[VulnerabilityState!]`](#vulnerabilitystate) | Filter vulnerabilities by state. |
 | <a id="project-vulnerabilityseveritiescount-trackedrefids"></a>`trackedRefIds`  | [`[SecurityProjectTrackedContextID!]`](#securityprojecttrackedcontextid) | Introduced in GitLab 18.11. Status: Experiment. Filter vulnerabilities by tracked ref IDs. To use this argument, you must have advanced search configured, advanced vulnerability management set up and `vulnerabilities_across_contexts` feature flag enabled. |
@@ -62168,7 +62184,7 @@ Fields:
 | <a id="vulnerability-dismissalreason"></a>`dismissalReason` | [`VulnerabilityDismissalReason`](#vulnerabilitydismissalreason) | Reason for dismissal. Returns `null` for states other than `dismissed`. |
 | <a id="vulnerability-dismissedat"></a>`dismissedAt` | [`Time`](#time) | Timestamp of when the vulnerability state was changed to dismissed. |
 | <a id="vulnerability-dismissedby"></a>`dismissedBy` | [`UserCore`](#usercore) | User that dismissed the vulnerability. |
-| <a id="vulnerability-duedate"></a>`dueDate`  | [`ISO8601Date`](#iso8601date) | Introduced in GitLab 18.11. Status: Experiment. Vulnerability finding due date. |
+| <a id="vulnerability-duedate"></a>`dueDate` | [`ISO8601Date`](#iso8601date) | Vulnerability finding due date. |
 | <a id="vulnerability-duosastvrworkflowenabled"></a>`duoSastVrWorkflowEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 19.1. Status: Experiment. Indicates whether the SAST vulnerability review workflow is enabled for the project. |
 | <a id="vulnerability-externalissuelinks"></a>`externalIssueLinks` | [`VulnerabilityExternalIssueLinkConnection!`](#vulnerabilityexternalissuelinkconnection) | List of external issue links related to the vulnerability. (see [Connections](#connections)) |
 | <a id="vulnerability-falsepositive"></a>`falsePositive` | [`Boolean`](#boolean) | Indicates whether the vulnerability is a false positive. |

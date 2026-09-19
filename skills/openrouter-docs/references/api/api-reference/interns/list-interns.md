@@ -185,19 +185,19 @@ paths:
               example:
                 data:
                   - attached_vault_id: null
-                    createdAt: '2026-09-16T08:30:00.000Z'
+                    created_at: '2026-09-16T08:30:00.000Z'
                     description: Researches customer questions
                     hostname: research-assistant.openrouter.ai
                     id: 7c9e6679-7425-40de-944b-e07fc1f90ae7
                     instructions: null
-                    lastFailureMessage: null
+                    last_failure_message: null
                     model: openai/gpt-5.4
                     name: research-assistant
                     progress: null
                     status: running
-                    updatedAt: '2026-09-16T08:45:00.000Z'
+                    updated_at: '2026-09-16T08:45:00.000Z'
                     vault_id: b431c59d-6eed-41ac-bc89-9a89be79a121
-                    workspaceId: 89f9f5b2-3f89-4eaf-83ca-5ceae149e8bb
+                    workspace_id: 89f9f5b2-3f89-4eaf-83ca-5ceae149e8bb
                 has_more: false
               schema:
                 $ref: '#/components/schemas/InternListResponse'
@@ -276,19 +276,19 @@ components:
       example:
         data:
           - attached_vault_id: null
-            createdAt: '2026-09-16T08:30:00.000Z'
+            created_at: '2026-09-16T08:30:00.000Z'
             description: Researches customer questions
             hostname: research-assistant.openrouter.ai
             id: 7c9e6679-7425-40de-944b-e07fc1f90ae7
             instructions: null
-            lastFailureMessage: null
+            last_failure_message: null
             model: openai/gpt-5.4
             name: research-assistant
             progress: null
             status: running
-            updatedAt: '2026-09-16T08:45:00.000Z'
+            updated_at: '2026-09-16T08:45:00.000Z'
             vault_id: b431c59d-6eed-41ac-bc89-9a89be79a121
-            workspaceId: 89f9f5b2-3f89-4eaf-83ca-5ceae149e8bb
+            workspace_id: 89f9f5b2-3f89-4eaf-83ca-5ceae149e8bb
         has_more: false
       properties:
         data:
@@ -330,19 +330,19 @@ components:
       description: Public lifecycle state and settings for one intern.
       example:
         attached_vault_id: null
-        createdAt: '2026-09-16T08:30:00.000Z'
+        created_at: '2026-09-16T08:30:00.000Z'
         description: Researches customer questions
         hostname: research-assistant.openrouter.ai
         id: 7c9e6679-7425-40de-944b-e07fc1f90ae7
         instructions: null
-        lastFailureMessage: null
+        last_failure_message: null
         model: openai/gpt-5.4
         name: research-assistant
         progress: null
         status: running
-        updatedAt: '2026-09-16T08:45:00.000Z'
+        updated_at: '2026-09-16T08:45:00.000Z'
         vault_id: b431c59d-6eed-41ac-bc89-9a89be79a121
-        workspaceId: 89f9f5b2-3f89-4eaf-83ca-5ceae149e8bb
+        workspace_id: 89f9f5b2-3f89-4eaf-83ca-5ceae149e8bb
       properties:
         attached_vault_id:
           description: >-
@@ -351,7 +351,7 @@ components:
           type:
             - string
             - 'null'
-        createdAt:
+        created_at:
           description: ISO 8601 creation time.
           type: string
         description:
@@ -374,7 +374,7 @@ components:
           type:
             - string
             - 'null'
-        lastFailureMessage:
+        last_failure_message:
           description: Why the last provisioning attempt failed, when status is failed.
           type:
             - string
@@ -392,19 +392,19 @@ components:
         progress:
           description: Active provisioning step, or null once provisioning has settled.
           properties:
-            stepLabel:
+            step_label:
               description: Human-readable label of the active provisioning step.
               type: string
-            stepNumber:
+            step_number:
               description: One-based index of the active step.
               type: integer
-            totalSteps:
+            total_steps:
               description: Number of provisioning steps.
               type: integer
           required:
-            - stepLabel
-            - stepNumber
-            - totalSteps
+            - step_label
+            - step_number
+            - total_steps
           type:
             - object
             - 'null'
@@ -420,7 +420,7 @@ components:
             - destroying
             - destroy_failed
           type: string
-        updatedAt:
+        updated_at:
           description: ISO 8601 last update time.
           type: string
         vault_id:
@@ -428,7 +428,7 @@ components:
           type:
             - string
             - 'null'
-        workspaceId:
+        workspace_id:
           description: Workspace that owns the intern and scopes its secrets.
           type: string
       required:
@@ -438,14 +438,14 @@ components:
         - instructions
         - model
         - status
-        - lastFailureMessage
+        - last_failure_message
         - progress
         - hostname
-        - workspaceId
+        - workspace_id
         - vault_id
         - attached_vault_id
-        - createdAt
-        - updatedAt
+        - created_at
+        - updated_at
       type: object
   securitySchemes:
     apiKey:

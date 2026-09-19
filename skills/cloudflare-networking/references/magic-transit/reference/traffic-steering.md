@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Traffic steering
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/reference/traffic-steering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/reference/traffic-steering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Magic Transit Virtual Network routing table
 
@@ -121,41 +121,72 @@ AS_PATH: 65000 65000 65000 65200
 
 Cloudflare adjusts route priority when using AS prepending with communities. For example, if a route is tagged with `13335:60150`, the base priority is set to `150`. If you prepend your ASN twice, Cloudflare adds `10` for each prepend, increasing the route priority to `180`.
 
-## Unified Routing mode (beta)
+## Unified Routing mode
 
-The Unified Routing mode is the newer Cloudflare One data plane that uses a single routing fabric for all supported connection types. Unified Routing mode routes traffic across the Cloudflare One Client, Cloudflare Tunnel, IPsec, GRE, and Cloudflare Network Interconnect (CNI) in a single system, making it easier to set up your Cloudflare One connections.
+Unified Routing mode is the Cloudflare One data plane that uses a single routing fabric for all supported connection types. It routes traffic across the Cloudflare One Client, Cloudflare Tunnel, IPsec, GRE, and Cloudflare Network Interconnect (CNI) in one system.
 
 In the Magic Transit dashboard, routing mode appears where you manage routes:
 
 - **Routing mode: Unified** — your account is on the unified data plane and supports the new routing features.
 - **Routing mode: Legacy** — your account uses the previous data plane and does not support all unified routing features.
 
-### Why use Unified Routing
+### Compare routing modes
 
-Unified Routing is the future of the dedicated virtual network overlay that powers Magic Transit and Cloudflare One network connectivity.
+Unified Routing is generally available and is our recommended routing mode for all new accounts.
 
-For Magic Transit customers, the primary reason to consider Unified Routing is to evaluate [BGP for IPsec/GRE tunnels](#release-status), which depends on Unified Routing.
+| Area | Legacy Routing | Unified Routing |
+| --- | --- | --- |
+| Routing fabric | Evaluates Magic Transit routes independently from Cloudflare One routes. | Uses one routing fabric across all supported connection types. |
+| Route selection | Applies longest-prefix match within the Magic Transit routing table. | Applies longest-prefix match across supported connection types. |
+| Cloudflare One integration | Uses separate routing systems for Magic Transit and Cloudflare One connections. | Uses one routing system for Magic Transit and Cloudflare One connections. |
+| BGP over CNI | Closed beta and not available to new customers. | Closed beta and not available to new customers. |
+| IPv6 | Beta for Magic Transit only. | Beta for Cloudflare WAN and Magic Transit. |
 
-### Beta limitations
+#### Use features available only with Unified Routing
 
-The following limitations apply to accounts using Unified Routing mode. This list will get shorter as Cloudflare adds support for additional features.
+The following features require Unified Routing.
 
-| Current beta limitations | Details |
+| Feature | Availability with Unified Routing |
 | --- | --- |
-| Performance | Typically around 150 Mbps for each onramp |
-| Basic packet captures | Captures exclude Automatic Return Routing or BGP-over-tunnels traffic |
-| Full packet captures | Not yet supported |
-| Cloudflare Advanced Network Firewall features: ASN Lists, Rate Limiting, Managed Rulesets | Not yet supported |
-| Gateway filtering rules | Not supported on traffic where both the onramp and offramp is IPsec/GRE/CNI |
-| Load Balancer | Public-to-private use case is supported to IPsec/GRE/CNI destinations. Private-to-private use case does not yet support Cloudflare Source IPs |
-| IPv6 Support | IPv6 is supported for IPsec and GRE. Basic Network Firewall support for IPv6 is limited to src/dst IP filtering |
+| [BGP over IPsec and GRE](#release-status) | Beta and available to all Unified Routing accounts. |
 
-### Enroll in the Unified Routing beta
+#### Check feature availability before upgrading
 
-Unified Routing is currently in closed beta. To sign up:
+Features outside Cloudflare Network Firewall have the following availability:
 
-- **Existing Cloudflare WAN or Magic Transit customers**: Cloudflare recommends you evaluate the new functionality with your use case in a non-production account. Contact your account team to enable Unified Routing.
-- **New customers**: Contact your account team to enable Unified Routing in a proof-of-concept for your use case.
+| Feature | Availability with Unified Routing |
+| --- | --- |
+| [Sample packet captures](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/#sample-packet-captures) | Generally available. |
+| [Full packet captures](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/#full-packet-captures) | Not available. |
+| [Network Analytics](https://developers.cloudflare.com/analytics/network-analytics/) | Generally available. |
+
+[Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) features have the following availability:
+
+| Feature | Availability with Unified Routing |
+| --- | --- |
+| Basic firewall rules | Generally available. |
+| GeoIP country rules | Beta. |
+| ASN lists | Beta. |
+| Account IP lists | Beta. |
+| Threat Intel Lists | Beta. |
+| SIP rules | Beta. |
+| Intrusion detection system (IDS) | Not available for Magic Transit. |
+| Rate limiting | Not available. |
+| Managed rulesets | Not available. |
+
+#### Evaluate performance
+
+Unified Routing performance can differ from Legacy Routing for the same traffic profile. Throughput depends on traffic distribution, packet sizes, tunnel settings, encryption, and customer equipment.
+
+Before upgrading, establish a Legacy Routing baseline and run a controlled Unified Routing pilot with representative traffic. Test expected and peak throughput, packet loss, latency, tunnel failover, and your existing IPsec settings.
+
+### How to upgrade to Unified Routing
+
+If your account uses Legacy Routing, follow these steps to upgrade:
+
+1. Evaluate Unified Routing features and performance against your current needs. Review the [routing mode comparison](#compare-routing-modes), [feature availability](#check-feature-availability-before-upgrading), and [performance guidance](#evaluate-performance).
+2. Identify suitable times for the upgrade. During the upgrade, Cloudflare One Client users can experience a remote access outage of up to three minutes.
+3. Contact your account team to request the change and provide a range of acceptable times.
 
 ## Scoping routes to specific regions
 
@@ -232,7 +263,11 @@ Refer to [Add tunnels](https://developers.cloudflare.com/magic-transit/how-to/co
 
 Note
 
-These address blocks are a part of [RFC 5737](https://datatracker.ietf.org/doc/rfc5737/) and are reserved for use as examples in documentation.
+These address blocks are a part of
+
+[RFC 5737](https://datatracker.ietf.org/doc/rfc5737/)
+
+and are reserved for use as examples in documentation.
 
 ## Equal-cost multi-path routing
 
@@ -352,7 +387,7 @@ For more on Magic Transit tunnel weights, contact your Cloudflare customer servi
 
 ## BGP information
 
-Using BGP peering with your Cloudflare One or Magic Transit Virtual Network routing table allows you to:
+Using BGP peering with your Cloudflare One or Magic Transit network routing table allows you to:
 
 - Automate the process of adding or removing networks and subnets.
 - Take advantage of failure detection and session recovery features.
@@ -361,7 +396,7 @@ With this functionality, you can:
 
 - Establish an eBGP session between your devices and the Magic Transit service when connected through CNI, GRE or IPsec tunnels.
 - Secure the session by MD5 authentication to prevent misconfigurations.
-- Exchange routes dynamically between your devices and your Magic Transit Virtual Network routing table.
+- Exchange routes dynamically between your devices and your Magic Transit network routing table.
 
 ### Release status
 
@@ -370,7 +405,7 @@ The following table outlines the current availability and recommended use cases 
 | Feature | Release stage | Recommended use | Prerequisites |
 | --- | --- | --- | --- |
 | **BGP over CNI** | Closed Beta | Not available to new customers — contact your account team | Cloudflare Network Interconnect (CNI) v2 |
-| **BGP over Anycast IPsec/GRE** | Open Beta | Non-production workloads | [Unified Routing (beta)](#unified-routing-mode-beta) - contact your account team to enroll |
+| **BGP over Anycast IPsec/GRE** | Open Beta | Non-production workloads | Available to all [Unified Routing](#unified-routing) accounts; no enablement required |
 
 ### BGP architecture
 
@@ -415,9 +450,9 @@ Once connectivity between the Cloudflare edge and the centralized relay is resto
 2. **Global update**: The relay reconciles these updates and propagates any changes to the rest of the Cloudflare global network.
 3. **FIB unfreeze**: The local forwarding tables at the edge are unfrozen and updated with the latest validated routing instructions.
 
-### BGP peering with the Magic Transit Virtual Network routing table
+### BGP peering with the Magic Transit network routing table
 
-Magic Transit BGP peering is with the Magic Transit Virtual Network routing table (as opposed to peering with the Cloudflare Internet global network). BGP peers configured by following this guide will receive advertisements for all prefixes in the Magic Transit Virtual Network routing table plus any additional prefixes configured in the on-ramp [Advertised prefix list](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#set-up-bgp-peering).
+Magic Transit BGP peering is with the Magic Transit network routing table (as opposed to peering with the Cloudflare Internet global network). BGP peers configured by following this guide will receive advertisements for all prefixes in the Magic Transit network routing table plus any additional prefixes configured in the on-ramp [Advertised prefix list](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#set-up-bgp-peering).
 
 If instead you are seeking to do public peering with the Cloudflare ASN 13335 at one of the Cloudflare data centers, refer to [PNI and peering setup](https://developers.cloudflare.com/network-interconnect/). It is not currently possible to share Magic Transit Virtual Network BGP peering and PNI on the same physical interconnect port.
 
@@ -471,5 +506,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/reference/traffic-steering/#page","headline":"Traffic steering · Cloudflare Magic Transit docs","description":"Magic Transit uses a static configuration to route traffic through anycast tunnels using the Generic Routing Encapsulation (GRE) and Internet Protocol Security (IPsec) protocols from Cloudflare's global network to your network.","url":"https://developers.cloudflare.com/magic-transit/reference/traffic-steering/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/reference/traffic-steering/#page","headline":"Traffic steering · Cloudflare Magic Transit docs","description":"Magic Transit uses a static configuration to route traffic through anycast tunnels using the Generic Routing Encapsulation (GRE) and Internet Protocol Security (IPsec) protocols from Cloudflare's global network to your network.","url":"https://developers.cloudflare.com/magic-transit/reference/traffic-steering/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
 ```

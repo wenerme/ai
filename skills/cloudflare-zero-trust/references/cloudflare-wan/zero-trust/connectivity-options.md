@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Connectivity options
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/zero-trust/connectivity-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/zero-trust/connectivity-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare One provides multiple connectivity options for your users, devices, and network infrastructure. Each option serves different use cases, from protecting individual devices to connecting entire data centers.
 
@@ -89,7 +89,7 @@ Use Cloudflare Mesh for bidirectional connectivity (VoIP, SIP, AD updates, SCCM,
 
 Cloudflare WAN compatibility
 
-Accounts on Legacy routing mode do not support Cloudflare Mesh when Cloudflare WAN (formerly Magic WAN) is enabled. Your account must be on [Cloudflare One Unified Routing](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta) for both to work together.
+Accounts on Legacy routing mode do not support Cloudflare Mesh when Cloudflare WAN (formerly Magic WAN) is enabled. Your account must be on [Cloudflare One Unified Routing](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#unified-routing) for both to work together.
 
 Note
 
@@ -338,7 +338,7 @@ Not all Cloudflare One connectivity options work together in the same account. R
 
 | Combination | Compatible | Notes |
 | --- | --- | --- |
-| Cloudflare Mesh + Cloudflare WAN | Conditional | Requires [Cloudflare One Unified Routing](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta). Accounts on Legacy routing mode cannot use both. |
+| Cloudflare Mesh + Cloudflare WAN | Conditional | Requires [Cloudflare One Unified Routing](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#unified-routing). Accounts on Legacy routing mode cannot use both. |
 | Cloudflare One Client + Cloudflare WAN | Yes | Cloudflare One Client users can access Cloudflare WAN-connected sites. Cloudflare WAN sites can also initiate connections to Cloudflare One Client devices using their virtual IP addresses. |
 | Cloudflare Tunnel + Cloudflare WAN | Yes | Avoid overlapping IP routes. Cloudflare Tunnel takes priority if the same CIDR is configured for both. |
 | GRE + IPsec | Yes | Use for redundancy or migration scenarios. |
@@ -494,5 +494,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/connectivity-options/#page","headline":"Connectivity options · Cloudflare WAN docs","description":"Zero Trust connectivity options for Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/connectivity-options/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/connectivity-options/#page","headline":"Connectivity options · Cloudflare WAN docs","description":"Zero Trust connectivity options for Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/connectivity-options/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

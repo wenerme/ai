@@ -60,7 +60,7 @@ Lists a vault's credentials using ID-based pagination without returning secret v
 
   - `auth: CredentialAuth`
 
-    The authentication method and non-secret configuration for the MCP server.
+    The authentication method and non-secret configuration of the credential.
 
     - `McpOauth object { expires_at, mcp_server_url, refresh, type }`
 
@@ -76,7 +76,7 @@ Lists a vault's credentials using ID-based pagination without returning secret v
 
       - `refresh: object { client_id, resource, scope, 2 more }  or null`
 
-        Configuration used to refresh an MCP OAuth access token, excluding secret values.
+        Public refresh metadata without refresh tokens or OAuth client secrets.
 
         - `client_id: string`
 
@@ -147,6 +147,48 @@ Lists a vault's credentials using ID-based pagination without returning secret v
         The type of the object. Always `static_bearer`.
 
         - `"static_bearer"`
+
+    - `EnvironmentVariable object { networking, secret_name, type }`
+
+      Metadata for an HTTP credential used only in OpenAI-hosted environments. Sandbox code receives a placeholder. The proxy substitutes the secret for allowed HTTPS destinations on ports 443 and 8443. The real secret is not available to sandbox code for local computation and is never returned in this resource.
+
+      - `networking: object { type }  or object { allowed_hosts, type }`
+
+        The destinations where the proxy can substitute the secret, subject to the environment network policy.
+
+        - `Unrestricted object { type }`
+
+          Allows substitution for destinations permitted by the environment network policy. Requires `environment.network.access` to be `restricted`, with explicit `allowed_domains`.
+
+          - `type: "unrestricted"`
+
+            The type of the object. Always `unrestricted`.
+
+            - `"unrestricted"`
+
+        - `Limited object { allowed_hosts, type }`
+
+          Allows substitution only for the listed hosts. The environment network policy must also allow these hosts.
+
+          - `allowed_hosts: array of string`
+
+            The 1 to 16 distinct allowed hostnames or IPv4 addresses, normalized to lowercase. Entries contain no scheme, path, port, or wildcard. IPv6 addresses are not supported.
+
+          - `type: "limited"`
+
+            The type of the object. Always `limited`.
+
+            - `"limited"`
+
+      - `secret_name: string`
+
+        The environment variable name that receives the placeholder in the sandbox.
+
+      - `type: "environment_variable"`
+
+        The type of the object. Always `environment_variable`.
+
+        - `"environment_variable"`
 
   - `created_at: number`
 

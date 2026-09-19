@@ -1,6 +1,6 @@
 ---
 title: "Jenkins data source for Grafana | Grafana Enterprise Plugins documentation"
-description: "Jenkins data source Note Jenkins data source is currently in public preview. Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available."
+description: "Guide for using the Jenkins data source in Grafana"
 ---
 
 > For a curated documentation index, see [llms.txt](/llms.txt). For the complete documentation index, see [llms-full.txt](/llms-full.txt).
@@ -13,117 +13,92 @@ description: "Jenkins data source Note Jenkins data source is currently in publi
 
 [Jenkins](https://www.jenkins.io/) is an open source automation server used to build and deploy projects as part of Continuous Integration (CI) and Continuous Deployment (CD) pipelines.
 
-The Jenkins data source plugin allows you to query and visualize metrics such as projects, builds, build queues, nodes and load statistics from within Grafana. This information can be used to measure performance against [DORA metrics](https://dora.dev/) to assess your software delivery and operations performance.
+The Jenkins data source plugin allows you to query and visualize metrics such as projects, builds, build queues, nodes, and load statistics from within Grafana. You can use this information to measure performance against [DORA metrics](https://dora.dev/) to assess your software delivery and operations performance.
+
+> Note
+>
+> The Jenkins data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install and upgrade the Jenkins data source plugin](/docs/plugins/grafana-jenkins-datasource/latest/install/).
+
+## Supported features
+
+Unlike observability data sources that return metrics, logs, or traces, the Jenkins data source queries the state of your CI/CD automation server. It retrieves the following data from your Jenkins instance:
+
+Expand table
+
+| Data           | Description                                             |
+|----------------|---------------------------------------------------------|
+| Projects       | Jenkins projects, also called jobs, and their status.   |
+| Project builds | The builds for a selected project.                      |
+| Build queue    | Build requests waiting for an available executor.       |
+| Nodes          | The nodes, or agents, connected to your Jenkins server. |
+| Node labels    | The labels used to organize your Jenkins nodes.         |
+
+For details on each query type and the fields it returns, refer to the [Jenkins query editor](/docs/plugins/grafana-jenkins-datasource/latest/query-editor/).
+
+The data source also supports the following Grafana capabilities:
+
+Expand table
+
+| Capability                        | Supported |
+|-----------------------------------|-----------|
+| Alerting                          | No        |
+| Annotations                       | No        |
+| Private Data Source Connect (PDC) | Yes       |
 
 ## Requirements
 
 This plugin has the following requirements:
 
-- A Jenkins instance with [Remote Access API](https://www.jenkins.io/doc/book/using/remote-access-api/) enabled.
-- Access to Enterprise plugins. Note: these plugins are also available in the Free tier of [Grafana Cloud](/products/cloud/). For more information, see our [Pricing](/pricing/).
+- A [Grafana Cloud Pro or Advanced](/pricing/) plan or an [activated on-prem Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/).
+- Grafana version 10.4.8 or later.
+- A Jenkins instance with the [Remote Access API](https://www.jenkins.io/doc/book/using/remote-access-api/) enabled.
 
 ## Known limitations
 
 The plugin currently does not support:
 
 - [Alerting](/docs/grafana/latest/alerting/)
-- [Private Data Source Connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/)
 - [Externally shared dashboards](/docs/grafana/latest/dashboards/share-dashboards-panels/shared-dashboards/#externally-shared-dashboards)
 
-## Install the plugin
+## Get started
 
-To install the data source, refer to [Installation](/grafana/plugins/grafana-jenkins-datasource/?tab=installation).
+The following documents help you get started with the Jenkins data source:
 
-## Configure the data source in Grafana
-
-[Add a data source](/docs/grafana/latest/datasources/add-a-data-source/) by filling in the following fields:
-
-### Basic fields
-
-Expand table
-
-| Field          | Description                                                                |
-|----------------|----------------------------------------------------------------------------|
-| Name           | A name for this particular Jenkins data source.                            |
-| Connection URL | Where your Jenkins instance is hosted, e.g. `https://ci.jenkins.io`.       |
-| Authentication | If your Jenkins instance requires authentication, specify the credentials. |
-
-To read more on the Jenkins Remote Access API, visit the [documentation](https://www.jenkins.io/doc/book/using/remote-access-api/)
-
-### Configure the data source with provisioning
-
-It is possible to configure data sources using configuration files with Grafana’s provisioning system. To read about how it works, including all the settings that you can set for this data source, refer to [Provisioning Grafana data sources](/docs/grafana/latest/administration/provisioning/#data-sources)
-
-Here are some provisioning examples for this data source:
-
-YAML [Copy code to clipboard] Copy
-
-```yaml
-apiVersion: 1
-datasources:
-  - name: Jenkins
-    type: grafana-jenkins-datasource
-    jsonData:
-      url: https://ci.jenkins.io
-      username: <username>
-    secureJsonData:
-      password: <password>
-```
-
-## Query the data source
-
-The Jenkins data source supports a range of query types to help you understand the state of your project builds.
-
-### Projects
-
-A project, also known as a job or item, is the core building block in the Jenkins automation server. It holds the configuration for Jenkins to perform specific tasks in CI/CD pipelines, such as building code, running tests, or deploying applications.
-
-The `Projects` query returns a list of all Jenkins projects with information such as name, URL, current status, and whether it can be built. You’ll also get details about its first, last, and most recent successful, failed, or unstable builds, along with information like the next build number and if it’s currently disabled.
-
-### Project Builds
-
-A Project Build, or simply build, is a single execution of a configured Jenkins Project. Triggered manually, on schedule, or by code changes, each build independently runs the project’s defined steps, including SCM operations, build commands, and post-build actions.
-
-The `Project Builds` query returns a list of all project builds with information such as its unique number, when it started, its display name, and a direct URL to view its results. You’ll also find out if the build is currently running, its duration, and the estimated time it would take. Crucially, it shows the result of the build (success or failure) and the agent it ran on.
-
-### Build Queue
-
-The Jenkins Build Queue manages and prioritizes build requests waiting for available resources. When a project build is triggered but no executors are free, the request enters this “waiting room.” This ensures builds run in turn, and administrators can track pending tasks and workload.
-
-The `Build Queue` query returns a list of all builds currently waiting in the build queue. For each build, you’ll see its unique ID, whether it’s currently buildable or blocked, if it’s been canceled or is stuck, and how long it’s been in the queue. It also tells you why it’s waiting, the name of the Project it belongs to, and a URL to view more details.
-
-### Nodes
-
-A Jenkins Node, also known as an agent or slave, is a machine (physical or virtual) that connects to the main Jenkins server and executes build tasks.
-
-The `Nodes` query returns a list of all nodes connected to your Jenkins server. For each node, you’ll see its name, description, assigned labels (for categorizing it), and the number of tasks it can run at once. It also tells you if the node is idle or offline, and if offline, the reason why.
-
-### Node Labels
-
-A Jenkins Node Label is a custom tag or category assigned to a Jenkins Node, allowing you to run specific builds only on nodes that have that label.
-
-Thr `Node Labels` query returns a list of node labels used to organize your Jenkins nodes. For each label, you’ll see its name, how many executors (slots for running tasks) are currently busy or idle, and the total number available under that label. It also indicates if any nodes associated with that label are offline, and lists the names of the nodes themselves.
+- [Install and upgrade the Jenkins data source plugin](/docs/plugins/grafana-jenkins-datasource/latest/install/)
+- [Configure the Jenkins data source](/docs/plugins/grafana-jenkins-datasource/latest/configure/)
+- [Use the Jenkins query editor](/docs/plugins/grafana-jenkins-datasource/latest/query-editor/)
+- [Use template variables with the Jenkins data source](/docs/plugins/grafana-jenkins-datasource/latest/template-variables/)
+- [Troubleshoot the Jenkins data source](/docs/plugins/grafana-jenkins-datasource/latest/troubleshooting/)
 
 ## Import a dashboard for Jenkins
 
 This plugin includes two built-in dashboards to help you quickly get started visualizing Jenkins data.
 
-To import the dashboards, you must first [install the plugin](#install-the-plugin) and [configure a data source](#configure-the-data-source-in-grafana).
+To import the dashboards, you must first [install the plugin](/docs/plugins/grafana-jenkins-datasource/latest/install/) and [configure a data source](/docs/plugins/grafana-jenkins-datasource/latest/configure/).
 
-From the data source configuration page, navigate to the **Dashboards** tab where you’ll see a list of available dashboards.
+From the data source configuration page, navigate to the **Dashboards** tab where you see a list of available dashboards.
 
-Click the **Import** button next to any dashboard you wish to import.
+Click the **Import** button next to any dashboard you want to import.
 
 ### Jenkins Overview
 
-This dashboard provides an overview of the Jenkins instance, including all projects, nodes, executor status and build queue.
+This dashboard provides an overview of the Jenkins instance, including all projects, nodes, executor status, and build queue.
 
 ### Jenkins DORA Metrics
 
-This dashboard provides information on [four key metrics](https://dora.dev/guides/dora-metrics-four-keys/) used to assess software development team performance: deployment frequency, lead time for changes, change failure rate and time to restore service. These metrics focus on both the speed and stability of software delivery.
+This dashboard provides information on [four key metrics](https://dora.dev/guides/dora-metrics-four-keys/) used to assess software development team performance: deployment frequency, lead time for changes, change failure rate, and time to restore service. These metrics focus on both the speed and stability of software delivery.
+
+## Plugin updates
+
+Always ensure that your plugin version is up-to-date so you have access to all current features and improvements. Navigate to **Plugins and data** &gt; **Plugins** to check for updates. Grafana recommends upgrading to the latest Grafana version, and this applies to plugins as well.
+
+> Note
+>
+> On Grafana Cloud, the Jenkins plugin is managed by Grafana and updates automatically. On self-managed Grafana, you must update Enterprise plugins manually. Refer to [Version and upgrade guidance](/docs/plugins/grafana-jenkins-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
 
 ## Learn more
 
-- Add [Annotations](/docs/grafana/latest/dashboards/annotations/).
-- Configure and use [Templates and variables](/docs/grafana/latest/variables/).
-- Add [Transformations](/docs/grafana/latest/panels/transformations/).
+- Add [Annotations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+- Configure and use [Templates and variables](/docs/grafana/latest/dashboards/variables/).
+- Add [Transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/).
+- Use [Explore](/docs/grafana/latest/explore/) to query data without building a dashboard.

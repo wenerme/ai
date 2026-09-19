@@ -9,7 +9,11 @@ description: "This document provides troubleshooting guidance for the MongoDB da
 
 This document provides solutions to common issues you may encounter when installing, configuring, or using the MongoDB data source plugin. Issues are organized by the stage at which they occur, from installation through to querying.
 
-## Licensing and installation issues
+> Note
+>
+> The MongoDB data source is an Enterprise plugin. It requires a Grafana Enterprise license or the Enterprise Plugins add-on for Grafana Cloud Pro or Advanced plans. If the plugin fails to install or you see a license error, verify your entitlement with your account team before troubleshooting further. For details, refer to [License and installation issues](#license-and-installation-issues).
+
+## License and installation issues
 
 The MongoDB data source is an Enterprise plugin that requires a valid license. These issues prevent the plugin from working at all. For installation, upgrade, and rollback steps, refer to [Install and upgrade the MongoDB data source plugin](/docs/plugins/grafana-mongodb-datasource/latest/install/).
 
@@ -48,6 +52,37 @@ If you have uninstalled the MongoDB plugin and need to reinstall it:
 
 1. Contact [Grafana Support](/help/) and request that the plugin be reinstalled.
 2. Provide your organization name and Grafana instance URL.
+
+## Version and upgrade guidance
+
+Many MongoDB data source issues are caused by running an outdated plugin version. Before deeper troubleshooting, confirm you’re on the latest version, because upgrading resolves a wide range of problems.
+
+> Note
+>
+> On Grafana Cloud, the MongoDB plugin is managed by Grafana and updates automatically. On self-managed Grafana, you must update Enterprise plugins manually. In other managed environments, such as Azure Managed Grafana, the plugin version is controlled by the platform provider and can lag behind the latest release.
+
+### Check and update the plugin version
+
+The following steps apply to self-managed Grafana. On Grafana Cloud, the plugin updates automatically, and in other managed environments the version is controlled by the platform provider.
+
+1. Navigate to **Administration** &gt; **Plugins and data** &gt; **Plugins**.
+2. Search for the plugin and open its page.
+3. Review the installed version and the latest available version.
+4. If an update is available and you’re on self-managed Grafana, click **Update**, or use `grafana cli plugins update grafana-mongodb-datasource` and restart Grafana.
+
+For full upgrade and rollback steps, refer to [Upgrade the plugin](/docs/plugins/grafana-mongodb-datasource/latest/install/#upgrade-the-plugin).
+
+### After upgrading the plugin
+
+After you upgrade, verify your dashboards and alerts, because some releases change query behavior. For example, plugin version 2.0.0 enforces `maxTimeMS` as a client-side deadline, so a query that previously returned partial results now fails with a timeout. If an upgrade introduces errors such as “context deadline exceeded”, you can [roll back to the previous version](/docs/plugins/grafana-mongodb-datasource/latest/install/#roll-back-to-a-previous-version) on self-managed Grafana while you investigate.
+
+### Symptoms of an outdated plugin version
+
+- **Configuration tab is blank or incomplete.** Older versions may not render all settings fields, which can look like settings were lost.
+- **Connection failures with unhelpful errors.** Severely outdated versions can fail to connect at all.
+- **Missing query features** such as Grafana Assistant that exist in current releases.
+- **Queries that use `maxTimeMS` return partial results instead of failing.** Plugin versions before 2.0.0 don’t enforce `maxTimeMS` as a client-side deadline.
+- **Intermittent `Plugin unavailable` or HTTP 500 errors**, especially in managed environments with many panels.
 
 ## Connection issues
 
@@ -100,7 +135,7 @@ Common connection string mistakes include:
 
 ### Special characters in credentials
 
-If your username or password contains special characters such as `@`, `:`, `/`, `?`, or `#`, you may encounter “`unescaped` @ sign in user info” or similar connection errors.
+If your username or password contains special characters such as `@`, `:`, `/`, `?`, `#`, or `%`, you may encounter “`unescaped` @ sign in user info” or similar connection errors.
 
 **Recommended approach:** Instead of embedding credentials in the connection string, use the separate **User** and **Password** fields under the **Credentials** authentication method. This avoids encoding issues entirely.
 
@@ -138,7 +173,7 @@ After saving the data source configuration, the password field displays **Config
 
 1. Click the **Reset** button next to the password field to clear the stored value, then enter the new password.
 2. If the Reset button is not available, delete the data source and recreate it with the correct credentials.
-3. For automated credential updates, use the [Grafana HTTP API](/docs/grafana/latest/developers/http_api/data_source/) or [Terraform provisioning](/docs/plugins/grafana-mongodb-datasource/latest/configure/#provision-with-terraform) to update the data source configuration programmatically.
+3. For automated credential updates, use the [Grafana HTTP API](/docs/grafana/latest/developers/http_api/data_source/) or [Terraform provisioning](/docs/plugins/grafana-mongodb-datasource/latest/configure/#provision-with-terraform) to update the data source configuration programmatically. Authenticate these requests with a [service account token](/docs/grafana/latest/administration/service-accounts/).
 
 ### Connection string format differences across plugin versions
 
@@ -153,7 +188,7 @@ Connection string parsing has improved across plugin versions. A connection stri
 
 1. Always use the latest plugin version to benefit from improved connection string handling.
 2. If you must use an older plugin version, simplify your connection string by moving credentials to the separate authentication fields.
-3. Refer to the [CHANGELOG](/docs/plugins/grafana-mongodb-datasource/latest/) for connection-string-related fixes in specific versions.
+3. Refer to the [CHANGELOG](/grafana/plugins/grafana-mongodb-datasource/?tab=changelog) for connection-string-related fixes in specific versions.
 
 ### Network requirements for Grafana Cloud
 
@@ -167,7 +202,20 @@ To get the current list of Grafana Cloud source IP addresses:
 
 > Note
 >
-> If IP whitelisting is impractical due to the number of addresses, consider using [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) instead for a private, secured connection.
+> If IP allowlisting is impractical due to the number of addresses, consider using [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) instead for a private, secured connection.
+
+### Private data source connect for private networks
+
+If your MongoDB instance is on a private network that isn’t reachable from the public internet, use [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) instead of IP allowlisting.
+
+For production deployments, run more than one PDC agent. A single agent is a single point of failure: if it restarts during a maintenance window or becomes unavailable, queries fail with connection or “server selection timeout” errors. Running multiple agents provides high availability and distributes connection load. Refer to [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) for setup and high-availability guidance.
+
+### Connection failures at scale
+
+If you see “failed to connect to server” or timeout errors only under heavy load, such as many dashboards or panels querying at the same time, you may be exhausting available connections:
+
+- If you use PDC, add more PDC agents to distribute connections. A single agent can become a bottleneck at scale.
+- Tune the connection pool through your MongoDB connection string. The plugin applies all connection string options, so you can set options such as `maxPoolSize` to control the maximum number of connections in the pool. For the full list, refer to [Connection String Options](https://www.mongodb.com/docs/manual/reference/connection-string-options/) in the MongoDB documentation.
 
 ### Server selection timeout or “ReplicaSetNoPrimary”
 
@@ -189,8 +237,8 @@ Expand table
 **Steps to diagnose:**
 
 1. Verify the MongoDB server is running and accessible.
-2. Check that port 27017 (or your custom port) is open and not blocked by firewalls.
-3. Confirm the host address is correct and resolvable from the Grafana server.
+2. Check that port 27017 (or your custom port) is open and not blocked by firewall rules.
+3. Confirm the host address is correct and resolvable from the Grafana server. On self-managed Grafana, run `nslookup <host>` or `dig <host>` from the Grafana server to confirm DNS resolution.
 4. For replica sets, verify all members listed in the connection string are individually accessible.
 5. If using MongoDB Atlas, check the **Network Access** and **Database Access** settings in the Atlas console.
 
@@ -284,6 +332,21 @@ If your private key is encrypted and you see an error about decryption:
 
 - Ensure you’ve provided the correct password for the encrypted key in the **TLS CA key file password** field.
 - The plugin supports PKCS#5 v2.0 and PKCS#8 encrypted keys. Other encryption schemes may not work.
+
+### TLS certificate errors through PDC
+
+When you connect to a private MongoDB instance through PDC, the TLS handshake happens between the PDC agent and MongoDB, not between Grafana and MongoDB. As a result, a CA certificate configured in the Grafana UI may not be applied through the PDC tunnel, and you may see “x509: certificate signed by unknown authority” or a similar validation error.
+
+To resolve this:
+
+1. First, configure the CA certificate in the data source settings. Check **Add self-signed certificate** and paste your CA certificate into the **CA certificate** field.
+2. If the error persists, check **Skip TLS certificate validation** as a workaround. This bypasses certificate verification for the connection.
+
+> Caution
+>
+> Skipping TLS validation reduces connection security. Use this workaround only when the CA certificate can’t be validated through the PDC tunnel, and ensure your PDC connection itself is secured.
+
+For AWS DocumentDB specifically, refer to [Connect to AWS DocumentDB with TLS](#connect-to-aws-documentdb-with-tls).
 
 ### Connect to AWS DocumentDB with TLS
 
@@ -401,9 +464,9 @@ sample_mflix.movies.aggregate([
 ])
 ```
 
-### Regex flag limitations
+### Regular expression flag limitations
 
-The regex flags `g` (global) and `s` (`dotAll`) are not supported. Use supported flags like `i` (case-insensitive) and `m` (`multiline`).
+The regular expression flags `g` (global) and `s` (`dotAll`) are not supported. Use supported flags like `i` (case-insensitive) and `m` (`multiline`).
 
 ### Collections with dots in their names
 
@@ -417,7 +480,7 @@ my_db.getCollection("my.collection").find({})
 
 ### `allowDiskUse` with complex aggregation pipelines
 
-The `allowDiskUse` option allows MongoDB to use disk storage for aggregation operations that exceed the memory limit. Pass it as the second argument to the `aggregate` method:
+The `allowDiskUse` option allows MongoDB to use disk storage for aggregation pipeline stages that exceed the 100 MB per-stage memory limit. Pass it as the second argument to the `aggregate` method:
 
 JavaScript [Copy code to clipboard] Copy
 
@@ -431,7 +494,7 @@ my_db.my_collection.aggregate([
 
 > Note
 >
-> The `allowDiskUse` option must be passed as an options object after the pipeline array, not within the pipeline stages. If you experience issues with `allowDiskUse` on complex pipelines, verify that your MongoDB user has the required privileges and that your MongoDB server version supports this option for the specific operations in your pipeline.
+> The `allowDiskUse` option must be passed as an options object after the pipeline array, not within the pipeline stages. If you experience issues with `allowDiskUse` on complex pipelines that combine `$match`, `$group`, and `$sort`, verify that your MongoDB user has the required privileges, that your MongoDB server version supports this option for the specific operations in your pipeline, and that you’re running the latest plugin version.
 
 ### Supported aggregate options
 
@@ -457,7 +520,7 @@ Expand table
 
 > Note
 >
-> `maxTimeMS` sets a deadline on the query. The datasource sends it to MongoDB as a server-side limit and also stops waiting for the response when the deadline passes, so a query that exceeds it fails with a timeout rather than returning partial results.
+> `maxTimeMS` sets a deadline on the query. The data source sends it to MongoDB as a server-side limit and also stops waiting for the response when the deadline passes, so a query that exceeds it fails with a timeout rather than returning partial results.
 
 ### Queries not saving
 
@@ -502,12 +565,12 @@ If queries fail with “context deadline exceeded” errors, the query is taking
 
 1. Optimize your query:
 
-   - Apply `$match` filters early in the pipeline to reduce the working data set.
+   - Apply `$match` filters early in the pipeline to reduce the working dataset.
    - Add indexes to fields used in `$match` and `$sort` stages.
    - Use `$project` to limit the fields returned.
    - Reduce the time range or add a `$limit` stage.
 2. Check MongoDB server-side timeouts. If your MongoDB instance has a `maxTimeMS` limit, complex aggregations may exceed it.
-3. If timeouts started after a plugin upgrade, review the [CHANGELOG](/docs/plugins/grafana-mongodb-datasource/latest/) for changes to timeout handling. As a temporary workaround, roll back to the previous plugin version while optimizing queries.
+3. If timeouts started after a plugin upgrade, review the [CHANGELOG](/grafana/plugins/grafana-mongodb-datasource/?tab=changelog) for changes to timeout handling. As a temporary workaround, roll back to the previous plugin version while optimizing queries.
 
 ### Limit time ranges to prevent query overload
 
@@ -523,13 +586,13 @@ Large time ranges can cause excessive query load on your MongoDB server, especia
 
 ### Query results truncated
 
-If your query results appear incomplete, check the **Rows to return** setting in the data source configuration. The default limit is 100,000 rows.
+If your query results appear incomplete, check the **Rows to Return** setting in the data source configuration. The default limit is 100,000 rows.
 
 To adjust this limit:
 
 1. Go to **Connections** &gt; **Data Sources**.
 2. Select your MongoDB data source.
-3. Under **Additional settings**, adjust the **Rows to return** value.
+3. Under **Additional settings**, adjust the **Rows to Return** value.
 
 > Warning
 >
@@ -545,24 +608,24 @@ To improve query performance:
 - Use `limit()` to reduce the number of documents returned.
 - Consider using the debugging response size feature to analyze response sizes (not available in Grafana Cloud).
 
-## Variables and ad-hoc filters
+## Variables and ad hoc filters
 
-Template variables and ad-hoc filters require specific configuration to work correctly with MongoDB.
+Template variables and ad hoc filters require specific configuration to work correctly with MongoDB.
 
-### Ad-hoc filters do not work
+### Ad hoc filters do not work
 
-For ad-hoc filters to work, you must create a helper variable:
+For ad hoc filters to work, you must create a helper variable:
 
-1. Create an ad-hoc filter variable with any name.
+1. Create an ad hoc filter variable with any name.
 2. Create a second variable of type `constant`.
 3. Name the constant variable `mongo_adhoc_query`.
 4. Set its value to a valid MongoDB query that returns the filter options.
 
-For more information, refer to [Use ad-hoc filters](/docs/plugins/grafana-mongodb-datasource/latest/template-variables/#use-ad-hoc-filters).
+For more information, refer to [Use ad hoc filters](/docs/plugins/grafana-mongodb-datasource/latest/template-variables/#use-ad-hoc-filters).
 
-### Ad-hoc filters with dot notation paths
+### Ad hoc filters with dot notation paths
 
-Ad-hoc filters support dot notation for nested field paths. For example, you can filter on `address.city` or `metadata.version`. If your filters using dot notation paths are not working, ensure you are running plugin version 1.23.2 or later.
+Ad hoc filters support dot notation for nested field paths. For example, you can filter on `address.city` or `metadata.version`. If your filters using dot notation paths are not working, ensure you are running plugin version 1.23.2 or later.
 
 ### Compound variables do not resolve
 

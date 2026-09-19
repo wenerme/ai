@@ -1051,7 +1051,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The Unix timestamp (in seconds) of when the event was created.
 
-  - `data: object { session_id, sip_headers }`
+  - `data: object { session_id, sip_headers, sip_media_security }`
 
     Event data payload.
 
@@ -1074,6 +1074,26 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
       - `value: string`
 
         Value of the SIP Header.
+
+    - `sip_media_security: optional "rtp" or "srtp" or string`
+
+      Media protection selected on the SIP leg during SDP negotiation. `srtp`
+      indicates SRTP; `rtp` indicates unencrypted RTP. Omitted when unknown.
+      This does not describe SIP signaling security or confirm that media has
+      flowed. Clients should handle unrecognized values as unknown.
+
+      - `"rtp" or "srtp"`
+
+        Media protection selected on the SIP leg during SDP negotiation. `srtp`
+        indicates SRTP; `rtp` indicates unencrypted RTP. Omitted when unknown.
+        This does not describe SIP signaling security or confirm that media has
+        flowed. Clients should handle unrecognized values as unknown.
+
+        - `"rtp"`
+
+        - `"srtp"`
+
+      - `string`
 
   - `type: "live.call.incoming"`
 
@@ -1103,7 +1123,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The Unix timestamp (in seconds) of when the event was created.
 
-  - `data: object { session_id, sip_headers, type }`
+  - `data: object { session_id, sip_headers, type, sip_media_security }`
 
     Event data payload.
 
@@ -1131,6 +1151,26 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
       The incoming transport type. Always `sip`.
 
       - `"sip"`
+
+    - `sip_media_security: optional "rtp" or "srtp" or string`
+
+      Media protection selected on the SIP leg during SDP negotiation. `srtp`
+      indicates SRTP; `rtp` indicates unencrypted RTP. Omitted when unknown.
+      This does not describe SIP signaling security or confirm that media has
+      flowed. Clients should handle unrecognized values as unknown.
+
+      - `"rtp" or "srtp"`
+
+        Media protection selected on the SIP leg during SDP negotiation. `srtp`
+        indicates SRTP; `rtp` indicates unencrypted RTP. Omitted when unknown.
+        This does not describe SIP signaling security or confirm that media has
+        flowed. Clients should handle unrecognized values as unknown.
+
+        - `"rtp"`
+
+        - `"srtp"`
+
+      - `string`
 
   - `type: "live.transport.incoming"`
 
@@ -1160,7 +1200,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The Unix timestamp (in seconds) of when the model response was completed.
 
-  - `data: object { call_id, sip_headers }`
+  - `data: object { call_id, sip_headers, sip_media_security }`
 
     Event data payload.
 
@@ -1183,6 +1223,26 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
       - `value: string`
 
         Value of the SIP Header.
+
+    - `sip_media_security: optional "rtp" or "srtp" or string`
+
+      Media protection selected on the SIP leg during SDP negotiation. `srtp`
+      indicates SRTP; `rtp` indicates unencrypted RTP. Omitted when unknown.
+      This does not describe SIP signaling security or confirm that media has
+      flowed. Clients should handle unrecognized values as unknown.
+
+      - `"rtp" or "srtp"`
+
+        Media protection selected on the SIP leg during SDP negotiation. `srtp`
+        indicates SRTP; `rtp` indicates unencrypted RTP. Omitted when unknown.
+        This does not describe SIP signaling security or confirm that media has
+        flowed. Clients should handle unrecognized values as unknown.
+
+        - `"rtp"`
+
+        - `"srtp"`
+
+      - `string`
 
   - `type: "realtime.call.incoming"`
 
@@ -1364,6 +1424,38 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     - `"safety.alert.created"`
 
+### Safety Deactivation Issued Webhook Event
+
+- `SafetyDeactivationIssuedWebhookEvent object { id, created_at, data, 2 more }`
+
+  Sent when a deactivation is issued for a safety identifier in your organization.
+
+  - `id: string`
+
+    The unique ID of the webhook event.
+
+  - `created_at: number`
+
+    The Unix timestamp in seconds when the event was created.
+
+  - `data: object { id }`
+
+    - `id: string`
+
+      The safety case ID to pass to `GET /v1/safety/cases/{id}`.
+
+  - `object: "event"`
+
+    Always `event`.
+
+    - `"event"`
+
+  - `type: "safety.deactivation_issued"`
+
+    Always `safety.deactivation_issued`.
+
+    - `"safety.deactivation_issued"`
+
 ### Safety Org Alert Created Webhook Event
 
 - `SafetyOrgAlertCreatedWebhookEvent object { id, created_at, data, 2 more }`
@@ -1396,9 +1488,41 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     - `"safety.org_alert.created"`
 
+### Safety Warning Issued Webhook Event
+
+- `SafetyWarningIssuedWebhookEvent object { id, created_at, data, 2 more }`
+
+  Sent when a warning is issued for a safety identifier in your organization.
+
+  - `id: string`
+
+    The unique ID of the webhook event.
+
+  - `created_at: number`
+
+    The Unix timestamp in seconds when the event was created.
+
+  - `data: object { id }`
+
+    - `id: string`
+
+      The safety case ID to pass to `GET /v1/safety/cases/{id}`.
+
+  - `object: "event"`
+
+    Always `event`.
+
+    - `"event"`
+
+  - `type: "safety.warning_issued"`
+
+    Always `safety.warning_issued`.
+
+    - `"safety.warning_issued"`
+
 ### Unwrap Webhook Event
 
-- `UnwrapWebhookEvent = BatchCancelledWebhookEvent or BatchCompletedWebhookEvent or BatchExpiredWebhookEvent or 16 more`
+- `UnwrapWebhookEvent = BatchCancelledWebhookEvent or BatchCompletedWebhookEvent or BatchExpiredWebhookEvent or 18 more`
 
   Sent when a batch API request has been cancelled.
 
@@ -1738,7 +1862,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The Unix timestamp (in seconds) of when the event was created.
 
-    - `data: object { session_id, sip_headers }`
+    - `data: object { session_id, sip_headers, sip_media_security }`
 
       Event data payload.
 
@@ -1761,6 +1885,26 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
         - `value: string`
 
           Value of the SIP Header.
+
+      - `sip_media_security: optional "rtp" or "srtp" or string`
+
+        Media protection selected on the SIP leg during SDP negotiation. `srtp`
+        indicates SRTP; `rtp` indicates unencrypted RTP. Omitted when unknown.
+        This does not describe SIP signaling security or confirm that media has
+        flowed. Clients should handle unrecognized values as unknown.
+
+        - `"rtp" or "srtp"`
+
+          Media protection selected on the SIP leg during SDP negotiation. `srtp`
+          indicates SRTP; `rtp` indicates unencrypted RTP. Omitted when unknown.
+          This does not describe SIP signaling security or confirm that media has
+          flowed. Clients should handle unrecognized values as unknown.
+
+          - `"rtp"`
+
+          - `"srtp"`
+
+        - `string`
 
     - `type: "live.call.incoming"`
 
@@ -1788,7 +1932,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The Unix timestamp (in seconds) of when the event was created.
 
-    - `data: object { session_id, sip_headers, type }`
+    - `data: object { session_id, sip_headers, type, sip_media_security }`
 
       Event data payload.
 
@@ -1817,6 +1961,26 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
         - `"sip"`
 
+      - `sip_media_security: optional "rtp" or "srtp" or string`
+
+        Media protection selected on the SIP leg during SDP negotiation. `srtp`
+        indicates SRTP; `rtp` indicates unencrypted RTP. Omitted when unknown.
+        This does not describe SIP signaling security or confirm that media has
+        flowed. Clients should handle unrecognized values as unknown.
+
+        - `"rtp" or "srtp"`
+
+          Media protection selected on the SIP leg during SDP negotiation. `srtp`
+          indicates SRTP; `rtp` indicates unencrypted RTP. Omitted when unknown.
+          This does not describe SIP signaling security or confirm that media has
+          flowed. Clients should handle unrecognized values as unknown.
+
+          - `"rtp"`
+
+          - `"srtp"`
+
+        - `string`
+
     - `type: "live.transport.incoming"`
 
       The type of the event. Always `live.transport.incoming`.
@@ -1843,7 +2007,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The Unix timestamp (in seconds) of when the model response was completed.
 
-    - `data: object { call_id, sip_headers }`
+    - `data: object { call_id, sip_headers, sip_media_security }`
 
       Event data payload.
 
@@ -1866,6 +2030,26 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
         - `value: string`
 
           Value of the SIP Header.
+
+      - `sip_media_security: optional "rtp" or "srtp" or string`
+
+        Media protection selected on the SIP leg during SDP negotiation. `srtp`
+        indicates SRTP; `rtp` indicates unencrypted RTP. Omitted when unknown.
+        This does not describe SIP signaling security or confirm that media has
+        flowed. Clients should handle unrecognized values as unknown.
+
+        - `"rtp" or "srtp"`
+
+          Media protection selected on the SIP leg during SDP negotiation. `srtp`
+          indicates SRTP; `rtp` indicates unencrypted RTP. Omitted when unknown.
+          This does not describe SIP signaling security or confirm that media has
+          flowed. Clients should handle unrecognized values as unknown.
+
+          - `"rtp"`
+
+          - `"srtp"`
+
+        - `string`
 
     - `type: "realtime.call.incoming"`
 
@@ -2037,6 +2221,36 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       - `"safety.alert.created"`
 
+  - `SafetyDeactivationIssuedWebhookEvent object { id, created_at, data, 2 more }`
+
+    Sent when a deactivation is issued for a safety identifier in your organization.
+
+    - `id: string`
+
+      The unique ID of the webhook event.
+
+    - `created_at: number`
+
+      The Unix timestamp in seconds when the event was created.
+
+    - `data: object { id }`
+
+      - `id: string`
+
+        The safety case ID to pass to `GET /v1/safety/cases/{id}`.
+
+    - `object: "event"`
+
+      Always `event`.
+
+      - `"event"`
+
+    - `type: "safety.deactivation_issued"`
+
+      Always `safety.deactivation_issued`.
+
+      - `"safety.deactivation_issued"`
+
   - `SafetyOrgAlertCreatedWebhookEvent object { id, created_at, data, 2 more }`
 
     Sent when an approved safety alert is available for an enterprise workspace.
@@ -2066,6 +2280,36 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
       Always `safety.org_alert.created`.
 
       - `"safety.org_alert.created"`
+
+  - `SafetyWarningIssuedWebhookEvent object { id, created_at, data, 2 more }`
+
+    Sent when a warning is issued for a safety identifier in your organization.
+
+    - `id: string`
+
+      The unique ID of the webhook event.
+
+    - `created_at: number`
+
+      The Unix timestamp in seconds when the event was created.
+
+    - `data: object { id }`
+
+      - `id: string`
+
+        The safety case ID to pass to `GET /v1/safety/cases/{id}`.
+
+    - `object: "event"`
+
+      Always `event`.
+
+      - `"event"`
+
+    - `type: "safety.warning_issued"`
+
+      Always `safety.warning_issued`.
+
+      - `"safety.warning_issued"`
 
 ### Webhook Endpoint
 

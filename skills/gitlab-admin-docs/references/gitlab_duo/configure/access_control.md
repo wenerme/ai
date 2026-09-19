@@ -14,6 +14,11 @@ for a group or restrict access to GitLab Duo for one or more groups.
 
 - Default **No group** rule [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/225728) in GitLab 18.10.
 - **Member access** section and **No group** rule [renamed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/229785) in GitLab 18.11.
+- Selecting subgroups on GitLab Self-Managed and GitLab Dedicated [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/255453) in GitLab 19.5 [with a feature flag](../../feature_flags/_index.md) named `duo_admin_access_rules_subgroups`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
 
 ### On GitLab.com
 
@@ -51,7 +56,7 @@ When you configure access controls, you can select only groups
 that are direct subgroups of the top-level group.
 You cannot use nested subgroups in access control rules.
 
-### On GitLab Self-Managed
+### On GitLab Self-Managed and GitLab Dedicated
 
 Prerequisites:
 
@@ -79,8 +84,12 @@ To restrict access to GitLab Duo for an instance:
 These settings apply to users who are direct members of one of the groups
 configured under **Restrict access based on group membership**.
 
-When you configure access controls, you can select only top-level groups.
-You cannot use subgroups in access control rules.
+If you enable the `duo_admin_access_rules_subgroups` feature flag,
+you can select any top-level group or subgroup.
+Otherwise, you can select only top-level groups.
+
+Changes to access rules can take up to five minutes to take effect
+because access decisions are cached for each user.
 
 If you do not want to manually manage group membership, you can
 [synchronize membership by using LDAP or SAML](#synchronize-group-membership).
@@ -123,7 +132,7 @@ You can use access control for phased rollouts or testing and validation.
 
 To implement a phased rollout of GitLab Duo:
 
-1. Create a group for pilot users (for example, `pilot-users`).
+1. Create a group for pilot users (for example, `engineering/duo-pilot`).
 1. Add a subset of users to this group.
 1. Add more users to the group gradually as you validate functionality and train users.
 1. Add all users to the group when you're ready for a full rollout.

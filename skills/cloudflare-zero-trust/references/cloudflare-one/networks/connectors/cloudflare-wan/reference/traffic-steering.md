@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Traffic steering
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Cloudflare Virtual Network routing table
 
@@ -128,9 +128,9 @@ AS_PATH: 65000 65000 65000 65200
 
 Cloudflare adjusts route priority when using AS prepending with communities. For example, if a route is tagged with `13335:60150`, the base priority is set to `150`. If you prepend your ASN twice, Cloudflare adds `10` for each prepend, increasing the route priority to `180`.
 
-## Automatic Return Routing (beta)
+## Automatic Return Routing
 
-Automatic Return Routing (ARR) allows Cloudflare to track network flows from your Cloudflare WAN (formerly Magic WAN) connected locations, ensuring return traffic is routed back to the connection where it was received without requiring static or dynamic routes. This functionality requires the new [Unified Routing mode (beta)](#unified-routing-mode-beta).
+Automatic Return Routing (ARR) allows Cloudflare to track network flows from your Cloudflare WAN (formerly Magic WAN) connected locations, ensuring return traffic is routed back to the connection where it was received without requiring static or dynamic routes. This functionality requires [Unified Routing mode](#unified-routing).
 
 Instead of relying on static or dynamic routes for the return path, Cloudflare WAN learns flows and remembers which connection a given flow arrived on. For any matching return traffic, Cloudflare WAN uses this learned state to choose the next hop. This simplifies configuration, reduces the number of routes you must manage, and helps preserve symmetry for stateful traffic.
 
@@ -171,55 +171,88 @@ Automatic Return Routing applies when:
   - A private network connected to Cloudflare through Cloudflare Tunnel
   - A private network connected to Cloudflare through Cloudflare Mesh
 
-In this initial release, ARR does not change routing for traffic between Cloudflare WAN connections (for example, traffic from one IPsec/GRE tunnel or interconnect to another). That traffic continues to follow your configured Cloudflare WAN routes.
+ARR does not change routing for traffic between Cloudflare WAN connections (for example, traffic from one IPsec/GRE tunnel or interconnect to another). That traffic continues to follow your configured Cloudflare WAN routes.
 
-## Unified Routing mode (beta)
+## Unified Routing mode
 
-The Unified Routing mode is the newer Cloudflare One data plane that uses a single routing fabric for all supported connection types. Unified Routing mode routes traffic across the Cloudflare One Client, Cloudflare Tunnel, IPsec, GRE, and Cloudflare Network Interconnect (CNI) in a single system, making it easier to set up your Cloudflare One connections.
+Unified Routing mode is the Cloudflare One data plane that uses a single routing fabric for all supported connection types. It routes traffic across the Cloudflare One Client, Cloudflare Tunnel, IPsec, GRE, and Cloudflare Network Interconnect (CNI) in one system.
 
 In the Cloudflare WAN dashboard, routing mode appears where you manage routes:
 
 - **Routing mode: Unified** — your account is on the unified data plane and supports the new routing features.
 - **Routing mode: Legacy** — your account uses the previous data plane and does not support all unified routing features.
 
-### Why use Unified Routing
+### Compare routing modes
 
-Unified Routing is the future of the dedicated virtual network overlay that powers Magic Transit and Cloudflare One network connectivity.
+Unified Routing is generally available and is our recommended routing mode for all new accounts.
 
-For Cloudflare One customers, there are several reasons to consider moving to Unified Routing, as it is a prerequisite for several new capabilities:
+| Area | Legacy Routing | Unified Routing |
+| --- | --- | --- |
+| Routing fabric | Uses separate routing systems for Zero Trust and WAN routes. | Uses one routing fabric across all supported connection types. |
+| Route selection | Applies longest-prefix match within each routing system. For cross-system traffic, a Zero Trust route can take precedence over a more specific WAN route. | Applies longest-prefix match across supported connection types. When prefix lengths match, Zero Trust routes take precedence. |
+| Cloudflare service source IPs | Uses public Cloudflare source IPs for traffic sent to private networks. | Uses a dedicated, non-Internet-routable private source range. You can configure the IPv4 range. |
+| Cloudflare Mesh and Cloudflare WAN | Does not support traffic between Mesh and WAN connections. | Supports Mesh and WAN connections in the same account. |
+| Load Balancing with WAN origins | Supported. Traffic uses public Cloudflare source IPs. | Generally available. Traffic uses dedicated private Cloudflare source IPs. |
+| BGP over CNI | Closed beta and not available to new customers. | Closed beta and not available to new customers. |
+| IPv6 | Beta for Magic Transit only. | Beta for Cloudflare WAN and Magic Transit. |
 
-- [Automatic Return Routing](#automatic-return-routing-beta)
-- [BGP over IPsec/GRE](#release-status)
-- [Cloudflare Source IPs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/) using private IP space with customizable IPv4 range
-- Customizable Cloudflare One Client IPv4 ranges
-- IPv6 support
-- Improved performance between Cloudflare One Client and IPsec/GRE/CNI
-- Support for Cloudflare Mesh and IPsec/GRE/CNI connectivity in the same account.
+#### Use features available only with Unified Routing
 
-### Beta limitations
+The following features require Unified Routing.
 
-The following limitations apply to accounts using Unified Routing mode. This list will get shorter as Cloudflare adds support for additional features.
-
-| Current beta limitations | Details |
+| Feature | Availability with Unified Routing |
 | --- | --- |
-| Performance | Typically around 150 Mbps for each onramp |
-| Basic packet captures | Captures exclude Automatic Return Routing or BGP-over-tunnels traffic |
-| Full packet captures | Not yet supported |
-| Cloudflare Advanced Network Firewall features: ASN Lists, Rate Limiting, Managed Rulesets | Not yet supported |
-| Gateway filtering rules | Not supported on traffic where both the onramp and offramp is IPsec/GRE/CNI |
-| Load Balancer | Public-to-private use case is supported to IPsec/GRE/CNI destinations. Private-to-private use case does not yet support Cloudflare Source IPs |
-| IPv6 Support | IPv6 is supported for IPsec and GRE. Basic Network Firewall support for IPv6 is limited to src/dst IP filtering |
+| [Automatic Return Routing](#automatic-return-routing) | Generally available for Internet return traffic. Routing between WAN connections is not available. |
+| [BGP over IPsec and GRE](#release-status) | Beta and available to all Unified Routing accounts. |
+| [Cloudflare source IPs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/) | Generally available. |
+| [Custom Cloudflare One Client device subnets](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/) with Cloudflare WAN | Generally available. |
+| [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) and Cloudflare WAN interoperability | Generally available. |
 
-### Enroll in the Unified Routing beta
+#### Check feature availability before upgrading
 
-Unified Routing is currently in closed beta. To sign up:
+Features outside Cloudflare Network Firewall have the following availability:
 
-- **Existing Cloudflare WAN or Magic Transit customers**: Cloudflare recommends you evaluate the new functionality with your use case in a non-production account. Contact your account team to enable Unified Routing.
-- **New customers**: Contact your account team to enable Unified Routing in a proof-of-concept for your use case.
+| Feature | Availability with Unified Routing |
+| --- | --- |
+| [Sample packet captures](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/#sample-packet-captures) | Generally available. |
+| [Full packet captures](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/#full-packet-captures) | Not available. |
+| [Gateway filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) | Generally available. Supports WAN-to-Internet and WAN-to-WAN filtering. Configure WAN-to-WAN filtering through the API. |
+| [Load Balancing](https://developers.cloudflare.com/load-balancing/private-network/) | Generally available. |
+| [Workers VPC](https://developers.cloudflare.com/workers-vpc/) | Generally available. |
+| Application Services | Generally available. |
+| [Network Analytics](https://developers.cloudflare.com/analytics/network-analytics/) | Generally available. |
+
+[Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) features have the following availability:
+
+| Feature | Availability with Unified Routing |
+| --- | --- |
+| Basic firewall rules | Generally available. |
+| GeoIP country rules | Beta. |
+| ASN lists | Beta. |
+| Account IP lists | Beta. |
+| Threat Intel Lists | Beta. |
+| SIP rules | Beta. |
+| Intrusion detection system (IDS) | Beta for Cloudflare WAN only. |
+| Rate limiting | Not available. |
+| Managed rulesets | Not available. |
+
+#### Evaluate performance
+
+Unified Routing performance can differ from Legacy Routing for the same traffic profile. Throughput depends on traffic distribution, packet sizes, tunnel settings, encryption, and customer equipment.
+
+Before upgrading, establish a Legacy Routing baseline and run a controlled Unified Routing pilot with representative traffic. Test expected and peak throughput, packet loss, latency, tunnel failover, and your existing IPsec settings.
+
+### How to upgrade to Unified Routing
+
+If your account uses Legacy Routing, follow these steps to upgrade:
+
+1. Evaluate Unified Routing features and performance against your current needs. Review the [routing mode comparison](#compare-routing-modes), [feature availability](#check-feature-availability-before-upgrading), and [performance guidance](#evaluate-performance).
+2. Identify suitable times for the upgrade. During the upgrade, Cloudflare One Client users can experience a remote access outage of up to three minutes.
+3. Contact your account team to request the change and provide a range of acceptable times.
 
 ## Route evaluation with Zero Trust connections
 
-When your account uses both Zero Trust routes (Cloudflare Tunnel, Cloudflare Mesh) and WAN routes (IPsec, GRE, CNI), route selection behavior depends on your [routing mode](#unified-routing-mode-beta).
+When your account uses both Zero Trust routes (Cloudflare Tunnel, Cloudflare Mesh) and WAN routes (IPsec, GRE, CNI), route selection behavior depends on your [routing mode](#unified-routing).
 
 ### Terminology
 
@@ -240,7 +273,7 @@ Unified Routing uses a single routing fabric for all connection types. Route sel
 
 When routes have the same prefix length, Zero Trust routes take precedence over WAN routes.
 
-For scenarios with overlapping IP space across sites, enable [Automatic Return Routing](#automatic-return-routing-beta) to ensure return traffic reaches the correct origin.
+For scenarios with overlapping IP space across sites, enable [Automatic Return Routing](#automatic-return-routing) to ensure return traffic reaches the correct origin.
 
 ### Legacy Routing mode
 
@@ -268,7 +301,7 @@ When [Gateway network policies](https://developers.cloudflare.com/cloudflare-one
 
 Note
 
-If you need consistent longest-prefix-match across all scenarios, migrate to [Unified Routing](#unified-routing-mode-beta).
+If you need consistent longest-prefix-match across all scenarios, follow [How to upgrade to Unified Routing](#how-to-upgrade-to-unified-routing).
 
 #### Cross-system traffic (WAN to Zero Trust or Zero Trust to WAN)
 
@@ -279,7 +312,7 @@ Legacy Routing uses two routing components:
 
 Cross-system traffic follows the same rules as [site-to-site traffic with Gateway](#site-to-site-traffic-with-gateway). A more specific Zero Trust route works correctly; a more specific WAN route is not guaranteed to be selected.
 
-**Recommendation:** If overlap is required, migrate to [Unified Routing](#unified-routing-mode-beta) or contact your account team.
+**Recommendation:** If overlap is required, follow [How to upgrade to Unified Routing](#how-to-upgrade-to-unified-routing).
 
 ### Check your routing mode
 
@@ -293,7 +326,7 @@ To determine the routing mode for your account:
    - **Your account is using Unified Routing mode.** — Your account uses Unified Routing.
    - **Unified routing is available.** — Your account uses Legacy Routing.
 
-To migrate to Unified Routing, contact your account team.
+If your account uses Legacy Routing, follow [How to upgrade to Unified Routing](#how-to-upgrade-to-unified-routing).
 
 ## Scoping routes to specific regions
 
@@ -456,7 +489,7 @@ For more on Cloudflare WAN tunnel weights, contact your Cloudflare customer serv
 
 ## BGP information
 
-Using BGP peering with your Cloudflare One or Magic Transit Virtual Network routing table allows you to:
+Using BGP peering with your Cloudflare One or Magic Transit network routing table allows you to:
 
 - Automate the process of adding or removing networks and subnets.
 - Take advantage of failure detection and session recovery features.
@@ -474,7 +507,7 @@ The following table outlines the current availability and recommended use cases 
 | Feature | Release stage | Recommended use | Prerequisites |
 | --- | --- | --- | --- |
 | **BGP over CNI** | Closed Beta | Not available to new customers — contact your account team | Cloudflare Network Interconnect (CNI) v2 |
-| **BGP over Anycast IPsec/GRE** | Open Beta | Non-production workloads | [Unified Routing (beta)](#unified-routing-mode-beta) - contact your account team to enroll |
+| **BGP over Anycast IPsec/GRE** | Open Beta | Non-production workloads | Available to all [Unified Routing](#unified-routing) accounts; no enablement required |
 
 ### BGP architecture
 
@@ -578,5 +611,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#page","headline":"Traffic steering · Cloudflare One docs","description":"Cloudflare WAN uses a static configuration to route traffic through anycast tunnels using the Generic Routing Encapsulation (GRE) and Internet Protocol Security (IPsec) protocols from Cloudflare's global network to your network.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#page","headline":"Traffic steering · Cloudflare One docs","description":"Cloudflare WAN uses a static configuration to route traffic through anycast tunnels using the Generic Routing Encapsulation (GRE) and Internet Protocol Security (IPsec) protocols from Cloudflare's global network to your network.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

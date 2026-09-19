@@ -10,7 +10,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
 ### Returns
 
-- `AgentSessionEvent = AgentSessionErrorEvent or AgentSessionEnvironmentReadyEvent or AgentOutputCommandExecutionOutputDeltaEvent or 27 more`
+- `AgentSessionEvent = AgentSessionErrorEvent or AgentSessionEnvironmentReadyEvent or object { environment_id, event_id, reset_count, 3 more }  or 28 more`
 
   An event emitted by a Managed Agents session.
 
@@ -66,7 +66,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `error: object { code, message, type }  or null`
 
-        An error reported while preparing a session environment.
+        The error reported while preparing the environment, if any.
 
         - `code: string`
 
@@ -125,6 +125,36 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
       The type of the object. Always `agent.session.environment.ready`.
 
       - `"agent.session.environment.ready"`
+
+  - `AgentSessionEnvironmentReset object { environment_id, event_id, reset_count, 3 more }`
+
+    Emitted after a hosted sandbox is replaced. Conversation history survives; changes to the previous sandbox's files and processes do not.
+
+    - `environment_id: string`
+
+      The stable environment ID, retained across sandbox replacements.
+
+    - `event_id: string`
+
+      The unique ID of the event.
+
+    - `reset_count: number`
+
+      Monotonically increasing reset number. Repeated notifications share this number.
+
+    - `session_id: string`
+
+      The ID of the session associated with the event.
+
+    - `turn_id: string or null`
+
+      The associated turn, when applicable.
+
+    - `type: "agent.session.environment.reset"`
+
+      The type of the object. Always `agent.session.environment.reset`.
+
+      - `"agent.session.environment.reset"`
 
   - `AgentOutputCommandExecutionOutputDeltaEvent object { delta, event_id, item_id, 4 more }`
 
@@ -214,7 +244,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           - `effort: "none" or "minimal" or "low" or 4 more or null`
 
-            The amount of reasoning effort used by an agent.
+            The requested reasoning effort, or `null` when the model selects its own default.
 
             - `"none"`
 
@@ -232,7 +262,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           - `summary: "concise" or "detailed" or "auto" or null`
 
-            The reasoning summary format requested from an agent.
+            The requested reasoning summary format, or `null` when summaries are disabled.
 
             - `"concise"`
 
@@ -448,7 +478,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             - `location: object { city, country, region, timezone }  or null`
 
-              Approximate user location used to localize web search results.
+              Approximate location used to localize search results, if provided.
 
               - `city: string or null`
 
@@ -786,7 +816,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `usage: TokenUsage or null`
 
-        Recorded token usage for a session or turn. Usage is best effort and may change.
+        Best-effort token usage for the session, or null if unknown. Recorded usage may change.
 
         - `input_tokens: number`
 
@@ -860,7 +890,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `error: SessionTurnError or null`
 
-        A customer-safe error describing why a session request failed.
+        A customer-safe error. Non-null only for a failed turn.
 
         - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 14 more`
 
@@ -986,7 +1016,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `usage: TokenUsage or null`
 
-        Recorded token usage for a session or turn. Usage is best effort and may change.
+        Best-effort token usage for the turn, or null if unknown. Recorded usage may change.
 
     - `turn_id: string`
 
@@ -1052,7 +1082,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
     - `usage: TokenUsage or null`
 
-      Recorded token usage for a session or turn. Usage is best effort and may change.
+      Token usage by the root agent during the turn, when available.
 
   - `AgentSessionTurnFailedEvent object { event_id, session_id, turn, 3 more }`
 
@@ -1082,7 +1112,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
     - `usage: TokenUsage or null`
 
-      Recorded token usage for a session or turn. Usage is best effort and may change.
+      Token usage by the root agent during the turn, when available.
 
   - `AgentSessionTurnCancelledEvent object { event_id, session_id, turn, 3 more }`
 
@@ -1112,7 +1142,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
     - `usage: TokenUsage or null`
 
-      Recorded token usage for a session or turn. Usage is best effort and may change.
+      Token usage by the root agent during the turn, when available.
 
   - `AgentSessionTurnItemAddedEvent object { event_id, item, output_index, 3 more }`
 
@@ -1182,7 +1212,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         - `phase: "commentary" or "final_answer" or null`
 
-          The phase of an assistant message.
+          The phase of an assistant message. Null for user messages.
 
           - `"commentary"`
 
@@ -1236,7 +1266,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         - `status: AgentOutputItemStatus or null`
 
-          The status of an agent output item.
+          The status of the reasoning item.
 
         - `summary: array of SummaryText`
 
@@ -1330,7 +1360,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         - `output: AgentFunctionCallOutput or null`
 
-          The text or model-input content supplied as a function result.
+          The function result, if the call succeeded.
 
           - `string`
 
@@ -1488,7 +1518,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         - `action: WebSearchAction or null`
 
-          An action performed by the web search tool.
+          The action performed by the web search tool.
 
           - `Search object { queries, query, type }`
 
@@ -2162,7 +2192,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         - `phase: "commentary" or "final_answer" or null`
 
-          The phase of an assistant message.
+          The phase of the assistant message.
 
           - `"commentary"`
 

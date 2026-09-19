@@ -44,7 +44,7 @@ List user actions and configuration changes within this organization.
 
     Return only events whose `effective_at` (Unix seconds) is less than or equal to this value.
 
-- `event_types: optional array of "api_key.created" or "api_key.updated" or "api_key.deleted" or 144 more`
+- `event_types: optional array of "api_key.created" or "api_key.updated" or "api_key.deleted" or 146 more`
 
   Return only events with a `type` in one of these values. For example, `project.created`. For all options, see the documentation for the [audit log object](/api/reference/resources/admin/subresources/organization/subresources/audit_logs).
 
@@ -71,6 +71,10 @@ List user actions and configuration changes within this organization.
   - `"external_key.registered"`
 
   - `"external_key.removed"`
+
+  - `"external_storage.registered"`
+
+  - `"external_storage.removed"`
 
   - `"group.created"`
 
@@ -360,7 +364,7 @@ List user actions and configuration changes within this organization.
 
 ### Returns
 
-- `data: array of object { id, effective_at, type, 57 more }`
+- `data: array of object { id, effective_at, type, 59 more }`
 
   - `id: string`
 
@@ -370,7 +374,7 @@ List user actions and configuration changes within this organization.
 
     The Unix timestamp (in seconds) of the event.
 
-  - `type: "api_key.created" or "api_key.updated" or "api_key.deleted" or 144 more`
+  - `type: "api_key.created" or "api_key.updated" or "api_key.deleted" or 146 more`
 
     The event type.
 
@@ -397,6 +401,10 @@ List user actions and configuration changes within this organization.
     - `"external_key.registered"`
 
     - `"external_key.removed"`
+
+    - `"external_storage.registered"`
+
+    - `"external_storage.removed"`
 
     - `"group.created"`
 
@@ -891,6 +899,68 @@ List user actions and configuration changes within this organization.
     - `id: optional string`
 
       The ID of the external key configuration.
+
+  - `"external_storage.registered": optional object { id, data }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The ID of the external storage configuration.
+
+    - `data: optional object { geography, provider }`
+
+      The configuration for the external storage.
+
+      - `geography: optional string`
+
+        The OpenAI geography derived from the storage region.
+
+      - `provider: optional object { account_id, bucket, external_id, 3 more }  or object { account_name, container, region, 4 more }`
+
+        The external storage provider configuration.
+
+        - `Aws object { account_id, bucket, external_id, 3 more }`
+
+          - `account_id: string`
+
+          - `bucket: string`
+
+          - `external_id: string`
+
+          - `region: string`
+
+          - `role_arn: string`
+
+          - `type: "aws"`
+
+            - `"aws"`
+
+        - `Azure object { account_name, container, region, 4 more }`
+
+          - `account_name: string`
+
+          - `container: string`
+
+          - `region: string`
+
+          - `resource_group: string`
+
+          - `subscription_id: string`
+
+          - `tenant_id: string`
+
+          - `type: "azure"`
+
+            - `"azure"`
+
+  - `"external_storage.removed": optional object { id }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The ID of the external storage configuration.
 
   - `"group.created": optional object { id, data }`
 
@@ -1748,6 +1818,23 @@ curl https://api.openai.com/v1/organization/audit_logs \
       "external_key.removed": {
         "id": "id"
       },
+      "external_storage.registered": {
+        "id": "id",
+        "data": {
+          "geography": "geography",
+          "provider": {
+            "account_id": "account_id",
+            "bucket": "bucket",
+            "external_id": "external_id",
+            "region": "region",
+            "role_arn": "role_arn",
+            "type": "aws"
+          }
+        }
+      },
+      "external_storage.removed": {
+        "id": "id"
+      },
       "group.created": {
         "id": "id",
         "data": {
@@ -2090,7 +2177,7 @@ curl https://api.openai.com/v1/organization/audit_logs \
 
 ### Audit Log List Response
 
-- `AuditLogListResponse object { id, effective_at, type, 57 more }`
+- `AuditLogListResponse object { id, effective_at, type, 59 more }`
 
   A log of a user action or configuration change within this organization.
 
@@ -2102,7 +2189,7 @@ curl https://api.openai.com/v1/organization/audit_logs \
 
     The Unix timestamp (in seconds) of the event.
 
-  - `type: "api_key.created" or "api_key.updated" or "api_key.deleted" or 144 more`
+  - `type: "api_key.created" or "api_key.updated" or "api_key.deleted" or 146 more`
 
     The event type.
 
@@ -2129,6 +2216,10 @@ curl https://api.openai.com/v1/organization/audit_logs \
     - `"external_key.registered"`
 
     - `"external_key.removed"`
+
+    - `"external_storage.registered"`
+
+    - `"external_storage.removed"`
 
     - `"group.created"`
 
@@ -2623,6 +2714,68 @@ curl https://api.openai.com/v1/organization/audit_logs \
     - `id: optional string`
 
       The ID of the external key configuration.
+
+  - `"external_storage.registered": optional object { id, data }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The ID of the external storage configuration.
+
+    - `data: optional object { geography, provider }`
+
+      The configuration for the external storage.
+
+      - `geography: optional string`
+
+        The OpenAI geography derived from the storage region.
+
+      - `provider: optional object { account_id, bucket, external_id, 3 more }  or object { account_name, container, region, 4 more }`
+
+        The external storage provider configuration.
+
+        - `Aws object { account_id, bucket, external_id, 3 more }`
+
+          - `account_id: string`
+
+          - `bucket: string`
+
+          - `external_id: string`
+
+          - `region: string`
+
+          - `role_arn: string`
+
+          - `type: "aws"`
+
+            - `"aws"`
+
+        - `Azure object { account_name, container, region, 4 more }`
+
+          - `account_name: string`
+
+          - `container: string`
+
+          - `region: string`
+
+          - `resource_group: string`
+
+          - `subscription_id: string`
+
+          - `tenant_id: string`
+
+          - `type: "azure"`
+
+            - `"azure"`
+
+  - `"external_storage.removed": optional object { id }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The ID of the external storage configuration.
 
   - `"group.created": optional object { id, data }`
 
