@@ -16,13 +16,20 @@ The Models API supports query parameters to filter the list of models returned.
 
 Filter models by their output capabilities. Accepts a comma-separated list of modalities or `"all"` to include every model regardless of output type.
 
-| Value        | Description                                 |
-| ------------ | ------------------------------------------- |
-| `text`       | Models that produce text output (default)   |
-| `image`      | Models that generate images                 |
-| `audio`      | Models that produce audio output            |
-| `embeddings` | Embedding models                            |
-| `all`        | Include all models, skip modality filtering |
+When the parameter is omitted, the endpoint returns text-output models only. Models whose output is not text, such as image generators, embedding models, or decision models like [Jev](https://openrouter.ai/typesafe/jev-1.13), are not in the default response. Pass their modality explicitly, or `all`, to discover them.
+
+| Value           | Description                                                                                                                                                                                                                                       |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `text`          | Models that produce text output (default)                                                                                                                                                                                                         |
+| `image`         | Models that generate images                                                                                                                                                                                                                       |
+| `video`         | Models that generate video                                                                                                                                                                                                                        |
+| `audio`         | Models that produce audio output                                                                                                                                                                                                                  |
+| `speech`        | Text-to-speech models                                                                                                                                                                                                                             |
+| `transcription` | Speech-to-text models                                                                                                                                                                                                                             |
+| `embeddings`    | Embedding models                                                                                                                                                                                                                                  |
+| `rerank`        | Reranking models                                                                                                                                                                                                                                  |
+| `decisions`     | Decision models such as [Jev](https://openrouter.ai/typesafe/jev-1.13) that return typed judgments instead of text. See [Jev Lab](https://openrouter.ai/labs/jev) and the [Jev gating recipe](/docs/cookbook/building-agents/gate-tool-calls-with-jev) |
+| `all`           | Include all models, skip modality filtering                                                                                                                                                                                                       |
 
 Examples:
 
@@ -35,6 +42,9 @@ curl "https://openrouter.ai/api/v1/models?output_modalities=image"
 
 # Text and image models
 curl "https://openrouter.ai/api/v1/models?output_modalities=text,image"
+
+# Decision models only (e.g. Jev)
+curl "https://openrouter.ai/api/v1/models?output_modalities=decisions"
 
 # All models regardless of modality
 curl "https://openrouter.ai/api/v1/models?output_modalities=all"

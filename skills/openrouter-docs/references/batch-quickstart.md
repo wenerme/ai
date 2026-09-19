@@ -8,7 +8,9 @@
 
 The Batch API lets you submit many inference requests together and retrieve the results asynchronously. It's useful for work that doesn't need an immediate response, and it uses a 24-hour completion window so you can process requests without managing each call yourself.
 
-The Batch API supports several OpenRouter API shapes, including chat completions, Responses, and Anthropic Messages. You submit requests as an inline JSON `requests` array. You don't upload a JSONL file; OpenRouter handles JSONL persistence internally.
+The Batch API supports several OpenRouter API shapes, including chat completions, Responses, Anthropic Messages, and embeddings. You submit requests as an inline JSON `requests` array. You don't upload a JSONL file; OpenRouter handles JSONL persistence internally.
+
+A batch runs on one provider. By default OpenRouter picks the cheapest eligible batch endpoint for the model, and you can pin a provider with `provider.only` (see [Provider routing](#provider-routing)). Use the [list endpoint](#list-your-batches) to see every batch in your workspace.
 
 <Note>
   Batch results are available asynchronously. A successful submission returns `202 Accepted` with `status: "validating"`. That means OpenRouter persisted the batch and queued it for validation; it doesn't mean every request has completed.
@@ -18,9 +20,36 @@ The Batch API supports several OpenRouter API shapes, including chat completions
 
 ## Limitations
 
-The Batch API is currently text-only. On `/v1/chat/completions`, `/v1/responses`, and `/v1/messages`, validation rejects any request that carries image, audio, video, or file content parts. That includes the Responses `input_image` and `input_file` parts and the Anthropic `image` and `document` blocks. On `/v1/chat/completions`, validation also rejects requests that ask for non-text output through `modalities`, `audio`, or `image_config`. For embeddings, `input` must be strings or token arrays.
+Multimodal input in batch is URL-only, and support depends on the provider the batch routes to.
 
-Send multimodal requests to the sync API instead.
+**Images.** Image parts must be public `http(s)` URLs. Base64 and `data:` URI images are rejected on every provider. Image URLs are accepted when the model accepts image input and the batch routes to a provider whose batch API fetches URLs natively:
+
+| Provider         | Public image URLs | Public file URLs                  |
+| ---------------- | ----------------- | --------------------------------- |
+| OpenAI           | Supported         | Supported on `/v1/responses` only |
+| Anthropic        | Supported         | Supported                         |
+| xAI              | Supported         | Not supported                     |
+| Mistral          | Not supported     | Supported                         |
+| Google Vertex    | Not supported     | Not supported                     |
+| Google AI Studio | Not supported     | Not supported                     |
+| Together         | Not supported     | Not supported                     |
+| Fireworks        | Not supported     | Not supported                     |
+
+**Files.** File parts (Responses `input_file`, Anthropic `document`, chat completions `file`) are accepted only as URL references, only on the providers marked above, and only for models that list file input. Inline file bytes and provider file IDs are rejected.
+
+**Audio and video.** Audio and video input parts are rejected on every provider. On `/v1/chat/completions`, requests that ask for non-text output through `modalities`, `audio`, or `image_config` are also rejected. For embeddings, `input` must be strings or token arrays.
+
+**Web search.** Provider-native web search tools pass through when the resolved provider runs the search itself, for example OpenAI `web_search` on `/v1/responses` and Anthropic `web_search_20250305` on `/v1/messages`. OpenRouter-orchestrated search is not available in batch. A submit for an `:online` model variant is rejected synchronously with `422`. Per request, the `web` plugin, `web_search_options` (except on OpenAI models that execute it natively), and web search tools with an `engine` other than `auto` or `native` are rejected.
+
+**Other per-request bans.** A request with no input (empty `messages` or `input` and no `prompt`), `stream: true`, `speed`, a max output token cap below 1, and Anthropic beta-gated features are rejected. Unknown parameters are dropped by the provider serializer, matching the sync API.
+
+Use [`provider.only`](#provider-routing) to pin a provider that supports the content you send. Requests that fail these per-request checks are rejected after the `202` response: the batch moves to `status: "failed"` and `error` explains the rejection. Send unsupported content to the sync API instead.
+
+***
+
+## Find batch models
+
+Batch runs on `:batch` endpoint variants. Filter the [models page by the batch variant](https://openrouter.ai/models?variant=batch) to see which models and providers currently support it. A submit for a model with no `:batch` endpoint returns `400`. If the model has `:batch` endpoints but none match your `provider.only` list, the submit returns `404`.
 
 ***
 
@@ -58,8 +87,15 @@ The request body has three required top-level fields:
 | `model`    | An OpenRouter model slug, such as `openai/gpt-4o`. This batch-level model is applied to every request.                                                  |
 | `requests` | A non-empty array of `{ custom_id, body }` items. `custom_id` must be unique within the batch, and `body` follows the shape of the selected `endpoint`. |
 
+Two optional top-level fields:
+
+| Field               | Description                                                                                                          |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `provider`          | `{ "only": ["<provider-slug>"] }` to pin the batch to specific providers. See [Provider routing](#provider-routing). |
+| `completion_window` | Defaults to `24h`, which is the only accepted value.                                                                 |
+
 <Warning>
-  Serialize `endpoint` and `model` before `requests` in the JSON body. The API stream-parses the request so it can accept very large `requests` arrays without buffering, and it returns a `400` if `requests` appears first. Every example on this page already uses this order.
+  Serialize `endpoint`, `model`, and any `provider` or `completion_window` before `requests` in the JSON body. The API stream-parses the request so it can accept very large `requests` arrays without buffering, and it returns a `400` if `requests` appears first. Every example on this page already uses this order.
 </Warning>
 
 The batch-level `model` applies to every request. A request body can omit `model` to inherit the batch-level value. If a request body sets its own `model`, it must match the batch-level `model` or the submission is rejected.
@@ -176,6 +212,96 @@ The response is a batch object with an ID you can use to check progress:
 ```
 
 The only supported completion window is `24h`.
+
+***
+
+## Provider routing
+
+Every request in a batch runs on a single provider, chosen once at submit time. By default OpenRouter picks the cheapest eligible `:batch` endpoint for the model, after applying your account's provider allowlist, data policy, and BYOK settings. Endpoints at the same price share traffic. If you have a BYOK key for one of the providers, that endpoint is preferred over cheaper platform endpoints.
+
+To pin the batch to a provider, add a top-level `provider` object with an `only` array of [provider slugs](/docs/guides/routing/provider-selection), placed before `requests`:
+
+<CodeGroup>
+  ```python title="Python" lines theme={null}
+  import json
+  import requests
+
+  response = requests.post(
+    url="https://openrouter.ai/api/v1/batches",
+    headers={
+      "Authorization": "Bearer <OPENROUTER_API_KEY>",
+      "Content-Type": "application/json",
+    },
+    data=json.dumps({
+      "endpoint": "/v1/chat/completions",
+      "model": "google/gemini-2.5-flash",
+      "provider": {
+        "only": ["google-vertex"]
+      },
+      "requests": [
+        {
+          "custom_id": "req-0001",
+          "body": {
+            "messages": [
+              {"role": "user", "content": "Summarize this ticket in one sentence."}
+            ]
+          }
+        }
+      ]
+    })
+  )
+
+  print(response.json())
+  ```
+
+  ```typescript title="TypeScript" lines theme={null}
+  const response = await fetch('https://openrouter.ai/api/v1/batches', {
+    method: 'POST',
+    headers: {
+      Authorization: 'Bearer <OPENROUTER_API_KEY>',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      endpoint: '/v1/chat/completions',
+      model: 'google/gemini-2.5-flash',
+      provider: {
+        only: ['google-vertex'],
+      },
+      requests: [
+        {
+          custom_id: 'req-0001',
+          body: {
+            messages: [{ role: 'user', content: 'Summarize this ticket in one sentence.' }],
+          },
+        },
+      ],
+    }),
+  });
+
+  console.log(await response.json());
+  ```
+
+  ```shell title="Shell" lines theme={null}
+  curl https://openrouter.ai/api/v1/batches \
+    -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "endpoint": "/v1/chat/completions",
+      "model": "google/gemini-2.5-flash",
+      "provider": { "only": ["google-vertex"] },
+      "requests": [
+        {
+          "custom_id": "req-0001",
+          "body": {
+            "messages": [{ "role": "user", "content": "Summarize this ticket in one sentence." }]
+          }
+        }
+      ]
+    }'
+  ```
+</CodeGroup>
+
+`provider.only` is the only provider preference the Batch API accepts. `order`, `sort`, `allow_fallbacks`, and the other sync preferences are rejected. If none of the listed providers has an eligible `:batch` endpoint for the model, the submit returns `404` instead of falling back to another provider. Use the [batch variant filter on the models page](https://openrouter.ai/models?variant=batch) to see which providers serve a model in batch.
 
 ***
 
@@ -419,6 +545,7 @@ Set the top-level `endpoint` to choose the request shape used by every `body` in
 * Chat completions: `/v1/chat/completions`
 * Responses: `/v1/responses`
 * Anthropic Messages: `/v1/messages`
+* Embeddings: `/v1/embeddings` (see [Embeddings](#embeddings))
 
 For example, an Anthropic Messages batch uses `/v1/messages` and puts the Messages-shaped request in each item's `body`:
 

@@ -649,6 +649,11 @@ And the following unique queues:
   - CIDR list: `1.2.3.0/8` for IPv4 and `2001:db8::/32` for IPv6
   - Wildcard hosts: `*.mydomain.com`, `192.168.100.*`
 
+## Audit (`audit`)
+
+- `RECORD_OUTPUT`: **disabled**: Where security-relevant events are recorded. `disabled` records nothing. `database` writes events to the `audit_event` table and shows them in the admin, organization, repository and user settings. Invalid values fall back to `disabled`. See [Audit Logging](audit-logging.md).
+- `RETENTION_DAYS`: **30**: Days to keep recorded events. `0` keeps them forever. Pruning is done by `cron.delete_old_audit_events`. That task is only registered while `RECORD_OUTPUT` records events and `RETENTION_DAYS` is greater than `0`.
+
 ## Camo (`camo`)
 
 - `ENABLED`: **false**: Enable media proxy, we support images only at the moment.
@@ -1189,6 +1194,16 @@ Synchronize external user data (only LDAP user synchronization is supported)
 - `NOTICE_ON_SUCCESS`: **false**: Set to true to switch on success notices.
 - `SCHEDULE`: **@every 168h**: Cron syntax to set how often to check.
 - `OLDER_THAN`: **8760h**: any action older than this expression will be deleted from database, suggest using `8760h` (1 year) because that's the max length of heatmap.
+
+#### Cron - Delete old audit events (`cron.delete_old_audit_events`)
+
+Deletes audit events older than the retention period. The task is only registered when `[audit].RECORD_OUTPUT` records events and `[audit].RETENTION_DAYS` is greater than `0`. See [Audit Logging](audit-logging.md).
+
+- `ENABLED`: **true**: Enable service.
+- `RUN_AT_START`: **false**: Run tasks at start up time (if ENABLED).
+- `NOTICE_ON_SUCCESS`: **false**: Set to true to switch on success notices.
+- `SCHEDULE`: **@every 24h**: Cron syntax to set how often to check.
+- `OLDER_THAN`: **720h**: any audit event older than this expression will be deleted from the database. Defaults to `[audit].RETENTION_DAYS`.
 
 #### Cron -  Check for new Gitea versions (`cron.update_checker`)
 

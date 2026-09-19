@@ -399,8 +399,8 @@
   },
   "api/api-reference/interns/create-an-intern.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/interns/create-an-intern.md",
-    "size": 17809,
-    "updatedAt": "2026-09-19T04:27:32.613Z"
+    "size": 18229,
+    "updatedAt": "2026-09-19T14:01:08.159Z"
   },
   "api/api-reference/interns/delete-an-intern.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/interns/delete-an-intern.md",
@@ -809,8 +809,8 @@
   },
   "batch-quickstart.md": {
     "url": "https://openrouter.ai/docs/batch-quickstart.md",
-    "size": 21541,
-    "updatedAt": "2026-09-19T04:28:22.078Z"
+    "size": 28208,
+    "updatedAt": "2026-09-19T14:02:04.552Z"
   },
   "changelog.md": {
     "url": "https://openrouter.ai/docs/changelog.md",
@@ -2236,8 +2236,8 @@
   },
   "guides/overview/models.md": {
     "url": "https://openrouter.ai/docs/guides/overview/models.md",
-    "size": 17557,
-    "updatedAt": "2026-09-14T04:46:19.064Z"
+    "size": 20715,
+    "updatedAt": "2026-09-19T14:04:48.636Z"
   },
   "guides/overview/multimodal/audio.md": {
     "url": "https://openrouter.ai/docs/guides/overview/multimodal/audio.md",
