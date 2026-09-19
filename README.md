@@ -1396,7 +1396,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 125 skills, 49281 files, 538 MiB total
+> 125 skills, 49315 files, 538 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1434,7 +1434,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 835 | 8.1 MiB |
 | [cloudflare-zero-trust](./skills/cloudflare-zero-trust/SKILL.md) | 948 | 20 MiB |
 | [codex-docs](./skills/codex-docs/SKILL.md) | 164 | 1.4 MiB |
-| [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 6549 | 33 MiB |
+| [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 6564 | 33 MiB |
 | [daisyui-v5](./skills/daisyui-v5/SKILL.md) | 3 | 61 KiB |
 | [doris-docs](./skills/doris-docs/SKILL.md) | 1637 | 10 MiB |
 | [duckdb-clients](./skills/duckdb-clients/SKILL.md) | 83 | 1.4 MiB |
@@ -1457,11 +1457,11 @@ Use when implementing React state management with Zustand, including context-sco
 | [gitlab-ci-docs](./skills/gitlab-ci-docs/SKILL.md) | 175 | 2.0 MiB |
 | [gitlab-user-docs](./skills/gitlab-user-docs/SKILL.md) | 917 | 8.4 MiB |
 | [glab-cli](./skills/glab-cli/SKILL.md) | 5 | 22 KiB |
-| [glab-docs](./skills/glab-docs/SKILL.md) | 315 | 539 KiB |
-| [google-ai-api](./skills/google-ai-api/SKILL.md) | 13 | 706 KiB |
+| [glab-docs](./skills/glab-docs/SKILL.md) | 317 | 541 KiB |
+| [google-ai-api](./skills/google-ai-api/SKILL.md) | 13 | 718 KiB |
 | [google-ai-docs](./skills/google-ai-docs/SKILL.md) | 102 | 2.7 MiB |
 | [grafana-docs](./skills/grafana-docs/SKILL.md) | 637 | 6.4 MiB |
-| [grafana-plugin-docs](./skills/grafana-plugin-docs/SKILL.md) | 680 | 4.8 MiB |
+| [grafana-plugin-docs](./skills/grafana-plugin-docs/SKILL.md) | 685 | 4.9 MiB |
 | [hono-docs](./skills/hono-docs/SKILL.md) | 88 | 362 KiB |
 | [huggingface-docs](./skills/huggingface-docs/SKILL.md) | 364 | 2.1 MiB |
 | [humanizer](./skills/humanizer/SKILL.md) | 1 | 28 KiB |
@@ -1476,19 +1476,19 @@ Use when implementing React state management with Zustand, including context-sco
 | [llamafactory-docs](./skills/llamafactory-docs/SKILL.md) | 40 | 190 KiB |
 | [luanti-docs](./skills/luanti-docs/SKILL.md) | 176 | 1.7 MiB |
 | [mastra](./skills/mastra/SKILL.md) | 12 | 71 KiB |
-| [mastra-docs](./skills/mastra-docs/SKILL.md) | 911 | 8.0 MiB |
+| [mastra-docs](./skills/mastra-docs/SKILL.md) | 915 | 8.0 MiB |
 | [mihomo-docs](./skills/mihomo-docs/SKILL.md) | 185 | 562 KiB |
 | [mikro-orm-v6-to-v7](./skills/mikro-orm-v6-to-v7/SKILL.md) | 5 | 37 KiB |
 | [mikroorm-docs](./skills/mikroorm-docs/SKILL.md) | 87 | 1.3 MiB |
 | [model-reference](./skills/model-reference/SKILL.md) | 17 | 67 KiB |
 | [nats-docs](./skills/nats-docs/SKILL.md) | 6 | 42 KiB |
-| [openai-api](./skills/openai-api/SKILL.md) | 614 | 38 MiB |
+| [openai-api](./skills/openai-api/SKILL.md) | 620 | 38 MiB |
 | [openai-docs](./skills/openai-docs/SKILL.md) | 235 | 4.6 MiB |
 | [openai-sdk-python](./skills/openai-sdk-python/SKILL.md) | 529 | 25 MiB |
 | [openai-sdk-typescript](./skills/openai-sdk-typescript/SKILL.md) | 529 | 24 MiB |
-| [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 488 KiB |
+| [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 489 KiB |
 | [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 479 | 2.8 MiB |
-| [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 2442 | 17 MiB |
+| [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 2444 | 17 MiB |
 | [orpc-docs](./skills/orpc-docs/SKILL.md) | 1 | 4.7 KiB |
 | [orpc-implementation-sops](./skills/orpc-implementation-sops/SKILL.md) | 2 | 7.4 KiB |
 | [papermc-docs](./skills/papermc-docs/SKILL.md) | 192 | 877 KiB |
@@ -1497,7 +1497,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [ppt-master](./skills/ppt-master/SKILL.md) | 12994 | 80 MiB |
 | [pytorch-docs](./skills/pytorch-docs/SKILL.md) | 319 | 2.1 MiB |
 | [react-resizable-panels-v3-to-v4](./skills/react-resizable-panels-v3-to-v4/SKILL.md) | 1 | 9.2 KiB |
-| [requesting-code-review](./skills/requesting-code-review/SKILL.md) | 2 | 8.4 KiB |
+| [requesting-code-review](./skills/requesting-code-review/SKILL.md) | 2 | 9.2 KiB |
 | [shadcn](./skills/shadcn/SKILL.md) | 15 | 96 KiB |
 | [skill-writer](./skills/skill-writer/SKILL.md) | 4 | 28 KiB |
 | [sling-cli](./skills/sling-cli/SKILL.md) | 3 | 14 KiB |

@@ -1,6 +1,6 @@
 ---
 description: Configure the Cloudflare source IP range used when you receive traffic from Cloudflare services sent to your Cloudflare One private networks.
-title: Configure Cloudflare source IPs (beta)
+title: Configure Cloudflare source IPs
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
@@ -10,9 +10,9 @@ image: https://developers.cloudflare.com/og-docs.png
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Configure Cloudflare source IPs (beta)
+# Configure Cloudflare source IPs
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can configure the source IP address range used by Cloudflare whenever a Cloudflare service, such as Cloudflare Load Balancing, sends traffic to a Cloudflare One private network. This address range is referred to as the Cloudflare Source IP Prefix (or `cloudflare_source` subnet type in the API).
 
@@ -21,7 +21,7 @@ You can configure the source IP address range used by Cloudflare whenever a Clou
 
 When Cloudflare services send traffic to your private network, the source IP address determines how return traffic is routed. It also determines whether on-premises security devices can properly inspect the traffic. In legacy routing mode, traffic to private networks is sourced from public Cloudflare IPs, which can cause routing and security issues.
 
-For customers using [Unified Routing (beta)](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta), traffic to private networks is sourced from a dedicated, non-internet-routable private IPv4 range by default. This ensures:
+For customers using [Unified Routing](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#unified-routing), traffic to private networks is sourced from a dedicated, non-internet-routable private IPv4 range by default. This ensures:
 
 - **Symmetric routing** — Return traffic stays on your private network connection instead of taking an asymmetric path over the public Internet.
 - **Firewall state preservation** — On-premises stateful firewalls can track connections end-to-end because they see both request and response traffic.
@@ -35,7 +35,7 @@ You must configure routes in your network so that response traffic for these sou
 
 Before you begin, ensure that:
 
-- You have Cloudflare One [Unified Routing (beta)](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta). If your account is not yet on Unified Routing, contact your account team to discuss migration and availability.
+- You have Cloudflare One [Unified Routing](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#unified-routing). If your account uses Legacy Routing, follow [How to upgrade to Unified Routing](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#how-to-upgrade-to-unified-routing).
 - You have [Cloudflare One Networks Write](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) permission.
 - Your desired new network range meets the following requirements:
   - Your network must be defined as a single CIDR with a prefix length of `/12`.
@@ -69,7 +69,7 @@ For example, traffic onramped from a Cloudflare One Client through Cloudflare Lo
 
 Note
 
-You need Unified Routing (beta) to configure source IPs. If your account is not yet migrated, contact your account team to discuss migration and availability.
+You need Unified Routing to configure source IPs. If your account uses Legacy Routing, follow [How to upgrade to Unified Routing](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#how-to-upgrade-to-unified-routing).
 
 1. Go to the **Address space** page. [Go to **Address space** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space)
 2. Select the **Custom IPs** tab.
@@ -118,5 +118,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/#page","headline":"Configure Cloudflare source IPs (beta) · Cloudflare WAN docs","description":"Configure the Cloudflare source IP range used when you receive traffic from Cloudflare services sent to your Cloudflare One private networks.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/#page","headline":"Configure Cloudflare source IPs · Cloudflare WAN docs","description":"Configure the Cloudflare source IP range used when you receive traffic from Cloudflare services sent to your Cloudflare One private networks.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

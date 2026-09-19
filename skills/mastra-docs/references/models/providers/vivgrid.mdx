@@ -5,7 +5,7 @@ description: "Browse Vivgrid model IDs, capabilities, context windows, and prici
 
 # [Vivgrid logo]Vivgrid
 
-Access 27 Vivgrid models through Mastra's model router. Authentication is handled automatically using the `VIVGRID_API_KEY` environment variable.
+Access 30 Vivgrid models through Mastra's model router. Authentication is handled automatically using the `VIVGRID_API_KEY` environment variable.
 
 Learn more in the [Vivgrid documentation](https://docs.vivgrid.com/models).
 
@@ -62,6 +62,30 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 10,
     "outputCost": 50
+  },
+  {
+    "model": "vivgrid/claude-opus-5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 5,
+    "outputCost": 25
+  },
+  {
+    "model": "vivgrid/claude-sonnet-5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 10
   },
   {
     "model": "vivgrid/deepseek-v3.2",
@@ -350,6 +374,18 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 10,
     "outputCost": 50
+  },
+  {
+    "model": "vivgrid/jev",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": 64000,
+    "maxOutput": null,
+    "inputCost": 0.042,
+    "outputCost": null
   },
   {
     "model": "vivgrid/kimi-k3",

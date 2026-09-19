@@ -1,5 +1,5 @@
 ---
-description: Use the OpenAI SDK to call Workers AI models through compatible API endpoints.
+description: Use the OpenAI SDK with Workers AI Chat Completions, embeddings, and supported GPT-OSS Responses requests.
 title: OpenAI compatible API endpoints
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -12,21 +12,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # OpenAI compatible API endpoints
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Workers AI supports OpenAI compatible endpoints for [text generation](https://developers.cloudflare.com/workers-ai/models/) (`/v1/chat/completions`) and [text embedding models](https://developers.cloudflare.com/workers-ai/models/) (`/v1/embeddings`). This allows you to use the same code as you would for your OpenAI commands, but swap in Workers AI easily.
+Workers AI provides OpenAI-compatible endpoints for [text generation](https://developers.cloudflare.com/workers-ai/models/) through Chat Completions (`/v1/chat/completions`) and for [text embedding models](https://developers.cloudflare.com/workers-ai/models/) (`/v1/embeddings`). The Responses API (`/v1/responses`) is available only for GPT-OSS models. Easily call Workers AI by swapping the `baseURL` in the standard OpenAI SDK.
 
 
 
 ## Usage
 
-### Workers AI
+### Chat Completions and embeddings
 
-Normally, Workers AI requires you to specify the model name in the cURL endpoint or within the `env.AI.run` function.
+Most Workers AI text generation models support the OpenAI Chat Completions API. Embedding models support the OpenAI Embeddings API.
 
-With OpenAI compatible endpoints, you can leverage the [openai-node sdk ↗](https://github.com/openai/openai-node) to make calls to Workers AI. This allows you to use Workers AI by simply changing the base URL and the model name.
+Use the [OpenAI JavaScript SDK ↗](https://github.com/openai/openai-node) by setting the Workers AI base URL, API token, and model name.
 
-*OpenAI SDK Examplejs*
+*OpenAI SDK examplejs*
 
 ```js
 import OpenAI from "openai";
@@ -36,16 +36,9 @@ const openai = new OpenAI({
 	baseURL: `https://api.cloudflare.com/client/v4/accounts/${env.CLOUDFLARE_ACCOUNT_ID}/ai/v1`,
 });
 
-// Use chat completions
 const chatCompletion = await openai.chat.completions.create({
 	messages: [{ role: "user", content: "Make some robot noises" }],
 	model: "@cf/meta/llama-3.1-8b-instruct",
-});
-
-// Use responses
-const response = await openai.responses.create({
-	model: "@cf/openai/gpt-oss-120b",
-	input: "Talk to me about open source",
 });
 
 const embeddings = await openai.embeddings.create({
@@ -82,6 +75,26 @@ OpenAI clients that preserve custom fields can send this option. Clients that re
 
 Refer to [Reject busy requests](https://developers.cloudflare.com/workers-ai/features/reject-if-busy/) for examples and error behavior.
 
+### Responses API for GPT-OSS
+
+The Responses API is supported only by the [`@cf/openai/gpt-oss-120b`](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/) and [`@cf/openai/gpt-oss-20b`](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/) models. Responses requests must be non-streaming, only `stream: false` is supported.
+
+*GPT-OSS Responses API examplejs*
+
+```js
+import OpenAI from "openai";
+
+const openai = new OpenAI({
+	apiKey: env.CLOUDFLARE_API_KEY,
+	baseURL: `https://api.cloudflare.com/client/v4/accounts/${env.CLOUDFLARE_ACCOUNT_ID}/ai/v1`,
+});
+
+const response = await openai.responses.create({
+	model: "@cf/openai/gpt-oss-120b",
+	input: "Talk to me about open source",
+});
+```
+
 ### AI Gateway
 
 These endpoints are also compatible with [AI Gateway](https://developers.cloudflare.com/ai-gateway/usage/providers/workersai/#openai-compatible-endpoints).
@@ -95,5 +108,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/#page","headline":"OpenAI compatible API endpoints · Cloudflare Workers AI docs","description":"Use the OpenAI SDK to call Workers AI models through compatible API endpoints.","url":"https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/#page","headline":"OpenAI compatible API endpoints · Cloudflare Workers AI docs","description":"Use the OpenAI SDK with Workers AI Chat Completions, embeddings, and supported GPT-OSS Responses requests.","url":"https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

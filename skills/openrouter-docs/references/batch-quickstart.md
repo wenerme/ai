@@ -449,8 +449,6 @@ All requests in one batch use the same top-level `endpoint`. To mix API shapes, 
 
 ## Embeddings
 
-Embeddings are rolling out on providers that support them.
-
 Set the top-level `endpoint` to `/v1/embeddings` and put the embeddings request in each item's `body`. Each `body` takes an `input` (a string, an array of strings, a token array, or an array of token arrays). Multimodal inputs, `input_type`, and `provider` preferences are not supported on the Batch API. Use the sync API for those.
 
 An `input` can be a single string or an array of strings. When it is an array, that request embeds every string in one call:

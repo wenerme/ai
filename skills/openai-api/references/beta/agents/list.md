@@ -80,7 +80,7 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
 
     - `effort: "none" or "minimal" or "low" or 4 more or null`
 
-      The amount of reasoning effort used by an agent.
+      The requested reasoning effort, or `null` when the model selects its own default.
 
       - `"none"`
 
@@ -98,7 +98,7 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
 
     - `summary: "concise" or "detailed" or "auto" or null`
 
-      The reasoning summary format requested from an agent.
+      The requested reasoning summary format, or `null` when summaries are disabled.
 
       - `"concise"`
 
@@ -328,7 +328,7 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
 
       - `location: object { city, country, region, timezone }  or null`
 
-        Approximate user location used to localize web search results.
+        Approximate location used to localize search results, if provided.
 
         - `city: string or null`
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Okta
 
-Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/okta/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/okta/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Okta provides cloud software that helps companies manage and secure user authentication to modern applications, and helps developers build identity controls into applications, website web services, and devices. You can integrate Okta with Cloudflare One and build rules based on user identity and group membership. Cloudflare One supports Okta integrations using either the OIDC (default) or [SAML](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/okta-saml/) protocol.
 
@@ -84,7 +84,12 @@ Token claim expressions
     - **App ID**: Enter your Okta client ID.
     - **Client secret**: Enter your Okta client secret.
     - **Okta account URL**: Enter your [Okta domain ↗](https://developer.okta.com/docs/guides/find-your-domain/main/), for example `https://my-company.okta.com`.
-14. (Optional) Create an Okta API token and enter it in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** > **Integrations** > **Identity providers** (the token can be read-only). Use an API token if your Okta tenant has more than 100 groups. This setting is specific to Okta and is not part of SCIM. The token only retrieves Okta group names for the policy builder. Access evaluates group membership from the user's OIDC token during authentication.
+14. (Optional) Create an Okta API token and enter it in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** > **Integrations** > **Identity providers** (the token can be read-only). Use an API token if your Okta tenant has more than 100 groups. When the user's OIDC token contains no groups or reaches Okta's 100-group limit, Cloudflare uses this token during authentication to fetch the user's complete group membership. This setting is specific to Okta and is not part of SCIM. The API token does not add groups to the Access policy builder; the group options in the policy builder come from groups provisioned through [SCIM](#synchronize-users-and-groups).
+
+Note
+
+The API token field appears blank after you save the identity provider configuration. This is expected. Secret values are omitted from API responses, but the token is stored.
+
 15. (Optional) To configure [custom OIDC claims](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/#custom-oidc-claims):
     1. In Okta, create a [custom authorization server ↗](https://developer.okta.com/docs/guides/customize-authz-server/main/) and ensure that the `groups` scope is enabled.
     2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), enter the **Authorization Server ID** obtained from Okta.
@@ -188,9 +193,17 @@ New users must first [register the Cloudflare One Client](https://developers.clo
 
 If you see the error `Failed to fetch user/group information from the identity`, double-check your Okta configuration:
 
-- If your Okta tenant has more than 100 groups, include an Okta API token in the identity provider configuration. This setting is specific to Okta and is not part of SCIM. The token lets Cloudflare retrieve Okta group names for the policy builder. Access does not use the API token to evaluate a user's group membership during authentication.
+- If your Okta tenant has more than 100 groups, include an Okta API token in the identity provider configuration. When the user's OIDC token contains no groups or reaches Okta's 100-group limit, Cloudflare uses the API token during authentication to fetch the user's complete group membership. This setting is specific to Okta and is not part of SCIM. The API token does not populate group options in the Access policy builder; those come from groups provisioned through SCIM.
 - If Okta returns more than 100 groups in a user's OIDC token, Okta may omit some group memberships from the token. This is an Okta token claim limitation, not a Cloudflare limit. If a required group is omitted, Cloudflare cannot evaluate policies that depend on that group. To avoid this, narrow the Okta groups claim filter so that only groups used in Cloudflare policies are included. For more information, refer to [Okta's group functions and dynamic allowlists documentation ↗](https://support.okta.com/help/s/article/limitations-of-group-functions-dynamic-allowlists?language=en_US).
 - The request may be blocked by the [ThreatInsights feature ↗](https://help.okta.com/en/prod/Content/Topics/Security/threat-insight/ti-index.htm) within Okta.
+
+### Okta Groups selector is empty or missing groups in the policy builder
+
+The **Okta Groups** selector in the Access policy builder is populated by groups provisioned through SCIM, not by the optional Okta API token. If groups are missing from the selector:
+
+- In Okta, go to the SCIM application's **Push Groups** tab and push the groups you want to use in Access policies. For more information, refer to [Configure SCIM in Okta](#2-configure-scim-in-okta).
+- Make sure the groups you push through SCIM match the groups returned in the OIDC `groups` claim.
+- Adding an Okta API token will not add groups to the selector. The API token is only used during authentication to fetch a user's group membership.
 
 Was this helpful?
 
@@ -201,5 +214,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/okta/#page","headline":"Okta · Cloudflare One docs","description":"Integrate Okta as an identity provider for Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/okta/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Okta","SCIM"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/okta/#page","headline":"Okta · Cloudflare One docs","description":"Integrate Okta as an identity provider for Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/okta/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Okta","SCIM"]}
 ```

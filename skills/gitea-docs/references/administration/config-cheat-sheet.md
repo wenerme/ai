@@ -1036,7 +1036,7 @@ Release attachment has its own config options in `[repository.release]` section.
 - `ENABLED`: **true**: Enable running Update mirrors task periodically.
 - `SCHEDULE`: **@every 10m**: Cron syntax for scheduling update mirrors, e.g. `@every 3h`.
 - `RUN_AT_START`: **false**: Run Update mirrors task when Gitea starts.
-- `NOTICE_ON_SUCCESS`: **false**: Notice if not success
+- `NOTICE_ON_SUCCESS`: **false**: Set to true to switch on success notices.
 - `PULL_LIMIT`: **50**: Limit the number of mirrors added to the queue to this number (negative values mean no limit, 0 will result in no mirrors being queued effectively disabling pull mirror updating).
 - `PUSH_LIMIT`: **50**: Limit the number of mirrors added to the queue to this number (negative values mean no limit, 0 will result in no mirrors being queued effectively disabling push mirror updating).
 
@@ -1045,7 +1045,7 @@ Release attachment has its own config options in `[repository.release]` section.
 - `ENABLED`: **true**: Enable running repository health check task periodically.
 - `SCHEDULE`: **@midnight**: Cron syntax for scheduling repository health check.
 - `RUN_AT_START`: **false**: Run repository health check task when Gitea starts.
-- `NOTICE_ON_SUCCESS`: **false**: Notice if not success
+- `NOTICE_ON_SUCCESS`: **false**: Set to true to switch on success notices.
 - `TIMEOUT`: **60s**: Time duration syntax for health check execution timeout.
 - `ARGS`: **_empty_**: Arguments for command `git fsck`, e.g. `--unreachable --tags`. See more on http://git-scm.com/docs/git-fsck
 
@@ -1054,12 +1054,13 @@ Release attachment has its own config options in `[repository.release]` section.
 - `SCHEDULE`: **@midnight**: Cron syntax for scheduling repository statistics check.
 - `ENABLED`: **true**: Enable running repository statistics check task periodically.
 - `RUN_AT_START`: **true**: Run repository statistics check task when Gitea starts.
-- `NOTICE_ON_SUCCESS`: **false**: Notice if not success
+- `NOTICE_ON_SUCCESS`: **false**: Set to true to switch on success notices.
 
 #### Cron - Cleanup hook_task Table (`cron.cleanup_hook_task_table`)
 
 - `ENABLED`: **true**: Enable cleanup hook_task job.
 - `RUN_AT_START`: **false**: Run cleanup hook_task at start time (if ENABLED).
+- `NOTICE_ON_SUCCESS`: **false**: Set to true to switch on success notices.
 - `SCHEDULE`: **@midnight**: Cron syntax for cleaning hook_task table.
 - `CLEANUP_TYPE` **OlderThan** OlderThan or PerWebhook Method to cleanup hook_task, either by age (i.e. how long ago hook_task record was delivered) or by the number to keep per webhook (i.e. keep most recent x deliveries per webhook).
 - `OLDER_THAN`: **168h**: If CLEANUP_TYPE is set to OlderThan, then any delivered hook_task records older than this expression will be deleted.
@@ -1079,7 +1080,7 @@ Update migrated repositories' issues and comments' posterid, it will always atte
 
 - `ENABLED`: **true**: Enable update migration poster id job.
 - `RUN_AT_START`: **true**: Update migrated repositories' issues and comments' posterid when starting server
-- `NOTICE_ON_SUCCESS`: **false**: Notice if not success
+- `NOTICE_ON_SUCCESS`: **false**: Set to true to switch on success notices.
 - `SCHEDULE`: **@midnight** : Interval as a duration between each synchronization, it will always attempt synchronization when the instance starts.
 
 #### Cron - Sync External Users (`cron.sync_external_users`)
@@ -1088,7 +1089,7 @@ Synchronize external user data (only LDAP user synchronization is supported)
 
 - `ENABLED`: **true**: Enable synchronize external user data job
 - `RUN_AT_START`: **false**: Synchronize external user data when starting server
-- `NOTICE_ON_SUCCESS`: **false**: Notice if not success
+- `NOTICE_ON_SUCCESS`: **false**: Set to true to switch on success notices.
 - `SCHEDULE`: **@midnight** : Interval as a duration between each synchronization, it will always attempt synchronization when the instance starts.
 - `UPDATE_EXISTING`: **true**: Create new users, update existing user data and disable users that are not in external source anymore (default) or only create new users if UPDATE_EXISTING is set to false.
 
@@ -1096,12 +1097,14 @@ Synchronize external user data (only LDAP user synchronization is supported)
 
 - `ENABLED`: **true**: Enable cleanup expired actions assets job.
 - `RUN_AT_START`: **true**: Run job at start time (if ENABLED).
+- `NOTICE_ON_SUCCESS`: **false**: Set to true to switch on success notices.
 - `SCHEDULE`: **@midnight** : Cron syntax for the job.
 
 #### Cron - Delete Old Action Runs (`cron.cleanup_action_runs`)
 
 - `ENABLED`: **true**: Enable the job deleting action runs older than `RUN_RETENTION_DAYS`. Deletes nothing while that is 0.
 - `RUN_AT_START`: **false**: Run job at start time (if ENABLED).
+- `NOTICE_ON_SUCCESS`: **false**: Set to true to switch on success notices.
 - `SCHEDULE`: **@midnight**: Cron syntax for the job.
 
 #### Cron - Cleanup Deleted Branches (`cron.deleted_branches_cleanup`)
@@ -1191,7 +1194,7 @@ Synchronize external user data (only LDAP user synchronization is supported)
 
 - `ENABLED`: **true**: Enable service.
 - `RUN_AT_START`: **false**: Run tasks at start up time (if ENABLED).
-- `ENABLE_SUCCESS_NOTICE`: **true**: Set to false to switch off success notices.
+- `NOTICE_ON_SUCCESS`: **false**: Set to true to switch on success notices.
 - `SCHEDULE`: **@every 168h**: Cron syntax for scheduling a work, e.g. `@every 168h`.
 - `HTTP_ENDPOINT`: **https://dl.gitea.com/gitea/version.json**: the endpoint that Gitea will check for newer versions
 
@@ -1199,7 +1202,7 @@ Synchronize external user data (only LDAP user synchronization is supported)
 
 - `ENABLED`: **false**: Enable service.
 - `RUN_AT_START`: **false**: Run tasks at start up time (if ENABLED).
-- `NO_SUCCESS_NOTICE`: **false**: Set to true to switch off success notices.
+- `NOTICE_ON_SUCCESS`: **false**: Set to true to switch on success notices.
 - `SCHEDULE`: **@every 168h**: Cron syntax to set how often to check.
 - `OLDER_THAN`: **8760h**: any system notice older than this expression will be deleted from database.
 
@@ -1207,6 +1210,7 @@ Synchronize external user data (only LDAP user synchronization is supported)
 
 - `ENABLED`: **false**: Enable service.
 - `RUN_AT_START`: **false**: Run tasks at start up time (if ENABLED).
+- `NOTICE_ON_SUCCESS`: **false**: Set to true to switch on success notices.
 - `SCHEDULE`: **@every 24h**: Cron syntax to set how often to check.
 - `OLDER_THAN`: **168h**: Only attempt to garbage collect LFSMetaObjects older than this (default 7 days)
 - `LAST_UPDATED_MORE_THAN_AGO`: **72h**: Only attempt to garbage collect LFSMetaObjects that have not been attempted to be garbage collected for this long (default 3 days)
@@ -1219,35 +1223,35 @@ Synchronize external user data (only LDAP user synchronization is supported)
 
 - `ENABLED`: **true**: Enable service.
 - `RUN_AT_START`: **true**: Run tasks at start up time (if ENABLED).
-- `NO_SUCCESS_NOTICE`: **false**: Set to true to switch off success notices.
+- `NOTICE_ON_SUCCESS`: **false**: Set to true to switch on success notices.
 - `SCHEDULE`: **@annually**: Cron syntax to set how often to rebuild
 
 #### Cron - Stop running tasks which haven't been updated for a long time (`cron.stop_zombie_tasks`)
 
 - `ENABLED`: **true**: Enable service.
 - `RUN_AT_START`: **true**: Run tasks at start up time (if ENABLED).
-- `NO_SUCCESS_NOTICE`: **false**: Set to true to switch off success notices.
+- `NOTICE_ON_SUCCESS`: **false**: Set to true to switch on success notices.
 - `SCHEDULE`: **@every 5m**: Cron syntax to set how often tasks to run the check
 
 #### Cron - Stop running tasks which have running status and continuous updates but don't end for a long time (`cron.stop_endless_tasks`)
 
 - `ENABLED`: **true**: Enable service.
 - `RUN_AT_START`: **true**: Run tasks at start up time (if ENABLED).
-- `NO_SUCCESS_NOTICE`: **false**: Set to true to switch off success notices.
+- `NOTICE_ON_SUCCESS`: **false**: Set to true to switch on success notices.
 - `SCHEDULE`: **@every 30m**: Cron syntax to set how often to run the check.
 
 #### Cron - Cancel jobs which haven't been picked up for a long time (`cron.cancel_abandoned_jobs`)
 
 - `ENABLED`: **true**: Enable service.
 - `RUN_AT_START`: **false**: Run tasks at start up time (if ENABLED).
-- `NO_SUCCESS_NOTICE`: **false**: Set to true to switch off success notices.
+- `NOTICE_ON_SUCCESS`: **false**: Set to true to switch on success notices.
 - `SCHEDULE`: **@every 6h**: Cron syntax to set how often to run the check.
 
 #### Cron - Start cron based actions (`cron.start_schedule_tasks`)
 
 - `ENABLED`: **true**: Enable service.
 - `RUN_AT_START`: **false**: Run tasks at start up time (if ENABLED).
-- `NO_SUCCESS_NOTICE`: **false**: Set to true to switch off success notices.
+- `NOTICE_ON_SUCCESS`: **false**: Set to true to switch on success notices.
 - `SCHEDULE`: **@every 1m**: Cron syntax to set how often to schedule tasks
 
 ## Git (`git`)

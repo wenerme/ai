@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Tunnel
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-tunnel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-tunnel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare WAN (formerly Magic WAN) can work together with [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) to provide easy access between your networks and applications.
 
@@ -55,7 +55,7 @@ Longest-prefix-match routing is the default route selection method. Other mechan
 
 ### Automatic Return Routing (ARR)
 
-[Automatic Return Routing](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#automatic-return-routing-beta) bypasses route lookup for return traffic.
+[Automatic Return Routing](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#automatic-return-routing) bypasses route lookup for return traffic.
 
 When ARR is enabled:
 
@@ -63,7 +63,7 @@ When ARR is enabled:
 2. For return traffic, Cloudflare routes packets back to the tagged source connection directly, bypassing the routing table.
 3. This allows multiple sites to use identical private IP ranges without NAT or VRF configuration.
 
-ARR requires Unified Routing mode. For more information, refer to [Automatic Return Routing](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#automatic-return-routing-beta).
+ARR requires Unified Routing mode. For more information, refer to [Automatic Return Routing](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#automatic-return-routing).
 
 ### Hostname Routes (Initial resolved IPs)
 
@@ -101,5 +101,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-tunnel/#page","headline":"Cloudflare Tunnel · Cloudflare WAN docs","description":"Connect WAN sites with Cloudflare Tunnel.","url":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-tunnel/#page","headline":"Cloudflare Tunnel · Cloudflare WAN docs","description":"Connect WAN sites with Cloudflare Tunnel.","url":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

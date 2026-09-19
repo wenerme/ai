@@ -14,7 +14,7 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
 - `auth: CredentialAuthCreateParam`
 
-  The authentication method and secret values to store for the MCP server.
+  The authentication method and write-only secret values to store.
 
   - `McpOauth object { access_token, mcp_server_url, type, 2 more }`
 
@@ -40,7 +40,7 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
     - `refresh: optional object { client_id, refresh_token, token_endpoint, 3 more }  or null`
 
-      Configuration for refreshing the access token of an MCP OAuth credential.
+      Optional refresh configuration for an HTTPS OAuth token endpoint.
 
       - `client_id: string`
 
@@ -122,6 +122,52 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
       - `"static_bearer"`
 
+  - `EnvironmentVariable object { networking, secret_name, secret_value, type }`
+
+    An HTTP credential for OpenAI-hosted environments only. The sandbox receives an environment variable containing a placeholder, not the secret. Use the placeholder unchanged in outgoing requests. The egress proxy replaces the placeholder with the secret for allowed HTTPS destinations on ports 443 and 8443. Sandbox code cannot read the real secret or use it for local computation, such as signing a request.
+
+    - `networking: object { type }  or object { allowed_hosts, type }`
+
+      The destinations where the proxy can substitute this secret. The environment network policy must also allow them.
+
+      - `Unrestricted object { type }`
+
+        Allows substitution for destinations permitted by the environment network policy. Requires `environment.network.access` to be `restricted`, with explicit `allowed_domains`.
+
+        - `type: "unrestricted"`
+
+          The type of the object. Always `unrestricted`.
+
+          - `"unrestricted"`
+
+      - `Limited object { allowed_hosts, type }`
+
+        Allows substitution only for the listed hosts. The environment network policy must also allow these hosts.
+
+        - `allowed_hosts: array of string`
+
+          The 1 to 16 distinct allowed hostnames or IPv4 addresses, normalized to lowercase. Entries contain no scheme, path, port, or wildcard. IPv6 addresses are not supported.
+
+        - `type: "limited"`
+
+          The type of the object. Always `limited`.
+
+          - `"limited"`
+
+    - `secret_name: string`
+
+      The environment variable name that receives the placeholder, such as `SERVICE_API_KEY`. Use ASCII letters, digits, and underscores, starting with a letter or underscore. Names starting with `CODEX_` and managed proxy or certificate variable names are reserved.
+
+    - `secret_value: string`
+
+      The write-only secret to store. Never returned in credential resources or supplied directly to sandbox code. Must be nonempty and must not contain carriage returns, newlines, or NUL bytes.
+
+    - `type: "environment_variable"`
+
+      The type of the object. Always `environment_variable`.
+
+      - `"environment_variable"`
+
 - `name: string`
 
   The name is trimmed before storage. It must contain 1 to 256 UTF-8 bytes after trimming.
@@ -130,7 +176,7 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
 - `Credential object { id, auth, created_at, 4 more }`
 
-  Metadata for a stored MCP server credential. Secret values are never returned.
+  Metadata for a stored credential. Secret values are never returned.
 
   - `id: string`
 
@@ -138,7 +184,7 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
   - `auth: CredentialAuth`
 
-    The authentication method and non-secret configuration for the MCP server.
+    The authentication method and non-secret configuration of the credential.
 
     - `McpOauth object { expires_at, mcp_server_url, refresh, type }`
 
@@ -154,7 +200,7 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
       - `refresh: object { client_id, resource, scope, 2 more }  or null`
 
-        Configuration used to refresh an MCP OAuth access token, excluding secret values.
+        Public refresh metadata without refresh tokens or OAuth client secrets.
 
         - `client_id: string`
 
@@ -225,6 +271,48 @@ Creates a vault credential. Secret values are write-only and are never returned.
         The type of the object. Always `static_bearer`.
 
         - `"static_bearer"`
+
+    - `EnvironmentVariable object { networking, secret_name, type }`
+
+      Metadata for an HTTP credential used only in OpenAI-hosted environments. Sandbox code receives a placeholder. The proxy substitutes the secret for allowed HTTPS destinations on ports 443 and 8443. The real secret is not available to sandbox code for local computation and is never returned in this resource.
+
+      - `networking: object { type }  or object { allowed_hosts, type }`
+
+        The destinations where the proxy can substitute the secret, subject to the environment network policy.
+
+        - `Unrestricted object { type }`
+
+          Allows substitution for destinations permitted by the environment network policy. Requires `environment.network.access` to be `restricted`, with explicit `allowed_domains`.
+
+          - `type: "unrestricted"`
+
+            The type of the object. Always `unrestricted`.
+
+            - `"unrestricted"`
+
+        - `Limited object { allowed_hosts, type }`
+
+          Allows substitution only for the listed hosts. The environment network policy must also allow these hosts.
+
+          - `allowed_hosts: array of string`
+
+            The 1 to 16 distinct allowed hostnames or IPv4 addresses, normalized to lowercase. Entries contain no scheme, path, port, or wildcard. IPv6 addresses are not supported.
+
+          - `type: "limited"`
+
+            The type of the object. Always `limited`.
+
+            - `"limited"`
+
+      - `secret_name: string`
+
+        The environment variable name that receives the placeholder in the sandbox.
+
+      - `type: "environment_variable"`
+
+        The type of the object. Always `environment_variable`.
+
+        - `"environment_variable"`
 
   - `created_at: number`
 
@@ -405,7 +493,7 @@ Lists a vault's credentials using ID-based pagination without returning secret v
 
   - `auth: CredentialAuth`
 
-    The authentication method and non-secret configuration for the MCP server.
+    The authentication method and non-secret configuration of the credential.
 
     - `McpOauth object { expires_at, mcp_server_url, refresh, type }`
 
@@ -421,7 +509,7 @@ Lists a vault's credentials using ID-based pagination without returning secret v
 
       - `refresh: object { client_id, resource, scope, 2 more }  or null`
 
-        Configuration used to refresh an MCP OAuth access token, excluding secret values.
+        Public refresh metadata without refresh tokens or OAuth client secrets.
 
         - `client_id: string`
 
@@ -492,6 +580,48 @@ Lists a vault's credentials using ID-based pagination without returning secret v
         The type of the object. Always `static_bearer`.
 
         - `"static_bearer"`
+
+    - `EnvironmentVariable object { networking, secret_name, type }`
+
+      Metadata for an HTTP credential used only in OpenAI-hosted environments. Sandbox code receives a placeholder. The proxy substitutes the secret for allowed HTTPS destinations on ports 443 and 8443. The real secret is not available to sandbox code for local computation and is never returned in this resource.
+
+      - `networking: object { type }  or object { allowed_hosts, type }`
+
+        The destinations where the proxy can substitute the secret, subject to the environment network policy.
+
+        - `Unrestricted object { type }`
+
+          Allows substitution for destinations permitted by the environment network policy. Requires `environment.network.access` to be `restricted`, with explicit `allowed_domains`.
+
+          - `type: "unrestricted"`
+
+            The type of the object. Always `unrestricted`.
+
+            - `"unrestricted"`
+
+        - `Limited object { allowed_hosts, type }`
+
+          Allows substitution only for the listed hosts. The environment network policy must also allow these hosts.
+
+          - `allowed_hosts: array of string`
+
+            The 1 to 16 distinct allowed hostnames or IPv4 addresses, normalized to lowercase. Entries contain no scheme, path, port, or wildcard. IPv6 addresses are not supported.
+
+          - `type: "limited"`
+
+            The type of the object. Always `limited`.
+
+            - `"limited"`
+
+      - `secret_name: string`
+
+        The environment variable name that receives the placeholder in the sandbox.
+
+      - `type: "environment_variable"`
+
+        The type of the object. Always `environment_variable`.
+
+        - `"environment_variable"`
 
   - `created_at: number`
 
@@ -592,7 +722,7 @@ Retrieves vault credential metadata without returning secret values. See [vaults
 
 - `Credential object { id, auth, created_at, 4 more }`
 
-  Metadata for a stored MCP server credential. Secret values are never returned.
+  Metadata for a stored credential. Secret values are never returned.
 
   - `id: string`
 
@@ -600,7 +730,7 @@ Retrieves vault credential metadata without returning secret values. See [vaults
 
   - `auth: CredentialAuth`
 
-    The authentication method and non-secret configuration for the MCP server.
+    The authentication method and non-secret configuration of the credential.
 
     - `McpOauth object { expires_at, mcp_server_url, refresh, type }`
 
@@ -616,7 +746,7 @@ Retrieves vault credential metadata without returning secret values. See [vaults
 
       - `refresh: object { client_id, resource, scope, 2 more }  or null`
 
-        Configuration used to refresh an MCP OAuth access token, excluding secret values.
+        Public refresh metadata without refresh tokens or OAuth client secrets.
 
         - `client_id: string`
 
@@ -687,6 +817,48 @@ Retrieves vault credential metadata without returning secret values. See [vaults
         The type of the object. Always `static_bearer`.
 
         - `"static_bearer"`
+
+    - `EnvironmentVariable object { networking, secret_name, type }`
+
+      Metadata for an HTTP credential used only in OpenAI-hosted environments. Sandbox code receives a placeholder. The proxy substitutes the secret for allowed HTTPS destinations on ports 443 and 8443. The real secret is not available to sandbox code for local computation and is never returned in this resource.
+
+      - `networking: object { type }  or object { allowed_hosts, type }`
+
+        The destinations where the proxy can substitute the secret, subject to the environment network policy.
+
+        - `Unrestricted object { type }`
+
+          Allows substitution for destinations permitted by the environment network policy. Requires `environment.network.access` to be `restricted`, with explicit `allowed_domains`.
+
+          - `type: "unrestricted"`
+
+            The type of the object. Always `unrestricted`.
+
+            - `"unrestricted"`
+
+        - `Limited object { allowed_hosts, type }`
+
+          Allows substitution only for the listed hosts. The environment network policy must also allow these hosts.
+
+          - `allowed_hosts: array of string`
+
+            The 1 to 16 distinct allowed hostnames or IPv4 addresses, normalized to lowercase. Entries contain no scheme, path, port, or wildcard. IPv6 addresses are not supported.
+
+          - `type: "limited"`
+
+            The type of the object. Always `limited`.
+
+            - `"limited"`
+
+      - `secret_name: string`
+
+        The environment variable name that receives the placeholder in the sandbox.
+
+      - `type: "environment_variable"`
+
+        The type of the object. Always `environment_variable`.
+
+        - `"environment_variable"`
 
   - `created_at: number`
 
@@ -783,7 +955,7 @@ Rotates a vault credential's write-only secret and returns only credential metad
 
     - `refresh: optional object { refresh_token, scope, token_endpoint_auth }  or null`
 
-      Updates to an MCP credential's existing OAuth refresh configuration.
+      Optional write-only refresh-token and client-secret updates.
 
       - `refresh_token: optional string or null`
 
@@ -795,7 +967,7 @@ Rotates a vault credential's write-only secret and returns only credential metad
 
       - `token_endpoint_auth: optional McpOauthTokenEndpointAuthRotateParam or null`
 
-        Client-secret updates that preserve the credential's OAuth authentication method.
+        Client-secret updates for the existing token endpoint authentication method.
 
         - `ClientSecretBasic object { type, client_secret }`
 
@@ -839,11 +1011,25 @@ Rotates a vault credential's write-only secret and returns only credential metad
 
       - `"static_bearer"`
 
+  - `EnvironmentVariable object { secret_value, type }`
+
+    Replace the secret for an OpenAI-hosted environment credential. The environment variable name and networking configuration remain unchanged.
+
+    - `secret_value: string`
+
+      The write-only replacement secret. Never returned in credential resources or supplied directly to sandbox code. Must be nonempty and must not contain carriage returns, newlines, or NUL bytes.
+
+    - `type: "environment_variable"`
+
+      The type of the object. Always `environment_variable`.
+
+      - `"environment_variable"`
+
 ### Returns
 
 - `Credential object { id, auth, created_at, 4 more }`
 
-  Metadata for a stored MCP server credential. Secret values are never returned.
+  Metadata for a stored credential. Secret values are never returned.
 
   - `id: string`
 
@@ -851,7 +1037,7 @@ Rotates a vault credential's write-only secret and returns only credential metad
 
   - `auth: CredentialAuth`
 
-    The authentication method and non-secret configuration for the MCP server.
+    The authentication method and non-secret configuration of the credential.
 
     - `McpOauth object { expires_at, mcp_server_url, refresh, type }`
 
@@ -867,7 +1053,7 @@ Rotates a vault credential's write-only secret and returns only credential metad
 
       - `refresh: object { client_id, resource, scope, 2 more }  or null`
 
-        Configuration used to refresh an MCP OAuth access token, excluding secret values.
+        Public refresh metadata without refresh tokens or OAuth client secrets.
 
         - `client_id: string`
 
@@ -938,6 +1124,48 @@ Rotates a vault credential's write-only secret and returns only credential metad
         The type of the object. Always `static_bearer`.
 
         - `"static_bearer"`
+
+    - `EnvironmentVariable object { networking, secret_name, type }`
+
+      Metadata for an HTTP credential used only in OpenAI-hosted environments. Sandbox code receives a placeholder. The proxy substitutes the secret for allowed HTTPS destinations on ports 443 and 8443. The real secret is not available to sandbox code for local computation and is never returned in this resource.
+
+      - `networking: object { type }  or object { allowed_hosts, type }`
+
+        The destinations where the proxy can substitute the secret, subject to the environment network policy.
+
+        - `Unrestricted object { type }`
+
+          Allows substitution for destinations permitted by the environment network policy. Requires `environment.network.access` to be `restricted`, with explicit `allowed_domains`.
+
+          - `type: "unrestricted"`
+
+            The type of the object. Always `unrestricted`.
+
+            - `"unrestricted"`
+
+        - `Limited object { allowed_hosts, type }`
+
+          Allows substitution only for the listed hosts. The environment network policy must also allow these hosts.
+
+          - `allowed_hosts: array of string`
+
+            The 1 to 16 distinct allowed hostnames or IPv4 addresses, normalized to lowercase. Entries contain no scheme, path, port, or wildcard. IPv6 addresses are not supported.
+
+          - `type: "limited"`
+
+            The type of the object. Always `limited`.
+
+            - `"limited"`
+
+      - `secret_name: string`
+
+        The environment variable name that receives the placeholder in the sandbox.
+
+      - `type: "environment_variable"`
+
+        The type of the object. Always `environment_variable`.
+
+        - `"environment_variable"`
 
   - `created_at: number`
 
@@ -1008,7 +1236,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
 - `Credential object { id, auth, created_at, 4 more }`
 
-  Metadata for a stored MCP server credential. Secret values are never returned.
+  Metadata for a stored credential. Secret values are never returned.
 
   - `id: string`
 
@@ -1016,7 +1244,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
   - `auth: CredentialAuth`
 
-    The authentication method and non-secret configuration for the MCP server.
+    The authentication method and non-secret configuration of the credential.
 
     - `McpOauth object { expires_at, mcp_server_url, refresh, type }`
 
@@ -1032,7 +1260,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
       - `refresh: object { client_id, resource, scope, 2 more }  or null`
 
-        Configuration used to refresh an MCP OAuth access token, excluding secret values.
+        Public refresh metadata without refresh tokens or OAuth client secrets.
 
         - `client_id: string`
 
@@ -1104,6 +1332,48 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
         - `"static_bearer"`
 
+    - `EnvironmentVariable object { networking, secret_name, type }`
+
+      Metadata for an HTTP credential used only in OpenAI-hosted environments. Sandbox code receives a placeholder. The proxy substitutes the secret for allowed HTTPS destinations on ports 443 and 8443. The real secret is not available to sandbox code for local computation and is never returned in this resource.
+
+      - `networking: object { type }  or object { allowed_hosts, type }`
+
+        The destinations where the proxy can substitute the secret, subject to the environment network policy.
+
+        - `Unrestricted object { type }`
+
+          Allows substitution for destinations permitted by the environment network policy. Requires `environment.network.access` to be `restricted`, with explicit `allowed_domains`.
+
+          - `type: "unrestricted"`
+
+            The type of the object. Always `unrestricted`.
+
+            - `"unrestricted"`
+
+        - `Limited object { allowed_hosts, type }`
+
+          Allows substitution only for the listed hosts. The environment network policy must also allow these hosts.
+
+          - `allowed_hosts: array of string`
+
+            The 1 to 16 distinct allowed hostnames or IPv4 addresses, normalized to lowercase. Entries contain no scheme, path, port, or wildcard. IPv6 addresses are not supported.
+
+          - `type: "limited"`
+
+            The type of the object. Always `limited`.
+
+            - `"limited"`
+
+      - `secret_name: string`
+
+        The environment variable name that receives the placeholder in the sandbox.
+
+      - `type: "environment_variable"`
+
+        The type of the object. Always `environment_variable`.
+
+        - `"environment_variable"`
+
   - `created_at: number`
 
     The Unix timestamp, in seconds, when the credential was created.
@@ -1128,9 +1398,9 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
 ### Credential Auth
 
-- `CredentialAuth = object { expires_at, mcp_server_url, refresh, type }  or object { mcp_server_url, type }`
+- `CredentialAuth = object { expires_at, mcp_server_url, refresh, type }  or object { mcp_server_url, type }  or object { networking, secret_name, type }`
 
-  The MCP server and authentication configuration of a vault credential, excluding secrets.
+  The authentication configuration of a vault credential, excluding secrets.
 
   - `McpOauth object { expires_at, mcp_server_url, refresh, type }`
 
@@ -1146,7 +1416,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
     - `refresh: object { client_id, resource, scope, 2 more }  or null`
 
-      Configuration used to refresh an MCP OAuth access token, excluding secret values.
+      Public refresh metadata without refresh tokens or OAuth client secrets.
 
       - `client_id: string`
 
@@ -1218,11 +1488,53 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
       - `"static_bearer"`
 
+  - `EnvironmentVariable object { networking, secret_name, type }`
+
+    Metadata for an HTTP credential used only in OpenAI-hosted environments. Sandbox code receives a placeholder. The proxy substitutes the secret for allowed HTTPS destinations on ports 443 and 8443. The real secret is not available to sandbox code for local computation and is never returned in this resource.
+
+    - `networking: object { type }  or object { allowed_hosts, type }`
+
+      The destinations where the proxy can substitute the secret, subject to the environment network policy.
+
+      - `Unrestricted object { type }`
+
+        Allows substitution for destinations permitted by the environment network policy. Requires `environment.network.access` to be `restricted`, with explicit `allowed_domains`.
+
+        - `type: "unrestricted"`
+
+          The type of the object. Always `unrestricted`.
+
+          - `"unrestricted"`
+
+      - `Limited object { allowed_hosts, type }`
+
+        Allows substitution only for the listed hosts. The environment network policy must also allow these hosts.
+
+        - `allowed_hosts: array of string`
+
+          The 1 to 16 distinct allowed hostnames or IPv4 addresses, normalized to lowercase. Entries contain no scheme, path, port, or wildcard. IPv6 addresses are not supported.
+
+        - `type: "limited"`
+
+          The type of the object. Always `limited`.
+
+          - `"limited"`
+
+    - `secret_name: string`
+
+      The environment variable name that receives the placeholder in the sandbox.
+
+    - `type: "environment_variable"`
+
+      The type of the object. Always `environment_variable`.
+
+      - `"environment_variable"`
+
 ### Credential Auth Create Param
 
-- `CredentialAuthCreateParam = object { access_token, mcp_server_url, type, 2 more }  or object { token, mcp_server_url, type }`
+- `CredentialAuthCreateParam = object { access_token, mcp_server_url, type, 2 more }  or object { token, mcp_server_url, type }  or object { networking, secret_name, secret_value, type }`
 
-  Authentication credentials for an MCP server used by agent tools.
+  Authentication credentials for an MCP server or an OpenAI-hosted environment.
 
   - `McpOauth object { access_token, mcp_server_url, type, 2 more }`
 
@@ -1248,7 +1560,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
     - `refresh: optional object { client_id, refresh_token, token_endpoint, 3 more }  or null`
 
-      Configuration for refreshing the access token of an MCP OAuth credential.
+      Optional refresh configuration for an HTTPS OAuth token endpoint.
 
       - `client_id: string`
 
@@ -1330,11 +1642,57 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
       - `"static_bearer"`
 
+  - `EnvironmentVariable object { networking, secret_name, secret_value, type }`
+
+    An HTTP credential for OpenAI-hosted environments only. The sandbox receives an environment variable containing a placeholder, not the secret. Use the placeholder unchanged in outgoing requests. The egress proxy replaces the placeholder with the secret for allowed HTTPS destinations on ports 443 and 8443. Sandbox code cannot read the real secret or use it for local computation, such as signing a request.
+
+    - `networking: object { type }  or object { allowed_hosts, type }`
+
+      The destinations where the proxy can substitute this secret. The environment network policy must also allow them.
+
+      - `Unrestricted object { type }`
+
+        Allows substitution for destinations permitted by the environment network policy. Requires `environment.network.access` to be `restricted`, with explicit `allowed_domains`.
+
+        - `type: "unrestricted"`
+
+          The type of the object. Always `unrestricted`.
+
+          - `"unrestricted"`
+
+      - `Limited object { allowed_hosts, type }`
+
+        Allows substitution only for the listed hosts. The environment network policy must also allow these hosts.
+
+        - `allowed_hosts: array of string`
+
+          The 1 to 16 distinct allowed hostnames or IPv4 addresses, normalized to lowercase. Entries contain no scheme, path, port, or wildcard. IPv6 addresses are not supported.
+
+        - `type: "limited"`
+
+          The type of the object. Always `limited`.
+
+          - `"limited"`
+
+    - `secret_name: string`
+
+      The environment variable name that receives the placeholder, such as `SERVICE_API_KEY`. Use ASCII letters, digits, and underscores, starting with a letter or underscore. Names starting with `CODEX_` and managed proxy or certificate variable names are reserved.
+
+    - `secret_value: string`
+
+      The write-only secret to store. Never returned in credential resources or supplied directly to sandbox code. Must be nonempty and must not contain carriage returns, newlines, or NUL bytes.
+
+    - `type: "environment_variable"`
+
+      The type of the object. Always `environment_variable`.
+
+      - `"environment_variable"`
+
 ### Credential Auth Rotate Param
 
-- `CredentialAuthRotateParam = object { type, access_token, expires_at, refresh }  or object { token, type }`
+- `CredentialAuthRotateParam = object { type, access_token, expires_at, refresh }  or object { token, type }  or object { secret_value, type }`
 
-  Updates to a vault credential without changing its authentication method or MCP server.
+  Updates to a vault credential without changing its authentication method or destination configuration.
 
   - `McpOauth object { type, access_token, expires_at, refresh }`
 
@@ -1356,7 +1714,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
     - `refresh: optional object { refresh_token, scope, token_endpoint_auth }  or null`
 
-      Updates to an MCP credential's existing OAuth refresh configuration.
+      Optional write-only refresh-token and client-secret updates.
 
       - `refresh_token: optional string or null`
 
@@ -1368,7 +1726,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
       - `token_endpoint_auth: optional McpOauthTokenEndpointAuthRotateParam or null`
 
-        Client-secret updates that preserve the credential's OAuth authentication method.
+        Client-secret updates for the existing token endpoint authentication method.
 
         - `ClientSecretBasic object { type, client_secret }`
 
@@ -1411,6 +1769,20 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
       The type of the object. Always `static_bearer`.
 
       - `"static_bearer"`
+
+  - `EnvironmentVariable object { secret_value, type }`
+
+    Replace the secret for an OpenAI-hosted environment credential. The environment variable name and networking configuration remain unchanged.
+
+    - `secret_value: string`
+
+      The write-only replacement secret. Never returned in credential resources or supplied directly to sandbox code. Must be nonempty and must not contain carriage returns, newlines, or NUL bytes.
+
+    - `type: "environment_variable"`
+
+      The type of the object. Always `environment_variable`.
+
+      - `"environment_variable"`
 
 ### Credential Deleted
 

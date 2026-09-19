@@ -11,7 +11,7 @@ The MongoDB data source plugin lets you query, visualize, and alert on data stor
 
 > Note
 >
-> The MongoDB data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install and upgrade the MongoDB data source plugin](/docs/plugins/grafana-mongodb-datasource/latest/install/).
+> The MongoDB data source is an Enterprise plugin. On Grafana Cloud, it’s included with the Advanced plan or available on the Pro plan with the Enterprise Plugins add-on. On self-managed Grafana, it requires a Grafana Enterprise license that includes the plugin. For installation instructions, refer to [Install and upgrade the MongoDB data source plugin](/docs/plugins/grafana-mongodb-datasource/latest/install/).
 
 ## Supported features
 
@@ -62,11 +62,11 @@ The following documents help you get started:
 
 After configuring the data source, you can:
 
-- Use the **Grafana Assistant** button in the query editor to generate MongoDB queries from natural language prompts.
+- Use the **Grafana Assistant** button in the query editor to generate MongoDB queries from natural language prompts. Refer to [Grafana Assistant](/docs/grafana/latest/ai/assistant/).
 - Create [time series](/docs/grafana/latest/panels-visualizations/visualizations/time-series/), [table](/docs/grafana/latest/panels-visualizations/visualizations/table/), [stat](/docs/grafana/latest/panels-visualizations/visualizations/stat/), and other [visualizations](/docs/grafana/latest/panels-visualizations/visualizations/).
 - Add [annotations](/docs/plugins/grafana-mongodb-datasource/latest/annotations/) to overlay deployment or error events on graphs.
 - Configure [template variables](/docs/plugins/grafana-mongodb-datasource/latest/template-variables/) to build dynamic, reusable dashboards.
-- Apply [transformations](/docs/grafana/latest/panels/transformations/) to reshape query results.
+- Apply [transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to reshape query results.
 - Set up [alert rules](/docs/plugins/grafana-mongodb-datasource/latest/alerting/) to monitor collection metrics.
 - Route traffic through a secure proxy. Refer to [Configure a data source connection proxy](/docs/grafana/latest/setup-grafana/configure-grafana/proxy/) for configuration instructions.
 
@@ -76,11 +76,11 @@ After configuring the data source, you can:
 
 ## Plugin updates
 
-Always ensure that your plugin version is up-to-date so you have access to all current features and improvements. For upgrade and rollback steps, refer to [Upgrade the plugin](/docs/plugins/grafana-mongodb-datasource/latest/install/#upgrade-the-plugin).
+Always ensure that your plugin version is up-to-date so you have access to all current features and improvements. Navigate to **Administration** &gt; **Plugins and data** &gt; **Plugins** to check for updates. Grafana recommends upgrading to the latest Grafana version, and this applies to plugins as well.
 
 > Note
 >
-> Plugins are automatically updated in Grafana Cloud.
+> On Grafana Cloud, the MongoDB plugin is managed by Grafana and updates automatically. On self-managed Grafana, you must update Enterprise plugins manually. Refer to [Version and upgrade guidance](/docs/plugins/grafana-mongodb-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
 
 ## Related resources
 

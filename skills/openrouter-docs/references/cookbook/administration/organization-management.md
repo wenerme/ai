@@ -62,7 +62,7 @@ You can transfer eligible credits from your personal account to an organization 
 3. Choose an eligible organization, review the amount, confirm the transfer, and select **Transfer**
 
 <Info>
-  Invoiced or arrears-billed organizations cannot receive transferred credits because they are billed by invoice instead of using a prepaid credit balance.
+  Organizations that are invoiced or actively billed in arrears cannot receive transferred credits because they are billed by invoice instead of using a prepaid credit balance.
 </Info>
 
 The transfer dialog also enforces these restrictions:

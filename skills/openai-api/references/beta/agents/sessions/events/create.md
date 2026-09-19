@@ -114,7 +114,7 @@ Submits message, cancellation, or tool-result events to a managed agent session.
 
     - `output: optional AgentFunctionCallOutputParam or null`
 
-      A function result represented as text or supported model-input content.
+      The function result when the call succeeded.
 
       - `string`
 

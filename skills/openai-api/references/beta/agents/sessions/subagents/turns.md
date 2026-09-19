@@ -58,7 +58,7 @@ Lists all turns of this subagent, including turns after a resume. See [subagent 
 
   - `error: SessionTurnError or null`
 
-    A customer-safe error describing why a session request failed.
+    A customer-safe error. Non-null only for a failed turn.
 
     - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 14 more`
 
@@ -184,7 +184,7 @@ Lists all turns of this subagent, including turns after a resume. See [subagent 
 
   - `usage: TokenUsage or null`
 
-    Recorded token usage for a session or turn. Usage is best effort and may change.
+    Best-effort token usage for the turn, or null if unknown. Recorded usage may change.
 
     - `input_tokens: number`
 
@@ -317,7 +317,7 @@ Retrieves a turn belonging to this subagent. See [subagent workflows](/api/docs/
 
   - `error: SessionTurnError or null`
 
-    A customer-safe error describing why a session request failed.
+    A customer-safe error. Non-null only for a failed turn.
 
     - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 14 more`
 
@@ -443,7 +443,7 @@ Retrieves a turn belonging to this subagent. See [subagent workflows](/api/docs/
 
   - `usage: TokenUsage or null`
 
-    Recorded token usage for a session or turn. Usage is best effort and may change.
+    Best-effort token usage for the turn, or null if unknown. Recorded usage may change.
 
     - `input_tokens: number`
 
@@ -612,7 +612,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
     - `phase: "commentary" or "final_answer" or null`
 
-      The phase of an assistant message.
+      The phase of an assistant message. Null for user messages.
 
       - `"commentary"`
 
@@ -666,7 +666,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
     - `status: AgentOutputItemStatus or null`
 
-      The status of an agent output item.
+      The status of the reasoning item.
 
     - `summary: array of SummaryText`
 
@@ -760,7 +760,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
     - `output: AgentFunctionCallOutput or null`
 
-      The text or model-input content supplied as a function result.
+      The function result, if the call succeeded.
 
       - `string`
 
@@ -918,7 +918,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
     - `action: WebSearchAction or null`
 
-      An action performed by the web search tool.
+      The action performed by the web search tool.
 
       - `Search object { queries, query, type }`
 

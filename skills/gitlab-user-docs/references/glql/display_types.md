@@ -298,6 +298,8 @@ sort: acceptedCount asc
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/623319) in GitLab 19.4.
 - `valueLabels`, `color`, and `scale` display options [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/628026) in GitLab 19.5.
+- Rows from metrics for a query without a dimension, and `color: gray`, [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/628932) in GitLab 19.5.
+- Two-dimension stacked bars and the `maxSeries` display option [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/23470) in GitLab 19.5.
 
 A bar list visualizes aggregated data from [analytics mode](_index.md#analytics-mode) as
 horizontal bars. By default, each bar's length is that row's percentage of the total of all rows,
@@ -307,14 +309,37 @@ while a bar chart answers "how do these compare to each other".
 A bar list requires:
 
 - Analytics mode, set with `mode: analytics`.
-- Exactly one `dimensions` value.
-- Exactly one metric, set with the `metrics` parameter.
+- Up to two `dimensions` values.
+- At least one metric, set with the `metrics` parameter.
 
-More than one dimension causes a validation error in the view. A query that names more than
-one metric renders the first and ignores the rest.
+With one dimension, each row is a value of that dimension and the first metric sets the row's
+value. A query that names more than one metric renders the first and ignores the rest. Rows sort
+in descending order by value. More than two dimensions causes a validation error in the view, as
+does more than one metric together with two dimensions.
 
-Rows sort in descending order by value. Each row's label shows a value past the end of the bar,
-controlled by `valueLabels` under `displayConfig`:
+Without a dimension, each metric becomes a row, in the order the query names them. Use this to
+compare percentiles or counts of a single measure, such as the median and 75th percentile time to
+merge. Each row's value is formatted in the unit of its metric, so a duration reads as `9h 24m`
+rather than as a number of milliseconds. These rows keep their order, are never folded into an
+`Other` row, and show no change against the previous period. A metric with no value in the
+response, such as a percentile over no merge requests, renders as an em dash (`—`) with an empty
+bar.
+
+With dimensions, the `maxRows` option under `displayConfig` sets how many rows show before the
+rest fold into a single row named `Other (N)`, where `N` is the number of rows folded in and the
+value is their combined total. The default is six. A single row past the limit stays as-is,
+because an `Other (1)` row would hide its name without making the list shorter. A `maxRows` value
+that is not a whole number greater than zero falls back to the default.
+
+A share of the total is meaningful only when the metric is a count or a sum. For a metric such as
+an average or a median, the total behind the shares has no meaning.
+
+### One dimension
+
+Each row is one value of the dimension.
+
+Each row's label shows a value past the end of the bar, controlled by `valueLabels` under
+`displayConfig`:
 
 - `valueLabels: shareAndValue` is the default. It shows the row's share of the total and a
   compact value, for example `89% · 85.6k`.
@@ -326,6 +351,7 @@ Bar color is set by `color` under `displayConfig`:
 - `color: orange` is the default. It matches the existing look.
 - `color: blue` draws the bars in the same blue the other GLQL charts use for their first
   series, the chart palette's default color.
+- `color: gray` draws neutral gray bars, for a baseline shown next to a colored list.
 
 Bar length is measured against a scale, set by `scale` under `displayConfig`:
 
@@ -340,23 +366,31 @@ the total, whatever `scale` is.
 
 Any other value for `valueLabels`, `color`, or `scale` causes a validation error in the view.
 
-By default, a bar list shows six rows plus an `Other (N)` roll-up row, so a query that returns
-eight or more rows always has an `Other` row. A query that returns seven or fewer rows shows
-every row, because folding a single row would hide its name without making the list shorter.
-To show a different number of rows, set `maxRows` under `displayConfig` to a whole
-number greater than zero. GitLab keeps that many of the highest-value rows and folds the rest
-into a single row named `Other (N)`, where `N` is the number of rows folded in and the value is
-their combined total. A value that is not a whole number greater than zero falls back to six.
-
 In a dashboard panel that shows each row's change against the previous period, the `Other` row
 compares its folded rows against those same rows in the previous period, not against every row
 outside the kept rows in that period. The `Other` row shows no change when any of its folded rows
 has no previous value.
 
-A share of the total is meaningful only when the metric is a count or a sum. For a metric such as
-an average or a median, the total behind the shares has no meaning.
+### Two dimensions
 
-### Example
+Each row is a value of the first dimension, and its bar splits into stacked segments, one per
+value of the second dimension, with a legend below the chart. Rows are labeled with their compact
+total.
+
+The `maxSeries` option under `displayConfig` limits how many second dimension values get their
+own segment; the rest combine into an `Other (N)` segment, following the same single-item rule
+and fallback as `maxRows`. The default is six.
+
+The rows past `maxRows` fold into an `Other (N)` row whose segments are the folded rows'
+combined values, so bars always sum to 100% of the total.
+
+Selecting a legend entry hides that segment and rescales the remaining bars and labels to the
+visible total.
+
+The `valueLabels`, `color`, and `scale` options and the previous-period comparison apply to one
+dimension only.
+
+### Examples
 
 To display Code Suggestions usage by language over the last 30 days as a bar list:
 
@@ -398,6 +432,36 @@ mode: analytics
 query: type = AgentPlatformSession and created >= -30d
 dimensions: flowType
 metrics: usersCount
+```
+````
+
+To compare the median and 75th percentile time to merge for merge requests merged in the last
+30 days, with one row per percentile and the longer bar filling the track:
+
+````yaml
+```glql
+display: barList
+displayConfig:
+  valueLabels: value
+  scale: max
+mode: analytics
+query: type = MergeRequest and merged >= -30d
+metrics: timeToMergeQuantile(0.5) as "Median", timeToMergeQuantile(0.75) as "p75"
+```
+````
+
+To split each user's sessions over the last 30 days by flow type, with at most four flow types
+as their own segment:
+
+````yaml
+```glql
+display: barList
+displayConfig:
+  maxSeries: 4
+mode: analytics
+query: type = AgentPlatformSession and created >= -30d
+dimensions: user, flowType
+metrics: totalCount
 ```
 ````
 
@@ -577,7 +641,16 @@ sort: totalCount desc
 
 ## Pagination support
 
+- Automatic pagination for analytics mode visualizations [introduced](https://gitlab.com/gitlab-org/glql/-/work_items/170) in GitLab 19.5.
+
 Display types available in any mode display the first page of results and provide a **Load more**
 action to fetch additional pages. For more information, see [pagination](_index.md#pagination).
 
-Analytics mode visualizations don't support pagination. They render all aggregated results at once.
+Analytics mode aggregated visualizations such as charts and stats don't provide a **Load more**
+action. They fetch every page of aggregated results automatically, up to a maximum of 1,000 rows.
+
+If your query returns more than 1,000 aggregated rows, the visualization shows the first 1,000 rows.
+To see all your data, add filters to the query or group by fewer dimensions.
+
+To show a single page instead, set `limit` in the block. The visualization then shows at most that
+many rows, up to a maximum of 100.

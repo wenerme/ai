@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure routes
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-routes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-routes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Magic Transit Virtual Network uses a routing table to steer your traffic from Cloudflare's global network to your connected networks via next-hop. You can add entries to the Magic Transit Virtual Network routing table through static route configuration or routes learned from BGP peering (beta) (available over CNI with Dataplane v2, as well as IPsec and GRE tunnels).
 
@@ -307,8 +307,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$RO
 
 BGP peering is available when using the following on-ramps:
 
-- [CNI with Dataplane v2](https://developers.cloudflare.com/network-interconnect/).
-- [IPsec and GRE tunnels (beta)](https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/). Requires [Unified Routing (beta)](https://developers.cloudflare.com/magic-transit/reference/traffic-steering/#unified-routing-mode-beta).
+- [CNI with Dataplane v2](https://developers.cloudflare.com/network-interconnect/) (closed beta and not available to new customers).
+- [IPsec and GRE tunnels (beta)](https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/). Requires [Unified Routing](https://developers.cloudflare.com/magic-transit/reference/traffic-steering/#unified-routing).
 
 ### Choose an ASN for BGP peering
 
@@ -418,5 +418,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-routes/#page","headline":"Configure routes · Cloudflare Learning Paths","description":"Set up Magic Transit static routes.","url":"https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-routes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-routes/#page","headline":"Configure routes · Cloudflare Learning Paths","description":"Set up Magic Transit static routes.","url":"https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-routes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

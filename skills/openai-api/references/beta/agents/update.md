@@ -24,7 +24,7 @@ Updates a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
 
 - `multi_agent: optional MultiAgentConfigParam or null`
 
-  Explicit configuration for creating and coordinating subagents.
+  Configuration for creating and coordinating subagents.
 
   - `enabled: boolean`
 
@@ -40,11 +40,11 @@ Updates a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
 
 - `reasoning: optional AgentReasoningParam or null`
 
-  Reasoning configuration for the agent.
+  Configuration for model reasoning. Omit to keep the current settings; pass `null` to reset to the model's default effort.
 
   - `effort: optional "none" or "minimal" or "low" or 4 more or null`
 
-    The amount of reasoning effort the model should use.
+    The amount of reasoning effort the model should use. Omission lets the model select it.
 
     - `"none"`
 
@@ -62,7 +62,7 @@ Updates a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
 
   - `summary: optional "concise" or "detailed" or "auto" or null`
 
-    The reasoning summary format requested from the model.
+    Controls whether the response includes a reasoning summary.
 
     - `"concise"`
 
@@ -106,7 +106,7 @@ Updates a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
 
   - `format: optional TextFormatParam or null`
 
-    The output format for generated text.
+    The output format. Omission uses ordinary text (`{"type": "text"}`).
 
     - `Text object { type }`
 
@@ -134,7 +134,7 @@ Updates a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
 
   - `verbosity: optional "low" or "medium" or "high" or null`
 
-    The amount of text the model should produce.
+    The amount of text the model should produce. Defaults to `medium`, matching Responses.
 
     - `"low"`
 
@@ -270,7 +270,7 @@ Updates a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
 
     - `connection_origin: optional "service" or "environment" or null`
 
-      Where outbound MCP HTTP connections originate.
+      Selects where outbound MCP HTTP connections originate.
 
       - `"service"`
 
@@ -308,7 +308,7 @@ Updates a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
 
     - `context_size: optional "low" or "medium" or "high" or null`
 
-      The amount of web search context made available to the model.
+      The amount of search context made available to the model. Defaults to `medium`.
 
       - `"low"`
 
@@ -318,7 +318,7 @@ Updates a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
 
     - `location: optional object { city, country, region, timezone }  or null`
 
-      Approximate user location used to localize web search results.
+      Approximate location used to localize search results.
 
       - `city: optional string or null`
 
@@ -338,7 +338,7 @@ Updates a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
 
     - `mode: optional "disabled" or "cached" or "live" or null`
 
-      The source used for web search results.
+      The source used for web search results. Defaults to `live`.
 
       - `"disabled"`
 
@@ -406,7 +406,7 @@ Updates a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
 
     - `effort: "none" or "minimal" or "low" or 4 more or null`
 
-      The amount of reasoning effort used by an agent.
+      The requested reasoning effort, or `null` when the model selects its own default.
 
       - `"none"`
 
@@ -424,7 +424,7 @@ Updates a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
 
     - `summary: "concise" or "detailed" or "auto" or null`
 
-      The reasoning summary format requested from an agent.
+      The requested reasoning summary format, or `null` when summaries are disabled.
 
       - `"concise"`
 
@@ -654,7 +654,7 @@ Updates a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
 
       - `location: object { city, country, region, timezone }  or null`
 
-        Approximate user location used to localize web search results.
+        Approximate location used to localize search results, if provided.
 
         - `city: string or null`
 

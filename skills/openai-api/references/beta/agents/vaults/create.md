@@ -18,7 +18,7 @@ Creates a vault for the current project. See [vaults](/api/docs/guides/agents-ap
 
 - `Vault object { id, created_at, metadata, 2 more }`
 
-  A collection of credentials that agent tools can use to authenticate to MCP servers.
+  A collection of credentials for MCP servers and OpenAI-hosted environments.
 
   - `id: string`
 

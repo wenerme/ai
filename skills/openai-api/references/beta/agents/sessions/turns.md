@@ -56,7 +56,7 @@ Lists turns by creation time and turn ID. The after cursor is exclusive in the s
 
   - `error: SessionTurnError or null`
 
-    A customer-safe error describing why a session request failed.
+    A customer-safe error. Non-null only for a failed turn.
 
     - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 14 more`
 
@@ -182,7 +182,7 @@ Lists turns by creation time and turn ID. The after cursor is exclusive in the s
 
   - `usage: TokenUsage or null`
 
-    Recorded token usage for a session or turn. Usage is best effort and may change.
+    Best-effort token usage for the turn, or null if unknown. Recorded usage may change.
 
     - `input_tokens: number`
 
@@ -313,7 +313,7 @@ Retrieves a turn's current status, timestamps, usage, and error. Returns 404 if 
 
   - `error: SessionTurnError or null`
 
-    A customer-safe error describing why a session request failed.
+    A customer-safe error. Non-null only for a failed turn.
 
     - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 14 more`
 
@@ -439,7 +439,7 @@ Retrieves a turn's current status, timestamps, usage, and error. Returns 404 if 
 
   - `usage: TokenUsage or null`
 
-    Recorded token usage for a session or turn. Usage is best effort and may change.
+    Best-effort token usage for the turn, or null if unknown. Recorded usage may change.
 
     - `input_tokens: number`
 
@@ -534,7 +534,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/turns/$TURN_ID \
 
   - `error: SessionTurnError or null`
 
-    A customer-safe error describing why a session request failed.
+    A customer-safe error. Non-null only for a failed turn.
 
     - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 14 more`
 
@@ -660,7 +660,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/turns/$TURN_ID \
 
   - `usage: TokenUsage or null`
 
-    Recorded token usage for a session or turn. Usage is best effort and may change.
+    Best-effort token usage for the turn, or null if unknown. Recorded usage may change.
 
     - `input_tokens: number`
 

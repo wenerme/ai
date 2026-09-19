@@ -7,12 +7,12 @@ description: "This document outlines configuration instructions and options for 
 
 # Configure the MongoDB data source
 
-This document provides instructions for configuring the MongoDB data source and explains the available configuration options. For general information on adding data sources in Grafana refer to [Add a data source](/docs/grafana/latest/administration/data-source-management/#add-a-data-source).
+This document provides instructions for configuring the MongoDB data source and explains the available configuration options. For general information on adding data sources in Grafana, refer to [Add a data source](/docs/grafana/latest/administration/data-source-management/#add-a-data-source).
 
 ## Before you begin
 
 - A [Grafana Cloud Pro or Advanced](/pricing/) plan or an [activated self-managed Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/).
-- You must have the Organization administrator role to add a data source. Administrators can also configure a data source via [YAML with the Grafana provisioning system](/docs/plugins/grafana-mongodb-datasource/latest/#provision-the-mongodb-data-source).
+- You must have the Organization administrator role to add a data source. Administrators can also configure a data source via [YAML with the Grafana provisioning system](/docs/plugins/grafana-mongodb-datasource/latest/configure/#provision-the-mongodb-data-source).
 - You must install the MongoDB plugin prior to adding the MongoDB data source. Refer to [Install and upgrade the MongoDB data source plugin](/docs/plugins/grafana-mongodb-datasource/latest/install/) for instructions.
 
 - A MongoDB 5.0+ instance with credentials (username and password) or Kerberos principal information for authentication.
@@ -42,7 +42,7 @@ The following is a list of configuration options for MongoDB.
 
 ### Connection
 
-You connect to MongoDB using a connection string. For more information refer to [Connection Strings](https://www.mongodb.com/docs/manual/reference/connection-string/) in MongoDB documentation.
+You connect to MongoDB using a connection string. For more information, refer to [Connection Strings](https://www.mongodb.com/docs/manual/reference/connection-string/) in MongoDB documentation.
 
 - **Connection string** - Insert your MongoDB connection string, which contains the parameters required to connect to MongoDB. Example: `mongodb://myDatabaseUserName:StrongP4ssw0rd@localhost/sales_db`.
 
@@ -51,6 +51,14 @@ You connect to MongoDB using a connection string. For more information refer to 
 ### Authentication
 
 There are three authentication methods you can choose in the Authentication section. Select one of the following authentication methods from the drop-down:
+
+Expand table
+
+| Method                | Best for                         | Grafana Cloud | Supports alerting | Extra setup                                |
+|-----------------------|----------------------------------|---------------|-------------------|--------------------------------------------|
+| **No authentication** | Local or trusted networks        | Yes           | Yes               | No                                         |
+| **Credentials**       | Most production deployments      | Yes           | Yes               | No                                         |
+| **Kerberos**          | Environments that require GSSAPI | No            | Yes               | Custom Kerberos plugin build and `libkrb5` |
 
 - **No authentication** - Allows access to the data source without any authentication.
 - **Credentials** - Authenticate with the default credentials assigned to MongoDB at account creation.
@@ -66,8 +74,8 @@ There are three authentication methods you can choose in the Authentication sect
 
   - **User** - The client principal’s username.
   - **Password** - The client principal password used to authenticate. Optional if a keytab or ccache file is present.
-  - **KeyTab path** - Absolute path to the `KeyTab` file. If provided, the password is ignored. Enabled when the connection string includes the query string parameter `authMechanism=GSSAPI`.
-  - **Global ccache path** - Absolute path to the global cache file. If provided, the password is ignored. Enabled when the connection string includes the query string parameter `authMechanism=GSSAPI`.
+  - **KeyTab file path** - Absolute path to the `KeyTab` file. If provided, the password is ignored. Enabled when the connection string includes the query string parameter `authMechanism=GSSAPI`.
+  - **Global ccache file path** - Absolute path to the global cache file. If provided, the password is ignored. Enabled when the connection string includes the query string parameter `authMechanism=GSSAPI`.
   - **Ccache lookup file** - Absolute path to the JSON file that provides the Kerberos cache based on the username principal and connection string. If provided, the password is ignored. Enabled when the connection string includes the query string parameter `authMechanism=GSSAPI`.
 
 To run this on Linux, you must install the `libkrb5` library:
@@ -110,15 +118,15 @@ Additional settings for the MongoDB data source are optional configurations that
 
 **Backend response rows limit:**
 
-- **Rows to return** - Sets the maximum number of rows returned in a query. The default is `100000`. Note that setting this number too high may lead to performance issues with larger queries.
+- **Rows to Return** - Sets the maximum number of rows returned in a query. The default is `100000`. Note that setting this number too high may lead to performance issues with larger queries.
 
 **Private data source connect:**
 
-- **Private data source connect** - *Only for Grafana Cloud users.* Private data source connect, or PDC, allows you to establish a private, secured connection between a Grafana Cloud instance, or stack, and data sources secured within a private network. Click the drop-down to locate the URL for PDC. For more information regarding Grafana PDC refer to [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and [Configure Grafana private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/#configure-grafana-private-data-source-connect-pdc) for steps on setting up a PDC connection.
+- **Private data source connect** - *Only for Grafana Cloud users.* Private data source connect, or PDC, allows you to establish a private, secured connection between a Grafana Cloud instance, or stack, and data sources secured within a private network. Click the drop-down to locate the URL for PDC. For more information about Grafana PDC, refer to [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and [Configure Grafana private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/#configure-grafana-private-data-source-connect-pdc) for steps on setting up a PDC connection.
 
 Click **Manage private data source connect** to be taken to your PDC connection page, where you find your PDC configuration details.
 
-Once you have configured your MongoDB data source options, click **Save &amp; test** at the bottom to test out your data source connection.
+After you have configured your MongoDB data source options, click **Save &amp; test** at the bottom to test out your data source connection.
 
 You should see a confirmation dialog box that says **Plugin health check successful**.
 
@@ -136,15 +144,17 @@ datasources:
   - name: MongoDB
     type: grafana-mongodb-datasource
     access: proxy
-    basicAuth: false
+    basicAuth: true
+    basicAuthUser: <USERNAME>
     editable: true
     enabled: true
     jsonData:
       connection: <CONNECTION_STRING>
-      user: <USERNAME>
     secureJsonData:
-      password: <PASSWORD>
+      basicAuthPassword: <PASSWORD>
 ```
+
+Legacy provisioned data sources that store the username in `jsonData.user` and the password in `secureJsonData.password` continue to work. Prefer `basicAuthUser` and `secureJsonData.basicAuthPassword` for new configurations.
 
 ## Provision with Terraform
 

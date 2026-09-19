@@ -32,10 +32,36 @@ with OpenRouter(
     api_key=os.getenv("OPENROUTER_API_KEY", ""),
 ) as open_router:
 
-    res = open_router.alpha.decisions.create(model="Grand Cherokee", questions={
-
+    res = open_router.alpha.decisions.create(model="typesafe/jev-1.13", questions={
+        "is_bug": {
+            "criteria": {
+                "false": "The customer is asking a question or requesting a feature.",
+                "true": "The customer describes broken or unexpected product behavior.",
+            },
+            "instructions": "Is the customer reporting a software defect?",
+            "type": "noul",
+        },
+        "team": {
+            "criteria": {
+                "account": "Login, permissions, or profile issues.",
+                "frontend": "Rendering, layout, or browser compatibility issues.",
+                "payments": "Checkout, billing, or payment processing issues.",
+            },
+            "instructions": "Which team should own this ticket?",
+            "type": "choice",
+        },
+        "urgency": {
+            "criteria": [
+                "Can wait for the next release",
+                "Should be fixed this week",
+                "Blocking revenue right now",
+            ],
+            "instructions": "How urgent is this ticket?",
+            "type": "score",
+        },
     }, state={
-        "key": "Massachusetts",
+        "customer_tier": "enterprise",
+        "ticket": "My checkout page shows a blank screen after I click Pay. I have tried two browsers.",
     })
 
     # Handle response
@@ -58,6 +84,7 @@ with OpenRouter(
 | `trace`                    | [Optional\[components.TraceConfig\]](../../components/traceconfig.mdx)                         | :heavy\_minus\_sign: | Metadata for observability and tracing. Known keys (trace\_id, trace\_name, span\_name, generation\_name, parent\_span\_id) have special handling. Additional keys are passed through as custom metadata to configured broadcast destinations.                                                                          | \{<br />"trace\_id": "trace-abc123",<br />"trace\_name": "my-app-trace"<br />} |
 | `user`                     | *Optional\[str]*                                                                               | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                                     |                                                                                |
 | `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.mdx)                            | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                                                                                                                                                                                     |                                                                                |
+| `server_url`               | *Optional\[str]*                                                                               | :heavy\_minus\_sign: | An optional server URL to use.                                                                                                                                                                                                                                                                                          | [http://localhost:8080](http://localhost:8080)                                 |
 
 ### Response
 

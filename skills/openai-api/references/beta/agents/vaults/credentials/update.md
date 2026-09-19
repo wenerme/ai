@@ -36,7 +36,7 @@ Rotates a vault credential's write-only secret and returns only credential metad
 
     - `refresh: optional object { refresh_token, scope, token_endpoint_auth }  or null`
 
-      Updates to an MCP credential's existing OAuth refresh configuration.
+      Optional write-only refresh-token and client-secret updates.
 
       - `refresh_token: optional string or null`
 
@@ -48,7 +48,7 @@ Rotates a vault credential's write-only secret and returns only credential metad
 
       - `token_endpoint_auth: optional McpOauthTokenEndpointAuthRotateParam or null`
 
-        Client-secret updates that preserve the credential's OAuth authentication method.
+        Client-secret updates for the existing token endpoint authentication method.
 
         - `ClientSecretBasic object { type, client_secret }`
 
@@ -92,11 +92,25 @@ Rotates a vault credential's write-only secret and returns only credential metad
 
       - `"static_bearer"`
 
+  - `EnvironmentVariable object { secret_value, type }`
+
+    Replace the secret for an OpenAI-hosted environment credential. The environment variable name and networking configuration remain unchanged.
+
+    - `secret_value: string`
+
+      The write-only replacement secret. Never returned in credential resources or supplied directly to sandbox code. Must be nonempty and must not contain carriage returns, newlines, or NUL bytes.
+
+    - `type: "environment_variable"`
+
+      The type of the object. Always `environment_variable`.
+
+      - `"environment_variable"`
+
 ### Returns
 
 - `Credential object { id, auth, created_at, 4 more }`
 
-  Metadata for a stored MCP server credential. Secret values are never returned.
+  Metadata for a stored credential. Secret values are never returned.
 
   - `id: string`
 
@@ -104,7 +118,7 @@ Rotates a vault credential's write-only secret and returns only credential metad
 
   - `auth: CredentialAuth`
 
-    The authentication method and non-secret configuration for the MCP server.
+    The authentication method and non-secret configuration of the credential.
 
     - `McpOauth object { expires_at, mcp_server_url, refresh, type }`
 
@@ -120,7 +134,7 @@ Rotates a vault credential's write-only secret and returns only credential metad
 
       - `refresh: object { client_id, resource, scope, 2 more }  or null`
 
-        Configuration used to refresh an MCP OAuth access token, excluding secret values.
+        Public refresh metadata without refresh tokens or OAuth client secrets.
 
         - `client_id: string`
 
@@ -191,6 +205,48 @@ Rotates a vault credential's write-only secret and returns only credential metad
         The type of the object. Always `static_bearer`.
 
         - `"static_bearer"`
+
+    - `EnvironmentVariable object { networking, secret_name, type }`
+
+      Metadata for an HTTP credential used only in OpenAI-hosted environments. Sandbox code receives a placeholder. The proxy substitutes the secret for allowed HTTPS destinations on ports 443 and 8443. The real secret is not available to sandbox code for local computation and is never returned in this resource.
+
+      - `networking: object { type }  or object { allowed_hosts, type }`
+
+        The destinations where the proxy can substitute the secret, subject to the environment network policy.
+
+        - `Unrestricted object { type }`
+
+          Allows substitution for destinations permitted by the environment network policy. Requires `environment.network.access` to be `restricted`, with explicit `allowed_domains`.
+
+          - `type: "unrestricted"`
+
+            The type of the object. Always `unrestricted`.
+
+            - `"unrestricted"`
+
+        - `Limited object { allowed_hosts, type }`
+
+          Allows substitution only for the listed hosts. The environment network policy must also allow these hosts.
+
+          - `allowed_hosts: array of string`
+
+            The 1 to 16 distinct allowed hostnames or IPv4 addresses, normalized to lowercase. Entries contain no scheme, path, port, or wildcard. IPv6 addresses are not supported.
+
+          - `type: "limited"`
+
+            The type of the object. Always `limited`.
+
+            - `"limited"`
+
+      - `secret_name: string`
+
+        The environment variable name that receives the placeholder in the sandbox.
+
+      - `type: "environment_variable"`
+
+        The type of the object. Always `environment_variable`.
+
+        - `"environment_variable"`
 
   - `created_at: number`
 

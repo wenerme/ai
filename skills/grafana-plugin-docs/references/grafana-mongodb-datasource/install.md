@@ -142,18 +142,16 @@ For environments without internet access:
    ```
 5. Restart Grafana.
 
-If Grafana reports an “unsigned plugin” error, add the following to `grafana.ini`:
+The MongoDB plugin is signed, and official downloads from your [Grafana account portal](/orgs) include a valid signature. If Grafana reports a signature error, don’t disable signature verification. Instead, resolve the underlying cause:
 
-ini [Copy code to clipboard] Copy
-
-```ini
-[plugins]
-allow_loading_unsigned_plugins = grafana-mongodb-datasource
-```
+- Confirm you downloaded the official ZIP and didn’t modify or repackage its contents.
+- Extract the complete plugin directory, including the `MANIFEST.txt` signature file, into the plugins directory.
+- Verify the plugin folder is named `grafana-mongodb-datasource` to match the plugin ID.
+- Confirm the ZIP matches your server architecture and the plugin’s supported Grafana version.
 
 > Caution
 >
-> Only allow unsigned plugins if you trust the source of the ZIP file. Official downloads from grafana.com are signed.
+> Don’t add this plugin to `allow_loading_unsigned_plugins`. Loading a signed Enterprise plugin as unsigned bypasses signature verification and isn’t supported.
 
 ### Verify the installation
 
@@ -167,6 +165,10 @@ After installing, confirm the plugin is loaded:
 ## Upgrade the plugin
 
 Upgrade steps depend on your Grafana deployment environment.
+
+> Note
+>
+> On Grafana Cloud, the MongoDB plugin is managed by Grafana and updates automatically. On self-managed Grafana, you must update Enterprise plugins manually. In other managed environments, such as Azure Managed Grafana, the plugin version is controlled by the platform provider and can lag behind the latest release.
 
 ### Grafana Cloud
 
@@ -208,14 +210,14 @@ If an upgrade causes issues on a self-managed instance, pin a specific plugin ve
 Bash [Copy code to clipboard] Copy
 
 ```bash
-grafana cli plugins install grafana-mongodb-datasource 1.26.0
+grafana cli plugins install grafana-mongodb-datasource 1.27.5
 ```
 
 Restart Grafana after the rollback.
 
 > Note
 >
-> Rollback is not available on Grafana Cloud. If you experience issues after an automatic update, contact [Grafana Support](/support/).
+> Rollback isn’t available on Grafana Cloud. If you experience issues after an automatic update, contact [Grafana Support](/support/).
 
 ## Uninstall the plugin
 
@@ -237,7 +239,7 @@ For Docker or Kubernetes, remove `grafana-mongodb-datasource` from the `GF_INSTA
 
 ## Troubleshoot installation issues
 
-The following sections address common installation problems. For additional troubleshooting guidance, refer to [Licensing and installation issues](/docs/plugins/grafana-mongodb-datasource/latest/troubleshooting/#licensing-and-installation-issues).
+The following sections address common installation problems. For additional troubleshooting guidance, refer to [License and installation issues](/docs/plugins/grafana-mongodb-datasource/latest/troubleshooting/#license-and-installation-issues).
 
 ### Plugin doesn’t appear in the catalog (Grafana Cloud)
 
@@ -283,12 +285,17 @@ Expand table
 3. Check that the license hasn’t expired in [your Grafana Cloud organization settings](/orgs).
 4. For license activation help, refer to [Activate an Enterprise license](/docs/grafana/latest/administration/enterprise-licensing/activate-aws-marketplace-license/).
 
-### “Unsigned plugin” error (air-gapped installs)
+### Signature error (air-gapped installs)
 
-**Cause:** The plugin was installed from a ZIP file and Grafana can’t verify its signature.
+**Cause:** The plugin was installed from a ZIP file and Grafana can’t verify its signature. The MongoDB plugin is signed, so this usually means the ZIP was modified, repackaged, or extracted without its signature file.
 
 **Solution:**
 
-1. Ensure you downloaded the ZIP from the official [Grafana account portal](/orgs). Official downloads are signed.
-2. If the error persists, add `allow_loading_unsigned_plugins = grafana-mongodb-datasource` to `grafana.ini` under `[plugins]`.
-3. Restart Grafana.
+1. Download the ZIP from the official [Grafana account portal](/orgs). Official downloads are signed. Don’t modify or repackage the contents.
+2. Extract the complete plugin directory, including the `MANIFEST.txt` signature file, and confirm the folder is named `grafana-mongodb-datasource`.
+3. Confirm the ZIP matches your server architecture and the plugin’s supported Grafana version.
+4. Restart Grafana.
+
+> Caution
+>
+> Don’t work around a signature error by adding this plugin to `allow_loading_unsigned_plugins`. That bypasses signature verification for a signed Enterprise plugin and isn’t supported.

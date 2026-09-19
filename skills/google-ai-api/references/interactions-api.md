@@ -6,6 +6,103 @@ The Gemini Interactions API allows developers to build generative AI application
 
 API version: v1beta [v1](https://ai.google.dev/api/interactions-api-v1)
 
+## CreateCredential
+
+post https://generativelanguage.googleapis.com/v1beta/credentials Creates a credential.
+- [Request body](https://ai.google.dev/api/interactions-api#CreateCredential.request_body)
+- [Response](https://ai.google.dev/api/interactions-api#CreateCredential.response)
+
+### Request body
+
+The request body structure depends on the interaction mode you choose:
+EnvironmentVariableConfig Configuration for environment variable credentials.
+id string (required) No description provided.
+injection_location InjectionLocation or array (InjectionLocation) (required) Required. Locations where the environment variable can be injected in
+outgoing HTTP requests. Must contain at least one location.
+Accepts either a single location (e.g. "header") or an array of locations.
+<br />
+
+#### Possible values
+
+- `header`
+
+  Injected into HTTP request headers.
+- `query`
+
+  Injected into HTTP URL query parameters.
+- `body`
+
+  Injected into HTTP request body.
+trusted_domains array (string) (optional) Optional. List of domains allowed to receive this environment variable
+value in HTTP requests.
+type object (required) No description provided.
+value string (required) Required. Input only. Secret value of the environment variable. Write-only; never
+returned in responses.
+HttpBearerConfig Configuration for HTTP Bearer token credentials.
+header_name string (optional) Optional. Header name to inject the token into. Defaults to
+'Authorization'.
+id string (required) No description provided.
+prefix string (optional) Optional. Prefix to prepend to the token. Defaults to 'Bearer'. Set to ''
+for no prefix.
+token string (required) Required. Input only. The static bearer token. Write-only; never returned in responses.
+type object (required) No description provided.
+OAuth2Config Configuration for OAuth2 credentials with automatic token refresh.
+client_id string (required) Required. OAuth2 client ID.
+client_secret string (required) Required. Input only. OAuth2 client secret. Write-only; never returned in responses.
+id string (required) No description provided.
+refresh_token string (required) Required. Input only. OAuth2 refresh token. Write-only; never returned in responses.
+scopes array (string) (optional) Optional. List of OAuth2 scopes.
+token_url string (required) Required. OAuth2 token endpoint URL for refreshing access tokens.
+type object (required) No description provided.
+
+### Response
+
+If successful, the response body contains data with the following structure:
+create_time string (optional) Output only. The timestamp when the credential was created.
+id string (optional) Required. Output only. Identifier. Unique identifier for the credential.
+status enum (string) (optional) Output only. Current status of the credential.
+
+Possible
+values:
+
+- `active`
+
+  The credential is active and valid for use.
+- `revoked`
+
+  The credential has been revoked and is no longer valid.
+type enum (string) (optional) Required. Output only. The type of credential.
+
+Possible
+values:
+
+- `bearer_token`
+
+  Static token injected as header. No refresh logic.
+- `oauth2`
+
+  Auto-refresh expired access tokens using stored refresh token.
+- `environment_variable`
+
+  Environment variable injected into sandbox container.
+update_time string (optional) Output only. The timestamp when the credential was last updated.
+
+### Example
+
+<iframe src="https:///frame/api/interactions-api_9c0191dce34fd82373eb67e74b160862657771f7fc52e3438cd0c6e35b41569f.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+
+#### Example Response
+
+```json
+{
+  "create_time": "string",
+  "id": "string",
+  "status": "active",
+  "type": "bearer_token",
+  "update_time": "string"
+}
+```
+
 ## Creating an interaction
 
 post https://generativelanguage.googleapis.com/v1beta/interactions Creates a new interaction.
@@ -677,6 +774,130 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 }
 ```
 
+## ListCredentials
+
+get https://generativelanguage.googleapis.com/v1beta/credentials Lists credentials for a project.
+- [Path / Query parameters](https://ai.google.dev/api/interactions-api#ListCredentials.PATH_PARAMETERS)
+- [Response](https://ai.google.dev/api/interactions-api#ListCredentials.response)
+
+### Path / Query Parameters
+
+page_size integer (optional) Optional. Maximum number of credentials to return.
+If unspecified, defaults to 50. Maximum is 1000.
+page_token string (optional) Optional. Pagination token.
+
+### Response
+
+If successful, the response body contains data with the following structure:
+credentials array (Credential) (optional) No description provided.
+Server-managed credential resource stored in Secret Manager.
+
+#### Fields
+
+create_time string (optional) Output only. The timestamp when the credential was created.
+id string (optional) Required. Output only. Identifier. Unique identifier for the credential.
+status enum (string) (optional) Output only. Current status of the credential.
+
+Possible
+values:
+
+- `active`
+
+  The credential is active and valid for use.
+- `revoked`
+
+  The credential has been revoked and is no longer valid.
+type enum (string) (optional) Required. Output only. The type of credential.
+
+Possible
+values:
+
+- `bearer_token`
+
+  Static token injected as header. No refresh logic.
+- `oauth2`
+
+  Auto-refresh expired access tokens using stored refresh token.
+- `environment_variable`
+
+  Environment variable injected into sandbox container.
+update_time string (optional) Output only. The timestamp when the credential was last updated.
+next_page_token string (optional) No description provided.
+
+### Example
+
+<iframe src="https:///frame/api/interactions-api_397eddd880195907205fe0bc2d8f7053b0a1faef4c5ea9dba5bb36b96e318fa2.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+
+#### Example Response
+
+```json
+{
+  "credentials": [
+    {
+      "create_time": "string",
+      "id": "string",
+      "status": "active",
+      "type": "bearer_token",
+      "update_time": "string"
+    }
+  ],
+  "next_page_token": "string"
+}
+```
+
+## GetCredential
+
+get https://generativelanguage.googleapis.com/v1beta/credentials/{id} Gets metadata of a single credential (no secret fields).
+- [Response](https://ai.google.dev/api/interactions-api#GetCredential.response)
+
+### Response
+
+If successful, the response body contains data with the following structure:
+create_time string (optional) Output only. The timestamp when the credential was created.
+id string (optional) Required. Output only. Identifier. Unique identifier for the credential.
+status enum (string) (optional) Output only. Current status of the credential.
+
+Possible
+values:
+
+- `active`
+
+  The credential is active and valid for use.
+- `revoked`
+
+  The credential has been revoked and is no longer valid.
+type enum (string) (optional) Required. Output only. The type of credential.
+
+Possible
+values:
+
+- `bearer_token`
+
+  Static token injected as header. No refresh logic.
+- `oauth2`
+
+  Auto-refresh expired access tokens using stored refresh token.
+- `environment_variable`
+
+  Environment variable injected into sandbox container.
+update_time string (optional) Output only. The timestamp when the credential was last updated.
+
+### Example
+
+<iframe src="https:///frame/api/interactions-api_68289b7a4e9edb43f38c988f0d14dac4c1e392d605f94124c3945c533be39873.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+
+#### Example Response
+
+```json
+{
+  "create_time": "string",
+  "id": "string",
+  "status": "active",
+  "type": "bearer_token",
+  "update_time": "string"
+}
+```
+
 ## Retrieving an interaction
 
 get https://generativelanguage.googleapis.com/v1beta/interactions/{id} Retrieves the full details of a single interaction based on its \`Interaction.id\`.
@@ -723,6 +944,118 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
   "updated": "2025-11-26T12:25:15Z"
 }
 ```
+
+## UpdateCredential
+
+patch https://generativelanguage.googleapis.com/v1beta/credentials/{id} Updates a credential.
+- [Path / Query parameters](https://ai.google.dev/api/interactions-api#UpdateCredential.PATH_PARAMETERS)
+- [Request body](https://ai.google.dev/api/interactions-api#UpdateCredential.request_body)
+- [Response](https://ai.google.dev/api/interactions-api#UpdateCredential.response)
+
+### Path / Query Parameters
+
+update_mask string (optional) Optional. The list of fields to update.
+
+### Request body
+
+The request body structure depends on the interaction mode you choose:
+EnvironmentVariableUpdateConfig Configuration for updating environment variable credentials.
+injection_location InjectionLocation or array (InjectionLocation) (optional) Optional. Locations where the environment variable can be injected in
+outgoing HTTP requests.
+Accepts either a single location (e.g. "header") or an array of locations.
+<br />
+
+#### Possible values
+
+- `header`
+
+  Injected into HTTP request headers.
+- `query`
+
+  Injected into HTTP URL query parameters.
+- `body`
+
+  Injected into HTTP request body.
+trusted_domains array (string) (optional) Optional. List of domains allowed to receive this environment variable
+value in HTTP requests.
+type object (required) No description provided.
+value string (optional) Optional. Input only. Secret value of the environment variable. Write-only; never
+returned in responses.
+HttpBearerUpdateConfig Configuration for updating HTTP Bearer token credentials.
+header_name string (optional) Optional. Header name to inject the token into. Defaults to
+'Authorization'.
+prefix string (optional) Optional. Prefix to prepend to the token. Defaults to 'Bearer'. Set to ''
+for no prefix.
+token string (optional) Optional. Input only. The static bearer token. Write-only; never returned in responses.
+type object (required) No description provided.
+OAuth2UpdateConfig Configuration for updating OAuth2 credentials.
+client_id string (optional) Optional. OAuth2 client ID.
+client_secret string (optional) Optional. Input only. OAuth2 client secret. Write-only; never returned in responses.
+refresh_token string (optional) Optional. Input only. OAuth2 refresh token. Write-only; never returned in responses.
+scopes array (string) (optional) Optional. List of OAuth2 scopes.
+token_url string (optional) Optional. OAuth2 token endpoint URL for refreshing access tokens.
+type object (required) No description provided.
+
+### Response
+
+If successful, the response body contains data with the following structure:
+create_time string (optional) Output only. The timestamp when the credential was created.
+id string (optional) Required. Output only. Identifier. Unique identifier for the credential.
+status enum (string) (optional) Output only. Current status of the credential.
+
+Possible
+values:
+
+- `active`
+
+  The credential is active and valid for use.
+- `revoked`
+
+  The credential has been revoked and is no longer valid.
+type enum (string) (optional) Required. Output only. The type of credential.
+
+Possible
+values:
+
+- `bearer_token`
+
+  Static token injected as header. No refresh logic.
+- `oauth2`
+
+  Auto-refresh expired access tokens using stored refresh token.
+- `environment_variable`
+
+  Environment variable injected into sandbox container.
+update_time string (optional) Output only. The timestamp when the credential was last updated.
+
+### Example
+
+<iframe src="https:///frame/api/interactions-api_9225e685246402d49f07791cf2b2a85c1863d4b1e57cdb27b2286763ca103f1d.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+
+#### Example Response
+
+```json
+{
+  "create_time": "string",
+  "id": "string",
+  "status": "active",
+  "type": "bearer_token",
+  "update_time": "string"
+}
+```
+
+## DeleteCredential
+
+delete https://generativelanguage.googleapis.com/v1beta/credentials/{id} Deletes a credential. Fails if referenced by active triggers.
+- [Response](https://ai.google.dev/api/interactions-api#DeleteCredential.response)
+
+### Response
+
+If successful, the response is empty.
+
+### Example
+
+<iframe src="https:///frame/api/interactions-api_ca08059f78fb88242949d4ed2a0e93a49c1a6372eb958db3d77a2dbe86fc3c8c.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ## Deleting an interaction
 
@@ -952,7 +1285,8 @@ values:
   hitting max_tokens).
 - `budget_exceeded`
 
-  The interaction was halted because the token budget was exceeded.
+  Deprecated: Token and execution budget exhaustion returns INCOMPLETE
+  (11).
 - `queued`
 
   The interaction is queued, waiting for processing.
@@ -1383,8 +1717,19 @@ values:
 name string (optional) A user-defined name for this content block. Can be referenced by the model
 in the final response.
 processing MediaProcessing or enum (string) (optional) How the model processes this video for understanding.
-<br />
 
+Can be a string (`"static"` \| `"agentic"`) or a `StaticMediaProcessing` object:
+
+- `agentic`: Model-driven dynamic navigation.
+- `static`: Fixed-rate frame extraction. All frames placed in context. Can be passed as the string `"static"`, or as an object with the following fields: end_offset string (optional) Optional. Segment end time. Specified as a decimal number of seconds followed
+  by an 's' suffix, e.g., "30s". Must be non-negative and greater than
+  \`start_offset\` if \`start_offset\` is set.
+  fps number (optional) Optional. Video frame-rate sampling density.
+  start_offset string (optional) Optional. Segment start time. Specified as a decimal number of seconds followed
+  by an 's' suffix, e.g., "10.5s". Must be non-negative.
+  type string (required) No description provided.
+
+  Always set to `"static"`.
 resolution MediaResolution (optional) The resolution of the media.
 <br />
 
@@ -2060,7 +2405,8 @@ values:
   hitting max_tokens).
 - `budget_exceeded`
 
-  The interaction was halted because the token budget was exceeded.
+  Deprecated: Token and execution budget exhaustion returns INCOMPLETE
+  (11).
 StepDelta <br />
 
 delta StepDeltaData (required) No description provided.
@@ -3935,6 +4281,13 @@ Configuration for a custom environment.
 
 #### Fields
 
+env EnvVar or object (optional) Environment variables to set in the sandbox environment.
+An environment variable to set in the execution environment.
+
+#### Fields
+
+credential string (optional) Optional reference to a server-managed Credential resource by ID.
+value string (optional) Direct string value for plain environment variables.
 environment_id string (optional) Optional. The environment ID for the interaction. If specified, the request will
 update the existing environment instead of creating a new one.
 network [EnvironmentNetworkEgressAllowlist](https://ai.google.dev/api/interactions-api#Resource:EnvironmentNetworkEgressAllowlist) or enum (string) (optional) Network configuration for the environment.
@@ -4065,6 +4418,7 @@ A single domain allowlist rule with optional header injection.
 
 #### Fields
 
+credential string (optional) Optional. Reference to a server-managed Credential resource by ID.
 domain string (optional) Domain to allow outbound requests to. Supports wildcards (e.g. '\*.googleapis.com'). Use '\*' to allow all domains.
 transform array (object) or object (optional) Headers to inject on all outbound requests matching this domain. Accepts a single dict or a list of dicts. The egress proxy injects these automatically.
 string Turns all network off.

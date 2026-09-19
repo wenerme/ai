@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Sippy
 
-Last updated Jul 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/data-migration/sippy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/data-migration/sippy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Sippy is a data migration service that allows you to copy data from other cloud providers to R2 as the data is requested, without paying unnecessary cloud egress fees typically associated with moving large amounts of data.
 
@@ -63,7 +63,7 @@ To begin, install [`npm` ↗](https://docs.npmjs.com/getting-started). Then [ins
 Log in to Wrangler with the [`wrangler login` command](https://developers.cloudflare.com/workers/wrangler/commands/general/#login). Then run the [`r2 bucket sippy enable` command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-sippy-enable):
 
 ```sh
-npx wrangler r2 bucket sippy enable <BUCKET_NAME>
+npx wrangler r2 bucket sippy enable "<BUCKET_NAME>"
 ```
 
 This will prompt you to select between supported object storage providers and lead you through setup.
@@ -107,7 +107,7 @@ You can optionally select a time window to query. This defaults to the last 24 h
 To disable Sippy, run the [`r2 bucket sippy disable` command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-sippy-disable):
 
 ```sh
-npx wrangler r2 bucket sippy disable <BUCKET_NAME>
+npx wrangler r2 bucket sippy disable "<BUCKET_NAME>"
 ```
 
 ### API
@@ -226,5 +226,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-migration/sippy/#page","headline":"Sippy · Cloudflare R2 docs","description":"Incrementally migrate objects to R2 on-demand as they are requested, reducing egress fees.","url":"https://developers.cloudflare.com/r2/data-migration/sippy/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-migration/sippy/#page","headline":"Sippy · Cloudflare R2 docs","description":"Incrementally migrate objects to R2 on-demand as they are requested, reducing egress fees.","url":"https://developers.cloudflare.com/r2/data-migration/sippy/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

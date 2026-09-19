@@ -37,30 +37,30 @@ depending on the specific model and feature combination.
 | Claude 4 | [Claude Haiku 4.5](https://www.anthropic.com/news/claude-haiku-4-5) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
 | Claude 4 | [Claude Sonnet 4.6](https://www.anthropic.com/news/claude-sonnet-4-6) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
 | Claude 4 | [Claude Opus 4.8](https://www.anthropic.com/news/claude-opus-4-8) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
+| GLM | [GLM-5.1-FP8](https://huggingface.co/zai-org/GLM-5.1-FP8) |  Limited functionality |  Limited functionality |  Full functionality |  Full functionality |
+| GLM | [GLM-5.3](https://huggingface.co/zai-org/GLM-5.3) |  Limited functionality |  Limited functionality |  Full functionality |  Full functionality |
 | GPT | [GPT-4 Turbo](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=python-secure#gpt-4) |  Full functionality |  Full functionality |  Partial functionality |  Limited functionality |
 | GPT | [GPT-4o](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=python-secure#gpt-4o-and-gpt-4-turbo) |  Full functionality |  Full functionality |  Full functionality |  Limited functionality |
 | GPT | [GPT-4o-mini](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=python-secure#gpt-4o-and-gpt-4-turbo) |  Full functionality |  Full functionality |  Partial functionality |  Limited functionality |
 | GPT | [GPT-5](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure?view=foundry-classic&pivots=azure-openai&tabs=global-standard-aoai%2Cglobal-standard#gpt-5) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
-| GPT | [GPT-5 Mini](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure?view=foundry-classic&pivots=azure-openai&tabs=global-standard-aoai%2Cglobal-standard#gpt-5) |  Full functionality |  Full functionality |  Full functionality |  Partial functionality |
 | GPT | [GPT-5 Codex](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure?view=foundry-classic&pivots=azure-openai&tabs=global-standard-aoai%2Cglobal-standard#gpt-5) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
+| GPT | [GPT-5 Mini](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure?view=foundry-classic&pivots=azure-openai&tabs=global-standard-aoai%2Cglobal-standard#gpt-5) |  Full functionality |  Full functionality |  Full functionality |  Partial functionality |
 | GPT | [GPT-5.1](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure?view=foundry-classic&pivots=azure-openai&tabs=global-standard-aoai%2Cglobal-standard#gpt-51) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
 | GPT | [GPT-5.2](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure?view=foundry-classic&pivots=azure-openai&tabs=global-standard-aoai%2Cglobal-standard#gpt-52) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
 | GPT | [GPT-oss-120B](https://huggingface.co/openai/gpt-oss-120b) |  Full functionality |  Full functionality |  Full functionality |  Limited functionality |
-| Mistral Medium 3.5 | [Mistral Medium 3.5 128B](https://huggingface.co/mistralai/Mistral-Medium-3.5-128B) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
-| Mistral Codestral | [Codestral 22B v0.1](https://huggingface.co/mistralai/Codestral-22B-v0.1) |  Full functionality |  Full functionality |  Partial functionality |  Limited functionality |
-| Mistral | [Mistral Small 24B Instruct 2506](https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506) |  Full functionality |  Full functionality |  Full functionality |  Limited functionality |
-| GLM | [GLM-5.1-FP8](https://huggingface.co/zai-org/GLM-5.1-FP8) |  Limited functionality |  Limited functionality |  Full functionality |  Full functionality |
-| GLM | [GLM-5.3](https://huggingface.co/zai-org/GLM-5.3) |  Limited functionality |  Limited functionality |  Full functionality |  Full functionality |
 | Kimi | [Kimi-K2.5](https://huggingface.co/moonshotai/Kimi-K2.5) |  Limited functionality |  Limited functionality |  Partial functionality |  Partial functionality |
 | Kimi | [Kimi-K2.6](https://huggingface.co/moonshotai/Kimi-K2.6) |  Limited functionality |  Limited functionality |  Partial functionality |  Full functionality |
 | Kimi | [Kimi-K3](https://huggingface.co/moonshotai/Kimi-K3) |  Limited functionality |  Limited functionality |  Partial functionality |  Full functionality |
-| MiniMax | [MiniMax-M2.7](https://huggingface.co/MiniMaxAI/MiniMax-M2.7) |  Limited functionality |  Limited functionality |  Partial functionality |  Full functionality |
-| MiniMax | [MiniMax-M3](https://huggingface.co/MiniMaxAI/MiniMax-M3) |  Limited functionality |  Limited functionality |  Partial functionality |  Full functionality |
 | Llama | [Llama 3 8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) |  Partial functionality |  Full functionality |  Limited functionality |  Limited functionality |
-| Llama | [Llama 3.1 8B](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct) |  Partial functionality |  Full functionality |  Partial functionality |  Limited functionality |
 | Llama | [Llama 3 70B](https://huggingface.co/meta-llama/Meta-Llama-3-70B-Instruct) |  Partial functionality |  Full functionality |  Limited functionality |  Limited functionality |
+| Llama | [Llama 3.1 8B](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct) |  Partial functionality |  Full functionality |  Partial functionality |  Limited functionality |
 | Llama | [Llama 3.1 70B](https://huggingface.co/meta-llama/Llama-3.1-70B-Instruct) |  Full functionality |  Full functionality |  Full functionality |  Limited functionality |
 | Llama | [Llama 3.3 70B](https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct) |  Full functionality |  Full functionality |  Full functionality |  Limited functionality |
+| MiniMax | [MiniMax-M2.7](https://huggingface.co/MiniMaxAI/MiniMax-M2.7) |  Limited functionality |  Limited functionality |  Partial functionality |  Full functionality |
+| MiniMax | [MiniMax-M3](https://huggingface.co/MiniMaxAI/MiniMax-M3) |  Limited functionality |  Limited functionality |  Partial functionality |  Full functionality |
+| Mistral | [Codestral 22B v0.1](https://huggingface.co/mistralai/Codestral-22B-v0.1) |  Full functionality |  Full functionality |  Partial functionality |  Limited functionality |
+| Mistral | [Mistral Medium 3.5 128B](https://huggingface.co/mistralai/Mistral-Medium-3.5-128B) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
+| Mistral | [Mistral Small 24B Instruct 2506](https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506) |  Full functionality |  Full functionality |  Full functionality |  Limited functionality |
 | Qwen | [Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B) |  Limited functionality |  Limited functionality |  Partial functionality |  Full functionality |
 
 ### Compatible models

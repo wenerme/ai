@@ -94,7 +94,7 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
     - `phase: "commentary" or "final_answer" or null`
 
-      The phase of an assistant message.
+      The phase of an assistant message. Null for user messages.
 
       - `"commentary"`
 
@@ -148,7 +148,7 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
     - `status: AgentOutputItemStatus or null`
 
-      The status of an agent output item.
+      The status of the reasoning item.
 
     - `summary: array of SummaryText`
 
@@ -242,7 +242,7 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
     - `output: AgentFunctionCallOutput or null`
 
-      The text or model-input content supplied as a function result.
+      The function result, if the call succeeded.
 
       - `string`
 
@@ -400,7 +400,7 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
     - `action: WebSearchAction or null`
 
-      An action performed by the web search tool.
+      The action performed by the web search tool.
 
       - `Search object { queries, query, type }`
 

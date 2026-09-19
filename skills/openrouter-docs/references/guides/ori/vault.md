@@ -2,7 +2,7 @@
 > Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Vault secrets for interns
+# Vault Secrets for Interns
 
 > Store host-bound secrets for a workspace or an intern with the Vault API
 
@@ -36,12 +36,12 @@ Every successful response describes secrets without their values.
 }
 ```
 
-| Field         | Meaning                                                                                                                                                                                                                                                                       |
-| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `name`        | The secret name you chose.                                                                                                                                                                                                                                                    |
-| `hosts`       | The exact hostnames the secret may be sent to. `null` marks a secret stored before host binding existed. Store it again with `hosts` to bind it.                                                                                                                              |
-| `fingerprint` | A keyed SHA-256 digest of the value. Two secrets in the same scope with equal fingerprints hold equal values. The key differs per scope, so a workspace secret and its intern copy have different fingerprints. `null` for a secret stored before fingerprints were recorded. |
-| `created_at`  | When the secret was first stored, in ISO 8601 format.                                                                                                                                                                                                                         |
+| Field         | Meaning                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`        | The secret name you chose.                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `hosts`       | The exact hostnames the secret may be sent to. `null` marks a secret stored before host binding existed. Store it again with `hosts` to bind it.                                                                                                                                                                                                                                                                                                                                                |
+| `fingerprint` | An HMAC-SHA-256 of the value, keyed with the vault's own data key. Compare fingerprints only within one vault: two secrets there with equal fingerprints hold equal values, and storing the same value again keeps its fingerprint. The key differs per vault, so a workspace secret and its intern copy have different fingerprints, and a cross-vault comparison cannot show that a copy matches or that a rotation propagated. `null` for a secret stored before fingerprints were recorded. |
+| `created_at`  | When the secret was first stored, in ISO 8601 format.                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 
 ## Store a secret
 

@@ -156,6 +156,7 @@ paths:
                   limit: 100
                   limit_remaining: 74.5
                   limit_reset: monthly
+                  organization_id: null
                   rate_limit:
                     interval: 1h
                     note: This field is deprecated and safe to ignore.
@@ -164,6 +165,7 @@ paths:
                   usage_daily: 25.5
                   usage_monthly: 25.5
                   usage_weekly: 25.5
+                  workspace_id: 0df9e665-d932-5740-b2c7-b52af166bc11
               schema:
                 example:
                   data:
@@ -336,6 +338,14 @@ paths:
                         type:
                           - string
                           - 'null'
+                      organization_id:
+                        description: >-
+                          The ID of the organization that owns this API key, or
+                          null when an individual account owns it.
+                        example: null
+                        type:
+                          - string
+                          - 'null'
                       rate_limit:
                         deprecated: true
                         description: >-
@@ -389,6 +399,15 @@ paths:
                         example: 25.5
                         format: double
                         type: number
+                      workspace_id:
+                        description: >-
+                          The ID of the workspace this API key spends in, or
+                          null when no active workspace resolved for it, for
+                          example because the key's workspace was deleted.
+                        example: 0df9e665-d932-5740-b2c7-b52af166bc11
+                        type:
+                          - string
+                          - 'null'
                     required:
                       - label
                       - limit
@@ -407,6 +426,8 @@ paths:
                       - limit_reset
                       - include_byok_in_limit
                       - creator_user_id
+                      - organization_id
+                      - workspace_id
                       - allowed_data_regions
                       - free_model_daily_requests
                       - rate_limit

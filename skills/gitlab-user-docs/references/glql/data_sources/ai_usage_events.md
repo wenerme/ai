@@ -4,6 +4,7 @@
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/21216) in GitLab 19.3.
+- Selecting `returningUsersCount` or `previousPeriodUsersCount` without the `timestamp` dimension [changed](https://gitlab.com/gitlab-org/glql/-/merge_requests/485) to return an error in GitLab 19.5.
 
 AI usage events is a data source that provides aggregated metrics about
 GitLab Duo feature usage across your project or group.
@@ -108,8 +109,9 @@ Use range operators to define a time window.
 
 **Notes**:
 
-- The `returningUsersCount` and `previousPeriodUsersCount` metrics are only valid when the
-  `timestamp` dimension is also selected.
+- The `returningUsersCount` and `previousPeriodUsersCount` metrics compare each `timestamp`
+  bucket with the preceding one, so the `timestamp` dimension must also be selected. Without it,
+  the query returns an error. A `timestamp` filter alone is not enough.
 
 ## Sort fields
 
