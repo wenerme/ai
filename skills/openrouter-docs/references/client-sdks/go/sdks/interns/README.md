@@ -44,7 +44,7 @@ func main() {
         openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
     )
 
-    res, err := s.Interns.ListInterns(ctx, nil, nil, nil)
+    res, err := s.Interns.ListInterns(ctx, nil, nil, nil, nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -56,13 +56,14 @@ func main() {
 
 ### Parameters
 
-| Parameter     | Type                                                       | Required             | Description                                                                 | Example                                 |
-| ------------- | ---------------------------------------------------------- | -------------------- | --------------------------------------------------------------------------- | --------------------------------------- |
-| `ctx`         | [context.Context](https://pkg.go.dev/context#Context)      | :heavy\_check\_mark: | The context to use for the request.                                         |                                         |
-| `limit`       | `*int64`                                                   | :heavy\_minus\_sign: | Maximum number of interns to return, from 1 through 500.                    | 50                                      |
-| `status`      | \[][operations.Status](../../models/operations/status.mdx) | :heavy\_minus\_sign: | Comma-separated lifecycle statuses to include.                              | \[<br />"queued",<br />"running"<br />] |
-| `workspaceID` | `*string`                                                  | :heavy\_minus\_sign: | Only return interns in this workspace. It must match the API key workspace. | 89f9f5b2-3f89-4eaf-83ca-5ceae149e8bb    |
-| `opts`        | \[][operations.Option](../../models/operations/option.mdx) | :heavy\_minus\_sign: | The options for this request.                                               |                                         |
+| Parameter       | Type                                                       | Required             | Description                                                                                                                                   | Example                                                                                |
+| --------------- | ---------------------------------------------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `ctx`           | [context.Context](https://pkg.go.dev/context#Context)      | :heavy\_check\_mark: | The context to use for the request.                                                                                                           |                                                                                        |
+| `limit`         | `*int64`                                                   | :heavy\_minus\_sign: | Maximum number of interns to return, from 1 through 500.                                                                                      | 50                                                                                     |
+| `status`        | \[][operations.Status](../../models/operations/status.mdx) | :heavy\_minus\_sign: | Comma-separated lifecycle statuses to include.                                                                                                | \[<br />"queued",<br />"running"<br />]                                                |
+| `startingAfter` | `*string`                                                  | :heavy\_minus\_sign: | The opaque `next_cursor` of the previous page. Returns the interns that come after it in the newest-first order. A malformed cursor is a 400. | MjAyNi0wOS0xNlQwODozMDowMC4wMDAwMDBafDdjOWU2Njc5LTc0MjUtNDBkZS05NDRiLWUwN2ZjMWY5MGFlNw |
+| `workspaceID`   | `*string`                                                  | :heavy\_minus\_sign: | Only return interns in this workspace. It must match the API key workspace.                                                                   | 89f9f5b2-3f89-4eaf-83ca-5ceae149e8bb                                                   |
+| `opts`          | \[][operations.Option](../../models/operations/option.mdx) | :heavy\_minus\_sign: | The options for this request.                                                                                                                 |                                                                                        |
 
 ### Response
 
@@ -103,7 +104,7 @@ func main() {
     res, err := s.Interns.CreateIntern(ctx, components.CreateInternRequest{
         Name: "research-assistant",
         Provision: openrouter.Pointer(true),
-        WorkspaceID: "89f9f5b2-3f89-4eaf-83ca-5ceae149e8bb",
+        WorkspaceID: openrouter.Pointer("89f9f5b2-3f89-4eaf-83ca-5ceae149e8bb"),
     }, nil)
     if err != nil {
         log.Fatal(err)
@@ -137,7 +138,7 @@ func main() {
 
 ## DeleteIntern
 
-Starts safe teardown of the intern, its runtime and its private vault. The API key selects the caller, workspace and visible interns. There is no default workspace fallback. Requests on regional hostnames such as `eu.openrouter.ai` are refused. [API key](/docs/client-sdks/go/docs/api-reference/authentication) required.
+Starts safe teardown of the intern, its runtime and its private vault. The body is optional. Send `{"acknowledge_workspace_loss": true}` to delete a `destroy_failed` intern whose `last_failure_message` names `workspace_archive_failed`, accepting that its workspace is not backed up. The request body is capped at 1048576 bytes and a larger body is refused with 413. The API key selects the caller, workspace and visible interns. There is no default workspace fallback. Requests on regional hostnames such as `eu.openrouter.ai` are refused. [API key](/docs/client-sdks/go/docs/api-reference/authentication) required.
 
 ### Example Usage
 
@@ -148,6 +149,7 @@ import(
 	"context"
 	"os"
 	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"github.com/OpenRouterTeam/go-sdk/models/components"
 	"log"
 )
 
@@ -158,7 +160,9 @@ func main() {
         openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
     )
 
-    res, err := s.Interns.DeleteIntern(ctx, "7c9e6679-7425-40de-944b-e07fc1f90ae7")
+    res, err := s.Interns.DeleteIntern(ctx, "7c9e6679-7425-40de-944b-e07fc1f90ae7", components.DeleteInternRequest{
+        AcknowledgeWorkspaceLoss: openrouter.Pointer(true),
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -170,11 +174,12 @@ func main() {
 
 ### Parameters
 
-| Parameter  | Type                                                       | Required             | Description                                           | Example                              |
-| ---------- | ---------------------------------------------------------- | -------------------- | ----------------------------------------------------- | ------------------------------------ |
-| `ctx`      | [context.Context](https://pkg.go.dev/context#Context)      | :heavy\_check\_mark: | The context to use for the request.                   |                                      |
-| `internID` | `string`                                                   | :heavy\_check\_mark: | ID of an intern visible to the authenticated API key. | 7c9e6679-7425-40de-944b-e07fc1f90ae7 |
-| `opts`     | \[][operations.Option](../../models/operations/option.mdx) | :heavy\_minus\_sign: | The options for this request.                         |                                      |
+| Parameter             | Type                                                                              | Required             | Description                                           | Example                                             |
+| --------------------- | --------------------------------------------------------------------------------- | -------------------- | ----------------------------------------------------- | --------------------------------------------------- |
+| `ctx`                 | [context.Context](https://pkg.go.dev/context#Context)                             | :heavy\_check\_mark: | The context to use for the request.                   |                                                     |
+| `internID`            | `string`                                                                          | :heavy\_check\_mark: | ID of an intern visible to the authenticated API key. | 7c9e6679-7425-40de-944b-e07fc1f90ae7                |
+| `deleteInternRequest` | [components.DeleteInternRequest](../../models/components/deleteinternrequest.mdx) | :heavy\_check\_mark: | N/A                                                   | \{<br />"acknowledge\_workspace\_loss": true<br />} |
+| `opts`                | \[][operations.Option](../../models/operations/option.mdx)                        | :heavy\_minus\_sign: | The options for this request.                         |                                                     |
 
 ### Response
 
@@ -182,11 +187,11 @@ func main() {
 
 ### Errors
 
-| Error Type                     | Status Code             | Content Type     |
-| ------------------------------ | ----------------------- | ---------------- |
-| sdkerrors.InternLifecycleError | 401, 403, 404, 408, 409 | application/json |
-| sdkerrors.InternLifecycleError | 500, 502                | application/json |
-| sdkerrors.APIError             | 4XX, 5XX                | \*/\*            |
+| Error Type                     | Status Code                       | Content Type     |
+| ------------------------------ | --------------------------------- | ---------------- |
+| sdkerrors.InternLifecycleError | 400, 401, 403, 404, 408, 409, 413 | application/json |
+| sdkerrors.InternLifecycleError | 500, 502                          | application/json |
+| sdkerrors.APIError             | 4XX, 5XX                          | \*/\*            |
 
 ## GetIntern
 
@@ -414,7 +419,7 @@ Every response, whether it ends with `stop`, `tool_calls` or `error`, is followe
 
 To answer, send a second request with the same `session_id`, the assistant message echoing that tool call, and a `tool` message whose `tool_call_id` is the tool call id and whose `content` is the answer. The answer is delivered to the run that asked and the stream continues from where it paused. A question stays open for its interaction deadline (5 minutes by default) and the run is cancelled when that passes. Rejected replies do not extend the deadline.
 
-Closing the connection after the `[DONE]` that follows `finish_reason: "tool_calls"` keeps the run alive. Disconnecting while a response is still streaming cancels the run. The disconnect is noticed when the intern next writes to the stream, which during a silent tool run can take more than one 30 second heartbeat interval.
+Closing the connection after the `[DONE]` that follows `finish_reason: "tool_calls"` keeps the run alive. Disconnecting while a response is still streaming cancels the run. The stream writes a `: keepalive` comment whenever nothing else has been written for 30 seconds, so a disconnect is noticed within that interval even while the intern is silent.
 
 A run the intern ends while you are still connected, by cancellation or by a deadline, ends the stream with a `finish_reason: "error"` chunk carrying `410` and reason `run_ended`, then the final empty-`choices` chunk and `[DONE]`. That error reports only an ending the intern confirmed. A connection that breaks without that confirmation ends with reason `stream_severed`, and a client that has already disconnected is promised no final event.
 

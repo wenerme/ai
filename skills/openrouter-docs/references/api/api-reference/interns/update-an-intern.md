@@ -273,8 +273,15 @@ components:
             - string
             - 'null'
         model:
-          description: New OpenRouter model slug. Null restores the workspace default.
+          description: >-
+            New OpenRouter model slug in `author/slug` form (an optional
+            `:variant` suffix is accepted). Other shapes are refused with 400.
+            Null restores the workspace default. Takes effect on the next
+            provision: until then `GET` shows this configured model while chat
+            chunks show the model the running intern reports.
           maxLength: 200
+          minLength: 1
+          pattern: ^[A-Za-z0-9~._:@+-]+\/[A-Za-z0-9~._:@+-]+$
           type:
             - string
             - 'null'

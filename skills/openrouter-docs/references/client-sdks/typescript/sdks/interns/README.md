@@ -187,7 +187,7 @@ run();
 
 ## deleteIntern
 
-Starts safe teardown of the intern, its runtime and its private vault. The API key selects the caller, workspace and visible interns. There is no default workspace fallback. Requests on regional hostnames such as `eu.openrouter.ai` are refused. [API key](/docs/client-sdks/typescript/docs/api-reference/authentication) required.
+Starts safe teardown of the intern, its runtime and its private vault. The body is optional. Send `{"acknowledge_workspace_loss": true}` to delete a `destroy_failed` intern whose `last_failure_message` names `workspace_archive_failed`, accepting that its workspace is not backed up. The request body is capped at 1048576 bytes and a larger body is refused with 413. The API key selects the caller, workspace and visible interns. There is no default workspace fallback. Requests on regional hostnames such as `eu.openrouter.ai` are refused. [API key](/docs/client-sdks/typescript/docs/api-reference/authentication) required.
 
 ### Example Usage
 
@@ -204,6 +204,9 @@ const openRouter = new OpenRouter({
 async function run() {
   const result = await openRouter.interns.deleteIntern({
     internId: "7c9e6679-7425-40de-944b-e07fc1f90ae7",
+    deleteInternRequest: {
+      acknowledgeWorkspaceLoss: true,
+    },
   });
 
   console.log(result);
@@ -232,6 +235,9 @@ const openRouter = new OpenRouterCore({
 async function run() {
   const res = await internsDeleteIntern(openRouter, {
     internId: "7c9e6679-7425-40de-944b-e07fc1f90ae7",
+    deleteInternRequest: {
+      acknowledgeWorkspaceLoss: true,
+    },
   });
   if (res.ok) {
     const { value: result } = res;
@@ -259,11 +265,11 @@ run();
 
 ### Errors
 
-| Error Type                    | Status Code             | Content Type     |
-| ----------------------------- | ----------------------- | ---------------- |
-| errors.InternLifecycleError   | 401, 403, 404, 408, 409 | application/json |
-| errors.InternLifecycleError   | 500, 502                | application/json |
-| errors.OpenRouterDefaultError | 4XX, 5XX                | \*/\*            |
+| Error Type                    | Status Code                       | Content Type     |
+| ----------------------------- | --------------------------------- | ---------------- |
+| errors.InternLifecycleError   | 400, 401, 403, 404, 408, 409, 413 | application/json |
+| errors.InternLifecycleError   | 500, 502                          | application/json |
+| errors.OpenRouterDefaultError | 4XX, 5XX                          | \*/\*            |
 
 ## getIntern
 
@@ -601,7 +607,7 @@ Every response, whether it ends with `stop`, `tool_calls` or `error`, is followe
 
 To answer, send a second request with the same `session_id`, the assistant message echoing that tool call, and a `tool` message whose `tool_call_id` is the tool call id and whose `content` is the answer. The answer is delivered to the run that asked and the stream continues from where it paused. A question stays open for its interaction deadline (5 minutes by default) and the run is cancelled when that passes. Rejected replies do not extend the deadline.
 
-Closing the connection after the `[DONE]` that follows `finish_reason: "tool_calls"` keeps the run alive. Disconnecting while a response is still streaming cancels the run. The disconnect is noticed when the intern next writes to the stream, which during a silent tool run can take more than one 30 second heartbeat interval.
+Closing the connection after the `[DONE]` that follows `finish_reason: "tool_calls"` keeps the run alive. Disconnecting while a response is still streaming cancels the run. The stream writes a `: keepalive` comment whenever nothing else has been written for 30 seconds, so a disconnect is noticed within that interval even while the intern is silent.
 
 A run the intern ends while you are still connected, by cancellation or by a deadline, ends the stream with a `finish_reason: "error"` chunk carrying `410` and reason `run_ended`, then the final empty-`choices` chunk and `[DONE]`. That error reports only an ending the intern confirmed. A connection that breaks without that confirmation ends with reason `stream_severed`, and a client that has already disconnected is promised no final event.
 

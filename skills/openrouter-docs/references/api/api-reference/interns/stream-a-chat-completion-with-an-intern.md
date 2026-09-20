@@ -10,7 +10,7 @@ Every response, whether it ends with `stop`, `tool_calls` or `error`, is followe
 
 To answer, send a second request with the same `session_id`, the assistant message echoing that tool call, and a `tool` message whose `tool_call_id` is the tool call id and whose `content` is the answer. The answer is delivered to the run that asked and the stream continues from where it paused. A question stays open for its interaction deadline (5 minutes by default) and the run is cancelled when that passes. Rejected replies do not extend the deadline.
 
-Closing the connection after the `[DONE]` that follows `finish_reason: "tool_calls"` keeps the run alive. Disconnecting while a response is still streaming cancels the run. The disconnect is noticed when the intern next writes to the stream, which during a silent tool run can take more than one 30 second heartbeat interval.
+Closing the connection after the `[DONE]` that follows `finish_reason: "tool_calls"` keeps the run alive. Disconnecting while a response is still streaming cancels the run. The stream writes a `: keepalive` comment whenever nothing else has been written for 30 seconds, so a disconnect is noticed within that interval even while the intern is silent.
 
 A run the intern ends while you are still connected, by cancellation or by a deadline, ends the stream with a `finish_reason: "error"` chunk carrying `410` and reason `run_ended`, then the final empty-`choices` chunk and `[DONE]`. That error reports only an ending the intern confirmed. A connection that breaks without that confirmation ends with reason `stream_severed`, and a client that has already disconnected is promised no final event.
 
@@ -164,9 +164,10 @@ paths:
 
         Closing the connection after the `[DONE]` that follows `finish_reason:
         "tool_calls"` keeps the run alive. Disconnecting while a response is
-        still streaming cancels the run. The disconnect is noticed when the
-        intern next writes to the stream, which during a silent tool run can
-        take more than one 30 second heartbeat interval.
+        still streaming cancels the run. The stream writes a `: keepalive`
+        comment whenever nothing else has been written for 30 seconds, so a
+        disconnect is noticed within that interval even while the intern is
+        silent.
 
 
         A run the intern ends while you are still connected, by cancellation or
@@ -428,9 +429,16 @@ components:
           type: array
         model:
           description: >-
-            Accepted for OpenAI compatibility and ignored. Streamed chunks
-            report the model the intern actually used, or `openrouter/intern`
-            when it did not report one.
+            Accepted for OpenAI compatibility and never used. The intern runs
+            the model configured on it (`PATCH` the intern to change it).
+            Streamed chunks report the runtime's identifier for that model as
+            the intern reports it, or `openrouter/intern` on chunks whose event
+            carries no model (before the intern reports one, and on the chunks
+            the API emits itself: the timeout, run-ended and severed-stream
+            error chunks, the stop chunk of a replay that ends without a
+            terminal daemon event, and the final usage chunk after any of them).
+            A usage chunk that follows a daemon completion event carries the
+            model the intern reported.
           example: openrouter/intern
           maxLength: 256
           minLength: 1
@@ -439,14 +447,19 @@ components:
           description: >-
             The daemon session to continue, as returned in `session_id` on the
             final chunk of an earlier response. Omit it to start a new session.
-            Required when the last message has role `tool`.
+            An id the intern has not seen before is not an error: it starts a
+            new session under that id, so a mistyped id forks the conversation.
+            Sessions are scoped to the intern's own daemon. Required when the
+            last message has role `tool`.
           example: ses_7f3c9a
           maxLength: 256
           minLength: 1
           type: string
         stream:
           const: true
-          description: Must be `true`. This endpoint only streams.
+          description: >-
+            Must be `true`. This endpoint only streams. `false` or an omitted
+            `stream` is refused with `400` and reason `bad_request`.
           example: true
           type: boolean
       required:
@@ -574,8 +587,14 @@ components:
           type: string
         model:
           description: >-
-            The request `model` when given, or `openrouter/intern`. The final
-            chunk may carry the model the intern reported for the run instead.
+            The runtime's identifier for the model the intern is running, as the
+            intern reports it. Each chunk carries the model from the event
+            behind it: `openrouter/intern` on chunks emitted before the intern
+            has reported one and on chunks the API emits itself (timeout,
+            run-ended and severed-stream errors and their final usage chunk),
+            even after an earlier chunk named a model. It can change within a
+            stream. It is not an OpenRouter model slug, and the request `model`
+            is never used.
           type: string
         object:
           enum:
@@ -586,7 +605,8 @@ components:
             On the final chunk of every response, the daemon session to continue
             with, or `null` when the run failed before the intern reported one.
             Send it as `session_id` on the next request, including the `tool`
-            reply to an interaction.
+            reply to an interaction. Session ids are client-visible and scoped
+            to the intern's own daemon.
           example: ses_7f3c9a
           type:
             - string
@@ -649,7 +669,6 @@ components:
             $ref: '#/components/schemas/InternChatEchoedToolCall'
           type: array
       required:
-        - content
         - role
       type: object
     InternChatDeveloperMessage:

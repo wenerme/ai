@@ -321,7 +321,7 @@ components:
   schemas:
     CreateInternRequest:
       additionalProperties: false
-      description: Settings for a new intern in an explicit workspace.
+      description: Settings for a new intern.
       example:
         name: research-assistant
         provision: true
@@ -357,13 +357,13 @@ components:
           type: string
         workspace_id:
           description: >-
-            Workspace that will own the intern. It must match the API key
+            Workspace that will own the intern. Defaults to the workspace the
+            API key resolves to. When given, it must match the API key
             workspace.
           format: uuid
           type: string
       required:
         - name
-        - workspace_id
       type: object
     Intern:
       description: Public lifecycle state and settings for one intern.
