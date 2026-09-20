@@ -399,13 +399,13 @@
   },
   "api/api-reference/interns/create-an-intern.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/interns/create-an-intern.md",
-    "size": 18229,
-    "updatedAt": "2026-09-19T14:01:08.159Z"
+    "size": 18256,
+    "updatedAt": "2026-09-20T04:47:24.288Z"
   },
   "api/api-reference/interns/delete-an-intern.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/interns/delete-an-intern.md",
-    "size": 9231,
-    "updatedAt": "2026-09-18T14:29:58.453Z"
+    "size": 11319,
+    "updatedAt": "2026-09-20T04:47:24.852Z"
   },
   "api/api-reference/interns/get-an-intern.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/interns/get-an-intern.md",
@@ -414,8 +414,8 @@
   },
   "api/api-reference/interns/list-interns.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/interns/list-interns.md",
-    "size": 15261,
-    "updatedAt": "2026-09-19T04:27:33.990Z"
+    "size": 16237,
+    "updatedAt": "2026-09-20T04:47:25.825Z"
   },
   "api/api-reference/interns/provision-an-intern.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/interns/provision-an-intern.md",
@@ -424,8 +424,8 @@
   },
   "api/api-reference/interns/stream-a-chat-completion-with-an-intern.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/interns/stream-a-chat-completion-with-an-intern.md",
-    "size": 38611,
-    "updatedAt": "2026-09-19T04:27:34.752Z"
+    "size": 40014,
+    "updatedAt": "2026-09-20T04:47:26.812Z"
   },
   "api/api-reference/interns/suspend-an-intern.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/interns/suspend-an-intern.md",
@@ -434,8 +434,8 @@
   },
   "api/api-reference/interns/update-an-intern.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/interns/update-an-intern.md",
-    "size": 14778,
-    "updatedAt": "2026-09-19T04:27:35.586Z"
+    "size": 15169,
+    "updatedAt": "2026-09-20T04:47:27.713Z"
   },
   "api/api-reference/models/get-a-model-by-its-slug.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/models/get-a-model-by-its-slug.md",
@@ -464,8 +464,8 @@
   },
   "api/api-reference/oauth/exchange-a-workload-identity-token.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/oauth/exchange-a-workload-identity-token.md",
-    "size": 10221,
-    "updatedAt": "2026-09-18T14:30:07.264Z"
+    "size": 10265,
+    "updatedAt": "2026-09-20T04:47:33.273Z"
   },
   "api/api-reference/oauth/exchange-authorization-code-for-api-key.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/oauth/exchange-authorization-code-for-api-key.md",
@@ -860,9 +860,8 @@
   },
   "client-sdks/go/sdks/byok/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/byok/README.md",
-    "lastModified": "Fri, 21 Aug 2026 11:08:08 GMT",
-    "size": 15427,
-    "updatedAt": "2026-08-21T11:08:08.237Z"
+    "size": 15502,
+    "updatedAt": "2026-09-20T04:48:19.842Z"
   },
   "client-sdks/go/sdks/chat/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/chat/README.md",
@@ -934,8 +933,8 @@
   },
   "client-sdks/go/sdks/interns/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/interns/README.md",
-    "size": 27960,
-    "updatedAt": "2026-09-18T04:33:46.515Z"
+    "size": 30138,
+    "updatedAt": "2026-09-20T04:48:28.550Z"
   },
   "client-sdks/go/sdks/models/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/models/README.md",
@@ -1049,8 +1048,8 @@
   },
   "client-sdks/python/sdks/byok/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/sdks/byok/README.md",
-    "size": 33243,
-    "updatedAt": "2026-09-10T04:28:00.730Z"
+    "size": 33315,
+    "updatedAt": "2026-09-20T04:48:40.348Z"
   },
   "client-sdks/python/sdks/chat/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/sdks/chat/README.md",
@@ -1121,8 +1120,8 @@
   },
   "client-sdks/python/sdks/interns/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/sdks/interns/README.md",
-    "size": 42038,
-    "updatedAt": "2026-09-18T04:34:05.644Z"
+    "size": 46223,
+    "updatedAt": "2026-09-20T04:48:47.660Z"
   },
   "client-sdks/python/sdks/models/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/sdks/models/README.md",
@@ -1229,9 +1228,8 @@
   },
   "client-sdks/typescript/sdks/byok/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/typescript/sdks/byok/README.md",
-    "lastModified": "Fri, 21 Aug 2026 11:08:49 GMT",
-    "size": 21282,
-    "updatedAt": "2026-08-21T11:08:49.675Z"
+    "size": 21354,
+    "updatedAt": "2026-09-20T04:49:00.309Z"
   },
   "client-sdks/typescript/sdks/chat/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/typescript/sdks/chat/README.md",
@@ -1303,8 +1301,8 @@
   },
   "client-sdks/typescript/sdks/interns/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/typescript/sdks/interns/README.md",
-    "size": 37450,
-    "updatedAt": "2026-09-18T04:34:23.523Z"
+    "size": 37964,
+    "updatedAt": "2026-09-20T04:49:07.287Z"
   },
   "client-sdks/typescript/sdks/models/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/typescript/sdks/models/README.md",
@@ -1806,6 +1804,11 @@
     "size": 7423,
     "updatedAt": "2026-07-21T06:47:46.126Z"
   },
+  "guides/community/typesafe-sdk.md": {
+    "url": "https://openrouter.ai/docs/guides/community/typesafe-sdk.md",
+    "size": 5131,
+    "updatedAt": "2026-09-20T04:49:55.575Z"
+  },
   "guides/community/vercel-ai-sdk.md": {
     "url": "https://openrouter.ai/docs/guides/community/vercel-ai-sdk.md",
     "lastModified": "Tue, 21 Jul 2026 06:47:46 GMT",
@@ -2200,8 +2203,8 @@
   },
   "guides/ori/intern-chat.md": {
     "url": "https://openrouter.ai/docs/guides/ori/intern-chat.md",
-    "size": 16826,
-    "updatedAt": "2026-09-18T04:35:44.438Z"
+    "size": 18221,
+    "updatedAt": "2026-09-20T04:50:36.081Z"
   },
   "guides/ori/vault.md": {
     "url": "https://openrouter.ai/docs/guides/ori/vault.md",
@@ -2225,8 +2228,8 @@
   },
   "guides/overview/auth/workload-identity-federation.md": {
     "url": "https://openrouter.ai/docs/guides/overview/auth/workload-identity-federation.md",
-    "size": 10639,
-    "updatedAt": "2026-09-04T04:26:23.593Z"
+    "size": 12730,
+    "updatedAt": "2026-09-20T04:50:38.285Z"
   },
   "guides/overview/mcp-server.md": {
     "url": "https://openrouter.ai/docs/guides/overview/mcp-server.md",

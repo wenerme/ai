@@ -186,10 +186,10 @@
   "openai-docs/guides/agents-api/environments/openai-hosted.md": {
     "url": "https://developers.openai.com/api/docs/guides/agents-api/environments/openai-hosted.md",
     "skill": "openai-docs",
-    "etag": "W/\"aa74bc773a1b5c72a36b8564cb72e9d5\"",
-    "lastModified": "Fri, 11 Sep 2026 04:24:12 GMT",
-    "size": 12440,
-    "updatedAt": "2026-09-11T04:24:12.191Z"
+    "etag": "W/\"9b2453d9800cbe68c6244fb1604171aa\"",
+    "lastModified": "Sat, 19 Sep 2026 20:46:31 GMT",
+    "size": 12698,
+    "updatedAt": "2026-09-20T04:43:48.443Z"
   },
   "openai-docs/guides/agents-api/environments/providers/blaxel.md": {
     "url": "https://developers.openai.com/api/docs/guides/agents-api/environments/providers/blaxel.md",
@@ -266,10 +266,10 @@
   "openai-docs/guides/agents-api/environments/security.md": {
     "url": "https://developers.openai.com/api/docs/guides/agents-api/environments/security.md",
     "skill": "openai-docs",
-    "etag": "W/\"3a487d2a988c9b7ab9a379bab3777cf8\"",
-    "lastModified": "Fri, 11 Sep 2026 04:24:15 GMT",
-    "size": 2876,
-    "updatedAt": "2026-09-11T04:24:15.505Z"
+    "etag": "W/\"8b890e9fa11b4181acdd13fbee89cdf5\"",
+    "lastModified": "Sat, 19 Sep 2026 20:46:51 GMT",
+    "size": 3345,
+    "updatedAt": "2026-09-20T04:43:50.825Z"
   },
   "openai-docs/guides/agents-api/environments/self-hosted.md": {
     "url": "https://developers.openai.com/api/docs/guides/agents-api/environments/self-hosted.md",
@@ -354,10 +354,10 @@
   "openai-docs/guides/agents-api/tools/mcp.md": {
     "url": "https://developers.openai.com/api/docs/guides/agents-api/tools/mcp.md",
     "skill": "openai-docs",
-    "etag": "W/\"84001f479598d89993eec7ec5f0f7acb\"",
-    "lastModified": "Fri, 11 Sep 2026 04:24:19 GMT",
-    "size": 7739,
-    "updatedAt": "2026-09-11T04:24:19.155Z"
+    "etag": "W/\"b34946c54c4b9f5a19a731aafbc66558\"",
+    "lastModified": "Sat, 19 Sep 2026 20:46:22 GMT",
+    "size": 7770,
+    "updatedAt": "2026-09-20T04:43:53.587Z"
   },
   "openai-docs/guides/agents-api/tools/plugins.md": {
     "url": "https://developers.openai.com/api/docs/guides/agents-api/tools/plugins.md",
@@ -370,10 +370,10 @@
   "openai-docs/guides/agents-api/tools/vaults.md": {
     "url": "https://developers.openai.com/api/docs/guides/agents-api/tools/vaults.md",
     "skill": "openai-docs",
-    "etag": "W/\"59a2560c835515c1433e172c130f288e\"",
-    "lastModified": "Sat, 12 Sep 2026 02:01:37 GMT",
-    "size": 20127,
-    "updatedAt": "2026-09-12T04:21:27.506Z"
+    "etag": "W/\"4b58b76f0aafefb35002b63935b6aacf\"",
+    "lastModified": "Sat, 19 Sep 2026 20:47:08 GMT",
+    "size": 25323,
+    "updatedAt": "2026-09-20T04:43:54.076Z"
   },
   "openai-docs/guides/agents-api/tools/web-search.md": {
     "url": "https://developers.openai.com/api/docs/guides/agents-api/tools/web-search.md",

@@ -12,7 +12,9 @@ This endpoint is available to members of the interns programme. A key outside th
 
 ## An ordinary turn
 
-Send `stream: true` and a `messages` array. Streaming is required, and the request is refused with `400` without it.
+Send `stream: true` and a `messages` array. Streaming is required. `stream: false`, or an omitted `stream`, is refused with `400` and reason `bad_request` before anything reaches the intern.
+
+The request `model` field is accepted for OpenAI compatibility and never used. The intern runs the model configured on it, and the `model` in every chunk is the runtime's identifier for that model as the intern reports it. Each chunk carries the model from the event behind it, so it is `openrouter/intern` on chunks emitted before the intern reports one and on chunks the API emits itself (the timeout, run-ended and severed-stream error chunks and their final usage chunk) even after an earlier chunk named a model. It can change back and forth within a stream, and it is not an OpenRouter model slug. To change the model an intern runs, `PATCH` the intern (see below).
 
 ```bash theme={null}
 curl https://openrouter.ai/api/v1/interns/$INTERN_ID/chat/completions \
@@ -38,7 +40,7 @@ data: {"choices":[],"created":1789543404,"id":"chatcmpl-54728d7e-c2cc-4887-b1f4-
 data: [DONE]
 ```
 
-Keep the `session_id`. Sending it with a later prompt continues the same intern session, so the intern remembers the earlier turns. Omit it to start a fresh session. Heartbeats arrive as SSE comment lines (`: ...`) while the intern works, and your client should ignore them.
+Keep the `session_id`. Sending it with a later prompt continues the same intern session, so the intern remembers the earlier turns. Omit it to start a fresh session. Session ids are client-visible and client-chosen: a `session_id` the intern has not seen before is not an error, it starts a new session under that id. There is no `session_not_found`, so a mistyped id silently forks the conversation. Sessions live on the intern's own daemon, which is what scopes them to that intern. Heartbeats arrive as SSE comment lines (`: ...`) while the intern works, and your client should ignore them.
 
 ## When the intern needs you
 
@@ -134,6 +136,10 @@ A request containing a tool reply must carry `session_id`, and the `tool_call_id
 ```
 
 Approval mode applies to the prompt that carries it. It is not stored on the session. A later prompt with the same `session_id` runs in `self-drive` unless it repeats `approval_mode: "manual"`. Tool replies always continue the run in the mode it started with. Any other value is refused with `400`.
+
+## Changing the model
+
+`PATCH /api/v1/interns/{internId}` with a `model` takes effect on the next provision. Until the intern is provisioned again, `GET /api/v1/interns/{internId}` shows the configured model and chat chunks keep showing the model the running intern reports, so the two fields disagree by design in that window.
 
 ## Deadlines and disconnects
 

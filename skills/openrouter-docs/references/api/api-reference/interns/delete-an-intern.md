@@ -4,7 +4,7 @@
 
 # Delete an intern
 
-> Starts safe teardown of the intern, its runtime and its private vault. The API key selects the caller, workspace and visible interns. There is no default workspace fallback. Requests on regional hostnames such as `eu.openrouter.ai` are refused. [API key](/docs/api-reference/authentication) required.
+> Starts safe teardown of the intern, its runtime and its private vault. The body is optional. Send `{"acknowledge_workspace_loss": true}` to delete a `destroy_failed` intern whose `last_failure_message` names `workspace_archive_failed`, accepting that its workspace is not backed up. The request body is capped at 1048576 bytes and a larger body is refused with 413. The API key selects the caller, workspace and visible interns. There is no default workspace fallback. Requests on regional hostnames such as `eu.openrouter.ai` are refused. [API key](/docs/api-reference/authentication) required.
 
 
 
@@ -126,9 +126,13 @@ paths:
       summary: Delete an intern
       description: >-
         Starts safe teardown of the intern, its runtime and its private vault.
-        The API key selects the caller, workspace and visible interns. There is
-        no default workspace fallback. Requests on regional hostnames such as
-        `eu.openrouter.ai` are refused. [API
+        The body is optional. Send `{"acknowledge_workspace_loss": true}` to
+        delete a `destroy_failed` intern whose `last_failure_message` names
+        `workspace_archive_failed`, accepting that its workspace is not backed
+        up. The request body is capped at 1048576 bytes and a larger body is
+        refused with 413. The API key selects the caller, workspace and visible
+        interns. There is no default workspace fallback. Requests on regional
+        hostnames such as `eu.openrouter.ai` are refused. [API
         key](/docs/api-reference/authentication) required.
       operationId: deleteIntern
       parameters:
@@ -141,6 +145,14 @@ paths:
             example: 7c9e6679-7425-40de-944b-e07fc1f90ae7
             minLength: 1
             type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              acknowledge_workspace_loss: true
+            schema:
+              $ref: '#/components/schemas/DeleteInternRequest'
+        required: true
       responses:
         '202':
           content:
@@ -150,6 +162,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/DeleteInternResponse'
           description: The operation was accepted.
+        '400':
+          content:
+            application/json:
+              example:
+                error:
+                  code: invalid_body
+                  message: Invalid request body
+              schema:
+                $ref: '#/components/schemas/InternLifecycleError'
+          description: The request body is invalid.
         '401':
           content:
             application/json:
@@ -204,6 +226,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/InternLifecycleError'
           description: The intern is not in a state that allows this operation.
+        '413':
+          content:
+            application/json:
+              example:
+                error:
+                  code: payload_too_large
+                  message: Request body exceeds 1048576 bytes
+              schema:
+                $ref: '#/components/schemas/InternLifecycleError'
+          description: The request body is larger than 1048576 bytes.
         '500':
           content:
             application/json:
@@ -228,6 +260,20 @@ paths:
         - apiKey: []
 components:
   schemas:
+    DeleteInternRequest:
+      additionalProperties: false
+      description: Optional consent for a teardown that discards the workspace.
+      example:
+        acknowledge_workspace_loss: true
+      properties:
+        acknowledge_workspace_loss:
+          default: false
+          description: >-
+            Delete even though the workspace backup was not confirmed. Defaults
+            to false, which refuses the teardown when a workspace archive is
+            missing.
+          type: boolean
+      type: object
     DeleteInternResponse:
       additionalProperties: false
       properties:

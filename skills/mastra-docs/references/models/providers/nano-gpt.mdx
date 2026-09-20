@@ -5,7 +5,7 @@ description: "Browse NanoGPT model IDs, capabilities, context windows, and prici
 
 # [NanoGPT logo]NanoGPT
 
-Access 572 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
+Access 577 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
 
 Learn more in the [NanoGPT documentation](https://docs.nano-gpt.com).
 
@@ -2236,6 +2236,18 @@ for await (const chunk of stream) {
     "outputCost": 0.7
   },
   {
+    "model": "nano-gpt/google/diffusiongemma",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 32768,
+    "inputCost": 0.05,
+    "outputCost": 0.15
+  },
+  {
     "model": "nano-gpt/google/gemini-3-flash-preview",
     "imageInput": true,
     "audioInput": true,
@@ -2438,6 +2450,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 0.12,
     "outputCost": 0.38
+  },
+  {
+    "model": "nano-gpt/google/gemma-4-26b-a4b-it-cybersecurity",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 32768,
+    "inputCost": 0.1056,
+    "outputCost": 0.3344
   },
   {
     "model": "nano-gpt/google/gemma-4-26b-a4b-it:thinking",
@@ -3794,6 +3818,18 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 0.5,
     "outputCost": 2.5
+  },
+  {
+    "model": "nano-gpt/nvidia/nemotron-3.5-content-safety",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": true,
+    "contextWindow": 131072,
+    "maxOutput": 32768,
+    "inputCost": 0.05,
+    "outputCost": 0.15
   },
   {
     "model": "nano-gpt/nvidia/nemotron-3.5-lightning",
@@ -5200,6 +5236,18 @@ for await (const chunk of stream) {
     "outputCost": 0.7
   },
   {
+    "model": "nano-gpt/qwen/qwen3.8-27b-cybersecurity",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 32768,
+    "inputCost": 0.1,
+    "outputCost": 0.6
+  },
+  {
     "model": "nano-gpt/qwen/qwen3.8-27b-fable",
     "imageInput": true,
     "audioInput": false,
@@ -5256,8 +5304,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 524288,
     "maxOutput": 32768,
-    "inputCost": 0.25,
-    "outputCost": 1.5
+    "inputCost": 0.2,
+    "outputCost": 1.7
   },
   {
     "model": "nano-gpt/qwen/qwen3.8-27b-uncensored:thinking",
@@ -5268,8 +5316,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 524288,
     "maxOutput": 32768,
-    "inputCost": 0.25,
-    "outputCost": 1.5
+    "inputCost": 0.2,
+    "outputCost": 1.7
   },
   {
     "model": "nano-gpt/qwen/qwen3.8-27b:thinking",
@@ -6842,6 +6890,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 0.075,
     "outputCost": 0.25
+  },
+  {
+    "model": "nano-gpt/z-ai/glm-5.3-flash-cybersecurity",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 32768,
+    "inputCost": 0.15,
+    "outputCost": 0.5
   },
   {
     "model": "nano-gpt/z-ai/glm-5.3-flash-uncensored",

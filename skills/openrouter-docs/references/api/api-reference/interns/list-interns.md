@@ -166,6 +166,21 @@ paths:
             type: array
           style: form
         - description: >-
+            The opaque `next_cursor` of the previous page. Returns the interns
+            that come after it in the newest-first order. A malformed cursor is
+            a 400.
+          in: query
+          name: starting_after
+          required: false
+          schema:
+            description: >-
+              The opaque `next_cursor` of the previous page. Returns the interns
+              that come after it in the newest-first order. A malformed cursor
+              is a 400.
+            example: >-
+              MjAyNi0wOS0xNlQwODozMDowMC4wMDAwMDBafDdjOWU2Njc5LTc0MjUtNDBkZS05NDRiLWUwN2ZjMWY5MGFlNw
+            type: string
+        - description: >-
             Only return interns in this workspace. It must match the API key
             workspace.
           in: query
@@ -298,6 +313,13 @@ components:
         has_more:
           description: True when more interns match the current filters.
           type: boolean
+        next_cursor:
+          description: >-
+            Opaque cursor, present when `has_more` is true. Pass it as
+            `starting_after` to fetch the next page.
+          example: >-
+            MjAyNi0wOS0xNlQwODozMDowMC4wMDAwMDBafDdjOWU2Njc5LTc0MjUtNDBkZS05NDRiLWUwN2ZjMWY5MGFlNw
+          type: string
       required:
         - data
         - has_more

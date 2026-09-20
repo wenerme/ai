@@ -39,14 +39,15 @@ An issuer is an identity provider your organization trusts.
 
 A policy says which tokens from an issuer may exchange, and which API key they act as.
 
-| Field           | Meaning                                                                                               |
-| --------------- | ----------------------------------------------------------------------------------------------------- |
-| Issuer          | The issuer that signs the tokens.                                                                     |
-| Subject         | Must equal the token's `sub` claim exactly.                                                           |
-| Audience        | Must equal one of the token's `aud` values exactly.                                                   |
-| Acts as API key | A workspace API key owned by your organization. Personal keys and management keys cannot be targeted. |
+| Field           | Meaning                                                                                                                           |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| Issuer          | The issuer that signs the tokens.                                                                                                 |
+| Subject         | Optional. When set, must equal the token's `sub` claim exactly.                                                                   |
+| Audience        | Required. Must equal one of the token's `aud` values exactly, so a token the issuer minted for another service is never accepted. |
+| Condition       | Optional. A [CEL](https://cel.dev) expression that must evaluate to `true` (see below).                                           |
+| Acts as API key | A workspace API key owned by your organization. Personal keys and management keys cannot be targeted.                             |
 
-Each policy has an id shown under its name. Your workload sends that id as `federation_policy_id` with every exchange, which binds the exchange to your organization even if another organization trusts the same issuer, subject, and audience. Policies can be paused with the **Enabled** switch.
+A policy must set at least one of Subject or Condition. Each policy has an id shown under its name. Your workload sends that id as `federation_policy_id` with every exchange, which binds the exchange to your organization even if another organization trusts the same issuer, subject, and audience. Policies can be paused with the **Enabled** switch.
 
 Under **Token must match**, choose **Add claim check** to add either of these optional conditions:
 
@@ -58,6 +59,25 @@ Under **Token must match**, choose **Add claim check** to add either of these op
 All added checks must pass, in addition to issuer, subject, audience, signature, and expiry validation. Matching is case-sensitive; missing or incorrectly typed claims fail the exchange. Each check can be added once and removed independently. Policies without additional checks keep their existing behavior.
 
 These conditions validate the **incoming identity token**. They do not change the `inference` scope or `Bearer` token type of the issued OpenRouter access token, and sending `scope=inference` in the exchange request does not satisfy a subject-token check.
+
+### Conditions
+
+When an exact subject is too narrow, write a **Condition** in [CEL](https://cel.dev). It is evaluated after signature, expiry, exact subject and audience, and claim checks pass, and it sees only these variables from the verified token:
+
+| Variable     | Type           | Source claim                                      |
+| ------------ | -------------- | ------------------------------------------------- |
+| `subject`    | `string`       | `sub`                                             |
+| `audience`   | `list<string>` | `aud` (a string `aud` becomes a one-element list) |
+| `scopes`     | `list<string>` | `scopes` (empty list when absent)                 |
+| `token_type` | `string`       | `token_type` (empty string when absent)           |
+
+```text title="Example conditions" theme={null}
+subject.startsWith("repo:acme/")
+"inference" in scopes && audience.size() == 1
+token_type == "service_account" || subject.endsWith("@ci.acme.dev")
+```
+
+The expression is parsed and type-checked when the policy is saved: it must be at most 2,000 characters, use only the variables above, and evaluate to a boolean. `matches()` (regular expressions) is not available. At exchange time, a condition that evaluates to `false`, errors, or receives a token whose `scopes` or `token_type` claim has the wrong type rejects the exchange with `invalid_grant`. Subject tokens whose `sub` or any `aud` value exceeds 512 characters, or whose `scopes` claim has more than 16 entries or an entry longer than 512 characters, are rejected before any rule is evaluated. Comprehension macros (`all`, `exists`, `filter`, `map`, and similar) cannot be nested inside one another.
 
 ## Exchange a token
 
@@ -97,8 +117,8 @@ The request body is `application/x-www-form-urlencoded` and must stay under 32 K
 
 * Signed with `ES256` or `RS256` by a key published at the issuer's JWKS.
 * Carries `iss`, `sub`, `aud`, and `exp`, and is not expired.
-* `iss` equals the issuer URL of the named policy, and `sub` plus one `aud` value equal that policy's subject and audience.
-* Satisfies every additional claim check configured on the policy.
+* `iss` equals the issuer URL of the named policy. One `aud` value equals the policy's audience. If the policy sets a subject, `sub` equals it.
+* Satisfies every additional claim check and the condition configured on the policy.
 
 ### Errors
 
