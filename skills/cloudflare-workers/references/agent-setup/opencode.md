@@ -73,7 +73,7 @@ TerminalStandaloneExtensionOpen Source
    For example:
 
    ```txt
-   Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+   Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
    ```
 
 
@@ -179,23 +179,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
 ```
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
-```
-
-```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ```txt
 Set up WAF rules to block SQL injection and XSS attacks on my application.
+```
+
+```txt
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ## Tips

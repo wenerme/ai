@@ -190,3 +190,4 @@ export function bar(foo: Foo) {
 - [Rule options](/linter/#rule-options)
 - [Source Code (Edit this Page)](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/src/lint/suspicious/no_import_cycles.rs)
 - [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/tests/specs/suspicious/noImportCycles)
+- <RulePlaygroundLink rule="noImportCycles" category="lint" language="js" code={"import { baz } from \"./baz.js\";\n\nexport function foo() {\n    baz();\n}\n\nexport function bar() {\n    console.log(\"foobar\");\n}\n"} />

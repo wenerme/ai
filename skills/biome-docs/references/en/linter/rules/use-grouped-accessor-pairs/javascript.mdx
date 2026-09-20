@@ -86,3 +86,4 @@ Single getters without setters and setters without getters are ignored.
 - [Rule options](/linter/#rule-options)
 - [Source Code (Edit this Page)](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/src/lint/style/use_grouped_accessor_pairs.rs)
 - [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/tests/specs/style/useGroupedAccessorPairs)
+- <RulePlaygroundLink rule="useGroupedAccessorPairs" category="lint" language="js" code={"class User {\n  get name() { return this._name; }\n  constructor() {}\n  set name(value) { this._name = value; }\n}\n"} />

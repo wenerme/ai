@@ -74,3 +74,4 @@ await page.locator('.content').waitFor();
 - [Rule options](/linter/#rule-options)
 - [Source Code (Edit this Page)](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/src/lint/nursery/no_playwright_networkidle.rs)
 - [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/tests/specs/nursery/noPlaywrightNetworkidle)
+- <RulePlaygroundLink rule="noPlaywrightNetworkidle" category="lint" language="js" code={"await page.waitForLoadState('networkidle');\n"} />

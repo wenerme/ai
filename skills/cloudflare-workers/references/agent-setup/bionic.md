@@ -48,7 +48,7 @@ StandaloneCloud
    For example:
 
    ```txt
-   Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+   Set up WAF rules to block SQL injection and XSS attacks on my application.
    ```
 
 
@@ -154,11 +154,15 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Set up rate limiting and WAF rules to block abuse on my public API.
+```
+
+```txt
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ```txt
@@ -167,10 +171,6 @@ Check my Workers deployment logs for errors and suggest fixes.
 
 ```txt
 Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
-```
-
-```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 ## Tips

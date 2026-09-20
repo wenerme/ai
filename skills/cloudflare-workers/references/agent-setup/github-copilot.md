@@ -60,7 +60,7 @@ TerminalCloudExtension
    Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:
 
    ```txt
-   Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+   Create a Logpush job to stream Workers analytics to my data warehouse.
    ```
 
 
@@ -166,23 +166,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
-```
-
-```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
-```
-
-```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
-```
-
-```txt
 Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+```
+
+```txt
+Set up rate limiting and WAF rules to block abuse on my public API.
+```
+
+```txt
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+```
+
+```txt
+Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ## Tips

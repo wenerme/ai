@@ -155,3 +155,4 @@ class Example {
 - [Rule options](/linter/#rule-options)
 - [Source Code (Edit this Page)](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/src/lint/style/use_readonly_class_properties.rs)
 - [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/tests/specs/style/useReadonlyClassProperties)
+- <RulePlaygroundLink rule="useReadonlyClassProperties" category="lint" language="ts" code={"class Container {\n    private onlyModifiedInConstructor = 1;\n    constructor(\n        member1: number,\n    ) {\n        this.onlyModifiedInConstructor = onlyModifiedInConstructor;\n    }\n}\n"} />

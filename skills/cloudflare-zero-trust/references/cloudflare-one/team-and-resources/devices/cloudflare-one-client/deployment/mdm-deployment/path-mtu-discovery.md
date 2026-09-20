@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Path MTU Discovery (PMTUD)
 
-Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 <details>
 
@@ -49,9 +49,9 @@ Certain features may be disabled or degraded at low MTU thresholds. For details,
 
 - The Cloudflare One Client must be configured to use the [MASQUE tunnel protocol](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol).
 
-## Enable Path MTU Discovery
+## Enable or disable Path MTU Discovery
 
-PMTUD is disabled by default. To enable PMTUD on your devices, [deploy an MDM file](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/#windows) with the `enable_pmtud` key set to `true`. For example:
+PMTUD is now enabled by default (Cloudflare One Client version 2026.6.822.0 and above). To disable PMTUD on your devices, [deploy an MDM file](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/#windows) with the `enable_pmtud` key set to `false`. For example:
 
 ```xml
 <dict>
@@ -60,13 +60,13 @@ PMTUD is disabled by default. To enable PMTUD on your devices, [deploy an MDM fi
 	<key>warp_tunnel_protocol</key>
   <string>masque</string>
 	<key>enable_pmtud</key>
-  <true/>
+  <false/>
 </dict>
 ```
 
-This configuration enables the PMTUD feature and explicitly configures the MASQUE tunnel protocol.
+This configuration disables the PMTUD feature and explicitly configures the MASQUE tunnel protocol.
 
-The Cloudflare One Client will now send active probes to detect the network path MTU and will update its tunnel interface MTU accordingly. You can expect PMTUD probes to generate an extra 25 Mb/day of traffic coming from the device.
+With Path MTU Discovery disabled, the Cloudflare One Client will not send active probes to detect the network path MTU and will not update its tunnel interface MTU accordingly. If enabled, you can expect PMTUD probes to generate an extra 25 Mb/day of traffic coming from the device.
 
 ## Verify PMTUD is enabled
 
@@ -150,7 +150,7 @@ You can check your current network path MTU by collecting [Cloudflare One Client
 
 
 
-The example above shows an MTU of 1500 bytes, which meets the [recommended MTU requirements](#recommended-mtu) for the Cloudflare One Client. If your MTU falls below the recommended threshold, consider [enabling Path MTU Discovery](#enable-path-mtu-discovery) to optimize connection performance.
+The example above shows an MTU of 1500 bytes, which meets the [recommended MTU requirements](#recommended-mtu) for the Cloudflare One Client. If your MTU falls below the recommended threshold, consider [enabling Path MTU Discovery](#enable-or-disable-path-mtu-discovery) to optimize connection performance.
 
 Was this helpful?
 
@@ -161,5 +161,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/#page","headline":"Path MTU Discovery (PMTUD) · Cloudflare One docs","description":"How Path MTU Discovery (PMTUD) works in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MASQUE","IPv6"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/#page","headline":"Path MTU Discovery (PMTUD) · Cloudflare One docs","description":"How Path MTU Discovery (PMTUD) works in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MASQUE","IPv6"]}
 ```

@@ -56,6 +56,21 @@ This release enhances detection logic for existing rules targeting Next.js remot
 | Cloudflare Managed Ruleset | ...c76ba662 | N/A | Next.js - Image Optimizer Remote Code Execution via Crafted AVIF - Beta | Log | Block | This rule is merged into the original rule "Next.js - Image Optimizer Remote Code Execution via Crafted AVIF" (ID: ...80256efe). |
 | Cloudflare Managed Ruleset | ...208457cf | N/A | Next.js - Remote Code Execution - CVE:CVE-2026-75604 - Beta | Log | Block | This rule is merged into the original rule "Next.js - Remote Code Execution - CVE:CVE-2026-75604" (ID: ...2ca6cce3). |
 
+## 2026-09-07
+
+
+**Enforce positive security with Application Profiles**
+
+Application Profiles add a positive-security layer to Cloudflare WAF. Instead of looking only for requests that resemble known attacks, Application Profiles learn what valid requests to your application look like and identify traffic that deviates from the expected structure.
+
+The first available profile type, Schema Profiles, can learn path variables, query parameters, headers, cookies, JSON bodies, and form-encoded bodies. Profiles model field types and constraints such as numeric ranges, string lengths, and character classes. After a profile becomes available, an always-on detection classifies requests as conforming or non-conforming without blocking traffic.
+
+Use **Profile Analysis** in [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) to review conformance trends and sampled violation details before enforcing a profile. When you are ready to mitigate traffic, use a [Custom Rule](https://developers.cloudflare.com/waf/custom-rules/) to scope enforcement by hostname, path, operation, or other security signals such as Attack Score.
+
+Customers with API Security already have access to Schema Profiles through Schema Learning and Schema Validation. Cloudflare is also opening a closed beta to invited Enterprise customers without API Security. Contact your Cloudflare account team to express interest.
+
+For more information, refer to [Application Profiles](https://developers.cloudflare.com/waf/detections/application-profiles/).
+
 ## 2026-09-01
 
 
@@ -529,25 +544,6 @@ Customers on Pro, Business, or Enterprise plans should ensure that [Managed Rule
 | [`GHSA-wfc6-r584-vfw7` ↗](https://github.com/vercel/next.js/security/advisories/GHSA-wfc6-r584-vfw7) | Moderate | Cache poisoning in RSC responses | Custom WAF rule possible; global managed rule could potentially break application behavior |
 | [`GHSA-vfv6-92ff-j949` ↗](https://github.com/vercel/next.js/security/advisories/GHSA-vfv6-92ff-j949) | Low | Cache poisoning via RSC cache-busting collisions | Not possible to safely enable a managed WAF rule without potentially breaking application behavior |
 | [`GHSA-3g8h-86w9-wvmq` ↗](https://github.com/vercel/next.js/security/advisories/GHSA-3g8h-86w9-wvmq) | Low | Middleware redirect cache poisoning | Custom WAF rule possible; global managed rule could potentially break application behavior |
-
-## 2026-05-07
-
-
-**WAF Release - 2026-05-07 - Emergency**
-
-This emergency release introduces a new rule to detect Next.js App Router middleware and proxy bypass attempts via segment-prefetch routes (CVE-2026-44575).
-
-**Key Findings**
-
-CVE-2026-44575: Next.js Middleware / Proxy Bypass in App Router Applications via Segment-Prefetch Routes
-
-Successful exploitation allows unauthenticated attackers to bypass middleware or proxy-based authorization checks in affected Next.js App Router applications. This leads to unauthorized access to protected content, potential exposure of sensitive application data, and compromise of application security boundaries.
-
-We strongly recommend upgrading to Next.js 15.5.16 or 16.2.5 (or later) immediately to address the underlying vulnerability. If you cannot upgrade immediately, enforce authorization in the underlying route or page logic instead of relying solely on middleware.
-
-| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
-| --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Managed Ruleset | ...e77e4a53 | N/A | Next.js - Middleware Bypass via Invalid RSC Header - CVE:CVE-2026-44575 | N/A | Disabled | This is a new detection. |
 
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 

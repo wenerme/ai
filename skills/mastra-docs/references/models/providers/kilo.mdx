@@ -5,7 +5,7 @@ description: "Browse Kilo Gateway model IDs, capabilities, context windows, and 
 
 # [Kilo Gateway logo]Kilo Gateway
 
-Access 379 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
+Access 378 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
 
 Learn more in the [Kilo Gateway documentation](https://kilo.ai).
 
@@ -106,10 +106,10 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 393216,
-    "inputCost": 0.57816,
-    "outputCost": 1.73448
+    "contextWindow": 1024000,
+    "maxOutput": 384000,
+    "inputCost": 0.56364,
+    "outputCost": 1.69092
   },
   {
     "model": "kilo/~deepseek/deepseek-v4-flash-latest",
@@ -239,7 +239,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 131072,
+    "maxOutput": 943718,
     "inputCost": 0.075,
     "outputCost": 0.25
   },
@@ -868,18 +868,6 @@ for await (const chunk of stream) {
     "outputCost": 1.32
   },
   {
-    "model": "kilo/deepseek/deepseek-v4-flash-0731:free",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 393216,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
     "model": "kilo/deepseek/deepseek-v4-flash-vision-exp",
     "imageInput": true,
     "audioInput": false,
@@ -911,7 +899,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 393216,
+    "maxOutput": 384000,
     "inputCost": 1.32,
     "outputCost": 3.96
   },
@@ -1655,7 +1643,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
-    "maxOutput": 117964,
+    "maxOutput": 16384,
     "inputCost": 0.3,
     "outputCost": 1.1
   },
@@ -2012,7 +2000,7 @@ for await (const chunk of stream) {
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 102400,
@@ -3634,8 +3622,8 @@ for await (const chunk of stream) {
     "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 65536,
+    "contextWindow": 256000,
+    "maxOutput": 16384,
     "inputCost": 0.1625,
     "outputCost": 1.3
   },
@@ -3658,8 +3646,8 @@ for await (const chunk of stream) {
     "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 235929,
+    "contextWindow": 256000,
+    "maxOutput": 32768,
     "inputCost": 0.1,
     "outputCost": 0.15
   },
@@ -3814,7 +3802,7 @@ for await (const chunk of stream) {
     "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 262144,
+    "contextWindow": 1000000,
     "maxOutput": 131072,
     "inputCost": 0.425,
     "outputCost": 2.55
@@ -4140,8 +4128,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 128000,
-    "inputCost": 0.0825,
-    "outputCost": 0.33
+    "inputCost": 0.132,
+    "outputCost": 0.528
   },
   {
     "model": "kilo/tencent/hy3-preview",

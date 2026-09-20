@@ -118,6 +118,8 @@ expire after 12 months and are [non-refundable](https://ai.google.dev/gemini-api
 
 When your Prepay credit balance on the billing account hits $0, all API keys in
 all projects linked to that billing account will stop working simultaneously.
+Requests then fail with an [HTTP 402 Payment
+Required](https://ai.google.dev/gemini-api/docs/api-errors) error until you add credits.
 Prepay credits apply only to Gemini API usage costs; you can't use
 them to pay for other Google Cloud services.
 

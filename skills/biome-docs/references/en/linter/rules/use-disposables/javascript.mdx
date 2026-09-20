@@ -101,3 +101,4 @@ await using instance = new MyClass();
 - [Rule options](/linter/#rule-options)
 - [Source Code (Edit this Page)](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/src/lint/nursery/use_disposables.rs)
 - [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/tests/specs/nursery/useDisposables)
+- <RulePlaygroundLink rule="useDisposables" category="lint" language="ts" code={"function createDisposable(): Disposable {\n  return {\n    [Symbol.dispose]() {\n      // do something\n    },\n  };\n}\n\nconst disposable = createDisposable();\n"} />
