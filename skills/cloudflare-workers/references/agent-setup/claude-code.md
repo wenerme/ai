@@ -59,7 +59,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+   Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
    ```
 
 
@@ -165,15 +165,11 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+Create a Logpush job to stream Workers analytics to my data warehouse.
 ```
 
 ```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
-```
-
-```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ```txt
@@ -181,7 +177,11 @@ Set up AI Gateway to route requests across OpenAI and Workers AI with automatic 
 ```
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+```
+
+```txt
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
 ```
 
 ## Tips

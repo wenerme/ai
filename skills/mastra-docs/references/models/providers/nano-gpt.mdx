@@ -4676,7 +4676,7 @@ for await (const chunk of stream) {
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": false,
     "contextWindow": 41000,
     "maxOutput": 32768,
@@ -4712,7 +4712,7 @@ for await (const chunk of stream) {
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": false,
     "contextWindow": 41000,
     "maxOutput": 32768,
@@ -4748,7 +4748,7 @@ for await (const chunk of stream) {
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": false,
     "contextWindow": 41000,
     "maxOutput": 32768,
@@ -5304,8 +5304,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 524288,
     "maxOutput": 32768,
-    "inputCost": 0.2,
-    "outputCost": 1.7
+    "inputCost": 0.15,
+    "outputCost": 1.2
   },
   {
     "model": "nano-gpt/qwen/qwen3.8-27b-uncensored:thinking",
@@ -5316,8 +5316,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 524288,
     "maxOutput": 32768,
-    "inputCost": 0.2,
-    "outputCost": 1.7
+    "inputCost": 0.15,
+    "outputCost": 1.2
   },
   {
     "model": "nano-gpt/qwen/qwen3.8-27b:thinking",
@@ -5702,18 +5702,6 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 0.5,
     "outputCost": 1
-  },
-  {
-    "model": "nano-gpt/TEE/deepseek-v4-flash",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 393216,
-    "inputCost": 0.2,
-    "outputCost": 0.4
   },
   {
     "model": "nano-gpt/TEE/deepseek-v4.1-flash",
@@ -6242,6 +6230,18 @@ for await (const chunk of stream) {
     "maxOutput": 8000,
     "inputCost": 0.2,
     "outputCost": 0.2
+  },
+  {
+    "model": "nano-gpt/typesafe/jev-latest",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": 32000,
+    "maxOutput": null,
+    "inputCost": 0.042,
+    "outputCost": null
   },
   {
     "model": "nano-gpt/unbiased/pareto",

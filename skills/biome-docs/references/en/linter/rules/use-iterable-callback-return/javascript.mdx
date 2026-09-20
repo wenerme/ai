@@ -186,3 +186,4 @@ chaining where some callbacks intentionally return `undefined`.
 - [Rule options](/linter/#rule-options)
 - [Source Code (Edit this Page)](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/src/lint/suspicious/use_iterable_callback_return.rs)
 - [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/tests/specs/suspicious/useIterableCallbackReturn)
+- <RulePlaygroundLink rule="useIterableCallbackReturn" category="lint" language="js" code={"[].map(() => {\n    // Missing return value\n});\n"} />

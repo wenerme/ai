@@ -69,7 +69,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Add a cron trigger to my Worker that processes a job queue every hour.
+   Add a D1 database to my Worker and create a users table with full CRUD endpoints.
    ```
 
 
@@ -175,23 +175,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ```txt
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
 ```
 
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ## Tips

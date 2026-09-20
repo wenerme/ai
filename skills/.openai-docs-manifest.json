@@ -1684,10 +1684,10 @@
   "openai-docs/pricing.md": {
     "url": "https://developers.openai.com/api/docs/pricing.md",
     "skill": "openai-docs",
-    "etag": "W/\"9c9c657012f2a8a709e5333323e8e04f\"",
-    "lastModified": "Sat, 12 Sep 2026 04:51:02 GMT",
-    "size": 23001,
-    "updatedAt": "2026-09-12T13:39:18.217Z"
+    "etag": "W/\"533b583da22a2260d77969d58f73141b\"",
+    "lastModified": "Sun, 20 Sep 2026 13:34:47 GMT",
+    "size": 23059,
+    "updatedAt": "2026-09-20T14:13:24.150Z"
   },
   "openai-docs/quickstart.md": {
     "url": "https://developers.openai.com/api/docs/quickstart.md",
@@ -5068,10 +5068,10 @@
   "openai-api/safety.md": {
     "url": "https://developers.openai.com/api/reference/resources/safety/index.md",
     "skill": "openai-api",
-    "etag": "W/\"0a30477287291e753036d7a0d713ba60\"",
-    "lastModified": "Fri, 11 Sep 2026 04:27:10 GMT",
-    "size": 2834,
-    "updatedAt": "2026-09-11T04:27:10.580Z"
+    "etag": "W/\"a46097d8762c368ee6a9465934649379\"",
+    "lastModified": "Sun, 20 Sep 2026 14:15:12 GMT",
+    "size": 4372,
+    "updatedAt": "2026-09-20T14:15:12.784Z"
   },
   "openai-api/safety/alerts.md": {
     "url": "https://developers.openai.com/api/reference/resources/safety/subresources/alerts/index.md",
@@ -5088,6 +5088,22 @@
     "lastModified": "Fri, 11 Sep 2026 04:27:11 GMT",
     "size": 1944,
     "updatedAt": "2026-09-11T04:27:11.307Z"
+  },
+  "openai-api/safety/cases.md": {
+    "url": "https://developers.openai.com/api/reference/resources/safety/subresources/cases/index.md",
+    "skill": "openai-api",
+    "etag": "W/\"0a38bbd6aa3a02a3585735076e86f88e\"",
+    "lastModified": "Sun, 20 Sep 2026 14:15:13 GMT",
+    "size": 1537,
+    "updatedAt": "2026-09-20T14:15:13.575Z"
+  },
+  "openai-api/safety/cases/retrieve.md": {
+    "url": "https://developers.openai.com/api/reference/resources/safety/subresources/cases/methods/retrieve/index.md",
+    "skill": "openai-api",
+    "etag": "W/\"df02eaee42d5739241b52bffb2de9aad\"",
+    "lastModified": "Sun, 20 Sep 2026 14:15:13 GMT",
+    "size": 1145,
+    "updatedAt": "2026-09-20T14:15:13.906Z"
   },
   "openai-api/skills.md": {
     "url": "https://developers.openai.com/api/reference/resources/skills/index.md",

@@ -991,6 +991,11 @@
     "size": 6991,
     "updatedAt": "2026-09-16T04:43:52.327Z"
   },
+  "client-sdks/go/sdks/systemone/README.md": {
+    "url": "https://openrouter.ai/docs/client-sdks/go/sdks/systemone/README.md",
+    "size": 6632,
+    "updatedAt": "2026-09-20T14:17:33.139Z"
+  },
   "client-sdks/go/sdks/tts/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/tts/README.md",
     "size": 3200,
@@ -1177,6 +1182,11 @@
     "size": 20099,
     "updatedAt": "2026-09-17T04:46:38.677Z"
   },
+  "client-sdks/python/sdks/systemone/README.md": {
+    "url": "https://openrouter.ai/docs/client-sdks/python/sdks/systemone/README.md",
+    "size": 10847,
+    "updatedAt": "2026-09-20T14:17:55.145Z"
+  },
   "client-sdks/python/sdks/tts/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/sdks/tts/README.md",
     "size": 13292,
@@ -1359,6 +1369,11 @@
     "url": "https://openrouter.ai/docs/client-sdks/typescript/sdks/stt/README.md",
     "size": 10727,
     "updatedAt": "2026-09-16T04:44:29.267Z"
+  },
+  "client-sdks/typescript/sdks/systemone/README.md": {
+    "url": "https://openrouter.ai/docs/client-sdks/typescript/sdks/systemone/README.md",
+    "size": 7662,
+    "updatedAt": "2026-09-20T14:18:16.358Z"
   },
   "client-sdks/typescript/sdks/tts/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/typescript/sdks/tts/README.md",

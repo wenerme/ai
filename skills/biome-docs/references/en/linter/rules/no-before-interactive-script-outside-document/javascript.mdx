@@ -94,3 +94,4 @@ export default function Document() {
 - [Rule options](/linter/#rule-options)
 - [Source Code (Edit this Page)](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/src/lint/correctness/no_before_interactive_script_outside_document.rs)
 - [Test Cases](https://github.com/biomejs/biome/blob/main/crates/biome_js_analyze/tests/specs/correctness/noBeforeInteractiveScriptOutsideDocument)
+- <RulePlaygroundLink rule="noBeforeInteractiveScriptOutsideDocument" category="lint" language="jsx" code={"// pages/index.jsx\nimport Script from 'next/script'\n\nexport default function Index() {\n  return (\n    <div>\n      <Script\n        src=\"https://example.com/script.js\"\n        strategy=\"beforeInteractive\"\n      ></Script>\n    </div>\n  )\n}\n"} />

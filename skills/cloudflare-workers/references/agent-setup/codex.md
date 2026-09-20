@@ -58,7 +58,7 @@ TerminalStandaloneCloudExtensionOpen Source
    For example:
 
    ```txt
-   Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+   Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
    ```
 
 
@@ -171,23 +171,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
 ```
 
 ```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Create a Logpush job to stream Workers analytics to my data warehouse.
 ```
 
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ## Tips
